@@ -33,9 +33,9 @@ export default function HomeOS() {
     <html
       lang="en"
       data-color-scale="orange"
+      data-gray-scale="natural"
       data-background-feel="natural"
       data-foreground-feel="natural"
-      data-gray-scale="natural"
       data-button-radius="large"
       data-scaling="regular"
     >

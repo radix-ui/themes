@@ -30,9 +30,9 @@ export default function Snapshot() {
     <html
       lang="en"
       data-color-scale="grass"
+      data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="neutral"
-      data-gray-scale="natural"
       data-button-radius="small"
       data-scaling="larger"
       className="dark-theme"

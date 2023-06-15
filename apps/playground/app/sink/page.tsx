@@ -98,9 +98,9 @@ export default function Sink() {
     <html
       lang="en"
       data-color-scale="indigo"
+      data-gray-scale="natural"
       data-background-feel="natural"
       data-foreground-feel="natural"
-      data-gray-scale="natural"
       data-button-radius="medium"
       data-scaling="regular"
     >

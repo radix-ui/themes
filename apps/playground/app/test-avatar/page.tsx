@@ -1,19 +1,38 @@
+'use client';
+
 import * as React from 'react';
-import { Avatar, Flex } from '@radix-ui/themes';
+import { Provider, Avatar, Flex } from '@radix-ui/themes';
+import { ControlPanel } from '../../components/control-panel';
 
 export default function Test() {
   return (
-    <Flex align="center" gap="3">
-      <Avatar src="./api/avatar" />
-      <Avatar src="./api/avatar" fallback="BG" />
+    <html
+      lang="en"
+      data-color-scale="purple"
+      data-gray-scale="natural"
+      data-background-feel="tinted"
+      data-foreground-feel="neutral"
+      data-button-radius="full"
+    >
+      <body>
+        <div id="root">
+          <Provider>
+            <ControlPanel />
+            <Flex align="center" gap="3">
+              <Avatar src="./api/avatar" />
+              <Avatar src="./api/avatar" fallback="BG" />
 
-      <Avatar src="#" />
-      <Avatar src="#" fallback="BG" />
+              <Avatar src="#" />
+              <Avatar src="#" fallback="BG" />
 
-      <Avatar />
-      <Avatar fallback="BG" />
-      <Avatar fallback={<CustomUserIcon />} />
-    </Flex>
+              <Avatar />
+              <Avatar fallback="BG" />
+              <Avatar fallback={<CustomUserIcon />} />
+            </Flex>
+          </Provider>
+        </div>
+      </body>
+    </html>
   );
 }
 
