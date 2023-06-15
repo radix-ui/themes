@@ -1,0 +1,26 @@
+@breakpoints {
+  .rui-lt-normal::before,
+  .rui-lt-end::before,
+  .rui-lt-normal::after,
+  .rui-lt-start::after {
+    content: none;
+  }
+
+  .rui-lt-start::before,
+  .rui-lt-both::before,
+  .rui-lt-end::after,
+  .rui-lt-both::after {
+    content: '';
+    display: table;
+  }
+
+  .rui-lt-start::before,
+  .rui-lt-both::before {
+    margin-bottom: calc(0.34em - var(--line-height) / 2);
+  }
+
+  .rui-lt-end::after,
+  .rui-lt-both::after {
+    margin-top: calc(0.38em - var(--line-height) / 2);
+  }
+}

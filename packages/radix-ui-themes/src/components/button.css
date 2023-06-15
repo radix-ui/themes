@@ -1,0 +1,53 @@
+@import './base-button.css';
+
+.rui-Button {
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Button.size-1 {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+    gap: var(--space-1);
+    font-size: var(--fs-1);
+  }
+  .rui-Button.size-2 {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+    gap: var(--space-2);
+    font-size: var(--fs-2);
+  }
+  .rui-Button.size-3 {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    gap: var(--space-3);
+    font-size: var(--fs-3);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-Button.variant-solid,
+.rui-Button.variant-solid-mono,
+.rui-Button.variant-subtle,
+.rui-Button.variant-subtle-mono {
+  font-weight: 600;
+}
+
+.rui-Button.variant-surface,
+.rui-Button.variant-surface-mono,
+.rui-Button.variant-outline,
+.rui-Button.variant-outline-mono,
+.rui-Button.variant-ghost,
+.rui-Button.variant-ghost-mono {
+  font-weight: 400;
+}

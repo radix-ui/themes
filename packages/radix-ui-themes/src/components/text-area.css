@@ -1,0 +1,154 @@
+.rui-TextArea {
+  appearance: none;
+  border-width: 0;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+
+  resize: none;
+}
+
+/* scrollbar */
+
+.rui-TextArea {
+  /* Arrow mouse cursor over the scrollbar */
+  cursor: auto;
+  scrollbar-width: thin;
+}
+.rui-TextArea::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.rui-TextArea::-webkit-scrollbar-track,
+.rui-TextArea::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  border: 4px solid transparent;
+  border-radius: 12px;
+}
+.rui-TextArea::-webkit-scrollbar-track {
+  background-color: var(--monoA3);
+}
+.rui-TextArea::-webkit-scrollbar-thumb {
+  background-color: var(--monoA8);
+}
+.rui-TextArea:not(:disabled)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--monoA9);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-TextArea.size-1 {
+    min-height: var(--space-8);
+    padding: var(--space-1);
+    border-radius: min(var(--brs-2), var(--br-4));
+    font-size: var(--fs-1);
+    line-height: 16px;
+  }
+  .rui-TextArea.size-2 {
+    min-height: var(--space-9);
+    padding: var(--space-2);
+    border-radius: min(var(--brs-2), var(--br-4));
+    font-size: var(--fs-2);
+    line-height: 20px;
+  }
+  .rui-TextArea.size-3 {
+    min-height: 80px;
+    padding: var(--space-2) var(--space-3);
+    border-radius: min(var(--brs-3), var(--br-4));
+    font-size: var(--fs-3);
+    line-height: 24px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-TextArea {
+  box-shadow: var(--shadow-1);
+  color: var(--mono12);
+}
+
+.rui-TextArea::placeholder {
+  color: var(--monoA10);
+  /* Firefox */
+  opacity: 1;
+}
+.rui-TextArea:read-only::placeholder {
+  color: var(--monoA7);
+}
+
+.rui-TextArea:read-only::selection {
+  background-color: var(--monoA5);
+}
+
+.rui-TextArea:autofill {
+  -webkit-text-fill-color: var(--mono12);
+  box-shadow: var(--shadow-1), inset 0 0 0 100px var(--color3);
+}
+.rui-TextArea:autofill:focus {
+  box-shadow: inset 0 0 0 1px var(--color8), 0 0 0 1px var(--color8),
+    inset 0 0 0 100px var(--color3);
+}
+
+/* surface */
+
+.rui-TextArea.variant-surface {
+  background-color: var(--surface-1);
+}
+.rui-TextArea.variant-surface:focus {
+  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--color7), 0 0 0 2px var(--color7);
+}
+
+/* surface-mono */
+
+.rui-TextArea.variant-surface-mono {
+  background-color: var(--surface-1);
+}
+.rui-TextArea.variant-surface-mono:focus {
+  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--monoA8), 0 0 0 2px var(--monoA8);
+}
+.rui-TextArea.variant-surface-mono::selection {
+  background-color: var(--monoA5);
+}
+
+/* subtle-mono */
+.rui-TextArea.variant-subtle-mono {
+  background-color: var(--monoA3);
+  box-shadow: none;
+}
+.rui-TextArea.variant-subtle-mono::selection {
+  background-color: var(--monoA5);
+}
+.rui-TextArea.variant-subtle-mono:focus {
+  box-shadow: 0 0 0 2px var(--monoA8);
+}
+
+/* all disabled textareas */
+
+.rui-TextArea:disabled {
+  color: var(--monoA9);
+  box-shadow: inset 0 0 0 1px var(--monoA6);
+  background-color: var(--monoA3);
+  cursor: not-allowed;
+}
+
+/* all readonly textareas */
+
+.rui-TextArea:read-only {
+  background-color: var(--monoA3);
+  box-shadow: inset 0 0 0 1px var(--monoA6);
+}

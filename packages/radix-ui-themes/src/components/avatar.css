@@ -1,0 +1,118 @@
+.rui-AvatarRoot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow: hidden;
+  user-select: none;
+  width: var(--size);
+  height: var(--size);
+}
+
+.rui-AvatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.rui-AvatarFallback {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+
+  & svg {
+    width: var(--fs-1-letter);
+    height: var(--fs-1-letter);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-AvatarFallback {
+  font-weight: 600;
+
+  &.\31-letter {
+    font-size: var(--fs-1-letter);
+  }
+  &.\32-letters {
+    font-size: var(--fs-2-letters);
+  }
+}
+
+@breakpoints {
+  .rui-AvatarRoot {
+    &.size-1 {
+      border-radius: calc(var(--br-2) * var(--button-radius));
+      --size: var(--space-5);
+      --fs-1-letter: var(--fs-2);
+      --fs-2-letters: var(--fs-1);
+    }
+    &.size-2 {
+      border-radius: calc(var(--br-2) * var(--button-radius));
+      --size: var(--space-6);
+      --fs-1-letter: var(--fs-3);
+      --fs-2-letters: var(--fs-2);
+    }
+    &.size-3 {
+      border-radius: calc(var(--br-3) * var(--button-radius));
+      --size: var(--space-7);
+      --fs-1-letter: var(--fs-4);
+      --fs-2-letters: var(--fs-3);
+    }
+    &.size-4 {
+      border-radius: calc(var(--br-3) * var(--button-radius));
+      --size: var(--space-8);
+      --fs-1-letter: var(--fs-6);
+      --fs-2-letters: var(--fs-5);
+    }
+    &.size-5 {
+      border-radius: calc(var(--br-4) * var(--button-radius));
+      --size: var(--space-9);
+      --fs-1-letter: var(--fs-8);
+      --fs-2-letters: var(--fs-7);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* solid */
+
+.rui-AvatarRoot.variant-solid .rui-AvatarFallback {
+  background-color: var(--color9);
+  color: var(--color-foreground);
+}
+
+/* solid-mono */
+
+.rui-AvatarRoot.variant-solid-mono .rui-AvatarFallback {
+  background-color: var(--monoA12);
+  color: var(--mono1);
+}
+
+/* subtle */
+
+.rui-AvatarRoot.variant-subtle .rui-AvatarFallback {
+  background-color: var(--color3);
+  color: var(--color11);
+}
+
+/* subtle-mono */
+
+.rui-AvatarRoot.variant-subtle-mono .rui-AvatarFallback {
+  background-color: var(--monoA3);
+  color: var(--mono12);
+}

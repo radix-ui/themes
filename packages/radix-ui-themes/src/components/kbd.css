@@ -1,0 +1,56 @@
+.rui-Kbd {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--ff-sans);
+  vertical-align: text-bottom;
+  white-space: nowrap;
+  user-select: none;
+  cursor: default;
+
+  min-width: 2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+
+  border-radius: var(--br-3);
+  line-height: var(--space-5);
+  height: var(--space-5);
+  font-size: var(--fs-1);
+
+  color: var(--mono12);
+  background-color: var(--mono1);
+  box-shadow: inset 0 0.5px var(--highlight), inset 0 3px 6px var(--shading),
+    0 0 0 0.5px var(--border), inset 0 -0.5px var(--inner-shadow), 0 1px 2px var(--outer-shadow);
+
+  --highlight: var(--whiteA12);
+  --shading: var(--monoA2);
+  --border: var(--monoA7);
+  --inner-shadow: var(--monoA6);
+  --outer-shadow: var(--monoA7);
+}
+.dark-theme .rui-Kbd {
+  --highlight: var(--whiteA9);
+  --shading: var(--monoA2);
+  --inner-shadow: var(--blackA9);
+  --outer-shadow: var(--blackA12);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * WIDTHS                                                                                          *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-Kbd.width-command {
+  width: 3em;
+  justify-content: flex-end;
+}
+.rui-Kbd.width-shift {
+  width: 4em;
+  justify-content: flex-start;
+}
+.rui-Kbd.width-space {
+  width: 8em;
+}

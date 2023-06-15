@@ -1,0 +1,13 @@
+.rui-HoverCardTrigger.rui-Link {
+  border-radius: var(--br-1);
+  background-color: var(--color3);
+}
+
+.rui-HoverCardContent {
+  border-radius: var(--br-3);
+  background-color: var(--panel);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-2), inset 0 0 0 0.4px var(--monoA6);
+
+  transform-origin: var(--radix-hover-card-content-transform-origin);
+}

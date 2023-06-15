@@ -1,0 +1,301 @@
+@breakpoints {
+  .rui-p-0 {
+    padding: 0;
+  }
+
+  .rui-p-1 {
+    padding: var(--space-1);
+  }
+
+  .rui-p-2 {
+    padding: var(--space-2);
+  }
+
+  .rui-p-3 {
+    padding: var(--space-3);
+  }
+
+  .rui-p-4 {
+    padding: var(--space-4);
+  }
+
+  .rui-p-5 {
+    padding: var(--space-5);
+  }
+
+  .rui-p-6 {
+    padding: var(--space-6);
+  }
+
+  .rui-p-7 {
+    padding: var(--space-7);
+  }
+
+  .rui-p-8 {
+    padding: var(--space-8);
+  }
+
+  .rui-p-9 {
+    padding: var(--space-9);
+  }
+
+  .rui-px-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .rui-px-1 {
+    padding-left: var(--space-1);
+    padding-right: var(--space-1);
+  }
+
+  .rui-px-2 {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+
+  .rui-px-3 {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .rui-px-4 {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .rui-px-5 {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  .rui-px-6 {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+
+  .rui-px-7 {
+    padding-left: var(--space-7);
+    padding-right: var(--space-7);
+  }
+
+  .rui-px-8 {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+
+  .rui-px-9 {
+    padding-left: var(--space-9);
+    padding-right: var(--space-9);
+  }
+
+  .rui-py-0 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .rui-py-1 {
+    padding-top: var(--space-1);
+    padding-bottom: var(--space-1);
+  }
+
+  .rui-py-2 {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+  }
+
+  .rui-py-3 {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+
+  .rui-py-4 {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .rui-py-5 {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
+  }
+
+  .rui-py-6 {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+
+  .rui-py-7 {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+  }
+
+  .rui-py-8 {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .rui-py-9 {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-9);
+  }
+
+  .rui-pt-0 {
+    padding-top: 0;
+  }
+
+  .rui-pt-1 {
+    padding-top: var(--space-1);
+  }
+
+  .rui-pt-2 {
+    padding-top: var(--space-2);
+  }
+
+  .rui-pt-3 {
+    padding-top: var(--space-3);
+  }
+
+  .rui-pt-4 {
+    padding-top: var(--space-4);
+  }
+
+  .rui-pt-5 {
+    padding-top: var(--space-5);
+  }
+
+  .rui-pt-6 {
+    padding-top: var(--space-6);
+  }
+
+  .rui-pt-7 {
+    padding-top: var(--space-7);
+  }
+
+  .rui-pt-8 {
+    padding-top: var(--space-8);
+  }
+
+  .rui-pt-9 {
+    padding-top: var(--space-9);
+  }
+
+  .rui-pr-0 {
+    padding-right: 0;
+  }
+
+  .rui-pr-1 {
+    padding-right: var(--space-1);
+  }
+
+  .rui-pr-2 {
+    padding-right: var(--space-2);
+  }
+
+  .rui-pr-3 {
+    padding-right: var(--space-3);
+  }
+
+  .rui-pr-4 {
+    padding-right: var(--space-4);
+  }
+
+  .rui-pr-5 {
+    padding-right: var(--space-5);
+  }
+
+  .rui-pr-6 {
+    padding-right: var(--space-6);
+  }
+
+  .rui-pr-7 {
+    padding-right: var(--space-7);
+  }
+
+  .rui-pr-8 {
+    padding-right: var(--space-8);
+  }
+
+  .rui-pr-9 {
+    padding-right: var(--space-9);
+  }
+
+  .rui-pb-0 {
+    padding-bottom: 0;
+  }
+
+  .rui-pb-1 {
+    padding-bottom: var(--space-1);
+  }
+
+  .rui-pb-2 {
+    padding-bottom: var(--space-2);
+  }
+
+  .rui-pb-3 {
+    padding-bottom: var(--space-3);
+  }
+
+  .rui-pb-4 {
+    padding-bottom: var(--space-4);
+  }
+
+  .rui-pb-5 {
+    padding-bottom: var(--space-5);
+  }
+
+  .rui-pb-6 {
+    padding-bottom: var(--space-6);
+  }
+
+  .rui-pb-7 {
+    padding-bottom: var(--space-7);
+  }
+
+  .rui-pb-8 {
+    padding-bottom: var(--space-8);
+  }
+
+  .rui-pb-9 {
+    padding-bottom: var(--space-9);
+  }
+
+  .rui-pl-0 {
+    padding-left: 0;
+  }
+
+  .rui-pl-1 {
+    padding-left: var(--space-1);
+  }
+
+  .rui-pl-2 {
+    padding-left: var(--space-2);
+  }
+
+  .rui-pl-3 {
+    padding-left: var(--space-3);
+  }
+
+  .rui-pl-4 {
+    padding-left: var(--space-4);
+  }
+
+  .rui-pl-5 {
+    padding-left: var(--space-5);
+  }
+
+  .rui-pl-6 {
+    padding-left: var(--space-6);
+  }
+
+  .rui-pl-7 {
+    padding-left: var(--space-7);
+  }
+
+  .rui-pl-8 {
+    padding-left: var(--space-8);
+  }
+
+  .rui-pl-9 {
+    padding-left: var(--space-9);
+  }
+}

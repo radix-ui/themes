@@ -1,0 +1,31 @@
+.rui-Separator {
+  background-color: var(--mono6);
+}
+
+.rui-Separator:where([data-color-scale]) {
+  background-color: var(--color6);
+}
+
+.rui-Separator[data-orientation='vertical'] {
+  width: 1px;
+  height: var(--separator-size);
+}
+.rui-Separator[data-orientation='horizontal'] {
+  width: var(--separator-size);
+  height: 1px;
+}
+
+@breakpoints {
+  .rui-Separator.size-1 {
+    --separator-size: var(--space-4);
+  }
+  .rui-Separator.size-2 {
+    --separator-size: var(--space-6);
+  }
+  .rui-Separator.size-3 {
+    --separator-size: var(--space-9);
+  }
+  .rui-Separator.size-4 {
+    --separator-size: 100%;
+  }
+}

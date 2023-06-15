@@ -1,0 +1,21 @@
+@breakpoints {
+  .rui-gaf-row {
+    grid-auto-flow: row;
+  }
+
+  .rui-gaf-column {
+    grid-auto-flow: column;
+  }
+
+  .rui-gaf-dense {
+    grid-auto-flow: dense;
+  }
+
+  .rui-gaf-row-dense {
+    grid-auto-flow: row dense;
+  }
+
+  .rui-gaf-column-dense {
+    grid-auto-flow: column dense;
+  }
+}

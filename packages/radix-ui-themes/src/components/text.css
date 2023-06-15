@@ -1,0 +1,73 @@
+.rui-Text {
+  margin: 0;
+  line-height: var(--line-height);
+}
+
+.rui-Text:where([data-color-scale]) {
+  color: var(--color11);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Text.size-1 {
+    font-size: var(--fs-1);
+    --line-height: 16px;
+  }
+  .rui-Text.size-2 {
+    font-size: var(--fs-2);
+    --line-height: 20px;
+  }
+  .rui-Text.size-3 {
+    font-size: var(--fs-3);
+    --line-height: 24px;
+  }
+  .rui-Text.size-4 {
+    font-size: var(--fs-4);
+    --line-height: 26px;
+  }
+  .rui-Text.size-5 {
+    font-size: var(--fs-5);
+    letter-spacing: -0.01em;
+    --line-height: 28px;
+  }
+  .rui-Text.size-6 {
+    font-size: var(--fs-6);
+    letter-spacing: -0.018em;
+    --line-height: 30px;
+  }
+  .rui-Text.size-7 {
+    font-size: var(--fs-7);
+    letter-spacing: -0.026em;
+    --line-height: 36px;
+  }
+  .rui-Text.size-8 {
+    font-size: var(--fs-8);
+    letter-spacing: -0.04em;
+    --line-height: 40px;
+  }
+  .rui-Text.size-9 {
+    font-size: var(--fs-9);
+    letter-spacing: -0.056em;
+    --line-height: 60px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * WEIGHTS                                                                                         *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Text.weight-normal {
+    font-weight: 400;
+  }
+  .rui-Text.weight-bold {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,5 @@
+@import './base-menu.css';
+
+.rui-DropdownMenuContent {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}

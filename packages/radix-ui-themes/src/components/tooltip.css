@@ -1,0 +1,47 @@
+.rui-TooltipContent {
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--mono12);
+  border-radius: var(--br-2);
+
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+}
+
+.rui-TooltipContent {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rui-TooltipContent[data-state='delayed-open'][data-side='top'] {
+  animation-name: slideUpAndFadeIn;
+}
+.rui-TooltipContent[data-state='delayed-open'][data-side='bottom'] {
+  animation-name: slideDownAndFadeIn;
+}
+.rui-TooltipContent[data-state='delayed-open'][data-side='left'] {
+  animation-name: slideLeftAndFadeIn;
+}
+.rui-TooltipContent[data-state='delayed-open'][data-side='right'] {
+  animation-name: slideRightAndFadeIn;
+}
+
+.rui-TooltipText {
+  color: var(--mono1);
+  user-select: none;
+  cursor: default;
+}
+
+.rui-TooltipArrow {
+  fill: var(--mono12);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-TooltipContent.multiline {
+  max-width: 250px;
+}
+.rui-TooltipContent.multiline .rui-TooltipText {
+  line-height: 18px;
+}

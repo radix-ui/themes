@@ -1,0 +1,44 @@
+.rui-Link {
+  cursor: pointer;
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: calc(0.025em + 2px);
+  text-decoration-color: var(--color5);
+  color: var(--color11);
+}
+
+@breakpoints {
+  .rui-Link.rui-gap-0,
+  .rui-Link.rui-gap-1,
+  .rui-Link.rui-gap-2 {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .rui-Link.size-7,
+  .rui-Link.size-8,
+  .rui-Link.size-9 {
+    text-decoration-thickness: 2px;
+  }
+}
+
+.rui-Link:hover {
+  text-decoration-line: underline;
+}
+
+.rui-Link:focus-visible {
+  outline-color: var(--color8);
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+  text-decoration-line: none;
+}
+
+.rui-Link.variant-high-contrast,
+.rui-Text:where([data-color-scale]) .rui-Link {
+  color: var(--color12);
+  text-decoration-line: underline;
+  text-decoration-color: var(--color6);
+  outline-color: var(--color11);
+}

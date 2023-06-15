@@ -1,0 +1,10 @@
+.rui-Sup {
+  font-variant-position: super;
+  -moz-font-feature-settings: 'sups';
+  -webkit-font-feature-settings: 'sups';
+  font-feature-settings: 'sups';
+
+  font-size: 100%;
+  line-height: 1;
+  vertical-align: baseline;
+}

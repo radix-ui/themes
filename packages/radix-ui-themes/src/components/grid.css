@@ -1,0 +1,9 @@
+.rui-Grid {
+  box-sizing: border-box;
+
+  /* Default values to provide the initial styles in the object syntax, e.g. `<Grid columns={{ md: '2' }} />` */
+  display: grid;
+  align-items: stretch;
+  justify-content: flex-start;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}

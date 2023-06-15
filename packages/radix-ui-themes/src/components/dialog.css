@@ -1,0 +1,101 @@
+.rui-DialogOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  padding-bottom: 5vh;
+}
+
+.rui-DialogOverlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay);
+}
+
+.rui-DialogContent {
+  border-radius: var(--br-4);
+  width: 100%;
+  max-height: 90vh;
+  max-width: 580px;
+  outline: none;
+  overflow: auto;
+  background-color: var(--panel);
+  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--monoA6);
+  box-sizing: border-box;
+  z-index: 1;
+
+  --dialog-padding: var(--space-5);
+  padding: var(--dialog-padding);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes DialogOverlayNoop {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes DialogOverlayShow {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes DialogOverlayHide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes DialogContentShow {
+    from {
+      opacity: 0;
+      transform: translateY(5px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+    }
+  }
+
+  @keyframes DialogContentHide {
+    from {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(5px) scale(0.99);
+    }
+  }
+
+  /* Keep the overlay mounted until the children have animated */
+  .rui-DialogOverlay[data-state='closed'] {
+    animation: DialogOverlayNoop 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rui-DialogOverlay[data-state='open']::after {
+    animation: DialogOverlayShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .rui-DialogOverlay[data-state='closed']::after {
+    animation: DialogOverlayHide 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rui-DialogContent[data-state='open'] {
+    animation: DialogContentShow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .rui-DialogContent[data-state='closed'] {
+    animation: DialogContentHide 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}

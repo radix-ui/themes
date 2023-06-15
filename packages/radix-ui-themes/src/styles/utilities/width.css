@@ -1,0 +1,61 @@
+@breakpoints {
+  .rui-w-auto {
+    width: auto;
+  }
+
+  .rui-w-max-content {
+    width: max-content;
+  }
+
+  .rui-w-min-content {
+    width: min-content;
+  }
+
+  .rui-w-0 {
+    width: 0;
+  }
+
+  .rui-w-1 {
+    width: var(--space-1);
+  }
+
+  .rui-w-2 {
+    width: var(--space-2);
+  }
+
+  .rui-w-3 {
+    width: var(--space-3);
+  }
+
+  .rui-w-4 {
+    width: var(--space-4);
+  }
+
+  .rui-w-5 {
+    width: var(--space-5);
+  }
+
+  .rui-w-6 {
+    width: var(--space-6);
+  }
+
+  .rui-w-7 {
+    width: var(--space-7);
+  }
+
+  .rui-w-8 {
+    width: var(--space-8);
+  }
+
+  .rui-w-9 {
+    width: var(--space-9);
+  }
+
+  .rui-w-50\% {
+    width: 50%;
+  }
+
+  .rui-w-100\% {
+    width: 100%;
+  }
+}

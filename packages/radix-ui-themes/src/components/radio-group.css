@@ -1,0 +1,91 @@
+.rui-RadioGroupRoot {
+}
+
+.rui-RadioGroupItem {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: bottom;
+  flex-shrink: 0;
+
+  /* Match Text size 2 line-height */
+  height: 20px;
+}
+
+.rui-RadioGroupButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 100%;
+}
+
+.rui-RadioGroupIndicator {
+  background-color: currentColor;
+  height: var(--indicator-size);
+  width: var(--indicator-size);
+  border-radius: 100%;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-RadioGroupRoot.size-1 {
+    --size: var(--space-4);
+    --indicator-size: 6px;
+  }
+  .rui-RadioGroupRoot.size-2 {
+    --size: var(--space-5);
+    --indicator-size: 10px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-RadioGroupButton:where([data-state='unchecked']) {
+  box-shadow: var(--shadow-1);
+  background-color: var(--surface-1);
+}
+.rui-RadioGroupButton:where([data-disabled]) {
+  box-shadow: inset 0 0 0 1px var(--monoA6);
+  background-color: var(--surface-3);
+  cursor: not-allowed;
+  color: var(--monoA8);
+}
+
+/* solid */
+
+.rui-RadioGroupRoot.variant-solid .rui-RadioGroupButton:where(:focus-visible) {
+  outline-style: solid;
+  outline-offset: 1px;
+  outline-width: 2px;
+  outline-color: var(--color7);
+}
+.rui-RadioGroupRoot.variant-solid
+  .rui-RadioGroupButton:where([data-state='checked']:not([data-disabled])) {
+  background-color: var(--color9);
+  color: var(--color-foreground);
+}
+
+/* solid-mono */
+
+.rui-RadioGroupRoot.variant-solid-mono .rui-RadioGroupButton:where(:focus-visible) {
+  outline-style: solid;
+  outline-offset: 1px;
+  outline-width: 2px;
+  outline-color: var(--monoA11);
+}
+.rui-RadioGroupRoot.variant-solid-mono
+  .rui-RadioGroupButton:where([data-state='checked']:not([data-disabled])) {
+  background-color: var(--monoA12);
+  color: var(--mono1);
+}

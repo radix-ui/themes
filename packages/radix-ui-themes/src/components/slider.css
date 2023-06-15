@@ -1,0 +1,175 @@
+.rui-SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+}
+.rui-SliderRoot[data-orientation='horizontal'] {
+  height: max(var(--track-size), var(--thumb-size));
+}
+.rui-SliderRoot[data-orientation='vertical'] {
+  height: 100%;
+  flex-direction: column;
+  width: max(var(--track-size), var(--thumb-size));
+}
+
+.rui-SliderTrack {
+  position: relative;
+  flex-grow: 1;
+  border-radius: var(--brs-1);
+  overflow: hidden;
+}
+.rui-SliderTrack[data-orientation='horizontal'] {
+  height: var(--track-size);
+}
+.rui-SliderTrack[data-orientation='vertical'] {
+  width: var(--track-size);
+}
+
+.rui-SliderRange {
+  position: absolute;
+}
+.rui-SliderRange[data-orientation='horizontal'] {
+  height: 100%;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.rui-SliderRange[data-orientation='vertical'] {
+  width: 100%;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.rui-SliderRange[data-orientation='horizontal'][data-inverted] {
+  border-radius: 0;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.rui-SliderRange[data-orientation='vertical'][data-inverted] {
+  border-radius: 0;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.rui-SliderThumb {
+  display: block;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: min(var(--thumb-radius), calc(var(--thumb-size) / 2));
+}
+.rui-SliderThumb::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-SliderRoot.size-1 {
+    --track-size: var(--space-1);
+    --thumb-size: 14px;
+    --thumb-radius: var(--brs-1);
+    --thumb-focus-outline-size: 3px;
+  }
+  .rui-SliderRoot.size-2 {
+    --track-size: var(--space-2);
+    --thumb-size: var(--space-4);
+    --thumb-radius: var(--brs-2);
+    --thumb-focus-outline-size: 4px;
+  }
+  .rui-SliderRoot.size-3 {
+    --track-size: var(--space-3);
+    --thumb-size: var(--space-5);
+    --thumb-radius: var(--brs-3);
+    --thumb-focus-outline-size: 5px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-SliderRoot {
+  --shadow: inset 0 0 0 0.5px var(--monoA6), inset 0 1px 2px 0 var(--monoA7);
+}
+.dark-theme .rui-SliderRoot {
+  --shadow: inset 0 0 0 0.5px var(--monoA7), inset 0 1px 2px 0 var(--blackA11);
+}
+
+.rui-SliderTrack {
+  background-color: var(--monoA3);
+  box-shadow: var(--shadow);
+}
+
+.rui-SliderRange {
+  box-shadow: inset 0 1.5px 2px 0 var(--blackA7);
+}
+
+.rui-SliderThumb {
+  background-color: white;
+  box-shadow: 0 1px 2px var(--blackA7), 0 0 0 0.5px var(--monoA5);
+}
+.rui-SliderThumb:where(:focus-visible) {
+  outline: var(--thumb-focus-outline-size) solid var(--monoA7);
+}
+
+/* solid */
+
+.rui-SliderRoot.variant-solid .rui-SliderRange {
+  background-color: var(--color9);
+}
+
+/* solid-mono */
+
+.rui-SliderRoot.variant-solid-mono .rui-SliderRange {
+  background-color: var(--monoA12);
+}
+.dark-theme .rui-SliderRoot.variant-solid-mono .rui-SliderRange {
+  background-color: var(--monoA9);
+}
+
+/* subtle */
+
+.rui-SliderRoot.variant-subtle .rui-SliderRange {
+  background-color: var(--color5);
+}
+
+/* subtle-mono */
+
+.rui-SliderRoot.variant-subtle-mono .rui-SliderRange {
+  background-color: var(--mono7);
+}
+
+/* all disabled Sliders */
+
+.rui-SliderRoot[data-disabled] {
+  cursor: not-allowed;
+}
+.rui-SliderRoot .rui-SliderTrack[data-disabled] {
+  background-color: var(--monoA3);
+  box-shadow: none;
+}
+.rui-SliderRoot .rui-SliderRange[data-disabled] {
+  background-color: var(--mono7) !important;
+  box-shadow: none;
+}
+.rui-SliderRoot .rui-SliderThumb[data-disabled] {
+  background-color: var(--mono6);
+  box-shadow: none;
+}

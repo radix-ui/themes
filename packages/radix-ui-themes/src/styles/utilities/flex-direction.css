@@ -1,0 +1,17 @@
+@breakpoints {
+  .rui-fd-row {
+    flex-direction: row;
+  }
+
+  .rui-fd-column {
+    flex-direction: column;
+  }
+
+  .rui-fd-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .rui-fd-column-reverse {
+    flex-direction: column-reverse;
+  }
+}

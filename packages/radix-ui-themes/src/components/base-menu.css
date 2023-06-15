@@ -1,0 +1,207 @@
+.rui-BaseMenuContent {
+  background-color: var(--content-bg);
+  overflow: hidden;
+  padding: var(--content-padding);
+  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--brs-3));
+  min-width: 180px;
+}
+
+.rui-BaseMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--brs-2);
+  padding-left: var(--space-5);
+  padding-right: var(--space-4);
+  position: relative;
+  box-sizing: border-box;
+  outline: none;
+
+  /* Fix sticky text highlighting after selection in Firefox */
+  user-select: none;
+}
+.rui-BaseMenuItem[data-disabled] {
+  pointer-events: none;
+}
+
+.rui-BaseMenuShortcut {
+  display: flex;
+  align-items: center;
+  margin-left: var(--space-5);
+}
+.rui-BaseMenuShortcut svg {
+  margin-right: -2px;
+}
+
+.rui-BaseMenuItemIndicator {
+  position: absolute;
+  left: 0;
+  width: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rui-BaseMenuSeparator {
+  height: 1px;
+  margin: var(--space-2);
+}
+
+.rui-BaseMenuLabel {
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-5);
+  padding-right: var(--space-4);
+  font-size: var(--fs-1);
+  user-select: none;
+  cursor: default;
+}
+.rui-BaseMenuLabel:not(:first-child) {
+  margin-top: var(--space-2);
+}
+
+.rui-BaseMenuArrow {
+  fill: var(--content-bg);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* size 1 */
+
+.rui-BaseMenuContent.size-1 {
+  --content-padding: var(--space-1);
+  --item-height: var(--space-5);
+}
+.rui-BaseMenuContent.size-1 .rui-BaseMenuItem {
+  font-size: var(--fs-1);
+  height: var(--space-5);
+}
+.rui-BaseMenuContent.size-1 .rui-BaseMenuLabel {
+  height: var(--space-5);
+}
+
+/* size 2 */
+
+.rui-BaseMenuContent.size-2 {
+  --content-padding: var(--space-2);
+  --item-height: var(--space-6);
+}
+.rui-BaseMenuContent.size-2 .rui-BaseMenuItem {
+  font-size: var(--fs-2);
+  height: var(--space-6);
+}
+.rui-BaseMenuContent.size-2 .rui-BaseMenuLabel {
+  height: var(--space-6);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-BaseMenuContent {
+  --content-bg: var(--panel);
+  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--monoA6);
+}
+.rui-BaseMenuContent .rui-BaseMenuItem[data-disabled] {
+  color: var(--mono10);
+}
+.rui-BaseMenuContent .rui-BaseMenuShortcut {
+  color: var(--mono11);
+}
+.rui-BaseMenuContent .rui-BaseMenuItem[data-disabled] .rui-BaseMenuShortcut,
+.rui-BaseMenuContent .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut {
+  color: inherit;
+}
+.rui-BaseMenuContent .rui-BaseMenuLabel {
+  color: var(--mono11);
+}
+.rui-BaseMenuSeparator {
+  background-color: var(--mono6);
+}
+
+/* solid */
+
+.rui-BaseMenuContent.variant-solid .rui-BaseMenuSubTrigger[data-state='open'] {
+  background-color: var(--color5);
+}
+.rui-BaseMenuContent.variant-solid .rui-BaseMenuItem[data-highlighted] {
+  background-color: var(--color9);
+  color: var(--color-foreground);
+}
+
+/* solid-mono */
+
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
+  background-color: var(--mono5);
+}
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] {
+  background-color: var(--mono12);
+  color: var(--mono1);
+}
+
+/* subtle */
+
+.rui-BaseMenuContent.variant-subtle .rui-BaseMenuSubTrigger[data-state='open'] {
+  background-color: var(--color3);
+}
+.rui-BaseMenuContent.variant-subtle .rui-BaseMenuItem[data-highlighted] {
+  background-color: var(--color5);
+}
+
+/* subtle-mono */
+
+.rui-BaseMenuContent.variant-subtle-mono .rui-BaseMenuSubTrigger[data-state='open'] {
+  background-color: var(--mono3);
+}
+.rui-BaseMenuContent.variant-subtle-mono .rui-BaseMenuItem[data-highlighted] {
+  background-color: var(--mono5);
+}
+
+/* old inverted style, maybe bring back? */
+
+/* .rui-BaseMenuContent.variant-solid-mono {
+  --content-bg: var(--mono12);
+  box-shadow: var(--shadow-3);
+} */
+
+/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem {
+  color: var(--mono1);
+}
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
+  background-color: var(--whiteA7);
+}
+.dark-theme .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
+  background-color: var(--blackA7);
+}
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-disabled] {
+  color: var(--mono10);
+}
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] {
+  background-color: var(--mono1);
+  color: var(--mono12);
+} */
+
+/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuShortcut {
+  color: var(--mono10);
+}
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut {
+  color: var(--mono12);
+}
+.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger .rui-BaseMenuShortcut {
+  color: inherit;
+} */
+
+/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSeparator {
+  background-color: var(--mono11);
+  opacity: 0.3;
+} */
+
+/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuLabel {
+  color: var(--mono10);
+} */

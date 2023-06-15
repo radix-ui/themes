@@ -1,0 +1,88 @@
+.rui-Code {
+  box-sizing: border-box;
+  font-family: var(--ff-code);
+  font-size: 90%;
+  letter-spacing: -0.007em;
+  line-height: 1.25;
+  border-radius: var(--br-1);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Code.size-1 {
+    font-size: calc(0.9 * var(--fs-1));
+    line-height: 16px;
+  }
+  .rui-Code.size-2 {
+    font-size: calc(0.9 * var(--fs-2));
+    line-height: 20px;
+  }
+  .rui-Code.size-3 {
+    font-size: calc(0.9 * var(--fs-3));
+    line-height: 24px;
+  }
+  .rui-Code.size-4 {
+    font-size: calc(0.9 * var(--fs-4));
+    line-height: 26px;
+  }
+  .rui-Code.size-5 {
+    font-size: calc(0.9 * var(--fs-5));
+    letter-spacing: -0.01em;
+    line-height: 28px;
+  }
+  .rui-Code.size-6 {
+    font-size: calc(0.9 * var(--fs-6));
+    letter-spacing: -0.018em;
+    line-height: 30px;
+  }
+  .rui-Code.size-7 {
+    font-size: calc(0.9 * var(--fs-7));
+    letter-spacing: -0.026em;
+    line-height: 36px;
+  }
+  .rui-Code.size-8 {
+    font-size: calc(0.9 * var(--fs-8));
+    letter-spacing: -0.04em;
+    line-height: 40px;
+  }
+  .rui-Code.size-9 {
+    font-size: calc(0.9 * var(--fs-9));
+    letter-spacing: -0.056em;
+    line-height: 1;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * WEIGHTS                                                                                         *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Code.weight-normal {
+    font-weight: 400;
+  }
+  .rui-Code.weight-bold {
+    font-weight: 600;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-Code.highlighted {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  background-color: var(--monoA3);
+}
+.rui-Code.highlighted:where([data-color-scale]) {
+  background-color: var(--color3);
+}

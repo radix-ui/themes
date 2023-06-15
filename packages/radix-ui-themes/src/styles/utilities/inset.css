@@ -1,0 +1,81 @@
+@breakpoints {
+  .rui-inset-auto {
+    inset: auto;
+  }
+
+  .rui-top-auto {
+    top: auto;
+  }
+
+  .rui-right-auto {
+    right: auto;
+  }
+
+  .rui-bottom-auto {
+    bottom: auto;
+  }
+
+  .rui-left-auto {
+    left: auto;
+  }
+
+  .rui-inset-0 {
+    inset: 0;
+  }
+
+  .rui-top-0 {
+    top: 0;
+  }
+
+  .rui-right-0 {
+    right: 0;
+  }
+
+  .rui-bottom-0 {
+    bottom: 0;
+  }
+
+  .rui-left-0 {
+    left: 0;
+  }
+
+  .rui-inset-50\% {
+    inset: 50%;
+  }
+
+  .rui-top-50\% {
+    top: 50%;
+  }
+
+  .rui-right-50\% {
+    right: 50%;
+  }
+
+  .rui-bottom-50\% {
+    bottom: 50%;
+  }
+
+  .rui-left-50\% {
+    left: 50%;
+  }
+
+  .rui-inset-100\% {
+    inset: 100%;
+  }
+
+  .rui-top-100\% {
+    top: 100%;
+  }
+
+  .rui-right-100\% {
+    right: 100%;
+  }
+
+  .rui-bottom-100\% {
+    bottom: 100%;
+  }
+
+  .rui-left-100\% {
+    left: 100%;
+  }
+}

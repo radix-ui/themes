@@ -1,0 +1,112 @@
+{
+  "name": "@radix-ui/themes",
+  "version": "0.0.0",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "exports__field-not-working-yet__css-file-cannot-be-found": {
+    ".": {
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/index.d.mts",
+        "default": "./dist/esm/index.mjs"
+      }
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "yarn build:js && yarn build:css",
+    "build:js": "yarn build:js:cjs && yarn build:js:esm && yarn d.ts-to-d.mts",
+    "build:js:cjs": "tsc --project tsconfig-cjs.json",
+    "build:js:esm": "tsc --project tsconfig-esm.json",
+    "build:css": "postcss src/styles/index.css -o dist/index.css",
+    "dev": "yarn dev:js & yarn dev:css",
+    "dev:js": "yarn dev:js:cjs & yarn dev:js:esm & yarn d.ts-to-d.mts",
+    "dev:js:cjs": "tsc --project tsconfig-cjs.json --watch",
+    "dev:js:esm": "tsc --project tsconfig-esm.json --watch",
+    "dev:css": "postcss src/styles/index.css -o dist/index.css --watch",
+    "d.ts-to-d.mts": "echo \"not needed until we can sort ouf the exports issue\"",
+    "__d.ts-to-d.mts": "sh ./scripts/dts-to-dmts.sh",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "@radix-ui/colors": "latest",
+    "@radix-ui/react-accessible-icon": "latest",
+    "@radix-ui/react-alert-dialog": "latest",
+    "@radix-ui/react-aspect-ratio": "latest",
+    "@radix-ui/react-avatar": "latest",
+    "@radix-ui/react-checkbox": "latest",
+    "@radix-ui/react-context-menu": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-direction": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-form": "latest",
+    "@radix-ui/react-hover-card": "latest",
+    "@radix-ui/react-icons": "latest",
+    "@radix-ui/react-popover": "latest",
+    "@radix-ui/react-portal": "latest",
+    "@radix-ui/react-radio-group": "latest",
+    "@radix-ui/react-scroll-area": "latest",
+    "@radix-ui/react-select": "latest",
+    "@radix-ui/react-separator": "latest",
+    "@radix-ui/react-slider": "latest",
+    "@radix-ui/react-slot": "latest",
+    "@radix-ui/react-switch": "latest",
+    "@radix-ui/react-tabs": "latest",
+    "@radix-ui/react-tooltip": "latest",
+    "@radix-ui/react-visually-hidden": "latest",
+    "classnames": "^2.3.2"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.15.0",
+    "eslint-config-custom": "*",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "postcss-custom-media": "^9.1.4",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^11.3.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "typescript": "^4.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://radix-ui.com/themes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radix-ui/themes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/radix-ui/themes/issues"
+  }
+}

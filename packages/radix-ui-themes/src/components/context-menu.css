@@ -1,0 +1,5 @@
+@import './base-menu.css';
+
+.rui-ContextMenuContent {
+  transform-origin: var(--radix-context-menu-content-transform-origin);
+}

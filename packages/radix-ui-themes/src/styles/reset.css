@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+
+  overflow-wrap: break-word;
+  font-family: var(--ff-sans);
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+svg {
+  display: block;
+}
+
+.reset-a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.reset-button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1;
+  outline: none;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: default;
+  text-align: initial;
+  -webkit-tap-highlight-color: transparent;
+}

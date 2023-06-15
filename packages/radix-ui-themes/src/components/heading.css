@@ -1,0 +1,59 @@
+.rui-Heading {
+  margin: 0;
+  font-weight: 600;
+  line-height: var(--line-height);
+}
+
+.rui-Heading:where([data-color-scale]) {
+  color: var(--color11);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Heading.size-1 {
+    font-size: var(--fs-1);
+    --line-height: 16px;
+  }
+  .rui-Heading.size-2 {
+    font-size: var(--fs-2);
+    --line-height: 18px;
+  }
+  .rui-Heading.size-3 {
+    font-size: var(--fs-3);
+    --line-height: 22px;
+  }
+  .rui-Heading.size-4 {
+    font-size: var(--fs-4);
+    --line-height: 24px;
+  }
+  .rui-Heading.size-5 {
+    font-size: var(--fs-5);
+    letter-spacing: -0.01em;
+    --line-height: 26px;
+  }
+  .rui-Heading.size-6 {
+    font-size: var(--fs-6);
+    letter-spacing: -0.018em;
+    --line-height: 30px;
+  }
+  .rui-Heading.size-7 {
+    font-size: var(--fs-7);
+    letter-spacing: -0.026em;
+    --line-height: 36px;
+  }
+  .rui-Heading.size-8 {
+    font-size: var(--fs-8);
+    letter-spacing: -0.04em;
+    --line-height: 40px;
+  }
+  .rui-Heading.size-9 {
+    font-size: var(--fs-9);
+    letter-spacing: -0.056em;
+    --line-height: 60px;
+  }
+}

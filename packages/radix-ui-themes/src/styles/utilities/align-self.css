@@ -1,0 +1,21 @@
+@breakpoints {
+  .rui-as-start {
+    align-self: flex-start;
+  }
+
+  .rui-as-center {
+    align-self: center;
+  }
+
+  .rui-as-end {
+    align-self: flex-end;
+  }
+
+  .rui-as-baseline {
+    align-self: baseline;
+  }
+
+  .rui-as-stretch {
+    align-self: stretch;
+  }
+}

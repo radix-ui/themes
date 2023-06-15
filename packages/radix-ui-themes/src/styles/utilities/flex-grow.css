@@ -1,0 +1,9 @@
+@breakpoints {
+  .rui-fg-0 {
+    flex-grow: 0;
+  }
+
+  .rui-fg-1 {
+    flex-grow: 1;
+  }
+}

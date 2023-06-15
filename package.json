@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "packageManager": "yarn@1.22.18",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --no-cache --continue",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-custom": "*",
+    "turbo": "latest"
+  }
+}

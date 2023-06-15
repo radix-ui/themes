@@ -1,0 +1,5 @@
+@import './base-button.css';
+
+.rui-IconButton {
+  width: var(--height);
+}

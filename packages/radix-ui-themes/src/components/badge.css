@@ -1,0 +1,53 @@
+.rui-Badge {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 9999px;
+  white-space: nowrap;
+  font-weight: 600;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+  cursor: default;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Badge.size-1 {
+    height: 20px;
+    font-size: var(--fs-1);
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+    gap: var(--space-1);
+  }
+  .rui-Badge.size-2 {
+    height: var(--space-6);
+    font-size: var(--fs-2);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    gap: var(--space-2);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* subtle */
+
+.rui-Badge.variant-subtle:where([data-color-scale]) {
+  background-color: var(--color3);
+  color: var(--color11);
+}
+.rui-Badge.variant-subtle:where([data-color-scale='gray']) {
+  background-color: var(--surface-1);
+  box-shadow: inset 0 0 0 0.5px var(--monoA5), 0 0 0 0.5px var(--monoA5);
+  color: var(--mono12);
+}

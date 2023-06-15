@@ -1,0 +1,21 @@
+@breakpoints {
+  .rui-position-static {
+    position: static;
+  }
+
+  .rui-position-absolute {
+    position: absolute;
+  }
+
+  .rui-position-relative {
+    position: relative;
+  }
+
+  .rui-position-fixed {
+    position: fixed;
+  }
+
+  .rui-position-sticky {
+    position: sticky;
+  }
+}

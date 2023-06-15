@@ -1,0 +1,152 @@
+.rui-TabsList {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.rui-TabsTrigger {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  user-select: none;
+}
+
+.rui-TabsTriggerInner,
+.rui-TabsTriggerInnerHidden {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rui-TabsTriggerInner {
+  position: absolute;
+  letter-spacing: 0.01em;
+}
+.rui-TabsTrigger[data-state='active'] {
+  & .rui-TabsTriggerInner {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+.rui-TabsTriggerInnerHidden {
+  visibility: hidden;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.rui-TabsContent {
+  position: relative;
+  outline: 0;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-TabsTrigger {
+  height: var(--trigger-height);
+  font-size: var(--trigger-font-size);
+  gap: var(--trigger-gap);
+  padding-left: var(--trigger-padding-x);
+  padding-right: var(--trigger-padding-x);
+}
+
+.rui-TabsTriggerInner,
+.rui-TabsTriggerInnerHidden {
+  padding: var(--trigger-inner-padding);
+  border-radius: var(--trigger-inner-radius);
+}
+
+@breakpoints {
+  .rui-TabsList {
+    &.size-1 {
+      --trigger-height: var(--space-6);
+      --trigger-font-size: var(--fs-1);
+      --trigger-gap: var(--space-1);
+      --trigger-padding-x: var(--space-1);
+      --trigger-inner-padding: var(--space-1);
+      --trigger-inner-radius: var(--brs-1);
+    }
+    &.size-2 {
+      --trigger-height: var(--space-7);
+      --trigger-font-size: var(--fs-2);
+      --trigger-gap: var(--space-2);
+      --trigger-padding-x: var(--space-2);
+      --trigger-inner-padding: var(--space-1);
+      --trigger-inner-radius: var(--brs-2);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-TabsList {
+  box-shadow: inset 0 -1px 0 0 var(--monoA5);
+}
+
+.rui-TabsTrigger {
+  color: var(--monoA11);
+
+  &:hover {
+    color: var(--mono12);
+  }
+  &[data-state='active'] {
+    color: var(--mono12);
+  }
+  &:hover .rui-TabsTriggerInner {
+    background-color: var(--monoA3);
+  }
+  &:focus-visible .rui-TabsTriggerInner {
+    box-shadow: 0 0 0 2px var(--color7);
+  }
+  &[data-state='active']::before {
+    box-sizing: border-box;
+    content: '';
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color9);
+  }
+}
+
+.rui-TabsContent:focus-visible {
+  box-shadow: 0 0 0 2px var(--color7);
+}
+
+/* .rui-TabsList {
+  display: inline-flex;
+  background-color: var(--monoA1);
+  box-shadow: inset 0 0 0 1px var(--monoA6);
+  padding: var(--space-1);
+  border-radius: calc(var(--trigger-inner-radius) + var(--space-1));
+}
+
+.rui-TabsTrigger {
+  color: var(--monoA11);
+  border-radius: var(--trigger-inner-radius);
+
+  &[data-state='active'] {
+    background-color: var(--color9);
+    color: var(--color-foreground);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color7);
+    outline-offset: 2px;
+    position: relative;
+    z-index: 1;
+  }
+} */

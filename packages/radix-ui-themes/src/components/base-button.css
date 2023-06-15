@@ -1,0 +1,217 @@
+.rui-BaseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+  height: var(--height);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-BaseButton.size-1 {
+    --height: var(--space-5);
+    border-radius: var(--brs-2);
+  }
+  .rui-BaseButton.size-2 {
+    --height: var(--space-6);
+    border-radius: var(--brs-2);
+  }
+  .rui-BaseButton.size-3 {
+    --height: var(--space-7);
+    border-radius: var(--brs-3);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* surface */
+
+.rui-BaseButton.variant-surface {
+  --shadow: 0 0 0 1px;
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow) var(--mono7);
+}
+.rui-BaseButton.variant-surface:where(:hover, [data-state='open']) {
+  box-shadow: var(--shadow) var(--mono8);
+}
+.rui-BaseButton.variant-surface:where(:active) {
+  box-shadow: var(--shadow) var(--mono9);
+}
+.rui-BaseButton.variant-surface:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--color7);
+}
+
+/* surface-mono */
+
+.rui-BaseButton.variant-surface-mono {
+  --shadow: 0 0 0 1px;
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow) var(--mono7);
+}
+.rui-BaseButton.variant-surface-mono:where(:hover, [data-state='open']) {
+  box-shadow: var(--shadow) var(--mono8);
+}
+.rui-BaseButton.variant-surface-mono:where(:active) {
+  box-shadow: var(--shadow) var(--mono9);
+}
+.rui-BaseButton.variant-surface-mono:where(:focus-visible) {
+  --shadow: 0 0 0 2px;
+}
+
+/* solid */
+
+.rui-BaseButton.variant-solid {
+  background-color: var(--color9);
+  color: var(--color-foreground);
+}
+.rui-BaseButton.variant-solid:where(:hover, [data-state='open']) {
+  background-color: var(--color10);
+}
+.rui-BaseButton.variant-solid:where(:active) {
+  background-color: var(--color10);
+  filter: brightness(0.95);
+}
+.rui-BaseButton.variant-solid:where(:focus-visible) {
+  outline-style: solid;
+  outline-offset: 2px;
+  outline-width: 2px;
+  outline-color: var(--color7);
+}
+
+/* solid-mono */
+
+.rui-BaseButton.variant-solid-mono {
+  background-color: var(--monoA12);
+  color: var(--mono1);
+}
+.rui-BaseButton.variant-solid-mono:where(:hover, [data-state='open']) {
+  opacity: 0.92;
+}
+.rui-BaseButton.variant-solid-mono:where(:active) {
+  opacity: 0.86;
+}
+.rui-BaseButton.variant-solid-mono:where(:focus-visible) {
+  outline-style: solid;
+  outline-offset: 2px;
+  outline-width: 2px;
+  outline-color: var(--monoA11);
+}
+
+/* subtle */
+
+.rui-BaseButton.variant-subtle {
+  background-color: var(--color3);
+  color: var(--color11);
+}
+.rui-BaseButton.variant-subtle:where(:hover, [data-state='open']) {
+  background-color: var(--color4);
+}
+.rui-BaseButton.variant-subtle:where(:active) {
+  background-color: var(--color5);
+}
+.rui-BaseButton.variant-subtle:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--color7);
+}
+
+/* subtle-mono */
+
+.rui-BaseButton.variant-subtle-mono {
+  background-color: var(--monoA3);
+  color: var(--mono12);
+}
+.rui-BaseButton.variant-subtle-mono:where(:hover, [data-state='open']) {
+  background-color: var(--monoA4);
+}
+.rui-BaseButton.variant-subtle-mono:where(:active) {
+  background-color: var(--monoA5);
+}
+.rui-BaseButton.variant-subtle-mono:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--mono7);
+}
+
+/* outline */
+
+.rui-BaseButton.variant-outline {
+  --shadow: 0 0 0 1px;
+  box-shadow: var(--shadow) var(--color6);
+  color: var(--color11);
+}
+.rui-BaseButton.variant-outline:where(:hover, [data-state='open']) {
+  background-color: var(--color2);
+  box-shadow: var(--shadow) var(--color7);
+}
+.rui-BaseButton.variant-outline:where(:active) {
+  background-color: var(--color3);
+  box-shadow: var(--shadow) var(--color8);
+}
+.rui-BaseButton.variant-outline:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--color7);
+}
+
+/* outline-mono */
+
+.rui-BaseButton.variant-outline-mono {
+  --shadow: 0 0 0 1px;
+  box-shadow: var(--shadow) var(--mono11);
+  color: var(--mono12);
+}
+.rui-BaseButton.variant-outline-mono:where(:hover, [data-state='open']) {
+  background-color: var(--monoA2);
+}
+.rui-BaseButton.variant-outline-mono:where(:active) {
+  background-color: var(--monoA3);
+}
+.rui-BaseButton.variant-outline-mono:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--mono11);
+}
+
+/* ghost */
+
+.rui-BaseButton.variant-ghost {
+  color: var(--color11);
+}
+.rui-BaseButton.variant-ghost:where(:hover, [data-state='open']) {
+  background-color: var(--color3);
+}
+.rui-BaseButton.variant-ghost:where(:active) {
+  background-color: var(--color4);
+}
+.rui-BaseButton.variant-ghost:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--color7);
+}
+
+/* ghost-mono */
+
+.rui-BaseButton.variant-ghost-mono {
+  color: var(--mono12);
+}
+.rui-BaseButton.variant-ghost-mono:where(:hover, [data-state='open']) {
+  background-color: var(--monoA3);
+}
+.rui-BaseButton.variant-ghost-mono:where(:active) {
+  background-color: var(--monoA4);
+}
+.rui-BaseButton.variant-ghost-mono:where(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--monoA7);
+}
+
+/* all disabled buttons */
+
+.rui-BaseButton:disabled {
+  background-color: var(--monoA3);
+  box-shadow: none;
+  color: var(--monoA8);
+  cursor: not-allowed;
+}
