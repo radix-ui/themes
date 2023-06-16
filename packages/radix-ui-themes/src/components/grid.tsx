@@ -12,20 +12,38 @@ import {
 
 import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 
+const gridDisplayValues = ['none', 'inline-grid', 'grid'] as const;
+type GridDisplay = (typeof gridDisplayValues)[number];
+
+const gridColumnsValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+type GridColumns = (typeof gridColumnsValues)[number];
+
+const gridFlowValues = ['row', 'column', 'dense', 'row-dense', 'column-dense'] as const;
+type GridFlow = (typeof gridFlowValues)[number];
+
+const gridAlignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
+type GridAlign = (typeof gridAlignValues)[number];
+
+const gridJustifyValues = ['start', 'center', 'end', 'between'] as const;
+type GridJustify = (typeof gridJustifyValues)[number];
+
+const gridGapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+type GridCap = (typeof gridGapValues)[number];
+
 type GridElement = React.ElementRef<'div'>;
 interface GridProps
   extends React.ComponentPropsWithoutRef<'div'>,
     MarginProps,
     PaddingProps,
     LayoutProps {
-  display?: Responsive<'none' | 'inline-grid' | 'grid'>;
-  columns?: Responsive<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  flow?: Responsive<'row' | 'column' | 'dense' | 'row-dense' | 'column-dense'>;
-  align?: Responsive<'start' | 'center' | 'end' | 'baseline' | 'stretch'>;
-  justify?: Responsive<'start' | 'center' | 'end' | 'between'>;
-  gap?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  gapX?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  gapY?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
+  display?: Responsive<GridDisplay>;
+  columns?: Responsive<GridColumns>;
+  flow?: Responsive<GridFlow>;
+  align?: Responsive<GridAlign>;
+  justify?: Responsive<GridJustify>;
+  gap?: Responsive<GridCap>;
+  gapX?: Responsive<GridCap>;
+  gapY?: Responsive<GridCap>;
 }
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -68,4 +86,13 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
 });
 Grid.displayName = 'Grid';
 
-export { Grid };
+export {
+  gridDisplayValues,
+  gridColumnsValues,
+  gridFlowValues,
+  gridAlignValues,
+  gridJustifyValues,
+  gridGapValues,
+  Grid,
+};
+export { GridDisplay, GridColumns, GridFlow, GridAlign, GridJustify, GridCap };

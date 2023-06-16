@@ -12,13 +12,16 @@ import {
 
 import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 
+const boxDisplayValues = ['none', 'inline', 'inline-block', 'block'] as const;
+type BoxDisplay = (typeof boxDisplayValues)[number];
+
 type BoxElement = React.ElementRef<'div'>;
 interface BoxProps
   extends React.ComponentPropsWithoutRef<'div'>,
     MarginProps,
     PaddingProps,
     LayoutProps {
-  display?: Responsive<'none' | 'inline' | 'inline-block' | 'block'>;
+  display?: Responsive<BoxDisplay>;
 }
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -43,4 +46,5 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
 });
 Box.displayName = 'Box';
 
-export { Box };
+export { boxDisplayValues, Box };
+export type { BoxDisplay };
