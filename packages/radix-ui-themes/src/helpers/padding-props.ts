@@ -3,15 +3,16 @@ import { withBreakpoints } from './breakpoints';
 import type { Responsive } from './breakpoints';
 
 const paddingValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+type Padding = (typeof paddingValues)[number];
 
 interface PaddingProps {
-  p?: Responsive<(typeof paddingValues)[number]>;
-  px?: Responsive<(typeof paddingValues)[number]>;
-  py?: Responsive<(typeof paddingValues)[number]>;
-  pt?: Responsive<(typeof paddingValues)[number]>;
-  pr?: Responsive<(typeof paddingValues)[number]>;
-  pb?: Responsive<(typeof paddingValues)[number]>;
-  pl?: Responsive<(typeof paddingValues)[number]>;
+  p?: Responsive<Padding>;
+  px?: Responsive<Padding>;
+  py?: Responsive<Padding>;
+  pt?: Responsive<Padding>;
+  pr?: Responsive<Padding>;
+  pb?: Responsive<Padding>;
+  pl?: Responsive<Padding>;
 }
 
 function extractPaddingProps<T extends PaddingProps>(props: T) {
@@ -33,5 +34,5 @@ function withPadding(props: PaddingProps) {
     .join(' ');
 }
 
-export { extractPaddingProps, withPadding };
-export type { PaddingProps };
+export { paddingValues, extractPaddingProps, withPadding };
+export type { Padding, PaddingProps };

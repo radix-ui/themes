@@ -23,15 +23,16 @@ const marginValues = [
   '-8',
   '-9',
 ] as const;
+type Margin = (typeof marginValues)[number];
 
 interface MarginProps {
-  m?: Responsive<(typeof marginValues)[number]>;
-  mx?: Responsive<(typeof marginValues)[number]>;
-  my?: Responsive<(typeof marginValues)[number]>;
-  mt?: Responsive<(typeof marginValues)[number]>;
-  mr?: Responsive<(typeof marginValues)[number]>;
-  mb?: Responsive<(typeof marginValues)[number]>;
-  ml?: Responsive<(typeof marginValues)[number]>;
+  m?: Responsive<Margin>;
+  mx?: Responsive<Margin>;
+  my?: Responsive<Margin>;
+  mt?: Responsive<Margin>;
+  mr?: Responsive<Margin>;
+  mb?: Responsive<Margin>;
+  ml?: Responsive<Margin>;
 }
 
 function extractMarginProps<T extends MarginProps>(props: T) {
@@ -53,5 +54,5 @@ function withMargin(props: MarginProps) {
     .join(' ');
 }
 
-export { extractMarginProps, withMargin };
-export type { MarginProps };
+export { marginValues, extractMarginProps, withMargin };
+export type { Margin, MarginProps };
