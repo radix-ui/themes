@@ -8,7 +8,11 @@ import {
   AlertDialog,
   AspectRatio,
   Avatar,
+  //
   Badge,
+  badgeSizes,
+  badgeVariants,
+  //
   Blockquote,
   Box,
   //
@@ -352,28 +356,77 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Badge">
-                <Flex gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
-                  <Badge>Default</Badge>
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <ColumnHeaderCell />
+                      {badgeSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {badgeVariants.map((variant) => (
+                      <tr key={variant}>
+                        <RowHeaderCell>{variant}</RowHeaderCell>
+                        {badgeSizes.map((size) => (
+                          <td key={size}>
+                            <Flex key={variant} gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
+                              {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
+                                <Badge key={color} size={size} variant={variant} color={color}>
+                                  {upperFirst(color)}
+                                </Badge>
+                              ))}
+                            </Flex>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
 
+                <Text my="5">
+                  <Code>color</Code> can be set per instance:
+                </Text>
+
+                <details>
+                  <summary>
+                    <Text size="2" color="gray" asChild>
+                      <span>See colors & variants combinations</span>
+                    </Text>
+                  </summary>
                   {colorScalesByGroup.map(({ label, colors }) => (
                     <React.Fragment key={label}>
-                      {colors.map((color) => (
-                        <Badge key={color} color={color}>
-                          {upperFirst(color)}
-                        </Badge>
-                      ))}
+                      <Text weight="bold" mt="6" mb="4">
+                        {label}
+                      </Text>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {badgeVariants.map((variant) => (
+                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {colors.map((color) => (
+                            <tr key={color}>
+                              <RowHeaderCell>{color}</RowHeaderCell>
+                              {badgeVariants.map((variant) => (
+                                <td key={variant}>
+                                  <Badge variant={variant} color={color}>
+                                    {color}
+                                  </Badge>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </React.Fragment>
                   ))}
-                </Flex>
-
-                <Separator size="3" my="5" />
-
-                <Flex gap="3" align="center">
-                  <Badge color="gray">Size 1</Badge>
-                  <Badge color="gray" size="2">
-                    Size 2
-                  </Badge>
-                </Flex>
+                </details>
               </DocsSection>
 
               <DocsSection title="Text">

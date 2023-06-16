@@ -40,6 +40,18 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+/* surface */
+
+.rui-Badge.variant-surface:where([data-color-scale]) {
+  background-color: var(--surface-1);
+  box-shadow: inset 0 0 0 0.5px var(--color5), 0 0 0 0.5px var(--color5);
+  color: var(--color11);
+}
+.rui-Badge.variant-surface:where([data-color-scale='gray']) {
+  box-shadow: inset 0 0 0 0.5px var(--monoA5), 0 0 0 0.5px var(--monoA5);
+  color: var(--mono12);
+}
+
 /* subtle */
 
 .rui-Badge.variant-subtle:where([data-color-scale]) {
@@ -47,7 +59,15 @@
   color: var(--color11);
 }
 .rui-Badge.variant-subtle:where([data-color-scale='gray']) {
-  background-color: var(--surface-1);
-  box-shadow: inset 0 0 0 0.5px var(--monoA5), 0 0 0 0.5px var(--monoA5);
+  color: var(--mono12);
+}
+
+/* outline */
+
+.rui-Badge.variant-outline:where([data-color-scale]) {
+  box-shadow: inset 0 0 0 0.5px var(--color5), 0 0 0 0.5px var(--color5);
+  color: var(--color11);
+}
+.rui-Badge.variant-outline:where([data-color-scale='gray']) {
   color: var(--mono12);
 }
