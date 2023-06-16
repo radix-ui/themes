@@ -3,10 +3,10 @@
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  overflow: hidden;
   user-select: none;
   width: var(--size);
   height: var(--size);
+  flex-shrink: 0;
 }
 
 .rui-AvatarImage {
@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
+  border-radius: inherit;
 
   & svg {
     width: var(--fs-1-letter);
