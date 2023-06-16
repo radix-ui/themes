@@ -59,17 +59,15 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
         </AvatarPrimitive.Fallback>
       ) : null}
 
-      {props.src ? (
-        <AvatarPrimitive.Image
-          ref={forwardedRef}
-          className="rui-AvatarImage"
-          {...imageProps}
-          onLoadingStatusChange={(status) => {
-            imageProps.onLoadingStatusChange?.(status);
-            setStatus(status);
-          }}
-        />
-      ) : null}
+      <AvatarPrimitive.Image
+        ref={forwardedRef}
+        className="rui-AvatarImage"
+        {...imageProps}
+        onLoadingStatusChange={(status) => {
+          imageProps.onLoadingStatusChange?.(status);
+          setStatus(status);
+        }}
+      />
     </AvatarPrimitive.Root>
   );
 });
