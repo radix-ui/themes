@@ -1,17 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  CircleBackslashIcon,
-  DotsHorizontalIcon,
-  GearIcon,
-  InfoCircledIcon,
-  Pencil2Icon,
-  Share2Icon,
-  StarIcon,
-} from '@radix-ui/react-icons';
+import { ArrowRightIcon, DotsHorizontalIcon, Pencil2Icon, Share2Icon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import {
   Provider,
@@ -21,7 +11,11 @@ import {
   Badge,
   Blockquote,
   Box,
+  //
   Button,
+  buttonSizes,
+  buttonVariants,
+  //
   Checkbox,
   Code,
   Container,
@@ -33,7 +27,11 @@ import {
   Grid,
   Heading,
   HoverCard,
+  //
   IconButton,
+  iconButtonSizes,
+  iconButtonVariants,
+  //
   Kbd,
   Link,
   Popover,
@@ -54,23 +52,11 @@ import {
   Tooltip,
   // helpers
   colorScalesByGroup,
-  buttonRadiusValues,
+  buttonRadiusValues as radiusValues,
 } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const buttonVariants = [
-  'surface',
-  'solid',
-  'subtle',
-  'outline',
-  'ghost',
-  'surface-mono',
-  'solid-mono',
-  'subtle-mono',
-  'outline-mono',
-  'ghost-mono',
-] as const;
 const menuVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
 const checkboxVariants = ['solid', 'solid-mono'] as const;
 const radioGroupVariants = ['solid', 'solid-mono'] as const;
@@ -141,9 +127,9 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                      {buttonSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                       <ColumnHeaderCell>disabled</ColumnHeaderCell>
                     </tr>
                   </thead>
@@ -151,24 +137,16 @@ export default function Sink() {
                     {buttonVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <Button size="1" variant={variant}>
-                            <ArrowLeftIcon /> Back
-                          </Button>
-                        </td>
-                        <td>
-                          <Button size="2" variant={variant}>
-                            <Pencil2Icon /> Edit
-                          </Button>
-                        </td>
-                        <td>
-                          <Button size="3" variant={variant}>
-                            Next <ArrowRightIcon />
-                          </Button>
-                        </td>
+                        {buttonSizes.map((size) => (
+                          <td key={size}>
+                            <Button size={size} variant={variant}>
+                              Next <ArrowRightIcon />
+                            </Button>
+                          </td>
+                        ))}
                         <td>
                           <Button size="3" variant={variant} disabled>
-                            Close <CircleBackslashIcon />
+                            Next <ArrowRightIcon />
                           </Button>
                         </td>
                       </tr>
@@ -191,30 +169,22 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {buttonSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            <td>
-                              <Button size="1" variant="solid" radius={radius}>
-                                <ArrowLeftIcon /> size 1
-                              </Button>
-                            </td>
-                            <td>
-                              <Button size="2" variant="solid" radius={radius}>
-                                <Pencil2Icon /> size 2
-                              </Button>
-                            </td>
-                            <td>
-                              <Button size="3" variant="solid" radius={radius}>
-                                size 3 <ArrowRightIcon />
-                              </Button>
-                            </td>
+                            {buttonSizes.map((size) => (
+                              <td key={size}>
+                                <Button size={size} radius={radius}>
+                                  Next <ArrowRightIcon />
+                                </Button>
+                              </td>
+                            ))}
                           </tr>
                         ))}
                       </tbody>
@@ -272,34 +242,26 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                      {iconButtonSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                       <ColumnHeaderCell>disabled</ColumnHeaderCell>
                     </tr>
                   </thead>
                   <tbody>
-                    {buttonVariants.map((variant) => (
+                    {iconButtonVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <IconButton size="1" variant={variant}>
-                            <InfoCircledIcon />
-                          </IconButton>
-                        </td>
-                        <td>
-                          <IconButton size="2" variant={variant}>
-                            <GearIcon />
-                          </IconButton>
-                        </td>
-                        <td>
-                          <IconButton size="3" variant={variant}>
-                            <Share2Icon />
-                          </IconButton>
-                        </td>
+                        {iconButtonSizes.map((size) => (
+                          <td key={size}>
+                            <IconButton size={size} variant={variant}>
+                              <Share2Icon />
+                            </IconButton>
+                          </td>
+                        ))}
                         <td>
                           <IconButton size="3" variant={variant} disabled>
-                            <StarIcon />
+                            <Share2Icon />
                           </IconButton>
                         </td>
                       </tr>
@@ -322,30 +284,22 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {iconButtonSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            <td>
-                              <IconButton size="1" variant="solid" radius={radius}>
-                                <InfoCircledIcon />
-                              </IconButton>
-                            </td>
-                            <td>
-                              <IconButton size="2" variant="solid" radius={radius}>
-                                <GearIcon />
-                              </IconButton>
-                            </td>
-                            <td>
-                              <IconButton size="3" variant="solid" radius={radius}>
-                                <Share2Icon />
-                              </IconButton>
-                            </td>
+                            {iconButtonSizes.map((size) => (
+                              <td key={size}>
+                                <IconButton size={size} radius={radius}>
+                                  <Share2Icon />
+                                </IconButton>
+                              </td>
+                            ))}
                           </tr>
                         ))}
                       </tbody>
@@ -372,7 +326,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {buttonVariants.map((variant) => (
+                            {iconButtonVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -381,7 +335,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {buttonVariants.map((variant) => (
+                              {iconButtonVariants.map((variant) => (
                                 <td key={variant}>
                                   <IconButton variant={variant} color={color}>
                                     <Share2Icon />
@@ -859,7 +813,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {(['1', '2', '3', '4', '5'] as const).map((size) => (
@@ -1435,7 +1389,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {(['1', '2', '3'] as const).map((size) => (
@@ -1556,7 +1510,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             <td>
@@ -1944,7 +1898,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             <td>
@@ -2174,7 +2128,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             <td>
@@ -2315,7 +2269,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {(['1', '2', '3'] as const).map((size) => (
@@ -2405,7 +2359,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {(['1', '2', '3'] as const).map((size) => (
@@ -2500,7 +2454,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonRadiusValues.map((radius) => (
+                        {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {(['1', '2', '3'] as const).map((size) => (

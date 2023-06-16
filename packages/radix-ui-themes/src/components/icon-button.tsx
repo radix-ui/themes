@@ -18,3 +18,11 @@ const IconButton = React.forwardRef<IconButtonElement, IconButtonProps>((props, 
 IconButton.displayName = 'IconButton';
 
 export { IconButton };
+export {
+  baseButtonSizes as iconButtonSizes,
+  baseButtonVariants as iconButtonVariants,
+} from './base-button';
+export type {
+  BaseButtonSize as IconButtonSize,
+  BaseButtonVariant as IconButtonVariant,
+} from './base-button';

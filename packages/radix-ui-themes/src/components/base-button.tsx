@@ -4,22 +4,29 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
+const baseButtonSizes = ['1', '2', '3'] as const;
+type BaseButtonSize = (typeof baseButtonSizes)[number];
+
+const baseButtonVariants = [
+  'surface',
+  'surface-mono',
+  'solid',
+  'solid-mono',
+  'subtle',
+  'subtle-mono',
+  'outline',
+  'outline-mono',
+  'ghost',
+  'ghost-mono',
+] as const;
+type BaseButtonVariant = (typeof baseButtonVariants)[number];
+
 type BaseButtonElement = React.ElementRef<'button'>;
 interface BaseButtonProps
   extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'>,
     MarginProps {
-  size?: Responsive<'1' | '2' | '3'>;
-  variant?:
-    | 'surface'
-    | 'surface-mono'
-    | 'solid'
-    | 'solid-mono'
-    | 'subtle'
-    | 'subtle-mono'
-    | 'outline'
-    | 'outline-mono'
-    | 'ghost'
-    | 'ghost-mono';
+  size?: Responsive<BaseButtonSize>;
+  variant?: BaseButtonVariant;
   color?: Color;
   radius?: ButtonRadius;
 }
@@ -53,4 +60,5 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
 });
 BaseButton.displayName = 'BaseButton';
 
-export { BaseButton };
+export { BaseButton, baseButtonSizes, baseButtonVariants };
+export type { BaseButtonSize, BaseButtonVariant };
