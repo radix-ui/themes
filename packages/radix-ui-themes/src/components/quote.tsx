@@ -1,22 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMargin } from '../helpers';
-
-import type { MarginProps } from '../helpers';
 
 type QuoteElement = React.ElementRef<'q'>;
-interface QuoteProps extends React.ComponentPropsWithoutRef<'q'>, MarginProps {}
+interface QuoteProps extends React.ComponentPropsWithoutRef<'q'> {}
 const Quote = React.forwardRef<QuoteElement, QuoteProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, ...quoteProps } = marginRest;
+  const { className, ...quoteProps } = props;
 
-  return (
-    <q
-      {...quoteProps}
-      ref={forwardedRef}
-      className={classNames('rui-Quote', withMargin(marginProps), className)}
-    />
-  );
+  return <q {...quoteProps} ref={forwardedRef} className={classNames('rui-Quote', className)} />;
 });
 Quote.displayName = 'Quote';
 
