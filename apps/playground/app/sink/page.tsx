@@ -7,7 +7,10 @@ import {
   Provider,
   AlertDialog,
   AspectRatio,
+  //
   Avatar,
+  avatarSizes,
+  avatarVariants,
   //
   Badge,
   badgeSizes,
@@ -90,7 +93,6 @@ const selectMenuVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as c
 const textFieldVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 const sliderVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
-const avatarVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
 
 export default function Sink() {
   return (
@@ -794,7 +796,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {(['1', '2', '3', '4', '5'] as const).map((size) => (
+                      {avatarSizes.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <td>
@@ -810,7 +812,7 @@ export default function Sink() {
                     {avatarVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        {(['1', '2', '3', '4', '5'] as const).map((size) => (
+                        {avatarSizes.map((size) => (
                           <td key={size}>
                             <Avatar size={size} variant={variant} src="./api/avatar" fallback="D" />
                           </td>
@@ -848,7 +850,7 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {(['1', '2', '3', '4', '5'] as const).map((size) => (
+                          {avatarSizes.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
@@ -857,7 +859,7 @@ export default function Sink() {
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {(['1', '2', '3', '4', '5'] as const).map((size) => (
+                            {avatarSizes.map((size) => (
                               <td key={size}>
                                 <Avatar size={size} radius={radius} fallback="D" />
                               </td>

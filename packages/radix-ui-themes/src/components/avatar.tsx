@@ -8,12 +8,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
+const avatarSizes = ['1', '2', '3', '4', '5'] as const;
+type AvatarSize = (typeof avatarSizes)[number];
+
+const avatarVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
+type AvatarVariant = (typeof avatarVariants)[number];
+
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 interface AvatarProps
   extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>,
     MarginProps {
-  size?: Responsive<'1' | '2' | '3' | '4' | '5'>;
-  variant?: 'solid' | 'solid-mono' | 'subtle' | 'subtle-mono';
+  size?: Responsive<AvatarSize>;
+  variant?: AvatarVariant;
   color?: Color;
   radius?: ButtonRadius;
   fallback?: React.ReactNode;
@@ -73,4 +79,5 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
 });
 Avatar.displayName = 'Avatar';
 
-export { Avatar };
+export { avatarSizes, avatarVariants, Avatar };
+export type { AvatarSize, AvatarVariant };
