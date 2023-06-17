@@ -5,13 +5,25 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
 
+const textSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+type TextSize = (typeof textSizes)[number];
+
+const textWeights = ['normal', 'bold'] as const;
+type TextWeight = (typeof textWeights)[number];
+
+const textAlignValues = ['left', 'center', 'right'] as const;
+type TextAlign = (typeof textAlignValues)[number];
+
+const textTrimValues = ['normal', 'start', 'end', 'both'] as const;
+type TextTrim = (typeof textTrimValues)[number];
+
 type TextElement = React.ElementRef<'p'>;
 interface TextProps extends Omit<React.ComponentPropsWithoutRef<'p'>, 'color'>, MarginProps {
   asChild?: boolean;
-  size?: Responsive<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  weight?: Responsive<'normal' | 'bold'>;
-  align?: Responsive<'left' | 'center' | 'right'>;
-  trim?: Responsive<'normal' | 'start' | 'end' | 'both'>;
+  size?: Responsive<TextSize>;
+  weight?: Responsive<TextWeight>;
+  align?: Responsive<TextAlign>;
+  trim?: Responsive<TextTrim>;
   color?: Color | 'color';
 }
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
@@ -47,4 +59,5 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
 });
 Text.displayName = 'Text';
 
-export { Text };
+export { textSizes, textWeights, textAlignValues, textTrimValues, Text };
+export type { TextSize, TextWeight, TextAlign, TextTrim };

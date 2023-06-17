@@ -52,7 +52,10 @@ import {
   Tabs,
   TextArea,
   TextField,
+  //
   Text,
+  textSizes,
+  //
   Tooltip,
   // helpers
   colorScalesByGroup,
@@ -431,15 +434,14 @@ export default function Sink() {
 
               <DocsSection title="Text">
                 <Flex direction="column" gap="4">
-                  <Text size="9">The quick brown fox jumped</Text>
-                  <Text size="8">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="7">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="6">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="5">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="4">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="3">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="2">The quick brown fox jumped over the lazy dog</Text>
-                  <Text size="1">The quick brown fox jumped over the lazy dog</Text>
+                  {textSizes
+                    .slice()
+                    .reverse()
+                    .map((size) => (
+                      <Text key={size} size={size}>
+                        The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
+                      </Text>
+                    ))}
                 </Flex>
               </DocsSection>
 
