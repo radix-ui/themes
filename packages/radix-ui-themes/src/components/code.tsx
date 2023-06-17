@@ -4,10 +4,16 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
 
+const codeSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+type CodeSize = (typeof codeSizes)[number];
+
+const codeWeights = ['normal', 'bold'] as const;
+type CodeWeight = (typeof codeWeights)[number];
+
 type CodeElement = React.ElementRef<'code'>;
 interface CodeProps extends Omit<React.ComponentPropsWithoutRef<'code'>, 'color'>, MarginProps {
-  size?: Responsive<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  weight?: Responsive<'normal' | 'bold'>;
+  size?: Responsive<CodeSize>;
+  weight?: Responsive<CodeWeight>;
   color?: Color | 'color';
   highlighted?: boolean;
 }
@@ -40,4 +46,5 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
 });
 Code.displayName = 'Code';
 
-export { Code };
+export { codeSizes, codeWeights, Code };
+export type { CodeSize, CodeWeight };

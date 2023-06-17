@@ -21,7 +21,10 @@ import {
   buttonVariants,
   //
   Checkbox,
+  //
   Code,
+  codeSizes,
+  //
   Container,
   ContextMenu,
   Dialog,
@@ -29,7 +32,10 @@ import {
   Em,
   Flex,
   Grid,
+  //
   Heading,
+  headingSizes,
+  //
   HoverCard,
   //
   IconButton,
@@ -450,47 +456,27 @@ export default function Sink() {
                   The <Code>console.log()</Code> method outputs a message to the web console
                 </Text>
                 <Flex direction="column" gap="4">
-                  <Code size="9" highlighted={false}>
-                    The quick brown fox jumped
-                  </Code>
-                  <Code size="8" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="7" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="6" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="5" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="4" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="3" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="2" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
-                  <Code size="1" highlighted={false}>
-                    The quick brown fox jumped over the lazy dog
-                  </Code>
+                  {codeSizes
+                    .slice()
+                    .reverse()
+                    .map((size) => (
+                      <Code key={size} size={size} highlighted={false}>
+                        The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
+                      </Code>
+                    ))}
                 </Flex>
               </DocsSection>
 
               <DocsSection title="Heading">
                 <Flex direction="column" gap="4">
-                  <Heading size="9">The quick brown fox jumped</Heading>
-                  <Heading size="8">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="7">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="6">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="5">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="4">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="3">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="2">The quick brown fox jumped over the lazy dog</Heading>
-                  <Heading size="1">The quick brown fox jumped over the lazy dog</Heading>
+                  {headingSizes
+                    .slice()
+                    .reverse()
+                    .map((size) => (
+                      <Heading key={size} size={size}>
+                        The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
+                      </Heading>
+                    ))}
 
                   <Flex direction="column" gap="6" mt="5">
                     <Heading size="9" style={{ width: '50%' }}>
