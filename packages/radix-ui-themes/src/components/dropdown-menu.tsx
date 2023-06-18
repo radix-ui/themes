@@ -4,10 +4,19 @@ import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import classNames from 'classnames';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
+import { withBreakpoints } from '../helpers';
+
+import type { Responsive } from '../helpers';
+
+const dropdownMenuSizes = ['1', '2'] as const;
+type DropdownMenuSize = (typeof dropdownMenuSizes)[number];
+
+const dropdownMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
+type DropdownMenuVariant = (typeof dropdownMenuVariants)[number];
 
 type StyleProps = {
-  size?: '1' | '2';
-  variant?: 'solid' | 'solid-mono' | 'subtle' | 'subtle-mono';
+  size?: Responsive<DropdownMenuSize>;
+  variant?: DropdownMenuVariant;
 };
 
 interface DropdownMenuRootProps
@@ -31,7 +40,7 @@ interface DropdownMenuContentProps
     StyleProps {}
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
-    const { className, variant = 'solid', size = '2', ...contentProps } = props;
+    const { className, size = '2', variant = 'solid', ...contentProps } = props;
     return (
       <DropdownMenuPrimitive.Portal>
         <DropdownMenuPrimitive.Content
@@ -43,8 +52,8 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
             'rui-PopperContent',
             'rui-BaseMenuContent',
             'rui-DropdownMenuContent',
+            withBreakpoints(size, 'size'),
             `variant-${variant}`,
-            `size-${size}`,
             className
           )}
         />
@@ -227,7 +236,7 @@ const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, variant = 'solid', size = '2', ...subContentProps } = props;
+  const { className, size = '2', variant = 'solid', ...subContentProps } = props;
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.SubContent
@@ -240,8 +249,8 @@ const DropdownMenuSubContent = React.forwardRef<
           'rui-BaseMenuSubContent',
           'rui-DropdownMenuContent',
           'rui-DropdownMenuSubContent',
+          withBreakpoints(size, 'size'),
           `variant-${variant}`,
-          `size-${size}`,
           className
         )}
       />
@@ -280,3 +289,5 @@ export const DropdownMenu = {
   SubContent: DropdownMenuSubContent,
   Separator: DropdownMenuSeparator,
 };
+export { dropdownMenuSizes, dropdownMenuVariants };
+export type { DropdownMenuSize, DropdownMenuVariant };

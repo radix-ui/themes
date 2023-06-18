@@ -4,10 +4,19 @@ import * as React from 'react';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import classNames from 'classnames';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
+import { withBreakpoints } from '../helpers';
+
+import type { Responsive } from '../helpers';
+
+const contextMenuSizes = ['1', '2'] as const;
+type ContextMenuSize = (typeof contextMenuSizes)[number];
+
+const contextMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
+type ContextMenuVariant = (typeof contextMenuVariants)[number];
 
 type StyleProps = {
-  size?: '1' | '2';
-  variant?: 'solid' | 'solid-mono' | 'subtle' | 'subtle-mono';
+  size?: Responsive<ContextMenuSize>;
+  variant?: ContextMenuVariant;
 };
 
 interface ContextMenuRootProps
@@ -31,7 +40,7 @@ interface ContextMenuContentProps
     StyleProps {}
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
-    const { className, variant = 'solid', size = '2', ...contentProps } = props;
+    const { className, size = '2', variant = 'solid', ...contentProps } = props;
     return (
       <ContextMenuPrimitive.Portal>
         <ContextMenuPrimitive.Content
@@ -42,8 +51,8 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
             'rui-PopperContent',
             'rui-BaseMenuContent',
             'rui-ContextMenuContent',
+            withBreakpoints(size, 'size'),
             `variant-${variant}`,
-            `size-${size}`,
             className
           )}
         />
@@ -224,7 +233,7 @@ const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, variant = 'solid', size = '2', ...subContentProps } = props;
+  const { className, size = '2', variant = 'solid', ...subContentProps } = props;
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.SubContent
@@ -237,8 +246,8 @@ const ContextMenuSubContent = React.forwardRef<
           'rui-BaseMenuSubContent',
           'rui-ContextMenuContent',
           'rui-ContextMenuSubContent',
+          withBreakpoints(size, 'size'),
           `variant-${variant}`,
-          `size-${size}`,
           className
         )}
       />
@@ -277,3 +286,5 @@ export const ContextMenu = {
   SubContent: ContextMenuSubContent,
   Separator: ContextMenuSeparator,
 };
+export { contextMenuSizes, contextMenuVariants };
+export type { ContextMenuSize, ContextMenuVariant };

@@ -70,32 +70,34 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* size 1 */
+@breakpoints {
+  /* size 1 */
 
-.rui-BaseMenuContent.size-1 {
-  --content-padding: var(--space-1);
-  --item-height: var(--space-5);
-}
-.rui-BaseMenuContent.size-1 .rui-BaseMenuItem {
-  font-size: var(--fs-1);
-  height: var(--space-5);
-}
-.rui-BaseMenuContent.size-1 .rui-BaseMenuLabel {
-  height: var(--space-5);
-}
+  .rui-BaseMenuContent.size-1 {
+    --content-padding: var(--space-1);
+    --item-height: var(--space-5);
+  }
+  .rui-BaseMenuContent.size-1 .rui-BaseMenuItem {
+    font-size: var(--fs-1);
+    height: var(--space-5);
+  }
+  .rui-BaseMenuContent.size-1 .rui-BaseMenuLabel {
+    height: var(--space-5);
+  }
 
-/* size 2 */
+  /* size 2 */
 
-.rui-BaseMenuContent.size-2 {
-  --content-padding: var(--space-2);
-  --item-height: var(--space-6);
-}
-.rui-BaseMenuContent.size-2 .rui-BaseMenuItem {
-  font-size: var(--fs-2);
-  height: var(--space-6);
-}
-.rui-BaseMenuContent.size-2 .rui-BaseMenuLabel {
-  height: var(--space-6);
+  .rui-BaseMenuContent.size-2 {
+    --content-padding: var(--space-2);
+    --item-height: var(--space-6);
+  }
+  .rui-BaseMenuContent.size-2 .rui-BaseMenuItem {
+    font-size: var(--fs-2);
+    height: var(--space-6);
+  }
+  .rui-BaseMenuContent.size-2 .rui-BaseMenuLabel {
+    height: var(--space-6);
+  }
 }
 
 /***************************************************************************************************

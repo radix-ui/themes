@@ -29,9 +29,17 @@ import {
   codeSizes,
   //
   Container,
+  //
   ContextMenu,
+  contextMenuSizes,
+  contextMenuVariants,
+  //
   Dialog,
+  //
   DropdownMenu,
+  dropdownMenuSizes,
+  dropdownMenuVariants,
+  //
   Em,
   Flex,
   Grid,
@@ -73,7 +81,6 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const menuVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
 const checkboxVariants = ['solid', 'solid-mono'] as const;
 const radioGroupVariants = ['solid', 'solid-mono'] as const;
 const switchVariants = ['solid', 'solid-mono'] as const;
@@ -104,6 +111,7 @@ export default function Sink() {
       data-foreground-feel="natural"
       data-button-radius="medium"
       data-scaling="regular"
+      className="dark-theme"
     >
       <body>
         <div id="root">
@@ -973,34 +981,27 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
+                      {dropdownMenuSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {menuVariants.map((variant) => (
+                    {dropdownMenuVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <DropdownMenu.Root>
-                            <DropdownMenu.Trigger>
-                              <Button variant="subtle-mono" size="1">
-                                <DotsHorizontalIcon />
-                              </Button>
-                            </DropdownMenu.Trigger>
-                            <DropdownMenuContentDemo variant={variant} size="1" />
-                          </DropdownMenu.Root>
-                        </td>
-                        <td>
-                          <DropdownMenu.Root>
-                            <DropdownMenu.Trigger>
-                              <Button variant="subtle-mono" size="2">
-                                <DotsHorizontalIcon />
-                              </Button>
-                            </DropdownMenu.Trigger>
-                            <DropdownMenuContentDemo variant={variant} size="2" />
-                          </DropdownMenu.Root>
-                        </td>
+                        {dropdownMenuSizes.map((size) => (
+                          <td key={size}>
+                            <DropdownMenu.Root>
+                              <DropdownMenu.Trigger>
+                                <Button variant="subtle-mono" size={size}>
+                                  <DotsHorizontalIcon />
+                                </Button>
+                              </DropdownMenu.Trigger>
+                              <DropdownMenuContentDemo size={size} variant={variant} />
+                            </DropdownMenu.Root>
+                          </td>
+                        ))}
                       </tr>
                     ))}
                   </tbody>
@@ -1012,30 +1013,25 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
+                      {contextMenuSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {menuVariants.map((variant) => (
+                    {contextMenuVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <ContextMenu.Root>
-                            <ContextMenu.Trigger>
-                              <RightClickArea size="1" />
-                            </ContextMenu.Trigger>
-                            <ContextMenuContentDemo variant={variant} size="1" />
-                          </ContextMenu.Root>
-                        </td>
-                        <td>
-                          <ContextMenu.Root>
-                            <ContextMenu.Trigger>
-                              <RightClickArea />
-                            </ContextMenu.Trigger>
-                            <ContextMenuContentDemo variant={variant} size="2" />
-                          </ContextMenu.Root>
-                        </td>
+                        {contextMenuSizes.map((size) => (
+                          <td key={size}>
+                            <ContextMenu.Root>
+                              <ContextMenu.Trigger>
+                                <RightClickArea size={size} />
+                              </ContextMenu.Trigger>
+                              <ContextMenuContentDemo size={size} variant={variant} />
+                            </ContextMenu.Root>
+                          </td>
+                        ))}
                       </tr>
                     ))}
                   </tbody>
