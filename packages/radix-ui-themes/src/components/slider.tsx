@@ -7,12 +7,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
+const sliderSizes = ['1', '2', '3'] as const;
+type SliderSize = (typeof sliderSizes)[number];
+
+const sliderVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
+type SliderVariant = (typeof sliderVariants)[number];
+
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 interface SliderProps
   extends Omit<React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, 'children'>,
     MarginProps {
-  size?: Responsive<'1' | '2' | '3'>;
-  variant?: 'solid' | 'solid-mono' | 'subtle' | 'subtle-mono';
+  size?: Responsive<SliderSize>;
+  variant?: SliderVariant;
   color?: Color;
   radius?: ButtonRadius;
 }
@@ -48,4 +54,5 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
 });
 Slider.displayName = 'Slider';
 
-export { Slider };
+export { sliderSizes, sliderVariants, Slider };
+export type { SliderSize, SliderVariant };

@@ -84,7 +84,11 @@ import {
   selectMenuVariants,
   //
   Separator,
+  //
   Slider,
+  sliderSizes,
+  sliderVariants,
+  //
   Strong,
   Sup,
   //
@@ -114,7 +118,12 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const sliderVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
+import type {
+  ContextMenuSize,
+  ContextMenuVariant,
+  DropdownMenuSize,
+  DropdownMenuVariant,
+} from '@radix-ui/themes';
 
 export default function Sink() {
   return (
@@ -2329,7 +2338,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {(['1', '2', '3'] as const).map((size) => (
+                      {sliderSizes.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <ColumnHeaderCell>disabled</ColumnHeaderCell>
@@ -2339,7 +2348,7 @@ export default function Sink() {
                     {sliderVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        {(['1', '2', '3'] as const).map((size) => (
+                        {sliderSizes.map((size) => (
                           <td key={size} style={{ minWidth: 150 }}>
                             <Slider size={size} variant={variant} defaultValue={[50]} />
                           </td>
@@ -2353,7 +2362,7 @@ export default function Sink() {
                 </table>
 
                 <Flex gap="5" style={{ height: 200 }} mt="5">
-                  {(['1', '2', '3'] as const).map((size, i, sizes) => {
+                  {sliderSizes.map((size, i, sizes) => {
                     return (
                       <React.Fragment key={size}>
                         {sliderVariants.map((variant, j, variants) => {
@@ -2397,16 +2406,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {sliderSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {(['1', '2', '3'] as const).map((size) => (
+                            {sliderSizes.map((size) => (
                               <td key={size} style={{ minWidth: 150 }}>
                                 <Slider size={size} radius={radius} defaultValue={[50]} />
                               </td>
@@ -2467,7 +2476,7 @@ export default function Sink() {
                     sense of how harmonious they are.
                   </Text>
                   <Flex gap="9">
-                    {(['1', '2', '3'] as const).map((size) => (
+                    {textFieldSizes.map((size) => (
                       <Flex
                         key={size}
                         direction="column"
@@ -2506,7 +2515,13 @@ export default function Sink() {
   );
 }
 
-function DropdownMenuContentDemo({ variant, size }: any) {
+function DropdownMenuContentDemo({
+  size,
+  variant,
+}: {
+  size: DropdownMenuSize;
+  variant: DropdownMenuVariant;
+}) {
   return (
     <DropdownMenu.Content variant={variant} size={size}>
       <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
@@ -2544,7 +2559,13 @@ function DropdownMenuContentDemo({ variant, size }: any) {
   );
 }
 
-function ContextMenuContentDemo({ variant, size }: any) {
+function ContextMenuContentDemo({
+  size,
+  variant,
+}: {
+  size: ContextMenuSize;
+  variant: ContextMenuVariant;
+}) {
   return (
     <ContextMenu.Content variant={variant} size={size}>
       <ContextMenu.Item shortcut="⌘+T">New Tab</ContextMenu.Item>
@@ -2582,7 +2603,10 @@ function ContextMenuContentDemo({ variant, size }: any) {
   );
 }
 
-function RightClickArea({ size = '2', ...props }: any) {
+type RightClickAreaProps = React.ComponentProps<typeof Grid> & {
+  size: '1' | '2';
+};
+function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
   return (
     <Grid
       height={size === '2' ? '8' : '6'}
