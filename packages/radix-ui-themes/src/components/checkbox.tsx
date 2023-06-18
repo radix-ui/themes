@@ -8,12 +8,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
+const checkboxSizes = ['1', '2'] as const;
+type CheckboxSize = (typeof checkboxSizes)[number];
+
+const checkboxVariants = ['solid', 'solid-mono'] as const;
+type CheckboxVariant = (typeof checkboxVariants)[number];
+
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxProps
   extends Omit<React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>, 'children'>,
     MarginProps {
-  size?: Responsive<'1' | '2'>;
-  variant?: 'solid' | 'solid-mono';
+  size?: Responsive<CheckboxSize>;
+  variant?: CheckboxVariant;
   color?: Color;
   radius?: ButtonRadius;
 }
@@ -55,4 +61,5 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
 });
 Checkbox.displayName = 'Checkbox';
 
-export { Checkbox };
+export { checkboxSizes, checkboxVariants, Checkbox };
+export type { CheckboxSize, CheckboxVariant };

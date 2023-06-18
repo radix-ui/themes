@@ -30,6 +30,8 @@ import {
   buttonVariants,
   //
   Checkbox,
+  checkboxSizes,
+  checkboxVariants,
   //
   Code,
   codeSizes,
@@ -96,7 +98,6 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const checkboxVariants = ['solid', 'solid-mono'] as const;
 const radioGroupVariants = ['solid', 'solid-mono'] as const;
 const switchVariants = ['solid', 'solid-mono'] as const;
 const selectTriggerVariants = [
@@ -1484,7 +1485,7 @@ export default function Sink() {
 
                 <table className={styles.table}>
                   <tbody>
-                    {(['1', '2'] as const).map((size) => (
+                    {checkboxSizes.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -1514,28 +1515,25 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
+                          {checkboxSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            <td>
-                              <Text size="2">
-                                <label>
-                                  <Checkbox radius={radius} mr="2" size="1" />I agree
-                                </label>
-                              </Text>
-                            </td>
-                            <td>
-                              <Text size="2">
-                                <label>
-                                  <Checkbox radius={radius} mr="2" size="2" />I agree
-                                </label>
-                              </Text>
-                            </td>
+                            {checkboxSizes.map((size) => (
+                              <td key={size}>
+                                <Text size="2">
+                                  <label>
+                                    <Checkbox defaultChecked radius={radius} mr="2" size={size} />I
+                                    agree
+                                  </label>
+                                </Text>
+                              </td>
+                            ))}
                           </tr>
                         ))}
                       </tbody>
