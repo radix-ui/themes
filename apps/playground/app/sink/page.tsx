@@ -113,7 +113,7 @@ import {
   Tooltip,
   //
   // helpers:
-  colorScalesByGroup,
+  groupedColors,
   buttonRadiusValues as radiusValues,
 } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';
@@ -250,7 +250,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -365,7 +365,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -439,7 +439,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -914,7 +914,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1560,7 +1560,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1724,7 +1724,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1923,7 +1923,7 @@ export default function Sink() {
                       <span>See colors</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -2125,7 +2125,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -2438,7 +2438,7 @@ export default function Sink() {
                       <span>See colors</span>
                     </Text>
                   </summary>
-                  {colorScalesByGroup.map(({ label, colors }) => (
+                  {groupedColors.map(({ label, colors }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}

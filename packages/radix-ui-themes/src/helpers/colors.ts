@@ -23,11 +23,11 @@ const metalColors = ['gold', 'bronze'] as const;
 const allColors = [...regularColors, ...brightColors, ...metalColors] as const;
 type Color = (typeof allColors)[number] | 'gray';
 
-const colorScalesByGroup = [
-  { label: 'Regulars', colors: regularColors },
-  { label: 'Brights', colors: brightColors },
-  { label: 'Metals', colors: metalColors },
+const groupedColors = [
+  { label: 'Regulars', colors: [...regularColors] as Color[] },
+  { label: 'Brights', colors: [...brightColors] as Color[] },
+  { label: 'Metals', colors: [...metalColors] as Color[] },
 ];
 
-export { regularColors, brightColors, metalColors, allColors, colorScalesByGroup };
+export { regularColors, brightColors, metalColors, allColors, groupedColors };
 export type { Color };

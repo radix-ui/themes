@@ -1,4 +1,4 @@
-import { colorScalesByGroup } from './colors';
+import { groupedColors } from './colors';
 
 import type { Color } from './colors';
 
@@ -16,5 +16,5 @@ type ButtonRadius = (typeof buttonRadiusValues)[number];
 const scalingValues = ['smaller', 'small', 'regular', 'large', 'larger'] as const;
 type Scaling = (typeof scalingValues)[number];
 
-export { colorScalesByGroup, colorFeelValues, grayScaleValues, buttonRadiusValues, scalingValues };
+export { groupedColors, colorFeelValues, grayScaleValues, buttonRadiusValues, scalingValues };
 export type { ColorScale, ColorFeel, GrayScale, ButtonRadius, Scaling };

@@ -13,7 +13,7 @@ import {
   Separator,
   Text,
   // helpers
-  colorScalesByGroup,
+  groupedColors,
   colorFeelValues,
   grayScaleValues,
   buttonRadiusValues,
@@ -166,7 +166,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
           menuVariant="subtle-mono"
           style={{ minWidth: 120 }}
         >
-          {colorScalesByGroup.map(({ label, colors }, index) => (
+          {groupedColors.map(({ label, colors }, index) => (
             <React.Fragment key={label}>
               {index > 0 ? <Select.Separator /> : null}
               <Select.Group>
