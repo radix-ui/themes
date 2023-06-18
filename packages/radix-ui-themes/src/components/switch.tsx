@@ -7,12 +7,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
+const switchSizes = ['1', '2', '3'] as const;
+type SwitchSize = (typeof switchSizes)[number];
+
+const switchVariants = ['solid', 'solid-mono'] as const;
+type SwitchVariant = (typeof switchVariants)[number];
+
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 interface SwitchProps
   extends Omit<React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>, 'children'>,
     MarginProps {
-  size?: Responsive<'1' | '2' | '3'>;
-  variant?: 'solid' | 'solid-mono';
+  size?: Responsive<SwitchSize>;
+  variant?: SwitchVariant;
   color?: Color;
   radius?: ButtonRadius;
 }
@@ -53,4 +59,5 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
 });
 Switch.displayName = 'Switch';
 
-export { Switch };
+export { switchSizes, switchVariants, Switch };
+export type { SwitchSize, SwitchVariant };

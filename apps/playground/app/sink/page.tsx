@@ -82,7 +82,10 @@ import {
   Slider,
   Strong,
   Sup,
+  //
   Switch,
+  switchSizes,
+  switchVariants,
   //
   Tabs,
   tabsListSizes,
@@ -101,7 +104,6 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const switchVariants = ['solid', 'solid-mono'] as const;
 const selectTriggerVariants = [
   'surface',
   'solid',
@@ -1849,7 +1851,7 @@ export default function Sink() {
 
                 <table className={styles.table}>
                   <tbody>
-                    {(['1', '2', '3'] as const).map((size) => (
+                    {switchSizes.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -1880,39 +1882,25 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {switchSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            <td>
-                              <Text size="2">
-                                <label>
-                                  I agree
-                                  <Switch size="1" ml="2" radius={radius} />
-                                </label>
-                              </Text>
-                            </td>
-                            <td>
-                              <Text size="2">
-                                <label>
-                                  I agree
-                                  <Switch size="2" ml="2" radius={radius} />
-                                </label>
-                              </Text>
-                            </td>
-                            <td>
-                              <Text size="2">
-                                <label>
-                                  I agree
-                                  <Switch size="3" ml="2" radius={radius} />
-                                </label>
-                              </Text>
-                            </td>
+                            {switchSizes.map((size) => (
+                              <td key={size}>
+                                <Text size="2">
+                                  <label>
+                                    I agree
+                                    <Switch size={size} ml="2" radius={radius} />
+                                  </label>
+                                </Text>
+                              </td>
+                            ))}
                           </tr>
                         ))}
                       </tbody>
