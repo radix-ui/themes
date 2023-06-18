@@ -67,7 +67,10 @@ import {
   Popover,
   Quote,
   RadioGroup,
+  //
   ScrollArea,
+  scrollAreaSizes,
+  //
   Section,
   Select,
   Separator,
@@ -1359,7 +1362,7 @@ export default function Sink() {
 
                 <table className={styles.table}>
                   <tbody>
-                    {(['1', '2', '3'] as const).map((size) => (
+                    {scrollAreaSizes.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -1389,16 +1392,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {scrollAreaSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {(['1', '2', '3'] as const).map((size) => (
+                            {scrollAreaSizes.map((size) => (
                               <td key={size}>
                                 <Box style={{ width: 200, height: 20 }}>
                                   <ScrollArea
