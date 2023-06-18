@@ -68,7 +68,10 @@ import {
   //
   Popover,
   Quote,
+  //
   RadioGroup,
+  radioGroupSizes,
+  radioGroupVariants,
   //
   ScrollArea,
   scrollAreaSizes,
@@ -98,7 +101,6 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const radioGroupVariants = ['solid', 'solid-mono'] as const;
 const switchVariants = ['solid', 'solid-mono'] as const;
 const selectTriggerVariants = [
   'surface',
@@ -1614,7 +1616,7 @@ export default function Sink() {
                     </Text>
                   </Flex>
 
-                  {(['1', '2', '3', '4'] as const).map((size) => (
+                  {textSizes.slice(0, 4).map((size) => (
                     <Flex align="center" gap="2" key={size}>
                       <Checkbox id={`align-size${size}`} />
                       <Text size={size}>
@@ -1687,7 +1689,7 @@ export default function Sink() {
 
                 <table className={styles.table}>
                   <tbody>
-                    {(['1', '2'] as const).map((size) => (
+                    {radioGroupSizes.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -1724,7 +1726,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {checkboxVariants.map((variant) => (
+                            {radioGroupVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1733,7 +1735,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {checkboxVariants.map((variant) => (
+                              {radioGroupVariants.map((variant) => (
                                 <td key={variant}>
                                   <RadioGroup.Root
                                     variant={variant}
@@ -1780,7 +1782,7 @@ export default function Sink() {
                     </label>
                   </RadioGroup.Root>
 
-                  {(['1', '2', '3', '4'] as const).map((size) => (
+                  {textSizes.slice(0, 4).map((size) => (
                     <RadioGroup.Root key={size}>
                       <label>
                         <Flex align="center" gap="2">
@@ -1791,27 +1793,6 @@ export default function Sink() {
                     </RadioGroup.Root>
                   ))}
                 </Flex>
-
-                {/* <RadioGroup.Root defaultValue="scrolling">
-            <label>
-              <Flex gap="2" align="center">
-                <RadioGroup.Item value="auto" />
-                <Text size="2">Automatically based on mouse or trackpad</Text>
-              </Flex>
-            </label>
-            <label>
-              <Flex gap="2" align="center">
-                <RadioGroup.Item value="scrolling" />
-                <Text size="2">When scrolling</Text>
-              </Flex>
-            </label>
-            <label>
-              <Flex gap="2" align="center">
-                <RadioGroup.Item value="always" />
-                <Text size="2">Always</Text>
-              </Flex>
-            </label>
-          </RadioGroup.Root> */}
               </DocsSection>
 
               <DocsSection title="Switch">
@@ -2012,7 +1993,7 @@ export default function Sink() {
                     </Flex>
                   </label>
 
-                  {(['1', '2', '3', '4'] as const).map((size) => (
+                  {textSizes.slice(0, 4).map((size) => (
                     <label key={size}>
                       <Flex align="center" gap="2">
                         <Switch />

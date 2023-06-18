@@ -7,12 +7,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
 
+const radioGroupSizes = ['1', '2'] as const;
+type RadioGroupSize = (typeof radioGroupSizes)[number];
+
+const radioGroupVariants = ['solid', 'solid-mono'] as const;
+type RadioGroupVariant = (typeof radioGroupVariants)[number];
+
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
   extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
     MarginProps {
-  size?: Responsive<'1' | '2'>;
-  variant?: 'solid' | 'solid-mono';
+  size?: Responsive<RadioGroupSize>;
+  variant?: RadioGroupVariant;
   color?: Color;
 }
 const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
@@ -69,3 +75,5 @@ export const RadioGroup = {
   Root: RadioGroupRoot,
   Item: RadioGroupItem,
 };
+export { radioGroupSizes, radioGroupVariants };
+export type { RadioGroupSize, RadioGroupVariant };
