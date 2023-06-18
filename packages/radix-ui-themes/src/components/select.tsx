@@ -8,6 +8,26 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
+const selectSizes = ['1', '2'] as const;
+type SelectSize = (typeof selectSizes)[number];
+
+const selectTriggerVariants = [
+  'surface',
+  'surface-mono',
+  'solid',
+  'solid-mono',
+  'subtle',
+  'subtle-mono',
+  'outline',
+  'outline-mono',
+  'ghost',
+  'ghost-mono',
+] as const;
+type SelectTriggerVariant = (typeof selectTriggerVariants)[number];
+
+const selectMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
+type SelectMenuVariant = (typeof selectMenuVariants)[number];
+
 type SelectRootElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 interface SelectRootProps
   extends Omit<
@@ -17,19 +37,9 @@ interface SelectRootProps
     >,
     MarginProps {
   placeholder?: string;
-  size?: Responsive<'1' | '2'>;
-  triggerVariant?:
-    | 'surface'
-    | 'surface-mono'
-    | 'solid'
-    | 'solid-mono'
-    | 'subtle'
-    | 'subtle-mono'
-    | 'outline'
-    | 'outline-mono'
-    | 'ghost'
-    | 'ghost-mono';
-  menuVariant?: 'solid' | 'solid-mono' | 'subtle' | 'subtle-mono';
+  size?: Responsive<SelectSize>;
+  triggerVariant?: SelectTriggerVariant;
+  menuVariant?: SelectMenuVariant;
   color?: Color;
   radius?: ButtonRadius;
 }
@@ -197,3 +207,5 @@ export const Select = {
   Label: SelectLabel,
   Separator: SelectSeparator,
 };
+export { selectSizes, selectTriggerVariants, selectMenuVariants };
+export type { SelectSize, SelectTriggerVariant, SelectMenuVariant };

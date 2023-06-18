@@ -77,7 +77,12 @@ import {
   scrollAreaSizes,
   //
   Section,
+  //
   Select,
+  selectSizes,
+  selectTriggerVariants,
+  selectMenuVariants,
+  //
   Separator,
   Slider,
   Strong,
@@ -104,19 +109,6 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const selectTriggerVariants = [
-  'surface',
-  'solid',
-  'subtle',
-  'outline',
-  'ghost',
-  'surface-mono',
-  'solid-mono',
-  'subtle-mono',
-  'outline-mono',
-  'ghost-mono',
-] as const;
-const selectMenuVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
 const textFieldVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 const sliderVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
@@ -1998,8 +1990,9 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
+                      {selectSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                       <ColumnHeaderCell>disabled</ColumnHeaderCell>
                     </tr>
                   </thead>
@@ -2007,16 +2000,13 @@ export default function Sink() {
                     {selectTriggerVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <Select.Root defaultValue="apple" size="1" triggerVariant={variant}>
-                            <SelectItemsDemo />
-                          </Select.Root>
-                        </td>
-                        <td>
-                          <Select.Root defaultValue="apple" size="2" triggerVariant={variant}>
-                            <SelectItemsDemo />
-                          </Select.Root>
-                        </td>
+                        {selectSizes.map((size) => (
+                          <td key={size}>
+                            <Select.Root defaultValue="apple" size={size} triggerVariant={variant}>
+                              <SelectItemsDemo />
+                            </Select.Root>
+                          </td>
+                        ))}
                         <td>
                           <Select.Root
                             defaultValue="apple"
@@ -2049,36 +2039,26 @@ export default function Sink() {
                     {selectMenuVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <Select.Root defaultValue="apple" size="1" menuVariant={variant}>
-                            <SelectItemsDemo />
-                          </Select.Root>
-                        </td>
-                        <td>
-                          <Select.Root defaultValue="apple" size="2" menuVariant={variant}>
-                            <SelectItemsDemo />
-                          </Select.Root>
-                        </td>
-                        <td>
-                          <Select.Root
-                            defaultValue="apple"
-                            size="1"
-                            menuVariant={variant}
-                            position="popper"
-                          >
-                            <SelectItemsDemo />
-                          </Select.Root>
-                        </td>
-                        <td>
-                          <Select.Root
-                            defaultValue="apple"
-                            size="2"
-                            menuVariant={variant}
-                            position="popper"
-                          >
-                            <SelectItemsDemo />
-                          </Select.Root>
-                        </td>
+                        {selectSizes.map((size) => (
+                          <td key={size}>
+                            <Select.Root defaultValue="apple" size={size} menuVariant={variant}>
+                              <SelectItemsDemo />
+                            </Select.Root>
+                          </td>
+                        ))}
+
+                        {selectSizes.map((size) => (
+                          <td key={size}>
+                            <Select.Root
+                              defaultValue="apple"
+                              size={size}
+                              menuVariant={variant}
+                              position="popper"
+                            >
+                              <SelectItemsDemo />
+                            </Select.Root>
+                          </td>
+                        ))}
                       </tr>
                     ))}
                   </tbody>
@@ -2099,24 +2079,22 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
+                          {selectSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            <td>
-                              <Select.Root defaultValue="apple" size="1" radius={radius}>
-                                <SelectItemsDemo />
-                              </Select.Root>
-                            </td>
-                            <td>
-                              <Select.Root defaultValue="apple" size="2" radius={radius}>
-                                <SelectItemsDemo />
-                              </Select.Root>
-                            </td>
+                            {selectSizes.map((size) => (
+                              <td key={size}>
+                                <Select.Root defaultValue="apple" size={size} radius={radius}>
+                                  <SelectItemsDemo />
+                                </Select.Root>
+                              </td>
+                            ))}
                           </tr>
                         ))}
                       </tbody>
