@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowRightIcon, DotsHorizontalIcon, Pencil2Icon, Share2Icon } from '@radix-ui/react-icons';
+import {
+  ArrowTopRightIcon,
+  ArrowRightIcon,
+  DotsHorizontalIcon,
+  Pencil2Icon,
+  Share2Icon,
+} from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import {
   Provider,
@@ -54,7 +60,10 @@ import {
   iconButtonVariants,
   //
   Kbd,
+  //
   Link,
+  linkSizes,
+  //
   Popover,
   Quote,
   RadioGroup,
@@ -66,7 +75,10 @@ import {
   Strong,
   Sup,
   Switch,
+  //
   Tabs,
+  tabsListSizes,
+  //
   TextArea,
   TextField,
   //
@@ -1097,7 +1109,7 @@ export default function Sink() {
               <DocsSection title="Tabs">
                 <table className={styles.table}>
                   <tbody>
-                    {(['1', '2'] as const).map((size) => (
+                    {tabsListSizes.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -1167,68 +1179,23 @@ export default function Sink() {
                 </Flex>
 
                 <Flex direction="column" align="start" gap="4" mb="5">
-                  <Link href="/" size="9">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="8">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="7">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="6">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="5">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="4">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="3">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="2">
-                    This is a link
-                  </Link>
-                  <Link href="/" size="1">
-                    This is a link
-                  </Link>
+                  {linkSizes
+                    .slice()
+                    .reverse()
+                    .map((size) => (
+                      <Link key={size} href="/" size={size}>
+                        This is a link
+                      </Link>
+                    ))}
 
                   <Link color="purple" gap="1" href="/" size="3">
                     This is a link
-                    <svg
-                      fill="none"
-                      height="15"
-                      viewBox="0 0 15 15"
-                      width="15"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-                        fill="currentColor"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
+                    <ArrowTopRightIcon />
                   </Link>
 
                   <Link color="gray" gap="1" href="/" size="3">
                     This is a link
-                    <svg
-                      fill="none"
-                      height="15"
-                      viewBox="0 0 15 15"
-                      width="15"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-                        fill="currentColor"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
+                    <ArrowTopRightIcon />
                   </Link>
 
                   <Text size="6">
