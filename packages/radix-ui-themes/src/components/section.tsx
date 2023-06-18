@@ -4,9 +4,12 @@ import { extractMarginProps, withBreakpoints, withMargin } from '../helpers';
 
 import type { MarginProps, Responsive } from '../helpers';
 
+const sectionSizes = ['1', '2', '3'] as const;
+type SectionSize = (typeof sectionSizes)[number];
+
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps {
-  size?: Responsive<'1' | '2' | '3'>;
+  size?: Responsive<SectionSize>;
 }
 const Section = React.forwardRef<SectionElement, SectionProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -27,4 +30,5 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
 });
 Section.displayName = 'Section';
 
-export { Section };
+export { sectionSizes, Section };
+export type { SectionSize };
