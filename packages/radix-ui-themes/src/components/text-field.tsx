@@ -4,12 +4,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
 
+const textFieldSizes = ['1', '2', '3'] as const;
+type TextFieldSize = (typeof textFieldSizes)[number];
+
+const textFieldVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
+type TextFieldVariant = (typeof textFieldVariants)[number];
+
 type TextFieldElement = React.ElementRef<'input'>;
 interface TextFieldProps
   extends Omit<React.ComponentPropsWithRef<'input'>, 'color' | 'size'>,
     MarginProps {
-  size?: Responsive<'1' | '2' | '3'>;
-  variant?: 'surface' | 'surface-mono' | 'subtle-mono';
+  size?: Responsive<TextFieldSize>;
+  variant?: TextFieldVariant;
   radius?: ButtonRadius;
 }
 const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, forwardedRef) => {
@@ -33,4 +39,5 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
 });
 TextField.displayName = 'TextField';
 
-export { TextField };
+export { textFieldSizes, textFieldVariants, TextField };
+export type { TextFieldSize, TextFieldVariant };

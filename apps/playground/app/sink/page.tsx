@@ -96,7 +96,12 @@ import {
   tabsListSizes,
   //
   TextArea,
+  textAreaSizes,
+  textAreaVariants,
+  //
   TextField,
+  textFieldSizes,
+  textFieldVariants,
   //
   Text,
   textSizes,
@@ -109,8 +114,6 @@ import {
 import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
-const textFieldVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
-const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 const sliderVariants = ['solid', 'subtle', 'solid-mono', 'subtle-mono'] as const;
 
 export default function Sink() {
@@ -2157,9 +2160,9 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                      {textFieldSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                       <ColumnHeaderCell>value</ColumnHeaderCell>
                       <ColumnHeaderCell>disabled</ColumnHeaderCell>
                       <ColumnHeaderCell>read-only</ColumnHeaderCell>
@@ -2169,15 +2172,11 @@ export default function Sink() {
                     {textFieldVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <TextField variant={variant} size="1" placeholder="Your name" />
-                        </td>
-                        <td>
-                          <TextField variant={variant} size="2" placeholder="Your name" />
-                        </td>
-                        <td>
-                          <TextField variant={variant} size="3" placeholder="Your name" />
-                        </td>
+                        {textFieldSizes.map((size) => (
+                          <td key={size}>
+                            <TextField variant={variant} size={size} placeholder="Your name" />
+                          </td>
+                        ))}
                         <td>
                           <TextField variant={variant} defaultValue="The quick brown fox jumped" />
                         </td>
@@ -2217,16 +2216,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {textFieldSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {(['1', '2', '3'] as const).map((size) => (
+                            {textFieldSizes.map((size) => (
                               <td key={size}>
                                 <TextField size={size} radius={radius} placeholder="Your name" />
                               </td>
@@ -2244,9 +2243,9 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                      <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                      {textAreaSizes.map((size) => (
+                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                      ))}
                       <ColumnHeaderCell>value</ColumnHeaderCell>
                       <ColumnHeaderCell>disabled</ColumnHeaderCell>
                       <ColumnHeaderCell>read-only</ColumnHeaderCell>
@@ -2256,15 +2255,11 @@ export default function Sink() {
                     {textAreaVariants.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <TextArea size="1" variant={variant} placeholder="Your feedback" />
-                        </td>
-                        <td>
-                          <TextArea size="2" variant={variant} placeholder="Your feedback" />
-                        </td>
-                        <td>
-                          <TextArea size="3" variant={variant} placeholder="Your feedback" />
-                        </td>
+                        {textAreaSizes.map((size) => (
+                          <td key={size}>
+                            <TextArea size={size} variant={variant} placeholder="Your feedback" />
+                          </td>
+                        ))}
                         <td>
                           <TextArea
                             variant={variant}
@@ -2307,16 +2302,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          <ColumnHeaderCell>size 1</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 2</ColumnHeaderCell>
-                          <ColumnHeaderCell>size 3</ColumnHeaderCell>
+                          {textAreaSizes.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
                         {radiusValues.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {(['1', '2', '3'] as const).map((size) => (
+                            {textAreaSizes.map((size) => (
                               <td key={size}>
                                 <TextArea size={size} radius={radius} placeholder="Your feedback" />
                               </td>

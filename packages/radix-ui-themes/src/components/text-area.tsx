@@ -4,12 +4,18 @@ import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
 import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
 
+const textAreaSizes = ['1', '2', '3'] as const;
+type TextAreaSize = (typeof textAreaSizes)[number];
+
+const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
+type TextAreaVariant = (typeof textAreaVariants)[number];
+
 type TextAreaElement = React.ElementRef<'textarea'>;
 interface TextAreaProps
   extends Omit<React.ComponentPropsWithRef<'textarea'>, 'color' | 'size'>,
     MarginProps {
-  size?: Responsive<'1' | '2' | '3'>;
-  variant?: 'surface' | 'surface-mono' | 'subtle-mono';
+  size?: Responsive<TextAreaSize>;
+  variant?: TextAreaVariant;
   radius?: ButtonRadius;
 }
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
@@ -33,4 +39,5 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
 });
 TextArea.displayName = 'TextArea';
 
-export { TextArea };
+export { textAreaSizes, textAreaVariants, TextArea };
+export type { TextAreaSize, TextAreaVariant };
