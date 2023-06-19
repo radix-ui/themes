@@ -39,7 +39,7 @@ export default function HomeOS() {
       data-button-radius="large"
       data-scaling="regular"
     >
-      <body>
+      <body className="rui-reset-body">
         <div id="root">
           <Provider>
             <ControlPanel />

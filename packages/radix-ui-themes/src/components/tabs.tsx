@@ -52,7 +52,7 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
     <TabsPrimitive.Trigger
       {...props}
       ref={forwardedRef}
-      className={classNames('reset-button', 'rui-TabsTrigger', className)}
+      className={classNames('rui-reset-button', 'rui-TabsTrigger', className)}
     >
       <span className="rui-TabsTriggerInner">{children}</span>
       <span className="rui-TabsTriggerInnerHidden">{children}</span>

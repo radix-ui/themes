@@ -174,7 +174,7 @@ export default function Showcase() {
       data-scaling="regular"
       // className="dark-theme"
     >
-      <body>
+      <body className="rui-reset-body">
         <div id="root">
           <Provider>
             <ControlPanel />
@@ -471,7 +471,7 @@ export default function Showcase() {
                               style={{ position: 'relative' }}
                             >
                               <button
-                                className={`reset-button rui-SelectTrigger size-2 variant-${themeSelectTriggerVariant}`}
+                                className={`rui-reset-button rui-SelectTrigger size-2 variant-${themeSelectTriggerVariant}`}
                                 data-animate
                               >
                                 <span>{darkMode ? 'Dark' : 'Light'}</span>

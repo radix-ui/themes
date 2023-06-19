@@ -67,7 +67,7 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
           data-button-radius={radius}
           ref={forwardedRef}
           className={classNames(
-            'reset-button',
+            'rui-reset-button',
             'rui-SelectTrigger',
             withBreakpoints(size, 'size'),
             `variant-${triggerVariant}`,

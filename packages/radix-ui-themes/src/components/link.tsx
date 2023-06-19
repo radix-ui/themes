@@ -47,7 +47,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         className,
-        'reset-a',
+        'rui-reset-a',
         'rui-Text',
         'rui-Link',
         withBreakpoints(size, 'size'),

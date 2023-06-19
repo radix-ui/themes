@@ -61,7 +61,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
         <RadioGroupPrimitive.Item
           {...itemProps}
           ref={forwardedRef}
-          className={classNames('reset-button', 'rui-RadioGroupButton')}
+          className={classNames('rui-reset-button', 'rui-RadioGroupButton')}
         >
           <RadioGroupPrimitive.Indicator className="rui-RadioGroupIndicator" />
         </RadioGroupPrimitive.Item>

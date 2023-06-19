@@ -37,7 +37,7 @@ export default function Snapshot() {
       data-scaling="larger"
       className="dark-theme"
     >
-      <body>
+      <body className="rui-reset-body">
         <div id="root">
           <Provider>
             <ControlPanel />

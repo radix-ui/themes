@@ -138,7 +138,7 @@ export default function Sink() {
       data-scaling="regular"
       className="dark-theme"
     >
-      <body>
+      <body className="rui-reset-body">
         <div id="root">
           <Provider
           // dir="rtl"

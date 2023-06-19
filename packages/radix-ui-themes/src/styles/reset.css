@@ -1,4 +1,4 @@
-body {
+.rui-reset-body {
   margin: 0;
 
   overflow-wrap: break-word;
@@ -8,18 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-svg {
-  display: block;
-}
-
-.reset-a {
+.rui-reset-a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   outline: none;
 }
 
-.reset-button {
+.rui-reset-button {
   appearance: none;
   background-color: transparent;
   border: none;

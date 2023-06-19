@@ -1,3 +1,7 @@
+.root :global(svg) {
+  display: block;
+}
+
 .root [data-animate],
 .root [data-transition],
 .root [data-animate] :global(.rui-Switch-Thumb) {

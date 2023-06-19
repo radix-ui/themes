@@ -14,7 +14,7 @@ export default function Test() {
       data-foreground-feel="neutral"
       data-button-radius="full"
     >
-      <body>
+      <body className="rui-reset-body">
         <div id="root">
           <Provider>
             <ControlPanel />
