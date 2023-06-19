@@ -25,6 +25,7 @@ import {
   TextArea,
   textAreaVariants,
   Text,
+  VisuallyHidden,
   // helpers:
   allColors,
   grayScaleValues,
@@ -195,7 +196,14 @@ export default function Showcase() {
             </Grid> */}
 
             <Box py="9">
-              <div style={{ position: 'relative' }}>
+              <VisuallyHidden>
+                The following section represents an assortment of components periodically updated to
+                use different theming options.
+              </VisuallyHidden>
+              <div
+                style={{ position: 'relative', pointerEvents: 'none', userSelect: 'none' }}
+                aria-hidden
+              >
                 {['light-theme', 'dark-theme'].map((theme) => (
                   <Box
                     key={theme}
@@ -223,6 +231,7 @@ export default function Showcase() {
                                 variant={likeButtonVariant}
                                 data-animate
                                 className={likeCount % 2 ? 'rui-IconButton' : ''}
+                                tabIndex={-1}
                               >
                                 {likeCount % 2 ? null : 'Like'}
                                 <HeartFilledIcon />
@@ -320,6 +329,7 @@ export default function Showcase() {
                                       className={
                                         avatarNameColor !== undefined ? 'rui-IconButton' : undefined
                                       }
+                                      tabIndex={-1}
                                     >
                                       {avatarNameColor !== undefined ? <StarIcon /> : 'Follow'}
                                     </Button>
@@ -345,6 +355,7 @@ export default function Showcase() {
                                   variant={dropdownTriggerVariant}
                                   data-animate
                                   className={likeCount % 2 ? '' : 'rui-IconButton'}
+                                  tabIndex={-1}
                                 >
                                   {likeCount % 2 ? 'Bookmarks' : null}
                                   <BookmarkIcon />
@@ -430,12 +441,18 @@ export default function Showcase() {
                                     placeholder="Your feedback"
                                     style={{ minHeight: 100 }}
                                     data-transition
+                                    tabIndex={-1}
                                   />
                                 </Grid>
                               </Flex>
 
                               <Flex gap="3" mt="4" justify="end">
-                                <Button size="1" variant={secondaryVariant} data-animate>
+                                <Button
+                                  size="1"
+                                  variant={secondaryVariant}
+                                  tabIndex={-1}
+                                  data-animate
+                                >
                                   Cancel
                                 </Button>
                                 <Button
@@ -443,6 +460,7 @@ export default function Showcase() {
                                   variant={primaryVariant}
                                   data-animate
                                   style={{ '--delay': '100ms' }}
+                                  tabIndex={-1}
                                 >
                                   Share
                                   <Share2Icon />
@@ -455,6 +473,7 @@ export default function Showcase() {
                                   radius="full"
                                   data-animate
                                   style={{ '--delay': '100ms' }}
+                                  tabIndex={-1}
                                 >
                                   <Cross1Icon />
                                 </IconButton>
@@ -473,6 +492,7 @@ export default function Showcase() {
                               <button
                                 className={`rui-reset-button rui-SelectTrigger size-2 variant-${themeSelectTriggerVariant}`}
                                 data-animate
+                                tabIndex={-1}
                               >
                                 <span>{darkMode ? 'Dark' : 'Light'}</span>
                                 <ChevronDownIcon className="rui-SelectIcon" />
@@ -570,6 +590,7 @@ export default function Showcase() {
                                   checked={includeUnderOffer}
                                   mr="2"
                                   data-animate
+                                  tabIndex={-1}
                                 />
                                 <Text size="2">Include Under Offer</Text>
                               </Flex>
@@ -606,7 +627,11 @@ export default function Showcase() {
                                 <Text size="1" weight="bold" color="gray">
                                   Min. Beds
                                 </Text>
-                                <RadioGroup.Root defaultValue="2" variant={controlsVariant}>
+                                <RadioGroup.Root
+                                  defaultValue="2"
+                                  variant={controlsVariant}
+                                  tabIndex={-1}
+                                >
                                   <Flex direction="column" gap="1">
                                     <Text size="2">
                                       <label>
@@ -656,7 +681,13 @@ export default function Showcase() {
                                   Must Haves
                                 </Text>
                                 <Text size="2">
-                                  <Checkbox variant={controlsVariant} defaultChecked data-animate />{' '}
+                                  <Checkbox
+                                    variant={controlsVariant}
+                                    defaultChecked
+                                    data-animate
+                                    tabIndex={-1}
+                                    mr="2"
+                                  />
                                   Parking
                                 </Text>
                                 <Text size="2">
@@ -665,7 +696,9 @@ export default function Showcase() {
                                     defaultChecked
                                     data-animate
                                     style={{ '--delay': '50ms' }}
-                                  />{' '}
+                                    tabIndex={-1}
+                                    mr="2"
+                                  />
                                   Garden
                                 </Text>
                                 <Text size="2">
@@ -673,7 +706,9 @@ export default function Showcase() {
                                     variant={controlsVariant}
                                     data-animate
                                     style={{ '--delay': '100ms' }}
-                                  />{' '}
+                                    tabIndex={-1}
+                                    mr="2"
+                                  />
                                   Swimming pool
                                 </Text>
                               </Flex>
@@ -686,6 +721,7 @@ export default function Showcase() {
                                   weight="bold"
                                   data-animate
                                   style={{ '--delay': '200ms' }}
+                                  tabIndex={-1}
                                 >
                                   reset
                                 </Link>
@@ -694,6 +730,7 @@ export default function Showcase() {
                                   variant={secondaryVariant}
                                   data-animate
                                   style={{ '--delay': '200ms' }}
+                                  tabIndex={-1}
                                 >
                                   <UpdateIcon />
                                   Update filters
