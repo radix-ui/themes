@@ -1,0 +1,76 @@
+.root [data-animate],
+.root [data-transition],
+.root [data-animate] :global(.rui-Switch-Thumb) {
+  transition-property: all;
+  transition-duration: 450ms;
+  transition-timing-function: ease-out;
+}
+
+.root [data-animate='animate'] {
+  animation: pop 600ms var(--delay, 0ms) ease-out;
+}
+
+/* HACK */
+.root :global(.rui-Button):global(.rui-IconButton) {
+  padding: 0;
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 90deg;
+}
+
+@property --gradient-position {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+.root:global(.dark-theme) {
+  mask-image: linear-gradient(
+    var(--gradient-angle),
+    rgba(0, 0, 0, 1) var(--gradient-position),
+    rgba(0, 0, 0, 0) var(--gradient-position)
+  );
+  animation: move 5s ease-in-out alternate-reverse infinite, rotate 10s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0% {
+    --gradient-angle: 90deg;
+  }
+  25% {
+    --gradient-angle: 85deg;
+  }
+  75% {
+    --gradient-angle: 95deg;
+  }
+  100% {
+    --gradient-angle: 90deg;
+  }
+}
+
+@keyframes move {
+  25% {
+    --gradient-position: 0%;
+  }
+  75% {
+    --gradient-position: 100%;
+  }
+  100% {
+    --gradient-position: 100%;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
