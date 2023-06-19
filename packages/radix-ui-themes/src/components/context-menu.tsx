@@ -10,9 +10,11 @@ import type { Responsive } from '../helpers';
 
 const contextMenuSizes = ['1', '2'] as const;
 type ContextMenuSize = (typeof contextMenuSizes)[number];
+const defaultContextMenuSize: ContextMenuSize = '2';
 
 const contextMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
 type ContextMenuVariant = (typeof contextMenuVariants)[number];
+const defaultContextMenuVariant: ContextMenuVariant = 'solid';
 
 type StyleProps = {
   size?: Responsive<ContextMenuSize>;
@@ -40,7 +42,12 @@ interface ContextMenuContentProps
     StyleProps {}
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
-    const { className, size = '2', variant = 'solid', ...contentProps } = props;
+    const {
+      className,
+      size = defaultContextMenuSize,
+      variant = defaultContextMenuVariant,
+      ...contentProps
+    } = props;
     return (
       <ContextMenuPrimitive.Portal>
         <ContextMenuPrimitive.Content
@@ -233,7 +240,12 @@ const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, size = '2', variant = 'solid', ...subContentProps } = props;
+  const {
+    className,
+    size = defaultContextMenuSize,
+    variant = defaultContextMenuVariant,
+    ...subContentProps
+  } = props;
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.SubContent
@@ -286,5 +298,5 @@ export const ContextMenu = {
   SubContent: ContextMenuSubContent,
   Separator: ContextMenuSeparator,
 };
-export { contextMenuSizes, contextMenuVariants };
+export { contextMenuSizes, defaultContextMenuSize, contextMenuVariants, defaultContextMenuVariant };
 export type { ContextMenuSize, ContextMenuVariant };

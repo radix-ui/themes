@@ -7,9 +7,13 @@ import type { MarginProps, Color, Responsive } from '../helpers';
 
 const headingSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type HeadingSize = (typeof headingSizes)[number];
+const defaultHeadingSize: HeadingSize = '6';
 
 const headingTrimValues = ['normal', 'start', 'end', 'both'] as const;
 type HeadingTrim = (typeof headingTrimValues)[number];
+const defaultHeadingTrim: HeadingTrim | undefined = undefined;
+
+const defaultHeadingColor: Color | undefined = undefined;
 
 type HeadingElement = React.ElementRef<'h1'>;
 interface HeadingProps extends Omit<React.ComponentPropsWithoutRef<'h1'>, 'color'>, MarginProps {
@@ -20,7 +24,14 @@ interface HeadingProps extends Omit<React.ComponentPropsWithoutRef<'h1'>, 'color
 }
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, asChild = false, size = '6', trim, color, ...headingProps } = marginRest;
+  const {
+    className,
+    asChild = false,
+    size = defaultHeadingSize,
+    trim = defaultHeadingTrim,
+    color = defaultHeadingColor,
+    ...headingProps
+  } = marginRest;
   const Comp = asChild ? Slot : 'h1';
 
   return (
@@ -40,5 +51,12 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
 });
 Heading.displayName = 'Heading';
 
-export { headingSizes, headingTrimValues, Heading };
+export {
+  headingSizes,
+  defaultHeadingSize,
+  headingTrimValues,
+  defaultHeadingTrim,
+  defaultHeadingColor,
+  Heading,
+};
 export type { HeadingSize, HeadingTrim };

@@ -7,15 +7,21 @@ import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
 
 const linkSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type LinkSize = (typeof linkSizes)[number];
+const defaultLinkSize: LinkSize | undefined = undefined;
 
-const linkGap = ['0', '1', '2'] as const;
-type LinkGap = (typeof linkGap)[number];
+const linkVariants = ['default', 'high-contrast'] as const;
+type LinkVariant = (typeof linkVariants)[number];
+const defaultLinkVariant: LinkVariant = 'default';
 
 const linkWeights = ['normal', 'bold'] as const;
 type LinkWeight = (typeof linkWeights)[number];
+const defaultLinkWeight: LinkWeight = 'normal';
 
-const linkVariants = ['high-contrast'] as const;
-type LinkVariant = (typeof linkVariants)[number];
+const linkGap = ['0', '1', '2'] as const;
+type LinkGap = (typeof linkGap)[number];
+const defaultLinkGap: LinkGap | undefined = undefined;
+
+const defaultLinkColor: ColorOrGray | undefined = undefined;
 
 type LinkElement = React.ElementRef<'a'>;
 interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, MarginProps {
@@ -31,11 +37,11 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const {
     className,
     asChild = false,
-    size,
-    variant = 'default',
-    weight = 'normal',
-    gap,
-    color,
+    size = defaultLinkSize,
+    variant = defaultLinkVariant,
+    weight = defaultLinkWeight,
+    gap = defaultLinkGap,
+    color = defaultLinkColor,
     ...linkProps
   } = marginRest;
   const Comp = asChild ? Slot : 'a';
@@ -61,5 +67,16 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
 });
 Link.displayName = 'Link';
 
-export { linkSizes, linkVariants, linkWeights, linkGap, Link };
+export {
+  linkSizes,
+  defaultLinkSize,
+  linkVariants,
+  defaultLinkVariant,
+  linkWeights,
+  defaultLinkWeight,
+  linkGap,
+  defaultLinkGap,
+  defaultLinkColor,
+  Link,
+};
 export type { LinkSize, LinkVariant, LinkWeight, LinkGap };

@@ -6,9 +6,13 @@ import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
 
 const textAreaSizes = ['1', '2', '3'] as const;
 type TextAreaSize = (typeof textAreaSizes)[number];
+const defaultTextAreaSize: TextAreaSize = '2';
 
 const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 type TextAreaVariant = (typeof textAreaVariants)[number];
+const defaultTextAreaVariant: TextAreaVariant = 'surface';
+
+const defaultTextAreaRadius: ButtonRadius | undefined = undefined;
 
 type TextAreaElement = React.ElementRef<'textarea'>;
 interface TextAreaProps
@@ -20,7 +24,13 @@ interface TextAreaProps
 }
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, size = '2', variant = 'surface', radius, ...textAreaProps } = marginRest;
+  const {
+    className,
+    size = defaultTextAreaSize,
+    variant = defaultTextAreaVariant,
+    radius = defaultTextAreaRadius,
+    ...textAreaProps
+  } = marginRest;
 
   return (
     <textarea
@@ -39,5 +49,5 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
 });
 TextArea.displayName = 'TextArea';
 
-export { textAreaSizes, textAreaVariants, TextArea };
+export { textAreaSizes, defaultTextAreaSize, textAreaVariants, defaultTextAreaVariant, TextArea };
 export type { TextAreaSize, TextAreaVariant };

@@ -6,9 +6,13 @@ import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
 
 const badgeSizes = ['1', '2'] as const;
 type BadgeSize = (typeof badgeSizes)[number];
+const defaultBadgeSize: BadgeSize = '1';
 
 const badgeVariants = ['surface', 'subtle', 'outline'] as const;
 type BadgeVariant = (typeof badgeVariants)[number];
+const defaultBadgeVariant: BadgeVariant = 'subtle';
+
+const defaultBadgeColor: ColorOrGray = 'gray';
 
 type BadgeElement = React.ElementRef<'span'>;
 interface BadgeProps extends Omit<React.ComponentPropsWithoutRef<'span'>, 'color'>, MarginProps {
@@ -18,7 +22,13 @@ interface BadgeProps extends Omit<React.ComponentPropsWithoutRef<'span'>, 'color
 }
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, size = '1', variant = 'subtle', color = 'gray', ...badgeProps } = marginRest;
+  const {
+    className,
+    size = defaultBadgeSize,
+    variant = defaultBadgeVariant,
+    color = defaultBadgeColor,
+    ...badgeProps
+  } = marginRest;
 
   return (
     <span
@@ -37,5 +47,12 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
 });
 Badge.displayName = 'Badge';
 
-export { badgeSizes, badgeVariants, Badge };
+export {
+  badgeSizes,
+  defaultBadgeSize,
+  badgeVariants,
+  defaultBadgeVariant,
+  defaultBadgeColor,
+  Badge,
+};
 export { BadgeSize, BadgeVariant };

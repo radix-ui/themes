@@ -9,6 +9,9 @@ import type { MarginProps, Color, Responsive } from '../helpers';
 
 const separatorSizes = ['1', '2', '3', '4'] as const;
 type SeparatorSize = (typeof separatorSizes)[number];
+const defaultSeparatorSize: SeparatorSize = '1';
+
+const defaultSeparatorColor: Color | undefined = undefined;
 
 type SeparatorElement = React.ElementRef<typeof SeparatorPrimitive.Root>;
 interface SeparatorProps
@@ -19,7 +22,12 @@ interface SeparatorProps
 }
 const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, size = '1', color, ...separatorProps } = marginRest;
+  const {
+    className,
+    size = defaultSeparatorSize,
+    color = defaultSeparatorColor,
+    ...separatorProps
+  } = marginRest;
 
   return (
     <SeparatorPrimitive.Root
@@ -37,5 +45,5 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
 });
 Separator.displayName = 'Separator';
 
-export { separatorSizes, Separator };
+export { separatorSizes, defaultSeparatorSize, defaultSeparatorColor, Separator };
 export type { SeparatorSize };

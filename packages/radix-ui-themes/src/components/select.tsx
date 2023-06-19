@@ -10,6 +10,7 @@ import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
 const selectSizes = ['1', '2'] as const;
 type SelectSize = (typeof selectSizes)[number];
+const defaultSelectSize: SelectSize = '2';
 
 const selectTriggerVariants = [
   'surface',
@@ -24,9 +25,14 @@ const selectTriggerVariants = [
   'ghost-mono',
 ] as const;
 type SelectTriggerVariant = (typeof selectTriggerVariants)[number];
+const defaultSelectTriggerVariant: SelectTriggerVariant = 'surface';
 
 const selectMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
 type SelectMenuVariant = (typeof selectMenuVariants)[number];
+const defaultSelectMenuVariant: SelectMenuVariant = 'solid';
+
+const defaultSelectColor: Color | undefined = undefined;
+const defaultSelectRadius: ButtonRadius | undefined = undefined;
 
 type SelectRootElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 interface SelectRootProps
@@ -51,11 +57,11 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
     style,
     children,
     placeholder,
-    size = '2',
-    triggerVariant = 'surface',
-    menuVariant = 'solid',
-    color,
-    radius,
+    size = defaultSelectSize,
+    triggerVariant = defaultSelectTriggerVariant,
+    menuVariant = defaultSelectMenuVariant,
+    color = defaultSelectColor,
+    radius = defaultSelectRadius,
     ...contentProps
   } = rootRest;
 
@@ -207,5 +213,14 @@ export const Select = {
   Label: SelectLabel,
   Separator: SelectSeparator,
 };
-export { selectSizes, selectTriggerVariants, selectMenuVariants };
+export {
+  selectSizes,
+  defaultSelectSize,
+  selectTriggerVariants,
+  defaultSelectTriggerVariant,
+  selectMenuVariants,
+  defaultSelectMenuVariant,
+  defaultSelectColor,
+  defaultSelectRadius,
+};
 export type { SelectSize, SelectTriggerVariant, SelectMenuVariant };

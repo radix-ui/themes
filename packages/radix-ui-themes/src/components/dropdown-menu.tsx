@@ -10,9 +10,11 @@ import type { Responsive } from '../helpers';
 
 const dropdownMenuSizes = ['1', '2'] as const;
 type DropdownMenuSize = (typeof dropdownMenuSizes)[number];
+const defaultDropdownMenuSize: DropdownMenuSize = '2';
 
 const dropdownMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
 type DropdownMenuVariant = (typeof dropdownMenuVariants)[number];
+const defaultDropdownMenuVariant: DropdownMenuVariant = 'solid';
 
 type StyleProps = {
   size?: Responsive<DropdownMenuSize>;
@@ -40,7 +42,12 @@ interface DropdownMenuContentProps
     StyleProps {}
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
-    const { className, size = '2', variant = 'solid', ...contentProps } = props;
+    const {
+      className,
+      size = defaultDropdownMenuSize,
+      variant = defaultDropdownMenuVariant,
+      ...contentProps
+    } = props;
     return (
       <DropdownMenuPrimitive.Portal>
         <DropdownMenuPrimitive.Content
@@ -236,7 +243,12 @@ const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, size = '2', variant = 'solid', ...subContentProps } = props;
+  const {
+    className,
+    size = defaultDropdownMenuSize,
+    variant = defaultDropdownMenuVariant,
+    ...subContentProps
+  } = props;
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.SubContent
@@ -289,5 +301,10 @@ export const DropdownMenu = {
   SubContent: DropdownMenuSubContent,
   Separator: DropdownMenuSeparator,
 };
-export { dropdownMenuSizes, dropdownMenuVariants };
+export {
+  dropdownMenuSizes,
+  defaultDropdownMenuSize,
+  dropdownMenuVariants,
+  defaultDropdownMenuVariant,
+};
 export type { DropdownMenuSize, DropdownMenuVariant };

@@ -9,9 +9,14 @@ import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
 
 const switchSizes = ['1', '2', '3'] as const;
 type SwitchSize = (typeof switchSizes)[number];
+const defaultSwitchSize: SwitchSize = '2';
 
 const switchVariants = ['solid', 'solid-mono'] as const;
 type SwitchVariant = (typeof switchVariants)[number];
+const defaultSwitchVariant: SwitchVariant = 'solid';
+
+const defaultSwitchColor: Color | undefined = undefined;
+const defaultSwitchRadius: ButtonRadius | undefined = undefined;
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 interface SwitchProps
@@ -27,10 +32,10 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   const {
     className,
     style,
-    size = '2',
-    variant = 'solid',
-    color,
-    radius,
+    size = defaultSwitchSize,
+    variant = defaultSwitchVariant,
+    color = defaultSwitchColor,
+    radius = defaultSwitchRadius,
     ...switchProps
   } = marginRest;
 
@@ -59,5 +64,13 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
 });
 Switch.displayName = 'Switch';
 
-export { switchSizes, switchVariants, Switch };
+export {
+  switchSizes,
+  defaultSwitchSize,
+  switchVariants,
+  defaultSwitchVariant,
+  defaultSwitchColor,
+  defaultSwitchRadius,
+  Switch,
+};
 export type { SwitchSize, SwitchVariant };

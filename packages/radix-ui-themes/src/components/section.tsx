@@ -6,6 +6,7 @@ import type { MarginProps, Responsive } from '../helpers';
 
 const sectionSizes = ['1', '2', '3'] as const;
 type SectionSize = (typeof sectionSizes)[number];
+const defaultSectionSize: SectionSize = '3';
 
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps {
@@ -13,7 +14,7 @@ interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProp
 }
 const Section = React.forwardRef<SectionElement, SectionProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, size = '3', ...sectionProps } = marginRest;
+  const { className, size = defaultSectionSize, ...sectionProps } = marginRest;
 
   return (
     <section
@@ -30,5 +31,5 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
 });
 Section.displayName = 'Section';
 
-export { sectionSizes, Section };
+export { sectionSizes, defaultSectionSize, Section };
 export type { SectionSize };

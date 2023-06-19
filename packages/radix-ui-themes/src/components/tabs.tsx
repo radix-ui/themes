@@ -27,13 +27,14 @@ TabsRoot.displayName = 'TabsRoot';
 
 const tabsListSizes = ['1', '2'] as const;
 type TabsListSize = (typeof tabsListSizes)[number];
+const defaultTabsListSize: TabsListSize = '2';
 
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 interface TabsListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
   size?: Responsive<TabsListSize>;
 }
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, size = '2', ...listProps } = props;
+  const { className, size = defaultTabsListSize, ...listProps } = props;
 
   return (
     <TabsPrimitive.List
@@ -80,5 +81,5 @@ export const Tabs = {
   Trigger: TabsTrigger,
   Content: TabsContent,
 };
-export { tabsListSizes };
+export { tabsListSizes, defaultTabsListSize };
 export type { TabsListSize };

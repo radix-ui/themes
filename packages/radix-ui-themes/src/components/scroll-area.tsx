@@ -9,9 +9,13 @@ import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
 
 const scrollAreaSizes = ['1', '2', '3'] as const;
 type ScrollAreaSize = (typeof scrollAreaSizes)[number];
+const defaultScrollAreaSize: ScrollAreaSize = '1';
+
+const defaultScrollAreaRadius: ButtonRadius | undefined = undefined;
 
 const scrollAreaScrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
 type ScrollAreaScrollbars = (typeof scrollAreaScrollbarsValues)[number];
+const defaultScrollAreaScrollbars: ScrollAreaScrollbars = 'both';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 interface ScrollAreaProps
@@ -30,9 +34,9 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     type,
     scrollHideDelay = type !== 'scroll' ? 0 : undefined,
     dir,
-    size = '1',
-    radius,
-    scrollbars = 'both',
+    size = defaultScrollAreaSize,
+    radius = defaultScrollAreaRadius,
+    scrollbars = defaultScrollAreaScrollbars,
     ...viewportProps
   } = marginRest;
 
@@ -77,5 +81,12 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
 });
 ScrollArea.displayName = 'ScrollArea';
 
-export { scrollAreaSizes, scrollAreaScrollbarsValues, ScrollArea };
+export {
+  scrollAreaSizes,
+  defaultScrollAreaSize,
+  defaultScrollAreaRadius,
+  scrollAreaScrollbarsValues,
+  defaultScrollAreaScrollbars,
+  ScrollArea,
+};
 export type { ScrollAreaSize, ScrollAreaScrollbars };
