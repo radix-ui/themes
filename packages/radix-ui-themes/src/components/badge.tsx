@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
 
 const badgeSizes = ['1', '2'] as const;
 type BadgeSize = (typeof badgeSizes)[number];
@@ -14,7 +14,7 @@ type BadgeElement = React.ElementRef<'span'>;
 interface BadgeProps extends Omit<React.ComponentPropsWithoutRef<'span'>, 'color'>, MarginProps {
   size?: Responsive<BadgeSize>;
   variant?: BadgeVariant;
-  color?: Color;
+  color?: ColorOrGray;
 }
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

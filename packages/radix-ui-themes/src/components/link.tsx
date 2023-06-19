@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
 
 const linkSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type LinkSize = (typeof linkSizes)[number];
@@ -24,7 +24,7 @@ interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, 
   variant?: LinkVariant;
   weight?: Responsive<LinkWeight>;
   gap?: Responsive<LinkGap>;
-  color?: Color;
+  color?: ColorOrGray;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
