@@ -152,7 +152,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         </Text>
       </Box>
 
-      <Separator color="gray" size="4" mb="4" mx="-5" style={{ width: 'auto' }} />
+      <Separator size="4" mb="4" mx="-5" style={{ width: 'auto' }} />
       <Text size="2" weight="bold" mb="3">
         Color
       </Text>
@@ -302,7 +302,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         </Flex>
       </Grid>
 
-      <Separator color="gray" size="4" my="4" mx="-5" style={{ width: 'auto' }} />
+      <Separator size="4" my="4" mx="-5" style={{ width: 'auto' }} />
       <Text size="2" weight="bold" mb="3">
         Style
       </Text>
