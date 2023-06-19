@@ -21,7 +21,7 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = '3',
+    size,
     weight = 'normal',
     color,
     highlighted = true,
