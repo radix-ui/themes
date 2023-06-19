@@ -45,7 +45,6 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     radius = defaultBaseButtonRadius,
     ...baseButtonProps
   } = marginRest;
-
   return (
     <button
       data-color-scale={color}

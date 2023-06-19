@@ -35,7 +35,6 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
       color = defaultRadioGroupColor,
       ...rootProps
     } = marginRest;
-
     return (
       <RadioGroupPrimitive.Root
         data-color-scale={color}
@@ -62,7 +61,6 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const { className, style, ...itemProps } = marginRest;
-
     return (
       <span
         className={classNames('rui-RadioGroupItem', withMargin(marginProps), className)}

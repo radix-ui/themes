@@ -31,7 +31,6 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
     radius = defaultTextAreaRadius,
     ...textAreaProps
   } = marginRest;
-
   return (
     <textarea
       data-button-radius={radius}

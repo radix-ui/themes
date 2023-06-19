@@ -61,7 +61,6 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
     gapY,
     ...gridProps
   } = layoutRest;
-
   return (
     <div
       {...gridProps}

@@ -15,7 +15,6 @@ interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProp
 const Section = React.forwardRef<SectionElement, SectionProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { className, size = defaultSectionSize, ...sectionProps } = marginRest;
-
   return (
     <section
       {...sectionProps}

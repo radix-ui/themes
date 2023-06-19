@@ -26,7 +26,6 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     ...tooltipContentProps
   } = props;
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
-
   return (
     <TooltipPrimitive.Root {...rootProps}>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>

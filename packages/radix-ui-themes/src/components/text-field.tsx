@@ -31,7 +31,6 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
     radius = defaultTextFieldRadius,
     ...textAreaProps
   } = marginRest;
-
   return (
     <input
       data-button-radius={radius}

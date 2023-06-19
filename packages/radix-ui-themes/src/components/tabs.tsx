@@ -14,7 +14,6 @@ interface TabsRootProps
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { className, ...rootProps } = marginRest;
-
   return (
     <TabsPrimitive.Root
       {...rootProps}
@@ -35,7 +34,6 @@ interface TabsListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimit
 }
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
   const { className, size = defaultTabsListSize, ...listProps } = props;
-
   return (
     <TabsPrimitive.List
       {...listProps}
@@ -49,16 +47,19 @@ TabsList.displayName = 'TabsList';
 type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
 interface TabsTriggerProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {}
 const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
-  ({ className, children, ...props }, forwardedRef) => (
-    <TabsPrimitive.Trigger
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rui-reset-button', 'rui-TabsTrigger', className)}
-    >
-      <span className="rui-TabsTriggerInner">{children}</span>
-      <span className="rui-TabsTriggerInnerHidden">{children}</span>
-    </TabsPrimitive.Trigger>
-  )
+  (props, forwardedRef) => {
+    const { className, children, ...triggerProps } = props;
+    return (
+      <TabsPrimitive.Trigger
+        {...triggerProps}
+        ref={forwardedRef}
+        className={classNames('rui-reset-button', 'rui-TabsTrigger', className)}
+      >
+        <span className="rui-TabsTriggerInner">{children}</span>
+        <span className="rui-TabsTriggerInnerHidden">{children}</span>
+      </TabsPrimitive.Trigger>
+    );
+  }
 );
 TabsTrigger.displayName = 'TabsTrigger';
 

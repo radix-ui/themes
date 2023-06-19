@@ -28,7 +28,6 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
     color = defaultSeparatorColor,
     ...separatorProps
   } = marginRest;
-
   return (
     <SeparatorPrimitive.Root
       data-color-scale={color}

@@ -92,7 +92,6 @@ interface DropdownMenuItemProps
 const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuItemProps>(
   (props, forwardedRef) => {
     const { className, children, shortcut, ...itemProps } = props;
-
     return (
       <DropdownMenuPrimitive.Item
         {...itemProps}
@@ -177,7 +176,6 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
   const { children, className, shortcut, ...itemProps } = props;
-
   return (
     <DropdownMenuPrimitive.CheckboxItem
       {...itemProps}
@@ -213,7 +211,6 @@ const DropdownMenuSubTrigger = React.forwardRef<
   DropdownMenuSubTriggerProps
 >((props, forwardedRef) => {
   const { className, children, ...subTriggerProps } = props;
-
   return (
     <DropdownMenuPrimitive.SubTrigger
       {...subTriggerProps}

@@ -33,7 +33,6 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
     ...headingProps
   } = marginRest;
   const Comp = asChild ? Slot : 'h1';
-
   return (
     <Comp
       data-color-scale={color}

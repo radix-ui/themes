@@ -39,7 +39,6 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     scrollbars = defaultScrollAreaScrollbars,
     ...viewportProps
   } = marginRest;
-
   return (
     <ScrollAreaPrimitive.Root
       type={type}

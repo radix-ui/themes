@@ -41,7 +41,6 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
     ...imageProps
   } = marginRest;
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'loaded' | 'error'>('idle');
-
   return (
     <AvatarPrimitive.Root
       data-color-scale={color}

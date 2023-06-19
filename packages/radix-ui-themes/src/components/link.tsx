@@ -45,7 +45,6 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
     ...linkProps
   } = marginRest;
   const Comp = asChild ? Slot : 'a';
-
   return (
     <Comp
       data-color-scale={color}

@@ -57,7 +57,6 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
     gap,
     ...flexProps
   } = layoutRest;
-
   return (
     <div
       {...flexProps}

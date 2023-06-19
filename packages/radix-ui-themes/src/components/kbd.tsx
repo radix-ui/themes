@@ -15,7 +15,6 @@ interface KbdProps extends React.ComponentPropsWithoutRef<'kbd'>, MarginProps {
 const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { className, width = defaultKbdWidth, ...kbdProps } = marginRest;
-
   return (
     <kbd
       {...kbdProps}

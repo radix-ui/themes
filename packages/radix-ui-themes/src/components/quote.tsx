@@ -3,11 +3,9 @@ import classNames from 'classnames';
 
 type QuoteElement = React.ElementRef<'q'>;
 interface QuoteProps extends React.ComponentPropsWithoutRef<'q'> {}
-const Quote = React.forwardRef<QuoteElement, QuoteProps>((props, forwardedRef) => {
-  const { className, ...quoteProps } = props;
-
-  return <q {...quoteProps} ref={forwardedRef} className={classNames('rui-Quote', className)} />;
-});
+const Quote = React.forwardRef<QuoteElement, QuoteProps>((props, forwardedRef) => (
+  <q {...props} ref={forwardedRef} className={classNames('rui-Quote', props.className)} />
+));
 Quote.displayName = 'Quote';
 
 export { Quote };

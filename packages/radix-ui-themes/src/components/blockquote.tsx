@@ -10,7 +10,6 @@ interface BlockquoteProps extends React.ComponentPropsWithoutRef<'blockquote'>, 
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { className, ...blockquoteProps } = marginRest;
-
   return (
     <Text asChild>
       <blockquote

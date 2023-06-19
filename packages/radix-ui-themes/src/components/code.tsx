@@ -29,7 +29,6 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
     highlighted = true,
     ...codeProps
   } = marginRest;
-
   return (
     <code
       data-color-scale={color}

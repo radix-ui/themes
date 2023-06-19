@@ -28,7 +28,6 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const { rest: paddingRest, ...paddingProps } = extractPaddingProps(marginRest);
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
   const { className, display, ...boxProps } = layoutRest;
-
   return (
     <div
       {...boxProps}

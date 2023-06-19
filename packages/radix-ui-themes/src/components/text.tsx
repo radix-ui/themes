@@ -45,7 +45,6 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
     ...textProps
   } = marginRest;
   const Comp = asChild ? Slot : 'p';
-
   return (
     <Comp
       data-color-scale={color}

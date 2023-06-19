@@ -39,7 +39,6 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     radius = defaultCheckboxRadius,
     ...checkboxProps
   } = marginRest;
-
   return (
     <span
       data-button-radius={radius}

@@ -15,7 +15,6 @@ interface ContainerProps extends React.ComponentPropsWithoutRef<'div'>, MarginPr
 const Container = React.forwardRef<ContainerElement, ContainerProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { className, size = defaultContainerSize, ...containerProps } = marginRest;
-
   return (
     <div
       {...containerProps}

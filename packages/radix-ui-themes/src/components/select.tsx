@@ -64,7 +64,6 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
     radius = defaultSelectRadius,
     ...contentProps
   } = rootRest;
-
   return (
     <SelectPrimitive.Root {...rootProps}>
       <SelectPrimitive.Trigger asChild>
@@ -119,7 +118,6 @@ type SelectItemElement = React.ElementRef<typeof SelectPrimitive.Item>;
 interface SelectItemProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {}
 const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, forwardedRef) => {
   const { className, children, ...itemProps } = props;
-
   return (
     <SelectPrimitive.Item
       {...itemProps}

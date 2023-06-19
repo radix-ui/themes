@@ -91,7 +91,6 @@ interface ContextMenuItemProps
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
   (props, forwardedRef) => {
     const { className, children, shortcut, ...itemProps } = props;
-
     return (
       <ContextMenuPrimitive.Item
         {...itemProps}
@@ -174,7 +173,6 @@ const ContextMenuCheckboxItem = React.forwardRef<
   ContextMenuCheckboxItemProps
 >((props, forwardedRef) => {
   const { children, className, shortcut, ...itemProps } = props;
-
   return (
     <ContextMenuPrimitive.CheckboxItem
       {...itemProps}
@@ -210,7 +208,6 @@ const ContextMenuSubTrigger = React.forwardRef<
   ContextMenuSubTriggerProps
 >((props, forwardedRef) => {
   const { className, children, ...subTriggerProps } = props;
-
   return (
     <ContextMenuPrimitive.SubTrigger
       {...subTriggerProps}

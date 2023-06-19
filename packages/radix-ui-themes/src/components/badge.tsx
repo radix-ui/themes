@@ -29,7 +29,6 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
     color = defaultBadgeColor,
     ...badgeProps
   } = marginRest;
-
   return (
     <span
       data-color-scale={color}

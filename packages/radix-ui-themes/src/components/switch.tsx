@@ -38,7 +38,6 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
     radius = defaultSwitchRadius,
     ...switchProps
   } = marginRest;
-
   return (
     <span
       className={classNames(
