@@ -179,12 +179,6 @@ export default function Sink() {
   return (
     <html
       lang="en"
-      data-color-scale="indigo"
-      data-gray-scale="natural"
-      data-background-feel="natural"
-      data-foreground-feel="natural"
-      data-button-radius="medium"
-      data-scaling="regular"
       // className="dark-theme"
     >
       <body className="rui-reset-body">
