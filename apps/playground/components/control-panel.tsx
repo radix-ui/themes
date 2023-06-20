@@ -42,23 +42,29 @@ interface ControlPanelImplProps {
   onVisibleChange: (visible: boolean) => void;
 }
 const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleChange }) => {
-  const doc = document.documentElement;
+  const root = document.documentElement;
 
-  const defaultColorScale = doc.dataset.colorScale as ColorScale;
-  const defaultGrayScale = doc.dataset.grayScale as GrayScale;
-  const defaultDarkMode = doc.classList.contains('dark-theme');
-  const defaultBackgroundFeel = doc.dataset.backgroundFeel as ColorFeel;
-  const defaultForegroundFeel = doc.dataset.foregroundFeel as ColorFeel;
-  const defaultButtonRadius = doc.dataset.buttonRadius as ButtonRadius;
-  const defaultScaling = doc.dataset.scaling as Scaling;
+  const [defaultColorScale] = React.useState((root.dataset.colorScale as ColorScale) || 'indigo');
+  const [defaultGrayScale] = React.useState((root.dataset.grayScale as GrayScale) || 'natural');
+  const [defaultDarkMode] = React.useState(root.classList.contains('dark-theme') || false);
+  const [defaultBackgroundFeel] = React.useState(
+    (root.dataset.backgroundFeel as ColorFeel) || 'natural'
+  );
+  const [defaultForegroundFeel] = React.useState(
+    (root.dataset.foregroundFeel as ColorFeel) || 'natural'
+  );
+  const [defaultButtonRadius] = React.useState(
+    (root.dataset.buttonRadius as ButtonRadius) || 'medium'
+  );
+  const [defaultScaling] = React.useState((root.dataset.scaling as Scaling) || 'regular');
 
-  const [colorScale, setColorScale] = React.useState<ColorScale>(defaultColorScale);
-  const [grayScale, setGrayScale] = React.useState<GrayScale>(defaultGrayScale);
-  const [backgroundFeel, setBackgroundFeel] = React.useState<ColorFeel>(defaultBackgroundFeel);
-  const [foregroundFeel, setForegroundFeel] = React.useState<ColorFeel>(defaultForegroundFeel);
+  const [colorScale, setColorScale] = React.useState(defaultColorScale);
+  const [grayScale, setGrayScale] = React.useState(defaultGrayScale);
+  const [backgroundFeel, setBackgroundFeel] = React.useState(defaultBackgroundFeel);
+  const [foregroundFeel, setForegroundFeel] = React.useState(defaultForegroundFeel);
   const [darkMode, setDarkMode] = React.useState(defaultDarkMode);
-  const [buttonRadius, setButtonRadius] = React.useState<ButtonRadius>(defaultButtonRadius);
-  const [scaling, setScaling] = React.useState<Scaling>(defaultScaling);
+  const [buttonRadius, setButtonRadius] = React.useState(defaultButtonRadius);
+  const [scaling, setScaling] = React.useState(defaultScaling);
 
   const [feelLocked, setFeelLocked] = React.useState(backgroundFeel === foregroundFeel);
 
@@ -88,38 +94,62 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [darkMode, setDarkMode]);
 
   React.useLayoutEffect(() => {
-    if (colorScale) document.documentElement.dataset.colorScale = colorScale;
-  }, [colorScale]);
+    if (colorScale !== defaultColorScale) {
+      root.dataset.colorScale = colorScale;
+    } else {
+      delete root.dataset.colorScale;
+    }
+  }, [root, defaultColorScale, colorScale]);
 
   React.useLayoutEffect(() => {
-    if (backgroundFeel) document.documentElement.dataset.backgroundFeel = backgroundFeel;
-  }, [backgroundFeel]);
+    if (backgroundFeel !== defaultBackgroundFeel) {
+      root.dataset.backgroundFeel = backgroundFeel;
+    } else {
+      delete root.dataset.backgroundFeel;
+    }
+  }, [root, defaultBackgroundFeel, backgroundFeel]);
 
   React.useLayoutEffect(() => {
-    if (foregroundFeel) document.documentElement.dataset.foregroundFeel = foregroundFeel;
-  }, [foregroundFeel]);
+    if (foregroundFeel !== defaultForegroundFeel) {
+      root.dataset.foregroundFeel = foregroundFeel;
+    } else {
+      delete root.dataset.foregroundFeel;
+    }
+  }, [root, defaultForegroundFeel, foregroundFeel]);
 
   React.useLayoutEffect(() => {
-    if (grayScale) document.documentElement.dataset.grayScale = grayScale;
-  }, [grayScale]);
+    if (grayScale !== defaultGrayScale) {
+      root.dataset.grayScale = grayScale;
+    } else {
+      delete root.dataset.grayScale;
+    }
+  }, [root, defaultGrayScale, grayScale]);
 
   React.useLayoutEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.remove('light-theme');
-      document.documentElement.classList.add('dark-theme');
+      root.classList.remove('light-theme');
+      if (darkMode !== defaultDarkMode) root.classList.add('dark-theme');
     } else {
-      document.documentElement.classList.remove('dark-theme');
-      document.documentElement.classList.add('light-theme');
+      root.classList.remove('dark-theme');
+      if (darkMode !== defaultDarkMode) root.classList.add('light-theme');
     }
-  }, [darkMode]);
+  }, [root, defaultDarkMode, darkMode]);
 
   React.useLayoutEffect(() => {
-    if (buttonRadius) document.documentElement.dataset.buttonRadius = buttonRadius;
-  }, [buttonRadius]);
+    if (buttonRadius !== defaultButtonRadius) {
+      root.dataset.buttonRadius = buttonRadius;
+    } else {
+      delete root.dataset.buttonRadius;
+    }
+  }, [root, defaultButtonRadius, buttonRadius]);
 
   React.useLayoutEffect(() => {
-    if (scaling) document.documentElement.dataset.scaling = scaling;
-  }, [scaling]);
+    if (scaling !== defaultScaling) {
+      root.dataset.scaling = defaultScaling;
+    } else {
+      delete root.dataset.scaling;
+    }
+  }, [root, defaultScaling, scaling]);
 
   return (
     <Box

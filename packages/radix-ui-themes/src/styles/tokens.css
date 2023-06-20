@@ -8,35 +8,38 @@
   --ff-code: 'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
   --ff-italic: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 
+  /* global scaling */
+  --scaling: 1;
+
   /* text: size */
-  --fs-1: calc(12px * var(--scaling, 1));
-  --fs-2: calc(14px * var(--scaling, 1));
-  --fs-3: calc(16px * var(--scaling, 1));
-  --fs-4: calc(18px * var(--scaling, 1));
-  --fs-5: calc(20px * var(--scaling, 1));
-  --fs-6: calc(24px * var(--scaling, 1));
-  --fs-7: calc(28px * var(--scaling, 1));
-  --fs-8: calc(35px * var(--scaling, 1));
-  --fs-9: calc(60px * var(--scaling, 1));
+  --fs-1: calc(12px * var(--scaling));
+  --fs-2: calc(14px * var(--scaling));
+  --fs-3: calc(16px * var(--scaling));
+  --fs-4: calc(18px * var(--scaling));
+  --fs-5: calc(20px * var(--scaling));
+  --fs-6: calc(24px * var(--scaling));
+  --fs-7: calc(28px * var(--scaling));
+  --fs-8: calc(35px * var(--scaling));
+  --fs-9: calc(60px * var(--scaling));
 
   /* space */
-  --space-1: calc(4px * var(--scaling, 1));
-  --space-2: calc(8px * var(--scaling, 1));
-  --space-3: calc(12px * var(--scaling, 1));
-  --space-4: calc(16px * var(--scaling, 1));
-  --space-5: calc(24px * var(--scaling, 1));
-  --space-6: calc(32px * var(--scaling, 1));
-  --space-7: calc(40px * var(--scaling, 1));
-  --space-8: calc(48px * var(--scaling, 1));
-  --space-9: calc(64px * var(--scaling, 1));
+  --space-1: calc(4px * var(--scaling));
+  --space-2: calc(8px * var(--scaling));
+  --space-3: calc(12px * var(--scaling));
+  --space-4: calc(16px * var(--scaling));
+  --space-5: calc(24px * var(--scaling));
+  --space-6: calc(32px * var(--scaling));
+  --space-7: calc(40px * var(--scaling));
+  --space-8: calc(48px * var(--scaling));
+  --space-9: calc(64px * var(--scaling));
 
   /* radius */
-  --br-1: calc(3px * var(--scaling, 1));
-  --br-2: calc(4px * var(--scaling, 1));
-  --br-3: calc(6px * var(--scaling, 1));
-  --br-4: calc(8px * var(--scaling, 1));
-  --br-5: calc(12px * var(--scaling, 1));
-  --br-6: calc(16px * var(--scaling, 1));
+  --br-1: calc(3px * var(--scaling));
+  --br-2: calc(4px * var(--scaling));
+  --br-3: calc(6px * var(--scaling));
+  --br-4: calc(8px * var(--scaling));
+  --br-5: calc(12px * var(--scaling));
+  --br-6: calc(16px * var(--scaling));
 }
 
 :root,
@@ -94,6 +97,15 @@
 }
 
 /* button radius */
+:root /* default: regular */ {
+  --button-radius: 1;
+  --brs-1: min(calc(var(--button-radius) * var(--br-1)), calc(var(--space-7) / 2));
+  --brs-2: min(calc(var(--button-radius) * var(--br-2)), calc(var(--space-7) / 2));
+  --brs-3: min(calc(var(--button-radius) * var(--br-3)), calc(var(--space-7) / 2));
+  --brs-4: min(calc(var(--button-radius) * var(--br-4)), calc(var(--space-7) / 2));
+  --brs-5: min(calc(var(--button-radius) * var(--br-5)), calc(var(--space-7) / 2));
+  --brs-6: min(calc(var(--button-radius) * var(--br-6)), calc(var(--space-7) / 2));
+}
 [data-button-radius='none'] {
   --button-radius: 0;
 }
@@ -119,6 +131,20 @@
 }
 
 /* color scales */
+:root /* default: indigo */ {
+  --color1: var(--indigo1);
+  --color2: var(--indigo2);
+  --color3: var(--indigo3);
+  --color4: var(--indigo4);
+  --color5: var(--indigo5);
+  --color6: var(--indigo6);
+  --color7: var(--indigo7);
+  --color8: var(--indigo8);
+  --color9: var(--indigo9);
+  --color10: var(--indigo10);
+  --color11: var(--indigo11);
+  --color12: var(--indigo12);
+}
 [data-color-scale='tomato'] {
   &,
   & .light-theme,
@@ -517,6 +543,33 @@
 }
 
 /* natural grays */
+:root /* default: slate (because default color is indigo) */ {
+  --natural-gray1: var(--slate1);
+  --natural-gray2: var(--slate2);
+  --natural-gray3: var(--slate3);
+  --natural-gray4: var(--slate4);
+  --natural-gray5: var(--slate5);
+  --natural-gray6: var(--slate6);
+  --natural-gray7: var(--slate7);
+  --natural-gray8: var(--slate8);
+  --natural-gray9: var(--slate9);
+  --natural-gray10: var(--slate10);
+  --natural-gray11: var(--slate11);
+  --natural-gray12: var(--slate12);
+
+  --natural-grayA1: var(--slateA1);
+  --natural-grayA2: var(--slateA2);
+  --natural-grayA3: var(--slateA3);
+  --natural-grayA4: var(--slateA4);
+  --natural-grayA5: var(--slateA5);
+  --natural-grayA6: var(--slateA6);
+  --natural-grayA7: var(--slateA7);
+  --natural-grayA8: var(--slateA8);
+  --natural-grayA9: var(--slateA9);
+  --natural-grayA10: var(--slateA10);
+  --natural-grayA11: var(--slateA11);
+  --natural-grayA12: var(--slateA12);
+}
 [data-color-scale='tomato'],
 [data-color-scale='red'],
 [data-color-scale='crimson'],
@@ -691,6 +744,7 @@
 }
 
 /* solid foreground */
+:root, /* default: white */
 [data-color-scale='tomato'],
 [data-color-scale='red'],
 [data-color-scale='crimson'],
@@ -733,6 +787,10 @@
 }
 
 /* background feel */
+:root /* default: natural */ {
+  --background-feel: var(--natural-gray1);
+  background-color: var(--background-feel);
+}
 [data-background-feel='neutral'] {
   &,
   & .light-theme,
@@ -762,6 +820,10 @@
 }
 
 /* foreground feel */
+:root /* default: natural */ {
+  --foreground-feel: var(--natural-gray12);
+  color: var(--foreground-feel);
+}
 [data-foreground-feel='neutral'] {
   &,
   & .light-theme,
@@ -788,6 +850,33 @@
 }
 
 /* mono scale */
+:root /* default: natural */ {
+  --mono1: var(--natural-gray1);
+  --mono2: var(--natural-gray2);
+  --mono3: var(--natural-gray3);
+  --mono4: var(--natural-gray4);
+  --mono5: var(--natural-gray5);
+  --mono6: var(--natural-gray6);
+  --mono7: var(--natural-gray7);
+  --mono8: var(--natural-gray8);
+  --mono9: var(--natural-gray9);
+  --mono10: var(--natural-gray10);
+  --mono11: var(--natural-gray11);
+  --mono12: var(--natural-gray12);
+
+  --monoA1: var(--natural-grayA1);
+  --monoA2: var(--natural-grayA2);
+  --monoA3: var(--natural-grayA3);
+  --monoA4: var(--natural-grayA4);
+  --monoA5: var(--natural-grayA5);
+  --monoA6: var(--natural-grayA6);
+  --monoA7: var(--natural-grayA7);
+  --monoA8: var(--natural-grayA8);
+  --monoA9: var(--natural-grayA9);
+  --monoA10: var(--natural-grayA10);
+  --monoA11: var(--natural-grayA11);
+  --monoA12: var(--natural-grayA12);
+}
 [data-gray-scale='neutral'] {
   &,
   & .light-theme,

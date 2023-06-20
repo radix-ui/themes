@@ -2,6 +2,6 @@
   max-width: 400px;
 }
 
-.body {
+.document :global(#root) {
   padding: 100px 400px;
 }
