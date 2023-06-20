@@ -145,7 +145,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
 
   React.useLayoutEffect(() => {
     if (scaling !== defaultScaling) {
-      root.dataset.scaling = defaultScaling;
+      root.dataset.scaling = scaling;
     } else {
       delete root.dataset.scaling;
     }
