@@ -30,6 +30,7 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
   return (
     <input
       data-button-radius={radius}
+      spellCheck="false"
       {...textAreaProps}
       ref={forwardedRef}
       className={classNames(

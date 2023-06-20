@@ -43,9 +43,11 @@
 
   &.\31-letter {
     font-size: var(--fs-1-letter);
+    text-transform: uppercase;
   }
   &.\32-letters {
     font-size: var(--fs-2-letters);
+    text-transform: uppercase;
   }
 }
 

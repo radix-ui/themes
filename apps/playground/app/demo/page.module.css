@@ -1,0 +1,7 @@
+.document :global(.rui-DialogContent) {
+  max-width: 400px;
+}
+
+.body {
+  padding: 100px 400px;
+}
