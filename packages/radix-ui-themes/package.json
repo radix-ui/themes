@@ -42,7 +42,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@radix-ui/colors": "latest",
+    "@radix-ui/colors": "^0.1.9",
     "@radix-ui/react-accessible-icon": "latest",
     "@radix-ui/react-alert-dialog": "latest",
     "@radix-ui/react-aspect-ratio": "latest",

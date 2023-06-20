@@ -100,14 +100,19 @@
 
 /* solid-mono */
 
+:root,
+.light-theme {
+  --switch-button-checked-solid-mono-bg: var(--monoA12);
+}
+.dark-theme {
+  --switch-button-checked-solid-mono-bg: var(--monoA9);
+}
+
 .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where(:focus-visible) {
   outline-color: var(--monoA11);
 }
 .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where([data-state='checked']) {
-  background-color: var(--monoA12);
-}
-.dark-theme .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where([data-state='checked']) {
-  background-color: var(--monoA9);
+  background-color: var(--switch-button-checked-solid-mono-bg);
 }
 
 /* all disabled switches */

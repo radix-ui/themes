@@ -1,3 +1,13 @@
+:root,
+.light-theme {
+  --kbd-shadow: inset 0 0.5px var(--whiteA12), inset 0 3px 6px var(--monoA2),
+    0 0 0 0.5px var(--monoA7), inset 0 -0.5px var(--monoA6), 0 1px 2px var(--monoA7);
+}
+.dark-theme {
+  --kbd-shadow: inset 0 0.5px var(--whiteA9), inset 0 3px 6px var(--monoA2),
+    0 0 0 0.5px var(--monoA7), inset 0 -0.5px var(--blackA9), 0 1px 2px var(--blackA12);
+}
+
 .rui-Kbd {
   box-sizing: border-box;
   display: inline-flex;
@@ -21,20 +31,7 @@
 
   color: var(--mono12);
   background-color: var(--mono1);
-  box-shadow: inset 0 0.5px var(--highlight), inset 0 3px 6px var(--shading),
-    0 0 0 0.5px var(--border), inset 0 -0.5px var(--inner-shadow), 0 1px 2px var(--outer-shadow);
-
-  --highlight: var(--whiteA12);
-  --shading: var(--monoA2);
-  --border: var(--monoA7);
-  --inner-shadow: var(--monoA6);
-  --outer-shadow: var(--monoA7);
-}
-.dark-theme .rui-Kbd {
-  --highlight: var(--whiteA9);
-  --shading: var(--monoA2);
-  --inner-shadow: var(--blackA9);
-  --outer-shadow: var(--blackA12);
+  box-shadow: var(--kbd-shadow);
 }
 
 /***************************************************************************************************

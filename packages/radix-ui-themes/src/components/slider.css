@@ -105,16 +105,17 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-SliderRoot {
-  --shadow: inset 0 0 0 0.5px var(--monoA6), inset 0 1px 2px 0 var(--monoA7);
+:root,
+.light-theme {
+  --slider-track-shadow: inset 0 0 0 0.5px var(--monoA6), inset 0 1px 2px 0 var(--monoA7);
 }
-.dark-theme .rui-SliderRoot {
-  --shadow: inset 0 0 0 0.5px var(--monoA7), inset 0 1px 2px 0 var(--blackA11);
+.dark-theme {
+  --slider-track-shadow: inset 0 0 0 0.5px var(--monoA7), inset 0 1px 2px 0 var(--blackA11);
 }
 
 .rui-SliderTrack {
   background-color: var(--monoA3);
-  box-shadow: var(--shadow);
+  box-shadow: var(--slider-track-shadow);
 }
 
 .rui-SliderRange {
@@ -136,12 +137,16 @@
 }
 
 /* solid-mono */
+:root,
+.light-theme {
+  --slider-range-solid-mono-bg: var(--monoA12);
+}
+.dark-theme {
+  --slider-range-solid-mono-bg: var(--monoA9);
+}
 
 .rui-SliderRoot.variant-solid-mono .rui-SliderRange {
-  background-color: var(--monoA12);
-}
-.dark-theme .rui-SliderRoot.variant-solid-mono .rui-SliderRange {
-  background-color: var(--monoA9);
+  background-color: var(--slider-range-solid-mono-bg);
 }
 
 /* subtle */
