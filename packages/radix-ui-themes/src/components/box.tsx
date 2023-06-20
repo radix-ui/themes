@@ -9,11 +9,9 @@ import {
   withLayout,
   withBreakpoints,
 } from '../helpers';
+import type { BoxDisplay } from './box.props';
 
 import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
-
-const boxDisplayValues = ['none', 'inline', 'inline-block', 'block'] as const;
-type BoxDisplay = (typeof boxDisplayValues)[number];
 
 type BoxElement = React.ElementRef<'div'>;
 interface BoxProps
@@ -45,5 +43,4 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
 });
 Box.displayName = 'Box';
 
-export { boxDisplayValues, Box };
-export type { BoxDisplay };
+export { Box };

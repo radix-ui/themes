@@ -1,12 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { extractMarginProps, withBreakpoints, withMargin } from '../helpers';
+import { defaultSectionSize } from './section.props';
 
 import type { MarginProps, Responsive } from '../helpers';
-
-const sectionSizes = ['1', '2', '3'] as const;
-type SectionSize = (typeof sectionSizes)[number];
-const defaultSectionSize: SectionSize = '3';
+import type { SectionSize } from './section.props';
 
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps {
@@ -30,5 +28,4 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
 });
 Section.displayName = 'Section';
 
-export { sectionSizes, defaultSectionSize, Section };
-export type { SectionSize };
+export { Section };

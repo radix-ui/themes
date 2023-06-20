@@ -4,18 +4,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultRadioGroupSize,
+  defaultRadioGroupVariant,
+  defaultRadioGroupColor,
+} from './radio-group.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
-
-const radioGroupSizes = ['1', '2'] as const;
-type RadioGroupSize = (typeof radioGroupSizes)[number];
-const defaultRadioGroupSize: RadioGroupSize = '1';
-
-const radioGroupVariants = ['solid', 'solid-mono'] as const;
-type RadioGroupVariant = (typeof radioGroupVariants)[number];
-const defaultRadioGroupVariant: RadioGroupVariant = 'solid';
-
-const defaultRadioGroupColor: Color | undefined = undefined;
+import type { RadioGroupSize, RadioGroupVariant } from './radio-group.props';
 
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
@@ -79,15 +75,12 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
 );
 RadioGroupItem.displayName = 'RadioGroupItem';
 
-export const RadioGroup = {
-  Root: RadioGroupRoot,
-  Item: RadioGroupItem,
-};
-export {
-  radioGroupSizes,
-  defaultRadioGroupSize,
-  radioGroupVariants,
-  defaultRadioGroupVariant,
-  defaultRadioGroupColor,
-};
-export type { RadioGroupSize, RadioGroupVariant };
+const RadioGroup = Object.assign(
+  {},
+  {
+    Root: RadioGroupRoot,
+    Item: RadioGroupItem,
+  }
+);
+
+export { RadioGroup, RadioGroupRoot, RadioGroupItem };

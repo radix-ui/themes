@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import { Provider, Avatar, Flex } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';

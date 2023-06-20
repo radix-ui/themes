@@ -78,12 +78,26 @@ const AlertDialogCancel = React.forwardRef<AlertDialogCancelElement, AlertDialog
 );
 AlertDialogCancel.displayName = 'AlertDialogCancel';
 
-export const AlertDialog = {
-  Root: AlertDialogRoot,
-  Trigger: AlertDialogTrigger,
-  Content: AlertDialogContent,
-  Title: AlertDialogTitle,
-  Description: AlertDialogDescription,
-  Action: AlertDialogAction,
-  Cancel: AlertDialogCancel,
+const AlertDialog = Object.assign(
+  {},
+  {
+    Root: AlertDialogRoot,
+    Trigger: AlertDialogTrigger,
+    Content: AlertDialogContent,
+    Title: AlertDialogTitle,
+    Description: AlertDialogDescription,
+    Action: AlertDialogAction,
+    Cancel: AlertDialogCancel,
+  }
+);
+
+export {
+  AlertDialog,
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
 };

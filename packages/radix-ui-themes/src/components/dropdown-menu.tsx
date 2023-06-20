@@ -5,16 +5,10 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import classNames from 'classnames';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { withBreakpoints } from '../helpers';
+import { defaultDropdownMenuSize, defaultDropdownMenuVariant } from './dropdown-menu.props';
 
 import type { Responsive } from '../helpers';
-
-const dropdownMenuSizes = ['1', '2'] as const;
-type DropdownMenuSize = (typeof dropdownMenuSizes)[number];
-const defaultDropdownMenuSize: DropdownMenuSize = '2';
-
-const dropdownMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type DropdownMenuVariant = (typeof dropdownMenuVariants)[number];
-const defaultDropdownMenuVariant: DropdownMenuVariant = 'solid';
+import type { DropdownMenuSize, DropdownMenuVariant } from './dropdown-menu.props';
 
 type StyleProps = {
   size?: Responsive<DropdownMenuSize>;
@@ -283,7 +277,7 @@ const DropdownMenuSeparator = React.forwardRef<
 ));
 DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
 
-export const DropdownMenu = {
+const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Root: DropdownMenuRoot,
   Trigger: DropdownMenuTrigger,
   Content: DropdownMenuContent,
@@ -297,11 +291,21 @@ export const DropdownMenu = {
   SubTrigger: DropdownMenuSubTrigger,
   SubContent: DropdownMenuSubContent,
   Separator: DropdownMenuSeparator,
-};
+});
+
 export {
-  dropdownMenuSizes,
-  defaultDropdownMenuSize,
-  dropdownMenuVariants,
-  defaultDropdownMenuVariant,
+  DropdownMenu,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuSeparator,
 };
-export type { DropdownMenuSize, DropdownMenuVariant };

@@ -4,19 +4,15 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultSliderSize,
+  defaultSliderVariant,
+  defaultSliderColor,
+  defaultSliderRadius,
+} from './slider.props';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
-
-const sliderSizes = ['1', '2', '3'] as const;
-type SliderSize = (typeof sliderSizes)[number];
-const defaultSliderSize: SliderSize = '2';
-
-const sliderVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type SliderVariant = (typeof sliderVariants)[number];
-const defaultSliderVariant: SliderVariant = 'solid';
-
-const defaultSliderColor: Color | undefined = undefined;
-const defaultSliderRadius: ButtonRadius | undefined = undefined;
+import type { SliderSize, SliderVariant } from './slider.props';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 interface SliderProps
@@ -65,13 +61,4 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
 });
 Slider.displayName = 'Slider';
 
-export {
-  sliderSizes,
-  defaultSliderSize,
-  sliderVariants,
-  defaultSliderVariant,
-  defaultSliderColor,
-  defaultSliderRadius,
-  Slider,
-};
-export type { SliderSize, SliderVariant };
+export { Slider };

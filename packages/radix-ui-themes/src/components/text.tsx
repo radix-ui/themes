@@ -2,26 +2,16 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultTextSize,
+  defaultTextWeight,
+  defaultTextAlign,
+  defaultTextTrim,
+  defaultTextColor,
+} from './text.props';
 
 import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
-
-const textSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-type TextSize = (typeof textSizes)[number];
-const defaultTextSize: TextSize = '3';
-
-const textWeights = ['normal', 'bold'] as const;
-type TextWeight = (typeof textWeights)[number];
-const defaultTextWeight: TextWeight = 'normal';
-
-const textAlignValues = ['left', 'center', 'right'] as const;
-type TextAlign = (typeof textAlignValues)[number];
-const defaultTextAlign: TextAlign | undefined = undefined;
-
-const textTrimValues = ['normal', 'start', 'end', 'both'] as const;
-type TextTrim = (typeof textTrimValues)[number];
-const defaultTextTrim: TextTrim | undefined = undefined;
-
-const defaultTextColor: ColorOrGray | undefined = undefined;
+import type { TextSize, TextWeight, TextAlign, TextTrim } from './text.props';
 
 type TextElement = React.ElementRef<'p'>;
 interface TextProps extends Omit<React.ComponentPropsWithoutRef<'p'>, 'color'>, MarginProps {
@@ -64,16 +54,4 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
 });
 Text.displayName = 'Text';
 
-export {
-  textSizes,
-  defaultTextSize,
-  textWeights,
-  defaultTextWeight,
-  textAlignValues,
-  defaultTextAlign,
-  textTrimValues,
-  defaultTextTrim,
-  defaultTextColor,
-  Text,
-};
-export type { TextSize, TextWeight, TextAlign, TextTrim };
+export { Text };

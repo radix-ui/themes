@@ -5,19 +5,15 @@ import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultCheckboxSize,
+  defaultCheckboxVariant,
+  defaultCheckboxColor,
+  defaultCheckboxRadius,
+} from './checkbox.props';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
-
-const checkboxSizes = ['1', '2'] as const;
-type CheckboxSize = (typeof checkboxSizes)[number];
-const defaultCheckboxSize: CheckboxSize = '1';
-
-const checkboxVariants = ['solid', 'solid-mono'] as const;
-type CheckboxVariant = (typeof checkboxVariants)[number];
-const defaultCheckboxVariant: CheckboxVariant = 'solid';
-
-const defaultCheckboxColor: Color | undefined = undefined;
-const defaultCheckboxRadius: ButtonRadius | undefined = undefined;
+import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxProps
@@ -65,13 +61,4 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
 });
 Checkbox.displayName = 'Checkbox';
 
-export {
-  checkboxSizes,
-  defaultCheckboxSize,
-  checkboxVariants,
-  defaultCheckboxVariant,
-  defaultCheckboxColor,
-  defaultCheckboxRadius,
-  Checkbox,
-};
-export type { CheckboxSize, CheckboxVariant };
+export { Checkbox };

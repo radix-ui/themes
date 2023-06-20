@@ -2,26 +2,16 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultLinkSize,
+  defaultLinkVariant,
+  defaultLinkWeight,
+  defaultLinkGap,
+  defaultLinkColor,
+} from './link.props';
 
 import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
-
-const linkSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-type LinkSize = (typeof linkSizes)[number];
-const defaultLinkSize: LinkSize | undefined = undefined;
-
-const linkVariants = ['default', 'high-contrast'] as const;
-type LinkVariant = (typeof linkVariants)[number];
-const defaultLinkVariant: LinkVariant = 'default';
-
-const linkWeights = ['normal', 'bold'] as const;
-type LinkWeight = (typeof linkWeights)[number];
-const defaultLinkWeight: LinkWeight = 'normal';
-
-const linkGap = ['0', '1', '2'] as const;
-type LinkGap = (typeof linkGap)[number];
-const defaultLinkGap: LinkGap | undefined = undefined;
-
-const defaultLinkColor: ColorOrGray | undefined = undefined;
+import type { LinkSize, LinkVariant, LinkWeight, LinkGap } from './link.props';
 
 type LinkElement = React.ElementRef<'a'>;
 interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, MarginProps {
@@ -66,16 +56,4 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
 });
 Link.displayName = 'Link';
 
-export {
-  linkSizes,
-  defaultLinkSize,
-  linkVariants,
-  defaultLinkVariant,
-  linkWeights,
-  defaultLinkWeight,
-  linkGap,
-  defaultLinkGap,
-  defaultLinkColor,
-  Link,
-};
-export type { LinkSize, LinkVariant, LinkWeight, LinkGap };
+export { Link };

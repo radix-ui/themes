@@ -1,3 +1,3 @@
 'use client';
 
-export * from '@radix-ui/react-accessible-icon';
+export { AccessibleIcon } from '@radix-ui/react-accessible-icon';

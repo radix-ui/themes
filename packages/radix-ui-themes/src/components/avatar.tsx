@@ -5,18 +5,10 @@ import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { PersonIcon } from '@radix-ui/react-icons';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { defaultAvatarSize, defaultAvatarVariant, defaultAvatarColor } from './avatar.props';
 
+import type { AvatarSize, AvatarVariant } from './avatar.props';
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
-
-const avatarSizes = ['1', '2', '3', '4', '5'] as const;
-type AvatarSize = (typeof avatarSizes)[number];
-const defaultAvatarSize: AvatarSize = '3';
-
-const avatarVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type AvatarVariant = (typeof avatarVariants)[number];
-const defaultAvatarVariant: AvatarVariant = 'subtle';
-
-const defaultColor: Color | undefined = undefined;
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 interface AvatarProps
@@ -35,7 +27,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
     style,
     size = defaultAvatarSize,
     variant = defaultAvatarVariant,
-    color = defaultColor,
+    color = defaultAvatarColor,
     radius,
     fallback,
     ...imageProps
@@ -82,5 +74,4 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
 });
 Avatar.displayName = 'Avatar';
 
-export { avatarSizes, defaultAvatarSize, avatarVariants, defaultAvatarVariant, Avatar };
-export type { AvatarSize, AvatarVariant };
+export { Avatar };

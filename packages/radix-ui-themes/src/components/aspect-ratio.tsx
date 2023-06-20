@@ -1,3 +1,3 @@
 'use client';
 
-export * from '@radix-ui/react-aspect-ratio';
+export { AspectRatio } from '@radix-ui/react-aspect-ratio';

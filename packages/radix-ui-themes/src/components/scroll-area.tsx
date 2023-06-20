@@ -4,18 +4,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultScrollAreaSize,
+  defaultScrollAreaRadius,
+  defaultScrollAreaScrollbars,
+} from './scroll-area.props';
 
 import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
-
-const scrollAreaSizes = ['1', '2', '3'] as const;
-type ScrollAreaSize = (typeof scrollAreaSizes)[number];
-const defaultScrollAreaSize: ScrollAreaSize = '1';
-
-const defaultScrollAreaRadius: ButtonRadius | undefined = undefined;
-
-const scrollAreaScrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
-type ScrollAreaScrollbars = (typeof scrollAreaScrollbarsValues)[number];
-const defaultScrollAreaScrollbars: ScrollAreaScrollbars = 'both';
+import type { ScrollAreaSize, ScrollAreaScrollbars } from './scroll-area.props';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 interface ScrollAreaProps
@@ -80,12 +76,4 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
 });
 ScrollArea.displayName = 'ScrollArea';
 
-export {
-  scrollAreaSizes,
-  defaultScrollAreaSize,
-  defaultScrollAreaRadius,
-  scrollAreaScrollbarsValues,
-  defaultScrollAreaScrollbars,
-  ScrollArea,
-};
-export type { ScrollAreaSize, ScrollAreaScrollbars };
+export { ScrollArea };

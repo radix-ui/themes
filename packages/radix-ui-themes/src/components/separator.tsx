@@ -4,14 +4,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { defaultSeparatorSize, defaultSeparatorColor } from './separator.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
-
-const separatorSizes = ['1', '2', '3', '4'] as const;
-type SeparatorSize = (typeof separatorSizes)[number];
-const defaultSeparatorSize: SeparatorSize = '1';
-
-const defaultSeparatorColor: Color | undefined = undefined;
+import type { SeparatorSize } from './separator.props';
 
 type SeparatorElement = React.ElementRef<typeof SeparatorPrimitive.Root>;
 interface SeparatorProps
@@ -44,5 +40,4 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
 });
 Separator.displayName = 'Separator';
 
-export { separatorSizes, defaultSeparatorSize, defaultSeparatorColor, Separator };
-export type { SeparatorSize };
+export { Separator };

@@ -1,16 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { defaultCodeSize, defaultCodeWeight, defaultCodeColor } from './code.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
-
-const codeSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-type CodeSize = (typeof codeSizes)[number];
-const defaultCodeSize: CodeSize | undefined = undefined;
-
-const codeWeights = ['normal', 'bold'] as const;
-type CodeWeight = (typeof codeWeights)[number];
-const defaultCodeWeight: CodeWeight = 'normal';
+import type { CodeSize, CodeWeight } from './code.props';
 
 type CodeElement = React.ElementRef<'code'>;
 interface CodeProps extends Omit<React.ComponentPropsWithoutRef<'code'>, 'color'>, MarginProps {
@@ -23,9 +17,9 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size,
-    weight = 'normal',
-    color,
+    size = defaultCodeSize,
+    weight = defaultCodeWeight,
+    color = defaultCodeColor,
     highlighted = true,
     ...codeProps
   } = marginRest;
@@ -47,5 +41,4 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
 });
 Code.displayName = 'Code';
 
-export { codeSizes, defaultCodeSize, codeWeights, defaultCodeWeight, Code };
-export type { CodeSize, CodeWeight };
+export { Code };

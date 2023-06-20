@@ -4,19 +4,15 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultSwitchSize,
+  defaultSwitchVariant,
+  defaultSwitchColor,
+  defaultSwitchRadius,
+} from './switch.props';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
-
-const switchSizes = ['1', '2', '3'] as const;
-type SwitchSize = (typeof switchSizes)[number];
-const defaultSwitchSize: SwitchSize = '2';
-
-const switchVariants = ['solid', 'solid-mono'] as const;
-type SwitchVariant = (typeof switchVariants)[number];
-const defaultSwitchVariant: SwitchVariant = 'solid';
-
-const defaultSwitchColor: Color | undefined = undefined;
-const defaultSwitchRadius: ButtonRadius | undefined = undefined;
+import type { SwitchSize, SwitchVariant } from './switch.props';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 interface SwitchProps
@@ -63,13 +59,4 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
 });
 Switch.displayName = 'Switch';
 
-export {
-  switchSizes,
-  defaultSwitchSize,
-  switchVariants,
-  defaultSwitchVariant,
-  defaultSwitchColor,
-  defaultSwitchRadius,
-  Switch,
-};
-export type { SwitchSize, SwitchVariant };
+export { Switch };

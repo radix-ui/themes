@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import {
   ArrowTopRightIcon,
@@ -11,7 +9,15 @@ import {
 import NextLink from 'next/link';
 import {
   Provider,
-  AlertDialog,
+  //
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+  //
   AspectRatio,
   //
   Avatar,
@@ -38,13 +44,42 @@ import {
   //
   Container,
   //
-  ContextMenu,
+  ContextMenuRoot,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuLabel,
+  ContextMenuItem,
+  ContextMenuGroup,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuCheckboxItem,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+  ContextMenuSeparator,
   contextMenuSizes,
   contextMenuVariants,
   //
-  Dialog,
+  DialogRoot,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
   //
-  DropdownMenu,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuSeparator,
   dropdownMenuSizes,
   dropdownMenuVariants,
   //
@@ -55,7 +90,9 @@ import {
   Heading,
   headingSizes,
   //
-  HoverCard,
+  HoverCardRoot,
+  HoverCardTrigger,
+  HoverCardContent,
   //
   IconButton,
   iconButtonSizes,
@@ -66,10 +103,15 @@ import {
   Link,
   linkSizes,
   //
-  Popover,
+  PopoverRoot,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverClose,
+  //
   Quote,
   //
-  RadioGroup,
+  RadioGroupRoot,
+  RadioGroupItem,
   radioGroupSizes,
   radioGroupVariants,
   //
@@ -78,7 +120,11 @@ import {
   //
   Section,
   //
-  Select,
+  SelectRoot,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
   selectSizes,
   selectTriggerVariants,
   selectMenuVariants,
@@ -96,7 +142,10 @@ import {
   switchSizes,
   switchVariants,
   //
-  Tabs,
+  TabsRoot,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
   tabsListSizes,
   //
   TextArea,
@@ -947,58 +996,58 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Dialog">
-                <Dialog.Root>
-                  <Dialog.Trigger>
+                <DialogRoot>
+                  <DialogTrigger>
                     <Button variant="solid">Open</Button>
-                  </Dialog.Trigger>
-                  <Dialog.Content style={{ maxWidth: 450 }}>
+                  </DialogTrigger>
+                  <DialogContent style={{ maxWidth: 450 }}>
                     <Flex direction="column" gap="3">
-                      <Dialog.Title>Share resource</Dialog.Title>
-                      <Dialog.Description size="2">
+                      <DialogTitle>Share resource</DialogTitle>
+                      <DialogDescription size="2">
                         Jan Tschichold was a German calligrapher, typographer and book designer. He
                         played a significant role in the development of graphic design in the 20th
                         century.
-                      </Dialog.Description>
+                      </DialogDescription>
                       <Flex gap="3" mt="4" justify="end">
-                        <Dialog.Close>
+                        <DialogClose>
                           <Button variant="subtle-mono">Cancel</Button>
-                        </Dialog.Close>
-                        <Dialog.Close>
+                        </DialogClose>
+                        <DialogClose>
                           <Button variant="solid">
                             Share <Share2Icon />
                           </Button>
-                        </Dialog.Close>
+                        </DialogClose>
                       </Flex>
                     </Flex>
-                  </Dialog.Content>
-                </Dialog.Root>
+                  </DialogContent>
+                </DialogRoot>
               </DocsSection>
 
               <DocsSection title="AlertDialog">
-                <AlertDialog.Root>
-                  <AlertDialog.Trigger>
+                <AlertDialogRoot>
+                  <AlertDialogTrigger>
                     <Button variant="solid">Open</Button>
-                  </AlertDialog.Trigger>
-                  <AlertDialog.Content style={{ maxWidth: 450 }}>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent style={{ maxWidth: 450 }}>
                     <Flex direction="column" gap="3">
-                      <AlertDialog.Title>Revoke setup link</AlertDialog.Title>
-                      <AlertDialog.Description size="2">
+                      <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
+                      <AlertDialogDescription size="2">
                         The setup link will no longer be accessible and any existing setup sessions
                         will be revoked.
-                      </AlertDialog.Description>
+                      </AlertDialogDescription>
                       <Flex gap="3" mt="4" justify="end">
-                        <AlertDialog.Cancel>
+                        <AlertDialogCancel>
                           <Button variant="subtle-mono">Cancel</Button>
-                        </AlertDialog.Cancel>
-                        <AlertDialog.Action>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
                           <Button variant="solid" color="red">
                             Revoke link
                           </Button>
-                        </AlertDialog.Action>
+                        </AlertDialogAction>
                       </Flex>
                     </Flex>
-                  </AlertDialog.Content>
-                </AlertDialog.Root>
+                  </AlertDialogContent>
+                </AlertDialogRoot>
               </DocsSection>
 
               <DocsSection title="DropdownMenu">
@@ -1017,14 +1066,14 @@ export default function Sink() {
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         {dropdownMenuSizes.map((size) => (
                           <td key={size}>
-                            <DropdownMenu.Root>
-                              <DropdownMenu.Trigger>
+                            <DropdownMenuRoot>
+                              <DropdownMenuTrigger>
                                 <Button variant="subtle-mono" size={size}>
                                   <DotsHorizontalIcon />
                                 </Button>
-                              </DropdownMenu.Trigger>
+                              </DropdownMenuTrigger>
                               <DropdownMenuContentDemo size={size} variant={variant} />
-                            </DropdownMenu.Root>
+                            </DropdownMenuRoot>
                           </td>
                         ))}
                       </tr>
@@ -1049,12 +1098,12 @@ export default function Sink() {
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         {contextMenuSizes.map((size) => (
                           <td key={size}>
-                            <ContextMenu.Root>
-                              <ContextMenu.Trigger>
+                            <ContextMenuRoot>
+                              <ContextMenuTrigger>
                                 <RightClickArea size={size} />
-                              </ContextMenu.Trigger>
+                              </ContextMenuTrigger>
                               <ContextMenuContentDemo size={size} variant={variant} />
-                            </ContextMenu.Root>
+                            </ContextMenuRoot>
                           </td>
                         ))}
                       </tr>
@@ -1064,26 +1113,26 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="HoverCard">
-                <HoverCard.Root>
-                  <HoverCard.Trigger>
+                <HoverCardRoot>
+                  <HoverCardTrigger>
                     <Link>A fancy link</Link>
-                  </HoverCard.Trigger>
-                  <HoverCard.Content style={{ width: 200 }}>
+                  </HoverCardTrigger>
+                  <HoverCardContent style={{ width: 200 }}>
                     <Text size="2">
                       Jan Tschichold was a German calligrapher, typographer and book designer. He
                       played a significant role in the development of graphic design in the 20th
                       century.
                     </Text>
-                  </HoverCard.Content>
-                </HoverCard.Root>
+                  </HoverCardContent>
+                </HoverCardRoot>
               </DocsSection>
 
               <DocsSection title="Popover">
-                <Popover.Root>
-                  <Popover.Trigger>
+                <PopoverRoot>
+                  <PopoverTrigger>
                     <Button variant="solid">Popover</Button>
-                  </Popover.Trigger>
-                  <Popover.Content>
+                  </PopoverTrigger>
+                  <PopoverContent>
                     <Box p="4" style={{ width: 200 }}>
                       <Text size="2" mb="2">
                         Jan Tschichold was a German calligrapher, typographer and book designer. He
@@ -1094,8 +1143,8 @@ export default function Sink() {
                         Share <Share2Icon />
                       </Button>
                     </Box>
-                  </Popover.Content>
-                </Popover.Root>
+                  </PopoverContent>
+                </PopoverRoot>
               </DocsSection>
 
               <DocsSection title="Tooltip">
@@ -1126,22 +1175,22 @@ export default function Sink() {
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
-                          <Tabs.Root defaultValue="account" activationMode="manual">
-                            <Tabs.List size={size}>
-                              <Tabs.Trigger value="account">Account</Tabs.Trigger>
-                              <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-                              <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-                            </Tabs.List>
-                            <Tabs.Content value="account">
+                          <TabsRoot defaultValue="account" activationMode="manual">
+                            <TabsList size={size}>
+                              <TabsTrigger value="account">Account</TabsTrigger>
+                              <TabsTrigger value="documents">Documents</TabsTrigger>
+                              <TabsTrigger value="settings">Settings</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="account">
                               <Box py="5">Account</Box>
-                            </Tabs.Content>
-                            <Tabs.Content value="documents">
+                            </TabsContent>
+                            <TabsContent value="documents">
                               <Box py="5">Documents</Box>
-                            </Tabs.Content>
-                            <Tabs.Content value="settings">
+                            </TabsContent>
+                            <TabsContent value="settings">
                               <Box py="5">Settings</Box>
-                            </Tabs.Content>
-                          </Tabs.Root>
+                            </TabsContent>
+                          </TabsRoot>
                         </td>
                       </tr>
                     ))}
@@ -1650,44 +1699,44 @@ export default function Sink() {
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         <td>
-                          <RadioGroup.Root variant={variant}>
+                          <RadioGroupRoot variant={variant}>
                             <Text size="2" asChild>
                               <label>
-                                <RadioGroup.Item value="value" mr="2" />
+                                <RadioGroupItem value="value" mr="2" />
                                 My radio
                               </label>
                             </Text>
-                          </RadioGroup.Root>
+                          </RadioGroupRoot>
                         </td>
                         <td>
-                          <RadioGroup.Root variant={variant}>
+                          <RadioGroupRoot variant={variant}>
                             <Text size="2" asChild>
                               <label>
-                                <RadioGroup.Item value="value" mr="2" defaultChecked />
+                                <RadioGroupItem value="value" mr="2" defaultChecked />
                                 My radio
                               </label>
                             </Text>
-                          </RadioGroup.Root>
+                          </RadioGroupRoot>
                         </td>
                         <td>
-                          <RadioGroup.Root variant={variant}>
+                          <RadioGroupRoot variant={variant}>
                             <Text size="2" asChild>
                               <label>
-                                <RadioGroup.Item value="value" mr="2" disabled />
+                                <RadioGroupItem value="value" mr="2" disabled />
                                 My radio
                               </label>
                             </Text>
-                          </RadioGroup.Root>
+                          </RadioGroupRoot>
                         </td>
                         <td>
-                          <RadioGroup.Root variant={variant} disabled defaultChecked>
+                          <RadioGroupRoot variant={variant} disabled defaultChecked>
                             <Text size="2" asChild>
                               <label>
-                                <RadioGroup.Item value="value" mr="2" />
+                                <RadioGroupItem value="value" mr="2" />
                                 My radio
                               </label>
                             </Text>
-                          </RadioGroup.Root>
+                          </RadioGroupRoot>
                         </td>
                       </tr>
                     ))}
@@ -1700,14 +1749,14 @@ export default function Sink() {
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
-                          <RadioGroup.Root size={size} defaultValue="value">
+                          <RadioGroupRoot size={size} defaultValue="value">
                             <Text size="2">
                               <label>
-                                <RadioGroup.Item value="value" mr="2" />
+                                <RadioGroupItem value="value" mr="2" />
                                 My radio
                               </label>
                             </Text>
-                          </RadioGroup.Root>
+                          </RadioGroupRoot>
                         </td>
                       </tr>
                     ))}
@@ -1744,18 +1793,18 @@ export default function Sink() {
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {radioGroupVariants.map((variant) => (
                                 <td key={variant}>
-                                  <RadioGroup.Root
+                                  <RadioGroupRoot
                                     variant={variant}
                                     color={color}
                                     defaultValue="value"
                                   >
                                     <Text size="2" asChild>
                                       <label>
-                                        <RadioGroup.Item value="value" mr="2" />
+                                        <RadioGroupItem value="value" mr="2" />
                                         My radio
                                       </label>
                                     </Text>
-                                  </RadioGroup.Root>
+                                  </RadioGroupRoot>
                                 </td>
                               ))}
                             </tr>
@@ -1771,33 +1820,33 @@ export default function Sink() {
                 <Text mb="3">Alignement</Text>
 
                 <Flex direction="column" gap="3" style={{ maxWidth: 200 }}>
-                  <RadioGroup.Root>
+                  <RadioGroupRoot>
                     <Text size="2">
                       <label>
-                        <RadioGroup.Item value="value" mr="2" />
+                        <RadioGroupItem value="value" mr="2" />
                         My radio
                       </label>
                     </Text>
-                  </RadioGroup.Root>
+                  </RadioGroupRoot>
 
-                  <RadioGroup.Root>
+                  <RadioGroupRoot>
                     <label>
                       <Flex gap="2">
-                        <RadioGroup.Item value="value" />
+                        <RadioGroupItem value="value" />
                         <Text size="2">Automatically based on mouse or trackpad</Text>
                       </Flex>
                     </label>
-                  </RadioGroup.Root>
+                  </RadioGroupRoot>
 
                   {textSizes.slice(0, 4).map((size) => (
-                    <RadioGroup.Root key={size}>
+                    <RadioGroupRoot key={size}>
                       <label>
                         <Flex align="center" gap="2">
-                          <RadioGroup.Item value="value" />
+                          <RadioGroupItem value="value" />
                           <Text size={size}>Text size {size}</Text>
                         </Flex>
                       </label>
-                    </RadioGroup.Root>
+                    </RadioGroupRoot>
                   ))}
                 </Flex>
               </DocsSection>
@@ -2015,20 +2064,20 @@ export default function Sink() {
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         {selectSizes.map((size) => (
                           <td key={size}>
-                            <Select.Root defaultValue="apple" size={size} triggerVariant={variant}>
+                            <SelectRoot defaultValue="apple" size={size} triggerVariant={variant}>
                               <SelectItemsDemo />
-                            </Select.Root>
+                            </SelectRoot>
                           </td>
                         ))}
                         <td>
-                          <Select.Root
+                          <SelectRoot
                             defaultValue="apple"
                             size="2"
                             triggerVariant={variant}
                             disabled
                           >
                             <SelectItemsDemo />
-                          </Select.Root>
+                          </SelectRoot>
                         </td>
                       </tr>
                     ))}
@@ -2054,22 +2103,22 @@ export default function Sink() {
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         {selectSizes.map((size) => (
                           <td key={size}>
-                            <Select.Root defaultValue="apple" size={size} menuVariant={variant}>
+                            <SelectRoot defaultValue="apple" size={size} menuVariant={variant}>
                               <SelectItemsDemo />
-                            </Select.Root>
+                            </SelectRoot>
                           </td>
                         ))}
 
                         {selectSizes.map((size) => (
                           <td key={size}>
-                            <Select.Root
+                            <SelectRoot
                               defaultValue="apple"
                               size={size}
                               menuVariant={variant}
                               position="popper"
                             >
                               <SelectItemsDemo />
-                            </Select.Root>
+                            </SelectRoot>
                           </td>
                         ))}
                       </tr>
@@ -2103,9 +2152,9 @@ export default function Sink() {
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {selectSizes.map((size) => (
                               <td key={size}>
-                                <Select.Root defaultValue="apple" size={size} radius={radius}>
+                                <SelectRoot defaultValue="apple" size={size} radius={radius}>
                                   <SelectItemsDemo />
-                                </Select.Root>
+                                </SelectRoot>
                               </td>
                             ))}
                           </tr>
@@ -2145,7 +2194,7 @@ export default function Sink() {
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {selectTriggerVariants.map((variant) => (
                                 <td key={variant}>
-                                  <Select.Root
+                                  <SelectRoot
                                     defaultValue="apple"
                                     size="1"
                                     triggerVariant={variant}
@@ -2153,7 +2202,7 @@ export default function Sink() {
                                     color={color}
                                   >
                                     <SelectItemsDemo />
-                                  </Select.Root>
+                                  </SelectRoot>
                                 </td>
                               ))}
                             </tr>
@@ -2524,39 +2573,39 @@ function DropdownMenuContentDemo({
   variant: DropdownMenuVariant;
 }) {
   return (
-    <DropdownMenu.Content variant={variant} size={size}>
-      <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item shortcut="⌘+N">New Window</DropdownMenu.Item>
-      <DropdownMenu.Item shortcut="⇧+⌘+N" disabled>
+    <DropdownMenuContent variant={variant} size={size}>
+      <DropdownMenuItem shortcut="⌘+T">New Tab</DropdownMenuItem>
+      <DropdownMenuItem shortcut="⌘+N">New Window</DropdownMenuItem>
+      <DropdownMenuItem shortcut="⇧+⌘+N" disabled>
         New Private Window
-      </DropdownMenu.Item>
-      <DropdownMenu.Sub>
-        <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
+      </DropdownMenuItem>
+      <DropdownMenuSub>
+        <DropdownMenuSubTrigger>More Tools</DropdownMenuSubTrigger>
 
-        <DropdownMenu.SubContent variant={variant} size={size}>
-          <DropdownMenu.Item shortcut="⌘+S">Save Page As…</DropdownMenu.Item>
-          <DropdownMenu.Item>Create Shortcut…</DropdownMenu.Item>
-          <DropdownMenu.Item>Name Window…</DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item>Developer Tools</DropdownMenu.Item>
-        </DropdownMenu.SubContent>
-      </DropdownMenu.Sub>
+        <DropdownMenuSubContent variant={variant} size={size}>
+          <DropdownMenuItem shortcut="⌘+S">Save Page As…</DropdownMenuItem>
+          <DropdownMenuItem>Create Shortcut…</DropdownMenuItem>
+          <DropdownMenuItem>Name Window…</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+        </DropdownMenuSubContent>
+      </DropdownMenuSub>
 
-      <DropdownMenu.Separator />
+      <DropdownMenuSeparator />
 
-      <DropdownMenu.CheckboxItem shortcut="⌘+B" checked>
+      <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
         Show Bookmarks
-      </DropdownMenu.CheckboxItem>
-      <DropdownMenu.CheckboxItem>Show Full URLs</DropdownMenu.CheckboxItem>
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
 
-      <DropdownMenu.Separator />
+      <DropdownMenuSeparator />
 
-      <DropdownMenu.Label>People</DropdownMenu.Label>
-      <DropdownMenu.RadioGroup value="pedro">
-        <DropdownMenu.RadioItem value="pedro">Pedro Duarte</DropdownMenu.RadioItem>
-        <DropdownMenu.RadioItem value="colm">Colm Tuite</DropdownMenu.RadioItem>
-      </DropdownMenu.RadioGroup>
-    </DropdownMenu.Content>
+      <DropdownMenuLabel>People</DropdownMenuLabel>
+      <DropdownMenuRadioGroup value="pedro">
+        <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
+    </DropdownMenuContent>
   );
 }
 
@@ -2568,39 +2617,39 @@ function ContextMenuContentDemo({
   variant: ContextMenuVariant;
 }) {
   return (
-    <ContextMenu.Content variant={variant} size={size}>
-      <ContextMenu.Item shortcut="⌘+T">New Tab</ContextMenu.Item>
-      <ContextMenu.Item shortcut="⌘+N">New Window</ContextMenu.Item>
-      <ContextMenu.Item shortcut="⇧+⌘+N" disabled>
+    <ContextMenuContent variant={variant} size={size}>
+      <ContextMenuItem shortcut="⌘+T">New Tab</ContextMenuItem>
+      <ContextMenuItem shortcut="⌘+N">New Window</ContextMenuItem>
+      <ContextMenuItem shortcut="⇧+⌘+N" disabled>
         New Private Window
-      </ContextMenu.Item>
-      <ContextMenu.Sub>
-        <ContextMenu.SubTrigger>More Tools</ContextMenu.SubTrigger>
+      </ContextMenuItem>
+      <ContextMenuSub>
+        <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
 
-        <ContextMenu.SubContent variant={variant} size={size}>
-          <ContextMenu.Item shortcut="⌘+S">Save Page As…</ContextMenu.Item>
-          <ContextMenu.Item>Create Shortcut…</ContextMenu.Item>
-          <ContextMenu.Item>Name Window…</ContextMenu.Item>
-          <ContextMenu.Separator />
-          <ContextMenu.Item>Developer Tools</ContextMenu.Item>
-        </ContextMenu.SubContent>
-      </ContextMenu.Sub>
+        <ContextMenuSubContent variant={variant} size={size}>
+          <ContextMenuItem shortcut="⌘+S">Save Page As…</ContextMenuItem>
+          <ContextMenuItem>Create Shortcut…</ContextMenuItem>
+          <ContextMenuItem>Name Window…</ContextMenuItem>
+          <ContextMenuSeparator />
+          <ContextMenuItem>Developer Tools</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
 
-      <ContextMenu.Separator />
+      <ContextMenuSeparator />
 
-      <ContextMenu.CheckboxItem shortcut="⌘+B" checked>
+      <ContextMenuCheckboxItem shortcut="⌘+B" checked>
         Show Bookmarks
-      </ContextMenu.CheckboxItem>
-      <ContextMenu.CheckboxItem>Show Full URLs</ContextMenu.CheckboxItem>
+      </ContextMenuCheckboxItem>
+      <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
 
-      <ContextMenu.Separator />
+      <ContextMenuSeparator />
 
-      <ContextMenu.Label>People</ContextMenu.Label>
-      <ContextMenu.RadioGroup value="pedro">
-        <ContextMenu.RadioItem value="pedro">Pedro Duarte</ContextMenu.RadioItem>
-        <ContextMenu.RadioItem value="colm">Colm Tuite</ContextMenu.RadioItem>
-      </ContextMenu.RadioGroup>
-    </ContextMenu.Content>
+      <ContextMenuLabel>People</ContextMenuLabel>
+      <ContextMenuRadioGroup value="pedro">
+        <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
+        <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
+      </ContextMenuRadioGroup>
+    </ContextMenuContent>
   );
 }
 
@@ -2631,22 +2680,22 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
 function SelectItemsDemo() {
   return (
     <>
-      <Select.Group>
-        <Select.Label>Fruits</Select.Label>
-        <Select.Item value="orange">Orange</Select.Item>
-        <Select.Item value="apple">Apple</Select.Item>
-        <Select.Item value="grapes" disabled>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="orange">Orange</SelectItem>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="grapes" disabled>
           Grape
-        </Select.Item>
-      </Select.Group>
+        </SelectItem>
+      </SelectGroup>
 
-      <Select.Separator />
+      <SelectSeparator />
 
-      <Select.Group>
-        <Select.Label>Vegetables</Select.Label>
-        <Select.Item value="carrot">Carrot</Select.Item>
-        <Select.Item value="potato">Potato</Select.Item>
-      </Select.Group>
+      <SelectGroup>
+        <SelectLabel>Vegetables</SelectLabel>
+        <SelectItem value="carrot">Carrot</SelectItem>
+        <SelectItem value="potato">Potato</SelectItem>
+      </SelectGroup>
     </>
   );
 }

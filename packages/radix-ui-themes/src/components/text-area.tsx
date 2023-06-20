@@ -1,18 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultTextAreaSize,
+  defaultTextAreaVariant,
+  defaultTextAreaRadius,
+} from './text-area.props';
 
 import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
-
-const textAreaSizes = ['1', '2', '3'] as const;
-type TextAreaSize = (typeof textAreaSizes)[number];
-const defaultTextAreaSize: TextAreaSize = '2';
-
-const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
-type TextAreaVariant = (typeof textAreaVariants)[number];
-const defaultTextAreaVariant: TextAreaVariant = 'surface';
-
-const defaultTextAreaRadius: ButtonRadius | undefined = undefined;
+import type { TextAreaSize, TextAreaVariant } from './text-area.props';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
 interface TextAreaProps
@@ -48,5 +44,4 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
 });
 TextArea.displayName = 'TextArea';
 
-export { textAreaSizes, defaultTextAreaSize, textAreaVariants, defaultTextAreaVariant, TextArea };
-export type { TextAreaSize, TextAreaVariant };
+export { TextArea };

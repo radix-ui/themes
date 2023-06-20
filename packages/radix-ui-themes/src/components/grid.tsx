@@ -9,26 +9,26 @@ import {
   withLayout,
   withBreakpoints,
 } from '../helpers';
+import {
+  defaultGridDisplay,
+  defaultGridColumns,
+  defaultGridFlow,
+  defaultGridAlign,
+  defaultGridJustify,
+  defaultGridGap,
+  defaultGridGapX,
+  defaultGridGapY,
+} from './grid.props';
 
 import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
-
-const gridDisplayValues = ['none', 'inline-grid', 'grid'] as const;
-type GridDisplay = (typeof gridDisplayValues)[number];
-
-const gridColumnsValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-type GridColumns = (typeof gridColumnsValues)[number];
-
-const gridFlowValues = ['row', 'column', 'dense', 'row-dense', 'column-dense'] as const;
-type GridFlow = (typeof gridFlowValues)[number];
-
-const gridAlignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
-type GridAlign = (typeof gridAlignValues)[number];
-
-const gridJustifyValues = ['start', 'center', 'end', 'between'] as const;
-type GridJustify = (typeof gridJustifyValues)[number];
-
-const gridGapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-type GridCap = (typeof gridGapValues)[number];
+import type {
+  GridDisplay,
+  GridColumns,
+  GridFlow,
+  GridAlign,
+  GridJustify,
+  GridCap,
+} from './grid.props';
 
 type GridElement = React.ElementRef<'div'>;
 interface GridProps
@@ -51,14 +51,14 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
   const {
     className,
-    display = 'grid',
-    columns = '1',
-    flow,
-    align = 'stretch',
-    justify = 'start',
-    gap,
-    gapX,
-    gapY,
+    display = defaultGridDisplay,
+    columns = defaultGridColumns,
+    flow = defaultGridFlow,
+    align = defaultGridAlign,
+    justify = defaultGridJustify,
+    gap = defaultGridGap,
+    gapX = defaultGridGapX,
+    gapY = defaultGridGapY,
     ...gridProps
   } = layoutRest;
   return (
@@ -85,13 +85,4 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
 });
 Grid.displayName = 'Grid';
 
-export {
-  gridDisplayValues,
-  gridColumnsValues,
-  gridFlowValues,
-  gridAlignValues,
-  gridJustifyValues,
-  gridGapValues,
-  Grid,
-};
-export { GridDisplay, GridColumns, GridFlow, GridAlign, GridJustify, GridCap };
+export { Grid };

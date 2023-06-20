@@ -1,3 +1,3 @@
 'use client';
 
-export * from '@radix-ui/react-portal';
+export { Portal } from '@radix-ui/react-portal';

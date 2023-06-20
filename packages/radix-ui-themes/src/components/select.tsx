@@ -5,34 +5,16 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import classNames from 'classnames';
 import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultSelectSize,
+  defaultSelectTriggerVariant,
+  defaultSelectMenuVariant,
+  defaultSelectColor,
+  defaultSelectRadius,
+} from './select.props';
 
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
-
-const selectSizes = ['1', '2'] as const;
-type SelectSize = (typeof selectSizes)[number];
-const defaultSelectSize: SelectSize = '2';
-
-const selectTriggerVariants = [
-  'surface',
-  'surface-mono',
-  'solid',
-  'solid-mono',
-  'subtle',
-  'subtle-mono',
-  'outline',
-  'outline-mono',
-  'ghost',
-  'ghost-mono',
-] as const;
-type SelectTriggerVariant = (typeof selectTriggerVariants)[number];
-const defaultSelectTriggerVariant: SelectTriggerVariant = 'surface';
-
-const selectMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type SelectMenuVariant = (typeof selectMenuVariants)[number];
-const defaultSelectMenuVariant: SelectMenuVariant = 'solid';
-
-const defaultSelectColor: Color | undefined = undefined;
-const defaultSelectRadius: ButtonRadius | undefined = undefined;
+import type { SelectSize, SelectTriggerVariant, SelectMenuVariant } from './select.props';
 
 type SelectRootElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 interface SelectRootProps
@@ -204,21 +186,15 @@ function extractRootProps<T extends React.ComponentPropsWithoutRef<typeof Select
   };
 }
 
-export const Select = {
-  Root: SelectRoot,
-  Item: SelectItem,
-  Group: SelectGroup,
-  Label: SelectLabel,
-  Separator: SelectSeparator,
-};
-export {
-  selectSizes,
-  defaultSelectSize,
-  selectTriggerVariants,
-  defaultSelectTriggerVariant,
-  selectMenuVariants,
-  defaultSelectMenuVariant,
-  defaultSelectColor,
-  defaultSelectRadius,
-};
-export type { SelectSize, SelectTriggerVariant, SelectMenuVariant };
+const Select = Object.assign(
+  {},
+  {
+    Root: SelectRoot,
+    Item: SelectItem,
+    Group: SelectGroup,
+    Label: SelectLabel,
+    Separator: SelectSeparator,
+  }
+);
+
+export { Select, SelectRoot, SelectItem, SelectGroup, SelectLabel, SelectSeparator };

@@ -5,16 +5,10 @@ import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import classNames from 'classnames';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { withBreakpoints } from '../helpers';
+import { defaultContextMenuSize, defaultContextMenuVariant } from './context-menu.props';
 
 import type { Responsive } from '../helpers';
-
-const contextMenuSizes = ['1', '2'] as const;
-type ContextMenuSize = (typeof contextMenuSizes)[number];
-const defaultContextMenuSize: ContextMenuSize = '2';
-
-const contextMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type ContextMenuVariant = (typeof contextMenuVariants)[number];
-const defaultContextMenuVariant: ContextMenuVariant = 'solid';
+import type { ContextMenuSize, ContextMenuVariant } from './context-menu.props';
 
 type StyleProps = {
   size?: Responsive<ContextMenuSize>;
@@ -280,20 +274,38 @@ const ContextMenuSeparator = React.forwardRef<
 ));
 ContextMenuSeparator.displayName = 'ContextMenuSeparator';
 
-export const ContextMenu = {
-  Root: ContextMenuRoot,
-  Trigger: ContextMenuTrigger,
-  Content: ContextMenuContent,
-  Label: ContextMenuLabel,
-  Item: ContextMenuItem,
-  Group: ContextMenuGroup,
-  RadioGroup: ContextMenuRadioGroup,
-  RadioItem: ContextMenuRadioItem,
-  CheckboxItem: ContextMenuCheckboxItem,
-  Sub: ContextMenuSub,
-  SubTrigger: ContextMenuSubTrigger,
-  SubContent: ContextMenuSubContent,
-  Separator: ContextMenuSeparator,
+const ContextMenu = Object.assign(
+  {},
+  {
+    Root: ContextMenuRoot,
+    Trigger: ContextMenuTrigger,
+    Content: ContextMenuContent,
+    Label: ContextMenuLabel,
+    Item: ContextMenuItem,
+    Group: ContextMenuGroup,
+    RadioGroup: ContextMenuRadioGroup,
+    RadioItem: ContextMenuRadioItem,
+    CheckboxItem: ContextMenuCheckboxItem,
+    Sub: ContextMenuSub,
+    SubTrigger: ContextMenuSubTrigger,
+    SubContent: ContextMenuSubContent,
+    Separator: ContextMenuSeparator,
+  }
+);
+
+export {
+  ContextMenu,
+  ContextMenuRoot,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuLabel,
+  ContextMenuItem,
+  ContextMenuGroup,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuCheckboxItem,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+  ContextMenuSeparator,
 };
-export { contextMenuSizes, defaultContextMenuSize, contextMenuVariants, defaultContextMenuVariant };
-export type { ContextMenuSize, ContextMenuVariant };

@@ -1,13 +1,8 @@
 'use client';
+// 👆 figure out what's wrong with Tooltip context (Error: `Tooltip` must be used within `TooltipProvider`)
 
 import * as React from 'react';
-import {
-  HeartFilledIcon,
-  PlusIcon,
-  DownloadIcon,
-  HamburgerMenuIcon,
-  UploadIcon,
-} from '@radix-ui/react-icons';
+import { HamburgerMenuIcon, UploadIcon } from '@radix-ui/react-icons';
 import {
   Provider,
   Button,
@@ -16,11 +11,23 @@ import {
   Link,
   Separator,
   IconButton,
-  DropdownMenu,
-  Tooltip,
-  Dialog,
-  Popover,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DialogRoot,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
 } from '@radix-ui/themes';
+import { ImageCard } from './image-card';
 import { ControlPanel } from '../../components/control-panel';
 import { SnapshotLogo } from '../../components/snapshot-logo';
 import styles from './page.module.css';
@@ -76,50 +83,50 @@ export default function Snapshot() {
                   <SubmitPhotoDialog>
                     <Button variant="subtle-mono">Submit a photo</Button>
                   </SubmitPhotoDialog>
-                  <DropdownMenu.Root>
-                    <DropdownMenu.Trigger>
+                  <DropdownMenuRoot>
+                    <DropdownMenuTrigger>
                       <IconButton
                         variant="ghost"
                         style={{ marginRight: 'calc(var(--space-1)*-1)' }}
                       >
                         <HamburgerMenuIcon />
                       </IconButton>
-                    </DropdownMenu.Trigger>
-                    <DropdownMenu.Content variant="subtle" align="end">
-                      <DropdownMenu.Label>Account</DropdownMenu.Label>
-                      <DropdownMenu.Item shortcut="⌘+P">Profile</DropdownMenu.Item>
-                      <DropdownMenu.Item shortcut="⌘+L">Library</DropdownMenu.Item>
-                      <DropdownMenu.Item>Settings</DropdownMenu.Item>
-                      <DropdownMenu.Separator />
-                      <DropdownMenu.Label>Snapshot</DropdownMenu.Label>
-                      <DropdownMenu.Sub>
-                        <DropdownMenu.SubTrigger>Company</DropdownMenu.SubTrigger>
-                        <DropdownMenu.SubContent variant="subtle">
-                          <DropdownMenu.Item>About</DropdownMenu.Item>
-                          <DropdownMenu.Item>History</DropdownMenu.Item>
-                          <DropdownMenu.Item>Join the team</DropdownMenu.Item>
-                          <DropdownMenu.Item>Blog</DropdownMenu.Item>
-                          <DropdownMenu.Item>Press</DropdownMenu.Item>
-                          <DropdownMenu.Item>Contact us</DropdownMenu.Item>
-                          <DropdownMenu.Item>Help center</DropdownMenu.Item>
-                        </DropdownMenu.SubContent>
-                      </DropdownMenu.Sub>
-                      <DropdownMenu.Sub>
-                        <DropdownMenu.SubTrigger>Community</DropdownMenu.SubTrigger>
-                        <DropdownMenu.SubContent variant="subtle">
-                          <DropdownMenu.Item>Become a contributor</DropdownMenu.Item>
-                          <DropdownMenu.Item>Topics</DropdownMenu.Item>
-                          <DropdownMenu.Item>Collections</DropdownMenu.Item>
-                          <DropdownMenu.Item>Trends</DropdownMenu.Item>
-                          <DropdownMenu.Item>Press</DropdownMenu.Item>
-                          <DropdownMenu.Item>Awards</DropdownMenu.Item>
-                          <DropdownMenu.Item>Stats</DropdownMenu.Item>
-                        </DropdownMenu.SubContent>
-                      </DropdownMenu.Sub>
-                      <DropdownMenu.Separator />
-                      <DropdownMenu.Item>Logout</DropdownMenu.Item>
-                    </DropdownMenu.Content>
-                  </DropdownMenu.Root>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent variant="subtle" align="end">
+                      <DropdownMenuLabel>Account</DropdownMenuLabel>
+                      <DropdownMenuItem shortcut="⌘+P">Profile</DropdownMenuItem>
+                      <DropdownMenuItem shortcut="⌘+L">Library</DropdownMenuItem>
+                      <DropdownMenuItem>Settings</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuLabel>Snapshot</DropdownMenuLabel>
+                      <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>Company</DropdownMenuSubTrigger>
+                        <DropdownMenuSubContent variant="subtle">
+                          <DropdownMenuItem>About</DropdownMenuItem>
+                          <DropdownMenuItem>History</DropdownMenuItem>
+                          <DropdownMenuItem>Join the team</DropdownMenuItem>
+                          <DropdownMenuItem>Blog</DropdownMenuItem>
+                          <DropdownMenuItem>Press</DropdownMenuItem>
+                          <DropdownMenuItem>Contact us</DropdownMenuItem>
+                          <DropdownMenuItem>Help center</DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuSub>
+                      <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>Community</DropdownMenuSubTrigger>
+                        <DropdownMenuSubContent variant="subtle">
+                          <DropdownMenuItem>Become a contributor</DropdownMenuItem>
+                          <DropdownMenuItem>Topics</DropdownMenuItem>
+                          <DropdownMenuItem>Collections</DropdownMenuItem>
+                          <DropdownMenuItem>Trends</DropdownMenuItem>
+                          <DropdownMenuItem>Press</DropdownMenuItem>
+                          <DropdownMenuItem>Awards</DropdownMenuItem>
+                          <DropdownMenuItem>Stats</DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuSub>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Logout</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenuRoot>
                 </div>
                 <div
                   className={styles.container}
@@ -251,106 +258,16 @@ export default function Snapshot() {
   );
 }
 
-function ImageCard({ id }: any) {
-  const [open, setOpen] = React.useState(false);
-  return (
-    <div className={styles.imageCard}>
-      <img
-        src={`https://images.unsplash.com/photo-${id}?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80`}
-        style={{
-          display: 'block',
-          width: '100%',
-          objectFit: 'cover',
-          height: 400,
-        }}
-      />
-      <div className={styles.imageCardOverlay} data-visible={open ? '' : undefined}>
-        <div style={{ position: 'absolute', top: 'var(--space-3)', right: 'var(--space-3)' }}>
-          <Tooltip content="Add to favorites">
-            <IconButton
-              size="3"
-              variant="solid-mono"
-              radius="full"
-              style={{ marginRight: 'var(--space-3)' }}
-            >
-              <HeartFilledIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip content="Add to library">
-            <IconButton size="3" variant="solid-mono" radius="full">
-              <PlusIcon />
-            </IconButton>
-          </Tooltip>
-        </div>
-        <Popover.Root open={open} onOpenChange={setOpen}>
-          <Tooltip content="Download">
-            <Popover.Trigger>
-              <IconButton
-                size="3"
-                variant="solid-mono"
-                radius="full"
-                style={{ position: 'absolute', bottom: 'var(--space-3)', right: 'var(--space-3)' }}
-              >
-                <DownloadIcon />
-              </IconButton>
-            </Popover.Trigger>
-          </Tooltip>
-          <Popover.Content align="center" className={styles.downloadPopover}>
-            <div style={{ boxSizing: 'border-box', width: 200, padding: 'var(--space-4)' }}>
-              <Text size="3" style={{ marginBottom: 'var(--space-2)' }}>
-                Choose a size:
-              </Text>
-
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 'var(--space-1)',
-                  marginBottom: 'var(--space-3)',
-                }}
-              >
-                {['Small', 'Medium', 'Large'].map((size) => (
-                  <label
-                    key={size}
-                    style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)' }}
-                  >
-                    <input
-                      type="radio"
-                      name="size"
-                      value={size}
-                      defaultChecked
-                      style={{ marginTop: -1 }}
-                    />
-                    <Text asChild size="2">
-                      <span>{size}</span>
-                    </Text>
-                  </label>
-                ))}
-              </div>
-
-              <Popover.Close>
-                <Button variant="solid" size="2">
-                  Download <DownloadIcon />
-                </Button>
-              </Popover.Close>
-            </div>
-          </Popover.Content>
-        </Popover.Root>
-      </div>
-    </div>
-  );
-}
-
 function SubmitPhotoDialog({ children }: any) {
   return (
-    <Dialog.Root>
-      <Dialog.Trigger>{children}</Dialog.Trigger>
-      <Dialog.Content style={{ maxWidth: 450 }}>
+    <DialogRoot>
+      <DialogTrigger>{children}</DialogTrigger>
+      <DialogContent style={{ maxWidth: 450 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-          <Dialog.Title>Submit a photo</Dialog.Title>
-          <Dialog.Description size="2">
+          <DialogTitle>Submit a photo</DialogTitle>
+          <DialogDescription size="2">
             Drop a photo here or click to browse your files.
-          </Dialog.Description>
+          </DialogDescription>
 
           <div
             style={{
@@ -373,17 +290,17 @@ function SubmitPhotoDialog({ children }: any) {
               marginTop: 'var(--space-4)',
             }}
           >
-            <Dialog.Close>
+            <DialogClose>
               <Button variant="subtle-mono">Cancel</Button>
-            </Dialog.Close>
-            <Dialog.Close>
+            </DialogClose>
+            <DialogClose>
               <Button variant="solid">
                 Submit photo <UploadIcon />
               </Button>
-            </Dialog.Close>
+            </DialogClose>
           </div>
         </div>
-      </Dialog.Content>
-    </Dialog.Root>
+      </DialogContent>
+    </DialogRoot>
   );
 }

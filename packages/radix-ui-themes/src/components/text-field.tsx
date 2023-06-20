@@ -1,18 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import {
+  defaultTextFieldSize,
+  defaultTextFieldVariant,
+  defaultTextFieldRadius,
+} from './text-field.props';
 
 import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
-
-const textFieldSizes = ['1', '2', '3'] as const;
-type TextFieldSize = (typeof textFieldSizes)[number];
-const defaultTextFieldSize: TextFieldSize = '2';
-
-const textFieldVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
-type TextFieldVariant = (typeof textFieldVariants)[number];
-const defaultTextFieldVariant: TextFieldVariant = 'surface';
-
-const defaultTextFieldRadius: ButtonRadius | undefined = undefined;
+import type { TextFieldSize, TextFieldVariant } from './text-field.props';
 
 type TextFieldElement = React.ElementRef<'input'>;
 interface TextFieldProps
@@ -48,12 +44,4 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
 });
 TextField.displayName = 'TextField';
 
-export {
-  textFieldSizes,
-  defaultTextFieldSize,
-  textFieldVariants,
-  defaultTextFieldVariant,
-  defaultTextFieldRadius,
-  TextField,
-};
-export type { TextFieldSize, TextFieldVariant };
+export { TextField };

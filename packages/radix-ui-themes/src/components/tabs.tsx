@@ -4,8 +4,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { defaultTabsListSize } from './tabs.props';
 
 import type { MarginProps, Responsive } from '../helpers';
+import type { TabsListSize } from './tabs.props';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 interface TabsRootProps
@@ -23,10 +25,6 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
   );
 });
 TabsRoot.displayName = 'TabsRoot';
-
-const tabsListSizes = ['1', '2'] as const;
-type TabsListSize = (typeof tabsListSizes)[number];
-const defaultTabsListSize: TabsListSize = '2';
 
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 interface TabsListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
@@ -76,11 +74,14 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
 );
 TabsContent.displayName = 'TabsContent';
 
-export const Tabs = {
-  Root: TabsRoot,
-  List: TabsList,
-  Trigger: TabsTrigger,
-  Content: TabsContent,
-};
-export { tabsListSizes, defaultTabsListSize };
-export type { TabsListSize };
+const Tabs = Object.assign(
+  {},
+  {
+    Root: TabsRoot,
+    List: TabsList,
+    Trigger: TabsTrigger,
+    Content: TabsContent,
+  }
+);
+
+export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent };
