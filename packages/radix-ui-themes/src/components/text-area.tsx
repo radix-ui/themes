@@ -48,5 +48,12 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
 });
 TextArea.displayName = 'TextArea';
 
-export { textAreaSizes, defaultTextAreaSize, textAreaVariants, defaultTextAreaVariant, TextArea };
+export {
+  textAreaSizes,
+  defaultTextAreaSize,
+  textAreaVariants,
+  defaultTextAreaVariant,
+  defaultTextAreaRadius,
+  TextArea,
+};
 export type { TextAreaSize, TextAreaVariant };
