@@ -136,7 +136,7 @@ export default function Sink() {
       data-foreground-feel="natural"
       data-button-radius="medium"
       data-scaling="regular"
-      className="dark-theme"
+      // className="dark-theme"
     >
       <body className="rui-reset-body">
         <div id="root">
