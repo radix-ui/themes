@@ -46,9 +46,9 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       )}
       style={style}
     >
-      {status === 'loading' ? <span className="rui-AvatarFallback" /> : null}
+      {status === 'idle' || status === 'loading' ? <span className="rui-AvatarFallback" /> : null}
 
-      {status === 'idle' || status === 'error' ? (
+      {status === 'error' ? (
         <AvatarPrimitive.Fallback
           className={classNames('rui-AvatarFallback', {
             '1-letter': typeof fallback === 'string' && fallback.length === 1,

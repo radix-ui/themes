@@ -24,8 +24,17 @@ import styles from './page.module.css';
 
 export default function Demo() {
   return (
-    <html lang="en" className={styles.document}>
-      <body className="rui-reset-body">
+    <html
+      lang="en"
+      className="dark-theme"
+      data-color-scale="mint"
+      data-gray-scale="natural"
+      data-background-feel="natural"
+      data-foreground-feel="tinted"
+      data-button-radius="large"
+      data-scaling="larger"
+    >
+      <body className={`rui-reset-body ${styles.body}`}>
         <div id="root">
           <ControlPanel />
 

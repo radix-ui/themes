@@ -1,7 +1,7 @@
-.document :global(.rui-DialogContent) {
+.body :global(.rui-DialogContent) {
   max-width: 400px;
 }
 
-.document :global(#root) {
+.body :global(#root) {
   padding: 100px 400px;
 }
