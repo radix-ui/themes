@@ -41,6 +41,7 @@ import {
   //
   Code,
   codeSizes,
+  codeVariants,
   //
   Container,
   //
@@ -184,6 +185,8 @@ const buttonColorVariants = buttonVariants.filter((variant) => !variant.endsWith
 const buttonMonoVariants = buttonVariants.filter((variant) => variant.endsWith('-mono'));
 
 const checkboxColorVariants = checkboxVariants.filter((variant) => !variant.endsWith('-mono'));
+
+const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-mono'));
 
 const iconButtonColorVariants = iconButtonVariants.filter((variant) => !variant.endsWith('-mono'));
 const iconButtonMonoVariants = iconButtonVariants.filter((variant) => variant.endsWith('-mono'));
@@ -543,7 +546,7 @@ export default function Sink() {
                 </Grid>
 
                 <Text my="5">
-                  <Code>radius</Code> can be set per instance:
+                  <Code color="red">radius</Code> can be set per instance:
                 </Text>
 
                 <details>
@@ -2231,19 +2234,72 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Code">
-                <Text mb="5">
-                  The <Code>console.log()</Code> method outputs a message to the web console
-                </Text>
-                <Flex direction="column" gap="4">
+                <table className={styles.table}>
+                  <tbody>
+                    {codeVariants.map((variant) => (
+                      <tr key={variant}>
+                        <RowHeaderCell>{variant}</RowHeaderCell>
+                        <td>
+                          <Code variant={variant}>console.log()</Code>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                <Flex direction="column" gap="4" mt="7">
                   {codeSizes
                     .slice()
                     .reverse()
                     .map((size) => (
-                      <Code key={size} size={size} highlighted={false}>
+                      <Code key={size} size={size} variant="plain">
                         The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
                       </Code>
                     ))}
                 </Flex>
+
+                <Text my="5">
+                  <Code>color</Code> can be set per instance:
+                </Text>
+
+                <details>
+                  <summary>
+                    <Text size="2" color="gray" asChild>
+                      <span>See colors & variants combinations</span>
+                    </Text>
+                  </summary>
+                  {groupedColors.map(({ label, colors }) => (
+                    <React.Fragment key={label}>
+                      <Text weight="bold" mt="6" mb="4">
+                        {label}
+                      </Text>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {codeColorVariants.map((variant) => (
+                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {colors.map((color) => (
+                            <tr key={color}>
+                              <RowHeaderCell>{color}</RowHeaderCell>
+                              {codeColorVariants.map((variant) => (
+                                <td key={variant}>
+                                  <Code variant={variant} color={color}>
+                                    console.log()
+                                  </Code>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </React.Fragment>
+                  ))}
+                </details>
               </DocsSection>
 
               <DocsSection title="Heading">

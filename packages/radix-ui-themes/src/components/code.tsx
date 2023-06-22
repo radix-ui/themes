@@ -1,26 +1,31 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
-import { defaultCodeSize, defaultCodeWeight, defaultCodeColor } from './code.props';
+import {
+  defaultCodeSize,
+  defaultCodeVariant,
+  defaultCodeWeight,
+  defaultCodeColor,
+} from './code.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
-import type { CodeSize, CodeWeight } from './code.props';
+import type { CodeSize, CodeVariant, CodeWeight } from './code.props';
 
 type CodeElement = React.ElementRef<'code'>;
 interface CodeProps extends Omit<React.ComponentPropsWithoutRef<'code'>, 'color'>, MarginProps {
   size?: Responsive<CodeSize>;
+  variant?: CodeVariant;
   weight?: Responsive<CodeWeight>;
-  color?: Color | 'color';
-  highlighted?: boolean;
+  color?: Color;
 }
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
     size = defaultCodeSize,
+    variant = defaultCodeVariant,
     weight = defaultCodeWeight,
     color = defaultCodeColor,
-    highlighted = true,
     ...codeProps
   } = marginRest;
   return (
@@ -31,8 +36,8 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
       className={classNames(
         'rui-Code',
         withBreakpoints(size, 'size'),
+        `variant-${variant}`,
         withBreakpoints(weight, 'weight'),
-        { highlighted },
         withMargin(marginProps),
         className
       )}
