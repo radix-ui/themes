@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from './slot';
 import {
   extractMarginProps,
   withMargin,
@@ -36,6 +37,7 @@ interface GridProps
     MarginProps,
     PaddingProps,
     LayoutProps {
+  asChild?: boolean;
   display?: Responsive<GridDisplay>;
   columns?: Responsive<GridColumns>;
   flow?: Responsive<GridFlow>;
@@ -51,6 +53,7 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
   const {
     className,
+    asChild,
     display = defaultGridDisplay,
     columns = defaultGridColumns,
     flow = defaultGridFlow,
@@ -61,8 +64,9 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
     gapY = defaultGridGapY,
     ...gridProps
   } = layoutRest;
+  const Comp = asChild ? Slot : 'div';
   return (
-    <div
+    <Comp
       {...gridProps}
       ref={forwardedRef}
       className={classNames(

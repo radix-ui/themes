@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from './slot';
 import {
   extractMarginProps,
   withMargin,
@@ -34,6 +35,7 @@ interface FlexProps
     MarginProps,
     PaddingProps,
     LayoutProps {
+  asChild?: boolean;
   display?: Responsive<FlexDisplay>;
   direction?: Responsive<FlexDirection>;
   align?: Responsive<FlexAlign>;
@@ -47,6 +49,7 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
   const {
     className,
+    asChild,
     display = defaultFlexDisplay,
     direction = defaultFlexDirection,
     align = defaultFlexAlign,
@@ -55,8 +58,9 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
     gap = defaultFlexGap,
     ...flexProps
   } = layoutRest;
+  const Comp = asChild ? Slot : 'div';
   return (
-    <div
+    <Comp
       {...flexProps}
       ref={forwardedRef}
       className={classNames(

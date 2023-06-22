@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from './slot';
 import {
   extractMarginProps,
   withMargin,
@@ -19,15 +20,17 @@ interface BoxProps
     MarginProps,
     PaddingProps,
     LayoutProps {
+  asChild?: boolean;
   display?: Responsive<BoxDisplay>;
 }
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { rest: paddingRest, ...paddingProps } = extractPaddingProps(marginRest);
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
-  const { className, display, ...boxProps } = layoutRest;
+  const { className, asChild, display, ...boxProps } = layoutRest;
+  const Comp = asChild ? Slot : 'div';
   return (
-    <div
+    <Comp
       {...boxProps}
       ref={forwardedRef}
       className={classNames(
