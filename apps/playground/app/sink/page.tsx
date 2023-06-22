@@ -2404,15 +2404,19 @@ export default function Sink() {
                       </Link>
                     ))}
 
-                  <Link color="purple" gap="1" href="/" size="3">
-                    This is a link
-                    <ArrowTopRightIcon />
-                  </Link>
+                  <Flex align="center" gap="1" asChild>
+                    <Link color="purple" href="/" size="3">
+                      This is a link
+                      <ArrowTopRightIcon />
+                    </Link>
+                  </Flex>
 
-                  <Link color="gray" gap="1" href="/" size="3">
-                    This is a link
-                    <ArrowTopRightIcon />
-                  </Link>
+                  <Flex align="center" gap="1" asChild>
+                    <Link color="gray" href="/" size="3">
+                      This is a link
+                      <ArrowTopRightIcon />
+                    </Link>
+                  </Flex>
 
                   <Text size="6">
                     Single Sign-On (SSO) is the most frequently asked for requirement by enterprise

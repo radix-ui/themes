@@ -9,13 +9,6 @@
 }
 
 @breakpoints {
-  .rui-Link.rui-gap-0,
-  .rui-Link.rui-gap-1,
-  .rui-Link.rui-gap-2 {
-    display: inline-flex;
-    align-items: center;
-  }
-
   .rui-Link.size-7,
   .rui-Link.size-8,
   .rui-Link.size-9 {

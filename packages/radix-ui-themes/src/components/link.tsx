@@ -6,12 +6,11 @@ import {
   defaultLinkSize,
   defaultLinkVariant,
   defaultLinkWeight,
-  defaultLinkGap,
   defaultLinkColor,
 } from './link.props';
 
 import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
-import type { LinkSize, LinkVariant, LinkWeight, LinkGap } from './link.props';
+import type { LinkSize, LinkVariant, LinkWeight } from './link.props';
 
 type LinkElement = React.ElementRef<'a'>;
 interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, MarginProps {
@@ -19,7 +18,6 @@ interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, 
   size?: Responsive<LinkSize>;
   variant?: LinkVariant;
   weight?: Responsive<LinkWeight>;
-  gap?: Responsive<LinkGap>;
   color?: ColorOrGray;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
@@ -30,7 +28,6 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
     size = defaultLinkSize,
     variant = defaultLinkVariant,
     weight = defaultLinkWeight,
-    gap = defaultLinkGap,
     color = defaultLinkColor,
     ...linkProps
   } = marginRest;
@@ -48,8 +45,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         withBreakpoints(weight, 'weight'),
-        withMargin(marginProps),
-        withBreakpoints(gap, 'rui-gap')
+        withMargin(marginProps)
       )}
     />
   );
