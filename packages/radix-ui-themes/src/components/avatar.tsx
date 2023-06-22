@@ -5,7 +5,12 @@ import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { PersonIcon } from '@radix-ui/react-icons';
 import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
-import { defaultAvatarSize, defaultAvatarVariant, defaultAvatarColor } from './avatar.props';
+import {
+  defaultAvatarSize,
+  defaultAvatarVariant,
+  defaultAvatarColor,
+  defaultAvatarRadius,
+} from './avatar.props';
 
 import type { AvatarSize, AvatarVariant } from './avatar.props';
 import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
@@ -28,7 +33,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
     size = defaultAvatarSize,
     variant = defaultAvatarVariant,
     color = defaultAvatarColor,
-    radius,
+    radius = defaultAvatarRadius,
     fallback,
     ...imageProps
   } = marginRest;
