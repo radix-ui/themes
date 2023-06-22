@@ -5,3 +5,7 @@
 .body :global(#root) {
   padding: 100px 400px;
 }
+
+.body :global(.rui-SelectTrigger) {
+  width: 100%;
+}

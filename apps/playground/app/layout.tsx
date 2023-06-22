@@ -2,8 +2,8 @@ import * as React from 'react';
 import './globals.css';
 
 export const metadata = {
-  title: 'Radix DS demo',
-  description: 'A demo of Radix DS components',
+  title: 'Radix Themes playground',
+  description: 'A playground of Radix Themes components',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

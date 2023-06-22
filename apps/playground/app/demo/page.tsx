@@ -42,7 +42,7 @@ export default function Demo() {
             <React.Fragment key={user.id}>
               <Flex align="center" justify="between">
                 <Flex align="center" gap="3">
-                  <Avatar src={user.image} fallback={user.name[0]} />
+                  <Avatar src={user.image} fallback={user.name[0]} radius="full" />
                   <Flex direction="column">
                     <Text size="2">{user.name}</Text>
                     <Text size="1" color="gray">
@@ -50,37 +50,29 @@ export default function Demo() {
                     </Text>
                   </Flex>
                 </Flex>
-
                 <DialogRoot>
                   <DialogTrigger>
-                    <IconButton size="2" variant="subtle" aria-label="Edit user">
+                    <IconButton aria-label="Edit user" variant="subtle">
                       <Pencil1Icon />
                     </IconButton>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogTitle mb="3">{user.name}</DialogTitle>
-                    <DialogDescription mb="5">Edit and save details below</DialogDescription>
+                    <DialogDescription mb="5">Edit and save details below.</DialogDescription>
 
-                    <Flex direction="column" gap="2">
-                      <Grid gap="1">
-                        <Text size="1" weight="bold" color="gray">
-                          Name
-                        </Text>
-                        <TextField defaultValue={user.name} />
-                      </Grid>
-
-                      <Grid gap="1">
-                        <Text size="1" weight="bold" color="gray">
-                          Role
-                        </Text>
-                        <SelectRoot defaultValue={user.role} menuVariant="subtle-mono">
-                          <SelectItem value="viewer">Viewer</SelectItem>
-                          <SelectItem value="maintainer">Maintainer</SelectItem>
-                          <SelectItem value="contributor">Contributor</SelectItem>
-                          <SelectItem value="admin">Admin</SelectItem>
-                        </SelectRoot>
-                      </Grid>
-                    </Flex>
+                    <Text size="1" weight="bold" color="gray" mb="1">
+                      Name
+                    </Text>
+                    <TextField defaultValue={user.name} mb="2" />
+                    <Text size="1" weight="bold" color="gray" mb="1">
+                      Role
+                    </Text>
+                    <SelectRoot defaultValue={user.role} menuVariant="subtle-mono">
+                      <SelectItem value="viewer">Viewer</SelectItem>
+                      <SelectItem value="maintainer">Maintainer</SelectItem>
+                      <SelectItem value="contributor">Contributor</SelectItem>
+                      <SelectItem value="admin">Admin</SelectItem>
+                    </SelectRoot>
 
                     <Flex justify="end" gap="3" mt="5">
                       <DialogClose>
@@ -93,8 +85,7 @@ export default function Demo() {
                   </DialogContent>
                 </DialogRoot>
               </Flex>
-
-              <Separator my="3" size="4" />
+              <Separator size="4" my="3" />
             </React.Fragment>
           ))}
         </div>
