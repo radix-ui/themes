@@ -39,5 +39,5 @@
 .table th:first-child {
   padding-left: 0;
   padding-right: var(--space-5);
-  min-width: 120px;
+  min-width: 100px;
 }

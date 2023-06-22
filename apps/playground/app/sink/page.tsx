@@ -175,6 +175,34 @@ import type {
   DropdownMenuSize,
   DropdownMenuVariant,
 } from '@radix-ui/themes';
+import { RadixLogo } from './radix-logo';
+
+const avatarColorVariants = avatarVariants.filter((variant) => !variant.endsWith('-mono'));
+const avatarMonoVariants = avatarVariants.filter((variant) => variant.endsWith('-mono'));
+
+const buttonColorVariants = buttonVariants.filter((variant) => !variant.endsWith('-mono'));
+const buttonMonoVariants = buttonVariants.filter((variant) => variant.endsWith('-mono'));
+
+const checkboxColorVariants = checkboxVariants.filter((variant) => !variant.endsWith('-mono'));
+
+const iconButtonColorVariants = iconButtonVariants.filter((variant) => !variant.endsWith('-mono'));
+const iconButtonMonoVariants = iconButtonVariants.filter((variant) => variant.endsWith('-mono'));
+
+const radioGroupColorVariants = radioGroupVariants.filter((variant) => !variant.endsWith('-mono'));
+
+const selectTriggerColorVariants = selectTriggerVariants.filter(
+  (variant) => !variant.endsWith('-mono')
+);
+const selectTriggerMonoVariants = selectTriggerVariants.filter((variant) =>
+  variant.endsWith('-mono')
+);
+const selectMenuColorVariants = selectMenuVariants.filter((variant) => !variant.endsWith('-mono'));
+const selectMenuMonoVariants = selectMenuVariants.filter((variant) => variant.endsWith('-mono'));
+
+const sliderColorVariants = sliderVariants.filter((variant) => !variant.endsWith('-mono'));
+const sliderMonoVariants = sliderVariants.filter((variant) => variant.endsWith('-mono'));
+
+const switchColorVariants = switchVariants.filter((variant) => !variant.endsWith('-mono'));
 
 export default function Sink() {
   return (
@@ -191,11 +219,11 @@ export default function Sink() {
             {/* <HideCursor /> */}
             <ControlPanel />
 
-            {/* <header
+            <header
               style={{ backgroundColor: 'var(--blackA2)', boxShadow: '0 0 0 0.5px var(--monoA6)' }}
             >
               <Container>
-                <nav>
+                {/* <nav>
                   <Flex p="6" gap="5" align="center">
                     <Link asChild variant="high-contrast">
                       <NextLink href="sink">Kitchen sink</NextLink>
@@ -208,265 +236,311 @@ export default function Sink() {
                       Snapshot
                     </Link>
                   </Flex>
-                </nav>
+                </nav> */}
+                <Flex p="6" align="center" gap="1">
+                  <RadixLogo />
+                  <Heading size="5">Radix Themes</Heading>
+                </Flex>
               </Container>
-            </header> */}
+            </header>
 
             <main
             // dir="rtl"
             >
-              <DocsSection title="Dialog">
-                <DialogRoot>
-                  <DialogTrigger>
-                    <Button variant="solid">Open</Button>
-                  </DialogTrigger>
-                  <DialogContent style={{ maxWidth: 450 }}>
-                    <Flex direction="column" gap="3">
-                      <DialogTitle>Share resource</DialogTitle>
-                      <DialogDescription size="2">
-                        Jan Tschichold was a German calligrapher, typographer and book designer. He
-                        played a significant role in the development of graphic design in the 20th
-                        century.
-                      </DialogDescription>
-                      <Flex gap="3" mt="4" justify="end">
-                        <DialogClose>
-                          <Button variant="subtle-mono">Cancel</Button>
-                        </DialogClose>
-                        <DialogClose>
-                          <Button variant="solid">
-                            Share <Share2Icon />
+              <Container>
+                <Section>
+                  <Grid columns="3" gapY="9">
+                    <DocsGridSection title="Dialog">
+                      <DialogRoot>
+                        <DialogTrigger>
+                          <Button variant="solid">Open</Button>
+                        </DialogTrigger>
+                        <DialogContent style={{ maxWidth: 450 }}>
+                          <Flex direction="column" gap="3">
+                            <DialogTitle>Share resource</DialogTitle>
+                            <DialogDescription size="2">
+                              Jan Tschichold was a German calligrapher, typographer and book
+                              designer. He played a significant role in the development of graphic
+                              design in the 20th century.
+                            </DialogDescription>
+                            <Flex gap="3" mt="4" justify="end">
+                              <DialogClose>
+                                <Button variant="subtle-mono">Cancel</Button>
+                              </DialogClose>
+                              <DialogClose>
+                                <Button variant="solid">
+                                  Share <Share2Icon />
+                                </Button>
+                              </DialogClose>
+                            </Flex>
+                          </Flex>
+                        </DialogContent>
+                      </DialogRoot>
+                    </DocsGridSection>
+
+                    <DocsGridSection title="HoverCard">
+                      <HoverCardRoot>
+                        <HoverCardTrigger>
+                          <Link>A fancy link</Link>
+                        </HoverCardTrigger>
+                        <HoverCardContent style={{ width: 200 }}>
+                          <Text size="2">
+                            Jan Tschichold was a German calligrapher, typographer and book designer.
+                            He played a significant role in the development of graphic design in the
+                            20th century.
+                          </Text>
+                        </HoverCardContent>
+                      </HoverCardRoot>
+                    </DocsGridSection>
+
+                    <DocsGridSection title="Tooltip">
+                      <Flex gap="5">
+                        <Tooltip content="The quick brown fox">
+                          <Button variant="solid" size="1">
+                            Singleline
                           </Button>
-                        </DialogClose>
-                      </Flex>
-                    </Flex>
-                  </DialogContent>
-                </DialogRoot>
-              </DocsSection>
+                        </Tooltip>
 
-              <DocsSection title="AlertDialog">
-                <AlertDialogRoot>
-                  <AlertDialogTrigger>
-                    <Button variant="solid">Open</Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent style={{ maxWidth: 450 }}>
-                    <Flex direction="column" gap="3">
-                      <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
-                      <AlertDialogDescription size="2">
-                        The setup link will no longer be accessible and any existing setup sessions
-                        will be revoked.
-                      </AlertDialogDescription>
-                      <Flex gap="3" mt="4" justify="end">
-                        <AlertDialogCancel>
-                          <Button variant="subtle-mono">Cancel</Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
-                          <Button variant="solid" color="red">
-                            Revoke link
-                          </Button>
-                        </AlertDialogAction>
-                      </Flex>
-                    </Flex>
-                  </AlertDialogContent>
-                </AlertDialogRoot>
-              </DocsSection>
-
-              <DocsSection title="HoverCard">
-                <HoverCardRoot>
-                  <HoverCardTrigger>
-                    <Link>A fancy link</Link>
-                  </HoverCardTrigger>
-                  <HoverCardContent style={{ width: 200 }}>
-                    <Text size="2">
-                      Jan Tschichold was a German calligrapher, typographer and book designer. He
-                      played a significant role in the development of graphic design in the 20th
-                      century.
-                    </Text>
-                  </HoverCardContent>
-                </HoverCardRoot>
-              </DocsSection>
-
-              <DocsSection title="Popover">
-                <PopoverRoot>
-                  <PopoverTrigger>
-                    <Button variant="solid">Popover</Button>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <Box p="4" style={{ width: 200 }}>
-                      <Text size="2" mb="2">
-                        Jan Tschichold was a German calligrapher, typographer and book designer. He
-                        played a significant role in the development of graphic design in the 20th
-                        century.
-                      </Text>
-                      <Button variant="solid" size="1">
-                        Share <Share2Icon />
-                      </Button>
-                    </Box>
-                  </PopoverContent>
-                </PopoverRoot>
-              </DocsSection>
-
-              <DocsSection title="Tooltip">
-                <Flex gap="5">
-                  <Tooltip content="The quick brown fox">
-                    <Button variant="solid" size="1">
-                      Singleline
-                    </Button>
-                  </Tooltip>
-
-                  <Tooltip
-                    content="The goal of typography is to relate font size, line height, and line width in a
+                        <Tooltip
+                          content="The goal of typography is to relate font size, line height, and line width in a
                     proportional way that maximizes beauty and makes reading easier and more
                     pleasant."
-                    multiline
-                  >
-                    <Button variant="solid" size="1">
-                      Multiline
-                    </Button>
-                  </Tooltip>
-                </Flex>
-              </DocsSection>
+                          multiline
+                        >
+                          <Button variant="solid" size="1">
+                            Multiline
+                          </Button>
+                        </Tooltip>
+                      </Flex>
+                    </DocsGridSection>
 
-              <DocsSection title="DropdownMenu">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {dropdownMenuSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {dropdownMenuVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {dropdownMenuSizes.map((size) => (
-                          <td key={size}>
-                            <DropdownMenuRoot>
-                              <DropdownMenuTrigger>
-                                <Button variant="subtle-mono" size={size}>
-                                  <DotsHorizontalIcon />
+                    <DocsGridSection title="AlertDialog">
+                      <AlertDialogRoot>
+                        <AlertDialogTrigger>
+                          <Button variant="solid">Open</Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent style={{ maxWidth: 450 }}>
+                          <Flex direction="column" gap="3">
+                            <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
+                            <AlertDialogDescription size="2">
+                              The setup link will no longer be accessible and any existing setup
+                              sessions will be revoked.
+                            </AlertDialogDescription>
+                            <Flex gap="3" mt="4" justify="end">
+                              <AlertDialogCancel>
+                                <Button variant="subtle-mono">Cancel</Button>
+                              </AlertDialogCancel>
+                              <AlertDialogAction>
+                                <Button variant="solid" color="red">
+                                  Revoke link
                                 </Button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContentDemo size={size} variant={variant} />
-                            </DropdownMenuRoot>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </DocsSection>
+                              </AlertDialogAction>
+                            </Flex>
+                          </Flex>
+                        </AlertDialogContent>
+                      </AlertDialogRoot>
+                    </DocsGridSection>
 
-              <DocsSection title="ContextMenu">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {contextMenuSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {contextMenuVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {contextMenuSizes.map((size) => (
-                          <td key={size}>
-                            <ContextMenuRoot>
-                              <ContextMenuTrigger>
-                                <RightClickArea size={size} />
-                              </ContextMenuTrigger>
-                              <ContextMenuContentDemo size={size} variant={variant} />
-                            </ContextMenuRoot>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </DocsSection>
+                    <DocsGridSection title="Popover">
+                      <PopoverRoot>
+                        <PopoverTrigger>
+                          <Button variant="solid">Popover</Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <Box p="4" style={{ width: 200 }}>
+                            <Text size="2" mb="2">
+                              Jan Tschichold was a German calligrapher, typographer and book
+                              designer. He played a significant role in the development of graphic
+                              design in the 20th century.
+                            </Text>
+                            <Button variant="solid" size="1">
+                              Share <Share2Icon />
+                            </Button>
+                          </Box>
+                        </PopoverContent>
+                      </PopoverRoot>
+                    </DocsGridSection>
+                  </Grid>
+                </Section>
+              </Container>
+              <Separator size="4" />
+
+              <Container>
+                <Section>
+                  <Grid columns="3" gapY="9">
+                    <DocsGridSection title="DropdownMenu">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {dropdownMenuSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {dropdownMenuVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              {dropdownMenuSizes.map((size) => (
+                                <td key={size}>
+                                  <DropdownMenuRoot>
+                                    <DropdownMenuTrigger>
+                                      <Button variant="subtle-mono" size={size}>
+                                        <DotsHorizontalIcon />
+                                      </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContentDemo size={size} variant={variant} />
+                                  </DropdownMenuRoot>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </DocsGridSection>
+
+                    <div style={{ gridColumn: '2 / span 2' }}>
+                      <DocsGridSection title="ContextMenu">
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {contextMenuSizes.map((size) => (
+                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {contextMenuVariants.map((variant) => (
+                              <tr key={variant}>
+                                <RowHeaderCell>{variant}</RowHeaderCell>
+                                {contextMenuSizes.map((size) => (
+                                  <td key={size}>
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea size={size} />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContentDemo size={size} variant={variant} />
+                                    </ContextMenuRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </DocsGridSection>
+                    </div>
+                  </Grid>
+                </Section>
+              </Container>
+              <Separator size="4" />
 
               <DocsSection title="Select">
-                <Text my="5">Trigger variants:</Text>
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {selectSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {selectTriggerVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {selectSizes.map((size) => (
-                          <td key={size}>
-                            <SelectRoot defaultValue="apple" size={size} triggerVariant={variant}>
-                              <SelectItemsDemo />
-                            </SelectRoot>
-                          </td>
-                        ))}
-                        <td>
-                          <SelectRoot
-                            defaultValue="apple"
-                            size="2"
-                            triggerVariant={variant}
-                            disabled
-                          >
-                            <SelectItemsDemo />
-                          </SelectRoot>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  {[selectTriggerColorVariants, selectTriggerMonoVariants].map(
+                    (groupVariants, index) => (
+                      <div key={index}>
+                        <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
+                          Trigger variants:
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {selectSizes.map((size) => (
+                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                              ))}
+                              <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {groupVariants.map((variant) => (
+                              <tr key={variant}>
+                                <RowHeaderCell>{variant}</RowHeaderCell>
+                                {selectSizes.map((size) => (
+                                  <td key={size}>
+                                    <SelectRoot
+                                      defaultValue="apple"
+                                      size={size}
+                                      triggerVariant={variant}
+                                    >
+                                      <SelectItemsDemo />
+                                    </SelectRoot>
+                                  </td>
+                                ))}
+                                <td>
+                                  <SelectRoot
+                                    defaultValue="apple"
+                                    size="2"
+                                    triggerVariant={variant}
+                                    disabled
+                                  >
+                                    <SelectItemsDemo />
+                                  </SelectRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )
+                  )}
+                </Grid>
 
-                <Text mt="8" mb="4">
-                  Menu variants:
-                </Text>
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      <ColumnHeaderCell colSpan={2}>
-                        position: &quot;item-aligned&quot;
-                      </ColumnHeaderCell>
-                      <ColumnHeaderCell colSpan={2}>position: &quot;popper&quot;</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {selectMenuVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {selectSizes.map((size) => (
-                          <td key={size}>
-                            <SelectRoot defaultValue="apple" size={size} menuVariant={variant}>
-                              <SelectItemsDemo />
-                            </SelectRoot>
-                          </td>
-                        ))}
+                <Grid columns="2" gap="9" mt="5" mb="7">
+                  {[selectMenuColorVariants, selectMenuMonoVariants].map((groupVariants, index) => (
+                    <div key={index}>
+                      <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
+                        Menu variants:
+                      </Text>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell colSpan={2}>
+                              position: &quot;item-aligned&quot;
+                            </ColumnHeaderCell>
+                            <ColumnHeaderCell colSpan={2}>
+                              position: &quot;popper&quot;
+                            </ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {groupVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              {selectSizes.map((size) => (
+                                <td key={size}>
+                                  <SelectRoot
+                                    defaultValue="apple"
+                                    size={size}
+                                    menuVariant={variant}
+                                  >
+                                    <SelectItemsDemo />
+                                  </SelectRoot>
+                                </td>
+                              ))}
 
-                        {selectSizes.map((size) => (
-                          <td key={size}>
-                            <SelectRoot
-                              defaultValue="apple"
-                              size={size}
-                              menuVariant={variant}
-                              position="popper"
-                            >
-                              <SelectItemsDemo />
-                            </SelectRoot>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                              {selectSizes.map((size) => (
+                                <td key={size}>
+                                  <SelectRoot
+                                    defaultValue="apple"
+                                    size={size}
+                                    menuVariant={variant}
+                                    position="popper"
+                                  >
+                                    <SelectItemsDemo />
+                                  </SelectRoot>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -525,7 +599,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {selectTriggerVariants.map((variant) => (
+                            {selectTriggerColorVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -534,7 +608,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {selectTriggerVariants.map((variant) => (
+                              {selectTriggerColorVariants.map((variant) => (
                                 <td key={variant}>
                                   <SelectRoot
                                     defaultValue="apple"
@@ -557,74 +631,88 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Switch">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      <ColumnHeaderCell>not checked</ColumnHeaderCell>
-                      <ColumnHeaderCell>checked</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {switchVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              I agree
-                              <Switch ml="2" variant={variant} />
-                            </label>
-                          </Text>
-                        </td>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              I agree
-                              <Switch ml="2" variant={variant} defaultChecked />
-                            </label>
-                          </Text>
-                        </td>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              I agree
-                              <Switch ml="2" variant={variant} disabled />
-                            </label>
-                          </Text>
-                        </td>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              I agree
-                              <Switch ml="2" variant={variant} disabled defaultChecked />
-                            </label>
-                          </Text>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  <div>
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                          <ColumnHeaderCell>checked</ColumnHeaderCell>
+                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {switchVariants.map((variant) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <Switch variant={variant} />
+                            </td>
+                            <td>
+                              <Switch variant={variant} defaultChecked />
+                            </td>
+                            <td>
+                              <Switch variant={variant} disabled />
+                            </td>
+                            <td>
+                              <Switch variant={variant} disabled defaultChecked />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
 
-                <table className={styles.table}>
-                  <tbody>
-                    {switchSizes.map((size) => (
-                      <tr key={size}>
-                        <RowHeaderCell>size {size}</RowHeaderCell>
-                        <td>
+                    <table className={styles.table}>
+                      <tbody>
+                        {switchSizes.map((size) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <Switch size={size} defaultChecked={size === '2'} />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div>
+                    <Box py="4">
+                      <Text size="2">Alignement</Text>
+                    </Box>
+                    <Separator size="2" />
+
+                    <Flex direction="column" gap="3" style={{ maxWidth: 324 }} mt="4">
+                      <Text size="2">
+                        <label>
+                          <Switch mr="2" />
+                          Agree to Terms and Conditions
+                        </label>
+                      </Text>
+
+                      <label>
+                        <Flex gap="2">
+                          <Switch />
                           <Text size="2">
-                            <label>
-                              I agree
-                              <Switch ml="2" size={size} defaultChecked={size === '2'} />
-                            </label>
+                            I understand that these documents are confidential and cannot be shared
+                            with a third party.
                           </Text>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                        </Flex>
+                      </label>
+
+                      {textSizes.slice(0, 4).map((size) => (
+                        <label key={size}>
+                          <Flex align="center" gap="2">
+                            <Switch />
+                            <Text size={size}>Agree to Terms and Conditions</Text>
+                          </Flex>
+                        </label>
+                      ))}
+                    </Flex>
+                  </div>
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -652,12 +740,7 @@ export default function Sink() {
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {switchSizes.map((size) => (
                               <td key={size}>
-                                <Text size="2">
-                                  <label>
-                                    I agree
-                                    <Switch size={size} ml="2" radius={radius} />
-                                  </label>
-                                </Text>
+                                <Switch size={size} radius={radius} />
                               </td>
                             ))}
                           </tr>
@@ -686,7 +769,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {switchVariants.map((variant) => (
+                            {switchColorVariants.map((variant) => (
                               <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
                             ))}
                           </tr>
@@ -695,19 +778,9 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {switchVariants.map((variant) => (
+                              {switchColorVariants.map((variant) => (
                                 <td key={variant}>
-                                  <Text size="2" asChild>
-                                    <label>
-                                      I agree
-                                      <Switch
-                                        variant={variant}
-                                        color={color}
-                                        defaultChecked
-                                        ml="2"
-                                      />
-                                    </label>
-                                  </Text>
+                                  <Switch variant={variant} color={color} defaultChecked />
                                 </td>
                               ))}
                             </tr>
@@ -717,97 +790,87 @@ export default function Sink() {
                     </React.Fragment>
                   ))}
                 </details>
-
-                <Separator size="3" my="5" />
-
-                <Text mb="3">Alignement</Text>
-
-                <Flex direction="column" gap="3" style={{ maxWidth: 324 }}>
-                  <Text size="2">
-                    <label>
-                      <Switch mr="2" />
-                      Agree to Terms and Conditions
-                    </label>
-                  </Text>
-
-                  <label>
-                    <Flex gap="2">
-                      <Switch />
-                      <Text size="2">
-                        I understand that these documents are confidential and cannot be shared with
-                        a third party.
-                      </Text>
-                    </Flex>
-                  </label>
-
-                  {textSizes.slice(0, 4).map((size) => (
-                    <label key={size}>
-                      <Flex align="center" gap="2">
-                        <Switch />
-                        <Text size={size}>Agree to Terms and Conditions</Text>
-                      </Flex>
-                    </label>
-                  ))}
-                </Flex>
               </DocsSection>
 
               <DocsSection title="Slider">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {sliderSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sliderVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {sliderSizes.map((size) => (
-                          <td key={size} style={{ minWidth: 150 }}>
-                            <Slider size={size} variant={variant} defaultValue={[50]} />
-                          </td>
+                <Grid columns="2" gap="9">
+                  {[sliderColorVariants, sliderMonoVariants].map((groupVariants, index) => (
+                    <div key={index}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>default</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {groupVariants.map((variant, index) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider variant={variant} defaultValue={[33 + index * 10]} />
+                              </td>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider
+                                  variant={variant}
+                                  defaultValue={[33 + index * 10]}
+                                  disabled
+                                />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                  <div>
+                    <table className={styles.table}>
+                      <tbody>
+                        {sliderSizes.map((size, index) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td style={{ minWidth: 316 }}>
+                              <Slider size={size} defaultValue={[33 + index * 10]} />
+                            </td>
+                          </tr>
                         ))}
-                        <td style={{ minWidth: 150 }}>
-                          <Slider variant={variant} defaultValue={[50]} size="3" disabled />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                      </tbody>
+                    </table>
+                  </div>
 
-                <Flex gap="5" style={{ height: 200 }} mt="5">
-                  {sliderSizes.map((size, i, sizes) => {
-                    return (
-                      <React.Fragment key={size}>
-                        {sliderVariants.map((variant, j, variants) => {
-                          const stepCount = variants.length * sizes.length - 1;
-                          const step = i * variants.length + j;
-                          const value =
-                            25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
-                          return (
-                            <Slider
-                              key={variant}
-                              orientation="vertical"
-                              defaultValue={[value]}
-                              size={size}
-                              variant={variant}
-                            />
-                          );
-                        })}
-                      </React.Fragment>
-                    );
-                  })}
-                </Flex>
+                  <div>
+                    <Flex gap="5" style={{ height: 160 }}>
+                      {sliderSizes.map((size, i, sizes) => {
+                        return (
+                          <React.Fragment key={size}>
+                            {[...sliderColorVariants, ...sliderMonoVariants].map(
+                              (variant, j, variants) => {
+                                const stepCount = variants.length * sizes.length - 1;
+                                const step = i * variants.length + j;
+                                const value =
+                                  25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
+                                return (
+                                  <Slider
+                                    key={variant}
+                                    orientation="vertical"
+                                    defaultValue={[value]}
+                                    size={size}
+                                    variant={variant}
+                                  />
+                                );
+                              }
+                            )}
+                          </React.Fragment>
+                        );
+                      })}
+                    </Flex>
+                  </div>
 
-                <Separator size="3" my="5" />
-
-                <Slider defaultValue={[25, 75]} />
-
-                <Separator size="3" my="5" />
+                  <Box mb="6">
+                    <Slider defaultValue={[25, 75]} />
+                  </Box>
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -864,7 +927,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {sliderVariants.map((variant) => (
+                            {sliderColorVariants.map((variant) => (
                               <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
                             ))}
                           </tr>
@@ -873,7 +936,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {sliderVariants.map((variant) => (
+                              {sliderColorVariants.map((variant) => (
                                 <td key={variant} style={{ minWidth: 150 }}>
                                   <Slider variant={variant} color={color} defaultValue={[50]} />
                                 </td>
@@ -888,69 +951,90 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Checkbox">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      <ColumnHeaderCell>not checked</ColumnHeaderCell>
-                      <ColumnHeaderCell>checked</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {checkboxVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              <Checkbox variant={variant} mr="2" />I agree
-                            </label>
-                          </Text>
-                        </td>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              <Checkbox variant={variant} mr="2" defaultChecked />I agree
-                            </label>
-                          </Text>
-                        </td>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              <Checkbox variant={variant} mr="2" disabled />I agree
-                            </label>
-                          </Text>
-                        </td>
-                        <td>
-                          <Text size="2" asChild>
-                            <label>
-                              <Checkbox variant={variant} mr="2" disabled defaultChecked />I agree
-                            </label>
-                          </Text>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  <div>
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                          <ColumnHeaderCell>checked</ColumnHeaderCell>
+                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {checkboxVariants.map((variant) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <Checkbox variant={variant} />
+                            </td>
+                            <td>
+                              <Checkbox variant={variant} defaultChecked />
+                            </td>
+                            <td>
+                              <Checkbox variant={variant} disabled />
+                            </td>
+                            <td>
+                              <Checkbox variant={variant} disabled defaultChecked />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
 
-                <table className={styles.table}>
-                  <tbody>
-                    {checkboxSizes.map((size) => (
-                      <tr key={size}>
-                        <RowHeaderCell>size {size}</RowHeaderCell>
-                        <td>
-                          <Text size="2">
-                            <label>
-                              <Checkbox mr="2" size={size} defaultChecked />I agree
+                    <table className={styles.table}>
+                      <tbody>
+                        {checkboxSizes.map((size) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <Checkbox size={size} defaultChecked />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div>
+                    <Box py="4">
+                      <Text size="2">Alignement</Text>
+                    </Box>
+                    <Separator size="3" />
+
+                    <Flex direction="column" gap="3" style={{ maxWidth: 300 }} mt="4">
+                      <Text size="2">
+                        <label>
+                          <Checkbox mr="2" />
+                          Agree to Terms and Conditions
+                        </label>
+                      </Text>
+
+                      <Flex gap="2">
+                        <Checkbox id={`align-1`} />
+                        <Text size="2">
+                          <label htmlFor={`align-1`}>
+                            I understand that these documents are confidential and cannot be shared
+                            with a third party.
+                          </label>
+                        </Text>
+                      </Flex>
+
+                      {textSizes.slice(0, 4).map((size) => (
+                        <Flex align="center" gap="2" key={size}>
+                          <Checkbox id={`align-size${size}`} />
+                          <Text size={size}>
+                            <label htmlFor={`align-size${size}`}>
+                              Agree to Terms and Conditions
                             </label>
                           </Text>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                        </Flex>
+                      ))}
+                    </Flex>
+                  </div>
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -978,12 +1062,7 @@ export default function Sink() {
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {checkboxSizes.map((size) => (
                               <td key={size}>
-                                <Text size="2">
-                                  <label>
-                                    <Checkbox defaultChecked radius={radius} mr="2" size={size} />I
-                                    agree
-                                  </label>
-                                </Text>
+                                <Checkbox defaultChecked radius={radius} size={size} />
                               </td>
                             ))}
                           </tr>
@@ -1012,7 +1091,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {checkboxVariants.map((variant) => (
+                            {checkboxColorVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1021,19 +1100,9 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {checkboxVariants.map((variant) => (
+                              {checkboxColorVariants.map((variant) => (
                                 <td key={variant}>
-                                  <Text size="2" asChild>
-                                    <label>
-                                      <Checkbox
-                                        variant={variant}
-                                        color={color}
-                                        defaultChecked
-                                        mr="2"
-                                      />
-                                      I agree
-                                    </label>
-                                  </Text>
+                                  <Checkbox variant={variant} color={color} defaultChecked />
                                 </td>
                               ))}
                             </tr>
@@ -1043,119 +1112,104 @@ export default function Sink() {
                     </React.Fragment>
                   ))}
                 </details>
-
-                <Separator size="3" my="5" />
-
-                <Text mb="3">Alignement</Text>
-
-                <Flex direction="column" gap="3" style={{ maxWidth: 300 }}>
-                  <Text size="2">
-                    <label>
-                      <Checkbox mr="2" />
-                      Agree to Terms and Conditions
-                    </label>
-                  </Text>
-
-                  <Flex gap="2">
-                    <Checkbox id={`align-1`} />
-                    <Text size="2">
-                      <label htmlFor={`align-1`}>
-                        I understand that these documents are confidential and cannot be shared with
-                        a third party.
-                      </label>
-                    </Text>
-                  </Flex>
-
-                  {textSizes.slice(0, 4).map((size) => (
-                    <Flex align="center" gap="2" key={size}>
-                      <Checkbox id={`align-size${size}`} />
-                      <Text size={size}>
-                        <label htmlFor={`align-size${size}`}>Agree to Terms and Conditions</label>
-                      </Text>
-                    </Flex>
-                  ))}
-                </Flex>
               </DocsSection>
 
               <DocsSection title="RadioGroup">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      <ColumnHeaderCell>not checked</ColumnHeaderCell>
-                      <ColumnHeaderCell>checked</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {radioGroupVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <RadioGroupRoot variant={variant}>
-                            <Text size="2" asChild>
-                              <label>
-                                <RadioGroupItem value="value" mr="2" />
-                                My radio
-                              </label>
-                            </Text>
-                          </RadioGroupRoot>
-                        </td>
-                        <td>
-                          <RadioGroupRoot variant={variant}>
-                            <Text size="2" asChild>
-                              <label>
-                                <RadioGroupItem value="value" mr="2" defaultChecked />
-                                My radio
-                              </label>
-                            </Text>
-                          </RadioGroupRoot>
-                        </td>
-                        <td>
-                          <RadioGroupRoot variant={variant}>
-                            <Text size="2" asChild>
-                              <label>
-                                <RadioGroupItem value="value" mr="2" disabled />
-                                My radio
-                              </label>
-                            </Text>
-                          </RadioGroupRoot>
-                        </td>
-                        <td>
-                          <RadioGroupRoot variant={variant} disabled defaultChecked>
-                            <Text size="2" asChild>
-                              <label>
-                                <RadioGroupItem value="value" mr="2" />
-                                My radio
-                              </label>
-                            </Text>
-                          </RadioGroupRoot>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  <div>
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                          <ColumnHeaderCell>checked</ColumnHeaderCell>
+                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {radioGroupVariants.map((variant) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <RadioGroupRoot variant={variant}>
+                                <RadioGroupItem value="value" />
+                              </RadioGroupRoot>
+                            </td>
+                            <td>
+                              <RadioGroupRoot variant={variant} defaultValue="value">
+                                <RadioGroupItem value="value" />
+                              </RadioGroupRoot>
+                            </td>
+                            <td>
+                              <RadioGroupRoot variant={variant}>
+                                <RadioGroupItem value="value" disabled />
+                              </RadioGroupRoot>
+                            </td>
+                            <td>
+                              <RadioGroupRoot variant={variant} disabled defaultValue="value">
+                                <RadioGroupItem value="value" />
+                              </RadioGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
 
-                <table className={styles.table}>
-                  <tbody>
-                    {radioGroupSizes.map((size) => (
-                      <tr key={size}>
-                        <RowHeaderCell>size {size}</RowHeaderCell>
-                        <td>
-                          <RadioGroupRoot size={size} defaultValue="value">
-                            <Text size="2">
-                              <label>
-                                <RadioGroupItem value="value" mr="2" />
-                                My radio
-                              </label>
-                            </Text>
-                          </RadioGroupRoot>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioGroupSizes.map((size) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <RadioGroupRoot size={size} defaultValue="value">
+                                <RadioGroupItem value="value" />
+                              </RadioGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div>
+                    <Box py="4">
+                      <Text size="2">Alignement</Text>
+                    </Box>
+                    <Separator size="3" />
+
+                    <Flex direction="column" gap="3" style={{ maxWidth: 200 }} mt="4">
+                      <RadioGroupRoot>
+                        <Text size="2">
+                          <label>
+                            <RadioGroupItem value="value" mr="2" />
+                            My radio
+                          </label>
+                        </Text>
+                      </RadioGroupRoot>
+
+                      <RadioGroupRoot>
+                        <label>
+                          <Flex gap="2">
+                            <RadioGroupItem value="value" />
+                            <Text size="2">Automatically based on mouse or trackpad</Text>
+                          </Flex>
+                        </label>
+                      </RadioGroupRoot>
+
+                      {textSizes.slice(0, 4).map((size) => (
+                        <RadioGroupRoot key={size}>
+                          <label>
+                            <Flex align="center" gap="2">
+                              <RadioGroupItem value="value" />
+                              <Text size={size}>Text size {size}</Text>
+                            </Flex>
+                          </label>
+                        </RadioGroupRoot>
+                      ))}
+                    </Flex>
+                  </div>
+                </Grid>
 
                 <Text my="5">
                   <Code>color</Code> can be set per instance:
@@ -1176,7 +1230,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {radioGroupVariants.map((variant) => (
+                            {radioGroupColorVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1185,19 +1239,14 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {radioGroupVariants.map((variant) => (
+                              {radioGroupColorVariants.map((variant) => (
                                 <td key={variant}>
                                   <RadioGroupRoot
                                     variant={variant}
                                     color={color}
                                     defaultValue="value"
                                   >
-                                    <Text size="2" asChild>
-                                      <label>
-                                        <RadioGroupItem value="value" mr="2" />
-                                        My radio
-                                      </label>
-                                    </Text>
+                                    <RadioGroupItem value="value" />
                                   </RadioGroupRoot>
                                 </td>
                               ))}
@@ -1210,72 +1259,45 @@ export default function Sink() {
                 </details>
 
                 <Separator size="3" my="5" />
-
-                <Text mb="3">Alignement</Text>
-
-                <Flex direction="column" gap="3" style={{ maxWidth: 200 }}>
-                  <RadioGroupRoot>
-                    <Text size="2">
-                      <label>
-                        <RadioGroupItem value="value" mr="2" />
-                        My radio
-                      </label>
-                    </Text>
-                  </RadioGroupRoot>
-
-                  <RadioGroupRoot>
-                    <label>
-                      <Flex gap="2">
-                        <RadioGroupItem value="value" />
-                        <Text size="2">Automatically based on mouse or trackpad</Text>
-                      </Flex>
-                    </label>
-                  </RadioGroupRoot>
-
-                  {textSizes.slice(0, 4).map((size) => (
-                    <RadioGroupRoot key={size}>
-                      <label>
-                        <Flex align="center" gap="2">
-                          <RadioGroupItem value="value" />
-                          <Text size={size}>Text size {size}</Text>
-                        </Flex>
-                      </label>
-                    </RadioGroupRoot>
-                  ))}
-                </Flex>
               </DocsSection>
 
               <DocsSection title="Button">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {buttonSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {buttonVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {buttonSizes.map((size) => (
-                          <td key={size}>
-                            <Button size={size} variant={variant}>
-                              Next <ArrowRightIcon />
-                            </Button>
-                          </td>
-                        ))}
-                        <td>
-                          <Button size="3" variant={variant} disabled>
-                            Next <ArrowRightIcon />
-                          </Button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  {[buttonColorVariants, buttonMonoVariants].map((groupVariants, index) => (
+                    <div key={index}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {buttonSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {groupVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              {buttonSizes.map((size) => (
+                                <td key={size}>
+                                  <Button size={size} variant={variant}>
+                                    Next <ArrowRightIcon />
+                                  </Button>
+                                </td>
+                              ))}
+                              <td>
+                                <Button size="3" variant={variant} disabled>
+                                  Next <ArrowRightIcon />
+                                </Button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -1334,7 +1356,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {buttonVariants.map((variant) => (
+                            {buttonColorVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1343,7 +1365,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {buttonVariants.map((variant) => (
+                              {buttonColorVariants.map((variant) => (
                                 <td key={variant}>
                                   <Button variant={variant} color={color}>
                                     <Pencil2Icon />
@@ -1361,36 +1383,42 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="IconButton">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {iconButtonSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {iconButtonVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {iconButtonSizes.map((size) => (
-                          <td key={size}>
-                            <IconButton size={size} variant={variant}>
-                              <Share2Icon />
-                            </IconButton>
-                          </td>
-                        ))}
-                        <td>
-                          <IconButton size="3" variant={variant} disabled>
-                            <Share2Icon />
-                          </IconButton>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  {[iconButtonColorVariants, iconButtonMonoVariants].map((groupVariants, index) => (
+                    <div key={index}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {iconButtonSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {groupVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              {iconButtonSizes.map((size) => (
+                                <td key={size}>
+                                  <IconButton size={size} variant={variant}>
+                                    <Share2Icon />
+                                  </IconButton>
+                                </td>
+                              ))}
+                              <td>
+                                <IconButton size="3" variant={variant} disabled>
+                                  <Share2Icon />
+                                </IconButton>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -1449,7 +1477,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {iconButtonVariants.map((variant) => (
+                            {iconButtonColorVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1458,7 +1486,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {iconButtonVariants.map((variant) => (
+                              {iconButtonColorVariants.map((variant) => (
                                 <td key={variant}>
                                   <IconButton variant={variant} color={color}>
                                     <Share2Icon />
@@ -1718,48 +1746,71 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Avatar">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {avatarSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <td>
-                        <Text size="2">fallbacks →</Text>
-                      </td>
-                      <ColumnHeaderCell>default</ColumnHeaderCell>
-                      <ColumnHeaderCell>1 letter</ColumnHeaderCell>
-                      <ColumnHeaderCell>2 letters</ColumnHeaderCell>
-                      <ColumnHeaderCell>custom icon</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {avatarVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
+                <Grid columns="2" gap="9">
+                  {[avatarColorVariants, avatarMonoVariants].map((groupVariants, index) => (
+                    <div key={index}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>image</ColumnHeaderCell>
+                            <ColumnHeaderCell>1 letter</ColumnHeaderCell>
+                            <ColumnHeaderCell>2 letters</ColumnHeaderCell>
+                            <ColumnHeaderCell>icon</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {groupVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td>
+                                <Avatar variant={variant} src="./api/avatar" fallback="D" />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback="D" />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback="BG" />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback={<CustomUserIcon />} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+
+                  <Box mb="6">
+                    <table className={styles.table}>
+                      <tbody>
                         {avatarSizes.map((size) => (
-                          <td key={size}>
-                            <Avatar size={size} variant={variant} src="./api/avatar" fallback="D" />
-                          </td>
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <Flex gap="2">
+                                <Avatar
+                                  size={size}
+                                  variant="subtle-mono"
+                                  src="./api/avatar"
+                                  fallback="D"
+                                />
+                                <Avatar size={size} variant="subtle-mono" fallback="D" />
+                                <Avatar size={size} variant="subtle-mono" fallback="BG" />
+                                <Avatar
+                                  size={size}
+                                  variant="subtle-mono"
+                                  fallback={<CustomUserIcon />}
+                                />
+                              </Flex>
+                            </td>
+                          </tr>
                         ))}
-                        <td />
-                        <td>
-                          <Avatar variant={variant} />
-                        </td>
-                        <td>
-                          <Avatar variant={variant} fallback="D" />
-                        </td>
-                        <td>
-                          <Avatar variant={variant} fallback="BG" />
-                        </td>
-                        <td>
-                          <Avatar variant={variant} fallback={<CustomUserIcon />} />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                      </tbody>
+                    </table>
+                  </Box>
+                </Grid>
 
                 <Text my="5">
                   <Code>radius</Code> can be set per instance:
@@ -1787,7 +1838,12 @@ export default function Sink() {
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {avatarSizes.map((size) => (
                               <td key={size}>
-                                <Avatar size={size} radius={radius} fallback="D" />
+                                <Avatar
+                                  size={size}
+                                  radius={radius}
+                                  src="./api/avatar"
+                                  fallback="D"
+                                />
                               </td>
                             ))}
                           </tr>
@@ -1816,7 +1872,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {avatarVariants.map((variant) => (
+                            {avatarColorVariants.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1825,7 +1881,7 @@ export default function Sink() {
                           {colors.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {avatarVariants.map((variant) => (
+                              {avatarColorVariants.map((variant) => (
                                 <td key={variant}>
                                   <Avatar variant={variant} color={color} fallback="D" />
                                 </td>
@@ -2743,7 +2799,7 @@ function DocsSection({ title, children }: { title: string; children: React.React
   return (
     <>
       <Container>
-        <Section>
+        <Section size="2">
           <Box px="6">
             <Text size="6" mb="4" asChild>
               <h1>
@@ -2758,6 +2814,21 @@ function DocsSection({ title, children }: { title: string; children: React.React
       </Container>
       <Separator size="4" />
     </>
+  );
+}
+
+function DocsGridSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <Box px="6">
+      <Text size="6" mb="4" asChild>
+        <h1>
+          <Link href={`#${title}`} id={title}>
+            {title}
+          </Link>
+        </h1>
+      </Text>
+      {children}
+    </Box>
   );
 }
 
