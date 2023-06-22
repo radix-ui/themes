@@ -4,7 +4,7 @@ const badgeSizes = ['1', '2'] as const;
 type BadgeSize = (typeof badgeSizes)[number];
 const defaultBadgeSize: BadgeSize = '1';
 
-const badgeVariants = ['surface', 'subtle', 'outline'] as const;
+const badgeVariants = ['subtle', 'outline', 'surface'] as const;
 type BadgeVariant = (typeof badgeVariants)[number];
 const defaultBadgeVariant: BadgeVariant = 'subtle';
 

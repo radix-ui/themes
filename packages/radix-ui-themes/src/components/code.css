@@ -4,7 +4,6 @@
   font-size: 90%;
   letter-spacing: -0.007em;
   line-height: 1.25;
-  border-radius: var(--br-1);
 }
 
 /***************************************************************************************************
@@ -78,11 +77,41 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Code.highlighted {
+.rui-Code:where(:not(.variant-plain)) {
   padding-left: 0.2em;
   padding-right: 0.2em;
-  background-color: var(--monoA3);
+  border-radius: var(--br-1);
 }
-.rui-Code.highlighted:where([data-color-scale]) {
+
+/* plain */
+
+.rui-Code.variant-plain {
+}
+
+/* solid */
+
+.rui-Code.variant-solid {
+  background-color: var(--color9);
+  color: var(--color-foreground);
+}
+
+/* solid-mono */
+
+.rui-Code.variant-solid-mono {
+  background-color: var(--monoA12);
+  color: var(--mono1);
+}
+
+/* subtle */
+
+.rui-Code.variant-subtle {
   background-color: var(--color3);
+  color: var(--color11);
+}
+
+/* subtle-mono */
+
+.rui-Code.variant-subtle-mono {
+  background-color: var(--monoA4);
+  color: var(--mono12);
 }

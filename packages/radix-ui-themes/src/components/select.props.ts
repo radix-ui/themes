@@ -5,14 +5,14 @@ type SelectSize = (typeof selectSizes)[number];
 const defaultSelectSize: SelectSize = '2';
 
 const selectTriggerVariants = [
-  'surface',
-  'surface-mono',
   'solid',
   'solid-mono',
   'subtle',
   'subtle-mono',
   'outline',
   'outline-mono',
+  'surface',
+  'surface-mono',
   'ghost',
   'ghost-mono',
 ] as const;
