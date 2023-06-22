@@ -187,6 +187,7 @@ const buttonMonoVariants = buttonVariants.filter((variant) => variant.endsWith('
 const checkboxColorVariants = checkboxVariants.filter((variant) => !variant.endsWith('-mono'));
 
 const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-mono'));
+const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mono'));
 
 const iconButtonColorVariants = iconButtonVariants.filter((variant) => !variant.endsWith('-mono'));
 const iconButtonMonoVariants = iconButtonVariants.filter((variant) => variant.endsWith('-mono'));
@@ -2234,18 +2235,24 @@ export default function Sink() {
               </DocsSection>
 
               <DocsSection title="Code">
-                <table className={styles.table}>
-                  <tbody>
-                    {codeVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        <td>
-                          <Code variant={variant}>console.log()</Code>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <Grid columns="2" gap="9">
+                  {[codeColorVariants, codeMonoVariants].map((groupVariants, index) => (
+                    <div key={index}>
+                      <table className={styles.table}>
+                        <tbody>
+                          {groupVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td>
+                                <Code variant={variant}>console.log()</Code>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </Grid>
 
                 <Flex direction="column" gap="4" mt="7">
                   {codeSizes

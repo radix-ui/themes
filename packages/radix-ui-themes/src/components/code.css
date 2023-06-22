@@ -115,3 +115,17 @@
   background-color: var(--monoA4);
   color: var(--mono12);
 }
+
+/* outline */
+
+.rui-Code.variant-outline {
+  box-shadow: 0 0 0 1px var(--color6);
+  color: var(--color11);
+}
+
+/* outline-mono */
+
+.rui-Code.variant-outline-mono {
+  box-shadow: 0 0 0 1px var(--monoA7);
+  color: var(--mono12);
+}
