@@ -265,7 +265,7 @@ export default function Showcase() {
                               style={{
                                 width: AVATARS_LIST_WIDTH,
                                 border: `1px solid var(${
-                                  avatarNameColor === undefined ? '--monoA6' : '--color6'
+                                  avatarNameColor === undefined ? '--mono-a6' : '--color-6'
                                 })`,
                                 borderRadius: 'var(--brs-3)',
                               }}
@@ -283,8 +283,8 @@ export default function Showcase() {
                                         index > 0
                                           ? `1px solid var(${
                                               avatarNameColor === undefined
-                                                ? '--monoA6'
-                                                : '--color6'
+                                                ? '--mono-a6'
+                                                : '--color-6'
                                             })`
                                           : undefined,
                                       '--delay': `${index * 50}ms`,
@@ -573,7 +573,7 @@ export default function Showcase() {
                             style={{
                               backgroundColor: 'var(--panel)',
                               border: `1px solid var(${
-                                avatarNameColor === undefined ? '--monoA5' : '--color5'
+                                avatarNameColor === undefined ? '--mono-a5' : '--color-5'
                               })`,
                               borderRadius: 'var(--brs-3)',
                               width: FILTERS_PANEL_WIDTH,
@@ -759,7 +759,7 @@ function FakeBrowser({ children }: { children: React.ReactNode }) {
       style={{
         borderRadius: 'var(--br-5)',
         overflow: 'hidden',
-        border: '1px solid var(--mono6)',
+        border: '1px solid var(--mono-6)',
         boxShadow: 'var(--shadow-3)',
       }}
     >
@@ -769,8 +769,8 @@ function FakeBrowser({ children }: { children: React.ReactNode }) {
         p="3"
         style={{
           position: 'relative',
-          borderBottom: '1px solid var(--mono6)',
-          backgroundColor: 'var(--monoA1)',
+          borderBottom: '1px solid var(--mono-6)',
+          backgroundColor: 'var(--mono-a1)',
         }}
       >
         <Flex gap="2" style={{ ['--size' as any]: '14px' }}>
@@ -806,13 +806,13 @@ function FakeBrowser({ children }: { children: React.ReactNode }) {
           px="3"
           gap="2"
           style={{
-            border: '1px solid var(--mono6)',
+            border: '1px solid var(--mono-6)',
             borderRadius: 'var(--br-2)',
             position: 'absolute',
             left: '50%',
             transform: 'translateX(-50%)',
             minWidth: 240,
-            backgroundColor: 'var(--monoA1)',
+            backgroundColor: 'var(--mono-a1)',
           }}
         >
           <Text size="2" color="gray">

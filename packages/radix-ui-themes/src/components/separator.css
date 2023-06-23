@@ -1,9 +1,9 @@
 .rui-Separator {
-  background-color: var(--mono6);
+  background-color: var(--mono-6);
 }
 
 .rui-Separator:where([data-color-scale]) {
-  background-color: var(--color6);
+  background-color: var(--color-6);
 }
 
 .rui-Separator[data-orientation='vertical'] {

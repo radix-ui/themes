@@ -180,14 +180,14 @@ export default function Snapshot() {
                   style={{
                     position: 'absolute',
                     inset: 0,
-                    color: 'var(--whiteA12)',
+                    color: 'var(--white-a12)',
                     padding: 'var(--space-8) var(--space-5)',
-                    backgroundImage: 'linear-gradient(135deg, var(--blackA11), transparent)',
+                    backgroundImage: 'linear-gradient(135deg, var(--black-a11), transparent)',
                   }}
                 >
                   <div style={{ maxWidth: '35%' }}>
                     <Heading size="9">Green Life</Heading>
-                    <Text style={{ marginBottom: 'var(--space-5)', color: 'var(--whiteA11)' }}>
+                    <Text style={{ marginBottom: 'var(--space-5)', color: 'var(--white-a11)' }}>
                       Curated by WorkOS
                     </Text>
 
@@ -199,7 +199,7 @@ export default function Snapshot() {
 
                     <Text
                       size="2"
-                      style={{ marginBottom: 'var(--space-6)', color: 'var(--whiteA11)' }}
+                      style={{ marginBottom: 'var(--space-6)', color: 'var(--white-a11)' }}
                     >
                       Sponsored by Radix UI
                     </Text>
@@ -216,7 +216,7 @@ export default function Snapshot() {
                 {['1601815560619-c5aeb2cb9297', '1683223336014-06e82d91c95e'].map((id) => (
                   <ImageCard key={id} id={id} />
                 ))}
-                <div style={{ border: '1px solid var(--mono7)', padding: 'var(--space-5)' }}>
+                <div style={{ border: '1px solid var(--mono-7)', padding: 'var(--space-5)' }}>
                   <Text size="4" weight="bold" style={{ marginBottom: 'var(--space-5)' }}>
                     Contributors
                   </Text>
@@ -273,10 +273,10 @@ function SubmitPhotoDialog({ children }: any) {
             style={{
               display: 'grid',
               placeItems: 'center',
-              border: '2px dashed var(--color6)',
-              backgroundColor: 'var(--monoA1)',
+              border: '2px dashed var(--color-6)',
+              backgroundColor: 'var(--mono-a1)',
               height: 100,
-              color: 'var(--mono6)',
+              color: 'var(--mono-6)',
             }}
           >
             <UploadIcon width="50" height="50" />

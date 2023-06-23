@@ -69,7 +69,7 @@
  ***************************************************************************************************/
 
 .rui-SwitchButton {
-  background-color: var(--monoA3);
+  background-color: var(--mono-a3);
   box-shadow: var(--shadow-1);
 }
 .rui-SwitchButton:where(:focus-visible) {
@@ -78,38 +78,38 @@
   outline-width: 2px;
 }
 .rui-SwitchButton:where([data-state='checked']) {
-  box-shadow: inset 0 1.5px 2px 0 var(--blackA7);
+  box-shadow: inset 0 1.5px 2px 0 var(--black-a7);
 }
 
 .rui-SwitchThumb {
-  background-color: var(--whiteA12);
-  box-shadow: 0 1px 2px var(--blackA7), 0 0 0 0.5px var(--monoA3);
+  background-color: var(--white-a12);
+  box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--mono-a3);
 }
 .rui-SwitchThumb:where([data-state='checked']) {
-  box-shadow: 0 1px 2px var(--blackA9);
+  box-shadow: 0 1px 2px var(--black-a9);
 }
 
 /* solid */
 
 .rui-SwitchRoot.variant-solid .rui-SwitchButton:where(:focus-visible) {
-  outline-color: var(--color7);
+  outline-color: var(--color-7);
 }
 .rui-SwitchRoot.variant-solid .rui-SwitchButton:where([data-state='checked']) {
-  background-color: var(--color9);
+  background-color: var(--color-9);
 }
 
 /* solid-mono */
 
 :root,
 .light-theme {
-  --switch-button-checked-solid-mono-bg: var(--monoA12);
+  --switch-button-checked-solid-mono-bg: var(--mono-a12);
 }
 .dark-theme {
-  --switch-button-checked-solid-mono-bg: var(--monoA9);
+  --switch-button-checked-solid-mono-bg: var(--mono-a9);
 }
 
 .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where(:focus-visible) {
-  outline-color: var(--monoA11);
+  outline-color: var(--mono-a11);
 }
 .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where([data-state='checked']) {
   background-color: var(--switch-button-checked-solid-mono-bg);
@@ -119,10 +119,10 @@
 
 .rui-SwitchRoot .rui-SwitchButton[data-disabled] {
   background-color: var(--surface-3) !important;
-  box-shadow: inset 0 0 0 1px var(--monoA5);
+  box-shadow: inset 0 0 0 1px var(--mono-a5);
   cursor: not-allowed;
 }
 .rui-SwitchRoot .rui-SwitchThumb[data-disabled] {
-  background-color: var(--monoA5);
+  background-color: var(--mono-a5);
   box-shadow: none;
 }

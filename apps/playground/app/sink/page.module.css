@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 .root :global(summary:focus-visible) {
-  outline: 2px solid var(--color8);
+  outline: 2px solid var(--color-8);
   outline-offset: 2px;
 }
 
@@ -24,7 +24,7 @@
 
 .table thead tr,
 .table tbody tr:not(:last-child) {
-  border-bottom: 0.5px solid var(--monoA6);
+  border-bottom: 0.5px solid var(--mono-a6);
 }
 
 .table th,

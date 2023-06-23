@@ -53,22 +53,22 @@
 
 .rui-TextField {
   box-shadow: var(--shadow-1);
-  color: var(--mono12);
+  color: var(--mono-12);
 }
 
 .rui-TextField::placeholder {
-  color: var(--monoA10);
+  color: var(--mono-a10);
   /* Firefox */
   opacity: 1;
 }
 
 .rui-TextField:autofill {
-  -webkit-text-fill-color: var(--mono12);
-  box-shadow: var(--shadow-1), inset 0 0 0 100px var(--color3);
+  -webkit-text-fill-color: var(--mono-12);
+  box-shadow: var(--shadow-1), inset 0 0 0 100px var(--color-3);
 }
 .rui-TextField:autofill:focus {
-  box-shadow: inset 0 0 0 1px var(--color8), 0 0 0 1px var(--color8),
-    inset 0 0 0 100px var(--color3);
+  box-shadow: inset 0 0 0 1px var(--color-8), 0 0 0 1px var(--color-8),
+    inset 0 0 0 100px var(--color-3);
 }
 
 /* surface */
@@ -77,7 +77,7 @@
   background-color: var(--surface-1);
 }
 .rui-TextField.variant-surface:focus {
-  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--color7), 0 0 0 2px var(--color7);
+  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--color-7), 0 0 0 2px var(--color-7);
 }
 
 /* surface-mono */
@@ -86,36 +86,36 @@
   background-color: var(--surface-1);
 }
 .rui-TextField.variant-surface-mono:focus {
-  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--monoA8), 0 0 0 2px var(--monoA8);
+  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--mono-a8), 0 0 0 2px var(--mono-a8);
 }
 .rui-TextField.variant-surface-mono::selection {
-  background-color: var(--monoA5);
+  background-color: var(--mono-a5);
 }
 
 /* subtle-mono */
 .rui-TextField.variant-subtle-mono {
-  background-color: var(--monoA3);
+  background-color: var(--mono-a3);
   box-shadow: none;
 }
 .rui-TextField.variant-subtle-mono::selection {
-  background-color: var(--monoA5);
+  background-color: var(--mono-a5);
 }
 .rui-TextField.variant-subtle-mono:focus {
-  box-shadow: 0 0 0 2px var(--monoA8);
+  box-shadow: 0 0 0 2px var(--mono-a8);
 }
 
 /* all disabled textareas */
 
 .rui-TextField:disabled {
-  color: var(--monoA9);
-  box-shadow: inset 0 0 0 1px var(--monoA6);
-  background-color: var(--monoA3);
+  color: var(--mono-a9);
+  box-shadow: inset 0 0 0 1px var(--mono-a6);
+  background-color: var(--mono-a3);
   cursor: not-allowed;
 }
 
 /* all readonly textareas */
 
 .rui-TextField:read-only {
-  background-color: var(--monoA3);
-  box-shadow: inset 0 0 0 1px var(--monoA6);
+  background-color: var(--mono-a3);
+  box-shadow: inset 0 0 0 1px var(--mono-a6);
 }

@@ -91,41 +91,41 @@
 /* solid */
 
 .rui-Code.variant-solid {
-  background-color: var(--color9);
+  background-color: var(--color-9);
   color: var(--color-foreground);
 }
 
 /* solid-mono */
 
 .rui-Code.variant-solid-mono {
-  background-color: var(--monoA12);
-  color: var(--mono1);
+  background-color: var(--mono-a12);
+  color: var(--mono-1);
 }
 
 /* subtle */
 
 .rui-Code.variant-subtle {
-  background-color: var(--color3);
-  color: var(--color11);
+  background-color: var(--color-3);
+  color: var(--color-11);
 }
 
 /* subtle-mono */
 
 .rui-Code.variant-subtle-mono {
-  background-color: var(--monoA4);
-  color: var(--mono12);
+  background-color: var(--mono-a4);
+  color: var(--mono-12);
 }
 
 /* outline */
 
 .rui-Code.variant-outline {
-  box-shadow: 0 0 0 1px var(--color6);
-  color: var(--color11);
+  box-shadow: 0 0 0 1px var(--color-6);
+  color: var(--color-11);
 }
 
 /* outline-mono */
 
 .rui-Code.variant-outline-mono {
-  box-shadow: 0 0 0 1px var(--monoA7);
-  color: var(--mono12);
+  box-shadow: 0 0 0 1px var(--mono-a7);
+  color: var(--mono-12);
 }

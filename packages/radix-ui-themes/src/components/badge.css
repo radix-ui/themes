@@ -44,30 +44,30 @@
 
 .rui-Badge.variant-surface:where([data-color-scale]) {
   background-color: var(--surface-1);
-  box-shadow: inset 0 0 0 0.5px var(--color5), 0 0 0 0.5px var(--color5);
-  color: var(--color11);
+  box-shadow: inset 0 0 0 0.5px var(--color-5), 0 0 0 0.5px var(--color-5);
+  color: var(--color-11);
 }
 .rui-Badge.variant-surface:where([data-color-scale='gray']) {
-  box-shadow: inset 0 0 0 0.5px var(--monoA5), 0 0 0 0.5px var(--monoA5);
-  color: var(--mono12);
+  box-shadow: inset 0 0 0 0.5px var(--mono-a5), 0 0 0 0.5px var(--mono-a5);
+  color: var(--mono-12);
 }
 
 /* subtle */
 
 .rui-Badge.variant-subtle:where([data-color-scale]) {
-  background-color: var(--color3);
-  color: var(--color11);
+  background-color: var(--color-3);
+  color: var(--color-11);
 }
 .rui-Badge.variant-subtle:where([data-color-scale='gray']) {
-  color: var(--mono12);
+  color: var(--mono-12);
 }
 
 /* outline */
 
 .rui-Badge.variant-outline:where([data-color-scale]) {
-  box-shadow: inset 0 0 0 0.5px var(--color5), 0 0 0 0.5px var(--color5);
-  color: var(--color11);
+  box-shadow: inset 0 0 0 0.5px var(--color-5), 0 0 0 0.5px var(--color-5);
+  color: var(--color-11);
 }
 .rui-Badge.variant-outline:where([data-color-scale='gray']) {
-  color: var(--mono12);
+  color: var(--mono-12);
 }

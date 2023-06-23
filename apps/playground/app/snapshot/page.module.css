@@ -11,11 +11,11 @@
   height: var(--space-7);
   border-radius: var(--brs-3);
   border: none;
-  background-color: var(--monoA5);
+  background-color: var(--mono-a5);
   padding: 0 var(--space-5);
 }
 .search:focus {
-  outline-color: var(--color9);
+  outline-color: var(--color-9);
 }
 
 .grid {
@@ -32,7 +32,7 @@
 .imageCardOverlay {
   position: absolute;
   inset: 0px;
-  background-image: linear-gradient(-135deg, var(--blackA11), transparent);
+  background-image: linear-gradient(-135deg, var(--black-a11), transparent);
   padding: var(--space-3);
   opacity: 0;
 }
@@ -44,7 +44,7 @@
 }
 
 .downloadPopover {
-  accent-color: var(--color9);
+  accent-color: var(--color-9);
 }
 
 .container {

@@ -4,8 +4,8 @@
   text-decoration-style: solid;
   text-decoration-thickness: 1px;
   text-underline-offset: calc(0.025em + 2px);
-  text-decoration-color: var(--color5);
-  color: var(--color11);
+  text-decoration-color: var(--color-5);
+  color: var(--color-11);
 }
 
 @breakpoints {
@@ -21,7 +21,7 @@
 }
 
 .rui-Link:focus-visible {
-  outline-color: var(--color8);
+  outline-color: var(--color-8);
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
@@ -30,8 +30,8 @@
 
 .rui-Link.variant-high-contrast,
 .rui-Text:where([data-color-scale]) .rui-Link {
-  color: var(--color12);
+  color: var(--color-12);
   text-decoration-line: underline;
-  text-decoration-color: var(--color6);
-  outline-color: var(--color11);
+  text-decoration-color: var(--color-6);
+  outline-color: var(--color-11);
 }

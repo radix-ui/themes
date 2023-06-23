@@ -48,16 +48,16 @@ export default function HomeOS() {
               <div
                 style={{
                   width: 1250,
-                  border: '1px solid var(--mono8)',
+                  border: '1px solid var(--mono-8)',
                   borderRadius: 'var(--brs-4)',
-                  backgroundColor: 'var(--mono1)',
-                  background: 'linear-gradient(150deg, transparent 60%, var(--mono2) 100%)',
+                  backgroundColor: 'var(--mono-1)',
+                  background: 'linear-gradient(150deg, transparent 60%, var(--mono-2) 100%)',
                 }}
               >
                 <header
                   style={{
                     padding: 'var(--space-4) var(--space-6)',
-                    borderBottom: '1px solid var(--mono8)',
+                    borderBottom: '1px solid var(--mono-8)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -68,7 +68,7 @@ export default function HomeOS() {
                       width="20"
                       height="22"
                       viewBox="0 0 20 22"
-                      style={{ fill: 'var(--color9)' }}
+                      style={{ fill: 'var(--color-9)' }}
                     >
                       <path
                         fillRule="evenodd"
@@ -256,7 +256,7 @@ export default function HomeOS() {
                           width: 340,
                           backgroundColor: 'var(--background-feel)',
                           boxShadow: 'var(--shadow-2)',
-                          border: '1px solid var(--mono6)',
+                          border: '1px solid var(--mono-6)',
                           padding: 30,
                           display: 'flex',
                           flexDirection: 'column',
@@ -322,7 +322,7 @@ export default function HomeOS() {
                               style={{
                                 boxSizing: 'border-box',
                                 padding: 'var(--space-5)',
-                                backgroundColor: 'var(--mono1)',
+                                backgroundColor: 'var(--mono-1)',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 gap: 'var(--space-4)',
@@ -408,7 +408,7 @@ const PhotoArea: React.FC = () => {
     >
       <div
         style={{
-          backgroundColor: 'var(--mono4)',
+          backgroundColor: 'var(--mono-4)',
           backgroundImage:
             'url("https://images.unsplash.com/photo-1615529182904-14819c35db37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80")',
           backgroundPosition: 'center',
@@ -417,7 +417,7 @@ const PhotoArea: React.FC = () => {
       />
       <div
         style={{
-          backgroundColor: 'var(--mono4)',
+          backgroundColor: 'var(--mono-4)',
           backgroundImage:
             'url("https://images.unsplash.com/photo-1585128792020-803d29415281?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")',
           backgroundPosition: 'center',
@@ -434,7 +434,7 @@ const PhotoArea: React.FC = () => {
       >
         <span
           style={{
-            color: 'var(--mono8)',
+            color: 'var(--mono-8)',
           }}
         >
           <GridIcon />
@@ -450,7 +450,7 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div
       style={{
         padding: `var(--space-3) var(--space-5)`,
-        border: '1px solid var(--mono7)',
+        border: '1px solid var(--mono-7)',
         borderRadius: 'var(--brs-3)',
         display: 'flex',
         alignItems: 'center',
@@ -513,7 +513,7 @@ const LabelValueCard: React.FC<{ label: string; value: string }> = ({ label, val
     <div
       style={{
         padding: 'var(--space-3) var(--space-4)',
-        border: '1px solid var(--mono7)',
+        border: '1px solid var(--mono-7)',
         borderRadius: 'var(--brs-3)',
       }}
     >

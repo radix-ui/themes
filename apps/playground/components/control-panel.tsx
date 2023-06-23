@@ -168,7 +168,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         overflow: 'hidden',
         borderRadius: 'var(--brs-4)',
         backgroundColor: 'var(--panel)',
-        boxShadow: '0 0 0 0.5px var(--monoA6), var(--shadow-3)',
+        boxShadow: '0 0 0 0.5px var(--mono-a6), var(--shadow-3)',
         transformOrigin: 'top right',
         transitionProperty: 'opacity, transform',
         transitionDuration: visible ? '350ms, 800ms' : '200ms, 350ms',
@@ -177,7 +177,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         opacity: visible ? 1 : 0,
       }}
     >
-      <Box m="-5" mb="0" p="5" style={{ backgroundColor: 'var(--blackA2)' }}>
+      <Box m="-5" mb="0" p="5" style={{ backgroundColor: 'var(--black-a2)' }}>
         <Text size="4" trim="both">
           Customize{' '}
           <Text size="1" color="gray" asChild>
@@ -215,7 +215,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                           width: 'var(--space-2)',
                           height: 'var(--space-2)',
                           borderRadius: '100%',
-                          backgroundColor: 'var(--color9)',
+                          backgroundColor: 'var(--color-9)',
                         }}
                       />
                       {upperFirst(color)}
