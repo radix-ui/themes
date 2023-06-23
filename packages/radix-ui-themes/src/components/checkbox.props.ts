@@ -1,4 +1,4 @@
-import type { Color, ButtonRadius } from '../helpers';
+import type { Color, Radius } from '../helpers';
 
 const checkboxSizes = ['1', '2'] as const;
 type CheckboxSize = (typeof checkboxSizes)[number];
@@ -9,7 +9,7 @@ type CheckboxVariant = (typeof checkboxVariants)[number];
 const defaultCheckboxVariant: CheckboxVariant = 'solid';
 
 const defaultCheckboxColor: Color | undefined = undefined;
-const defaultCheckboxRadius: ButtonRadius | undefined = undefined;
+const defaultCheckboxRadius: Radius | undefined = undefined;
 
 export {
   checkboxSizes,

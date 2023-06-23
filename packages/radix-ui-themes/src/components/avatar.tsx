@@ -13,7 +13,7 @@ import {
 } from './avatar.props';
 
 import type { AvatarSize, AvatarVariant } from './avatar.props';
-import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 interface AvatarProps
@@ -22,7 +22,7 @@ interface AvatarProps
   size?: Responsive<AvatarSize>;
   variant?: AvatarVariant;
   color?: Color;
-  radius?: ButtonRadius;
+  radius?: Radius;
   fallback: React.ReactNode;
 }
 const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef) => {
@@ -41,7 +41,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
   return (
     <AvatarPrimitive.Root
       data-accent-scale={color}
-      data-button-radius={radius}
+      data-radius={radius}
       className={classNames(
         'rui-AvatarRoot',
         `variant-${variant}`,

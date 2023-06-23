@@ -1,4 +1,4 @@
-import type { Color, ButtonRadius } from '../helpers';
+import type { Color, Radius } from '../helpers';
 
 const baseButtonSizes = ['1', '2', '3'] as const;
 type BaseButtonSize = (typeof baseButtonSizes)[number];
@@ -20,7 +20,7 @@ type BaseButtonVariant = (typeof baseButtonVariants)[number];
 const defaultBaseButtonVariant: BaseButtonVariant = 'solid';
 
 const defaultBaseButtonColor: Color | undefined = undefined;
-const defaultBaseButtonRadius: ButtonRadius | undefined = undefined;
+const defaultBaseRadius: Radius | undefined = undefined;
 
 export {
   baseButtonSizes,
@@ -28,6 +28,6 @@ export {
   baseButtonVariants,
   defaultBaseButtonVariant,
   defaultBaseButtonColor,
-  defaultBaseButtonRadius,
+  defaultBaseRadius,
 };
 export type { BaseButtonSize, BaseButtonVariant };

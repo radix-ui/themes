@@ -1,10 +1,10 @@
-import type { ButtonRadius } from '../helpers';
+import type { Radius } from '../helpers';
 
 const scrollAreaSizes = ['1', '2', '3'] as const;
 type ScrollAreaSize = (typeof scrollAreaSizes)[number];
 const defaultScrollAreaSize: ScrollAreaSize = '1';
 
-const defaultScrollAreaRadius: ButtonRadius | undefined = undefined;
+const defaultScrollAreaRadius: Radius | undefined = undefined;
 
 const scrollAreaScrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
 type ScrollAreaScrollbars = (typeof scrollAreaScrollbarsValues)[number];

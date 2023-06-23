@@ -16,18 +16,18 @@ import {
   groupedColors,
   colorFeelValues,
   grayScaleValues,
-  buttonRadiusValues,
+  radiusValues,
   scalingValues,
 } from '@radix-ui/themes';
 
-import type { ColorScale, ButtonRadius, ColorFeel, GrayScale, Scaling } from '@radix-ui/themes';
+import type { ColorScale, Radius, ColorFeel, GrayScale, Scaling } from '@radix-ui/themes';
 
 const DEFAULT_ACCENT_SCALE: ColorScale = 'indigo';
 const DEFAULT_GRAY_SCALE: GrayScale = 'natural';
 const DEFAULT_BACKGROUND_FEEL: ColorFeel = 'natural';
 const DEFAULT_FOREGROUND_FEEL: ColorFeel = 'natural';
 const DEFAULT_DARK_MODE: boolean = false;
-const DEFAULT_BUTTON_RADIUS: ButtonRadius = 'medium';
+const DEFAULT_RADIUS: Radius = 'medium';
 const DEFAULT_SCALING: Scaling = 'regular';
 
 interface ControlPanelProps {
@@ -59,7 +59,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
     (root.dataset.backgroundFeel as ColorFeel) || DEFAULT_BACKGROUND_FEEL;
   const defaultForegroundFeel =
     (root.dataset.foregroundFeel as ColorFeel) || DEFAULT_FOREGROUND_FEEL;
-  const defaultButtonRadius = (root.dataset.buttonRadius as ButtonRadius) || DEFAULT_BUTTON_RADIUS;
+  const defaultRadius = (root.dataset.radius as Radius) || DEFAULT_RADIUS;
   const defaultScaling = (root.dataset.scaling as Scaling) || DEFAULT_SCALING;
 
   const [accentScale, setAccentScale] = React.useState(defaultAccentScale);
@@ -67,7 +67,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   const [backgroundFeel, setBackgroundFeel] = React.useState(defaultBackgroundFeel);
   const [foregroundFeel, setForegroundFeel] = React.useState(defaultForegroundFeel);
   const [darkMode, setDarkMode] = React.useState(defaultDarkMode);
-  const [buttonRadius, setButtonRadius] = React.useState(defaultButtonRadius);
+  const [radius, setRadius] = React.useState(defaultRadius);
   const [scaling, setScaling] = React.useState(defaultScaling);
 
   const [feelLocked, setFeelLocked] = React.useState(backgroundFeel === foregroundFeel);
@@ -140,12 +140,12 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [root, darkMode]);
 
   React.useLayoutEffect(() => {
-    if (buttonRadius !== DEFAULT_BUTTON_RADIUS) {
-      root.dataset.buttonRadius = buttonRadius;
+    if (radius !== DEFAULT_RADIUS) {
+      root.dataset.radius = radius;
     } else {
-      delete root.dataset.buttonRadius;
+      delete root.dataset.radius;
     }
-  }, [root, buttonRadius]);
+  }, [root, radius]);
 
   React.useLayoutEffect(() => {
     if (scaling !== DEFAULT_SCALING) {
@@ -342,15 +342,15 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
       </Text>
 
       <Flex direction="column" gap="1" mb="3">
-        <Label htmlFor="button-radius">Radius</Label>
+        <Label htmlFor="radius">Radius</Label>
         <Select.Root
-          id="button-radius"
-          value={buttonRadius}
-          onValueChange={(value) => setButtonRadius(value as ButtonRadius)}
+          id="radius"
+          value={radius}
+          onValueChange={(value) => setRadius(value as Radius)}
           menuVariant="subtle-mono"
           style={{ minWidth: 120 }}
         >
-          {buttonRadiusValues.map((value) => (
+          {radiusValues.map((value) => (
             <Select.Item key={value} value={value}>
               {upperFirst(value)}
             </Select.Item>

@@ -1,4 +1,4 @@
-import type { Color, ButtonRadius } from '../helpers';
+import type { Color, Radius } from '../helpers';
 
 const selectSizes = ['1', '2'] as const;
 type SelectSize = (typeof selectSizes)[number];
@@ -24,7 +24,7 @@ type SelectMenuVariant = (typeof selectMenuVariants)[number];
 const defaultSelectMenuVariant: SelectMenuVariant = 'solid';
 
 const defaultSelectColor: Color | undefined = undefined;
-const defaultSelectRadius: ButtonRadius | undefined = undefined;
+const defaultSelectRadius: Radius | undefined = undefined;
 
 export {
   selectSizes,

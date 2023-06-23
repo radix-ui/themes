@@ -40,7 +40,7 @@ export default function Snapshot() {
       data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="neutral"
-      data-button-radius="small"
+      data-radius="small"
       data-scaling="larger"
       className="dark-theme"
     >

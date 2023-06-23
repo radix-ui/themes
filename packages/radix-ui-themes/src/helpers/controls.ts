@@ -10,11 +10,11 @@ type ColorFeel = (typeof colorFeelValues)[number];
 const grayScaleValues = ['neutral', 'natural'] as const;
 type GrayScale = (typeof grayScaleValues)[number];
 
-const buttonRadiusValues = ['none', 'small', 'medium', 'large', 'full'] as const;
-type ButtonRadius = (typeof buttonRadiusValues)[number];
+const radiusValues = ['none', 'small', 'medium', 'large', 'full'] as const;
+type Radius = (typeof radiusValues)[number];
 
 const scalingValues = ['smaller', 'small', 'regular', 'large', 'larger'] as const;
 type Scaling = (typeof scalingValues)[number];
 
-export { groupedColors, colorFeelValues, grayScaleValues, buttonRadiusValues, scalingValues };
-export type { ColorScale, ColorFeel, GrayScale, ButtonRadius, Scaling };
+export { groupedColors, colorFeelValues, grayScaleValues, radiusValues, scalingValues };
+export type { ColorScale, ColorFeel, GrayScale, Radius, Scaling };

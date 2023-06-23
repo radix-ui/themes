@@ -5,10 +5,10 @@ import {
   defaultBaseButtonSize,
   defaultBaseButtonVariant,
   defaultBaseButtonColor,
-  defaultBaseButtonRadius,
+  defaultBaseRadius,
 } from './base-button.props';
 
-import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { BaseButtonSize, BaseButtonVariant } from './base-button.props';
 
 type BaseButtonElement = React.ElementRef<'button'>;
@@ -18,7 +18,7 @@ interface BaseButtonProps
   size?: Responsive<BaseButtonSize>;
   variant?: BaseButtonVariant;
   color?: Color;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -27,13 +27,13 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     size = defaultBaseButtonSize,
     variant = defaultBaseButtonVariant,
     color = defaultBaseButtonColor,
-    radius = defaultBaseButtonRadius,
+    radius = defaultBaseRadius,
     ...baseButtonProps
   } = marginRest;
   return (
     <button
       data-accent-scale={color}
-      data-button-radius={radius}
+      data-radius={radius}
       {...baseButtonProps}
       ref={forwardedRef}
       className={classNames(

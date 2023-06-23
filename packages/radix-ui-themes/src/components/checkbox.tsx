@@ -12,7 +12,7 @@ import {
   defaultCheckboxRadius,
 } from './checkbox.props';
 
-import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
@@ -22,7 +22,7 @@ interface CheckboxProps
   size?: Responsive<CheckboxSize>;
   variant?: CheckboxVariant;
   color?: Color;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -37,7 +37,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
   } = marginRest;
   return (
     <span
-      data-button-radius={radius}
+      data-radius={radius}
       className={classNames(
         'rui-CheckboxRoot',
         withBreakpoints(size, 'size'),

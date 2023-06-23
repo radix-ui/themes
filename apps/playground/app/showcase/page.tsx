@@ -30,7 +30,7 @@ import {
   allColors,
   grayScaleValues,
   colorFeelValues,
-  buttonRadiusValues as radiusValues,
+  radiusValues as radiusValues,
 } from '@radix-ui/themes';
 import {
   ReloadIcon,
@@ -171,7 +171,7 @@ export default function Showcase() {
       data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="tinted"
-      data-button-radius="full"
+      data-radius="full"
       data-scaling="regular"
       // className="dark-theme"
     >

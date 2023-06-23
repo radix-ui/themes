@@ -1,4 +1,4 @@
-import type { Color, ButtonRadius } from '../helpers';
+import type { Color, Radius } from '../helpers';
 
 const avatarSizes = ['1', '2', '3', '4', '5'] as const;
 type AvatarSize = (typeof avatarSizes)[number];
@@ -10,7 +10,7 @@ const defaultAvatarVariant: AvatarVariant = 'subtle';
 
 const defaultAvatarColor: Color | undefined = undefined;
 
-const defaultAvatarRadius: ButtonRadius | undefined = undefined;
+const defaultAvatarRadius: Radius | undefined = undefined;
 
 export {
   avatarSizes,

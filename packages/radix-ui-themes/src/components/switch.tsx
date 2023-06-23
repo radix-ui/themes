@@ -11,7 +11,7 @@ import {
   defaultSwitchRadius,
 } from './switch.props';
 
-import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SwitchSize, SwitchVariant } from './switch.props';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
@@ -21,7 +21,7 @@ interface SwitchProps
   size?: Responsive<SwitchSize>;
   variant?: SwitchVariant;
   color?: Color;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -47,7 +47,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
     >
       <SwitchPrimitive.Root
         data-accent-scale={color}
-        data-button-radius={radius}
+        data-radius={radius}
         {...switchProps}
         ref={forwardedRef}
         className={classNames('rui-reset-button rui-SwitchButton')}

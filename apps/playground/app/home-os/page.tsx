@@ -36,7 +36,7 @@ export default function HomeOS() {
       data-gray-scale="natural"
       data-background-feel="natural"
       data-foreground-feel="natural"
-      data-button-radius="large"
+      data-radius="large"
       data-scaling="regular"
     >
       <body className="rui-reset-body">

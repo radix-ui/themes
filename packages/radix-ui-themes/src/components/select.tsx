@@ -13,7 +13,7 @@ import {
   defaultSelectRadius,
 } from './select.props';
 
-import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SelectSize, SelectTriggerVariant, SelectMenuVariant } from './select.props';
 
 type SelectRootElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
@@ -29,7 +29,7 @@ interface SelectRootProps
   triggerVariant?: SelectTriggerVariant;
   menuVariant?: SelectMenuVariant;
   color?: Color;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -51,7 +51,7 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
       <SelectPrimitive.Trigger asChild>
         <button
           data-accent-scale={color}
-          data-button-radius={radius}
+          data-radius={radius}
           ref={forwardedRef}
           className={classNames(
             'rui-reset-button',
@@ -75,7 +75,7 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
           data-accent-scale={color}
-          data-button-radius={radius}
+          data-radius={radius}
           sideOffset={4}
           align="center"
           {...contentProps}

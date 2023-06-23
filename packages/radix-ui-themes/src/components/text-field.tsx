@@ -7,7 +7,7 @@ import {
   defaultTextFieldRadius,
 } from './text-field.props';
 
-import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Radius, Responsive } from '../helpers';
 import type { TextFieldSize, TextFieldVariant } from './text-field.props';
 
 type TextFieldElement = React.ElementRef<'input'>;
@@ -16,7 +16,7 @@ interface TextFieldProps
     MarginProps {
   size?: Responsive<TextFieldSize>;
   variant?: TextFieldVariant;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -29,7 +29,7 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
   } = marginRest;
   return (
     <input
-      data-button-radius={radius}
+      data-radius={radius}
       spellCheck="false"
       {...textAreaProps}
       ref={forwardedRef}

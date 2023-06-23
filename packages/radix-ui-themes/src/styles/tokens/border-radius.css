@@ -11,7 +11,7 @@
 }
 
 :root,
-[data-button-radius] {
+[data-radius] {
   --br-1: min(calc(var(--radius-factor) * var(--br-1-raw)), calc(var(--space-7) / 2));
   --br-2: min(calc(var(--radius-factor) * var(--br-2-raw)), calc(var(--space-7) / 2));
   --br-3: min(calc(var(--radius-factor) * var(--br-3-raw)), calc(var(--space-7) / 2));
@@ -19,18 +19,18 @@
   --br-5: min(calc(var(--radius-factor) * var(--br-5-raw)), calc(var(--space-7) / 2));
   --br-6: min(calc(var(--radius-factor) * var(--br-6-raw)), calc(var(--space-7) / 2));
 }
-[data-button-radius='none'] {
+[data-radius='none'] {
   --radius-factor: 0;
 }
-[data-button-radius='small'] {
+[data-radius='small'] {
   --radius-factor: 0.5;
 }
-[data-button-radius='medium'] {
+[data-radius='medium'] {
   --radius-factor: 1;
 }
-[data-button-radius='large'] {
+[data-radius='large'] {
   --radius-factor: 1.5;
 }
-[data-button-radius='full'] {
+[data-radius='full'] {
   --radius-factor: 9999;
 }

@@ -10,7 +10,7 @@ import {
   defaultScrollAreaScrollbars,
 } from './scroll-area.props';
 
-import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Radius, Responsive } from '../helpers';
 import type { ScrollAreaSize, ScrollAreaScrollbars } from './scroll-area.props';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
@@ -19,7 +19,7 @@ interface ScrollAreaProps
     Omit<React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
     MarginProps {
   size?: Responsive<ScrollAreaSize>;
-  radius?: ButtonRadius;
+  radius?: Radius;
   scrollbars?: ScrollAreaScrollbars;
 }
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {
@@ -50,7 +50,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
 
       {scrollbars !== 'vertical' ? (
         <ScrollAreaPrimitive.Scrollbar
-          data-button-radius={radius}
+          data-radius={radius}
           orientation="horizontal"
           className={classNames('rui-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
         >
@@ -60,7 +60,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
 
       {scrollbars !== 'horizontal' ? (
         <ScrollAreaPrimitive.Scrollbar
-          data-button-radius={radius}
+          data-radius={radius}
           orientation="vertical"
           className={classNames('rui-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
         >

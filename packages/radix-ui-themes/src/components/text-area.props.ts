@@ -1,4 +1,4 @@
-import type { ButtonRadius } from '../helpers';
+import type { Radius } from '../helpers';
 
 const textAreaSizes = ['1', '2', '3'] as const;
 type TextAreaSize = (typeof textAreaSizes)[number];
@@ -8,7 +8,7 @@ const textAreaVariants = ['surface', 'surface-mono', 'subtle-mono'] as const;
 type TextAreaVariant = (typeof textAreaVariants)[number];
 const defaultTextAreaVariant: TextAreaVariant = 'surface';
 
-const defaultTextAreaRadius: ButtonRadius | undefined = undefined;
+const defaultTextAreaRadius: Radius | undefined = undefined;
 
 export {
   textAreaSizes,

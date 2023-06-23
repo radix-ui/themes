@@ -31,7 +31,7 @@ export default function Demo() {
       data-gray-scale="natural"
       data-background-feel="natural"
       data-foreground-feel="tinted"
-      data-button-radius="large"
+      data-radius="large"
       data-scaling="larger"
     >
       <body className={`rui-reset-body ${styles.body}`}>

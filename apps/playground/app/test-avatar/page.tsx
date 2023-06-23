@@ -10,7 +10,7 @@ export default function Test() {
       data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="neutral"
-      data-button-radius="full"
+      data-radius="full"
     >
       <body className="rui-reset-body">
         <div id="root">

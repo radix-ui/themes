@@ -11,7 +11,7 @@ import {
   defaultSliderRadius,
 } from './slider.props';
 
-import type { MarginProps, Color, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SliderSize, SliderVariant } from './slider.props';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
@@ -21,7 +21,7 @@ interface SliderProps
   size?: Responsive<SliderSize>;
   variant?: SliderVariant;
   color?: Color;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -36,7 +36,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
   return (
     <SliderPrimitive.Root
       data-accent-scale={color}
-      data-button-radius={radius}
+      data-radius={radius}
       ref={forwardedRef}
       {...sliderProps}
       className={classNames(

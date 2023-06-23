@@ -164,7 +164,7 @@ import {
   //
   // helpers:
   groupedColors,
-  buttonRadiusValues as radiusValues,
+  radiusValues as radiusValues,
 } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';
 // import { HideCursor } from './hide-cursor';

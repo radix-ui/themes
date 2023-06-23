@@ -1,4 +1,4 @@
-import type { Color, ButtonRadius } from '../helpers';
+import type { Color, Radius } from '../helpers';
 
 const sliderSizes = ['1', '2', '3'] as const;
 type SliderSize = (typeof sliderSizes)[number];
@@ -9,7 +9,7 @@ type SliderVariant = (typeof sliderVariants)[number];
 const defaultSliderVariant: SliderVariant = 'solid';
 
 const defaultSliderColor: Color | undefined = undefined;
-const defaultSliderRadius: ButtonRadius | undefined = undefined;
+const defaultSliderRadius: Radius | undefined = undefined;
 
 export {
   sliderSizes,

@@ -7,7 +7,7 @@ import {
   defaultTextAreaRadius,
 } from './text-area.props';
 
-import type { MarginProps, ButtonRadius, Responsive } from '../helpers';
+import type { MarginProps, Radius, Responsive } from '../helpers';
 import type { TextAreaSize, TextAreaVariant } from './text-area.props';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
@@ -16,7 +16,7 @@ interface TextAreaProps
     MarginProps {
   size?: Responsive<TextAreaSize>;
   variant?: TextAreaVariant;
-  radius?: ButtonRadius;
+  radius?: Radius;
 }
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -29,7 +29,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   } = marginRest;
   return (
     <textarea
-      data-button-radius={radius}
+      data-radius={radius}
       {...textAreaProps}
       ref={forwardedRef}
       className={classNames(
