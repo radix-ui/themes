@@ -8,7 +8,7 @@
   all: unset;
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--mono-7);
-  border-radius: var(--brs-3);
+  border-radius: var(--br-3);
   display: flex;
   align-items: center;
   justify-content: space-between;

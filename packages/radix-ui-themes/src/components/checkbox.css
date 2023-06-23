@@ -39,11 +39,11 @@
 @breakpoints {
   .rui-CheckboxRoot.size-1 {
     --size: var(--space-4);
-    --radius: min(var(--brs-1), var(--br-3));
+    --radius: min(var(--br-1), var(--br-3-raw));
   }
   .rui-CheckboxRoot.size-2 {
     --size: var(--space-5);
-    --radius: min(var(--brs-2), var(--br-4));
+    --radius: min(var(--br-2), var(--br-4-raw));
   }
 }
 

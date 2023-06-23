@@ -21,7 +21,7 @@
 .rui-SliderTrack {
   position: relative;
   flex-grow: 1;
-  border-radius: var(--brs-1);
+  border-radius: var(--br-1);
   overflow: hidden;
 }
 .rui-SliderTrack[data-orientation='horizontal'] {
@@ -82,19 +82,19 @@
   .rui-SliderRoot.size-1 {
     --track-size: var(--space-1);
     --thumb-size: 14px;
-    --thumb-radius: var(--brs-1);
+    --thumb-radius: var(--br-1);
     --thumb-focus-outline-size: 3px;
   }
   .rui-SliderRoot.size-2 {
     --track-size: var(--space-2);
     --thumb-size: var(--space-4);
-    --thumb-radius: var(--brs-2);
+    --thumb-radius: var(--br-2);
     --thumb-focus-outline-size: 4px;
   }
   .rui-SliderRoot.size-3 {
     --track-size: var(--space-3);
     --thumb-size: var(--space-5);
-    --thumb-radius: var(--brs-3);
+    --thumb-radius: var(--br-3);
     --thumb-focus-outline-size: 5px;
   }
 }

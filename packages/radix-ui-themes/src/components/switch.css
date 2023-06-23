@@ -14,7 +14,7 @@
   width: var(--root-width);
   height: var(--root-height);
   padding: var(--root-padding);
-  border-radius: var(--brs-3);
+  border-radius: var(--br-3);
 
   transition: background-color 150ms ease-in-out;
 }
@@ -22,8 +22,8 @@
 .rui-SwitchThumb {
   width: var(--thumb-size);
   height: var(--thumb-size);
-  /* border-radius: var(--brs-2); */
-  border-radius: max(var(--brs-2), calc(var(--brs-3) - var(--root-padding)));
+  /* border-radius: var(--br-2); */
+  border-radius: max(var(--br-2), calc(var(--br-3) - var(--root-padding)));
   transition-property: transform, background-color;
   transition-duration: 150ms;
   transition-timing-function: ease-in-out;

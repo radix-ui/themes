@@ -80,7 +80,7 @@
 .rui-Code:where(:not(.variant-plain)) {
   padding-left: 0.2em;
   padding-right: 0.2em;
-  border-radius: var(--br-1);
+  border-radius: var(--br-1-raw);
 }
 
 /* plain */

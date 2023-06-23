@@ -54,31 +54,31 @@
 @breakpoints {
   .rui-AvatarRoot {
     &.size-1 {
-      border-radius: calc(var(--br-2) * var(--button-radius));
+      border-radius: calc(var(--br-2-raw) * var(--radius-factor));
       --size: var(--space-5);
       --fs-1-letter: var(--fs-2);
       --fs-2-letters: var(--fs-1);
     }
     &.size-2 {
-      border-radius: calc(var(--br-2) * var(--button-radius));
+      border-radius: calc(var(--br-2-raw) * var(--radius-factor));
       --size: var(--space-6);
       --fs-1-letter: var(--fs-3);
       --fs-2-letters: var(--fs-2);
     }
     &.size-3 {
-      border-radius: calc(var(--br-3) * var(--button-radius));
+      border-radius: calc(var(--br-3-raw) * var(--radius-factor));
       --size: var(--space-7);
       --fs-1-letter: var(--fs-4);
       --fs-2-letters: var(--fs-3);
     }
     &.size-4 {
-      border-radius: calc(var(--br-3) * var(--button-radius));
+      border-radius: calc(var(--br-3-raw) * var(--radius-factor));
       --size: var(--space-8);
       --fs-1-letter: var(--fs-6);
       --fs-2-letters: var(--fs-5);
     }
     &.size-5 {
-      border-radius: calc(var(--br-4) * var(--button-radius));
+      border-radius: calc(var(--br-4-raw) * var(--radius-factor));
       --size: var(--space-9);
       --fs-1-letter: var(--fs-8);
       --fs-2-letters: var(--fs-7);

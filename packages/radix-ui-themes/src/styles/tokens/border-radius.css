@@ -1,36 +1,36 @@
 :root {
-  --br-1: calc(3px * var(--scaling, 1));
-  --br-2: calc(4px * var(--scaling, 1));
-  --br-3: calc(6px * var(--scaling, 1));
-  --br-4: calc(8px * var(--scaling, 1));
-  --br-5: calc(12px * var(--scaling, 1));
-  --br-6: calc(16px * var(--scaling, 1));
+  --br-1-raw: calc(3px * var(--scaling, 1));
+  --br-2-raw: calc(4px * var(--scaling, 1));
+  --br-3-raw: calc(6px * var(--scaling, 1));
+  --br-4-raw: calc(8px * var(--scaling, 1));
+  --br-5-raw: calc(12px * var(--scaling, 1));
+  --br-6-raw: calc(16px * var(--scaling, 1));
+
+  /* default: medium */
+  --radius-factor: 1;
 }
 
-:root /* default: medium */ {
-  --button-radius: 1;
-}
 :root,
 [data-button-radius] {
-  --brs-1: min(calc(var(--button-radius) * var(--br-1)), calc(var(--space-7) / 2));
-  --brs-2: min(calc(var(--button-radius) * var(--br-2)), calc(var(--space-7) / 2));
-  --brs-3: min(calc(var(--button-radius) * var(--br-3)), calc(var(--space-7) / 2));
-  --brs-4: min(calc(var(--button-radius) * var(--br-4)), calc(var(--space-7) / 2));
-  --brs-5: min(calc(var(--button-radius) * var(--br-5)), calc(var(--space-7) / 2));
-  --brs-6: min(calc(var(--button-radius) * var(--br-6)), calc(var(--space-7) / 2));
+  --br-1: min(calc(var(--radius-factor) * var(--br-1-raw)), calc(var(--space-7) / 2));
+  --br-2: min(calc(var(--radius-factor) * var(--br-2-raw)), calc(var(--space-7) / 2));
+  --br-3: min(calc(var(--radius-factor) * var(--br-3-raw)), calc(var(--space-7) / 2));
+  --br-4: min(calc(var(--radius-factor) * var(--br-4-raw)), calc(var(--space-7) / 2));
+  --br-5: min(calc(var(--radius-factor) * var(--br-5-raw)), calc(var(--space-7) / 2));
+  --br-6: min(calc(var(--radius-factor) * var(--br-6-raw)), calc(var(--space-7) / 2));
 }
 [data-button-radius='none'] {
-  --button-radius: 0;
+  --radius-factor: 0;
 }
 [data-button-radius='small'] {
-  --button-radius: 0.5;
+  --radius-factor: 0.5;
 }
 [data-button-radius='medium'] {
-  --button-radius: 1;
+  --radius-factor: 1;
 }
 [data-button-radius='large'] {
-  --button-radius: 1.5;
+  --radius-factor: 1.5;
 }
 [data-button-radius='full'] {
-  --button-radius: 9999;
+  --radius-factor: 9999;
 }

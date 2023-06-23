@@ -49,7 +49,7 @@ export default function HomeOS() {
                 style={{
                   width: 1250,
                   border: '1px solid var(--mono-8)',
-                  borderRadius: 'var(--brs-4)',
+                  borderRadius: 'var(--br-4)',
                   backgroundColor: 'var(--mono-1)',
                   background: 'linear-gradient(150deg, transparent 60%, var(--mono-2) 100%)',
                 }}
@@ -251,7 +251,7 @@ export default function HomeOS() {
                     <div style={{ paddingRight: 'var(--space-6)', position: 'relative' }}>
                       <div
                         style={{
-                          borderRadius: 'var(--brs-4)',
+                          borderRadius: 'var(--br-4)',
                           marginTop: -90,
                           width: 340,
                           backgroundColor: 'var(--background-feel)',
@@ -398,7 +398,7 @@ const PhotoArea: React.FC = () => {
     <div
       style={{
         height: 500,
-        borderRadius: 'var(--brs-6)',
+        borderRadius: 'var(--br-6)',
         overflow: 'hidden',
         display: 'grid',
         gridTemplateColumns: '1.25fr 1fr',
@@ -451,7 +451,7 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       style={{
         padding: `var(--space-3) var(--space-5)`,
         border: '1px solid var(--mono-7)',
-        borderRadius: 'var(--brs-3)',
+        borderRadius: 'var(--br-3)',
         display: 'flex',
         alignItems: 'center',
         gap: 'var(--space-4)',
@@ -514,7 +514,7 @@ const LabelValueCard: React.FC<{ label: string; value: string }> = ({ label, val
       style={{
         padding: 'var(--space-3) var(--space-4)',
         border: '1px solid var(--mono-7)',
-        borderRadius: 'var(--brs-3)',
+        borderRadius: 'var(--br-3)',
       }}
     >
       <Text size="1" weight="bold">

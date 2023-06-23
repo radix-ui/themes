@@ -24,7 +24,7 @@
     padding-top: 0.5px;
     padding-bottom: 1px;
     padding-left: var(--space-1);
-    border-radius: var(--brs-2);
+    border-radius: var(--br-2);
     font-size: var(--fs-1);
   }
   .rui-TextField.size-2 {
@@ -32,7 +32,7 @@
     padding-top: 0px;
     padding-bottom: 1px;
     padding-left: var(--space-2);
-    border-radius: var(--brs-2);
+    border-radius: var(--br-2);
     font-size: var(--fs-2);
   }
   .rui-TextField.size-3 {
@@ -40,7 +40,7 @@
     padding-top: 0.5px;
     padding-bottom: 1px;
     padding-left: var(--space-3);
-    border-radius: var(--brs-3);
+    border-radius: var(--br-3);
     font-size: var(--fs-3);
   }
 }

@@ -2829,7 +2829,7 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
       {...props}
       style={{
         placeItems: 'center',
-        borderRadius: 'var(--br-3)',
+        borderRadius: 'var(--br-3-raw)',
         border: '1px dashed var(--accent-6)',
         cursor: 'default',
         ...props.style,

@@ -267,7 +267,7 @@ export default function Showcase() {
                                 border: `1px solid var(${
                                   avatarNameColor === undefined ? '--mono-a6' : '--accent-6'
                                 })`,
-                                borderRadius: 'var(--brs-3)',
+                                borderRadius: 'var(--br-3)',
                               }}
                               data-transition
                             >
@@ -575,7 +575,7 @@ export default function Showcase() {
                               border: `1px solid var(${
                                 avatarNameColor === undefined ? '--mono-a5' : '--accent-5'
                               })`,
-                              borderRadius: 'var(--brs-3)',
+                              borderRadius: 'var(--br-3)',
                               width: FILTERS_PANEL_WIDTH,
                             }}
                           >
@@ -757,7 +757,7 @@ function FakeBrowser({ children }: { children: React.ReactNode }) {
     <Flex
       direction="column"
       style={{
-        borderRadius: 'var(--br-5)',
+        borderRadius: 'var(--br-5-raw)',
         overflow: 'hidden',
         border: '1px solid var(--mono-6)',
         boxShadow: 'var(--shadow-3)',
@@ -807,7 +807,7 @@ function FakeBrowser({ children }: { children: React.ReactNode }) {
           gap="2"
           style={{
             border: '1px solid var(--mono-6)',
-            borderRadius: 'var(--br-2)',
+            borderRadius: 'var(--br-2-raw)',
             position: 'absolute',
             left: '50%',
             transform: 'translateX(-50%)',

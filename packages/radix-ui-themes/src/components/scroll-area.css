@@ -52,15 +52,15 @@
 @breakpoints {
   .rui-ScrollAreaScrollbar.size-1 {
     --size: var(--space-1);
-    --radius: calc(var(--brs-1) / 2);
+    --radius: calc(var(--br-1) / 2);
   }
   .rui-ScrollAreaScrollbar.size-2 {
     --size: var(--space-2);
-    --radius: calc(var(--brs-2) / 2);
+    --radius: calc(var(--br-2) / 2);
   }
   .rui-ScrollAreaScrollbar.size-3 {
     --size: var(--space-3);
-    --radius: calc(var(--brs-3) / 2);
+    --radius: calc(var(--br-3) / 2);
   }
 }
 

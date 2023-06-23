@@ -73,7 +73,7 @@
       --trigger-gap: var(--space-1);
       --trigger-padding-x: var(--space-1);
       --trigger-inner-padding: var(--space-1);
-      --trigger-inner-radius: var(--brs-1);
+      --trigger-inner-radius: var(--br-1);
     }
     &.size-2 {
       --trigger-height: var(--space-7);
@@ -81,7 +81,7 @@
       --trigger-gap: var(--space-2);
       --trigger-padding-x: var(--space-2);
       --trigger-inner-padding: var(--space-1);
-      --trigger-inner-radius: var(--brs-2);
+      --trigger-inner-radius: var(--br-2);
     }
   }
 }

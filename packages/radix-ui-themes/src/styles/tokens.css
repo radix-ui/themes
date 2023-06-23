@@ -5,7 +5,8 @@
 @import './tokens/border-radius.css';
 
 /* scaling */
-:root /* default: regular */ {
+:root {
+  /* default: regular */
   --scaling: 1;
 }
 [data-scaling='smaller'] {

@@ -51,21 +51,21 @@
   .rui-TextArea.size-1 {
     min-height: var(--space-8);
     padding: var(--space-1);
-    border-radius: min(var(--brs-2), var(--br-4));
+    border-radius: min(var(--br-2), var(--br-4-raw));
     font-size: var(--fs-1);
     line-height: 16px;
   }
   .rui-TextArea.size-2 {
     min-height: var(--space-9);
     padding: var(--space-2);
-    border-radius: min(var(--brs-2), var(--br-4));
+    border-radius: min(var(--br-2), var(--br-4-raw));
     font-size: var(--fs-2);
     line-height: 20px;
   }
   .rui-TextArea.size-3 {
     min-height: 80px;
     padding: var(--space-2) var(--space-3);
-    border-radius: min(var(--brs-3), var(--br-4));
+    border-radius: min(var(--br-3), var(--br-4-raw));
     font-size: var(--fs-3);
     line-height: 24px;
   }
