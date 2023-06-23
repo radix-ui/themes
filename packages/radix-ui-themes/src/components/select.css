@@ -133,7 +133,7 @@
 
 .rui-SelectTrigger.variant-surface {
   --shadow: 0 0 0 1px;
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
   box-shadow: var(--shadow) var(--mono-7);
 }
 .rui-SelectTrigger.variant-surface:where(:hover, [data-state='open']) {
@@ -150,7 +150,7 @@
 
 .rui-SelectTrigger.variant-surface-mono {
   --shadow: 0 0 0 1px;
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
   box-shadow: var(--shadow) var(--mono-7);
 }
 .rui-SelectTrigger.variant-surface-mono:where(:hover, [data-state='open']) {
@@ -315,7 +315,7 @@
  ***************************************************************************************************/
 
 .rui-SelectContent {
-  --content-bg: var(--panel);
+  --content-bg: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--mono-a6);
 }
 .rui-SelectContent .rui-SelectItem[data-disabled] {

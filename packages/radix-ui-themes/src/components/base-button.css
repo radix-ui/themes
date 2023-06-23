@@ -40,7 +40,7 @@
 
 .rui-BaseButton.variant-surface {
   --shadow: 0 0 0 1px;
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
   box-shadow: var(--shadow) var(--mono-7);
 }
 .rui-BaseButton.variant-surface:where(:hover, [data-state='open']) {
@@ -57,7 +57,7 @@
 
 .rui-BaseButton.variant-surface-mono {
   --shadow: 0 0 0 1px;
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
   box-shadow: var(--shadow) var(--mono-7);
 }
 .rui-BaseButton.variant-surface-mono:where(:hover, [data-state='open']) {

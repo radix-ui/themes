@@ -1,5 +1,5 @@
 .rui-PopoverContent {
-  background-color: var(--panel);
+  background-color: var(--color-panel);
   border-radius: var(--brs-3);
   box-shadow: var(--shadow-2), inset 0 0 0 0.4px var(--mono-a6);
   min-width: var(--radix-popover-trigger-width);

@@ -167,7 +167,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         zIndex: 9999,
         overflow: 'hidden',
         borderRadius: 'var(--brs-4)',
-        backgroundColor: 'var(--panel)',
+        backgroundColor: 'var(--color-panel)',
         boxShadow: '0 0 0 0.5px var(--mono-a6), var(--shadow-3)',
         transformOrigin: 'top right',
         transitionProperty: 'opacity, transform',

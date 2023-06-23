@@ -571,7 +571,7 @@ export default function Showcase() {
                           <Box
                             p="3"
                             style={{
-                              backgroundColor: 'var(--panel)',
+                              backgroundColor: 'var(--color-panel)',
                               border: `1px solid var(${
                                 avatarNameColor === undefined ? '--mono-a5' : '--accent-5'
                               })`,

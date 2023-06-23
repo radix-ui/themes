@@ -78,45 +78,26 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
-::selection {
-  background-color: var(--accent-5);
-}
-
 :root,
 .light-theme {
-  /* color aliases */
-  --overlay: var(--black-a9);
-  --panel: white;
-  --surface-1: white;
-  --surface-2: var(--mono-2);
-  --surface-3: var(--mono-3);
-
-  /* shadows */
-  /* --shadow-1: inset 0 0 0 1px var(--mono-a6), inset 0 1px 2px 0 var(--mono-a7); */
-  --shadow-1: inset 0 0 0 1px var(--mono-a6), inset 0 1.5px 2px 0 var(--mono-a7);
-  --shadow-2: 0px 3px 25px -8px var(--mono-a7);
-  --shadow-3: 0px 12px 40px var(--mono-a6), 0px 12px 20px -12px var(--mono-a8);
-  --shadow-4: 0px 12px 60px var(--mono-a6), 0px 12px 32px -16px var(--mono-a6);
-  --shadow-5: 0px 12px 60px var(--mono-a3), 0px 12px 32px -16px var(--mono-a3);
+  --color-overlay: var(--black-a9);
+  --color-panel: white;
+  --color-surface-1: white;
+  --color-surface-2: var(--mono-2);
+  --color-surface-3: var(--mono-3);
 }
-
 .dark-theme {
   color-scheme: dark;
 
-  /* color aliases */
-  --overlay: var(--black-a11);
-  --panel: var(--mono-2);
-  --surface-1: var(--mono-a1);
-  --surface-2: var(--mono-a2);
-  --surface-3: var(--mono-a3);
+  --color-overlay: var(--black-a11);
+  --color-panel: var(--mono-2);
+  --color-surface-1: var(--mono-a1);
+  --color-surface-2: var(--mono-a2);
+  --color-surface-3: var(--mono-a3);
+}
 
-  /* shadows */
-  /* --shadow-1: inset 0 0 0 1px var(--mono-a7); */
-  --shadow-1: inset 0 0 0 1px var(--mono-a7), inset 0 1.5px 2px 0 var(--black-a11);
-  --shadow-2: 0px 3px 35px -8px rgb(0 0 0 / 0.9);
-  --shadow-3: 0px 12px 40px rgb(0 0 0 / 0.6), 0px 12px 20px -12px rgb(0 0 0 / 0.8);
-  --shadow-4: 0px 16px 60px rgb(0 0 0 / 0.1), 0px 16px 32px -20px rgb(0 0 0 / 0.2);
-  --shadow-5: 0px 16px 60px rgb(0 0 0 / 0.25), 0px 16px 32px -20px rgb(0 0 0 / 0.5);
+::selection {
+  background-color: var(--accent-5);
 }
 
 /* additional step-9 contrast colors */

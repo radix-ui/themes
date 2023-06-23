@@ -11,7 +11,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-color: var(--overlay);
+  background-color: var(--color-overlay);
 }
 
 .rui-DialogContent {
@@ -21,7 +21,7 @@
   max-width: 580px;
   outline: none;
   overflow: auto;
-  background-color: var(--panel);
+  background-color: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--mono-a6);
   box-sizing: border-box;
   z-index: 1;

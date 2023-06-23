@@ -43,7 +43,7 @@
 /* surface */
 
 .rui-Badge.variant-surface:where([data-accent-scale]) {
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
   box-shadow: inset 0 0 0 0.5px var(--accent-5), 0 0 0 0.5px var(--accent-5);
   color: var(--accent-11);
 }

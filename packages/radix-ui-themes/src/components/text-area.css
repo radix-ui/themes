@@ -107,7 +107,7 @@
 /* surface */
 
 .rui-TextArea.variant-surface {
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
 }
 .rui-TextArea.variant-surface:focus {
   box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-7), 0 0 0 2px var(--accent-7);
@@ -116,7 +116,7 @@
 /* surface-mono */
 
 .rui-TextArea.variant-surface-mono {
-  background-color: var(--surface-1);
+  background-color: var(--color-surface-1);
 }
 .rui-TextArea.variant-surface-mono:focus {
   box-shadow: var(--shadow-1), inset 0 0 0 1px var(--mono-a8), 0 0 0 2px var(--mono-a8);

@@ -5,7 +5,7 @@
 
 .rui-HoverCardContent {
   border-radius: var(--brs-3);
-  background-color: var(--panel);
+  background-color: var(--color-panel);
   padding: var(--space-3);
   box-shadow: var(--shadow-2), inset 0 0 0 0.4px var(--mono-a6);
 
