@@ -119,6 +119,32 @@
   --shadow-5: 0px 16px 60px rgb(0 0 0 / 0.25), 0px 16px 32px -20px rgb(0 0 0 / 0.5);
 }
 
+/* additional step-9 contrast colors */
+:root {
+  --tomato-9-contrast: white;
+  --red-9-contrast: white;
+  --crimson-9-contrast: white;
+  --pink-9-contrast: white;
+  --plum-9-contrast: white;
+  --purple-9-contrast: white;
+  --violet-9-contrast: white;
+  --indigo-9-contrast: white;
+  --blue-9-contrast: white;
+  --cyan-9-contrast: white;
+  --teal-9-contrast: white;
+  --green-9-contrast: white;
+  --grass-9-contrast: white;
+  --orange-9-contrast: white;
+  --brown-9-contrast: white;
+  --sky-9-contrast: hsl(195, 100%, 13%);
+  --mint-9-contrast: hsl(172, 70%, 12%);
+  --lime-9-contrast: hsl(78, 70%, 11.5%);
+  --yellow-9-contrast: hsl(40, 55%, 13.5%);
+  --amber-9-contrast: hsl(20, 80%, 17%);
+  --gold-9-contrast: white;
+  --bronze-9-contrast: white;
+}
+
 /* accent scales */
 :root, /* default: indigo */
 [data-accent-scale='indigo'] {
@@ -134,6 +160,7 @@
     --accent-7: var(--indigo-7);
     --accent-8: var(--indigo-8);
     --accent-9: var(--indigo-9);
+    --accent-9-contrast: var(--indigo-9-contrast);
     --accent-10: var(--indigo-10);
     --accent-11: var(--indigo-11);
     --accent-12: var(--indigo-12);
@@ -152,6 +179,7 @@
     --accent-7: var(--tomato-7);
     --accent-8: var(--tomato-8);
     --accent-9: var(--tomato-9);
+    --accent-9-contrast: var(--tomato-9-contrast);
     --accent-10: var(--tomato-10);
     --accent-11: var(--tomato-11);
     --accent-12: var(--tomato-12);
@@ -170,6 +198,7 @@
     --accent-7: var(--red-7);
     --accent-8: var(--red-8);
     --accent-9: var(--red-9);
+    --accent-9-contrast: var(--red-9-contrast);
     --accent-10: var(--red-10);
     --accent-11: var(--red-11);
     --accent-12: var(--red-12);
@@ -188,6 +217,7 @@
     --accent-7: var(--crimson-7);
     --accent-8: var(--crimson-8);
     --accent-9: var(--crimson-9);
+    --accent-9-contrast: var(--crimson-9-contrast);
     --accent-10: var(--crimson-10);
     --accent-11: var(--crimson-11);
     --accent-12: var(--crimson-12);
@@ -206,6 +236,7 @@
     --accent-7: var(--pink-7);
     --accent-8: var(--pink-8);
     --accent-9: var(--pink-9);
+    --accent-9-contrast: var(--pink-9-contrast);
     --accent-10: var(--pink-10);
     --accent-11: var(--pink-11);
     --accent-12: var(--pink-12);
@@ -224,6 +255,7 @@
     --accent-7: var(--plum-7);
     --accent-8: var(--plum-8);
     --accent-9: var(--plum-9);
+    --accent-9-contrast: var(--plum-9-contrast);
     --accent-10: var(--plum-10);
     --accent-11: var(--plum-11);
     --accent-12: var(--plum-12);
@@ -242,6 +274,7 @@
     --accent-7: var(--purple-7);
     --accent-8: var(--purple-8);
     --accent-9: var(--purple-9);
+    --accent-9-contrast: var(--purple-9-contrast);
     --accent-10: var(--purple-10);
     --accent-11: var(--purple-11);
     --accent-12: var(--purple-12);
@@ -260,6 +293,7 @@
     --accent-7: var(--violet-7);
     --accent-8: var(--violet-8);
     --accent-9: var(--violet-9);
+    --accent-9-contrast: var(--violet-9-contrast);
     --accent-10: var(--violet-10);
     --accent-11: var(--violet-11);
     --accent-12: var(--violet-12);
@@ -278,6 +312,7 @@
     --accent-7: var(--blue-7);
     --accent-8: var(--blue-8);
     --accent-9: var(--blue-9);
+    --accent-9-contrast: var(--blue-9-contrast);
     --accent-10: var(--blue-10);
     --accent-11: var(--blue-11);
     --accent-12: var(--blue-12);
@@ -296,6 +331,7 @@
     --accent-7: var(--cyan-7);
     --accent-8: var(--cyan-8);
     --accent-9: var(--cyan-9);
+    --accent-9-contrast: var(--cyan-9-contrast);
     --accent-10: var(--cyan-10);
     --accent-11: var(--cyan-11);
     --accent-12: var(--cyan-12);
@@ -314,6 +350,7 @@
     --accent-7: var(--teal-7);
     --accent-8: var(--teal-8);
     --accent-9: var(--teal-9);
+    --accent-9-contrast: var(--teal-9-contrast);
     --accent-10: var(--teal-10);
     --accent-11: var(--teal-11);
     --accent-12: var(--teal-12);
@@ -332,6 +369,7 @@
     --accent-7: var(--green-7);
     --accent-8: var(--green-8);
     --accent-9: var(--green-9);
+    --accent-9-contrast: var(--green-9-contrast);
     --accent-10: var(--green-10);
     --accent-11: var(--green-11);
     --accent-12: var(--green-12);
@@ -350,6 +388,7 @@
     --accent-7: var(--grass-7);
     --accent-8: var(--grass-8);
     --accent-9: var(--grass-9);
+    --accent-9-contrast: var(--grass-9-contrast);
     --accent-10: var(--grass-10);
     --accent-11: var(--grass-11);
     --accent-12: var(--grass-12);
@@ -368,6 +407,7 @@
     --accent-7: var(--orange-7);
     --accent-8: var(--orange-8);
     --accent-9: var(--orange-9);
+    --accent-9-contrast: var(--orange-9-contrast);
     --accent-10: var(--orange-10);
     --accent-11: var(--orange-11);
     --accent-12: var(--orange-12);
@@ -386,6 +426,7 @@
     --accent-7: var(--brown-7);
     --accent-8: var(--brown-8);
     --accent-9: var(--brown-9);
+    --accent-9-contrast: var(--brown-9-contrast);
     --accent-10: var(--brown-10);
     --accent-11: var(--brown-11);
     --accent-12: var(--brown-12);
@@ -404,6 +445,7 @@
     --accent-7: var(--sky-7);
     --accent-8: var(--sky-8);
     --accent-9: var(--sky-9);
+    --accent-9-contrast: var(--sky-9-contrast);
     --accent-10: var(--sky-10);
     --accent-11: var(--sky-11);
     --accent-12: var(--sky-12);
@@ -422,6 +464,7 @@
     --accent-7: var(--mint-7);
     --accent-8: var(--mint-8);
     --accent-9: var(--mint-9);
+    --accent-9-contrast: var(--mint-9-contrast);
     --accent-10: var(--mint-10);
     --accent-11: var(--mint-11);
     --accent-12: var(--mint-12);
@@ -440,6 +483,7 @@
     --accent-7: var(--lime-7);
     --accent-8: var(--lime-8);
     --accent-9: var(--lime-9);
+    --accent-9-contrast: var(--lime-9-contrast);
     --accent-10: var(--lime-10);
     --accent-11: var(--lime-11);
     --accent-12: var(--lime-12);
@@ -458,6 +502,7 @@
     --accent-7: var(--yellow-7);
     --accent-8: var(--yellow-8);
     --accent-9: var(--yellow-9);
+    --accent-9-contrast: var(--yellow-9-contrast);
     --accent-10: var(--yellow-10);
     --accent-11: var(--yellow-11);
     --accent-12: var(--yellow-12);
@@ -476,6 +521,7 @@
     --accent-7: var(--amber-7);
     --accent-8: var(--amber-8);
     --accent-9: var(--amber-9);
+    --accent-9-contrast: var(--amber-9-contrast);
     --accent-10: var(--amber-10);
     --accent-11: var(--amber-11);
     --accent-12: var(--amber-12);
@@ -494,6 +540,7 @@
     --accent-7: var(--gold-7);
     --accent-8: var(--gold-8);
     --accent-9: var(--gold-9);
+    --accent-9-contrast: var(--gold-9-contrast);
     --accent-10: var(--gold-10);
     --accent-11: var(--gold-11);
     --accent-12: var(--gold-12);
@@ -512,6 +559,7 @@
     --accent-7: var(--bronze-7);
     --accent-8: var(--bronze-8);
     --accent-9: var(--bronze-9);
+    --accent-9-contrast: var(--bronze-9-contrast);
     --accent-10: var(--bronze-10);
     --accent-11: var(--bronze-11);
     --accent-12: var(--bronze-12);
@@ -720,49 +768,6 @@
     --natural-gray-a10: var(--sand-a10);
     --natural-gray-a11: var(--sand-a11);
     --natural-gray-a12: var(--sand-a12);
-  }
-}
-
-/* solid foreground */
-:root, /* default: white */
-[data-accent-scale='tomato'],
-[data-accent-scale='red'],
-[data-accent-scale='crimson'],
-[data-accent-scale='pink'],
-[data-accent-scale='plum'],
-[data-accent-scale='purple'],
-[data-accent-scale='violet'],
-[data-accent-scale='indigo'],
-[data-accent-scale='blue'],
-[data-accent-scale='cyan'],
-[data-accent-scale='teal'],
-[data-accent-scale='green'],
-[data-accent-scale='grass'],
-[data-accent-scale='orange'],
-[data-accent-scale='brown'],
-[data-accent-scale='gold'],
-[data-accent-scale='bronze'],
-[data-accent-scale='gray'],
-[data-accent-scale='mauve'],
-[data-accent-scale='slate'],
-[data-accent-scale='sage'],
-[data-accent-scale='olive'],
-[data-accent-scale='sand'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --color-foreground: white;
-  }
-}
-[data-accent-scale='sky'],
-[data-accent-scale='mint'],
-[data-accent-scale='lime'],
-[data-accent-scale='yellow'],
-[data-accent-scale='amber'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --color-foreground: black;
   }
 }
 

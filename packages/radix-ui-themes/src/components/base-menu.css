@@ -134,7 +134,7 @@
 }
 .rui-BaseMenuContent.variant-solid .rui-BaseMenuItem[data-highlighted] {
   background-color: var(--accent-9);
-  color: var(--color-foreground);
+  color: var(--accent-9-contrast);
 }
 
 /* solid-mono */

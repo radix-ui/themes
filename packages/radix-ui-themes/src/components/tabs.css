@@ -141,7 +141,7 @@
 
   &[data-state='active'] {
     background-color: var(--accent-9);
-    color: var(--color-foreground);
+    color: var(--accent-9-contrast);
   }
   &:focus-visible {
     outline: 2px solid var(--accent-7);

@@ -74,7 +74,7 @@
 
 .rui-BaseButton.variant-solid {
   background-color: var(--accent-9);
-  color: var(--color-foreground);
+  color: var(--accent-9-contrast);
 }
 .rui-BaseButton.variant-solid:where(:hover, [data-state='open']) {
   background-color: var(--accent-10);

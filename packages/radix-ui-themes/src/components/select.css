@@ -167,7 +167,7 @@
 
 .rui-SelectTrigger.variant-solid {
   background-color: var(--accent-9);
-  color: var(--color-foreground);
+  color: var(--accent-9-contrast);
 }
 .rui-SelectTrigger.variant-solid:where(:hover, [data-state='open']) {
   background-color: var(--accent-10);
@@ -332,7 +332,7 @@
 
 .rui-SelectContent.variant-solid .rui-SelectItem[data-highlighted] {
   background-color: var(--accent-9);
-  color: var(--color-foreground);
+  color: var(--accent-9-contrast);
 }
 
 /* solid-mono */

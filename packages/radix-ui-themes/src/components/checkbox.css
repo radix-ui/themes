@@ -74,7 +74,7 @@
 }
 .rui-CheckboxButton.variant-solid:where([data-state='checked']:not([data-disabled])) {
   background-color: var(--accent-9);
-  color: var(--color-foreground);
+  color: var(--accent-9-contrast);
 }
 
 /* solid-mono */
