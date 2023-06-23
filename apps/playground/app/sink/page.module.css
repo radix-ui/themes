@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 .root :global(summary:focus-visible) {
-  outline: 2px solid var(--color-8);
+  outline: 2px solid var(--accent-8);
   outline-offset: 2px;
 }
 

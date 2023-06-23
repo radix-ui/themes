@@ -2583,7 +2583,7 @@ export default function Sink() {
                       style={{
                         height: 200,
                         width: 600,
-                        backgroundColor: 'var(--color-3)',
+                        backgroundColor: 'var(--accent-3)',
                       }}
                     />
                     <Text>
@@ -2830,7 +2830,7 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
       style={{
         placeItems: 'center',
         borderRadius: 'var(--br-3)',
-        border: '1px dashed var(--color-6)',
+        border: '1px dashed var(--accent-6)',
         cursor: 'default',
         ...props.style,
       }}

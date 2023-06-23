@@ -1,6 +1,6 @@
 .rui-HoverCardTrigger.rui-Link {
   border-radius: var(--br-1);
-  background-color: var(--color-3);
+  background-color: var(--accent-3);
 }
 
 .rui-HoverCardContent {

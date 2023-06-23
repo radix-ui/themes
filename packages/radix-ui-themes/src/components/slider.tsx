@@ -35,7 +35,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
   } = marginRest;
   return (
     <SliderPrimitive.Root
-      data-color-scale={color}
+      data-accent-scale={color}
       data-button-radius={radius}
       ref={forwardedRef}
       {...sliderProps}

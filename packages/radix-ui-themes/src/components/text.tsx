@@ -37,7 +37,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const Comp = asChild ? Slot : 'p';
   return (
     <Comp
-      data-color-scale={color}
+      data-accent-scale={color}
       {...textProps}
       ref={forwardedRef}
       className={classNames(

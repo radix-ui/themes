@@ -130,10 +130,10 @@
 /* solid */
 
 .rui-BaseMenuContent.variant-solid .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--color-5);
+  background-color: var(--accent-5);
 }
 .rui-BaseMenuContent.variant-solid .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 
@@ -150,10 +150,10 @@
 /* subtle */
 
 .rui-BaseMenuContent.variant-subtle .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--color-3);
+  background-color: var(--accent-3);
 }
 .rui-BaseMenuContent.variant-subtle .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--color-5);
+  background-color: var(--accent-5);
 }
 
 /* subtle-mono */

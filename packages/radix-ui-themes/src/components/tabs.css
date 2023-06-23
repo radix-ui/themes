@@ -109,7 +109,7 @@
     background-color: var(--mono-a3);
   }
   &:focus-visible .rui-TabsTriggerInner {
-    box-shadow: 0 0 0 2px var(--color-7);
+    box-shadow: 0 0 0 2px var(--accent-7);
   }
   &[data-state='active']::before {
     box-sizing: border-box;
@@ -119,12 +119,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--color-9);
+    background-color: var(--accent-9);
   }
 }
 
 .rui-TabsContent:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* .rui-TabsList {
@@ -140,11 +140,11 @@
   border-radius: var(--trigger-inner-radius);
 
   &[data-state='active'] {
-    background-color: var(--color-9);
+    background-color: var(--accent-9);
     color: var(--color-foreground);
   }
   &:focus-visible {
-    outline: 2px solid var(--color-7);
+    outline: 2px solid var(--accent-7);
     outline-offset: 2px;
     position: relative;
     z-index: 1;

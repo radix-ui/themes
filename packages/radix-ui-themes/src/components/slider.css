@@ -133,7 +133,7 @@
 /* solid */
 
 .rui-SliderRoot.variant-solid .rui-SliderRange {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
 }
 
 /* solid-mono */
@@ -152,7 +152,7 @@
 /* subtle */
 
 .rui-SliderRoot.variant-subtle .rui-SliderRange {
-  background-color: var(--color-5);
+  background-color: var(--accent-5);
 }
 
 /* subtle-mono */

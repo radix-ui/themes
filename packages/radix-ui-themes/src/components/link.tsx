@@ -34,7 +34,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const Comp = asChild ? Slot : 'a';
   return (
     <Comp
-      data-color-scale={color}
+      data-accent-scale={color}
       {...linkProps}
       ref={forwardedRef}
       className={classNames(

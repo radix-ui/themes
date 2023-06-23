@@ -50,7 +50,7 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
     <SelectPrimitive.Root {...rootProps}>
       <SelectPrimitive.Trigger asChild>
         <button
-          data-color-scale={color}
+          data-accent-scale={color}
           data-button-radius={radius}
           ref={forwardedRef}
           className={classNames(
@@ -74,7 +74,7 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
 
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
-          data-color-scale={color}
+          data-accent-scale={color}
           data-button-radius={radius}
           sideOffset={4}
           align="center"

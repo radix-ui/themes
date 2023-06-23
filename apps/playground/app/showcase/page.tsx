@@ -167,7 +167,7 @@ export default function Showcase() {
   return (
     <html
       lang="en"
-      data-color-scale="indigo"
+      data-accent-scale="indigo"
       data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="tinted"
@@ -265,7 +265,7 @@ export default function Showcase() {
                               style={{
                                 width: AVATARS_LIST_WIDTH,
                                 border: `1px solid var(${
-                                  avatarNameColor === undefined ? '--mono-a6' : '--color-6'
+                                  avatarNameColor === undefined ? '--mono-a6' : '--accent-6'
                                 })`,
                                 borderRadius: 'var(--brs-3)',
                               }}
@@ -284,7 +284,7 @@ export default function Showcase() {
                                           ? `1px solid var(${
                                               avatarNameColor === undefined
                                                 ? '--mono-a6'
-                                                : '--color-6'
+                                                : '--accent-6'
                                             })`
                                           : undefined,
                                       '--delay': `${index * 50}ms`,
@@ -573,7 +573,7 @@ export default function Showcase() {
                             style={{
                               backgroundColor: 'var(--panel)',
                               border: `1px solid var(${
-                                avatarNameColor === undefined ? '--mono-a5' : '--color-5'
+                                avatarNameColor === undefined ? '--mono-a5' : '--accent-5'
                               })`,
                               borderRadius: 'var(--brs-3)',
                               width: FILTERS_PANEL_WIDTH,

@@ -95,7 +95,7 @@
 /* solid */
 
 .rui-AvatarRoot.variant-solid .rui-AvatarFallback {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 
@@ -109,8 +109,8 @@
 /* subtle */
 
 .rui-AvatarRoot.variant-subtle .rui-AvatarFallback {
-  background-color: var(--color-3);
-  color: var(--color-11);
+  background-color: var(--accent-3);
+  color: var(--accent-11);
 }
 
 /* subtle-mono */

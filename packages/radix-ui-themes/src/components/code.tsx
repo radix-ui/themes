@@ -30,7 +30,7 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   } = marginRest;
   return (
     <code
-      data-color-scale={color}
+      data-accent-scale={color}
       {...codeProps}
       ref={forwardedRef}
       className={classNames(

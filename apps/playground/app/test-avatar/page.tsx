@@ -6,7 +6,7 @@ export default function Test() {
   return (
     <html
       lang="en"
-      data-color-scale="purple"
+      data-accent-scale="purple"
       data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="neutral"

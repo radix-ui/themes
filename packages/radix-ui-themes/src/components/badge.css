@@ -42,32 +42,32 @@
 
 /* surface */
 
-.rui-Badge.variant-surface:where([data-color-scale]) {
+.rui-Badge.variant-surface:where([data-accent-scale]) {
   background-color: var(--surface-1);
-  box-shadow: inset 0 0 0 0.5px var(--color-5), 0 0 0 0.5px var(--color-5);
-  color: var(--color-11);
+  box-shadow: inset 0 0 0 0.5px var(--accent-5), 0 0 0 0.5px var(--accent-5);
+  color: var(--accent-11);
 }
-.rui-Badge.variant-surface:where([data-color-scale='gray']) {
+.rui-Badge.variant-surface:where([data-accent-scale='gray']) {
   box-shadow: inset 0 0 0 0.5px var(--mono-a5), 0 0 0 0.5px var(--mono-a5);
   color: var(--mono-12);
 }
 
 /* subtle */
 
-.rui-Badge.variant-subtle:where([data-color-scale]) {
-  background-color: var(--color-3);
-  color: var(--color-11);
+.rui-Badge.variant-subtle:where([data-accent-scale]) {
+  background-color: var(--accent-3);
+  color: var(--accent-11);
 }
-.rui-Badge.variant-subtle:where([data-color-scale='gray']) {
+.rui-Badge.variant-subtle:where([data-accent-scale='gray']) {
   color: var(--mono-12);
 }
 
 /* outline */
 
-.rui-Badge.variant-outline:where([data-color-scale]) {
-  box-shadow: inset 0 0 0 0.5px var(--color-5), 0 0 0 0.5px var(--color-5);
-  color: var(--color-11);
+.rui-Badge.variant-outline:where([data-accent-scale]) {
+  box-shadow: inset 0 0 0 0.5px var(--accent-5), 0 0 0 0.5px var(--accent-5);
+  color: var(--accent-11);
 }
-.rui-Badge.variant-outline:where([data-color-scale='gray']) {
+.rui-Badge.variant-outline:where([data-accent-scale='gray']) {
   color: var(--mono-12);
 }

@@ -22,7 +22,7 @@ import {
 
 import type { ColorScale, ButtonRadius, ColorFeel, GrayScale, Scaling } from '@radix-ui/themes';
 
-const DEFAULT_COLOR_SCALE: ColorScale = 'indigo';
+const DEFAULT_ACCENT_SCALE: ColorScale = 'indigo';
 const DEFAULT_GRAY_SCALE: GrayScale = 'natural';
 const DEFAULT_BACKGROUND_FEEL: ColorFeel = 'natural';
 const DEFAULT_FOREGROUND_FEEL: ColorFeel = 'natural';
@@ -52,7 +52,7 @@ interface ControlPanelImplProps {
 const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleChange }) => {
   const root = document.documentElement;
 
-  const defaultColorScale = (root.dataset.colorScale as ColorScale) || DEFAULT_COLOR_SCALE;
+  const defaultAccentScale = (root.dataset.accentScale as ColorScale) || DEFAULT_ACCENT_SCALE;
   const defaultGrayScale = (root.dataset.grayScale as GrayScale) || DEFAULT_GRAY_SCALE;
   const defaultDarkMode = root.classList.contains('dark-theme') || DEFAULT_DARK_MODE;
   const defaultBackgroundFeel =
@@ -62,7 +62,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   const defaultButtonRadius = (root.dataset.buttonRadius as ButtonRadius) || DEFAULT_BUTTON_RADIUS;
   const defaultScaling = (root.dataset.scaling as Scaling) || DEFAULT_SCALING;
 
-  const [colorScale, setColorScale] = React.useState(defaultColorScale);
+  const [accentScale, setAccentScale] = React.useState(defaultAccentScale);
   const [grayScale, setGrayScale] = React.useState(defaultGrayScale);
   const [backgroundFeel, setBackgroundFeel] = React.useState(defaultBackgroundFeel);
   const [foregroundFeel, setForegroundFeel] = React.useState(defaultForegroundFeel);
@@ -98,12 +98,12 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [darkMode, setDarkMode]);
 
   React.useLayoutEffect(() => {
-    if (colorScale !== DEFAULT_COLOR_SCALE) {
-      root.dataset.colorScale = colorScale;
+    if (accentScale !== DEFAULT_ACCENT_SCALE) {
+      root.dataset.accentScale = accentScale;
     } else {
-      delete root.dataset.colorScale;
+      delete root.dataset.accentScale;
     }
-  }, [root, colorScale]);
+  }, [root, accentScale]);
 
   React.useLayoutEffect(() => {
     if (backgroundFeel !== DEFAULT_BACKGROUND_FEEL) {
@@ -192,11 +192,11 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
       </Text>
 
       <Flex direction="column" gap="1" mb="3">
-        <Label htmlFor="color">Color scale</Label>
+        <Label htmlFor="accent-scale">Accent scale</Label>
         <Select.Root
-          id="color"
-          value={colorScale}
-          onValueChange={(value) => setColorScale(value as ColorScale)}
+          id="accent-scale"
+          value={accentScale}
+          onValueChange={(value) => setAccentScale(value as ColorScale)}
           menuVariant="subtle-mono"
           style={{ minWidth: 120 }}
         >
@@ -209,13 +209,13 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                   <Select.Item key={color} value={color}>
                     <Flex align="center" gap="2">
                       <span
-                        data-color-scale={color}
+                        data-accent-scale={color}
                         style={{
                           display: 'inline-block',
                           width: 'var(--space-2)',
                           height: 'var(--space-2)',
                           borderRadius: '100%',
-                          backgroundColor: 'var(--color-9)',
+                          backgroundColor: 'var(--accent-9)',
                         }}
                       />
                       {upperFirst(color)}

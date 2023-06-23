@@ -15,7 +15,7 @@
   padding: 0 var(--space-5);
 }
 .search:focus {
-  outline-color: var(--color-9);
+  outline-color: var(--accent-9);
 }
 
 .grid {
@@ -44,7 +44,7 @@
 }
 
 .downloadPopover {
-  accent-color: var(--color-9);
+  accent-color: var(--accent-9);
 }
 
 .container {

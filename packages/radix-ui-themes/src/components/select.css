@@ -143,7 +143,7 @@
   box-shadow: var(--shadow) var(--mono-9);
 }
 .rui-SelectTrigger.variant-surface:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* surface-mono */
@@ -166,21 +166,21 @@
 /* solid */
 
 .rui-SelectTrigger.variant-solid {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 .rui-SelectTrigger.variant-solid:where(:hover, [data-state='open']) {
-  background-color: var(--color-10);
+  background-color: var(--accent-10);
 }
 .rui-SelectTrigger.variant-solid:where(:active) {
-  background-color: var(--color-10);
+  background-color: var(--accent-10);
   filter: brightness(0.95);
 }
 .rui-SelectTrigger.variant-solid:where(:focus-visible) {
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--color-7);
+  outline-color: var(--accent-7);
 }
 
 /* solid-mono */
@@ -205,17 +205,17 @@
 /* subtle */
 
 .rui-SelectTrigger.variant-subtle {
-  background-color: var(--color-3);
-  color: var(--color-11);
+  background-color: var(--accent-3);
+  color: var(--accent-11);
 }
 .rui-SelectTrigger.variant-subtle:where(:hover, [data-state='open']) {
-  background-color: var(--color-4);
+  background-color: var(--accent-4);
 }
 .rui-SelectTrigger.variant-subtle:where(:active) {
-  background-color: var(--color-5);
+  background-color: var(--accent-5);
 }
 .rui-SelectTrigger.variant-subtle:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* subtle-mono */
@@ -238,19 +238,19 @@
 
 .rui-SelectTrigger.variant-outline {
   --shadow: 0 0 0 1px;
-  box-shadow: var(--shadow) var(--color-6);
-  color: var(--color-11);
+  box-shadow: var(--shadow) var(--accent-6);
+  color: var(--accent-11);
 }
 .rui-SelectTrigger.variant-outline:where(:hover, [data-state='open']) {
-  background-color: var(--color-2);
-  box-shadow: var(--shadow) var(--color-7);
+  background-color: var(--accent-2);
+  box-shadow: var(--shadow) var(--accent-7);
 }
 .rui-SelectTrigger.variant-outline:where(:active) {
-  background-color: var(--color-3);
-  box-shadow: var(--shadow) var(--color-8);
+  background-color: var(--accent-3);
+  box-shadow: var(--shadow) var(--accent-8);
 }
 .rui-SelectTrigger.variant-outline:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* outline-mono */
@@ -273,16 +273,16 @@
 /* ghost */
 
 .rui-SelectTrigger.variant-ghost {
-  color: var(--color-11);
+  color: var(--accent-11);
 }
 .rui-SelectTrigger.variant-ghost:where(:hover, [data-state='open']) {
-  background-color: var(--color-3);
+  background-color: var(--accent-3);
 }
 .rui-SelectTrigger.variant-ghost:where(:active) {
-  background-color: var(--color-4);
+  background-color: var(--accent-4);
 }
 .rui-SelectTrigger.variant-ghost:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* ghost-mono */
@@ -331,7 +331,7 @@
 /* solid */
 
 .rui-SelectContent.variant-solid .rui-SelectItem[data-highlighted] {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 
@@ -345,7 +345,7 @@
 /* subtle */
 
 .rui-SelectContent.variant-subtle .rui-SelectItem[data-highlighted] {
-  background-color: var(--color-5);
+  background-color: var(--accent-5);
 }
 
 /* subtle-mono */

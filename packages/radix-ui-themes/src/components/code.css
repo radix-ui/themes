@@ -91,7 +91,7 @@
 /* solid */
 
 .rui-Code.variant-solid {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 
@@ -105,8 +105,8 @@
 /* subtle */
 
 .rui-Code.variant-subtle {
-  background-color: var(--color-3);
-  color: var(--color-11);
+  background-color: var(--accent-3);
+  color: var(--accent-11);
 }
 
 /* subtle-mono */
@@ -119,8 +119,8 @@
 /* outline */
 
 .rui-Code.variant-outline {
-  box-shadow: 0 0 0 1px var(--color-6);
-  color: var(--color-11);
+  box-shadow: 0 0 0 1px var(--accent-6);
+  color: var(--accent-11);
 }
 
 /* outline-mono */

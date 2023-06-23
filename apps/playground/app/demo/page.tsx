@@ -27,7 +27,7 @@ export default function Demo() {
     <html
       lang="en"
       className="dark-theme"
-      data-color-scale="mint"
+      data-accent-scale="mint"
       data-gray-scale="natural"
       data-background-feel="natural"
       data-foreground-feel="tinted"

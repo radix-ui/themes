@@ -92,10 +92,10 @@
 /* solid */
 
 .rui-SwitchRoot.variant-solid .rui-SwitchButton:where(:focus-visible) {
-  outline-color: var(--color-7);
+  outline-color: var(--accent-7);
 }
 .rui-SwitchRoot.variant-solid .rui-SwitchButton:where([data-state='checked']) {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
 }
 
 /* solid-mono */

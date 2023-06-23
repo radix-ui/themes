@@ -2,8 +2,8 @@
   background-color: var(--mono-6);
 }
 
-.rui-Separator:where([data-color-scale]) {
-  background-color: var(--color-6);
+.rui-Separator:where([data-accent-scale]) {
+  background-color: var(--accent-6);
 }
 
 .rui-Separator[data-orientation='vertical'] {

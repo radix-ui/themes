@@ -32,7 +32,7 @@ export default function HomeOS() {
   return (
     <html
       lang="en"
-      data-color-scale="orange"
+      data-accent-scale="orange"
       data-gray-scale="natural"
       data-background-feel="natural"
       data-foreground-feel="natural"
@@ -68,7 +68,7 @@ export default function HomeOS() {
                       width="20"
                       height="22"
                       viewBox="0 0 20 22"
-                      style={{ fill: 'var(--color-9)' }}
+                      style={{ fill: 'var(--accent-9)' }}
                     >
                       <path
                         fillRule="evenodd"

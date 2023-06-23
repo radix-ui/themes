@@ -50,7 +50,7 @@
   box-shadow: var(--shadow) var(--mono-9);
 }
 .rui-BaseButton.variant-surface:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* surface-mono */
@@ -73,21 +73,21 @@
 /* solid */
 
 .rui-BaseButton.variant-solid {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 .rui-BaseButton.variant-solid:where(:hover, [data-state='open']) {
-  background-color: var(--color-10);
+  background-color: var(--accent-10);
 }
 .rui-BaseButton.variant-solid:where(:active) {
-  background-color: var(--color-10);
+  background-color: var(--accent-10);
   filter: brightness(0.95);
 }
 .rui-BaseButton.variant-solid:where(:focus-visible) {
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--color-7);
+  outline-color: var(--accent-7);
 }
 
 /* solid-mono */
@@ -112,17 +112,17 @@
 /* subtle */
 
 .rui-BaseButton.variant-subtle {
-  background-color: var(--color-3);
-  color: var(--color-11);
+  background-color: var(--accent-3);
+  color: var(--accent-11);
 }
 .rui-BaseButton.variant-subtle:where(:hover, [data-state='open']) {
-  background-color: var(--color-4);
+  background-color: var(--accent-4);
 }
 .rui-BaseButton.variant-subtle:where(:active) {
-  background-color: var(--color-5);
+  background-color: var(--accent-5);
 }
 .rui-BaseButton.variant-subtle:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* subtle-mono */
@@ -145,19 +145,19 @@
 
 .rui-BaseButton.variant-outline {
   --shadow: 0 0 0 1px;
-  box-shadow: var(--shadow) var(--color-6);
-  color: var(--color-11);
+  box-shadow: var(--shadow) var(--accent-6);
+  color: var(--accent-11);
 }
 .rui-BaseButton.variant-outline:where(:hover, [data-state='open']) {
-  background-color: var(--color-2);
-  box-shadow: var(--shadow) var(--color-7);
+  background-color: var(--accent-2);
+  box-shadow: var(--shadow) var(--accent-7);
 }
 .rui-BaseButton.variant-outline:where(:active) {
-  background-color: var(--color-3);
-  box-shadow: var(--shadow) var(--color-8);
+  background-color: var(--accent-3);
+  box-shadow: var(--shadow) var(--accent-8);
 }
 .rui-BaseButton.variant-outline:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* outline-mono */
@@ -180,16 +180,16 @@
 /* ghost */
 
 .rui-BaseButton.variant-ghost {
-  color: var(--color-11);
+  color: var(--accent-11);
 }
 .rui-BaseButton.variant-ghost:where(:hover, [data-state='open']) {
-  background-color: var(--color-3);
+  background-color: var(--accent-3);
 }
 .rui-BaseButton.variant-ghost:where(:active) {
-  background-color: var(--color-4);
+  background-color: var(--accent-4);
 }
 .rui-BaseButton.variant-ghost:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-7);
+  box-shadow: 0 0 0 2px var(--accent-7);
 }
 
 /* ghost-mono */

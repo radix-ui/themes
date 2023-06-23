@@ -68,11 +68,11 @@
   outline-style: solid;
   outline-offset: 1px;
   outline-width: 2px;
-  outline-color: var(--color-7);
+  outline-color: var(--accent-7);
 }
 .rui-RadioGroupRoot.variant-solid
   .rui-RadioGroupButton:where([data-state='checked']:not([data-disabled])) {
-  background-color: var(--color-9);
+  background-color: var(--accent-9);
   color: var(--color-foreground);
 }
 

@@ -36,7 +36,7 @@ export default function Snapshot() {
   return (
     <html
       lang="en"
-      data-color-scale="grass"
+      data-accent-scale="grass"
       data-gray-scale="natural"
       data-background-feel="tinted"
       data-foreground-feel="neutral"
@@ -273,7 +273,7 @@ function SubmitPhotoDialog({ children }: any) {
             style={{
               display: 'grid',
               placeItems: 'center',
-              border: '2px dashed var(--color-6)',
+              border: '2px dashed var(--accent-6)',
               backgroundColor: 'var(--mono-a1)',
               height: 100,
               color: 'var(--mono-6)',

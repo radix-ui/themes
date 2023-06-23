@@ -3,8 +3,8 @@
   line-height: var(--line-height);
 }
 
-.rui-Text:where([data-color-scale]) {
-  color: var(--color-11);
+.rui-Text:where([data-accent-scale]) {
+  color: var(--accent-11);
 }
 
 /***************************************************************************************************

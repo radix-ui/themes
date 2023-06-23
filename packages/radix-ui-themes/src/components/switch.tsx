@@ -46,7 +46,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
       style={style}
     >
       <SwitchPrimitive.Root
-        data-color-scale={color}
+        data-accent-scale={color}
         data-button-radius={radius}
         {...switchProps}
         ref={forwardedRef}

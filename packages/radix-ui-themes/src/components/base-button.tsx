@@ -32,7 +32,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   } = marginRest;
   return (
     <button
-      data-color-scale={color}
+      data-accent-scale={color}
       data-button-radius={radius}
       {...baseButtonProps}
       ref={forwardedRef}

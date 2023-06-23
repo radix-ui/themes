@@ -40,7 +40,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'loaded' | 'error'>('idle');
   return (
     <AvatarPrimitive.Root
-      data-color-scale={color}
+      data-accent-scale={color}
       data-button-radius={radius}
       className={classNames(
         'rui-AvatarRoot',
