@@ -6,8 +6,9 @@
 
 .rui-Container {
   box-sizing: content-box;
-  flex-shrink: 0;
+  width: 100%;
   flex-grow: 1;
+  flex-shrink: 0;
   margin-left: auto;
   margin-right: auto;
 }
