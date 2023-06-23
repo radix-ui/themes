@@ -1,0 +1,19 @@
+/* import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Serif+4:ital,wght@1,400;1,600&display=swap');
+
+:root {
+  --ff-sans: 'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --ff-code: 'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --ff-italic: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  --fs-1: calc(12px * var(--scaling, 1));
+  --fs-2: calc(14px * var(--scaling, 1));
+  --fs-3: calc(16px * var(--scaling, 1));
+  --fs-4: calc(18px * var(--scaling, 1));
+  --fs-5: calc(20px * var(--scaling, 1));
+  --fs-6: calc(24px * var(--scaling, 1));
+  --fs-7: calc(28px * var(--scaling, 1));
+  --fs-8: calc(35px * var(--scaling, 1));
+  --fs-9: calc(60px * var(--scaling, 1));
+}
