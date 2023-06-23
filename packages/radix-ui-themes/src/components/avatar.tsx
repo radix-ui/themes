@@ -23,7 +23,7 @@ interface AvatarProps
   variant?: AvatarVariant;
   color?: Color;
   radius?: ButtonRadius;
-  fallback?: React.ReactNode;
+  fallback: React.ReactNode;
 }
 const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -61,7 +61,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
           })}
           delayMs={0}
         >
-          {fallback ?? <PersonIcon />}
+          {fallback}
         </AvatarPrimitive.Fallback>
       ) : null}
 

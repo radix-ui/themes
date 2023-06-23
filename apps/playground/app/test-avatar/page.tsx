@@ -17,13 +17,10 @@ export default function Test() {
           <Provider>
             <ControlPanel />
             <Flex align="center" gap="3">
-              <Avatar src="./api/avatar" />
               <Avatar src="./api/avatar" fallback="BG" />
 
-              <Avatar src="#" />
               <Avatar src="#" fallback="BG" />
 
-              <Avatar />
               <Avatar fallback="BG" />
               <Avatar fallback={<CustomUserIcon />} />
             </Flex>
