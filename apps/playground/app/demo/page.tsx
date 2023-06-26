@@ -28,9 +28,8 @@ export default function Demo() {
       lang="en"
       className="dark-theme"
       data-accent-scale="mint"
-      data-gray-scale="natural"
-      data-background-feel="natural"
-      data-foreground-feel="tinted"
+      data-background-color="gray"
+      data-text-color="accent"
       data-radius="large"
       data-scaling="110%"
     >

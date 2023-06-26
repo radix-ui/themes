@@ -1,14 +1,30 @@
-import { groupedColors } from './colors';
+import {
+  regularColorScales,
+  brightColorScales,
+  metalColorScales,
+  pureGrayScale,
+  desaturatedGrayScales,
+} from './color-scales';
+import type { ColorScale, GrayScale } from './color-scales';
 
-import type { Color } from './colors';
+const groupedColorScales = [
+  { label: 'Regulars', scales: [...regularColorScales] as ColorScale[] },
+  { label: 'Brights', scales: [...brightColorScales] as ColorScale[] },
+  { label: 'Metals', scales: [...metalColorScales] as ColorScale[] },
+];
 
-type ColorScale = Color;
+type GrayScaleControl = GrayScale | 'auto';
 
-const colorFeelValues = ['neutral', 'natural', 'tinted'] as const;
-type ColorFeel = (typeof colorFeelValues)[number];
+const groupedGrayScales = [
+  { label: 'Pure', scales: [pureGrayScale] as GrayScaleControl[] },
+  { label: 'Desaturated', scales: ['auto', ...desaturatedGrayScales] as GrayScaleControl[] },
+];
 
-const grayScaleValues = ['neutral', 'natural'] as const;
-type GrayScale = (typeof grayScaleValues)[number];
+const backgroundColorValues = ['auto', 'gray'] as const;
+type BackgroundColorControl = (typeof backgroundColorValues)[number];
+
+const textColorValues = ['auto', 'accent'] as const;
+type TextColorControl = (typeof textColorValues)[number];
 
 const radiusValues = ['none', 'small', 'medium', 'large', 'full'] as const;
 type Radius = (typeof radiusValues)[number];
@@ -16,5 +32,13 @@ type Radius = (typeof radiusValues)[number];
 const scalingValues = ['90%', '95%', '100%', '105%', '110%'] as const;
 type Scaling = (typeof scalingValues)[number];
 
-export { groupedColors, colorFeelValues, grayScaleValues, radiusValues, scalingValues };
-export type { ColorScale, ColorFeel, GrayScale, Radius, Scaling };
+export {
+  groupedColorScales,
+  groupedGrayScales,
+  textColorValues,
+  backgroundColorValues,
+  radiusValues,
+  scalingValues,
+};
+
+export type { GrayScaleControl, TextColorControl, BackgroundColorControl, Radius, Scaling };

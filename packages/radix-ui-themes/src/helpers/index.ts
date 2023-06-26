@@ -1,5 +1,5 @@
 export * from './breakpoints';
-export * from './colors';
+export * from './color-scales';
 export * from './controls';
 export * from './layout-props';
 export * from './margin-props';

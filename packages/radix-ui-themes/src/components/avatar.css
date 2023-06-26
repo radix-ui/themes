@@ -102,8 +102,8 @@
 /* solid-mono */
 
 .rui-AvatarRoot.variant-solid-mono .rui-AvatarFallback {
-  background-color: var(--mono-a12);
-  color: var(--mono-1);
+  background-color: var(--gray-a12);
+  color: var(--gray-1);
 }
 
 /* subtle */
@@ -116,6 +116,6 @@
 /* subtle-mono */
 
 .rui-AvatarRoot.variant-subtle-mono .rui-AvatarFallback {
-  background-color: var(--mono-a3);
-  color: var(--mono-12);
+  background-color: var(--gray-a3);
+  color: var(--gray-12);
 }

@@ -71,7 +71,7 @@
  ***************************************************************************************************/
 
 .rui-ScrollAreaScrollbar {
-  background-color: var(--mono-a3);
+  background-color: var(--gray-a3);
   border-radius: var(--radius);
   margin: var(--space-1);
 
@@ -86,10 +86,10 @@
 }
 
 .rui-ScrollAreaThumb {
-  background-color: var(--mono-a8);
+  background-color: var(--gray-a8);
   border-radius: var(--radius);
   transition: background-color 100ms;
 }
 .rui-ScrollAreaThumb:hover {
-  background-color: var(--mono-a9);
+  background-color: var(--gray-a9);
 }

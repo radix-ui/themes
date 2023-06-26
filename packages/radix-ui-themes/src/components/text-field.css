@@ -53,17 +53,17 @@
 
 .rui-TextField {
   box-shadow: var(--shadow-1);
-  color: var(--mono-12);
+  color: var(--gray-12);
 }
 
 .rui-TextField::placeholder {
-  color: var(--mono-a10);
+  color: var(--gray-a10);
   /* Firefox */
   opacity: 1;
 }
 
 .rui-TextField:autofill {
-  -webkit-text-fill-color: var(--mono-12);
+  -webkit-text-fill-color: var(--gray-12);
   box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-3);
 }
 .rui-TextField:autofill:focus {
@@ -86,36 +86,36 @@
   background-color: var(--color-surface-1);
 }
 .rui-TextField.variant-surface-mono:focus {
-  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--mono-a8), 0 0 0 2px var(--mono-a8);
+  box-shadow: var(--shadow-1), inset 0 0 0 1px var(--gray-a8), 0 0 0 2px var(--gray-a8);
 }
 .rui-TextField.variant-surface-mono::selection {
-  background-color: var(--mono-a5);
+  background-color: var(--gray-a5);
 }
 
 /* subtle-mono */
 .rui-TextField.variant-subtle-mono {
-  background-color: var(--mono-a3);
+  background-color: var(--gray-a3);
   box-shadow: none;
 }
 .rui-TextField.variant-subtle-mono::selection {
-  background-color: var(--mono-a5);
+  background-color: var(--gray-a5);
 }
 .rui-TextField.variant-subtle-mono:focus {
-  box-shadow: 0 0 0 2px var(--mono-a8);
+  box-shadow: 0 0 0 2px var(--gray-a8);
 }
 
 /* all disabled textareas */
 
 .rui-TextField:disabled {
-  color: var(--mono-a9);
-  box-shadow: inset 0 0 0 1px var(--mono-a6);
-  background-color: var(--mono-a3);
+  color: var(--gray-a9);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
+  background-color: var(--gray-a3);
   cursor: not-allowed;
 }
 
 /* all readonly textareas */
 
 .rui-TextField:read-only {
-  background-color: var(--mono-a3);
-  box-shadow: inset 0 0 0 1px var(--mono-a6);
+  background-color: var(--gray-a3);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
 }

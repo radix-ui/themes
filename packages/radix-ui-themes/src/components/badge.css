@@ -48,8 +48,8 @@
   color: var(--accent-11);
 }
 .rui-Badge.variant-surface:where([data-accent-scale='gray']) {
-  box-shadow: inset 0 0 0 0.5px var(--mono-a5), 0 0 0 0.5px var(--mono-a5);
-  color: var(--mono-12);
+  box-shadow: inset 0 0 0 0.5px var(--gray-a5), 0 0 0 0.5px var(--gray-a5);
+  color: var(--gray-12);
 }
 
 /* subtle */
@@ -59,7 +59,7 @@
   color: var(--accent-11);
 }
 .rui-Badge.variant-subtle:where([data-accent-scale='gray']) {
-  color: var(--mono-12);
+  color: var(--gray-12);
 }
 
 /* outline */
@@ -69,5 +69,5 @@
   color: var(--accent-11);
 }
 .rui-Badge.variant-outline:where([data-accent-scale='gray']) {
-  color: var(--mono-12);
+  color: var(--gray-12);
 }

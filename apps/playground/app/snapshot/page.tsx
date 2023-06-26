@@ -37,9 +37,8 @@ export default function Snapshot() {
     <html
       lang="en"
       data-accent-scale="grass"
-      data-gray-scale="natural"
-      data-background-feel="tinted"
-      data-foreground-feel="neutral"
+      data-background-color="gray"
+      data-text-color="accent"
       data-radius="small"
       data-scaling="110%"
       className="dark-theme"
@@ -216,7 +215,7 @@ export default function Snapshot() {
                 {['1601815560619-c5aeb2cb9297', '1683223336014-06e82d91c95e'].map((id) => (
                   <ImageCard key={id} id={id} />
                 ))}
-                <div style={{ border: '1px solid var(--mono-7)', padding: 'var(--space-5)' }}>
+                <div style={{ border: '1px solid var(--gray-7)', padding: 'var(--space-5)' }}>
                   <Text size="4" weight="bold" style={{ marginBottom: 'var(--space-5)' }}>
                     Contributors
                   </Text>
@@ -274,9 +273,9 @@ function SubmitPhotoDialog({ children }: any) {
               display: 'grid',
               placeItems: 'center',
               border: '2px dashed var(--accent-6)',
-              backgroundColor: 'var(--mono-a1)',
+              backgroundColor: 'var(--gray-a1)',
               height: 100,
-              color: 'var(--mono-6)',
+              color: 'var(--gray-6)',
             }}
           >
             <UploadIcon width="50" height="50" />

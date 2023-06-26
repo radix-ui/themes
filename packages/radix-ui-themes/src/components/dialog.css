@@ -22,7 +22,7 @@
   outline: none;
   overflow: auto;
   background-color: var(--color-panel);
-  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--mono-a6);
+  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
   box-sizing: border-box;
   z-index: 1;
 

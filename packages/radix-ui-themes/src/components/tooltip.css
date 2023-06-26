@@ -1,6 +1,6 @@
 .rui-TooltipContent {
   padding: var(--space-1) var(--space-2);
-  background-color: var(--mono-12);
+  background-color: var(--gray-12);
   border-radius: var(--br-2);
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
@@ -24,13 +24,13 @@
 }
 
 .rui-TooltipText {
-  color: var(--mono-1);
+  color: var(--gray-1);
   user-select: none;
   cursor: default;
 }
 
 .rui-TooltipArrow {
-  fill: var(--mono-12);
+  fill: var(--gray-12);
 }
 
 /***************************************************************************************************

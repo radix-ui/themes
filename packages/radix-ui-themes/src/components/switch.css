@@ -69,7 +69,7 @@
  ***************************************************************************************************/
 
 .rui-SwitchButton {
-  background-color: var(--mono-a3);
+  background-color: var(--gray-a3);
   box-shadow: var(--shadow-1);
 }
 .rui-SwitchButton:where(:focus-visible) {
@@ -83,7 +83,7 @@
 
 .rui-SwitchThumb {
   background-color: var(--white-a12);
-  box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--mono-a3);
+  box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--gray-a3);
 }
 .rui-SwitchThumb:where([data-state='checked']) {
   box-shadow: 0 1px 2px var(--black-a9);
@@ -102,14 +102,14 @@
 
 :root,
 .light-theme {
-  --switch-button-checked-solid-mono-bg: var(--mono-a12);
+  --switch-button-checked-solid-mono-bg: var(--gray-a12);
 }
 .dark-theme {
-  --switch-button-checked-solid-mono-bg: var(--mono-a9);
+  --switch-button-checked-solid-mono-bg: var(--gray-a9);
 }
 
 .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where(:focus-visible) {
-  outline-color: var(--mono-a11);
+  outline-color: var(--gray-a11);
 }
 .rui-SwitchRoot.variant-solid-mono .rui-SwitchButton:where([data-state='checked']) {
   background-color: var(--switch-button-checked-solid-mono-bg);
@@ -119,10 +119,10 @@
 
 .rui-SwitchRoot .rui-SwitchButton[data-disabled] {
   background-color: var(--color-surface-3) !important;
-  box-shadow: inset 0 0 0 1px var(--mono-a5);
+  box-shadow: inset 0 0 0 1px var(--gray-a5);
   cursor: not-allowed;
 }
 .rui-SwitchRoot .rui-SwitchThumb[data-disabled] {
-  background-color: var(--mono-a5);
+  background-color: var(--gray-a5);
   box-shadow: none;
 }

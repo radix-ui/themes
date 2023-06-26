@@ -134,13 +134,13 @@
 .rui-SelectTrigger.variant-surface {
   --shadow: 0 0 0 1px;
   background-color: var(--color-surface-1);
-  box-shadow: var(--shadow) var(--mono-7);
+  box-shadow: var(--shadow) var(--gray-7);
 }
 .rui-SelectTrigger.variant-surface:where(:hover, [data-state='open']) {
-  box-shadow: var(--shadow) var(--mono-8);
+  box-shadow: var(--shadow) var(--gray-8);
 }
 .rui-SelectTrigger.variant-surface:where(:active) {
-  box-shadow: var(--shadow) var(--mono-9);
+  box-shadow: var(--shadow) var(--gray-9);
 }
 .rui-SelectTrigger.variant-surface:where(:focus-visible) {
   box-shadow: 0 0 0 2px var(--accent-7);
@@ -151,13 +151,13 @@
 .rui-SelectTrigger.variant-surface-mono {
   --shadow: 0 0 0 1px;
   background-color: var(--color-surface-1);
-  box-shadow: var(--shadow) var(--mono-7);
+  box-shadow: var(--shadow) var(--gray-7);
 }
 .rui-SelectTrigger.variant-surface-mono:where(:hover, [data-state='open']) {
-  box-shadow: var(--shadow) var(--mono-8);
+  box-shadow: var(--shadow) var(--gray-8);
 }
 .rui-SelectTrigger.variant-surface-mono:where(:active) {
-  box-shadow: var(--shadow) var(--mono-9);
+  box-shadow: var(--shadow) var(--gray-9);
 }
 .rui-SelectTrigger.variant-surface-mono:where(:focus-visible) {
   --shadow: 0 0 0 2px;
@@ -186,8 +186,8 @@
 /* solid-mono */
 
 .rui-SelectTrigger.variant-solid-mono {
-  background-color: var(--mono-a12);
-  color: var(--mono-1);
+  background-color: var(--gray-a12);
+  color: var(--gray-1);
 }
 .rui-SelectTrigger.variant-solid-mono:where(:hover, [data-state='open']) {
   opacity: 0.92;
@@ -199,7 +199,7 @@
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--mono-a11);
+  outline-color: var(--gray-a11);
 }
 
 /* subtle */
@@ -221,17 +221,17 @@
 /* subtle-mono */
 
 .rui-SelectTrigger.variant-subtle-mono {
-  background-color: var(--mono-a3);
-  color: var(--mono-12);
+  background-color: var(--gray-a3);
+  color: var(--gray-12);
 }
 .rui-SelectTrigger.variant-subtle-mono:where(:hover, [data-state='open']) {
-  background-color: var(--mono-a4);
+  background-color: var(--gray-a4);
 }
 .rui-SelectTrigger.variant-subtle-mono:where(:active) {
-  background-color: var(--mono-a5);
+  background-color: var(--gray-a5);
 }
 .rui-SelectTrigger.variant-subtle-mono:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--mono-7);
+  box-shadow: 0 0 0 2px var(--gray-7);
 }
 
 /* outline */
@@ -257,17 +257,17 @@
 
 .rui-SelectTrigger.variant-outline-mono {
   --shadow: 0 0 0 1px;
-  box-shadow: var(--shadow) var(--mono-11);
-  color: var(--mono-12);
+  box-shadow: var(--shadow) var(--gray-11);
+  color: var(--gray-12);
 }
 .rui-SelectTrigger.variant-outline-mono:where(:hover, [data-state='open']) {
-  background-color: var(--mono-a2);
+  background-color: var(--gray-a2);
 }
 .rui-SelectTrigger.variant-outline-mono:where(:active) {
-  background-color: var(--mono-a3);
+  background-color: var(--gray-a3);
 }
 .rui-SelectTrigger.variant-outline-mono:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--mono-11);
+  box-shadow: 0 0 0 2px var(--gray-11);
 }
 
 /* ghost */
@@ -288,24 +288,24 @@
 /* ghost-mono */
 
 .rui-SelectTrigger.variant-ghost-mono {
-  color: var(--mono-12);
+  color: var(--gray-12);
 }
 .rui-SelectTrigger.variant-ghost-mono:where(:hover, [data-state='open']) {
-  background-color: var(--mono-a3);
+  background-color: var(--gray-a3);
 }
 .rui-SelectTrigger.variant-ghost-mono:where(:active) {
-  background-color: var(--mono-a4);
+  background-color: var(--gray-a4);
 }
 .rui-SelectTrigger.variant-ghost-mono:where(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--mono-a7);
+  box-shadow: 0 0 0 2px var(--gray-a7);
 }
 
 /* all disabled triggers */
 
 .rui-SelectTrigger[data-disabled] {
-  background-color: var(--mono-a3);
+  background-color: var(--gray-a3);
   box-shadow: none;
-  color: var(--mono-a8);
+  color: var(--gray-a8);
 }
 
 /***************************************************************************************************
@@ -316,16 +316,16 @@
 
 .rui-SelectContent {
   --content-bg: var(--color-panel);
-  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--mono-a6);
+  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
 .rui-SelectContent .rui-SelectItem[data-disabled] {
-  color: var(--mono-10);
+  color: var(--gray-10);
 }
 .rui-SelectContent .rui-SelectLabel {
-  color: var(--mono-11);
+  color: var(--gray-11);
 }
 .rui-SelectSeparator {
-  background-color: var(--mono-6);
+  background-color: var(--gray-6);
 }
 
 /* solid */
@@ -338,8 +338,8 @@
 /* solid-mono */
 
 .rui-SelectContent.variant-solid-mono .rui-SelectItem[data-highlighted] {
-  background-color: var(--mono-12);
-  color: var(--mono-1);
+  background-color: var(--gray-12);
+  color: var(--gray-1);
 }
 
 /* subtle */
@@ -351,5 +351,5 @@
 /* subtle-mono */
 
 .rui-SelectContent.variant-subtle-mono .rui-SelectItem[data-highlighted] {
-  background-color: var(--mono-5);
+  background-color: var(--gray-5);
 }

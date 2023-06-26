@@ -109,8 +109,8 @@
 /* solid-mono */
 
 .rui-Code.variant-solid-mono {
-  background-color: var(--mono-a12);
-  color: var(--mono-1);
+  background-color: var(--gray-a12);
+  color: var(--gray-1);
 }
 
 /* subtle */
@@ -123,8 +123,8 @@
 /* subtle-mono */
 
 .rui-Code.variant-subtle-mono {
-  background-color: var(--mono-a4);
-  color: var(--mono-12);
+  background-color: var(--gray-a4);
+  color: var(--gray-12);
 }
 
 /* outline */
@@ -137,6 +137,6 @@
 /* outline-mono */
 
 .rui-Code.variant-outline-mono {
-  box-shadow: 0 0 0 1px var(--mono-a7);
-  color: var(--mono-12);
+  box-shadow: 0 0 0 1px var(--gray-a7);
+  color: var(--gray-12);
 }

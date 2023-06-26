@@ -1,5 +1,5 @@
 .rui-Blockquote {
-  border-left: 4px solid var(--mono-a5);
+  border-left: 4px solid var(--gray-a5);
   padding-left: var(--space-4);
-  color: var(--mono-11);
+  color: var(--gray-11);
 }

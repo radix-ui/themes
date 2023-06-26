@@ -1,7 +1,7 @@
 import seedrandom from 'seedrandom';
-import { allColors } from '@radix-ui/themes';
+import { allColorScales } from '@radix-ui/themes';
 
-import type { Color } from '@radix-ui/themes';
+import type { ColorScale } from '@radix-ui/themes';
 
 const random = seedrandom('people');
 
@@ -167,7 +167,7 @@ const allPeople = [
 // neutral
 const neutralPeople = [person15, person03, person05, person01, person09, person16, person24];
 
-function getPeopleForColor(color: Color) {
+function getPeopleForColorScale(color: ColorScale) {
   switch (color) {
     case 'tomato':
     case 'red':
@@ -206,10 +206,10 @@ function getPeopleForColor(color: Color) {
 }
 
 function generatePeopleByColorScale() {
-  return allColors.reduce((peopleByColorScale, color) => {
-    peopleByColorScale[color] = get3RandomItemsInArray(getPeopleForColor(color));
+  return allColorScales.reduce((peopleByColorScale, color) => {
+    peopleByColorScale[color] = get3RandomItemsInArray(getPeopleForColorScale(color));
     return peopleByColorScale;
-  }, {} as Record<Color, Person[]>);
+  }, {} as Record<ColorScale, Person[]>);
 }
 
 function avatar(id: string, params?: { x?: number; y?: number; zoom?: number }) {

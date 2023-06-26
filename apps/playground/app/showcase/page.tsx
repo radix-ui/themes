@@ -27,10 +27,10 @@ import {
   Text,
   VisuallyHidden,
   // helpers:
-  allColors,
-  grayScaleValues,
-  colorFeelValues,
-  radiusValues as radiusValues,
+  allColorScales,
+  backgroundColorValues,
+  textColorValues,
+  radiusValues,
 } from '@radix-ui/themes';
 import {
   ReloadIcon,
@@ -62,7 +62,7 @@ import type {
   SliderVariant,
   SwitchVariant,
   TextAreaVariant,
-  Color,
+  ColorScale,
 } from '@radix-ui/themes';
 
 const THEME_SWITCH_INTERVAL = 5000;
@@ -72,12 +72,14 @@ const FILTERS_PANEL_WIDTH = 450;
 
 export default function Showcase() {
   const [darkMode, setDarkMode] = React.useState(true);
-  const [color, setColor] = React.useState<Color>('indigo');
+  const [color, setColor] = React.useState<ColorScale>('indigo');
   const [primaryVariant, setPrimaryVariant] = React.useState<ButtonVariant>('solid');
   const [secondaryVariant, setSecondaryVariant] = React.useState<ButtonVariant>('subtle');
   const [avatarVariant, setAvatarVariant] = React.useState<AvatarVariant>('subtle');
-  const [avatarNameColor, setAvatarNameColor] = React.useState<Color | undefined>(undefined);
-  const [feedbackTitleColor, setFeedbackTitleColor] = React.useState<Color | undefined>(undefined);
+  const [avatarNameColor, setAvatarNameColor] = React.useState<ColorScale | undefined>(undefined);
+  const [feedbackTitleColor, setFeedbackTitleColor] = React.useState<ColorScale | undefined>(
+    undefined
+  );
   const [feedbackVariant, setFeedbackVariant] = React.useState<TextAreaVariant>('surface');
   const [likeCount, setLikeCount] = React.useState(17);
   const [likeButtonVariant, setLikeButtonVariant] = React.useState<ButtonVariant>('subtle');
@@ -99,14 +101,13 @@ export default function Showcase() {
     const id = setTimeout(() => {
       const root = document.documentElement;
 
-      const nextColor = wrapArray(allColors, allColors.indexOf(color) + 3)[0];
-      root.dataset.colorScale = nextColor;
+      const nextColor = wrapArray(allColorScales, allColorScales.indexOf(color) + 3)[0];
+      root.dataset.accentScale = nextColor;
       setColor(nextColor);
 
-      root.dataset.grayScale = randomItemInArray(grayScaleValues);
-      root.dataset.backgroundFeel = randomItemInArray(colorFeelValues);
-      root.dataset.foregroundFeel = randomItemInArray(colorFeelValues);
-      root.dataset.buttonRadius = randomItemInArray(radiusValues);
+      root.dataset.backgroundColor = randomItemInArray(backgroundColorValues);
+      root.dataset.textColor = randomItemInArray(textColorValues);
+      root.dataset.radius = randomItemInArray(radiusValues);
       // const nextDarkMode = Math.random() > 0.5;
       // setDarkMode(nextDarkMode);
       // if (nextDarkMode) {
@@ -167,12 +168,9 @@ export default function Showcase() {
   return (
     <html
       lang="en"
-      data-accent-scale="indigo"
-      data-gray-scale="natural"
-      data-background-feel="tinted"
-      data-foreground-feel="tinted"
+      data-background-color="gray"
+      data-text-color="accent"
       data-radius="full"
-      data-scaling="100%"
       // className="dark-theme"
     >
       <body className="rui-reset-body">
@@ -181,7 +179,7 @@ export default function Showcase() {
             <ControlPanel />
 
             {/* <Grid display="inline-grid" columns="4" gap="3">
-              {allColors.map((color) => {
+              {allColorScales.map((color) => {
                 const people = peopleByColorScale[color];
                 return (
                   <Box p="2" key={color} style={{ backgroundColor: `var(--${color}9)` }}>
@@ -265,7 +263,7 @@ export default function Showcase() {
                               style={{
                                 width: AVATARS_LIST_WIDTH,
                                 border: `1px solid var(${
-                                  avatarNameColor === undefined ? '--mono-a6' : '--accent-6'
+                                  avatarNameColor === undefined ? '--gray-a6' : '--accent-6'
                                 })`,
                                 borderRadius: 'min(var(--br-3), var(--panel-max-br))',
                               }}
@@ -283,7 +281,7 @@ export default function Showcase() {
                                         index > 0
                                           ? `1px solid var(${
                                               avatarNameColor === undefined
-                                                ? '--mono-a6'
+                                                ? '--gray-a6'
                                                 : '--accent-6'
                                             })`
                                           : undefined,
@@ -573,7 +571,7 @@ export default function Showcase() {
                             style={{
                               backgroundColor: 'var(--color-panel)',
                               border: `1px solid var(${
-                                avatarNameColor === undefined ? '--mono-a5' : '--accent-5'
+                                avatarNameColor === undefined ? '--gray-a5' : '--accent-5'
                               })`,
                               borderRadius: 'min(var(--br-3), var(--panel-max-br))',
                               width: FILTERS_PANEL_WIDTH,

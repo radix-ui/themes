@@ -83,17 +83,17 @@
   --color-overlay: var(--black-a9);
   --color-panel: white;
   --color-surface-1: white;
-  --color-surface-2: var(--mono-2);
-  --color-surface-3: var(--mono-3);
+  --color-surface-2: var(--gray-2);
+  --color-surface-3: var(--gray-3);
 }
 .dark-theme {
   color-scheme: dark;
 
   --color-overlay: var(--black-a11);
-  --color-panel: var(--mono-2);
-  --color-surface-1: var(--mono-a1);
-  --color-surface-2: var(--mono-a2);
-  --color-surface-3: var(--mono-a3);
+  --color-panel: var(--gray-2);
+  --color-surface-1: var(--gray-a1);
+  --color-surface-2: var(--gray-a2);
+  --color-surface-3: var(--gray-a3);
 }
 
 ::selection {
@@ -715,12 +715,12 @@
     --natural-gray-a12: var(--olive-a12);
   }
 }
-[data-accent-scale='gold'],
-[data-accent-scale='bronze'],
 [data-accent-scale='yellow'],
 [data-accent-scale='amber'],
 [data-accent-scale='orange'],
-[data-accent-scale='brown'] {
+[data-accent-scale='brown'],
+[data-accent-scale='gold'],
+[data-accent-scale='bronze'] {
   &,
   & .light-theme,
   & .dark-theme {
@@ -752,152 +752,299 @@
   }
 }
 
-/* background feel */
-:root, /* default: natural */
-[data-background-feel='natural'] {
+/* gray scale */
+:root:where(:not([data-gray-scale="gray"])), /* default: auto */
+[data-gray-scale='auto'] {
   &,
   & .light-theme,
   & .dark-theme {
-    --background-feel: var(--natural-gray-1);
-    background-color: var(--background-feel);
+    --gray-1: var(--natural-gray-1);
+    --gray-2: var(--natural-gray-2);
+    --gray-3: var(--natural-gray-3);
+    --gray-4: var(--natural-gray-4);
+    --gray-5: var(--natural-gray-5);
+    --gray-6: var(--natural-gray-6);
+    --gray-7: var(--natural-gray-7);
+    --gray-8: var(--natural-gray-8);
+    --gray-9: var(--natural-gray-9);
+    --gray-10: var(--natural-gray-10);
+    --gray-11: var(--natural-gray-11);
+    --gray-12: var(--natural-gray-12);
+
+    --gray-a1: var(--natural-gray-a1);
+    --gray-a2: var(--natural-gray-a2);
+    --gray-a3: var(--natural-gray-a3);
+    --gray-a4: var(--natural-gray-a4);
+    --gray-a5: var(--natural-gray-a5);
+    --gray-a6: var(--natural-gray-a6);
+    --gray-a7: var(--natural-gray-a7);
+    --gray-a8: var(--natural-gray-a8);
+    --gray-a9: var(--natural-gray-a9);
+    --gray-a10: var(--natural-gray-a10);
+    --gray-a11: var(--natural-gray-a11);
+    --gray-a12: var(--natural-gray-a12);
   }
 }
-[data-background-feel='neutral'] {
+/* [data-gray-scale='gray'] {
   &,
   & .light-theme,
   & .dark-theme {
-    --background-feel: var(--gray-1);
-    background-color: var(--background-feel);
+    --gray-1: var(--gray-1);
+    --gray-2: var(--gray-2);
+    --gray-3: var(--gray-3);
+    --gray-4: var(--gray-4);
+    --gray-5: var(--gray-5);
+    --gray-6: var(--gray-6);
+    --gray-7: var(--gray-7);
+    --gray-8: var(--gray-8);
+    --gray-9: var(--gray-9);
+    --gray-10: var(--gray-10);
+    --gray-11: var(--gray-11);
+    --gray-12: var(--gray-12);
+
+    --gray-a1: var(--gray-a1);
+    --gray-a2: var(--gray-a2);
+    --gray-a3: var(--gray-a3);
+    --gray-a4: var(--gray-a4);
+    --gray-a5: var(--gray-a5);
+    --gray-a6: var(--gray-a6);
+    --gray-a7: var(--gray-a7);
+    --gray-a8: var(--gray-a8);
+    --gray-a9: var(--gray-a9);
+    --gray-a10: var(--gray-a10);
+    --gray-a11: var(--gray-a11);
+    --gray-a12: var(--gray-a12);
+  }
+} */
+[data-gray-scale='mauve'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --gray-1: var(--mauve-1);
+    --gray-2: var(--mauve-2);
+    --gray-3: var(--mauve-3);
+    --gray-4: var(--mauve-4);
+    --gray-5: var(--mauve-5);
+    --gray-6: var(--mauve-6);
+    --gray-7: var(--mauve-7);
+    --gray-8: var(--mauve-8);
+    --gray-9: var(--mauve-9);
+    --gray-10: var(--mauve-10);
+    --gray-11: var(--mauve-11);
+    --gray-12: var(--mauve-12);
+
+    --gray-a1: var(--mauve-a1);
+    --gray-a2: var(--mauve-a2);
+    --gray-a3: var(--mauve-a3);
+    --gray-a4: var(--mauve-a4);
+    --gray-a5: var(--mauve-a5);
+    --gray-a6: var(--mauve-a6);
+    --gray-a7: var(--mauve-a7);
+    --gray-a8: var(--mauve-a8);
+    --gray-a9: var(--mauve-a9);
+    --gray-a10: var(--mauve-a10);
+    --gray-a11: var(--mauve-a11);
+    --gray-a12: var(--mauve-a12);
   }
 }
-[data-background-feel='tinted'] {
+[data-gray-scale='slate'] {
   &,
   & .light-theme,
   & .dark-theme {
-    --background-feel: var(--accent-1);
-    background-color: var(--background-feel);
+    --gray-1: var(--slate-1);
+    --gray-2: var(--slate-2);
+    --gray-3: var(--slate-3);
+    --gray-4: var(--slate-4);
+    --gray-5: var(--slate-5);
+    --gray-6: var(--slate-6);
+    --gray-7: var(--slate-7);
+    --gray-8: var(--slate-8);
+    --gray-9: var(--slate-9);
+    --gray-10: var(--slate-10);
+    --gray-11: var(--slate-11);
+    --gray-12: var(--slate-12);
+
+    --gray-a1: var(--slate-a1);
+    --gray-a2: var(--slate-a2);
+    --gray-a3: var(--slate-a3);
+    --gray-a4: var(--slate-a4);
+    --gray-a5: var(--slate-a5);
+    --gray-a6: var(--slate-a6);
+    --gray-a7: var(--slate-a7);
+    --gray-a8: var(--slate-a8);
+    --gray-a9: var(--slate-a9);
+    --gray-a10: var(--slate-a10);
+    --gray-a11: var(--slate-a11);
+    --gray-a12: var(--slate-a12);
+  }
+}
+[data-gray-scale='sage'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --gray-1: var(--sage-1);
+    --gray-2: var(--sage-2);
+    --gray-3: var(--sage-3);
+    --gray-4: var(--sage-4);
+    --gray-5: var(--sage-5);
+    --gray-6: var(--sage-6);
+    --gray-7: var(--sage-7);
+    --gray-8: var(--sage-8);
+    --gray-9: var(--sage-9);
+    --gray-10: var(--sage-10);
+    --gray-11: var(--sage-11);
+    --gray-12: var(--sage-12);
+
+    --gray-a1: var(--sage-a1);
+    --gray-a2: var(--sage-a2);
+    --gray-a3: var(--sage-a3);
+    --gray-a4: var(--sage-a4);
+    --gray-a5: var(--sage-a5);
+    --gray-a6: var(--sage-a6);
+    --gray-a7: var(--sage-a7);
+    --gray-a8: var(--sage-a8);
+    --gray-a9: var(--sage-a9);
+    --gray-a10: var(--sage-a10);
+    --gray-a11: var(--sage-a11);
+    --gray-a12: var(--sage-a12);
+  }
+}
+[data-gray-scale='olive'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --gray-1: var(--olive-1);
+    --gray-2: var(--olive-2);
+    --gray-3: var(--olive-3);
+    --gray-4: var(--olive-4);
+    --gray-5: var(--olive-5);
+    --gray-6: var(--olive-6);
+    --gray-7: var(--olive-7);
+    --gray-8: var(--olive-8);
+    --gray-9: var(--olive-9);
+    --gray-10: var(--olive-10);
+    --gray-11: var(--olive-11);
+    --gray-12: var(--olive-12);
+
+    --gray-a1: var(--olive-a1);
+    --gray-a2: var(--olive-a2);
+    --gray-a3: var(--olive-a3);
+    --gray-a4: var(--olive-a4);
+    --gray-a5: var(--olive-a5);
+    --gray-a6: var(--olive-a6);
+    --gray-a7: var(--olive-a7);
+    --gray-a8: var(--olive-a8);
+    --gray-a9: var(--olive-a9);
+    --gray-a10: var(--olive-a10);
+    --gray-a11: var(--olive-a11);
+    --gray-a12: var(--olive-a12);
+  }
+}
+[data-gray-scale='sand'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --gray-1: var(--sand-1);
+    --gray-2: var(--sand-2);
+    --gray-3: var(--sand-3);
+    --gray-4: var(--sand-4);
+    --gray-5: var(--sand-5);
+    --gray-6: var(--sand-6);
+    --gray-7: var(--sand-7);
+    --gray-8: var(--sand-8);
+    --gray-9: var(--sand-9);
+    --gray-10: var(--sand-10);
+    --gray-11: var(--sand-11);
+    --gray-12: var(--sand-12);
+
+    --gray-a1: var(--sand-a1);
+    --gray-a2: var(--sand-a2);
+    --gray-a3: var(--sand-a3);
+    --gray-a4: var(--sand-a4);
+    --gray-a5: var(--sand-a5);
+    --gray-a6: var(--sand-a6);
+    --gray-a7: var(--sand-a7);
+    --gray-a8: var(--sand-a8);
+    --gray-a9: var(--sand-a9);
+    --gray-a10: var(--sand-a10);
+    --gray-a11: var(--sand-a11);
+    --gray-a12: var(--sand-a12);
   }
 }
 
-/* foreground feel */
-:root, /* default: natural */
-[data-foreground-feel='natural'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --foreground-feel: var(--natural-gray-12);
-    color: var(--foreground-feel);
-  }
-}
-[data-foreground-feel='neutral'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --foreground-feel: var(--gray-12);
-    color: var(--foreground-feel);
-  }
-}
-[data-foreground-feel='tinted'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --foreground-feel: var(--accent-12);
-    color: var(--foreground-feel);
-  }
-}
-
-/* mono scale */
-:root, /* default: natural */
-[data-gray-scale='natural'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --mono-1: var(--natural-gray-1);
-    --mono-2: var(--natural-gray-2);
-    --mono-3: var(--natural-gray-3);
-    --mono-4: var(--natural-gray-4);
-    --mono-5: var(--natural-gray-5);
-    --mono-6: var(--natural-gray-6);
-    --mono-7: var(--natural-gray-7);
-    --mono-8: var(--natural-gray-8);
-    --mono-9: var(--natural-gray-9);
-    --mono-10: var(--natural-gray-10);
-    --mono-11: var(--natural-gray-11);
-    --mono-12: var(--natural-gray-12);
-
-    --mono-a1: var(--natural-gray-a1);
-    --mono-a2: var(--natural-gray-a2);
-    --mono-a3: var(--natural-gray-a3);
-    --mono-a4: var(--natural-gray-a4);
-    --mono-a5: var(--natural-gray-a5);
-    --mono-a6: var(--natural-gray-a6);
-    --mono-a7: var(--natural-gray-a7);
-    --mono-a8: var(--natural-gray-a8);
-    --mono-a9: var(--natural-gray-a9);
-    --mono-a10: var(--natural-gray-a10);
-    --mono-a11: var(--natural-gray-a11);
-    --mono-a12: var(--natural-gray-a12);
-  }
-}
-[data-gray-scale='neutral'] {
-  &,
-  & .light-theme,
-  & .dark-theme {
-    --mono-1: var(--gray-1);
-    --mono-2: var(--gray-2);
-    --mono-3: var(--gray-3);
-    --mono-4: var(--gray-4);
-    --mono-5: var(--gray-5);
-    --mono-6: var(--gray-6);
-    --mono-7: var(--gray-7);
-    --mono-8: var(--gray-8);
-    --mono-9: var(--gray-9);
-    --mono-10: var(--gray-10);
-    --mono-11: var(--gray-11);
-    --mono-12: var(--gray-12);
-
-    --mono-a1: var(--gray-a1);
-    --mono-a2: var(--gray-a2);
-    --mono-a3: var(--gray-a3);
-    --mono-a4: var(--gray-a4);
-    --mono-a5: var(--gray-a5);
-    --mono-a6: var(--gray-a6);
-    --mono-a7: var(--gray-a7);
-    --mono-a8: var(--gray-a8);
-    --mono-a9: var(--gray-a9);
-    --mono-a10: var(--gray-a10);
-    --mono-a11: var(--gray-a11);
-    --mono-a12: var(--gray-a12);
-  }
-}
+/* gray accent scale */
 [data-accent-scale='gray'] {
   &,
   & .light-theme,
   & .dark-theme {
-    --accent-1: var(--mono-1);
-    --accent-2: var(--mono-2);
-    --accent-3: var(--mono-3);
-    --accent-4: var(--mono-4);
-    --accent-5: var(--mono-5);
-    --accent-6: var(--mono-6);
-    --accent-7: var(--mono-7);
-    --accent-8: var(--mono-8);
-    --accent-9: var(--mono-9);
-    --accent-10: var(--mono-10);
-    --accent-11: var(--mono-11);
-    --accent-12: var(--mono-12);
+    --accent-1: var(--gray-1);
+    --accent-2: var(--gray-2);
+    --accent-3: var(--gray-3);
+    --accent-4: var(--gray-4);
+    --accent-5: var(--gray-5);
+    --accent-6: var(--gray-6);
+    --accent-7: var(--gray-7);
+    --accent-8: var(--gray-8);
+    --accent-9: var(--gray-9);
+    --accent-10: var(--gray-10);
+    --accent-11: var(--gray-11);
+    --accent-12: var(--gray-12);
 
-    --color-a1: var(--mono-a1);
-    --color-a2: var(--mono-a2);
-    --color-a3: var(--mono-a3);
-    --color-a4: var(--mono-a4);
-    --color-a5: var(--mono-a5);
-    --color-a6: var(--mono-a6);
-    --color-a7: var(--mono-a7);
-    --color-a8: var(--mono-a8);
-    --color-a9: var(--mono-a9);
-    --color-a10: var(--mono-a10);
-    --color-a11: var(--mono-a11);
-    --color-a12: var(--mono-a12);
+    --accent-a1: var(--gray-a1);
+    --accent-a2: var(--gray-a2);
+    --accent-a3: var(--gray-a3);
+    --accent-a4: var(--gray-a4);
+    --accent-a5: var(--gray-a5);
+    --accent-a6: var(--gray-a6);
+    --accent-a7: var(--gray-a7);
+    --accent-a8: var(--gray-a8);
+    --accent-a9: var(--gray-a9);
+    --accent-a10: var(--gray-a10);
+    --accent-a11: var(--gray-a11);
+    --accent-a12: var(--gray-a12);
+  }
+}
+
+/* background color */
+:root,
+.light-theme {
+  --background-color: white;
+}
+.dark-theme {
+  --background-color: var(--gray-1);
+}
+:root, /* default: auto */
+[data-background-color='auto'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    background-color: var(--background-color);
+  }
+}
+[data-background-color='gray'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --background-color: var(--gray-1);
+    background-color: var(--background-color);
+  }
+}
+
+/* text color */
+:root, /* default: auto */
+[data-text-color='auto'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --text-color: var(--gray-12);
+    color: var(--text-color);
+  }
+}
+[data-text-color='accent'] {
+  &,
+  & .light-theme,
+  & .dark-theme {
+    --text-color: var(--accent-12);
+    color: var(--text-color);
   }
 }

@@ -108,23 +108,23 @@
 
 .rui-BaseMenuContent {
   --content-bg: var(--color-panel);
-  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--mono-a6);
+  box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
 .rui-BaseMenuContent .rui-BaseMenuItem[data-disabled] {
-  color: var(--mono-10);
+  color: var(--gray-10);
 }
 .rui-BaseMenuContent .rui-BaseMenuShortcut {
-  color: var(--mono-11);
+  color: var(--gray-11);
 }
 .rui-BaseMenuContent .rui-BaseMenuItem[data-disabled] .rui-BaseMenuShortcut,
 .rui-BaseMenuContent .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut {
   color: inherit;
 }
 .rui-BaseMenuContent .rui-BaseMenuLabel {
-  color: var(--mono-11);
+  color: var(--gray-11);
 }
 .rui-BaseMenuSeparator {
-  background-color: var(--mono-6);
+  background-color: var(--gray-6);
 }
 
 /* solid */
@@ -140,11 +140,11 @@
 /* solid-mono */
 
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--mono-5);
+  background-color: var(--gray-5);
 }
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--mono-12);
-  color: var(--mono-1);
+  background-color: var(--gray-12);
+  color: var(--gray-1);
 }
 
 /* subtle */
@@ -159,21 +159,21 @@
 /* subtle-mono */
 
 .rui-BaseMenuContent.variant-subtle-mono .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--mono-3);
+  background-color: var(--gray-3);
 }
 .rui-BaseMenuContent.variant-subtle-mono .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--mono-5);
+  background-color: var(--gray-5);
 }
 
 /* old inverted style, maybe bring back? */
 
 /* .rui-BaseMenuContent.variant-solid-mono {
-  --content-bg: var(--mono-12);
+  --content-bg: var(--gray-12);
   box-shadow: var(--shadow-3);
 } */
 
 /* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem {
-  color: var(--mono-1);
+  color: var(--gray-1);
 }
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
   background-color: var(--white-a7);
@@ -182,28 +182,28 @@
   background-color: var(--black-a7);
 }
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-disabled] {
-  color: var(--mono-10);
+  color: var(--gray-10);
 }
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--mono-1);
-  color: var(--mono-12);
+  background-color: var(--gray-1);
+  color: var(--gray-12);
 } */
 
 /* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuShortcut {
-  color: var(--mono-10);
+  color: var(--gray-10);
 }
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut {
-  color: var(--mono-12);
+  color: var(--gray-12);
 }
 .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger .rui-BaseMenuShortcut {
   color: inherit;
 } */
 
 /* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSeparator {
-  background-color: var(--mono-11);
+  background-color: var(--gray-11);
   opacity: 0.3;
 } */
 
 /* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuLabel {
-  color: var(--mono-10);
+  color: var(--gray-10);
 } */

@@ -1,5 +1,5 @@
 .rui-Separator {
-  background-color: var(--mono-6);
+  background-color: var(--gray-6);
 }
 
 .rui-Separator:where([data-accent-scale]) {

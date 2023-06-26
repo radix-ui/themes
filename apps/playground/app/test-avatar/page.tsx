@@ -4,14 +4,7 @@ import { ControlPanel } from '../../components/control-panel';
 
 export default function Test() {
   return (
-    <html
-      lang="en"
-      data-accent-scale="purple"
-      data-gray-scale="natural"
-      data-background-feel="tinted"
-      data-foreground-feel="neutral"
-      data-radius="full"
-    >
+    <html lang="en" data-accent-scale="purple" data-radius="full">
       <body className="rui-reset-body">
         <div id="root">
           <Provider>

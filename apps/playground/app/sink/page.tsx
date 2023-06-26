@@ -163,8 +163,8 @@ import {
   Tooltip,
   //
   // helpers:
-  groupedColors,
-  radiusValues as radiusValues,
+  groupedColorScales,
+  radiusValues,
 } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';
 // import { HideCursor } from './hide-cursor';
@@ -175,6 +175,7 @@ import type {
   ContextMenuVariant,
   DropdownMenuSize,
   DropdownMenuVariant,
+  TextFieldSize,
 } from '@radix-ui/themes';
 import { RadixLogo } from './radix-logo';
 
@@ -226,7 +227,7 @@ export default function Sink() {
             <header
               style={{
                 backgroundColor: 'var(--black-a2)',
-                boxShadow: '0 0 0 0.5px var(--mono-a6)',
+                boxShadow: '0 0 0 0.5px var(--gray-a6)',
               }}
             >
               <Container>
@@ -597,7 +598,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -612,7 +613,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {selectTriggerColorVariants.map((variant) => (
@@ -767,7 +768,7 @@ export default function Sink() {
                       <span>See colors</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -782,7 +783,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {switchColorVariants.map((variant) => (
@@ -925,7 +926,7 @@ export default function Sink() {
                       <span>See colors</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -940,7 +941,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {sliderColorVariants.map((variant) => (
@@ -1089,7 +1090,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1104,7 +1105,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {checkboxColorVariants.map((variant) => (
@@ -1228,7 +1229,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1243,7 +1244,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {radioGroupColorVariants.map((variant) => (
@@ -1354,7 +1355,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1369,7 +1370,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {buttonColorVariants.map((variant) => (
@@ -1475,7 +1476,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1490,7 +1491,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {iconButtonColorVariants.map((variant) => (
@@ -1718,7 +1719,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1733,7 +1734,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {badgeVariants.map((variant) => (
@@ -1870,7 +1871,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1885,7 +1886,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {avatarColorVariants.map((variant) => (
@@ -2278,7 +2279,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColors.map(({ label, colors }) => (
+                  {groupedColorScales.map(({ label, scales }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -2293,7 +2294,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {colors.map((color) => (
+                          {scales.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {codeColorVariants.map((variant) => (
@@ -2684,44 +2685,33 @@ export default function Sink() {
                 </details>
               </DocsSection>
 
-              <Box className="dark-theme" style={{ backgroundColor: 'var(--background-feel)' }}>
-                <DocsSection title="Playground">
-                  <Text mb="5">
-                    In this section, I am just throwing together some of the components to get a
-                    sense of how harmonious they are.
-                  </Text>
-                  <Flex gap="9">
-                    {textFieldSizes.map((size) => (
-                      <Flex
-                        key={size}
-                        direction="column"
-                        gap="3"
-                        style={{ width: (Number(size) + 1) * 100 }}
-                      >
-                        <Grid gap="1">
-                          <Text size={size} weight="bold">
-                            Name
-                          </Text>
-                          <TextField size={size} placeholder="Your name" />
-                        </Grid>
-                        <Grid gap="1">
-                          <Text size={size} weight="bold">
-                            Email
-                          </Text>
-                          <TextField size={size} placeholder="Your email" />
-                        </Grid>
-                        <Grid gap="1">
-                          <Text size={size} weight="bold">
-                            Feedback
-                          </Text>
-                          <TextArea size={size} placeholder="Your feedback" />
-                        </Grid>
-                        <Button size={size}>Submit</Button>
-                      </Flex>
-                    ))}
-                  </Flex>
-                </DocsSection>
-              </Box>
+              <PlaygroundSection />
+
+              <DocsSection title="Mode testing">
+                <Grid columns="3" mx="-6">
+                  <PlaygroundModeTest title="Global mode" />
+
+                  <Grid
+                    columns="2"
+                    className="dark-theme"
+                    style={{
+                      gridColumn: '2 / span 2',
+                      backgroundColor: 'var(--background-color)',
+                    }}
+                  >
+                    <PlaygroundModeTest title="Always dark mode" />
+
+                    <Box
+                      className="light-theme"
+                      style={{
+                        backgroundColor: 'var(--background-color)',
+                      }}
+                    >
+                      <PlaygroundModeTest title="Always light mode" />
+                    </Box>
+                  </Grid>
+                </Grid>
+              </DocsSection>
             </main>
           </Provider>
         </div>
@@ -2952,5 +2942,56 @@ function CustomUserIcon() {
         clipRule="evenodd"
       />
     </svg>
+  );
+}
+
+function PlaygroundSection() {
+  return (
+    <DocsSection title="Playground">
+      <Text mb="5">
+        In this section, I am just throwing together some of the components to get a sense of how
+        harmonious they are.
+      </Text>
+      <Flex gap="9">
+        {textFieldSizes.map((size) => (
+          <PlaygroundForm key={size} size={size} />
+        ))}
+      </Flex>
+    </DocsSection>
+  );
+}
+
+function PlaygroundModeTest({ title = '' }) {
+  return (
+    <Box p="6">
+      <Heading mb="5">{title}</Heading>
+      <PlaygroundForm size="1" />
+    </Box>
+  );
+}
+
+function PlaygroundForm({ size }: { size?: TextFieldSize }) {
+  return (
+    <Flex direction="column" gap="3" style={{ width: (Number(size) + 1) * 100 }}>
+      <Grid gap="1">
+        <Text size={size} weight="bold">
+          Name
+        </Text>
+        <TextField size={size} placeholder="Your name" />
+      </Grid>
+      <Grid gap="1">
+        <Text size={size} weight="bold">
+          Email
+        </Text>
+        <TextField size={size} placeholder="Your email" />
+      </Grid>
+      <Grid gap="1">
+        <Text size={size} weight="bold">
+          Feedback
+        </Text>
+        <TextArea size={size} placeholder="Your feedback" />
+      </Grid>
+      <Button size={size}>Submit</Button>
+    </Flex>
   );
 }
