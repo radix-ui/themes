@@ -172,7 +172,7 @@ export default function Showcase() {
       data-background-feel="tinted"
       data-foreground-feel="tinted"
       data-radius="full"
-      data-scaling="regular"
+      data-scaling="100%"
       // className="dark-theme"
     >
       <body className="rui-reset-body">

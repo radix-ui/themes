@@ -13,7 +13,7 @@ type GrayScale = (typeof grayScaleValues)[number];
 const radiusValues = ['none', 'small', 'medium', 'large', 'full'] as const;
 type Radius = (typeof radiusValues)[number];
 
-const scalingValues = ['smaller', 'small', 'regular', 'large', 'larger'] as const;
+const scalingValues = ['90%', '95%', '100%', '105%', '110%'] as const;
 type Scaling = (typeof scalingValues)[number];
 
 export { groupedColors, colorFeelValues, grayScaleValues, radiusValues, scalingValues };

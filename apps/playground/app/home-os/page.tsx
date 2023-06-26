@@ -37,7 +37,7 @@ export default function HomeOS() {
       data-background-feel="natural"
       data-foreground-feel="natural"
       data-radius="large"
-      data-scaling="regular"
+      data-scaling="100%"
     >
       <body className="rui-reset-body">
         <div id="root">

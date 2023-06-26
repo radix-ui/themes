@@ -41,7 +41,7 @@ export default function Snapshot() {
       data-background-feel="tinted"
       data-foreground-feel="neutral"
       data-radius="small"
-      data-scaling="larger"
+      data-scaling="110%"
       className="dark-theme"
     >
       <body className="rui-reset-body">

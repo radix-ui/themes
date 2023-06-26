@@ -28,7 +28,7 @@ const DEFAULT_BACKGROUND_FEEL: ColorFeel = 'natural';
 const DEFAULT_FOREGROUND_FEEL: ColorFeel = 'natural';
 const DEFAULT_DARK_MODE: boolean = false;
 const DEFAULT_RADIUS: Radius = 'medium';
-const DEFAULT_SCALING: Scaling = 'regular';
+const DEFAULT_SCALING: Scaling = '100%';
 
 interface ControlPanelProps {
   defaultVisible?: boolean;
@@ -359,7 +359,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
       </Flex>
 
       <Flex direction="column" gap="1">
-        <Label htmlFor="scaling">Size</Label>
+        <Label htmlFor="scaling">Scaling</Label>
         <Select.Root
           id="scaling"
           value={scaling}

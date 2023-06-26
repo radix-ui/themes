@@ -32,7 +32,7 @@ export default function Demo() {
       data-background-feel="natural"
       data-foreground-feel="tinted"
       data-radius="large"
-      data-scaling="larger"
+      data-scaling="110%"
     >
       <body className={`rui-reset-body ${styles.body}`}>
         <div id="root">
