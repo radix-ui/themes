@@ -56,11 +56,11 @@ function getNaturallyPairedGrayScale(color: ColorScale): DesaturatedGrayScale {
     case 'bronze':
       return 'sand';
   }
-  throw new Error(`Unexpected color: ${color}`);
 }
 
 const allColorsAndGray = [...allColorScales, 'gray'] as const;
 type ColorOrGray = (typeof allColorsAndGray)[number];
+type Color = ColorScale;
 
 export {
   //
@@ -76,4 +76,4 @@ export {
   allColorsAndGray,
   getNaturallyPairedGrayScale,
 };
-export type { ColorScale, GrayScale, ColorOrGray };
+export type { ColorScale, GrayScale, ColorOrGray, Color };
