@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMargin } from '../helpers';
+import { extractMarginProps, withMarginProps } from '../helpers';
 import { defaultKbdWidth } from './kbd.props';
 
 import type { MarginProps } from '../helpers';
@@ -17,7 +17,7 @@ const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
     <kbd
       {...kbdProps}
       ref={forwardedRef}
-      className={classNames('rui-Kbd', `width-${width}`, withMargin(marginProps), className)}
+      className={classNames('rui-Kbd', `width-${width}`, withMarginProps(marginProps), className)}
     />
   );
 });

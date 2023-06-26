@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withBreakpoints, withMargin } from '../helpers';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 import { defaultSectionSize } from './section.props';
 
 import type { MarginProps, Responsive } from '../helpers';
@@ -21,7 +21,7 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
         className,
         'rui-Section',
         withBreakpoints(size, 'size'),
-        withMargin(marginProps)
+        withMarginProps(marginProps)
       )}
     />
   );

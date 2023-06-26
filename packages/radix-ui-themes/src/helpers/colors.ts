@@ -15,18 +15,25 @@ const regularColorScales = [
   'brown',
   'orange',
 ] as const;
+type RegularColorScale = (typeof regularColorScales)[number];
 const brightColorScales = ['sky', 'mint', 'lime', 'yellow', 'amber'] as const;
+type BrightColorScale = (typeof brightColorScales)[number];
 const metalColorScales = ['gold', 'bronze'] as const;
+type MetalColorScale = (typeof metalColorScales)[number];
 const allColorScales = [...regularColorScales, ...brightColorScales, ...metalColorScales] as const;
 type ColorScale = (typeof allColorScales)[number];
 
 const pureGrayScale = 'gray' as const;
+type PureGrayScale = typeof pureGrayScale;
 const desaturatedGrayScales = ['mauve', 'slate', 'sage', 'olive', 'sand'] as const;
 type DesaturatedGrayScale = (typeof desaturatedGrayScales)[number];
 const allGrayScales = [pureGrayScale, ...desaturatedGrayScales] as const;
 type GrayScale = (typeof allGrayScales)[number];
 
-function getNaturallyPairedGrayScale(color: ColorScale): DesaturatedGrayScale {
+const allColors = [...allColorScales, 'gray'] as const;
+type Color = (typeof allColors)[number];
+
+function getNaturallyPairedGrayScale(color: Color): GrayScale {
   switch (color) {
     case 'tomato':
     case 'red':
@@ -55,15 +62,12 @@ function getNaturallyPairedGrayScale(color: ColorScale): DesaturatedGrayScale {
     case 'gold':
     case 'bronze':
       return 'sand';
+    case 'gray':
+      return 'gray';
   }
 }
 
-const allColorsAndGray = [...allColorScales, 'gray'] as const;
-type ColorOrGray = (typeof allColorsAndGray)[number];
-type Color = ColorScale;
-
 export {
-  //
   regularColorScales,
   brightColorScales,
   metalColorScales,
@@ -73,7 +77,19 @@ export {
   desaturatedGrayScales,
   allGrayScales,
   //
-  allColorsAndGray,
+  allColors,
+  //
   getNaturallyPairedGrayScale,
 };
-export type { ColorScale, GrayScale, ColorOrGray, Color };
+export type {
+  RegularColorScale,
+  BrightColorScale,
+  MetalColorScale,
+  ColorScale,
+  //
+  PureGrayScale,
+  DesaturatedGrayScale,
+  GrayScale,
+  //
+  Color,
+};

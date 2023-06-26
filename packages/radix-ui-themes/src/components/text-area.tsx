@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultTextAreaSize,
   defaultTextAreaVariant,
@@ -36,7 +36,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
         'rui-TextArea',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
     />

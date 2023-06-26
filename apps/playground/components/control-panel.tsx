@@ -16,8 +16,8 @@ import {
   Strong,
   Text,
   // helpers
-  groupedColorScales,
-  groupedGrayScales,
+  groupedColors,
+  groupedGrays,
   getNaturallyPairedGrayScale,
   backgroundColorValues,
   textColorValues,
@@ -217,12 +217,12 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
           menuVariant="subtle-mono"
           style={{ minWidth: 120 }}
         >
-          {groupedColorScales.map(({ label, scales }, index) => (
+          {groupedColors.map(({ label, values }, index) => (
             <React.Fragment key={label}>
               {index > 0 ? <Select.Separator /> : null}
               <Select.Group>
-                <Select.Label>{label}</Select.Label>
-                {scales.map((color) => (
+                {label ? <Select.Label>{label}</Select.Label> : null}
+                {values.map((color) => (
                   <Select.Item key={color} value={color}>
                     <Flex align="center" gap="2">
                       <span
@@ -235,7 +235,14 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                           backgroundColor: 'var(--accent-9)',
                         }}
                       />
-                      {upperFirst(color)}
+                      <Flex align="baseline" gap="1">
+                        {color}
+                        {color === 'gray' && !['auto', 'gray'].includes(grayScale) ? (
+                          <Text size="2" color="gray" asChild>
+                            <Em> ({grayScale})</Em>
+                          </Text>
+                        ) : null}
+                      </Flex>
                     </Flex>
                   </Select.Item>
                 ))}
@@ -254,12 +261,12 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
           menuVariant="subtle-mono"
           style={{ minWidth: 120 }}
         >
-          {groupedGrayScales.map(({ label, scales }, index) => (
+          {groupedGrays.map(({ label, values }, index) => (
             <React.Fragment key={label}>
               {index > 0 ? <Select.Separator /> : null}
               <Select.Group>
                 <Select.Label>{label}</Select.Label>
-                {scales.map((gray) => (
+                {values.map((gray) => (
                   <Select.Item key={gray} value={gray}>
                     <Flex align="center" gap="2">
                       <span
@@ -277,10 +284,10 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                         }}
                       />
                       <Flex align="baseline" gap="1">
-                        {upperFirst(gray)}
+                        {gray}
                         {gray === 'auto' ? (
                           <Text size="2" color="gray" asChild>
-                            <Em> ({upperFirst(naturalGray)})</Em>
+                            <Em> ({naturalGray})</Em>
                           </Text>
                         ) : null}
                       </Flex>
@@ -322,7 +329,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                         Chosing this option will set the background to <Strong>White</Strong> in
                         light mode and <Strong>Gray 1</Strong>
                         <Text size="2" color="gray" asChild>
-                          <Em> ({upperFirst(resolvedGrayScale)} 1)</Em>
+                          <Em> ({resolvedGrayScale} 1)</Em>
                         </Text>{' '}
                         in dark mode.
                       </DescriptionList.Details>
@@ -332,7 +339,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                       <DescriptionList.Details mb="0">
                         Chosing this option will set the background to <Strong>Gray 1</Strong>
                         <Text size="2" color="gray" asChild>
-                          <Em> ({upperFirst(resolvedGrayScale)} 1)</Em>
+                          <Em> ({resolvedGrayScale} 1)</Em>
                         </Text>{' '}
                         for both light and dark modes.
                       </DescriptionList.Details>
@@ -351,7 +358,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                 <Text key={value} size="2" asChild>
                   <label>
                     <RadioGroup.Item value={value} mr="2" />
-                    {upperFirst(value)}
+                    {value}
                   </label>
                 </Text>
               ))}
@@ -386,7 +393,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                       <DescriptionList.Details>
                         Chosing this option will set the text to <Strong>Gray 12</Strong>
                         <Text size="2" color="gray" asChild>
-                          <Em> ({upperFirst(resolvedGrayScale)} 12)</Em>
+                          <Em> ({resolvedGrayScale} 12)</Em>
                         </Text>{' '}
                         for both light and dark modes.
                       </DescriptionList.Details>
@@ -396,7 +403,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                       <DescriptionList.Details mb="0">
                         Chosing this option will set the background to <Strong>Accent 12</Strong>
                         <Text size="2" color="gray" asChild>
-                          <Em> ({upperFirst(accentScale)} 12)</Em>
+                          <Em> ({accentScale} 12)</Em>
                         </Text>{' '}
                         for both light and dark modes.
                       </DescriptionList.Details>
@@ -415,7 +422,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                 <Text key={value} size="2" asChild>
                   <label>
                     <RadioGroup.Item value={value} mr="2" />
-                    {upperFirst(value)}
+                    {value}
                   </label>
                 </Text>
               ))}
@@ -454,7 +461,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         >
           {radiusValues.map((value) => (
             <Select.Item key={value} value={value}>
-              {upperFirst(value)}
+              {value}
             </Select.Item>
           ))}
         </Select.Root>
@@ -470,7 +477,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         >
           {scalingValues.map((value) => (
             <Select.Item key={value} value={value}>
-              {upperFirst(value)}
+              {value}
             </Select.Item>
           ))}
         </Select.Root>
@@ -478,10 +485,6 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
     </Box>
   );
 };
-
-function upperFirst(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 function Label(props: any) {
   return (

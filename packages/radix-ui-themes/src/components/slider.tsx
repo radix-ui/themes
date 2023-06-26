@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultSliderSize,
   defaultSliderVariant,
@@ -43,7 +43,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
         'rui-SliderRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
     >

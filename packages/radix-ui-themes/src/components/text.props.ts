@@ -1,4 +1,4 @@
-import type { ColorOrGray } from '../helpers';
+import type { Color } from '../helpers';
 
 const textSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type TextSize = (typeof textSizes)[number];
@@ -16,7 +16,7 @@ const textTrimValues = ['normal', 'start', 'end', 'both'] as const;
 type TextTrim = (typeof textTrimValues)[number];
 const defaultTextTrim: TextTrim | undefined = undefined;
 
-const defaultTextColor: ColorOrGray | undefined = undefined;
+const defaultTextColor: Color | undefined = undefined;
 
 export {
   textSizes,

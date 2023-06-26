@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultSeparatorSize, defaultSeparatorColor } from './separator.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
@@ -32,7 +32,7 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
       className={classNames(
         'rui-Separator',
         withBreakpoints(size, 'size'),
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
     />

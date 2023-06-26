@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { Slot } from './slot';
 import {
   extractMarginProps,
-  withMargin,
+  withMarginProps,
   extractPaddingProps,
-  withPadding,
+  withPaddingProps,
   extractLayoutProps,
-  withLayout,
+  withLayoutProps,
   withBreakpoints,
 } from '../helpers';
 import {
@@ -65,9 +65,9 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rui-Flex',
-        withLayout(layoutProps),
-        withMargin(marginProps),
-        withPadding(paddingProps),
+        withLayoutProps(layoutProps),
+        withMarginProps(marginProps),
+        withPaddingProps(paddingProps),
         withBreakpoints(display, 'rui-display'),
         withBreakpoints(direction, 'rui-fd'),
         withBreakpoints(align, 'rui-ai'),

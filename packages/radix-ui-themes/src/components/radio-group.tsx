@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultRadioGroupSize,
   defaultRadioGroupVariant,
@@ -40,7 +40,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
           'rui-RadioGroupRoot',
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
-          withMargin(marginProps),
+          withMarginProps(marginProps),
           className
         )}
       />
@@ -59,7 +59,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
     const { className, style, ...itemProps } = marginRest;
     return (
       <span
-        className={classNames('rui-RadioGroupItem', withMargin(marginProps), className)}
+        className={classNames('rui-RadioGroupItem', withMarginProps(marginProps), className)}
         style={style}
       >
         <RadioGroupPrimitive.Item

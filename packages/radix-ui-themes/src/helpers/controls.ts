@@ -4,20 +4,21 @@ import {
   metalColorScales,
   pureGrayScale,
   desaturatedGrayScales,
-} from './color-scales';
-import type { ColorScale, GrayScale } from './color-scales';
+} from './colors';
+import type { Color, GrayScale } from './colors';
 
-const groupedColorScales = [
-  { label: 'Regulars', scales: [...regularColorScales] as ColorScale[] },
-  { label: 'Brights', scales: [...brightColorScales] as ColorScale[] },
-  { label: 'Metals', scales: [...metalColorScales] as ColorScale[] },
+const groupedColors = [
+  { label: 'Regulars', values: [...regularColorScales] as Color[] },
+  { label: 'Brights', values: [...brightColorScales] as Color[] },
+  { label: 'Metals', values: [...metalColorScales] as Color[] },
+  { label: 'Gray', values: ['gray'] as Color[] },
 ];
 
 type GrayScaleControl = GrayScale | 'auto';
 
-const groupedGrayScales = [
-  { label: 'Pure', scales: [pureGrayScale] as GrayScaleControl[] },
-  { label: 'Desaturated', scales: ['auto', ...desaturatedGrayScales] as GrayScaleControl[] },
+const groupedGrays = [
+  { label: 'Pure', values: [pureGrayScale] as GrayScaleControl[] },
+  { label: 'Desaturated', values: ['auto', ...desaturatedGrayScales] as GrayScaleControl[] },
 ];
 
 const backgroundColorValues = ['auto', 'gray'] as const;
@@ -33,8 +34,8 @@ const scalingValues = ['90%', '95%', '100%', '105%', '110%'] as const;
 type Scaling = (typeof scalingValues)[number];
 
 export {
-  groupedColorScales,
-  groupedGrayScales,
+  groupedColors,
+  groupedGrays,
   textColorValues,
   backgroundColorValues,
   radiusValues,

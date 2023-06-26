@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultBaseButtonSize,
   defaultBaseButtonVariant,
@@ -41,7 +41,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
         'rui-BaseButton',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
     />

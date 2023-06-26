@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withBreakpoints, withMargin } from '../helpers';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 import { defaultContainerSize } from './container.props';
 
 import type { MarginProps, Responsive } from '../helpers';
@@ -21,7 +21,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
         className,
         'rui-Container',
         withBreakpoints(size, 'size'),
-        withMargin(marginProps)
+        withMarginProps(marginProps)
       )}
     />
   );

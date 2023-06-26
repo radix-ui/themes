@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { Slot } from './slot';
 import {
   extractMarginProps,
-  withMargin,
+  withMarginProps,
   extractPaddingProps,
-  withPadding,
+  withPaddingProps,
   extractLayoutProps,
-  withLayout,
+  withLayoutProps,
   withBreakpoints,
 } from '../helpers';
 import type { BoxDisplay } from './box.props';
@@ -35,9 +35,9 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rui-Box',
-        withLayout(layoutProps),
-        withMargin(marginProps),
-        withPadding(paddingProps),
+        withLayoutProps(layoutProps),
+        withMarginProps(marginProps),
+        withPaddingProps(paddingProps),
         withBreakpoints(display, 'rui-display'),
         className
       )}

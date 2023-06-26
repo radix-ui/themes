@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultLinkSize,
   defaultLinkVariant,
@@ -9,7 +9,7 @@ import {
   defaultLinkColor,
 } from './link.props';
 
-import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
+import type { MarginProps, Color, Responsive } from '../helpers';
 import type { LinkSize, LinkVariant, LinkWeight } from './link.props';
 
 type LinkElement = React.ElementRef<'a'>;
@@ -18,7 +18,7 @@ interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, 
   size?: Responsive<LinkSize>;
   variant?: LinkVariant;
   weight?: Responsive<LinkWeight>;
-  color?: ColorOrGray;
+  color?: Color;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -45,7 +45,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         withBreakpoints(weight, 'weight'),
-        withMargin(marginProps)
+        withMarginProps(marginProps)
       )}
     />
   );

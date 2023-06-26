@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Text } from './text';
-import { extractMarginProps, withMargin } from '../helpers';
+import { extractMarginProps, withMarginProps } from '../helpers';
 
 import type { MarginProps } from '../helpers';
 
@@ -15,7 +15,7 @@ const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, 
       <blockquote
         {...blockquoteProps}
         ref={forwardedRef}
-        className={classNames('rui-Blockquote', withMargin(marginProps), className)}
+        className={classNames('rui-Blockquote', withMarginProps(marginProps), className)}
       />
     </Text>
   );

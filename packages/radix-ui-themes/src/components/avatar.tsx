@@ -3,8 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { PersonIcon } from '@radix-ui/react-icons';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultAvatarSize,
   defaultAvatarVariant,
@@ -45,7 +44,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       className={classNames(
         'rui-AvatarRoot',
         `variant-${variant}`,
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         withBreakpoints(size, 'size'),
         className
       )}

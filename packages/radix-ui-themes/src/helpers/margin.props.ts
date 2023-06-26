@@ -40,7 +40,7 @@ function extractMarginProps<T extends MarginProps>(props: T) {
   return { m, mx, my, mt, mr, mb, ml, rest };
 }
 
-function withMargin(props: MarginProps) {
+function withMarginProps(props: MarginProps) {
   return [
     withBreakpoints(props.m, 'rui-m'),
     withBreakpoints(props.mx, 'rui-mx'),
@@ -54,5 +54,5 @@ function withMargin(props: MarginProps) {
     .join(' ');
 }
 
-export { marginValues, extractMarginProps, withMargin };
+export { marginValues, extractMarginProps, withMarginProps };
 export type { Margin, MarginProps };

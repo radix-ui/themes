@@ -163,7 +163,7 @@ import {
   Tooltip,
   //
   // helpers:
-  groupedColorScales,
+  groupedColors,
   radiusValues,
 } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';
@@ -598,7 +598,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -613,7 +613,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {selectTriggerColorVariants.map((variant) => (
@@ -768,7 +768,7 @@ export default function Sink() {
                       <span>See colors</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -783,7 +783,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {switchColorVariants.map((variant) => (
@@ -926,7 +926,7 @@ export default function Sink() {
                       <span>See colors</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -941,7 +941,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {sliderColorVariants.map((variant) => (
@@ -1090,7 +1090,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1105,7 +1105,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {checkboxColorVariants.map((variant) => (
@@ -1229,7 +1229,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1244,7 +1244,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {radioGroupColorVariants.map((variant) => (
@@ -1355,7 +1355,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1370,7 +1370,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {buttonColorVariants.map((variant) => (
@@ -1476,7 +1476,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1491,7 +1491,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {iconButtonColorVariants.map((variant) => (
@@ -1719,7 +1719,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1734,7 +1734,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {badgeVariants.map((variant) => (
@@ -1871,7 +1871,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -1886,7 +1886,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {avatarColorVariants.map((variant) => (
@@ -2279,7 +2279,7 @@ export default function Sink() {
                       <span>See colors & variants combinations</span>
                     </Text>
                   </summary>
-                  {groupedColorScales.map(({ label, scales }) => (
+                  {groupedColors.map(({ label, values }) => (
                     <React.Fragment key={label}>
                       <Text weight="bold" mt="6" mb="4">
                         {label}
@@ -2294,7 +2294,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {scales.map((color) => (
+                          {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {codeColorVariants.map((variant) => (

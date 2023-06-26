@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultTextSize,
   defaultTextWeight,
@@ -10,7 +10,7 @@ import {
   defaultTextColor,
 } from './text.props';
 
-import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
+import type { MarginProps, Color, Responsive } from '../helpers';
 import type { TextSize, TextWeight, TextAlign, TextTrim } from './text.props';
 
 type TextElement = React.ElementRef<'p'>;
@@ -20,7 +20,7 @@ interface TextProps extends Omit<React.ComponentPropsWithoutRef<'p'>, 'color'>, 
   weight?: Responsive<TextWeight>;
   align?: Responsive<TextAlign>;
   trim?: Responsive<TextTrim>;
-  color?: ColorOrGray | 'color';
+  color?: Color | 'color';
 }
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -44,7 +44,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
         'rui-Text',
         withBreakpoints(size, 'size'),
         withBreakpoints(weight, 'weight'),
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),
         className

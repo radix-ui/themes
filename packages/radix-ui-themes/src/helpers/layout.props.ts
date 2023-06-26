@@ -51,7 +51,7 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
   return { position, width, height, inset, top, bottom, left, right, shrink, grow, rest };
 }
 
-function withLayout(props: LayoutProps) {
+function withLayoutProps(props: LayoutProps) {
   return [
     withBreakpoints(props.position, 'rui-position'),
     withBreakpoints(props.shrink, 'rui-fs'),
@@ -75,6 +75,6 @@ export {
   flexShrinkValues,
   flexGrowValues,
   extractLayoutProps,
-  withLayout,
+  withLayoutProps,
 };
 export type { Position, PositionEdge, Width, Height, FlexShrink, FlexGrow, LayoutProps };

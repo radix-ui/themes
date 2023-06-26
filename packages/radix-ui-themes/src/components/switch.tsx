@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultSwitchSize,
   defaultSwitchVariant,
@@ -40,7 +40,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
         'rui-SwitchRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
       style={style}

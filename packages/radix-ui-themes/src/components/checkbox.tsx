@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultCheckboxSize,
   defaultCheckboxVariant,
@@ -41,7 +41,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
       className={classNames(
         'rui-CheckboxRoot',
         withBreakpoints(size, 'size'),
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
       style={style}

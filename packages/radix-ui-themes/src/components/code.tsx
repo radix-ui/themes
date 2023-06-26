@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultCodeSize,
   defaultCodeVariant,
@@ -38,7 +38,7 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         withBreakpoints(weight, 'weight'),
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
     />

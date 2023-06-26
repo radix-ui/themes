@@ -20,7 +20,7 @@ function extractPaddingProps<T extends PaddingProps>(props: T) {
   return { p, px, py, pt, pr, pb, pl, rest };
 }
 
-function withPadding(props: PaddingProps) {
+function withPaddingProps(props: PaddingProps) {
   return [
     withBreakpoints(props.p, 'rui-p'),
     withBreakpoints(props.px, 'rui-px'),
@@ -34,5 +34,5 @@ function withPadding(props: PaddingProps) {
     .join(' ');
 }
 
-export { paddingValues, extractPaddingProps, withPadding };
+export { paddingValues, extractPaddingProps, withPaddingProps };
 export type { Padding, PaddingProps };

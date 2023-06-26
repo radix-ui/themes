@@ -1,16 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultBadgeSize, defaultBadgeVariant, defaultBadgeColor } from './badge.props';
 
-import type { MarginProps, ColorOrGray, Responsive } from '../helpers';
+import type { MarginProps, Color, Responsive } from '../helpers';
 import type { BadgeSize, BadgeVariant } from './badge.props';
 
 type BadgeElement = React.ElementRef<'span'>;
 interface BadgeProps extends Omit<React.ComponentPropsWithoutRef<'span'>, 'color'>, MarginProps {
   size?: Responsive<BadgeSize>;
   variant?: BadgeVariant;
-  color?: ColorOrGray;
+  color?: Color;
 }
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -30,7 +30,7 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
         'rui-Badge',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMargin(marginProps),
+        withMarginProps(marginProps),
         className
       )}
     />

@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { Slot } from './slot';
 import {
   extractMarginProps,
-  withMargin,
+  withMarginProps,
   extractPaddingProps,
-  withPadding,
+  withPaddingProps,
   extractLayoutProps,
-  withLayout,
+  withLayoutProps,
   withBreakpoints,
 } from '../helpers';
 import {
@@ -71,9 +71,9 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rui-Grid',
-        withLayout(layoutProps),
-        withMargin(marginProps),
-        withPadding(paddingProps),
+        withLayoutProps(layoutProps),
+        withMarginProps(marginProps),
+        withPaddingProps(paddingProps),
         withBreakpoints(display, 'rui-display'),
         withBreakpoints(columns, 'rui-gtc'),
         withBreakpoints(flow, 'rui-gaf'),

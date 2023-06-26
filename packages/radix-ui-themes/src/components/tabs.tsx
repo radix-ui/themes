@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultTabsListSize } from './tabs.props';
 
 import type { MarginProps, Responsive } from '../helpers';
@@ -20,7 +20,7 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
     <TabsPrimitive.Root
       {...rootProps}
       ref={forwardedRef}
-      className={classNames('rui-TabsRoot', withMargin(marginProps), className)}
+      className={classNames('rui-TabsRoot', withMarginProps(marginProps), className)}
     />
   );
 });

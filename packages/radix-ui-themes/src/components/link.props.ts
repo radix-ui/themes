@@ -1,4 +1,4 @@
-import type { ColorOrGray } from '../helpers';
+import type { Color } from '../helpers';
 
 const linkSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type LinkSize = (typeof linkSizes)[number];
@@ -16,7 +16,7 @@ const linkGap = ['0', '1', '2'] as const;
 type LinkGap = (typeof linkGap)[number];
 const defaultLinkGap: LinkGap | undefined = undefined;
 
-const defaultLinkColor: ColorOrGray | undefined = undefined;
+const defaultLinkColor: Color | undefined = undefined;
 
 export {
   linkSizes,

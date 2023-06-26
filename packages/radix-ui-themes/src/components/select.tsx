@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import classNames from 'classnames';
 import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
-import { extractMarginProps, withMargin, withBreakpoints } from '../helpers';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultSelectSize,
   defaultSelectTriggerVariant,
@@ -58,7 +58,7 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
             'rui-SelectTrigger',
             withBreakpoints(size, 'size'),
             `variant-${triggerVariant}`,
-            withMargin(marginProps),
+            withMarginProps(marginProps),
             className
           )}
           style={style}
