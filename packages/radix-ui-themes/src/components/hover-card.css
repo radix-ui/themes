@@ -1,10 +1,9 @@
 .rui-HoverCardTrigger.rui-Link {
-  border-radius: var(--br-1-raw);
   background-color: var(--accent-3);
 }
 
 .rui-HoverCardContent {
-  border-radius: var(--br-3);
+  border-radius: min(var(--br-3), var(--panel-max-br));
   background-color: var(--color-panel);
   padding: var(--space-3);
   box-shadow: var(--shadow-2), inset 0 0 0 0.4px var(--mono-a6);

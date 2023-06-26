@@ -267,7 +267,7 @@ export default function Showcase() {
                                 border: `1px solid var(${
                                   avatarNameColor === undefined ? '--mono-a6' : '--accent-6'
                                 })`,
-                                borderRadius: 'var(--br-3)',
+                                borderRadius: 'min(var(--br-3), var(--panel-max-br))',
                               }}
                               data-transition
                             >
@@ -575,7 +575,7 @@ export default function Showcase() {
                               border: `1px solid var(${
                                 avatarNameColor === undefined ? '--mono-a5' : '--accent-5'
                               })`,
-                              borderRadius: 'var(--br-3)',
+                              borderRadius: 'min(var(--br-3), var(--panel-max-br))',
                               width: FILTERS_PANEL_WIDTH,
                             }}
                           >
@@ -749,80 +749,6 @@ export default function Showcase() {
         </div>
       </body>
     </html>
-  );
-}
-
-function FakeBrowser({ children }: { children: React.ReactNode }) {
-  return (
-    <Flex
-      direction="column"
-      style={{
-        borderRadius: 'var(--br-5-raw)',
-        overflow: 'hidden',
-        border: '1px solid var(--mono-6)',
-        boxShadow: 'var(--shadow-3)',
-      }}
-    >
-      <Flex
-        align="center"
-        height="8"
-        p="3"
-        style={{
-          position: 'relative',
-          borderBottom: '1px solid var(--mono-6)',
-          backgroundColor: 'var(--mono-a1)',
-        }}
-      >
-        <Flex gap="2" style={{ ['--size' as any]: '14px' }}>
-          <div
-            style={{
-              width: 'var(--size)',
-              height: 'var(--size)',
-              borderRadius: '100%',
-              backgroundColor: 'var(--red9)',
-            }}
-          />
-          <div
-            style={{
-              width: 'var(--size)',
-              height: 'var(--size)',
-              borderRadius: '100%',
-              backgroundColor: 'var(--yellow9)',
-            }}
-          />
-          <div
-            style={{
-              width: 'var(--size)',
-              height: 'var(--size)',
-              borderRadius: '100%',
-              backgroundColor: 'var(--green9)',
-            }}
-          />
-        </Flex>
-        <Flex
-          align="center"
-          justify="between"
-          height="6"
-          px="3"
-          gap="2"
-          style={{
-            border: '1px solid var(--mono-6)',
-            borderRadius: 'var(--br-2-raw)',
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            minWidth: 240,
-            backgroundColor: 'var(--mono-a1)',
-          }}
-        >
-          <Text size="2" color="gray">
-            http://localhost:3000
-          </Text>
-          <ReloadIcon />
-        </Flex>
-      </Flex>
-      <Box>{children}</Box>
-    </Flex>
   );
 }
 

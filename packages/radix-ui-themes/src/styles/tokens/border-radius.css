@@ -6,18 +6,20 @@
   --br-5-raw: calc(12px * var(--scaling, 1));
   --br-6-raw: calc(16px * var(--scaling, 1));
 
+  --panel-max-br: var(--br-5-raw);
+
   /* default: medium */
   --radius-factor: 1;
 }
 
 :root,
 [data-radius] {
-  --br-1: min(calc(var(--radius-factor) * var(--br-1-raw)), calc(var(--space-7) / 2));
-  --br-2: min(calc(var(--radius-factor) * var(--br-2-raw)), calc(var(--space-7) / 2));
-  --br-3: min(calc(var(--radius-factor) * var(--br-3-raw)), calc(var(--space-7) / 2));
-  --br-4: min(calc(var(--radius-factor) * var(--br-4-raw)), calc(var(--space-7) / 2));
-  --br-5: min(calc(var(--radius-factor) * var(--br-5-raw)), calc(var(--space-7) / 2));
-  --br-6: min(calc(var(--radius-factor) * var(--br-6-raw)), calc(var(--space-7) / 2));
+  --br-1: calc(var(--br-1-raw) * var(--radius-factor, 1));
+  --br-2: calc(var(--br-2-raw) * var(--radius-factor, 1));
+  --br-3: calc(var(--br-3-raw) * var(--radius-factor, 1));
+  --br-4: calc(var(--br-4-raw) * var(--radius-factor, 1));
+  --br-5: calc(var(--br-5-raw) * var(--radius-factor, 1));
+  --br-6: calc(var(--br-6-raw) * var(--radius-factor, 1));
 }
 [data-radius='none'] {
   --radius-factor: 0;
