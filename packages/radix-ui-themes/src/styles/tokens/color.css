@@ -130,6 +130,8 @@
 :root, /* default: indigo */
 [data-accent-scale='indigo'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--indigo-1);
@@ -149,6 +151,8 @@
 }
 [data-accent-scale='tomato'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--tomato-1);
@@ -168,6 +172,8 @@
 }
 [data-accent-scale='red'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--red-1);
@@ -187,6 +193,8 @@
 }
 [data-accent-scale='crimson'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--crimson-1);
@@ -206,6 +214,8 @@
 }
 [data-accent-scale='pink'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--pink-1);
@@ -225,6 +235,8 @@
 }
 [data-accent-scale='plum'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--plum-1);
@@ -244,6 +256,8 @@
 }
 [data-accent-scale='purple'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--purple-1);
@@ -263,6 +277,8 @@
 }
 [data-accent-scale='violet'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--violet-1);
@@ -282,6 +298,8 @@
 }
 [data-accent-scale='blue'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--blue-1);
@@ -301,6 +319,8 @@
 }
 [data-accent-scale='cyan'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--cyan-1);
@@ -320,6 +340,8 @@
 }
 [data-accent-scale='teal'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--teal-1);
@@ -339,6 +361,8 @@
 }
 [data-accent-scale='green'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--green-1);
@@ -358,6 +382,8 @@
 }
 [data-accent-scale='grass'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--grass-1);
@@ -377,6 +403,8 @@
 }
 [data-accent-scale='orange'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--orange-1);
@@ -396,6 +424,8 @@
 }
 [data-accent-scale='brown'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--brown-1);
@@ -415,6 +445,8 @@
 }
 [data-accent-scale='sky'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--sky-1);
@@ -434,6 +466,8 @@
 }
 [data-accent-scale='mint'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--mint-1);
@@ -453,6 +487,8 @@
 }
 [data-accent-scale='lime'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--lime-1);
@@ -472,6 +508,8 @@
 }
 [data-accent-scale='yellow'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--yellow-1);
@@ -491,6 +529,8 @@
 }
 [data-accent-scale='amber'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--amber-1);
@@ -510,6 +550,8 @@
 }
 [data-accent-scale='gold'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--gold-1);
@@ -529,6 +571,8 @@
 }
 [data-accent-scale='bronze'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--bronze-1);
@@ -550,6 +594,8 @@
 /* natural grays */
 :root /* default: slate (because default color is indigo) */ {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --natural-gray-1: var(--slate-1);
@@ -587,6 +633,8 @@
 [data-accent-scale='purple'],
 [data-accent-scale='violet'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --natural-gray-1: var(--mauve-1);
@@ -621,6 +669,8 @@
 [data-accent-scale='sky'],
 [data-accent-scale='cyan'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --natural-gray-1: var(--slate-1);
@@ -654,6 +704,8 @@
 [data-accent-scale='mint'],
 [data-accent-scale='green'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --natural-gray-1: var(--sage-1);
@@ -686,6 +738,8 @@
 [data-accent-scale='grass'],
 [data-accent-scale='lime'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --natural-gray-1: var(--olive-1);
@@ -722,6 +776,8 @@
 [data-accent-scale='gold'],
 [data-accent-scale='bronze'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --natural-gray-1: var(--sand-1);
@@ -756,6 +812,8 @@
 :root:where(:not([data-gray-scale="gray"])), /* default: auto */
 [data-gray-scale='auto'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --gray-1: var(--natural-gray-1);
@@ -787,7 +845,9 @@
 }
 /* [data-gray-scale='gray'] {
   &,
+	&.light-theme,
   & .light-theme,
+	&.dark-theme,
   & .dark-theme {
     --gray-1: var(--gray-1);
     --gray-2: var(--gray-2);
@@ -818,6 +878,8 @@
 } */
 [data-gray-scale='mauve'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --gray-1: var(--mauve-1);
@@ -849,6 +911,8 @@
 }
 [data-gray-scale='slate'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --gray-1: var(--slate-1);
@@ -880,6 +944,8 @@
 }
 [data-gray-scale='sage'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --gray-1: var(--sage-1);
@@ -911,6 +977,8 @@
 }
 [data-gray-scale='olive'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --gray-1: var(--olive-1);
@@ -942,6 +1010,8 @@
 }
 [data-gray-scale='sand'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --gray-1: var(--sand-1);
@@ -975,6 +1045,8 @@
 /* gray accent scale */
 [data-accent-scale='gray'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --accent-1: var(--gray-1);
@@ -1016,6 +1088,8 @@
 :root, /* default: auto */
 [data-background-color='auto'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     background-color: var(--background-color);
@@ -1023,6 +1097,8 @@
 }
 [data-background-color='gray'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --background-color: var(--gray-1);
@@ -1034,6 +1110,8 @@
 :root, /* default: auto */
 [data-text-color='auto'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --text-color: var(--gray-12);
@@ -1042,6 +1120,8 @@
 }
 [data-text-color='accent'] {
   &,
+  &.light-theme,
+  &.dark-theme,
   & .light-theme,
   & .dark-theme {
     --text-color: var(--accent-12);

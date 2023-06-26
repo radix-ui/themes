@@ -9,6 +9,7 @@ import {
 import NextLink from 'next/link';
 import {
   Provider,
+  ThemeConfig,
   //
   AlertDialogRoot,
   AlertDialogTrigger,
@@ -211,27 +212,24 @@ const switchColorVariants = switchVariants.filter((variant) => !variant.endsWith
 
 export default function Sink() {
   return (
-    <html
-      lang="en"
-      className={styles.root}
-      // className="dark-theme"
-    >
-      <body className="rui-reset-body">
-        <div id="root">
-          <Provider
-          // dir="rtl"
-          >
-            {/* <HideCursor /> */}
-            <ControlPanel />
-
-            <header
-              style={{
-                backgroundColor: 'var(--black-a2)',
-                boxShadow: '0 0 0 0.5px var(--gray-a6)',
-              }}
+    <ThemeConfig asChild>
+      <html lang="en" className={styles.root}>
+        <body>
+          <div id="root">
+            <Provider
+            // dir="rtl"
             >
-              <Container>
-                {/* <nav>
+              {/* <HideCursor /> */}
+              <ControlPanel />
+
+              <header
+                style={{
+                  backgroundColor: 'var(--black-a2)',
+                  boxShadow: '0 0 0 0.5px var(--gray-a6)',
+                }}
+              >
+                <Container>
+                  {/* <nav>
                   <Flex p="6" gap="5" align="center">
                     <Link asChild variant="high-contrast">
                       <NextLink href="sink">Kitchen sink</NextLink>
@@ -245,192 +243,161 @@ export default function Sink() {
                     </Link>
                   </Flex>
                 </nav> */}
-                <Flex p="6" align="center" gap="1">
-                  <RadixLogo />
-                  <Heading size="5">Radix Themes</Heading>
-                </Flex>
-              </Container>
-            </header>
+                  <Flex p="6" align="center" gap="1">
+                    <RadixLogo />
+                    <Heading size="5">Radix Themes</Heading>
+                  </Flex>
+                </Container>
+              </header>
 
-            <main
-            // dir="rtl"
-            >
-              <Container>
-                <Section>
-                  <Grid columns="3" gapY="9">
-                    <DocsGridSection title="Dialog">
-                      <DialogRoot>
-                        <DialogTrigger>
-                          <Button variant="solid">Open</Button>
-                        </DialogTrigger>
-                        <DialogContent style={{ maxWidth: 450 }}>
-                          <Flex direction="column" gap="3">
-                            <DialogTitle>Share resource</DialogTitle>
-                            <DialogDescription size="2">
-                              Jan Tschichold was a German calligrapher, typographer and book
-                              designer. He played a significant role in the development of graphic
-                              design in the 20th century.
-                            </DialogDescription>
-                            <Flex gap="3" mt="4" justify="end">
-                              <DialogClose>
-                                <Button variant="subtle-mono">Cancel</Button>
-                              </DialogClose>
-                              <DialogClose>
-                                <Button variant="solid">
-                                  Share <Share2Icon />
-                                </Button>
-                              </DialogClose>
+              <main
+              // dir="rtl"
+              >
+                <Container>
+                  <Section>
+                    <Grid columns="3" gapY="9">
+                      <DocsGridSection title="Dialog">
+                        <DialogRoot>
+                          <DialogTrigger>
+                            <Button variant="solid">Open</Button>
+                          </DialogTrigger>
+                          <DialogContent style={{ maxWidth: 450 }}>
+                            <Flex direction="column" gap="3">
+                              <DialogTitle>Share resource</DialogTitle>
+                              <DialogDescription size="2">
+                                Jan Tschichold was a German calligrapher, typographer and book
+                                designer. He played a significant role in the development of graphic
+                                design in the 20th century.
+                              </DialogDescription>
+                              <Flex gap="3" mt="4" justify="end">
+                                <DialogClose>
+                                  <Button variant="subtle-mono">Cancel</Button>
+                                </DialogClose>
+                                <DialogClose>
+                                  <Button variant="solid">
+                                    Share <Share2Icon />
+                                  </Button>
+                                </DialogClose>
+                              </Flex>
                             </Flex>
-                          </Flex>
-                        </DialogContent>
-                      </DialogRoot>
-                    </DocsGridSection>
+                          </DialogContent>
+                        </DialogRoot>
+                      </DocsGridSection>
 
-                    <DocsGridSection title="HoverCard">
-                      <HoverCardRoot>
-                        <HoverCardTrigger>
-                          <Link>A fancy link</Link>
-                        </HoverCardTrigger>
-                        <HoverCardContent style={{ width: 200 }}>
-                          <Text size="2">
-                            Jan Tschichold was a German calligrapher, typographer and book designer.
-                            He played a significant role in the development of graphic design in the
-                            20th century.
-                          </Text>
-                        </HoverCardContent>
-                      </HoverCardRoot>
-                    </DocsGridSection>
-
-                    <DocsGridSection title="Tooltip">
-                      <Flex gap="5">
-                        <Tooltip content="The quick brown fox">
-                          <Button variant="solid" size="1">
-                            Singleline
-                          </Button>
-                        </Tooltip>
-
-                        <Tooltip
-                          content="The goal of typography is to relate font size, line height, and line width in a
-                    proportional way that maximizes beauty and makes reading easier and more
-                    pleasant."
-                          multiline
-                        >
-                          <Button variant="solid" size="1">
-                            Multiline
-                          </Button>
-                        </Tooltip>
-                      </Flex>
-                    </DocsGridSection>
-
-                    <DocsGridSection title="AlertDialog">
-                      <AlertDialogRoot>
-                        <AlertDialogTrigger>
-                          <Button variant="solid">Open</Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent style={{ maxWidth: 450 }}>
-                          <Flex direction="column" gap="3">
-                            <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
-                            <AlertDialogDescription size="2">
-                              The setup link will no longer be accessible and any existing setup
-                              sessions will be revoked.
-                            </AlertDialogDescription>
-                            <Flex gap="3" mt="4" justify="end">
-                              <AlertDialogCancel>
-                                <Button variant="subtle-mono">Cancel</Button>
-                              </AlertDialogCancel>
-                              <AlertDialogAction>
-                                <Button variant="solid" color="red">
-                                  Revoke link
-                                </Button>
-                              </AlertDialogAction>
-                            </Flex>
-                          </Flex>
-                        </AlertDialogContent>
-                      </AlertDialogRoot>
-                    </DocsGridSection>
-
-                    <DocsGridSection title="Popover">
-                      <PopoverRoot>
-                        <PopoverTrigger>
-                          <Button variant="solid">Popover</Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          <Box p="4" style={{ width: 200 }}>
-                            <Text size="2" mb="2">
+                      <DocsGridSection title="HoverCard">
+                        <HoverCardRoot>
+                          <HoverCardTrigger>
+                            <Link>A fancy link</Link>
+                          </HoverCardTrigger>
+                          <HoverCardContent style={{ width: 200 }}>
+                            <Text size="2">
                               Jan Tschichold was a German calligrapher, typographer and book
                               designer. He played a significant role in the development of graphic
                               design in the 20th century.
                             </Text>
+                          </HoverCardContent>
+                        </HoverCardRoot>
+                      </DocsGridSection>
+
+                      <DocsGridSection title="Tooltip">
+                        <Flex gap="5">
+                          <Tooltip content="The quick brown fox">
                             <Button variant="solid" size="1">
-                              Share <Share2Icon />
+                              Singleline
                             </Button>
-                          </Box>
-                        </PopoverContent>
-                      </PopoverRoot>
-                    </DocsGridSection>
-                  </Grid>
-                </Section>
-              </Container>
-              <Separator size="4" />
+                          </Tooltip>
 
-              <Container>
-                <Section>
-                  <Grid columns="3" gapY="9">
-                    <DocsGridSection title="DropdownMenu">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {dropdownMenuSizes.map((size) => (
-                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {dropdownMenuVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              {dropdownMenuSizes.map((size) => (
-                                <td key={size}>
-                                  <DropdownMenuRoot>
-                                    <DropdownMenuTrigger>
-                                      <Button variant="subtle-mono" size={size}>
-                                        <DotsHorizontalIcon />
-                                      </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContentDemo size={size} variant={variant} />
-                                  </DropdownMenuRoot>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </DocsGridSection>
+                          <Tooltip
+                            content="The goal of typography is to relate font size, line height, and line width in a
+                    proportional way that maximizes beauty and makes reading easier and more
+                    pleasant."
+                            multiline
+                          >
+                            <Button variant="solid" size="1">
+                              Multiline
+                            </Button>
+                          </Tooltip>
+                        </Flex>
+                      </DocsGridSection>
 
-                    <div style={{ gridColumn: '2 / span 2' }}>
-                      <DocsGridSection title="ContextMenu">
+                      <DocsGridSection title="AlertDialog">
+                        <AlertDialogRoot>
+                          <AlertDialogTrigger>
+                            <Button variant="solid">Open</Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent style={{ maxWidth: 450 }}>
+                            <Flex direction="column" gap="3">
+                              <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
+                              <AlertDialogDescription size="2">
+                                The setup link will no longer be accessible and any existing setup
+                                sessions will be revoked.
+                              </AlertDialogDescription>
+                              <Flex gap="3" mt="4" justify="end">
+                                <AlertDialogCancel>
+                                  <Button variant="subtle-mono">Cancel</Button>
+                                </AlertDialogCancel>
+                                <AlertDialogAction>
+                                  <Button variant="solid" color="red">
+                                    Revoke link
+                                  </Button>
+                                </AlertDialogAction>
+                              </Flex>
+                            </Flex>
+                          </AlertDialogContent>
+                        </AlertDialogRoot>
+                      </DocsGridSection>
+
+                      <DocsGridSection title="Popover">
+                        <PopoverRoot>
+                          <PopoverTrigger>
+                            <Button variant="solid">Popover</Button>
+                          </PopoverTrigger>
+                          <PopoverContent>
+                            <Box p="4" style={{ width: 200 }}>
+                              <Text size="2" mb="2">
+                                Jan Tschichold was a German calligrapher, typographer and book
+                                designer. He played a significant role in the development of graphic
+                                design in the 20th century.
+                              </Text>
+                              <Button variant="solid" size="1">
+                                Share <Share2Icon />
+                              </Button>
+                            </Box>
+                          </PopoverContent>
+                        </PopoverRoot>
+                      </DocsGridSection>
+                    </Grid>
+                  </Section>
+                </Container>
+                <Separator size="4" />
+
+                <Container>
+                  <Section>
+                    <Grid columns="3" gapY="9">
+                      <DocsGridSection title="DropdownMenu">
                         <table className={styles.table}>
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {contextMenuSizes.map((size) => (
+                              {dropdownMenuSizes.map((size) => (
                                 <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
-                            {contextMenuVariants.map((variant) => (
+                            {dropdownMenuVariants.map((variant) => (
                               <tr key={variant}>
                                 <RowHeaderCell>{variant}</RowHeaderCell>
-                                {contextMenuSizes.map((size) => (
+                                {dropdownMenuSizes.map((size) => (
                                   <td key={size}>
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
-                                        <RightClickArea size={size} />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContentDemo size={size} variant={variant} />
-                                    </ContextMenuRoot>
+                                    <DropdownMenuRoot>
+                                      <DropdownMenuTrigger>
+                                        <Button variant="subtle-mono" size={size}>
+                                          <DotsHorizontalIcon />
+                                        </Button>
+                                      </DropdownMenuTrigger>
+                                      <DropdownMenuContentDemo size={size} variant={variant} />
+                                    </DropdownMenuRoot>
                                   </td>
                                 ))}
                               </tr>
@@ -438,25 +405,879 @@ export default function Sink() {
                           </tbody>
                         </table>
                       </DocsGridSection>
-                    </div>
-                  </Grid>
-                </Section>
-              </Container>
-              <Separator size="4" />
 
-              <DocsSection title="Select">
-                <Grid columns="2" gap="9">
-                  {[selectTriggerColorVariants, selectTriggerMonoVariants].map(
-                    (groupVariants, index) => (
-                      <div key={index}>
-                        <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
-                          Trigger variants:
+                      <div style={{ gridColumn: '2 / span 2' }}>
+                        <DocsGridSection title="ContextMenu">
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {contextMenuSizes.map((size) => (
+                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {contextMenuVariants.map((variant) => (
+                                <tr key={variant}>
+                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  {contextMenuSizes.map((size) => (
+                                    <td key={size}>
+                                      <ContextMenuRoot>
+                                        <ContextMenuTrigger>
+                                          <RightClickArea size={size} />
+                                        </ContextMenuTrigger>
+                                        <ContextMenuContentDemo size={size} variant={variant} />
+                                      </ContextMenuRoot>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </DocsGridSection>
+                      </div>
+                    </Grid>
+                  </Section>
+                </Container>
+                <Separator size="4" />
+
+                <DocsSection title="Select">
+                  <Grid columns="2" gap="9">
+                    {[selectTriggerColorVariants, selectTriggerMonoVariants].map(
+                      (groupVariants, index) => (
+                        <div key={index}>
+                          <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
+                            Trigger variants:
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {selectSizes.map((size) => (
+                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                                ))}
+                                <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {groupVariants.map((variant) => (
+                                <tr key={variant}>
+                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  {selectSizes.map((size) => (
+                                    <td key={size}>
+                                      <SelectRoot
+                                        defaultValue="apple"
+                                        size={size}
+                                        triggerVariant={variant}
+                                      >
+                                        <SelectItemsDemo />
+                                      </SelectRoot>
+                                    </td>
+                                  ))}
+                                  <td>
+                                    <SelectRoot
+                                      defaultValue="apple"
+                                      size="2"
+                                      triggerVariant={variant}
+                                      disabled
+                                    >
+                                      <SelectItemsDemo />
+                                    </SelectRoot>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )
+                    )}
+                  </Grid>
+
+                  <Grid columns="2" gap="9" mt="5" mb="7">
+                    {[selectMenuColorVariants, selectMenuMonoVariants].map(
+                      (groupVariants, index) => (
+                        <div key={index}>
+                          <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
+                            Menu variants:
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                <ColumnHeaderCell colSpan={2}>
+                                  position: &quot;item-aligned&quot;
+                                </ColumnHeaderCell>
+                                <ColumnHeaderCell colSpan={2}>
+                                  position: &quot;popper&quot;
+                                </ColumnHeaderCell>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {groupVariants.map((variant) => (
+                                <tr key={variant}>
+                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  {selectSizes.map((size) => (
+                                    <td key={size}>
+                                      <SelectRoot
+                                        defaultValue="apple"
+                                        size={size}
+                                        menuVariant={variant}
+                                      >
+                                        <SelectItemsDemo />
+                                      </SelectRoot>
+                                    </td>
+                                  ))}
+
+                                  {selectSizes.map((size) => (
+                                    <td key={size}>
+                                      <SelectRoot
+                                        defaultValue="apple"
+                                        size={size}
+                                        menuVariant={variant}
+                                        position="popper"
+                                      >
+                                        <SelectItemsDemo />
+                                      </SelectRoot>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )
+                    )}
+                  </Grid>
+
+                  <Text my="5">
+                    <Code color="red">radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {selectSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {selectSizes.map((size) => (
+                                <td key={size}>
+                                  <SelectRoot defaultValue="apple" size={size} radius={radius}>
+                                    <SelectItemsDemo />
+                                  </SelectRoot>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </details>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
                         </Text>
                         <table className={styles.table}>
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {selectSizes.map((size) => (
+                              {selectTriggerColorVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {selectTriggerColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <SelectRoot
+                                      defaultValue="apple"
+                                      size="1"
+                                      triggerVariant={variant}
+                                      menuVariant="subtle"
+                                      color={color}
+                                    >
+                                      <SelectItemsDemo />
+                                    </SelectRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
+
+                <DocsSection title="Switch">
+                  <Grid columns="2" gap="9">
+                    <div>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                            <ColumnHeaderCell>checked</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {switchVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td>
+                                <Switch variant={variant} />
+                              </td>
+                              <td>
+                                <Switch variant={variant} defaultChecked />
+                              </td>
+                              <td>
+                                <Switch variant={variant} disabled />
+                              </td>
+                              <td>
+                                <Switch variant={variant} disabled defaultChecked />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+
+                      <table className={styles.table}>
+                        <tbody>
+                          {switchSizes.map((size) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              <td>
+                                <Switch size={size} defaultChecked={size === '2'} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div>
+                      <Box py="4">
+                        <Text size="2">Alignement</Text>
+                      </Box>
+                      <Separator size="2" />
+
+                      <Flex direction="column" gap="3" style={{ maxWidth: 324 }} mt="4">
+                        <Text size="2">
+                          <label>
+                            <Switch mr="2" />
+                            Agree to Terms and Conditions
+                          </label>
+                        </Text>
+
+                        <label>
+                          <Flex gap="2">
+                            <Switch />
+                            <Text size="2">
+                              I understand that these documents are confidential and cannot be
+                              shared with a third party.
+                            </Text>
+                          </Flex>
+                        </label>
+
+                        {textSizes.slice(0, 4).map((size) => (
+                          <label key={size}>
+                            <Flex align="center" gap="2">
+                              <Switch />
+                              <Text size={size}>Agree to Terms and Conditions</Text>
+                            </Flex>
+                          </label>
+                        ))}
+                      </Flex>
+                    </div>
+                  </Grid>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {switchSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {switchSizes.map((size) => (
+                                <td key={size}>
+                                  <Switch size={size} radius={radius} />
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </details>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {switchColorVariants.map((variant) => (
+                                <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {switchColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <Switch variant={variant} color={color} defaultChecked />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
+
+                <DocsSection title="Slider">
+                  <Grid columns="2" gap="9">
+                    {[sliderColorVariants, sliderMonoVariants].map((groupVariants, index) => (
+                      <div key={index}>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              <ColumnHeaderCell>default</ColumnHeaderCell>
+                              <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {groupVariants.map((variant, index) => (
+                              <tr key={variant}>
+                                <RowHeaderCell>{variant}</RowHeaderCell>
+                                <td style={{ minWidth: 150 }}>
+                                  <Slider variant={variant} defaultValue={[33 + index * 10]} />
+                                </td>
+                                <td style={{ minWidth: 150 }}>
+                                  <Slider
+                                    variant={variant}
+                                    defaultValue={[33 + index * 10]}
+                                    disabled
+                                  />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ))}
+                    <div>
+                      <table className={styles.table}>
+                        <tbody>
+                          {sliderSizes.map((size, index) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              <td style={{ minWidth: 316 }}>
+                                <Slider size={size} defaultValue={[33 + index * 10]} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div>
+                      <Flex gap="5" style={{ height: 160 }}>
+                        {sliderSizes.map((size, i, sizes) => {
+                          return (
+                            <React.Fragment key={size}>
+                              {[...sliderColorVariants, ...sliderMonoVariants].map(
+                                (variant, j, variants) => {
+                                  const stepCount = variants.length * sizes.length - 1;
+                                  const step = i * variants.length + j;
+                                  const value =
+                                    25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
+                                  return (
+                                    <Slider
+                                      key={variant}
+                                      orientation="vertical"
+                                      defaultValue={[value]}
+                                      size={size}
+                                      variant={variant}
+                                    />
+                                  );
+                                }
+                              )}
+                            </React.Fragment>
+                          );
+                        })}
+                      </Flex>
+                    </div>
+
+                    <Box mb="6">
+                      <Slider defaultValue={[25, 75]} />
+                    </Box>
+                  </Grid>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {sliderSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {sliderSizes.map((size) => (
+                                <td key={size} style={{ minWidth: 150 }}>
+                                  <Slider size={size} radius={radius} defaultValue={[50]} />
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </details>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {sliderColorVariants.map((variant) => (
+                                <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {sliderColorVariants.map((variant) => (
+                                  <td key={variant} style={{ minWidth: 150 }}>
+                                    <Slider variant={variant} color={color} defaultValue={[50]} />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
+
+                <DocsSection title="Checkbox">
+                  <Grid columns="2" gap="9">
+                    <div>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                            <ColumnHeaderCell>checked</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {checkboxVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td>
+                                <Checkbox variant={variant} />
+                              </td>
+                              <td>
+                                <Checkbox variant={variant} defaultChecked />
+                              </td>
+                              <td>
+                                <Checkbox variant={variant} disabled />
+                              </td>
+                              <td>
+                                <Checkbox variant={variant} disabled defaultChecked />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+
+                      <table className={styles.table}>
+                        <tbody>
+                          {checkboxSizes.map((size) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              <td>
+                                <Checkbox size={size} defaultChecked />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div>
+                      <Box py="4">
+                        <Text size="2">Alignement</Text>
+                      </Box>
+                      <Separator size="3" />
+
+                      <Flex direction="column" gap="3" style={{ maxWidth: 300 }} mt="4">
+                        <Text size="2">
+                          <label>
+                            <Checkbox mr="2" />
+                            Agree to Terms and Conditions
+                          </label>
+                        </Text>
+
+                        <Flex gap="2">
+                          <Checkbox id={`align-1`} />
+                          <Text size="2">
+                            <label htmlFor={`align-1`}>
+                              I understand that these documents are confidential and cannot be
+                              shared with a third party.
+                            </label>
+                          </Text>
+                        </Flex>
+
+                        {textSizes.slice(0, 4).map((size) => (
+                          <Flex align="center" gap="2" key={size}>
+                            <Checkbox id={`align-size${size}`} />
+                            <Text size={size}>
+                              <label htmlFor={`align-size${size}`}>
+                                Agree to Terms and Conditions
+                              </label>
+                            </Text>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </div>
+                  </Grid>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {checkboxSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {checkboxSizes.map((size) => (
+                                <td key={size}>
+                                  <Checkbox defaultChecked radius={radius} size={size} />
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </details>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {checkboxColorVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {checkboxColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <Checkbox variant={variant} color={color} defaultChecked />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
+
+                <DocsSection title="RadioGroup">
+                  <Grid columns="2" gap="9">
+                    <div>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                            <ColumnHeaderCell>checked</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radioGroupVariants.map((variant) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td>
+                                <RadioGroupRoot variant={variant}>
+                                  <RadioGroupItem value="value" />
+                                </RadioGroupRoot>
+                              </td>
+                              <td>
+                                <RadioGroupRoot variant={variant} defaultValue="value">
+                                  <RadioGroupItem value="value" />
+                                </RadioGroupRoot>
+                              </td>
+                              <td>
+                                <RadioGroupRoot variant={variant}>
+                                  <RadioGroupItem value="value" disabled />
+                                </RadioGroupRoot>
+                              </td>
+                              <td>
+                                <RadioGroupRoot variant={variant} disabled defaultValue="value">
+                                  <RadioGroupItem value="value" />
+                                </RadioGroupRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+
+                      <table className={styles.table}>
+                        <tbody>
+                          {radioGroupSizes.map((size) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              <td>
+                                <RadioGroupRoot size={size} defaultValue="value">
+                                  <RadioGroupItem value="value" />
+                                </RadioGroupRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div>
+                      <Box py="4">
+                        <Text size="2">Alignement</Text>
+                      </Box>
+                      <Separator size="3" />
+
+                      <Flex direction="column" gap="3" style={{ maxWidth: 200 }} mt="4">
+                        <RadioGroupRoot>
+                          <Text size="2">
+                            <label>
+                              <RadioGroupItem value="value" mr="2" />
+                              My radio
+                            </label>
+                          </Text>
+                        </RadioGroupRoot>
+
+                        <RadioGroupRoot>
+                          <label>
+                            <Flex gap="2">
+                              <RadioGroupItem value="value" />
+                              <Text size="2">Automatically based on mouse or trackpad</Text>
+                            </Flex>
+                          </label>
+                        </RadioGroupRoot>
+
+                        {textSizes.slice(0, 4).map((size) => (
+                          <RadioGroupRoot key={size}>
+                            <label>
+                              <Flex align="center" gap="2">
+                                <RadioGroupItem value="value" />
+                                <Text size={size}>Text size {size}</Text>
+                              </Flex>
+                            </label>
+                          </RadioGroupRoot>
+                        ))}
+                      </Flex>
+                    </div>
+                  </Grid>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {radioGroupColorVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {radioGroupColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      color={color}
+                                      defaultValue="value"
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+
+                  <Separator size="3" my="5" />
+                </DocsSection>
+
+                <DocsSection title="Button">
+                  <Grid columns="2" gap="9">
+                    {[buttonColorVariants, buttonMonoVariants].map((groupVariants, index) => (
+                      <div key={index}>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {buttonSizes.map((size) => (
                                 <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                               ))}
                               <ColumnHeaderCell>disabled</ColumnHeaderCell>
@@ -466,813 +1287,37 @@ export default function Sink() {
                             {groupVariants.map((variant) => (
                               <tr key={variant}>
                                 <RowHeaderCell>{variant}</RowHeaderCell>
-                                {selectSizes.map((size) => (
+                                {buttonSizes.map((size) => (
                                   <td key={size}>
-                                    <SelectRoot
-                                      defaultValue="apple"
-                                      size={size}
-                                      triggerVariant={variant}
-                                    >
-                                      <SelectItemsDemo />
-                                    </SelectRoot>
+                                    <Button size={size} variant={variant}>
+                                      Next <ArrowRightIcon />
+                                    </Button>
                                   </td>
                                 ))}
                                 <td>
-                                  <SelectRoot
-                                    defaultValue="apple"
-                                    size="2"
-                                    triggerVariant={variant}
-                                    disabled
-                                  >
-                                    <SelectItemsDemo />
-                                  </SelectRoot>
+                                  <Button size="3" variant={variant} disabled>
+                                    Next <ArrowRightIcon />
+                                  </Button>
                                 </td>
                               </tr>
                             ))}
                           </tbody>
                         </table>
                       </div>
-                    )
-                  )}
-                </Grid>
+                    ))}
+                  </Grid>
 
-                <Grid columns="2" gap="9" mt="5" mb="7">
-                  {[selectMenuColorVariants, selectMenuMonoVariants].map((groupVariants, index) => (
-                    <div key={index}>
-                      <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
-                        Menu variants:
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
                       </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            <ColumnHeaderCell colSpan={2}>
-                              position: &quot;item-aligned&quot;
-                            </ColumnHeaderCell>
-                            <ColumnHeaderCell colSpan={2}>
-                              position: &quot;popper&quot;
-                            </ColumnHeaderCell>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {groupVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              {selectSizes.map((size) => (
-                                <td key={size}>
-                                  <SelectRoot
-                                    defaultValue="apple"
-                                    size={size}
-                                    menuVariant={variant}
-                                  >
-                                    <SelectItemsDemo />
-                                  </SelectRoot>
-                                </td>
-                              ))}
-
-                              {selectSizes.map((size) => (
-                                <td key={size}>
-                                  <SelectRoot
-                                    defaultValue="apple"
-                                    size={size}
-                                    menuVariant={variant}
-                                    position="popper"
-                                  >
-                                    <SelectItemsDemo />
-                                  </SelectRoot>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
-                </Grid>
-
-                <Text my="5">
-                  <Code color="red">radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {selectSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {selectSizes.map((size) => (
-                              <td key={size}>
-                                <SelectRoot defaultValue="apple" size={size} radius={radius}>
-                                  <SelectItemsDemo />
-                                </SelectRoot>
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
-                      </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {selectTriggerColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {selectTriggerColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <SelectRoot
-                                    defaultValue="apple"
-                                    size="1"
-                                    triggerVariant={variant}
-                                    menuVariant="subtle"
-                                    color={color}
-                                  >
-                                    <SelectItemsDemo />
-                                  </SelectRoot>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
-
-              <DocsSection title="Switch">
-                <Grid columns="2" gap="9">
-                  <div>
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          <ColumnHeaderCell>not checked</ColumnHeaderCell>
-                          <ColumnHeaderCell>checked</ColumnHeaderCell>
-                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                          <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {switchVariants.map((variant) => (
-                          <tr key={variant}>
-                            <RowHeaderCell>{variant}</RowHeaderCell>
-                            <td>
-                              <Switch variant={variant} />
-                            </td>
-                            <td>
-                              <Switch variant={variant} defaultChecked />
-                            </td>
-                            <td>
-                              <Switch variant={variant} disabled />
-                            </td>
-                            <td>
-                              <Switch variant={variant} disabled defaultChecked />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <table className={styles.table}>
-                      <tbody>
-                        {switchSizes.map((size) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <Switch size={size} defaultChecked={size === '2'} />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div>
-                    <Box py="4">
-                      <Text size="2">Alignement</Text>
-                    </Box>
-                    <Separator size="2" />
-
-                    <Flex direction="column" gap="3" style={{ maxWidth: 324 }} mt="4">
-                      <Text size="2">
-                        <label>
-                          <Switch mr="2" />
-                          Agree to Terms and Conditions
-                        </label>
-                      </Text>
-
-                      <label>
-                        <Flex gap="2">
-                          <Switch />
-                          <Text size="2">
-                            I understand that these documents are confidential and cannot be shared
-                            with a third party.
-                          </Text>
-                        </Flex>
-                      </label>
-
-                      {textSizes.slice(0, 4).map((size) => (
-                        <label key={size}>
-                          <Flex align="center" gap="2">
-                            <Switch />
-                            <Text size={size}>Agree to Terms and Conditions</Text>
-                          </Flex>
-                        </label>
-                      ))}
-                    </Flex>
-                  </div>
-                </Grid>
-
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {switchSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {switchSizes.map((size) => (
-                              <td key={size}>
-                                <Switch size={size} radius={radius} />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
-                      </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {switchColorVariants.map((variant) => (
-                              <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {switchColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <Switch variant={variant} color={color} defaultChecked />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
-
-              <DocsSection title="Slider">
-                <Grid columns="2" gap="9">
-                  {[sliderColorVariants, sliderMonoVariants].map((groupVariants, index) => (
-                    <div key={index}>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            <ColumnHeaderCell>default</ColumnHeaderCell>
-                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {groupVariants.map((variant, index) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              <td style={{ minWidth: 150 }}>
-                                <Slider variant={variant} defaultValue={[33 + index * 10]} />
-                              </td>
-                              <td style={{ minWidth: 150 }}>
-                                <Slider
-                                  variant={variant}
-                                  defaultValue={[33 + index * 10]}
-                                  disabled
-                                />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
-                  <div>
-                    <table className={styles.table}>
-                      <tbody>
-                        {sliderSizes.map((size, index) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td style={{ minWidth: 316 }}>
-                              <Slider size={size} defaultValue={[33 + index * 10]} />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div>
-                    <Flex gap="5" style={{ height: 160 }}>
-                      {sliderSizes.map((size, i, sizes) => {
-                        return (
-                          <React.Fragment key={size}>
-                            {[...sliderColorVariants, ...sliderMonoVariants].map(
-                              (variant, j, variants) => {
-                                const stepCount = variants.length * sizes.length - 1;
-                                const step = i * variants.length + j;
-                                const value =
-                                  25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
-                                return (
-                                  <Slider
-                                    key={variant}
-                                    orientation="vertical"
-                                    defaultValue={[value]}
-                                    size={size}
-                                    variant={variant}
-                                  />
-                                );
-                              }
-                            )}
-                          </React.Fragment>
-                        );
-                      })}
-                    </Flex>
-                  </div>
-
-                  <Box mb="6">
-                    <Slider defaultValue={[25, 75]} />
-                  </Box>
-                </Grid>
-
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {sliderSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {sliderSizes.map((size) => (
-                              <td key={size} style={{ minWidth: 150 }}>
-                                <Slider size={size} radius={radius} defaultValue={[50]} />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
-                      </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {sliderColorVariants.map((variant) => (
-                              <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {sliderColorVariants.map((variant) => (
-                                <td key={variant} style={{ minWidth: 150 }}>
-                                  <Slider variant={variant} color={color} defaultValue={[50]} />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
-
-              <DocsSection title="Checkbox">
-                <Grid columns="2" gap="9">
-                  <div>
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          <ColumnHeaderCell>not checked</ColumnHeaderCell>
-                          <ColumnHeaderCell>checked</ColumnHeaderCell>
-                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                          <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {checkboxVariants.map((variant) => (
-                          <tr key={variant}>
-                            <RowHeaderCell>{variant}</RowHeaderCell>
-                            <td>
-                              <Checkbox variant={variant} />
-                            </td>
-                            <td>
-                              <Checkbox variant={variant} defaultChecked />
-                            </td>
-                            <td>
-                              <Checkbox variant={variant} disabled />
-                            </td>
-                            <td>
-                              <Checkbox variant={variant} disabled defaultChecked />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <table className={styles.table}>
-                      <tbody>
-                        {checkboxSizes.map((size) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <Checkbox size={size} defaultChecked />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div>
-                    <Box py="4">
-                      <Text size="2">Alignement</Text>
-                    </Box>
-                    <Separator size="3" />
-
-                    <Flex direction="column" gap="3" style={{ maxWidth: 300 }} mt="4">
-                      <Text size="2">
-                        <label>
-                          <Checkbox mr="2" />
-                          Agree to Terms and Conditions
-                        </label>
-                      </Text>
-
-                      <Flex gap="2">
-                        <Checkbox id={`align-1`} />
-                        <Text size="2">
-                          <label htmlFor={`align-1`}>
-                            I understand that these documents are confidential and cannot be shared
-                            with a third party.
-                          </label>
-                        </Text>
-                      </Flex>
-
-                      {textSizes.slice(0, 4).map((size) => (
-                        <Flex align="center" gap="2" key={size}>
-                          <Checkbox id={`align-size${size}`} />
-                          <Text size={size}>
-                            <label htmlFor={`align-size${size}`}>
-                              Agree to Terms and Conditions
-                            </label>
-                          </Text>
-                        </Flex>
-                      ))}
-                    </Flex>
-                  </div>
-                </Grid>
-
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {checkboxSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {checkboxSizes.map((size) => (
-                              <td key={size}>
-                                <Checkbox defaultChecked radius={radius} size={size} />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
-                      </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {checkboxColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {checkboxColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <Checkbox variant={variant} color={color} defaultChecked />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
-
-              <DocsSection title="RadioGroup">
-                <Grid columns="2" gap="9">
-                  <div>
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          <ColumnHeaderCell>not checked</ColumnHeaderCell>
-                          <ColumnHeaderCell>checked</ColumnHeaderCell>
-                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                          <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radioGroupVariants.map((variant) => (
-                          <tr key={variant}>
-                            <RowHeaderCell>{variant}</RowHeaderCell>
-                            <td>
-                              <RadioGroupRoot variant={variant}>
-                                <RadioGroupItem value="value" />
-                              </RadioGroupRoot>
-                            </td>
-                            <td>
-                              <RadioGroupRoot variant={variant} defaultValue="value">
-                                <RadioGroupItem value="value" />
-                              </RadioGroupRoot>
-                            </td>
-                            <td>
-                              <RadioGroupRoot variant={variant}>
-                                <RadioGroupItem value="value" disabled />
-                              </RadioGroupRoot>
-                            </td>
-                            <td>
-                              <RadioGroupRoot variant={variant} disabled defaultValue="value">
-                                <RadioGroupItem value="value" />
-                              </RadioGroupRoot>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <table className={styles.table}>
-                      <tbody>
-                        {radioGroupSizes.map((size) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <RadioGroupRoot size={size} defaultValue="value">
-                                <RadioGroupItem value="value" />
-                              </RadioGroupRoot>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div>
-                    <Box py="4">
-                      <Text size="2">Alignement</Text>
-                    </Box>
-                    <Separator size="3" />
-
-                    <Flex direction="column" gap="3" style={{ maxWidth: 200 }} mt="4">
-                      <RadioGroupRoot>
-                        <Text size="2">
-                          <label>
-                            <RadioGroupItem value="value" mr="2" />
-                            My radio
-                          </label>
-                        </Text>
-                      </RadioGroupRoot>
-
-                      <RadioGroupRoot>
-                        <label>
-                          <Flex gap="2">
-                            <RadioGroupItem value="value" />
-                            <Text size="2">Automatically based on mouse or trackpad</Text>
-                          </Flex>
-                        </label>
-                      </RadioGroupRoot>
-
-                      {textSizes.slice(0, 4).map((size) => (
-                        <RadioGroupRoot key={size}>
-                          <label>
-                            <Flex align="center" gap="2">
-                              <RadioGroupItem value="value" />
-                              <Text size={size}>Text size {size}</Text>
-                            </Flex>
-                          </label>
-                        </RadioGroupRoot>
-                      ))}
-                    </Flex>
-                  </div>
-                </Grid>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
-                      </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {radioGroupColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {radioGroupColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <RadioGroupRoot
-                                    variant={variant}
-                                    color={color}
-                                    defaultValue="value"
-                                  >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-
-                <Separator size="3" my="5" />
-              </DocsSection>
-
-              <DocsSection title="Button">
-                <Grid columns="2" gap="9">
-                  {[buttonColorVariants, buttonMonoVariants].map((groupVariants, index) => (
-                    <div key={index}>
+                    </summary>
+                    <Box mt="3">
                       <table className={styles.table}>
                         <thead>
                           <tr>
@@ -1280,120 +1325,122 @@ export default function Sink() {
                             {buttonSizes.map((size) => (
                               <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                             ))}
-                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
                           </tr>
                         </thead>
                         <tbody>
-                          {groupVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
                               {buttonSizes.map((size) => (
                                 <td key={size}>
-                                  <Button size={size} variant={variant}>
+                                  <Button size={size} radius={radius}>
                                     Next <ArrowRightIcon />
                                   </Button>
                                 </td>
                               ))}
-                              <td>
-                                <Button size="3" variant={variant} disabled>
-                                  Next <ArrowRightIcon />
-                                </Button>
-                              </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                    </div>
-                  ))}
-                </Grid>
+                    </Box>
+                  </details>
 
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
 
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {buttonSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {buttonSizes.map((size) => (
-                              <td key={size}>
-                                <Button size={size} radius={radius}>
-                                  Next <ArrowRightIcon />
-                                </Button>
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
                       </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {buttonColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
                               {buttonColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <Button variant={variant} color={color}>
-                                    <Pencil2Icon />
-                                    Edit
-                                  </Button>
-                                </td>
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {buttonColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <Button variant={variant} color={color}>
+                                      <Pencil2Icon />
+                                      Edit
+                                    </Button>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
 
-              <DocsSection title="IconButton">
-                <Grid columns="2" gap="9">
-                  {[iconButtonColorVariants, iconButtonMonoVariants].map((groupVariants, index) => (
-                    <div key={index}>
+                <DocsSection title="IconButton">
+                  <Grid columns="2" gap="9">
+                    {[iconButtonColorVariants, iconButtonMonoVariants].map(
+                      (groupVariants, index) => (
+                        <div key={index}>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {iconButtonSizes.map((size) => (
+                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                                ))}
+                                <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {groupVariants.map((variant) => (
+                                <tr key={variant}>
+                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  {iconButtonSizes.map((size) => (
+                                    <td key={size}>
+                                      <IconButton size={size} variant={variant}>
+                                        <Share2Icon />
+                                      </IconButton>
+                                    </td>
+                                  ))}
+                                  <td>
+                                    <IconButton size="3" variant={variant} disabled>
+                                      <Share2Icon />
+                                    </IconButton>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )
+                    )}
+                  </Grid>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
                       <table className={styles.table}>
                         <thead>
                           <tr>
@@ -1401,567 +1448,510 @@ export default function Sink() {
                             {iconButtonSizes.map((size) => (
                               <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                             ))}
-                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
                           </tr>
                         </thead>
                         <tbody>
-                          {groupVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
                               {iconButtonSizes.map((size) => (
                                 <td key={size}>
-                                  <IconButton size={size} variant={variant}>
+                                  <IconButton size={size} radius={radius}>
                                     <Share2Icon />
                                   </IconButton>
                                 </td>
                               ))}
-                              <td>
-                                <IconButton size="3" variant={variant} disabled>
-                                  <Share2Icon />
-                                </IconButton>
-                              </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                    </div>
-                  ))}
-                </Grid>
+                    </Box>
+                  </details>
 
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
 
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {iconButtonSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {iconButtonSizes.map((size) => (
-                              <td key={size}>
-                                <IconButton size={size} radius={radius}>
-                                  <Share2Icon />
-                                </IconButton>
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
                       </Text>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {iconButtonColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
                               {iconButtonColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <IconButton variant={variant} color={color}>
-                                    <Share2Icon />
-                                  </IconButton>
-                                </td>
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {iconButtonColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <IconButton variant={variant} color={color}>
+                                      <Share2Icon />
+                                    </IconButton>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
 
-              <DocsSection title="TextField">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {textFieldSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <ColumnHeaderCell>value</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                      <ColumnHeaderCell>read-only</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {textFieldVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
+                <DocsSection title="TextField">
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
                         {textFieldSizes.map((size) => (
-                          <td key={size}>
-                            <TextField variant={variant} size={size} placeholder="Your name" />
-                          </td>
+                          <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                         ))}
-                        <td>
-                          <TextField variant={variant} defaultValue="The quick brown fox jumped" />
-                        </td>
-                        <td>
-                          <TextField
-                            variant={variant}
-                            placeholder="Your name"
-                            disabled
-                            defaultValue="The quick brown fox jumped"
-                          />
-                        </td>
-                        <td>
-                          <TextField
-                            variant={variant}
-                            placeholder="Your name"
-                            readOnly
-                            defaultValue="The quick brown fox jumped"
-                          />
-                        </td>
+                        <ColumnHeaderCell>value</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell>read-only</ColumnHeaderCell>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
+                    </thead>
+                    <tbody>
+                      {textFieldVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
                           {textFieldSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            <td key={size}>
+                              <TextField variant={variant} size={size} placeholder="Your name" />
+                            </td>
                           ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {textFieldSizes.map((size) => (
-                              <td key={size}>
-                                <TextField size={size} radius={radius} placeholder="Your name" />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-              </DocsSection>
-
-              <DocsSection title="TextArea">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {textAreaSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                      <ColumnHeaderCell>value</ColumnHeaderCell>
-                      <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                      <ColumnHeaderCell>read-only</ColumnHeaderCell>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {textAreaVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {textAreaSizes.map((size) => (
-                          <td key={size}>
-                            <TextArea size={size} variant={variant} placeholder="Your feedback" />
+                          <td>
+                            <TextField
+                              variant={variant}
+                              defaultValue="The quick brown fox jumped"
+                            />
                           </td>
-                        ))}
-                        <td>
-                          <TextArea
-                            variant={variant}
-                            defaultValue="Love the new design, it's looking great!"
-                          />
-                        </td>
-                        <td>
-                          <TextArea
-                            variant={variant}
-                            placeholder="Your feedback"
-                            disabled
-                            defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
-                          />
-                        </td>
-                        <td>
-                          <TextArea
-                            variant={variant}
-                            placeholder="Your feedback"
-                            readOnly
-                            defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {textAreaSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {textAreaSizes.map((size) => (
-                              <td key={size}>
-                                <TextArea size={size} radius={radius} placeholder="Your feedback" />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-              </DocsSection>
-
-              <DocsSection title="Badge">
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <ColumnHeaderCell />
-                      {badgeSizes.map((size) => (
-                        <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {badgeVariants.map((variant) => (
-                      <tr key={variant}>
-                        <RowHeaderCell>{variant}</RowHeaderCell>
-                        {badgeSizes.map((size) => (
-                          <td key={size}>
-                            <Flex key={variant} gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
-                              {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
-                                <Badge key={color} size={size} variant={variant} color={color}>
-                                  {upperFirst(color)}
-                                </Badge>
-                              ))}
-                            </Flex>
+                          <td>
+                            <TextField
+                              variant={variant}
+                              placeholder="Your name"
+                              disabled
+                              defaultValue="The quick brown fox jumped"
+                            />
                           </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                          <td>
+                            <TextField
+                              variant={variant}
+                              placeholder="Your name"
+                              readOnly
+                              defaultValue="The quick brown fox jumped"
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
 
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
                       </Text>
+                    </summary>
+                    <Box mt="3">
                       <table className={styles.table}>
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {badgeVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                            {textFieldSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {badgeVariants.map((variant) => (
-                                <td key={variant}>
-                                  <Badge variant={variant} color={color}>
-                                    {color}
-                                  </Badge>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {textFieldSizes.map((size) => (
+                                <td key={size}>
+                                  <TextField size={size} radius={radius} placeholder="Your name" />
                                 </td>
                               ))}
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
+                    </Box>
+                  </details>
+                </DocsSection>
 
-              <DocsSection title="Avatar">
-                <Grid columns="2" gap="9">
-                  {[avatarColorVariants, avatarMonoVariants].map((groupVariants, index) => (
-                    <div key={index}>
+                <DocsSection title="TextArea">
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        {textAreaSizes.map((size) => (
+                          <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                        ))}
+                        <ColumnHeaderCell>value</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell>read-only</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {textAreaVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          {textAreaSizes.map((size) => (
+                            <td key={size}>
+                              <TextArea size={size} variant={variant} placeholder="Your feedback" />
+                            </td>
+                          ))}
+                          <td>
+                            <TextArea
+                              variant={variant}
+                              defaultValue="Love the new design, it's looking great!"
+                            />
+                          </td>
+                          <td>
+                            <TextArea
+                              variant={variant}
+                              placeholder="Your feedback"
+                              disabled
+                              defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                            />
+                          </td>
+                          <td>
+                            <TextArea
+                              variant={variant}
+                              placeholder="Your feedback"
+                              readOnly
+                              defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
                       <table className={styles.table}>
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            <ColumnHeaderCell>image</ColumnHeaderCell>
-                            <ColumnHeaderCell>1 letter</ColumnHeaderCell>
-                            <ColumnHeaderCell>2 letters</ColumnHeaderCell>
-                            <ColumnHeaderCell>icon</ColumnHeaderCell>
+                            {textAreaSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {groupVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              <td>
-                                <Avatar variant={variant} src="./api/avatar" fallback="D" />
-                              </td>
-                              <td>
-                                <Avatar variant={variant} fallback="D" />
-                              </td>
-                              <td>
-                                <Avatar variant={variant} fallback="BG" />
-                              </td>
-                              <td>
-                                <Avatar variant={variant} fallback={<CustomUserIcon />} />
-                              </td>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {textAreaSizes.map((size) => (
+                                <td key={size}>
+                                  <TextArea
+                                    size={size}
+                                    radius={radius}
+                                    placeholder="Your feedback"
+                                  />
+                                </td>
+                              ))}
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                    </div>
-                  ))}
+                    </Box>
+                  </details>
+                </DocsSection>
 
-                  <Box mb="6">
-                    <table className={styles.table}>
-                      <tbody>
-                        {avatarSizes.map((size) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <Flex gap="2">
-                                <Avatar
-                                  size={size}
-                                  variant="subtle-mono"
-                                  src="./api/avatar"
-                                  fallback="D"
-                                />
-                                <Avatar size={size} variant="subtle-mono" fallback="D" />
-                                <Avatar size={size} variant="subtle-mono" fallback="BG" />
-                                <Avatar
-                                  size={size}
-                                  variant="subtle-mono"
-                                  fallback={<CustomUserIcon />}
-                                />
+                <DocsSection title="Badge">
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        {badgeSizes.map((size) => (
+                          <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {badgeVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          {badgeSizes.map((size) => (
+                            <td key={size}>
+                              <Flex key={variant} gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
+                                {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
+                                  <Badge key={color} size={size} variant={variant} color={color}>
+                                    {upperFirst(color)}
+                                  </Badge>
+                                ))}
                               </Flex>
                             </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </Grid>
-
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {avatarSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {avatarSizes.map((size) => (
-                              <td key={size}>
-                                <Avatar
-                                  size={size}
-                                  radius={radius}
-                                  src="./api/avatar"
-                                  fallback="D"
-                                />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
+                      ))}
+                    </tbody>
+                  </table>
 
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
 
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
                       </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {badgeVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {badgeVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <Badge variant={variant} color={color}>
+                                      {color}
+                                    </Badge>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
+
+                <DocsSection title="Avatar">
+                  <Grid columns="2" gap="9">
+                    {[avatarColorVariants, avatarMonoVariants].map((groupVariants, index) => (
+                      <div key={index}>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              <ColumnHeaderCell>image</ColumnHeaderCell>
+                              <ColumnHeaderCell>1 letter</ColumnHeaderCell>
+                              <ColumnHeaderCell>2 letters</ColumnHeaderCell>
+                              <ColumnHeaderCell>icon</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {groupVariants.map((variant) => (
+                              <tr key={variant}>
+                                <RowHeaderCell>{variant}</RowHeaderCell>
+                                <td>
+                                  <Avatar variant={variant} src="./api/avatar" fallback="D" />
+                                </td>
+                                <td>
+                                  <Avatar variant={variant} fallback="D" />
+                                </td>
+                                <td>
+                                  <Avatar variant={variant} fallback="BG" />
+                                </td>
+                                <td>
+                                  <Avatar variant={variant} fallback={<CustomUserIcon />} />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ))}
+
+                    <Box mb="6">
+                      <table className={styles.table}>
+                        <tbody>
+                          {avatarSizes.map((size) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              <td>
+                                <Flex gap="2">
+                                  <Avatar
+                                    size={size}
+                                    variant="subtle-mono"
+                                    src="./api/avatar"
+                                    fallback="D"
+                                  />
+                                  <Avatar size={size} variant="subtle-mono" fallback="D" />
+                                  <Avatar size={size} variant="subtle-mono" fallback="BG" />
+                                  <Avatar
+                                    size={size}
+                                    variant="subtle-mono"
+                                    fallback={<CustomUserIcon />}
+                                  />
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </Grid>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
                       <table className={styles.table}>
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {avatarColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                            {avatarSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {avatarColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <Avatar variant={variant} color={color} fallback="D" />
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {avatarSizes.map((size) => (
+                                <td key={size}>
+                                  <Avatar
+                                    size={size}
+                                    radius={radius}
+                                    src="./api/avatar"
+                                    fallback="D"
+                                  />
                                 </td>
                               ))}
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
+                    </Box>
+                  </details>
 
-              <DocsSection title="Typography">
-                <Flex direction="column" gap="5" style={{ maxWidth: 688 }}>
-                  <Text size="3">
-                    The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been applied
-                    to all fonts.google.com pages where fonts are rendered. This results in browsers
-                    using the <Strong>greyscale antialiasing method</Strong> rather than default{' '}
-                    <Em>subpixel rendering</Em> of fonts.{' '}
-                    <Quote>
-                      I believe this was probably introduced to get around inconsistencies in
-                      rendering between browsers
-                    </Quote>
-                    , particular between Chrome and Safari on MacOS.
-                    <Sup>1</Sup>
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
                   </Text>
 
-                  <Heading size="9">
-                    The principles of the Typographic Craft are difficult to master
-                  </Heading>
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {avatarColorVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {avatarColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <Avatar variant={variant} color={color} fallback="D" />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
 
-                  <Heading size="8">
-                    The goal of typography is to relate font size, line height, and line width
-                  </Heading>
+                <DocsSection title="Typography">
+                  <Flex direction="column" gap="5" style={{ maxWidth: 688 }}>
+                    <Text size="3">
+                      The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
+                      applied to all fonts.google.com pages where fonts are rendered. This results
+                      in browsers using the <Strong>greyscale antialiasing method</Strong> rather
+                      than default <Em>subpixel rendering</Em> of fonts.{' '}
+                      <Quote>
+                        I believe this was probably introduced to get around inconsistencies in
+                        rendering between browsers
+                      </Quote>
+                      , particular between Chrome and Safari on MacOS.
+                      <Sup>1</Sup>
+                    </Text>
 
-                  <Heading size="7">
-                    The goal of typography is to relate font size, line height, and line width in a
-                    proportional way
-                  </Heading>
+                    <Heading size="9">
+                      The principles of the Typographic Craft are difficult to master
+                    </Heading>
 
-                  <Heading size="6">
-                    The goal of typography is to relate font size, line height, and line width in a
-                    proportional way
-                  </Heading>
+                    <Heading size="8">
+                      The goal of typography is to relate font size, line height, and line width
+                    </Heading>
 
-                  <Text color="gray" size="5">
-                    The goal of typography is to relate font size, line height, and line width in a
-                    proportional way that maximizes beauty and makes reading easier and more
-                    pleasant.
-                  </Text>
+                    <Heading size="7">
+                      The goal of typography is to relate font size, line height, and line width in
+                      a proportional way
+                    </Heading>
 
-                  <Text size="4">
-                    The goal of typography is to relate font size, line height, and line width in a
-                    proportional way that maximizes beauty and makes reading easier and more
-                    pleasant. The question is: What proportion(s) will give us the best results? The
-                    golden ratio is often observed in nature where beauty and utility intersect;
-                    perhaps we can use this “divine” proportion to enhance these attributes in our
-                    typography.
-                  </Text>
+                    <Heading size="6">
+                      The goal of typography is to relate font size, line height, and line width in
+                      a proportional way
+                    </Heading>
 
-                  <Text size="3" style={{ maxWidth: 600 }}>
-                    The goal of typography is to relate font size, line height, and line width in a
-                    proportional way that maximizes beauty and makes reading easier and more
-                    pleasant. The question is: What proportion(s) will give us the best results? The
-                    golden ratio is often observed in nature where beauty and utility intersect;
-                    perhaps we can use this “divine” proportion to enhance these attributes in our
-                    typography.
-                  </Text>
+                    <Text color="gray" size="5">
+                      The goal of typography is to relate font size, line height, and line width in
+                      a proportional way that maximizes beauty and makes reading easier and more
+                      pleasant.
+                    </Text>
 
-                  <Grid columns="2" gap="5">
-                    <Text size="2" style={{ maxWidth: 400 }}>
+                    <Text size="4">
                       The goal of typography is to relate font size, line height, and line width in
                       a proportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
@@ -1970,7 +1960,7 @@ export default function Sink() {
                       attributes in our typography.
                     </Text>
 
-                    <Text size="1" style={{ maxWidth: 400 }}>
+                    <Text size="3" style={{ maxWidth: 600 }}>
                       The goal of typography is to relate font size, line height, and line width in
                       a proportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
@@ -1978,10 +1968,404 @@ export default function Sink() {
                       intersect; perhaps we can use this “divine” proportion to enhance these
                       attributes in our typography.
                     </Text>
+
+                    <Grid columns="2" gap="5">
+                      <Text size="2" style={{ maxWidth: 400 }}>
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+
+                      <Text size="1" style={{ maxWidth: 400 }}>
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+                    </Grid>
+
+                    <Separator size="3" my="5" />
+
+                    <Flex gap="4" mb="5">
+                      <Link color="purple" href="/">
+                        This is a link
+                      </Link>
+                      <Link color="gray" href="/">
+                        This is a link
+                      </Link>
+                      <Link color="green" href="/">
+                        This is a link
+                      </Link>
+                      <Link color="red" href="/">
+                        This is a link
+                      </Link>
+                      <Link color="yellow" href="/">
+                        This is a link
+                      </Link>
+                      <Link color="blue" href="/">
+                        This is a link
+                      </Link>
+                    </Flex>
+                    <Flex gap="4" mb="5">
+                      <Link variant="high-contrast" color="purple" href="/">
+                        This is a link
+                      </Link>
+                      <Link variant="high-contrast" color="gray" href="/">
+                        This is a link
+                      </Link>
+                      <Link variant="high-contrast" color="green" href="/">
+                        This is a link
+                      </Link>
+                      <Link variant="high-contrast" color="red" href="/">
+                        This is a link
+                      </Link>
+                      <Link variant="high-contrast" color="yellow" href="/">
+                        This is a link
+                      </Link>
+                      <Link variant="high-contrast" color="blue" href="/">
+                        This is a link
+                      </Link>
+                    </Flex>
+
+                    <Separator size="3" my="5" />
+
+                    <Box style={{ width: '55%' }}>
+                      <Heading size="5" mb="2">
+                        The principles of the Typographic Craft are difficult to master
+                      </Heading>
+                      <Text size="4">
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant.
+                      </Text>
+                    </Box>
+
+                    <Grid columns="2" gap="5" mb="7">
+                      <Box>
+                        <Heading size="4" mb="2">
+                          The principles of the Typographic Craft are difficult to master
+                        </Heading>
+                        <Text size="3">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Heading size="3" mb="2">
+                          The principles of the Typographic Craft are difficult to master
+                        </Heading>
+                        <Text size="2">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Grid columns="3" gap="5">
+                      <Box>
+                        <Heading size="2" mb="1">
+                          The principles of the Typographic Craft are difficult to master
+                        </Heading>
+                        <Text size="2">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Heading size="2" mb="1">
+                          The principles of the Typographic Craft are difficult to master
+                        </Heading>
+                        <Text size="1">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Heading size="1" mb="1">
+                          The principles of the Typographic Craft are difficult to master
+                        </Heading>
+                        <Text size="1">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Separator size="3" my="5" />
+
+                    <Grid columns="2" gap="5">
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="1" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="1">
+                          Extensions from added software
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="2" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="1">
+                          Extensions from added software
+                        </Text>
+                      </Box>
+                    </Grid>
+                    <Grid columns="2" gap="5">
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="2" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="2">
+                          Extensions from added software
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="3" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="2">
+                          Extensions from added software
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Separator size="3" my="5" />
+
+                    <Grid columns="2" gap="5">
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="1" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="1">
+                          Extensions from added software for something to do with Apple Finder.
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="2" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="1">
+                          Extensions from added software for something to do with Apple Finder.
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Grid columns="2" gap="5">
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="2" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="2">
+                          Extensions from added software for something to do with Apple Finder.
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250 }}>
+                        <Text size="3" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text color="gray" size="2">
+                          Extensions from added software for something to do with Apple Finder.
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Separator size="3" my="5" />
+
+                    <Grid columns="2" gap="5">
+                      <Box style={{ maxWidth: 250, textAlign: 'center' }}>
+                        <Button variant="solid" size="1" mb="1">
+                          Quick Look
+                        </Button>
+                        <Text color="gray" size="1">
+                          Verification needed
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250, textAlign: 'center' }}>
+                        <Button variant="solid" size="2" mb="1">
+                          Quick Look
+                        </Button>
+                        <Text color="gray" size="1">
+                          Verification needed
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250, textAlign: 'center' }}>
+                        <Button variant="solid" size="1" mb="1">
+                          Quick Look
+                        </Button>
+                        <Text color="gray" size="2">
+                          Verification needed
+                        </Text>
+                      </Box>
+                      <Box style={{ maxWidth: 250, textAlign: 'center' }}>
+                        <Button variant="solid" size="2" mb="1">
+                          Quick Look
+                        </Button>
+                        <Text color="gray" size="2">
+                          Verification needed
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Separator size="3" my="5" />
+
+                    <Blockquote>
+                      The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
+                      applied to all fonts.google.com pages where fonts are rendered. This results
+                      in browsers using the <strong>greyscale antialiasing method</strong> rather
+                      than default <Em>subpixel rendering</Em> of fonts.{' '}
+                      <Quote>
+                        I believe this was probably introduced to get around inconsistencies in
+                        rendering between browsers
+                      </Quote>
+                      , particular between Chrome and Safari on MacOS.
+                      <Sup>1</Sup>
+                    </Blockquote>
+                  </Flex>
+                </DocsSection>
+
+                <DocsSection title="Text">
+                  <Flex direction="column" gap="4">
+                    {textSizes
+                      .slice()
+                      .reverse()
+                      .map((size) => (
+                        <Text key={size} size={size}>
+                          The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
+                        </Text>
+                      ))}
+                  </Flex>
+                </DocsSection>
+
+                <DocsSection title="Code">
+                  <Grid columns="2" gap="9">
+                    {[codeColorVariants, codeMonoVariants].map((groupVariants, index) => (
+                      <div key={index}>
+                        <table className={styles.table}>
+                          <tbody>
+                            {groupVariants.map((variant) => (
+                              <tr key={variant}>
+                                <RowHeaderCell>{variant}</RowHeaderCell>
+                                <td>
+                                  <Code variant={variant}>console.log()</Code>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ))}
                   </Grid>
 
-                  <Separator size="3" my="5" />
+                  <Flex direction="column" gap="4" mt="7">
+                    {codeSizes
+                      .slice()
+                      .reverse()
+                      .map((size) => (
+                        <Code key={size} size={size} variant="plain">
+                          The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
+                        </Code>
+                      ))}
+                  </Flex>
 
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {codeColorVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {codeColorVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <Code variant={variant} color={color}>
+                                      console.log()
+                                    </Code>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
+                </DocsSection>
+
+                <DocsSection title="Heading">
+                  <Flex direction="column" gap="4">
+                    {headingSizes
+                      .slice()
+                      .reverse()
+                      .map((size) => (
+                        <Heading key={size} size={size}>
+                          The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
+                        </Heading>
+                      ))}
+
+                    <Flex direction="column" gap="6" mt="5">
+                      <Heading size="9" style={{ width: '50%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="8" style={{ width: '40%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="7" style={{ width: '30%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="6" style={{ width: '25%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="5" style={{ width: '20%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="4" style={{ width: '15%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="3" style={{ width: '15%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="2" style={{ width: '15%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                      <Heading size="1" style={{ width: '10%' }}>
+                        Principles of the Typographic Craft
+                      </Heading>
+                    </Flex>
+                  </Flex>
+                </DocsSection>
+
+                <DocsSection title="Link">
                   <Flex gap="4" mb="5">
                     <Link color="purple" href="/">
                       This is a link
@@ -2023,700 +2407,326 @@ export default function Sink() {
                     </Link>
                   </Flex>
 
-                  <Separator size="3" my="5" />
+                  <Flex direction="column" align="start" gap="4" mb="5">
+                    {linkSizes
+                      .slice()
+                      .reverse()
+                      .map((size) => (
+                        <Link key={size} href="/" size={size}>
+                          This is a link
+                        </Link>
+                      ))}
 
-                  <Box style={{ width: '55%' }}>
-                    <Heading size="5" mb="2">
-                      The principles of the Typographic Craft are difficult to master
-                    </Heading>
-                    <Text size="4">
-                      The goal of typography is to relate font size, line height, and line width in
-                      a proportional way that maximizes beauty and makes reading easier and more
-                      pleasant.
+                    <Flex align="center" gap="1" asChild>
+                      <Link color="purple" href="/" size="3">
+                        This is a link
+                        <ArrowTopRightIcon />
+                      </Link>
+                    </Flex>
+
+                    <Flex align="center" gap="1" asChild>
+                      <Link color="gray" href="/" size="3">
+                        This is a link
+                        <ArrowTopRightIcon />
+                      </Link>
+                    </Flex>
+
+                    <Text size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
+
+                    <Text size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+
+                    <Separator size="3" my="5" />
+
+                    <Text color="gray" size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+
+                    <Text color="purple" size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+
+                    <Text color="blue" size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+
+                    <Text color="green" size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+
+                    <Text color="yellow" size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+
+                    <Text color="red" size="6">
+                      Single Sign-On (SSO) is the most frequently asked for requirement by
+                      enterprise organizations looking to adopt new SaaS applications. SSO enables
+                      authentication via an organization’s Identity Provider (IdP), such as Google
+                      Workspace or Okta, as opposed to users or <Link href="/">IT admins</Link>{' '}
+                      managing hundreds, if not thousands, of usernames and passwords. Facilitate
+                      greater security, easier account management, and accelerated application
+                      onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
+                    </Text>
+                  </Flex>
+                </DocsSection>
+
+                <DocsSection title="Kbd">
+                  <Flex gap="4">
+                    <Kbd>Enter</Kbd>
+                    <Kbd>Tab</Kbd>
+                    <Kbd>Shift + Tab</Kbd>
+                    <Kbd width="command">⌘</Kbd>
+                    <Kbd width="shift">⇧</Kbd>
+                    <Kbd width="space">Space</Kbd>
+                  </Flex>
+                </DocsSection>
+
+                <DocsSection title="Tabs">
+                  <table className={styles.table}>
+                    <tbody>
+                      {tabsListSizes.map((size) => (
+                        <tr key={size}>
+                          <RowHeaderCell>size {size}</RowHeaderCell>
+                          <td>
+                            <TabsRoot defaultValue="account" activationMode="manual">
+                              <TabsList size={size}>
+                                <TabsTrigger value="account">Account</TabsTrigger>
+                                <TabsTrigger value="documents">Documents</TabsTrigger>
+                                <TabsTrigger value="settings">Settings</TabsTrigger>
+                              </TabsList>
+                              <TabsContent value="account">
+                                <Box py="5">Account</Box>
+                              </TabsContent>
+                              <TabsContent value="documents">
+                                <Box py="5">Documents</Box>
+                              </TabsContent>
+                              <TabsContent value="settings">
+                                <Box py="5">Settings</Box>
+                              </TabsContent>
+                            </TabsRoot>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </DocsSection>
+
+                <DocsSection title="AspectRatio">
+                  <Grid gap="5" columns="4">
+                    <div>
+                      <Text size="1" color="gray" mb="2">
+                        1x2
+                      </Text>
+                      <AspectRatio ratio={1 / 2}>{aspectRatioImage}</AspectRatio>
+                    </div>
+                    <div>
+                      <Text size="1" color="gray" mb="2">
+                        1x1
+                      </Text>
+                      <AspectRatio>{aspectRatioImage}</AspectRatio>
+                    </div>
+                    <div>
+                      <Text size="1" color="gray" mb="2">
+                        16x9
+                      </Text>
+                      <AspectRatio ratio={16 / 9}>{aspectRatioImage}</AspectRatio>
+                    </div>
+                    <div>
+                      <Text size="1" color="gray" mb="2">
+                        2x1
+                      </Text>
+                      <AspectRatio ratio={2 / 1}>{aspectRatioImage}</AspectRatio>
+                    </div>
+                  </Grid>
+                </DocsSection>
+
+                <DocsSection title="ScrollArea">
+                  <Box style={{ width: 300, height: 350 }} mb="6">
+                    <ScrollArea>
+                      <Box
+                        mb="3"
+                        style={{
+                          height: 200,
+                          width: 600,
+                          backgroundColor: 'var(--accent-3)',
+                        }}
+                      />
+                      <Text>
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+                      <Box style={{ width: 300 }} my="3">
+                        <AspectRatio ratio={16 / 9}>{aspectRatioImage}</AspectRatio>
+                      </Box>
+                      <Text size="3">
+                        The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
+                        applied to all fonts.google.com pages where fonts are rendered. This results
+                        in browsers using the <Strong>greyscale antialiasing method</Strong> rather
+                        than default <Em>subpixel rendering</Em> of fonts.{' '}
+                        <Quote>
+                          I believe this was probably introduced to get around inconsistencies in
+                          rendering between browsers
+                        </Quote>
+                        , particular between Chrome and Safari on MacOS.
+                        <Sup>1</Sup>
+                      </Text>
+                      <Box style={{ width: 300 }}>
+                        <AspectRatio ratio={1}>
+                          <img
+                            src="https://images.unsplash.com/photo-1683122803696-b3da13b071b2?&auto=format&fit=crop&w=400&q=80"
+                            alt="A dragonfly on a branch"
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                          />
+                        </AspectRatio>
+                      </Box>
+                    </ScrollArea>
                   </Box>
 
-                  <Grid columns="2" gap="5" mb="7">
-                    <Box>
-                      <Heading size="4" mb="2">
-                        The principles of the Typographic Craft are difficult to master
-                      </Heading>
-                      <Text size="3">
-                        The goal of typography is to relate font size, line height, and line width
-                        in a proportional way that maximizes beauty and makes reading easier and
-                        more pleasant.
-                      </Text>
-                    </Box>
-                    <Box>
-                      <Heading size="3" mb="2">
-                        The principles of the Typographic Craft are difficult to master
-                      </Heading>
-                      <Text size="2">
-                        The goal of typography is to relate font size, line height, and line width
-                        in a proportional way that maximizes beauty and makes reading easier and
-                        more pleasant.
-                      </Text>
-                    </Box>
-                  </Grid>
+                  <table className={styles.table}>
+                    <tbody>
+                      {scrollAreaSizes.map((size) => (
+                        <tr key={size}>
+                          <RowHeaderCell>size {size}</RowHeaderCell>
+                          <td>
+                            <Box style={{ width: 200, height: 20 }}>
+                              <ScrollArea type="always" size={size} scrollbars="horizontal">
+                                <Box style={{ width: 600, height: '100%' }} />
+                              </ScrollArea>
+                            </Box>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
-                  <Grid columns="3" gap="5">
-                    <Box>
-                      <Heading size="2" mb="1">
-                        The principles of the Typographic Craft are difficult to master
-                      </Heading>
-                      <Text size="2">
-                        The goal of typography is to relate font size, line height, and line width
-                        in a proportional way that maximizes beauty and makes reading easier and
-                        more pleasant.
-                      </Text>
-                    </Box>
-                    <Box>
-                      <Heading size="2" mb="1">
-                        The principles of the Typographic Craft are difficult to master
-                      </Heading>
-                      <Text size="1">
-                        The goal of typography is to relate font size, line height, and line width
-                        in a proportional way that maximizes beauty and makes reading easier and
-                        more pleasant.
-                      </Text>
-                    </Box>
-                    <Box>
-                      <Heading size="1" mb="1">
-                        The principles of the Typographic Craft are difficult to master
-                      </Heading>
-                      <Text size="1">
-                        The goal of typography is to relate font size, line height, and line width
-                        in a proportional way that maximizes beauty and makes reading easier and
-                        more pleasant.
-                      </Text>
-                    </Box>
-                  </Grid>
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
 
-                  <Separator size="3" my="5" />
-
-                  <Grid columns="2" gap="5">
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="1" weight="bold">
-                        Quick Look
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
                       </Text>
-                      <Text color="gray" size="1">
-                        Extensions from added software
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="2" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="1">
-                        Extensions from added software
-                      </Text>
-                    </Box>
-                  </Grid>
-                  <Grid columns="2" gap="5">
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="2" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="2">
-                        Extensions from added software
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="3" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="2">
-                        Extensions from added software
-                      </Text>
-                    </Box>
-                  </Grid>
-
-                  <Separator size="3" my="5" />
-
-                  <Grid columns="2" gap="5">
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="1" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="1">
-                        Extensions from added software for something to do with Apple Finder.
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="2" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="1">
-                        Extensions from added software for something to do with Apple Finder.
-                      </Text>
-                    </Box>
-                  </Grid>
-
-                  <Grid columns="2" gap="5">
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="2" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="2">
-                        Extensions from added software for something to do with Apple Finder.
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250 }}>
-                      <Text size="3" weight="bold">
-                        Quick Look
-                      </Text>
-                      <Text color="gray" size="2">
-                        Extensions from added software for something to do with Apple Finder.
-                      </Text>
-                    </Box>
-                  </Grid>
-
-                  <Separator size="3" my="5" />
-
-                  <Grid columns="2" gap="5">
-                    <Box style={{ maxWidth: 250, textAlign: 'center' }}>
-                      <Button variant="solid" size="1" mb="1">
-                        Quick Look
-                      </Button>
-                      <Text color="gray" size="1">
-                        Verification needed
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250, textAlign: 'center' }}>
-                      <Button variant="solid" size="2" mb="1">
-                        Quick Look
-                      </Button>
-                      <Text color="gray" size="1">
-                        Verification needed
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250, textAlign: 'center' }}>
-                      <Button variant="solid" size="1" mb="1">
-                        Quick Look
-                      </Button>
-                      <Text color="gray" size="2">
-                        Verification needed
-                      </Text>
-                    </Box>
-                    <Box style={{ maxWidth: 250, textAlign: 'center' }}>
-                      <Button variant="solid" size="2" mb="1">
-                        Quick Look
-                      </Button>
-                      <Text color="gray" size="2">
-                        Verification needed
-                      </Text>
-                    </Box>
-                  </Grid>
-
-                  <Separator size="3" my="5" />
-
-                  <Blockquote>
-                    The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been applied
-                    to all fonts.google.com pages where fonts are rendered. This results in browsers
-                    using the <strong>greyscale antialiasing method</strong> rather than default{' '}
-                    <Em>subpixel rendering</Em> of fonts.{' '}
-                    <Quote>
-                      I believe this was probably introduced to get around inconsistencies in
-                      rendering between browsers
-                    </Quote>
-                    , particular between Chrome and Safari on MacOS.
-                    <Sup>1</Sup>
-                  </Blockquote>
-                </Flex>
-              </DocsSection>
-
-              <DocsSection title="Text">
-                <Flex direction="column" gap="4">
-                  {textSizes
-                    .slice()
-                    .reverse()
-                    .map((size) => (
-                      <Text key={size} size={size}>
-                        The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
-                      </Text>
-                    ))}
-                </Flex>
-              </DocsSection>
-
-              <DocsSection title="Code">
-                <Grid columns="2" gap="9">
-                  {[codeColorVariants, codeMonoVariants].map((groupVariants, index) => (
-                    <div key={index}>
-                      <table className={styles.table}>
-                        <tbody>
-                          {groupVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              <td>
-                                <Code variant={variant}>console.log()</Code>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
-                </Grid>
-
-                <Flex direction="column" gap="4" mt="7">
-                  {codeSizes
-                    .slice()
-                    .reverse()
-                    .map((size) => (
-                      <Code key={size} size={size} variant="plain">
-                        The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
-                      </Code>
-                    ))}
-                </Flex>
-
-                <Text my="5">
-                  <Code>color</Code> can be set per instance:
-                </Text>
-
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See colors & variants combinations</span>
-                    </Text>
-                  </summary>
-                  {groupedColors.map(({ label, values }) => (
-                    <React.Fragment key={label}>
-                      <Text weight="bold" mt="6" mb="4">
-                        {label}
-                      </Text>
+                    </summary>
+                    <Box mt="3">
                       <table className={styles.table}>
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {codeColorVariants.map((variant) => (
-                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                            {scrollAreaSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {values.map((color) => (
-                            <tr key={color}>
-                              <RowHeaderCell>{color}</RowHeaderCell>
-                              {codeColorVariants.map((variant) => (
-                                <td key={variant}>
-                                  <Code variant={variant} color={color}>
-                                    console.log()
-                                  </Code>
+                          {radiusValues.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {scrollAreaSizes.map((size) => (
+                                <td key={size}>
+                                  <Box style={{ width: 200, height: 20 }}>
+                                    <ScrollArea
+                                      type="always"
+                                      radius={radius}
+                                      size={size}
+                                      scrollbars="horizontal"
+                                    >
+                                      <Box style={{ width: 600, height: '100%' }} />
+                                    </ScrollArea>
+                                  </Box>
                                 </td>
                               ))}
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                    </React.Fragment>
-                  ))}
-                </details>
-              </DocsSection>
-
-              <DocsSection title="Heading">
-                <Flex direction="column" gap="4">
-                  {headingSizes
-                    .slice()
-                    .reverse()
-                    .map((size) => (
-                      <Heading key={size} size={size}>
-                        The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
-                      </Heading>
-                    ))}
-
-                  <Flex direction="column" gap="6" mt="5">
-                    <Heading size="9" style={{ width: '50%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="8" style={{ width: '40%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="7" style={{ width: '30%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="6" style={{ width: '25%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="5" style={{ width: '20%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="4" style={{ width: '15%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="3" style={{ width: '15%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="2" style={{ width: '15%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                    <Heading size="1" style={{ width: '10%' }}>
-                      Principles of the Typographic Craft
-                    </Heading>
-                  </Flex>
-                </Flex>
-              </DocsSection>
-
-              <DocsSection title="Link">
-                <Flex gap="4" mb="5">
-                  <Link color="purple" href="/">
-                    This is a link
-                  </Link>
-                  <Link color="gray" href="/">
-                    This is a link
-                  </Link>
-                  <Link color="green" href="/">
-                    This is a link
-                  </Link>
-                  <Link color="red" href="/">
-                    This is a link
-                  </Link>
-                  <Link color="yellow" href="/">
-                    This is a link
-                  </Link>
-                  <Link color="blue" href="/">
-                    This is a link
-                  </Link>
-                </Flex>
-                <Flex gap="4" mb="5">
-                  <Link variant="high-contrast" color="purple" href="/">
-                    This is a link
-                  </Link>
-                  <Link variant="high-contrast" color="gray" href="/">
-                    This is a link
-                  </Link>
-                  <Link variant="high-contrast" color="green" href="/">
-                    This is a link
-                  </Link>
-                  <Link variant="high-contrast" color="red" href="/">
-                    This is a link
-                  </Link>
-                  <Link variant="high-contrast" color="yellow" href="/">
-                    This is a link
-                  </Link>
-                  <Link variant="high-contrast" color="blue" href="/">
-                    This is a link
-                  </Link>
-                </Flex>
-
-                <Flex direction="column" align="start" gap="4" mb="5">
-                  {linkSizes
-                    .slice()
-                    .reverse()
-                    .map((size) => (
-                      <Link key={size} href="/" size={size}>
-                        This is a link
-                      </Link>
-                    ))}
-
-                  <Flex align="center" gap="1" asChild>
-                    <Link color="purple" href="/" size="3">
-                      This is a link
-                      <ArrowTopRightIcon />
-                    </Link>
-                  </Flex>
-
-                  <Flex align="center" gap="1" asChild>
-                    <Link color="gray" href="/" size="3">
-                      This is a link
-                      <ArrowTopRightIcon />
-                    </Link>
-                  </Flex>
-
-                  <Text size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Text size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Separator size="3" my="5" />
-
-                  <Text color="gray" size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Text color="purple" size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Text color="blue" size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Text color="green" size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Text color="yellow" size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-
-                  <Text color="red" size="6">
-                    Single Sign-On (SSO) is the most frequently asked for requirement by enterprise
-                    organizations looking to adopt new SaaS applications. SSO enables authentication
-                    via an organization’s Identity Provider (IdP), such as Google Workspace or Okta,
-                    as opposed to users or <Link href="/">IT admins</Link> managing hundreds, if not
-                    thousands, of usernames and passwords. Facilitate greater security, easier
-                    account management, and accelerated application onboarding and adoption by{' '}
-                    <Link href="/">adding SSO to your app</Link>.
-                  </Text>
-                </Flex>
-              </DocsSection>
-
-              <DocsSection title="Kbd">
-                <Flex gap="4">
-                  <Kbd>Enter</Kbd>
-                  <Kbd>Tab</Kbd>
-                  <Kbd>Shift + Tab</Kbd>
-                  <Kbd width="command">⌘</Kbd>
-                  <Kbd width="shift">⇧</Kbd>
-                  <Kbd width="space">Space</Kbd>
-                </Flex>
-              </DocsSection>
-
-              <DocsSection title="Tabs">
-                <table className={styles.table}>
-                  <tbody>
-                    {tabsListSizes.map((size) => (
-                      <tr key={size}>
-                        <RowHeaderCell>size {size}</RowHeaderCell>
-                        <td>
-                          <TabsRoot defaultValue="account" activationMode="manual">
-                            <TabsList size={size}>
-                              <TabsTrigger value="account">Account</TabsTrigger>
-                              <TabsTrigger value="documents">Documents</TabsTrigger>
-                              <TabsTrigger value="settings">Settings</TabsTrigger>
-                            </TabsList>
-                            <TabsContent value="account">
-                              <Box py="5">Account</Box>
-                            </TabsContent>
-                            <TabsContent value="documents">
-                              <Box py="5">Documents</Box>
-                            </TabsContent>
-                            <TabsContent value="settings">
-                              <Box py="5">Settings</Box>
-                            </TabsContent>
-                          </TabsRoot>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </DocsSection>
-
-              <DocsSection title="AspectRatio">
-                <Grid gap="5" columns="4">
-                  <div>
-                    <Text size="1" color="gray" mb="2">
-                      1x2
-                    </Text>
-                    <AspectRatio ratio={1 / 2}>{aspectRatioImage}</AspectRatio>
-                  </div>
-                  <div>
-                    <Text size="1" color="gray" mb="2">
-                      1x1
-                    </Text>
-                    <AspectRatio>{aspectRatioImage}</AspectRatio>
-                  </div>
-                  <div>
-                    <Text size="1" color="gray" mb="2">
-                      16x9
-                    </Text>
-                    <AspectRatio ratio={16 / 9}>{aspectRatioImage}</AspectRatio>
-                  </div>
-                  <div>
-                    <Text size="1" color="gray" mb="2">
-                      2x1
-                    </Text>
-                    <AspectRatio ratio={2 / 1}>{aspectRatioImage}</AspectRatio>
-                  </div>
-                </Grid>
-              </DocsSection>
-
-              <DocsSection title="ScrollArea">
-                <Box style={{ width: 300, height: 350 }} mb="6">
-                  <ScrollArea>
-                    <Box
-                      mb="3"
-                      style={{
-                        height: 200,
-                        width: 600,
-                        backgroundColor: 'var(--accent-3)',
-                      }}
-                    />
-                    <Text>
-                      The goal of typography is to relate font size, line height, and line width in
-                      a proportional way that maximizes beauty and makes reading easier and more
-                      pleasant. The question is: What proportion(s) will give us the best results?
-                      The golden ratio is often observed in nature where beauty and utility
-                      intersect; perhaps we can use this “divine” proportion to enhance these
-                      attributes in our typography.
-                    </Text>
-                    <Box style={{ width: 300 }} my="3">
-                      <AspectRatio ratio={16 / 9}>{aspectRatioImage}</AspectRatio>
                     </Box>
-                    <Text size="3">
-                      The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
-                      applied to all fonts.google.com pages where fonts are rendered. This results
-                      in browsers using the <Strong>greyscale antialiasing method</Strong> rather
-                      than default <Em>subpixel rendering</Em> of fonts.{' '}
-                      <Quote>
-                        I believe this was probably introduced to get around inconsistencies in
-                        rendering between browsers
-                      </Quote>
-                      , particular between Chrome and Safari on MacOS.
-                      <Sup>1</Sup>
-                    </Text>
-                    <Box style={{ width: 300 }}>
-                      <AspectRatio ratio={1}>
-                        <img
-                          src="https://images.unsplash.com/photo-1683122803696-b3da13b071b2?&auto=format&fit=crop&w=400&q=80"
-                          alt="A dragonfly on a branch"
-                          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                        />
-                      </AspectRatio>
-                    </Box>
-                  </ScrollArea>
-                </Box>
+                  </details>
+                </DocsSection>
 
-                <table className={styles.table}>
-                  <tbody>
-                    {scrollAreaSizes.map((size) => (
-                      <tr key={size}>
-                        <RowHeaderCell>size {size}</RowHeaderCell>
-                        <td>
-                          <Box style={{ width: 200, height: 20 }}>
-                            <ScrollArea type="always" size={size} scrollbars="horizontal">
-                              <Box style={{ width: 600, height: '100%' }} />
-                            </ScrollArea>
-                          </Box>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <PlaygroundSection />
 
-                <Text my="5">
-                  <Code>radius</Code> can be set per instance:
-                </Text>
+                <DocsSection title="Mode testing">
+                  <Grid columns="3" mx="-6">
+                    <PlaygroundModeTest title="Global mode" />
 
-                <details>
-                  <summary>
-                    <Text size="2" color="gray" asChild>
-                      <span>See specific radius examples</span>
-                    </Text>
-                  </summary>
-                  <Box mt="3">
-                    <table className={styles.table}>
-                      <thead>
-                        <tr>
-                          <ColumnHeaderCell />
-                          {scrollAreaSizes.map((size) => (
-                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {radiusValues.map((radius) => (
-                          <tr key={radius}>
-                            <RowHeaderCell>{radius}</RowHeaderCell>
-                            {scrollAreaSizes.map((size) => (
-                              <td key={size}>
-                                <Box style={{ width: 200, height: 20 }}>
-                                  <ScrollArea
-                                    type="always"
-                                    radius={radius}
-                                    size={size}
-                                    scrollbars="horizontal"
-                                  >
-                                    <Box style={{ width: 600, height: '100%' }} />
-                                  </ScrollArea>
-                                </Box>
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </details>
-              </DocsSection>
-
-              <PlaygroundSection />
-
-              <DocsSection title="Mode testing">
-                <Grid columns="3" mx="-6">
-                  <PlaygroundModeTest title="Global mode" />
-
-                  <Grid
-                    columns="2"
-                    className="dark-theme"
-                    style={{
-                      gridColumn: '2 / span 2',
-                      backgroundColor: 'var(--background-color)',
-                    }}
-                  >
-                    <PlaygroundModeTest title="Always dark mode" />
-
-                    <Box
-                      className="light-theme"
+                    <Grid
+                      columns="2"
+                      className="dark-theme"
                       style={{
+                        gridColumn: '2 / span 2',
                         backgroundColor: 'var(--background-color)',
                       }}
                     >
-                      <PlaygroundModeTest title="Always light mode" />
-                    </Box>
+                      <PlaygroundModeTest title="Always dark mode" />
+
+                      <Box
+                        className="light-theme"
+                        style={{
+                          backgroundColor: 'var(--background-color)',
+                        }}
+                      >
+                        <PlaygroundModeTest title="Always light mode" />
+                      </Box>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </DocsSection>
-            </main>
-          </Provider>
-        </div>
-      </body>
-    </html>
+                </DocsSection>
+              </main>
+            </Provider>
+          </div>
+        </body>
+      </html>
+    </ThemeConfig>
   );
 }
 

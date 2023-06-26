@@ -1,26 +1,28 @@
 import * as React from 'react';
-import { Provider, Avatar, Flex } from '@radix-ui/themes';
+import { ThemeConfig, Provider, Avatar, Flex } from '@radix-ui/themes';
 import { ControlPanel } from '../../components/control-panel';
 
 export default function Test() {
   return (
-    <html lang="en" data-accent-scale="purple" data-radius="full">
-      <body className="rui-reset-body">
-        <div id="root">
-          <Provider>
-            <ControlPanel />
-            <Flex align="center" gap="3">
-              <Avatar src="./api/avatar" fallback="BG" />
+    <ThemeConfig asChild accentScale="purple" radius="full">
+      <html lang="en">
+        <body className="rui-reset-root">
+          <div id="root">
+            <Provider>
+              <ControlPanel />
+              <Flex align="center" gap="3">
+                <Avatar src="./api/avatar" fallback="BG" />
 
-              <Avatar src="#" fallback="BG" />
+                <Avatar src="#" fallback="BG" />
 
-              <Avatar fallback="BG" />
-              <Avatar fallback={<CustomUserIcon />} />
-            </Flex>
-          </Provider>
-        </div>
-      </body>
-    </html>
+                <Avatar fallback="BG" />
+                <Avatar fallback={<CustomUserIcon />} />
+              </Flex>
+            </Provider>
+          </div>
+        </body>
+      </html>
+    </ThemeConfig>
   );
 }
 

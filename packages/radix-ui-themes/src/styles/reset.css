@@ -1,6 +1,4 @@
-.rui-reset-body {
-  margin: 0;
-
+.rui-reset-root {
   overflow-wrap: break-word;
   font-family: var(--ff-sans);
   text-size-adjust: none;

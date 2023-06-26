@@ -10,7 +10,7 @@ function ImageCard({ id }: any) {
   return (
     <div className={styles.imageCard}>
       <img
-        src={`https://images.unsplash.com/photo-${id}?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80`}
+        src={`https://images.unsplash.com/photo-${id}?w=400&h=400&dpr=2&auto=format&fit=crop&w=2574&q=70`}
         style={{
           display: 'block',
           width: '100%',

@@ -4,7 +4,7 @@ export {
   baseButtonVariants as buttonVariants,
   defaultBaseButtonVariant as defaultButtonVariant,
   defaultBaseButtonColor as defaultButtonColor,
-  defaultBaseRadius as defaultRadius,
+  defaultBaseRadius as defaultButtonRadius,
 } from './base-button.props';
 export type {
   BaseButtonSize as ButtonSize,

@@ -1,5 +1,9 @@
 @import '@radix-ui/themes/dist/index.css';
 
+body {
+  margin: 0;
+}
+
 #root {
   position: relative;
   z-index: 0;

@@ -17,12 +17,19 @@ import {
   Text,
   // helpers
   groupedColors,
+  defaultThemeAccentScale,
   groupedGrays,
+  defaultThemeGrayScale,
   getNaturallyPairedGrayScale,
   backgroundColorValues,
+  defaultThemeBackgroundColor,
   textColorValues,
+  defaultThemeTextColor,
+  defaultThemeDarkMode,
   radiusValues,
+  defaultThemeRadius,
   scalingValues,
+  defaultThemeScaling,
 } from '@radix-ui/themes';
 import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { gray as radixColorsGray, grayDark as radixColorsGrayDark } from '@radix-ui/colors';
@@ -35,14 +42,6 @@ import type {
   Radius,
   Scaling,
 } from '@radix-ui/themes';
-
-const DEFAULT_ACCENT_SCALE: ColorScale = 'indigo';
-const DEFAULT_GRAY_SCALE: GrayScaleControl = 'auto';
-const DEFAULT_BACKGROUND_COLOR: BackgroundColorControl = 'auto';
-const DEFAULT_TEXT_COLOR: TextColorControl = 'auto';
-const DEFAULT_DARK_MODE: boolean = false;
-const DEFAULT_RADIUS: Radius = 'medium';
-const DEFAULT_SCALING: Scaling = '100%';
 
 interface ControlPanelProps {
   defaultVisible?: boolean;
@@ -64,30 +63,29 @@ interface ControlPanelImplProps {
   onVisibleChange: (visible: boolean) => void;
 }
 const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleChange }) => {
-  const root = document.documentElement;
+  const resetRoot = document.querySelector('.rui-reset-root') as HTMLElement | undefined;
+  const root = resetRoot ?? document.documentElement;
 
-  const defaultAccentScale = (root.dataset.accentScale as ColorScale) || DEFAULT_ACCENT_SCALE;
-  const defaultGrayScale = (root.dataset.grayScale as GrayScaleControl) || DEFAULT_GRAY_SCALE;
-  const defaultDarkMode = root.classList.contains('dark-theme') || DEFAULT_DARK_MODE;
-  const defaultBackgroundColor =
-    (root.dataset.backgroundColor as BackgroundColorControl) || DEFAULT_BACKGROUND_COLOR;
-  const defaultTextColor = (root.dataset.textColor as TextColorControl) || DEFAULT_TEXT_COLOR;
-  const defaultRadius = (root.dataset.radius as Radius) || DEFAULT_RADIUS;
-  const defaultScaling = (root.dataset.scaling as Scaling) || DEFAULT_SCALING;
+  const initialAccentScale = (root.dataset.accentScale as ColorScale) || defaultThemeAccentScale;
+  const initialGrayScale = (root.dataset.grayScale as GrayScaleControl) || defaultThemeGrayScale;
+  const initialDarkMode = root.classList.contains('dark-theme') || defaultThemeDarkMode;
+  const initialBackgroundColor =
+    (root.dataset.backgroundColor as BackgroundColorControl) || defaultThemeBackgroundColor;
+  const initialTextColor = (root.dataset.textColor as TextColorControl) || defaultThemeTextColor;
+  const initialRadius = (root.dataset.radius as Radius) || defaultThemeRadius;
+  const initialScaling = (root.dataset.scaling as Scaling) || defaultThemeScaling;
 
-  const [accentScale, setAccentScale] = React.useState(defaultAccentScale);
-  const [grayScale, setGrayScale] = React.useState(defaultGrayScale);
-  const [backgroundColor, setBackgroundColor] = React.useState(defaultBackgroundColor);
-  const [textColor, setTextColor] = React.useState(defaultTextColor);
-  const [darkMode, setDarkMode] = React.useState(defaultDarkMode);
-  const [radius, setRadius] = React.useState(defaultRadius);
-  const [scaling, setScaling] = React.useState(defaultScaling);
+  const [accentScale, setAccentScale] = React.useState(initialAccentScale);
+  const [grayScale, setGrayScale] = React.useState(initialGrayScale);
+  const [backgroundColor, setBackgroundColor] = React.useState(initialBackgroundColor);
+  const [textColor, setTextColor] = React.useState(initialTextColor);
+  const [darkMode, setDarkMode] = React.useState(initialDarkMode);
+  const [radius, setRadius] = React.useState(initialRadius);
+  const [scaling, setScaling] = React.useState(initialScaling);
 
   const pureGray9 = darkMode ? radixColorsGrayDark.gray9 : radixColorsGray.gray9;
   const naturalGray = getNaturallyPairedGrayScale(accentScale);
   const resolvedGrayScale = grayScale === 'auto' ? naturalGray : grayScale;
-
-  // const [feelLocked, setFeelLocked] = React.useState(backgroundColor === textColor);
 
   // quickly show/hide using cmd+c
   React.useEffect(() => {
@@ -115,7 +113,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [darkMode, setDarkMode]);
 
   React.useLayoutEffect(() => {
-    if (accentScale !== DEFAULT_ACCENT_SCALE) {
+    if (accentScale !== defaultThemeAccentScale) {
       root.dataset.accentScale = accentScale;
     } else {
       delete root.dataset.accentScale;
@@ -123,7 +121,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [root, accentScale]);
 
   React.useLayoutEffect(() => {
-    if (grayScale !== DEFAULT_GRAY_SCALE) {
+    if (grayScale !== defaultThemeGrayScale) {
       root.dataset.grayScale = grayScale;
     } else {
       delete root.dataset.grayScale;
@@ -131,7 +129,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [root, grayScale]);
 
   React.useLayoutEffect(() => {
-    if (backgroundColor !== DEFAULT_BACKGROUND_COLOR) {
+    if (backgroundColor !== defaultThemeBackgroundColor) {
       root.dataset.backgroundColor = backgroundColor;
     } else {
       delete root.dataset.backgroundColor;
@@ -139,7 +137,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [root, backgroundColor]);
 
   React.useLayoutEffect(() => {
-    if (textColor !== DEFAULT_TEXT_COLOR) {
+    if (textColor !== defaultThemeTextColor) {
       root.dataset.textColor = textColor;
     } else {
       delete root.dataset.textColor;
@@ -152,12 +150,12 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
       root.classList.add('dark-theme');
     } else {
       root.classList.remove('dark-theme');
-      if (darkMode !== DEFAULT_DARK_MODE) root.classList.add('light-theme');
+      if (darkMode !== defaultThemeDarkMode) root.classList.add('light-theme');
     }
   }, [root, darkMode]);
 
   React.useLayoutEffect(() => {
-    if (radius !== DEFAULT_RADIUS) {
+    if (radius !== defaultThemeRadius) {
       root.dataset.radius = radius;
     } else {
       delete root.dataset.radius;
@@ -165,7 +163,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
   }, [root, radius]);
 
   React.useLayoutEffect(() => {
-    if (scaling !== DEFAULT_SCALING) {
+    if (scaling !== defaultThemeScaling) {
       root.dataset.scaling = scaling;
     } else {
       delete root.dataset.scaling;
