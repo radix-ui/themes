@@ -3018,7 +3018,7 @@ function PlaygroundModeTest({ title = '' }) {
   return (
     <Box p="6">
       <Heading mb="5">{title}</Heading>
-      <PlaygroundForm size="1" />
+      <PlaygroundForm size="2" />
     </Box>
   );
 }
