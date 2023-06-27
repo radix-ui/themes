@@ -1,77 +1,145 @@
 /* regulars (white foreground) */
 @import '@radix-ui/colors/tomato.css';
 @import '@radix-ui/colors/tomato-dark.css';
+@import '@radix-ui/colors/tomato-alpha.css';
+@import '@radix-ui/colors/tomato-dark-alpha.css';
+
 @import '@radix-ui/colors/red.css';
 @import '@radix-ui/colors/red-dark.css';
+@import '@radix-ui/colors/red-alpha.css';
+@import '@radix-ui/colors/red-dark-alpha.css';
+
 @import '@radix-ui/colors/crimson.css';
 @import '@radix-ui/colors/crimson-dark.css';
+@import '@radix-ui/colors/crimson-alpha.css';
+@import '@radix-ui/colors/crimson-dark-alpha.css';
+
 @import '@radix-ui/colors/pink.css';
 @import '@radix-ui/colors/pink-dark.css';
+@import '@radix-ui/colors/pink-alpha.css';
+@import '@radix-ui/colors/pink-dark-alpha.css';
+
 @import '@radix-ui/colors/plum.css';
 @import '@radix-ui/colors/plum-dark.css';
+@import '@radix-ui/colors/plum-alpha.css';
+@import '@radix-ui/colors/plum-dark-alpha.css';
+
 @import '@radix-ui/colors/purple.css';
 @import '@radix-ui/colors/purple-dark.css';
+@import '@radix-ui/colors/purple-alpha.css';
+@import '@radix-ui/colors/purple-dark-alpha.css';
+
 @import '@radix-ui/colors/violet.css';
 @import '@radix-ui/colors/violet-dark.css';
+@import '@radix-ui/colors/violet-alpha.css';
+@import '@radix-ui/colors/violet-dark-alpha.css';
+
 @import '@radix-ui/colors/indigo.css';
 @import '@radix-ui/colors/indigo-dark.css';
+@import '@radix-ui/colors/indigo-alpha.css';
+@import '@radix-ui/colors/indigo-dark-alpha.css';
+
 @import '@radix-ui/colors/blue.css';
 @import '@radix-ui/colors/blue-dark.css';
+@import '@radix-ui/colors/blue-alpha.css';
+@import '@radix-ui/colors/blue-dark-alpha.css';
+
 @import '@radix-ui/colors/cyan.css';
 @import '@radix-ui/colors/cyan-dark.css';
+@import '@radix-ui/colors/cyan-alpha.css';
+@import '@radix-ui/colors/cyan-dark-alpha.css';
+
 @import '@radix-ui/colors/teal.css';
 @import '@radix-ui/colors/teal-dark.css';
+@import '@radix-ui/colors/teal-alpha.css';
+@import '@radix-ui/colors/teal-dark-alpha.css';
+
 @import '@radix-ui/colors/green.css';
 @import '@radix-ui/colors/green-dark.css';
+@import '@radix-ui/colors/green-alpha.css';
+@import '@radix-ui/colors/green-dark-alpha.css';
+
 @import '@radix-ui/colors/grass.css';
 @import '@radix-ui/colors/grass-dark.css';
+@import '@radix-ui/colors/grass-alpha.css';
+@import '@radix-ui/colors/grass-dark-alpha.css';
+
 @import '@radix-ui/colors/orange.css';
 @import '@radix-ui/colors/orange-dark.css';
+@import '@radix-ui/colors/orange-alpha.css';
+@import '@radix-ui/colors/orange-dark-alpha.css';
+
 @import '@radix-ui/colors/brown.css';
 @import '@radix-ui/colors/brown-dark.css';
+@import '@radix-ui/colors/brown-alpha.css';
+@import '@radix-ui/colors/brown-dark-alpha.css';
 
 /* brights (black foreground) */
 @import '@radix-ui/colors/sky.css';
 @import '@radix-ui/colors/sky-dark.css';
+@import '@radix-ui/colors/sky-alpha.css';
+@import '@radix-ui/colors/sky-dark-alpha.css';
+
 @import '@radix-ui/colors/mint.css';
 @import '@radix-ui/colors/mint-dark.css';
+@import '@radix-ui/colors/mint-alpha.css';
+@import '@radix-ui/colors/mint-dark-alpha.css';
+
 @import '@radix-ui/colors/lime.css';
 @import '@radix-ui/colors/lime-dark.css';
+@import '@radix-ui/colors/lime-alpha.css';
+@import '@radix-ui/colors/lime-dark-alpha.css';
+
 @import '@radix-ui/colors/yellow.css';
 @import '@radix-ui/colors/yellow-dark.css';
+@import '@radix-ui/colors/yellow-alpha.css';
+@import '@radix-ui/colors/yellow-dark-alpha.css';
+
 @import '@radix-ui/colors/amber.css';
 @import '@radix-ui/colors/amber-dark.css';
+@import '@radix-ui/colors/amber-alpha.css';
+@import '@radix-ui/colors/amber-dark-alpha.css';
 
 /* metals */
 @import '@radix-ui/colors/gold.css';
 @import '@radix-ui/colors/gold-dark.css';
+@import '@radix-ui/colors/gold-alpha.css';
+@import '@radix-ui/colors/gold-dark-alpha.css';
+
 @import '@radix-ui/colors/bronze.css';
 @import '@radix-ui/colors/bronze-dark.css';
+@import '@radix-ui/colors/bronze-alpha.css';
+@import '@radix-ui/colors/bronze-dark-alpha.css';
 
 /* grays */
 @import '@radix-ui/colors/gray.css';
-@import '@radix-ui/colors/gray-alpha.css';
 @import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/gray-alpha.css';
 @import '@radix-ui/colors/gray-dark-alpha.css';
+
 @import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/mauve-alpha.css';
 @import '@radix-ui/colors/mauve-dark.css';
+@import '@radix-ui/colors/mauve-alpha.css';
 @import '@radix-ui/colors/mauve-dark-alpha.css';
+
 @import '@radix-ui/colors/slate.css';
-@import '@radix-ui/colors/slate-alpha.css';
 @import '@radix-ui/colors/slate-dark.css';
+@import '@radix-ui/colors/slate-alpha.css';
 @import '@radix-ui/colors/slate-dark-alpha.css';
+
 @import '@radix-ui/colors/sage.css';
-@import '@radix-ui/colors/sage-alpha.css';
 @import '@radix-ui/colors/sage-dark.css';
+@import '@radix-ui/colors/sage-alpha.css';
 @import '@radix-ui/colors/sage-dark-alpha.css';
+
 @import '@radix-ui/colors/olive.css';
-@import '@radix-ui/colors/olive-alpha.css';
 @import '@radix-ui/colors/olive-dark.css';
+@import '@radix-ui/colors/olive-alpha.css';
 @import '@radix-ui/colors/olive-dark-alpha.css';
+
 @import '@radix-ui/colors/sand.css';
-@import '@radix-ui/colors/sand-alpha.css';
 @import '@radix-ui/colors/sand-dark.css';
+@import '@radix-ui/colors/sand-alpha.css';
 @import '@radix-ui/colors/sand-dark-alpha.css';
 
 /* overlays */
@@ -148,6 +216,19 @@
     --accent-10: var(--indigo-10);
     --accent-11: var(--indigo-11);
     --accent-12: var(--indigo-12);
+
+    --accent-a1: var(--indigo-a1);
+    --accent-a2: var(--indigo-a2);
+    --accent-a3: var(--indigo-a3);
+    --accent-a4: var(--indigo-a4);
+    --accent-a5: var(--indigo-a5);
+    --accent-a6: var(--indigo-a6);
+    --accent-a7: var(--indigo-a7);
+    --accent-a8: var(--indigo-a8);
+    --accent-a9: var(--indigo-a9);
+    --accent-a10: var(--indigo-a10);
+    --accent-a11: var(--indigo-a11);
+    --accent-a12: var(--indigo-a12);
   }
 }
 [data-accent-scale='tomato'] {
@@ -169,6 +250,19 @@
     --accent-10: var(--tomato-10);
     --accent-11: var(--tomato-11);
     --accent-12: var(--tomato-12);
+
+    --accent-a1: var(--tomato-a1);
+    --accent-a2: var(--tomato-a2);
+    --accent-a3: var(--tomato-a3);
+    --accent-a4: var(--tomato-a4);
+    --accent-a5: var(--tomato-a5);
+    --accent-a6: var(--tomato-a6);
+    --accent-a7: var(--tomato-a7);
+    --accent-a8: var(--tomato-a8);
+    --accent-a9: var(--tomato-a9);
+    --accent-a10: var(--tomato-a10);
+    --accent-a11: var(--tomato-a11);
+    --accent-a12: var(--tomato-a12);
   }
 }
 [data-accent-scale='red'] {
@@ -190,6 +284,19 @@
     --accent-10: var(--red-10);
     --accent-11: var(--red-11);
     --accent-12: var(--red-12);
+
+    --accent-a1: var(--red-a1);
+    --accent-a2: var(--red-a2);
+    --accent-a3: var(--red-a3);
+    --accent-a4: var(--red-a4);
+    --accent-a5: var(--red-a5);
+    --accent-a6: var(--red-a6);
+    --accent-a7: var(--red-a7);
+    --accent-a8: var(--red-a8);
+    --accent-a9: var(--red-a9);
+    --accent-a10: var(--red-a10);
+    --accent-a11: var(--red-a11);
+    --accent-a12: var(--red-a12);
   }
 }
 [data-accent-scale='crimson'] {
@@ -211,6 +318,19 @@
     --accent-10: var(--crimson-10);
     --accent-11: var(--crimson-11);
     --accent-12: var(--crimson-12);
+
+    --accent-a1: var(--crimson-a1);
+    --accent-a2: var(--crimson-a2);
+    --accent-a3: var(--crimson-a3);
+    --accent-a4: var(--crimson-a4);
+    --accent-a5: var(--crimson-a5);
+    --accent-a6: var(--crimson-a6);
+    --accent-a7: var(--crimson-a7);
+    --accent-a8: var(--crimson-a8);
+    --accent-a9: var(--crimson-a9);
+    --accent-a10: var(--crimson-a10);
+    --accent-a11: var(--crimson-a11);
+    --accent-a12: var(--crimson-a12);
   }
 }
 [data-accent-scale='pink'] {
@@ -232,6 +352,19 @@
     --accent-10: var(--pink-10);
     --accent-11: var(--pink-11);
     --accent-12: var(--pink-12);
+
+    --accent-a1: var(--pink-a1);
+    --accent-a2: var(--pink-a2);
+    --accent-a3: var(--pink-a3);
+    --accent-a4: var(--pink-a4);
+    --accent-a5: var(--pink-a5);
+    --accent-a6: var(--pink-a6);
+    --accent-a7: var(--pink-a7);
+    --accent-a8: var(--pink-a8);
+    --accent-a9: var(--pink-a9);
+    --accent-a10: var(--pink-a10);
+    --accent-a11: var(--pink-a11);
+    --accent-a12: var(--pink-a12);
   }
 }
 [data-accent-scale='plum'] {
@@ -253,6 +386,19 @@
     --accent-10: var(--plum-10);
     --accent-11: var(--plum-11);
     --accent-12: var(--plum-12);
+
+    --accent-a1: var(--plum-a1);
+    --accent-a2: var(--plum-a2);
+    --accent-a3: var(--plum-a3);
+    --accent-a4: var(--plum-a4);
+    --accent-a5: var(--plum-a5);
+    --accent-a6: var(--plum-a6);
+    --accent-a7: var(--plum-a7);
+    --accent-a8: var(--plum-a8);
+    --accent-a9: var(--plum-a9);
+    --accent-a10: var(--plum-a10);
+    --accent-a11: var(--plum-a11);
+    --accent-a12: var(--plum-a12);
   }
 }
 [data-accent-scale='purple'] {
@@ -274,6 +420,19 @@
     --accent-10: var(--purple-10);
     --accent-11: var(--purple-11);
     --accent-12: var(--purple-12);
+
+    --accent-a1: var(--purple-a1);
+    --accent-a2: var(--purple-a2);
+    --accent-a3: var(--purple-a3);
+    --accent-a4: var(--purple-a4);
+    --accent-a5: var(--purple-a5);
+    --accent-a6: var(--purple-a6);
+    --accent-a7: var(--purple-a7);
+    --accent-a8: var(--purple-a8);
+    --accent-a9: var(--purple-a9);
+    --accent-a10: var(--purple-a10);
+    --accent-a11: var(--purple-a11);
+    --accent-a12: var(--purple-a12);
   }
 }
 [data-accent-scale='violet'] {
@@ -295,6 +454,19 @@
     --accent-10: var(--violet-10);
     --accent-11: var(--violet-11);
     --accent-12: var(--violet-12);
+
+    --accent-a1: var(--violet-a1);
+    --accent-a2: var(--violet-a2);
+    --accent-a3: var(--violet-a3);
+    --accent-a4: var(--violet-a4);
+    --accent-a5: var(--violet-a5);
+    --accent-a6: var(--violet-a6);
+    --accent-a7: var(--violet-a7);
+    --accent-a8: var(--violet-a8);
+    --accent-a9: var(--violet-a9);
+    --accent-a10: var(--violet-a10);
+    --accent-a11: var(--violet-a11);
+    --accent-a12: var(--violet-a12);
   }
 }
 [data-accent-scale='blue'] {
@@ -316,6 +488,19 @@
     --accent-10: var(--blue-10);
     --accent-11: var(--blue-11);
     --accent-12: var(--blue-12);
+
+    --accent-a1: var(--blue-a1);
+    --accent-a2: var(--blue-a2);
+    --accent-a3: var(--blue-a3);
+    --accent-a4: var(--blue-a4);
+    --accent-a5: var(--blue-a5);
+    --accent-a6: var(--blue-a6);
+    --accent-a7: var(--blue-a7);
+    --accent-a8: var(--blue-a8);
+    --accent-a9: var(--blue-a9);
+    --accent-a10: var(--blue-a10);
+    --accent-a11: var(--blue-a11);
+    --accent-a12: var(--blue-a12);
   }
 }
 [data-accent-scale='cyan'] {
@@ -337,6 +522,19 @@
     --accent-10: var(--cyan-10);
     --accent-11: var(--cyan-11);
     --accent-12: var(--cyan-12);
+
+    --accent-a1: var(--cyan-a1);
+    --accent-a2: var(--cyan-a2);
+    --accent-a3: var(--cyan-a3);
+    --accent-a4: var(--cyan-a4);
+    --accent-a5: var(--cyan-a5);
+    --accent-a6: var(--cyan-a6);
+    --accent-a7: var(--cyan-a7);
+    --accent-a8: var(--cyan-a8);
+    --accent-a9: var(--cyan-a9);
+    --accent-a10: var(--cyan-a10);
+    --accent-a11: var(--cyan-a11);
+    --accent-a12: var(--cyan-a12);
   }
 }
 [data-accent-scale='teal'] {
@@ -358,6 +556,19 @@
     --accent-10: var(--teal-10);
     --accent-11: var(--teal-11);
     --accent-12: var(--teal-12);
+
+    --accent-a1: var(--teal-a1);
+    --accent-a2: var(--teal-a2);
+    --accent-a3: var(--teal-a3);
+    --accent-a4: var(--teal-a4);
+    --accent-a5: var(--teal-a5);
+    --accent-a6: var(--teal-a6);
+    --accent-a7: var(--teal-a7);
+    --accent-a8: var(--teal-a8);
+    --accent-a9: var(--teal-a9);
+    --accent-a10: var(--teal-a10);
+    --accent-a11: var(--teal-a11);
+    --accent-a12: var(--teal-a12);
   }
 }
 [data-accent-scale='green'] {
@@ -379,6 +590,19 @@
     --accent-10: var(--green-10);
     --accent-11: var(--green-11);
     --accent-12: var(--green-12);
+
+    --accent-a1: var(--green-a1);
+    --accent-a2: var(--green-a2);
+    --accent-a3: var(--green-a3);
+    --accent-a4: var(--green-a4);
+    --accent-a5: var(--green-a5);
+    --accent-a6: var(--green-a6);
+    --accent-a7: var(--green-a7);
+    --accent-a8: var(--green-a8);
+    --accent-a9: var(--green-a9);
+    --accent-a10: var(--green-a10);
+    --accent-a11: var(--green-a11);
+    --accent-a12: var(--green-a12);
   }
 }
 [data-accent-scale='grass'] {
@@ -400,6 +624,19 @@
     --accent-10: var(--grass-10);
     --accent-11: var(--grass-11);
     --accent-12: var(--grass-12);
+
+    --accent-a1: var(--grass-a1);
+    --accent-a2: var(--grass-a2);
+    --accent-a3: var(--grass-a3);
+    --accent-a4: var(--grass-a4);
+    --accent-a5: var(--grass-a5);
+    --accent-a6: var(--grass-a6);
+    --accent-a7: var(--grass-a7);
+    --accent-a8: var(--grass-a8);
+    --accent-a9: var(--grass-a9);
+    --accent-a10: var(--grass-a10);
+    --accent-a11: var(--grass-a11);
+    --accent-a12: var(--grass-a12);
   }
 }
 [data-accent-scale='orange'] {
@@ -421,6 +658,19 @@
     --accent-10: var(--orange-10);
     --accent-11: var(--orange-11);
     --accent-12: var(--orange-12);
+
+    --accent-a1: var(--orange-a1);
+    --accent-a2: var(--orange-a2);
+    --accent-a3: var(--orange-a3);
+    --accent-a4: var(--orange-a4);
+    --accent-a5: var(--orange-a5);
+    --accent-a6: var(--orange-a6);
+    --accent-a7: var(--orange-a7);
+    --accent-a8: var(--orange-a8);
+    --accent-a9: var(--orange-a9);
+    --accent-a10: var(--orange-a10);
+    --accent-a11: var(--orange-a11);
+    --accent-a12: var(--orange-a12);
   }
 }
 [data-accent-scale='brown'] {
@@ -442,6 +692,19 @@
     --accent-10: var(--brown-10);
     --accent-11: var(--brown-11);
     --accent-12: var(--brown-12);
+
+    --accent-a1: var(--brown-a1);
+    --accent-a2: var(--brown-a2);
+    --accent-a3: var(--brown-a3);
+    --accent-a4: var(--brown-a4);
+    --accent-a5: var(--brown-a5);
+    --accent-a6: var(--brown-a6);
+    --accent-a7: var(--brown-a7);
+    --accent-a8: var(--brown-a8);
+    --accent-a9: var(--brown-a9);
+    --accent-a10: var(--brown-a10);
+    --accent-a11: var(--brown-a11);
+    --accent-a12: var(--brown-a12);
   }
 }
 [data-accent-scale='sky'] {
@@ -463,6 +726,19 @@
     --accent-10: var(--sky-10);
     --accent-11: var(--sky-11);
     --accent-12: var(--sky-12);
+
+    --accent-a1: var(--sky-a1);
+    --accent-a2: var(--sky-a2);
+    --accent-a3: var(--sky-a3);
+    --accent-a4: var(--sky-a4);
+    --accent-a5: var(--sky-a5);
+    --accent-a6: var(--sky-a6);
+    --accent-a7: var(--sky-a7);
+    --accent-a8: var(--sky-a8);
+    --accent-a9: var(--sky-a9);
+    --accent-a10: var(--sky-a10);
+    --accent-a11: var(--sky-a11);
+    --accent-a12: var(--sky-a12);
   }
 }
 [data-accent-scale='mint'] {
@@ -484,6 +760,19 @@
     --accent-10: var(--mint-10);
     --accent-11: var(--mint-11);
     --accent-12: var(--mint-12);
+
+    --accent-a1: var(--mint-a1);
+    --accent-a2: var(--mint-a2);
+    --accent-a3: var(--mint-a3);
+    --accent-a4: var(--mint-a4);
+    --accent-a5: var(--mint-a5);
+    --accent-a6: var(--mint-a6);
+    --accent-a7: var(--mint-a7);
+    --accent-a8: var(--mint-a8);
+    --accent-a9: var(--mint-a9);
+    --accent-a10: var(--mint-a10);
+    --accent-a11: var(--mint-a11);
+    --accent-a12: var(--mint-a12);
   }
 }
 [data-accent-scale='lime'] {
@@ -505,6 +794,19 @@
     --accent-10: var(--lime-10);
     --accent-11: var(--lime-11);
     --accent-12: var(--lime-12);
+
+    --accent-a1: var(--lime-a1);
+    --accent-a2: var(--lime-a2);
+    --accent-a3: var(--lime-a3);
+    --accent-a4: var(--lime-a4);
+    --accent-a5: var(--lime-a5);
+    --accent-a6: var(--lime-a6);
+    --accent-a7: var(--lime-a7);
+    --accent-a8: var(--lime-a8);
+    --accent-a9: var(--lime-a9);
+    --accent-a10: var(--lime-a10);
+    --accent-a11: var(--lime-a11);
+    --accent-a12: var(--lime-a12);
   }
 }
 [data-accent-scale='yellow'] {
@@ -526,6 +828,19 @@
     --accent-10: var(--yellow-10);
     --accent-11: var(--yellow-11);
     --accent-12: var(--yellow-12);
+
+    --accent-a1: var(--yellow-a1);
+    --accent-a2: var(--yellow-a2);
+    --accent-a3: var(--yellow-a3);
+    --accent-a4: var(--yellow-a4);
+    --accent-a5: var(--yellow-a5);
+    --accent-a6: var(--yellow-a6);
+    --accent-a7: var(--yellow-a7);
+    --accent-a8: var(--yellow-a8);
+    --accent-a9: var(--yellow-a9);
+    --accent-a10: var(--yellow-a10);
+    --accent-a11: var(--yellow-a11);
+    --accent-a12: var(--yellow-a12);
   }
 }
 [data-accent-scale='amber'] {
@@ -547,6 +862,19 @@
     --accent-10: var(--amber-10);
     --accent-11: var(--amber-11);
     --accent-12: var(--amber-12);
+
+    --accent-a1: var(--amber-a1);
+    --accent-a2: var(--amber-a2);
+    --accent-a3: var(--amber-a3);
+    --accent-a4: var(--amber-a4);
+    --accent-a5: var(--amber-a5);
+    --accent-a6: var(--amber-a6);
+    --accent-a7: var(--amber-a7);
+    --accent-a8: var(--amber-a8);
+    --accent-a9: var(--amber-a9);
+    --accent-a10: var(--amber-a10);
+    --accent-a11: var(--amber-a11);
+    --accent-a12: var(--amber-a12);
   }
 }
 [data-accent-scale='gold'] {
@@ -568,6 +896,19 @@
     --accent-10: var(--gold-10);
     --accent-11: var(--gold-11);
     --accent-12: var(--gold-12);
+
+    --accent-a1: var(--gold-a1);
+    --accent-a2: var(--gold-a2);
+    --accent-a3: var(--gold-a3);
+    --accent-a4: var(--gold-a4);
+    --accent-a5: var(--gold-a5);
+    --accent-a6: var(--gold-a6);
+    --accent-a7: var(--gold-a7);
+    --accent-a8: var(--gold-a8);
+    --accent-a9: var(--gold-a9);
+    --accent-a10: var(--gold-a10);
+    --accent-a11: var(--gold-a11);
+    --accent-a12: var(--gold-a12);
   }
 }
 [data-accent-scale='bronze'] {
@@ -589,6 +930,19 @@
     --accent-10: var(--bronze-10);
     --accent-11: var(--bronze-11);
     --accent-12: var(--bronze-12);
+
+    --accent-a1: var(--bronze-a1);
+    --accent-a2: var(--bronze-a2);
+    --accent-a3: var(--bronze-a3);
+    --accent-a4: var(--bronze-a4);
+    --accent-a5: var(--bronze-a5);
+    --accent-a6: var(--bronze-a6);
+    --accent-a7: var(--bronze-a7);
+    --accent-a8: var(--bronze-a8);
+    --accent-a9: var(--bronze-a9);
+    --accent-a10: var(--bronze-a10);
+    --accent-a11: var(--bronze-a11);
+    --accent-a12: var(--bronze-a12);
   }
 }
 
