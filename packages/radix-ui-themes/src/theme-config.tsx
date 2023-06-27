@@ -10,13 +10,13 @@ import {
   defaultThemeTextColor,
 } from './helpers';
 
-import {
-  type Color,
-  type GrayScaleControl,
-  type BackgroundColorControl,
-  type TextColorControl,
-  type Radius,
-  type Scaling,
+import type {
+  Color,
+  GrayScaleControl,
+  BackgroundColorControl,
+  TextColorControl,
+  Radius,
+  Scaling,
 } from './helpers';
 
 type ThemeConfigElement = React.ElementRef<'div'>;
