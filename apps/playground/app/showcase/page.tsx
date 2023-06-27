@@ -180,20 +180,20 @@ export default function Showcase() {
             <Provider>
               <ControlPanel />
 
-              {/* <Grid display="inline-grid" columns="4" gap="3">
-              {allColorScales.map((color) => {
-                const people = peopleByColorScale[color];
-                return (
-                  <Box p="2" key={color} style={{ backgroundColor: `var(--${color}9)` }}>
-                    <Flex gap="3" align="center">
-                      {people.map((person) => (
-                        <Avatar key={person.image} src={person.image} size="3" />
-                      ))}
-                    </Flex>
-                  </Box>
-                );
-              })}
-            </Grid> */}
+              <Grid display="inline-grid" columns="4" gap="3">
+                {allColorScales.map((color) => {
+                  const people = peopleByColorScale[color];
+                  return (
+                    <Box p="2" key={color} style={{ backgroundColor: `var(--${color}-9)` }}>
+                      <Flex gap="3" align="center">
+                        {people.map((person) => (
+                          <Avatar key={person.image} src={person.image} fallback="A" size="3" />
+                        ))}
+                      </Flex>
+                    </Box>
+                  );
+                })}
+              </Grid>
 
               <Box py="9">
                 <VisuallyHidden>
