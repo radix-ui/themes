@@ -206,7 +206,7 @@ const switchColorVariants = switchVariants.filter((variant) => !variant.endsWith
 
 export default function Sink() {
   return (
-    <ThemeConfig asChild>
+    <ThemeConfig asChild backgroundColor="gray">
       <html lang="en" className={styles.root}>
         <body>
           <div id="root">
