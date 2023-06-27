@@ -64,6 +64,7 @@ import type {
   SwitchVariant,
   TextAreaVariant,
   ColorScale,
+  SelectTriggerVariant,
 } from '@radix-ui/themes';
 
 const THEME_SWITCH_INTERVAL = 5000;
@@ -85,7 +86,7 @@ export default function Showcase() {
   const [likeCount, setLikeCount] = React.useState(17);
   const [likeButtonVariant, setLikeButtonVariant] = React.useState<ButtonVariant>('subtle');
   const [themeSelectTriggerVariant, setThemeSelectTriggerVariant] =
-    React.useState<ButtonVariant>('subtle-mono');
+    React.useState<SelectTriggerVariant>('subtle-mono');
   const [themeSelectMenuVariant, setThemeSelectMenuVariant] =
     React.useState<SelectMenuVariant>('solid');
   const [sliderValue, setSliderValue] = React.useState(6);
@@ -94,7 +95,7 @@ export default function Showcase() {
   const [controlsVariant, setControlsVariant] = React.useState<CheckboxVariant>('solid-mono');
   const [includeUnderOffer, setIncludeUnderOffer] = React.useState(true);
   const [dropdownTriggerVariant, setDropdownTriggerVariant] =
-    React.useState<ButtonVariant>('ghost-mono');
+    React.useState<ButtonVariant>('ghost');
   const [dropdownMenuVariant, setDropdownMenuVariant] =
     React.useState<SelectMenuVariant>('subtle-mono');
 
@@ -122,10 +123,15 @@ export default function Showcase() {
       const nextPrimaryVariant = randomItemInArray(buttonVariants);
       const isNextPrimaryVariantMono = nextPrimaryVariant.endsWith('mono');
       setPrimaryVariant(nextPrimaryVariant);
+      // setSecondaryVariant(
+      //   nextPrimaryVariant.startsWith('subtle') || nextPrimaryVariant.startsWith('outline')
+      //     ? `ghost${isNextPrimaryVariantMono ? '-mono' : ''}`
+      //     : `subtle${isNextPrimaryVariantMono ? '-mono' : ''}`
+      // );
       setSecondaryVariant(
         nextPrimaryVariant.startsWith('subtle') || nextPrimaryVariant.startsWith('outline')
-          ? `ghost${isNextPrimaryVariantMono ? '-mono' : ''}`
-          : `subtle${isNextPrimaryVariantMono ? '-mono' : ''}`
+          ? 'ghost'
+          : 'subtle'
       );
 
       setAvatarVariant(randomItemInArray(avatarVariants));

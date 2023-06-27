@@ -35,8 +35,7 @@
   padding-bottom: var(--space-4);
 }
 
-.table td:first-child,
-.table th:first-child {
+.table .rowHeaderCell {
   padding-left: 0;
   padding-right: var(--space-5);
   min-width: 100px;

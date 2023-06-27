@@ -23,7 +23,8 @@ function ImageCard({ id }: any) {
           <Tooltip content="Add to favorites">
             <IconButton
               size="3"
-              variant="solid-mono"
+              variant="solid"
+              highContrast
               radius="full"
               style={{ marginRight: 'var(--space-3)' }}
             >
@@ -31,7 +32,7 @@ function ImageCard({ id }: any) {
             </IconButton>
           </Tooltip>
           <Tooltip content="Add to library">
-            <IconButton size="3" variant="solid-mono" radius="full">
+            <IconButton size="3" variant="solid" highContrast radius="full">
               <PlusIcon />
             </IconButton>
           </Tooltip>
@@ -41,7 +42,8 @@ function ImageCard({ id }: any) {
             <Popover.Trigger>
               <IconButton
                 size="3"
-                variant="solid-mono"
+                variant="solid"
+                highContrast
                 radius="full"
                 style={{ position: 'absolute', bottom: 'var(--space-3)', right: 'var(--space-3)' }}
               >

@@ -4,22 +4,12 @@ const baseButtonSizes = ['1', '2', '3'] as const;
 type BaseButtonSize = (typeof baseButtonSizes)[number];
 const defaultBaseButtonSize: BaseButtonSize = '2';
 
-const baseButtonVariants = [
-  'solid',
-  'solid-mono',
-  'subtle',
-  'subtle-mono',
-  'outline',
-  'outline-mono',
-  'surface',
-  'surface-mono',
-  'ghost',
-  'ghost-mono',
-] as const;
+const baseButtonVariants = ['solid', 'subtle', 'outline', 'surface', 'ghost'] as const;
 type BaseButtonVariant = (typeof baseButtonVariants)[number];
 const defaultBaseButtonVariant: BaseButtonVariant = 'solid';
 
 const defaultBaseButtonColor: Color | undefined = undefined;
+const defaultBaseButtonHighContrast: boolean | undefined = undefined;
 const defaultBaseRadius: Radius | undefined = undefined;
 
 export {
@@ -28,6 +18,7 @@ export {
   baseButtonVariants,
   defaultBaseButtonVariant,
   defaultBaseButtonColor,
+  defaultBaseButtonHighContrast,
   defaultBaseRadius,
 };
 export type { BaseButtonSize, BaseButtonVariant };

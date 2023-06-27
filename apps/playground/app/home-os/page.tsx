@@ -75,16 +75,25 @@ export default function HomeOS() {
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)' }}>
                       <div style={{ display: 'flex', gap: 'var(--space-3)' }}>
-                        <Button variant="ghost-mono">Guest</Button>
-                        <Button variant="ghost-mono">Host</Button>
-                        <Button variant="ghost-mono">Travel</Button>
-                        <Button variant="ghost-mono">Experience</Button>
+                        <Button variant="ghost" color="gray">
+                          Guest
+                        </Button>
+                        <Button variant="ghost" color="gray">
+                          Host
+                        </Button>
+                        <Button variant="ghost" color="gray">
+                          Travel
+                        </Button>
+                        <Button variant="ghost" color="gray">
+                          Experience
+                        </Button>
                       </div>
 
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger>
                           <IconButton
-                            variant="ghost-mono"
+                            variant="ghost"
+                            color="gray"
                             style={{ marginRight: `calc(var(--space-2) * -1)` }}
                           >
                             <HamburgerMenuIcon />
@@ -420,7 +429,8 @@ const PhotoArea: React.FC = () => {
         }}
       />
       <Button
-        variant="solid-mono"
+        variant="solid"
+        highContrast
         style={{
           position: 'absolute',
           top: 'var(--space-6)',
@@ -492,7 +502,9 @@ function ConfirmBookingDialog({ children, guestCount }: any) {
           }}
         >
           <Dialog.Close>
-            <Button variant="subtle-mono">Cancel</Button>
+            <Button variant="subtle" color="gray">
+              Cancel
+            </Button>
           </Dialog.Close>
           <Dialog.Close>
             <Button variant="solid">Confirm booking</Button>

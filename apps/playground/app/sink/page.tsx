@@ -183,16 +183,10 @@ import { RadixLogo } from './radix-logo';
 const avatarColorVariants = avatarVariants.filter((variant) => !variant.endsWith('-mono'));
 const avatarMonoVariants = avatarVariants.filter((variant) => variant.endsWith('-mono'));
 
-const buttonColorVariants = buttonVariants.filter((variant) => !variant.endsWith('-mono'));
-const buttonMonoVariants = buttonVariants.filter((variant) => variant.endsWith('-mono'));
-
 const checkboxColorVariants = checkboxVariants.filter((variant) => !variant.endsWith('-mono'));
 
 const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-mono'));
 const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mono'));
-
-const iconButtonColorVariants = iconButtonVariants.filter((variant) => !variant.endsWith('-mono'));
-const iconButtonMonoVariants = iconButtonVariants.filter((variant) => variant.endsWith('-mono'));
 
 const radioGroupColorVariants = radioGroupVariants.filter((variant) => !variant.endsWith('-mono'));
 
@@ -271,7 +265,9 @@ export default function Sink() {
                               </DialogDescription>
                               <Flex gap="3" mt="4" justify="end">
                                 <DialogClose>
-                                  <Button variant="subtle-mono">Cancel</Button>
+                                  <Button variant="subtle" color="gray">
+                                    Cancel
+                                  </Button>
                                 </DialogClose>
                                 <DialogClose>
                                   <Button variant="solid">
@@ -334,7 +330,9 @@ export default function Sink() {
                               </AlertDialogDescription>
                               <Flex gap="3" mt="4" justify="end">
                                 <AlertDialogCancel>
-                                  <Button variant="subtle-mono">Cancel</Button>
+                                  <Button variant="subtle" color="gray">
+                                    Cancel
+                                  </Button>
                                 </AlertDialogCancel>
                                 <AlertDialogAction>
                                   <Button variant="solid" color="red">
@@ -392,7 +390,7 @@ export default function Sink() {
                                   <td key={size}>
                                     <DropdownMenuRoot>
                                       <DropdownMenuTrigger>
-                                        <Button variant="subtle-mono" size={size}>
+                                        <Button size={size} variant="subtle" color="gray">
                                           <DotsHorizontalIcon />
                                         </Button>
                                       </DropdownMenuTrigger>
@@ -1270,42 +1268,62 @@ export default function Sink() {
                 </DocsSection>
 
                 <DocsSection title="Button">
-                  <Grid columns="2" gap="9">
-                    {[buttonColorVariants, buttonMonoVariants].map((groupVariants, index) => (
-                      <div key={index}>
-                        <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              <ColumnHeaderCell />
-                              {buttonSizes.map((size) => (
-                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                              ))}
-                              <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {groupVariants.map((variant) => (
-                              <tr key={variant}>
-                                <RowHeaderCell>{variant}</RowHeaderCell>
-                                {buttonSizes.map((size) => (
-                                  <td key={size}>
-                                    <Button size={size} variant={variant}>
-                                      Next <ArrowRightIcon />
-                                    </Button>
-                                  </td>
-                                ))}
-                                <td>
-                                  <Button size="3" variant={variant} disabled>
-                                    Next <ArrowRightIcon />
-                                  </Button>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
-                  </Grid>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        {buttonSizes.map((size) => (
+                          <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                        ))}
+                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>gray</ColumnHeaderCell>
+                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {buttonVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          {buttonSizes.map((size) => (
+                            <td key={size}>
+                              <Button size={size} variant={variant}>
+                                Next <ArrowRightIcon />
+                              </Button>
+                            </td>
+                          ))}
+                          <td>
+                            <Button size="3" variant={variant} highContrast>
+                              Next <ArrowRightIcon />
+                            </Button>
+                          </td>
+                          <td>
+                            <Button size="3" variant={variant} disabled>
+                              Next <ArrowRightIcon />
+                            </Button>
+                          </td>
+                          <td />
+                          <td>
+                            <Button size="3" variant={variant} color="gray">
+                              Next <ArrowRightIcon />
+                            </Button>
+                          </td>
+                          <td>
+                            <Button size="3" variant={variant} color="gray" highContrast>
+                              Next <ArrowRightIcon />
+                            </Button>
+                          </td>
+                          <td>
+                            <Button size="3" variant={variant} color="gray" disabled>
+                              Next <ArrowRightIcon />
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
                   <Text my="5">
                     <Code>radius</Code> can be set per instance:
@@ -1364,7 +1382,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {buttonColorVariants.map((variant) => (
+                              {buttonVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -1373,9 +1391,13 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {buttonColorVariants.map((variant) => (
+                                {buttonVariants.map((variant) => (
                                   <td key={variant}>
                                     <Button variant={variant} color={color}>
+                                      <Pencil2Icon />
+                                      Edit
+                                    </Button>
+                                    <Button variant={variant} color={color} highContrast ml="2">
                                       <Pencil2Icon />
                                       Edit
                                     </Button>
@@ -1391,44 +1413,62 @@ export default function Sink() {
                 </DocsSection>
 
                 <DocsSection title="IconButton">
-                  <Grid columns="2" gap="9">
-                    {[iconButtonColorVariants, iconButtonMonoVariants].map(
-                      (groupVariants, index) => (
-                        <div key={index}>
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                                {iconButtonSizes.map((size) => (
-                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                                ))}
-                                <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {groupVariants.map((variant) => (
-                                <tr key={variant}>
-                                  <RowHeaderCell>{variant}</RowHeaderCell>
-                                  {iconButtonSizes.map((size) => (
-                                    <td key={size}>
-                                      <IconButton size={size} variant={variant}>
-                                        <Share2Icon />
-                                      </IconButton>
-                                    </td>
-                                  ))}
-                                  <td>
-                                    <IconButton size="3" variant={variant} disabled>
-                                      <Share2Icon />
-                                    </IconButton>
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      )
-                    )}
-                  </Grid>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        {iconButtonSizes.map((size) => (
+                          <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                        ))}
+                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>gray</ColumnHeaderCell>
+                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {iconButtonVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          {iconButtonSizes.map((size) => (
+                            <td key={size}>
+                              <IconButton size={size} variant={variant}>
+                                <Share2Icon />
+                              </IconButton>
+                            </td>
+                          ))}
+                          <td>
+                            <IconButton size="3" variant={variant} highContrast>
+                              <Share2Icon />
+                            </IconButton>
+                          </td>
+                          <td>
+                            <IconButton size="3" variant={variant} disabled>
+                              <Share2Icon />
+                            </IconButton>
+                          </td>
+                          <td />
+                          <td>
+                            <IconButton size="3" variant={variant} color="gray">
+                              <Share2Icon />
+                            </IconButton>
+                          </td>
+                          <td>
+                            <IconButton size="3" variant={variant} color="gray" highContrast>
+                              <Share2Icon />
+                            </IconButton>
+                          </td>
+                          <td>
+                            <IconButton size="3" variant={variant} color="gray" disabled>
+                              <Share2Icon />
+                            </IconButton>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
                   <Text my="5">
                     <Code>radius</Code> can be set per instance:
@@ -1487,7 +1527,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {iconButtonColorVariants.map((variant) => (
+                              {iconButtonVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -1496,9 +1536,12 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {iconButtonColorVariants.map((variant) => (
+                                {iconButtonVariants.map((variant) => (
                                   <td key={variant}>
                                     <IconButton variant={variant} color={color}>
+                                      <Share2Icon />
+                                    </IconButton>
+                                    <IconButton variant={variant} color={color} highContrast ml="2">
                                       <Share2Icon />
                                     </IconButton>
                                   </td>
@@ -2904,7 +2947,7 @@ function DocsGridSection({ title, children }: { title: string; children: React.R
 
 function ColumnHeaderCell({ children, ...props }: React.ComponentProps<'th'>) {
   return (
-    <th {...props}>
+    <th {...props} className={styles.columnHeaderCell}>
       {children && (
         <Text color="gray" size="2">
           {children}
@@ -2916,7 +2959,7 @@ function ColumnHeaderCell({ children, ...props }: React.ComponentProps<'th'>) {
 
 function RowHeaderCell({ children, ...props }: React.ComponentProps<'td'>) {
   return (
-    <td {...props}>
+    <td {...props} className={styles.rowHeaderCell}>
       {children && (
         <Text color="gray" size="2">
           {children}

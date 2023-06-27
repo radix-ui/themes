@@ -82,7 +82,9 @@ export default function Snapshot() {
                       Login
                     </Link>
                     <SubmitPhotoDialog>
-                      <Button variant="subtle-mono">Submit a photo</Button>
+                      <Button variant="subtle" color="gray">
+                        Submit a photo
+                      </Button>
                     </SubmitPhotoDialog>
                     <DropdownMenuRoot>
                       <DropdownMenuTrigger>
@@ -295,7 +297,9 @@ function SubmitPhotoDialog({ children }: any) {
             }}
           >
             <DialogClose>
-              <Button variant="subtle-mono">Cancel</Button>
+              <Button variant="subtle" color="gray">
+                Cancel
+              </Button>
             </DialogClose>
             <DialogClose>
               <Button variant="solid">

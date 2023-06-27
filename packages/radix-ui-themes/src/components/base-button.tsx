@@ -5,6 +5,7 @@ import {
   defaultBaseButtonSize,
   defaultBaseButtonVariant,
   defaultBaseButtonColor,
+  defaultBaseButtonHighContrast,
   defaultBaseRadius,
 } from './base-button.props';
 
@@ -18,6 +19,7 @@ interface BaseButtonProps
   size?: Responsive<BaseButtonSize>;
   variant?: BaseButtonVariant;
   color?: Color;
+  highContrast?: boolean;
   radius?: Radius;
 }
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
@@ -27,6 +29,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     size = defaultBaseButtonSize,
     variant = defaultBaseButtonVariant,
     color = defaultBaseButtonColor,
+    highContrast = defaultBaseButtonHighContrast,
     radius = defaultBaseRadius,
     ...baseButtonProps
   } = marginRest;
@@ -41,6 +44,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
         'rui-BaseButton',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
+        { highContrast },
         withMarginProps(marginProps),
         className
       )}

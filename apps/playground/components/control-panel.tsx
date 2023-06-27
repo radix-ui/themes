@@ -307,7 +307,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                 <Popover.Trigger>
                   <IconButton
                     size="1"
-                    variant="ghost-mono"
+                    variant="ghost"
                     radius="full"
                     aria-label="More information about background color options"
                   >
@@ -372,7 +372,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
                 <Popover.Trigger>
                   <IconButton
                     size="1"
-                    variant="ghost-mono"
+                    variant="ghost"
                     radius="full"
                     aria-label="More information about text color options"
                   >

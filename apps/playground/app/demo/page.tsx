@@ -78,7 +78,9 @@ export default function Demo() {
 
                       <Flex justify="end" gap="3" mt="5">
                         <DialogClose>
-                          <Button variant="subtle-mono">Cancel</Button>
+                          <Button variant="subtle" color="gray">
+                            Cancel
+                          </Button>
                         </DialogClose>
                         <DialogClose>
                           <Button variant="solid">Save</Button>
