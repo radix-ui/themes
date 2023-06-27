@@ -3007,7 +3007,7 @@ function PlaygroundSection() {
       </Text>
       <Flex gap="9">
         {textFieldSizes.map((size) => (
-          <PlaygroundForm key={size} size={size} />
+          <PlaygroundForm key={size} size={size} style={{ width: (Number(size) + 1) * 100 }} />
         ))}
       </Flex>
     </DocsSection>
@@ -3023,9 +3023,12 @@ function PlaygroundModeTest({ title = '' }) {
   );
 }
 
-function PlaygroundForm({ size }: { size?: TextFieldSize }) {
+function PlaygroundForm({
+  size,
+  ...props
+}: React.ComponentProps<typeof Flex> & { size?: TextFieldSize }) {
   return (
-    <Flex direction="column" gap="3" style={{ width: (Number(size) + 1) * 100 }}>
+    <Flex direction="column" gap="3" {...props}>
       <Grid gap="1">
         <Text size={size} weight="bold">
           Name
