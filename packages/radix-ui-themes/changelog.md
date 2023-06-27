@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.10
+
+- Fix build issue with new `ThemeConfig` file
+
 ## 0.0.9
 
 **Warning!** This release contains lots of breaking changes.
