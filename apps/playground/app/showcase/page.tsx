@@ -180,7 +180,7 @@ export default function Showcase() {
             <Provider>
               <ControlPanel />
 
-              <Grid display="inline-grid" columns="4" gap="3">
+              {/* <Grid display="inline-grid" columns="4" gap="3">
                 {allColorScales.map((color) => {
                   const people = peopleByColorScale[color];
                   return (
@@ -193,7 +193,7 @@ export default function Showcase() {
                     </Box>
                   );
                 })}
-              </Grid>
+              </Grid> */}
 
               <Box py="9">
                 <VisuallyHidden>
