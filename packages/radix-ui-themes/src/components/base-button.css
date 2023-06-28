@@ -48,12 +48,12 @@
   &:where(:active) {
     background-color: var(--accent-10);
     filter: brightness(0.95);
+    :where(.dark-theme) & {
+      filter: brightness(1.05);
+    }
   }
   &:where(:focus-visible) {
-    outline-style: solid;
-    outline-offset: 2px;
-    outline-width: 2px;
-    outline-color: var(--accent-8);
+    box-shadow: inset 0 0 0 2px var(--accent-6), 0 0 0 1px var(--accent-a8);
   }
 
   &:where(.highContrast) {
@@ -67,34 +67,40 @@
       opacity: 0.86;
     }
     &:where(:focus-visible) {
-      outline-color: var(--accent-12);
+      box-shadow: inset 0 0 0 2px var(--accent-7), 0 0 0 1px var(--accent-a12);
     }
   }
 }
 
-/* subtle */
-
+/* subtle / ghost */
+.rui-BaseButton.variant-ghost,
 .rui-BaseButton.variant-subtle {
-  background-color: var(--accent-3);
   color: var(--accent-11);
 
-  &:where(:hover, [data-state='open']) {
-    background-color: var(--accent-4);
-  }
-  &:where(:active) {
-    background-color: var(--accent-5);
-  }
   &:where(:focus-visible) {
-    --focus-ring-color: var(--accent-7);
-    box-shadow: 0 0 0 2px var(--focus-ring-color);
+    box-shadow: inset 0 0 0 1px var(--accent-a7), 0 0 0 1px var(--accent-a7);
   }
 
   &:where(.highContrast) {
     color: var(--accent-12);
+  }
+}
+.rui-BaseButton.variant-subtle {
+  background-color: var(--accent-a3);
 
-    &:where(:focus-visible) {
-      --focus-ring-color: var(--accent-12);
-    }
+  &:where(:hover, [data-state='open']) {
+    background-color: var(--accent-a4);
+  }
+  &:where(:active) {
+    background-color: var(--accent-a5);
+  }
+}
+.rui-BaseButton.variant-ghost {
+  &:where(:hover, [data-state='open']) {
+    background-color: var(--accent-a3);
+  }
+  &:where(:active) {
+    background-color: var(--accent-a4);
   }
 }
 
@@ -102,55 +108,29 @@
 
 .rui-BaseButton.variant-outline,
 .rui-BaseButton.variant-surface {
-  --shadow-width: 1px;
-  --shadow-color: var(--accent-7);
-  box-shadow: 0 0 0 var(--shadow-width) var(--shadow-color);
+  box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-11);
 
   &:where(:hover, [data-state='open']) {
-    background-color: var(--accent-2);
-    --shadow-color: var(--accent-7);
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
   &:where(:active) {
-    background-color: var(--accent-3);
-    --shadow-color: var(--accent-8);
+    box-shadow: inset 0 0 0 1px var(--accent-a9);
   }
   &:where(:focus-visible) {
-    --shadow-width: 2px;
+    box-shadow: inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8);
+  }
+  &:where(:active:focus-visible) {
+    box-shadow: inset 0 0 0 1px var(--accent-a9), 0 0 0 1px var(--accent-a8);
   }
 
   &:where(.highContrast) {
-    --shadow-color: var(--accent-12);
     color: var(--accent-12);
   }
 }
-.rui-BaseButton.variant-surface {
-  background-color: var(--color-surface-1);
-}
-
-/* ghost */
-
-.rui-BaseButton.variant-ghost {
-  color: var(--accent-11);
-
-  &:where(:hover, [data-state='open']) {
-    background-color: var(--accent-3);
-  }
-  &:where(:active) {
-    background-color: var(--accent-4);
-  }
-  &:where(:focus-visible) {
-    --focus-ring-color: var(--accent-7);
-    box-shadow: 0 0 0 2px var(--focus-ring-color);
-  }
-
-  &:where(.highContrast) {
-    color: var(--gray-12);
-
-    &:where(:focus-visible) {
-      --focus-ring-color: var(--accent-12);
-    }
-  }
+.rui-BaseButton:where(.variant-surface) {
+  background-color: var(--color-surface-button);
 }
 
 /* all disabled buttons */
@@ -160,4 +140,5 @@
   box-shadow: none;
   color: var(--gray-a8);
   cursor: not-allowed;
+  filter: none;
 }

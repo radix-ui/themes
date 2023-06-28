@@ -1275,11 +1275,11 @@ export default function Sink() {
                         {buttonSizes.map((size) => (
                           <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                         ))}
-                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
-                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
                         <ColumnHeaderCell />
                         <ColumnHeaderCell>gray</ColumnHeaderCell>
-                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell />
                         <ColumnHeaderCell>disabled</ColumnHeaderCell>
                       </tr>
                     </thead>
@@ -1299,11 +1299,6 @@ export default function Sink() {
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
-                          <td>
-                            <Button size="3" variant={variant} disabled>
-                              Next <ArrowRightIcon />
-                            </Button>
-                          </td>
                           <td />
                           <td>
                             <Button size="3" variant={variant} color="gray">
@@ -1315,8 +1310,9 @@ export default function Sink() {
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
+                          <td />
                           <td>
-                            <Button size="3" variant={variant} color="gray" disabled>
+                            <Button size="3" variant={variant} disabled>
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
@@ -1420,11 +1416,11 @@ export default function Sink() {
                         {iconButtonSizes.map((size) => (
                           <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                         ))}
-                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
-                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
                         <ColumnHeaderCell />
                         <ColumnHeaderCell>gray</ColumnHeaderCell>
-                        <ColumnHeaderCell>high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell />
                         <ColumnHeaderCell>disabled</ColumnHeaderCell>
                       </tr>
                     </thead>
@@ -1444,11 +1440,6 @@ export default function Sink() {
                               <Share2Icon />
                             </IconButton>
                           </td>
-                          <td>
-                            <IconButton size="3" variant={variant} disabled>
-                              <Share2Icon />
-                            </IconButton>
-                          </td>
                           <td />
                           <td>
                             <IconButton size="3" variant={variant} color="gray">
@@ -1460,8 +1451,9 @@ export default function Sink() {
                               <Share2Icon />
                             </IconButton>
                           </td>
+                          <td />
                           <td>
-                            <IconButton size="3" variant={variant} color="gray" disabled>
+                            <IconButton size="3" variant={variant} disabled>
                               <Share2Icon />
                             </IconButton>
                           </td>
@@ -1563,9 +1555,6 @@ export default function Sink() {
                         {textFieldSizes.map((size) => (
                           <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                         ))}
-                        <ColumnHeaderCell>value</ColumnHeaderCell>
-                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                        <ColumnHeaderCell>read-only</ColumnHeaderCell>
                       </tr>
                     </thead>
                     <tbody>
@@ -2748,7 +2737,7 @@ export default function Sink() {
                       className="dark-theme"
                       style={{
                         gridColumn: '2 / span 2',
-                        backgroundColor: 'var(--background-color)',
+                        backgroundColor: 'var(--color-background)',
                       }}
                     >
                       <PlaygroundModeTest title="Always dark mode" />
@@ -2756,7 +2745,7 @@ export default function Sink() {
                       <Box
                         className="light-theme"
                         style={{
-                          backgroundColor: 'var(--background-color)',
+                          backgroundColor: 'var(--color-background)',
                         }}
                       >
                         <PlaygroundModeTest title="Always light mode" />

@@ -148,20 +148,26 @@
 
 :root,
 .light-theme {
-  --color-overlay: var(--black-a9);
   --color-panel: white;
+  --color-overlay: var(--black-a9);
   --color-surface-1: white;
-  --color-surface-2: var(--gray-2);
-  --color-surface-3: var(--gray-3);
 }
 .dark-theme {
   color-scheme: dark;
 
-  --color-overlay: var(--black-a11);
   --color-panel: var(--gray-2);
-  --color-surface-1: var(--gray-a1);
-  --color-surface-2: var(--gray-a2);
-  --color-surface-3: var(--gray-a3);
+  --color-overlay: var(--black-a11);
+  --color-surface-1: var(--gray-a2);
+}
+
+:root {
+  --color-surface-button: white;
+}
+.dark-theme {
+  --color-surface-button: var(--accent-a2);
+}
+.dark-theme [data-accent-scale='gray'] {
+  --color-surface-button: var(--accent-a2);
 }
 
 ::selection {
@@ -1403,10 +1409,10 @@
 /* background color */
 :root,
 .light-theme {
-  --background-color: white;
+  --color-background: white;
 }
 .dark-theme {
-  --background-color: var(--gray-1);
+  --color-background: var(--gray-1);
 }
 :root, /* default: auto */
 [data-background-color='auto'] {
@@ -1415,7 +1421,7 @@
   &.dark-theme,
   & .light-theme,
   & .dark-theme {
-    background-color: var(--background-color);
+    background-color: var(--color-background);
   }
 }
 [data-background-color='gray'] {
@@ -1424,8 +1430,8 @@
   &.dark-theme,
   & .light-theme,
   & .dark-theme {
-    --background-color: var(--gray-1);
-    background-color: var(--background-color);
+    --color-background: var(--gray-1);
+    background-color: var(--color-background);
   }
 }
 
@@ -1437,8 +1443,8 @@
   &.dark-theme,
   & .light-theme,
   & .dark-theme {
-    --text-color: var(--gray-12);
-    color: var(--text-color);
+    --color-text: var(--gray-12);
+    color: var(--color-text);
   }
 }
 [data-text-color='accent'] {
@@ -1447,7 +1453,7 @@
   &.dark-theme,
   & .light-theme,
   & .dark-theme {
-    --text-color: var(--accent-12);
-    color: var(--text-color);
+    --color-text: var(--accent-12);
+    color: var(--color-text);
   }
 }

@@ -1,6 +1,9 @@
 @import './base-button.css';
 
-.rui-Button {
+.rui-Button:where(:not(.variant-ghost)) {
+  & svg {
+    opacity: 0.8;
+  }
 }
 
 /***************************************************************************************************
@@ -36,18 +39,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Button.variant-solid,
-.rui-Button.variant-solid-mono,
-.rui-Button.variant-subtle,
-.rui-Button.variant-subtle-mono {
+.rui-Button:where(.variant-solid, .variant-subtle) {
   font-weight: 600;
-}
-
-.rui-Button.variant-surface,
-.rui-Button.variant-surface-mono,
-.rui-Button.variant-outline,
-.rui-Button.variant-outline-mono,
-.rui-Button.variant-ghost,
-.rui-Button.variant-ghost-mono {
-  font-weight: 400;
 }

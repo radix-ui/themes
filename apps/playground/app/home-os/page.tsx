@@ -257,7 +257,7 @@ export default function HomeOS() {
                             borderRadius: 'min(var(--br-4), var(--br-4-raw))',
                             marginTop: -90,
                             width: 340,
-                            backgroundColor: 'var(--background-color)',
+                            backgroundColor: 'var(--color-background)',
                             boxShadow: 'var(--shadow-2)',
                             border: '1px solid var(--gray-6)',
                             padding: 30,
