@@ -17,6 +17,8 @@ import {
   TextField,
   Grid,
   SelectRoot,
+  SelectTrigger,
+  SelectContent,
   SelectItem,
 } from '@radix-ui/themes';
 import { Pencil1Icon } from '@radix-ui/react-icons';
@@ -69,11 +71,14 @@ export default function Demo() {
                       <Text size="1" weight="bold" color="gray" mb="1">
                         Role
                       </Text>
-                      <SelectRoot defaultValue={user.role} menuVariant="subtle-mono">
-                        <SelectItem value="viewer">Viewer</SelectItem>
-                        <SelectItem value="maintainer">Maintainer</SelectItem>
-                        <SelectItem value="contributor">Contributor</SelectItem>
-                        <SelectItem value="admin">Admin</SelectItem>
+                      <SelectRoot defaultValue={user.role}>
+                        <SelectTrigger color="gray" highContrast />
+                        <SelectContent variant="subtle" color="gray">
+                          <SelectItem value="viewer">Viewer</SelectItem>
+                          <SelectItem value="maintainer">Maintainer</SelectItem>
+                          <SelectItem value="contributor">Contributor</SelectItem>
+                          <SelectItem value="admin">Admin</SelectItem>
+                        </SelectContent>
                       </SelectRoot>
 
                       <Flex justify="end" gap="3" mt="5">

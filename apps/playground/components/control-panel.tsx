@@ -209,92 +209,92 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
       <Flex direction="column" gap="1" mb="3">
         <Label htmlFor="accent-scale">Accent scale</Label>
         <Select.Root
-          id="accent-scale"
           value={accentScale}
           onValueChange={(value) => setAccentScale(value as ColorScale)}
-          menuVariant="subtle-mono"
-          style={{ minWidth: 120 }}
         >
-          {groupedColors.map(({ label, values }, index) => (
-            <React.Fragment key={label}>
-              {index > 0 ? <Select.Separator /> : null}
-              <Select.Group>
-                {label ? <Select.Label>{label}</Select.Label> : null}
-                {values.map((color) => (
-                  <Select.Item key={color} value={color}>
-                    <Flex align="center" gap="2">
-                      <span
-                        data-accent-scale={color}
-                        style={{
-                          display: 'inline-block',
-                          width: 'var(--space-2)',
-                          height: 'var(--space-2)',
-                          borderRadius: '100%',
-                          backgroundColor: 'var(--accent-9)',
-                        }}
-                      />
-                      <Flex align="baseline" gap="1">
-                        {color}
-                        {color === 'gray' && !['auto', 'gray'].includes(grayScale) ? (
-                          <Text size="2" color="gray" asChild>
-                            <Em> ({grayScale})</Em>
-                          </Text>
-                        ) : null}
+          <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
+          <Select.Content variant="subtle" color="gray">
+            {groupedColors.map(({ label, values }, index) => (
+              <React.Fragment key={label}>
+                {index > 0 ? <Select.Separator /> : null}
+                <Select.Group>
+                  {label ? <Select.Label>{label}</Select.Label> : null}
+                  {values.map((color) => (
+                    <Select.Item key={color} value={color}>
+                      <Flex align="center" gap="2">
+                        <span
+                          data-accent-scale={color}
+                          style={{
+                            display: 'inline-block',
+                            width: 'var(--space-2)',
+                            height: 'var(--space-2)',
+                            borderRadius: '100%',
+                            backgroundColor: 'var(--accent-9)',
+                          }}
+                        />
+                        <Flex align="baseline" gap="1">
+                          {color}
+                          {color === 'gray' && !['auto', 'gray'].includes(grayScale) ? (
+                            <Text size="2" color="gray" asChild>
+                              <Em> ({grayScale})</Em>
+                            </Text>
+                          ) : null}
+                        </Flex>
                       </Flex>
-                    </Flex>
-                  </Select.Item>
-                ))}
-              </Select.Group>
-            </React.Fragment>
-          ))}
+                    </Select.Item>
+                  ))}
+                </Select.Group>
+              </React.Fragment>
+            ))}
+          </Select.Content>
         </Select.Root>
       </Flex>
 
       <Flex direction="column" gap="1" mb="3">
         <Label htmlFor="gray-scale">Gray scale</Label>
         <Select.Root
-          id="gray-scale"
           value={grayScale}
           onValueChange={(value) => setGrayScale(value as GrayScaleControl)}
-          menuVariant="subtle-mono"
-          style={{ minWidth: 120 }}
         >
-          {groupedGrays.map(({ label, values }, index) => (
-            <React.Fragment key={label}>
-              {index > 0 ? <Select.Separator /> : null}
-              <Select.Group>
-                <Select.Label>{label}</Select.Label>
-                {values.map((gray) => (
-                  <Select.Item key={gray} value={gray}>
-                    <Flex align="center" gap="2">
-                      <span
-                        style={{
-                          display: 'inline-block',
-                          width: 'var(--space-2)',
-                          height: 'var(--space-2)',
-                          borderRadius: '100%',
-                          backgroundColor:
-                            gray === 'auto'
-                              ? `var(--${naturalGray}-9)`
-                              : gray === 'gray'
-                              ? pureGray9
-                              : `var(--${gray}-9)`,
-                        }}
-                      />
-                      <Flex align="baseline" gap="1">
-                        {gray}
-                        {gray === 'auto' ? (
-                          <Text size="2" color="gray" asChild>
-                            <Em> ({naturalGray})</Em>
-                          </Text>
-                        ) : null}
+          <Select.Trigger id="gray-scale" variant="surface" color="gray" highContrast />
+          <Select.Content variant="subtle" color="gray">
+            {groupedGrays.map(({ label, values }, index) => (
+              <React.Fragment key={label}>
+                {index > 0 ? <Select.Separator /> : null}
+                <Select.Group>
+                  <Select.Label>{label}</Select.Label>
+                  {values.map((gray) => (
+                    <Select.Item key={gray} value={gray}>
+                      <Flex align="center" gap="2">
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            width: 'var(--space-2)',
+                            height: 'var(--space-2)',
+                            borderRadius: '100%',
+                            backgroundColor:
+                              gray === 'auto'
+                                ? `var(--${naturalGray}-9)`
+                                : gray === 'gray'
+                                ? pureGray9
+                                : `var(--${gray}-9)`,
+                          }}
+                        />
+                        <Flex align="baseline" gap="1">
+                          {gray}
+                          {gray === 'auto' ? (
+                            <Text size="2" color="gray" asChild>
+                              <Em> ({naturalGray})</Em>
+                            </Text>
+                          ) : null}
+                        </Flex>
                       </Flex>
-                    </Flex>
-                  </Select.Item>
-                ))}
-              </Select.Group>
-            </React.Fragment>
-          ))}
+                    </Select.Item>
+                  ))}
+                </Select.Group>
+              </React.Fragment>
+            ))}
+          </Select.Content>
         </Select.Root>
       </Flex>
 
@@ -451,33 +451,29 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
 
       <Flex direction="column" gap="1" mb="3">
         <Label htmlFor="radius">Radius</Label>
-        <Select.Root
-          id="radius"
-          value={radius}
-          onValueChange={(value) => setRadius(value as Radius)}
-          menuVariant="subtle-mono"
-        >
-          {radiusValues.map((value) => (
-            <Select.Item key={value} value={value}>
-              {value}
-            </Select.Item>
-          ))}
+        <Select.Root value={radius} onValueChange={(value) => setRadius(value as Radius)}>
+          <Select.Trigger id="radius" variant="surface" color="gray" highContrast />
+          <Select.Content variant="subtle" color="gray">
+            {radiusValues.map((value) => (
+              <Select.Item key={value} value={value}>
+                {value}
+              </Select.Item>
+            ))}
+          </Select.Content>
         </Select.Root>
       </Flex>
 
       <Flex direction="column" gap="1">
         <Label htmlFor="scaling">Scaling</Label>
-        <Select.Root
-          id="scaling"
-          value={scaling}
-          onValueChange={(value) => setScaling(value as Scaling)}
-          menuVariant="subtle-mono"
-        >
-          {scalingValues.map((value) => (
-            <Select.Item key={value} value={value}>
-              {value}
-            </Select.Item>
-          ))}
+        <Select.Root value={scaling} onValueChange={(value) => setScaling(value as Scaling)}>
+          <Select.Trigger id="scaling" variant="surface" color="gray" highContrast />
+          <Select.Content variant="subtle" color="gray">
+            {scalingValues.map((value) => (
+              <Select.Item key={value} value={value}>
+                {value}
+              </Select.Item>
+            ))}
+          </Select.Content>
         </Select.Root>
       </Flex>
     </Box>

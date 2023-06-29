@@ -8,60 +8,73 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 import {
   defaultSelectSize,
   defaultSelectTriggerVariant,
-  defaultSelectMenuVariant,
-  defaultSelectColor,
+  defaultSelectTriggerColor,
+  defaultSelectTriggerHighContrast,
+  defaultSelectContentVariant,
+  defaultSelectContentColor,
+  defaultSelectContentHighContrast,
   defaultSelectRadius,
 } from './select.props';
 
 import type { MarginProps, Color, Radius, Responsive } from '../helpers';
-import type { SelectSize, SelectTriggerVariant, SelectMenuVariant } from './select.props';
+import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
 
-type SelectRootElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
+type SelectContextValue = { size?: Responsive<SelectSize>; radius?: Radius };
+const SelectContext = React.createContext<SelectContextValue>({});
+
 interface SelectRootProps
-  extends Omit<
-      React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> &
-        React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>,
-      'asChild'
-    >,
-    MarginProps {
-  placeholder?: string;
-  size?: Responsive<SelectSize>;
-  triggerVariant?: SelectTriggerVariant;
-  menuVariant?: SelectMenuVariant;
-  color?: Color;
-  radius?: Radius;
-}
-const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { rest: rootRest, ...rootProps } = extractRootProps(marginRest);
-  const {
-    className,
-    style,
-    children,
-    placeholder,
-    size = defaultSelectSize,
-    triggerVariant = defaultSelectTriggerVariant,
-    menuVariant = defaultSelectMenuVariant,
-    color = defaultSelectColor,
-    radius = defaultSelectRadius,
-    ...contentProps
-  } = rootRest;
+  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
+    SelectContextValue {}
+const SelectRoot: React.FC<SelectRootProps> = (props) => {
+  const { children, size = defaultSelectSize, radius = defaultSelectRadius, ...rootProps } = props;
   return (
     <SelectPrimitive.Root {...rootProps}>
+      <SelectContext.Provider value={React.useMemo(() => ({ size, radius }), [size, radius])}>
+        {children}
+      </SelectContext.Provider>
+    </SelectPrimitive.Root>
+  );
+};
+SelectRoot.displayName = 'SelectRoot';
+
+type SelectTriggerElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
+interface SelectTriggerProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>, 'asChild' | 'color'>,
+    MarginProps {
+  variant?: SelectTriggerVariant;
+  color?: Color;
+  highContrast?: boolean;
+}
+const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
+  (props, forwardedRef) => {
+    const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+    const {
+      className,
+      variant = defaultSelectTriggerVariant,
+      highContrast = defaultSelectTriggerHighContrast,
+      color = defaultSelectTriggerColor,
+      placeholder,
+      ...triggerProps
+    } = marginRest;
+    const { size, radius } = React.useContext(SelectContext);
+    return (
       <SelectPrimitive.Trigger asChild>
         <button
           data-accent-scale={color}
           data-radius={radius}
+          {...triggerProps}
           ref={forwardedRef}
           className={classNames(
             'rui-reset-button',
+            'rui-BaseButton',
+            'rui-Button',
             'rui-SelectTrigger',
             withBreakpoints(size, 'size'),
-            `variant-${triggerVariant}`,
+            `variant-${variant}`,
+            { highContrast },
             withMarginProps(marginProps),
             className
           )}
-          style={style}
         >
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             <SelectPrimitive.Value placeholder={placeholder} />
@@ -71,7 +84,32 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
           </SelectPrimitive.Icon>
         </button>
       </SelectPrimitive.Trigger>
+    );
+  }
+);
+SelectTrigger.displayName = 'SelectTrigger';
 
+type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
+interface SelectContentProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>, 'color'> {
+  size?: Responsive<SelectSize>;
+  variant?: SelectContentVariant;
+  color?: Color;
+  highContrast?: boolean;
+}
+const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>(
+  (props, forwardedRef) => {
+    const {
+      className,
+      children,
+      variant = defaultSelectContentVariant,
+      highContrast = defaultSelectContentHighContrast,
+      color = defaultSelectContentColor,
+      placeholder,
+      ...contentProps
+    } = props;
+    const { size, radius } = React.useContext(SelectContext);
+    return (
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
           data-accent-scale={color}
@@ -79,11 +117,13 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
           sideOffset={4}
           align="center"
           {...contentProps}
+          ref={forwardedRef}
           className={classNames(
             { 'rui-PopperContent': contentProps.position === 'popper' },
             'rui-SelectContent',
             withBreakpoints(size, 'size'),
-            `variant-${menuVariant}`
+            `variant-${variant}`,
+            { highContrast }
           )}
         >
           <SelectPrimitive.Viewport className="rui-SelectViewport">
@@ -91,10 +131,10 @@ const SelectRoot = React.forwardRef<SelectRootElement, SelectRootProps>((props, 
           </SelectPrimitive.Viewport>
         </SelectPrimitive.Content>
       </SelectPrimitive.Portal>
-    </SelectPrimitive.Root>
-  );
-});
-SelectRoot.displayName = 'SelectRoot';
+    );
+  }
+);
+SelectContent.displayName = 'SelectContent';
 
 type SelectItemElement = React.ElementRef<typeof SelectPrimitive.Item>;
 interface SelectItemProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {}
@@ -190,6 +230,8 @@ const Select = Object.assign(
   {},
   {
     Root: SelectRoot,
+    Trigger: SelectTrigger,
+    Content: SelectContent,
     Item: SelectItem,
     Group: SelectGroup,
     Label: SelectLabel,
@@ -197,4 +239,13 @@ const Select = Object.assign(
   }
 );
 
-export { Select, SelectRoot, SelectItem, SelectGroup, SelectLabel, SelectSeparator };
+export {
+  Select,
+  SelectRoot,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+};

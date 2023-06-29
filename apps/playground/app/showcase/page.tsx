@@ -19,7 +19,7 @@ import {
   IconButton,
   Link,
   RadioGroup,
-  selectMenuVariants,
+  selectContentVariants,
   sliderVariants,
   Switch,
   switchVariants,
@@ -59,7 +59,8 @@ import type {
   AvatarVariant,
   ButtonVariant,
   CheckboxVariant,
-  SelectMenuVariant,
+  DropdownMenuVariant,
+  SelectContentVariant,
   SliderVariant,
   SwitchVariant,
   TextAreaVariant,
@@ -86,9 +87,9 @@ export default function Showcase() {
   const [likeCount, setLikeCount] = React.useState(17);
   const [likeButtonVariant, setLikeButtonVariant] = React.useState<ButtonVariant>('subtle');
   const [themeSelectTriggerVariant, setThemeSelectTriggerVariant] =
-    React.useState<SelectTriggerVariant>('subtle-mono');
-  const [themeSelectMenuVariant, setThemeSelectMenuVariant] =
-    React.useState<SelectMenuVariant>('solid');
+    React.useState<SelectTriggerVariant>('subtle');
+  const [themeSelectContentVariant, setThemeSelectContentVariant] =
+    React.useState<SelectContentVariant>('solid');
   const [sliderValue, setSliderValue] = React.useState(6);
   const [sliderVariant, setSliderVariant] = React.useState<SliderVariant>('solid');
   const [switchVariant, setSwitchVariant] = React.useState<SwitchVariant>('solid');
@@ -97,7 +98,7 @@ export default function Showcase() {
   const [dropdownTriggerVariant, setDropdownTriggerVariant] =
     React.useState<ButtonVariant>('ghost');
   const [dropdownMenuVariant, setDropdownMenuVariant] =
-    React.useState<SelectMenuVariant>('subtle-mono');
+    React.useState<DropdownMenuVariant>('subtle');
 
   React.useEffect(() => {
     const id = setTimeout(() => {
@@ -146,7 +147,7 @@ export default function Showcase() {
       setLikeCount(Math.floor(Math.random() * 30) + 1);
 
       setThemeSelectTriggerVariant(randomItemInArray(buttonVariants));
-      setThemeSelectMenuVariant(randomItemInArray(selectMenuVariants));
+      setThemeSelectContentVariant(randomItemInArray(selectContentVariants));
 
       setSliderValue(Math.floor(Math.random() * 5) + 2);
       setSliderVariant(
@@ -508,7 +509,7 @@ export default function Showcase() {
                                   }}
                                 >
                                   <div
-                                    className={`rui-SelectContent size-2 variant-${themeSelectMenuVariant}`}
+                                    className={`rui-SelectContent size-2 variant-${themeSelectContentVariant}`}
                                     data-transition
                                   >
                                     <div className="rui-SelectViewport">

@@ -41,6 +41,8 @@ export * from './radio-group.props';
 export {
   Select,
   SelectRoot,
+  SelectTrigger,
+  SelectContent,
   SelectItem,
   SelectGroup,
   SelectLabel,

@@ -1,29 +1,23 @@
+import { baseButtonVariants } from './base-button.props';
+
 import type { Color, Radius } from '../helpers';
 
 const selectSizes = ['1', '2'] as const;
 type SelectSize = (typeof selectSizes)[number];
 const defaultSelectSize: SelectSize = '2';
 
-const selectTriggerVariants = [
-  'solid',
-  'solid-mono',
-  'subtle',
-  'subtle-mono',
-  'outline',
-  'outline-mono',
-  'surface',
-  'surface-mono',
-  'ghost',
-  'ghost-mono',
-] as const;
+const selectTriggerVariants = baseButtonVariants;
 type SelectTriggerVariant = (typeof selectTriggerVariants)[number];
 const defaultSelectTriggerVariant: SelectTriggerVariant = 'surface';
+const defaultSelectTriggerColor: Color | undefined = undefined;
+const defaultSelectTriggerHighContrast: boolean | undefined = undefined;
 
-const selectMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type SelectMenuVariant = (typeof selectMenuVariants)[number];
-const defaultSelectMenuVariant: SelectMenuVariant = 'solid';
+const selectContentVariants = ['solid', 'subtle'] as const;
+type SelectContentVariant = (typeof selectContentVariants)[number];
+const defaultSelectContentVariant: SelectContentVariant = 'solid';
+const defaultSelectContentColor: Color | undefined = undefined;
+const defaultSelectContentHighContrast: boolean | undefined = undefined;
 
-const defaultSelectColor: Color | undefined = undefined;
 const defaultSelectRadius: Radius | undefined = undefined;
 
 export {
@@ -31,9 +25,12 @@ export {
   defaultSelectSize,
   selectTriggerVariants,
   defaultSelectTriggerVariant,
-  selectMenuVariants,
-  defaultSelectMenuVariant,
-  defaultSelectColor,
+  defaultSelectTriggerColor,
+  defaultSelectTriggerHighContrast,
+  selectContentVariants,
+  defaultSelectContentVariant,
+  defaultSelectContentColor,
+  defaultSelectContentHighContrast,
   defaultSelectRadius,
 };
-export type { SelectSize, SelectTriggerVariant, SelectMenuVariant };
+export type { SelectSize, SelectTriggerVariant, SelectContentVariant };

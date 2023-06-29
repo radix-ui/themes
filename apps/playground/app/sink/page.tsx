@@ -123,13 +123,15 @@ import {
   Section,
   //
   SelectRoot,
+  SelectTrigger,
+  SelectContent,
   SelectItem,
   SelectGroup,
   SelectLabel,
   SelectSeparator,
   selectSizes,
   selectTriggerVariants,
-  selectMenuVariants,
+  selectContentVariants,
   //
   Separator,
   //
@@ -189,15 +191,6 @@ const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-m
 const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mono'));
 
 const radioGroupColorVariants = radioGroupVariants.filter((variant) => !variant.endsWith('-mono'));
-
-const selectTriggerColorVariants = selectTriggerVariants.filter(
-  (variant) => !variant.endsWith('-mono')
-);
-const selectTriggerMonoVariants = selectTriggerVariants.filter((variant) =>
-  variant.endsWith('-mono')
-);
-const selectMenuColorVariants = selectMenuVariants.filter((variant) => !variant.endsWith('-mono'));
-const selectMenuMonoVariants = selectMenuVariants.filter((variant) => variant.endsWith('-mono'));
 
 const sliderColorVariants = sliderVariants.filter((variant) => !variant.endsWith('-mono'));
 const sliderMonoVariants = sliderVariants.filter((variant) => variant.endsWith('-mono'));
@@ -441,112 +434,126 @@ export default function Sink() {
                 <Separator size="4" />
 
                 <DocsSection title="Select">
-                  <Grid columns="2" gap="9">
-                    {[selectTriggerColorVariants, selectTriggerMonoVariants].map(
-                      (groupVariants, index) => (
-                        <div key={index}>
-                          <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
-                            Trigger variants:
-                          </Text>
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                                {selectSizes.map((size) => (
-                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                                ))}
-                                <ColumnHeaderCell>disabled</ColumnHeaderCell>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {groupVariants.map((variant) => (
-                                <tr key={variant}>
-                                  <RowHeaderCell>{variant}</RowHeaderCell>
-                                  {selectSizes.map((size) => (
-                                    <td key={size}>
-                                      <SelectRoot
-                                        defaultValue="apple"
-                                        size={size}
-                                        triggerVariant={variant}
-                                      >
-                                        <SelectItemsDemo />
-                                      </SelectRoot>
-                                    </td>
-                                  ))}
-                                  <td>
-                                    <SelectRoot
-                                      defaultValue="apple"
-                                      size="2"
-                                      triggerVariant={variant}
-                                      disabled
-                                    >
-                                      <SelectItemsDemo />
-                                    </SelectRoot>
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      )
-                    )}
-                  </Grid>
+                  <Text my="5">Trigger variants:</Text>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        {selectSizes.map((size) => (
+                          <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                        ))}
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>gray</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {selectTriggerVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          {selectSizes.map((size) => (
+                            <td key={size}>
+                              <SelectRoot defaultValue="apple" size={size}>
+                                <SelectTrigger variant={variant} />
+                                <SelectContent>
+                                  <SelectItemsDemo />
+                                </SelectContent>
+                              </SelectRoot>
+                            </td>
+                          ))}
+                          <td>
+                            <SelectRoot defaultValue="apple" size="2">
+                              <SelectTrigger variant={variant} highContrast />
+                              <SelectContent>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                          <td />
+                          <td>
+                            <SelectRoot defaultValue="apple" size="2">
+                              <SelectTrigger variant={variant} color="gray" />
+                              <SelectContent>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                          <td>
+                            <SelectRoot defaultValue="apple" size="2">
+                              <SelectTrigger variant={variant} color="gray" highContrast />
+                              <SelectContent>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                          <td />
+                          <td>
+                            <SelectRoot defaultValue="apple" size="2" disabled>
+                              <SelectTrigger variant={variant} />
+                              <SelectContent>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
-                  <Grid columns="2" gap="9" mt="5" mb="7">
-                    {[selectMenuColorVariants, selectMenuMonoVariants].map(
-                      (groupVariants, index) => (
-                        <div key={index}>
-                          <Text my="5" style={{ opacity: index === 1 ? 0 : undefined }}>
-                            Menu variants:
-                          </Text>
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                                <ColumnHeaderCell colSpan={2}>
-                                  position: &quot;item-aligned&quot;
-                                </ColumnHeaderCell>
-                                <ColumnHeaderCell colSpan={2}>
-                                  position: &quot;popper&quot;
-                                </ColumnHeaderCell>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {groupVariants.map((variant) => (
-                                <tr key={variant}>
-                                  <RowHeaderCell>{variant}</RowHeaderCell>
-                                  {selectSizes.map((size) => (
-                                    <td key={size}>
-                                      <SelectRoot
-                                        defaultValue="apple"
-                                        size={size}
-                                        menuVariant={variant}
-                                      >
-                                        <SelectItemsDemo />
-                                      </SelectRoot>
-                                    </td>
-                                  ))}
-
-                                  {selectSizes.map((size) => (
-                                    <td key={size}>
-                                      <SelectRoot
-                                        defaultValue="apple"
-                                        size={size}
-                                        menuVariant={variant}
-                                        position="popper"
-                                      >
-                                        <SelectItemsDemo />
-                                      </SelectRoot>
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      )
-                    )}
-                  </Grid>
+                  <Text my="5">Content variants:</Text>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>color</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>gray</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {selectContentVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          <td>
+                            <SelectRoot defaultValue="apple" size="1">
+                              <SelectTrigger />
+                              <SelectContent variant={variant}>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                          <td>
+                            <SelectRoot defaultValue="apple" size="1">
+                              <SelectTrigger />
+                              <SelectContent variant={variant} highContrast>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                          <td>
+                            <SelectRoot defaultValue="apple" size="1">
+                              <SelectTrigger />
+                              <SelectContent variant={variant} color="gray">
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                          <td>
+                            <SelectRoot defaultValue="apple" size="1">
+                              <SelectTrigger />
+                              <SelectContent variant={variant} color="gray" highContrast>
+                                <SelectItemsDemo />
+                              </SelectContent>
+                            </SelectRoot>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
                   <Text my="5">
                     <Code color="red">radius</Code> can be set per instance:
@@ -575,7 +582,10 @@ export default function Sink() {
                               {selectSizes.map((size) => (
                                 <td key={size}>
                                   <SelectRoot defaultValue="apple" size={size} radius={radius}>
-                                    <SelectItemsDemo />
+                                    <SelectTrigger />
+                                    <SelectContent>
+                                      <SelectItemsDemo />
+                                    </SelectContent>
                                   </SelectRoot>
                                 </td>
                               ))}
@@ -605,7 +615,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {selectTriggerColorVariants.map((variant) => (
+                              {selectTriggerVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -614,16 +624,24 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {selectTriggerColorVariants.map((variant) => (
+                                {selectTriggerVariants.map((variant) => (
                                   <td key={variant}>
-                                    <SelectRoot
-                                      defaultValue="apple"
-                                      size="1"
-                                      triggerVariant={variant}
-                                      menuVariant="subtle"
-                                      color={color}
-                                    >
-                                      <SelectItemsDemo />
+                                    <SelectRoot defaultValue="apple" size="1">
+                                      <SelectTrigger variant={variant} color={color} />
+                                      <SelectContent variant="subtle">
+                                        <SelectItemsDemo />
+                                      </SelectContent>
+                                    </SelectRoot>
+                                    <SelectRoot defaultValue="apple" size="1">
+                                      <SelectTrigger
+                                        variant={variant}
+                                        color={color}
+                                        highContrast
+                                        ml="2"
+                                      />
+                                      <SelectContent variant="subtle">
+                                        <SelectItemsDemo />
+                                      </SelectContent>
                                     </SelectRoot>
                                   </td>
                                 ))}
