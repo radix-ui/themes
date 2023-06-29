@@ -4,21 +4,21 @@ import { Slot } from '@radix-ui/react-slot';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultLinkSize,
-  defaultLinkVariant,
   defaultLinkWeight,
   defaultLinkColor,
+  defaultLinkHighContrast,
 } from './link.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
-import type { LinkSize, LinkVariant, LinkWeight } from './link.props';
+import type { LinkSize, LinkWeight } from './link.props';
 
 type LinkElement = React.ElementRef<'a'>;
 interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, MarginProps {
   asChild?: boolean;
   size?: Responsive<LinkSize>;
-  variant?: LinkVariant;
   weight?: Responsive<LinkWeight>;
   color?: Color;
+  highContrast?: boolean;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -26,9 +26,9 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
     className,
     asChild = false,
     size = defaultLinkSize,
-    variant = defaultLinkVariant,
     weight = defaultLinkWeight,
     color = defaultLinkColor,
+    highContrast = defaultLinkHighContrast,
     ...linkProps
   } = marginRest;
   const Comp = asChild ? Slot : 'a';
@@ -43,8 +43,8 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
         'rui-Text',
         'rui-Link',
         withBreakpoints(size, 'size'),
-        `variant-${variant}`,
         withBreakpoints(weight, 'weight'),
+        { highContrast },
         withMarginProps(marginProps)
       )}
     />

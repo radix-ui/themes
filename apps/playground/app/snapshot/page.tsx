@@ -140,7 +140,7 @@ export default function Snapshot() {
                         Editorial
                       </Link>
                       <Separator orientation="vertical" size="2" />
-                      <Link href="#" size="2" variant="high-contrast" weight="bold">
+                      <Link href="#" size="2" highContrast weight="bold">
                         Green Life
                       </Link>
                       <Link href="#" size="2" color="gray" weight="bold">

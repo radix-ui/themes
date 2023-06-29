@@ -197,8 +197,8 @@ export default function Sink() {
                 <Container>
                   {/* <nav>
                   <Flex p="6" gap="5" align="center">
-                    <Link asChild variant="high-contrast">
-                      <NextLink href="sink">Kitchen sink</NextLink>
+                    <Link asChild>
+                      <NextLink href= highContrast"sink">Kitchen sink</NextLink>
                     </Link>
                     <Separator orientation="vertical" />
                     <Link href="home-os" color="gray">
@@ -633,7 +633,7 @@ export default function Sink() {
                   </table>
 
                   <Text my="5">
-                    <Code color="red">radius</Code> can be set per instance:
+                    <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
@@ -2235,22 +2235,22 @@ export default function Sink() {
                       </Link>
                     </Flex>
                     <Flex gap="4" mb="5">
-                      <Link variant="high-contrast" color="purple" href="/">
+                      <Link color="purple" highContrast href="/">
                         This is a link
                       </Link>
-                      <Link variant="high-contrast" color="gray" href="/">
+                      <Link color="gray" highContrast href="/">
                         This is a link
                       </Link>
-                      <Link variant="high-contrast" color="green" href="/">
+                      <Link color="green" highContrast href="/">
                         This is a link
                       </Link>
-                      <Link variant="high-contrast" color="red" href="/">
+                      <Link color="red" highContrast href="/">
                         This is a link
                       </Link>
-                      <Link variant="high-contrast" color="yellow" href="/">
+                      <Link color="yellow" highContrast href="/">
                         This is a link
                       </Link>
-                      <Link variant="high-contrast" color="blue" href="/">
+                      <Link color="blue" highContrast href="/">
                         This is a link
                       </Link>
                     </Flex>
@@ -2628,22 +2628,22 @@ export default function Sink() {
                     </Link>
                   </Flex>
                   <Flex gap="4" mb="5">
-                    <Link variant="high-contrast" color="purple" href="/">
+                    <Link color="purple" highContrast href="/">
                       This is a link
                     </Link>
-                    <Link variant="high-contrast" color="gray" href="/">
+                    <Link color="gray" highContrast href="/">
                       This is a link
                     </Link>
-                    <Link variant="high-contrast" color="green" href="/">
+                    <Link color="green" highContrast href="/">
                       This is a link
                     </Link>
-                    <Link variant="high-contrast" color="red" href="/">
+                    <Link color="red" highContrast href="/">
                       This is a link
                     </Link>
-                    <Link variant="high-contrast" color="yellow" href="/">
+                    <Link color="yellow" highContrast href="/">
                       This is a link
                     </Link>
-                    <Link variant="high-contrast" color="blue" href="/">
+                    <Link color="blue" highContrast href="/">
                       This is a link
                     </Link>
                   </Flex>
