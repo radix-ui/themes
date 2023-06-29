@@ -4,9 +4,9 @@ const badgeSizes = ['1', '2'] as const;
 type BadgeSize = (typeof badgeSizes)[number];
 const defaultBadgeSize: BadgeSize = '1';
 
-const badgeVariants = ['subtle', 'outline', 'surface'] as const;
+const badgeVariants = ['soft', 'outline', 'surface'] as const;
 type BadgeVariant = (typeof badgeVariants)[number];
-const defaultBadgeVariant: BadgeVariant = 'subtle';
+const defaultBadgeVariant: BadgeVariant = 'soft';
 
 const defaultBadgeColor: Color = 'gray';
 

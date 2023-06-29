@@ -12,7 +12,7 @@ const defaultSelectTriggerVariant: SelectTriggerVariant = 'surface';
 const defaultSelectTriggerColor: Color | undefined = undefined;
 const defaultSelectTriggerHighContrast: boolean | undefined = undefined;
 
-const selectContentVariants = ['solid', 'subtle'] as const;
+const selectContentVariants = ['solid', 'soft'] as const;
 type SelectContentVariant = (typeof selectContentVariants)[number];
 const defaultSelectContentVariant: SelectContentVariant = 'solid';
 const defaultSelectContentColor: Color | undefined = undefined;

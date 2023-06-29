@@ -116,8 +116,8 @@
   }
 }
 
-/* subtle */
-.rui-TextArea.variant-subtle {
+/* soft */
+.rui-TextArea.variant-soft {
   background-color: var(--accent-a3);
   &:not(:focus) {
     box-shadow: none;

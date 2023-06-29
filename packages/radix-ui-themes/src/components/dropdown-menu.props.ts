@@ -4,7 +4,7 @@ const dropdownMenuContentSizes = ['1', '2'] as const;
 type DropdownMenuContentSize = (typeof dropdownMenuContentSizes)[number];
 const defaultDropdownMenuContentSize: DropdownMenuContentSize = '2';
 
-const dropdownMenuContentVariants = ['solid', 'subtle'] as const;
+const dropdownMenuContentVariants = ['solid', 'soft'] as const;
 type DropdownMenuContentVariant = (typeof dropdownMenuContentVariants)[number];
 const defaultDropdownMenuContentVariant: DropdownMenuContentVariant = 'solid';
 

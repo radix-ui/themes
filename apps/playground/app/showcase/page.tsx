@@ -77,17 +77,17 @@ export default function Showcase() {
   const [darkMode, setDarkMode] = React.useState(true);
   const [color, setColor] = React.useState<ColorScale>('indigo');
   const [primaryVariant, setPrimaryVariant] = React.useState<ButtonVariant>('solid');
-  const [secondaryVariant, setSecondaryVariant] = React.useState<ButtonVariant>('subtle');
-  const [avatarVariant, setAvatarVariant] = React.useState<AvatarVariant>('subtle');
+  const [secondaryVariant, setSecondaryVariant] = React.useState<ButtonVariant>('soft');
+  const [avatarVariant, setAvatarVariant] = React.useState<AvatarVariant>('soft');
   const [avatarNameColor, setAvatarNameColor] = React.useState<ColorScale | undefined>(undefined);
   const [feedbackTitleColor, setFeedbackTitleColor] = React.useState<ColorScale | undefined>(
     undefined
   );
   const [feedbackVariant, setFeedbackVariant] = React.useState<TextAreaVariant>('surface');
   const [likeCount, setLikeCount] = React.useState(17);
-  const [likeButtonVariant, setLikeButtonVariant] = React.useState<ButtonVariant>('subtle');
+  const [likeButtonVariant, setLikeButtonVariant] = React.useState<ButtonVariant>('soft');
   const [themeSelectTriggerVariant, setThemeSelectTriggerVariant] =
-    React.useState<SelectTriggerVariant>('subtle');
+    React.useState<SelectTriggerVariant>('soft');
   const [themeSelectContentVariant, setThemeSelectContentVariant] =
     React.useState<SelectContentVariant>('solid');
   const [sliderValue, setSliderValue] = React.useState(6);
@@ -98,7 +98,7 @@ export default function Showcase() {
   const [dropdownTriggerVariant, setDropdownTriggerVariant] =
     React.useState<ButtonVariant>('ghost');
   const [dropdownMenuVariant, setDropdownMenuVariant] =
-    React.useState<DropdownMenuContentVariant>('subtle');
+    React.useState<DropdownMenuContentVariant>('soft');
 
   React.useEffect(() => {
     const id = setTimeout(() => {
@@ -125,14 +125,14 @@ export default function Showcase() {
       const isNextPrimaryVariantMono = nextPrimaryVariant.endsWith('mono');
       setPrimaryVariant(nextPrimaryVariant);
       // setSecondaryVariant(
-      //   nextPrimaryVariant.startsWith('subtle') || nextPrimaryVariant.startsWith('outline')
+      //   nextPrimaryVariant.startsWith('soft') || nextPrimaryVariant.startsWith('outline')
       //     ? `ghost${isNextPrimaryVariantMono ? '-mono' : ''}`
-      //     : `subtle${isNextPrimaryVariantMono ? '-mono' : ''}`
+      //     : `soft${isNextPrimaryVariantMono ? '-mono' : ''}`
       // );
       setSecondaryVariant(
-        nextPrimaryVariant.startsWith('subtle') || nextPrimaryVariant.startsWith('outline')
+        nextPrimaryVariant.startsWith('soft') || nextPrimaryVariant.startsWith('outline')
           ? 'ghost'
-          : 'subtle'
+          : 'soft'
       );
 
       setAvatarVariant(randomItemInArray(avatarVariants));

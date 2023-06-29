@@ -4,7 +4,7 @@ const sliderSizes = ['1', '2', '3'] as const;
 type SliderSize = (typeof sliderSizes)[number];
 const defaultSliderSize: SliderSize = '2';
 
-const sliderVariants = ['solid', 'subtle'] as const;
+const sliderVariants = ['solid', 'soft'] as const;
 type SliderVariant = (typeof sliderVariants)[number];
 const defaultSliderVariant: SliderVariant = 'solid';
 

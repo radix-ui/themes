@@ -39,6 +39,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Button:where(.variant-solid, .variant-subtle) {
+.rui-Button:where(.variant-solid, .variant-soft) {
   font-weight: 600;
 }

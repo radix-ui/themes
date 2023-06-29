@@ -502,7 +502,7 @@ function ConfirmBookingDialog({ children, guestCount }: any) {
           }}
         >
           <Dialog.Close>
-            <Button variant="subtle" color="gray">
+            <Button variant="soft" color="gray">
               Cancel
             </Button>
           </Dialog.Close>

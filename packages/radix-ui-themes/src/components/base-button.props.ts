@@ -4,7 +4,7 @@ const baseButtonSizes = ['1', '2', '3'] as const;
 type BaseButtonSize = (typeof baseButtonSizes)[number];
 const defaultBaseButtonSize: BaseButtonSize = '2';
 
-const baseButtonVariants = ['solid', 'subtle', 'ghost', 'outline', 'surface'] as const;
+const baseButtonVariants = ['solid', 'soft', 'ghost', 'outline', 'surface'] as const;
 type BaseButtonVariant = (typeof baseButtonVariants)[number];
 const defaultBaseButtonVariant: BaseButtonVariant = 'solid';
 

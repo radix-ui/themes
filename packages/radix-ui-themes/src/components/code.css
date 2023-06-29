@@ -111,9 +111,9 @@
   }
 }
 
-/* subtle */
+/* soft */
 
-.rui-Code.variant-subtle {
+.rui-Code.variant-soft {
   background-color: var(--accent-a3);
   color: var(--accent-11);
 

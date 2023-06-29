@@ -153,12 +153,12 @@
   }
 }
 
-/* subtle */
+/* soft */
 
-.rui-BaseMenuContent.variant-subtle .rui-BaseMenuSubTrigger[data-state='open'] {
+.rui-BaseMenuContent.variant-soft .rui-BaseMenuSubTrigger[data-state='open'] {
   background-color: var(--accent-3);
 }
-.rui-BaseMenuContent.variant-subtle .rui-BaseMenuItem[data-highlighted] {
+.rui-BaseMenuContent.variant-soft .rui-BaseMenuItem[data-highlighted] {
   background-color: var(--accent-5);
   &[data-accent-scale] {
     color: var(--accent-12);

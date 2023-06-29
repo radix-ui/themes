@@ -145,8 +145,8 @@
   color: var(--accent-1);
 }
 
-/* subtle */
+/* soft */
 
-.rui-SelectContent.variant-subtle .rui-SelectItem[data-highlighted] {
+.rui-SelectContent.variant-soft .rui-SelectItem[data-highlighted] {
   background-color: var(--accent-5);
 }

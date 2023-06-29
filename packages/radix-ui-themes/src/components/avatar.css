@@ -105,9 +105,9 @@
   }
 }
 
-/* subtle */
+/* soft */
 
-.rui-AvatarRoot.variant-subtle {
+.rui-AvatarRoot.variant-soft {
   & .rui-AvatarFallback {
     background-color: var(--accent-3);
     color: var(--accent-11);

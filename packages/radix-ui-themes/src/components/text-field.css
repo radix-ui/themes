@@ -82,8 +82,8 @@
   }
 }
 
-/* subtle */
-.rui-TextField.variant-subtle {
+/* soft */
+.rui-TextField.variant-soft {
   background-color: var(--accent-a3);
   &:not(:focus) {
     box-shadow: none;

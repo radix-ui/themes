@@ -214,7 +214,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
           onValueChange={(value) => setAccentScale(value as ColorScale)}
         >
           <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
-          <Select.Content variant="subtle" color="gray">
+          <Select.Content variant="soft" color="gray">
             {groupedColors.map(({ label, values }, index) => (
               <React.Fragment key={label}>
                 {index > 0 ? <Select.Separator /> : null}
@@ -258,7 +258,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
           onValueChange={(value) => setGrayScale(value as GrayScaleControl)}
         >
           <Select.Trigger id="gray-scale" variant="surface" color="gray" highContrast />
-          <Select.Content variant="subtle" color="gray">
+          <Select.Content variant="soft" color="gray">
             {groupedGrays.map(({ label, values }, index) => (
               <React.Fragment key={label}>
                 {index > 0 ? <Select.Separator /> : null}
@@ -454,7 +454,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         <Label htmlFor="radius">Radius › {radius}</Label>
         {/* <Select.Root value={radius} onValueChange={(value) => setRadius(value as Radius)}>
           <Select.Trigger id="radius" variant="surface" color="gray" highContrast />
-          <Select.Content variant="subtle" color="gray">
+          <Select.Content variant="soft" color="gray">
             {radiusValues.map((value) => (
               <Select.Item key={value} value={value}>
                 {value}
@@ -476,7 +476,7 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
         <Label htmlFor="scaling">Scaling</Label>
         <Select.Root value={scaling} onValueChange={(value) => setScaling(value as Scaling)}>
           <Select.Trigger id="scaling" variant="surface" color="gray" highContrast />
-          <Select.Content variant="subtle" color="gray">
+          <Select.Content variant="soft" color="gray">
             {scalingValues.map((value) => (
               <Select.Item key={value} value={value}>
                 {value}

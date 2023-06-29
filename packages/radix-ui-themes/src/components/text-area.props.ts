@@ -4,7 +4,7 @@ const textAreaSizes = ['1', '2', '3'] as const;
 type TextAreaSize = (typeof textAreaSizes)[number];
 const defaultTextAreaSize: TextAreaSize = '2';
 
-const textAreaVariants = ['surface', 'subtle'] as const;
+const textAreaVariants = ['surface', 'soft'] as const;
 type TextAreaVariant = (typeof textAreaVariants)[number];
 const defaultTextAreaVariant: TextAreaVariant = 'surface';
 

@@ -56,7 +56,7 @@ export default function Demo() {
                   </Flex>
                   <DialogRoot>
                     <DialogTrigger>
-                      <IconButton aria-label="Edit user" variant="subtle">
+                      <IconButton aria-label="Edit user" variant="soft">
                         <Pencil1Icon />
                       </IconButton>
                     </DialogTrigger>
@@ -73,7 +73,7 @@ export default function Demo() {
                       </Text>
                       <SelectRoot defaultValue={user.role}>
                         <SelectTrigger color="gray" highContrast />
-                        <SelectContent variant="subtle" color="gray">
+                        <SelectContent variant="soft" color="gray">
                           <SelectItem value="viewer">Viewer</SelectItem>
                           <SelectItem value="maintainer">Maintainer</SelectItem>
                           <SelectItem value="contributor">Contributor</SelectItem>
@@ -83,7 +83,7 @@ export default function Demo() {
 
                       <Flex justify="end" gap="3" mt="5">
                         <DialogClose>
-                          <Button variant="subtle" color="gray">
+                          <Button variant="soft" color="gray">
                             Cancel
                           </Button>
                         </DialogClose>

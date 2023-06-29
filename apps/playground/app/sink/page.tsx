@@ -237,7 +237,7 @@ export default function Sink() {
                               </DialogDescription>
                               <Flex gap="3" mt="4" justify="end">
                                 <DialogClose>
-                                  <Button variant="subtle" color="gray">
+                                  <Button variant="soft" color="gray">
                                     Cancel
                                   </Button>
                                 </DialogClose>
@@ -302,7 +302,7 @@ export default function Sink() {
                               </AlertDialogDescription>
                               <Flex gap="3" mt="4" justify="end">
                                 <AlertDialogCancel>
-                                  <Button variant="subtle" color="gray">
+                                  <Button variant="soft" color="gray">
                                     Cancel
                                   </Button>
                                 </AlertDialogCancel>
@@ -366,7 +366,7 @@ export default function Sink() {
                                     <td key={size}>
                                       <DropdownMenuRoot>
                                         <DropdownMenuTrigger>
-                                          <Button size={size} variant="subtle" color="gray">
+                                          <Button size={size} variant="soft" color="gray">
                                             <DotsHorizontalIcon />
                                           </Button>
                                         </DropdownMenuTrigger>
@@ -377,7 +377,7 @@ export default function Sink() {
                                   <td>
                                     <DropdownMenuRoot>
                                       <DropdownMenuTrigger>
-                                        <Button variant="subtle" color="gray">
+                                        <Button variant="soft" color="gray">
                                           <DotsHorizontalIcon />
                                         </Button>
                                       </DropdownMenuTrigger>
@@ -387,7 +387,7 @@ export default function Sink() {
                                   <td>
                                     <DropdownMenuRoot>
                                       <DropdownMenuTrigger>
-                                        <Button variant="subtle" color="gray">
+                                        <Button variant="soft" color="gray">
                                           <DotsHorizontalIcon />
                                         </Button>
                                       </DropdownMenuTrigger>
@@ -397,7 +397,7 @@ export default function Sink() {
                                   <td>
                                     <DropdownMenuRoot>
                                       <DropdownMenuTrigger>
-                                        <Button variant="subtle" color="gray">
+                                        <Button variant="soft" color="gray">
                                           <DotsHorizontalIcon />
                                         </Button>
                                       </DropdownMenuTrigger>
@@ -445,7 +445,7 @@ export default function Sink() {
                                           <td key={variant}>
                                             <DropdownMenuRoot>
                                               <DropdownMenuTrigger>
-                                                <Button variant="subtle" color="gray">
+                                                <Button variant="soft" color="gray">
                                                   <DotsHorizontalIcon />
                                                 </Button>
                                               </DropdownMenuTrigger>
@@ -456,7 +456,7 @@ export default function Sink() {
                                             </DropdownMenuRoot>
                                             <DropdownMenuRoot>
                                               <DropdownMenuTrigger>
-                                                <Button variant="subtle" color="gray" ml="2">
+                                                <Button variant="soft" color="gray" ml="2">
                                                   <DotsHorizontalIcon />
                                                 </Button>
                                               </DropdownMenuTrigger>
@@ -705,7 +705,7 @@ export default function Sink() {
                                   <td key={variant}>
                                     <SelectRoot defaultValue="apple" size="1">
                                       <SelectTrigger variant={variant} color={color} />
-                                      <SelectContent variant="subtle">
+                                      <SelectContent variant="soft">
                                         <SelectItemsDemo />
                                       </SelectContent>
                                     </SelectRoot>
@@ -716,7 +716,7 @@ export default function Sink() {
                                         highContrast
                                         ml="2"
                                       />
-                                      <SelectContent variant="subtle">
+                                      <SelectContent variant="soft">
                                         <SelectItemsDemo />
                                       </SelectContent>
                                     </SelectRoot>

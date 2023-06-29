@@ -52,13 +52,13 @@
   color: var(--gray-12);
 }
 
-/* subtle */
+/* soft */
 
-.rui-Badge.variant-subtle:where([data-accent-scale]) {
+.rui-Badge.variant-soft:where([data-accent-scale]) {
   background-color: var(--accent-3);
   color: var(--accent-11);
 }
-.rui-Badge.variant-subtle:where([data-accent-scale='gray']) {
+.rui-Badge.variant-soft:where([data-accent-scale='gray']) {
   color: var(--gray-12);
 }
 

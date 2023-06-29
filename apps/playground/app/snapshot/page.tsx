@@ -82,7 +82,7 @@ export default function Snapshot() {
                       Login
                     </Link>
                     <SubmitPhotoDialog>
-                      <Button variant="subtle" color="gray">
+                      <Button variant="soft" color="gray">
                         Submit a photo
                       </Button>
                     </SubmitPhotoDialog>
@@ -95,7 +95,7 @@ export default function Snapshot() {
                           <HamburgerMenuIcon />
                         </IconButton>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent variant="subtle" align="end">
+                      <DropdownMenuContent variant="soft" align="end">
                         <DropdownMenuLabel>Account</DropdownMenuLabel>
                         <DropdownMenuItem shortcut="⌘+P">Profile</DropdownMenuItem>
                         <DropdownMenuItem shortcut="⌘+L">Library</DropdownMenuItem>
@@ -297,7 +297,7 @@ function SubmitPhotoDialog({ children }: any) {
             }}
           >
             <DialogClose>
-              <Button variant="subtle" color="gray">
+              <Button variant="soft" color="gray">
                 Cancel
               </Button>
             </DialogClose>

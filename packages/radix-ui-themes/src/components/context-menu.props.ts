@@ -4,7 +4,7 @@ const contextMenuContentSizes = ['1', '2'] as const;
 type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];
 const defaultContextMenuContentSize: ContextMenuContentSize = '2';
 
-const contextMenuContentVariants = ['solid', 'subtle'] as const;
+const contextMenuContentVariants = ['solid', 'soft'] as const;
 type ContextMenuContentVariant = (typeof contextMenuContentVariants)[number];
 const defaultContextMenuContentVariant: ContextMenuContentVariant = 'solid';
 

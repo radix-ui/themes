@@ -150,9 +150,9 @@
   }
 }
 
-/* subtle */
+/* soft */
 
-.rui-SliderRoot.variant-subtle .rui-SliderRange {
+.rui-SliderRoot.variant-soft .rui-SliderRange {
   background-color: var(--accent-a6);
 }
 

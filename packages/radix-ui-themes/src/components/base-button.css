@@ -72,9 +72,9 @@
   }
 }
 
-/* subtle / ghost */
+/* soft / ghost */
 .rui-BaseButton.variant-ghost,
-.rui-BaseButton.variant-subtle {
+.rui-BaseButton.variant-soft {
   color: var(--accent-11);
 
   &:where(:focus-visible) {
@@ -85,7 +85,7 @@
     color: var(--accent-12);
   }
 }
-.rui-BaseButton.variant-subtle {
+.rui-BaseButton.variant-soft {
   background-color: var(--accent-a3);
 
   &:where(:hover, [data-state='open']) {

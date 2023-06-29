@@ -51,7 +51,7 @@ In this demo we are going to build a screen which lists users and allows to edit
   - Let's wrap a `Dialog` around our button and add a title and description (`DialogRoot`, `DialogContent`, `DialogTitle`, `DialogDescription`)
   - Let's add some buttons to operate our `Dialog`
     - `Flex` wrapper (with `justify="end"`, `gap="3"`, `mt="5"`)
-    - Cancel (`subtle-mono` variant)
+    - Cancel (`soft` gray variant)
     - Save
   - Let's add a `TextField` and `Label` for the name
   - Now we can copy this block and display the user's role
