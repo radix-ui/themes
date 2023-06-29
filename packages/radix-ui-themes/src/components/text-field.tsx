@@ -4,10 +4,11 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 import {
   defaultTextFieldSize,
   defaultTextFieldVariant,
+  defaultTextFieldColor,
   defaultTextFieldRadius,
 } from './text-field.props';
 
-import type { MarginProps, Radius, Responsive } from '../helpers';
+import type { MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { TextFieldSize, TextFieldVariant } from './text-field.props';
 
 type TextFieldElement = React.ElementRef<'input'>;
@@ -16,6 +17,7 @@ interface TextFieldProps
     MarginProps {
   size?: Responsive<TextFieldSize>;
   variant?: TextFieldVariant;
+  color?: Color;
   radius?: Radius;
 }
 const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, forwardedRef) => {
@@ -24,11 +26,13 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
     className,
     size = defaultTextFieldSize,
     variant = defaultTextFieldVariant,
+    color = defaultTextFieldColor,
     radius = defaultTextFieldRadius,
     ...textAreaProps
   } = marginRest;
   return (
     <input
+      data-accent-scale={color}
       data-radius={radius}
       spellCheck="false"
       {...textAreaProps}

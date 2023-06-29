@@ -1762,40 +1762,55 @@ export default function Sink() {
                         {textFieldSizes.map((size) => (
                           <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                         ))}
+                        <ColumnHeaderCell>value</ColumnHeaderCell>
+                        <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                        <ColumnHeaderCell>read-only</ColumnHeaderCell>
                       </tr>
                     </thead>
                     <tbody>
                       {textFieldVariants.map((variant) => (
-                        <tr key={variant}>
-                          <RowHeaderCell>{variant}</RowHeaderCell>
-                          {textFieldSizes.map((size) => (
-                            <td key={size}>
-                              <TextField variant={variant} size={size} placeholder="Your name" />
-                            </td>
+                        <React.Fragment key={variant}>
+                          {[variant, '+ gray'].map((label) => (
+                            <tr key={label}>
+                              <RowHeaderCell>{label}</RowHeaderCell>
+                              {textFieldSizes.map((size) => (
+                                <td key={size}>
+                                  <TextField
+                                    size={size}
+                                    variant={variant}
+                                    color={label === '+ gray' ? 'gray' : undefined}
+                                    placeholder="Your name"
+                                  />
+                                </td>
+                              ))}
+                              <td>
+                                <TextField
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  defaultValue="The quick brown fox jumped"
+                                />
+                              </td>
+                              <td>
+                                <TextField
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  placeholder="Your name"
+                                  disabled
+                                  defaultValue="The quick brown fox jumped"
+                                />
+                              </td>
+                              <td>
+                                <TextField
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  placeholder="Your name"
+                                  readOnly
+                                  defaultValue="The quick brown fox jumped"
+                                />
+                              </td>
+                            </tr>
                           ))}
-                          <td>
-                            <TextField
-                              variant={variant}
-                              defaultValue="The quick brown fox jumped"
-                            />
-                          </td>
-                          <td>
-                            <TextField
-                              variant={variant}
-                              placeholder="Your name"
-                              disabled
-                              defaultValue="The quick brown fox jumped"
-                            />
-                          </td>
-                          <td>
-                            <TextField
-                              variant={variant}
-                              placeholder="Your name"
-                              readOnly
-                              defaultValue="The quick brown fox jumped"
-                            />
-                          </td>
-                        </tr>
+                        </React.Fragment>
                       ))}
                     </tbody>
                   </table>
@@ -1835,6 +1850,51 @@ export default function Sink() {
                       </table>
                     </Box>
                   </details>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {textFieldVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {textFieldVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <TextField
+                                      variant={variant}
+                                      color={color}
+                                      placeholder="Your name"
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
+                  </details>
                 </DocsSection>
 
                 <DocsSection title="TextArea">
@@ -1852,36 +1912,48 @@ export default function Sink() {
                     </thead>
                     <tbody>
                       {textAreaVariants.map((variant) => (
-                        <tr key={variant}>
-                          <RowHeaderCell>{variant}</RowHeaderCell>
-                          {textAreaSizes.map((size) => (
-                            <td key={size}>
-                              <TextArea size={size} variant={variant} placeholder="Your feedback" />
-                            </td>
+                        <React.Fragment key={variant}>
+                          {[variant, '+ gray'].map((label) => (
+                            <tr key={label}>
+                              <RowHeaderCell>{label}</RowHeaderCell>
+                              {textAreaSizes.map((size) => (
+                                <td key={size}>
+                                  <TextArea
+                                    size={size}
+                                    variant={variant}
+                                    color={label === '+ gray' ? 'gray' : undefined}
+                                    placeholder="Your feedback"
+                                  />
+                                </td>
+                              ))}
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  defaultValue="Love the new design, it's looking great!"
+                                />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  placeholder="Your feedback"
+                                  disabled
+                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  placeholder="Your feedback"
+                                  readOnly
+                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                />
+                              </td>
+                            </tr>
                           ))}
-                          <td>
-                            <TextArea
-                              variant={variant}
-                              defaultValue="Love the new design, it's looking great!"
-                            />
-                          </td>
-                          <td>
-                            <TextArea
-                              variant={variant}
-                              placeholder="Your feedback"
-                              disabled
-                              defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
-                            />
-                          </td>
-                          <td>
-                            <TextArea
-                              variant={variant}
-                              placeholder="Your feedback"
-                              readOnly
-                              defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
-                            />
-                          </td>
-                        </tr>
+                        </React.Fragment>
                       ))}
                     </tbody>
                   </table>
@@ -1924,6 +1996,51 @@ export default function Sink() {
                         </tbody>
                       </table>
                     </Box>
+                  </details>
+
+                  <Text my="5">
+                    <Code>color</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See colors & variants combinations</span>
+                      </Text>
+                    </summary>
+                    {groupedColors.map(({ label, values }) => (
+                      <React.Fragment key={label}>
+                        <Text weight="bold" mt="6" mb="4">
+                          {label}
+                        </Text>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {textAreaVariants.map((variant) => (
+                                <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell>{color}</RowHeaderCell>
+                                {textAreaVariants.map((variant) => (
+                                  <td key={variant}>
+                                    <TextArea
+                                      variant={variant}
+                                      color={color}
+                                      placeholder="Your name"
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </React.Fragment>
+                    ))}
                   </details>
                 </DocsSection>
 
