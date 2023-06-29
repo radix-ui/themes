@@ -5,15 +5,16 @@ import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import classNames from 'classnames';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { withBreakpoints } from '../helpers';
-import { defaultContextMenuSize, defaultContextMenuVariant } from './context-menu.props';
+import {
+  defaultContextMenuContentSize,
+  defaultContextMenuContentVariant,
+  defaultContextMenuContentColor,
+  defaultContextMenuContentHighContrast,
+  defaultContextMenuItemColor,
+} from './context-menu.props';
 
-import type { Responsive } from '../helpers';
-import type { ContextMenuSize, ContextMenuVariant } from './context-menu.props';
-
-type StyleProps = {
-  size?: Responsive<ContextMenuSize>;
-  variant?: ContextMenuVariant;
-};
+import type { Color, Responsive, PropsWithoutRefOrColor } from '../helpers';
+import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -30,21 +31,32 @@ const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMe
 );
 ContextMenuTrigger.displayName = 'ContextMenuTrigger';
 
+type ContextMenuContentContextValue = {
+  size?: Responsive<ContextMenuContentSize>;
+  variant?: ContextMenuContentVariant;
+  color?: Color;
+  highContrast?: boolean;
+};
+const ContextMenuContentContext = React.createContext<ContextMenuContentContextValue>({});
 type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Content>;
 interface ContextMenuContentProps
-  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content>,
-    StyleProps {}
+  extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Content>,
+    ContextMenuContentContextValue {}
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
     const {
       className,
-      size = defaultContextMenuSize,
-      variant = defaultContextMenuVariant,
+      children,
+      size = defaultContextMenuContentSize,
+      variant = defaultContextMenuContentVariant,
+      color = defaultContextMenuContentColor,
+      highContrast = defaultContextMenuContentHighContrast,
       ...contentProps
     } = props;
     return (
       <ContextMenuPrimitive.Portal>
         <ContextMenuPrimitive.Content
+          data-accent-scale={color}
           alignOffset={-Number(size) * 4}
           {...contentProps}
           ref={forwardedRef}
@@ -54,9 +66,19 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
             'rui-ContextMenuContent',
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
+            { highContrast },
             className
           )}
-        />
+        >
+          <ContextMenuContentContext.Provider
+            value={React.useMemo(
+              () => ({ size, variant, color, highContrast }),
+              [size, variant, color, highContrast]
+            )}
+          >
+            {children}
+          </ContextMenuContentContext.Provider>
+        </ContextMenuPrimitive.Content>
       </ContextMenuPrimitive.Portal>
     );
   }
@@ -78,15 +100,22 @@ const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLa
 ContextMenuLabel.displayName = 'ContextMenuLabel';
 
 type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>;
-interface ContextMenuItemProps
-  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Item> {
+interface ContextMenuItemProps extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Item> {
+  color?: Color;
   shortcut?: string;
 }
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
   (props, forwardedRef) => {
-    const { className, children, shortcut, ...itemProps } = props;
+    const {
+      className,
+      children,
+      color = defaultContextMenuItemColor,
+      shortcut,
+      ...itemProps
+    } = props;
     return (
       <ContextMenuPrimitive.Item
+        data-accent-scale={color}
         {...itemProps}
         ref={forwardedRef}
         className={classNames('rui-BaseMenuItem', 'rui-ContextMenuItem', className)}
@@ -225,21 +254,17 @@ ContextMenuSubTrigger.displayName = 'ContextMenuSubTrigger';
 
 type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
-  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent>,
-    StyleProps {}
+  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent> {}
 const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const {
-    className,
-    size = defaultContextMenuSize,
-    variant = defaultContextMenuVariant,
-    ...subContentProps
-  } = props;
+  const { className, ...subContentProps } = props;
+  const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.SubContent
+        data-accent-scale={color}
         alignOffset={-Number(size) * 4}
         {...subContentProps}
         ref={forwardedRef}
@@ -251,6 +276,7 @@ const ContextMenuSubContent = React.forwardRef<
           'rui-ContextMenuSubContent',
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
+          { highContrast },
           className
         )}
       />

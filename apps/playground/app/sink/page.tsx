@@ -59,8 +59,8 @@ import {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuSeparator,
-  contextMenuSizes,
-  contextMenuVariants,
+  contextMenuContentSizes,
+  contextMenuContentVariants,
   //
   DialogRoot,
   DialogTrigger,
@@ -82,8 +82,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuSeparator,
-  dropdownMenuSizes,
-  dropdownMenuVariants,
+  dropdownMenuContentSizes,
+  dropdownMenuContentVariants,
   //
   Em,
   Flex,
@@ -173,13 +173,7 @@ import { ControlPanel } from '../../components/control-panel';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
 
-import type {
-  ContextMenuSize,
-  ContextMenuVariant,
-  DropdownMenuSize,
-  DropdownMenuVariant,
-  TextFieldSize,
-} from '@radix-ui/themes';
+import type { TextFieldSize } from '@radix-ui/themes';
 import { RadixLogo } from './radix-logo';
 
 const avatarColorVariants = avatarVariants.filter((variant) => !variant.endsWith('-mono'));
@@ -365,30 +359,160 @@ export default function Sink() {
                 <Container>
                   <Section>
                     <Grid columns="3" gapY="9">
-                      <DocsGridSection title="DropdownMenu">
+                      <div style={{ gridColumn: '1 / span 2' }}>
+                        <DocsGridSection title="DropdownMenu">
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {dropdownMenuContentSizes.map((size) => (
+                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                                ))}
+                                <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                                <ColumnHeaderCell>gray</ColumnHeaderCell>
+                                <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {dropdownMenuContentVariants.map((variant) => (
+                                <tr key={variant}>
+                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  {dropdownMenuContentSizes.map((size) => (
+                                    <td key={size}>
+                                      <DropdownMenuRoot>
+                                        <DropdownMenuTrigger>
+                                          <Button size={size} variant="subtle" color="gray">
+                                            <DotsHorizontalIcon />
+                                          </Button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContentDemo size={size} variant={variant} />
+                                      </DropdownMenuRoot>
+                                    </td>
+                                  ))}
+                                  <td>
+                                    <DropdownMenuRoot>
+                                      <DropdownMenuTrigger>
+                                        <Button variant="subtle" color="gray">
+                                          <DotsHorizontalIcon />
+                                        </Button>
+                                      </DropdownMenuTrigger>
+                                      <DropdownMenuContentDemo variant={variant} highContrast />
+                                    </DropdownMenuRoot>
+                                  </td>
+                                  <td>
+                                    <DropdownMenuRoot>
+                                      <DropdownMenuTrigger>
+                                        <Button variant="subtle" color="gray">
+                                          <DotsHorizontalIcon />
+                                        </Button>
+                                      </DropdownMenuTrigger>
+                                      <DropdownMenuContentDemo variant={variant} color="gray" />
+                                    </DropdownMenuRoot>
+                                  </td>
+                                  <td>
+                                    <DropdownMenuRoot>
+                                      <DropdownMenuTrigger>
+                                        <Button variant="subtle" color="gray">
+                                          <DotsHorizontalIcon />
+                                        </Button>
+                                      </DropdownMenuTrigger>
+                                      <DropdownMenuContentDemo
+                                        variant={variant}
+                                        color="gray"
+                                        highContrast
+                                      />
+                                    </DropdownMenuRoot>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+
+                          <Text my="5">
+                            <Code>color</Code> can be set per instance:
+                          </Text>
+
+                          <details>
+                            <summary>
+                              <Text size="2" color="gray" asChild>
+                                <span>See colors & variants combinations</span>
+                              </Text>
+                            </summary>
+                            {groupedColors.map(({ label, values }) => (
+                              <React.Fragment key={label}>
+                                <Text weight="bold" mt="6" mb="4">
+                                  {label}
+                                </Text>
+                                <table className={styles.table}>
+                                  <thead>
+                                    <tr>
+                                      <ColumnHeaderCell />
+                                      {dropdownMenuContentVariants.map((variant) => (
+                                        <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {values.map((color) => (
+                                      <tr key={color}>
+                                        <RowHeaderCell>{color}</RowHeaderCell>
+                                        {dropdownMenuContentVariants.map((variant) => (
+                                          <td key={variant}>
+                                            <DropdownMenuRoot>
+                                              <DropdownMenuTrigger>
+                                                <Button variant="subtle" color="gray">
+                                                  <DotsHorizontalIcon />
+                                                </Button>
+                                              </DropdownMenuTrigger>
+                                              <DropdownMenuContentDemo
+                                                variant={variant}
+                                                color={color}
+                                              />
+                                            </DropdownMenuRoot>
+                                            <DropdownMenuRoot>
+                                              <DropdownMenuTrigger>
+                                                <Button variant="subtle" color="gray" ml="2">
+                                                  <DotsHorizontalIcon />
+                                                </Button>
+                                              </DropdownMenuTrigger>
+                                              <DropdownMenuContentDemo
+                                                variant={variant}
+                                                color={color}
+                                                highContrast
+                                              />
+                                            </DropdownMenuRoot>
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </React.Fragment>
+                            ))}
+                          </details>
+                        </DocsGridSection>
+                      </div>
+
+                      <DocsGridSection title="ContextMenu">
                         <table className={styles.table}>
                           <thead>
                             <tr>
-                              <ColumnHeaderCell />
-                              {dropdownMenuSizes.map((size) => (
+                              {contextMenuContentSizes.map((size) => (
                                 <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
-                            {dropdownMenuVariants.map((variant) => (
+                            {contextMenuContentVariants.map((variant) => (
                               <tr key={variant}>
-                                <RowHeaderCell>{variant}</RowHeaderCell>
-                                {dropdownMenuSizes.map((size) => (
+                                {contextMenuContentSizes.map((size) => (
                                   <td key={size}>
-                                    <DropdownMenuRoot>
-                                      <DropdownMenuTrigger>
-                                        <Button size={size} variant="subtle" color="gray">
-                                          <DotsHorizontalIcon />
-                                        </Button>
-                                      </DropdownMenuTrigger>
-                                      <DropdownMenuContentDemo size={size} variant={variant} />
-                                    </DropdownMenuRoot>
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea size={size} />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContentDemo size={size} variant={variant} />
+                                    </ContextMenuRoot>
                                   </td>
                                 ))}
                               </tr>
@@ -396,38 +520,6 @@ export default function Sink() {
                           </tbody>
                         </table>
                       </DocsGridSection>
-
-                      <div style={{ gridColumn: '2 / span 2' }}>
-                        <DocsGridSection title="ContextMenu">
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                                {contextMenuSizes.map((size) => (
-                                  <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {contextMenuVariants.map((variant) => (
-                                <tr key={variant}>
-                                  <RowHeaderCell>{variant}</RowHeaderCell>
-                                  {contextMenuSizes.map((size) => (
-                                    <td key={size}>
-                                      <ContextMenuRoot>
-                                        <ContextMenuTrigger>
-                                          <RightClickArea size={size} />
-                                        </ContextMenuTrigger>
-                                        <ContextMenuContentDemo size={size} variant={variant} />
-                                      </ContextMenuRoot>
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </DocsGridSection>
-                      </div>
                     </Grid>
                   </Section>
                 </Container>
@@ -2780,15 +2872,9 @@ export default function Sink() {
   );
 }
 
-function DropdownMenuContentDemo({
-  size,
-  variant,
-}: {
-  size: DropdownMenuSize;
-  variant: DropdownMenuVariant;
-}) {
+function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenuContent>) {
   return (
-    <DropdownMenuContent variant={variant} size={size}>
+    <DropdownMenuContent {...props}>
       <DropdownMenuItem shortcut="⌘+T">New Tab</DropdownMenuItem>
       <DropdownMenuItem shortcut="⌘+N">New Window</DropdownMenuItem>
       <DropdownMenuItem shortcut="⇧+⌘+N" disabled>
@@ -2797,7 +2883,7 @@ function DropdownMenuContentDemo({
       <DropdownMenuSub>
         <DropdownMenuSubTrigger>More Tools</DropdownMenuSubTrigger>
 
-        <DropdownMenuSubContent variant={variant} size={size}>
+        <DropdownMenuSubContent>
           <DropdownMenuItem shortcut="⌘+S">Save Page As…</DropdownMenuItem>
           <DropdownMenuItem>Create Shortcut…</DropdownMenuItem>
           <DropdownMenuItem>Name Window…</DropdownMenuItem>
@@ -2820,19 +2906,17 @@ function DropdownMenuContentDemo({
         <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
         <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
       </DropdownMenuRadioGroup>
+
+      <DropdownMenuSeparator />
+
+      <DropdownMenuItem color="red">Delete</DropdownMenuItem>
     </DropdownMenuContent>
   );
 }
 
-function ContextMenuContentDemo({
-  size,
-  variant,
-}: {
-  size: ContextMenuSize;
-  variant: ContextMenuVariant;
-}) {
+function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenuContent>) {
   return (
-    <ContextMenuContent variant={variant} size={size}>
+    <ContextMenuContent {...props}>
       <ContextMenuItem shortcut="⌘+T">New Tab</ContextMenuItem>
       <ContextMenuItem shortcut="⌘+N">New Window</ContextMenuItem>
       <ContextMenuItem shortcut="⇧+⌘+N" disabled>
@@ -2841,7 +2925,7 @@ function ContextMenuContentDemo({
       <ContextMenuSub>
         <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
 
-        <ContextMenuSubContent variant={variant} size={size}>
+        <ContextMenuSubContent>
           <ContextMenuItem shortcut="⌘+S">Save Page As…</ContextMenuItem>
           <ContextMenuItem>Create Shortcut…</ContextMenuItem>
           <ContextMenuItem>Name Window…</ContextMenuItem>
@@ -2864,6 +2948,10 @@ function ContextMenuContentDemo({
         <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
         <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
       </ContextMenuRadioGroup>
+
+      <DropdownMenuSeparator />
+
+      <ContextMenuItem color="red">Delete</ContextMenuItem>
     </ContextMenuContent>
   );
 }

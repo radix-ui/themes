@@ -12,7 +12,7 @@ import {
   Checkbox,
   checkboxVariants,
   Container,
-  dropdownMenuVariants,
+  dropdownMenuContentVariants,
   Flex,
   Grid,
   Heading,
@@ -59,7 +59,7 @@ import type {
   AvatarVariant,
   ButtonVariant,
   CheckboxVariant,
-  DropdownMenuVariant,
+  DropdownMenuContentVariant,
   SelectContentVariant,
   SliderVariant,
   SwitchVariant,
@@ -98,7 +98,7 @@ export default function Showcase() {
   const [dropdownTriggerVariant, setDropdownTriggerVariant] =
     React.useState<ButtonVariant>('ghost');
   const [dropdownMenuVariant, setDropdownMenuVariant] =
-    React.useState<DropdownMenuVariant>('subtle');
+    React.useState<DropdownMenuContentVariant>('subtle');
 
   React.useEffect(() => {
     const id = setTimeout(() => {
@@ -158,7 +158,7 @@ export default function Showcase() {
       setIncludeUnderOffer(Math.random() > 0.4);
 
       setDropdownTriggerVariant(randomItemInArray(buttonVariants));
-      setDropdownMenuVariant(randomItemInArray(dropdownMenuVariants));
+      setDropdownMenuVariant(randomItemInArray(dropdownMenuContentVariants));
 
       // animations
       const animatedElements = Array.from(root.querySelectorAll('[data-animate]')) as HTMLElement[];

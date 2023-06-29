@@ -1,10 +1,25 @@
-const contextMenuSizes = ['1', '2'] as const;
-type ContextMenuSize = (typeof contextMenuSizes)[number];
-const defaultContextMenuSize: ContextMenuSize = '2';
+import { Color } from '../helpers';
 
-const contextMenuVariants = ['solid', 'solid-mono', 'subtle', 'subtle-mono'] as const;
-type ContextMenuVariant = (typeof contextMenuVariants)[number];
-const defaultContextMenuVariant: ContextMenuVariant = 'solid';
+const contextMenuContentSizes = ['1', '2'] as const;
+type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];
+const defaultContextMenuContentSize: ContextMenuContentSize = '2';
 
-export { contextMenuSizes, defaultContextMenuSize, contextMenuVariants, defaultContextMenuVariant };
-export type { ContextMenuSize, ContextMenuVariant };
+const contextMenuContentVariants = ['solid', 'subtle'] as const;
+type ContextMenuContentVariant = (typeof contextMenuContentVariants)[number];
+const defaultContextMenuContentVariant: ContextMenuContentVariant = 'solid';
+
+const defaultContextMenuContentColor: Color | undefined = undefined;
+const defaultContextMenuContentHighContrast: boolean | undefined = undefined;
+
+const defaultContextMenuItemColor: Color | undefined = undefined;
+
+export {
+  contextMenuContentSizes,
+  defaultContextMenuContentSize,
+  contextMenuContentVariants,
+  defaultContextMenuContentVariant,
+  defaultContextMenuContentColor,
+  defaultContextMenuContentHighContrast,
+  defaultContextMenuItemColor,
+};
+export type { ContextMenuContentSize, ContextMenuContentVariant };

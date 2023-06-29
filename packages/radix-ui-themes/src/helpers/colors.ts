@@ -1,3 +1,9 @@
+// `interface HTMLAttributes` includes 'color', which may lead to clashes
+type PropsWithoutRefOrColor<T extends React.ElementType> = Omit<
+  React.ComponentPropsWithRef<T>,
+  'color'
+>;
+
 const regularColorScales = [
   'tomato',
   'red',
@@ -82,6 +88,8 @@ export {
   getNaturallyPairedGrayScale,
 };
 export type {
+  PropsWithoutRefOrColor,
+  //
   RegularColorScale,
   BrightColorScale,
   MetalColorScale,

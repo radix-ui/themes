@@ -110,6 +110,9 @@
   --content-bg: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
+.rui-BaseMenuContent .rui-BaseMenuItem[data-accent-scale] {
+  color: var(--accent-11);
+}
 .rui-BaseMenuContent .rui-BaseMenuItem[data-disabled] {
   color: var(--gray-10);
 }
@@ -117,7 +120,8 @@
   color: var(--gray-11);
 }
 .rui-BaseMenuContent .rui-BaseMenuItem[data-disabled] .rui-BaseMenuShortcut,
-.rui-BaseMenuContent .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut {
+.rui-BaseMenuContent .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut,
+.rui-BaseMenuContent .rui-BaseMenuSubTrigger[data-state='open'] .rui-BaseMenuShortcut {
   color: inherit;
 }
 .rui-BaseMenuContent .rui-BaseMenuLabel {
@@ -136,15 +140,17 @@
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
 }
+.rui-BaseMenuContent.variant-solid:where(.highContrast) {
+  & .rui-BaseMenuSubTrigger[data-state='open'],
+  & .rui-BaseMenuItem[data-highlighted] {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
 
-/* solid-mono */
-
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--gray-5);
-}
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--gray-12);
-  color: var(--gray-1);
+    &[data-accent-scale] {
+      background-color: var(--accent-9);
+      color: var(--accent-9-contrast);
+    }
+  }
 }
 
 /* subtle */
@@ -154,56 +160,7 @@
 }
 .rui-BaseMenuContent.variant-subtle .rui-BaseMenuItem[data-highlighted] {
   background-color: var(--accent-5);
+  &[data-accent-scale] {
+    color: var(--accent-12);
+  }
 }
-
-/* subtle-mono */
-
-.rui-BaseMenuContent.variant-subtle-mono .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--gray-3);
-}
-.rui-BaseMenuContent.variant-subtle-mono .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--gray-5);
-}
-
-/* old inverted style, maybe bring back? */
-
-/* .rui-BaseMenuContent.variant-solid-mono {
-  --content-bg: var(--gray-12);
-  box-shadow: var(--shadow-3);
-} */
-
-/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem {
-  color: var(--gray-1);
-}
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--white-a7);
-}
-.dark-theme .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger[data-state='open'] {
-  background-color: var(--black-a7);
-}
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-disabled] {
-  color: var(--gray-10);
-}
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] {
-  background-color: var(--gray-1);
-  color: var(--gray-12);
-} */
-
-/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuShortcut {
-  color: var(--gray-10);
-}
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut {
-  color: var(--gray-12);
-}
-.rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSubTrigger .rui-BaseMenuShortcut {
-  color: inherit;
-} */
-
-/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuSeparator {
-  background-color: var(--gray-11);
-  opacity: 0.3;
-} */
-
-/* .rui-BaseMenuContent.variant-solid-mono .rui-BaseMenuLabel {
-  color: var(--gray-10);
-} */

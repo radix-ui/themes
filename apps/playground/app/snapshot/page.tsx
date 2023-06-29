@@ -104,7 +104,7 @@ export default function Snapshot() {
                         <DropdownMenuLabel>Snapshot</DropdownMenuLabel>
                         <DropdownMenuSub>
                           <DropdownMenuSubTrigger>Company</DropdownMenuSubTrigger>
-                          <DropdownMenuSubContent variant="subtle">
+                          <DropdownMenuSubContent>
                             <DropdownMenuItem>About</DropdownMenuItem>
                             <DropdownMenuItem>History</DropdownMenuItem>
                             <DropdownMenuItem>Join the team</DropdownMenuItem>
@@ -116,7 +116,7 @@ export default function Snapshot() {
                         </DropdownMenuSub>
                         <DropdownMenuSub>
                           <DropdownMenuSubTrigger>Community</DropdownMenuSubTrigger>
-                          <DropdownMenuSubContent variant="subtle">
+                          <DropdownMenuSubContent>
                             <DropdownMenuItem>Become a contributor</DropdownMenuItem>
                             <DropdownMenuItem>Topics</DropdownMenuItem>
                             <DropdownMenuItem>Collections</DropdownMenuItem>
