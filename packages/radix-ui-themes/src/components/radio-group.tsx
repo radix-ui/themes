@@ -8,6 +8,7 @@ import {
   defaultRadioGroupSize,
   defaultRadioGroupVariant,
   defaultRadioGroupColor,
+  defaultRadioGroupHighContrast,
 } from './radio-group.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
@@ -20,6 +21,7 @@ interface RadioGroupRootProps
   size?: Responsive<RadioGroupSize>;
   variant?: RadioGroupVariant;
   color?: Color;
+  highContrast?: boolean;
 }
 const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
   (props, forwardedRef) => {
@@ -29,6 +31,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
       size = defaultRadioGroupSize,
       variant = defaultRadioGroupVariant,
       color = defaultRadioGroupColor,
+      highContrast = defaultRadioGroupHighContrast,
       ...rootProps
     } = marginRest;
     return (
@@ -40,6 +43,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
           'rui-RadioGroupRoot',
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
+          { highContrast },
           withMarginProps(marginProps),
           className
         )}

@@ -60,22 +60,24 @@
 
 /* solid */
 
-.rui-CheckboxButton.variant-solid:where(:focus-visible) {
-  outline-style: solid;
-  outline-offset: 1px;
-  outline-width: 2px;
-  outline-color: var(--accent-a8);
-}
-.rui-CheckboxButton.variant-solid:where([data-state='checked']:not([data-disabled])) {
-  background-color: var(--accent-9);
-  color: var(--accent-9-contrast);
+.rui-CheckboxButton.variant-solid {
+  &:where(:focus-visible) {
+    outline-style: solid;
+    outline-offset: 1px;
+    outline-width: 2px;
+    outline-color: var(--accent-a8);
+  }
+  &:where([data-state='checked']) {
+    background-color: var(--accent-9);
+    color: var(--accent-9-contrast);
 
-  &:where(.highContrast) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
+    &:where(.highContrast) {
+      background-color: var(--accent-12);
+      color: var(--accent-1);
 
-    &:where(:focus-visible) {
-      outline-color: var(--accent-a11);
+      &:where(:focus-visible) {
+        outline-color: var(--accent-a11);
+      }
     }
   }
 }

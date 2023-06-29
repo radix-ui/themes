@@ -184,8 +184,6 @@ const checkboxColorVariants = checkboxVariants.filter((variant) => !variant.ends
 const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-mono'));
 const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mono'));
 
-const radioGroupColorVariants = radioGroupVariants.filter((variant) => !variant.endsWith('-mono'));
-
 export default function Sink() {
   return (
     <ThemeConfig asChild backgroundColor="gray">
@@ -1135,7 +1133,7 @@ export default function Sink() {
                             <React.Fragment key={variant}>
                               {[variant, '+ high-contrast'].map((label) => (
                                 <tr key={label}>
-                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  <RowHeaderCell>{label}</RowHeaderCell>
                                   <td>
                                     <Checkbox
                                       variant={variant}
@@ -1323,29 +1321,48 @@ export default function Sink() {
                         </thead>
                         <tbody>
                           {radioGroupVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              <td>
-                                <RadioGroupRoot variant={variant}>
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                              </td>
-                              <td>
-                                <RadioGroupRoot variant={variant} defaultValue="value">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                              </td>
-                              <td>
-                                <RadioGroupRoot variant={variant}>
-                                  <RadioGroupItem value="value" disabled />
-                                </RadioGroupRoot>
-                              </td>
-                              <td>
-                                <RadioGroupRoot variant={variant} disabled defaultValue="value">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                              </td>
-                            </tr>
+                            <React.Fragment key={variant}>
+                              {[variant, '+ high-contrast'].map((label) => (
+                                <tr key={label}>
+                                  <RowHeaderCell>{label}</RowHeaderCell>
+                                  <td>
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+                                  </td>
+                                  <td>
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      defaultValue="value"
+                                      highContrast={label === '+ high-contrast'}
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+                                  </td>
+                                  <td>
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                    >
+                                      <RadioGroupItem value="value" disabled />
+                                    </RadioGroupRoot>
+                                  </td>
+                                  <td>
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      disabled
+                                      defaultValue="value"
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+                                  </td>
+                                </tr>
+                              ))}
+                            </React.Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -1424,7 +1441,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {radioGroupColorVariants.map((variant) => (
+                              {radioGroupVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -1433,15 +1450,25 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {radioGroupColorVariants.map((variant) => (
+                                {radioGroupVariants.map((variant) => (
                                   <td key={variant}>
-                                    <RadioGroupRoot
-                                      variant={variant}
-                                      color={color}
-                                      defaultValue="value"
-                                    >
-                                      <RadioGroupItem value="value" />
-                                    </RadioGroupRoot>
+                                    <Flex gap="2">
+                                      <RadioGroupRoot
+                                        variant={variant}
+                                        color={color}
+                                        defaultValue="value"
+                                      >
+                                        <RadioGroupItem value="value" />
+                                      </RadioGroupRoot>
+                                      <RadioGroupRoot
+                                        variant={variant}
+                                        color={color}
+                                        defaultValue="value"
+                                        highContrast
+                                      >
+                                        <RadioGroupItem value="value" />
+                                      </RadioGroupRoot>
+                                    </Flex>
                                   </td>
                                 ))}
                               </tr>
