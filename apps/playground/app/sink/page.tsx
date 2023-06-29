@@ -996,21 +996,24 @@ export default function Sink() {
                         {sliderSizes.map((size, i, sizes) => {
                           return (
                             <React.Fragment key={size}>
-                              {sliderVariants.map((variant, j, variants) => {
-                                const stepCount = variants.length * sizes.length - 1;
-                                const step = i * variants.length + j;
-                                const value =
-                                  25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
-                                return (
-                                  <Slider
-                                    key={variant}
-                                    orientation="vertical"
-                                    defaultValue={[value]}
-                                    size={size}
-                                    variant={variant}
-                                  />
-                                );
-                              })}
+                              {[...sliderVariants, ...sliderVariants]
+                                .sort()
+                                .map((variant, j, variants) => {
+                                  const stepCount = variants.length * sizes.length - 1;
+                                  const step = i * variants.length + j;
+                                  const value =
+                                    25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
+                                  return (
+                                    <Slider
+                                      key={variant}
+                                      orientation="vertical"
+                                      defaultValue={[value]}
+                                      size={size}
+                                      variant={variant}
+                                      highContrast={step % 2 === 1 ? true : false}
+                                    />
+                                  );
+                                })}
                             </React.Fragment>
                           );
                         })}
