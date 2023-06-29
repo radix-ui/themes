@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.0.11
+
+**Warning!** This release contains lots of breaking changes.
+
+- `Select`:
+  - [**Breaking**] API is now more open with `Trigger` and `Content` part
+- `DropdownMenu` / `ContextMenu`:
+  - [**Breaking**] style props (`size`, `variant`, `color`) now passed to `Content`, no need to pass again to `SubContent`
+  - `Item` now supports `color` too
+- `Dialog`: Now always `modal`
+- `Slider`: Fix `key` bug
+- `Link`:
+  - [**Breaking**] Bring back `highContrast` instead of `variant="high-contrast"`
+- General:
+  - [**Breaking**] No more `-mono` variants on any components and added `highContrast` instead
+    - Note: The old `-mono` look can usually b achieved now with `color="gray"` and `highContrast`
+  - [**Breaking**] `subtle` variants are now named `soft` everywhere
+
 ## 0.0.10
 
 - Fix build issue with new `ThemeConfig` file
