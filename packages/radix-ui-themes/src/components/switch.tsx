@@ -8,6 +8,7 @@ import {
   defaultSwitchSize,
   defaultSwitchVariant,
   defaultSwitchColor,
+  defaultSwitchHighContrast,
   defaultSwitchRadius,
 } from './switch.props';
 
@@ -21,6 +22,7 @@ interface SwitchProps
   size?: Responsive<SwitchSize>;
   variant?: SwitchVariant;
   color?: Color;
+  highContrast?: boolean;
   radius?: Radius;
 }
 const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef) => {
@@ -31,6 +33,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
     size = defaultSwitchSize,
     variant = defaultSwitchVariant,
     color = defaultSwitchColor,
+    highContrast = defaultSwitchHighContrast,
     radius = defaultSwitchRadius,
     ...switchProps
   } = marginRest;
@@ -40,6 +43,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
         'rui-SwitchRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
+        { highContrast },
         withMarginProps(marginProps),
         className
       )}

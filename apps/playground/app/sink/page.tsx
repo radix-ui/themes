@@ -189,8 +189,6 @@ const radioGroupColorVariants = radioGroupVariants.filter((variant) => !variant.
 const sliderColorVariants = sliderVariants.filter((variant) => !variant.endsWith('-mono'));
 const sliderMonoVariants = sliderVariants.filter((variant) => variant.endsWith('-mono'));
 
-const switchColorVariants = switchVariants.filter((variant) => !variant.endsWith('-mono'));
-
 export default function Sink() {
   return (
     <ThemeConfig asChild backgroundColor="gray">
@@ -761,21 +759,41 @@ export default function Sink() {
                         </thead>
                         <tbody>
                           {switchVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              <td>
-                                <Switch variant={variant} />
-                              </td>
-                              <td>
-                                <Switch variant={variant} defaultChecked />
-                              </td>
-                              <td>
-                                <Switch variant={variant} disabled />
-                              </td>
-                              <td>
-                                <Switch variant={variant} disabled defaultChecked />
-                              </td>
-                            </tr>
+                            <React.Fragment key={variant}>
+                              {[variant, '+ high-contrast'].map((label) => (
+                                <tr key={label}>
+                                  <RowHeaderCell>{label}</RowHeaderCell>
+                                  <td>
+                                    <Switch
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                    />
+                                  </td>
+                                  <td>
+                                    <Switch
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      defaultChecked
+                                    />
+                                  </td>
+                                  <td>
+                                    <Switch
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      disabled
+                                    />
+                                  </td>
+                                  <td>
+                                    <Switch
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      disabled
+                                      defaultChecked
+                                    />
+                                  </td>
+                                </tr>
+                              ))}
+                            </React.Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -885,7 +903,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {switchColorVariants.map((variant) => (
+                              {switchVariants.map((variant) => (
                                 <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
                               ))}
                             </tr>
@@ -894,9 +912,16 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {switchColorVariants.map((variant) => (
+                                {switchVariants.map((variant) => (
                                   <td key={variant}>
                                     <Switch variant={variant} color={color} defaultChecked />
+                                    <Switch
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultChecked
+                                      ml="2"
+                                    />
                                   </td>
                                 ))}
                               </tr>
