@@ -6,8 +6,9 @@ import * as React from 'react';
 import { Heading } from './heading';
 import { Text } from './text';
 
-interface DialogRootProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {}
-const DialogRoot = (props: DialogRootProps) => <DialogPrimitive.Root {...props} />;
+interface DialogRootProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
+const DialogRoot = (props: DialogRootProps) => <DialogPrimitive.Root {...props} modal />;
 DialogRoot.displayName = 'DialogRoot';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
