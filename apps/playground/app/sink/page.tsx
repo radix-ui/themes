@@ -1132,21 +1132,41 @@ export default function Sink() {
                         </thead>
                         <tbody>
                           {checkboxVariants.map((variant) => (
-                            <tr key={variant}>
-                              <RowHeaderCell>{variant}</RowHeaderCell>
-                              <td>
-                                <Checkbox variant={variant} />
-                              </td>
-                              <td>
-                                <Checkbox variant={variant} defaultChecked />
-                              </td>
-                              <td>
-                                <Checkbox variant={variant} disabled />
-                              </td>
-                              <td>
-                                <Checkbox variant={variant} disabled defaultChecked />
-                              </td>
-                            </tr>
+                            <React.Fragment key={variant}>
+                              {[variant, '+ high-contrast'].map((label) => (
+                                <tr key={label}>
+                                  <RowHeaderCell>{variant}</RowHeaderCell>
+                                  <td>
+                                    <Checkbox
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                    />
+                                  </td>
+                                  <td>
+                                    <Checkbox
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      defaultChecked
+                                    />
+                                  </td>
+                                  <td>
+                                    <Checkbox
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      disabled
+                                    />
+                                  </td>
+                                  <td>
+                                    <Checkbox
+                                      variant={variant}
+                                      highContrast={label === '+ high-contrast'}
+                                      disabled
+                                      defaultChecked
+                                    />
+                                  </td>
+                                </tr>
+                              ))}
+                            </React.Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -1270,6 +1290,13 @@ export default function Sink() {
                                 {checkboxColorVariants.map((variant) => (
                                   <td key={variant}>
                                     <Checkbox variant={variant} color={color} defaultChecked />
+                                    <Checkbox
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultChecked
+                                      ml="2"
+                                    />
                                   </td>
                                 ))}
                               </tr>

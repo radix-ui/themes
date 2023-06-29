@@ -9,6 +9,7 @@ import {
   defaultCheckboxSize,
   defaultCheckboxVariant,
   defaultCheckboxColor,
+  defaultCheckboxHighContrast,
   defaultCheckboxRadius,
 } from './checkbox.props';
 
@@ -22,6 +23,7 @@ interface CheckboxProps
   size?: Responsive<CheckboxSize>;
   variant?: CheckboxVariant;
   color?: Color;
+  highContrast?: boolean;
   radius?: Radius;
 }
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
@@ -32,6 +34,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     size = defaultCheckboxSize,
     variant = defaultCheckboxVariant,
     color = defaultCheckboxColor,
+    highContrast = defaultCheckboxHighContrast,
     radius = defaultCheckboxRadius,
     ...checkboxProps
   } = marginRest;
@@ -50,7 +53,9 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         data-accent-scale={color}
         {...checkboxProps}
         ref={forwardedRef}
-        className={classNames('rui-reset-button rui-CheckboxButton', `variant-${variant}`)}
+        className={classNames('rui-reset-button rui-CheckboxButton', `variant-${variant}`, {
+          highContrast,
+        })}
       >
         <CheckboxPrimitive.Indicator className="rui-CheckboxIndicator">
           <CheckIcon width={undefined} height={undefined} />

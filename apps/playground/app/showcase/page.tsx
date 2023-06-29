@@ -93,7 +93,7 @@ export default function Showcase() {
   const [sliderValue, setSliderValue] = React.useState(6);
   const [sliderVariant, setSliderVariant] = React.useState<SliderVariant>('solid');
   const [switchVariant, setSwitchVariant] = React.useState<SwitchVariant>('solid');
-  const [controlsVariant, setControlsVariant] = React.useState<CheckboxVariant>('solid-mono');
+  const [controlsVariant, setControlsVariant] = React.useState<CheckboxVariant>('solid');
   const [includeUnderOffer, setIncludeUnderOffer] = React.useState(true);
   const [dropdownTriggerVariant, setDropdownTriggerVariant] =
     React.useState<ButtonVariant>('ghost');

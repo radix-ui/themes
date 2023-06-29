@@ -4,11 +4,12 @@ const checkboxSizes = ['1', '2'] as const;
 type CheckboxSize = (typeof checkboxSizes)[number];
 const defaultCheckboxSize: CheckboxSize = '1';
 
-const checkboxVariants = ['solid', 'solid-mono'] as const;
+const checkboxVariants = ['solid'] as const;
 type CheckboxVariant = (typeof checkboxVariants)[number];
 const defaultCheckboxVariant: CheckboxVariant = 'solid';
 
 const defaultCheckboxColor: Color | undefined = undefined;
+const defaultCheckboxHighContrast: boolean | undefined = undefined;
 const defaultCheckboxRadius: Radius | undefined = undefined;
 
 export {
@@ -17,6 +18,7 @@ export {
   checkboxVariants,
   defaultCheckboxVariant,
   defaultCheckboxColor,
+  defaultCheckboxHighContrast,
   defaultCheckboxRadius,
 };
 export type { CheckboxSize, CheckboxVariant };
