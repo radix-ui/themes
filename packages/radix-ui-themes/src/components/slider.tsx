@@ -8,6 +8,7 @@ import {
   defaultSliderSize,
   defaultSliderVariant,
   defaultSliderColor,
+  defaultSliderHighContrast,
   defaultSliderRadius,
 } from './slider.props';
 
@@ -21,6 +22,7 @@ interface SliderProps
   size?: Responsive<SliderSize>;
   variant?: SliderVariant;
   color?: Color;
+  highContrast?: boolean;
   radius?: Radius;
 }
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {
@@ -30,6 +32,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
     size = defaultSliderSize,
     variant = defaultSliderVariant,
     color = defaultSliderColor,
+    highContrast = defaultSliderHighContrast,
     radius = defaultSliderRadius,
     ...sliderProps
   } = marginRest;
@@ -43,6 +46,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
         'rui-SliderRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
+        { highContrast },
         withMarginProps(marginProps),
         className
       )}
@@ -53,8 +57,8 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
           data-inverted={sliderProps.inverted ? '' : undefined}
         />
       </SliderPrimitive.Track>
-      {(sliderProps.value ?? sliderProps.defaultValue ?? []).map((value) => (
-        <SliderPrimitive.Thumb key={value} className="rui-SliderThumb" />
+      {(sliderProps.value ?? sliderProps.defaultValue ?? []).map((value, index) => (
+        <SliderPrimitive.Thumb key={index} className="rui-SliderThumb" />
       ))}
     </SliderPrimitive.Root>
   );

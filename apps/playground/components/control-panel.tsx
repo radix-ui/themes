@@ -13,6 +13,7 @@ import {
   RadioGroup,
   Select,
   Separator,
+  Slider,
   Strong,
   Text,
   // helpers
@@ -450,8 +451,8 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
       </Text>
 
       <Flex direction="column" gap="1" mb="3">
-        <Label htmlFor="radius">Radius</Label>
-        <Select.Root value={radius} onValueChange={(value) => setRadius(value as Radius)}>
+        <Label htmlFor="radius">Radius › {radius}</Label>
+        {/* <Select.Root value={radius} onValueChange={(value) => setRadius(value as Radius)}>
           <Select.Trigger id="radius" variant="surface" color="gray" highContrast />
           <Select.Content variant="subtle" color="gray">
             {radiusValues.map((value) => (
@@ -460,7 +461,15 @@ const ControlPanelImpl: React.FC<ControlPanelImplProps> = ({ visible, onVisibleC
               </Select.Item>
             ))}
           </Select.Content>
-        </Select.Root>
+        </Select.Root> */}
+        <Slider
+          id="radius"
+          value={[radiusValues.indexOf(radius)]}
+          onValueChange={([value]) => setRadius(radiusValues[value])}
+          min={0}
+          max={radiusValues.length - 1}
+          step={1}
+        />
       </Flex>
 
       <Flex direction="column" gap="1">

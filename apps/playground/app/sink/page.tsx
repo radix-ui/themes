@@ -186,9 +186,6 @@ const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mon
 
 const radioGroupColorVariants = radioGroupVariants.filter((variant) => !variant.endsWith('-mono'));
 
-const sliderColorVariants = sliderVariants.filter((variant) => !variant.endsWith('-mono'));
-const sliderMonoVariants = sliderVariants.filter((variant) => variant.endsWith('-mono'));
-
 export default function Sink() {
   return (
     <ThemeConfig asChild backgroundColor="gray">
@@ -935,36 +932,60 @@ export default function Sink() {
 
                 <DocsSection title="Slider">
                   <Grid columns="2" gap="9">
-                    {[sliderColorVariants, sliderMonoVariants].map((groupVariants, index) => (
-                      <div key={index}>
-                        <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              <ColumnHeaderCell />
-                              <ColumnHeaderCell>default</ColumnHeaderCell>
-                              <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                    <div style={{ gridColumn: '1 / span 2' }}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>color</ColumnHeaderCell>
+                            <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                            <ColumnHeaderCell>gray</ColumnHeaderCell>
+                            <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                            <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {sliderVariants.map((variant, index) => (
+                            <tr key={variant}>
+                              <RowHeaderCell>{variant}</RowHeaderCell>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider variant={variant} defaultValue={[33 + index * 10]} />
+                              </td>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider
+                                  variant={variant}
+                                  highContrast
+                                  defaultValue={[33 + index * 10]}
+                                />
+                              </td>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider
+                                  variant={variant}
+                                  color="gray"
+                                  defaultValue={[33 + index * 10]}
+                                />
+                              </td>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider
+                                  variant={variant}
+                                  color="gray"
+                                  highContrast
+                                  defaultValue={[33 + index * 10]}
+                                />
+                              </td>
+                              <td style={{ minWidth: 150 }}>
+                                <Slider
+                                  variant={variant}
+                                  defaultValue={[33 + index * 10]}
+                                  disabled
+                                />
+                              </td>
                             </tr>
-                          </thead>
-                          <tbody>
-                            {groupVariants.map((variant, index) => (
-                              <tr key={variant}>
-                                <RowHeaderCell>{variant}</RowHeaderCell>
-                                <td style={{ minWidth: 150 }}>
-                                  <Slider variant={variant} defaultValue={[33 + index * 10]} />
-                                </td>
-                                <td style={{ minWidth: 150 }}>
-                                  <Slider
-                                    variant={variant}
-                                    defaultValue={[33 + index * 10]}
-                                    disabled
-                                  />
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
                     <div>
                       <table className={styles.table}>
                         <tbody>
@@ -985,23 +1006,21 @@ export default function Sink() {
                         {sliderSizes.map((size, i, sizes) => {
                           return (
                             <React.Fragment key={size}>
-                              {[...sliderColorVariants, ...sliderMonoVariants].map(
-                                (variant, j, variants) => {
-                                  const stepCount = variants.length * sizes.length - 1;
-                                  const step = i * variants.length + j;
-                                  const value =
-                                    25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
-                                  return (
-                                    <Slider
-                                      key={variant}
-                                      orientation="vertical"
-                                      defaultValue={[value]}
-                                      size={size}
-                                      variant={variant}
-                                    />
-                                  );
-                                }
-                              )}
+                              {sliderVariants.map((variant, j, variants) => {
+                                const stepCount = variants.length * sizes.length - 1;
+                                const step = i * variants.length + j;
+                                const value =
+                                  25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
+                                return (
+                                  <Slider
+                                    key={variant}
+                                    orientation="vertical"
+                                    defaultValue={[value]}
+                                    size={size}
+                                    variant={variant}
+                                  />
+                                );
+                              })}
                             </React.Fragment>
                           );
                         })}
@@ -1068,7 +1087,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {sliderColorVariants.map((variant) => (
+                              {sliderVariants.map((variant) => (
                                 <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
                               ))}
                             </tr>
@@ -1077,9 +1096,16 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {sliderColorVariants.map((variant) => (
+                                {sliderVariants.map((variant) => (
                                   <td key={variant} style={{ minWidth: 150 }}>
                                     <Slider variant={variant} color={color} defaultValue={[50]} />
+                                    <Slider
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultValue={[50]}
+                                      mt="2"
+                                    />
                                   </td>
                                 ))}
                               </tr>
