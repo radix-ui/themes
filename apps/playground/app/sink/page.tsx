@@ -176,11 +176,6 @@ import styles from './page.module.css';
 import type { TextFieldSize } from '@radix-ui/themes';
 import { RadixLogo } from './radix-logo';
 
-const avatarColorVariants = avatarVariants.filter((variant) => !variant.endsWith('-mono'));
-const avatarMonoVariants = avatarVariants.filter((variant) => variant.endsWith('-mono'));
-
-const checkboxColorVariants = checkboxVariants.filter((variant) => !variant.endsWith('-mono'));
-
 const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-mono'));
 const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mono'));
 
@@ -1276,7 +1271,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {checkboxColorVariants.map((variant) => (
+                              {checkboxVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -1285,7 +1280,7 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {checkboxColorVariants.map((variant) => (
+                                {checkboxVariants.map((variant) => (
                                   <td key={variant}>
                                     <Checkbox variant={variant} color={color} defaultChecked />
                                     <Checkbox
@@ -2010,71 +2005,48 @@ export default function Sink() {
                 </DocsSection>
 
                 <DocsSection title="Avatar">
-                  <Grid columns="2" gap="9">
-                    {[avatarColorVariants, avatarMonoVariants].map((groupVariants, index) => (
-                      <div key={index}>
-                        <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              <ColumnHeaderCell />
-                              <ColumnHeaderCell>image</ColumnHeaderCell>
-                              <ColumnHeaderCell>1 letter</ColumnHeaderCell>
-                              <ColumnHeaderCell>2 letters</ColumnHeaderCell>
-                              <ColumnHeaderCell>icon</ColumnHeaderCell>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {groupVariants.map((variant) => (
-                              <tr key={variant}>
-                                <RowHeaderCell>{variant}</RowHeaderCell>
-                                <td>
-                                  <Avatar variant={variant} src="./api/avatar" fallback="D" />
-                                </td>
-                                <td>
-                                  <Avatar variant={variant} fallback="D" />
-                                </td>
-                                <td>
-                                  <Avatar variant={variant} fallback="BG" />
-                                </td>
-                                <td>
-                                  <Avatar variant={variant} fallback={<CustomUserIcon />} />
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
-
-                    <Box mb="6">
-                      <table className={styles.table}>
-                        <tbody>
-                          {avatarSizes.map((size) => (
-                            <tr key={size}>
-                              <RowHeaderCell>size {size}</RowHeaderCell>
-                              <td>
-                                <Flex gap="2">
-                                  <Avatar
-                                    size={size}
-                                    variant="subtle-mono"
-                                    src="./api/avatar"
-                                    fallback="D"
-                                  />
-                                  <Avatar size={size} variant="subtle-mono" fallback="D" />
-                                  <Avatar size={size} variant="subtle-mono" fallback="BG" />
-                                  <Avatar
-                                    size={size}
-                                    variant="subtle-mono"
-                                    fallback={<CustomUserIcon />}
-                                  />
-                                </Flex>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </Grid>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>image</ColumnHeaderCell>
+                        <ColumnHeaderCell>1 letter</ColumnHeaderCell>
+                        <ColumnHeaderCell>2 letters</ColumnHeaderCell>
+                        <ColumnHeaderCell>icon</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>gray</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {avatarVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          <td>
+                            <Avatar variant={variant} src="./api/avatar" fallback="D" />
+                          </td>
+                          <td>
+                            <Avatar variant={variant} fallback="D" />
+                          </td>
+                          <td>
+                            <Avatar variant={variant} fallback="BG" />
+                          </td>
+                          <td>
+                            <Avatar variant={variant} fallback={<CustomUserIcon />} />
+                          </td>
+                          <td>
+                            <Avatar variant={variant} highContrast fallback="D" />
+                          </td>
+                          <td>
+                            <Avatar variant={variant} color="gray" fallback="D" />
+                          </td>
+                          <td>
+                            <Avatar variant={variant} color="gray" highContrast fallback="D" />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
                   <Text my="5">
                     <Code>radius</Code> can be set per instance:
@@ -2136,7 +2108,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {avatarColorVariants.map((variant) => (
+                              {avatarVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -2145,9 +2117,16 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {avatarColorVariants.map((variant) => (
+                                {avatarVariants.map((variant) => (
                                   <td key={variant}>
                                     <Avatar variant={variant} color={color} fallback="D" />
+                                    <Avatar
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      fallback="D"
+                                      ml="2"
+                                    />
                                   </td>
                                 ))}
                               </tr>

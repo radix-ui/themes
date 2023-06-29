@@ -94,28 +94,25 @@
 
 /* solid */
 
-.rui-AvatarRoot.variant-solid .rui-AvatarFallback {
-  background-color: var(--accent-9);
-  color: var(--accent-9-contrast);
-}
-
-/* solid-mono */
-
-.rui-AvatarRoot.variant-solid-mono .rui-AvatarFallback {
-  background-color: var(--gray-a12);
-  color: var(--gray-1);
+.rui-AvatarRoot.variant-solid {
+  & .rui-AvatarFallback {
+    background-color: var(--accent-9);
+    color: var(--accent-9-contrast);
+  }
+  &:where(.highContrast) .rui-AvatarFallback {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+  }
 }
 
 /* subtle */
 
-.rui-AvatarRoot.variant-subtle .rui-AvatarFallback {
-  background-color: var(--accent-3);
-  color: var(--accent-11);
-}
-
-/* subtle-mono */
-
-.rui-AvatarRoot.variant-subtle-mono .rui-AvatarFallback {
-  background-color: var(--gray-a3);
-  color: var(--gray-12);
+.rui-AvatarRoot.variant-subtle {
+  & .rui-AvatarFallback {
+    background-color: var(--accent-3);
+    color: var(--accent-11);
+  }
+  &:where(.highContrast) .rui-AvatarFallback {
+    color: var(--accent-12);
+  }
 }

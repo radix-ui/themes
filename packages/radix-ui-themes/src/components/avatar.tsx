@@ -8,6 +8,7 @@ import {
   defaultAvatarSize,
   defaultAvatarVariant,
   defaultAvatarColor,
+  defaultAvatarHighContrast,
   defaultAvatarRadius,
 } from './avatar.props';
 
@@ -21,6 +22,7 @@ interface AvatarProps
   size?: Responsive<AvatarSize>;
   variant?: AvatarVariant;
   color?: Color;
+  highContrast?: boolean;
   radius?: Radius;
   fallback: React.ReactNode;
 }
@@ -32,6 +34,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
     size = defaultAvatarSize,
     variant = defaultAvatarVariant,
     color = defaultAvatarColor,
+    highContrast = defaultAvatarHighContrast,
     radius = defaultAvatarRadius,
     fallback,
     ...imageProps
@@ -43,8 +46,9 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       data-radius={radius}
       className={classNames(
         'rui-AvatarRoot',
-        `variant-${variant}`,
         withMarginProps(marginProps),
+        `variant-${variant}`,
+        { highContrast },
         withBreakpoints(size, 'size'),
         className
       )}
