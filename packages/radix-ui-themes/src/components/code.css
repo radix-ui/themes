@@ -102,41 +102,35 @@
 /* solid */
 
 .rui-Code.variant-solid {
-  background-color: var(--accent-9);
+  background-color: var(--accent-a9);
   color: var(--accent-9-contrast);
-}
 
-/* solid-mono */
-
-.rui-Code.variant-solid-mono {
-  background-color: var(--gray-a12);
-  color: var(--gray-1);
+  &:where(.highContrast) {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+  }
 }
 
 /* subtle */
 
 .rui-Code.variant-subtle {
-  background-color: var(--accent-3);
+  background-color: var(--accent-a3);
   color: var(--accent-11);
-}
 
-/* subtle-mono */
-
-.rui-Code.variant-subtle-mono {
-  background-color: var(--gray-a4);
-  color: var(--gray-12);
+  &:where(.highContrast) {
+    background-color: var(--accent-a4);
+    color: var(--accent-12);
+  }
 }
 
 /* outline */
 
 .rui-Code.variant-outline {
-  box-shadow: 0 0 0 1px var(--accent-6);
+  box-shadow: 0 0 0 1px var(--accent-a6);
   color: var(--accent-11);
-}
 
-/* outline-mono */
-
-.rui-Code.variant-outline-mono {
-  box-shadow: 0 0 0 1px var(--gray-a7);
-  color: var(--gray-12);
+  &:where(.highContrast) {
+    box-shadow: 0 0 0 1px var(--accent-a7);
+    color: var(--accent-12);
+  }
 }

@@ -6,6 +6,7 @@ import {
   defaultCodeVariant,
   defaultCodeWeight,
   defaultCodeColor,
+  defaultCodeHighContrast,
 } from './code.props';
 
 import type { MarginProps, Color, Responsive } from '../helpers';
@@ -17,6 +18,7 @@ interface CodeProps extends Omit<React.ComponentPropsWithoutRef<'code'>, 'color'
   variant?: CodeVariant;
   weight?: Responsive<CodeWeight>;
   color?: Color;
+  highContrast?: boolean;
 }
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -26,6 +28,7 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
     variant = defaultCodeVariant,
     weight = defaultCodeWeight,
     color = defaultCodeColor,
+    highContrast = defaultCodeHighContrast,
     ...codeProps
   } = marginRest;
   return (
@@ -37,6 +40,7 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
         'rui-Code',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
+        { highContrast },
         withBreakpoints(weight, 'weight'),
         withMarginProps(marginProps),
         className

@@ -176,9 +176,6 @@ import styles from './page.module.css';
 import type { TextFieldSize } from '@radix-ui/themes';
 import { RadixLogo } from './radix-logo';
 
-const codeColorVariants = codeVariants.filter((variant) => !variant.endsWith('-mono'));
-const codeMonoVariants = codeVariants.filter((variant) => variant.endsWith('-mono'));
-
 export default function Sink() {
   return (
     <ThemeConfig asChild backgroundColor="gray">
@@ -2474,24 +2471,42 @@ export default function Sink() {
                 </DocsSection>
 
                 <DocsSection title="Code">
-                  <Grid columns="2" gap="9">
-                    {[codeColorVariants, codeMonoVariants].map((groupVariants, index) => (
-                      <div key={index}>
-                        <table className={styles.table}>
-                          <tbody>
-                            {groupVariants.map((variant) => (
-                              <tr key={variant}>
-                                <RowHeaderCell>{variant}</RowHeaderCell>
-                                <td>
-                                  <Code variant={variant}>console.log()</Code>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
-                  </Grid>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <ColumnHeaderCell />
+                        <ColumnHeaderCell>color</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                        <ColumnHeaderCell>gray</ColumnHeaderCell>
+                        <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {codeVariants.map((variant) => (
+                        <tr key={variant}>
+                          <RowHeaderCell>{variant}</RowHeaderCell>
+                          <td>
+                            <Code variant={variant}>console.log()</Code>
+                          </td>
+                          <td>
+                            <Code variant={variant} highContrast>
+                              console.log()
+                            </Code>
+                          </td>
+                          <td>
+                            <Code variant={variant} color="gray">
+                              console.log()
+                            </Code>
+                          </td>
+                          <td>
+                            <Code variant={variant} color="gray" highContrast>
+                              console.log()
+                            </Code>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
                   <Flex direction="column" gap="4" mt="7">
                     {codeSizes
@@ -2523,7 +2538,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {codeColorVariants.map((variant) => (
+                              {codeVariants.map((variant) => (
                                 <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                               ))}
                             </tr>
@@ -2532,7 +2547,7 @@ export default function Sink() {
                             {values.map((color) => (
                               <tr key={color}>
                                 <RowHeaderCell>{color}</RowHeaderCell>
-                                {codeColorVariants.map((variant) => (
+                                {codeVariants.map((variant) => (
                                   <td key={variant}>
                                     <Code variant={variant} color={color}>
                                       console.log()
