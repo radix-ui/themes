@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.12
+
+- `AlertDialog`, `Dialog`, `ContextMenu`, `DropdownMenu`, `HoverCard`, `Popover`, `Select`, `Tooltip`: Expose portal `container` prop
+
 ## 0.0.11
 
 **Warning!** This release contains lots of breaking changes.
