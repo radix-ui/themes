@@ -96,7 +96,7 @@ interface SelectContentProps
   variant?: SelectContentVariant;
   color?: Color;
   highContrast?: boolean;
-  container: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
 }
 const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>(
   (props, forwardedRef) => {

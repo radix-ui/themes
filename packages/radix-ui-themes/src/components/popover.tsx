@@ -19,7 +19,7 @@ PopoverTrigger.displayName = 'PopoverTrigger';
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>, 'asChild'> {
-  container: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {

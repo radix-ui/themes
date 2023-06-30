@@ -11,7 +11,7 @@ interface TooltipProps
     Omit<React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>, 'content'> {
   content: React.ReactNode;
   multiline?: boolean;
-  container: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
 }
 const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwardedRef) => {
   const {

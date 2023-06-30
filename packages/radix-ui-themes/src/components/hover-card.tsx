@@ -28,7 +28,7 @@ HoverCardTrigger.displayName = 'HoverCardTrigger';
 
 interface HoverCardContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>, 'asChild'> {
-  container: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
 }
 const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>(
   (props, forwardedRef) => {

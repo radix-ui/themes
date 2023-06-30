@@ -24,7 +24,7 @@ AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
 interface AlertDialogContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'> {
-  container: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
   (props, forwardedRef) => {

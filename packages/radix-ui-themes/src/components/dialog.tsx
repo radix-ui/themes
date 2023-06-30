@@ -22,7 +22,7 @@ DialogTrigger.displayName = 'DialogTrigger';
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 interface DialogContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>, 'asChild'> {
-  container: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   (props, forwardedRef) => {

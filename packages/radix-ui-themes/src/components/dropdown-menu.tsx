@@ -42,7 +42,7 @@ type DropdownMenuContentElement = React.ElementRef<typeof DropdownMenuPrimitive.
 interface DropdownMenuContentProps
   extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Content>,
     DropdownMenuContentContextValue {
-  container: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
@@ -262,7 +262,7 @@ DropdownMenuSubTrigger.displayName = 'DropdownMenuSubTrigger';
 type DropdownMenuSubContentElement = React.ElementRef<typeof DropdownMenuPrimitive.SubContent>;
 interface DropdownMenuSubContentProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent> {
-  container: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
 }
 const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,

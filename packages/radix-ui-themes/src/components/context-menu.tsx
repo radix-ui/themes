@@ -42,7 +42,7 @@ type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Co
 interface ContextMenuContentProps
   extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Content>,
     ContextMenuContentContextValue {
-  container: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
@@ -259,7 +259,7 @@ ContextMenuSubTrigger.displayName = 'ContextMenuSubTrigger';
 type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent> {
-  container: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
+  container?: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
