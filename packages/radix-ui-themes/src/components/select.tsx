@@ -96,6 +96,7 @@ interface SelectContentProps
   variant?: SelectContentVariant;
   color?: Color;
   highContrast?: boolean;
+  container: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
 }
 const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>(
   (props, forwardedRef) => {
@@ -105,12 +106,12 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       variant = defaultSelectContentVariant,
       highContrast = defaultSelectContentHighContrast,
       color = defaultSelectContentColor,
-      placeholder,
+      container,
       ...contentProps
     } = props;
     const { size, radius } = React.useContext(SelectContext);
     return (
-      <SelectPrimitive.Portal>
+      <SelectPrimitive.Portal container={container}>
         <SelectPrimitive.Content
           data-accent-scale={color}
           data-radius={radius}

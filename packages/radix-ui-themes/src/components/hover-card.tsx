@@ -27,19 +27,24 @@ const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTrig
 HoverCardTrigger.displayName = 'HoverCardTrigger';
 
 interface HoverCardContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>, 'asChild'> {}
+  extends Omit<React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>, 'asChild'> {
+  container: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
+}
 const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>(
-  (props, forwardedRef) => (
-    <HoverCardPrimitive.Portal>
-      <HoverCardPrimitive.Content
-        align="start"
-        sideOffset={8}
-        {...props}
-        ref={forwardedRef}
-        className={classNames('rui-PopperContent', 'rui-HoverCardContent', props.className)}
-      />
-    </HoverCardPrimitive.Portal>
-  )
+  (props, forwardedRef) => {
+    const { className, forceMount, container, ...contentProps } = props;
+    return (
+      <HoverCardPrimitive.Portal container={container} forceMount={forceMount}>
+        <HoverCardPrimitive.Content
+          align="start"
+          sideOffset={8}
+          {...contentProps}
+          ref={forwardedRef}
+          className={classNames('rui-PopperContent', 'rui-HoverCardContent', className)}
+        />
+      </HoverCardPrimitive.Portal>
+    );
+  }
 );
 HoverCardContent.displayName = 'HoverCardContent';
 

@@ -18,19 +18,24 @@ PopoverTrigger.displayName = 'PopoverTrigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>, 'asChild'> {}
+  extends Omit<React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>, 'asChild'> {
+  container: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
+}
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
-  (props, forwardedRef) => (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content
-        align="start"
-        sideOffset={8}
-        {...props}
-        ref={forwardedRef}
-        className={classNames('rui-PopperContent', 'rui-PopoverContent', props.className)}
-      />
-    </PopoverPrimitive.Portal>
-  )
+  (props, forwardedRef) => {
+    const { className, forceMount, container, ...contentProps } = props;
+    return (
+      <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
+        <PopoverPrimitive.Content
+          align="start"
+          sideOffset={8}
+          {...contentProps}
+          ref={forwardedRef}
+          className={classNames('rui-PopperContent', 'rui-PopoverContent', className)}
+        />
+      </PopoverPrimitive.Portal>
+    );
+  }
 );
 PopoverContent.displayName = 'PopoverContent';
 

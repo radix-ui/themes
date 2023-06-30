@@ -11,6 +11,7 @@ interface TooltipProps
     Omit<React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>, 'content'> {
   content: React.ReactNode;
   multiline?: boolean;
+  container: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
 }
 const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwardedRef) => {
   const {
@@ -23,13 +24,15 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     disableHoverableContent,
     content,
     multiline,
+    container,
+    forceMount,
     ...tooltipContentProps
   } = props;
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
   return (
     <TooltipPrimitive.Root {...rootProps}>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Portal container={container} forceMount={forceMount}>
         <TooltipPrimitive.Content
           sideOffset={4}
           {...tooltipContentProps}

@@ -23,19 +23,24 @@ AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
 interface AlertDialogContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'> {}
+  extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'> {
+  container: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
+}
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
-  (props, forwardedRef) => (
-    <AlertDialogPrimitive.Portal>
-      <AlertDialogPrimitive.Overlay className="rui-DialogOverlay rui-AlertDialogOverlay">
-        <AlertDialogPrimitive.Content
-          {...props}
-          ref={forwardedRef}
-          className={classNames('rui-DialogContent rui-AlertDialogContent', props.className)}
-        />
-      </AlertDialogPrimitive.Overlay>
-    </AlertDialogPrimitive.Portal>
-  )
+  (props, forwardedRef) => {
+    const { className, forceMount, container, ...contentProps } = props;
+    return (
+      <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
+        <AlertDialogPrimitive.Overlay className="rui-DialogOverlay rui-AlertDialogOverlay">
+          <AlertDialogPrimitive.Content
+            {...contentProps}
+            ref={forwardedRef}
+            className={classNames('rui-DialogContent rui-AlertDialogContent', className)}
+          />
+        </AlertDialogPrimitive.Overlay>
+      </AlertDialogPrimitive.Portal>
+    );
+  }
 );
 AlertDialogContent.displayName = 'AlertDialogContent';
 

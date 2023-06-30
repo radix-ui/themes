@@ -41,7 +41,9 @@ const DropdownMenuContentContext = React.createContext<DropdownMenuContentContex
 type DropdownMenuContentElement = React.ElementRef<typeof DropdownMenuPrimitive.Content>;
 interface DropdownMenuContentProps
   extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Content>,
-    DropdownMenuContentContextValue {}
+    DropdownMenuContentContextValue {
+  container: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
+}
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
     const {
@@ -51,10 +53,12 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       variant = defaultDropdownMenuContentVariant,
       highContrast = defaultDropdownMenuContentHighContrast,
       color = defaultDropdownMenuContentColor,
+      container,
+      forceMount,
       ...contentProps
     } = props;
     return (
-      <DropdownMenuPrimitive.Portal>
+      <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <DropdownMenuPrimitive.Content
           data-accent-scale={color}
           align="start"
@@ -257,15 +261,17 @@ DropdownMenuSubTrigger.displayName = 'DropdownMenuSubTrigger';
 
 type DropdownMenuSubContentElement = React.ElementRef<typeof DropdownMenuPrimitive.SubContent>;
 interface DropdownMenuSubContentProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent> {}
+  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent> {
+  container: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
+}
 const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, ...subContentProps } = props;
+  const { className, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   return (
-    <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <DropdownMenuPrimitive.SubContent
         data-accent-scale={color}
         alignOffset={-Number(size) * 4}

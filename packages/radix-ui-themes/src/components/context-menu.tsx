@@ -41,7 +41,9 @@ const ContextMenuContentContext = React.createContext<ContextMenuContentContextV
 type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Content>;
 interface ContextMenuContentProps
   extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Content>,
-    ContextMenuContentContextValue {}
+    ContextMenuContentContextValue {
+  container: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
+}
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
     const {
@@ -51,10 +53,12 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       variant = defaultContextMenuContentVariant,
       color = defaultContextMenuContentColor,
       highContrast = defaultContextMenuContentHighContrast,
+      container,
+      forceMount,
       ...contentProps
     } = props;
     return (
-      <ContextMenuPrimitive.Portal>
+      <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <ContextMenuPrimitive.Content
           data-accent-scale={color}
           alignOffset={-Number(size) * 4}
@@ -254,15 +258,17 @@ ContextMenuSubTrigger.displayName = 'ContextMenuSubTrigger';
 
 type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
-  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent> {}
+  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent> {
+  container: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
+}
 const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, ...subContentProps } = props;
+  const { className, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   return (
-    <ContextMenuPrimitive.Portal>
+    <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <ContextMenuPrimitive.SubContent
         data-accent-scale={color}
         alignOffset={-Number(size) * 4}
