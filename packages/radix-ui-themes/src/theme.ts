@@ -47,6 +47,16 @@ const themeScalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 type ThemeScaling = (typeof themeScalings)[number];
 const themeScalingDefault: ThemeScaling = '100%';
 
+type Theme = {
+  mode?: ThemeMode;
+  accentScale?: ThemeAccentScale;
+  grayScale?: ThemeGrayScale;
+  backgroundColor?: ThemeBackgroundColor;
+  textColor?: ThemeTextColor;
+  radius?: ThemeRadius;
+  scaling?: ThemeScaling;
+};
+
 function getMatchingGrayScale(accentScale: ThemeAccentScale): RadixGrayScale {
   if (accentScale === 'gray') return 'gray';
   return radixGetMatchingGrayScale(accentScale);
@@ -79,4 +89,6 @@ export type {
   ThemeTextColor,
   ThemeRadius,
   ThemeScaling,
+  //
+  Theme,
 };

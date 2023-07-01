@@ -47,6 +47,7 @@ import type {
   ThemeBackgroundColor,
   ThemeTextColor,
   ThemeScaling,
+  Theme,
 } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
@@ -109,18 +110,19 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
-      const themeConfig = {
-        mode: { value: mode, default: themeModeDefault },
-        accentScale: { value: accentScale, default: themeAccentScaleDefault },
-        grayScale: { value: grayScale, default: themeGrayScaleDefault },
-        backgroundColor: { value: backgroundColor, default: themeBackgroundColorDefault },
-        textColor: { value: textColor, default: themeTextColorDefault },
-        radius: { value: radius, default: themeRadiusDefault },
-        scaling: { value: scaling, default: themeScalingDefault },
+      const themeConfig: Theme = {
+        mode: mode === themeModeDefault ? undefined : mode,
+        accentScale: accentScale === themeAccentScaleDefault ? undefined : accentScale,
+        grayScale: grayScale === themeGrayScaleDefault ? undefined : grayScale,
+        backgroundColor:
+          backgroundColor === themeBackgroundColorDefault ? undefined : backgroundColor,
+        textColor: textColor === themeTextColorDefault ? undefined : textColor,
+        radius: radius === themeRadiusDefault ? undefined : radius,
+        scaling: scaling === themeScalingDefault ? undefined : scaling,
       };
       const props = Object.keys(themeConfig)
-        .filter((key) => themeConfig[key].value !== themeConfig[key].default)
-        .map((key) => `${key}="${themeConfig[key].value}"`)
+        .filter((key) => themeConfig[key as keyof Theme] !== undefined)
+        .map((key) => `${key}="${themeConfig[key as keyof Theme]}"`)
         .join(' ');
       setCopyState('copying');
       await navigator.clipboard.writeText(props);
