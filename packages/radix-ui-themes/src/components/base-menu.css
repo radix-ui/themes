@@ -31,7 +31,7 @@
   margin-left: var(--space-5);
 }
 .rui-BaseMenuShortcut svg {
-  margin-right: -2px;
+  margin-right: calc(-2px * var(--scaling));
 }
 
 .rui-BaseMenuItemIndicator {

@@ -37,11 +37,11 @@
 @breakpoints {
   .rui-RadioGroupRoot.size-1 {
     --size: var(--space-4);
-    --indicator-size: 6px;
+    --indicator-size: calc(6px * var(--scaling));
   }
   .rui-RadioGroupRoot.size-2 {
     --size: var(--space-5);
-    --indicator-size: 10px;
+    --indicator-size: calc(10px * var(--scaling));
   }
 }
 

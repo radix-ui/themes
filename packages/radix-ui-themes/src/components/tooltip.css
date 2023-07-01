@@ -44,5 +44,5 @@
   border-radius: min(var(--br-2), var(--br-4-raw));
 }
 .rui-TooltipContent.multiline .rui-TooltipText {
-  line-height: 18px;
+  line-height: calc(18px * var(--scaling));
 }
