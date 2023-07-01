@@ -10,7 +10,7 @@ import {
 } from './helpers/radix-colors';
 import type { RadixGrayScale } from './helpers/radix-colors';
 
-const themeModes = ['light', 'dark'] as const;
+const themeModes = ['light', 'dark', 'invert'] as const;
 type ThemeMode = (typeof themeModes)[number];
 const themeModeDefault: ThemeMode = 'light';
 

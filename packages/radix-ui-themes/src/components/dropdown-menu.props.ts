@@ -1,4 +1,6 @@
-import { ThemeAccentScale } from '../theme';
+import { ThemeMode, ThemeAccentScale } from '../theme';
+
+const dropdownMenuContentModeDefault: ThemeMode | undefined = undefined;
 
 const dropdownMenuContentSizes = ['1', '2'] as const;
 type DropdownMenuContentSize = (typeof dropdownMenuContentSizes)[number];
@@ -14,6 +16,7 @@ const dropdownMenuContentHighContrastDefault: boolean | undefined = undefined;
 const dropdownMenuItemColorDefault: ThemeAccentScale | undefined = undefined;
 
 export {
+  dropdownMenuContentModeDefault,
   dropdownMenuContentSizes,
   dropdownMenuContentSizeDefault,
   dropdownMenuContentVariants,

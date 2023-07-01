@@ -27,7 +27,7 @@ import type {
 const noop = () => {};
 
 interface ThemeConfigValues {
-  mode: ThemeMode | 'invert';
+  mode: ThemeMode;
   accentScale: ThemeAccentScale;
   grayScale: ThemeGrayScale;
   backgroundColor: ThemeBackgroundColor;

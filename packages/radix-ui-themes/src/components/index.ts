@@ -69,6 +69,7 @@ export {
   DialogDescription,
   DialogClose,
 } from './dialog';
+export * from './dialog.props';
 export {
   AlertDialog,
   AlertDialogRoot,
@@ -79,6 +80,7 @@ export {
   AlertDialogAction,
   AlertDialogCancel,
 } from './alert-dialog';
+export * from './alert-dialog.props';
 export {
   DropdownMenu,
   DropdownMenuRoot,
@@ -114,7 +116,9 @@ export {
 } from './context-menu';
 export * from './context-menu.props';
 export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card';
+export * from './hover-card.props';
 export { Popover, PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover';
+export * from './popover.props';
 export { Tooltip } from './tooltip';
 
 // NAVIGATION

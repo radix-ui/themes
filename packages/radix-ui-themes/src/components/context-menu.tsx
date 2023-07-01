@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import {
+  contextMenuContentModeDefault,
   contextMenuContentSizeDefault,
   contextMenuContentVariantDefault,
   contextMenuContentColorDefault,
@@ -16,7 +17,7 @@ import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
 import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeMode, ThemeAccentScale } from '../theme';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -44,6 +45,7 @@ type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Co
 interface ContextMenuContentProps
   extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Content>,
     ContextMenuContentContextValue {
+  mode?: ThemeMode;
   container?: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
@@ -52,6 +54,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const {
       className,
       children,
+      mode = contextMenuContentModeDefault,
       size = contextMenuContentSizeDefault,
       variant = contextMenuContentVariantDefault,
       color = contextMenuContentColorDefault,
@@ -63,7 +66,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const resolvedColor = color ?? themeConfigContext.accentScale;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild>
+        <ThemeConfig asChild mode={mode}>
           <ContextMenuPrimitive.Content
             data-accent-scale={resolvedColor}
             alignOffset={-Number(size) * 4}
