@@ -10,11 +10,11 @@ import {
   defaultTextColor,
 } from './text.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { TextSize, TextWeight, TextAlign, TextTrim } from './text.props';
 
 type TextElement = React.ElementRef<'p'>;
-interface TextProps extends Omit<React.ComponentPropsWithoutRef<'p'>, 'color'>, MarginProps {
+interface TextProps extends PropsWithoutRefOrColor<'p'>, MarginProps {
   asChild?: boolean;
   size?: Responsive<TextSize>;
   weight?: Responsive<TextWeight>;

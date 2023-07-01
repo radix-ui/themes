@@ -12,12 +12,12 @@ import {
   defaultSwitchRadius,
 } from './switch.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SwitchSize, SwitchVariant } from './switch.props';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 interface SwitchProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof SwitchPrimitive.Root>, 'children'>,
     MarginProps {
   size?: Responsive<SwitchSize>;
   variant?: SwitchVariant;

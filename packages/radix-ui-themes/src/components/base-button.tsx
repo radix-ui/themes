@@ -9,13 +9,11 @@ import {
   defaultBaseRadius,
 } from './base-button.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { BaseButtonSize, BaseButtonVariant } from './base-button.props';
 
 type BaseButtonElement = React.ElementRef<'button'>;
-interface BaseButtonProps
-  extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'>,
-    MarginProps {
+interface BaseButtonProps extends PropsWithoutRefOrColor<'button'>, MarginProps {
   size?: Responsive<BaseButtonSize>;
   variant?: BaseButtonVariant;
   color?: Color;

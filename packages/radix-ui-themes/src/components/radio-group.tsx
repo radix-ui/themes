@@ -11,12 +11,12 @@ import {
   defaultRadioGroupHighContrast,
 } from './radio-group.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { RadioGroupSize, RadioGroupVariant } from './radio-group.props';
 
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
-  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
+  extends PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Root>,
     MarginProps {
   size?: Responsive<RadioGroupSize>;
   variant?: RadioGroupVariant;

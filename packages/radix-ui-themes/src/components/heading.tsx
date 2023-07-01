@@ -4,11 +4,11 @@ import { Slot } from '@radix-ui/react-slot';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultHeadingSize, defaultHeadingTrim, defaultHeadingColor } from './heading.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { HeadingSize, HeadingTrim } from './heading.props';
 
 type HeadingElement = React.ElementRef<'h1'>;
-interface HeadingProps extends Omit<React.ComponentPropsWithoutRef<'h1'>, 'color'>, MarginProps {
+interface HeadingProps extends PropsWithoutRefOrColor<'h1'>, MarginProps {
   asChild?: boolean;
   size?: Responsive<HeadingSize>;
   trim?: Responsive<HeadingTrim>;

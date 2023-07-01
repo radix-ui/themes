@@ -9,11 +9,11 @@ import {
   defaultCodeHighContrast,
 } from './code.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { CodeSize, CodeVariant, CodeWeight } from './code.props';
 
 type CodeElement = React.ElementRef<'code'>;
-interface CodeProps extends Omit<React.ComponentPropsWithoutRef<'code'>, 'color'>, MarginProps {
+interface CodeProps extends PropsWithoutRefOrColor<'code'>, MarginProps {
   size?: Responsive<CodeSize>;
   variant?: CodeVariant;
   weight?: Responsive<CodeWeight>;

@@ -13,12 +13,10 @@ import {
 } from './avatar.props';
 
 import type { AvatarSize, AvatarVariant } from './avatar.props';
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
-interface AvatarProps
-  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>,
-    MarginProps {
+interface AvatarProps extends PropsWithoutRefOrColor<typeof AvatarPrimitive.Image>, MarginProps {
   size?: Responsive<AvatarSize>;
   variant?: AvatarVariant;
   color?: Color;

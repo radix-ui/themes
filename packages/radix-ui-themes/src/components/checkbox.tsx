@@ -13,12 +13,12 @@ import {
   defaultCheckboxRadius,
 } from './checkbox.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof CheckboxPrimitive.Root>, 'children'>,
     MarginProps {
   size?: Responsive<CheckboxSize>;
   variant?: CheckboxVariant;

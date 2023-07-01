@@ -8,13 +8,11 @@ import {
   defaultTextAreaRadius,
 } from './text-area.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { TextAreaSize, TextAreaVariant } from './text-area.props';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
-interface TextAreaProps
-  extends Omit<React.ComponentPropsWithRef<'textarea'>, 'color' | 'size'>,
-    MarginProps {
+interface TextAreaProps extends Omit<PropsWithoutRefOrColor<'textarea'>, 'size'>, MarginProps {
   size?: Responsive<TextAreaSize>;
   variant?: TextAreaVariant;
   color?: Color;

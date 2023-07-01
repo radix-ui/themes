@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultBadgeSize, defaultBadgeVariant, defaultBadgeColor } from './badge.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { BadgeSize, BadgeVariant } from './badge.props';
 
 type BadgeElement = React.ElementRef<'span'>;
-interface BadgeProps extends Omit<React.ComponentPropsWithoutRef<'span'>, 'color'>, MarginProps {
+interface BadgeProps extends PropsWithoutRefOrColor<'span'>, MarginProps {
   size?: Responsive<BadgeSize>;
   variant?: BadgeVariant;
   color?: Color;

@@ -17,7 +17,7 @@ import {
   defaultSelectRadius,
 } from './select.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
 
 type SelectContextValue = { size?: Responsive<SelectSize>; radius?: Radius };
@@ -40,7 +40,7 @@ SelectRoot.displayName = 'SelectRoot';
 
 type SelectTriggerElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 interface SelectTriggerProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>, 'asChild' | 'color'>,
+  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Trigger>, 'asChild'>,
     MarginProps {
   variant?: SelectTriggerVariant;
   color?: Color;
@@ -91,8 +91,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
 SelectTrigger.displayName = 'SelectTrigger';
 
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
-interface SelectContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>, 'color'> {
+interface SelectContentProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Content> {
   size?: Responsive<SelectSize>;
   variant?: SelectContentVariant;
   color?: Color;

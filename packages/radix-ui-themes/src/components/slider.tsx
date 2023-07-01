@@ -12,12 +12,12 @@ import {
   defaultSliderRadius,
 } from './slider.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SliderSize, SliderVariant } from './slider.props';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 interface SliderProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof SliderPrimitive.Root>, 'children'>,
     MarginProps {
   size?: Responsive<SliderSize>;
   variant?: SliderVariant;

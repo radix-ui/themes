@@ -6,12 +6,12 @@ import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultSeparatorSize, defaultSeparatorColor } from './separator.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { SeparatorSize } from './separator.props';
 
 type SeparatorElement = React.ElementRef<typeof SeparatorPrimitive.Root>;
 interface SeparatorProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>, 'color'>,
+  extends PropsWithoutRefOrColor<typeof SeparatorPrimitive.Root>,
     MarginProps {
   size?: Responsive<SeparatorSize>;
   color?: Color | 'color';

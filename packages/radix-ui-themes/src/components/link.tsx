@@ -9,11 +9,11 @@ import {
   defaultLinkHighContrast,
 } from './link.props';
 
-import type { MarginProps, Color, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { LinkSize, LinkWeight } from './link.props';
 
 type LinkElement = React.ElementRef<'a'>;
-interface LinkProps extends Omit<React.ComponentPropsWithoutRef<'a'>, 'color'>, MarginProps {
+interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps {
   asChild?: boolean;
   size?: Responsive<LinkSize>;
   weight?: Responsive<LinkWeight>;

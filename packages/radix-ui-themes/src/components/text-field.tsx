@@ -8,13 +8,11 @@ import {
   defaultTextFieldRadius,
 } from './text-field.props';
 
-import type { MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { TextFieldSize, TextFieldVariant } from './text-field.props';
 
 type TextFieldElement = React.ElementRef<'input'>;
-interface TextFieldProps
-  extends Omit<React.ComponentPropsWithRef<'input'>, 'color' | 'size'>,
-    MarginProps {
+interface TextFieldProps extends Omit<PropsWithoutRefOrColor<'input'>, 'size'>, MarginProps {
   size?: Responsive<TextFieldSize>;
   variant?: TextFieldVariant;
   color?: Color;
