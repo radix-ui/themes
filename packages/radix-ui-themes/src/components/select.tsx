@@ -5,14 +5,14 @@ import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import {
-  defaultSelectSize,
-  defaultSelectTriggerVariant,
-  defaultSelectTriggerColor,
-  defaultSelectTriggerHighContrast,
-  defaultSelectContentVariant,
-  defaultSelectContentColor,
-  defaultSelectContentHighContrast,
-  defaultSelectRadius,
+  selectSizeDefault,
+  selectTriggerVariantDefault,
+  selectTriggerColorDefault,
+  selectTriggerHighContrastDefault,
+  selectContentVariantDefault,
+  selectContentColorDefault,
+  selectContentHighContrastDefault,
+  selectRadiusDefault,
 } from './select.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { ThemeConfig, useThemeConfigContext } from '../theme-config';
@@ -28,7 +28,7 @@ interface SelectRootProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
-  const { children, size = defaultSelectSize, radius = defaultSelectRadius, ...rootProps } = props;
+  const { children, size = selectSizeDefault, radius = selectRadiusDefault, ...rootProps } = props;
   return (
     <SelectPrimitive.Root {...rootProps}>
       <SelectContext.Provider value={React.useMemo(() => ({ size, radius }), [size, radius])}>
@@ -52,9 +52,9 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const {
       className,
-      variant = defaultSelectTriggerVariant,
-      highContrast = defaultSelectTriggerHighContrast,
-      color = defaultSelectTriggerColor,
+      variant = selectTriggerVariantDefault,
+      highContrast = selectTriggerHighContrastDefault,
+      color = selectTriggerColorDefault,
       placeholder,
       ...triggerProps
     } = marginRest;
@@ -104,9 +104,9 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
     const {
       className,
       children,
-      variant = defaultSelectContentVariant,
-      highContrast = defaultSelectContentHighContrast,
-      color = defaultSelectContentColor,
+      variant = selectContentVariantDefault,
+      highContrast = selectContentHighContrastDefault,
+      color = selectContentColorDefault,
       container,
       ...contentProps
     } = props;

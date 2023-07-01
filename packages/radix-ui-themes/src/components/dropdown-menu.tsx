@@ -5,11 +5,11 @@ import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import {
-  defaultDropdownMenuContentSize,
-  defaultDropdownMenuContentVariant,
-  defaultDropdownMenuContentColor,
-  defaultDropdownMenuContentHighContrast,
-  defaultDropdownMenuItemColor,
+  dropdownMenuContentSizeDefault,
+  dropdownMenuContentVariantDefault,
+  dropdownMenuContentColorDefault,
+  dropdownMenuContentHighContrastDefault,
+  dropdownMenuItemColorDefault,
 } from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
 import { ThemeConfig, useThemeConfigContext } from '../theme-config';
@@ -52,10 +52,10 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     const {
       className,
       children,
-      size = defaultDropdownMenuContentSize,
-      variant = defaultDropdownMenuContentVariant,
-      highContrast = defaultDropdownMenuContentHighContrast,
-      color = defaultDropdownMenuContentColor,
+      size = dropdownMenuContentSizeDefault,
+      variant = dropdownMenuContentVariantDefault,
+      highContrast = dropdownMenuContentHighContrastDefault,
+      color = dropdownMenuContentColorDefault,
       container,
       forceMount,
       ...contentProps
@@ -120,7 +120,7 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
     const {
       className,
       children,
-      color = defaultDropdownMenuItemColor,
+      color = dropdownMenuItemColorDefault,
       shortcut,
       ...itemProps
     } = props;

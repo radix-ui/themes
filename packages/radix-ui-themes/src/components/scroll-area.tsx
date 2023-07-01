@@ -4,9 +4,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import {
-  defaultScrollAreaSize,
-  defaultScrollAreaRadius,
-  defaultScrollAreaScrollbars,
+  scrollAreaSizeDefault,
+  scrollAreaRadiusDefault,
+  scrollAreaScrollbarsDefault,
 } from './scroll-area.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -31,9 +31,9 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     type,
     scrollHideDelay = type !== 'scroll' ? 0 : undefined,
     dir,
-    size = defaultScrollAreaSize,
-    radius = defaultScrollAreaRadius,
-    scrollbars = defaultScrollAreaScrollbars,
+    size = scrollAreaSizeDefault,
+    radius = scrollAreaRadiusDefault,
+    scrollbars = scrollAreaScrollbarsDefault,
     ...viewportProps
   } = marginRest;
   return (

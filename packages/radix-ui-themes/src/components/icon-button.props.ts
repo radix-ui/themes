@@ -1,11 +1,11 @@
 export {
   baseButtonSizes as iconButtonSizes,
-  defaultBaseButtonSize as defaultIconButtonSize,
+  baseButtonSizeDefault as iconButtonSizeDefault,
   baseButtonVariants as iconButtonVariants,
-  defaultBaseButtonVariant as defaultIconButtonVariant,
-  defaultBaseButtonColor as defaultIconButtonColor,
-  defaultBaseButtonHighContrast as defaultIconButtonHighContrast,
-  defaultBaseRadius as defaultIconButtonRadius,
+  baseButtonVariantDefault as iconButtonVariantDefault,
+  baseButtonColorDefault as iconButtonColorDefault,
+  baseButtonHighContrastDefault as iconButtonHighContrastDefault,
+  defaultBaseRadius as iconButtonRadiusDefault,
 } from './base-button.props';
 export type {
   BaseButtonSize as IconButtonSize,

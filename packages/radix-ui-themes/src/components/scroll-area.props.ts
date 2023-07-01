@@ -2,19 +2,19 @@ import type { ThemeRadius } from '../theme';
 
 const scrollAreaSizes = ['1', '2', '3'] as const;
 type ScrollAreaSize = (typeof scrollAreaSizes)[number];
-const defaultScrollAreaSize: ScrollAreaSize = '1';
+const scrollAreaSizeDefault: ScrollAreaSize = '1';
 
-const defaultScrollAreaRadius: ThemeRadius | undefined = undefined;
+const scrollAreaRadiusDefault: ThemeRadius | undefined = undefined;
 
 const scrollAreaScrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
 type ScrollAreaScrollbars = (typeof scrollAreaScrollbarsValues)[number];
-const defaultScrollAreaScrollbars: ScrollAreaScrollbars = 'both';
+const scrollAreaScrollbarsDefault: ScrollAreaScrollbars = 'both';
 
 export {
   scrollAreaSizes,
-  defaultScrollAreaSize,
-  defaultScrollAreaRadius,
+  scrollAreaSizeDefault,
+  scrollAreaRadiusDefault,
   scrollAreaScrollbarsValues,
-  defaultScrollAreaScrollbars,
+  scrollAreaScrollbarsDefault,
 };
 export type { ScrollAreaSize, ScrollAreaScrollbars };

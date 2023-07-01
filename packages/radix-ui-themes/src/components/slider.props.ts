@@ -2,23 +2,23 @@ import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const sliderSizes = ['1', '2', '3'] as const;
 type SliderSize = (typeof sliderSizes)[number];
-const defaultSliderSize: SliderSize = '2';
+const sliderSizeDefault: SliderSize = '2';
 
 const sliderVariants = ['solid', 'soft'] as const;
 type SliderVariant = (typeof sliderVariants)[number];
-const defaultSliderVariant: SliderVariant = 'solid';
+const sliderVariantDefault: SliderVariant = 'solid';
 
-const defaultSliderColor: ThemeAccentScale | undefined = undefined;
-const defaultSliderHighContrast: boolean | undefined = undefined;
-const defaultSliderRadius: ThemeRadius | undefined = undefined;
+const sliderColorDefault: ThemeAccentScale | undefined = undefined;
+const sliderHighContrastDefault: boolean | undefined = undefined;
+const sliderRadiusDefault: ThemeRadius | undefined = undefined;
 
 export {
   sliderSizes,
-  defaultSliderSize,
+  sliderSizeDefault,
   sliderVariants,
-  defaultSliderVariant,
-  defaultSliderColor,
-  defaultSliderHighContrast,
-  defaultSliderRadius,
+  sliderVariantDefault,
+  sliderColorDefault,
+  sliderHighContrastDefault,
+  sliderRadiusDefault,
 };
 export type { SliderSize, SliderVariant };

@@ -4,10 +4,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import {
-  defaultRadioGroupSize,
-  defaultRadioGroupVariant,
-  defaultRadioGroupColor,
-  defaultRadioGroupHighContrast,
+  radioGroupSizeDefault,
+  radioGroupVariantDefault,
+  radioGroupColorDefault,
+  radioGroupHighContrastDefault,
 } from './radio-group.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -29,10 +29,10 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const {
       className,
-      size = defaultRadioGroupSize,
-      variant = defaultRadioGroupVariant,
-      color = defaultRadioGroupColor,
-      highContrast = defaultRadioGroupHighContrast,
+      size = radioGroupSizeDefault,
+      variant = radioGroupVariantDefault,
+      color = radioGroupColorDefault,
+      highContrast = radioGroupHighContrastDefault,
       ...rootProps
     } = marginRest;
     return (

@@ -5,11 +5,11 @@ import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 import {
-  defaultCheckboxSize,
-  defaultCheckboxVariant,
-  defaultCheckboxColor,
-  defaultCheckboxHighContrast,
-  defaultCheckboxRadius,
+  checkboxSizeDefault,
+  checkboxVariantDefault,
+  checkboxColorDefault,
+  checkboxHighContrastDefault,
+  checkboxRadiusDefault,
 } from './checkbox.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -32,11 +32,11 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
   const {
     className,
     style,
-    size = defaultCheckboxSize,
-    variant = defaultCheckboxVariant,
-    color = defaultCheckboxColor,
-    highContrast = defaultCheckboxHighContrast,
-    radius = defaultCheckboxRadius,
+    size = checkboxSizeDefault,
+    variant = checkboxVariantDefault,
+    color = checkboxColorDefault,
+    highContrast = checkboxHighContrastDefault,
+    radius = checkboxRadiusDefault,
     ...checkboxProps
   } = marginRest;
   return (

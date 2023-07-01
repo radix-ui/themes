@@ -2,14 +2,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import {
-  defaultGridDisplay,
-  defaultGridColumns,
-  defaultGridFlow,
-  defaultGridAlign,
-  defaultGridJustify,
-  defaultGridGap,
-  defaultGridGapX,
-  defaultGridGapY,
+  gridDisplayDefault,
+  gridColumnsDefault,
+  gridFlowDefault,
+  gridAlignDefault,
+  gridJustifyDefault,
+  gridGapDefault,
+  gridGapXDefault,
+  gridGapYDefault,
 } from './grid.props';
 import {
   extractMarginProps,
@@ -54,14 +54,14 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
-    display = defaultGridDisplay,
-    columns = defaultGridColumns,
-    flow = defaultGridFlow,
-    align = defaultGridAlign,
-    justify = defaultGridJustify,
-    gap = defaultGridGap,
-    gapX = defaultGridGapX,
-    gapY = defaultGridGapY,
+    display = gridDisplayDefault,
+    columns = gridColumnsDefault,
+    flow = gridFlowDefault,
+    align = gridAlignDefault,
+    justify = gridJustifyDefault,
+    gap = gridGapDefault,
+    gapX = gridGapXDefault,
+    gapY = gridGapYDefault,
     ...gridProps
   } = layoutRest;
   const Comp = asChild ? Slot : 'div';

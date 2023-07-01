@@ -2,11 +2,11 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import {
-  defaultTextSize,
-  defaultTextWeight,
-  defaultTextAlign,
-  defaultTextTrim,
-  defaultTextColor,
+  textSizeDefault,
+  textWeightDefault,
+  textAlignDefault,
+  textTrimDefault,
+  textColorDefault,
 } from './text.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -28,11 +28,11 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const {
     className,
     asChild = false,
-    size = defaultTextSize,
-    weight = defaultTextWeight,
-    align = defaultTextAlign,
-    trim = defaultTextTrim,
-    color = defaultTextColor,
+    size = textSizeDefault,
+    weight = textWeightDefault,
+    align = textAlignDefault,
+    trim = textTrimDefault,
+    color = textColorDefault,
     ...textProps
   } = marginRest;
   const Comp = asChild ? Slot : 'p';

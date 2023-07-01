@@ -2,12 +2,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import {
-  defaultFlexDisplay,
-  defaultFlexDirection,
-  defaultFlexAlign,
-  defaultFlexJustify,
-  defaultFlexWrap,
-  defaultFlexGap,
+  flexDisplayDefault,
+  flexDirectionDefault,
+  flexAlignDefault,
+  flexJustifyDefault,
+  flexWrapDefault,
+  flexGapDefault,
 } from './flex.props';
 import {
   extractMarginProps,
@@ -50,12 +50,12 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
-    display = defaultFlexDisplay,
-    direction = defaultFlexDirection,
-    align = defaultFlexAlign,
-    justify = defaultFlexJustify,
-    wrap = defaultFlexWrap,
-    gap = defaultFlexGap,
+    display = flexDisplayDefault,
+    direction = flexDirectionDefault,
+    align = flexAlignDefault,
+    justify = flexJustifyDefault,
+    wrap = flexWrapDefault,
+    gap = flexGapDefault,
     ...flexProps
   } = layoutRest;
   const Comp = asChild ? Slot : 'div';

@@ -4,33 +4,33 @@ import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const selectSizes = ['1', '2'] as const;
 type SelectSize = (typeof selectSizes)[number];
-const defaultSelectSize: SelectSize = '2';
+const selectSizeDefault: SelectSize = '2';
 
 const selectTriggerVariants = baseButtonVariants;
 type SelectTriggerVariant = (typeof selectTriggerVariants)[number];
-const defaultSelectTriggerVariant: SelectTriggerVariant = 'surface';
-const defaultSelectTriggerColor: ThemeAccentScale | undefined = undefined;
-const defaultSelectTriggerHighContrast: boolean | undefined = undefined;
+const selectTriggerVariantDefault: SelectTriggerVariant = 'surface';
+const selectTriggerColorDefault: ThemeAccentScale | undefined = undefined;
+const selectTriggerHighContrastDefault: boolean | undefined = undefined;
 
 const selectContentVariants = ['solid', 'soft'] as const;
 type SelectContentVariant = (typeof selectContentVariants)[number];
-const defaultSelectContentVariant: SelectContentVariant = 'solid';
-const defaultSelectContentColor: ThemeAccentScale | undefined = undefined;
-const defaultSelectContentHighContrast: boolean | undefined = undefined;
+const selectContentVariantDefault: SelectContentVariant = 'solid';
+const selectContentColorDefault: ThemeAccentScale | undefined = undefined;
+const selectContentHighContrastDefault: boolean | undefined = undefined;
 
-const defaultSelectRadius: ThemeRadius | undefined = undefined;
+const selectRadiusDefault: ThemeRadius | undefined = undefined;
 
 export {
   selectSizes,
-  defaultSelectSize,
+  selectSizeDefault,
   selectTriggerVariants,
-  defaultSelectTriggerVariant,
-  defaultSelectTriggerColor,
-  defaultSelectTriggerHighContrast,
+  selectTriggerVariantDefault,
+  selectTriggerColorDefault,
+  selectTriggerHighContrastDefault,
   selectContentVariants,
-  defaultSelectContentVariant,
-  defaultSelectContentColor,
-  defaultSelectContentHighContrast,
-  defaultSelectRadius,
+  selectContentVariantDefault,
+  selectContentColorDefault,
+  selectContentHighContrastDefault,
+  selectRadiusDefault,
 };
 export type { SelectSize, SelectTriggerVariant, SelectContentVariant };

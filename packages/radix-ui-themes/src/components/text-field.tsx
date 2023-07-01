@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import {
-  defaultTextFieldSize,
-  defaultTextFieldVariant,
-  defaultTextFieldColor,
-  defaultTextFieldRadius,
+  textFieldSizeDefault,
+  textFieldVariantDefault,
+  textFieldColorDefault,
+  textFieldRadiusDefault,
 } from './text-field.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -23,10 +23,10 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = defaultTextFieldSize,
-    variant = defaultTextFieldVariant,
-    color = defaultTextFieldColor,
-    radius = defaultTextFieldRadius,
+    size = textFieldSizeDefault,
+    variant = textFieldVariantDefault,
+    color = textFieldColorDefault,
+    radius = textFieldRadiusDefault,
     ...textAreaProps
   } = marginRest;
   return (

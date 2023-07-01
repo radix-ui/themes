@@ -2,23 +2,23 @@ import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const checkboxSizes = ['1', '2'] as const;
 type CheckboxSize = (typeof checkboxSizes)[number];
-const defaultCheckboxSize: CheckboxSize = '1';
+const checkboxSizeDefault: CheckboxSize = '1';
 
 const checkboxVariants = ['solid'] as const;
 type CheckboxVariant = (typeof checkboxVariants)[number];
-const defaultCheckboxVariant: CheckboxVariant = 'solid';
+const checkboxVariantDefault: CheckboxVariant = 'solid';
 
-const defaultCheckboxColor: ThemeAccentScale | undefined = undefined;
-const defaultCheckboxHighContrast: boolean | undefined = undefined;
-const defaultCheckboxRadius: ThemeRadius | undefined = undefined;
+const checkboxColorDefault: ThemeAccentScale | undefined = undefined;
+const checkboxHighContrastDefault: boolean | undefined = undefined;
+const checkboxRadiusDefault: ThemeRadius | undefined = undefined;
 
 export {
   checkboxSizes,
-  defaultCheckboxSize,
+  checkboxSizeDefault,
   checkboxVariants,
-  defaultCheckboxVariant,
-  defaultCheckboxColor,
-  defaultCheckboxHighContrast,
-  defaultCheckboxRadius,
+  checkboxVariantDefault,
+  checkboxColorDefault,
+  checkboxHighContrastDefault,
+  checkboxRadiusDefault,
 };
 export type { CheckboxSize, CheckboxVariant };

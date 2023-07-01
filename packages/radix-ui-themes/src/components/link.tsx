@@ -2,10 +2,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import {
-  defaultLinkSize,
-  defaultLinkWeight,
-  defaultLinkColor,
-  defaultLinkHighContrast,
+  linkSizeDefault,
+  linkWeightDefault,
+  linkColorDefault,
+  linkHighContrastDefault,
 } from './link.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -26,10 +26,10 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const {
     className,
     asChild = false,
-    size = defaultLinkSize,
-    weight = defaultLinkWeight,
-    color = defaultLinkColor,
-    highContrast = defaultLinkHighContrast,
+    size = linkSizeDefault,
+    weight = linkWeightDefault,
+    color = linkColorDefault,
+    highContrast = linkHighContrastDefault,
     ...linkProps
   } = marginRest;
   const Comp = asChild ? Slot : 'a';

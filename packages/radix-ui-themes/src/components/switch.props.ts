@@ -2,23 +2,23 @@ import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const switchSizes = ['1', '2', '3'] as const;
 type SwitchSize = (typeof switchSizes)[number];
-const defaultSwitchSize: SwitchSize = '2';
+const switchSizeDefault: SwitchSize = '2';
 
 const switchVariants = ['solid'] as const;
 type SwitchVariant = (typeof switchVariants)[number];
-const defaultSwitchVariant: SwitchVariant = 'solid';
+const switchVariantDefault: SwitchVariant = 'solid';
 
-const defaultSwitchColor: ThemeAccentScale | undefined = undefined;
-const defaultSwitchHighContrast: boolean | undefined = undefined;
-const defaultSwitchRadius: ThemeRadius | undefined = undefined;
+const switchColorDefault: ThemeAccentScale | undefined = undefined;
+const switchHighContrastDefault: boolean | undefined = undefined;
+const switchRadiusDefault: ThemeRadius | undefined = undefined;
 
 export {
   switchSizes,
-  defaultSwitchSize,
+  switchSizeDefault,
   switchVariants,
-  defaultSwitchVariant,
-  defaultSwitchColor,
-  defaultSwitchHighContrast,
-  defaultSwitchRadius,
+  switchVariantDefault,
+  switchColorDefault,
+  switchHighContrastDefault,
+  switchRadiusDefault,
 };
 export type { SwitchSize, SwitchVariant };

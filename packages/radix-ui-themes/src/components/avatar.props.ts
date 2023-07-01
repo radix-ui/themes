@@ -2,23 +2,23 @@ import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const avatarSizes = ['1', '2', '3', '4', '5'] as const;
 type AvatarSize = (typeof avatarSizes)[number];
-const defaultAvatarSize: AvatarSize = '3';
+const avatarSizeDefault: AvatarSize = '3';
 
 const avatarVariants = ['solid', 'soft'] as const;
 type AvatarVariant = (typeof avatarVariants)[number];
-const defaultAvatarVariant: AvatarVariant = 'soft';
+const avatarVariantDefault: AvatarVariant = 'soft';
 
-const defaultAvatarColor: ThemeAccentScale | undefined = undefined;
-const defaultAvatarHighContrast: boolean | undefined = undefined;
-const defaultAvatarRadius: ThemeRadius | undefined = undefined;
+const avatarColorDefault: ThemeAccentScale | undefined = undefined;
+const avatarHighContrastDefault: boolean | undefined = undefined;
+const avatarRadiusDefault: ThemeRadius | undefined = undefined;
 
 export {
   avatarSizes,
-  defaultAvatarSize,
+  avatarSizeDefault,
   avatarVariants,
-  defaultAvatarVariant,
-  defaultAvatarColor,
-  defaultAvatarHighContrast,
-  defaultAvatarRadius,
+  avatarVariantDefault,
+  avatarColorDefault,
+  avatarHighContrastDefault,
+  avatarRadiusDefault,
 };
 export type { AvatarSize, AvatarVariant };

@@ -4,11 +4,11 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import {
-  defaultSliderSize,
-  defaultSliderVariant,
-  defaultSliderColor,
-  defaultSliderHighContrast,
-  defaultSliderRadius,
+  sliderSizeDefault,
+  sliderVariantDefault,
+  sliderColorDefault,
+  sliderHighContrastDefault,
+  sliderRadiusDefault,
 } from './slider.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -30,11 +30,11 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = defaultSliderSize,
-    variant = defaultSliderVariant,
-    color = defaultSliderColor,
-    highContrast = defaultSliderHighContrast,
-    radius = defaultSliderRadius,
+    size = sliderSizeDefault,
+    variant = sliderVariantDefault,
+    color = sliderColorDefault,
+    highContrast = sliderHighContrastDefault,
+    radius = sliderRadiusDefault,
     ...sliderProps
   } = marginRest;
   return (

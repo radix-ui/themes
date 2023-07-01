@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { defaultHeadingSize, defaultHeadingTrim, defaultHeadingColor } from './heading.props';
+import { headingSizeDefault, headingTrimDefault, headingColorDefault } from './heading.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
 import type { HeadingSize, HeadingTrim } from './heading.props';
@@ -20,9 +20,9 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
   const {
     className,
     asChild = false,
-    size = defaultHeadingSize,
-    trim = defaultHeadingTrim,
-    color = defaultHeadingColor,
+    size = headingSizeDefault,
+    trim = headingTrimDefault,
+    color = headingColorDefault,
     ...headingProps
   } = marginRest;
   const Comp = asChild ? Slot : 'h1';

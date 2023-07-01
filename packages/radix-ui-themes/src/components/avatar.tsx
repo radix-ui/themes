@@ -4,11 +4,11 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import {
-  defaultAvatarSize,
-  defaultAvatarVariant,
-  defaultAvatarColor,
-  defaultAvatarHighContrast,
-  defaultAvatarRadius,
+  avatarSizeDefault,
+  avatarVariantDefault,
+  avatarColorDefault,
+  avatarHighContrastDefault,
+  avatarRadiusDefault,
 } from './avatar.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -30,11 +30,11 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
   const {
     className,
     style,
-    size = defaultAvatarSize,
-    variant = defaultAvatarVariant,
-    color = defaultAvatarColor,
-    highContrast = defaultAvatarHighContrast,
-    radius = defaultAvatarRadius,
+    size = avatarSizeDefault,
+    variant = avatarVariantDefault,
+    color = avatarColorDefault,
+    highContrast = avatarHighContrastDefault,
+    radius = avatarRadiusDefault,
     fallback,
     ...imageProps
   } = marginRest;

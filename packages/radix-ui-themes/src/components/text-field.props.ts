@@ -2,21 +2,21 @@ import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const textFieldSizes = ['1', '2', '3'] as const;
 type TextFieldSize = (typeof textFieldSizes)[number];
-const defaultTextFieldSize: TextFieldSize = '2';
+const textFieldSizeDefault: TextFieldSize = '2';
 
 const textFieldVariants = ['surface', 'soft'] as const;
 type TextFieldVariant = (typeof textFieldVariants)[number];
-const defaultTextFieldVariant: TextFieldVariant = 'surface';
+const textFieldVariantDefault: TextFieldVariant = 'surface';
 
-const defaultTextFieldColor: ThemeAccentScale | undefined = undefined;
-const defaultTextFieldRadius: ThemeRadius | undefined = undefined;
+const textFieldColorDefault: ThemeAccentScale | undefined = undefined;
+const textFieldRadiusDefault: ThemeRadius | undefined = undefined;
 
 export {
   textFieldSizes,
-  defaultTextFieldSize,
+  textFieldSizeDefault,
   textFieldVariants,
-  defaultTextFieldVariant,
-  defaultTextFieldColor,
-  defaultTextFieldRadius,
+  textFieldVariantDefault,
+  textFieldColorDefault,
+  textFieldRadiusDefault,
 };
 export type { TextFieldSize, TextFieldVariant };

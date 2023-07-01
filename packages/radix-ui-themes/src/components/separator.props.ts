@@ -2,9 +2,9 @@ import type { ThemeAccentScale } from '../theme';
 
 const separatorSizes = ['1', '2', '3', '4'] as const;
 type SeparatorSize = (typeof separatorSizes)[number];
-const defaultSeparatorSize: SeparatorSize = '1';
+const separatorSizeDefault: SeparatorSize = '1';
 
-const defaultSeparatorColor: ThemeAccentScale | undefined = undefined;
+const separatorColorDefault: ThemeAccentScale | undefined = undefined;
 
-export { separatorSizes, defaultSeparatorSize, defaultSeparatorColor };
+export { separatorSizes, separatorSizeDefault, separatorColorDefault };
 export type { SeparatorSize };

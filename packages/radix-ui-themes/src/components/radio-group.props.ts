@@ -2,21 +2,21 @@ import type { ThemeAccentScale } from '../theme';
 
 const radioGroupSizes = ['1', '2'] as const;
 type RadioGroupSize = (typeof radioGroupSizes)[number];
-const defaultRadioGroupSize: RadioGroupSize = '1';
+const radioGroupSizeDefault: RadioGroupSize = '1';
 
 const radioGroupVariants = ['solid'] as const;
 type RadioGroupVariant = (typeof radioGroupVariants)[number];
-const defaultRadioGroupVariant: RadioGroupVariant = 'solid';
+const radioGroupVariantDefault: RadioGroupVariant = 'solid';
 
-const defaultRadioGroupColor: ThemeAccentScale | undefined = undefined;
-const defaultRadioGroupHighContrast: boolean | undefined = undefined;
+const radioGroupColorDefault: ThemeAccentScale | undefined = undefined;
+const radioGroupHighContrastDefault: boolean | undefined = undefined;
 
 export {
   radioGroupSizes,
-  defaultRadioGroupSize,
+  radioGroupSizeDefault,
   radioGroupVariants,
-  defaultRadioGroupVariant,
-  defaultRadioGroupHighContrast,
-  defaultRadioGroupColor,
+  radioGroupVariantDefault,
+  radioGroupHighContrastDefault,
+  radioGroupColorDefault,
 };
 export type { RadioGroupSize, RadioGroupVariant };

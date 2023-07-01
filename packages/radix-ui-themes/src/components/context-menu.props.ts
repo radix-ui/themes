@@ -2,24 +2,24 @@ import { ThemeAccentScale } from '../theme';
 
 const contextMenuContentSizes = ['1', '2'] as const;
 type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];
-const defaultContextMenuContentSize: ContextMenuContentSize = '2';
+const contextMenuContentSizeDefault: ContextMenuContentSize = '2';
 
 const contextMenuContentVariants = ['solid', 'soft'] as const;
 type ContextMenuContentVariant = (typeof contextMenuContentVariants)[number];
-const defaultContextMenuContentVariant: ContextMenuContentVariant = 'solid';
+const contextMenuContentVariantDefault: ContextMenuContentVariant = 'solid';
 
-const defaultContextMenuContentColor: ThemeAccentScale | undefined = undefined;
-const defaultContextMenuContentHighContrast: boolean | undefined = undefined;
+const contextMenuContentColorDefault: ThemeAccentScale | undefined = undefined;
+const contextMenuContentHighContrastDefault: boolean | undefined = undefined;
 
-const defaultContextMenuItemColor: ThemeAccentScale | undefined = undefined;
+const contextMenuItemColorDefault: ThemeAccentScale | undefined = undefined;
 
 export {
   contextMenuContentSizes,
-  defaultContextMenuContentSize,
+  contextMenuContentSizeDefault,
   contextMenuContentVariants,
-  defaultContextMenuContentVariant,
-  defaultContextMenuContentColor,
-  defaultContextMenuContentHighContrast,
-  defaultContextMenuItemColor,
+  contextMenuContentVariantDefault,
+  contextMenuContentColorDefault,
+  contextMenuContentHighContrastDefault,
+  contextMenuItemColorDefault,
 };
 export type { ContextMenuContentSize, ContextMenuContentVariant };

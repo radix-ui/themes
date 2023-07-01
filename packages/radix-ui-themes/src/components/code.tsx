@@ -1,11 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import {
-  defaultCodeSize,
-  defaultCodeVariant,
-  defaultCodeWeight,
-  defaultCodeColor,
-  defaultCodeHighContrast,
+  codeSizeDefault,
+  codeVariantDefault,
+  codeWeightDefault,
+  codeColorDefault,
+  codeHighContrastDefault,
 } from './code.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -25,11 +25,11 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = defaultCodeSize,
-    variant = defaultCodeVariant,
-    weight = defaultCodeWeight,
-    color = defaultCodeColor,
-    highContrast = defaultCodeHighContrast,
+    size = codeSizeDefault,
+    variant = codeVariantDefault,
+    weight = codeWeightDefault,
+    color = codeColorDefault,
+    highContrast = codeHighContrastDefault,
     ...codeProps
   } = marginRest;
   return (

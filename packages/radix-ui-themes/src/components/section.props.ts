@@ -1,6 +1,6 @@
 const sectionSizes = ['1', '2', '3'] as const;
 type SectionSize = (typeof sectionSizes)[number];
-const defaultSectionSize: SectionSize = '3';
+const sectionSizeDefault: SectionSize = '3';
 
-export { sectionSizes, defaultSectionSize };
+export { sectionSizes, sectionSizeDefault };
 export type { SectionSize };

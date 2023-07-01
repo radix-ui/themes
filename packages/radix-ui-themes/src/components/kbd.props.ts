@@ -1,6 +1,6 @@
 const kbdWidths = ['command', 'shift', 'space'] as const;
 type KbdWidth = (typeof kbdWidths)[number];
-const defaultKbdWidth: KbdWidth | undefined = undefined;
+const kbdWidthDefault: KbdWidth | undefined = undefined;
 
-export { kbdWidths, defaultKbdWidth };
+export { kbdWidths, kbdWidthDefault };
 export type { KbdWidth };

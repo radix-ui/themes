@@ -1,6 +1,6 @@
 const tabsListSizes = ['1', '2'] as const;
 type TabsListSize = (typeof tabsListSizes)[number];
-const defaultTabsListSize: TabsListSize = '2';
+const tabsListSizeDefault: TabsListSize = '2';
 
-export { tabsListSizes, defaultTabsListSize };
+export { tabsListSizes, tabsListSizeDefault };
 export type { TabsListSize };

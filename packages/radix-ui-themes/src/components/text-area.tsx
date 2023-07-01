@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import {
-  defaultTextAreaSize,
-  defaultTextAreaVariant,
-  defaultTextAreaColor,
-  defaultTextAreaRadius,
+  textAreaSizeDefault,
+  textAreaVariantDefault,
+  textAreaColorDefault,
+  textAreaRadiusDefault,
 } from './text-area.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -23,10 +23,10 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = defaultTextAreaSize,
-    variant = defaultTextAreaVariant,
-    color = defaultTextAreaColor,
-    radius = defaultTextAreaRadius,
+    size = textAreaSizeDefault,
+    variant = textAreaVariantDefault,
+    color = textAreaColorDefault,
+    radius = textAreaRadiusDefault,
     ...textAreaProps
   } = marginRest;
   return (

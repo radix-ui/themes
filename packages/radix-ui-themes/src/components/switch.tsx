@@ -4,11 +4,11 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import {
-  defaultSwitchSize,
-  defaultSwitchVariant,
-  defaultSwitchColor,
-  defaultSwitchHighContrast,
-  defaultSwitchRadius,
+  switchSizeDefault,
+  switchVariantDefault,
+  switchColorDefault,
+  switchHighContrastDefault,
+  switchRadiusDefault,
 } from './switch.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -31,11 +31,11 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   const {
     className,
     style,
-    size = defaultSwitchSize,
-    variant = defaultSwitchVariant,
-    color = defaultSwitchColor,
-    highContrast = defaultSwitchHighContrast,
-    radius = defaultSwitchRadius,
+    size = switchSizeDefault,
+    variant = switchVariantDefault,
+    color = switchColorDefault,
+    highContrast = switchHighContrastDefault,
+    radius = switchRadiusDefault,
     ...switchProps
   } = marginRest;
   return (

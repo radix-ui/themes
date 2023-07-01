@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { defaultContainerSize } from './container.props';
+import { containerSizeDefault } from './container.props';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 
 import type { ContainerSize } from './container.props';
@@ -12,7 +12,7 @@ interface ContainerProps extends React.ComponentPropsWithoutRef<'div'>, MarginPr
 }
 const Container = React.forwardRef<ContainerElement, ContainerProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, size = defaultContainerSize, ...containerProps } = marginRest;
+  const { className, size = containerSizeDefault, ...containerProps } = marginRest;
   return (
     <div
       {...containerProps}

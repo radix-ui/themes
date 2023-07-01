@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import {
-  defaultBaseButtonSize,
-  defaultBaseButtonVariant,
-  defaultBaseButtonColor,
-  defaultBaseButtonHighContrast,
+  baseButtonSizeDefault,
+  baseButtonVariantDefault,
+  baseButtonColorDefault,
+  baseButtonHighContrastDefault,
   defaultBaseRadius,
 } from './base-button.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
@@ -25,10 +25,10 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = defaultBaseButtonSize,
-    variant = defaultBaseButtonVariant,
-    color = defaultBaseButtonColor,
-    highContrast = defaultBaseButtonHighContrast,
+    size = baseButtonSizeDefault,
+    variant = baseButtonVariantDefault,
+    color = baseButtonColorDefault,
+    highContrast = baseButtonHighContrastDefault,
     radius = defaultBaseRadius,
     ...baseButtonProps
   } = marginRest;

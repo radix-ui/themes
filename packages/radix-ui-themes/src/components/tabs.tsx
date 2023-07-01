@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { defaultTabsListSize } from './tabs.props';
+import { tabsListSizeDefault } from './tabs.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
 import type { TabsListSize } from './tabs.props';
@@ -31,7 +31,7 @@ interface TabsListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimit
   size?: Responsive<TabsListSize>;
 }
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, size = defaultTabsListSize, ...listProps } = props;
+  const { className, size = tabsListSizeDefault, ...listProps } = props;
   return (
     <TabsPrimitive.List
       {...listProps}

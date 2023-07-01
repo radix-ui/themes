@@ -5,11 +5,11 @@ import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import {
-  defaultContextMenuContentSize,
-  defaultContextMenuContentVariant,
-  defaultContextMenuContentColor,
-  defaultContextMenuContentHighContrast,
-  defaultContextMenuItemColor,
+  contextMenuContentSizeDefault,
+  contextMenuContentVariantDefault,
+  contextMenuContentColorDefault,
+  contextMenuContentHighContrastDefault,
+  contextMenuItemColorDefault,
 } from './context-menu.props';
 import { withBreakpoints } from '../helpers';
 import { ThemeConfig, useThemeConfigContext } from '../theme-config';
@@ -52,10 +52,10 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const {
       className,
       children,
-      size = defaultContextMenuContentSize,
-      variant = defaultContextMenuContentVariant,
-      color = defaultContextMenuContentColor,
-      highContrast = defaultContextMenuContentHighContrast,
+      size = contextMenuContentSizeDefault,
+      variant = contextMenuContentVariantDefault,
+      color = contextMenuContentColorDefault,
+      highContrast = contextMenuContentHighContrastDefault,
       container,
       forceMount,
       ...contentProps
@@ -119,7 +119,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
     const {
       className,
       children,
-      color = defaultContextMenuItemColor,
+      color = contextMenuItemColorDefault,
       shortcut,
       ...itemProps
     } = props;
