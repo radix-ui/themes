@@ -7,6 +7,10 @@ import {
 } from './colors';
 import type { Color, GrayScale } from './colors';
 
+const themeModes = ['light', 'dark'] as const;
+type ThemeMode = (typeof themeModes)[number];
+const defaultThemeMode: ThemeMode = 'light';
+
 const groupedColors = [
   { label: 'Regulars', values: [...regularColorScales] as Color[] },
   { label: 'Brights', values: [...brightColorScales] as Color[] },
@@ -30,8 +34,6 @@ const textColorValues = ['auto', 'accent'] as const;
 type TextColorControl = (typeof textColorValues)[number];
 const defaultThemeTextColor: TextColorControl = 'auto';
 
-const defaultThemeDarkMode: boolean = false;
-
 const radiusValues = ['none', 'small', 'medium', 'large', 'full'] as const;
 type Radius = (typeof radiusValues)[number];
 const defaultThemeRadius: Radius = 'medium';
@@ -41,6 +43,8 @@ type Scaling = (typeof scalingValues)[number];
 const defaultThemeScaling: Scaling = '100%';
 
 export {
+  themeModes,
+  defaultThemeMode,
   groupedColors,
   defaultThemeAccentScale,
   groupedGrays,
@@ -49,11 +53,17 @@ export {
   backgroundColorValues,
   textColorValues,
   defaultThemeTextColor,
-  defaultThemeDarkMode,
   radiusValues,
   defaultThemeRadius,
   scalingValues,
   defaultThemeScaling,
 };
 
-export type { GrayScaleControl, BackgroundColorControl, TextColorControl, Radius, Scaling };
+export type {
+  ThemeMode,
+  GrayScaleControl,
+  BackgroundColorControl,
+  TextColorControl,
+  Radius,
+  Scaling,
+};

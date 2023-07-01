@@ -27,9 +27,10 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  //
+  ThemePanel,
 } from '@radix-ui/themes';
 import { ImageCard } from './image-card';
-import { ControlPanel } from '../../components/control-panel';
 import { SnapshotLogo } from '../../components/snapshot-logo';
 import styles from './page.module.css';
 
@@ -37,10 +38,10 @@ export default function Snapshot() {
   return (
     <ThemeConfig
       asChild
+      mode="dark"
       accentScale="grass"
       backgroundColor="gray"
       textColor="accent"
-      darkMode
       radius="small"
       scaling="110%"
     >
@@ -48,7 +49,7 @@ export default function Snapshot() {
         <body className="rui-reset-root">
           <div id="root">
             <Provider>
-              <ControlPanel />
+              <ThemePanel />
 
               <div className={styles.root}>
                 <header>

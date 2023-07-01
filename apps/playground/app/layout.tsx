@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './globals.css';
+import '@radix-ui/themes/dist/index.css';
 
 export const metadata = {
   title: 'Radix Themes playground',

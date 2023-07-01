@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import classNames from 'classnames';
+import { ThemeConfig } from '../theme-config';
 
 interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
 const PopoverRoot = (props: PopoverRootProps) => <PopoverPrimitive.Root {...props} />;
@@ -26,13 +27,15 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
     const { className, forceMount, container, ...contentProps } = props;
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
-        <PopoverPrimitive.Content
-          align="start"
-          sideOffset={8}
-          {...contentProps}
-          ref={forwardedRef}
-          className={classNames('rui-PopperContent', 'rui-PopoverContent', className)}
-        />
+        <ThemeConfig asChild>
+          <PopoverPrimitive.Content
+            align="start"
+            sideOffset={8}
+            {...contentProps}
+            ref={forwardedRef}
+            className={classNames('rui-PopperContent', 'rui-PopoverContent', className)}
+          />
+        </ThemeConfig>
       </PopoverPrimitive.Portal>
     );
   }

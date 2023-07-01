@@ -19,8 +19,9 @@ import {
   Dialog,
   Popover,
   Separator,
+  //
+  ThemePanel,
 } from '@radix-ui/themes';
-import { ControlPanel } from '../../components/control-panel';
 import styles from './page.module.css';
 
 export default function HomeOS() {
@@ -36,7 +37,7 @@ export default function HomeOS() {
         <body className="rui-reset-root">
           <div id="root">
             <Provider>
-              <ControlPanel />
+              <ThemePanel />
 
               <div className={styles.root}>
                 <div

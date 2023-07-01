@@ -1,7 +1,7 @@
 /* import google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Serif+4:ital,wght@1,400;1,600&display=swap');
 
-:root {
+[data-rui-root] {
   --ff-sans: 'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --ff-code: 'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -16,4 +16,12 @@
   --fs-7: calc(28px * var(--scaling, 1));
   --fs-8: calc(35px * var(--scaling, 1));
   --fs-9: calc(60px * var(--scaling, 1));
+}
+
+[data-rui-root] {
+  overflow-wrap: break-word;
+  font-family: var(--ff-sans);
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

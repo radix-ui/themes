@@ -16,6 +16,7 @@
   position: relative;
   box-sizing: border-box;
   outline: none;
+  cursor: default;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;

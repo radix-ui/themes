@@ -1,4 +1,4 @@
-:root {
+[data-rui-root] {
   --space-1: calc(4px * var(--scaling, 1));
   --space-2: calc(8px * var(--scaling, 1));
   --space-3: calc(12px * var(--scaling, 1));

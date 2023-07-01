@@ -1,11 +1,3 @@
-.rui-reset-root {
-  overflow-wrap: break-word;
-  font-family: var(--ff-sans);
-  text-size-adjust: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .rui-reset-a {
   text-decoration: none;
   color: inherit;

@@ -20,9 +20,10 @@ import {
   SelectTrigger,
   SelectContent,
   SelectItem,
+  //
+  ThemePanel,
 } from '@radix-ui/themes';
 import { Pencil1Icon } from '@radix-ui/react-icons';
-import { ControlPanel } from '../../components/control-panel';
 import { users } from './users';
 import styles from './page.module.css';
 
@@ -30,17 +31,17 @@ export default function Demo() {
   return (
     <ThemeConfig
       asChild
+      mode="dark"
       accentScale="mint"
       backgroundColor="gray"
       textColor="accent"
-      darkMode
       radius="large"
       scaling="110%"
     >
       <html lang="en">
         <body className={`rui-reset-root ${styles.body}`}>
           <div id="root">
-            <ControlPanel />
+            <ThemePanel />
 
             {users.map((user) => (
               <React.Fragment key={user.id}>

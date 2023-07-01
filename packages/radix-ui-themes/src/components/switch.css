@@ -42,11 +42,11 @@
 
 @breakpoints {
   .rui-SwitchRoot.size-1 {
-    --root-width: 28px;
+    --root-width: calc(28px * var(--scaling));
     --root-height: var(--space-4);
     --root-padding: 1px;
-    --thumb-size: 14px;
-    --thumb-translate: 12px;
+    --thumb-size: calc(14px * var(--scaling));
+    --thumb-translate: calc(12px * var(--scaling));
   }
   .rui-SwitchRoot.size-2 {
     --root-width: var(--space-7);
@@ -56,7 +56,7 @@
     --thumb-translate: var(--space-4);
   }
   .rui-SwitchRoot.size-3 {
-    --root-width: 56px;
+    --root-width: calc(56px * var(--scaling));
     --root-height: var(--space-6);
     --root-padding: var(--space-1);
     --thumb-size: var(--space-5);

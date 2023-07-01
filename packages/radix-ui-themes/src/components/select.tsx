@@ -5,6 +5,7 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import classNames from 'classnames';
 import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { ThemeConfig, ThemeConfigContext } from '../theme-config';
 import {
   defaultSelectSize,
   defaultSelectTriggerVariant,
@@ -110,27 +111,32 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       ...contentProps
     } = props;
     const { size, radius } = React.useContext(SelectContext);
+    const themeConfigContext = React.useContext(ThemeConfigContext);
+    const resolvedColor = color ?? themeConfigContext?.accentScale;
+    const resolvedRadius = radius ?? themeConfigContext?.radius;
     return (
       <SelectPrimitive.Portal container={container}>
-        <SelectPrimitive.Content
-          data-accent-scale={color}
-          data-radius={radius}
-          sideOffset={4}
-          align="center"
-          {...contentProps}
-          ref={forwardedRef}
-          className={classNames(
-            { 'rui-PopperContent': contentProps.position === 'popper' },
-            'rui-SelectContent',
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`,
-            { highContrast }
-          )}
-        >
-          <SelectPrimitive.Viewport className="rui-SelectViewport">
-            {children}
-          </SelectPrimitive.Viewport>
-        </SelectPrimitive.Content>
+        <ThemeConfig asChild>
+          <SelectPrimitive.Content
+            data-accent-scale={resolvedColor}
+            data-radius={resolvedRadius}
+            sideOffset={4}
+            align="center"
+            {...contentProps}
+            ref={forwardedRef}
+            className={classNames(
+              { 'rui-PopperContent': contentProps.position === 'popper' },
+              'rui-SelectContent',
+              withBreakpoints(size, 'size'),
+              `variant-${variant}`,
+              { highContrast }
+            )}
+          >
+            <SelectPrimitive.Viewport className="rui-SelectViewport">
+              {children}
+            </SelectPrimitive.Viewport>
+          </SelectPrimitive.Content>
+        </ThemeConfig>
       </SelectPrimitive.Portal>
     );
   }

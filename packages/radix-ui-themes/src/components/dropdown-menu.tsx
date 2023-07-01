@@ -12,6 +12,7 @@ import {
   defaultDropdownMenuContentHighContrast,
   defaultDropdownMenuItemColor,
 } from './dropdown-menu.props';
+import { ThemeConfig, ThemeConfigContext } from '../theme-config';
 
 import type { Color, Responsive, PropsWithoutRefOrColor } from '../helpers';
 import type { DropdownMenuContentSize, DropdownMenuContentVariant } from './dropdown-menu.props';
@@ -46,6 +47,7 @@ interface DropdownMenuContentProps
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
+    const themeConfigContext = React.useContext(ThemeConfigContext);
     const {
       className,
       children,
@@ -57,33 +59,36 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       forceMount,
       ...contentProps
     } = props;
+    const resolvedColor = color ?? themeConfigContext?.accentScale;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <DropdownMenuPrimitive.Content
-          data-accent-scale={color}
-          align="start"
-          sideOffset={4}
-          {...contentProps}
-          ref={forwardedRef}
-          className={classNames(
-            'rui-PopperContent',
-            'rui-BaseMenuContent',
-            'rui-DropdownMenuContent',
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`,
-            { highContrast },
-            className
-          )}
-        >
-          <DropdownMenuContentContext.Provider
-            value={React.useMemo(
-              () => ({ size, variant, color, highContrast }),
-              [size, variant, color, highContrast]
+        <ThemeConfig asChild>
+          <DropdownMenuPrimitive.Content
+            data-accent-scale={resolvedColor}
+            align="start"
+            sideOffset={4}
+            {...contentProps}
+            ref={forwardedRef}
+            className={classNames(
+              'rui-PopperContent',
+              'rui-BaseMenuContent',
+              'rui-DropdownMenuContent',
+              withBreakpoints(size, 'size'),
+              `variant-${variant}`,
+              { highContrast },
+              className
             )}
           >
-            {children}
-          </DropdownMenuContentContext.Provider>
-        </DropdownMenuPrimitive.Content>
+            <DropdownMenuContentContext.Provider
+              value={React.useMemo(
+                () => ({ size, variant, color: resolvedColor, highContrast }),
+                [size, variant, resolvedColor, highContrast]
+              )}
+            >
+              {children}
+            </DropdownMenuContentContext.Provider>
+          </DropdownMenuPrimitive.Content>
+        </ThemeConfig>
       </DropdownMenuPrimitive.Portal>
     );
   }
@@ -272,23 +277,25 @@ const DropdownMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
-      <DropdownMenuPrimitive.SubContent
-        data-accent-scale={color}
-        alignOffset={-Number(size) * 4}
-        {...subContentProps}
-        ref={forwardedRef}
-        className={classNames(
-          'rui-PopperContent',
-          'rui-BaseMenuContent',
-          'rui-BaseMenuSubContent',
-          'rui-DropdownMenuContent',
-          'rui-DropdownMenuSubContent',
-          withBreakpoints(size, 'size'),
-          `variant-${variant}`,
-          { highContrast },
-          className
-        )}
-      />
+      <ThemeConfig asChild>
+        <DropdownMenuPrimitive.SubContent
+          data-accent-scale={color}
+          alignOffset={-Number(size) * 4}
+          {...subContentProps}
+          ref={forwardedRef}
+          className={classNames(
+            'rui-PopperContent',
+            'rui-BaseMenuContent',
+            'rui-BaseMenuSubContent',
+            'rui-DropdownMenuContent',
+            'rui-DropdownMenuSubContent',
+            withBreakpoints(size, 'size'),
+            `variant-${variant}`,
+            { highContrast },
+            className
+          )}
+        />
+      </ThemeConfig>
     </DropdownMenuPrimitive.Portal>
   );
 });

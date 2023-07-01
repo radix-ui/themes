@@ -12,6 +12,7 @@ import {
   defaultContextMenuContentHighContrast,
   defaultContextMenuItemColor,
 } from './context-menu.props';
+import { ThemeConfig, ThemeConfigContext } from '../theme-config';
 
 import type { Color, Responsive, PropsWithoutRefOrColor } from '../helpers';
 import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
@@ -46,6 +47,7 @@ interface ContextMenuContentProps
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
+    const themeConfigContext = React.useContext(ThemeConfigContext);
     const {
       className,
       children,
@@ -57,32 +59,35 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       forceMount,
       ...contentProps
     } = props;
+    const resolvedColor = color ?? themeConfigContext?.accentScale;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <ContextMenuPrimitive.Content
-          data-accent-scale={color}
-          alignOffset={-Number(size) * 4}
-          {...contentProps}
-          ref={forwardedRef}
-          className={classNames(
-            'rui-PopperContent',
-            'rui-BaseMenuContent',
-            'rui-ContextMenuContent',
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`,
-            { highContrast },
-            className
-          )}
-        >
-          <ContextMenuContentContext.Provider
-            value={React.useMemo(
-              () => ({ size, variant, color, highContrast }),
-              [size, variant, color, highContrast]
+        <ThemeConfig asChild>
+          <ContextMenuPrimitive.Content
+            data-accent-scale={resolvedColor}
+            alignOffset={-Number(size) * 4}
+            {...contentProps}
+            ref={forwardedRef}
+            className={classNames(
+              'rui-PopperContent',
+              'rui-BaseMenuContent',
+              'rui-ContextMenuContent',
+              withBreakpoints(size, 'size'),
+              `variant-${variant}`,
+              { highContrast },
+              className
             )}
           >
-            {children}
-          </ContextMenuContentContext.Provider>
-        </ContextMenuPrimitive.Content>
+            <ContextMenuContentContext.Provider
+              value={React.useMemo(
+                () => ({ size, variant, color: resolvedColor, highContrast }),
+                [size, variant, resolvedColor, highContrast]
+              )}
+            >
+              {children}
+            </ContextMenuContentContext.Provider>
+          </ContextMenuPrimitive.Content>
+        </ThemeConfig>
       </ContextMenuPrimitive.Portal>
     );
   }
@@ -269,23 +274,25 @@ const ContextMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-      <ContextMenuPrimitive.SubContent
-        data-accent-scale={color}
-        alignOffset={-Number(size) * 4}
-        {...subContentProps}
-        ref={forwardedRef}
-        className={classNames(
-          'rui-PopperContent',
-          'rui-BaseMenuContent',
-          'rui-BaseMenuSubContent',
-          'rui-ContextMenuContent',
-          'rui-ContextMenuSubContent',
-          withBreakpoints(size, 'size'),
-          `variant-${variant}`,
-          { highContrast },
-          className
-        )}
-      />
+      <ThemeConfig asChild>
+        <ContextMenuPrimitive.SubContent
+          data-accent-scale={color}
+          alignOffset={-Number(size) * 4}
+          {...subContentProps}
+          ref={forwardedRef}
+          className={classNames(
+            'rui-PopperContent',
+            'rui-BaseMenuContent',
+            'rui-BaseMenuSubContent',
+            'rui-ContextMenuContent',
+            'rui-ContextMenuSubContent',
+            withBreakpoints(size, 'size'),
+            `variant-${variant}`,
+            { highContrast },
+            className
+          )}
+        />
+      </ThemeConfig>
     </ContextMenuPrimitive.Portal>
   );
 });

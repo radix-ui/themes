@@ -4,6 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { Text } from './text';
+import { ThemeConfig } from '../theme-config';
 
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 interface TooltipProps
@@ -33,17 +34,19 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     <TooltipPrimitive.Root {...rootProps}>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
       <TooltipPrimitive.Portal container={container} forceMount={forceMount}>
-        <TooltipPrimitive.Content
-          sideOffset={4}
-          {...tooltipContentProps}
-          ref={forwardedRef}
-          className={classNames('rui-TooltipContent', { multiline }, className)}
-        >
-          <Text className="rui-TooltipText" size="1">
-            {content}
-          </Text>
-          <TooltipPrimitive.Arrow className="rui-TooltipArrow" />
-        </TooltipPrimitive.Content>
+        <ThemeConfig asChild>
+          <TooltipPrimitive.Content
+            sideOffset={4}
+            {...tooltipContentProps}
+            ref={forwardedRef}
+            className={classNames('rui-TooltipContent', { multiline }, className)}
+          >
+            <Text className="rui-TooltipText" size="1">
+              {content}
+            </Text>
+            <TooltipPrimitive.Arrow className="rui-TooltipArrow" />
+          </TooltipPrimitive.Content>
+        </ThemeConfig>
       </TooltipPrimitive.Portal>
     </TooltipPrimitive.Root>
   );

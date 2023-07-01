@@ -168,8 +168,9 @@ import {
   // helpers:
   groupedColors,
   radiusValues,
+  //
+  ThemePanel,
 } from '@radix-ui/themes';
-import { ControlPanel } from '../../components/control-panel';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
 
@@ -178,15 +179,15 @@ import { RadixLogo } from './radix-logo';
 
 export default function Sink() {
   return (
-    <ThemeConfig asChild backgroundColor="gray">
-      <html lang="en" className={styles.root}>
-        <body>
+    <html lang="en" className={styles.root}>
+      <body>
+        <ThemeConfig asChild backgroundColor="gray">
           <div id="root">
             <Provider
             // dir="rtl"
             >
               {/* <HideCursor /> */}
-              <ControlPanel />
+              <ThemePanel />
 
               <header
                 style={{
@@ -1005,7 +1006,7 @@ export default function Sink() {
                                     25 + Math.round(Math.sin(Math.PI * (step / stepCount)) * 50);
                                   return (
                                     <Slider
-                                      key={variant}
+                                      key={step}
                                       orientation="vertical"
                                       defaultValue={[value]}
                                       size={size}
@@ -3055,39 +3056,95 @@ export default function Sink() {
                   </details>
                 </DocsSection>
 
-                <PlaygroundSection />
+                <DocsSection title="Playground">
+                  <Text mb="5">
+                    In this section, I am just throwing together some of the components to get a
+                    sense of how harmonious they are.
+                  </Text>
+                  <Flex gap="9">
+                    {textFieldSizes.map((size) => (
+                      <PlaygroundForm
+                        key={size}
+                        size={size}
+                        style={{ width: (Number(size) + 1) * 100 }}
+                      />
+                    ))}
+                  </Flex>
+                </DocsSection>
 
-                <DocsSection title="Mode testing">
-                  <Grid columns="3" mx="-6">
-                    <PlaygroundModeTest title="Global mode" />
+                <DocsSection title="Nested modes test">
+                  <SampleNestedUI title="Global mode">
+                    <ThemeConfig asChild mode="invert">
+                      <SampleNestedUI title="Inverted">
+                        <ThemeConfig asChild mode="dark">
+                          <SampleNestedUI title="Always dark">
+                            <ThemeConfig asChild mode="light">
+                              <SampleNestedUI title="Always light" />
+                            </ThemeConfig>
+                          </SampleNestedUI>
+                        </ThemeConfig>
+                      </SampleNestedUI>
+                    </ThemeConfig>
+                  </SampleNestedUI>
+                </DocsSection>
 
-                    <Grid
-                      columns="2"
-                      className="dark-theme"
-                      style={{
-                        gridColumn: '2 / span 2',
-                        backgroundColor: 'var(--color-background)',
-                      }}
+                <DocsSection title="Nested colors test">
+                  <SampleNestedUI title="Global color">
+                    <ThemeConfig asChild accentScale="mint">
+                      <SampleNestedUI title="Always mint">
+                        <ThemeConfig asChild accentScale="amber">
+                          <SampleNestedUI title="Always amber">
+                            <ThemeConfig asChild accentScale="tomato">
+                              <SampleNestedUI title="Always tomato" />
+                            </ThemeConfig>
+                          </SampleNestedUI>
+                        </ThemeConfig>
+                      </SampleNestedUI>
+                    </ThemeConfig>
+                  </SampleNestedUI>
+                </DocsSection>
+
+                <DocsSection title="Mixed nested themes test">
+                  <SampleNestedUI title="Global theme">
+                    <ThemeConfig
+                      asChild
+                      accentScale="mint"
+                      mode="invert"
+                      radius="none"
+                      scaling="90%"
                     >
-                      <PlaygroundModeTest title="Always dark mode" />
-
-                      <Box
-                        className="light-theme"
-                        style={{
-                          backgroundColor: 'var(--color-background)',
-                        }}
-                      >
-                        <PlaygroundModeTest title="Always light mode" />
-                      </Box>
-                    </Grid>
-                  </Grid>
+                      <SampleNestedUI title="Mint, inverted mode, no radius, 90%">
+                        <ThemeConfig
+                          asChild
+                          accentScale="amber"
+                          backgroundColor="auto"
+                          textColor="auto"
+                          mode="invert"
+                          radius="full"
+                          scaling="110%"
+                        >
+                          <SampleNestedUI title="Amber, inverted mode, full radius, 110%">
+                            <ThemeConfig
+                              asChild
+                              accentScale="tomato"
+                              mode="invert"
+                              radius="large"
+                              scaling="100%"
+                            >
+                              <SampleNestedUI title="Tomato, inverted mode, large radius, 100%" />
+                            </ThemeConfig>
+                          </SampleNestedUI>
+                        </ThemeConfig>
+                      </SampleNestedUI>
+                    </ThemeConfig>
+                  </SampleNestedUI>
                 </DocsSection>
               </main>
             </Provider>
           </div>
-        </body>
-      </html>
-    </ThemeConfig>
+        </ThemeConfig>
+      </body>
+    </html>
   );
 }
 
@@ -3312,30 +3369,39 @@ function CustomUserIcon() {
   );
 }
 
-function PlaygroundSection() {
+const SampleNestedUI = React.forwardRef<
+  React.ElementRef<typeof Flex>,
+  React.ComponentPropsWithoutRef<typeof Flex>
+>(({ children, title, ...props }, forwardedRef) => {
   return (
-    <DocsSection title="Playground">
-      <Text mb="5">
-        In this section, I am just throwing together some of the components to get a sense of how
-        harmonious they are.
-      </Text>
-      <Flex gap="9">
-        {textFieldSizes.map((size) => (
-          <PlaygroundForm key={size} size={size} style={{ width: (Number(size) + 1) * 100 }} />
-        ))}
-      </Flex>
-    </DocsSection>
-  );
-}
+    <Flex
+      p="5"
+      gap="9"
+      {...props}
+      ref={forwardedRef}
+      style={{
+        boxShadow: '0 0 0 1px var(--gray-a6)',
+        borderRadius: 'min(var(--br-2), var(--br-5-raw)',
+      }}
+    >
+      <div>
+        <Heading size="2" trim="start" mb="3">
+          {title}
+        </Heading>
+        <Flex direction="column" gap="3">
+          <Grid gap="1">
+            <Text weight="bold">Feedback</Text>
+            <TextArea placeholder="Your feedback" />
+          </Grid>
+          <Button>Submit</Button>
+        </Flex>
+      </div>
 
-function PlaygroundModeTest({ title = '' }) {
-  return (
-    <Box p="6">
-      <Heading mb="5">{title}</Heading>
-      <PlaygroundForm size="2" />
-    </Box>
+      {children}
+    </Flex>
   );
-}
+});
+SampleNestedUI.displayName = 'SampleNestedUI';
 
 function PlaygroundForm({
   size,

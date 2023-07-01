@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ThemeConfig, Provider, Avatar, Flex } from '@radix-ui/themes';
-import { ControlPanel } from '../../components/control-panel';
+import { ThemeConfig, Provider, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
 
 export default function Test() {
   return (
@@ -9,7 +8,7 @@ export default function Test() {
         <body className="rui-reset-root">
           <div id="root">
             <Provider>
-              <ControlPanel />
+              <ThemePanel />
               <Flex align="center" gap="3">
                 <Avatar src="./api/avatar" fallback="BG" />
 
