@@ -5,27 +5,39 @@ import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { gray as radixColorsGray, grayDark as radixColorsGrayDark } from '@radix-ui/colors';
 import {
   Box,
+  Button,
   Checkbox,
   Code,
   Em,
   Flex,
   Grid,
   IconButton,
+  Heading,
   Popover,
   RadioGroup,
+  ScrollArea,
   Select,
   Separator,
   Slider,
   Strong,
   Text,
   // helpers
+  themeModeDefault,
   themeAccentScalesGrouped,
+  themeAccentScaleDefault,
   themeGrayScalesGrouped,
+  themeGrayScaleDefault,
   getMatchingGrayScale,
   themeBackgroundColors,
+  themeBackgroundColorDefault,
   themeTextColors,
+  themeTextColorDefault,
   themeRadii,
+  themeRadiusDefault,
   themeScalings,
+  themeScalingDefault,
+  Kbd,
+  Tooltip,
 } from './index';
 import { useThemeConfigContext } from './theme-config';
 
@@ -38,17 +50,17 @@ import type {
 } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
-  defaultVisible?: boolean;
+  initiallyHidden?: boolean;
 }
 const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
-  ({ defaultVisible, ...props }, forwardedRef) => {
+  ({ initiallyHidden, ...props }, forwardedRef) => {
     const [mounted, setMounted] = React.useState(false);
     const [visible, setVisible] = React.useState(false);
 
     React.useLayoutEffect(() => {
       setMounted(true);
-      setTimeout(() => setVisible(defaultVisible ?? false), 0);
-    }, [defaultVisible]);
+      setTimeout(() => setVisible(!initiallyHidden ? true : false), 0);
+    }, [initiallyHidden]);
 
     return mounted ? (
       <ThemePanelImpl
@@ -95,7 +107,28 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const autoMatchedGray = getMatchingGrayScale(accentScale);
     const resolvedGrayScale = grayScale === 'auto' ? autoMatchedGray : grayScale;
 
-    // quickly show/hide using cmd+c
+    const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
+    async function handleCopyThemeConfig() {
+      const themeConfig = {
+        mode: { value: mode, default: themeModeDefault },
+        accentScale: { value: accentScale, default: themeAccentScaleDefault },
+        grayScale: { value: grayScale, default: themeGrayScaleDefault },
+        backgroundColor: { value: backgroundColor, default: themeBackgroundColorDefault },
+        textColor: { value: textColor, default: themeTextColorDefault },
+        radius: { value: radius, default: themeRadiusDefault },
+        scaling: { value: scaling, default: themeScalingDefault },
+      };
+      const props = Object.keys(themeConfig)
+        .filter((key) => themeConfig[key].value !== themeConfig[key].default)
+        .map((key) => `${key}="${themeConfig[key].value}"`)
+        .join(' ');
+      setCopyState('copying');
+      await navigator.clipboard.writeText(props);
+      setCopyState('copied');
+      setTimeout(() => setCopyState('idle'), 2000);
+    }
+
+    // quickly show/hide using ⌘C
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
         const isCmdC =
@@ -121,8 +154,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     }, [mode, onModeChange]);
 
     return (
-      <Box
-        p="5"
+      <Flex
+        direction="column"
         position="fixed"
         top="0"
         right="0"
@@ -135,6 +168,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         style={{
           zIndex: 9999,
           overflow: 'hidden',
+          height: 'calc(100vh - var(--space-4) - var(--space-4))',
           borderRadius: 'min(var(--br-4), var(--panel-max-br))',
           backgroundColor: 'var(--color-panel)',
           boxShadow: '0 0 0 0.5px var(--gray-a6), var(--shadow-3)',
@@ -147,302 +181,328 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           ...props.style,
         }}
       >
-        <Box m="-5" mb="0" p="5" style={{ backgroundColor: 'var(--black-a2)' }}>
-          <Text size="4" trim="both">
-            Customize{' '}
-            <Text size="1" color="gray" asChild>
-              <span>(⌘C)</span>
+        <Flex
+          p="3"
+          align="baseline"
+          justify="between"
+          shrink="0"
+          style={{ backgroundColor: 'var(--black-a2)', boxShadow: '0 0 0 1px var(--gray-6)' }}
+        >
+          <Heading size="4">Configure theme</Heading>
+          <Kbd>⌘C</Kbd>
+        </Flex>
+
+        <ScrollArea>
+          <Box grow="1" p="5">
+            <Text size="2" weight="bold" mb="3">
+              Color
             </Text>
-          </Text>
-        </Box>
 
-        <Separator size="4" mb="4" mx="-5" style={{ width: 'auto' }} />
-        <Text size="2" weight="bold" mb="3">
-          Color
-        </Text>
-
-        <Flex direction="column" gap="1" mb="3">
-          <Label htmlFor="accent-scale">Accent scale</Label>
-          <Select.Root
-            value={accentScale}
-            onValueChange={(value) => onAccentScaleChange(value as ThemeAccentScale)}
-          >
-            <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
-            <Select.Content variant="soft" color="gray">
-              {themeAccentScalesGrouped.map(({ label, values }, index) => (
-                <React.Fragment key={label}>
-                  {index > 0 ? <Select.Separator /> : null}
-                  <Select.Group>
-                    {label ? <Select.Label>{label}</Select.Label> : null}
-                    {values.map((color) => (
-                      <Select.Item key={color} value={color}>
-                        <Flex align="center" gap="2">
-                          <span
-                            data-accent-scale={color}
-                            style={{
-                              display: 'inline-block',
-                              width: 'var(--space-2)',
-                              height: 'var(--space-2)',
-                              borderRadius: '100%',
-                              backgroundColor: 'var(--accent-9)',
-                            }}
-                          />
-                          <Flex align="baseline" gap="1">
-                            {color}
-                            {color === 'gray' && !['auto', 'gray'].includes(grayScale) ? (
-                              <Text size="2" color="gray" asChild>
-                                <Em> ({grayScale})</Em>
-                              </Text>
-                            ) : null}
-                          </Flex>
-                        </Flex>
-                      </Select.Item>
-                    ))}
-                  </Select.Group>
-                </React.Fragment>
-              ))}
-            </Select.Content>
-          </Select.Root>
-        </Flex>
-
-        <Flex direction="column" gap="1" mb="3">
-          <Label htmlFor="gray-scale">Gray scale</Label>
-          <Select.Root
-            value={grayScale}
-            onValueChange={(value) => onGrayScaleChange(value as ThemeGrayScale)}
-          >
-            <Select.Trigger id="gray-scale" variant="surface" color="gray" highContrast />
-            <Select.Content variant="soft" color="gray">
-              {themeGrayScalesGrouped.map(({ label, values }, index) => (
-                <React.Fragment key={label}>
-                  {index > 0 ? <Select.Separator /> : null}
-                  <Select.Group>
-                    <Select.Label>{label}</Select.Label>
-                    {values.map((gray) => (
-                      <Select.Item key={gray} value={gray}>
-                        <Flex align="center" gap="2">
-                          <span
-                            style={{
-                              display: 'inline-block',
-                              width: 'var(--space-2)',
-                              height: 'var(--space-2)',
-                              borderRadius: '100%',
-                              backgroundColor:
-                                gray === 'auto'
-                                  ? `var(--${autoMatchedGray}-9)`
-                                  : gray === 'gray'
-                                  ? pureGray9
-                                  : `var(--${gray}-9)`,
-                            }}
-                          />
-                          <Flex align="baseline" gap="1">
-                            {gray}
-                            {gray === 'auto' ? (
-                              <Text size="2" color="gray" asChild>
-                                <Em> ({autoMatchedGray})</Em>
-                              </Text>
-                            ) : null}
-                          </Flex>
-                        </Flex>
-                      </Select.Item>
-                    ))}
-                  </Select.Group>
-                </React.Fragment>
-              ))}
-            </Select.Content>
-          </Select.Root>
-        </Flex>
-
-        <Grid columns="2" gap="5" mb="3" align="center">
-          <Flex direction="column" gap="1">
-            <Flex asChild gap="1" align="center">
-              <Label>
-                Background
-                <Popover.Root>
-                  <Popover.Trigger>
-                    <IconButton
-                      size="1"
-                      variant="ghost"
-                      radius="full"
-                      aria-label="More information about background color options"
-                    >
-                      <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
-                    </IconButton>
-                  </Popover.Trigger>
-                  <Popover.Content side="top" align="center" collisionPadding={8}>
-                    <Box p="4" style={{ width: 340 }}>
-                      <Text size="2" color="gray" mb="3">
-                        Background color
-                      </Text>
-                      <DescriptionList.Root>
-                        <DescriptionList.Term>
-                          <Code size="3">&quot;auto&quot;</Code>
-                        </DescriptionList.Term>
-                        <DescriptionList.Details>
-                          Chosing this option will set the background to <Strong>White</Strong> in
-                          light mode and <Strong>Gray 1</Strong>
-                          <Text size="2" color="gray" asChild>
-                            <Em> ({resolvedGrayScale} 1)</Em>
-                          </Text>{' '}
-                          in dark mode.
-                        </DescriptionList.Details>
-                        <DescriptionList.Term>
-                          <Code size="3">&quot;gray&quot;</Code>
-                        </DescriptionList.Term>
-                        <DescriptionList.Details mb="0">
-                          Chosing this option will set the background to <Strong>Gray 1</Strong>
-                          <Text size="2" color="gray" asChild>
-                            <Em> ({resolvedGrayScale} 1)</Em>
-                          </Text>{' '}
-                          for both light and dark modes.
-                        </DescriptionList.Details>
-                      </DescriptionList.Root>
-                    </Box>
-                  </Popover.Content>
-                </Popover.Root>
-              </Label>
+            <Flex direction="column" gap="1" mb="3">
+              <Label htmlFor="accent-scale">Accent scale</Label>
+              <Select.Root
+                value={accentScale}
+                onValueChange={(value) => onAccentScaleChange(value as ThemeAccentScale)}
+              >
+                <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
+                <Select.Content variant="soft" color="gray">
+                  {themeAccentScalesGrouped.map(({ label, values }, index) => (
+                    <React.Fragment key={label}>
+                      {index > 0 ? <Select.Separator /> : null}
+                      <Select.Group>
+                        {label ? <Select.Label>{label}</Select.Label> : null}
+                        {values.map((color) => (
+                          <Select.Item key={color} value={color}>
+                            <Flex align="center" gap="2">
+                              <span
+                                data-accent-scale={color}
+                                style={{
+                                  display: 'inline-block',
+                                  width: 'var(--space-2)',
+                                  height: 'var(--space-2)',
+                                  borderRadius: '100%',
+                                  backgroundColor: 'var(--accent-9)',
+                                }}
+                              />
+                              <Flex align="baseline" gap="1">
+                                {color}
+                                {color === 'gray' && !['auto', 'gray'].includes(grayScale) ? (
+                                  <Text size="2" color="gray" asChild>
+                                    <Em> ({grayScale})</Em>
+                                  </Text>
+                                ) : null}
+                              </Flex>
+                            </Flex>
+                          </Select.Item>
+                        ))}
+                      </Select.Group>
+                    </React.Fragment>
+                  ))}
+                </Select.Content>
+              </Select.Root>
             </Flex>
-            <RadioGroup.Root
-              value={backgroundColor}
-              onValueChange={(value: ThemeBackgroundColor) => onBackgroundColorChange(value)}
-            >
-              <Flex direction="column" gap="1">
-                {themeBackgroundColors.map((value) => (
-                  <Text key={value} size="2" asChild>
-                    <label>
-                      <RadioGroup.Item value={value} mr="2" />
-                      {value}
-                    </label>
-                  </Text>
-                ))}
-              </Flex>
-            </RadioGroup.Root>
-          </Flex>
 
-          <Flex direction="column" gap="1">
-            <Flex asChild gap="1" align="center">
-              <Label>
-                Text
-                <Popover.Root>
-                  <Popover.Trigger>
-                    <IconButton
-                      size="1"
-                      variant="ghost"
-                      radius="full"
-                      aria-label="More information about text color options"
-                    >
-                      <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
-                    </IconButton>
-                  </Popover.Trigger>
-                  <Popover.Content side="top" align="center" collisionPadding={8}>
-                    <Box p="4" style={{ width: 320 }}>
-                      <Text size="2" color="gray" mb="3">
-                        Text color
-                      </Text>
-                      <DescriptionList.Root>
-                        <DescriptionList.Term>
-                          <Code size="3">&quot;auto&quot;</Code>
-                        </DescriptionList.Term>
-                        <DescriptionList.Details>
-                          Chosing this option will set the text to <Strong>Gray 12</Strong>
-                          <Text size="2" color="gray" asChild>
-                            <Em> ({resolvedGrayScale} 12)</Em>
-                          </Text>{' '}
-                          for both light and dark modes.
-                        </DescriptionList.Details>
-                        <DescriptionList.Term>
-                          <Code size="3">&quot;accent&quot;</Code>
-                        </DescriptionList.Term>
-                        <DescriptionList.Details mb="0">
-                          Chosing this option will set the background to <Strong>Accent 12</Strong>
-                          <Text size="2" color="gray" asChild>
-                            <Em> ({accentScale} 12)</Em>
-                          </Text>{' '}
-                          for both light and dark modes.
-                        </DescriptionList.Details>
-                      </DescriptionList.Root>
-                    </Box>
-                  </Popover.Content>
-                </Popover.Root>
-              </Label>
+            <Flex direction="column" gap="1" mb="3">
+              <Label htmlFor="gray-scale">Gray scale</Label>
+              <Select.Root
+                value={grayScale}
+                onValueChange={(value) => onGrayScaleChange(value as ThemeGrayScale)}
+              >
+                <Select.Trigger id="gray-scale" variant="surface" color="gray" highContrast />
+                <Select.Content variant="soft" color="gray">
+                  {themeGrayScalesGrouped.map(({ label, values }, index) => (
+                    <React.Fragment key={label}>
+                      {index > 0 ? <Select.Separator /> : null}
+                      <Select.Group>
+                        <Select.Label>{label}</Select.Label>
+                        {values.map((gray) => (
+                          <Select.Item key={gray} value={gray}>
+                            <Flex align="center" gap="2">
+                              <span
+                                style={{
+                                  display: 'inline-block',
+                                  width: 'var(--space-2)',
+                                  height: 'var(--space-2)',
+                                  borderRadius: '100%',
+                                  backgroundColor:
+                                    gray === 'auto'
+                                      ? `var(--${autoMatchedGray}-9)`
+                                      : gray === 'gray'
+                                      ? pureGray9
+                                      : `var(--${gray}-9)`,
+                                }}
+                              />
+                              <Flex align="baseline" gap="1">
+                                {gray}
+                                {gray === 'auto' ? (
+                                  <Text size="2" color="gray" asChild>
+                                    <Em> ({autoMatchedGray})</Em>
+                                  </Text>
+                                ) : null}
+                              </Flex>
+                            </Flex>
+                          </Select.Item>
+                        ))}
+                      </Select.Group>
+                    </React.Fragment>
+                  ))}
+                </Select.Content>
+              </Select.Root>
             </Flex>
-            <RadioGroup.Root
-              value={textColor}
-              onValueChange={(value: ThemeTextColor) => onTextColorChange(value)}
-            >
-              <Flex direction="column" gap="1">
-                {themeTextColors.map((value) => (
-                  <Text key={value} size="2" asChild>
-                    <label>
-                      <RadioGroup.Item value={value} mr="2" />
-                      {value}
-                    </label>
-                  </Text>
-                ))}
-              </Flex>
-            </RadioGroup.Root>
-          </Flex>
 
-          <Label htmlFor="darkMode">Dark mode</Label>
-          <Box>
-            <label htmlFor="darkMode">
-              <Checkbox
-                id="darkMode"
-                checked={mode === 'dark'}
-                onCheckedChange={(value) => onModeChange(value === true ? 'dark' : 'light')}
-                mr="2"
+            <Grid columns="2" gap="5" mb="3" align="center">
+              <Flex direction="column" gap="1">
+                <Flex asChild gap="1" align="center">
+                  <Label>
+                    Background
+                    <Popover.Root>
+                      <Popover.Trigger>
+                        <IconButton
+                          size="1"
+                          variant="ghost"
+                          radius="full"
+                          aria-label="More information about background color options"
+                        >
+                          <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
+                        </IconButton>
+                      </Popover.Trigger>
+                      <Popover.Content side="top" align="center" collisionPadding={8}>
+                        <Box p="4" style={{ width: 340 }}>
+                          <Text size="2" color="gray" mb="3">
+                            Background color
+                          </Text>
+                          <DescriptionList.Root>
+                            <DescriptionList.Term>
+                              <Code size="3">&quot;auto&quot;</Code>
+                            </DescriptionList.Term>
+                            <DescriptionList.Details>
+                              Chosing this option will set the background to <Strong>White</Strong>{' '}
+                              in light mode and <Strong>Gray 1</Strong>
+                              <Text size="2" color="gray" asChild>
+                                <Em> ({resolvedGrayScale} 1)</Em>
+                              </Text>{' '}
+                              in dark mode.
+                            </DescriptionList.Details>
+                            <DescriptionList.Term>
+                              <Code size="3">&quot;gray&quot;</Code>
+                            </DescriptionList.Term>
+                            <DescriptionList.Details mb="0">
+                              Chosing this option will set the background to <Strong>Gray 1</Strong>
+                              <Text size="2" color="gray" asChild>
+                                <Em> ({resolvedGrayScale} 1)</Em>
+                              </Text>{' '}
+                              for both light and dark modes.
+                            </DescriptionList.Details>
+                          </DescriptionList.Root>
+                        </Box>
+                      </Popover.Content>
+                    </Popover.Root>
+                  </Label>
+                </Flex>
+                <RadioGroup.Root
+                  value={backgroundColor}
+                  onValueChange={(value: ThemeBackgroundColor) => onBackgroundColorChange(value)}
+                >
+                  <Flex direction="column" gap="1">
+                    {themeBackgroundColors.map((value) => (
+                      <Text key={value} size="2" asChild>
+                        <label>
+                          <RadioGroup.Item value={value} mr="2" />
+                          {value}
+                        </label>
+                      </Text>
+                    ))}
+                  </Flex>
+                </RadioGroup.Root>
+              </Flex>
+
+              <Flex direction="column" gap="1">
+                <Flex asChild gap="1" align="center">
+                  <Label>
+                    Text
+                    <Popover.Root>
+                      <Popover.Trigger>
+                        <IconButton
+                          size="1"
+                          variant="ghost"
+                          radius="full"
+                          aria-label="More information about text color options"
+                        >
+                          <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
+                        </IconButton>
+                      </Popover.Trigger>
+                      <Popover.Content side="top" align="center" collisionPadding={8}>
+                        <Box p="4" style={{ width: 320 }}>
+                          <Text size="2" color="gray" mb="3">
+                            Text color
+                          </Text>
+                          <DescriptionList.Root>
+                            <DescriptionList.Term>
+                              <Code size="3">&quot;auto&quot;</Code>
+                            </DescriptionList.Term>
+                            <DescriptionList.Details>
+                              Chosing this option will set the text to <Strong>Gray 12</Strong>
+                              <Text size="2" color="gray" asChild>
+                                <Em> ({resolvedGrayScale} 12)</Em>
+                              </Text>{' '}
+                              for both light and dark modes.
+                            </DescriptionList.Details>
+                            <DescriptionList.Term>
+                              <Code size="3">&quot;accent&quot;</Code>
+                            </DescriptionList.Term>
+                            <DescriptionList.Details mb="0">
+                              Chosing this option will set the background to{' '}
+                              <Strong>Accent 12</Strong>
+                              <Text size="2" color="gray" asChild>
+                                <Em> ({accentScale} 12)</Em>
+                              </Text>{' '}
+                              for both light and dark modes.
+                            </DescriptionList.Details>
+                          </DescriptionList.Root>
+                        </Box>
+                      </Popover.Content>
+                    </Popover.Root>
+                  </Label>
+                </Flex>
+                <RadioGroup.Root
+                  value={textColor}
+                  onValueChange={(value: ThemeTextColor) => onTextColorChange(value)}
+                >
+                  <Flex direction="column" gap="1">
+                    {themeTextColors.map((value) => (
+                      <Text key={value} size="2" asChild>
+                        <label>
+                          <RadioGroup.Item value={value} mr="2" />
+                          {value}
+                        </label>
+                      </Text>
+                    ))}
+                  </Flex>
+                </RadioGroup.Root>
+              </Flex>
+
+              <Label htmlFor="darkMode">Dark mode</Label>
+              <Flex asChild align="center">
+                <label htmlFor="darkMode">
+                  <Checkbox
+                    id="darkMode"
+                    checked={mode === 'dark'}
+                    onCheckedChange={(value) => onModeChange(value === true ? 'dark' : 'light')}
+                    mr="2"
+                  />
+                  <Kbd>⌘D</Kbd>
+                </label>
+              </Flex>
+            </Grid>
+
+            <Separator size="4" mt="4" mb="5" mx="-5" style={{ width: 'auto' }} />
+            <Text size="2" weight="bold" mb="3">
+              Style
+            </Text>
+
+            <Flex direction="column" gap="1" mb="3">
+              <Label htmlFor="radius">Radius › {radius}</Label>
+              {/* <Select.Root value={radius} onValueChange={(value) => setRadius(value as ThemeRadius)}>
+								<Select.Trigger id="radius" variant="surface" color="gray" highContrast />
+								<Select.Content variant="soft" color="gray">
+									{themeRadii.map((value) => (
+										<Select.Item key={value} value={value}>
+											{value}
+										</Select.Item>
+									))}
+								</Select.Content>
+							</Select.Root> */}
+              <Slider
+                id="radius"
+                value={[themeRadii.indexOf(radius)]}
+                onValueChange={([value]) => onRadiusChange(themeRadii[value])}
+                min={0}
+                max={themeRadii.length - 1}
+                step={1}
               />
-              <Text size="2" asChild>
-                <span>⌘D</span>
-              </Text>
-            </label>
+            </Flex>
+
+            <Flex direction="column" gap="1">
+              <Label htmlFor="scaling">Scaling</Label>
+              <Select.Root
+                value={scaling}
+                onValueChange={(value) => onScalingChange(value as ThemeScaling)}
+              >
+                <Select.Trigger id="scaling" variant="surface" color="gray" highContrast />
+                <Select.Content variant="soft" color="gray">
+                  {themeScalings.map((value) => (
+                    <Select.Item key={value} value={value}>
+                      {value}
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Root>
+            </Flex>
+            <Separator size="4" mt="4" mb="5" mx="-5" style={{ width: 'auto' }} />
           </Box>
-        </Grid>
+        </ScrollArea>
 
-        <Separator size="4" my="4" mx="-5" style={{ width: 'auto' }} />
-        <Text size="2" weight="bold" mb="3">
-          Style
-        </Text>
-
-        <Flex direction="column" gap="1" mb="3">
-          <Label htmlFor="radius">ThemeRadius › {radius}</Label>
-          {/* <Select.Root value={radius} onValueChange={(value) => setRadius(value as ThemeRadius)}>
-          <Select.Trigger id="radius" variant="surface" color="gray" highContrast />
-          <Select.Content variant="soft" color="gray">
-            {themeRadii.map((value) => (
-              <Select.Item key={value} value={value}>
-                {value}
-              </Select.Item>
-            ))}
-          </Select.Content>
-        </Select.Root> */}
-          <Slider
-            id="radius"
-            value={[themeRadii.indexOf(radius)]}
-            onValueChange={([value]) => onRadiusChange(themeRadii[value])}
-            min={0}
-            max={themeRadii.length - 1}
-            step={1}
-          />
-        </Flex>
-
-        <Flex direction="column" gap="1">
-          <Label htmlFor="scaling">ThemeScaling</Label>
-          <Select.Root
-            value={scaling}
-            onValueChange={(value) => onScalingChange(value as ThemeScaling)}
+        <Box p="3" shrink="0" style={{ borderTop: '1px solid var(--gray-6)' }}>
+          <Tooltip
+            content="Copy props, then paste them on your `ThemeConfig`"
+            multiline
+            style={{ maxWidth: 170 }}
           >
-            <Select.Trigger id="scaling" variant="surface" color="gray" highContrast />
-            <Select.Content variant="soft" color="gray">
-              {themeScalings.map((value) => (
-                <Select.Item key={value} value={value}>
-                  {value}
-                </Select.Item>
-              ))}
-            </Select.Content>
-          </Select.Root>
-        </Flex>
-      </Box>
+            <Button
+              style={{ width: '100%' }}
+              variant="soft"
+              color="gray"
+              onClick={handleCopyThemeConfig}
+            >
+              {copyState === 'idle'
+                ? 'Copy theme config'
+                : copyState === 'copying'
+                ? 'Copying...'
+                : 'Copied!'}
+            </Button>
+          </Tooltip>
+        </Box>
+      </Flex>
     );
   }
 );
