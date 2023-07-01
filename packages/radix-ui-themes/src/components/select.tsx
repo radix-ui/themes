@@ -9,6 +9,7 @@ import {
   selectTriggerVariantDefault,
   selectTriggerColorDefault,
   selectTriggerHighContrastDefault,
+  selectContentModeDefault,
   selectContentVariantDefault,
   selectContentColorDefault,
   selectContentHighContrastDefault,
@@ -19,7 +20,7 @@ import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
 import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeMode, ThemeAccentScale, ThemeRadius } from '../theme';
 
 type SelectContextValue = { size?: Responsive<SelectSize>; radius?: ThemeRadius };
 const SelectContext = React.createContext<SelectContextValue>({});
@@ -93,6 +94,7 @@ SelectTrigger.displayName = 'SelectTrigger';
 
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
 interface SelectContentProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Content> {
+  mode?: ThemeMode;
   size?: Responsive<SelectSize>;
   variant?: SelectContentVariant;
   color?: ThemeAccentScale;
@@ -104,6 +106,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
     const {
       className,
       children,
+      mode = selectContentModeDefault,
       variant = selectContentVariantDefault,
       highContrast = selectContentHighContrastDefault,
       color = selectContentColorDefault,
@@ -116,7 +119,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
     const resolvedRadius = radius ?? themeConfigContext.radius;
     return (
       <SelectPrimitive.Portal container={container}>
-        <ThemeConfig asChild>
+        <ThemeConfig asChild mode={mode}>
           <SelectPrimitive.Content
             data-accent-scale={resolvedColor}
             data-radius={resolvedRadius}
