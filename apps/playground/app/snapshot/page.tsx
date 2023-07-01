@@ -46,7 +46,7 @@ export default function Snapshot() {
       scaling="110%"
     >
       <html lang="en">
-        <body className="rui-reset-root">
+        <body>
           <div id="root">
             <Provider>
               <ThemePanel />

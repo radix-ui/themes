@@ -5,7 +5,7 @@ export default function Test() {
   return (
     <ThemeConfig asChild accentScale="purple" radius="full">
       <html lang="en">
-        <body className="rui-reset-root">
+        <body>
           <div id="root">
             <Provider>
               <ThemePanel />

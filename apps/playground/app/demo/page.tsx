@@ -39,7 +39,7 @@ export default function Demo() {
       scaling="110%"
     >
       <html lang="en">
-        <body className={`rui-reset-root ${styles.body}`}>
+        <body className={styles.body}>
           <div id="root">
             <ThemePanel />
 

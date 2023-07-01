@@ -34,7 +34,7 @@ export default function HomeOS() {
   return (
     <ThemeConfig asChild accentScale="orange" backgroundColor="gray" radius="large">
       <html lang="en">
-        <body className="rui-reset-root">
+        <body>
           <div id="root">
             <Provider>
               <ThemePanel />
