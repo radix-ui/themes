@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.0.13
+
+**Warning!** This release contains lots of breaking changes.
+
+- `AlertDialog`, `Dialog`, `ContextMenu`, `DropdownMenu`, `HoverCard`, `Popover`, `Select`: Add new `mode` prop to `Content` part
+- General:
+  - [**Breaking**] `ThemeConfig` is now mandatory
+  - All tokens are now scoped to the root `ThemeConfig` component
+  - All config values are now explicitly set in the DOM (no more implied defaults in CSS).
+  - [**Breaking**] This also removed the need for the intermediary `--natural-gray` scale.
+  - [**Breaking**] Default prop value names have been renamed throughout (i.e. `defaultAvatarSize` => `avatarSizeDefault`)
+- `ThemeConfig`:
+  - [**Breaking**] `darkMode` boolean prop was replaced with new `mode` enum prop (values: `light` | `dark` | `invert`)
+  - You can now nest `ThemeConfig` components:
+    - Theme config inherits from the parent config by default. New values can be passed to override.
+    - This can be used to switch sections from light to dark mode (or automatically with `invert`)
+    - It can also be used to make different sections use different accent scales, or any other config value
+- New `ThemePanel` component to tweak the theme option live
+  - Drop it into your own app anywhere under the root `ThemeConfig`
+
 ## 0.0.12
 
 - `AlertDialog`, `Dialog`, `ContextMenu`, `DropdownMenu`, `HoverCard`, `Popover`, `Select`, `Tooltip`: Expose portal `container` prop
