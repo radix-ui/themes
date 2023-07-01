@@ -4,7 +4,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultCheckboxSize,
   defaultCheckboxVariant,
@@ -12,9 +11,11 @@ import {
   defaultCheckboxHighContrast,
   defaultCheckboxRadius,
 } from './checkbox.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxProps
@@ -22,9 +23,9 @@ interface CheckboxProps
     MarginProps {
   size?: Responsive<CheckboxSize>;
   variant?: CheckboxVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
-  radius?: Radius;
+  radius?: ThemeRadius;
 }
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

@@ -1,4 +1,4 @@
-import type { Color } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 const radioGroupSizes = ['1', '2'] as const;
 type RadioGroupSize = (typeof radioGroupSizes)[number];
@@ -8,7 +8,7 @@ const radioGroupVariants = ['solid'] as const;
 type RadioGroupVariant = (typeof radioGroupVariants)[number];
 const defaultRadioGroupVariant: RadioGroupVariant = 'solid';
 
-const defaultRadioGroupColor: Color | undefined = undefined;
+const defaultRadioGroupColor: ThemeAccentScale | undefined = undefined;
 const defaultRadioGroupHighContrast: boolean | undefined = undefined;
 
 export {

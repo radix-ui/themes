@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
+import type { BoxDisplay } from './box.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -10,7 +11,6 @@ import {
   withLayoutProps,
   withBreakpoints,
 } from '../helpers';
-import type { BoxDisplay } from './box.props';
 
 import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 

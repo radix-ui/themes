@@ -1,22 +1,23 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultTextFieldSize,
   defaultTextFieldVariant,
   defaultTextFieldColor,
   defaultTextFieldRadius,
 } from './text-field.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { TextFieldSize, TextFieldVariant } from './text-field.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 type TextFieldElement = React.ElementRef<'input'>;
 interface TextFieldProps extends Omit<PropsWithoutRefOrColor<'input'>, 'size'>, MarginProps {
   size?: Responsive<TextFieldSize>;
   variant?: TextFieldVariant;
-  color?: Color;
-  radius?: Radius;
+  color?: ThemeAccentScale;
+  radius?: ThemeRadius;
 }
 const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

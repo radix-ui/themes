@@ -166,8 +166,8 @@ import {
   Tooltip,
   //
   // helpers:
-  groupedColors,
-  radiusValues,
+  themeAccentScalesGrouped,
+  themeRadii,
   //
   ThemePanel,
 } from '@radix-ui/themes';
@@ -424,7 +424,7 @@ export default function Sink() {
                                 <span>See colors & variants combinations</span>
                               </Text>
                             </summary>
-                            {groupedColors.map(({ label, values }) => (
+                            {themeAccentScalesGrouped.map(({ label, values }) => (
                               <React.Fragment key={label}>
                                 <Text weight="bold" mt="6" mb="4">
                                   {label}
@@ -654,7 +654,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {selectSizes.map((size) => (
@@ -684,7 +684,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -857,7 +857,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {switchSizes.map((size) => (
@@ -882,7 +882,7 @@ export default function Sink() {
                         <span>See colors</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1047,7 +1047,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {sliderSizes.map((size) => (
@@ -1072,7 +1072,7 @@ export default function Sink() {
                         <span>See colors</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1238,7 +1238,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {checkboxSizes.map((size) => (
@@ -1263,7 +1263,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1428,7 +1428,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1553,7 +1553,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {buttonSizes.map((size) => (
@@ -1580,7 +1580,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1694,7 +1694,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {iconButtonSizes.map((size) => (
@@ -1721,7 +1721,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1840,7 +1840,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {textFieldSizes.map((size) => (
@@ -1865,7 +1865,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -1983,7 +1983,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {textAreaSizes.map((size) => (
@@ -2012,7 +2012,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -2088,7 +2088,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -2187,7 +2187,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {avatarSizes.map((size) => (
@@ -2217,7 +2217,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -2650,7 +2650,7 @@ export default function Sink() {
                         <span>See colors & variants combinations</span>
                       </Text>
                     </summary>
-                    {groupedColors.map(({ label, values }) => (
+                    {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
                         <Text weight="bold" mt="6" mb="4">
                           {label}
@@ -3031,7 +3031,7 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radiusValues.map((radius) => (
+                          {themeRadii.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {scrollAreaSizes.map((size) => (

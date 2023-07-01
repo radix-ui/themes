@@ -1,4 +1,4 @@
-import { Color } from '../helpers';
+import { ThemeAccentScale } from '../theme';
 
 const dropdownMenuContentSizes = ['1', '2'] as const;
 type DropdownMenuContentSize = (typeof dropdownMenuContentSizes)[number];
@@ -8,10 +8,10 @@ const dropdownMenuContentVariants = ['solid', 'soft'] as const;
 type DropdownMenuContentVariant = (typeof dropdownMenuContentVariants)[number];
 const defaultDropdownMenuContentVariant: DropdownMenuContentVariant = 'solid';
 
-const defaultDropdownMenuContentColor: Color | undefined = undefined;
+const defaultDropdownMenuContentColor: ThemeAccentScale | undefined = undefined;
 const defaultDropdownMenuContentHighContrast: boolean | undefined = undefined;
 
-const defaultDropdownMenuItemColor: Color | undefined = undefined;
+const defaultDropdownMenuItemColor: ThemeAccentScale | undefined = undefined;
 
 export {
   dropdownMenuContentSizes,

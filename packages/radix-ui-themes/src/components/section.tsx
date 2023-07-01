@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 import { defaultSectionSize } from './section.props';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 
-import type { MarginProps, Responsive } from '../helpers';
 import type { SectionSize } from './section.props';
+import type { MarginProps, Responsive } from '../helpers';
 
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps {

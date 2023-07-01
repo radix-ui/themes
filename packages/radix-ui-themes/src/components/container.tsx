@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 import { defaultContainerSize } from './container.props';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '../helpers';
 
-import type { MarginProps, Responsive } from '../helpers';
 import type { ContainerSize } from './container.props';
+import type { MarginProps, Responsive } from '../helpers';
 
 type ContainerElement = React.ElementRef<'div'>;
 interface ContainerProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps {

@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
 import classNames from 'classnames';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Heading } from './heading';
 import { Text } from './text';
 import { ThemeConfig } from '../theme-config';

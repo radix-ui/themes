@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMarginProps } from '../helpers';
 import { defaultKbdWidth } from './kbd.props';
+import { extractMarginProps, withMarginProps } from '../helpers';
 
-import type { MarginProps } from '../helpers';
 import type { KbdWidth } from './kbd.props';
+import type { MarginProps } from '../helpers';
 
 type KbdElement = React.ElementRef<'kbd'>;
 interface KbdProps extends React.ComponentPropsWithoutRef<'kbd'>, MarginProps {

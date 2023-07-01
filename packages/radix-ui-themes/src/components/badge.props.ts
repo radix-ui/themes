@@ -1,4 +1,4 @@
-import type { Color } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 const badgeSizes = ['1', '2'] as const;
 type BadgeSize = (typeof badgeSizes)[number];
@@ -8,7 +8,7 @@ const badgeVariants = ['soft', 'outline', 'surface'] as const;
 type BadgeVariant = (typeof badgeVariants)[number];
 const defaultBadgeVariant: BadgeVariant = 'soft';
 
-const defaultBadgeColor: Color = 'gray';
+const defaultBadgeColor: ThemeAccentScale = 'gray';
 
 export { badgeSizes, defaultBadgeSize, badgeVariants, defaultBadgeVariant, defaultBadgeColor };
 export type { BadgeSize, BadgeVariant };

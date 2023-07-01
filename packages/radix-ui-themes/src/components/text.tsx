@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultTextSize,
   defaultTextWeight,
@@ -9,9 +8,11 @@ import {
   defaultTextTrim,
   defaultTextColor,
 } from './text.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { TextSize, TextWeight, TextAlign, TextTrim } from './text.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 type TextElement = React.ElementRef<'p'>;
 interface TextProps extends PropsWithoutRefOrColor<'p'>, MarginProps {
@@ -20,7 +21,7 @@ interface TextProps extends PropsWithoutRefOrColor<'p'>, MarginProps {
   weight?: Responsive<TextWeight>;
   align?: Responsive<TextAlign>;
   trim?: Responsive<TextTrim>;
-  color?: Color | 'color';
+  color?: ThemeAccentScale | 'color';
 }
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

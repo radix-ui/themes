@@ -3,15 +3,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultScrollAreaSize,
   defaultScrollAreaRadius,
   defaultScrollAreaScrollbars,
 } from './scroll-area.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { MarginProps, Radius, Responsive } from '../helpers';
 import type { ScrollAreaSize, ScrollAreaScrollbars } from './scroll-area.props';
+import type { MarginProps, Responsive } from '../helpers';
+import type { ThemeRadius } from '../theme';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 interface ScrollAreaProps
@@ -19,7 +20,7 @@ interface ScrollAreaProps
     Omit<React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
     MarginProps {
   size?: Responsive<ScrollAreaSize>;
-  radius?: Radius;
+  radius?: ThemeRadius;
   scrollbars?: ScrollAreaScrollbars;
 }
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {

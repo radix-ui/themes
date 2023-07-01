@@ -1,4 +1,4 @@
-import type { Color, Radius } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const avatarSizes = ['1', '2', '3', '4', '5'] as const;
 type AvatarSize = (typeof avatarSizes)[number];
@@ -8,9 +8,9 @@ const avatarVariants = ['solid', 'soft'] as const;
 type AvatarVariant = (typeof avatarVariants)[number];
 const defaultAvatarVariant: AvatarVariant = 'soft';
 
-const defaultAvatarColor: Color | undefined = undefined;
+const defaultAvatarColor: ThemeAccentScale | undefined = undefined;
 const defaultAvatarHighContrast: boolean | undefined = undefined;
-const defaultAvatarRadius: Radius | undefined = undefined;
+const defaultAvatarRadius: ThemeRadius | undefined = undefined;
 
 export {
   avatarSizes,

@@ -1,4 +1,4 @@
-import { Color } from '../helpers';
+import { ThemeAccentScale } from '../theme';
 
 const contextMenuContentSizes = ['1', '2'] as const;
 type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];
@@ -8,10 +8,10 @@ const contextMenuContentVariants = ['solid', 'soft'] as const;
 type ContextMenuContentVariant = (typeof contextMenuContentVariants)[number];
 const defaultContextMenuContentVariant: ContextMenuContentVariant = 'solid';
 
-const defaultContextMenuContentColor: Color | undefined = undefined;
+const defaultContextMenuContentColor: ThemeAccentScale | undefined = undefined;
 const defaultContextMenuContentHighContrast: boolean | undefined = undefined;
 
-const defaultContextMenuItemColor: Color | undefined = undefined;
+const defaultContextMenuItemColor: ThemeAccentScale | undefined = undefined;
 
 export {
   contextMenuContentSizes,

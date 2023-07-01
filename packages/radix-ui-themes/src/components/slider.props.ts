@@ -1,4 +1,4 @@
-import type { Color, Radius } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const sliderSizes = ['1', '2', '3'] as const;
 type SliderSize = (typeof sliderSizes)[number];
@@ -8,9 +8,9 @@ const sliderVariants = ['solid', 'soft'] as const;
 type SliderVariant = (typeof sliderVariants)[number];
 const defaultSliderVariant: SliderVariant = 'solid';
 
-const defaultSliderColor: Color | undefined = undefined;
+const defaultSliderColor: ThemeAccentScale | undefined = undefined;
 const defaultSliderHighContrast: boolean | undefined = undefined;
-const defaultSliderRadius: Radius | undefined = undefined;
+const defaultSliderRadius: ThemeRadius | undefined = undefined;
 
 export {
   sliderSizes,

@@ -1,10 +1,10 @@
-import type { Radius } from '../helpers';
+import type { ThemeRadius } from '../theme';
 
 const scrollAreaSizes = ['1', '2', '3'] as const;
 type ScrollAreaSize = (typeof scrollAreaSizes)[number];
 const defaultScrollAreaSize: ScrollAreaSize = '1';
 
-const defaultScrollAreaRadius: Radius | undefined = undefined;
+const defaultScrollAreaRadius: ThemeRadius | undefined = undefined;
 
 const scrollAreaScrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
 type ScrollAreaScrollbars = (typeof scrollAreaScrollbarsValues)[number];

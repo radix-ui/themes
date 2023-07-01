@@ -1,11 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
 import classNames from 'classnames';
+import * as SelectPrimitive from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
-import { ThemeConfig, ThemeConfigContext } from '../theme-config';
 import {
   defaultSelectSize,
   defaultSelectTriggerVariant,
@@ -16,11 +14,14 @@ import {
   defaultSelectContentHighContrast,
   defaultSelectRadius,
 } from './select.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
-type SelectContextValue = { size?: Responsive<SelectSize>; radius?: Radius };
+type SelectContextValue = { size?: Responsive<SelectSize>; radius?: ThemeRadius };
 const SelectContext = React.createContext<SelectContextValue>({});
 
 interface SelectRootProps
@@ -43,7 +44,7 @@ interface SelectTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Trigger>, 'asChild'>,
     MarginProps {
   variant?: SelectTriggerVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
 }
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
@@ -94,7 +95,7 @@ type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
 interface SelectContentProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Content> {
   size?: Responsive<SelectSize>;
   variant?: SelectContentVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
   container?: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
 }
@@ -110,9 +111,9 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       ...contentProps
     } = props;
     const { size, radius } = React.useContext(SelectContext);
-    const themeConfigContext = React.useContext(ThemeConfigContext);
-    const resolvedColor = color ?? themeConfigContext?.accentScale;
-    const resolvedRadius = radius ?? themeConfigContext?.radius;
+    const themeConfigContext = useThemeConfigContext();
+    const resolvedColor = color ?? themeConfigContext.accentScale;
+    const resolvedRadius = radius ?? themeConfigContext.radius;
     return (
       <SelectPrimitive.Portal container={container}>
         <ThemeConfig asChild>

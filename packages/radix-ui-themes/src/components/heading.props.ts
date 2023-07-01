@@ -1,4 +1,4 @@
-import type { Color } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 const headingSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type HeadingSize = (typeof headingSizes)[number];
@@ -8,7 +8,7 @@ const headingTrimValues = ['normal', 'start', 'end', 'both'] as const;
 type HeadingTrim = (typeof headingTrimValues)[number];
 const defaultHeadingTrim: HeadingTrim | undefined = undefined;
 
-const defaultHeadingColor: Color | undefined = undefined;
+const defaultHeadingColor: ThemeAccentScale | undefined = undefined;
 
 export {
   headingSizes,

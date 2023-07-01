@@ -1,4 +1,4 @@
-import type { Color, Radius } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const textFieldSizes = ['1', '2', '3'] as const;
 type TextFieldSize = (typeof textFieldSizes)[number];
@@ -8,8 +8,8 @@ const textFieldVariants = ['surface', 'soft'] as const;
 type TextFieldVariant = (typeof textFieldVariants)[number];
 const defaultTextFieldVariant: TextFieldVariant = 'surface';
 
-const defaultTextFieldColor: Color | undefined = undefined;
-const defaultTextFieldRadius: Radius | undefined = undefined;
+const defaultTextFieldColor: ThemeAccentScale | undefined = undefined;
+const defaultTextFieldRadius: ThemeRadius | undefined = undefined;
 
 export {
   textFieldSizes,

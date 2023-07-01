@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
 import classNames from 'classnames';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { ThemeConfig } from '../theme-config';
 
 interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}

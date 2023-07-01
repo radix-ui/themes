@@ -1,18 +1,19 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultHeadingSize, defaultHeadingTrim, defaultHeadingColor } from './heading.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { HeadingSize, HeadingTrim } from './heading.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 type HeadingElement = React.ElementRef<'h1'>;
 interface HeadingProps extends PropsWithoutRefOrColor<'h1'>, MarginProps {
   asChild?: boolean;
   size?: Responsive<HeadingSize>;
   trim?: Responsive<HeadingTrim>;
-  color?: Color | 'color';
+  color?: ThemeAccentScale | 'color';
 }
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

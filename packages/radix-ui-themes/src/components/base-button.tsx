@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultBaseButtonSize,
   defaultBaseButtonVariant,
@@ -8,17 +7,19 @@ import {
   defaultBaseButtonHighContrast,
   defaultBaseRadius,
 } from './base-button.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { BaseButtonSize, BaseButtonVariant } from './base-button.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 type BaseButtonElement = React.ElementRef<'button'>;
 interface BaseButtonProps extends PropsWithoutRefOrColor<'button'>, MarginProps {
   size?: Responsive<BaseButtonSize>;
   variant?: BaseButtonVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
-  radius?: Radius;
+  radius?: ThemeRadius;
 }
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

@@ -1,10 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import classNames from 'classnames';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
-import { withBreakpoints } from '../helpers';
 import {
   defaultDropdownMenuContentSize,
   defaultDropdownMenuContentVariant,
@@ -12,10 +11,12 @@ import {
   defaultDropdownMenuContentHighContrast,
   defaultDropdownMenuItemColor,
 } from './dropdown-menu.props';
-import { ThemeConfig, ThemeConfigContext } from '../theme-config';
+import { withBreakpoints } from '../helpers';
+import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
-import type { Color, Responsive, PropsWithoutRefOrColor } from '../helpers';
 import type { DropdownMenuContentSize, DropdownMenuContentVariant } from './dropdown-menu.props';
+import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -35,7 +36,7 @@ DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';
 type DropdownMenuContentContextValue = {
   size?: Responsive<DropdownMenuContentSize>;
   variant?: DropdownMenuContentVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
 };
 const DropdownMenuContentContext = React.createContext<DropdownMenuContentContextValue>({});
@@ -47,7 +48,7 @@ interface DropdownMenuContentProps
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
-    const themeConfigContext = React.useContext(ThemeConfigContext);
+    const themeConfigContext = useThemeConfigContext();
     const {
       className,
       children,
@@ -59,7 +60,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       forceMount,
       ...contentProps
     } = props;
-    const resolvedColor = color ?? themeConfigContext?.accentScale;
+    const resolvedColor = color ?? themeConfigContext.accentScale;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <ThemeConfig asChild>
@@ -111,7 +112,7 @@ DropdownMenuLabel.displayName = 'DropdownMenuLabel';
 
 type DropdownMenuItemElement = React.ElementRef<typeof DropdownMenuPrimitive.Item>;
 interface DropdownMenuItemProps extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Item> {
-  color?: Color;
+  color?: ThemeAccentScale;
   shortcut?: string;
 }
 const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuItemProps>(

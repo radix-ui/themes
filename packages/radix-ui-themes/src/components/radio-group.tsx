@@ -3,16 +3,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultRadioGroupSize,
   defaultRadioGroupVariant,
   defaultRadioGroupColor,
   defaultRadioGroupHighContrast,
 } from './radio-group.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { RadioGroupSize, RadioGroupVariant } from './radio-group.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
@@ -20,7 +21,7 @@ interface RadioGroupRootProps
     MarginProps {
   size?: Responsive<RadioGroupSize>;
   variant?: RadioGroupVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
 }
 const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(

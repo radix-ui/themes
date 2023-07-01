@@ -1,4 +1,4 @@
-import { Color } from '../helpers';
+import { ThemeAccentScale } from '../theme';
 
 const codeSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type CodeSize = (typeof codeSizes)[number];
@@ -12,7 +12,7 @@ const codeWeights = ['normal', 'bold'] as const;
 type CodeWeight = (typeof codeWeights)[number];
 const defaultCodeWeight: CodeWeight = 'normal';
 
-const defaultCodeColor: Color | undefined = undefined;
+const defaultCodeColor: ThemeAccentScale | undefined = undefined;
 const defaultCodeHighContrast: boolean | undefined = undefined;
 
 export {

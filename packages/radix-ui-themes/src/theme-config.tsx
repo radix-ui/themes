@@ -4,45 +4,45 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import {
-  defaultThemeMode,
-  defaultThemeAccentScale,
-  defaultThemeGrayScale,
-  defaultThemeBackgroundColor,
-  defaultThemeTextColor,
-  defaultThemeRadius,
-  defaultThemeScaling,
-  getNaturallyPairedGrayScale,
-} from './helpers';
+  themeModeDefault,
+  themeAccentScaleDefault,
+  themeGrayScaleDefault,
+  themeBackgroundColorDefault,
+  themeTextColorDefault,
+  themeRadiusDefault,
+  themeScalingDefault,
+  getMatchingGrayScale,
+} from './theme';
 
 import type {
   ThemeMode,
-  Color,
-  GrayScaleControl,
-  BackgroundColorControl,
-  TextColorControl,
-  Radius,
-  Scaling,
-} from './helpers';
+  ThemeAccentScale,
+  ThemeGrayScale,
+  ThemeBackgroundColor,
+  ThemeTextColor,
+  ThemeRadius,
+  ThemeScaling,
+} from './theme';
 
 const noop = () => {};
 
 interface ThemeConfigValues {
   mode: ThemeMode | 'invert';
-  accentScale: Color;
-  grayScale: GrayScaleControl;
-  backgroundColor: BackgroundColorControl;
-  textColor: TextColorControl;
-  radius: Radius;
-  scaling: Scaling;
+  accentScale: ThemeAccentScale;
+  grayScale: ThemeGrayScale;
+  backgroundColor: ThemeBackgroundColor;
+  textColor: ThemeTextColor;
+  radius: ThemeRadius;
+  scaling: ThemeScaling;
 }
 interface ThemeConfigChangeHandlers {
   onModeChange: (mode: ThemeMode) => void;
-  onAccentScaleChange: (accentScale: Color) => void;
-  onGrayScaleChange: (grayScale: GrayScaleControl) => void;
-  onBackgroundColorChange: (backgroundColor: BackgroundColorControl) => void;
-  onTextColorChange: (textColor: TextColorControl) => void;
-  onRadiusChange: (radius: Radius) => void;
-  onScalingChange: (scaling: Scaling) => void;
+  onAccentScaleChange: (accentScale: ThemeAccentScale) => void;
+  onGrayScaleChange: (grayScale: ThemeGrayScale) => void;
+  onBackgroundColorChange: (backgroundColor: ThemeBackgroundColor) => void;
+  onTextColorChange: (textColor: ThemeTextColor) => void;
+  onRadiusChange: (radius: ThemeRadius) => void;
+  onScalingChange: (scaling: ThemeScaling) => void;
 }
 
 interface ThemeConfigContextValue extends ThemeConfigValues, ThemeConfigChangeHandlers {}
@@ -73,13 +73,13 @@ interface ThemeConfigRootProps extends ThemeConfigImplPublicProps {}
 const ThemeConfigRoot = React.forwardRef<ThemeConfigImplElement, ThemeConfigRootProps>(
   (props, forwardedRef) => {
     const {
-      mode: modeProp = defaultThemeMode,
-      accentScale: accentScaleProp = defaultThemeAccentScale,
-      grayScale: grayScaleProp = defaultThemeGrayScale,
-      backgroundColor: backgroundColorProp = defaultThemeBackgroundColor,
-      textColor: textColorProp = defaultThemeTextColor,
-      radius: radiusProp = defaultThemeRadius,
-      scaling: scalingProp = defaultThemeScaling,
+      mode: modeProp = themeModeDefault,
+      accentScale: accentScaleProp = themeAccentScaleDefault,
+      grayScale: grayScaleProp = themeGrayScaleDefault,
+      backgroundColor: backgroundColorProp = themeBackgroundColorDefault,
+      textColor: textColorProp = themeTextColorDefault,
+      radius: radiusProp = themeRadiusDefault,
+      scaling: scalingProp = themeScalingDefault,
       ...rootProps
     } = props;
     const [mode, setMode] = React.useState(modeProp);
@@ -135,13 +135,13 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
       applyBackgroundColor = true,
       applyTextColor = true,
       //
-      mode = context?.mode ?? defaultThemeMode,
-      accentScale = context?.accentScale ?? defaultThemeAccentScale,
-      grayScale = context?.grayScale ?? defaultThemeGrayScale,
-      backgroundColor = context?.backgroundColor ?? defaultThemeBackgroundColor,
-      textColor = context?.textColor ?? defaultThemeTextColor,
-      radius = context?.radius ?? defaultThemeRadius,
-      scaling = context?.scaling ?? defaultThemeScaling,
+      mode = context?.mode ?? themeModeDefault,
+      accentScale = context?.accentScale ?? themeAccentScaleDefault,
+      grayScale = context?.grayScale ?? themeGrayScaleDefault,
+      backgroundColor = context?.backgroundColor ?? themeBackgroundColorDefault,
+      textColor = context?.textColor ?? themeTextColorDefault,
+      radius = context?.radius ?? themeRadiusDefault,
+      scaling = context?.scaling ?? themeScalingDefault,
       //
       onModeChange = noop,
       onAccentScaleChange = noop,
@@ -153,8 +153,7 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
       //
       ...themeConfigProps
     } = props;
-    const resolvedGrayScale =
-      grayScale === 'auto' ? getNaturallyPairedGrayScale(accentScale) : grayScale;
+    const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
     const resolvedMode = mode === 'invert' ? (context?.mode === 'dark' ? 'light' : 'dark') : mode;
     const Comp = asChild ? Slot : 'div';
     return (
@@ -222,4 +221,4 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
 );
 ThemeConfigImpl.displayName = 'ThemeConfigImpl';
 
-export { ThemeConfig, ThemeConfigContext, useThemeConfigContext };
+export { ThemeConfig, useThemeConfigContext };

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultCodeSize,
   defaultCodeVariant,
@@ -8,16 +7,18 @@ import {
   defaultCodeColor,
   defaultCodeHighContrast,
 } from './code.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { CodeSize, CodeVariant, CodeWeight } from './code.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 type CodeElement = React.ElementRef<'code'>;
 interface CodeProps extends PropsWithoutRefOrColor<'code'>, MarginProps {
   size?: Responsive<CodeSize>;
   variant?: CodeVariant;
   weight?: Responsive<CodeWeight>;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
 }
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {

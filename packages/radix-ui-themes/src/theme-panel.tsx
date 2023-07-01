@@ -19,22 +19,22 @@ import {
   Strong,
   Text,
   // helpers
-  groupedColors,
-  groupedGrays,
-  getNaturallyPairedGrayScale,
-  backgroundColorValues,
-  textColorValues,
-  radiusValues,
-  scalingValues,
+  themeAccentScalesGrouped,
+  themeGrayScalesGrouped,
+  getMatchingGrayScale,
+  themeBackgroundColors,
+  themeTextColors,
+  themeRadii,
+  themeScalings,
 } from './index';
 import { useThemeConfigContext } from './theme-config';
 
 import type {
-  Color,
-  GrayScaleControl,
-  BackgroundColorControl,
-  TextColorControl,
-  Scaling,
+  ThemeAccentScale,
+  ThemeGrayScale,
+  ThemeBackgroundColor,
+  ThemeTextColor,
+  ThemeScaling,
 } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
@@ -92,8 +92,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     } = themeConfigContext;
 
     const pureGray9 = mode === 'dark' ? radixColorsGrayDark.gray9 : radixColorsGray.gray9;
-    const naturalGray = getNaturallyPairedGrayScale(accentScale);
-    const resolvedGrayScale = grayScale === 'auto' ? naturalGray : grayScale;
+    const autoMatchedGray = getMatchingGrayScale(accentScale);
+    const resolvedGrayScale = grayScale === 'auto' ? autoMatchedGray : grayScale;
 
     // quickly show/hide using cmd+c
     React.useEffect(() => {
@@ -129,7 +129,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         mr="4"
         mt="4"
         // @ts-ignore
-        inert={!visible}
+        inert={visible ? undefined : ''}
         {...panelProps}
         ref={forwardedRef}
         style={{
@@ -165,11 +165,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           <Label htmlFor="accent-scale">Accent scale</Label>
           <Select.Root
             value={accentScale}
-            onValueChange={(value) => onAccentScaleChange(value as Color)}
+            onValueChange={(value) => onAccentScaleChange(value as ThemeAccentScale)}
           >
             <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
             <Select.Content variant="soft" color="gray">
-              {groupedColors.map(({ label, values }, index) => (
+              {themeAccentScalesGrouped.map(({ label, values }, index) => (
                 <React.Fragment key={label}>
                   {index > 0 ? <Select.Separator /> : null}
                   <Select.Group>
@@ -209,11 +209,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           <Label htmlFor="gray-scale">Gray scale</Label>
           <Select.Root
             value={grayScale}
-            onValueChange={(value) => onGrayScaleChange(value as GrayScaleControl)}
+            onValueChange={(value) => onGrayScaleChange(value as ThemeGrayScale)}
           >
             <Select.Trigger id="gray-scale" variant="surface" color="gray" highContrast />
             <Select.Content variant="soft" color="gray">
-              {groupedGrays.map(({ label, values }, index) => (
+              {themeGrayScalesGrouped.map(({ label, values }, index) => (
                 <React.Fragment key={label}>
                   {index > 0 ? <Select.Separator /> : null}
                   <Select.Group>
@@ -229,7 +229,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                               borderRadius: '100%',
                               backgroundColor:
                                 gray === 'auto'
-                                  ? `var(--${naturalGray}-9)`
+                                  ? `var(--${autoMatchedGray}-9)`
                                   : gray === 'gray'
                                   ? pureGray9
                                   : `var(--${gray}-9)`,
@@ -239,7 +239,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             {gray}
                             {gray === 'auto' ? (
                               <Text size="2" color="gray" asChild>
-                                <Em> ({naturalGray})</Em>
+                                <Em> ({autoMatchedGray})</Em>
                               </Text>
                             ) : null}
                           </Flex>
@@ -304,10 +304,10 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             </Flex>
             <RadioGroup.Root
               value={backgroundColor}
-              onValueChange={(value: BackgroundColorControl) => onBackgroundColorChange(value)}
+              onValueChange={(value: ThemeBackgroundColor) => onBackgroundColorChange(value)}
             >
               <Flex direction="column" gap="1">
-                {backgroundColorValues.map((value) => (
+                {themeBackgroundColors.map((value) => (
                   <Text key={value} size="2" asChild>
                     <label>
                       <RadioGroup.Item value={value} mr="2" />
@@ -368,10 +368,10 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             </Flex>
             <RadioGroup.Root
               value={textColor}
-              onValueChange={(value: TextColorControl) => onTextColorChange(value)}
+              onValueChange={(value: ThemeTextColor) => onTextColorChange(value)}
             >
               <Flex direction="column" gap="1">
-                {textColorValues.map((value) => (
+                {themeTextColors.map((value) => (
                   <Text key={value} size="2" asChild>
                     <label>
                       <RadioGroup.Item value={value} mr="2" />
@@ -405,11 +405,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         </Text>
 
         <Flex direction="column" gap="1" mb="3">
-          <Label htmlFor="radius">Radius › {radius}</Label>
-          {/* <Select.Root value={radius} onValueChange={(value) => setRadius(value as Radius)}>
+          <Label htmlFor="radius">ThemeRadius › {radius}</Label>
+          {/* <Select.Root value={radius} onValueChange={(value) => setRadius(value as ThemeRadius)}>
           <Select.Trigger id="radius" variant="surface" color="gray" highContrast />
           <Select.Content variant="soft" color="gray">
-            {radiusValues.map((value) => (
+            {themeRadii.map((value) => (
               <Select.Item key={value} value={value}>
                 {value}
               </Select.Item>
@@ -418,20 +418,23 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         </Select.Root> */}
           <Slider
             id="radius"
-            value={[radiusValues.indexOf(radius)]}
-            onValueChange={([value]) => onRadiusChange(radiusValues[value])}
+            value={[themeRadii.indexOf(radius)]}
+            onValueChange={([value]) => onRadiusChange(themeRadii[value])}
             min={0}
-            max={radiusValues.length - 1}
+            max={themeRadii.length - 1}
             step={1}
           />
         </Flex>
 
         <Flex direction="column" gap="1">
-          <Label htmlFor="scaling">Scaling</Label>
-          <Select.Root value={scaling} onValueChange={(value) => onScalingChange(value as Scaling)}>
+          <Label htmlFor="scaling">ThemeScaling</Label>
+          <Select.Root
+            value={scaling}
+            onValueChange={(value) => onScalingChange(value as ThemeScaling)}
+          >
             <Select.Trigger id="scaling" variant="surface" color="gray" highContrast />
             <Select.Content variant="soft" color="gray">
-              {scalingValues.map((value) => (
+              {themeScalings.map((value) => (
                 <Select.Item key={value} value={value}>
                   {value}
                 </Select.Item>

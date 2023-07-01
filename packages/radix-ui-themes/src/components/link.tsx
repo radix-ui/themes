@@ -1,23 +1,24 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultLinkSize,
   defaultLinkWeight,
   defaultLinkColor,
   defaultLinkHighContrast,
 } from './link.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { LinkSize, LinkWeight } from './link.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 type LinkElement = React.ElementRef<'a'>;
 interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps {
   asChild?: boolean;
   size?: Responsive<LinkSize>;
   weight?: Responsive<LinkWeight>;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {

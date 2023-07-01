@@ -1,4 +1,4 @@
-import type { Color, Radius } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 const switchSizes = ['1', '2', '3'] as const;
 type SwitchSize = (typeof switchSizes)[number];
@@ -8,9 +8,9 @@ const switchVariants = ['solid'] as const;
 type SwitchVariant = (typeof switchVariants)[number];
 const defaultSwitchVariant: SwitchVariant = 'solid';
 
-const defaultSwitchColor: Color | undefined = undefined;
+const defaultSwitchColor: ThemeAccentScale | undefined = undefined;
 const defaultSwitchHighContrast: boolean | undefined = undefined;
-const defaultSwitchRadius: Radius | undefined = undefined;
+const defaultSwitchRadius: ThemeRadius | undefined = undefined;
 
 export {
   switchSizes,

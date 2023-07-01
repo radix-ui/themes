@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultSliderSize,
   defaultSliderVariant,
@@ -11,9 +10,11 @@ import {
   defaultSliderHighContrast,
   defaultSliderRadius,
 } from './slider.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SliderSize, SliderVariant } from './slider.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 interface SliderProps
@@ -21,9 +22,9 @@ interface SliderProps
     MarginProps {
   size?: Responsive<SliderSize>;
   variant?: SliderVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
-  radius?: Radius;
+  radius?: ThemeRadius;
 }
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

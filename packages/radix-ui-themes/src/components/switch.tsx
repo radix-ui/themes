@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultSwitchSize,
   defaultSwitchVariant,
@@ -11,9 +10,11 @@ import {
   defaultSwitchHighContrast,
   defaultSwitchRadius,
 } from './switch.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
 import type { SwitchSize, SwitchVariant } from './switch.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 interface SwitchProps
@@ -21,9 +22,9 @@ interface SwitchProps
     MarginProps {
   size?: Responsive<SwitchSize>;
   variant?: SwitchVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
-  radius?: Radius;
+  radius?: ThemeRadius;
 }
 const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

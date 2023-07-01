@@ -3,11 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultTabsListSize } from './tabs.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { MarginProps, Responsive } from '../helpers';
 import type { TabsListSize } from './tabs.props';
+import type { MarginProps, Responsive } from '../helpers';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 interface TabsRootProps

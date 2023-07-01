@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import {
   defaultAvatarSize,
   defaultAvatarVariant,
@@ -11,17 +10,19 @@ import {
   defaultAvatarHighContrast,
   defaultAvatarRadius,
 } from './avatar.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
 import type { AvatarSize, AvatarVariant } from './avatar.props';
-import type { PropsWithoutRefOrColor, MarginProps, Color, Radius, Responsive } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale, ThemeRadius } from '../theme';
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 interface AvatarProps extends PropsWithoutRefOrColor<typeof AvatarPrimitive.Image>, MarginProps {
   size?: Responsive<AvatarSize>;
   variant?: AvatarVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
-  radius?: Radius;
+  radius?: ThemeRadius;
   fallback: React.ReactNode;
 }
 const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef) => {

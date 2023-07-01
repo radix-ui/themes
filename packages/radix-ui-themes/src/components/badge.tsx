@@ -1,16 +1,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { defaultBadgeSize, defaultBadgeVariant, defaultBadgeColor } from './badge.props';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { PropsWithoutRefOrColor, MarginProps, Color, Responsive } from '../helpers';
 import type { BadgeSize, BadgeVariant } from './badge.props';
+import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 type BadgeElement = React.ElementRef<'span'>;
 interface BadgeProps extends PropsWithoutRefOrColor<'span'>, MarginProps {
   size?: Responsive<BadgeSize>;
   variant?: BadgeVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
 }
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);

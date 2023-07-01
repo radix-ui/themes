@@ -2,15 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import {
-  extractMarginProps,
-  withMarginProps,
-  extractPaddingProps,
-  withPaddingProps,
-  extractLayoutProps,
-  withLayoutProps,
-  withBreakpoints,
-} from '../helpers';
-import {
   defaultGridDisplay,
   defaultGridColumns,
   defaultGridFlow,
@@ -20,8 +11,16 @@ import {
   defaultGridGapX,
   defaultGridGapY,
 } from './grid.props';
+import {
+  extractMarginProps,
+  withMarginProps,
+  extractPaddingProps,
+  withPaddingProps,
+  extractLayoutProps,
+  withLayoutProps,
+  withBreakpoints,
+} from '../helpers';
 
-import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 import type {
   GridDisplay,
   GridColumns,
@@ -30,6 +29,7 @@ import type {
   GridJustify,
   GridCap,
 } from './grid.props';
+import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 
 type GridElement = React.ElementRef<'div'>;
 interface GridProps

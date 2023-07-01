@@ -2,6 +2,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import {
+  defaultFlexDisplay,
+  defaultFlexDirection,
+  defaultFlexAlign,
+  defaultFlexJustify,
+  defaultFlexWrap,
+  defaultFlexGap,
+} from './flex.props';
+import {
   extractMarginProps,
   withMarginProps,
   extractPaddingProps,
@@ -10,16 +18,7 @@ import {
   withLayoutProps,
   withBreakpoints,
 } from '../helpers';
-import {
-  defaultFlexDisplay,
-  defaultFlexDirection,
-  defaultFlexAlign,
-  defaultFlexJustify,
-  defaultFlexWrap,
-  defaultFlexGap,
-} from './flex.props';
 
-import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 import type {
   FlexDisplay,
   FlexDirection,
@@ -28,6 +27,7 @@ import type {
   FlexWrap,
   FlexGap,
 } from './flex.props';
+import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
 
 type FlexElement = React.ElementRef<'div'>;
 interface FlexProps

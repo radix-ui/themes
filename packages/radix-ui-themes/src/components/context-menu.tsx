@@ -1,10 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import classNames from 'classnames';
+import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
-import { withBreakpoints } from '../helpers';
 import {
   defaultContextMenuContentSize,
   defaultContextMenuContentVariant,
@@ -12,10 +11,12 @@ import {
   defaultContextMenuContentHighContrast,
   defaultContextMenuItemColor,
 } from './context-menu.props';
-import { ThemeConfig, ThemeConfigContext } from '../theme-config';
+import { withBreakpoints } from '../helpers';
+import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
-import type { Color, Responsive, PropsWithoutRefOrColor } from '../helpers';
 import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
+import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
+import type { ThemeAccentScale } from '../theme';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -35,7 +36,7 @@ ContextMenuTrigger.displayName = 'ContextMenuTrigger';
 type ContextMenuContentContextValue = {
   size?: Responsive<ContextMenuContentSize>;
   variant?: ContextMenuContentVariant;
-  color?: Color;
+  color?: ThemeAccentScale;
   highContrast?: boolean;
 };
 const ContextMenuContentContext = React.createContext<ContextMenuContentContextValue>({});
@@ -47,7 +48,7 @@ interface ContextMenuContentProps
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
-    const themeConfigContext = React.useContext(ThemeConfigContext);
+    const themeConfigContext = useThemeConfigContext();
     const {
       className,
       children,
@@ -59,7 +60,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       forceMount,
       ...contentProps
     } = props;
-    const resolvedColor = color ?? themeConfigContext?.accentScale;
+    const resolvedColor = color ?? themeConfigContext.accentScale;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <ThemeConfig asChild>
@@ -110,7 +111,7 @@ ContextMenuLabel.displayName = 'ContextMenuLabel';
 
 type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>;
 interface ContextMenuItemProps extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Item> {
-  color?: Color;
+  color?: ThemeAccentScale;
   shortcut?: string;
 }
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
