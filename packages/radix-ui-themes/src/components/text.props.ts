@@ -6,7 +6,7 @@ const textSizeDefault: TextSize = '3';
 
 const textWeights = ['normal', 'bold'] as const;
 type TextWeight = (typeof textWeights)[number];
-const textWeightDefault: TextWeight = 'normal';
+const textWeightDefault: TextWeight | undefined = undefined;
 
 const textAlignValues = ['left', 'center', 'right'] as const;
 type TextAlign = (typeof textAlignValues)[number];

@@ -27,6 +27,10 @@
   border-bottom: 0.5px solid var(--gray-a6);
 }
 
+.table th {
+  font-weight: 400;
+}
+
 .table th,
 .table td {
   padding: 0;
