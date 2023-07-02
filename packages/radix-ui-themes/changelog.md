@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.15
+
+- `Slider`: Fix `size="1"` thumb not showing
+
 ## 0.0.14
 
 - General:
