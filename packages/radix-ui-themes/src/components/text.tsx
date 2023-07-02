@@ -7,6 +7,7 @@ import {
   textAlignDefault,
   textTrimDefault,
   textColorDefault,
+  textHighContrastDefault,
 } from './text.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -22,6 +23,7 @@ interface TextProps extends PropsWithoutRefOrColor<'p'>, MarginProps {
   align?: Responsive<TextAlign>;
   trim?: Responsive<TextTrim>;
   color?: ThemeAccentScale | 'color';
+  highContrast?: boolean;
 }
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -33,6 +35,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
     align = textAlignDefault,
     trim = textTrimDefault,
     color = textColorDefault,
+    highContrast = textHighContrastDefault,
     ...textProps
   } = marginRest;
   const Comp = asChild ? Slot : 'p';
@@ -48,6 +51,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
         withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),
+        { highContrast },
         className
       )}
     />

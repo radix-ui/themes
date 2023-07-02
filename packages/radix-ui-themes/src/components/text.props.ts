@@ -17,6 +17,7 @@ type TextTrim = (typeof textTrimValues)[number];
 const textTrimDefault: TextTrim | undefined = undefined;
 
 const textColorDefault: ThemeAccentScale | undefined = undefined;
+const textHighContrastDefault: boolean | undefined = undefined;
 
 export {
   textSizes,
@@ -28,5 +29,6 @@ export {
   textTrimValues,
   textTrimDefault,
   textColorDefault,
+  textHighContrastDefault,
 };
 export type { TextSize, TextWeight, TextAlign, TextTrim };

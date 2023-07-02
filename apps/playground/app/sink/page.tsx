@@ -2637,6 +2637,35 @@ export default function Sink() {
                         </Text>
                       ))}
                   </Flex>
+
+                  <Flex direction="column" gap="5">
+                    <Flex gap="5" mt="5">
+                      {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
+                        <Flex key={color} direction="column" gap="1">
+                          <Text color={color}>{upperFirst(color)}</Text>
+                          <Text color={color} highContrast>
+                            {upperFirst(color)}
+                          </Text>
+                        </Flex>
+                      ))}
+                    </Flex>
+
+                    <Text color="red" highContrast>
+                      This is some red text in high-contrast and this{' '}
+                      <Text asChild color="blue">
+                        <span>word</span>
+                      </Text>{' '}
+                      should be blue.
+                    </Text>
+
+                    <Text color="red">
+                      This is some red text and this{' '}
+                      <Text asChild highContrast>
+                        <span>word</span>
+                      </Text>{' '}
+                      should be in high-contrast.
+                    </Text>
+                  </Flex>
                 </DocsSection>
 
                 <DocsSection title="Code">

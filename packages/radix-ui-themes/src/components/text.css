@@ -3,7 +3,12 @@
   line-height: var(--line-height);
 
   &:where([data-accent-scale]) {
-    color: var(--accent-11);
+    color: var(--accent-a11);
+
+    &:where(.highContrast),
+    & .rui-Text:where(.highContrast) {
+      color: var(--accent-a12);
+    }
   }
 }
 
