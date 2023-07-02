@@ -89,7 +89,7 @@
   .rui-SliderRoot {
     &.size-1 {
       --track-size: var(--space-1);
-      --thumb-size: calc(14px, var(--scaling));
+      --thumb-size: calc(14px * var(--scaling));
       --thumb-radius: var(--br-1);
       --thumb-focus-outline-size: 3px;
     }
