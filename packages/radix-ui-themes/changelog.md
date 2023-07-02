@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.0.14
+
+- General:
+  - Ensure all arbitrary px values are also scaled (line-heights, etc)
+  - Put popper animations behind `prefers-reduced-motion` media query
+- `ThemePanel`: Add "copy theme config" functionality
+- `Badge`:
+  - Add `solid` variant
+  - Add `radius` support
+- `Separator`: Handle `color` more simply (default to `color="gray"` like `Badge`)
+- `Heading`:
+  - Add `align` support
+  - Add `highContrast` support
+- `Text`:
+  - Add `highContrast` support
+  - Don't set default `font-weight` anymore (now inherits by default)
+  - No default `size` anymore (now inherits by default)
+- `Link`:
+  - Don't set default `font-weight` anymore (now inherits by default)
+
 ## 0.0.13
 
 **Warning!** This release contains lots of breaking changes.
