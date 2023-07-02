@@ -3362,7 +3362,7 @@ function DocsSection({ title, children }: { title: string; children: React.React
       <Container>
         <Section size="2">
           <Box px="6">
-            <Text size="6" mb="4" asChild>
+            <Text size="6" weight="normal" mb="4" asChild>
               <h1>
                 <Link href={`#${title}`} id={title}>
                   {title}
@@ -3381,7 +3381,7 @@ function DocsSection({ title, children }: { title: string; children: React.React
 function DocsGridSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <Box px="6">
-      <Text size="6" mb="4" asChild>
+      <Text size="6" weight="normal" mb="4" asChild>
         <h1>
           <Link href={`#${title}`} id={title}>
             {title}
