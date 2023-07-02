@@ -55,7 +55,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         {...checkboxProps}
         ref={forwardedRef}
         className={classNames('rui-reset-button rui-CheckboxButton', `variant-${variant}`, {
-          highContrast,
+          'high-contrast': highContrast,
         })}
       >
         <CheckboxPrimitive.Indicator className="rui-CheckboxIndicator">
