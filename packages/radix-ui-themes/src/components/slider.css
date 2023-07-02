@@ -86,23 +86,25 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-SliderRoot.size-1 {
-    --track-size: var(--space-1);
-    --thumb-size: calc(14px, var(--scaling));
-    --thumb-radius: var(--br-1);
-    --thumb-focus-outline-size: 3px;
-  }
-  .rui-SliderRoot.size-2 {
-    --track-size: var(--space-2);
-    --thumb-size: var(--space-4);
-    --thumb-radius: var(--br-2);
-    --thumb-focus-outline-size: 4px;
-  }
-  .rui-SliderRoot.size-3 {
-    --track-size: var(--space-3);
-    --thumb-size: var(--space-5);
-    --thumb-radius: var(--br-3);
-    --thumb-focus-outline-size: 5px;
+  .rui-SliderRoot {
+    &.size-1 {
+      --track-size: var(--space-1);
+      --thumb-size: calc(14px, var(--scaling));
+      --thumb-radius: var(--br-1);
+      --thumb-focus-outline-size: 3px;
+    }
+    &.size-2 {
+      --track-size: var(--space-2);
+      --thumb-size: var(--space-4);
+      --thumb-radius: var(--br-2);
+      --thumb-focus-outline-size: 4px;
+    }
+    &.size-3 {
+      --track-size: var(--space-3);
+      --thumb-size: var(--space-5);
+      --thumb-radius: var(--br-3);
+      --thumb-focus-outline-size: 5px;
+    }
   }
 }
 
@@ -112,12 +114,13 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-:root,
-.light-theme {
-  --slider-track-shadow: inset 0 0 0 0.5px var(--gray-a6), inset 0 1px 2px 0 var(--gray-a7);
-}
-.dark-theme {
-  --slider-track-shadow: inset 0 0 0 0.5px var(--gray-a7), inset 0 1px 2px 0 var(--black-a11);
+[data-rui-root] {
+  &.light-theme {
+    --slider-track-shadow: inset 0 0 0 0.5px var(--gray-a6), inset 0 1px 2px 0 var(--gray-a7);
+  }
+  &.dark-theme {
+    --slider-track-shadow: inset 0 0 0 0.5px var(--gray-a7), inset 0 1px 2px 0 var(--black-a11);
+  }
 }
 
 .rui-SliderTrack {
@@ -152,8 +155,10 @@
 
 /* soft */
 
-.rui-SliderRoot.variant-soft .rui-SliderRange {
-  background-color: var(--accent-a6);
+.rui-SliderRoot.variant-soft {
+  & .rui-SliderRange {
+    background-color: var(--accent-a6);
+  }
 }
 
 /* all disabled Sliders */

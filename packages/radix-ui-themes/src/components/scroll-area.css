@@ -18,29 +18,31 @@
   user-select: none;
   /* Disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
-}
-.rui-ScrollAreaScrollbar[data-orientation='vertical'] {
-  flex-direction: column;
-  width: var(--size);
-}
-.rui-ScrollAreaScrollbar[data-orientation='horizontal'] {
-  flex-direction: row;
-  height: var(--size);
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    width: var(--size);
+  }
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+    height: var(--size);
+  }
 }
 
 .rui-ScrollAreaThumb {
   position: relative;
-}
-.rui-ScrollAreaThumb::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  min-width: 44px;
-  min-height: 44px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
 /***************************************************************************************************
@@ -50,17 +52,19 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-ScrollAreaScrollbar.size-1 {
-    --size: var(--space-1);
-    --radius: calc(var(--br-1) / 2);
-  }
-  .rui-ScrollAreaScrollbar.size-2 {
-    --size: var(--space-2);
-    --radius: calc(var(--br-2) / 2);
-  }
-  .rui-ScrollAreaScrollbar.size-3 {
-    --size: var(--space-3);
-    --radius: calc(var(--br-3) / 2);
+  .rui-ScrollAreaScrollbar {
+    &.size-1 {
+      --size: var(--space-1);
+      --radius: calc(var(--br-1) / 2);
+    }
+    &.size-2 {
+      --size: var(--space-2);
+      --radius: calc(var(--br-2) / 2);
+    }
+    &.size-3 {
+      --size: var(--space-3);
+      --radius: calc(var(--br-3) / 2);
+    }
   }
 }
 
@@ -77,19 +81,21 @@
 
   animation-duration: 150ms;
   animation-timing-function: ease-out;
-}
-.rui-ScrollAreaScrollbar[data-state='visible'] {
-  animation-name: fadeIn;
-}
-.rui-ScrollAreaScrollbar[data-state='hidden'] {
-  animation-name: fadeOut;
+
+  &[data-state='visible'] {
+    animation-name: fadeIn;
+  }
+  &[data-state='hidden'] {
+    animation-name: fadeOut;
+  }
 }
 
 .rui-ScrollAreaThumb {
   background-color: var(--gray-a8);
   border-radius: var(--radius);
   transition: background-color 100ms;
-}
-.rui-ScrollAreaThumb:hover {
-  background-color: var(--gray-a9);
+
+  &:hover {
+    background-color: var(--gray-a9);
+  }
 }

@@ -5,7 +5,7 @@
   flex-shrink: 0;
 
   /* Match Text size 2 line-height */
-  height: 20px;
+  height: calc(20px * var(--scaling));
 }
 
 .rui-CheckboxButton {
@@ -24,10 +24,11 @@
   justify-content: center;
   height: var(--size);
   width: var(--size);
-}
-.rui-CheckboxIndicator svg {
-  width: 100%;
-  height: 100%;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /***************************************************************************************************
@@ -37,13 +38,15 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-CheckboxRoot.size-1 {
-    --size: var(--space-4);
-    --radius: min(var(--br-1), var(--br-3-raw));
-  }
-  .rui-CheckboxRoot.size-2 {
-    --size: var(--space-5);
-    --radius: min(var(--br-2), var(--br-4-raw));
+  .rui-CheckboxRoot {
+    &.size-1 {
+      --size: var(--space-4);
+      --radius: min(var(--br-1), var(--br-3-raw));
+    }
+    &.size-2 {
+      --size: var(--space-5);
+      --radius: min(var(--br-2), var(--br-4-raw));
+    }
   }
 }
 

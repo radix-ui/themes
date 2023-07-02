@@ -16,55 +16,57 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Code.size-1 {
-    border-radius: min(var(--br-1), var(--br-2-raw));
-    font-size: calc(0.9 * var(--fs-1));
-    line-height: calc(16px * var(--scaling));
-  }
-  .rui-Code.size-2 {
-    border-radius: min(var(--br-1), var(--br-2-raw));
-    font-size: calc(0.9 * var(--fs-2));
-    line-height: calc(20px * var(--scaling));
-  }
-  .rui-Code.size-3 {
-    border-radius: min(var(--br-2), var(--br-3-raw));
-    font-size: calc(0.9 * var(--fs-3));
-    line-height: calc(24px * var(--scaling));
-  }
-  .rui-Code.size-4 {
-    border-radius: min(var(--br-3), var(--br-4-raw));
-    font-size: calc(0.9 * var(--fs-4));
-    line-height: calc(26px * var(--scaling));
-  }
-  .rui-Code.size-5 {
-    border-radius: min(var(--br-3), var(--br-4-raw));
-    font-size: calc(0.9 * var(--fs-5));
-    letter-spacing: -0.01em;
-    line-height: calc(28px * var(--scaling));
-  }
-  .rui-Code.size-6 {
-    border-radius: min(var(--br-3), var(--br-4-raw));
-    font-size: calc(0.9 * var(--fs-6));
-    letter-spacing: -0.018em;
-    line-height: calc(30px * var(--scaling));
-  }
-  .rui-Code.size-7 {
-    border-radius: min(var(--br-4), var(--br-5-raw));
-    font-size: calc(0.9 * var(--fs-7));
-    letter-spacing: -0.026em;
-    line-height: calc(36px * var(--scaling));
-  }
-  .rui-Code.size-8 {
-    border-radius: min(var(--br-4), var(--br-5-raw));
-    font-size: calc(0.9 * var(--fs-8));
-    letter-spacing: -0.04em;
-    line-height: calc(40px * var(--scaling));
-  }
-  .rui-Code.size-9 {
-    border-radius: min(var(--br-5), var(--br-6-raw));
-    font-size: calc(0.9 * var(--fs-9));
-    letter-spacing: -0.056em;
-    line-height: calc(1 * var(--scaling));
+  .rui-Code {
+    &.size-1 {
+      border-radius: min(var(--br-1), var(--br-2-raw));
+      font-size: calc(0.9 * var(--fs-1));
+      line-height: calc(16px * var(--scaling));
+    }
+    &.size-2 {
+      border-radius: min(var(--br-1), var(--br-2-raw));
+      font-size: calc(0.9 * var(--fs-2));
+      line-height: calc(20px * var(--scaling));
+    }
+    &.size-3 {
+      border-radius: min(var(--br-2), var(--br-3-raw));
+      font-size: calc(0.9 * var(--fs-3));
+      line-height: calc(24px * var(--scaling));
+    }
+    &.size-4 {
+      border-radius: min(var(--br-3), var(--br-4-raw));
+      font-size: calc(0.9 * var(--fs-4));
+      line-height: calc(26px * var(--scaling));
+    }
+    &.size-5 {
+      border-radius: min(var(--br-3), var(--br-4-raw));
+      font-size: calc(0.9 * var(--fs-5));
+      letter-spacing: -0.01em;
+      line-height: calc(28px * var(--scaling));
+    }
+    &.size-6 {
+      border-radius: min(var(--br-3), var(--br-4-raw));
+      font-size: calc(0.9 * var(--fs-6));
+      letter-spacing: -0.018em;
+      line-height: calc(30px * var(--scaling));
+    }
+    &.size-7 {
+      border-radius: min(var(--br-4), var(--br-5-raw));
+      font-size: calc(0.9 * var(--fs-7));
+      letter-spacing: -0.026em;
+      line-height: calc(36px * var(--scaling));
+    }
+    &.size-8 {
+      border-radius: min(var(--br-4), var(--br-5-raw));
+      font-size: calc(0.9 * var(--fs-8));
+      letter-spacing: -0.04em;
+      line-height: calc(40px * var(--scaling));
+    }
+    &.size-9 {
+      border-radius: min(var(--br-5), var(--br-6-raw));
+      font-size: calc(0.9 * var(--fs-9));
+      letter-spacing: -0.056em;
+      line-height: calc(1 * var(--scaling));
+    }
   }
 }
 
@@ -75,11 +77,13 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Code.weight-normal {
-    font-weight: 400;
-  }
-  .rui-Code.weight-bold {
-    font-weight: 600;
+  .rui-Code {
+    &.weight-normal {
+      font-weight: 400;
+    }
+    &.weight-bold {
+      font-weight: 600;
+    }
   }
 }
 

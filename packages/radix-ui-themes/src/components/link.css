@@ -6,32 +6,40 @@
   text-underline-offset: calc(0.025em + 2px);
   text-decoration-color: var(--accent-5);
   color: var(--accent-11);
-}
 
-@breakpoints {
-  .rui-Link.size-7,
-  .rui-Link.size-8,
-  .rui-Link.size-9 {
-    text-decoration-thickness: 2px;
+  &:hover {
+    text-decoration-line: underline;
+  }
+
+  &:focus-visible {
+    outline-color: var(--accent-8);
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 2px;
+    text-decoration-line: none;
+  }
+
+  &.highContrast,
+  .rui-Text:where([data-accent-scale]) & {
+    color: var(--accent-12);
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent-6);
+    outline-color: var(--accent-11);
   }
 }
 
-.rui-Link:hover {
-  text-decoration-line: underline;
-}
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
 
-.rui-Link:focus-visible {
-  outline-color: var(--accent-8);
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-  text-decoration-line: none;
-}
-
-.rui-Link.highContrast,
-.rui-Text:where([data-accent-scale]) .rui-Link {
-  color: var(--accent-12);
-  text-decoration-line: underline;
-  text-decoration-color: var(--accent-6);
-  outline-color: var(--accent-11);
+@breakpoints {
+  .rui-Link {
+    &.size-7,
+    &.size-8,
+    &.size-9 {
+      text-decoration-thickness: 2px;
+    }
+  }
 }

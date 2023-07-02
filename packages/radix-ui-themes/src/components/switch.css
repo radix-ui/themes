@@ -5,7 +5,7 @@
   flex-shrink: 0;
 
   /* Match Text size 2 line-height */
-  height: 20px;
+  height: calc(20px * var(--scaling));
 }
 
 .rui-SwitchButton {
@@ -41,26 +41,28 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-SwitchRoot.size-1 {
-    --root-width: calc(28px * var(--scaling));
-    --root-height: var(--space-4);
-    --root-padding: 1px;
-    --thumb-size: calc(14px * var(--scaling));
-    --thumb-translate: calc(12px * var(--scaling));
-  }
-  .rui-SwitchRoot.size-2 {
-    --root-width: var(--space-7);
-    --root-height: var(--space-5);
-    --root-padding: var(--space-1);
-    --thumb-size: var(--space-4);
-    --thumb-translate: var(--space-4);
-  }
-  .rui-SwitchRoot.size-3 {
-    --root-width: calc(56px * var(--scaling));
-    --root-height: var(--space-6);
-    --root-padding: var(--space-1);
-    --thumb-size: var(--space-5);
-    --thumb-translate: var(--space-5);
+  .rui-SwitchRoot {
+    &.size-1 {
+      --root-width: calc(28px * var(--scaling));
+      --root-height: var(--space-4);
+      --root-padding: 1px;
+      --thumb-size: calc(14px * var(--scaling));
+      --thumb-translate: calc(12px * var(--scaling));
+    }
+    &.size-2 {
+      --root-width: var(--space-7);
+      --root-height: var(--space-5);
+      --root-padding: var(--space-1);
+      --thumb-size: var(--space-4);
+      --thumb-translate: var(--space-4);
+    }
+    &.size-3 {
+      --root-width: calc(56px * var(--scaling));
+      --root-height: var(--space-6);
+      --root-padding: var(--space-1);
+      --thumb-size: var(--space-5);
+      --thumb-translate: var(--space-5);
+    }
   }
 }
 

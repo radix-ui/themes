@@ -13,16 +13,22 @@
   margin-right: auto;
 }
 
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 @breakpoints {
-  .rui-Container.size-1 {
-    max-width: var(--container-1);
-  }
-
-  .rui-Container.size-2 {
-    max-width: var(--container-2);
-  }
-
-  .rui-Container.size-3 {
-    max-width: var(--container-3);
+  .rui-Container {
+    &.size-1 {
+      max-width: var(--container-1);
+    }
+    &.size-2 {
+      max-width: var(--container-2);
+    }
+    &.size-3 {
+      max-width: var(--container-3);
+    }
   }
 }

@@ -536,7 +536,7 @@ export default function Sink() {
                             <td key={size}>
                               <SelectRoot defaultValue="apple" size={size}>
                                 <SelectTrigger variant={variant} />
-                                <SelectContent>
+                                <SelectContent position="popper">
                                   <SelectItemsDemo />
                                 </SelectContent>
                               </SelectRoot>
@@ -545,7 +545,7 @@ export default function Sink() {
                           <td>
                             <SelectRoot defaultValue="apple" size="2">
                               <SelectTrigger variant={variant} highContrast />
-                              <SelectContent>
+                              <SelectContent position="popper">
                                 <SelectItemsDemo />
                               </SelectContent>
                             </SelectRoot>
@@ -554,7 +554,7 @@ export default function Sink() {
                           <td>
                             <SelectRoot defaultValue="apple" size="2">
                               <SelectTrigger variant={variant} color="gray" />
-                              <SelectContent>
+                              <SelectContent position="popper">
                                 <SelectItemsDemo />
                               </SelectContent>
                             </SelectRoot>
@@ -562,7 +562,7 @@ export default function Sink() {
                           <td>
                             <SelectRoot defaultValue="apple" size="2">
                               <SelectTrigger variant={variant} color="gray" highContrast />
-                              <SelectContent>
+                              <SelectContent position="popper">
                                 <SelectItemsDemo />
                               </SelectContent>
                             </SelectRoot>
@@ -571,7 +571,7 @@ export default function Sink() {
                           <td>
                             <SelectRoot defaultValue="apple" size="2" disabled>
                               <SelectTrigger variant={variant} />
-                              <SelectContent>
+                              <SelectContent position="popper">
                                 <SelectItemsDemo />
                               </SelectContent>
                             </SelectRoot>

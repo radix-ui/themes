@@ -4,23 +4,24 @@
   border-radius: var(--br-2);
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
-}
 
-.rui-TooltipContent {
   animation-duration: 200ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-.rui-TooltipContent[data-state='delayed-open'][data-side='top'] {
-  animation-name: slideUpAndFadeIn;
-}
-.rui-TooltipContent[data-state='delayed-open'][data-side='bottom'] {
-  animation-name: slideDownAndFadeIn;
-}
-.rui-TooltipContent[data-state='delayed-open'][data-side='left'] {
-  animation-name: slideLeftAndFadeIn;
-}
-.rui-TooltipContent[data-state='delayed-open'][data-side='right'] {
-  animation-name: slideRightAndFadeIn;
+
+  &[data-state='delayed-open'] {
+    &[data-side='top'] {
+      animation-name: slideUpAndFadeIn;
+    }
+    &[data-side='bottom'] {
+      animation-name: slideDownAndFadeIn;
+    }
+    &[data-side='left'] {
+      animation-name: slideLeftAndFadeIn;
+    }
+    &[data-side='right'] {
+      animation-name: slideRightAndFadeIn;
+    }
+  }
 }
 
 .rui-TooltipText {
@@ -42,7 +43,8 @@
 .rui-TooltipContent.multiline {
   max-width: 250px;
   border-radius: min(var(--br-2), var(--br-4-raw));
-}
-.rui-TooltipContent.multiline .rui-TooltipText {
-  line-height: calc(18px * var(--scaling));
+
+  & .rui-TooltipText {
+    line-height: calc(18px * var(--scaling));
+  }
 }

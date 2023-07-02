@@ -1,11 +1,12 @@
-:root,
-.light-theme {
-  --kbd-shadow: inset 0 0.5px var(--white-a12), inset 0 3px 6px var(--gray-a2),
-    0 0 0 0.5px var(--gray-a7), inset 0 -0.5px var(--gray-a6), 0 1px 2px var(--gray-a7);
-}
-.dark-theme {
-  --kbd-shadow: inset 0 0.5px var(--white-a9), inset 0 3px 6px var(--gray-a2),
-    0 0 0 0.5px var(--gray-a7), inset 0 -0.5px var(--black-a9), 0 1px 2px var(--black-a12);
+[data-rui-root] {
+  &.light-theme {
+    --kbd-shadow: inset 0 0.5px var(--white-a12), inset 0 3px 6px var(--gray-a2),
+      0 0 0 0.5px var(--gray-a7), inset 0 -0.5px var(--gray-a6), 0 1px 2px var(--gray-a7);
+  }
+  &.dark-theme {
+    --kbd-shadow: inset 0 0.5px var(--white-a9), inset 0 3px 6px var(--gray-a2),
+      0 0 0 0.5px var(--gray-a7), inset 0 -0.5px var(--black-a9), 0 1px 2px var(--black-a12);
+  }
 }
 
 .rui-Kbd {
@@ -40,14 +41,16 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Kbd.width-command {
-  width: 3em;
-  justify-content: flex-end;
-}
-.rui-Kbd.width-shift {
-  width: 4em;
-  justify-content: flex-start;
-}
-.rui-Kbd.width-space {
-  width: 8em;
+.rui-Kbd {
+  &.width-command {
+    width: 3em;
+    justify-content: flex-end;
+  }
+  &.width-shift {
+    width: 4em;
+    justify-content: flex-start;
+  }
+  &.width-space {
+    width: 8em;
+  }
 }

@@ -8,7 +8,7 @@
   flex-shrink: 0;
 
   /* Match Text size 2 line-height */
-  height: 20px;
+  height: calc(20px * var(--scaling));
 }
 
 .rui-RadioGroupButton {
@@ -35,13 +35,15 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-RadioGroupRoot.size-1 {
-    --size: var(--space-4);
-    --indicator-size: calc(6px * var(--scaling));
-  }
-  .rui-RadioGroupRoot.size-2 {
-    --size: var(--space-5);
-    --indicator-size: calc(10px * var(--scaling));
+  .rui-RadioGroupRoot {
+    &.size-1 {
+      --size: var(--space-4);
+      --indicator-size: calc(6px * var(--scaling));
+    }
+    &.size-2 {
+      --size: var(--space-5);
+      --indicator-size: calc(10px * var(--scaling));
+    }
   }
 }
 

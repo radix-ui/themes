@@ -13,23 +13,25 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Button.size-1 {
-    padding-left: var(--space-2);
-    padding-right: var(--space-2);
-    gap: var(--space-1);
-    font-size: var(--fs-1);
-  }
-  .rui-Button.size-2 {
-    padding-left: var(--space-3);
-    padding-right: var(--space-3);
-    gap: var(--space-2);
-    font-size: var(--fs-2);
-  }
-  .rui-Button.size-3 {
-    padding-left: var(--space-4);
-    padding-right: var(--space-4);
-    gap: var(--space-3);
-    font-size: var(--fs-3);
+  .rui-Button {
+    &.size-1 {
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+      gap: var(--space-1);
+      font-size: var(--fs-1);
+    }
+    &.size-2 {
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
+      gap: var(--space-2);
+      font-size: var(--fs-2);
+    }
+    &.size-3 {
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+      gap: var(--space-3);
+      font-size: var(--fs-3);
+    }
   }
 }
 
