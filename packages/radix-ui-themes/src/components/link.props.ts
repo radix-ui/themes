@@ -6,7 +6,7 @@ const linkSizeDefault: LinkSize | undefined = undefined;
 
 const linkWeights = ['normal', 'bold'] as const;
 type LinkWeight = (typeof linkWeights)[number];
-const linkWeightDefault: LinkWeight = 'normal';
+const linkWeightDefault: LinkWeight | undefined = undefined;
 
 const linkGap = ['0', '1', '2'] as const;
 type LinkGap = (typeof linkGap)[number];
