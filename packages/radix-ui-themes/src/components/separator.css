@@ -1,9 +1,6 @@
 .rui-Separator {
-  background-color: var(--gray-a6);
+  background-color: var(--accent-a6);
 
-  &:where([data-accent-scale]) {
-    background-color: var(--accent-a6);
-  }
   &[data-orientation='vertical'] {
     width: 1px;
     height: var(--separator-size);
