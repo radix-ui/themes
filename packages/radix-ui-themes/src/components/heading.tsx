@@ -6,6 +6,7 @@ import {
   headingAlignDefault,
   headingTrimDefault,
   headingColorDefault,
+  headingHighContrastDefault,
 } from './heading.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
@@ -20,6 +21,7 @@ interface HeadingProps extends PropsWithoutRefOrColor<'h1'>, MarginProps {
   align?: Responsive<HeadingAlign>;
   trim?: Responsive<HeadingTrim>;
   color?: ThemeAccentScale | 'color';
+  highContrast?: boolean;
 }
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -30,6 +32,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
     align = headingAlignDefault,
     trim = headingTrimDefault,
     color = headingColorDefault,
+    highContrast = headingHighContrastDefault,
     ...headingProps
   } = marginRest;
   const Comp = asChild ? Slot : 'h1';
@@ -44,6 +47,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
         withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),
+        { 'high-contrast': highContrast },
         className
       )}
     />

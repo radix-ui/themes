@@ -2638,8 +2638,8 @@ export default function Sink() {
                       ))}
                   </Flex>
 
-                  <Flex direction="column" gap="5">
-                    <Flex gap="5" mt="5">
+                  <Flex direction="column" gap="5" mt="8">
+                    <Flex gap="5">
                       {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
                         <Flex key={color} direction="column" gap="1">
                           <Text color={color}>{upperFirst(color)}</Text>
@@ -2801,6 +2801,35 @@ export default function Sink() {
                         Principles of the Typographic Craft
                       </Heading>
                     </Flex>
+                  </Flex>
+
+                  <Flex direction="column" gap="5" mt="8">
+                    <Flex gap="5">
+                      {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
+                        <Flex key={color} direction="column" gap="1">
+                          <Heading color={color}>{upperFirst(color)}</Heading>
+                          <Heading color={color} highContrast>
+                            {upperFirst(color)}
+                          </Heading>
+                        </Flex>
+                      ))}
+                    </Flex>
+
+                    <Heading color="red" highContrast>
+                      This is some red text in high-contrast and this{' '}
+                      <Text asChild color="blue">
+                        <span>word</span>
+                      </Text>{' '}
+                      should be blue.
+                    </Heading>
+
+                    <Heading color="red">
+                      This is some red text and this{' '}
+                      <Text asChild highContrast>
+                        <span>word</span>
+                      </Text>{' '}
+                      should be in high-contrast.
+                    </Heading>
                   </Flex>
                 </DocsSection>
 

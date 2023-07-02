@@ -13,6 +13,7 @@ type HeadingTrim = (typeof headingTrimValues)[number];
 const headingTrimDefault: HeadingTrim | undefined = undefined;
 
 const headingColorDefault: ThemeAccentScale | undefined = undefined;
+const headingHighContrastDefault: boolean | undefined = undefined;
 
 export {
   headingSizes,
@@ -22,5 +23,6 @@ export {
   headingTrimValues,
   headingTrimDefault,
   headingColorDefault,
+  headingHighContrastDefault,
 };
 export type { HeadingSize, HeadingAlign, HeadingTrim };
