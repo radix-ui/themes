@@ -2066,9 +2066,14 @@ export default function Sink() {
                             <td key={size}>
                               <Flex key={variant} gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
                                 {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
-                                  <Badge key={color} size={size} variant={variant} color={color}>
-                                    {upperFirst(color)}
-                                  </Badge>
+                                  <Flex key={color} direction="column" gap="1">
+                                    <Badge size={size} variant={variant} color={color}>
+                                      {upperFirst(color)}
+                                    </Badge>
+                                    <Badge size={size} variant={variant} color={color} highContrast>
+                                      {upperFirst(color)}
+                                    </Badge>
+                                  </Flex>
                                 ))}
                               </Flex>
                             </td>
@@ -2077,6 +2082,44 @@ export default function Sink() {
                       ))}
                     </tbody>
                   </table>
+
+                  <Text my="5">
+                    <Code>radius</Code> can be set per instance:
+                  </Text>
+
+                  <details>
+                    <summary>
+                      <Text size="2" color="gray" asChild>
+                        <span>See specific radius examples</span>
+                      </Text>
+                    </summary>
+                    <Box mt="3">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {badgeSizes.map((size) => (
+                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeRadii.map((radius) => (
+                            <tr key={radius}>
+                              <RowHeaderCell>{radius}</RowHeaderCell>
+                              {badgeSizes.map((size) => (
+                                <td key={size}>
+                                  <Badge size={size} radius={radius}>
+                                    {upperFirst(radius)}
+                                  </Badge>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </details>
 
                   <Text my="5">
                     <Code>color</Code> can be set per instance:
@@ -2108,9 +2151,14 @@ export default function Sink() {
                                 <RowHeaderCell>{color}</RowHeaderCell>
                                 {badgeVariants.map((variant) => (
                                   <td key={variant}>
-                                    <Badge variant={variant} color={color}>
-                                      {color}
-                                    </Badge>
+                                    <Flex direction="column" align="start" gap="1">
+                                      <Badge variant={variant} color={color}>
+                                        {color}
+                                      </Badge>
+                                      <Badge variant={variant} color={color} highContrast>
+                                        {color}
+                                      </Badge>
+                                    </Flex>
                                   </td>
                                 ))}
                               </tr>

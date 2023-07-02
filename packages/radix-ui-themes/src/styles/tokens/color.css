@@ -151,7 +151,7 @@
     --color-panel: white;
     --color-overlay: var(--black-a9);
     --color-surface-1: white;
-    --color-surface-button: white;
+    --color-surface-1-accent: white;
   }
   &.dark-theme {
     color-scheme: dark;
@@ -159,10 +159,10 @@
     --color-panel: var(--gray-2);
     --color-overlay: var(--black-a11);
     --color-surface-1: var(--gray-a2);
-    --color-surface-button: var(--accent-a2);
+    --color-surface-1-accent: var(--accent-a2);
 
-    & [data-accent-scale='gray'] {
-      --color-surface-button: var(--accent-a2);
+    & [data-accent-scale] {
+      --color-surface-1-accent: var(--accent-a2);
     }
   }
 }

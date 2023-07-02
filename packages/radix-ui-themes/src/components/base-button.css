@@ -130,7 +130,7 @@
   }
 }
 .rui-BaseButton:where(.variant-surface) {
-  background-color: var(--color-surface-button);
+  background-color: var(--color-surface-1-accent);
 }
 
 /* all disabled buttons */

@@ -2,7 +2,6 @@
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
-  border-radius: 9999px;
   white-space: nowrap;
   font-weight: 600;
   flex-shrink: 0;
@@ -24,6 +23,7 @@
     padding-left: var(--space-2);
     padding-right: var(--space-2);
     gap: var(--space-1);
+    border-radius: var(--br-1);
   }
   .rui-Badge.size-2 {
     height: var(--space-6);
@@ -31,6 +31,7 @@
     padding-left: var(--space-4);
     padding-right: var(--space-4);
     gap: var(--space-2);
+    border-radius: var(--br-2);
   }
 }
 
@@ -40,34 +41,46 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+/* solid */
+
+.rui-Badge.variant-solid {
+  background-color: var(--accent-9);
+  color: var(--accent-9-contrast);
+
+  &:where(.highContrast):where([data-accent-scale='gray']) {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+  }
+}
+
 /* surface */
 
-.rui-Badge.variant-surface:where([data-accent-scale]) {
-  background-color: var(--color-surface-1);
-  box-shadow: inset 0 0 0 0.5px var(--accent-5), 0 0 0 0.5px var(--accent-5);
+.rui-Badge.variant-surface {
+  background-color: var(--color-surface-1-accent);
+  box-shadow: inset 0 0 0 0.5px var(--accent-a6), 0 0 0 0.5px var(--accent-a6);
   color: var(--accent-11);
-}
-.rui-Badge.variant-surface:where([data-accent-scale='gray']) {
-  box-shadow: inset 0 0 0 0.5px var(--gray-a5), 0 0 0 0.5px var(--gray-a5);
-  color: var(--gray-12);
+
+  &:where(.highContrast) {
+    color: var(--accent-12);
+  }
 }
 
 /* soft */
 
-.rui-Badge.variant-soft:where([data-accent-scale]) {
+.rui-Badge.variant-soft {
   background-color: var(--accent-3);
   color: var(--accent-11);
-}
-.rui-Badge.variant-soft:where([data-accent-scale='gray']) {
-  color: var(--gray-12);
+  &:where(.highContrast) {
+    color: var(--accent-12);
+  }
 }
 
 /* outline */
 
-.rui-Badge.variant-outline:where([data-accent-scale]) {
-  box-shadow: inset 0 0 0 0.5px var(--accent-5), 0 0 0 0.5px var(--accent-5);
+.rui-Badge.variant-outline {
+  box-shadow: inset 0 0 0 0.5px var(--accent-a6), 0 0 0 0.5px var(--accent-a6);
   color: var(--accent-11);
-}
-.rui-Badge.variant-outline:where([data-accent-scale='gray']) {
-  color: var(--gray-12);
+  &:where(.highContrast) {
+    color: var(--accent-12);
+  }
 }
