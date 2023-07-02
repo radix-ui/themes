@@ -1,6 +1,6 @@
 .rui-Text {
   margin: 0;
-  line-height: var(--line-height);
+  line-height: var(--line-height, inherit);
 
   &:where([data-accent-scale]) {
     color: var(--accent-a11);

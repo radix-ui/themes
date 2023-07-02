@@ -2,7 +2,7 @@ import type { ThemeAccentScale } from '../theme';
 
 const textSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type TextSize = (typeof textSizes)[number];
-const textSizeDefault: TextSize = '3';
+const textSizeDefault: TextSize | undefined = undefined;
 
 const textWeights = ['normal', 'bold'] as const;
 type TextWeight = (typeof textWeights)[number];
