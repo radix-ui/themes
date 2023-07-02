@@ -78,7 +78,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rui-ContextMenuContent',
               withBreakpoints(size, 'size'),
               `variant-${variant}`,
-              { highContrast },
+              { 'high-contrast': highContrast },
               className
             )}
           >
@@ -292,7 +292,7 @@ const ContextMenuSubContent = React.forwardRef<
             'rui-ContextMenuSubContent',
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
-            { highContrast },
+            { 'high-contrast': highContrast },
             className
           )}
         />

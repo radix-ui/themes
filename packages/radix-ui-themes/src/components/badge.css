@@ -49,7 +49,7 @@
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
 
-  &:where(.highContrast):where([data-accent-scale='gray']) {
+  &:where(.high-contrast):where([data-accent-scale='gray']) {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -62,7 +62,7 @@
   box-shadow: inset 0 0 0 0.5px var(--accent-a6), 0 0 0 0.5px var(--accent-a6);
   color: var(--accent-11);
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     color: var(--accent-12);
   }
 }
@@ -72,7 +72,7 @@
 .rui-Badge.variant-soft {
   background-color: var(--accent-3);
   color: var(--accent-11);
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     color: var(--accent-12);
   }
 }
@@ -82,7 +82,7 @@
 .rui-Badge.variant-outline {
   box-shadow: inset 0 0 0 0.5px var(--accent-a6), 0 0 0 0.5px var(--accent-a6);
   color: var(--accent-11);
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     color: var(--accent-12);
   }
 }

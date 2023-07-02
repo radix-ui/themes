@@ -5,8 +5,8 @@
   &:where([data-accent-scale]) {
     color: var(--accent-a11);
 
-    &:where(.highContrast),
-    & .rui-Text:where(.highContrast) {
+    &:where(.high-contrast),
+    & .rui-Text:where(.high-contrast) {
       color: var(--accent-a12);
     }
   }

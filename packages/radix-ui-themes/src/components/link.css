@@ -19,7 +19,7 @@
     text-decoration-line: none;
   }
 
-  &.highContrast,
+  &.high-contrast,
   .rui-Text:where([data-accent-scale]) & {
     color: var(--accent-12);
     text-decoration-line: underline;

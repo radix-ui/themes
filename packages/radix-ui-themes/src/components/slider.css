@@ -148,7 +148,7 @@
   & .rui-SliderRange {
     background-color: var(--accent-9);
   }
-  &:where(.highContrast) .rui-SliderRange {
+  &:where(.high-contrast) .rui-SliderRange {
     background-color: var(--accent-12);
   }
 }

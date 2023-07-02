@@ -51,7 +51,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
         withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),
-        { highContrast },
+        { 'high-contrast': highContrast },
         className
       )}
     />

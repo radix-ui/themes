@@ -79,7 +79,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               'rui-DropdownMenuContent',
               withBreakpoints(size, 'size'),
               `variant-${variant}`,
-              { highContrast },
+              { 'high-contrast': highContrast },
               className
             )}
           >
@@ -295,7 +295,7 @@ const DropdownMenuSubContent = React.forwardRef<
             'rui-DropdownMenuSubContent',
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
-            { highContrast },
+            { 'high-contrast': highContrast },
             className
           )}
         />

@@ -74,7 +74,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
             'rui-SelectTrigger',
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
-            { highContrast },
+            { 'high-contrast': highContrast },
             withMarginProps(marginProps),
             className
           )}
@@ -132,7 +132,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
               'rui-SelectContent',
               withBreakpoints(size, 'size'),
               `variant-${variant}`,
-              { highContrast }
+              { 'high-contrast': highContrast }
             )}
           >
             <SelectPrimitive.Viewport className="rui-SelectViewport">

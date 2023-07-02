@@ -44,7 +44,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
           'rui-RadioGroupRoot',
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
-          { highContrast },
+          { 'high-contrast': highContrast },
           withMarginProps(marginProps),
           className
         )}

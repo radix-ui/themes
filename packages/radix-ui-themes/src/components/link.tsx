@@ -45,7 +45,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
         'rui-Link',
         withBreakpoints(size, 'size'),
         withBreakpoints(weight, 'weight'),
-        { highContrast },
+        { 'high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
     />

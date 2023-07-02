@@ -47,7 +47,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
         'rui-AvatarRoot',
         withMarginProps(marginProps),
         `variant-${variant}`,
-        { highContrast },
+        { 'high-contrast': highContrast },
         withBreakpoints(size, 'size'),
         className
       )}

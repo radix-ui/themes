@@ -99,7 +99,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.highContrast) .rui-AvatarFallback {
+  &:where(.high-contrast) .rui-AvatarFallback {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -112,7 +112,7 @@
     background-color: var(--accent-3);
     color: var(--accent-11);
   }
-  &:where(.highContrast) .rui-AvatarFallback {
+  &:where(.high-contrast) .rui-AvatarFallback {
     color: var(--accent-12);
   }
 }

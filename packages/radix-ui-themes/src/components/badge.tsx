@@ -42,7 +42,7 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
         'rui-Badge',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        { highContrast },
+        { 'high-contrast': highContrast },
         withMarginProps(marginProps),
         className
       )}

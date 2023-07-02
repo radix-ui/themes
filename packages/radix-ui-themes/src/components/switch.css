@@ -104,11 +104,11 @@
   & .rui-SwitchButton:where([data-state='checked']) {
     background-color: var(--accent-9);
   }
-  &:where(.highContrast) .rui-SwitchButton:where([data-state='checked']) {
+  &:where(.high-contrast) .rui-SwitchButton:where([data-state='checked']) {
     background-color: var(--accent-12);
     outline-color: var(--accent-a11);
   }
-  :where(.dark-theme) &:where(.highContrast) .rui-SwitchThumb:where([data-state='checked']) {
+  :where(.dark-theme) &:where(.high-contrast) .rui-SwitchThumb:where([data-state='checked']) {
     background-color: var(--accent-1);
     box-shadow: 0 0 0 1px var(--accent-1);
   }

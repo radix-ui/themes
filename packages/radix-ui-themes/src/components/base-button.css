@@ -58,7 +58,7 @@
     box-shadow: inset 0 0 0 2px var(--color-background), 0 0 0 1px var(--accent-a9);
   }
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     background-color: var(--accent-12);
     color: var(--gray-1);
 
@@ -83,7 +83,7 @@
     box-shadow: inset 0 0 0 1px var(--accent-a7), 0 0 0 1px var(--accent-a7);
   }
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     color: var(--accent-12);
   }
 }
@@ -127,7 +127,7 @@
     box-shadow: inset 0 0 0 1px var(--accent-a9), 0 0 0 1px var(--accent-a8);
   }
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     color: var(--accent-12);
   }
 }

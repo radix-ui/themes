@@ -147,7 +147,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     & .rui-BaseMenuSubTrigger[data-state='open'],
     & .rui-BaseMenuItem[data-highlighted] {
       background-color: var(--accent-12);

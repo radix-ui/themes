@@ -71,7 +71,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.highContrast) .rui-RadioGroupButton:where([data-state='checked']) {
+  &:where(.high-contrast) .rui-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-12);
     color: var(--accent-1);
 

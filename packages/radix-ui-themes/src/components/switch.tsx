@@ -44,7 +44,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
         'rui-SwitchRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        { highContrast },
+        { 'high-contrast': highContrast },
         withMarginProps(marginProps),
         className
       )}

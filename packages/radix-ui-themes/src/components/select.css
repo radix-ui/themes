@@ -145,7 +145,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.highContrast) .rui-SelectItem[data-highlighted] {
+  &:where(.high-contrast) .rui-SelectItem[data-highlighted] {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }

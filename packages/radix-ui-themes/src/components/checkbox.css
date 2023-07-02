@@ -74,7 +74,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
 
-    &:where(.highContrast) {
+    &:where(.high-contrast) {
       background-color: var(--accent-12);
       color: var(--accent-1);
 

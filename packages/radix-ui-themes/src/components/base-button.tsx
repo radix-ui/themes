@@ -43,7 +43,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
         'rui-BaseButton',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        { highContrast },
+        { 'high-contrast': highContrast },
         withMarginProps(marginProps),
         className
       )}

@@ -109,7 +109,7 @@
   background-color: var(--accent-a9);
   color: var(--accent-9-contrast);
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -121,7 +121,7 @@
   background-color: var(--accent-a3);
   color: var(--accent-11);
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     background-color: var(--accent-a4);
     color: var(--accent-12);
   }
@@ -133,7 +133,7 @@
   box-shadow: 0 0 0 1px var(--accent-a6);
   color: var(--accent-11);
 
-  &:where(.highContrast) {
+  &:where(.high-contrast) {
     box-shadow: 0 0 0 1px var(--accent-a7);
     color: var(--accent-12);
   }
