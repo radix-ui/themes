@@ -22,7 +22,8 @@
   overflow-wrap: break-word;
   font-family: var(--ff-sans);
   font-size: var(--fs-3); /* Same size used for `<Text size="3">` */
-  line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` */
+  --default-line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` */
+  line-height: var(--default-line-height);
   text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
