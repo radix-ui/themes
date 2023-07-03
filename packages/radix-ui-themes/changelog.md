@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.0.16
+
+- `Dialog`, `AlertDialog`: Fix overlay color when `mode` is set
+- `Select`:
+  - Add `placeholder` styling
+  - Add internal `ScrollArea` to provide overflow affordance
+  - Adjust `disabled` item color
+- `DropdownMenu`, `ContextMenu`:
+  - Add internal `ScrollArea` to provide overflow affordance
+  - Adjust `disabled` item color
+- `Text`: Fix `trim` for non-defined sizes
+- General:
+  - Popper components, default `collisionPadding` to `10` for consistency
+  - Fix responsive styles bug (output order)
+
 ## 0.0.15
 
 - `Slider`: Fix `size="1"` thumb not showing
