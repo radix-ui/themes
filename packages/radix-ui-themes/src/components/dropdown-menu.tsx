@@ -71,6 +71,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
             data-accent-scale={resolvedColor}
             align="start"
             sideOffset={4}
+            collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
             className={classNames(
@@ -83,14 +84,16 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               className
             )}
           >
-            <DropdownMenuContentContext.Provider
-              value={React.useMemo(
-                () => ({ size, variant, color: resolvedColor, highContrast }),
-                [size, variant, resolvedColor, highContrast]
-              )}
-            >
-              {children}
-            </DropdownMenuContentContext.Provider>
+            <div className={classNames('rui-BaseMenuViewport', 'rui-DropdownMenuViewport')}>
+              <DropdownMenuContentContext.Provider
+                value={React.useMemo(
+                  () => ({ size, variant, color: resolvedColor, highContrast }),
+                  [size, variant, resolvedColor, highContrast]
+                )}
+              >
+                {children}
+              </DropdownMenuContentContext.Provider>
+            </div>
           </DropdownMenuPrimitive.Content>
         </ThemeConfig>
       </DropdownMenuPrimitive.Portal>
@@ -277,7 +280,7 @@ const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, container, forceMount, ...subContentProps } = props;
+  const { className, children, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -285,6 +288,7 @@ const DropdownMenuSubContent = React.forwardRef<
         <DropdownMenuPrimitive.SubContent
           data-accent-scale={color}
           alignOffset={-Number(size) * 4}
+          collisionPadding={10}
           {...subContentProps}
           ref={forwardedRef}
           className={classNames(
@@ -298,7 +302,11 @@ const DropdownMenuSubContent = React.forwardRef<
             { 'high-contrast': highContrast },
             className
           )}
-        />
+        >
+          <div className={classNames('rui-BaseMenuViewport', 'rui-DropdownMenuViewport')}>
+            {children}
+          </div>
+        </DropdownMenuPrimitive.SubContent>
       </ThemeConfig>
     </DropdownMenuPrimitive.Portal>
   );

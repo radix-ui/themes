@@ -50,6 +50,7 @@ const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>
           <HoverCardPrimitive.Content
             align="start"
             sideOffset={8}
+            collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
             className={classNames('rui-PopperContent', 'rui-HoverCardContent', className)}

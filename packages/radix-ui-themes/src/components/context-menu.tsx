@@ -70,6 +70,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
           <ContextMenuPrimitive.Content
             data-accent-scale={resolvedColor}
             alignOffset={-Number(size) * 4}
+            collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
             className={classNames(
@@ -82,14 +83,16 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               className
             )}
           >
-            <ContextMenuContentContext.Provider
-              value={React.useMemo(
-                () => ({ size, variant, color: resolvedColor, highContrast }),
-                [size, variant, resolvedColor, highContrast]
-              )}
-            >
-              {children}
-            </ContextMenuContentContext.Provider>
+            <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
+              <ContextMenuContentContext.Provider
+                value={React.useMemo(
+                  () => ({ size, variant, color: resolvedColor, highContrast }),
+                  [size, variant, resolvedColor, highContrast]
+                )}
+              >
+                {children}
+              </ContextMenuContentContext.Provider>
+            </div>
           </ContextMenuPrimitive.Content>
         </ThemeConfig>
       </ContextMenuPrimitive.Portal>
@@ -274,7 +277,7 @@ const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, container, forceMount, ...subContentProps } = props;
+  const { className, children, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -282,6 +285,7 @@ const ContextMenuSubContent = React.forwardRef<
         <ContextMenuPrimitive.SubContent
           data-accent-scale={color}
           alignOffset={-Number(size) * 4}
+          collisionPadding={10}
           {...subContentProps}
           ref={forwardedRef}
           className={classNames(
@@ -295,7 +299,11 @@ const ContextMenuSubContent = React.forwardRef<
             { 'high-contrast': highContrast },
             className
           )}
-        />
+        >
+          <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
+            {children}
+          </div>
+        </ContextMenuPrimitive.SubContent>
       </ThemeConfig>
     </ContextMenuPrimitive.Portal>
   );

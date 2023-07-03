@@ -1,9 +1,26 @@
 .rui-BaseMenuContent {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   background-color: var(--content-bg);
   overflow: hidden;
-  padding: var(--content-padding);
+
   border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--br-3));
   min-width: 180px;
+}
+
+.rui-BaseMenuViewport {
+  flex: 1 1 0%;
+  padding: var(--content-padding);
+  overflow: auto;
+
+  /* hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .rui-BaseMenuItem {

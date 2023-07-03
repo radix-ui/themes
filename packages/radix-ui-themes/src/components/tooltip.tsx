@@ -37,6 +37,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
         <ThemeConfig asChild>
           <TooltipPrimitive.Content
             sideOffset={4}
+            collisionPadding={10}
             {...tooltipContentProps}
             ref={forwardedRef}
             className={classNames('rui-TooltipContent', { multiline }, className)}
