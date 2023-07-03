@@ -4,6 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
+import { ScrollArea } from './scroll-area';
 import {
   contextMenuContentModeDefault,
   contextMenuContentSizeDefault,
@@ -83,16 +84,18 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               className
             )}
           >
-            <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
-              <ContextMenuContentContext.Provider
-                value={React.useMemo(
-                  () => ({ size, variant, color: resolvedColor, highContrast }),
-                  [size, variant, resolvedColor, highContrast]
-                )}
-              >
-                {children}
-              </ContextMenuContentContext.Provider>
-            </div>
+            <ScrollArea type="auto">
+              <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
+                <ContextMenuContentContext.Provider
+                  value={React.useMemo(
+                    () => ({ size, variant, color: resolvedColor, highContrast }),
+                    [size, variant, resolvedColor, highContrast]
+                  )}
+                >
+                  {children}
+                </ContextMenuContentContext.Provider>
+              </div>
+            </ScrollArea>
           </ContextMenuPrimitive.Content>
         </ThemeConfig>
       </ContextMenuPrimitive.Portal>
@@ -300,9 +303,11 @@ const ContextMenuSubContent = React.forwardRef<
             className
           )}
         >
-          <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
-            {children}
-          </div>
+          <ScrollArea type="auto">
+            <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
+              {children}
+            </div>
+          </ScrollArea>
         </ContextMenuPrimitive.SubContent>
       </ThemeConfig>
     </ContextMenuPrimitive.Portal>

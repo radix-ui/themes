@@ -2,25 +2,29 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: var(--content-bg);
   overflow: hidden;
-
-  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--br-3));
   min-width: 180px;
+
+  background-color: var(--content-bg);
+  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--br-3));
+
+  & .rui-ScrollAreaRoot {
+    display: flex;
+    flex-direction: column;
+  }
+  & .rui-ScrollAreaScrollbar {
+    --scrollbar-vertical-margin: calc(var(--content-padding) + var(--radius-factor) * 0.001px);
+    margin-top: var(--scrollbar-vertical-margin);
+    margin-bottom: var(--scrollbar-vertical-margin);
+  }
 }
 
 .rui-BaseMenuViewport {
   flex: 1 1 0%;
-  padding: var(--content-padding);
+  display: flex;
+  flex-direction: column;
   overflow: auto;
-
-  /* hide scrollbar */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  padding: var(--content-padding);
 }
 
 .rui-BaseMenuItem {
@@ -96,25 +100,27 @@
     &.size-1 {
       --content-padding: var(--space-1);
       --item-height: var(--space-5);
-    }
-    &.size-1 .rui-BaseMenuItem {
-      font-size: var(--fs-1);
-      height: var(--space-5);
-    }
-    &.size-1 .rui-BaseMenuLabel {
-      height: var(--space-5);
+
+      & .rui-BaseMenuItem {
+        font-size: var(--fs-1);
+        height: var(--space-5);
+      }
+      & .rui-BaseMenuLabel {
+        height: var(--space-5);
+      }
     }
 
     &.size-2 {
       --content-padding: var(--space-2);
       --item-height: var(--space-6);
-    }
-    &.size-2 .rui-BaseMenuItem {
-      font-size: var(--fs-2);
-      height: var(--space-6);
-    }
-    &.size-2 .rui-BaseMenuLabel {
-      height: var(--space-6);
+
+      & .rui-BaseMenuItem {
+        font-size: var(--fs-2);
+        height: var(--space-6);
+      }
+      & .rui-BaseMenuLabel {
+        height: var(--space-6);
+      }
     }
   }
 }

@@ -16,18 +16,36 @@
 }
 
 .rui-SelectContent {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   overflow: hidden;
-  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--br-3));
+
   background-color: var(--content-bg);
+  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--br-3));
 
   &[data-side] {
     min-width: var(--radix-select-trigger-width);
     max-height: var(--radix-select-content-available-height);
     transform-origin: var(--radix-select-content-transform-origin);
   }
+
+  & .rui-ScrollAreaRoot {
+    display: flex;
+    flex-direction: column;
+  }
+  & .rui-ScrollAreaScrollbar {
+    --scrollbar-vertical-margin: calc(var(--content-padding) + var(--radius-factor) * 0.001px);
+    margin-top: var(--scrollbar-vertical-margin);
+    margin-bottom: var(--scrollbar-vertical-margin);
+  }
 }
 
 .rui-SelectViewport {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
   padding: var(--content-padding);
 }
 
@@ -74,15 +92,6 @@
   &:not(:first-child) {
     margin-top: var(--space-2);
   }
-}
-
-.rui-SelectScrollUpButton,
-.rui-SelectScrollDownButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--item-height);
-  cursor: default;
 }
 
 /***************************************************************************************************
@@ -145,11 +154,6 @@
 }
 .rui-SelectSeparator {
   background-color: var(--gray-6);
-}
-.rui-SelectScrollUpButton,
-.rui-SelectScrollDownButton {
-  background-color: var(--panel);
-  color: var(--gray-a11);
 }
 
 /* solid */

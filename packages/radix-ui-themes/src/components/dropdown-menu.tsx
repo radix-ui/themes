@@ -4,6 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
+import { ScrollArea } from './scroll-area';
 import {
   dropdownMenuContentModeDefault,
   dropdownMenuContentSizeDefault,
@@ -84,16 +85,18 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               className
             )}
           >
-            <div className={classNames('rui-BaseMenuViewport', 'rui-DropdownMenuViewport')}>
-              <DropdownMenuContentContext.Provider
-                value={React.useMemo(
-                  () => ({ size, variant, color: resolvedColor, highContrast }),
-                  [size, variant, resolvedColor, highContrast]
-                )}
-              >
-                {children}
-              </DropdownMenuContentContext.Provider>
-            </div>
+            <ScrollArea type="auto">
+              <div className={classNames('rui-BaseMenuViewport', 'rui-DropdownMenuViewport')}>
+                <DropdownMenuContentContext.Provider
+                  value={React.useMemo(
+                    () => ({ size, variant, color: resolvedColor, highContrast }),
+                    [size, variant, resolvedColor, highContrast]
+                  )}
+                >
+                  {children}
+                </DropdownMenuContentContext.Provider>
+              </div>
+            </ScrollArea>
           </DropdownMenuPrimitive.Content>
         </ThemeConfig>
       </DropdownMenuPrimitive.Portal>
@@ -303,9 +306,11 @@ const DropdownMenuSubContent = React.forwardRef<
             className
           )}
         >
-          <div className={classNames('rui-BaseMenuViewport', 'rui-DropdownMenuViewport')}>
-            {children}
-          </div>
+          <ScrollArea type="auto">
+            <div className={classNames('rui-BaseMenuViewport', 'rui-DropdownMenuViewport')}>
+              {children}
+            </div>
+          </ScrollArea>
         </DropdownMenuPrimitive.SubContent>
       </ThemeConfig>
     </DropdownMenuPrimitive.Portal>
