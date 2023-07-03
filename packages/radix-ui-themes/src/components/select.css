@@ -91,12 +91,10 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+/* For trigger size, see base-button.css and button.css */
+
 @breakpoints {
-  /* For trigger size, see base-button.css and button.css */
-
   .rui-SelectContent {
-    /* size 1 */
-
     &.size-1 {
       --content-padding: var(--space-1);
       --item-height: var(--space-5);
@@ -105,8 +103,6 @@
         font-size: var(--fs-1);
       }
     }
-
-    /* size 2 */
 
     &.size-2 {
       --content-padding: var(--space-2);

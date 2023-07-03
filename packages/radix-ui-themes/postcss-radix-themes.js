@@ -17,28 +17,56 @@ const breakpoints = postcss
   })
   .filter(Boolean);
 
+const cache = new WeakMap();
+
 module.exports = () => ({
   postcssPlugin: 'postcss-radix-themes',
   Rule(rule) {
     if (rule.parent.name === 'breakpoints') {
-      // add top-level clone
-      rule.parent.parent.append(rule.clone());
+      const breakpointsRule = rule.parent;
+      const topLevelSheet = breakpointsRule.parent;
+
+      // when we first meet a given @breakpoints at-rule
+      if (!cache.has(breakpointsRule)) {
+        // create the final media rules for this @breakpoints at-rule
+        const medias = {
+          all: new postcss.AtRule({ name: 'media', params: 'all' }),
+          ...breakpoints.reduce((breakpointsMedias, breakpoint) => {
+            breakpointsMedias[breakpoint.name] = new postcss.AtRule({
+              name: 'media',
+              params: breakpoint.params,
+            });
+            return breakpointsMedias;
+          }, {}),
+        };
+        // add an entry to the cache
+        cache.set(breakpointsRule, medias);
+
+        // add final media rules to the top-level stylesheet
+        Object.values(medias).forEach((media) => {
+          topLevelSheet.append(media);
+        });
+      }
+
+      // add top-level clone in @media all
+      const clone = rule.clone();
+      cache.get(breakpointsRule).all.append(clone);
 
       // add breakpoint-level rules
       breakpoints.forEach((breakpoint) => {
-        const media = new postcss.AtRule({
-          name: 'media',
-          params: breakpoint.params,
-        });
-
         const clone = rule.clone();
         addPrefix(clone, breakpoint.name);
-        media.append(clone);
-        rule.parent.parent.append(media);
+        cache.get(breakpointsRule)[breakpoint.name].append(clone);
       });
 
       // remove rule from original @breakpoints at-rule
       rule.remove();
+
+      // remove @breakpoints at-rule and clear cache if it has no rules
+      if (breakpointsRule.nodes.length === 0) {
+        breakpointsRule.remove();
+        cache.delete(breakpointsRule);
+      }
     }
   },
 });
