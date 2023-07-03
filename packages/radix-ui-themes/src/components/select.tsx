@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import {
   selectSizeDefault,
   selectTriggerVariantDefault,
@@ -135,9 +135,15 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
               { 'high-contrast': highContrast }
             )}
           >
+            <SelectPrimitive.ScrollUpButton className="rui-SelectScrollUpButton">
+              <ChevronUpIcon />
+            </SelectPrimitive.ScrollUpButton>
             <SelectPrimitive.Viewport className="rui-SelectViewport">
               {children}
             </SelectPrimitive.Viewport>
+            <SelectPrimitive.ScrollDownButton className="rui-SelectScrollDownButton">
+              <ChevronDownIcon />
+            </SelectPrimitive.ScrollDownButton>
           </SelectPrimitive.Content>
         </ThemeConfig>
       </SelectPrimitive.Portal>

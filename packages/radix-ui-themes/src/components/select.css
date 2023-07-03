@@ -33,6 +33,7 @@
 .rui-SelectItem {
   display: flex;
   align-items: center;
+  height: var(--item-height);
   border-radius: var(--br-2);
   padding-left: var(--space-5);
   padding-right: var(--space-5);
@@ -62,6 +63,7 @@
 .rui-SelectLabel {
   display: flex;
   align-items: center;
+  height: var(--item-height);
   padding-left: var(--space-5);
   padding-right: var(--space-5);
   font-size: var(--fs-1);
@@ -71,6 +73,15 @@
   &:not(:first-child) {
     margin-top: var(--space-2);
   }
+}
+
+.rui-SelectScrollUpButton,
+.rui-SelectScrollDownButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--item-height);
+  cursor: default;
 }
 
 /***************************************************************************************************
@@ -88,13 +99,10 @@
     &.size-1 {
       --content-padding: var(--space-1);
       --item-height: var(--space-5);
-    }
-    &.size-1 .rui-SelectItem {
-      font-size: var(--fs-1);
-      height: var(--space-5);
-    }
-    &.size-1 .rui-SelectLabel {
-      height: var(--space-5);
+
+      & .rui-SelectItem {
+        font-size: var(--fs-1);
+      }
     }
 
     /* size 2 */
@@ -102,13 +110,10 @@
     &.size-2 {
       --content-padding: var(--space-2);
       --item-height: var(--space-6);
-    }
-    &.size-2 .rui-SelectItem {
-      font-size: var(--fs-2);
-      height: var(--space-6);
-    }
-    &.size-2 .rui-SelectLabel {
-      height: var(--space-6);
+
+      & .rui-SelectItem {
+        font-size: var(--fs-2);
+      }
     }
   }
 }
@@ -143,6 +148,11 @@
 }
 .rui-SelectSeparator {
   background-color: var(--gray-6);
+}
+.rui-SelectScrollUpButton,
+.rui-SelectScrollDownButton {
+  background-color: var(--panel);
+  color: var(--gray-a11);
 }
 
 /* solid */
