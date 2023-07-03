@@ -24,7 +24,6 @@ module.exports = () => ({
   Rule(rule) {
     if (rule.parent.name === 'breakpoints') {
       const breakpointsRule = rule.parent;
-      const topLevelSheet = breakpointsRule.parent;
 
       // when we first meet a given @breakpoints at-rule
       if (!cache.has(breakpointsRule)) {
@@ -42,9 +41,10 @@ module.exports = () => ({
         // add an entry to the cache
         cache.set(breakpointsRule, medias);
 
-        // add final media rules to the top-level stylesheet
+        // add final media rules to the BEFORE the @breakpoints at-rule
+        // (before so it retains the correct mobile-first order)
         Object.values(medias).forEach((media) => {
-          topLevelSheet.append(media);
+          breakpointsRule.parent.insertBefore(breakpointsRule, media);
         });
       }
 
