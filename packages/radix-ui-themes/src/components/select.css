@@ -2,6 +2,13 @@
   justify-content: space-between;
   line-height: var(--height);
   font-weight: 400;
+
+  &[data-placeholder] {
+    /* target value */
+    & > span > span {
+      opacity: 0.65;
+    }
+  }
 }
 
 .rui-SelectIcon {
