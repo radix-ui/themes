@@ -120,7 +120,7 @@
   color: var(--accent-11);
 }
 .rui-BaseMenuItem[data-disabled] {
-  color: var(--gray-10);
+  color: var(--gray-8);
 }
 .rui-BaseMenuShortcut {
   color: var(--gray-11);
