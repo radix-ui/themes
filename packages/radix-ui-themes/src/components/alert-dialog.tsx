@@ -42,13 +42,15 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
     } = props;
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild applyBackgroundColor={false} mode={mode}>
+        <ThemeConfig asChild applyBackgroundColor={false}>
           <AlertDialogPrimitive.Overlay className="rui-DialogOverlay rui-AlertDialogOverlay">
-            <AlertDialogPrimitive.Content
-              {...contentProps}
-              ref={forwardedRef}
-              className={classNames('rui-DialogContent rui-AlertDialogContent', className)}
-            />
+            <ThemeConfig asChild applyBackgroundColor={false} mode={mode}>
+              <AlertDialogPrimitive.Content
+                {...contentProps}
+                ref={forwardedRef}
+                className={classNames('rui-DialogContent rui-AlertDialogContent', className)}
+              />
+            </ThemeConfig>
           </AlertDialogPrimitive.Overlay>
         </ThemeConfig>
       </AlertDialogPrimitive.Portal>
