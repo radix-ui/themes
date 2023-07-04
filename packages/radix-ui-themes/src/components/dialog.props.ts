@@ -1,5 +1,5 @@
-import { ThemeMode } from '../theme';
+import { ThemeAppearance } from '../theme';
 
-const dialogContentModeDefault: ThemeMode | undefined = undefined;
+const dialogContentAppearanceDefault: ThemeAppearance | undefined = undefined;
 
-export { dialogContentModeDefault };
+export { dialogContentAppearanceDefault };

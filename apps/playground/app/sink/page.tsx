@@ -3006,7 +3006,7 @@ export default function Sink() {
                         <tr key={size}>
                           <RowHeaderCell>size {size}</RowHeaderCell>
                           <td>
-                            <TabsRoot defaultValue="account" activationMode="manual">
+                            <TabsRoot defaultValue="account" activationappearance="manual">
                               <TabsList size={size}>
                                 <TabsTrigger value="account">Account</TabsTrigger>
                                 <TabsTrigger value="documents">Documents</TabsTrigger>
@@ -3183,13 +3183,13 @@ export default function Sink() {
                   </Flex>
                 </DocsSection>
 
-                <DocsSection title="Nested modes test">
-                  <SampleNestedUI title="Global mode">
-                    <ThemeConfig asChild mode="invert">
+                <DocsSection title="Nested apperances test">
+                  <SampleNestedUI title="Global appearance">
+                    <ThemeConfig asChild appearance="invert">
                       <SampleNestedUI title="Inverted">
-                        <ThemeConfig asChild mode="dark">
+                        <ThemeConfig asChild appearance="dark">
                           <SampleNestedUI title="Always dark">
-                            <ThemeConfig asChild mode="light">
+                            <ThemeConfig asChild appearance="light">
                               <SampleNestedUI title="Always light" />
                             </ThemeConfig>
                           </SampleNestedUI>
@@ -3220,29 +3220,29 @@ export default function Sink() {
                     <ThemeConfig
                       asChild
                       accentScale="mint"
-                      mode="invert"
+                      appearance="invert"
                       radius="none"
                       scaling="90%"
                     >
-                      <SampleNestedUI title="Mint, inverted mode, no radius, 90%">
+                      <SampleNestedUI title="Mint, inverted appearance, no radius, 90%">
                         <ThemeConfig
                           asChild
                           accentScale="amber"
                           backgroundColor="auto"
                           textColor="auto"
-                          mode="invert"
+                          appearance="invert"
                           radius="full"
                           scaling="110%"
                         >
-                          <SampleNestedUI title="Amber, inverted mode, full radius, 110%">
+                          <SampleNestedUI title="Amber, inverted appearance, full radius, 110%">
                             <ThemeConfig
                               asChild
                               accentScale="tomato"
-                              mode="invert"
+                              appearance="invert"
                               radius="large"
                               scaling="100%"
                             >
-                              <SampleNestedUI title="Tomato, inverted mode, large radius, 100%" />
+                              <SampleNestedUI title="Tomato, inverted appearance, large radius, 100%" />
                             </ThemeConfig>
                           </SampleNestedUI>
                         </ThemeConfig>

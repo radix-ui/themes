@@ -10,9 +10,9 @@ import {
 } from './helpers/radix-colors';
 import type { RadixGrayScale } from './helpers/radix-colors';
 
-const themeModes = ['light', 'dark', 'invert'] as const;
-type ThemeMode = (typeof themeModes)[number];
-const themeModeDefault: ThemeMode = 'light';
+const themeAppearances = ['light', 'dark', 'invert'] as const;
+type ThemeAppearance = (typeof themeAppearances)[number];
+const themeAppearanceDefault: ThemeAppearance = 'light';
 
 const themeAccentScales = [...radixColorScales, 'gray'] as const;
 type ThemeAccentScale = (typeof themeAccentScales)[number];
@@ -48,7 +48,7 @@ type ThemeScaling = (typeof themeScalings)[number];
 const themeScalingDefault: ThemeScaling = '100%';
 
 type Theme = {
-  mode?: ThemeMode;
+  appearance?: ThemeAppearance;
   accentScale?: ThemeAccentScale;
   grayScale?: ThemeGrayScale;
   backgroundColor?: ThemeBackgroundColor;
@@ -63,8 +63,8 @@ function getMatchingGrayScale(accentScale: ThemeAccentScale): RadixGrayScale {
 }
 
 export {
-  themeModes,
-  themeModeDefault,
+  themeAppearances,
+  themeAppearanceDefault,
   themeAccentScalesGrouped,
   themeAccentScaleDefault,
   themeGrayScalesGrouped,
@@ -82,7 +82,7 @@ export {
 };
 
 export type {
-  ThemeMode,
+  ThemeAppearance,
   ThemeAccentScale,
   ThemeGrayScale,
   ThemeBackgroundColor,

@@ -22,7 +22,7 @@ import {
   Strong,
   Text,
   // helpers
-  themeModeDefault,
+  themeAppearanceDefault,
   themeAccentScalesGrouped,
   themeAccentScaleDefault,
   themeGrayScalesGrouped,
@@ -88,8 +88,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const { visible, onVisibleChange, ...panelProps } = props;
     const themeConfigContext = useThemeConfigContext();
     const {
-      mode,
-      onModeChange,
+      appearance,
+      onAppearanceChange,
       accentScale,
       onAccentScaleChange,
       grayScale,
@@ -104,14 +104,14 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onScalingChange,
     } = themeConfigContext;
 
-    const pureGray9 = mode === 'dark' ? radixColorsGrayDark.gray9 : radixColorsGray.gray9;
+    const pureGray9 = appearance === 'dark' ? radixColorsGrayDark.gray9 : radixColorsGray.gray9;
     const autoMatchedGray = getMatchingGrayScale(accentScale);
     const resolvedGrayScale = grayScale === 'auto' ? autoMatchedGray : grayScale;
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
       const themeConfig: Theme = {
-        mode: mode === themeModeDefault ? undefined : mode,
+        appearance: appearance === themeAppearanceDefault ? undefined : appearance,
         accentScale: accentScale === themeAccentScaleDefault ? undefined : accentScale,
         grayScale: grayScale === themeGrayScaleDefault ? undefined : grayScale,
         backgroundColor:
@@ -143,17 +143,17 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       return () => document.removeEventListener('keydown', handleKeydown);
     }, [onVisibleChange, visible]);
 
-    // quickly toggle dark mode using cmd+d
+    // quickly toggle appearance using cmd+d
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
         if (event.metaKey && event.key === 'd') {
           event.preventDefault();
-          onModeChange(mode === 'dark' ? 'light' : 'dark');
+          onAppearanceChange(appearance === 'dark' ? 'light' : 'dark');
         }
       }
       document.addEventListener('keydown', handleKeydown);
       return () => document.removeEventListener('keydown', handleKeydown);
-    }, [mode, onModeChange]);
+    }, [appearance, onAppearanceChange]);
 
     return (
       <Flex
@@ -302,13 +302,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         <IconButton
                           size="1"
                           variant="ghost"
-                          radius="full"
                           aria-label="More information about background color options"
                         >
                           <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
                         </IconButton>
                       </Popover.Trigger>
-                      <Popover.Content side="top" align="center" collisionPadding={8}>
+                      <Popover.Content side="left" align="center">
                         <Box p="4" style={{ width: 340 }}>
                           <Text size="2" color="gray" mb="3">
                             Background color
@@ -319,11 +318,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             </DescriptionList.Term>
                             <DescriptionList.Details>
                               Chosing this option will set the background to <Strong>White</Strong>{' '}
-                              in light mode and <Strong>Gray 1</Strong>
+                              when appearance is <Code>light</Code> and <Strong>Gray 1</Strong>
                               <Text size="2" color="gray" asChild>
                                 <Em> ({resolvedGrayScale} 1)</Em>
                               </Text>{' '}
-                              in dark mode.
+                              when appearance is <Code>dark</Code>.
                             </DescriptionList.Details>
                             <DescriptionList.Term>
                               <Code size="3">&quot;gray&quot;</Code>
@@ -332,8 +331,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                               Chosing this option will set the background to <Strong>Gray 1</Strong>
                               <Text size="2" color="gray" asChild>
                                 <Em> ({resolvedGrayScale} 1)</Em>
-                              </Text>{' '}
-                              for both light and dark modes.
+                              </Text>
+                              .
                             </DescriptionList.Details>
                           </DescriptionList.Root>
                         </Box>
@@ -367,13 +366,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         <IconButton
                           size="1"
                           variant="ghost"
-                          radius="full"
                           aria-label="More information about text color options"
                         >
                           <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
                         </IconButton>
                       </Popover.Trigger>
-                      <Popover.Content side="top" align="center" collisionPadding={8}>
+                      <Popover.Content side="left" align="center">
                         <Box p="4" style={{ width: 320 }}>
                           <Text size="2" color="gray" mb="3">
                             Text color
@@ -386,8 +384,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                               Chosing this option will set the text to <Strong>Gray 12</Strong>
                               <Text size="2" color="gray" asChild>
                                 <Em> ({resolvedGrayScale} 12)</Em>
-                              </Text>{' '}
-                              for both light and dark modes.
+                              </Text>
+                              .
                             </DescriptionList.Details>
                             <DescriptionList.Term>
                               <Code size="3">&quot;accent&quot;</Code>
@@ -397,8 +395,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                               <Strong>Accent 12</Strong>
                               <Text size="2" color="gray" asChild>
                                 <Em> ({accentScale} 12)</Em>
-                              </Text>{' '}
-                              for both light and dark modes.
+                              </Text>
+                              .
                             </DescriptionList.Details>
                           </DescriptionList.Root>
                         </Box>
@@ -423,13 +421,15 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                 </RadioGroup.Root>
               </Flex>
 
-              <Label htmlFor="darkMode">Dark mode</Label>
+              <Label htmlFor="darkAppearance">Dark appearance</Label>
               <Flex asChild align="center">
-                <label htmlFor="darkMode">
+                <label htmlFor="darkAppearance">
                   <Checkbox
-                    id="darkMode"
-                    checked={mode === 'dark'}
-                    onCheckedChange={(value) => onModeChange(value === true ? 'dark' : 'light')}
+                    id="darkAppearance"
+                    checked={appearance === 'dark'}
+                    onCheckedChange={(value) =>
+                      onAppearanceChange(value === true ? 'dark' : 'light')
+                    }
                     mr="2"
                   />
                   <Kbd>⌘D</Kbd>

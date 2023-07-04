@@ -6,7 +6,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './scroll-area';
 import {
-  dropdownMenuContentModeDefault,
+  dropdownMenuContentAppearanceDefault,
   dropdownMenuContentSizeDefault,
   dropdownMenuContentVariantDefault,
   dropdownMenuContentColorDefault,
@@ -18,7 +18,7 @@ import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
 import type { DropdownMenuContentSize, DropdownMenuContentVariant } from './dropdown-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeMode, ThemeAccentScale } from '../theme';
+import type { ThemeAppearance, ThemeAccentScale } from '../theme';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -46,7 +46,7 @@ type DropdownMenuContentElement = React.ElementRef<typeof DropdownMenuPrimitive.
 interface DropdownMenuContentProps
   extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Content>,
     DropdownMenuContentContextValue {
-  mode?: ThemeMode;
+  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
@@ -55,7 +55,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     const {
       className,
       children,
-      mode = dropdownMenuContentModeDefault,
+      appearance = dropdownMenuContentAppearanceDefault,
       size = dropdownMenuContentSizeDefault,
       variant = dropdownMenuContentVariantDefault,
       highContrast = dropdownMenuContentHighContrastDefault,
@@ -67,7 +67,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     const resolvedColor = color ?? themeConfigContext.accentScale;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild mode={mode}>
+        <ThemeConfig asChild appearance={appearance}>
           <DropdownMenuPrimitive.Content
             data-accent-scale={resolvedColor}
             align="start"

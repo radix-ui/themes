@@ -1,5 +1,5 @@
-import { ThemeMode } from '../theme';
+import { ThemeAppearance } from '../theme';
 
-const alertDialogContentModeDefault: ThemeMode | undefined = undefined;
+const alertDialogContentAppearanceDefault: ThemeAppearance | undefined = undefined;
 
-export { alertDialogContentModeDefault };
+export { alertDialogContentAppearanceDefault };

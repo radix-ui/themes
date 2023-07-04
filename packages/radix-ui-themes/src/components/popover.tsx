@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { popoverContentModeDefault } from './popover.props';
+import { popoverContentAppearanceDefault } from './popover.props';
 import { ThemeConfig } from '../theme-config';
 
-import { ThemeMode } from '../theme';
+import { ThemeAppearance } from '../theme';
 
 interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
 const PopoverRoot = (props: PopoverRootProps) => <PopoverPrimitive.Root {...props} />;
@@ -23,21 +23,21 @@ PopoverTrigger.displayName = 'PopoverTrigger';
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>, 'asChild'> {
-  mode?: ThemeMode;
+  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {
     const {
       className,
-      mode = popoverContentModeDefault,
+      appearance = popoverContentAppearanceDefault,
       forceMount,
       container,
       ...contentProps
     } = props;
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild mode={mode}>
+        <ThemeConfig asChild appearance={appearance}>
           <PopoverPrimitive.Content
             align="start"
             sideOffset={8}

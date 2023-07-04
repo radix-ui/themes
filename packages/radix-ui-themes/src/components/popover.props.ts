@@ -1,5 +1,5 @@
-import { ThemeMode } from '../theme';
+import { ThemeAppearance } from '../theme';
 
-const popoverContentModeDefault: ThemeMode | undefined = undefined;
+const popoverContentAppearanceDefault: ThemeAppearance | undefined = undefined;
 
-export { popoverContentModeDefault };
+export { popoverContentAppearanceDefault };

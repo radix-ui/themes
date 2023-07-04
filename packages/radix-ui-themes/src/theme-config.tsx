@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import {
-  themeModeDefault,
+  themeAppearanceDefault,
   themeAccentScaleDefault,
   themeGrayScaleDefault,
   themeBackgroundColorDefault,
@@ -15,7 +15,7 @@ import {
 } from './theme';
 
 import type {
-  ThemeMode,
+  ThemeAppearance,
   ThemeAccentScale,
   ThemeGrayScale,
   ThemeBackgroundColor,
@@ -27,7 +27,7 @@ import type {
 const noop = () => {};
 
 interface ThemeConfigValues {
-  mode: ThemeMode;
+  appearance: ThemeAppearance;
   accentScale: ThemeAccentScale;
   grayScale: ThemeGrayScale;
   backgroundColor: ThemeBackgroundColor;
@@ -36,7 +36,7 @@ interface ThemeConfigValues {
   scaling: ThemeScaling;
 }
 interface ThemeConfigChangeHandlers {
-  onModeChange: (mode: ThemeMode) => void;
+  onAppearanceChange: (appearance: ThemeAppearance) => void;
   onAccentScaleChange: (accentScale: ThemeAccentScale) => void;
   onGrayScaleChange: (grayScale: ThemeGrayScale) => void;
   onBackgroundColorChange: (backgroundColor: ThemeBackgroundColor) => void;
@@ -73,7 +73,7 @@ interface ThemeConfigRootProps extends ThemeConfigImplPublicProps {}
 const ThemeConfigRoot = React.forwardRef<ThemeConfigImplElement, ThemeConfigRootProps>(
   (props, forwardedRef) => {
     const {
-      mode: modeProp = themeModeDefault,
+      appearance: appearanceProp = themeAppearanceDefault,
       accentScale: accentScaleProp = themeAccentScaleDefault,
       grayScale: grayScaleProp = themeGrayScaleDefault,
       backgroundColor: backgroundColorProp = themeBackgroundColorDefault,
@@ -82,7 +82,7 @@ const ThemeConfigRoot = React.forwardRef<ThemeConfigImplElement, ThemeConfigRoot
       scaling: scalingProp = themeScalingDefault,
       ...rootProps
     } = props;
-    const [mode, setMode] = React.useState(modeProp);
+    const [appearance, setAppearance] = React.useState(appearanceProp);
     const [accentScale, setAccentScale] = React.useState(accentScaleProp);
     const [grayScale, setGrayScale] = React.useState(grayScaleProp);
     const [backgroundColor, setBackgroundColor] = React.useState(backgroundColorProp);
@@ -95,7 +95,7 @@ const ThemeConfigRoot = React.forwardRef<ThemeConfigImplElement, ThemeConfigRoot
           {...rootProps}
           ref={forwardedRef}
           //
-          mode={mode as ThemeMode}
+          appearance={appearance as ThemeAppearance}
           accentScale={accentScale}
           grayScale={grayScale}
           backgroundColor={backgroundColor}
@@ -103,7 +103,7 @@ const ThemeConfigRoot = React.forwardRef<ThemeConfigImplElement, ThemeConfigRoot
           radius={radius}
           scaling={scaling}
           //
-          onModeChange={setMode}
+          onAppearanceChange={setAppearance}
           onAccentScaleChange={setAccentScale}
           onGrayScaleChange={setGrayScale}
           onBackgroundColorChange={setBackgroundColor}
@@ -135,7 +135,7 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
       applyBackgroundColor = true,
       applyTextColor = true,
       //
-      mode = context?.mode ?? themeModeDefault,
+      appearance = context?.appearance ?? themeAppearanceDefault,
       accentScale = context?.accentScale ?? themeAccentScaleDefault,
       grayScale = context?.grayScale ?? themeGrayScaleDefault,
       backgroundColor = context?.backgroundColor ?? themeBackgroundColorDefault,
@@ -143,7 +143,7 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
       radius = context?.radius ?? themeRadiusDefault,
       scaling = context?.scaling ?? themeScalingDefault,
       //
-      onModeChange = noop,
+      onAppearanceChange = noop,
       onAccentScaleChange = noop,
       onGrayScaleChange = noop,
       onBackgroundColorChange = noop,
@@ -154,13 +154,14 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
       ...themeConfigProps
     } = props;
     const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
-    const resolvedMode = mode === 'invert' ? (context?.mode === 'dark' ? 'light' : 'dark') : mode;
+    const resolvedAppearance =
+      appearance === 'invert' ? (context?.appearance === 'dark' ? 'light' : 'dark') : appearance;
     const Comp = asChild ? Slot : 'div';
     return (
       <ThemeConfigContext.Provider
         value={React.useMemo(
           () => ({
-            mode: resolvedMode,
+            appearance: resolvedAppearance,
             accentScale,
             grayScale,
             backgroundColor,
@@ -168,7 +169,7 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
             radius,
             scaling,
             //
-            onModeChange,
+            onAppearanceChange,
             onAccentScaleChange,
             onGrayScaleChange,
             onBackgroundColorChange,
@@ -177,7 +178,7 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
             onScalingChange,
           }),
           [
-            resolvedMode,
+            resolvedAppearance,
             accentScale,
             grayScale,
             backgroundColor,
@@ -185,7 +186,7 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
             radius,
             scaling,
             //
-            onModeChange,
+            onAppearanceChange,
             onAccentScaleChange,
             onGrayScaleChange,
             onBackgroundColorChange,
@@ -209,8 +210,8 @@ const ThemeConfigImpl = React.forwardRef<ThemeConfigImplElement, ThemeConfigImpl
           {...themeConfigProps}
           className={classNames(
             {
-              'light-theme': resolvedMode === 'light',
-              'dark-theme': resolvedMode === 'dark',
+              'light-theme': resolvedAppearance === 'light',
+              'dark-theme': resolvedAppearance === 'dark',
             },
             themeConfigProps.className
           )}

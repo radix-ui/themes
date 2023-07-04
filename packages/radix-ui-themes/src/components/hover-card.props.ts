@@ -1,5 +1,5 @@
-import { ThemeMode } from '../theme';
+import { ThemeAppearance } from '../theme';
 
-const hoverCardContentModeDefault: ThemeMode | undefined = undefined;
+const hoverCardContentAppearanceDefault: ThemeAppearance | undefined = undefined;
 
-export { hoverCardContentModeDefault };
+export { hoverCardContentAppearanceDefault };

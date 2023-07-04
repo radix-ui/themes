@@ -31,7 +31,7 @@ export default function Demo() {
   return (
     <ThemeConfig
       asChild
-      mode="dark"
+      appearance="dark"
       accentScale="mint"
       backgroundColor="gray"
       textColor="accent"

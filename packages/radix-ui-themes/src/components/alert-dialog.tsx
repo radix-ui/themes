@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import { Heading } from './heading';
 import { Text } from './text';
-import { dialogContentModeDefault } from './dialog.props';
+import { dialogContentAppearanceDefault } from './dialog.props';
 import { ThemeConfig } from '../theme-config';
 
-import type { ThemeMode } from '../theme';
+import type { ThemeAppearance } from '../theme';
 
 interface AlertDialogProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root> {}
@@ -28,14 +28,14 @@ AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
 interface AlertDialogContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'> {
-  mode?: ThemeMode;
+  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
   (props, forwardedRef) => {
     const {
       className,
-      mode = dialogContentModeDefault,
+      appearance = dialogContentAppearanceDefault,
       forceMount,
       container,
       ...contentProps
@@ -44,7 +44,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
         <ThemeConfig asChild applyBackgroundColor={false}>
           <AlertDialogPrimitive.Overlay className="rui-DialogOverlay rui-AlertDialogOverlay">
-            <ThemeConfig asChild applyBackgroundColor={false} mode={mode}>
+            <ThemeConfig asChild applyBackgroundColor={false} appearance={appearance}>
               <AlertDialogPrimitive.Content
                 {...contentProps}
                 ref={forwardedRef}

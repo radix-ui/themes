@@ -38,7 +38,7 @@ export default function Snapshot() {
   return (
     <ThemeConfig
       asChild
-      mode="dark"
+      appearance="dark"
       accentScale="grass"
       backgroundColor="gray"
       textColor="accent"

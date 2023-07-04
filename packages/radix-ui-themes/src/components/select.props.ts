@@ -1,6 +1,6 @@
 import { baseButtonVariants } from './base-button.props';
 
-import type { ThemeMode, ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAppearance, ThemeAccentScale, ThemeRadius } from '../theme';
 
 const selectSizes = ['1', '2'] as const;
 type SelectSize = (typeof selectSizes)[number];
@@ -12,7 +12,7 @@ const selectTriggerVariantDefault: SelectTriggerVariant = 'surface';
 const selectTriggerColorDefault: ThemeAccentScale | undefined = undefined;
 const selectTriggerHighContrastDefault: boolean | undefined = undefined;
 
-const selectContentModeDefault: ThemeMode | undefined = undefined;
+const selectContentAppearanceDefault: ThemeAppearance | undefined = undefined;
 const selectContentVariants = ['solid', 'soft'] as const;
 type SelectContentVariant = (typeof selectContentVariants)[number];
 const selectContentVariantDefault: SelectContentVariant = 'solid';
@@ -28,7 +28,7 @@ export {
   selectTriggerVariantDefault,
   selectTriggerColorDefault,
   selectTriggerHighContrastDefault,
-  selectContentModeDefault,
+  selectContentAppearanceDefault,
   selectContentVariants,
   selectContentVariantDefault,
   selectContentColorDefault,

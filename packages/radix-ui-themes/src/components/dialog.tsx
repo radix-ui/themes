@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Heading } from './heading';
 import { Text } from './text';
-import { dialogContentModeDefault } from './dialog.props';
+import { dialogContentAppearanceDefault } from './dialog.props';
 import { ThemeConfig } from '../theme-config';
 
-import type { ThemeMode } from '../theme';
+import type { ThemeAppearance } from '../theme';
 
 interface DialogRootProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
@@ -26,14 +26,14 @@ DialogTrigger.displayName = 'DialogTrigger';
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 interface DialogContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>, 'asChild'> {
-  mode?: ThemeMode;
+  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   (props, forwardedRef) => {
     const {
       className,
-      mode = dialogContentModeDefault,
+      appearance = dialogContentAppearanceDefault,
       forceMount,
       container,
       ...contentProps
@@ -42,7 +42,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <ThemeConfig asChild applyBackgroundColor={false}>
           <DialogPrimitive.Overlay className="rui-DialogOverlay">
-            <ThemeConfig asChild applyBackgroundColor={false} mode={mode}>
+            <ThemeConfig asChild applyBackgroundColor={false} appearance={appearance}>
               <DialogPrimitive.Content
                 {...contentProps}
                 ref={forwardedRef}
