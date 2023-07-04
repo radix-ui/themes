@@ -47,7 +47,7 @@ import type {
   ThemeBackgroundColor,
   ThemeTextColor,
   ThemeScaling,
-  Theme,
+  ThemeOptions,
 } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
@@ -110,7 +110,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
-      const themeConfig: Theme = {
+      const theme: ThemeOptions = {
         appearance: appearance === themeAppearanceDefault ? undefined : appearance,
         accentScale: accentScale === themeAccentScaleDefault ? undefined : accentScale,
         grayScale: grayScale === themeGrayScaleDefault ? undefined : grayScale,
@@ -120,9 +120,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         radius: radius === themeRadiusDefault ? undefined : radius,
         scaling: scaling === themeScalingDefault ? undefined : scaling,
       };
-      const props = Object.keys(themeConfig)
-        .filter((key) => themeConfig[key as keyof Theme] !== undefined)
-        .map((key) => `${key}="${themeConfig[key as keyof Theme]}"`)
+      const props = Object.keys(theme)
+        .filter((key) => theme[key as keyof ThemeOptions] !== undefined)
+        .map((key) => `${key}="${theme[key as keyof ThemeOptions]}"`)
         .join(' ');
       setCopyState('copying');
       await navigator.clipboard.writeText(props);

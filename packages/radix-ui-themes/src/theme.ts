@@ -47,7 +47,7 @@ const themeScalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 type ThemeScaling = (typeof themeScalings)[number];
 const themeScalingDefault: ThemeScaling = '100%';
 
-type Theme = {
+type ThemeOptions = {
   appearance?: ThemeAppearance;
   accentScale?: ThemeAccentScale;
   grayScale?: ThemeGrayScale;
@@ -90,5 +90,5 @@ export type {
   ThemeRadius,
   ThemeScaling,
   //
-  Theme,
+  ThemeOptions,
 };
