@@ -24,12 +24,7 @@ type HeadingProps = PropsWithoutRefOrColor<'h1'> &
     highContrast?: boolean;
   } & (
     | { asChild?: boolean; as?: never }
-    | { as?: 'h1'; asChild?: never }
-    | { as?: 'h2'; asChild?: never }
-    | { as?: 'h3'; asChild?: never }
-    | { as?: 'h4'; asChild?: never }
-    | { as?: 'h5'; asChild?: never }
-    | { as?: 'h6'; asChild?: never }
+    | { as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; asChild?: never }
   );
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
