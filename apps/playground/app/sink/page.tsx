@@ -3280,23 +3280,31 @@ function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenu
       </DropdownMenuSub>
 
       <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuLabel>Other</DropdownMenuLabel>
+        <DropdownMenuItem shortcut="⌘+P">Print</DropdownMenuItem>
+      </DropdownMenuGroup>
 
-      <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
-        Show Bookmarks
-      </DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
+      {props.variant === 'solid' && (
+        <>
+          <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
+            Show Bookmarks
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
 
-      <DropdownMenuSeparator />
+          <DropdownMenuSeparator />
 
-      <DropdownMenuLabel>People</DropdownMenuLabel>
-      <DropdownMenuRadioGroup value="pedro">
-        <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
-        <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
-      </DropdownMenuRadioGroup>
+          <DropdownMenuLabel>People</DropdownMenuLabel>
+          <DropdownMenuRadioGroup value="pedro">
+            <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
 
-      <DropdownMenuSeparator />
+          <DropdownMenuSeparator />
 
-      <DropdownMenuItem color="red">Delete</DropdownMenuItem>
+          <DropdownMenuItem color="red">Delete</DropdownMenuItem>
+        </>
+      )}
     </DropdownMenuContent>
   );
 }
@@ -3322,23 +3330,33 @@ function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenuCo
       </ContextMenuSub>
 
       <ContextMenuSeparator />
+      <ContextMenuGroup>
+        <ContextMenuLabel>Other</ContextMenuLabel>
+        <ContextMenuItem shortcut="⌘+P">Print</ContextMenuItem>
+      </ContextMenuGroup>
 
-      <ContextMenuCheckboxItem shortcut="⌘+B" checked>
-        Show Bookmarks
-      </ContextMenuCheckboxItem>
-      <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+      {props.variant === 'solid' && (
+        <>
+          <ContextMenuSeparator />
 
-      <ContextMenuSeparator />
+          <ContextMenuCheckboxItem shortcut="⌘+B" checked>
+            Show Bookmarks
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
 
-      <ContextMenuLabel>People</ContextMenuLabel>
-      <ContextMenuRadioGroup value="pedro">
-        <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
-        <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-      </ContextMenuRadioGroup>
+          <ContextMenuSeparator />
 
-      <DropdownMenuSeparator />
+          <ContextMenuLabel>People</ContextMenuLabel>
+          <ContextMenuRadioGroup value="pedro">
+            <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
+            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
+          </ContextMenuRadioGroup>
 
-      <ContextMenuItem color="red">Delete</ContextMenuItem>
+          <DropdownMenuSeparator />
+
+          <ContextMenuItem color="red">Delete</ContextMenuItem>
+        </>
+      )}
     </ContextMenuContent>
   );
 }
