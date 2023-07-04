@@ -3,10 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
-import { hoverCardContentAppearanceDefault } from './hover-card.props';
 import { ThemeConfig } from '../theme-config';
-
-import { ThemeAppearance } from '../theme';
 
 interface HoverCardRootProps
   extends React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Root> {}
@@ -32,21 +29,14 @@ HoverCardTrigger.displayName = 'HoverCardTrigger';
 
 interface HoverCardContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>, 'asChild'> {
-  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
 }
 const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>(
   (props, forwardedRef) => {
-    const {
-      className,
-      appearance = hoverCardContentAppearanceDefault,
-      forceMount,
-      container,
-      ...contentProps
-    } = props;
+    const { className, forceMount, container, ...contentProps } = props;
     return (
       <HoverCardPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild appearance={appearance}>
+        <ThemeConfig asChild>
           <HoverCardPrimitive.Content
             align="start"
             sideOffset={8}

@@ -6,7 +6,6 @@ import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './scroll-area';
 import {
-  contextMenuContentAppearanceDefault,
   contextMenuContentSizeDefault,
   contextMenuContentVariantDefault,
   contextMenuContentColorDefault,
@@ -18,7 +17,7 @@ import { ThemeConfig, useThemeConfigContext } from '../theme-config';
 
 import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeAppearance, ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -46,7 +45,6 @@ type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Co
 interface ContextMenuContentProps
   extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Content>,
     ContextMenuContentContextValue {
-  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
@@ -55,7 +53,6 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const {
       className,
       children,
-      appearance = contextMenuContentAppearanceDefault,
       size = contextMenuContentSizeDefault,
       variant = contextMenuContentVariantDefault,
       color = contextMenuContentColorDefault,
@@ -67,7 +64,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const resolvedColor = color ?? themeConfigContext.accentScale;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild appearance={appearance}>
+        <ThemeConfig asChild>
           <ContextMenuPrimitive.Content
             data-accent-scale={resolvedColor}
             alignOffset={-Number(size) * 4}

@@ -1,6 +1,4 @@
-import { ThemeAppearance, ThemeAccentScale } from '../theme';
-
-const contextMenuContentAppearanceDefault: ThemeAppearance | undefined = undefined;
+import { ThemeAccentScale } from '../theme';
 
 const contextMenuContentSizes = ['1', '2'] as const;
 type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];
@@ -16,7 +14,6 @@ const contextMenuContentHighContrastDefault: boolean | undefined = undefined;
 const contextMenuItemColorDefault: ThemeAccentScale | undefined = undefined;
 
 export {
-  contextMenuContentAppearanceDefault,
   contextMenuContentSizes,
   contextMenuContentSizeDefault,
   contextMenuContentVariants,
