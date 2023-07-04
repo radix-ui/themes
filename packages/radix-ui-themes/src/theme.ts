@@ -48,13 +48,13 @@ type ThemeScaling = (typeof themeScalings)[number];
 const themeScalingDefault: ThemeScaling = '100%';
 
 type ThemeOptions = {
-  appearance?: ThemeAppearance;
-  accentScale?: ThemeAccentScale;
-  grayScale?: ThemeGrayScale;
-  backgroundColor?: ThemeBackgroundColor;
-  textColor?: ThemeTextColor;
-  radius?: ThemeRadius;
-  scaling?: ThemeScaling;
+  appearance: ThemeAppearance;
+  accentScale: ThemeAccentScale;
+  grayScale: ThemeGrayScale;
+  backgroundColor: ThemeBackgroundColor;
+  textColor: ThemeTextColor;
+  radius: ThemeRadius;
+  scaling: ThemeScaling;
 };
 
 function getMatchingGrayScale(accentScale: ThemeAccentScale): RadixGrayScale {

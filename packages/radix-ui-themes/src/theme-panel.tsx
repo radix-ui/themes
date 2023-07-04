@@ -110,7 +110,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
-      const theme: ThemeOptions = {
+      const theme: Partial<ThemeOptions> = {
         appearance: appearance === themeAppearanceDefault ? undefined : appearance,
         accentScale: accentScale === themeAccentScaleDefault ? undefined : accentScale,
         grayScale: grayScale === themeGrayScaleDefault ? undefined : grayScale,

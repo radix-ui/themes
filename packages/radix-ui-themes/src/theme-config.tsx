@@ -22,19 +22,11 @@ import type {
   ThemeTextColor,
   ThemeRadius,
   ThemeScaling,
+  ThemeOptions,
 } from './theme';
 
 const noop = () => {};
 
-interface ThemeConfigValues {
-  appearance: ThemeAppearance;
-  accentScale: ThemeAccentScale;
-  grayScale: ThemeGrayScale;
-  backgroundColor: ThemeBackgroundColor;
-  textColor: ThemeTextColor;
-  radius: ThemeRadius;
-  scaling: ThemeScaling;
-}
 interface ThemeConfigChangeHandlers {
   onAppearanceChange: (appearance: ThemeAppearance) => void;
   onAccentScaleChange: (accentScale: ThemeAccentScale) => void;
@@ -45,7 +37,7 @@ interface ThemeConfigChangeHandlers {
   onScalingChange: (scaling: ThemeScaling) => void;
 }
 
-interface ThemeConfigContextValue extends ThemeConfigValues, ThemeConfigChangeHandlers {}
+interface ThemeConfigContextValue extends ThemeOptions, ThemeConfigChangeHandlers {}
 const ThemeConfigContext = React.createContext<ThemeConfigContextValue | undefined>(undefined);
 
 function useThemeConfigContext() {
@@ -121,7 +113,7 @@ type ThemeConfigImplElement = React.ElementRef<'div'>;
 interface ThemeConfigImplProps extends ThemeConfigImplPublicProps, ThemeConfigImplPrivateProps {}
 interface ThemeConfigImplPublicProps
   extends React.ComponentPropsWithoutRef<'div'>,
-    Partial<ThemeConfigValues> {
+    Partial<ThemeOptions> {
   asChild?: boolean;
   applyBackgroundColor?: boolean;
   applyTextColor?: boolean;
