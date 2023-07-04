@@ -1,4 +1,4 @@
-import { ThemeAccentScale } from '../theme';
+import { ThemeAccentScale } from '../theme-options';
 
 const dropdownMenuContentSizes = ['1', '2'] as const;
 type DropdownMenuContentSize = (typeof dropdownMenuContentSizes)[number];

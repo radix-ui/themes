@@ -12,7 +12,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { ScrollAreaSize, ScrollAreaScrollbars } from './scroll-area.props';
 import type { MarginProps, Responsive } from '../helpers';
-import type { ThemeRadius } from '../theme';
+import type { ThemeRadius } from '../theme-options';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 interface ScrollAreaProps

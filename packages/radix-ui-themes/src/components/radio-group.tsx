@@ -13,7 +13,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { RadioGroupSize, RadioGroupVariant } from './radio-group.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps

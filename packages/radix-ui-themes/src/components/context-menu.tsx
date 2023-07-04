@@ -13,11 +13,11 @@ import {
   contextMenuItemColorDefault,
 } from './context-menu.props';
 import { withBreakpoints } from '../helpers';
-import { ThemeConfig, useThemeConfigContext } from '../theme-config';
+import { Theme, useThemeContext } from '../theme';
 
 import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -49,7 +49,7 @@ interface ContextMenuContentProps
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
-    const themeConfigContext = useThemeConfigContext();
+    const themeContext = useThemeContext();
     const {
       className,
       children,
@@ -61,10 +61,10 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       forceMount,
       ...contentProps
     } = props;
-    const resolvedColor = color ?? themeConfigContext.accentScale;
+    const resolvedColor = color ?? themeContext.accentScale;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild>
+        <Theme asChild>
           <ContextMenuPrimitive.Content
             data-accent-scale={resolvedColor}
             alignOffset={-Number(size) * 4}
@@ -94,7 +94,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               </div>
             </ScrollArea>
           </ContextMenuPrimitive.Content>
-        </ThemeConfig>
+        </Theme>
       </ContextMenuPrimitive.Portal>
     );
   }
@@ -281,7 +281,7 @@ const ContextMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-      <ThemeConfig asChild>
+      <Theme asChild>
         <ContextMenuPrimitive.SubContent
           data-accent-scale={color}
           alignOffset={-Number(size) * 4}
@@ -306,7 +306,7 @@ const ContextMenuSubContent = React.forwardRef<
             </div>
           </ScrollArea>
         </ContextMenuPrimitive.SubContent>
-      </ThemeConfig>
+      </Theme>
     </ContextMenuPrimitive.Portal>
   );
 });

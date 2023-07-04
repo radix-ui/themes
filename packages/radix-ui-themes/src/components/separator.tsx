@@ -8,7 +8,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { SeparatorSize } from './separator.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 type SeparatorElement = React.ElementRef<typeof SeparatorPrimitive.Root>;
 interface SeparatorProps

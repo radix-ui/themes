@@ -1,6 +1,6 @@
 import { baseButtonVariants } from './base-button.props';
 
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 const selectSizes = ['1', '2'] as const;
 type SelectSize = (typeof selectSizes)[number];

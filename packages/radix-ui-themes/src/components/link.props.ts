@@ -1,4 +1,4 @@
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 const linkSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type LinkSize = (typeof linkSizes)[number];

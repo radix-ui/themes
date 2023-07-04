@@ -10,7 +10,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { TextAreaSize, TextAreaVariant } from './text-area.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
 interface TextAreaProps extends Omit<PropsWithoutRefOrColor<'textarea'>, 'size'>, MarginProps {

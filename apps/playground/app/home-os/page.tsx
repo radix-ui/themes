@@ -9,7 +9,7 @@ import {
   PlusIcon,
 } from '@radix-ui/react-icons';
 import {
-  ThemeConfig,
+  Theme,
   RadixThemesProvider,
   Button,
   Text,
@@ -32,7 +32,7 @@ export default function HomeOS() {
   const totalCount = adultCount + childCount + infantCount;
 
   return (
-    <ThemeConfig asChild accentScale="orange" backgroundColor="gray" radius="large">
+    <Theme asChild accentScale="orange" backgroundColor="gray" radius="large">
       <html lang="en">
         <body>
           <div id="root">
@@ -386,7 +386,7 @@ export default function HomeOS() {
           </div>
         </body>
       </html>
-    </ThemeConfig>
+    </Theme>
   );
 }
 

@@ -1,4 +1,4 @@
-import { ThemeAccentScale } from '../theme';
+import { ThemeAccentScale } from '../theme-options';
 
 const contextMenuContentSizes = ['1', '2'] as const;
 type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];

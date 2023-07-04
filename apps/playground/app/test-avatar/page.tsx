@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ThemeConfig, RadixThemesProvider, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
+import { Theme, RadixThemesProvider, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
 
 export default function Test() {
   return (
-    <ThemeConfig asChild accentScale="purple" radius="full">
+    <Theme asChild accentScale="purple" radius="full">
       <html lang="en">
         <body>
           <div id="root">
@@ -21,7 +21,7 @@ export default function Test() {
           </div>
         </body>
       </html>
-    </ThemeConfig>
+    </Theme>
   );
 }
 

@@ -1,4 +1,4 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 const sliderSizes = ['1', '2', '3'] as const;
 type SliderSize = (typeof sliderSizes)[number];

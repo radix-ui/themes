@@ -11,7 +11,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { CodeSize, CodeVariant, CodeWeight } from './code.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 type CodeElement = React.ElementRef<'code'>;
 interface CodeProps extends PropsWithoutRefOrColor<'code'>, MarginProps {

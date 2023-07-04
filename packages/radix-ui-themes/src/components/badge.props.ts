@@ -1,4 +1,4 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 const badgeSizes = ['1', '2'] as const;
 type BadgeSize = (typeof badgeSizes)[number];

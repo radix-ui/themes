@@ -11,7 +11,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { BadgeSize, BadgeVariant } from './badge.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type BadgeElement = React.ElementRef<'span'>;
 interface BadgeProps extends PropsWithoutRefOrColor<'span'>, MarginProps {

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Heading } from './heading';
 import { Text } from './text';
-import { ThemeConfig } from '../theme-config';
+import { Theme } from '../theme';
 
 interface DialogRootProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
@@ -30,7 +30,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     const { className, forceMount, container, ...contentProps } = props;
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild applyBackgroundColor={false}>
+        <Theme asChild applyBackgroundColor={false}>
           <DialogPrimitive.Overlay className="rui-DialogOverlay">
             <DialogPrimitive.Content
               {...contentProps}
@@ -38,7 +38,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
               className={classNames('rui-DialogContent', className)}
             />
           </DialogPrimitive.Overlay>
-        </ThemeConfig>
+        </Theme>
       </DialogPrimitive.Portal>
     );
   }

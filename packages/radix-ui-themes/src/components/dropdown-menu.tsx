@@ -13,11 +13,11 @@ import {
   dropdownMenuItemColorDefault,
 } from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
-import { ThemeConfig, useThemeConfigContext } from '../theme-config';
+import { Theme, useThemeContext } from '../theme';
 
 import type { DropdownMenuContentSize, DropdownMenuContentVariant } from './dropdown-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -49,7 +49,7 @@ interface DropdownMenuContentProps
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
-    const themeConfigContext = useThemeConfigContext();
+    const themeContext = useThemeContext();
     const {
       className,
       children,
@@ -61,10 +61,10 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       forceMount,
       ...contentProps
     } = props;
-    const resolvedColor = color ?? themeConfigContext.accentScale;
+    const resolvedColor = color ?? themeContext.accentScale;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild>
+        <Theme asChild>
           <DropdownMenuPrimitive.Content
             data-accent-scale={resolvedColor}
             align="start"
@@ -95,7 +95,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               </div>
             </ScrollArea>
           </DropdownMenuPrimitive.Content>
-        </ThemeConfig>
+        </Theme>
       </DropdownMenuPrimitive.Portal>
     );
   }
@@ -284,7 +284,7 @@ const DropdownMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
-      <ThemeConfig asChild>
+      <Theme asChild>
         <DropdownMenuPrimitive.SubContent
           data-accent-scale={color}
           alignOffset={-Number(size) * 4}
@@ -309,7 +309,7 @@ const DropdownMenuSubContent = React.forwardRef<
             </div>
           </ScrollArea>
         </DropdownMenuPrimitive.SubContent>
-      </ThemeConfig>
+      </Theme>
     </DropdownMenuPrimitive.Portal>
   );
 });

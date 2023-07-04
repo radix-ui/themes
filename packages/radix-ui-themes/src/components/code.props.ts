@@ -1,4 +1,4 @@
-import { ThemeAccentScale } from '../theme';
+import { ThemeAccentScale } from '../theme-options';
 
 const codeSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 type CodeSize = (typeof codeSizes)[number];

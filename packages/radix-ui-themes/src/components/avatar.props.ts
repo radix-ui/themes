@@ -1,4 +1,4 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 const avatarSizes = ['1', '2', '3', '4', '5'] as const;
 type AvatarSize = (typeof avatarSizes)[number];

@@ -14,7 +14,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { AvatarSize, AvatarVariant } from './avatar.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 interface AvatarProps extends PropsWithoutRefOrColor<typeof AvatarPrimitive.Image>, MarginProps {

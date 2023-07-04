@@ -1,6 +1,6 @@
 export { Provider as RadixThemesProvider } from './provider';
-export { ThemeConfig } from './theme-config';
-export { ThemePanel } from './theme-panel';
+export { Theme, useThemeContext } from './theme';
+export * from './theme-options';
 export * from './components';
-export * from './theme';
 export * from './helpers';
+export { ThemePanel } from './theme-panel';

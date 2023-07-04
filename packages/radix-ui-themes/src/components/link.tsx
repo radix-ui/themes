@@ -11,7 +11,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { LinkSize, LinkWeight } from './link.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 type LinkElement = React.ElementRef<'a'>;
 interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps {

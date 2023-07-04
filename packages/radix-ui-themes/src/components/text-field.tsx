@@ -10,7 +10,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { TextFieldSize, TextFieldVariant } from './text-field.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type TextFieldElement = React.ElementRef<'input'>;
 interface TextFieldProps extends Omit<PropsWithoutRefOrColor<'input'>, 'size'>, MarginProps {

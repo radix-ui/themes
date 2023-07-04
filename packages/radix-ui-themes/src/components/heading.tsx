@@ -12,7 +12,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { HeadingSize, HeadingAlign, HeadingTrim } from './heading.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 type HeadingElement = React.ElementRef<'h1'>;
 interface HeadingProps extends PropsWithoutRefOrColor<'h1'>, MarginProps {

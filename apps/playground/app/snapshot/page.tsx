@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { HamburgerMenuIcon, UploadIcon } from '@radix-ui/react-icons';
 import {
-  ThemeConfig,
+  Theme,
   RadixThemesProvider,
   Button,
   Text,
@@ -36,7 +36,7 @@ import styles from './page.module.css';
 
 export default function Snapshot() {
   return (
-    <ThemeConfig
+    <Theme
       asChild
       appearance="dark"
       accentScale="grass"
@@ -261,7 +261,7 @@ export default function Snapshot() {
           </div>
         </body>
       </html>
-    </ThemeConfig>
+    </Theme>
   );
 }
 

@@ -8,6 +8,7 @@ import {
   //
   radixGetMatchingGrayScale,
 } from './helpers/radix-colors';
+
 import type { RadixGrayScale } from './helpers/radix-colors';
 
 const themeAppearances = ['light', 'dark', 'invert'] as const;

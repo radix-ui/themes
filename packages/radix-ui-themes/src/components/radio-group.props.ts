@@ -1,4 +1,4 @@
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 const radioGroupSizes = ['1', '2'] as const;
 type RadioGroupSize = (typeof radioGroupSizes)[number];

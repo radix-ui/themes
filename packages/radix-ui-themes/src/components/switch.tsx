@@ -14,7 +14,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { SwitchSize, SwitchVariant } from './switch.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 interface SwitchProps

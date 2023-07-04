@@ -13,7 +13,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { TextSize, TextWeight, TextAlign, TextTrim } from './text.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 type TextElement = React.ElementRef<'p'>;
 interface TextProps extends PropsWithoutRefOrColor<'p'>, MarginProps {

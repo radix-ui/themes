@@ -1,4 +1,4 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 const baseButtonSizes = ['1', '2', '3'] as const;
 type BaseButtonSize = (typeof baseButtonSizes)[number];

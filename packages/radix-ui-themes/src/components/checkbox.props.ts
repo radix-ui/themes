@@ -1,4 +1,4 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 const checkboxSizes = ['1', '2'] as const;
 type CheckboxSize = (typeof checkboxSizes)[number];

@@ -1,4 +1,4 @@
-import type { ThemeRadius } from '../theme';
+import type { ThemeRadius } from '../theme-options';
 
 const scrollAreaSizes = ['1', '2', '3'] as const;
 type ScrollAreaSize = (typeof scrollAreaSizes)[number];

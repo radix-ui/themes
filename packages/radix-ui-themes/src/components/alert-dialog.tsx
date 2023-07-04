@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import { Heading } from './heading';
 import { Text } from './text';
-import { ThemeConfig } from '../theme-config';
+import { Theme } from '../theme';
 
-import type { ThemeAppearance } from '../theme';
+import type { ThemeAppearance } from '../theme-options';
 
 interface AlertDialogProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root> {}
@@ -35,7 +35,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
     const { className, forceMount, container, ...contentProps } = props;
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <ThemeConfig asChild applyBackgroundColor={false}>
+        <Theme asChild applyBackgroundColor={false}>
           <AlertDialogPrimitive.Overlay className="rui-DialogOverlay rui-AlertDialogOverlay">
             <AlertDialogPrimitive.Content
               {...contentProps}
@@ -43,7 +43,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
               className={classNames('rui-DialogContent rui-AlertDialogContent', className)}
             />
           </AlertDialogPrimitive.Overlay>
-        </ThemeConfig>
+        </Theme>
       </AlertDialogPrimitive.Portal>
     );
   }

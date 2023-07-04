@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './scroll-area';
 import {
   selectSizeDefault,
@@ -16,11 +16,11 @@ import {
   selectRadiusDefault,
 } from './select.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
-import { ThemeConfig, useThemeConfigContext } from '../theme-config';
+import { Theme, useThemeContext } from '../theme';
 
 import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type SelectContextValue = { size?: Responsive<SelectSize>; radius?: ThemeRadius };
 const SelectContext = React.createContext<SelectContextValue>({});
@@ -112,12 +112,12 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       ...contentProps
     } = props;
     const { size, radius } = React.useContext(SelectContext);
-    const themeConfigContext = useThemeConfigContext();
-    const resolvedColor = color ?? themeConfigContext.accentScale;
-    const resolvedRadius = radius ?? themeConfigContext.radius;
+    const themeContext = useThemeContext();
+    const resolvedColor = color ?? themeContext.accentScale;
+    const resolvedRadius = radius ?? themeContext.radius;
     return (
       <SelectPrimitive.Portal container={container}>
-        <ThemeConfig asChild>
+        <Theme asChild>
           <SelectPrimitive.Content
             data-accent-scale={resolvedColor}
             data-radius={resolvedRadius}
@@ -139,7 +139,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
               </SelectPrimitive.Viewport>
             </ScrollArea>
           </SelectPrimitive.Content>
-        </ThemeConfig>
+        </Theme>
       </SelectPrimitive.Portal>
     );
   }

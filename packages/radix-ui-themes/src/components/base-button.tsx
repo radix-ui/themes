@@ -11,7 +11,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { BaseButtonSize, BaseButtonVariant } from './base-button.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type BaseButtonElement = React.ElementRef<'button'>;
 interface BaseButtonProps extends PropsWithoutRefOrColor<'button'>, MarginProps {

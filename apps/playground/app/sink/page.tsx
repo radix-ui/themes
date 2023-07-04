@@ -9,7 +9,7 @@ import {
 import NextLink from 'next/link';
 import {
   RadixThemesProvider,
-  ThemeConfig,
+  Theme,
   //
   AlertDialogRoot,
   AlertDialogTrigger,
@@ -181,7 +181,7 @@ export default function Sink() {
   return (
     <html lang="en" className={styles.root}>
       <body>
-        <ThemeConfig asChild backgroundColor="gray">
+        <Theme asChild backgroundColor="gray">
           <div id="root">
             <RadixThemesProvider
             // dir="rtl"
@@ -3183,41 +3183,41 @@ export default function Sink() {
                   </Flex>
                 </DocsSection>
 
-                <DocsSection title="Nested apperances test">
+                <DocsSection title="Nested appearances test">
                   <SampleNestedUI title="Global appearance">
-                    <ThemeConfig asChild appearance="invert">
+                    <Theme asChild appearance="invert">
                       <SampleNestedUI title="Inverted">
-                        <ThemeConfig asChild appearance="dark">
+                        <Theme asChild appearance="dark">
                           <SampleNestedUI title="Always dark">
-                            <ThemeConfig asChild appearance="light">
+                            <Theme asChild appearance="light">
                               <SampleNestedUI title="Always light" />
-                            </ThemeConfig>
+                            </Theme>
                           </SampleNestedUI>
-                        </ThemeConfig>
+                        </Theme>
                       </SampleNestedUI>
-                    </ThemeConfig>
+                    </Theme>
                   </SampleNestedUI>
                 </DocsSection>
 
                 <DocsSection title="Nested colors test">
                   <SampleNestedUI title="Global color">
-                    <ThemeConfig asChild accentScale="mint">
+                    <Theme asChild accentScale="mint">
                       <SampleNestedUI title="Always mint">
-                        <ThemeConfig asChild accentScale="amber">
+                        <Theme asChild accentScale="amber">
                           <SampleNestedUI title="Always amber">
-                            <ThemeConfig asChild accentScale="tomato">
+                            <Theme asChild accentScale="tomato">
                               <SampleNestedUI title="Always tomato" />
-                            </ThemeConfig>
+                            </Theme>
                           </SampleNestedUI>
-                        </ThemeConfig>
+                        </Theme>
                       </SampleNestedUI>
-                    </ThemeConfig>
+                    </Theme>
                   </SampleNestedUI>
                 </DocsSection>
 
                 <DocsSection title="Mixed nested themes test">
                   <SampleNestedUI title="Global theme">
-                    <ThemeConfig
+                    <Theme
                       asChild
                       accentScale="mint"
                       appearance="invert"
@@ -3225,7 +3225,7 @@ export default function Sink() {
                       scaling="90%"
                     >
                       <SampleNestedUI title="Mint, inverted appearance, no radius, 90%">
-                        <ThemeConfig
+                        <Theme
                           asChild
                           accentScale="amber"
                           backgroundColor="auto"
@@ -3235,7 +3235,7 @@ export default function Sink() {
                           scaling="110%"
                         >
                           <SampleNestedUI title="Amber, inverted appearance, full radius, 110%">
-                            <ThemeConfig
+                            <Theme
                               asChild
                               accentScale="tomato"
                               appearance="invert"
@@ -3243,17 +3243,17 @@ export default function Sink() {
                               scaling="100%"
                             >
                               <SampleNestedUI title="Tomato, inverted appearance, large radius, 100%" />
-                            </ThemeConfig>
+                            </Theme>
                           </SampleNestedUI>
-                        </ThemeConfig>
+                        </Theme>
                       </SampleNestedUI>
-                    </ThemeConfig>
+                    </Theme>
                   </SampleNestedUI>
                 </DocsSection>
               </main>
             </RadixThemesProvider>
           </div>
-        </ThemeConfig>
+        </Theme>
       </body>
     </html>
   );

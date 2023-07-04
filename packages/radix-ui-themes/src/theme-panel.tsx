@@ -11,8 +11,9 @@ import {
   Em,
   Flex,
   Grid,
-  IconButton,
   Heading,
+  IconButton,
+  Kbd,
   Popover,
   RadioGroup,
   ScrollArea,
@@ -21,6 +22,7 @@ import {
   Slider,
   Strong,
   Text,
+  Tooltip,
   // helpers
   themeAppearanceDefault,
   themeAccentScalesGrouped,
@@ -36,10 +38,8 @@ import {
   themeRadiusDefault,
   themeScalings,
   themeScalingDefault,
-  Kbd,
-  Tooltip,
+  useThemeContext,
 } from './index';
-import { useThemeConfigContext } from './theme-config';
 
 import type {
   ThemeAccentScale,
@@ -86,7 +86,7 @@ interface ThemePanelImplPrivateProps {
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
   (props, forwardedRef) => {
     const { visible, onVisibleChange, ...panelProps } = props;
-    const themeConfigContext = useThemeConfigContext();
+    const themeContext = useThemeContext();
     const {
       appearance,
       onAppearanceChange,
@@ -102,7 +102,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onRadiusChange,
       scaling,
       onScalingChange,
-    } = themeConfigContext;
+    } = themeContext;
 
     const pureGray9 = appearance === 'dark' ? radixColorsGrayDark.gray9 : radixColorsGray.gray9;
     const autoMatchedGray = getMatchingGrayScale(accentScale);
@@ -486,7 +486,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
         <Box p="3" shrink="0" style={{ borderTop: '1px solid var(--gray-6)' }}>
           <Tooltip
-            content="Copy props, then paste them on your `ThemeConfig`"
+            content="Copy props, then paste them on your `Theme`"
             multiline
             style={{ maxWidth: 170 }}
           >

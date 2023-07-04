@@ -15,7 +15,7 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 
 import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme';
+import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxProps

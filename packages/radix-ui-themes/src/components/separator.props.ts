@@ -1,4 +1,4 @@
-import type { ThemeAccentScale } from '../theme';
+import type { ThemeAccentScale } from '../theme-options';
 
 const separatorSizes = ['1', '2', '3', '4'] as const;
 type SeparatorSize = (typeof separatorSizes)[number];

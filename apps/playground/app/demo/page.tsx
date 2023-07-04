@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  ThemeConfig,
+  Theme,
   //
   Avatar,
   Flex,
@@ -29,7 +29,7 @@ import styles from './page.module.css';
 
 export default function Demo() {
   return (
-    <ThemeConfig
+    <Theme
       asChild
       appearance="dark"
       accentScale="mint"
@@ -101,6 +101,6 @@ export default function Demo() {
           </div>
         </body>
       </html>
-    </ThemeConfig>
+    </Theme>
   );
 }
