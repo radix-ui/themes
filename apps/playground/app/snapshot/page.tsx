@@ -36,19 +36,19 @@ import styles from './page.module.css';
 
 export default function Snapshot() {
   return (
-    <Theme
-      asChild
-      appearance="dark"
-      accentScale="grass"
-      backgroundColor="gray"
-      textColor="accent"
-      radius="small"
-      scaling="110%"
-    >
-      <html lang="en">
-        <body>
-          <div id="root">
-            <RadixThemesProvider>
+    <RadixThemesProvider>
+      <Theme
+        asChild
+        appearance="dark"
+        accentScale="grass"
+        backgroundColor="gray"
+        textColor="accent"
+        radius="small"
+        scaling="110%"
+      >
+        <html lang="en">
+          <body>
+            <div id="root">
               <ThemePanel />
 
               <div className={styles.root}>
@@ -191,17 +191,21 @@ export default function Snapshot() {
                   >
                     <div style={{ maxWidth: '35%' }}>
                       <Heading size="9">Green Life</Heading>
-                      <Text style={{ marginBottom: 'var(--space-5)', color: 'var(--white-a11)' }}>
+                      <Text
+                        as="p"
+                        style={{ marginBottom: 'var(--space-5)', color: 'var(--white-a11)' }}
+                      >
                         Curated by WorkOS
                       </Text>
 
-                      <Text weight="bold" style={{ marginBottom: 'var(--space-2)' }}>
+                      <Text as="p" weight="bold" style={{ marginBottom: 'var(--space-2)' }}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sed, sit
                         recusandae rem debitis maxime id cumque commodi iste alias optio ad beatae
                         veniam fugiat dolorem itaque aliquid! Nisi, exercitationem!
                       </Text>
 
                       <Text
+                        as="p"
                         size="2"
                         style={{ marginBottom: 'var(--space-6)', color: 'var(--white-a11)' }}
                       >
@@ -221,7 +225,7 @@ export default function Snapshot() {
                     <ImageCard key={id} id={id} />
                   ))}
                   <div style={{ border: '1px solid var(--gray-7)', padding: 'var(--space-5)' }}>
-                    <Text size="4" weight="bold" style={{ marginBottom: 'var(--space-5)' }}>
+                    <Text as="p" size="4" weight="bold" style={{ marginBottom: 'var(--space-5)' }}>
                       Contributors
                     </Text>
                     <div
@@ -235,10 +239,10 @@ export default function Snapshot() {
                         'Vitor Capretz',
                       ].map((name) => (
                         <div key={name}>
-                          <Text size="2" weight="bold">
+                          <Text as="p" size="2" weight="bold">
                             {name}
                           </Text>
-                          <Text color="gray" size="1">
+                          <Text as="p" color="gray" size="1">
                             {name.toLocaleLowerCase().replace(' ', '_')}
                           </Text>
                         </div>
@@ -257,11 +261,11 @@ export default function Snapshot() {
                   ))}
                 </div>
               </div>
-            </RadixThemesProvider>
-          </div>
-        </body>
-      </html>
-    </Theme>
+            </div>
+          </body>
+        </html>
+      </Theme>
+    </RadixThemesProvider>
   );
 }
 

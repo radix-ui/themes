@@ -42,7 +42,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
             ref={forwardedRef}
             className={classNames('rui-TooltipContent', { multiline }, className)}
           >
-            <Text className="rui-TooltipText" size="1">
+            <Text as="p" className="rui-TooltipText" size="1">
               {content}
             </Text>
             <TooltipPrimitive.Arrow className="rui-TooltipArrow" />

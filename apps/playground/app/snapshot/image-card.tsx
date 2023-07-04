@@ -53,7 +53,7 @@ function ImageCard({ id }: any) {
           </Tooltip>
           <Popover.Content align="center" className={styles.downloadPopover}>
             <div style={{ boxSizing: 'border-box', width: 200, padding: 'var(--space-4)' }}>
-              <Text size="3" style={{ marginBottom: 'var(--space-2)' }}>
+              <Text as="p" size="3" style={{ marginBottom: 'var(--space-2)' }}>
                 Choose a size:
               </Text>
 
@@ -77,9 +77,7 @@ function ImageCard({ id }: any) {
                       defaultChecked
                       style={{ marginTop: -1 }}
                     />
-                    <Text asChild size="2">
-                      <span>{size}</span>
-                    </Text>
+                    <Text size="2">{size}</Text>
                   </label>
                 ))}
               </div>

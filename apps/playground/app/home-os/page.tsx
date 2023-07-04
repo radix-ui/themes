@@ -130,7 +130,7 @@ export default function HomeOS() {
 
                   <main style={{ padding: 'var(--space-6)' }}>
                     <div style={{ marginBottom: 'var(--space-5)' }}>
-                      <Text size="7" weight="bold">
+                      <Text as="p" size="7" weight="bold">
                         Private Room in Elegant French Gothic Home
                       </Text>
                     </div>
@@ -139,7 +139,12 @@ export default function HomeOS() {
 
                     <div style={{ display: 'flex', gap: 100, marginTop: 'var(--space-6)' }}>
                       <div style={{ flexGrow: 1 }}>
-                        <Text size="5" weight="bold" style={{ marginBottom: 'var(--space-4)' }}>
+                        <Text
+                          as="p"
+                          size="5"
+                          weight="bold"
+                          style={{ marginBottom: 'var(--space-4)' }}
+                        >
                           Room in a apartment hosted by Valentina
                         </Text>
 
@@ -217,7 +222,9 @@ export default function HomeOS() {
                             >
                               <path d="m17 6c1.0543618 0 1.9181651.81587779 1.9945143 1.85073766l.0054857.14926234.0008825 8.7646837c.082702.0740788.161269.1526799.235312.2354146l4.7638055-.0000983v-3h-3c-.6424073 0-1.1071307-.5923403-.9796308-1.2018783l.0309475-.1143495 2-5.99999997c.12374-.37122012.4508064-.63259558.8326391-.67705046l.1160442-.00672177h4c.3913004 0 .7426904.22762818.9056101.57580861l.0430732.10796362 2 5.99999997c.203147.6094411-.2118379 1.2376308-.8304154 1.3094267l-.1182679.0068011h-3v3h5c.5128358 0 .9355072.3860402.9932723.8833789l.0067277.1166211v12h-2v-3h-10v3h-2v-3h-16v3h-2v-11c0-.8885473.3862919-1.6868712 1.00009834-2.2361945l-.00009834-8.7638055c0-1.0543618.81587779-1.91816512 1.85073766-1.99451426l.14926234-.00548574zm13 13h-10v6h10zm-13-1h-14c-.51283584 0-.93550716.3860402-.99327227.8833789l-.00672773.1166211v6h16v-6c0-.4733869-.3289337-.8699473-.7707092-.9735893l-.1126697-.019683zm8 3c.5522847 0 1 .4477153 1 1s-.4477153 1-1 1-1-.4477153-1-1 .4477153-1 1-1zm-8-13h-14v8h2v-3c0-1.0543618.81587779-1.9181651 1.85073766-1.9945143l.14926234-.0054857h6c1.0543618 0 1.9181651.8158778 1.9945143 1.8507377l.0054857.1492623v3h2zm-4 5h-6v3h6zm13.279-5h-2.559l-1.333 4h5.225z"></path>
                             </svg>
-                            <Text weight="bold">Room in an apartment</Text>
+                            <Text as="p" weight="bold">
+                              Room in an apartment
+                            </Text>
                           </div>
                           <div style={{ display: 'flex', gap: 15 }}>
                             <svg
@@ -231,17 +238,24 @@ export default function HomeOS() {
                             >
                               <path d="m11.6667 0-.00095 1.666h8.667l.00055-1.666h2l-.00055 1.666 6.00065.00063c1.0543745 0 1.9181663.81587127 1.9945143 1.85073677l.0054857.14926323v15.91907c0 .4715696-.1664445.9258658-.4669028 1.2844692l-.1188904.1298308-8.7476886 8.7476953c-.3334303.3332526-.7723097.5367561-1.2381975.5778649l-.1758207.0077398h-12.91915c-2.68874373 0-4.88181754-2.1223321-4.99538046-4.7831124l-.00461954-.2168876v-21.66668c0-1.05436021.81587582-1.91815587 1.85073739-1.99450431l.14926261-.00548569 5.999-.00063.00095-1.666zm16.66605 11.666h-24.666v13.6673c0 1.5976581 1.24893332 2.9036593 2.82372864 2.9949072l.17627136.0050928 10.999-.0003.00095-5.6664c0-2.6887355 2.122362-4.8818171 4.7832071-4.9953804l.2168929-.0046196 5.66595-.0006zm-.081 8-5.58495.0006c-1.5977285 0-2.9037573 1.2489454-2.9950071 2.8237299l-.0050929.1762701-.00095 5.5864zm-18.586-16-5.999.00062v5.99938h24.666l.00065-5.99938-6.00065-.00062.00055 1.66733h-2l-.00055-1.66733h-8.667l.00095 1.66733h-2z"></path>
                             </svg>
-                            <Text weight="bold">Free cancellation before 24 May</Text>
+                            <Text as="p" weight="bold">
+                              Free cancellation before 24 May
+                            </Text>
                           </div>
                         </div>
 
                         <Separator size="4" style={{ marginTop: 30, marginBottom: 30 }} />
 
-                        <Text weight="bold" size="5" style={{ marginBottom: 'var(--space-2)' }}>
+                        <Text
+                          as="p"
+                          weight="bold"
+                          size="5"
+                          style={{ marginBottom: 'var(--space-2)' }}
+                        >
                           About this place
                         </Text>
 
-                        <Text style={{ marginBottom: 'var(--space-4)' }}>
+                        <Text as="p" style={{ marginBottom: 'var(--space-4)' }}>
                           Nice apartment with a very cozy living room, a large terrace, an equipped
                           kitchen, two bedrooms and a bathroom. The house is very bright thanks to
                           the large windows. It is located in a quiet area where several means of
@@ -275,12 +289,10 @@ export default function HomeOS() {
                             }}
                           >
                             <div>
-                              <Text asChild size="6" weight="bold">
-                                <span>£70</span>
+                              <Text size="6" weight="bold">
+                                £70
                               </Text>{' '}
-                              <Text asChild color="gray">
-                                <span>night</span>
-                              </Text>
+                              <Text color="gray">night</Text>
                             </div>
                             <Link size="2" color="gray">
                               4 reviews
@@ -309,11 +321,11 @@ export default function HomeOS() {
                               <Popover.Trigger>
                                 <button className={styles.guestTrigger}>
                                   <div>
-                                    <Text size="1" weight="bold">
+                                    <Text as="p" size="1" weight="bold">
                                       Guests
                                     </Text>
 
-                                    <Text size="2">
+                                    <Text as="p" size="2">
                                       {totalCount} guest{totalCount > 1 ? 's' : ''}
                                     </Text>
                                   </div>
@@ -481,7 +493,7 @@ function ConfirmBookingDialog({ children, guestCount }: any) {
           Your booking is only moments away.
         </Dialog.Description>
 
-        <Text weight="bold" style={{ marginBottom: 'var(--space-3)' }}>
+        <Text as="p" weight="bold" style={{ marginBottom: 'var(--space-3)' }}>
           Your trip
         </Text>
 
@@ -525,11 +537,13 @@ const LabelValueCard: React.FC<{ label: string; value: string }> = ({ label, val
         borderRadius: 'var(--br-3)',
       }}
     >
-      <Text size="1" weight="bold">
+      <Text as="p" size="1" weight="bold">
         {label}
       </Text>
 
-      <Text size="2">{value}</Text>
+      <Text as="p" size="2">
+        {value}
+      </Text>
     </div>
   );
 };

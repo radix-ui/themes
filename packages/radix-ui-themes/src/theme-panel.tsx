@@ -196,7 +196,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
         <ScrollArea>
           <Box grow="1" p="5">
-            <Text size="2" weight="bold" mb="3">
+            <Text as="p" size="2" weight="bold" mb="3">
               Color
             </Text>
 
@@ -229,7 +229,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                               <Flex align="baseline" gap="1">
                                 {color}
                                 {color === 'gray' && !['auto', 'gray'].includes(grayScale) ? (
-                                  <Text size="2" color="gray" asChild>
+                                  <Text size="2" color="gray">
                                     <Em> ({grayScale})</Em>
                                   </Text>
                                 ) : null}
@@ -277,7 +277,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                               <Flex align="baseline" gap="1">
                                 {gray}
                                 {gray === 'auto' ? (
-                                  <Text size="2" color="gray" asChild>
+                                  <Text size="2" color="gray">
                                     <Em> ({autoMatchedGray})</Em>
                                   </Text>
                                 ) : null}
@@ -309,7 +309,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       </Popover.Trigger>
                       <Popover.Content side="left" align="center">
                         <Box p="4" style={{ width: 340 }}>
-                          <Text size="2" color="gray" mb="3">
+                          <Text as="p" size="2" color="gray" mb="3">
                             Background color
                           </Text>
                           <DescriptionList.Root>
@@ -319,7 +319,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             <DescriptionList.Details>
                               Chosing this option will set the background to <Strong>White</Strong>{' '}
                               when appearance is <Code>light</Code> and <Strong>Gray 1</Strong>
-                              <Text size="2" color="gray" asChild>
+                              <Text size="2" color="gray">
                                 <Em> ({resolvedGrayScale} 1)</Em>
                               </Text>{' '}
                               when appearance is <Code>dark</Code>.
@@ -329,7 +329,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             </DescriptionList.Term>
                             <DescriptionList.Details mb="0">
                               Chosing this option will set the background to <Strong>Gray 1</Strong>
-                              <Text size="2" color="gray" asChild>
+                              <Text size="2" color="gray">
                                 <Em> ({resolvedGrayScale} 1)</Em>
                               </Text>
                               .
@@ -373,7 +373,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       </Popover.Trigger>
                       <Popover.Content side="left" align="center">
                         <Box p="4" style={{ width: 320 }}>
-                          <Text size="2" color="gray" mb="3">
+                          <Text as="p" size="2" color="gray" mb="3">
                             Text color
                           </Text>
                           <DescriptionList.Root>
@@ -382,7 +382,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             </DescriptionList.Term>
                             <DescriptionList.Details>
                               Chosing this option will set the text to <Strong>Gray 12</Strong>
-                              <Text size="2" color="gray" asChild>
+                              <Text size="2" color="gray">
                                 <Em> ({resolvedGrayScale} 12)</Em>
                               </Text>
                               .
@@ -393,7 +393,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             <DescriptionList.Details mb="0">
                               Chosing this option will set the background to{' '}
                               <Strong>Accent 12</Strong>
-                              <Text size="2" color="gray" asChild>
+                              <Text size="2" color="gray">
                                 <Em> ({accentScale} 12)</Em>
                               </Text>
                               .
@@ -438,7 +438,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             </Grid>
 
             <Separator size="4" mt="4" mb="5" mx="-5" style={{ width: 'auto' }} />
-            <Text size="2" weight="bold" mb="3">
+            <Text as="p" size="2" weight="bold" mb="3">
               Style
             </Text>
 

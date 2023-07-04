@@ -15,19 +15,29 @@ import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers
 import type { ThemeAccentScale } from '../theme-options';
 
 type HeadingElement = React.ElementRef<'h1'>;
-interface HeadingProps extends PropsWithoutRefOrColor<'h1'>, MarginProps {
-  asChild?: boolean;
-  size?: Responsive<HeadingSize>;
-  align?: Responsive<HeadingAlign>;
-  trim?: Responsive<HeadingTrim>;
-  color?: ThemeAccentScale | 'color';
-  highContrast?: boolean;
-}
+type HeadingProps = PropsWithoutRefOrColor<'h1'> &
+  MarginProps & {
+    size?: Responsive<HeadingSize>;
+    align?: Responsive<HeadingAlign>;
+    trim?: Responsive<HeadingTrim>;
+    color?: ThemeAccentScale | 'color';
+    highContrast?: boolean;
+  } & (
+    | { asChild?: boolean; as?: never }
+    | { as?: 'h1'; asChild?: never }
+    | { as?: 'h2'; asChild?: never }
+    | { as?: 'h3'; asChild?: never }
+    | { as?: 'h4'; asChild?: never }
+    | { as?: 'h5'; asChild?: never }
+    | { as?: 'h6'; asChild?: never }
+  );
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
+    children,
     className,
     asChild = false,
+    as: Tag = 'h1',
     size = headingSizeDefault,
     align = headingAlignDefault,
     trim = headingTrimDefault,
@@ -35,9 +45,8 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
     highContrast = headingHighContrastDefault,
     ...headingProps
   } = marginRest;
-  const Comp = asChild ? Slot : 'h1';
   return (
-    <Comp
+    <Slot
       data-accent-scale={color}
       {...headingProps}
       ref={forwardedRef}
@@ -50,7 +59,9 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
         { 'high-contrast': highContrast },
         className
       )}
-    />
+    >
+      {asChild ? children : <Tag>{children}</Tag>}
+    </Slot>
   );
 });
 Heading.displayName = 'Heading';

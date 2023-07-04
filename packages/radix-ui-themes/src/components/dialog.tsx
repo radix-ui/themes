@@ -46,7 +46,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
 DialogContent.displayName = 'DialogContent';
 
 type DialogTitleElement = React.ElementRef<typeof Heading>;
-interface DialogTitleProps extends React.ComponentPropsWithoutRef<typeof Heading> {}
+type DialogTitleProps = React.ComponentPropsWithoutRef<typeof Heading>;
 const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Title asChild>
@@ -56,12 +56,12 @@ const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
 );
 DialogTitle.displayName = 'DialogTitle';
 
-type DialogDescriptionElement = React.ElementRef<typeof Text>;
-interface DialogDescriptionProps extends React.ComponentPropsWithoutRef<typeof Text> {}
+type DialogDescriptionElement = HTMLParagraphElement;
+type DialogDescriptionProps = Omit<React.ComponentPropsWithoutRef<typeof Text>, 'asChild'>;
 const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescriptionProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Description asChild>
-      <Text size="2" {...props} ref={forwardedRef} />
+      <Text as="p" size="2" {...props} ref={forwardedRef} />
     </DialogPrimitive.Description>
   )
 );

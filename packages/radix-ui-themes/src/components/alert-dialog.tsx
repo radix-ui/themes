@@ -51,7 +51,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
 AlertDialogContent.displayName = 'AlertDialogContent';
 
 type AlertDialogTitleElement = React.ElementRef<typeof Heading>;
-interface AlertDialogTitleProps extends React.ComponentPropsWithoutRef<typeof Heading> {}
+type AlertDialogTitleProps = React.ComponentPropsWithoutRef<typeof Heading>;
 const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTitleProps>(
   (props, forwardedRef) => (
     <AlertDialogPrimitive.Title asChild>
@@ -61,14 +61,14 @@ const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTi
 );
 AlertDialogTitle.displayName = 'AlertDialogTitle';
 
-type AlertDialogDescriptionElement = React.ElementRef<typeof Text>;
-interface AlertDialogDescriptionProps extends React.ComponentPropsWithoutRef<typeof Text> {}
+type AlertDialogDescriptionElement = HTMLParagraphElement;
+type AlertDialogDescriptionProps = Omit<React.ComponentPropsWithoutRef<typeof Text>, 'asChild'>;
 const AlertDialogDescription = React.forwardRef<
   AlertDialogDescriptionElement,
   AlertDialogDescriptionProps
 >((props, forwardedRef) => (
   <AlertDialogPrimitive.Description asChild>
-    <Text size="2" {...props} ref={forwardedRef} />
+    <Text as="p" size="2" {...props} ref={forwardedRef} />
   </AlertDialogPrimitive.Description>
 ));
 AlertDialogDescription.displayName = 'AlertDialogDescription';

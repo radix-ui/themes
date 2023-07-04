@@ -259,7 +259,7 @@ export default function Sink() {
                             <Link>A fancy link</Link>
                           </HoverCardTrigger>
                           <HoverCardContent style={{ width: 200 }}>
-                            <Text size="2">
+                            <Text as="p" size="2">
                               Jan Tschichold was a German calligrapher, typographer and book
                               designer. He played a significant role in the development of graphic
                               design in the 20th century.
@@ -325,7 +325,7 @@ export default function Sink() {
                           </PopoverTrigger>
                           <PopoverContent>
                             <Box p="4" style={{ width: 200 }}>
-                              <Text size="2" mb="2">
+                              <Text as="p" size="2" mb="2">
                                 Jan Tschichold was a German calligrapher, typographer and book
                                 designer. He played a significant role in the development of graphic
                                 design in the 20th century.
@@ -414,19 +414,19 @@ export default function Sink() {
                             </tbody>
                           </table>
 
-                          <Text my="5">
+                          <Text as="p" my="5">
                             <Code>color</Code> can be set per instance:
                           </Text>
 
                           <details>
                             <summary>
-                              <Text size="2" color="gray" asChild>
-                                <span>See colors & variants combinations</span>
+                              <Text size="2" color="gray">
+                                See colors & variants combinations
                               </Text>
                             </summary>
                             {themeAccentScalesGrouped.map(({ label, values }) => (
                               <React.Fragment key={label}>
-                                <Text weight="bold" mt="6" mb="4">
+                                <Text as="p" weight="bold" mt="6" mb="4">
                                   {label}
                                 </Text>
                                 <table className={styles.table}>
@@ -512,7 +512,9 @@ export default function Sink() {
                 <Separator size="4" />
 
                 <DocsSection title="Select">
-                  <Text my="5">Trigger variants:</Text>
+                  <Text as="p" my="5">
+                    Trigger variants:
+                  </Text>
                   <table className={styles.table}>
                     <thead>
                       <tr>
@@ -581,7 +583,9 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">Content variants:</Text>
+                  <Text as="p" my="5">
+                    Content variants:
+                  </Text>
                   <table className={styles.table}>
                     <thead>
                       <tr>
@@ -638,14 +642,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -679,19 +683,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -807,7 +811,9 @@ export default function Sink() {
 
                     <div>
                       <Box py="4">
-                        <Text size="2">Alignement</Text>
+                        <Text as="p" size="2">
+                          Alignment
+                        </Text>
                       </Box>
                       <Separator size="2" />
 
@@ -841,14 +847,14 @@ export default function Sink() {
                     </div>
                   </Grid>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -877,19 +883,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors</span>
+                      <Text size="2" color="gray">
+                        See colors
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1031,14 +1037,14 @@ export default function Sink() {
                     </Box>
                   </Grid>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -1067,19 +1073,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors</span>
+                      <Text size="2" color="gray">
+                        See colors
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1186,7 +1192,9 @@ export default function Sink() {
 
                     <div>
                       <Box py="4">
-                        <Text size="2">Alignement</Text>
+                        <Text as="p" size="2">
+                          Alignment
+                        </Text>
                       </Box>
                       <Separator size="3" />
 
@@ -1222,14 +1230,14 @@ export default function Sink() {
                     </div>
                   </Grid>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -1258,19 +1266,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1386,7 +1394,9 @@ export default function Sink() {
 
                     <div>
                       <Box py="4">
-                        <Text size="2">Alignement</Text>
+                        <Text as="p" size="2">
+                          Alignment
+                        </Text>
                       </Box>
                       <Separator size="3" />
 
@@ -1423,19 +1433,19 @@ export default function Sink() {
                     </div>
                   </Grid>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1537,14 +1547,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -1575,19 +1585,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1678,14 +1688,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -1716,19 +1726,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1824,14 +1834,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -1860,19 +1870,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -1967,14 +1977,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -2007,19 +2017,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -2088,14 +2098,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -2126,19 +2136,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -2219,14 +2229,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -2260,19 +2270,19 @@ export default function Sink() {
                     </Box>
                   </details>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -2311,7 +2321,7 @@ export default function Sink() {
 
                 <DocsSection title="Typography">
                   <Flex direction="column" gap="5" style={{ maxWidth: 688 }}>
-                    <Text size="3">
+                    <Text as="p" size="3">
                       The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
                       applied to all fonts.google.com pages where fonts are rendered. This results
                       in browsers using the <Strong>greyscale antialiasing method</Strong> rather
@@ -2348,7 +2358,7 @@ export default function Sink() {
                       pleasant.
                     </Text>
 
-                    <Text size="4">
+                    <Text as="p" size="4">
                       The goal of typography is to relate font size, line height, and line width in
                       a proportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
@@ -2357,7 +2367,7 @@ export default function Sink() {
                       attributes in our typography.
                     </Text>
 
-                    <Text size="3" style={{ maxWidth: 600 }}>
+                    <Text as="p" size="3" style={{ maxWidth: 600 }}>
                       The goal of typography is to relate font size, line height, and line width in
                       a proportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
@@ -2367,7 +2377,7 @@ export default function Sink() {
                     </Text>
 
                     <Grid columns="2" gap="5">
-                      <Text size="2" style={{ maxWidth: 400 }}>
+                      <Text as="p" size="2" style={{ maxWidth: 400 }}>
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant. The question is: What proportion(s) will give us the best
@@ -2376,7 +2386,7 @@ export default function Sink() {
                         these attributes in our typography.
                       </Text>
 
-                      <Text size="1" style={{ maxWidth: 400 }}>
+                      <Text as="p" size="1" style={{ maxWidth: 400 }}>
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant. The question is: What proportion(s) will give us the best
@@ -2435,7 +2445,7 @@ export default function Sink() {
                       <Heading size="5" mb="2">
                         The principles of the Typographic Craft are difficult to master
                       </Heading>
-                      <Text size="4">
+                      <Text as="p" size="4">
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant.
@@ -2447,7 +2457,7 @@ export default function Sink() {
                         <Heading size="4" mb="2">
                           The principles of the Typographic Craft are difficult to master
                         </Heading>
-                        <Text size="3">
+                        <Text as="p" size="3">
                           The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant.
@@ -2457,7 +2467,7 @@ export default function Sink() {
                         <Heading size="3" mb="2">
                           The principles of the Typographic Craft are difficult to master
                         </Heading>
-                        <Text size="2">
+                        <Text as="p" size="2">
                           The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant.
@@ -2470,7 +2480,7 @@ export default function Sink() {
                         <Heading size="2" mb="1">
                           The principles of the Typographic Craft are difficult to master
                         </Heading>
-                        <Text size="2">
+                        <Text as="p" size="2">
                           The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant.
@@ -2480,7 +2490,7 @@ export default function Sink() {
                         <Heading size="2" mb="1">
                           The principles of the Typographic Craft are difficult to master
                         </Heading>
-                        <Text size="1">
+                        <Text as="p" size="1">
                           The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant.
@@ -2490,7 +2500,7 @@ export default function Sink() {
                         <Heading size="1" mb="1">
                           The principles of the Typographic Craft are difficult to master
                         </Heading>
-                        <Text size="1">
+                        <Text as="p" size="1">
                           The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant.
@@ -2502,36 +2512,36 @@ export default function Sink() {
 
                     <Grid columns="2" gap="5">
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="1" weight="bold">
+                        <Text as="p" size="1" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="1">
+                        <Text as="p" color="gray" size="1">
                           Extensions from added software
                         </Text>
                       </Box>
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="2" weight="bold">
+                        <Text as="p" size="2" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="1">
+                        <Text as="p" color="gray" size="1">
                           Extensions from added software
                         </Text>
                       </Box>
                     </Grid>
                     <Grid columns="2" gap="5">
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="2" weight="bold">
+                        <Text as="p" size="2" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="2">
+                        <Text as="p" color="gray" size="2">
                           Extensions from added software
                         </Text>
                       </Box>
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="3" weight="bold">
+                        <Text as="p" size="3" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="2">
+                        <Text as="p" color="gray" size="2">
                           Extensions from added software
                         </Text>
                       </Box>
@@ -2541,18 +2551,18 @@ export default function Sink() {
 
                     <Grid columns="2" gap="5">
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="1" weight="bold">
+                        <Text as="p" size="1" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="1">
+                        <Text as="p" color="gray" size="1">
                           Extensions from added software for something to do with Apple Finder.
                         </Text>
                       </Box>
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="2" weight="bold">
+                        <Text as="p" size="2" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="1">
+                        <Text as="p" color="gray" size="1">
                           Extensions from added software for something to do with Apple Finder.
                         </Text>
                       </Box>
@@ -2560,18 +2570,18 @@ export default function Sink() {
 
                     <Grid columns="2" gap="5">
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="2" weight="bold">
+                        <Text as="p" size="2" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="2">
+                        <Text as="p" color="gray" size="2">
                           Extensions from added software for something to do with Apple Finder.
                         </Text>
                       </Box>
                       <Box style={{ maxWidth: 250 }}>
-                        <Text size="3" weight="bold">
+                        <Text as="p" size="3" weight="bold">
                           Quick Look
                         </Text>
-                        <Text color="gray" size="2">
+                        <Text as="p" color="gray" size="2">
                           Extensions from added software for something to do with Apple Finder.
                         </Text>
                       </Box>
@@ -2584,7 +2594,7 @@ export default function Sink() {
                         <Button variant="solid" size="1" mb="1">
                           Quick Look
                         </Button>
-                        <Text color="gray" size="1">
+                        <Text as="p" color="gray" size="1">
                           Verification needed
                         </Text>
                       </Box>
@@ -2592,7 +2602,7 @@ export default function Sink() {
                         <Button variant="solid" size="2" mb="1">
                           Quick Look
                         </Button>
-                        <Text color="gray" size="1">
+                        <Text as="p" color="gray" size="1">
                           Verification needed
                         </Text>
                       </Box>
@@ -2600,7 +2610,7 @@ export default function Sink() {
                         <Button variant="solid" size="1" mb="1">
                           Quick Look
                         </Button>
-                        <Text color="gray" size="2">
+                        <Text as="p" color="gray" size="2">
                           Verification needed
                         </Text>
                       </Box>
@@ -2608,7 +2618,7 @@ export default function Sink() {
                         <Button variant="solid" size="2" mb="1">
                           Quick Look
                         </Button>
-                        <Text color="gray" size="2">
+                        <Text as="p" color="gray" size="2">
                           Verification needed
                         </Text>
                       </Box>
@@ -2655,20 +2665,14 @@ export default function Sink() {
                       ))}
                     </Flex>
 
-                    <Text color="red" highContrast>
-                      This is some red text in high-contrast and this{' '}
-                      <Text asChild color="blue">
-                        <span>word</span>
-                      </Text>{' '}
+                    <Text as="p" color="red" highContrast>
+                      This is some red text in high-contrast and this <Text color="blue">word</Text>{' '}
                       should be blue.
                     </Text>
 
-                    <Text color="red">
-                      This is some red text and this{' '}
-                      <Text asChild highContrast>
-                        <span>word</span>
-                      </Text>{' '}
-                      should be in high-contrast.
+                    <Text as="p" color="red">
+                      This is some red text and this <Text highContrast>word</Text> should be in
+                      high-contrast.
                     </Text>
                   </Flex>
                 </DocsSection>
@@ -2722,19 +2726,19 @@ export default function Sink() {
                       ))}
                   </Flex>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See colors & variants combinations</span>
+                      <Text size="2" color="gray">
+                        See colors & variants combinations
                       </Text>
                     </summary>
                     {themeAccentScalesGrouped.map(({ label, values }) => (
                       <React.Fragment key={label}>
-                        <Text weight="bold" mt="6" mb="4">
+                        <Text as="p" weight="bold" mt="6" mb="4">
                           {label}
                         </Text>
                         <table className={styles.table}>
@@ -2821,19 +2825,13 @@ export default function Sink() {
                     </Flex>
 
                     <Heading color="red" highContrast>
-                      This is some red text in high-contrast and this{' '}
-                      <Text asChild color="blue">
-                        <span>word</span>
-                      </Text>{' '}
+                      This is some red text in high-contrast and this <Text color="blue">word</Text>{' '}
                       should be blue.
                     </Heading>
 
                     <Heading color="red">
-                      This is some red text and this{' '}
-                      <Text asChild highContrast>
-                        <span>word</span>
-                      </Text>{' '}
-                      should be in high-contrast.
+                      This is some red text and this <Text highContrast>word</Text> should be in
+                      high-contrast.
                     </Heading>
                   </Flex>
                 </DocsSection>
@@ -2904,7 +2902,7 @@ export default function Sink() {
                       </Link>
                     </Flex>
 
-                    <Text size="6">
+                    <Text as="p" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2914,7 +2912,7 @@ export default function Sink() {
                       onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
 
-                    <Text size="6">
+                    <Text as="p" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2926,7 +2924,7 @@ export default function Sink() {
 
                     <Separator size="3" my="5" />
 
-                    <Text color="gray" size="6">
+                    <Text as="p" color="gray" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2936,7 +2934,7 @@ export default function Sink() {
                       onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
 
-                    <Text color="purple" size="6">
+                    <Text as="p" color="purple" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2946,7 +2944,7 @@ export default function Sink() {
                       onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
 
-                    <Text color="blue" size="6">
+                    <Text as="p" color="blue" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2956,7 +2954,7 @@ export default function Sink() {
                       onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
 
-                    <Text color="green" size="6">
+                    <Text as="p" color="green" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2966,7 +2964,7 @@ export default function Sink() {
                       onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
 
-                    <Text color="yellow" size="6">
+                    <Text as="p" color="yellow" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -2976,7 +2974,7 @@ export default function Sink() {
                       onboarding and adoption by <Link href="/">adding SSO to your app</Link>.
                     </Text>
 
-                    <Text color="red" size="6">
+                    <Text as="p" color="red" size="6">
                       Single Sign-On (SSO) is the most frequently asked for requirement by
                       enterprise organizations looking to adopt new SaaS applications. SSO enables
                       authentication via an organization’s Identity Provider (IdP), such as Google
@@ -3032,25 +3030,25 @@ export default function Sink() {
                 <DocsSection title="AspectRatio">
                   <Grid gap="5" columns="4">
                     <div>
-                      <Text size="1" color="gray" mb="2">
+                      <Text as="p" size="1" color="gray" mb="2">
                         1x2
                       </Text>
                       <AspectRatio ratio={1 / 2}>{aspectRatioImage}</AspectRatio>
                     </div>
                     <div>
-                      <Text size="1" color="gray" mb="2">
+                      <Text as="p" size="1" color="gray" mb="2">
                         1x1
                       </Text>
                       <AspectRatio>{aspectRatioImage}</AspectRatio>
                     </div>
                     <div>
-                      <Text size="1" color="gray" mb="2">
+                      <Text as="p" size="1" color="gray" mb="2">
                         16x9
                       </Text>
                       <AspectRatio ratio={16 / 9}>{aspectRatioImage}</AspectRatio>
                     </div>
                     <div>
-                      <Text size="1" color="gray" mb="2">
+                      <Text as="p" size="1" color="gray" mb="2">
                         2x1
                       </Text>
                       <AspectRatio ratio={2 / 1}>{aspectRatioImage}</AspectRatio>
@@ -3069,7 +3067,7 @@ export default function Sink() {
                           backgroundColor: 'var(--accent-3)',
                         }}
                       />
-                      <Text>
+                      <Text as="p">
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant. The question is: What proportion(s) will give us the best
@@ -3080,7 +3078,7 @@ export default function Sink() {
                       <Box style={{ width: 300 }} my="3">
                         <AspectRatio ratio={16 / 9}>{aspectRatioImage}</AspectRatio>
                       </Box>
-                      <Text size="3">
+                      <Text as="p" size="3">
                         The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
                         applied to all fonts.google.com pages where fonts are rendered. This results
                         in browsers using the <Strong>greyscale antialiasing method</Strong> rather
@@ -3121,14 +3119,14 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Text my="5">
+                  <Text as="p" my="5">
                     <Code>radius</Code> can be set per instance:
                   </Text>
 
                   <details>
                     <summary>
-                      <Text size="2" color="gray" asChild>
-                        <span>See specific radius examples</span>
+                      <Text size="2" color="gray">
+                        See specific radius examples
                       </Text>
                     </summary>
                     <Box mt="3">
@@ -3168,7 +3166,7 @@ export default function Sink() {
                 </DocsSection>
 
                 <DocsSection title="Playground">
-                  <Text mb="5">
+                  <Text as="p" mb="5">
                     In this section, I am just throwing together some of the components to get a
                     sense of how harmonious they are.
                   </Text>
@@ -3378,8 +3376,8 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
         ...props.style,
       }}
     >
-      <Text asChild size="1" color="color">
-        <span>Right-click here</span>
+      <Text size="1" color="color">
+        Right-click here
       </Text>
     </Grid>
   );
@@ -3449,7 +3447,7 @@ function ColumnHeaderCell({ children, ...props }: React.ComponentProps<'th'>) {
   return (
     <th {...props} className={styles.columnHeaderCell}>
       {children && (
-        <Text color="gray" size="2">
+        <Text as="p" color="gray" size="2">
           {children}
         </Text>
       )}
@@ -3461,7 +3459,7 @@ function RowHeaderCell({ children, ...props }: React.ComponentProps<'td'>) {
   return (
     <td {...props} className={styles.rowHeaderCell}>
       {children && (
-        <Text color="gray" size="2">
+        <Text as="p" color="gray" size="2">
           {children}
         </Text>
       )}
@@ -3519,7 +3517,9 @@ const SampleNestedUI = React.forwardRef<
         </Heading>
         <Flex direction="column" gap="3">
           <Grid gap="1">
-            <Text weight="bold">Feedback</Text>
+            <Text as="p" weight="bold">
+              Feedback
+            </Text>
             <TextArea placeholder="Your feedback" />
           </Grid>
           <Button>Submit</Button>
