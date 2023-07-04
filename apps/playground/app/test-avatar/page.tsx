@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ThemeConfig, Provider, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
+import { ThemeConfig, RadixThemesProvider, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
 
 export default function Test() {
   return (
@@ -7,7 +7,7 @@ export default function Test() {
       <html lang="en">
         <body>
           <div id="root">
-            <Provider>
+            <RadixThemesProvider>
               <ThemePanel />
               <Flex align="center" gap="3">
                 <Avatar src="./api/avatar" fallback="BG" />
@@ -17,7 +17,7 @@ export default function Test() {
                 <Avatar fallback="BG" />
                 <Avatar fallback={<CustomUserIcon />} />
               </Flex>
-            </Provider>
+            </RadixThemesProvider>
           </div>
         </body>
       </html>

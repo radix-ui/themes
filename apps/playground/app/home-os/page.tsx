@@ -10,7 +10,7 @@ import {
 } from '@radix-ui/react-icons';
 import {
   ThemeConfig,
-  Provider,
+  RadixThemesProvider,
   Button,
   Text,
   IconButton,
@@ -36,7 +36,7 @@ export default function HomeOS() {
       <html lang="en">
         <body>
           <div id="root">
-            <Provider>
+            <RadixThemesProvider>
               <ThemePanel />
 
               <div className={styles.root}>
@@ -382,7 +382,7 @@ export default function HomeOS() {
                   </main>
                 </div>
               </div>
-            </Provider>
+            </RadixThemesProvider>
           </div>
         </body>
       </html>

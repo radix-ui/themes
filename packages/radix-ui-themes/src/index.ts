@@ -1,4 +1,4 @@
-export { Provider } from './provider';
+export { Provider as RadixThemesProvider } from './provider';
 export { ThemeConfig } from './theme-config';
 export { ThemePanel } from './theme-panel';
 export * from './components';

@@ -8,7 +8,7 @@ import {
 } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import {
-  Provider,
+  RadixThemesProvider,
   ThemeConfig,
   //
   AlertDialogRoot,
@@ -183,7 +183,7 @@ export default function Sink() {
       <body>
         <ThemeConfig asChild backgroundColor="gray">
           <div id="root">
-            <Provider
+            <RadixThemesProvider
             // dir="rtl"
             >
               {/* <HideCursor /> */}
@@ -3251,7 +3251,7 @@ export default function Sink() {
                   </SampleNestedUI>
                 </DocsSection>
               </main>
-            </Provider>
+            </RadixThemesProvider>
           </div>
         </ThemeConfig>
       </body>

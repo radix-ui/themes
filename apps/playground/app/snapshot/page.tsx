@@ -5,7 +5,7 @@ import * as React from 'react';
 import { HamburgerMenuIcon, UploadIcon } from '@radix-ui/react-icons';
 import {
   ThemeConfig,
-  Provider,
+  RadixThemesProvider,
   Button,
   Text,
   Heading,
@@ -48,7 +48,7 @@ export default function Snapshot() {
       <html lang="en">
         <body>
           <div id="root">
-            <Provider>
+            <RadixThemesProvider>
               <ThemePanel />
 
               <div className={styles.root}>
@@ -257,7 +257,7 @@ export default function Snapshot() {
                   ))}
                 </div>
               </div>
-            </Provider>
+            </RadixThemesProvider>
           </div>
         </body>
       </html>
