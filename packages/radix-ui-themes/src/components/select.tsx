@@ -94,7 +94,6 @@ SelectTrigger.displayName = 'SelectTrigger';
 
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
 interface SelectContentProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Content> {
-  size?: Responsive<SelectSize>;
   variant?: SelectContentVariant;
   color?: ThemeAccentScale;
   highContrast?: boolean;
