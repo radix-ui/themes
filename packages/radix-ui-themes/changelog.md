@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.0.17
+
+**Warning!** This release contains some breaking changes.
+
+- `Provider`:
+  - [**Breaking**] The component was renamed to `RadixThemesProvider`
+- `ThemeConfig`:
+  - [**Breaking**] The component was renamed to `Theme`
+  - [**Breaking**] The `mode` prop was renamed to `appearance`
+  - Now live-reloads correctly when changing a prop in JSX
+- `Heading`: Add `as` prop for quick level change (allows `h1` to `h6`)
+- `Text`:
+  - Add `as` prop for specific quick change (allows `span` (default), `div` and `p`)
+  - [**Breaking**] Now renders a `span` by default (instead of `p`).
+    - Most of your usages of `Text` should be replaced by `<Text as="p">`
+    - Your usages of `<Text asChild><span>…` should be replaced simply by `<Text>…`
+    - Your usages of `<Text asChild><span>…` should be replaced simply by `<Text>…`
+- `DropdownMenu`, `ContextMenu`:
+  - [**Breaking**] The `mode` prop on `Content` was removed
+  - Ensure extra left padding on items only when checkable items are present in the menu
+- `Select`:
+  - [**Breaking**] The `mode` prop on `Content` was removed
+  - Fix `Content` type (remove wrong `size` prop, exists on `Root`, not on `Content`)
+- `AlertDialog`, `Dialog` `HoverCard`, `Popover`:
+  - [**Breaking**] The `mode` prop on `Content` was removed
+
 ## 0.0.16
 
 - `Dialog`, `AlertDialog`: Fix overlay color when `mode` is set
