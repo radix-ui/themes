@@ -167,8 +167,14 @@
   }
 }
 
-[data-rui-root] ::selection {
-  background-color: var(--accent-a6);
+[data-rui-root] {
+  --color-selection-root: var(--accent-a6);
+  & ::selection {
+    background-color: var(--accent-a6);
+  }
+  & [data-accent-scale='gray']::selection {
+    background-color: var(--color-selection-root);
+  }
 }
 
 /* additional step-9 contrast colors */
