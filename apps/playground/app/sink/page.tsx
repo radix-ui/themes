@@ -3006,7 +3006,7 @@ export default function Sink() {
                         <tr key={size}>
                           <RowHeaderCell>size {size}</RowHeaderCell>
                           <td>
-                            <TabsRoot defaultValue="account" activationappearance="manual">
+                            <TabsRoot defaultValue="account" activationMode="manual">
                               <TabsList size={size}>
                                 <TabsTrigger value="account">Account</TabsTrigger>
                                 <TabsTrigger value="documents">Documents</TabsTrigger>
