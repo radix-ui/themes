@@ -53,7 +53,10 @@ const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRe
   const context = React.useContext(ThemeContext);
   const isRoot = context === undefined;
   if (isRoot) {
-    return <ThemeRoot {...props} ref={forwardedRef} />;
+    const key = Object.entries(props)
+      .map(([k, v]) => `${k}=${v}`)
+      .join(',');
+    return <ThemeRoot {...props} ref={forwardedRef} key={key} />;
   }
   return <ThemeImpl {...props} ref={forwardedRef} />;
 });
