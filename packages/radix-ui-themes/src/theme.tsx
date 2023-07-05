@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { DirectionProvider } from '@radix-ui/react-direction';
 import { Slot } from '@radix-ui/react-slot';
 import {
   themeAppearanceDefault,
@@ -11,6 +13,7 @@ import {
   themeTextColorDefault,
   themeRadiusDefault,
   themeScalingDefault,
+  //
   getMatchingGrayScale,
 } from './theme-options';
 
@@ -22,6 +25,7 @@ import type {
   ThemeTextColor,
   ThemeRadius,
   ThemeScaling,
+  //
   ThemeOptions,
 } from './theme-options';
 
@@ -56,7 +60,13 @@ const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRe
     const key = Object.entries(props)
       .map(([k, v]) => `${k}=${v}`)
       .join(',');
-    return <ThemeRoot {...props} ref={forwardedRef} key={key} />;
+    return (
+      <TooltipPrimitive.Provider>
+        <DirectionProvider dir="ltr">
+          <ThemeRoot {...props} ref={forwardedRef} key={key} />
+        </DirectionProvider>
+      </TooltipPrimitive.Provider>
+    );
   }
   return <ThemeImpl {...props} ref={forwardedRef} />;
 });
@@ -72,6 +82,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     textColor: textColorProp = themeTextColorDefault,
     radius: radiusProp = themeRadiusDefault,
     scaling: scalingProp = themeScalingDefault,
+    // direction: directionProp = themeDirectionDefault,
     ...rootProps
   } = props;
   const [appearance, setAppearance] = React.useState(appearanceProp);
@@ -111,7 +122,7 @@ ThemeRoot.displayName = 'ThemeRoot';
 type ThemeImplElement = React.ElementRef<'div'>;
 interface ThemeImplProps extends ThemeImplPublicProps, ThemeImplPrivateProps {}
 interface ThemeImplPublicProps
-  extends React.ComponentPropsWithoutRef<'div'>,
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'dir'>,
     Partial<ThemeOptions> {
   asChild?: boolean;
   applyBackgroundColor?: boolean;
