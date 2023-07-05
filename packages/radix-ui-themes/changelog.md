@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.18
+
+**Warning!** This release contains some breaking changes.
+
+- `RadixThemesProvider`: [**Breaking**] The component was removed, only `Theme` is required now
+- `Heading`: Improve types output slightly
+- `Container`, `Section`: Add all layout props
+- General:
+  - Improve `::selection` color
+  - Add `auto` support in margin values
+
 ## 0.0.17
 
 **Warning!** This release contains some breaking changes.
