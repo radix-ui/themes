@@ -1,16 +1,19 @@
-:root {
+[data-rui-root] {
   --container-1: 448px;
   --container-2: 688px;
   --container-3: 1168px;
 }
 
 .rui-Container {
-  box-sizing: content-box;
-  width: 100%;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-shrink: 0;
-  margin-left: auto;
-  margin-right: auto;
+  flex-grow: 1;
+}
+
+.rui-ContainerInner {
+  width: 100%;
 }
 
 /***************************************************************************************************
@@ -21,13 +24,13 @@
 
 @breakpoints {
   .rui-Container {
-    &.size-1 {
+    &.size-1 .rui-ContainerInner {
       max-width: var(--container-1);
     }
-    &.size-2 {
+    &.size-2 .rui-ContainerInner {
       max-width: var(--container-2);
     }
-    &.size-3 {
+    &.size-3 .rui-ContainerInner {
       max-width: var(--container-3);
     }
   }

@@ -195,7 +195,7 @@ export default function Sink() {
                   boxShadow: '0 0 0 0.5px var(--gray-a6)',
                 }}
               >
-                <Container>
+                <Container mx="6">
                   {/* <nav>
                   <Flex p="6" gap="5" align="center">
                     <Link asChild>
@@ -210,7 +210,7 @@ export default function Sink() {
                     </Link>
                   </Flex>
                 </nav> */}
-                  <Flex p="6" align="center" gap="1">
+                  <Flex py="6" align="center" gap="1">
                     <RadixLogo />
                     <Heading size="5">Radix Themes</Heading>
                   </Flex>
@@ -220,10 +220,10 @@ export default function Sink() {
               <main
               // dir="rtl"
               >
-                <Container>
+                <Container mx="6">
                   <Section>
                     <Grid columns="3" gapY="9">
-                      <DocsGridSection title="Dialog">
+                      <DocsGridSectionItem title="Dialog">
                         <DialogRoot>
                           <DialogTrigger>
                             <Button variant="solid">Open</Button>
@@ -251,9 +251,9 @@ export default function Sink() {
                             </Flex>
                           </DialogContent>
                         </DialogRoot>
-                      </DocsGridSection>
+                      </DocsGridSectionItem>
 
-                      <DocsGridSection title="HoverCard">
+                      <DocsGridSectionItem title="HoverCard">
                         <HoverCardRoot>
                           <HoverCardTrigger>
                             <Link>A fancy link</Link>
@@ -266,9 +266,9 @@ export default function Sink() {
                             </Text>
                           </HoverCardContent>
                         </HoverCardRoot>
-                      </DocsGridSection>
+                      </DocsGridSectionItem>
 
-                      <DocsGridSection title="Tooltip">
+                      <DocsGridSectionItem title="Tooltip">
                         <Flex gap="5">
                           <Tooltip content="The quick brown fox">
                             <Button variant="solid" size="1">
@@ -287,9 +287,9 @@ export default function Sink() {
                             </Button>
                           </Tooltip>
                         </Flex>
-                      </DocsGridSection>
+                      </DocsGridSectionItem>
 
-                      <DocsGridSection title="AlertDialog">
+                      <DocsGridSectionItem title="AlertDialog">
                         <AlertDialogRoot>
                           <AlertDialogTrigger>
                             <Button variant="solid">Open</Button>
@@ -316,9 +316,9 @@ export default function Sink() {
                             </Flex>
                           </AlertDialogContent>
                         </AlertDialogRoot>
-                      </DocsGridSection>
+                      </DocsGridSectionItem>
 
-                      <DocsGridSection title="Popover">
+                      <DocsGridSectionItem title="Popover">
                         <PopoverRoot>
                           <PopoverTrigger>
                             <Button variant="solid">Popover</Button>
@@ -336,17 +336,17 @@ export default function Sink() {
                             </Box>
                           </PopoverContent>
                         </PopoverRoot>
-                      </DocsGridSection>
+                      </DocsGridSectionItem>
                     </Grid>
                   </Section>
                 </Container>
                 <Separator size="4" />
 
-                <Container>
+                <Container mx="6">
                   <Section>
                     <Grid columns="3" gapY="9">
                       <div style={{ gridColumn: '1 / span 2' }}>
-                        <DocsGridSection title="DropdownMenu">
+                        <DocsGridSectionItem title="DropdownMenu">
                           <table className={styles.table}>
                             <thead>
                               <tr>
@@ -476,10 +476,10 @@ export default function Sink() {
                               </React.Fragment>
                             ))}
                           </details>
-                        </DocsGridSection>
+                        </DocsGridSectionItem>
                       </div>
 
-                      <DocsGridSection title="ContextMenu">
+                      <DocsGridSectionItem title="ContextMenu">
                         <table className={styles.table}>
                           <thead>
                             <tr>
@@ -505,7 +505,7 @@ export default function Sink() {
                             ))}
                           </tbody>
                         </table>
-                      </DocsGridSection>
+                      </DocsGridSectionItem>
                     </Grid>
                   </Section>
                 </Container>
@@ -3409,18 +3409,16 @@ function SelectItemsDemo() {
 function DocsSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <>
-      <Container>
+      <Container mx="6">
         <Section size="2">
-          <Box px="6">
-            <Text size="6" weight="normal" mb="4" asChild>
-              <h1>
-                <Link href={`#${title}`} id={title}>
-                  {title}
-                </Link>
-              </h1>
-            </Text>
-            {children}
-          </Box>
+          <Text size="6" weight="normal" mb="4" asChild>
+            <h1>
+              <Link href={`#${title}`} id={title}>
+                {title}
+              </Link>
+            </h1>
+          </Text>
+          {children}
         </Section>
       </Container>
       <Separator size="4" />
@@ -3428,9 +3426,9 @@ function DocsSection({ title, children }: { title: string; children: React.React
   );
 }
 
-function DocsGridSection({ title, children }: { title: string; children: React.ReactNode }) {
+function DocsGridSectionItem({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <Box px="6">
+    <div>
       <Text size="6" weight="normal" mb="4" asChild>
         <h1>
           <Link href={`#${title}`} id={title}>
@@ -3439,7 +3437,7 @@ function DocsGridSection({ title, children }: { title: string; children: React.R
         </h1>
       </Text>
       {children}
-    </Box>
+    </div>
   );
 }
 

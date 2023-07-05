@@ -12,7 +12,7 @@ interface ContainerProps extends React.ComponentPropsWithoutRef<'div'>, MarginPr
 }
 const Container = React.forwardRef<ContainerElement, ContainerProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, size = containerSizeDefault, ...containerProps } = marginRest;
+  const { children, className, size = containerSizeDefault, ...containerProps } = marginRest;
   return (
     <div
       {...containerProps}
@@ -23,7 +23,9 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
         withBreakpoints(size, 'size'),
         withMarginProps(marginProps)
       )}
-    />
+    >
+      <div className="rui-ContainerInner">{children}</div>
+    </div>
   );
 });
 Container.displayName = 'Container';
