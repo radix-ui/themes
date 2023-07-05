@@ -14,8 +14,6 @@ import {
 import {
   extractMarginProps,
   withMarginProps,
-  extractPaddingProps,
-  withPaddingProps,
   extractLayoutProps,
   withLayoutProps,
   withBreakpoints,
@@ -29,14 +27,10 @@ import type {
   GridJustify,
   GridCap,
 } from './grid.props';
-import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, Responsive } from '../helpers';
 
 type GridElement = React.ElementRef<'div'>;
-interface GridProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    MarginProps,
-    PaddingProps,
-    LayoutProps {
+interface GridProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
   asChild?: boolean;
   display?: Responsive<GridDisplay>;
   columns?: Responsive<GridColumns>;
@@ -49,8 +43,7 @@ interface GridProps
 }
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { rest: paddingRest, ...paddingProps } = extractPaddingProps(marginRest);
-  const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
+  const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
   const {
     className,
     asChild,
@@ -71,9 +64,8 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rui-Grid',
-        withLayoutProps(layoutProps),
         withMarginProps(marginProps),
-        withPaddingProps(paddingProps),
+        withLayoutProps(layoutProps),
         withBreakpoints(display, 'rui-display'),
         withBreakpoints(columns, 'rui-gtc'),
         withBreakpoints(flow, 'rui-gaf'),

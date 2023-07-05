@@ -2,6 +2,9 @@ import { withBreakpoints } from './breakpoints';
 
 import type { Responsive } from './breakpoints';
 
+const paddingValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+type Padding = (typeof paddingValues)[number];
+
 const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as const;
 type Position = (typeof positionValues)[number];
 
@@ -34,6 +37,13 @@ const flexGrowValues = ['0', '1'] as const;
 type FlexGrow = (typeof flexGrowValues)[number];
 
 interface LayoutProps {
+  p?: Responsive<Padding>;
+  px?: Responsive<Padding>;
+  py?: Responsive<Padding>;
+  pt?: Responsive<Padding>;
+  pr?: Responsive<Padding>;
+  pb?: Responsive<Padding>;
+  pl?: Responsive<Padding>;
   position?: Responsive<Position>;
   inset?: Responsive<PositionEdge>;
   top?: Responsive<PositionEdge>;
@@ -47,12 +57,57 @@ interface LayoutProps {
 }
 
 function extractLayoutProps<T extends LayoutProps>(props: T) {
-  const { position, width, height, inset, top, bottom, left, right, shrink, grow, ...rest } = props;
-  return { position, width, height, inset, top, bottom, left, right, shrink, grow, rest };
+  const {
+    p,
+    px,
+    py,
+    pt,
+    pr,
+    pb,
+    pl,
+    position,
+    width,
+    height,
+    inset,
+    top,
+    bottom,
+    left,
+    right,
+    shrink,
+    grow,
+    ...rest
+  } = props;
+  return {
+    p,
+    px,
+    py,
+    pt,
+    pr,
+    pb,
+    pl,
+    position,
+    width,
+    height,
+    inset,
+    top,
+    bottom,
+    left,
+    right,
+    shrink,
+    grow,
+    rest,
+  };
 }
 
 function withLayoutProps(props: LayoutProps) {
   return [
+    withBreakpoints(props.p, 'rui-p'),
+    withBreakpoints(props.px, 'rui-px'),
+    withBreakpoints(props.py, 'rui-py'),
+    withBreakpoints(props.pt, 'rui-pt'),
+    withBreakpoints(props.pr, 'rui-pr'),
+    withBreakpoints(props.pb, 'rui-pb'),
+    withBreakpoints(props.pl, 'rui-pl'),
     withBreakpoints(props.position, 'rui-position'),
     withBreakpoints(props.shrink, 'rui-fs'),
     withBreakpoints(props.grow, 'rui-fg'),
@@ -69,6 +124,7 @@ function withLayoutProps(props: LayoutProps) {
 }
 
 export {
+  paddingValues,
   positionValues,
   positionEdgeValues,
   widthHeightValues,
@@ -77,4 +133,4 @@ export {
   extractLayoutProps,
   withLayoutProps,
 };
-export type { Position, PositionEdge, Width, Height, FlexShrink, FlexGrow, LayoutProps };
+export type { Padding, Position, PositionEdge, Width, Height, FlexShrink, FlexGrow, LayoutProps };

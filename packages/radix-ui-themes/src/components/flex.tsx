@@ -12,8 +12,6 @@ import {
 import {
   extractMarginProps,
   withMarginProps,
-  extractPaddingProps,
-  withPaddingProps,
   extractLayoutProps,
   withLayoutProps,
   withBreakpoints,
@@ -27,14 +25,10 @@ import type {
   FlexWrap,
   FlexGap,
 } from './flex.props';
-import type { MarginProps, PaddingProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, Responsive } from '../helpers';
 
 type FlexElement = React.ElementRef<'div'>;
-interface FlexProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    MarginProps,
-    PaddingProps,
-    LayoutProps {
+interface FlexProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
   asChild?: boolean;
   display?: Responsive<FlexDisplay>;
   direction?: Responsive<FlexDirection>;
@@ -45,8 +39,7 @@ interface FlexProps
 }
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { rest: paddingRest, ...paddingProps } = extractPaddingProps(marginRest);
-  const { rest: layoutRest, ...layoutProps } = extractLayoutProps(paddingRest);
+  const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
   const {
     className,
     asChild,
@@ -65,9 +58,8 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rui-Flex',
-        withLayoutProps(layoutProps),
         withMarginProps(marginProps),
-        withPaddingProps(paddingProps),
+        withLayoutProps(layoutProps),
         withBreakpoints(display, 'rui-display'),
         withBreakpoints(direction, 'rui-fd'),
         withBreakpoints(align, 'rui-ai'),
