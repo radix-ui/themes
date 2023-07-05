@@ -1,4 +1,8 @@
 @breakpoints {
+  .rui-m-auto {
+    margin: auto;
+  }
+
   .rui-m-0 {
     margin: 0;
   }
@@ -73,6 +77,11 @@
 
   .-rui-m-9 {
     margin: calc(-1 * var(--space-9));
+  }
+
+  .rui-mx-auto {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .rui-mx-0 {
@@ -170,6 +179,11 @@
     margin-right: calc(-1 * var(--space-9));
   }
 
+  .rui-my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
   .rui-my-0 {
     margin-top: 0;
     margin-bottom: 0;
@@ -265,6 +279,10 @@
     margin-bottom: calc(-1 * var(--space-9));
   }
 
+  .rui-mt-auto {
+    margin-top: auto;
+  }
+
   .rui-mt-0 {
     margin-top: 0;
   }
@@ -339,6 +357,10 @@
 
   .-rui-mt-9 {
     margin-top: calc(-1 * var(--space-9));
+  }
+
+  .rui-mr-auto {
+    margin-right: auto;
   }
 
   .rui-mr-0 {
@@ -417,6 +439,10 @@
     margin-right: calc(-1 * var(--space-9));
   }
 
+  .rui-mb-auto {
+    margin-bottom: auto;
+  }
+
   .rui-mb-0 {
     margin-bottom: 0;
   }
@@ -491,6 +517,10 @@
 
   .-rui-mb-9 {
     margin-bottom: calc(-1 * var(--space-9));
+  }
+
+  .rui-ml-auto {
+    margin-left: auto;
   }
 
   .rui-ml-0 {

@@ -3,6 +3,7 @@ import { withBreakpoints } from './breakpoints';
 import type { Responsive } from './breakpoints';
 
 const marginValues = [
+  'auto',
   '0',
   '1',
   '2',
