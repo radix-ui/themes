@@ -992,29 +992,31 @@
 
 /* background color */
 
-[data-background-color='auto'] {
-  &.light-theme {
-    --color-background: white;
+[data-rui-root] {
+  &:where([data-background-color='auto']) {
+    &.light-theme {
+      --color-background: white;
+    }
+    &.dark-theme {
+      --color-background: var(--gray-1);
+    }
   }
-  &.dark-theme {
+  &:where([data-background-color='gray']) {
     --color-background: var(--gray-1);
   }
-}
-[data-background-color='gray'] {
-  --color-background: var(--gray-1);
-}
-[data-background-color-applied] {
-  background-color: var(--color-background);
+  &:where([data-background-color-applied]) {
+    background-color: var(--color-background);
+  }
 }
 
 /* text color */
 
-[data-text-color='auto'] {
-  --color-text: var(--gray-12);
-}
-[data-text-color='accent'] {
-  --color-text: var(--accent-12);
-}
-[data-text-color-applied] {
+[data-rui-root] {
+  &:where([data-text-color='auto']) {
+    --color-text: var(--gray-12);
+  }
+  &:where([data-text-color='accent']) {
+    --color-text: var(--accent-12);
+  }
   color: var(--color-text);
 }

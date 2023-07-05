@@ -115,7 +115,6 @@ interface ThemeImplPublicProps
     Partial<ThemeOptions> {
   asChild?: boolean;
   applyBackgroundColor?: boolean;
-  applyTextColor?: boolean;
 }
 interface ThemeImplPrivateProps extends Partial<ThemeChangeHandlers> {}
 const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, forwardedRef) => {
@@ -123,7 +122,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const {
     asChild,
     applyBackgroundColor = true,
-    applyTextColor = true,
     //
     appearance = context?.appearance ?? themeAppearanceDefault,
     accentScale = context?.accentScale ?? themeAccentScaleDefault,
@@ -193,7 +191,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         data-background-color={backgroundColor}
         data-background-color-applied={applyBackgroundColor === true ? '' : undefined}
         data-text-color={textColor}
-        data-text-color-applied={applyTextColor === true ? '' : undefined}
         data-radius={radius}
         data-scaling={scaling}
         ref={forwardedRef}
