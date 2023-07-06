@@ -54,7 +54,6 @@
     "@radix-ui/react-dropdown-menu": "latest",
     "@radix-ui/react-form": "latest",
     "@radix-ui/react-hover-card": "latest",
-    "@radix-ui/react-icons": "latest",
     "@radix-ui/react-popover": "latest",
     "@radix-ui/react-portal": "latest",
     "@radix-ui/react-radio-group": "latest",

@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
 import {
   checkboxSizeDefault,
   checkboxVariantDefault,
@@ -12,6 +11,7 @@ import {
   checkboxRadiusDefault,
 } from './checkbox.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { CheckIcon } from '../icons';
 
 import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';

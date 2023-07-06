@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './scroll-area';
 import {
   selectSizeDefault,
@@ -17,6 +16,7 @@ import {
 } from './select.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
+import { CheckIcon, ChevronDownIcon } from '../icons';
 
 import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
 import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';

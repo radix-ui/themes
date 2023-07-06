@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { gray as radixColorsGray, grayDark as radixColorsGrayDark } from '@radix-ui/colors';
 import {
   Box,
@@ -40,6 +39,7 @@ import {
   themeScalingDefault,
   useThemeContext,
 } from './index';
+import { InfoCircledIcon } from './icons';
 
 import type {
   ThemeAccentScale,

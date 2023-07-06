@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './scroll-area';
 import {
   dropdownMenuContentSizeDefault,
@@ -14,6 +13,7 @@ import {
 } from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
+import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
 
 import type { DropdownMenuContentSize, DropdownMenuContentVariant } from './dropdown-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';

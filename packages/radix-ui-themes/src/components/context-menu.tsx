@@ -3,7 +3,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './scroll-area';
 import {
   contextMenuContentSizeDefault,
@@ -14,6 +13,7 @@ import {
 } from './context-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
+import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
 
 import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
 import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
