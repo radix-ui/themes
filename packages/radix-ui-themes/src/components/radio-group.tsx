@@ -3,13 +3,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { radioGroupPropDef } from './radio-group.props';
+import { radioGroupPropDefs } from './radio-group.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
-type RadioGroupOwnProps = GetPropDefTypes<typeof radioGroupPropDef>;
+type RadioGroupOwnProps = GetPropDefTypes<typeof radioGroupPropDefs>;
 interface RadioGroupRootProps
   extends PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Root>,
     MarginProps,
@@ -19,10 +19,10 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const {
       className,
-      size = radioGroupPropDef.size.default,
-      variant = radioGroupPropDef.variant.default,
-      color = radioGroupPropDef.color.default,
-      highContrast = radioGroupPropDef.highContrast.default,
+      size = radioGroupPropDefs.size.default,
+      variant = radioGroupPropDefs.variant.default,
+      color = radioGroupPropDefs.color.default,
+      highContrast = radioGroupPropDefs.highContrast.default,
       ...rootProps
     } = marginRest;
     return (

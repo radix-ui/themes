@@ -25,6 +25,7 @@ const themePropDefs = {
   accentScale: { type: 'enum', values: accentScales, default: 'indigo' },
   grayScale: { type: 'enum', values: grayScales, default: 'auto' },
   backgroundColor: { type: 'enum', values: backgroundColors, default: 'auto' },
+  applyBackgroundColor: { type: 'boolean', default: true },
   textColor: { type: 'enum', values: textColors, default: 'auto' },
   radius: { type: 'enum', values: radii, default: 'medium' },
   scaling: { type: 'enum', values: scalings, default: '100%' },
@@ -33,6 +34,7 @@ const themePropDefs = {
   accentScale: PropDef<(typeof accentScales)[number]>;
   grayScale: PropDef<(typeof grayScales)[number]>;
   backgroundColor: PropDef<(typeof backgroundColors)[number]>;
+  applyBackgroundColor: PropDef<boolean>;
   textColor: PropDef<(typeof textColors)[number]>;
   radius: PropDef<(typeof radii)[number]>;
   scaling: PropDef<(typeof scalings)[number]>;

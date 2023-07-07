@@ -112,7 +112,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const context = React.useContext(ThemeContext);
   const {
     asChild,
-    applyBackgroundColor = true,
+    applyBackgroundColor = themePropDefs.applyBackgroundColor.default,
     //
     appearance = context?.appearance ?? themePropDefs.appearance.default,
     accentScale = context?.accentScale ?? themePropDefs.accentScale.default,

@@ -4,14 +4,19 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { Text } from './text';
+import { tooltipPropDefs } from './tooltip.props';
 import { Theme } from '../theme';
 
+import type { GetPropDefTypes } from '../helpers';
+
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
+type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
 interface TooltipProps
   extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>,
-    Omit<React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>, 'content'> {
-  content: React.ReactNode;
-  multiline?: boolean;
+    Omit<React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>, 'content'>,
+    TooltipOwnProps {
+  // TODO: See if we can automate making prop defs with `required: true` non nullable
+  content: NonNullable<TooltipOwnProps['content']>;
   container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
 }
 const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwardedRef) => {

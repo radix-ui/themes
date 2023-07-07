@@ -107,7 +107,7 @@ import {
   //
   RadioGroupRoot,
   RadioGroupItem,
-  radioGroupPropDef,
+  radioGroupPropDefs,
   //
   ScrollArea,
   scrollAreaPropDefs,
@@ -1307,7 +1307,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioGroupPropDef.variant.values.map((variant) => (
+                        {radioGroupPropDefs.variant.values.map((variant) => (
                           <React.Fragment key={variant}>
                             {[variant, '+ high-contrast'].map((label) => (
                               <tr key={label}>
@@ -1356,7 +1356,7 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {radioGroupPropDef.size.values.map((size) => (
+                        {radioGroupPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
@@ -1430,7 +1430,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {radioGroupPropDef.variant.values.map((variant) => (
+                            {radioGroupPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1439,7 +1439,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {radioGroupPropDef.variant.values.map((variant) => (
+                              {radioGroupPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex gap="2">
                                     <RadioGroupRoot
