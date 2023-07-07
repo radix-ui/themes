@@ -3399,13 +3399,11 @@ function DocsSection({ title, children }: { title: string; children: React.React
     <>
       <Container mx="6">
         <Section size="2">
-          <Text size="6" weight="normal" mb="4" asChild>
-            <h1>
-              <Link href={`#${title}`} id={title}>
-                {title}
-              </Link>
-            </h1>
-          </Text>
+          <Heading size="6" weight="normal" mb="4" as="h2">
+            <Link href={`#${title}`} id={title}>
+              {title}
+            </Link>
+          </Heading>
           {children}
         </Section>
       </Container>
@@ -3417,13 +3415,11 @@ function DocsSection({ title, children }: { title: string; children: React.React
 function DocsGridSectionItem({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <Text size="6" weight="normal" mb="4" asChild>
-        <h1>
-          <Link href={`#${title}`} id={title}>
-            {title}
-          </Link>
-        </h1>
-      </Text>
+      <Heading size="6" weight="normal" mb="4" as="h2">
+        <Link href={`#${title}`} id={title}>
+          {title}
+        </Link>
+      </Heading>
       {children}
     </div>
   );

@@ -28,6 +28,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
     asChild = false,
     as: Tag = 'h1',
     size = headingPropDefs.size.default,
+    weight = headingPropDefs.weight.default,
     align = headingPropDefs.align.default,
     trim = headingPropDefs.trim.default,
     color = headingPropDefs.color.default,
@@ -42,6 +43,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
       className={classNames(
         'rui-Heading',
         withBreakpoints(size, 'size'),
+        withBreakpoints(weight, 'weight'),
         withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),

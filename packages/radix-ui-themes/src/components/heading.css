@@ -1,6 +1,5 @@
 .rui-Heading {
   margin: 0;
-  font-weight: 600;
   line-height: var(--line-height);
 
   &:where([data-accent-scale]) {
@@ -61,6 +60,23 @@
       font-size: var(--fs-9);
       letter-spacing: -0.056em;
       --line-height: calc(60px * var(--scaling));
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * WEIGHTS                                                                                         *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-Heading {
+    &.weight-normal {
+      font-weight: 400;
+    }
+    &.weight-bold {
+      font-weight: 600;
     }
   }
 }

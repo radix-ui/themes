@@ -173,7 +173,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           shrink="0"
           style={{ backgroundColor: 'var(--black-a2)', boxShadow: '0 0 0 1px var(--gray-6)' }}
         >
-          <Heading size="4">Configure theme</Heading>
+          <Heading size="4" weight="normal" as="h3">
+            Configure theme
+          </Heading>
           <Kbd>⌘C</Kbd>
         </Flex>
 
