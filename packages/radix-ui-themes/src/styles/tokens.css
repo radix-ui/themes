@@ -2,7 +2,7 @@
 @import './tokens/color.css';
 @import './tokens/shadow.css';
 @import './tokens/space.css';
-@import './tokens/border-radius.css';
+@import './tokens/radius.css';
 
 /* scaling */
 [data-rui-root] {
