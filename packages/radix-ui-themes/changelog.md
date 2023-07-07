@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.22
+
+This update is all about tokens!
+
+- `--fs-` tokens renamed to long-form `--font-size-`
+- `--br-` tokens renamed to long-form `--radius-`
+  - [**Breaking**] The border radius scale has been reworked to be more explicit:
+    - The `"full"` radius now is a multiplier of `2` which avoids big panels to become circles
+    - Raw border radius tokens have been removed, instead opt-into full radius using `--radius-full` in a `max` CSS function
+- Implement the entire token suite for font sizes, line heights, letter-spacings, leading-trim, font-weight, font-families, etc
+
 ## 0.0.21
 
 - General:
