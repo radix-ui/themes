@@ -19,15 +19,15 @@
   .rui-BaseButton {
     &.size-1 {
       --height: var(--space-5);
-      border-radius: var(--radius-2);
+      border-radius: max(var(--radius-2), var(--radius-full));
     }
     &.size-2 {
       --height: var(--space-6);
-      border-radius: var(--radius-2);
+      border-radius: max(var(--radius-2), var(--radius-full));
     }
     &.size-3 {
       --height: var(--space-7);
-      border-radius: var(--radius-3);
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
   }
 }

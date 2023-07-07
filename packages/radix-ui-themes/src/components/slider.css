@@ -65,7 +65,7 @@
   display: block;
   width: var(--thumb-size);
   height: var(--thumb-size);
-  border-radius: min(var(--thumb-radius), calc(var(--thumb-size) / 2));
+  border-radius: var(--thumb-radius);
 
   &::before {
     content: '';
@@ -90,19 +90,19 @@
     &.size-1 {
       --track-size: var(--space-1);
       --thumb-size: calc(14px * var(--scaling));
-      --thumb-radius: var(--radius-1);
+      --thumb-radius: max(var(--radius-1), var(--radius-full));
       --thumb-focus-outline-size: 3px;
     }
     &.size-2 {
       --track-size: var(--space-2);
       --thumb-size: var(--space-4);
-      --thumb-radius: var(--radius-2);
+      --thumb-radius: max(var(--radius-2), var(--radius-full));
       --thumb-focus-outline-size: 4px;
     }
     &.size-3 {
       --track-size: var(--space-3);
       --thumb-size: var(--space-5);
-      --thumb-radius: var(--radius-3);
+      --thumb-radius: max(var(--radius-3), var(--radius-full));
       --thumb-focus-outline-size: 5px;
     }
   }

@@ -41,11 +41,11 @@
   .rui-CheckboxRoot {
     &.size-1 {
       --size: var(--space-4);
-      --radius: min(var(--radius-1), var(--radius-3-raw));
+      --radius: var(--radius-1);
     }
     &.size-2 {
       --size: var(--space-5);
-      --radius: min(var(--radius-2), var(--radius-4-raw));
+      --radius: var(--radius-2);
     }
   }
 }

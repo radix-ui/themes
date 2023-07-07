@@ -22,7 +22,11 @@
   overflow: hidden;
 
   background-color: var(--content-bg);
-  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--radius-3));
+  --content-radius: min(
+    (var(--item-height) / 2 + var(--content-padding)),
+    max(var(--radius-3), var(--radius-full))
+  );
+  border-radius: var(--content-radius);
 
   &[data-side] {
     min-width: var(--radix-select-trigger-width);
@@ -35,7 +39,7 @@
     flex-direction: column;
   }
   & .rui-ScrollAreaScrollbar {
-    --scrollbar-vertical-margin: calc(var(--content-padding) + var(--radius-factor) * 0.001px);
+    --scrollbar-vertical-margin: max(calc(var(--content-radius) / 1.5), var(--content-padding));
     margin-top: var(--scrollbar-vertical-margin);
     margin-bottom: var(--scrollbar-vertical-margin);
   }
@@ -47,13 +51,17 @@
   flex-direction: column;
   overflow: auto;
   padding: var(--content-padding);
+
+  .rui-SelectContent:has(.rui-ScrollAreaScrollbar[data-orientation='vertical']) & {
+    padding-right: 12px;
+  }
 }
 
 .rui-SelectItem {
   display: flex;
   align-items: center;
   height: var(--item-height);
-  border-radius: var(--radius-2);
+  border-radius: max(var(--radius-2), var(--radius-full));
   padding-left: var(--space-5);
   padding-right: var(--space-5);
   position: relative;

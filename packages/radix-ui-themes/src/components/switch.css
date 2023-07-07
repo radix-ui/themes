@@ -14,7 +14,8 @@
   width: var(--root-width);
   height: var(--root-height);
   padding: var(--root-padding);
-  border-radius: var(--radius-3);
+  --button-radius: max(var(--radius-3), var(--radius-full));
+  border-radius: var(--button-radius);
 
   transition-property: background-color, box-shadow;
   transition-duration: 150ms;
@@ -24,7 +25,7 @@
 .rui-SwitchThumb {
   width: var(--thumb-size);
   height: var(--thumb-size);
-  border-radius: max(var(--radius-2), calc(var(--radius-3) - var(--root-padding)));
+  border-radius: calc(var(--button-radius) - var(--root-padding));
   transition-property: transform, background-color;
   transition-duration: 150ms;
   transition-timing-function: ease-in-out;

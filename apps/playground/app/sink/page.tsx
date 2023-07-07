@@ -3490,7 +3490,7 @@ const SampleNestedUI = React.forwardRef<
       ref={forwardedRef}
       style={{
         boxShadow: '0 0 0 1px var(--gray-a6)',
-        borderRadius: 'min(var(--radius-2), var(--radius-5-raw)',
+        borderRadius: 'var(--radius-2)',
       }}
     >
       <div>

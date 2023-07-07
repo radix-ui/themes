@@ -25,7 +25,7 @@
       padding-top: 0.5px;
       padding-bottom: 1px;
       padding-left: var(--space-1);
-      border-radius: var(--radius-2);
+      border-radius: max(var(--radius-2), var(--radius-full));
       font-size: var(--font-size-1);
     }
     &.size-2 {
@@ -33,7 +33,7 @@
       padding-top: 0px;
       padding-bottom: 1px;
       padding-left: var(--space-2);
-      border-radius: var(--radius-2);
+      border-radius: max(var(--radius-2), var(--radius-full));
       font-size: var(--font-size-2);
     }
     &.size-3 {
@@ -41,7 +41,7 @@
       padding-top: 0.5px;
       padding-bottom: 1px;
       padding-left: var(--space-3);
-      border-radius: var(--radius-3);
+      border-radius: max(var(--radius-3), var(--radius-full));
       font-size: var(--font-size-3);
     }
   }

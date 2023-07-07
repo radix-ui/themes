@@ -42,7 +42,7 @@ export default function HomeOS() {
                 style={{
                   width: 1250,
                   border: '1px solid var(--gray-8)',
-                  borderRadius: 'min(var(--radius-4), var(--radius-4-raw))',
+                  borderRadius: 'var(--radius-4)',
                   backgroundColor: 'var(--gray-1)',
                   background: 'linear-gradient(150deg, transparent 60%, var(--gray-2) 100%)',
                 }}
@@ -267,7 +267,7 @@ export default function HomeOS() {
                     <div style={{ paddingRight: 'var(--space-6)', position: 'relative' }}>
                       <div
                         style={{
-                          borderRadius: 'min(var(--radius-4), var(--radius-4-raw))',
+                          borderRadius: 'var(--radius-4)',
                           marginTop: -90,
                           width: 340,
                           backgroundColor: 'var(--color-background)',
@@ -412,7 +412,7 @@ const PhotoArea: React.FC = () => {
     <div
       style={{
         height: 500,
-        borderRadius: 'min(var(--radius-6), var(--radius-6-raw))',
+        borderRadius: 'var(--radius-6)',
         overflow: 'hidden',
         display: 'grid',
         gridTemplateColumns: '1.25fr 1fr',
