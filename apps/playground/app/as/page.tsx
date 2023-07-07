@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, Flex, Heading, Text } from '@radix-ui/themes';
+import { Theme, Flex, Heading, Text, Link, Button } from '@radix-ui/themes';
 
 export default function As() {
   return (
@@ -7,7 +7,17 @@ export default function As() {
       <html lang="en">
         <body>
           <div id="root">
-            <Flex direction="column" gap="3" p="9">
+            <Flex direction="column" align="start" gap="3" p="9">
+              <Link href="#">a default link</Link>
+              <Link asChild>
+                <button>a link as a button</button>
+              </Link>
+
+              <Button>a default button</Button>
+              <Button asChild>
+                <a href="#">a default button as a link</a>
+              </Button>
+
               <Heading>This is a default heading (h1)</Heading>
               <Heading as="h3">This is a level 3!</Heading>
               {/* <Heading as="h3" asChild>
