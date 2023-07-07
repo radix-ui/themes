@@ -129,6 +129,7 @@ export * from './avatar.props';
 export { Badge } from './badge';
 export * from './badge.props';
 export { Blockquote } from './blockquote';
+export * from './blockquote.props';
 export { Button } from './button';
 export * from './button.props';
 // export * from './callout';

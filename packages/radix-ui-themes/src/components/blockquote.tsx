@@ -1,22 +1,21 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Text } from './text';
-import { extractMarginProps, withMarginProps } from '../helpers';
+import { blockquotePropDefs } from './blockquote.props';
 
-import type { MarginProps } from '../helpers';
+import type { MarginProps, PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
 
 type BlockquoteElement = React.ElementRef<'blockquote'>;
-interface BlockquoteProps extends React.ComponentPropsWithoutRef<'blockquote'>, MarginProps {}
+type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;
+interface BlockquoteProps
+  extends PropsWithoutRefOrColor<'blockquote'>,
+    MarginProps,
+    BlockQuoteOwnProps {}
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, ...blockquoteProps } = marginRest;
+  const { children, className, ...blockquoteProps } = props;
   return (
-    <Text asChild>
-      <blockquote
-        {...blockquoteProps}
-        ref={forwardedRef}
-        className={classNames('rui-Blockquote', withMarginProps(marginProps), className)}
-      />
+    <Text asChild {...blockquoteProps} ref={forwardedRef} className={classNames('rui-Blockquote')}>
+      <blockquote>{children}</blockquote>
     </Text>
   );
 });
