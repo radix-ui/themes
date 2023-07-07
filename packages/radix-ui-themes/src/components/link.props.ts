@@ -1,18 +1,17 @@
-import { weightProp, colorProp, highContrastProp } from '../helpers';
-import type { PropDef } from '../helpers';
-
-const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+import { textPropDefs } from './text.props';
 
 const linkPropDefs = {
-  size: { type: 'enum', values: sizes, default: undefined, responsive: true },
-  weight: weightProp,
-  color: colorProp,
-  highContrast: highContrastProp,
+  size: textPropDefs.size,
+  weight: textPropDefs.weight,
+  trim: textPropDefs.trim,
+  color: textPropDefs.color,
+  highContrast: textPropDefs.highContrast,
 } satisfies {
-  size: PropDef<(typeof sizes)[number]>;
-  weight: typeof weightProp;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
+  size: typeof textPropDefs.size;
+  weight: typeof textPropDefs.weight;
+  trim: typeof textPropDefs.trim;
+  color: typeof textPropDefs.color;
+  highContrast: typeof textPropDefs.highContrast;
 };
 
 export { linkPropDefs };

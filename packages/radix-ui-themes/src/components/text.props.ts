@@ -1,4 +1,4 @@
-import { colorProp, highContrastProp, alignProp, trimProp, weightProp } from '../helpers';
+import { weightProp, alignProp, trimProp, colorProp, highContrastProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
