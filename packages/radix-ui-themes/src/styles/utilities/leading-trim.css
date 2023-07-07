@@ -16,11 +16,17 @@
 
   .rui-lt-start::before,
   .rui-lt-both::before {
-    margin-bottom: calc(0.34em - var(--line-height, calc(1em * var(--default-line-height))) / 2);
+    margin-bottom: calc(
+      var(--leading-trim-start, var(--default-leading-trim-start)) -
+        var(--line-height, calc(1em * var(--default-line-height))) / 2
+    );
   }
 
   .rui-lt-end::after,
   .rui-lt-both::after {
-    margin-top: calc(0.38em - var(--line-height, calc(1em * var(--default-line-height))) / 2);
+    margin-top: calc(
+      var(--leading-trim-end, var(--default-leading-trim-end)) -
+        var(--line-height, calc(1em * var(--default-line-height))) / 2
+    );
   }
 }

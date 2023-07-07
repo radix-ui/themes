@@ -45,6 +45,6 @@
   border-radius: var(--radius-2);
 
   & .rui-TooltipText {
-    line-height: calc(18px * var(--scaling));
+    line-height: var(--default-line-height);
   }
 }

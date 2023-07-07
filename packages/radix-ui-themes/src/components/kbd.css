@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-family: var(--ff-sans);
+  font-family: var(--default-font-family);
   vertical-align: text-bottom;
   white-space: nowrap;
   user-select: none;
@@ -26,9 +26,10 @@
   padding-right: 0.5em;
 
   border-radius: var(--radius-3);
-  line-height: var(--space-5);
   height: var(--space-5);
   font-size: var(--font-size-1);
+  line-height: var(--space-5);
+  letter-spacing: var(--letter-spacing-1);
 
   color: var(--gray-12);
   background-color: var(--gray-1);

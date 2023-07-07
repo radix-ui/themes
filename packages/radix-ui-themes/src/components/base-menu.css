@@ -92,6 +92,7 @@
   padding-left: var(--space-5);
   padding-right: var(--space-3);
   font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
   user-select: none;
   cursor: default;
 
@@ -126,6 +127,7 @@
 
       & .rui-BaseMenuItem {
         font-size: var(--font-size-1);
+        letter-spacing: var(--letter-spacing-1);
         height: var(--space-5);
       }
       & .rui-BaseMenuLabel {
@@ -139,6 +141,7 @@
 
       & .rui-BaseMenuItem {
         font-size: var(--font-size-2);
+        letter-spacing: var(--letter-spacing-2);
         height: var(--space-6);
       }
       & .rui-BaseMenuLabel {

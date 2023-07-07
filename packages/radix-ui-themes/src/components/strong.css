@@ -1,3 +1,9 @@
 .rui-Strong {
-  font-weight: 600;
+  font-family: var(--strong-font-family);
+  font-size: var(--strong-font-size-adjust * 1em);
+  font-style: var(--strong-font-style);
+  font-weight: var(--strong-font-weight);
+  letter-spacing: calc(
+    var(--strong-letter-spacing) + var(--letter-spacing, --default-letter-spacing)
+  );
 }

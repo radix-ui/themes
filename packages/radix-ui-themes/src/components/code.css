@@ -1,11 +1,13 @@
 .rui-Code {
   box-sizing: border-box;
-  font-family: var(--ff-code);
-  font-size: 90%;
-  letter-spacing: -0.007em;
+  font-family: var(--code-font-family);
+  font-size: calc(100% * var(--code-font-size-adjust));
+  font-style: var(--code-font-style);
+  font-weight: var(--code-font-weight);
   line-height: 1.25;
-
-  /* default equivalent to size-2 */
+  letter-spacing: calc(
+    var(--code-letter-spacing) + var(--letter-spacing, --default-letter-spacing)
+  );
   border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
 }
 
@@ -18,62 +20,49 @@
 @breakpoints {
   .rui-Code {
     &.size-1 {
-      font-size: calc(0.9 * var(--font-size-1));
-      line-height: calc(16px * var(--scaling));
+      font-size: calc(var(--font-size-1) * var(--code-font-size-adjust));
+      line-height: var(--line-height-1);
+      --letter-spacing: var(--letter-spacing-1);
     }
     &.size-2 {
-      font-size: calc(0.9 * var(--font-size-2));
-      line-height: calc(20px * var(--scaling));
+      font-size: calc(var(--font-size-2) * var(--code-font-size-adjust));
+      line-height: var(--line-height-2);
+      --letter-spacing: var(--letter-spacing-2);
     }
     &.size-3 {
-      font-size: calc(0.9 * var(--font-size-3));
-      line-height: calc(24px * var(--scaling));
+      font-size: calc(var(--font-size-3) * var(--code-font-size-adjust));
+      line-height: var(--line-height-3);
+      --letter-spacing: var(--letter-spacing-3);
     }
     &.size-4 {
-      font-size: calc(0.9 * var(--font-size-4));
-      line-height: calc(26px * var(--scaling));
+      font-size: calc(var(--font-size-4) * var(--code-font-size-adjust));
+      line-height: var(--line-height-4);
+      --letter-spacing: var(--letter-spacing-4);
     }
     &.size-5 {
-      font-size: calc(0.9 * var(--font-size-5));
-      letter-spacing: -0.01em;
-      line-height: calc(28px * var(--scaling));
+      font-size: calc(var(--font-size-5) * var(--code-font-size-adjust));
+      line-height: var(--line-height-5);
+      --letter-spacing: var(--letter-spacing-5);
     }
     &.size-6 {
-      font-size: calc(0.9 * var(--font-size-6));
-      letter-spacing: -0.018em;
-      line-height: calc(30px * var(--scaling));
+      font-size: calc(var(--font-size-6) * var(--code-font-size-adjust));
+      line-height: var(--line-height-6);
+      --letter-spacing: var(--letter-spacing-6);
     }
     &.size-7 {
-      font-size: calc(0.9 * var(--font-size-7));
-      letter-spacing: -0.026em;
-      line-height: calc(36px * var(--scaling));
+      font-size: calc(var(--font-size-7) * var(--code-font-size-adjust));
+      line-height: var(--line-height-7);
+      --letter-spacing: var(--letter-spacing-7);
     }
     &.size-8 {
-      font-size: calc(0.9 * var(--font-size-8));
-      letter-spacing: -0.04em;
-      line-height: calc(40px * var(--scaling));
+      font-size: calc(var(--font-size-8) * var(--code-font-size-adjust));
+      line-height: var(--line-height-8);
+      --letter-spacing: var(--letter-spacing-8);
     }
     &.size-9 {
-      font-size: calc(0.9 * var(--font-size-9));
-      letter-spacing: -0.056em;
-      line-height: calc(60px * var(--scaling));
-    }
-  }
-}
-
-/***************************************************************************************************
- *                                                                                                 *
- * WEIGHTS                                                                                         *
- *                                                                                                 *
- ***************************************************************************************************/
-
-@breakpoints {
-  .rui-Code {
-    &.weight-normal {
-      font-weight: 400;
-    }
-    &.weight-bold {
-      font-weight: 600;
+      font-size: calc(var(--font-size-9) * var(--code-font-size-adjust));
+      line-height: var(--line-height-9);
+      --letter-spacing: var(--letter-spacing-9);
     }
   }
 }

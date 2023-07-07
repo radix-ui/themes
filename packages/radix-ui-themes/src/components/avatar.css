@@ -27,8 +27,8 @@
   border-radius: inherit;
 
   & svg {
-    width: var(--font-size-1-letter);
-    height: var(--font-size-1-letter);
+    width: var(--one-letter-font-size);
+    height: var(--one-letter-font-size);
   }
 }
 
@@ -39,14 +39,15 @@
  ***************************************************************************************************/
 
 .rui-AvatarFallback {
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 
   &.\31-letter {
-    font-size: var(--font-size-1-letter);
+    font-size: var(--one-letter-font-size);
     text-transform: uppercase;
   }
   &.\32-letters {
-    font-size: var(--font-size-2-letters);
+    font-size: var(--two-letters-font-size);
+    letter-spacing: var(--letter-spacing);
     text-transform: uppercase;
   }
 }
@@ -56,32 +57,37 @@
     &.size-1 {
       border-radius: max(var(--radius-2), var(--radius-full));
       --size: var(--space-5);
-      --font-size-1-letter: var(--font-size-2);
-      --font-size-2-letters: var(--font-size-1);
+      --one-letter-font-size: var(--font-size-2);
+      --two-letters-font-size: var(--font-size-1);
+      --letter-spacing: var(--letter-spacing-1);
     }
     &.size-2 {
       border-radius: max(var(--radius-2), var(--radius-full));
       --size: var(--space-6);
-      --font-size-1-letter: var(--font-size-3);
-      --font-size-2-letters: var(--font-size-2);
+      --one-letter-font-size: var(--font-size-3);
+      --two-letters-font-size: var(--font-size-2);
+      --letter-spacing: var(--letter-spacing-2);
     }
     &.size-3 {
       border-radius: max(var(--radius-3), var(--radius-full));
       --size: var(--space-7);
-      --font-size-1-letter: var(--font-size-4);
-      --font-size-2-letters: var(--font-size-3);
+      --one-letter-font-size: var(--font-size-4);
+      --two-letters-font-size: var(--font-size-3);
+      --letter-spacing: var(--letter-spacing-3);
     }
     &.size-4 {
       border-radius: max(var(--radius-3), var(--radius-full));
       --size: var(--space-8);
-      --font-size-1-letter: var(--font-size-6);
-      --font-size-2-letters: var(--font-size-5);
+      --one-letter-font-size: var(--font-size-6);
+      --two-letters-font-size: var(--font-size-5);
+      --letter-spacing: var(--letter-spacing-5);
     }
     &.size-5 {
       border-radius: max(var(--radius-4), var(--radius-full));
       --size: var(--space-9);
-      --font-size-1-letter: var(--font-size-8);
-      --font-size-2-letters: var(--font-size-7);
+      --one-letter-font-size: var(--font-size-8);
+      --two-letters-font-size: var(--font-size-7);
+      --letter-spacing: var(--letter-spacing-7);
     }
   }
 }

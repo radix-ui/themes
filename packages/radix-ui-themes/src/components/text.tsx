@@ -42,7 +42,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
       className={classNames(
         'rui-Text',
         withBreakpoints(size, 'size'),
-        withBreakpoints(weight, 'weight'),
+        withBreakpoints(weight, 'rui-weight'),
         withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),

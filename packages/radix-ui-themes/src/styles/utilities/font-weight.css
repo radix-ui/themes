@@ -1,0 +1,17 @@
+@breakpoints {
+  .rui-weight-light {
+    font-weight: var(--font-weight-light);
+  }
+
+  .rui-weight-regular {
+    font-weight: var(--font-weight-regular);
+  }
+
+  .rui-weight-medium {
+    font-weight: var(--font-weight-medium);
+  }
+
+  .rui-weight-bold {
+    font-weight: var(--font-weight-bold);
+  }
+}

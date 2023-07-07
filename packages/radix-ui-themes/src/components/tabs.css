@@ -28,14 +28,14 @@
   letter-spacing: 0.01em;
 
   .rui-TabsTrigger[data-state='active'] & {
-    font-weight: 600;
+    font-weight: var(--font-weight-medium);
     letter-spacing: -0.01em;
   }
 }
 
 .rui-TabsTriggerInnerHidden {
   visibility: hidden;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   letter-spacing: -0.01em;
 }
 
@@ -53,6 +53,7 @@
 .rui-TabsTrigger {
   height: var(--trigger-height);
   font-size: var(--trigger-font-size);
+  letter-spacing: var(--trigger-letter-spacing);
   gap: var(--trigger-gap);
   padding-left: var(--trigger-padding-x);
   padding-right: var(--trigger-padding-x);
@@ -69,6 +70,7 @@
     &.size-1 {
       --trigger-height: var(--space-6);
       --trigger-font-size: var(--font-size-1);
+      --trigger-letter-spacing: var(--letter-spacing-1);
       --trigger-gap: var(--space-1);
       --trigger-padding-x: var(--space-1);
       --trigger-inner-padding: var(--space-1);
@@ -77,6 +79,7 @@
     &.size-2 {
       --trigger-height: var(--space-7);
       --trigger-font-size: var(--font-size-2);
+      --trigger-letter-spacing: var(--letter-spacing-2);
       --trigger-gap: var(--space-2);
       --trigger-padding-x: var(--space-2);
       --trigger-inner-padding: var(--space-1);

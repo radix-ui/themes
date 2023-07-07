@@ -53,21 +53,24 @@
       padding: var(--space-1);
       border-radius: var(--radius-2);
       font-size: var(--font-size-1);
-      line-height: calc(16px * var(--scaling));
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
     }
     &.size-2 {
       min-height: var(--space-9);
       padding: var(--space-2);
       border-radius: var(--radius-2);
       font-size: var(--font-size-2);
-      line-height: calc(20px * var(--scaling));
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
     }
     &.size-3 {
       min-height: 80px;
       padding: var(--space-2) var(--space-3);
       border-radius: var(--radius-3);
       font-size: var(--font-size-3);
-      line-height: calc(24px * var(--scaling));
+      line-height: var(--line-height-3);
+      letter-spacing: var(--letter-spacing-3);
     }
   }
 }

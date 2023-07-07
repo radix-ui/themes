@@ -1,7 +1,7 @@
 .rui-SelectTrigger {
   justify-content: space-between;
   line-height: var(--height);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 
   &[data-placeholder] {
     /* target value */
@@ -94,6 +94,7 @@
   padding-left: var(--space-5);
   padding-right: var(--space-5);
   font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
   user-select: none;
   cursor: default;
 
@@ -118,6 +119,7 @@
 
       & .rui-SelectItem {
         font-size: var(--font-size-1);
+        letter-spacing: var(--letter-spacing-1);
       }
     }
 
@@ -127,6 +129,7 @@
 
       & .rui-SelectItem {
         font-size: var(--font-size-2);
+        letter-spacing: var(--letter-spacing-2);
       }
     }
   }

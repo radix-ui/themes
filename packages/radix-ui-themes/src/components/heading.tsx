@@ -43,7 +43,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
       className={classNames(
         'rui-Heading',
         withBreakpoints(size, 'size'),
-        withBreakpoints(weight, 'weight'),
+        withBreakpoints(weight, 'rui-weight'),
         withMarginProps(marginProps),
         withBreakpoints(align, 'rui-ta'),
         withBreakpoints(trim, 'rui-lt'),

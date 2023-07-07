@@ -47,6 +47,7 @@
 @import './utilities/flex-grow.css';
 @import './utilities/flex-shrink.css';
 @import './utilities/flex-wrap.css';
+@import './utilities/font-weight.css';
 @import './utilities/gap.css';
 @import './utilities/grid-auto-flow.css';
 @import './utilities/grid-template-columns.css';
