@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.20
+
+- General:
+  - [**Breaking**] Add missing / rename wrong prop defs
+
 ## 0.0.19
 
 **Warning!** This release contains some breaking changes.
