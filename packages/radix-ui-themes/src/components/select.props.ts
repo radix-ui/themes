@@ -1,36 +1,39 @@
-import { baseButtonVariants } from './base-button.props';
+import { baseButtonPropDefs } from './base-button.props';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
 
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropDef } from '../helpers';
 
-const selectSizes = ['1', '2'] as const;
-type SelectSize = (typeof selectSizes)[number];
-const selectSizeDefault: SelectSize = '2';
+const sizes = ['1', '2'] as const;
+const variants = baseButtonPropDefs.variant.values;
 
-const selectTriggerVariants = baseButtonVariants;
-type SelectTriggerVariant = (typeof selectTriggerVariants)[number];
-const selectTriggerVariantDefault: SelectTriggerVariant = 'surface';
-const selectTriggerColorDefault: ThemeAccentScale | undefined = undefined;
-const selectTriggerHighContrastDefault: boolean | undefined = undefined;
-
-const selectContentVariants = ['solid', 'soft'] as const;
-type SelectContentVariant = (typeof selectContentVariants)[number];
-const selectContentVariantDefault: SelectContentVariant = 'solid';
-const selectContentColorDefault: ThemeAccentScale | undefined = undefined;
-const selectContentHighContrastDefault: boolean | undefined = undefined;
-
-const selectRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  selectSizes,
-  selectSizeDefault,
-  selectTriggerVariants,
-  selectTriggerVariantDefault,
-  selectTriggerColorDefault,
-  selectTriggerHighContrastDefault,
-  selectContentVariants,
-  selectContentVariantDefault,
-  selectContentColorDefault,
-  selectContentHighContrastDefault,
-  selectRadiusDefault,
+const selectRootPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  radius: typeof radiusProp;
 };
-export type { SelectSize, SelectTriggerVariant, SelectContentVariant };
+
+const selectTriggerPropDefs = {
+  variant: { ...baseButtonPropDefs.variant, default: 'surface' },
+  color: baseButtonPropDefs.color,
+  highContrast: baseButtonPropDefs.highContrast,
+} satisfies {
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof baseButtonPropDefs.color;
+  highContrast: typeof baseButtonPropDefs.highContrast;
+};
+
+const contentVariants = ['solid', 'soft'] as const;
+
+const selectContentPropDefs = {
+  variant: { type: 'enum', values: contentVariants, default: 'solid' },
+  color: colorProp,
+  highContrast: highContrastProp,
+} satisfies {
+  variant: PropDef<(typeof contentVariants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+};
+
+export { selectRootPropDefs, selectTriggerPropDefs, selectContentPropDefs };

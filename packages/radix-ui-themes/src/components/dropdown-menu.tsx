@@ -4,20 +4,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { ScrollArea } from './scroll-area';
-import {
-  dropdownMenuContentSizeDefault,
-  dropdownMenuContentVariantDefault,
-  dropdownMenuContentColorDefault,
-  dropdownMenuContentHighContrastDefault,
-  dropdownMenuItemColorDefault,
-} from './dropdown-menu.props';
+import { dropdownMenuContentPropDefs, dropdownMenuItemPropDefs } from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
 
-import type { DropdownMenuContentSize, DropdownMenuContentVariant } from './dropdown-menu.props';
-import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -34,12 +26,8 @@ const DropdownMenuTrigger = React.forwardRef<DropdownMenuTriggerElement, Dropdow
 );
 DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';
 
-type DropdownMenuContentContextValue = {
-  size?: Responsive<DropdownMenuContentSize>;
-  variant?: DropdownMenuContentVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-};
+type DropdownMenuContentOwnProps = GetPropDefTypes<typeof dropdownMenuContentPropDefs>;
+type DropdownMenuContentContextValue = DropdownMenuContentOwnProps;
 const DropdownMenuContentContext = React.createContext<DropdownMenuContentContextValue>({});
 type DropdownMenuContentElement = React.ElementRef<typeof DropdownMenuPrimitive.Content>;
 interface DropdownMenuContentProps
@@ -53,10 +41,10 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     const {
       className,
       children,
-      size = dropdownMenuContentSizeDefault,
-      variant = dropdownMenuContentVariantDefault,
-      highContrast = dropdownMenuContentHighContrastDefault,
-      color = dropdownMenuContentColorDefault,
+      size = dropdownMenuContentPropDefs.size.default,
+      variant = dropdownMenuContentPropDefs.variant.default,
+      highContrast = dropdownMenuContentPropDefs.highContrast.default,
+      color = dropdownMenuItemPropDefs.color.default,
       container,
       forceMount,
       ...contentProps
@@ -117,8 +105,10 @@ const DropdownMenuLabel = React.forwardRef<DropdownMenuLabelElement, DropdownMen
 DropdownMenuLabel.displayName = 'DropdownMenuLabel';
 
 type DropdownMenuItemElement = React.ElementRef<typeof DropdownMenuPrimitive.Item>;
-interface DropdownMenuItemProps extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Item> {
-  color?: ThemeAccentScale;
+type DropdownMenuItemOwnProps = GetPropDefTypes<typeof dropdownMenuItemPropDefs>;
+interface DropdownMenuItemProps
+  extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Item>,
+    DropdownMenuItemOwnProps {
   shortcut?: string;
 }
 const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuItemProps>(
@@ -126,7 +116,7 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
     const {
       className,
       children,
-      color = dropdownMenuItemColorDefault,
+      color = dropdownMenuItemPropDefs.color.default,
       shortcut,
       ...itemProps
     } = props;

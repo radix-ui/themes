@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { containerSizeDefault } from './container.props';
+import { containerPropDefs } from './container.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -9,22 +9,23 @@ import {
   withBreakpoints,
 } from '../helpers';
 
-import type { ContainerSize, ContainerDisplay } from './container.props';
-import type { MarginProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
 type ContainerElement = React.ElementRef<'div'>;
-interface ContainerProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
-  size?: Responsive<ContainerSize>;
-  display?: Responsive<ContainerDisplay>;
-}
+type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs>;
+interface ContainerProps
+  extends React.ComponentPropsWithoutRef<'div'>,
+    MarginProps,
+    LayoutProps,
+    ContainerOwnProps {}
 const Container = React.forwardRef<ContainerElement, ContainerProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
   const {
     children,
     className,
-    size = containerSizeDefault,
-    display,
+    size = containerPropDefs.size.default,
+    display = containerPropDefs.display.default,
     ...containerProps
   } = layoutRest;
   return (

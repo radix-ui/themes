@@ -1,28 +1,20 @@
-import type { ThemeAccentScale } from '../theme-options';
+import { colorProp, highContrastProp, alignProp, trimProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const headingSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-type HeadingSize = (typeof headingSizes)[number];
-const headingSizeDefault: HeadingSize = '6';
+const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
-const headingAlignValues = ['left', 'center', 'right'] as const;
-type HeadingAlign = (typeof headingAlignValues)[number];
-const headingAlignDefault: HeadingAlign | undefined = undefined;
-
-const headingTrimValues = ['normal', 'start', 'end', 'both'] as const;
-type HeadingTrim = (typeof headingTrimValues)[number];
-const headingTrimDefault: HeadingTrim | undefined = undefined;
-
-const headingColorDefault: ThemeAccentScale | undefined = undefined;
-const headingHighContrastDefault: boolean | undefined = undefined;
-
-export {
-  headingSizes,
-  headingSizeDefault,
-  headingAlignValues,
-  headingAlignDefault,
-  headingTrimValues,
-  headingTrimDefault,
-  headingColorDefault,
-  headingHighContrastDefault,
+const headingPropDefs = {
+  size: { type: 'enum', values: sizes, default: '6', responsive: true },
+  align: alignProp,
+  trim: trimProp,
+  color: colorProp,
+  highContrast: highContrastProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  align: typeof alignProp;
+  trim: typeof trimProp;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
 };
-export type { HeadingSize, HeadingAlign, HeadingTrim };
+
+export { headingPropDefs };

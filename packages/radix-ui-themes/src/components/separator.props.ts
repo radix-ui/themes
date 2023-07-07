@@ -1,10 +1,14 @@
-import type { ThemeAccentScale } from '../theme-options';
+import { colorProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const separatorSizes = ['1', '2', '3', '4'] as const;
-type SeparatorSize = (typeof separatorSizes)[number];
-const separatorSizeDefault: SeparatorSize = '1';
+const sizes = ['1', '2', '3', '4'] as const;
 
-const separatorColorDefault: ThemeAccentScale = 'gray';
+const separatorPropDefs = {
+  size: { type: 'enum', values: sizes, default: '1', responsive: true },
+  color: { ...colorProp, default: 'gray' },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  color: typeof colorProp;
+};
 
-export { separatorSizes, separatorSizeDefault, separatorColorDefault };
-export type { SeparatorSize };
+export { separatorPropDefs };

@@ -4,20 +4,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { ScrollArea } from './scroll-area';
-import {
-  contextMenuContentSizeDefault,
-  contextMenuContentVariantDefault,
-  contextMenuContentColorDefault,
-  contextMenuContentHighContrastDefault,
-  contextMenuItemColorDefault,
-} from './context-menu.props';
+import { contextMenuContentPropDefs, contextMenuItemPropDefs } from './context-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
 
-import type { ContextMenuContentSize, ContextMenuContentVariant } from './context-menu.props';
-import type { Responsive, PropsWithoutRefOrColor } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -34,12 +26,8 @@ const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMe
 );
 ContextMenuTrigger.displayName = 'ContextMenuTrigger';
 
-type ContextMenuContentContextValue = {
-  size?: Responsive<ContextMenuContentSize>;
-  variant?: ContextMenuContentVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-};
+type ContextMenuContentOwnProps = GetPropDefTypes<typeof contextMenuContentPropDefs>;
+type ContextMenuContentContextValue = ContextMenuContentOwnProps;
 const ContextMenuContentContext = React.createContext<ContextMenuContentContextValue>({});
 type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Content>;
 interface ContextMenuContentProps
@@ -53,10 +41,10 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const {
       className,
       children,
-      size = contextMenuContentSizeDefault,
-      variant = contextMenuContentVariantDefault,
-      color = contextMenuContentColorDefault,
-      highContrast = contextMenuContentHighContrastDefault,
+      size = contextMenuContentPropDefs.size.default,
+      variant = contextMenuContentPropDefs.variant.default,
+      color = contextMenuContentPropDefs.color.default,
+      highContrast = contextMenuContentPropDefs.highContrast.default,
       container,
       forceMount,
       ...contentProps
@@ -116,8 +104,10 @@ const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLa
 ContextMenuLabel.displayName = 'ContextMenuLabel';
 
 type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>;
-interface ContextMenuItemProps extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Item> {
-  color?: ThemeAccentScale;
+type ContextMenuItemOwnProps = GetPropDefTypes<typeof contextMenuItemPropDefs>;
+interface ContextMenuItemProps
+  extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Item>,
+    ContextMenuItemOwnProps {
   shortcut?: string;
 }
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
@@ -125,7 +115,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
     const {
       className,
       children,
-      color = contextMenuItemColorDefault,
+      color = contextMenuItemPropDefs.color.default,
       shortcut,
       ...itemProps
     } = props;

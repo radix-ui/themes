@@ -1,24 +1,21 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const sliderSizes = ['1', '2', '3'] as const;
-type SliderSize = (typeof sliderSizes)[number];
-const sliderSizeDefault: SliderSize = '2';
+const sizes = ['1', '2', '3'] as const;
+const variants = ['solid', 'soft'] as const;
 
-const sliderVariants = ['solid', 'soft'] as const;
-type SliderVariant = (typeof sliderVariants)[number];
-const sliderVariantDefault: SliderVariant = 'solid';
-
-const sliderColorDefault: ThemeAccentScale | undefined = undefined;
-const sliderHighContrastDefault: boolean | undefined = undefined;
-const sliderRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  sliderSizes,
-  sliderSizeDefault,
-  sliderVariants,
-  sliderVariantDefault,
-  sliderColorDefault,
-  sliderHighContrastDefault,
-  sliderRadiusDefault,
+const sliderPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'solid' },
+  color: colorProp,
+  highContrast: highContrastProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+  radius: typeof radiusProp;
 };
-export type { SliderSize, SliderVariant };
+
+export { sliderPropDefs };

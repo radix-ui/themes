@@ -1,29 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import {
-  textSizeDefault,
-  textWeightDefault,
-  textAlignDefault,
-  textTrimDefault,
-  textColorDefault,
-  textHighContrastDefault,
-} from './text.props';
+import { textPropDefs } from './text.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { TextSize, TextWeight, TextAlign, TextTrim } from './text.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type TextElement = React.ElementRef<'span'>;
-type CommonTextProps = MarginProps & {
-  size?: Responsive<TextSize>;
-  weight?: Responsive<TextWeight>;
-  align?: Responsive<TextAlign>;
-  trim?: Responsive<TextTrim>;
-  color?: ThemeAccentScale | 'color';
-  highContrast?: boolean;
-};
+type TextPropDefs = GetPropDefTypes<typeof textPropDefs>;
+type CommonTextProps = MarginProps & TextPropDefs;
 type TextAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'span'>;
 type TextSpanProps = { as?: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
 type TextDivProps = { as?: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
@@ -36,12 +21,12 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
     className,
     asChild = false,
     as: Tag = 'span',
-    size = textSizeDefault,
-    weight = textWeightDefault,
-    align = textAlignDefault,
-    trim = textTrimDefault,
-    color = textColorDefault,
-    highContrast = textHighContrastDefault,
+    size = textPropDefs.size.default,
+    weight = textPropDefs.weight.default,
+    align = textPropDefs.align.default,
+    trim = textPropDefs.trim.default,
+    color = textPropDefs.color.default,
+    highContrast = textPropDefs.highContrast.default,
     ...textProps
   } = marginRest;
   return (

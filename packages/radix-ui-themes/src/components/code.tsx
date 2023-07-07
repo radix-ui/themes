@@ -1,35 +1,22 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {
-  codeSizeDefault,
-  codeVariantDefault,
-  codeWeightDefault,
-  codeColorDefault,
-  codeHighContrastDefault,
-} from './code.props';
+import { codePropDefs } from './code.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { CodeSize, CodeVariant, CodeWeight } from './code.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type CodeElement = React.ElementRef<'code'>;
-interface CodeProps extends PropsWithoutRefOrColor<'code'>, MarginProps {
-  size?: Responsive<CodeSize>;
-  variant?: CodeVariant;
-  weight?: Responsive<CodeWeight>;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-}
+type CodeOwnProps = GetPropDefTypes<typeof codePropDefs>;
+interface CodeProps extends PropsWithoutRefOrColor<'code'>, MarginProps, CodeOwnProps {}
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = codeSizeDefault,
-    variant = codeVariantDefault,
-    weight = codeWeightDefault,
-    color = codeColorDefault,
-    highContrast = codeHighContrastDefault,
+    size = codePropDefs.size.default,
+    variant = codePropDefs.variant.default,
+    weight = codePropDefs.weight.default,
+    color = codePropDefs.color.default,
+    highContrast = codePropDefs.highContrast.default,
     ...codeProps
   } = marginRest;
   return (

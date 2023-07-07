@@ -1,20 +1,17 @@
-import type { ThemeRadius } from '../theme-options';
+import { radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const scrollAreaSizes = ['1', '2', '3'] as const;
-type ScrollAreaSize = (typeof scrollAreaSizes)[number];
-const scrollAreaSizeDefault: ScrollAreaSize = '1';
+const sizes = ['1', '2', '3'] as const;
+const scrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
 
-const scrollAreaRadiusDefault: ThemeRadius | undefined = undefined;
-
-const scrollAreaScrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
-type ScrollAreaScrollbars = (typeof scrollAreaScrollbarsValues)[number];
-const scrollAreaScrollbarsDefault: ScrollAreaScrollbars = 'both';
-
-export {
-  scrollAreaSizes,
-  scrollAreaSizeDefault,
-  scrollAreaRadiusDefault,
-  scrollAreaScrollbarsValues,
-  scrollAreaScrollbarsDefault,
+const scrollAreaPropDefs = {
+  size: { type: 'enum', values: sizes, default: '1', responsive: true },
+  radius: radiusProp,
+  scrollbars: { type: 'enum', values: scrollbarsValues, default: 'both' },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  radius: typeof radiusProp;
+  scrollbars: PropDef<(typeof scrollbarsValues)[number]>;
 };
-export type { ScrollAreaSize, ScrollAreaScrollbars };
+
+export { scrollAreaPropDefs };

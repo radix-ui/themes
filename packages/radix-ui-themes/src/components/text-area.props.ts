@@ -1,22 +1,19 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, radiusProp } from '../helpers';
+import { PropDef } from '../helpers';
 
-const textAreaSizes = ['1', '2', '3'] as const;
-type TextAreaSize = (typeof textAreaSizes)[number];
-const textAreaSizeDefault: TextAreaSize = '2';
+const sizes = ['1', '2', '3'] as const;
+const variants = ['surface', 'soft'] as const;
 
-const textAreaVariants = ['surface', 'soft'] as const;
-type TextAreaVariant = (typeof textAreaVariants)[number];
-const textAreaVariantDefault: TextAreaVariant = 'surface';
-
-const textAreaColorDefault: ThemeAccentScale | undefined = undefined;
-const textAreaRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  textAreaSizes,
-  textAreaSizeDefault,
-  textAreaVariants,
-  textAreaVariantDefault,
-  textAreaColorDefault,
-  textAreaRadiusDefault,
+const textAreaPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'surface' },
+  color: colorProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  radius: typeof radiusProp;
 };
-export type { TextAreaSize, TextAreaVariant };
+
+export { textAreaPropDefs };

@@ -5,40 +5,20 @@ import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { DirectionProvider } from '@radix-ui/react-direction';
 import { Slot } from '@radix-ui/react-slot';
-import {
-  themeAppearanceDefault,
-  themeAccentScaleDefault,
-  themeGrayScaleDefault,
-  themeBackgroundColorDefault,
-  themeTextColorDefault,
-  themeRadiusDefault,
-  themeScalingDefault,
-  //
-  getMatchingGrayScale,
-} from './theme-options';
+import { themePropDefs, getMatchingGrayScale } from './theme-options';
 
-import type {
-  ThemeAppearance,
-  ThemeAccentScale,
-  ThemeGrayScale,
-  ThemeBackgroundColor,
-  ThemeTextColor,
-  ThemeRadius,
-  ThemeScaling,
-  //
-  ThemeOptions,
-} from './theme-options';
+import type { ThemeOptions } from './theme-options';
 
 const noop = () => {};
 
 interface ThemeChangeHandlers {
-  onAppearanceChange: (appearance: ThemeAppearance) => void;
-  onAccentScaleChange: (accentScale: ThemeAccentScale) => void;
-  onGrayScaleChange: (grayScale: ThemeGrayScale) => void;
-  onBackgroundColorChange: (backgroundColor: ThemeBackgroundColor) => void;
-  onTextColorChange: (textColor: ThemeTextColor) => void;
-  onRadiusChange: (radius: ThemeRadius) => void;
-  onScalingChange: (scaling: ThemeScaling) => void;
+  onAppearanceChange: (appearance: ThemeOptions['appearance']) => void;
+  onAccentScaleChange: (accentScale: ThemeOptions['accentScale']) => void;
+  onGrayScaleChange: (grayScale: ThemeOptions['grayScale']) => void;
+  onBackgroundColorChange: (backgroundColor: ThemeOptions['backgroundColor']) => void;
+  onTextColorChange: (textColor: ThemeOptions['textColor']) => void;
+  onRadiusChange: (radius: ThemeOptions['radius']) => void;
+  onScalingChange: (scaling: ThemeOptions['scaling']) => void;
 }
 
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {}
@@ -75,13 +55,13 @@ Theme.displayName = 'Theme';
 interface ThemeRootProps extends ThemeImplPublicProps {}
 const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, forwardedRef) => {
   const {
-    appearance: appearanceProp = themeAppearanceDefault,
-    accentScale: accentScaleProp = themeAccentScaleDefault,
-    grayScale: grayScaleProp = themeGrayScaleDefault,
-    backgroundColor: backgroundColorProp = themeBackgroundColorDefault,
-    textColor: textColorProp = themeTextColorDefault,
-    radius: radiusProp = themeRadiusDefault,
-    scaling: scalingProp = themeScalingDefault,
+    appearance: appearanceProp = themePropDefs.appearance.default,
+    accentScale: accentScaleProp = themePropDefs.accentScale.default,
+    grayScale: grayScaleProp = themePropDefs.grayScale.default,
+    backgroundColor: backgroundColorProp = themePropDefs.backgroundColor.default,
+    textColor: textColorProp = themePropDefs.textColor.default,
+    radius: radiusProp = themePropDefs.radius.default,
+    scaling: scalingProp = themePropDefs.scaling.default,
     // direction: directionProp = themeDirectionDefault,
     ...rootProps
   } = props;
@@ -134,13 +114,13 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     asChild,
     applyBackgroundColor = true,
     //
-    appearance = context?.appearance ?? themeAppearanceDefault,
-    accentScale = context?.accentScale ?? themeAccentScaleDefault,
-    grayScale = context?.grayScale ?? themeGrayScaleDefault,
-    backgroundColor = context?.backgroundColor ?? themeBackgroundColorDefault,
-    textColor = context?.textColor ?? themeTextColorDefault,
-    radius = context?.radius ?? themeRadiusDefault,
-    scaling = context?.scaling ?? themeScalingDefault,
+    appearance = context?.appearance ?? themePropDefs.appearance.default,
+    accentScale = context?.accentScale ?? themePropDefs.accentScale.default,
+    grayScale = context?.grayScale ?? themePropDefs.grayScale.default,
+    backgroundColor = context?.backgroundColor ?? themePropDefs.backgroundColor.default,
+    textColor = context?.textColor ?? themePropDefs.textColor.default,
+    radius = context?.radius ?? themePropDefs.radius.default,
+    scaling = context?.scaling ?? themePropDefs.scaling.default,
     //
     onAppearanceChange = noop,
     onAccentScaleChange = noop,

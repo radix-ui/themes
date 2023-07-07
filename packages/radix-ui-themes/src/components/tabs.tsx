@@ -3,11 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { tabsListSizeDefault } from './tabs.props';
+import { tabsListPropDefs } from './tabs.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { TabsListSize } from './tabs.props';
-import type { MarginProps, Responsive } from '../helpers';
+import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 interface TabsRootProps
@@ -27,11 +26,12 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
 TabsRoot.displayName = 'TabsRoot';
 
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
-interface TabsListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
-  size?: Responsive<TabsListSize>;
-}
+type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
+interface TabsListProps
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
+    TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, size = tabsListSizeDefault, ...listProps } = props;
+  const { className, size = tabsListPropDefs.size.default, ...listProps } = props;
   return (
     <TabsPrimitive.List
       {...listProps}

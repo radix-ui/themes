@@ -23,32 +23,15 @@ import {
   Text,
   Tooltip,
   // helpers
-  themeAppearanceDefault,
+  themePropDefs,
   themeAccentScalesGrouped,
-  themeAccentScaleDefault,
   themeGrayScalesGrouped,
-  themeGrayScaleDefault,
   getMatchingGrayScale,
-  themeBackgroundColors,
-  themeBackgroundColorDefault,
-  themeTextColors,
-  themeTextColorDefault,
-  themeRadii,
-  themeRadiusDefault,
-  themeScalings,
-  themeScalingDefault,
   useThemeContext,
 } from './index';
 import { InfoCircledIcon } from './icons';
 
-import type {
-  ThemeAccentScale,
-  ThemeGrayScale,
-  ThemeBackgroundColor,
-  ThemeTextColor,
-  ThemeScaling,
-  ThemeOptions,
-} from './index';
+import type { ThemeOptions } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   initiallyHidden?: boolean;
@@ -111,14 +94,14 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
       const theme: Partial<ThemeOptions> = {
-        appearance: appearance === themeAppearanceDefault ? undefined : appearance,
-        accentScale: accentScale === themeAccentScaleDefault ? undefined : accentScale,
-        grayScale: grayScale === themeGrayScaleDefault ? undefined : grayScale,
+        appearance: appearance === themePropDefs.appearance.default ? undefined : appearance,
+        accentScale: accentScale === themePropDefs.accentScale.default ? undefined : accentScale,
+        grayScale: grayScale === themePropDefs.grayScale.default ? undefined : grayScale,
         backgroundColor:
-          backgroundColor === themeBackgroundColorDefault ? undefined : backgroundColor,
-        textColor: textColor === themeTextColorDefault ? undefined : textColor,
-        radius: radius === themeRadiusDefault ? undefined : radius,
-        scaling: scaling === themeScalingDefault ? undefined : scaling,
+          backgroundColor === themePropDefs.backgroundColor.default ? undefined : backgroundColor,
+        textColor: textColor === themePropDefs.textColor.default ? undefined : textColor,
+        radius: radius === themePropDefs.radius.default ? undefined : radius,
+        scaling: scaling === themePropDefs.scaling.default ? undefined : scaling,
       };
       const props = Object.keys(theme)
         .filter((key) => theme[key as keyof ThemeOptions] !== undefined)
@@ -202,10 +185,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
             <Flex direction="column" gap="1" mb="3">
               <Label htmlFor="accent-scale">Accent scale</Label>
-              <Select.Root
-                value={accentScale}
-                onValueChange={(value) => onAccentScaleChange(value as ThemeAccentScale)}
-              >
+              <Select.Root value={accentScale} onValueChange={onAccentScaleChange}>
                 <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
                 <Select.Content variant="soft" color="gray">
                   {themeAccentScalesGrouped.map(({ label, values }, index) => (
@@ -246,10 +226,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
             <Flex direction="column" gap="1" mb="3">
               <Label htmlFor="gray-scale">Gray scale</Label>
-              <Select.Root
-                value={grayScale}
-                onValueChange={(value) => onGrayScaleChange(value as ThemeGrayScale)}
-              >
+              <Select.Root value={grayScale} onValueChange={onGrayScaleChange}>
                 <Select.Trigger id="gray-scale" variant="surface" color="gray" highContrast />
                 <Select.Content variant="soft" color="gray">
                   {themeGrayScalesGrouped.map(({ label, values }, index) => (
@@ -340,12 +317,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     </Popover.Root>
                   </Label>
                 </Flex>
-                <RadioGroup.Root
-                  value={backgroundColor}
-                  onValueChange={(value: ThemeBackgroundColor) => onBackgroundColorChange(value)}
-                >
+                <RadioGroup.Root value={backgroundColor} onValueChange={onBackgroundColorChange}>
                   <Flex direction="column" gap="1">
-                    {themeBackgroundColors.map((value) => (
+                    {themePropDefs.backgroundColor.values.map((value) => (
                       <Text key={value} size="2" asChild>
                         <label>
                           <RadioGroup.Item value={value} mr="2" />
@@ -404,12 +378,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     </Popover.Root>
                   </Label>
                 </Flex>
-                <RadioGroup.Root
-                  value={textColor}
-                  onValueChange={(value: ThemeTextColor) => onTextColorChange(value)}
-                >
+                <RadioGroup.Root value={textColor} onValueChange={onTextColorChange}>
                   <Flex direction="column" gap="1">
-                    {themeTextColors.map((value) => (
+                    {themePropDefs.textColor.values.map((value) => (
                       <Text key={value} size="2" asChild>
                         <label>
                           <RadioGroup.Item value={value} mr="2" />
@@ -456,23 +427,20 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 							</Select.Root> */}
               <Slider
                 id="radius"
-                value={[themeRadii.indexOf(radius)]}
-                onValueChange={([value]) => onRadiusChange(themeRadii[value])}
+                value={[themePropDefs.radius.values.indexOf(radius)]}
+                onValueChange={([value]) => onRadiusChange(themePropDefs.radius.values[value])}
                 min={0}
-                max={themeRadii.length - 1}
+                max={themePropDefs.radius.values.length - 1}
                 step={1}
               />
             </Flex>
 
             <Flex direction="column" gap="1">
               <Label htmlFor="scaling">Scaling</Label>
-              <Select.Root
-                value={scaling}
-                onValueChange={(value) => onScalingChange(value as ThemeScaling)}
-              >
+              <Select.Root value={scaling} onValueChange={onScalingChange}>
                 <Select.Trigger id="scaling" variant="surface" color="gray" highContrast />
                 <Select.Content variant="soft" color="gray">
-                  {themeScalings.map((value) => (
+                  {themePropDefs.scaling.values.map((value) => (
                     <Select.Item key={value} value={value}>
                       {value}
                     </Select.Item>

@@ -4,32 +4,28 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ScrollArea } from './scroll-area';
-import {
-  selectSizeDefault,
-  selectTriggerVariantDefault,
-  selectTriggerColorDefault,
-  selectTriggerHighContrastDefault,
-  selectContentVariantDefault,
-  selectContentColorDefault,
-  selectContentHighContrastDefault,
-  selectRadiusDefault,
-} from './select.props';
+import { selectRootPropDefs, selectTriggerPropDefs, selectContentPropDefs } from './select.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { CheckIcon, ChevronDownIcon } from '../icons';
 
-import type { SelectSize, SelectTriggerVariant, SelectContentVariant } from './select.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
-type SelectContextValue = { size?: Responsive<SelectSize>; radius?: ThemeRadius };
+type SelectOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
+
+type SelectContextValue = SelectOwnProps;
 const SelectContext = React.createContext<SelectContextValue>({});
 
 interface SelectRootProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
-  const { children, size = selectSizeDefault, radius = selectRadiusDefault, ...rootProps } = props;
+  const {
+    children,
+    size = selectRootPropDefs.size.default,
+    radius = selectRootPropDefs.radius.default,
+    ...rootProps
+  } = props;
   return (
     <SelectPrimitive.Root {...rootProps}>
       <SelectContext.Provider value={React.useMemo(() => ({ size, radius }), [size, radius])}>
@@ -41,21 +37,19 @@ const SelectRoot: React.FC<SelectRootProps> = (props) => {
 SelectRoot.displayName = 'SelectRoot';
 
 type SelectTriggerElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
+type SelectTriggerOwnProps = GetPropDefTypes<typeof selectTriggerPropDefs>;
 interface SelectTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Trigger>, 'asChild'>,
-    MarginProps {
-  variant?: SelectTriggerVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-}
+    MarginProps,
+    SelectTriggerOwnProps {}
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const {
       className,
-      variant = selectTriggerVariantDefault,
-      highContrast = selectTriggerHighContrastDefault,
-      color = selectTriggerColorDefault,
+      variant = selectTriggerPropDefs.variant.default,
+      highContrast = selectTriggerPropDefs.highContrast.default,
+      color = selectTriggerPropDefs.color.default,
       placeholder,
       ...triggerProps
     } = marginRest;
@@ -93,10 +87,10 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
 SelectTrigger.displayName = 'SelectTrigger';
 
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
-interface SelectContentProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Content> {
-  variant?: SelectContentVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
+type SelectContentOwnProps = GetPropDefTypes<typeof selectContentPropDefs>;
+interface SelectContentProps
+  extends PropsWithoutRefOrColor<typeof SelectPrimitive.Content>,
+    SelectContentOwnProps {
   container?: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
 }
 const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>(
@@ -104,9 +98,9 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
     const {
       className,
       children,
-      variant = selectContentVariantDefault,
-      highContrast = selectContentHighContrastDefault,
-      color = selectContentColorDefault,
+      variant = selectContentPropDefs.variant.default,
+      highContrast = selectContentPropDefs.highContrast.default,
+      color = selectContentPropDefs.color.default,
       container,
       ...contentProps
     } = props;

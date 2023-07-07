@@ -1,18 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { kbdWidthDefault } from './kbd.props';
+import { kbdPropDefs } from './kbd.props';
 import { extractMarginProps, withMarginProps } from '../helpers';
 
-import type { KbdWidth } from './kbd.props';
-import type { MarginProps } from '../helpers';
+import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type KbdElement = React.ElementRef<'kbd'>;
-interface KbdProps extends React.ComponentPropsWithoutRef<'kbd'>, MarginProps {
-  width?: KbdWidth;
-}
+type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;
+interface KbdProps extends React.ComponentPropsWithoutRef<'kbd'>, MarginProps, KbdOwnProps {}
 const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, width = kbdWidthDefault, ...kbdProps } = marginRest;
+  const { className, width = kbdPropDefs.width.default, ...kbdProps } = marginRest;
   return (
     <kbd
       {...kbdProps}

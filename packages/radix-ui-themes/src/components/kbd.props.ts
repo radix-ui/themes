@@ -1,6 +1,11 @@
-const kbdWidths = ['command', 'shift', 'space'] as const;
-type KbdWidth = (typeof kbdWidths)[number];
-const kbdWidthDefault: KbdWidth | undefined = undefined;
+import { PropDef } from '../helpers';
 
-export { kbdWidths, kbdWidthDefault };
-export type { KbdWidth };
+const widths = ['command', 'shift', 'space'] as const;
+
+const kbdPropDefs = {
+  width: { type: 'enum', values: widths, default: undefined, responsive: true },
+} satisfies {
+  width: PropDef<(typeof widths)[number]>;
+};
+
+export { kbdPropDefs };

@@ -1,32 +1,24 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {
-  textAreaSizeDefault,
-  textAreaVariantDefault,
-  textAreaColorDefault,
-  textAreaRadiusDefault,
-} from './text-area.props';
+import { textAreaPropDefs } from './text-area.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { TextAreaSize, TextAreaVariant } from './text-area.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
-interface TextAreaProps extends Omit<PropsWithoutRefOrColor<'textarea'>, 'size'>, MarginProps {
-  size?: Responsive<TextAreaSize>;
-  variant?: TextAreaVariant;
-  color?: ThemeAccentScale;
-  radius?: ThemeRadius;
-}
+type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs>;
+interface TextAreaProps
+  extends Omit<PropsWithoutRefOrColor<'textarea'>, 'size'>,
+    MarginProps,
+    TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = textAreaSizeDefault,
-    variant = textAreaVariantDefault,
-    color = textAreaColorDefault,
-    radius = textAreaRadiusDefault,
+    size = textAreaPropDefs.size.default,
+    variant = textAreaPropDefs.variant.default,
+    color = textAreaPropDefs.color.default,
+    radius = textAreaPropDefs.radius.default,
     ...textAreaProps
   } = marginRest;
   return (

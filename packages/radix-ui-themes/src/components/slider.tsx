@@ -3,38 +3,26 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import {
-  sliderSizeDefault,
-  sliderVariantDefault,
-  sliderColorDefault,
-  sliderHighContrastDefault,
-  sliderRadiusDefault,
-} from './slider.props';
+import { sliderPropDefs } from './slider.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { SliderSize, SliderVariant } from './slider.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
+type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;
 interface SliderProps
   extends Omit<PropsWithoutRefOrColor<typeof SliderPrimitive.Root>, 'children'>,
-    MarginProps {
-  size?: Responsive<SliderSize>;
-  variant?: SliderVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-  radius?: ThemeRadius;
-}
+    MarginProps,
+    SliderOwnProps {}
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = sliderSizeDefault,
-    variant = sliderVariantDefault,
-    color = sliderColorDefault,
-    highContrast = sliderHighContrastDefault,
-    radius = sliderRadiusDefault,
+    size = sliderPropDefs.size.default,
+    variant = sliderPropDefs.variant.default,
+    color = sliderPropDefs.color.default,
+    highContrast = sliderPropDefs.highContrast.default,
+    radius = sliderPropDefs.radius.default,
     ...sliderProps
   } = marginRest;
   return (

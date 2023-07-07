@@ -1,24 +1,23 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const avatarSizes = ['1', '2', '3', '4', '5'] as const;
-type AvatarSize = (typeof avatarSizes)[number];
-const avatarSizeDefault: AvatarSize = '3';
+const sizes = ['1', '2', '3', '4', '5'] as const;
+const variants = ['solid', 'soft'] as const;
 
-const avatarVariants = ['solid', 'soft'] as const;
-type AvatarVariant = (typeof avatarVariants)[number];
-const avatarVariantDefault: AvatarVariant = 'soft';
-
-const avatarColorDefault: ThemeAccentScale | undefined = undefined;
-const avatarHighContrastDefault: boolean | undefined = undefined;
-const avatarRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  avatarSizes,
-  avatarSizeDefault,
-  avatarVariants,
-  avatarVariantDefault,
-  avatarColorDefault,
-  avatarHighContrastDefault,
-  avatarRadiusDefault,
+const avatarPropDefs = {
+  size: { type: 'enum', values: sizes, default: '3', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'soft' },
+  color: { ...colorProp, default: 'gray' },
+  highContrast: highContrastProp,
+  radius: radiusProp,
+  fallback: { type: 'ReactNode', default: undefined, required: true },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+  radius: typeof radiusProp;
+  fallback: PropDef<React.ReactNode>;
 };
-export type { AvatarSize, AvatarVariant };
+
+export { avatarPropDefs };

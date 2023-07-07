@@ -1,9 +1,14 @@
-const containerSizes = ['1', '2', '3'] as const;
-type ContainerSize = (typeof containerSizes)[number];
-const containerSizeDefault: ContainerSize = '3';
+import type { PropDef } from '../helpers';
 
-const containerDisplayValues = ['none', 'block'] as const;
-type ContainerDisplay = (typeof containerDisplayValues)[number];
+const sizes = ['1', '2', '3'] as const;
+const displayValues = ['none', 'block'] as const;
 
-export { containerSizes, containerSizeDefault, containerDisplayValues };
-export type { ContainerSize, ContainerDisplay };
+const containerPropDefs = {
+  size: { type: 'enum', values: sizes, default: '3', responsive: true },
+  display: { type: 'enum', values: displayValues, default: undefined, responsive: true },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  display: PropDef<(typeof displayValues)[number]>;
+};
+
+export { containerPropDefs };

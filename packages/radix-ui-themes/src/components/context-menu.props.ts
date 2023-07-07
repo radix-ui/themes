@@ -1,25 +1,4 @@
-import { ThemeAccentScale } from '../theme-options';
-
-const contextMenuContentSizes = ['1', '2'] as const;
-type ContextMenuContentSize = (typeof contextMenuContentSizes)[number];
-const contextMenuContentSizeDefault: ContextMenuContentSize = '2';
-
-const contextMenuContentVariants = ['solid', 'soft'] as const;
-type ContextMenuContentVariant = (typeof contextMenuContentVariants)[number];
-const contextMenuContentVariantDefault: ContextMenuContentVariant = 'solid';
-
-const contextMenuContentColorDefault: ThemeAccentScale | undefined = undefined;
-const contextMenuContentHighContrastDefault: boolean | undefined = undefined;
-
-const contextMenuItemColorDefault: ThemeAccentScale | undefined = undefined;
-
 export {
-  contextMenuContentSizes,
-  contextMenuContentSizeDefault,
-  contextMenuContentVariants,
-  contextMenuContentVariantDefault,
-  contextMenuContentColorDefault,
-  contextMenuContentHighContrastDefault,
-  contextMenuItemColorDefault,
-};
-export type { ContextMenuContentSize, ContextMenuContentVariant };
+  baseMenuContentPropDefs as contextMenuContentPropDefs,
+  baseMenuItemPropDefs as contextMenuItemPropDefs,
+} from './base-menu.props';

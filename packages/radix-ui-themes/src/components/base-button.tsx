@@ -1,35 +1,25 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {
-  baseButtonSizeDefault,
-  baseButtonVariantDefault,
-  baseButtonColorDefault,
-  baseButtonHighContrastDefault,
-  defaultBaseRadius,
-} from './base-button.props';
+import { baseButtonPropDefs } from './base-button.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { BaseButtonSize, BaseButtonVariant } from './base-button.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type BaseButtonElement = React.ElementRef<'button'>;
-interface BaseButtonProps extends PropsWithoutRefOrColor<'button'>, MarginProps {
-  size?: Responsive<BaseButtonSize>;
-  variant?: BaseButtonVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-  radius?: ThemeRadius;
-}
+type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
+interface BaseButtonProps
+  extends PropsWithoutRefOrColor<'button'>,
+    MarginProps,
+    BaseButtonOwnProps {}
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = baseButtonSizeDefault,
-    variant = baseButtonVariantDefault,
-    color = baseButtonColorDefault,
-    highContrast = baseButtonHighContrastDefault,
-    radius = defaultBaseRadius,
+    size = baseButtonPropDefs.size.default,
+    variant = baseButtonPropDefs.variant.default,
+    color = baseButtonPropDefs.color.default,
+    highContrast = baseButtonPropDefs.highContrast.default,
+    radius = baseButtonPropDefs.radius.default,
     ...baseButtonProps
   } = marginRest;
   return (

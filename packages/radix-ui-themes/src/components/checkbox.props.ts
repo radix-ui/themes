@@ -1,24 +1,21 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const checkboxSizes = ['1', '2'] as const;
-type CheckboxSize = (typeof checkboxSizes)[number];
-const checkboxSizeDefault: CheckboxSize = '1';
+const sizes = ['1', '2'] as const;
+const variants = ['solid'] as const;
 
-const checkboxVariants = ['solid'] as const;
-type CheckboxVariant = (typeof checkboxVariants)[number];
-const checkboxVariantDefault: CheckboxVariant = 'solid';
-
-const checkboxColorDefault: ThemeAccentScale | undefined = undefined;
-const checkboxHighContrastDefault: boolean | undefined = undefined;
-const checkboxRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  checkboxSizes,
-  checkboxSizeDefault,
-  checkboxVariants,
-  checkboxVariantDefault,
-  checkboxColorDefault,
-  checkboxHighContrastDefault,
-  checkboxRadiusDefault,
+const checkboxPropDefs = {
+  size: { type: 'enum', values: sizes, default: '1', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'solid' },
+  color: colorProp,
+  highContrast: highContrastProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+  radius: typeof radiusProp;
 };
-export type { CheckboxSize, CheckboxVariant };
+
+export { checkboxPropDefs };

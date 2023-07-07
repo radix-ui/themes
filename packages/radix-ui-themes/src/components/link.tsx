@@ -1,35 +1,25 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import {
-  linkSizeDefault,
-  linkWeightDefault,
-  linkColorDefault,
-  linkHighContrastDefault,
-} from './link.props';
+import { linkPropDefs } from './link.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { LinkSize, LinkWeight } from './link.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type LinkElement = React.ElementRef<'a'>;
-interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps {
+type LinkOwnProps = GetPropDefTypes<typeof linkPropDefs>;
+interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps, LinkOwnProps {
   asChild?: boolean;
-  size?: Responsive<LinkSize>;
-  weight?: Responsive<LinkWeight>;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
     asChild = false,
-    size = linkSizeDefault,
-    weight = linkWeightDefault,
-    color = linkColorDefault,
-    highContrast = linkHighContrastDefault,
+    size = linkPropDefs.size.default,
+    weight = linkPropDefs.weight.default,
+    color = linkPropDefs.color.default,
+    highContrast = linkPropDefs.highContrast.default,
     ...linkProps
   } = marginRest;
   const Comp = asChild ? Slot : 'a';

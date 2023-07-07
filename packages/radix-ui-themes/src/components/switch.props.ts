@@ -1,24 +1,21 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
+import { PropDef } from '../helpers';
 
-const switchSizes = ['1', '2', '3'] as const;
-type SwitchSize = (typeof switchSizes)[number];
-const switchSizeDefault: SwitchSize = '2';
+const sizes = ['1', '2', '3'] as const;
+const variants = ['solid'] as const;
 
-const switchVariants = ['solid'] as const;
-type SwitchVariant = (typeof switchVariants)[number];
-const switchVariantDefault: SwitchVariant = 'solid';
-
-const switchColorDefault: ThemeAccentScale | undefined = undefined;
-const switchHighContrastDefault: boolean | undefined = undefined;
-const switchRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  switchSizes,
-  switchSizeDefault,
-  switchVariants,
-  switchVariantDefault,
-  switchColorDefault,
-  switchHighContrastDefault,
-  switchRadiusDefault,
+const switchPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'solid' },
+  color: colorProp,
+  highContrast: highContrastProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+  radius: typeof radiusProp;
 };
-export type { SwitchSize, SwitchVariant };
+
+export { switchPropDefs };

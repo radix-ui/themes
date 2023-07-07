@@ -1,24 +1,21 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const baseButtonSizes = ['1', '2', '3'] as const;
-type BaseButtonSize = (typeof baseButtonSizes)[number];
-const baseButtonSizeDefault: BaseButtonSize = '2';
+const sizes = ['1', '2', '3'] as const;
+const variants = ['solid', 'soft', 'ghost', 'outline', 'surface'] as const;
 
-const baseButtonVariants = ['solid', 'soft', 'ghost', 'outline', 'surface'] as const;
-type BaseButtonVariant = (typeof baseButtonVariants)[number];
-const baseButtonVariantDefault: BaseButtonVariant = 'solid';
-
-const baseButtonColorDefault: ThemeAccentScale | undefined = undefined;
-const baseButtonHighContrastDefault: boolean | undefined = undefined;
-const defaultBaseRadius: ThemeRadius | undefined = undefined;
-
-export {
-  baseButtonSizes,
-  baseButtonSizeDefault,
-  baseButtonVariants,
-  baseButtonVariantDefault,
-  baseButtonColorDefault,
-  baseButtonHighContrastDefault,
-  defaultBaseRadius,
+const baseButtonPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'solid' },
+  color: colorProp,
+  highContrast: highContrastProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+  radius: typeof radiusProp;
 };
-export type { BaseButtonSize, BaseButtonVariant };
+
+export { baseButtonPropDefs };

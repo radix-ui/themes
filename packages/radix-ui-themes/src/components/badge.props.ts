@@ -1,24 +1,21 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, highContrastProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const badgeSizes = ['1', '2'] as const;
-type BadgeSize = (typeof badgeSizes)[number];
-const badgeSizeDefault: BadgeSize = '1';
+const sizes = ['1', '2'] as const;
+const variants = ['solid', 'soft', 'outline', 'surface'] as const;
 
-const badgeVariants = ['solid', 'soft', 'outline', 'surface'] as const;
-type BadgeVariant = (typeof badgeVariants)[number];
-const badgeVariantDefault: BadgeVariant = 'soft';
-
-const badgeColorDefault: ThemeAccentScale = 'gray';
-const badgeHighContrastDefault: boolean | undefined = undefined;
-const badgeRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  badgeSizes,
-  badgeSizeDefault,
-  badgeVariants,
-  badgeVariantDefault,
-  badgeColorDefault,
-  badgeHighContrastDefault,
-  badgeRadiusDefault,
+const badgePropDefs = {
+  size: { type: 'enum', values: sizes, default: '1', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'soft' },
+  color: { ...colorProp, default: 'gray' },
+  highContrast: highContrastProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+  radius: typeof radiusProp;
 };
-export type { BadgeSize, BadgeVariant };
+
+export { badgePropDefs };

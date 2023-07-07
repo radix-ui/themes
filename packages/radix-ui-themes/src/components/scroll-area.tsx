@@ -3,26 +3,18 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import {
-  scrollAreaSizeDefault,
-  scrollAreaRadiusDefault,
-  scrollAreaScrollbarsDefault,
-} from './scroll-area.props';
+import { scrollAreaPropDefs } from './scroll-area.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { ScrollAreaSize, ScrollAreaScrollbars } from './scroll-area.props';
-import type { MarginProps, Responsive } from '../helpers';
-import type { ThemeRadius } from '../theme-options';
+import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
+type ScrollAreaPropDefs = GetPropDefTypes<typeof scrollAreaPropDefs>;
 interface ScrollAreaProps
   extends React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Root>,
     Omit<React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
-    MarginProps {
-  size?: Responsive<ScrollAreaSize>;
-  radius?: ThemeRadius;
-  scrollbars?: ScrollAreaScrollbars;
-}
+    MarginProps,
+    ScrollAreaPropDefs {}
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
@@ -31,9 +23,9 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     type,
     scrollHideDelay = type !== 'scroll' ? 0 : undefined,
     dir,
-    size = scrollAreaSizeDefault,
-    radius = scrollAreaRadiusDefault,
-    scrollbars = scrollAreaScrollbarsDefault,
+    size = scrollAreaPropDefs.size.default,
+    radius = scrollAreaPropDefs.radius.default,
+    scrollbars = scrollAreaPropDefs.scrollbars.default,
     ...viewportProps
   } = marginRest;
   return (

@@ -3,36 +3,26 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import {
-  radioGroupSizeDefault,
-  radioGroupVariantDefault,
-  radioGroupColorDefault,
-  radioGroupHighContrastDefault,
-} from './radio-group.props';
+import { radioGroupPropDef } from './radio-group.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { RadioGroupSize, RadioGroupVariant } from './radio-group.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
+type RadioGroupOwnProps = GetPropDefTypes<typeof radioGroupPropDef>;
 interface RadioGroupRootProps
   extends PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Root>,
-    MarginProps {
-  size?: Responsive<RadioGroupSize>;
-  variant?: RadioGroupVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-}
+    MarginProps,
+    RadioGroupOwnProps {}
 const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const {
       className,
-      size = radioGroupSizeDefault,
-      variant = radioGroupVariantDefault,
-      color = radioGroupColorDefault,
-      highContrast = radioGroupHighContrastDefault,
+      size = radioGroupPropDef.size.default,
+      variant = radioGroupPropDef.variant.default,
+      color = radioGroupPropDef.color.default,
+      highContrast = radioGroupPropDef.highContrast.default,
       ...rootProps
     } = marginRest;
     return (

@@ -21,27 +21,22 @@ import {
   AspectRatio,
   //
   Avatar,
-  avatarSizes,
-  avatarVariants,
+  avatarPropDefs,
   //
   Badge,
-  badgeSizes,
-  badgeVariants,
+  badgePropDefs,
   //
   Blockquote,
   Box,
   //
   Button,
-  buttonSizes,
-  buttonVariants,
+  buttonPropsDefs,
   //
   Checkbox,
-  checkboxSizes,
-  checkboxVariants,
+  checkboxPropDefs,
   //
   Code,
-  codeSizes,
-  codeVariants,
+  codePropDefs,
   //
   Container,
   //
@@ -58,8 +53,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuSeparator,
-  contextMenuContentSizes,
-  contextMenuContentVariants,
+  contextMenuContentPropDefs,
   //
   DialogRoot,
   DialogTrigger,
@@ -81,28 +75,26 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuSeparator,
-  dropdownMenuContentSizes,
-  dropdownMenuContentVariants,
+  dropdownMenuContentPropDefs,
   //
   Em,
   Flex,
   Grid,
   //
   Heading,
-  headingSizes,
+  headingPropDefs,
   //
   HoverCardRoot,
   HoverCardTrigger,
   HoverCardContent,
   //
   IconButton,
-  iconButtonSizes,
-  iconButtonVariants,
+  iconButtonPropDefs,
   //
   Kbd,
   //
   Link,
-  linkSizes,
+  linkPropDefs,
   //
   PopoverRoot,
   PopoverContent,
@@ -113,11 +105,10 @@ import {
   //
   RadioGroupRoot,
   RadioGroupItem,
-  radioGroupSizes,
-  radioGroupVariants,
+  radioGroupPropDef,
   //
   ScrollArea,
-  scrollAreaSizes,
+  scrollAreaPropDefs,
   //
   Section,
   //
@@ -128,52 +119,46 @@ import {
   SelectGroup,
   SelectLabel,
   SelectSeparator,
-  selectSizes,
-  selectTriggerVariants,
-  selectContentVariants,
+  selectRootPropDefs,
+  selectTriggerPropDefs,
+  selectContentPropDefs,
   //
   Separator,
   //
   Slider,
-  sliderSizes,
-  sliderVariants,
+  sliderPropDefs,
   //
   Strong,
   Sup,
   //
   Switch,
-  switchSizes,
-  switchVariants,
+  switchPropDefs,
   //
   TabsRoot,
   TabsList,
   TabsTrigger,
   TabsContent,
-  tabsListSizes,
+  tabsListPropDefs,
   //
   TextArea,
-  textAreaSizes,
-  textAreaVariants,
+  textAreaPropDefs,
   //
   TextField,
-  textFieldSizes,
-  textFieldVariants,
+  textFieldPropDefs,
   //
   Text,
-  textSizes,
+  textPropDefs,
   //
   Tooltip,
   //
   // helpers:
   themeAccentScalesGrouped,
-  themeRadii,
   //
   ThemePanel,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
 
-import type { TextFieldSize } from '@radix-ui/themes';
 import { RadixLogo } from './radix-logo';
 
 export default function Sink() {
@@ -347,7 +332,7 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {dropdownMenuContentSizes.map((size) => (
+                              {dropdownMenuContentPropDefs.size.values.map((size) => (
                                 <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                               ))}
                               <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
@@ -356,10 +341,10 @@ export default function Sink() {
                             </tr>
                           </thead>
                           <tbody>
-                            {dropdownMenuContentVariants.map((variant) => (
+                            {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                               <tr key={variant}>
                                 <RowHeaderCell>{variant}</RowHeaderCell>
-                                {dropdownMenuContentSizes.map((size) => (
+                                {dropdownMenuContentPropDefs.size.values.map((size) => (
                                   <td key={size}>
                                     <DropdownMenuRoot>
                                       <DropdownMenuTrigger>
@@ -429,7 +414,7 @@ export default function Sink() {
                                 <thead>
                                   <tr>
                                     <ColumnHeaderCell />
-                                    {dropdownMenuContentVariants.map((variant) => (
+                                    {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                                       <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                     ))}
                                   </tr>
@@ -438,7 +423,7 @@ export default function Sink() {
                                   {values.map((color) => (
                                     <tr key={color}>
                                       <RowHeaderCell>{color}</RowHeaderCell>
-                                      {dropdownMenuContentVariants.map((variant) => (
+                                      {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                                         <td key={variant}>
                                           <DropdownMenuRoot>
                                             <DropdownMenuTrigger>
@@ -479,15 +464,15 @@ export default function Sink() {
                       <table className={styles.table}>
                         <thead>
                           <tr>
-                            {contextMenuContentSizes.map((size) => (
+                            {contextMenuContentPropDefs.size.values.map((size) => (
                               <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {contextMenuContentVariants.map((variant) => (
+                          {contextMenuContentPropDefs.variant.values.map((variant) => (
                             <tr key={variant}>
-                              {contextMenuContentSizes.map((size) => (
+                              {contextMenuContentPropDefs.size.values.map((size) => (
                                 <td key={size}>
                                   <ContextMenuRoot>
                                     <ContextMenuTrigger>
@@ -515,7 +500,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {selectSizes.map((size) => (
+                      {selectRootPropDefs.size.values.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
@@ -527,10 +512,10 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {selectTriggerVariants.map((variant) => (
+                    {selectTriggerPropDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        {selectSizes.map((size) => (
+                        {selectRootPropDefs.size.values.map((size) => (
                           <td key={size}>
                             <SelectRoot defaultValue="apple" size={size}>
                               <SelectTrigger variant={variant} />
@@ -593,7 +578,7 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {selectContentVariants.map((variant) => (
+                    {selectContentPropDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         <td>
@@ -653,16 +638,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {selectSizes.map((size) => (
+                          {selectRootPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {selectRootPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {selectSizes.map((size) => (
+                            {selectRootPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <SelectRoot defaultValue="apple" size={size} radius={radius}>
                                   <SelectTrigger />
@@ -698,7 +683,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {selectTriggerVariants.map((variant) => (
+                            {selectTriggerPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -707,7 +692,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {selectTriggerVariants.map((variant) => (
+                              {selectTriggerPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <SelectRoot defaultValue="apple" size="1">
                                     <SelectTrigger variant={variant} color={color} />
@@ -751,7 +736,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {switchVariants.map((variant) => (
+                        {switchPropDefs.variant.values.map((variant) => (
                           <React.Fragment key={variant}>
                             {[variant, '+ high-contrast'].map((label) => (
                               <tr key={label}>
@@ -793,7 +778,7 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {switchSizes.map((size) => (
+                        {switchPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
@@ -831,7 +816,7 @@ export default function Sink() {
                         </Flex>
                       </label>
 
-                      {textSizes.slice(0, 4).map((size) => (
+                      {textPropDefs.size.values.slice(0, 4).map((size) => (
                         <label key={size}>
                           <Flex align="center" gap="2">
                             <Switch />
@@ -858,16 +843,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {switchSizes.map((size) => (
+                          {switchPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {switchPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {switchSizes.map((size) => (
+                            {switchPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Switch size={size} radius={radius} />
                               </td>
@@ -898,7 +883,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {switchVariants.map((variant) => (
+                            {switchPropDefs.variant.values.map((variant) => (
                               <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
                             ))}
                           </tr>
@@ -907,7 +892,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {switchVariants.map((variant) => (
+                              {switchPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Switch variant={variant} color={color} defaultChecked />
                                   <Switch
@@ -943,7 +928,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {sliderVariants.map((variant, index) => (
+                        {sliderPropDefs.variant.values.map((variant, index) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td style={{ minWidth: 150 }}>
@@ -983,7 +968,7 @@ export default function Sink() {
                   <div>
                     <table className={styles.table}>
                       <tbody>
-                        {sliderSizes.map((size, index) => (
+                        {sliderPropDefs.size.values.map((size, index) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td style={{ minWidth: 316 }}>
@@ -997,10 +982,10 @@ export default function Sink() {
 
                   <div>
                     <Flex gap="5" style={{ height: 160 }}>
-                      {sliderSizes.map((size, i, sizes) => {
+                      {sliderPropDefs.size.values.map((size, i, sizes) => {
                         return (
                           <React.Fragment key={size}>
-                            {[...sliderVariants, ...sliderVariants]
+                            {[...sliderPropDefs.variant.values, ...sliderPropDefs.variant.values]
                               .sort()
                               .map((variant, j, variants) => {
                                 const stepCount = variants.length * sizes.length - 1;
@@ -1044,16 +1029,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {sliderSizes.map((size) => (
+                          {sliderPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {sliderPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {sliderSizes.map((size) => (
+                            {sliderPropDefs.size.values.map((size) => (
                               <td key={size} style={{ minWidth: 150 }}>
                                 <Slider size={size} radius={radius} defaultValue={[50]} />
                               </td>
@@ -1084,7 +1069,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {sliderVariants.map((variant) => (
+                            {sliderPropDefs.variant.values.map((variant) => (
                               <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
                             ))}
                           </tr>
@@ -1093,7 +1078,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {sliderVariants.map((variant) => (
+                              {sliderPropDefs.variant.values.map((variant) => (
                                 <td key={variant} style={{ minWidth: 150 }}>
                                   <Slider variant={variant} color={color} defaultValue={[50]} />
                                   <Slider
@@ -1128,7 +1113,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {checkboxVariants.map((variant) => (
+                        {checkboxPropDefs.variant.values.map((variant) => (
                           <React.Fragment key={variant}>
                             {[variant, '+ high-contrast'].map((label) => (
                               <tr key={label}>
@@ -1170,7 +1155,7 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {checkboxSizes.map((size) => (
+                        {checkboxPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
@@ -1208,7 +1193,7 @@ export default function Sink() {
                         </Text>
                       </Flex>
 
-                      {textSizes.slice(0, 4).map((size) => (
+                      {textPropDefs.size.values.slice(0, 4).map((size) => (
                         <Flex align="center" gap="2" key={size}>
                           <Checkbox id={`align-size${size}`} />
                           <Text size={size}>
@@ -1237,16 +1222,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {checkboxSizes.map((size) => (
+                          {checkboxPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {checkboxPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {checkboxSizes.map((size) => (
+                            {checkboxPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Checkbox defaultChecked radius={radius} size={size} />
                               </td>
@@ -1277,7 +1262,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {checkboxVariants.map((variant) => (
+                            {checkboxPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1286,7 +1271,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {checkboxVariants.map((variant) => (
+                              {checkboxPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Checkbox variant={variant} color={color} defaultChecked />
                                   <Checkbox
@@ -1321,7 +1306,7 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioGroupVariants.map((variant) => (
+                        {radioGroupPropDef.variant.values.map((variant) => (
                           <React.Fragment key={variant}>
                             {[variant, '+ high-contrast'].map((label) => (
                               <tr key={label}>
@@ -1370,7 +1355,7 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {radioGroupSizes.map((size) => (
+                        {radioGroupPropDef.size.values.map((size) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
@@ -1411,7 +1396,7 @@ export default function Sink() {
                         </label>
                       </RadioGroupRoot>
 
-                      {textSizes.slice(0, 4).map((size) => (
+                      {textPropDefs.size.values.slice(0, 4).map((size) => (
                         <RadioGroupRoot key={size}>
                           <label>
                             <Flex align="center" gap="2">
@@ -1444,7 +1429,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {radioGroupVariants.map((variant) => (
+                            {radioGroupPropDef.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1453,7 +1438,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {radioGroupVariants.map((variant) => (
+                              {radioGroupPropDef.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex gap="2">
                                     <RadioGroupRoot
@@ -1490,7 +1475,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {buttonSizes.map((size) => (
+                      {buttonPropsDefs.size.values.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
@@ -1502,10 +1487,10 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {buttonVariants.map((variant) => (
+                    {buttonPropsDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        {buttonSizes.map((size) => (
+                        {buttonPropsDefs.size.values.map((size) => (
                           <td key={size}>
                             <Button size={size} variant={variant}>
                               Next <ArrowRightIcon />
@@ -1554,16 +1539,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {buttonSizes.map((size) => (
+                          {buttonPropsDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {buttonPropsDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {buttonSizes.map((size) => (
+                            {buttonPropsDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Button size={size} radius={radius}>
                                   Next <ArrowRightIcon />
@@ -1596,7 +1581,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {buttonVariants.map((variant) => (
+                            {buttonPropsDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1605,7 +1590,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {buttonVariants.map((variant) => (
+                              {buttonPropsDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Button variant={variant} color={color}>
                                     <Pencil2Icon />
@@ -1631,7 +1616,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {iconButtonSizes.map((size) => (
+                      {iconButtonPropDefs.size.values.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
@@ -1643,10 +1628,10 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {iconButtonVariants.map((variant) => (
+                    {iconButtonPropDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        {iconButtonSizes.map((size) => (
+                        {iconButtonPropDefs.size.values.map((size) => (
                           <td key={size}>
                             <IconButton size={size} variant={variant}>
                               <Share2Icon />
@@ -1695,16 +1680,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {iconButtonSizes.map((size) => (
+                          {iconButtonPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {iconButtonPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {iconButtonSizes.map((size) => (
+                            {iconButtonPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <IconButton size={size} radius={radius}>
                                   <Share2Icon />
@@ -1737,7 +1722,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {iconButtonVariants.map((variant) => (
+                            {iconButtonPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1746,7 +1731,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {iconButtonVariants.map((variant) => (
+                              {iconButtonPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <IconButton variant={variant} color={color}>
                                     <Share2Icon />
@@ -1770,7 +1755,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {textFieldSizes.map((size) => (
+                      {textFieldPropDefs.size.values.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <ColumnHeaderCell>value</ColumnHeaderCell>
@@ -1779,12 +1764,12 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {textFieldVariants.map((variant) => (
+                    {textFieldPropDefs.variant.values.map((variant) => (
                       <React.Fragment key={variant}>
                         {[variant, '+ gray'].map((label) => (
                           <tr key={label}>
                             <RowHeaderCell>{label}</RowHeaderCell>
-                            {textFieldSizes.map((size) => (
+                            {textFieldPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <TextField
                                   size={size}
@@ -1841,16 +1826,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {textFieldSizes.map((size) => (
+                          {textFieldPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {textFieldPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {textFieldSizes.map((size) => (
+                            {textFieldPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <TextField size={size} radius={radius} placeholder="Your name" />
                               </td>
@@ -1881,7 +1866,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {textFieldVariants.map((variant) => (
+                            {textFieldPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -1890,7 +1875,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {textFieldVariants.map((variant) => (
+                              {textFieldPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <TextField
                                     variant={variant}
@@ -1913,7 +1898,7 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {textAreaSizes.map((size) => (
+                      {textAreaPropDefs.size.values.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                       <ColumnHeaderCell>value</ColumnHeaderCell>
@@ -1922,12 +1907,12 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {textAreaVariants.map((variant) => (
+                    {textAreaPropDefs.variant.values.map((variant) => (
                       <React.Fragment key={variant}>
                         {[variant, '+ gray'].map((label) => (
                           <tr key={label}>
                             <RowHeaderCell>{label}</RowHeaderCell>
-                            {textAreaSizes.map((size) => (
+                            {textAreaPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <TextArea
                                   size={size}
@@ -1984,16 +1969,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {textAreaSizes.map((size) => (
+                          {textAreaPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {textAreaPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {textAreaSizes.map((size) => (
+                            {textAreaPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <TextArea size={size} radius={radius} placeholder="Your feedback" />
                               </td>
@@ -2024,7 +2009,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {textAreaVariants.map((variant) => (
+                            {textAreaPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -2033,7 +2018,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {textAreaVariants.map((variant) => (
+                              {textAreaPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <TextArea
                                     variant={variant}
@@ -2056,16 +2041,16 @@ export default function Sink() {
                   <thead>
                     <tr>
                       <ColumnHeaderCell />
-                      {badgeSizes.map((size) => (
+                      {badgePropDefs.size.values.map((size) => (
                         <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {badgeVariants.map((variant) => (
+                    {badgePropDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
-                        {badgeSizes.map((size) => (
+                        {badgePropDefs.size.values.map((size) => (
                           <td key={size}>
                             <Flex key={variant} gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
                               {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
@@ -2101,16 +2086,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {badgeSizes.map((size) => (
+                          {badgePropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {badgePropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {badgeSizes.map((size) => (
+                            {badgePropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Badge size={size} radius={radius}>
                                   {upperFirst(radius)}
@@ -2143,7 +2128,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {badgeVariants.map((variant) => (
+                            {badgePropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -2152,7 +2137,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {badgeVariants.map((variant) => (
+                              {badgePropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex direction="column" align="start" gap="1">
                                     <Badge variant={variant} color={color}>
@@ -2188,7 +2173,7 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {avatarVariants.map((variant) => (
+                    {avatarPropDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         <td>
@@ -2232,16 +2217,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {avatarSizes.map((size) => (
+                          {avatarPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {avatarPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {avatarSizes.map((size) => (
+                            {avatarPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Avatar
                                   size={size}
@@ -2277,7 +2262,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {avatarVariants.map((variant) => (
+                            {avatarPropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -2286,7 +2271,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {avatarVariants.map((variant) => (
+                              {avatarPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Avatar variant={variant} color={color} fallback="D" />
                                   <Avatar
@@ -2631,7 +2616,7 @@ export default function Sink() {
 
               <DocsSection title="Text">
                 <Flex direction="column" gap="4">
-                  {textSizes
+                  {textPropDefs.size.values
                     .slice()
                     .reverse()
                     .map((size) => (
@@ -2677,7 +2662,7 @@ export default function Sink() {
                     </tr>
                   </thead>
                   <tbody>
-                    {codeVariants.map((variant) => (
+                    {codePropDefs.variant.values.map((variant) => (
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         <td>
@@ -2704,7 +2689,7 @@ export default function Sink() {
                 </table>
 
                 <Flex direction="column" gap="4" mt="7">
-                  {codeSizes
+                  {codePropDefs.size.values
                     .slice()
                     .reverse()
                     .map((size) => (
@@ -2733,7 +2718,7 @@ export default function Sink() {
                         <thead>
                           <tr>
                             <ColumnHeaderCell />
-                            {codeVariants.map((variant) => (
+                            {codePropDefs.variant.values.map((variant) => (
                               <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                             ))}
                           </tr>
@@ -2742,7 +2727,7 @@ export default function Sink() {
                           {values.map((color) => (
                             <tr key={color}>
                               <RowHeaderCell>{color}</RowHeaderCell>
-                              {codeVariants.map((variant) => (
+                              {codePropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Code variant={variant} color={color}>
                                     console.log()
@@ -2760,7 +2745,7 @@ export default function Sink() {
 
               <DocsSection title="Heading">
                 <Flex direction="column" gap="4">
-                  {headingSizes
+                  {headingPropDefs.size.values
                     .slice()
                     .reverse()
                     .map((size) => (
@@ -2867,7 +2852,7 @@ export default function Sink() {
                 </Flex>
 
                 <Flex direction="column" align="start" gap="4" mb="5">
-                  {linkSizes
+                  {linkPropDefs.size.values
                     .slice()
                     .reverse()
                     .map((size) => (
@@ -2988,7 +2973,7 @@ export default function Sink() {
               <DocsSection title="Tabs">
                 <table className={styles.table}>
                   <tbody>
-                    {tabsListSizes.map((size) => (
+                    {tabsListPropDefs.size.values.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -3092,7 +3077,7 @@ export default function Sink() {
 
                 <table className={styles.table}>
                   <tbody>
-                    {scrollAreaSizes.map((size) => (
+                    {scrollAreaPropDefs.size.values.map((size) => (
                       <tr key={size}>
                         <RowHeaderCell>size {size}</RowHeaderCell>
                         <td>
@@ -3122,16 +3107,16 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {scrollAreaSizes.map((size) => (
+                          {scrollAreaPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeRadii.map((radius) => (
+                        {scrollAreaPropDefs.radius.values.map((radius) => (
                           <tr key={radius}>
                             <RowHeaderCell>{radius}</RowHeaderCell>
-                            {scrollAreaSizes.map((size) => (
+                            {scrollAreaPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Box style={{ width: 200, height: 20 }}>
                                   <ScrollArea
@@ -3159,7 +3144,7 @@ export default function Sink() {
                   of how harmonious they are.
                 </Text>
                 <Flex gap="9">
-                  {textFieldSizes.map((size) => (
+                  {textFieldPropDefs.size.values.map((size) => (
                     <PlaygroundForm
                       key={size}
                       size={size}
@@ -3357,7 +3342,7 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
         ...props.style,
       }}
     >
-      <Text size="1" color="color">
+      <Text size="1" color="gray">
         Right-click here
       </Text>
     </Grid>
@@ -3514,7 +3499,7 @@ SampleNestedUI.displayName = 'SampleNestedUI';
 function PlaygroundForm({
   size,
   ...props
-}: React.ComponentProps<typeof Flex> & { size?: TextFieldSize }) {
+}: React.ComponentProps<typeof Flex> & { size?: React.ComponentProps<typeof TextField>['size'] }) {
   return (
     <Flex direction="column" gap="3" {...props}>
       <Grid gap="1">

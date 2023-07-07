@@ -3,40 +3,28 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import {
-  checkboxSizeDefault,
-  checkboxVariantDefault,
-  checkboxColorDefault,
-  checkboxHighContrastDefault,
-  checkboxRadiusDefault,
-} from './checkbox.props';
+import { checkboxPropDefs } from './checkbox.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { CheckIcon } from '../icons';
 
-import type { CheckboxSize, CheckboxVariant } from './checkbox.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
+type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;
 interface CheckboxProps
   extends Omit<PropsWithoutRefOrColor<typeof CheckboxPrimitive.Root>, 'children'>,
-    MarginProps {
-  size?: Responsive<CheckboxSize>;
-  variant?: CheckboxVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-  radius?: ThemeRadius;
-}
+    MarginProps,
+    CheckboxOwnProps {}
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
     style,
-    size = checkboxSizeDefault,
-    variant = checkboxVariantDefault,
-    color = checkboxColorDefault,
-    highContrast = checkboxHighContrastDefault,
-    radius = checkboxRadiusDefault,
+    size = checkboxPropDefs.size.default,
+    variant = checkboxPropDefs.variant.default,
+    color = checkboxPropDefs.color.default,
+    highContrast = checkboxPropDefs.highContrast.default,
+    radius = checkboxPropDefs.radius.default,
     ...checkboxProps
   } = marginRest;
   return (

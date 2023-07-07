@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
-import type { BoxDisplay } from './box.props';
+import { boxPropDefs } from './box.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -10,17 +10,21 @@ import {
   withBreakpoints,
 } from '../helpers';
 
-import type { MarginProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
 type BoxElement = React.ElementRef<'div'>;
-interface BoxProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
+type BoxOwnProps = GetPropDefTypes<typeof boxPropDefs>;
+interface BoxProps
+  extends React.ComponentPropsWithoutRef<'div'>,
+    MarginProps,
+    LayoutProps,
+    BoxOwnProps {
   asChild?: boolean;
-  display?: Responsive<BoxDisplay>;
 }
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
-  const { className, asChild, display, ...boxProps } = layoutRest;
+  const { className, asChild, display = boxPropDefs.display.default, ...boxProps } = layoutRest;
   const Comp = asChild ? Slot : 'div';
   return (
     <Comp

@@ -7,8 +7,6 @@ import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
 
-import type { ThemeAppearance } from '../theme-options';
-
 interface AlertDialogProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root> {}
 const AlertDialogRoot: React.FC<AlertDialogProps> = (props) => (
@@ -27,7 +25,6 @@ AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
 interface AlertDialogContentProps
   extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'> {
-  appearance?: ThemeAppearance;
   container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(

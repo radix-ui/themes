@@ -3,38 +3,30 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import {
-  avatarSizeDefault,
-  avatarVariantDefault,
-  avatarColorDefault,
-  avatarHighContrastDefault,
-  avatarRadiusDefault,
-} from './avatar.props';
+import { avatarPropDefs } from './avatar.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { AvatarSize, AvatarVariant } from './avatar.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
-interface AvatarProps extends PropsWithoutRefOrColor<typeof AvatarPrimitive.Image>, MarginProps {
-  size?: Responsive<AvatarSize>;
-  variant?: AvatarVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-  radius?: ThemeRadius;
-  fallback: React.ReactNode;
+type AvatarOwnProps = GetPropDefTypes<typeof avatarPropDefs>;
+interface AvatarProps
+  extends PropsWithoutRefOrColor<typeof AvatarPrimitive.Image>,
+    MarginProps,
+    AvatarOwnProps {
+  // TODO: See if we can automate making prop defs with `required: true` non nullable
+  fallback: NonNullable<AvatarOwnProps['fallback']>;
 }
 const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
     style,
-    size = avatarSizeDefault,
-    variant = avatarVariantDefault,
-    color = avatarColorDefault,
-    highContrast = avatarHighContrastDefault,
-    radius = avatarRadiusDefault,
+    size = avatarPropDefs.size.default,
+    variant = avatarPropDefs.variant.default,
+    color = avatarPropDefs.color.default,
+    highContrast = avatarPropDefs.highContrast.default,
+    radius = avatarPropDefs.radius.default,
     fallback,
     ...imageProps
   } = marginRest;

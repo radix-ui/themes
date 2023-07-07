@@ -3,26 +3,23 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import { separatorSizeDefault, separatorColorDefault } from './separator.props';
+import { separatorPropDefs } from './separator.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { SeparatorSize } from './separator.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type SeparatorElement = React.ElementRef<typeof SeparatorPrimitive.Root>;
+type SeparatorOwnProps = GetPropDefTypes<typeof separatorPropDefs>;
 interface SeparatorProps
   extends PropsWithoutRefOrColor<typeof SeparatorPrimitive.Root>,
-    MarginProps {
-  size?: Responsive<SeparatorSize>;
-  color?: ThemeAccentScale | 'color';
-}
+    MarginProps,
+    SeparatorOwnProps {}
 const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
-    size = separatorSizeDefault,
-    color = separatorColorDefault,
+    size = separatorPropDefs.size.default,
+    color = separatorPropDefs.color.default,
     ...separatorProps
   } = marginRest;
   return (

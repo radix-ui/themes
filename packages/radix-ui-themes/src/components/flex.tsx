@@ -1,14 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
-import {
-  flexDisplayDefault,
-  flexDirectionDefault,
-  flexAlignDefault,
-  flexJustifyDefault,
-  flexWrapDefault,
-  flexGapDefault,
-} from './flex.props';
+import { flexPropDefs } from './flex.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -17,25 +10,16 @@ import {
   withBreakpoints,
 } from '../helpers';
 
-import type {
-  FlexDisplay,
-  FlexDirection,
-  FlexAlign,
-  FlexJustify,
-  FlexWrap,
-  FlexGap,
-} from './flex.props';
-import type { MarginProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
 type FlexElement = React.ElementRef<'div'>;
-interface FlexProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
+type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs>;
+interface FlexProps
+  extends React.ComponentPropsWithoutRef<'div'>,
+    MarginProps,
+    LayoutProps,
+    FlexOwnProps {
   asChild?: boolean;
-  display?: Responsive<FlexDisplay>;
-  direction?: Responsive<FlexDirection>;
-  align?: Responsive<FlexAlign>;
-  justify?: Responsive<FlexJustify>;
-  wrap?: Responsive<FlexWrap>;
-  gap?: Responsive<FlexGap>;
 }
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -43,12 +27,12 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
-    display = flexDisplayDefault,
-    direction = flexDirectionDefault,
-    align = flexAlignDefault,
-    justify = flexJustifyDefault,
-    wrap = flexWrapDefault,
-    gap = flexGapDefault,
+    display = flexPropDefs.display.default,
+    direction = flexPropDefs.direction.default,
+    align = flexPropDefs.align.default,
+    justify = flexPropDefs.justify.default,
+    wrap = flexPropDefs.wrap.default,
+    gap = flexPropDefs.gap.default,
     ...flexProps
   } = layoutRest;
   const Comp = asChild ? Slot : 'div';

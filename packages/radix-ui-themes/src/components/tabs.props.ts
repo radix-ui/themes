@@ -1,6 +1,11 @@
-const tabsListSizes = ['1', '2'] as const;
-type TabsListSize = (typeof tabsListSizes)[number];
-const tabsListSizeDefault: TabsListSize = '2';
+import { PropDef } from '../helpers';
 
-export { tabsListSizes, tabsListSizeDefault };
-export type { TabsListSize };
+const sizes = ['1', '2'] as const;
+
+const tabsListPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+};
+
+export { tabsListPropDefs };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { sectionSizeDefault } from './section.props';
+import { sectionPropDefs } from './section.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -9,18 +9,24 @@ import {
   withBreakpoints,
 } from '../helpers';
 
-import type { SectionSize, SectionDisplay } from './section.props';
-import type { MarginProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
 type SectionElement = React.ElementRef<'div'>;
-interface SectionProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
-  size?: Responsive<SectionSize>;
-  display?: Responsive<SectionDisplay>;
-}
+type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs>;
+interface SectionProps
+  extends React.ComponentPropsWithoutRef<'div'>,
+    MarginProps,
+    LayoutProps,
+    SectionOwnProps {}
 const Section = React.forwardRef<SectionElement, SectionProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
-  const { className, size = sectionSizeDefault, display, ...sectionProps } = layoutRest;
+  const {
+    className,
+    size = sectionPropDefs.size.default,
+    display = sectionPropDefs.display.default,
+    ...sectionProps
+  } = layoutRest;
   return (
     <section
       {...sectionProps}

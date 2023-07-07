@@ -3,39 +3,27 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
-import {
-  switchSizeDefault,
-  switchVariantDefault,
-  switchColorDefault,
-  switchHighContrastDefault,
-  switchRadiusDefault,
-} from './switch.props';
+import { switchPropDefs } from './switch.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { SwitchSize, SwitchVariant } from './switch.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
+type SwitchOwnProps = GetPropDefTypes<typeof switchPropDefs>;
 interface SwitchProps
   extends Omit<PropsWithoutRefOrColor<typeof SwitchPrimitive.Root>, 'children'>,
-    MarginProps {
-  size?: Responsive<SwitchSize>;
-  variant?: SwitchVariant;
-  color?: ThemeAccentScale;
-  highContrast?: boolean;
-  radius?: ThemeRadius;
-}
+    MarginProps,
+    SwitchOwnProps {}
 const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
     style,
-    size = switchSizeDefault,
-    variant = switchVariantDefault,
-    color = switchColorDefault,
-    highContrast = switchHighContrastDefault,
-    radius = switchRadiusDefault,
+    size = switchPropDefs.size.default,
+    variant = switchPropDefs.variant.default,
+    color = switchPropDefs.color.default,
+    highContrast = switchPropDefs.highContrast.default,
+    radius = switchPropDefs.radius.default,
     ...switchProps
   } = marginRest;
   return (

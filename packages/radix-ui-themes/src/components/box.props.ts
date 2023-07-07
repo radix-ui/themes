@@ -1,5 +1,11 @@
-const boxDisplayValues = ['none', 'inline', 'inline-block', 'block'] as const;
-type BoxDisplay = (typeof boxDisplayValues)[number];
+import type { PropDef } from '../helpers';
 
-export { boxDisplayValues };
-export type { BoxDisplay };
+const displayValues = ['none', 'inline', 'inline-block', 'block'] as const;
+
+const boxPropDefs = {
+  display: { type: 'enum', values: displayValues, default: undefined, responsive: true },
+} satisfies {
+  display: PropDef<(typeof displayValues)[number]>;
+};
+
+export { boxPropDefs };

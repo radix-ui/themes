@@ -1,22 +1,19 @@
-import type { ThemeAccentScale, ThemeRadius } from '../theme-options';
+import { colorProp, radiusProp } from '../helpers';
+import { PropDef } from '../helpers';
 
-const textFieldSizes = ['1', '2', '3'] as const;
-type TextFieldSize = (typeof textFieldSizes)[number];
-const textFieldSizeDefault: TextFieldSize = '2';
+const sizes = ['1', '2', '3'] as const;
+const variants = ['surface', 'soft'] as const;
 
-const textFieldVariants = ['surface', 'soft'] as const;
-type TextFieldVariant = (typeof textFieldVariants)[number];
-const textFieldVariantDefault: TextFieldVariant = 'surface';
-
-const textFieldColorDefault: ThemeAccentScale | undefined = undefined;
-const textFieldRadiusDefault: ThemeRadius | undefined = undefined;
-
-export {
-  textFieldSizes,
-  textFieldSizeDefault,
-  textFieldVariants,
-  textFieldVariantDefault,
-  textFieldColorDefault,
-  textFieldRadiusDefault,
+const textFieldPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'surface' },
+  color: colorProp,
+  radius: radiusProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  radius: typeof radiusProp;
 };
-export type { TextFieldSize, TextFieldVariant };
+
+export { textFieldPropDefs };

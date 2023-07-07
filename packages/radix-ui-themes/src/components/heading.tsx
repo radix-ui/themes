@@ -1,28 +1,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import {
-  headingSizeDefault,
-  headingAlignDefault,
-  headingTrimDefault,
-  headingColorDefault,
-  headingHighContrastDefault,
-} from './heading.props';
+import { headingPropDefs } from './heading.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 
-import type { HeadingSize, HeadingAlign, HeadingTrim } from './heading.props';
-import type { PropsWithoutRefOrColor, MarginProps, Responsive } from '../helpers';
-import type { ThemeAccentScale } from '../theme-options';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type HeadingElement = React.ElementRef<'h1'>;
+type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;
 type HeadingProps = PropsWithoutRefOrColor<'h1'> &
-  MarginProps & {
-    size?: Responsive<HeadingSize>;
-    align?: Responsive<HeadingAlign>;
-    trim?: Responsive<HeadingTrim>;
-    color?: ThemeAccentScale | 'color';
-    highContrast?: boolean;
-  } & (
+  MarginProps &
+  HeadingOwnProps &
+  (
     | { asChild?: boolean; as?: never }
     | { as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; asChild?: never }
   );
@@ -33,11 +22,11 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
     className,
     asChild = false,
     as: Tag = 'h1',
-    size = headingSizeDefault,
-    align = headingAlignDefault,
-    trim = headingTrimDefault,
-    color = headingColorDefault,
-    highContrast = headingHighContrastDefault,
+    size = headingPropDefs.size.default,
+    align = headingPropDefs.align.default,
+    trim = headingPropDefs.trim.default,
+    color = headingPropDefs.color.default,
+    highContrast = headingPropDefs.highContrast.default,
     ...headingProps
   } = marginRest;
   return (

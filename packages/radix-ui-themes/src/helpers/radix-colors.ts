@@ -1,40 +1,16 @@
-const radixColorScalesRegular = [
-  'tomato',
-  'red',
-  'crimson',
-  'pink',
-  'plum',
-  'purple',
-  'violet',
-  'indigo',
-  'blue',
-  'cyan',
-  'teal',
-  'green',
-  'grass',
-  'brown',
-  'orange',
-] as const;
-type RadixColorScaleRegular = (typeof radixColorScalesRegular)[number];
+// prettier-ignore
+const radixColorScalesRegular = ['tomato', 'red', 'crimson', 'pink', 'plum', 'purple', 'violet', 'indigo', 'blue', 'cyan', 'teal', 'green', 'grass', 'brown', 'orange' ] as const;
 const radixColorScalesBright = ['sky', 'mint', 'lime', 'yellow', 'amber'] as const;
-type RadixColorScaleBright = (typeof radixColorScalesBright)[number];
 const radixColorScalesMetal = ['gold', 'bronze'] as const;
-type RadixColorScaleMetal = (typeof radixColorScalesMetal)[number];
-const radixColorScales = [
-  ...radixColorScalesRegular,
-  ...radixColorScalesBright,
-  ...radixColorScalesMetal,
-] as const;
-type RadixColorScale = (typeof radixColorScales)[number];
-
+// prettier-ignore
+const radixColorScales = [...radixColorScalesRegular, ...radixColorScalesBright, ...radixColorScalesMetal] as const;
 const radixGrayScalePure = 'gray' as const;
-type RadixGrayScalePure = typeof radixGrayScalePure;
 const radixGrayScalesDesaturated = ['mauve', 'slate', 'sage', 'olive', 'sand'] as const;
-type RadixGrayScaleDesaturated = (typeof radixGrayScalesDesaturated)[number];
 const radixGrayScales = [radixGrayScalePure, ...radixGrayScalesDesaturated] as const;
-type RadixGrayScale = (typeof radixGrayScales)[number];
 
-function radixGetMatchingGrayScale(colorScale: RadixColorScale): RadixGrayScale {
+function radixGetMatchingGrayScale(
+  colorScale: (typeof radixColorScales)[number]
+): (typeof radixGrayScales)[number] {
   switch (colorScale) {
     case 'tomato':
     case 'red':
@@ -77,14 +53,4 @@ export {
   radixGrayScales,
   //
   radixGetMatchingGrayScale,
-};
-export type {
-  RadixColorScaleRegular,
-  RadixColorScaleBright,
-  RadixColorScaleMetal,
-  RadixColorScale,
-  //
-  RadixGrayScalePure,
-  RadixGrayScaleDesaturated,
-  RadixGrayScale,
 };

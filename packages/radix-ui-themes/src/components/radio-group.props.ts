@@ -1,22 +1,19 @@
-import type { ThemeAccentScale } from '../theme-options';
+import { colorProp, highContrastProp } from '../helpers';
+import type { PropDef } from '../helpers';
 
-const radioGroupSizes = ['1', '2'] as const;
-type RadioGroupSize = (typeof radioGroupSizes)[number];
-const radioGroupSizeDefault: RadioGroupSize = '1';
+const sizes = ['1', '2'] as const;
+const variants = ['solid'] as const;
 
-const radioGroupVariants = ['solid'] as const;
-type RadioGroupVariant = (typeof radioGroupVariants)[number];
-const radioGroupVariantDefault: RadioGroupVariant = 'solid';
-
-const radioGroupColorDefault: ThemeAccentScale | undefined = undefined;
-const radioGroupHighContrastDefault: boolean | undefined = undefined;
-
-export {
-  radioGroupSizes,
-  radioGroupSizeDefault,
-  radioGroupVariants,
-  radioGroupVariantDefault,
-  radioGroupHighContrastDefault,
-  radioGroupColorDefault,
+const radioGroupPropDef = {
+  size: { type: 'enum', values: sizes, default: '1', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'solid' },
+  color: colorProp,
+  highContrast: highContrastProp,
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
 };
-export type { RadioGroupSize, RadioGroupVariant };
+
+export { radioGroupPropDef };

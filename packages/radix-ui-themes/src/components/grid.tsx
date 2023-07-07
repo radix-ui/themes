@@ -1,16 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
-import {
-  gridDisplayDefault,
-  gridColumnsDefault,
-  gridFlowDefault,
-  gridAlignDefault,
-  gridJustifyDefault,
-  gridGapDefault,
-  gridGapXDefault,
-  gridGapYDefault,
-} from './grid.props';
+import { gridPropDefs } from './grid.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -19,27 +10,16 @@ import {
   withBreakpoints,
 } from '../helpers';
 
-import type {
-  GridDisplay,
-  GridColumns,
-  GridFlow,
-  GridAlign,
-  GridJustify,
-  GridCap,
-} from './grid.props';
-import type { MarginProps, LayoutProps, Responsive } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
 type GridElement = React.ElementRef<'div'>;
-interface GridProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, LayoutProps {
+type GridOwnProps = GetPropDefTypes<typeof gridPropDefs>;
+interface GridProps
+  extends React.ComponentPropsWithoutRef<'div'>,
+    MarginProps,
+    LayoutProps,
+    GridOwnProps {
   asChild?: boolean;
-  display?: Responsive<GridDisplay>;
-  columns?: Responsive<GridColumns>;
-  flow?: Responsive<GridFlow>;
-  align?: Responsive<GridAlign>;
-  justify?: Responsive<GridJustify>;
-  gap?: Responsive<GridCap>;
-  gapX?: Responsive<GridCap>;
-  gapY?: Responsive<GridCap>;
 }
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
@@ -47,14 +27,14 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
-    display = gridDisplayDefault,
-    columns = gridColumnsDefault,
-    flow = gridFlowDefault,
-    align = gridAlignDefault,
-    justify = gridJustifyDefault,
-    gap = gridGapDefault,
-    gapX = gridGapXDefault,
-    gapY = gridGapYDefault,
+    display = gridPropDefs.display.default,
+    columns = gridPropDefs.columns.default,
+    flow = gridPropDefs.flow.default,
+    align = gridPropDefs.align.default,
+    justify = gridPropDefs.justify.default,
+    gap = gridPropDefs.gap.default,
+    gapX = gridPropDefs.gapX.default,
+    gapY = gridPropDefs.gapY.default,
     ...gridProps
   } = layoutRest;
   const Comp = asChild ? Slot : 'div';
