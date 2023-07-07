@@ -24,7 +24,7 @@
       padding-left: var(--space-2);
       padding-right: var(--space-2);
       gap: var(--space-1);
-      border-radius: var(--br-1);
+      border-radius: var(--radius-1);
     }
     &.size-2 {
       height: var(--space-6);
@@ -32,7 +32,7 @@
       padding-left: var(--space-4);
       padding-right: var(--space-4);
       gap: var(--space-2);
-      border-radius: var(--br-2);
+      border-radius: var(--radius-2);
     }
   }
 }

@@ -6,7 +6,7 @@
   line-height: calc(1.25 * var(--scaling));
 
   /* default equivalent to size-2 */
-  border-radius: min(var(--br-1), var(--br-2-raw));
+  border-radius: min(var(--radius-1), var(--radius-2-raw));
 }
 
 /***************************************************************************************************
@@ -18,51 +18,51 @@
 @breakpoints {
   .rui-Code {
     &.size-1 {
-      border-radius: min(var(--br-1), var(--br-2-raw));
+      border-radius: min(var(--radius-1), var(--radius-2-raw));
       font-size: calc(0.9 * var(--font-size-1));
       line-height: calc(16px * var(--scaling));
     }
     &.size-2 {
-      border-radius: min(var(--br-1), var(--br-2-raw));
+      border-radius: min(var(--radius-1), var(--radius-2-raw));
       font-size: calc(0.9 * var(--font-size-2));
       line-height: calc(20px * var(--scaling));
     }
     &.size-3 {
-      border-radius: min(var(--br-2), var(--br-3-raw));
+      border-radius: min(var(--radius-2), var(--radius-3-raw));
       font-size: calc(0.9 * var(--font-size-3));
       line-height: calc(24px * var(--scaling));
     }
     &.size-4 {
-      border-radius: min(var(--br-3), var(--br-4-raw));
+      border-radius: min(var(--radius-3), var(--radius-4-raw));
       font-size: calc(0.9 * var(--font-size-4));
       line-height: calc(26px * var(--scaling));
     }
     &.size-5 {
-      border-radius: min(var(--br-3), var(--br-4-raw));
+      border-radius: min(var(--radius-3), var(--radius-4-raw));
       font-size: calc(0.9 * var(--font-size-5));
       letter-spacing: -0.01em;
       line-height: calc(28px * var(--scaling));
     }
     &.size-6 {
-      border-radius: min(var(--br-3), var(--br-4-raw));
+      border-radius: min(var(--radius-3), var(--radius-4-raw));
       font-size: calc(0.9 * var(--font-size-6));
       letter-spacing: -0.018em;
       line-height: calc(30px * var(--scaling));
     }
     &.size-7 {
-      border-radius: min(var(--br-4), var(--br-5-raw));
+      border-radius: min(var(--radius-4), var(--radius-5-raw));
       font-size: calc(0.9 * var(--font-size-7));
       letter-spacing: -0.026em;
       line-height: calc(36px * var(--scaling));
     }
     &.size-8 {
-      border-radius: min(var(--br-4), var(--br-5-raw));
+      border-radius: min(var(--radius-4), var(--radius-5-raw));
       font-size: calc(0.9 * var(--font-size-8));
       letter-spacing: -0.04em;
       line-height: calc(40px * var(--scaling));
     }
     &.size-9 {
-      border-radius: min(var(--br-5), var(--br-6-raw));
+      border-radius: min(var(--radius-5), var(--radius-6-raw));
       font-size: calc(0.9 * var(--font-size-9));
       letter-spacing: -0.056em;
       line-height: calc(1 * var(--scaling));

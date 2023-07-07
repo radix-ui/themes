@@ -3358,7 +3358,7 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
       {...props}
       style={{
         placeItems: 'center',
-        borderRadius: 'var(--br-3)',
+        borderRadius: 'var(--radius-3)',
         border: '1px dashed var(--accent-6)',
         cursor: 'default',
         ...props.style,
@@ -3490,7 +3490,7 @@ const SampleNestedUI = React.forwardRef<
       ref={forwardedRef}
       style={{
         boxShadow: '0 0 0 1px var(--gray-a6)',
-        borderRadius: 'min(var(--br-2), var(--br-5-raw)',
+        borderRadius: 'min(var(--radius-2), var(--radius-5-raw)',
       }}
     >
       <div>

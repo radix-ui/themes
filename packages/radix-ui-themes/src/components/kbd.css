@@ -25,7 +25,7 @@
   padding-left: 0.5em;
   padding-right: 0.5em;
 
-  border-radius: min(var(--br-3), var(--br-4-raw));
+  border-radius: min(var(--radius-3), var(--radius-4-raw));
   line-height: var(--space-5);
   height: var(--space-5);
   font-size: var(--font-size-1);

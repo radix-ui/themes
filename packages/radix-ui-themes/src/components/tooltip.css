@@ -1,7 +1,7 @@
 .rui-TooltipContent {
   padding: var(--space-1) var(--space-2);
   background-color: var(--gray-12);
-  border-radius: var(--br-2);
+  border-radius: var(--radius-2);
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 
@@ -42,7 +42,7 @@
 
 .rui-TooltipContent.multiline {
   max-width: 250px;
-  border-radius: min(var(--br-2), var(--br-4-raw));
+  border-radius: min(var(--radius-2), var(--radius-4-raw));
 
   & .rui-TooltipText {
     line-height: calc(18px * var(--scaling));

@@ -22,7 +22,7 @@
   overflow: hidden;
 
   background-color: var(--content-bg);
-  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--br-3));
+  border-radius: min((var(--item-height) / 2 + var(--content-padding)), var(--radius-3));
 
   &[data-side] {
     min-width: var(--radix-select-trigger-width);
@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   height: var(--item-height);
-  border-radius: var(--br-2);
+  border-radius: var(--radius-2);
   padding-left: var(--space-5);
   padding-right: var(--space-5);
   position: relative;

@@ -15,7 +15,7 @@
 }
 
 .rui-DialogContent {
-  border-radius: min(var(--br-4), var(--panel-max-br));
+  border-radius: min(var(--radius-4), var(--panel-max-br));
   width: 100%;
   max-height: 90vh;
   max-width: 580px;

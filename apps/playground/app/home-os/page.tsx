@@ -42,7 +42,7 @@ export default function HomeOS() {
                 style={{
                   width: 1250,
                   border: '1px solid var(--gray-8)',
-                  borderRadius: 'min(var(--br-4), var(--br-4-raw))',
+                  borderRadius: 'min(var(--radius-4), var(--radius-4-raw))',
                   backgroundColor: 'var(--gray-1)',
                   background: 'linear-gradient(150deg, transparent 60%, var(--gray-2) 100%)',
                 }}
@@ -267,7 +267,7 @@ export default function HomeOS() {
                     <div style={{ paddingRight: 'var(--space-6)', position: 'relative' }}>
                       <div
                         style={{
-                          borderRadius: 'min(var(--br-4), var(--br-4-raw))',
+                          borderRadius: 'min(var(--radius-4), var(--radius-4-raw))',
                           marginTop: -90,
                           width: 340,
                           backgroundColor: 'var(--color-background)',
@@ -412,7 +412,7 @@ const PhotoArea: React.FC = () => {
     <div
       style={{
         height: 500,
-        borderRadius: 'min(var(--br-6), var(--br-6-raw))',
+        borderRadius: 'min(var(--radius-6), var(--radius-6-raw))',
         overflow: 'hidden',
         display: 'grid',
         gridTemplateColumns: '1.25fr 1fr',
@@ -466,7 +466,7 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       style={{
         padding: `var(--space-3) var(--space-5)`,
         border: '1px solid var(--gray-7)',
-        borderRadius: 'var(--br-3)',
+        borderRadius: 'var(--radius-3)',
         display: 'flex',
         alignItems: 'center',
         gap: 'var(--space-4)',
@@ -531,7 +531,7 @@ const LabelValueCard: React.FC<{ label: string; value: string }> = ({ label, val
       style={{
         padding: 'var(--space-3) var(--space-4)',
         border: '1px solid var(--gray-7)',
-        borderRadius: 'var(--br-3)',
+        borderRadius: 'var(--radius-3)',
       }}
     >
       <Text as="p" size="1" weight="bold">
