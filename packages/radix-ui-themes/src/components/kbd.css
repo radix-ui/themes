@@ -28,7 +28,7 @@
   border-radius: min(var(--br-3), var(--br-4-raw));
   line-height: var(--space-5);
   height: var(--space-5);
-  font-size: var(--fs-1);
+  font-size: var(--font-size-1);
 
   color: var(--gray-12);
   background-color: var(--gray-1);

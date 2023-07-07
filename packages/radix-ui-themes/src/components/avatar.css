@@ -27,8 +27,8 @@
   border-radius: inherit;
 
   & svg {
-    width: var(--fs-1-letter);
-    height: var(--fs-1-letter);
+    width: var(--font-size-1-letter);
+    height: var(--font-size-1-letter);
   }
 }
 
@@ -42,11 +42,11 @@
   font-weight: 600;
 
   &.\31-letter {
-    font-size: var(--fs-1-letter);
+    font-size: var(--font-size-1-letter);
     text-transform: uppercase;
   }
   &.\32-letters {
-    font-size: var(--fs-2-letters);
+    font-size: var(--font-size-2-letters);
     text-transform: uppercase;
   }
 }
@@ -56,32 +56,32 @@
     &.size-1 {
       border-radius: var(--br-2);
       --size: var(--space-5);
-      --fs-1-letter: var(--fs-2);
-      --fs-2-letters: var(--fs-1);
+      --font-size-1-letter: var(--font-size-2);
+      --font-size-2-letters: var(--font-size-1);
     }
     &.size-2 {
       border-radius: var(--br-2);
       --size: var(--space-6);
-      --fs-1-letter: var(--fs-3);
-      --fs-2-letters: var(--fs-2);
+      --font-size-1-letter: var(--font-size-3);
+      --font-size-2-letters: var(--font-size-2);
     }
     &.size-3 {
       border-radius: var(--br-3);
       --size: var(--space-7);
-      --fs-1-letter: var(--fs-4);
-      --fs-2-letters: var(--fs-3);
+      --font-size-1-letter: var(--font-size-4);
+      --font-size-2-letters: var(--font-size-3);
     }
     &.size-4 {
       border-radius: var(--br-3);
       --size: var(--space-8);
-      --fs-1-letter: var(--fs-6);
-      --fs-2-letters: var(--fs-5);
+      --font-size-1-letter: var(--font-size-6);
+      --font-size-2-letters: var(--font-size-5);
     }
     &.size-5 {
       border-radius: var(--br-4);
       --size: var(--space-9);
-      --fs-1-letter: var(--fs-8);
-      --fs-2-letters: var(--fs-7);
+      --font-size-1-letter: var(--font-size-8);
+      --font-size-2-letters: var(--font-size-7);
     }
   }
 }

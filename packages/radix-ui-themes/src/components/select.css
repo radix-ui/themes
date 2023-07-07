@@ -85,7 +85,7 @@
   height: var(--item-height);
   padding-left: var(--space-5);
   padding-right: var(--space-5);
-  font-size: var(--fs-1);
+  font-size: var(--font-size-1);
   user-select: none;
   cursor: default;
 
@@ -109,7 +109,7 @@
       --item-height: var(--space-5);
 
       & .rui-SelectItem {
-        font-size: var(--fs-1);
+        font-size: var(--font-size-1);
       }
     }
 
@@ -118,7 +118,7 @@
       --item-height: var(--space-6);
 
       & .rui-SelectItem {
-        font-size: var(--fs-2);
+        font-size: var(--font-size-2);
       }
     }
   }

@@ -52,21 +52,21 @@
       min-height: var(--space-8);
       padding: var(--space-1);
       border-radius: min(var(--br-2), var(--br-3-raw));
-      font-size: var(--fs-1);
+      font-size: var(--font-size-1);
       line-height: calc(16px * var(--scaling));
     }
     &.size-2 {
       min-height: var(--space-9);
       padding: var(--space-2);
       border-radius: min(var(--br-2), var(--br-3-raw));
-      font-size: var(--fs-2);
+      font-size: var(--font-size-2);
       line-height: calc(20px * var(--scaling));
     }
     &.size-3 {
       min-height: 80px;
       padding: var(--space-2) var(--space-3);
       border-radius: min(var(--br-3), var(--br-4-raw));
-      font-size: var(--fs-3);
+      font-size: var(--font-size-3);
       line-height: calc(24px * var(--scaling));
     }
   }

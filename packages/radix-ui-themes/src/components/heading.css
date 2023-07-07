@@ -21,43 +21,43 @@
 @breakpoints {
   .rui-Heading {
     &.size-1 {
-      font-size: var(--fs-1);
+      font-size: var(--font-size-1);
       --line-height: calc(16px * var(--scaling));
     }
     &.size-2 {
-      font-size: var(--fs-2);
+      font-size: var(--font-size-2);
       --line-height: calc(18px * var(--scaling));
     }
     &.size-3 {
-      font-size: var(--fs-3);
+      font-size: var(--font-size-3);
       --line-height: calc(22px * var(--scaling));
     }
     &.size-4 {
-      font-size: var(--fs-4);
+      font-size: var(--font-size-4);
       --line-height: calc(24px * var(--scaling));
     }
     &.size-5 {
-      font-size: var(--fs-5);
+      font-size: var(--font-size-5);
       letter-spacing: -0.01em;
       --line-height: calc(26px * var(--scaling));
     }
     &.size-6 {
-      font-size: var(--fs-6);
+      font-size: var(--font-size-6);
       letter-spacing: -0.018em;
       --line-height: calc(30px * var(--scaling));
     }
     &.size-7 {
-      font-size: var(--fs-7);
+      font-size: var(--font-size-7);
       letter-spacing: -0.026em;
       --line-height: calc(36px * var(--scaling));
     }
     &.size-8 {
-      font-size: var(--fs-8);
+      font-size: var(--font-size-8);
       letter-spacing: -0.04em;
       --line-height: calc(40px * var(--scaling));
     }
     &.size-9 {
-      font-size: var(--fs-9);
+      font-size: var(--font-size-9);
       letter-spacing: -0.056em;
       --line-height: calc(60px * var(--scaling));
     }

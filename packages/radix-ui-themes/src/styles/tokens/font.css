@@ -7,21 +7,21 @@
   --ff-code: 'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
   --ff-italic: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 
-  --fs-1: calc(12px * var(--scaling, 1));
-  --fs-2: calc(14px * var(--scaling, 1));
-  --fs-3: calc(16px * var(--scaling, 1));
-  --fs-4: calc(18px * var(--scaling, 1));
-  --fs-5: calc(20px * var(--scaling, 1));
-  --fs-6: calc(24px * var(--scaling, 1));
-  --fs-7: calc(28px * var(--scaling, 1));
-  --fs-8: calc(35px * var(--scaling, 1));
-  --fs-9: calc(60px * var(--scaling, 1));
+  --font-size-1: calc(12px * var(--scaling, 1));
+  --font-size-2: calc(14px * var(--scaling, 1));
+  --font-size-3: calc(16px * var(--scaling, 1));
+  --font-size-4: calc(18px * var(--scaling, 1));
+  --font-size-5: calc(20px * var(--scaling, 1));
+  --font-size-6: calc(24px * var(--scaling, 1));
+  --font-size-7: calc(28px * var(--scaling, 1));
+  --font-size-8: calc(35px * var(--scaling, 1));
+  --font-size-9: calc(60px * var(--scaling, 1));
 }
 
 [data-rui-root] {
   overflow-wrap: break-word;
   font-family: var(--ff-sans);
-  font-size: var(--fs-3); /* Same size used for `<Text size="3">` */
+  font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
   --default-line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` */
   line-height: var(--default-line-height);
   text-size-adjust: none;

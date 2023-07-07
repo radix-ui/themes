@@ -68,7 +68,7 @@
   .rui-TabsList {
     &.size-1 {
       --trigger-height: var(--space-6);
-      --trigger-font-size: var(--fs-1);
+      --trigger-font-size: var(--font-size-1);
       --trigger-gap: var(--space-1);
       --trigger-padding-x: var(--space-1);
       --trigger-inner-padding: var(--space-1);
@@ -76,7 +76,7 @@
     }
     &.size-2 {
       --trigger-height: var(--space-7);
-      --trigger-font-size: var(--fs-2);
+      --trigger-font-size: var(--font-size-2);
       --trigger-gap: var(--space-2);
       --trigger-padding-x: var(--space-2);
       --trigger-inner-padding: var(--space-1);
