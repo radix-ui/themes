@@ -115,6 +115,7 @@ export * from './context-menu.props';
 export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card';
 export { Popover, PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover';
 export { Tooltip } from './tooltip';
+export * from './tooltip.props';
 
 // NAVIGATION
 //------------------------------------------------------------------------------
