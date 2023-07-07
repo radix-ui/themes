@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.21
+
+- General:
+  - Fix missing export for tooltip prop defs
+
 ## 0.0.20
 
 - General:
