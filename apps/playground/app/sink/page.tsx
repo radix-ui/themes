@@ -129,7 +129,6 @@ import {
   sliderPropDefs,
   //
   Strong,
-  Sup,
   //
   Switch,
   switchPropDefs,
@@ -2304,7 +2303,6 @@ export default function Sink() {
                       rendering between browsers
                     </Quote>
                     , particular between Chrome and Safari on MacOS.
-                    <Sup>1</Sup>
                   </Text>
 
                   <Heading size="9">
@@ -2609,7 +2607,6 @@ export default function Sink() {
                       rendering between browsers
                     </Quote>
                     , particular between Chrome and Safari on MacOS.
-                    <Sup>1</Sup>
                   </Blockquote>
                 </Flex>
               </DocsSection>
@@ -3061,7 +3058,6 @@ export default function Sink() {
                         rendering between browsers
                       </Quote>
                       , particular between Chrome and Safari on MacOS.
-                      <Sup>1</Sup>
                     </Text>
                     <Box style={{ width: 300 }}>
                       <AspectRatio ratio={1}>

@@ -28,7 +28,6 @@ export { Kbd } from './kbd';
 export * from './kbd.props';
 export { Quote } from './quote';
 export { Strong } from './strong';
-export { Sup } from './sup';
 
 // FORMS
 //------------------------------------------------------------------------------
