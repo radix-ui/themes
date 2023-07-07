@@ -6,7 +6,7 @@
   --radius-5-raw: calc(12px * var(--scaling, 1));
   --radius-6-raw: calc(16px * var(--scaling, 1));
 
-  --panel-max-br: var(--radius-5-raw);
+  --max-panel-radius: var(--radius-5-raw);
 
   /* default: medium */
   --radius-factor: 1;
