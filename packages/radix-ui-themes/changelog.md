@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.19
+
+**Warning!** This release contains some breaking changes.
+
+- `Sup`: [**Breaking**] This component was removed
+- `Link`: Now extends `Text` and supports all its props except `align`
+- `Button`, `IconButton`: Add `asChild` support (for analogous use of `<Button asChild><a>…`)
+- `Blockquote`: Now extends `Text` and supports all its props except `align`
+- `Heading`: Add `weight` support
+- General:
+  - Use local icons internally instead of Radix icons to avoid package bloat
+  - [**Breaking**] Rework exposed props definitions
+
 ## 0.0.18
 
 **Warning!** This release contains some breaking changes.
