@@ -198,37 +198,6 @@ const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparator
 );
 SelectSeparator.displayName = 'SelectSeparator';
 
-function extractRootProps<T extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>>(
-  props: T
-) {
-  const {
-    defaultValue,
-    value,
-    onValueChange,
-    defaultOpen,
-    open,
-    onOpenChange,
-    dir,
-    name,
-    disabled,
-    required,
-    ...rest
-  } = props;
-  return {
-    defaultValue,
-    value,
-    onValueChange,
-    defaultOpen,
-    open,
-    onOpenChange,
-    dir,
-    name,
-    disabled,
-    required,
-    rest,
-  };
-}
-
 const Select = Object.assign(
   {},
   {
