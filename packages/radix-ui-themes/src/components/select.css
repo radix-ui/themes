@@ -16,9 +16,6 @@
 }
 
 .rui-SelectContent {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
   overflow: hidden;
 
   background-color: var(--content-bg);
@@ -46,10 +43,7 @@
 }
 
 .rui-SelectViewport {
-  flex: 1 1 0%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+  box-sizing: border-box;
   padding: var(--content-padding);
 
   .rui-SelectContent:has(.rui-ScrollAreaScrollbar[data-orientation='vertical']) & {
@@ -68,6 +62,8 @@
   box-sizing: border-box;
   outline: none;
   cursor: default;
+
+  scroll-margin: var(--content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;

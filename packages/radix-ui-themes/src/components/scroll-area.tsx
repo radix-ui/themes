@@ -9,12 +9,12 @@ import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers
 import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
-type ScrollAreaPropDefs = GetPropDefTypes<typeof scrollAreaPropDefs>;
+type ScrollAreaOwnProps = GetPropDefTypes<typeof scrollAreaPropDefs>;
 interface ScrollAreaProps
   extends React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Root>,
     Omit<React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
     MarginProps,
-    ScrollAreaPropDefs {}
+    ScrollAreaOwnProps {}
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {

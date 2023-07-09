@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { ScrollArea } from './scroll-area';
+import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { selectRootPropDefs, selectTriggerPropDefs, selectContentPropDefs } from './select.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
@@ -126,11 +126,22 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
               { 'high-contrast': highContrast }
             )}
           >
-            <ScrollArea type="auto">
-              <SelectPrimitive.Viewport className="rui-SelectViewport">
-                {children}
+            <ScrollAreaPrimitive.Root type="auto" className="rui-ScrollAreaRoot">
+              <SelectPrimitive.Viewport asChild className="rui-SelectViewport">
+                <ScrollAreaPrimitive.Viewport
+                  className="rui-ScrollAreaViewport"
+                  style={{ overflowY: undefined }}
+                >
+                  {children}
+                </ScrollAreaPrimitive.Viewport>
               </SelectPrimitive.Viewport>
-            </ScrollArea>
+              <ScrollAreaPrimitive.Scrollbar
+                className="rui-ScrollAreaScrollbar size-1"
+                orientation="vertical"
+              >
+                <ScrollAreaPrimitive.Thumb className="rui-ScrollAreaThumb" />
+              </ScrollAreaPrimitive.Scrollbar>
+            </ScrollAreaPrimitive.Root>
           </SelectPrimitive.Content>
         </Theme>
       </SelectPrimitive.Portal>
