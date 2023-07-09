@@ -46,6 +46,8 @@
   outline: none;
   cursor: default;
 
+  scroll-margin: var(--content-padding) 0;
+
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
 
