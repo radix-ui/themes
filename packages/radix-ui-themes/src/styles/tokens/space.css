@@ -1,11 +1,11 @@
 [data-rui-root] {
-  --space-1: calc(4px * var(--scaling, 1));
-  --space-2: calc(8px * var(--scaling, 1));
-  --space-3: calc(12px * var(--scaling, 1));
-  --space-4: calc(16px * var(--scaling, 1));
-  --space-5: calc(24px * var(--scaling, 1));
-  --space-6: calc(32px * var(--scaling, 1));
-  --space-7: calc(40px * var(--scaling, 1));
-  --space-8: calc(48px * var(--scaling, 1));
-  --space-9: calc(64px * var(--scaling, 1));
+  --space-1: calc(4px * var(--scaling));
+  --space-2: calc(8px * var(--scaling));
+  --space-3: calc(12px * var(--scaling));
+  --space-4: calc(16px * var(--scaling));
+  --space-5: calc(24px * var(--scaling));
+  --space-6: calc(32px * var(--scaling));
+  --space-7: calc(40px * var(--scaling));
+  --space-8: calc(48px * var(--scaling));
+  --space-9: calc(64px * var(--scaling));
 }

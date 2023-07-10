@@ -2,7 +2,6 @@
   margin: 0;
   font-family: var(--heading-font-family);
   font-style: var(--heading-font-style);
-  font-weight: var(--heading-font-weight);
   line-height: var(--line-height);
   --leading-trim-start: var(--heading-leading-trim-start);
   --leading-trim-end: var(--heading-leading-trim-end);

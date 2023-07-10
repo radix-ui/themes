@@ -3,7 +3,7 @@
   align-items: center;
   box-sizing: border-box;
   white-space: nowrap;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
   flex-shrink: 0;
   line-height: 1;
   user-select: none;

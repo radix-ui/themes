@@ -1,15 +1,15 @@
 @import '../fonts.css';
 
 [data-rui-root] {
-  --font-size-1: calc(12px * var(--scaling, 1));
-  --font-size-2: calc(14px * var(--scaling, 1));
-  --font-size-3: calc(16px * var(--scaling, 1));
-  --font-size-4: calc(18px * var(--scaling, 1));
-  --font-size-5: calc(20px * var(--scaling, 1));
-  --font-size-6: calc(24px * var(--scaling, 1));
-  --font-size-7: calc(28px * var(--scaling, 1));
-  --font-size-8: calc(35px * var(--scaling, 1));
-  --font-size-9: calc(60px * var(--scaling, 1));
+  --font-size-1: calc(12px * var(--scaling));
+  --font-size-2: calc(14px * var(--scaling));
+  --font-size-3: calc(16px * var(--scaling));
+  --font-size-4: calc(18px * var(--scaling));
+  --font-size-5: calc(20px * var(--scaling));
+  --font-size-6: calc(24px * var(--scaling));
+  --font-size-7: calc(28px * var(--scaling));
+  --font-size-8: calc(35px * var(--scaling));
+  --font-size-9: calc(60px * var(--scaling));
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -41,8 +41,7 @@
   --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
-  --default-font-size-adjust: 1;
-  --default-font-style: regular;
+  --default-font-style: normal;
   --default-font-weight: var(--font-weight-regular);
   --default-line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` 16px * 1.5 = 24px */
   --default-letter-spacing: 0em;
@@ -53,10 +52,9 @@
 
   --heading-font-family: var(--default-font-family);
   --heading-font-size-adjust: 1;
-  --heading-font-style: regular;
-  --heading-font-weight: var(--font-weight-bold);
-  --heading-leading-trim-start: 0.34em;
-  --heading-leading-trim-end: 0.38em;
+  --heading-font-style: normal;
+  --heading-leading-trim-start: var(--default-leading-trim-start);
+  --heading-leading-trim-end: var(--default-leading-trim-end);
   --heading-letter-spacing: 0em;
 
   --heading-line-height-1: calc(16px * var(--scaling));
@@ -97,7 +95,7 @@
 [data-rui-root] {
   overflow-wrap: break-word;
   font-family: var(--default-font-family);
-  font-size: calc(var(--default-font-size) * var(--default-font-size-adjust));
+  font-size: var(--default-font-size);
   font-weight: var(--default-font-weight);
   font-style: var(--default-font-style);
   line-height: var(--default-line-height);
