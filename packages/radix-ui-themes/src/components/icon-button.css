@@ -1,5 +1,46 @@
 @import './base-button.css';
 
 .rui-IconButton {
-  width: var(--height);
+  &:where(:not(.variant-ghost)) {
+    height: var(--base-button-height);
+    width: var(--base-button-height);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rui-IconButton:where(.variant-ghost) {
+    &.size-1 {
+      --icon-button-ghost-padding: 0px;
+    }
+    &.size-2 {
+      --icon-button-ghost-padding: var(--space-1);
+    }
+    &.size-3 {
+      --icon-button-ghost-padding: var(--space-1);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rui-IconButton.variant-ghost {
+  &::before {
+    content: '';
+    border-radius: inherit;
+    width: calc(var(--base-button-height) + var(--icon-button-ghost-padding) * 2);
+    height: calc(var(--base-button-height) + var(--icon-button-ghost-padding) * 2);
+    position: absolute;
+    top: calc(50% - var(--base-button-height) / 2 - var(--icon-button-ghost-padding));
+    left: calc(50% - var(--base-button-height) / 2 - var(--icon-button-ghost-padding));
+  }
 }

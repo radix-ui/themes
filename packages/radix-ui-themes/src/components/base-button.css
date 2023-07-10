@@ -6,7 +6,10 @@
   flex-shrink: 0;
   line-height: 1;
   user-select: none;
-  height: var(--height);
+
+  &:where(:not(.variant-ghost)) {
+    height: var(--base-button-height);
+  }
 }
 
 /***************************************************************************************************
@@ -18,16 +21,24 @@
 @breakpoints {
   .rui-BaseButton {
     &.size-1 {
-      --height: var(--space-5);
+      --base-button-height: var(--space-5);
       border-radius: max(var(--radius-2), var(--radius-full));
     }
     &.size-2 {
-      --height: var(--space-6);
+      --base-button-height: var(--space-6);
       border-radius: max(var(--radius-2), var(--radius-full));
+
+      &:where(.variant-ghost) {
+        --base-button-height: var(--space-5);
+      }
     }
     &.size-3 {
-      --height: var(--space-7);
+      --base-button-height: var(--space-7);
       border-radius: max(var(--radius-3), var(--radius-full));
+
+      &:where(.variant-ghost) {
+        --base-button-height: var(--space-6);
+      }
     }
   }
 }
@@ -74,21 +85,11 @@
   }
 }
 
-/* soft / ghost */
-.rui-BaseButton.variant-ghost,
-.rui-BaseButton.variant-soft {
-  color: var(--accent-11);
+/* soft */
 
-  &:where(:focus-visible) {
-    box-shadow: inset 0 0 0 1px var(--accent-a7), 0 0 0 1px var(--accent-a7);
-  }
-
-  &:where(.high-contrast) {
-    color: var(--accent-12);
-  }
-}
 .rui-BaseButton.variant-soft {
   background-color: var(--accent-a3);
+  color: var(--accent-11);
 
   &:where(:hover, [data-state='open']) {
     background-color: var(--accent-a4);
@@ -96,13 +97,31 @@
   &:where(:active) {
     background-color: var(--accent-a5);
   }
+  &:where(:focus-visible) {
+    box-shadow: inset 0 0 0 1px var(--accent-a7), 0 0 0 1px var(--accent-a7);
+  }
+  &:where(.high-contrast) {
+    color: var(--accent-12);
+  }
 }
+
+/* ghost */
+
 .rui-BaseButton.variant-ghost {
-  &:where(:hover, [data-state='open']) {
+  position: relative;
+  color: var(--accent-11);
+
+  &:where(:hover, [data-state='open'])::before {
     background-color: var(--accent-a3);
   }
-  &:where(:active) {
+  &:where(:active)::before {
     background-color: var(--accent-a4);
+  }
+  &:where(:focus-visible)::before {
+    box-shadow: inset 0 0 0 1px var(--accent-a7), 0 0 0 1px var(--accent-a7);
+  }
+  &:where(.high-contrast) {
+    color: var(--accent-12);
   }
 }
 
@@ -138,9 +157,12 @@
 /* all disabled buttons */
 
 .rui-BaseButton:disabled {
-  background-color: var(--gray-a3);
-  box-shadow: none;
   color: var(--gray-a8);
   cursor: not-allowed;
+}
+.rui-BaseButton:where(:not(.variant-ghost)):disabled,
+.rui-BaseButton:where(.variant-ghost):disabled::before {
+  background-color: var(--gray-a3);
+  box-shadow: none;
   filter: none;
 }

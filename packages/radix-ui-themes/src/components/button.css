@@ -15,25 +15,46 @@
 @breakpoints {
   .rui-Button {
     &.size-1 {
-      padding-left: var(--space-2);
-      padding-right: var(--space-2);
       gap: var(--space-1);
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
+
+      &:where(:not(.variant-ghost)) {
+        padding-left: var(--space-2);
+        padding-right: var(--space-2);
+      }
+      &:where(.variant-ghost) {
+        gap: var(--space-1);
+        --button-ghost-padding: var(--space-2);
+      }
     }
     &.size-2 {
-      padding-left: var(--space-3);
-      padding-right: var(--space-3);
       gap: var(--space-2);
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
+
+      &:where(:not(.variant-ghost)) {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+      }
+      &:where(.variant-ghost) {
+        gap: var(--space-1);
+        --button-ghost-padding: var(--space-2);
+      }
     }
     &.size-3 {
-      padding-left: var(--space-4);
-      padding-right: var(--space-4);
       gap: var(--space-3);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
+
+      &:where(:not(.variant-ghost)) {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+      }
+      &:where(.variant-ghost) {
+        gap: var(--space-2);
+        --button-ghost-padding: var(--space-3);
+      }
     }
   }
 }
@@ -46,4 +67,16 @@
 
 .rui-Button:where(.variant-solid, .variant-soft) {
   font-weight: var(--font-weight-medium);
+}
+
+.rui-Button:where(.variant-ghost) {
+  &::before {
+    content: '';
+    border-radius: inherit;
+    width: calc(100% + var(--button-ghost-padding) * 2);
+    height: var(--base-button-height);
+    position: absolute;
+    top: calc(50% - var(--base-button-height) / 2);
+    left: calc(-1 * var(--button-ghost-padding));
+  }
 }
