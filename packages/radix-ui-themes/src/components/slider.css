@@ -10,12 +10,12 @@
   touch-action: none;
 
   &[data-orientation='horizontal'] {
-    height: max(var(--track-size), var(--thumb-size));
+    height: max(var(--slider-track-size), var(--slider-thumb-size));
   }
   &[data-orientation='vertical'] {
     height: 100%;
     flex-direction: column;
-    width: max(var(--track-size), var(--thumb-size));
+    width: max(var(--slider-track-size), var(--slider-thumb-size));
   }
 }
 
@@ -26,10 +26,10 @@
   overflow: hidden;
 
   &[data-orientation='horizontal'] {
-    height: var(--track-size);
+    height: var(--slider-track-size);
   }
   &[data-orientation='vertical'] {
-    width: var(--track-size);
+    width: var(--slider-track-size);
   }
 }
 
@@ -63,9 +63,9 @@
 
 .rui-SliderThumb {
   display: block;
-  width: var(--thumb-size);
-  height: var(--thumb-size);
-  border-radius: var(--thumb-radius);
+  width: var(--slider-thumb-size);
+  height: var(--slider-thumb-size);
+  border-radius: var(--slider-thumb-radius);
 
   &::before {
     content: '';
@@ -88,22 +88,22 @@
 @breakpoints {
   .rui-SliderRoot {
     &.size-1 {
-      --track-size: var(--space-1);
-      --thumb-size: calc(14px * var(--scaling));
-      --thumb-radius: max(var(--radius-1), var(--radius-full));
-      --thumb-focus-outline-size: 3px;
+      --slider-track-size: var(--space-1);
+      --slider-thumb-size: calc(14px * var(--scaling));
+      --slider-thumb-radius: max(var(--radius-1), var(--radius-full));
+      --slider-thumb-focus-outline-size: 3px;
     }
     &.size-2 {
-      --track-size: var(--space-2);
-      --thumb-size: var(--space-4);
-      --thumb-radius: max(var(--radius-2), var(--radius-full));
-      --thumb-focus-outline-size: 4px;
+      --slider-track-size: var(--space-2);
+      --slider-thumb-size: var(--space-4);
+      --slider-thumb-radius: max(var(--radius-2), var(--radius-full));
+      --slider-thumb-focus-outline-size: 4px;
     }
     &.size-3 {
-      --track-size: var(--space-3);
-      --thumb-size: var(--space-5);
-      --thumb-radius: max(var(--radius-3), var(--radius-full));
-      --thumb-focus-outline-size: 5px;
+      --slider-track-size: var(--space-3);
+      --slider-thumb-size: var(--space-5);
+      --slider-thumb-radius: max(var(--radius-3), var(--radius-full));
+      --slider-thumb-focus-outline-size: 5px;
     }
   }
 }
@@ -137,7 +137,7 @@
   box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--gray-a5);
 
   &:where(:focus-visible) {
-    outline: var(--thumb-focus-outline-size) solid var(--accent-a7);
+    outline: var(--slider-thumb-focus-outline-size) solid var(--accent-a7);
     outline-offset: 1px;
   }
 }

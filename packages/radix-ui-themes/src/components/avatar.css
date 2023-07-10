@@ -4,8 +4,8 @@
   justify-content: center;
   vertical-align: middle;
   user-select: none;
-  width: var(--size);
-  height: var(--size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
   flex-shrink: 0;
 }
 
@@ -27,8 +27,8 @@
   border-radius: inherit;
 
   & svg {
-    width: var(--one-letter-font-size);
-    height: var(--one-letter-font-size);
+    width: var(--avatar-font-size-one-letter);
+    height: var(--avatar-font-size-one-letter);
   }
 }
 
@@ -41,13 +41,12 @@
 .rui-AvatarFallback {
   font-weight: var(--font-weight-medium);
 
-  &.\31-letter {
-    font-size: var(--one-letter-font-size);
+  &.one-letter {
+    font-size: var(--avatar-font-size-one-letter);
     text-transform: uppercase;
   }
-  &.\32-letters {
-    font-size: var(--two-letters-font-size);
-    letter-spacing: var(--letter-spacing);
+  &.two-letters {
+    font-size: var(--avatar-font-size-two-letters);
     text-transform: uppercase;
   }
 }
@@ -55,39 +54,39 @@
 @breakpoints {
   .rui-AvatarRoot {
     &.size-1 {
+      --avatar-size: var(--space-5);
       border-radius: max(var(--radius-2), var(--radius-full));
-      --size: var(--space-5);
-      --one-letter-font-size: var(--font-size-2);
-      --two-letters-font-size: var(--font-size-1);
-      --letter-spacing: var(--letter-spacing-1);
+      --avatar-font-size-one-letter: var(--font-size-2);
+      --avatar-font-size-two-letters: var(--font-size-1);
+      letter-spacing: var(--letter-spacing-1);
     }
     &.size-2 {
+      --avatar-size: var(--space-6);
       border-radius: max(var(--radius-2), var(--radius-full));
-      --size: var(--space-6);
-      --one-letter-font-size: var(--font-size-3);
-      --two-letters-font-size: var(--font-size-2);
-      --letter-spacing: var(--letter-spacing-2);
+      --avatar-font-size-one-letter: var(--font-size-3);
+      --avatar-font-size-two-letters: var(--font-size-2);
+      letter-spacing: var(--letter-spacing-2);
     }
     &.size-3 {
+      --avatar-size: var(--space-7);
       border-radius: max(var(--radius-3), var(--radius-full));
-      --size: var(--space-7);
-      --one-letter-font-size: var(--font-size-4);
-      --two-letters-font-size: var(--font-size-3);
-      --letter-spacing: var(--letter-spacing-3);
+      --avatar-font-size-one-letter: var(--font-size-4);
+      --avatar-font-size-two-letters: var(--font-size-3);
+      letter-spacing: var(--letter-spacing-3);
     }
     &.size-4 {
+      --avatar-size: var(--space-8);
       border-radius: max(var(--radius-3), var(--radius-full));
-      --size: var(--space-8);
-      --one-letter-font-size: var(--font-size-6);
-      --two-letters-font-size: var(--font-size-5);
-      --letter-spacing: var(--letter-spacing-5);
+      --avatar-font-size-one-letter: var(--font-size-6);
+      --avatar-font-size-two-letters: var(--font-size-5);
+      letter-spacing: var(--letter-spacing-5);
     }
     &.size-5 {
+      --avatar-size: var(--space-9);
       border-radius: max(var(--radius-4), var(--radius-full));
-      --size: var(--space-9);
-      --one-letter-font-size: var(--font-size-8);
-      --two-letters-font-size: var(--font-size-7);
-      --letter-spacing: var(--letter-spacing-7);
+      --avatar-font-size-one-letter: var(--font-size-8);
+      --avatar-font-size-two-letters: var(--font-size-7);
+      letter-spacing: var(--letter-spacing-7);
     }
   }
 }

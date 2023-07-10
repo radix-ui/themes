@@ -4,21 +4,24 @@
   box-sizing: border-box;
   overflow: hidden;
 
-  background-color: var(--content-bg);
-  --content-radius: min(
-    (var(--item-height) / 2 + var(--content-padding)),
+  background-color: var(--base-menu-bg);
+  --base-menu-radius: min(
+    (var(--base-menu-item-height) / 2 + var(--base-menu-padding)),
     max(var(--radius-3), var(--radius-full))
   );
-  border-radius: var(--content-radius);
+  border-radius: var(--base-menu-radius);
 
   & .rui-ScrollAreaRoot {
     display: flex;
     flex-direction: column;
   }
   & .rui-ScrollAreaScrollbar {
-    --scrollbar-vertical-margin: max(calc(var(--content-radius) / 1.5), var(--content-padding));
-    margin-top: var(--scrollbar-vertical-margin);
-    margin-bottom: var(--scrollbar-vertical-margin);
+    --base-menu-scrollbar-margin: max(
+      calc(var(--base-menu-radius) / 1.5),
+      var(--base-menu-padding)
+    );
+    margin-top: var(--base-menu-scrollbar-margin);
+    margin-bottom: var(--base-menu-scrollbar-margin);
   }
 }
 
@@ -27,7 +30,7 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: var(--content-padding);
+  padding: var(--base-menu-padding);
 
   .rui-BaseMenuContent:has(.rui-ScrollAreaScrollbar[data-orientation='vertical']) & {
     padding-right: 12px;
@@ -39,6 +42,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: max(var(--radius-2), var(--radius-full));
+  height: var(--base-menu-item-height);
   padding-left: var(--space-5);
   padding-right: var(--space-3);
   position: relative;
@@ -46,7 +50,7 @@
   outline: none;
   cursor: default;
 
-  scroll-margin: var(--content-padding) 0;
+  scroll-margin: var(--base-menu-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
@@ -91,6 +95,7 @@
 .rui-BaseMenuLabel {
   display: flex;
   align-items: center;
+  height: var(--base-menu-item-height);
   padding-left: var(--space-5);
   padding-right: var(--space-3);
   font-size: var(--font-size-1);
@@ -112,7 +117,7 @@
 }
 
 .rui-BaseMenuArrow {
-  fill: var(--content-bg);
+  fill: var(--base-menu-bg);
 }
 
 /***************************************************************************************************
@@ -124,30 +129,22 @@
 @breakpoints {
   .rui-BaseMenuContent {
     &.size-1 {
-      --content-padding: var(--space-1);
-      --item-height: var(--space-5);
+      --base-menu-padding: var(--space-1);
+      --base-menu-item-height: var(--space-5);
 
       & .rui-BaseMenuItem {
         font-size: var(--font-size-1);
         letter-spacing: var(--letter-spacing-1);
-        height: var(--space-5);
-      }
-      & .rui-BaseMenuLabel {
-        height: var(--space-5);
       }
     }
 
     &.size-2 {
-      --content-padding: var(--space-2);
-      --item-height: var(--space-6);
+      --base-menu-padding: var(--space-2);
+      --base-menu-item-height: var(--space-6);
 
       & .rui-BaseMenuItem {
         font-size: var(--font-size-2);
         letter-spacing: var(--letter-spacing-2);
-        height: var(--space-6);
-      }
-      & .rui-BaseMenuLabel {
-        height: var(--space-6);
       }
     }
   }
@@ -160,7 +157,7 @@
  ***************************************************************************************************/
 
 .rui-BaseMenuContent {
-  --content-bg: var(--color-panel);
+  --base-menu-bg: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
 .rui-BaseMenuItem[data-accent-scale] {

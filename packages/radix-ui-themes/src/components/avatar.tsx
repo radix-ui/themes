@@ -50,8 +50,8 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       {status === 'error' ? (
         <AvatarPrimitive.Fallback
           className={classNames('rui-AvatarFallback', {
-            '1-letter': typeof fallback === 'string' && fallback.length === 1,
-            '2-letters': typeof fallback === 'string' && fallback.length === 2,
+            'one-letter': typeof fallback === 'string' && fallback.length === 1,
+            'two-letters': typeof fallback === 'string' && fallback.length === 2,
           })}
           delayMs={0}
         >

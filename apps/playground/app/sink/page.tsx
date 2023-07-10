@@ -2235,6 +2235,14 @@ export default function Sink() {
                                   src="./api/avatar"
                                   fallback="D"
                                 />
+                                <Avatar
+                                  size={size}
+                                  radius={radius}
+                                  fallback="D"
+                                  ml="1"
+                                  color="amber"
+                                  variant="solid"
+                                />
                               </td>
                             ))}
                           </tr>

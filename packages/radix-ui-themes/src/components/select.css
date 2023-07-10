@@ -18,12 +18,12 @@
 .rui-SelectContent {
   overflow: hidden;
 
-  background-color: var(--content-bg);
-  --content-radius: min(
-    (var(--item-height) / 2 + var(--content-padding)),
+  background-color: var(--select-content-bg);
+  --select-content-radius: min(
+    (var(--select-item-height) / 2 + var(--select-content-padding)),
     max(var(--radius-3), var(--radius-full))
   );
-  border-radius: var(--content-radius);
+  border-radius: var(--select-content-radius);
 
   &[data-side] {
     min-width: var(--radix-select-trigger-width);
@@ -36,15 +36,18 @@
     flex-direction: column;
   }
   & .rui-ScrollAreaScrollbar {
-    --scrollbar-vertical-margin: max(calc(var(--content-radius) / 1.5), var(--content-padding));
-    margin-top: var(--scrollbar-vertical-margin);
-    margin-bottom: var(--scrollbar-vertical-margin);
+    --select-content-scrollbar-margin: max(
+      calc(var(--select-content-radius) / 1.5),
+      var(--select-content-padding)
+    );
+    margin-top: var(--select-content-scrollbar-margin);
+    margin-bottom: var(--select-content-scrollbar-margin);
   }
 }
 
 .rui-SelectViewport {
   box-sizing: border-box;
-  padding: var(--content-padding);
+  padding: var(--select-content-padding);
 
   .rui-SelectContent:has(.rui-ScrollAreaScrollbar[data-orientation='vertical']) & {
     padding-right: 12px;
@@ -54,7 +57,7 @@
 .rui-SelectItem {
   display: flex;
   align-items: center;
-  height: var(--item-height);
+  height: var(--select-item-height);
   border-radius: max(var(--radius-2), var(--radius-full));
   padding-left: var(--space-5);
   padding-right: var(--space-5);
@@ -63,7 +66,7 @@
   outline: none;
   cursor: default;
 
-  scroll-margin: var(--content-padding) 0;
+  scroll-margin: var(--select-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
@@ -86,7 +89,7 @@
 .rui-SelectLabel {
   display: flex;
   align-items: center;
-  height: var(--item-height);
+  height: var(--select-item-height);
   padding-left: var(--space-5);
   padding-right: var(--space-5);
   font-size: var(--font-size-1);
@@ -110,8 +113,8 @@
 @breakpoints {
   .rui-SelectContent {
     &.size-1 {
-      --content-padding: var(--space-1);
-      --item-height: var(--space-5);
+      --select-content-padding: var(--space-1);
+      --select-item-height: var(--space-5);
 
       & .rui-SelectItem {
         font-size: var(--font-size-1);
@@ -120,8 +123,8 @@
     }
 
     &.size-2 {
-      --content-padding: var(--space-2);
-      --item-height: var(--space-6);
+      --select-content-padding: var(--space-2);
+      --select-item-height: var(--space-6);
 
       & .rui-SelectItem {
         font-size: var(--font-size-2);
@@ -150,7 +153,7 @@
  ***************************************************************************************************/
 
 .rui-SelectContent {
-  --content-bg: var(--color-panel);
+  --select-content-bg: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
 .rui-SelectItem[data-disabled] {

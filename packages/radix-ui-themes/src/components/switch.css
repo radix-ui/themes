@@ -5,17 +5,17 @@
   flex-shrink: 0;
 
   /* Match Text size 2 line-height */
-  height: calc(20px * var(--scaling));
+  height: var(--line-height-2);
 }
 
 .rui-SwitchButton {
   display: inline-flex;
   align-items: center;
-  width: var(--root-width);
-  height: var(--root-height);
-  padding: var(--root-padding);
-  --button-radius: max(var(--radius-3), var(--radius-full));
-  border-radius: var(--button-radius);
+  width: var(--switch-width);
+  height: var(--switch-height);
+  padding: var(--switch-padding);
+  --switch-radius: max(var(--radius-3), var(--radius-full));
+  border-radius: var(--switch-radius);
 
   transition-property: background-color, box-shadow;
   transition-duration: 150ms;
@@ -23,15 +23,15 @@
 }
 
 .rui-SwitchThumb {
-  width: var(--thumb-size);
-  height: var(--thumb-size);
-  border-radius: calc(var(--button-radius) - var(--root-padding));
+  width: var(--switch-thumb-size);
+  height: var(--switch-thumb-size);
+  border-radius: calc(var(--switch-radius) - var(--switch-padding));
   transition-property: transform, background-color;
   transition-duration: 150ms;
   transition-timing-function: ease-in-out;
 
   &:where([data-state='checked']) {
-    transform: translateX(var(--thumb-translate));
+    transform: translateX(var(--switch-thumb-translate));
   }
 }
 
@@ -44,25 +44,25 @@
 @breakpoints {
   .rui-SwitchRoot {
     &.size-1 {
-      --root-width: calc(28px * var(--scaling));
-      --root-height: var(--space-4);
-      --root-padding: 1px;
-      --thumb-size: calc(14px * var(--scaling));
-      --thumb-translate: calc(12px * var(--scaling));
+      --switch-width: calc(28px * var(--scaling));
+      --switch-height: var(--space-4);
+      --switch-padding: 1px;
+      --switch-thumb-size: calc(14px * var(--scaling));
+      --switch-thumb-translate: calc(12px * var(--scaling));
     }
     &.size-2 {
-      --root-width: var(--space-7);
-      --root-height: var(--space-5);
-      --root-padding: var(--space-1);
-      --thumb-size: var(--space-4);
-      --thumb-translate: var(--space-4);
+      --switch-width: var(--space-7);
+      --switch-height: var(--space-5);
+      --switch-padding: var(--space-1);
+      --switch-thumb-size: var(--space-4);
+      --switch-thumb-translate: var(--space-4);
     }
     &.size-3 {
-      --root-width: calc(56px * var(--scaling));
-      --root-height: var(--space-6);
-      --root-padding: var(--space-1);
-      --thumb-size: var(--space-5);
-      --thumb-translate: var(--space-5);
+      --switch-width: calc(56px * var(--scaling));
+      --switch-height: var(--space-6);
+      --switch-padding: var(--space-1);
+      --switch-thumb-size: var(--space-5);
+      --switch-thumb-translate: var(--space-5);
     }
   }
 }

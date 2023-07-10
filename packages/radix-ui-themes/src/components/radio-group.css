@@ -8,7 +8,7 @@
   flex-shrink: 0;
 
   /* Match Text size 2 line-height */
-  height: calc(20px * var(--scaling));
+  height: var(--line-height-2);
 }
 
 .rui-RadioGroupButton {
@@ -16,15 +16,15 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: var(--size);
-  width: var(--size);
+  height: var(--radio-group-item-size);
+  width: var(--radio-group-item-size);
   border-radius: 100%;
 }
 
 .rui-RadioGroupIndicator {
   background-color: currentColor;
-  height: var(--indicator-size);
-  width: var(--indicator-size);
+  height: var(--radio-group-indicator-size);
+  width: var(--radio-group-indicator-size);
   border-radius: 100%;
 }
 
@@ -37,12 +37,12 @@
 @breakpoints {
   .rui-RadioGroupRoot {
     &.size-1 {
-      --size: var(--space-4);
-      --indicator-size: calc(6px * var(--scaling));
+      --radio-group-item-size: var(--space-4);
+      --radio-group-indicator-size: calc(6px * var(--scaling));
     }
     &.size-2 {
-      --size: var(--space-5);
-      --indicator-size: calc(10px * var(--scaling));
+      --radio-group-item-size: var(--space-5);
+      --radio-group-indicator-size: calc(10px * var(--scaling));
     }
   }
 }

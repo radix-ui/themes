@@ -21,11 +21,11 @@
 
   &[data-orientation='vertical'] {
     flex-direction: column;
-    width: var(--size);
+    width: var(--scrollarea-scrollbar-size);
   }
   &[data-orientation='horizontal'] {
     flex-direction: row;
-    height: var(--size);
+    height: var(--scrollarea-scrollbar-size);
   }
 }
 
@@ -54,16 +54,16 @@
 @breakpoints {
   .rui-ScrollAreaScrollbar {
     &.size-1 {
-      --size: var(--space-1);
-      --radius: max(var(--radius-1), var(--radius-full));
+      --scrollarea-scrollbar-size: var(--space-1);
+      --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
     &.size-2 {
-      --size: var(--space-2);
-      --radius: max(var(--radius-1), var(--radius-full));
+      --scrollarea-scrollbar-size: var(--space-2);
+      --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
     &.size-3 {
-      --size: var(--space-3);
-      --radius: max(var(--radius-1), var(--radius-full));
+      --scrollarea-scrollbar-size: var(--space-3);
+      --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
   }
 }
@@ -76,7 +76,7 @@
 
 .rui-ScrollAreaScrollbar {
   background-color: var(--gray-a3);
-  border-radius: var(--radius);
+  border-radius: var(--scrollarea-scrollbar-radius);
   margin: var(--space-1);
 
   animation-duration: 150ms;
@@ -92,7 +92,7 @@
 
 .rui-ScrollAreaThumb {
   background-color: var(--gray-a8);
-  border-radius: var(--radius);
+  border-radius: inherit;
   transition: background-color 100ms;
 
   &:hover {
