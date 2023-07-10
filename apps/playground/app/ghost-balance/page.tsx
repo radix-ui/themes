@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Theme, Container, Section, Flex, Grid, Button, IconButton, Link } from '@radix-ui/themes';
-import { SunIcon } from '@radix-ui/react-icons';
+import {
+  ChatBubbleIcon,
+  FileTextIcon,
+  QuestionMarkCircledIcon,
+  SunIcon,
+} from '@radix-ui/react-icons';
 
 export default function Ghost() {
   return (
@@ -64,57 +69,16 @@ export default function Ghost() {
                         gap="4"
                       >
                         <Button variant="ghost" size="2">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={16}
-                            height={16}
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            viewBox="0 0 24 24"
-                          >
-                            <circle cx={12} cy={12} r={10} />
-                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" />
-                          </svg>
+                          <QuestionMarkCircledIcon />
                           Help
                         </Button>
                         <Button variant="ghost" size="2">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={16}
-                            height={16}
-                            fill="none"
-                            stroke="currentcolor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            style={{
-                              marginLeft: '-2px',
-                            }}
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5zM16 8 2 22M17.5 15H9" />
-                          </svg>
+                          <ChatBubbleIcon />
                           Feedback
                         </Button>
                         <Flex asChild align="center" gap="1">
                           <Link size="2" href="#">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={16}
-                              height={16}
-                              fill="none"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                            </svg>
+                            <FileTextIcon />
                             Docs
                           </Link>
                         </Flex>
