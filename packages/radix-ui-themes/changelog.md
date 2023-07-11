@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.24
+
+- General:
+  - Fix Context issues in Next.js RSC component. This was fixed using proper module resolution using `exports` field in `package.json`, it seems without it it's confusing Next.
+
 ## 0.0.23
 
 - `DropdownMenu`, `ContextMenu`: Improve experience using scroll margins
