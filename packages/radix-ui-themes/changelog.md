@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.25
+
+- General:
+  - Create new static context on `[data-rui-root]` so overlayed components work correctly out of the box
+  - Fix `--color-surface-1` value in nested themes
+- `Button`, `IconButton`: Tweak ghost variant sizing
+- `Badge`: Scale based on font-size/line-height
+- `Heading`: Fix leading-trim regression
+
 ## 0.0.24
 
 - General:
