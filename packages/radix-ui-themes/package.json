@@ -4,15 +4,15 @@
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
   "module": "./dist/esm/index.js",
-  "exports__field-not-working-yet__css-file-cannot-be-found": {
+  "exports": {
     ".": {
       "require": {
         "types": "./dist/cjs/index.d.ts",
         "default": "./dist/cjs/index.js"
       },
       "import": {
-        "types": "./dist/esm/index.d.mts",
-        "default": "./dist/esm/index.mjs"
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
       }
     },
     "./dist/index.css": {
@@ -27,17 +27,15 @@
   ],
   "scripts": {
     "build": "yarn build:js && yarn build:css",
-    "build:js": "yarn build:js:cjs && yarn build:js:esm && yarn d.ts-to-d.mts",
+    "build:js": "yarn build:js:cjs && yarn build:js:esm",
     "build:js:cjs": "tsc --project tsconfig-cjs.json",
     "build:js:esm": "tsc --project tsconfig-esm.json",
     "build:css": "postcss src/styles/index.css -o dist/index.css",
     "dev": "yarn dev:js & yarn dev:css",
-    "dev:js": "yarn dev:js:cjs & yarn dev:js:esm & yarn d.ts-to-d.mts",
+    "dev:js": "yarn dev:js:cjs & yarn dev:js:esm",
     "dev:js:cjs": "tsc --project tsconfig-cjs.json --watch",
     "dev:js:esm": "tsc --project tsconfig-esm.json --watch",
     "dev:css": "postcss src/styles/index.css -o dist/index.css --watch",
-    "d.ts-to-d.mts": "echo \"not needed until we can sort ouf the exports issue\"",
-    "__d.ts-to-d.mts": "sh ./scripts/dts-to-dmts.sh",
     "lint": "eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
