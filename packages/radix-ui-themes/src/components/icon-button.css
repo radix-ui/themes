@@ -38,10 +38,10 @@
       --icon-button-ghost-padding: var(--space-1);
     }
     &.size-2 {
-      --icon-button-ghost-padding: var(--space-2);
+      --icon-button-ghost-padding: calc(var(--space-1) * 1.5);
     }
     &.size-3 {
-      --icon-button-ghost-padding: var(--space-3);
+      --icon-button-ghost-padding: var(--space-2);
     }
   }
 }

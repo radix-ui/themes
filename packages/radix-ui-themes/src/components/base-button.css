@@ -17,6 +17,10 @@
   &:where(:not(.variant-ghost)) {
     height: var(--base-button-height);
   }
+  &:where(.variant-ghost) {
+    box-sizing: content-box;
+    height: fit-content;
+  }
 }
 
 @breakpoints {
@@ -102,8 +106,6 @@
   }
 }
 .rui-BaseButton.variant-ghost {
-  position: relative;
-
   &:where(:hover, [data-state='open']) {
     background-color: var(--accent-a3);
   }
