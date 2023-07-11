@@ -1,6 +1,3 @@
-'use client';
-// 👆 figure out what's wrong with Tooltip context (Error: `Tooltip` must be used within `TooltipProvider`)
-
 import * as React from 'react';
 import { HamburgerMenuIcon, UploadIcon } from '@radix-ui/react-icons';
 import {
