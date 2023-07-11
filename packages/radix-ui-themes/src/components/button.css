@@ -1,8 +1,10 @@
 @import './base-button.css';
 
-.rui-Button:where(:not(.variant-ghost)) {
-  & svg {
-    opacity: 0.8;
+.rui-Button {
+  &:where(:not(.variant-ghost)) {
+    & svg {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -12,11 +14,34 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rui-Button {
+  &:where(.variant-ghost) {
+    padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
+
+    /* We reset the defined margin variables to avoid inheriting them from a higher component */
+    /* If a margin IS defined on the component itself, the utility class will win and reset it */
+    --margin-top: 0px;
+    --margin-right: 0px;
+    --margin-bottom: 0px;
+    --margin-left: 0px;
+
+    /* Define the overrides to incorporate the negative margins */
+    --margin-top-override: calc(var(--margin-top, 0px) - var(--button-ghost-padding-y));
+    --margin-right-override: calc(var(--margin-right, 0px) - var(--button-ghost-padding-x));
+    --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--button-ghost-padding-y));
+    --margin-left-override: calc(var(--margin-left, 0px) - var(--button-ghost-padding-x));
+
+    margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
+      var(--margin-left-override);
+  }
+}
+
 @breakpoints {
   .rui-Button {
     &.size-1 {
       gap: var(--space-1);
       font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
 
       &:where(:not(.variant-ghost)) {
@@ -25,12 +50,14 @@
       }
       &:where(.variant-ghost) {
         gap: var(--space-1);
-        --button-ghost-padding: var(--space-2);
+        --button-ghost-padding-x: var(--space-2);
+        --button-ghost-padding-y: var(--space-1);
       }
     }
     &.size-2 {
       gap: var(--space-2);
       font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
 
       &:where(:not(.variant-ghost)) {
@@ -39,12 +66,14 @@
       }
       &:where(.variant-ghost) {
         gap: var(--space-1);
-        --button-ghost-padding: var(--space-2);
+        --button-ghost-padding-x: var(--space-2);
+        --button-ghost-padding-y: var(--space-1);
       }
     }
     &.size-3 {
       gap: var(--space-3);
       font-size: var(--font-size-3);
+      line-height: var(--line-height-3);
       letter-spacing: var(--letter-spacing-3);
 
       &:where(:not(.variant-ghost)) {
@@ -53,7 +82,8 @@
       }
       &:where(.variant-ghost) {
         gap: var(--space-2);
-        --button-ghost-padding: var(--space-3);
+        --button-ghost-padding-x: var(--space-3);
+        --button-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
     }
   }
@@ -67,16 +97,4 @@
 
 .rui-Button:where(.variant-solid, .variant-soft) {
   font-weight: var(--font-weight-medium);
-}
-
-.rui-Button:where(.variant-ghost) {
-  &::before {
-    content: '';
-    border-radius: inherit;
-    width: calc(100% + var(--button-ghost-padding) * 2);
-    height: var(--base-button-height);
-    position: absolute;
-    top: calc(50% - var(--base-button-height) / 2);
-    left: calc(-1 * var(--button-ghost-padding));
-  }
 }

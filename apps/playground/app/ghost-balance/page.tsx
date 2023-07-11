@@ -1,7 +1,20 @@
 import * as React from 'react';
-import { Theme, Container, Section, Flex, Grid, Button, IconButton, Link } from '@radix-ui/themes';
+import {
+  Theme,
+  Container,
+  Section,
+  Flex,
+  Grid,
+  Button,
+  IconButton,
+  Link,
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
+} from '@radix-ui/themes';
 import {
   ChatBubbleIcon,
+  DotsHorizontalIcon,
   FileTextIcon,
   QuestionMarkCircledIcon,
   SunIcon,
@@ -31,6 +44,9 @@ export default function Ghost() {
                         </Button>
                         <Button size="1">Save</Button>
                         <Button size="1">Delete</Button>
+                        <IconButton variant="ghost" size="1" radius="full">
+                          <SunIcon />
+                        </IconButton>
                       </Flex>
 
                       <Flex
@@ -46,6 +62,9 @@ export default function Ghost() {
                         </Button>
                         <Button size="2">Save</Button>
                         <Button size="2">Delete</Button>
+                        <IconButton variant="ghost" size="2" radius="full">
+                          <SunIcon />
+                        </IconButton>
                       </Flex>
 
                       <Flex
@@ -61,6 +80,9 @@ export default function Ghost() {
                         </Button>
                         <Button size="3">Save</Button>
                         <Button size="3">Delete</Button>
+                        <IconButton variant="ghost" size="3" radius="full">
+                          <SunIcon />
+                        </IconButton>
                       </Flex>
 
                       <Flex
@@ -86,10 +108,60 @@ export default function Ghost() {
                           <SunIcon />
                         </IconButton>
                       </Flex>
+
+                      <Flex
+                        direction={direction}
+                        align={direction === 'row' ? 'center' : 'start'}
+                        gap="4"
+                      >
+                        <PopoverRoot>
+                          <PopoverTrigger>
+                            <Button variant="ghost">Open</Button>
+                          </PopoverTrigger>
+                          <PopoverContent sideOffset={0} style={{ padding: 100 }} />
+                        </PopoverRoot>
+
+                        <PopoverRoot>
+                          <PopoverTrigger>
+                            <IconButton variant="ghost">
+                              <DotsHorizontalIcon />
+                            </IconButton>
+                          </PopoverTrigger>
+                          <PopoverContent sideOffset={0} style={{ padding: 100 }} />
+                        </PopoverRoot>
+                      </Flex>
                     </Flex>
                   </Section>
                 ))}
               </Grid>
+
+              <Flex direction="column" gap="2" mb="5">
+                <Flex align="center" gap="5">
+                  <Button variant="ghost">Cancel</Button>
+                  <Button>Save</Button>
+                </Flex>
+
+                <Flex align="center">
+                  <Button variant="ghost" mr="5">
+                    Cancel
+                  </Button>
+                  <Button>Save</Button>
+                </Flex>
+              </Flex>
+
+              <Flex direction="column" gap="2" style={{ width: 500 }}>
+                <Flex align="center" justify="between">
+                  <Button variant="ghost">Cancel</Button>
+                  <Button>Save</Button>
+                </Flex>
+
+                <Flex align="center">
+                  <Button variant="ghost" mr="auto">
+                    Cancel
+                  </Button>
+                  <Button>Save</Button>
+                </Flex>
+              </Flex>
             </Container>
           </div>
         </body>

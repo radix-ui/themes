@@ -1,46 +1,47 @@
 @import './base-button.css';
 
-.rui-IconButton {
-  &:where(:not(.variant-ghost)) {
-    height: var(--base-button-height);
-    width: var(--base-button-height);
-  }
-}
-
 /***************************************************************************************************
  *                                                                                                 *
  * SIZES                                                                                           *
  *                                                                                                 *
  ***************************************************************************************************/
 
-@breakpoints {
-  .rui-IconButton:where(.variant-ghost) {
-    &.size-1 {
-      --icon-button-ghost-padding: 0px;
-    }
-    &.size-2 {
-      --icon-button-ghost-padding: var(--space-1);
-    }
-    &.size-3 {
-      --icon-button-ghost-padding: var(--space-1);
-    }
+.rui-IconButton {
+  &:where(:not(.variant-ghost)) {
+    height: var(--base-button-height);
+    width: var(--base-button-height);
+  }
+  &:where(.variant-ghost) {
+    padding: var(--icon-button-ghost-padding);
+
+    /* We reset the defined margin variables to avoid inheriting them from a higher component */
+    /* If a margin IS defined on the component itself, the utility class will win and reset it */
+    --margin-top: 0px;
+    --margin-right: 0px;
+    --margin-bottom: 0px;
+    --margin-left: 0px;
+
+    /* Define the overrides to incorporate the negative margins */
+    --margin-top-override: calc(var(--margin-top, 0px) - var(--icon-button-ghost-padding));
+    --margin-right-override: calc(var(--margin-right, 0px) - var(--icon-button-ghost-padding));
+    --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--icon-button-ghost-padding));
+    --margin-left-override: calc(var(--margin-left, 0px) - var(--icon-button-ghost-padding));
+
+    margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
+      var(--margin-left-override);
   }
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * VARIANTS                                                                                        *
- *                                                                                                 *
- ***************************************************************************************************/
-
-.rui-IconButton.variant-ghost {
-  &::before {
-    content: '';
-    border-radius: inherit;
-    width: calc(var(--base-button-height) + var(--icon-button-ghost-padding) * 2);
-    height: calc(var(--base-button-height) + var(--icon-button-ghost-padding) * 2);
-    position: absolute;
-    top: calc(50% - var(--base-button-height) / 2 - var(--icon-button-ghost-padding));
-    left: calc(50% - var(--base-button-height) / 2 - var(--icon-button-ghost-padding));
+@breakpoints {
+  .rui-IconButton:where(.variant-ghost) {
+    &.size-1 {
+      --icon-button-ghost-padding: var(--space-1);
+    }
+    &.size-2 {
+      --icon-button-ghost-padding: var(--space-2);
+    }
+    &.size-3 {
+      --icon-button-ghost-padding: var(--space-3);
+    }
   }
 }
