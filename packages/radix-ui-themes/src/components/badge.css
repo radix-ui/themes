@@ -19,20 +19,18 @@
 @breakpoints {
   .rui-Badge {
     &.size-1 {
-      height: 20px;
       font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
-      padding-left: var(--space-2);
-      padding-right: var(--space-2);
+      padding: calc(var(--space-1) / 2) var(--space-2);
       gap: var(--space-1);
       border-radius: max(var(--radius-1), var(--radius-full));
     }
     &.size-2 {
-      height: var(--space-6);
       font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
-      padding-left: var(--space-4);
-      padding-right: var(--space-4);
+      padding: calc(var(--space-1) * 1.5) var(--space-4);
       gap: var(--space-2);
       border-radius: max(var(--radius-2), var(--radius-full));
     }
