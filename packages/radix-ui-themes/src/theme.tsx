@@ -62,7 +62,6 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     textColor: textColorProp = themePropDefs.textColor.default,
     radius: radiusProp = themePropDefs.radius.default,
     scaling: scalingProp = themePropDefs.scaling.default,
-    // direction: directionProp = themeDirectionDefault,
     ...rootProps
   } = props;
   const [appearance, setAppearance] = React.useState(appearanceProp);
