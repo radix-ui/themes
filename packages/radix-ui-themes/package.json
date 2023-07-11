@@ -1,6 +1,6 @@
 {
   "name": "@radix-ui/themes",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
   "module": "./dist/esm/index.js",

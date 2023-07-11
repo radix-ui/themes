@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.0.23
+
+- `DropdownMenu`, `ContextMenu`: Improve experience using scroll margins
+- `Select`:
+  - Fix issue with scrollarea integration messing up scroll position
+  - Improve experience using scroll margins
+- `Button`, `IconButton`: Improve balancing using built-in negative margins
+- `Checkbox`: Fix radius regression
+- Typography:
+  - Remove `--default-font-size-adjust`
+  - Remove `--heading-font-weight`
+  - Fix `--default-font-style` value
+  - Fix `--heading-font-style` value
+- General:
+  - Use naming convention for internal CSS variables
+
 ## 0.0.22
 
 This update is all about tokens!
