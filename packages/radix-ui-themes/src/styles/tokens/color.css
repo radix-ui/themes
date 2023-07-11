@@ -161,7 +161,7 @@
     --color-surface-1: var(--gray-a2);
     --color-surface-1-accent: var(--accent-a2);
 
-    & [data-accent-scale] {
+    & :not(.light-theme)[data-accent-scale] {
       --color-surface-1-accent: var(--accent-a2);
     }
   }

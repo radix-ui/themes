@@ -3512,7 +3512,7 @@ const SampleNestedUI = React.forwardRef<
             </Text>
             <TextArea placeholder="Your feedback" />
           </Grid>
-          <Button>Submit</Button>
+          <Button variant="surface">Submit</Button>
         </Flex>
       </div>
 
