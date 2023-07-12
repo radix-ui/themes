@@ -111,6 +111,15 @@
 /* For trigger size, see base-button.css and button.css */
 
 @breakpoints {
+  .rt-SelectTrigger {
+    &.size-1 {
+      gap: 0;
+    }
+    &.size-2 {
+      gap: var(--space-1);
+    }
+  }
+
   .rt-SelectContent {
     &.size-1 {
       --select-content-padding: var(--space-1);
