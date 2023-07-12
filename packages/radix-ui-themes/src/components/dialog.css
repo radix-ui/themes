@@ -1,4 +1,4 @@
-.rui-DialogOverlay {
+.rt-DialogOverlay {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   }
 }
 
-.rui-DialogContent {
+.rt-DialogContent {
   border-radius: var(--radius-4);
   width: 100%;
   max-height: 90vh;
@@ -80,7 +80,7 @@
     }
   }
 
-  .rui-DialogOverlay {
+  .rt-DialogOverlay {
     /* Keep the overlay mounted until the children have animated */
     &[data-state='closed'] {
       animation: DialogOverlayNoop 250ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -94,7 +94,7 @@
     }
   }
 
-  .rui-DialogContent {
+  .rt-DialogContent {
     &[data-state='open'] {
       animation: DialogContentShow 200ms cubic-bezier(0.16, 1, 0.3, 1);
     }

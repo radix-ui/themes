@@ -1,4 +1,4 @@
-.rui-Badge {
+.rt-Badge {
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
@@ -17,7 +17,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Badge {
+  .rt-Badge {
     &.size-1 {
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
@@ -45,7 +45,7 @@
 
 /* solid */
 
-.rui-Badge.variant-solid {
+.rt-Badge.variant-solid {
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
 
@@ -57,7 +57,7 @@
 
 /* surface */
 
-.rui-Badge.variant-surface {
+.rt-Badge.variant-surface {
   background-color: var(--color-surface-1-accent);
   box-shadow: inset 0 0 0 0.5px var(--accent-a6), 0 0 0 0.5px var(--accent-a6);
   color: var(--accent-11);
@@ -69,7 +69,7 @@
 
 /* soft */
 
-.rui-Badge.variant-soft {
+.rt-Badge.variant-soft {
   background-color: var(--accent-3);
   color: var(--accent-11);
   &:where(.high-contrast) {
@@ -79,7 +79,7 @@
 
 /* outline */
 
-.rui-Badge.variant-outline {
+.rt-Badge.variant-outline {
   box-shadow: inset 0 0 0 0.5px var(--accent-a6), 0 0 0 0.5px var(--accent-a6);
   color: var(--accent-11);
   &:where(.high-contrast) {

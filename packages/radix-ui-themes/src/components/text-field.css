@@ -1,4 +1,4 @@
-.rui-TextField {
+.rt-TextField {
   appearance: none;
   border-width: 0;
   font-family: inherit;
@@ -19,7 +19,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-TextField {
+  .rt-TextField {
     &.size-1 {
       height: var(--space-5);
       padding-top: 0.5px;
@@ -56,7 +56,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-TextField {
+.rt-TextField {
   color: var(--gray-12);
 
   &::placeholder {
@@ -79,7 +79,7 @@
 
 /* surface */
 
-.rui-TextField.variant-surface {
+.rt-TextField.variant-surface {
   background-color: var(--color-surface-1);
   box-shadow: var(--shadow-1);
   &:focus {
@@ -88,7 +88,7 @@
 }
 
 /* soft */
-.rui-TextField.variant-soft {
+.rt-TextField.variant-soft {
   background-color: var(--accent-a3);
   &:not(:focus) {
     box-shadow: none;
@@ -104,7 +104,7 @@
 
 /* all disabled text fields */
 
-.rui-TextField:disabled {
+.rt-TextField:disabled {
   color: var(--gray-a9);
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a3);
@@ -113,7 +113,7 @@
 
 /* all readonly text fields */
 
-.rui-TextField:read-only {
+.rt-TextField:read-only {
   background-color: var(--gray-a3);
   &:not(:focus) {
     box-shadow: inset 0 0 0 1px var(--gray-a6);

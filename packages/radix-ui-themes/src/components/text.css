@@ -1,4 +1,4 @@
-.rui-Text {
+.rt-Text {
   margin: 0;
   line-height: var(--line-height, --default-line-height);
   letter-spacing: var(--letter-spacing, inherit);
@@ -7,7 +7,7 @@
     color: var(--accent-a11);
 
     &:where(.high-contrast),
-    & .rui-Text:where(.high-contrast) {
+    & .rt-Text:where(.high-contrast) {
       color: var(--accent-a12);
     }
   }
@@ -20,7 +20,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Text {
+  .rt-Text {
     &.size-1 {
       font-size: var(--font-size-1);
       --line-height: var(--line-height-1);

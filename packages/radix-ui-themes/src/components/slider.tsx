@@ -32,7 +32,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
       ref={forwardedRef}
       {...sliderProps}
       className={classNames(
-        'rui-SliderRoot',
+        'rt-SliderRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
@@ -40,14 +40,14 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
         className
       )}
     >
-      <SliderPrimitive.Track className="rui-SliderTrack">
+      <SliderPrimitive.Track className="rt-SliderTrack">
         <SliderPrimitive.Range
-          className="rui-SliderRange"
+          className="rt-SliderRange"
           data-inverted={sliderProps.inverted ? '' : undefined}
         />
       </SliderPrimitive.Track>
       {(sliderProps.value ?? sliderProps.defaultValue ?? []).map((value, index) => (
-        <SliderPrimitive.Thumb key={index} className="rui-SliderThumb" />
+        <SliderPrimitive.Thumb key={index} className="rt-SliderThumb" />
       ))}
     </SliderPrimitive.Root>
   );

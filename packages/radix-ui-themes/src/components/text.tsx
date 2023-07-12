@@ -40,12 +40,12 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
       {...textProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-Text',
+        'rt-Text',
         withBreakpoints(size, 'size'),
-        withBreakpoints(weight, 'rui-weight'),
+        withBreakpoints(weight, 'rt-weight'),
         withMarginProps(marginProps),
-        withBreakpoints(align, 'rui-ta'),
-        withBreakpoints(trim, 'rui-lt'),
+        withBreakpoints(align, 'rt-ta'),
+        withBreakpoints(trim, 'rt-lt'),
         { 'high-contrast': highContrast },
         className
       )}

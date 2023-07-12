@@ -1,8 +1,8 @@
-.rui-HoverCardTrigger.rui-Link {
+.rt-HoverCardTrigger.rt-Link {
   background-color: var(--accent-3);
 }
 
-.rui-HoverCardContent {
+.rt-HoverCardContent {
   border-radius: var(--radius-3);
   background-color: var(--color-panel);
   padding: var(--space-3);

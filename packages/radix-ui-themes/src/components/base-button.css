@@ -1,4 +1,4 @@
-.rui-BaseButton {
+.rt-BaseButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-BaseButton {
+.rt-BaseButton {
   &:where(:not(.variant-ghost)) {
     height: var(--base-button-height);
   }
@@ -24,7 +24,7 @@
 }
 
 @breakpoints {
-  .rui-BaseButton {
+  .rt-BaseButton {
     &.size-1 {
       --base-button-height: var(--space-5);
       border-radius: max(var(--radius-2), var(--radius-full));
@@ -48,7 +48,7 @@
 
 /* solid */
 
-.rui-BaseButton.variant-solid {
+.rt-BaseButton.variant-solid {
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
 
@@ -84,8 +84,8 @@
 
 /* soft / ghost */
 
-.rui-BaseButton.variant-soft,
-.rui-BaseButton.variant-ghost {
+.rt-BaseButton.variant-soft,
+.rt-BaseButton.variant-ghost {
   color: var(--accent-11);
 
   &:where(:focus-visible) {
@@ -95,7 +95,7 @@
     color: var(--accent-12);
   }
 }
-.rui-BaseButton.variant-soft {
+.rt-BaseButton.variant-soft {
   background-color: var(--accent-a3);
 
   &:where(:hover, [data-state='open']) {
@@ -105,7 +105,7 @@
     background-color: var(--accent-a5);
   }
 }
-.rui-BaseButton.variant-ghost {
+.rt-BaseButton.variant-ghost {
   &:where(:hover, [data-state='open']) {
     background-color: var(--accent-a3);
   }
@@ -116,8 +116,8 @@
 
 /* outline / surface */
 
-.rui-BaseButton.variant-outline,
-.rui-BaseButton.variant-surface {
+.rt-BaseButton.variant-outline,
+.rt-BaseButton.variant-surface {
   box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-11);
 
@@ -139,13 +139,13 @@
     color: var(--accent-12);
   }
 }
-.rui-BaseButton:where(.variant-surface) {
+.rt-BaseButton:where(.variant-surface) {
   background-color: var(--color-surface-1-accent);
 }
 
 /* all disabled buttons */
 
-.rui-BaseButton:disabled {
+.rt-BaseButton:disabled {
   color: var(--gray-a8);
   cursor: not-allowed;
   background-color: var(--gray-a3);

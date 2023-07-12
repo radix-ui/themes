@@ -28,7 +28,7 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
       {...separatorProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-Separator',
+        'rt-Separator',
         withBreakpoints(size, 'size'),
         withMarginProps(marginProps),
         className

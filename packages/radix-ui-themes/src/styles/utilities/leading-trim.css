@@ -1,29 +1,29 @@
 @breakpoints {
-  .rui-lt-normal::before,
-  .rui-lt-end::before,
-  .rui-lt-normal::after,
-  .rui-lt-start::after {
+  .rt-lt-normal::before,
+  .rt-lt-end::before,
+  .rt-lt-normal::after,
+  .rt-lt-start::after {
     content: none;
   }
 
-  .rui-lt-start::before,
-  .rui-lt-both::before,
-  .rui-lt-end::after,
-  .rui-lt-both::after {
+  .rt-lt-start::before,
+  .rt-lt-both::before,
+  .rt-lt-end::after,
+  .rt-lt-both::after {
     content: '';
     display: table;
   }
 
-  .rui-lt-start::before,
-  .rui-lt-both::before {
+  .rt-lt-start::before,
+  .rt-lt-both::before {
     margin-bottom: calc(
       var(--leading-trim-start, var(--default-leading-trim-start)) -
         var(--line-height, calc(1em * var(--default-line-height))) / 2
     );
   }
 
-  .rui-lt-end::after,
-  .rui-lt-both::after {
+  .rt-lt-end::after,
+  .rt-lt-both::after {
     margin-top: calc(
       var(--leading-trim-end, var(--default-leading-trim-end)) -
         var(--line-height, calc(1em * var(--default-line-height))) / 2

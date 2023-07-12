@@ -14,7 +14,7 @@ interface BlockquoteProps
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {
   const { children, className, ...blockquoteProps } = props;
   return (
-    <Text asChild {...blockquoteProps} ref={forwardedRef} className={classNames('rui-Blockquote')}>
+    <Text asChild {...blockquoteProps} ref={forwardedRef} className={classNames('rt-Blockquote')}>
       <blockquote>{children}</blockquote>
     </Text>
   );

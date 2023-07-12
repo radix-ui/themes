@@ -1,9 +1,9 @@
 @breakpoints {
-  .rui-fs-0 {
+  .rt-fs-0 {
     flex-shrink: 0;
   }
 
-  .rui-fs-1 {
+  .rt-fs-1 {
     flex-shrink: 1;
   }
 }

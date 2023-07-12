@@ -29,7 +29,7 @@ const TextField = React.forwardRef<TextFieldElement, TextFieldProps>((props, for
       {...textAreaProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-TextField',
+        'rt-TextField',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         withMarginProps(marginProps),

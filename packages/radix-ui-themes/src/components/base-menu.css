@@ -1,4 +1,4 @@
-.rui-BaseMenuContent {
+.rt-BaseMenuContent {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -11,11 +11,11 @@
   );
   border-radius: var(--base-menu-radius);
 
-  & .rui-ScrollAreaRoot {
+  & .rt-ScrollAreaRoot {
     display: flex;
     flex-direction: column;
   }
-  & .rui-ScrollAreaScrollbar {
+  & .rt-ScrollAreaScrollbar {
     --base-menu-scrollbar-margin: max(
       calc(var(--base-menu-radius) / 1.5),
       var(--base-menu-padding)
@@ -25,19 +25,19 @@
   }
 }
 
-.rui-BaseMenuViewport {
+.rt-BaseMenuViewport {
   flex: 1 1 0%;
   display: flex;
   flex-direction: column;
   overflow: auto;
   padding: var(--base-menu-padding);
 
-  .rui-BaseMenuContent:has(.rui-ScrollAreaScrollbar[data-orientation='vertical']) & {
+  .rt-BaseMenuContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical']) & {
     padding-right: 12px;
   }
 }
 
-.rui-BaseMenuItem {
+.rt-BaseMenuItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,15 +60,15 @@
   }
 
   /* reset with :not:has so we still support browsers without :has */
-  .rui-BaseMenuContent:not(:has(.rui-BaseMenuCheckboxItem, .rui-BaseMenuRadioItem)) & {
+  .rt-BaseMenuContent:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) & {
     padding-left: var(--space-3);
   }
-  .rui-BaseMenuContent:has(.rui-BaseMenuCheckboxItem, .rui-BaseMenuRadioItem) & {
+  .rt-BaseMenuContent:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem) & {
     padding-left: var(--space-5);
   }
 }
 
-.rui-BaseMenuShortcut {
+.rt-BaseMenuShortcut {
   display: flex;
   align-items: center;
   margin-left: var(--space-5);
@@ -78,7 +78,7 @@
   }
 }
 
-.rui-BaseMenuItemIndicator {
+.rt-BaseMenuItemIndicator {
   position: absolute;
   left: 0;
   width: var(--space-5);
@@ -87,12 +87,12 @@
   justify-content: center;
 }
 
-.rui-BaseMenuSeparator {
+.rt-BaseMenuSeparator {
   height: 1px;
   margin: var(--space-2) var(--space-3);
 }
 
-.rui-BaseMenuLabel {
+.rt-BaseMenuLabel {
   display: flex;
   align-items: center;
   height: var(--base-menu-item-height);
@@ -108,15 +108,15 @@
   }
 
   /* reset with :not:has so we still support browsers without :has */
-  .rui-BaseMenuContent:not(:has(.rui-BaseMenuCheckboxItem, .rui-BaseMenuRadioItem)) & {
+  .rt-BaseMenuContent:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) & {
     padding-left: var(--space-3);
   }
-  .rui-BaseMenuContent:has(.rui-BaseMenuCheckboxItem, .rui-BaseMenuRadioItem) & {
+  .rt-BaseMenuContent:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem) & {
     padding-left: var(--space-5);
   }
 }
 
-.rui-BaseMenuArrow {
+.rt-BaseMenuArrow {
   fill: var(--base-menu-bg);
 }
 
@@ -127,12 +127,12 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-BaseMenuContent {
+  .rt-BaseMenuContent {
     &.size-1 {
       --base-menu-padding: var(--space-1);
       --base-menu-item-height: var(--space-5);
 
-      & .rui-BaseMenuItem {
+      & .rt-BaseMenuItem {
         font-size: var(--font-size-1);
         letter-spacing: var(--letter-spacing-1);
       }
@@ -142,7 +142,7 @@
       --base-menu-padding: var(--space-2);
       --base-menu-item-height: var(--space-6);
 
-      & .rui-BaseMenuItem {
+      & .rt-BaseMenuItem {
         font-size: var(--font-size-2);
         letter-spacing: var(--letter-spacing-2);
       }
@@ -156,44 +156,44 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-BaseMenuContent {
+.rt-BaseMenuContent {
   --base-menu-bg: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
-.rui-BaseMenuItem[data-accent-scale] {
+.rt-BaseMenuItem[data-accent-scale] {
   color: var(--accent-11);
 }
-.rui-BaseMenuItem[data-disabled] {
+.rt-BaseMenuItem[data-disabled] {
   color: var(--gray-8);
 }
-.rui-BaseMenuShortcut {
+.rt-BaseMenuShortcut {
   color: var(--gray-11);
 }
-.rui-BaseMenuItem[data-disabled] .rui-BaseMenuShortcut,
-.rui-BaseMenuItem[data-highlighted] .rui-BaseMenuShortcut,
-.rui-BaseMenuSubTrigger[data-state='open'] .rui-BaseMenuShortcut {
+.rt-BaseMenuItem[data-disabled] .rt-BaseMenuShortcut,
+.rt-BaseMenuItem[data-highlighted] .rt-BaseMenuShortcut,
+.rt-BaseMenuSubTrigger[data-state='open'] .rt-BaseMenuShortcut {
   color: inherit;
 }
-.rui-BaseMenuLabel {
+.rt-BaseMenuLabel {
   color: var(--gray-11);
 }
-.rui-BaseMenuSeparator {
+.rt-BaseMenuSeparator {
   background-color: var(--gray-6);
 }
 
 /* solid */
 
-.rui-BaseMenuContent.variant-solid {
-  & .rui-BaseMenuSubTrigger[data-state='open'] {
+.rt-BaseMenuContent.variant-solid {
+  & .rt-BaseMenuSubTrigger[data-state='open'] {
     background-color: var(--accent-5);
   }
-  & .rui-BaseMenuItem[data-highlighted] {
+  & .rt-BaseMenuItem[data-highlighted] {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
   &:where(.high-contrast) {
-    & .rui-BaseMenuSubTrigger[data-state='open'],
-    & .rui-BaseMenuItem[data-highlighted] {
+    & .rt-BaseMenuSubTrigger[data-state='open'],
+    & .rt-BaseMenuItem[data-highlighted] {
       background-color: var(--accent-12);
       color: var(--accent-1);
 
@@ -207,11 +207,11 @@
 
 /* soft */
 
-.rui-BaseMenuContent.variant-soft {
-  & .rui-BaseMenuSubTrigger[data-state='open'] {
+.rt-BaseMenuContent.variant-soft {
+  & .rt-BaseMenuSubTrigger[data-state='open'] {
     background-color: var(--accent-3);
   }
-  & .rui-BaseMenuItem[data-highlighted] {
+  & .rt-BaseMenuItem[data-highlighted] {
     background-color: var(--accent-5);
     &[data-accent-scale] {
       color: var(--accent-12);

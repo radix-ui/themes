@@ -1,7 +1,7 @@
-.rui-RadioGroupRoot {
+.rt-RadioGroupRoot {
 }
 
-.rui-RadioGroupItem {
+.rt-RadioGroupItem {
   display: inline-flex;
   align-items: center;
   vertical-align: bottom;
@@ -11,7 +11,7 @@
   height: var(--line-height-2);
 }
 
-.rui-RadioGroupButton {
+.rt-RadioGroupButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
   border-radius: 100%;
 }
 
-.rui-RadioGroupIndicator {
+.rt-RadioGroupIndicator {
   background-color: currentColor;
   height: var(--radio-group-indicator-size);
   width: var(--radio-group-indicator-size);
@@ -35,7 +35,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-RadioGroupRoot {
+  .rt-RadioGroupRoot {
     &.size-1 {
       --radio-group-item-size: var(--space-4);
       --radio-group-indicator-size: calc(6px * var(--scaling));
@@ -53,25 +53,25 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-RadioGroupButton:where([data-state='unchecked']) {
+.rt-RadioGroupButton:where([data-state='unchecked']) {
   box-shadow: var(--shadow-1);
   background-color: var(--color-surface-1);
 }
 
 /* solid */
 
-.rui-RadioGroupRoot.variant-solid {
-  .rui-RadioGroupButton:where(:focus-visible) {
+.rt-RadioGroupRoot.variant-solid {
+  .rt-RadioGroupButton:where(:focus-visible) {
     outline-style: solid;
     outline-offset: 1px;
     outline-width: 2px;
     outline-color: var(--accent-a8);
   }
-  .rui-RadioGroupButton:where([data-state='checked']) {
+  .rt-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) .rui-RadioGroupButton:where([data-state='checked']) {
+  &:where(.high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-12);
     color: var(--accent-1);
 
@@ -83,7 +83,7 @@
 
 /* all disabled radios */
 
-.rui-RadioGroupRoot .rui-RadioGroupButton[data-disabled] {
+.rt-RadioGroupRoot .rt-RadioGroupButton[data-disabled] {
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a3);
   cursor: not-allowed;

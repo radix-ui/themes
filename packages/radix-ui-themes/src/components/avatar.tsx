@@ -36,7 +36,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       data-accent-scale={color}
       data-radius={radius}
       className={classNames(
-        'rui-AvatarRoot',
+        'rt-AvatarRoot',
         withMarginProps(marginProps),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
@@ -45,11 +45,11 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       )}
       style={style}
     >
-      {status === 'idle' || status === 'loading' ? <span className="rui-AvatarFallback" /> : null}
+      {status === 'idle' || status === 'loading' ? <span className="rt-AvatarFallback" /> : null}
 
       {status === 'error' ? (
         <AvatarPrimitive.Fallback
-          className={classNames('rui-AvatarFallback', {
+          className={classNames('rt-AvatarFallback', {
             'one-letter': typeof fallback === 'string' && fallback.length === 1,
             'two-letters': typeof fallback === 'string' && fallback.length === 2,
           })}
@@ -61,7 +61,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
 
       <AvatarPrimitive.Image
         ref={forwardedRef}
-        className="rui-AvatarImage"
+        className="rt-AvatarImage"
         {...imageProps}
         onLoadingStatusChange={(status) => {
           imageProps.onLoadingStatusChange?.(status);

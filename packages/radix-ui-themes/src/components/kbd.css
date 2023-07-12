@@ -9,7 +9,7 @@
   }
 }
 
-.rui-Kbd {
+.rt-Kbd {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -42,7 +42,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Kbd {
+.rt-Kbd {
   &.width-command {
     width: 3em;
     justify-content: flex-end;

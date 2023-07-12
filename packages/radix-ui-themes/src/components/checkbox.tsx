@@ -31,7 +31,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     <span
       data-radius={radius}
       className={classNames(
-        'rui-CheckboxRoot',
+        'rt-CheckboxRoot',
         withBreakpoints(size, 'size'),
         withMarginProps(marginProps),
         className
@@ -42,11 +42,11 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         data-accent-scale={color}
         {...checkboxProps}
         ref={forwardedRef}
-        className={classNames('rui-reset-button rui-CheckboxButton', `variant-${variant}`, {
+        className={classNames('rt-reset-button rt-CheckboxButton', `variant-${variant}`, {
           'high-contrast': highContrast,
         })}
       >
-        <CheckboxPrimitive.Indicator className="rui-CheckboxIndicator">
+        <CheckboxPrimitive.Indicator className="rt-CheckboxIndicator">
           <CheckIcon width={undefined} height={undefined} />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>

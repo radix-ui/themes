@@ -1,10 +1,10 @@
-.rui-ScrollAreaRoot {
+.rt-ScrollAreaRoot {
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
 
-.rui-ScrollAreaViewport {
+.rt-ScrollAreaViewport {
   width: 100%;
   height: 100%;
 
@@ -12,7 +12,7 @@
   overscroll-behavior-x: contain;
 }
 
-.rui-ScrollAreaScrollbar {
+.rt-ScrollAreaScrollbar {
   display: flex;
   /* Ensures no selection */
   user-select: none;
@@ -29,7 +29,7 @@
   }
 }
 
-.rui-ScrollAreaThumb {
+.rt-ScrollAreaThumb {
   position: relative;
 
   &::before {
@@ -52,7 +52,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-ScrollAreaScrollbar {
+  .rt-ScrollAreaScrollbar {
     &.size-1 {
       --scrollarea-scrollbar-size: var(--space-1);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
@@ -74,7 +74,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-ScrollAreaScrollbar {
+.rt-ScrollAreaScrollbar {
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-radius);
   margin: var(--space-1);
@@ -90,7 +90,7 @@
   }
 }
 
-.rui-ScrollAreaThumb {
+.rt-ScrollAreaThumb {
   background-color: var(--gray-a8);
   border-radius: inherit;
   transition: background-color 100ms;

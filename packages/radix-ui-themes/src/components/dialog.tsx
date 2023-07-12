@@ -31,11 +31,11 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild applyBackgroundColor={false}>
-          <DialogPrimitive.Overlay className="rui-DialogOverlay">
+          <DialogPrimitive.Overlay className="rt-DialogOverlay">
             <DialogPrimitive.Content
               {...contentProps}
               ref={forwardedRef}
-              className={classNames('rui-DialogContent', className)}
+              className={classNames('rt-DialogContent', className)}
             />
           </DialogPrimitive.Overlay>
         </Theme>

@@ -19,7 +19,7 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
     <TabsPrimitive.Root
       {...rootProps}
       ref={forwardedRef}
-      className={classNames('rui-TabsRoot', withMarginProps(marginProps), className)}
+      className={classNames('rt-TabsRoot', withMarginProps(marginProps), className)}
     />
   );
 });
@@ -36,7 +36,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
     <TabsPrimitive.List
       {...listProps}
       ref={forwardedRef}
-      className={classNames('rui-TabsList', withBreakpoints(size, 'size'), className)}
+      className={classNames('rt-TabsList', withBreakpoints(size, 'size'), className)}
     />
   );
 });
@@ -51,10 +51,10 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
       <TabsPrimitive.Trigger
         {...triggerProps}
         ref={forwardedRef}
-        className={classNames('rui-reset-button', 'rui-TabsTrigger', className)}
+        className={classNames('rt-reset-button', 'rt-TabsTrigger', className)}
       >
-        <span className="rui-TabsTriggerInner">{children}</span>
-        <span className="rui-TabsTriggerInnerHidden">{children}</span>
+        <span className="rt-TabsTriggerInner">{children}</span>
+        <span className="rt-TabsTriggerInnerHidden">{children}</span>
       </TabsPrimitive.Trigger>
     );
   }
@@ -68,7 +68,7 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
     <TabsPrimitive.Content
       {...props}
       ref={forwardedRef}
-      className={classNames('rui-TabsContent', props.className)}
+      className={classNames('rt-TabsContent', props.className)}
     />
   )
 );

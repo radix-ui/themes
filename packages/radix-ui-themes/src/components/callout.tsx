@@ -38,7 +38,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         data-radius={radius}
         {...rootProps}
         className={classNames(
-          'rui-CalloutRoot',
+          'rt-CalloutRoot',
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
           withMarginProps(marginProps),
@@ -67,7 +67,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
       <Text asChild color={color} size={getTextSize(size)} highContrast={highContrast}>
         <div
           {...props}
-          className={classNames('rui-CalloutIcon', props.className)}
+          className={classNames('rt-CalloutIcon', props.className)}
           ref={forwardedRef}
         />
       </Text>
@@ -89,7 +89,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         highContrast={highContrast}
         {...props}
         ref={forwardedRef}
-        className={classNames('rui-CalloutText', props.className)}
+        className={classNames('rt-CalloutText', props.className)}
       />
     );
   }

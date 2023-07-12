@@ -27,7 +27,7 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
   function getChild() {
     const firstChild = React.Children.only(children) as React.ReactElement;
     return React.cloneElement(firstChild, {
-      children: <div className="rui-CardInner">{firstChild.props.children}</div>,
+      children: <div className="rt-CardInner">{firstChild.props.children}</div>,
     });
   }
 
@@ -37,16 +37,16 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
       ref={forwardedRef}
       {...cardProps}
       className={classNames(
-        'rui-reset-a',
-        'rui-reset-button',
-        'rui-Card',
+        'rt-reset-a',
+        'rt-reset-button',
+        'rt-Card',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         withMarginProps(marginProps),
         className
       )}
     >
-      {asChild ? getChild() : <div className="rui-CardInner">{children}</div>}
+      {asChild ? getChild() : <div className="rt-CardInner">{children}</div>}
     </Comp>
   );
 });

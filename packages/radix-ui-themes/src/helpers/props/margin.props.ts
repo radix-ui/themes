@@ -41,13 +41,13 @@ function extractMarginProps<T extends MarginProps>(props: T) {
 
 function withMarginProps(props: MarginProps) {
   return [
-    withBreakpoints(props.m, 'rui-m'),
-    withBreakpoints(props.mx, 'rui-mx'),
-    withBreakpoints(props.my, 'rui-my'),
-    withBreakpoints(props.mt, 'rui-mt'),
-    withBreakpoints(props.mr, 'rui-mr'),
-    withBreakpoints(props.mb, 'rui-mb'),
-    withBreakpoints(props.ml, 'rui-ml'),
+    withBreakpoints(props.m, 'rt-m'),
+    withBreakpoints(props.mx, 'rt-mx'),
+    withBreakpoints(props.my, 'rt-my'),
+    withBreakpoints(props.mt, 'rt-mt'),
+    withBreakpoints(props.mr, 'rt-mr'),
+    withBreakpoints(props.mb, 'rt-mb'),
+    withBreakpoints(props.ml, 'rt-ml'),
   ]
     .filter(Boolean)
     .join(' ');

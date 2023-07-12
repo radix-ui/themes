@@ -1,6 +1,6 @@
 @import './base-button.css';
 
-.rui-Button {
+.rt-Button {
   &:where(:not(.variant-ghost)) {
     & svg {
       opacity: 0.8;
@@ -14,7 +14,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Button {
+.rt-Button {
   &:where(.variant-ghost) {
     padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
 
@@ -37,7 +37,7 @@
 }
 
 @breakpoints {
-  .rui-Button {
+  .rt-Button {
     &.size-1 {
       gap: var(--space-1);
       font-size: var(--font-size-1);
@@ -95,6 +95,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Button:where(.variant-solid, .variant-soft) {
+.rt-Button:where(.variant-solid, .variant-soft) {
   font-weight: var(--font-weight-medium);
 }

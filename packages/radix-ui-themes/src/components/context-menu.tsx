@@ -61,9 +61,9 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
             {...contentProps}
             ref={forwardedRef}
             className={classNames(
-              'rui-PopperContent',
-              'rui-BaseMenuContent',
-              'rui-ContextMenuContent',
+              'rt-PopperContent',
+              'rt-BaseMenuContent',
+              'rt-ContextMenuContent',
               withBreakpoints(size, 'size'),
               `variant-${variant}`,
               { 'high-contrast': highContrast },
@@ -71,7 +71,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
             )}
           >
             <ScrollArea type="auto">
-              <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
+              <div className={classNames('rt-BaseMenuViewport', 'rt-ContextMenuViewport')}>
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
                     () => ({ size, variant, color: resolvedColor, highContrast }),
@@ -98,7 +98,7 @@ const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLa
     <ContextMenuPrimitive.Label
       {...props}
       ref={forwardedRef}
-      className={classNames('rui-BaseMenuLabel', 'rui-ContextMenuLabel', props.className)}
+      className={classNames('rt-BaseMenuLabel', 'rt-ContextMenuLabel', props.className)}
     />
   )
 );
@@ -125,10 +125,10 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         data-accent-scale={color}
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rui-reset-a', 'rui-BaseMenuItem', 'rui-ContextMenuItem', className)}
+        className={classNames('rt-reset-a', 'rt-BaseMenuItem', 'rt-ContextMenuItem', className)}
       >
         <Slottable>{children}</Slottable>
-        {shortcut && <div className="rui-BaseMenuShortcut rui-ContextMenuShortcut">{shortcut}</div>}
+        {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
       </ContextMenuPrimitive.Item>
     );
   }
@@ -143,7 +143,7 @@ const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGr
     <ContextMenuPrimitive.Group
       {...props}
       ref={forwardedRef}
-      className={classNames('rui-BaseMenuGroup', 'rui-ContextMenuGroup', props.className)}
+      className={classNames('rt-BaseMenuGroup', 'rt-ContextMenuGroup', props.className)}
     />
   )
 );
@@ -159,7 +159,7 @@ const ContextMenuRadioGroup = React.forwardRef<
   <ContextMenuPrimitive.RadioGroup
     {...props}
     ref={forwardedRef}
-    className={classNames('rui-BaseMenuRadioGroup', 'rui-ContextMenuRadioGroup', props.className)}
+    className={classNames('rt-BaseMenuRadioGroup', 'rt-ContextMenuRadioGroup', props.className)}
   />
 ));
 ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup';
@@ -177,15 +177,15 @@ const ContextMenuRadioItem = React.forwardRef<
       {...itemProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-BaseMenuItem',
-        'rui-BaseMenuRadioItem',
-        'rui-ContextMenuItem',
-        'rui-ContextMenuRadioItem',
+        'rt-BaseMenuItem',
+        'rt-BaseMenuRadioItem',
+        'rt-ContextMenuItem',
+        'rt-ContextMenuRadioItem',
         className
       )}
     >
       {children}
-      <ContextMenuPrimitive.ItemIndicator className="rui-BaseMenuItemIndicator rui-ContextMenuItemIndicator">
+      <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
         <DotFilledIcon />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.RadioItem>
@@ -208,18 +208,18 @@ const ContextMenuCheckboxItem = React.forwardRef<
       {...itemProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-BaseMenuItem',
-        'rui-BaseMenuCheckboxItem',
-        'rui-ContextMenuItem',
-        'rui-ContextMenuCheckboxItem',
+        'rt-BaseMenuItem',
+        'rt-BaseMenuCheckboxItem',
+        'rt-ContextMenuItem',
+        'rt-ContextMenuCheckboxItem',
         className
       )}
     >
       {children}
-      <ContextMenuPrimitive.ItemIndicator className="rui-BaseMenuItemIndicator rui-ContextMenuItemIndicator">
+      <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
         <CheckIcon />
       </ContextMenuPrimitive.ItemIndicator>
-      {shortcut && <div className="rui-BaseMenuShortcut rui-ContextMenuShortcut">{shortcut}</div>}
+      {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
     </ContextMenuPrimitive.CheckboxItem>
   );
 });
@@ -243,15 +243,15 @@ const ContextMenuSubTrigger = React.forwardRef<
       {...subTriggerProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-BaseMenuItem',
-        'rui-BaseMenuSubTrigger',
-        'rui-ContextMenuItem',
-        'rui-ContextMenuSubTrigger',
+        'rt-BaseMenuItem',
+        'rt-BaseMenuSubTrigger',
+        'rt-ContextMenuItem',
+        'rt-ContextMenuSubTrigger',
         className
       )}
     >
       {children}
-      <div className="rui-BaseMenuShortcut rui-ContextMenuShortcut">
+      <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">
         <ChevronRightIcon />
       </div>
     </ContextMenuPrimitive.SubTrigger>
@@ -280,11 +280,11 @@ const ContextMenuSubContent = React.forwardRef<
           {...subContentProps}
           ref={forwardedRef}
           className={classNames(
-            'rui-PopperContent',
-            'rui-BaseMenuContent',
-            'rui-BaseMenuSubContent',
-            'rui-ContextMenuContent',
-            'rui-ContextMenuSubContent',
+            'rt-PopperContent',
+            'rt-BaseMenuContent',
+            'rt-BaseMenuSubContent',
+            'rt-ContextMenuContent',
+            'rt-ContextMenuSubContent',
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
             { 'high-contrast': highContrast },
@@ -292,7 +292,7 @@ const ContextMenuSubContent = React.forwardRef<
           )}
         >
           <ScrollArea type="auto">
-            <div className={classNames('rui-BaseMenuViewport', 'rui-ContextMenuViewport')}>
+            <div className={classNames('rt-BaseMenuViewport', 'rt-ContextMenuViewport')}>
               {children}
             </div>
           </ScrollArea>
@@ -313,7 +313,7 @@ const ContextMenuSeparator = React.forwardRef<
   <ContextMenuPrimitive.Separator
     {...props}
     ref={forwardedRef}
-    className={classNames('rui-BaseMenuSeparator', 'rui-ContextMenuSeparator', props.className)}
+    className={classNames('rt-BaseMenuSeparator', 'rt-ContextMenuSeparator', props.className)}
   />
 ));
 ContextMenuSeparator.displayName = 'ContextMenuSeparator';

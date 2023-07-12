@@ -8,7 +8,7 @@ const IconButton = React.forwardRef<IconButtonElement, IconButtonProps>((props, 
   <BaseButton
     {...props}
     ref={forwardedRef}
-    className={classNames('rui-IconButton', props.className)}
+    className={classNames('rt-IconButton', props.className)}
   />
 ));
 IconButton.displayName = 'IconButton';

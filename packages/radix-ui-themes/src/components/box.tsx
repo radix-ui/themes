@@ -31,10 +31,10 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
       {...boxProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-Box',
+        'rt-Box',
         withMarginProps(marginProps),
         withLayoutProps(layoutProps),
-        withBreakpoints(display, 'rui-display'),
+        withBreakpoints(display, 'rt-display'),
         className
       )}
     />

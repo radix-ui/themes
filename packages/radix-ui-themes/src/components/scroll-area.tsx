@@ -32,22 +32,22 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     <ScrollAreaPrimitive.Root
       type={type}
       scrollHideDelay={scrollHideDelay}
-      className={classNames('rui-ScrollAreaRoot', withMarginProps(marginProps), className)}
+      className={classNames('rt-ScrollAreaRoot', withMarginProps(marginProps), className)}
       style={style}
     >
       <ScrollAreaPrimitive.Viewport
         {...viewportProps}
         ref={forwardedRef}
-        className="rui-ScrollAreaViewport"
+        className="rt-ScrollAreaViewport"
       />
 
       {scrollbars !== 'vertical' ? (
         <ScrollAreaPrimitive.Scrollbar
           data-radius={radius}
           orientation="horizontal"
-          className={classNames('rui-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
+          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
         >
-          <ScrollAreaPrimitive.Thumb className="rui-ScrollAreaThumb" />
+          <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
         </ScrollAreaPrimitive.Scrollbar>
       ) : null}
 
@@ -55,14 +55,14 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         <ScrollAreaPrimitive.Scrollbar
           data-radius={radius}
           orientation="vertical"
-          className={classNames('rui-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
+          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
         >
-          <ScrollAreaPrimitive.Thumb className="rui-ScrollAreaThumb" />
+          <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
         </ScrollAreaPrimitive.Scrollbar>
       ) : null}
 
       {scrollbars === 'both' ? (
-        <ScrollAreaPrimitive.Corner className="rui-ScrollAreaCorner" />
+        <ScrollAreaPrimitive.Corner className="rt-ScrollAreaCorner" />
       ) : null}
     </ScrollAreaPrimitive.Root>
   );

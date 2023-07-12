@@ -19,7 +19,7 @@ const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTrig
   (props, forwardedRef) => (
     <HoverCardPrimitive.Trigger
       ref={forwardedRef}
-      className={classNames('rui-HoverCardTrigger', props.className)}
+      className={classNames('rt-HoverCardTrigger', props.className)}
       {...props}
       asChild
     />
@@ -43,7 +43,7 @@ const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>
             collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
-            className={classNames('rui-PopperContent', 'rui-HoverCardContent', className)}
+            className={classNames('rt-PopperContent', 'rt-HoverCardContent', className)}
           />
         </Theme>
       </HoverCardPrimitive.Portal>

@@ -1,61 +1,61 @@
 @breakpoints {
-  .rui-h-auto {
+  .rt-h-auto {
     height: auto;
   }
 
-  .rui-h-max-content {
+  .rt-h-max-content {
     height: max-content;
   }
 
-  .rui-h-min-content {
+  .rt-h-min-content {
     height: min-content;
   }
 
-  .rui-h-0 {
+  .rt-h-0 {
     height: 0;
   }
 
-  .rui-h-1 {
+  .rt-h-1 {
     height: var(--space-1);
   }
 
-  .rui-h-2 {
+  .rt-h-2 {
     height: var(--space-2);
   }
 
-  .rui-h-3 {
+  .rt-h-3 {
     height: var(--space-3);
   }
 
-  .rui-h-4 {
+  .rt-h-4 {
     height: var(--space-4);
   }
 
-  .rui-h-5 {
+  .rt-h-5 {
     height: var(--space-5);
   }
 
-  .rui-h-6 {
+  .rt-h-6 {
     height: var(--space-6);
   }
 
-  .rui-h-7 {
+  .rt-h-7 {
     height: var(--space-7);
   }
 
-  .rui-h-8 {
+  .rt-h-8 {
     height: var(--space-8);
   }
 
-  .rui-h-9 {
+  .rt-h-9 {
     height: var(--space-9);
   }
 
-  .rui-h-50\% {
+  .rt-h-50\% {
     height: 50%;
   }
 
-  .rui-h-100\% {
+  .rt-h-100\% {
     height: 100%;
   }
 }

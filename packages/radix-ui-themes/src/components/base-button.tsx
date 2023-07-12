@@ -34,9 +34,9 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       {...baseButtonProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-reset-button',
-        'rui-reset-a',
-        'rui-BaseButton',
+        'rt-reset-button',
+        'rt-reset-a',
+        'rt-BaseButton',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },

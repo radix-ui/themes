@@ -1,4 +1,4 @@
-.rui-Code {
+.rt-Code {
   box-sizing: border-box;
   font-family: var(--code-font-family);
   font-size: calc(100% * var(--code-font-size-adjust));
@@ -18,7 +18,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Code {
+  .rt-Code {
     &.size-1 {
       font-size: calc(var(--font-size-1) * var(--code-font-size-adjust));
       line-height: var(--line-height-1);
@@ -73,19 +73,19 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-Code:where(:not(.variant-plain)) {
+.rt-Code:where(:not(.variant-plain)) {
   padding-left: 0.2em;
   padding-right: 0.2em;
 }
 
 /* plain */
 
-.rui-Code.variant-plain {
+.rt-Code.variant-plain {
 }
 
 /* solid */
 
-.rui-Code.variant-solid {
+.rt-Code.variant-solid {
   background-color: var(--accent-a9);
   color: var(--accent-9-contrast);
 
@@ -97,7 +97,7 @@
 
 /* soft */
 
-.rui-Code.variant-soft {
+.rt-Code.variant-soft {
   background-color: var(--accent-a3);
   color: var(--accent-11);
 
@@ -109,7 +109,7 @@
 
 /* outline */
 
-.rui-Code.variant-outline {
+.rt-Code.variant-outline {
   box-shadow: 0 0 0 1px var(--accent-a6);
   color: var(--accent-11);
 

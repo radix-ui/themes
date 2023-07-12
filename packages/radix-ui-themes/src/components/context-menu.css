@@ -1,6 +1,6 @@
 @import './base-menu.css';
 
-.rui-ContextMenuContent {
+.rt-ContextMenuContent {
   max-height: var(--radix-context-menu-content-available-height);
   transform-origin: var(--radix-context-menu-content-transform-origin);
 }

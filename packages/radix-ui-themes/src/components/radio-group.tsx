@@ -31,7 +31,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
         {...rootProps}
         ref={forwardedRef}
         className={classNames(
-          'rui-RadioGroupRoot',
+          'rt-RadioGroupRoot',
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
           { 'high-contrast': highContrast },
@@ -54,15 +54,15 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
     const { className, style, ...itemProps } = marginRest;
     return (
       <span
-        className={classNames('rui-RadioGroupItem', withMarginProps(marginProps), className)}
+        className={classNames('rt-RadioGroupItem', withMarginProps(marginProps), className)}
         style={style}
       >
         <RadioGroupPrimitive.Item
           {...itemProps}
           ref={forwardedRef}
-          className={classNames('rui-reset-button', 'rui-RadioGroupButton')}
+          className={classNames('rt-reset-button', 'rt-RadioGroupButton')}
         >
-          <RadioGroupPrimitive.Indicator className="rui-RadioGroupIndicator" />
+          <RadioGroupPrimitive.Indicator className="rt-RadioGroupIndicator" />
         </RadioGroupPrimitive.Item>
       </span>
     );

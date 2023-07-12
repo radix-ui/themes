@@ -25,11 +25,11 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
       {...codeProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-Code',
+        'rt-Code',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
-        withBreakpoints(weight, 'rui-weight'),
+        withBreakpoints(weight, 'rt-weight'),
         withMarginProps(marginProps),
         className
       )}

@@ -4,7 +4,7 @@
   --container-3: 1168px;
 }
 
-.rui-Container {
+.rt-Container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@
   flex-grow: 1;
 }
 
-.rui-ContainerInner {
+.rt-ContainerInner {
   width: 100%;
 }
 
@@ -23,14 +23,14 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Container {
-    &.size-1 .rui-ContainerInner {
+  .rt-Container {
+    &.size-1 .rt-ContainerInner {
       max-width: var(--container-1);
     }
-    &.size-2 .rui-ContainerInner {
+    &.size-2 .rt-ContainerInner {
       max-width: var(--container-2);
     }
-    &.size-3 .rui-ContainerInner {
+    &.size-3 .rt-ContainerInner {
       max-width: var(--container-3);
     }
   }

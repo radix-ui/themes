@@ -1,4 +1,4 @@
-.rui-Link {
+.rt-Link {
   cursor: pointer;
   text-decoration-line: none;
   text-decoration-style: solid;
@@ -20,7 +20,7 @@
   }
 
   &.high-contrast,
-  .rui-Text:where([data-accent-scale]):not(.high-contrast) & {
+  .rt-Text:where([data-accent-scale]):not(.high-contrast) & {
     color: var(--accent-12);
     text-decoration-line: underline;
     text-decoration-color: var(--accent-6);
@@ -35,7 +35,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Link {
+  .rt-Link {
     &.size-7,
     &.size-8,
     &.size-9 {

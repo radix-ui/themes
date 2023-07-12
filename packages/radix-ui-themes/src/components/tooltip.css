@@ -1,4 +1,4 @@
-.rui-TooltipContent {
+.rt-TooltipContent {
   padding: var(--space-1) var(--space-2);
   --tooltip-bg: var(--gray-12);
   background-color: var(--tooltip-bg);
@@ -25,13 +25,13 @@
   }
 }
 
-.rui-TooltipText {
+.rt-TooltipText {
   color: var(--gray-1);
   user-select: none;
   cursor: default;
 }
 
-.rui-TooltipArrow {
+.rt-TooltipArrow {
   fill: var(--tooltip-bg);
 }
 
@@ -41,11 +41,11 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-TooltipContent.multiline {
+.rt-TooltipContent.multiline {
   max-width: 250px;
   border-radius: var(--radius-2);
 
-  & .rui-TooltipText {
+  & .rt-TooltipText {
     line-height: var(--default-line-height);
   }
 }

@@ -1,4 +1,4 @@
-.rui-Heading {
+.rt-Heading {
   margin: 0;
   font-family: var(--heading-font-family);
   font-style: var(--heading-font-style);
@@ -10,7 +10,7 @@
     color: var(--accent-a11);
 
     &:where(.high-contrast),
-    & .rui-Text:where(.high-contrast) {
+    & .rt-Text:where(.high-contrast) {
       color: var(--accent-a12);
     }
   }
@@ -23,7 +23,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Heading {
+  .rt-Heading {
     &.size-1 {
       font-size: calc(var(--font-size-1) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-1);

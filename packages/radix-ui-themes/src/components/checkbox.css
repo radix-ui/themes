@@ -1,4 +1,4 @@
-.rui-CheckboxRoot {
+.rt-CheckboxRoot {
   display: inline-flex;
   align-items: center;
   vertical-align: bottom;
@@ -8,7 +8,7 @@
   height: var(--line-height-2);
 }
 
-.rui-CheckboxButton {
+.rt-CheckboxButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
   width: var(--checkbox-size);
 }
 
-.rui-CheckboxIndicator {
+.rt-CheckboxIndicator {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,16 +37,16 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-CheckboxRoot {
+  .rt-CheckboxRoot {
     &.size-1 {
       --checkbox-size: var(--space-4);
-      & .rui-CheckboxButton {
+      & .rt-CheckboxButton {
         border-radius: var(--radius-1);
       }
     }
     &.size-2 {
       --checkbox-size: var(--space-5);
-      & .rui-CheckboxButton {
+      & .rt-CheckboxButton {
         border-radius: var(--radius-2);
       }
     }
@@ -59,14 +59,14 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-CheckboxButton:where([data-state='unchecked']) {
+.rt-CheckboxButton:where([data-state='unchecked']) {
   box-shadow: var(--shadow-1);
   background-color: var(--color-surface-1);
 }
 
 /* solid */
 
-.rui-CheckboxButton.variant-solid {
+.rt-CheckboxButton.variant-solid {
   &:where(:focus-visible) {
     outline-style: solid;
     outline-offset: 1px;
@@ -90,7 +90,7 @@
 
 /* all disabled checkboxes */
 
-.rui-CheckboxButton[data-disabled] {
+.rt-CheckboxButton[data-disabled] {
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a3);
   cursor: not-allowed;

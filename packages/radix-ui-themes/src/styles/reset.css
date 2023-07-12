@@ -4,14 +4,14 @@
   z-index: 0;
 }
 
-.rui-reset-a {
+.rt-reset-a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   outline: none;
 }
 
-.rui-reset-button {
+.rt-reset-button {
   appearance: none;
   background-color: transparent;
   border: none;

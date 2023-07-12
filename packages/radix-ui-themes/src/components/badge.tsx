@@ -26,7 +26,7 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
       {...badgeProps}
       ref={forwardedRef}
       className={classNames(
-        'rui-Badge',
+        'rt-Badge',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },

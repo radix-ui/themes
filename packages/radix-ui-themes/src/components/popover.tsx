@@ -34,7 +34,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
             collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
-            className={classNames('rui-PopperContent', 'rui-PopoverContent', className)}
+            className={classNames('rt-PopperContent', 'rt-PopoverContent', className)}
           />
         </Theme>
       </PopoverPrimitive.Portal>

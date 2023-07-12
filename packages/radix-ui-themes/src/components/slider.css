@@ -1,4 +1,4 @@
-.rui-SliderRoot {
+.rt-SliderRoot {
   position: relative;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   }
 }
 
-.rui-SliderTrack {
+.rt-SliderTrack {
   position: relative;
   flex-grow: 1;
   border-radius: var(--radius-1);
@@ -33,7 +33,7 @@
   }
 }
 
-.rui-SliderRange {
+.rt-SliderRange {
   position: absolute;
 
   &[data-orientation='horizontal'] {
@@ -61,7 +61,7 @@
   }
 }
 
-.rui-SliderThumb {
+.rt-SliderThumb {
   display: block;
   width: var(--slider-thumb-size);
   height: var(--slider-thumb-size);
@@ -86,7 +86,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-SliderRoot {
+  .rt-SliderRoot {
     &.size-1 {
       --slider-track-size: var(--space-1);
       --slider-thumb-size: calc(14px * var(--scaling));
@@ -123,16 +123,16 @@
   }
 }
 
-.rui-SliderTrack {
+.rt-SliderTrack {
   background-color: var(--gray-a3);
   box-shadow: var(--slider-track-shadow);
 }
 
-.rui-SliderRange {
+.rt-SliderRange {
   box-shadow: inset 0 1.5px 2px 0 var(--black-a7);
 }
 
-.rui-SliderThumb {
+.rt-SliderThumb {
   background-color: white;
   box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--gray-a5);
 
@@ -144,37 +144,37 @@
 
 /* solid */
 
-.rui-SliderRoot.variant-solid {
-  & .rui-SliderRange {
+.rt-SliderRoot.variant-solid {
+  & .rt-SliderRange {
     background-color: var(--accent-9);
   }
-  &:where(.high-contrast) .rui-SliderRange {
+  &:where(.high-contrast) .rt-SliderRange {
     background-color: var(--accent-12);
   }
 }
 
 /* soft */
 
-.rui-SliderRoot.variant-soft {
-  & .rui-SliderRange {
+.rt-SliderRoot.variant-soft {
+  & .rt-SliderRange {
     background-color: var(--accent-a6);
   }
 }
 
 /* all disabled Sliders */
 
-.rui-SliderRoot[data-disabled] {
+.rt-SliderRoot[data-disabled] {
   cursor: not-allowed;
 
-  & .rui-SliderTrack[data-disabled] {
+  & .rt-SliderTrack[data-disabled] {
     background-color: var(--gray-a3);
     box-shadow: none;
   }
-  & .rui-SliderRange[data-disabled] {
+  & .rt-SliderRange[data-disabled] {
     background-color: var(--gray-7);
     box-shadow: none;
   }
-  & .rui-SliderThumb[data-disabled] {
+  & .rt-SliderThumb[data-disabled] {
     background-color: var(--gray-6);
     box-shadow: none;
   }

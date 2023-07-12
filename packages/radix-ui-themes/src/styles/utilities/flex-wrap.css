@@ -1,13 +1,13 @@
 @breakpoints {
-  .rui-fw-nowrap {
+  .rt-fw-nowrap {
     flex-wrap: nowrap;
   }
 
-  .rui-fw-wrap {
+  .rt-fw-wrap {
     flex-wrap: wrap;
   }
 
-  .rui-fw-wrap-reverse {
+  .rt-fw-wrap-reverse {
     flex-wrap: wrap-reverse;
   }
 }

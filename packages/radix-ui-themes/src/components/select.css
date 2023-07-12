@@ -1,4 +1,4 @@
-.rui-SelectTrigger {
+.rt-SelectTrigger {
   justify-content: space-between;
   line-height: var(--height);
   font-weight: var(--font-weight-regular);
@@ -11,11 +11,11 @@
   }
 }
 
-.rui-SelectIcon {
+.rt-SelectIcon {
   flex-shrink: 0;
 }
 
-.rui-SelectContent {
+.rt-SelectContent {
   overflow: hidden;
 
   background-color: var(--select-content-bg);
@@ -31,11 +31,11 @@
     transform-origin: var(--radix-select-content-transform-origin);
   }
 
-  & .rui-ScrollAreaRoot {
+  & .rt-ScrollAreaRoot {
     display: flex;
     flex-direction: column;
   }
-  & .rui-ScrollAreaScrollbar {
+  & .rt-ScrollAreaScrollbar {
     --select-content-scrollbar-margin: max(
       calc(var(--select-content-radius) / 1.5),
       var(--select-content-padding)
@@ -45,16 +45,16 @@
   }
 }
 
-.rui-SelectViewport {
+.rt-SelectViewport {
   box-sizing: border-box;
   padding: var(--select-content-padding);
 
-  .rui-SelectContent:has(.rui-ScrollAreaScrollbar[data-orientation='vertical']) & {
+  .rt-SelectContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical']) & {
     padding-right: 12px;
   }
 }
 
-.rui-SelectItem {
+.rt-SelectItem {
   display: flex;
   align-items: center;
   height: var(--select-item-height);
@@ -72,7 +72,7 @@
   user-select: none;
 }
 
-.rui-SelectItemIndicator {
+.rt-SelectItemIndicator {
   position: absolute;
   left: 0;
   width: var(--space-5);
@@ -81,12 +81,12 @@
   justify-content: center;
 }
 
-.rui-SelectSeparator {
+.rt-SelectSeparator {
   height: 1px;
   margin: var(--space-2);
 }
 
-.rui-SelectLabel {
+.rt-SelectLabel {
   display: flex;
   align-items: center;
   height: var(--select-item-height);
@@ -111,12 +111,12 @@
 /* For trigger size, see base-button.css and button.css */
 
 @breakpoints {
-  .rui-SelectContent {
+  .rt-SelectContent {
     &.size-1 {
       --select-content-padding: var(--space-1);
       --select-item-height: var(--space-5);
 
-      & .rui-SelectItem {
+      & .rt-SelectItem {
         font-size: var(--font-size-1);
         letter-spacing: var(--letter-spacing-1);
       }
@@ -126,7 +126,7 @@
       --select-content-padding: var(--space-2);
       --select-item-height: var(--space-6);
 
-      & .rui-SelectItem {
+      & .rt-SelectItem {
         font-size: var(--font-size-2);
         letter-spacing: var(--letter-spacing-2);
       }
@@ -142,7 +142,7 @@
 
 /* See base-button.css and button.css */
 
-.rui-SelectTrigger.variant-surface:where(:hover, [data-state='open']) {
+.rt-SelectTrigger.variant-surface:where(:hover, [data-state='open']) {
   background-color: var(--color-surface-1);
 }
 
@@ -152,28 +152,28 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-SelectContent {
+.rt-SelectContent {
   --select-content-bg: var(--color-panel);
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
-.rui-SelectItem[data-disabled] {
+.rt-SelectItem[data-disabled] {
   color: var(--gray-8);
 }
-.rui-SelectLabel {
+.rt-SelectLabel {
   color: var(--gray-11);
 }
-.rui-SelectSeparator {
+.rt-SelectSeparator {
   background-color: var(--gray-6);
 }
 
 /* solid */
 
-.rui-SelectContent.variant-solid {
-  & .rui-SelectItem[data-highlighted] {
+.rt-SelectContent.variant-solid {
+  & .rt-SelectItem[data-highlighted] {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) .rui-SelectItem[data-highlighted] {
+  &:where(.high-contrast) .rt-SelectItem[data-highlighted] {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -181,8 +181,8 @@
 
 /* soft */
 
-.rui-SelectContent.variant-soft {
-  & .rui-SelectItem[data-highlighted] {
+.rt-SelectContent.variant-soft {
+  & .rt-SelectItem[data-highlighted] {
     background-color: var(--accent-5);
   }
 }

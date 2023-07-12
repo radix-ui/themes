@@ -1,4 +1,4 @@
-.rui-AvatarRoot {
+.rt-AvatarRoot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -9,14 +9,14 @@
   flex-shrink: 0;
 }
 
-.rui-AvatarImage {
+.rt-AvatarImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: inherit;
 }
 
-.rui-AvatarFallback {
+.rt-AvatarFallback {
   z-index: 0;
   width: 100%;
   height: 100%;
@@ -38,7 +38,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-AvatarFallback {
+.rt-AvatarFallback {
   font-weight: var(--font-weight-medium);
 
   &.one-letter {
@@ -52,7 +52,7 @@
 }
 
 @breakpoints {
-  .rui-AvatarRoot {
+  .rt-AvatarRoot {
     &.size-1 {
       --avatar-size: var(--space-5);
       border-radius: max(var(--radius-2), var(--radius-full));
@@ -99,12 +99,12 @@
 
 /* solid */
 
-.rui-AvatarRoot.variant-solid {
-  & .rui-AvatarFallback {
+.rt-AvatarRoot.variant-solid {
+  & .rt-AvatarFallback {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) .rui-AvatarFallback {
+  &:where(.high-contrast) .rt-AvatarFallback {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -112,12 +112,12 @@
 
 /* soft */
 
-.rui-AvatarRoot.variant-soft {
-  & .rui-AvatarFallback {
+.rt-AvatarRoot.variant-soft {
+  & .rt-AvatarFallback {
     background-color: var(--accent-3);
     color: var(--accent-11);
   }
-  &:where(.high-contrast) .rui-AvatarFallback {
+  &:where(.high-contrast) .rt-AvatarFallback {
     color: var(--accent-12);
   }
 }

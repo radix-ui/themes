@@ -1,33 +1,33 @@
 @breakpoints {
-  .rui-display-block {
+  .rt-display-block {
     display: block;
   }
 
-  .rui-display-inline {
+  .rt-display-inline {
     display: inline;
   }
 
-  .rui-display-inline-block {
+  .rt-display-inline-block {
     display: inline-block;
   }
 
-  .rui-display-flex {
+  .rt-display-flex {
     display: flex;
   }
 
-  .rui-display-inline-flex {
+  .rt-display-inline-flex {
     display: inline-flex;
   }
 
-  .rui-display-grid {
+  .rt-display-grid {
     display: grid;
   }
 
-  .rui-display-inline-grid {
+  .rt-display-inline-grid {
     display: inline-grid;
   }
 
-  .rui-display-none {
+  .rt-display-none {
     display: none;
   }
 }

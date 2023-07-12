@@ -34,14 +34,14 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
       ref={forwardedRef}
       className={classNames(
         className,
-        'rui-Container',
+        'rt-Container',
         withBreakpoints(size, 'size'),
         withMarginProps(marginProps),
         withLayoutProps(layoutProps),
-        withBreakpoints(display, 'rui-display')
+        withBreakpoints(display, 'rt-display')
       )}
     >
-      <div className="rui-ContainerInner">{children}</div>
+      <div className="rt-ContainerInner">{children}</div>
     </div>
   );
 });

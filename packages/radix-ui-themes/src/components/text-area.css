@@ -1,4 +1,4 @@
-.rui-TextArea {
+.rt-TextArea {
   appearance: none;
   border-width: 0;
   font-family: inherit;
@@ -47,7 +47,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-TextArea {
+  .rt-TextArea {
     &.size-1 {
       min-height: var(--space-8);
       padding: var(--space-1);
@@ -81,7 +81,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-TextArea {
+.rt-TextArea {
   color: var(--gray-12);
 
   &::placeholder {
@@ -112,7 +112,7 @@
 
 /* surface */
 
-.rui-TextArea.variant-surface {
+.rt-TextArea.variant-surface {
   background-color: var(--color-surface-1);
   box-shadow: var(--shadow-1);
   &:focus {
@@ -121,7 +121,7 @@
 }
 
 /* soft */
-.rui-TextArea.variant-soft {
+.rt-TextArea.variant-soft {
   background-color: var(--accent-a3);
   &:not(:focus) {
     box-shadow: none;
@@ -137,7 +137,7 @@
 
 /* all disabled textareas */
 
-.rui-TextArea:disabled {
+.rt-TextArea:disabled {
   color: var(--gray-a9);
   box-shadow: inset 0 0 0 1px var(--gray-a6);
   background-color: var(--gray-a3);
@@ -146,7 +146,7 @@
 
 /* all readonly textareas */
 
-.rui-TextArea:read-only {
+.rt-TextArea:read-only {
   background-color: var(--gray-a3);
   &:not(:focus) {
     box-shadow: inset 0 0 0 1px var(--gray-a6);

@@ -5,7 +5,7 @@ import { BaseButton } from './base-button';
 type ButtonElement = React.ElementRef<typeof BaseButton>;
 interface ButtonProps extends React.ComponentPropsWithoutRef<typeof BaseButton> {}
 const Button = React.forwardRef<ButtonElement, ButtonProps>((props, forwardedRef) => (
-  <BaseButton {...props} ref={forwardedRef} className={classNames('rui-Button', props.className)} />
+  <BaseButton {...props} ref={forwardedRef} className={classNames('rt-Button', props.className)} />
 ));
 Button.displayName = 'Button';
 

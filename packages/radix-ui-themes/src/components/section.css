@@ -1,10 +1,10 @@
-.rui-Section {
+.rt-Section {
   box-sizing: border-box;
   flex-shrink: 0;
 }
 
 @breakpoints {
-  .rui-Section {
+  .rt-Section {
     &:where(.size-1) {
       padding-top: var(--space-5);
       padding-bottom: var(--space-5);

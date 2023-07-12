@@ -1,4 +1,4 @@
-.rui-Separator {
+.rt-Separator {
   background-color: var(--accent-a6);
 
   &[data-orientation='vertical'] {
@@ -18,7 +18,7 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rui-Separator {
+  .rt-Separator {
     &.size-1 {
       --separator-size: var(--space-4);
     }

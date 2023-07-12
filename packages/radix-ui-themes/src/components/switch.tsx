@@ -29,7 +29,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   return (
     <span
       className={classNames(
-        'rui-SwitchRoot',
+        'rt-SwitchRoot',
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
@@ -43,9 +43,9 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
         data-radius={radius}
         {...switchProps}
         ref={forwardedRef}
-        className={classNames('rui-reset-button rui-SwitchButton')}
+        className={classNames('rt-reset-button rt-SwitchButton')}
       >
-        <SwitchPrimitive.Thumb className="rui-SwitchThumb" />
+        <SwitchPrimitive.Thumb className="rt-SwitchThumb" />
       </SwitchPrimitive.Root>
     </span>
   );

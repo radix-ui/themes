@@ -6,7 +6,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rui-IconButton {
+.rt-IconButton {
   &:where(:not(.variant-ghost)) {
     height: var(--base-button-height);
     width: var(--base-button-height);
@@ -33,7 +33,7 @@
 }
 
 @breakpoints {
-  .rui-IconButton:where(.variant-ghost) {
+  .rt-IconButton:where(.variant-ghost) {
     &.size-1 {
       --icon-button-ghost-padding: var(--space-1);
     }
