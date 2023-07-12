@@ -1,6 +1,6 @@
 @import '../fonts.css';
 
-[data-rui-root] {
+.radix-themes {
   --font-size-1: calc(12px * var(--scaling));
   --font-size-2: calc(14px * var(--scaling));
   --font-size-3: calc(16px * var(--scaling));
@@ -92,7 +92,7 @@
   --em-letter-spacing: 0em;
 }
 
-[data-rui-root] {
+.radix-themes {
   overflow-wrap: break-word;
   font-family: var(--default-font-family);
   font-size: var(--default-font-size);

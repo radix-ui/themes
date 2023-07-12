@@ -5,7 +5,7 @@
 @import './tokens/radius.css';
 
 /* scaling */
-[data-rui-root] {
+.radix-themes {
   /* default: regular */
   --scaling: 1;
 

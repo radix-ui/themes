@@ -175,7 +175,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
       )}
     >
       <Comp
-        data-rui-root
         data-accent-scale={accentScale}
         data-gray-scale={resolvedGrayScale}
         data-background-color={backgroundColor}
@@ -186,6 +185,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         ref={forwardedRef}
         {...themeProps}
         className={classNames(
+          'radix-themes',
           {
             'light-theme': resolvedAppearance === 'light',
             'dark-theme': resolvedAppearance === 'dark',

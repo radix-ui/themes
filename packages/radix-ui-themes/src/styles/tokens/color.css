@@ -146,7 +146,7 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
-[data-rui-root] {
+.radix-themes {
   &.light-theme {
     --color-panel: white;
     --color-overlay: var(--black-a9);
@@ -167,7 +167,7 @@
   }
 }
 
-[data-rui-root] {
+.radix-themes {
   --color-selection-root: var(--accent-a6);
   & ::selection {
     background-color: var(--accent-a6);
@@ -992,7 +992,7 @@
 
 /* background color */
 
-[data-rui-root] {
+.radix-themes {
   &:where([data-background-color='auto']) {
     &.light-theme {
       --color-background: white;
@@ -1011,7 +1011,7 @@
 
 /* text color */
 
-[data-rui-root] {
+.radix-themes {
   &:where([data-text-color='auto']) {
     --color-text: var(--gray-12);
   }
