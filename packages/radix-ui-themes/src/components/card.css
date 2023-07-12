@@ -30,6 +30,26 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rt-Card {
+  &:where(.variant-ghost) {
+    /* We reset the defined margin variables to avoid inheriting them from a higher component */
+    /* If a margin IS defined on the component itself, the utility class will win and reset it */
+    --margin-top: 0px;
+    --margin-right: 0px;
+    --margin-bottom: 0px;
+    --margin-left: 0px;
+
+    /* Define the overrides to incorporate the negative margins */
+    --margin-top-override: calc(var(--margin-top, 0px) - var(--card-padding));
+    --margin-right-override: calc(var(--margin-right, 0px) - var(--card-padding));
+    --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--card-padding));
+    --margin-left-override: calc(var(--margin-left, 0px) - var(--card-padding));
+
+    margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
+      var(--margin-left-override);
+  }
+}
+
 @breakpoints {
   .rt-Card {
     &.size-1 {

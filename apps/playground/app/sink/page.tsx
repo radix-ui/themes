@@ -2320,7 +2320,16 @@ export default function Sink() {
                       <tr key={variant}>
                         <RowHeaderCell>{variant}</RowHeaderCell>
                         <td>
-                          <Flex gap="3">
+                          <Flex gap="5">
+                            <Card variant={variant}>
+                              <Text as="p" size="2" weight="bold">
+                                Quick start
+                              </Text>
+                              <Text as="p" color="gray" size="2">
+                                Create a proof of concept app
+                              </Text>
+                            </Card>
+
                             <Card variant={variant} asChild>
                               <a href="#some-page">
                                 <Text as="p" size="2" weight="bold">
@@ -2331,37 +2340,65 @@ export default function Sink() {
                                 </Text>
                               </a>
                             </Card>
-
-                            <Card variant={variant} asChild>
-                              <a href="#some-page">
-                                <Flex
-                                  style={{
-                                    margin: 'calc(-1 * var(--card-padding))',
-                                  }}
-                                >
-                                  <Box width="9">
-                                    <img
-                                      src="./api/avatar"
-                                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
-                                  </Box>
-                                  <Box style={{ padding: 'var(--card-padding)', minWidth: 150 }}>
-                                    <Text as="p" size="2" weight="bold">
-                                      Poppy Nichols
-                                    </Text>
-                                    <Text as="p" color="gray" size="2">
-                                      @poppy.nichols
-                                    </Text>
-                                  </Box>
-                                </Flex>
-                              </a>
-                            </Card>
                           </Flex>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+
+                <Grid columns="2" my="7" style={{ marginLeft: 124 }}>
+                  <div>
+                    <Heading>Contacts</Heading>
+                    <Text as="p" color="gray" mb="4">
+                      Here are all your contacts:
+                    </Text>
+                    <Grid columns="2" gap="3" style={{ maxWidth: 480 }}>
+                      {Array.from({ length: 8 }, (_, i) => (
+                        <Card key={i} variant="surface" asChild>
+                          <a href="#some-page">
+                            <Flex align="center" gap="2">
+                              <Avatar src="./api/avatar" fallback="D" />
+                              <div>
+                                <Text as="p" size="2" weight="medium">
+                                  Poppy Nichols
+                                </Text>
+                                <Text as="p" color="gray" size="1">
+                                  poppy.nichols@gmail.com
+                                </Text>
+                              </div>
+                            </Flex>
+                          </a>
+                        </Card>
+                      ))}
+                    </Grid>
+                  </div>
+                  <div>
+                    <Heading>Contacts</Heading>
+                    <Text as="p" color="gray" mb="4">
+                      Here are all your contacts:
+                    </Text>
+                    <Grid columns="2" gap="5" style={{ maxWidth: 480 }}>
+                      {Array.from({ length: 8 }, (_, i) => (
+                        <Card key={i} variant="ghost" asChild>
+                          <a href="#some-page">
+                            <Flex align="center" gap="2">
+                              <Avatar src="./api/avatar" fallback="D" />
+                              <div>
+                                <Text as="p" size="2" weight="medium">
+                                  Poppy Nichols
+                                </Text>
+                                <Text as="p" color="gray" size="1">
+                                  poppy.nichols@gmail.com
+                                </Text>
+                              </div>
+                            </Flex>
+                          </a>
+                        </Card>
+                      ))}
+                    </Grid>
+                  </div>
+                </Grid>
 
                 <table className={styles.table}>
                   <tbody>
