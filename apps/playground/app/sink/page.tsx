@@ -43,6 +43,9 @@ import {
   CalloutText,
   calloutRootPropDefs,
   //
+  Card,
+  cardPropDefs,
+  //
   Checkbox,
   checkboxPropDefs,
   //
@@ -2307,6 +2310,122 @@ export default function Sink() {
                       </table>
                     </React.Fragment>
                   ))}
+                </details>
+              </DocsSection>
+
+              <DocsSection title="Card">
+                <table className={styles.table}>
+                  <tbody>
+                    {cardPropDefs.variant.values.map((variant) => (
+                      <tr key={variant}>
+                        <RowHeaderCell>{variant}</RowHeaderCell>
+                        <td>
+                          <Flex gap="3">
+                            <Card variant={variant} asChild>
+                              <a href="#some-page">
+                                <Text as="p" size="2" weight="bold">
+                                  Quick start
+                                </Text>
+                                <Text as="p" color="gray" size="2">
+                                  Create a proof of concept app
+                                </Text>
+                              </a>
+                            </Card>
+
+                            <Card variant={variant} asChild>
+                              <a href="#some-page">
+                                <Flex
+                                  style={{
+                                    margin: 'calc(-1 * var(--card-padding))',
+                                  }}
+                                >
+                                  <Box width="9">
+                                    <img
+                                      src="./api/avatar"
+                                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    />
+                                  </Box>
+                                  <Box style={{ padding: 'var(--card-padding)', minWidth: 150 }}>
+                                    <Text as="p" size="2" weight="bold">
+                                      Poppy Nichols
+                                    </Text>
+                                    <Text as="p" color="gray" size="2">
+                                      @poppy.nichols
+                                    </Text>
+                                  </Box>
+                                </Flex>
+                              </a>
+                            </Card>
+                          </Flex>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                <table className={styles.table}>
+                  <tbody>
+                    {cardPropDefs.size.values.map((size) => (
+                      <tr key={size}>
+                        <RowHeaderCell>size {size}</RowHeaderCell>
+                        <td>
+                          <Card size={size} style={{ maxWidth: 'fit-content' }}>
+                            <Text as="p" size={size} weight="bold" mb={size}>
+                              Typography
+                            </Text>
+                            <Text as="p" color="gray" size={size} style={{ maxWidth: '40ch' }}>
+                              The goal of typography is to relate font size, line height, and line
+                              width in a proportional way that maximizes beauty and makes reading
+                              easier and more pleasant.
+                            </Text>
+                          </Card>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                <Text as="p" my="5">
+                  <Code>radius</Code> can be set per instance:
+                </Text>
+
+                <details>
+                  <summary>
+                    <Text size="2" color="gray">
+                      See specific radius examples
+                    </Text>
+                  </summary>
+                  <Box mt="3">
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          {cardPropDefs.size.values.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {cardPropDefs.radius.values.map((radius) => (
+                          <tr key={radius}>
+                            <RowHeaderCell>{radius}</RowHeaderCell>
+                            {cardPropDefs.size.values.map((size) => (
+                              <td key={size}>
+                                <Card size={size} radius={radius}>
+                                  <Text as="p" size="2" weight="bold">
+                                    Quick start
+                                  </Text>
+                                  <Text as="p" color="gray" size="2">
+                                    Create a proof of concept app
+                                  </Text>
+                                </Card>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
                 </details>
               </DocsSection>
 
