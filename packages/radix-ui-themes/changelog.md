@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.26
+
+- `Callout`: New component
+- `Card`: New component
+- `ContextMenu`/`DropdownMenu`: Fix link items (`<DropdownMenuItem asChild><a>…`)
+
 ## 0.0.25
 
 - General:
