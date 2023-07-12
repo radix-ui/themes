@@ -3464,10 +3464,15 @@ function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenu
       <DropdownMenuGroup>
         <DropdownMenuLabel>Other</DropdownMenuLabel>
         <DropdownMenuItem shortcut="⌘+P">Print</DropdownMenuItem>
+        <DropdownMenuItem shortcut="⌘+Q" asChild>
+          <a href="#logout">Logout</a>
+        </DropdownMenuItem>
       </DropdownMenuGroup>
 
       {props.variant === 'solid' && (
         <>
+          <DropdownMenuSeparator />
+
           <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
             Show Bookmarks
           </DropdownMenuCheckboxItem>
@@ -3514,6 +3519,9 @@ function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenuCo
       <ContextMenuGroup>
         <ContextMenuLabel>Other</ContextMenuLabel>
         <ContextMenuItem shortcut="⌘+P">Print</ContextMenuItem>
+        <ContextMenuItem shortcut="⌘+Q" asChild>
+          <a href="#logout">Logout</a>
+        </ContextMenuItem>
       </ContextMenuGroup>
 
       {props.variant === 'solid' && (

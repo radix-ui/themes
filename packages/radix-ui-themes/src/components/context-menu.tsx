@@ -3,6 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import { Slottable } from '@radix-ui/react-slot';
 import { ScrollArea } from './scroll-area';
 import { contextMenuContentPropDefs, contextMenuItemPropDefs } from './context-menu.props';
 import { withBreakpoints } from '../helpers';
@@ -124,9 +125,9 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         data-accent-scale={color}
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rui-BaseMenuItem', 'rui-ContextMenuItem', className)}
+        className={classNames('rui-reset-a', 'rui-BaseMenuItem', 'rui-ContextMenuItem', className)}
       >
-        {children}
+        <Slottable>{children}</Slottable>
         {shortcut && <div className="rui-BaseMenuShortcut rui-ContextMenuShortcut">{shortcut}</div>}
       </ContextMenuPrimitive.Item>
     );

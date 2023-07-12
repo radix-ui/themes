@@ -3,6 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { Slottable } from '@radix-ui/react-slot';
 import { ScrollArea } from './scroll-area';
 import { dropdownMenuContentPropDefs, dropdownMenuItemPropDefs } from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
@@ -125,9 +126,9 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
         data-accent-scale={color}
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rui-BaseMenuItem', 'rui-DropdownMenuItem', className)}
+        className={classNames('rui-reset-a', 'rui-BaseMenuItem', 'rui-DropdownMenuItem', className)}
       >
-        {children}
+        <Slottable>{children}</Slottable>
         {shortcut && (
           <div className="rui-BaseMenuShortcut rui-DropdownMenuShortcut">{shortcut}</div>
         )}
