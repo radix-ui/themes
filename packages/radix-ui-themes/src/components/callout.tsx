@@ -81,7 +81,6 @@ type CalloutTextProps = Omit<React.ComponentPropsWithoutRef<typeof Text>, 'asChi
 const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
   (props, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);
-    console.log(getTextSize(size));
     return (
       <Text
         as="p"
@@ -109,7 +108,7 @@ function getTextSize(size: CalloutRootOwnProps['size']): React.ComponentProps<ty
 function getNonResponsiveTextSize(
   size: (typeof calloutRootPropDefs.size.values)[number]
 ): (typeof textPropDefs.size.values)[number] {
-  return size === '1' ? '2' : '3';
+  return size === '3' ? '3' : '2';
 }
 
 const Callout = Object.assign(

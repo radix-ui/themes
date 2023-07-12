@@ -1,11 +1,11 @@
 import { colorProp, highContrastProp, radiusProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
-const sizes = ['1', '2'] as const;
+const sizes = ['1', '2', '3'] as const;
 const variants = ['solid', 'soft', 'outline', 'surface'] as const;
 
 const calloutRootPropDefs = {
-  size: { type: 'enum', values: sizes, default: '1', responsive: true },
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', values: variants, default: 'soft' },
   color: { ...colorProp, default: 'gray' },
   highContrast: highContrastProp,

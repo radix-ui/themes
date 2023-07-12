@@ -3050,8 +3050,8 @@ export default function Sink() {
                           <CalloutRoot size={size}>
                             <CalloutIcon>
                               <InfoCircledIcon
-                                width={size === '1' ? 15 : 20}
-                                height={size === '1' ? 15 : 20}
+                                width={size === '3' ? 20 : 15}
+                                height={size === '3' ? 20 : 15}
                               />
                             </CalloutIcon>
                             <CalloutText>
@@ -3059,6 +3059,17 @@ export default function Sink() {
                               file. Please read our <Link href="/">Configuration Guide</Link> for
                               more details.
                             </CalloutText>
+                          </CalloutRoot>
+                        </td>
+                        <td style={{ width: 450 }}>
+                          <CalloutRoot size={size}>
+                            <CalloutIcon>
+                              <InfoCircledIcon
+                                width={size === '3' ? 20 : 15}
+                                height={size === '3' ? 20 : 15}
+                              />
+                            </CalloutIcon>
+                            <CalloutText>There was an error in your configuration.</CalloutText>
                           </CalloutRoot>
                         </td>
                       </tr>
