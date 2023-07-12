@@ -40,14 +40,13 @@
 
 .rt-AvatarFallback {
   font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
 
   &.one-letter {
     font-size: var(--avatar-font-size-one-letter);
-    text-transform: uppercase;
   }
   &.two-letters {
-    font-size: var(--avatar-font-size-two-letters);
-    text-transform: uppercase;
+    font-size: var(--avatar-font-size-two-letters, var(--avatar-font-size-one-letter));
   }
 }
 
@@ -77,16 +76,39 @@
     &.size-4 {
       --avatar-size: var(--space-8);
       border-radius: max(var(--radius-3), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-6);
-      --avatar-font-size-two-letters: var(--font-size-5);
-      letter-spacing: var(--letter-spacing-5);
+      --avatar-font-size-one-letter: var(--font-size-5);
+      --avatar-font-size-two-letters: var(--font-size-4);
+      letter-spacing: var(--letter-spacing-4);
     }
     &.size-5 {
       --avatar-size: var(--space-9);
       border-radius: max(var(--radius-4), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-8);
-      --avatar-font-size-two-letters: var(--font-size-7);
+      --avatar-font-size-one-letter: var(--font-size-6);
+      letter-spacing: var(--letter-spacing-6);
+    }
+    &.size-6 {
+      --avatar-size: 80px;
+      border-radius: max(var(--radius-5), var(--radius-full));
+      --avatar-font-size-one-letter: var(--font-size-7);
       letter-spacing: var(--letter-spacing-7);
+    }
+    &.size-7 {
+      --avatar-size: 96px;
+      border-radius: max(var(--radius-5), var(--radius-full));
+      --avatar-font-size-one-letter: var(--font-size-7);
+      letter-spacing: var(--letter-spacing-7);
+    }
+    &.size-8 {
+      --avatar-size: 128px;
+      border-radius: max(var(--radius-6), var(--radius-full));
+      --avatar-font-size-one-letter: var(--font-size-8);
+      letter-spacing: var(--letter-spacing-8);
+    }
+    &.size-9 {
+      --avatar-size: 160px;
+      border-radius: max(var(--radius-6), var(--radius-full));
+      --avatar-font-size-one-letter: var(--font-size-9);
+      letter-spacing: var(--letter-spacing-9);
     }
   }
 }

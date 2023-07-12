@@ -1,7 +1,7 @@
 import { colorProp, highContrastProp, radiusProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
-const sizes = ['1', '2', '3', '4', '5'] as const;
+const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const variants = ['solid', 'soft'] as const;
 
 const avatarPropDefs = {

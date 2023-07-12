@@ -2215,6 +2215,23 @@ export default function Sink() {
                   </tbody>
                 </table>
 
+                <table className={styles.table}>
+                  <tbody>
+                    {avatarPropDefs.size.values.map((size) => (
+                      <tr key={size}>
+                        <RowHeaderCell>{size}</RowHeaderCell>
+                        <td>
+                          <Flex gap="3">
+                            <Avatar size={size} src="./api/avatar" fallback="D" />
+                            <Avatar size={size} fallback="D" />
+                            <Avatar size={size} fallback="BG" />
+                          </Flex>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
                 <Text as="p" my="5">
                   <Code>radius</Code> can be set per instance:
                 </Text>
@@ -2246,14 +2263,6 @@ export default function Sink() {
                                   radius={radius}
                                   src="./api/avatar"
                                   fallback="D"
-                                />
-                                <Avatar
-                                  size={size}
-                                  radius={radius}
-                                  fallback="D"
-                                  ml="1"
-                                  color="amber"
-                                  variant="solid"
                                 />
                               </td>
                             ))}
