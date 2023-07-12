@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.27
+
+**Warning!** This release contains some breaking changes.
+
+- General:
+  - [**Breaking**] `[data-rui-root]` is now `.radix-themes`
+  - `rui-` prefixes are now `rt-` prefixes (could be breaking if you rely on internal stuff)
+- `Select`: Tweak icon gap
+- `Card`: Add built-in negative margin support to ghost cards
+
 ## 0.0.26
 
 - `Callout`: New component
