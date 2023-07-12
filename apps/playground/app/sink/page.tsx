@@ -5,6 +5,10 @@ import {
   DotsHorizontalIcon,
   Pencil2Icon,
   Share2Icon,
+  InfoCircledIcon,
+  CheckCircledIcon,
+  ExclamationTriangleIcon,
+  Cross1Icon,
 } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import {
@@ -33,6 +37,11 @@ import {
   //
   Button,
   buttonPropsDefs,
+  //
+  CalloutRoot,
+  CalloutIcon,
+  CalloutText,
+  calloutRootPropDefs,
   //
   Checkbox,
   checkboxPropDefs,
@@ -169,7 +178,7 @@ export default function Sink() {
         <Theme asChild backgroundColor="gray">
           <div id="root">
             {/* <HideCursor /> */}
-            <ThemePanel />
+            <ThemePanel initiallyHidden />
 
             <header
               style={{
@@ -2988,6 +2997,184 @@ export default function Sink() {
                     us the best results?
                   </Blockquote>
                 </Flex>
+              </DocsSection>
+
+              <DocsSection title="Callout">
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <ColumnHeaderCell />
+                      <ColumnHeaderCell>default</ColumnHeaderCell>
+                      <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {calloutRootPropDefs.variant.values.map((variant) => (
+                      <tr key={variant}>
+                        <RowHeaderCell>{variant}</RowHeaderCell>
+                        <td style={{ width: 450 }}>
+                          <CalloutRoot variant={variant}>
+                            <CalloutIcon>
+                              <InfoCircledIcon />
+                            </CalloutIcon>
+                            <CalloutText>
+                              We have detected multiple issues in your application configuration
+                              file. Please read our <Link href="/">Configuration Guide</Link> for
+                              more details.
+                            </CalloutText>
+                          </CalloutRoot>
+                        </td>
+                        <td style={{ width: 450 }}>
+                          <CalloutRoot variant={variant} highContrast>
+                            <CalloutIcon>
+                              <InfoCircledIcon />
+                            </CalloutIcon>
+                            <CalloutText>
+                              We have detected multiple issues in your application configuration
+                              file. Please read our <Link href="/">Configuration Guide</Link> for
+                              more details.
+                            </CalloutText>
+                          </CalloutRoot>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                <table className={styles.table}>
+                  <tbody>
+                    {calloutRootPropDefs.size.values.map((size) => (
+                      <tr key={size}>
+                        <RowHeaderCell>size {size}</RowHeaderCell>
+                        <td style={{ width: 450 }}>
+                          <CalloutRoot size={size}>
+                            <CalloutIcon>
+                              <InfoCircledIcon
+                                width={size === '1' ? 15 : 20}
+                                height={size === '1' ? 15 : 20}
+                              />
+                            </CalloutIcon>
+                            <CalloutText>
+                              We have detected multiple issues in your application configuration
+                              file. Please read our <Link href="/">Configuration Guide</Link> for
+                              more details.
+                            </CalloutText>
+                          </CalloutRoot>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                <Text as="p" my="5">
+                  <Code>radius</Code> can be set per instance:
+                </Text>
+
+                <details>
+                  <summary>
+                    <Text size="2" color="gray">
+                      See specific radius examples
+                    </Text>
+                  </summary>
+                  <Box mt="3">
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          {calloutRootPropDefs.size.values.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {calloutRootPropDefs.radius.values.map((radius) => (
+                          <tr key={radius}>
+                            <RowHeaderCell>{radius}</RowHeaderCell>
+                            {calloutRootPropDefs.size.values.map((size) => (
+                              <td key={size} style={{ width: 450 }}>
+                                <CalloutRoot size={size} radius={radius}>
+                                  <CalloutIcon>
+                                    <InfoCircledIcon
+                                      width={size === '1' ? 15 : 20}
+                                      height={size === '1' ? 15 : 20}
+                                    />
+                                  </CalloutIcon>
+                                  <CalloutText>
+                                    We have detected multiple issues in your application
+                                    configuration file. Please read our{' '}
+                                    <Link href="/">Configuration Guide</Link> for more details.
+                                  </CalloutText>
+                                </CalloutRoot>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </details>
+
+                <Text as="p" my="5">
+                  <Code>color</Code> can be set per instance:
+                </Text>
+
+                <details>
+                  <summary>
+                    <Text size="2" color="gray">
+                      See colors & variants combinations
+                    </Text>
+                  </summary>
+                  {themeAccentScalesGrouped.map(({ label, values }) => (
+                    <React.Fragment key={label}>
+                      <Text as="p" weight="bold" mt="6" mb="4">
+                        {label}
+                      </Text>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            {calloutRootPropDefs.variant.values.map((variant) => (
+                              <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {values.map((color) => (
+                            <tr key={color}>
+                              <RowHeaderCell>{color}</RowHeaderCell>
+                              {calloutRootPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex direction="column" align="start" gap="2">
+                                    <CalloutRoot variant={variant} color={color}>
+                                      <CalloutIcon>
+                                        <InfoCircledIcon />
+                                      </CalloutIcon>
+                                      <CalloutText>
+                                        We have detected multiple issues in your application
+                                        configuration file. Please read our{' '}
+                                        <Link href="/">Configuration Guide</Link> for more details.
+                                      </CalloutText>
+                                    </CalloutRoot>
+                                    <CalloutRoot variant={variant} color={color} highContrast>
+                                      <CalloutIcon>
+                                        <InfoCircledIcon />
+                                      </CalloutIcon>
+                                      <CalloutText>
+                                        We have detected multiple issues in your application
+                                        configuration file. Please read our{' '}
+                                        <Link href="/">Configuration Guide</Link> for more details.
+                                      </CalloutText>
+                                    </CalloutRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </React.Fragment>
+                  ))}
+                </details>
               </DocsSection>
 
               <DocsSection title="Kbd">

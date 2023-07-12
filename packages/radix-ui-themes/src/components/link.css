@@ -20,7 +20,7 @@
   }
 
   &.high-contrast,
-  .rui-Text:where([data-accent-scale]) & {
+  .rui-Text:where([data-accent-scale]):not(.high-contrast) & {
     color: var(--accent-12);
     text-decoration-line: underline;
     text-decoration-color: var(--accent-6);

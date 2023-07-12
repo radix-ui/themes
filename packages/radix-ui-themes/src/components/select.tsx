@@ -11,9 +11,9 @@ import { CheckIcon, ChevronDownIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
-type SelectOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
+type SelectRootOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
 
-type SelectContextValue = SelectOwnProps;
+type SelectContextValue = SelectRootOwnProps;
 const SelectContext = React.createContext<SelectContextValue>({});
 
 interface SelectRootProps
