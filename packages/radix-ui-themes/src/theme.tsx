@@ -36,7 +36,7 @@ interface ThemeProps extends ThemeRootProps {
   __useKey?: boolean;
 }
 const Theme = React.forwardRef<ThemeImplElement, ThemeProps>(
-  ({ __useKey, ...props }, forwardedRef) => {
+  ({ __useKey = true, ...props }, forwardedRef) => {
     const context = React.useContext(ThemeContext);
     const isRoot = context === undefined;
     if (isRoot) {
