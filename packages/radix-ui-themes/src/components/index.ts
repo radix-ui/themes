@@ -149,6 +149,17 @@ export * from './scroll-area.props';
 export { Separator } from './separator';
 export * from './separator.props';
 // export * from './skeleton';
+export {
+  TableRoot,
+  Table,
+  TableHeader,
+  TableRow,
+  TableBody,
+  TableColumnHeader,
+  TableRowHeader,
+  TableCell,
+} from './table';
+export * from './table.props';
 export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs';
 export * from './tabs.props';
 // export * from './toast';

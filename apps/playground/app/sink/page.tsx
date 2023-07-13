@@ -168,6 +168,15 @@ import {
   themeAccentScalesGrouped,
   //
   ThemePanel,
+  TableRoot,
+  Table,
+  TableHeader,
+  TableRow,
+  TableColumnHeader,
+  TableBody,
+  TableRowHeader,
+  TableCell,
+  tablePropDefs,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -2472,6 +2481,119 @@ export default function Sink() {
                       </tbody>
                     </table>
                   </Box>
+                </details>
+              </DocsSection>
+
+              <DocsSection title="Table">
+                <Grid columns="2" gap="5" mb="3">
+                  <Flex direction="column" gap="3">
+                    <Text color="gray" size="2">
+                      With Root
+                    </Text>
+                    <TableRoot>
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableColumnHeader>Full name</TableColumnHeader>
+                            <TableColumnHeader>Email</TableColumnHeader>
+                            <TableColumnHeader>Group</TableColumnHeader>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          <TableRow>
+                            <TableRowHeader>Andy</TableRowHeader>
+                            <TableCell>andy@workos.com</TableCell>
+                            <TableCell>Developer</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableRowHeader>Benoit</TableRowHeader>
+                            <TableCell>benoit@workos.com</TableCell>
+                            <TableCell>Admin</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableRowHeader>Lucas</TableRowHeader>
+                            <TableCell>lucas@workos.com</TableCell>
+                            <TableCell>Developer</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableRowHeader>Vlad</TableRowHeader>
+                            <TableCell>vlad@workos.com</TableCell>
+                            <TableCell>Designer</TableCell>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+                    </TableRoot>
+                  </Flex>
+
+                  <Flex direction="column" gap="3">
+                    <Text color="gray" size="2">
+                      Without root
+                    </Text>
+                    <Table>
+                      <TableHeader>
+                        <TableRow align="end">
+                          <TableColumnHeader>Full name</TableColumnHeader>
+                          <TableColumnHeader>Email</TableColumnHeader>
+                          <TableColumnHeader>Group</TableColumnHeader>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableRowHeader>Andy</TableRowHeader>
+                          <TableCell>andy@workos.com</TableCell>
+                          <TableCell>Developer</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableRowHeader>Benoit</TableRowHeader>
+                          <TableCell>benoit@workos.com</TableCell>
+                          <TableCell>Admin</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableRowHeader>Lucas</TableRowHeader>
+                          <TableCell>lucas@workos.com</TableCell>
+                          <TableCell>Developer</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableRowHeader>Vlad</TableRowHeader>
+                          <TableCell>vlad@workos.com</TableCell>
+                          <TableCell>Designer</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </Flex>
+                </Grid>
+
+                <details>
+                  <summary>
+                    <Text size="2" color="gray">
+                      See specific radius examples
+                    </Text>
+                  </summary>
+                  <Grid columns="2" gap="5" mt="3">
+                    {tablePropDefs.radius.values.map((radius) => (
+                      <Flex key={radius} direction="column" gap="3">
+                        <Text color="gray" size="2">
+                          {radius}
+                        </Text>
+                        <TableRoot radius={radius}>
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableColumnHeader>Full name</TableColumnHeader>
+                                <TableColumnHeader>Email</TableColumnHeader>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              <TableRow>
+                                <TableRowHeader>Andy</TableRowHeader>
+                                <TableCell>andy@workos.com</TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        </TableRoot>
+                      </Flex>
+                    ))}
+                  </Grid>
                 </details>
               </DocsSection>
 

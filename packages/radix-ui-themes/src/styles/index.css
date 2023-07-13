@@ -37,6 +37,7 @@
 @import '../components/strong.css';
 @import '../components/switch.css';
 @import '../components/tabs.css';
+@import '../components/table.css';
 @import '../components/text-area.css';
 @import '../components/text-field.css';
 @import '../components/text.css';
@@ -61,4 +62,5 @@
 @import './utilities/padding.css';
 @import './utilities/position.css';
 @import './utilities/text-align.css';
+@import './utilities/vertical-align.css';
 @import './utilities/width.css';

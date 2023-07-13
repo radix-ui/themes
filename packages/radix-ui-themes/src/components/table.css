@@ -1,0 +1,67 @@
+.TableRoot {
+  background-color: var(--color-surface-1);
+  border-radius: var(--radius-4);
+  border: 1px solid var(--gray-a5);
+  overflow: hidden;
+}
+
+.Table {
+  --table-separator-color: var(--gray-a5);
+  --table-row-background: transparent;
+  --table-row-border-bottom: inset 0 -1px var(--table-separator-color);
+
+  width: 100%;
+  text-align: left;
+  vertical-align: top;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  /* Makes "height: 100%" work on content inside cells */
+  height: 0;
+}
+
+.TableHeader {
+  vertical-align: inherit;
+}
+
+.TableBody {
+  vertical-align: inherit;
+}
+
+.TableRow {
+  vertical-align: inherit;
+  color: var(--gray-12);
+}
+
+.TableCell {
+  background-color: var(--table-row-background);
+  box-shadow: var(--table-row-border-bottom);
+  box-sizing: border-box;
+  vertical-align: inherit;
+  padding: var(--space-3);
+  /* Works as min-height */
+  height: 44px;
+}
+
+.TableRowHeader {
+  font-weight: normal;
+}
+
+.TableColumnHeader {
+  font-weight: bold;
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*      Table Root + Table Content     */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+/* Add header background */
+.TableRoot :where(.TableHeader) {
+  --table-row-background: var(--gray-a2);
+}
+
+/* Remove bottom row border, unless it’s focused or there is a footer */
+.TableRoot :where(.TableBody .TableRow:last-child) {
+  --table-row-border-bottom: none;
+}
