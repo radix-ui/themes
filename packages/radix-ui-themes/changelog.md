@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.28
+
+- `Avatar`: Add 4 extra sizes
+- General:
+  - Don't reset `cursor` in CSS resets for `button` and `a` elements
+  - Fix callout post CSS warning
+  - Expose private `__useKey` prop on `Theme` to disable keying the root `Theme` in the docs.
+
 ## 0.0.27
 
 **Warning!** This release contains some breaking changes.
