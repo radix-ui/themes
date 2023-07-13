@@ -32,24 +32,28 @@ function useThemeContext() {
   return context;
 }
 
-interface ThemeProps extends ThemeRootProps {}
-const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRef) => {
-  const context = React.useContext(ThemeContext);
-  const isRoot = context === undefined;
-  if (isRoot) {
-    const key = Object.entries(props)
-      .map(([k, v]) => `${k}=${v}`)
-      .join(',');
-    return (
-      <TooltipPrimitive.Provider>
-        <DirectionProvider dir="ltr">
-          <ThemeRoot {...props} ref={forwardedRef} key={key} />
-        </DirectionProvider>
-      </TooltipPrimitive.Provider>
-    );
+interface ThemeProps extends ThemeRootProps {
+  __useKey?: boolean;
+}
+const Theme = React.forwardRef<ThemeImplElement, ThemeProps>(
+  ({ __useKey, ...props }, forwardedRef) => {
+    const context = React.useContext(ThemeContext);
+    const isRoot = context === undefined;
+    if (isRoot) {
+      const key = Object.entries(props)
+        .map(([k, v]) => `${k}=${v}`)
+        .join(',');
+      return (
+        <TooltipPrimitive.Provider>
+          <DirectionProvider dir="ltr">
+            <ThemeRoot {...props} ref={forwardedRef} key={__useKey ? key : undefined} />
+          </DirectionProvider>
+        </TooltipPrimitive.Provider>
+      );
+    }
+    return <ThemeImpl {...props} ref={forwardedRef} />;
   }
-  return <ThemeImpl {...props} ref={forwardedRef} />;
-});
+);
 Theme.displayName = 'Theme';
 
 interface ThemeRootProps extends ThemeImplPublicProps {}
