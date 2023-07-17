@@ -32,28 +32,21 @@ function useThemeContext() {
   return context;
 }
 
-interface ThemeProps extends ThemeRootProps {
-  __useKey?: boolean;
-}
-const Theme = React.forwardRef<ThemeImplElement, ThemeProps>(
-  ({ __useKey = true, ...props }, forwardedRef) => {
-    const context = React.useContext(ThemeContext);
-    const isRoot = context === undefined;
-    if (isRoot) {
-      const key = Object.entries(props)
-        .map(([k, v]) => `${k}=${v}`)
-        .join(',');
-      return (
-        <TooltipPrimitive.Provider>
-          <DirectionProvider dir="ltr">
-            <ThemeRoot {...props} ref={forwardedRef} key={__useKey ? key : undefined} />
-          </DirectionProvider>
-        </TooltipPrimitive.Provider>
-      );
-    }
-    return <ThemeImpl {...props} ref={forwardedRef} />;
+interface ThemeProps extends ThemeRootProps {}
+const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRef) => {
+  const context = React.useContext(ThemeContext);
+  const isRoot = context === undefined;
+  if (isRoot) {
+    return (
+      <TooltipPrimitive.Provider>
+        <DirectionProvider dir="ltr">
+          <ThemeRoot {...props} ref={forwardedRef} />
+        </DirectionProvider>
+      </TooltipPrimitive.Provider>
+    );
   }
-);
+  return <ThemeImpl {...props} ref={forwardedRef} />;
+});
 Theme.displayName = 'Theme';
 
 interface ThemeRootProps extends ThemeImplPublicProps {}
@@ -69,12 +62,26 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     ...rootProps
   } = props;
   const [appearance, setAppearance] = React.useState(appearanceProp);
+  React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
+
   const [accentScale, setAccentScale] = React.useState(accentScaleProp);
+  React.useEffect(() => setAccentScale(accentScaleProp), [accentScaleProp]);
+
   const [grayScale, setGrayScale] = React.useState(grayScaleProp);
+  React.useEffect(() => setGrayScale(grayScaleProp), [grayScaleProp]);
+
   const [backgroundColor, setBackgroundColor] = React.useState(backgroundColorProp);
+  React.useEffect(() => setBackgroundColor(backgroundColorProp), [backgroundColorProp]);
+
   const [textColor, setTextColor] = React.useState(textColorProp);
+  React.useEffect(() => setTextColor(textColorProp), [textColorProp]);
+
   const [radius, setRadius] = React.useState(radiusProp);
+  React.useEffect(() => setRadius(radiusProp), [radiusProp]);
+
   const [scaling, setScaling] = React.useState(scalingProp);
+  React.useEffect(() => setScaling(scalingProp), [scalingProp]);
+
   return (
     <>
       <ThemeImpl
