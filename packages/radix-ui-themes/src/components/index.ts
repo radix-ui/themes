@@ -54,7 +54,7 @@ export { Switch } from './switch';
 export * from './switch.props';
 export { TextArea } from './text-area';
 export * from './text-area.props';
-export { TextField } from './text-field';
+export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field';
 export * from './text-field.props';
 
 // OVERLAYS

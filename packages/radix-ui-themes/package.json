@@ -47,6 +47,7 @@
     "@radix-ui/react-avatar": "latest",
     "@radix-ui/react-checkbox": "latest",
     "@radix-ui/react-context-menu": "latest",
+    "@radix-ui/primitive": "latest",
     "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-direction": "latest",
     "@radix-ui/react-dropdown-menu": "latest",

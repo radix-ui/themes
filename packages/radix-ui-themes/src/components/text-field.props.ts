@@ -1,4 +1,5 @@
 import { colorProp, radiusProp } from '../helpers';
+import { flexPropDefs } from './flex.props';
 import { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
@@ -16,4 +17,10 @@ const textFieldPropDefs = {
   radius: typeof radiusProp;
 };
 
-export { textFieldPropDefs };
+const textFieldSlotPropDefs = {
+  gap: flexPropDefs.gap,
+} satisfies {
+  gap: typeof flexPropDefs.gap;
+};
+
+export { textFieldPropDefs, textFieldSlotPropDefs };

@@ -156,7 +156,7 @@ import {
   TextArea,
   textAreaPropDefs,
   //
-  TextField,
+  TextFieldInput,
   textFieldPropDefs,
   //
   Text,
@@ -1793,7 +1793,7 @@ export default function Sink() {
                             <RowHeaderCell>{label}</RowHeaderCell>
                             {textFieldPropDefs.size.values.map((size) => (
                               <td key={size}>
-                                <TextField
+                                <TextFieldInput
                                   size={size}
                                   variant={variant}
                                   color={label === '+ gray' ? 'gray' : undefined}
@@ -1802,14 +1802,14 @@ export default function Sink() {
                               </td>
                             ))}
                             <td>
-                              <TextField
+                              <TextFieldInput
                                 variant={variant}
                                 color={label === '+ gray' ? 'gray' : undefined}
                                 defaultValue="The quick brown fox jumped"
                               />
                             </td>
                             <td>
-                              <TextField
+                              <TextFieldInput
                                 variant={variant}
                                 color={label === '+ gray' ? 'gray' : undefined}
                                 placeholder="Your name"
@@ -1818,7 +1818,7 @@ export default function Sink() {
                               />
                             </td>
                             <td>
-                              <TextField
+                              <TextFieldInput
                                 variant={variant}
                                 color={label === '+ gray' ? 'gray' : undefined}
                                 placeholder="Your name"
@@ -1859,7 +1859,11 @@ export default function Sink() {
                             <RowHeaderCell>{radius}</RowHeaderCell>
                             {textFieldPropDefs.size.values.map((size) => (
                               <td key={size}>
-                                <TextField size={size} radius={radius} placeholder="Your name" />
+                                <TextFieldInput
+                                  size={size}
+                                  radius={radius}
+                                  placeholder="Your name"
+                                />
                               </td>
                             ))}
                           </tr>
@@ -1899,7 +1903,7 @@ export default function Sink() {
                               <RowHeaderCell>{color}</RowHeaderCell>
                               {textFieldPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <TextField
+                                  <TextFieldInput
                                     variant={variant}
                                     color={color}
                                     placeholder="Your name"
@@ -4018,20 +4022,22 @@ SampleNestedUI.displayName = 'SampleNestedUI';
 function PlaygroundForm({
   size,
   ...props
-}: React.ComponentProps<typeof Flex> & { size?: React.ComponentProps<typeof TextField>['size'] }) {
+}: React.ComponentProps<typeof Flex> & {
+  size?: React.ComponentProps<typeof TextFieldInput>['size'];
+}) {
   return (
     <Flex direction="column" gap="3" {...props}>
       <Grid gap="1">
         <Text size={size} weight="bold">
           Name
         </Text>
-        <TextField size={size} placeholder="Your name" />
+        <TextFieldInput size={size} placeholder="Your name" />
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
           Email
         </Text>
-        <TextField size={size} placeholder="Your email" />
+        <TextFieldInput size={size} placeholder="Your email" />
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
