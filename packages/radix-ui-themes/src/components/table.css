@@ -18,6 +18,9 @@
 
   /* Makes "height: 100%" work on content inside cells */
   height: 0;
+
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
 }
 
 .rt-TableHeader {
@@ -40,7 +43,7 @@
   vertical-align: inherit;
   padding: var(--space-3);
   /* Works as min-height */
-  /* height: 44px; */
+  height: 44px;
 }
 .rt-TableColumnHeaderCell {
   font-weight: bold;
