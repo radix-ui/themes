@@ -150,13 +150,14 @@ export { Separator } from './separator';
 export * from './separator.props';
 // export * from './skeleton';
 export {
-  TableRoot,
   Table,
+  TableRoot,
+  TableContent,
   TableHeader,
   TableRow,
   TableBody,
-  TableColumnHeader,
-  TableRowHeader,
+  TableColumnHeaderCell,
+  TableRowHeaderCell,
   TableCell,
 } from './table';
 export * from './table.props';

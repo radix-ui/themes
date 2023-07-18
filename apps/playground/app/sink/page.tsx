@@ -6,9 +6,6 @@ import {
   Pencil2Icon,
   Share2Icon,
   InfoCircledIcon,
-  CheckCircledIcon,
-  ExclamationTriangleIcon,
-  Cross1Icon,
   StarIcon,
 } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
@@ -148,6 +145,16 @@ import {
   Switch,
   switchPropDefs,
   //
+  TableRoot,
+  TableContent,
+  TableHeader,
+  TableRow,
+  TableColumnHeaderCell,
+  TableBody,
+  TableRowHeaderCell,
+  TableCell,
+  tableRootPropDefs,
+  //
   TabsRoot,
   TabsList,
   TabsTrigger,
@@ -171,15 +178,6 @@ import {
   themeAccentScalesGrouped,
   //
   ThemePanel,
-  TableRoot,
-  Table,
-  TableHeader,
-  TableRow,
-  TableColumnHeader,
-  TableBody,
-  TableRowHeader,
-  TableCell,
-  tablePropDefs,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -2582,37 +2580,37 @@ export default function Sink() {
                       With Root
                     </Text>
                     <TableRoot>
-                      <Table>
+                      <TableContent>
                         <TableHeader>
                           <TableRow>
-                            <TableColumnHeader>Full name</TableColumnHeader>
-                            <TableColumnHeader>Email</TableColumnHeader>
-                            <TableColumnHeader>Group</TableColumnHeader>
+                            <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
+                            <TableColumnHeaderCell>Email</TableColumnHeaderCell>
+                            <TableColumnHeaderCell>Group</TableColumnHeaderCell>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
                           <TableRow>
-                            <TableRowHeader>Andy</TableRowHeader>
+                            <TableRowHeaderCell>Andy</TableRowHeaderCell>
                             <TableCell>andy@workos.com</TableCell>
                             <TableCell>Developer</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableRowHeader>Benoit</TableRowHeader>
+                            <TableRowHeaderCell>Benoit</TableRowHeaderCell>
                             <TableCell>benoit@workos.com</TableCell>
                             <TableCell>Admin</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableRowHeader>Lucas</TableRowHeader>
+                            <TableRowHeaderCell>Lucas</TableRowHeaderCell>
                             <TableCell>lucas@workos.com</TableCell>
                             <TableCell>Developer</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableRowHeader>Vlad</TableRowHeader>
+                            <TableRowHeaderCell>Vlad</TableRowHeaderCell>
                             <TableCell>vlad@workos.com</TableCell>
                             <TableCell>Designer</TableCell>
                           </TableRow>
                         </TableBody>
-                      </Table>
+                      </TableContent>
                     </TableRoot>
                   </Flex>
 
@@ -2620,39 +2618,43 @@ export default function Sink() {
                     <Text color="gray" size="2">
                       Without root
                     </Text>
-                    <Table>
+                    <TableContent>
                       <TableHeader>
-                        <TableRow align="end">
-                          <TableColumnHeader>Full name</TableColumnHeader>
-                          <TableColumnHeader>Email</TableColumnHeader>
-                          <TableColumnHeader>Group</TableColumnHeader>
+                        <TableRow>
+                          <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
+                          <TableColumnHeaderCell>Email</TableColumnHeaderCell>
+                          <TableColumnHeaderCell>Group</TableColumnHeaderCell>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         <TableRow>
-                          <TableRowHeader>Andy</TableRowHeader>
+                          <TableRowHeaderCell>Andy</TableRowHeaderCell>
                           <TableCell>andy@workos.com</TableCell>
                           <TableCell>Developer</TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableRowHeader>Benoit</TableRowHeader>
+                          <TableRowHeaderCell>Benoit</TableRowHeaderCell>
                           <TableCell>benoit@workos.com</TableCell>
                           <TableCell>Admin</TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableRowHeader>Lucas</TableRowHeader>
+                          <TableRowHeaderCell>Lucas</TableRowHeaderCell>
                           <TableCell>lucas@workos.com</TableCell>
                           <TableCell>Developer</TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableRowHeader>Vlad</TableRowHeader>
+                          <TableRowHeaderCell>Vlad</TableRowHeaderCell>
                           <TableCell>vlad@workos.com</TableCell>
                           <TableCell>Designer</TableCell>
                         </TableRow>
                       </TableBody>
-                    </Table>
+                    </TableContent>
                   </Flex>
                 </Grid>
+
+                <Text as="p" my="5">
+                  <Code>radius</Code> can be set per instance:
+                </Text>
 
                 <details>
                   <summary>
@@ -2661,26 +2663,26 @@ export default function Sink() {
                     </Text>
                   </summary>
                   <Grid columns="2" gap="5" mt="3">
-                    {tablePropDefs.radius.values.map((radius) => (
+                    {tableRootPropDefs.radius.values.map((radius) => (
                       <Flex key={radius} direction="column" gap="3">
                         <Text color="gray" size="2">
                           {radius}
                         </Text>
                         <TableRoot radius={radius}>
-                          <Table>
+                          <TableContent>
                             <TableHeader>
                               <TableRow>
-                                <TableColumnHeader>Full name</TableColumnHeader>
-                                <TableColumnHeader>Email</TableColumnHeader>
+                                <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
+                                <TableColumnHeaderCell>Email</TableColumnHeaderCell>
                               </TableRow>
                             </TableHeader>
                             <TableBody>
                               <TableRow>
-                                <TableRowHeader>Andy</TableRowHeader>
+                                <TableRowHeaderCell>Andy</TableRowHeaderCell>
                                 <TableCell>andy@workos.com</TableCell>
                               </TableRow>
                             </TableBody>
-                          </Table>
+                          </TableContent>
                         </TableRoot>
                       </Flex>
                     ))}
