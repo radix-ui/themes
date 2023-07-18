@@ -146,24 +146,22 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
-.radix-themes {
-  &.light-theme {
-    --color-panel: white;
-    --color-overlay: var(--black-a9);
-    --color-surface-1: white;
-    --color-surface-1-accent: white;
-  }
-  &.dark-theme {
-    color-scheme: dark;
+.light-theme {
+  --color-panel: white;
+  --color-overlay: var(--black-a9);
+  --color-surface-1: white;
+  --color-surface-1-accent: white;
+}
+.dark-theme {
+  color-scheme: dark;
 
-    --color-panel: var(--gray-2);
-    --color-overlay: var(--black-a11);
-    --color-surface-1: var(--gray-a2);
+  --color-panel: var(--gray-2);
+  --color-overlay: var(--black-a11);
+  --color-surface-1: var(--gray-a2);
+  --color-surface-1-accent: var(--accent-a2);
+
+  & :not(.light-theme)[data-accent-scale] {
     --color-surface-1-accent: var(--accent-a2);
-
-    & :not(.light-theme)[data-accent-scale] {
-      --color-surface-1-accent: var(--accent-a2);
-    }
   }
 }
 
@@ -172,7 +170,8 @@
   & ::selection {
     background-color: var(--accent-a6);
   }
-  & [data-accent-scale='gray']::selection {
+  & [data-accent-scale='gray']::selection,
+  & [data-accent-scale='gray'] ::selection {
     background-color: var(--color-selection-root);
   }
 }
@@ -992,17 +991,20 @@
 
 /* background color */
 
+.light-theme {
+  --color-background-auto: white;
+  --color-background-gray: var(--gray-1);
+}
+.dark-theme {
+  --color-background-auto: var(--gray-1);
+  --color-background-gray: var(--gray-1);
+}
 .radix-themes {
   &:where([data-background-color='auto']) {
-    &.light-theme {
-      --color-background: white;
-    }
-    &.dark-theme {
-      --color-background: var(--gray-1);
-    }
+    --color-background: var(--color-background-auto);
   }
   &:where([data-background-color='gray']) {
-    --color-background: var(--gray-1);
+    --color-background: var(--color-background-gray);
   }
   &:where([data-background-color-applied]) {
     background-color: var(--color-background);

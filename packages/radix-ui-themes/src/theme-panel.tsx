@@ -186,6 +186,20 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             </Text>
 
             <Flex direction="column" gap="1" mb="3">
+              <Label htmlFor="appearance">Appearance</Label>
+              <Select.Root value={appearance} onValueChange={onAppearanceChange}>
+                <Select.Trigger id="appearance" variant="surface" color="gray" highContrast />
+                <Select.Content variant="soft" color="gray">
+                  {themePropDefs.appearance.values.map((value) => (
+                    <Select.Item key={value} value={value}>
+                      {value}
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Root>
+            </Flex>
+
+            <Flex direction="column" gap="1" mb="3">
               <Label htmlFor="accent-scale">Accent scale</Label>
               <Select.Root value={accentScale} onValueChange={onAccentScaleChange}>
                 <Select.Trigger id="accent-scale" variant="surface" color="gray" highContrast />
@@ -393,21 +407,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                   </Flex>
                 </RadioGroup.Root>
               </Flex>
-
-              <Label htmlFor="darkAppearance">Dark appearance</Label>
-              <Flex asChild align="center">
-                <label htmlFor="darkAppearance">
-                  <Checkbox
-                    id="darkAppearance"
-                    checked={appearance === 'dark'}
-                    onCheckedChange={(value) =>
-                      onAppearanceChange(value === true ? 'dark' : 'light')
-                    }
-                    mr="2"
-                  />
-                  <Kbd>⌘D</Kbd>
-                </label>
-              </Flex>
             </Grid>
 
             <Separator size="4" mt="4" mb="5" mx="-5" style={{ width: 'auto' }} />
@@ -460,12 +459,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             multiline
             style={{ maxWidth: 170 }}
           >
-            <Button
-              style={{ width: '100%' }}
-              variant="soft"
-              color="gray"
-              onClick={handleCopyThemeConfig}
-            >
+            <Button style={{ width: '100%' }} onClick={handleCopyThemeConfig}>
               {copyState === 'idle'
                 ? 'Copy theme config'
                 : copyState === 'copying'

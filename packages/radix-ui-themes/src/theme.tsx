@@ -143,14 +143,12 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     ...themeProps
   } = props;
   const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
-  const resolvedAppearance =
-    appearance === 'invert' ? (context?.appearance === 'dark' ? 'light' : 'dark') : appearance;
   const Comp = asChild ? Slot : 'div';
   return (
     <ThemeContext.Provider
       value={React.useMemo(
         () => ({
-          appearance: resolvedAppearance,
+          appearance,
           accentScale,
           grayScale,
           backgroundColor,
@@ -167,7 +165,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onScalingChange,
         }),
         [
-          resolvedAppearance,
+          appearance,
           accentScale,
           grayScale,
           backgroundColor,
@@ -198,8 +196,8 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         className={classNames(
           'radix-themes',
           {
-            'light-theme': resolvedAppearance === 'light',
-            'dark-theme': resolvedAppearance === 'dark',
+            'light-theme': appearance === 'light',
+            'dark-theme': appearance === 'dark',
           },
           themeProps.className
         )}
