@@ -42,7 +42,7 @@
  ***************************************************************************************************/
 
 .rt-TextFieldRoot {
-  display: inline-flex;
+  display: flex;
   box-sizing: border-box;
   /* width: 100%; */
 }
