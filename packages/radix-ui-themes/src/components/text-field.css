@@ -1,14 +1,6 @@
 .rt-TextFieldRoot {
   position: relative;
-  display: flex;
-  align-items: stretch;
-  box-sizing: border-box;
-  width: 100%;
   cursor: text;
-
-  &:has(.rt-TextFieldInput:disabled) {
-    cursor: not-allowed;
-  }
 }
 
 .rt-TextFieldInput {
@@ -19,11 +11,6 @@
   font-family: inherit;
   text-overflow: ellipsis;
   background-color: transparent;
-
-  display: block;
-  box-sizing: border-box;
-  padding: 0;
-  width: 100%;
 
   position: relative;
   z-index: 1;
@@ -36,19 +23,15 @@
 }
 
 .rt-TextFieldSlot {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-
   position: relative;
   z-index: 1;
-
-  &:empty {
-    display: none;
-  }
+  color: var(--gray-a11);
 
   &[data-accent-scale] {
-    color: var(--accent-11);
+    color: var(--accent-a11);
+  }
+  &:empty {
+    display: none;
   }
 }
 
@@ -58,49 +41,78 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rt-TextFieldRoot {
+  display: inline-flex;
+  box-sizing: border-box;
+  /* width: 100%; */
+}
+.rt-TextFieldSlot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.rt-TextFieldInput {
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+}
+/* Ensure no padding on input when there's a slot before it */
+.rt-TextFieldRoot .rt-TextFieldSlot + .rt-TextFieldInput {
+  padding-left: 0;
+}
+
 @breakpoints {
+  .rt-TextFieldSlot {
+    &:where(.size-1) {
+      gap: var(--space-2);
+      padding-left: var(--space-1);
+      padding-right: var(--space-1);
+    }
+    &:where(.size-2) {
+      gap: var(--space-2);
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+    }
+    &:where(.size-3) {
+      gap: var(--space-3);
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
+    }
+  }
   .rt-TextFieldInput {
-    &.size-1 {
+    &:where(.size-1) {
       height: var(--space-5);
       padding-top: 0.5px;
       padding-bottom: 1px;
+      padding-left: var(--space-1);
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 
-      &:where(.no-slots) {
-        padding-left: var(--space-1);
-        padding-right: var(--space-1);
-      }
       & + .rt-TextFieldChrome {
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
-    &.size-2 {
+    &:where(.size-2) {
       height: var(--space-6);
       padding-top: 0px;
       padding-bottom: 1px;
+      padding-left: var(--space-2);
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
 
-      &:where(.no-slots) {
-        padding-left: var(--space-2);
-        padding-right: var(--space-2);
-      }
       & + .rt-TextFieldChrome {
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
-    &.size-3 {
+    &:where(.size-3) {
       height: var(--space-7);
       padding-top: 0.5px;
       padding-bottom: 1px;
+      padding-left: var(--space-3);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
 
-      &:where(.no-slots) {
-        padding-left: var(--space-3);
-        padding-right: var(--space-3);
-      }
       & + .rt-TextFieldChrome {
         border-radius: max(var(--radius-3), var(--radius-full));
       }
@@ -136,7 +148,7 @@
 
 /* surface */
 
-.rt-TextFieldInput.variant-surface {
+.rt-TextFieldInput:where(.variant-surface) {
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface-1);
     box-shadow: var(--shadow-1);
@@ -147,7 +159,7 @@
 }
 
 /* soft */
-.rt-TextFieldInput.variant-soft {
+.rt-TextFieldInput:where(.variant-soft) {
   & + .rt-TextFieldChrome {
     background-color: var(--accent-a3);
   }
@@ -167,12 +179,16 @@
 
 .rt-TextFieldInput:disabled {
   color: var(--gray-a9);
-
   cursor: not-allowed;
 
   & + .rt-TextFieldChrome {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
     background-color: var(--gray-a3);
+    cursor: not-allowed;
+  }
+
+  /* enhancement */
+  .rt-TextFieldRoot:has(&) {
     cursor: not-allowed;
   }
 }

@@ -9,6 +9,7 @@ import {
   CheckCircledIcon,
   ExclamationTriangleIcon,
   Cross1Icon,
+  StarIcon,
 } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import {
@@ -156,6 +157,8 @@ import {
   TextArea,
   textAreaPropDefs,
   //
+  TextFieldRoot,
+  TextFieldSlot,
   TextFieldInput,
   textFieldPropDefs,
   //
@@ -1793,38 +1796,122 @@ export default function Sink() {
                             <RowHeaderCell>{label}</RowHeaderCell>
                             {textFieldPropDefs.size.values.map((size) => (
                               <td key={size}>
-                                <TextFieldInput
-                                  size={size}
-                                  variant={variant}
-                                  color={label === '+ gray' ? 'gray' : undefined}
-                                  placeholder="Your name"
-                                />
+                                <Flex direction="column" gap="2">
+                                  <TextFieldInput
+                                    size={size}
+                                    variant={variant}
+                                    color={label === '+ gray' ? 'gray' : undefined}
+                                    placeholder="Your name"
+                                  />
+                                  <TextFieldRoot
+                                    size={size}
+                                    variant={variant}
+                                    color={label === '+ gray' ? 'gray' : undefined}
+                                  >
+                                    <TextFieldSlot>
+                                      <InfoCircledIcon />
+                                    </TextFieldSlot>
+                                    <TextFieldInput placeholder="Your name" />
+                                    <TextFieldSlot>
+                                      <IconButton
+                                        size={size === '3' ? '2' : '1'}
+                                        variant="ghost"
+                                        color="gray"
+                                      >
+                                        <Share2Icon />
+                                      </IconButton>
+                                      <IconButton
+                                        size={size === '3' ? '2' : '1'}
+                                        variant="ghost"
+                                        color="gray"
+                                      >
+                                        <StarIcon />
+                                      </IconButton>
+                                    </TextFieldSlot>
+                                  </TextFieldRoot>
+                                </Flex>
                               </td>
                             ))}
                             <td>
-                              <TextFieldInput
-                                variant={variant}
-                                color={label === '+ gray' ? 'gray' : undefined}
-                                defaultValue="The quick brown fox jumped"
-                              />
+                              <Flex direction="column" gap="2">
+                                <TextFieldInput
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  defaultValue="The quick brown fox jumped"
+                                />
+                                <TextFieldRoot
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                >
+                                  <TextFieldSlot>
+                                    <InfoCircledIcon />
+                                  </TextFieldSlot>
+                                  <TextFieldInput defaultValue="The quick brown fox jumped" />
+                                  <TextFieldSlot>
+                                    <IconButton size="1" variant="ghost" color="gray">
+                                      <StarIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </Flex>
                             </td>
                             <td>
-                              <TextFieldInput
-                                variant={variant}
-                                color={label === '+ gray' ? 'gray' : undefined}
-                                placeholder="Your name"
-                                disabled
-                                defaultValue="The quick brown fox jumped"
-                              />
+                              <Flex direction="column" gap="2">
+                                <TextFieldInput
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  placeholder="Your name"
+                                  disabled
+                                  defaultValue="The quick brown fox jumped"
+                                />
+                                <TextFieldRoot
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                >
+                                  <TextFieldSlot>
+                                    <InfoCircledIcon />
+                                  </TextFieldSlot>
+                                  <TextFieldInput
+                                    placeholder="Your name"
+                                    disabled
+                                    defaultValue="The quick brown fox jumped"
+                                  />
+                                  <TextFieldSlot>
+                                    <IconButton size="1" variant="ghost" color="gray">
+                                      <StarIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </Flex>
                             </td>
                             <td>
-                              <TextFieldInput
-                                variant={variant}
-                                color={label === '+ gray' ? 'gray' : undefined}
-                                placeholder="Your name"
-                                readOnly
-                                defaultValue="The quick brown fox jumped"
-                              />
+                              <Flex direction="column" gap="2">
+                                <TextFieldInput
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                  placeholder="Your name"
+                                  readOnly
+                                  defaultValue="The quick brown fox jumped"
+                                />
+                                <TextFieldRoot
+                                  variant={variant}
+                                  color={label === '+ gray' ? 'gray' : undefined}
+                                >
+                                  <TextFieldSlot>
+                                    <InfoCircledIcon />
+                                  </TextFieldSlot>
+                                  <TextFieldInput
+                                    placeholder="Your name"
+                                    readOnly
+                                    defaultValue="The quick brown fox jumped"
+                                  />
+                                  <TextFieldSlot>
+                                    <IconButton size="1" variant="ghost" color="gray">
+                                      <StarIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </Flex>
                             </td>
                           </tr>
                         ))}

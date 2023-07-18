@@ -18,8 +18,10 @@ const textFieldPropDefs = {
 };
 
 const textFieldSlotPropDefs = {
+  color: colorProp,
   gap: flexPropDefs.gap,
 } satisfies {
+  color: typeof colorProp;
   gap: typeof flexPropDefs.gap;
 };
 
