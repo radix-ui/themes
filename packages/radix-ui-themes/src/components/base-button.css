@@ -48,6 +48,22 @@
 
 /* solid */
 
+.radix-themes {
+  &,
+  & [data-accent-scale]:not(.light-theme) {
+    --button-bg__solid-active__mix: color-mix(in hsl, var(--accent-10) 85%, var(--accent-12));
+    --button-bg__solid-active: var(--button-bg__solid-active__mix, var(--accent-11));
+  }
+}
+.dark-theme,
+.dark-theme .radix-themes:not(.light-theme) {
+  &,
+  & [data-accent-scale]:not(.light-theme) {
+    --button-bg__solid-active__mix: color-mix(in hsl, var(--accent-10) 85%, var(--accent-12));
+    --button-bg__solid-active: var(--button-bg__solid-active__mix, var(--accent-11));
+  }
+}
+
 .rt-BaseButton.variant-solid {
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
@@ -56,11 +72,7 @@
     background-color: var(--accent-10);
   }
   &:where(:active) {
-    background-color: var(--accent-10);
-    filter: brightness(0.95);
-    :where(.dark-theme) & {
-      filter: brightness(1.05);
-    }
+    background-color: var(--button-bg__solid-active);
   }
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 2px var(--color-background), 0 0 0 1px var(--accent-a9);

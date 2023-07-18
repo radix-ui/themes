@@ -4117,7 +4117,18 @@ const SampleNestedUI = React.forwardRef<
             </Text>
             <TextArea placeholder="Your feedback" />
           </Grid>
-          <Button variant="surface">Submit</Button>
+          <Flex asChild justify="between">
+            <label>
+              <Text color="gray" size="2">
+                Attach screenshot?
+              </Text>
+              <Switch defaultChecked highContrast />
+            </label>
+          </Flex>
+          <Grid columns="2" gap="2">
+            <Button variant="surface">Back</Button>
+            <Button variant="solid">Submit</Button>
+          </Grid>
         </Flex>
       </div>
 

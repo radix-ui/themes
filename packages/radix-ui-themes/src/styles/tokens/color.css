@@ -146,21 +146,22 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
-.light-theme {
+.radix-themes {
   --color-panel: white;
   --color-overlay: var(--black-a9);
   --color-surface-1: white;
   --color-surface-1-accent: white;
 }
-.dark-theme {
+.dark-theme,
+.dark-theme .radix-themes:not(.light-theme) {
   color-scheme: dark;
 
   --color-panel: var(--gray-2);
   --color-overlay: var(--black-a11);
   --color-surface-1: var(--gray-a2);
-  --color-surface-1-accent: var(--accent-a2);
 
-  & :not(.light-theme)[data-accent-scale] {
+  &,
+  & [data-accent-scale]:not(.light-theme) {
     --color-surface-1-accent: var(--accent-a2);
   }
 }
@@ -991,14 +992,16 @@
 
 /* background color */
 
-.light-theme {
+.radix-themes {
   --color-background-auto: white;
   --color-background-gray: var(--gray-1);
 }
-.dark-theme {
+.dark-theme,
+.dark-theme .radix-themes:not(.light-theme) {
   --color-background-auto: var(--gray-1);
   --color-background-gray: var(--gray-1);
 }
+
 .radix-themes {
   &:where([data-background-color='auto']) {
     --color-background: var(--color-background-auto);
@@ -1014,11 +1017,12 @@
 /* text color */
 
 .radix-themes {
+  color: var(--color-text);
+
   &:where([data-text-color='auto']) {
     --color-text: var(--gray-12);
   }
   &:where([data-text-color='accent']) {
     --color-text: var(--accent-12);
   }
-  color: var(--color-text);
 }

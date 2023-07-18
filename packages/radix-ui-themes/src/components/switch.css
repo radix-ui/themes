@@ -98,6 +98,19 @@
 
 /* solid */
 
+.radix-themes {
+  --switch-thumb-bg__solid-high-contrast-checked: var(--white-a12);
+  --switch-thumb-shadow__solid-high-contrast-checked: none;
+}
+.dark-theme,
+.dark-theme .radix-themes:not(.light-theme) {
+  &,
+  & [data-accent-scale]:not(.light-theme) {
+    --switch-thumb-bg__solid-high-contrast-checked: var(--accent-1);
+    --switch-thumb-shadow__solid-high-contrast-checked: 0 0 0 1px var(--accent-1);
+  }
+}
+
 .rt-SwitchRoot.variant-solid {
   & .rt-SwitchButton:where(:focus-visible) {
     outline-color: var(--accent-a8);
@@ -105,13 +118,15 @@
   & .rt-SwitchButton:where([data-state='checked']) {
     background-color: var(--accent-9);
   }
-  &:where(.high-contrast) .rt-SwitchButton:where([data-state='checked']) {
-    background-color: var(--accent-12);
-    outline-color: var(--accent-a11);
-  }
-  :where(.dark-theme) &:where(.high-contrast) .rt-SwitchThumb:where([data-state='checked']) {
-    background-color: var(--accent-1);
-    box-shadow: 0 0 0 1px var(--accent-1);
+  &:where(.high-contrast) {
+    & .rt-SwitchButton:where([data-state='checked']) {
+      background-color: var(--accent-12);
+      outline-color: var(--accent-a11);
+    }
+    & .rt-SwitchThumb:where([data-state='checked']) {
+      background-color: var(--switch-thumb-bg__solid-high-contrast-checked);
+      box-shadow: var(--switch-thumb-shadow__solid-high-contrast-checked);
+    }
   }
 }
 
