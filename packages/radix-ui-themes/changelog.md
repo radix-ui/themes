@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.29
+
+**Warning!** This release contains some breaking changes.
+
+- `Table`: New component
+- [**Breaking**] `TextField`: Add slots support (basic breaking change fix: `TextField` -> `TextFieldInput`)
+- General:
+  - `ThemePanel`: Remove keying and `__useKey` prop (now syncs prop changes internally)
+  - Support global appearance inheritance (next-themes integration):
+    - [**Breaking**] `appearance="invert"` was removed on `Theme`
+
 ## 0.0.28
 
 - `Avatar`: Add 4 extra sizes
