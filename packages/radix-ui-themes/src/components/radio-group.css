@@ -55,7 +55,7 @@
 
 .rt-RadioGroupButton:where([data-state='unchecked']) {
   box-shadow: var(--shadow-1);
-  background-color: var(--color-surface-1);
+  background-color: var(--color-surface);
 }
 
 /* solid */

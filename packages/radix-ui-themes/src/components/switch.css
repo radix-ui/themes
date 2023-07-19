@@ -98,19 +98,16 @@
 
 /* solid */
 
-.radix-themes {
+:root,
+.light,
+.light-theme {
   --switch-thumb-bg__solid-high-contrast-checked: var(--white-a12);
   --switch-thumb-shadow__solid-high-contrast-checked: none;
 }
 .dark,
-.dark-theme,
-.dark .radix-themes:not(.light),
-.dark-theme .radix-themes:not(.light-theme) {
-  &,
-  & [data-accent-scale]:not(.light, .light-theme) {
-    --switch-thumb-bg__solid-high-contrast-checked: var(--accent-1);
-    --switch-thumb-shadow__solid-high-contrast-checked: 0 0 0 1px var(--accent-1);
-  }
+.dark-theme {
+  --switch-thumb-bg__solid-high-contrast-checked: var(--black-a12);
+  --switch-thumb-shadow__solid-high-contrast-checked: 0 0 0 1px var(--black-a12);
 }
 
 .rt-SwitchRoot.variant-solid {

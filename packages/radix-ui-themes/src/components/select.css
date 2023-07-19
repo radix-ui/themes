@@ -152,7 +152,7 @@
 /* See base-button.css and button.css */
 
 .rt-SelectTrigger.variant-surface:where(:hover, [data-state='open']) {
-  background-color: var(--color-surface-1);
+  background-color: var(--color-surface);
 }
 
 /***************************************************************************************************

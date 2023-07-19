@@ -113,7 +113,7 @@
 /* surface */
 
 .rt-TextArea.variant-surface {
-  background-color: var(--color-surface-1);
+  background-color: var(--color-surface);
   box-shadow: var(--shadow-1);
   &:focus {
     box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8);

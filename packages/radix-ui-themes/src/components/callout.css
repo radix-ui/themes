@@ -89,5 +89,5 @@
   box-shadow: inset 0 0 0 1px var(--accent-a6);
 }
 .rt-CalloutRoot.variant-surface {
-  background-color: var(--color-surface-1-accent);
+  background-color: var(--accent-surface);
 }

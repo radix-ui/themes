@@ -98,7 +98,7 @@
   }
 }
 .rt-Card.variant-surface {
-  background-color: var(--color-surface-1);
+  background-color: var(--color-surface);
 }
 
 /* ghost */

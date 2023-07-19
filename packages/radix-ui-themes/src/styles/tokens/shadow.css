@@ -7,10 +7,8 @@
   --shadow-5: 0px 12px 60px var(--gray-a3), 0px 12px 32px -16px var(--gray-a3);
 }
 
-.dark,
-.dark-theme,
-.dark .radix-themes:not(.light),
-.dark-theme .radix-themes:not(.light-theme) {
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   /* --shadow-1: inset 0 0 0 1px var(--gray-a7); */
   --shadow-1: inset 0 0 0 1px var(--gray-a7), inset 0 1.5px 2px 0 var(--black-a11);
   --shadow-2: 0px 3px 35px -8px rgb(0 0 0 / 0.9);

@@ -1,5 +1,5 @@
 .rt-TableRoot {
-  background-color: var(--color-surface-1);
+  background-color: var(--color-surface);
   border-radius: var(--radius-4);
   border: 1px solid var(--gray-a5);
   overflow: hidden;

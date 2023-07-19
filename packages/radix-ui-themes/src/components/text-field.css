@@ -150,7 +150,7 @@
 
 .rt-TextFieldInput:where(.variant-surface) {
   & + .rt-TextFieldChrome {
-    background-color: var(--color-surface-1);
+    background-color: var(--color-surface);
     box-shadow: var(--shadow-1);
   }
   &:focus + .rt-TextFieldChrome {

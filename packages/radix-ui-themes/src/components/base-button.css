@@ -48,22 +48,20 @@
 
 /* solid */
 
-.radix-themes {
-  &,
-  & [data-accent-scale]:not(.light, .light-theme) {
-    --button-bg__solid-active__mix: color-mix(in hsl, var(--accent-10) 85%, var(--accent-12));
-    --button-bg__solid-active: var(--button-bg__solid-active__mix, var(--accent-11));
-  }
+:root,
+.light,
+.light-theme {
+  --button-filter__solid-active: brightness(0.92);
+
+  --button-filter__solid-high-contrast-hover: contrast(0.88) saturate(1.1) brightness(1.1);
+  --button-filter__solid-high-contrast-active: contrast(0.82) saturate(1.2) brightness(1.16);
 }
 .dark,
-.dark-theme,
-.dark .radix-themes:not(.light),
-.dark-theme .radix-themes:not(.light-theme) {
-  &,
-  & [data-accent-scale]:not(.light, .light-theme) {
-    --button-bg__solid-active__mix: color-mix(in hsl, var(--accent-10) 85%, var(--accent-12));
-    --button-bg__solid-active: var(--button-bg__solid-active__mix, var(--accent-11));
-  }
+.dark-theme {
+  --button-filter__solid-active: brightness(1.08);
+
+  --button-filter__solid-high-contrast-hover: brightness(0.92);
+  --button-filter__solid-high-contrast-active: brightness(0.88);
 }
 
 .rt-BaseButton.variant-solid {
@@ -74,7 +72,8 @@
     background-color: var(--accent-10);
   }
   &:where(:active) {
-    background-color: var(--button-bg__solid-active);
+    background-color: var(--accent-10);
+    filter: var(--button-filter__solid-active);
   }
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 2px var(--color-background), 0 0 0 1px var(--accent-a9);
@@ -85,10 +84,12 @@
     color: var(--gray-1);
 
     &:where(:hover, [data-state='open']) {
-      opacity: 0.92;
+      background-color: var(--accent-12);
+      filter: var(--button-filter__solid-high-contrast-hover);
     }
     &:where(:active) {
-      opacity: 0.86;
+      background-color: var(--accent-12);
+      filter: var(--button-filter__solid-high-contrast-active);
     }
     &:where(:focus-visible) {
       box-shadow: inset 0 0 0 2px var(--color-background), 0 0 0 1px var(--accent-a12);
@@ -154,7 +155,7 @@
   }
 }
 .rt-BaseButton:where(.variant-surface) {
-  background-color: var(--color-surface-1-accent);
+  background-color: var(--accent-surface);
 }
 
 /* all disabled buttons */
