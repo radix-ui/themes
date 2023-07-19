@@ -50,15 +50,17 @@
 
 .radix-themes {
   &,
-  & [data-accent-scale]:not(.light-theme) {
+  & [data-accent-scale]:not(.light, .light-theme) {
     --button-bg__solid-active__mix: color-mix(in hsl, var(--accent-10) 85%, var(--accent-12));
     --button-bg__solid-active: var(--button-bg__solid-active__mix, var(--accent-11));
   }
 }
+.dark,
 .dark-theme,
+.dark .radix-themes:not(.light),
 .dark-theme .radix-themes:not(.light-theme) {
   &,
-  & [data-accent-scale]:not(.light-theme) {
+  & [data-accent-scale]:not(.light, .light-theme) {
     --button-bg__solid-active__mix: color-mix(in hsl, var(--accent-10) 85%, var(--accent-12));
     --button-bg__solid-active: var(--button-bg__solid-active__mix, var(--accent-11));
   }

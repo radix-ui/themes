@@ -40,14 +40,14 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@radix-ui/colors": "^1.0.0",
+    "@radix-ui/colors": "latest",
+    "@radix-ui/primitive": "latest",
     "@radix-ui/react-accessible-icon": "latest",
     "@radix-ui/react-alert-dialog": "latest",
     "@radix-ui/react-aspect-ratio": "latest",
     "@radix-ui/react-avatar": "latest",
     "@radix-ui/react-checkbox": "latest",
     "@radix-ui/react-context-menu": "latest",
-    "@radix-ui/primitive": "latest",
     "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-direction": "latest",
     "@radix-ui/react-dropdown-menu": "latest",

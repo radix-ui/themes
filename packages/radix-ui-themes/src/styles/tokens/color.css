@@ -152,7 +152,9 @@
   --color-surface-1: white;
   --color-surface-1-accent: white;
 }
+.dark,
 .dark-theme,
+.dark .radix-themes:not(.light),
 .dark-theme .radix-themes:not(.light-theme) {
   color-scheme: dark;
 
@@ -161,7 +163,7 @@
   --color-surface-1: var(--gray-a2);
 
   &,
-  & [data-accent-scale]:not(.light-theme) {
+  & [data-accent-scale]:not(.light, .light-theme) {
     --color-surface-1-accent: var(--accent-a2);
   }
 }
@@ -996,7 +998,9 @@
   --color-background-auto: white;
   --color-background-gray: var(--gray-1);
 }
+.dark,
 .dark-theme,
+.dark .radix-themes:not(.light),
 .dark-theme .radix-themes:not(.light-theme) {
   --color-background-auto: var(--gray-1);
   --color-background-gray: var(--gray-1);

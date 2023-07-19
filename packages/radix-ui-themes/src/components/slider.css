@@ -117,7 +117,9 @@
 .radix-themes {
   --slider-track-shadow: inset 0 0 0 0.5px var(--gray-a6), inset 0 1px 2px 0 var(--gray-a7);
 }
+.dark,
 .dark-theme,
+.dark .radix-themes:not(.light),
 .dark-theme .radix-themes:not(.light-theme) {
   --slider-track-shadow: inset 0 0 0 0.5px var(--gray-a7), inset 0 1px 2px 0 var(--black-a11);
 }
