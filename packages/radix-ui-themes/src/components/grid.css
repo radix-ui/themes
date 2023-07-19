@@ -5,5 +5,103 @@
   display: grid;
   align-items: stretch;
   justify-content: flex-start;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: var(--grid-template-columns);
+  grid-template-rows: var(--grid-template-rows);
+  --grid-template-columns: var(--grid-template-columns-initial, 1fr);
+  --grid-template-rows: var(--grid-template-rows-initial, none);
+}
+
+/* prettier-ignore */
+@media (--xs) {
+  .rt-Grid {
+    --grid-template-columns: var(
+      --grid-template-columns-xs, var(
+      --grid-template-columns-initial, 1fr
+    ));
+
+    --grid-template-rows: var(
+      --grid-template-rows-xs, var(
+      --grid-template-rows-initial, none
+    ));
+  }
+}
+
+/* prettier-ignore */
+@media (--sm) {
+  .rt-Grid {
+    --grid-template-columns: var(
+      --grid-template-columns-sm, var(
+      --grid-template-columns-xs, var(
+      --grid-template-columns-initial, 1fr
+    )));
+
+    --grid-template-rows: var(
+      --grid-template-rows-sm, var(
+      --grid-template-rows-xs, var(
+      --grid-template-rows-initial, none
+    )));
+  }
+}
+
+/* prettier-ignore */
+@media (--md) {
+  .rt-Grid {
+    --grid-template-columns: var(
+      --grid-template-columns-md, var(
+      --grid-template-columns-sm, var(
+      --grid-template-columns-xs, var(
+      --grid-template-columns-initial, 1fr
+    ))));
+
+    --grid-template-rows: var(
+      --grid-template-rows-md, var(
+      --grid-template-rows-sm, var(
+      --grid-template-rows-xs, var(
+      --grid-template-rows-initial, none
+    ))));
+  }
+}
+
+/* prettier-ignore */
+@media (--lg) {
+  .rt-Grid {
+    --grid-template-columns: var(
+      --grid-template-columns-lg, var(
+      --grid-template-columns-md, var(
+      --grid-template-columns-sm, var(
+      --grid-template-columns-xs, var(
+      --grid-template-columns-initial, 1fr
+    )))));
+
+    --grid-template-rows: var(
+      --grid-template-rows-lg, var(
+      --grid-template-rows-md, var(
+      --grid-template-rows-sm, var(
+      --grid-template-rows-xs, var(
+      --grid-template-rows-initial, none
+    )))));
+  }
+}
+
+/* prettier-ignore */
+@media (--xl) {
+  .rt-Grid {
+    --grid-template-columns: var(
+      --grid-template-columns-xl, var(
+      --grid-template-columns-lg, var(
+      --grid-template-columns-md, var(
+      --grid-template-columns-sm, var(
+      --grid-template-columns-xs, var(
+      --grid-template-columns-initial, 1fr
+    ))))));
+
+    --grid-template-rows: var(
+      --grid-template-rows-xl, var(
+      --grid-template-rows-lg, var(
+      --grid-template-rows-md, var(
+      --grid-template-rows-sm, var(
+      --grid-template-rows-xs, var(
+      --grid-template-rows-initial, none
+    ))))));
+  }
 }

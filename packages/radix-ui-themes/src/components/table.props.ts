@@ -19,8 +19,10 @@ const cellJustify = ['start', 'center', 'end'] as const;
 
 const tableCellPropDefs = {
   justify: { type: 'enum', values: cellJustify, default: undefined, responsive: true },
+  width: { type: 'string | number', default: undefined },
 } satisfies {
   justify: PropDef<(typeof cellJustify)[number]>;
+  width: PropDef<string | number>;
 };
 
 export { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs };

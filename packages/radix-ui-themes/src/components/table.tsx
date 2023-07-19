@@ -95,9 +95,7 @@ const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwar
 TableRow.displayName = 'TableRow';
 
 type TableCellImplElement = React.ElementRef<'td'>;
-type TableCellImplOwnProps = GetPropDefTypes<typeof tableCellPropDefs> & {
-  width?: number | string;
-};
+type TableCellImplOwnProps = GetPropDefTypes<typeof tableCellPropDefs>;
 interface TableCellImplProps
   extends Omit<React.ComponentPropsWithoutRef<'td'>, keyof TableCellImplOwnProps>,
     PaddingProps,
@@ -107,7 +105,14 @@ interface TableCellImplProps
 const TableCellImpl = React.forwardRef<TableCellImplElement, TableCellImplProps>(
   (props, forwardedRef) => {
     const { rest: paddingRest, ...paddingProps } = extractPaddingProps(props);
-    const { tag: Tag = 'td', className, style, justify, width, ...cellProps } = paddingRest;
+    const {
+      tag: Tag = 'td',
+      className,
+      style,
+      justify = tableCellPropDefs.justify.default,
+      width = tableCellPropDefs.width.default,
+      ...cellProps
+    } = paddingRest;
     return (
       <Tag
         {...cellProps}

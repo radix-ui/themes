@@ -67,5 +67,11 @@ function withBreakpoints(
   return classes.join(' ');
 }
 
-export { withBreakpoints };
+function isBreakpointsObject<V extends string>(
+  obj: Responsive<V | Omit<string, V>> | undefined
+): obj is Record<Breakpoints, string> {
+  return typeof obj === 'object';
+}
+
+export { withBreakpoints, isBreakpointsObject };
 export type { Breakpoints, Responsive };
