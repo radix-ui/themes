@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.30
+
+- `TextField`: `Root` is now `display: flex`
+- General:
+  - Fix inherited appearance colors
+  - Support `.light` / `.dark` out of the box
+
 ## 0.0.29
 
 **Warning!** This release contains some breaking changes.
