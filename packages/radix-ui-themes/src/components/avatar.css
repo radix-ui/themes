@@ -136,8 +136,8 @@
 
 .rt-AvatarRoot.variant-soft {
   & .rt-AvatarFallback {
-    background-color: var(--accent-3);
-    color: var(--accent-11);
+    background-color: var(--accent-a3);
+    color: var(--accent-a11);
   }
   &:where(.high-contrast) .rt-AvatarFallback {
     color: var(--accent-12);

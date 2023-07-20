@@ -4,15 +4,16 @@
   text-decoration-style: solid;
   text-decoration-thickness: 1px;
   text-underline-offset: calc(0.025em + 2px);
-  text-decoration-color: var(--accent-5);
-  color: var(--accent-11);
+  text-decoration-color: var(--accent-a5);
+  color: var(--accent-a11);
+  border-radius: calc(0.07em * var(--radius-factor));
 
   &:hover {
     text-decoration-line: underline;
   }
 
   &:focus-visible {
-    outline-color: var(--accent-8);
+    outline-color: var(--accent-a8);
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 2px;
@@ -23,8 +24,8 @@
   .rt-Text:where([data-accent-scale]):not(.high-contrast) & {
     color: var(--accent-12);
     text-decoration-line: underline;
-    text-decoration-color: var(--accent-6);
-    outline-color: var(--accent-11);
+    text-decoration-color: var(--accent-a6);
+    outline-color: var(--accent-a11);
   }
 }
 

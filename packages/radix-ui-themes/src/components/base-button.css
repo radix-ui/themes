@@ -101,7 +101,7 @@
 
 .rt-BaseButton.variant-soft,
 .rt-BaseButton.variant-ghost {
-  color: var(--accent-11);
+  color: var(--accent-a11);
 
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 1px var(--accent-a7), 0 0 0 1px var(--accent-a7);
@@ -134,7 +134,7 @@
 .rt-BaseButton.variant-outline,
 .rt-BaseButton.variant-surface {
   box-shadow: inset 0 0 0 1px var(--accent-a7);
-  color: var(--accent-11);
+  color: var(--accent-a11);
 
   &:where(:hover, [data-state='open']) {
     background-color: var(--accent-a2);

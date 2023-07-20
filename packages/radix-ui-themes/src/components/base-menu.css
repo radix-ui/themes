@@ -161,13 +161,13 @@
   box-shadow: var(--shadow-3), inset 0 0 0 0.5px var(--gray-a6);
 }
 .rt-BaseMenuItem[data-accent-scale] {
-  color: var(--accent-11);
+  color: var(--accent-a11);
 }
 .rt-BaseMenuItem[data-disabled] {
-  color: var(--gray-8);
+  color: var(--gray-a8);
 }
 .rt-BaseMenuShortcut {
-  color: var(--gray-11);
+  color: var(--gray-a11);
 }
 .rt-BaseMenuItem[data-disabled] .rt-BaseMenuShortcut,
 .rt-BaseMenuItem[data-highlighted] .rt-BaseMenuShortcut,
@@ -175,17 +175,17 @@
   color: inherit;
 }
 .rt-BaseMenuLabel {
-  color: var(--gray-11);
+  color: var(--gray-a11);
 }
 .rt-BaseMenuSeparator {
-  background-color: var(--gray-6);
+  background-color: var(--gray-a6);
 }
 
 /* solid */
 
 .rt-BaseMenuContent.variant-solid {
   & .rt-BaseMenuSubTrigger[data-state='open'] {
-    background-color: var(--accent-5);
+    background-color: var(--accent-a5);
   }
   & .rt-BaseMenuItem[data-highlighted] {
     background-color: var(--accent-9);
@@ -209,10 +209,10 @@
 
 .rt-BaseMenuContent.variant-soft {
   & .rt-BaseMenuSubTrigger[data-state='open'] {
-    background-color: var(--accent-3);
+    background-color: var(--accent-a3);
   }
   & .rt-BaseMenuItem[data-highlighted] {
-    background-color: var(--accent-5);
+    background-color: var(--accent-a5);
     &[data-accent-scale] {
       color: var(--accent-12);
     }

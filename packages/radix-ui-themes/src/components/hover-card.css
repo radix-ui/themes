@@ -1,7 +1,3 @@
-.rt-HoverCardTrigger.rt-Link {
-  background-color: var(--accent-3);
-}
-
 .rt-HoverCardContent {
   border-radius: var(--radius-3);
   background-color: var(--color-panel);

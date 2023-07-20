@@ -170,7 +170,7 @@
     box-shadow: none;
   }
   & .rt-SliderRange[data-disabled] {
-    background-color: var(--gray-7);
+    background-color: var(--gray-6);
     box-shadow: none;
   }
   & .rt-SliderThumb[data-disabled] {
