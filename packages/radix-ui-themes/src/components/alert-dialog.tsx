@@ -3,9 +3,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import { alertDialogContentPropDefs } from './alert-dialog.props';
+import { withBreakpoints } from '../helpers';
 import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
+
+import type { GetPropDefTypes } from '../helpers';
 
 interface AlertDialogProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root> {}
@@ -23,13 +27,21 @@ const AlertDialogTrigger = React.forwardRef<AlertDialogTriggerElement, AlertDial
 AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
+type AlertDialogContentOwnProps = GetPropDefTypes<typeof alertDialogContentPropDefs>;
 interface AlertDialogContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'> {
+  extends Omit<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>, 'asChild'>,
+    AlertDialogContentOwnProps {
   container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
   (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = props;
+    const {
+      className,
+      forceMount,
+      container,
+      size = alertDialogContentPropDefs.size.default,
+      ...contentProps
+    } = props;
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild applyBackgroundColor={false}>
@@ -37,7 +49,11 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
             <AlertDialogPrimitive.Content
               {...contentProps}
               ref={forwardedRef}
-              className={classNames('rt-DialogContent rt-AlertDialogContent', className)}
+              className={classNames(
+                'rt-DialogContent rt-AlertDialogContent',
+                withBreakpoints(size, 'size'),
+                className
+              )}
             />
           </AlertDialogPrimitive.Overlay>
         </Theme>
@@ -52,7 +68,7 @@ type AlertDialogTitleProps = React.ComponentPropsWithoutRef<typeof Heading>;
 const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTitleProps>(
   (props, forwardedRef) => (
     <AlertDialogPrimitive.Title asChild>
-      <Heading size="4" trim="start" {...props} ref={forwardedRef} />
+      <Heading size="5" mb="3" trim="start" {...props} ref={forwardedRef} />
     </AlertDialogPrimitive.Title>
   )
 );
@@ -65,7 +81,7 @@ const AlertDialogDescription = React.forwardRef<
   AlertDialogDescriptionProps
 >((props, forwardedRef) => (
   <AlertDialogPrimitive.Description asChild>
-    <Text as="p" size="2" {...props} ref={forwardedRef} />
+    <Text as="p" size="3" {...props} ref={forwardedRef} />
   </AlertDialogPrimitive.Description>
 ));
 AlertDialogDescription.displayName = 'AlertDialogDescription';

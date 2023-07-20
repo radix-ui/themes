@@ -1,9 +1,40 @@
 .rt-PopoverContent {
   background-color: var(--color-panel);
-  border-radius: var(--radius-3);
   box-shadow: var(--shadow-2), inset 0 0 0 0.5px var(--gray-a6);
   min-width: var(--radix-popover-trigger-width);
   outline: 0;
+  overflow: auto;
+
+  /* used by Inset */
+  --inset-padding: var(--popover-padding);
+  padding: var(--inset-padding);
 
   transform-origin: var(--radix-popover-content-transform-origin);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-PopoverContent {
+    &.size-1 {
+      --popover-padding: var(--space-3);
+      border-radius: var(--radius-4);
+    }
+    &.size-2 {
+      --popover-padding: var(--space-4);
+      border-radius: var(--radius-4);
+    }
+    &.size-3 {
+      --popover-padding: var(--space-5);
+      border-radius: var(--radius-5);
+    }
+    &.size-4 {
+      --popover-padding: var(--space-6);
+      border-radius: var(--radius-5);
+    }
+  }
 }

@@ -21,7 +21,9 @@
   overflow: hidden;
   height: 100%;
 
-  padding: var(--card-padding);
+  /* used by Inset */
+  --inset-padding: var(--card-padding);
+  padding: var(--inset-padding);
 }
 
 /***************************************************************************************************

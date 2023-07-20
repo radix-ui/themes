@@ -3,7 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { popoverContentPropDefs } from './popover.props';
+import { withBreakpoints } from '../helpers';
 import { Theme } from '../theme';
+
+import type { GetPropDefTypes } from '../helpers';
 
 interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
 const PopoverRoot = (props: PopoverRootProps) => <PopoverPrimitive.Root {...props} />;
@@ -18,13 +22,21 @@ const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerPro
 PopoverTrigger.displayName = 'PopoverTrigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
+type PopoverContentOwnProps = GetPropDefTypes<typeof popoverContentPropDefs>;
 interface PopoverContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>, 'asChild'> {
+  extends Omit<React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>, 'asChild'>,
+    PopoverContentOwnProps {
   container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = props;
+    const {
+      className,
+      forceMount,
+      container,
+      size = popoverContentPropDefs.size.default,
+      ...contentProps
+    } = props;
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -34,7 +46,12 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
             collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
-            className={classNames('rt-PopperContent', 'rt-PopoverContent', className)}
+            className={classNames(
+              'rt-PopperContent',
+              'rt-PopoverContent',
+              withBreakpoints(size, 'size'),
+              className
+            )}
           />
         </Theme>
       </PopoverPrimitive.Portal>

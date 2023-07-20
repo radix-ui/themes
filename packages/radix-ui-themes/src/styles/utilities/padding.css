@@ -39,6 +39,10 @@
     padding: var(--space-9);
   }
 
+  .rt-p-current {
+    padding: var(--inset-padding);
+  }
+
   .rt-px-0 {
     padding-left: 0;
     padding-right: 0;
@@ -87,6 +91,11 @@
   .rt-px-9 {
     padding-left: var(--space-9);
     padding-right: var(--space-9);
+  }
+
+  .rt-px-current {
+    padding-left: var(--inset-padding);
+    padding-right: var(--inset-padding);
   }
 
   .rt-py-0 {
@@ -139,6 +148,11 @@
     padding-bottom: var(--space-9);
   }
 
+  .rt-py-current {
+    padding-top: var(--inset-padding);
+    padding-bottom: var(--inset-padding);
+  }
+
   .rt-pt-0 {
     padding-top: 0;
   }
@@ -177,6 +191,10 @@
 
   .rt-pt-9 {
     padding-top: var(--space-9);
+  }
+
+  .rt-pt-current {
+    padding-top: var(--inset-padding);
   }
 
   .rt-pr-0 {
@@ -219,6 +237,10 @@
     padding-right: var(--space-9);
   }
 
+  .rt-pr-current {
+    padding-right: var(--inset-padding);
+  }
+
   .rt-pb-0 {
     padding-bottom: 0;
   }
@@ -259,6 +281,10 @@
     padding-bottom: var(--space-9);
   }
 
+  .rt-pb-current {
+    padding-bottom: var(--inset-padding);
+  }
+
   .rt-pl-0 {
     padding-left: 0;
   }
@@ -297,5 +323,9 @@
 
   .rt-pl-9 {
     padding-left: var(--space-9);
+  }
+
+  .rt-pl-current {
+    padding-left: var(--inset-padding);
   }
 }

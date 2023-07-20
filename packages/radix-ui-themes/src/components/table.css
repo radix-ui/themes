@@ -52,11 +52,12 @@
   font-weight: normal;
 }
 
-/* * * * * * * * * * * * * * * * * * * */
-/*                                     */
-/*      Table Root + Table Content     */
-/*                                     */
-/* * * * * * * * * * * * * * * * * * * */
+/***************************************************************************************************
+ *                                                                                                 *
+ * TableContent inside TableRoot                                                                   *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 /* Add header background */
 .rt-TableRoot :where(.rt-TableHeader) {
   --table-row-background: var(--gray-a2);
@@ -65,4 +66,20 @@
 /* Remove bottom row border, unless it’s focused or there is a footer */
 .rt-TableRoot :where(.rt-TableBody .rt-TableRow:last-child) {
   --table-row-border-bottom: none;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * Inset > Table                                                                                   *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-Inset > .rt-TableContent .rt-TableCell:first-child,
+.rt-Inset :not(.rt-TableRoot) > .rt-TableContent .rt-TableCell:first-child {
+  padding-left: var(--inset-padding);
+}
+
+.rt-Inset > .rt-TableContent .rt-TableCell:last-child,
+.rt-Inset :not(.rt-TableRoot) > .rt-TableContent .rt-TableCell:last-child {
+  padding-right: var(--inset-padding);
 }

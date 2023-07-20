@@ -3,9 +3,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { dialogContentPropDefs } from './dialog.props';
+import { withBreakpoints } from '../helpers';
 import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
+
+import type { GetPropDefTypes } from '../helpers';
 
 interface DialogRootProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
@@ -21,13 +25,21 @@ const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>
 DialogTrigger.displayName = 'DialogTrigger';
 
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
+type DialogContentOwnProps = GetPropDefTypes<typeof dialogContentPropDefs>;
 interface DialogContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>, 'asChild'> {
+  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>, 'asChild'>,
+    DialogContentOwnProps {
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = props;
+    const {
+      className,
+      forceMount,
+      container,
+      size = dialogContentPropDefs.size.default,
+      ...contentProps
+    } = props;
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild applyBackgroundColor={false}>
@@ -35,7 +47,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
             <DialogPrimitive.Content
               {...contentProps}
               ref={forwardedRef}
-              className={classNames('rt-DialogContent', className)}
+              className={classNames('rt-DialogContent', withBreakpoints(size, 'size'), className)}
             />
           </DialogPrimitive.Overlay>
         </Theme>
@@ -50,7 +62,7 @@ type DialogTitleProps = React.ComponentPropsWithoutRef<typeof Heading>;
 const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Title asChild>
-      <Heading size="4" trim="start" {...props} ref={forwardedRef} />
+      <Heading size="5" mb="3" trim="start" {...props} ref={forwardedRef} />
     </DialogPrimitive.Title>
   )
 );
@@ -61,7 +73,7 @@ type DialogDescriptionProps = Omit<React.ComponentPropsWithoutRef<typeof Text>, 
 const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescriptionProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Description asChild>
-      <Text as="p" size="2" {...props} ref={forwardedRef} />
+      <Text as="p" size="3" {...props} ref={forwardedRef} />
     </DialogPrimitive.Description>
   )
 );

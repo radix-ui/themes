@@ -1,0 +1,71 @@
+.rt-Inset {
+  /* We reset the defined margin variables to avoid inheriting them from a higher component */
+  /* If a margin IS defined on the component itself, the utility class will win and reset it */
+  --margin-top: 0px;
+  --margin-right: 0px;
+  --margin-bottom: 0px;
+  --margin-left: 0px;
+}
+
+@breakpoints {
+  .rt-Inset {
+    &.side-top {
+      --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
+      --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
+      --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
+      margin-top: var(--margin-top-override);
+      margin-left: var(--margin-left-override);
+      margin-right: var(--margin-right-override);
+    }
+
+    &.side-bottom {
+      --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
+      --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
+      --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
+      margin-left: var(--margin-left-override);
+      margin-right: var(--margin-right-override);
+      margin-bottom: var(--margin-bottom-override);
+    }
+
+    &.side-left {
+      --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
+      --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
+      --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
+      margin-top: var(--margin-top-override);
+      margin-bottom: var(--margin-bottom-override);
+      margin-left: var(--margin-left-override);
+    }
+
+    &.side-right {
+      --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
+      --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
+      --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
+      margin-top: var(--margin-top-override);
+      margin-bottom: var(--margin-bottom-override);
+      margin-right: var(--margin-right-override);
+    }
+
+    &.side-x {
+      --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
+      --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
+      margin-left: var(--margin-left-override);
+      margin-right: var(--margin-right-override);
+    }
+
+    &.side-y {
+      --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
+      --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
+      margin-top: var(--margin-top-override);
+      margin-bottom: var(--margin-bottom-override);
+    }
+
+    &.side-all {
+      --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
+      --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
+      --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
+      --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
+      margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
+        var(--margin-left-override);
+    }
+  }
+}

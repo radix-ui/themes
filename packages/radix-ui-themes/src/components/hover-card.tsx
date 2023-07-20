@@ -3,7 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
+import { hoverCardContentPropDefs } from './hover-card.props';
+import { withBreakpoints } from '../helpers';
 import { Theme } from '../theme';
+
+import type { GetPropDefTypes } from '../helpers';
 
 interface HoverCardRootProps
   extends React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Root> {}
@@ -27,13 +31,22 @@ const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTrig
 );
 HoverCardTrigger.displayName = 'HoverCardTrigger';
 
+type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
+type HoverCardContentOwnProps = GetPropDefTypes<typeof hoverCardContentPropDefs>;
 interface HoverCardContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>, 'asChild'> {
+  extends Omit<React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>, 'asChild'>,
+    HoverCardContentOwnProps {
   container?: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
 }
-const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>(
+const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardContentProps>(
   (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = props;
+    const {
+      className,
+      forceMount,
+      container,
+      size = hoverCardContentPropDefs.size.default,
+      ...contentProps
+    } = props;
     return (
       <HoverCardPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -43,7 +56,12 @@ const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>
             collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
-            className={classNames('rt-PopperContent', 'rt-HoverCardContent', className)}
+            className={classNames(
+              'rt-PopperContent',
+              'rt-HoverCardContent',
+              withBreakpoints(size, 'size'),
+              className
+            )}
           />
         </Theme>
       </HoverCardPrimitive.Portal>

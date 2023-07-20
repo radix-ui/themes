@@ -237,7 +237,7 @@ export default function Sink() {
                           <DialogContent style={{ maxWidth: 450 }}>
                             <Flex direction="column" gap="3">
                               <DialogTitle>Share resource</DialogTitle>
-                              <DialogDescription size="2">
+                              <DialogDescription>
                                 Jan Tschichold was a German calligrapher, typographer and book
                                 designer. He played a significant role in the development of graphic
                                 design in the 20th century.
@@ -303,7 +303,7 @@ export default function Sink() {
                           <AlertDialogContent style={{ maxWidth: 450 }}>
                             <Flex direction="column" gap="3">
                               <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
-                              <AlertDialogDescription size="2">
+                              <AlertDialogDescription>
                                 The setup link will no longer be accessible and any existing setup
                                 sessions will be revoked.
                               </AlertDialogDescription>
@@ -329,17 +329,15 @@ export default function Sink() {
                           <PopoverTrigger>
                             <Button variant="solid">Popover</Button>
                           </PopoverTrigger>
-                          <PopoverContent>
-                            <Box p="4" style={{ width: 200 }}>
-                              <Text as="p" size="2" mb="2">
-                                Jan Tschichold was a German calligrapher, typographer and book
-                                designer. He played a significant role in the development of graphic
-                                design in the 20th century.
-                              </Text>
-                              <Button variant="solid" size="1">
-                                Share <Share2Icon />
-                              </Button>
-                            </Box>
+                          <PopoverContent style={{ width: 200 }}>
+                            <Text as="p" size="2" mb="2">
+                              Jan Tschichold was a German calligrapher, typographer and book
+                              designer. He played a significant role in the development of graphic
+                              design in the 20th century.
+                            </Text>
+                            <Button variant="solid" size="1">
+                              Share <Share2Icon />
+                            </Button>
                           </PopoverContent>
                         </PopoverRoot>
                       </DocsGridSectionItem>

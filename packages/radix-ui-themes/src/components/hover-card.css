@@ -1,8 +1,34 @@
 .rt-HoverCardContent {
-  border-radius: var(--radius-3);
   background-color: var(--color-panel);
-  padding: var(--space-3);
   box-shadow: var(--shadow-2), inset 0 0 0 0.5px var(--gray-a6);
+  overflow: auto;
+
+  /* used by Inset */
+  --inset-padding: var(--hover-card-padding);
+  padding: var(--inset-padding);
 
   transform-origin: var(--radix-hover-card-content-transform-origin);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-HoverCardContent {
+    &.size-1 {
+      --hover-card-padding: var(--space-3);
+      border-radius: var(--radius-4);
+    }
+    &.size-2 {
+      --hover-card-padding: var(--space-4);
+      border-radius: var(--radius-4);
+    }
+    &.size-3 {
+      --hover-card-padding: var(--space-5);
+      border-radius: var(--radius-5);
+    }
+  }
 }

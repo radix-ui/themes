@@ -15,7 +15,6 @@
 }
 
 .rt-DialogContent {
-  border-radius: var(--radius-4);
   width: 100%;
   max-height: 90vh;
   max-width: 580px;
@@ -26,8 +25,36 @@
   box-sizing: border-box;
   z-index: 1;
 
-  --dialog-padding: var(--space-5);
-  padding: var(--dialog-padding);
+  /* used by Inset */
+  --inset-padding: var(--dialog-padding);
+  padding: var(--inset-padding);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-DialogContent {
+    &.size-1 {
+      --dialog-padding: var(--space-3);
+      border-radius: var(--radius-4);
+    }
+    &.size-2 {
+      --dialog-padding: var(--space-4);
+      border-radius: var(--radius-4);
+    }
+    &.size-3 {
+      --dialog-padding: var(--space-5);
+      border-radius: var(--radius-5);
+    }
+    &.size-4 {
+      --dialog-padding: var(--space-6);
+      border-radius: var(--radius-5);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
