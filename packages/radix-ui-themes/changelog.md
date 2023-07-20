@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.0.31
+
+**Warning!** This release contains some breaking changes.
+
+- `Grid`:
+  - Add support for arbitrary values in `columns`
+  - Add `rows` prop with arbitrary values support
+- `Inset`:
+  - New component supported inside `Dialog`, `AlertDialog`, `Card`, `HoverCard`, `Popover`
+  - Automatic padding adjustments for `Table` inside `Inset`
+- `Slider`: Forward `tabIndex` correctly to `Thumb`
+- `Code`:
+  - [**Breaking**] Polish size, `--code-font-size-adjust` is now `0.95`
+  - [**Breaking**] Rename `plain` variant to `ghost`
+- `Callout`:
+  - [**Breaking**] Remove `solid` variant
+- `Table`: Add `size` prop to `TableContent`
+- General:
+  - Fix light/dark color inheritance
+    - [**Breaking**] `--color-surface-1-accent` is now `--accent-surface`
+    - [**Breaking**] `--color-surface-1` is now `--color-surface`
+  - Polish color usages (alpha, etc)
+  - Polish focus states throughout
+
 ## 0.0.30
 
 - `TextField`: `Root` is now `display: flex`
