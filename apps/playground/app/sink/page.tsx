@@ -180,6 +180,7 @@ import {
   themeAccentScalesGrouped,
   //
   ThemePanel,
+  tableContentPropDefs,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -2591,37 +2592,7 @@ export default function Sink() {
                         With Root
                       </Text>
                       <TableRoot>
-                        <TableContent>
-                          <TableHeader>
-                            <TableRow>
-                              <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                              <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                              <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            <TableRow>
-                              <TableRowHeaderCell>Andy</TableRowHeaderCell>
-                              <TableCell>andy@workos.com</TableCell>
-                              <TableCell>Developer</TableCell>
-                            </TableRow>
-                            <TableRow>
-                              <TableRowHeaderCell>Benoit</TableRowHeaderCell>
-                              <TableCell>benoit@workos.com</TableCell>
-                              <TableCell>Admin</TableCell>
-                            </TableRow>
-                            <TableRow>
-                              <TableRowHeaderCell>Lucas</TableRowHeaderCell>
-                              <TableCell>lucas@workos.com</TableCell>
-                              <TableCell>Developer</TableCell>
-                            </TableRow>
-                            <TableRow>
-                              <TableRowHeaderCell>Vlad</TableRowHeaderCell>
-                              <TableCell>vlad@workos.com</TableCell>
-                              <TableCell>Designer</TableCell>
-                            </TableRow>
-                          </TableBody>
-                        </TableContent>
+                        <TableExample />
                       </TableRoot>
                     </Flex>
 
@@ -2629,38 +2600,24 @@ export default function Sink() {
                       <Text color="gray" size="2">
                         Without root
                       </Text>
-                      <TableContent>
-                        <TableHeader>
-                          <TableRow>
-                            <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                            <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                            <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          <TableRow>
-                            <TableRowHeaderCell>Andy</TableRowHeaderCell>
-                            <TableCell>andy@workos.com</TableCell>
-                            <TableCell>Developer</TableCell>
-                          </TableRow>
-                          <TableRow>
-                            <TableRowHeaderCell>Benoit</TableRowHeaderCell>
-                            <TableCell>benoit@workos.com</TableCell>
-                            <TableCell>Admin</TableCell>
-                          </TableRow>
-                          <TableRow>
-                            <TableRowHeaderCell>Lucas</TableRowHeaderCell>
-                            <TableCell>lucas@workos.com</TableCell>
-                            <TableCell>Developer</TableCell>
-                          </TableRow>
-                          <TableRow>
-                            <TableRowHeaderCell>Vlad</TableRowHeaderCell>
-                            <TableCell>vlad@workos.com</TableCell>
-                            <TableCell>Designer</TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </TableContent>
+                      <TableExample />
                     </Flex>
+                  </Grid>
+
+                  <Grid columns="2" gap="5" mt="5">
+                    {tableContentPropDefs.size.values
+                      .slice()
+                      .reverse()
+                      .map((size) => (
+                        <div key={size}>
+                          <Text as="p" color="gray" size="2" mb="3">
+                            size {size}
+                          </Text>
+                          <TableRoot>
+                            <TableExample size={size} />
+                          </TableRoot>
+                        </div>
+                      ))}
                   </Grid>
 
                   <Text as="p" my="5">
@@ -4184,5 +4141,41 @@ function PlaygroundForm({
       </Grid>
       <Button size={size}>Submit</Button>
     </Flex>
+  );
+}
+
+function TableExample(props: React.ComponentProps<typeof TableContent>) {
+  return (
+    <TableContent {...props}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
+          <TableColumnHeaderCell>Email</TableColumnHeaderCell>
+          <TableColumnHeaderCell>Group</TableColumnHeaderCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableRowHeaderCell>Andy</TableRowHeaderCell>
+          <TableCell>andy@workos.com</TableCell>
+          <TableCell>Developer</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableRowHeaderCell>Benoit</TableRowHeaderCell>
+          <TableCell>benoit@workos.com</TableCell>
+          <TableCell>Admin</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableRowHeaderCell>Lucas</TableRowHeaderCell>
+          <TableCell>lucas@workos.com</TableCell>
+          <TableCell>Developer</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableRowHeaderCell>Vlad</TableRowHeaderCell>
+          <TableCell>vlad@workos.com</TableCell>
+          <TableCell>Designer</TableCell>
+        </TableRow>
+      </TableBody>
+    </TableContent>
   );
 }

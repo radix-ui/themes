@@ -7,6 +7,14 @@ const tableRootPropDefs = {
   radius: typeof radiusProp;
 };
 
+const sizes = ['1', '2', '3'] as const;
+
+const tableContentPropDefs = {
+  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+};
+
 const rowAlign = ['start', 'center', 'end', 'baseline'] as const;
 
 const tableRowPropDefs = {
@@ -25,4 +33,4 @@ const tableCellPropDefs = {
   width: PropDef<string | number>;
 };
 
-export { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs };
+export { tableRootPropDefs, tableContentPropDefs, tableRowPropDefs, tableCellPropDefs };

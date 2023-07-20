@@ -18,9 +18,6 @@
 
   /* Makes "height: 100%" work on content inside cells */
   height: 0;
-
-  font-size: var(--font-size-2);
-  line-height: var(--line-height-2);
 }
 
 .rt-TableHeader {
@@ -41,15 +38,44 @@
   box-shadow: var(--table-row-border-bottom);
   box-sizing: border-box;
   vertical-align: inherit;
-  padding: var(--space-3);
+  padding: var(--table-cell-padding);
   /* Works as min-height */
-  height: 44px;
+  height: var(--table-cell-min-height);
 }
 .rt-TableColumnHeaderCell {
   font-weight: bold;
 }
 .rt-TableRowHeaderCell {
   font-weight: normal;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-TableContent {
+    &.size-1 {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      --table-cell-padding: var(--space-2);
+      --table-cell-min-height: 36px;
+    }
+    &.size-2 {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      --table-cell-padding: var(--space-3);
+      --table-cell-min-height: 44px;
+    }
+    &.size-3 {
+      font-size: var(--font-size-3);
+      line-height: var(--line-height-3);
+      --table-cell-padding: var(--space-3) var(--space-4);
+      --table-cell-min-height: 48px;
+    }
+  }
 }
 
 /***************************************************************************************************

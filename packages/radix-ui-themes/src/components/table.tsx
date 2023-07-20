@@ -1,6 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props';
+import {
+  tableRootPropDefs,
+  tableContentPropDefs,
+  tableRowPropDefs,
+  tableCellPropDefs,
+} from './table.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -32,16 +37,25 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
 TableRoot.displayName = 'TableRoot';
 
 type TableContentElement = React.ElementRef<'table'>;
-interface TableContentProps extends React.ComponentPropsWithoutRef<'table'>, MarginProps {}
+type TableContentOwnProps = GetPropDefTypes<typeof tableContentPropDefs>;
+interface TableContentProps
+  extends React.ComponentPropsWithoutRef<'table'>,
+    MarginProps,
+    TableContentOwnProps {}
 const TableContent = React.forwardRef<TableContentElement, TableContentProps>(
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-    const { className, ...contentProps } = marginRest;
+    const { className, size = tableContentPropDefs.size.default, ...contentProps } = marginRest;
     return (
       <table
         {...contentProps}
         ref={forwardedRef}
-        className={classNames('rt-TableContent', withMarginProps(marginProps), className)}
+        className={classNames(
+          'rt-TableContent',
+          withBreakpoints(size, 'size'),
+          withMarginProps(marginProps),
+          className
+        )}
       />
     );
   }
