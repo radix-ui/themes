@@ -23,6 +23,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
     color = sliderPropDefs.color.default,
     highContrast = sliderPropDefs.highContrast.default,
     radius = sliderPropDefs.radius.default,
+    tabIndex,
     ...sliderProps
   } = marginRest;
   return (
@@ -47,7 +48,11 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
         />
       </SliderPrimitive.Track>
       {(sliderProps.value ?? sliderProps.defaultValue ?? []).map((value, index) => (
-        <SliderPrimitive.Thumb key={index} className="rt-SliderThumb" />
+        <SliderPrimitive.Thumb
+          key={index}
+          className="rt-SliderThumb"
+          {...(tabIndex !== undefined ? { tabIndex } : undefined)}
+        />
       ))}
     </SliderPrimitive.Root>
   );
