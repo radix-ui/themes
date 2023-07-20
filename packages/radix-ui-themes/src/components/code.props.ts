@@ -6,7 +6,7 @@ const variants = ['solid', 'soft', 'outline', 'ghost'] as const;
 
 const codePropDefs = {
   size: { type: 'enum', values: sizes, default: undefined, responsive: true },
-  variant: { type: 'enum', values: variants, default: 'ghost' },
+  variant: { type: 'enum', values: variants, default: 'soft' },
   weight: weightProp,
   color: colorProp,
   highContrast: highContrastProp,
