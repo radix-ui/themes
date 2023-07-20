@@ -40,6 +40,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         ref={forwardedRef}
         className="rt-ScrollAreaViewport"
       />
+      <div className="rt-ScrollAreaViewportFocusRing" />
 
       {scrollbars !== 'vertical' ? (
         <ScrollAreaPrimitive.Scrollbar

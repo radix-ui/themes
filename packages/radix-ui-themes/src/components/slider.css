@@ -133,11 +133,12 @@
 
 .rt-SliderThumb {
   background-color: white;
-  box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--gray-a5);
+  --slider-thumb-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--gray-a5);
+  box-shadow: var(--slider-thumb-shadow);
 
   &:where(:focus-visible) {
-    outline: var(--slider-thumb-focus-outline-size) solid var(--accent-a7);
-    outline-offset: 1px;
+    outline: none;
+    box-shadow: var(--slider-thumb-shadow), 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
   }
 }
 

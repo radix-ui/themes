@@ -12,6 +12,13 @@
   overscroll-behavior-x: contain;
 }
 
+.rt-ScrollAreaViewport:focus-visible + .rt-ScrollAreaViewportFocusRing {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 2px var(--accent-a8);
+}
+
 .rt-ScrollAreaScrollbar {
   display: flex;
   /* Ensures no selection */

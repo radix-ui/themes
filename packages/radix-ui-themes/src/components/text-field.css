@@ -140,8 +140,16 @@
       box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-3);
     }
     &:focus + .rt-TextFieldChrome {
-      box-shadow: inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8),
+      box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8),
         inset 0 0 0 100px var(--accent-3);
+    }
+  }
+  &:read-only {
+    &::placeholder {
+      color: var(--gray-a7);
+    }
+    &::selection {
+      background-color: var(--gray-a5);
     }
   }
 }
@@ -154,7 +162,7 @@
     box-shadow: var(--shadow-1);
   }
   &:focus + .rt-TextFieldChrome {
-    box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8);
+    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8), var(--shadow-1);
   }
 }
 
@@ -164,7 +172,7 @@
     background-color: var(--accent-a3);
   }
   &:focus + .rt-TextFieldChrome {
-    box-shadow: inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8);
+    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
   }
   &::placeholder {
     color: var(--accent-12);
@@ -201,5 +209,8 @@
   }
   &:not(:focus) + .rt-TextFieldChrome {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+  &:focus + .rt-TextFieldChrome {
+    box-shadow: inset 0 0 0 1px var(--gray-8), 0 0 0 1px var(--gray-a8);
   }
 }
