@@ -3094,12 +3094,28 @@ export default function Sink() {
                     </tbody>
                   </table>
 
+                  <Grid columns="400px 400px" gap="5" mt="7">
+                    {codePropDefs.variant.values.map((variant) => (
+                      <Text as="p" size="3" key={variant}>
+                        The CSS rule <Code variant={variant}>antialiased</Code> has been applied to
+                        all fonts.google.com pages where fonts are rendered. This results in
+                        browsers using the <Strong>greyscale antialiasing method</Strong> rather
+                        than default <Em>subpixel rendering</Em> of fonts.{' '}
+                        <Quote>
+                          I believe this was probably introduced to get around inconsistencies in
+                          rendering between browsers
+                        </Quote>
+                        , particular between Chrome and Safari on MacOS.
+                      </Text>
+                    ))}
+                  </Grid>
+
                   <Flex direction="column" gap="4" mt="7">
                     {codePropDefs.size.values
                       .slice()
                       .reverse()
                       .map((size) => (
-                        <Code key={size} size={size} variant="plain">
+                        <Code key={size} size={size} variant="ghost">
                           The quick brown fox jumped{Number(size) < 9 && ' over the lazy dog'}
                         </Code>
                       ))}

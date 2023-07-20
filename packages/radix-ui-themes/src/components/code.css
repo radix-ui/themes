@@ -73,14 +73,14 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Code:where(:not(.variant-plain)) {
-  padding-left: 0.2em;
-  padding-right: 0.2em;
+.rt-Code:where(:not(.variant-ghost)) {
+  padding: 0.1em 0.25em;
+  font-size: calc(95% * var(--code-font-size-adjust));
 }
 
-/* plain */
+/* ghost */
 
-.rt-Code.variant-plain {
+.rt-Code.variant-ghost {
 }
 
 /* solid */

@@ -70,7 +70,7 @@
   /* Code */
 
   --code-font-family: 'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
-  --code-font-size-adjust: 0.9;
+  --code-font-size-adjust: 0.95;
   --code-font-style: normal;
   --code-font-weight: inherit;
   --code-letter-spacing: -0.007em;
