@@ -8,6 +8,7 @@ import {
   Share2Icon,
   InfoCircledIcon,
   StarIcon,
+  Cross1Icon,
 } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import {
@@ -3576,6 +3577,9 @@ export default function Sink() {
                                           <Link href="/">Configuration Guide</Link> for more
                                           details.
                                         </CalloutText>
+                                        <IconButton size="1" variant="soft">
+                                          <Cross1Icon />
+                                        </IconButton>
                                       </CalloutRoot>
                                       <CalloutRoot variant={variant} color={color} highContrast>
                                         <CalloutIcon>

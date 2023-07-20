@@ -49,33 +49,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* solid */
-
-.rt-CalloutRoot.variant-solid {
-  background-color: var(--accent-9);
-  color: var(--accent-9-contrast);
-
-  & .rt-CalloutIcon,
-  & .rt-CalloutText {
-    color: inherit;
-  }
-
-  /* specific overrides for problematic variant */
-  & .rt-Link {
-    color: inherit !important;
-    text-decoration-line: underline;
-    text-decoration-color: currentColor !important;
-    &:focus-visible {
-      outline-color: currentColor;
-    }
-  }
-
-  &:where(.high-contrast) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
-  }
-}
-
 /* soft */
 
 .rt-CalloutRoot.variant-soft {
