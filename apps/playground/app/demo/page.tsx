@@ -62,7 +62,7 @@ export default function Demo() {
                       </IconButton>
                     </DialogTrigger>
                     <DialogContent>
-                      <DialogTitle mb="3">{user.name}</DialogTitle>
+                      <DialogTitle>{user.name}</DialogTitle>
                       <DialogDescription mb="5">Edit and save details below.</DialogDescription>
 
                       <Text size="1" weight="bold" color="gray" mb="1">
@@ -73,7 +73,7 @@ export default function Demo() {
                         Role
                       </Text>
                       <SelectRoot defaultValue={user.role}>
-                        <SelectTrigger color="gray" highContrast />
+                        <SelectTrigger />
                         <SelectContent variant="soft" color="gray">
                           <SelectItem value="viewer">Viewer</SelectItem>
                           <SelectItem value="maintainer">Maintainer</SelectItem>
