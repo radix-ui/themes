@@ -14,9 +14,9 @@
 - `Code`:
   - [**Breaking**] Polish size, `--code-font-size-adjust` is now `0.95`
   - [**Breaking**] Rename `plain` variant to `ghost`
-- `Callout`:
-  - [**Breaking**] Remove `solid` variant
+- `Callout`: [**Breaking**] Remove `solid` variant
 - `Table`: Add `size` prop to `TableContent`
+- `Popover`: [**Breaking**] Now comes with its own internal padding
 - General:
   - Fix light/dark color inheritance
     - [**Breaking**] `--color-surface-1-accent` is now `--accent-surface`
