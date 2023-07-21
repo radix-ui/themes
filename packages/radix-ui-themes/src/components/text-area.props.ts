@@ -2,11 +2,11 @@ import { colorProp, radiusProp } from '../helpers';
 import { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
-const variants = ['surface', 'soft'] as const;
+const variants = ['solid', 'surface', 'soft'] as const;
 
 const textAreaPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
-  variant: { type: 'enum', values: variants, default: 'surface' },
+  variant: { type: 'enum', values: variants, default: 'solid' },
   color: colorProp,
   radius: radiusProp,
 } satisfies {

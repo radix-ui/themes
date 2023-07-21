@@ -921,7 +921,8 @@ export default function Sink() {
                                 <RowHeaderCell>{color}</RowHeaderCell>
                                 {switchPropDefs.variant.values.map((variant) => (
                                   <td key={variant}>
-                                    <Switch variant={variant} color={color} defaultChecked />
+                                    <Switch variant={variant} color={color} />
+                                    <Switch variant={variant} color={color} defaultChecked ml="2" />
                                     <Switch
                                       variant={variant}
                                       color={color}

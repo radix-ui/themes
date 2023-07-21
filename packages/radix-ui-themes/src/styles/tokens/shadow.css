@@ -1,5 +1,4 @@
 .radix-themes {
-  /* --shadow-1: inset 0 0 0 1px var(--gray-a6), inset 0 1px 2px 0 var(--gray-a7); */
   --shadow-1: inset 0 0 0 1px var(--gray-a6), inset 0 1.5px 2px 0 var(--gray-a7);
   --shadow-2: 0px 3px 25px -8px var(--gray-a7);
   --shadow-3: 0px 12px 40px var(--gray-a6), 0px 12px 20px -12px var(--gray-a8);
@@ -9,7 +8,6 @@
 
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  /* --shadow-1: inset 0 0 0 1px var(--gray-a7); */
   --shadow-1: inset 0 0 0 1px var(--gray-a7), inset 0 1.5px 2px 0 var(--black-a11);
   --shadow-2: 0px 3px 35px -8px rgb(0 0 0 / 0.9);
   --shadow-3: 0px 12px 40px rgb(0 0 0 / 0.6), 0px 12px 20px -12px rgb(0 0 0 / 0.8);

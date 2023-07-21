@@ -59,16 +59,16 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-CheckboxButton:where([data-state='unchecked']) {
-  box-shadow: var(--shadow-1);
-  background-color: var(--color-surface);
-}
-
 /* solid */
 
 .rt-CheckboxButton.variant-solid {
+  &:where([data-state='unchecked']) {
+    background-color: var(--color-canvas);
+    box-shadow: inset 0 0 0 1px var(--gray-a8);
+  }
   &:where(:focus-visible) {
-    box-shadow: var(--shadow-1), 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
+    box-shadow: inset 0 0 0 1px var(--gray-a8), 0 0 0 2px var(--accent-3),
+      0 0 0 4px var(--accent-a8);
   }
   &:where([data-state='checked']) {
     background-color: var(--accent-9);
@@ -80,6 +80,47 @@
     &:where(.high-contrast) {
       background-color: var(--accent-12);
       color: var(--accent-1);
+    }
+  }
+}
+
+/* surface */
+
+.rt-CheckboxButton.variant-surface {
+  &:where([data-state='unchecked']) {
+    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
+    background-color: var(--color-surface-1);
+  }
+  &:where(:focus-visible) {
+    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1), 0 0 0 2px var(--accent-3),
+      0 0 0 4px var(--accent-a8);
+  }
+  &:where([data-state='checked']) {
+    background-color: var(--accent-9);
+    color: var(--accent-9-contrast);
+
+    &:where(:focus-visible) {
+      box-shadow: 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
+    }
+    &:where(.high-contrast) {
+      background-color: var(--accent-12);
+      color: var(--accent-1);
+    }
+  }
+}
+
+/* soft */
+
+.rt-CheckboxButton.variant-soft {
+  background-color: var(--accent-a5);
+  &:where(:focus-visible) {
+    box-shadow: 0 0 0 2px var(--accent-1), 0 0 0 4px var(--accent-a8);
+  }
+  &:where([data-state='checked']) {
+    color: var(--accent-11);
+
+    &:where(.high-contrast) {
+      color: var(--accent-12);
     }
   }
 }

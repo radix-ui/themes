@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.0.32
+
+- General:
+  - Add `--color-surface-1`
+  - `--color-surface` is now `--color-surface-2`
+  - Add `--color-canvas` (used in `solid` variants for form controls)
+- `Button`, `IconButton`:
+  - Update font-weight to `--font-weight-medium` on all except `ghost` variant
+  - Color polish
+- `TextField`:
+  - Add new `solid` variant
+  - [**Breaking**] Default `variant` is now `solid`
+- `TextArea`:
+  - Add new `solid` variant
+  - [**Breaking**] Default `variant` is now `solid`
+- `Checkbox`:
+  - Add new `surface` and `soft` variants
+  - [**Breaking**] Switch your `variant` to `surface` if you want the old look
+- `RadioGroup`:
+  - Add new `surface` and `soft` variants
+  - [**Breaking**] Switch your `variant` to `surface` if you want the old look
+- `Select`:
+  - [**Breaking**] Default variant is now `solid`
+  - `solid` variant look and feel adjusted to match form controls (e.g. `TextField`, `Checkbox`, etc)
+- `Switch`:
+  - Add new `surface` and `soft` variants
+  - [**Breaking**] Switch your `variant` to `surface` if you want the old look
+
 ## 0.0.31
 
 **Warning!** This release contains some breaking changes.

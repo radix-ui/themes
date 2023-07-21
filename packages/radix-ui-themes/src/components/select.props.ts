@@ -15,7 +15,7 @@ const selectRootPropDefs = {
 };
 
 const selectTriggerPropDefs = {
-  variant: { ...baseButtonPropDefs.variant, default: 'surface' },
+  variant: { ...baseButtonPropDefs.variant, default: 'solid' },
   color: baseButtonPropDefs.color,
   highContrast: baseButtonPropDefs.highContrast,
 } satisfies {

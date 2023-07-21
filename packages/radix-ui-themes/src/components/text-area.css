@@ -107,10 +107,20 @@
   }
 }
 
+/* solid */
+
+.rt-TextArea.variant-solid {
+  background-color: var(--color-canvas);
+  box-shadow: inset 0 0 0 1px var(--gray-a8);
+  &:focus {
+    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
+  }
+}
+
 /* surface */
 
 .rt-TextArea.variant-surface {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-1);
   box-shadow: var(--shadow-1);
   &:focus {
     box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8), var(--shadow-1);

@@ -126,19 +126,51 @@
   }
 }
 
-/* outline / surface */
+/* outline */
 
-.rt-BaseButton.variant-outline,
-.rt-BaseButton.variant-surface {
-  box-shadow: inset 0 0 0 1px var(--accent-a7);
+.rt-BaseButton.variant-outline {
+  box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
 
   &:where(:hover, [data-state='open']) {
     background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
   &:where(:active) {
-    box-shadow: inset 0 0 0 1px var(--accent-a9);
+    background-color: var(--accent-a3);
+    /* trick to use an equivalent betweent step 8 and 9 */
+    --button-shadow__outline-active: inset 0 0 0 1px var(--accent-a8),
+      inset 0 0 0 1px var(--accent-a6);
+    box-shadow: var(--button-shadow__outline-active);
+  }
+  &:where(:focus-visible) {
+    box-shadow: inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8);
+  }
+  &:where(:active:focus-visible) {
+    box-shadow: var(--button-shadow__outline-active), 0 0 0 1px var(--accent-a8);
+  }
+
+  &:where(.high-contrast) {
+    box-shadow: inset 0 0 0 1px var(--accent-12);
+    color: var(--accent-12);
+
+    &:where(:focus-visible) {
+      box-shadow: inset 0 0 0 1px var(--accent-12), 0 0 0 1px var(--accent-12);
+    }
+  }
+}
+
+/* surface */
+
+.rt-BaseButton.variant-surface {
+  background-color: var(--accent-surface);
+  box-shadow: inset 0 0 0 1px var(--accent-a6);
+  color: var(--accent-a11);
+
+  &:where(:hover, [data-state='open']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+  }
+  &:where(:active) {
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
@@ -151,16 +183,16 @@
     color: var(--accent-12);
   }
 }
-.rt-BaseButton:where(.variant-surface) {
-  background-color: var(--accent-surface);
-}
 
 /* all disabled buttons */
 
 .rt-BaseButton:disabled {
   color: var(--gray-a8);
   cursor: not-allowed;
-  background-color: var(--gray-a3);
   box-shadow: none;
   filter: none;
+  background-color: transparent;
+  &:where(:not(.variant-ghost)) {
+    background-color: var(--gray-a3);
+  }
 }

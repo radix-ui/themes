@@ -95,6 +95,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Button:where(.variant-solid, .variant-soft) {
+.rt-Button:where(:not(.variant-ghost)) {
   font-weight: var(--font-weight-medium);
 }

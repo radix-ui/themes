@@ -6,15 +6,20 @@
 
   /* Match Text size 2 line-height */
   height: var(--line-height-2);
+
+  --switch-padding: 1px;
+  --switch-width: calc(var(--switch-height) * 1.75);
+  --switch-thumb-size: calc(var(--switch-height) - var(--switch-padding) * 2);
+  --switch-thumb-translate: calc(var(--switch-width) - var(--switch-height));
 }
 
 .rt-SwitchButton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   width: var(--switch-width);
   height: var(--switch-height);
   padding: var(--switch-padding);
-  --switch-radius: max(var(--radius-3), var(--radius-full));
   border-radius: var(--switch-radius);
 
   transition-property: background-color, box-shadow;
@@ -44,25 +49,16 @@
 @breakpoints {
   .rt-SwitchRoot {
     &.size-1 {
-      --switch-width: calc(28px * var(--scaling));
       --switch-height: var(--space-4);
-      --switch-padding: 1px;
-      --switch-thumb-size: calc(14px * var(--scaling));
-      --switch-thumb-translate: calc(12px * var(--scaling));
+      --switch-radius: max(var(--radius-2), var(--radius-full));
     }
     &.size-2 {
-      --switch-width: var(--space-7);
       --switch-height: var(--space-5);
-      --switch-padding: var(--space-1);
-      --switch-thumb-size: var(--space-4);
-      --switch-thumb-translate: var(--space-4);
+      --switch-radius: max(var(--radius-3), var(--radius-full));
     }
     &.size-3 {
-      --switch-width: calc(56px * var(--scaling));
       --switch-height: var(--space-6);
-      --switch-padding: var(--space-1);
-      --switch-thumb-size: var(--space-5);
-      --switch-thumb-translate: var(--space-5);
+      --switch-radius: max(var(--radius-4), var(--radius-full));
     }
   }
 }
@@ -73,76 +69,122 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-SwitchButton {
-  background-color: var(--gray-a3);
-  box-shadow: var(--shadow-1);
-  position: relative;
-
-  &:where(:focus-visible)::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    box-shadow: 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
-  }
-  &:where([data-state='checked']) {
-    box-shadow: inset 0 1.5px 2px 0 var(--black-a7);
-  }
+:root,
+.light,
+.light-theme {
+  --switch-thumb-bg__high-contrast-checked: white;
+}
+.dark,
+.dark-theme {
+  --switch-thumb-bg__high-contrast-checked: var(--black-a12);
 }
 
-.rt-SwitchThumb {
-  background-color: var(--white-a12);
-  box-shadow: 0 1px 2px var(--black-a7), 0 0 0 0.5px var(--gray-a3);
-
-  &:where([data-state='checked']) {
-    box-shadow: 0 1px 2px var(--black-a9);
-  }
+.rt-SwitchButton:where(:focus-visible)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
 }
 
 /* solid */
 
-:root,
-.light,
-.light-theme {
-  --switch-thumb-bg__solid-high-contrast-checked: var(--white-a12);
-  --switch-thumb-shadow__solid-high-contrast-checked: none;
-}
-.dark,
-.dark-theme {
-  --switch-thumb-bg__solid-high-contrast-checked: var(--black-a12);
-  --switch-thumb-shadow__solid-high-contrast-checked: 0 0 0 1px var(--black-a12);
+.rt-SwitchRoot.variant-solid {
+  & .rt-SwitchButton {
+    background-color: var(--gray-3);
+
+    &:where([data-state='unchecked']) {
+      box-shadow: inset 0 0 0 1px var(--gray-a7);
+    }
+    &:where([data-state='checked']) {
+      background-color: var(--accent-9);
+    }
+  }
+
+  & .rt-SwitchThumb {
+    background-color: white;
+    box-shadow: 0 0 0 1px var(--black-a5), 0 1px 1px var(--black-a3), 0 2px 4px -1px var(--black-a3);
+  }
 }
 
-.rt-SwitchRoot.variant-solid {
-  & .rt-SwitchButton:where(:focus-visible) {
-    outline-color: var(--accent-a8);
+/* surface */
+
+.rt-SwitchRoot.variant-surface {
+  & .rt-SwitchButton {
+    background-color: var(--gray-a5);
+
+    &:where([data-state='unchecked']) {
+      box-shadow: var(--shadow-1);
+    }
+    &:where([data-state='checked']) {
+      background-color: var(--accent-9);
+    }
   }
+
+  & .rt-SwitchThumb {
+    background-color: white;
+    box-shadow: 0 0 0 1px var(--black-a4), 0 1px 3px var(--black-a7), 0 2px 4px -1px var(--black-a3);
+  }
+}
+
+/* soft */
+
+.rt-SwitchRoot.variant-soft {
+  & .rt-SwitchButton {
+    &:where([data-state='unchecked']) {
+      background-color: var(--gray-a5);
+    }
+    &:where([data-state='checked']) {
+      background-color: var(--accent-a8);
+    }
+  }
+
+  & .rt-SwitchThumb {
+    background-color: white;
+    &:where([data-state='unchecked']) {
+      box-shadow: 0 0 0 1px var(--black-a4), 0 1px 3px var(--black-a7),
+        0 2px 4px -1px var(--black-a3);
+    }
+    &:where([data-state='checked']) {
+      box-shadow: 0 0 0 1px var(--accent-a3), 0 1px 3px var(--accent-a5),
+        0 2px 4px -1px var(--accent-a3);
+    }
+  }
+}
+
+/* all high-contrast */
+
+.rt-SwitchRoot.high-contrast {
   & .rt-SwitchButton:where([data-state='checked']) {
-    background-color: var(--accent-9);
+    background-color: var(--accent-12);
   }
-  &:where(.high-contrast) {
-    & .rt-SwitchButton:where([data-state='checked']) {
-      background-color: var(--accent-12);
-      outline-color: var(--accent-a11);
-    }
-    & .rt-SwitchThumb:where([data-state='checked']) {
-      background-color: var(--switch-thumb-bg__solid-high-contrast-checked);
-      box-shadow: var(--switch-thumb-shadow__solid-high-contrast-checked);
-    }
+  & .rt-SwitchThumb:where([data-state='checked']) {
+    background-color: var(--switch-thumb-bg__high-contrast-checked);
+    box-shadow: none;
   }
 }
 
 /* all disabled switches */
 
+:root,
+.light,
+.light-theme {
+  --switch-thumb-bg__disabled: var(--white-a9);
+}
+.dark,
+.dark-theme {
+  --switch-thumb-bg__disabled: var(--white-a3);
+}
+
 .rt-SwitchRoot {
   & .rt-SwitchButton[data-disabled] {
-    background-color: var(--gray-a3);
+    background-color: var(--gray-3);
     box-shadow: inset 0 0 0 1px var(--gray-a5);
     cursor: not-allowed;
   }
   & .rt-SwitchThumb[data-disabled] {
-    background-color: var(--gray-a5);
-    box-shadow: none;
+    background-color: var(--switch-thumb-bg__disabled);
+    box-shadow: 0 0 0 1px var(--gray-7);
   }
 }

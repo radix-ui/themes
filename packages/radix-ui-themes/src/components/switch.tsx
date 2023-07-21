@@ -28,6 +28,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   } = marginRest;
   return (
     <span
+      data-radius={radius}
       className={classNames(
         'rt-SwitchRoot',
         withBreakpoints(size, 'size'),
@@ -40,7 +41,6 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
     >
       <SwitchPrimitive.Root
         data-accent-scale={color}
-        data-radius={radius}
         {...switchProps}
         ref={forwardedRef}
         className={classNames('rt-reset-button rt-SwitchButton')}
