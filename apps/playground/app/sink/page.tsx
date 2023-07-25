@@ -1112,13 +1112,19 @@ export default function Sink() {
                                 <RowHeaderCell>{color}</RowHeaderCell>
                                 {sliderPropDefs.variant.values.map((variant) => (
                                   <td key={variant} style={{ minWidth: 150 }}>
-                                    <Slider variant={variant} color={color} defaultValue={[50]} />
+                                    <Slider
+                                      variant={variant}
+                                      color={color}
+                                      defaultValue={[50]}
+                                      mt="3"
+                                    />
                                     <Slider
                                       variant={variant}
                                       color={color}
                                       highContrast
                                       defaultValue={[50]}
-                                      mt="2"
+                                      mt="5"
+                                      mb="3"
                                     />
                                   </td>
                                 ))}

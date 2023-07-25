@@ -2,7 +2,7 @@ import { colorProp, highContrastProp, radiusProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
-const variants = ['solid', 'soft'] as const;
+const variants = ['solid', 'surface', 'soft'] as const;
 
 const sliderPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
