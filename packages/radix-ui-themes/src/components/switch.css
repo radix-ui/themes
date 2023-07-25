@@ -164,17 +164,14 @@
   & .rt-SwitchButton {
     &::before {
       background-color: var(--gray-a5);
-    }
-
-    &:where([data-state='unchecked'])::before {
       box-shadow: var(--shadow-1);
     }
+
     &:where([data-state='unchecked']:active)::before {
       background-color: var(--gray-a6);
     }
     &:where([data-state='checked'])::before {
       background-color: var(--accent-9);
-      box-shadow: inset 0 0 0 1px var(--black-a7), inset 0 1.5px 2px 0 var(--black-a8);
     }
     &:where([data-state='checked']:active)::before {
       filter: var(--switch-button-filter__surface-checked-active);
@@ -202,7 +199,7 @@
 .rt-SwitchRoot.variant-soft {
   & .rt-SwitchButton {
     &::before {
-      /* blends accent with gray */
+      /* blend accent with gray */
       background-image: linear-gradient(to right, var(--gray-a5), var(--gray-a5));
     }
     &:where([data-state='unchecked'])::before {
@@ -272,7 +269,7 @@
     cursor: not-allowed;
 
     &::before {
-      background-color: var(--gray-3);
+      background-color: var(--gray-a3);
       background-image: none;
       box-shadow: inset 0 0 0 1px var(--gray-a5);
     }
