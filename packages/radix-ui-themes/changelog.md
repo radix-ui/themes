@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.33
+
+- General:
+  - Improve `--shadow-1` in dark mode
+- `Slider`:
+  - Add new `surface` variant, rework `soft` variant
+  - [**Breaking**] Switch your `variant` to `surface` if you want the old look
+- `Switch`:
+  - Improve `soft` and `surface` variants design
+
 ## 0.0.32
 
 - General:
