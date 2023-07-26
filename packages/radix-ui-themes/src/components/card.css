@@ -83,10 +83,10 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* outline/surface */
+/* solid */
 
-.rt-Card.variant-outline,
-.rt-Card.variant-surface {
+.rt-Card.variant-solid {
+  background-color: var(--color-panel);
   &::after {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
@@ -99,8 +99,35 @@
     }
   }
 }
+
+/* surface */
+
 .rt-Card.variant-surface {
   background-color: var(--color-surface-2);
+
+  &::before {
+    inset: 0;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: var(--shadow-2);
+    transition: box-shadow 180ms;
+    content: '';
+  }
+
+  &:where(button, [href]) {
+    &:hover::before {
+      transition-duration: 40ms;
+      box-shadow: var(--shadow-3), var(--shadow-2);
+    }
+    &:active::before {
+      transition-duration: 40ms;
+      box-shadow: var(--shadow-2);
+    }
+    &:focus-visible::after {
+      box-shadow: 0 0 0 2px var(--accent-a8);
+    }
+  }
 }
 
 /* ghost */

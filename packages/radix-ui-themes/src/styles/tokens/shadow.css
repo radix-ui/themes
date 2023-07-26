@@ -1,17 +1,74 @@
+/* prettier-ignore */
 .radix-themes {
-  --shadow-1: inset 0 0 0 1px var(--gray-a6), inset 0 1.5px 2px 0 var(--gray-a7);
-  --shadow-2: 0px 3px 25px -8px var(--gray-a7);
-  --shadow-3: 0px 12px 40px var(--gray-a6), 0px 12px 20px -12px var(--gray-a8);
-  --shadow-4: 0px 12px 60px var(--gray-a6), 0px 12px 32px -16px var(--gray-a6);
-  --shadow-5: 0px 12px 60px var(--gray-a3), 0px 12px 32px -16px var(--gray-a3);
+  --shadow-1:
+    inset 0 0 0 1px var(--gray-a6),
+    inset 0 1.5px 2px 0 var(--black-a7);
+
+  --shadow-2:
+    0 0 0 1px var(--gray-a3),
+    0 0 0 0.5px var(--gray-a3),
+    0px 1px 1px 0px var(--gray-a3),
+    0px 2px 1px -1px var(--gray-a3),
+    0px 1px 3px 0px var(--black-a3);
+
+  --shadow-3:
+    0 0 0 1px var(--gray-a3),
+    0px 2px 3px -2px var(--gray-a3),
+    0px 3px 12px -4px var(--black-a3),
+    0px 4px 16px -8px var(--black-a4);
+
+  --shadow-4:
+    0 0 0 1px var(--gray-a3),
+    0px 8px 40px var(--gray-a3),
+    0px 12px 32px -16px var(--black-a3);
+
+  --shadow-5:
+    0 0 0 1px var(--gray-a3),
+    0px 12px 60px var(--gray-a6),
+    0px 12px 32px -16px var(--black-a6);
+
+  --shadow-6:
+    0 0 0 1px var(--gray-a3),
+    0px 16px 64px var(--gray-a7),
+    0px 16px 36px -20px var(--gray-a7);
 }
 
+/* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --shadow-1: inset 0 1px var(--gray-a5), inset 0 0 0 1px var(--gray-a6),
-    inset 0 1px 3px 0 var(--black-a10);
-  --shadow-2: 0px 3px 35px -8px rgb(0 0 0 / 0.9);
-  --shadow-3: 0px 12px 40px rgb(0 0 0 / 0.6), 0px 12px 20px -12px rgb(0 0 0 / 0.8);
-  --shadow-4: 0px 16px 60px rgb(0 0 0 / 0.1), 0px 16px 32px -20px rgb(0 0 0 / 0.2);
-  --shadow-5: 0px 16px 60px rgb(0 0 0 / 0.25), 0px 16px 32px -20px rgb(0 0 0 / 0.5);
+  --shadow-1:
+    inset 0 1px var(--gray-a4),
+    inset 0 0 0.5px var(--gray-a3),
+    inset 0 -1px 0px var(--gray-a3),
+    inset 0 0 0 1px var(--gray-a6),
+    inset 0 1px 3px 0 var(--black-a12),
+    inset 0 1px 3px 0 var(--black-a11);
+
+  --shadow-2:
+    inset 0 0 0 1px var(--gray-a6),
+    0 0 0 0.5px var(--black-a4),
+    0px 2px 1px -1px var(--black-a9),
+    0px 1px 1px 0px var(--black-a9),
+    0px 1px 3px 0px var(--black-a9);
+
+  --shadow-3:
+    inset 0 0 0 1px var(--gray-a6),
+    0px 2px 3px -2px var(--black-a5),
+    0px 3px 8px -2px var(--black-a8),
+    0px 4px 12px -4px var(--black-a9);
+
+  --shadow-4:
+    inset 0 0 0 1px var(--gray-a6),
+    0px 8px 40px var(--black-a7),
+    0px 12px 32px -16px var(--black-a8);
+
+  --shadow-5:
+    inset 0 0 0 1px var(--gray-a6),
+    0px 12px 60px var(--black-a8),
+    0px 12px 32px -16px var(--black-a10);
+
+  --shadow-6:
+    inset 0 0 0 1px var(--gray-a6),
+    0px 16px 64px var(--black-a11),
+    0px 16px 36px -20px var(--black-a12);
 }

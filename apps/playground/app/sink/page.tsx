@@ -200,7 +200,7 @@ export default function Sink() {
               <header
                 style={{
                   backgroundColor: 'var(--black-a2)',
-                  boxShadow: '0 0 0 0.5px var(--gray-a6)',
+                  boxShadow: '0 0 0 1px var(--gray-a5)',
                 }}
               >
                 <Container mx="6">
@@ -2473,14 +2473,39 @@ export default function Sink() {
                     </tbody>
                   </table>
 
-                  <Grid columns="2" my="7" style={{ marginLeft: 124 }}>
+                  <Grid columns="4" gap="5" my="7" style={{ marginLeft: 124 }}>
                     <div>
                       <Heading>Contacts</Heading>
                       <Text as="p" color="gray" mb="4">
                         Here are all your contacts:
                       </Text>
-                      <Grid columns="2" gap="3" style={{ maxWidth: 480 }}>
-                        {Array.from({ length: 8 }, (_, i) => (
+                      <Flex direction="column" gap="3">
+                        {Array.from({ length: 4 }, (_, i) => (
+                          <Card key={i} variant="solid" asChild>
+                            <a href="#some-page">
+                              <Flex align="center" gap="2">
+                                <Avatar src="./api/avatar" fallback="D" />
+                                <div>
+                                  <Text as="p" size="2" weight="medium">
+                                    Poppy Nichols
+                                  </Text>
+                                  <Text as="p" color="gray" size="1">
+                                    poppy.nichols@gmail.com
+                                  </Text>
+                                </div>
+                              </Flex>
+                            </a>
+                          </Card>
+                        ))}
+                      </Flex>
+                    </div>
+                    <div>
+                      <Heading>Contacts</Heading>
+                      <Text as="p" color="gray" mb="4">
+                        Here are all your contacts:
+                      </Text>
+                      <Flex direction="column" gap="3">
+                        {Array.from({ length: 4 }, (_, i) => (
                           <Card key={i} variant="surface" asChild>
                             <a href="#some-page">
                               <Flex align="center" gap="2">
@@ -2497,15 +2522,15 @@ export default function Sink() {
                             </a>
                           </Card>
                         ))}
-                      </Grid>
+                      </Flex>
                     </div>
                     <div>
                       <Heading>Contacts</Heading>
                       <Text as="p" color="gray" mb="4">
                         Here are all your contacts:
                       </Text>
-                      <Grid columns="2" gap="5" style={{ maxWidth: 480 }}>
-                        {Array.from({ length: 8 }, (_, i) => (
+                      <Flex direction="column" gap="5">
+                        {Array.from({ length: 4 }, (_, i) => (
                           <Card key={i} variant="ghost" asChild>
                             <a href="#some-page">
                               <Flex align="center" gap="2">
@@ -2522,7 +2547,7 @@ export default function Sink() {
                             </a>
                           </Card>
                         ))}
-                      </Grid>
+                      </Flex>
                     </div>
                   </Grid>
 
@@ -3822,6 +3847,45 @@ export default function Sink() {
                       </SampleNestedUI>
                     </Theme>
                   </SampleNestedUI>
+                </DocsSection>
+
+                <DocsSection title="Shadow tokens">
+                  <Flex direction="column" gap="3" mt="6" mb="5">
+                    <Flex
+                      style={{
+                        flex: 1,
+                        background: 'var(--gray-a2)',
+                        borderRadius: 'var(--radius-3)',
+                      }}
+                      p="9"
+                      gap="5"
+                    >
+                      {[...new Array(6)].map((_, i) => (
+                        <Flex grow="1" align="center" justify="center" key={i}>
+                          <Box
+                            grow="1"
+                            style={{
+                              backgroundColor: 'var(--gray-1)',
+                              boxShadow: `var(--shadow-${i + 1})`,
+                              borderRadius: 'var(--radius-2)',
+                              height: 80,
+                            }}
+                            key={i}
+                          />
+                        </Flex>
+                      ))}
+                    </Flex>
+
+                    <Flex align="center" gap="1" px="9">
+                      {[...new Array(6)].map((_, i) => (
+                        <Flex align="center" justify="center" height="100%" width="100%" key={i}>
+                          <Text size="1" color="gray">
+                            {i + 1}
+                          </Text>
+                        </Flex>
+                      ))}
+                    </Flex>
+                  </Flex>
                 </DocsSection>
               </main>
             </div>

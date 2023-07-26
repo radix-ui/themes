@@ -271,7 +271,7 @@ export default function HomeOS() {
                           marginTop: -90,
                           width: 340,
                           backgroundColor: 'var(--color-background)',
-                          boxShadow: 'var(--shadow-2)',
+                          boxShadow: 'var(--shadow-3)',
                           border: '1px solid var(--gray-6)',
                           padding: 30,
                           display: 'flex',

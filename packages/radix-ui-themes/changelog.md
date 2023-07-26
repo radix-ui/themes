@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.0.34
+
+- General:
+  - Make `--color-surface-2` and `--accent-surface` slightly transparent in light mode
+  - [**Breaking**] Rework all shadow token values and how they are used
+    - `--shadow-2` and `--shadow-3` are the new steps
+    - Other steps renamed and tweaked
+    - Switch your `--shadow-2` to `--shadow-4` if you want to approximate the old look
+    - Switch your `--shadow-3` to `--shadow-6` if you want to approximate the old look
+    - Switch your `--shadow-4` to `--shadow-5` if you want to approximate the old look
+    - Switch your `--shadow-5` to `--shadow-4` if you want to approximate the old look
+- ## `Card`
+  - [**Breaking**] Remove `outline` variant
+  - [**Breaking**] Add new `solid` variant and make it the default
+  - Rework `surface` variant design
+- ## `Dialog`
+  - Tweak the overlay color in light mode
+
 ## 0.0.33
 
 - General:

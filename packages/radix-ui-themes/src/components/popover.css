@@ -1,6 +1,6 @@
 .rt-PopoverContent {
   background-color: var(--color-panel);
-  box-shadow: var(--shadow-2), inset 0 0 0 0.5px var(--gray-a6);
+  box-shadow: var(--shadow-5);
   min-width: var(--radix-popover-trigger-width);
   outline: 0;
   overflow: auto;

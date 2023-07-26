@@ -24,7 +24,7 @@
 
 .table thead tr,
 .table tbody tr:not(:last-child) {
-  border-bottom: 0.5px solid var(--gray-a6);
+  border-bottom: 1px solid var(--gray-a5);
 }
 
 .table th {

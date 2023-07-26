@@ -149,9 +149,9 @@
 .radix-themes {
   --color-canvas: white;
   --color-panel: white;
-  --color-overlay: var(--black-a9);
+  --color-overlay: var(--gray-a8);
   --color-surface-1: white;
-  --color-surface-2: white;
+  --color-surface-2: rgba(255, 255, 255, 0.9);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
@@ -206,29 +206,29 @@
 :root,
 .light,
 .light-theme {
-  --tomato-surface: white;
-  --red-surface: white;
-  --crimson-surface: white;
-  --pink-surface: white;
-  --plum-surface: white;
-  --purple-surface: white;
-  --violet-surface: white;
-  --indigo-surface: white;
-  --blue-surface: white;
-  --cyan-surface: white;
-  --teal-surface: white;
-  --green-surface: white;
-  --grass-surface: white;
-  --orange-surface: white;
-  --brown-surface: white;
-  --sky-surface: white;
-  --mint-surface: white;
-  --lime-surface: white;
-  --yellow-surface: white;
-  --amber-surface: white;
-  --gold-surface: white;
-  --bronze-surface: white;
-  --gray-surface: white;
+  --tomato-surface: rgba(255, 255, 255, 0.9);
+  --red-surface: rgba(255, 255, 255, 0.9);
+  --crimson-surface: rgba(255, 255, 255, 0.9);
+  --pink-surface: rgba(255, 255, 255, 0.9);
+  --plum-surface: rgba(255, 255, 255, 0.9);
+  --purple-surface: rgba(255, 255, 255, 0.9);
+  --violet-surface: rgba(255, 255, 255, 0.9);
+  --indigo-surface: rgba(255, 255, 255, 0.9);
+  --blue-surface: rgba(255, 255, 255, 0.9);
+  --cyan-surface: rgba(255, 255, 255, 0.9);
+  --teal-surface: rgba(255, 255, 255, 0.9);
+  --green-surface: rgba(255, 255, 255, 0.9);
+  --grass-surface: rgba(255, 255, 255, 0.9);
+  --orange-surface: rgba(255, 255, 255, 0.9);
+  --brown-surface: rgba(255, 255, 255, 0.9);
+  --sky-surface: rgba(255, 255, 255, 0.9);
+  --mint-surface: rgba(255, 255, 255, 0.9);
+  --lime-surface: rgba(255, 255, 255, 0.9);
+  --yellow-surface: rgba(255, 255, 255, 0.9);
+  --amber-surface: rgba(255, 255, 255, 0.9);
+  --gold-surface: rgba(255, 255, 255, 0.9);
+  --bronze-surface: rgba(255, 255, 255, 0.9);
+  --gray-surface: rgba(255, 255, 255, 0.9);
 }
 .dark,
 .dark-theme {
