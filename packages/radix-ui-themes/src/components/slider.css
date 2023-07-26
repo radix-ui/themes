@@ -155,10 +155,10 @@
 
 .rt-SliderRoot.variant-soft {
   & .rt-SliderTrack {
-    background-color: var(--accent-a3);
+    background-color: var(--gray-a3);
 
-    /* blend accent with gray */
-    background-image: linear-gradient(to right, var(--gray-a3), var(--gray-a3));
+    /* blend gray with accent */
+    background-image: linear-gradient(to right, var(--accent-a3), var(--accent-a3));
   }
 
   & .rt-SliderRange {

@@ -205,14 +205,14 @@
 .rt-SwitchRoot.variant-soft {
   & .rt-SwitchButton {
     &::before {
-      /* blend accent with gray */
-      background-image: linear-gradient(to right, var(--gray-a5), var(--gray-a5));
+      /* blend gray with accent */
+      background-image: linear-gradient(to right, var(--accent-a3), var(--accent-a3));
     }
     &:where([data-state='unchecked'])::before {
-      background-color: var(--accent-a3);
+      background-color: var(--gray-a5);
     }
     &:where([data-state='unchecked']:active)::before {
-      background-color: var(--accent-a4);
+      background-color: var(--gray-a7);
     }
     &:where([data-state='checked'])::before {
       background-color: var(--accent-a8);
