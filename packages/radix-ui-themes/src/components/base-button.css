@@ -27,7 +27,7 @@
   .rt-BaseButton {
     &.size-1 {
       --base-button-height: var(--space-5);
-      border-radius: max(var(--radius-2), var(--radius-full));
+      border-radius: max(var(--radius-1), var(--radius-full));
     }
     &.size-2 {
       --base-button-height: var(--space-6);
