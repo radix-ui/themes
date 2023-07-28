@@ -137,16 +137,9 @@
   }
   &:where(:active) {
     background-color: var(--accent-a3);
-    /* trick to use an equivalent betweent step 8 and 9 */
-    --button-shadow__outline-active: inset 0 0 0 1px var(--accent-a8),
-      inset 0 0 0 1px var(--accent-a6);
-    box-shadow: var(--button-shadow__outline-active);
   }
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-a8);
-  }
-  &:where(:active:focus-visible) {
-    box-shadow: var(--button-shadow__outline-active), 0 0 0 1px var(--accent-a8);
   }
 
   &:where(.high-contrast) {
@@ -164,20 +157,18 @@
 
 .rt-BaseButton.variant-surface {
   background-color: var(--accent-surface);
-  box-shadow: inset 0 0 0 1px var(--accent-a6);
+  box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-a11);
 
   &:where(:hover, [data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--accent-a7);
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
   &:where(:active) {
+    background-color: var(--accent-a3);
     box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
-  }
-  &:where(:active:focus-visible) {
-    box-shadow: inset 0 0 0 1px var(--accent-9), 0 0 0 1px var(--accent-a8);
   }
 
   &:where(.high-contrast) {

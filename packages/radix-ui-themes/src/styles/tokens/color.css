@@ -206,29 +206,29 @@
 :root,
 .light,
 .light-theme {
-  --tomato-surface: rgba(255, 255, 255, 0.9);
-  --red-surface: rgba(255, 255, 255, 0.9);
-  --crimson-surface: rgba(255, 255, 255, 0.9);
-  --pink-surface: rgba(255, 255, 255, 0.9);
-  --plum-surface: rgba(255, 255, 255, 0.9);
-  --purple-surface: rgba(255, 255, 255, 0.9);
-  --violet-surface: rgba(255, 255, 255, 0.9);
-  --indigo-surface: rgba(255, 255, 255, 0.9);
-  --blue-surface: rgba(255, 255, 255, 0.9);
-  --cyan-surface: rgba(255, 255, 255, 0.9);
-  --teal-surface: rgba(255, 255, 255, 0.9);
-  --green-surface: rgba(255, 255, 255, 0.9);
-  --grass-surface: rgba(255, 255, 255, 0.9);
-  --orange-surface: rgba(255, 255, 255, 0.9);
-  --brown-surface: rgba(255, 255, 255, 0.9);
-  --sky-surface: rgba(255, 255, 255, 0.9);
-  --mint-surface: rgba(255, 255, 255, 0.9);
-  --lime-surface: rgba(255, 255, 255, 0.9);
-  --yellow-surface: rgba(255, 255, 255, 0.9);
-  --amber-surface: rgba(255, 255, 255, 0.9);
-  --gold-surface: rgba(255, 255, 255, 0.9);
-  --bronze-surface: rgba(255, 255, 255, 0.9);
-  --gray-surface: rgba(255, 255, 255, 0.9);
+  --tomato-surface: var(--tomato-a2);
+  --red-surface: var(--red-a2);
+  --crimson-surface: var(--crimson-a2);
+  --pink-surface: var(--pink-a2);
+  --plum-surface: var(--plum-a2);
+  --purple-surface: var(--purple-a2);
+  --violet-surface: var(--violet-a2);
+  --indigo-surface: var(--indigo-a2);
+  --blue-surface: var(--blue-a2);
+  --cyan-surface: var(--cyan-a2);
+  --teal-surface: var(--teal-a2);
+  --green-surface: var(--green-a2);
+  --grass-surface: var(--grass-a2);
+  --orange-surface: var(--orange-a2);
+  --brown-surface: var(--brown-a2);
+  --sky-surface: var(--sky-a2);
+  --mint-surface: var(--mint-a2);
+  --lime-surface: var(--lime-a2);
+  --yellow-surface: var(--yellow-a2);
+  --amber-surface: var(--amber-a2);
+  --gold-surface: var(--gold-a2);
+  --bronze-surface: var(--bronze-a2);
+  --gray-surface: white;
 }
 .dark,
 .dark-theme {

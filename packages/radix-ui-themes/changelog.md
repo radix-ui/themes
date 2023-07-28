@@ -1,12 +1,19 @@
 # Changelog
 
-## Up next
+## 0.0.35
 
-- `Switch`:
-  - Improve `soft` variant saturation when checked
+- General:
+  - Upgrade Radix Colors to `2.0.0-alpha.1`
 - `Button`
+  - Refine colors for `outline` and `surface` variants
   - Use a smaller border radius for `size="1"` buttons
   - Use a softer border color for `variant="outline" highContrast` buttons
+- `Card`
+  - Refine colors and shadows when hovered and pressed
+- `Switch`:
+  - Improve `soft` variant saturation when checked
+- `TextArea`, `TextField`
+  - Refine colors for the `solid` variant
 
 ## 0.0.34
 
