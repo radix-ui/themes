@@ -1,14 +1,27 @@
 # Changelog
 
+## Up next
+
+- General:
+  - Refine `--shadow-1`
+- `Checkbox`:
+  - Refine colors for `solid` unchecked variant
+- `Slider`:
+  - Refine `Thumb` and `Range` shadows
+- `RadioGroup`:
+  - Refine colors for `solid` unchecked variant
+- `Switch`:
+  - Refine colors for `surface` unchecked variant
+
 ## 0.0.35
 
 - General:
   - Upgrade Radix Colors to `2.0.0-alpha.1`
-- `Button`
+- `Button`:
   - Refine colors for `outline` and `surface` variants
   - Use a smaller border radius for `size="1"` buttons
   - Use a softer border color for `variant="outline" highContrast` buttons
-- `Card`
+- `Card`:
   - Refine colors and shadows when hovered and pressed
 - `Switch`:
   - Improve `soft` variant saturation when checked

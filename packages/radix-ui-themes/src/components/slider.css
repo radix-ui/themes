@@ -125,7 +125,7 @@
   }
 
   & .rt-SliderThumb {
-    --slider-thumb-shadow: 0 0 0 1px var(--black-a8);
+    --slider-thumb-shadow: 0 0 0 1px var(--black-a7);
   }
 }
 
@@ -133,13 +133,14 @@
 
 .rt-SliderRoot.variant-surface {
   & .rt-SliderTrack {
-    background-color: var(--gray-a4);
+    background-color: var(--gray-a3);
     box-shadow: var(--shadow-1);
   }
 
   & .rt-SliderRange {
     background-color: var(--accent-9);
-    box-shadow: var(--shadow-1);
+    /* range shadow shouldn't change between light and dark mode because of the coloured fill */
+    box-shadow: inset 0 0 0 1px var(--gray-a6), inset 0 1.5px 2px 0 var(--black-a7);
   }
   &:where(.high-contrast) .rt-SliderRange {
     background-color: var(--accent-12);

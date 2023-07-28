@@ -64,10 +64,10 @@
 .rt-CheckboxButton.variant-solid {
   &:where([data-state='unchecked']) {
     background-color: var(--color-canvas);
-    box-shadow: inset 0 0 0 1px var(--gray-a8);
+    box-shadow: inset 0 0 0 1px var(--gray-a7);
   }
   &:where(:focus-visible) {
-    box-shadow: inset 0 0 0 1px var(--gray-a8), 0 0 0 2px var(--accent-3),
+    box-shadow: inset 0 0 0 1px var(--gray-a7), 0 0 0 2px var(--accent-3),
       0 0 0 4px var(--accent-a8);
   }
   &:where([data-state='checked']) {

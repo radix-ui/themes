@@ -1,8 +1,8 @@
 /* prettier-ignore */
 .radix-themes {
   --shadow-1:
-    inset 0 0 0 1px var(--gray-a6),
-    inset 0 1.5px 2px 0 var(--black-a7);
+    inset 0 0 0 1px var(--gray-a5),
+    inset 0 1.5px 2px 0 var(--black-a6);
 
   --shadow-2:
     0 0 0 1px var(--gray-a3),
@@ -41,8 +41,8 @@
     inset 0 0 0.5px var(--gray-a3),
     inset 0 -1px 0px var(--gray-a3),
     inset 0 0 0 1px var(--gray-a6),
-    inset 0 1px 3px 0 var(--black-a12),
-    inset 0 1px 3px 0 var(--black-a11);
+    inset 0 1px 3px 0 var(--black-a10),
+    inset 0 1px 3px 0 var(--black-a12);
 
   --shadow-2:
     inset 0 0 0 1px var(--gray-a6),

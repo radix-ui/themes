@@ -162,12 +162,8 @@
 
 .rt-SwitchRoot.variant-surface {
   & .rt-SwitchButton {
-    &::before {
-      background-color: var(--gray-a5);
-    }
-
     &:where([data-state='unchecked'])::before {
-      background-color: var(--gray-a6);
+      background-color: var(--gray-a4);
       box-shadow: var(--shadow-1);
     }
 
