@@ -1,5 +1,13 @@
 # Changelog
 
+## Up next
+
+- `Switch`:
+  - Improve `soft` variant saturation when checked
+- `Button`
+  - Use a smaller border radius for `size="1"` buttons
+  - Use a softer border color for `variant="outline" highContrast` buttons
+
 ## 0.0.34
 
 - General:
@@ -11,11 +19,11 @@
     - Switch your `--shadow-3` to `--shadow-6` if you want to approximate the old look
     - Switch your `--shadow-4` to `--shadow-5` if you want to approximate the old look
     - Switch your `--shadow-5` to `--shadow-4` if you want to approximate the old look
-- ## `Card`
+- `Card`:
   - [**Breaking**] Remove `outline` variant
   - [**Breaking**] Add new `solid` variant and make it the default
   - Rework `surface` variant design
-- ## `Dialog`
+- `Dialog`:
   - Tweak the overlay color in light mode
 
 ## 0.0.33
