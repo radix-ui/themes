@@ -93,8 +93,7 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rt-Grid',
-        withMarginProps(marginProps),
-        withLayoutProps(layoutProps),
+        className,
         withBreakpoints(display, 'rt-display'),
         withBreakpoints(flow, 'rt-gaf'),
         withBreakpoints(align, 'rt-ai'),
@@ -102,7 +101,8 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
         withBreakpoints(gap, 'rt-gap'),
         withBreakpoints(gapX, 'rt-cg'),
         withBreakpoints(gapY, 'rt-rg'),
-        className
+        withLayoutProps(layoutProps),
+        withMarginProps(marginProps)
       )}
       style={Object.keys(style).length ? style : undefined}
     />

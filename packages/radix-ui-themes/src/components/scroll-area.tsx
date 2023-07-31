@@ -32,7 +32,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     <ScrollAreaPrimitive.Root
       type={type}
       scrollHideDelay={scrollHideDelay}
-      className={classNames('rt-ScrollAreaRoot', withMarginProps(marginProps), className)}
+      className={classNames('rt-ScrollAreaRoot', className, withMarginProps(marginProps))}
       style={style}
     >
       <ScrollAreaPrimitive.Viewport

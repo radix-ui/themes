@@ -59,8 +59,8 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
             className={classNames(
               'rt-PopperContent',
               'rt-HoverCardContent',
-              withBreakpoints(size, 'size'),
-              className
+              className,
+              withBreakpoints(size, 'size')
             )}
           />
         </Theme>

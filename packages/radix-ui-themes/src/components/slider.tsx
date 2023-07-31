@@ -34,11 +34,11 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
       {...sliderProps}
       className={classNames(
         'rt-SliderRoot',
+        className,
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
-        withMarginProps(marginProps),
-        className
+        withMarginProps(marginProps)
       )}
     >
       <SliderPrimitive.Track className="rt-SliderTrack">

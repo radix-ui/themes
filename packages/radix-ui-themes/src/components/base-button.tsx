@@ -37,11 +37,11 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
         'rt-reset-button',
         'rt-reset-a',
         'rt-BaseButton',
+        className,
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
-        withMarginProps(marginProps),
-        className
+        withMarginProps(marginProps)
       )}
     />
   );

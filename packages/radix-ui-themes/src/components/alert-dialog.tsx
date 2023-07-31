@@ -50,9 +50,10 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
               {...contentProps}
               ref={forwardedRef}
               className={classNames(
-                'rt-DialogContent rt-AlertDialogContent',
-                withBreakpoints(size, 'size'),
-                className
+                'rt-DialogContent',
+                'rt-AlertDialogContent',
+                className,
+                withBreakpoints(size, 'size')
               )}
             />
           </AlertDialogPrimitive.Overlay>

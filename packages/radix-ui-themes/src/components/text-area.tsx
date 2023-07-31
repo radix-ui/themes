@@ -27,10 +27,10 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
       ref={forwardedRef}
       className={classNames(
         'rt-TextArea',
+        className,
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMarginProps(marginProps),
-        className
+        withMarginProps(marginProps)
       )}
     />
   );

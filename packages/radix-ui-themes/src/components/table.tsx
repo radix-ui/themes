@@ -20,7 +20,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
     <div
       {...rootProps}
       ref={forwardedRef}
-      className={classNames('rt-TableRoot', withMarginProps(marginProps), className)}
+      className={classNames('rt-TableRoot', className, withMarginProps(marginProps))}
     />
   );
 });
@@ -42,9 +42,9 @@ const TableContent = React.forwardRef<TableContentElement, TableContentProps>(
         ref={forwardedRef}
         className={classNames(
           'rt-TableContent',
+          className,
           withBreakpoints(size, 'size'),
-          withMarginProps(marginProps),
-          className
+          withMarginProps(marginProps)
         )}
       />
     );
@@ -85,13 +85,13 @@ const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwar
       ref={forwardedRef}
       className={classNames(
         'rt-TableRow',
+        className,
         withBreakpoints(align, 'rt-va', {
           baseline: 'baseline',
           start: 'top',
           center: 'middle',
           end: 'bottom',
-        }),
-        className
+        })
       )}
     />
   );

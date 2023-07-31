@@ -41,13 +41,13 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rt-Text',
+        className,
         withBreakpoints(size, 'size'),
         withBreakpoints(weight, 'rt-weight'),
-        withMarginProps(marginProps),
         withBreakpoints(align, 'rt-ta'),
         withBreakpoints(trim, 'rt-lt'),
         { 'high-contrast': highContrast },
-        className
+        withMarginProps(marginProps)
       )}
     >
       {asChild ? children : <Tag>{children}</Tag>}

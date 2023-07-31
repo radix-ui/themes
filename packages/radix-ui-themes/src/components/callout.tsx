@@ -37,11 +37,11 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         {...rootProps}
         className={classNames(
           'rt-CalloutRoot',
+          className,
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
-          withMarginProps(marginProps),
           { 'high-contrast': highContrast },
-          className
+          withMarginProps(marginProps)
         )}
         ref={forwardedRef}
       >

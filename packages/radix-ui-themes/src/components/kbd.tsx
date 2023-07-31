@@ -15,7 +15,7 @@ const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
     <kbd
       {...kbdProps}
       ref={forwardedRef}
-      className={classNames('rt-Kbd', `width-${width}`, withMarginProps(marginProps), className)}
+      className={classNames('rt-Kbd', className, `width-${width}`, withMarginProps(marginProps))}
     />
   );
 });

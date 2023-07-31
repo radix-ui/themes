@@ -66,11 +66,11 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
             'rt-BaseButton',
             'rt-Button',
             'rt-SelectTrigger',
+            className,
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
             { 'high-contrast': highContrast },
-            withMarginProps(marginProps),
-            className
+            withMarginProps(marginProps)
           )}
         >
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -119,6 +119,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
             className={classNames(
               { 'rt-PopperContent': contentProps.position === 'popper' },
               'rt-SelectContent',
+              className,
               withBreakpoints(size, 'size'),
               `variant-${variant}`,
               { 'high-contrast': highContrast }

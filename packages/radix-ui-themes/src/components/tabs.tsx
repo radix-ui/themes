@@ -19,7 +19,7 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
     <TabsPrimitive.Root
       {...rootProps}
       ref={forwardedRef}
-      className={classNames('rt-TabsRoot', withMarginProps(marginProps), className)}
+      className={classNames('rt-TabsRoot', className, withMarginProps(marginProps))}
     />
   );
 });
@@ -36,7 +36,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
     <TabsPrimitive.List
       {...listProps}
       ref={forwardedRef}
-      className={classNames('rt-TabsList', withBreakpoints(size, 'size'), className)}
+      className={classNames('rt-TabsList', className, withBreakpoints(size, 'size'))}
     />
   );
 });

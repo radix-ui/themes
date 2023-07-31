@@ -44,7 +44,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
         data-radius={radius}
         {...rootProps}
         ref={forwardedRef}
-        className={classNames('rt-TextFieldRoot', withMarginProps(marginProps), className)}
+        className={classNames('rt-TextFieldRoot', className, withMarginProps(marginProps))}
         onPointerDown={composeEventHandlers(rootProps.onPointerDown, (event) => {
           const target = event.target as HTMLElement;
           if (target.closest('input, button, a')) return;
@@ -96,10 +96,10 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
         ref={forwardedRef}
         className={classNames(
           'rt-TextFieldSlot',
+          className,
           withBreakpoints(context?.size, 'size'),
           withBreakpoints(gap, 'rt-gap'),
-          withPaddingProps(paddingProps),
-          className
+          withPaddingProps(paddingProps)
         )}
       />
     );
@@ -135,9 +135,9 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
           ref={forwardedRef}
           className={classNames(
             'rt-TextFieldInput',
+            className,
             withBreakpoints(size, 'size'),
-            `variant-${variant}`,
-            className
+            `variant-${variant}`
           )}
         />
         <div

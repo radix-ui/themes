@@ -33,12 +33,12 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
       {...containerProps}
       ref={forwardedRef}
       className={classNames(
-        className,
         'rt-Container',
+        className,
         withBreakpoints(size, 'size'),
-        withMarginProps(marginProps),
+        withBreakpoints(display, 'rt-display'),
         withLayoutProps(layoutProps),
-        withBreakpoints(display, 'rt-display')
+        withMarginProps(marginProps)
       )}
     >
       <div className="rt-ContainerInner">{children}</div>

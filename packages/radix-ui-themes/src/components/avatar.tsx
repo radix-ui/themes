@@ -37,11 +37,11 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
       data-radius={radius}
       className={classNames(
         'rt-AvatarRoot',
-        withMarginProps(marginProps),
+        className,
+        withBreakpoints(size, 'size'),
         `variant-${variant}`,
         { 'high-contrast': highContrast },
-        withBreakpoints(size, 'size'),
-        className
+        withMarginProps(marginProps)
       )}
       style={style}
     >

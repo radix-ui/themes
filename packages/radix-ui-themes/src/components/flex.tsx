@@ -42,15 +42,15 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
       ref={forwardedRef}
       className={classNames(
         'rt-Flex',
-        withMarginProps(marginProps),
-        withLayoutProps(layoutProps),
+        className,
         withBreakpoints(display, 'rt-display'),
         withBreakpoints(direction, 'rt-fd'),
         withBreakpoints(align, 'rt-ai'),
         withBreakpoints(justify, 'rt-jc', { between: 'space-between' }),
         withBreakpoints(wrap, 'rt-fw'),
         withBreakpoints(gap, 'rt-gap'),
-        className
+        withLayoutProps(layoutProps),
+        withMarginProps(marginProps)
       )}
     />
   );

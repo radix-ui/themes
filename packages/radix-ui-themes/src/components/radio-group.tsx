@@ -32,11 +32,11 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
         ref={forwardedRef}
         className={classNames(
           'rt-RadioGroupRoot',
+          className,
           withBreakpoints(size, 'size'),
           `variant-${variant}`,
           { 'high-contrast': highContrast },
-          withMarginProps(marginProps),
-          className
+          withMarginProps(marginProps)
         )}
       />
     );
@@ -54,7 +54,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
     const { className, style, ...itemProps } = marginRest;
     return (
       <span
-        className={classNames('rt-RadioGroupItem', withMarginProps(marginProps), className)}
+        className={classNames('rt-RadioGroupItem', className, withMarginProps(marginProps))}
         style={style}
       >
         <RadioGroupPrimitive.Item

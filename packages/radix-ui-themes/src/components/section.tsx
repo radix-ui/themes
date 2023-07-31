@@ -32,12 +32,12 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
       {...sectionProps}
       ref={forwardedRef}
       className={classNames(
-        className,
         'rt-Section',
+        className,
         withBreakpoints(size, 'size'),
-        withMarginProps(marginProps),
+        withBreakpoints(display, 'rt-display'),
         withLayoutProps(layoutProps),
-        withBreakpoints(display, 'rt-display')
+        withMarginProps(marginProps)
       )}
     />
   );

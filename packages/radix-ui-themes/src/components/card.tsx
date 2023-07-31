@@ -38,10 +38,10 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
         'rt-reset-a',
         'rt-reset-button',
         'rt-Card',
+        className,
         withBreakpoints(size, 'size'),
         `variant-${variant}`,
-        withMarginProps(marginProps),
-        className
+        withMarginProps(marginProps)
       )}
     >
       {asChild ? getChild() : <div className="rt-CardInner">{children}</div>}

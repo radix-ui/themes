@@ -42,13 +42,13 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
       ref={forwardedRef}
       className={classNames(
         'rt-Heading',
+        className,
         withBreakpoints(size, 'size'),
         withBreakpoints(weight, 'rt-weight'),
-        withMarginProps(marginProps),
         withBreakpoints(align, 'rt-ta'),
         withBreakpoints(trim, 'rt-lt'),
         { 'high-contrast': highContrast },
-        className
+        withMarginProps(marginProps)
       )}
     >
       {asChild ? children : <Tag>{children}</Tag>}
