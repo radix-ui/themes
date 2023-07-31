@@ -87,7 +87,7 @@
       }
     }
     &.size-4 {
-      gap: var(--space-4);
+      gap: var(--space-3);
       font-size: var(--font-size-4);
       line-height: var(--line-height-4);
       letter-spacing: var(--letter-spacing-4);
