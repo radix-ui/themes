@@ -1,11 +1,11 @@
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
-const variants = ['surface', 'ghost'] as const;
+const variants = ['ghost', 'surface'] as const;
 
 const tableRootPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
-  variant: { type: 'enum', values: variants, default: 'ghost', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'ghost' },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;

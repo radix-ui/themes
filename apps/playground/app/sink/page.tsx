@@ -2500,14 +2500,14 @@ export default function Sink() {
                   <Grid columns="2" gap="5" mb="3">
                     <Flex direction="column" gap="3">
                       <Text color="gray" size="2">
-                        Surface
+                        surface
                       </Text>
                       <TableExample variant="surface" />
                     </Flex>
 
                     <Flex direction="column" gap="3">
                       <Text color="gray" size="2">
-                        Ghost
+                        ghost
                       </Text>
                       <TableExample />
                     </Flex>
