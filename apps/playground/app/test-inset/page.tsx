@@ -24,7 +24,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
-  TableContent,
+  TableRoot,
   TableHeader,
   TableRow,
   TableColumnHeaderCell,
@@ -192,13 +192,10 @@ export default function Test() {
 
 function TableExample() {
   return (
-    <TableContent
-      style={{
-        backgroundColor: 'var(--gray-a1)',
-        borderTop: '1px solid var(--gray-a5)',
-      }}
-    >
-      <TableHeader style={{ backgroundColor: 'var(--gray-a2)' }}>
+    <TableRoot style={{ backgroundColor: 'var(--gray-a1)' }}>
+      <TableHeader
+        style={{ backgroundColor: 'var(--gray-a2)', borderTop: '1px solid var(--gray-a5)' }}
+      >
         <TableRow>
           <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
           <TableColumnHeaderCell>Email</TableColumnHeaderCell>
@@ -227,6 +224,6 @@ function TableExample() {
           <TableCell>Designer</TableCell>
         </TableRow>
       </TableBody>
-    </TableContent>
+    </TableRoot>
   );
 }

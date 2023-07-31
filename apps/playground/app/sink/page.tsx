@@ -148,13 +148,13 @@ import {
   switchPropDefs,
   //
   TableRoot,
-  TableContent,
   TableHeader,
   TableRow,
   TableColumnHeaderCell,
   TableBody,
   TableRowHeaderCell,
   TableCell,
+  tableRootPropDefs,
   //
   TabsRoot,
   TabsList,
@@ -179,7 +179,6 @@ import {
   themeAccentScalesGrouped,
   //
   ThemePanel,
-  tableContentPropDefs,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -2501,35 +2500,28 @@ export default function Sink() {
                   <Grid columns="2" gap="5" mb="3">
                     <Flex direction="column" gap="3">
                       <Text color="gray" size="2">
-                        With Root
+                        Surface
                       </Text>
-                      <TableRoot>
-                        <TableExample />
-                      </TableRoot>
+                      <TableExample variant="surface" />
                     </Flex>
 
                     <Flex direction="column" gap="3">
                       <Text color="gray" size="2">
-                        Without root
+                        Ghost
                       </Text>
                       <TableExample />
                     </Flex>
                   </Grid>
 
-                  <Grid columns="2" gap="5" mt="5">
-                    {tableContentPropDefs.size.values
-                      .slice()
-                      .reverse()
-                      .map((size) => (
-                        <div key={size}>
-                          <Text as="p" color="gray" size="2" mb="3">
-                            size {size}
-                          </Text>
-                          <TableRoot>
-                            <TableExample size={size} />
-                          </TableRoot>
-                        </div>
-                      ))}
+                  <Grid columns="3" gap="5" mt="5">
+                    {tableRootPropDefs.size.values.map((size) => (
+                      <div key={size}>
+                        <Text as="p" color="gray" size="2" mb="3">
+                          size {size}
+                        </Text>
+                        <TableExample size={size} variant="surface" noEmail />
+                      </div>
+                    ))}
                   </Grid>
                 </DocsSection>
 
@@ -4010,38 +4002,38 @@ function PlaygroundForm({
   );
 }
 
-function TableExample(props: React.ComponentProps<typeof TableContent>) {
+function TableExample(props: React.ComponentProps<typeof TableRoot> & { noEmail?: boolean }) {
   return (
-    <TableContent {...props}>
+    <TableRoot {...props}>
       <TableHeader>
         <TableRow>
           <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-          <TableColumnHeaderCell>Email</TableColumnHeaderCell>
+          {!props.noEmail && <TableColumnHeaderCell>Email</TableColumnHeaderCell>}
           <TableColumnHeaderCell>Group</TableColumnHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
           <TableRowHeaderCell>Andy</TableRowHeaderCell>
-          <TableCell>andy@workos.com</TableCell>
+          {!props.noEmail && <TableCell>andy@workos.com</TableCell>}
           <TableCell>Developer</TableCell>
         </TableRow>
         <TableRow>
           <TableRowHeaderCell>Benoit</TableRowHeaderCell>
-          <TableCell>benoit@workos.com</TableCell>
+          {!props.noEmail && <TableCell>benoit@workos.com</TableCell>}
           <TableCell>Admin</TableCell>
         </TableRow>
         <TableRow>
           <TableRowHeaderCell>Lucas</TableRowHeaderCell>
-          <TableCell>lucas@workos.com</TableCell>
+          {!props.noEmail && <TableCell>lucas@workos.com</TableCell>}
           <TableCell>Developer</TableCell>
         </TableRow>
         <TableRow>
           <TableRowHeaderCell>Vlad</TableRowHeaderCell>
-          <TableCell>vlad@workos.com</TableCell>
+          {!props.noEmail && <TableCell>vlad@workos.com</TableCell>}
           <TableCell>Designer</TableCell>
         </TableRow>
       </TableBody>
-    </TableContent>
+    </TableRoot>
   );
 }

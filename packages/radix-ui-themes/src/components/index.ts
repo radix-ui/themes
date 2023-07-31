@@ -158,7 +158,6 @@ export * from './separator.props';
 export {
   Table,
   TableRoot,
-  TableContent,
   TableHeader,
   TableRow,
   TableBody,

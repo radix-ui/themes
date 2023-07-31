@@ -1,11 +1,4 @@
 .rt-TableRoot {
-  background-color: var(--color-surface-2);
-  border-radius: var(--radius-4);
-  border: 1px solid var(--gray-a5);
-  overflow: hidden;
-}
-
-.rt-TableContent {
   --table-separator-color: var(--gray-a5);
   --table-row-background: transparent;
   --table-row-border-bottom: inset 0 -1px var(--table-separator-color);
@@ -56,20 +49,23 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-TableContent {
+  .rt-TableRoot {
     &.size-1 {
+      border-radius: var(--radius-3);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       --table-cell-padding: var(--space-2);
       --table-cell-min-height: 36px;
     }
     &.size-2 {
+      border-radius: var(--radius-4);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       --table-cell-padding: var(--space-3);
       --table-cell-min-height: 44px;
     }
     &.size-3 {
+      border-radius: var(--radius-4);
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
       --table-cell-padding: var(--space-3) var(--space-4);
@@ -80,18 +76,37 @@
 
 /***************************************************************************************************
  *                                                                                                 *
- * TableContent inside TableRoot                                                                   *
+ * VARIANTS                                                                                        *
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* Add header background */
-.rt-TableRoot :where(.rt-TableHeader) {
-  --table-row-background: var(--gray-a2);
+/* surface */
+
+.rt-TableRoot.variant-surface {
+  overflow: hidden;
+  background-color: var(--color-surface-2);
+
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--gray-a5);
+    border-radius: inherit;
+  }
+
+  & :where(.rt-TableHeader) {
+    --table-row-background: var(--gray-a2);
+  }
+
+  & :where(.rt-TableBody .rt-TableRow:last-child) {
+    --table-row-border-bottom: none;
+  }
 }
 
-/* Remove bottom row border, unless it’s focused or there is a footer */
-.rt-TableRoot :where(.rt-TableBody .rt-TableRow:last-child) {
-  --table-row-border-bottom: none;
+/* ghost */
+
+.rt-TableRoot.variant-ghost {
 }
 
 /***************************************************************************************************
@@ -100,12 +115,10 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Inset > .rt-TableContent .rt-TableCell:first-child,
-.rt-Inset :not(.rt-TableRoot) > .rt-TableContent .rt-TableCell:first-child {
+.rt-Inset > .rt-TableRoot .rt-TableCell:first-child {
   padding-left: var(--inset-padding);
 }
 
-.rt-Inset > .rt-TableContent .rt-TableCell:last-child,
-.rt-Inset :not(.rt-TableRoot) > .rt-TableContent .rt-TableCell:last-child {
+.rt-Inset > .rt-TableRoot .rt-TableCell:last-child {
   padding-right: var(--inset-padding);
 }

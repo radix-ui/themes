@@ -23,6 +23,9 @@
   - Refine colors for `surface` unchecked variant
 - `Table`:
   - [**Breaking**] Remove `radius` prop
+  - [**Breaking**] Remove optional `Root` prop (`Content` was renamed to `Root` instead) and add a new `variant` prop
+    - Tables previously no wrapped in `Root` part should look the same out of the box (replace `Content` with `Root`)
+    - Tables previously wrapped in `Root`: remove `Root`, rename `Content` to `Root` and add `variant="surface"`
 - `TextArea`:
   - [**Breaking**] Remove `radius` prop
 

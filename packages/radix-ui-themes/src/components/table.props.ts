@@ -1,11 +1,14 @@
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
+const variants = ['surface', 'ghost'] as const;
 
-const tableContentPropDefs = {
+const tableRootPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', values: variants, default: 'ghost', responsive: true },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
 };
 
 const rowAlign = ['start', 'center', 'end', 'baseline'] as const;
@@ -26,4 +29,4 @@ const tableCellPropDefs = {
   width: PropDef<string | number>;
 };
 
-export { tableContentPropDefs, tableRowPropDefs, tableCellPropDefs };
+export { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs };
