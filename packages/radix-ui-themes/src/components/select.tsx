@@ -20,15 +20,10 @@ interface SelectRootProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
-  const {
-    children,
-    size = selectRootPropDefs.size.default,
-    radius = selectRootPropDefs.radius.default,
-    ...rootProps
-  } = props;
+  const { children, size = selectRootPropDefs.size.default, ...rootProps } = props;
   return (
     <SelectPrimitive.Root {...rootProps}>
-      <SelectContext.Provider value={React.useMemo(() => ({ size, radius }), [size, radius])}>
+      <SelectContext.Provider value={React.useMemo(() => ({ size }), [size])}>
         {children}
       </SelectContext.Provider>
     </SelectPrimitive.Root>
@@ -50,10 +45,11 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
       variant = selectTriggerPropDefs.variant.default,
       highContrast = selectTriggerPropDefs.highContrast.default,
       color = selectTriggerPropDefs.color.default,
+      radius = selectTriggerPropDefs.radius.default,
       placeholder,
       ...triggerProps
     } = marginRest;
-    const { size, radius } = React.useContext(SelectContext);
+    const { size } = React.useContext(SelectContext);
     return (
       <SelectPrimitive.Trigger asChild>
         <button

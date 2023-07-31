@@ -14,7 +14,7 @@
   - Refine colors for `solid` unchecked variant
   - [**Breaking**] Remove `radius` prop
 - `Select`:
-  - [**Breaking**] Custom `radius` only applied to `Trigger`
+  - [**Breaking**] Move `radius` prop from `Root` to `Trigger`
 - `Slider`:
   - Refine `Thumb` and `Range` shadows
 - `RadioGroup`:

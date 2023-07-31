@@ -670,13 +670,13 @@ export default function Sink() {
                           </tr>
                         </thead>
                         <tbody>
-                          {selectRootPropDefs.radius.values.map((radius) => (
+                          {selectTriggerPropDefs.radius.values.map((radius) => (
                             <tr key={radius}>
                               <RowHeaderCell>{radius}</RowHeaderCell>
                               {selectRootPropDefs.size.values.map((size) => (
                                 <td key={size}>
-                                  <SelectRoot defaultValue="apple" size={size} radius={radius}>
-                                    <SelectTrigger />
+                                  <SelectRoot defaultValue="apple" size={size}>
+                                    <SelectTrigger radius={radius} />
                                     <SelectContent>
                                       <SelectItemsDemo />
                                     </SelectContent>

@@ -8,20 +8,20 @@ const variants = baseButtonPropDefs.variant.values;
 
 const selectRootPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
-  radius: radiusProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
-  radius: typeof radiusProp;
 };
 
 const selectTriggerPropDefs = {
   variant: { ...baseButtonPropDefs.variant, default: 'solid' },
   color: baseButtonPropDefs.color,
   highContrast: baseButtonPropDefs.highContrast,
+  radius: radiusProp,
 } satisfies {
   variant: PropDef<(typeof variants)[number]>;
   color: typeof baseButtonPropDefs.color;
   highContrast: typeof baseButtonPropDefs.highContrast;
+  radius: typeof radiusProp;
 };
 
 const contentVariants = ['solid', 'soft'] as const;
