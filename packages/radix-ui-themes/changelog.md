@@ -4,6 +4,8 @@
 
 - General:
   - Refine `--shadow-1`
+- `Button`, `IconButton`:
+  - Add size 4
 - `Callout`:
   - [**Breaking**] Remove `radius` prop
 - `Card`:

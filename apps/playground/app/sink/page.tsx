@@ -1499,24 +1499,24 @@ export default function Sink() {
                             </td>
                           ))}
                           <td>
-                            <Button size="3" variant={variant} highContrast>
+                            <Button variant={variant} highContrast>
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
                           <td />
                           <td>
-                            <Button size="3" variant={variant} color="gray">
+                            <Button variant={variant} color="gray">
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
                           <td>
-                            <Button size="3" variant={variant} color="gray" highContrast>
+                            <Button variant={variant} color="gray" highContrast>
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
                           <td />
                           <td>
-                            <Button size="3" variant={variant} disabled>
+                            <Button variant={variant} disabled>
                               Next <ArrowRightIcon />
                             </Button>
                           </td>
@@ -1640,24 +1640,24 @@ export default function Sink() {
                             </td>
                           ))}
                           <td>
-                            <IconButton size="3" variant={variant} highContrast>
+                            <IconButton variant={variant} highContrast>
                               <Share2Icon />
                             </IconButton>
                           </td>
                           <td />
                           <td>
-                            <IconButton size="3" variant={variant} color="gray">
+                            <IconButton variant={variant} color="gray">
                               <Share2Icon />
                             </IconButton>
                           </td>
                           <td>
-                            <IconButton size="3" variant={variant} color="gray" highContrast>
+                            <IconButton variant={variant} color="gray" highContrast>
                               <Share2Icon />
                             </IconButton>
                           </td>
                           <td />
                           <td>
-                            <IconButton size="3" variant={variant} disabled>
+                            <IconButton variant={variant} disabled>
                               <Share2Icon />
                             </IconButton>
                           </td>

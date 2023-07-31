@@ -37,6 +37,10 @@
       --base-button-height: var(--space-7);
       border-radius: max(var(--radius-3), var(--radius-full));
     }
+    &.size-4 {
+      --base-button-height: var(--space-8);
+      border-radius: max(var(--radius-4), var(--radius-full));
+    }
   }
 }
 

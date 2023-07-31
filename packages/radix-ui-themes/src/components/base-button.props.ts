@@ -1,7 +1,7 @@
 import { colorProp, highContrastProp, radiusProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
-const sizes = ['1', '2', '3'] as const;
+const sizes = ['1', '2', '3', '4'] as const;
 const variants = ['solid', 'soft', 'ghost', 'outline', 'surface'] as const;
 
 const baseButtonPropDefs = {

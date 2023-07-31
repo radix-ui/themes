@@ -86,6 +86,22 @@
         --button-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
     }
+    &.size-4 {
+      gap: var(--space-4);
+      font-size: var(--font-size-4);
+      line-height: var(--line-height-4);
+      letter-spacing: var(--letter-spacing-4);
+
+      &:where(:not(.variant-ghost)) {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+      }
+      &:where(.variant-ghost) {
+        gap: var(--space-2);
+        --button-ghost-padding-x: var(--space-4);
+        --button-ghost-padding-y: var(--space-2);
+      }
+    }
   }
 }
 

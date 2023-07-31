@@ -43,5 +43,8 @@
     &.size-3 {
       --icon-button-ghost-padding: var(--space-2);
     }
+    &.size-4 {
+      --icon-button-ghost-padding: var(--space-3);
+    }
   }
 }
