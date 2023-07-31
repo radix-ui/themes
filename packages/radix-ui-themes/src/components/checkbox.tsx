@@ -24,12 +24,10 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     variant = checkboxPropDefs.variant.default,
     color = checkboxPropDefs.color.default,
     highContrast = checkboxPropDefs.highContrast.default,
-    radius = checkboxPropDefs.radius.default,
     ...checkboxProps
   } = marginRest;
   return (
     <span
-      data-radius={radius}
       className={classNames(
         'rt-CheckboxRoot',
         withBreakpoints(size, 'size'),

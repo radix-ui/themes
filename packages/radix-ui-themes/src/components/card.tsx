@@ -19,7 +19,6 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
     className,
     size = cardPropDefs.size.default,
     variant = cardPropDefs.variant.default,
-    radius = cardPropDefs.radius.default,
     ...cardProps
   } = marginRest;
   const Comp = asChild ? Slot : 'div';
@@ -33,7 +32,6 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
 
   return (
     <Comp
-      data-radius={radius}
       ref={forwardedRef}
       {...cardProps}
       className={classNames(

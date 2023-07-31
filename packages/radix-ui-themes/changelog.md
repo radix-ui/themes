@@ -4,14 +4,25 @@
 
 - General:
   - Refine `--shadow-1`
+- `Callout`:
+  - [**Breaking**] Remove `radius` prop
+- `Card`:
+  - [**Breaking**] Remove `radius` prop
 - `Checkbox`:
   - Refine colors for `solid` unchecked variant
+  - [**Breaking**] Remove `radius` prop
+- `Select`:
+  - [**Breaking**] Custom `radius` only applied to `Trigger`
 - `Slider`:
   - Refine `Thumb` and `Range` shadows
 - `RadioGroup`:
   - Refine colors for `solid` unchecked variant
 - `Switch`:
   - Refine colors for `surface` unchecked variant
+- `Table`:
+  - [**Breaking**] Remove `radius` prop
+- `TextArea`:
+  - [**Breaking**] Remove `radius` prop
 
 ## 0.0.35
 

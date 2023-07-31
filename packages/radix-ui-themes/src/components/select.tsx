@@ -104,16 +104,14 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       container,
       ...contentProps
     } = props;
-    const { size, radius } = React.useContext(SelectContext);
+    const { size } = React.useContext(SelectContext);
     const themeContext = useThemeContext();
     const resolvedColor = color ?? themeContext.accentScale;
-    const resolvedRadius = radius ?? themeContext.radius;
     return (
       <SelectPrimitive.Portal container={container}>
         <Theme asChild>
           <SelectPrimitive.Content
             data-accent-scale={resolvedColor}
-            data-radius={resolvedRadius}
             sideOffset={4}
             align="center"
             {...contentProps}

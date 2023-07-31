@@ -18,13 +18,11 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
     size = textAreaPropDefs.size.default,
     variant = textAreaPropDefs.variant.default,
     color = textAreaPropDefs.color.default,
-    radius = textAreaPropDefs.radius.default,
     ...textAreaProps
   } = marginRest;
   return (
     <textarea
       data-accent-scale={color}
-      data-radius={radius}
       {...textAreaProps}
       ref={forwardedRef}
       className={classNames(

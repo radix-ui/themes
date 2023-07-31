@@ -1,11 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {
-  tableRootPropDefs,
-  tableContentPropDefs,
-  tableRowPropDefs,
-  tableCellPropDefs,
-} from './table.props';
+import { tableContentPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props';
 import {
   extractMarginProps,
   withMarginProps,
@@ -17,17 +12,12 @@ import {
 import type { MarginProps, PaddingProps, GetPropDefTypes } from '../helpers';
 
 type TableRootElement = React.ElementRef<'div'>;
-type TableRootOwnProps = GetPropDefTypes<typeof tableRootPropDefs>;
-interface TableRootProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    MarginProps,
-    TableRootOwnProps {}
+interface TableRootProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps {}
 const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, radius = tableRootPropDefs.radius.default, ...rootProps } = marginRest;
+  const { className, ...rootProps } = marginRest;
   return (
     <div
-      data-radius={radius}
       {...rootProps}
       ref={forwardedRef}
       className={classNames('rt-TableRoot', withMarginProps(marginProps), className)}
@@ -85,7 +75,7 @@ TableBody.displayName = 'TableBody';
 type TableRowElement = React.ElementRef<'tr'>;
 type TableRowOwnProps = GetPropDefTypes<typeof tableRowPropDefs>;
 interface TableRowProps
-  extends Omit<React.ComponentPropsWithoutRef<'tr'>, keyof TableRootOwnProps>,
+  extends Omit<React.ComponentPropsWithoutRef<'tr'>, keyof TableRowOwnProps>,
     TableRowOwnProps {}
 const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwardedRef) => {
   const { className, align = tableRowPropDefs.align.default, ...rowProps } = props;

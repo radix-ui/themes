@@ -155,7 +155,6 @@ import {
   TableBody,
   TableRowHeaderCell,
   TableCell,
-  tableRootPropDefs,
   //
   TabsRoot,
   TabsList,
@@ -723,7 +722,7 @@ export default function Sink() {
                                   <td key={variant}>
                                     <SelectRoot defaultValue="apple" size="1">
                                       <SelectTrigger variant={variant} color={color} />
-                                      <SelectContent variant="soft">
+                                      <SelectContent variant="soft" color={color}>
                                         <SelectItemsDemo />
                                       </SelectContent>
                                     </SelectRoot>
@@ -734,7 +733,7 @@ export default function Sink() {
                                         highContrast
                                         ml="2"
                                       />
-                                      <SelectContent variant="soft">
+                                      <SelectContent variant="soft" color={color}>
                                         <SelectItemsDemo />
                                       </SelectContent>
                                     </SelectRoot>
@@ -1244,42 +1243,6 @@ export default function Sink() {
                       </Flex>
                     </div>
                   </Grid>
-
-                  <Text as="p" my="5">
-                    <Code>radius</Code> can be set per instance:
-                  </Text>
-
-                  <details>
-                    <summary>
-                      <Text size="2" color="gray">
-                        See specific radius examples
-                      </Text>
-                    </summary>
-                    <Box mt="3">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {checkboxPropDefs.size.values.map((size) => (
-                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {checkboxPropDefs.radius.values.map((radius) => (
-                            <tr key={radius}>
-                              <RowHeaderCell>{radius}</RowHeaderCell>
-                              {checkboxPropDefs.size.values.map((size) => (
-                                <td key={size}>
-                                  <Checkbox defaultChecked radius={radius} size={size} />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </details>
 
                   <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
@@ -2081,46 +2044,6 @@ export default function Sink() {
                   </table>
 
                   <Text as="p" my="5">
-                    <Code>radius</Code> can be set per instance:
-                  </Text>
-
-                  <details>
-                    <summary>
-                      <Text size="2" color="gray">
-                        See specific radius examples
-                      </Text>
-                    </summary>
-                    <Box mt="3">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {textAreaPropDefs.size.values.map((size) => (
-                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {textAreaPropDefs.radius.values.map((radius) => (
-                            <tr key={radius}>
-                              <RowHeaderCell>{radius}</RowHeaderCell>
-                              {textAreaPropDefs.size.values.map((size) => (
-                                <td key={size}>
-                                  <TextArea
-                                    size={size}
-                                    radius={radius}
-                                    placeholder="Your feedback"
-                                  />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </details>
-
-                  <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:
                   </Text>
 
@@ -2572,49 +2495,6 @@ export default function Sink() {
                       ))}
                     </tbody>
                   </table>
-
-                  <Text as="p" my="5">
-                    <Code>radius</Code> can be set per instance:
-                  </Text>
-
-                  <details>
-                    <summary>
-                      <Text size="2" color="gray">
-                        See specific radius examples
-                      </Text>
-                    </summary>
-                    <Box mt="3">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {cardPropDefs.size.values.map((size) => (
-                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {cardPropDefs.radius.values.map((radius) => (
-                            <tr key={radius}>
-                              <RowHeaderCell>{radius}</RowHeaderCell>
-                              {cardPropDefs.size.values.map((size) => (
-                                <td key={size}>
-                                  <Card size={size} radius={radius}>
-                                    <Text as="p" size="2" weight="bold">
-                                      Quick start
-                                    </Text>
-                                    <Text as="p" color="gray" size="2">
-                                      Create a proof of concept app
-                                    </Text>
-                                  </Card>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </details>
                 </DocsSection>
 
                 <DocsSection title="Table">
@@ -2651,43 +2531,6 @@ export default function Sink() {
                         </div>
                       ))}
                   </Grid>
-
-                  <Text as="p" my="5">
-                    <Code>radius</Code> can be set per instance:
-                  </Text>
-
-                  <details>
-                    <summary>
-                      <Text size="2" color="gray">
-                        See specific radius examples
-                      </Text>
-                    </summary>
-                    <Grid columns="2" gap="5" mt="3">
-                      {tableRootPropDefs.radius.values.map((radius) => (
-                        <Flex key={radius} direction="column" gap="3">
-                          <Text color="gray" size="2">
-                            {radius}
-                          </Text>
-                          <TableRoot radius={radius}>
-                            <TableContent>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                                  <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                <TableRow>
-                                  <TableRowHeaderCell>Andy</TableRowHeaderCell>
-                                  <TableCell>andy@workos.com</TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </TableContent>
-                          </TableRoot>
-                        </Flex>
-                      ))}
-                    </Grid>
-                  </details>
                 </DocsSection>
 
                 <DocsSection title="Typography">
@@ -3476,54 +3319,6 @@ export default function Sink() {
                       ))}
                     </tbody>
                   </table>
-
-                  <Text as="p" my="5">
-                    <Code>radius</Code> can be set per instance:
-                  </Text>
-
-                  <details>
-                    <summary>
-                      <Text size="2" color="gray">
-                        See specific radius examples
-                      </Text>
-                    </summary>
-                    <Box mt="3">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <ColumnHeaderCell />
-                            {calloutRootPropDefs.size.values.map((size) => (
-                              <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {calloutRootPropDefs.radius.values.map((radius) => (
-                            <tr key={radius}>
-                              <RowHeaderCell>{radius}</RowHeaderCell>
-                              {calloutRootPropDefs.size.values.map((size) => (
-                                <td key={size} style={{ width: 450 }}>
-                                  <CalloutRoot size={size} radius={radius}>
-                                    <CalloutIcon>
-                                      <InfoCircledIcon
-                                        width={size === '1' ? 15 : 20}
-                                        height={size === '1' ? 15 : 20}
-                                      />
-                                    </CalloutIcon>
-                                    <CalloutText>
-                                      We have detected multiple issues in your application
-                                      configuration file. Please read our{' '}
-                                      <Link href="/">Configuration Guide</Link> for more details.
-                                    </CalloutText>
-                                  </CalloutRoot>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </details>
 
                   <Text as="p" my="5">
                     <Code>color</Code> can be set per instance:

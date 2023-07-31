@@ -29,13 +29,11 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
       variant = calloutRootPropDefs.variant.default,
       color = calloutRootPropDefs.color.default,
       highContrast = calloutRootPropDefs.highContrast.default,
-      radius = calloutRootPropDefs.radius.default,
       ...rootProps
     } = marginRest;
     return (
       <div
         data-accent-scale={color}
-        data-radius={radius}
         {...rootProps}
         className={classNames(
           'rt-CalloutRoot',

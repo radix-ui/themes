@@ -1,11 +1,4 @@
-import { radiusProp } from '../helpers';
 import type { PropDef } from '../helpers';
-
-const tableRootPropDefs = {
-  radius: radiusProp,
-} satisfies {
-  radius: typeof radiusProp;
-};
 
 const sizes = ['1', '2', '3'] as const;
 
@@ -33,4 +26,4 @@ const tableCellPropDefs = {
   width: PropDef<string | number>;
 };
 
-export { tableRootPropDefs, tableContentPropDefs, tableRowPropDefs, tableCellPropDefs };
+export { tableContentPropDefs, tableRowPropDefs, tableCellPropDefs };
