@@ -1,6 +1,6 @@
 # Changelog
 
-## Up next
+## 0.0.36
 
 - General:
   - Refine `--shadow-1`
