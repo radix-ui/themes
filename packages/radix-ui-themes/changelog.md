@@ -17,6 +17,9 @@
 - `RadioGroup`:
   - [**Breaking**] Rename `surface` variant to `classic`
   - [**Breaking**] Rename `solid` variant to `surface`
+- `Select`:
+  - Add new `classic` variant
+  - [**Breaking**] Remove `solid` overrides, closest style for now is `<Select.Trigger variant="surface" highContrast>`
 - `Slider`:
   - [**Breaking**] Rename `surface` variant to `classic`
   - [**Breaking**] Rename `solid` variant to `surface`

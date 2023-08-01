@@ -110,26 +110,6 @@
 
 /* For trigger size, see base-button.css and button.css */
 
-.rt-SelectTrigger.variant-solid {
-  background-color: var(--color-canvas);
-  box-shadow: inset 0 0 0 1px var(--gray-a7);
-  color: var(--gray-12);
-  filter: none;
-
-  &:where(:hover, [data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--gray-a8);
-  }
-  &:where(:focus-visible) {
-    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
-  }
-  &:disabled {
-    color: var(--gray-a8);
-    cursor: not-allowed;
-    background-color: var(--gray-a3);
-    box-shadow: none;
-  }
-}
-
 @breakpoints {
   .rt-SelectTrigger {
     &.size-1 {
