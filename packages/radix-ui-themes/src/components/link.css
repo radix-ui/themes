@@ -1,30 +1,18 @@
 .rt-Link {
   cursor: pointer;
-  text-decoration-line: none;
-  text-decoration-style: solid;
-  text-decoration-thickness: 1px;
-  text-underline-offset: calc(0.025em + 2px);
-  text-decoration-color: var(--accent-a5);
   color: var(--accent-a11);
   border-radius: calc(0.07em * var(--radius-factor));
-
-  &:hover {
-    text-decoration-line: underline;
-  }
 
   &:focus-visible {
     outline-color: var(--accent-a8);
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 2px;
-    text-decoration-line: none;
   }
 
   &.high-contrast,
   .rt-Text:where([data-accent-scale]):not(.high-contrast) & {
     color: var(--accent-12);
-    text-decoration-line: underline;
-    text-decoration-color: var(--accent-a6);
   }
 }
 
@@ -42,4 +30,46 @@
       text-decoration-thickness: 2px;
     }
   }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * UNDERLINE                                                                                       *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-Link {
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: calc(0.025em + 2px);
+  text-decoration-color: var(--accent-a5);
+
+  &:where(.underline-auto) {
+    &:hover {
+      text-decoration-line: underline;
+    }
+
+    &.high-contrast,
+    :where(.rt-Text:where([data-accent-scale])):not(.high-contrast) & {
+      text-decoration-line: underline;
+      text-decoration-color: var(--accent-a6);
+    }
+  }
+
+  &:where(.underline-hover) {
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+
+  &:where(.underline-always) {
+    text-decoration-line: underline;
+  }
+}
+
+/* all focused states underline */
+
+.rt-Link:focus-visible {
+  text-decoration-line: none;
 }

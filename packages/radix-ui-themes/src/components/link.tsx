@@ -11,13 +11,25 @@ interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps, LinkOwnPro
   asChild?: boolean;
 }
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
-  const { children, className, asChild = false, ...linkProps } = props;
+  const {
+    children,
+    className,
+    asChild = false,
+    underline = linkPropDefs.underline.default,
+    ...linkProps
+  } = props;
   return (
     <Text
       {...linkProps}
       ref={forwardedRef}
       asChild
-      className={classNames('rt-reset-a', 'rt-reset-button', 'rt-Link', className)}
+      className={classNames(
+        'rt-reset-a',
+        'rt-reset-button',
+        'rt-Link',
+        className,
+        `underline-${underline}`
+      )}
     >
       {asChild ? children : <a>{children}</a>}
     </Text>

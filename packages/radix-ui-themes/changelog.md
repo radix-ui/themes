@@ -4,6 +4,8 @@
 
 - General:
   - Fix negative margin overrides inheritance
+- `Link`:
+  - Add `underline` (`auto`, `hover`, `always`) prop. `auto` is the default and behaviour is unchanged.
 
 ## 0.0.36
 
