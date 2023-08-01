@@ -4,8 +4,22 @@
 
 - General:
   - Fix negative margin overrides inheritance
+- `Card`:
+  - [**Breaking**] Rename `surface` variant to `classic`
+- `Checkbox`:
+  - [**Breaking**] Rename `surface` variant to `classic`
 - `Link`:
   - Add `underline` (`auto`, `hover`, `always`) prop. `auto` is the default and behaviour is unchanged.
+- `RadioGroup`:
+  - [**Breaking**] Rename `surface` variant to `classic`
+- `Slider`:
+  - [**Breaking**] Rename `surface` variant to `classic`
+- `Switch`:
+  - [**Breaking**] Rename `surface` variant to `classic`
+- `TextArea`:
+  - [**Breaking**] Rename `surface` variant to `classic`
+- `TextField`:
+  - [**Breaking**] Rename `surface` variant to `classic`
 
 ## 0.0.36
 

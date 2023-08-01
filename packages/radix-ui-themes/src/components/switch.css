@@ -148,7 +148,7 @@
   }
 }
 
-/* surface */
+/* classic */
 
 :root,
 .light,
@@ -160,7 +160,7 @@
   --switch-button-filter__surface-checked-active: brightness(1.08);
 }
 
-.rt-SwitchRoot.variant-surface {
+.rt-SwitchRoot.variant-classic {
   & .rt-SwitchButton {
     &:where([data-state='unchecked'])::before {
       background-color: var(--gray-a4);

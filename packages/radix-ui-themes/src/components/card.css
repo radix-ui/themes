@@ -111,9 +111,9 @@
   }
 }
 
-/* surface */
+/* classic */
 
-.rt-Card.variant-surface {
+.rt-Card.variant-classic {
   background-color: var(--color-surface-2);
 
   &::before {

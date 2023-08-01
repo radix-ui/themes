@@ -129,9 +129,9 @@
   }
 }
 
-/* surface */
+/* classic */
 
-.rt-SliderRoot.variant-surface {
+.rt-SliderRoot.variant-classic {
   & .rt-SliderTrack {
     background-color: var(--gray-a3);
     box-shadow: var(--shadow-1);

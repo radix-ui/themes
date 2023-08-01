@@ -74,9 +74,9 @@
   }
 }
 
-/* surface */
+/* classic */
 
-.rt-RadioGroupRoot.variant-surface {
+.rt-RadioGroupRoot.variant-classic {
   .rt-RadioGroupButton:where([data-state='unchecked']) {
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
     background-color: var(--color-surface-1);
