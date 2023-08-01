@@ -47,6 +47,14 @@
     --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--card-padding));
     --margin-left-override: calc(var(--margin-left, 0px) - var(--card-padding));
 
+    /* Reset the overrides on direct children */
+    :where(&) > * {
+      --margin-top-override: initial;
+      --margin-right-override: initial;
+      --margin-bottom-override: initial;
+      --margin-left-override: initial;
+    }
+
     margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
       var(--margin-left-override);
   }
