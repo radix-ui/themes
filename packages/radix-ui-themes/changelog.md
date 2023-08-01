@@ -21,6 +21,8 @@
 - `Switch`:
   - [**Breaking**] Rename `surface` variant to `classic`
   - [**Breaking**] Rename `solid` variant to `surface`
+- `Table`:
+  - Fix pointer-events issue
 - `TextArea`:
   - [**Breaking**] Rename `surface` variant to `classic`
   - [**Breaking**] Rename `solid` variant to `surface`

@@ -93,6 +93,7 @@
     inset: 0;
     border: 1px solid var(--gray-a5);
     border-radius: inherit;
+    pointer-events: none;
   }
 
   & :where(.rt-TableHeader) {
