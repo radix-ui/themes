@@ -53,9 +53,9 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* solid */
+/* surface */
 
-.rt-RadioGroupRoot.variant-solid {
+.rt-RadioGroupRoot.variant-surface {
   .rt-RadioGroupButton:where([data-state='unchecked']) {
     background-color: var(--color-canvas);
     box-shadow: inset 0 0 0 1px var(--gray-a7);

@@ -154,9 +154,9 @@
   }
 }
 
-/* solid */
+/* surface */
 
-.rt-TextFieldInput:where(.variant-solid) {
+.rt-TextFieldInput:where(.variant-surface) {
   & + .rt-TextFieldChrome {
     background-color: var(--color-canvas);
     box-shadow: inset 0 0 0 1px var(--gray-a7);

@@ -105,19 +105,19 @@
   box-shadow: 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
 }
 
-/* solid */
+/* surface */
 
 :root,
 .light,
 .light-theme {
-  --switch-button-filter__solid-checked-active: brightness(0.92) saturate(1.1);
+  --switch-button-filter__surface-checked-active: brightness(0.92) saturate(1.1);
 }
 .dark,
 .dark-theme {
-  --switch-button-filter__solid-checked-active: brightness(1.08);
+  --switch-button-filter__surface-checked-active: brightness(1.08);
 }
 
-.rt-SwitchRoot.variant-solid {
+.rt-SwitchRoot.variant-surface {
   & .rt-SwitchButton {
     &::before {
       background-color: var(--gray-3);
@@ -131,7 +131,7 @@
       background-color: var(--accent-9);
     }
     &:where([data-state='checked']:active)::before {
-      filter: var(--switch-button-filter__solid-checked-active);
+      filter: var(--switch-button-filter__surface-checked-active);
     }
   }
 

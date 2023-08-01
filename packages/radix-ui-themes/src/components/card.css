@@ -91,9 +91,9 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* solid */
+/* surface */
 
-.rt-Card.variant-solid {
+.rt-Card.variant-surface {
   background-color: var(--color-panel);
   &::after {
     box-shadow: inset 0 0 0 1px var(--gray-a6);

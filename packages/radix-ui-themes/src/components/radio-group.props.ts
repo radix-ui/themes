@@ -2,11 +2,11 @@ import { colorProp, highContrastProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2'] as const;
-const variants = ['solid', 'classic', 'soft'] as const;
+const variants = ['surface', 'classic', 'soft'] as const;
 
 const radioGroupPropDefs = {
   size: { type: 'enum', values: sizes, default: '1', responsive: true },
-  variant: { type: 'enum', values: variants, default: 'solid' },
+  variant: { type: 'enum', values: variants, default: 'surface' },
   color: colorProp,
   highContrast: highContrastProp,
 } satisfies {

@@ -108,9 +108,9 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* solid */
+/* surface */
 
-.rt-SliderRoot.variant-solid {
+.rt-SliderRoot.variant-surface {
   & .rt-SliderTrack {
     background-color: var(--gray-3);
     box-shadow: inset 0 0 0 1px var(--gray-a5);

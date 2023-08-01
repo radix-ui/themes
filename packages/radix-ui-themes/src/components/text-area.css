@@ -107,9 +107,9 @@
   }
 }
 
-/* solid */
+/* surface */
 
-.rt-TextArea.variant-solid {
+.rt-TextArea.variant-surface {
   background-color: var(--color-canvas);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
   &:focus {

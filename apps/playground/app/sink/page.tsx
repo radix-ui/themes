@@ -2403,7 +2403,7 @@ export default function Sink() {
                       </Text>
                       <Flex direction="column" gap="3">
                         {Array.from({ length: 4 }, (_, i) => (
-                          <Card key={i} variant="solid" asChild>
+                          <Card key={i} variant="surface" asChild>
                             <a href="#some-page">
                               <Flex align="center" gap="2">
                                 <Avatar src="./api/avatar" fallback="D" />
