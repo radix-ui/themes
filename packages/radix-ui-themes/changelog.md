@@ -1,5 +1,10 @@
 # Changelog
 
+## Up Next
+
+- General:
+  - Fix negative margin overrides inheritance
+
 ## 0.0.36
 
 - General:
