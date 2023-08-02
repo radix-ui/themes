@@ -194,7 +194,7 @@ export default function Sink() {
             <div id="root">
               <div
                 style={{
-                  // display: 'none',
+                  display: 'none',
                   position: 'fixed',
                   backgroundAttachment: 'fixed',
                   inset: 0,
