@@ -1,5 +1,5 @@
 .rt-HoverCardContent {
-  background-color: var(--color-panel);
+  background-color: var(--color-panel-solid);
   box-shadow: var(--shadow-4);
   overflow: auto;
 

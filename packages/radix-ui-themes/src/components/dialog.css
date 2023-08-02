@@ -21,7 +21,7 @@
   max-width: 580px;
   outline: none;
   overflow: auto;
-  background-color: var(--color-panel);
+  background-color: var(--color-panel-solid);
   box-shadow: var(--shadow-6);
   box-sizing: border-box;
   z-index: 1;

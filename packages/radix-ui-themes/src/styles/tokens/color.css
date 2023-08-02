@@ -148,7 +148,7 @@
 
 .radix-themes {
   --color-canvas: white;
-  --color-panel: white;
+  --color-panel-solid: white;
   --color-overlay: var(--gray-a8);
   --color-surface: white;
   --color-panel-transparent: rgba(255, 255, 255, 0.9);
@@ -158,7 +158,7 @@
   color-scheme: dark;
 
   --color-canvas: var(--gray-1);
-  --color-panel: var(--gray-2);
+  --color-panel-solid: var(--gray-2);
   --color-overlay: var(--black-a11);
   --color-surface: rgba(0, 0, 0, 0.3);
   --color-panel-transparent: var(--gray-a2);

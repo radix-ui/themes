@@ -155,7 +155,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           overflow: 'hidden',
           height: 'calc(100vh - var(--space-4) - var(--space-4))',
           borderRadius: 'var(--radius-4)',
-          backgroundColor: 'var(--color-panel)',
+          backgroundColor: 'var(--color-panel-solid)',
           boxShadow: 'var(--shadow-5)',
           transformOrigin: 'top right',
           transitionProperty: 'opacity, transform',

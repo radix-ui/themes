@@ -158,7 +158,7 @@
  ***************************************************************************************************/
 
 .rt-SelectContent {
-  --select-content-bg: var(--color-panel);
+  --select-content-bg: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
 }
 .rt-SelectItem[data-disabled] {

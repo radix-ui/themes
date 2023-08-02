@@ -157,7 +157,7 @@
  ***************************************************************************************************/
 
 .rt-BaseMenuContent {
-  --base-menu-bg: var(--color-panel);
+  --base-menu-bg: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
 }
 .rt-BaseMenuItem[data-accent-scale] {
