@@ -148,9 +148,9 @@
 
 .radix-themes {
   --color-canvas: white;
-  --color-panel-solid: white;
   --color-overlay: var(--gray-a8);
   --color-surface: white;
+  --color-panel-solid: white;
   --color-panel-transparent: rgba(255, 255, 255, 0.9);
 }
 :is(.dark, .dark-theme),
@@ -158,9 +158,9 @@
   color-scheme: dark;
 
   --color-canvas: var(--gray-1);
-  --color-panel-solid: var(--gray-2);
   --color-overlay: var(--black-a11);
   --color-surface: rgba(0, 0, 0, 0.3);
+  --color-panel-solid: var(--gray-2);
   --color-panel-transparent: var(--gray-a2);
 }
 
@@ -1110,6 +1110,17 @@
   }
   &:where([data-background-color-applied]) {
     background-color: var(--color-background);
+  }
+}
+
+/* panel background */
+
+.radix-themes {
+  &:where([data-panel-background='solid']) {
+    --color-panel: var(--color-panel-solid);
+  }
+  &:where([data-panel-background='translucent']) {
+    --color-panel: var(--color-panel-transparent);
   }
 }
 

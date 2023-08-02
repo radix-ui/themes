@@ -7,6 +7,7 @@
   - [**Breaking**] Rename `--color-surface-1` to `--color-surface`
   - [**Breaking**] Rename `--color-surface-2` to `--color-panel-transparent`
   - [**Breaking**] Rename `--color-panel` to `--color-panel-solid`
+  - Add new `panelBackground` setting on `Theme` (and `ThemePanel`)
 - `Button`, `IconButton`:
   - Add new `classic` variant
 - `Card`:

@@ -79,6 +79,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onGrayScaleChange,
       backgroundColor,
       onBackgroundColorChange,
+      panelBackground,
+      onPanelBackgroundChange,
       textColor,
       onTextColorChange,
       radius,
@@ -99,6 +101,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         grayScale: grayScale === themePropDefs.grayScale.default ? undefined : grayScale,
         backgroundColor:
           backgroundColor === themePropDefs.backgroundColor.default ? undefined : backgroundColor,
+        panelBackground:
+          panelBackground === themePropDefs.panelBackground.default ? undefined : panelBackground,
         textColor: textColor === themePropDefs.textColor.default ? undefined : textColor,
         radius: radius === themePropDefs.radius.default ? undefined : radius,
         scaling: scaling === themePropDefs.scaling.default ? undefined : scaling,
@@ -413,6 +417,22 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             <Text as="p" size="2" weight="bold" mb="3">
               Style
             </Text>
+
+            <Flex direction="column" gap="1" mb="3">
+              <Label>Panel background</Label>
+              <RadioGroup.Root value={panelBackground} onValueChange={onPanelBackgroundChange}>
+                <Flex direction="column" gap="1">
+                  {themePropDefs.panelBackground.values.map((value) => (
+                    <Text key={value} size="2" asChild>
+                      <label>
+                        <RadioGroup.Item value={value} mr="2" />
+                        {value}
+                      </label>
+                    </Text>
+                  ))}
+                </Flex>
+              </RadioGroup.Root>
+            </Flex>
 
             <Flex direction="column" gap="1" mb="3">
               <Label htmlFor="radius">Radius › {radius}</Label>
