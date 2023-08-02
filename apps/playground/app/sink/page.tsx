@@ -4003,19 +4003,19 @@ const SampleNestedUI = React.forwardRef<
             <Text as="p" weight="bold">
               Feedback
             </Text>
-            <TextArea placeholder="Your feedback" />
+            <TextArea variant="classic" placeholder="Your feedback" />
           </Grid>
           <Flex asChild justify="between">
             <label>
               <Text color="gray" size="2">
                 Attach screenshot?
               </Text>
-              <Switch defaultChecked highContrast />
+              <Switch size="1" variant="classic" defaultChecked highContrast />
             </label>
           </Flex>
           <Grid columns="2" gap="2">
             <Button variant="surface">Back</Button>
-            <Button variant="solid">Submit</Button>
+            <Button variant="classic">Submit</Button>
           </Grid>
         </Flex>
       </div>
@@ -4058,34 +4058,35 @@ function PlaygroundForm({
 }
 
 function TableExample(props: React.ComponentProps<typeof TableRoot> & { noEmail?: boolean }) {
+  const { noEmail, ...rootProps } = props;
   return (
-    <TableRoot {...props}>
+    <TableRoot {...rootProps}>
       <TableHeader>
         <TableRow>
           <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-          {!props.noEmail && <TableColumnHeaderCell>Email</TableColumnHeaderCell>}
+          {!noEmail && <TableColumnHeaderCell>Email</TableColumnHeaderCell>}
           <TableColumnHeaderCell>Group</TableColumnHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
           <TableRowHeaderCell>Andy</TableRowHeaderCell>
-          {!props.noEmail && <TableCell>andy@workos.com</TableCell>}
+          {!noEmail && <TableCell>andy@workos.com</TableCell>}
           <TableCell>Developer</TableCell>
         </TableRow>
         <TableRow>
           <TableRowHeaderCell>Benoit</TableRowHeaderCell>
-          {!props.noEmail && <TableCell>benoit@workos.com</TableCell>}
+          {!noEmail && <TableCell>benoit@workos.com</TableCell>}
           <TableCell>Admin</TableCell>
         </TableRow>
         <TableRow>
           <TableRowHeaderCell>Lucas</TableRowHeaderCell>
-          {!props.noEmail && <TableCell>lucas@workos.com</TableCell>}
+          {!noEmail && <TableCell>lucas@workos.com</TableCell>}
           <TableCell>Developer</TableCell>
         </TableRow>
         <TableRow>
           <TableRowHeaderCell>Vlad</TableRowHeaderCell>
-          {!props.noEmail && <TableCell>vlad@workos.com</TableCell>}
+          {!noEmail && <TableCell>vlad@workos.com</TableCell>}
           <TableCell>Designer</TableCell>
         </TableRow>
       </TableBody>
