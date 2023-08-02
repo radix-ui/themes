@@ -1,7 +1,7 @@
 .rt-Code {
   box-sizing: border-box;
   font-family: var(--code-font-family);
-  font-size: calc(100% * var(--code-font-size-adjust));
+  font-size: calc(var(--code-font-size-adjust) * 1em);
   font-style: var(--code-font-style);
   font-weight: var(--code-font-weight);
   line-height: 1.25;

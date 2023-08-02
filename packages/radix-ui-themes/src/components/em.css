@@ -1,7 +1,7 @@
 .rt-Em {
   box-sizing: border-box;
   font-family: var(--em-font-family);
-  font-size: var(--em-font-size-adjust * 1em);
+  font-size: calc(var(--em-font-size-adjust) * 1em);
   font-style: var(--em-font-style);
   font-weight: var(--em-font-weight);
   line-height: 1.25;

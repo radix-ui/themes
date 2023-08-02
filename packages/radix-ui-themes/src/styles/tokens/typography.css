@@ -38,8 +38,9 @@
 
   /* default values */
 
-  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto,
+    'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
   --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
   --default-font-style: normal;
   --default-font-weight: var(--font-weight-regular);
@@ -69,7 +70,8 @@
 
   /* Code */
 
-  --code-font-family: 'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --code-font-family: 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono', monospace,
+    'Apple Color Emoji', 'Segoe UI Emoji';
   --code-font-size-adjust: 0.95;
   --code-font-style: normal;
   --code-font-weight: inherit;
@@ -85,8 +87,8 @@
 
   /* Em */
 
-  --em-font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --em-font-size-adjust: 1.06;
+  --em-font-family: 'Publico Text', Georgia, 'Times New Roman', serif;
+  --em-font-size-adjust: 1.07;
   --em-font-style: italic;
   --em-font-weight: inherit;
   --em-letter-spacing: 0em;

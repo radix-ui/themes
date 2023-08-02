@@ -1,5 +1,19 @@
 # Changelog
 
+## Up next:
+
+- General
+  - Update shadows in dark mode
+  - Rename `Segoe UI` and `Open Sans` with custom metrics to `Segoe UI (Custom)` and `Open Sans (Custom)` in the `@font-face`
+  - Remove Google Fonts
+- `Code`:
+  - Update the font stack
+- `Em`:
+  - Update the font stack
+  - Fix `--em-font-size-adjust` not working
+- `Strong`:
+  - Fix `--strong-font-size-adjust` not working
+
 ## 0.0.37
 
 - General:
