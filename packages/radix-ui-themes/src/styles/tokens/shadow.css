@@ -45,30 +45,30 @@
     inset 0 1px 3px 0 var(--black-a12);
 
   --shadow-2:
-    inset 0 0 0 1px var(--gray-a6),
+    0 0 0 1px var(--gray-5),
     0 0 0 0.5px var(--black-a4),
     0px 2px 1px -1px var(--black-a9),
     0px 1px 1px 0px var(--black-a9),
     0px 1px 3px 0px var(--black-a9);
 
   --shadow-3:
-    inset 0 0 0 1px var(--gray-a6),
+    0 0 0 1px var(--gray-5),
     0px 2px 3px -2px var(--black-a5),
     0px 3px 8px -2px var(--black-a8),
     0px 4px 12px -4px var(--black-a9);
 
   --shadow-4:
-    inset 0 0 0 1px var(--gray-a6),
+    0 0 0 1px var(--gray-5),
     0px 8px 40px var(--black-a7),
     0px 12px 32px -16px var(--black-a8);
 
   --shadow-5:
-    inset 0 0 0 1px var(--gray-a6),
+    0 0 0 1px var(--gray-5),
     0px 12px 60px var(--black-a8),
     0px 12px 32px -16px var(--black-a10);
 
   --shadow-6:
-    inset 0 0 0 1px var(--gray-a6),
+    0 0 0 1px var(--gray-5),
     0px 16px 64px var(--black-a11),
     0px 16px 36px -20px var(--black-a12);
 }
