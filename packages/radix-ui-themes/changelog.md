@@ -4,6 +4,7 @@
 
 - General:
   - Fix negative margin overrides inheritance
+  - [**Breaking**] Rename `--color-surface-1` to `--color-surface`
 - `Button`, `IconButton`:
   - Add new `classic` variant
 - `Card`:

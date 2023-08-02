@@ -150,7 +150,7 @@
   --color-canvas: white;
   --color-panel: white;
   --color-overlay: var(--gray-a8);
-  --color-surface-1: white;
+  --color-surface: white;
   --color-surface-2: rgba(255, 255, 255, 0.9);
 }
 :is(.dark, .dark-theme),
@@ -160,7 +160,7 @@
   --color-canvas: var(--gray-1);
   --color-panel: var(--gray-2);
   --color-overlay: var(--black-a11);
-  --color-surface-1: rgba(0, 0, 0, 0.3);
+  --color-surface: rgba(0, 0, 0, 0.3);
   --color-surface-2: var(--gray-a2);
 }
 

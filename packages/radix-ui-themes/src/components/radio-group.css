@@ -79,7 +79,7 @@
 .rt-RadioGroupRoot.variant-classic {
   .rt-RadioGroupButton:where([data-state='unchecked']) {
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
-    background-color: var(--color-surface-1);
+    background-color: var(--color-surface);
   }
   .rt-RadioGroupButton:where(:focus-visible) {
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1), 0 0 0 2px var(--accent-3),
