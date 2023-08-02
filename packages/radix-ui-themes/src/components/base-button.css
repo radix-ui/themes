@@ -128,7 +128,7 @@
   }
   &:where(:active) {
     background-image: linear-gradient(var(--black-a5), transparent);
-    padding-top: var(--base-button__classic-active__offset, 1px);
+    padding-top: var(--base-button__classic-active__offset, 2px);
 
     /* prettier-ignore */
     --button__classic__box-shadow:
