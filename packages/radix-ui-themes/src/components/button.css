@@ -3,7 +3,7 @@
 .rt-Button {
   &:where(:not(.variant-ghost)) {
     & svg {
-      opacity: 0.8;
+      opacity: 0.9;
     }
   }
 }

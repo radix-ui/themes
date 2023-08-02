@@ -6,6 +6,8 @@
   - Update shadows in dark mode
   - Rename `Segoe UI` and `Open Sans` with custom metrics to `Segoe UI (Custom)` and `Open Sans (Custom)` in the `@font-face`
   - Remove Google Fonts
+- `Button`
+  - Bump up icon opacity to `0.9`
 - `Code`:
   - Update the font stack
 - `Em`:
