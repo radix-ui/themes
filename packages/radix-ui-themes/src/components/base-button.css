@@ -328,6 +328,8 @@
   box-shadow: none;
   filter: none;
   background-color: transparent;
+  background-image: none;
+
   &:where(:not(.variant-ghost)) {
     background-color: var(--gray-a3);
   }
