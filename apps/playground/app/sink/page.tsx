@@ -190,11 +190,11 @@ export default function Sink() {
     <html lang="en" className={styles.root} suppressHydrationWarning>
       <body>
         <NextThemeProvider>
-          <Theme asChild backgroundColor="gray">
+          <Theme asChild accentScale="violet" backgroundColor="gray">
             <div id="root">
               <div
                 style={{
-                  display: 'none',
+                  // display: 'none',
                   position: 'fixed',
                   backgroundAttachment: 'fixed',
                   inset: 0,
@@ -3620,6 +3620,10 @@ export default function Sink() {
                         />
                       ))}
                     </Flex>
+
+                    <Card size="4" style={{ width: 400 }} mt="3">
+                      <PlaygroundForm size="2" />
+                    </Card>
                   </DocsSection>
 
                   <DocsSection title="Nested appearances test">
@@ -4052,7 +4056,12 @@ function PlaygroundForm({
         </Text>
         <TextArea size={size} placeholder="Your feedback" />
       </Grid>
-      <Button size={size}>Submit</Button>
+      <Grid columns="2" gap="2">
+        <Button size={size} variant="surface">
+          Back
+        </Button>
+        <Button size={size}>Submit</Button>
+      </Grid>
     </Flex>
   );
 }

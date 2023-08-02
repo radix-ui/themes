@@ -63,7 +63,7 @@
 
 .rt-CheckboxButton.variant-surface {
   &:where([data-state='unchecked']) {
-    background-color: var(--color-canvas);
+    background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
   }
   &:where(:focus-visible) {
@@ -88,8 +88,8 @@
 
 .rt-CheckboxButton.variant-classic {
   &:where([data-state='unchecked']) {
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
     background-color: var(--color-surface);
+    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
   }
   &:where(:focus-visible) {
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1), 0 0 0 2px var(--accent-3),

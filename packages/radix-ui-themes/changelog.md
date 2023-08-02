@@ -5,9 +5,10 @@
 - General:
   - Fix negative margin overrides inheritance
   - [**Breaking**] Rename `--color-surface-1` to `--color-surface`
-  - [**Breaking**] Rename `--color-surface-2` to `--color-panel-transparent`
+  - [**Breaking**] Rename `--color-surface-2` to `--color-panel-translucent`
   - [**Breaking**] Rename `--color-panel` to `--color-panel-solid`
   - [**Breaking**] Rename `--accent-surface` to `--color-surface-accent`
+  - [**Breaking**] Remove `--color-canvas`
   - Add new `panelBackground` setting on `Theme` (and `ThemePanel`)
 - `Button`, `IconButton`:
   - Add new `classic` variant

@@ -5,6 +5,7 @@
   box-sizing: border-box;
   flex-shrink: 0;
   user-select: none;
+  vertical-align: top;
 }
 
 /***************************************************************************************************
@@ -26,7 +27,7 @@
 @breakpoints {
   .rt-BaseButton {
     &.size-1 {
-      --base-button__classic-active__offset: 0px;
+      --base-button__classic-active__offset-override: 1px;
       --base-button-height: var(--space-5);
       border-radius: max(var(--radius-1), var(--radius-full));
     }
@@ -128,7 +129,7 @@
   }
   &:where(:active) {
     background-image: linear-gradient(var(--black-a5), transparent);
-    padding-top: var(--base-button__classic-active__offset, 2px);
+    padding-top: var(--base-button__classic-active__offset-override, 2px);
 
     /* prettier-ignore */
     --button__classic__box-shadow:
