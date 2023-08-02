@@ -114,7 +114,7 @@
 /* classic */
 
 .rt-Card.variant-classic {
-  background-color: var(--color-surface-2);
+  background-color: var(--color-panel-transparent);
 
   &::before {
     inset: 0;

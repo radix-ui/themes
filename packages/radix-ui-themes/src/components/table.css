@@ -84,7 +84,7 @@
 
 .rt-TableRoot.variant-surface {
   overflow: hidden;
-  background-color: var(--color-surface-2);
+  background-color: var(--color-panel-transparent);
 
   position: relative;
   &::after {

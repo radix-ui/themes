@@ -5,6 +5,7 @@
 - General:
   - Fix negative margin overrides inheritance
   - [**Breaking**] Rename `--color-surface-1` to `--color-surface`
+  - [**Breaking**] Rename `--color-surface-2` to `--color-panel-transparent`
 - `Button`, `IconButton`:
   - Add new `classic` variant
 - `Card`:

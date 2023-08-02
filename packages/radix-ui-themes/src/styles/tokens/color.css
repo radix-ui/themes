@@ -151,7 +151,7 @@
   --color-panel: white;
   --color-overlay: var(--gray-a8);
   --color-surface: white;
-  --color-surface-2: rgba(255, 255, 255, 0.9);
+  --color-panel-transparent: rgba(255, 255, 255, 0.9);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
@@ -161,7 +161,7 @@
   --color-panel: var(--gray-2);
   --color-overlay: var(--black-a11);
   --color-surface: rgba(0, 0, 0, 0.3);
-  --color-surface-2: var(--gray-a2);
+  --color-panel-transparent: var(--gray-a2);
 }
 
 .radix-themes {
