@@ -42,7 +42,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     } = props;
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild applyBackgroundColor={false}>
+        <Theme asChild>
           <DialogPrimitive.Overlay className="rt-DialogOverlay">
             <DialogPrimitive.Content
               {...contentProps}

@@ -80,37 +80,34 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const [scaling, setScaling] = React.useState(scalingProp);
   React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
-  const ForcedRootAppearanceScript = React.memo(
+  // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
+  const ExplicitRootAppearanceScript = React.memo(
     ({ appearance }: { appearance: Omit<ThemeOptions['appearance'], 'inherit'> }) => (
       <script
         dangerouslySetInnerHTML={{
-          __html: `!(function(){try {var d=document.documentElement,c=d.classList;c.remove('light','dark');d.style.colorScheme = '${appearance}';c.add('${appearance}');}catch(e){}})();`,
+          __html: `!(function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');d.style.colorScheme='${appearance}';c.add('${appearance}');}catch(e){}})();`,
         }}
       ></script>
     ),
-    () => true // Never re-render this component
+    () => true // Never re-render
   );
-  ForcedRootAppearanceScript.displayName = 'ForcedRootAppearanceScript';
+  ExplicitRootAppearanceScript.displayName = 'ExplicitRootAppearanceScript';
 
-  // Client-side only changes (from `ThemePanel`)
+  // Client-side only changes (when `appearance` is changed via `ThemePanel` or when the prop is changed while developing)
   React.useEffect(() => {
     if (appearance === 'inherit') return;
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
-    if (appearance === 'light') {
-      root.style.colorScheme = 'light';
-      root.classList.add('light');
-    } else {
-      root.style.colorScheme = 'dark';
-      root.classList.add('dark');
-    }
+    root.style.colorScheme = appearance;
+    root.classList.add(appearance);
   }, [appearance]);
 
   const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
 
   return (
     <>
-      {appearance !== 'inherit' && <ForcedRootAppearanceScript appearance={appearance} />}
+      {appearance !== 'inherit' && <ExplicitRootAppearanceScript appearance={appearance} />}
+
       {background && (
         <style
           dangerouslySetInnerHTML={{
@@ -122,6 +119,7 @@ body { background-color: var(--color-page-background); }
           }}
         />
       )}
+
       <ThemeImpl
         {...rootProps}
         ref={forwardedRef}

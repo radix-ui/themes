@@ -160,7 +160,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           <Box grow="1" p="5" position="relative">
             <Box position="absolute" top="0" right="0" m="3">
               <Tooltip content="Press ⌘C to quickly show/hide" side="left">
-                <Kbd tabIndex={0}>⌘C</Kbd>
+                <Kbd tabIndex={0} className="rt-ThemePanelShortcut">
+                  ⌘C
+                </Kbd>
               </Tooltip>
             </Box>
 
@@ -176,7 +178,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               {themeAccentScalesOrdered.map((color) => (
                 <label
                   key={color}
-                  className="ThemePanelSwatch"
+                  className="rt-ThemePanelSwatch"
                   style={{ backgroundColor: `var(--${color}-9)` }}
                 >
                   <Tooltip
@@ -211,7 +213,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               {['auto', 'gray', ...radixGrayScalesDesaturated].map((gray) => (
                 <Flex key={gray} asChild align="center" justify="center">
                   <label
-                    className="ThemePanelSwatch gray"
+                    className="rt-ThemePanelSwatch"
                     style={{
                       backgroundColor:
                         gray === 'auto'
@@ -253,7 +255,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
             <Grid columns="3" gap="2" mt="3" role="group" aria-labelledby="appearance-title">
               {themePropDefs.appearance.values.map((value) => (
-                <label key={value} className="ThemePanelRadioCard">
+                <label key={value} className="rt-ThemePanelRadioCard">
                   <input
                     type="radio"
                     name="appearance"
@@ -279,7 +281,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             <Grid columns="5" gap="2" mt="3" role="group" aria-labelledby="radius-title">
               {themePropDefs.radius.values.map((value) => (
                 <Flex key={value} direction="column" gap="2" align="center">
-                  <label className="ThemePanelRadioCard">
+                  <label className="rt-ThemePanelRadioCard">
                     <input
                       type="radio"
                       name="radius"
@@ -289,7 +291,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         onRadiusChange(event.target.value as ThemeOptions['radius'])
                       }
                     />
-                    <Theme asChild radius={value} applyBackgroundColor={false}>
+                    <Theme asChild radius={value}>
                       <Box
                         m="3"
                         width="6"
@@ -316,7 +318,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
             <Grid columns="5" gap="2" mt="3" role="group" aria-labelledby="scaling-title">
               {themePropDefs.scaling.values.map((value) => (
-                <label key={value} className="ThemePanelRadioCard">
+                <label key={value} className="rt-ThemePanelRadioCard">
                   <input
                     type="radio"
                     name="scaling"
@@ -327,7 +329,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     }
                   />
 
-                  <Theme asChild scaling={value} applyBackgroundColor={false}>
+                  <Theme asChild scaling={value}>
                     <AspectRatio ratio={1}>
                       <Flex align="center" justify="center" height="100%">
                         <Text size="1" weight="medium">
@@ -346,7 +348,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
             <Grid columns="2" gap="2" mt="3" role="group" aria-labelledby="panel-background-title">
               {themePropDefs.panelBackground.values.map((value) => (
-                <label key={value} className="ThemePanelRadioCard">
+                <label key={value} className="rt-ThemePanelRadioCard">
                   <input
                     type="radio"
                     name="panelBackground"

@@ -44,7 +44,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
     } = props;
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild applyBackgroundColor={false}>
+        <Theme asChild>
           <AlertDialogPrimitive.Overlay className="rt-DialogOverlay rt-AlertDialogOverlay">
             <AlertDialogPrimitive.Content
               {...contentProps}
