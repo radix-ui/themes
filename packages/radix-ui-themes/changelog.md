@@ -1,6 +1,6 @@
 # Changelog
 
-## Up next:
+## 0.0.38
 
 - General
   - [**Breaking**] Import styles from `@radix-ui/themes/index.css` instead of `@radix-ui/react-themes/dist/index.css`
