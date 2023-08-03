@@ -59,6 +59,7 @@
 .light-theme {
   --button__classic__pseudo-inset: 1px;
   --button__classic__border: initial;
+  --button__classic-hover-high-contrast__overlay-color: var(--black-a7);
 
   /* prettier-ignore */
   --button__classic__shadows:
@@ -86,6 +87,7 @@
 .dark-theme {
   --button__classic__pseudo-inset: 0px;
   --button__classic__border: 0 0 0 1px var(--black-a8);
+  --button__classic-hover-high-contrast__overlay-color: var(--black-a4);
 
   /* prettier-ignore */
   --button__classic__shadows:
@@ -125,10 +127,17 @@
   box-shadow: var(--button__classic__box-shadow);
 
   &:where(:hover, [data-state='open']) {
-    background-image: linear-gradient(var(--black-a3), var(--black-a3));
+    background-image: linear-gradient(var(--black-a4), transparent);
+
+    &:where(.high-contrast) {
+      background-image: linear-gradient(
+        var(--button__classic-hover-high-contrast__overlay-color),
+        var(--button__classic-hover-high-contrast__overlay-color)
+      );
+    }
   }
   &:where(:active) {
-    background-image: linear-gradient(var(--black-a5), transparent);
+    background-image: linear-gradient(var(--black-a6), transparent);
     padding-top: var(--base-button__classic-active__offset-override, 2px);
 
     /* prettier-ignore */
@@ -155,12 +164,12 @@
   }
   &::before {
     z-index: 1;
-    background-image: linear-gradient(var(--accent-a3), transparent 50%);
-    mix-blend-mode: color-burn;
+    background-image: linear-gradient(var(--accent-a4), transparent 50%);
+    mix-blend-mode: darken;
   }
   &::after {
     z-index: 2;
-    background-image: linear-gradient(transparent 50%, var(--white-a4));
+    background-image: linear-gradient(transparent 50%, var(--white-a8));
     mix-blend-mode: soft-light;
   }
 

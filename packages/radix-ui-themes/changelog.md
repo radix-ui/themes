@@ -11,6 +11,7 @@
   - Tweak `outline` and `surface` borders
 - `Button`
   - Bump up icon opacity to `0.9`
+  - Fix `classic` blend mode and improve high-contrast hover
 - `Code`:
   - Update the font stack
   - Tweak `outline` border
