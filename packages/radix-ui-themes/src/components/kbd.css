@@ -1,11 +1,22 @@
+/* prettier-ignore */
 .radix-themes {
-  --kbd-shadow: inset 0 0.5px var(--white-a12), inset 0 3px 6px var(--gray-a2),
-    0 0 0 0.5px var(--gray-a7), inset 0 -0.5px var(--gray-a6), 0 1px 2px var(--gray-a7);
+  --kbd-shadow:
+    inset 0 0.05em var(--white-a12),
+    inset 0 0.25em 0.5em var(--gray-a2),
+    inset 0 -0.05em var(--gray-a6),
+    0 0 0 0.05em var(--gray-a6),
+    0 0.08em 0.17em var(--gray-a7);
 }
+
+/* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --kbd-shadow: inset 0 0.5px var(--white-a9), inset 0 3px 6px var(--gray-a2),
-    0 0 0 0.5px var(--gray-a7), inset 0 -0.5px var(--black-a9), 0 1px 2px var(--black-a12);
+  --kbd-shadow:
+    inset 0 0.05em var(--white-a9),
+    inset 0 0.25em 0.5em var(--gray-a2),
+    inset 0 -0.1em var(--black-a12),
+    0 0 0 0.075em var(--gray-a8),
+    0 0.08em 0.17em var(--black-a12);
 }
 
 .rt-Kbd {
@@ -15,22 +26,71 @@
   justify-content: center;
   flex-shrink: 0;
   font-family: var(--default-font-family);
-  vertical-align: text-bottom;
+  vertical-align: text-top;
   white-space: nowrap;
   user-select: none;
   cursor: default;
 
-  min-width: 2em;
+  position: relative;
+  top: -0.05em;
+
+  font-size: 0.75em;
+  min-width: 1.75em;
+  line-height: 1.75em;
   padding-left: 0.5em;
   padding-right: 0.5em;
-
-  border-radius: var(--radius-3);
-  height: var(--space-5);
-  font-size: var(--font-size-1);
-  line-height: var(--space-5);
-  letter-spacing: var(--letter-spacing-1);
+  word-spacing: -0.1em;
+  border-radius: calc(var(--radius-factor) * 0.35em);
+  letter-spacing: var(--letter-spacing, var(--default-letter-spacing));
 
   color: var(--gray-12);
   background-color: var(--gray-1);
   box-shadow: var(--kbd-shadow);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-Kbd {
+    &.size-1 {
+      font-size: calc(var(--font-size-1) * 0.8);
+      --letter-spacing: var(--letter-spacing-1);
+    }
+    &.size-2 {
+      font-size: calc(var(--font-size-2) * 0.8);
+      --letter-spacing: var(--letter-spacing-2);
+    }
+    &.size-3 {
+      font-size: calc(var(--font-size-3) * 0.8);
+      --letter-spacing: var(--letter-spacing-3);
+    }
+    &.size-4 {
+      font-size: calc(var(--font-size-4) * 0.8);
+      --letter-spacing: var(--letter-spacing-4);
+    }
+    &.size-5 {
+      font-size: calc(var(--font-size-5) * 0.8);
+      --letter-spacing: var(--letter-spacing-5);
+    }
+    &.size-6 {
+      font-size: calc(var(--font-size-6) * 0.8);
+      --letter-spacing: var(--letter-spacing-6);
+    }
+    &.size-7 {
+      font-size: calc(var(--font-size-7) * 0.8);
+      --letter-spacing: var(--letter-spacing-7);
+    }
+    &.size-8 {
+      font-size: calc(var(--font-size-8) * 0.8);
+      --letter-spacing: var(--letter-spacing-8);
+    }
+    &.size-9 {
+      font-size: calc(var(--font-size-9) * 0.8);
+      --letter-spacing: var(--letter-spacing-9);
+    }
+  }
 }

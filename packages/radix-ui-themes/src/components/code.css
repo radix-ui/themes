@@ -6,7 +6,7 @@
   font-weight: var(--code-font-weight);
   line-height: 1.25;
   letter-spacing: calc(
-    var(--code-letter-spacing) + var(--letter-spacing, --default-letter-spacing)
+    var(--code-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
   );
   border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
 }

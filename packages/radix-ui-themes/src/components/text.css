@@ -1,6 +1,6 @@
 .rt-Text {
   margin: 0;
-  line-height: var(--line-height, --default-line-height);
+  line-height: var(--line-height, var(--default-line-height));
   letter-spacing: var(--letter-spacing, inherit);
 
   &:where([data-accent-scale]) {

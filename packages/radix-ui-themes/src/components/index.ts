@@ -27,6 +27,7 @@ export { Code } from './code';
 export * from './code.props';
 export { Em } from './em';
 export { Kbd } from './kbd';
+export * from './kbd.props';
 export { Quote } from './quote';
 export { Strong } from './strong';
 

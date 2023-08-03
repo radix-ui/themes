@@ -4,6 +4,6 @@
   font-style: var(--strong-font-style);
   font-weight: var(--strong-font-weight);
   letter-spacing: calc(
-    var(--strong-letter-spacing) + var(--letter-spacing, --default-letter-spacing)
+    var(--strong-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
   );
 }

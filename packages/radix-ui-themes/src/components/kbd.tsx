@@ -1,19 +1,26 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { extractMarginProps, withMarginProps } from '../helpers';
+import { kbdPropDefs } from './kbd.props';
+import { extractMarginProps, withMarginProps, GetPropDefTypes, withBreakpoints } from '../helpers';
 
 import type { MarginProps } from '../helpers';
 
 type KbdElement = React.ElementRef<'kbd'>;
-interface KbdProps extends React.ComponentPropsWithoutRef<'kbd'>, MarginProps {}
+type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;
+interface KbdProps extends React.ComponentPropsWithoutRef<'kbd'>, MarginProps, KbdOwnProps {}
 const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, ...kbdProps } = marginRest;
+  const { className, size = kbdPropDefs.size.default, ...kbdProps } = marginRest;
   return (
     <kbd
       {...kbdProps}
       ref={forwardedRef}
-      className={classNames('rt-Kbd', className, withMarginProps(marginProps))}
+      className={classNames(
+        'rt-Kbd',
+        className,
+        withBreakpoints(size, 'size'),
+        withMarginProps(marginProps)
+      )}
     />
   );
 });

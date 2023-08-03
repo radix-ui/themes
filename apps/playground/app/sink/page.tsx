@@ -106,6 +106,7 @@ import {
   iconButtonPropDefs,
   //
   Kbd,
+  kbdPropDefs,
   //
   Link,
   linkPropDefs,
@@ -2577,7 +2578,8 @@ export default function Sink() {
                         The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
                         applied to all fonts.google.com pages where fonts are rendered. This results
                         in browsers using the <Strong>greyscale antialiasing method</Strong> rather
-                        than default <Em>subpixel rendering</Em> of fonts.{' '}
+                        than default <Em>subpixel rendering</Em> of fonts. Press <Kbd>⌘ Q</Kbd> to
+                        quit.{' '}
                         <Quote>
                           I believe this was probably introduced to get around inconsistencies in
                           rendering between browsers
@@ -2881,7 +2883,8 @@ export default function Sink() {
                         The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
                         applied to all fonts.google.com pages where fonts are rendered. This results
                         in browsers using the <strong>greyscale antialiasing method</strong> rather
-                        than default <Em>subpixel rendering</Em> of fonts.{' '}
+                        than default <Em>subpixel rendering</Em> of fonts. Press <Kbd>⌘ Q</Kbd> to
+                        quit.{' '}
                         <Quote>
                           I believe this was probably introduced to get around inconsistencies in
                           rendering between browsers
@@ -2971,7 +2974,8 @@ export default function Sink() {
                           The CSS rule <Code variant={variant}>antialiased</Code> has been applied
                           to all fonts.google.com pages where fonts are rendered. This results in
                           browsers using the <Strong>greyscale antialiasing method</Strong> rather
-                          than default <Em>subpixel rendering</Em> of fonts.{' '}
+                          than default <Em>subpixel rendering</Em> of fonts. Press <Kbd>⌘ Q</Kbd> to
+                          quit.{' '}
                           <Quote>
                             I believe this was probably introduced to get around inconsistencies in
                             rendering between browsers
@@ -3433,6 +3437,25 @@ export default function Sink() {
                       <Kbd>Tab</Kbd>
                       <Kbd>Shift + Tab</Kbd>
                     </Flex>
+
+                    <Flex align="start" direction="column" gap="4" mt="7">
+                      {kbdPropDefs.size.values
+                        .slice()
+                        .reverse()
+                        .map((size) => (
+                          <Flex key={size}>
+                            <Kbd size={size} style={{ marginRight: '0.5em' }}>
+                              /
+                            </Kbd>
+                            <Kbd size={size} style={{ marginRight: '0.5em' }}>
+                              X
+                            </Kbd>
+                            <Kbd size={size} style={{ marginRight: '0.5em' }}>
+                              ⇧ ⌘ V
+                            </Kbd>
+                          </Flex>
+                        ))}
+                    </Flex>
                   </DocsSection>
 
                   <DocsSection title="Tabs">
@@ -3521,7 +3544,7 @@ export default function Sink() {
                           applied to all fonts.google.com pages where fonts are rendered. This
                           results in browsers using the{' '}
                           <Strong>greyscale antialiasing method</Strong> rather than default{' '}
-                          <Em>subpixel rendering</Em> of fonts.{' '}
+                          <Em>subpixel rendering</Em> of fonts. Press <Kbd>⌘ Q</Kbd> to quit.{' '}
                           <Quote>
                             I believe this was probably introduced to get around inconsistencies in
                             rendering between browsers

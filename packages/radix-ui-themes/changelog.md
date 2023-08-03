@@ -4,6 +4,7 @@
 
 - General
   - Update shadows in dark mode
+  - Fix `--default-letter-spacing` variable being not applied to the typographic components
   - Rename `Segoe UI` and `Open Sans` with custom metrics to `Segoe UI (Custom)` and `Open Sans (Custom)` in the `@font-face`
   - Remove Google Fonts
 - `Badge`:
@@ -19,6 +20,8 @@
   - Fix `--em-font-size-adjust` not working
 - `Kbd`:
   - [**Breaking**] Remove `width` prop
+  - Rework sizing, add `size` prop
+  - Tweak the chrome
 - `Strong`:
   - Fix `--strong-font-size-adjust` not working
 - `Slider`, `Switch`
