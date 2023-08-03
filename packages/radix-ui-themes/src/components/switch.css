@@ -76,16 +76,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-:root,
-.light,
-.light-theme {
-  --switch-thumb-bg__high-contrast-checked: white;
-}
-.dark,
-.dark-theme {
-  --switch-thumb-bg__high-contrast-checked: var(--black-a12);
-}
-
 /* a pseudo element for the background color */
 .rt-SwitchButton::before {
   content: '';
@@ -228,29 +218,23 @@
 
 /* all high-contrast */
 
-:root,
-.light,
-.light-theme {
-  --switch-button-filter__high-contrast-checked-active: contrast(0.82) saturate(1.25)
-    brightness(1.16);
-}
-.dark,
-.dark-theme {
-  --switch-button-filter__high-contrast-checked-active: brightness(0.85) saturate(1.2);
-}
-
 .rt-SwitchRoot.high-contrast {
   & .rt-SwitchButton {
     &:where([data-state='checked'])::before {
-      background-color: var(--accent-12);
+      /* blend black and accent */
+      background-image: linear-gradient(to right, var(--black-a11), var(--black-a11));
+      background-color: var(--accent-9);
+      filter: saturate(0.9) brightness(0.95);
     }
   }
   & .rt-SwitchButton:where([data-state='checked']:active)::before {
-    filter: var(--switch-button-filter__high-contrast-checked-active);
+    filter: contrast(0.82) saturate(1.25) brightness(1.16);
   }
-  & .rt-SwitchThumb:where([data-state='checked']) {
-    background-color: var(--switch-thumb-bg__high-contrast-checked);
-    box-shadow: none;
+
+  /* soft high-contrast */
+
+  &:where(.variant-soft) .rt-SwitchButton:where([data-state='checked'])::before {
+    background-image: linear-gradient(to right, var(--black-a9), var(--black-a9));
   }
 }
 

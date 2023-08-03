@@ -15,6 +15,8 @@
   - Fix `--em-font-size-adjust` not working
 - `Strong`:
   - Fix `--strong-font-size-adjust` not working
+- `Slider`, `Switch`
+  - Update high contrast variant design
 
 ## 0.0.37
 

@@ -120,9 +120,6 @@
     background-color: var(--accent-9);
     box-shadow: inset 0 0 0 1px var(--gray-a5);
   }
-  &:where(.high-contrast) .rt-SliderRange {
-    background-color: var(--accent-12);
-  }
 
   & .rt-SliderThumb {
     --slider-thumb-shadow: 0 0 0 1px var(--black-a7);
@@ -141,9 +138,6 @@
     background-color: var(--accent-9);
     /* range shadow shouldn't change between light and dark mode because of the coloured fill */
     box-shadow: inset 0 0 0 1px var(--gray-a6), inset 0 1.5px 2px 0 var(--black-a7);
-  }
-  &:where(.high-contrast) .rt-SliderRange {
-    background-color: var(--accent-12);
   }
 
   & .rt-SliderThumb {
@@ -165,13 +159,27 @@
   & .rt-SliderRange {
     background-color: var(--accent-a7);
   }
-  &:where(.high-contrast) .rt-SliderRange {
-    background-color: var(--accent-12);
-  }
 
   & .rt-SliderThumb {
     --slider-thumb-shadow: 0 0 0 1px var(--black-a7), 0 0 0 1px var(--accent-a3),
       0 1px 2px var(--accent-a4), 0 1px 3px -0.5px var(--accent-a3);
+  }
+}
+
+/* all high-contrast */
+
+.rt-SliderRoot.high-contrast {
+  & .rt-SliderRange {
+    /* blend black and accent */
+    background-image: linear-gradient(to right, var(--black-a11), var(--black-a11));
+    background-color: var(--accent-9);
+    filter: saturate(0.9) brightness(0.95);
+  }
+
+  /* soft high-contrast */
+
+  &:where(.variant-soft) .rt-SliderRange {
+    background-image: linear-gradient(to right, var(--black-a9), var(--black-a9));
   }
 }
 
