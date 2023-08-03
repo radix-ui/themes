@@ -29,9 +29,9 @@ import {
 
 export default function Test() {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Theme asChild backgroundColor="gray">
+        <Theme asChild>
           <div id="root">
             <ThemePanel initiallyHidden />
             <Container>

@@ -35,12 +35,6 @@
       outline-color: var(--accent-9);
     }
   }
-
-  &:where(.gray) {
-    & input:focus-visible {
-      outline-color: var(--gray-9);
-    }
-  }
 }
 
 .ThemePanelRadioCard {

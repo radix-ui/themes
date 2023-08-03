@@ -71,8 +71,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onAccentScaleChange,
       grayScale,
       onGrayScaleChange,
-      backgroundColor,
-      onBackgroundColorChange,
       panelBackground,
       onPanelBackgroundChange,
       radius,
@@ -81,7 +79,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onScalingChange,
     } = themeContext;
 
-    const pureGray9 = appearance === 'dark' ? radixColorsGrayDark.gray9 : radixColorsGray.gray9;
     const autoMatchedGray = getMatchingGrayScale(accentScale);
     const resolvedGrayScale = grayScale === 'auto' ? autoMatchedGray : grayScale;
 
@@ -91,8 +88,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         appearance: appearance === themePropDefs.appearance.default ? undefined : appearance,
         accentScale: accentScale === themePropDefs.accentScale.default ? undefined : accentScale,
         grayScale: grayScale === themePropDefs.grayScale.default ? undefined : grayScale,
-        backgroundColor:
-          backgroundColor === themePropDefs.backgroundColor.default ? undefined : backgroundColor,
         panelBackground:
           panelBackground === themePropDefs.panelBackground.default ? undefined : panelBackground,
         radius: radius === themePropDefs.radius.default ? undefined : radius,
@@ -222,8 +217,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         gray === 'auto'
                           ? `var(--${autoMatchedGray}-9)`
                           : gray === 'gray'
-                          ? pureGray9
+                          ? 'var(--gray-9)'
                           : `var(--${gray}-9)`,
+                      // we override --gray so pure gray doesn't exist anymore
+                      // recover something as close as possible by desaturating
+                      filter: gray === 'gray' ? 'saturate(0)' : undefined,
                     }}
                   >
                     <Tooltip

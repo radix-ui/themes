@@ -32,16 +32,9 @@ import styles from './page.module.css';
 
 export default function Snapshot() {
   return (
-    <Theme
-      asChild
-      appearance="dark"
-      accentScale="grass"
-      backgroundColor="gray"
-      radius="small"
-      scaling="110%"
-    >
-      <html lang="en">
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Theme asChild appearance="dark" accentScale="grass" radius="small" scaling="110%">
           <div id="root">
             <ThemePanel />
 
@@ -254,9 +247,9 @@ export default function Snapshot() {
               </div>
             </div>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }
 

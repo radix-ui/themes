@@ -1,5 +1,5 @@
-.radix-themes {
-  /* create new stacking context so layered components work out of the box */
+.radix-themes.root {
+  /* create new stacking context on the root `Theme` so layered components work out of the box */
   position: relative;
   z-index: 0;
 }

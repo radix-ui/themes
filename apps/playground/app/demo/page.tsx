@@ -29,16 +29,9 @@ import styles from './page.module.css';
 
 export default function Demo() {
   return (
-    <Theme
-      asChild
-      appearance="dark"
-      accentScale="mint"
-      backgroundColor="gray"
-      radius="large"
-      scaling="110%"
-    >
-      <html lang="en">
-        <body className={styles.body}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={styles.body}>
+        <Theme asChild appearance="dark" accentScale="mint" radius="large" scaling="110%">
           <div id="root">
             <ThemePanel />
 
@@ -98,8 +91,8 @@ export default function Demo() {
               </React.Fragment>
             ))}
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }

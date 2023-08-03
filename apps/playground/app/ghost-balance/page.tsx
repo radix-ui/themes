@@ -22,9 +22,9 @@ import {
 
 export default function Ghost() {
   return (
-    <Theme asChild accentScale="mint">
-      <html lang="en">
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Theme asChild accentScale="mint">
           <div id="root">
             <Container>
               <Grid columns="2">
@@ -164,8 +164,8 @@ export default function Ghost() {
               </Flex>
             </Container>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }

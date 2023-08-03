@@ -49,9 +49,9 @@ export default function Test() {
     />
   );
   return (
-    <Theme asChild>
-      <html lang="en">
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Theme asChild>
           <div id="root">
             <Container>
               <Section>
@@ -184,9 +184,9 @@ export default function Test() {
               </Section>
             </Container>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }
 

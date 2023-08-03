@@ -3,23 +3,21 @@ import { Theme, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
 
 export default function Test() {
   return (
-    <Theme asChild>
-      <html lang="en">
-        <body>
-          <div id="root" style={{ position: 'relative', zIndex: 0 }}>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Theme asChild>
+          <div id="root">
             <ThemePanel />
             <Flex align="center" gap="3">
               <Avatar src="./api/avatar" fallback="BG" />
-
               <Avatar src="#" fallback="BG" />
-
               <Avatar fallback="BG" />
               <Avatar fallback={<CustomUserIcon />} />
             </Flex>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }
 

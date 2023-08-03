@@ -147,6 +147,9 @@
 @import '@radix-ui/colors/white-alpha.css';
 
 .radix-themes {
+  /* text color */
+  color: var(--gray-12);
+
   --color-overlay: var(--gray-a8);
   --color-panel-solid: white;
   --color-panel-translucent: rgba(255, 255, 255, 0.9);
@@ -154,8 +157,6 @@
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  color-scheme: dark;
-
   --color-overlay: var(--black-a11);
   --color-panel-solid: var(--gray-2);
   --color-panel-translucent: var(--gray-a2);
@@ -1087,28 +1088,17 @@
   --accent-a12: var(--gray-a12);
 }
 
-/* background color */
+/* nested `Theme` background color */
 
 .radix-themes {
-  --color-background-auto: white;
-  --color-background-gray: var(--gray-1);
+  --color-background: white;
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --color-background-auto: var(--gray-1);
-  --color-background-gray: var(--gray-1);
+  --color-background: var(--gray-1);
 }
-
-.radix-themes {
-  &:where([data-background-color='auto']) {
-    --color-background: var(--color-background-auto);
-  }
-  &:where([data-background-color='gray']) {
-    --color-background: var(--color-background-gray);
-  }
-  &:where([data-background-color-applied]) {
-    background-color: var(--color-background);
-  }
+.radix-themes:where([data-background='true']) {
+  background-color: var(--color-background);
 }
 
 /* panel background */
@@ -1120,10 +1110,4 @@
   &:where([data-panel-background='translucent']) {
     --color-panel: var(--color-panel-translucent);
   }
-}
-
-/* text color */
-
-.radix-themes {
-  color: var(--gray-12);
 }

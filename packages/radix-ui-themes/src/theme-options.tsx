@@ -15,26 +15,23 @@ import type { GetPropDefTypes, PropDef } from './helpers';
 const appearances = ['inherit', 'light', 'dark'] as const;
 const accentScales = [...radixColorScales, 'gray'] as const;
 const grayScales = [...radixGrayScales, 'auto'] as const;
-const backgroundColors = ['auto', 'gray'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
 const radii = ['none', 'small', 'medium', 'large', 'full'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 
 const themePropDefs = {
+  background: { type: 'boolean', default: true },
   appearance: { type: 'enum', values: appearances, default: 'inherit' },
   accentScale: { type: 'enum', values: accentScales, default: 'indigo' },
   grayScale: { type: 'enum', values: grayScales, default: 'auto' },
-  backgroundColor: { type: 'enum', values: backgroundColors, default: 'auto' },
-  applyBackgroundColor: { type: 'boolean', default: true },
   panelBackground: { type: 'enum', values: panelBackgrounds, default: 'translucent' },
   radius: { type: 'enum', values: radii, default: 'medium' },
   scaling: { type: 'enum', values: scalings, default: '100%' },
 } satisfies {
+  background: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;
   accentScale: PropDef<(typeof accentScales)[number]>;
   grayScale: PropDef<(typeof grayScales)[number]>;
-  backgroundColor: PropDef<(typeof backgroundColors)[number]>;
-  applyBackgroundColor: PropDef<boolean>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number]>;
   radius: PropDef<(typeof radii)[number]>;
   scaling: PropDef<(typeof scalings)[number]>;
@@ -45,7 +42,6 @@ type ThemeProps = GetPropDefTypes<typeof themePropDefs>;
 type ThemeAppearance = NonNullable<ThemeProps['appearance']>;
 type ThemeAccentScale = NonNullable<ThemeProps['accentScale']>;
 type ThemeGrayScale = NonNullable<ThemeProps['grayScale']>;
-type ThemeBackgroundColor = NonNullable<ThemeProps['backgroundColor']>;
 type ThemePanelBackground = NonNullable<ThemeProps['panelBackground']>;
 type ThemeRadius = NonNullable<ThemeProps['radius']>;
 type ThemeScaling = NonNullable<ThemeProps['scaling']>;
@@ -54,7 +50,6 @@ type ThemeOptions = {
   appearance: ThemeAppearance;
   accentScale: ThemeAccentScale;
   grayScale: ThemeGrayScale;
-  backgroundColor: ThemeBackgroundColor;
   panelBackground: ThemePanelBackground;
   radius: ThemeRadius;
   scaling: ThemeScaling;

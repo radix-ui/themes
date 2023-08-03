@@ -15,13 +15,14 @@ interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeOptions['appearance']) => void;
   onAccentScaleChange: (accentScale: ThemeOptions['accentScale']) => void;
   onGrayScaleChange: (grayScale: ThemeOptions['grayScale']) => void;
-  onBackgroundColorChange: (backgroundColor: ThemeOptions['backgroundColor']) => void;
   onPanelBackgroundChange: (panelBackground: ThemeOptions['panelBackground']) => void;
   onRadiusChange: (radius: ThemeOptions['radius']) => void;
   onScalingChange: (scaling: ThemeOptions['scaling']) => void;
 }
 
-interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {}
+interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {
+  resolvedGrayScale: ThemeOptions['grayScale'];
+}
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
 function useThemeContext() {
@@ -55,10 +56,10 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     appearance: appearanceProp = themePropDefs.appearance.default,
     accentScale: accentScaleProp = themePropDefs.accentScale.default,
     grayScale: grayScaleProp = themePropDefs.grayScale.default,
-    backgroundColor: backgroundColorProp = themePropDefs.backgroundColor.default,
     panelBackground: panelBackgroundProp = themePropDefs.panelBackground.default,
     radius: radiusProp = themePropDefs.radius.default,
     scaling: scalingProp = themePropDefs.scaling.default,
+    background = themePropDefs.background.default,
     ...rootProps
   } = props;
   const [appearance, setAppearance] = React.useState(appearanceProp);
@@ -70,9 +71,6 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const [grayScale, setGrayScale] = React.useState(grayScaleProp);
   React.useEffect(() => setGrayScale(grayScaleProp), [grayScaleProp]);
 
-  const [backgroundColor, setBackgroundColor] = React.useState(backgroundColorProp);
-  React.useEffect(() => setBackgroundColor(backgroundColorProp), [backgroundColorProp]);
-
   const [panelBackground, setPanelBackground] = React.useState(panelBackgroundProp);
   React.useEffect(() => setPanelBackground(panelBackgroundProp), [panelBackgroundProp]);
 
@@ -82,16 +80,57 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const [scaling, setScaling] = React.useState(scalingProp);
   React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
+  const ForcedRootAppearanceScript = React.memo(
+    ({ appearance }: { appearance: Omit<ThemeOptions['appearance'], 'inherit'> }) => (
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `!(function(){try {var d=document.documentElement,c=d.classList;c.remove('light','dark');d.style.colorScheme = '${appearance}';c.add('${appearance}');}catch(e){}})();`,
+        }}
+      ></script>
+    ),
+    () => true // Never re-render this component
+  );
+  ForcedRootAppearanceScript.displayName = 'ForcedRootAppearanceScript';
+
+  // Client-side only changes (from `ThemePanel`)
+  React.useEffect(() => {
+    if (appearance === 'inherit') return;
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    if (appearance === 'light') {
+      root.style.colorScheme = 'light';
+      root.classList.add('light');
+    } else {
+      root.style.colorScheme = 'dark';
+      root.classList.add('dark');
+    }
+  }, [appearance]);
+
+  const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
+
   return (
     <>
+      {appearance !== 'inherit' && <ForcedRootAppearanceScript appearance={appearance} />}
+      {background && (
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+:root, .light, .light-theme { --color-page-background: white; }
+.dark, .dark-theme { --color-page-background: var(--${resolvedGrayScale}-1); }
+body { background-color: var(--color-page-background); }
+`,
+          }}
+        />
+      )}
       <ThemeImpl
         {...rootProps}
         ref={forwardedRef}
+        isRoot
+        background={background}
         //
         appearance={appearance}
         accentScale={accentScale}
         grayScale={grayScale}
-        backgroundColor={backgroundColor}
         panelBackground={panelBackground}
         radius={radius}
         scaling={scaling}
@@ -99,7 +138,6 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
         onAppearanceChange={setAppearance}
         onAccentScaleChange={setAccentScale}
         onGrayScaleChange={setGrayScale}
-        onBackgroundColorChange={setBackgroundColor}
         onPanelBackgroundChange={setPanelBackground}
         onRadiusChange={setRadius}
         onScalingChange={setScaling}
@@ -115,19 +153,20 @@ interface ThemeImplPublicProps
   extends Omit<React.ComponentPropsWithoutRef<'div'>, 'dir'>,
     Partial<ThemeOptions> {
   asChild?: boolean;
-  applyBackgroundColor?: boolean;
+  isRoot?: boolean;
+  background?: boolean;
 }
 interface ThemeImplPrivateProps extends Partial<ThemeChangeHandlers> {}
 const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, forwardedRef) => {
   const context = React.useContext(ThemeContext);
   const {
     asChild,
-    applyBackgroundColor = themePropDefs.applyBackgroundColor.default,
+    isRoot,
+    background = themePropDefs.background.default,
     //
     appearance = context?.appearance ?? themePropDefs.appearance.default,
     accentScale = context?.accentScale ?? themePropDefs.accentScale.default,
-    grayScale = context?.grayScale ?? themePropDefs.grayScale.default,
-    backgroundColor = context?.backgroundColor ?? themePropDefs.backgroundColor.default,
+    grayScale = context?.resolvedGrayScale ?? themePropDefs.grayScale.default,
     panelBackground = context?.panelBackground ?? themePropDefs.panelBackground.default,
     radius = context?.radius ?? themePropDefs.radius.default,
     scaling = context?.scaling ?? themePropDefs.scaling.default,
@@ -135,15 +174,16 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     onAppearanceChange = noop,
     onAccentScaleChange = noop,
     onGrayScaleChange = noop,
-    onBackgroundColorChange = noop,
     onPanelBackgroundChange = noop,
     onRadiusChange = noop,
     onScalingChange = noop,
     //
     ...themeProps
   } = props;
-  const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
   const Comp = asChild ? Slot : 'div';
+  const resolvedGrayScale = grayScale === 'auto' ? getMatchingGrayScale(accentScale) : grayScale;
+  const isExplicitAppearance = props.appearance !== undefined && props.appearance !== 'inherit';
+  const shouldSetBackground = background === true && !isRoot && isExplicitAppearance;
   return (
     <ThemeContext.Provider
       value={React.useMemo(
@@ -151,7 +191,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           appearance,
           accentScale,
           grayScale,
-          backgroundColor,
+          resolvedGrayScale,
           panelBackground,
           radius,
           scaling,
@@ -159,7 +199,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onAppearanceChange,
           onAccentScaleChange,
           onGrayScaleChange,
-          onBackgroundColorChange,
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
@@ -168,7 +207,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           appearance,
           accentScale,
           grayScale,
-          backgroundColor,
+          resolvedGrayScale,
           panelBackground,
           radius,
           scaling,
@@ -176,7 +215,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onAppearanceChange,
           onAccentScaleChange,
           onGrayScaleChange,
-          onBackgroundColorChange,
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
@@ -186,8 +224,8 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
       <Comp
         data-accent-scale={accentScale}
         data-gray-scale={resolvedGrayScale}
-        data-background-color={backgroundColor}
-        data-background-color-applied={applyBackgroundColor === true ? '' : undefined}
+        // for nested `Theme` background
+        data-background={shouldSetBackground ? 'true' : 'false'}
         data-panel-background={panelBackground}
         data-radius={radius}
         data-scaling={scaling}
@@ -196,8 +234,14 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         className={classNames(
           'radix-themes',
           {
-            'light-theme': appearance === 'light',
-            'dark-theme': appearance === 'dark',
+            root: isRoot,
+            // Only apply theme class to nested `Theme` sections.
+            //
+            // If it's the root `Theme`, we either rely on
+            // - something else setting the theme class when root `appearance` is `inherit`
+            // - our script setting it when root `appearance` is explicit
+            light: !isRoot && appearance === 'light',
+            dark: !isRoot && appearance === 'dark',
           },
           themeProps.className
         )}

@@ -13,9 +13,9 @@ import { Pencil2Icon } from '@radix-ui/react-icons';
 
 export default function Test() {
   return (
-    <Theme asChild backgroundColor="gray">
-      <html lang="en">
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Theme asChild>
           <div id="root">
             <ThemePanel initiallyHidden />
             <Container px="5">
@@ -53,8 +53,8 @@ export default function Test() {
               </Section>
             </Container>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }

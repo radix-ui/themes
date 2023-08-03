@@ -31,9 +31,9 @@ export default function HomeOS() {
   const totalCount = adultCount + childCount + infantCount;
 
   return (
-    <Theme asChild accentScale="orange" backgroundColor="gray" radius="large">
-      <html lang="en">
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Theme asChild accentScale="orange" radius="large">
           <div id="root">
             <ThemePanel />
 
@@ -272,7 +272,6 @@ export default function HomeOS() {
                           width: 340,
                           backgroundColor: 'var(--color-background)',
                           boxShadow: 'var(--shadow-3)',
-                          border: '1px solid var(--gray-6)',
                           padding: 30,
                           display: 'flex',
                           flexDirection: 'column',
@@ -393,9 +392,9 @@ export default function HomeOS() {
               </div>
             </div>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }
 

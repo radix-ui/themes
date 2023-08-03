@@ -191,7 +191,7 @@ export default function Sink() {
     <html lang="en" className={styles.root} suppressHydrationWarning>
       <body>
         <NextThemeProvider>
-          <Theme asChild accentScale="violet" backgroundColor="gray">
+          <Theme asChild accentScale="violet">
             <div id="root">
               <div
                 style={{
@@ -3691,7 +3691,6 @@ export default function Sink() {
                           <Theme
                             asChild
                             accentScale="amber"
-                            backgroundColor="auto"
                             appearance="light"
                             radius="full"
                             scaling="110%"
