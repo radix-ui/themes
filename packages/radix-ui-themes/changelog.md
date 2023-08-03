@@ -6,6 +6,7 @@
   - Update shadows in dark mode
   - Rename `Segoe UI` and `Open Sans` with custom metrics to `Segoe UI (Custom)` and `Open Sans (Custom)` in the `@font-face`
   - Remove Google Fonts
+  - New `ThemePanel` design
 - `Button`
   - Bump up icon opacity to `0.9`
 - `Code`:
@@ -13,6 +14,8 @@
 - `Em`:
   - Update the font stack
   - Fix `--em-font-size-adjust` not working
+- `Kbd`:
+  - [**Breaking**] Remove `width` prop
 - `Strong`:
   - Fix `--strong-font-size-adjust` not working
 - `Slider`, `Switch`

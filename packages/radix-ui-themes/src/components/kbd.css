@@ -34,23 +34,3 @@
   background-color: var(--gray-1);
   box-shadow: var(--kbd-shadow);
 }
-
-/***************************************************************************************************
- *                                                                                                 *
- * WIDTHS                                                                                          *
- *                                                                                                 *
- ***************************************************************************************************/
-
-.rt-Kbd {
-  &.width-command {
-    width: 3em;
-    justify-content: flex-end;
-  }
-  &.width-shift {
-    width: 4em;
-    justify-content: flex-start;
-  }
-  &.width-space {
-    width: 8em;
-  }
-}
