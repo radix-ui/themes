@@ -3669,7 +3669,6 @@ export default function Sink() {
                             asChild
                             accentScale="amber"
                             backgroundColor="auto"
-                            textColor="auto"
                             appearance="light"
                             radius="full"
                             scaling="110%"

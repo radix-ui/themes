@@ -34,7 +34,6 @@ export default function Demo() {
       appearance="dark"
       accentScale="mint"
       backgroundColor="gray"
-      textColor="accent"
       radius="large"
       scaling="110%"
     >

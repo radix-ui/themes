@@ -6,7 +6,6 @@
   - Update shadows in dark mode
   - Rename `Segoe UI` and `Open Sans` with custom metrics to `Segoe UI (Custom)` and `Open Sans (Custom)` in the `@font-face`
   - Remove Google Fonts
-  - New `ThemePanel` design
 - `Badge`:
   - Tweak `outline` and `surface` borders
 - `Button`
@@ -24,6 +23,10 @@
   - Fix `--strong-font-size-adjust` not working
 - `Slider`, `Switch`
   - Update high contrast variant design
+- `Theme`:
+  - [**Breaking**] Remove `textColor` prop
+- `ThemePanel`:
+  - New design
 
 ## 0.0.37
 

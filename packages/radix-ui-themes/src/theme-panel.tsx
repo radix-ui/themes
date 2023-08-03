@@ -75,8 +75,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onBackgroundColorChange,
       panelBackground,
       onPanelBackgroundChange,
-      textColor,
-      onTextColorChange,
       radius,
       onRadiusChange,
       scaling,
@@ -97,7 +95,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           backgroundColor === themePropDefs.backgroundColor.default ? undefined : backgroundColor,
         panelBackground:
           panelBackground === themePropDefs.panelBackground.default ? undefined : panelBackground,
-        textColor: textColor === themePropDefs.textColor.default ? undefined : textColor,
         radius: radius === themePropDefs.radius.default ? undefined : radius,
         scaling: scaling === themePropDefs.scaling.default ? undefined : scaling,
       };

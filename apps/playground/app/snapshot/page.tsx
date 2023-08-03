@@ -37,7 +37,6 @@ export default function Snapshot() {
       appearance="dark"
       accentScale="grass"
       backgroundColor="gray"
-      textColor="accent"
       radius="small"
       scaling="110%"
     >

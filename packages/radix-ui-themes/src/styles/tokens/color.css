@@ -1125,12 +1125,5 @@
 /* text color */
 
 .radix-themes {
-  color: var(--color-text);
-
-  &:where([data-text-color='auto']) {
-    --color-text: var(--gray-12);
-  }
-  &:where([data-text-color='accent']) {
-    --color-text: var(--accent-12);
-  }
+  color: var(--gray-12);
 }

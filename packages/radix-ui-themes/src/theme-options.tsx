@@ -17,7 +17,6 @@ const accentScales = [...radixColorScales, 'gray'] as const;
 const grayScales = [...radixGrayScales, 'auto'] as const;
 const backgroundColors = ['auto', 'gray'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
-const textColors = ['auto', 'accent'] as const;
 const radii = ['none', 'small', 'medium', 'large', 'full'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 
@@ -28,7 +27,6 @@ const themePropDefs = {
   backgroundColor: { type: 'enum', values: backgroundColors, default: 'auto' },
   applyBackgroundColor: { type: 'boolean', default: true },
   panelBackground: { type: 'enum', values: panelBackgrounds, default: 'translucent' },
-  textColor: { type: 'enum', values: textColors, default: 'auto' },
   radius: { type: 'enum', values: radii, default: 'medium' },
   scaling: { type: 'enum', values: scalings, default: '100%' },
 } satisfies {
@@ -38,7 +36,6 @@ const themePropDefs = {
   backgroundColor: PropDef<(typeof backgroundColors)[number]>;
   applyBackgroundColor: PropDef<boolean>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number]>;
-  textColor: PropDef<(typeof textColors)[number]>;
   radius: PropDef<(typeof radii)[number]>;
   scaling: PropDef<(typeof scalings)[number]>;
 };
@@ -50,7 +47,6 @@ type ThemeAccentScale = NonNullable<ThemeProps['accentScale']>;
 type ThemeGrayScale = NonNullable<ThemeProps['grayScale']>;
 type ThemeBackgroundColor = NonNullable<ThemeProps['backgroundColor']>;
 type ThemePanelBackground = NonNullable<ThemeProps['panelBackground']>;
-type ThemeTextColor = NonNullable<ThemeProps['textColor']>;
 type ThemeRadius = NonNullable<ThemeProps['radius']>;
 type ThemeScaling = NonNullable<ThemeProps['scaling']>;
 
@@ -60,7 +56,6 @@ type ThemeOptions = {
   grayScale: ThemeGrayScale;
   backgroundColor: ThemeBackgroundColor;
   panelBackground: ThemePanelBackground;
-  textColor: ThemeTextColor;
   radius: ThemeRadius;
   scaling: ThemeScaling;
 };
