@@ -3,6 +3,7 @@
 ## Up next:
 
 - General
+  - [**Breaking**] Import styles from `@radix-ui/themes/index.css` instead of `@radix-ui/react-themes/dist/index.css`
   - Update shadows in dark mode
   - Fix `--default-letter-spacing` variable being not applied to the typographic components
   - Rename `Segoe UI` and `Open Sans` with custom metrics to `Segoe UI (Custom)` and `Open Sans (Custom)` in the `@font-face`
