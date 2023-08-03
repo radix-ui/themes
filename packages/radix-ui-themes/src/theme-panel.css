@@ -12,7 +12,7 @@
 .ThemePanelSwatch {
   width: var(--space-5);
   height: var(--space-5);
-  border-radius: var(--radius-3);
+  border-radius: calc(var(--space-5) / 2);
   position: relative;
 
   & input {
@@ -28,23 +28,23 @@
 
     &:checked {
       outline-style: solid;
-      outline-color: var(--accent-a8);
+      outline-color: var(--theme-panel--focus-ring-color);
     }
     &:focus-visible {
       outline-style: solid;
-      outline-color: var(--theme-panel--focus-ring-color);
+      outline-color: var(--accent-9);
     }
   }
 
   &:where(.gray) {
-    & input:checked:not(:focus-visible) {
+    & input:focus-visible {
       outline-color: var(--gray-9);
     }
   }
 }
 
 .ThemePanelRadioCard {
-  border-radius: var(--radius-1);
+  border-radius: calc(3px * var(--scaling));
   box-shadow: 0 0 0 1px var(--gray-7);
   position: relative;
 
@@ -58,11 +58,12 @@
     border-radius: inherit;
 
     &:checked {
-      box-shadow: inset 0 0 0 1px var(--accent-a8), 0 0 0 1px var(--accent-8);
-    }
-    &:focus-visible {
       box-shadow: inset 0 0 0 1px var(--theme-panel--focus-ring-color),
         0 0 0 1px var(--theme-panel--focus-ring-color);
+    }
+    &:focus-visible {
+      background-color: var(--accent-a3);
+      box-shadow: inset 0 0 0 1px var(--accent-9), 0 0 0 1px var(--accent-9);
     }
   }
 }

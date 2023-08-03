@@ -89,13 +89,13 @@ const themeAccentScalesOrdered = [
   'violet',
   'indigo',
   'blue',
-  'sky',
-  'mint',
   'cyan',
   'teal',
-  'grass',
   'green',
+  'grass',
   'lime',
+  'mint',
+  'sky',
 ] as ThemeAccentScale[];
 
 const themeGrayScalesGrouped = [

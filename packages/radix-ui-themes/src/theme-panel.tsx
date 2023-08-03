@@ -12,10 +12,8 @@ import {
   Flex,
   Grid,
   Heading,
-  RadioGroup,
+  Kbd,
   ScrollArea,
-  Select,
-  Separator,
   Switch,
   Text,
   Tooltip,
@@ -166,12 +164,14 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           ...props.style,
         }}
       >
-        {/* <Flex p="5" justify="between" shrink="0">
-          <Kbd>⌘C</Kbd>
-        </Flex> */}
-
         <ScrollArea>
-          <Box grow="1" p="5">
+          <Box grow="1" p="5" position="relative">
+            <Box position="absolute" top="0" right="0" m="3">
+              <Tooltip content="Press ⌘C to quickly show/hide" side="left">
+                <Kbd tabIndex={0}>⌘C</Kbd>
+              </Tooltip>
+            </Box>
+
             <Heading size="5" trim="both" as="h3" mb="6">
               Theme
             </Heading>
@@ -210,42 +210,38 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             </Grid>
 
             <Flex asChild align="center" justify="between">
-              <Text as="p" size="2" weight="medium" mt="5">
-                <span id="gray-color-title">Gray color</span>
-                <label>
-                  <Text weight="regular">auto</Text>
-                  <Switch
-                    size="1"
-                    color="gray"
-                    highContrast
-                    radius="full"
-                    ml="1"
-                    checked={grayScale === 'auto'}
-                    onCheckedChange={(checked) => {
-                      onGrayScaleChange(checked === true ? 'auto' : resolvedGrayScale);
-                    }}
-                  />
-                </label>
+              <Text as="p" id="gray-color-title" size="2" weight="medium" mt="5">
+                Gray color
               </Text>
             </Flex>
 
             <Grid columns="10" gap="2" mt="3" role="group" aria-labelledby="gray-color-title">
-              {['gray', ...radixGrayScalesDesaturated].map((gray) => (
+              {['auto', 'gray', ...radixGrayScalesDesaturated].map((gray) => (
                 <Flex key={gray} asChild align="center" justify="center">
                   <label
                     className="ThemePanelSwatch gray"
                     style={{
-                      backgroundColor: gray === 'gray' ? pureGray9 : `var(--${gray}-9)`,
+                      backgroundColor:
+                        gray === 'auto'
+                          ? `var(--${autoMatchedGray}-9)`
+                          : gray === 'gray'
+                          ? pureGray9
+                          : `var(--${gray}-9)`,
                     }}
                   >
-                    <Tooltip content={upperFirst(gray)}>
+                    <Tooltip
+                      content={
+                        <>
+                          {upperFirst(gray)}
+                          {gray === 'auto' && <Em> ({upperFirst(autoMatchedGray)})</Em>}
+                        </>
+                      }
+                    >
                       <input
                         type="radio"
                         name="grayScale"
                         value={gray}
-                        checked={
-                          grayScale === gray || (grayScale === 'auto' && gray === autoMatchedGray)
-                        }
+                        checked={grayScale === gray}
                         onChange={(event) =>
                           onGrayScaleChange(event.target.value as ThemeOptions['grayScale'])
                         }
@@ -256,29 +252,30 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               ))}
             </Grid>
 
-            <Text asChild id="appearance-title" size="2" weight="medium" mt="5">
-              <Label htmlFor="appearance" style={{ display: 'block' }}>
-                Appearance
-              </Label>
+            <Text id="appearance-title" as="p" size="2" weight="medium" mt="5">
+              Appearance
             </Text>
 
-            <Select.Root value={appearance} onValueChange={onAppearanceChange}>
-              <Select.Trigger
-                id="appearance"
-                variant="surface"
-                color="gray"
-                highContrast
-                mt="3"
-                style={{ width: '100%' }}
-              />
-              <Select.Content variant="soft" color="gray">
-                {themePropDefs.appearance.values.map((value) => (
-                  <Select.Item key={value} value={value}>
-                    {upperFirst(value)}
-                  </Select.Item>
-                ))}
-              </Select.Content>
-            </Select.Root>
+            <Grid columns="3" gap="2" mt="3" role="group" aria-labelledby="appearance-title">
+              {themePropDefs.appearance.values.map((value) => (
+                <label key={value} className="ThemePanelRadioCard">
+                  <input
+                    type="radio"
+                    name="appearance"
+                    value={value}
+                    checked={appearance === value}
+                    onChange={(event) =>
+                      onAppearanceChange(event.target.value as ThemeOptions['appearance'])
+                    }
+                  />
+                  <Flex align="center" justify="center" height="6">
+                    <Text size="1" weight="medium">
+                      {upperFirst(value)}
+                    </Text>
+                  </Flex>
+                </label>
+              ))}
+            </Grid>
 
             <Text id="radius-title" as="p" size="2" weight="medium" mt="5">
               Radius
@@ -304,10 +301,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         height="6"
                         style={{
                           borderTopLeftRadius: 'var(--radius-4)',
-                          backgroundColor: 'var(--accent-a2)',
-                          border: '4px solid var(--accent-a6)',
-                          borderBottom: 'none',
-                          borderRight: 'none',
+                          backgroundColor: 'var(--gray-a4)',
+                          borderTop: '4px solid var(--gray-a8)',
+                          borderLeft: '4px solid var(--gray-a8)',
                         }}
                       />
                     </Theme>
@@ -349,60 +345,29 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               ))}
             </Grid>
 
-            <Separator size="4" mt="5" mb="5" mx="-5" style={{ width: 'auto' }} />
+            <Text id="panel-background-title" as="p" size="2" weight="medium" mt="5">
+              Panel background
+            </Text>
 
-            <Grid columns="3" gap="2" mb="3">
-              <Flex direction="column" gap="1">
-                <Flex asChild gap="1" align="center">
-                  <Label>Page background</Label>
-                </Flex>
-                <RadioGroup.Root value={backgroundColor} onValueChange={onBackgroundColorChange}>
-                  <Flex direction="column" gap="1">
-                    {themePropDefs.backgroundColor.values.map((value) => (
-                      <Text key={value} size="2" asChild>
-                        <label>
-                          <RadioGroup.Item value={value} mr="2" />
-                          {upperFirst(value)}
-                        </label>
-                      </Text>
-                    ))}
+            <Grid columns="2" gap="2" mt="3" role="group" aria-labelledby="panel-background-title">
+              {themePropDefs.panelBackground.values.map((value) => (
+                <label key={value} className="ThemePanelRadioCard">
+                  <input
+                    type="radio"
+                    name="panelBackground"
+                    value={value}
+                    checked={panelBackground === value}
+                    onChange={(event) =>
+                      onPanelBackgroundChange(event.target.value as ThemeOptions['panelBackground'])
+                    }
+                  />
+                  <Flex align="center" justify="center" height="6">
+                    <Text size="1" weight="medium">
+                      {upperFirst(value)}
+                    </Text>
                   </Flex>
-                </RadioGroup.Root>
-              </Flex>
-
-              <Flex direction="column" gap="1">
-                <Flex asChild gap="1" align="center">
-                  <Label>Text color</Label>
-                </Flex>
-                <RadioGroup.Root value={textColor} onValueChange={onTextColorChange}>
-                  <Flex direction="column" gap="1">
-                    {themePropDefs.textColor.values.map((value) => (
-                      <Text key={value} size="2" asChild>
-                        <label>
-                          <RadioGroup.Item value={value} mr="2" />
-                          {upperFirst(value)}
-                        </label>
-                      </Text>
-                    ))}
-                  </Flex>
-                </RadioGroup.Root>
-              </Flex>
-
-              <Flex direction="column" gap="1" mb="3">
-                <Label>Panel background</Label>
-                <RadioGroup.Root value={panelBackground} onValueChange={onPanelBackgroundChange}>
-                  <Flex direction="column" gap="1">
-                    {themePropDefs.panelBackground.values.map((value) => (
-                      <Text key={value} size="2" asChild>
-                        <label>
-                          <RadioGroup.Item value={value} mr="2" />
-                          {upperFirst(value)}
-                        </label>
-                      </Text>
-                    ))}
-                  </Flex>
-                </RadioGroup.Root>
-              </Flex>
+                </label>
+              ))}
             </Grid>
           </Box>
         </ScrollArea>
