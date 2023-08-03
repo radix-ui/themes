@@ -168,18 +168,23 @@
 
 /* all high-contrast */
 
+:root,
+.light,
+.light-theme {
+  --slider-range-background-image__high-contrast: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.62),
+    rgba(0, 0, 0, 0.62)
+  );
+}
+.dark,
+.dark-theme {
+  --slider-range-background-image__high-contrast: none;
+}
 .rt-SliderRoot.high-contrast {
   & .rt-SliderRange {
     /* blend black and accent */
-    background-image: linear-gradient(to right, var(--black-a11), var(--black-a11));
-    background-color: var(--accent-9);
-    filter: saturate(0.9) brightness(0.95);
-  }
-
-  /* soft high-contrast */
-
-  &:where(.variant-soft) .rt-SliderRange {
-    background-image: linear-gradient(to right, var(--black-a9), var(--black-a9));
+    background-image: var(--slider-range-background-image__high-contrast);
   }
 }
 

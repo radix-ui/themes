@@ -218,23 +218,31 @@
 
 /* all high-contrast */
 
+:root,
+.light,
+.light-theme {
+  --switch-button-background-image__high-contrast-checked: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.62),
+    rgba(0, 0, 0, 0.62)
+  );
+  --switch-button-filter__high-contrast-checked-active: contrast(0.82) saturate(1.2)
+    brightness(1.16);
+}
+.dark,
+.dark-theme {
+  --switch-button-background-image__high-contrast-checked: none;
+  --switch-button-filter__high-contrast-checked-active: brightness(1.08);
+}
 .rt-SwitchRoot.high-contrast {
   & .rt-SwitchButton {
     &:where([data-state='checked'])::before {
       /* blend black and accent */
-      background-image: linear-gradient(to right, var(--black-a11), var(--black-a11));
-      background-color: var(--accent-9);
-      filter: saturate(0.9) brightness(0.95);
+      background-image: var(--switch-button-background-image__high-contrast-checked);
     }
   }
   & .rt-SwitchButton:where([data-state='checked']:active)::before {
-    filter: contrast(0.82) saturate(1.25) brightness(1.16);
-  }
-
-  /* soft high-contrast */
-
-  &:where(.variant-soft) .rt-SwitchButton:where([data-state='checked'])::before {
-    background-image: linear-gradient(to right, var(--black-a9), var(--black-a9));
+    filter: var(--switch-button-filter__high-contrast-checked-active);
   }
 }
 
