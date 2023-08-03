@@ -3432,9 +3432,6 @@ export default function Sink() {
                       <Kbd>Enter</Kbd>
                       <Kbd>Tab</Kbd>
                       <Kbd>Shift + Tab</Kbd>
-                      <Kbd width="command">⌘</Kbd>
-                      <Kbd width="shift">⇧</Kbd>
-                      <Kbd width="space">Space</Kbd>
                     </Flex>
                   </DocsSection>
 
