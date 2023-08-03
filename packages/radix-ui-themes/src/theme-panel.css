@@ -12,7 +12,7 @@
 .ThemePanelSwatch {
   width: var(--space-5);
   height: var(--space-5);
-  border-radius: calc(var(--space-5) / 2);
+  border-radius: var(--radius-3);
   position: relative;
 
   & input {

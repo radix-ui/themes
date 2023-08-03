@@ -274,7 +274,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               <Select.Content variant="soft" color="gray">
                 {themePropDefs.appearance.values.map((value) => (
                   <Select.Item key={value} value={value}>
-                    {value}
+                    {upperFirst(value)}
                   </Select.Item>
                 ))}
               </Select.Content>
@@ -304,7 +304,10 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         height="6"
                         style={{
                           borderTopLeftRadius: 'var(--radius-4)',
-                          backgroundColor: 'var(--accent-9)',
+                          backgroundColor: 'var(--accent-a2)',
+                          border: '4px solid var(--accent-a6)',
+                          borderBottom: 'none',
+                          borderRight: 'none',
                         }}
                       />
                     </Theme>
@@ -337,7 +340,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     <AspectRatio ratio={1}>
                       <Flex align="center" justify="center" height="100%">
                         <Text size="1" weight="medium">
-                          {value}
+                          {upperFirst(value)}
                         </Text>
                       </Flex>
                     </AspectRatio>
@@ -359,7 +362,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       <Text key={value} size="2" asChild>
                         <label>
                           <RadioGroup.Item value={value} mr="2" />
-                          {value}
+                          {upperFirst(value)}
                         </label>
                       </Text>
                     ))}
@@ -377,7 +380,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       <Text key={value} size="2" asChild>
                         <label>
                           <RadioGroup.Item value={value} mr="2" />
-                          {value}
+                          {upperFirst(value)}
                         </label>
                       </Text>
                     ))}
@@ -393,7 +396,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       <Text key={value} size="2" asChild>
                         <label>
                           <RadioGroup.Item value={value} mr="2" />
-                          {value}
+                          {upperFirst(value)}
                         </label>
                       </Text>
                     ))}
