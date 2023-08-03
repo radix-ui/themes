@@ -160,7 +160,7 @@
   --base-menu-bg: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
 }
-.rt-BaseMenuItem[data-accent-scale] {
+.rt-BaseMenuItem[data-accent-color] {
   color: var(--accent-a11);
 }
 .rt-BaseMenuItem[data-disabled] {
@@ -197,7 +197,7 @@
       background-color: var(--accent-12);
       color: var(--accent-1);
 
-      &[data-accent-scale] {
+      &[data-accent-color] {
         background-color: var(--accent-9);
         color: var(--accent-9-contrast);
       }
@@ -213,7 +213,7 @@
   }
   & .rt-BaseMenuItem[data-highlighted] {
     background-color: var(--accent-a5);
-    &[data-accent-scale] {
+    &[data-accent-color] {
       color: var(--accent-12);
     }
   }

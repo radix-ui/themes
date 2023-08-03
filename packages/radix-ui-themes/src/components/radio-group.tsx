@@ -27,7 +27,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
     } = marginRest;
     return (
       <RadioGroupPrimitive.Root
-        data-accent-scale={color}
+        data-accent-color={color}
         {...rootProps}
         ref={forwardedRef}
         className={classNames(

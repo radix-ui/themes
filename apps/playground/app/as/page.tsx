@@ -3,7 +3,7 @@ import { Theme, Flex, Heading, Text, Link, Button } from '@radix-ui/themes';
 
 export default function As() {
   return (
-    <Theme asChild accentScale="purple" radius="full">
+    <Theme asChild accentColor="purple" radius="full">
       <html lang="en">
         <body>
           <div id="root">

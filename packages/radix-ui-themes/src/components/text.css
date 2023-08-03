@@ -3,7 +3,7 @@
   line-height: var(--line-height, var(--default-line-height));
   letter-spacing: var(--letter-spacing, inherit);
 
-  &:where([data-accent-scale]) {
+  &:where([data-accent-color]) {
     color: var(--accent-a11);
 
     &:where(.high-contrast),

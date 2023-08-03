@@ -33,7 +33,7 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'loaded' | 'error'>('idle');
   return (
     <AvatarPrimitive.Root
-      data-accent-scale={color}
+      data-accent-color={color}
       data-radius={radius}
       className={classNames(
         'rt-AvatarRoot',

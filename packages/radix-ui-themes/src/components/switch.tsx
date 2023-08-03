@@ -40,7 +40,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
       style={style}
     >
       <SwitchPrimitive.Root
-        data-accent-scale={color}
+        data-accent-color={color}
         {...switchProps}
         ref={forwardedRef}
         className="rt-reset-button rt-SwitchButton"

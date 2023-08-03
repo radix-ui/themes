@@ -37,7 +37,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
   } = marginRest;
   return (
     <Slot
-      data-accent-scale={color}
+      data-accent-color={color}
       {...headingProps}
       ref={forwardedRef}
       className={classNames(

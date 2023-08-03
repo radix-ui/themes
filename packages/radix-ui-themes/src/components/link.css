@@ -11,7 +11,7 @@
   }
 
   &.high-contrast,
-  .rt-Text:where([data-accent-scale]):not(.high-contrast) & {
+  .rt-Text:where([data-accent-color]):not(.high-contrast) & {
     color: var(--accent-12);
   }
 }
@@ -51,7 +51,7 @@
     }
 
     &.high-contrast,
-    :where(.rt-Text:where([data-accent-scale])):not(.high-contrast) & {
+    :where(.rt-Text:where([data-accent-color])):not(.high-contrast) & {
       text-decoration-line: underline;
       text-decoration-color: var(--accent-a6);
     }

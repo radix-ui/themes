@@ -177,7 +177,7 @@ import {
   Tooltip,
   //
   // helpers:
-  themeAccentScalesGrouped,
+  themeAccentColorsGrouped,
   //
   ThemePanel,
 } from '@radix-ui/themes';
@@ -191,7 +191,7 @@ export default function Sink() {
     <html lang="en" className={styles.root} suppressHydrationWarning>
       <body>
         <NextThemeProvider>
-          <Theme asChild accentScale="violet">
+          <Theme asChild accentColor="violet">
             <div id="root">
               <div
                 style={{
@@ -453,7 +453,7 @@ export default function Sink() {
                                   See colors & variants combinations
                                 </Text>
                               </summary>
-                              {themeAccentScalesGrouped.map(({ label, values }) => (
+                              {themeAccentColorsGrouped.map(({ label, values }) => (
                                 <React.Fragment key={label}>
                                   <Text as="p" weight="bold" mt="6" mb="4">
                                     {label}
@@ -728,7 +728,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -928,7 +928,7 @@ export default function Sink() {
                           See colors
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1127,7 +1127,7 @@ export default function Sink() {
                           See colors
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1290,7 +1290,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1457,7 +1457,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1609,7 +1609,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1750,7 +1750,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1987,7 +1987,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2094,7 +2094,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2218,7 +2218,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2369,7 +2369,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3006,7 +3006,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3373,7 +3373,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentScalesGrouped.map(({ label, values }) => (
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3664,11 +3664,11 @@ export default function Sink() {
 
                   <DocsSection title="Nested colors test">
                     <SampleNestedUI title="Global color">
-                      <Theme asChild accentScale="mint">
+                      <Theme asChild accentColor="mint">
                         <SampleNestedUI title="Always mint">
-                          <Theme asChild accentScale="amber">
+                          <Theme asChild accentColor="amber">
                             <SampleNestedUI title="Always amber">
-                              <Theme asChild accentScale="tomato">
+                              <Theme asChild accentColor="tomato">
                                 <SampleNestedUI title="Always tomato" />
                               </Theme>
                             </SampleNestedUI>
@@ -3682,7 +3682,7 @@ export default function Sink() {
                     <SampleNestedUI title="Global theme">
                       <Theme
                         asChild
-                        accentScale="mint"
+                        accentColor="mint"
                         appearance="dark"
                         radius="none"
                         scaling="90%"
@@ -3690,7 +3690,7 @@ export default function Sink() {
                         <SampleNestedUI title="Dark, Mint, no radius, 90%">
                           <Theme
                             asChild
-                            accentScale="amber"
+                            accentColor="amber"
                             appearance="light"
                             radius="full"
                             scaling="110%"
@@ -3698,7 +3698,7 @@ export default function Sink() {
                             <SampleNestedUI title="Light, Amber, full radius, 110%">
                               <Theme
                                 asChild
-                                accentScale="tomato"
+                                accentColor="tomato"
                                 appearance="dark"
                                 radius="large"
                                 scaling="100%"

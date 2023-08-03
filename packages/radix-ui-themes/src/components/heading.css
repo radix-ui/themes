@@ -6,7 +6,7 @@
   --leading-trim-end: var(--heading-leading-trim-end);
   line-height: var(--line-height);
 
-  &:where([data-accent-scale]) {
+  &:where([data-accent-color]) {
     color: var(--accent-a11);
 
     &:where(.high-contrast),

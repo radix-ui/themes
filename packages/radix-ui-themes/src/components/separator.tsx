@@ -24,7 +24,7 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
   } = marginRest;
   return (
     <SeparatorPrimitive.Root
-      data-accent-scale={color}
+      data-accent-color={color}
       {...separatorProps}
       ref={forwardedRef}
       className={classNames(

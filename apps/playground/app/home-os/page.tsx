@@ -33,7 +33,7 @@ export default function HomeOS() {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Theme asChild accentScale="orange" radius="large">
+        <Theme asChild accentColor="orange" radius="large">
           <div id="root">
             <ThemePanel />
 

@@ -29,7 +29,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const Comp = asChild ? Slot : 'button';
   return (
     <Comp
-      data-accent-scale={color}
+      data-accent-color={color}
       data-radius={radius}
       {...baseButtonProps}
       ref={forwardedRef}

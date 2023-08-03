@@ -14,13 +14,12 @@ import {
   Heading,
   Kbd,
   ScrollArea,
-  Switch,
   Text,
   Tooltip,
   // helpers
   themePropDefs,
-  themeAccentScalesOrdered,
-  getMatchingGrayScale,
+  themeAccentColorsOrdered,
+  getMatchingGrayColor,
   useThemeContext,
   radixGrayScalesDesaturated,
 } from './index';
@@ -67,10 +66,10 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const {
       appearance,
       onAppearanceChange,
-      accentScale,
-      onAccentScaleChange,
-      grayScale,
-      onGrayScaleChange,
+      accentColor,
+      onAccentColorChange,
+      grayColor,
+      onGrayColorChange,
       panelBackground,
       onPanelBackgroundChange,
       radius,
@@ -79,15 +78,15 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onScalingChange,
     } = themeContext;
 
-    const autoMatchedGray = getMatchingGrayScale(accentScale);
-    const resolvedGrayScale = grayScale === 'auto' ? autoMatchedGray : grayScale;
+    const autoMatchedGray = getMatchingGrayColor(accentColor);
+    const resolvedGrayColor = grayColor === 'auto' ? autoMatchedGray : grayColor;
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
       const theme: Partial<ThemeOptions> = {
         appearance: appearance === themePropDefs.appearance.default ? undefined : appearance,
-        accentScale: accentScale === themePropDefs.accentScale.default ? undefined : accentScale,
-        grayScale: grayScale === themePropDefs.grayScale.default ? undefined : grayScale,
+        accentColor: accentColor === themePropDefs.accentColor.default ? undefined : accentColor,
+        grayColor: grayColor === themePropDefs.grayColor.default ? undefined : grayColor,
         panelBackground:
           panelBackground === themePropDefs.panelBackground.default ? undefined : panelBackground,
         radius: radius === themePropDefs.radius.default ? undefined : radius,
@@ -175,7 +174,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             </Text>
 
             <Grid columns="10" gap="2" mt="3" role="group" aria-labelledby="accent-color-title">
-              {themeAccentScalesOrdered.map((color) => (
+              {themeAccentColorsOrdered.map((color) => (
                 <label
                   key={color}
                   className="rt-ThemePanelSwatch"
@@ -185,17 +184,17 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     content={
                       <>
                         {upperFirst(color)}
-                        {color === 'gray' && <Em> ({upperFirst(resolvedGrayScale)})</Em>}
+                        {color === 'gray' && <Em> ({upperFirst(resolvedGrayColor)})</Em>}
                       </>
                     }
                   >
                     <input
                       type="radio"
-                      name="accentScale"
+                      name="accentColor"
                       value={color}
-                      checked={accentScale === color}
+                      checked={accentColor === color}
                       onChange={(event) =>
-                        onAccentScaleChange(event.target.value as ThemeOptions['accentScale'])
+                        onAccentColorChange(event.target.value as ThemeOptions['accentColor'])
                       }
                     />
                   </Tooltip>
@@ -236,11 +235,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     >
                       <input
                         type="radio"
-                        name="grayScale"
+                        name="grayColor"
                         value={gray}
-                        checked={grayScale === gray}
+                        checked={grayColor === gray}
                         onChange={(event) =>
-                          onGrayScaleChange(event.target.value as ThemeOptions['grayScale'])
+                          onGrayColorChange(event.target.value as ThemeOptions['grayColor'])
                         }
                       />
                     </Tooltip>

@@ -31,7 +31,7 @@ export default function Demo() {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={styles.body}>
-        <Theme asChild appearance="dark" accentScale="mint" radius="large" scaling="110%">
+        <Theme asChild appearance="dark" accentColor="mint" radius="large" scaling="110%">
           <div id="root">
             <ThemePanel />
 

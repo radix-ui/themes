@@ -50,12 +50,12 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       forceMount,
       ...contentProps
     } = props;
-    const resolvedColor = color ?? themeContext.accentScale;
+    const resolvedColor = color ?? themeContext.accentColor;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <ContextMenuPrimitive.Content
-            data-accent-scale={resolvedColor}
+            data-accent-color={resolvedColor}
             alignOffset={-Number(size) * 4}
             collisionPadding={10}
             {...contentProps}
@@ -122,7 +122,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
     } = props;
     return (
       <ContextMenuPrimitive.Item
-        data-accent-scale={color}
+        data-accent-color={color}
         {...itemProps}
         ref={forwardedRef}
         className={classNames('rt-reset-a', 'rt-BaseMenuItem', 'rt-ContextMenuItem', className)}
@@ -274,7 +274,7 @@ const ContextMenuSubContent = React.forwardRef<
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
         <ContextMenuPrimitive.SubContent
-          data-accent-scale={color}
+          data-accent-color={color}
           alignOffset={-Number(size) * 4}
           collisionPadding={10}
           {...subContentProps}

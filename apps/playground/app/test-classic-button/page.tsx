@@ -6,7 +6,7 @@ import {
   Section,
   Flex,
   Button,
-  themeAccentScalesOrdered,
+  themeAccentColorsOrdered,
   Text,
 } from '@radix-ui/themes';
 import { Pencil2Icon } from '@radix-ui/react-icons';
@@ -21,7 +21,7 @@ export default function Test() {
             <Container px="5">
               <Section>
                 <Flex direction="column" gap="2">
-                  {themeAccentScalesOrdered.map((color) => (
+                  {themeAccentColorsOrdered.map((color) => (
                     <Flex key={color} gap="2">
                       <Button variant="classic" color={color}>
                         <Pencil2Icon />

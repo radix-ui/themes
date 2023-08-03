@@ -91,7 +91,7 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
     const context = React.useContext(TextFieldContext);
     return (
       <div
-        data-accent-scale={color}
+        data-accent-color={color}
         {...slotProps}
         ref={forwardedRef}
         className={classNames(
@@ -129,7 +129,7 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
     const input = (
       <>
         <input
-          data-accent-scale={color}
+          data-accent-color={color}
           spellCheck="false"
           {...inputProps}
           ref={forwardedRef}
@@ -141,7 +141,7 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
           )}
         />
         <div
-          data-accent-scale={color}
+          data-accent-color={color}
           data-radius={context?.radius ? undefined : radius}
           className="rt-TextFieldChrome"
         />

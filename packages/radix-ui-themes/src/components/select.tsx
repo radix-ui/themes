@@ -53,7 +53,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
     return (
       <SelectPrimitive.Trigger asChild>
         <button
-          data-accent-scale={color}
+          data-accent-color={color}
           data-radius={radius}
           {...triggerProps}
           ref={forwardedRef}
@@ -102,12 +102,12 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
     } = props;
     const { size } = React.useContext(SelectContext);
     const themeContext = useThemeContext();
-    const resolvedColor = color ?? themeContext.accentScale;
+    const resolvedColor = color ?? themeContext.accentColor;
     return (
       <SelectPrimitive.Portal container={container}>
         <Theme asChild>
           <SelectPrimitive.Content
-            data-accent-scale={resolvedColor}
+            data-accent-color={resolvedColor}
             sideOffset={4}
             align="center"
             {...contentProps}

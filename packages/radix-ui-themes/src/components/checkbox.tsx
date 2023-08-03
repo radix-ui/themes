@@ -37,7 +37,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
       style={style}
     >
       <CheckboxPrimitive.Root
-        data-accent-scale={color}
+        data-accent-color={color}
         {...checkboxProps}
         ref={forwardedRef}
         className={classNames('rt-reset-button', 'rt-CheckboxButton', `variant-${variant}`, {

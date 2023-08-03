@@ -27,7 +27,7 @@
   z-index: 1;
   color: var(--gray-a11);
 
-  &[data-accent-scale] {
+  &[data-accent-color] {
     color: var(--accent-a11);
   }
   &:empty {

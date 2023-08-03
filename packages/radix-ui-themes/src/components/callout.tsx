@@ -33,7 +33,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
     } = marginRest;
     return (
       <div
-        data-accent-scale={color}
+        data-accent-color={color}
         {...rootProps}
         className={classNames(
           'rt-CalloutRoot',

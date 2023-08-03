@@ -50,12 +50,12 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       forceMount,
       ...contentProps
     } = props;
-    const resolvedColor = color ?? themeContext.accentScale;
+    const resolvedColor = color ?? themeContext.accentColor;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DropdownMenuPrimitive.Content
-            data-accent-scale={resolvedColor}
+            data-accent-color={resolvedColor}
             align="start"
             sideOffset={4}
             collisionPadding={10}
@@ -123,7 +123,7 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
     } = props;
     return (
       <DropdownMenuPrimitive.Item
-        data-accent-scale={color}
+        data-accent-color={color}
         {...itemProps}
         ref={forwardedRef}
         className={classNames('rt-reset-a', 'rt-BaseMenuItem', 'rt-DropdownMenuItem', className)}
@@ -275,7 +275,7 @@ const DropdownMenuSubContent = React.forwardRef<
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
         <DropdownMenuPrimitive.SubContent
-          data-accent-scale={color}
+          data-accent-color={color}
           alignOffset={-Number(size) * 4}
           collisionPadding={10}
           {...subContentProps}

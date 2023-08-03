@@ -24,7 +24,7 @@ export default function Ghost() {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Theme asChild accentScale="mint">
+        <Theme asChild accentColor="mint">
           <div id="root">
             <Container>
               <Grid columns="2">

@@ -21,7 +21,7 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
   } = marginRest;
   return (
     <span
-      data-accent-scale={color}
+      data-accent-color={color}
       data-radius={radius}
       {...badgeProps}
       ref={forwardedRef}

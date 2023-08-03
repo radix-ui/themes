@@ -30,6 +30,8 @@
   - [**Breaking**] Remove `textColor` prop
   - [**Breaking**] Remove `backgroundColor` prop
   - [**Breaking**] Rename `applyBackground` prop to `background`
+  - [**Breaking**] Rename `accentScale` prop to `accentColor` (as well as underlying data attribute)
+  - [**Breaking**] Rename `grayScale` prop to `grayColor` (as well as underlying data attribute)
   - [**Breaking**] Should always be within `body` now (rather than wrapping `html` or `body`)
   - [**Breaking**] When `appearance` is `dark` or `light`, we inject a script (similar to `next-themes`) to set the theme class / color-scheme on `html`. Because of this, `suppressHydrationWarning` needs to be added to `html`.
 - `ThemePanel`:
