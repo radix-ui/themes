@@ -3,10 +3,10 @@ import { Theme, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
 
 export default function Test() {
   return (
-    <Theme asChild accentScale="purple" radius="full">
+    <Theme asChild>
       <html lang="en">
         <body>
-          <div id="root">
+          <div id="root" style={{ position: 'relative', zIndex: 0 }}>
             <ThemePanel />
             <Flex align="center" gap="3">
               <Avatar src="./api/avatar" fallback="BG" />

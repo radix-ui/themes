@@ -72,6 +72,32 @@ const themeAccentScalesGrouped = [
   { label: 'Gray', values: ['gray'] as ThemeAccentScale[] },
 ];
 
+const themeAccentScalesOrdered = [
+  'gray',
+  'gold',
+  'bronze',
+  'brown',
+  'yellow',
+  'amber',
+  'orange',
+  'tomato',
+  'red',
+  'crimson',
+  'pink',
+  'plum',
+  'purple',
+  'violet',
+  'indigo',
+  'blue',
+  'sky',
+  'mint',
+  'cyan',
+  'teal',
+  'grass',
+  'green',
+  'lime',
+] as ThemeAccentScale[];
+
 const themeGrayScalesGrouped = [
   { label: 'Pure', values: [radixGrayScalePure] as ThemeGrayScale[] },
   { label: 'Desaturated', values: ['auto', ...radixGrayScalesDesaturated] as ThemeGrayScale[] },
@@ -87,6 +113,7 @@ export {
   getMatchingGrayScale,
   //
   themeAccentScalesGrouped,
+  themeAccentScalesOrdered,
   themeGrayScalesGrouped,
 };
 export type { ThemeOptions };
