@@ -11,10 +11,6 @@
   );
   border-radius: var(--base-menu-radius);
 
-  & .rt-ScrollAreaRoot {
-    display: flex;
-    flex-direction: column;
-  }
   & .rt-ScrollAreaScrollbar {
     --base-menu-scrollbar-margin: max(
       calc(var(--base-menu-radius) / 1.5),

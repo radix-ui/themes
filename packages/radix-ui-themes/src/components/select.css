@@ -33,10 +33,6 @@
     transform-origin: var(--radix-select-content-transform-origin);
   }
 
-  & .rt-ScrollAreaRoot {
-    display: flex;
-    flex-direction: column;
-  }
   & .rt-ScrollAreaScrollbar {
     --select-content-scrollbar-margin: max(
       calc(var(--select-content-radius) / 1.5),
