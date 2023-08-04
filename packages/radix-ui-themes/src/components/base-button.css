@@ -121,7 +121,7 @@
   --button__classic__box-shadow:
 		/* border */
 		var(--button__classic__border, inset 0 0 0 1px var(--black-a8), inset 0 0 0 1px var(--accent-10)),
-		var(--button__classic__shadows),
+		var(--button__classic__shadows)
 	;
 
   box-shadow: var(--button__classic__box-shadow);
