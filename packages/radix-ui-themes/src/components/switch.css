@@ -41,17 +41,17 @@
   }
 
   &:where([data-state='unchecked'])::before {
-    transition-duration: 140ms, 160ms, 160ms, 160ms;
+    transition-duration: 120ms, 140ms, 140ms, 140ms;
     background-position-x: 100%;
   }
 
   &:where([data-state='checked'])::before {
-    transition-duration: 180ms, 160ms, 160ms, 160ms;
+    transition-duration: 160ms, 140ms, 140ms, 140ms;
     background-position: 0%;
   }
 
   &:where(:active)::before {
-    transition-duration: 40ms;
+    transition-duration: 30ms;
   }
 
   /* A pseudo element for the focus outline */
@@ -72,7 +72,7 @@
   height: var(--switch-thumb-size);
   border-radius: calc(var(--switch-radius) - var(--switch-padding));
   transition-property: transform, box-shadow;
-  transition-duration: 160ms;
+  transition-duration: 140ms;
   transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95), ease-in-out;
 
   &:where([data-state='checked']) {
