@@ -41,7 +41,7 @@
 }
 
 @breakpoints {
-  .rt-IconButton:where(.variant-ghost) {
+  .rt-IconButton {
     &.size-1 {
       --icon-button-ghost-padding: var(--space-1);
     }
