@@ -1,10 +1,27 @@
 # Changelog
 
-## Up next
+## TODO
 
+- `ThemePanel`:
+  - Remove `inherit` option
+  - Listen to global appearance class changes to sync with control
+  - Rename `initallyHidden` to `defaultOpen`
+
+## Up Next
+
+- General:
+  - [**Breaking**] Import styles from `@radix-ui/themes/styles.css` instead of `@radix-ui/react-themes/index.css`
+- `ContextMenu`:
+  - Add `contextMenuCheckboxItemPropDefs`
+- `DropdownMenu`:
+  - Add `dropdownMenuCheckboxItemPropDefs`
 - `Select`:
   - [**Breaking**] Remove `solid` and `outline` trigger variants
   - Tweak all other variant design to be more akin to other form components
+- `TextField`, `TextArea`:
+  - Tweak `soft` to use `--accent-12`
+- `Theme`:
+  - [**Breaking**] Rename `background` prop to `hasBackground` (and `data-background` attribute to `data-has-background`)
 
 ## 0.0.38
 
@@ -36,9 +53,9 @@
 - `Theme`:
   - [**Breaking**] Remove `textColor` prop
   - [**Breaking**] Remove `backgroundColor` prop
-  - [**Breaking**] Rename `applyBackground` prop to `background`
-  - [**Breaking**] Rename `accentScale` prop to `accentColor` (as well as underlying data attribute)
-  - [**Breaking**] Rename `grayScale` prop to `grayColor` (as well as underlying data attribute)
+  - [**Breaking**] Rename `applyBackground` prop to `background` (and `data-background-applied` attribute to `data-background`)
+  - [**Breaking**] Rename `accentScale` prop to `accentColor` (and `data-accent-scale` attribute to `data-accent-color`)
+  - [**Breaking**] Rename `grayScale` prop to `grayColor` (and `data-gray-scale` attribute to `data-gray-color`)
   - [**Breaking**] Should always be within `body` now (rather than wrapping `html` or `body`)
   - [**Breaking**] When `appearance` is `dark` or `light`, we inject a script (similar to `next-themes`) to set the theme class / color-scheme on `html`. Because of this, `suppressHydrationWarning` needs to be added to `html`.
 - `ThemePanel`:
