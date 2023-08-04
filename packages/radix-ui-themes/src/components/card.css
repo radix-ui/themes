@@ -99,8 +99,10 @@
     box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
   &:where(button, [href]) {
-    &:hover::after {
-      box-shadow: inset 0 0 0 1px var(--gray-a8);
+    @media (hover: hover) {
+      &:hover::after {
+        box-shadow: inset 0 0 0 1px var(--gray-a8);
+      }
     }
     &:active::after {
       box-shadow: inset 0 0 0 1px var(--gray-a8), inset 0 0 0 1px var(--gray-a6);
@@ -127,9 +129,11 @@
   }
 
   &:where(button, [href]) {
-    &:hover::before {
-      transition-duration: 40ms;
-      box-shadow: var(--shadow-3), var(--shadow-2);
+    @media (hover: hover) {
+      &:hover::before {
+        transition-duration: 40ms;
+        box-shadow: var(--shadow-3), var(--shadow-2);
+      }
     }
     &:active::before {
       transition-duration: 40ms;
@@ -145,8 +149,10 @@
 
 .rt-Card.variant-ghost {
   &:where(button, [href]) {
-    &:hover {
-      background-color: var(--gray-a3);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--gray-a3);
+      }
     }
     &:focus-visible::after {
       box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);

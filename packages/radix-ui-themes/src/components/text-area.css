@@ -35,8 +35,10 @@
   &::-webkit-scrollbar-thumb {
     background-color: var(--gray-a8);
   }
-  &:not(:disabled)::-webkit-scrollbar-thumb:hover {
-    background-color: var(--gray-a9);
+  @media (hover: hover) {
+    &:not(:disabled)::-webkit-scrollbar-thumb:hover {
+      background-color: var(--gray-a9);
+    }
   }
 }
 

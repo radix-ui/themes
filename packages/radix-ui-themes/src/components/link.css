@@ -46,8 +46,10 @@
   text-decoration-color: var(--accent-a5);
 
   &:where(.underline-auto) {
-    &:hover {
-      text-decoration-line: underline;
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-line: underline;
+      }
     }
 
     &.high-contrast,
@@ -58,8 +60,10 @@
   }
 
   &:where(.underline-hover) {
-    &:hover {
-      text-decoration-line: underline;
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-line: underline;
+      }
     }
   }
 

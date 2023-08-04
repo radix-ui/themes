@@ -2,6 +2,8 @@
 
 ## Up Next
 
+- General:
+  - Gatekeep hover styles behind `@media (hover: hover)`
 - `Theme`:
   - Fix issue when `hasBackground={false}` wasn't respected
 

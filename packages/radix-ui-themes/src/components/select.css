@@ -266,7 +266,12 @@
   background-color: var(--color-surface);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      box-shadow: inset 0 0 0 1px var(--gray-a8);
+    }
+  }
+  &:where([data-state='open']) {
     box-shadow: inset 0 0 0 1px var(--gray-a8);
   }
   &:where(:focus-visible) {
@@ -321,7 +326,12 @@
     mix-blend-mode: soft-light;
   }
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-image: linear-gradient(var(--black-a3), var(--black-a2) 50%);
+    }
+  }
+  &:where([data-state='open']) {
     background-image: linear-gradient(var(--black-a3), var(--black-a2) 50%);
   }
   &:where(:focus-visible) {
@@ -349,12 +359,22 @@
 .rt-SelectTrigger:where(.variant-soft) {
   background-color: var(--accent-a3);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a4);
+    }
+  }
+  &:where([data-state='open']) {
     background-color: var(--accent-a4);
   }
 }
 .rt-SelectTrigger:where(.variant-ghost) {
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a3);
+    }
+  }
+  &:where([data-state='open']) {
     background-color: var(--accent-a3);
   }
 }

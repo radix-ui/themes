@@ -126,7 +126,19 @@
 
   box-shadow: var(--button__classic__box-shadow);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-image: linear-gradient(var(--black-a4), transparent);
+
+      &:where(.high-contrast) {
+        background-image: linear-gradient(
+          var(--button__classic-hover-high-contrast__overlay-color),
+          var(--button__classic-hover-high-contrast__overlay-color)
+        );
+      }
+    }
+  }
+  &:where([data-state='open']) {
     background-image: linear-gradient(var(--black-a4), transparent);
 
     &:where(.high-contrast) {
@@ -222,7 +234,12 @@
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-10);
+    }
+  }
+  &:where([data-state='open']) {
     background-color: var(--accent-10);
   }
   &:where(:active) {
@@ -237,7 +254,13 @@
     background-color: var(--accent-12);
     color: var(--gray-1);
 
-    &:where(:hover, [data-state='open']) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--accent-12);
+        filter: var(--button-filter__solid-high-contrast-hover);
+      }
+    }
+    &:where([data-state='open']) {
       background-color: var(--accent-12);
       filter: var(--button-filter__solid-high-contrast-hover);
     }
@@ -264,7 +287,12 @@
 .rt-BaseButton.variant-soft {
   background-color: var(--accent-a3);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a4);
+    }
+  }
+  &:where([data-state='open']) {
     background-color: var(--accent-a4);
   }
   &:where(:active) {
@@ -272,7 +300,12 @@
   }
 }
 .rt-BaseButton.variant-ghost {
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a3);
+    }
+  }
+  &:where([data-state='open']) {
     background-color: var(--accent-a3);
   }
   &:where(:active) {
@@ -286,7 +319,12 @@
   box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a2);
+    }
+  }
+  &:where([data-state='open']) {
     background-color: var(--accent-a2);
   }
   &:where(:active) {
@@ -314,7 +352,12 @@
   box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-a11);
 
-  &:where(:hover, [data-state='open']) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+  }
+  &:where([data-state='open']) {
     box-shadow: inset 0 0 0 1px var(--accent-a8);
   }
   &:where(:active) {
