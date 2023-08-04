@@ -5,7 +5,11 @@ import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Slottable } from '@radix-ui/react-slot';
 import { ScrollArea } from './scroll-area';
-import { dropdownMenuContentPropDefs, dropdownMenuItemPropDefs } from './dropdown-menu.props';
+import {
+  dropdownMenuContentPropDefs,
+  dropdownMenuItemPropDefs,
+  dropdownMenuCheckboxItemPropDefs,
+} from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
@@ -109,9 +113,7 @@ type DropdownMenuItemElement = React.ElementRef<typeof DropdownMenuPrimitive.Ite
 type DropdownMenuItemOwnProps = GetPropDefTypes<typeof dropdownMenuItemPropDefs>;
 interface DropdownMenuItemProps
   extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Item>,
-    DropdownMenuItemOwnProps {
-  shortcut?: string;
-}
+    DropdownMenuItemOwnProps {}
 const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuItemProps>(
   (props, forwardedRef) => {
     const {
@@ -195,10 +197,10 @@ const DropdownMenuRadioItem = React.forwardRef<
 DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem';
 
 type DropdownMenuCheckboxItemElement = React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>;
+type DropdownMenuCheckboxItemOwnProps = GetPropDefTypes<typeof dropdownMenuCheckboxItemPropDefs>;
 interface DropdownMenuCheckboxItemProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem> {
-  shortcut?: string;
-}
+  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>,
+    DropdownMenuCheckboxItemOwnProps {}
 const DropdownMenuCheckboxItem = React.forwardRef<
   DropdownMenuCheckboxItemElement,
   DropdownMenuCheckboxItemProps

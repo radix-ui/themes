@@ -5,7 +5,11 @@ import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { Slottable } from '@radix-ui/react-slot';
 import { ScrollArea } from './scroll-area';
-import { contextMenuContentPropDefs, contextMenuItemPropDefs } from './context-menu.props';
+import {
+  contextMenuContentPropDefs,
+  contextMenuItemPropDefs,
+  contextMenuCheckboxItemPropDefs,
+} from './context-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
@@ -108,9 +112,7 @@ type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>
 type ContextMenuItemOwnProps = GetPropDefTypes<typeof contextMenuItemPropDefs>;
 interface ContextMenuItemProps
   extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Item>,
-    ContextMenuItemOwnProps {
-  shortcut?: string;
-}
+    ContextMenuItemOwnProps {}
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
   (props, forwardedRef) => {
     const {
@@ -194,10 +196,10 @@ const ContextMenuRadioItem = React.forwardRef<
 ContextMenuRadioItem.displayName = 'ContextMenuRadioItem';
 
 type ContextMenuCheckboxItemElement = React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>;
+type ContextMenuCheckboxItemOwnProps = GetPropDefTypes<typeof contextMenuCheckboxItemPropDefs>;
 interface ContextMenuCheckboxItemProps
-  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem> {
-  shortcut?: string;
-}
+  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem>,
+    ContextMenuCheckboxItemOwnProps {}
 const ContextMenuCheckboxItem = React.forwardRef<
   ContextMenuCheckboxItemElement,
   ContextMenuCheckboxItemProps
