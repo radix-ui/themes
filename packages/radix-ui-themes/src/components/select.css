@@ -225,8 +225,6 @@
  ***************************************************************************************************/
 
 .rt-SelectTrigger {
-  color: var(--gray-12);
-
   &[data-placeholder] {
     /* target value */
     & > span > span {
@@ -238,6 +236,7 @@
 /* surface */
 
 .rt-SelectTrigger:where(.variant-surface) {
+  color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
 
@@ -252,6 +251,7 @@
 /* classic */
 
 .rt-SelectTrigger:where(.variant-classic) {
+  color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-2);
 
@@ -267,6 +267,8 @@
 
 .rt-SelectTrigger:where(.variant-soft),
 .rt-SelectTrigger:where(.variant-ghost) {
+  color: var(--accent-12);
+
   &[data-placeholder] {
     /* target value */
     & > span > span {

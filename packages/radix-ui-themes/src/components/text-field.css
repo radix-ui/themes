@@ -127,8 +127,6 @@
  ***************************************************************************************************/
 
 .rt-TextFieldInput {
-  color: var(--gray-12);
-
   &::placeholder {
     color: var(--gray-a10);
     /* Firefox */
@@ -157,6 +155,8 @@
 /* surface */
 
 .rt-TextFieldInput:where(.variant-surface) {
+  color: var(--gray-12);
+
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -169,6 +169,8 @@
 /* classic */
 
 .rt-TextFieldInput:where(.variant-classic) {
+  color: var(--gray-12);
+
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface);
     box-shadow: var(--shadow-1);
@@ -180,6 +182,8 @@
 
 /* soft */
 .rt-TextFieldInput:where(.variant-soft) {
+  color: var(--accent-12);
+
   & + .rt-TextFieldChrome {
     background-color: var(--accent-a3);
   }
