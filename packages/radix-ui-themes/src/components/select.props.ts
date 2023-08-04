@@ -2,7 +2,7 @@ import { colorProp, highContrastProp, radiusProp } from '../helpers';
 
 import type { PropDef } from '../helpers';
 
-const sizes = ['1', '2'] as const;
+const sizes = ['1', '2', '3'] as const;
 
 const selectRootPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },

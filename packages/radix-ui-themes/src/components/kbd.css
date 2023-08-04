@@ -1,5 +1,5 @@
-/* prettier-ignore */
 .radix-themes {
+  /* prettier-ignore */
   --kbd-shadow:
     inset 0 0.05em var(--white-a12),
     inset 0 0.25em 0.5em var(--gray-a2),
@@ -8,9 +8,9 @@
     0 0.08em 0.17em var(--gray-a7);
 }
 
-/* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+  /* prettier-ignore */
   --kbd-shadow:
     inset 0 0.05em var(--white-a9),
     inset 0 0.25em 0.5em var(--gray-a2),

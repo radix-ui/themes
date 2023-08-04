@@ -4051,27 +4051,35 @@ function PlaygroundForm({
     <Flex direction="column" gap="3" {...props}>
       <Grid gap="1">
         <Text size={size} weight="bold">
-          Name
+          Email
         </Text>
-        <TextFieldInput size={size} placeholder="Your name" />
+        <TextFieldInput size={size} variant="classic" placeholder="Your email" />
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
-          Email
+          Subject
         </Text>
-        <TextFieldInput size={size} placeholder="Your email" />
+        <SelectRoot defaultValue="customer" size={size}>
+          <SelectTrigger variant="classic" />
+          <SelectContent>
+            <SelectItem value="customer">Customer feedback</SelectItem>
+            <SelectItem value="help">Help</SelectItem>
+          </SelectContent>
+        </SelectRoot>
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
           Feedback
         </Text>
-        <TextArea size={size} placeholder="Your feedback" />
+        <TextArea size={size} variant="classic" placeholder="Your feedback" />
       </Grid>
       <Grid columns="2" gap="2">
         <Button size={size} variant="surface">
           Back
         </Button>
-        <Button size={size}>Submit</Button>
+        <Button size={size} variant="classic">
+          Submit
+        </Button>
       </Grid>
     </Flex>
   );

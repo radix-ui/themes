@@ -18,6 +18,7 @@
 - `Select`:
   - [**Breaking**] Remove `solid` and `outline` trigger variants
   - Tweak all other variant design to be more akin to other form components
+  - Add `size` 3
 - `TextField`, `TextArea`:
   - Tweak `soft` to use `--accent-12`
 - `Theme`:
