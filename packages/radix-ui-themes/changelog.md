@@ -7,7 +7,7 @@
   - Listen to global appearance class changes to sync with control
   - Rename `initallyHidden` to `defaultOpen`
 
-## Up Next
+## 0.0.39
 
 - General:
   - [**Breaking**] Import styles from `@radix-ui/themes/styles.css` instead of `@radix-ui/react-themes/index.css`
