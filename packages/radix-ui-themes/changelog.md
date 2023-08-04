@@ -1,5 +1,11 @@
 # Changelog
 
+## Up next
+
+- `Select`:
+  - [**Breaking**] Remove `solid` and `outline` trigger variants
+  - Tweak all other variant design to be more akin to other form components
+
 ## 0.0.38
 
 - General

@@ -557,10 +557,10 @@ export default function Sink() {
                           {selectRootPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
-                          <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                          <ColumnHeaderCell>+ placeholder</ColumnHeaderCell>
                           <ColumnHeaderCell />
                           <ColumnHeaderCell>gray</ColumnHeaderCell>
-                          <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                          <ColumnHeaderCell>+ placeholder</ColumnHeaderCell>
                           <ColumnHeaderCell />
                           <ColumnHeaderCell>disabled</ColumnHeaderCell>
                         </tr>
@@ -580,8 +580,8 @@ export default function Sink() {
                               </td>
                             ))}
                             <td>
-                              <SelectRoot defaultValue="apple" size="2">
-                                <SelectTrigger variant={variant} highContrast />
+                              <SelectRoot size="2">
+                                <SelectTrigger variant={variant} placeholder="Choose a fruit" />
                                 <SelectContent>
                                   <SelectItemsDemo />
                                 </SelectContent>
@@ -597,8 +597,12 @@ export default function Sink() {
                               </SelectRoot>
                             </td>
                             <td>
-                              <SelectRoot defaultValue="apple" size="2">
-                                <SelectTrigger variant={variant} color="gray" highContrast />
+                              <SelectRoot size="2">
+                                <SelectTrigger
+                                  variant={variant}
+                                  color="gray"
+                                  placeholder="Choose a fruit"
+                                />
                                 <SelectContent>
                                   <SelectItemsDemo />
                                 </SelectContent>
@@ -750,17 +754,6 @@ export default function Sink() {
                                     <td key={variant}>
                                       <SelectRoot defaultValue="apple" size="1">
                                         <SelectTrigger variant={variant} color={color} />
-                                        <SelectContent variant="soft" color={color}>
-                                          <SelectItemsDemo />
-                                        </SelectContent>
-                                      </SelectRoot>
-                                      <SelectRoot defaultValue="apple" size="1">
-                                        <SelectTrigger
-                                          variant={variant}
-                                          color={color}
-                                          highContrast
-                                          ml="2"
-                                        />
                                         <SelectContent variant="soft" color={color}>
                                           <SelectItemsDemo />
                                         </SelectContent>

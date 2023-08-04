@@ -1,10 +1,8 @@
-import { baseButtonPropDefs } from './base-button.props';
 import { colorProp, highContrastProp, radiusProp } from '../helpers';
 
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2'] as const;
-const variants = baseButtonPropDefs.variant.values;
 
 const selectRootPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
@@ -12,15 +10,15 @@ const selectRootPropDefs = {
   size: PropDef<(typeof sizes)[number]>;
 };
 
+const triggerVariants = ['surface', 'classic', 'soft', 'ghost'] as const;
+
 const selectTriggerPropDefs = {
-  variant: { ...baseButtonPropDefs.variant, default: 'solid' },
-  color: baseButtonPropDefs.color,
-  highContrast: baseButtonPropDefs.highContrast,
+  variant: { type: 'enum', values: triggerVariants, default: 'surface' },
+  color: colorProp,
   radius: radiusProp,
 } satisfies {
-  variant: PropDef<(typeof variants)[number]>;
-  color: typeof baseButtonPropDefs.color;
-  highContrast: typeof baseButtonPropDefs.highContrast;
+  variant: PropDef<(typeof triggerVariants)[number]>;
+  color: typeof colorProp;
   radius: typeof radiusProp;
 };
 

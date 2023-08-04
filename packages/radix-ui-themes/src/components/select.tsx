@@ -43,7 +43,6 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
     const {
       className,
       variant = selectTriggerPropDefs.variant.default,
-      highContrast = selectTriggerPropDefs.highContrast.default,
       color = selectTriggerPropDefs.color.default,
       radius = selectTriggerPropDefs.radius.default,
       placeholder,
@@ -59,13 +58,10 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
           ref={forwardedRef}
           className={classNames(
             'rt-reset-button',
-            'rt-BaseButton',
-            'rt-Button',
             'rt-SelectTrigger',
             className,
             withBreakpoints(size, 'size'),
             `variant-${variant}`,
-            { 'high-contrast': highContrast },
             withMarginProps(marginProps)
           )}
         >
