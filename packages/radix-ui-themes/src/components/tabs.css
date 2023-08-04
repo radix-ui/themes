@@ -99,20 +99,22 @@
 .rt-TabsTrigger {
   color: var(--gray-a11);
 
-  &:hover {
-    color: var(--gray-12);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gray-12);
+    }
+    &:hover .rt-TabsTriggerInner {
+      background-color: var(--gray-a3);
+    }
+    &:focus-visible:hover .rt-TabsTriggerInner {
+      background-color: var(--accent-a3);
+    }
   }
   &[data-state='active'] {
     color: var(--gray-12);
   }
-  &:hover .rt-TabsTriggerInner {
-    background-color: var(--gray-a3);
-  }
   &:focus-visible .rt-TabsTriggerInner {
     box-shadow: 0 0 0 2px var(--accent-a8);
-  }
-  &:focus-visible:hover .rt-TabsTriggerInner {
-    background-color: var(--accent-a3);
   }
   &[data-state='active']::before {
     box-sizing: border-box;
