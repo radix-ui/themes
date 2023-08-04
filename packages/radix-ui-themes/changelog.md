@@ -4,6 +4,8 @@
 
 - General:
   - Gatekeep hover styles behind `@media (hover: hover)`
+- `Switch`:
+  - Fix the animation when switching between checked and unchecked state
 - `Theme`:
   - Fix issue when `hasBackground={false}` wasn't respected
 
