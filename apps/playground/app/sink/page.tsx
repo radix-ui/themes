@@ -36,7 +36,7 @@ import {
   Box,
   //
   Button,
-  buttonPropsDefs,
+  buttonPropDefs,
   //
   CalloutRoot,
   CalloutIcon,
@@ -1505,7 +1505,7 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {buttonPropsDefs.size.values.map((size) => (
+                          {buttonPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                           <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
@@ -1517,10 +1517,10 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {buttonPropsDefs.variant.values.map((variant) => (
+                        {buttonPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
-                            {buttonPropsDefs.size.values.map((size) => (
+                            {buttonPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Button size={size} variant={variant}>
                                   Next <ArrowRightIcon />
@@ -1569,16 +1569,16 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {buttonPropsDefs.size.values.map((size) => (
+                              {buttonPropDefs.size.values.map((size) => (
                                 <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
-                            {buttonPropsDefs.radius.values.map((radius) => (
+                            {buttonPropDefs.radius.values.map((radius) => (
                               <tr key={radius}>
                                 <RowHeaderCell>{radius}</RowHeaderCell>
-                                {buttonPropsDefs.size.values.map((size) => (
+                                {buttonPropDefs.size.values.map((size) => (
                                   <td key={size}>
                                     <Button size={size} radius={radius}>
                                       Next <ArrowRightIcon />
@@ -1611,7 +1611,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {buttonPropsDefs.variant.values.map((variant) => (
+                                {buttonPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -1620,7 +1620,7 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {buttonPropsDefs.variant.values.map((variant) => (
+                                  {buttonPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Button variant={variant} color={color}>
                                         <Pencil2Icon />

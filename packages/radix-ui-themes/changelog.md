@@ -1,5 +1,10 @@
 # Changelog
 
+## Up Next
+
+- General:
+  - [**Breaking**] Fixed typo: `buttonPropsDefs` -> `buttonPropDefs`
+
 ## 0.0.41
 
 - General:
