@@ -1,12 +1,11 @@
-import { textPropDefs } from './text.props';
 import type { PropDef } from '../helpers';
 
-const underline = ['auto', 'hover', 'always'] as const;
+const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const kbdPropDefs = {
-  size: textPropDefs.size,
+  size: { type: 'enum', values: sizes, default: undefined, responsive: true },
 } satisfies {
-  size: typeof textPropDefs.size;
+  size: PropDef<(typeof sizes)[number]>;
 };
 
 export { kbdPropDefs };
