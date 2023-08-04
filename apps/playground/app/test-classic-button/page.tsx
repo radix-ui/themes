@@ -17,7 +17,7 @@ export default function Test() {
       <body>
         <Theme asChild>
           <div id="root">
-            <ThemePanel initiallyHidden />
+            <ThemePanel defaultOpen={false} />
             <Container px="5">
               <Section>
                 <Flex direction="column" gap="2">

@@ -5,7 +5,13 @@
 - `ThemePanel`:
   - Remove `inherit` option
   - Listen to global appearance class changes to sync with control
-  - Rename `initallyHidden` to `defaultOpen`
+
+## Up Next
+
+- `ScrollArea`:
+  - Ensure compatibility with `max-height` (make `Root` flex column)
+- `ThemePanel`:
+  - Rename `initiallyHidden` (default `false`) to `defaultOpen` (default `true`)
 
 ## 0.0.39
 

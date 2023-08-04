@@ -160,7 +160,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const {
     asChild,
     isRoot,
-    hasBackground = themePropDefs.hasBackground.default,
+    hasBackground,
     //
     appearance = context?.appearance ?? themePropDefs.appearance.default,
     accentColor = context?.accentColor ?? themePropDefs.accentColor.default,
@@ -181,7 +181,9 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const Comp = asChild ? Slot : 'div';
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
   const isExplicitAppearance = props.appearance !== undefined && props.appearance !== 'inherit';
-  const shouldHaveBackground = hasBackground === true && !isRoot && isExplicitAppearance;
+  const isExplicitGrayColor = props.grayColor !== undefined;
+  const shouldHaveBackground =
+    !isRoot && (hasBackground === true || isExplicitAppearance || isExplicitGrayColor);
   return (
     <ThemeContext.Provider
       value={React.useMemo(

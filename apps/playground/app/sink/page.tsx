@@ -217,7 +217,7 @@ export default function Sink() {
                 }}
               />
               {/* <HideCursor /> */}
-              <ThemePanel initiallyHidden />
+              <ThemePanel defaultOpen={false} />
 
               <Box position="relative">
                 <header

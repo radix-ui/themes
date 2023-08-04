@@ -33,7 +33,7 @@ export default function Test() {
       <body>
         <Theme asChild>
           <div id="root">
-            <ThemePanel initiallyHidden />
+            <ThemePanel defaultOpen={false} />
             <Container>
               <Section>
                 <Grid columns="3" gap="6">

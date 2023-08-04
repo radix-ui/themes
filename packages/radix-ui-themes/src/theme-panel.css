@@ -51,7 +51,7 @@
 }
 
 .rt-ThemePanelRadioCard {
-  border-radius: calc(3px * var(--scaling));
+  border-radius: var(--radius-1);
   box-shadow: 0 0 0 1px var(--gray-7);
 
   & input {

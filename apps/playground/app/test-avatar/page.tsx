@@ -1,21 +1,24 @@
 import * as React from 'react';
 import { Theme, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
+import { NextThemeProvider } from '../next-theme-provider';
 
 export default function Test() {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Theme asChild>
-          <div id="root">
-            <ThemePanel />
-            <Flex align="center" gap="3">
-              <Avatar src="./api/avatar" fallback="BG" />
-              <Avatar src="#" fallback="BG" />
-              <Avatar fallback="BG" />
-              <Avatar fallback={<CustomUserIcon />} />
-            </Flex>
-          </div>
-        </Theme>
+        <NextThemeProvider>
+          <Theme asChild>
+            <div id="root">
+              <ThemePanel />
+              <Flex align="center" gap="3">
+                <Avatar src="./api/avatar" fallback="BG" />
+                <Avatar src="#" fallback="BG" />
+                <Avatar fallback="BG" />
+                <Avatar fallback={<CustomUserIcon />} />
+              </Flex>
+            </div>
+          </Theme>
+        </NextThemeProvider>
       </body>
     </html>
   );
