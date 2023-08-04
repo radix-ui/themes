@@ -1,9 +1,9 @@
 @breakpoints {
-  .rt-fg-0 {
+  .rt-r-fg-0 {
     flex-grow: 0;
   }
 
-  .rt-fg-1 {
+  .rt-r-fg-1 {
     flex-grow: 1;
   }
 }

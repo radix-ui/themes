@@ -1,17 +1,17 @@
 @breakpoints {
-  .rt-weight-light {
+  .rt-r-weight-light {
     font-weight: var(--font-weight-light);
   }
 
-  .rt-weight-regular {
+  .rt-r-weight-regular {
     font-weight: var(--font-weight-regular);
   }
 
-  .rt-weight-medium {
+  .rt-r-weight-medium {
     font-weight: var(--font-weight-medium);
   }
 
-  .rt-weight-bold {
+  .rt-r-weight-bold {
     font-weight: var(--font-weight-bold);
   }
 }

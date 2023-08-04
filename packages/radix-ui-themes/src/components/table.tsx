@@ -32,8 +32,8 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
       className={classNames(
         'rt-TableRoot',
         className,
-        `variant-${variant}`,
-        withBreakpoints(size, 'size'),
+        `rt-variant-${variant}`,
+        withBreakpoints(size, 'rt-r-size'),
         withMarginProps(marginProps)
       )}
     />

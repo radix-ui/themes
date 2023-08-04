@@ -38,9 +38,9 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
         'rt-reset-a',
         'rt-BaseButton',
         className,
-        withBreakpoints(size, 'size'),
-        `variant-${variant}`,
-        { 'high-contrast': highContrast },
+        withBreakpoints(size, 'rt-r-size'),
+        `rt-variant-${variant}`,
+        { 'rt-high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
     />

@@ -32,9 +32,9 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
       className={classNames(
         'rt-SwitchRoot',
         className,
-        withBreakpoints(size, 'size'),
-        `variant-${variant}`,
-        { 'high-contrast': highContrast },
+        withBreakpoints(size, 'rt-r-size'),
+        `rt-variant-${variant}`,
+        { 'rt-high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
       style={style}

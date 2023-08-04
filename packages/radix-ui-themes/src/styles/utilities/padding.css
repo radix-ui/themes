@@ -1,331 +1,331 @@
 @breakpoints {
-  .rt-p-0 {
+  .rt-r-p-0 {
     padding: 0;
   }
 
-  .rt-p-1 {
+  .rt-r-p-1 {
     padding: var(--space-1);
   }
 
-  .rt-p-2 {
+  .rt-r-p-2 {
     padding: var(--space-2);
   }
 
-  .rt-p-3 {
+  .rt-r-p-3 {
     padding: var(--space-3);
   }
 
-  .rt-p-4 {
+  .rt-r-p-4 {
     padding: var(--space-4);
   }
 
-  .rt-p-5 {
+  .rt-r-p-5 {
     padding: var(--space-5);
   }
 
-  .rt-p-6 {
+  .rt-r-p-6 {
     padding: var(--space-6);
   }
 
-  .rt-p-7 {
+  .rt-r-p-7 {
     padding: var(--space-7);
   }
 
-  .rt-p-8 {
+  .rt-r-p-8 {
     padding: var(--space-8);
   }
 
-  .rt-p-9 {
+  .rt-r-p-9 {
     padding: var(--space-9);
   }
 
-  .rt-p-current {
+  .rt-r-p-current {
     padding: var(--inset-padding);
   }
 
-  .rt-px-0 {
+  .rt-r-px-0 {
     padding-left: 0;
     padding-right: 0;
   }
 
-  .rt-px-1 {
+  .rt-r-px-1 {
     padding-left: var(--space-1);
     padding-right: var(--space-1);
   }
 
-  .rt-px-2 {
+  .rt-r-px-2 {
     padding-left: var(--space-2);
     padding-right: var(--space-2);
   }
 
-  .rt-px-3 {
+  .rt-r-px-3 {
     padding-left: var(--space-3);
     padding-right: var(--space-3);
   }
 
-  .rt-px-4 {
+  .rt-r-px-4 {
     padding-left: var(--space-4);
     padding-right: var(--space-4);
   }
 
-  .rt-px-5 {
+  .rt-r-px-5 {
     padding-left: var(--space-5);
     padding-right: var(--space-5);
   }
 
-  .rt-px-6 {
+  .rt-r-px-6 {
     padding-left: var(--space-6);
     padding-right: var(--space-6);
   }
 
-  .rt-px-7 {
+  .rt-r-px-7 {
     padding-left: var(--space-7);
     padding-right: var(--space-7);
   }
 
-  .rt-px-8 {
+  .rt-r-px-8 {
     padding-left: var(--space-8);
     padding-right: var(--space-8);
   }
 
-  .rt-px-9 {
+  .rt-r-px-9 {
     padding-left: var(--space-9);
     padding-right: var(--space-9);
   }
 
-  .rt-px-current {
+  .rt-r-px-current {
     padding-left: var(--inset-padding);
     padding-right: var(--inset-padding);
   }
 
-  .rt-py-0 {
+  .rt-r-py-0 {
     padding-top: 0;
     padding-bottom: 0;
   }
 
-  .rt-py-1 {
+  .rt-r-py-1 {
     padding-top: var(--space-1);
     padding-bottom: var(--space-1);
   }
 
-  .rt-py-2 {
+  .rt-r-py-2 {
     padding-top: var(--space-2);
     padding-bottom: var(--space-2);
   }
 
-  .rt-py-3 {
+  .rt-r-py-3 {
     padding-top: var(--space-3);
     padding-bottom: var(--space-3);
   }
 
-  .rt-py-4 {
+  .rt-r-py-4 {
     padding-top: var(--space-4);
     padding-bottom: var(--space-4);
   }
 
-  .rt-py-5 {
+  .rt-r-py-5 {
     padding-top: var(--space-5);
     padding-bottom: var(--space-5);
   }
 
-  .rt-py-6 {
+  .rt-r-py-6 {
     padding-top: var(--space-6);
     padding-bottom: var(--space-6);
   }
 
-  .rt-py-7 {
+  .rt-r-py-7 {
     padding-top: var(--space-7);
     padding-bottom: var(--space-7);
   }
 
-  .rt-py-8 {
+  .rt-r-py-8 {
     padding-top: var(--space-8);
     padding-bottom: var(--space-8);
   }
 
-  .rt-py-9 {
+  .rt-r-py-9 {
     padding-top: var(--space-9);
     padding-bottom: var(--space-9);
   }
 
-  .rt-py-current {
+  .rt-r-py-current {
     padding-top: var(--inset-padding);
     padding-bottom: var(--inset-padding);
   }
 
-  .rt-pt-0 {
+  .rt-r-pt-0 {
     padding-top: 0;
   }
 
-  .rt-pt-1 {
+  .rt-r-pt-1 {
     padding-top: var(--space-1);
   }
 
-  .rt-pt-2 {
+  .rt-r-pt-2 {
     padding-top: var(--space-2);
   }
 
-  .rt-pt-3 {
+  .rt-r-pt-3 {
     padding-top: var(--space-3);
   }
 
-  .rt-pt-4 {
+  .rt-r-pt-4 {
     padding-top: var(--space-4);
   }
 
-  .rt-pt-5 {
+  .rt-r-pt-5 {
     padding-top: var(--space-5);
   }
 
-  .rt-pt-6 {
+  .rt-r-pt-6 {
     padding-top: var(--space-6);
   }
 
-  .rt-pt-7 {
+  .rt-r-pt-7 {
     padding-top: var(--space-7);
   }
 
-  .rt-pt-8 {
+  .rt-r-pt-8 {
     padding-top: var(--space-8);
   }
 
-  .rt-pt-9 {
+  .rt-r-pt-9 {
     padding-top: var(--space-9);
   }
 
-  .rt-pt-current {
+  .rt-r-pt-current {
     padding-top: var(--inset-padding);
   }
 
-  .rt-pr-0 {
+  .rt-r-pr-0 {
     padding-right: 0;
   }
 
-  .rt-pr-1 {
+  .rt-r-pr-1 {
     padding-right: var(--space-1);
   }
 
-  .rt-pr-2 {
+  .rt-r-pr-2 {
     padding-right: var(--space-2);
   }
 
-  .rt-pr-3 {
+  .rt-r-pr-3 {
     padding-right: var(--space-3);
   }
 
-  .rt-pr-4 {
+  .rt-r-pr-4 {
     padding-right: var(--space-4);
   }
 
-  .rt-pr-5 {
+  .rt-r-pr-5 {
     padding-right: var(--space-5);
   }
 
-  .rt-pr-6 {
+  .rt-r-pr-6 {
     padding-right: var(--space-6);
   }
 
-  .rt-pr-7 {
+  .rt-r-pr-7 {
     padding-right: var(--space-7);
   }
 
-  .rt-pr-8 {
+  .rt-r-pr-8 {
     padding-right: var(--space-8);
   }
 
-  .rt-pr-9 {
+  .rt-r-pr-9 {
     padding-right: var(--space-9);
   }
 
-  .rt-pr-current {
+  .rt-r-pr-current {
     padding-right: var(--inset-padding);
   }
 
-  .rt-pb-0 {
+  .rt-r-pb-0 {
     padding-bottom: 0;
   }
 
-  .rt-pb-1 {
+  .rt-r-pb-1 {
     padding-bottom: var(--space-1);
   }
 
-  .rt-pb-2 {
+  .rt-r-pb-2 {
     padding-bottom: var(--space-2);
   }
 
-  .rt-pb-3 {
+  .rt-r-pb-3 {
     padding-bottom: var(--space-3);
   }
 
-  .rt-pb-4 {
+  .rt-r-pb-4 {
     padding-bottom: var(--space-4);
   }
 
-  .rt-pb-5 {
+  .rt-r-pb-5 {
     padding-bottom: var(--space-5);
   }
 
-  .rt-pb-6 {
+  .rt-r-pb-6 {
     padding-bottom: var(--space-6);
   }
 
-  .rt-pb-7 {
+  .rt-r-pb-7 {
     padding-bottom: var(--space-7);
   }
 
-  .rt-pb-8 {
+  .rt-r-pb-8 {
     padding-bottom: var(--space-8);
   }
 
-  .rt-pb-9 {
+  .rt-r-pb-9 {
     padding-bottom: var(--space-9);
   }
 
-  .rt-pb-current {
+  .rt-r-pb-current {
     padding-bottom: var(--inset-padding);
   }
 
-  .rt-pl-0 {
+  .rt-r-pl-0 {
     padding-left: 0;
   }
 
-  .rt-pl-1 {
+  .rt-r-pl-1 {
     padding-left: var(--space-1);
   }
 
-  .rt-pl-2 {
+  .rt-r-pl-2 {
     padding-left: var(--space-2);
   }
 
-  .rt-pl-3 {
+  .rt-r-pl-3 {
     padding-left: var(--space-3);
   }
 
-  .rt-pl-4 {
+  .rt-r-pl-4 {
     padding-left: var(--space-4);
   }
 
-  .rt-pl-5 {
+  .rt-r-pl-5 {
     padding-left: var(--space-5);
   }
 
-  .rt-pl-6 {
+  .rt-r-pl-6 {
     padding-left: var(--space-6);
   }
 
-  .rt-pl-7 {
+  .rt-r-pl-7 {
     padding-left: var(--space-7);
   }
 
-  .rt-pl-8 {
+  .rt-r-pl-8 {
     padding-left: var(--space-8);
   }
 
-  .rt-pl-9 {
+  .rt-r-pl-9 {
     padding-left: var(--space-9);
   }
 
-  .rt-pl-current {
+  .rt-r-pl-current {
     padding-left: var(--inset-padding);
   }
 }

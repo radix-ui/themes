@@ -36,7 +36,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
     <TabsPrimitive.List
       {...listProps}
       ref={forwardedRef}
-      className={classNames('rt-TabsList', className, withBreakpoints(size, 'size'))}
+      className={classNames('rt-TabsList', className, withBreakpoints(size, 'rt-r-size'))}
     />
   );
 });

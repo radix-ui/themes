@@ -1,17 +1,17 @@
 @breakpoints {
-  .rt-jc-start {
+  .rt-r-jc-start {
     justify-content: flex-start;
   }
 
-  .rt-jc-center {
+  .rt-r-jc-center {
     justify-content: center;
   }
 
-  .rt-jc-end {
+  .rt-r-jc-end {
     justify-content: flex-end;
   }
 
-  .rt-jc-space-between {
+  .rt-r-jc-space-between {
     justify-content: space-between;
   }
 }

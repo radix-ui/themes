@@ -224,6 +224,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
       )}
     >
       <Comp
+        data-is-root-theme={isRoot ? 'true' : 'false'}
         data-accent-color={accentColor}
         data-gray-color={resolvedGrayColor}
         // for nested `Theme` background
@@ -236,7 +237,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         className={classNames(
           'radix-themes',
           {
-            root: isRoot,
             // Only apply theme class to nested `Theme` sections.
             //
             // If it's the root `Theme`, we either rely on

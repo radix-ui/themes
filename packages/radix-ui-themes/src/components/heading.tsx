@@ -43,11 +43,11 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
       className={classNames(
         'rt-Heading',
         className,
-        withBreakpoints(size, 'size'),
-        withBreakpoints(weight, 'rt-weight'),
-        withBreakpoints(align, 'rt-ta'),
-        withBreakpoints(trim, 'rt-lt'),
-        { 'high-contrast': highContrast },
+        withBreakpoints(size, 'rt-r-size'),
+        withBreakpoints(weight, 'rt-r-weight'),
+        withBreakpoints(align, 'rt-r-ta'),
+        withBreakpoints(trim, 'rt-r-lt'),
+        { 'rt-high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
     >

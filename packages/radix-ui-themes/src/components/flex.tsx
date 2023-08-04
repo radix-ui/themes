@@ -43,12 +43,12 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
       className={classNames(
         'rt-Flex',
         className,
-        withBreakpoints(display, 'rt-display'),
-        withBreakpoints(direction, 'rt-fd'),
-        withBreakpoints(align, 'rt-ai'),
-        withBreakpoints(justify, 'rt-jc', { between: 'space-between' }),
-        withBreakpoints(wrap, 'rt-fw'),
-        withBreakpoints(gap, 'rt-gap'),
+        withBreakpoints(display, 'rt-r-display'),
+        withBreakpoints(direction, 'rt-r-fd'),
+        withBreakpoints(align, 'rt-r-ai'),
+        withBreakpoints(justify, 'rt-r-jc', { between: 'space-between' }),
+        withBreakpoints(wrap, 'rt-r-fw'),
+        withBreakpoints(gap, 'rt-r-gap'),
         withLayoutProps(layoutProps),
         withMarginProps(marginProps)
       )}

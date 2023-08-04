@@ -64,24 +64,24 @@
 
 @breakpoints {
   .rt-TextFieldSlot {
-    &:where(.size-1) {
+    &:where(.rt-r-size-1) {
       gap: var(--space-2);
       padding-left: var(--space-1);
       padding-right: var(--space-1);
     }
-    &:where(.size-2) {
+    &:where(.rt-r-size-2) {
       gap: var(--space-2);
       padding-left: var(--space-2);
       padding-right: var(--space-2);
     }
-    &:where(.size-3) {
+    &:where(.rt-r-size-3) {
       gap: var(--space-3);
       padding-left: var(--space-3);
       padding-right: var(--space-3);
     }
   }
   .rt-TextFieldInput {
-    &:where(.size-1) {
+    &:where(.rt-r-size-1) {
       height: var(--space-5);
       padding-top: 0.5px;
       padding-bottom: 1px;
@@ -93,7 +93,7 @@
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
-    &:where(.size-2) {
+    &:where(.rt-r-size-2) {
       height: var(--space-6);
       padding-top: 0px;
       padding-bottom: 1px;
@@ -105,7 +105,7 @@
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
-    &:where(.size-3) {
+    &:where(.rt-r-size-3) {
       height: var(--space-7);
       padding-top: 0.5px;
       padding-bottom: 1px;
@@ -154,7 +154,7 @@
 
 /* surface */
 
-.rt-TextFieldInput:where(.variant-surface) {
+.rt-TextFieldInput:where(.rt-variant-surface) {
   color: var(--gray-12);
 
   & + .rt-TextFieldChrome {
@@ -168,7 +168,7 @@
 
 /* classic */
 
-.rt-TextFieldInput:where(.variant-classic) {
+.rt-TextFieldInput:where(.rt-variant-classic) {
   color: var(--gray-12);
 
   & + .rt-TextFieldChrome {
@@ -181,7 +181,7 @@
 }
 
 /* soft */
-.rt-TextFieldInput:where(.variant-soft) {
+.rt-TextFieldInput:where(.rt-variant-soft) {
   color: var(--accent-12);
 
   & + .rt-TextFieldChrome {

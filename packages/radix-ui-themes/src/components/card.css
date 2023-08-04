@@ -33,7 +33,7 @@
  ***************************************************************************************************/
 
 .rt-Card {
-  &:where(.variant-ghost) {
+  &:where(.rt-variant-ghost) {
     /* We reset the defined margin variables to avoid inheriting them from a higher component */
     /* If a margin IS defined on the component itself, the utility class will win and reset it */
     --margin-top: 0px;
@@ -62,23 +62,23 @@
 
 @breakpoints {
   .rt-Card {
-    &.size-1 {
+    &.rt-r-size-1 {
       --card-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --card-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --card-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
-    &.size-4 {
+    &.rt-r-size-4 {
       --card-padding: var(--space-6);
       border-radius: var(--radius-5);
     }
-    &.size-5 {
+    &.rt-r-size-5 {
       --card-padding: var(--space-8);
       border-radius: var(--radius-6);
     }
@@ -93,7 +93,7 @@
 
 /* surface */
 
-.rt-Card.variant-surface {
+.rt-Card.rt-variant-surface {
   background-color: var(--color-panel);
   &::after {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
@@ -115,7 +115,7 @@
 
 /* classic */
 
-.rt-Card.variant-classic {
+.rt-Card.rt-variant-classic {
   background-color: var(--color-panel);
 
   &::before {
@@ -147,7 +147,7 @@
 
 /* ghost */
 
-.rt-Card.variant-ghost {
+.rt-Card.rt-variant-ghost {
   &:where(button, [href]) {
     @media (hover: hover) {
       &:hover {

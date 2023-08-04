@@ -35,8 +35,8 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
       className={classNames(
         'rt-Container',
         className,
-        withBreakpoints(size, 'size'),
-        withBreakpoints(display, 'rt-display'),
+        withBreakpoints(size, 'rt-r-size'),
+        withBreakpoints(display, 'rt-r-display'),
         withLayoutProps(layoutProps),
         withMarginProps(marginProps)
       )}

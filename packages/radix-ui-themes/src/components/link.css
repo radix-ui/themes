@@ -10,8 +10,8 @@
     outline-offset: 2px;
   }
 
-  &.high-contrast,
-  .rt-Text:where([data-accent-color]):not(.high-contrast) & {
+  &.rt-high-contrast,
+  .rt-Text:where([data-accent-color]):not(.rt-high-contrast) & {
     color: var(--accent-12);
   }
 }
@@ -24,9 +24,9 @@
 
 @breakpoints {
   .rt-Link {
-    &.size-7,
-    &.size-8,
-    &.size-9 {
+    &.rt-r-size-7,
+    &.rt-r-size-8,
+    &.rt-r-size-9 {
       text-decoration-thickness: 2px;
     }
   }
@@ -45,21 +45,21 @@
   text-underline-offset: calc(0.025em + 2px);
   text-decoration-color: var(--accent-a5);
 
-  &:where(.underline-auto) {
+  &:where(.rt-underline-auto) {
     @media (hover: hover) {
       &:hover {
         text-decoration-line: underline;
       }
     }
 
-    &.high-contrast,
-    :where(.rt-Text:where([data-accent-color])):not(.high-contrast) & {
+    &.rt-high-contrast,
+    :where(.rt-Text:where([data-accent-color])):not(.rt-high-contrast) & {
       text-decoration-line: underline;
       text-decoration-color: var(--accent-a6);
     }
   }
 
-  &:where(.underline-hover) {
+  &:where(.rt-underline-hover) {
     @media (hover: hover) {
       &:hover {
         text-decoration-line: underline;
@@ -67,7 +67,7 @@
     }
   }
 
-  &:where(.underline-always) {
+  &:where(.rt-underline-always) {
     text-decoration-line: underline;
   }
 }

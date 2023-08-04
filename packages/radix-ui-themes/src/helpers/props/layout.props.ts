@@ -40,13 +40,13 @@ function extractPaddingProps<T extends PaddingProps>(props: T) {
 
 function withPaddingProps(props: PaddingProps) {
   return [
-    withBreakpoints(props.p, 'rt-p'),
-    withBreakpoints(props.px, 'rt-px'),
-    withBreakpoints(props.py, 'rt-py'),
-    withBreakpoints(props.pt, 'rt-pt'),
-    withBreakpoints(props.pr, 'rt-pr'),
-    withBreakpoints(props.pb, 'rt-pb'),
-    withBreakpoints(props.pl, 'rt-pl'),
+    withBreakpoints(props.p, 'rt-r-p'),
+    withBreakpoints(props.px, 'rt-r-px'),
+    withBreakpoints(props.py, 'rt-r-py'),
+    withBreakpoints(props.pt, 'rt-r-pt'),
+    withBreakpoints(props.pr, 'rt-r-pr'),
+    withBreakpoints(props.pb, 'rt-r-pb'),
+    withBreakpoints(props.pl, 'rt-r-pl'),
   ]
     .filter(Boolean)
     .join(' ');
@@ -127,16 +127,16 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
 function withLayoutProps(props: LayoutProps) {
   return [
     withPaddingProps(props),
-    withBreakpoints(props.position, 'rt-position'),
-    withBreakpoints(props.shrink, 'rt-fs'),
-    withBreakpoints(props.grow, 'rt-fg'),
-    withBreakpoints(props.width, 'rt-w'),
-    withBreakpoints(props.height, 'rt-h'),
-    withBreakpoints(props.inset, 'rt-inset'),
-    withBreakpoints(props.top, 'rt-top'),
-    withBreakpoints(props.bottom, 'rt-bottom'),
-    withBreakpoints(props.left, 'rt-left'),
-    withBreakpoints(props.right, 'rt-right'),
+    withBreakpoints(props.position, 'rt-r-position'),
+    withBreakpoints(props.shrink, 'rt-r-fs'),
+    withBreakpoints(props.grow, 'rt-r-fg'),
+    withBreakpoints(props.width, 'rt-r-w'),
+    withBreakpoints(props.height, 'rt-r-h'),
+    withBreakpoints(props.inset, 'rt-r-inset'),
+    withBreakpoints(props.top, 'rt-r-top'),
+    withBreakpoints(props.bottom, 'rt-r-bottom'),
+    withBreakpoints(props.left, 'rt-r-left'),
+    withBreakpoints(props.right, 'rt-r-right'),
   ]
     .filter(Boolean)
     .join(' ');

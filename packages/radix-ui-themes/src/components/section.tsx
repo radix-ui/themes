@@ -34,8 +34,8 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
       className={classNames(
         'rt-Section',
         className,
-        withBreakpoints(size, 'size'),
-        withBreakpoints(display, 'rt-display'),
+        withBreakpoints(size, 'rt-r-size'),
+        withBreakpoints(display, 'rt-r-display'),
         withLayoutProps(layoutProps),
         withMarginProps(marginProps)
       )}

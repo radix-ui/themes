@@ -62,15 +62,15 @@
 
 @breakpoints {
   .rt-ScrollAreaScrollbar {
-    &.size-1 {
+    &.rt-r-size-1 {
       --scrollarea-scrollbar-size: var(--space-1);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --scrollarea-scrollbar-size: var(--space-2);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --scrollarea-scrollbar-size: var(--space-3);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }

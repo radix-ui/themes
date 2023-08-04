@@ -63,7 +63,7 @@
 
 @breakpoints {
   .rt-TabsList {
-    &.size-1 {
+    &.rt-r-size-1 {
       height: var(--space-6);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
@@ -73,7 +73,7 @@
       --tabs-trigger-inner-padding-y: calc(var(--space-1) * 0.5);
       --tabs-trigger-inner-radius: var(--radius-1);
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       height: var(--space-7);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);

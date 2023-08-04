@@ -50,21 +50,21 @@
 
 @breakpoints {
   .rt-TableRoot {
-    &.size-1 {
+    &.rt-r-size-1 {
       border-radius: var(--radius-3);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       --table-cell-padding: var(--space-2);
       --table-cell-min-height: 36px;
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       border-radius: var(--radius-4);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       --table-cell-padding: var(--space-3);
       --table-cell-min-height: 44px;
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       border-radius: var(--radius-4);
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
@@ -82,7 +82,7 @@
 
 /* surface */
 
-.rt-TableRoot.variant-surface {
+.rt-TableRoot.rt-variant-surface {
   overflow: hidden;
   background-color: var(--color-panel);
 
@@ -107,7 +107,7 @@
 
 /* ghost */
 
-.rt-TableRoot.variant-ghost {
+.rt-TableRoot.rt-variant-ghost {
 }
 
 /***************************************************************************************************

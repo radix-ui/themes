@@ -1,21 +1,21 @@
 @breakpoints {
-  .rt-gaf-row {
+  .rt-r-gaf-row {
     grid-auto-flow: row;
   }
 
-  .rt-gaf-column {
+  .rt-r-gaf-column {
     grid-auto-flow: column;
   }
 
-  .rt-gaf-dense {
+  .rt-r-gaf-dense {
     grid-auto-flow: dense;
   }
 
-  .rt-gaf-row-dense {
+  .rt-r-gaf-row-dense {
     grid-auto-flow: row dense;
   }
 
-  .rt-gaf-column-dense {
+  .rt-r-gaf-column-dense {
     grid-auto-flow: column dense;
   }
 }

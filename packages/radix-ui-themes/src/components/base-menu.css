@@ -124,7 +124,7 @@
 
 @breakpoints {
   .rt-BaseMenuContent {
-    &.size-1 {
+    &.rt-r-size-1 {
       --base-menu-padding: var(--space-1);
       --base-menu-item-height: var(--space-5);
 
@@ -134,7 +134,7 @@
       }
     }
 
-    &.size-2 {
+    &.rt-r-size-2 {
       --base-menu-padding: var(--space-2);
       --base-menu-item-height: var(--space-6);
 
@@ -179,7 +179,7 @@
 
 /* solid */
 
-.rt-BaseMenuContent.variant-solid {
+.rt-BaseMenuContent.rt-variant-solid {
   & .rt-BaseMenuSubTrigger[data-state='open'] {
     background-color: var(--accent-a5);
   }
@@ -187,7 +187,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) {
+  &:where(.rt-high-contrast) {
     & .rt-BaseMenuSubTrigger[data-state='open'],
     & .rt-BaseMenuItem[data-highlighted] {
       background-color: var(--accent-12);
@@ -203,7 +203,7 @@
 
 /* soft */
 
-.rt-BaseMenuContent.variant-soft {
+.rt-BaseMenuContent.rt-variant-soft {
   & .rt-BaseMenuSubTrigger[data-state='open'] {
     background-color: var(--accent-a3);
   }

@@ -1,7 +1,7 @@
 @import './base-button.css';
 
 .rt-Button {
-  &:where(:not(.variant-ghost)) {
+  &:where(:not(.rt-variant-ghost)) {
     & svg {
       opacity: 0.9;
     }
@@ -15,7 +15,7 @@
  ***************************************************************************************************/
 
 .rt-Button {
-  &:where(.variant-ghost) {
+  &:where(.rt-variant-ghost) {
     padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
 
     /* We reset the defined margin variables to avoid inheriting them from a higher component */
@@ -46,65 +46,65 @@
 
 @breakpoints {
   .rt-Button {
-    &.size-1 {
+    &.rt-r-size-1 {
       gap: var(--space-1);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-2);
         padding-right: var(--space-2);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         gap: var(--space-1);
         --button-ghost-padding-x: var(--space-2);
         --button-ghost-padding-y: var(--space-1);
       }
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       gap: var(--space-2);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-3);
         padding-right: var(--space-3);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         gap: var(--space-1);
         --button-ghost-padding-x: var(--space-2);
         --button-ghost-padding-y: var(--space-1);
       }
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       gap: var(--space-3);
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
       letter-spacing: var(--letter-spacing-3);
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-4);
         padding-right: var(--space-4);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         gap: var(--space-2);
         --button-ghost-padding-x: var(--space-3);
         --button-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
     }
-    &.size-4 {
+    &.rt-r-size-4 {
       gap: var(--space-3);
       font-size: var(--font-size-4);
       line-height: var(--line-height-4);
       letter-spacing: var(--letter-spacing-4);
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-5);
         padding-right: var(--space-5);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         gap: var(--space-2);
         --button-ghost-padding-x: var(--space-4);
         --button-ghost-padding-y: var(--space-2);
@@ -119,6 +119,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Button:where(:not(.variant-ghost)) {
+.rt-Button:where(:not(.rt-variant-ghost)) {
   font-weight: var(--font-weight-medium);
 }

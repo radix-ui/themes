@@ -24,13 +24,13 @@
 
 @breakpoints {
   .rt-Container {
-    &.size-1 .rt-ContainerInner {
+    &.rt-r-size-1 .rt-ContainerInner {
       max-width: var(--container-1);
     }
-    &.size-2 .rt-ContainerInner {
+    &.rt-r-size-2 .rt-ContainerInner {
       max-width: var(--container-2);
     }
-    &.size-3 .rt-ContainerInner {
+    &.rt-r-size-3 .rt-ContainerInner {
       max-width: var(--container-3);
     }
   }

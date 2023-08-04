@@ -47,7 +47,11 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
             <DialogPrimitive.Content
               {...contentProps}
               ref={forwardedRef}
-              className={classNames('rt-DialogContent', className, withBreakpoints(size, 'size'))}
+              className={classNames(
+                'rt-DialogContent',
+                className,
+                withBreakpoints(size, 'rt-r-size')
+              )}
             />
           </DialogPrimitive.Overlay>
         </Theme>

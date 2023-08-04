@@ -39,19 +39,19 @@
 
 @breakpoints {
   .rt-DialogContent {
-    &.size-1 {
+    &.rt-r-size-1 {
       --dialog-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --dialog-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --dialog-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
-    &.size-4 {
+    &.rt-r-size-4 {
       --dialog-padding: var(--space-6);
       border-radius: var(--radius-5);
     }

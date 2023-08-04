@@ -17,7 +17,7 @@
 
 @breakpoints {
   .rt-Inset {
-    &.side-top {
+    &.rt-r-side-top {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
@@ -25,8 +25,7 @@
       margin-left: var(--margin-left-override);
       margin-right: var(--margin-right-override);
     }
-
-    &.side-bottom {
+    &.rt-r-side-bottom {
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
@@ -34,8 +33,7 @@
       margin-right: var(--margin-right-override);
       margin-bottom: var(--margin-bottom-override);
     }
-
-    &.side-left {
+    &.rt-r-side-left {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
@@ -43,8 +41,7 @@
       margin-bottom: var(--margin-bottom-override);
       margin-left: var(--margin-left-override);
     }
-
-    &.side-right {
+    &.rt-r-side-right {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
@@ -52,22 +49,19 @@
       margin-bottom: var(--margin-bottom-override);
       margin-right: var(--margin-right-override);
     }
-
-    &.side-x {
+    &.rt-r-side-x {
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
       margin-left: var(--margin-left-override);
       margin-right: var(--margin-right-override);
     }
-
-    &.side-y {
+    &.rt-r-side-y {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));
       margin-top: var(--margin-top-override);
       margin-bottom: var(--margin-bottom-override);
     }
-
-    &.side-all {
+    &.rt-r-side-all {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding));

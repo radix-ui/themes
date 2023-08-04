@@ -39,8 +39,8 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
         'rt-reset-button',
         'rt-Card',
         className,
-        withBreakpoints(size, 'size'),
-        `variant-${variant}`,
+        withBreakpoints(size, 'rt-r-size'),
+        `rt-variant-${variant}`,
         withMarginProps(marginProps)
       )}
     >

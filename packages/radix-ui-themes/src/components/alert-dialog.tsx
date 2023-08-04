@@ -53,7 +53,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
                 'rt-DialogContent',
                 'rt-AlertDialogContent',
                 className,
-                withBreakpoints(size, 'size')
+                withBreakpoints(size, 'rt-r-size')
               )}
             />
           </AlertDialogPrimitive.Overlay>

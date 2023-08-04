@@ -50,7 +50,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
               'rt-PopperContent',
               'rt-PopoverContent',
               className,
-              withBreakpoints(size, 'size')
+              withBreakpoints(size, 'rt-r-size')
             )}
           />
         </Theme>

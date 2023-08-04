@@ -4,10 +4,16 @@
 
 - General:
   - Gatekeep hover styles behind `@media (hover: hover)`
+  - No class is unprefixed anymore (apart from `.radix-themes` and `.light`, `.light-theme`, `.dark`, `.dark-theme`)
+  - Everything is prefixed with `.rt-`
+  - Every responsive class is always prefixed with `.rt-r-`
+- `Button`, `IconButton`:
+  - Fix `ghost` variant responsive bug
 - `Switch`:
   - Fix the animation when switching between checked and unchecked state
 - `Theme`:
   - Fix issue when `hasBackground={false}` wasn't respected
+  - Root vs. Nested `Theme` delineation now uses `data-is-root-theme="true|false"` instead of `.root`
 
 ## 0.0.40
 

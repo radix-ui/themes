@@ -1,13 +1,13 @@
 @breakpoints {
-  .rt-ta-left {
+  .rt-r-ta-left {
     text-align: left;
   }
 
-  .rt-ta-center {
+  .rt-r-ta-center {
     text-align: center;
   }
 
-  .rt-ta-right {
+  .rt-r-ta-right {
     text-align: right;
   }
 }

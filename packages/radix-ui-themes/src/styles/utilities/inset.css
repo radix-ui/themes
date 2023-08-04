@@ -1,81 +1,81 @@
 @breakpoints {
-  .rt-inset-auto {
+  .rt-r-inset-auto {
     inset: auto;
   }
 
-  .rt-top-auto {
+  .rt-r-top-auto {
     top: auto;
   }
 
-  .rt-right-auto {
+  .rt-r-right-auto {
     right: auto;
   }
 
-  .rt-bottom-auto {
+  .rt-r-bottom-auto {
     bottom: auto;
   }
 
-  .rt-left-auto {
+  .rt-r-left-auto {
     left: auto;
   }
 
-  .rt-inset-0 {
+  .rt-r-inset-0 {
     inset: 0;
   }
 
-  .rt-top-0 {
+  .rt-r-top-0 {
     top: 0;
   }
 
-  .rt-right-0 {
+  .rt-r-right-0 {
     right: 0;
   }
 
-  .rt-bottom-0 {
+  .rt-r-bottom-0 {
     bottom: 0;
   }
 
-  .rt-left-0 {
+  .rt-r-left-0 {
     left: 0;
   }
 
-  .rt-inset-50\% {
+  .rt-r-inset-50\% {
     inset: 50%;
   }
 
-  .rt-top-50\% {
+  .rt-r-top-50\% {
     top: 50%;
   }
 
-  .rt-right-50\% {
+  .rt-r-right-50\% {
     right: 50%;
   }
 
-  .rt-bottom-50\% {
+  .rt-r-bottom-50\% {
     bottom: 50%;
   }
 
-  .rt-left-50\% {
+  .rt-r-left-50\% {
     left: 50%;
   }
 
-  .rt-inset-100\% {
+  .rt-r-inset-100\% {
     inset: 100%;
   }
 
-  .rt-top-100\% {
+  .rt-r-top-100\% {
     top: 100%;
   }
 
-  .rt-right-100\% {
+  .rt-r-right-100\% {
     right: 100%;
   }
 
-  .rt-bottom-100\% {
+  .rt-r-bottom-100\% {
     bottom: 100%;
   }
 
-  .rt-left-100\% {
+  .rt-r-left-100\% {
     left: 100%;
   }
 }

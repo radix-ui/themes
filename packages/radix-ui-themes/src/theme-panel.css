@@ -1,11 +1,8 @@
-:root,
-.light,
-.light-theme {
+.radix-themes {
   --theme-panel--focus-ring-color: black;
 }
-
-.dark,
-.dark-theme {
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --theme-panel--focus-ring-color: white;
 }
 

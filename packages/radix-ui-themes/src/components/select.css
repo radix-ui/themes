@@ -12,7 +12,7 @@
 .rt-SelectIcon {
   flex-shrink: 0;
 
-  .rt-SelectTrigger:where(:not(.variant-ghost)) & {
+  .rt-SelectTrigger:where(:not(.rt-variant-ghost)) & {
     opacity: 0.9;
   }
 }
@@ -109,10 +109,10 @@
 .rt-SelectTrigger {
   color: var(--gray-12);
 
-  &:where(:not(.variant-ghost)) {
+  &:where(:not(.rt-variant-ghost)) {
     height: var(--select-trigger-height);
   }
-  &:where(.variant-ghost) {
+  &:where(.rt-variant-ghost) {
     box-sizing: content-box;
     height: fit-content;
     padding: var(--select-trigger-ghost-padding-y) var(--select-trigger-ghost-padding-x);
@@ -147,7 +147,7 @@
 
 @breakpoints {
   .rt-SelectTrigger {
-    &.size-1 {
+    &.rt-r-size-1 {
       --select-trigger-height: var(--space-5);
       gap: 0;
       font-size: var(--font-size-1);
@@ -155,16 +155,16 @@
       letter-spacing: var(--letter-spacing-1);
       border-radius: max(var(--radius-1), var(--radius-full));
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-2);
         padding-right: var(--space-2);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-2);
         --select-trigger-ghost-padding-y: var(--space-1);
       }
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --select-trigger-height: var(--space-6);
       gap: var(--space-1);
       font-size: var(--font-size-2);
@@ -172,16 +172,16 @@
       letter-spacing: var(--letter-spacing-2);
       border-radius: max(var(--radius-2), var(--radius-full));
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-3);
         padding-right: var(--space-3);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-2);
         --select-trigger-ghost-padding-y: var(--space-1);
       }
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --select-trigger-height: var(--space-7);
       gap: var(--space-2);
       font-size: var(--font-size-3);
@@ -189,11 +189,11 @@
       letter-spacing: var(--letter-spacing-3);
       border-radius: max(var(--radius-3), var(--radius-full));
 
-      &:where(:not(.variant-ghost)) {
+      &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-4);
         padding-right: var(--space-4);
       }
-      &:where(.variant-ghost) {
+      &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-3);
         --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
@@ -209,7 +209,7 @@
 
 @breakpoints {
   .rt-SelectContent {
-    &.size-1 {
+    &.rt-r-size-1 {
       --select-content-padding: var(--space-1);
       --select-item-height: var(--space-5);
 
@@ -218,7 +218,7 @@
         letter-spacing: var(--letter-spacing-1);
       }
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --select-content-padding: var(--space-2);
       --select-item-height: var(--space-6);
 
@@ -227,7 +227,7 @@
         letter-spacing: var(--letter-spacing-2);
       }
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --select-content-padding: var(--space-2);
       --select-item-height: var(--space-7);
 
@@ -261,7 +261,7 @@
 
 /* surface */
 
-.rt-SelectTrigger:where(.variant-surface) {
+.rt-SelectTrigger:where(.rt-variant-surface) {
   color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -299,7 +299,7 @@
 	;
 }
 
-.rt-SelectTrigger:where(.variant-classic) {
+.rt-SelectTrigger:where(.rt-variant-classic) {
   color: var(--gray-12);
   background-color: var(--color-surface);
   background-image: linear-gradient(var(--gray-a2), var(--gray-a1));
@@ -341,8 +341,8 @@
 
 /* soft / ghost */
 
-.rt-SelectTrigger:where(.variant-soft),
-.rt-SelectTrigger:where(.variant-ghost) {
+.rt-SelectTrigger:where(.rt-variant-soft),
+.rt-SelectTrigger:where(.rt-variant-ghost) {
   color: var(--accent-12);
 
   &[data-placeholder] {
@@ -356,7 +356,7 @@
     box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
   }
 }
-.rt-SelectTrigger:where(.variant-soft) {
+.rt-SelectTrigger:where(.rt-variant-soft) {
   background-color: var(--accent-a3);
 
   @media (hover: hover) {
@@ -368,7 +368,7 @@
     background-color: var(--accent-a4);
   }
 }
-.rt-SelectTrigger:where(.variant-ghost) {
+.rt-SelectTrigger:where(.rt-variant-ghost) {
   @media (hover: hover) {
     &:where(:hover) {
       background-color: var(--accent-a3);
@@ -393,7 +393,7 @@
     display: none;
   }
 
-  &:where(:not(.variant-ghost)) {
+  &:where(:not(.rt-variant-ghost)) {
     background-color: var(--gray-a3);
   }
 }
@@ -420,12 +420,12 @@
 
 /* solid */
 
-.rt-SelectContent.variant-solid {
+.rt-SelectContent.rt-variant-solid {
   & .rt-SelectItem[data-highlighted] {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) .rt-SelectItem[data-highlighted] {
+  &:where(.rt-high-contrast) .rt-SelectItem[data-highlighted] {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -433,7 +433,7 @@
 
 /* soft */
 
-.rt-SelectContent.variant-soft {
+.rt-SelectContent.rt-variant-soft {
   & .rt-SelectItem[data-highlighted] {
     background-color: var(--accent-a5);
   }

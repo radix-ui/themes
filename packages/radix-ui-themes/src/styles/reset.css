@@ -1,4 +1,4 @@
-.radix-themes.root {
+.radix-themes[data-is-root-theme='true'] {
   /* create new stacking context on the root `Theme` so layered components work out of the box */
   position: relative;
   z-index: 0;

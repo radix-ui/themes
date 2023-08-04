@@ -19,16 +19,16 @@
 
 @breakpoints {
   .rt-Separator {
-    &.size-1 {
+    &.rt-r-size-1 {
       --separator-size: var(--space-4);
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --separator-size: var(--space-6);
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --separator-size: var(--space-9);
     }
-    &.size-4 {
+    &.rt-r-size-4 {
       --separator-size: 100%;
     }
   }

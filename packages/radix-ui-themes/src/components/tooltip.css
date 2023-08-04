@@ -41,7 +41,7 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-TooltipContent.multiline {
+.rt-TooltipContent.rt-multiline {
   max-width: 250px;
   border-radius: var(--radius-2);
 

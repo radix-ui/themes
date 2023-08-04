@@ -29,14 +29,14 @@ const Inset = React.forwardRef<InsetElement, InsetProps>((props, forwardedRef) =
       className={classNames(
         'rt-Inset',
         className,
-        withBreakpoints(side, 'side'),
-        withBreakpoints(p, 'rt-p'),
-        withBreakpoints(px, 'rt-px'),
-        withBreakpoints(py, 'rt-py'),
-        withBreakpoints(pt, 'rt-pt'),
-        withBreakpoints(pr, 'rt-pr'),
-        withBreakpoints(pb, 'rt-pb'),
-        withBreakpoints(pl, 'rt-pl'),
+        withBreakpoints(side, 'rt-r-side'),
+        withBreakpoints(p, 'rt-r-p'),
+        withBreakpoints(px, 'rt-r-px'),
+        withBreakpoints(py, 'rt-r-py'),
+        withBreakpoints(pt, 'rt-r-pt'),
+        withBreakpoints(pr, 'rt-r-pr'),
+        withBreakpoints(pb, 'rt-r-pb'),
+        withBreakpoints(pl, 'rt-r-pl'),
         withMarginProps(marginProps)
       )}
     />

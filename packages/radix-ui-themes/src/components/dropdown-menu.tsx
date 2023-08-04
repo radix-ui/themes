@@ -70,9 +70,9 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               'rt-BaseMenuContent',
               'rt-DropdownMenuContent',
               className,
-              withBreakpoints(size, 'size'),
-              `variant-${variant}`,
-              { 'high-contrast': highContrast }
+              withBreakpoints(size, 'rt-r-size'),
+              `rt-variant-${variant}`,
+              { 'rt-high-contrast': highContrast }
             )}
           >
             <ScrollArea type="auto">
@@ -289,9 +289,9 @@ const DropdownMenuSubContent = React.forwardRef<
             'rt-DropdownMenuContent',
             'rt-DropdownMenuSubContent',
             className,
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`,
-            { 'high-contrast': highContrast }
+            withBreakpoints(size, 'rt-r-size'),
+            `rt-variant-${variant}`,
+            { 'rt-high-contrast': highContrast }
           )}
         >
           <ScrollArea type="auto">

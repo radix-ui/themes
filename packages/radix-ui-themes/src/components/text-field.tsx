@@ -97,8 +97,8 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
         className={classNames(
           'rt-TextFieldSlot',
           className,
-          withBreakpoints(context?.size, 'size'),
-          withBreakpoints(gap, 'rt-gap'),
+          withBreakpoints(context?.size, 'rt-r-size'),
+          withBreakpoints(gap, 'rt-r-gap'),
           withPaddingProps(paddingProps)
         )}
       />
@@ -136,8 +136,8 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
           className={classNames(
             'rt-TextFieldInput',
             className,
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`
+            withBreakpoints(size, 'rt-r-size'),
+            `rt-variant-${variant}`
           )}
         />
         <div

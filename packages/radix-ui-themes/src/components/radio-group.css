@@ -36,11 +36,11 @@
 
 @breakpoints {
   .rt-RadioGroupRoot {
-    &.size-1 {
+    &.rt-r-size-1 {
       --radio-group-item-size: var(--space-4);
       --radio-group-indicator-size: calc(6px * var(--scaling));
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --radio-group-item-size: var(--space-5);
       --radio-group-indicator-size: calc(10px * var(--scaling));
     }
@@ -55,7 +55,7 @@
 
 /* surface */
 
-.rt-RadioGroupRoot.variant-surface {
+.rt-RadioGroupRoot.rt-variant-surface {
   .rt-RadioGroupButton:where([data-state='unchecked']) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -68,7 +68,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
+  &:where(.rt-high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -76,7 +76,7 @@
 
 /* classic */
 
-.rt-RadioGroupRoot.variant-classic {
+.rt-RadioGroupRoot.rt-variant-classic {
   .rt-RadioGroupButton:where([data-state='unchecked']) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
@@ -89,7 +89,7 @@
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
+  &:where(.rt-high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -97,7 +97,7 @@
 
 /* soft */
 
-.rt-RadioGroupRoot.variant-soft {
+.rt-RadioGroupRoot.rt-variant-soft {
   .rt-RadioGroupButton {
     background-color: var(--accent-a5);
   }
@@ -108,7 +108,7 @@
   .rt-RadioGroupButton:where([data-state='checked']) {
     color: var(--accent-11);
   }
-  &:where(.high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
+  &:where(.rt-high-contrast) .rt-RadioGroupButton:where([data-state='checked']) {
     color: var(--accent-12);
   }
 }

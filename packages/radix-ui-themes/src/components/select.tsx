@@ -60,8 +60,8 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
             'rt-reset-button',
             'rt-SelectTrigger',
             className,
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`,
+            withBreakpoints(size, 'rt-r-size'),
+            `rt-variant-${variant}`,
             withMarginProps(marginProps)
           )}
         >
@@ -112,9 +112,9 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
               { 'rt-PopperContent': contentProps.position === 'popper' },
               'rt-SelectContent',
               className,
-              withBreakpoints(size, 'size'),
-              `variant-${variant}`,
-              { 'high-contrast': highContrast }
+              withBreakpoints(size, 'rt-r-size'),
+              `rt-variant-${variant}`,
+              { 'rt-high-contrast': highContrast }
             )}
           >
             <ScrollAreaPrimitive.Root type="auto" className="rt-ScrollAreaRoot">

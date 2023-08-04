@@ -35,9 +35,9 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
       className={classNames(
         'rt-SliderRoot',
         className,
-        withBreakpoints(size, 'size'),
-        `variant-${variant}`,
-        { 'high-contrast': highContrast },
+        withBreakpoints(size, 'rt-r-size'),
+        `rt-variant-${variant}`,
+        { 'rt-high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
     >

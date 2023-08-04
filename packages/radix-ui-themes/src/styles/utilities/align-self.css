@@ -1,21 +1,21 @@
 @breakpoints {
-  .rt-as-start {
+  .rt-r-as-start {
     align-self: flex-start;
   }
 
-  .rt-as-center {
+  .rt-r-as-center {
     align-self: center;
   }
 
-  .rt-as-end {
+  .rt-r-as-end {
     align-self: flex-end;
   }
 
-  .rt-as-baseline {
+  .rt-r-as-baseline {
     align-self: baseline;
   }
 
-  .rt-as-stretch {
+  .rt-r-as-stretch {
     align-self: stretch;
   }
 }

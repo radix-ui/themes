@@ -28,9 +28,9 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
       className={classNames(
         'rt-Badge',
         className,
-        withBreakpoints(size, 'size'),
-        `variant-${variant}`,
-        { 'high-contrast': highContrast },
+        withBreakpoints(size, 'rt-r-size'),
+        `rt-variant-${variant}`,
+        { 'rt-high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
     />

@@ -46,7 +46,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         <ScrollAreaPrimitive.Scrollbar
           data-radius={radius}
           orientation="horizontal"
-          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
+          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'rt-r-size'))}
         >
           <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
         </ScrollAreaPrimitive.Scrollbar>
@@ -56,7 +56,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         <ScrollAreaPrimitive.Scrollbar
           data-radius={radius}
           orientation="vertical"
-          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'size'))}
+          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'rt-r-size'))}
         >
           <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
         </ScrollAreaPrimitive.Scrollbar>

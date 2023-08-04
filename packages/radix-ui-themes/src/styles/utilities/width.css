@@ -1,61 +1,61 @@
 @breakpoints {
-  .rt-w-auto {
+  .rt-r-w-auto {
     width: auto;
   }
 
-  .rt-w-max-content {
+  .rt-r-w-max-content {
     width: max-content;
   }
 
-  .rt-w-min-content {
+  .rt-r-w-min-content {
     width: min-content;
   }
 
-  .rt-w-0 {
+  .rt-r-w-0 {
     width: 0;
   }
 
-  .rt-w-1 {
+  .rt-r-w-1 {
     width: var(--space-1);
   }
 
-  .rt-w-2 {
+  .rt-r-w-2 {
     width: var(--space-2);
   }
 
-  .rt-w-3 {
+  .rt-r-w-3 {
     width: var(--space-3);
   }
 
-  .rt-w-4 {
+  .rt-r-w-4 {
     width: var(--space-4);
   }
 
-  .rt-w-5 {
+  .rt-r-w-5 {
     width: var(--space-5);
   }
 
-  .rt-w-6 {
+  .rt-r-w-6 {
     width: var(--space-6);
   }
 
-  .rt-w-7 {
+  .rt-r-w-7 {
     width: var(--space-7);
   }
 
-  .rt-w-8 {
+  .rt-r-w-8 {
     width: var(--space-8);
   }
 
-  .rt-w-9 {
+  .rt-r-w-9 {
     width: var(--space-9);
   }
 
-  .rt-w-50\% {
+  .rt-r-w-50\% {
     width: 50%;
   }
 
-  .rt-w-100\% {
+  .rt-r-w-100\% {
     width: 100%;
   }
 }

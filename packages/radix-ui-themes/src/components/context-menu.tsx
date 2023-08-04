@@ -69,9 +69,9 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rt-BaseMenuContent',
               'rt-ContextMenuContent',
               className,
-              withBreakpoints(size, 'size'),
-              `variant-${variant}`,
-              { 'high-contrast': highContrast }
+              withBreakpoints(size, 'rt-r-size'),
+              `rt-variant-${variant}`,
+              { 'rt-high-contrast': highContrast }
             )}
           >
             <ScrollArea type="auto">
@@ -288,9 +288,9 @@ const ContextMenuSubContent = React.forwardRef<
             'rt-ContextMenuContent',
             'rt-ContextMenuSubContent',
             className,
-            withBreakpoints(size, 'size'),
-            `variant-${variant}`,
-            { 'high-contrast': highContrast }
+            withBreakpoints(size, 'rt-r-size'),
+            `rt-variant-${variant}`,
+            { 'rt-high-contrast': highContrast }
           )}
         >
           <ScrollArea type="auto">

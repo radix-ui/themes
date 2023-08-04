@@ -1,29 +1,29 @@
 @breakpoints {
-  .rt-lt-normal::before,
-  .rt-lt-end::before,
-  .rt-lt-normal::after,
-  .rt-lt-start::after {
+  .rt-r-lt-normal::before,
+  .rt-r-lt-end::before,
+  .rt-r-lt-normal::after,
+  .rt-r-lt-start::after {
     content: none;
   }
 
-  .rt-lt-start::before,
-  .rt-lt-both::before,
-  .rt-lt-end::after,
-  .rt-lt-both::after {
+  .rt-r-lt-start::before,
+  .rt-r-lt-both::before,
+  .rt-r-lt-end::after,
+  .rt-r-lt-both::after {
     content: '';
     display: table;
   }
 
-  .rt-lt-start::before,
-  .rt-lt-both::before {
+  .rt-r-lt-start::before,
+  .rt-r-lt-both::before {
     margin-bottom: calc(
       var(--leading-trim-start, var(--default-leading-trim-start)) -
         var(--line-height, calc(1em * var(--default-line-height))) / 2
     );
   }
 
-  .rt-lt-end::after,
-  .rt-lt-both::after {
+  .rt-r-lt-end::after,
+  .rt-r-lt-both::after {
     margin-top: calc(
       var(--leading-trim-end, var(--default-leading-trim-end)) -
         var(--line-height, calc(1em * var(--default-line-height))) / 2

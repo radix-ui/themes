@@ -87,15 +87,15 @@
 
 @breakpoints {
   .rt-SliderRoot {
-    &.size-1 {
+    &.rt-r-size-1 {
       --slider-track-size: calc(var(--space-1) * 1.5);
       --slider-thumb-radius: max(var(--radius-1), var(--radius-full));
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --slider-track-size: var(--space-2);
       --slider-thumb-radius: max(var(--radius-2), var(--radius-full));
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --slider-track-size: var(--space-3);
       --slider-thumb-radius: max(var(--radius-3), var(--radius-full));
     }
@@ -110,7 +110,7 @@
 
 /* surface */
 
-.rt-SliderRoot.variant-surface {
+.rt-SliderRoot.rt-variant-surface {
   & .rt-SliderTrack {
     background-color: var(--gray-a3);
     box-shadow: inset 0 0 0 1px var(--gray-a5);
@@ -128,7 +128,7 @@
 
 /* classic */
 
-.rt-SliderRoot.variant-classic {
+.rt-SliderRoot.rt-variant-classic {
   & .rt-SliderTrack {
     background-color: var(--gray-a3);
     box-shadow: var(--shadow-1);
@@ -148,7 +148,7 @@
 
 /* soft */
 
-.rt-SliderRoot.variant-soft {
+.rt-SliderRoot.rt-variant-soft {
   & .rt-SliderTrack {
     background-color: var(--gray-a3);
 
@@ -168,20 +168,18 @@
 
 /* all high-contrast */
 
-:root,
-.light,
-.light-theme {
+.radix-themes {
   --slider-range-background-image__high-contrast: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.62),
     rgba(0, 0, 0, 0.62)
   );
 }
-.dark,
-.dark-theme {
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --slider-range-background-image__high-contrast: none;
 }
-.rt-SliderRoot.high-contrast {
+.rt-SliderRoot.rt-high-contrast {
   & .rt-SliderRange {
     /* blend black and accent */
     background-image: var(--slider-range-background-image__high-contrast);
@@ -190,13 +188,11 @@
 
 /* all disabled Sliders */
 
-:root,
-.light,
-.light-theme {
+.radix-themes {
   --slider-blend-mode__disabled: multiply;
 }
-.dark,
-.dark-theme {
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --slider-blend-mode__disabled: screen;
 }
 

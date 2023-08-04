@@ -56,39 +56,39 @@
 
 @breakpoints {
   .rt-Kbd {
-    &.size-1 {
+    &.rt-r-size-1 {
       font-size: calc(var(--font-size-1) * 0.8);
       --letter-spacing: var(--letter-spacing-1);
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       font-size: calc(var(--font-size-2) * 0.8);
       --letter-spacing: var(--letter-spacing-2);
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       font-size: calc(var(--font-size-3) * 0.8);
       --letter-spacing: var(--letter-spacing-3);
     }
-    &.size-4 {
+    &.rt-r-size-4 {
       font-size: calc(var(--font-size-4) * 0.8);
       --letter-spacing: var(--letter-spacing-4);
     }
-    &.size-5 {
+    &.rt-r-size-5 {
       font-size: calc(var(--font-size-5) * 0.8);
       --letter-spacing: var(--letter-spacing-5);
     }
-    &.size-6 {
+    &.rt-r-size-6 {
       font-size: calc(var(--font-size-6) * 0.8);
       --letter-spacing: var(--letter-spacing-6);
     }
-    &.size-7 {
+    &.rt-r-size-7 {
       font-size: calc(var(--font-size-7) * 0.8);
       --letter-spacing: var(--letter-spacing-7);
     }
-    &.size-8 {
+    &.rt-r-size-8 {
       font-size: calc(var(--font-size-8) * 0.8);
       --letter-spacing: var(--letter-spacing-8);
     }
-    &.size-9 {
+    &.rt-r-size-9 {
       font-size: calc(var(--font-size-9) * 0.8);
       --letter-spacing: var(--letter-spacing-9);
     }

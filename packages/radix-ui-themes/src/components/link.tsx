@@ -28,7 +28,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
         'rt-reset-button',
         'rt-Link',
         className,
-        `underline-${underline}`
+        `rt-underline-${underline}`
       )}
     >
       {asChild ? children : <a>{children}</a>}

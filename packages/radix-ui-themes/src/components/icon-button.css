@@ -7,11 +7,11 @@
  ***************************************************************************************************/
 
 .rt-IconButton {
-  &:where(:not(.variant-ghost)) {
+  &:where(:not(.rt-variant-ghost)) {
     height: var(--base-button-height);
     width: var(--base-button-height);
   }
-  &:where(.variant-ghost) {
+  &:where(.rt-variant-ghost) {
     padding: var(--icon-button-ghost-padding);
 
     /* We reset the defined margin variables to avoid inheriting them from a higher component */
@@ -41,17 +41,17 @@
 }
 
 @breakpoints {
-  .rt-IconButton:where(.variant-ghost) {
-    &.size-1 {
+  .rt-IconButton:where(.rt-variant-ghost) {
+    &.rt-r-size-1 {
       --icon-button-ghost-padding: var(--space-1);
     }
-    &.size-2 {
+    &.rt-r-size-2 {
       --icon-button-ghost-padding: calc(var(--space-1) * 1.5);
     }
-    &.size-3 {
+    &.rt-r-size-3 {
       --icon-button-ghost-padding: var(--space-2);
     }
-    &.size-4 {
+    &.rt-r-size-4 {
       --icon-button-ghost-padding: var(--space-3);
     }
   }

@@ -33,7 +33,7 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
       className={classNames(
         'rt-Box',
         className,
-        withBreakpoints(display, 'rt-display'),
+        withBreakpoints(display, 'rt-r-display'),
         withLayoutProps(layoutProps),
         withMarginProps(marginProps)
       )}
