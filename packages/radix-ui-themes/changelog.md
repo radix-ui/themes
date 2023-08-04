@@ -1,5 +1,10 @@
 # Changelog
 
+## Up Next
+
+- `Theme`:
+  - Fix issue when `hasBackground={false}` wasn't respected
+
 ## 0.0.40
 
 - `ContextMenu`, `DropdownMenu`:

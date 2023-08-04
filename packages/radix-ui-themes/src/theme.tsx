@@ -183,7 +183,9 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const isExplicitAppearance = props.appearance !== undefined && props.appearance !== 'inherit';
   const isExplicitGrayColor = props.grayColor !== undefined;
   const shouldHaveBackground =
-    !isRoot && (hasBackground === true || isExplicitAppearance || isExplicitGrayColor);
+    !isRoot &&
+    (hasBackground === true ||
+      (hasBackground !== false && (isExplicitAppearance || isExplicitGrayColor)));
   return (
     <ThemeContext.Provider
       value={React.useMemo(
