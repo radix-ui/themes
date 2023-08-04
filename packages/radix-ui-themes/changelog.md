@@ -1,11 +1,9 @@
 # Changelog
 
-## 0.0.41
+## Up Next
 
 - General:
   - Gatekeep hover styles behind `@media (hover: hover)`
-- `IconButton`:
-  - Fix `ghost` variant responsive size
 - `Theme`:
   - Fix issue when `hasBackground={false}` wasn't respected
 
