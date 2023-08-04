@@ -1,17 +1,14 @@
 # Changelog
 
-## TODO
+## 0.0.40
 
-- `ThemePanel`:
-  - Remove `inherit` option
-  - Listen to global appearance class changes to sync with control
-
-## Up Next
-
+- `ContextMenu`, `DropdownMenu`:
+  - Fix `asChild` composition with `SubTrigger`, `CheckboxItem`, `RadioItem`
 - `ScrollArea`:
   - Ensure compatibility with `max-height` (make `Root` flex column)
 - `ThemePanel`:
-  - Rename `initiallyHidden` (default `false`) to `defaultOpen` (default `true`)
+  - [**Breaking**] Rename `initiallyHidden` (default `false`) to `defaultOpen` (default `true`)
+  - Remove `inherit` option from `appearance` control (reacts to class changes now)
 
 ## 0.0.39
 
