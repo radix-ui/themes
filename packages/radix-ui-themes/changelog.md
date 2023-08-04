@@ -1,6 +1,6 @@
 # Changelog
 
-## Up Next
+## 0.0.41
 
 - General:
   - Gatekeep hover styles behind `@media (hover: hover)`
