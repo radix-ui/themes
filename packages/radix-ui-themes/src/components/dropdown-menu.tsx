@@ -187,7 +187,7 @@ const DropdownMenuRadioItem = React.forwardRef<
         className
       )}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
         <DotFilledIcon />
       </DropdownMenuPrimitive.ItemIndicator>
@@ -218,7 +218,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
         className
       )}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
         <CheckIcon />
       </DropdownMenuPrimitive.ItemIndicator>
@@ -253,7 +253,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
         className
       )}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
         <ChevronRightIcon />
       </div>
