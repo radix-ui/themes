@@ -15,30 +15,30 @@
         "default": "./dist/esm/index.js"
       }
     },
-    "./index.css": {
-      "import": "./index.css",
-      "require": "./index.css"
+    "./styles.css": {
+      "import": "./styles.css",
+      "require": "./styles.css"
     }
   },
   "sideEffects": false,
   "license": "MIT",
   "files": [
     "dist/**",
-    "index.css"
+    "styles.css"
   ],
   "scripts": {
     "build": "yarn build:js && yarn build:css",
     "build:js": "yarn build:js:cjs && yarn build:js:esm",
     "build:js:cjs": "tsc --project tsconfig-cjs.json",
     "build:js:esm": "tsc --project tsconfig-esm.json",
-    "build:css": "postcss src/styles/index.css -o index.css",
+    "build:css": "postcss src/styles/index.css -o styles.css",
     "dev": "yarn dev:js & yarn dev:css",
     "dev:js": "yarn dev:js:cjs & yarn dev:js:esm",
     "dev:js:cjs": "tsc --project tsconfig-cjs.json --watch",
     "dev:js:esm": "tsc --project tsconfig-esm.json --watch",
-    "dev:css": "postcss src/styles/index.css -o index.css --watch",
+    "dev:css": "postcss src/styles/index.css -o styles.css --watch",
     "lint": "eslint \"src/**/*.ts*\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf index.css"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css"
   },
   "dependencies": {
     "@radix-ui/colors": "2.0.0-alpha.1",
