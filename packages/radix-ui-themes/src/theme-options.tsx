@@ -20,7 +20,7 @@ const radii = ['none', 'small', 'medium', 'large', 'full'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 
 const themePropDefs = {
-  background: { type: 'boolean', default: true },
+  hasBackground: { type: 'boolean', default: true },
   appearance: { type: 'enum', values: appearances, default: 'inherit' },
   accentColor: { type: 'enum', values: accentColors, default: 'indigo' },
   grayColor: { type: 'enum', values: grayColors, default: 'auto' },
@@ -28,7 +28,7 @@ const themePropDefs = {
   radius: { type: 'enum', values: radii, default: 'medium' },
   scaling: { type: 'enum', values: scalings, default: '100%' },
 } satisfies {
-  background: PropDef<boolean>;
+  hasBackground: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;
   accentColor: PropDef<(typeof accentColors)[number]>;
   grayColor: PropDef<(typeof grayColors)[number]>;

@@ -1097,7 +1097,7 @@
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --color-background: var(--gray-1);
 }
-.radix-themes:where([data-background='true']) {
+.radix-themes:where([data-has-background='true']) {
   background-color: var(--color-background);
 }
 
