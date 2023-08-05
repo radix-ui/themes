@@ -10,6 +10,9 @@
 - `Badge`:
   - [**Breaking**] Don't default to `gray` color
   - Recover missing `solid` high-contrast for all colors
+- `Button`, `IconButton`:
+  - Refine when pressed state is applied so that buttons that open a modal panel don’t flash `:active`
+  - Fix disabled `variant="classic"` when pressed
 - `Callout`:
   - Always set `text-align: left`
   - [**Breaking**] Don't default to `gray` color
