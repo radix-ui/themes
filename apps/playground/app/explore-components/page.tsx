@@ -2706,7 +2706,159 @@ export default function ExploreComponents() {
               </Box>
 
               {/* Vlad works here */}
-              <Box m={{ initial: '3', md: '6', xl: '9' }}>…</Box>
+              <Box m={{ initial: '3', md: '6', xl: '9' }}>
+                <Heading mb="5">Text</Heading>
+
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="specimen">
+                    <Box my="6" style={{ width: 760 }}>
+                      <Text as="p" size="5">
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+                    </Box>
+
+                    <Box my="6" style={{ width: 700 }}>
+                      <Text as="p" size="4">
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+                    </Box>
+
+                    <Box my="6" style={{ width: 640 }}>
+                      <Text as="p" size="3">
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+                    </Box>
+
+                    <Box my="6" style={{ width: 572 }}>
+                      <Text as="p" size="2">
+                        The goal of typography is to relate font size, line height, and line width
+                        in a proportional way that maximizes beauty and makes reading easier and
+                        more pleasant. The question is: What proportion(s) will give us the best
+                        results? The golden ratio is often observed in nature where beauty and
+                        utility intersect; perhaps we can use this “divine” proportion to enhance
+                        these attributes in our typography.
+                      </Text>
+                    </Box>
+
+                    <Grid my="7" gap="6" columns="2" align="center" style={{ width: 540 }}>
+                      <Box>
+                        <Text size="3" as="div" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text size="2" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+
+                      <Box>
+                        <Text size="2" as="div" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text size="2" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: '90%' }}>
+                        <Text size="2" as="div" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text size="1" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: '90%' }}>
+                        <Text size="1" as="div" weight="bold">
+                          Quick Look
+                        </Text>
+                        <Text size="1" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+                    </Grid>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(color)}</td>
+                              <td>
+                                <Text mr="4" color={color}>
+                                  The quick brown fox jumps over the lazy dog
+                                </Text>
+                                <Text color={color} highContrast>
+                                  The quick brown fox jumps over the lazy dog
+                                </Text>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {textPropDefs.size.values.map((size) => (
+                            <tr key={size} style={{ verticalAlign: 'baseline' }}>
+                              <td>Size {size}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Text size={size}>The quick brown fox jumps over the lazy dog</Text>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {textPropDefs.weight.values.map((weight) => (
+                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Text weight={weight}>
+                                  The quick brown fox jumps over the lazy dog
+                                </Text>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+              </Box>
             </div>
           </Theme>
         </NextThemeProvider>
