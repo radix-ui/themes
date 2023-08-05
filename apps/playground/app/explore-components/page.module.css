@@ -2,29 +2,40 @@
   border-collapse: collapse;
 }
 
-.table th {
+.table th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
   font-weight: var(--font-weight-regular);
 }
 
-.table th,
-.table td {
+.table tr:not(:global(.rt-TableRow)) {
+  vertical-align: middle;
+}
+
+.table th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.table td:not(:global(.rt-TableCell)) {
   padding: 0;
   padding-right: var(--space-4);
   padding-bottom: var(--space-4);
   text-align: center;
 }
 
-.table tbody tr td:first-child {
+.table tbody tr td:first-child:not(:global(.rt-TableCell)) {
   padding-left: 0;
   padding-right: var(--space-4);
   min-width: 100px;
   text-align: left;
 }
 
-.table thead th,
-.table tbody tr td:first-child {
+.table thead th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.table tbody tr td:first-child:not(:global(.rt-TableCell)) {
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
   line-height: var(--line-height-1);
   color: var(--gray-11);
+}
+
+.table :global(.rt-TextFieldRoot) {
+  width: 180px;
+}
+.table :global(.rt-CalloutRoot) {
+  white-space: nowrap;
 }
