@@ -9,6 +9,7 @@
   - [**Breaking**] Don't default to `gray` color
 - `Badge`:
   - [**Breaking**] Don't default to `gray` color
+  - Recover missing `solid` high-contrast for all colors
 - `Callout`:
   - Always set `text-align: left`
   - [**Breaking**] Don't default to `gray` color
