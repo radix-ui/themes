@@ -2,7 +2,7 @@ import { colorProp, highContrastProp, radiusProp } from '../helpers';
 import { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
-const variants = ['surface', 'classic', 'soft'] as const;
+const variants = ['classic', 'surface', 'soft'] as const;
 
 const switchPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },

@@ -1682,6 +1682,150 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Switch</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {switchPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} />
+                                  <Switch variant={variant} defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} highContrast defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} color="gray" />
+                                  <Switch variant={variant} color="gray" defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch
+                                    variant={variant}
+                                    color="gray"
+                                    highContrast
+                                    defaultChecked
+                                  />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} disabled />
+                                  <Switch variant={variant} disabled defaultChecked ml="4" />
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {switchPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {switchPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Switch variant={variant} color={color} />
+                                    <Switch variant={variant} color={color} defaultChecked />
+                                    <Switch
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultChecked
+                                    />
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {switchPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {switchPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {switchPropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {switchPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <Flex align="center" justify="start" gap="4">
+                                        <Switch
+                                          size={size}
+                                          variant={variant}
+                                          radius={radius}
+                                          defaultChecked
+                                        />
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Text Field</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
