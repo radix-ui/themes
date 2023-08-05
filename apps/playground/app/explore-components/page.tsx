@@ -2128,92 +2128,39 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
 
-                  {/* <TabsContent value="all-sizes">
+                  <TabsContent value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
                           <tr>
                             <th />
-                            {textAreaPropDefs.radius.values.map((radius) => (
-                              <th key={radius} style={{ textAlign: 'left' }}>
-                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                            {textAreaPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
                               </th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {textAreaPropDefs.variant.values.map((variant, index) => (
-                            <React.Fragment key={variant}>
-                              {index > 0 && (
-                                <tr>
-                                  <td>&nbsp;</td>
-                                </tr>
-                              )}
-                              <tr>
-                                <td>Size 1</td>
-                                {textAreaPropDefs.radius.values.map((radius) => (
-                                  <td key={radius}>
-                                    <TextFieldRoot
-                                      size="1"
-                                      variant={variant}
-                                      radius={radius}
-                                      style={{ width: 140 }}
-                                    >
-                                      <TextFieldSlot>
-                                        <MagnifyingGlassIcon width="14" height="14" />
-                                      </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
-                                    </TextFieldRoot>
-                                  </td>
-                                ))}
-                              </tr>
-                              <tr>
-                                <td>Size 2</td>
-                                {textAreaPropDefs.radius.values.map((radius) => (
-                                  <td key={radius}>
-                                    <TextFieldRoot
-                                      size="2"
-                                      variant={variant}
-                                      radius={radius}
-                                      style={{ width: 160 }}
-                                    >
-                                      <TextFieldSlot>
-                                        <MagnifyingGlassIcon width="16" height="16" />
-                                      </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
-                                      <TextFieldSlot>
-                                        <IconButton variant="ghost" color="gray" size="1">
-                                          <InfoCircledIcon />
-                                        </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
-                                  </td>
-                                ))}
-                              </tr>
-                              <tr>
-                                <td>Size 3</td>
-                                {textAreaPropDefs.radius.values.map((radius) => (
-                                  <td key={radius}>
-                                    <TextFieldRoot size="3" variant={variant} radius={radius}>
-                                      <TextFieldSlot>
-                                        <MagnifyingGlassIcon width="18" height="18" />
-                                      </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
-                                      <TextFieldSlot>
-                                        <IconButton variant="ghost" color="gray" size="2">
-                                          <InfoCircledIcon />
-                                        </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
-                                  </td>
-                                ))}
-                              </tr>
-                            </React.Fragment>
+                          {textAreaPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {textAreaPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <TextArea
+                                    size={size}
+                                    variant={variant}
+                                    placeholder="Reply to comment"
+                                    style={{ width: 120 + Number(size) * 20 }}
+                                  />
+                                </td>
+                              ))}
+                            </tr>
                           ))}
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent> */}
+                  </TabsContent>
                 </TabsRoot>
 
                 <Heading mb="5">Table</Heading>
