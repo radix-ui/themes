@@ -33,6 +33,7 @@
   color: var(--gray-11);
 }
 
+.table :global(.rt-TextArea),
 .table :global(.rt-TextFieldRoot) {
   width: 180px;
 }

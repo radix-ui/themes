@@ -1175,6 +1175,181 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Text Area</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th>Accent</th>
+                            <th>Gray</th>
+                            <th>Disabled</th>
+                            <th>Read-only</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {textAreaPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <TextArea variant={variant} placeholder="Reply to comment" />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  color="gray"
+                                  placeholder="Reply to comment"
+                                />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  placeholder="Reply to comment"
+                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                  disabled
+                                />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  placeholder="Reply to comment"
+                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                  readOnly
+                                />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {textAreaPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {textAreaPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <TextArea
+                                    color={color}
+                                    variant={variant}
+                                    placeholder="Reply to comment"
+                                  />
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  {/* <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {textAreaPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {textAreaPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              <tr>
+                                <td>Size 1</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextFieldRoot
+                                      size="1"
+                                      variant={variant}
+                                      radius={radius}
+                                      style={{ width: 140 }}
+                                    >
+                                      <TextFieldSlot>
+                                        <MagnifyingGlassIcon width="14" height="14" />
+                                      </TextFieldSlot>
+                                      <TextFieldInput placeholder="Search" />
+                                    </TextFieldRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 2</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextFieldRoot
+                                      size="2"
+                                      variant={variant}
+                                      radius={radius}
+                                      style={{ width: 160 }}
+                                    >
+                                      <TextFieldSlot>
+                                        <MagnifyingGlassIcon width="16" height="16" />
+                                      </TextFieldSlot>
+                                      <TextFieldInput placeholder="Search" />
+                                      <TextFieldSlot>
+                                        <IconButton variant="ghost" color="gray" size="1">
+                                          <InfoCircledIcon />
+                                        </IconButton>
+                                      </TextFieldSlot>
+                                    </TextFieldRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 3</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextFieldRoot size="3" variant={variant} radius={radius}>
+                                      <TextFieldSlot>
+                                        <MagnifyingGlassIcon width="18" height="18" />
+                                      </TextFieldSlot>
+                                      <TextFieldInput placeholder="Search" />
+                                      <TextFieldSlot>
+                                        <IconButton variant="ghost" color="gray" size="2">
+                                          <InfoCircledIcon />
+                                        </IconButton>
+                                      </TextFieldSlot>
+                                    </TextFieldRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent> */}
+                </TabsRoot>
+
                 <Heading mb="5">Table</Heading>
                 <Box my="6" style={{ whiteSpace: 'nowrap' }}>
                   <table className={styles.table}>

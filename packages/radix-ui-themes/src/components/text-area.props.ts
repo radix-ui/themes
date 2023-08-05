@@ -2,7 +2,7 @@ import { colorProp } from '../helpers';
 import { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
-const variants = ['surface', 'classic', 'soft'] as const;
+const variants = ['classic', 'surface', 'soft'] as const;
 
 const textAreaPropDefs = {
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
