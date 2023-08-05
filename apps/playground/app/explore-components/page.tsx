@@ -1682,6 +1682,136 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Checkbox</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {checkboxPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} />
+                                  <Checkbox variant={variant} defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} highContrast defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} color="gray" />
+                                  <Checkbox variant={variant} color="gray" defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox
+                                    variant={variant}
+                                    color="gray"
+                                    highContrast
+                                    defaultChecked
+                                  />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} disabled />
+                                  <Checkbox variant={variant} disabled defaultChecked />
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {checkboxPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {checkboxPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Checkbox variant={variant} color={color} />
+                                    <Checkbox variant={variant} color={color} defaultChecked />
+                                    <Checkbox
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultChecked
+                                    />
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {checkboxPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {checkboxPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {checkboxPropDefs.variant.values.map((variant) => (
+                                <td key={variant} style={{ textAlign: 'left' }}>
+                                  <Flex align="center" justify="start" gap="4">
+                                    <Checkbox size={size} variant={variant} defaultChecked />
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Switch</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
@@ -1734,7 +1864,7 @@ export default function ExploreComponents() {
                               <td>
                                 <Flex align="center" justify="center" gap="4">
                                   <Switch variant={variant} disabled />
-                                  <Switch variant={variant} disabled defaultChecked ml="4" />
+                                  <Switch variant={variant} disabled defaultChecked />
                                 </Flex>
                               </td>
                             </tr>
