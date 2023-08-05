@@ -166,18 +166,14 @@ import {
   Tooltip,
   //
   // helpers:
-  themeAccentColorsGrouped,
+  themeAccentColorsOrdered,
   //
   ThemePanel,
-  themeAccentColorsOrdered,
-  useThemeContext,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
   ArrowRightIcon,
-  BookmarkIcon,
   CaretDownIcon,
-  DotsHorizontalIcon,
   InfoCircledIcon,
   MagnifyingGlassIcon,
   StarIcon,
