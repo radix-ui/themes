@@ -1812,6 +1812,178 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Radio Group</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radioGroupPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <RadioGroupRoot variant={variant}>
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                  <RadioGroupRoot variant={variant} defaultValue="value">
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <RadioGroupRoot
+                                    variant={variant}
+                                    highContrast
+                                    defaultValue="value"
+                                  >
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <RadioGroupRoot variant={variant} color="gray">
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                  <RadioGroupRoot
+                                    variant={variant}
+                                    color="gray"
+                                    defaultValue="value"
+                                  >
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <RadioGroupRoot
+                                    variant={variant}
+                                    color="gray"
+                                    highContrast
+                                    defaultValue="value"
+                                  >
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <RadioGroupRoot variant={variant} disabled>
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                  <RadioGroupRoot variant={variant} disabled defaultValue="value">
+                                    <RadioGroupItem value="value" />
+                                  </RadioGroupRoot>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {radioGroupPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {radioGroupPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <RadioGroupRoot variant={variant} color={color}>
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      color={color}
+                                      defaultValue="value"
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+
+                                    <RadioGroupRoot
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultValue="value"
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {radioGroupPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {radioGroupPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {radioGroupPropDefs.variant.values.map((variant) => (
+                                <td key={variant} style={{ textAlign: 'left' }}>
+                                  <Flex align="center" justify="start" gap="4">
+                                    <RadioGroupRoot
+                                      size={size}
+                                      variant={variant}
+                                      defaultValue="value"
+                                    >
+                                      <RadioGroupItem value="value" />
+                                    </RadioGroupRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Switch</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
