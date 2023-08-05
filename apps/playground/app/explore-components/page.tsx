@@ -1846,7 +1846,7 @@ export default function ExploreComponents() {
                 </Box>
 
                 <Heading mb="5">Tabs</Heading>
-                <Flex gap="8" align="end">
+                <Flex gap="8" align="end" mb="9">
                   {tabsListPropDefs.size.values.map((size) => (
                     <TabsRoot key={size} defaultValue="account" activationMode="manual">
                       <TabsList size={size}>
@@ -1857,6 +1857,18 @@ export default function ExploreComponents() {
                     </TabsRoot>
                   ))}
                 </Flex>
+
+                <Heading mb="5">Aspect Ratio</Heading>
+                <Grid columns="4" gap="4" mb="9">
+                  {['1 / 2', '1 / 1', '16 / 9', '2 / 1'].map((ratio) => (
+                    <div key={ratio}>
+                      <Text as="p" size="1" color="gray" mb="2">
+                        Ratio: {ratio.replace('/', 'x')}
+                      </Text>
+                      <AspectRatio ratio={eval(ratio)}>{aspectRatioImage}</AspectRatio>
+                    </div>
+                  ))}
+                </Grid>
               </Box>
 
               {/* Vlad works here */}
@@ -1984,6 +1996,14 @@ function ExampleSelectContent() {
     </>
   );
 }
+
+const aspectRatioImage = (
+  <img
+    src="https://images.unsplash.com/photo-1479030160180-b1860951d696?&auto=format&fit=crop&w=1200&q=80"
+    alt="A photo of a blue sky opening up from within a red canyon."
+    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+  />
+);
 
 function buttonSizeToIconSize(buttonSize: (typeof buttonPropDefs.size.values)[number]) {
   if (buttonSize === '1' || buttonSize === '2') return { width: 16, height: 16 };
