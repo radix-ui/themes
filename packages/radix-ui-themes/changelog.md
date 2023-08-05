@@ -8,6 +8,8 @@
   - Fix text fallback size regression
 - `Table`:
   - Fix vertical-align and text-align regression
+- `TextField`, `TextArea`:
+  - Tweak `soft` variant when read-only
 
 ## 0.0.41
 
