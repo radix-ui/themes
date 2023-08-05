@@ -172,6 +172,7 @@ import {
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import { ArrowRightIcon, BookmarkIcon } from '@radix-ui/react-icons';
+import styles from './page.module.css';
 
 export default function ExploreComponents() {
   return (
@@ -184,170 +185,132 @@ export default function ExploreComponents() {
 
               <Box m="9">
                 <Heading mb="5">Button</Heading>
-                <TabsRoot defaultValue="accent-color">
+                <TabsRoot defaultValue="examples">
                   <TabsList size="2">
-                    <TabsTrigger value="accent-color">Accent color</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="radius">Radius</TabsTrigger>
+                    <TabsTrigger value="examples">Examples</TabsTrigger>
+                    <TabsTrigger value="variant-color">Variant & Color</TabsTrigger>
+                    <TabsTrigger value="size-radius">Size & Radius</TabsTrigger>
                   </TabsList>
-                  <TabsContent value="accent-color">
+                  <TabsContent value="examples">
                     <Box my="6">
-                      <TableRoot variant="surface" size="3" style={{ width: 'auto' }}>
-                        <TableHeader>
-                          <TableRow align="center">
-                            <TableColumnHeaderCell />
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
                             {buttonPropDefs.size.values.map((size) => (
-                              <TableColumnHeaderCell key={size} align="center">
-                                Size {size}
-                              </TableColumnHeaderCell>
+                              <th key={size}>Size {size}</th>
                             ))}
-                            <TableColumnHeaderCell align="center">
-                              + High-contrast
-                            </TableColumnHeaderCell>
-                            <TableColumnHeaderCell align="center">Gray</TableColumnHeaderCell>
-                            <TableColumnHeaderCell align="center">
-                              + High-contrast
-                            </TableColumnHeaderCell>
-                            <TableColumnHeaderCell align="center">Disabled</TableColumnHeaderCell>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
+                            <th>+ High-contrast</th>
+                            <th>Gray</th>
+                            <th>+ High-contrast</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
                           {buttonPropDefs.variant.values.map((variant) => (
-                            <TableRow key={variant} align="center">
-                              <TableRowHeaderCell width="160px">
-                                {upperFirst(variant)}
-                              </TableRowHeaderCell>
-
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
                               {buttonPropDefs.size.values.map((size) => (
-                                <TableCell key={size} align="center">
+                                <td key={size}>
                                   <Button variant={variant} size={size}>
                                     Next <ArrowRightIcon />
                                   </Button>
-                                </TableCell>
+                                </td>
                               ))}
-
-                              <TableCell align="center">
+                              <td>
                                 <Button variant={variant} highContrast>
                                   Next <ArrowRightIcon />
                                 </Button>
-                              </TableCell>
-
-                              <TableCell align="center">
+                              </td>
+                              <td>
                                 <Button variant={variant} color="gray">
                                   Next <ArrowRightIcon />
                                 </Button>
-                              </TableCell>
-
-                              <TableCell align="center">
+                              </td>
+                              <td>
                                 <Button variant={variant} color="gray" highContrast>
                                   Next <ArrowRightIcon />
                                 </Button>
-                              </TableCell>
-
-                              <TableCell align="center">
+                              </td>
+                              <td>
                                 <Button disabled>
                                   Next <ArrowRightIcon />
                                 </Button>
-                              </TableCell>
-                            </TableRow>
+                              </td>
+                            </tr>
                           ))}
-
-                          {/* <TableRow align="center">
-                            <TableRowHeaderCell width="160px">Accent color</TableRowHeaderCell>
-                            {buttonPropDefs.variant.values.map((variant) => (
-                              <TableCell key={variant} align="center">
-                                <Flex direction="column" gap="4" align="center">
-                                  {buttonPropDefs.size.values.map((size) => (
-                                    <Button key={size} variant={variant} size={size}>
-                                      <BookmarkIcon /> Bookmark
-                                    </Button>
-                                  ))}
-                                </Flex>
-                              </TableCell>
-                            ))}
-                          </TableRow>
-
-                          <TableRow align="center">
-                            <TableRowHeaderCell width="160px">+ High-contrast</TableRowHeaderCell>
-                            {buttonPropDefs.variant.values.map((variant) => (
-                              <TableCell key={variant} align="center">
-                                <Button variant={variant} highContrast>
-                                  <BookmarkIcon /> Bookmark
-                                </Button>
-                              </TableCell>
-                            ))}
-                          </TableRow>
-
-                          <TableRow align="center">
-                            <TableRowHeaderCell width="160px">Gray</TableRowHeaderCell>
-                            {buttonPropDefs.variant.values.map((variant) => (
-                              <TableCell key={variant} align="center">
-                                <Button variant={variant} color="gray">
-                                  <BookmarkIcon /> Bookmark
-                                </Button>
-                              </TableCell>
-                            ))}
-                          </TableRow>
-
-                          <TableRow align="center">
-                            <TableRowHeaderCell width="160px">+ High-contrast</TableRowHeaderCell>
-                            {buttonPropDefs.variant.values.map((variant) => (
-                              <TableCell key={variant} align="center">
-                                <Button variant={variant} color="gray" highContrast>
-                                  <BookmarkIcon /> Bookmark
-                                </Button>
-                              </TableCell>
-                            ))}
-                          </TableRow>
-
-                          <TableRow align="center">
-                            <TableRowHeaderCell width="160px">Disabled</TableRowHeaderCell>
-                            {buttonPropDefs.variant.values.map((variant) => (
-                              <TableCell key={variant} align="center">
-                                <Button variant={variant} disabled>
-                                  <BookmarkIcon /> Bookmark
-                                </Button>
-                              </TableCell>
-                            ))}
-                          </TableRow> */}
-                        </TableBody>
-                      </TableRoot>
+                        </tbody>
+                      </table>
                     </Box>
                   </TabsContent>
 
-                  <TabsContent value="all-colors">
+                  <TabsContent value="variant-color">
                     <Box my="6">
-                      <TableRoot variant="surface" size="3" style={{ width: 'auto' }}>
-                        <TableHeader>
-                          <TableRow align="center">
-                            <TableColumnHeaderCell />
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
                             {buttonPropDefs.variant.values.map((variant) => (
-                              <TableColumnHeaderCell key={variant} align="center">
-                                {upperFirst(variant)}
-                              </TableColumnHeaderCell>
+                              <th key={variant}>{upperFirst(variant)}</th>
                             ))}
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
+                          </tr>
+                        </thead>
+                        <tbody>
                           {themeAccentColorsOrdered.map((color) => (
-                            <TableRow key={color} align="center">
-                              <TableRowHeaderCell width="160px">
-                                {upperFirst(color)}
-                              </TableRowHeaderCell>
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
                               {buttonPropDefs.variant.values.map((variant) => (
-                                <TableCell key={variant} align="center">
+                                <td key={variant}>
                                   <Button variant={variant} color={color}>
                                     Next <ArrowRightIcon />
                                   </Button>
                                   <Button variant={variant} color={color} highContrast ml="4">
                                     Next <ArrowRightIcon />
                                   </Button>
-                                </TableCell>
+                                </td>
                               ))}
-                            </TableRow>
+                            </tr>
                           ))}
-                        </TableBody>
-                      </TableRoot>
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="size-radius">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {buttonPropDefs.size.values.map((size) => (
+                              <th key={size}>Size {size}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {buttonPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {buttonPropDefs.radius.values.map((radius) => (
+                                <tr key={radius}>
+                                  <td>{upperFirst(radius)}</td>
+                                  {buttonPropDefs.size.values.map((size) => (
+                                    <td key={size}>
+                                      <Button size={size} variant={variant} radius={radius}>
+                                        Next <ArrowRightIcon />
+                                      </Button>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
                     </Box>
                   </TabsContent>
                 </TabsRoot>

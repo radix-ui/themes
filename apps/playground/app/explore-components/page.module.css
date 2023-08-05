@@ -1,0 +1,30 @@
+.table {
+  border-collapse: collapse;
+}
+
+.table th {
+  font-weight: var(--font-weight-regular);
+}
+
+.table th,
+.table td {
+  padding: 0;
+  padding-right: var(--space-4);
+  padding-bottom: var(--space-4);
+  text-align: center;
+}
+
+.table tbody tr td:first-child {
+  padding-left: 0;
+  padding-right: var(--space-4);
+  min-width: 100px;
+  text-align: left;
+}
+
+.table thead th,
+.table tbody tr td:first-child {
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
+  line-height: var(--line-height-1);
+  color: var(--gray-11);
+}
