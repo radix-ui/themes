@@ -45,3 +45,6 @@
 .table :global(.rt-Badge) {
   vertical-align: top;
 }
+.table :global(.rt-SliderRoot) {
+  width: 100px;
+}

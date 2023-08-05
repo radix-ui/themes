@@ -2128,6 +2128,156 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Slider</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {sliderPropDefs.variant.values.map((variant, index) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Slider defaultValue={[33 + 17 * index]} variant={variant} />
+                              </td>
+                              <td>
+                                <Slider
+                                  defaultValue={[33 + 17 * index]}
+                                  variant={variant}
+                                  highContrast
+                                />
+                              </td>
+                              <td>
+                                <Slider
+                                  defaultValue={[33 + 17 * index]}
+                                  variant={variant}
+                                  color="gray"
+                                />
+                              </td>
+                              <td>
+                                <Slider
+                                  defaultValue={[33 + 17 * index]}
+                                  variant={variant}
+                                  color="gray"
+                                  highContrast
+                                />
+                              </td>
+                              <td>
+                                <Slider
+                                  defaultValue={[33 + 17 * index]}
+                                  variant={variant}
+                                  disabled
+                                />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {sliderPropDefs.variant.values.map((variant) => (
+                              <th key={variant} colSpan={2}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color, index) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {sliderPropDefs.variant.values.map((variant) => (
+                                <React.Fragment key={variant}>
+                                  <td>
+                                    <Slider
+                                      defaultValue={[30 + index * 2]}
+                                      color={color}
+                                      variant={variant}
+                                    />
+                                  </td>
+                                  <td>
+                                    <Slider
+                                      defaultValue={[30 + index * 2]}
+                                      color={color}
+                                      variant={variant}
+                                      highContrast
+                                    />
+                                  </td>
+                                </React.Fragment>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {sliderPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {sliderPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {sliderPropDefs.size.values.map((size, sizeIndex) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {sliderPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <Flex align="center" justify="start" gap="4">
+                                        <Slider
+                                          defaultValue={[33 + 17 * sizeIndex]}
+                                          size={size}
+                                          variant={variant}
+                                          radius={radius}
+                                        />
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Text Field</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
