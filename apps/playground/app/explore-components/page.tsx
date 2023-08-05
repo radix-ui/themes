@@ -1900,16 +1900,16 @@ function ExampleDropdownMenuContent() {
 }
 
 function RightClickArea(props: {
-  size: (typeof contextMenuContentPropDefs.size.values)[number];
+  size?: (typeof contextMenuContentPropDefs.size.values)[number];
   variant?: (typeof contextMenuContentPropDefs.variant.values)[number];
   color?: (typeof contextMenuContentPropDefs.color.values)[number];
   highContrast?: boolean;
 }) {
   const {
-    size = '2',
+    size = contextMenuContentPropDefs.size.default,
     variant = contextMenuContentPropDefs.variant.default,
     color = 'accent',
-    highContrast,
+    highContrast = contextMenuContentPropDefs.highContrast.default,
   } = props;
   return (
     <Grid
