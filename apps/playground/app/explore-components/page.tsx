@@ -90,9 +90,12 @@ import {
   HoverCardRoot,
   HoverCardTrigger,
   HoverCardContent,
+  hoverCardContentPropDefs,
   //
   IconButton,
   iconButtonPropDefs,
+  //
+  Inset,
   //
   Kbd,
   kbdPropDefs,
@@ -1522,6 +1525,34 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
                 </TabsRoot>
+
+                <Heading mb="5">Hover Card</Heading>
+                <Flex direction="column" gap="4" mb="9">
+                  {hoverCardContentPropDefs.size.values.map((size) => (
+                    <Text key={size} size={size}>
+                      Technology revolutionized{' '}
+                      <HoverCardRoot>
+                        <HoverCardTrigger>
+                          <Link href="#">typography</Link>
+                        </HoverCardTrigger>
+
+                        <HoverCardContent size={size}>
+                          <Flex>
+                            {hoverCardInsetImage}
+                            <Text as="p" size={size} style={{ maxWidth: 150 + 50 * Number(size) }}>
+                              <Strong>Typography</Strong> is the art and technique of arranging type
+                              to make written language legible, readable and appealing when
+                              displayed. The arrangement of type involves selecting typefaces, point
+                              sizes, line lengths, line-spacing (leading), and letter-spacing
+                              (tracking)…
+                            </Text>
+                          </Flex>
+                        </HoverCardContent>
+                      </HoverCardRoot>{' '}
+                      in the latter twentieth century.
+                    </Text>
+                  ))}
+                </Flex>
 
                 <Heading mb="5">Select</Heading>
                 <TabsRoot defaultValue="theme-colors">
@@ -3008,9 +3039,6 @@ const aspectRatioImage = (
   />
 );
 
-const avatarUrl =
-  'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=160&h=160&dpr=2&q=80';
-
 function buttonSizeToIconSize(buttonSize: (typeof buttonPropDefs.size.values)[number]) {
   if (buttonSize === '1' || buttonSize === '2') return { width: 16, height: 16 };
   if (buttonSize === '3') return { width: 18, height: 18 };
@@ -3021,6 +3049,22 @@ function calloutSizeToIconSize(calloutSize: (typeof calloutRootPropDefs.size.val
   if (calloutSize === '1' || calloutSize === '2') return { width: 16, height: 16 };
   if (calloutSize === '3') return { width: 20, height: 20 };
 }
+
+const hoverCardInsetImage = (
+  <Inset side="left" pr="current">
+    <img
+      src="https://images.unsplash.com/photo-1596299786007-9974099be52b?&auto=format&fit=crop&w=300&q=80"
+      alt="Bold typography"
+      style={{
+        display: 'block',
+        objectFit: 'cover',
+        height: '100%',
+        width: 150,
+        backgroundColor: 'var(--gray-5)',
+      }}
+    />
+  </Inset>
+);
 
 function selectTriggerVariantToSelectContentVariant(
   triggerVariant: (typeof selectTriggerPropDefs.variant.values)[number]
