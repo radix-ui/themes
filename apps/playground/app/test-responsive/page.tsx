@@ -26,7 +26,7 @@ export default function Test() {
         <NextThemeProvider>
           <Theme asChild>
             <div id="root">
-              <Container size="3" px="8">
+              <Container px="8">
                 <Section size="3">
                   <Card
                     size={{ initial: '3', sm: '4', lg: '5' }}
