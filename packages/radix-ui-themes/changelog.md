@@ -4,6 +4,8 @@
 
 - General:
   - [**Breaking**] Fixed typo: `buttonPropsDefs` -> `buttonPropDefs`
+- `Avatar`:
+  - Fix text fallback size regression
 - `Table`:
   - Fix vertical-align and text-align regression
 
