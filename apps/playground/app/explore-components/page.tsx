@@ -170,6 +170,7 @@ import {
   //
   ThemePanel,
   themeAccentColorsOrdered,
+  useThemeContext,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
@@ -181,6 +182,7 @@ import {
   MagnifyingGlassIcon,
   StarIcon,
 } from '@radix-ui/react-icons';
+import { getPeopleForColor } from './people';
 import styles from './page.module.css';
 
 export default function ExploreComponents() {
@@ -196,6 +198,178 @@ export default function ExploreComponents() {
 
               {/* Benoit works here */}
               <Box m={{ initial: '3', md: '6', xl: '9' }}>
+                <Heading mb="5">Avatar</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={5}>Accent</th>
+                            <th colSpan={5}>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {avatarPropDefs.variant.values.map((variant, index) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Avatar
+                                  variant={variant}
+                                  src={getPeopleForColor('gray')[index].image}
+                                  fallback="V"
+                                />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback="V" />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback="BG" />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback={<AvatarIconFallback />} />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} fallback="V" highContrast />
+                              </td>
+                              <td>
+                                <Avatar
+                                  variant={variant}
+                                  color="gray"
+                                  src={getPeopleForColor('gray')[index + 2].image}
+                                  fallback="V"
+                                />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} color="gray" fallback="V" />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} color="gray" fallback="BG" />
+                              </td>
+                              <td>
+                                <Avatar
+                                  variant={variant}
+                                  color="gray"
+                                  fallback={<AvatarIconFallback />}
+                                />
+                              </td>
+                              <td>
+                                <Avatar variant={variant} color="gray" fallback="V" highContrast />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {avatarPropDefs.variant.values.map((variant) => (
+                              <th key={variant} colSpan={5}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {avatarPropDefs.variant.values.map((variant, index) => (
+                                <React.Fragment key={variant}>
+                                  <td>
+                                    <Avatar
+                                      variant={variant}
+                                      color={color}
+                                      src={getPeopleForColor(color)[index].image}
+                                      fallback="V"
+                                    />
+                                  </td>
+                                  <td>
+                                    <Avatar variant={variant} color={color} fallback="V" />
+                                  </td>
+                                  <td>
+                                    <Avatar variant={variant} color={color} fallback="BG" />
+                                  </td>
+                                  <td>
+                                    <Avatar
+                                      variant={variant}
+                                      color={color}
+                                      fallback={<AvatarIconFallback />}
+                                    />
+                                  </td>
+                                  <td>
+                                    <Avatar
+                                      variant={variant}
+                                      color={color}
+                                      fallback="V"
+                                      highContrast
+                                    />
+                                  </td>
+                                </React.Fragment>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {avatarPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {avatarPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {avatarPropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {avatarPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <Avatar
+                                        size={size}
+                                        variant={variant}
+                                        radius={radius}
+                                        fallback="BG"
+                                      />
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Button</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
@@ -1881,6 +2055,23 @@ export default function ExploreComponents() {
   );
 }
 
+function AvatarIconFallback() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-6 h-6"
+    >
+      <path
+        fillRule="evenodd"
+        d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
 function ExampleDropdownMenuContent() {
   return (
     <>
@@ -2004,6 +2195,9 @@ const aspectRatioImage = (
     style={{ objectFit: 'cover', width: '100%', height: '100%' }}
   />
 );
+
+const avatarUrl =
+  'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=160&h=160&dpr=2&q=80';
 
 function buttonSizeToIconSize(buttonSize: (typeof buttonPropDefs.size.values)[number]) {
   if (buttonSize === '1' || buttonSize === '2') return { width: 16, height: 16 };
