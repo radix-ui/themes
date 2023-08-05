@@ -75,7 +75,7 @@ const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwar
       className={classNames(
         'rt-TableRow',
         className,
-        withBreakpoints(align, 'rt-va', {
+        withBreakpoints(align, 'rt-r-va', {
           baseline: 'baseline',
           start: 'top',
           center: 'middle',
@@ -114,7 +114,7 @@ const TableCellImpl = React.forwardRef<TableCellImplElement, TableCellImplProps>
           'rt-TableCell',
           className,
           withPaddingProps(paddingProps),
-          withBreakpoints(justify, 'rt-ta', { start: 'left', center: 'center', end: 'right' })
+          withBreakpoints(justify, 'rt-r-ta', { start: 'left', center: 'center', end: 'right' })
         )}
         style={{ width, ...style }}
       />

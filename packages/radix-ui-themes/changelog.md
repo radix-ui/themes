@@ -4,6 +4,8 @@
 
 - General:
   - [**Breaking**] Fixed typo: `buttonPropsDefs` -> `buttonPropDefs`
+- `Table`:
+  - Fix vertical-align and text-align regression
 
 ## 0.0.41
 
