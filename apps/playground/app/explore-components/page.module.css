@@ -40,3 +40,6 @@
 .table :global(.rt-CalloutRoot) {
   white-space: nowrap;
 }
+.table :global(.rt-Badge) {
+  vertical-align: top;
+}

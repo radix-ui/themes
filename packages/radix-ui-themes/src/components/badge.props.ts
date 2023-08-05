@@ -2,7 +2,7 @@ import { colorProp, highContrastProp, radiusProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2'] as const;
-const variants = ['solid', 'soft', 'outline', 'surface'] as const;
+const variants = ['solid', 'soft', 'surface', 'outline'] as const;
 
 const badgePropDefs = {
   size: { type: 'enum', values: sizes, default: '1', responsive: true },

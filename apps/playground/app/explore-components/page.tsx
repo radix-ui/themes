@@ -370,6 +370,127 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Badge</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th>Accent</th>
+                            <th>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {badgePropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Flex gap="4">
+                                  <Badge variant={variant}>New</Badge>
+                                  <Badge variant={variant} highContrast>
+                                    New
+                                  </Badge>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex gap="4">
+                                  <Badge variant={variant} color="gray">
+                                    New
+                                  </Badge>
+                                  <Badge variant={variant} color="gray" highContrast>
+                                    New
+                                  </Badge>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {badgePropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {badgePropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Badge variant={variant} color={color}>
+                                      New
+                                    </Badge>
+                                    <Badge variant={variant} color={color} highContrast>
+                                      New
+                                    </Badge>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {badgePropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {badgePropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {badgePropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {badgePropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <Badge size={size} variant={variant} radius={radius}>
+                                        New
+                                      </Badge>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Button</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
