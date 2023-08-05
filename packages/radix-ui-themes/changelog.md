@@ -21,6 +21,8 @@
   - Fix vertical-align and text-align regression
 - `TextField`, `TextArea`:
   - Tweak `soft` variant when read-only
+- `Select`:
+  - Tweak `classic` variant shadow in dark mode to better match other form components
 
 ## 0.0.41
 
