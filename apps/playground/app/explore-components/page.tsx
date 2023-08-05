@@ -1073,6 +1073,165 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Context Menu</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {contextMenuContentPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant}>
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} highContrast />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant} highContrast>
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} color="gray" />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant} color="gray">
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} color="gray" highContrast />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant} color="gray" highContrast>
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {contextMenuContentPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {contextMenuContentPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea variant={variant} color={color} />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContent variant={variant} color={color}>
+                                        <ExampleContextMenuContent />
+                                      </ContextMenuContent>
+                                    </ContextMenuRoot>
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                        />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContent
+                                        variant={variant}
+                                        color={color}
+                                        highContrast
+                                      >
+                                        <ExampleContextMenuContent />
+                                      </ContextMenuContent>
+                                    </ContextMenuRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {contextMenuContentPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {contextMenuContentPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {contextMenuContentPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex>
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea size={size} variant={variant} />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContent size={size} variant={variant}>
+                                        <ExampleContextMenuContent />
+                                      </ContextMenuContent>
+                                    </ContextMenuRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Select</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
@@ -1736,6 +1895,69 @@ function ExampleDropdownMenuContent() {
       <DropdownMenuItem shortcut="⌘ ⌫" color="red">
         Delete
       </DropdownMenuItem>
+    </>
+  );
+}
+
+function RightClickArea(props: {
+  size: (typeof contextMenuContentPropDefs.size.values)[number];
+  variant?: (typeof contextMenuContentPropDefs.variant.values)[number];
+  color?: (typeof contextMenuContentPropDefs.color.values)[number];
+  highContrast?: boolean;
+}) {
+  const {
+    size = '2',
+    variant = contextMenuContentPropDefs.variant.default,
+    color = 'accent',
+    highContrast,
+  } = props;
+  return (
+    <Grid
+      data-accent-color={color}
+      height={size === '2' ? '8' : '6'}
+      px="3"
+      style={{
+        placeItems: 'center',
+        borderRadius: 'var(--radius-3)',
+        border: `1px dashed var(--accent-7)`,
+        cursor: 'default',
+        backgroundColor: variant === 'soft' ? 'var(--accent-a2)' : undefined,
+      }}
+    >
+      {/* @ts-ignore */}
+      <Text size={size} color={color} highContrast={highContrast}>
+        Right-click here
+      </Text>
+    </Grid>
+  );
+}
+
+function ExampleContextMenuContent() {
+  return (
+    <>
+      <ContextMenuItem shortcut="⌘ E">Edit</ContextMenuItem>
+      <ContextMenuItem shortcut="⌘ D">Duplicate</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem shortcut="⌘ N">Archive</ContextMenuItem>
+
+      <ContextMenuSub>
+        <ContextMenuSubTrigger>More</ContextMenuSubTrigger>
+        <ContextMenuSubContent>
+          <ContextMenuItem>Move to project…</ContextMenuItem>
+          <ContextMenuItem>Move to folder…</ContextMenuItem>
+
+          <ContextMenuSeparator />
+          <ContextMenuItem>Advanced options…</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+
+      <ContextMenuSeparator />
+      <ContextMenuItem>Share</ContextMenuItem>
+      <ContextMenuItem>Add to favorites</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenuItem>
     </>
   );
 }
