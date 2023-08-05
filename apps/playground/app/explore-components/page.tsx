@@ -1073,6 +1073,161 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Select</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th>Accent</th>
+                            <th>Gray</th>
+                            <th>Placeholder</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectTriggerPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <SelectRoot defaultValue="apple">
+                                  <SelectTrigger variant={variant} />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
+                              </td>
+                              <td>
+                                <SelectRoot defaultValue="apple">
+                                  <SelectTrigger variant={variant} color="gray" />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                    color="gray"
+                                    highContrast
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
+                              </td>
+                              <td>
+                                <SelectRoot>
+                                  <SelectTrigger variant={variant} placeholder="Choose a fruit…" />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
+                              </td>
+                              <td>
+                                <SelectRoot defaultValue="apple" disabled>
+                                  <SelectTrigger variant={variant} />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {selectTriggerPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {selectTriggerPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <SelectRoot defaultValue="apple">
+                                    <SelectTrigger variant={variant} color={color} />
+                                    <SelectContent
+                                      variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                      color={color}
+                                    >
+                                      <ExampleSelectContent />
+                                    </SelectContent>
+                                  </SelectRoot>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {selectTriggerPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectTriggerPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {selectRootPropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {selectTriggerPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <SelectRoot size={size} defaultValue="apple">
+                                        <SelectTrigger variant={variant} radius={radius} />
+                                        <SelectContent
+                                          variant={selectTriggerVariantToSelectContentVariant(
+                                            variant
+                                          )}
+                                        >
+                                          <ExampleSelectContent />
+                                        </SelectContent>
+                                      </SelectRoot>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Text Field</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
@@ -1585,15 +1740,45 @@ function ExampleDropdownMenuContent() {
   );
 }
 
+function ExampleSelectContent() {
+  return (
+    <>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="orange">Orange</SelectItem>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="grapes" disabled>
+          Grape
+        </SelectItem>
+      </SelectGroup>
+
+      <SelectSeparator />
+
+      <SelectGroup>
+        <SelectLabel>Vegetables</SelectLabel>
+        <SelectItem value="carrot">Carrot</SelectItem>
+        <SelectItem value="potato">Potato</SelectItem>
+      </SelectGroup>
+    </>
+  );
+}
+
 function buttonSizeToIconSize(buttonSize: (typeof buttonPropDefs.size.values)[number]) {
   if (buttonSize === '1' || buttonSize === '2') return { width: 16, height: 16 };
   if (buttonSize === '3') return { width: 18, height: 18 };
   if (buttonSize === '4') return { width: 20, height: 20 };
 }
 
-function calloutSizeToIconSize(buttonSize: (typeof calloutRootPropDefs.size.values)[number]) {
-  if (buttonSize === '1' || buttonSize === '2') return { width: 16, height: 16 };
-  if (buttonSize === '3') return { width: 20, height: 20 };
+function calloutSizeToIconSize(calloutSize: (typeof calloutRootPropDefs.size.values)[number]) {
+  if (calloutSize === '1' || calloutSize === '2') return { width: 16, height: 16 };
+  if (calloutSize === '3') return { width: 20, height: 20 };
+}
+
+function selectTriggerVariantToSelectContentVariant(
+  triggerVariant: (typeof selectTriggerPropDefs.variant.values)[number]
+) {
+  if (triggerVariant === 'soft' || triggerVariant === 'ghost') return 'soft';
+  return 'solid';
 }
 
 function upperFirst(string: string) {
