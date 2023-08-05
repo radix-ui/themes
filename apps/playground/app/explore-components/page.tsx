@@ -179,6 +179,7 @@ import {
   DotsHorizontalIcon,
   InfoCircledIcon,
   MagnifyingGlassIcon,
+  StarIcon,
 } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 
@@ -312,6 +313,135 @@ export default function ExploreComponents() {
                                       <Button size={size} variant={variant} radius={radius}>
                                         Next <ArrowRightIcon {...buttonSizeToIconSize(size)} />
                                       </Button>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading mb="5">Icon Button</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {iconButtonPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <IconButton variant={variant}>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
+                              </td>
+                              <td>
+                                <IconButton variant={variant} highContrast>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
+                              </td>
+                              <td>
+                                <IconButton variant={variant} color="gray">
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
+                              </td>
+                              <td>
+                                <IconButton variant={variant} color="gray" highContrast>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
+                              </td>
+                              <td>
+                                <IconButton variant={variant} disabled>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {iconButtonPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {iconButtonPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <IconButton variant={variant} color={color}>
+                                      <StarIcon width="16" height="16" />
+                                    </IconButton>
+                                    <IconButton variant={variant} color={color} highContrast>
+                                      <StarIcon width="16" height="16" />
+                                    </IconButton>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {iconButtonPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {iconButtonPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {iconButtonPropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {iconButtonPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <IconButton size={size} variant={variant} radius={radius}>
+                                        <StarIcon {...buttonSizeToIconSize(size)} />
+                                      </IconButton>
                                     </td>
                                   ))}
                                 </tr>
