@@ -7,7 +7,7 @@ const variants = ['solid', 'soft', 'outline', 'surface'] as const;
 const badgePropDefs = {
   size: { type: 'enum', values: sizes, default: '1', responsive: true },
   variant: { type: 'enum', values: variants, default: 'soft' },
-  color: { ...colorProp, default: 'gray' },
+  color: { ...colorProp, default: undefined },
   highContrast: highContrastProp,
   radius: radiusProp,
 } satisfies {

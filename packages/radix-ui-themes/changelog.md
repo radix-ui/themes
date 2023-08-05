@@ -7,6 +7,8 @@
 - `Avatar`:
   - Fix text fallback size regression
   - [**Breaking**] Don't default to `gray` color
+- `Badge`:
+  - [**Breaking**] Don't default to `gray` color
 - `Callout`:
   - Always set `text-align: left`
   - [**Breaking**] Don't default to `gray` color
