@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
+  text-align: left;
 }
 
 .rt-CalloutIcon {

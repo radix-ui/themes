@@ -6,6 +6,9 @@
   - [**Breaking**] Fixed typo: `buttonPropsDefs` -> `buttonPropDefs`
 - `Avatar`:
   - Fix text fallback size regression
+- `Callout`:
+  - Always set `text-align: left`
+  - [**Breaking**] Don't default to `gray` color
 - `Table`:
   - Fix vertical-align and text-align regression
 - `TextField`, `TextArea`:
