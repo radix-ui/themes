@@ -195,7 +195,7 @@ export default function ExploreComponents() {
               </Box>
 
               {/* Benoit works here */}
-              <Box m="9">
+              <Box m={{ initial: '3', md: '6', xl: '9' }}>
                 <Heading mb="5">Button</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
@@ -1546,7 +1546,7 @@ export default function ExploreComponents() {
               </Box>
 
               {/* Vlad works here */}
-              <Box m="9">…</Box>
+              <Box m={{ initial: '3', md: '6', xl: '9' }}>…</Box>
             </div>
           </Theme>
         </NextThemeProvider>

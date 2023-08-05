@@ -21,7 +21,7 @@
 .table tbody tr td:first-child:not(:global(.rt-TableCell)) {
   padding-left: 0;
   padding-right: var(--space-4);
-  min-width: 100px;
+  min-width: 60px;
   text-align: left;
 }
 
