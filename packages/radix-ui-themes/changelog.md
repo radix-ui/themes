@@ -13,6 +13,10 @@
 - `Callout`:
   - Always set `text-align: left`
   - [**Breaking**] Don't default to `gray` color
+- `Container`:
+  - [**Breaking**] Rename `size="3"` to `size="4"` and change its width to `1136px`.
+  - Make `size="4"` the default (almost matching the previous default width)
+  - Add a new `size="3"` at `880px`
 - `Table`:
   - Fix vertical-align and text-align regression
 - `TextField`, `TextArea`:

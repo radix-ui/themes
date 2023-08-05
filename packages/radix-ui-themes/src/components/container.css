@@ -1,7 +1,8 @@
 .radix-themes {
   --container-1: 448px;
   --container-2: 688px;
-  --container-3: 1168px;
+  --container-3: 880px;
+  --container-4: 1136px;
 }
 
 .rt-Container {
@@ -32,6 +33,9 @@
     }
     &.rt-r-size-3 .rt-ContainerInner {
       max-width: var(--container-3);
+    }
+    &.rt-r-size-4 .rt-ContainerInner {
+      max-width: var(--container-4);
     }
   }
 }
