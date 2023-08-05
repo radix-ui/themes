@@ -784,6 +784,119 @@ export default function ExploreComponents() {
                   </DialogRoot>
                 </Flex>
 
+                <Heading mb="5">Alert Dialog</Heading>
+                <Flex gap="4" align="center" mb="9">
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="1" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="1" style={{ maxWidth: 300 }}>
+                      <AlertDialogTitle size="3" mb="1">
+                        Revoke access
+                      </AlertDialogTitle>
+                      <AlertDialogDescription size="2" mb="3">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="2" mt="3" justify="end">
+                        <AlertDialogCancel>
+                          <Button size="1" variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button size="1" color="red">
+                            Revoke access
+                          </Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="2" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="2" style={{ maxWidth: 400 }}>
+                      <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
+                      <AlertDialogDescription size="2" mb="4">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="3" mt="4" justify="end">
+                        <AlertDialogCancel>
+                          <Button variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button color="red">Revoke access</Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="3" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="3" style={{ maxWidth: 500 }}>
+                      <AlertDialogTitle>Revoke access</AlertDialogTitle>
+                      <AlertDialogDescription size="2" mb="4">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="3" mt="4" justify="end">
+                        <AlertDialogCancel>
+                          <Button variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button color="red">Revoke access</Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="4" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="4">
+                      <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
+                      <AlertDialogDescription size="3" mb="5">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="3" mt="5" justify="end">
+                        <AlertDialogCancel>
+                          <Button size="3" variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button size="3" color="red">
+                            Revoke access
+                          </Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+                </Flex>
+
                 <Heading mb="5">Dropdown Menu</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
