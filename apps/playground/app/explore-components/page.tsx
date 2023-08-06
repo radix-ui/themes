@@ -1996,17 +1996,15 @@ export default function ExploreComponents() {
                           <Link href="#">typography</Link>
                         </HoverCardTrigger>
 
-                        <HoverCardContent size={size}>
+                        <HoverCardContent size={size} side="top">
                           <Flex>
                             <Inset side="left" pr="current">
-                              <InsetImage />
+                              <InsetImage style={{ width: 120 }} />
                             </Inset>
                             <Text as="p" size={size} style={{ maxWidth: 150 + 50 * Number(size) }}>
                               <Strong>Typography</Strong> is the art and technique of arranging type
                               to make written language legible, readable and appealing when
-                              displayed. The arrangement of type involves selecting typefaces, point
-                              sizes, line lengths, line-spacing (leading), and letter-spacing
-                              (tracking)…
+                              displayed.
                             </Text>
                           </Flex>
                         </HoverCardContent>
@@ -2154,7 +2152,7 @@ export default function ExploreComponents() {
                     Inset
                   </Link>
                 </Heading>
-                <Flex my="6">
+                <Box my="6">
                   <Flex my="6" gap="6">
                     <Card size="2">
                       <Flex>
@@ -2180,6 +2178,7 @@ export default function ExploreComponents() {
                       </Flex>
                     </Card>
                   </Flex>
+
                   <Flex my="6" gap="6">
                     <Card size="2" style={{ width: 300 }}>
                       <Inset side="top" pb="current">
@@ -2201,7 +2200,7 @@ export default function ExploreComponents() {
                       </Inset>
                     </Card>
                   </Flex>
-                </Flex>
+                </Box>
 
                 <Heading id="kbd" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#kbd">
