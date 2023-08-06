@@ -2784,10 +2784,7 @@ export default function ExploreComponents() {
                     </div>
                   ))}
                 </Grid>
-              </Box>
 
-              {/* Vlad works here */}
-              <Box m={{ initial: '3', md: '6', xl: '9' }}>
                 <Heading mb="5">Blockquote</Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
