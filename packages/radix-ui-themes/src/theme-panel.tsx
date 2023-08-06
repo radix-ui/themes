@@ -34,17 +34,8 @@ interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImpl
 }
 const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
   ({ defaultOpen = true, ...props }, forwardedRef) => {
-    const [mounted, setMounted] = React.useState(false);
-    const [open, setOpen] = React.useState(false);
-
-    React.useLayoutEffect(() => {
-      setMounted(true);
-      setTimeout(() => setOpen(defaultOpen), 0);
-    }, [defaultOpen]);
-
-    return mounted ? (
-      <ThemePanelImpl {...props} ref={forwardedRef} open={open} onOpenChange={setOpen} />
-    ) : null;
+    const [open, setOpen] = React.useState(defaultOpen);
+    return <ThemePanelImpl {...props} ref={forwardedRef} open={open} onOpenChange={setOpen} />;
   }
 );
 ThemePanel.displayName = 'ThemePanel';

@@ -37,6 +37,9 @@
   - Fix `vertical-align` and `text-align` regression
 - `TextField`, `TextArea`:
   - Tweak `soft` variant when read-only
+- `ThemePanel`
+  - Tweak the design
+  - Don’t animate the panel on initial render if `defaultOpen` is `true`
 - `Select`:
   - Tweak `classic` variant shadow in dark mode to better match other form components
 
