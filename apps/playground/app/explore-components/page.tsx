@@ -627,14 +627,14 @@ export default function ExploreComponents() {
                     Blockquote
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="specimen">
+                <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
                     <TabsTrigger value="all-colors">All colors</TabsTrigger>
                     <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
                     <TabsTrigger value="all-weights">All weights</TabsTrigger>
                   </TabsList>
-                  <TabsContent value="specimen">
+                  <TabsContent value="theme-colors">
                     <Grid my="6" gap="6" columns="auto auto" style={{ whiteSpace: 'nowrap' }}>
                       <Flex direction="column" gap="6">
                         <Text mb="-4" size="1" color="gray" align="center">
