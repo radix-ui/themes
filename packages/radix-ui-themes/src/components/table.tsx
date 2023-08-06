@@ -11,23 +11,23 @@ import {
 
 import type { MarginProps, PaddingProps, GetPropDefTypes } from '../helpers';
 
-type TableRootElement = React.ElementRef<'table'>;
+type TableRootElement = React.ElementRef<'div'>;
 type TableRootOwnProps = GetPropDefTypes<typeof tableRootPropDefs>;
 interface TableRootProps
-  extends React.ComponentPropsWithoutRef<'table'>,
+  extends React.ComponentPropsWithoutRef<'div'>,
     MarginProps,
     TableRootOwnProps {}
 const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
+    children,
     size = tableRootPropDefs.size.default,
     variant = tableRootPropDefs.variant.default,
-    ...contentProps
+    ...rootProps
   } = marginRest;
   return (
-    <table
-      {...contentProps}
+    <div
       ref={forwardedRef}
       className={classNames(
         'rt-TableRoot',
@@ -36,7 +36,10 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
         withBreakpoints(size, 'rt-r-size'),
         withMarginProps(marginProps)
       )}
-    />
+      {...rootProps}
+    >
+      <table className="rt-TableRootTable">{children}</table>
+    </div>
   );
 });
 TableRoot.displayName = 'Table';

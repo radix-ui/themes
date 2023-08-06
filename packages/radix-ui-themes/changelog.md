@@ -38,6 +38,7 @@
 - `Tabs`:
   - Improve text alignment consistency between active and inactive tab trigger states
 - `Table`:
+  - Rework `TableRoot` part so that cell borders don’t overlap the outer table border. This change the `TableRoot`’s topmost element into a `div`.
   - Fix `vertical-align` and `text-align` regression
 - `TextField`, `TextArea`:
   - Tweak `soft` variant when read-only
