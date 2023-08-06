@@ -3323,23 +3323,182 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Popover</Heading>
+                <Flex align="center" gap="4" my="6">
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="1">
+                        <ChatBubbleIcon />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="1" style={{ width: 250 }}>
+                      <Flex gap="3">
+                        <Avatar
+                          size="2"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea
+                            size="1"
+                            placeholder="Write a comment…"
+                            style={{ height: 80 }}
+                          />
+
+                          <Flex gap="3" mt="3" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox />
+                                <Text size="1">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button size="1">Comment</Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="2">
+                        <ChatBubbleIcon />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="2" style={{ width: 320 }}>
+                      <Flex gap="4">
+                        <Avatar
+                          size="3"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
+                          <Flex gap="3" mt="3" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox />
+                                <Text size="2">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button size="2">Comment</Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="3">
+                        <ChatBubbleIcon />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="3" style={{ width: 400 }}>
+                      <Flex gap="4">
+                        <Avatar
+                          size="4"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea
+                            size="3"
+                            placeholder="Write a comment…"
+                            style={{ height: 120 }}
+                          />
+                          <Flex gap="3" mt="3" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox />
+                                <Text size="2">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button size="3">Comment</Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="4">
+                        <ChatBubbleIcon />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="4" style={{ width: 400 }}>
+                      <Flex gap="4">
+                        <Avatar
+                          size="5"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea
+                            size="3"
+                            placeholder="Write a comment…"
+                            style={{ height: 120 }}
+                          />
+                          <Flex gap="3" mt="3" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox size="2" />
+                                <Text size="3">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button size="3">Comment</Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+                </Flex>
+
                 <Heading mb="5">Quote</Heading>
                 <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
                   <Quote style={{ marginLeft: '-0.4em' }}>
                     A man who would letterspace lower case would steal sheep
-                  </Quote>
-                  , Frederic Goudy liked to say. The reason for not letterspacing lower case is that
+                    <span style={{ marginRight: '-0.2em' }}>,</span>
+                  </Quote>{' '}
+                  Frederic Goudy liked to say. The reason for not letterspacing lower case is that
                   it hampers legibility. But there are some lowercase alphabets to which this
                   principle doesn’t apply. Moderate letterspacing can make a face such as lowercase
                   Univers bold condensed more legible rather than less
                 </Box>
 
-                <Heading mb="5">Strong</Heading>
-                <Box mb="9" style={{ width: 'calc(455px * var(--scaling))' }}>
-                  This article needs <Strong>additional citations for verification</Strong>.
-                  Please help improve this article by adding citations to reliable sources.
-                  Unsourced material may be challenged and removed.
-                </Box>
+                <Heading mb="5">Separator</Heading>
+                <Flex my="6" style={{ whiteSpace: 'nowrap' }}>
+                  <Text size="2">
+                    Tools for building high-quality, accessible UI.
+                    <Separator my="3" size="4" />
+                    <Flex gap="3" align="center">
+                      Themes
+                      <Separator orientation="vertical" />
+                      Primitives
+                      <Separator orientation="vertical" />
+                      Icons
+                      <Separator orientation="vertical" />
+                      Colors
+                    </Flex>
+                  </Text>
+                </Flex>
 
                 <Heading mb="5">Text</Heading>
                 <TabsRoot defaultValue="specimen">
@@ -3349,6 +3508,7 @@ export default function ExploreComponents() {
                     <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
                     <TabsTrigger value="all-weights">All weights</TabsTrigger>
                   </TabsList>
+
                   <TabsContent value="specimen">
                     <Box my="6" style={{ width: 'calc(760px * var(--scaling))' }}>
                       <Text as="p" size="5">
@@ -3585,6 +3745,28 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
                 </TabsRoot>
+
+                <Heading mb="5">Tooltip</Heading>
+                <Flex my="6">
+                  <Tooltip content="The quick brown fox">
+                    <Flex
+                      p="4"
+                      tabIndex={0}
+                      align="center"
+                      style={{
+                        outline: 0,
+                        borderRadius: 'var(--radius-3)',
+                        border: `1px dashed var(--accent-7)`,
+                        cursor: 'default',
+                        backgroundColor: 'var(--accent-a2)',
+                      }}
+                    >
+                      <Text size="2" trim="both">
+                        Hover here
+                      </Text>
+                    </Flex>
+                  </Tooltip>
+                </Flex>
               </Box>
             </div>
           </Theme>
@@ -3772,3 +3954,14 @@ function selectTriggerVariantToSelectContentVariant(
 function upperFirst(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+const ChatBubbleIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M12.5 3L2.5 3.00002C1.67157 3.00002 1 3.6716 1 4.50002V9.50003C1 10.3285 1.67157 11 2.5 11H7.50003C7.63264 11 7.75982 11.0527 7.85358 11.1465L10 13.2929V11.5C10 11.2239 10.2239 11 10.5 11H12.5C13.3284 11 14 10.3285 14 9.50003V4.5C14 3.67157 13.3284 3 12.5 3ZM2.49999 2.00002L12.5 2C13.8807 2 15 3.11929 15 4.5V9.50003C15 10.8807 13.8807 12 12.5 12H11V14.5C11 14.7022 10.8782 14.8845 10.6913 14.9619C10.5045 15.0393 10.2894 14.9965 10.1464 14.8536L7.29292 12H2.5C1.11929 12 0 10.8807 0 9.50003V4.50002C0 3.11931 1.11928 2.00003 2.49999 2.00002Z"
+      fill="currentColor"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+    ></path>
+  </svg>
+);
