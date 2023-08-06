@@ -2738,6 +2738,137 @@ export default function ExploreComponents() {
 
               {/* Vlad works here */}
               <Box m={{ initial: '3', md: '6', xl: '9' }}>
+                <Heading mb="5">Blockquote</Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="specimen">
+                    <Grid my="6" gap="6" columns="auto auto" style={{ whiteSpace: 'nowrap' }}>
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Accent
+                        </Text>
+
+                        <Blockquote size="4">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="3">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="2">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+                      </Flex>
+
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Gray
+                        </Text>
+
+                        <Blockquote size="4" color="gray">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="3" color="gray">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="2" color="gray">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+                      </Flex>
+                    </Grid>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Flex gap="6">
+                                  <Blockquote color={color}>
+                                    Perfect typography is certainly the most elusive of all arts.
+                                    <br />
+                                    Sculpture in stone alone comes near it in obstinacy.
+                                  </Blockquote>
+                                  <Blockquote color={color} highContrast>
+                                    Perfect typography is certainly the most elusive of all arts.
+                                    <br />
+                                    Sculpture in stone alone comes near it in obstinacy.
+                                  </Blockquote>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <tbody>
+                          {blockquotePropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Blockquote size={size}>
+                                  Perfect typography is certainly
+                                  <br />
+                                  the most elusive of all arts.
+                                </Blockquote>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {blockquotePropDefs.weight.values.map((weight) => (
+                            <tr key={weight}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Blockquote weight={weight}>
+                                  Perfect typography is certainly the most elusive of all arts.
+                                  <br />
+                                  Sculpture in stone alone comes near it in obstinacy.
+                                </Blockquote>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
                 <Heading mb="5">Code</Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
@@ -2832,7 +2963,7 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="4">
                         {codePropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" width="9">
+                            <Box shrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
@@ -2861,6 +2992,16 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
                 </TabsRoot>
+
+                <Heading mb="5">Em</Heading>
+                <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
+                  Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
+                  since the 1960s, when it was popularized by advertisements for Letraset transfer
+                  sheets. It is typically a corrupted version of{' '}
+                  <Em>De finibus bonorum et malorum</Em>, a 1st-century BC text by the Roman
+                  statesman and philosopher Cicero, with words altered, added, and removed to make
+                  it nonsensical and improper Latin.
+                </Box>
 
                 <Heading mb="5">Heading</Heading>
                 <TabsRoot defaultValue="specimen">
@@ -3023,7 +3164,7 @@ export default function ExploreComponents() {
                         <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                           {kbdPropDefs.size.values.map((size) => (
                             <Flex align="center" key={size}>
-                              <Box shrink="0" width="9">
+                              <Box shrink="0" style={{ width: 80 }}>
                                 <Text color="gray" size="1">
                                   Size {size}
                                 </Text>
@@ -3036,6 +3177,169 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
                 </TabsRoot>
+
+                <Heading mb="5">Link</Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="specimen">
+                    <Grid
+                      my="6"
+                      gap="6"
+                      columns="calc(440px * var(--scaling)) calc(440px * var(--scaling))"
+                    >
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Accent
+                        </Text>
+
+                        <Text as="p" size="4">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="3">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="2">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+                      </Flex>
+
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Gray
+                        </Text>
+
+                        <Text as="p" size="4" color="gray">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="3" color="gray">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="2" color="gray">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+                      </Flex>
+                    </Grid>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Flex gap="6">
+                                  <Link href="/" color={color}>
+                                    Radix Themes
+                                  </Link>
+                                  <Link href="/" color={color} highContrast>
+                                    Radix Themes
+                                  </Link>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <Flex direction="column" gap="4">
+                        {linkPropDefs.size.values.map((size) => (
+                          <Flex align="center" key={size}>
+                            <Box shrink="0" style={{ width: 80 }}>
+                              <Text color="gray" size="1">
+                                Size {size}
+                              </Text>
+                            </Box>
+                            <Link href="/" size={size}>
+                              Radix Themes
+                            </Link>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {blockquotePropDefs.weight.values.map((weight) => (
+                            <tr key={weight}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Link href="/" weight={weight}>
+                                  Radix Themes
+                                </Link>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading mb="5">Quote</Heading>
+                <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
+                  <Quote style={{ marginLeft: '-0.4em' }}>
+                    A man who would letterspace lower case would steal sheep
+                  </Quote>
+                  , Frederic Goudy liked to say. The reason for not letterspacing lower case is that
+                  it hampers legibility. But there are some lowercase alphabets to which this
+                  principle doesn’t apply. Moderate letterspacing can make a face such as lowercase
+                  Univers bold condensed more legible rather than less
+                </Box>
+
+                <Heading mb="5">Strong</Heading>
+                <Box mb="9" style={{ width: 'calc(455px * var(--scaling))' }}>
+                  This article needs <Strong>additional citations for verification</Strong>.
+                  Please help improve this article by adding citations to reliable sources.
+                  Unsourced material may be challenged and removed.
+                </Box>
 
                 <Heading mb="5">Text</Heading>
                 <TabsRoot defaultValue="specimen">
@@ -3250,7 +3554,7 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                         {textPropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" width="9">
+                            <Box shrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
