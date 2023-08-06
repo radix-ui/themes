@@ -10,6 +10,9 @@
 }
 
 .rt-TabsTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   flex-shrink: 0;
   position: relative;
@@ -25,7 +28,6 @@
 
 .rt-TabsTriggerInner {
   position: absolute;
-  letter-spacing: 0.01em;
 
   .rt-TabsTrigger[data-state='active'] & {
     font-weight: var(--font-weight-medium);
@@ -36,7 +38,6 @@
 .rt-TabsTriggerInnerHidden {
   visibility: hidden;
   font-weight: var(--font-weight-medium);
-  letter-spacing: -0.01em;
 }
 
 .rt-TabsContent {

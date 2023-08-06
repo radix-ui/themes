@@ -25,6 +25,8 @@
 - `Kbd`:
   - Don’t inherit font weight.
   - Tweak vertical alignment.
+- `Tabs`:
+  - Improve text alignment consistency between active and inactive tab trigger states
 - `Table`:
   - Fix `vertical-align` and `text-align` regression
 - `TextField`, `TextArea`:
