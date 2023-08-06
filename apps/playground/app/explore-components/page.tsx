@@ -2758,25 +2758,33 @@ export default function ExploreComponents() {
                         </thead>
                         <tbody>
                           {codePropDefs.variant.values.map((variant) => (
-                            <tr key={variant}>
+                            <tr key={variant} style={{ verticalAlign: 'baseline' }}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <Code variant={variant}>console.log()</Code>
+                                <Flex>
+                                  <Code variant={variant}>console.log()</Code>
+                                </Flex>
                               </td>
                               <td>
-                                <Code variant={variant} highContrast>
-                                  console.log()
-                                </Code>
+                                <Flex>
+                                  <Code variant={variant} highContrast>
+                                    console.log()
+                                  </Code>
+                                </Flex>
                               </td>
                               <td>
-                                <Code variant={variant} color="gray">
-                                  console.log()
-                                </Code>
+                                <Flex>
+                                  <Code variant={variant} color="gray">
+                                    console.log()
+                                  </Code>
+                                </Flex>
                               </td>
                               <td>
-                                <Code variant={variant} color="gray" highContrast>
-                                  console.log()
-                                </Code>
+                                <Flex>
+                                  <Code variant={variant} color="gray" highContrast>
+                                    console.log()
+                                  </Code>
+                                </Flex>
                               </td>
                             </tr>
                           ))}
@@ -2798,7 +2806,7 @@ export default function ExploreComponents() {
                         </thead>
                         <tbody>
                           {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
+                            <tr key={color} style={{ verticalAlign: 'baseline' }}>
                               <td>{upperFirst(color)}</td>
                               {codePropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
@@ -2840,7 +2848,7 @@ export default function ExploreComponents() {
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {codePropDefs.weight.values.map((weight) => (
+                          {(['regular', 'bold'] as const).map((weight) => (
                             <tr key={weight} style={{ verticalAlign: 'baseline' }}>
                               <td>{upperFirst(weight)}</td>
                               <td style={{ textAlign: 'left' }}>
