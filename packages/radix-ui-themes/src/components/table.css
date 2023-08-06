@@ -1,7 +1,6 @@
 .rt-TableRootTable {
-  --table-separator-color: var(--gray-a5);
   --table-row-background: transparent;
-  --table-row-border-bottom: inset 0 -1px var(--table-separator-color);
+  --table-row-border-bottom: inset 0 -1px var(--gray-a5);
 
   width: 100%;
   text-align: left;
@@ -96,11 +95,11 @@
 .rt-TableRoot.rt-variant-surface {
   border: 1px solid var(--gray-a5);
   border-radius: var(--table-border-radius);
+  background-color: var(--color-panel);
+  position: relative;
 
   & .rt-TableRootTable {
     overflow: hidden;
-    background-color: var(--color-panel);
-    position: relative;
 
     & :where(.rt-TableHeader) {
       --table-row-background: var(--gray-a2);
