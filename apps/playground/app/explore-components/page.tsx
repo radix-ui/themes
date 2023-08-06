@@ -311,10 +311,10 @@ export default function ExploreComponents() {
                   </Link>
                 </Heading>
                 <Grid columns="4" gap="4" mb="9">
-                  {['1 / 2', '1 / 1', '16 / 9', '2 / 1'].map((ratio) => (
+                  {['2 / 3', '1 / 1', '16 / 9'].map((ratio) => (
                     <div key={ratio}>
                       <Text as="p" size="1" color="gray" mb="2">
-                        Ratio: {ratio.replace('/', 'x')}
+                        {ratio.replace(' / ', ':')}
                       </Text>
                       <AspectRatio ratio={eval(ratio)}>{aspectRatioImage}</AspectRatio>
                     </div>
