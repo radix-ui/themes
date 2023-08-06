@@ -81,6 +81,7 @@
 		inset 0 -6px 4px -4px var(--white-a6)
 	;
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --button__classic__pseudo-inset: 0px;
   --button__classic__border: 0 0 0 1px var(--black-a8);
@@ -217,6 +218,7 @@
   --button-filter__solid-high-contrast-hover: contrast(0.88) saturate(1.1) brightness(1.1);
   --button-filter__solid-high-contrast-active: contrast(0.82) saturate(1.2) brightness(1.16);
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --button-filter__solid-active: brightness(1.08);
 

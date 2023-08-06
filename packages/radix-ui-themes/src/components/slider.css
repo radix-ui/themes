@@ -175,6 +175,7 @@
     rgba(0, 0, 0, 0.62)
   );
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --slider-range-background-image__high-contrast: none;
 }
@@ -190,6 +191,7 @@
 .radix-themes {
   --slider-blend-mode__disabled: multiply;
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --slider-blend-mode__disabled: screen;
 }

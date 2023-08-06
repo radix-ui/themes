@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.43
+
+- General:
+  - Fix nest themes regression (recovering `:is(.dark, .dark-theme)` selector)
+
 ## 0.0.42
 
 - General:

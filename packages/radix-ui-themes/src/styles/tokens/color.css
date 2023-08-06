@@ -156,6 +156,7 @@
   --color-surface: rgba(255, 255, 255, 0.9);
 }
 
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --color-overlay: var(--black-a11);
   --color-panel-solid: var(--gray-2);
@@ -1109,6 +1110,7 @@
 .radix-themes {
   --color-background: white;
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --color-background: var(--gray-1);
 }

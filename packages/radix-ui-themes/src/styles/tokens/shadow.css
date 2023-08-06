@@ -34,6 +34,7 @@
 }
 
 /* prettier-ignore */
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --shadow-1:
     inset 0 1px var(--gray-a4),

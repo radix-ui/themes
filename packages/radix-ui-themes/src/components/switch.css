@@ -112,6 +112,7 @@
 .radix-themes {
   --switch-button-filter__surface-checked-active: brightness(0.92) saturate(1.1);
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --switch-button-filter__surface-checked-active: brightness(1.08);
 }
@@ -158,6 +159,7 @@
 .radix-themes {
   --switch-button-filter__surface-checked-active: brightness(0.92) saturate(1.1);
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --switch-button-filter__surface-checked-active: brightness(1.08);
 }
@@ -202,6 +204,7 @@
 .radix-themes {
   --switch-button-filter__soft-checked-active: contrast(1.2) brightness(0.75) saturate(1.1);
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --switch-button-filter__soft-checked-active: brightness(1.08);
 }
@@ -251,6 +254,7 @@
   --switch-button-filter__high-contrast-checked-active: contrast(0.82) saturate(1.2)
     brightness(1.16);
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --switch-button-overlay__high-contrast-checked: transparent;
   --switch-button-filter__high-contrast-checked-active: brightness(1.08);
@@ -270,6 +274,7 @@
   --switch-thumb-shadow__disabled: 0 0 0 1px var(--gray-6);
   --switch-blend-mode__disabled: multiply;
 }
+:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --switch-thumb-shadow__disabled: 0 0 0 1px var(--gray-5);
   --switch-blend-mode__disabled: screen;
