@@ -26,9 +26,13 @@
   - Add a new `size="3"` at `880px`
 - `Em`:
   - Update default font family.
+- `Inset`:
+  - [**Breaking**] Make the `"all"` the default `side` value
 - `Kbd`:
   - Don’t inherit font weight.
   - Tweak vertical alignment.
+- `ScrollArea`:
+  - Add internal CSS variables to control the scroll bar spacing `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-bottom`, `--scrollarea-scrollbar-margin-left`, `--scrollarea-scrollbar-margin-right`
 - `Quote`:
   - Add styles and corresponding CSS variables (similar to `Em`).
 - `Tabs`:

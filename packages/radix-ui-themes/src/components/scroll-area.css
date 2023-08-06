@@ -1,4 +1,9 @@
 .rt-ScrollAreaRoot {
+  --scrollarea-scrollbar-margin-top: var(--space-1);
+  --scrollarea-scrollbar-margin-bottom: var(--space-1);
+  --scrollarea-scrollbar-margin-left: var(--space-1);
+  --scrollarea-scrollbar-margin-right: var(--space-1);
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -86,7 +91,10 @@
 .rt-ScrollAreaScrollbar {
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-radius);
-  margin: var(--space-1);
+  margin-top: var(--scrollarea-scrollbar-margin-top);
+  margin-bottom: var(--scrollarea-scrollbar-margin-bottom);
+  margin-left: var(--scrollarea-scrollbar-margin-left);
+  margin-right: var(--scrollarea-scrollbar-margin-right);
 
   animation-duration: 150ms;
   animation-timing-function: ease-out;

@@ -4,7 +4,7 @@ const sides = ['all', 'x', 'y', 'top', 'bottom', 'left', 'right'] as const;
 const paddingValues = ['current', '0'] as const;
 
 const insetPropDefs = {
-  side: { type: 'enum', values: sides, default: 'bottom', responsive: true },
+  side: { type: 'enum', values: sides, default: 'all', responsive: true },
   p: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
   px: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
   py: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
