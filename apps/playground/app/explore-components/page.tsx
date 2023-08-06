@@ -204,16 +204,14 @@ export default function ExploreComponents() {
                 <Flex gap="4" align="center" mb="9">
                   <AlertDialogRoot>
                     <AlertDialogTrigger>
-                      <Button size="1" color="red">
-                        Revoke access
-                      </Button>
+                      <Button size="1">Open</Button>
                     </AlertDialogTrigger>
-                    <AlertDialogContent size="1" style={{ maxWidth: 300 }}>
-                      <AlertDialogTitle size="3" mb="1">
+                    <AlertDialogContent size="1" style={{ width: 'calc(300px * var(--scaling))' }}>
+                      <AlertDialogTitle size="2" mb="1">
                         Revoke access
                       </AlertDialogTitle>
-                      <AlertDialogDescription size="2" mb="3">
-                        Are you sure? this application will no longer be accessible and any existing
+                      <AlertDialogDescription size="1" mb="3">
+                        Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
                       </AlertDialogDescription>
 
@@ -225,7 +223,7 @@ export default function ExploreComponents() {
                         </AlertDialogCancel>
                         <AlertDialogAction>
                           <Button size="1" color="red">
-                            Revoke access
+                            Revoke
                           </Button>
                         </AlertDialogAction>
                       </Flex>
@@ -234,14 +232,12 @@ export default function ExploreComponents() {
 
                   <AlertDialogRoot>
                     <AlertDialogTrigger>
-                      <Button size="2" color="red">
-                        Revoke access
-                      </Button>
+                      <Button size="2">Open</Button>
                     </AlertDialogTrigger>
-                    <AlertDialogContent size="2" style={{ maxWidth: 400 }}>
+                    <AlertDialogContent size="2" style={{ width: 'calc(400px * var(--scaling))' }}>
                       <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
                       <AlertDialogDescription size="2" mb="4">
-                        Are you sure? this application will no longer be accessible and any existing
+                        Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
                       </AlertDialogDescription>
 
@@ -252,7 +248,7 @@ export default function ExploreComponents() {
                           </Button>
                         </AlertDialogCancel>
                         <AlertDialogAction>
-                          <Button color="red">Revoke access</Button>
+                          <Button color="red">Revoke</Button>
                         </AlertDialogAction>
                       </Flex>
                     </AlertDialogContent>
@@ -260,14 +256,12 @@ export default function ExploreComponents() {
 
                   <AlertDialogRoot>
                     <AlertDialogTrigger>
-                      <Button size="3" color="red">
-                        Revoke access
-                      </Button>
+                      <Button size="3">Open</Button>
                     </AlertDialogTrigger>
-                    <AlertDialogContent size="3" style={{ maxWidth: 500 }}>
+                    <AlertDialogContent size="3" style={{ width: 'calc(400px * var(--scaling))' }}>
                       <AlertDialogTitle>Revoke access</AlertDialogTitle>
                       <AlertDialogDescription size="2" mb="4">
-                        Are you sure? this application will no longer be accessible and any existing
+                        Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
                       </AlertDialogDescription>
 
@@ -278,7 +272,7 @@ export default function ExploreComponents() {
                           </Button>
                         </AlertDialogCancel>
                         <AlertDialogAction>
-                          <Button color="red">Revoke access</Button>
+                          <Button color="red">Revoke</Button>
                         </AlertDialogAction>
                       </Flex>
                     </AlertDialogContent>
@@ -286,14 +280,12 @@ export default function ExploreComponents() {
 
                   <AlertDialogRoot>
                     <AlertDialogTrigger>
-                      <Button size="4" color="red">
-                        Revoke access
-                      </Button>
+                      <Button size="4">Open</Button>
                     </AlertDialogTrigger>
-                    <AlertDialogContent size="4">
+                    <AlertDialogContent size="4" style={{ width: 'calc(450px * var(--scaling))' }}>
                       <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
                       <AlertDialogDescription size="3" mb="5">
-                        Are you sure? this application will no longer be accessible and any existing
+                        Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
                       </AlertDialogDescription>
 
@@ -305,7 +297,7 @@ export default function ExploreComponents() {
                         </AlertDialogCancel>
                         <AlertDialogAction>
                           <Button size="3" color="red">
-                            Revoke access
+                            Revoke
                           </Button>
                         </AlertDialogAction>
                       </Flex>
