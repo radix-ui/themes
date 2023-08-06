@@ -197,7 +197,11 @@ export default function ExploreComponents() {
 
               {/* Benoit works here */}
               <Box m={{ initial: '3', md: '6', xl: '9' }}>
-                <Heading mb="5">Avatar</Heading>
+                <Heading mb="5" id="avatar">
+                  <Link color="gray" underline="hover" highContrast href="#avatar">
+                    Avatar
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -369,7 +373,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Badge</Heading>
+                <Heading mb="5" id="badge">
+                  <Link color="gray" underline="hover" highContrast href="#badge">
+                    Badge
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -490,7 +498,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Button</Heading>
+                <Heading mb="5" id="button">
+                  <Link color="gray" underline="hover" highContrast href="#button">
+                    Button
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -619,7 +631,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Icon Button</Heading>
+                <Heading mb="5" id="icon-button">
+                  <Link color="gray" underline="hover" highContrast href="#icon-button">
+                    Icon Button
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -748,7 +764,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Callout</Heading>
+                <Heading mb="5" id="callout">
+                  <Link color="gray" underline="hover" highContrast href="#callout">
+                    Callout
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -893,7 +913,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Dialog</Heading>
+                <Heading mb="5" id="dialog">
+                  <Link color="gray" underline="hover" highContrast href="#dialog">
+                    Dialog
+                  </Link>
+                </Heading>
                 <Flex gap="4" align="center" mb="9">
                   <DialogRoot>
                     <DialogTrigger>
@@ -1082,7 +1106,11 @@ export default function ExploreComponents() {
                   </DialogRoot>
                 </Flex>
 
-                <Heading mb="5">Alert Dialog</Heading>
+                <Heading mb="5" id="alert-dialog">
+                  <Link color="gray" underline="hover" highContrast href="#alert-dialog">
+                    Alert Dialog
+                  </Link>
+                </Heading>
                 <Flex gap="4" align="center" mb="9">
                   <AlertDialogRoot>
                     <AlertDialogTrigger>
@@ -1195,7 +1223,11 @@ export default function ExploreComponents() {
                   </AlertDialogRoot>
                 </Flex>
 
-                <Heading mb="5">Dropdown Menu</Heading>
+                <Heading mb="5" id="dropdown-menu">
+                  <Link color="gray" underline="hover" highContrast href="#dropdown-menu">
+                    Dropdown Menu
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -1371,7 +1403,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Context Menu</Heading>
+                <Heading mb="5" id="context-menu">
+                  <Link color="gray" underline="hover" highContrast href="#context-menu">
+                    Context Menu
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -1530,7 +1566,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Hover Card</Heading>
+                <Heading mb="5" id="hover-card">
+                  <Link color="gray" underline="hover" highContrast href="#hover-card">
+                    Hover Card
+                  </Link>
+                </Heading>
                 <Flex direction="column" gap="4" mb="9">
                   {hoverCardContentPropDefs.size.values.map((size) => (
                     <Text key={size} size={size}>
@@ -1560,7 +1600,11 @@ export default function ExploreComponents() {
                   ))}
                 </Flex>
 
-                <Heading mb="5">Select</Heading>
+                <Heading mb="5" id="select">
+                  <Link color="gray" underline="hover" highContrast href="#select">
+                    Select
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -1715,7 +1759,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Checkbox</Heading>
+                <Heading mb="5" id="checkbox">
+                  <Link color="gray" underline="hover" highContrast href="#checkbox">
+                    Checkbox
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -1845,7 +1893,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Radio Group</Heading>
+                <Heading mb="5" id="radio-group">
+                  <Link color="gray" underline="hover" highContrast href="#radio-group">
+                    Radio Group
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -2017,7 +2069,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Switch</Heading>
+                <Heading mb="5" id="switch">
+                  <Link color="gray" underline="hover" highContrast href="#switch">
+                    Switch
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -2161,7 +2217,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Slider</Heading>
+                <Heading mb="5" id="slider">
+                  <Link color="gray" underline="hover" highContrast href="#slider">
+                    Slider
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -2311,7 +2371,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Text Field</Heading>
+                <Heading mb="5" id="text-field">
+                  <Link color="gray" underline="hover" highContrast href="#text-field">
+                    Text Field
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -2526,7 +2590,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Text Area</Heading>
+                <Heading mb="5" id="text-area">
+                  <Link color="gray" underline="hover" highContrast href="#text-area">
+                    Text Area
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -2648,7 +2716,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Table</Heading>
+                <Heading mb="5" id="table">
+                  <Link color="gray" underline="hover" highContrast href="#table">
+                    Table
+                  </Link>
+                </Heading>
                 <Box my="6" style={{ whiteSpace: 'nowrap' }}>
                   <Flex direction="column" mb="9" style={{ width: 1000 }}>
                     <Flex justify="center" position="relative" style={{ padding: 100 }}>
@@ -2760,7 +2832,11 @@ export default function ExploreComponents() {
                   </table>
                 </Box>
 
-                <Heading mb="5">Tabs</Heading>
+                <Heading mb="5" id="tabs">
+                  <Link color="gray" underline="hover" highContrast href="#tabs">
+                    Tabs
+                  </Link>
+                </Heading>
                 <Flex gap="8" align="end" mb="9">
                   {tabsListPropDefs.size.values.map((size) => (
                     <TabsRoot key={size} defaultValue="account" activationMode="manual">
@@ -2773,7 +2849,11 @@ export default function ExploreComponents() {
                   ))}
                 </Flex>
 
-                <Heading mb="5">Aspect Ratio</Heading>
+                <Heading mb="5" id="aspect-ratio">
+                  <Link color="gray" underline="hover" highContrast href="#aspect-ratio">
+                    Aspect Ratio
+                  </Link>
+                </Heading>
                 <Grid columns="4" gap="4" mb="9">
                   {['1 / 2', '1 / 1', '16 / 9', '2 / 1'].map((ratio) => (
                     <div key={ratio}>
@@ -2785,7 +2865,11 @@ export default function ExploreComponents() {
                   ))}
                 </Grid>
 
-                <Heading mb="5">Blockquote</Heading>
+                <Heading mb="5" id="blockquote">
+                  <Link color="gray" underline="hover" highContrast href="#blockquote">
+                    Blockquote
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
                     <TabsTrigger value="specimen">Specimen</TabsTrigger>
@@ -2916,7 +3000,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Code</Heading>
+                <Heading mb="5" id="code">
+                  <Link color="gray" underline="hover" highContrast href="#code">
+                    Code
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="theme-colors">
                   <TabsList size="2">
                     <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
@@ -3040,7 +3128,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Em</Heading>
+                <Heading mb="5" id="em">
+                  <Link color="gray" underline="hover" highContrast href="#em">
+                    Em
+                  </Link>
+                </Heading>
                 <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
                   Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
                   since the 1960s, when it was popularized by advertisements for Letraset transfer
@@ -3050,7 +3142,11 @@ export default function ExploreComponents() {
                   it nonsensical and improper Latin.
                 </Box>
 
-                <Heading mb="5">Heading</Heading>
+                <Heading mb="5" id="heading">
+                  <Link color="gray" underline="hover" highContrast href="#heading">
+                    Heading
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
                     <TabsTrigger value="specimen">Specimen</TabsTrigger>
@@ -3177,7 +3273,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Inset</Heading>
+                <Heading mb="5" id="inset">
+                  <Link color="gray" underline="hover" highContrast href="#inset">
+                    Inset
+                  </Link>
+                </Heading>
                 <Flex my="6" gap="6">
                   <Card size="2">
                     <Flex>
@@ -3226,7 +3326,11 @@ export default function ExploreComponents() {
                   </Card>
                 </Flex>
 
-                <Heading mb="5">Kbd</Heading>
+                <Heading mb="5" id="kbd">
+                  <Link color="gray" underline="hover" highContrast href="#kbd">
+                    Kbd
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
                     <TabsTrigger value="specimen">Specimen</TabsTrigger>
@@ -3274,7 +3378,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Link</Heading>
+                <Heading mb="5" id="link">
+                  <Link color="gray" underline="hover" highContrast href="#link">
+                    Link
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
                     <TabsTrigger value="specimen">Specimen</TabsTrigger>
@@ -3419,7 +3527,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Popover</Heading>
+                <Heading mb="5" id="popover">
+                  <Link color="gray" underline="hover" highContrast href="#popover">
+                    Popover
+                  </Link>
+                </Heading>
                 <Flex align="center" gap="4" my="6">
                   <PopoverRoot>
                     <PopoverTrigger>
@@ -3575,7 +3687,11 @@ export default function ExploreComponents() {
                   </PopoverRoot>
                 </Flex>
 
-                <Heading mb="5">Quote</Heading>
+                <Heading mb="5" id="quote">
+                  <Link color="gray" underline="hover" highContrast href="#quote">
+                    Quote
+                  </Link>
+                </Heading>
                 <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
                   <Quote style={{ marginLeft: '-0.4em' }}>
                     A man who would letterspace lower case would steal sheep
@@ -3587,7 +3703,11 @@ export default function ExploreComponents() {
                   Univers bold condensed more legible rather than less
                 </Box>
 
-                <Heading mb="5">Scroll Area</Heading>
+                <Heading mb="5" id="scroll area">
+                  <Link color="gray" underline="hover" highContrast href="#scroll area">
+                    Scroll Area
+                  </Link>
+                </Heading>
                 <Flex align="start" direction="column" my="6">
                   <Card size="2">
                     <Inset>
@@ -3637,7 +3757,11 @@ export default function ExploreComponents() {
                   </Card>
                 </Flex>
 
-                <Heading mb="5">Separator</Heading>
+                <Heading mb="5" id="separator">
+                  <Link color="gray" underline="hover" highContrast href="#separator">
+                    Separator
+                  </Link>
+                </Heading>
                 <Flex my="6" style={{ whiteSpace: 'nowrap' }}>
                   <Text size="2">
                     Tools for building high-quality, accessible UI.
@@ -3654,7 +3778,11 @@ export default function ExploreComponents() {
                   </Text>
                 </Flex>
 
-                <Heading mb="5">Text</Heading>
+                <Heading mb="5" id="text">
+                  <Link color="gray" underline="hover" highContrast href="#text">
+                    Text
+                  </Link>
+                </Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
                     <TabsTrigger value="specimen">Specimen</TabsTrigger>
@@ -3900,7 +4028,11 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5">Tooltip</Heading>
+                <Heading mb="5" id="tooltip">
+                  <Link color="gray" underline="hover" highContrast href="#tooltip">
+                    Tooltip
+                  </Link>
+                </Heading>
                 <Flex my="6">
                   <Tooltip content="The quick brown fox">
                     <Flex
