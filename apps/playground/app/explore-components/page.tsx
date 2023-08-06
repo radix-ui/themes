@@ -195,9 +195,141 @@ export default function ExploreComponents() {
                 <ThemePanel />
               </Box>
 
-              {/* Benoit works here */}
               <Box m={{ initial: '3', md: '6', xl: '9' }}>
-                <Heading mb="5" id="avatar">
+                <Heading id="alert-dialog" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#alert-dialog">
+                    Alert Dialog
+                  </Link>
+                </Heading>
+                <Flex gap="4" align="center" mb="9">
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="1" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="1" style={{ maxWidth: 300 }}>
+                      <AlertDialogTitle size="3" mb="1">
+                        Revoke access
+                      </AlertDialogTitle>
+                      <AlertDialogDescription size="2" mb="3">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="2" mt="3" justify="end">
+                        <AlertDialogCancel>
+                          <Button size="1" variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button size="1" color="red">
+                            Revoke access
+                          </Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="2" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="2" style={{ maxWidth: 400 }}>
+                      <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
+                      <AlertDialogDescription size="2" mb="4">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="3" mt="4" justify="end">
+                        <AlertDialogCancel>
+                          <Button variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button color="red">Revoke access</Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="3" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="3" style={{ maxWidth: 500 }}>
+                      <AlertDialogTitle>Revoke access</AlertDialogTitle>
+                      <AlertDialogDescription size="2" mb="4">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="3" mt="4" justify="end">
+                        <AlertDialogCancel>
+                          <Button variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button color="red">Revoke access</Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+
+                  <AlertDialogRoot>
+                    <AlertDialogTrigger>
+                      <Button size="4" color="red">
+                        Revoke access
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="4">
+                      <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
+                      <AlertDialogDescription size="3" mb="5">
+                        Are you sure? this application will no longer be accessible and any existing
+                        sessions will be expired.
+                      </AlertDialogDescription>
+
+                      <Flex gap="3" mt="5" justify="end">
+                        <AlertDialogCancel>
+                          <Button size="3" variant="soft" color="gray">
+                            Cancel
+                          </Button>
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          <Button size="3" color="red">
+                            Revoke access
+                          </Button>
+                        </AlertDialogAction>
+                      </Flex>
+                    </AlertDialogContent>
+                  </AlertDialogRoot>
+                </Flex>
+
+                <Heading id="aspect-ratio" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#aspect-ratio">
+                    Aspect Ratio
+                  </Link>
+                </Heading>
+                <Grid columns="4" gap="4" mb="9">
+                  {['1 / 2', '1 / 1', '16 / 9', '2 / 1'].map((ratio) => (
+                    <div key={ratio}>
+                      <Text as="p" size="1" color="gray" mb="2">
+                        Ratio: {ratio.replace('/', 'x')}
+                      </Text>
+                      <AspectRatio ratio={eval(ratio)}>{aspectRatioImage}</AspectRatio>
+                    </div>
+                  ))}
+                </Grid>
+
+                <Heading id="avatar" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#avatar">
                     Avatar
                   </Link>
@@ -373,7 +505,7 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="badge">
+                <Heading id="badge" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#badge">
                     Badge
                   </Link>
@@ -498,7 +630,142 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="button">
+                <Heading id="blockquote" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#blockquote">
+                    Blockquote
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="specimen">
+                    <Grid my="6" gap="6" columns="auto auto" style={{ whiteSpace: 'nowrap' }}>
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Accent
+                        </Text>
+
+                        <Blockquote size="4">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="3">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="2">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+                      </Flex>
+
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Gray
+                        </Text>
+
+                        <Blockquote size="4" color="gray">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="3" color="gray">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+
+                        <Blockquote size="2" color="gray">
+                          Perfect typography is certainly the most elusive of all arts.
+                          <br />
+                          Sculpture in stone alone comes near it in obstinacy.
+                        </Blockquote>
+                      </Flex>
+                    </Grid>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Flex gap="6">
+                                  <Blockquote color={color}>
+                                    Perfect typography is certainly the most elusive of all arts.
+                                    <br />
+                                    Sculpture in stone alone comes near it in obstinacy.
+                                  </Blockquote>
+                                  <Blockquote color={color} highContrast>
+                                    Perfect typography is certainly the most elusive of all arts.
+                                    <br />
+                                    Sculpture in stone alone comes near it in obstinacy.
+                                  </Blockquote>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <tbody>
+                          {blockquotePropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Blockquote size={size}>
+                                  Perfect typography is certainly
+                                  <br />
+                                  the most elusive of all arts.
+                                </Blockquote>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {blockquotePropDefs.weight.values.map((weight) => (
+                            <tr key={weight}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Blockquote weight={weight}>
+                                  Perfect typography is certainly the most elusive of all arts.
+                                  <br />
+                                  Sculpture in stone alone comes near it in obstinacy.
+                                </Blockquote>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="button" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#button">
                     Button
                   </Link>
@@ -631,140 +898,7 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="icon-button">
-                  <Link color="gray" underline="hover" highContrast href="#icon-button">
-                    Icon Button
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            <th colSpan={2}>Accent</th>
-                            <th colSpan={2}>Gray</th>
-                            <th>Disabled</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {iconButtonPropDefs.variant.values.map((variant) => (
-                            <tr key={variant}>
-                              <td>{upperFirst(variant)}</td>
-                              <td>
-                                <IconButton variant={variant}>
-                                  <StarIcon width="16" height="16" />
-                                </IconButton>
-                              </td>
-                              <td>
-                                <IconButton variant={variant} highContrast>
-                                  <StarIcon width="16" height="16" />
-                                </IconButton>
-                              </td>
-                              <td>
-                                <IconButton variant={variant} color="gray">
-                                  <StarIcon width="16" height="16" />
-                                </IconButton>
-                              </td>
-                              <td>
-                                <IconButton variant={variant} color="gray" highContrast>
-                                  <StarIcon width="16" height="16" />
-                                </IconButton>
-                              </td>
-                              <td>
-                                <IconButton variant={variant} disabled>
-                                  <StarIcon width="16" height="16" />
-                                </IconButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {iconButtonPropDefs.variant.values.map((variant) => (
-                              <th key={variant}>{upperFirst(variant)}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
-                              <td>{upperFirst(color)}</td>
-                              {iconButtonPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <Flex align="center" justify="center" gap="4">
-                                    <IconButton variant={variant} color={color}>
-                                      <StarIcon width="16" height="16" />
-                                    </IconButton>
-                                    <IconButton variant={variant} color={color} highContrast>
-                                      <StarIcon width="16" height="16" />
-                                    </IconButton>
-                                  </Flex>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {iconButtonPropDefs.radius.values.map((radius) => (
-                              <th key={radius} style={{ textAlign: 'left' }}>
-                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {iconButtonPropDefs.variant.values.map((variant, index) => (
-                            <React.Fragment key={variant}>
-                              {index > 0 && (
-                                <tr>
-                                  <td>&nbsp;</td>
-                                </tr>
-                              )}
-                              {iconButtonPropDefs.size.values.map((size) => (
-                                <tr key={size}>
-                                  <td>Size {size}</td>
-                                  {iconButtonPropDefs.radius.values.map((radius) => (
-                                    <td key={radius} style={{ textAlign: 'left' }}>
-                                      <IconButton size={size} variant={variant} radius={radius}>
-                                        <StarIcon {...buttonSizeToIconSize(size)} />
-                                      </IconButton>
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </React.Fragment>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="callout">
+                <Heading id="callout" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#callout">
                     Callout
                   </Link>
@@ -913,7 +1047,432 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="dialog">
+                <Heading id="checkbox" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#checkbox">
+                    Checkbox
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                            <th>Disabled</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {checkboxPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} />
+                                  <Checkbox variant={variant} defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} highContrast defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} color="gray" />
+                                  <Checkbox variant={variant} color="gray" defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox
+                                    variant={variant}
+                                    color="gray"
+                                    highContrast
+                                    defaultChecked
+                                  />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Checkbox variant={variant} disabled />
+                                  <Checkbox variant={variant} disabled defaultChecked />
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {checkboxPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {checkboxPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Checkbox variant={variant} color={color} />
+                                    <Checkbox variant={variant} color={color} defaultChecked />
+                                    <Checkbox
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultChecked
+                                    />
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {checkboxPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {checkboxPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {checkboxPropDefs.variant.values.map((variant) => (
+                                <td key={variant} style={{ textAlign: 'left' }}>
+                                  <Flex align="center" justify="start" gap="4">
+                                    <Checkbox size={size} variant={variant} defaultChecked />
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="code" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#code">
+                    Code
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {codePropDefs.variant.values.map((variant) => (
+                            <tr key={variant} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Flex>
+                                  <Code variant={variant}>console.log()</Code>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex>
+                                  <Code variant={variant} highContrast>
+                                    console.log()
+                                  </Code>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex>
+                                  <Code variant={variant} color="gray">
+                                    console.log()
+                                  </Code>
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex>
+                                  <Code variant={variant} color="gray" highContrast>
+                                    console.log()
+                                  </Code>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {codePropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(color)}</td>
+                              {codePropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Code variant={variant} color={color}>
+                                      console.log()
+                                    </Code>
+                                    <Code variant={variant} color={color} highContrast>
+                                      console.log()
+                                    </Code>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <Flex direction="column" gap="4">
+                        {codePropDefs.size.values.map((size) => (
+                          <Flex align="center" key={size}>
+                            <Box shrink="0" style={{ width: 80 }}>
+                              <Text color="gray" size="1">
+                                Size {size}
+                              </Text>
+                            </Box>
+                            <Code size={size}>console.log()</Code>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {(['regular', 'bold'] as const).map((weight) => (
+                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Code weight={weight}>console.log()</Code>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="context-menu" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#context-menu">
+                    Context Menu
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {contextMenuContentPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant}>
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} highContrast />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant} highContrast>
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} color="gray" />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant} color="gray">
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                              <td>
+                                <ContextMenuRoot>
+                                  <ContextMenuTrigger>
+                                    <RightClickArea variant={variant} color="gray" highContrast />
+                                  </ContextMenuTrigger>
+                                  <ContextMenuContent variant={variant} color="gray" highContrast>
+                                    <ExampleContextMenuContent />
+                                  </ContextMenuContent>
+                                </ContextMenuRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {contextMenuContentPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {contextMenuContentPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea variant={variant} color={color} />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContent variant={variant} color={color}>
+                                        <ExampleContextMenuContent />
+                                      </ContextMenuContent>
+                                    </ContextMenuRoot>
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                        />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContent
+                                        variant={variant}
+                                        color={color}
+                                        highContrast
+                                      >
+                                        <ExampleContextMenuContent />
+                                      </ContextMenuContent>
+                                    </ContextMenuRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {contextMenuContentPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {contextMenuContentPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {contextMenuContentPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex>
+                                    <ContextMenuRoot>
+                                      <ContextMenuTrigger>
+                                        <RightClickArea size={size} variant={variant} />
+                                      </ContextMenuTrigger>
+                                      <ContextMenuContent size={size} variant={variant}>
+                                        <ExampleContextMenuContent />
+                                      </ContextMenuContent>
+                                    </ContextMenuRoot>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="dialog" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#dialog">
                     Dialog
                   </Link>
@@ -1106,124 +1665,7 @@ export default function ExploreComponents() {
                   </DialogRoot>
                 </Flex>
 
-                <Heading mb="5" id="alert-dialog">
-                  <Link color="gray" underline="hover" highContrast href="#alert-dialog">
-                    Alert Dialog
-                  </Link>
-                </Heading>
-                <Flex gap="4" align="center" mb="9">
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
-                      <Button size="1" color="red">
-                        Revoke access
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="1" style={{ maxWidth: 300 }}>
-                      <AlertDialogTitle size="3" mb="1">
-                        Revoke access
-                      </AlertDialogTitle>
-                      <AlertDialogDescription size="2" mb="3">
-                        Are you sure? this application will no longer be accessible and any existing
-                        sessions will be expired.
-                      </AlertDialogDescription>
-
-                      <Flex gap="2" mt="3" justify="end">
-                        <AlertDialogCancel>
-                          <Button size="1" variant="soft" color="gray">
-                            Cancel
-                          </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
-                          <Button size="1" color="red">
-                            Revoke access
-                          </Button>
-                        </AlertDialogAction>
-                      </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
-
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
-                      <Button size="2" color="red">
-                        Revoke access
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="2" style={{ maxWidth: 400 }}>
-                      <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
-                      <AlertDialogDescription size="2" mb="4">
-                        Are you sure? this application will no longer be accessible and any existing
-                        sessions will be expired.
-                      </AlertDialogDescription>
-
-                      <Flex gap="3" mt="4" justify="end">
-                        <AlertDialogCancel>
-                          <Button variant="soft" color="gray">
-                            Cancel
-                          </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
-                          <Button color="red">Revoke access</Button>
-                        </AlertDialogAction>
-                      </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
-
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
-                      <Button size="3" color="red">
-                        Revoke access
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="3" style={{ maxWidth: 500 }}>
-                      <AlertDialogTitle>Revoke access</AlertDialogTitle>
-                      <AlertDialogDescription size="2" mb="4">
-                        Are you sure? this application will no longer be accessible and any existing
-                        sessions will be expired.
-                      </AlertDialogDescription>
-
-                      <Flex gap="3" mt="4" justify="end">
-                        <AlertDialogCancel>
-                          <Button variant="soft" color="gray">
-                            Cancel
-                          </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
-                          <Button color="red">Revoke access</Button>
-                        </AlertDialogAction>
-                      </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
-
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
-                      <Button size="4" color="red">
-                        Revoke access
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="4">
-                      <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
-                      <AlertDialogDescription size="3" mb="5">
-                        Are you sure? this application will no longer be accessible and any existing
-                        sessions will be expired.
-                      </AlertDialogDescription>
-
-                      <Flex gap="3" mt="5" justify="end">
-                        <AlertDialogCancel>
-                          <Button size="3" variant="soft" color="gray">
-                            Cancel
-                          </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
-                          <Button size="3" color="red">
-                            Revoke access
-                          </Button>
-                        </AlertDialogAction>
-                      </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
-                </Flex>
-
-                <Heading mb="5" id="dropdown-menu">
+                <Heading id="dropdown-menu" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#dropdown-menu">
                     Dropdown Menu
                   </Link>
@@ -1403,123 +1845,103 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="context-menu">
-                  <Link color="gray" underline="hover" highContrast href="#context-menu">
-                    Context Menu
+                <Heading id="em" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#em">
+                    Em
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
+                <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
+                  Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
+                  since the 1960s, when it was popularized by advertisements for Letraset transfer
+                  sheets. It is typically a corrupted version of{' '}
+                  <Em>De finibus bonorum et malorum</Em>, a 1st-century BC text by the Roman
+                  statesman and philosopher Cicero, with words altered, added, and removed to make
+                  it nonsensical and improper Latin.
+                </Box>
+
+                <Heading id="heading" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#heading">
+                    Heading
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
                     <TabsTrigger value="all-colors">All colors</TabsTrigger>
                     <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
                   </TabsList>
-                  <TabsContent value="theme-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            <th colSpan={2}>Accent</th>
-                            <th colSpan={2}>Gray</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {contextMenuContentPropDefs.variant.values.map((variant) => (
-                            <tr key={variant}>
-                              <td>{upperFirst(variant)}</td>
-                              <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
-                                    <RightClickArea variant={variant} />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant}>
-                                    <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
-                              </td>
-                              <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
-                                    <RightClickArea variant={variant} highContrast />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant} highContrast>
-                                    <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
-                              </td>
-                              <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
-                                    <RightClickArea variant={variant} color="gray" />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant} color="gray">
-                                    <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
-                              </td>
-                              <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
-                                    <RightClickArea variant={variant} color="gray" highContrast />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant} color="gray" highContrast>
-                                    <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                  <TabsContent value="specimen">
+                    <Box my="6" style={{ width: 'calc(560px * var(--scaling))' }}>
+                      <Heading size="9">
+                        The principles of the typographic craft are difficult to master
+                      </Heading>
                     </Box>
+
+                    <Flex my="6" gap="6">
+                      <Box style={{ width: 'calc(340px * var(--scaling))' }}>
+                        <Heading size="5" mb="2">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="3">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: 'calc(320px * var(--scaling))' }}>
+                        <Heading size="4" mb="2">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="3">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                    </Flex>
+
+                    <Flex my="6" gap="6">
+                      <Box style={{ width: 'calc(290px * var(--scaling))' }}>
+                        <Heading size="3" mb="1">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="2">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: 'calc(260px * var(--scaling))' }}>
+                        <Heading size="2" mb="1">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="1">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                    </Flex>
                   </TabsContent>
 
                   <TabsContent value="all-colors">
                     <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {contextMenuContentPropDefs.variant.values.map((variant) => (
-                              <th key={variant}>{upperFirst(variant)}</th>
-                            ))}
-                          </tr>
-                        </thead>
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
                           {themeAccentColorsOrdered.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
-                              {contextMenuContentPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <Flex align="center" justify="center" gap="4">
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
-                                        <RightClickArea variant={variant} color={color} />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContent variant={variant} color={color}>
-                                        <ExampleContextMenuContent />
-                                      </ContextMenuContent>
-                                    </ContextMenuRoot>
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
-                                        <RightClickArea
-                                          variant={variant}
-                                          color={color}
-                                          highContrast
-                                        />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContent
-                                        variant={variant}
-                                        color={color}
-                                        highContrast
-                                      >
-                                        <ExampleContextMenuContent />
-                                      </ContextMenuContent>
-                                    </ContextMenuRoot>
-                                  </Flex>
-                                </td>
-                              ))}
+                              <td>
+                                <Heading color={color}>
+                                  The quick brown fox jumps over the lazy dog
+                                </Heading>
+                                <Heading color={color} highContrast>
+                                  The quick brown fox jumps over the lazy dog
+                                </Heading>
+                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -1529,35 +1951,37 @@ export default function ExploreComponents() {
 
                   <TabsContent value="all-sizes">
                     <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {contextMenuContentPropDefs.variant.values.map((variant) => (
-                              <th key={variant} style={{ textAlign: 'left' }}>
-                                {upperFirst(variant)}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {contextMenuContentPropDefs.size.values.map((size) => (
+                          {headingPropDefs.size.values.map((size) => (
                             <tr key={size}>
                               <td>Size {size}</td>
-                              {contextMenuContentPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <Flex>
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
-                                        <RightClickArea size={size} variant={variant} />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContent size={size} variant={variant}>
-                                        <ExampleContextMenuContent />
-                                      </ContextMenuContent>
-                                    </ContextMenuRoot>
-                                  </Flex>
-                                </td>
-                              ))}
+                              <td style={{ textAlign: 'left' }}>
+                                <Heading size={size}>
+                                  The quick brown fox
+                                  <br />
+                                  jumps over the lazy dog
+                                </Heading>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {headingPropDefs.weight.values.map((weight) => (
+                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Heading weight={weight}>
+                                  The quick brown fox jumps over the lazy dog
+                                </Heading>
+                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -1566,7 +1990,7 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="hover-card">
+                <Heading id="hover-card" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#hover-card">
                     Hover Card
                   </Link>
@@ -1600,168 +2024,9 @@ export default function ExploreComponents() {
                   ))}
                 </Flex>
 
-                <Heading mb="5" id="select">
-                  <Link color="gray" underline="hover" highContrast href="#select">
-                    Select
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            <th>Accent</th>
-                            <th>Gray</th>
-                            <th>Placeholder</th>
-                            <th>Disabled</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {selectTriggerPropDefs.variant.values.map((variant) => (
-                            <tr key={variant}>
-                              <td>{upperFirst(variant)}</td>
-                              <td>
-                                <SelectRoot defaultValue="apple">
-                                  <SelectTrigger variant={variant} />
-                                  <SelectContent
-                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
-                                  >
-                                    <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
-                              </td>
-                              <td>
-                                <SelectRoot defaultValue="apple">
-                                  <SelectTrigger variant={variant} color="gray" />
-                                  <SelectContent
-                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
-                                    color="gray"
-                                    highContrast
-                                  >
-                                    <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
-                              </td>
-                              <td>
-                                <SelectRoot>
-                                  <SelectTrigger variant={variant} placeholder="Choose a fruit…" />
-                                  <SelectContent
-                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
-                                  >
-                                    <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
-                              </td>
-                              <td>
-                                <SelectRoot defaultValue="apple" disabled>
-                                  <SelectTrigger variant={variant} />
-                                  <SelectContent
-                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
-                                  >
-                                    <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {selectTriggerPropDefs.variant.values.map((variant) => (
-                              <th key={variant}>{upperFirst(variant)}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
-                              <td>{upperFirst(color)}</td>
-                              {selectTriggerPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <SelectRoot defaultValue="apple">
-                                    <SelectTrigger variant={variant} color={color} />
-                                    <SelectContent
-                                      variant={selectTriggerVariantToSelectContentVariant(variant)}
-                                      color={color}
-                                    >
-                                      <ExampleSelectContent />
-                                    </SelectContent>
-                                  </SelectRoot>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {selectTriggerPropDefs.radius.values.map((radius) => (
-                              <th key={radius} style={{ textAlign: 'left' }}>
-                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {selectTriggerPropDefs.variant.values.map((variant, index) => (
-                            <React.Fragment key={variant}>
-                              {index > 0 && (
-                                <tr>
-                                  <td>&nbsp;</td>
-                                </tr>
-                              )}
-                              {selectRootPropDefs.size.values.map((size) => (
-                                <tr key={size}>
-                                  <td>Size {size}</td>
-                                  {selectTriggerPropDefs.radius.values.map((radius) => (
-                                    <td key={radius} style={{ textAlign: 'left' }}>
-                                      <SelectRoot size={size} defaultValue="apple">
-                                        <SelectTrigger variant={variant} radius={radius} />
-                                        <SelectContent
-                                          variant={selectTriggerVariantToSelectContentVariant(
-                                            variant
-                                          )}
-                                        >
-                                          <ExampleSelectContent />
-                                        </SelectContent>
-                                      </SelectRoot>
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </React.Fragment>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="checkbox">
-                  <Link color="gray" underline="hover" highContrast href="#checkbox">
-                    Checkbox
+                <Heading id="icon-button" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#icon-button">
+                    Icon Button
                   </Link>
                 </Heading>
                 <TabsRoot defaultValue="theme-colors">
@@ -1782,41 +2047,33 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {checkboxPropDefs.variant.values.map((variant) => (
+                          {iconButtonPropDefs.variant.values.map((variant) => (
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Checkbox variant={variant} />
-                                  <Checkbox variant={variant} defaultChecked />
-                                </Flex>
+                                <IconButton variant={variant}>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
                               </td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Checkbox variant={variant} highContrast defaultChecked />
-                                </Flex>
+                                <IconButton variant={variant} highContrast>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
                               </td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Checkbox variant={variant} color="gray" />
-                                  <Checkbox variant={variant} color="gray" defaultChecked />
-                                </Flex>
+                                <IconButton variant={variant} color="gray">
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
                               </td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Checkbox
-                                    variant={variant}
-                                    color="gray"
-                                    highContrast
-                                    defaultChecked
-                                  />
-                                </Flex>
+                                <IconButton variant={variant} color="gray" highContrast>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
                               </td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Checkbox variant={variant} disabled />
-                                  <Checkbox variant={variant} disabled defaultChecked />
-                                </Flex>
+                                <IconButton variant={variant} disabled>
+                                  <StarIcon width="16" height="16" />
+                                </IconButton>
                               </td>
                             </tr>
                           ))}
@@ -1831,7 +2088,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {checkboxPropDefs.variant.values.map((variant) => (
+                            {iconButtonPropDefs.variant.values.map((variant) => (
                               <th key={variant}>{upperFirst(variant)}</th>
                             ))}
                           </tr>
@@ -1840,17 +2097,15 @@ export default function ExploreComponents() {
                           {themeAccentColorsOrdered.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
-                              {checkboxPropDefs.variant.values.map((variant) => (
+                              {iconButtonPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex align="center" justify="center" gap="4">
-                                    <Checkbox variant={variant} color={color} />
-                                    <Checkbox variant={variant} color={color} defaultChecked />
-                                    <Checkbox
-                                      variant={variant}
-                                      color={color}
-                                      highContrast
-                                      defaultChecked
-                                    />
+                                    <IconButton variant={variant} color={color}>
+                                      <StarIcon width="16" height="16" />
+                                    </IconButton>
+                                    <IconButton variant={variant} color={color} highContrast>
+                                      <StarIcon width="16" height="16" />
+                                    </IconButton>
                                   </Flex>
                                 </td>
                               ))}
@@ -1867,24 +2122,288 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {checkboxPropDefs.variant.values.map((variant) => (
-                              <th key={variant} style={{ textAlign: 'left' }}>
-                                {upperFirst(variant)}
+                            {iconButtonPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
                               </th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {checkboxPropDefs.size.values.map((size) => (
-                            <tr key={size}>
-                              <td>Size {size}</td>
-                              {checkboxPropDefs.variant.values.map((variant) => (
-                                <td key={variant} style={{ textAlign: 'left' }}>
-                                  <Flex align="center" justify="start" gap="4">
-                                    <Checkbox size={size} variant={variant} defaultChecked />
-                                  </Flex>
-                                </td>
+                          {iconButtonPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {iconButtonPropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {iconButtonPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <IconButton size={size} variant={variant} radius={radius}>
+                                        <StarIcon {...buttonSizeToIconSize(size)} />
+                                      </IconButton>
+                                    </td>
+                                  ))}
+                                </tr>
                               ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="inset" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#inset">
+                    Inset
+                  </Link>
+                </Heading>
+                <Flex my="6">
+                  <Flex my="6" gap="6">
+                    <Card size="2">
+                      <Flex>
+                        <Inset side="left" pr="current">
+                          <InsetImage />
+                        </Inset>
+                        <Text as="p" size="3" style={{ width: 240 }}>
+                          <Strong>Typography</Strong> is the art and technique of arranging type to
+                          make written language legible, readable and appealing when displayed.
+                        </Text>
+                      </Flex>
+                    </Card>
+
+                    <Card size="2">
+                      <Flex>
+                        <Text as="p" size="3" style={{ width: 240 }}>
+                          <Strong>Typography</Strong> is the art and technique of arranging type to
+                          make written language legible, readable and appealing when displayed.
+                        </Text>
+                        <Inset side="right" pl="current">
+                          <InsetImage />
+                        </Inset>
+                      </Flex>
+                    </Card>
+                  </Flex>
+                  <Flex my="6" gap="6">
+                    <Card size="2" style={{ width: 300 }}>
+                      <Inset side="top" pb="current">
+                        <InsetImage style={{ width: '100%', height: 160 }} />
+                      </Inset>
+                      <Text as="p" size="3" style={{ width: 240 }}>
+                        <Strong>Typography</Strong> is the art and technique of arranging type to
+                        make written language legible, readable and appealing when displayed.
+                      </Text>
+                    </Card>
+
+                    <Card size="2" style={{ width: 300 }}>
+                      <Text as="p" size="3" style={{ width: 240 }}>
+                        <Strong>Typography</Strong> is the art and technique of arranging type to
+                        make written language legible, readable and appealing when displayed.
+                      </Text>
+                      <Inset side="bottom" pt="current">
+                        <InsetImage style={{ width: '100%', height: 160 }} />
+                      </Inset>
+                    </Card>
+                  </Flex>
+                </Flex>
+
+                <Heading id="kbd" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#kbd">
+                    Kbd
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="specimen">
+                    <Flex direction="column" gap="4" my="6">
+                      <Text as="p" size="2">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                      <Text as="p" size="3">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                      <Text as="p" size="4">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                      <Text as="p" size="5">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                    </Flex>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <Box my="6">
+                        <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
+                          {kbdPropDefs.size.values.map((size) => (
+                            <Flex align="center" key={size}>
+                              <Box shrink="0" style={{ width: 80 }}>
+                                <Text color="gray" size="1">
+                                  Size {size}
+                                </Text>
+                              </Box>
+                              <Kbd size={size}>⌥ J</Kbd>
+                            </Flex>
+                          ))}
+                        </Flex>
+                      </Box>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="link" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#link">
+                    Link
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="specimen">
+                    <Grid
+                      my="6"
+                      gap="6"
+                      columns="calc(440px * var(--scaling)) calc(440px * var(--scaling))"
+                    >
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Accent
+                        </Text>
+
+                        <Text as="p" size="4">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="3">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="2">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+                      </Flex>
+
+                      <Flex direction="column" gap="6">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Gray
+                        </Text>
+
+                        <Text as="p" size="4" color="gray">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="3" color="gray">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+
+                        <Text as="p" size="2" color="gray">
+                          Susan Kare is an American artist and{' '}
+                          <Link href="#link">graphic designer</Link>, who contributed{' '}
+                          <Link href="#link">interface</Link> elements and{' '}
+                          <Link href="#link">typefaces</Link> for the first{' '}
+                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                          1986.
+                        </Text>
+                      </Flex>
+                    </Grid>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Flex gap="6">
+                                  <Link href="/" color={color}>
+                                    Radix Themes
+                                  </Link>
+                                  <Link href="/" color={color} highContrast>
+                                    Radix Themes
+                                  </Link>
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <Flex direction="column" gap="4">
+                        {linkPropDefs.size.values.map((size) => (
+                          <Flex align="center" key={size}>
+                            <Box shrink="0" style={{ width: 80 }}>
+                              <Text color="gray" size="1">
+                                Size {size}
+                              </Text>
+                            </Box>
+                            <Link href="/" size={size}>
+                              Radix Themes
+                            </Link>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {blockquotePropDefs.weight.values.map((weight) => (
+                            <tr key={weight}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Link href="/" weight={weight}>
+                                  Radix Themes
+                                </Link>
+                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -1893,7 +2412,183 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="radio-group">
+                <Heading id="popover" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#popover">
+                    Popover
+                  </Link>
+                </Heading>
+                <Flex align="center" gap="4" my="6">
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="1">
+                        <ChatBubbleIcon width="14" height="14" />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="1" style={{ width: 250 }}>
+                      <Flex gap="3">
+                        <Avatar
+                          size="2"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea
+                            size="1"
+                            placeholder="Write a comment…"
+                            style={{ height: 80 }}
+                          />
+
+                          <Flex gap="3" mt="3" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox />
+                                <Text size="1">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button autoFocus size="1">
+                                Comment
+                              </Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="2">
+                        <ChatBubbleIcon width="16" height="16" />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="2" style={{ width: 320 }}>
+                      <Flex gap="4">
+                        <Avatar
+                          size="3"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
+                          <Flex gap="3" mt="3" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox />
+                                <Text size="2">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button autoFocus size="2">
+                                Comment
+                              </Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="3">
+                        <ChatBubbleIcon width="16" height="16" />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="3" style={{ width: 400 }}>
+                      <Flex gap="4">
+                        <Avatar
+                          size="4"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea
+                            size="3"
+                            placeholder="Write a comment…"
+                            style={{ height: 120 }}
+                          />
+                          <Flex gap="3" mt="4" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox />
+                                <Text size="2">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button autoFocus size="3">
+                                Comment
+                              </Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+
+                  <PopoverRoot>
+                    <PopoverTrigger>
+                      <Button size="4">
+                        <ChatBubbleIcon width="18" height="18" />
+                        Comment
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent size="4" style={{ width: 400 }}>
+                      <Flex gap="4">
+                        <Avatar
+                          size="5"
+                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                          fallback="A"
+                        />
+                        <Box grow="1">
+                          <TextArea
+                            size="3"
+                            placeholder="Write a comment…"
+                            style={{ height: 120 }}
+                          />
+                          <Flex gap="3" mt="4" justify="between">
+                            <Flex align="center" gap="2" asChild>
+                              <label>
+                                <Checkbox size="2" />
+                                <Text size="3">Send to group</Text>
+                              </label>
+                            </Flex>
+
+                            <PopoverClose>
+                              <Button autoFocus size="3">
+                                Comment
+                              </Button>
+                            </PopoverClose>
+                          </Flex>
+                        </Box>
+                      </Flex>
+                    </PopoverContent>
+                  </PopoverRoot>
+                </Flex>
+
+                <Heading id="quote" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#quote">
+                    Quote
+                  </Link>
+                </Heading>
+                <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
+                  <Quote style={{ marginLeft: '-0.4em' }}>
+                    A man who would letterspace lower case would steal sheep
+                    <span style={{ marginRight: '-0.2em' }}>,</span>
+                  </Quote>{' '}
+                  Frederic Goudy liked to say. The reason for not letterspacing lower case is that
+                  it hampers legibility. But there are some lowercase alphabets to which this
+                  principle doesn’t apply. Moderate letterspacing can make a face such as lowercase
+                  Univers bold condensed more legible rather than less
+                </Box>
+
+                <Heading id="radio-group" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#radio-group">
                     Radio Group
                   </Link>
@@ -2069,9 +2764,63 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="switch">
-                  <Link color="gray" underline="hover" highContrast href="#switch">
-                    Switch
+                <Heading id="scroll area" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#scroll area">
+                    Scroll Area
+                  </Link>
+                </Heading>
+                <Flex align="start" direction="column" my="6">
+                  <Card size="2">
+                    <Inset>
+                      <ScrollArea
+                        type="always"
+                        scrollbars="vertical"
+                        style={{
+                          width: 520,
+                          height: 180,
+                          '--scrollarea-scrollbar-margin-top': 'var(--space-3)',
+                          '--scrollarea-scrollbar-margin-bottom': 'var(--space-3)',
+                          '--scrollarea-scrollbar-margin-left': 'var(--space-3)',
+                          '--scrollarea-scrollbar-margin-right': 'var(--space-3)',
+                        }}
+                      >
+                        <Inset p="current" style={{ margin: 0 }}>
+                          <Box pr="5">
+                            <Flex direction="column" gap="4">
+                              <Text as="p" size="2">
+                                Three fundamental aspects of typography are legibility, readability,
+                                and aesthetics. Although in a non-technical sense “legible” and
+                                “readable” are often used synonymously, typographically they are
+                                separate but related concepts.
+                              </Text>
+
+                              <Text as="p" size="2">
+                                Legibility describes how easily individual characters can be
+                                distinguished from one another. It is described by Walter Tracy as
+                                “the quality of being decipherable and recognisable”. For instance,
+                                if a “b” and an “h”, or a “3” and an “8”, are difficult to
+                                distinguish at small sizes, this is a problem of legibility.
+                              </Text>
+
+                              <Text as="p" size="2">
+                                Typographers are concerned with legibility insofar as it is their
+                                job to select the correct font to use. Brush Script is an example of
+                                a font containing many characters that might be difficult to
+                                distinguish. The selection of cases influences the legibility of
+                                typography because using only uppercase letters (all-caps) reduces
+                                legibility.
+                              </Text>
+                            </Flex>
+                          </Box>
+                        </Inset>
+                      </ScrollArea>
+                    </Inset>
+                  </Card>
+                </Flex>
+
+                <Heading id="select" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#select">
+                    Select
                   </Link>
                 </Heading>
                 <TabsRoot defaultValue="theme-colors">
@@ -2086,47 +2835,57 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            <th colSpan={2}>Accent</th>
-                            <th colSpan={2}>Gray</th>
+                            <th>Accent</th>
+                            <th>Gray</th>
+                            <th>Placeholder</th>
                             <th>Disabled</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {switchPropDefs.variant.values.map((variant) => (
+                          {selectTriggerPropDefs.variant.values.map((variant) => (
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Switch variant={variant} />
-                                  <Switch variant={variant} defaultChecked />
-                                </Flex>
+                                <SelectRoot defaultValue="apple">
+                                  <SelectTrigger variant={variant} />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
                               </td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Switch variant={variant} highContrast defaultChecked />
-                                </Flex>
-                              </td>
-                              <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Switch variant={variant} color="gray" />
-                                  <Switch variant={variant} color="gray" defaultChecked />
-                                </Flex>
-                              </td>
-                              <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Switch
-                                    variant={variant}
+                                <SelectRoot defaultValue="apple">
+                                  <SelectTrigger variant={variant} color="gray" />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
                                     color="gray"
                                     highContrast
-                                    defaultChecked
-                                  />
-                                </Flex>
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
                               </td>
                               <td>
-                                <Flex align="center" justify="center" gap="4">
-                                  <Switch variant={variant} disabled />
-                                  <Switch variant={variant} disabled defaultChecked />
-                                </Flex>
+                                <SelectRoot>
+                                  <SelectTrigger variant={variant} placeholder="Choose a fruit…" />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
+                              </td>
+                              <td>
+                                <SelectRoot defaultValue="apple" disabled>
+                                  <SelectTrigger variant={variant} />
+                                  <SelectContent
+                                    variant={selectTriggerVariantToSelectContentVariant(variant)}
+                                  >
+                                    <ExampleSelectContent />
+                                  </SelectContent>
+                                </SelectRoot>
                               </td>
                             </tr>
                           ))}
@@ -2141,7 +2900,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {switchPropDefs.variant.values.map((variant) => (
+                            {selectTriggerPropDefs.variant.values.map((variant) => (
                               <th key={variant}>{upperFirst(variant)}</th>
                             ))}
                           </tr>
@@ -2150,18 +2909,17 @@ export default function ExploreComponents() {
                           {themeAccentColorsOrdered.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
-                              {switchPropDefs.variant.values.map((variant) => (
+                              {selectTriggerPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <Flex align="center" justify="center" gap="4">
-                                    <Switch variant={variant} color={color} />
-                                    <Switch variant={variant} color={color} defaultChecked />
-                                    <Switch
-                                      variant={variant}
+                                  <SelectRoot defaultValue="apple">
+                                    <SelectTrigger variant={variant} color={color} />
+                                    <SelectContent
+                                      variant={selectTriggerVariantToSelectContentVariant(variant)}
                                       color={color}
-                                      highContrast
-                                      defaultChecked
-                                    />
-                                  </Flex>
+                                    >
+                                      <ExampleSelectContent />
+                                    </SelectContent>
+                                  </SelectRoot>
                                 </td>
                               ))}
                             </tr>
@@ -2177,7 +2935,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {switchPropDefs.radius.values.map((radius) => (
+                            {selectTriggerPropDefs.radius.values.map((radius) => (
                               <th key={radius} style={{ textAlign: 'left' }}>
                                 {radius === 'none' ? 'No radius' : upperFirst(radius)}
                               </th>
@@ -2185,26 +2943,28 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {switchPropDefs.variant.values.map((variant, index) => (
+                          {selectTriggerPropDefs.variant.values.map((variant, index) => (
                             <React.Fragment key={variant}>
                               {index > 0 && (
                                 <tr>
                                   <td>&nbsp;</td>
                                 </tr>
                               )}
-                              {switchPropDefs.size.values.map((size) => (
+                              {selectRootPropDefs.size.values.map((size) => (
                                 <tr key={size}>
                                   <td>Size {size}</td>
-                                  {switchPropDefs.radius.values.map((radius) => (
+                                  {selectTriggerPropDefs.radius.values.map((radius) => (
                                     <td key={radius} style={{ textAlign: 'left' }}>
-                                      <Flex align="center" justify="start" gap="4">
-                                        <Switch
-                                          size={size}
-                                          variant={variant}
-                                          radius={radius}
-                                          defaultChecked
-                                        />
-                                      </Flex>
+                                      <SelectRoot size={size} defaultValue="apple">
+                                        <SelectTrigger variant={variant} radius={radius} />
+                                        <SelectContent
+                                          variant={selectTriggerVariantToSelectContentVariant(
+                                            variant
+                                          )}
+                                        >
+                                          <ExampleSelectContent />
+                                        </SelectContent>
+                                      </SelectRoot>
                                     </td>
                                   ))}
                                 </tr>
@@ -2217,7 +2977,28 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="slider">
+                <Heading id="separator" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#separator">
+                    Separator
+                  </Link>
+                </Heading>
+                <Flex my="6" style={{ whiteSpace: 'nowrap' }}>
+                  <Text size="2">
+                    Tools for building high-quality, accessible UI.
+                    <Separator my="3" size="4" />
+                    <Flex gap="3" align="center">
+                      Themes
+                      <Separator orientation="vertical" />
+                      Primitives
+                      <Separator orientation="vertical" />
+                      Icons
+                      <Separator orientation="vertical" />
+                      Colors
+                    </Flex>
+                  </Text>
+                </Flex>
+
+                <Heading id="slider" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#slider">
                     Slider
                   </Link>
@@ -2371,9 +3152,9 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="text-field">
-                  <Link color="gray" underline="hover" highContrast href="#text-field">
-                    Text Field
+                <Heading id="switch" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#switch">
+                    Switch
                   </Link>
                 </Heading>
                 <TabsRoot defaultValue="theme-colors">
@@ -2388,75 +3169,47 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            <th>Accent</th>
-                            <th>Gray</th>
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
                             <th>Disabled</th>
-                            <th>Read-only</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {textFieldPropDefs.variant.values.map((variant) => (
+                          {switchPropDefs.variant.values.map((variant) => (
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <TextFieldRoot variant={variant}>
-                                  <TextFieldSlot>
-                                    <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldInput placeholder="Search" />
-                                  <TextFieldSlot>
-                                    <IconButton variant="ghost" color="gray" size="1">
-                                      <InfoCircledIcon />
-                                    </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} />
+                                  <Switch variant={variant} defaultChecked />
+                                </Flex>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant} color="gray">
-                                  <TextFieldSlot>
-                                    <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldInput placeholder="Search" />
-                                  <TextFieldSlot>
-                                    <IconButton variant="ghost" color="gray" size="1">
-                                      <InfoCircledIcon />
-                                    </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} highContrast defaultChecked />
+                                </Flex>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant}>
-                                  <TextFieldSlot>
-                                    <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldInput
-                                    placeholder="Search"
-                                    defaultValue="Quick brown fox"
-                                    disabled
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} color="gray" />
+                                  <Switch variant={variant} color="gray" defaultChecked />
+                                </Flex>
+                              </td>
+                              <td>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch
+                                    variant={variant}
+                                    color="gray"
+                                    highContrast
+                                    defaultChecked
                                   />
-                                  <TextFieldSlot>
-                                    <IconButton variant="ghost" color="gray" size="1" disabled>
-                                      <InfoCircledIcon />
-                                    </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                </Flex>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant}>
-                                  <TextFieldSlot>
-                                    <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldInput
-                                    placeholder="Search"
-                                    defaultValue="Quick brown fox"
-                                    readOnly
-                                  />
-                                  <TextFieldSlot>
-                                    <IconButton variant="ghost" color="gray" size="1">
-                                      <InfoCircledIcon />
-                                    </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                <Flex align="center" justify="center" gap="4">
+                                  <Switch variant={variant} disabled />
+                                  <Switch variant={variant} disabled defaultChecked />
+                                </Flex>
                               </td>
                             </tr>
                           ))}
@@ -2471,7 +3224,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {textFieldPropDefs.variant.values.map((variant) => (
+                            {switchPropDefs.variant.values.map((variant) => (
                               <th key={variant}>{upperFirst(variant)}</th>
                             ))}
                           </tr>
@@ -2480,19 +3233,18 @@ export default function ExploreComponents() {
                           {themeAccentColorsOrdered.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
-                              {textFieldPropDefs.variant.values.map((variant) => (
+                              {switchPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <TextFieldRoot color={color} variant={variant}>
-                                    <TextFieldSlot>
-                                      <MagnifyingGlassIcon width="16" height="16" />
-                                    </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
-                                    <TextFieldSlot>
-                                      <IconButton variant="ghost" color="gray" size="1">
-                                        <InfoCircledIcon />
-                                      </IconButton>
-                                    </TextFieldSlot>
-                                  </TextFieldRoot>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Switch variant={variant} color={color} />
+                                    <Switch variant={variant} color={color} defaultChecked />
+                                    <Switch
+                                      variant={variant}
+                                      color={color}
+                                      highContrast
+                                      defaultChecked
+                                    />
+                                  </Flex>
                                 </td>
                               ))}
                             </tr>
@@ -2508,7 +3260,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {textFieldPropDefs.radius.values.map((radius) => (
+                            {switchPropDefs.radius.values.map((radius) => (
                               <th key={radius} style={{ textAlign: 'left' }}>
                                 {radius === 'none' ? 'No radius' : upperFirst(radius)}
                               </th>
@@ -2516,72 +3268,30 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {textFieldPropDefs.variant.values.map((variant, index) => (
+                          {switchPropDefs.variant.values.map((variant, index) => (
                             <React.Fragment key={variant}>
                               {index > 0 && (
                                 <tr>
                                   <td>&nbsp;</td>
                                 </tr>
                               )}
-                              <tr>
-                                <td>Size 1</td>
-                                {textFieldPropDefs.radius.values.map((radius) => (
-                                  <td key={radius}>
-                                    <TextFieldRoot
-                                      size="1"
-                                      variant={variant}
-                                      radius={radius}
-                                      style={{ width: 140 }}
-                                    >
-                                      <TextFieldSlot>
-                                        <MagnifyingGlassIcon width="14" height="14" />
-                                      </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
-                                    </TextFieldRoot>
-                                  </td>
-                                ))}
-                              </tr>
-                              <tr>
-                                <td>Size 2</td>
-                                {textFieldPropDefs.radius.values.map((radius) => (
-                                  <td key={radius}>
-                                    <TextFieldRoot
-                                      size="2"
-                                      variant={variant}
-                                      radius={radius}
-                                      style={{ width: 160 }}
-                                    >
-                                      <TextFieldSlot>
-                                        <MagnifyingGlassIcon width="16" height="16" />
-                                      </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
-                                      <TextFieldSlot>
-                                        <IconButton variant="ghost" color="gray" size="1">
-                                          <InfoCircledIcon />
-                                        </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
-                                  </td>
-                                ))}
-                              </tr>
-                              <tr>
-                                <td>Size 3</td>
-                                {textFieldPropDefs.radius.values.map((radius) => (
-                                  <td key={radius}>
-                                    <TextFieldRoot size="3" variant={variant} radius={radius}>
-                                      <TextFieldSlot>
-                                        <MagnifyingGlassIcon width="18" height="18" />
-                                      </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
-                                      <TextFieldSlot>
-                                        <IconButton variant="ghost" color="gray" size="2">
-                                          <InfoCircledIcon />
-                                        </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
-                                  </td>
-                                ))}
-                              </tr>
+                              {switchPropDefs.size.values.map((size) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {switchPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <Flex align="center" justify="start" gap="4">
+                                        <Switch
+                                          size={size}
+                                          variant={variant}
+                                          radius={radius}
+                                          defaultChecked
+                                        />
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
                             </React.Fragment>
                           ))}
                         </tbody>
@@ -2590,133 +3300,7 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="text-area">
-                  <Link color="gray" underline="hover" highContrast href="#text-area">
-                    Text Area
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            <th>Accent</th>
-                            <th>Gray</th>
-                            <th>Disabled</th>
-                            <th>Read-only</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {textAreaPropDefs.variant.values.map((variant) => (
-                            <tr key={variant}>
-                              <td>{upperFirst(variant)}</td>
-                              <td>
-                                <TextArea variant={variant} placeholder="Reply to comment" />
-                              </td>
-                              <td>
-                                <TextArea
-                                  variant={variant}
-                                  color="gray"
-                                  placeholder="Reply to comment"
-                                />
-                              </td>
-                              <td>
-                                <TextArea
-                                  variant={variant}
-                                  placeholder="Reply to comment"
-                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
-                                  disabled
-                                />
-                              </td>
-                              <td>
-                                <TextArea
-                                  variant={variant}
-                                  placeholder="Reply to comment"
-                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
-                                  readOnly
-                                />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {textAreaPropDefs.variant.values.map((variant) => (
-                              <th key={variant}>{upperFirst(variant)}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
-                              <td>{upperFirst(color)}</td>
-                              {textAreaPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <TextArea
-                                    color={color}
-                                    variant={variant}
-                                    placeholder="Reply to comment"
-                                  />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {textAreaPropDefs.variant.values.map((variant) => (
-                              <th key={variant} style={{ textAlign: 'left' }}>
-                                {upperFirst(variant)}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {textAreaPropDefs.size.values.map((size) => (
-                            <tr key={size}>
-                              <td>Size {size}</td>
-                              {textAreaPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <TextArea
-                                    size={size}
-                                    variant={variant}
-                                    placeholder="Reply to comment"
-                                    style={{ width: 120 + Number(size) * 20 }}
-                                  />
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="table">
+                <Heading id="table" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#table">
                     Table
                   </Link>
@@ -2832,7 +3416,7 @@ export default function ExploreComponents() {
                   </table>
                 </Box>
 
-                <Heading mb="5" id="tabs">
+                <Heading id="tabs" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#tabs">
                     Tabs
                   </Link>
@@ -2849,936 +3433,7 @@ export default function ExploreComponents() {
                   ))}
                 </Flex>
 
-                <Heading mb="5" id="aspect-ratio">
-                  <Link color="gray" underline="hover" highContrast href="#aspect-ratio">
-                    Aspect Ratio
-                  </Link>
-                </Heading>
-                <Grid columns="4" gap="4" mb="9">
-                  {['1 / 2', '1 / 1', '16 / 9', '2 / 1'].map((ratio) => (
-                    <div key={ratio}>
-                      <Text as="p" size="1" color="gray" mb="2">
-                        Ratio: {ratio.replace('/', 'x')}
-                      </Text>
-                      <AspectRatio ratio={eval(ratio)}>{aspectRatioImage}</AspectRatio>
-                    </div>
-                  ))}
-                </Grid>
-
-                <Heading mb="5" id="blockquote">
-                  <Link color="gray" underline="hover" highContrast href="#blockquote">
-                    Blockquote
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="specimen">
-                    <Grid my="6" gap="6" columns="auto auto" style={{ whiteSpace: 'nowrap' }}>
-                      <Flex direction="column" gap="6">
-                        <Text mb="-4" size="1" color="gray" align="center">
-                          Accent
-                        </Text>
-
-                        <Blockquote size="4">
-                          Perfect typography is certainly the most elusive of all arts.
-                          <br />
-                          Sculpture in stone alone comes near it in obstinacy.
-                        </Blockquote>
-
-                        <Blockquote size="3">
-                          Perfect typography is certainly the most elusive of all arts.
-                          <br />
-                          Sculpture in stone alone comes near it in obstinacy.
-                        </Blockquote>
-
-                        <Blockquote size="2">
-                          Perfect typography is certainly the most elusive of all arts.
-                          <br />
-                          Sculpture in stone alone comes near it in obstinacy.
-                        </Blockquote>
-                      </Flex>
-
-                      <Flex direction="column" gap="6">
-                        <Text mb="-4" size="1" color="gray" align="center">
-                          Gray
-                        </Text>
-
-                        <Blockquote size="4" color="gray">
-                          Perfect typography is certainly the most elusive of all arts.
-                          <br />
-                          Sculpture in stone alone comes near it in obstinacy.
-                        </Blockquote>
-
-                        <Blockquote size="3" color="gray">
-                          Perfect typography is certainly the most elusive of all arts.
-                          <br />
-                          Sculpture in stone alone comes near it in obstinacy.
-                        </Blockquote>
-
-                        <Blockquote size="2" color="gray">
-                          Perfect typography is certainly the most elusive of all arts.
-                          <br />
-                          Sculpture in stone alone comes near it in obstinacy.
-                        </Blockquote>
-                      </Flex>
-                    </Grid>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
-                              <td>{upperFirst(color)}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Flex gap="6">
-                                  <Blockquote color={color}>
-                                    Perfect typography is certainly the most elusive of all arts.
-                                    <br />
-                                    Sculpture in stone alone comes near it in obstinacy.
-                                  </Blockquote>
-                                  <Blockquote color={color} highContrast>
-                                    Perfect typography is certainly the most elusive of all arts.
-                                    <br />
-                                    Sculpture in stone alone comes near it in obstinacy.
-                                  </Blockquote>
-                                </Flex>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <tbody>
-                          {blockquotePropDefs.size.values.map((size) => (
-                            <tr key={size}>
-                              <td>Size {size}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Blockquote size={size}>
-                                  Perfect typography is certainly
-                                  <br />
-                                  the most elusive of all arts.
-                                </Blockquote>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-weights">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {blockquotePropDefs.weight.values.map((weight) => (
-                            <tr key={weight}>
-                              <td>{upperFirst(weight)}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Blockquote weight={weight}>
-                                  Perfect typography is certainly the most elusive of all arts.
-                                  <br />
-                                  Sculpture in stone alone comes near it in obstinacy.
-                                </Blockquote>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="code">
-                  <Link color="gray" underline="hover" highContrast href="#code">
-                    Code
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            <th colSpan={2}>Accent</th>
-                            <th colSpan={2}>Gray</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {codePropDefs.variant.values.map((variant) => (
-                            <tr key={variant} style={{ verticalAlign: 'baseline' }}>
-                              <td>{upperFirst(variant)}</td>
-                              <td>
-                                <Flex>
-                                  <Code variant={variant}>console.log()</Code>
-                                </Flex>
-                              </td>
-                              <td>
-                                <Flex>
-                                  <Code variant={variant} highContrast>
-                                    console.log()
-                                  </Code>
-                                </Flex>
-                              </td>
-                              <td>
-                                <Flex>
-                                  <Code variant={variant} color="gray">
-                                    console.log()
-                                  </Code>
-                                </Flex>
-                              </td>
-                              <td>
-                                <Flex>
-                                  <Code variant={variant} color="gray" highContrast>
-                                    console.log()
-                                  </Code>
-                                </Flex>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th />
-                            {codePropDefs.variant.values.map((variant) => (
-                              <th key={variant}>{upperFirst(variant)}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color} style={{ verticalAlign: 'baseline' }}>
-                              <td>{upperFirst(color)}</td>
-                              {codePropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <Flex align="center" justify="center" gap="4">
-                                    <Code variant={variant} color={color}>
-                                      console.log()
-                                    </Code>
-                                    <Code variant={variant} color={color} highContrast>
-                                      console.log()
-                                    </Code>
-                                  </Flex>
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <Flex direction="column" gap="4">
-                        {codePropDefs.size.values.map((size) => (
-                          <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
-                              <Text color="gray" size="1">
-                                Size {size}
-                              </Text>
-                            </Box>
-                            <Code size={size}>console.log()</Code>
-                          </Flex>
-                        ))}
-                      </Flex>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-weights">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {(['regular', 'bold'] as const).map((weight) => (
-                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
-                              <td>{upperFirst(weight)}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Code weight={weight}>console.log()</Code>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="em">
-                  <Link color="gray" underline="hover" highContrast href="#em">
-                    Em
-                  </Link>
-                </Heading>
-                <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
-                  Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
-                  since the 1960s, when it was popularized by advertisements for Letraset transfer
-                  sheets. It is typically a corrupted version of{' '}
-                  <Em>De finibus bonorum et malorum</Em>, a 1st-century BC text by the Roman
-                  statesman and philosopher Cicero, with words altered, added, and removed to make
-                  it nonsensical and improper Latin.
-                </Box>
-
-                <Heading mb="5" id="heading">
-                  <Link color="gray" underline="hover" highContrast href="#heading">
-                    Heading
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="specimen">
-                    <Box my="6" style={{ width: 'calc(560px * var(--scaling))' }}>
-                      <Heading size="9">
-                        The principles of the typographic craft are difficult to master
-                      </Heading>
-                    </Box>
-
-                    <Flex my="6" gap="6">
-                      <Box style={{ width: 'calc(340px * var(--scaling))' }}>
-                        <Heading size="5" mb="2">
-                          The principles of the typographic craft are difficult to master
-                        </Heading>
-                        <Text as="p" size="3">
-                          The goal of typography is to relate font size, line height, and line width
-                          in a proportional way that maximizes beauty and makes reading easier and
-                          more pleasant.
-                        </Text>
-                      </Box>
-
-                      <Box style={{ width: 'calc(320px * var(--scaling))' }}>
-                        <Heading size="4" mb="2">
-                          The principles of the typographic craft are difficult to master
-                        </Heading>
-                        <Text as="p" size="3">
-                          The goal of typography is to relate font size, line height, and line width
-                          in a proportional way that maximizes beauty and makes reading easier and
-                          more pleasant.
-                        </Text>
-                      </Box>
-                    </Flex>
-
-                    <Flex my="6" gap="6">
-                      <Box style={{ width: 'calc(290px * var(--scaling))' }}>
-                        <Heading size="3" mb="1">
-                          The principles of the typographic craft are difficult to master
-                        </Heading>
-                        <Text as="p" size="2">
-                          The goal of typography is to relate font size, line height, and line width
-                          in a proportional way that maximizes beauty and makes reading easier and
-                          more pleasant.
-                        </Text>
-                      </Box>
-
-                      <Box style={{ width: 'calc(260px * var(--scaling))' }}>
-                        <Heading size="2" mb="1">
-                          The principles of the typographic craft are difficult to master
-                        </Heading>
-                        <Text as="p" size="1">
-                          The goal of typography is to relate font size, line height, and line width
-                          in a proportional way that maximizes beauty and makes reading easier and
-                          more pleasant.
-                        </Text>
-                      </Box>
-                    </Flex>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
-                              <td>{upperFirst(color)}</td>
-                              <td>
-                                <Heading color={color}>
-                                  The quick brown fox jumps over the lazy dog
-                                </Heading>
-                                <Heading color={color} highContrast>
-                                  The quick brown fox jumps over the lazy dog
-                                </Heading>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {headingPropDefs.size.values.map((size) => (
-                            <tr key={size}>
-                              <td>Size {size}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Heading size={size}>
-                                  The quick brown fox
-                                  <br />
-                                  jumps over the lazy dog
-                                </Heading>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-weights">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {headingPropDefs.weight.values.map((weight) => (
-                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
-                              <td>{upperFirst(weight)}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Heading weight={weight}>
-                                  The quick brown fox jumps over the lazy dog
-                                </Heading>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="inset">
-                  <Link color="gray" underline="hover" highContrast href="#inset">
-                    Inset
-                  </Link>
-                </Heading>
-                <Flex my="6" gap="6">
-                  <Card size="2">
-                    <Flex>
-                      <Inset side="left" pr="current">
-                        <InsetImage />
-                      </Inset>
-                      <Text as="p" size="3" style={{ width: 240 }}>
-                        <Strong>Typography</Strong> is the art and technique of arranging type to
-                        make written language legible, readable and appealing when displayed.
-                      </Text>
-                    </Flex>
-                  </Card>
-
-                  <Card size="2">
-                    <Flex>
-                      <Text as="p" size="3" style={{ width: 240 }}>
-                        <Strong>Typography</Strong> is the art and technique of arranging type to
-                        make written language legible, readable and appealing when displayed.
-                      </Text>
-                      <Inset side="right" pl="current">
-                        <InsetImage />
-                      </Inset>
-                    </Flex>
-                  </Card>
-                </Flex>
-
-                <Flex my="6" gap="6">
-                  <Card size="2" style={{ width: 300 }}>
-                    <Inset side="top" pb="current">
-                      <InsetImage style={{ width: '100%', height: 160 }} />
-                    </Inset>
-                    <Text as="p" size="3" style={{ width: 240 }}>
-                      <Strong>Typography</Strong> is the art and technique of arranging type to make
-                      written language legible, readable and appealing when displayed.
-                    </Text>
-                  </Card>
-
-                  <Card size="2" style={{ width: 300 }}>
-                    <Text as="p" size="3" style={{ width: 240 }}>
-                      <Strong>Typography</Strong> is the art and technique of arranging type to make
-                      written language legible, readable and appealing when displayed.
-                    </Text>
-                    <Inset side="bottom" pt="current">
-                      <InsetImage style={{ width: '100%', height: 160 }} />
-                    </Inset>
-                  </Card>
-                </Flex>
-
-                <Heading mb="5" id="kbd">
-                  <Link color="gray" underline="hover" highContrast href="#kbd">
-                    Kbd
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-
-                  <TabsContent value="specimen">
-                    <Flex direction="column" gap="4" my="6">
-                      <Text as="p" size="2">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                      <Text as="p" size="3">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                      <Text as="p" size="4">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                      <Text as="p" size="5">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                    </Flex>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <Box my="6">
-                        <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
-                          {kbdPropDefs.size.values.map((size) => (
-                            <Flex align="center" key={size}>
-                              <Box shrink="0" style={{ width: 80 }}>
-                                <Text color="gray" size="1">
-                                  Size {size}
-                                </Text>
-                              </Box>
-                              <Kbd size={size}>⌥ J</Kbd>
-                            </Flex>
-                          ))}
-                        </Flex>
-                      </Box>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="link">
-                  <Link color="gray" underline="hover" highContrast href="#link">
-                    Link
-                  </Link>
-                </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="specimen">
-                    <Grid
-                      my="6"
-                      gap="6"
-                      columns="calc(440px * var(--scaling)) calc(440px * var(--scaling))"
-                    >
-                      <Flex direction="column" gap="6">
-                        <Text mb="-4" size="1" color="gray" align="center">
-                          Accent
-                        </Text>
-
-                        <Text as="p" size="4">
-                          Susan Kare is an American artist and{' '}
-                          <Link href="#link">graphic designer</Link>, who contributed{' '}
-                          <Link href="#link">interface</Link> elements and{' '}
-                          <Link href="#link">typefaces</Link> for the first{' '}
-                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
-                          1986.
-                        </Text>
-
-                        <Text as="p" size="3">
-                          Susan Kare is an American artist and{' '}
-                          <Link href="#link">graphic designer</Link>, who contributed{' '}
-                          <Link href="#link">interface</Link> elements and{' '}
-                          <Link href="#link">typefaces</Link> for the first{' '}
-                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
-                          1986.
-                        </Text>
-
-                        <Text as="p" size="2">
-                          Susan Kare is an American artist and{' '}
-                          <Link href="#link">graphic designer</Link>, who contributed{' '}
-                          <Link href="#link">interface</Link> elements and{' '}
-                          <Link href="#link">typefaces</Link> for the first{' '}
-                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
-                          1986.
-                        </Text>
-                      </Flex>
-
-                      <Flex direction="column" gap="6">
-                        <Text mb="-4" size="1" color="gray" align="center">
-                          Gray
-                        </Text>
-
-                        <Text as="p" size="4" color="gray">
-                          Susan Kare is an American artist and{' '}
-                          <Link href="#link">graphic designer</Link>, who contributed{' '}
-                          <Link href="#link">interface</Link> elements and{' '}
-                          <Link href="#link">typefaces</Link> for the first{' '}
-                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
-                          1986.
-                        </Text>
-
-                        <Text as="p" size="3" color="gray">
-                          Susan Kare is an American artist and{' '}
-                          <Link href="#link">graphic designer</Link>, who contributed{' '}
-                          <Link href="#link">interface</Link> elements and{' '}
-                          <Link href="#link">typefaces</Link> for the first{' '}
-                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
-                          1986.
-                        </Text>
-
-                        <Text as="p" size="2" color="gray">
-                          Susan Kare is an American artist and{' '}
-                          <Link href="#link">graphic designer</Link>, who contributed{' '}
-                          <Link href="#link">interface</Link> elements and{' '}
-                          <Link href="#link">typefaces</Link> for the first{' '}
-                          <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
-                          1986.
-                        </Text>
-                      </Flex>
-                    </Grid>
-                  </TabsContent>
-
-                  <TabsContent value="all-colors">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
-                            <tr key={color}>
-                              <td>{upperFirst(color)}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Flex gap="6">
-                                  <Link href="/" color={color}>
-                                    Radix Themes
-                                  </Link>
-                                  <Link href="/" color={color} highContrast>
-                                    Radix Themes
-                                  </Link>
-                                </Flex>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-sizes">
-                    <Box my="6">
-                      <Flex direction="column" gap="4">
-                        {linkPropDefs.size.values.map((size) => (
-                          <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
-                              <Text color="gray" size="1">
-                                Size {size}
-                              </Text>
-                            </Box>
-                            <Link href="/" size={size}>
-                              Radix Themes
-                            </Link>
-                          </Flex>
-                        ))}
-                      </Flex>
-                    </Box>
-                  </TabsContent>
-
-                  <TabsContent value="all-weights">
-                    <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {blockquotePropDefs.weight.values.map((weight) => (
-                            <tr key={weight}>
-                              <td>{upperFirst(weight)}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Link href="/" weight={weight}>
-                                  Radix Themes
-                                </Link>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </Box>
-                  </TabsContent>
-                </TabsRoot>
-
-                <Heading mb="5" id="popover">
-                  <Link color="gray" underline="hover" highContrast href="#popover">
-                    Popover
-                  </Link>
-                </Heading>
-                <Flex align="center" gap="4" my="6">
-                  <PopoverRoot>
-                    <PopoverTrigger>
-                      <Button size="1">
-                        <ChatBubbleIcon width="14" height="14" />
-                        Comment
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="1" style={{ width: 250 }}>
-                      <Flex gap="3">
-                        <Avatar
-                          size="2"
-                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
-                          fallback="A"
-                        />
-                        <Box grow="1">
-                          <TextArea
-                            size="1"
-                            placeholder="Write a comment…"
-                            style={{ height: 80 }}
-                          />
-
-                          <Flex gap="3" mt="3" justify="between">
-                            <Flex align="center" gap="2" asChild>
-                              <label>
-                                <Checkbox />
-                                <Text size="1">Send to group</Text>
-                              </label>
-                            </Flex>
-
-                            <PopoverClose>
-                              <Button autoFocus size="1">
-                                Comment
-                              </Button>
-                            </PopoverClose>
-                          </Flex>
-                        </Box>
-                      </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
-
-                  <PopoverRoot>
-                    <PopoverTrigger>
-                      <Button size="2">
-                        <ChatBubbleIcon width="16" height="16" />
-                        Comment
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="2" style={{ width: 320 }}>
-                      <Flex gap="4">
-                        <Avatar
-                          size="3"
-                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
-                          fallback="A"
-                        />
-                        <Box grow="1">
-                          <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
-                          <Flex gap="3" mt="3" justify="between">
-                            <Flex align="center" gap="2" asChild>
-                              <label>
-                                <Checkbox />
-                                <Text size="2">Send to group</Text>
-                              </label>
-                            </Flex>
-
-                            <PopoverClose>
-                              <Button autoFocus size="2">
-                                Comment
-                              </Button>
-                            </PopoverClose>
-                          </Flex>
-                        </Box>
-                      </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
-
-                  <PopoverRoot>
-                    <PopoverTrigger>
-                      <Button size="3">
-                        <ChatBubbleIcon width="16" height="16" />
-                        Comment
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="3" style={{ width: 400 }}>
-                      <Flex gap="4">
-                        <Avatar
-                          size="4"
-                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
-                          fallback="A"
-                        />
-                        <Box grow="1">
-                          <TextArea
-                            size="3"
-                            placeholder="Write a comment…"
-                            style={{ height: 120 }}
-                          />
-                          <Flex gap="3" mt="4" justify="between">
-                            <Flex align="center" gap="2" asChild>
-                              <label>
-                                <Checkbox />
-                                <Text size="2">Send to group</Text>
-                              </label>
-                            </Flex>
-
-                            <PopoverClose>
-                              <Button autoFocus size="3">
-                                Comment
-                              </Button>
-                            </PopoverClose>
-                          </Flex>
-                        </Box>
-                      </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
-
-                  <PopoverRoot>
-                    <PopoverTrigger>
-                      <Button size="4">
-                        <ChatBubbleIcon width="18" height="18" />
-                        Comment
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="4" style={{ width: 400 }}>
-                      <Flex gap="4">
-                        <Avatar
-                          size="5"
-                          src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
-                          fallback="A"
-                        />
-                        <Box grow="1">
-                          <TextArea
-                            size="3"
-                            placeholder="Write a comment…"
-                            style={{ height: 120 }}
-                          />
-                          <Flex gap="3" mt="4" justify="between">
-                            <Flex align="center" gap="2" asChild>
-                              <label>
-                                <Checkbox size="2" />
-                                <Text size="3">Send to group</Text>
-                              </label>
-                            </Flex>
-
-                            <PopoverClose>
-                              <Button autoFocus size="3">
-                                Comment
-                              </Button>
-                            </PopoverClose>
-                          </Flex>
-                        </Box>
-                      </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
-                </Flex>
-
-                <Heading mb="5" id="quote">
-                  <Link color="gray" underline="hover" highContrast href="#quote">
-                    Quote
-                  </Link>
-                </Heading>
-                <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
-                  <Quote style={{ marginLeft: '-0.4em' }}>
-                    A man who would letterspace lower case would steal sheep
-                    <span style={{ marginRight: '-0.2em' }}>,</span>
-                  </Quote>{' '}
-                  Frederic Goudy liked to say. The reason for not letterspacing lower case is that
-                  it hampers legibility. But there are some lowercase alphabets to which this
-                  principle doesn’t apply. Moderate letterspacing can make a face such as lowercase
-                  Univers bold condensed more legible rather than less
-                </Box>
-
-                <Heading mb="5" id="scroll area">
-                  <Link color="gray" underline="hover" highContrast href="#scroll area">
-                    Scroll Area
-                  </Link>
-                </Heading>
-                <Flex align="start" direction="column" my="6">
-                  <Card size="2">
-                    <Inset>
-                      <ScrollArea
-                        type="always"
-                        scrollbars="vertical"
-                        style={{
-                          width: 520,
-                          height: 180,
-                          '--scrollarea-scrollbar-margin-top': 'var(--space-3)',
-                          '--scrollarea-scrollbar-margin-bottom': 'var(--space-3)',
-                          '--scrollarea-scrollbar-margin-left': 'var(--space-3)',
-                          '--scrollarea-scrollbar-margin-right': 'var(--space-3)',
-                        }}
-                      >
-                        <Inset p="current" style={{ margin: 0 }}>
-                          <Box pr="5">
-                            <Flex direction="column" gap="4">
-                              <Text as="p" size="2">
-                                Three fundamental aspects of typography are legibility, readability,
-                                and aesthetics. Although in a non-technical sense “legible” and
-                                “readable” are often used synonymously, typographically they are
-                                separate but related concepts.
-                              </Text>
-
-                              <Text as="p" size="2">
-                                Legibility describes how easily individual characters can be
-                                distinguished from one another. It is described by Walter Tracy as
-                                “the quality of being decipherable and recognisable”. For instance,
-                                if a “b” and an “h”, or a “3” and an “8”, are difficult to
-                                distinguish at small sizes, this is a problem of legibility.
-                              </Text>
-
-                              <Text as="p" size="2">
-                                Typographers are concerned with legibility insofar as it is their
-                                job to select the correct font to use. Brush Script is an example of
-                                a font containing many characters that might be difficult to
-                                distinguish. The selection of cases influences the legibility of
-                                typography because using only uppercase letters (all-caps) reduces
-                                legibility.
-                              </Text>
-                            </Flex>
-                          </Box>
-                        </Inset>
-                      </ScrollArea>
-                    </Inset>
-                  </Card>
-                </Flex>
-
-                <Heading mb="5" id="separator">
-                  <Link color="gray" underline="hover" highContrast href="#separator">
-                    Separator
-                  </Link>
-                </Heading>
-                <Flex my="6" style={{ whiteSpace: 'nowrap' }}>
-                  <Text size="2">
-                    Tools for building high-quality, accessible UI.
-                    <Separator my="3" size="4" />
-                    <Flex gap="3" align="center">
-                      Themes
-                      <Separator orientation="vertical" />
-                      Primitives
-                      <Separator orientation="vertical" />
-                      Icons
-                      <Separator orientation="vertical" />
-                      Colors
-                    </Flex>
-                  </Text>
-                </Flex>
-
-                <Heading mb="5" id="text">
+                <Heading id="text" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#text">
                     Text
                   </Link>
@@ -4028,7 +3683,352 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
-                <Heading mb="5" id="tooltip">
+                <Heading id="text-area" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#text-area">
+                    Text Area
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th>Accent</th>
+                            <th>Gray</th>
+                            <th>Disabled</th>
+                            <th>Read-only</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {textAreaPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <TextArea variant={variant} placeholder="Reply to comment" />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  color="gray"
+                                  placeholder="Reply to comment"
+                                />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  placeholder="Reply to comment"
+                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                  disabled
+                                />
+                              </td>
+                              <td>
+                                <TextArea
+                                  variant={variant}
+                                  placeholder="Reply to comment"
+                                  defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                  readOnly
+                                />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {textAreaPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {textAreaPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <TextArea
+                                    color={color}
+                                    variant={variant}
+                                    placeholder="Reply to comment"
+                                  />
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {textAreaPropDefs.variant.values.map((variant) => (
+                              <th key={variant} style={{ textAlign: 'left' }}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {textAreaPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {textAreaPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <TextArea
+                                    size={size}
+                                    variant={variant}
+                                    placeholder="Reply to comment"
+                                    style={{ width: 120 + Number(size) * 20 }}
+                                  />
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="text-field" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#text-field">
+                    Text Field
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th>Accent</th>
+                            <th>Gray</th>
+                            <th>Disabled</th>
+                            <th>Read-only</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {textFieldPropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <TextFieldRoot variant={variant}>
+                                  <TextFieldSlot>
+                                    <MagnifyingGlassIcon width="16" height="16" />
+                                  </TextFieldSlot>
+                                  <TextFieldInput placeholder="Search" />
+                                  <TextFieldSlot>
+                                    <IconButton variant="ghost" color="gray" size="1">
+                                      <InfoCircledIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </td>
+                              <td>
+                                <TextFieldRoot variant={variant} color="gray">
+                                  <TextFieldSlot>
+                                    <MagnifyingGlassIcon width="16" height="16" />
+                                  </TextFieldSlot>
+                                  <TextFieldInput placeholder="Search" />
+                                  <TextFieldSlot>
+                                    <IconButton variant="ghost" color="gray" size="1">
+                                      <InfoCircledIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </td>
+                              <td>
+                                <TextFieldRoot variant={variant}>
+                                  <TextFieldSlot>
+                                    <MagnifyingGlassIcon width="16" height="16" />
+                                  </TextFieldSlot>
+                                  <TextFieldInput
+                                    placeholder="Search"
+                                    defaultValue="Quick brown fox"
+                                    disabled
+                                  />
+                                  <TextFieldSlot>
+                                    <IconButton variant="ghost" color="gray" size="1" disabled>
+                                      <InfoCircledIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </td>
+                              <td>
+                                <TextFieldRoot variant={variant}>
+                                  <TextFieldSlot>
+                                    <MagnifyingGlassIcon width="16" height="16" />
+                                  </TextFieldSlot>
+                                  <TextFieldInput
+                                    placeholder="Search"
+                                    defaultValue="Quick brown fox"
+                                    readOnly
+                                  />
+                                  <TextFieldSlot>
+                                    <IconButton variant="ghost" color="gray" size="1">
+                                      <InfoCircledIcon />
+                                    </IconButton>
+                                  </TextFieldSlot>
+                                </TextFieldRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {textFieldPropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {textFieldPropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <TextFieldRoot color={color} variant={variant}>
+                                    <TextFieldSlot>
+                                      <MagnifyingGlassIcon width="16" height="16" />
+                                    </TextFieldSlot>
+                                    <TextFieldInput placeholder="Search" />
+                                    <TextFieldSlot>
+                                      <IconButton variant="ghost" color="gray" size="1">
+                                        <InfoCircledIcon />
+                                      </IconButton>
+                                    </TextFieldSlot>
+                                  </TextFieldRoot>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {textFieldPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {textFieldPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              <tr>
+                                <td>Size 1</td>
+                                {textFieldPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextFieldRoot
+                                      size="1"
+                                      variant={variant}
+                                      radius={radius}
+                                      style={{ width: 140 }}
+                                    >
+                                      <TextFieldSlot>
+                                        <MagnifyingGlassIcon width="14" height="14" />
+                                      </TextFieldSlot>
+                                      <TextFieldInput placeholder="Search" />
+                                    </TextFieldRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 2</td>
+                                {textFieldPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextFieldRoot
+                                      size="2"
+                                      variant={variant}
+                                      radius={radius}
+                                      style={{ width: 160 }}
+                                    >
+                                      <TextFieldSlot>
+                                        <MagnifyingGlassIcon width="16" height="16" />
+                                      </TextFieldSlot>
+                                      <TextFieldInput placeholder="Search" />
+                                      <TextFieldSlot>
+                                        <IconButton variant="ghost" color="gray" size="1">
+                                          <InfoCircledIcon />
+                                        </IconButton>
+                                      </TextFieldSlot>
+                                    </TextFieldRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 3</td>
+                                {textFieldPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextFieldRoot size="3" variant={variant} radius={radius}>
+                                      <TextFieldSlot>
+                                        <MagnifyingGlassIcon width="18" height="18" />
+                                      </TextFieldSlot>
+                                      <TextFieldInput placeholder="Search" />
+                                      <TextFieldSlot>
+                                        <IconButton variant="ghost" color="gray" size="2">
+                                          <InfoCircledIcon />
+                                        </IconButton>
+                                      </TextFieldSlot>
+                                    </TextFieldRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="tooltip" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#tooltip">
                     Tooltip
                   </Link>
