@@ -146,7 +146,7 @@
       );
     }
   }
-  &:where(:active:not([data-state='open'])) {
+  &:where(:active:not([data-state='open'], :disabled)) {
     background-image: linear-gradient(var(--black-a6), transparent);
     padding-top: var(--base-button__classic-active__offset-override, 2px);
 
@@ -378,7 +378,6 @@
   filter: none;
   background-color: transparent;
   background-image: none;
-  padding-top: 0;
 
   &:where(:not(.rt-variant-ghost)) {
     background-color: var(--gray-a3);

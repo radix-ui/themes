@@ -4,6 +4,8 @@
 
 - `Blockquote`
   - Tweak spacing
+- `Button`
+  - Fix disabled ghost button padding
 
 ## 0.0.43
 
