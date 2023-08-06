@@ -35,14 +35,16 @@
 - `Em`:
   - Update default font family.
 - `Inset`:
-  - [**Breaking**] Make the `"all"` the default `side` value
+  - [**Breaking**] Make `"all"` the default `side` value
 - `Kbd`:
   - Don’t inherit font weight.
   - Tweak vertical alignment.
-- `ScrollArea`:
-  - Add internal CSS variables to control the scroll bar spacing `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-bottom`, `--scrollarea-scrollbar-margin-left`, `--scrollarea-scrollbar-margin-right`
 - `Quote`:
   - Add styles and corresponding CSS variables (similar to `Em`).
+- `ScrollArea`:
+  - Add internal CSS variables to control the scroll bar spacing `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-bottom`, `--scrollarea-scrollbar-margin-left`, `--scrollarea-scrollbar-margin-right`
+- `Select`:
+  - Tweak `classic` variant shadow in dark mode to better match other form components
 - `Tabs`:
   - Improve text alignment consistency between active and inactive tab trigger states
 - `Table`:
@@ -53,8 +55,6 @@
 - `ThemePanel`
   - Tweak the design
   - Don’t animate the panel on initial render if `defaultOpen` is `true`
-- `Select`:
-  - Tweak `classic` variant shadow in dark mode to better match other form components
 
 ## 0.0.41
 
