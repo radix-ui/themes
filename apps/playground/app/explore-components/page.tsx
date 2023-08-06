@@ -2738,8 +2738,123 @@ export default function ExploreComponents() {
 
               {/* Vlad works here */}
               <Box m={{ initial: '3', md: '6', xl: '9' }}>
-                <Heading mb="5">Text</Heading>
+                <Heading mb="5">Code</Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {codePropDefs.variant.values.map((variant) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Code variant={variant}>console.log()</Code>
+                              </td>
+                              <td>
+                                <Code variant={variant} highContrast>
+                                  console.log()
+                                </Code>
+                              </td>
+                              <td>
+                                <Code variant={variant} color="gray">
+                                  console.log()
+                                </Code>
+                              </td>
+                              <td>
+                                <Code variant={variant} color="gray" highContrast>
+                                  console.log()
+                                </Code>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
 
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {codePropDefs.variant.values.map((variant) => (
+                              <th key={variant}>{upperFirst(variant)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {codePropDefs.variant.values.map((variant) => (
+                                <td key={variant}>
+                                  <Flex align="center" justify="center" gap="4">
+                                    <Code variant={variant} color={color}>
+                                      console.log()
+                                    </Code>
+                                    <Code variant={variant} color={color} highContrast>
+                                      console.log()
+                                    </Code>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <Flex direction="column" gap="4">
+                        {codePropDefs.size.values.map((size) => (
+                          <Flex align="center" key={size}>
+                            <Box shrink="0" width="9">
+                              <Text color="gray" size="1">
+                                Size {size}
+                              </Text>
+                            </Box>
+                            <Code size={size}>console.log()</Code>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {codePropDefs.weight.values.map((weight) => (
+                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Code weight={weight}>console.log()</Code>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading mb="5">Heading</Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
                     <TabsTrigger value="specimen">Specimen</TabsTrigger>
@@ -2748,7 +2863,182 @@ export default function ExploreComponents() {
                     <TabsTrigger value="all-weights">All weights</TabsTrigger>
                   </TabsList>
                   <TabsContent value="specimen">
-                    <Box my="6" style={{ width: 760 }}>
+                    <Box my="6" style={{ width: 'calc(560px * var(--scaling))' }}>
+                      <Heading size="9">
+                        The principles of the typographic craft are difficult to master
+                      </Heading>
+                    </Box>
+
+                    <Flex my="6" gap="6">
+                      <Box style={{ width: 'calc(340px * var(--scaling))' }}>
+                        <Heading size="5" mb="2">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="3">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: 'calc(320px * var(--scaling))' }}>
+                        <Heading size="4" mb="2">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="3">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                    </Flex>
+
+                    <Flex my="6" gap="6">
+                      <Box style={{ width: 'calc(290px * var(--scaling))' }}>
+                        <Heading size="3" mb="1">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="2">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: 'calc(260px * var(--scaling))' }}>
+                        <Heading size="2" mb="1">
+                          The principles of the typographic craft are difficult to master
+                        </Heading>
+                        <Text as="p" size="1">
+                          The goal of typography is to relate font size, line height, and line width
+                          in a proportional way that maximizes beauty and makes reading easier and
+                          more pleasant.
+                        </Text>
+                      </Box>
+                    </Flex>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              <td>
+                                <Heading color={color}>
+                                  The quick brown fox jumps over the lazy dog
+                                </Heading>
+                                <Heading color={color} highContrast>
+                                  The quick brown fox jumps over the lazy dog
+                                </Heading>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {headingPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Heading size={size}>
+                                  The quick brown fox
+                                  <br />
+                                  jumps over the lazy dog
+                                </Heading>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-weights">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {headingPropDefs.weight.values.map((weight) => (
+                            <tr key={weight} style={{ verticalAlign: 'baseline' }}>
+                              <td>{upperFirst(weight)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Heading weight={weight}>
+                                  The quick brown fox jumps over the lazy dog
+                                </Heading>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading mb="5">Kbd</Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="specimen">
+                    <Flex direction="column" gap="4" my="6">
+                      <Text as="p" size="2">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                      <Text as="p" size="3">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                      <Text as="p" size="4">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                      <Text as="p" size="5">
+                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
+                        to toggle dark mode.
+                      </Text>
+                    </Flex>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <Box my="6">
+                        <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
+                          {kbdPropDefs.size.values.map((size) => (
+                            <Flex align="center" key={size}>
+                              <Box shrink="0" width="9">
+                                <Text color="gray" size="1">
+                                  Size {size}
+                                </Text>
+                              </Box>
+                              <Kbd size={size}>⌥ J</Kbd>
+                            </Flex>
+                          ))}
+                        </Flex>
+                      </Box>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading mb="5">Text</Heading>
+                <TabsRoot defaultValue="specimen">
+                  <TabsList size="2">
+                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="specimen">
+                    <Box my="6" style={{ width: 'calc(760px * var(--scaling))' }}>
                       <Text as="p" size="5">
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
@@ -2759,7 +3049,7 @@ export default function ExploreComponents() {
                       </Text>
                     </Box>
 
-                    <Box my="6" style={{ width: 700 }}>
+                    <Box my="6" style={{ width: 'calc(700px * var(--scaling))' }}>
                       <Text as="p" size="4">
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
@@ -2770,7 +3060,7 @@ export default function ExploreComponents() {
                       </Text>
                     </Box>
 
-                    <Box my="6" style={{ width: 640 }}>
+                    <Box my="6" style={{ width: 'calc(640px * var(--scaling))' }}>
                       <Text as="p" size="3">
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
@@ -2781,7 +3071,7 @@ export default function ExploreComponents() {
                       </Text>
                     </Box>
 
-                    <Box my="6" style={{ width: 572 }}>
+                    <Box my="6" style={{ width: 'calc(572px * var(--scaling))' }}>
                       <Text as="p" size="2">
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
@@ -2792,12 +3082,18 @@ export default function ExploreComponents() {
                       </Text>
                     </Box>
 
-                    <Grid my="7" gap="6" columns="2" align="center" style={{ width: 540 }}>
+                    <Grid
+                      my="7"
+                      gap="6"
+                      columns="2"
+                      align="center"
+                      style={{ width: 'calc(540px * var(--scaling))' }}
+                    >
                       <Box>
                         <Text size="3" as="div" weight="bold">
                           Quick Look
                         </Text>
-                        <Text size="2" as="div" color="gray">
+                        <Text size="2" as="div">
                           Extensions from the installed software may add new features to this app.
                         </Text>
                       </Box>
@@ -2806,7 +3102,7 @@ export default function ExploreComponents() {
                         <Text size="2" as="div" weight="bold">
                           Quick Look
                         </Text>
-                        <Text size="2" as="div" color="gray">
+                        <Text size="2" as="div">
                           Extensions from the installed software may add new features to this app.
                         </Text>
                       </Box>
@@ -2815,7 +3111,7 @@ export default function ExploreComponents() {
                         <Text size="2" as="div" weight="bold">
                           Quick Look
                         </Text>
-                        <Text size="1" as="div" color="gray">
+                        <Text size="1" as="div">
                           Extensions from the installed software may add new features to this app.
                         </Text>
                       </Box>
@@ -2824,10 +3120,98 @@ export default function ExploreComponents() {
                         <Text size="1" as="div" weight="bold">
                           Quick Look
                         </Text>
+                        <Text size="1" as="div">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Grid
+                      my="7"
+                      gap="6"
+                      columns="2"
+                      align="center"
+                      style={{ width: 'calc(540px * var(--scaling))' }}
+                    >
+                      <Box>
+                        <Text size="3" as="div" weight="medium">
+                          Quick Look
+                        </Text>
+                        <Text size="2" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+
+                      <Box>
+                        <Text size="2" as="div" weight="medium">
+                          Quick Look
+                        </Text>
+                        <Text size="2" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+
+                      <Box style={{ width: '90%' }}>
+                        <Text size="2" as="div" weight="medium">
+                          Quick Look
+                        </Text>
                         <Text size="1" as="div" color="gray">
                           Extensions from the installed software may add new features to this app.
                         </Text>
                       </Box>
+
+                      <Box style={{ width: '90%' }}>
+                        <Text size="1" as="div" weight="medium">
+                          Quick Look
+                        </Text>
+                        <Text size="1" as="div" color="gray">
+                          Extensions from the installed software may add new features to this app.
+                        </Text>
+                      </Box>
+                    </Grid>
+
+                    <Grid
+                      my="7"
+                      gap="6"
+                      columns="repeat(4, auto)"
+                      align="center"
+                      style={{ whiteSpace: 'nowrap' }}
+                    >
+                      <Flex direction="column" align="center" gap="1">
+                        <Button variant="surface" color="gray" highContrast size="1">
+                          Quick Look
+                        </Button>
+                        <Text size="1" color="gray">
+                          Opens in a new window
+                        </Text>
+                      </Flex>
+
+                      <Flex direction="column" align="center" gap="1">
+                        <Button variant="surface" color="gray" highContrast size="2">
+                          Quick Look
+                        </Button>
+                        <Text size="1" color="gray">
+                          Opens in a new window
+                        </Text>
+                      </Flex>
+
+                      <Flex direction="column" align="center" gap="1">
+                        <Button variant="surface" color="gray" highContrast size="2">
+                          Quick Look
+                        </Button>
+                        <Text size="2" color="gray">
+                          Opens in a new window
+                        </Text>
+                      </Flex>
+
+                      <Flex direction="column" align="center" gap="1">
+                        <Button variant="surface" color="gray" highContrast size="3">
+                          Quick Look
+                        </Button>
+                        <Text size="2" color="gray">
+                          Opens in a new window
+                        </Text>
+                      </Flex>
                     </Grid>
                   </TabsContent>
 
@@ -2855,18 +3239,18 @@ export default function ExploreComponents() {
 
                   <TabsContent value="all-sizes">
                     <Box my="6">
-                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
-                        <tbody>
-                          {textPropDefs.size.values.map((size) => (
-                            <tr key={size} style={{ verticalAlign: 'baseline' }}>
-                              <td>Size {size}</td>
-                              <td style={{ textAlign: 'left' }}>
-                                <Text size={size}>The quick brown fox jumps over the lazy dog</Text>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                      <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
+                        {textPropDefs.size.values.map((size) => (
+                          <Flex align="center" key={size}>
+                            <Box shrink="0" width="9">
+                              <Text color="gray" size="1">
+                                Size {size}
+                              </Text>
+                            </Box>
+                            <Text size={size}>The quick brown fox jumped over the lazy dog</Text>
+                          </Flex>
+                        ))}
+                      </Flex>
                     </Box>
                   </TabsContent>
 
