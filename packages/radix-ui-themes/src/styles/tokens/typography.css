@@ -87,11 +87,19 @@
 
   /* Em */
 
-  --em-font-family: 'Publico Text', Georgia, 'Times New Roman', serif;
-  --em-font-size-adjust: 1.07;
+  --em-font-family: 'Times New Roman', 'Times', serif;
+  --em-font-size-adjust: 1.18;
   --em-font-style: italic;
   --em-font-weight: inherit;
-  --em-letter-spacing: 0em;
+  --em-letter-spacing: -0.025em;
+
+  /* Quote */
+
+  --quote-font-family: 'Times New Roman', 'Times', serif;
+  --quote-font-size-adjust: 1.18;
+  --quote-font-style: italic;
+  --quote-font-weight: inherit;
+  --quote-letter-spacing: -0.025em;
 }
 
 .radix-themes {

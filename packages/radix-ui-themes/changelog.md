@@ -10,6 +10,8 @@
 - `Badge`:
   - [**Breaking**] Don't default to `gray` color
   - Recover missing `solid` high-contrast for all colors
+- `Blockquote`:
+  - Tweak the design
 - `Button`, `IconButton`:
   - Refine when pressed state is applied so that buttons that open a modal panel don’t flash `:active`
   - Fix disabled `variant="classic"` when pressed
@@ -22,9 +24,13 @@
   - [**Breaking**] Rename `size="3"` to `size="4"` and change its width to `1136px`.
   - Make `size="4"` the default (almost matching the previous default width)
   - Add a new `size="3"` at `880px`
+- `Em`:
+  - Update default font family.
 - `Kbd`:
   - Don’t inherit font weight.
   - Tweak vertical alignment.
+- `Quote`:
+  - Add styles and corresponding CSS variables (similar to `Em`).
 - `Tabs`:
   - Improve text alignment consistency between active and inactive tab trigger states
 - `Table`:

@@ -1,2 +1,12 @@
 .rt-Quote {
+  box-sizing: border-box;
+  font-family: var(--quote-font-family);
+  font-size: calc(var(--quote-font-size-adjust) * 1em);
+  font-style: var(--quote-font-style);
+  font-weight: var(--quote-font-weight);
+  line-height: 1.25;
+  letter-spacing: calc(
+    var(--quote-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
+  );
+  color: inherit;
 }
