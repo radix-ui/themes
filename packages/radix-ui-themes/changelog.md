@@ -1,5 +1,10 @@
 # Changelog
 
+## Up next
+
+- `Blockquote`
+  - Tweak spacing
+
 ## 0.0.43
 
 - General:

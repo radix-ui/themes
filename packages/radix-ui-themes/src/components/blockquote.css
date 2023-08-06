@@ -1,4 +1,4 @@
 .rt-Blockquote {
   border-left: max(var(--space-1), 0.25em) solid var(--accent-a6);
-  padding-left: min(var(--space-5), max(var(--space-2), 0.5em));
+  padding-left: min(var(--space-5), max(var(--space-3), 0.5em));
 }
