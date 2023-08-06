@@ -289,7 +289,6 @@
 		inset 0 -2px 0 0 var(--gray-a5)
 	;
 }
-:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   /* prettier-ignore */
   --select-trigger__classic__box-shadow:

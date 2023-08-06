@@ -7,8 +7,6 @@
     0 0 0 0.05em var(--gray-a6),
     0 0.08em 0.17em var(--gray-a7);
 }
-
-:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   /* prettier-ignore */
   --kbd-shadow:

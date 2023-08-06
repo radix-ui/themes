@@ -152,14 +152,14 @@
 
   --color-overlay: var(--gray-a8);
   --color-panel-solid: white;
-  --color-panel-translucent: rgba(255, 255, 255, 0.9);
+  --color-panel-translucent: rgba(255, 255, 255, 0.8);
   --color-surface: rgba(255, 255, 255, 0.9);
 }
-:is(.dark, .dark-theme),
+
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --color-overlay: var(--black-a11);
   --color-panel-solid: var(--gray-2);
-  --color-panel-translucent: var(--gray-a2);
+  --color-panel-translucent: var(--gray-2-translucent);
   --color-surface: rgba(0, 0, 0, 0.25);
 }
 
@@ -199,6 +199,17 @@
   --gold-9-contrast: white;
   --bronze-9-contrast: white;
   --gray-9-contrast: white;
+}
+
+/* additional step-2 translucent grays for dark mode panels */
+.dark,
+.dark-theme {
+  --gray-2-translucent: rgba(29, 29, 29, 0.7);
+  --mauve-2-translucent: rgba(32, 27, 33, 0.7);
+  --slate-2-translucent: rgba(29, 29, 33, 0.7);
+  --sage-2-translucent: rgba(24, 30, 27, 0.7);
+  --olive-2-translucent: rgba(26, 30, 26, 0.7);
+  --sand-2-translucent: rgba(29, 29, 26, 0.7);
 }
 
 /* additional surface colors */
@@ -923,6 +934,7 @@
 [data-gray-color='mauve'] {
   --gray-1: var(--mauve-1);
   --gray-2: var(--mauve-2);
+  --gray-2-translucent: var(--mauve-2-translucent);
   --gray-3: var(--mauve-3);
   --gray-4: var(--mauve-4);
   --gray-5: var(--mauve-5);
@@ -950,6 +962,7 @@
 [data-gray-color='slate'] {
   --gray-1: var(--slate-1);
   --gray-2: var(--slate-2);
+  --gray-2-translucent: var(--slate-2-translucent);
   --gray-3: var(--slate-3);
   --gray-4: var(--slate-4);
   --gray-5: var(--slate-5);
@@ -977,6 +990,7 @@
 [data-gray-color='sage'] {
   --gray-1: var(--sage-1);
   --gray-2: var(--sage-2);
+  --gray-2-translucent: var(--sage-2-translucent);
   --gray-3: var(--sage-3);
   --gray-4: var(--sage-4);
   --gray-5: var(--sage-5);
@@ -1004,6 +1018,7 @@
 [data-gray-color='olive'] {
   --gray-1: var(--olive-1);
   --gray-2: var(--olive-2);
+  --gray-2-translucent: var(--olive-2-translucent);
   --gray-3: var(--olive-3);
   --gray-4: var(--olive-4);
   --gray-5: var(--olive-5);
@@ -1031,6 +1046,7 @@
 [data-gray-color='sand'] {
   --gray-1: var(--sand-1);
   --gray-2: var(--sand-2);
+  --gray-2-translucent: var(--sand-2-translucent);
   --gray-3: var(--sand-3);
   --gray-4: var(--sand-4);
   --gray-5: var(--sand-5);
@@ -1093,7 +1109,6 @@
 .radix-themes {
   --color-background: white;
 }
-:is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --color-background: var(--gray-1);
 }

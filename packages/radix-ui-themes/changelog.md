@@ -4,6 +4,9 @@
 
 - General:
   - [**Breaking**] Fixed typo: `buttonPropsDefs` -> `buttonPropDefs`
+  - Remove unneeded `:is(.dark, .dark-theme)` selector for dark mode colors, since we don't recommend wrapping the `html` element anymore
+  - Tweak translucent panel color in light mode
+  - Add a special `--gray-2-translucent` step for translucent panel color in dark mode
 - `Avatar`:
   - Fix text fallback size regression
   - [**Breaking**] Don't default to `gray` color
