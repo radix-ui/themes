@@ -937,7 +937,9 @@ export default function ExploreComponents() {
                           </Button>
                         </DialogClose>
                         <DialogClose>
-                          <Button size="1">Save</Button>
+                          <Button size="1" autoFocus>
+                            Save
+                          </Button>
                         </DialogClose>
                       </Flex>
                     </DialogContent>
@@ -981,7 +983,7 @@ export default function ExploreComponents() {
                           </Button>
                         </DialogClose>
                         <DialogClose>
-                          <Button>Save</Button>
+                          <Button autoFocus>Save</Button>
                         </DialogClose>
                       </Flex>
                     </DialogContent>
@@ -1025,7 +1027,7 @@ export default function ExploreComponents() {
                           </Button>
                         </DialogClose>
                         <DialogClose>
-                          <Button>Save</Button>
+                          <Button autoFocus>Save</Button>
                         </DialogClose>
                       </Flex>
                     </DialogContent>
@@ -1071,7 +1073,9 @@ export default function ExploreComponents() {
                           </Button>
                         </DialogClose>
                         <DialogClose>
-                          <Button size="3">Save</Button>
+                          <Button size="3" autoFocus>
+                            Save
+                          </Button>
                         </DialogClose>
                       </Flex>
                     </DialogContent>
@@ -3450,7 +3454,9 @@ export default function ExploreComponents() {
                             </Flex>
 
                             <PopoverClose>
-                              <Button size="1">Comment</Button>
+                              <Button autoFocus size="1">
+                                Comment
+                              </Button>
                             </PopoverClose>
                           </Flex>
                         </Box>
@@ -3483,7 +3489,9 @@ export default function ExploreComponents() {
                             </Flex>
 
                             <PopoverClose>
-                              <Button size="2">Comment</Button>
+                              <Button autoFocus size="2">
+                                Comment
+                              </Button>
                             </PopoverClose>
                           </Flex>
                         </Box>
@@ -3511,7 +3519,7 @@ export default function ExploreComponents() {
                             placeholder="Write a comment…"
                             style={{ height: 120 }}
                           />
-                          <Flex gap="3" mt="3" justify="between">
+                          <Flex gap="3" mt="4" justify="between">
                             <Flex align="center" gap="2" asChild>
                               <label>
                                 <Checkbox />
@@ -3520,7 +3528,9 @@ export default function ExploreComponents() {
                             </Flex>
 
                             <PopoverClose>
-                              <Button size="3">Comment</Button>
+                              <Button autoFocus size="3">
+                                Comment
+                              </Button>
                             </PopoverClose>
                           </Flex>
                         </Box>
@@ -3548,7 +3558,7 @@ export default function ExploreComponents() {
                             placeholder="Write a comment…"
                             style={{ height: 120 }}
                           />
-                          <Flex gap="3" mt="3" justify="between">
+                          <Flex gap="3" mt="4" justify="between">
                             <Flex align="center" gap="2" asChild>
                               <label>
                                 <Checkbox size="2" />
@@ -3557,7 +3567,9 @@ export default function ExploreComponents() {
                             </Flex>
 
                             <PopoverClose>
-                              <Button size="3">Comment</Button>
+                              <Button autoFocus size="3">
+                                Comment
+                              </Button>
                             </PopoverClose>
                           </Flex>
                         </Box>
