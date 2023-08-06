@@ -1538,7 +1538,9 @@ export default function ExploreComponents() {
 
                         <HoverCardContent size={size}>
                           <Flex>
-                            {hoverCardInsetImage}
+                            <Inset side="left" pr="current">
+                              <InsetImage />
+                            </Inset>
                             <Text as="p" size={size} style={{ maxWidth: 150 + 50 * Number(size) }}>
                               <Strong>Typography</Strong> is the art and technique of arranging type
                               to make written language legible, readable and appealing when
@@ -3130,6 +3132,55 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading mb="5">Inset</Heading>
+                <Flex my="6" gap="6">
+                  <Card size="2">
+                    <Flex>
+                      <Inset side="left" pr="current">
+                        <InsetImage />
+                      </Inset>
+                      <Text as="p" size="3" style={{ width: 240 }}>
+                        <Strong>Typography</Strong> is the art and technique of arranging type to
+                        make written language legible, readable and appealing when displayed.
+                      </Text>
+                    </Flex>
+                  </Card>
+
+                  <Card size="2">
+                    <Flex>
+                      <Text as="p" size="3" style={{ width: 240 }}>
+                        <Strong>Typography</Strong> is the art and technique of arranging type to
+                        make written language legible, readable and appealing when displayed.
+                      </Text>
+                      <Inset side="right" pl="current">
+                        <InsetImage />
+                      </Inset>
+                    </Flex>
+                  </Card>
+                </Flex>
+
+                <Flex my="6" gap="6">
+                  <Card size="2" style={{ width: 300 }}>
+                    <Inset side="top" pb="current">
+                      <InsetImage style={{ width: '100%', height: 160 }} />
+                    </Inset>
+                    <Text as="p" size="3" style={{ width: 240 }}>
+                      <Strong>Typography</Strong> is the art and technique of arranging type to make
+                      written language legible, readable and appealing when displayed.
+                    </Text>
+                  </Card>
+
+                  <Card size="2" style={{ width: 300 }}>
+                    <Text as="p" size="3" style={{ width: 240 }}>
+                      <Strong>Typography</Strong> is the art and technique of arranging type to make
+                      written language legible, readable and appealing when displayed.
+                    </Text>
+                    <Inset side="bottom" pt="current">
+                      <InsetImage style={{ width: '100%', height: 160 }} />
+                    </Inset>
+                  </Card>
+                </Flex>
+
                 <Heading mb="5">Kbd</Heading>
                 <TabsRoot defaultValue="specimen">
                   <TabsList size="2">
@@ -3979,20 +4030,20 @@ function calloutSizeToIconSize(calloutSize: (typeof calloutRootPropDefs.size.val
   if (calloutSize === '3') return { width: 20, height: 20 };
 }
 
-const hoverCardInsetImage = (
-  <Inset side="left" pr="current">
-    <img
-      src="https://images.unsplash.com/photo-1596299786007-9974099be52b?&auto=format&fit=crop&w=300&q=80"
-      alt="Bold typography"
-      style={{
-        display: 'block',
-        objectFit: 'cover',
-        height: '100%',
-        width: 150,
-        backgroundColor: 'var(--gray-5)',
-      }}
-    />
-  </Inset>
+const InsetImage = (props: React.ComponentPropsWithoutRef<'img'>) => (
+  <img
+    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    alt="Bold typography"
+    {...props}
+    style={{
+      display: 'block',
+      objectFit: 'cover',
+      height: '100%',
+      width: 150,
+      backgroundColor: 'var(--gray-5)',
+      ...props.style,
+    }}
+  />
 );
 
 function selectTriggerVariantToSelectContentVariant(
