@@ -16,12 +16,17 @@
 - `Callout`:
   - Always set `text-align: left`
   - [**Breaking**] Don't default to `gray` color
+- `Code`:
+  - Fix `variant="ghost"` ignoring the `color` prop
 - `Container`:
   - [**Breaking**] Rename `size="3"` to `size="4"` and change its width to `1136px`.
   - Make `size="4"` the default (almost matching the previous default width)
   - Add a new `size="3"` at `880px`
+- `Kbd`:
+  - Don’t inherit font weight.
+  - Tweak vertical alignment.
 - `Table`:
-  - Fix vertical-align and text-align regression
+  - Fix `vertical-align` and `text-align` regression
 - `TextField`, `TextArea`:
   - Tweak `soft` variant when read-only
 - `Select`:

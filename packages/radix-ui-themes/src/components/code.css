@@ -81,6 +81,11 @@
 /* ghost */
 
 .rt-Code.rt-variant-ghost {
+  color: var(--accent-a11);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
 }
 
 /* solid */

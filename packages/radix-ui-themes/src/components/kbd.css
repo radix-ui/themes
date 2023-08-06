@@ -26,6 +26,7 @@
   justify-content: center;
   flex-shrink: 0;
   font-family: var(--default-font-family);
+  font-weight: normal;
   vertical-align: text-top;
   white-space: nowrap;
   user-select: none;
@@ -36,9 +37,10 @@
 
   font-size: 0.75em;
   min-width: 1.75em;
-  line-height: 1.75em;
+  line-height: 1.7em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  padding-bottom: 0.05em;
   word-spacing: -0.1em;
   border-radius: calc(var(--radius-factor) * 0.35em);
   letter-spacing: var(--letter-spacing, var(--default-letter-spacing));
