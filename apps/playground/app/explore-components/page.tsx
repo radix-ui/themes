@@ -1039,6 +1039,126 @@ export default function ExploreComponents() {
                   </TabsContent>
                 </TabsRoot>
 
+                <Heading id="card" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#card">
+                    Card
+                  </Link>
+                </Heading>
+                <Box my="6" style={{ whiteSpace: 'nowrap' }}>
+                  <Box my="6">
+                    <Flex direction="column" mb="9" style={{ width: 1000 }}>
+                      <Flex justify="center" position="relative" style={{ padding: 100 }}>
+                        <Flex
+                          align="center"
+                          justify="center"
+                          position="absolute"
+                          inset="0"
+                          style={{ overflow: 'hidden' }}
+                        >
+                          <PanelBackgroundImage id="1" width="100%" height="200%" />
+                        </Flex>
+
+                        <Card size="4" style={{ width: 400 }}>
+                          <Box height="7" mb="4">
+                            <Heading as="h3" size="6" mt="-1">
+                              Sign up
+                            </Heading>
+                          </Box>
+
+                          <Box mb="5">
+                            <label>
+                              <Text as="div" size="2" weight="medium" mb="2">
+                                Email address
+                              </Text>
+                              <TextFieldInput tabIndex={-1} placeholder="Enter your email" />
+                            </label>
+                          </Box>
+
+                          <Box mb="5" position="relative">
+                            <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
+                              <Link href="#card" tabIndex={-1} size="2">
+                                Forgot password?
+                              </Link>
+                            </Box>
+
+                            <label>
+                              <Text as="div" size="2" weight="medium" mb="2">
+                                Password
+                              </Text>
+                              <TextFieldInput tabIndex={-1} placeholder="Enter your password" />
+                            </label>
+                          </Box>
+
+                          <Flex mt="6" justify="end" gap="3">
+                            <Button tabIndex={-1} variant="soft">
+                              Create an account
+                            </Button>
+                            <Button tabIndex={-1}>Sign in</Button>
+                          </Flex>
+                        </Card>
+                      </Flex>
+                    </Flex>
+                  </Box>
+
+                  <Box my="6">
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {cardPropDefs.variant.values.map((variant) => (
+                            <th key={variant} style={{ textAlign: 'left' }}>
+                              {upperFirst(variant)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(['1', '2', '3'] as const).map((size) => (
+                          <tr key={size}>
+                            <td>Size {size}</td>
+                            {cardPropDefs.variant.values.map((variant) => (
+                              <td key={variant}>
+                                <Flex>
+                                  <Card
+                                    asChild
+                                    variant={variant}
+                                    size={size}
+                                    mr="2"
+                                    ml={variant === 'ghost' ? '3' : '0'}
+                                    my={variant === 'ghost' ? '4' : '0'}
+                                  >
+                                    <a href="#card">
+                                      {/* @ts-ignore */}
+                                      <Flex align="center" gap={String(+size + 1)}>
+                                        <Avatar
+                                          // @ts-ignore
+                                          size={String(+size + 2)}
+                                          src={getPeopleForColor('gray')[0].image}
+                                          fallback="V"
+                                        />
+                                        <Box>
+                                          {/* @ts-ignore */}
+                                          <Text as="div" weight="medium" size={String(+size + 1)}>
+                                            Emily Adams
+                                          </Text>
+
+                                          <Text as="div" color="gray" size="2">
+                                            emily.adams@example.com
+                                          </Text>
+                                        </Box>
+                                      </Flex>
+                                    </a>
+                                  </Card>
+                                </Flex>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Box>
+
                 <Heading id="checkbox" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#checkbox">
                     Checkbox
@@ -2387,7 +2507,7 @@ export default function ExploreComponents() {
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {blockquotePropDefs.weight.values.map((weight) => (
+                          {linkPropDefs.weight.values.map((weight) => (
                             <tr key={weight}>
                               <td>{upperFirst(weight)}</td>
                               <td style={{ textAlign: 'left' }}>

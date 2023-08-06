@@ -210,7 +210,7 @@ function avatar(id: string, params?: { x?: number; y?: number; zoom?: number }) 
     const { x = 0.5, y = 0.5, zoom = 1 } = params ?? {};
     crop = `focalpoint&fp-x=${x}&fp-y=${y}&fp-z=${zoom}`;
   }
-  return `https://images.unsplash.com/photo-${id}?&w=64&h=64&dpr=2&q=70&crop=${crop}&fit=crop`;
+  return `https://images.unsplash.com/photo-${id}?&w=128&h=128&dpr=2&q=70&crop=${crop}&fit=crop`;
 }
 
 export { getPeopleForColor };
