@@ -71,9 +71,7 @@
   width: var(--switch-thumb-size);
   height: var(--switch-thumb-size);
   border-radius: calc(var(--switch-radius) - var(--switch-padding));
-  transition-property: transform, box-shadow;
-  transition-duration: 140ms;
-  transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95), ease-in-out;
+  transition: transform 140ms cubic-bezier(0.45, 0.05, 0.55, 0.95), box-shadow 140ms ease-in-out;
 
   &:where([data-state='checked']) {
     transform: translateX(var(--switch-thumb-translate));
