@@ -1,5 +1,10 @@
 # Changelog
 
+## Up next
+
+- `ThemePanel`
+  - Fix `onAppearanceChange` type
+
 ## 0.0.46
 
 - General
