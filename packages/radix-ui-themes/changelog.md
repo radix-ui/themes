@@ -2,6 +2,8 @@
 
 ## Up next
 
+- `DropdownMenu`, `Select`
+  - Fix vertical alignment of text within menu items
 - `Switch`
   - Fix Autoprefixer `transition-property` warning
 
