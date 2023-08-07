@@ -3,7 +3,7 @@
 ## Up next
 
 - General
-  - Upgrade to Radix Colors `2.0.0-alpha.4`, which updates all `a1` steps in dark mode.
+  - Upgrade to Radix Colors `2.0.0-alpha.5`, which updates all `a1` steps in dark mode.
 
 ## 0.0.45
 

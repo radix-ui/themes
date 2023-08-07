@@ -194,10 +194,10 @@
     picocolors "^1.0.0"
     tslib "^2.5.0"
 
-"@radix-ui/colors@2.0.0-alpha.4":
-  version "2.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-2.0.0-alpha.4.tgz#7a80df1201c7cafa3825614aff03fa71fa90b461"
-  integrity sha512-nP0qvP2HG0YrOLKs4uihbAP5ggLIir9pLFRcIP3WhlUHffPT7CBqaHQnJxuLjYzal+cTxbGTP1qySgC1tT9Rwg==
+"@radix-ui/colors@2.0.0-alpha.5":
+  version "2.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-2.0.0-alpha.5.tgz#7c13a3aa5ed9073ad694966a8748fd45ac64494d"
+  integrity sha512-yGMFhL85UfioK2A5sDT7lj9aymgsZFk8Fpf5m2AhH3LVAUYfvvUJxhSTrTmiIOUIOHoUH86lvBpDHNvP2kSbrw==
 
 "@radix-ui/number@1.0.1":
   version "1.0.1"
