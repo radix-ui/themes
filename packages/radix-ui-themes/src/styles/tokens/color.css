@@ -192,11 +192,11 @@
   --grass-9-contrast: white;
   --orange-9-contrast: white;
   --brown-9-contrast: white;
-  --sky-9-contrast: hsl(195, 100%, 13%);
-  --mint-9-contrast: hsl(172, 70%, 12%);
-  --lime-9-contrast: hsl(78, 70%, 11.5%);
-  --yellow-9-contrast: hsl(40, 55%, 13.5%);
-  --amber-9-contrast: hsl(20, 80%, 17%);
+  --sky-9-contrast: hsl(210, 12%, 12.5%); /* light mode slate 12 */
+  --mint-9-contrast: hsl(155, 12%, 11.5%); /* light mode sage 12 */
+  --lime-9-contrast: hsl(110, 8%, 12%); /* light mode olive 12 */
+  --yellow-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
+  --amber-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
   --gold-9-contrast: white;
   --bronze-9-contrast: white;
   --gray-9-contrast: white;
