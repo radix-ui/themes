@@ -46,7 +46,7 @@ type ThemePanelImplElement = React.ElementRef<typeof Box>;
 interface ThemePanelImplProps
   extends React.ComponentPropsWithoutRef<typeof Box>,
     ThemePanelImplPrivateProps {
-  onAppearanceChange?: (value: Omit<ThemeOptions['appearance'], 'inherit'>) => void;
+  onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 interface ThemePanelImplPrivateProps {
   open: boolean;
@@ -77,7 +77,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       (appearance: ThemeOptions['appearance']) => {
         onAppearanceChange(appearance);
         if (hasOnAppearanceChangeProp) {
-          handleAppearanceChangeProp(appearance);
+          handleAppearanceChangeProp(appearance as Exclude<ThemeOptions['appearance'], 'inherit'>);
         } else {
           updateThemeAppearanceClass(appearance);
         }

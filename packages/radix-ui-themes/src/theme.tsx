@@ -82,7 +82,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
 
   // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
   const ExplicitRootAppearanceScript = React.memo(
-    ({ appearance }: { appearance: Omit<ThemeOptions['appearance'], 'inherit'> }) => (
+    ({ appearance }: { appearance: Exclude<ThemeOptions['appearance'], 'inherit'> }) => (
       <script
         dangerouslySetInnerHTML={{
           __html: `!(function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');d.style.colorScheme='${appearance}';c.add('${appearance}');}catch(e){}})();`,
