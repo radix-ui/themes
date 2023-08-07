@@ -208,12 +208,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                     style={{ backgroundColor: `var(--${color}-9)` }}
                   >
                     <Tooltip
-                      content={
-                        <>
-                          {upperFirst(color)}
-                          {color === 'gray' && <Em> ({upperFirst(resolvedGrayColor)})</Em>}
-                        </>
-                      }
+                      content={`${upperFirst(color)}${
+                        accentColor === 'gray' && resolvedGrayColor !== 'gray'
+                          ? ` (${upperFirst(resolvedGrayColor)})`
+                          : ''
+                      }`}
                     >
                       <input
                         type="radio"
@@ -253,12 +252,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       }}
                     >
                       <Tooltip
-                        content={
-                          <>
-                            {upperFirst(gray)}
-                            {gray === 'auto' && <Em> ({upperFirst(autoMatchedGray)})</Em>}
-                          </>
-                        }
+                        content={`${upperFirst(gray)}${
+                          gray === 'auto' ? ` (${upperFirst(autoMatchedGray)})` : ''
+                        }`}
                       >
                         <input
                           type="radio"
