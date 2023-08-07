@@ -1,6 +1,6 @@
 # Changelog
 
-## Up next
+## 0.0.46
 
 - General
   - Upgrade to Radix Colors `2.0.1`, which updates all `a1` and some `a2` steps in dark mode.
