@@ -2,6 +2,8 @@
 
 ## Up next
 
+- General
+  - Update all colors. Much better contrast across the board in dark mode, darker high contrast grays in light mode, completely reworked bright colors like lime, yellow, amber, mint, and sky.
 - `DropdownMenu`, `Select`
   - Fix vertical alignment of text within menu items
 - `Switch`
