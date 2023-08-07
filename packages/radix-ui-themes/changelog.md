@@ -4,6 +4,8 @@
 
 - General
   - Upgrade to Radix Colors `2.0.1`, which updates all `a1` and some `a2` steps in dark mode.
+- `ThemePanel`
+  - Add `onApperanceChange` prop to delegate updating the theme classes to another solution (ie. next-themes)
 
 ## 0.0.45
 

@@ -93,23 +93,8 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   );
   ExplicitRootAppearanceScript.displayName = 'ExplicitRootAppearanceScript';
 
-  // Client-side only changes (when `appearance` is changed via `ThemePanel` or when the prop is changed while developing)
-  React.useEffect(() => {
-    if (appearance === 'inherit') return;
-    const root = document.documentElement;
-
-    if (root.classList.contains('light-theme') || root.classList.contains('dark-theme')) {
-      root.classList.remove('light-theme', 'dark-theme');
-      root.style.colorScheme = appearance;
-      root.classList.add(`${appearance}-theme`);
-    }
-
-    if (root.classList.contains('light') || root.classList.contains('dark')) {
-      root.classList.remove('light', 'dark');
-      root.style.colorScheme = appearance;
-      root.classList.add(appearance);
-    }
-  }, [appearance]);
+  // Client-side only changes when `appearance` prop is changed while developing
+  React.useEffect(() => updateThemeAppearanceClass(appearanceProp), [appearanceProp]);
 
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
 
@@ -262,4 +247,21 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
 });
 ThemeImpl.displayName = 'ThemeImpl';
 
-export { Theme, useThemeContext };
+function updateThemeAppearanceClass(appearance: ThemeOptions['appearance']) {
+  if (appearance === 'inherit') return;
+  const root = document.documentElement;
+
+  if (root.classList.contains('light-theme') || root.classList.contains('dark-theme')) {
+    root.classList.remove('light-theme', 'dark-theme');
+    root.style.colorScheme = appearance;
+    root.classList.add(`${appearance}-theme`);
+  }
+
+  if (root.classList.contains('light') || root.classList.contains('dark')) {
+    root.classList.remove('light', 'dark');
+    root.style.colorScheme = appearance;
+    root.classList.add(appearance);
+  }
+}
+
+export { Theme, useThemeContext, updateThemeAppearanceClass };

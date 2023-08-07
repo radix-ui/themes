@@ -1,8 +1,10 @@
 'use client';
 
 import * as React from 'react';
+import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
 import {
   Theme,
+  updateThemeAppearanceClass,
   //
   AspectRatio,
   Box,
@@ -43,14 +45,16 @@ ThemePanel.displayName = 'ThemePanel';
 type ThemePanelImplElement = React.ElementRef<typeof Box>;
 interface ThemePanelImplProps
   extends React.ComponentPropsWithoutRef<typeof Box>,
-    ThemePanelImplPrivateProps {}
+    ThemePanelImplPrivateProps {
+  onAppearanceChange?: (value: Omit<ThemeOptions['appearance'], 'inherit'>) => void;
+}
 interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
   (props, forwardedRef) => {
-    const { open, onOpenChange, ...panelProps } = props;
+    const { open, onOpenChange, onAppearanceChange: onAppearanceChangeProp, ...panelProps } = props;
     const themeContext = useThemeContext();
     const {
       appearance,
@@ -66,6 +70,20 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       scaling,
       onScalingChange,
     } = themeContext;
+
+    const hasOnAppearanceChangeProp = onAppearanceChangeProp !== undefined;
+    const handleAppearanceChangeProp = useCallbackRef(onAppearanceChangeProp);
+    const handleAppearanceChange = React.useCallback(
+      (appearance: ThemeOptions['appearance']) => {
+        onAppearanceChange(appearance);
+        if (hasOnAppearanceChangeProp) {
+          handleAppearanceChangeProp(appearance);
+        } else {
+          updateThemeAppearanceClass(appearance);
+        }
+      },
+      [onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp]
+    );
 
     const autoMatchedGray = getMatchingGrayColor(accentColor);
     const resolvedGrayColor = grayColor === 'auto' ? autoMatchedGray : grayColor;
@@ -113,12 +131,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       function handleKeydown(event: KeyboardEvent) {
         if (event.metaKey && event.key === 'd') {
           event.preventDefault();
-          onAppearanceChange(appearance === 'dark' ? 'light' : 'dark');
+          handleAppearanceChange(appearance === 'dark' ? 'light' : 'dark');
         }
       }
       document.addEventListener('keydown', handleKeydown);
       return () => document.removeEventListener('keydown', handleKeydown);
-    }, [appearance, onAppearanceChange]);
+    }, [appearance, handleAppearanceChange]);
 
     const [resolvedAppearance, setResolvedAppearance] = React.useState<'light' | 'dark' | null>(
       appearance === 'inherit' ? null : appearance
@@ -134,7 +152,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           body.classList.contains('dark') ||
           body.classList.contains('dark-theme');
 
-        onAppearanceChange(hasDarkClass ? 'dark' : 'light');
+        const nextAppearance = hasDarkClass ? 'dark' : 'light';
+
+        if (nextAppearance !== appearance && appearance !== 'inherit') {
+          handleAppearanceChange(nextAppearance);
+        }
+
         setResolvedAppearance(hasDarkClass ? 'dark' : 'light');
       }
 
@@ -148,7 +171,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       observer.observe(root, { attributes: true });
       observer.observe(body, { attributes: true });
       return () => observer.disconnect();
-    }, [onAppearanceChange]);
+    }, [appearance, handleAppearanceChange]);
 
     return (
       <Theme asChild radius="medium" scaling="100%">
@@ -283,11 +306,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="appearance"
                       value={value}
                       checked={resolvedAppearance === value}
-                      onChange={(event) =>
-                        onAppearanceChange(event.target.value as ThemeOptions['appearance'])
-                      }
-                      // TODO: Stop-gap solution for `onChange` stopping working after a few changes
-                      onClick={() => onAppearanceChange(value)}
+                      // TODO: Currently using `onClick` as a stop-gap solution for `onChange` not working after a few changes
+                      onChange={(event) => {
+                        // handleAppearanceChange(event.target.value as ThemeOptions['appearance']);
+                      }}
+                      onClick={() => handleAppearanceChange(value)}
                     />
                     <Flex align="center" justify="center" height="6" gap="2">
                       {value === 'light' ? (
