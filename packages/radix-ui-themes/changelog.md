@@ -1,6 +1,6 @@
 # Changelog
 
-## Up next
+## 0.0.45
 
 - General
   - Update all colors. Much better contrast across the board in dark mode, darker high contrast grays in light mode, completely reworked bright colors like lime, yellow, amber, mint, and sky.
