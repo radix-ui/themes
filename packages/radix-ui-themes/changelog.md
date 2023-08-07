@@ -1,7 +1,9 @@
 # Changelog
 
-## Up next
+## 0.0.44
 
+- General
+  - Respect the theme class format on the `html` element when updating the appearance
 - `Blockquote`
   - Tweak spacing
 - `Button`

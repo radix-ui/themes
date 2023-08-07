@@ -97,9 +97,18 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   React.useEffect(() => {
     if (appearance === 'inherit') return;
     const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.style.colorScheme = appearance;
-    root.classList.add(appearance);
+
+    if (root.classList.contains('light-theme') || root.classList.contains('dark-theme')) {
+      root.classList.remove('light-theme', 'dark-theme');
+      root.style.colorScheme = appearance;
+      root.classList.add(`${appearance}-theme`);
+    }
+
+    if (root.classList.contains('light') || root.classList.contains('dark')) {
+      root.classList.remove('light', 'dark');
+      root.style.colorScheme = appearance;
+      root.classList.add(appearance);
+    }
   }, [appearance]);
 
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
