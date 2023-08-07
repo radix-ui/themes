@@ -1,9 +1,14 @@
 # Changelog
 
+## Up next
+
+- General
+  - Upgrade to Radix Colors `2.0.0-alpha.4`, which updates all `a1` steps in dark mode.
+
 ## 0.0.45
 
 - General
-  - Update all colors. Much better contrast across the board in dark mode, darker high contrast grays in light mode, completely reworked bright colors like lime, yellow, amber, mint, and sky.
+  - Upgrade to Radix Colors `2.0.0-alpha.3`. Much better contrast across the board in dark mode, darker high contrast grays in light mode, completely reworked bright colors like lime, yellow, amber, mint, and sky.
 - `DropdownMenu`, `Select`
   - Fix vertical alignment of text within menu items
 - `Switch`
