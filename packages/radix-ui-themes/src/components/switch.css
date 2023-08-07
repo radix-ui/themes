@@ -29,7 +29,7 @@
     inset: 0;
     pointer-events: none;
     border-radius: inherit;
-    transition-property: background-position, background-color, box-shadow, filter;
+    transition: background-position, background-color, box-shadow, filter;
     transition-timing-function: linear, ease-in-out, ease-in-out, ease-in-out;
     background-repeat: no-repeat;
 

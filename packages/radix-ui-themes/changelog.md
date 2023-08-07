@@ -1,5 +1,10 @@
 # Changelog
 
+## Up next
+
+- `Switch`
+  - Fix Autoprefixer `transition-property` warning
+
 ## 0.0.44
 
 - General
