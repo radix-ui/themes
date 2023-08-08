@@ -14,7 +14,7 @@ For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-
 
 ## Authors
 
-- Benoît Grélard ([@benoitgrelard](https://twitter.com/benoitgrelard)
+- Benoît Grélard ([@benoitgrelard](https://twitter.com/benoitgrelard))
 - Vlad Moroz ([@vladyslavmoroz](https://twitter.com/vladyslavmoroz))
 - Andy Hook ([@Andy_Hook](https://twitter.com/Andy_Hook))
 - Lucas Motta ([@elmotta](https://twitter.com/elmotta))
