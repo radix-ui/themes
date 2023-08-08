@@ -1,6 +1,6 @@
 # Radix Themes
 
-**An open source component library optimized for fast development, easy maintenance, and accessibility..**
+**An open source component library optimized for fast development, easy maintenance, and accessibility.**
 
 ---
 
@@ -10,7 +10,7 @@ For full documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/th
 
 ## Releases
 
-For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/docs/primitives/overview/releases).
+For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
 
 ## Authors
 
