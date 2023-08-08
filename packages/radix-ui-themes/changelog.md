@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.48
+
+- General
+  - Fix SVG icon attribute warning
+
 ## 0.0.47
 
 - `Button`
