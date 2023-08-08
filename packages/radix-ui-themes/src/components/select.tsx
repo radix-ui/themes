@@ -7,7 +7,7 @@ import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { selectRootPropDefs, selectTriggerPropDefs, selectContentPropDefs } from './select.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
-import { CheckIcon, ChevronDownIcon } from '../icons';
+import { ThickCheckIcon, ChevronDownIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -152,7 +152,7 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
       className={classNames('rt-SelectItem', className)}
     >
       <SelectPrimitive.ItemIndicator className="rt-SelectItemIndicator">
-        <CheckIcon />
+        <ThickCheckIcon />
       </SelectPrimitive.ItemIndicator>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>

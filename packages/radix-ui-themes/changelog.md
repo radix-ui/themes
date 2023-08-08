@@ -1,7 +1,23 @@
 # Changelog
 
-## Up next
+## 0.0.47
 
+- `Button`
+  - Tweak `classic` variant chrome
+- `Checkbox`
+  - Update the check icon
+- `Dialog`
+  - Darken the overlay in dark mode
+- `DropdownMenu`, `ContextMenu`
+  - Update icons
+  - Tweak trigger open states
+  - Replace dot icon with check icon for the radio items as the more common design
+- `Select`
+  - Update the check icon
+  - Tweak `classic` variant chrome
+  - Polish trigger arrow icon size and positioning
+- `Table`
+  - Add overflow scrollbars
 - `ThemePanel`
   - Fix `onAppearanceChange` type
 

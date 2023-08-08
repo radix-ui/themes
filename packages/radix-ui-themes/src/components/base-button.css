@@ -62,11 +62,11 @@
   /* prettier-ignore */
   --button__classic__shadows:
 		/* top sharp inner-shine */
-		inset 0 1px 0 1px var(--white-a6),
+		inset 0 1px 0 1px var(--white-a10),
 		/* top soft inner-shine */
 		inset 0 6px 4px -4px var(--white-a8),
 		/* bottom inner-shadow */
-		inset 0 -1px 0 1px var(--black-a6)
+		inset 0 -1px 0.5px 1px var(--black-a8)
 	;
 
   /* prettier-ignore */
@@ -94,7 +94,7 @@
 		/* top soft inner-shine */
 		inset 0 5px 3px -3px var(--white-a8),
 		/* bottom inner-shadow */
-		inset 0 -1px 0 0 var(--black-a9)
+		inset 0 -1px 0.5px 0 var(--black-a10)
 	;
 
   /* prettier-ignore */
@@ -118,7 +118,7 @@
   /* prettier-ignore */
   --button__classic__box-shadow:
 		/* border */
-		var(--button__classic__border, inset 0 0 0 1px var(--black-a8), inset 0 0 0 1px var(--accent-10)),
+		var(--button__classic__border, inset 0 0 0 1px var(--black-a5), inset 0 0 0 1px var(--accent-10)),
 		var(--button__classic__shadows)
 	;
 

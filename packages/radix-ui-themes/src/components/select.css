@@ -150,7 +150,7 @@
   .rt-SelectTrigger {
     &.rt-r-size-1 {
       --select-trigger-height: var(--space-5);
-      gap: 0;
+      gap: var(--space-1);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
@@ -167,7 +167,7 @@
     }
     &.rt-r-size-2 {
       --select-trigger-height: var(--space-6);
-      gap: var(--space-1);
+      gap: calc(var(--space-1) * 1.5);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
@@ -197,6 +197,10 @@
       &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-3);
         --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
+      }
+      & .rt-SelectIcon {
+        width: 11px;
+        height: 11px;
       }
     }
   }
@@ -290,7 +294,7 @@
   /* prettier-ignore */
   --select-trigger__classic__box-shadow:
 		inset 0 0 0 1px var(--gray-a6),
-		inset 0 2px 0 0 var(--white-a10),
+		inset 0 2px 0 0 var(--white-a12),
 		inset 0 -2px 0 0 var(--gray-a5)
 	;
 }
@@ -299,7 +303,7 @@
   /* prettier-ignore */
   --select-trigger__classic__box-shadow:
     0 0 0 1px var(--white-a5),
-    0 -1px 0 0 var(--white-a8),
+    0 -1px 0 0 var(--white-a7),
     inset 0 -1px 0 0 var(--black-a11)
 	;
 }

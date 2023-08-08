@@ -114,6 +114,10 @@
 /* ghost */
 
 .rt-TableRoot.rt-variant-ghost {
+  .rt-ScrollAreaScrollbar[data-orientation='horizontal'] {
+    --scrollarea-scrollbar-margin-left: 0;
+    --scrollarea-scrollbar-margin-right: 0;
+  }
 }
 
 /***************************************************************************************************

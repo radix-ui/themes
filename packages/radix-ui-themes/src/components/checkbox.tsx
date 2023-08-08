@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { checkboxPropDefs } from './checkbox.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
-import { CheckIcon } from '../icons';
+import { ThickCheckIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -45,7 +45,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         })}
       >
         <CheckboxPrimitive.Indicator className="rt-CheckboxIndicator">
-          <CheckIcon width={undefined} height={undefined} />
+          <ThickCheckIcon />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
     </span>

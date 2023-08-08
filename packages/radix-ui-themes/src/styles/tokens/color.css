@@ -158,7 +158,7 @@
 
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --color-overlay: var(--black-a11);
+  --color-overlay: rgba(0, 0, 0, 0.75);
   --color-panel-solid: var(--gray-2);
   --color-panel-translucent: var(--gray-2-translucent);
   --color-surface: rgba(0, 0, 0, 0.25);

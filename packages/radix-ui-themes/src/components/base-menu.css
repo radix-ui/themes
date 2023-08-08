@@ -184,17 +184,25 @@
 
 .rt-BaseMenuContent.rt-variant-solid {
   & .rt-BaseMenuSubTrigger[data-state='open'] {
-    background-color: var(--accent-a5);
+    background-color: var(--gray-a3);
+  }
+  & .rt-BaseMenuSubTriggerIcon {
+    color: var(--gray-12);
   }
   & .rt-BaseMenuItem[data-highlighted] {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
+    & .rt-BaseMenuSubTriggerIcon {
+      color: var(--accent-9-contrast);
+    }
   }
   &:where(.rt-high-contrast) {
-    & .rt-BaseMenuSubTrigger[data-state='open'],
     & .rt-BaseMenuItem[data-highlighted] {
       background-color: var(--accent-12);
       color: var(--accent-1);
+      & .rt-BaseMenuSubTriggerIcon {
+        color: var(--accent-1);
+      }
 
       &[data-accent-color] {
         background-color: var(--accent-9);
@@ -209,6 +217,9 @@
 .rt-BaseMenuContent.rt-variant-soft {
   & .rt-BaseMenuSubTrigger[data-state='open'] {
     background-color: var(--accent-a3);
+  }
+  & .rt-BaseMenuSubTriggerIcon {
+    color: var(--gray-12);
   }
   & .rt-BaseMenuItem[data-highlighted] {
     background-color: var(--accent-a5);

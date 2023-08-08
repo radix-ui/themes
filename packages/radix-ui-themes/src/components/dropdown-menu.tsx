@@ -12,7 +12,7 @@ import {
 } from './dropdown-menu.props';
 import { withBreakpoints } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
-import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '../icons';
+import { ThickCheckIcon, ThickChevronRightIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
 
@@ -189,7 +189,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
-        <DotFilledIcon />
+        <ThickCheckIcon />
       </DropdownMenuPrimitive.ItemIndicator>
     </DropdownMenuPrimitive.RadioItem>
   );
@@ -220,7 +220,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
-        <CheckIcon />
+        <ThickCheckIcon />
       </DropdownMenuPrimitive.ItemIndicator>
       {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}
     </DropdownMenuPrimitive.CheckboxItem>
@@ -255,7 +255,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
-        <ChevronRightIcon />
+        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon" />
       </div>
     </DropdownMenuPrimitive.SubTrigger>
   );

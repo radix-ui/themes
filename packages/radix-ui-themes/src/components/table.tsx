@@ -8,7 +8,7 @@ import {
   withPaddingProps,
   withBreakpoints,
 } from '../helpers';
-
+import { ScrollArea } from './scroll-area';
 import type { MarginProps, PaddingProps, GetPropDefTypes } from '../helpers';
 
 type TableRootElement = React.ElementRef<'div'>;
@@ -38,7 +38,9 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
       )}
       {...rootProps}
     >
-      <table className="rt-TableRootTable">{children}</table>
+      <ScrollArea>
+        <table className="rt-TableRootTable">{children}</table>
+      </ScrollArea>
     </div>
   );
 });
