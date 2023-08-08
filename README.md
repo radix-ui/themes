@@ -1,3 +1,5 @@
+[![Radix Themes Logo](themes.png)](https://radix-ui.com/themes)
+
 # Radix Themes
 
 **An open-source component library optimized for fast development, easy maintenance, and accessibility.**
