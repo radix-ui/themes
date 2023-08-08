@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0
+
+Public release 🎉
+
 ## 0.0.48
 
 - General
