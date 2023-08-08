@@ -1,6 +1,6 @@
 # Radix Themes
 
-**An open source component library optimized for fast development, easy maintenance, and accessibility.**
+**An open-source component library optimized for fast development, easy maintenance, and accessibility.**
 
 ---
 
