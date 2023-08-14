@@ -135,6 +135,8 @@ export { Avatar } from './avatar';
 export * from './avatar.props';
 export { Badge } from './badge';
 export * from './badge.props';
+export { BaseButton } from './base-button';
+export * from './base-button.props';
 export { Blockquote } from './blockquote';
 export * from './blockquote.props';
 export { Button } from './button';
