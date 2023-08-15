@@ -1,4 +1,4 @@
-import type { PropDef } from '../helpers';
+import type { PropDef, ResponsivePropDef } from '../helpers';
 
 const displayValues = ['none', 'inline-grid', 'grid'] as const;
 const flowValues = ['row', 'column', 'dense', 'row-dense', 'column-dense'] as const;
@@ -18,8 +18,8 @@ const gridPropDefs = {
   gapY: { type: 'enum', values: gapValues, default: undefined, responsive: true },
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
-  columns: PropDef<string>;
-  rows: PropDef<string>;
+  columns: ResponsivePropDef<string>;
+  rows: ResponsivePropDef<string>;
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;

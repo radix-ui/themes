@@ -33,4 +33,4 @@ type GetPropDefTypes<P> = {
   [K in keyof P]?: GetPropDefType<P[K]>;
 };
 
-export type { PropDef, GetPropDefTypes };
+export type { PropDef, ResponsivePropDef, GetPropDefTypes };
