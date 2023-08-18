@@ -99,8 +99,8 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
 
         const classList = document.documentElement.classList;
         classList.remove(...removeClass);
-        const html = document.documentElement;
         if (appearance === 'light' || appearance === 'dark') {
+          const html = document.documentElement;
           if (html.style.colorScheme !== appearance) {
             html.style.colorScheme = appearance;
           }
