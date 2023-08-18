@@ -27,6 +27,7 @@ const themePropDefs = {
   panelBackground: { type: 'enum', values: panelBackgrounds, default: 'translucent' },
   radius: { type: 'enum', values: radii, default: 'medium' },
   scaling: { type: 'enum', values: scalings, default: '100%' },
+  spacing: { type: 'number', default: 8 },
 } satisfies {
   hasBackground: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;
@@ -35,6 +36,7 @@ const themePropDefs = {
   panelBackground: PropDef<(typeof panelBackgrounds)[number]>;
   radius: PropDef<(typeof radii)[number]>;
   scaling: PropDef<(typeof scalings)[number]>;
+  spacing: PropDef<number>;
 };
 
 type ThemeProps = GetPropDefTypes<typeof themePropDefs>;
@@ -45,6 +47,7 @@ type ThemeGrayColor = NonNullable<ThemeProps['grayColor']>;
 type ThemePanelBackground = NonNullable<ThemeProps['panelBackground']>;
 type ThemeRadius = NonNullable<ThemeProps['radius']>;
 type ThemeScaling = NonNullable<ThemeProps['scaling']>;
+type ThemeSpacing = NonNullable<ThemeProps['spacing']>;
 
 type ThemeOptions = {
   appearance: ThemeAppearance;
@@ -53,6 +56,7 @@ type ThemeOptions = {
   panelBackground: ThemePanelBackground;
   radius: ThemeRadius;
   scaling: ThemeScaling;
+  spacing: ThemeSpacing;
 };
 
 const themeAccentColorsGrouped = [

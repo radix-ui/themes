@@ -1,5 +1,6 @@
 type Breakpoints = 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
+type BreakpointsObject<T> = { [bp in Breakpoints]: T };
+type Responsive<T> = T | Partial<BreakpointsObject<T>>;
 
 /**
  * A helper to generate CSS classes that include breakpoints.
@@ -74,4 +75,4 @@ function isBreakpointsObject<V extends string>(
 }
 
 export { withBreakpoints, isBreakpointsObject };
-export type { Breakpoints, Responsive };
+export type { Breakpoints, BreakpointsObject, Responsive };

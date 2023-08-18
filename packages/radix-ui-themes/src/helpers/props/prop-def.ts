@@ -8,6 +8,7 @@ type StringOrNumberPropDef = {
   default?: string | number;
   required?: boolean;
 };
+type NumberPropDef = { type: 'number'; default?: number; required?: boolean };
 type ReactNodePropDef = { type: 'ReactNode'; default?: React.ReactNode; required?: boolean };
 type EnumPropDef<T> = { type: 'enum'; values: readonly T[]; default?: T; required?: boolean };
 
@@ -15,6 +16,7 @@ type RegularPropDef<T> =
   | BooleanPropDef
   | StringPropDef
   | StringOrNumberPropDef
+  | NumberPropDef
   | ReactNodePropDef
   | EnumPropDef<T>;
 type ResponsivePropDef<T = any> = RegularPropDef<T> & { responsive: true };
@@ -25,6 +27,7 @@ type GetPropDefType<Def> =
 	  Def extends BooleanPropDef ? (Def extends ResponsivePropDef ? Responsive<boolean> : boolean)
   : Def extends StringPropDef ? (Def extends ResponsivePropDef ? Responsive<string> : string)
   : Def extends StringOrNumberPropDef ? (Def extends ResponsivePropDef ? Responsive<string | number> : string | number)
+  : Def extends NumberPropDef ? (Def extends ResponsivePropDef ? Responsive<number> : number)
   : Def extends ReactNodePropDef ? (Def extends ResponsivePropDef ? Responsive<React.ReactNode> : React.ReactNode)
   : Def extends EnumPropDef<infer Type> ? (Def extends ResponsivePropDef<infer Type> ? Responsive<Type> : Type)
   : never;
@@ -33,4 +36,4 @@ type GetPropDefTypes<P> = {
   [K in keyof P]?: GetPropDefType<P[K]>;
 };
 
-export type { PropDef, ResponsivePropDef, GetPropDefTypes };
+export type { PropDef, ResponsivePropDef, RegularPropDef, GetPropDefType, GetPropDefTypes };

@@ -8,6 +8,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { themePropDefs, getMatchingGrayColor } from './theme-options';
 
 import type { ThemeOptions } from './theme-options';
+import { BreakpointsObject, BreakpointsProvider } from './helpers';
 
 const noop = () => {};
 
@@ -18,6 +19,7 @@ interface ThemeChangeHandlers {
   onPanelBackgroundChange: (panelBackground: ThemeOptions['panelBackground']) => void;
   onRadiusChange: (radius: ThemeOptions['radius']) => void;
   onScalingChange: (scaling: ThemeOptions['scaling']) => void;
+  onSpacingChange: (spacing: ThemeOptions['spacing']) => void;
 }
 
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {
@@ -59,6 +61,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     panelBackground: panelBackgroundProp = themePropDefs.panelBackground.default,
     radius: radiusProp = themePropDefs.radius.default,
     scaling: scalingProp = themePropDefs.scaling.default,
+    spacing: spacingProp = themePropDefs.spacing.default,
     hasBackground = themePropDefs.hasBackground.default,
     ...rootProps
   } = props;
@@ -80,6 +83,9 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const [scaling, setScaling] = React.useState(scalingProp);
   React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
+  const [spacing, setSpacing] = React.useState(spacingProp);
+  React.useEffect(() => setSpacing(spacingProp), [spacingProp]);
+
   // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
   const ExplicitRootAppearanceScript = React.memo(
     ({ appearance }: { appearance: Exclude<ThemeOptions['appearance'], 'inherit'> }) => (
@@ -98,6 +104,16 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
 
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
 
+  // Keep in sync with ./styles/breakpoints.css
+  const breakpoints: BreakpointsObject<number> = {
+    initial: 0,
+    xs: 520,
+    sm: 768,
+    md: 1024,
+    lg: 1280,
+    xl: 1640
+  };
+
   return (
     <>
       {appearance !== 'inherit' && <ExplicitRootAppearanceScript appearance={appearance} />}
@@ -114,26 +130,30 @@ body { background-color: var(--color-page-background); }
         />
       )}
 
-      <ThemeImpl
-        {...rootProps}
-        ref={forwardedRef}
-        isRoot
-        hasBackground={hasBackground}
-        //
-        appearance={appearance}
-        accentColor={accentColor}
-        grayColor={grayColor}
-        panelBackground={panelBackground}
-        radius={radius}
-        scaling={scaling}
-        //
-        onAppearanceChange={setAppearance}
-        onAccentColorChange={setAccentColor}
-        onGrayColorChange={setGrayColor}
-        onPanelBackgroundChange={setPanelBackground}
-        onRadiusChange={setRadius}
-        onScalingChange={setScaling}
-      />
+      <BreakpointsProvider breakpoints={breakpoints} >
+        <ThemeImpl
+          {...rootProps}
+          ref={forwardedRef}
+          isRoot
+          hasBackground={hasBackground}
+          //
+          appearance={appearance}
+          accentColor={accentColor}
+          grayColor={grayColor}
+          panelBackground={panelBackground}
+          radius={radius}
+          scaling={scaling}
+          spacing={spacing}
+          //
+          onAppearanceChange={setAppearance}
+          onAccentColorChange={setAccentColor}
+          onGrayColorChange={setGrayColor}
+          onPanelBackgroundChange={setPanelBackground}
+          onRadiusChange={setRadius}
+          onScalingChange={setScaling}
+          onSpacingChange={setSpacing}
+        />
+      </BreakpointsProvider>
     </>
   );
 });
@@ -162,6 +182,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     panelBackground = context?.panelBackground ?? themePropDefs.panelBackground.default,
     radius = context?.radius ?? themePropDefs.radius.default,
     scaling = context?.scaling ?? themePropDefs.scaling.default,
+    spacing = context?.spacing ?? themePropDefs.spacing.default,
     //
     onAppearanceChange = noop,
     onAccentColorChange = noop,
@@ -169,7 +190,9 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     onPanelBackgroundChange = noop,
     onRadiusChange = noop,
     onScalingChange = noop,
+    onSpacingChange = noop,
     //
+    style,
     ...themeProps
   } = props;
   const Comp = asChild ? Slot : 'div';
@@ -180,6 +203,10 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     !isRoot &&
     (hasBackground === true ||
       (hasBackground !== false && (isExplicitAppearance || isExplicitGrayColor)));
+  const themeStyle = {
+    ...style,
+    '--spacing-factor': spacing
+  };
   return (
     <ThemeContext.Provider
       value={React.useMemo(
@@ -191,6 +218,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           panelBackground,
           radius,
           scaling,
+          spacing,
           //
           onAppearanceChange,
           onAccentColorChange,
@@ -198,6 +226,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
+          onSpacingChange,
         }),
         [
           appearance,
@@ -207,6 +236,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           panelBackground,
           radius,
           scaling,
+          spacing,
           //
           onAppearanceChange,
           onAccentColorChange,
@@ -214,6 +244,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
+          onSpacingChange,
         ]
       )}
     >
@@ -241,6 +272,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           },
           themeProps.className
         )}
+        style={themeStyle}
       />
     </ThemeContext.Provider>
   );
