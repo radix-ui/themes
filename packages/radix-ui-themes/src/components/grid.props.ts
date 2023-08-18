@@ -18,8 +18,8 @@ const gridPropDefs = {
   gapY: { type: 'enum', values: gapValues, default: undefined, responsive: true },
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
-  columns: ResponsivePropDef<string>;
-  rows: ResponsivePropDef<string>;
+  columns: PropDef<string>;
+  rows: PropDef<string>;
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
