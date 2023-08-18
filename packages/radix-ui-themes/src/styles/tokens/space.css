@@ -14,8 +14,8 @@
    * </Theme>
    *
    * DO NOT SET THIS VALUE IN CSS!
-   * The default value here is representative of the default value in Theme
-   * Instead set the spacing factor on the itself (eg. <Theme spacing={yourSpacing} />)
+   * The default value here is representative of the default value in Theme.
+   * Instead set the spacing factor on the Theme itself (eg. <Theme spacing={yourSpacing} />)
    */
   --spacing-factor: 8px;
 
