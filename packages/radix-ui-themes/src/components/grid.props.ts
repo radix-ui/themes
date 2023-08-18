@@ -1,4 +1,4 @@
-import type { PropDef, ResponsivePropDef } from '../helpers';
+import type { PropDef } from '../helpers';
 
 const displayValues = ['none', 'inline-grid', 'grid'] as const;
 const flowValues = ['row', 'column', 'dense', 'row-dense', 'column-dense'] as const;
