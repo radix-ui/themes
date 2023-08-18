@@ -8,7 +8,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { themePropDefs, getMatchingGrayColor } from './theme-options';
 
 import type { ThemeOptions } from './theme-options';
-import { BreakpointsObject, BreakpointsProvider } from './helpers';
+import { Breakpoints, BreakpointsProvider } from './helpers';
 
 const noop = () => {};
 
@@ -119,7 +119,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
 
   // Keep in sync with ./styles/breakpoints.css
-  const breakpoints: BreakpointsObject<number> = {
+  const breakpoints: Record<Breakpoints, number> = {
     initial: 0,
     xs: 520,
     sm: 768,
