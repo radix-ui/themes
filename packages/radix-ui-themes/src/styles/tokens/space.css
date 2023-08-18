@@ -17,16 +17,20 @@
    * The default value here is representative of the default value in Theme.
    * Instead set the spacing factor on the Theme itself (eg. <Theme spacing={yourSpacing} />)
    */
-  --spacing-factor: 8px;
+  --spacing-factor: 8; /* px */
 
-  /* The following are used in gap calculations */
-  --space-1: calc(0.5 * var(--spacing-factor) * var(--scaling));  /* 4px */
-  --space-2: calc(1 * var(--spacing-factor) * var(--scaling));    /* 8px */
-  --space-3: calc(1.5 * var(--spacing-factor) * var(--scaling));  /* 12px */
-  --space-4: calc(2 * var(--spacing-factor) * var(--scaling));    /* 16px */
-  --space-5: calc(3 * var(--spacing-factor) * var(--scaling));    /* 24px */
-  --space-6: calc(4 * var(--spacing-factor) * var(--scaling));    /* 32px */
-  --space-7: calc(5 * var(--spacing-factor) * var(--scaling));    /* 40px */
-  --space-8: calc(6 * var(--spacing-factor) * var(--scaling));    /* 48px */
-  --space-9: calc(8 * var(--spacing-factor) * var(--scaling));    /* 64px */
+  /* 
+   * The following are used in gap calculations
+   * Note: Neither the scaling or spacing factors have a unit associated with them.
+   * Therefore, we need to make it clear to the browser that we want to use px. (Thus the * 1px)
+   */
+  --space-1: calc(0.5 * var(--spacing-factor) * var(--scaling) * 1px);  /* 4px */
+  --space-2: calc(1 * var(--spacing-factor) * var(--scaling) * 1px);    /* 8px */
+  --space-3: calc(1.5 * var(--spacing-factor) * var(--scaling) * 1px);  /* 12px */
+  --space-4: calc(2 * var(--spacing-factor) * var(--scaling) * 1px);    /* 16px */
+  --space-5: calc(3 * var(--spacing-factor) * var(--scaling) * 1px);    /* 24px */
+  --space-6: calc(4 * var(--spacing-factor) * var(--scaling) * 1px);    /* 32px */
+  --space-7: calc(5 * var(--spacing-factor) * var(--scaling) * 1px);    /* 40px */
+  --space-8: calc(6 * var(--spacing-factor) * var(--scaling) * 1px);    /* 48px */
+  --space-9: calc(8 * var(--spacing-factor) * var(--scaling) * 1px);    /* 64px */
 }
