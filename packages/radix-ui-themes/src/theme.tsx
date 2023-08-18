@@ -86,18 +86,32 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const [spacing, setSpacing] = React.useState(spacingProp);
   React.useEffect(() => setSpacing(spacingProp), [spacingProp]);
 
-  // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
-  const ExplicitRootAppearanceScript = React.memo(
-    ({ appearance }: { appearance: Exclude<ThemeOptions['appearance'], 'inherit'> }) => (
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `!(function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');d.style.colorScheme='${appearance}';c.add('${appearance}');}catch(e){}})();`,
-        }}
-      ></script>
-    ),
-    () => true // Never re-render
+  // Set appearance when `appearance` is explicitly set to `light` or `dark`
+  React.useEffect(
+    () => {
+      try{
+        let removeClass: string[];
+        switch(appearance) {
+          case 'light': removeClass = ['dark']; break;
+          case 'dark': removeClass = ['light']; break;
+          default: removeClass = ['light', 'dark'];
+        }
+
+        const classList = document.documentElement.classList;
+        classList.remove(...removeClass);
+        const html = document.documentElement;
+        if (appearance === 'light' || appearance === 'dark') {
+          if (html.style.colorScheme !== appearance) {
+            html.style.colorScheme = appearance;
+          }
+          if (!classList.contains(appearance)) {
+            classList.add(appearance);
+          }
+        }
+      } catch(e) {}
+    }, 
+    [appearance]
   );
-  ExplicitRootAppearanceScript.displayName = 'ExplicitRootAppearanceScript';
 
   // Client-side only changes when `appearance` prop is changed while developing
   React.useEffect(() => updateThemeAppearanceClass(appearanceProp), [appearanceProp]);
@@ -116,8 +130,6 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
 
   return (
     <>
-      {appearance !== 'inherit' && <ExplicitRootAppearanceScript appearance={appearance} />}
-
       {hasBackground && (
         <style
           dangerouslySetInnerHTML={{
