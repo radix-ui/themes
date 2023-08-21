@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- General
+  - Three new color scales: `ruby`, `iris`, and `jade`
+  - Set explicit versions of the Radix Primitives dependencies to allow stable builds
+  - Use an explicit `React.FC` type for `ContextMenuSub`, `DialogRoot`, `HoverCardRoot`, and `PopoverRoot`, resolving a type error with certain setups
+
 ## 1.0.0
 
 Public release 🎉
