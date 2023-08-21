@@ -10,7 +10,9 @@ import { Theme } from '../theme';
 import type { GetPropDefTypes } from '../helpers';
 
 interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
-const PopoverRoot = (props: PopoverRootProps) => <PopoverPrimitive.Root {...props} />;
+const PopoverRoot: React.FC<PopoverRootProps> = (props: PopoverRootProps) => (
+  <PopoverPrimitive.Root {...props} />
+);
 PopoverRoot.displayName = 'PopoverRoot';
 
 type PopoverTriggerElement = React.ElementRef<typeof PopoverPrimitive.Trigger>;

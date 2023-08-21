@@ -230,7 +230,9 @@ DropdownMenuCheckboxItem.displayName = 'DropdownMenuCheckboxItem';
 
 interface DropdownMenuSubProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub> {}
-const DropdownMenuSub = (props: DropdownMenuSubProps) => <DropdownMenuPrimitive.Sub {...props} />;
+const DropdownMenuSub: React.FC<DropdownMenuSubProps> = (props) => (
+  <DropdownMenuPrimitive.Sub {...props} />
+);
 DropdownMenuSub.displayName = 'DropdownMenuSub';
 
 type DropdownMenuSubTriggerElement = React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>;

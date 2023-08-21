@@ -11,7 +11,7 @@ import type { GetPropDefTypes } from '../helpers';
 
 interface HoverCardRootProps
   extends React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Root> {}
-const HoverCardRoot = (props: HoverCardRootProps) => (
+const HoverCardRoot: React.FC<HoverCardRootProps> = (props) => (
   <HoverCardPrimitive.Root closeDelay={150} openDelay={200} {...props} />
 );
 HoverCardRoot.displayName = 'HoverCardRoot';
