@@ -9,6 +9,11 @@
 @import '@radix-ui/colors/red-alpha.css';
 @import '@radix-ui/colors/red-dark-alpha.css';
 
+@import '@radix-ui/colors/ruby.css';
+@import '@radix-ui/colors/ruby-dark.css';
+@import '@radix-ui/colors/ruby-alpha.css';
+@import '@radix-ui/colors/ruby-dark-alpha.css';
+
 @import '@radix-ui/colors/crimson.css';
 @import '@radix-ui/colors/crimson-dark.css';
 @import '@radix-ui/colors/crimson-alpha.css';
@@ -34,6 +39,11 @@
 @import '@radix-ui/colors/violet-alpha.css';
 @import '@radix-ui/colors/violet-dark-alpha.css';
 
+@import '@radix-ui/colors/iris.css';
+@import '@radix-ui/colors/iris-dark.css';
+@import '@radix-ui/colors/iris-alpha.css';
+@import '@radix-ui/colors/iris-dark-alpha.css';
+
 @import '@radix-ui/colors/indigo.css';
 @import '@radix-ui/colors/indigo-dark.css';
 @import '@radix-ui/colors/indigo-alpha.css';
@@ -53,6 +63,11 @@
 @import '@radix-ui/colors/teal-dark.css';
 @import '@radix-ui/colors/teal-alpha.css';
 @import '@radix-ui/colors/teal-dark-alpha.css';
+
+@import '@radix-ui/colors/jade.css';
+@import '@radix-ui/colors/jade-dark.css';
+@import '@radix-ui/colors/jade-alpha.css';
+@import '@radix-ui/colors/jade-dark-alpha.css';
 
 @import '@radix-ui/colors/green.css';
 @import '@radix-ui/colors/green-dark.css';
@@ -179,15 +194,18 @@
 :root {
   --tomato-9-contrast: white;
   --red-9-contrast: white;
+  --ruby-9-contrast: white;
   --crimson-9-contrast: white;
   --pink-9-contrast: white;
   --plum-9-contrast: white;
   --purple-9-contrast: white;
   --violet-9-contrast: white;
+  --iris-9-contrast: white;
   --indigo-9-contrast: white;
   --blue-9-contrast: white;
   --cyan-9-contrast: white;
   --teal-9-contrast: white;
+  --jade-9-contrast: white;
   --green-9-contrast: white;
   --grass-9-contrast: white;
   --orange-9-contrast: white;
@@ -219,15 +237,18 @@
 .light-theme {
   --tomato-surface: var(--tomato-a2);
   --red-surface: var(--red-a2);
+  --ruby-surface: var(--ruby-a2);
   --crimson-surface: var(--crimson-a2);
   --pink-surface: var(--pink-a2);
   --plum-surface: var(--plum-a2);
   --purple-surface: var(--purple-a2);
   --violet-surface: var(--violet-a2);
+  --iris-surface: var(--iris-a2);
   --indigo-surface: var(--indigo-a2);
   --blue-surface: var(--blue-a2);
   --cyan-surface: var(--cyan-a2);
   --teal-surface: var(--teal-a2);
+  --jade-surface: var(--jade-a2);
   --green-surface: var(--green-a2);
   --grass-surface: var(--grass-a2);
   --orange-surface: var(--orange-a2);
@@ -245,15 +266,18 @@
 .dark-theme {
   --tomato-surface: var(--tomato-a2);
   --red-surface: var(--red-a2);
+  --ruby-surface: var(--ruby-a2);
   --crimson-surface: var(--crimson-a2);
   --pink-surface: var(--pink-a2);
   --plum-surface: var(--plum-a2);
   --purple-surface: var(--purple-a2);
   --violet-surface: var(--violet-a2);
+  --iris-surface: var(--iris-a2);
   --indigo-surface: var(--indigo-a2);
   --blue-surface: var(--blue-a2);
   --cyan-surface: var(--cyan-a2);
   --teal-surface: var(--teal-a2);
+  --jade-surface: var(--jade-a2);
   --green-surface: var(--green-a2);
   --grass-surface: var(--grass-a2);
   --orange-surface: var(--orange-a2);
@@ -328,6 +352,36 @@
   --accent-a10: var(--red-a10);
   --accent-a11: var(--red-a11);
   --accent-a12: var(--red-a12);
+}
+[data-accent-color='ruby'] {
+  --color-surface-accent: var(--ruby-surface);
+
+  --accent-1: var(--ruby-1);
+  --accent-2: var(--ruby-2);
+  --accent-3: var(--ruby-3);
+  --accent-4: var(--ruby-4);
+  --accent-5: var(--ruby-5);
+  --accent-6: var(--ruby-6);
+  --accent-7: var(--ruby-7);
+  --accent-8: var(--ruby-8);
+  --accent-9: var(--ruby-9);
+  --accent-9-contrast: var(--ruby-9-contrast);
+  --accent-10: var(--ruby-10);
+  --accent-11: var(--ruby-11);
+  --accent-12: var(--ruby-12);
+
+  --accent-a1: var(--ruby-a1);
+  --accent-a2: var(--ruby-a2);
+  --accent-a3: var(--ruby-a3);
+  --accent-a4: var(--ruby-a4);
+  --accent-a5: var(--ruby-a5);
+  --accent-a6: var(--ruby-a6);
+  --accent-a7: var(--ruby-a7);
+  --accent-a8: var(--ruby-a8);
+  --accent-a9: var(--ruby-a9);
+  --accent-a10: var(--ruby-a10);
+  --accent-a11: var(--ruby-a11);
+  --accent-a12: var(--ruby-a12);
 }
 [data-accent-color='crimson'] {
   --color-surface-accent: var(--crimson-surface);
@@ -479,6 +533,36 @@
   --accent-a11: var(--violet-a11);
   --accent-a12: var(--violet-a12);
 }
+[data-accent-color='iris'] {
+  --color-surface-accent: var(--iris-surface);
+
+  --accent-1: var(--iris-1);
+  --accent-2: var(--iris-2);
+  --accent-3: var(--iris-3);
+  --accent-4: var(--iris-4);
+  --accent-5: var(--iris-5);
+  --accent-6: var(--iris-6);
+  --accent-7: var(--iris-7);
+  --accent-8: var(--iris-8);
+  --accent-9: var(--iris-9);
+  --accent-9-contrast: var(--iris-9-contrast);
+  --accent-10: var(--iris-10);
+  --accent-11: var(--iris-11);
+  --accent-12: var(--iris-12);
+
+  --accent-a1: var(--iris-a1);
+  --accent-a2: var(--iris-a2);
+  --accent-a3: var(--iris-a3);
+  --accent-a4: var(--iris-a4);
+  --accent-a5: var(--iris-a5);
+  --accent-a6: var(--iris-a6);
+  --accent-a7: var(--iris-a7);
+  --accent-a8: var(--iris-a8);
+  --accent-a9: var(--iris-a9);
+  --accent-a10: var(--iris-a10);
+  --accent-a11: var(--iris-a11);
+  --accent-a12: var(--iris-a12);
+}
 [data-accent-color='indigo'] {
   --color-surface-accent: var(--indigo-surface);
 
@@ -598,6 +682,36 @@
   --accent-a10: var(--teal-a10);
   --accent-a11: var(--teal-a11);
   --accent-a12: var(--teal-a12);
+}
+[data-accent-color='jade'] {
+  --color-surface-accent: var(--jade-surface);
+
+  --accent-1: var(--jade-1);
+  --accent-2: var(--jade-2);
+  --accent-3: var(--jade-3);
+  --accent-4: var(--jade-4);
+  --accent-5: var(--jade-5);
+  --accent-6: var(--jade-6);
+  --accent-7: var(--jade-7);
+  --accent-8: var(--jade-8);
+  --accent-9: var(--jade-9);
+  --accent-9-contrast: var(--jade-9-contrast);
+  --accent-10: var(--jade-10);
+  --accent-11: var(--jade-11);
+  --accent-12: var(--jade-12);
+
+  --accent-a1: var(--jade-a1);
+  --accent-a2: var(--jade-a2);
+  --accent-a3: var(--jade-a3);
+  --accent-a4: var(--jade-a4);
+  --accent-a5: var(--jade-a5);
+  --accent-a6: var(--jade-a6);
+  --accent-a7: var(--jade-a7);
+  --accent-a8: var(--jade-a8);
+  --accent-a9: var(--jade-a9);
+  --accent-a10: var(--jade-a10);
+  --accent-a11: var(--jade-a11);
+  --accent-a12: var(--jade-a12);
 }
 [data-accent-color='green'] {
   --color-surface-accent: var(--green-surface);

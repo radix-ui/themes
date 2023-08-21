@@ -1,5 +1,5 @@
 // prettier-ignore
-const radixColorScalesRegular = ['tomato', 'red', 'crimson', 'pink', 'plum', 'purple', 'violet', 'indigo', 'blue', 'cyan', 'teal', 'green', 'grass', 'brown', 'orange' ] as const;
+const radixColorScalesRegular = ['tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'brown', 'orange' ] as const;
 const radixColorScalesBright = ['sky', 'mint', 'lime', 'yellow', 'amber'] as const;
 const radixColorScalesMetal = ['gold', 'bronze'] as const;
 // prettier-ignore
@@ -14,18 +14,21 @@ function radixGetMatchingGrayScale(
   switch (colorScale) {
     case 'tomato':
     case 'red':
+    case 'ruby':
     case 'crimson':
     case 'pink':
     case 'plum':
     case 'purple':
     case 'violet':
       return 'mauve';
+    case 'iris':
     case 'indigo':
     case 'blue':
     case 'sky':
     case 'cyan':
       return 'slate';
     case 'teal':
+    case 'jade':
     case 'mint':
     case 'green':
       return 'sage';
