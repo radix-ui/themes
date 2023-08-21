@@ -229,7 +229,9 @@ ContextMenuCheckboxItem.displayName = 'ContextMenuCheckboxItem';
 
 interface ContextMenuSubProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Sub> {}
-const ContextMenuSub = (props: ContextMenuSubProps) => <ContextMenuPrimitive.Sub {...props} />;
+const ContextMenuSub: React.FC<ContextMenuSubProps> = (props) => (
+  <ContextMenuPrimitive.Sub {...props} />
+);
 ContextMenuSub.displayName = 'ContextMenuSub';
 
 type ContextMenuSubTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>;

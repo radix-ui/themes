@@ -13,7 +13,7 @@ import type { GetPropDefTypes } from '../helpers';
 
 interface DialogRootProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
-const DialogRoot = (props: DialogRootProps) => <DialogPrimitive.Root {...props} modal />;
+const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {...props} modal />;
 DialogRoot.displayName = 'DialogRoot';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
