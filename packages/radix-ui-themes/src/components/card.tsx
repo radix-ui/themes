@@ -51,3 +51,4 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
 Card.displayName = 'Card';
 
 export { Card };
+export type { CardProps };

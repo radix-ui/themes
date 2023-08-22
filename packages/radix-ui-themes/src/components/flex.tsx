@@ -58,3 +58,4 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
 Flex.displayName = 'Flex';
 
 export { Flex };
+export type { FlexProps };

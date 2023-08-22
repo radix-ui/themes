@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+- General
+  - Export prop types from all components
+
 ## 1.1.0
 
 - General

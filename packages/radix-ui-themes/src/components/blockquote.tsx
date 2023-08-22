@@ -27,3 +27,4 @@ const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, 
 Blockquote.displayName = 'Blockquote';
 
 export { Blockquote };
+export type { BlockquoteProps };

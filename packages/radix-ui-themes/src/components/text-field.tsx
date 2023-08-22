@@ -169,3 +169,4 @@ const TextField = Object.assign(
 );
 
 export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput };
+export type { TextFieldRootProps, TextFieldSlotProps, TextFieldInputProps };

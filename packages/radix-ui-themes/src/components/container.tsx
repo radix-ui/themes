@@ -48,3 +48,4 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
 Container.displayName = 'Container';
 
 export { Container };
+export type { ContainerProps };

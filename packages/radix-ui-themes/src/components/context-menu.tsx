@@ -357,3 +357,19 @@ export {
   ContextMenuSubContent,
   ContextMenuSeparator,
 };
+
+export type {
+  ContextMenuRootProps,
+  ContextMenuTriggerProps,
+  ContextMenuContentProps,
+  ContextMenuLabelProps,
+  ContextMenuItemProps,
+  ContextMenuGroupProps,
+  ContextMenuRadioGroupProps,
+  ContextMenuRadioItemProps,
+  ContextMenuCheckboxItemProps,
+  ContextMenuSubProps,
+  ContextMenuSubTriggerProps,
+  ContextMenuSubContentProps,
+  ContextMenuSeparatorProps,
+};

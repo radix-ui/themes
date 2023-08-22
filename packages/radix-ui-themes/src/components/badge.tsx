@@ -39,3 +39,4 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
 Badge.displayName = 'Badge';
 
 export { Badge };
+export type { BadgeProps };

@@ -45,3 +45,4 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
 Section.displayName = 'Section';
 
 export { Section };
+export type { SectionProps };

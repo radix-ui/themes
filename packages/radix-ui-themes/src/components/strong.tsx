@@ -9,3 +9,4 @@ const Strong = React.forwardRef<StrongElement, StrongProps>((props, forwardedRef
 Strong.displayName = 'Strong';
 
 export { Strong };
+export type { StrongProps };

@@ -71,3 +71,4 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
 ScrollArea.displayName = 'ScrollArea';
 
 export { ScrollArea };
+export type { ScrollAreaProps };

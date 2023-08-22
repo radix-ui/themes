@@ -80,3 +80,4 @@ const HoverCard = Object.assign(
 );
 
 export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent };
+export type { HoverCardRootProps, HoverCardTriggerProps, HoverCardContentProps };

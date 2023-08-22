@@ -9,3 +9,4 @@ const Quote = React.forwardRef<QuoteElement, QuoteProps>((props, forwardedRef) =
 Quote.displayName = 'Quote';
 
 export { Quote };
+export type { QuoteProps };

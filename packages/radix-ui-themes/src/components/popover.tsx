@@ -81,3 +81,4 @@ const Popover = Object.assign(
 );
 
 export { Popover, PopoverRoot, PopoverContent, PopoverTrigger, PopoverClose };
+export type { PopoverRootProps, PopoverContentProps, PopoverTriggerProps, PopoverCloseProps };
