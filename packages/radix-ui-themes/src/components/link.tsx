@@ -38,3 +38,4 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
 Link.displayName = 'Link';
 
 export { Link };
+export type { LinkProps };

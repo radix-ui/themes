@@ -43,3 +43,4 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
 Box.displayName = 'Box';
 
 export { Box };
+export type { BoxProps };

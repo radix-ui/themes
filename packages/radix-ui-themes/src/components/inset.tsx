@@ -45,3 +45,4 @@ const Inset = React.forwardRef<InsetElement, InsetProps>((props, forwardedRef) =
 Inset.displayName = 'Inset';
 
 export { Inset };
+export type { InsetProps };

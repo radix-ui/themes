@@ -196,3 +196,13 @@ export {
   TableColumnHeaderCell,
   TableRowHeaderCell,
 };
+
+export type {
+  TableRootProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableColumnHeaderCellProps,
+  TableRowHeaderCellProps,
+};

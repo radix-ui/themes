@@ -85,3 +85,4 @@ const Tabs = Object.assign(
 );
 
 export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent };
+export type { TabsRootProps, TabsListProps, TabsTriggerProps, TabsContentProps };

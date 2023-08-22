@@ -115,3 +115,4 @@ function parseGridValue(value: string | undefined) {
 }
 
 export { Grid };
+export type { GridProps };

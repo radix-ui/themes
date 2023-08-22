@@ -112,3 +112,12 @@ export {
   DialogDescription,
   DialogClose,
 };
+
+export type {
+  DialogRootProps,
+  DialogTriggerProps,
+  DialogContentProps,
+  DialogTitleProps,
+  DialogDescriptionProps,
+  DialogCloseProps,
+};

@@ -74,3 +74,4 @@ const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef
 Avatar.displayName = 'Avatar';
 
 export { Avatar };
+export type { AvatarProps };

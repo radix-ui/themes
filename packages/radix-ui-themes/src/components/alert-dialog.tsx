@@ -11,9 +11,9 @@ import { Theme } from '../theme';
 
 import type { GetPropDefTypes } from '../helpers';
 
-interface AlertDialogProps
+interface AlertDialogRootProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root> {}
-const AlertDialogRoot: React.FC<AlertDialogProps> = (props) => (
+const AlertDialogRoot: React.FC<AlertDialogRootProps> = (props) => (
   <AlertDialogPrimitive.Root {...props} />
 );
 AlertDialogRoot.displayName = 'AlertDialogRoot';
@@ -125,4 +125,14 @@ export {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+};
+
+export type {
+  AlertDialogRootProps,
+  AlertDialogTriggerProps,
+  AlertDialogContentProps,
+  AlertDialogTitleProps,
+  AlertDialogDescriptionProps,
+  AlertDialogActionProps,
+  AlertDialogCancelProps,
 };

@@ -358,3 +358,19 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSeparator,
 };
+
+export type {
+  DropdownMenuRootProps,
+  DropdownMenuTriggerProps,
+  DropdownMenuContentProps,
+  DropdownMenuLabelProps,
+  DropdownMenuItemProps,
+  DropdownMenuGroupProps,
+  DropdownMenuRadioGroupProps,
+  DropdownMenuRadioItemProps,
+  DropdownMenuCheckboxItemProps,
+  DropdownMenuSubProps,
+  DropdownMenuSubTriggerProps,
+  DropdownMenuSubContentProps,
+  DropdownMenuSeparatorProps,
+};

@@ -9,3 +9,4 @@ const Em = React.forwardRef<EmElement, EmProps>((props, forwardedRef) => (
 Em.displayName = 'Em';
 
 export { Em };
+export type { EmProps };

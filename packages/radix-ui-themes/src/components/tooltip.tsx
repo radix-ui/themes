@@ -60,3 +60,4 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
 Tooltip.displayName = 'Tooltip';
 
 export { Tooltip };
+export type { TooltipProps };

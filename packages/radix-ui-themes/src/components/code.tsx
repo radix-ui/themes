@@ -39,3 +39,4 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
 Code.displayName = 'Code';
 
 export { Code };
+export type { CodeProps };

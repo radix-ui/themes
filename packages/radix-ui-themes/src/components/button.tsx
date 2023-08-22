@@ -10,3 +10,4 @@ const Button = React.forwardRef<ButtonElement, ButtonProps>((props, forwardedRef
 Button.displayName = 'Button';
 
 export { Button };
+export type { ButtonProps };

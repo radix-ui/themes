@@ -49,3 +49,4 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
 BaseButton.displayName = 'BaseButton';
 
 export { BaseButton };
+export type { BaseButtonProps };

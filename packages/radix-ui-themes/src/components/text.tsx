@@ -57,3 +57,4 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
 Text.displayName = 'Text';
 
 export { Text };
+export type { TextProps };

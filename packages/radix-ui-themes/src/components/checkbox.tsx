@@ -54,3 +54,4 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
 Checkbox.displayName = 'Checkbox';
 
 export { Checkbox };
+export type { CheckboxProps };

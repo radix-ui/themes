@@ -119,3 +119,4 @@ const Callout = Object.assign(
 );
 
 export { Callout, CalloutRoot, CalloutIcon, CalloutText };
+export type { CalloutRootProps, CalloutIconProps, CalloutTextProps };

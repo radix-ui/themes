@@ -27,3 +27,4 @@ const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
 Kbd.displayName = 'Kbd';
 
 export { Kbd };
+export type { KbdProps };

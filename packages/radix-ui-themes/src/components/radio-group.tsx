@@ -79,3 +79,4 @@ const RadioGroup = Object.assign(
 );
 
 export { RadioGroup, RadioGroupRoot, RadioGroupItem };
+export type { RadioGroupRootProps, RadioGroupItemProps };

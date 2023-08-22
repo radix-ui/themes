@@ -60,3 +60,4 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
 Slider.displayName = 'Slider';
 
 export { Slider };
+export type { SliderProps };
