@@ -5,11 +5,8 @@ import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
 import {
   Theme,
   updateThemeAppearanceClass,
-  //
-  AspectRatio,
   Box,
   Button,
-  Em,
   Flex,
   Grid,
   Heading,
@@ -605,3 +602,4 @@ function upperFirst(string: string) {
 }
 
 export { ThemePanel };
+export type { ThemePanelProps };
