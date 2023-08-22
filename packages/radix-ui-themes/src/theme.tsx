@@ -265,3 +265,4 @@ function updateThemeAppearanceClass(appearance: ThemeOptions['appearance']) {
 }
 
 export { Theme, useThemeContext, updateThemeAppearanceClass };
+export type { ThemeProps };
