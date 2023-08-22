@@ -359,7 +359,7 @@ export {
   DropdownMenuSeparator,
 };
 
-export {
+export type {
   DropdownMenuRootProps,
   DropdownMenuTriggerProps,
   DropdownMenuContentProps,
