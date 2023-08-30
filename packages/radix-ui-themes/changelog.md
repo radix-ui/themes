@@ -3,8 +3,9 @@
 ## Up next
 
 - General
-  - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser
-  - Remove comments from the CSS build
+  - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
+  - Remove comments from the CSS build.
+  - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
 
 ## 1.1.2
 
