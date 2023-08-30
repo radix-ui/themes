@@ -19,6 +19,11 @@
   height: var(--radio-group-item-size);
   width: var(--radio-group-item-size);
   border-radius: 100%;
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--accent-a8);
+    outline-offset: 2px;
+  }
 }
 
 .rt-RadioGroupIndicator {
@@ -60,10 +65,6 @@
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
   }
-  .rt-RadioGroupButton:where(:focus-visible) {
-    box-shadow: inset 0 0 0 1px var(--gray-a7), 0 0 0 2px var(--accent-3),
-      0 0 0 4px var(--accent-a8);
-  }
   .rt-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
@@ -81,10 +82,6 @@
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
   }
-  .rt-RadioGroupButton:where(:focus-visible) {
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1), 0 0 0 2px var(--accent-3),
-      0 0 0 4px var(--accent-a8);
-  }
   .rt-RadioGroupButton:where([data-state='checked']) {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
@@ -100,10 +97,6 @@
 .rt-RadioGroupRoot.rt-variant-soft {
   .rt-RadioGroupButton {
     background-color: var(--accent-a5);
-  }
-
-  .rt-RadioGroupButton:where(:focus-visible) {
-    box-shadow: 0 0 0 2px var(--accent-1), 0 0 0 4px var(--accent-a8);
   }
   .rt-RadioGroupButton:where([data-state='checked']) {
     color: var(--accent-11);

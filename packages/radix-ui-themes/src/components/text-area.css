@@ -13,6 +13,11 @@
 
   resize: none;
 
+  &:focus {
+    outline: 2px solid var(--accent-8);
+    outline-offset: -1px;
+  }
+
   /* scrollbar */
   & {
     /* Arrow mouse cursor over the scrollbar */
@@ -92,10 +97,6 @@
   &:autofill {
     -webkit-text-fill-color: var(--gray-12);
     box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-3);
-    &:focus {
-      box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8),
-        inset 0 0 0 100px var(--accent-3);
-    }
   }
   &:read-only {
     &::placeholder {
@@ -108,34 +109,23 @@
 }
 
 /* surface */
-
 .rt-TextArea.rt-variant-surface {
   color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
-  &:focus {
-    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
-  }
 }
 
 /* classic */
-
 .rt-TextArea.rt-variant-classic {
   color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-1);
-  &:focus {
-    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8), var(--shadow-1);
-  }
 }
 
 /* soft */
 .rt-TextArea.rt-variant-soft {
   color: var(--accent-12);
   background-color: var(--accent-a3);
-  &:focus {
-    box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-a8);
-  }
   &:read-only {
     color: var(--gray-12);
   }
@@ -149,7 +139,6 @@
 }
 
 /* all disabled textareas */
-
 .rt-TextArea:disabled {
   color: var(--gray-a9);
   box-shadow: inset 0 0 0 1px var(--gray-a6);
@@ -158,13 +147,10 @@
 }
 
 /* all readonly textareas */
-
 .rt-TextArea:read-only {
   background-color: var(--gray-a3);
-  &:not(:focus) {
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
-  }
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
   &:focus {
-    box-shadow: inset 0 0 0 1px var(--gray-8), 0 0 0 1px var(--gray-a8);
+    outline: 2px solid var(--gray-8);
   }
 }

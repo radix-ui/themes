@@ -115,7 +115,8 @@
     color: var(--gray-12);
   }
   &:focus-visible .rt-TabsTriggerInner {
-    box-shadow: 0 0 0 2px var(--accent-a8);
+    outline: 2px solid var(--accent-8);
+    outline-offset: -2px;
   }
   &[data-state='active']::before {
     box-sizing: border-box;
@@ -130,5 +131,5 @@
 }
 
 .rt-TabsContent:focus-visible {
-  box-shadow: 0 0 0 2px var(--accent-a8);
+  outline: 2px solid var(--accent-8);
 }
