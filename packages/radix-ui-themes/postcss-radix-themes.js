@@ -21,6 +21,10 @@ const cache = new WeakMap();
 
 module.exports = () => ({
   postcssPlugin: 'postcss-radix-themes',
+  Comment(comment) {
+    // Remove all comments from CSS source
+    comment.remove();
+  },
   Rule(rule) {
     if (rule.parent.name === 'breakpoints') {
       const breakpointsRule = rule.parent;

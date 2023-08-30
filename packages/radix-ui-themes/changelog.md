@@ -1,5 +1,11 @@
 # Changelog
 
+## Up next
+
+- General
+  - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser
+  - Remove comments from the CSS build
+
 ## 1.1.2
 
 - General
