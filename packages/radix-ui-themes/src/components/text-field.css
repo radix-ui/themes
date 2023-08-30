@@ -90,7 +90,7 @@
       height: var(--space-5);
       padding-top: 0.5px;
       padding-bottom: 1px;
-      padding-left: var(--space-1);
+      padding-left: calc(var(--space-1) * 1.5);
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 

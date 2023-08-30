@@ -57,7 +57,7 @@
   .rt-TextArea {
     &.rt-r-size-1 {
       min-height: var(--space-8);
-      padding: var(--space-1);
+      padding: var(--space-1) calc(var(--space-1) * 1.5);
       border-radius: var(--radius-2);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
@@ -65,7 +65,7 @@
     }
     &.rt-r-size-2 {
       min-height: var(--space-9);
-      padding: var(--space-2);
+      padding: calc(var(--space-1) * 1.5) var(--space-2);
       border-radius: var(--radius-2);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
