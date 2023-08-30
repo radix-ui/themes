@@ -90,6 +90,7 @@
     "eslint-config-custom": "*",
     "postcss": "^8.4.24",
     "postcss-cli": "^10.1.0",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
     "postcss-custom-media": "^9.1.4",
     "postcss-import": "^15.1.0",
     "postcss-nesting": "^11.3.0",
