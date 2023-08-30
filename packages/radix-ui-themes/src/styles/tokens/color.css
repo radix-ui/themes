@@ -171,6 +171,14 @@
   --color-surface: rgba(255, 255, 255, 0.9);
 }
 
+/* Make sure that forced light/dark appearance also sets corresponding browser colors, like input autofill color */
+.radix-themes:where(.light, .light-theme) {
+  color-scheme: light;
+}
+.radix-themes:where(.dark, .dark-theme) {
+  color-scheme: dark;
+}
+
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --color-overlay: rgba(0, 0, 0, 0.75);
