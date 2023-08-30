@@ -7,6 +7,10 @@
   - Remove comments from the CSS build.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements
+- `TextField`
+  - Refine `size="1"` padding
+- `TextArea`
+  - Refine `size="1"` and `size="2"` padding
 
 ## 1.1.2
 
