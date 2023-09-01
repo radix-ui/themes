@@ -6,6 +6,7 @@
   - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
   - Remove comments from the CSS build.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
+  - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements
 
 ## 1.1.2
 

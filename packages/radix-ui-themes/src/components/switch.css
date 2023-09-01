@@ -54,14 +54,9 @@
     transition-duration: 30ms;
   }
 
-  /* A pseudo element for the focus outline */
-  &:where(:focus-visible)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    box-shadow: 0 0 0 2px var(--accent-3), 0 0 0 4px var(--accent-a8);
+  &:where(:focus-visible) {
+    outline: 2px solid var(--accent-a8);
+    outline-offset: 2px;
   }
 }
 
