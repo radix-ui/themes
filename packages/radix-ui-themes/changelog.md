@@ -7,10 +7,18 @@
   - Remove comments from the CSS build.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements
-- `TextField`
-  - Refine `size="1"` padding
-- `TextArea`
-  - Refine `size="1"` and `size="2"` padding
+- `TextArea`, `TextField`
+  - Refine padding values for a more balanced look.
+    - Use `text-indent` instead of `padding-left` so that long values aren't truncated on the left when the cursor is at the end of the input.
+  - Refine how the inner shadows are applied so that they blend with the container background.
+  - Refine and normalise the look and feel of disabled and read-only states.
+    - Improve the background colors in dark mode.
+    - Improve the appearance of placeholders.
+    - Remove visual distinctions between disabled and read-only states.
+    - Keep the differences between the variants when the inputs are disabled or read-only.
+    - Fix a Safari bug when the text value would appear tinted in the disabled input.
+  - Remove ellipsis truncation, as this prevented long values from being shown when scrolling on the input horizontally in Chrome.
+  - Improve autofill styles.
 
 ## 1.1.2
 
