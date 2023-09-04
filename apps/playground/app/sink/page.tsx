@@ -1793,7 +1793,6 @@ export default function Sink() {
                           {textFieldPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
-                          <ColumnHeaderCell>value</ColumnHeaderCell>
                           <ColumnHeaderCell>disabled</ColumnHeaderCell>
                           <ColumnHeaderCell>read-only</ColumnHeaderCell>
                         </tr>
@@ -1839,6 +1838,13 @@ export default function Sink() {
                                           </IconButton>
                                         </TextFieldSlot>
                                       </TextFieldRoot>
+                                      <TextFieldInput
+                                        size={size}
+                                        variant={variant}
+                                        color={label === '+ gray' ? 'gray' : undefined}
+                                        placeholder="Your name"
+                                        defaultValue="The quick brown fox jumped over the lazy dog"
+                                      />
                                     </Flex>
                                   </td>
                                 ))}
@@ -1847,7 +1853,8 @@ export default function Sink() {
                                     <TextFieldInput
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
-                                      defaultValue="The quick brown fox jumped"
+                                      placeholder="Your name"
+                                      disabled
                                     />
                                     <TextFieldRoot
                                       variant={variant}
@@ -1856,42 +1863,20 @@ export default function Sink() {
                                       <TextFieldSlot>
                                         <InfoCircledIcon />
                                       </TextFieldSlot>
-                                      <TextFieldInput defaultValue="The quick brown fox jumped" />
+                                      <TextFieldInput placeholder="Your name" disabled />
                                       <TextFieldSlot>
                                         <IconButton size="1" variant="ghost" color="gray">
                                           <StarIcon />
                                         </IconButton>
                                       </TextFieldSlot>
                                     </TextFieldRoot>
-                                  </Flex>
-                                </td>
-                                <td>
-                                  <Flex direction="column" gap="2">
                                     <TextFieldInput
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
                                       disabled
-                                      defaultValue="The quick brown fox jumped"
+                                      defaultValue="The quick brown fox jumped over the lazy dog"
                                     />
-                                    <TextFieldRoot
-                                      variant={variant}
-                                      color={label === '+ gray' ? 'gray' : undefined}
-                                    >
-                                      <TextFieldSlot>
-                                        <InfoCircledIcon />
-                                      </TextFieldSlot>
-                                      <TextFieldInput
-                                        placeholder="Your name"
-                                        disabled
-                                        defaultValue="The quick brown fox jumped"
-                                      />
-                                      <TextFieldSlot>
-                                        <IconButton size="1" variant="ghost" color="gray">
-                                          <StarIcon />
-                                        </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
                                   </Flex>
                                 </td>
                                 <td>
@@ -1901,7 +1886,6 @@ export default function Sink() {
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
                                       readOnly
-                                      defaultValue="The quick brown fox jumped"
                                     />
                                     <TextFieldRoot
                                       variant={variant}
@@ -1910,17 +1894,20 @@ export default function Sink() {
                                       <TextFieldSlot>
                                         <InfoCircledIcon />
                                       </TextFieldSlot>
-                                      <TextFieldInput
-                                        placeholder="Your name"
-                                        readOnly
-                                        defaultValue="The quick brown fox jumped"
-                                      />
+                                      <TextFieldInput placeholder="Your name" readOnly />
                                       <TextFieldSlot>
                                         <IconButton size="1" variant="ghost" color="gray">
                                           <StarIcon />
                                         </IconButton>
                                       </TextFieldSlot>
                                     </TextFieldRoot>
+                                    <TextFieldInput
+                                      variant={variant}
+                                      color={label === '+ gray' ? 'gray' : undefined}
+                                      placeholder="Your name"
+                                      readOnly
+                                      defaultValue="The quick brown fox jumped over the lazy dog"
+                                    />
                                   </Flex>
                                 </td>
                               </tr>
@@ -1929,6 +1916,96 @@ export default function Sink() {
                         ))}
                       </tbody>
                     </table>
+
+                    <Separator my="8" />
+                    <Flex align="center" gap="4" mb="9">
+                      <Box>
+                        <form action="/">
+                          <TextFieldInput
+                            mb="2"
+                            variant="classic"
+                            autoComplete="email"
+                            placeholder="Autofill (Email)"
+                            size="2"
+                            type="email"
+                          />
+                          <TextFieldInput
+                            mb="2"
+                            variant="classic"
+                            autoComplete="password"
+                            placeholder="Autofill (Password)"
+                            size="2"
+                            type="password"
+                          />
+                          <Button type="submit">Submit</Button>
+                        </form>
+                      </Box>
+                      <Box>
+                        <form action="/">
+                          <TextFieldInput
+                            mb="2"
+                            variant="surface"
+                            autoComplete="email"
+                            placeholder="Autofill (Email)"
+                            size="2"
+                            type="email"
+                          />
+                          <TextFieldInput
+                            mb="2"
+                            variant="surface"
+                            autoComplete="password"
+                            placeholder="Autofill (Password)"
+                            size="2"
+                            type="password"
+                          />
+                          <Button type="submit">Submit</Button>
+                        </form>
+                      </Box>
+                      <Box>
+                        <form action="/">
+                          <TextFieldInput
+                            mb="2"
+                            variant="soft"
+                            autoComplete="email"
+                            placeholder="Autofill (Email)"
+                            size="2"
+                            type="email"
+                          />
+                          <TextFieldInput
+                            mb="2"
+                            variant="soft"
+                            autoComplete="password"
+                            placeholder="Autofill (Password)"
+                            size="2"
+                            type="password"
+                          />
+                          <Button type="submit">Submit</Button>
+                        </form>
+                      </Box>
+                      <Box>
+                        <form action="/">
+                          <TextFieldInput
+                            mb="2"
+                            variant="soft"
+                            color="gray"
+                            autoComplete="email"
+                            placeholder="Autofill (Email)"
+                            size="2"
+                            type="email"
+                          />
+                          <TextFieldInput
+                            mb="2"
+                            variant="soft"
+                            color="gray"
+                            autoComplete="password"
+                            placeholder="Autofill (Password)"
+                            size="2"
+                            type="password"
+                          />
+                          <Button type="submit">Submit</Button>
+                        </form>
+                      </Box>
+                    </Flex>
 
                     <Text as="p" my="5">
                       <Code>radius</Code> can be set per instance:
@@ -2024,7 +2101,6 @@ export default function Sink() {
                           {textAreaPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
-                          <ColumnHeaderCell>value</ColumnHeaderCell>
                           <ColumnHeaderCell>disabled</ColumnHeaderCell>
                           <ColumnHeaderCell>read-only</ColumnHeaderCell>
                         </tr>
@@ -2038,35 +2114,49 @@ export default function Sink() {
                                 {textAreaPropDefs.size.values.map((size) => (
                                   <td key={size}>
                                     <TextArea
+                                      mb="2"
                                       size={size}
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your feedback"
                                     />
+                                    <TextArea
+                                      variant={variant}
+                                      color={label === '+ gray' ? 'gray' : undefined}
+                                      placeholder="Your feedback"
+                                      defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
+                                    />
                                   </td>
                                 ))}
                                 <td>
                                   <TextArea
-                                    variant={variant}
-                                    color={label === '+ gray' ? 'gray' : undefined}
-                                    defaultValue="Love the new design, it's looking great!"
-                                  />
-                                </td>
-                                <td>
-                                  <TextArea
+                                    mb="2"
+                                    disabled
                                     variant={variant}
                                     color={label === '+ gray' ? 'gray' : undefined}
                                     placeholder="Your feedback"
+                                  />
+                                  <TextArea
                                     disabled
+                                    variant={variant}
+                                    color={label === '+ gray' ? 'gray' : undefined}
+                                    placeholder="Your feedback"
                                     defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
                                   />
                                 </td>
                                 <td>
                                   <TextArea
+                                    mb="2"
+                                    readOnly
                                     variant={variant}
                                     color={label === '+ gray' ? 'gray' : undefined}
                                     placeholder="Your feedback"
+                                  />
+                                  <TextArea
                                     readOnly
+                                    variant={variant}
+                                    color={label === '+ gray' ? 'gray' : undefined}
+                                    placeholder="Your feedback"
                                     defaultValue="The :autofill CSS pseudo-class matches when an <input> element has its value autofilled by the browser."
                                   />
                                 </td>

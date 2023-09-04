@@ -9,7 +9,6 @@
   -webkit-tap-highlight-color: transparent;
   outline: none;
   font-family: inherit;
-  text-overflow: ellipsis;
   background-color: transparent;
 
   position: relative;
@@ -49,7 +48,6 @@
 .rt-TextFieldRoot {
   display: flex;
   box-sizing: border-box;
-  /* width: 100%; */
 }
 .rt-TextFieldSlot {
   flex-shrink: 0;
@@ -64,7 +62,7 @@
 }
 /* Ensure no padding on input when there's a slot before it */
 .rt-TextFieldRoot .rt-TextFieldSlot + .rt-TextFieldInput {
-  padding-left: 0;
+  text-indent: 0;
 }
 
 @breakpoints {
@@ -88,11 +86,15 @@
   .rt-TextFieldInput {
     &:where(.rt-r-size-1) {
       height: var(--space-5);
-      padding-top: 0.5px;
-      padding-bottom: 1px;
-      padding-left: var(--space-1);
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
+
+      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+      text-indent: calc(var(--space-1) * 1.5);
+
+      /* Tweak text alignment */
+      padding-top: 0.5px;
+      padding-bottom: 1px;
 
       & + .rt-TextFieldChrome {
         border-radius: max(var(--radius-2), var(--radius-full));
@@ -100,11 +102,15 @@
     }
     &:where(.rt-r-size-2) {
       height: var(--space-6);
-      padding-top: 0px;
-      padding-bottom: 1px;
-      padding-left: var(--space-2);
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
+
+      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+      text-indent: var(--space-2);
+
+      /* Tweak text alignment */
+      padding-top: 0px;
+      padding-bottom: 1px;
 
       & + .rt-TextFieldChrome {
         border-radius: max(var(--radius-2), var(--radius-full));
@@ -112,11 +118,15 @@
     }
     &:where(.rt-r-size-3) {
       height: var(--space-7);
-      padding-top: 0.5px;
-      padding-bottom: 1px;
-      padding-left: var(--space-3);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
+
+      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+      text-indent: var(--space-3);
+
+      /* Tweak text alignment */
+      padding-top: 0.5px;
+      padding-bottom: 1px;
 
       & + .rt-TextFieldChrome {
         border-radius: max(var(--radius-3), var(--radius-full));
@@ -131,36 +141,45 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-TextFieldInput {
-  &::placeholder {
-    color: var(--gray-a10);
-    /* Firefox */
-    opacity: 1;
-  }
-  &:autofill {
-    & + .rt-TextFieldChrome {
-      -webkit-text-fill-color: var(--gray-12);
-      box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-3);
-    }
-  }
-  &:read-only {
-    &::placeholder {
-      color: var(--gray-a7);
-    }
-    &::selection {
-      background-color: var(--gray-a5);
-    }
-  }
-}
-
 /* surface */
 
 .rt-TextFieldInput:where(.rt-variant-surface) {
   color: var(--gray-12);
 
+  /* Don't overlap text with the inset shadow */
+  padding-left: 1px;
+  padding-right: 1px;
+
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
+
+    /* Blend inset shadow with the container background */
+    background-clip: content-box;
+    padding: 1px;
+  }
+  &::placeholder {
+    color: var(--gray-a10);
+    /* Firefox */
+    opacity: 1;
+  }
+  &:autofill,
+  &[data-com-onepassword-filled] {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--gray-12);
+
+    & + .rt-TextFieldChrome {
+      background-color: var(--accent-a4);
+      box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 1px var(--accent-a4);
+    }
+  }
+  &:disabled,
+  &:read-only {
+    & + .rt-TextFieldChrome {
+      /* Blend with grey */
+      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    }
   }
 }
 
@@ -169,9 +188,40 @@
 .rt-TextFieldInput:where(.rt-variant-classic) {
   color: var(--gray-12);
 
+  /* Don't overlap text with inset shadow */
+  padding-left: 1px;
+  padding-right: 1px;
+
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface);
     box-shadow: var(--shadow-1);
+
+    /* Blend inset shadow with the container background */
+    background-clip: content-box;
+    padding: 1px;
+  }
+  &::placeholder {
+    color: var(--gray-a10);
+    /* Firefox */
+    opacity: 1;
+  }
+  &:autofill,
+  &[data-com-onepassword-filled] {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--gray-12);
+
+    & + .rt-TextFieldChrome {
+      background-color: var(--accent-a4);
+      box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-a4);
+    }
+  }
+  &:disabled,
+  &:read-only {
+    & + .rt-TextFieldChrome {
+      /* Blend with grey */
+      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    }
   }
 }
 
@@ -182,44 +232,60 @@
   & + .rt-TextFieldChrome {
     background-color: var(--accent-a3);
   }
-  &:read-only {
-    color: var(--gray-12);
-  }
   &::placeholder {
     color: var(--accent-12);
-    opacity: 0.5;
+    opacity: 0.6;
+  }
+  &:autofill,
+  &[data-com-onepassword-filled] {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--accent-12);
+
+    & + .rt-TextFieldChrome {
+      background-color: var(--accent-a5);
+    }
+  }
+  &:disabled,
+  &:read-only {
+    & + .rt-TextFieldChrome {
+      background-color: var(--gray-a4);
+    }
   }
   &::selection {
     background-color: var(--accent-a5);
   }
 }
 
-/* all disabled text fields */
+/* all disabled and read-only text fields */
 
-.rt-TextFieldInput:disabled {
-  color: var(--gray-a9);
-  cursor: not-allowed;
+.rt-TextFieldInput {
+  &:disabled,
+  &:read-only {
+    cursor: text;
+    color: var(--gray-a11);
+    /* Safari */
+    -webkit-text-fill-color: var(--gray-a11);
 
-  & + .rt-TextFieldChrome {
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
-    background-color: var(--gray-a3);
-    cursor: not-allowed;
-  }
+    &:focus + .rt-TextFieldChrome {
+      outline: 2px solid var(--gray-8);
+    }
+    &::placeholder {
+      opacity: 0.5;
+    }
+    &:placeholder-shown {
+      cursor: default;
+    }
+    &::selection {
+      background-color: var(--gray-a5);
+    }
 
-  /* enhancement */
-  .rt-TextFieldRoot:has(&) {
-    cursor: not-allowed;
-  }
-}
-
-/* all readonly text fields */
-
-.rt-TextFieldInput:read-only {
-  & + .rt-TextFieldChrome {
-    background-color: var(--gray-a3);
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
-  }
-  &:focus + .rt-TextFieldChrome {
-    outline: 2px solid var(--gray-8);
+    /* Cursor in gaps around slots, as an enhancement */
+    .rt-TextFieldRoot:has(&) {
+      cursor: text;
+    }
+    .rt-TextFieldRoot:has(&:placeholder-shown) {
+      cursor: default;
+    }
   }
 }

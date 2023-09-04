@@ -3,7 +3,6 @@
   border-width: 0;
   font-family: inherit;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
 
   box-sizing: border-box;
   display: block;
@@ -15,7 +14,6 @@
 
   &:focus {
     outline: 2px solid var(--accent-8);
-    outline-offset: -1px;
   }
 
   /* scrollbar */
@@ -57,7 +55,7 @@
   .rt-TextArea {
     &.rt-r-size-1 {
       min-height: var(--space-8);
-      padding: var(--space-1);
+      padding: var(--space-1) calc(var(--space-1) * 1.5);
       border-radius: var(--radius-2);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
@@ -65,7 +63,7 @@
     }
     &.rt-r-size-2 {
       min-height: var(--space-9);
-      padding: var(--space-2);
+      padding: calc(var(--space-1) * 1.5) var(--space-2);
       border-radius: var(--radius-2);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
@@ -88,31 +86,34 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-TextArea {
-  &::placeholder {
-    color: var(--gray-a10);
-    /* Firefox */
-    opacity: 1;
-  }
-  &:autofill {
-    -webkit-text-fill-color: var(--gray-12);
-    box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-3);
-  }
-  &:read-only {
-    &::placeholder {
-      color: var(--gray-a7);
-    }
-    &::selection {
-      background-color: var(--gray-a5);
-    }
-  }
-}
-
 /* surface */
 .rt-TextArea.rt-variant-surface {
   color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: inset 0 0 0 1px var(--gray-a7);
+
+  /* Blend inset shadow with the container background */
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  outline-offset: -2px;
+
+  &::placeholder {
+    color: var(--gray-a10);
+    /* Firefox */
+    opacity: 1;
+  }
+  &:autofill,
+  &[data-com-onepassword-filled] {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--gray-12);
+    box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 100px var(--accent-a4);
+  }
+  &:disabled,
+  &:read-only {
+    /* Blend with grey */
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  }
 }
 
 /* classic */
@@ -120,37 +121,76 @@
   color: var(--gray-12);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-1);
+
+  /* Blend inset shadow with the container background */
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  outline-offset: -2px;
+
+  &::placeholder {
+    color: var(--gray-a10);
+    /* Firefox */
+    opacity: 1;
+  }
+  &:autofill,
+  &[data-com-onepassword-filled] {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--gray-12);
+    box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-a4);
+  }
+  &:disabled,
+  &:read-only {
+    /* Blend with grey */
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  }
 }
 
 /* soft */
 .rt-TextArea.rt-variant-soft {
   color: var(--accent-12);
   background-color: var(--accent-a3);
-  &:read-only {
-    color: var(--gray-12);
+  outline-offset: -1px;
+
+  &:autofill,
+  &[data-com-onepassword-filled] {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--accent-12);
+    box-shadow: inset 0 0 0 100px var(--accent-a5);
   }
   &::placeholder {
     color: var(--accent-12);
-    opacity: 0.5;
+    opacity: 0.65;
+  }
+  &:disabled,
+  &:read-only {
+    background-color: var(--gray-a4);
   }
   &::selection {
     background-color: var(--accent-a5);
   }
 }
 
-/* all disabled textareas */
-.rt-TextArea:disabled {
-  color: var(--gray-a9);
-  box-shadow: inset 0 0 0 1px var(--gray-a6);
-  background-color: var(--gray-a3);
-  cursor: not-allowed;
-}
-
-/* all readonly textareas */
-.rt-TextArea:read-only {
-  background-color: var(--gray-a3);
-  box-shadow: inset 0 0 0 1px var(--gray-a6);
-  &:focus {
-    outline: 2px solid var(--gray-8);
+/* all disabled and read-only textareas */
+.rt-TextArea {
+  &:disabled,
+  &:read-only {
+    cursor: text;
+    color: var(--gray-a11);
+    /* Safari */
+    -webkit-text-fill-color: var(--gray-a11);
+    &:focus {
+      outline: 2px solid var(--gray-8);
+    }
+    &::placeholder {
+      opacity: 0.5;
+    }
+    &:placeholder-shown {
+      cursor: default;
+    }
+    &::selection {
+      background-color: var(--gray-a5);
+    }
   }
 }
