@@ -163,7 +163,8 @@
     /* Firefox */
     opacity: 1;
   }
-  &:autofill {
+  &:autofill,
+  &[data-com-onepassword-filled] {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
@@ -173,9 +174,12 @@
       box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 1px var(--accent-a4);
     }
   }
-  &:is(:read-only, :disabled) + .rt-TextFieldChrome {
-    /* Blend with grey */
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  &:disabled,
+  &:read-only {
+    & + .rt-TextFieldChrome {
+      /* Blend with grey */
+      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    }
   }
 }
 
@@ -201,7 +205,8 @@
     /* Firefox */
     opacity: 1;
   }
-  &:autofill {
+  &:autofill,
+  &[data-com-onepassword-filled] {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
@@ -211,9 +216,12 @@
       box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-a4);
     }
   }
-  &:is(:read-only, :disabled) + .rt-TextFieldChrome {
-    /* Blend with grey */
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  &:disabled,
+  &:read-only {
+    & + .rt-TextFieldChrome {
+      /* Blend with grey */
+      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    }
   }
 }
 
@@ -228,7 +236,8 @@
     color: var(--accent-12);
     opacity: 0.65;
   }
-  &:autofill {
+  &:autofill,
+  &[data-com-onepassword-filled] {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--accent-12);
@@ -237,8 +246,11 @@
       background-color: var(--accent-a5);
     }
   }
-  &:is(:read-only, :disabled) + .rt-TextFieldChrome {
-    background-color: var(--gray-a4);
+  &:disabled,
+  &:read-only {
+    & + .rt-TextFieldChrome {
+      background-color: var(--gray-a4);
+    }
   }
   &::selection {
     background-color: var(--accent-a5);
