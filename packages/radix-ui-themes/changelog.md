@@ -9,7 +9,7 @@
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements
 - `TextArea`, `TextField`
   - Refine padding values for a more balanced look.
-    - Use `text-indent` instead of `padding-left` so that long values aren't truncated on the left when the cursor is at the end of the input.
+    - Use `text-indent` instead of `padding-left` in the `TextField` so that long values aren't truncated on the left when the cursor is at the end of the input.
   - Refine how the inner shadows are applied so that they blend with the container background.
   - Refine and normalise the look and feel of disabled and read-only states.
     - Improve the background colors in dark mode.
