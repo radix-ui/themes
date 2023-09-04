@@ -159,7 +159,7 @@
     padding: 1px;
   }
   &::placeholder {
-    color: var(--gray-a11);
+    color: var(--gray-a10);
     /* Firefox */
     opacity: 1;
   }
@@ -201,7 +201,7 @@
     padding: 1px;
   }
   &::placeholder {
-    color: var(--gray-a11);
+    color: var(--gray-a10);
     /* Firefox */
     opacity: 1;
   }
@@ -234,7 +234,7 @@
   }
   &::placeholder {
     color: var(--accent-12);
-    opacity: 0.65;
+    opacity: 0.6;
   }
   &:autofill,
   &[data-com-onepassword-filled] {

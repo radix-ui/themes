@@ -98,7 +98,7 @@
   outline-offset: -2px;
 
   &::placeholder {
-    color: var(--gray-a11);
+    color: var(--gray-a10);
     /* Firefox */
     opacity: 1;
   }
@@ -128,7 +128,7 @@
   outline-offset: -2px;
 
   &::placeholder {
-    color: var(--gray-a11);
+    color: var(--gray-a10);
     /* Firefox */
     opacity: 1;
   }
