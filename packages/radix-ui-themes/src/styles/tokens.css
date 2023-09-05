@@ -3,6 +3,7 @@
 @import './tokens/shadow.css';
 @import './tokens/space.css';
 @import './tokens/radius.css';
+@import './tokens/breakpoint.css';
 
 /* scaling */
 .radix-themes {

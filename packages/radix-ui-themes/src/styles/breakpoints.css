@@ -1,5 +1,7 @@
-@custom-media --xs (min-width: 520px);
-@custom-media --sm (min-width: 768px);
-@custom-media --md (min-width: 1024px);
-@custom-media --lg (min-width: 1280px);
-@custom-media --xl (min-width: 1640px);
+@import './tokens/breakpoint.css';
+
+@custom-media --xs (min-width: var(--breakpoint-xs));
+@custom-media --sm (min-width: var(--breakpoint-sm));
+@custom-media --md (min-width: var(--breakpoint-md));
+@custom-media --lg (min-width: var(--breakpoint-lg));
+@custom-media --xl (min-width: var(--breakpoint-xl));
