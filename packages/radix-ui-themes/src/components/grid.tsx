@@ -49,14 +49,14 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
 
   if (typeof columns === 'string') {
     style = {
-      '--grid-template-columns': parseGridValue(columns),
+      '--grid-template-columns-initial': parseGridValue(columns),
       ...style,
     };
   }
 
   if (typeof rows === 'string') {
     style = {
-      '--grid-template-rows': parseGridValue(rows),
+      '--grid-template-rows-initial': parseGridValue(rows),
       ...style,
     };
   }

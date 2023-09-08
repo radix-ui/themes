@@ -3833,6 +3833,34 @@ export default function Sink() {
                       </Flex>
                     </Flex>
                   </DocsSection>
+
+                  <DocsSection title="Grid">
+                    <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="3">
+                      <Box style={{ height: 256 }}>
+                        <Grid gap="3">
+                          {Array.from(Array(4).keys()).map((i) => (
+                            <Box key={i} style={{ height: 55, background: 'var(--accent-9)' }} />
+                          ))}
+                        </Grid>
+                      </Box>
+
+                      <Box style={{ height: 256 }}>
+                        <Grid columns="5" gap="3" height="100%">
+                          {Array.from(Array(5).keys()).map((i) => (
+                            <Box key={i} style={{ background: 'var(--accent-9)' }} />
+                          ))}
+                        </Grid>
+                      </Box>
+
+                      <Box style={{ height: 256 }}>
+                        <Grid columns={{ initial: '5' }} gap="3" height="100%">
+                          {Array.from(Array(20).keys()).map((i) => (
+                            <Box key={i} style={{ background: 'var(--accent-9)' }} />
+                          ))}
+                        </Grid>
+                      </Box>
+                    </Grid>
+                  </DocsSection>
                 </main>
               </Box>
             </div>
