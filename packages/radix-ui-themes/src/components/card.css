@@ -125,7 +125,8 @@
     position: absolute;
     pointer-events: none;
     border-radius: inherit;
-    box-shadow: var(--shadow-2);
+    /* Chrome bugs the hover transition when in dark mode P3 without the extra 0 0 shadow */
+    box-shadow: 0 0 var(--gray-a3), var(--shadow-2);
     transition: box-shadow 180ms;
     content: '';
   }
@@ -134,7 +135,7 @@
     @media (hover: hover) {
       &:hover::before {
         transition-duration: 40ms;
-        box-shadow: var(--shadow-3), var(--shadow-2);
+        box-shadow: 0 0 0 1px var(--gray-a3), var(--shadow-3), var(--shadow-2);
       }
     }
     &:active::before {
