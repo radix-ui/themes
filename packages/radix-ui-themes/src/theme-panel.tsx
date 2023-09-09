@@ -377,9 +377,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                           style={{
                             borderTopLeftRadius: 'var(--radius-5)',
                             backgroundImage:
-                              'linear-gradient(to bottom right, var(--accent-a3), var(--accent-a4))',
-                            borderTop: '2px solid var(--accent-8)',
-                            borderLeft: '2px solid var(--accent-8)',
+                              'linear-gradient(to bottom right, var(--accent-3), var(--accent-4))',
+                            borderTop: '2px solid var(--accent-a8)',
+                            borderLeft: '2px solid var(--accent-a8)',
                           }}
                         />
                       </Theme>
