@@ -45,6 +45,13 @@
   text-underline-offset: calc(0.025em + 2px);
   text-decoration-color: var(--accent-a5);
 
+  /* Enhancement for bright colors */
+  @supports (background: color-mix(in oklab, white, black)) {
+    & {
+      text-decoration-color: color-mix(in lch, var(--accent-a5), var(--gray-a6));
+    }
+  }
+
   &:where(.rt-underline-auto) {
     @media (hover: hover) {
       &:hover {
@@ -56,6 +63,13 @@
     :where(.rt-Text:where([data-accent-color])):not(.rt-high-contrast) & {
       text-decoration-line: underline;
       text-decoration-color: var(--accent-a6);
+
+      /* Enhancement for bright colors */
+      @supports (background: color-mix(in oklab, white, black)) {
+        & {
+          text-decoration-color: color-mix(in oklab, var(--accent-a6), var(--gray-a6));
+        }
+      }
     }
   }
 
