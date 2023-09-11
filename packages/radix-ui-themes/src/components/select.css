@@ -295,55 +295,54 @@
 .radix-themes {
   /* prettier-ignore */
   --select-trigger__classic__box-shadow:
-		inset 0 0 0 1px var(--gray-a6),
-		inset 0 2px 0 0 var(--white-a12),
-		inset 0 -2px 0 0 var(--gray-a5)
+		inset 0 0 0 1px var(--gray-a5),
+		inset 0 2px 1px var(--white-a11),
+		inset 0 -2px 1px var(--gray-a4)
 	;
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   /* prettier-ignore */
   --select-trigger__classic__box-shadow:
-    0 0 0 1px var(--white-a5),
-    0 -1px 0 0 var(--white-a7),
-    inset 0 -1px 0 0 var(--black-a11)
+    inset 0 0 0 1px var(--white-a4),
+    inset 0 1px 1px var(--white-a4),
+    inset 0 -1px 1px var(--black-a9)
 	;
 }
 
 .rt-SelectTrigger:where(.rt-variant-classic) {
   color: var(--gray-12);
-  background-color: var(--color-surface);
-  background-image: linear-gradient(var(--gray-a2), var(--gray-a1));
+  background-image: linear-gradient(var(--gray-2), var(--gray-1));
   box-shadow: var(--select-trigger__classic__box-shadow);
 
   position: relative;
   z-index: 0;
-  &::before,
-  &::after {
+  &::before {
     content: '';
     position: absolute;
-    inset: 2px;
-    border-radius: 2px;
+    z-index: -1;
+    inset: 0;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    border-radius: inherit;
     pointer-events: none;
-  }
-  &::before {
-    z-index: 1;
-    background-image: linear-gradient(var(--accent-a1), transparent 50%);
-    mix-blend-mode: darken;
-  }
-  &::after {
-    z-index: 2;
-    background-image: linear-gradient(transparent 50%, var(--white-a2));
-    mix-blend-mode: soft-light;
+    background-image: linear-gradient(var(--black-a1) -10%, transparent, var(--white-a1) 130%),
+      linear-gradient(var(--color-surface), transparent);
   }
 
   @media (hover: hover) {
     &:where(:hover) {
-      background-image: linear-gradient(var(--black-a3), var(--black-a2) 50%);
+      box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger__classic__box-shadow);
+
+      &::before {
+        background-image: linear-gradient(var(--black-a1), transparent, var(--white-a1) 120%),
+          linear-gradient(var(--gray-2), var(--gray-1));
+      }
     }
   }
-  &:where([data-state='open']) {
-    background-image: linear-gradient(var(--black-a3), var(--black-a2) 50%);
+  &:where([data-state='open'])::before {
+    background-image: linear-gradient(var(--black-a1) -20%, var(--white-a1) 110%),
+      linear-gradient(var(--gray-2), var(--gray-1));
   }
 }
 
@@ -357,7 +356,7 @@
     /* target value */
     & > span > span {
       color: var(--accent-12);
-      opacity: 0.5;
+      opacity: 0.6;
     }
   }
 }

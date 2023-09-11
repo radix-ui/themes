@@ -54,138 +54,72 @@
 
 /* classic */
 
+/* prettier-ignore */
 .radix-themes {
-  --button__classic__pseudo-inset: 1px;
-  --button__classic__border: initial;
-  --button__classic-hover-high-contrast__overlay-color: var(--black-a7);
-
-  /* prettier-ignore */
-  --button__classic__shadows:
-		/* top sharp inner-shine */
-		inset 0 1px 0 1px var(--white-a10),
-		/* top soft inner-shine */
-		inset 0 6px 4px -4px var(--white-a8),
-		/* bottom inner-shadow */
-		inset 0 -1px 0.5px 1px var(--black-a8)
-	;
-
-  /* prettier-ignore */
-  --button__classic-active__shadows:
-		/* top sharp inner-shadow */
-		inset 0 1px 0 1px var(--black-a4),
-		/* top soft inner-shadow */
-		inset 0 6px 4px -4px var(--black-a8),
-		/* bottom soft inner-shine */
-		inset 0 -1px 0 1px var(--white-a3),
-		/* bottom soft inner-shine */
-		inset 0 -6px 4px -4px var(--white-a6)
-	;
+  --button__classic__pseudo-inset: 2px;
+  --button__classic__shadow-front-layer:
+    inset 0 0 0 1px var(--gray-a4),
+    inset 0 -2px 1px var(--gray-a3);
+  --button__classic__shadow-bottom-layer:
+    inset 0 4px 2px -2px var(--white-a9),
+    inset 0 2px 1px -1px var(--white-a9);
+  --button__classic-active__shadow-front-layer:
+    inset 0 4px 2px -2px var(--gray-a4),
+    inset 0 1px 1px var(--gray-a7),
+    inset 0 0 0 1px var(--gray-a5);
+  --button__classic-active__shadow-bottom-layer:
+    inset 0 3px 2px var(--gray-a3),
+    inset 0 0 0 1px var(--white-a7),
+    inset 0 -2px 1px var(--white-a6);
+  --button-filter__classic-active: brightness(0.92) saturate(1.1);
+  --button-filter__classic-high-contrast-hover: contrast(0.88) saturate(1.1) brightness(1.1);
+  --button-filter__classic-high-contrast-active: contrast(0.82) saturate(1.2) brightness(1.16);
 }
+/* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --button__classic__pseudo-inset: 0px;
-  --button__classic__border: 0 0 0 1px var(--black-a8);
-  --button__classic-hover-high-contrast__overlay-color: var(--black-a4);
-
-  /* prettier-ignore */
-  --button__classic__shadows:
-		/* top sharp inner-shine */
-		inset 0 1px 0 0 var(--white-a8),
-		/* top soft inner-shine */
-		inset 0 5px 3px -3px var(--white-a8),
-		/* bottom inner-shadow */
-		inset 0 -1px 0.5px 0 var(--black-a10)
-	;
-
-  /* prettier-ignore */
-  --button__classic-active__shadows:
-		/* top sharp inner-shadow */
-		inset 0 1px 0 0 var(--black-a5),
-		/* top soft inner-shadow */
-		inset 0 5px 3px -3px var(--black-a8),
-		/* bottom soft inner-shine */
-		inset 0 -1px 0 0 var(--white-a3),
-		/* bottom soft inner-shine */
-		inset 0 -5px 3px -3px var(--white-a6)
-	;
+  --button__classic__pseudo-inset: 1px;
+  --button__classic__shadow-front-layer:
+    inset 0 0 0 1px var(--white-a2),
+    inset 0 4px 2px -2px var(--white-a3),
+    inset 0 1px 1px var(--white-a6),
+    inset 0 -1px 1px var(--black-a6);
+  --button__classic__shadow-bottom-layer: 0 0 transparent;
+  --button-filter__classic-active: brightness(1.08);
+  --button-filter__classic-high-contrast-hover: brightness(0.95) saturate(1.1);
+  --button-filter__classic-high-contrast-hover: contrast(0.88) saturate(1.5) brightness(1.14);
+  --button-filter__classic-high-contrast-active: brightness(0.9) saturate(1.2);
 }
 
 .rt-BaseButton.rt-variant-classic {
   background-color: var(--accent-9);
-  background-image: linear-gradient(var(--black-a2), transparent 50%);
   color: var(--accent-9-contrast);
-
-  /* prettier-ignore */
-  --button__classic__box-shadow:
-		/* border */
-		var(--button__classic__border, inset 0 0 0 1px var(--black-a5), inset 0 0 0 1px var(--accent-10)),
-		var(--button__classic__shadows)
-	;
-
-  box-shadow: var(--button__classic__box-shadow);
-
-  @media (hover: hover) {
-    &:where(:hover) {
-      background-image: linear-gradient(var(--black-a4), transparent);
-
-      &:where(.rt-high-contrast) {
-        background-image: linear-gradient(
-          var(--button__classic-hover-high-contrast__overlay-color),
-          var(--button__classic-hover-high-contrast__overlay-color)
-        );
-      }
-    }
-  }
-  &:where([data-state='open']) {
-    background-image: linear-gradient(var(--black-a4), transparent);
-
-    &:where(.rt-high-contrast) {
-      background-image: linear-gradient(
-        var(--button__classic-hover-high-contrast__overlay-color),
-        var(--button__classic-hover-high-contrast__overlay-color)
-      );
-    }
-  }
-  &:where(:active:not([data-state='open'], :disabled)) {
-    background-image: linear-gradient(var(--black-a6), transparent);
-    padding-top: var(--base-button__classic-active__offset-override, 2px);
-
-    /* prettier-ignore */
-    --button__classic__box-shadow:
-			/* border */
-			var(--button__classic__border, inset 0 0 0 1px var(--black-a10), inset 0 0 0 1px var(--accent-10)),
-			var(--button__classic-active__shadows)
-		;
-
-    &::after {
-      opacity: 0;
-    }
-  }
-
   position: relative;
   z-index: 0;
-  &::before,
+
+  /* prettier-ignore */
+  background-image:
+    linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
+    linear-gradient(to bottom, transparent 50%, var(--accent-9) 80%);
+
+  /* prettier-ignore */
+  box-shadow:
+    var(--button__classic__shadow-front-layer),
+    inset 0 0 0 1px var(--accent-9),
+    var(--button__classic__shadow-bottom-layer);
+
   &::after {
     content: '';
     position: absolute;
-    inset: var(--button__classic__pseudo-inset);
     border-radius: inherit;
     pointer-events: none;
-  }
-  &::before {
-    z-index: 1;
-    background-image: linear-gradient(var(--accent-a4), transparent 50%);
-    mix-blend-mode: darken;
-  }
-  &::after {
-    z-index: 2;
-    background-image: linear-gradient(transparent 50%, var(--white-a8));
-    mix-blend-mode: soft-light;
-  }
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--accent-a8);
-    outline-offset: 2px;
+    inset: 0;
+    z-index: -1;
+    border: var(--button__classic__pseudo-inset) solid transparent;
+    background-clip: content-box;
+    background-color: inherit;
+    background-image: linear-gradient(var(--black-a1), transparent, var(--white-a2));
+    box-shadow: inset 0 2px 3px -1px var(--white-a4);
   }
 
   &:where(.rt-high-contrast) {
@@ -193,19 +127,83 @@
     color: var(--gray-1);
 
     /* prettier-ignore */
-    --button__classic__box-shadow:
-			/* border */
-			var(--button__classic__border, inset 0 0 0 1px var(--black-a8), inset 0 0 0 1px var(--accent-12)),
-			var(--button__classic__shadows)
-		;
+    background-image:
+      linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
+      linear-gradient(to bottom, transparent 50%, var(--accent-12) 80%);
 
-    &:active:not([data-state='open']) {
+    /* prettier-ignore */
+    box-shadow:
+      var(--button__classic__shadow-front-layer),
+      inset 0 0 0 1px var(--accent-12),
+      var(--button__classic__shadow-bottom-layer);
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--accent-a8);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      &::after {
+        opacity: 0.8;
+        background-color: var(--accent-10);
+        background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
+      }
+      &:where(.rt-high-contrast) {
+        filter: var(--button-filter__classic-high-contrast-hover);
+        &::after {
+          background-color: var(--accent-12);
+        }
+      }
+    }
+  }
+
+  &:where([data-state='open']) {
+    &::after {
+      opacity: 0.8;
+      background-color: var(--accent-10);
       /* prettier-ignore */
-      --button__classic__box-shadow:
-				/* border */
-				var(--button__classic__border, inset 0 0 0 1px var(--black-a10), inset 0 0 0 1px var(--accent-12)),
-				var(--button__classic-active__shadows)
-			;
+      background-image:
+        linear-gradient(var(--black-a2) -20%, transparent, var(--white-a3)),
+        linear-gradient(var(--white-a2), var(--white-a1),  transparent 15%);
+    }
+    &:where(.rt-high-contrast) {
+      filter: var(--button-filter__classic-high-contrast-hover);
+      &::after {
+        background-color: var(--accent-12);
+      }
+    }
+  }
+
+  &:where(:active:not([data-state='open'], :disabled)) {
+    background-color: var(--accent-9);
+    background-image: linear-gradient(var(--black-a1), transparent);
+    padding-top: var(--base-button__classic-active__offset-override, 2px);
+
+    /* prettier-ignore */
+    box-shadow:
+      var(--button__classic-active__shadow-front-layer),
+      inset 0 0 0 1px var(--accent-9),
+      var(--button__classic-active__shadow-bottom-layer);
+
+    &::after {
+      opacity: 0.8;
+      background-color: inherit;
+      /* prettier-ignore */
+      background-image:
+        linear-gradient(var(--black-a2) -20%, transparent, var(--white-a3)),
+        linear-gradient(var(--black-a1), transparent 15%);
+    }
+
+    &:where(.rt-high-contrast) {
+      background-color: var(--accent-12);
+
+      /* prettier-ignore */
+      box-shadow:
+        var(--button__classic-active__shadow-front-layer),
+        inset 0 0 0 1px var(--accent-12),
+        var(--button__classic-active__shadow-bottom-layer);
     }
   }
 }
@@ -221,8 +219,7 @@
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --button-filter__solid-active: brightness(1.08);
-
-  --button-filter__solid-high-contrast-hover: brightness(0.95) saturate(1.1);
+  --button-filter__classic-high-contrast-hover: contrast(0.88) saturate(1.5) brightness(1.14);
   --button-filter__solid-high-contrast-active: brightness(0.9) saturate(1.2);
 }
 
