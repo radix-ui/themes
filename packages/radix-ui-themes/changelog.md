@@ -4,6 +4,7 @@
 
 - General
   - Rework dark mode colors, refine light mode colors (via Radix Colors 3.0.0).
+    - Fix oversaturated transparent grays
     - **[Upgrade guide]** If you were using the color tokens for your custom styles, make sure that your designs look as expected.
     - **[Upgrade guide]** If you were overriding certain colors, make sure that your overrides are harmonized with the new color scales.
   - Rework transparent black and white color scales
