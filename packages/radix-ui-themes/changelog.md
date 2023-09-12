@@ -37,6 +37,7 @@
   - Desaturate the underline color
 - `Select`
   - Improve `variant="classic"` look and feel across light and dark mode.
+  - Align `SelectContent` to the left of the trigger when using `position="popper"`
 - `Slider`, `Switch`
   - Refine the shadows and colors used in the components
 - `TextArea`

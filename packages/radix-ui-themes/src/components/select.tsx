@@ -105,7 +105,6 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
           <SelectPrimitive.Content
             data-accent-color={resolvedColor}
             sideOffset={4}
-            align="center"
             {...contentProps}
             ref={forwardedRef}
             className={classNames(
