@@ -36,7 +36,7 @@
 .table :global(.rt-TextFieldRoot) {
   width: 180px;
 }
-.table :global(.rt-TextArea) {
+.table :global(.rt-TextAreaRoot) {
   width: 180px;
 }
 .table :global(.rt-CalloutRoot) {
