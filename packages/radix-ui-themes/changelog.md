@@ -3,24 +3,65 @@
 ## Up next
 
 - General
+  - Rework dark mode colors, refine light mode colors (via Radix Colors 3.0.0).
+    - **[Upgrade guide]** If you were using the color tokens for your custom styles, make sure that your designs look as expected.
+    - **[Upgrade guide]** If you were overriding certain colors, make sure that your overrides are harmonized with the new color scales.
+  - Rework transparent black and white color scales
+    - **[Upgrade guide]** If you were using transparent black and white color scales for your custom styles (`--black-a1`, `--white-a1`, etc.), make sure to check the new values and update the steps used so that your designs look as expected.
+  - Rework the shadow scale
+    - Components shadows are now harmonized with your panel translucency setting. New tokens:
+      - `--shadow-panel-translucent` for a box shadow outline that is harmonized with the translucent panel background.
+      - `--shadow-panel-solid` for a box shadow outline that is harmonized with the solid panel background.
+      - `--shadow-panel` for an automatic box shadow outline that corresponds to your panel translucency setting.
+    - Remove the top outline from shadows 2–6, in order to enable component design where multiple shadows are mixed and matched together.
+    - **[Upgrade guide]** If you were using the `shadow` tokens for your custom styles, in most cases, you should add `var(--shadow-panel)` or `var(--shadow-panel-solid)` to your box shadow to achieve a similar look as before. Example:
+      - Before: `box-shadow: var(--shadow-3);`
+      - After: `box-shadow: var(--shadow-panel), var(--shadow-3);`.
   - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
   - Remove comments from the CSS build.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
-  - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements
+  - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
+- `Button`, `IconButton`
+  - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
+- `Callout`
+  - Use a gray background for a gray `variant="surface"`
+  - Use a darker outline color `variant="outline"`
+- `Card`
+  - Refine hover and pressed styles for `variant="classic"`
+  - Update the shadow so that in dark mode it doesn’t extend outside of the element with `variant="classic"`
+  - Add a pressed style to `variant="ghost"`
 - `Grid`
   - Fix a bug when nesting `Grid` components could cause the descendant `Grid`’s to inherit some parent styles unintentionally.
-- `TextArea`, `TextField`
+- `Link`
+  - Desaturate the underline color
+- `Select`
+  - Improve `variant="classic"` look and feel across light and dark mode.
+- `Slider`, `Switch`
+  - Refine the shadows and colors used in the components
+- `TextArea`
+  - Rework the internal implementation, now using multiple HTML nodes for styling purposes.
+    - Adjust the layout styles so that `TextArea` behaves like a true `display: block` element, filling the available space horizontally.
+    - The `style` and `className` are now forwarded to the wrapping `div` element. The `ref` and other props are still forwarded to the `textarea` itself.
+    - **[Upgrade guide]** If you were overriding `TextArea` styles via `style`, `className`, or custom CSS that targets the related HTML nodes, make sure that your custom styles work as expected.
+    - **[Upgrade guide]** If you were relying on the intrinsic width of `TextArea` set by the browser, make sure that your layout looks as expected.
   - Refine padding values for a more balanced look.
-    - Use `text-indent` instead of `padding-left` in the `TextField` so that long values aren't truncated on the left when the cursor is at the end of the input.
-  - Refine how the inner shadows are applied so that they blend with the container background.
+    - Use matching scroll margins for a nicer typing experience when the `TextArea` overflows.
+  - Refine how the inner shadows are applied so that they blend with different container backgrounds.
   - Refine and normalise the look and feel of disabled and read-only states.
-    - Improve the background colors in dark mode.
-    - Improve the appearance of placeholders.
-    - Remove visual distinctions between disabled and read-only states.
-    - Keep the differences between the variants when the inputs are disabled or read-only.
-    - Fix a Safari bug when the text value would appear tinted in the disabled input.
+  - Fix a Safari bug when the text value would appear tinted in the disabled input.
+  - Improve autofill styles.
+- `TextField`
+  - Reset `z-index` of the container to avoid potential stacking issues.
+  - Refine padding values for a more balanced look.
+    - Use `text-indent` instead of `padding-left` so that long values aren't truncated on the left when the cursor is at the end of the input.
+  - Refine how the inner shadows are applied so that they blend with different container backgrounds.
+  - Refine and normalise the look and feel of disabled and read-only states.
+  - Fix a Safari bug when the text value would appear tinted in the disabled input.
   - Remove ellipsis truncation, as this prevented long values from being shown when scrolling on the input horizontally in Chrome.
   - Improve autofill styles.
+- `ThemePanel`
+  - Disable transitions when changing the appearance
+  - Improve contrast on the border radius preview
 
 ## 1.1.2
 
