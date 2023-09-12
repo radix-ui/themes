@@ -73,12 +73,15 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const handleAppearanceChange = React.useCallback(
       (appearance: ThemeOptions['appearance']) => {
         onAppearanceChange(appearance);
-        disableAnimation();
+        const cleanup = disableAnimation();
+
         if (hasOnAppearanceChangeProp) {
           handleAppearanceChangeProp(appearance as Exclude<ThemeOptions['appearance'], 'inherit'>);
         } else {
           updateThemeAppearanceClass(appearance);
         }
+
+        cleanup();
       },
       [onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp]
     );

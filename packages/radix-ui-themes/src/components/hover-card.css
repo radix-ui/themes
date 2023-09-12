@@ -1,6 +1,6 @@
 .rt-HoverCardContent {
   background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-4);
+  box-shadow: var(--shadow-panel-solid), var(--shadow-4);
   overflow: auto;
 
   /* used by Inset */

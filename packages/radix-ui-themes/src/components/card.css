@@ -125,8 +125,7 @@
     position: absolute;
     pointer-events: none;
     border-radius: inherit;
-    /* Empty shadow because https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow#interpolation */
-    box-shadow: 0 0 0 1px transparent, var(--shadow-2);
+    box-shadow: var(--shadow-panel), var(--shadow-2);
     transition: box-shadow 120ms;
     content: '';
   }
@@ -135,12 +134,14 @@
     @media (hover: hover) {
       &:hover::before {
         transition-duration: 40ms;
-        box-shadow: 0 0 0 1px var(--gray-a3), var(--shadow-2), var(--shadow-3);
+        box-shadow: var(--shadow-panel-translucent), var(--shadow-panel), var(--shadow-2),
+          var(--shadow-3);
       }
     }
     &:active:not([data-state='open'])::before {
       transition-duration: 40ms;
-      box-shadow: 0 0 0 1px var(--gray-a5), var(--shadow-2);
+      box-shadow: var(--shadow-panel-translucent), var(--shadow-panel-translucent),
+        var(--shadow-panel), var(--shadow-2);
     }
   }
 }

@@ -5,32 +5,30 @@
     inset 0 1.5px 2px 0 var(--gray-a5);
 
   --shadow-2:
-    0 0 0 1px var(--gray-a3),
     0 0 0 0.5px var(--gray-a3),
     0px 1px 1px 0px var(--gray-a3),
     0px 2px 1px -1px var(--gray-a3),
     0px 1px 3px 0px var(--black-a1);
 
   --shadow-3:
-    0 0 0 1px var(--gray-a3),
     0px 2px 3px -2px var(--gray-a3),
-    0px 3px 12px -4px var(--black-a1),
+    0px 3px 12px -4px var(--gray-a4),
     0px 4px 16px -8px var(--black-a2);
 
   --shadow-4:
-    0 0 0 1px var(--gray-a3),
     0px 8px 40px var(--gray-a3),
     0px 12px 32px -16px var(--gray-a3);
 
   --shadow-5:
-    0 0 0 1px var(--gray-a3),
     0px 12px 60px var(--gray-a6),
     0px 12px 32px -16px var(--gray-a5);
 
   --shadow-6:
-    0 0 0 1px var(--gray-a3),
     0px 16px 64px var(--gray-a7),
     0px 16px 36px -20px var(--gray-a7);
+
+  --shadow-panel-solid: 0 0 0 1px var(--gray-a3);
+  --shadow-panel-translucent: 0 0 0 1px var(--gray-a3);
 }
 
 /* prettier-ignore */
@@ -43,30 +41,39 @@
     inset 0 0 0 1px var(--gray-a4);
 
   --shadow-2:
-    0 0 0 1px var(--gray-6),
     0 0 0 0.5px var(--black-a3),
-    0px 1px 1px 1px var(--black-a7),
-    0px 2px 1px 0px var(--black-a7),
-    0px 1px 3px 1px var(--black-a9);
+    0px 1px 1px 0px var(--black-a6),
+    0px 2px 1px -1px var(--black-a6),
+    0px 1px 3px 0px var(--black-a8);
 
   --shadow-3:
-    0 0 0 1px var(--gray-6),
     0px 2px 3px -2px var(--black-a3),
     0px 3px 8px -2px var(--black-a6),
     0px 4px 12px -4px var(--black-a7);
 
   --shadow-4:
-    0 0 0 1px var(--gray-6),
     0px 8px 40px var(--black-a3),
     0px 12px 32px -16px var(--black-a5);
 
   --shadow-5:
-    0 0 0 1px var(--gray-6),
     0px 12px 60px var(--black-a5),
     0px 12px 32px -16px var(--black-a7);
 
   --shadow-6:
-    0 0 0 1px var(--gray-6),
     0px 16px 64px var(--black-a8),
     0px 16px 36px -20px var(--black-a11);
+
+  --shadow-panel-solid: inset 0 0 0 1px var(--gray-6);
+  --shadow-panel-translucent: inset 0 0 0 1px var(--gray-a6);
+}
+
+/* panel shadows */
+
+.radix-themes {
+  &:where([data-panel-background='solid']) {
+    --shadow-panel: var(--shadow-panel-solid);
+  }
+  &:where([data-panel-background='translucent']) {
+    --shadow-panel: var(--shadow-panel-translucent);
+  }
 }

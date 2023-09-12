@@ -1933,7 +1933,7 @@ export default function Sink() {
                           <TextFieldInput
                             mb="2"
                             variant="classic"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -1954,7 +1954,7 @@ export default function Sink() {
                           <TextFieldInput
                             mb="2"
                             variant="surface"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -1975,7 +1975,7 @@ export default function Sink() {
                           <TextFieldInput
                             mb="2"
                             variant="soft"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -1998,7 +1998,7 @@ export default function Sink() {
                             mb="2"
                             variant="soft"
                             color="gray"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -3801,7 +3801,8 @@ export default function Sink() {
                       <Flex
                         style={{
                           flex: 1,
-                          background: 'var(--gray-a2)',
+                          background: 'var(--gray-1)',
+                          boxShadow: 'inset 0 0 0 1px var(--gray-a4)',
                           borderRadius: 'var(--radius-3)',
                         }}
                         p="9"
@@ -3813,7 +3814,10 @@ export default function Sink() {
                               grow="1"
                               style={{
                                 backgroundColor: 'var(--color-panel-solid)',
-                                boxShadow: `var(--shadow-${i + 1})`,
+                                boxShadow:
+                                  i === 0
+                                    ? 'var(--shadow-1)'
+                                    : `var(--shadow-panel), var(--shadow-${i + 1})`,
                                 borderRadius: 'var(--radius-2)',
                                 height: 80,
                               }}

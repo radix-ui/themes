@@ -410,7 +410,7 @@
 
 .rt-SelectContent {
   --select-content-bg: var(--color-panel-solid);
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--shadow-panel-solid), var(--shadow-5);
 }
 .rt-SelectItem[data-disabled] {
   color: var(--gray-a8);
