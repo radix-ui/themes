@@ -218,7 +218,7 @@
     &::before {
       background-image:
         linear-gradient(to right, var(--accent-a8) 40%, transparent 60%),
-        linear-gradient(to right, var(--accent-a3), var(--accent-a3));
+        linear-gradient(to right, var(--accent-a3), var(--accent-a2) 150%);
     }
     &:where([data-state='unchecked'])::before {
       background-color: var(--gray-a5);
@@ -238,7 +238,7 @@
         background-image:
           linear-gradient(to right, var(--switch-button-overlay__high-contrast-checked) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-a8) 40%, transparent 60%),
-          linear-gradient(to right, var(--accent-a3), var(--accent-a3));
+          linear-gradient(to right, var(--accent-a3), var(--accent-a2) 150%);
       }
     }
   }
