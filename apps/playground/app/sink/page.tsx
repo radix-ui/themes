@@ -180,6 +180,7 @@ import {
   themeAccentColorsGrouped,
   //
   ThemePanel,
+  themeAccentColorsOrdered,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -3811,7 +3812,7 @@ export default function Sink() {
                             <Box
                               grow="1"
                               style={{
-                                backgroundColor: 'var(--gray-1)',
+                                backgroundColor: 'var(--color-panel-solid)',
                                 boxShadow: `var(--shadow-${i + 1})`,
                                 borderRadius: 'var(--radius-2)',
                                 height: 80,
@@ -3860,6 +3861,14 @@ export default function Sink() {
                         </Grid>
                       </Box>
                     </Grid>
+                  </DocsSection>
+
+                  <DocsSection title="Separator">
+                    <Flex direction="column" gap="5" my="5">
+                      {themeAccentColorsOrdered.map((color) => (
+                        <Separator key={color} size="4" color={color} />
+                      ))}
+                    </Flex>
                   </DocsSection>
                 </main>
               </Box>

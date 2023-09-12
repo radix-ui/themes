@@ -165,8 +165,8 @@
   }
 
   & .rt-SliderThumb {
-    --slider-thumb-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--accent-a3),
-      0 1px 2px var(--accent-a4), 0 1px 3px -0.5px var(--accent-a3);
+    --slider-thumb-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2),
+      0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
   }
 }
 

@@ -1,19 +1,31 @@
-.rt-TextArea {
+.rt-TextAreaRoot {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+}
+
+.rt-TextAreaInput {
   appearance: none;
   border-width: 0;
+  padding: 0;
+  border-radius: inherit;
+  background-color: transparent;
   font-family: inherit;
   -webkit-tap-highlight-color: transparent;
+  resize: none;
 
   box-sizing: border-box;
+  position: relative;
   display: block;
   width: 100%;
-  flex-shrink: 0;
   flex-grow: 1;
-
-  resize: none;
+  z-index: 1;
 
   &:focus {
     outline: 2px solid var(--accent-8);
+    outline-offset: -1px;
   }
 
   /* scrollbar */
@@ -45,6 +57,13 @@
   }
 }
 
+.rt-TextAreaChrome {
+  position: absolute;
+  border-radius: inherit;
+  z-index: 0;
+  inset: 0;
+}
+
 /***************************************************************************************************
  *                                                                                                 *
  * SIZES                                                                                           *
@@ -52,30 +71,36 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-TextArea {
-    &.rt-r-size-1 {
+  .rt-TextAreaRoot {
+    &:where(.rt-r-size-1) {
       min-height: var(--space-8);
-      padding: var(--space-1) calc(var(--space-1) * 1.5);
       border-radius: var(--radius-2);
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
-      letter-spacing: var(--letter-spacing-1);
+      & :where(.rt-TextAreaInput) {
+        font-size: var(--font-size-1);
+        line-height: var(--line-height-1);
+        letter-spacing: var(--letter-spacing-1);
+        padding: var(--space-1) calc(var(--space-1) * 1.5);
+      }
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       min-height: var(--space-9);
-      padding: calc(var(--space-1) * 1.5) var(--space-2);
       border-radius: var(--radius-2);
-      font-size: var(--font-size-2);
-      line-height: var(--line-height-2);
-      letter-spacing: var(--letter-spacing-2);
+      & :where(.rt-TextAreaInput) {
+        font-size: var(--font-size-2);
+        line-height: var(--line-height-2);
+        letter-spacing: var(--letter-spacing-2);
+        padding: calc(var(--space-1) * 1.5) var(--space-2);
+      }
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       min-height: 80px;
-      padding: var(--space-2) var(--space-3);
       border-radius: var(--radius-3);
-      font-size: var(--font-size-3);
-      line-height: var(--line-height-3);
-      letter-spacing: var(--letter-spacing-3);
+      & :where(.rt-TextAreaInput) {
+        font-size: var(--font-size-3);
+        line-height: var(--line-height-3);
+        letter-spacing: var(--letter-spacing-3);
+        padding: var(--space-2) var(--space-3);
+      }
     }
   }
 }
@@ -87,93 +112,117 @@
  ***************************************************************************************************/
 
 /* surface */
-.rt-TextArea.rt-variant-surface {
-  color: var(--gray-12);
-  background-color: var(--color-surface);
-  box-shadow: inset 0 0 0 1px var(--gray-a7);
+.rt-TextAreaRoot:where(.rt-variant-surface) {
+  & :where(.rt-TextAreaInput) {
+    color: var(--gray-12);
+    /* Clip text to inner shadow */
+    border: 1px solid transparent;
+    & + .rt-TextAreaChrome {
+      padding: 1px;
+      background-clip: content-box;
+      box-shadow: inset 0 0 0 1px var(--gray-a7);
+      background-color: var(--color-surface);
+    }
 
-  /* Blend inset shadow with the container background */
-  background-clip: padding-box;
-  border: 1px solid transparent;
-  outline-offset: -2px;
+    &::placeholder {
+      color: var(--gray-a10);
+      /* Firefox */
+      opacity: 1;
+    }
 
-  &::placeholder {
-    color: var(--gray-a10);
-    /* Firefox */
-    opacity: 1;
-  }
-  &:autofill,
-  &[data-com-onepassword-filled] {
-    /* Reliably removes native autofill colors */
-    background-clip: text;
-    -webkit-text-fill-color: var(--gray-12);
-    box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 100px var(--accent-a4);
-  }
-  &:disabled,
-  &:read-only {
-    /* Blend with grey */
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    &:autofill,
+    &[data-com-onepassword-filled] {
+      /* Reliably removes native autofill colors */
+      background-clip: text;
+      -webkit-text-fill-color: var(--gray-12);
+      & + .rt-TextAreaChrome {
+        background-color: var(--accent-a4);
+      }
+    }
+
+    &:disabled,
+    &:read-only {
+      & + .rt-TextAreaChrome {
+        /* Blend with grey */
+        background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+      }
+    }
   }
 }
 
 /* classic */
-.rt-TextArea.rt-variant-classic {
+.rt-TextAreaRoot:where(.rt-variant-classic) .rt-TextAreaInput {
   color: var(--gray-12);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-1);
-
-  /* Blend inset shadow with the container background */
-  background-clip: padding-box;
+  /* Clip text to inner shadow */
   border: 1px solid transparent;
-  outline-offset: -2px;
+  & + .rt-TextAreaChrome {
+    padding: 1px;
+    background-clip: content-box;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-1);
+  }
 
   &::placeholder {
     color: var(--gray-a10);
     /* Firefox */
     opacity: 1;
   }
+
   &:autofill,
   &[data-com-onepassword-filled] {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
-    box-shadow: var(--shadow-1), inset 0 0 0 100px var(--accent-a4);
+    & + .rt-TextAreaChrome {
+      background-color: var(--accent-a4);
+    }
   }
+
   &:disabled,
   &:read-only {
-    /* Blend with grey */
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    & + .rt-TextAreaChrome {
+      /* Blend with grey */
+      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    }
   }
 }
 
 /* soft */
-.rt-TextArea.rt-variant-soft {
+.rt-TextAreaRoot:where(.rt-variant-soft) .rt-TextAreaInput {
   color: var(--accent-12);
-  background-color: var(--accent-a3);
-  outline-offset: -1px;
+  & + .rt-TextAreaChrome {
+    background-color: var(--accent-a3);
+  }
+
+  &::selection {
+    background-color: var(--accent-a5);
+  }
+
+  &::placeholder {
+    color: var(--accent-12);
+    opacity: 0.65;
+  }
 
   &:autofill,
   &[data-com-onepassword-filled] {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--accent-12);
-    box-shadow: inset 0 0 0 100px var(--accent-a5);
+    & + .rt-TextAreaChrome {
+      background-color: var(--accent-a5);
+    }
   }
-  &::placeholder {
-    color: var(--accent-12);
-    opacity: 0.65;
-  }
+
   &:disabled,
   &:read-only {
-    background-color: var(--gray-a4);
-  }
-  &::selection {
-    background-color: var(--accent-a5);
+    & + .rt-TextAreaChrome {
+      background-color: var(--gray-a4);
+    }
   }
 }
 
 /* all disabled and read-only textareas */
-.rt-TextArea {
+.rt-TextAreaInput {
   &:disabled,
   &:read-only {
     cursor: text;

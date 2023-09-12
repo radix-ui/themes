@@ -2,7 +2,7 @@
 .radix-themes {
   --shadow-1:
     inset 0 0 0 1px var(--gray-a5),
-    inset 0 1.5px 2px 0 var(--black-a3);
+    inset 0 1.5px 2px 0 var(--gray-a5);
 
   --shadow-2:
     0 0 0 1px var(--gray-a3),
@@ -20,12 +20,12 @@
   --shadow-4:
     0 0 0 1px var(--gray-a3),
     0px 8px 40px var(--gray-a3),
-    0px 12px 32px -16px var(--black-a1);
+    0px 12px 32px -16px var(--gray-a3);
 
   --shadow-5:
     0 0 0 1px var(--gray-a3),
     0px 12px 60px var(--gray-a6),
-    0px 12px 32px -16px var(--black-a3);
+    0px 12px 32px -16px var(--gray-a5);
 
   --shadow-6:
     0 0 0 1px var(--gray-a3),
@@ -37,23 +37,22 @@
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --shadow-1:
-    inset 0 0 0 1px var(--gray-a5),
-    inset 0 -1px 2px var(--gray-a6),
-    inset 0 -1px 0 0px var(--black-a3),
-    inset 0 1px 2px 1px var(--black-a5);
+    inset 0 -1px 1px 0 var(--gray-a3),
+    inset 0 0 0 1px var(--gray-a3),
+    inset 0 3px 4px 0 var(--black-a5),
+    inset 0 0 0 1px var(--gray-a4);
 
-  /* Use solid --gray-6 as the top layer instead of --gray-a5 so that it covers the separators in cards and dialogs */
   --shadow-2:
     0 0 0 1px var(--gray-6),
-    0 0 0 0.5px var(--black-a2),
-    0px 2px 1px -1px var(--black-a7),
-    0px 1px 1px 0px var(--black-a7),
-    0px 1px 3px 0px var(--black-a7);
+    0 0 0 0.5px var(--black-a3),
+    0px 1px 1px 1px var(--black-a7),
+    0px 2px 1px 0px var(--black-a7),
+    0px 1px 3px 1px var(--black-a9);
 
   --shadow-3:
     0 0 0 1px var(--gray-6),
-    0px 2px 3px -2px var(--black-a2),
-    0px 3px 8px -2px var(--black-a5),
+    0px 2px 3px -2px var(--black-a3),
+    0px 3px 8px -2px var(--black-a6),
     0px 4px 12px -4px var(--black-a7);
 
   --shadow-4:

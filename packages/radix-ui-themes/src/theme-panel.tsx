@@ -73,6 +73,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const handleAppearanceChange = React.useCallback(
       (appearance: ThemeOptions['appearance']) => {
         onAppearanceChange(appearance);
+        disableAnimation();
         if (hasOnAppearanceChangeProp) {
           handleAppearanceChangeProp(appearance as Exclude<ThemeOptions['appearance'], 'inherit'>);
         } else {
@@ -590,13 +591,27 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 );
 ThemePanelImpl.displayName = 'ThemePanelImpl';
 
-function Label(props: any) {
-  return (
-    <Text {...props} size="1" color="gray" asChild>
-      <label>{props.children}</label>
-    </Text>
+// https://github.com/pacocoursey/next-themes/blob/main/packages/next-themes/src/index.tsx#L285
+function disableAnimation() {
+  const css = document.createElement('style');
+  css.appendChild(
+    document.createTextNode(
+      `*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`
+    )
   );
+  document.head.appendChild(css);
+
+  return () => {
+    // Force restyle
+    (() => window.getComputedStyle(document.body))();
+
+    // Wait for next tick before removing
+    setTimeout(() => {
+      document.head.removeChild(css);
+    }, 1);
+  };
 }
+
 function upperFirst(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }

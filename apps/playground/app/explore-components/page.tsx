@@ -1058,7 +1058,7 @@ export default function ExploreComponents() {
                           <PanelBackgroundImage id="1" width="100%" height="200%" />
                         </Flex>
 
-                        <Card size="4" style={{ width: 400 }}>
+                        <Card variant="classic" size="4" style={{ width: 400 }}>
                           <Box height="7" mb="4">
                             <Heading as="h3" size="6" mt="-1">
                               Sign up
@@ -1070,7 +1070,11 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Email address
                               </Text>
-                              <TextFieldInput tabIndex={-1} placeholder="Enter your email" />
+                              <TextFieldInput
+                                variant="classic"
+                                tabIndex={-1}
+                                placeholder="Enter your email"
+                              />
                             </label>
                           </Box>
 
@@ -1085,7 +1089,11 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Password
                               </Text>
-                              <TextFieldInput tabIndex={-1} placeholder="Enter your password" />
+                              <TextFieldInput
+                                variant="classic"
+                                tabIndex={-1}
+                                placeholder="Enter your password"
+                              />
                             </label>
                           </Box>
 
@@ -1093,7 +1101,9 @@ export default function ExploreComponents() {
                             <Button tabIndex={-1} variant="soft">
                               Create an account
                             </Button>
-                            <Button tabIndex={-1}>Sign in</Button>
+                            <Button tabIndex={-1} variant="classic">
+                              Sign in
+                            </Button>
                           </Flex>
                         </Card>
                       </Flex>
@@ -1127,7 +1137,7 @@ export default function ExploreComponents() {
                                     ml={variant === 'ghost' ? '3' : '0'}
                                     my={variant === 'ghost' ? '4' : '0'}
                                   >
-                                    <a href="#card">
+                                    <button>
                                       {/* @ts-ignore */}
                                       <Flex align="center" gap={String(+size + 1)}>
                                         <Avatar
@@ -1147,7 +1157,7 @@ export default function ExploreComponents() {
                                           </Text>
                                         </Box>
                                       </Flex>
-                                    </a>
+                                    </button>
                                   </Card>
                                 </Flex>
                               </td>

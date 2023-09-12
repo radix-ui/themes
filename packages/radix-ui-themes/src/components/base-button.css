@@ -70,7 +70,7 @@
   --button__classic-active__shadow-bottom-layer:
     inset 0 3px 2px var(--gray-a3),
     inset 0 0 0 1px var(--white-a7),
-    inset 0 -2px 1px var(--white-a6);
+    inset 0 -2px 1px var(--white-a5);
   --button-filter__classic-active: brightness(0.92) saturate(1.1);
   --button-filter__classic-high-contrast-hover: contrast(0.88) saturate(1.1) brightness(1.1);
   --button-filter__classic-high-contrast-active: contrast(0.82) saturate(1.2) brightness(1.16);
@@ -149,7 +149,6 @@
   @media (hover: hover) {
     &:where(:hover) {
       &::after {
-        opacity: 0.8;
         background-color: var(--accent-10);
         background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
       }
@@ -165,7 +164,6 @@
 
   &:where([data-state='open']) {
     &::after {
-      opacity: 0.8;
       background-color: var(--accent-10);
       background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
     }
@@ -190,7 +188,6 @@
       var(--button__classic-active__shadow-bottom-layer);
 
     &::after {
-      opacity: 0.8;
       box-shadow: none;
       background-color: inherit;
       background-image: linear-gradient(var(--black-a2), transparent, var(--white-a3));
