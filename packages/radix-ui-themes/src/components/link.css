@@ -48,7 +48,7 @@
   /* Enhancement for bright colors */
   @supports (background: color-mix(in oklab, white, black)) {
     & {
-      text-decoration-color: color-mix(in lch, var(--accent-a5), var(--gray-a6));
+      text-decoration-color: color-mix(in oklab, var(--accent-a5), var(--gray-a6));
     }
   }
 

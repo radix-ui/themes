@@ -198,7 +198,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             transitionDuration: '200ms',
             transitionTimingFunction: open ? 'ease-out' : 'ease-in',
             transform: open ? 'none' : 'translateX(105%)',
-            boxShadow: open ? 'var(--shadow-5)' : 'var(--shadow-2)',
+            boxShadow: open
+              ? 'var(--shadow-panel-solid), var(--shadow-5)'
+              : 'var(--shadow-panel-solid), var(--shadow-2)',
             ...props.style,
           }}
         >
