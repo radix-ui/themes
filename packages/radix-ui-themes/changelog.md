@@ -8,14 +8,38 @@
     - **[Upgrade guide]** If you were using the color tokens for your custom styles, make sure that your designs look as expected.
     - **[Upgrade guide]** If you were overriding certain colors, make sure that your overrides are harmonized with the new color scales.
   - Rework transparent black and white color scales
-    - **[Upgrade guide]** If you were using transparent black and white color scales for your custom styles (`--black-a1`, `--white-a1`, etc.), make sure to check the new values and update the steps used so that your designs look as expected.
+    - **[Upgrade guide]** If you were using transparent black and white color scales for your custom styles (`--black-a1`, `--white-a1`, etc.), make sure to check the new values and update the steps used so that your designs look as expected:
+      - Change `--black-a1` to `rgba(0, 0, 0, 0.01)`
+      - Change `--black-a2` to `rgba(0, 0, 0, 0.024)`
+      - Change `--black-a3` to `--black-a1`
+      - Change `--black-a4` to `--black-a2`
+      - Change `--black-a5` to `--black-a2`
+      - Change `--black-a6` to `--black-a3`
+      - Change `--black-a7` to `--black-a3` or `--black-a4`
+      - Change `--black-a8` to `--black-a5`
+      - Change `--black-a9` to `--black-a6` or `--black-a7`
+      - Change `--black-a10` to `--black-a7`
+      - Change `--black-a11` to `--black-a8`
+      - Change `--black-a12` to `--black-a11`
+      - Change `--white-a1` to `transparent`
+      - Change `--white-a2` to `rgba(255, 255, 255, 0.01)`
+      - Change `--white-a3` to `--white-a1` or `--white-a2`
+      - Change `--white-a4` to `--white-a2`
+      - Change `--white-a5` to `--white-a3`
+      - Change `--white-a6` to `--white-a3` or `--white-a4`
+      - Change `--white-a7` to `--white-a4`
+      - Change `--white-a8` to `--white-a5`
+      - Change `--white-a9` to `--white-a6`
+      - Change `--white-a10` to `--white-a7`
+      - Change `--white-a11` to `--white-a9`
+      - Change `--white-a12` to `--white-a11` or `--white-a12`
   - Rework the shadow scale
     - Components shadows are now harmonized with your panel translucency setting. New tokens:
       - `--shadow-panel-translucent` for a box shadow outline that is harmonized with the translucent panel background.
       - `--shadow-panel-solid` for a box shadow outline that is harmonized with the solid panel background.
       - `--shadow-panel` for an automatic box shadow outline that corresponds to your panel translucency setting.
     - Remove the top outline from shadows 2–6, in order to enable component design where multiple shadows are mixed and matched together.
-    - **[Upgrade guide]** If you were using the `shadow` tokens for your custom styles, in most cases, you should add `var(--shadow-panel)` or `var(--shadow-panel-solid)` to your box shadow to achieve a similar look as before. Example:
+    - **[Upgrade guide]** If you were using the `shadow` tokens for your custom styles, then in most cases you should add `var(--shadow-panel)` or `var(--shadow-panel-solid)` to your box shadow to achieve a similar look as before. Example:
       - Before: `box-shadow: var(--shadow-3);`
       - After: `box-shadow: var(--shadow-panel), var(--shadow-3);`.
   - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
@@ -63,7 +87,7 @@
   - Improve autofill styles.
 - `ThemePanel`
   - Disable transitions when changing the appearance
-  - Improve contrast on the border radius preview
+  - Improve contrast in the border radius preview
 
 ## 1.1.2
 
