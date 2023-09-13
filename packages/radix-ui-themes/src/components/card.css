@@ -120,25 +120,20 @@
 .rt-Card.rt-variant-classic {
   background-color: var(--color-panel);
 
-  &::before {
-    inset: 0;
-    position: absolute;
-    pointer-events: none;
-    border-radius: inherit;
+  &::after {
     box-shadow: var(--shadow-panel), var(--shadow-2);
     transition: box-shadow 120ms;
-    content: '';
   }
 
   &:where(button, [href]) {
     @media (hover: hover) {
-      &:hover::before {
+      &:hover::after {
         transition-duration: 40ms;
         box-shadow: var(--shadow-panel-translucent), var(--shadow-panel), var(--shadow-2),
           var(--shadow-3);
       }
     }
-    &:active:not([data-state='open'])::before {
+    &:active:not([data-state='open'])::after {
       transition-duration: 40ms;
       box-shadow: var(--shadow-panel-translucent), var(--shadow-panel-translucent),
         var(--shadow-panel), var(--shadow-2);
