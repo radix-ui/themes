@@ -64,6 +64,8 @@
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
 - `Slider`, `Switch`
   - Refine the shadows and colors used in the components
+- `Table`
+  - Automatically adjust table cell padding for when `Table` is inside `Inset`
 - `TextArea`
   - Rework the internal implementation, now using multiple HTML nodes for styling purposes.
     - Adjust the layout styles so that `TextArea` behaves like a true `display: block` element, filling the available space horizontally.
