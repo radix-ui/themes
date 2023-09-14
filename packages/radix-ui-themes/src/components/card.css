@@ -1,4 +1,8 @@
 .rt-Card {
+  --inset-border-radius: var(--card-border-radius);
+  --inset-padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
   position: relative;
 
   &:where(button, a) {
@@ -17,18 +21,6 @@
     outline: 2px solid var(--accent-8);
     outline-offset: -1px;
   }
-}
-
-.rt-CardInner {
-  position: relative;
-  box-sizing: border-box;
-  border-radius: inherit;
-  overflow: hidden;
-  height: 100%;
-
-  /* used by Inset */
-  --inset-padding: var(--card-padding);
-  padding: var(--inset-padding);
 }
 
 /***************************************************************************************************
@@ -69,23 +61,23 @@
   .rt-Card {
     &.rt-r-size-1 {
       --card-padding: var(--space-3);
-      border-radius: var(--radius-4);
+      --card-border-radius: var(--radius-4);
     }
     &.rt-r-size-2 {
       --card-padding: var(--space-4);
-      border-radius: var(--radius-4);
+      --card-border-radius: var(--radius-4);
     }
     &.rt-r-size-3 {
       --card-padding: var(--space-5);
-      border-radius: var(--radius-5);
+      --card-border-radius: var(--radius-5);
     }
     &.rt-r-size-4 {
       --card-padding: var(--space-6);
-      border-radius: var(--radius-5);
+      --card-border-radius: var(--radius-5);
     }
     &.rt-r-size-5 {
       --card-padding: var(--space-8);
-      border-radius: var(--radius-6);
+      --card-border-radius: var(--radius-6);
     }
   }
 }
@@ -99,47 +91,109 @@
 /* surface */
 
 .rt-Card.rt-variant-surface {
+  --inset-border-width: 1px;
+  --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
+  border: 1px solid transparent;
   background-color: var(--color-panel);
+  background-clip: padding-box;
+
   &::after {
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    border-radius: var(--card-shadow-border-radius);
+    box-shadow: 0 0 0 1px var(--gray-a6);
+    /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
   }
   &:where(button, [href]) {
     @media (hover: hover) {
       &:hover::after {
-        box-shadow: inset 0 0 0 1px var(--gray-a8);
+        box-shadow: 0 0 0 1px var(--gray-a8);
+        box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a8), var(--gray-8) 25%);
       }
     }
-    &:active::after {
-      box-shadow: inset 0 0 0 1px var(--gray-a8), inset 0 0 0 1px var(--gray-a6);
+    &:active:not([data-state='open']) {
+      &::after {
+        box-shadow: 0 0 0 1px var(--gray-a8), 0 0 0 1px var(--gray-a6);
+        box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a8), var(--gray-8) 25%),
+          0 0 0 1px var(--gray-a6);
+      }
+      &:where(:focus-visible) {
+        background-color: var(--gray-a3);
+      }
     }
   }
 }
 
-/* classic */
+/* prettier-ignore */
+.radix-themes {
+  /*
+   * Make sure that hovered shadows length matches the shadows length at rest for clean transitions:
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow#interpolation
+   */
+  --card-classic-box-shadow-hover:
+    0 0 0 1px var(--gray-a5),
+    0 1px 1px 1px var(--gray-a4),
+    0 2px 1px -1px var(--gray-a3),
+    0 2px 3px -2px var(--gray-a3),
+    0 3px 12px -4px var(--gray-a3),
+    0 4px 16px -8px var(--black-a1);
+}
+/* prettier-ignore */
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+  --card-classic-box-shadow-hover:
+    0 0 0 1px var(--gray-a7),
+    0 0 1px 1px var(--gray-a7),
+    0 0 1px -1px var(--gray-a4),
+    0 0 3px -2px var(--gray-a3),
+    0 0 12px -2px var(--gray-a3),
+    0 0 16px -8px var(--gray-a9);
+}
+
+/* prettier-ignore */
+@supports (color: color-mix(in oklab, white, black)) {
+  :is(.dark, .dark-theme),
+  :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+    --card-classic-box-shadow-hover:
+      0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-8)),
+      0 0 1px 1px var(--gray-a7),
+      0 0 1px -1px var(--gray-a4),
+      0 0 3px -2px var(--gray-a3),
+      0 0 12px -2px var(--gray-a3),
+      0 0 16px -8px var(--gray-a9);
+  }
+}
 
 .rt-Card.rt-variant-classic {
+  --inset-border-width: 1px;
+  --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
+  border: 1px solid transparent;
   background-color: var(--color-panel);
+  background-clip: padding-box;
 
-  &::before {
-    inset: 0;
-    position: absolute;
-    pointer-events: none;
-    border-radius: inherit;
-    box-shadow: var(--shadow-2);
-    transition: box-shadow 180ms;
-    content: '';
+  &::after {
+    border-radius: var(--card-shadow-border-radius);
+    /* A transparent shadow to transition smoothly to `:active` */
+    box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
+    transition: box-shadow 120ms;
   }
 
   &:where(button, [href]) {
     @media (hover: hover) {
-      &:hover::before {
-        transition-duration: 40ms;
-        box-shadow: var(--shadow-3), var(--shadow-2);
+      &:where(:hover) {
+        &::after {
+          transition-duration: 40ms;
+          box-shadow: var(--card-classic-box-shadow-hover);
+        }
       }
     }
-    &:active::before {
-      transition-duration: 40ms;
-      box-shadow: var(--shadow-2), var(--shadow-2);
+    &:where(:active:not([data-state='open'])) {
+      &::after {
+        transition-duration: 40ms;
+        box-shadow: 0 0 0 1px var(--gray-a5), var(--shadow-2);
+      }
+      &:where(:focus-visible) {
+        background-color: var(--gray-a3);
+      }
     }
   }
 }
@@ -152,6 +206,9 @@
       &:hover {
         background-color: var(--gray-a3);
       }
+    }
+    &:active:not([data-state='open']) {
+      background-color: var(--gray-a4);
     }
   }
 }

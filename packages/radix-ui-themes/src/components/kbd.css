@@ -1,20 +1,22 @@
 .radix-themes {
   /* prettier-ignore */
   --kbd-shadow:
+    inset 0 -0.05em 0.5em var(--gray-a2),
     inset 0 0.05em var(--white-a12),
     inset 0 0.25em 0.5em var(--gray-a2),
     inset 0 -0.05em var(--gray-a6),
-    0 0 0 0.05em var(--gray-a6),
+    0 0 0 0.05em var(--gray-a5),
     0 0.08em 0.17em var(--gray-a7);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   /* prettier-ignore */
   --kbd-shadow:
-    inset 0 0.05em var(--white-a9),
+    inset 0 -0.05em 0.5em var(--gray-a3),
+    inset 0 0.05em var(--gray-a11),
     inset 0 0.25em 0.5em var(--gray-a2),
-    inset 0 -0.1em var(--black-a12),
-    0 0 0 0.075em var(--gray-a8),
+    inset 0 -0.1em var(--black-a11),
+    0 0 0 0.075em var(--gray-a7),
     0 0.08em 0.17em var(--black-a12);
 }
 

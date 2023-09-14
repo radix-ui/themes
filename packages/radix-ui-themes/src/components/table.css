@@ -96,7 +96,11 @@
   border: 1px solid var(--gray-a5);
   border-radius: var(--table-border-radius);
   background-color: var(--color-panel);
+  background-clip: padding-box;
   position: relative;
+
+  /* When possible, use half-transparent gray for nicer border blending with the background */
+  border-color: color-mix(in oklab, var(--gray-a5), var(--gray-6));
 
   & .rt-TableRootTable {
     overflow: hidden;
@@ -126,10 +130,10 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Inset > .rt-TableRootTable .rt-TableCell:first-child {
+.rt-Inset > .rt-TableRoot .rt-TableCell:first-child {
   padding-left: var(--inset-padding);
 }
 
-.rt-Inset > .rt-TableRootTable .rt-TableCell:last-child {
+.rt-Inset > .rt-TableRoot .rt-TableCell:last-child {
   padding-right: var(--inset-padding);
 }

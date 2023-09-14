@@ -180,6 +180,7 @@ import {
   themeAccentColorsGrouped,
   //
   ThemePanel,
+  themeAccentColorsOrdered,
 } from '@radix-ui/themes';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -1932,7 +1933,7 @@ export default function Sink() {
                           <TextFieldInput
                             mb="2"
                             variant="classic"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -1953,7 +1954,7 @@ export default function Sink() {
                           <TextFieldInput
                             mb="2"
                             variant="surface"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -1974,7 +1975,7 @@ export default function Sink() {
                           <TextFieldInput
                             mb="2"
                             variant="soft"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -1997,7 +1998,7 @@ export default function Sink() {
                             mb="2"
                             variant="soft"
                             color="gray"
-                            autoComplete="password"
+                            autoComplete="current-password"
                             placeholder="Autofill (Password)"
                             size="2"
                             type="password"
@@ -3800,7 +3801,8 @@ export default function Sink() {
                       <Flex
                         style={{
                           flex: 1,
-                          background: 'var(--gray-a2)',
+                          background: 'var(--gray-1)',
+                          boxShadow: 'inset 0 0 0 1px var(--gray-a4)',
                           borderRadius: 'var(--radius-3)',
                         }}
                         p="9"
@@ -3811,7 +3813,7 @@ export default function Sink() {
                             <Box
                               grow="1"
                               style={{
-                                backgroundColor: 'var(--gray-1)',
+                                backgroundColor: 'var(--color-panel-solid)',
                                 boxShadow: `var(--shadow-${i + 1})`,
                                 borderRadius: 'var(--radius-2)',
                                 height: 80,
@@ -3860,6 +3862,14 @@ export default function Sink() {
                         </Grid>
                       </Box>
                     </Grid>
+                  </DocsSection>
+
+                  <DocsSection title="Separator">
+                    <Flex direction="column" gap="5" my="5">
+                      {themeAccentColorsOrdered.map((color) => (
+                        <Separator key={color} size="4" color={color} />
+                      ))}
+                    </Flex>
                   </DocsSection>
                 </main>
               </Box>

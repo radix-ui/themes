@@ -73,11 +73,15 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const handleAppearanceChange = React.useCallback(
       (appearance: ThemeOptions['appearance']) => {
         onAppearanceChange(appearance);
+        const cleanup = disableAnimation();
+
         if (hasOnAppearanceChangeProp) {
           handleAppearanceChangeProp(appearance as Exclude<ThemeOptions['appearance'], 'inherit'>);
         } else {
           updateThemeAppearanceClass(appearance);
         }
+
+        cleanup();
       },
       [onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp]
     );
@@ -377,9 +381,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                           style={{
                             borderTopLeftRadius: 'var(--radius-5)',
                             backgroundImage:
-                              'linear-gradient(to bottom right, var(--accent-a3), var(--accent-a4))',
-                            borderTop: '2px solid var(--accent-8)',
-                            borderLeft: '2px solid var(--accent-8)',
+                              'linear-gradient(to bottom right, var(--accent-3), var(--accent-4))',
+                            borderTop: '2px solid var(--accent-a8)',
+                            borderLeft: '2px solid var(--accent-a8)',
                           }}
                         />
                       </Theme>
@@ -590,13 +594,27 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 );
 ThemePanelImpl.displayName = 'ThemePanelImpl';
 
-function Label(props: any) {
-  return (
-    <Text {...props} size="1" color="gray" asChild>
-      <label>{props.children}</label>
-    </Text>
+// https://github.com/pacocoursey/next-themes/blob/main/packages/next-themes/src/index.tsx#L285
+function disableAnimation() {
+  const css = document.createElement('style');
+  css.appendChild(
+    document.createTextNode(
+      `*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`
+    )
   );
+  document.head.appendChild(css);
+
+  return () => {
+    // Force restyle
+    (() => window.getComputedStyle(document.body))();
+
+    // Wait for next tick before removing
+    setTimeout(() => {
+      document.head.removeChild(css);
+    }, 1);
+  };
 }
+
 function upperFirst(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }

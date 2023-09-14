@@ -280,6 +280,8 @@ const ContextMenuSubContent = React.forwardRef<
         <ContextMenuPrimitive.SubContent
           data-accent-color={color}
           alignOffset={-Number(size) * 4}
+          // Side offset accounts for the outer solid box-shadow
+          sideOffset={1}
           collisionPadding={10}
           {...subContentProps}
           ref={forwardedRef}

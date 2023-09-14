@@ -18,21 +18,28 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
     size = textAreaPropDefs.size.default,
     variant = textAreaPropDefs.variant.default,
     color = textAreaPropDefs.color.default,
+    style,
     ...textAreaProps
   } = marginRest;
   return (
-    <textarea
-      data-accent-color={color}
-      {...textAreaProps}
-      ref={forwardedRef}
+    <div
+      style={style}
       className={classNames(
-        'rt-TextArea',
+        'rt-TextAreaRoot',
         className,
         withBreakpoints(size, 'rt-r-size'),
         `rt-variant-${variant}`,
         withMarginProps(marginProps)
       )}
-    />
+    >
+      <textarea
+        data-accent-color={color}
+        className="rt-TextAreaInput"
+        ref={forwardedRef}
+        {...textAreaProps}
+      />
+      <div data-accent-color={color} className="rt-TextAreaChrome" />
+    </div>
   );
 });
 TextArea.displayName = 'TextArea';

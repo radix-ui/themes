@@ -1,5 +1,6 @@
 .rt-TextFieldRoot {
   position: relative;
+  z-index: 0;
   cursor: text;
 }
 
@@ -149,6 +150,9 @@
   /* Don't overlap text with the inset shadow */
   padding-left: 1px;
   padding-right: 1px;
+  .rt-TextFieldSlot + & {
+    padding-left: 0;
+  }
 
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface);
@@ -191,6 +195,9 @@
   /* Don't overlap text with inset shadow */
   padding-left: 1px;
   padding-right: 1px;
+  .rt-TextFieldSlot + & {
+    padding-left: 0;
+  }
 
   & + .rt-TextFieldChrome {
     background-color: var(--color-surface);

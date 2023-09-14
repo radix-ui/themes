@@ -281,6 +281,8 @@ const DropdownMenuSubContent = React.forwardRef<
         <DropdownMenuPrimitive.SubContent
           data-accent-color={color}
           alignOffset={-Number(size) * 4}
+          // Side offset accounts for the outer solid box-shadow
+          sideOffset={1}
           collisionPadding={10}
           {...subContentProps}
           ref={forwardedRef}
