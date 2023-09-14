@@ -3814,10 +3814,7 @@ export default function Sink() {
                               grow="1"
                               style={{
                                 backgroundColor: 'var(--color-panel-solid)',
-                                boxShadow:
-                                  i === 0
-                                    ? 'var(--shadow-1)'
-                                    : `var(--shadow-panel), var(--shadow-${i + 1})`,
+                                boxShadow: `var(--shadow-${i + 1})`,
                                 borderRadius: 'var(--radius-2)',
                                 height: 80,
                               }}

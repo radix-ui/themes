@@ -4,10 +4,10 @@
 
 - General
   - Rework dark mode colors, refine light mode colors (via Radix Colors 3.0.0).
-    - Fix oversaturated transparent grays
+    - Fix oversaturated transparent grays.
     - **[Upgrade guide]** If you were using the color tokens for your custom styles, make sure that your designs look as expected.
     - **[Upgrade guide]** If you were overriding certain colors, make sure that your overrides are harmonized with the new color scales.
-  - Rework transparent black and white color scales
+  - Rework transparent black and white color scales.
     - **[Upgrade guide]** If you were using transparent black and white color scales for your custom styles (`--black-a1`, `--white-a1`, etc.), make sure to check the new values and update the steps used so that your designs look as expected:
       - Change `--black-a1` to `rgba(0, 0, 0, 0.01)`
       - Change `--black-a2` to `rgba(0, 0, 0, 0.024)`
@@ -33,15 +33,7 @@
       - Change `--white-a10` to `--white-a7`
       - Change `--white-a11` to `--white-a9`
       - Change `--white-a12` to `--white-a11` or `--white-a12`
-  - Rework the shadow scale
-    - Components shadows are now harmonized with your panel translucency setting. New tokens:
-      - `--shadow-panel-translucent` for a box shadow outline that is harmonized with the translucent panel background.
-      - `--shadow-panel-solid` for a box shadow outline that is harmonized with the solid panel background.
-      - `--shadow-panel` for an automatic box shadow outline that corresponds to your panel translucency setting.
-    - Remove the top outline from shadows 2–6, in order to enable component design where multiple shadows are mixed and matched together.
-    - **[Upgrade guide]** If you were using the `shadow` tokens for your custom styles, then in most cases you should add `var(--shadow-panel)` or `var(--shadow-panel-solid)` to your box shadow to achieve a similar look as before. Example:
-      - Before: `box-shadow: var(--shadow-3);`
-      - After: `box-shadow: var(--shadow-panel), var(--shadow-3);`.
+  - Refine the shadow scale.
   - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
   - Remove comments from the CSS build.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
@@ -52,20 +44,24 @@
   - Use a gray background for a gray `variant="surface"`
   - Use a darker outline color `variant="outline"`
 - `Card`
+  - Remove `overflow: hidden` from an internal element.
+    - Overflow and clipping responsibilities are offloaded to the `Inset` component.
+  - Update the `variant="classic"` shadow so that it doesn’t extend outside of the element.
   - Refine hover and pressed styles for `variant="classic"`
-  - Update the shadow so that in dark mode it doesn’t extend outside of the element with `variant="classic"`
-  - Add a pressed style to `variant="ghost"`
+  - Add missing pressed styles.
+  - Refine how the inner shadows are applied so that they blend with different container backgrounds.
 - `Grid`
   - Fix a bug when nesting `Grid` components could cause the descendant `Grid`’s to inherit some parent styles unintentionally.
+- `Inset`
+  - Add `clip` prop to control whether content is clipped to the padding or to the border of the parent element.
+  - Automatically adjust table cell padding for when `Table` is inside `Inset`
 - `Link`
-  - Desaturate the underline color
+  - Desaturate the underline color.
 - `Select`
   - Improve `variant="classic"` look and feel across light and dark mode.
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
 - `Slider`, `Switch`
-  - Refine the shadows and colors used in the components
-- `Table`
-  - Automatically adjust table cell padding for when `Table` is inside `Inset`
+  - Refine the shadows and colors used in the components.
 - `TextArea`
   - Rework the internal implementation, now using multiple HTML nodes for styling purposes.
     - Adjust the layout styles so that `TextArea` behaves like a true `display: block` element, filling the available space horizontally.
@@ -88,8 +84,8 @@
   - Remove ellipsis truncation, as this prevented long values from being shown when scrolling on the input horizontally in Chrome.
   - Improve autofill styles.
 - `ThemePanel`
-  - Disable transitions when changing the appearance
-  - Improve contrast in the border radius preview
+  - Disable transitions when changing the appearance.
+  - Improve contrast in the border radius preview.
 
 ## 1.1.2
 

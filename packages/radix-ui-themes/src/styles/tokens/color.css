@@ -161,6 +161,18 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
+:root {
+  /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors */
+  --color-transparent: rgb(0 0 0 / 0);
+}
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root {
+      --color-transparent: color(display-p3 0 0 0 / 0);
+    }
+  }
+}
+
 .radix-themes {
   /* text color */
   color: var(--gray-12);

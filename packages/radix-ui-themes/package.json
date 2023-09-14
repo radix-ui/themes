@@ -41,7 +41,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css"
   },
   "dependencies": {
-    "@radix-ui/colors": "^3.0.0-rc.3",
+    "@radix-ui/colors": "^3.0.0-rc.4",
     "@radix-ui/primitive": "^1.0.1",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-alert-dialog": "^1.0.4",

@@ -46,7 +46,7 @@
   text-decoration-color: var(--accent-a5);
 
   /* Enhancement for bright colors */
-  @supports (background: color-mix(in oklab, white, black)) {
+  @supports (color: color-mix(in oklab, white, black)) {
     & {
       text-decoration-color: color-mix(in oklab, var(--accent-a5), var(--gray-a6));
     }
@@ -65,7 +65,7 @@
       text-decoration-color: var(--accent-a6);
 
       /* Enhancement for bright colors */
-      @supports (background: color-mix(in oklab, white, black)) {
+      @supports (color: color-mix(in oklab, white, black)) {
         & {
           text-decoration-color: color-mix(in oklab, var(--accent-a6), var(--gray-a6));
         }

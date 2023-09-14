@@ -2286,7 +2286,7 @@ export default function ExploreComponents() {
                   <Flex my="6" gap="6">
                     <Card size="2">
                       <Flex>
-                        <Inset side="left" pr="current">
+                        <Inset side="left" clip="padding-box" pr="current">
                           <InsetImage />
                         </Inset>
                         <Text as="p" size="3" style={{ width: 240 }}>
@@ -2302,7 +2302,7 @@ export default function ExploreComponents() {
                           <Strong>Typography</Strong> is the art and technique of arranging type to
                           make written language legible, readable and appealing when displayed.
                         </Text>
-                        <Inset side="right" pl="current">
+                        <Inset side="right" clip="padding-box" pl="current">
                           <InsetImage />
                         </Inset>
                       </Flex>
@@ -2311,7 +2311,7 @@ export default function ExploreComponents() {
 
                   <Flex my="6" gap="6">
                     <Card size="2" style={{ width: 300 }}>
-                      <Inset side="top" pb="current">
+                      <Inset side="top" clip="padding-box" pb="current">
                         <InsetImage style={{ width: '100%', height: 160 }} />
                       </Inset>
                       <Text as="p" size="3" style={{ width: 240 }}>
@@ -2325,7 +2325,7 @@ export default function ExploreComponents() {
                         <Strong>Typography</Strong> is the art and technique of arranging type to
                         make written language legible, readable and appealing when displayed.
                       </Text>
-                      <Inset side="bottom" pt="current">
+                      <Inset side="bottom" clip="padding-box" pt="current">
                         <InsetImage style={{ width: '100%', height: 160 }} />
                       </Inset>
                     </Card>
