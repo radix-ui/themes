@@ -161,18 +161,6 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
-:root {
-  /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors */
-  --color-transparent: rgb(0 0 0 / 0);
-}
-@supports (color: color(display-p3 1 1 1)) {
-  @media (color-gamut: p3) {
-    :root {
-      --color-transparent: color(display-p3 0 0 0 / 0);
-    }
-  }
-}
-
 .radix-themes {
   /* text color */
   color: var(--gray-12);
@@ -181,6 +169,16 @@
   --color-panel-solid: white;
   --color-panel-translucent: rgba(255, 255, 255, 0.8);
   --color-surface: rgba(255, 255, 255, 0.9);
+
+  /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors */
+  --color-transparent: rgb(0 0 0 / 0);
+}
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    .radix-themes {
+      --color-transparent: color(display-p3 0 0 0 / 0);
+    }
+  }
 }
 
 /* Make sure that forced light/dark appearance also sets corresponding browser colors, like input autofill color */
