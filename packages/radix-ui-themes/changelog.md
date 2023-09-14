@@ -44,12 +44,12 @@
   - Use a gray background for a gray `variant="surface"`
   - Use a darker outline color `variant="outline"`
 - `Card`
-  - Remove `overflow: hidden` from an internal element.
-    - Overflow and clipping responsibilities are offloaded to the `Inset` component.
+  - Remove an internal element `.rt-CardInner` which provided `overflow: hidden`
+    - **[Upgrade guide]** Use the `Inset` component when overflow and/or clipping is desired within `Card`
   - Update the `variant="classic"` shadow so that it doesn’t extend outside of the element.
   - Refine hover and pressed styles for `variant="classic"`
   - Add missing pressed styles.
-  - Refine how the inner shadows are applied so that they blend with different container backgrounds.
+  - Refine how the inner shadows are applied so that they blend with the background outside of the component.
 - `Grid`
   - Fix a bug when nesting `Grid` components could cause the descendant `Grid`’s to inherit some parent styles unintentionally.
 - `Inset`
@@ -70,7 +70,7 @@
     - **[Upgrade guide]** If you were relying on the intrinsic width of `TextArea` set by the browser, make sure that your layout looks as expected.
   - Refine padding values for a more balanced look.
     - Use matching scroll margins for a nicer typing experience when the `TextArea` overflows.
-  - Refine how the inner shadows are applied so that they blend with different container backgrounds.
+  - Refine how the inner shadows are applied so that they blend with the background outside of the component.
   - Refine and normalise the look and feel of disabled and read-only states.
   - Fix a Safari bug when the text value would appear tinted in the disabled input.
   - Improve autofill styles.
@@ -78,7 +78,7 @@
   - Reset `z-index` of the container to avoid potential stacking issues.
   - Refine padding values for a more balanced look.
     - Use `text-indent` instead of `padding-left` so that long values aren't truncated on the left when the cursor is at the end of the input.
-  - Refine how the inner shadows are applied so that they blend with different container backgrounds.
+  - Refine how the inner shadows are applied so that they blend with the background outside of the component.
   - Refine and normalise the look and feel of disabled and read-only states.
   - Fix a Safari bug when the text value would appear tinted in the disabled input.
   - Remove ellipsis truncation, as this prevented long values from being shown when scrolling on the input horizontally in Chrome.

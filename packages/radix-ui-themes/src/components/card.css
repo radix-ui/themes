@@ -2,6 +2,7 @@
   --inset-border-radius: var(--card-border-radius);
   --inset-padding: var(--card-padding);
   border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
   position: relative;
 
   &:where(button, a) {
@@ -20,14 +21,6 @@
     outline: 2px solid var(--accent-8);
     outline-offset: -1px;
   }
-}
-
-.rt-CardInner {
-  position: relative;
-  box-sizing: border-box;
-  border-radius: inherit;
-  height: 100%;
-  padding: var(--card-padding);
 }
 
 /***************************************************************************************************
@@ -99,17 +92,13 @@
 
 .rt-Card.rt-variant-surface {
   --inset-border-width: 1px;
-  --card-inner-border-radius: calc(var(--card-border-radius) - 1px);
+  --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
   border: 1px solid transparent;
   background-color: var(--color-panel);
   background-clip: padding-box;
 
-  & .rt-CardInner {
-    border-radius: var(--card-inner-border-radius);
-  }
-
   &::after {
-    border-radius: var(--card-inner-border-radius);
+    border-radius: var(--card-shadow-border-radius);
     box-shadow: 0 0 0 1px var(--gray-a6);
     /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
     box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
@@ -176,17 +165,13 @@
 
 .rt-Card.rt-variant-classic {
   --inset-border-width: 1px;
-  --card-inner-border-radius: calc(var(--card-border-radius) - 1px);
+  --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
   border: 1px solid transparent;
   background-color: var(--color-panel);
   background-clip: padding-box;
 
-  & .rt-CardInner {
-    border-radius: var(--card-inner-border-radius);
-  }
-
   &::after {
-    border-radius: var(--card-inner-border-radius);
+    border-radius: var(--card-shadow-border-radius);
     /* A transparent shadow to transition smoothly to `:active` */
     box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
     transition: box-shadow 120ms;

@@ -26,7 +26,7 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
   function getChild() {
     const firstChild = React.Children.only(children) as React.ReactElement;
     return React.cloneElement(firstChild, {
-      children: <div className="rt-CardInner">{firstChild.props.children}</div>,
+      children: firstChild.props.children,
     });
   }
 
@@ -44,7 +44,7 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
         withMarginProps(marginProps)
       )}
     >
-      {asChild ? getChild() : <div className="rt-CardInner">{children}</div>}
+      {asChild ? getChild() : children}
     </Comp>
   );
 });
