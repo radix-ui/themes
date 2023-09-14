@@ -22,10 +22,10 @@
     --margin-left: 0px;
 
     /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top, 0px) - var(--icon-button-ghost-padding));
-    --margin-right-override: calc(var(--margin-right, 0px) - var(--icon-button-ghost-padding));
-    --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--icon-button-ghost-padding));
-    --margin-left-override: calc(var(--margin-left, 0px) - var(--icon-button-ghost-padding));
+    --margin-top-override: calc(var(--margin-top) - var(--icon-button-ghost-padding));
+    --margin-right-override: calc(var(--margin-right) - var(--icon-button-ghost-padding));
+    --margin-bottom-override: calc(var(--margin-bottom) - var(--icon-button-ghost-padding));
+    --margin-left-override: calc(var(--margin-left) - var(--icon-button-ghost-padding));
 
     /* Reset the overrides on direct children */
     :where(&) > * {

@@ -39,10 +39,10 @@
     --margin-left: 0px;
 
     /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top, 0px) - var(--card-padding));
-    --margin-right-override: calc(var(--margin-right, 0px) - var(--card-padding));
-    --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--card-padding));
-    --margin-left-override: calc(var(--margin-left, 0px) - var(--card-padding));
+    --margin-top-override: calc(var(--margin-top) - var(--card-padding));
+    --margin-right-override: calc(var(--margin-right) - var(--card-padding));
+    --margin-bottom-override: calc(var(--margin-bottom) - var(--card-padding));
+    --margin-left-override: calc(var(--margin-left) - var(--card-padding));
 
     /* Reset the overrides on direct children */
     :where(&) > * {

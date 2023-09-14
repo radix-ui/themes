@@ -26,10 +26,10 @@
     --margin-left: 0px;
 
     /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top, 0px) - var(--button-ghost-padding-y));
-    --margin-right-override: calc(var(--margin-right, 0px) - var(--button-ghost-padding-x));
-    --margin-bottom-override: calc(var(--margin-bottom, 0px) - var(--button-ghost-padding-y));
-    --margin-left-override: calc(var(--margin-left, 0px) - var(--button-ghost-padding-x));
+    --margin-top-override: calc(var(--margin-top) - var(--button-ghost-padding-y));
+    --margin-right-override: calc(var(--margin-right) - var(--button-ghost-padding-x));
+    --margin-bottom-override: calc(var(--margin-bottom) - var(--button-ghost-padding-y));
+    --margin-left-override: calc(var(--margin-left) - var(--button-ghost-padding-x));
 
     /* Reset the overrides on direct children */
     :where(&) > * {

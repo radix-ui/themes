@@ -14,6 +14,12 @@
   }
 }
 
+.rt-SelectTriggerInner {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .rt-SelectIcon {
   flex-shrink: 0;
 
@@ -24,12 +30,12 @@
 
 .rt-SelectContent {
   overflow: hidden;
-
   background-color: var(--select-content-bg);
-  --select-content-radius: min(
-    (var(--select-item-height) / 2 + var(--select-content-padding)),
-    max(var(--radius-3), var(--radius-full))
-  );
+
+  /* prettier-ignore */
+  --select-content-radius:
+    min((var(--select-item-height) / 2 + var(--select-content-padding)),
+    max(var(--radius-3), var(--radius-full)));
   border-radius: var(--select-content-radius);
 
   &[data-side] {
@@ -37,7 +43,6 @@
     max-height: var(--radix-select-content-available-height);
     transform-origin: var(--radix-select-content-transform-origin);
   }
-
   & .rt-ScrollAreaScrollbar {
     --select-content-scrollbar-margin: max(
       calc(var(--select-content-radius) / 1.5),
@@ -68,7 +73,6 @@
   box-sizing: border-box;
   outline: none;
   cursor: default;
-
   scroll-margin: var(--select-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
@@ -131,12 +135,10 @@
     --margin-left: 0px;
 
     /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top, 0px) - var(--select-trigger-ghost-padding-y));
-    --margin-right-override: calc(var(--margin-right, 0px) - var(--select-trigger-ghost-padding-x));
-    --margin-bottom-override: calc(
-      var(--margin-bottom, 0px) - var(--select-trigger-ghost-padding-y)
-    );
-    --margin-left-override: calc(var(--margin-left, 0px) - var(--select-trigger-ghost-padding-x));
+    --margin-top-override: calc(var(--margin-top) - var(--select-trigger-ghost-padding-y));
+    --margin-right-override: calc(var(--margin-right) - var(--select-trigger-ghost-padding-x));
+    --margin-bottom-override: calc(var(--margin-bottom) - var(--select-trigger-ghost-padding-y));
+    --margin-left-override: calc(var(--margin-left) - var(--select-trigger-ghost-padding-x));
 
     /* Reset the overrides on direct children */
     :where(&) > * {
@@ -248,7 +250,6 @@
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
       }
-
       & .rt-SelectItem {
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
@@ -292,17 +293,18 @@
 
 /* classic */
 
+/* prettier-ignore */
 .radix-themes {
-  /* prettier-ignore */
   --select-trigger__classic__box-shadow:
 		inset 0 0 0 1px var(--gray-a5),
 		inset 0 2px 1px var(--white-a11),
 		inset 0 -2px 1px var(--gray-a4)
 	;
 }
+
+/* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  /* prettier-ignore */
   --select-trigger__classic__box-shadow:
     inset 0 0 0 1px var(--white-a4),
     inset 0 1px 1px var(--white-a4),
@@ -400,7 +402,6 @@
   &::after {
     display: none;
   }
-
   &:where(:not(.rt-variant-ghost)) {
     background-color: var(--gray-a3);
   }
@@ -416,12 +417,15 @@
   --select-content-bg: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
 }
+
 .rt-SelectItem[data-disabled] {
   color: var(--gray-a8);
 }
+
 .rt-SelectLabel {
   color: var(--gray-a11);
 }
+
 .rt-SelectSeparator {
   background-color: var(--gray-a6);
 }

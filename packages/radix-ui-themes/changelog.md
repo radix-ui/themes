@@ -39,6 +39,7 @@
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
 - `Button`, `IconButton`
+  - Refine and normalise the look and feel of the disabled states.
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
 - `Callout`
   - Use a gray background for a gray `variant="surface"`
@@ -58,6 +59,7 @@
 - `Link`
   - Desaturate the underline color.
 - `Select`
+  - Fix invisible scrollbar in long item lists
   - Improve `variant="classic"` look and feel across light and dark mode.
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
 - `Slider`, `Switch`
