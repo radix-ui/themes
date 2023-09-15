@@ -79,6 +79,12 @@
       color: var(--accent-1);
     }
   }
+  &:where(:disabled) {
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    background-color: var(--gray-a3);
+    cursor: not-allowed;
+    color: var(--gray-a8);
+  }
 }
 
 /* classic */
@@ -97,6 +103,12 @@
       color: var(--accent-1);
     }
   }
+  &:where(:disabled) {
+    box-shadow: var(--shadow-1);
+    background-color: var(--gray-a3);
+    cursor: not-allowed;
+    color: var(--gray-a8);
+  }
 }
 
 /* soft */
@@ -110,13 +122,9 @@
       color: var(--accent-12);
     }
   }
-}
-
-/* all disabled checkboxes */
-
-.rt-CheckboxButton[data-disabled] {
-  box-shadow: inset 0 0 0 1px var(--gray-a6);
-  background-color: var(--gray-a3);
-  cursor: not-allowed;
-  color: var(--gray-a8);
+  &:where(:disabled) {
+    background-color: var(--gray-a3);
+    cursor: not-allowed;
+    color: var(--gray-a8);
+  }
 }
