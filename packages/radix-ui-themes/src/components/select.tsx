@@ -57,7 +57,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
           {...triggerProps}
           ref={forwardedRef}
           className={classNames(
-            'rt-reset-button',
+            'rt-reset',
             'rt-SelectTrigger',
             className,
             withBreakpoints(size, 'rt-r-size'),

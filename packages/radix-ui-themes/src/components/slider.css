@@ -236,7 +236,7 @@
 /* all disabled Sliders */
 
 .rt-SliderRoot[data-disabled] {
-  cursor: not-allowed;
+  cursor: var(--cursor-disabled);
   mix-blend-mode: var(--slider-blend-mode__disabled);
 
   & .rt-SliderRange[data-disabled] {

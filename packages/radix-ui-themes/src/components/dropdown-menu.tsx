@@ -128,7 +128,7 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
         data-accent-color={color}
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rt-reset-a', 'rt-BaseMenuItem', 'rt-DropdownMenuItem', className)}
+        className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-DropdownMenuItem', className)}
       >
         <Slottable>{children}</Slottable>
         {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}

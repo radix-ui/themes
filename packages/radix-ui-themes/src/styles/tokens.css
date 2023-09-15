@@ -25,3 +25,11 @@
     --scaling: 1.1;
   }
 }
+
+/* cursors */
+.radix-themes {
+  --cursor-link: pointer;
+  --cursor-button: default;
+  --cursor-menu: default;
+  --cursor-disabled: not-allowed;
+}

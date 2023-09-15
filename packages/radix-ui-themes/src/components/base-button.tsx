@@ -34,8 +34,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       {...baseButtonProps}
       ref={forwardedRef}
       className={classNames(
-        'rt-reset-button',
-        'rt-reset-a',
+        'rt-reset',
         'rt-BaseButton',
         className,
         withBreakpoints(size, 'rt-r-size'),

@@ -72,7 +72,7 @@
   position: relative;
   box-sizing: border-box;
   outline: none;
-  cursor: default;
+  cursor: var(--cursor-menu);
   scroll-margin: var(--select-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
@@ -290,7 +290,7 @@
     box-shadow: inset 0 0 0 1px var(--gray-a8);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a2);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
@@ -357,7 +357,7 @@
     }
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     /* Use disabled button style for the shadow */
     box-shadow: var(--button__classic-disabled__shadow);
@@ -395,7 +395,7 @@
     background-color: var(--accent-a4);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a3);
   }
@@ -411,7 +411,7 @@
     background-color: var(--accent-a3);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: transparent;
   }
