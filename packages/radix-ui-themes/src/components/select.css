@@ -289,6 +289,12 @@
   &:where([data-state='open']) {
     box-shadow: inset 0 0 0 1px var(--gray-a8);
   }
+  &:where(:disabled) {
+    cursor: not-allowed;
+    color: var(--gray-a8);
+    background-color: var(--gray-a2);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
 }
 
 /* classic */
@@ -316,9 +322,9 @@
   color: var(--gray-12);
   background-image: linear-gradient(var(--gray-2), var(--gray-1));
   box-shadow: var(--select-trigger__classic__box-shadow);
-
   position: relative;
   z-index: 0;
+
   &::before {
     content: '';
     position: absolute;
@@ -349,6 +355,15 @@
       background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
         linear-gradient(var(--gray-2), var(--gray-1));
     }
+  &:where(:disabled) {
+    cursor: not-allowed;
+    color: var(--gray-a8);
+    /* Use disabled button style for the shadow */
+    box-shadow: var(--button__classic-disabled__shadow);
+    &::before {
+      background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
+        linear-gradient(var(--color-surface), transparent);
+    }
   }
 }
 
@@ -366,6 +381,7 @@
     }
   }
 }
+
 .rt-SelectTrigger:where(.rt-variant-soft) {
   background-color: var(--accent-a3);
 
@@ -377,7 +393,13 @@
   &:where([data-state='open']) {
     background-color: var(--accent-a4);
   }
+  &:where(:disabled) {
+    cursor: not-allowed;
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+  }
 }
+
 .rt-SelectTrigger:where(.rt-variant-ghost) {
   @media (hover: hover) {
     &:where(:hover) {
@@ -387,23 +409,10 @@
   &:where([data-state='open']) {
     background-color: var(--accent-a3);
   }
-}
-
-/* all disabled triggers */
-
-.rt-SelectTrigger:disabled {
-  color: var(--gray-a8);
-  cursor: not-allowed;
-  box-shadow: none;
-  background-color: transparent;
-  background-image: none;
-
-  &::before,
-  &::after {
-    display: none;
-  }
-  &:where(:not(.rt-variant-ghost)) {
-    background-color: var(--gray-a3);
+  &:where(:disabled) {
+    cursor: not-allowed;
+    color: var(--gray-a8);
+    background-color: transparent;
   }
 }
 
