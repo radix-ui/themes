@@ -355,6 +355,7 @@
       background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
         linear-gradient(var(--gray-2), var(--gray-1));
     }
+  }
   &:where(:disabled) {
     cursor: not-allowed;
     color: var(--gray-a8);
