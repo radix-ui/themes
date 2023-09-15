@@ -43,7 +43,9 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
         data-accent-color={color}
         {...switchProps}
         ref={forwardedRef}
-        className="rt-reset-button rt-SwitchButton"
+        className={classNames('rt-reset-button', 'rt-SwitchButton', {
+          'rt-high-contrast': highContrast,
+        })}
       >
         <SwitchPrimitive.Thumb className="rt-SwitchThumb" />
       </SwitchPrimitive.Root>
