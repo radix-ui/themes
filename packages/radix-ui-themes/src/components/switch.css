@@ -1,3 +1,17 @@
+.radix-themes {
+  --switch-blend-mode__disabled: multiply;
+  --switch-button-overlay__high-contrast-checked: var(--black-a8);
+  --switch-button-filter__high-contrast-checked-active: contrast(0.82) saturate(1.2)
+    brightness(1.16);
+}
+
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+  --switch-blend-mode__disabled: screen;
+  --switch-button-overlay__high-contrast-checked: transparent;
+  --switch-button-filter__high-contrast-checked-active: brightness(1.08);
+}
+
 .rt-SwitchRoot {
   display: inline-flex;
   align-items: center;
@@ -39,21 +53,17 @@
      */
     background-size: calc(var(--switch-width) * 2 + var(--switch-height)) 100%;
   }
-
   &:where([data-state='unchecked'])::before {
     transition-duration: 120ms, 140ms, 140ms, 140ms;
     background-position-x: 100%;
   }
-
   &:where([data-state='checked'])::before {
     transition-duration: 160ms, 140ms, 140ms, 140ms;
     background-position: 0%;
   }
-
   &:where(:active)::before {
     transition-duration: 30ms;
   }
-
   &:where(:focus-visible) {
     outline: 2px solid var(--accent-a8);
     outline-offset: 2px;
@@ -107,6 +117,7 @@
 .radix-themes {
   --switch-button-filter__surface-checked-active: brightness(0.92) saturate(1.1);
 }
+
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
   --switch-button-filter__surface-checked-active: brightness(1.08);
@@ -125,15 +136,26 @@
     &:where([data-state='checked']:active)::before {
       filter: var(--switch-button-filter__surface-checked-active);
     }
-  }
-
-  /* prettier-ignore */
-  &:where(.rt-high-contrast) {
-    & .rt-SwitchButton {
+    &:where(.rt-high-contrast) {
       &::before {
+        /* prettier-ignore */
         background-image:
           linear-gradient(to right, var(--switch-button-overlay__high-contrast-checked) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
+      }
+      &:where([data-state='checked']:active)::before {
+        filter: var(--switch-button-filter__high-contrast-checked-active);
+      }
+    }
+    &:where([data-disabled]) {
+      cursor: not-allowed;
+      mix-blend-mode: var(--switch-blend-mode__disabled);
+
+      &::before {
+        filter: none;
+        background-image: none;
+        background-color: var(--gray-a3);
+        box-shadow: inset 0 0 0 1px var(--gray-a3);
       }
     }
   }
@@ -146,6 +168,12 @@
     &:where([data-state='checked']) {
       box-shadow: 0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1),
         0 2px 4px -1px var(--black-a1), -1px 0 1px var(--black-a3);
+    }
+    &:where([data-disabled]) {
+      background-color: var(--gray-2);
+      box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
+      /* Avoid the Chrome P3 bug with transition through red when changing light/dark mode */
+      transition: none;
     }
   }
 }
@@ -177,15 +205,28 @@
     &:where([data-state='checked']:active)::before {
       filter: var(--switch-button-filter__surface-checked-active);
     }
-  }
-
-  /* prettier-ignore */
-  &:where(.rt-high-contrast) {
-    & .rt-SwitchButton {
+    &:where(.rt-high-contrast) {
+      /* prettier-ignore */
       &::before {
         background-image:
           linear-gradient(to right, var(--switch-button-overlay__high-contrast-checked) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
+      }
+      &:where([data-state='checked']:active)::before {
+        filter: var(--switch-button-filter__high-contrast-checked-active);
+      }
+    }
+    &:where([data-disabled]) {
+      cursor: not-allowed;
+      background-color: var(--gray-a3);
+      mix-blend-mode: var(--switch-blend-mode__disabled);
+
+      &::before {
+        filter: none;
+        background-image: none;
+        background-color: transparent;
+        box-shadow: var(--shadow-1);
+        opacity: 0.5;
       }
     }
   }
@@ -198,6 +239,12 @@
     &:where([data-state='checked']) {
       box-shadow: 0 1px 3px var(--black-a3), 0 2px 4px -1px var(--black-a1),
         0 0 0 1px var(--black-a2), -1px 0 1px var(--black-a3);
+    }
+    &:where([data-disabled]) {
+      background-color: var(--gray-2);
+      box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
+      /* Avoid the Chrome P3 bug with transition through red when changing light/dark mode */
+      transition: none;
     }
   }
 }
@@ -229,16 +276,26 @@
     &:where([data-state='checked']:active)::before {
       filter: var(--switch-button-filter__soft-checked-active);
     }
-  }
-
-  /* prettier-ignore */
-  &:where(.rt-high-contrast) {
-    & .rt-SwitchButton {
+    &:where(.rt-high-contrast) {
       &::before {
+        /* prettier-ignore */
         background-image:
           linear-gradient(to right, var(--switch-button-overlay__high-contrast-checked) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-a8) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-a3), var(--accent-a2) 150%);
+      }
+      &:where([data-state='checked']:active)::before {
+        filter: var(--switch-button-filter__high-contrast-checked-active);
+      }
+    }
+    &:where([data-disabled]) {
+      cursor: not-allowed;
+      mix-blend-mode: var(--switch-blend-mode__disabled);
+
+      &::before {
+        filter: none;
+        background-image: none;
+        background-color: var(--gray-a4);
       }
     }
   }
@@ -247,57 +304,13 @@
     box-shadow: 0 0 0 1px var(--accent-a3), 0 1px 3px var(--accent-a4),
       0 2px 4px -1px var(--accent-a3);
     filter: saturate(0.45);
-  }
-}
 
-/* all high-contrast */
-
-.radix-themes {
-  --switch-button-overlay__high-contrast-checked: var(--black-a8);
-  --switch-button-filter__high-contrast-checked-active: contrast(0.82) saturate(1.2)
-    brightness(1.16);
-}
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --switch-button-overlay__high-contrast-checked: transparent;
-  --switch-button-filter__high-contrast-checked-active: brightness(1.08);
-}
-
-.rt-SwitchRoot.rt-high-contrast {
-  & .rt-SwitchButton {
-    &:where([data-state='checked']:active)::before {
-      filter: var(--switch-button-filter__high-contrast-checked-active);
+    &:where([data-disabled]) {
+      filter: none;
+      background-color: var(--gray-2);
+      box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
+      /* Avoid the Chrome P3 bug with transition through red when changing light/dark mode */
+      transition: none;
     }
-  }
-}
-
-/* all disabled switches */
-
-.radix-themes {
-  --switch-thumb-shadow__disabled: 0 0 0 1px var(--gray-6);
-  --switch-blend-mode__disabled: multiply;
-}
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
-  --switch-thumb-shadow__disabled: 0 0 0 1px var(--gray-5);
-  --switch-blend-mode__disabled: screen;
-}
-
-.rt-SwitchRoot {
-  & .rt-SwitchButton[data-disabled] {
-    cursor: not-allowed;
-    mix-blend-mode: var(--switch-blend-mode__disabled);
-
-    &::before {
-      background-image: none;
-      background-color: var(--gray-a3);
-      box-shadow: inset 0 0 0 1px var(--gray-a5);
-    }
-  }
-  & .rt-SwitchThumb[data-disabled] {
-    background-color: var(--gray-2);
-    box-shadow: var(--switch-thumb-shadow__disabled);
-    /* Avoid the Chrome P3 bug with transition through red when changing light/dark mode */
-    transition: none;
   }
 }

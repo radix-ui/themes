@@ -39,10 +39,13 @@
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
 - `Button`, `IconButton`
+  - Refine and normalise the look and feel of the disabled states.
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
 - `Callout`
   - Use a gray background for a gray `variant="surface"`
   - Use a darker outline color `variant="outline"`
+- `Checkbox`
+  - Refine and normalise the look and feel of the disabled states.
 - `Card`
   - Remove an internal element `.rt-CardInner` which provided `overflow: hidden`
     - **[Upgrade guide]** Use the `Inset` component when overflow and/or clipping is desired within `Card`
@@ -57,11 +60,15 @@
   - Automatically adjust table cell padding for when `Table` is inside `Inset`
 - `Link`
   - Desaturate the underline color.
+- `RadioGroup`
+  - Refine and normalise the look and feel of the disabled states.
 - `Select`
+  - Fix invisible scrollbar in long item lists
   - Improve `variant="classic"` look and feel across light and dark mode.
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
 - `Slider`, `Switch`
   - Refine the shadows and colors used in the components.
+  - Refine and normalise the look and feel of the disabled states.
 - `Table`
   - Refine how the outer border is applied so that it blends with the background outside of the component.
 - `TextArea`

@@ -115,6 +115,10 @@
   & .rt-SliderTrack {
     background-color: var(--gray-a3);
     box-shadow: inset 0 0 0 1px var(--gray-a5);
+
+    &:where([data-disabled]) {
+      box-shadow: inset 0 0 0 1px var(--gray-a4);
+    }
   }
 
   & .rt-SliderRange {
@@ -124,6 +128,11 @@
 
   & .rt-SliderThumb {
     --slider-thumb-shadow: 0 0 0 1px var(--black-a3);
+
+    &:where([data-disabled])::after {
+      background-color: var(--gray-1);
+      box-shadow: 0 0 0 1px var(--gray-6);
+    }
   }
 }
 
@@ -132,7 +141,18 @@
 .rt-SliderRoot.rt-variant-classic {
   & .rt-SliderTrack {
     background-color: var(--gray-a3);
-    box-shadow: var(--shadow-1);
+    position: relative;
+
+    &::before {
+      content: '';
+      inset: 0;
+      position: absolute;
+      border-radius: inherit;
+      box-shadow: var(--shadow-1);
+    }
+    &:where([data-disabled])::before {
+      opacity: 0.5;
+    }
   }
 
   & .rt-SliderRange {
@@ -147,6 +167,11 @@
       0 0 0 1px var(--black-a3),
       0 1px 3px var(--black-a1),
       0 2px 4px -1px var(--black-a1);
+
+    &:where([data-disabled])::after {
+      background-color: var(--gray-1);
+      box-shadow: 0 0 0 1px var(--gray-6);
+    }
   }
 }
 
@@ -158,6 +183,11 @@
 
     /* blend gray with accent */
     background-image: linear-gradient(to right, var(--accent-a3), var(--accent-a3));
+
+    &:where([data-disabled]) {
+      background-color: var(--gray-a4);
+      background-image: none;
+    }
   }
 
   & .rt-SliderRange {
@@ -167,6 +197,11 @@
   & .rt-SliderThumb {
     --slider-thumb-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2),
       0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
+
+    &:where([data-disabled])::after {
+      background-color: var(--gray-1);
+      box-shadow: 0 0 0 1px var(--gray-5);
+    }
   }
 }
 
@@ -190,8 +225,6 @@
   }
 }
 
-/* all disabled Sliders */
-
 .radix-themes {
   --slider-blend-mode__disabled: multiply;
 }
@@ -200,21 +233,14 @@
   --slider-blend-mode__disabled: screen;
 }
 
+/* all disabled Sliders */
+
 .rt-SliderRoot[data-disabled] {
   cursor: not-allowed;
   mix-blend-mode: var(--slider-blend-mode__disabled);
 
-  & .rt-SliderTrack[data-disabled] {
-    background-color: var(--gray-a3);
-    background-image: none;
-    box-shadow: inset 0 0 0 1px var(--gray-a5);
-  }
   & .rt-SliderRange[data-disabled] {
     background-color: transparent;
     box-shadow: none;
-  }
-  & .rt-SliderThumb[data-disabled]::after {
-    background-color: var(--gray-2);
-    box-shadow: 0 0 0 1px var(--gray-6);
   }
 }

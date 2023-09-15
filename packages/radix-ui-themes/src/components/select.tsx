@@ -65,7 +65,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
             withMarginProps(marginProps)
           )}
         >
-          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span className="rt-SelectTriggerInner">
             <SelectPrimitive.Value placeholder={placeholder} />
           </span>
           <SelectPrimitive.Icon asChild>
@@ -126,7 +126,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
                 </ScrollAreaPrimitive.Viewport>
               </SelectPrimitive.Viewport>
               <ScrollAreaPrimitive.Scrollbar
-                className="rt-ScrollAreaScrollbar size-1"
+                className="rt-ScrollAreaScrollbar rt-r-size-1"
                 orientation="vertical"
               >
                 <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
