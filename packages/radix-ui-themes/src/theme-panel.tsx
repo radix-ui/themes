@@ -114,12 +114,31 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       setTimeout(() => setCopyState('idle'), 2000);
     }
 
-    // quickly show/hide using ⌘C
+    type Platform = 'apple' | 'nonApple';
+
+    const [platform, setPlatform] = React.useState<Platform | null>(null);
+
+    // set user's platform
+    React.useEffect(() => {
+      if (typeof navigator !== 'undefined') {
+        if (/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+          setPlatform('apple');
+        } else setPlatform('nonApple');
+      }
+    }, []);
+
+    // display correct action key based on the user's platform
+    const ActionKey = () => {
+      if (platform === 'apple') return <>⌘ </>;
+      return <>Ctrl+</>;
+    };
+
+    // quickly show/hide using ⌘C / Ctrl+C
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
-        const isCmdC =
-          event.metaKey && event.key === 'c' && !event.shiftKey && !event.altKey && !event.ctrlKey;
-        if (isCmdC && window.getSelection()?.toString() === '') {
+        const isCmdCOrCtrlC =
+          (event.metaKey || event.ctrlKey) && event.key === 'c' && !event.shiftKey && !event.altKey;
+        if (isCmdCOrCtrlC && window.getSelection()?.toString() === '') {
           onOpenChange(!open);
         }
       }
@@ -127,10 +146,10 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       return () => document.removeEventListener('keydown', handleKeydown);
     }, [onOpenChange, open]);
 
-    // quickly toggle appearance using cmd+d
+    // quickly toggle appearance using cmd+d / Ctrl+D
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
-        if (event.metaKey && event.key === 'd') {
+        if ((event.metaKey || event.ctrlKey) && event.key === 'd') {
           event.preventDefault();
           handleAppearanceChange(appearance === 'dark' ? 'light' : 'dark');
         }
@@ -205,15 +224,21 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           <ScrollArea>
             <Box grow="1" p="5" position="relative">
               <Box position="absolute" top="0" right="0" m="2">
-                <Tooltip
-                  content="Press ⌘&thinsp;C to show/hide the Theme Panel"
-                  side="bottom"
-                  sideOffset={6}
-                >
-                  <Kbd size="3" tabIndex={0} className="rt-ThemePanelShortcut">
-                    ⌘&thinsp;C
-                  </Kbd>
-                </Tooltip>
+                {platform && (
+                  <Tooltip
+                    content={
+                      <>
+                        Press <ActionKey />C to show/hide the Theme Panel
+                      </>
+                    }
+                    side="bottom"
+                    sideOffset={6}
+                  >
+                    <Kbd size="3" tabIndex={0} className="rt-ThemePanelShortcut">
+                      <ActionKey />C
+                    </Kbd>
+                  </Tooltip>
+                )}
               </Box>
 
               <Heading size="5" trim="both" as="h3" mb="5">
