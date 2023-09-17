@@ -20,19 +20,19 @@
 
 @breakpoints {
   .rt-PopoverContent {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --popover-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --popover-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --popover-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
-    &.rt-r-size-4 {
+    &:where(.rt-r-size-4) {
       --popover-padding: var(--space-6);
       border-radius: var(--radius-5);
     }

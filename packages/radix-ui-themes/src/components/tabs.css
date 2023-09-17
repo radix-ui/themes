@@ -29,7 +29,7 @@
 .rt-TabsTriggerInner {
   position: absolute;
 
-  .rt-TabsTrigger[data-state='active'] & {
+  :where(.rt-TabsTrigger[data-state='active']) & {
     font-weight: var(--font-weight-medium);
     letter-spacing: -0.01em;
   }
@@ -64,7 +64,7 @@
 
 @breakpoints {
   .rt-TabsList {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       height: var(--space-6);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
@@ -74,7 +74,7 @@
       --tabs-trigger-inner-padding-y: calc(var(--space-1) * 0.5);
       --tabs-trigger-inner-radius: var(--radius-1);
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       height: var(--space-7);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
@@ -101,24 +101,24 @@
   color: var(--gray-a11);
 
   @media (hover: hover) {
-    &:hover {
+    &:where(:hover) {
       color: var(--gray-12);
     }
-    &:hover .rt-TabsTriggerInner {
+    &:where(:hover) :where(.rt-TabsTriggerInner) {
       background-color: var(--gray-a3);
     }
-    &:focus-visible:hover .rt-TabsTriggerInner {
+    &:where(:focus-visible:hover) :where(.rt-TabsTriggerInner) {
       background-color: var(--accent-a3);
     }
   }
-  &[data-state='active'] {
+  &:where([data-state='active']) {
     color: var(--gray-12);
   }
-  &:focus-visible .rt-TabsTriggerInner {
+  &:where(:focus-visible) :where(.rt-TabsTriggerInner) {
     outline: 2px solid var(--accent-8);
     outline-offset: -2px;
   }
-  &[data-state='active']::before {
+  &:where([data-state='active'])::before {
     box-sizing: border-box;
     content: '';
     height: 2px;
@@ -130,6 +130,6 @@
   }
 }
 
-.rt-TabsContent:focus-visible {
+.rt-TabsContent:where(:focus-visible) {
   outline: 2px solid var(--accent-8);
 }

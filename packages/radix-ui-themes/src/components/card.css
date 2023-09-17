@@ -1,3 +1,7 @@
+/* stylelint-disable selector-max-type */
+/* Disable selector-max-type rule to target `button` and `a` tags. */
+/* Make sure these tags are wrapped in `:where()` for 0 specificity. */
+
 .rt-Card {
   --inset-border-radius: var(--card-border-radius);
   --inset-padding: var(--card-padding);
@@ -59,23 +63,23 @@
 
 @breakpoints {
   .rt-Card {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --card-padding: var(--space-3);
       --card-border-radius: var(--radius-4);
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --card-padding: var(--space-4);
       --card-border-radius: var(--radius-4);
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --card-padding: var(--space-5);
       --card-border-radius: var(--radius-5);
     }
-    &.rt-r-size-4 {
+    &:where(.rt-r-size-4) {
       --card-padding: var(--space-6);
       --card-border-radius: var(--radius-5);
     }
-    &.rt-r-size-5 {
+    &:where(.rt-r-size-5) {
       --card-padding: var(--space-8);
       --card-border-radius: var(--radius-6);
     }
@@ -90,7 +94,7 @@
 
 /* surface */
 
-.rt-Card.rt-variant-surface {
+.rt-Card:where(.rt-variant-surface) {
   --inset-border-width: 1px;
   --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
   border: 1px solid transparent;
@@ -103,14 +107,15 @@
     /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
     box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
   }
+
   &:where(button, [href]) {
     @media (hover: hover) {
-      &:hover::after {
+      &:where(:hover)::after {
         box-shadow: 0 0 0 1px var(--gray-a8);
         box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a8), var(--gray-8) 25%);
       }
     }
-    &:active:not([data-state='open']) {
+    &:where(:active:not([data-state='open'])) {
       &::after {
         box-shadow: 0 0 0 1px var(--gray-a8), 0 0 0 1px var(--gray-a6);
         box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a8), var(--gray-8) 25%),
@@ -139,7 +144,7 @@
 }
 /* prettier-ignore */
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --card-classic-box-shadow-hover:
     0 0 0 1px var(--gray-a7),
     0 0 1px 1px var(--gray-a7),
@@ -152,7 +157,7 @@
 /* prettier-ignore */
 @supports (color: color-mix(in oklab, white, black)) {
   :is(.dark, .dark-theme),
-  :is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+  :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
     --card-classic-box-shadow-hover:
       0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-8)),
       0 0 1px 1px var(--gray-a7),
@@ -163,7 +168,7 @@
   }
 }
 
-.rt-Card.rt-variant-classic {
+.rt-Card:where(.rt-variant-classic) {
   --inset-border-width: 1px;
   --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
   border: 1px solid transparent;
@@ -200,14 +205,14 @@
 
 /* ghost */
 
-.rt-Card.rt-variant-ghost {
+.rt-Card:where(.rt-variant-ghost) {
   &:where(button, [href]) {
     @media (hover: hover) {
-      &:hover {
+      &:where(:hover) {
         background-color: var(--gray-a3);
       }
     }
-    &:active:not([data-state='open']) {
+    &:where(:active:not([data-state='open'])) {
       background-color: var(--gray-a4);
     }
   }

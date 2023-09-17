@@ -3,15 +3,15 @@
   color: var(--accent-a11);
   border-radius: calc(0.07em * var(--radius-factor));
 
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline-color: var(--accent-a8);
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 2px;
   }
 
-  &.rt-high-contrast,
-  .rt-Text:where([data-accent-color]):not(.rt-high-contrast) & {
+  &:where(.rt-high-contrast),
+  :where(.rt-Text, .rt-Heading):where([data-accent-color]:not(.rt-high-contrast)) & {
     color: var(--accent-12);
   }
 }
@@ -24,9 +24,9 @@
 
 @breakpoints {
   .rt-Link {
-    &.rt-r-size-7,
-    &.rt-r-size-8,
-    &.rt-r-size-9 {
+    &:where(.rt-r-size-7),
+    &:where(.rt-r-size-8),
+    &:where(.rt-r-size-9) {
       text-decoration-thickness: 2px;
     }
   }
@@ -54,13 +54,13 @@
 
   &:where(.rt-underline-auto) {
     @media (hover: hover) {
-      &:hover {
+      &:where(:hover) {
         text-decoration-line: underline;
       }
     }
 
-    &.rt-high-contrast,
-    :where(.rt-Text:where([data-accent-color])):not(.rt-high-contrast) & {
+    &:where(.rt-high-contrast),
+    :where(.rt-Text, .rt-Heading):where([data-accent-color]:not(.rt-high-contrast)) & {
       text-decoration-line: underline;
       text-decoration-color: var(--accent-a6);
 
@@ -75,7 +75,7 @@
 
   &:where(.rt-underline-hover) {
     @media (hover: hover) {
-      &:hover {
+      &:where(:hover) {
         text-decoration-line: underline;
       }
     }
@@ -88,6 +88,6 @@
 
 /* all focused states underline */
 
-.rt-Link:focus-visible {
+.rt-Link:where(:focus-visible) {
   text-decoration-line: none;
 }

@@ -11,20 +11,20 @@
   outline: none;
   font-family: inherit;
   background-color: transparent;
-
   position: relative;
   z-index: 1;
-
-  &:focus + .rt-TextFieldChrome {
-    outline: 2px solid var(--accent-8);
-    outline-offset: -1px;
-  }
 }
+
 .rt-TextFieldChrome {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+
+  :where(.rt-TextFieldInput:focus) + & {
+    outline: 2px solid var(--accent-8);
+    outline-offset: -1px;
+  }
 }
 
 .rt-TextFieldSlot {
@@ -32,10 +32,10 @@
   z-index: 1;
   color: var(--gray-a11);
 
-  &[data-accent-color] {
+  &:where([data-accent-color]) {
     color: var(--accent-a11);
   }
-  &:empty {
+  &:where(:empty) {
     display: none;
   }
 }
@@ -60,10 +60,6 @@
   box-sizing: border-box;
   padding: 0;
   width: 100%;
-}
-/* Ensure no padding on input when there's a slot before it */
-.rt-TextFieldRoot .rt-TextFieldSlot + .rt-TextFieldInput {
-  text-indent: 0;
 }
 
 @breakpoints {
@@ -97,7 +93,7 @@
       padding-top: 0.5px;
       padding-bottom: 1px;
 
-      & + .rt-TextFieldChrome {
+      & + :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
@@ -113,7 +109,7 @@
       padding-top: 0px;
       padding-bottom: 1px;
 
-      & + .rt-TextFieldChrome {
+      & + :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
@@ -129,10 +125,17 @@
       padding-top: 0.5px;
       padding-bottom: 1px;
 
-      & + .rt-TextFieldChrome {
+      & + :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-3), var(--radius-full));
       }
     }
+  }
+}
+
+/* Ensure no padding on input when there's a slot before it */
+.rt-TextFieldInput {
+  :where(.rt-TextFieldSlot) + & {
+    text-indent: 0;
   }
 }
 
@@ -150,11 +153,11 @@
   /* Don't overlap text with the inset shadow */
   padding-left: 1px;
   padding-right: 1px;
-  .rt-TextFieldSlot + & {
+  :where(.rt-TextFieldSlot) + & {
     padding-left: 0;
   }
 
-  & + .rt-TextFieldChrome {
+  & + :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
 
@@ -167,20 +170,18 @@
     /* Firefox */
     opacity: 1;
   }
-  &:autofill,
-  &[data-com-onepassword-filled] {
+  &:where(:autofill, [data-com-onepassword-filled]) {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
 
-    & + .rt-TextFieldChrome {
+    & + :where(.rt-TextFieldChrome) {
       background-color: var(--accent-a4);
       box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 1px var(--accent-a4);
     }
   }
-  &:disabled,
-  &:read-only {
-    & + .rt-TextFieldChrome {
+  &:where(:disabled, :read-only) {
+    & + :where(.rt-TextFieldChrome) {
       /* Blend with grey */
       background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
     }
@@ -195,11 +196,11 @@
   /* Don't overlap text with inset shadow */
   padding-left: 1px;
   padding-right: 1px;
-  .rt-TextFieldSlot + & {
+  :where(.rt-TextFieldSlot) + & {
     padding-left: 0;
   }
 
-  & + .rt-TextFieldChrome {
+  & + :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
     box-shadow: var(--shadow-1);
 
@@ -212,20 +213,18 @@
     /* Firefox */
     opacity: 1;
   }
-  &:autofill,
-  &[data-com-onepassword-filled] {
+  &:where(:autofill, [data-com-onepassword-filled]) {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
 
-    & + .rt-TextFieldChrome {
+    & + :where(.rt-TextFieldChrome) {
       background-color: var(--accent-a4);
       box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-a4);
     }
   }
-  &:disabled,
-  &:read-only {
-    & + .rt-TextFieldChrome {
+  &:where(:disabled, :read-only) {
+    & + :where(.rt-TextFieldChrome) {
       /* Blend with grey */
       background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
     }
@@ -236,26 +235,24 @@
 .rt-TextFieldInput:where(.rt-variant-soft) {
   color: var(--accent-12);
 
-  & + .rt-TextFieldChrome {
+  & + :where(.rt-TextFieldChrome) {
     background-color: var(--accent-a3);
   }
   &::placeholder {
     color: var(--accent-12);
     opacity: 0.6;
   }
-  &:autofill,
-  &[data-com-onepassword-filled] {
+  &:where(:autofill, [data-com-onepassword-filled]) {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--accent-12);
 
-    & + .rt-TextFieldChrome {
+    & + :where(.rt-TextFieldChrome) {
       background-color: var(--accent-a5);
     }
   }
-  &:disabled,
-  &:read-only {
-    & + .rt-TextFieldChrome {
+  &:where(:disabled, :read-only) {
+    & + :where(.rt-TextFieldChrome) {
       background-color: var(--gray-a4);
     }
   }
@@ -267,20 +264,19 @@
 /* all disabled and read-only text fields */
 
 .rt-TextFieldInput {
-  &:disabled,
-  &:read-only {
+  &:where(:disabled, :read-only) {
     cursor: text;
     color: var(--gray-a11);
     /* Safari */
     -webkit-text-fill-color: var(--gray-a11);
 
-    &:focus + .rt-TextFieldChrome {
+    &:where(:focus) + :where(.rt-TextFieldChrome) {
       outline: 2px solid var(--gray-8);
     }
     &::placeholder {
       opacity: 0.5;
     }
-    &:placeholder-shown {
+    &:where(:placeholder-shown) {
       cursor: default;
     }
     &::selection {
@@ -288,10 +284,10 @@
     }
 
     /* Cursor in gaps around slots, as an enhancement */
-    .rt-TextFieldRoot:has(&) {
+    .rt-TextFieldRoot:where(:has(&)) {
       cursor: text;
     }
-    .rt-TextFieldRoot:has(&:placeholder-shown) {
+    .rt-TextFieldRoot:where(:has(&:placeholder-shown)) {
       cursor: default;
     }
   }

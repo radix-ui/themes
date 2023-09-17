@@ -239,6 +239,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       }`}
                     >
                       <input
+                        className="rt-ThemePanelSwatchInput"
                         type="radio"
                         name="accentColor"
                         value={color}
@@ -281,6 +282,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         }`}
                       >
                         <input
+                          className="rt-ThemePanelSwatchInput"
                           type="radio"
                           name="grayColor"
                           value={gray}
@@ -303,6 +305,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                 {(['light', 'dark'] as const).map((value) => (
                   <label key={value} className="rt-ThemePanelRadioCard">
                     <input
+                      className="rt-ThemePanelRadioCardInput"
                       type="radio"
                       name="appearance"
                       value={value}
@@ -364,6 +367,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                   <Flex key={value} direction="column" align="center">
                     <label className="rt-ThemePanelRadioCard">
                       <input
+                        className="rt-ThemePanelRadioCardInput"
                         type="radio"
                         name="radius"
                         id={`theme-panel-radius-${value}`}
@@ -405,6 +409,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                 {themePropDefs.scaling.values.map((value) => (
                   <label key={value} className="rt-ThemePanelRadioCard">
                     <input
+                      className="rt-ThemePanelRadioCardInput"
                       type="radio"
                       name="scaling"
                       value={value}
@@ -460,6 +465,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                 {themePropDefs.panelBackground.values.map((value) => (
                   <label key={value} className="rt-ThemePanelRadioCard">
                     <input
+                      className="rt-ThemePanelRadioCardInput"
                       type="radio"
                       name="panelBackground"
                       value={value}

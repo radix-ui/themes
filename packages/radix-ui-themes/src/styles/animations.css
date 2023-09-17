@@ -1,144 +1,93 @@
+@keyframes rt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rt-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes rt-slide-up {
+  from {
+    transform: translateY(4px) scale(0.97);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rt-slide-down {
+  from {
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rt-slide-left {
+  from {
+    transform: translateX(4px) scale(0.97);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes rt-slide-right {
+  from {
+    transform: translateX(-4px) scale(0.97);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes slideUpAndFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(4px) scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  @keyframes slideUpAndFadeOut {
-    from {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(-4px) scale(0.97);
-    }
-  }
-
-  @keyframes slideDownAndFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-4px) scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  @keyframes slideDownAndFadeOut {
-    from {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(4px) scale(0.97);
-    }
-  }
-
-  @keyframes slideLeftAndFadeIn {
-    from {
-      opacity: 0;
-      transform: translateX(4px) scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-  }
-
-  @keyframes slideLeftAndFadeOut {
-    from {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: translateX(-4px) scale(0.97);
-    }
-  }
-
-  @keyframes slideRightAndFadeIn {
-    from {
-      opacity: 0;
-      transform: translateX(-4px) scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-  }
-
-  @keyframes slideRightAndFadeOut {
-    from {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: translateX(4px) scale(0.97);
-    }
-  }
-
   .rt-PopperContent {
-    animation-duration: 300ms;
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
-    &[data-state='open'] {
-      &[data-side='top'] {
-        animation-name: slideUpAndFadeIn;
+    &:where([data-state='open']) {
+      animation-duration: 300ms;
+
+      &:where([data-side='top']) {
+        animation-name: rt-slide-up, rt-fade-in;
       }
-      &[data-side='bottom'] {
-        animation-name: slideDownAndFadeIn;
+      &:where([data-side='bottom']) {
+        animation-name: rt-slide-down, rt-fade-in;
       }
-      &[data-side='left'] {
-        animation-name: slideLeftAndFadeIn;
+      &:where([data-side='left']) {
+        animation-name: rt-slide-left, rt-fade-in;
       }
-      &[data-side='right'] {
-        animation-name: slideRightAndFadeIn;
+      &:where([data-side='right']) {
+        animation-name: rt-slide-right, rt-fade-in;
       }
     }
 
-    &[data-state='closed'] {
+    &:where([data-state='closed']) {
       animation-duration: 150ms;
 
-      &[data-side='top'] {
-        animation-name: slideDownAndFadeOut;
+      &:where([data-side='top']) {
+        animation-name: rt-slide-down, rt-fade-out;
       }
-      &[data-side='bottom'] {
-        animation-name: slideUpAndFadeOut;
+      &:where([data-side='bottom']) {
+        animation-name: rt-slide-up, rt-fade-out;
       }
-      &[data-side='left'] {
-        animation-name: slideRightAndFadeOut;
+      &:where([data-side='left']) {
+        animation-name: rt-slide-right, rt-fade-out;
       }
-      &[data-side='right'] {
-        animation-name: slideRightAndFadeOut;
+      &:where([data-side='right']) {
+        animation-name: rt-slide-right, rt-fade-out;
       }
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
     }
   }
 }

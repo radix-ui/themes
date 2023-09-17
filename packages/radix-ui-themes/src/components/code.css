@@ -19,47 +19,47 @@
 
 @breakpoints {
   .rt-Code {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       font-size: calc(var(--font-size-1) * var(--code-font-size-adjust));
       line-height: var(--line-height-1);
       --letter-spacing: var(--letter-spacing-1);
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       font-size: calc(var(--font-size-2) * var(--code-font-size-adjust));
       line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       font-size: calc(var(--font-size-3) * var(--code-font-size-adjust));
       line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
     }
-    &.rt-r-size-4 {
+    &:where(.rt-r-size-4) {
       font-size: calc(var(--font-size-4) * var(--code-font-size-adjust));
       line-height: var(--line-height-4);
       --letter-spacing: var(--letter-spacing-4);
     }
-    &.rt-r-size-5 {
+    &:where(.rt-r-size-5) {
       font-size: calc(var(--font-size-5) * var(--code-font-size-adjust));
       line-height: var(--line-height-5);
       --letter-spacing: var(--letter-spacing-5);
     }
-    &.rt-r-size-6 {
+    &:where(.rt-r-size-6) {
       font-size: calc(var(--font-size-6) * var(--code-font-size-adjust));
       line-height: var(--line-height-6);
       --letter-spacing: var(--letter-spacing-6);
     }
-    &.rt-r-size-7 {
+    &:where(.rt-r-size-7) {
       font-size: calc(var(--font-size-7) * var(--code-font-size-adjust));
       line-height: var(--line-height-7);
       --letter-spacing: var(--letter-spacing-7);
     }
-    &.rt-r-size-8 {
+    &:where(.rt-r-size-8) {
       font-size: calc(var(--font-size-8) * var(--code-font-size-adjust));
       line-height: var(--line-height-8);
       --letter-spacing: var(--letter-spacing-8);
     }
-    &.rt-r-size-9 {
+    &:where(.rt-r-size-9) {
       font-size: calc(var(--font-size-9) * var(--code-font-size-adjust));
       line-height: var(--line-height-9);
       --letter-spacing: var(--letter-spacing-9);
@@ -80,7 +80,7 @@
 
 /* ghost */
 
-.rt-Code.rt-variant-ghost {
+.rt-Code:where(.rt-variant-ghost) {
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {
@@ -90,7 +90,7 @@
 
 /* solid */
 
-.rt-Code.rt-variant-solid {
+.rt-Code:where(.rt-variant-solid) {
   background-color: var(--accent-a9);
   color: var(--accent-9-contrast);
 
@@ -102,7 +102,7 @@
 
 /* soft */
 
-.rt-Code.rt-variant-soft {
+.rt-Code:where(.rt-variant-soft) {
   background-color: var(--accent-a3);
   color: var(--accent-a11);
 
@@ -114,7 +114,7 @@
 
 /* outline */
 
-.rt-Code.rt-variant-outline {
+.rt-Code:where(.rt-variant-outline) {
   box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
 

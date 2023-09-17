@@ -190,7 +190,7 @@
 }
 
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --color-overlay: rgba(0, 0, 0, 0.75);
   --color-panel-solid: var(--gray-2);
   --color-panel-translucent: var(--gray-2-translucent);
@@ -202,8 +202,8 @@
   & ::selection {
     background-color: var(--accent-a6);
   }
-  & [data-accent-color='gray']::selection,
-  & [data-accent-color='gray'] ::selection {
+  & :where([data-accent-color='gray'])::selection,
+  & :where([data-accent-color='gray']) ::selection {
     background-color: var(--color-selection-root);
   }
 }
@@ -1243,7 +1243,7 @@
   --color-background: white;
 }
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --color-background: var(--gray-1);
 }
 .radix-themes:where([data-has-background='true']) {

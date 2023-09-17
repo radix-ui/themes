@@ -9,9 +9,8 @@
   &:where([data-accent-color]) {
     color: var(--accent-a11);
 
-    &:where(.rt-high-contrast),
-    & .rt-Text:where(.rt-high-contrast) {
-      color: var(--accent-a12);
+    &:where(.rt-high-contrast) {
+      color: var(--accent-12);
     }
   }
 }
@@ -24,47 +23,47 @@
 
 @breakpoints {
   .rt-Heading {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       font-size: calc(var(--font-size-1) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-1);
       letter-spacing: calc(var(--letter-spacing-1) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       font-size: calc(var(--font-size-2) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-2);
       letter-spacing: calc(var(--letter-spacing-2) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       font-size: calc(var(--font-size-3) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-3);
       letter-spacing: calc(var(--letter-spacing-3) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-4 {
+    &:where(.rt-r-size-4) {
       font-size: calc(var(--font-size-4) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-4);
       letter-spacing: calc(var(--letter-spacing-4) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-5 {
+    &:where(.rt-r-size-5) {
       font-size: calc(var(--font-size-5) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-5);
       letter-spacing: calc(var(--letter-spacing-5) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-6 {
+    &:where(.rt-r-size-6) {
       font-size: calc(var(--font-size-6) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-6);
       letter-spacing: calc(var(--letter-spacing-6) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-7 {
+    &:where(.rt-r-size-7) {
       font-size: calc(var(--font-size-7) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-7);
       letter-spacing: calc(var(--letter-spacing-7) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-8 {
+    &:where(.rt-r-size-8) {
       font-size: calc(var(--font-size-8) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-8);
       letter-spacing: calc(var(--letter-spacing-8) + var(--heading-letter-spacing));
     }
-    &.rt-r-size-9 {
+    &:where(.rt-r-size-9) {
       font-size: calc(var(--font-size-9) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-9);
       letter-spacing: calc(var(--letter-spacing-9) + var(--heading-letter-spacing));

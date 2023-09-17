@@ -1,9 +1,15 @@
-.rt-ScrollAreaRoot {
-  --scrollarea-scrollbar-margin-top: var(--space-1);
-  --scrollarea-scrollbar-margin-bottom: var(--space-1);
-  --scrollarea-scrollbar-margin-left: var(--space-1);
-  --scrollarea-scrollbar-margin-right: var(--space-1);
+.radix-themes {
+  --scrollarea-scrollbar-horizontal-margin-top: var(--space-1);
+  --scrollarea-scrollbar-horizontal-margin-bottom: var(--space-1);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--space-1);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--space-1);
+  --scrollarea-scrollbar-vertical-margin-top: var(--space-1);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--space-1);
+  --scrollarea-scrollbar-vertical-margin-left: var(--space-1);
+  --scrollarea-scrollbar-vertical-margin-right: var(--space-1);
+}
 
+.rt-ScrollAreaRoot {
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -17,14 +23,14 @@
 
   /* Stop Chrome back/forward two-finger swipe */
   overscroll-behavior-x: contain;
-}
 
-.rt-ScrollAreaViewport:focus-visible + .rt-ScrollAreaViewportFocusRing {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  outline: 2px solid var(--accent-8);
-  outline-offset: -2px;
+  &:where(:focus-visible) + :where(.rt-ScrollAreaViewportFocusRing) {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    outline: 2px solid var(--accent-8);
+    outline-offset: -2px;
+  }
 }
 
 .rt-ScrollAreaScrollbar {
@@ -34,11 +40,11 @@
   /* Disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
 
-  &[data-orientation='vertical'] {
+  &:where([data-orientation='vertical']) {
     flex-direction: column;
     width: var(--scrollarea-scrollbar-size);
   }
-  &[data-orientation='horizontal'] {
+  &:where([data-orientation='horizontal']) {
     flex-direction: row;
     height: var(--scrollarea-scrollbar-size);
   }
@@ -55,8 +61,8 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    min-width: 16px;
-    min-height: 16px;
+    min-width: var(--space-4);
+    min-height: var(--space-4);
   }
 }
 
@@ -68,15 +74,15 @@
 
 @breakpoints {
   .rt-ScrollAreaScrollbar {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --scrollarea-scrollbar-size: var(--space-1);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --scrollarea-scrollbar-size: var(--space-2);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --scrollarea-scrollbar-size: var(--space-3);
       --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
     }
@@ -92,19 +98,27 @@
 .rt-ScrollAreaScrollbar {
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-radius);
-  margin-top: var(--scrollarea-scrollbar-margin-top);
-  margin-bottom: var(--scrollarea-scrollbar-margin-bottom);
-  margin-left: var(--scrollarea-scrollbar-margin-left);
-  margin-right: var(--scrollarea-scrollbar-margin-right);
 
   animation-duration: 150ms;
   animation-timing-function: ease-out;
 
-  &[data-state='visible'] {
-    animation-name: fadeIn;
+  &:where([data-state='visible']) {
+    animation-name: rt-fade-in;
   }
-  &[data-state='hidden'] {
-    animation-name: fadeOut;
+  &:where([data-state='hidden']) {
+    animation-name: rt-fade-out;
+  }
+  &:where([data-orientation='horizontal']) {
+    margin-top: var(--scrollarea-scrollbar-horizontal-margin-top);
+    margin-bottom: var(--scrollarea-scrollbar-horizontal-margin-bottom);
+    margin-left: var(--scrollarea-scrollbar-horizontal-margin-left);
+    margin-right: var(--scrollarea-scrollbar-horizontal-margin-right);
+  }
+  &:where([data-orientation='vertical']) {
+    margin-top: var(--scrollarea-scrollbar-vertical-margin-top);
+    margin-bottom: var(--scrollarea-scrollbar-vertical-margin-bottom);
+    margin-left: var(--scrollarea-scrollbar-vertical-margin-left);
+    margin-right: var(--scrollarea-scrollbar-vertical-margin-right);
   }
 }
 
@@ -114,7 +128,7 @@
   transition: background-color 100ms;
 
   @media (hover: hover) {
-    &:hover {
+    &:where(:hover) {
       background-color: var(--gray-a9);
     }
   }

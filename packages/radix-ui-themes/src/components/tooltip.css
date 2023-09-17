@@ -9,18 +9,20 @@
   animation-duration: 200ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
-  &[data-state='delayed-open'] {
-    &[data-side='top'] {
-      animation-name: slideUpAndFadeIn;
-    }
-    &[data-side='bottom'] {
-      animation-name: slideDownAndFadeIn;
-    }
-    &[data-side='left'] {
-      animation-name: slideLeftAndFadeIn;
-    }
-    &[data-side='right'] {
-      animation-name: slideRightAndFadeIn;
+  @media (prefers-reduced-motion: no-preference) {
+    &:where([data-state='delayed-open']) {
+      &:where([data-side='top']) {
+        animation-name: rt-slide-up, rt-fade-in;
+      }
+      &:where([data-side='bottom']) {
+        animation-name: rt-slide-down, rt-fade-in;
+      }
+      &:where([data-side='left']) {
+        animation-name: rt-slide-left, rt-fade-in;
+      }
+      &:where([data-side='right']) {
+        animation-name: rt-slide-right, rt-fade-in;
+      }
     }
   }
 }
@@ -41,11 +43,11 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-TooltipContent.rt-multiline {
+.rt-TooltipContent:where(.rt-multiline) {
   max-width: 250px;
   border-radius: var(--radius-2);
 
-  & .rt-TooltipText {
+  & :where(.rt-TooltipText) {
     line-height: var(--default-line-height);
   }
 }
