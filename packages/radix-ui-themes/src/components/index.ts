@@ -1,42 +1,48 @@
 // LAYOUT
 //------------------------------------------------------------------------------
-export { Box } from './box';
+export { Box, type BoxProps } from './box';
 export * from './box.props';
-export { Flex } from './flex';
+export { Flex, type FlexProps } from './flex';
 export * from './flex.props';
-export { Grid } from './grid';
+export { Grid, type GridProps } from './grid';
 export * from './grid.props';
-export { Container } from './container';
+export { Container, type ContainerProps } from './container';
 export * from './container.props';
-export { Section } from './section';
+export { Section, type SectionProps } from './section';
 export * from './section.props';
 export { AspectRatio } from './aspect-ratio';
-export { Inset } from './inset';
+export { Inset, type InsetProps } from './inset';
 export * from './inset.props';
 
 // TYPOGRAPHY
 //------------------------------------------------------------------------------
-export { Heading } from './heading';
+export { Heading, type HeadingProps } from './heading';
 export * from './heading.props';
-export { Text } from './text';
+export { Text, type TextProps } from './text';
 export * from './text.props';
 
 // FORMATTING
 //------------------------------------------------------------------------------
-export { Code } from './code';
+export { Code, type CodeProps } from './code';
 export * from './code.props';
-export { Em } from './em';
-export { Kbd } from './kbd';
+export { Em, type EmProps } from './em';
+export { Kbd, type KbdProps } from './kbd';
 export * from './kbd.props';
-export { Quote } from './quote';
-export { Strong } from './strong';
+export { Quote, type QuoteProps } from './quote';
+export { Strong, type StrongProps } from './strong';
 
 // FORMS
 //------------------------------------------------------------------------------
 // export * from './form'; 👈
-export { Checkbox } from './checkbox';
+export { Checkbox, type CheckboxProps } from './checkbox';
 export * from './checkbox.props';
-export { RadioGroup, RadioGroupRoot, RadioGroupItem } from './radio-group';
+export {
+  RadioGroup,
+  RadioGroupRoot,
+  RadioGroupItem,
+  type RadioGroupRootProps,
+  type RadioGroupItemProps,
+} from './radio-group';
 export * from './radio-group.props';
 // export * from './radio-card-group';
 export {
@@ -48,15 +54,30 @@ export {
   SelectGroup,
   SelectLabel,
   SelectSeparator,
+  type SelectRootProps,
+  type SelectTriggerProps,
+  type SelectContentProps,
+  type SelectItemProps,
+  type SelectGroupProps,
+  type SelectLabelProps,
+  type SelectSeparatorProps,
 } from './select';
 export * from './select.props';
-export { Slider } from './slider';
+export { Slider, type SliderProps } from './slider';
 export * from './slider.props';
-export { Switch } from './switch';
+export { Switch, type SwitchProps } from './switch';
 export * from './switch.props';
-export { TextArea } from './text-area';
+export { TextArea, type TextAreaProps } from './text-area';
 export * from './text-area.props';
-export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field';
+export {
+  TextField,
+  TextFieldRoot,
+  TextFieldSlot,
+  TextFieldInput,
+  type TextFieldRootProps,
+  type TextFieldSlotProps,
+  type TextFieldInputProps,
+} from './text-field';
 export * from './text-field.props';
 
 // OVERLAYS
@@ -69,6 +90,12 @@ export {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  type DialogRootProps,
+  type DialogTriggerProps,
+  type DialogContentProps,
+  type DialogTitleProps,
+  type DialogDescriptionProps,
+  type DialogCloseProps,
 } from './dialog';
 export * from './dialog.props';
 export {
@@ -80,6 +107,13 @@ export {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+  type AlertDialogRootProps,
+  type AlertDialogTriggerProps,
+  type AlertDialogContentProps,
+  type AlertDialogTitleProps,
+  type AlertDialogDescriptionProps,
+  type AlertDialogActionProps,
+  type AlertDialogCancelProps,
 } from './alert-dialog';
 export * from './alert-dialog.props';
 export {
@@ -97,6 +131,19 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuSeparator,
+  type DropdownMenuRootProps,
+  type DropdownMenuTriggerProps,
+  type DropdownMenuContentProps,
+  type DropdownMenuLabelProps,
+  type DropdownMenuItemProps,
+  type DropdownMenuGroupProps,
+  type DropdownMenuRadioGroupProps,
+  type DropdownMenuRadioItemProps,
+  type DropdownMenuCheckboxItemProps,
+  type DropdownMenuSubProps,
+  type DropdownMenuSubTriggerProps,
+  type DropdownMenuSubContentProps,
+  type DropdownMenuSeparatorProps,
 } from './dropdown-menu';
 export * from './dropdown-menu.props';
 export {
@@ -114,13 +161,44 @@ export {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuSeparator,
+  type ContextMenuRootProps,
+  type ContextMenuTriggerProps,
+  type ContextMenuContentProps,
+  type ContextMenuLabelProps,
+  type ContextMenuItemProps,
+  type ContextMenuGroupProps,
+  type ContextMenuRadioGroupProps,
+  type ContextMenuRadioItemProps,
+  type ContextMenuCheckboxItemProps,
+  type ContextMenuSubProps,
+  type ContextMenuSubTriggerProps,
+  type ContextMenuSubContentProps,
+  type ContextMenuSeparatorProps,
 } from './context-menu';
 export * from './context-menu.props';
-export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card';
+export {
+  HoverCard,
+  HoverCardRoot,
+  HoverCardTrigger,
+  HoverCardContent,
+  type HoverCardRootProps,
+  type HoverCardTriggerProps,
+  type HoverCardContentProps,
+} from './hover-card';
 export * from './hover-card.props';
-export { Popover, PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover';
+export {
+  Popover,
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverClose,
+  type PopoverRootProps,
+  type PopoverTriggerProps,
+  type PopoverContentProps,
+  type PopoverCloseProps,
+} from './popover';
 export * from './popover.props';
-export { Tooltip } from './tooltip';
+export { Tooltip, type TooltipProps } from './tooltip';
 export * from './tooltip.props';
 
 // NAVIGATION
@@ -131,28 +209,36 @@ export * from './tooltip.props';
 // COMPONENTS
 //------------------------------------------------------------------------------
 // export * from './accordion';
-export { Avatar } from './avatar';
+export { Avatar, type AvatarProps } from './avatar';
 export * from './avatar.props';
-export { Badge } from './badge';
+export { Badge, type BadgeProps } from './badge';
 export * from './badge.props';
-export { Blockquote } from './blockquote';
+export { Blockquote, type BlockquoteProps } from './blockquote';
 export * from './blockquote.props';
-export { Button } from './button';
+export { Button, type ButtonProps } from './button';
 export * from './button.props';
-export { Callout, CalloutRoot, CalloutIcon, CalloutText } from './callout';
+export {
+  Callout,
+  CalloutRoot,
+  CalloutIcon,
+  CalloutText,
+  type CalloutRootProps,
+  type CalloutIconProps,
+  type CalloutTextProps,
+} from './callout';
 export * from './callout.props';
-export { Card } from './card';
+export { Card, type CardProps } from './card';
 export * from './card.props';
 // export * from './collapsible';
 // export * from './definition-list';
-export { IconButton } from './icon-button';
+export { IconButton, type IconButtonProps } from './icon-button';
 export * from './icon-button.props';
-export { Link } from './link';
+export { Link, type LinkProps } from './link';
 export * from './link.props';
 // export * from './progress';
-export { ScrollArea } from './scroll-area';
+export { ScrollArea, type ScrollAreaProps } from './scroll-area';
 export * from './scroll-area.props';
-export { Separator } from './separator';
+export { Separator, type SeparatorProps } from './separator';
 export * from './separator.props';
 // export * from './skeleton';
 export {
@@ -164,9 +250,26 @@ export {
   TableColumnHeaderCell,
   TableRowHeaderCell,
   TableCell,
+  type TableRootProps,
+  type TableHeaderProps,
+  type TableRowProps,
+  type TableBodyProps,
+  type TableColumnHeaderCellProps,
+  type TableRowHeaderCellProps,
+  type TableCellProps,
 } from './table';
 export * from './table.props';
-export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs';
+export {
+  Tabs,
+  TabsRoot,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  type TabsRootProps,
+  type TabsListProps,
+  type TabsTriggerProps,
+  type TabsContentProps,
+} from './tabs';
 export * from './tabs.props';
 // export * from './toast';
 // export * from './toggle';
