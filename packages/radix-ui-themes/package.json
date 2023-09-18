@@ -40,7 +40,8 @@
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint \"src/**/*.ts*\"",
     "lint:css": "stylelint \"src/**/*.css\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css",
+    "prepublishOnly": "yarn lint"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0-rc.4",
