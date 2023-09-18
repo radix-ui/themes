@@ -92,6 +92,7 @@
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
+  color: var(--gray-a11);
   user-select: none;
   cursor: default;
 
@@ -168,9 +169,6 @@
   & :where(.rt-BaseMenuShortcut) {
     color: inherit;
   }
-}
-.rt-BaseMenuLabel {
-  color: var(--gray-a11);
 }
 .rt-BaseMenuSeparator {
   background-color: var(--gray-a6);
