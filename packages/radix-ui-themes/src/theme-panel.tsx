@@ -129,7 +129,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
     // display correct action key based on the user's platform
     const ActionKey = () => {
-      if (platform === 'apple') return <>⌘ </>;
+      if (platform === 'apple') return <>⌘&thinsp;</>;
       return <>Ctrl+</>;
     };
 
