@@ -4159,7 +4159,7 @@ function CustomUserIcon() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="w-6 h-6"
+      style={{ width: '60%', height: '60%' }}
     >
       <path
         fillRule="evenodd"

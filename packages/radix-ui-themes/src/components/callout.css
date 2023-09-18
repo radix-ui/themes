@@ -10,12 +10,7 @@
   align-items: center;
   vertical-align: bottom;
   flex-shrink: 0;
-
   height: var(--line-height);
-
-  & > svg {
-    display: block;
-  }
 }
 
 /***************************************************************************************************
@@ -26,17 +21,17 @@
 
 @breakpoints {
   .rt-CalloutRoot {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       gap: var(--space-2);
       padding: var(--space-3);
       border-radius: var(--radius-3);
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       gap: var(--space-3);
       padding: var(--space-4);
       border-radius: var(--radius-4);
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       gap: var(--space-4);
       padding: var(--space-5);
       border-radius: var(--radius-5);
@@ -52,19 +47,19 @@
 
 /* soft */
 
-.rt-CalloutRoot.rt-variant-soft {
+.rt-CalloutRoot:where(.rt-variant-soft) {
   background-color: var(--accent-a3);
 }
 
 /* surface */
 
-.rt-CalloutRoot.rt-variant-surface {
+.rt-CalloutRoot:where(.rt-variant-surface) {
   box-shadow: inset 0 0 0 1px var(--accent-a6);
   background-color: var(--accent-a2);
 }
 
 /* outline */
 
-.rt-CalloutRoot.rt-variant-outline {
+.rt-CalloutRoot:where(.rt-variant-outline) {
   box-shadow: inset 0 0 0 1px var(--accent-a7);
 }

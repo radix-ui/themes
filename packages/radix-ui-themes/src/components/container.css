@@ -24,17 +24,17 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-Container {
-    &.rt-r-size-1 .rt-ContainerInner {
+  .rt-ContainerInner {
+    :where(.rt-Container.rt-r-size-1) & {
       max-width: var(--container-1);
     }
-    &.rt-r-size-2 .rt-ContainerInner {
+    :where(.rt-Container.rt-r-size-2) & {
       max-width: var(--container-2);
     }
-    &.rt-r-size-3 .rt-ContainerInner {
+    :where(.rt-Container.rt-r-size-3) & {
       max-width: var(--container-3);
     }
-    &.rt-r-size-4 .rt-ContainerInner {
+    :where(.rt-Container.rt-r-size-4) & {
       max-width: var(--container-4);
     }
   }

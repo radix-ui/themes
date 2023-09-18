@@ -23,33 +23,29 @@
 .rt-SelectIcon {
   flex-shrink: 0;
 
-  .rt-SelectTrigger:where(:not(.rt-variant-ghost)) & {
+  :where(.rt-SelectTrigger:not(.rt-variant-ghost)) & {
     opacity: 0.9;
   }
 }
 
+/* prettier-ignore */
 .rt-SelectContent {
+  --select-content-radius: min(var(--select-content-corner-height), max(var(--radius-3), var(--radius-full)));
+  --select-content-corner-height: calc(var(--select-item-height) / 2 + var(--select-content-padding));
+  --select-content-scrollbar-margin: max(calc(var(--select-content-radius) / 1.5), var(--select-content-padding));
+  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-scrollbar-margin);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-scrollbar-margin);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-scrollbar-margin);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-scrollbar-margin);
+
   overflow: hidden;
   background-color: var(--select-content-bg);
-
-  /* prettier-ignore */
-  --select-content-radius:
-    min((var(--select-item-height) / 2 + var(--select-content-padding)),
-    max(var(--radius-3), var(--radius-full)));
   border-radius: var(--select-content-radius);
 
-  &[data-side] {
+  &:where([data-side]) {
     min-width: var(--radix-select-trigger-width);
     max-height: var(--radix-select-content-available-height);
     transform-origin: var(--radix-select-content-transform-origin);
-  }
-  & .rt-ScrollAreaScrollbar {
-    --select-content-scrollbar-margin: max(
-      calc(var(--select-content-radius) / 1.5),
-      var(--select-content-padding)
-    );
-    margin-top: var(--select-content-scrollbar-margin);
-    margin-bottom: var(--select-content-scrollbar-margin);
   }
 }
 
@@ -57,8 +53,8 @@
   box-sizing: border-box;
   padding: var(--select-content-padding);
 
-  .rt-SelectContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical']) & {
-    padding-right: 12px;
+  :where(.rt-SelectContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
+    padding-right: var(--space-3);
   }
 }
 
@@ -105,7 +101,7 @@
   user-select: none;
   cursor: default;
 
-  &:not(:first-child) {
+  &:where(:not(:first-child)) {
     margin-top: var(--space-2);
   }
 }
@@ -155,7 +151,7 @@
 
 @breakpoints {
   .rt-SelectTrigger {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --select-trigger-height: var(--space-5);
       gap: var(--space-1);
       font-size: var(--font-size-1);
@@ -172,7 +168,7 @@
         --select-trigger-ghost-padding-y: var(--space-1);
       }
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --select-trigger-height: var(--space-6);
       gap: calc(var(--space-1) * 1.5);
       font-size: var(--font-size-2);
@@ -189,7 +185,7 @@
         --select-trigger-ghost-padding-y: var(--space-1);
       }
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --select-trigger-height: var(--space-7);
       gap: var(--space-2);
       font-size: var(--font-size-3);
@@ -205,7 +201,7 @@
         --select-trigger-ghost-padding-x: var(--space-3);
         --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
-      & .rt-SelectIcon {
+      & :where(.rt-SelectIcon) {
         width: 11px;
         height: 11px;
       }
@@ -221,36 +217,36 @@
 
 @breakpoints {
   .rt-SelectContent {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --select-content-padding: var(--space-1);
       --select-item-height: var(--space-5);
 
-      & .rt-SelectItem {
+      & :where(.rt-SelectItem) {
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
       }
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --select-content-padding: var(--space-2);
       --select-item-height: var(--space-6);
 
-      & .rt-SelectItem {
+      & :where(.rt-SelectItem) {
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
       }
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --select-content-padding: var(--space-2);
       --select-item-height: var(--space-7);
 
-      & .rt-SelectLabel {
+      & :where(.rt-SelectLabel) {
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
       }
-      & .rt-SelectItem {
+      & :where(.rt-SelectItem) {
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
         letter-spacing: var(--letter-spacing-3);
@@ -264,15 +260,6 @@
  * TRIGGER VARIANTS                                                                                *
  *                                                                                                 *
  ***************************************************************************************************/
-
-.rt-SelectTrigger {
-  &[data-placeholder] {
-    /* target value */
-    & > span > span {
-      color: var(--gray-a10);
-    }
-  }
-}
 
 /* surface */
 
@@ -295,6 +282,11 @@
     background-color: var(--gray-a2);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+    }
+  }
 }
 
 /* classic */
@@ -310,7 +302,7 @@
 
 /* prettier-ignore */
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --select-trigger__classic__box-shadow:
     inset 0 0 0 1px var(--white-a4),
     inset 0 1px 1px var(--white-a4),
@@ -366,6 +358,11 @@
         linear-gradient(var(--color-surface), transparent);
     }
   }
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+    }
+  }
 }
 
 /* soft / ghost */
@@ -374,9 +371,8 @@
 .rt-SelectTrigger:where(.rt-variant-ghost) {
   color: var(--accent-12);
 
-  &[data-placeholder] {
-    /* target value */
-    & > span > span {
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
       color: var(--accent-12);
       opacity: 0.6;
     }
@@ -428,7 +424,7 @@
   box-shadow: var(--shadow-5);
 }
 
-.rt-SelectItem[data-disabled] {
+.rt-SelectItem:where([data-disabled]) {
   color: var(--gray-a8);
 }
 
@@ -442,12 +438,12 @@
 
 /* solid */
 
-.rt-SelectContent.rt-variant-solid {
-  & .rt-SelectItem[data-highlighted] {
+.rt-SelectContent:where(.rt-variant-solid) {
+  & :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-9);
     color: var(--accent-9-contrast);
   }
-  &:where(.rt-high-contrast) .rt-SelectItem[data-highlighted] {
+  &:where(.rt-high-contrast) :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
@@ -455,8 +451,8 @@
 
 /* soft */
 
-.rt-SelectContent.rt-variant-soft {
-  & .rt-SelectItem[data-highlighted] {
+.rt-SelectContent:where(.rt-variant-soft) {
+  & :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-a5);
   }
 }

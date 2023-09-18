@@ -37,8 +37,11 @@
     "dev:js:cjs": "tsc --project tsconfig-cjs.json --watch",
     "dev:js:esm": "tsc --project tsconfig-esm.json --watch",
     "dev:css": "postcss src/styles/index.css -o styles.css --watch",
-    "lint": "eslint \"src/**/*.ts*\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css"
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint \"src/**/*.ts*\"",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css",
+    "prepublishOnly": "yarn lint"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0-rc.4",
@@ -96,6 +99,7 @@
     "postcss-nesting": "^11.3.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "stylelint": "^15.10.3",
     "typescript": "^4.5.3"
   },
   "publishConfig": {

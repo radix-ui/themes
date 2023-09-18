@@ -23,7 +23,7 @@
   flex-grow: 1;
   z-index: 1;
 
-  &:focus {
+  &:where(:focus) {
     outline: 2px solid var(--accent-8);
     outline-offset: -1px;
   }
@@ -35,14 +35,14 @@
     scrollbar-width: thin;
   }
   &::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: var(--space-3);
+    height: var(--space-3);
   }
   &::-webkit-scrollbar-track,
   &::-webkit-scrollbar-thumb {
     background-clip: content-box;
-    border: 4px solid transparent;
-    border-radius: 12px;
+    border: var(--space-1) solid transparent;
+    border-radius: var(--space-3);
   }
   &::-webkit-scrollbar-track {
     background-color: var(--gray-a3);
@@ -51,7 +51,7 @@
     background-color: var(--gray-a8);
   }
   @media (hover: hover) {
-    &:not(:disabled)::-webkit-scrollbar-thumb:hover {
+    :where(&:not(:disabled))::-webkit-scrollbar-thumb:hover {
       background-color: var(--gray-a9);
     }
   }
@@ -75,6 +75,7 @@
     &:where(.rt-r-size-1) {
       min-height: var(--space-8);
       border-radius: var(--radius-2);
+
       & :where(.rt-TextAreaInput) {
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
@@ -85,6 +86,7 @@
     &:where(.rt-r-size-2) {
       min-height: var(--space-9);
       border-radius: var(--radius-2);
+
       & :where(.rt-TextAreaInput) {
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
@@ -95,6 +97,7 @@
     &:where(.rt-r-size-3) {
       min-height: 80px;
       border-radius: var(--radius-3);
+
       & :where(.rt-TextAreaInput) {
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
@@ -117,7 +120,7 @@
     color: var(--gray-12);
     /* Clip text to inner shadow */
     border: 1px solid transparent;
-    & + .rt-TextAreaChrome {
+    & + :where(.rt-TextAreaChrome) {
       padding: 1px;
       background-clip: content-box;
       box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -130,19 +133,17 @@
       opacity: 1;
     }
 
-    &:autofill,
-    &[data-com-onepassword-filled] {
+    &:where(:autofill, [data-com-onepassword-filled]) {
       /* Reliably removes native autofill colors */
       background-clip: text;
       -webkit-text-fill-color: var(--gray-12);
-      & + .rt-TextAreaChrome {
+      & + :where(.rt-TextAreaChrome) {
         background-color: var(--accent-a4);
       }
     }
 
-    &:disabled,
-    &:read-only {
-      & + .rt-TextAreaChrome {
+    &:where(:disabled, :read-only) {
+      & + :where(.rt-TextAreaChrome) {
         /* Blend with grey */
         background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
       }
@@ -151,11 +152,11 @@
 }
 
 /* classic */
-.rt-TextAreaRoot:where(.rt-variant-classic) .rt-TextAreaInput {
+.rt-TextAreaRoot:where(.rt-variant-classic) :where(.rt-TextAreaInput) {
   color: var(--gray-12);
   /* Clip text to inner shadow */
   border: 1px solid transparent;
-  & + .rt-TextAreaChrome {
+  & + :where(.rt-TextAreaChrome) {
     padding: 1px;
     background-clip: content-box;
     background-color: var(--color-surface);
@@ -168,19 +169,16 @@
     opacity: 1;
   }
 
-  &:autofill,
-  &[data-com-onepassword-filled] {
+  &:where(:autofill, [data-com-onepassword-filled]) {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
-    & + .rt-TextAreaChrome {
+    & + :where(.rt-TextAreaChrome) {
       background-color: var(--accent-a4);
     }
   }
-
-  &:disabled,
-  &:read-only {
-    & + .rt-TextAreaChrome {
+  &:where(:disabled, :read-only) {
+    & + :where(.rt-TextAreaChrome) {
       /* Blend with grey */
       background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
     }
@@ -188,9 +186,9 @@
 }
 
 /* soft */
-.rt-TextAreaRoot:where(.rt-variant-soft) .rt-TextAreaInput {
+.rt-TextAreaRoot:where(.rt-variant-soft) :where(.rt-TextAreaInput) {
   color: var(--accent-12);
-  & + .rt-TextAreaChrome {
+  & + :where(.rt-TextAreaChrome) {
     background-color: var(--accent-a3);
   }
 
@@ -203,19 +201,16 @@
     opacity: 0.65;
   }
 
-  &:autofill,
-  &[data-com-onepassword-filled] {
+  &:where(:autofill, [data-com-onepassword-filled]) {
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--accent-12);
-    & + .rt-TextAreaChrome {
+    & + :where(.rt-TextAreaChrome) {
       background-color: var(--accent-a5);
     }
   }
-
-  &:disabled,
-  &:read-only {
-    & + .rt-TextAreaChrome {
+  &:where(:disabled, :read-only) {
+    & + :where(.rt-TextAreaChrome) {
       background-color: var(--gray-a4);
     }
   }
@@ -223,19 +218,18 @@
 
 /* all disabled and read-only textareas */
 .rt-TextAreaInput {
-  &:disabled,
-  &:read-only {
+  &:where(:disabled, :read-only) {
     cursor: text;
     color: var(--gray-a11);
     /* Safari */
     -webkit-text-fill-color: var(--gray-a11);
-    &:focus {
+    &:where(:focus) {
       outline: 2px solid var(--gray-8);
     }
     &::placeholder {
       opacity: 0.5;
     }
-    &:placeholder-shown {
+    &:where(:placeholder-shown) {
       cursor: default;
     }
     &::selection {

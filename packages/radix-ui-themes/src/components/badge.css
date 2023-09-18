@@ -18,7 +18,7 @@
 
 @breakpoints {
   .rt-Badge {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
@@ -26,7 +26,7 @@
       gap: var(--space-1);
       border-radius: max(var(--radius-1), var(--radius-full));
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
@@ -45,7 +45,7 @@
 
 /* solid */
 
-.rt-Badge.rt-variant-solid {
+.rt-Badge:where(.rt-variant-solid) {
   background-color: var(--accent-9);
   color: var(--accent-9-contrast);
 
@@ -57,7 +57,7 @@
 
 /* surface */
 
-.rt-Badge.rt-variant-surface {
+.rt-Badge:where(.rt-variant-surface) {
   background-color: var(--color-surface-accent);
   box-shadow: inset 0 0 0 1px var(--accent-a7);
   color: var(--accent-a11);
@@ -69,7 +69,7 @@
 
 /* soft */
 
-.rt-Badge.rt-variant-soft {
+.rt-Badge:where(.rt-variant-soft) {
   background-color: var(--accent-a3);
   color: var(--accent-a11);
   &:where(.rt-high-contrast) {
@@ -79,7 +79,7 @@
 
 /* outline */
 
-.rt-Badge.rt-variant-outline {
+.rt-Badge:where(.rt-variant-outline) {
   box-shadow: inset 0 0 0 1px var(--accent-a8);
   color: var(--accent-a11);
   &:where(.rt-high-contrast) {

@@ -3,6 +3,10 @@
 ## Up next
 
 - General
+  - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
+  - Remove comments from the CSS build.
+  - Cap CSS selector specificity at 0,1,0 for styling HTML elements and at 0,1,1 for styling pseudo-elements, improving compatibility with Tailwind.
+    - **[Upgrade guide]** If you were relying on any specificity quirks of Radix Themes, make sure that your style overrides still work as expected.
   - Rework dark mode colors, refine light mode colors (via Radix Colors 3.0.0).
     - Fix oversaturated transparent grays.
     - **[Upgrade guide]** If you were using the color tokens for your custom styles, make sure that your designs look as expected.
@@ -34,10 +38,12 @@
       - Change `--white-a11` to `--white-a9`
       - Change `--white-a12` to `--white-a11` or `--white-a12`
   - Refine the shadow scale.
-  - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
-  - Remove comments from the CSS build.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
+  - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
+- `Avatar`
+  - Don’t enforce fallback icon size
+    - **[Upgarde guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.
   - Add CSS variables to control the cursor style on interactive elements:
     - `--cursor-button: default;`
     - `--cursor-checkbox: default;`
@@ -72,12 +78,24 @@
   - Automatically adjust table cell padding for when `Table` is inside `Inset`
 - `Link`
   - Desaturate the underline color.
+  - Make links automatically high-contrast within colored `Heading` elements (similarly to the automatic high-contrast within `Text`).
 - `RadioGroup`
   - Refine and normalise the look and feel of the disabled states.
 - `Select`
   - Fix invisible scrollbar in long item lists
   - Improve `variant="classic"` look and feel across light and dark mode.
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
+- `ScrollArea`
+  - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
+    - **[Upgarde guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
+      - `--scrollarea-scrollbar-horizontal-margin-top`
+      - `--scrollarea-scrollbar-horizontal-margin-bottom`
+      - `--scrollarea-scrollbar-horizontal-margin-left`
+      - `--scrollarea-scrollbar-horizontal-margin-right`
+      - `--scrollarea-scrollbar-vertical-margin-top`
+      - `--scrollarea-scrollbar-vertical-margin-bottom`
+      - `--scrollarea-scrollbar-vertical-margin-left`
+      - `--scrollarea-scrollbar-vertical-margin-right`
 - `Slider`, `Switch`
   - Refine the shadows and colors used in the components.
   - Refine and normalise the look and feel of the disabled states.

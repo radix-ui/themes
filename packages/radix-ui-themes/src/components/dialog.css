@@ -39,19 +39,19 @@
 
 @breakpoints {
   .rt-DialogContent {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --dialog-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --dialog-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --dialog-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
-    &.rt-r-size-4 {
+    &:where(.rt-r-size-4) {
       --dialog-padding: var(--space-6);
       border-radius: var(--radius-5);
     }
@@ -59,7 +59,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes DialogOverlayNoop {
+  @keyframes rt-dialog-overlay-no-op {
     from {
       opacity: 1;
     }
@@ -68,25 +68,7 @@
     }
   }
 
-  @keyframes DialogOverlayShow {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes DialogOverlayHide {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes DialogContentShow {
+  @keyframes rt-dialog-content-show {
     from {
       opacity: 0;
       transform: translateY(5px) scale(0.97);
@@ -97,7 +79,7 @@
     }
   }
 
-  @keyframes DialogContentHide {
+  @keyframes rt-dialog-content-hide {
     from {
       opacity: 1;
       transform: translateY(0px) scale(1);
@@ -110,24 +92,24 @@
 
   .rt-DialogOverlay {
     /* Keep the overlay mounted until the children have animated */
-    &[data-state='closed'] {
-      animation: DialogOverlayNoop 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    &:where([data-state='closed']) {
+      animation: rt-dialog-overlay-no-op 250ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    &[data-state='open']::after {
-      animation: DialogOverlayShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    &:where([data-state='open'])::after {
+      animation: rt-fade-in 400ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    &[data-state='closed']::after {
-      animation: DialogOverlayHide 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    &:where([data-state='closed'])::after {
+      animation: rt-fade-out 250ms cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
 
   .rt-DialogContent {
-    &[data-state='open'] {
-      animation: DialogContentShow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    &:where([data-state='open']) {
+      animation: rt-dialog-content-show 200ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    &[data-state='closed'] {
-      animation: DialogContentHide 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    &:where([data-state='closed']) {
+      animation: rt-dialog-content-hide 150ms cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
 }

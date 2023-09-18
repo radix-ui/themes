@@ -6,7 +6,7 @@
 }
 
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --switch-blend-mode__disabled: screen;
   --switch-button-overlay__high-contrast-checked: transparent;
   --switch-button-filter__high-contrast-checked-active: brightness(1.08);
@@ -92,15 +92,15 @@
 
 @breakpoints {
   .rt-SwitchRoot {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --switch-height: var(--space-4);
       --switch-radius: max(var(--radius-2), var(--radius-full));
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --switch-height: var(--space-5);
       --switch-radius: max(var(--radius-3), var(--radius-full));
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --switch-height: var(--space-6);
       --switch-radius: max(var(--radius-4), var(--radius-full));
     }
@@ -120,12 +120,12 @@
 }
 
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --switch-button-filter__surface-checked-active: brightness(1.08);
 }
 
-.rt-SwitchRoot.rt-variant-surface {
-  & .rt-SwitchButton {
+.rt-SwitchRoot:where(.rt-variant-surface) {
+  & :where(.rt-SwitchButton) {
     &::before {
       background-color: var(--gray-a3);
       background-image: linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
@@ -161,7 +161,7 @@
     }
   }
 
-  & .rt-SwitchThumb {
+  & :where(.rt-SwitchThumb) {
     &:where([data-state='unchecked']) {
       box-shadow: 0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1),
         0 2px 4px -1px var(--black-a1);
@@ -185,12 +185,12 @@
   --switch-button-filter__surface-checked-active: brightness(0.92) saturate(1.1);
 }
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --switch-button-filter__surface-checked-active: brightness(1.08);
 }
 
-.rt-SwitchRoot.rt-variant-classic {
-  & .rt-SwitchButton {
+.rt-SwitchRoot:where(.rt-variant-classic) {
+  & :where(.rt-SwitchButton) {
     &::before {
       background-image: linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
       background-color: var(--gray-a4);
@@ -232,7 +232,7 @@
     }
   }
 
-  & .rt-SwitchThumb {
+  & :where(.rt-SwitchThumb) {
     &:where([data-state='unchecked']) {
       box-shadow: 0 1px 3px var(--black-a3), 0 2px 4px -1px var(--black-a1),
         0 0 0 1px var(--black-a2);
@@ -256,12 +256,12 @@
   --switch-button-filter__soft-checked-active: contrast(1.2) brightness(0.75) saturate(1.1);
 }
 :is(.dark, .dark-theme),
-:is(.dark, .dark-theme) .radix-themes:not(.light, .light-theme) {
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --switch-button-filter__soft-checked-active: brightness(1.08);
 }
 
-.rt-SwitchRoot.rt-variant-soft {
-  & .rt-SwitchButton {
+.rt-SwitchRoot:where(.rt-variant-soft) {
+  & :where(.rt-SwitchButton) {
     /* prettier-ignore */
     &::before {
       background-image:
@@ -301,7 +301,7 @@
     }
   }
 
-  & .rt-SwitchThumb {
+  & :where(.rt-SwitchThumb) {
     box-shadow: 0 0 0 1px var(--accent-a3), 0 1px 3px var(--accent-a4),
       0 2px 4px -1px var(--accent-a3);
     filter: saturate(0.45);

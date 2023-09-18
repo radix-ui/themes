@@ -45,7 +45,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         })}
       >
         <CheckboxPrimitive.Indicator className="rt-CheckboxIndicator">
-          <ThickCheckIcon />
+          <ThickCheckIcon className="rt-CheckboxIndicatorIcon" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
     </span>

@@ -35,6 +35,14 @@
   padding: var(--table-cell-padding);
   /* Works as min-height */
   height: var(--table-cell-min-height);
+
+  /* Inset with Table */
+  .rt-Inset :where(&:first-child) {
+    padding-left: var(--inset-padding, var(--table-cell-padding));
+  }
+  .rt-Inset :where(&:last-child) {
+    padding-right: var(--inset-padding, var(--table-cell-padding));
+  }
 }
 .rt-TableColumnHeaderCell {
   font-weight: bold;
@@ -51,32 +59,32 @@
 
 @breakpoints {
   .rt-TableRoot {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --table-border-radius: var(--radius-3);
       --table-cell-padding: var(--space-2);
       --table-cell-min-height: calc(36px * var(--scaling));
 
-      & .rt-TableRootTable {
+      & :where(.rt-TableRootTable) {
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
       }
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --table-border-radius: var(--radius-4);
       --table-cell-padding: var(--space-3);
       --table-cell-min-height: calc(44px * var(--scaling));
 
-      & .rt-TableRootTable {
+      & :where(.rt-TableRootTable) {
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
       }
     }
-    &.rt-r-size-3 {
+    &:where(.rt-r-size-3) {
       --table-border-radius: var(--radius-4);
       --table-cell-padding: var(--space-3) var(--space-4);
-      --table-cell-min-height: calc(48px * var(--scaling));
+      --table-cell-min-height: var(--space-8);
 
-      .rt-TableRootTable {
+      & :where(.rt-TableRootTable) {
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
       }
@@ -92,7 +100,7 @@
 
 /* surface */
 
-.rt-TableRoot.rt-variant-surface {
+.rt-TableRoot:where(.rt-variant-surface) {
   border: 1px solid var(--gray-a5);
   border-radius: var(--table-border-radius);
   background-color: var(--color-panel);
@@ -102,14 +110,13 @@
   /* When possible, use half-transparent gray for nicer border blending with the background */
   border-color: color-mix(in oklab, var(--gray-a5), var(--gray-6));
 
-  & .rt-TableRootTable {
+  & :where(.rt-TableRootTable) {
     overflow: hidden;
 
     & :where(.rt-TableHeader) {
       --table-row-background: var(--gray-a2);
     }
-
-    & :where(.rt-TableBody .rt-TableRow:last-child) {
+    & :where(.rt-TableBody) :where(.rt-TableRow:last-child) {
       --table-row-border-bottom: none;
     }
   }
@@ -117,23 +124,7 @@
 
 /* ghost */
 
-.rt-TableRoot.rt-variant-ghost {
-  .rt-ScrollAreaScrollbar[data-orientation='horizontal'] {
-    --scrollarea-scrollbar-margin-left: 0;
-    --scrollarea-scrollbar-margin-right: 0;
-  }
-}
-
-/***************************************************************************************************
- *                                                                                                 *
- * Inset > Table                                                                                   *
- *                                                                                                 *
- ***************************************************************************************************/
-
-.rt-Inset > .rt-TableRoot .rt-TableCell:first-child {
-  padding-left: var(--inset-padding);
-}
-
-.rt-Inset > .rt-TableRoot .rt-TableCell:last-child {
-  padding-right: var(--inset-padding);
+.rt-TableRoot:where(.rt-variant-ghost) {
+  --scrollarea-scrollbar-horizontal-margin-left: 0;
+  --scrollarea-scrollbar-horizontal-margin-right: 0;
 }

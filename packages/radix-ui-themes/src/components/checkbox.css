@@ -29,11 +29,11 @@
   justify-content: center;
   height: var(--checkbox-size);
   width: var(--checkbox-size);
+}
 
-  & svg {
-    width: 56.25%;
-    height: 56.25%;
-  }
+.rt-CheckboxIndicatorIcon {
+  width: 56.25%;
+  height: 56.25%;
 }
 
 /***************************************************************************************************
@@ -44,15 +44,15 @@
 
 @breakpoints {
   .rt-CheckboxRoot {
-    &.rt-r-size-1 {
+    &:where(.rt-r-size-1) {
       --checkbox-size: var(--space-4);
-      & .rt-CheckboxButton {
+      & :where(.rt-CheckboxButton) {
         border-radius: var(--radius-1);
       }
     }
-    &.rt-r-size-2 {
+    &:where(.rt-r-size-2) {
       --checkbox-size: var(--space-5);
-      & .rt-CheckboxButton {
+      & :where(.rt-CheckboxButton) {
         border-radius: var(--radius-2);
       }
     }
@@ -67,7 +67,7 @@
 
 /* surface */
 
-.rt-CheckboxButton.rt-variant-surface {
+.rt-CheckboxButton:where(.rt-variant-surface) {
   &:where([data-state='unchecked']) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -91,7 +91,7 @@
 
 /* classic */
 
-.rt-CheckboxButton.rt-variant-classic {
+.rt-CheckboxButton:where(.rt-variant-classic) {
   &:where([data-state='unchecked']) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
@@ -115,7 +115,7 @@
 
 /* soft */
 
-.rt-CheckboxButton.rt-variant-soft {
+.rt-CheckboxButton:where(.rt-variant-soft) {
   background-color: var(--accent-a5);
   &:where([data-state='checked']) {
     color: var(--accent-11);
