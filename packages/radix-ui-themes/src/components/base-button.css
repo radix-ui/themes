@@ -209,7 +209,7 @@
     }
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-2);
     background-image: none;
@@ -278,7 +278,7 @@
     }
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a3);
     filter: none;
@@ -298,7 +298,7 @@
     color: var(--accent-12);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a3);
   }
@@ -319,7 +319,7 @@
     background-color: var(--accent-a5);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a3);
   }
@@ -338,7 +338,7 @@
     background-color: var(--accent-a4);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: transparent;
   }
@@ -375,7 +375,7 @@
     }
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
     background-color: transparent;
@@ -409,7 +409,7 @@
     color: var(--accent-12);
   }
   &:where(:disabled) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
     background-color: var(--gray-a2);

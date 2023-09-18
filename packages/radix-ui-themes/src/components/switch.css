@@ -35,6 +35,7 @@
   height: var(--switch-height);
   padding: var(--switch-padding);
   border-radius: var(--switch-radius);
+  cursor: var(--cursor-switch);
 
   /* A pseudo element for the background color */
   &::before {
@@ -148,7 +149,7 @@
       }
     }
     &:where([data-disabled]) {
-      cursor: not-allowed;
+      cursor: var(--cursor-disabled);
       mix-blend-mode: var(--switch-blend-mode__disabled);
 
       &::before {
@@ -217,7 +218,7 @@
       }
     }
     &:where([data-disabled]) {
-      cursor: not-allowed;
+      cursor: var(--cursor-disabled);
       background-color: var(--gray-a3);
       mix-blend-mode: var(--switch-blend-mode__disabled);
 
@@ -289,7 +290,7 @@
       }
     }
     &:where([data-disabled]) {
-      cursor: not-allowed;
+      cursor: var(--cursor-disabled);
       mix-blend-mode: var(--switch-blend-mode__disabled);
 
       &::before {

@@ -38,7 +38,7 @@
   position: relative;
   box-sizing: border-box;
   outline: none;
-  cursor: default;
+  cursor: var(--cursor-menu-item);
 
   scroll-margin: var(--base-menu-padding) 0;
 

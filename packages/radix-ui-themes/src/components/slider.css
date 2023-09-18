@@ -73,10 +73,15 @@
     background-color: white;
     border-radius: var(--slider-thumb-radius);
     box-shadow: var(--slider-thumb-shadow);
+    cursor: var(--cursor-slider-thumb);
   }
 
   &:where(:focus-visible)::after {
     box-shadow: var(--slider-thumb-shadow), 0 0 0 3px var(--accent-3), 0 0 0 5px var(--accent-8);
+  }
+
+  &:where(:active) {
+    cursor: var(--cursor-slider-thumb-active);
   }
 }
 
@@ -237,7 +242,7 @@
 
 [data-disabled] {
   .rt-SliderRoot:where(&) {
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     mix-blend-mode: var(--slider-blend-mode__disabled);
   }
   .rt-SliderRange:where(&) {

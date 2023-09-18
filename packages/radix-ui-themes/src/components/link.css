@@ -1,5 +1,5 @@
 .rt-Link {
-  cursor: pointer;
+  cursor: var(--cursor-link);
   color: var(--accent-a11);
   border-radius: calc(0.07em * var(--radius-factor));
 

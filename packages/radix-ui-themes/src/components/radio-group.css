@@ -1,6 +1,3 @@
-.rt-RadioGroupRoot {
-}
-
 .rt-RadioGroupItem {
   display: inline-flex;
   align-items: center;
@@ -18,6 +15,7 @@
   box-sizing: border-box;
   height: var(--radio-group-item-size);
   width: var(--radio-group-item-size);
+  cursor: var(--cursor-radio);
   border-radius: 100%;
 
   &:where(:focus-visible) {
@@ -76,7 +74,7 @@
   & :where(.rt-RadioGroupButton[data-disabled]) {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
     background-color: var(--gray-a3);
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
   }
 }
@@ -99,7 +97,7 @@
   & :where(.rt-RadioGroupButton[data-disabled]) {
     box-shadow: var(--shadow-1);
     background-color: var(--gray-a3);
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
   }
 }
@@ -118,7 +116,7 @@
   }
   & :where(.rt-RadioGroupButton[data-disabled]) {
     background-color: var(--gray-a3);
-    cursor: not-allowed;
+    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
   }
 }

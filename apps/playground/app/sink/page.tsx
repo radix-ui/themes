@@ -186,6 +186,7 @@ import {
 import styles from './page.module.css';
 
 import { RadixLogo } from './radix-logo';
+import { PointerCursorsCheckbox } from './pointer-cursors-checkbox';
 
 export default function Sink() {
   return (
@@ -3870,6 +3871,53 @@ export default function Sink() {
                         <Separator key={color} size="4" color={color} />
                       ))}
                     </Flex>
+                  </DocsSection>
+
+                  <DocsSection title="Cursors">
+                    <Flex align="center" gap="5" wrap="wrap" my="5">
+                      <Card asChild>
+                        <button>
+                          <Text as="p" size="2" weight="bold" trim="start">
+                            Button
+                          </Text>
+                          <Text as="p" color="gray" size="2" trim="end">
+                            That looks like card
+                          </Text>
+                        </button>
+                      </Card>
+
+                      <Card asChild>
+                        <a href="#Cursors">
+                          <Text as="p" size="2" weight="bold" trim="start">
+                            Link
+                          </Text>
+                          <Text as="p" color="gray" size="2" trim="end">
+                            That looks like card
+                          </Text>
+                        </a>
+                      </Card>
+
+                      <DropdownMenuRoot>
+                        <DropdownMenuTrigger>
+                          <Button>Dropdown Menu</Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContentDemo />
+                      </DropdownMenuRoot>
+
+                      <Button>Button</Button>
+
+                      <Button asChild>
+                        <a href="#Cursors">Link</a>
+                      </Button>
+
+                      <Link href="#Cursors">Link</Link>
+
+                      <Link asChild>
+                        <button>Button</button>
+                      </Link>
+                    </Flex>
+
+                    <PointerCursorsCheckbox />
                   </DocsSection>
                 </main>
               </Box>

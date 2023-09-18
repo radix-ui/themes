@@ -44,6 +44,18 @@
 - `Avatar`
   - Don’t enforce fallback icon size
     - **[Upgarde guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.
+  - Add CSS variables to control the cursor style on interactive elements:
+    - `--cursor-button: default;`
+    - `--cursor-checkbox: default;`
+    - `--cursor-disabled: not-allowed;`
+    - `--cursor-link: pointer;`
+    - `--cursor-menu-item: default;`
+    - `--cursor-radio: default;`
+    - `--cursor-slider-thumb: default;`
+    - `--cursor-slider-thumb-active: default;`
+    - `--cursor-switch: default;`
+  - Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class
+    - **[Upgrade guide]** If you were using these classes for your custom components, update the class name used.
 - `Button`, `IconButton`
   - Refine and normalise the look and feel of the disabled states.
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
