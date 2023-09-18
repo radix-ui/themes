@@ -2,7 +2,7 @@
   --base-menu-radius: min(var(--base-menu-corner-height), max(var(--radius-3), var(--radius-full)));
   --base-menu-corner-height: calc(var(--base-menu-item-height) / 2 + var(--base-menu-padding));
   --base-menu-scrollbar-margin: max(calc(var(--base-menu-radius) / 1.5), var(--base-menu-padding));
-  --scrollarea-scrollbar-vertical-margin-top: var(--base-menu-scroll-barmargin);
+  --scrollarea-scrollbar-vertical-margin-top: var(--base-menu-scrollbar-margin);
   --scrollarea-scrollbar-vertical-margin-bottom: var(--base-menu-scrollbar-margin);
   --scrollarea-scrollbar-horizontal-margin-left: var(--base-menu-scrollbar-margin);
   --scrollarea-scrollbar-horizontal-margin-right: var(--base-menu-scrollbar-margin);

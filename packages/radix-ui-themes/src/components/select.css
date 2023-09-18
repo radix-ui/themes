@@ -33,7 +33,7 @@
   --select-content-radius: min(var(--select-content-corner-height), max(var(--radius-3), var(--radius-full)));
   --select-content-corner-height: calc(var(--select-item-height) / 2 + var(--select-content-padding));
   --select-content-scrollbar-margin: max(calc(var(--select-content-radius) / 1.5), var(--select-content-padding));
-  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-scroll-barmargin);
+  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-scrollbar-margin);
   --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-scrollbar-margin);
   --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-scrollbar-margin);
   --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-scrollbar-margin);
