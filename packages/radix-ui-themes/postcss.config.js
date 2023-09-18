@@ -9,6 +9,7 @@ module.exports = {
     require('./postcss-radix-themes'),
     require('postcss-custom-media'),
     require('postcss-combine-duplicated-selectors'),
+    require('postcss-discard-empty'),
     require('autoprefixer'),
   ],
 };
