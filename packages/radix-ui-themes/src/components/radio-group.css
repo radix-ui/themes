@@ -15,10 +15,8 @@
   box-sizing: border-box;
   height: var(--radio-group-item-size);
   width: var(--radio-group-item-size);
+  cursor: var(--cursor-radio);
   border-radius: 100%;
-
-  /* Force arrow cursor */
-  cursor: default;
 
   &:where(:focus-visible) {
     outline: 2px solid var(--accent-a8);

@@ -35,6 +35,7 @@
   height: var(--switch-height);
   padding: var(--switch-padding);
   border-radius: var(--switch-radius);
+  cursor: var(--cursor-switch);
 
   /* A pseudo element for the background color */
   &::before {

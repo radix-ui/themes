@@ -15,10 +15,15 @@ export function PointerCursorsCheckbox() {
         <style>
           {`
             .radix-themes {
-              --cursor-link: pointer;
               --cursor-button: pointer;
-              --cursor-menu: pointer;
+              --cursor-checkbox: pointer;
               --cursor-disabled: default;
+              --cursor-link: pointer;
+              --cursor-menu-item: pointer;
+              --cursor-radio: pointer;
+              --cursor-slider-thumb: grab;
+              --cursor-slider-thumb-active: grabbing;
+              --cursor-switch: pointer;
             }
           `}
         </style>

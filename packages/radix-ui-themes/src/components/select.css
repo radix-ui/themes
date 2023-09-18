@@ -72,7 +72,7 @@
   position: relative;
   box-sizing: border-box;
   outline: none;
-  cursor: var(--cursor-menu);
+  cursor: var(--cursor-menu-item);
   scroll-margin: var(--select-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
