@@ -4,14 +4,16 @@
   z-index: 0;
 }
 
-.rt-reset-a {
+.rt-reset:where(a) {
+  cursor: var(--cursor-link);
   text-decoration: none;
   color: inherit;
   outline: none;
 }
 
-.rt-reset-button {
+.rt-reset:where(button) {
   appearance: none;
+  cursor: var(--cursor-button);
   background-color: transparent;
   border: none;
   font-size: inherit;

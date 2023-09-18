@@ -1,7 +1,9 @@
 .rt-Link {
-  cursor: pointer;
   color: var(--accent-a11);
   border-radius: calc(0.07em * var(--radius-factor));
+
+  /* Force the link cursor even if it is an asChild <button> */
+  cursor: var(--cursor-link);
 
   &:focus-visible {
     outline-color: var(--accent-a8);

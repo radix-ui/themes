@@ -40,7 +40,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         data-accent-color={color}
         {...checkboxProps}
         ref={forwardedRef}
-        className={classNames('rt-reset-button', 'rt-CheckboxButton', `rt-variant-${variant}`, {
+        className={classNames('rt-reset', 'rt-CheckboxButton', `rt-variant-${variant}`, {
           'rt-high-contrast': highContrast,
         })}
       >
