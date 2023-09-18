@@ -2,7 +2,7 @@
 
 .rt-Button {
   &:where(:not(.rt-variant-ghost)) {
-    /* stylelint-disable-next-line */
+    /* stylelint-disable-next-line selector-max-type */
     & :where(svg) {
       opacity: 0.9;
     }
