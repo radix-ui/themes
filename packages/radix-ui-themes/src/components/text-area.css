@@ -50,11 +50,10 @@
   &::-webkit-scrollbar-thumb {
     background-color: var(--gray-a8);
   }
-}
-
-@media (hover: hover) {
-  :where(.rt-TextAreaInput:not(:disabled))::-webkit-scrollbar-thumb:hover {
-    background-color: var(--gray-a9);
+  @media (hover: hover) {
+    :where(&:not(:disabled))::-webkit-scrollbar-thumb:hover {
+      background-color: var(--gray-a9);
+    }
   }
 }
 
