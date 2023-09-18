@@ -202,10 +202,11 @@
   & ::selection {
     background-color: var(--accent-a6);
   }
-  & :where([data-accent-color='gray'])::selection,
-  & :where([data-accent-color='gray']) ::selection {
-    background-color: var(--color-selection-root);
-  }
+}
+
+[data-accent-color='gray']::selection,
+[data-accent-color='gray'] ::selection {
+  background-color: var(--color-selection-root);
 }
 
 /* additional step-9 contrast colors */
