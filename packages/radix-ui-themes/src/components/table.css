@@ -35,6 +35,14 @@
   padding: var(--table-cell-padding);
   /* Works as min-height */
   height: var(--table-cell-min-height);
+
+  /* Inset with Table */
+  .rt-Inset :where(&:first-child) {
+    padding-left: var(--inset-padding, var(--table-cell-padding));
+  }
+  .rt-Inset :where(&:last-child) {
+    padding-right: var(--inset-padding, var(--table-cell-padding));
+  }
 }
 .rt-TableColumnHeaderCell {
   font-weight: bold;
@@ -119,18 +127,4 @@
 .rt-TableRoot:where(.rt-variant-ghost) {
   --scrollarea-scrollbar-horizontal-margin-left: 0;
   --scrollarea-scrollbar-horizontal-margin-right: 0;
-}
-
-/***************************************************************************************************
- *                                                                                                 *
- * Inset > Table                                                                                   *
- *                                                                                                 *
- ***************************************************************************************************/
-
-.rt-Inset > :where(.rt-TableRoot) :where(.rt-TableCell:first-child) {
-  padding-left: var(--inset-padding);
-}
-
-.rt-Inset > :where(.rt-TableRoot) :where(.rt-TableCell:last-child) {
-  padding-right: var(--inset-padding);
 }
