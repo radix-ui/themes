@@ -1,11 +1,9 @@
 .rt-CheckboxRoot {
   display: inline-flex;
   align-items: center;
-  vertical-align: bottom;
+  vertical-align: baseline;
   flex-shrink: 0;
-
-  /* Match Text size 2 line-height */
-  height: var(--line-height-2);
+  height: var(--line-height, var(--checkbox-size));
 }
 
 .rt-CheckboxButton {
@@ -16,6 +14,7 @@
   height: var(--checkbox-size);
   width: var(--checkbox-size);
   cursor: var(--cursor-checkbox);
+  position: relative;
 
   &:where(:focus-visible) {
     outline: 2px solid var(--accent-a8);
@@ -27,13 +26,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--checkbox-size);
-  width: var(--checkbox-size);
-}
-
-.rt-CheckboxIndicatorIcon {
-  width: 56.25%;
-  height: 56.25%;
+  height: 100%;
+  width: 100%;
+  /* Make sure that the presence of the indicator doesn’t affect alignment */
+  position: absolute;
 }
 
 /***************************************************************************************************
@@ -45,15 +41,39 @@
 @breakpoints {
   .rt-CheckboxRoot {
     &:where(.rt-r-size-1) {
-      --checkbox-size: var(--space-4);
+      --checkbox-size: calc(var(--space-4) * 0.875);
+
       & :where(.rt-CheckboxButton) {
-        border-radius: var(--radius-1);
+        border-radius: calc(var(--radius-1) / 1.25);
+      }
+
+      & :where(.rt-CheckboxIndicatorIcon) {
+        width: calc(9px * var(--scaling));
+        height: calc(9px * var(--scaling));
       }
     }
     &:where(.rt-r-size-2) {
-      --checkbox-size: var(--space-5);
+      --checkbox-size: var(--space-4);
+
       & :where(.rt-CheckboxButton) {
-        border-radius: var(--radius-2);
+        border-radius: var(--radius-1);
+      }
+
+      & :where(.rt-CheckboxIndicatorIcon) {
+        width: calc(11px * var(--scaling));
+        height: calc(11px * var(--scaling));
+      }
+    }
+    &:where(.rt-r-size-3) {
+      --checkbox-size: calc(var(--space-4) * 1.25);
+
+      & :where(.rt-CheckboxButton) {
+        border-radius: calc(var(--radius-1) * 1.25);
+      }
+
+      & :where(.rt-CheckboxIndicatorIcon) {
+        width: calc(13px * var(--scaling));
+        height: calc(13px * var(--scaling));
       }
     }
   }
@@ -98,6 +118,8 @@
   }
   &:where([data-state='checked']) {
     background-color: var(--accent-9);
+    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a3));
+    box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
     color: var(--accent-9-contrast);
 
     &:where(.rt-high-contrast) {
@@ -108,6 +130,7 @@
   &:where(:disabled) {
     box-shadow: var(--shadow-1);
     background-color: var(--gray-a3);
+    background-image: none;
     cursor: var(--cursor-disabled);
     color: var(--gray-a8);
   }

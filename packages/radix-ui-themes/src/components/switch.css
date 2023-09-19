@@ -15,11 +15,11 @@
 .rt-SwitchRoot {
   display: inline-flex;
   align-items: center;
-  vertical-align: bottom;
+  vertical-align: top;
   flex-shrink: 0;
 
-  /* Match Text size 2 line-height */
-  height: var(--line-height-2);
+  /* Align with text line height when possible, fall back to own height */
+  height: var(--line-height, var(--switch-height));
 
   --switch-padding: 1px;
   --switch-width: calc(var(--switch-height) * 1.75);
@@ -94,15 +94,15 @@
   .rt-SwitchRoot {
     &:where(.rt-r-size-1) {
       --switch-height: var(--space-4);
-      --switch-radius: max(var(--radius-2), var(--radius-full));
+      --switch-radius: max(var(--radius-1), var(--radius-thumb));
     }
     &:where(.rt-r-size-2) {
-      --switch-height: var(--space-5);
-      --switch-radius: max(var(--radius-3), var(--radius-full));
+      --switch-height: calc(var(--space-5) * 5 / 6);
+      --switch-radius: max(var(--radius-2), var(--radius-thumb));
     }
     &:where(.rt-r-size-3) {
-      --switch-height: var(--space-6);
-      --switch-radius: max(var(--radius-4), var(--radius-full));
+      --switch-height: var(--space-5);
+      --switch-radius: max(var(--radius-2), var(--radius-thumb));
     }
   }
 }
@@ -265,7 +265,8 @@
     /* prettier-ignore */
     &::before {
       background-image:
-        linear-gradient(to right, var(--accent-a8) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-a5) 40%, transparent 60%),
         linear-gradient(to right, var(--accent-a3), var(--accent-a2) 150%);
     }
     &:where([data-state='unchecked'])::before {

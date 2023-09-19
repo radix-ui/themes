@@ -2,7 +2,7 @@
   padding: var(--space-1) var(--space-2);
   --tooltip-bg: var(--gray-12);
   background-color: var(--tooltip-bg);
-  border-radius: max(var(--radius-2), var(--radius-full));
+  border-radius: var(--radius-2);
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 
@@ -35,19 +35,4 @@
 
 .rt-TooltipArrow {
   fill: var(--tooltip-bg);
-}
-
-/***************************************************************************************************
- *                                                                                                 *
- * VARIANTS                                                                                        *
- *                                                                                                 *
- ***************************************************************************************************/
-
-.rt-TooltipContent:where(.rt-multiline) {
-  max-width: 250px;
-  border-radius: var(--radius-2);
-
-  & :where(.rt-TooltipText) {
-    line-height: var(--default-line-height);
-  }
 }

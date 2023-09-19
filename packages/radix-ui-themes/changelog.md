@@ -55,14 +55,26 @@
     - `--cursor-slider-thumb-active: default;`
     - `--cursor-switch: default;`
   - Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class
+    - The new `.rt-reset` class can be use to reset `a`, `button`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `ol`, `ul`, and `pre` tags when building custom components.
     - **[Upgrade guide]** If you were using these classes for your custom components, update the class name used.
 - `Button`, `IconButton`
   - Refine and normalise the look and feel of the disabled states.
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
 - `Callout`
+  - Fix an issue when the callout would inherit text color unless an explicit `color` prop was passed.
+    - **[Upgrade guide]** If you preferred the previous look, pass `highContrast` prop to your callouts to make the text darker.
   - Use a gray background for a gray `variant="surface"`
   - Use a darker outline color `variant="outline"`
+- `DropdownMenu`, `ContextMenu`
+  - Reduce border radius when theme setting is `radius="full"`
+  - Refine horizontal paddings
+  - Refine label look and feel
 - `Checkbox`
+  - **[Breaking]** Improve layout so that wrapping a checkbox in `Text` component automatically aligns the checkbox with the first line of the text.
+    - **[Upgrade guide]** Make sure that your layouts with checkboxes look as expected. If not, wrap your checkboxes in `<Text as="label" size="...">`, using your preferred text size.
+  - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
+    - **[Upgrade guide]** If you were using `size="1"` or `size="2"` checkboxes via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
+  - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Card`
   - Remove an internal element `.rt-CardInner` which provided `overflow: hidden`
@@ -71,20 +83,35 @@
   - Refine hover and pressed styles for `variant="classic"`
   - Add missing pressed styles.
   - Refine how the inner shadows are applied so that they blend with the background outside of the component.
+- `Code`
+  - Add interactive styles when `Code` is within `Link`
+  - Scale the outline thickness relative to the font size for `variant="outline"` and `variant="surface"`
+  - Improve `::selection` background color for `variant="solid"`
 - `Grid`
   - Fix a bug when nesting `Grid` components could cause the descendant `Grid`’s to inherit some parent styles unintentionally.
 - `Inset`
   - Add `clip` prop to control whether content is clipped to the padding or to the border of the parent element.
   - Automatically adjust table cell padding for when `Table` is inside `Inset`
+- `Kbd`
+  - Tweak vertical alignment
 - `Link`
   - Desaturate the underline color.
   - Make links automatically high-contrast within colored `Heading` elements (similarly to the automatic high-contrast within `Text`).
+  - Scale the underline thickness relative to the font size for `variant="outline"` and `variant="surface"`
 - `RadioGroup`
+  - **[Breaking]** Improve layout so that wrapping a radiobutton in `Text` component automatically aligns the radiobutton with the first line of the text.
+    - **[Upgrade guide]** Make sure that your layouts with radiobuttons look as expected. If not, wrap your radiobuttons in `<Text as="label" size="...">`, using your preferred text size.
+  - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
+    - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radiobuttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
+  - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Select`
   - Fix invisible scrollbar in long item lists
   - Improve `variant="classic"` look and feel across light and dark mode.
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
+  - Refine horizontal paddings
+  - Refine label look and feel
+  - Rework `size="3"`
 - `ScrollArea`
   - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
     - **[Upgarde guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
@@ -96,7 +123,14 @@
       - `--scrollarea-scrollbar-vertical-margin-bottom`
       - `--scrollarea-scrollbar-vertical-margin-left`
       - `--scrollarea-scrollbar-vertical-margin-right`
-- `Slider`, `Switch`
+- `Slider`
+  - Refine the shadows and colors used in the components.
+  - Refine and normalise the look and feel of the disabled states.
+- `Switch`
+  - **[Breaking]** Improve layout so that wrapping a switch in `Switch` component automatically aligns the switch with the first line of the text.
+    - **[Upgrade guide]** Make sure that your layouts with switches look as expected. If not, wrap your switches in `<Text as="label" size="...">`, using your preferred text size.
+  - **[Breaking]** Rework sizes, making `size="2"` and `size="3"` smaller.
+    - **[Upgrade guide]** Use `size="3"` instead of `size="2"` to match the previous look.
   - Refine the shadows and colors used in the components.
   - Refine and normalise the look and feel of the disabled states.
 - `Table`
@@ -125,6 +159,10 @@
 - `ThemePanel`
   - Disable transitions when changing the appearance.
   - Improve contrast in the border radius preview.
+- `Tooltip`
+  - Reduce border radius when theme setting is `radius="full"`
+  - **[Breaking]** Remove `multiline` prop
+    - **[Upgrade guide]** If you were using `multiline` prop, pass `style={{ maxWidth: 250 }}` to the relevant Tooltip elements.
 
 ## 1.1.2
 

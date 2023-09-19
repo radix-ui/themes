@@ -151,7 +151,7 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
       className={classNames('rt-SelectItem', className)}
     >
       <SelectPrimitive.ItemIndicator className="rt-SelectItemIndicator">
-        <ThickCheckIcon />
+        <ThickCheckIcon className="rt-SelectItemIndicatorIcon" />
       </SelectPrimitive.ItemIndicator>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>

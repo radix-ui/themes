@@ -3,6 +3,11 @@
   flex-wrap: nowrap;
   align-items: flex-start;
   text-align: left;
+  color: var(--accent-a11);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
 }
 
 .rt-CalloutIcon {

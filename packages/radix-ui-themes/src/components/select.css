@@ -28,19 +28,14 @@
   }
 }
 
-/* prettier-ignore */
 .rt-SelectContent {
-  --select-content-radius: min(var(--select-content-corner-height), max(var(--radius-3), var(--radius-full)));
-  --select-content-corner-height: calc(var(--select-item-height) / 2 + var(--select-content-padding));
-  --select-content-scrollbar-margin: max(calc(var(--select-content-radius) / 1.5), var(--select-content-padding));
-  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-scrollbar-margin);
-  --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-scrollbar-margin);
-  --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-scrollbar-margin);
-  --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-scrollbar-margin);
+  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-padding);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
 
   overflow: hidden;
   background-color: var(--select-content-bg);
-  border-radius: var(--select-content-radius);
 
   &:where([data-side]) {
     min-width: var(--radix-select-trigger-width);
@@ -62,9 +57,8 @@
   display: flex;
   align-items: center;
   height: var(--select-item-height);
-  border-radius: max(var(--radius-2), var(--radius-full));
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  padding-left: var(--select-item-indicator-width);
+  padding-right: var(--select-item-indicator-width);
   position: relative;
   box-sizing: border-box;
   outline: none;
@@ -78,7 +72,7 @@
 .rt-SelectItemIndicator {
   position: absolute;
   left: 0;
-  width: var(--space-5);
+  width: var(--select-item-indicator-width);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -86,22 +80,23 @@
 
 .rt-SelectSeparator {
   height: 1px;
-  margin: var(--space-2);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+  margin-left: var(--select-item-indicator-width);
+  margin-right: var(--select-separator-margin-right);
 }
 
 .rt-SelectLabel {
   display: flex;
   align-items: center;
   height: var(--select-item-height);
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
-  font-size: var(--font-size-1);
-  line-height: var(--line-height-1);
-  letter-spacing: var(--letter-spacing-1);
+  padding-left: var(--select-item-indicator-width);
+  padding-right: var(--select-item-indicator-width);
+  color: var(--gray-a10);
   user-select: none;
   cursor: default;
 
-  &:where(:not(:first-child)) {
+  :where(.rt-SelectItem) + & {
     margin-top: var(--space-2);
   }
 }
@@ -220,36 +215,61 @@
     &:where(.rt-r-size-1) {
       --select-content-padding: var(--space-1);
       --select-item-height: var(--space-5);
+      --select-item-indicator-width: calc(var(--space-5) / 1.2);
+      --select-separator-margin-right: var(--space-2);
+      border-radius: var(--radius-3);
 
+      & :where(.rt-SelectLabel) {
+        font-size: var(--font-size-1);
+        letter-spacing: var(--letter-spacing-1);
+        line-height: var(--line-height-1);
+      }
       & :where(.rt-SelectItem) {
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
+        border-radius: var(--radius-1);
+      }
+      & :where(.rt-SelectItemIndicatorIcon) {
+        width: 9px;
+        height: 9px;
       }
     }
-    &:where(.rt-r-size-2) {
+    &:where(.rt-r-size-2, .rt-r-size-3) {
       --select-content-padding: var(--space-2);
       --select-item-height: var(--space-6);
-
-      & :where(.rt-SelectItem) {
-        font-size: var(--font-size-2);
-        line-height: var(--line-height-2);
-        letter-spacing: var(--letter-spacing-2);
-      }
-    }
-    &:where(.rt-r-size-3) {
-      --select-content-padding: var(--space-2);
-      --select-item-height: var(--space-7);
+      --select-item-indicator-width: var(--space-5);
+      --select-separator-margin-right: var(--space-3);
+      border-radius: var(--radius-4);
 
       & :where(.rt-SelectLabel) {
         font-size: var(--font-size-2);
-        line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
+        line-height: var(--line-height-2);
       }
       & :where(.rt-SelectItem) {
+        line-height: var(--line-height-2);
+        border-radius: var(--radius-2);
+      }
+    }
+    &:where(.rt-r-size-2) {
+      & :where(.rt-SelectItem) {
+        font-size: var(--font-size-2);
+        letter-spacing: var(--letter-spacing-2);
+      }
+      & :where(.rt-SelectItemIndicatorIcon) {
+        width: 9px;
+        height: 9px;
+      }
+    }
+    &:where(.rt-r-size-3) {
+      & :where(.rt-SelectItem) {
         font-size: var(--font-size-3);
-        line-height: var(--line-height-3);
         letter-spacing: var(--letter-spacing-3);
+      }
+      & :where(.rt-SelectItemIndicatorIcon) {
+        width: 11px;
+        height: 11px;
       }
     }
   }
@@ -426,10 +446,6 @@
 
 .rt-SelectItem:where([data-disabled]) {
   color: var(--gray-a8);
-}
-
-.rt-SelectLabel {
-  color: var(--gray-a11);
 }
 
 .rt-SelectSeparator {

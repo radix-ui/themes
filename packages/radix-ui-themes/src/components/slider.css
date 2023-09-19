@@ -22,10 +22,14 @@
 }
 
 .rt-SliderTrack {
+  overflow: hidden;
   position: relative;
   flex-grow: 1;
-  border-radius: var(--radius-1);
-  overflow: hidden;
+
+  border-radius: max(
+    calc(var(--radius-factor) * var(--slider-track-size) / 3),
+    calc(var(--radius-factor) * var(--radius-thumb))
+  );
 
   &:where([data-orientation='horizontal']) {
     height: var(--slider-track-size);
@@ -52,14 +56,13 @@
   display: block;
   width: var(--slider-thumb-size);
   height: var(--slider-thumb-size);
-  border-radius: var(--slider-thumb-radius);
 
   &::before {
     content: '';
     position: absolute;
     z-index: -1;
-    width: 44px;
-    height: 44px;
+    width: calc(var(--slider-thumb-size) * 3);
+    height: calc(var(--slider-thumb-size) * 3);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -69,9 +72,9 @@
   &::after {
     content: '';
     position: absolute;
-    inset: calc(-1 * var(--space-1) / 2);
+    inset: calc(-0.25 * var(--slider-track-size));
     background-color: white;
-    border-radius: var(--slider-thumb-radius);
+    border-radius: max(var(--radius-1), var(--radius-thumb));
     box-shadow: var(--slider-thumb-shadow);
     cursor: var(--cursor-slider-thumb);
   }
@@ -94,16 +97,13 @@
 @breakpoints {
   .rt-SliderRoot {
     &:where(.rt-r-size-1) {
-      --slider-track-size: calc(var(--space-1) * 1.5);
-      --slider-thumb-radius: max(var(--radius-1), var(--radius-full));
+      --slider-track-size: calc(var(--space-2) * 0.75);
     }
     &:where(.rt-r-size-2) {
       --slider-track-size: var(--space-2);
-      --slider-thumb-radius: max(var(--radius-2), var(--radius-full));
     }
     &:where(.rt-r-size-3) {
-      --slider-track-size: var(--space-3);
-      --slider-thumb-radius: max(var(--radius-3), var(--radius-full));
+      --slider-track-size: calc(var(--space-2) * 1.25);
     }
   }
 }
@@ -132,7 +132,7 @@
   }
 
   & :where(.rt-SliderThumb) {
-    --slider-thumb-shadow: 0 0 0 1px var(--black-a3);
+    --slider-thumb-shadow: 0 0 0 1px var(--black-a4);
 
     &:where([data-disabled])::after {
       background-color: var(--gray-1);

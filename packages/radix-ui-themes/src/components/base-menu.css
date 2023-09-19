@@ -1,18 +1,14 @@
 .rt-BaseMenuContent {
-  --base-menu-radius: min(var(--base-menu-corner-height), max(var(--radius-3), var(--radius-full)));
-  --base-menu-corner-height: calc(var(--base-menu-item-height) / 2 + var(--base-menu-padding));
-  --base-menu-scrollbar-margin: max(calc(var(--base-menu-radius) / 1.5), var(--base-menu-padding));
-  --scrollarea-scrollbar-vertical-margin-top: var(--base-menu-scrollbar-margin);
-  --scrollarea-scrollbar-vertical-margin-bottom: var(--base-menu-scrollbar-margin);
-  --scrollarea-scrollbar-horizontal-margin-left: var(--base-menu-scrollbar-margin);
-  --scrollarea-scrollbar-horizontal-margin-right: var(--base-menu-scrollbar-margin);
+  --scrollarea-scrollbar-vertical-margin-top: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--base-menu-content-padding);
 
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
   background-color: var(--base-menu-bg);
-  border-radius: var(--base-menu-radius);
 }
 
 .rt-BaseMenuViewport {
@@ -20,7 +16,7 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: var(--base-menu-padding);
+  padding: var(--base-menu-content-padding);
 
   :where(.rt-BaseMenuContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
     padding-right: var(--space-3);
@@ -31,30 +27,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: max(var(--radius-2), var(--radius-full));
   height: var(--base-menu-item-height);
-  padding-left: var(--space-5);
-  padding-right: var(--space-3);
+  padding-left: var(--base-menu-item-padding-left);
+  padding-right: var(--base-menu-item-padding-right);
   position: relative;
   box-sizing: border-box;
   outline: none;
   cursor: var(--cursor-menu-item);
-
-  scroll-margin: var(--base-menu-padding) 0;
+  scroll-margin: var(--base-menu-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
 
   &:where([data-disabled]) {
     pointer-events: none;
-  }
-
-  /* reset with :not:has so we still support browsers without :has */
-  :where(.rt-BaseMenuContent:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) & {
-    padding-left: var(--space-3);
-  }
-  :where(.rt-BaseMenuContent:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) & {
-    padding-left: var(--space-5);
   }
 }
 
@@ -72,7 +58,7 @@
 .rt-BaseMenuItemIndicator {
   position: absolute;
   left: 0;
-  width: var(--space-5);
+  width: var(--base-menu-item-padding-left);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -80,32 +66,24 @@
 
 .rt-BaseMenuSeparator {
   height: 1px;
-  margin: var(--space-2) var(--space-3);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+  margin-left: var(--base-menu-item-padding-left);
+  margin-right: var(--base-menu-item-padding-right);
 }
 
 .rt-BaseMenuLabel {
   display: flex;
   align-items: center;
   height: var(--base-menu-item-height);
-  padding-left: var(--space-5);
-  padding-right: var(--space-3);
-  font-size: var(--font-size-1);
-  line-height: var(--line-height-1);
-  letter-spacing: var(--letter-spacing-1);
-  color: var(--gray-a11);
+  padding-left: var(--base-menu-item-padding-left);
+  padding-right: var(--base-menu-item-padding-right);
+  color: var(--gray-a10);
   user-select: none;
   cursor: default;
 
-  &:where(:not(:first-child)) {
+  :where(.rt-BaseMenuItem) + & {
     margin-top: var(--space-2);
-  }
-
-  /* reset with :not:has so we still support browsers without :has */
-  :where(.rt-BaseMenuContent:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) & {
-    padding-left: var(--space-3);
-  }
-  :where(.rt-BaseMenuContent:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) & {
-    padding-left: var(--space-5);
   }
 }
 
@@ -122,24 +100,60 @@
 @breakpoints {
   .rt-BaseMenuContent {
     &:where(.rt-r-size-1) {
-      --base-menu-padding: var(--space-1);
+      --base-menu-content-padding: var(--space-1);
+      --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
+      --base-menu-item-padding-right: var(--space-2);
       --base-menu-item-height: var(--space-5);
+      border-radius: var(--radius-3);
 
       & :where(.rt-BaseMenuItem) {
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
+        border-radius: var(--radius-1);
+      }
+
+      & :where(.rt-BaseMenuLabel) {
+        font-size: var(--font-size-1);
+        line-height: var(--line-height-1);
+        letter-spacing: var(--letter-spacing-1);
+      }
+
+      /* reset with :not:has so we still support browsers without :has */
+      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+        --base-menu-item-padding-left: var(--space-2);
+      }
+      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+        --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
       }
     }
 
     &:where(.rt-r-size-2) {
-      --base-menu-padding: var(--space-2);
+      --base-menu-content-padding: var(--space-2);
+      --base-menu-item-padding-left: var(--space-3);
+      --base-menu-item-padding-right: var(--space-3);
       --base-menu-item-height: var(--space-6);
+      border-radius: var(--radius-4);
 
       & :where(.rt-BaseMenuItem) {
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
+        border-radius: var(--radius-2);
+      }
+
+      & :where(.rt-BaseMenuLabel) {
+        font-size: var(--font-size-2);
+        line-height: var(--line-height-2);
+        letter-spacing: var(--letter-spacing-2);
+      }
+
+      /* reset with :not:has so we still support browsers without :has */
+      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+        --base-menu-item-padding-left: var(--space-3);
+      }
+      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+        --base-menu-item-padding-left: var(--space-5);
       }
     }
   }

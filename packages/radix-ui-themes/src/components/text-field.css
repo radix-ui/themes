@@ -6,13 +6,15 @@
 
 .rt-TextFieldInput {
   appearance: none;
-  border-width: 0;
   -webkit-tap-highlight-color: transparent;
   outline: none;
   font-family: inherit;
   background-color: transparent;
   position: relative;
   z-index: 1;
+
+  /* Clip text to the inner shadow */
+  border: var(--text-field-border-width) solid transparent;
 }
 
 .rt-TextFieldChrome {
@@ -86,12 +88,16 @@
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 
-      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
-      text-indent: calc(var(--space-1) * 1.5);
-
       /* Tweak text alignment */
       padding-top: 0.5px;
       padding-bottom: 1px;
+
+      &:where(:first-child) {
+        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+        text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
+        /* Clip text to the visible border radius */
+        border-radius: max(var(--radius-2), var(--radius-full));
+      }
 
       & + :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-2), var(--radius-full));
@@ -102,12 +108,16 @@
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
 
-      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
-      text-indent: var(--space-2);
-
       /* Tweak text alignment */
       padding-top: 0px;
       padding-bottom: 1px;
+
+      &:where(:first-child) {
+        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+        text-indent: calc(var(--space-2) - var(--text-field-border-width));
+        /* Clip text to the visible border radius */
+        border-radius: max(var(--radius-2), var(--radius-full));
+      }
 
       & + :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-2), var(--radius-full));
@@ -118,12 +128,16 @@
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
 
-      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
-      text-indent: var(--space-3);
-
       /* Tweak text alignment */
       padding-top: 0.5px;
       padding-bottom: 1px;
+
+      &:where(:first-child) {
+        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+        text-indent: calc(var(--space-3) - var(--text-field-border-width));
+        /* Clip text to the visible border radius */
+        border-radius: max(var(--radius-3), var(--radius-full));
+      }
 
       & + :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-3), var(--radius-full));
@@ -132,11 +146,10 @@
   }
 }
 
-/* Ensure no padding on input when there's a slot before it */
-.rt-TextFieldInput {
-  :where(.rt-TextFieldSlot) + & {
-    text-indent: 0;
-  }
+/* As an enhancement, remove border-radius on the right if there’s a slot */
+.rt-TextFieldInput:where(:has(~ .rt-TextFieldSlot)) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /***************************************************************************************************
@@ -148,22 +161,15 @@
 /* surface */
 
 .rt-TextFieldInput:where(.rt-variant-surface) {
+  --text-field-border-width: 1px;
   color: var(--gray-12);
-
-  /* Don't overlap text with the inset shadow */
-  padding-left: 1px;
-  padding-right: 1px;
-  :where(.rt-TextFieldSlot) + & {
-    padding-left: 0;
-  }
 
   & + :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
-
-    /* Blend inset shadow with the container background */
-    background-clip: content-box;
+    /* Blend inner shadow with page background */
     padding: 1px;
+    background-clip: content-box;
   }
   &::placeholder {
     color: var(--gray-a10);
@@ -191,22 +197,15 @@
 /* classic */
 
 .rt-TextFieldInput:where(.rt-variant-classic) {
+  --text-field-border-width: 1px;
   color: var(--gray-12);
-
-  /* Don't overlap text with inset shadow */
-  padding-left: 1px;
-  padding-right: 1px;
-  :where(.rt-TextFieldSlot) + & {
-    padding-left: 0;
-  }
 
   & + :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
     box-shadow: var(--shadow-1);
-
-    /* Blend inset shadow with the container background */
-    background-clip: content-box;
+    /* Blend inner shadow with page background */
     padding: 1px;
+    background-clip: content-box;
   }
   &::placeholder {
     color: var(--gray-a10);
@@ -233,6 +232,7 @@
 
 /* soft */
 .rt-TextFieldInput:where(.rt-variant-soft) {
+  --text-field-border-width: 0px;
   color: var(--accent-12);
 
   & + :where(.rt-TextFieldChrome) {
@@ -257,7 +257,7 @@
     }
   }
   &::selection {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-a6);
   }
 }
 
@@ -280,7 +280,7 @@
       cursor: default;
     }
     &::selection {
-      background-color: var(--gray-a5);
+      background-color: var(--gray-a6);
     }
 
     /* Cursor in gaps around slots, as an enhancement */
