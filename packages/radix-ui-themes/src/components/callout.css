@@ -13,7 +13,6 @@
 .rt-CalloutIcon {
   display: inline-flex;
   align-items: center;
-  vertical-align: bottom;
   flex-shrink: 0;
   height: var(--line-height);
 }

@@ -1,7 +1,7 @@
 .rt-CheckboxRoot {
   display: inline-flex;
   align-items: center;
-  vertical-align: baseline;
+  vertical-align: top;
   flex-shrink: 0;
   height: var(--line-height, var(--checkbox-size));
 }
