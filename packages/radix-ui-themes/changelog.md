@@ -137,6 +137,7 @@
   - Refine how the outer border is applied so that it blends with the background outside of the component.
 - `Text`
   - Add `as="label"` option to the `as` prop
+  - Improve how prop types are resolved when `as` prop isn’t specified
 - `TextArea`
   - Rework the internal implementation, now using multiple HTML nodes for styling purposes.
     - Adjust the layout styles so that `TextArea` behaves like a true `display: block` element, filling the available space horizontally.
