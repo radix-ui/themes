@@ -135,6 +135,8 @@
   - Refine and normalise the look and feel of the disabled states.
 - `Table`
   - Refine how the outer border is applied so that it blends with the background outside of the component.
+- `Text`
+  - Add `as="label"` option to the `as` prop
 - `TextArea`
   - Rework the internal implementation, now using multiple HTML nodes for styling purposes.
     - Adjust the layout styles so that `TextArea` behaves like a true `display: block` element, filling the available space horizontally.
