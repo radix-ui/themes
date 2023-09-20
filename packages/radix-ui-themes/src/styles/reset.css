@@ -44,6 +44,10 @@
   padding: 0;
 }
 
+.rt-reset:where(p) {
+  margin: 0;
+}
+
 .rt-reset:where(pre) {
   font-family: inherit;
   margin: 0;
