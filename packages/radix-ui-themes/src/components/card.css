@@ -3,11 +3,13 @@
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
 .rt-Card {
-  --inset-border-radius: var(--card-border-radius);
-  --inset-padding: var(--card-padding);
   border-radius: var(--card-border-radius);
-  padding: var(--card-padding);
   position: relative;
+
+  /* Blend inset shadow with container background */
+  --card-shadow-border-radius: calc(var(--card-border-radius) - var(--card-border-width));
+  border: var(--card-border-width) solid transparent;
+  background-clip: padding-box;
 
   &:where(button, a) {
     display: block;
@@ -25,6 +27,30 @@
     outline: 2px solid var(--accent-8);
     outline-offset: -1px;
   }
+}
+
+.rt-CardInner {
+  --inset-border-width: var(--card-border-width);
+  --inset-border-radius: var(--card-border-radius);
+  position: relative;
+  box-sizing: border-box;
+  border-radius: inherit;
+  overflow: hidden;
+  padding: var(--card-padding);
+
+  /*
+   * Some layout acrobatics with `var(--card-border-width)` because we want:
+   * 1. <Card> with fixed height to clip overflowing content.
+   * 2. <Inset> that clips to card’s border-box or padding-box depending on the `clip` value.
+   *
+   * To have both (1) and (2), we clip the content at the outer edge of `.rt-Card` border.
+   * To achieve that, `.rt-CardInner` size is increased by the border width amount and put
+   * back in place using a matching negative margin; inset padding needs a compensation too.
+   */
+  --inset-padding: calc(var(--card-padding) - var(--card-border-width));
+  width: calc(100% + var(--card-border-width) * 2);
+  height: calc(100% + var(--card-border-width) * 2);
+  margin: calc(-1 * var(--card-border-width));
 }
 
 /***************************************************************************************************
@@ -95,11 +121,8 @@
 /* surface */
 
 .rt-Card:where(.rt-variant-surface) {
-  --inset-border-width: 1px;
-  --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
-  border: 1px solid transparent;
+  --card-border-width: 1px;
   background-color: var(--color-panel);
-  background-clip: padding-box;
 
   &::after {
     border-radius: var(--card-shadow-border-radius);
@@ -169,11 +192,8 @@
 }
 
 .rt-Card:where(.rt-variant-classic) {
-  --inset-border-width: 1px;
-  --card-shadow-border-radius: calc(var(--card-border-radius) - 1px);
-  border: 1px solid transparent;
+  --card-border-width: 1px;
   background-color: var(--color-panel);
-  background-clip: padding-box;
 
   &::after {
     border-radius: var(--card-shadow-border-radius);
@@ -206,6 +226,8 @@
 /* ghost */
 
 .rt-Card:where(.rt-variant-ghost) {
+  --card-border-width: 0px;
+
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover) {

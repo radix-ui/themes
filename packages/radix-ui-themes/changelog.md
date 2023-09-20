@@ -77,8 +77,6 @@
   - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Card`
-  - Remove an internal element `.rt-CardInner` which provided `overflow: hidden`
-    - **[Upgrade guide]** Use the `Inset` component when overflow and/or clipping is desired within `Card`
   - Update the `variant="classic"` shadow so that it doesn’t extend outside of the element.
   - Refine hover and pressed styles for `variant="classic"`
   - Add missing pressed styles.
