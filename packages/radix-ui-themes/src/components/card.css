@@ -6,6 +6,9 @@
   border-radius: var(--card-border-radius);
   position: relative;
 
+  /* Don't inherit text alignment */
+  text-align: initial;
+
   /* Blend inset shadow with container background */
   --card-shadow-border-radius: calc(var(--card-border-radius) - var(--card-border-width));
   border: var(--card-border-width) solid transparent;
