@@ -45,6 +45,7 @@
     }
 
     &:where(.rt-high-contrast),
+    :where(.rt-CalloutRoot:not(.rt-high-contrast)) &,
     :where(.rt-Text, .rt-Heading):where([data-accent-color]:not(.rt-high-contrast)) & {
       text-decoration-line: underline;
       text-decoration-color: var(--accent-a6);
@@ -79,7 +80,7 @@
 
 /* Enhancement – hide underline for when Link's only child is a Code where underline is hard to see */
 /* prettier-ignore */
-.rt-Link:where(:has(.rt-Code:is(.rt-variant-soft, .rt-variant-solid, .rt-variant-outline):only-child)) {
+.rt-Link:where(:has(.rt-Code:not(.rt-variant-ghost):only-child)) {
   text-decoration-line: none;
 }
 .rt-Link:where(:has(.rt-Code:only-child)) {
