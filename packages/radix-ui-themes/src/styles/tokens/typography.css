@@ -76,6 +76,8 @@
   --code-font-style: normal;
   --code-font-weight: inherit;
   --code-letter-spacing: -0.007em;
+  --code-padding-top: 0.1em;
+  --code-padding-bottom: 0.1em;
 
   /* Strong */
 
@@ -100,6 +102,13 @@
   --quote-font-style: italic;
   --quote-font-weight: inherit;
   --quote-letter-spacing: -0.025em;
+
+  /* Tabs */
+
+  --tabs-trigger-active-letter-spacing: -0.01em;
+  --tabs-trigger-active-word-spacing: 0em;
+  --tabs-trigger-inactive-letter-spacing: 0em;
+  --tabs-trigger-inactive-word-spacing: 0em;
 }
 
 .radix-themes {

@@ -29,15 +29,23 @@
 .rt-TabsTriggerInner {
   position: absolute;
 
+  :where(.rt-TabsTrigger[data-state='inactive']) & {
+    letter-spacing: var(--tabs-trigger-inactive-letter-spacing);
+    word-spacing: var(--tabs-trigger-inactive-word-spacing);
+  }
+
   :where(.rt-TabsTrigger[data-state='active']) & {
     font-weight: var(--font-weight-medium);
-    letter-spacing: -0.01em;
+    letter-spacing: var(--tabs-trigger-active-letter-spacing);
+    word-spacing: var(--tabs-trigger-active-word-spacing);
   }
 }
 
 .rt-TabsTriggerInnerHidden {
   visibility: hidden;
   font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tabs-trigger-active-letter-spacing);
+  word-spacing: var(--tabs-trigger-active-word-spacing);
 }
 
 .rt-TabsContent {

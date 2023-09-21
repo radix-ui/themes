@@ -67,10 +67,6 @@
     - **[Upgrade guide]** If you preferred the previous look, pass `highContrast` prop to your callouts to make the text darker.
   - Use a gray background for a gray `variant="surface"`
   - Use a darker outline color `variant="outline"`
-- `DropdownMenu`, `ContextMenu`
-  - Reduce border radius when theme setting is `radius="full"`
-  - Refine horizontal paddings
-  - Refine label look and feel
 - `Checkbox`
   - **[Breaking]** Improve layout so that wrapping a checkbox in `Text` component automatically aligns the checkbox with the first line of the text.
     - **[Upgrade guide]** Make sure that your layouts with checkboxes look as expected. If not, wrap your checkboxes in `<Text as="label" size="...">`, using your preferred text size.
@@ -88,6 +84,13 @@
   - Fix an issue when `variant="ghost"` font size would be inconsistent depending on whether the size was based on a parent `Text` element or came from the code’s own `size` prop
   - Scale the outline thickness relative to the font size for `variant="outline"` and `variant="surface"`
   - Improve `::selection` background color for `variant="solid"`
+  - Add CSS variables to `.radix-themes` for customising the padding of `Code` variants in case the default values don’t work well with the vertical metrics of custom code font.
+    - `--code-padding-top`
+    - `--code-padding-bottom`
+- `DropdownMenu`, `ContextMenu`
+  - Reduce border radius when theme setting is `radius="full"`
+  - Refine horizontal paddings
+  - Refine label look and feel
 - `Grid`
   - Fix a bug when nesting `Grid` components could cause the descendant `Grid`’s to inherit some parent styles unintentionally.
 - `Inset`
@@ -136,6 +139,12 @@
   - Refine and normalise the look and feel of the disabled states.
 - `Table`
   - Refine how the outer border is applied so that it blends with the background outside of the component.
+- `Tabs`
+  - Add CSS variables to `.radix-themes` for customising the letter spacing and word spacing of active and inactive tabs so that you can minimise the apparent shift in weight in case the default values don’t work for your custom font.
+    - `--tabs-trigger-active-letter-spacing`
+    - `--tabs-trigger-active-word-spacing`
+    - `--tabs-trigger-inactive-letter-spacing`
+    - `--tabs-trigger-inactive-word-spacing`
 - `Text`
   - Add `as="label"` option to the `as` prop
   - Improve how prop types are resolved when `as` prop isn’t specified
