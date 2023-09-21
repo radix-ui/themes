@@ -83,6 +83,7 @@
   - Refine how the inner shadows are applied so that they blend with the background outside of the component.
 - `Code`
   - Add interactive styles when `Code` is within `Link`
+  - Fix an issue when `variant="ghost"` font size would be inconsistent depending on whether the size was based on a parent `Text` element or came from the code’s own `size` prop
   - Scale the outline thickness relative to the font size for `variant="outline"` and `variant="surface"`
   - Improve `::selection` background color for `variant="solid"`
 - `Grid`
