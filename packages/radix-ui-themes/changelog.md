@@ -57,6 +57,8 @@
   - Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class
     - The new `.rt-reset` class can be use to reset `a`, `button`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `ol`, `ul`, `p`, and `pre` tags when building custom components.
     - **[Upgrade guide]** If you were using these classes for your custom components, update the class name used.
+- `Blockquote`
+  - **[Breaking]** Remove `trim` prop
 - `Button`, `IconButton`
   - Refine and normalise the look and feel of the disabled states.
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
