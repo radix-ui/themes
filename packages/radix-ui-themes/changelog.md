@@ -61,6 +61,7 @@
   - **[Breaking]** Remove `trim` prop
 - `Button`, `IconButton`
   - Refine and normalise the look and feel of the disabled states.
+  - Apply disabled styles to other elements when using `disabled` together with `asChild`
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
 - `Callout`
   - Fix an issue when the callout would inherit text color unless an explicit `color` prop was passed.
