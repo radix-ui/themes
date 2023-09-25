@@ -3688,15 +3688,17 @@ export default function Sink() {
                                           <CalloutIcon>
                                             <InfoCircledIcon />
                                           </CalloutIcon>
-                                          <CalloutText>
-                                            We have detected multiple issues in your application
-                                            configuration file. Please read our{' '}
-                                            <Link href="/">Configuration Guide</Link> for more
-                                            details.
-                                          </CalloutText>
-                                          <IconButton size="1" variant="soft">
-                                            <Cross1Icon />
-                                          </IconButton>
+                                          <Flex gap="3">
+                                            <CalloutText>
+                                              We have detected multiple issues in your application
+                                              configuration file. Please read our{' '}
+                                              <Link href="/">Configuration Guide</Link> for more
+                                              details.
+                                            </CalloutText>
+                                            <IconButton size="1" variant="soft">
+                                              <Cross1Icon />
+                                            </IconButton>
+                                          </Flex>
                                         </CalloutRoot>
                                         <CalloutRoot variant={variant} color={color} highContrast>
                                           <CalloutIcon>
@@ -3720,49 +3722,69 @@ export default function Sink() {
                       ))}
                     </details>
 
-                    <Separator my="8" size="3" />
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See layout & size combinations
+                        </Text>
+                      </summary>
 
-                    <Flex direction="column" my="5" gap="5" style={{ maxWidth: 500 }}>
-                      <CalloutRoot>
-                        <CalloutText>
-                          We have detected multiple issues in your application configuration file.
-                          Please read our <Link href="/">Configuration Guide</Link> for more
-                          details.
-                        </CalloutText>
-                      </CalloutRoot>
+                      <Flex direction="column" my="5" gap="5" style={{ maxWidth: 500 }}>
+                        {calloutRootPropDefs.size.values.map((size) => (
+                          <React.Fragment key={size}>
+                            <CalloutRoot size={size}>
+                              <CalloutText trim="both">
+                                We have detected multiple issues in your application configuration
+                                file. Please read our <Link href="/">Configuration Guide</Link> for
+                                more details.
+                              </CalloutText>
+                            </CalloutRoot>
 
-                      <CalloutRoot>
-                        <CalloutText>There was an error in your configuration.</CalloutText>
-                        <CalloutText>
-                          We have detected multiple issues in your application configuration file.
-                          Please read our <Link href="/">Configuration Guide</Link> for more
-                          details.
-                        </CalloutText>
-                      </CalloutRoot>
+                            <CalloutRoot size={size}>
+                              <CalloutText trim="start">
+                                There was an error in your configuration.
+                              </CalloutText>
+                              <CalloutText trim="end">
+                                We have detected multiple issues in your application configuration
+                                file. Please read our <Link href="/">Configuration Guide</Link> for
+                                more details.
+                              </CalloutText>
+                            </CalloutRoot>
 
-                      <CalloutRoot>
-                        <CalloutIcon>
-                          <InfoCircledIcon />
-                        </CalloutIcon>
-                        <CalloutText>
-                          We have detected multiple issues in your application configuration file.
-                          Please read our <Link href="/">Configuration Guide</Link> for more
-                          details.
-                        </CalloutText>
-                      </CalloutRoot>
+                            <CalloutRoot size={size}>
+                              <CalloutIcon>
+                                <InfoCircledIcon
+                                  width={size === '3' ? 20 : 15}
+                                  height={size === '3' ? 20 : 15}
+                                />
+                              </CalloutIcon>
+                              <CalloutText>
+                                We have detected multiple issues in your application configuration
+                                file. Please read our <Link href="/">Configuration Guide</Link> for
+                                more details.
+                              </CalloutText>
+                            </CalloutRoot>
 
-                      <CalloutRoot>
-                        <CalloutIcon>
-                          <InfoCircledIcon />
-                        </CalloutIcon>
-                        <CalloutText>There was an error in your configuration.</CalloutText>
-                        <CalloutText>
-                          We have detected multiple issues in your application configuration file.
-                          Please read our <Link href="/">Configuration Guide</Link> for more
-                          details.
-                        </CalloutText>
-                      </CalloutRoot>
-                    </Flex>
+                            <CalloutRoot size={size}>
+                              <CalloutIcon>
+                                <InfoCircledIcon
+                                  width={size === '3' ? 20 : 15}
+                                  height={size === '3' ? 20 : 15}
+                                />
+                              </CalloutIcon>
+                              <CalloutText>There was an error in your configuration.</CalloutText>
+                              <CalloutText>
+                                We have detected multiple issues in your application configuration
+                                file. Please read our <Link href="/">Configuration Guide</Link> for
+                                more details.
+                              </CalloutText>
+                            </CalloutRoot>
+
+                            <Separator />
+                          </React.Fragment>
+                        ))}
+                      </Flex>
+                    </details>
                   </DocsSection>
 
                   <DocsSection title="Kbd">
