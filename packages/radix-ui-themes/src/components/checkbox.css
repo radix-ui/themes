@@ -48,8 +48,8 @@
       }
 
       & :where(.rt-CheckboxIndicatorIcon) {
-        width: calc(9px * var(--scaling));
-        height: calc(9px * var(--scaling));
+        width: calc(8px * var(--scaling));
+        height: calc(8px * var(--scaling));
       }
     }
     &:where(.rt-r-size-2) {
@@ -60,8 +60,8 @@
       }
 
       & :where(.rt-CheckboxIndicatorIcon) {
-        width: calc(11px * var(--scaling));
-        height: calc(11px * var(--scaling));
+        width: calc(10px * var(--scaling));
+        height: calc(10px * var(--scaling));
       }
     }
     &:where(.rt-r-size-3) {
@@ -72,8 +72,8 @@
       }
 
       & :where(.rt-CheckboxIndicatorIcon) {
-        width: calc(13px * var(--scaling));
-        height: calc(13px * var(--scaling));
+        width: calc(12px * var(--scaling));
+        height: calc(12px * var(--scaling));
       }
     }
   }
@@ -118,7 +118,7 @@
   }
   &:where([data-state='checked']) {
     background-color: var(--accent-9);
-    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a3));
+    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a2));
     box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
     color: var(--accent-9-contrast);
 

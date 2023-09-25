@@ -119,6 +119,11 @@
         letter-spacing: var(--letter-spacing-1);
       }
 
+      & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
+        width: calc(8px * var(--scaling));
+        height: calc(8px * var(--scaling));
+      }
+
       /* reset with :not:has so we still support browsers without :has */
       &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
         --base-menu-item-padding-left: var(--space-2);
@@ -146,6 +151,11 @@
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
+      }
+
+      & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
+        width: calc(10px * var(--scaling));
+        height: calc(10px * var(--scaling));
       }
 
       /* reset with :not:has so we still support browsers without :has */

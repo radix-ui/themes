@@ -188,7 +188,7 @@ const ContextMenuRadioItem = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
-        <ThickCheckIcon />
+        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.RadioItem>
   );
@@ -219,7 +219,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
-        <ThickCheckIcon />
+        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </ContextMenuPrimitive.ItemIndicator>
       {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
     </ContextMenuPrimitive.CheckboxItem>
@@ -256,7 +256,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">
-        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon" />
+        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon rt-ContextMenuSubTriggerIcon" />
       </div>
     </ContextMenuPrimitive.SubTrigger>
   );

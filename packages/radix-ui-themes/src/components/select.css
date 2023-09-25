@@ -231,8 +231,8 @@
         border-radius: var(--radius-1);
       }
       & :where(.rt-SelectItemIndicatorIcon) {
-        width: 9px;
-        height: 9px;
+        width: calc(8px * var(--scaling));
+        height: calc(8px * var(--scaling));
       }
     }
     &:where(.rt-r-size-2, .rt-r-size-3) {
@@ -258,8 +258,8 @@
         letter-spacing: var(--letter-spacing-2);
       }
       & :where(.rt-SelectItemIndicatorIcon) {
-        width: 9px;
-        height: 9px;
+        width: calc(10px * var(--scaling));
+        height: calc(10px * var(--scaling));
       }
     }
     &:where(.rt-r-size-3) {
@@ -268,8 +268,8 @@
         letter-spacing: var(--letter-spacing-3);
       }
       & :where(.rt-SelectItemIndicatorIcon) {
-        width: 11px;
-        height: 11px;
+        width: calc(10px * var(--scaling));
+        height: calc(10px * var(--scaling));
       }
     }
   }
