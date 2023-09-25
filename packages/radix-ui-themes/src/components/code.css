@@ -1,7 +1,8 @@
 .rt-Code {
+  --code-variant-font-size-adjust: calc(var(--code-font-size-adjust) * 0.95);
   box-sizing: border-box;
   font-family: var(--code-font-family);
-  font-size: calc(var(--code-font-size-adjust) * 1em);
+  font-size: calc(var(--code-variant-font-size-adjust) * 1em);
   font-style: var(--code-font-style);
   font-weight: var(--code-font-weight);
   line-height: 1.25;
@@ -20,47 +21,47 @@
 @breakpoints {
   .rt-Code {
     &:where(.rt-r-size-1) {
-      font-size: calc(var(--font-size-1) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-1) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-1);
       --letter-spacing: var(--letter-spacing-1);
     }
     &:where(.rt-r-size-2) {
-      font-size: calc(var(--font-size-2) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-2) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
     }
     &:where(.rt-r-size-3) {
-      font-size: calc(var(--font-size-3) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-3) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
     }
     &:where(.rt-r-size-4) {
-      font-size: calc(var(--font-size-4) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-4) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-4);
       --letter-spacing: var(--letter-spacing-4);
     }
     &:where(.rt-r-size-5) {
-      font-size: calc(var(--font-size-5) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-5) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-5);
       --letter-spacing: var(--letter-spacing-5);
     }
     &:where(.rt-r-size-6) {
-      font-size: calc(var(--font-size-6) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-6) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-6);
       --letter-spacing: var(--letter-spacing-6);
     }
     &:where(.rt-r-size-7) {
-      font-size: calc(var(--font-size-7) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-7) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-7);
       --letter-spacing: var(--letter-spacing-7);
     }
     &:where(.rt-r-size-8) {
-      font-size: calc(var(--font-size-8) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-8) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-8);
       --letter-spacing: var(--letter-spacing-8);
     }
     &:where(.rt-r-size-9) {
-      font-size: calc(var(--font-size-9) * var(--code-font-size-adjust));
+      font-size: calc(var(--font-size-9) * var(--code-variant-font-size-adjust));
       line-height: var(--line-height-9);
       --letter-spacing: var(--letter-spacing-9);
     }
@@ -73,24 +74,35 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Code:where(:not(.rt-variant-ghost)) {
-  padding: 0.1em 0.25em;
-  font-size: calc(95% * var(--code-font-size-adjust));
-}
-
 /* ghost */
 
 .rt-Code:where(.rt-variant-ghost) {
+  --code-variant-font-size-adjust: var(--code-font-size-adjust);
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
+  }
+
+  :where(.rt-Link) & {
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+    text-decoration-thickness: inherit;
+  }
+
+  :where(.rt-Link:has(&:only-child)) {
+    &:where(:focus-visible) .rt-Code {
+      text-decoration: none;
+      outline: 2px solid var(--accent-a8);
+      outline-offset: 2px;
+    }
   }
 }
 
 /* solid */
 
 .rt-Code:where(.rt-variant-solid) {
+  padding: var(--code-padding-top) 0.25em var(--code-padding-bottom);
   background-color: var(--accent-a9);
   color: var(--accent-9-contrast);
 
@@ -98,11 +110,35 @@
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
+
+  &::selection {
+    background-color: var(--accent-7);
+    color: var(--accent-12);
+  }
+
+  :where(.rt-Link:has(&:only-child)) {
+    & .rt-Code {
+      @media (hover: hover) {
+        &:where(:hover) {
+          background-color: var(--accent-10);
+        }
+        &:where(.rt-high-contrast:hover) {
+          background-color: var(--accent-12);
+          filter: var(--button-filter__solid-high-contrast-hover);
+        }
+      }
+    }
+    &:where(:focus-visible) .rt-Code {
+      outline: 2px solid var(--accent-a8);
+      outline-offset: 2px;
+    }
+  }
 }
 
 /* soft */
 
 .rt-Code:where(.rt-variant-soft) {
+  padding: var(--code-padding-top) 0.25em var(--code-padding-bottom);
   background-color: var(--accent-a3);
   color: var(--accent-a11);
 
@@ -110,16 +146,46 @@
     background-color: var(--accent-a4);
     color: var(--accent-12);
   }
+
+  :where(.rt-Link:has(&:only-child)) {
+    & .rt-Code {
+      @media (hover: hover) {
+        &:where(:hover) {
+          background-color: var(--accent-a4);
+        }
+      }
+    }
+    &:where(:focus-visible) .rt-Code {
+      outline: 2px solid var(--accent-8);
+      outline-offset: -1px;
+    }
+  }
 }
 
 /* outline */
 
 .rt-Code:where(.rt-variant-outline) {
-  box-shadow: inset 0 0 0 1px var(--accent-a8);
+  padding: var(--code-padding-top) 0.25em var(--code-padding-bottom);
+  box-shadow: inset 0 0 0 max(1px, 0.033em) var(--accent-a8);
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {
-    box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+    box-shadow: inset 0 0 0 max(1px, 0.033em) var(--accent-a7),
+      inset 0 0 0 max(1px, 0.033em) var(--gray-a11);
     color: var(--accent-12);
+  }
+
+  :where(.rt-Link:has(&:only-child)) {
+    & .rt-Code {
+      @media (hover: hover) {
+        &:where(:hover) {
+          background-color: var(--accent-a2);
+        }
+      }
+    }
+    &:where(:focus-visible) .rt-Code {
+      outline: 2px solid var(--accent-8);
+      outline-offset: -1px;
+    }
   }
 }

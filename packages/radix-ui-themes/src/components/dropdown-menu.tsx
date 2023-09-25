@@ -189,7 +189,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
-        <ThickCheckIcon />
+        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-DropdownMenuItemIndicatorIcon" />
       </DropdownMenuPrimitive.ItemIndicator>
     </DropdownMenuPrimitive.RadioItem>
   );
@@ -220,7 +220,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
-        <ThickCheckIcon />
+        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </DropdownMenuPrimitive.ItemIndicator>
       {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}
     </DropdownMenuPrimitive.CheckboxItem>
@@ -257,7 +257,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     >
       <Slottable>{children}</Slottable>
       <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
-        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon" />
+        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon rt-DropdownMenuSubtriggerIcon" />
       </div>
     </DropdownMenuPrimitive.SubTrigger>
   );

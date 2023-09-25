@@ -313,7 +313,7 @@ export default function Sink() {
                               content="The goal of typography is to relate font size, line height, and line width in a
                     proportional way that maximizes beauty and makes reading easier and more
                     pleasant."
-                              multiline
+                              style={{ maxWidth: 200 }}
                             >
                               <Button variant="solid" size="1">
                                 Multiline
@@ -845,34 +845,75 @@ export default function Sink() {
                             Alignment
                           </Text>
                         </Box>
-                        <Separator size="2" />
 
-                        <Flex direction="column" gap="3" style={{ maxWidth: 324 }} mt="4">
-                          <Text size="2">
+                        <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
+                          <Separator size="4" />
+
+                          <Text size="1" asChild>
                             <label>
-                              <Switch mr="2" />
-                              Agree to Terms and Conditions
+                              <Flex gap="2">
+                                <Switch size="1" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
                             </label>
                           </Text>
 
-                          <label>
-                            <Flex gap="2">
-                              <Switch />
-                              <Text size="2">
-                                I understand that these documents are confidential and cannot be
-                                shared with a third party.
-                              </Text>
-                            </Flex>
-                          </label>
+                          <Separator size="4" />
 
-                          {textPropDefs.size.values.slice(0, 4).map((size) => (
-                            <label key={size}>
-                              <Flex align="center" gap="2">
-                                <Switch />
-                                <Text size={size}>Agree to Terms and Conditions</Text>
+                          <Text size="2" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Switch size="1" />
+                                <Text>Agree to Terms and Conditions</Text>
                               </Flex>
                             </label>
-                          ))}
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="2" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Switch size="2" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="3" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Switch size="2" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="3" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Switch size="3" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="4" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Switch size="3" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
                         </Flex>
                       </div>
                     </Grid>
@@ -1241,36 +1282,75 @@ export default function Sink() {
                             Alignment
                           </Text>
                         </Box>
-                        <Separator size="3" />
 
-                        <Flex direction="column" gap="3" style={{ maxWidth: 300 }} mt="4">
-                          <Text size="2">
+                        <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
+                          <Separator size="4" />
+
+                          <Text size="1" asChild>
                             <label>
-                              <Checkbox mr="2" />
-                              Agree to Terms and Conditions
+                              <Flex gap="2">
+                                <Checkbox size="1" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
                             </label>
                           </Text>
 
-                          <Flex gap="2">
-                            <Checkbox id={`align-1`} />
-                            <Text size="2">
-                              <label htmlFor={`align-1`}>
-                                I understand that these documents are confidential and cannot be
-                                shared with a third party.
-                              </label>
-                            </Text>
-                          </Flex>
+                          <Separator size="4" />
 
-                          {textPropDefs.size.values.slice(0, 4).map((size) => (
-                            <Flex align="center" gap="2" key={size}>
-                              <Checkbox id={`align-size${size}`} />
-                              <Text size={size}>
-                                <label htmlFor={`align-size${size}`}>
-                                  Agree to Terms and Conditions
-                                </label>
-                              </Text>
-                            </Flex>
-                          ))}
+                          <Text size="2" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Checkbox size="1" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="2" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Checkbox size="2" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="3" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Checkbox size="2" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="3" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Checkbox size="3" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
+
+                          <Text size="4" asChild>
+                            <label>
+                              <Flex gap="2">
+                                <Checkbox size="3" />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </label>
+                          </Text>
+
+                          <Separator size="4" />
                         </Flex>
                       </div>
                     </Grid>
@@ -1407,37 +1487,147 @@ export default function Sink() {
                             Alignment
                           </Text>
                         </Box>
-                        <Separator size="3" />
 
-                        <Flex direction="column" gap="3" style={{ maxWidth: 200 }} mt="4">
-                          <RadioGroupRoot>
-                            <Text size="2">
-                              <label>
-                                <RadioGroupItem value="value" mr="2" />
-                                My radio
-                              </label>
-                            </Text>
+                        <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
+                          <Separator size="4" />
+
+                          <RadioGroupRoot defaultValue="1" size="1">
+                            <Flex direction="column" gap="1">
+                              <Text size="1" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="1" />
+                                    <Text>Agree to Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                              <Text size="1" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="2" />
+                                    <Text>Disagree with Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                            </Flex>
                           </RadioGroupRoot>
 
-                          <RadioGroupRoot>
-                            <label>
-                              <Flex gap="2">
-                                <RadioGroupItem value="value" />
-                                <Text size="2">Automatically based on mouse or trackpad</Text>
-                              </Flex>
-                            </label>
+                          <Separator size="4" />
+
+                          <RadioGroupRoot defaultValue="1" size="1">
+                            <Flex direction="column" gap="1">
+                              <Text size="2" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="1" />
+                                    <Text>Agree to Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                              <Text size="2" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="2" />
+                                    <Text>Disagree with Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                            </Flex>
                           </RadioGroupRoot>
 
-                          {textPropDefs.size.values.slice(0, 4).map((size) => (
-                            <RadioGroupRoot key={size}>
-                              <label>
-                                <Flex align="center" gap="2">
-                                  <RadioGroupItem value="value" />
-                                  <Text size={size}>Text size {size}</Text>
-                                </Flex>
-                              </label>
-                            </RadioGroupRoot>
-                          ))}
+                          <Separator size="4" />
+
+                          <RadioGroupRoot defaultValue="1" size="2">
+                            <Flex direction="column" gap="1">
+                              <Text size="2" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="1" />
+                                    <Text>Agree to Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                              <Text size="2" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="2" />
+                                    <Text>Disagree with Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                            </Flex>
+                          </RadioGroupRoot>
+
+                          <Separator size="4" />
+
+                          <RadioGroupRoot defaultValue="1" size="2">
+                            <Flex direction="column" gap="1">
+                              <Text size="3" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="1" />
+                                    <Text>Agree to Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                              <Text size="3" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="2" />
+                                    <Text>Disagree with Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                            </Flex>
+                          </RadioGroupRoot>
+
+                          <Separator size="4" />
+
+                          <RadioGroupRoot defaultValue="1" size="3">
+                            <Flex direction="column" gap="1">
+                              <Text size="3" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="1" />
+                                    <Text>Agree to Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                              <Text size="3" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="2" />
+                                    <Text>Disagree with Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                            </Flex>
+                          </RadioGroupRoot>
+
+                          <Separator size="4" />
+
+                          <RadioGroupRoot defaultValue="1" size="3">
+                            <Flex direction="column" gap="1">
+                              <Text size="4" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="1" />
+                                    <Text>Agree to Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                              <Text size="4" asChild>
+                                <label>
+                                  <Flex gap="2">
+                                    <RadioGroupItem value="2" />
+                                    <Text>Disagree with Terms and Conditions</Text>
+                                  </Flex>
+                                </label>
+                              </Text>
+                            </Flex>
+                          </RadioGroupRoot>
+
+                          <Separator size="4" />
                         </Flex>
                       </div>
                     </Grid>
@@ -3053,7 +3243,7 @@ export default function Sink() {
                       </tbody>
                     </table>
 
-                    <Grid columns="400px 400px" gap="5" mt="7">
+                    <Grid columns="400px 400px" gap="5" my="7">
                       {codePropDefs.variant.values.map((variant) => (
                         <Text as="p" size="3" key={variant}>
                           The CSS rule <Code variant={variant}>antialiased</Code> has been applied
@@ -3066,6 +3256,21 @@ export default function Sink() {
                             rendering between browsers
                           </Quote>
                           , particular between Chrome and Safari on MacOS.
+                        </Text>
+                      ))}
+                    </Grid>
+
+                    <Grid columns="400px 400px" gap="5" my="7">
+                      {codePropDefs.variant.values.map((variant) => (
+                        <Text as="p" size="3" key={variant}>
+                          The{' '}
+                          <Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code">
+                            <Code variant={variant}>
+                              {'<'}code{'>'}
+                            </Code>
+                          </Link>{' '}
+                          HTML element displays its contents styled in a fashion intended to
+                          indicate that the text is a short fragment of computer code.
                         </Text>
                       ))}
                     </Grid>
@@ -3514,6 +3719,50 @@ export default function Sink() {
                         </React.Fragment>
                       ))}
                     </details>
+
+                    <Separator my="8" size="3" />
+
+                    <Flex direction="column" my="5" gap="5" style={{ maxWidth: 500 }}>
+                      <CalloutRoot>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+
+                      <CalloutRoot>
+                        <CalloutText>There was an error in your configuration.</CalloutText>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+
+                      <CalloutRoot>
+                        <CalloutIcon>
+                          <InfoCircledIcon />
+                        </CalloutIcon>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+
+                      <CalloutRoot>
+                        <CalloutIcon>
+                          <InfoCircledIcon />
+                        </CalloutIcon>
+                        <CalloutText>There was an error in your configuration.</CalloutText>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+                    </Flex>
                   </DocsSection>
 
                   <DocsSection title="Kbd">

@@ -11,24 +11,9 @@
   }
 
   &:where(.rt-high-contrast),
+  :where(.rt-CalloutRoot:not(.rt-high-contrast)) &,
   :where(.rt-Text, .rt-Heading):where([data-accent-color]:not(.rt-high-contrast)) & {
     color: var(--accent-12);
-  }
-}
-
-/***************************************************************************************************
- *                                                                                                 *
- * SIZES                                                                                           *
- *                                                                                                 *
- ***************************************************************************************************/
-
-@breakpoints {
-  .rt-Link {
-    &:where(.rt-r-size-7),
-    &:where(.rt-r-size-8),
-    &:where(.rt-r-size-9) {
-      text-decoration-thickness: 2px;
-    }
   }
 }
 
@@ -41,7 +26,7 @@
 .rt-Link {
   text-decoration-line: none;
   text-decoration-style: solid;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: min(2px, max(1px, 0.05em));
   text-underline-offset: calc(0.025em + 2px);
   text-decoration-color: var(--accent-a5);
 
@@ -60,6 +45,7 @@
     }
 
     &:where(.rt-high-contrast),
+    :where(.rt-CalloutRoot:not(.rt-high-contrast)) &,
     :where(.rt-Text, .rt-Heading):where([data-accent-color]:not(.rt-high-contrast)) & {
       text-decoration-line: underline;
       text-decoration-color: var(--accent-a6);
@@ -90,4 +76,13 @@
 
 .rt-Link:where(:focus-visible) {
   text-decoration-line: none;
+}
+
+/* Enhancement – hide underline for when Link's only child is a Code where underline is hard to see */
+/* prettier-ignore */
+.rt-Link:where(:has(.rt-Code:not(.rt-variant-ghost):only-child)) {
+  text-decoration-line: none;
+}
+.rt-Link:where(:has(.rt-Code:only-child)) {
+  outline: none;
 }

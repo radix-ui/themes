@@ -29,7 +29,6 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     delayDuration,
     disableHoverableContent,
     content,
-    multiline,
     container,
     forceMount,
     ...tooltipContentProps
@@ -45,7 +44,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
             collisionPadding={10}
             {...tooltipContentProps}
             ref={forwardedRef}
-            className={classNames('rt-TooltipContent', className, { 'rt-multiline': multiline })}
+            className={classNames('rt-TooltipContent', className)}
           >
             <Text as="p" className="rt-TooltipText" size="1">
               {content}

@@ -383,7 +383,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                           width="6"
                           height="6"
                           style={{
-                            borderTopLeftRadius: 'var(--radius-5)',
+                            borderTopLeftRadius: value === 'full' ? '80%' : 'var(--radius-5)',
                             backgroundImage:
                               'linear-gradient(to bottom right, var(--accent-3), var(--accent-4))',
                             borderTop: '2px solid var(--accent-a8)',

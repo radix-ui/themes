@@ -1,16 +1,26 @@
 .rt-CalloutRoot {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+
   align-items: flex-start;
+  justify-content: flex-start;
   text-align: left;
+  color: var(--accent-a11);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
 }
 
 .rt-CalloutIcon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  vertical-align: bottom;
-  flex-shrink: 0;
+  grid-column-start: -2;
   height: var(--line-height);
+}
+
+/* Anything that’s not an icon goes to the right of the icon */
+.rt-CalloutRoot > :where(:not(.rt-CalloutIcon)) {
+  grid-column-start: -1;
 }
 
 /***************************************************************************************************

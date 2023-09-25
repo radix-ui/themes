@@ -16,9 +16,12 @@ type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
 type CommonTextProps = NiceIntersection<MarginProps, TextOwnProps>;
 type TextAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'span'>;
 type TextSpanProps = { as?: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
-type TextDivProps = { as?: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
-type TextPProps = { as?: 'p'; asChild?: never } & PropsWithoutRefOrColor<'p'>;
-type TextProps = CommonTextProps & (TextAsChildProps | TextSpanProps | TextDivProps | TextPProps);
+type TextDivProps = { as: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
+type TextLabelProps = { as: 'label'; asChild?: never } & PropsWithoutRefOrColor<'label'>;
+type TextPProps = { as: 'p'; asChild?: never } & PropsWithoutRefOrColor<'p'>;
+type TextProps = CommonTextProps &
+  (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
+
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {

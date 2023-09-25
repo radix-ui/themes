@@ -1,11 +1,9 @@
 .rt-RadioGroupItem {
   display: inline-flex;
   align-items: center;
-  vertical-align: bottom;
+  vertical-align: top;
   flex-shrink: 0;
-
-  /* Match Text size 2 line-height */
-  height: var(--line-height-2);
+  height: var(--line-height, var(--radio-group-item-size));
 }
 
 .rt-RadioGroupButton {
@@ -26,9 +24,11 @@
 
 .rt-RadioGroupIndicator {
   background-color: currentColor;
-  height: var(--radio-group-indicator-size);
-  width: var(--radio-group-indicator-size);
+  height: 100%;
+  width: 100%;
   border-radius: 100%;
+  /* Scale via transform to achieve perfect sub-pixel positioning */
+  transform: scale(0.4);
 }
 
 /***************************************************************************************************
@@ -40,12 +40,13 @@
 @breakpoints {
   .rt-RadioGroupRoot {
     &:where(.rt-r-size-1) {
-      --radio-group-item-size: var(--space-4);
-      --radio-group-indicator-size: calc(6px * var(--scaling));
+      --radio-group-item-size: calc(var(--space-4) * 0.875);
     }
     &:where(.rt-r-size-2) {
-      --radio-group-item-size: var(--space-5);
-      --radio-group-indicator-size: calc(10px * var(--scaling));
+      --radio-group-item-size: var(--space-4);
+    }
+    &:where(.rt-r-size-3) {
+      --radio-group-item-size: calc(var(--space-4) * 1.25);
     }
   }
 }
@@ -84,10 +85,12 @@
 .rt-RadioGroupRoot:where(.rt-variant-classic) {
   :where(.rt-RadioGroupButton[data-state='unchecked']) {
     background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--gray-7), var(--shadow-1);
   }
   :where(.rt-RadioGroupButton[data-state='checked']) {
     background-color: var(--accent-9);
+    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a3));
+    box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
     color: var(--accent-9-contrast);
   }
   &:where(.rt-high-contrast) :where(.rt-RadioGroupButton[data-state='checked']) {
@@ -97,6 +100,7 @@
   & :where(.rt-RadioGroupButton[data-disabled]) {
     box-shadow: var(--shadow-1);
     background-color: var(--gray-a3);
+    background-image: none;
     cursor: var(--cursor-disabled);
     color: var(--gray-a8);
   }

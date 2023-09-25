@@ -9,7 +9,7 @@ import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
 
-import type { GetPropDefTypes } from '../helpers';
+import type { ExtractPropsForTag, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 interface DialogRootProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
@@ -73,7 +73,7 @@ const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
 DialogTitle.displayName = 'DialogTitle';
 
 type DialogDescriptionElement = HTMLParagraphElement;
-type DialogDescriptionProps = Omit<React.ComponentPropsWithoutRef<typeof Text>, 'asChild'>;
+type DialogDescriptionProps = ExtractPropsForTag<typeof Text, 'p'>;
 const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescriptionProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Description asChild>

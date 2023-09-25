@@ -29,6 +29,8 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const Comp = asChild ? Slot : 'button';
   return (
     <Comp
+      // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
+      data-disabled={baseButtonProps.disabled}
       data-accent-color={color}
       data-radius={radius}
       {...baseButtonProps}
