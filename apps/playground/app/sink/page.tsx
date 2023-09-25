@@ -3719,6 +3719,50 @@ export default function Sink() {
                         </React.Fragment>
                       ))}
                     </details>
+
+                    <Separator my="8" size="3" />
+
+                    <Flex direction="column" my="5" gap="5" style={{ maxWidth: 500 }}>
+                      <CalloutRoot>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+
+                      <CalloutRoot>
+                        <CalloutText>There was an error in your configuration.</CalloutText>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+
+                      <CalloutRoot>
+                        <CalloutIcon>
+                          <InfoCircledIcon />
+                        </CalloutIcon>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+
+                      <CalloutRoot>
+                        <CalloutIcon>
+                          <InfoCircledIcon />
+                        </CalloutIcon>
+                        <CalloutText>There was an error in your configuration.</CalloutText>
+                        <CalloutText>
+                          We have detected multiple issues in your application configuration file.
+                          Please read our <Link href="/">Configuration Guide</Link> for more
+                          details.
+                        </CalloutText>
+                      </CalloutRoot>
+                    </Flex>
                   </DocsSection>
 
                   <DocsSection title="Kbd">
