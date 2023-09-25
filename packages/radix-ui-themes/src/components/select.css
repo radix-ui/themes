@@ -35,7 +35,7 @@
   --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
 
   overflow: hidden;
-  background-color: var(--select-content-bg);
+  background-color: var(--color-panel-solid);
 
   &:where([data-side]) {
     min-width: var(--radix-select-trigger-width);
@@ -313,7 +313,7 @@
 
 /* prettier-ignore */
 .radix-themes {
-  --select-trigger__classic__box-shadow:
+  --select-trigger-classic-box-shadow:
 		inset 0 0 0 1px var(--gray-a5),
 		inset 0 2px 1px var(--white-a11),
 		inset 0 -2px 1px var(--gray-a4)
@@ -323,7 +323,7 @@
 /* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --select-trigger__classic__box-shadow:
+  --select-trigger-classic-box-shadow:
     inset 0 0 0 1px var(--white-a4),
     inset 0 1px 1px var(--white-a4),
     inset 0 -1px 1px var(--black-a9)
@@ -333,7 +333,7 @@
 .rt-SelectTrigger:where(.rt-variant-classic) {
   color: var(--gray-12);
   background-image: linear-gradient(var(--gray-2), var(--gray-1));
-  box-shadow: var(--select-trigger__classic__box-shadow);
+  box-shadow: var(--select-trigger-classic-box-shadow);
   position: relative;
   z-index: 0;
 
@@ -352,7 +352,7 @@
 
   @media (hover: hover) {
     &:where(:hover) {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger__classic__box-shadow);
+      box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger-classic-box-shadow);
 
       &::before {
         background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
@@ -361,7 +361,7 @@
     }
   }
   &:where([data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger__classic__box-shadow);
+    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger-classic-box-shadow);
 
     &::before {
       background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
@@ -372,7 +372,7 @@
     cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     /* Use disabled button style for the shadow */
-    box-shadow: var(--button__classic-disabled__shadow);
+    box-shadow: var(--base-button-classic-disabled-box-shadow);
     &::before {
       background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
         linear-gradient(var(--color-surface), transparent);
@@ -440,7 +440,6 @@
  ***************************************************************************************************/
 
 .rt-SelectContent {
-  --select-content-bg: var(--color-panel-solid);
   box-shadow: var(--shadow-5);
 }
 

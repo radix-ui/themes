@@ -67,7 +67,7 @@
 .rt-TabsTriggerInner,
 .rt-TabsTriggerInnerHidden {
   padding: var(--tabs-trigger-inner-padding-y) var(--tabs-trigger-inner-padding-x);
-  border-radius: var(--tabs-trigger-inner-radius);
+  border-radius: var(--tabs-trigger-inner-border-radius);
 }
 
 @breakpoints {
@@ -80,7 +80,7 @@
       --tabs-trigger-padding-x: var(--space-1);
       --tabs-trigger-inner-padding-x: var(--space-1);
       --tabs-trigger-inner-padding-y: calc(var(--space-1) * 0.5);
-      --tabs-trigger-inner-radius: var(--radius-1);
+      --tabs-trigger-inner-border-radius: var(--radius-1);
     }
     &:where(.rt-r-size-2) {
       height: var(--space-7);
@@ -90,7 +90,7 @@
       --tabs-trigger-padding-x: var(--space-2);
       --tabs-trigger-inner-padding-x: var(--space-2);
       --tabs-trigger-inner-padding-y: var(--space-1);
-      --tabs-trigger-inner-radius: var(--radius-2);
+      --tabs-trigger-inner-border-radius: var(--radius-2);
     }
   }
 }

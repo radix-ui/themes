@@ -38,10 +38,10 @@
   text-transform: uppercase;
 
   &:where(.rt-one-letter) {
-    font-size: var(--avatar-font-size-one-letter);
+    font-size: var(--avatar-one-letter-font-size);
   }
   &:where(.rt-two-letters) {
-    font-size: var(--avatar-font-size-two-letters, var(--avatar-font-size-one-letter));
+    font-size: var(--avatar-two-letters-font-size, var(--avatar-one-letter-font-size));
   }
 }
 
@@ -50,59 +50,59 @@
     &:where(.rt-r-size-1) {
       --avatar-size: var(--space-5);
       border-radius: max(var(--radius-2), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-2);
-      --avatar-font-size-two-letters: var(--font-size-1);
+      --avatar-one-letter-font-size: var(--font-size-2);
+      --avatar-two-letters-font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
     }
     &:where(.rt-r-size-2) {
       --avatar-size: var(--space-6);
       border-radius: max(var(--radius-2), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-3);
-      --avatar-font-size-two-letters: var(--font-size-2);
+      --avatar-one-letter-font-size: var(--font-size-3);
+      --avatar-two-letters-font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
     }
     &:where(.rt-r-size-3) {
       --avatar-size: var(--space-7);
       border-radius: max(var(--radius-3), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-4);
-      --avatar-font-size-two-letters: var(--font-size-3);
+      --avatar-one-letter-font-size: var(--font-size-4);
+      --avatar-two-letters-font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
     }
     &:where(.rt-r-size-4) {
       --avatar-size: var(--space-8);
       border-radius: max(var(--radius-3), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-5);
-      --avatar-font-size-two-letters: var(--font-size-4);
+      --avatar-one-letter-font-size: var(--font-size-5);
+      --avatar-two-letters-font-size: var(--font-size-4);
       letter-spacing: var(--letter-spacing-4);
     }
     &:where(.rt-r-size-5) {
       --avatar-size: var(--space-9);
       border-radius: max(var(--radius-4), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-6);
+      --avatar-one-letter-font-size: var(--font-size-6);
       letter-spacing: var(--letter-spacing-6);
     }
     &:where(.rt-r-size-6) {
       --avatar-size: 80px;
       border-radius: max(var(--radius-5), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-7);
+      --avatar-one-letter-font-size: var(--font-size-7);
       letter-spacing: var(--letter-spacing-7);
     }
     &:where(.rt-r-size-7) {
       --avatar-size: 96px;
       border-radius: max(var(--radius-5), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-7);
+      --avatar-one-letter-font-size: var(--font-size-7);
       letter-spacing: var(--letter-spacing-7);
     }
     &:where(.rt-r-size-8) {
       --avatar-size: 128px;
       border-radius: max(var(--radius-6), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-8);
+      --avatar-one-letter-font-size: var(--font-size-8);
       letter-spacing: var(--letter-spacing-8);
     }
     &:where(.rt-r-size-9) {
       --avatar-size: 160px;
       border-radius: max(var(--radius-6), var(--radius-full));
-      --avatar-font-size-one-letter: var(--font-size-9);
+      --avatar-one-letter-font-size: var(--font-size-9);
       letter-spacing: var(--letter-spacing-9);
     }
   }

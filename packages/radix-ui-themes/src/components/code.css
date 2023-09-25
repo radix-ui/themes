@@ -124,7 +124,7 @@
         }
         &:where(.rt-high-contrast:hover) {
           background-color: var(--accent-12);
-          filter: var(--button-filter__solid-high-contrast-hover);
+          filter: var(--base-button-solid-high-contrast-hover-filter);
         }
       }
     }

@@ -1,6 +1,6 @@
 .rt-TableRootTable {
-  --table-row-background: transparent;
-  --table-row-border-bottom: inset 0 -1px var(--gray-a5);
+  --table-row-background-color: transparent;
+  --table-row-box-shadow: inset 0 -1px var(--gray-a5);
 
   width: 100%;
   text-align: left;
@@ -28,8 +28,8 @@
 }
 
 .rt-TableCell {
-  background-color: var(--table-row-background);
-  box-shadow: var(--table-row-border-bottom);
+  background-color: var(--table-row-background-color);
+  box-shadow: var(--table-row-box-shadow);
   box-sizing: border-box;
   vertical-align: inherit;
   padding: var(--table-cell-padding);
@@ -114,10 +114,10 @@
     overflow: hidden;
 
     & :where(.rt-TableHeader) {
-      --table-row-background: var(--gray-a2);
+      --table-row-background-color: var(--gray-a2);
     }
     & :where(.rt-TableBody) :where(.rt-TableRow:last-child) {
-      --table-row-border-bottom: none;
+      --table-row-box-shadow: none;
     }
   }
 }

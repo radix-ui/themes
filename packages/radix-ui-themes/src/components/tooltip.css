@@ -1,7 +1,6 @@
 .rt-TooltipContent {
   padding: var(--space-1) var(--space-2);
-  --tooltip-bg: var(--gray-12);
-  background-color: var(--tooltip-bg);
+  background-color: var(--gray-12);
   border-radius: var(--radius-2);
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
@@ -34,5 +33,5 @@
 }
 
 .rt-TooltipArrow {
-  fill: var(--tooltip-bg);
+  fill: var(--gray-12);
 }

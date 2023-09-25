@@ -1,8 +1,14 @@
-@import './breakpoints.css';
-
-@import './reset.css';
-@import './tokens.css';
 @import './animations.css';
+@import './breakpoints.css';
+@import './reset.css';
+
+@import './tokens/color.css';
+@import './tokens/cursor.css';
+@import './tokens/radius.css';
+@import './tokens/scaling.css';
+@import './tokens/shadow.css';
+@import './tokens/space.css';
+@import './tokens/typography.css';
 
 @import '../components/alert-dialog.css';
 @import '../components/avatar.css';
