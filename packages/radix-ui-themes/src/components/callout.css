@@ -14,13 +14,13 @@
 .rt-CalloutIcon {
   display: flex;
   align-items: center;
-  grid-column-end: -1;
+  grid-column-start: -2;
   height: var(--line-height);
 }
 
 /* Anything that’s not an icon goes to the right of the icon */
 .rt-CalloutRoot > :where(:not(.rt-CalloutIcon)) {
-  grid-column: 1 / 2;
+  grid-column-start: -1;
 }
 
 /***************************************************************************************************
