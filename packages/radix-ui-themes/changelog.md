@@ -64,6 +64,7 @@
   - Apply disabled styles to other elements when using `disabled` together with `asChild`
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
 - `Callout`
+  - Tweak how the layout works to allow nesting multiple `Callout.Text` elements within `Callout.Root`
   - Fix an issue when the callout would inherit text color unless an explicit `color` prop was passed.
     - **[Upgrade guide]** If you preferred the previous look, pass `highContrast` prop to your callouts to make the text darker.
   - Use a gray background for a gray `variant="surface"`
