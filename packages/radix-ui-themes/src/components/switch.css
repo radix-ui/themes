@@ -170,7 +170,7 @@
       box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1),
         0 0 0 1px var(--black-a1), 0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 
-      :where(.rt-SwitchRoot.rt-high-contrast) & {
+      &:where(.rt-high-contrast) {
         box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1),
           0 0 0 1px var(--black-a2), -1px 0 1px var(--black-a2);
       }
@@ -249,7 +249,7 @@
       box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1),
         0 0 0 1px var(--black-a1), 0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 
-      :where(.rt-SwitchRoot.rt-high-contrast) & {
+      &:where(.rt-high-contrast) {
         box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1),
           0 0 0 1px var(--black-a2), -1px 0 1px var(--black-a2);
       }
@@ -286,7 +286,7 @@
       &::before {
         /* prettier-ignore */
         background-image:
-          linear-gradient(to right, var(--switch-button-overlay__high-contrast-checked) 40%, transparent 60%),
+          linear-gradient(to right, var(--switch-button-high-contrast-checked-color-overlay) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
           linear-gradient(to right, var(--accent-a6) 40%, var(--white-a1) 60%),
