@@ -5,9 +5,8 @@
   outline: 0;
   overflow: auto;
 
-  /* used by Inset */
-  --inset-padding: var(--popover-padding);
-  padding: var(--inset-padding);
+  --inset-padding: var(--popover-content-padding);
+  padding: var(--popover-content-padding);
 
   transform-origin: var(--radix-popover-content-transform-origin);
 }
@@ -21,19 +20,19 @@
 @breakpoints {
   .rt-PopoverContent {
     &:where(.rt-r-size-1) {
-      --popover-padding: var(--space-3);
+      --popover-content-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
     &:where(.rt-r-size-2) {
-      --popover-padding: var(--space-4);
+      --popover-content-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
     &:where(.rt-r-size-3) {
-      --popover-padding: var(--space-5);
+      --popover-content-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
     &:where(.rt-r-size-4) {
-      --popover-padding: var(--space-6);
+      --popover-content-padding: var(--space-6);
       border-radius: var(--radius-5);
     }
   }

@@ -38,6 +38,7 @@
       - Change `--white-a11` to `--white-a9`
       - Change `--white-a12` to `--white-a11` or `--white-a12`
   - Refine the shadow scale.
+  - Change some internal component-specific CSS variables to follow a naming pattern.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
@@ -134,6 +135,7 @@
 - `Slider`
   - Refine the shadows and colors used in the components.
   - Refine and normalise the look and feel of the disabled states.
+  - Fix an issue where high contrast sliders would have an incorrect disabled style.
 - `Switch`
   - **[Breaking]** Improve layout so that wrapping a switch in `Switch` component automatically aligns the switch with the first line of the text.
     - **[Upgrade guide]** Make sure that your layouts with switches look as expected. If not, wrap your switches in `<Text as="label" size="...">`, using your preferred text size.

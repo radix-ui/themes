@@ -76,15 +76,15 @@
   .rt-ScrollAreaScrollbar {
     &:where(.rt-r-size-1) {
       --scrollarea-scrollbar-size: var(--space-1);
-      --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
+      --scrollarea-scrollbar-border-radius: max(var(--radius-1), var(--radius-full));
     }
     &:where(.rt-r-size-2) {
       --scrollarea-scrollbar-size: var(--space-2);
-      --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
+      --scrollarea-scrollbar-border-radius: max(var(--radius-1), var(--radius-full));
     }
     &:where(.rt-r-size-3) {
       --scrollarea-scrollbar-size: var(--space-3);
-      --scrollarea-scrollbar-radius: max(var(--radius-1), var(--radius-full));
+      --scrollarea-scrollbar-border-radius: max(var(--radius-1), var(--radius-full));
     }
   }
 }
@@ -97,7 +97,7 @@
 
 .rt-ScrollAreaScrollbar {
   background-color: var(--gray-a3);
-  border-radius: var(--scrollarea-scrollbar-radius);
+  border-radius: var(--scrollarea-scrollbar-border-radius);
 
   animation-duration: 150ms;
   animation-timing-function: ease-out;

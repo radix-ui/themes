@@ -75,12 +75,12 @@
     inset: calc(-0.25 * var(--slider-track-size));
     background-color: white;
     border-radius: max(var(--radius-1), var(--radius-thumb));
-    box-shadow: var(--slider-thumb-shadow);
+    box-shadow: var(--slider-thumb-box-shadow);
     cursor: var(--cursor-slider-thumb);
   }
 
   &:where(:focus-visible)::after {
-    box-shadow: var(--slider-thumb-shadow), 0 0 0 3px var(--accent-3), 0 0 0 5px var(--accent-8);
+    box-shadow: var(--slider-thumb-box-shadow), 0 0 0 3px var(--accent-3), 0 0 0 5px var(--accent-8);
   }
 
   &:where(:active) {
@@ -132,7 +132,7 @@
   }
 
   & :where(.rt-SliderThumb) {
-    --slider-thumb-shadow: 0 0 0 1px var(--black-a4);
+    --slider-thumb-box-shadow: 0 0 0 1px var(--black-a4);
 
     &:where([data-disabled])::after {
       background-color: var(--gray-1);
@@ -162,13 +162,18 @@
 
   & :where(.rt-SliderRange) {
     background-color: var(--accent-9);
-    /* range shadow shouldn't change between light and dark mode because of the coloured fill */
-    box-shadow: inset 0 0 0 1px var(--gray-a6), inset 0 1.5px 2px 0 var(--black-a2);
+    box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4),
+      inset 0 0 0 1px var(--black-a1), inset 0 1.5px 2px 0 var(--black-a2);
+
+    &:where(.rt-high-contrast) {
+      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2),
+        inset 0 1.5px 2px 0 var(--black-a2);
+    }
   }
 
   & :where(.rt-SliderThumb) {
     /* prettier-ignore */
-    --slider-thumb-shadow:
+    --slider-thumb-box-shadow:
       0 0 0 1px var(--black-a3),
       0 1px 3px var(--black-a1),
       0 2px 4px -1px var(--black-a1);
@@ -184,10 +189,9 @@
 
 .rt-SliderRoot:where(.rt-variant-soft) {
   & :where(.rt-SliderTrack) {
-    background-color: var(--gray-a3);
-
-    /* blend gray with accent */
-    background-image: linear-gradient(to right, var(--accent-a3), var(--accent-a3));
+    background-color: var(--gray-a4);
+    /* Blend with white to increase contrast in dark mode */
+    background-image: linear-gradient(var(--white-a1), var(--white-a1));
 
     &:where([data-disabled]) {
       background-color: var(--gray-a4);
@@ -196,11 +200,12 @@
   }
 
   & :where(.rt-SliderRange) {
-    background-color: var(--accent-a7);
+    background-image: linear-gradient(var(--accent-a5), var(--accent-a5));
+    background-color: var(--accent-6);
   }
 
   & :where(.rt-SliderThumb) {
-    --slider-thumb-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2),
+    --slider-thumb-box-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2),
       0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
 
     &:where([data-disabled])::after {
@@ -213,29 +218,25 @@
 /* all high-contrast */
 
 .radix-themes {
-  --slider-range-background-image__high-contrast: linear-gradient(
-    to right,
-    var(--black-a8),
-    var(--black-a8)
-  );
+  --slider-range-high-contrast-background-image: linear-gradient(var(--black-a8), var(--black-a8));
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --slider-range-background-image__high-contrast: none;
+  --slider-range-high-contrast-background-image: none;
 }
 .rt-SliderRoot:where(.rt-high-contrast) {
   & :where(.rt-SliderRange) {
     /* blend black and accent */
-    background-image: var(--slider-range-background-image__high-contrast);
+    background-image: var(--slider-range-high-contrast-background-image);
   }
 }
 
 .radix-themes {
-  --slider-blend-mode__disabled: multiply;
+  --slider-disabled-blend-mode: multiply;
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --slider-blend-mode__disabled: screen;
+  --slider-disabled-blend-mode: screen;
 }
 
 /* all disabled Sliders */
@@ -243,10 +244,11 @@
 [data-disabled] {
   .rt-SliderRoot:where(&) {
     cursor: var(--cursor-disabled);
-    mix-blend-mode: var(--slider-blend-mode__disabled);
+    mix-blend-mode: var(--slider-disabled-blend-mode);
   }
   .rt-SliderRange:where(&) {
     background-color: transparent;
+    background-image: none;
     box-shadow: none;
   }
 }

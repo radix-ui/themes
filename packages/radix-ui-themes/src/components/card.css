@@ -10,7 +10,7 @@
   text-align: initial;
 
   /* Blend inset shadow with container background */
-  --card-shadow-border-radius: calc(var(--card-border-radius) - var(--card-border-width));
+  --card-after-border-radius: calc(var(--card-border-radius) - var(--card-border-width));
   border: var(--card-border-width) solid transparent;
   background-clip: padding-box;
 
@@ -128,7 +128,7 @@
   background-color: var(--color-panel);
 
   &::after {
-    border-radius: var(--card-shadow-border-radius);
+    border-radius: var(--card-after-border-radius);
     box-shadow: 0 0 0 1px var(--gray-a6);
     /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
     box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
@@ -160,7 +160,7 @@
    * Make sure that hovered shadows length matches the shadows length at rest for clean transitions:
    * https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow#interpolation
    */
-  --card-classic-box-shadow-hover:
+  --card-classic-hover-box-shadow:
     0 0 0 1px var(--gray-a5),
     0 1px 1px 1px var(--gray-a4),
     0 2px 1px -1px var(--gray-a3),
@@ -171,7 +171,7 @@
 /* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --card-classic-box-shadow-hover:
+  --card-classic-hover-box-shadow:
     0 0 0 1px var(--gray-a7),
     0 0 1px 1px var(--gray-a7),
     0 0 1px -1px var(--gray-a4),
@@ -184,7 +184,7 @@
 @supports (color: color-mix(in oklab, white, black)) {
   :is(.dark, .dark-theme),
   :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-    --card-classic-box-shadow-hover:
+    --card-classic-hover-box-shadow:
       0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-8)),
       0 0 1px 1px var(--gray-a7),
       0 0 1px -1px var(--gray-a4),
@@ -199,7 +199,7 @@
   background-color: var(--color-panel);
 
   &::after {
-    border-radius: var(--card-shadow-border-radius);
+    border-radius: var(--card-after-border-radius);
     /* A transparent shadow to transition smoothly to `:active` */
     box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
     transition: box-shadow 120ms;
@@ -210,7 +210,7 @@
       &:where(:hover) {
         &::after {
           transition-duration: 40ms;
-          box-shadow: var(--card-classic-box-shadow-hover);
+          box-shadow: var(--card-classic-hover-box-shadow);
         }
       }
     }

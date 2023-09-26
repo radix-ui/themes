@@ -43,7 +43,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
     >
       <SliderPrimitive.Track className="rt-SliderTrack">
         <SliderPrimitive.Range
-          className="rt-SliderRange"
+          className={classNames('rt-SliderRange', { 'rt-high-contrast': highContrast })}
           data-inverted={sliderProps.inverted ? '' : undefined}
         />
       </SliderPrimitive.Track>

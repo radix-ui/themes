@@ -1,11 +1,3 @@
-.radix-themes {
-  --theme-panel--focus-ring-color: black;
-}
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --theme-panel--focus-ring-color: white;
-}
-
 .rt-ThemePanelShortcut {
   &:where(:focus-visible) {
     outline-style: solid;
@@ -26,7 +18,6 @@
   margin: 0;
   outline: none;
   outline-width: 2px;
-  outline-offset: 2px;
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -39,9 +30,11 @@
 }
 
 .rt-ThemePanelSwatchInput {
+  outline-offset: 2px;
+
   &:where(:checked) {
     outline-style: solid;
-    outline-color: var(--theme-panel--focus-ring-color);
+    outline-color: var(--gray-12);
   }
   &:where(:focus-visible) {
     outline-style: solid;
@@ -55,12 +48,15 @@
 }
 
 .rt-ThemePanelRadioCardInput {
+  outline-offset: -1px;
+
   &:where(:checked) {
-    box-shadow: inset 0 0 0 1px var(--theme-panel--focus-ring-color),
-      0 0 0 1px var(--theme-panel--focus-ring-color);
+    outline-style: solid;
+    outline-color: var(--gray-12);
   }
   &:where(:focus-visible) {
     background-color: var(--accent-a3);
-    box-shadow: inset 0 0 0 1px var(--accent-9), 0 0 0 1px var(--accent-9);
+    outline-style: solid;
+    outline-color: var(--accent-9);
   }
 }
