@@ -65,6 +65,7 @@
   - Improve `variant="classic"` look and feel across different accent colors in light and dark mode.
 - `Callout`
   - Tweak how the layout works to allow nesting multiple `Callout.Text` elements within `Callout.Root`
+    - **[Upgrade guide]** If you were relying on how `Callout.Root` happened to provide flex properties, change your layout to use a `Flex` component explicitly.
   - Fix an issue when the callout would inherit text color unless an explicit `color` prop was passed.
     - **[Upgrade guide]** If you preferred the previous look, pass `highContrast` prop to your callouts to make the text darker.
   - Use a gray background for a gray `variant="surface"`
@@ -119,6 +120,7 @@
   - Refine label look and feel
   - Rework `size="3"`
 - `ScrollArea`
+  - Upgrade the primitive version, fixing an upstream type issue
   - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
     - **[Upgarde guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
       - `--scrollarea-scrollbar-horizontal-margin-top`
