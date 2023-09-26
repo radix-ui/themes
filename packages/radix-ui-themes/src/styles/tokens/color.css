@@ -172,11 +172,11 @@
 
   /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors */
   --color-transparent: rgb(0 0 0 / 0);
-}
-@supports (color: color(display-p3 1 1 1)) {
-  @media (color-gamut: p3) {
-    .radix-themes {
-      --color-transparent: color(display-p3 0 0 0 / 0);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      & {
+        --color-transparent: color(display-p3 0 0 0 / 0);
+      }
     }
   }
 }
@@ -229,11 +229,11 @@
   --grass-9-contrast: white;
   --orange-9-contrast: white;
   --brown-9-contrast: white;
-  --sky-9-contrast: hsl(210, 12%, 12.5%); /* light mode slate 12 */
-  --mint-9-contrast: hsl(155, 12%, 11.5%); /* light mode sage 12 */
-  --lime-9-contrast: hsl(110, 8%, 12%); /* light mode olive 12 */
-  --yellow-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
-  --amber-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
+  --sky-9-contrast: #1c2024; /* light mode slate 12 */
+  --mint-9-contrast: #1a211e; /* light mode sage 12 */
+  --lime-9-contrast: #1d211c; /* light mode olive 12 */
+  --yellow-9-contrast: #21201c; /* light mode sand 12 */
+  --amber-9-contrast: #21201c; /* light mode sand 12 */
   --gold-9-contrast: white;
   --bronze-9-contrast: white;
   --gray-9-contrast: white;
@@ -242,73 +242,173 @@
 /* additional step-2 translucent grays for dark mode panels */
 .dark,
 .dark-theme {
-  --gray-2-translucent: rgba(29, 29, 29, 0.7);
-  --mauve-2-translucent: rgba(32, 27, 33, 0.7);
-  --slate-2-translucent: rgba(29, 29, 33, 0.7);
-  --sage-2-translucent: rgba(24, 30, 27, 0.7);
-  --olive-2-translucent: rgba(26, 30, 26, 0.7);
-  --sand-2-translucent: rgba(29, 29, 26, 0.7);
+  --gray-2-translucent: #1d1d1db3;
+  --mauve-2-translucent: #1e1d1eb3;
+  --slate-2-translucent: #1b1d1eb3;
+  --sage-2-translucent: #1a1c1bb3;
+  --olive-2-translucent: #1b1c1ab3;
+  --sand-2-translucent: #1d1d1bb3;
+
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      & {
+        --gray-2-translucent: color(display-p3 0.1137 0.1137 0.1137 / 0.7);
+        --mauve-2-translucent: color(display-p3 0.1176 0.1137 0.1176 / 0.7);
+        --slate-2-translucent: color(display-p3 0.1059 0.1137 0.1176 / 0.7);
+        --sage-2-translucent: color(display-p3 0.102 0.1137 0.1059 / 0.7);
+        --olive-2-translucent: color(display-p3 0.1059 0.1137 0.102 / 0.7);
+        --sand-2-translucent: color(display-p3 0.1137 0.1137 0.1059 / 0.7);
+      }
+    }
+  }
 }
 
 /* additional surface colors */
 :root,
 .light,
 .light-theme {
-  --tomato-surface: var(--tomato-a2);
-  --red-surface: var(--red-a2);
-  --ruby-surface: var(--ruby-a2);
-  --crimson-surface: var(--crimson-a2);
-  --pink-surface: var(--pink-a2);
-  --plum-surface: var(--plum-a2);
-  --purple-surface: var(--purple-a2);
-  --violet-surface: var(--violet-a2);
-  --iris-surface: var(--iris-a2);
-  --indigo-surface: var(--indigo-a2);
-  --blue-surface: var(--blue-a2);
-  --cyan-surface: var(--cyan-a2);
-  --teal-surface: var(--teal-a2);
-  --jade-surface: var(--jade-a2);
-  --green-surface: var(--green-a2);
-  --grass-surface: var(--grass-a2);
-  --orange-surface: var(--orange-a2);
-  --brown-surface: var(--brown-a2);
-  --sky-surface: var(--sky-a2);
-  --mint-surface: var(--mint-a2);
-  --lime-surface: var(--lime-a2);
-  --yellow-surface: var(--yellow-a2);
-  --amber-surface: var(--amber-a2);
-  --gold-surface: var(--gold-a2);
-  --bronze-surface: var(--bronze-a2);
-  --gray-surface: white;
+  --gray-surface: #ffffffcc;
+  --mauve-surface: #ffffffcc;
+  --slate-surface: #ffffffcc;
+  --sage-surface: #ffffffcc;
+  --olive-surface: #ffffffcc;
+  --sand-surface: #ffffffcc;
+  --tomato-surface: #fff6f5cc;
+  --red-surface: #fff5f5cc;
+  --ruby-surface: #fff5f6cc;
+  --crimson-surface: #fef5f8cc;
+  --pink-surface: #fef5facc;
+  --plum-surface: #fdf5fdcc;
+  --purple-surface: #faf5fecc;
+  --violet-surface: #f9f6ffcc;
+  --iris-surface: #f6f6ffcc;
+  --indigo-surface: #f5f8ffcc;
+  --blue-surface: #f1f9ffcc;
+  --cyan-surface: #eff9facc;
+  --teal-surface: #f0faf8cc;
+  --jade-surface: #f1faf5cc;
+  --green-surface: #f1faf4cc;
+  --grass-surface: #f3faf3cc;
+  --brown-surface: #fbf8f4cc;
+  --bronze-surface: #fdf5f3cc;
+  --gold-surface: #f9f8efcc;
+  --sky-surface: #eef9fdcc;
+  --mint-surface: #effaf8cc;
+  --lime-surface: #f6f9f0cc;
+  --yellow-surface: #fefbe4cc;
+  --amber-surface: #fefae4cc;
+  --orange-surface: #fff5e9cc;
+
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      & {
+        --gray-surface: color(display-p3 1 1 1 / 0.8);
+        --mauve-surface: color(display-p3 1 1 1 / 0.8);
+        --slate-surface: color(display-p3 1 1 1 / 0.8);
+        --sage-surface: color(display-p3 1 1 1 / 0.8);
+        --olive-surface: color(display-p3 1 1 1 / 0.8);
+        --sand-surface: color(display-p3 1 1 1 / 0.8);
+        --tomato-surface: color(display-p3 0.9922 0.9647 0.9608 / 0.8);
+        --red-surface: color(display-p3 0.9961 0.9647 0.9647 / 0.8);
+        --ruby-surface: color(display-p3 0.9961 0.9647 0.9647 / 0.8);
+        --crimson-surface: color(display-p3 0.9922 0.9608 0.9725 / 0.8);
+        --pink-surface: color(display-p3 0.9922 0.9608 0.9804 / 0.8);
+        --plum-surface: color(display-p3 0.9843 0.9647 0.9843 / 0.8);
+        --purple-surface: color(display-p3 0.9804 0.9647 0.9922 / 0.8);
+        --violet-surface: color(display-p3 0.9725 0.9647 0.9961 / 0.8);
+        --iris-surface: color(display-p3 0.9647 0.9647 0.9961 / 0.8);
+        --indigo-surface: color(display-p3 0.9647 0.9725 0.9961 / 0.8);
+        --blue-surface: color(display-p3 0.9529 0.9765 0.9961 / 0.8);
+        --cyan-surface: color(display-p3 0.9412 0.9765 0.9804 / 0.8);
+        --teal-surface: color(display-p3 0.9451 0.9804 0.9725 / 0.8);
+        --jade-surface: color(display-p3 0.9529 0.9804 0.9608 / 0.8);
+        --green-surface: color(display-p3 0.9569 0.9804 0.9608 / 0.8);
+        --grass-surface: color(display-p3 0.9569 0.9804 0.9569 / 0.8);
+        --brown-surface: color(display-p3 0.9843 0.9725 0.9569 / 0.8);
+        --bronze-surface: color(display-p3 0.9843 0.9608 0.9529 / 0.8);
+        --gold-surface: color(display-p3 0.9765 0.9725 0.9412 / 0.8);
+        --sky-surface: color(display-p3 0.9412 0.9765 0.9843 / 0.8);
+        --mint-surface: color(display-p3 0.9451 0.9804 0.9725 / 0.8);
+        --lime-surface: color(display-p3 0.9725 0.9765 0.9412 / 0.8);
+        --yellow-surface: color(display-p3 0.9961 0.9922 0.902 / 0.8);
+        --amber-surface: color(display-p3 0.9922 0.9843 0.902 / 0.8);
+        --orange-surface: color(display-p3 0.9961 0.9608 0.9176 / 0.8);
+      }
+    }
+  }
 }
+
 .dark,
 .dark-theme {
-  --tomato-surface: var(--tomato-a2);
-  --red-surface: var(--red-a2);
-  --ruby-surface: var(--ruby-a2);
-  --crimson-surface: var(--crimson-a2);
-  --pink-surface: var(--pink-a2);
-  --plum-surface: var(--plum-a2);
-  --purple-surface: var(--purple-a2);
-  --violet-surface: var(--violet-a2);
-  --iris-surface: var(--iris-a2);
-  --indigo-surface: var(--indigo-a2);
-  --blue-surface: var(--blue-a2);
-  --cyan-surface: var(--cyan-a2);
-  --teal-surface: var(--teal-a2);
-  --jade-surface: var(--jade-a2);
-  --green-surface: var(--green-a2);
-  --grass-surface: var(--grass-a2);
-  --orange-surface: var(--orange-a2);
-  --brown-surface: var(--brown-a2);
-  --sky-surface: var(--sky-a2);
-  --mint-surface: var(--mint-a2);
-  --lime-surface: var(--lime-a2);
-  --yellow-surface: var(--yellow-a2);
-  --amber-surface: var(--amber-a2);
-  --gold-surface: var(--gold-a2);
-  --bronze-surface: var(--bronze-a2);
-  --gray-surface: var(--gray-a2);
+  --gray-surface: #21212180;
+  --mauve-surface: #22212380;
+  --slate-surface: #1f212380;
+  --sage-surface: #1e201f80;
+  --olive-surface: #1f201e80;
+  --sand-surface: #21212080;
+  --tomato-surface: #2d191580;
+  --red-surface: #2f151780;
+  --ruby-surface: #2b191d80;
+  --crimson-surface: #2f151f80;
+  --pink-surface: #31132980;
+  --plum-surface: #2f152f80;
+  --purple-surface: #2b173580;
+  --violet-surface: #25193980;
+  --iris-surface: #1d1b3980;
+  --indigo-surface: #171d3b80;
+  --blue-surface: #11213d80;
+  --cyan-surface: #11252d80;
+  --teal-surface: #13272580;
+  --jade-surface: #13271f80;
+  --green-surface: #15251d80;
+  --grass-surface: #19231b80;
+  --brown-surface: #271f1b80;
+  --bronze-surface: #27211d80;
+  --gold-surface: #25231d80;
+  --sky-surface: #13233b80;
+  --mint-surface: #15272780;
+  --lime-surface: #1b211580;
+  --yellow-surface: #231f1380;
+  --amber-surface: #271f1380;
+  --orange-surface: #271d1380;
+
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      & {
+        --gray-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
+        --mauve-surface: color(display-p3 0.1333 0.1255 0.1333 / 0.5);
+        --slate-surface: color(display-p3 0.1176 0.1255 0.1333 / 0.5);
+        --sage-surface: color(display-p3 0.1176 0.1255 0.1176 / 0.5);
+        --olive-surface: color(display-p3 0.1176 0.1255 0.1176 / 0.5);
+        --sand-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
+        --tomato-surface: color(display-p3 0.1569 0.0941 0.0784 / 0.5);
+        --red-surface: color(display-p3 0.1647 0.0863 0.0863 / 0.5);
+        --ruby-surface: color(display-p3 0.1569 0.0941 0.1098 / 0.5);
+        --crimson-surface: color(display-p3 0.1647 0.0863 0.1176 / 0.5);
+        --pink-surface: color(display-p3 0.1725 0.0784 0.149 / 0.5);
+        --plum-surface: color(display-p3 0.1647 0.0863 0.1725 / 0.5);
+        --purple-surface: color(display-p3 0.149 0.0941 0.1961 / 0.5);
+        --violet-surface: color(display-p3 0.1333 0.102 0.2118 / 0.5);
+        --iris-surface: color(display-p3 0.1098 0.102 0.2118 / 0.5);
+        --indigo-surface: color(display-p3 0.0941 0.1098 0.2196 / 0.5);
+        --blue-surface: color(display-p3 0.0706 0.1255 0.2196 / 0.5);
+        --cyan-surface: color(display-p3 0.0784 0.1412 0.1725 / 0.5);
+        --teal-surface: color(display-p3 0.0863 0.149 0.1412 / 0.5);
+        --jade-surface: color(display-p3 0.0863 0.149 0.1176 / 0.5);
+        --green-surface: color(display-p3 0.0941 0.1412 0.1098 / 0.5);
+        --grass-surface: color(display-p3 0.102 0.1333 0.102 / 0.5);
+        --brown-surface: color(display-p3 0.1412 0.1176 0.102 / 0.5);
+        --bronze-surface: color(display-p3 0.1412 0.1255 0.1176 / 0.5);
+        --gold-surface: color(display-p3 0.1412 0.1333 0.1098 / 0.5);
+        --sky-surface: color(display-p3 0.0863 0.1333 0.2196 / 0.5);
+        --mint-surface: color(display-p3 0.0941 0.149 0.1412 / 0.5);
+        --lime-surface: color(display-p3 0.1098 0.1255 0.0784 / 0.5);
+        --yellow-surface: color(display-p3 0.1333 0.1176 0.0706 / 0.5);
+        --amber-surface: color(display-p3 0.1412 0.1176 0.0784 / 0.5);
+        --orange-surface: color(display-p3 0.1412 0.1098 0.0706 / 0.5);
+      }
+    }
+  }
 }
 
 /* accent scales */
@@ -1121,6 +1221,8 @@
 /* gray color overrides */
 .radix-themes {
   &:where([data-gray-color='mauve']) {
+    --gray-surface: var(--mauve-surface);
+
     --gray-1: var(--mauve-1);
     --gray-2: var(--mauve-2);
     --gray-2-translucent: var(--mauve-2-translucent);
@@ -1149,6 +1251,8 @@
     --gray-a12: var(--mauve-a12);
   }
   &:where([data-gray-color='slate']) {
+    --gray-surface: var(--slate-surface);
+
     --gray-1: var(--slate-1);
     --gray-2: var(--slate-2);
     --gray-2-translucent: var(--slate-2-translucent);
@@ -1177,6 +1281,8 @@
     --gray-a12: var(--slate-a12);
   }
   &:where([data-gray-color='sage']) {
+    --gray-surface: var(--sage-surface);
+
     --gray-1: var(--sage-1);
     --gray-2: var(--sage-2);
     --gray-2-translucent: var(--sage-2-translucent);
@@ -1205,6 +1311,8 @@
     --gray-a12: var(--sage-a12);
   }
   &:where([data-gray-color='olive']) {
+    --gray-surface: var(--olive-surface);
+
     --gray-1: var(--olive-1);
     --gray-2: var(--olive-2);
     --gray-2-translucent: var(--olive-2-translucent);
@@ -1233,6 +1341,8 @@
     --gray-a12: var(--olive-a12);
   }
   &:where([data-gray-color='sand']) {
+    --gray-surface: var(--sand-surface);
+
     --gray-1: var(--sand-1);
     --gray-2: var(--sand-2);
     --gray-2-translucent: var(--sand-2-translucent);
