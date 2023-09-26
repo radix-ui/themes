@@ -172,11 +172,12 @@
 
   /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors */
   --color-transparent: rgb(0 0 0 / 0);
-  @supports (color: color(display-p3 1 1 1)) {
-    @media (color-gamut: p3) {
-      & {
-        --color-transparent: color(display-p3 0 0 0 / 0);
-      }
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    .radix-themes {
+      --color-transparent: color(display-p3 0 0 0 / 0);
     }
   }
 }
