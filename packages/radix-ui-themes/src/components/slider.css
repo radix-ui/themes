@@ -184,10 +184,9 @@
 
 .rt-SliderRoot:where(.rt-variant-soft) {
   & :where(.rt-SliderTrack) {
-    background-color: var(--gray-a3);
-
-    /* blend gray with accent */
-    background-image: linear-gradient(to right, var(--accent-a3), var(--accent-a3));
+    background-color: var(--gray-a4);
+    /* Blend with white to increase contrast in dark mode */
+    background-image: linear-gradient(var(--white-a1), var(--white-a1));
 
     &:where([data-disabled]) {
       background-color: var(--gray-a4);
@@ -196,7 +195,8 @@
   }
 
   & :where(.rt-SliderRange) {
-    background-color: var(--accent-a7);
+    background-image: linear-gradient(var(--accent-a5), var(--accent-a5));
+    background-color: var(--accent-6);
   }
 
   & :where(.rt-SliderThumb) {
@@ -247,6 +247,7 @@
   }
   .rt-SliderRange:where(&) {
     background-color: transparent;
+    background-image: none;
     box-shadow: none;
   }
 }
