@@ -3,8 +3,8 @@
   box-shadow: var(--shadow-4);
   overflow: auto;
 
-  --inset-padding: var(--hover-card-padding);
-  padding: var(--hover-card-padding);
+  --inset-padding: var(--hover-card-content-padding);
+  padding: var(--hover-card-content-padding);
 
   transform-origin: var(--radix-hover-card-content-transform-origin);
 }
@@ -18,15 +18,15 @@
 @breakpoints {
   .rt-HoverCardContent {
     &:where(.rt-r-size-1) {
-      --hover-card-padding: var(--space-3);
+      --hover-card-content-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
     &:where(.rt-r-size-2) {
-      --hover-card-padding: var(--space-4);
+      --hover-card-content-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
     &:where(.rt-r-size-3) {
-      --hover-card-padding: var(--space-5);
+      --hover-card-content-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
   }

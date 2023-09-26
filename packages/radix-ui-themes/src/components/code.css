@@ -124,6 +124,7 @@
         }
         &:where(.rt-high-contrast:hover) {
           background-color: var(--accent-12);
+          /* Re-use base button hover filter */
           filter: var(--base-button-solid-high-contrast-hover-filter);
         }
       }

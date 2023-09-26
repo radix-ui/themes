@@ -27,7 +27,7 @@
   z-index: 1;
 
   /* used by Inset */
-  --inset-padding: var(--dialog-padding);
+  --inset-padding: var(--dialog-content-padding);
   padding: var(--inset-padding);
 }
 
@@ -40,19 +40,19 @@
 @breakpoints {
   .rt-DialogContent {
     &:where(.rt-r-size-1) {
-      --dialog-padding: var(--space-3);
+      --dialog-content-padding: var(--space-3);
       border-radius: var(--radius-4);
     }
     &:where(.rt-r-size-2) {
-      --dialog-padding: var(--space-4);
+      --dialog-content-padding: var(--space-4);
       border-radius: var(--radius-4);
     }
     &:where(.rt-r-size-3) {
-      --dialog-padding: var(--space-5);
+      --dialog-content-padding: var(--space-5);
       border-radius: var(--radius-5);
     }
     &:where(.rt-r-size-4) {
-      --dialog-padding: var(--space-6);
+      --dialog-content-padding: var(--space-6);
       border-radius: var(--radius-5);
     }
   }
