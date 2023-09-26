@@ -47,7 +47,9 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
           'rt-high-contrast': highContrast,
         })}
       >
-        <SwitchPrimitive.Thumb className="rt-SwitchThumb" />
+        <SwitchPrimitive.Thumb
+          className={classNames('rt-SwitchThumb', { 'rt-high-contrast': highContrast })}
+        />
       </SwitchPrimitive.Root>
     </span>
   );

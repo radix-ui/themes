@@ -133,6 +133,7 @@
 - `Slider`
   - Refine the shadows and colors used in the components.
   - Refine and normalise the look and feel of the disabled states.
+  - Fix an issue where high contrast sliders would have an incorrect disabled style.
 - `Switch`
   - **[Breaking]** Improve layout so that wrapping a switch in `Switch` component automatically aligns the switch with the first line of the text.
     - **[Upgrade guide]** Make sure that your layouts with switches look as expected. If not, wrap your switches in `<Text as="label" size="...">`, using your preferred text size.
