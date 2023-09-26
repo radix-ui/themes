@@ -45,7 +45,7 @@
     "prepublishOnly": "yarn lint"
   },
   "dependencies": {
-    "@radix-ui/colors": "^3.0.0-rc.4",
+    "@radix-ui/colors": "^3.0.0-rc.5",
     "@radix-ui/primitive": "^1.0.1",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-alert-dialog": "^1.0.5",
