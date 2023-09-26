@@ -119,6 +119,7 @@
   - Refine label look and feel
   - Rework `size="3"`
 - `ScrollArea`
+  - Upgrade the primitive version, fixing an upstream type issue
   - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
     - **[Upgarde guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
       - `--scrollarea-scrollbar-horizontal-margin-top`
