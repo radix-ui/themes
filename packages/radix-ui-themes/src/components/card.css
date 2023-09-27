@@ -155,7 +155,7 @@
 }
 
 /* prettier-ignore */
-.radix-themes {
+:where(.radix-themes) {
   /*
    * Make sure that hovered shadows length matches the shadows length at rest for clean transitions:
    * https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow#interpolation

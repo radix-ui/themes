@@ -58,7 +58,7 @@
 /* classic */
 
 /* prettier-ignore */
-.radix-themes {
+:where(.radix-themes) {
   --base-button-classic-after-inset: 2px;
   --base-button-classic-box-shadow-top:
     inset 0 0 0 1px var(--gray-a4),
@@ -229,7 +229,7 @@
 
 /* solid */
 
-.radix-themes {
+:where(.radix-themes) {
   --base-button-solid-active-filter: brightness(0.92) saturate(1.1);
   --base-button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
   --base-button-solid-high-contrast-active-filter: contrast(0.82) saturate(1.2) brightness(1.16);

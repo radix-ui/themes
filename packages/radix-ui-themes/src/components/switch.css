@@ -1,4 +1,4 @@
-.radix-themes {
+:where(.radix-themes) {
   --switch-disabled-blend-mode: multiply;
   --switch-button-high-contrast-checked-color-overlay: var(--black-a8);
   --switch-button-high-contrast-checked-active-before-filter: contrast(0.82) saturate(1.2)
@@ -115,7 +115,7 @@
 
 /* surface */
 
-.radix-themes {
+:where(.radix-themes) {
   --switch-button-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 
@@ -186,7 +186,7 @@
 
 /* classic */
 
-.radix-themes {
+:where(.radix-themes) {
   --switch-button-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 :is(.dark, .dark-theme),

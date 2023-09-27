@@ -1,4 +1,3 @@
-/* regulars (white foreground) */
 @import '@radix-ui/colors/tomato.css';
 @import '@radix-ui/colors/tomato-dark.css';
 @import '@radix-ui/colors/tomato-alpha.css';
@@ -89,7 +88,6 @@
 @import '@radix-ui/colors/brown-alpha.css';
 @import '@radix-ui/colors/brown-dark-alpha.css';
 
-/* brights (black foreground) */
 @import '@radix-ui/colors/sky.css';
 @import '@radix-ui/colors/sky-dark.css';
 @import '@radix-ui/colors/sky-alpha.css';
@@ -115,7 +113,6 @@
 @import '@radix-ui/colors/amber-alpha.css';
 @import '@radix-ui/colors/amber-dark-alpha.css';
 
-/* metals */
 @import '@radix-ui/colors/gold.css';
 @import '@radix-ui/colors/gold-dark.css';
 @import '@radix-ui/colors/gold-alpha.css';
@@ -126,7 +123,6 @@
 @import '@radix-ui/colors/bronze-alpha.css';
 @import '@radix-ui/colors/bronze-dark-alpha.css';
 
-/* grays */
 @import '@radix-ui/colors/gray.css';
 @import '@radix-ui/colors/gray-dark.css';
 @import '@radix-ui/colors/gray-alpha.css';
@@ -157,19 +153,38 @@
 @import '@radix-ui/colors/sand-alpha.css';
 @import '@radix-ui/colors/sand-dark-alpha.css';
 
-/* overlays */
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/white-alpha.css';
 
-.radix-themes {
-  /* text color */
-  color: var(--gray-12);
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Semantic colors           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
+:where(.radix-themes) {
+  --color-background: white;
   --color-overlay: var(--gray-a8);
   --color-panel-solid: white;
   --color-panel-translucent: rgba(255, 255, 255, 0.8);
   --color-surface: rgba(255, 255, 255, 0.9);
+}
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+  --color-background: var(--gray-1);
+  --color-overlay: rgba(0, 0, 0, 0.75);
+  --color-panel-solid: var(--gray-2);
+  --color-panel-translucent: var(--gray-2-translucent);
+  --color-surface: rgba(0, 0, 0, 0.25);
+}
 
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Transparency             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.radix-themes {
   /* Because Chrome is buggy with box-shadow transitions from "transparent" keyword and/or RGB color into P3 colors */
   --color-transparent: rgb(0 0 0 / 0);
   @supports (color: color(display-p3 1 1 1)) {
@@ -181,6 +196,12 @@
   }
 }
 
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Color scheme             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 /* Make sure that forced light/dark appearance also sets corresponding browser colors, like input autofill color */
 .radix-themes:where(.light, .light-theme) {
   color-scheme: light;
@@ -189,16 +210,15 @@
   color-scheme: dark;
 }
 
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --color-overlay: rgba(0, 0, 0, 0.75);
-  --color-panel-solid: var(--gray-2);
-  --color-panel-translucent: var(--gray-2-translucent);
-  --color-surface: rgba(0, 0, 0, 0.25);
-}
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*              Selection              */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .radix-themes {
   --color-selection-root: var(--accent-a6);
+
   & ::selection {
     background-color: var(--accent-a6);
   }
@@ -209,7 +229,41 @@
   background-color: var(--color-selection-root);
 }
 
-/* additional step-9 contrast colors */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Background and text         */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.radix-themes {
+  color: var(--gray-12);
+
+  &:where([data-has-background='true']) {
+    background-color: var(--color-background);
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*          Panel background           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.radix-themes {
+  &:where([data-panel-background='solid']) {
+    --color-panel: var(--color-panel-solid);
+  }
+  &:where([data-panel-background='translucent']) {
+    --color-panel: var(--color-panel-translucent);
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Step 9 contrast           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 :root {
   --tomato-9-contrast: white;
   --red-9-contrast: white;
@@ -239,7 +293,13 @@
   --gray-9-contrast: white;
 }
 
-/* additional step-2 translucent grays for dark mode panels */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*          Gray 2 equivalent          */
+/*        for translucent panels       */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 .dark,
 .dark-theme {
   --gray-2-translucent: #1d1d1db3;
@@ -263,7 +323,12 @@
   }
 }
 
-/* additional surface colors */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Surface colors            */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 :root,
 .light,
 .light-theme {
@@ -411,7 +476,12 @@
   }
 }
 
-/* accent scales */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*          Map accent colors          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 [data-accent-color='tomato'] {
   --color-surface-accent: var(--tomato-surface);
 
@@ -1218,7 +1288,12 @@
   --accent-a12: var(--gray-a12);
 }
 
-/* gray color overrides */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Map gray color            */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 .radix-themes {
   &:where([data-gray-color='mauve']) {
     --gray-surface: var(--mauve-surface);
@@ -1369,29 +1444,5 @@
     --gray-a10: var(--sand-a10);
     --gray-a11: var(--sand-a11);
     --gray-a12: var(--sand-a12);
-  }
-}
-
-/* nested `Theme` background color */
-
-.radix-themes {
-  --color-background: white;
-}
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --color-background: var(--gray-1);
-}
-.radix-themes:where([data-has-background='true']) {
-  background-color: var(--color-background);
-}
-
-/* panel background */
-
-.radix-themes {
-  &:where([data-panel-background='solid']) {
-    --color-panel: var(--color-panel-solid);
-  }
-  &:where([data-panel-background='translucent']) {
-    --color-panel: var(--color-panel-translucent);
   }
 }

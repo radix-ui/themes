@@ -1,5 +1,5 @@
 /* prettier-ignore */
-.radix-themes {
+:where(.radix-themes) {
   --shadow-1:
     inset 0 0 0 1px var(--gray-a5),
     inset 0 1.5px 2px 0 var(--gray-a5);

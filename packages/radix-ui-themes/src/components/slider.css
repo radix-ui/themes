@@ -217,7 +217,7 @@
 
 /* all high-contrast */
 
-.radix-themes {
+:where(.radix-themes) {
   --slider-range-high-contrast-background-image: linear-gradient(var(--black-a8), var(--black-a8));
 }
 :is(.dark, .dark-theme),
@@ -231,7 +231,7 @@
   }
 }
 
-.radix-themes {
+:where(.radix-themes) {
   --slider-disabled-blend-mode: multiply;
 }
 :is(.dark, .dark-theme),
