@@ -312,7 +312,7 @@
 /* classic */
 
 /* prettier-ignore */
-.radix-themes {
+:where(.radix-themes) {
   --select-trigger-classic-box-shadow:
 		inset 0 0 0 1px var(--gray-a5),
 		inset 0 2px 1px var(--white-a11),
