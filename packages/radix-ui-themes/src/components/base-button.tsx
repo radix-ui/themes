@@ -30,7 +30,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   return (
     <Comp
       // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
-      data-disabled={baseButtonProps.disabled}
+      data-disabled={baseButtonProps.disabled || undefined}
       data-accent-color={color}
       data-radius={radius}
       {...baseButtonProps}
