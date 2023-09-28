@@ -18,7 +18,8 @@
     },
     "./styles.css": {
       "import": "./styles.css",
-      "require": "./styles.css"
+      "require": "./styles.css",
+      "default": "./styles.css"
     }
   },
   "sideEffects": false,
