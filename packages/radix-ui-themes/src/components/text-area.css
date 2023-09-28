@@ -27,7 +27,7 @@
   padding: var(--text-area-padding-y) var(--text-area-padding-x);
 
   &:where(:focus) {
-    outline: 2px solid var(--accent-8);
+    outline: 2px solid var(--color-focus-root);
     outline-offset: -1px;
   }
 
@@ -134,13 +134,11 @@
       padding: 1px;
       background-clip: content-box;
     }
-
     &::placeholder {
       color: var(--gray-a10);
       /* Firefox */
       opacity: 1;
     }
-
     &:where(:autofill, [data-com-onepassword-filled]) {
       /* Reliably removes native autofill colors */
       background-clip: text;
@@ -149,7 +147,6 @@
         background-color: var(--accent-a4);
       }
     }
-
     &:where(:disabled, :read-only) {
       & + :where(.rt-TextAreaChrome) {
         /* Blend with grey */
@@ -173,13 +170,11 @@
       padding: 1px;
       background-clip: content-box;
     }
-
     &::placeholder {
       color: var(--gray-a10);
       /* Firefox */
       opacity: 1;
     }
-
     &:where(:autofill, [data-com-onepassword-filled]) {
       /* Reliably removes native autofill colors */
       background-clip: text;
@@ -206,16 +201,14 @@
     & + :where(.rt-TextAreaChrome) {
       background-color: var(--accent-a3);
     }
-
     &::selection {
-      background-color: var(--accent-a6);
+      /* Use gray selection when component color is gray */
+      background-color: var(--accent-a5);
     }
-
     &::placeholder {
       color: var(--accent-12);
       opacity: 0.65;
     }
-
     &:where(:autofill, [data-com-onepassword-filled]) {
       /* Reliably removes native autofill colors */
       background-clip: text;
@@ -223,6 +216,10 @@
       & + :where(.rt-TextAreaChrome) {
         background-color: var(--accent-a5);
       }
+    }
+    &:where(:focus) {
+      /* Use gray outline when component color is gray */
+      outline-color: var(--accent-8);
     }
     &:where(:disabled, :read-only) {
       & + :where(.rt-TextAreaChrome) {
@@ -249,7 +246,7 @@
       cursor: default;
     }
     &::selection {
-      background-color: var(--gray-a6);
+      background-color: var(--gray-a5);
     }
   }
 }

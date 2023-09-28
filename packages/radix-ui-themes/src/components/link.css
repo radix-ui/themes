@@ -4,7 +4,7 @@
   border-radius: calc(0.07em * var(--radius-factor));
 
   &:where(:focus-visible) {
-    outline-color: var(--accent-a8);
+    outline-color: var(--color-focus-root);
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 2px;

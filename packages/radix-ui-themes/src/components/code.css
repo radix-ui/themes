@@ -93,7 +93,7 @@
   :where(.rt-Link:has(&:only-child)) {
     &:where(:focus-visible) .rt-Code {
       text-decoration: none;
-      outline: 2px solid var(--accent-a8);
+      outline: 2px solid var(--color-focus-root);
       outline-offset: 2px;
     }
   }
@@ -130,7 +130,7 @@
       }
     }
     &:where(:focus-visible) .rt-Code {
-      outline: 2px solid var(--accent-a8);
+      outline: 2px solid var(--color-focus-root);
       outline-offset: 2px;
     }
   }
@@ -157,6 +157,7 @@
       }
     }
     &:where(:focus-visible) .rt-Code {
+      /* Use gray outline when component color is gray */
       outline: 2px solid var(--accent-8);
       outline-offset: -1px;
     }
@@ -185,7 +186,7 @@
       }
     }
     &:where(:focus-visible) .rt-Code {
-      outline: 2px solid var(--accent-8);
+      outline: 2px solid var(--color-focus-root);
       outline-offset: -1px;
     }
   }

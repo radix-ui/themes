@@ -218,16 +218,27 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .radix-themes {
-  --color-selection-root: var(--accent-a6);
+  --color-selection-root: var(--accent-a5);
 
   & ::selection {
-    background-color: var(--accent-a6);
+    background-color: var(--accent-a5);
   }
 }
 
 [data-accent-color='gray']::selection,
 [data-accent-color='gray'] ::selection {
   background-color: var(--color-selection-root);
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Focus                */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.radix-themes,
+[data-accent-color]:where(:not([data-accent-color='gray'])) {
+  --color-focus-root: var(--accent-8);
 }
 
 /* * * * * * * * * * * * * * * * * * * */

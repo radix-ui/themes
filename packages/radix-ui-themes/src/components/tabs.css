@@ -123,7 +123,7 @@
     color: var(--gray-12);
   }
   &:where(:focus-visible) :where(.rt-TabsTriggerInner) {
-    outline: 2px solid var(--accent-8);
+    outline: 2px solid var(--color-focus-root);
     outline-offset: -2px;
   }
   &:where([data-state='active'])::before {
@@ -139,5 +139,5 @@
 }
 
 .rt-TabsContent:where(:focus-visible) {
-  outline: 2px solid var(--accent-8);
+  outline: 2px solid var(--color-focus-root);
 }

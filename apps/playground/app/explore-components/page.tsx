@@ -1070,17 +1070,13 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Email address
                               </Text>
-                              <TextFieldInput
-                                variant="classic"
-                                tabIndex={-1}
-                                placeholder="Enter your email"
-                              />
+                              <TextFieldInput variant="classic" placeholder="Enter your email" />
                             </label>
                           </Box>
 
                           <Box mb="5" position="relative">
                             <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-                              <Link href="#card" tabIndex={-1} size="2">
+                              <Link href="#card" size="2">
                                 Forgot password?
                               </Link>
                             </Box>
@@ -1089,21 +1085,15 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Password
                               </Text>
-                              <TextFieldInput
-                                variant="classic"
-                                tabIndex={-1}
-                                placeholder="Enter your password"
-                              />
+                              <TextFieldInput variant="classic" placeholder="Enter your password" />
                             </label>
                           </Box>
 
                           <Flex mt="6" justify="end" gap="3">
-                            <Button tabIndex={-1} variant="soft">
+                            <Button variant="surface" highContrast color="gray">
                               Create an account
                             </Button>
-                            <Button tabIndex={-1} variant="classic">
-                              Sign in
-                            </Button>
+                            <Button variant="solid">Sign in</Button>
                           </Flex>
                         </Card>
                       </Flex>
