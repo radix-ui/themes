@@ -28,7 +28,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    outline: 2px solid var(--accent-8);
+    outline: 2px solid var(--color-focus-root);
     outline-offset: -2px;
   }
 }

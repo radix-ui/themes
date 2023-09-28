@@ -213,20 +213,17 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*              Selection              */
+/*         Focus and selection         */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.radix-themes {
-  --color-selection-root: var(--accent-a6);
-
-  & ::selection {
-    background-color: var(--accent-a6);
-  }
+.radix-themes,
+[data-accent-color]:where(:not([data-accent-color='gray'])) {
+  --color-selection-root: var(--accent-a5);
+  --color-focus-root: var(--accent-8);
 }
 
-[data-accent-color='gray']::selection,
-[data-accent-color='gray'] ::selection {
+.radix-themes ::selection {
   background-color: var(--color-selection-root);
 }
 

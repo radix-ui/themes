@@ -23,6 +23,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   } = marginRest;
   return (
     <div
+      data-accent-color={color}
       style={style}
       className={classNames(
         'rt-TextAreaRoot',
@@ -32,13 +33,8 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
         withMarginProps(marginProps)
       )}
     >
-      <textarea
-        data-accent-color={color}
-        className="rt-TextAreaInput"
-        ref={forwardedRef}
-        {...textAreaProps}
-      />
-      <div data-accent-color={color} className="rt-TextAreaChrome" />
+      <textarea className="rt-TextAreaInput" ref={forwardedRef} {...textAreaProps} />
+      <div className="rt-TextAreaChrome" />
     </div>
   );
 });

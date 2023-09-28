@@ -17,7 +17,7 @@
   border-radius: 100%;
 
   &:where(:focus-visible) {
-    outline: 2px solid var(--accent-a8);
+    outline: 2px solid var(--color-focus-root);
     outline-offset: 2px;
   }
 }
@@ -117,6 +117,10 @@
   }
   &:where(.rt-high-contrast) :where(.rt-RadioGroupButton[data-state='checked']) {
     color: var(--accent-12);
+  }
+  & :where(.rt-RadioGroupButton:focus-visible) {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-a8);
   }
   & :where(.rt-RadioGroupButton[data-disabled]) {
     background-color: var(--gray-a3);

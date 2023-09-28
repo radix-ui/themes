@@ -38,6 +38,7 @@
       - Change `--white-a11` to `--white-a9`
       - Change `--white-a12` to `--white-a11` or `--white-a12`
   - Refine the shadow scale.
+  - Similarly to the selection color, maintain theme accent color for focus rings on most `color="gray"` components.
   - Change some internal component-specific CSS variables to follow a naming pattern.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.

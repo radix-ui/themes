@@ -17,7 +17,7 @@
   position: relative;
 
   &:where(:focus-visible) {
-    outline: 2px solid var(--accent-a8);
+    outline: 2px solid var(--color-focus-root);
     outline-offset: 2px;
   }
 }
@@ -146,6 +146,10 @@
     &:where(.rt-high-contrast) {
       color: var(--accent-12);
     }
+  }
+  &:where(:focus-visible) {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-a8);
   }
   &:where(:disabled) {
     background-color: var(--gray-a3);

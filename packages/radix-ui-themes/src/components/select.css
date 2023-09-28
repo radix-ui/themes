@@ -9,7 +9,7 @@
   line-height: var(--height);
 
   &:where(:focus-visible) {
-    outline: 2px solid var(--accent-8);
+    outline: 2px solid var(--color-focus-root);
     outline-offset: -1px;
   }
 }
@@ -409,6 +409,10 @@
   }
   &:where([data-state='open']) {
     background-color: var(--accent-a4);
+  }
+  &:where(:focus-visible) {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-8);
   }
   &:where(:disabled) {
     cursor: var(--cursor-disabled);
