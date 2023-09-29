@@ -108,10 +108,10 @@
   - Make links automatically high-contrast within colored `Heading` elements (similarly to the automatic high-contrast within `Text`).
   - Scale the underline thickness relative to the font size for `variant="outline"` and `variant="surface"`
 - `RadioGroup`
-  - **[Breaking]** Improve layout so that wrapping a radiobutton in `Text` component automatically aligns the radiobutton with the first line of the text.
-    - **[Upgrade guide]** Make sure that your layouts with radiobuttons look as expected. If not, wrap your radiobuttons in `<Text as="label" size="...">`, using your preferred text size.
+  - **[Breaking]** Improve layout so that wrapping a radio button in `Text` component automatically aligns the radio button with the first line of the text.
+    - **[Upgrade guide]** Make sure that your layouts with radio buttons look as expected. If not, wrap your radio buttons in `<Text as="label" size="...">`, using your preferred text size.
   - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
-    - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radiobuttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
+    - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radio buttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
   - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Select`
