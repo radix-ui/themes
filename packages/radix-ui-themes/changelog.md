@@ -5,7 +5,7 @@
 - General
   - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
   - Remove comments from the CSS build.
-  - Cap CSS selector specificity at 0,1,0 for styling HTML elements and at 0,1,1 for styling pseudo-elements, improving compatibility with Tailwind.
+  - Cap CSS selector specificity at `0,1,0` for styling HTML elements and at `0,1,1` for styling pseudo-elements, improving compatibility with Tailwind.
     - **[Upgrade guide]** If you were relying on any specificity quirks of Radix Themes, make sure that your style overrides still work as expected.
   - Rework dark mode colors, refine light mode colors (via Radix Colors 3.0.0).
     - Fix oversaturated transparent grays.
@@ -38,14 +38,14 @@
       - Change `--white-a11` to `--white-a9`
       - Change `--white-a12` to `--white-a11` or `--white-a12`
   - Refine the shadow scale.
-  - Similarly to the selection color, maintain theme accent color for focus rings on most `color="gray"` components.
+  - Maintain theme accent color for focus rings on most `color="gray"` components similarly to the text selection color.
   - Change some internal component-specific CSS variables to follow a naming pattern.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
 - `Avatar`
   - Don’t enforce fallback icon size
-    - **[Upgarde guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.
+    - **[Upgrade guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.
   - Add CSS variables to control the cursor style on interactive elements:
     - `--cursor-button: default;`
     - `--cursor-checkbox: default;`
@@ -108,10 +108,10 @@
   - Make links automatically high-contrast within colored `Heading` elements (similarly to the automatic high-contrast within `Text`).
   - Scale the underline thickness relative to the font size for `variant="outline"` and `variant="surface"`
 - `RadioGroup`
-  - **[Breaking]** Improve layout so that wrapping a radiobutton in `Text` component automatically aligns the radiobutton with the first line of the text.
-    - **[Upgrade guide]** Make sure that your layouts with radiobuttons look as expected. If not, wrap your radiobuttons in `<Text as="label" size="...">`, using your preferred text size.
+  - **[Breaking]** Improve layout so that wrapping a radio button in `Text` component automatically aligns the radio button with the first line of the text.
+    - **[Upgrade guide]** Make sure that your layouts with radio buttons look as expected. If not, wrap your radio buttons in `<Text as="label" size="...">`, using your preferred text size.
   - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
-    - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radiobuttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
+    - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radio buttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
   - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Select`
@@ -124,7 +124,7 @@
 - `ScrollArea`
   - Upgrade the primitive version, fixing an upstream type issue
   - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
-    - **[Upgarde guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
+    - **[Upgrade guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
       - `--scrollarea-scrollbar-horizontal-margin-top`
       - `--scrollarea-scrollbar-horizontal-margin-bottom`
       - `--scrollarea-scrollbar-horizontal-margin-left`

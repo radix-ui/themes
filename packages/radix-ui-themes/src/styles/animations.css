@@ -16,7 +16,7 @@
   }
 }
 
-@keyframes rt-slide-up {
+@keyframes rt-slide-from-top {
   from {
     transform: translateY(4px) scale(0.97);
   }
@@ -25,7 +25,16 @@
   }
 }
 
-@keyframes rt-slide-down {
+@keyframes rt-slide-to-top {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(4px) scale(0.97);
+  }
+}
+
+@keyframes rt-slide-from-bottom {
   from {
     transform: translateY(-4px) scale(0.97);
   }
@@ -34,7 +43,16 @@
   }
 }
 
-@keyframes rt-slide-left {
+@keyframes rt-slide-to-bottom {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+@keyframes rt-slide-from-left {
   from {
     transform: translateX(4px) scale(0.97);
   }
@@ -43,12 +61,30 @@
   }
 }
 
-@keyframes rt-slide-right {
+@keyframes rt-slide-to-left {
+  from {
+    transform: translateX(0) scale(1);
+  }
+  to {
+    transform: translateX(4px) scale(0.97);
+  }
+}
+
+@keyframes rt-slide-from-right {
   from {
     transform: translateX(-4px) scale(0.97);
   }
   to {
     transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes rt-slide-to-right {
+  from {
+    transform: translateX(0) scale(1);
+  }
+  to {
+    transform: translateX(-4px) scale(0.97);
   }
 }
 
@@ -60,16 +96,16 @@
       animation-duration: 300ms;
 
       &:where([data-side='top']) {
-        animation-name: rt-slide-up, rt-fade-in;
+        animation-name: rt-slide-from-top, rt-fade-in;
       }
       &:where([data-side='bottom']) {
-        animation-name: rt-slide-down, rt-fade-in;
+        animation-name: rt-slide-from-bottom, rt-fade-in;
       }
       &:where([data-side='left']) {
-        animation-name: rt-slide-left, rt-fade-in;
+        animation-name: rt-slide-from-left, rt-fade-in;
       }
       &:where([data-side='right']) {
-        animation-name: rt-slide-right, rt-fade-in;
+        animation-name: rt-slide-from-right, rt-fade-in;
       }
     }
 
@@ -77,16 +113,16 @@
       animation-duration: 150ms;
 
       &:where([data-side='top']) {
-        animation-name: rt-slide-down, rt-fade-out;
+        animation-name: rt-slide-to-top, rt-fade-out;
       }
       &:where([data-side='bottom']) {
-        animation-name: rt-slide-up, rt-fade-out;
+        animation-name: rt-slide-to-bottom, rt-fade-out;
       }
       &:where([data-side='left']) {
-        animation-name: rt-slide-right, rt-fade-out;
+        animation-name: rt-slide-to-left, rt-fade-out;
       }
       &:where([data-side='right']) {
-        animation-name: rt-slide-right, rt-fade-out;
+        animation-name: rt-slide-to-right, rt-fade-out;
       }
     }
   }
