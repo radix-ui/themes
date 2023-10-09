@@ -4,20 +4,24 @@
   justify-content: center;
   position: fixed;
   inset: 0;
-  padding-bottom: 5vh;
+
+  --dialog-overlay-padding-top: var(--space-4);
+  --dialog-overlay-padding-bottom: max(var(--space-4), 4vh);
+  padding-top: var(--dialog-overlay-padding-top);
+  padding-bottom: var(--dialog-overlay-padding-bottom);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
 
   &::after {
     content: '';
     position: absolute;
     inset: 0;
     background-color: var(--color-overlay);
-    filter: saturate(0.5);
   }
 }
 
 .rt-DialogContent {
   width: 100%;
-  max-height: 90vh;
   max-width: 580px;
   outline: none;
   overflow: auto;
@@ -26,9 +30,16 @@
   box-sizing: border-box;
   z-index: 1;
 
-  /* used by Inset */
   --inset-padding: var(--dialog-content-padding);
   padding: var(--inset-padding);
+
+  /* prettier-ignore */
+  max-height: calc(100vh - var(--dialog-overlay-padding-top) - var(--dialog-overlay-padding-bottom));
+
+  @supports (max-height: 100dvh) {
+    /* prettier-ignore */
+    max-height: calc(100dvh - var(--dialog-overlay-padding-top) - var(--dialog-overlay-padding-bottom));
+  }
 }
 
 /***************************************************************************************************

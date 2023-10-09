@@ -1,6 +1,6 @@
 {
   "name": "@radix-ui/themes",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
   "module": "./dist/esm/index.js",
@@ -46,7 +46,7 @@
     "prepublishOnly": "yarn lint"
   },
   "dependencies": {
-    "@radix-ui/colors": "^3.0.0-rc.5",
+    "@radix-ui/colors": "^3.0.0",
     "@radix-ui/primitive": "^1.0.1",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-alert-dialog": "^1.0.5",

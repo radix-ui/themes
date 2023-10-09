@@ -1,6 +1,6 @@
 # Changelog
 
-## Up next
+## 2.0.0
 
 - General
   - Combine selectors in the CSS build, improving the developer experience when inspecting elements in the browser.
@@ -43,22 +43,25 @@
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
+- `AlertDialog`, `Dialog`
+  - Add padding around dialog content to prevent it from touching the viewport edges
+  - Make sure that the dialog content doesn’t overflow viewport on iOS
 - `Avatar`
   - Don’t enforce fallback icon size
     - **[Upgrade guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.
-  - Add CSS variables to control the cursor style on interactive elements:
-    - `--cursor-button: default;`
-    - `--cursor-checkbox: default;`
-    - `--cursor-disabled: not-allowed;`
-    - `--cursor-link: pointer;`
-    - `--cursor-menu-item: default;`
-    - `--cursor-radio: default;`
-    - `--cursor-slider-thumb: default;`
-    - `--cursor-slider-thumb-active: default;`
-    - `--cursor-switch: default;`
-  - Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class
-    - The new `.rt-reset` class can be use to reset `a`, `button`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `ol`, `ul`, `p`, and `pre` tags when building custom components.
-    - **[Upgrade guide]** If you were using these classes for your custom components, update the class name used.
+- Add CSS variables to control the cursor style on interactive elements:
+  - `--cursor-button: default;`
+  - `--cursor-checkbox: default;`
+  - `--cursor-disabled: not-allowed;`
+  - `--cursor-link: pointer;`
+  - `--cursor-menu-item: default;`
+  - `--cursor-radio: default;`
+  - `--cursor-slider-thumb: default;`
+  - `--cursor-slider-thumb-active: default;`
+  - `--cursor-switch: default;`
+- Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class
+  - The new `.rt-reset` class can be use to reset `a`, `button`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `ol`, `ul`, `p`, and `pre` tags when building custom components.
+  - **[Upgrade guide]** If you were using these classes for your custom components, update the class name used.
 - `Blockquote`
   - **[Breaking]** Remove `trim` prop
 - `Button`, `IconButton`
