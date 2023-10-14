@@ -1,6 +1,6 @@
-import { colorProp, radiusProp } from '../helpers';
-import { flexPropDefs } from './flex.props';
-import { PropDef } from '../helpers';
+import { colorProp, radiusProp } from '../helpers/index.js';
+import { flexPropDefs } from './flex.props.js';
+import { PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { kbdPropDefs } from './kbd.props';
-import { extractMarginProps, withMarginProps, GetPropDefTypes, withBreakpoints } from '../helpers';
+import { kbdPropDefs } from './kbd.props.js';
+import { extractMarginProps, withMarginProps, GetPropDefTypes, withBreakpoints } from '../helpers/index.js';
 
-import type { MarginProps } from '../helpers';
+import type { MarginProps } from '../helpers/index.js';
 
 type KbdElement = React.ElementRef<'kbd'>;
 type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;

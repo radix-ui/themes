@@ -3,11 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { popoverContentPropDefs } from './popover.props';
-import { withBreakpoints } from '../helpers';
-import { Theme } from '../theme';
+import { popoverContentPropDefs } from './popover.props.js';
+import { withBreakpoints } from '../helpers/index.js';
+import { Theme } from '../theme.js';
 
-import type { GetPropDefTypes } from '../helpers';
+import type { GetPropDefTypes } from '../helpers/index.js';
 
 interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
 const PopoverRoot: React.FC<PopoverRootProps> = (props: PopoverRootProps) => (

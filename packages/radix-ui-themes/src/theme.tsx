@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { DirectionProvider } from '@radix-ui/react-direction';
 import { Slot } from '@radix-ui/react-slot';
-import { themePropDefs, getMatchingGrayColor } from './theme-options';
+import { themePropDefs, getMatchingGrayColor } from './theme-options.js';
 
-import type { ThemeOptions } from './theme-options';
+import type { ThemeOptions } from './theme-options.js';
 
 const noop = () => {};
 

@@ -3,11 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { checkboxPropDefs } from './checkbox.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
-import { ThickCheckIcon } from '../icons';
+import { checkboxPropDefs } from './checkbox.props.js';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers/index.js';
+import { ThickCheckIcon } from '../icons.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;

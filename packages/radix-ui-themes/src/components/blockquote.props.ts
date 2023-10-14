@@ -1,4 +1,4 @@
-import { textPropDefs } from './text.props';
+import { textPropDefs } from './text.props.js';
 
 const blockquotePropDefs = {
   size: textPropDefs.size,

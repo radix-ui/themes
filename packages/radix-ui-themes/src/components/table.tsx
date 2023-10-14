@@ -1,15 +1,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props';
+import { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props.js';
 import {
   extractMarginProps,
   withMarginProps,
   extractPaddingProps,
   withPaddingProps,
   withBreakpoints,
-} from '../helpers';
-import { ScrollArea } from './scroll-area';
-import type { MarginProps, PaddingProps, GetPropDefTypes } from '../helpers';
+} from '../helpers/index.js';
+import { ScrollArea } from './scroll-area.js';
+import type { MarginProps, PaddingProps, GetPropDefTypes } from '../helpers/index.js';
 
 type TableRootElement = React.ElementRef<'div'>;
 type TableRootOwnProps = GetPropDefTypes<typeof tableRootPropDefs>;

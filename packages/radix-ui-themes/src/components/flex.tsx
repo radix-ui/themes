@@ -1,16 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from './slot';
-import { flexPropDefs } from './flex.props';
+import { Slot } from './slot.js';
+import { flexPropDefs } from './flex.props.js';
 import {
   extractMarginProps,
   withMarginProps,
   extractLayoutProps,
   withLayoutProps,
   withBreakpoints,
-} from '../helpers';
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers/index.js';
 
 type FlexElement = React.ElementRef<'div'>;
 type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs>;

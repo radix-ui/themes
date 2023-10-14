@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { avatarPropDefs } from './avatar.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { avatarPropDefs } from './avatar.props.js';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type AvatarElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 type AvatarOwnProps = GetPropDefTypes<typeof avatarPropDefs>;

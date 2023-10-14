@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from './slot';
-import { gridPropDefs } from './grid.props';
+import { Slot } from './slot.js';
+import { gridPropDefs } from './grid.props.js';
 import {
   extractMarginProps,
   withMarginProps,
@@ -10,9 +10,9 @@ import {
   withBreakpoints,
   isBreakpointsObject,
   hasOwnProperty,
-} from '../helpers';
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers/index.js';
 
 type GridElement = React.ElementRef<'div'>;
 type GridOwnProps = GetPropDefTypes<typeof gridPropDefs>;

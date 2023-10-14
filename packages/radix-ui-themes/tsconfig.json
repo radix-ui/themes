@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
+    "target": "ES2022",
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "jsx": "react",
-    "module": "ES2020",
-    "moduleResolution": "Node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist/esm",
     "sourceMap": true,
     "declaration": true,
-    "outDir": "./dist",
     "importHelpers": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "alwaysStrict": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["node_modules", "dist"]
 }

@@ -2,17 +2,17 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { Text } from './text';
-import { textPropDefs } from './text.props';
-import { calloutRootPropDefs } from './callout.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { Text } from './text.js';
+import { textPropDefs } from './text.props.js';
+import { calloutRootPropDefs } from './callout.props.js';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers/index.js';
 
 import type {
   PropsWithoutRefOrColor,
   MarginProps,
   GetPropDefTypes,
   ExtractPropsForTag,
-} from '../helpers';
+} from '../helpers/index.js';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 

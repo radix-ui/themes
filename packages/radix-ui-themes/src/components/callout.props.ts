@@ -1,5 +1,5 @@
-import { colorProp, highContrastProp } from '../helpers';
-import type { PropDef } from '../helpers';
+import { colorProp, highContrastProp } from '../helpers/index.js';
+import type { PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['soft', 'surface', 'outline'] as const;

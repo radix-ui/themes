@@ -1,15 +1,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { headingPropDefs } from './heading.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { headingPropDefs } from './heading.props.js';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers/index.js';
 
 import type {
   PropsWithoutRefOrColor,
   MarginProps,
   GetPropDefTypes,
   NiceIntersection,
-} from '../helpers';
+} from '../helpers/index.js';
 
 type HeadingElement = React.ElementRef<'h1'>;
 type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;

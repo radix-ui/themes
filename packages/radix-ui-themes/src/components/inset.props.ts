@@ -1,4 +1,4 @@
-import type { PropDef } from '../helpers';
+import type { PropDef } from '../helpers/index.js';
 
 const sides = ['all', 'x', 'y', 'top', 'bottom', 'left', 'right'] as const;
 const clipValues = ['border-box', 'padding-box'] as const;

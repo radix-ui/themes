@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Text } from './text';
-import { blockquotePropDefs } from './blockquote.props';
+import { Text } from './text.js';
+import { blockquotePropDefs } from './blockquote.props.js';
 
-import type { MarginProps, PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
+import type { MarginProps, PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers/index.js';
 
 type BlockquoteElement = React.ElementRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Text } from './text';
-import { linkPropDefs } from './link.props';
+import { Text } from './text.js';
+import { linkPropDefs } from './link.props.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type LinkElement = React.ElementRef<'a'>;
 type LinkOwnProps = GetPropDefTypes<typeof linkPropDefs>;

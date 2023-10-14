@@ -1,4 +1,4 @@
-import { PropDef } from '../helpers';
+import { PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2'] as const;
 
