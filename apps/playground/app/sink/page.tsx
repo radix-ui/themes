@@ -4500,14 +4500,14 @@ function PlaygroundForm({
         <Text size={size} weight="bold">
           Email
         </Text>
-        <TextFieldInput size={size} variant="classic" placeholder="Your email" />
+        <TextFieldInput size={size} variant="surface" placeholder="Your email" />
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
           Subject
         </Text>
         <SelectRoot defaultValue="customer" size={size}>
-          <SelectTrigger variant="classic" />
+          <SelectTrigger variant="surface" />
           <SelectContent>
             <SelectItem value="customer">Customer feedback</SelectItem>
             <SelectItem value="help">Help</SelectItem>
@@ -4518,13 +4518,13 @@ function PlaygroundForm({
         <Text size={size} weight="bold">
           Feedback
         </Text>
-        <TextArea size={size} variant="classic" placeholder="Your feedback" />
+        <TextArea size={size} variant="surface" placeholder="Your feedback" />
       </Grid>
       <Grid columns="2" gap="2">
-        <Button size={size} variant="surface">
+        <Button size={size} variant="surface" color="gray" highContrast>
           Back
         </Button>
-        <Button size={size} variant="classic">
+        <Button size={size} variant="solid">
           Submit
         </Button>
       </Grid>

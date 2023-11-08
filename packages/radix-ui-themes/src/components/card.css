@@ -129,23 +129,32 @@
 
   &::after {
     border-radius: var(--card-after-border-radius);
-    box-shadow: 0 0 0 1px var(--gray-a6);
+    box-shadow: 0 0 0 1px var(--gray-a5);
+
     /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
-    box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
+    @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
+      box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%);
+    }
   }
 
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover)::after {
-        box-shadow: 0 0 0 1px var(--gray-a8);
-        box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a8), var(--gray-8) 25%);
+        box-shadow: 0 0 0 1px var(--gray-a7);
+
+        @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
+          box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%);
+        }
       }
     }
     &:where(:active:not([data-state='open'])) {
       &::after {
         box-shadow: 0 0 0 1px var(--gray-a8), 0 0 0 1px var(--gray-a6);
-        box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a8), var(--gray-8) 25%),
-          0 0 0 1px var(--gray-a6);
+
+        @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
+          box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%),
+            0 0 0 1px var(--gray-a5);
+        }
       }
       &:where(:focus-visible) {
         background-color: var(--gray-a3);

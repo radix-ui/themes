@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.0
+
+- General
+  - Tweak `variant="surface"` colors to make them work better in dense UIs
+- `Card`
+  - Fix an issue when `variant="surface"` border color may disappear in browsers that don't support `color-mix`
+- `Code`
+  - When `variant="ghost"` is used, inherit text color unless an accent color is provided (similar to `Text` and `Heading`).
+  - When `variant="ghost"` is used within a `Link`, make sure that `underline="hover"` on the `Link` is respected.
+- `TextField`
+  - Improve vertical text alignment
+
 ## 2.0.0
 
 - General

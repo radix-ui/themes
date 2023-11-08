@@ -81,10 +81,6 @@
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 
-      /* Tweak text alignment */
-      padding-top: 0.5px;
-      padding-bottom: 1px;
-
       &:where(:first-child) {
         /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
         text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
@@ -101,9 +97,9 @@
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
 
-      /* Tweak text alignment */
-      padding-top: 0px;
-      padding-bottom: 1px;
+      /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
+      /* Works because the browser computes input line height as roughly 1.25 of the font size. */
+      padding-bottom: 0.5px;
 
       &:where(:first-child) {
         /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
@@ -120,10 +116,6 @@
       height: var(--space-7);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
-
-      /* Tweak text alignment */
-      padding-top: 0.5px;
-      padding-bottom: 1px;
 
       &:where(:first-child) {
         /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
@@ -159,7 +151,7 @@
 
   & + :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a7);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
     /* Blend inner shadow with page background */
     padding: 1px;
     background-clip: content-box;
@@ -176,7 +168,7 @@
 
     & + :where(.rt-TextFieldChrome) {
       background-color: var(--accent-a3);
-      box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 1px var(--accent-a4);
+      box-shadow: inset 0 0 0 1px var(--gray-a6), inset 0 0 0 1px var(--accent-a4);
     }
   }
   &:where(:disabled, :read-only) {

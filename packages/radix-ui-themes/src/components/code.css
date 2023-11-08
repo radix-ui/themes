@@ -78,13 +78,16 @@
 
 .rt-Code:where(.rt-variant-ghost) {
   --code-variant-font-size-adjust: var(--code-font-size-adjust);
-  color: var(--accent-a11);
 
-  &:where(.rt-high-contrast) {
-    color: var(--accent-12);
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+
+    &:where(.rt-high-contrast) {
+      color: var(--accent-12);
+    }
   }
 
-  :where(.rt-Link) & {
+  :where(.rt-Link:not(.rt-underline-hover)) & {
     text-decoration-line: underline;
     text-decoration-color: inherit;
     text-decoration-thickness: inherit;

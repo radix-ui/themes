@@ -1623,6 +1623,12 @@ export default function ExploreComponents() {
                             placeholder="Enter your email"
                           />
                         </label>
+                        <label>
+                          <Text as="div" size="1" mb="1" weight="bold">
+                            About you
+                          </Text>
+                          <TextArea size="1" placeholder="Tell us more" />
+                        </label>
                       </Flex>
 
                       <Flex gap="2" mt="3" justify="end">
@@ -1669,6 +1675,12 @@ export default function ExploreComponents() {
                             placeholder="Enter your email"
                           />
                         </label>
+                        <label>
+                          <Text as="div" size="2" mb="1" weight="bold">
+                            About you
+                          </Text>
+                          <TextArea size="2" placeholder="Tell us more" />
+                        </label>
                       </Flex>
 
                       <Flex gap="3" mt="4" justify="end">
@@ -1712,6 +1724,12 @@ export default function ExploreComponents() {
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
                           />
+                        </label>
+                        <label>
+                          <Text as="div" size="2" mb="1" weight="bold">
+                            About you
+                          </Text>
+                          <TextArea size="2" placeholder="Tell us more" />
                         </label>
                       </Flex>
 
@@ -1758,6 +1776,12 @@ export default function ExploreComponents() {
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
                           />
+                        </label>
+                        <label>
+                          <Text as="div" size="3" mb="1" weight="bold">
+                            About you
+                          </Text>
+                          <TextArea size="3" placeholder="Tell us more" />
                         </label>
                       </Flex>
 
