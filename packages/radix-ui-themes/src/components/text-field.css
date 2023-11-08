@@ -98,7 +98,7 @@
       letter-spacing: var(--letter-spacing-2);
 
       /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
-      /* Works because the browser computes input line height as roughly 1.25 of the font size. */
+      /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
       padding-bottom: 0.5px;
 
       &:where(:first-child) {
