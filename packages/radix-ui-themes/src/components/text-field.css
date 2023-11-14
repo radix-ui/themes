@@ -21,6 +21,12 @@
 
   /* Clip text to the inner shadow */
   border: var(--text-field-border-width) solid transparent;
+
+  &:where(:autofill, [data-com-onepassword-filled]) {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--gray-12);
+  }
 }
 
 .rt-TextFieldChrome {
@@ -81,10 +87,6 @@
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 
-      /* Tweak text alignment */
-      padding-top: 0.5px;
-      padding-bottom: 1px;
-
       &:where(:first-child) {
         /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
         text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
@@ -101,9 +103,9 @@
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
 
-      /* Tweak text alignment */
-      padding-top: 0px;
-      padding-bottom: 1px;
+      /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
+      /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
+      padding-bottom: 0.5px;
 
       &:where(:first-child) {
         /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
@@ -120,10 +122,6 @@
       height: var(--space-7);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
-
-      /* Tweak text alignment */
-      padding-top: 0.5px;
-      padding-bottom: 1px;
 
       &:where(:first-child) {
         /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
@@ -169,14 +167,10 @@
     /* Firefox */
     opacity: 1;
   }
-  &:where(:autofill, [data-com-onepassword-filled]) {
-    /* Reliably removes native autofill colors */
-    background-clip: text;
-    -webkit-text-fill-color: var(--gray-12);
-
+  &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
     & + :where(.rt-TextFieldChrome) {
-      background-color: var(--accent-a3);
-      box-shadow: inset 0 0 0 1px var(--gray-a7), inset 0 0 0 1px var(--accent-a4);
+      background-color: var(--color-autofill-root);
+      box-shadow: inset 0 0 0 1px var(--color-autofill-root), inset 0 0 0 1px var(--gray-a6);
     }
   }
   &:where(:disabled, :read-only) {
@@ -205,14 +199,10 @@
     /* Firefox */
     opacity: 1;
   }
-  &:where(:autofill, [data-com-onepassword-filled]) {
-    /* Reliably removes native autofill colors */
-    background-clip: text;
-    -webkit-text-fill-color: var(--gray-12);
-
+  &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
     & + :where(.rt-TextFieldChrome) {
-      background-color: var(--accent-a3);
-      box-shadow: var(--shadow-1), inset 0 0 0 1px var(--accent-a4);
+      background-color: var(--color-autofill-root);
+      box-shadow: inset 0 0 0 1px var(--color-autofill-root), var(--shadow-1);
     }
   }
   &:where(:disabled, :read-only) {
@@ -235,12 +225,9 @@
     color: var(--accent-12);
     opacity: 0.6;
   }
-  &:where(:autofill, [data-com-onepassword-filled]) {
-    /* Reliably removes native autofill colors */
-    background-clip: text;
-    -webkit-text-fill-color: var(--accent-12);
-
+  &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
     & + :where(.rt-TextFieldChrome) {
+      /* Use gray autofill color when component color is gray */
       background-color: var(--accent-a4);
     }
   }

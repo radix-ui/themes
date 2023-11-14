@@ -84,7 +84,7 @@
     color: var(--accent-12);
   }
 
-  :where(.rt-Link) & {
+  :where(.rt-Link:not(.rt-underline-hover)) & {
     text-decoration-line: underline;
     text-decoration-color: inherit;
     text-decoration-thickness: inherit;
