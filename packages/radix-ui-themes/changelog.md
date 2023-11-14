@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.1
+
+- `Card`
+  - Fix an issue when `variant="surface"` border color may disappear in browsers that don't support `color-mix`
+  - Tweak `variant="surface"` border color
+- `Code`
+  - When `variant="ghost"` is used within a `Link`, make sure that `underline="hover"` on the `Link` is respected.
+- `TextField`
+  - Improve vertical text alignment with common fonts
+  - Don’t apply the autofill accent color when the input is disabled
+  - Make sure the autofill accent color always pairs with the focus outline color
+
 ## 2.0.0
 
 - General

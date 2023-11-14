@@ -213,14 +213,15 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Focus and selection         */
+/*   Focus, selection, and autofill    */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 .radix-themes,
 [data-accent-color]:where(:not([data-accent-color='gray'])) {
-  --color-selection-root: var(--accent-a5);
+  --color-autofill-root: var(--accent-a3);
   --color-focus-root: var(--accent-8);
+  --color-selection-root: var(--accent-a5);
 }
 
 .radix-themes ::selection {
