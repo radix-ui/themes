@@ -70,15 +70,5 @@ const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
 );
 PopoverClose.displayName = 'PopoverClose';
 
-const Popover = Object.assign(
-  {},
-  {
-    Root: PopoverRoot,
-    Content: PopoverContent,
-    Trigger: PopoverTrigger,
-    Close: PopoverClose,
-  }
-);
-
-export { Popover, PopoverRoot, PopoverContent, PopoverTrigger, PopoverClose };
+export { PopoverRoot, PopoverContent, PopoverTrigger, PopoverClose };
 export type { PopoverRootProps, PopoverContentProps, PopoverTriggerProps, PopoverCloseProps };

@@ -347,27 +347,7 @@ const ContextMenuSeparator = React.forwardRef<
 ));
 ContextMenuSeparator.displayName = 'ContextMenuSeparator';
 
-const ContextMenu = Object.assign(
-  {},
-  {
-    Root: ContextMenuRoot,
-    Trigger: ContextMenuTrigger,
-    Content: ContextMenuContent,
-    Label: ContextMenuLabel,
-    Item: ContextMenuItem,
-    Group: ContextMenuGroup,
-    RadioGroup: ContextMenuRadioGroup,
-    RadioItem: ContextMenuRadioItem,
-    CheckboxItem: ContextMenuCheckboxItem,
-    Sub: ContextMenuSub,
-    SubTrigger: ContextMenuSubTrigger,
-    SubContent: ContextMenuSubContent,
-    Separator: ContextMenuSeparator,
-  }
-);
-
 export {
-  ContextMenu,
   ContextMenuRoot,
   ContextMenuTrigger,
   ContextMenuContent,

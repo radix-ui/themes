@@ -348,27 +348,7 @@ const DropdownMenuSeparator = React.forwardRef<
 ));
 DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
 
-const DropdownMenu = Object.assign(
-  {},
-  {
-    Root: DropdownMenuRoot,
-    Trigger: DropdownMenuTrigger,
-    Content: DropdownMenuContent,
-    Label: DropdownMenuLabel,
-    Item: DropdownMenuItem,
-    Group: DropdownMenuGroup,
-    RadioGroup: DropdownMenuRadioGroup,
-    RadioItem: DropdownMenuRadioItem,
-    CheckboxItem: DropdownMenuCheckboxItem,
-    Sub: DropdownMenuSub,
-    SubTrigger: DropdownMenuSubTrigger,
-    SubContent: DropdownMenuSubContent,
-    Separator: DropdownMenuSeparator,
-  }
-);
-
 export {
-  DropdownMenu,
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuContent,
