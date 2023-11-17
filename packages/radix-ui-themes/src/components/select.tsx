@@ -199,21 +199,7 @@ const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparator
 );
 SelectSeparator.displayName = 'SelectSeparator';
 
-const Select = Object.assign(
-  {},
-  {
-    Root: SelectRoot,
-    Trigger: SelectTrigger,
-    Content: SelectContent,
-    Item: SelectItem,
-    Group: SelectGroup,
-    Label: SelectLabel,
-    Separator: SelectSeparator,
-  }
-);
-
 export {
-  Select,
   SelectRoot,
   SelectTrigger,
   SelectContent,
