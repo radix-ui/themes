@@ -6,7 +6,7 @@ module.exports = {
       path: [path.relative(process.cwd(), '../')],
     }),
     require('postcss-nesting'),
-    require('./postcss-radix-themes'),
+    require('./postcss-radix-themes.cjs'),
     require('postcss-custom-media'),
     require('postcss-combine-duplicated-selectors'),
     require('postcss-discard-empty'),
