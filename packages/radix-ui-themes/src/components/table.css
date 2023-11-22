@@ -108,7 +108,9 @@
   position: relative;
 
   /* When possible, use half-transparent gray for nicer border blending with the background */
-  border-color: color-mix(in oklab, var(--gray-a5), var(--gray-6));
+  @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
+    border-color: color-mix(in oklab, var(--gray-a5), var(--gray-6));
+  }
 
   & :where(.rt-TableRootTable) {
     overflow: hidden;
