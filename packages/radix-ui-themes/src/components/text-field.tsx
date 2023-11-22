@@ -3,21 +3,21 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { composeEventHandlers } from '@radix-ui/primitive';
-import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props';
+import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props.js';
 import {
   extractMarginProps,
   withMarginProps,
   extractPaddingProps,
   withPaddingProps,
   withBreakpoints,
-} from '../helpers';
+} from '../helpers/index.js';
 
 import type {
   PropsWithoutRefOrColor,
   MarginProps,
   PaddingProps,
   GetPropDefTypes,
-} from '../helpers';
+} from '../helpers/index.js';
 
 type TextFieldContextValue = GetPropDefTypes<typeof textFieldPropDefs>;
 const TextFieldContext = React.createContext<TextFieldContextValue | undefined>(undefined);

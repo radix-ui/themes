@@ -1,6 +1,6 @@
-import { withBreakpoints } from '../breakpoints';
+import { withBreakpoints } from '../breakpoints.js';
 
-import type { PropDef, GetPropDefTypes } from './prop-def';
+import type { PropDef, GetPropDefTypes } from './prop-def.js';
 
 // prettier-ignore
 const marginValues = ['auto', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9'] as const;

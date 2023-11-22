@@ -1,4 +1,4 @@
-import type { PropDef } from '../helpers';
+import type { PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'ghost'] as const;

@@ -1,5 +1,5 @@
-import { themePropDefs } from '../../theme-options';
-import type { PropDef } from '..';
+import { themePropDefs } from '../../theme-options.js';
+import type { PropDef } from '../index.js';
 
 const colorProp = {
   type: 'enum',

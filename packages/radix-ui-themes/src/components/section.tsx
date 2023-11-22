@@ -1,15 +1,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { sectionPropDefs } from './section.props';
+import { sectionPropDefs } from './section.props.js';
 import {
   extractMarginProps,
   withMarginProps,
   extractLayoutProps,
   withLayoutProps,
   withBreakpoints,
-} from '../helpers';
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers/index.js';
 
 type SectionElement = React.ElementRef<'div'>;
 type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs>;

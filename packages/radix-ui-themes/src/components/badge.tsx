@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { badgePropDefs } from './badge.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { badgePropDefs } from './badge.props.js';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type BadgeElement = React.ElementRef<'span'>;
 type BadgeOwnProps = GetPropDefTypes<typeof badgePropDefs>;

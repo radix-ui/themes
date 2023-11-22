@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Responsive } from '../breakpoints';
+import type { Responsive } from '../breakpoints.js';
 
 type BooleanPropDef = { type: 'boolean'; default?: boolean; required?: boolean };
 type StringPropDef = { type: 'string'; default?: string; required?: boolean };

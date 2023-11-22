@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { insetPropDefs } from './inset.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { insetPropDefs } from './inset.props.js';
+import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type InsetElement = React.ElementRef<'div'>;
 type InsetOwnProps = GetPropDefTypes<typeof insetPropDefs>;

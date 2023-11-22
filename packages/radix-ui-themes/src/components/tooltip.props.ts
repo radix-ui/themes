@@ -1,4 +1,4 @@
-import type { PropDef } from '../helpers';
+import type { PropDef } from '../helpers/index.js';
 
 const tooltipPropDefs = {
   content: { type: 'ReactNode', default: undefined, required: true },

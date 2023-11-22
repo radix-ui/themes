@@ -1,15 +1,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { containerPropDefs } from './container.props';
+import { containerPropDefs } from './container.props.js';
 import {
   extractMarginProps,
   withMarginProps,
   extractLayoutProps,
   withLayoutProps,
   withBreakpoints,
-} from '../helpers';
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers/index.js';
 
 type ContainerElement = React.ElementRef<'div'>;
 type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs>;

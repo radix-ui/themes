@@ -23,10 +23,10 @@ import {
   IconButton,
   AccessibleIcon,
   Popover,
-} from './index';
+} from './index.js';
 
-import type { ThemeOptions } from './index';
-import { InfoCircledIcon } from './icons';
+import type { ThemeOptions } from './index.js';
+import { InfoCircledIcon } from './icons.js';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;

@@ -1,43 +1,43 @@
 // LAYOUT
 //------------------------------------------------------------------------------
-export { Box } from './box';
-export * from './box.props';
-export { Flex } from './flex';
-export * from './flex.props';
-export { Grid } from './grid';
-export * from './grid.props';
-export { Container } from './container';
-export * from './container.props';
-export { Section } from './section';
-export * from './section.props';
-export { AspectRatio } from './aspect-ratio';
-export { Inset } from './inset';
-export * from './inset.props';
+export { Box } from './box.js';
+export * from './box.props.js';
+export { Flex } from './flex.js';
+export * from './flex.props.js';
+export { Grid } from './grid.js';
+export * from './grid.props.js';
+export { Container } from './container.js';
+export * from './container.props.js';
+export { Section } from './section.js';
+export * from './section.props.js';
+export { AspectRatio } from './aspect-ratio.js';
+export { Inset } from './inset.js';
+export * from './inset.props.js';
 
 // TYPOGRAPHY
 //------------------------------------------------------------------------------
-export { Heading } from './heading';
-export * from './heading.props';
-export { Text } from './text';
-export * from './text.props';
+export { Heading } from './heading.js';
+export * from './heading.props.js';
+export { Text } from './text.js';
+export * from './text.props.js';
 
 // FORMATTING
 //------------------------------------------------------------------------------
-export { Code } from './code';
-export * from './code.props';
-export { Em } from './em';
-export { Kbd } from './kbd';
-export * from './kbd.props';
-export { Quote } from './quote';
-export { Strong } from './strong';
+export { Code } from './code.js';
+export * from './code.props.js';
+export { Em } from './em.js';
+export { Kbd } from './kbd.js';
+export * from './kbd.props.js';
+export { Quote } from './quote.js';
+export { Strong } from './strong.js';
 
 // FORMS
 //------------------------------------------------------------------------------
 // export * from './form'; 👈
-export { Checkbox } from './checkbox';
-export * from './checkbox.props';
-export { RadioGroup, RadioGroupRoot, RadioGroupItem } from './radio-group';
-export * from './radio-group.props';
+export { Checkbox } from './checkbox.js';
+export * from './checkbox.props.js';
+export { RadioGroup, RadioGroupRoot, RadioGroupItem } from './radio-group.js';
+export * from './radio-group.props.js';
 // export * from './radio-card-group';
 export {
   Select,
@@ -48,16 +48,16 @@ export {
   SelectGroup,
   SelectLabel,
   SelectSeparator,
-} from './select';
-export * from './select.props';
-export { Slider } from './slider';
-export * from './slider.props';
-export { Switch } from './switch';
-export * from './switch.props';
-export { TextArea } from './text-area';
-export * from './text-area.props';
-export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field';
-export * from './text-field.props';
+} from './select.js';
+export * from './select.props.js';
+export { Slider } from './slider.js';
+export * from './slider.props.js';
+export { Switch } from './switch.js';
+export * from './switch.props.js';
+export { TextArea } from './text-area.js';
+export * from './text-area.props.js';
+export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field.js';
+export * from './text-field.props.js';
 
 // OVERLAYS
 //------------------------------------------------------------------------------
@@ -69,8 +69,8 @@ export {
   DialogTitle,
   DialogDescription,
   DialogClose,
-} from './dialog';
-export * from './dialog.props';
+} from './dialog.js';
+export * from './dialog.props.js';
 export {
   AlertDialog,
   AlertDialogRoot,
@@ -80,8 +80,8 @@ export {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-} from './alert-dialog';
-export * from './alert-dialog.props';
+} from './alert-dialog.js';
+export * from './alert-dialog.props.js';
 export {
   DropdownMenu,
   DropdownMenuRoot,
@@ -97,8 +97,8 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuSeparator,
-} from './dropdown-menu';
-export * from './dropdown-menu.props';
+} from './dropdown-menu.js';
+export * from './dropdown-menu.props.js';
 export {
   ContextMenu,
   ContextMenuRoot,
@@ -114,14 +114,14 @@ export {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuSeparator,
-} from './context-menu';
-export * from './context-menu.props';
-export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card';
-export * from './hover-card.props';
-export { Popover, PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover';
-export * from './popover.props';
-export { Tooltip } from './tooltip';
-export * from './tooltip.props';
+} from './context-menu.js';
+export * from './context-menu.props.js';
+export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card.js';
+export * from './hover-card.props.js';
+export { Popover, PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover.js';
+export * from './popover.props.js';
+export { Tooltip } from './tooltip.js';
+export * from './tooltip.props.js';
 
 // NAVIGATION
 //------------------------------------------------------------------------------
@@ -131,29 +131,29 @@ export * from './tooltip.props';
 // COMPONENTS
 //------------------------------------------------------------------------------
 // export * from './accordion';
-export { Avatar } from './avatar';
-export * from './avatar.props';
-export { Badge } from './badge';
-export * from './badge.props';
-export { Blockquote } from './blockquote';
-export * from './blockquote.props';
-export { Button } from './button';
-export * from './button.props';
-export { Callout, CalloutRoot, CalloutIcon, CalloutText } from './callout';
-export * from './callout.props';
-export { Card } from './card';
-export * from './card.props';
+export { Avatar } from './avatar.js';
+export * from './avatar.props.js';
+export { Badge } from './badge.js';
+export * from './badge.props.js';
+export { Blockquote } from './blockquote.js';
+export * from './blockquote.props.js';
+export { Button } from './button.js';
+export * from './button.props.js';
+export { Callout, CalloutRoot, CalloutIcon, CalloutText } from './callout.js';
+export * from './callout.props.js';
+export { Card } from './card.js';
+export * from './card.props.js';
 // export * from './collapsible';
 // export * from './definition-list';
-export { IconButton } from './icon-button';
-export * from './icon-button.props';
-export { Link } from './link';
-export * from './link.props';
+export { IconButton } from './icon-button.js';
+export * from './icon-button.props.js';
+export { Link } from './link.js';
+export * from './link.props.js';
 // export * from './progress';
-export { ScrollArea } from './scroll-area';
-export * from './scroll-area.props';
-export { Separator } from './separator';
-export * from './separator.props';
+export { ScrollArea } from './scroll-area.js';
+export * from './scroll-area.props.js';
+export { Separator } from './separator.js';
+export * from './separator.props.js';
 // export * from './skeleton';
 export {
   Table,
@@ -164,10 +164,10 @@ export {
   TableColumnHeaderCell,
   TableRowHeaderCell,
   TableCell,
-} from './table';
-export * from './table.props';
-export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs';
-export * from './tabs.props';
+} from './table.js';
+export * from './table.props.js';
+export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs.js';
+export * from './tabs.props.js';
 // export * from './toast';
 // export * from './toggle';
 // export * from './toggle-group';
@@ -175,7 +175,7 @@ export * from './tabs.props';
 
 // UTILITIES
 //------------------------------------------------------------------------------
-export { AccessibleIcon } from './accessible-icon';
-export { Portal } from './portal';
-export { Slot, Slottable } from './slot';
-export { VisuallyHidden } from './visually-hidden';
+export { AccessibleIcon } from './accessible-icon.js';
+export { Portal } from './portal.js';
+export { Slot, Slottable } from './slot.js';
+export { VisuallyHidden } from './visually-hidden.js';

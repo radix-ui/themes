@@ -1,4 +1,4 @@
-import type { PropDef } from '..';
+import type { PropDef } from '../index.js';
 
 const highContrastProp = {
   type: 'boolean',
