@@ -63,8 +63,8 @@
     z-index: -1;
     width: calc(var(--slider-thumb-size) * 3);
     height: calc(var(--slider-thumb-size) * 3);
-    top: 50%;
-    left: 50%;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
     transform: translate(-50%, -50%);
   }
 

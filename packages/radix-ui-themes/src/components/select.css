@@ -71,7 +71,7 @@
 
 .rt-SelectItemIndicator {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   width: var(--select-item-indicator-width);
   display: inline-flex;
   align-items: center;
