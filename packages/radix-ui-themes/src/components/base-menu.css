@@ -19,7 +19,7 @@
   padding: var(--base-menu-content-padding);
 
   :where(.rt-BaseMenuContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
-    padding-right: var(--space-3);
+    padding-inline-end: var(--space-3);
   }
 }
 
@@ -28,8 +28,8 @@
   align-items: center;
   justify-content: space-between;
   height: var(--base-menu-item-height);
-  padding-left: var(--base-menu-item-padding-left);
-  padding-right: var(--base-menu-item-padding-right);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
   position: relative;
   box-sizing: border-box;
   outline: none;
@@ -47,12 +47,12 @@
 .rt-BaseMenuShortcut {
   display: flex;
   align-items: center;
-  margin-left: var(--space-5);
+  margin-inline-start: var(--space-5);
 }
 
 .rt-BaseMenuSubTriggerIcon {
   color: var(--gray-12);
-  margin-right: calc(-2px * var(--scaling));
+  margin-inline-end: calc(-2px * var(--scaling));
 }
 
 .rt-BaseMenuItemIndicator {
@@ -66,24 +66,24 @@
 
 .rt-BaseMenuSeparator {
   height: 1px;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-2);
-  margin-left: var(--base-menu-item-padding-left);
-  margin-right: var(--base-menu-item-padding-right);
+  margin-block-start: var(--space-2);
+  margin-block-end: var(--space-2);
+  margin-inline-start: var(--base-menu-item-padding-left);
+  margin-inline-end: var(--base-menu-item-padding-right);
 }
 
 .rt-BaseMenuLabel {
   display: flex;
   align-items: center;
   height: var(--base-menu-item-height);
-  padding-left: var(--base-menu-item-padding-left);
-  padding-right: var(--base-menu-item-padding-right);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
   color: var(--gray-a10);
   user-select: none;
   cursor: default;
 
   :where(.rt-BaseMenuItem) + & {
-    margin-top: var(--space-2);
+    margin-block-start: var(--space-2);
   }
 }
 

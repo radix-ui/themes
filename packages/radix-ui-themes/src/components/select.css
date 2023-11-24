@@ -49,7 +49,7 @@
   padding: var(--select-content-padding);
 
   :where(.rt-SelectContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
-    padding-right: var(--space-3);
+    padding-inline-end: var(--space-3);
   }
 }
 
@@ -57,8 +57,8 @@
   display: flex;
   align-items: center;
   height: var(--select-item-height);
-  padding-left: var(--select-item-indicator-width);
-  padding-right: var(--select-item-indicator-width);
+  padding-inline-start: var(--select-item-indicator-width);
+  padding-inline-end: var(--select-item-indicator-width);
   position: relative;
   box-sizing: border-box;
   outline: none;
@@ -80,24 +80,24 @@
 
 .rt-SelectSeparator {
   height: 1px;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-2);
-  margin-left: var(--select-item-indicator-width);
-  margin-right: var(--select-separator-margin-right);
+  margin-block-start: var(--space-2);
+  margin-block-end: var(--space-2);
+  margin-inline-start: var(--select-item-indicator-width);
+  margin-inline-end: var(--select-separator-margin-right);
 }
 
 .rt-SelectLabel {
   display: flex;
   align-items: center;
   height: var(--select-item-height);
-  padding-left: var(--select-item-indicator-width);
-  padding-right: var(--select-item-indicator-width);
+  padding-inline-start: var(--select-item-indicator-width);
+  padding-inline-end: var(--select-item-indicator-width);
   color: var(--gray-a10);
   user-select: none;
   cursor: default;
 
   :where(.rt-SelectItem) + & {
-    margin-top: var(--space-2);
+    margin-block-start: var(--space-2);
   }
 }
 
@@ -155,8 +155,8 @@
       border-radius: max(var(--radius-1), var(--radius-full));
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-2);
-        padding-right: var(--space-2);
+        padding-inline-start: var(--space-2);
+        padding-inline-end: var(--space-2);
       }
       &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-2);
@@ -172,8 +172,8 @@
       border-radius: max(var(--radius-2), var(--radius-full));
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-3);
-        padding-right: var(--space-3);
+        padding-inline-start: var(--space-3);
+        padding-inline-end: var(--space-3);
       }
       &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-2);
@@ -189,8 +189,8 @@
       border-radius: max(var(--radius-3), var(--radius-full));
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
+        padding-inline-start: var(--space-4);
+        padding-inline-end: var(--space-4);
       }
       &:where(.rt-variant-ghost) {
         --select-trigger-ghost-padding-x: var(--space-3);

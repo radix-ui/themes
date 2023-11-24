@@ -1,5 +1,5 @@
 .root {
-  margin-bottom: 400px;
+  margin-block-end: 400px;
 }
 
 .root :global(summary) {
@@ -19,7 +19,7 @@
   border-collapse: collapse;
 }
 .table + .table {
-  margin-top: var(--space-3);
+  margin-block-start: var(--space-3);
 }
 
 .table thead tr,
@@ -34,13 +34,13 @@
 .table th,
 .table td {
   padding: 0;
-  padding-top: var(--space-4);
-  padding-right: var(--space-4);
-  padding-bottom: var(--space-4);
+  padding-block-start: var(--space-4);
+  padding-inline-end: var(--space-4);
+  padding-block-end: var(--space-4);
 }
 
 .table .rowHeaderCell {
-  padding-left: 0;
-  padding-right: var(--space-5);
+  padding-inline-start: 0;
+  padding-inline-end: var(--space-5);
   min-width: 100px;
 }

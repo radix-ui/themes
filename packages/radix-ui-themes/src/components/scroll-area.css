@@ -109,16 +109,16 @@
     animation-name: rt-fade-out;
   }
   &:where([data-orientation='horizontal']) {
-    margin-top: var(--scrollarea-scrollbar-horizontal-margin-top);
-    margin-bottom: var(--scrollarea-scrollbar-horizontal-margin-bottom);
-    margin-left: var(--scrollarea-scrollbar-horizontal-margin-left);
-    margin-right: var(--scrollarea-scrollbar-horizontal-margin-right);
+    margin-block-start: var(--scrollarea-scrollbar-horizontal-margin-top);
+    margin-block-end: var(--scrollarea-scrollbar-horizontal-margin-bottom);
+    margin-inline-start: var(--scrollarea-scrollbar-horizontal-margin-left);
+    margin-inline-end: var(--scrollarea-scrollbar-horizontal-margin-right);
   }
   &:where([data-orientation='vertical']) {
-    margin-top: var(--scrollarea-scrollbar-vertical-margin-top);
-    margin-bottom: var(--scrollarea-scrollbar-vertical-margin-bottom);
-    margin-left: var(--scrollarea-scrollbar-vertical-margin-left);
-    margin-right: var(--scrollarea-scrollbar-vertical-margin-right);
+    margin-block-start: var(--scrollarea-scrollbar-vertical-margin-top);
+    margin-block-end: var(--scrollarea-scrollbar-vertical-margin-bottom);
+    margin-inline-start: var(--scrollarea-scrollbar-vertical-margin-left);
+    margin-inline-end: var(--scrollarea-scrollbar-vertical-margin-right);
   }
 }
 

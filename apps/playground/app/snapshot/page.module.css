@@ -48,12 +48,12 @@
 }
 
 .container {
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  padding-inline-start: var(--space-5);
+  padding-inline-end: var(--space-5);
 }
 @media (min-width: 1600px) {
   .container {
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
   }
 }

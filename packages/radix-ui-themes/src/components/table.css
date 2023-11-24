@@ -38,10 +38,10 @@
 
   /* Inset with Table */
   .rt-Inset :where(&:first-child) {
-    padding-left: var(--inset-padding, var(--table-cell-padding));
+    padding-inline-start: var(--inset-padding, var(--table-cell-padding));
   }
   .rt-Inset :where(&:last-child) {
-    padding-right: var(--inset-padding, var(--table-cell-padding));
+    padding-inline-end: var(--inset-padding, var(--table-cell-padding));
   }
 }
 .rt-TableColumnHeaderCell {
