@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { useDirection } from '@radix-ui/react-direction';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { Text } from './text';
 import { tooltipPropDefs } from './tooltip.props';
@@ -20,6 +21,7 @@ interface TooltipProps
   container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
 }
 const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwardedRef) => {
+  const dir = useDirection();
   const {
     children,
     className,
@@ -38,7 +40,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     <TooltipPrimitive.Root {...rootProps}>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
       <TooltipPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <TooltipPrimitive.Content
             sideOffset={4}
             collisionPadding={10}

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { useDirection } from '@radix-ui/react-direction';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Slottable } from '@radix-ui/react-slot';
 import { ScrollArea } from './scroll-area';
@@ -42,6 +43,7 @@ interface DropdownMenuContentProps
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const themeContext = useThemeContext();
     const {
       className,
@@ -57,7 +59,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     const resolvedColor = color ?? themeContext.accentColor;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <DropdownMenuPrimitive.Content
             data-accent-color={resolvedColor}
             align="start"

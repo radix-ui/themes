@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { useDirection } from '@radix-ui/react-direction';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import { hoverCardContentPropDefs } from './hover-card.props';
 import { withBreakpoints } from '../helpers';
@@ -40,6 +41,7 @@ interface HoverCardContentProps
 }
 const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardContentProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const {
       className,
       forceMount,
@@ -49,7 +51,7 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
     } = props;
     return (
       <HoverCardPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <HoverCardPrimitive.Content
             align="start"
             sideOffset={8}

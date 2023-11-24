@@ -3,6 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { useDirection } from '@radix-ui/react-direction';
 import { dialogContentPropDefs } from './dialog.props';
 import { withBreakpoints } from '../helpers';
 import { Heading } from './heading';
@@ -33,6 +34,7 @@ interface DialogContentProps
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const {
       className,
       forceMount,
@@ -42,7 +44,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     } = props;
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <DialogPrimitive.Overlay className="rt-DialogOverlay">
             <DialogPrimitive.Content
               {...contentProps}
