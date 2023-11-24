@@ -55,6 +55,12 @@
   margin-inline-end: calc(-2px * var(--scaling));
 }
 
+[dir='rtl'] {
+  .rt-BaseMenuSubTriggerIcon {
+    transform: scaleX(-1);
+  }
+}
+
 .rt-BaseMenuItemIndicator {
   position: absolute;
   inset-inline-start: 0;
