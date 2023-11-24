@@ -49,6 +49,8 @@
   color: var(--gray-12);
   background-color: var(--gray-1);
   box-shadow: var(--kbd-box-shadow);
+
+  direction: ltr;
 }
 
 /***************************************************************************************************
