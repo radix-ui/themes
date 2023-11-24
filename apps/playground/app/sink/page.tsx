@@ -188,12 +188,18 @@ import styles from './page.module.css';
 import { RadixLogo } from './radix-logo';
 import { PointerCursorsCheckbox } from './pointer-cursors-checkbox';
 
-export default function Sink() {
+type Props = {
+  searchParams: {
+    direction?: string;
+  };
+};
+
+export default function Sink({ searchParams }: Props) {
   return (
     <html lang="en" className={styles.root} suppressHydrationWarning>
       <body>
         <NextThemeProvider>
-          <Theme asChild accentColor="violet">
+          <Theme dir={searchParams.direction ?? 'ltr'} asChild accentColor="violet">
             <div id="root">
               <div
                 style={{
