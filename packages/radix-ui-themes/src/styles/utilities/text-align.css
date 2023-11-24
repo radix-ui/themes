@@ -10,4 +10,14 @@
   .rt-r-ta-right {
     text-align: right;
   }
+
+  [dir='rtl'] {
+    .rt-r-ta-left {
+      text-align: right;
+    }
+
+    .rt-r-ta-right {
+      text-align: left;
+    }
+  }
 }
