@@ -84,6 +84,23 @@
   }
 }
 
+[dir='rtl'] {
+  .rt-SwitchButton {
+    &:where([data-state='unchecked'])::before {
+      background-position-x: -100%;
+    }
+    &:where([data-state='checked'])::before {
+      background-position: 0%;
+    }
+  }
+
+  .rt-SwitchThumb {
+    &:where([data-state='checked']) {
+      transform: translateX(calc(-1 * var(--switch-thumb-translate-x)));
+    }
+  }
+}
+
 /***************************************************************************************************
  *                                                                                                 *
  * SIZES                                                                                           *
