@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- Fix an issue when Chrome would sometimes crash while using CSS inspector on a Radix Themes stylesheet
+
 ## 2.0.1
 
 - `Card`
