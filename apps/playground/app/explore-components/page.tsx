@@ -132,6 +132,8 @@ import {
   //
   Separator,
   //
+  Skeleton,
+  //
   Slider,
   sliderPropDefs,
   //
@@ -3107,6 +3109,82 @@ export default function ExploreComponents() {
                       Colors
                     </Flex>
                   </Text>
+                </Flex>
+
+                <Heading id="skeleton" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#skeleton">
+                    Skeleton
+                  </Link>
+                </Heading>
+                <Flex my="6" gap="9">
+                  <Box shrink="0">
+                    <Card size="4" style={{ width: 400 }}>
+                      <Flex direction="column" gap="3">
+                        <Grid gap="1">
+                          <Text weight="bold">Email</Text>
+                          <TextFieldInput variant="classic" placeholder="Your email" />
+                        </Grid>
+                        <Grid gap="1">
+                          <Text weight="bold">Subject</Text>
+                          <SelectRoot defaultValue="customer">
+                            <SelectTrigger variant="classic" />
+                            <SelectContent>
+                              <SelectItem value="customer">Customer feedback</SelectItem>
+                              <SelectItem value="help">Help</SelectItem>
+                            </SelectContent>
+                          </SelectRoot>
+                        </Grid>
+                        <Grid gap="1">
+                          <Text weight="bold">Feedback</Text>
+                          <TextArea variant="classic" placeholder="Your feedback" />
+                        </Grid>
+                        <Grid columns="2" gap="2">
+                          <Button variant="surface">Back</Button>
+                          <Button variant="classic">Submit</Button>
+                        </Grid>
+                      </Flex>
+                    </Card>
+                  </Box>
+                  <Box shrink="0">
+                    <Card size="4" style={{ width: 400 }}>
+                      <Flex direction="column" gap="3">
+                        <Grid gap="1">
+                          <Text weight="bold">
+                            <Skeleton>Email</Skeleton>
+                          </Text>
+                          <Skeleton>
+                            <TextFieldInput variant="classic" placeholder="Your email" />
+                          </Skeleton>
+                        </Grid>
+                        <Grid gap="1">
+                          <Text weight="bold">
+                            <Skeleton>Subject</Skeleton>
+                          </Text>
+                          <SelectRoot defaultValue="customer">
+                            <Skeleton>
+                              <SelectTrigger variant="classic" />
+                            </Skeleton>
+                          </SelectRoot>
+                        </Grid>
+                        <Grid gap="1">
+                          <Text weight="bold">
+                            <Skeleton>Feedback</Skeleton>
+                          </Text>
+                          <Skeleton>
+                            <TextArea variant="classic" placeholder="Your feedback" />
+                          </Skeleton>
+                        </Grid>
+                        <Grid columns="2" gap="2">
+                          <Skeleton>
+                            <Button variant="surface">Back</Button>
+                          </Skeleton>
+                          <Skeleton>
+                            <Button variant="classic">Submit</Button>
+                          </Skeleton>
+                        </Grid>
+                      </Flex>
+                    </Card>
+                  </Box>
                 </Flex>
 
                 <Heading id="slider" mb="5">

@@ -1,0 +1,65 @@
+:where(.rt-Skeleton) {
+  border-radius: var(--radius-1);
+}
+
+.rt-Skeleton {
+  animation: rt-pulse 1000ms infinite alternate-reverse !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  outline: none !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  cursor: default !important;
+  box-decoration-break: clone !important;
+}
+
+/*
+ * Take font differences out of equation for inline Skeletons that just wrap text.
+ * This makes the dimensions consistent between the following non-Skeleton and Skeleton text:
+ * ```
+ * <Text>Example text</Text>
+ *
+ * <Text>
+ *   <Skeleton>Example text</Skeleton>
+ * </Text>
+ * ```
+ *
+ * Will NOT collapse Skeletons as the browsers use line-height on inline elements just for alignment.
+ */
+.rt-Skeleton[data-inline-skeleton] {
+  line-height: 0;
+  /* Font metrics on Arial yield much nicer height for the text background bounding box */
+  font-family: Arial, sans-serif !important;
+}
+
+.rt-Skeleton:autofill {
+  -webkit-text-fill-color: transparent !important;
+  box-shadow: inset 0 0 0 100px var(--gray-a3), inset 0 0 0 100px var(--color-background) !important;
+}
+
+:where(.rt-Skeleton:empty) {
+  display: block;
+  height: var(--space-3);
+}
+
+.rt-Skeleton > *,
+.rt-Skeleton::after,
+.rt-Skeleton::before {
+  visibility: hidden !important;
+}
+
+/* `visibility: hidden` doesn’t work for placeholders in Firefox */
+.rt-Skeleton::placeholder {
+  opacity: 0 !important;
+}
+
+@keyframes rt-pulse {
+  from {
+    background-color: var(--gray-a3);
+  }
+  to {
+    background-color: var(--gray-a4);
+  }
+}

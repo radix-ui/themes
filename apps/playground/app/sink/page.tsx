@@ -140,6 +140,8 @@ import {
   //
   Separator,
   //
+  Skeleton,
+  //
   Slider,
   sliderPropDefs,
   //
@@ -4189,6 +4191,53 @@ export default function Sink() {
                     </Flex>
 
                     <PointerCursorsCheckbox />
+                  </DocsSection>
+
+                  <DocsSection title="Skeleton">
+                    <Flex gap="9">
+                      <Card size="4" style={{ width: 400 }}>
+                        <PlaygroundForm />
+                      </Card>
+
+                      <Card size="4" style={{ width: 400 }}>
+                        <Flex direction="column" gap="3">
+                          <Grid gap="1">
+                            <Text weight="bold">
+                              <Skeleton>Email</Skeleton>
+                            </Text>
+                            <Skeleton>
+                              <TextFieldInput variant="classic" placeholder="Your email" />
+                            </Skeleton>
+                          </Grid>
+                          <Grid gap="1">
+                            <Text weight="bold">
+                              <Skeleton>Subject</Skeleton>
+                            </Text>
+                            <SelectRoot defaultValue="customer">
+                              <Skeleton>
+                                <SelectTrigger variant="classic" />
+                              </Skeleton>
+                            </SelectRoot>
+                          </Grid>
+                          <Grid gap="1">
+                            <Text weight="bold">
+                              <Skeleton>Feedback</Skeleton>
+                            </Text>
+                            <Skeleton>
+                              <TextArea variant="classic" placeholder="Your feedback" />
+                            </Skeleton>
+                          </Grid>
+                          <Grid columns="2" gap="2">
+                            <Skeleton>
+                              <Button variant="surface">Back</Button>
+                            </Skeleton>
+                            <Skeleton>
+                              <Button variant="classic">Submit</Button>
+                            </Skeleton>
+                          </Grid>
+                        </Flex>
+                      </Card>
+                    </Flex>
                   </DocsSection>
                 </main>
               </Box>

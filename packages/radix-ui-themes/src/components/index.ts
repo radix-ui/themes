@@ -154,7 +154,7 @@ export { ScrollArea } from './scroll-area';
 export * from './scroll-area.props';
 export { Separator } from './separator';
 export * from './separator.props';
-// export * from './skeleton';
+export * from './skeleton';
 export {
   Table,
   TableRoot,
