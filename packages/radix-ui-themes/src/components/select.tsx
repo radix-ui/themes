@@ -36,7 +36,9 @@ type SelectTriggerOwnProps = GetPropDefTypes<typeof selectTriggerPropDefs>;
 interface SelectTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Trigger>, 'asChild'>,
     MarginProps,
-    SelectTriggerOwnProps {}
+    SelectTriggerOwnProps {
+  placeholder?: string;
+}
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);

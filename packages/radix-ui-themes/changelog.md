@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.3
+
+- `Select
+  - Fix a type issue with `placeholder` prop after latest React DOM types update
+
 ## 2.0.2
 
 - Fix an issue when Chrome would sometimes crash while using CSS inspector on a Radix Themes stylesheet
