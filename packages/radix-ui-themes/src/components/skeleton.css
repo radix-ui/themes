@@ -55,6 +55,19 @@
   opacity: 0 !important;
 }
 
+/* Specific component adjustments */
+.rt-Skeleton {
+  &:where(.rt-SliderRoot) {
+    height: var(--slider-track-size);
+  }
+  &:where(.rt-TextFieldInput) + .rt-TextFieldChrome {
+    visibility: hidden;
+  }
+  .rt-TextFieldRoot:has(&) {
+    cursor: default !important;
+  }
+}
+
 @keyframes rt-pulse {
   from {
     background-color: var(--gray-a3);

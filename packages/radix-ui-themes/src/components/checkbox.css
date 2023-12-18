@@ -15,6 +15,7 @@
   width: var(--checkbox-size);
   cursor: var(--cursor-checkbox);
   position: relative;
+  border-radius: inherit;
 
   &:where(:focus-visible) {
     outline: 2px solid var(--color-focus-root);
@@ -42,10 +43,7 @@
   .rt-CheckboxRoot {
     &:where(.rt-r-size-1) {
       --checkbox-size: calc(var(--space-4) * 0.875);
-
-      & :where(.rt-CheckboxButton) {
-        border-radius: calc(var(--radius-1) / 1.25);
-      }
+      border-radius: calc(var(--radius-1) / 1.25);
 
       & :where(.rt-CheckboxIndicatorIcon) {
         width: calc(8px * var(--scaling));
@@ -54,10 +52,7 @@
     }
     &:where(.rt-r-size-2) {
       --checkbox-size: var(--space-4);
-
-      & :where(.rt-CheckboxButton) {
-        border-radius: var(--radius-1);
-      }
+      border-radius: var(--radius-1);
 
       & :where(.rt-CheckboxIndicatorIcon) {
         width: calc(10px * var(--scaling));
@@ -66,10 +61,7 @@
     }
     &:where(.rt-r-size-3) {
       --checkbox-size: calc(var(--space-4) * 1.25);
-
-      & :where(.rt-CheckboxButton) {
-        border-radius: calc(var(--radius-1) * 1.25);
-      }
+      border-radius: calc(var(--radius-1) * 1.25);
 
       & :where(.rt-CheckboxIndicatorIcon) {
         width: calc(12px * var(--scaling));
