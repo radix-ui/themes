@@ -1,0 +1,33 @@
+.rt-r-gr {
+  grid-row: var(--grid-row);
+}
+
+@media (--xs) {
+  .xs\:rt-r-gr {
+    grid-row: var(--grid-row-xs);
+  }
+}
+
+@media (--sm) {
+  .sm\:rt-r-gr {
+    grid-row: var(--grid-row-sm);
+  }
+}
+
+@media (--md) {
+  .md\:rt-r-gr {
+    grid-row: var(--grid-row-md);
+  }
+}
+
+@media (--lg) {
+  .lg\:rt-r-gr {
+    grid-row: var(--grid-row-lg);
+  }
+}
+
+@media (--xl) {
+  .xl\:rt-r-gr {
+    grid-row: var(--grid-row-xl);
+  }
+}

@@ -1,3 +1,5 @@
+import { hasOwnProperty } from './has-own-property';
+
 type Breakpoints = 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
 
@@ -19,7 +21,8 @@ type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
 function withBreakpoints(
   value: Responsive<string | boolean> | undefined, // Value to check
   classPrefix = '', // CSS class prefix, e.g. "px" in "px-1" class
-  valueMap?: Record<string, string> // Optionally, an object to map prop values to a different CSS suffix
+  valueMap?: Record<string, string>, // Optionally, an object to map prop values to a different CSS suffix
+  withoutValue = false
 ) {
   const classes: string[] = [];
 
@@ -28,7 +31,7 @@ function withBreakpoints(
       if (bp in value) {
         const str = value[bp]?.toString();
         const isNegative = str?.startsWith('-');
-        const delimiter = classPrefix === '' ? '' : '-';
+        const delimiter = withoutValue || classPrefix === '' ? '' : '-';
         const prefix = isNegative ? `-${classPrefix}` : classPrefix;
         const matchedValue = isNegative ? str?.substring(1) : str;
 
@@ -36,7 +39,7 @@ function withBreakpoints(
           continue;
         }
 
-        const suffix = valueMap?.[matchedValue] ?? matchedValue;
+        const suffix = withoutValue ? '' : valueMap?.[matchedValue] ?? matchedValue;
 
         const className =
           bp === 'initial'
@@ -50,17 +53,17 @@ function withBreakpoints(
 
   if (typeof value === 'string') {
     const isNegative = value.startsWith('-');
-    const delimiter = classPrefix === '' ? '' : '-';
+    const delimiter = withoutValue || classPrefix === '' ? '' : '-';
     const prefix = isNegative ? `-${classPrefix}` : classPrefix;
     const matchedValue = isNegative ? value.substring(1) : value;
-    const suffix = valueMap?.[matchedValue] ?? matchedValue;
+    const suffix = withoutValue ? '' : valueMap?.[matchedValue] ?? matchedValue;
     classes.push(`${prefix}${delimiter}${suffix}`);
   }
 
   if (typeof value === 'boolean') {
-    const delimiter = classPrefix === '' ? '' : '-';
+    const delimiter = withoutValue || classPrefix === '' ? '' : '-';
     const matchedValue = value.toString();
-    const suffix = valueMap?.[matchedValue] ?? matchedValue;
+    const suffix = withoutValue ? '' : valueMap?.[matchedValue] ?? matchedValue;
     classes.push(`${classPrefix}${delimiter}${suffix}`);
   }
 
@@ -73,5 +76,56 @@ function isBreakpointsObject<V extends string>(
   return typeof obj === 'object';
 }
 
-export { withBreakpoints, isBreakpointsObject };
+function getResponsiveCustomProperties(
+  name: `--${string}`,
+  value: Responsive<string> | undefined,
+  parserFn?: (value: string | undefined) => string | undefined
+) {
+  let styles: Record<string, string | undefined> = {};
+
+  if (typeof value === 'string') {
+    styles = {
+      [name]: value,
+    };
+  }
+
+  if (isBreakpointsObject(value)) {
+    for (const breakpoint in value) {
+      if (hasOwnProperty(value, breakpoint)) {
+        const customProperty = breakpoint === 'initial' ? name : `${name}-${breakpoint}`;
+
+        styles = {
+          [customProperty]: value[breakpoint],
+          ...styles,
+        };
+      }
+    }
+  }
+
+  if (parserFn) {
+    for (const key in styles) {
+      styles[key] = parserFn(styles[key]);
+    }
+  }
+
+  return styles;
+}
+
+function getResponsiveStyles({
+  className,
+  variable,
+  value,
+  map,
+}: {
+  className: string;
+  variable: `--${string}`;
+  value: Responsive<string> | undefined;
+  map?: (value: string | undefined) => string | undefined;
+}) {
+  const classNames = withBreakpoints(value, className, undefined, true);
+  const customProperties = getResponsiveCustomProperties(variable, value, map);
+  return [classNames, customProperties] as const;
+}
+
+export { withBreakpoints, isBreakpointsObject, getResponsiveStyles };
 export type { Breakpoints, Responsive };

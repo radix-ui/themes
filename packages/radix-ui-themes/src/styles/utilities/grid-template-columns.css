@@ -1,0 +1,33 @@
+.rt-r-gtc {
+  grid-template-columns: var(--grid-template-columns);
+}
+
+@media (--xs) {
+  .xs\:rt-r-gtc {
+    grid-template-columns: var(--grid-template-columns-xs);
+  }
+}
+
+@media (--sm) {
+  .sm\:rt-r-gtc {
+    grid-template-columns: var(--grid-template-columns-sm);
+  }
+}
+
+@media (--md) {
+  .md\:rt-r-gtc {
+    grid-template-columns: var(--grid-template-columns-md);
+  }
+}
+
+@media (--lg) {
+  .lg\:rt-r-gtc {
+    grid-template-columns: var(--grid-template-columns-lg);
+  }
+}
+
+@media (--xl) {
+  .xl\:rt-r-gtc {
+    grid-template-columns: var(--grid-template-columns-xl);
+  }
+}

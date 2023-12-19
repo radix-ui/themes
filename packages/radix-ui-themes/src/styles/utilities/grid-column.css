@@ -1,0 +1,33 @@
+.rt-r-gc {
+  grid-column: var(--grid-column);
+}
+
+@media (--xs) {
+  .xs\:rt-r-gc {
+    grid-column: var(--grid-column-xs);
+  }
+}
+
+@media (--sm) {
+  .sm\:rt-r-gc {
+    grid-column: var(--grid-column-sm);
+  }
+}
+
+@media (--md) {
+  .md\:rt-r-gc {
+    grid-column: var(--grid-column-md);
+  }
+}
+
+@media (--lg) {
+  .lg\:rt-r-gc {
+    grid-column: var(--grid-column-lg);
+  }
+}
+
+@media (--xl) {
+  .xl\:rt-r-gc {
+    grid-column: var(--grid-column-xl);
+  }
+}

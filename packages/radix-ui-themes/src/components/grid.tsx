@@ -3,16 +3,16 @@ import classNames from 'classnames';
 import { Slot } from './slot';
 import { gridPropDefs } from './grid.props';
 import {
-  extractMarginProps,
-  withMarginProps,
   extractLayoutProps,
-  withLayoutProps,
+  extractMarginProps,
+  getLayoutStyles,
+  getResponsiveStyles,
+  styles,
   withBreakpoints,
-  isBreakpointsObject,
-  hasOwnProperty,
+  withMarginProps,
 } from '../helpers';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
 type GridElement = React.ElementRef<'div'>;
 type GridOwnProps = GetPropDefTypes<typeof gridPropDefs>;
@@ -38,54 +38,26 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
     gap = gridPropDefs.gap.default,
     gapX = gridPropDefs.gapX.default,
     gapY = gridPropDefs.gapY.default,
-    style: propStyle,
+    style,
     ...gridProps
   } = layoutRest;
   const Comp = asChild ? Slot : 'div';
 
-  let style: React.CSSProperties | Record<string, string | undefined> = {
-    ...propStyle,
-  };
+  const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
 
-  if (typeof columns === 'string') {
-    style = {
-      '--grid-template-columns-initial': parseGridValue(columns),
-      ...style,
-    };
-  }
+  const [columnsClassNames, columnsCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gtc',
+    variable: '--grid-template-columns',
+    value: columns,
+    map: parseGridValue,
+  });
 
-  if (typeof rows === 'string') {
-    style = {
-      '--grid-template-rows-initial': parseGridValue(rows),
-      ...style,
-    };
-  }
-
-  if (isBreakpointsObject(columns)) {
-    for (const breakpoint in columns) {
-      if (hasOwnProperty(columns, breakpoint)) {
-        const customProperty = `--grid-template-columns-${breakpoint}`;
-
-        style = {
-          [customProperty]: parseGridValue(columns[breakpoint]),
-          ...style,
-        };
-      }
-    }
-  }
-
-  if (isBreakpointsObject(rows)) {
-    for (const breakpoint in rows) {
-      if (hasOwnProperty(rows, breakpoint)) {
-        const customProperty = `--grid-template-rows-${breakpoint}`;
-
-        style = {
-          [customProperty]: parseGridValue(rows[breakpoint]),
-          ...style,
-        };
-      }
-    }
-  }
+  const [rowsClassNames, rowsCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gtr',
+    variable: '--grid-template-rows',
+    value: rows,
+    map: parseGridValue,
+  });
 
   return (
     <Comp
@@ -101,10 +73,12 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
         withBreakpoints(gap, 'rt-r-gap'),
         withBreakpoints(gapX, 'rt-r-cg'),
         withBreakpoints(gapY, 'rt-r-rg'),
-        withLayoutProps(layoutProps),
-        withMarginProps(marginProps)
+        withMarginProps(marginProps),
+        layoutClassNames,
+        columnsClassNames,
+        rowsClassNames
       )}
-      style={Object.keys(style).length ? style : undefined}
+      style={styles(layoutCustomProperties, columnsCustomProperties, rowsCustomProperties, style)}
     />
   );
 });

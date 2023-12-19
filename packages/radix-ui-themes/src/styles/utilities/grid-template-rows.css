@@ -1,0 +1,33 @@
+.rt-r-gtr {
+  grid-template-rows: var(--grid-template-rows);
+}
+
+@media (--xs) {
+  .xs\:rt-r-gtr {
+    grid-template-rows: var(--grid-template-rows-xs);
+  }
+}
+
+@media (--sm) {
+  .sm\:rt-r-gtr {
+    grid-template-rows: var(--grid-template-rows-sm);
+  }
+}
+
+@media (--md) {
+  .md\:rt-r-gtr {
+    grid-template-rows: var(--grid-template-rows-md);
+  }
+}
+
+@media (--lg) {
+  .lg\:rt-r-gtr {
+    grid-template-rows: var(--grid-template-rows-lg);
+  }
+}
+
+@media (--xl) {
+  .xl\:rt-r-gtr {
+    grid-template-rows: var(--grid-template-rows-xl);
+  }
+}

@@ -1,4 +1,6 @@
-import { withBreakpoints } from '../breakpoints';
+import classNames from 'classnames';
+import { withBreakpoints, getResponsiveStyles } from '../breakpoints';
+import { styles } from '../styles';
 
 import type { PropDef, GetPropDefTypes } from './prop-def';
 
@@ -71,6 +73,8 @@ const layoutPropDefs = {
   height: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
   shrink: { type: 'enum', values: flexShrinkValues, default: undefined, responsive: true },
   grow: { type: 'enum', values: flexGrowValues, default: undefined, responsive: true },
+  gridColumn: { type: 'string', default: undefined, responsive: true },
+  gridRow: { type: 'string', default: undefined, responsive: true },
 } satisfies {
   p: PropDef<(typeof paddingValues)[number]>;
   px: PropDef<(typeof paddingValues)[number]>;
@@ -89,6 +93,8 @@ const layoutPropDefs = {
   height: PropDef<(typeof widthHeightValues)[number]>;
   shrink: PropDef<(typeof flexShrinkValues)[number]>;
   grow: PropDef<(typeof flexGrowValues)[number]>;
+  gridColumn: PropDef<string>;
+  gridRow: PropDef<string>;
 };
 
 type LayoutProps = GetPropDefTypes<typeof layoutPropDefs>;
@@ -106,6 +112,8 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     right = layoutPropDefs.right.default,
     shrink = layoutPropDefs.shrink.default,
     grow = layoutPropDefs.grow.default,
+    gridColumn = layoutPropDefs.gridColumn.default,
+    gridRow = layoutPropDefs.gridRow.default,
     ...rest
   } = paddingRest;
   return {
@@ -120,12 +128,14 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     right,
     shrink,
     grow,
+    gridColumn,
+    gridRow,
     rest,
   };
 }
 
 function withLayoutProps(props: LayoutProps) {
-  return [
+  return classNames(
     withPaddingProps(props),
     withBreakpoints(props.position, 'rt-r-position'),
     withBreakpoints(props.shrink, 'rt-r-fs'),
@@ -136,10 +146,29 @@ function withLayoutProps(props: LayoutProps) {
     withBreakpoints(props.top, 'rt-r-top'),
     withBreakpoints(props.bottom, 'rt-r-bottom'),
     withBreakpoints(props.left, 'rt-r-left'),
-    withBreakpoints(props.right, 'rt-r-right'),
-  ]
-    .filter(Boolean)
-    .join(' ');
+    withBreakpoints(props.right, 'rt-r-right')
+  );
+}
+
+function getLayoutStyles(props: LayoutProps) {
+  const baseLayoutClassNamess = withLayoutProps(props);
+
+  const [columnClassNames, columnCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gtc',
+    variable: '--grid-column',
+    value: props.gridColumn,
+  });
+
+  const [rowClassNames, rowCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gtr',
+    variable: '--grid-row',
+    value: props.gridRow,
+  });
+
+  return [
+    classNames(baseLayoutClassNamess, columnClassNames, rowClassNames),
+    styles(columnCustomProperties, rowCustomProperties),
+  ] as const;
 }
 
 export {
@@ -149,5 +178,7 @@ export {
   layoutPropDefs,
   extractLayoutProps,
   withLayoutProps,
+  getLayoutStyles,
 };
+
 export type { PaddingProps, LayoutProps };
