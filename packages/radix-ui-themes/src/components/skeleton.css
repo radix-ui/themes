@@ -2,17 +2,19 @@
   border-radius: var(--radius-1);
 }
 
-.rt-Skeleton {
+.rt-Skeleton,
+.rt-Skeleton:where(.rt-TextFieldInput) + :where(.rt-TextFieldChrome) {
   animation: rt-skeleton-pulse 1000ms infinite alternate-reverse !important;
   background-image: none !important;
+  background-clip: border-box !important;
   border: none !important;
   box-shadow: none !important;
+  box-decoration-break: clone !important;
   color: transparent !important;
   outline: none !important;
   pointer-events: none !important;
   user-select: none !important;
   cursor: default !important;
-  box-decoration-break: clone !important;
 }
 
 /*
@@ -28,15 +30,10 @@
  *
  * Will NOT collapse Skeletons as the browsers use line-height on inline elements just for alignment.
  */
-.rt-Skeleton[data-inline-skeleton] {
+.rt-Skeleton:where([data-inline-skeleton]) {
   line-height: 0;
   /* Font metrics on Arial yield much nicer height for the text background bounding box */
   font-family: Arial, sans-serif !important;
-}
-
-.rt-Skeleton:autofill {
-  -webkit-text-fill-color: transparent !important;
-  box-shadow: inset 0 0 0 100px var(--gray-a3), inset 0 0 0 100px var(--color-background) !important;
 }
 
 :where(.rt-Skeleton:empty) {
@@ -46,23 +43,9 @@
 
 .rt-Skeleton > *,
 .rt-Skeleton::after,
-.rt-Skeleton::before {
+.rt-Skeleton::before,
+.rt-Skeleton:where(.rt-TextFieldInput) {
   visibility: hidden !important;
-}
-
-/* `visibility: hidden` doesn’t work for placeholders in Firefox */
-.rt-Skeleton::placeholder {
-  opacity: 0 !important;
-}
-
-/* Specific component adjustments */
-.rt-Skeleton {
-  &:where(.rt-TextFieldInput) + .rt-TextFieldChrome {
-    visibility: hidden;
-  }
-  .rt-TextFieldRoot:has(&) {
-    cursor: default !important;
-  }
 }
 
 @keyframes rt-skeleton-pulse {

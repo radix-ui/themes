@@ -200,6 +200,20 @@ export default function Test() {
                         </IconButton>
                       </TextFieldSlot>
                     </TextFieldRoot>
+
+                    <TextFieldRoot size="3">
+                      <TextFieldSlot>
+                        <IconButton size="3" variant="ghost" color="gray">
+                          <LockClosedIcon />
+                        </IconButton>
+                      </TextFieldSlot>
+                      <TextFieldInput disabled placeholder="Your password" />
+                      <TextFieldSlot>
+                        <IconButton size="3" variant="ghost" color="gray">
+                          <EyeClosedIcon />
+                        </IconButton>
+                      </TextFieldSlot>
+                    </TextFieldRoot>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -257,6 +271,21 @@ export default function Test() {
                         <InfoCircledIcon />
                       </TextFieldSlot>
                       <TextFieldInput placeholder="Your name" />
+                      <TextFieldSlot gap="4">
+                        <IconButton size="3" variant="ghost" color="gray">
+                          <Share2Icon />
+                        </IconButton>
+                        <IconButton size="3" variant="ghost" color="gray">
+                          <StarIcon />
+                        </IconButton>
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+
+                    <TextFieldRoot size="3">
+                      <TextFieldSlot>
+                        <InfoCircledIcon />
+                      </TextFieldSlot>
+                      <TextFieldInput disabled placeholder="Your name" />
                       <TextFieldSlot gap="4">
                         <IconButton size="3" variant="ghost" color="gray">
                           <Share2Icon />
@@ -338,6 +367,17 @@ export default function Test() {
                         <EnvelopeOpenIcon />
                       </TextFieldSlot>
                       <TextFieldInput placeholder="your.email" defaultValue="benoit" />
+                      <TextFieldSlot px="1" gap="2">
+                        <Text size="3">@workos.com</Text>
+                        <Button variant="solid">Send</Button>
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+
+                    <TextFieldRoot size="3" radius="full">
+                      <TextFieldSlot>
+                        <EnvelopeOpenIcon />
+                      </TextFieldSlot>
+                      <TextFieldInput disabled placeholder="your.email" defaultValue="benoit" />
                       <TextFieldSlot px="1" gap="2">
                         <Text size="3">@workos.com</Text>
                         <Button variant="solid">Send</Button>
