@@ -113,7 +113,7 @@ function getResponsiveClassNames({
   }
 
   if (typeof value === 'object') {
-    const object = value;
+    const object = value as Partial<Record<Breakpoints, string>>;
 
     for (const bp of Object.keys(object) as Breakpoints[]) {
       const value = object[bp];
