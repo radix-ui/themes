@@ -2,6 +2,8 @@
 
 ## 2.1.0
 
+- `Select
+  - Fix a type issue with `placeholder` prop after latest React DOM types update
 - `Skeleton`: New component
 
 ## 2.0.2
