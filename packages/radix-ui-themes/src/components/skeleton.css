@@ -3,7 +3,7 @@
 }
 
 .rt-Skeleton {
-  animation: rt-pulse 1000ms infinite alternate-reverse !important;
+  animation: rt-skeleton-pulse 1000ms infinite alternate-reverse !important;
   background-image: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -57,9 +57,6 @@
 
 /* Specific component adjustments */
 .rt-Skeleton {
-  &:where(.rt-SliderRoot) {
-    height: var(--slider-track-size);
-  }
   &:where(.rt-TextFieldInput) + .rt-TextFieldChrome {
     visibility: hidden;
   }
@@ -68,7 +65,7 @@
   }
 }
 
-@keyframes rt-pulse {
+@keyframes rt-skeleton-pulse {
   from {
     background-color: var(--gray-a3);
   }
