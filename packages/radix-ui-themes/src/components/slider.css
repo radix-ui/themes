@@ -17,12 +17,12 @@
   touch-action: none;
 
   &:where([data-orientation='horizontal']) {
-    height: var(--slider-thumb-size);
+    height: var(--slider-track-size);
   }
   &:where([data-orientation='vertical']) {
     height: 100%;
     flex-direction: column;
-    width: var(--slider-thumb-size);
+    width: var(--slider-track-size);
   }
 }
 
