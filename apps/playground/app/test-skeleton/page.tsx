@@ -44,89 +44,60 @@ export default function Test() {
                     <form action="/">
                       <Box height="7" mb="4">
                         <Heading as="h3" size="6" mt="-1">
-                          {isLoading ? <Skeleton>Sign up</Skeleton> : 'Sign up'}
+                          <Skeleton loading={isLoading}>Sign up</Skeleton>
                         </Heading>
                       </Box>
 
                       <Box mb="5">
                         <Flex direction="column">
                           <Text as="label" size="2" weight="medium" mb="2" htmlFor="email">
-                            {isLoading ? <Skeleton>Email address</Skeleton> : 'Email address'}
+                            <Skeleton loading={isLoading}>Email address</Skeleton>
                           </Text>
-                          {isLoading ? (
-                            <Skeleton>
-                              <TextFieldInput
-                                id="email"
-                                type="email"
-                                variant="classic"
-                                placeholder="Enter your email"
-                              />
-                            </Skeleton>
-                          ) : (
+                          <Skeleton loading={isLoading}>
                             <TextFieldInput
                               id="email"
                               type="email"
                               variant="classic"
                               placeholder="Enter your email"
                             />
-                          )}
+                          </Skeleton>
                         </Flex>
                       </Box>
 
                       <Box mb="5" position="relative">
                         <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
                           <Link href="#" size="2">
-                            {isLoading ? <Skeleton>Forgot password?</Skeleton> : 'Forgot password?'}
+                            <Skeleton loading={isLoading}>Forgot password?</Skeleton>
                           </Link>
                         </Box>
 
                         <Flex direction="column">
                           <Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
-                            {isLoading ? <Skeleton>Password</Skeleton> : 'Password'}
+                            <Skeleton loading={isLoading}>Password</Skeleton>
                           </Text>
-                          {isLoading ? (
-                            <Skeleton>
-                              <TextFieldInput
-                                id="password"
-                                variant="classic"
-                                type="password"
-                                placeholder="Enter your password"
-                              />
-                            </Skeleton>
-                          ) : (
+                          <Skeleton loading={isLoading}>
                             <TextFieldInput
                               id="password"
                               variant="classic"
                               type="password"
                               placeholder="Enter your password"
                             />
-                          )}
+                          </Skeleton>
                         </Flex>
                       </Box>
 
-                      {isLoading ? (
-                        <Flex mt="6" justify="end" gap="3">
-                          <Skeleton>
-                            <Button variant="surface" highContrast color="gray">
-                              Create an account
-                            </Button>
-                          </Skeleton>
-                          <Skeleton>
-                            <Button variant="solid" type="submit">
-                              Sign in
-                            </Button>
-                          </Skeleton>
-                        </Flex>
-                      ) : (
-                        <Flex mt="6" justify="end" gap="3">
+                      <Flex mt="6" justify="end" gap="3">
+                        <Skeleton loading={isLoading}>
                           <Button variant="surface" highContrast color="gray">
                             Create an account
                           </Button>
+                        </Skeleton>
+                        <Skeleton loading={isLoading}>
                           <Button variant="solid" type="submit">
                             Sign in
                           </Button>
-                        </Flex>
-                      )}
+                        </Skeleton>
+                      </Flex>
                     </form>
                   </Card>
                 </Section>

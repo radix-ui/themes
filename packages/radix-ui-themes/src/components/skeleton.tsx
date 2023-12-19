@@ -1,16 +1,29 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
+import { skeletonPropDefs } from './skeleton.props';
 import { extractMarginProps, withMarginProps } from '../helpers';
 
-import type { MarginProps } from '../helpers';
+import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type SkeletonElement = React.ElementRef<'span'>;
-interface SkeletonProps extends React.ComponentPropsWithoutRef<'span'>, MarginProps {}
+type SkeletonOwnProps = GetPropDefTypes<typeof skeletonPropDefs>;
+interface SkeletonProps
+  extends React.ComponentPropsWithoutRef<'span'>,
+    MarginProps,
+    SkeletonOwnProps {}
 const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, children, ...skeletonProps } = marginRest;
+  const {
+    className,
+    children,
+    loading = skeletonPropDefs.loading.default,
+    ...skeletonProps
+  } = marginRest;
   const Tag = React.isValidElement(children) ? Slot : 'span';
+
+  if (!loading) return children;
+
   return (
     <Tag
       ref={forwardedRef}
