@@ -3,7 +3,6 @@
   box-sizing: border-box;
   position: relative;
   z-index: 0;
-  cursor: text;
 }
 
 .rt-TextFieldInput {
@@ -48,6 +47,7 @@
   position: relative;
   z-index: 1;
   color: var(--gray-a11);
+  cursor: text;
 
   &:where([data-accent-color]) {
     color: var(--accent-a11);
@@ -270,11 +270,8 @@
       background-color: var(--gray-a5);
     }
 
-    /* Cursor in gaps around slots, as an enhancement */
-    .rt-TextFieldRoot:where(:has(&)) {
-      cursor: text;
-    }
-    .rt-TextFieldRoot:where(:has(&:placeholder-shown)) {
+    /* Cursor in slots, as an enhancement */
+    .rt-TextFieldRoot:where(:has(&:placeholder-shown)) :where(.rt-TextFieldSlot) {
       cursor: default;
     }
   }

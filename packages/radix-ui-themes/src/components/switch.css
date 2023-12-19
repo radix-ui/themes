@@ -21,6 +21,8 @@
   /* Align with text line height when possible, fall back to own height */
   height: var(--line-height, var(--switch-height));
 
+  border-radius: var(--switch-border-radius);
+
   --switch-padding: 1px;
   --switch-width: calc(var(--switch-height) * 1.75);
   --switch-thumb-size: calc(var(--switch-height) - var(--switch-padding) * 2);
@@ -34,7 +36,7 @@
   width: var(--switch-width);
   height: var(--switch-height);
   padding: var(--switch-padding);
-  border-radius: var(--switch-border-radius);
+  border-radius: inherit;
   cursor: var(--cursor-switch);
 
   /* A pseudo element for the background color */

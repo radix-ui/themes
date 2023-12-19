@@ -4,6 +4,7 @@
   vertical-align: top;
   flex-shrink: 0;
   height: var(--line-height, var(--radio-group-item-size));
+  border-radius: 100%;
 }
 
 .rt-RadioGroupButton {
@@ -14,7 +15,7 @@
   height: var(--radio-group-item-size);
   width: var(--radio-group-item-size);
   cursor: var(--cursor-radio);
-  border-radius: 100%;
+  border-radius: inherit;
 
   &:where(:focus-visible) {
     outline: 2px solid var(--color-focus-root);

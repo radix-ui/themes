@@ -1,9 +1,12 @@
 # Changelog
 
-## 2.0.3
+## 2.1.0
 
-- `Select
+- `Select`
   - Fix a type issue with `placeholder` prop after latest React DOM types update
+- `Slider`
+  - Change the size of the bounding box to match the size of the Slider track
+- `Skeleton`: New component
 
 ## 2.0.2
 
