@@ -61,7 +61,11 @@
 @import './utilities/gap.css';
 @import './utilities/grid-auto-flow.css';
 @import './utilities/grid-column.css';
+@import './utilities/grid-column-start.css';
+@import './utilities/grid-column-end.css';
 @import './utilities/grid-row.css';
+@import './utilities/grid-row-start.css';
+@import './utilities/grid-row-end.css';
 @import './utilities/grid-template-columns.css';
 @import './utilities/grid-template-rows.css';
 @import './utilities/height.css';

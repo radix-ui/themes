@@ -5,7 +5,6 @@
   display: grid;
   align-items: stretch;
   justify-content: flex-start;
-
-  /* Enforce one full-width column by default (via "1fr") that won’t expand beyond the grid container width (via "0") */
   grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: none;
 }

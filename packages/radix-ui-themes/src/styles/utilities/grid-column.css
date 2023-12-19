@@ -1,31 +1,61 @@
-.rt-r-gc {
-  grid-column: var(--grid-column);
+@breakpoints {
+  .rt-r-gc {
+    /* Keep this selector here to maintain the source order */
+  }
+  .rt-r-gc-1 {
+    grid-column: 1;
+  }
+  .rt-r-gc-2 {
+    grid-column: 2;
+  }
+  .rt-r-gc-3 {
+    grid-column: 3;
+  }
+  .rt-r-gc-4 {
+    grid-column: 4;
+  }
+  .rt-r-gc-5 {
+    grid-column: 5;
+  }
+  .rt-r-gc-6 {
+    grid-column: 6;
+  }
+  .rt-r-gc-7 {
+    grid-column: 7;
+  }
+  .rt-r-gc-8 {
+    grid-column: 8;
+  }
+  .rt-r-gc-9 {
+    grid-column: 9;
+  }
 }
 
+@media all {
+  .rt-r-gc {
+    grid-column: var(--grid-column);
+  }
+}
 @media (--xs) {
   .xs\:rt-r-gc {
     grid-column: var(--grid-column-xs);
   }
 }
-
 @media (--sm) {
   .sm\:rt-r-gc {
     grid-column: var(--grid-column-sm);
   }
 }
-
 @media (--md) {
   .md\:rt-r-gc {
     grid-column: var(--grid-column-md);
   }
 }
-
 @media (--lg) {
   .lg\:rt-r-gc {
     grid-column: var(--grid-column-lg);
   }
 }
-
 @media (--xl) {
   .xl\:rt-r-gc {
     grid-column: var(--grid-column-xl);

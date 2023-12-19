@@ -46,16 +46,20 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
 
   const [columnsClassNames, columnsCustomProperties] = getResponsiveStyles({
+    allowAribtraryValues: true,
     className: 'rt-r-gtc',
-    variable: '--grid-template-columns',
+    customProperty: '--grid-template-columns',
     value: columns,
+    values: gridPropDefs.columns.values,
     map: parseGridValue,
   });
 
   const [rowsClassNames, rowsCustomProperties] = getResponsiveStyles({
+    allowAribtraryValues: true,
     className: 'rt-r-gtr',
-    variable: '--grid-template-rows',
+    customProperty: '--grid-template-rows',
     value: rows,
+    values: gridPropDefs.rows.values,
     map: parseGridValue,
   });
 
