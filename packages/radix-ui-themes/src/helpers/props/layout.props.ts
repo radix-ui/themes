@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { withBreakpoints, getResponsiveStyles } from '../breakpoints';
-import { styles } from '../styles';
+import { mergeStyles } from '../merge-styles';
 
 import type { PropDef, GetPropDefTypes } from './prop-def';
 
@@ -214,7 +214,7 @@ function getLayoutStyles(props: LayoutProps) {
   const baseLayoutClassNamess = withLayoutProps(props);
 
   const [gridColumnClassNames, gridColumnCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gc',
     customProperty: '--grid-column',
     value: props.gridColumn,
@@ -222,7 +222,7 @@ function getLayoutStyles(props: LayoutProps) {
   });
 
   const [gridColumnStartClassNames, gridColumnStartCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gcs',
     customProperty: '--grid-column-start',
     value: props.gridColumnStart,
@@ -230,7 +230,7 @@ function getLayoutStyles(props: LayoutProps) {
   });
 
   const [gridColumnEndClassNames, gridColumnEndCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gce',
     customProperty: '--grid-column-end',
     value: props.gridColumnEnd,
@@ -238,7 +238,7 @@ function getLayoutStyles(props: LayoutProps) {
   });
 
   const [gridRowClassNames, gridRowCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gr',
     customProperty: '--grid-row',
     value: props.gridRow,
@@ -246,7 +246,7 @@ function getLayoutStyles(props: LayoutProps) {
   });
 
   const [gridRowStartClassNames, gridRowStartCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-grs',
     customProperty: '--grid-row-start',
     value: props.gridRowStart,
@@ -254,7 +254,7 @@ function getLayoutStyles(props: LayoutProps) {
   });
 
   const [gridRowEndClassNames, gridRowEndCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gre',
     customProperty: '--grid-row-end',
     value: props.gridRowEnd,
@@ -271,7 +271,7 @@ function getLayoutStyles(props: LayoutProps) {
       gridRowStartClassNames,
       gridRowEndClassNames
     ),
-    styles(
+    mergeStyles(
       gridColumnCustomProperties,
       gridColumnStartCustomProperties,
       gridColumnEndCustomProperties,

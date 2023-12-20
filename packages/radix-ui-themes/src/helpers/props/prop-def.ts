@@ -18,7 +18,7 @@ type RegularPropDef<T> =
   | ReactNodePropDef
   | EnumPropDef<T>;
 type ResponsivePropDef<T = any> = RegularPropDef<T> & { responsive: true };
-type ResponisveWidePropDef<T = any> = {
+type ResponsiveWidePropDef<T = any> = {
   type: 'enum | string';
   values: readonly T[];
   default?: T;
@@ -26,7 +26,7 @@ type ResponisveWidePropDef<T = any> = {
   responsive: true;
   wide: true;
 };
-type PropDef<T = any> = RegularPropDef<T> | ResponsivePropDef<T> | ResponisveWidePropDef<T>;
+type PropDef<T = any> = RegularPropDef<T> | ResponsivePropDef<T> | ResponsiveWidePropDef<T>;
 
 // prettier-ignore
 type GetPropDefType<Def> =
@@ -34,7 +34,7 @@ type GetPropDefType<Def> =
   : Def extends StringPropDef ? (Def extends ResponsivePropDef ? Responsive<string> : string)
   : Def extends StringOrNumberPropDef ? (Def extends ResponsivePropDef ? Responsive<string | number> : string | number)
   : Def extends ReactNodePropDef ? (Def extends ResponsivePropDef ? Responsive<React.ReactNode> : React.ReactNode)
-  : Def extends ResponisveWidePropDef<infer Type> ? (Def extends ResponisveWidePropDef<infer Type extends string> ? ResponsiveWide<Type> : Type)
+  : Def extends ResponsiveWidePropDef<infer Type> ? (Def extends ResponsiveWidePropDef<infer Type extends string> ? ResponsiveWide<Type> : Type)
   : Def extends EnumPropDef<infer Type> ? (Def extends ResponsivePropDef<infer Type> ? Responsive<Type> : Type)
   : never;
 

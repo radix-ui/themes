@@ -7,7 +7,7 @@ import {
   extractMarginProps,
   getLayoutStyles,
   getResponsiveStyles,
-  styles,
+  mergeStyles,
   withBreakpoints,
   withMarginProps,
 } from '../helpers';
@@ -46,7 +46,7 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
 
   const [columnsClassNames, columnsCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gtc',
     customProperty: '--grid-template-columns',
     value: columns,
@@ -55,7 +55,7 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
   });
 
   const [rowsClassNames, rowsCustomProperties] = getResponsiveStyles({
-    allowAribtraryValues: true,
+    allowArbitraryValues: true,
     className: 'rt-r-gtr',
     customProperty: '--grid-template-rows',
     value: rows,
@@ -82,7 +82,12 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
         columnsClassNames,
         rowsClassNames
       )}
-      style={styles(layoutCustomProperties, columnsCustomProperties, rowsCustomProperties, style)}
+      style={mergeStyles(
+        layoutCustomProperties,
+        columnsCustomProperties,
+        rowsCustomProperties,
+        style
+      )}
     />
   );
 });

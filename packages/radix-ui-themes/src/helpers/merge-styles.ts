@@ -1,7 +1,7 @@
 type InlineStyle = React.CSSProperties | Record<string, string | number | undefined> | undefined;
 
 // Merges CSS styles like `classNames` merges CSS classes
-export function styles(...styles: Array<InlineStyle>): InlineStyle {
+export function mergeStyles(...styles: Array<InlineStyle>): InlineStyle {
   let result: InlineStyle = {};
 
   for (const style of styles) {

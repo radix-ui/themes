@@ -6,7 +6,7 @@ import {
   extractLayoutProps,
   extractMarginProps,
   getLayoutStyles,
-  styles,
+  mergeStyles,
   withBreakpoints,
   withMarginProps,
 } from '../helpers';
@@ -48,7 +48,7 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
         withMarginProps(marginProps),
         layoutClassNames
       )}
-      style={styles(layoutCustomProperties, style)}
+      style={mergeStyles(layoutCustomProperties, style)}
     />
   );
 });

@@ -72,18 +72,18 @@ function withBreakpoints(
 }
 
 function getResponsiveStyles({
-  allowAribtraryValues,
+  allowArbitraryValues,
   className,
   customProperty,
   ...args
 }: GetResponsiveCustomPropertiesOptions & GetResponsiveClassNamesOptions) {
   const classNames = getResponsiveClassNames({
-    allowAribtraryValues,
+    allowArbitraryValues,
     className,
     ...args,
   });
 
-  if (allowAribtraryValues) {
+  if (allowArbitraryValues) {
     const customProperties = getResponsiveCustomProperties({ customProperty, ...args });
     return [classNames, customProperties] as const;
   } else {
@@ -95,7 +95,7 @@ interface GetResponsiveClassNamesOptions {
   className?: string;
   value: ResponsiveWide<string> | Responsive<string> | undefined;
   values?: string[] | readonly string[];
-  allowAribtraryValues?: boolean;
+  allowArbitraryValues?: boolean;
   map?: (value: string | undefined) => string | undefined;
 }
 
@@ -103,7 +103,7 @@ function getResponsiveClassNames({
   className = '',
   value,
   values = [],
-  allowAribtraryValues = false,
+  allowArbitraryValues = false,
   map = (value) => value,
 }: GetResponsiveClassNamesOptions): string {
   const classNames: string[] = [];
@@ -123,7 +123,7 @@ function getResponsiveClassNames({
           const baseClassName = getBaseClassName(className, value, map);
           const bpClassName = bp === 'initial' ? baseClassName : `${bp}:${baseClassName}`;
           classNames.push(bpClassName);
-        } else if (allowAribtraryValues) {
+        } else if (allowArbitraryValues) {
           const bpClassName = bp === 'initial' ? className : `${bp}:${className}`;
           classNames.push(bpClassName);
         }
@@ -134,7 +134,7 @@ function getResponsiveClassNames({
   }
 
   if (!values.includes(value)) {
-    return allowAribtraryValues ? className : '';
+    return allowArbitraryValues ? className : '';
   }
 
   return getBaseClassName(className, value, map);
