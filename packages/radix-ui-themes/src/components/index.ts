@@ -149,12 +149,13 @@ export { IconButton } from './icon-button';
 export * from './icon-button.props';
 export { Link } from './link';
 export * from './link.props';
-// export * from './progress';
+export { Progress } from './progress';
+export * from './progress.props';
 export { ScrollArea } from './scroll-area';
 export * from './scroll-area.props';
 export { Separator } from './separator';
 export * from './separator.props';
-export * from './skeleton';
+export { Skeleton } from './skeleton';
 export {
   Table,
   TableRoot,

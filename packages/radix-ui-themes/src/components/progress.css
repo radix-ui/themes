@@ -1,0 +1,187 @@
+.rt-ProgressRoot {
+  pointer-events: none;
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+  height: var(--progress-height);
+  border-radius: var(--radius-3);
+
+  /* This Safari animation may be buggy when rendered on CPU */
+  transform: translateZ(0);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    border-radius: inherit;
+  }
+}
+
+.rt-ProgressIndicator {
+  --progress-value: 0;
+  --progress-duration: 5s;
+  content: '';
+  display: block;
+  height: 100%;
+
+  background-size: 500% 100%;
+  background-position-x: 100%;
+  width: 100%;
+  transform: scaleX(calc(var(--progress-value) / 100));
+  transform-origin: left center;
+  transition: transform 120ms;
+
+  &[data-state='indeterminate'] {
+    animation: rt-progress-grow var(--progress-duration) forwards,
+      rt-progress-recede 5s calc(var(--progress-duration) + 5s) forwards,
+      rt-progress-pulse 2s calc(var(--progress-duration) + 10s) infinite alternate;
+  }
+}
+
+@keyframes rt-progress-recede {
+  0% {
+    background-position-x: 100%;
+  }
+  100% {
+    background-position-x: 0%;
+  }
+}
+
+@keyframes rt-progress-pulse {
+  0% {
+    background-position-x: 0%;
+  }
+  75%,
+  100% {
+    background-position-x: 50%;
+  }
+}
+
+@keyframes rt-progress-grow {
+  0% {
+    transform: scaleX(0.01);
+  }
+  20% {
+    transform: scaleX(0.1);
+  }
+  30% {
+    transform: scaleX(0.6);
+  }
+  40%,
+  50% {
+    transform: scaleX(0.9);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-ProgressRoot {
+    &:where(.rt-r-size-1) {
+      --progress-height: var(--space-1);
+    }
+    &:where(.rt-r-size-2) {
+      --progress-height: var(--space-2);
+    }
+    &:where(.rt-r-size-3) {
+      --progress-height: var(--space-3);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* surface */
+
+.rt-ProgressRoot:where(.rt-variant-surface) {
+  background-color: var(--gray-a3);
+
+  &::after {
+    box-shadow: inset 0 0 0 1px var(--gray-a5);
+  }
+
+  & :where(.rt-ProgressIndicator) {
+    background-color: var(--accent-a2);
+    background-image: linear-gradient(
+      to right,
+      var(--accent-a5),
+      var(--accent-a1),
+      var(--accent-a5),
+      var(--accent-a5),
+      var(--accent-9),
+      var(--accent-9)
+    );
+  }
+}
+
+/* classic */
+
+.rt-ProgressRoot:where(.rt-variant-classic) {
+  background-color: var(--gray-a3);
+  position: relative;
+
+  &::after {
+    box-shadow: var(--shadow-1);
+  }
+
+  & :where(.rt-ProgressIndicator) {
+    background-color: var(--accent-a2);
+    background-image: linear-gradient(
+      to right,
+      var(--accent-a5),
+      var(--accent-a1),
+      var(--accent-a5),
+      var(--accent-a5),
+      var(--accent-9),
+      var(--accent-9)
+    );
+  }
+}
+
+/* soft */
+
+.rt-ProgressRoot:where(.rt-variant-soft) {
+  background-color: var(--gray-a4);
+  /* Blend with white to increase contrast in dark mode */
+  background-image: linear-gradient(var(--white-a1), var(--white-a1));
+
+  & :where(.rt-ProgressIndicator) {
+    /* background-color: var(--accent-6); */
+    background-image: linear-gradient(
+      to right,
+      var(--accent-a5),
+      var(--accent-a1),
+      var(--accent-a5),
+      var(--accent-a5),
+      var(--accent-a7),
+      var(--accent-a7)
+    );
+  }
+}
+
+/* all high-contrast */
+
+.rt-ProgressRoot:where(.rt-high-contrast) {
+  & :where(.rt-ProgressIndicator) {
+    background-image: linear-gradient(
+      to right,
+      var(--accent-a5),
+      var(--accent-a1),
+      var(--accent-a5),
+      var(--accent-a5),
+      var(--accent-a12),
+      var(--accent-a12)
+    );
+  }
+}

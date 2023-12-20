@@ -116,6 +116,9 @@ import {
   PopoverTrigger,
   PopoverClose,
   //
+  Progress,
+  progressPropDefs,
+  //
   Quote,
   //
   RadioGroupRoot,
@@ -195,7 +198,7 @@ export default function Sink() {
     <html lang="en" className={styles.root} suppressHydrationWarning>
       <body>
         <NextThemeProvider>
-          <Theme asChild accentColor="violet">
+          <Theme asChild>
             <div id="root">
               <div
                 style={{
@@ -1196,6 +1199,173 @@ export default function Sink() {
                                         color={color}
                                         highContrast
                                         defaultValue={[50]}
+                                        mt="5"
+                                        mb="3"
+                                      />
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
+                  </DocsSection>
+
+                  <DocsSection title="Progress">
+                    <Flex direction="column" gap="5">
+                      <div>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              <ColumnHeaderCell>color</ColumnHeaderCell>
+                              <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                              <ColumnHeaderCell>gray</ColumnHeaderCell>
+                              <ColumnHeaderCell>+ high-contrast</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {progressPropDefs.variant.values.map((variant, index) => (
+                              <tr key={variant}>
+                                <RowHeaderCell>{variant}</RowHeaderCell>
+                                <td style={{ minWidth: 220 }}>
+                                  <Grid gap="3">
+                                    <Progress variant={variant} />
+                                    <Progress variant={variant} value={33 + index * 10} />
+                                  </Grid>
+                                </td>
+                                <td style={{ minWidth: 220 }}>
+                                  <Grid gap="3">
+                                    <Progress variant={variant} highContrast />
+                                    <Progress
+                                      variant={variant}
+                                      highContrast
+                                      value={33 + index * 10}
+                                    />
+                                  </Grid>
+                                </td>
+                                <td style={{ minWidth: 220 }}>
+                                  <Grid gap="3">
+                                    <Progress variant={variant} color="gray" />
+                                    <Progress
+                                      variant={variant}
+                                      color="gray"
+                                      value={33 + index * 10}
+                                    />
+                                  </Grid>
+                                </td>
+                                <td style={{ minWidth: 220 }}>
+                                  <Grid gap="3">
+                                    <Progress variant={variant} color="gray" highContrast />
+                                    <Progress
+                                      variant={variant}
+                                      color="gray"
+                                      highContrast
+                                      value={33 + index * 10}
+                                    />
+                                  </Grid>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div>
+                        <table className={styles.table}>
+                          <tbody>
+                            {progressPropDefs.size.values.map((size, i) => (
+                              <tr key={size}>
+                                <RowHeaderCell>size {size}</RowHeaderCell>
+                                <td style={{ minWidth: 928 }}>
+                                  <Progress size={size} duration={`${(i + 1) * 3}s`} />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <Grid gap="3" mt="6">
+                        <Progress />
+                        <Progress value={66} />
+                      </Grid>
+                    </Flex>
+
+                    <Text as="p" my="5">
+                      <Code>radius</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See specific radius examples
+                        </Text>
+                      </summary>
+                      <Box mt="3">
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {progressPropDefs.size.values.map((size) => (
+                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {progressPropDefs.radius.values.map((radius) => (
+                              <tr key={radius}>
+                                <RowHeaderCell>{radius}</RowHeaderCell>
+                                {progressPropDefs.size.values.map((size) => (
+                                  <td key={size} style={{ minWidth: 150 }}>
+                                    <Progress size={size} radius={radius} value={66} />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Box>
+                    </details>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {progressPropDefs.variant.values.map((variant) => (
+                                  <RowHeaderCell key={variant}>{variant}</RowHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {progressPropDefs.variant.values.map((variant) => (
+                                    <td key={variant} style={{ minWidth: 150 }}>
+                                      <Progress variant={variant} color={color} value={66} mt="3" />
+                                      <Progress
+                                        variant={variant}
+                                        color={color}
+                                        highContrast
+                                        value={66}
                                         mt="5"
                                         mb="3"
                                       />
