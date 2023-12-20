@@ -194,8 +194,8 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
   };
 }
 
-function withLayoutProps(props: LayoutProps) {
-  return classNames(
+function getLayoutStyles(props: LayoutProps) {
+  const baseLayoutClassNamess = classNames(
     withPaddingProps(props),
     withBreakpoints(props.position, 'rt-r-position'),
     withBreakpoints(props.shrink, 'rt-r-fs'),
@@ -208,10 +208,6 @@ function withLayoutProps(props: LayoutProps) {
     withBreakpoints(props.left, 'rt-r-left'),
     withBreakpoints(props.right, 'rt-r-right')
   );
-}
-
-function getLayoutStyles(props: LayoutProps) {
-  const baseLayoutClassNamess = withLayoutProps(props);
 
   const [gridColumnClassNames, gridColumnCustomProperties] = getResponsiveStyles({
     allowArbitraryValues: true,
@@ -288,7 +284,6 @@ export {
   withPaddingProps,
   layoutPropDefs,
   extractLayoutProps,
-  withLayoutProps,
   getLayoutStyles,
 };
 

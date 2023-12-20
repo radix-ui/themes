@@ -3,11 +3,12 @@ import classNames from 'classnames';
 import { Slot } from './slot';
 import { flexPropDefs } from './flex.props';
 import {
-  extractMarginProps,
-  withMarginProps,
   extractLayoutProps,
-  withLayoutProps,
+  extractMarginProps,
+  getLayoutStyles,
+  mergeStyles,
   withBreakpoints,
+  withMarginProps,
 } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
@@ -27,6 +28,7 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
+    style,
     display = flexPropDefs.display.default,
     direction = flexPropDefs.direction.default,
     align = flexPropDefs.align.default,
@@ -36,6 +38,7 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
     ...flexProps
   } = layoutRest;
   const Comp = asChild ? Slot : 'div';
+  const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
   return (
     <Comp
       {...flexProps}
@@ -49,9 +52,10 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
         withBreakpoints(justify, 'rt-r-jc', { between: 'space-between' }),
         withBreakpoints(wrap, 'rt-r-fw'),
         withBreakpoints(gap, 'rt-r-gap'),
-        withLayoutProps(layoutProps),
-        withMarginProps(marginProps)
+        withMarginProps(marginProps),
+        layoutClassNames
       )}
+      style={mergeStyles(layoutCustomProperties, style)}
     />
   );
 });

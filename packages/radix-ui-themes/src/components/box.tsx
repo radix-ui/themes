@@ -25,17 +25,14 @@ interface BoxProps
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
-
   const {
     className,
     asChild,
-    display = boxPropDefs.display.default,
     style,
+    display = boxPropDefs.display.default,
     ...boxProps
   } = layoutRest;
-
   const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
-
   const Comp = asChild ? Slot : 'div';
   return (
     <Comp
