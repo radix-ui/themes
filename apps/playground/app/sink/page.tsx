@@ -4139,7 +4139,7 @@ export default function Sink() {
                       </Box>
                     </Grid>
 
-                    <Grid gap="3" columns="3">
+                    <Grid gap="3" columns="4">
                       {/* Ensure arbitrary values work */}
                       <Grid gap="3" columns="1fr 1fr 2fr">
                         {Array.from(Array(3).keys()).map((i) => (
@@ -4157,6 +4157,13 @@ export default function Sink() {
                       {/* Ensure CSS source order is correct for arbitrary and theme values */}
                       <Grid gap="3" columns={{ xs: '3', md: '1fr 1fr 2fr', lg: '3' }}>
                         {Array.from(Array(3).keys()).map((i) => (
+                          <Box key={i} style={{ height: 55, background: 'var(--accent-9)' }} />
+                        ))}
+                      </Grid>
+
+                      {/* Ensure mapped values work*/}
+                      <Grid gap="1" columns={{ xs: '20' }}>
+                        {Array.from(Array(20).keys()).map((i) => (
                           <Box key={i} style={{ height: 55, background: 'var(--accent-9)' }} />
                         ))}
                       </Grid>
