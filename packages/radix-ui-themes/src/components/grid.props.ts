@@ -15,14 +15,12 @@ const gridPropDefs = {
     values: columnsValues,
     default: undefined,
     responsive: true,
-    wide: true,
   },
   rows: {
     type: 'enum | string',
     values: rowsValues,
     default: undefined,
     responsive: true,
-    wide: true,
   },
   flow: { type: 'enum', values: flowValues, default: undefined, responsive: true },
   align: { type: 'enum', values: alignValues, default: undefined, responsive: true },
@@ -32,8 +30,8 @@ const gridPropDefs = {
   gapY: { type: 'enum', values: gapValues, default: undefined, responsive: true },
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
-  columns: PropDef<string>;
-  rows: PropDef<string>;
+  columns: PropDef<(typeof columnsValues)[number]>;
+  rows: PropDef<(typeof rowsValues)[number]>;
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;

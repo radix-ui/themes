@@ -4,8 +4,7 @@ import { mergeStyles } from '../merge-styles';
 
 import type { PropDef, GetPropDefTypes } from './prop-def';
 
-const positiveNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-const paddingValues = ['0', ...positiveNumbers] as const;
+const paddingValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const paddingPropDefs = {
   p: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
@@ -58,16 +57,9 @@ function withPaddingProps(props: PaddingProps) {
 const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as const;
 const positionEdgeValues = ['auto', '0', '50%', '100%'] as const;
 // prettier-ignore
-const widthHeightValues = ['auto', 'min-content', 'max-content', '100%', '0', ...positiveNumbers] as const;
+const widthHeightValues = ['auto', 'min-content', 'max-content', '100%', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const flexShrinkValues = ['0', '1'] as const;
 const flexGrowValues = ['0', '1'] as const;
-
-const gridColumnValues = positiveNumbers;
-const gridRowValues = positiveNumbers;
-const gridColumnStartValues = positiveNumbers;
-const gridColumnEndValues = positiveNumbers;
-const gridRowStartValues = positiveNumbers;
-const gridRowEndValues = positiveNumbers;
 
 const layoutPropDefs = {
   ...paddingPropDefs,
@@ -81,48 +73,12 @@ const layoutPropDefs = {
   height: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
   shrink: { type: 'enum', values: flexShrinkValues, default: undefined, responsive: true },
   grow: { type: 'enum', values: flexGrowValues, default: undefined, responsive: true },
-  gridColumn: {
-    type: 'enum | string',
-    values: gridColumnValues,
-    default: undefined,
-    responsive: true,
-    wide: true,
-  },
-  gridColumnStart: {
-    type: 'enum | string',
-    values: gridColumnStartValues,
-    default: undefined,
-    responsive: true,
-    wide: true,
-  },
-  gridColumnEnd: {
-    type: 'enum | string',
-    values: gridColumnEndValues,
-    default: undefined,
-    responsive: true,
-    wide: true,
-  },
-  gridRow: {
-    type: 'enum | string',
-    values: gridRowValues,
-    default: undefined,
-    responsive: true,
-    wide: true,
-  },
-  gridRowStart: {
-    type: 'enum | string',
-    values: gridRowStartValues,
-    default: undefined,
-    responsive: true,
-    wide: true,
-  },
-  gridRowEnd: {
-    type: 'enum | string',
-    values: gridRowEndValues,
-    default: undefined,
-    responsive: true,
-    wide: true,
-  },
+  gridColumn: { type: 'string', default: undefined, responsive: true },
+  gridColumnStart: { type: 'string', default: undefined, responsive: true },
+  gridColumnEnd: { type: 'string', default: undefined, responsive: true },
+  gridRow: { type: 'string', default: undefined, responsive: true },
+  gridRowStart: { type: 'string', default: undefined, responsive: true },
+  gridRowEnd: { type: 'string', default: undefined, responsive: true },
 } satisfies {
   p: PropDef<(typeof paddingValues)[number]>;
   px: PropDef<(typeof paddingValues)[number]>;
@@ -141,12 +97,12 @@ const layoutPropDefs = {
   height: PropDef<(typeof widthHeightValues)[number]>;
   shrink: PropDef<(typeof flexShrinkValues)[number]>;
   grow: PropDef<(typeof flexGrowValues)[number]>;
-  gridColumn: PropDef<(typeof gridColumnValues)[number]>;
-  gridColumnStart: PropDef<(typeof gridColumnStartValues)[number]>;
-  gridColumnEnd: PropDef<(typeof gridColumnEndValues)[number]>;
-  gridRow: PropDef<(typeof gridRowValues)[number]>;
-  gridRowStart: PropDef<(typeof gridRowStartValues)[number]>;
-  gridRowEnd: PropDef<(typeof gridRowEndValues)[number]>;
+  gridColumn: PropDef<string>;
+  gridColumnStart: PropDef<string>;
+  gridColumnEnd: PropDef<string>;
+  gridRow: PropDef<string>;
+  gridRowStart: PropDef<string>;
+  gridRowEnd: PropDef<string>;
 };
 
 type LayoutProps = GetPropDefTypes<typeof layoutPropDefs>;
@@ -210,51 +166,39 @@ function getLayoutStyles(props: LayoutProps) {
   );
 
   const [gridColumnClassNames, gridColumnCustomProperties] = getResponsiveStyles({
-    allowArbitraryValues: true,
     className: 'rt-r-gc',
     customProperty: '--grid-column',
     value: props.gridColumn,
-    values: layoutPropDefs.gridColumn.values,
   });
 
   const [gridColumnStartClassNames, gridColumnStartCustomProperties] = getResponsiveStyles({
-    allowArbitraryValues: true,
     className: 'rt-r-gcs',
     customProperty: '--grid-column-start',
     value: props.gridColumnStart,
-    values: layoutPropDefs.gridColumnStart.values,
   });
 
   const [gridColumnEndClassNames, gridColumnEndCustomProperties] = getResponsiveStyles({
-    allowArbitraryValues: true,
     className: 'rt-r-gce',
     customProperty: '--grid-column-end',
     value: props.gridColumnEnd,
-    values: layoutPropDefs.gridColumnEnd.values,
   });
 
   const [gridRowClassNames, gridRowCustomProperties] = getResponsiveStyles({
-    allowArbitraryValues: true,
     className: 'rt-r-gr',
     customProperty: '--grid-row',
     value: props.gridRow,
-    values: layoutPropDefs.gridRow.values,
   });
 
   const [gridRowStartClassNames, gridRowStartCustomProperties] = getResponsiveStyles({
-    allowArbitraryValues: true,
     className: 'rt-r-grs',
     customProperty: '--grid-row-start',
     value: props.gridRowStart,
-    values: layoutPropDefs.gridRowStart.values,
   });
 
   const [gridRowEndClassNames, gridRowEndCustomProperties] = getResponsiveStyles({
-    allowArbitraryValues: true,
     className: 'rt-r-gre',
     customProperty: '--grid-row-end',
     value: props.gridRowEnd,
-    values: layoutPropDefs.gridRowEnd.values,
   });
 
   return [

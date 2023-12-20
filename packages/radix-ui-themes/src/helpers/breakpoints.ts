@@ -2,8 +2,7 @@ import { hasOwnProperty } from './has-own-property';
 
 type Breakpoints = 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
-type Wide<T extends string> = T | Omit<string, T>;
-type ResponsiveWide<T extends string> = Responsive<Wide<T>>;
+type StringOrValue<T extends string> = T | Omit<string, T>;
 
 /**
  * A helper to generate CSS classes that include breakpoints.
@@ -72,7 +71,7 @@ function withBreakpoints(
 }
 
 function getResponsiveStyles({
-  allowArbitraryValues,
+  allowArbitraryValues = true,
   className,
   customProperty,
   ...args
@@ -92,19 +91,19 @@ function getResponsiveStyles({
 }
 
 interface GetResponsiveClassNamesOptions {
-  className?: string;
-  value: ResponsiveWide<string> | Responsive<string> | undefined;
-  values?: string[] | readonly string[];
   allowArbitraryValues?: boolean;
-  map?: (value: string | undefined) => string | undefined;
+  value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
+  className?: string;
+  propValues?: string[] | readonly string[];
+  parseValue?: (value: string | undefined) => string | undefined;
 }
 
 function getResponsiveClassNames({
-  className = '',
-  value,
-  values = [],
   allowArbitraryValues = false,
-  map = (value) => value,
+  value,
+  className = '',
+  propValues = [],
+  parseValue = (value) => value,
 }: GetResponsiveClassNamesOptions): string {
   const classNames: string[] = [];
 
@@ -119,8 +118,8 @@ function getResponsiveClassNames({
       const value = object[bp];
 
       if (value !== undefined) {
-        if (values.includes(value)) {
-          const baseClassName = getBaseClassName(className, value, map);
+        if (propValues.includes(value)) {
+          const baseClassName = getBaseClassName(className, value, parseValue);
           const bpClassName = bp === 'initial' ? baseClassName : `${bp}:${baseClassName}`;
           classNames.push(bpClassName);
         } else if (allowArbitraryValues) {
@@ -133,20 +132,20 @@ function getResponsiveClassNames({
     return classNames.join(' ');
   }
 
-  if (!values.includes(value)) {
+  if (!propValues.includes(value)) {
     return allowArbitraryValues ? className : '';
   }
 
-  return getBaseClassName(className, value, map);
+  return getBaseClassName(className, value, parseValue);
 }
 
 function getBaseClassName(
   className: string,
   value: string,
-  map: (value: string | undefined) => string | undefined
+  parseValue: (value: string | undefined) => string | undefined
 ): string {
   const delimiter = className ? '-' : '';
-  const matchedValue = map(value);
+  const matchedValue = parseValue(value);
   const isNegative = matchedValue?.startsWith('-');
   const minus = isNegative ? '-' : '';
   const absoluteValue = isNegative ? value.substring(1) : value;
@@ -154,21 +153,21 @@ function getBaseClassName(
 }
 
 interface GetResponsiveCustomPropertiesOptions {
+  value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
   customProperty: `--${string}`;
-  value: ResponsiveWide<string> | Responsive<string> | undefined;
-  values?: string[] | readonly string[];
-  map?: (value: string | undefined) => string | undefined;
+  propValues?: string[] | readonly string[];
+  parseValue?: (value: string | undefined) => string | undefined;
 }
 
 function getResponsiveCustomProperties({
-  customProperty,
   value,
-  values = [],
-  map = (value) => value,
+  customProperty,
+  propValues = [],
+  parseValue = (value) => value,
 }: GetResponsiveCustomPropertiesOptions) {
   let styles: Record<string, string | undefined> = {};
 
-  if (!value || values.includes(value as string)) {
+  if (!value || propValues.includes(value as string)) {
     return undefined;
   }
 
@@ -186,7 +185,7 @@ function getResponsiveCustomProperties({
         const value = object[breakpoint];
         const bp = breakpoint === 'initial' ? customProperty : `${customProperty}-${breakpoint}`;
 
-        if (values.includes(value)) {
+        if (propValues.includes(value)) {
           continue;
         }
 
@@ -199,7 +198,7 @@ function getResponsiveCustomProperties({
   }
 
   for (const key in styles) {
-    styles[key] = map(styles[key]);
+    styles[key] = parseValue(styles[key]);
   }
 
   return styles;
@@ -218,4 +217,4 @@ export {
   getResponsiveCustomProperties,
   getResponsiveClassNames,
 };
-export type { Breakpoints, Responsive, ResponsiveWide };
+export type { Breakpoints, Responsive, StringOrValue };
