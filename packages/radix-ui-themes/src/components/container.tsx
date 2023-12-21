@@ -2,11 +2,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { containerPropDefs } from './container.props';
 import {
-  extractMarginProps,
-  withMarginProps,
   extractLayoutProps,
-  withLayoutProps,
+  extractMarginProps,
+  getLayoutStyles,
+  mergeStyles,
   withBreakpoints,
+  withMarginProps,
 } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
@@ -24,10 +25,12 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
   const {
     children,
     className,
+    style,
     size = containerPropDefs.size.default,
     display = containerPropDefs.display.default,
     ...containerProps
   } = layoutRest;
+  const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
   return (
     <div
       {...containerProps}
@@ -37,9 +40,10 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
         className,
         withBreakpoints(size, 'rt-r-size'),
         withBreakpoints(display, 'rt-r-display'),
-        withLayoutProps(layoutProps),
-        withMarginProps(marginProps)
+        withMarginProps(marginProps),
+        layoutClassNames
       )}
+      style={mergeStyles(layoutCustomProperties, style)}
     >
       <div className="rt-ContainerInner">{children}</div>
     </div>

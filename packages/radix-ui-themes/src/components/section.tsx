@@ -2,11 +2,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { sectionPropDefs } from './section.props';
 import {
-  extractMarginProps,
-  withMarginProps,
   extractLayoutProps,
-  withLayoutProps,
+  extractMarginProps,
+  getLayoutStyles,
+  mergeStyles,
   withBreakpoints,
+  withMarginProps,
 } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
@@ -23,10 +24,12 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
   const { rest: layoutRest, ...layoutProps } = extractLayoutProps(marginRest);
   const {
     className,
+    style,
     size = sectionPropDefs.size.default,
     display = sectionPropDefs.display.default,
     ...sectionProps
   } = layoutRest;
+  const [layoutClassNames, layoutCustomProperties] = getLayoutStyles(layoutProps);
   return (
     <section
       {...sectionProps}
@@ -36,9 +39,10 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
         className,
         withBreakpoints(size, 'rt-r-size'),
         withBreakpoints(display, 'rt-r-display'),
-        withLayoutProps(layoutProps),
-        withMarginProps(marginProps)
+        withMarginProps(marginProps),
+        layoutClassNames
       )}
+      style={mergeStyles(layoutCustomProperties, style)}
     />
   );
 });

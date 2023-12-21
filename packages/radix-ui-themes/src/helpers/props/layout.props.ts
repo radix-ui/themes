@@ -1,4 +1,6 @@
-import { withBreakpoints } from '../breakpoints';
+import classNames from 'classnames';
+import { withBreakpoints, getResponsiveStyles } from '../breakpoints';
+import { mergeStyles } from '../merge-styles';
 
 import type { PropDef, GetPropDefTypes } from './prop-def';
 
@@ -71,6 +73,12 @@ const layoutPropDefs = {
   height: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
   shrink: { type: 'enum', values: flexShrinkValues, default: undefined, responsive: true },
   grow: { type: 'enum', values: flexGrowValues, default: undefined, responsive: true },
+  gridColumn: { type: 'string', default: undefined, responsive: true },
+  gridColumnStart: { type: 'string', default: undefined, responsive: true },
+  gridColumnEnd: { type: 'string', default: undefined, responsive: true },
+  gridRow: { type: 'string', default: undefined, responsive: true },
+  gridRowStart: { type: 'string', default: undefined, responsive: true },
+  gridRowEnd: { type: 'string', default: undefined, responsive: true },
 } satisfies {
   p: PropDef<(typeof paddingValues)[number]>;
   px: PropDef<(typeof paddingValues)[number]>;
@@ -89,6 +97,12 @@ const layoutPropDefs = {
   height: PropDef<(typeof widthHeightValues)[number]>;
   shrink: PropDef<(typeof flexShrinkValues)[number]>;
   grow: PropDef<(typeof flexGrowValues)[number]>;
+  gridColumn: PropDef<string>;
+  gridColumnStart: PropDef<string>;
+  gridColumnEnd: PropDef<string>;
+  gridRow: PropDef<string>;
+  gridRowStart: PropDef<string>;
+  gridRowEnd: PropDef<string>;
 };
 
 type LayoutProps = GetPropDefTypes<typeof layoutPropDefs>;
@@ -106,6 +120,12 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     right = layoutPropDefs.right.default,
     shrink = layoutPropDefs.shrink.default,
     grow = layoutPropDefs.grow.default,
+    gridColumn = layoutPropDefs.gridColumn.default,
+    gridColumnStart = layoutPropDefs.gridColumnStart.default,
+    gridColumnEnd = layoutPropDefs.gridColumnEnd.default,
+    gridRow = layoutPropDefs.gridRow.default,
+    gridRowStart = layoutPropDefs.gridRowStart.default,
+    gridRowEnd = layoutPropDefs.gridRowEnd.default,
     ...rest
   } = paddingRest;
   return {
@@ -120,12 +140,18 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     right,
     shrink,
     grow,
+    gridColumn,
+    gridColumnStart,
+    gridColumnEnd,
+    gridRow,
+    gridRowStart,
+    gridRowEnd,
     rest,
   };
 }
 
-function withLayoutProps(props: LayoutProps) {
-  return [
+function getLayoutStyles(props: LayoutProps) {
+  const baseLayoutClassNamess = classNames(
     withPaddingProps(props),
     withBreakpoints(props.position, 'rt-r-position'),
     withBreakpoints(props.shrink, 'rt-r-fs'),
@@ -136,10 +162,64 @@ function withLayoutProps(props: LayoutProps) {
     withBreakpoints(props.top, 'rt-r-top'),
     withBreakpoints(props.bottom, 'rt-r-bottom'),
     withBreakpoints(props.left, 'rt-r-left'),
-    withBreakpoints(props.right, 'rt-r-right'),
-  ]
-    .filter(Boolean)
-    .join(' ');
+    withBreakpoints(props.right, 'rt-r-right')
+  );
+
+  const [gridColumnClassNames, gridColumnCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gc',
+    customProperty: '--grid-column',
+    value: props.gridColumn,
+  });
+
+  const [gridColumnStartClassNames, gridColumnStartCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gcs',
+    customProperty: '--grid-column-start',
+    value: props.gridColumnStart,
+  });
+
+  const [gridColumnEndClassNames, gridColumnEndCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gce',
+    customProperty: '--grid-column-end',
+    value: props.gridColumnEnd,
+  });
+
+  const [gridRowClassNames, gridRowCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gr',
+    customProperty: '--grid-row',
+    value: props.gridRow,
+  });
+
+  const [gridRowStartClassNames, gridRowStartCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-grs',
+    customProperty: '--grid-row-start',
+    value: props.gridRowStart,
+  });
+
+  const [gridRowEndClassNames, gridRowEndCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-gre',
+    customProperty: '--grid-row-end',
+    value: props.gridRowEnd,
+  });
+
+  return [
+    classNames(
+      baseLayoutClassNamess,
+      gridColumnClassNames,
+      gridColumnStartClassNames,
+      gridColumnEndClassNames,
+      gridRowClassNames,
+      gridRowStartClassNames,
+      gridRowEndClassNames
+    ),
+    mergeStyles(
+      gridColumnCustomProperties,
+      gridColumnStartCustomProperties,
+      gridColumnEndCustomProperties,
+      gridRowCustomProperties,
+      gridRowStartCustomProperties,
+      gridRowEndCustomProperties
+    ),
+  ] as const;
 }
 
 export {
@@ -148,6 +228,7 @@ export {
   withPaddingProps,
   layoutPropDefs,
   extractLayoutProps,
-  withLayoutProps,
+  getLayoutStyles,
 };
+
 export type { PaddingProps, LayoutProps };

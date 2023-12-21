@@ -1,0 +1,63 @@
+@breakpoints {
+  .rt-r-gr {
+    /* Keep this selector here to maintain the source order */
+  }
+  .rt-r-gr-1 {
+    grid-row: 1;
+  }
+  .rt-r-gr-2 {
+    grid-row: 2;
+  }
+  .rt-r-gr-3 {
+    grid-row: 3;
+  }
+  .rt-r-gr-4 {
+    grid-row: 4;
+  }
+  .rt-r-gr-5 {
+    grid-row: 5;
+  }
+  .rt-r-gr-6 {
+    grid-row: 6;
+  }
+  .rt-r-gr-7 {
+    grid-row: 7;
+  }
+  .rt-r-gr-8 {
+    grid-row: 8;
+  }
+  .rt-r-gr-9 {
+    grid-row: 9;
+  }
+}
+
+@media all {
+  .rt-r-gr {
+    grid-row: var(--grid-row);
+  }
+}
+@media (--xs) {
+  .xs\:rt-r-gr {
+    grid-row: var(--grid-row-xs);
+  }
+}
+@media (--sm) {
+  .sm\:rt-r-gr {
+    grid-row: var(--grid-row-sm);
+  }
+}
+@media (--md) {
+  .md\:rt-r-gr {
+    grid-row: var(--grid-row-md);
+  }
+}
+@media (--lg) {
+  .lg\:rt-r-gr {
+    grid-row: var(--grid-row-lg);
+  }
+}
+@media (--xl) {
+  .xl\:rt-r-gr {
+    grid-row: var(--grid-row-xl);
+  }
+}
