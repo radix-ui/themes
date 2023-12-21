@@ -1,8 +1,8 @@
 import { hasOwnProperty } from './has-own-property';
+import type { StringOrValue } from './string-or-value';
 
 type Breakpoints = 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
-type StringOrValue<T extends string> = T | Omit<string, T>;
 
 /**
  * A helper to generate CSS classes that include breakpoints.
