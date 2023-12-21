@@ -1380,86 +1380,36 @@ export default function Sink() {
                   </DocsSection>
 
                   <DocsSection title="Spinner">
-                    <Flex gap="4" align="center">
-                      <Spinner size="1" />
-                      <Spinner size="2" />
-                      <Spinner size="3" />
-                    </Flex>
+                    <Grid gap="4">
+                      <Flex gap="4" align="center">
+                        <Spinner size="1" />
+                        <Spinner size="2" />
+                        <Spinner size="3" />
+                      </Flex>
 
-                    <Text as="p" my="5">
-                      <Code>radius</Code> can be set per instance:
-                    </Text>
+                      <Flex gap="4" align="center">
+                        <TextFieldRoot size="1">
+                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                          <TextFieldSlot>
+                            <Spinner size="1" />
+                          </TextFieldSlot>
+                        </TextFieldRoot>
 
-                    <details>
-                      <summary>
-                        <Text size="2" color="gray">
-                          See specific radius examples
-                        </Text>
-                      </summary>
-                      <Box mt="3">
-                        <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              <ColumnHeaderCell />
-                              {spinnerPropDefs.size.values.map((size) => (
-                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {spinnerPropDefs.radius.values.map((radius) => (
-                              <tr key={radius}>
-                                <RowHeaderCell>{radius}</RowHeaderCell>
-                                {spinnerPropDefs.size.values.map((size) => (
-                                  <td key={size} style={{ minWidth: 150 }}>
-                                    <Spinner size={size} radius={radius} />
-                                  </td>
-                                ))}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </Box>
-                    </details>
+                        <TextFieldRoot size="2">
+                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                          <TextFieldSlot>
+                            <Spinner size="2" />
+                          </TextFieldSlot>
+                        </TextFieldRoot>
 
-                    <Text as="p" my="5">
-                      <Code>color</Code> can be set per instance:
-                    </Text>
-
-                    <details>
-                      <summary>
-                        <Text size="2" color="gray">
-                          See colors
-                        </Text>
-                      </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
-                        <React.Fragment key={label}>
-                          <Text as="p" weight="bold" mt="6" mb="4">
-                            {label}
-                          </Text>
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {values.map((color) => (
-                                <tr key={color}>
-                                  <RowHeaderCell>{color}</RowHeaderCell>
-                                  <td>
-                                    <Flex gap="3">
-                                      <Spinner size="3" color={color} />
-                                      <Spinner size="3" color={color} highContrast />
-                                    </Flex>
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </React.Fragment>
-                      ))}
-                    </details>
+                        <TextFieldRoot size="3">
+                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                          <TextFieldSlot>
+                            <Spinner size="3" />
+                          </TextFieldSlot>
+                        </TextFieldRoot>
+                      </Flex>
+                    </Grid>
                   </DocsSection>
 
                   <DocsSection title="Checkbox">

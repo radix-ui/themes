@@ -17,11 +17,7 @@
     width: 100%;
     height: 30%;
     border-radius: var(--radius-1);
-    background-color: var(--accent-11);
-
-    .rt-Spinner:where(.rt-high-contrast) & {
-      background-color: var(--accent-12);
-    }
+    background-color: currentColor;
   }
 
   &:nth-child(1) {
