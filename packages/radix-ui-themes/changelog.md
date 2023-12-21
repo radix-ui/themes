@@ -6,6 +6,7 @@
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
 - `Skeleton`: New component
+- `Spinner`: New component
 
 ## 2.0.3
 
