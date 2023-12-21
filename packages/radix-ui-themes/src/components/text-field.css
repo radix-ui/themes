@@ -67,18 +67,18 @@
   .rt-TextFieldSlot {
     &:where(.rt-r-size-1) {
       gap: var(--space-2);
-      padding-left: var(--space-1);
-      padding-right: var(--space-1);
+      padding-inline-start: var(--space-1);
+      padding-inline-end: var(--space-1);
     }
     &:where(.rt-r-size-2) {
       gap: var(--space-2);
-      padding-left: var(--space-2);
-      padding-right: var(--space-2);
+      padding-inline-start: var(--space-2);
+      padding-inline-end: var(--space-2);
     }
     &:where(.rt-r-size-3) {
       gap: var(--space-3);
-      padding-left: var(--space-3);
-      padding-right: var(--space-3);
+      padding-inline-start: var(--space-3);
+      padding-inline-end: var(--space-3);
     }
   }
   .rt-TextFieldInput {
@@ -88,7 +88,7 @@
       letter-spacing: var(--letter-spacing-1);
 
       &:where(:first-child) {
-        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+        /* Equivalent to padding-inline-start, but doesn't cut off long values when cursor is at the end. */
         text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
         /* Clip text to the visible border radius */
         border-radius: max(var(--radius-2), var(--radius-full));
@@ -105,10 +105,10 @@
 
       /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
       /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
-      padding-bottom: 0.5px;
+      padding-block-end: 0.5px;
 
       &:where(:first-child) {
-        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+        /* Equivalent to padding-inline-start, but doesn't cut off long values when cursor is at the end */
         text-indent: calc(var(--space-2) - var(--text-field-border-width));
         /* Clip text to the visible border radius */
         border-radius: max(var(--radius-2), var(--radius-full));
@@ -124,7 +124,7 @@
       letter-spacing: var(--letter-spacing-3);
 
       &:where(:first-child) {
-        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+        /* Equivalent to padding-inline-start, but doesn't cut off long values when cursor is at the end */
         text-indent: calc(var(--space-3) - var(--text-field-border-width));
         /* Clip text to the visible border radius */
         border-radius: max(var(--radius-3), var(--radius-full));
@@ -139,8 +139,8 @@
 
 /* As an enhancement, remove border-radius on the right if there’s a slot */
 .rt-TextFieldInput:where(:has(~ .rt-TextFieldSlot)) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
 }
 
 /***************************************************************************************************

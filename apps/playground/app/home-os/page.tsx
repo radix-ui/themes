@@ -442,8 +442,8 @@ const PhotoArea: React.FC = () => {
         highContrast
         style={{
           position: 'absolute',
-          top: 'var(--space-6)',
-          right: 'var(--space-6)',
+          insetBlockStart: 'var(--space-6)',
+          insetInlineEnd: 'var(--space-6)',
         }}
       >
         <span

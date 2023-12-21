@@ -16,7 +16,7 @@
 
   .rt-r-lt-start::before,
   .rt-r-lt-both::before {
-    margin-bottom: calc(
+    margin-block-start: calc(
       var(--leading-trim-start, var(--default-leading-trim-start)) -
         var(--line-height, calc(1em * var(--default-line-height))) / 2
     );
@@ -24,7 +24,7 @@
 
   .rt-r-lt-end::after,
   .rt-r-lt-both::after {
-    margin-top: calc(
+    margin-block-end: calc(
       var(--leading-trim-end, var(--default-leading-trim-end)) -
         var(--line-height, calc(1em * var(--default-line-height))) / 2
     );

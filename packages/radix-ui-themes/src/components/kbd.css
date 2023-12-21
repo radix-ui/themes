@@ -34,14 +34,14 @@
   cursor: default;
 
   position: relative;
-  top: -0.03em;
+  inset-block-start: -0.03em;
 
   font-size: 0.75em;
   min-width: 1.75em;
   line-height: 1.7em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-bottom: 0.05em;
+  padding-inline-start: 0.5em;
+  padding-inline-end: 0.5em;
+  padding-block-end: 0.05em;
   word-spacing: -0.1em;
   border-radius: calc(var(--radius-factor) * 0.35em);
   letter-spacing: var(--letter-spacing, var(--default-letter-spacing));
@@ -49,6 +49,8 @@
   color: var(--gray-12);
   background-color: var(--gray-1);
   box-shadow: var(--kbd-box-shadow);
+
+  direction: ltr;
 }
 
 /***************************************************************************************************

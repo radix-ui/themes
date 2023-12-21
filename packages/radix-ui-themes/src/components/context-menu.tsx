@@ -3,6 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import { useDirection } from '@radix-ui/react-direction';
 import { Slottable } from '@radix-ui/react-slot';
 import { ScrollArea } from './scroll-area';
 import {
@@ -42,6 +43,7 @@ interface ContextMenuContentProps
 }
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const themeContext = useThemeContext();
     const {
       className,
@@ -57,7 +59,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     const resolvedColor = color ?? themeContext.accentColor;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <ContextMenuPrimitive.Content
             data-accent-color={resolvedColor}
             alignOffset={-Number(size) * 4}

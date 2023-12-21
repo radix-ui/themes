@@ -60,8 +60,8 @@
  ***************************************************************************************************/
 
 .rt-TabsTrigger {
-  padding-left: var(--tabs-trigger-padding-x);
-  padding-right: var(--tabs-trigger-padding-x);
+  padding-inline-start: var(--tabs-trigger-padding-x);
+  padding-inline-end: var(--tabs-trigger-padding-x);
 }
 
 .rt-TabsTriggerInner,
@@ -131,9 +131,9 @@
     content: '';
     height: 2px;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     background-color: var(--accent-10);
   }
 }

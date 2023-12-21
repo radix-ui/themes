@@ -21,6 +21,7 @@ const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   } = marginRest;
   return (
     <code
+      dir="ltr"
       data-accent-color={color}
       {...codeProps}
       ref={forwardedRef}

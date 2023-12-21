@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { useDirection } from '@radix-ui/react-direction';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { popoverContentPropDefs } from './popover.props';
 import { withBreakpoints } from '../helpers';
@@ -32,6 +33,7 @@ interface PopoverContentProps
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const {
       className,
       forceMount,
@@ -41,7 +43,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
     } = props;
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <PopoverPrimitive.Content
             align="start"
             sideOffset={8}

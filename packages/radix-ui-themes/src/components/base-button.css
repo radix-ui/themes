@@ -178,7 +178,7 @@
   &:where(:active:not([data-state='open'], [data-disabled])) {
     background-color: var(--accent-9);
     background-image: linear-gradient(var(--black-a1), transparent);
-    padding-top: var(--base-button-classic-active-padding-top);
+    padding-block-start: var(--base-button-classic-active-padding-top);
 
     /* prettier-ignore */
     box-shadow:

@@ -54,8 +54,8 @@
       letter-spacing: var(--letter-spacing-1);
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-2);
-        padding-right: var(--space-2);
+        padding-inline-start: var(--space-2);
+        padding-inline-end: var(--space-2);
       }
       &:where(.rt-variant-ghost) {
         gap: var(--space-1);
@@ -70,8 +70,8 @@
       letter-spacing: var(--letter-spacing-2);
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-3);
-        padding-right: var(--space-3);
+        padding-inline-start: var(--space-3);
+        padding-inline-end: var(--space-3);
       }
       &:where(.rt-variant-ghost) {
         gap: var(--space-1);
@@ -86,8 +86,8 @@
       letter-spacing: var(--letter-spacing-3);
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
+        padding-inline-start: var(--space-4);
+        padding-inline-end: var(--space-4);
       }
       &:where(.rt-variant-ghost) {
         gap: var(--space-2);
@@ -102,8 +102,8 @@
       letter-spacing: var(--letter-spacing-4);
 
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-5);
-        padding-right: var(--space-5);
+        padding-inline-start: var(--space-5);
+        padding-inline-end: var(--space-5);
       }
       &:where(.rt-variant-ghost) {
         gap: var(--space-2);

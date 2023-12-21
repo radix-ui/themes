@@ -213,674 +213,674 @@
   }
 
   .rt-r-mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
   }
 
   .rt-r-mx-0 {
     --margin-left: 0px;
     --margin-right: 0px;
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-1 {
     --margin-left: var(--space-1);
     --margin-right: var(--space-1);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-2 {
     --margin-left: var(--space-2);
     --margin-right: var(--space-2);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-3 {
     --margin-left: var(--space-3);
     --margin-right: var(--space-3);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-4 {
     --margin-left: var(--space-4);
     --margin-right: var(--space-4);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-5 {
     --margin-left: var(--space-5);
     --margin-right: var(--space-5);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-6 {
     --margin-left: var(--space-6);
     --margin-right: var(--space-6);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-7 {
     --margin-left: var(--space-7);
     --margin-right: var(--space-7);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-8 {
     --margin-left: var(--space-8);
     --margin-right: var(--space-8);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mx-9 {
     --margin-left: var(--space-9);
     --margin-right: var(--space-9);
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-1 {
     --margin-left: calc(-1 * var(--space-1));
     --margin-right: calc(-1 * var(--space-1));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-2 {
     --margin-left: calc(-1 * var(--space-2));
     --margin-right: calc(-1 * var(--space-2));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-3 {
     --margin-left: calc(-1 * var(--space-3));
     --margin-right: calc(-1 * var(--space-3));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-4 {
     --margin-left: calc(-1 * var(--space-4));
     --margin-right: calc(-1 * var(--space-4));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-5 {
     --margin-left: calc(-1 * var(--space-5));
     --margin-right: calc(-1 * var(--space-5));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-6 {
     --margin-left: calc(-1 * var(--space-6));
     --margin-right: calc(-1 * var(--space-6));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-7 {
     --margin-left: calc(-1 * var(--space-7));
     --margin-right: calc(-1 * var(--space-7));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-8 {
     --margin-left: calc(-1 * var(--space-8));
     --margin-right: calc(-1 * var(--space-8));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mx-9 {
     --margin-left: calc(-1 * var(--space-9));
     --margin-right: calc(-1 * var(--space-9));
-    margin-left: var(--margin-left-override, var(--margin-left));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-my-auto {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-block-start: auto;
+    margin-block-end: auto;
   }
 
   .rt-r-my-0 {
     --margin-top: 0px;
     --margin-bottom: 0px;
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-1 {
     --margin-top: var(--space-1);
     --margin-bottom: var(--space-1);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-2 {
     --margin-top: var(--space-2);
     --margin-bottom: var(--space-2);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-3 {
     --margin-top: var(--space-3);
     --margin-bottom: var(--space-3);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-4 {
     --margin-top: var(--space-4);
     --margin-bottom: var(--space-4);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-5 {
     --margin-top: var(--space-5);
     --margin-bottom: var(--space-5);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-6 {
     --margin-top: var(--space-6);
     --margin-bottom: var(--space-6);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-7 {
     --margin-top: var(--space-7);
     --margin-bottom: var(--space-7);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-8 {
     --margin-top: var(--space-8);
     --margin-bottom: var(--space-8);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-my-9 {
     --margin-top: var(--space-9);
     --margin-bottom: var(--space-9);
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-1 {
     --margin-top: calc(-1 * var(--space-1));
     --margin-bottom: calc(-1 * var(--space-1));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-2 {
     --margin-top: calc(-1 * var(--space-2));
     --margin-bottom: calc(-1 * var(--space-2));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-3 {
     --margin-top: calc(-1 * var(--space-3));
     --margin-bottom: calc(-1 * var(--space-3));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-4 {
     --margin-top: calc(-1 * var(--space-4));
     --margin-bottom: calc(-1 * var(--space-4));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-5 {
     --margin-top: calc(-1 * var(--space-5));
     --margin-bottom: calc(-1 * var(--space-5));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-6 {
     --margin-top: calc(-1 * var(--space-6));
     --margin-bottom: calc(-1 * var(--space-6));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-7 {
     --margin-top: calc(-1 * var(--space-7));
     --margin-bottom: calc(-1 * var(--space-7));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-8 {
     --margin-top: calc(-1 * var(--space-8));
     --margin-bottom: calc(-1 * var(--space-8));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-my-9 {
     --margin-top: calc(-1 * var(--space-9));
     --margin-bottom: calc(-1 * var(--space-9));
-    margin-top: var(--margin-top-override, var(--margin-top));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mt-auto {
-    margin-top: auto;
+    margin-block-start: auto;
   }
 
   .rt-r-mt-0 {
     --margin-top: 0px;
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-1 {
     --margin-top: var(--space-1);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-2 {
     --margin-top: var(--space-2);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-3 {
     --margin-top: var(--space-3);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-4 {
     --margin-top: var(--space-4);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-5 {
     --margin-top: var(--space-5);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-6 {
     --margin-top: var(--space-6);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-7 {
     --margin-top: var(--space-7);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-8 {
     --margin-top: var(--space-8);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mt-9 {
     --margin-top: var(--space-9);
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-1 {
     --margin-top: calc(-1 * var(--space-1));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-2 {
     --margin-top: calc(-1 * var(--space-2));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-3 {
     --margin-top: calc(-1 * var(--space-3));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-4 {
     --margin-top: calc(-1 * var(--space-4));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-5 {
     --margin-top: calc(-1 * var(--space-5));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-6 {
     --margin-top: calc(-1 * var(--space-6));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-7 {
     --margin-top: calc(-1 * var(--space-7));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-8 {
     --margin-top: calc(-1 * var(--space-8));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .-rt-r-mt-9 {
     --margin-top: calc(-1 * var(--space-9));
-    margin-top: var(--margin-top-override, var(--margin-top));
+    margin-block-start: var(--margin-top-override, var(--margin-top));
   }
 
   .rt-r-mr-auto {
-    margin-right: auto;
+    margin-inline-end: auto;
   }
 
   .rt-r-mr-0 {
     --margin-right: 0px;
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-1 {
     --margin-right: var(--space-1);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-2 {
     --margin-right: var(--space-2);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-3 {
     --margin-right: var(--space-3);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-4 {
     --margin-right: var(--space-4);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-5 {
     --margin-right: var(--space-5);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-6 {
     --margin-right: var(--space-6);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-7 {
     --margin-right: var(--space-7);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-8 {
     --margin-right: var(--space-8);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mr-9 {
     --margin-right: var(--space-9);
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-1 {
     --margin-right: calc(-1 * var(--space-1));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-2 {
     --margin-right: calc(-1 * var(--space-2));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-3 {
     --margin-right: calc(-1 * var(--space-3));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-4 {
     --margin-right: calc(-1 * var(--space-4));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-5 {
     --margin-right: calc(-1 * var(--space-5));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-6 {
     --margin-right: calc(-1 * var(--space-6));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-7 {
     --margin-right: calc(-1 * var(--space-7));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-8 {
     --margin-right: calc(-1 * var(--space-8));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .-rt-r-mr-9 {
     --margin-right: calc(-1 * var(--space-9));
-    margin-right: var(--margin-right-override, var(--margin-right));
+    margin-inline-end: var(--margin-right-override, var(--margin-right));
   }
 
   .rt-r-mb-auto {
-    margin-bottom: auto;
+    margin-block-end: auto;
   }
 
   .rt-r-mb-0 {
     --margin-bottom: 0px;
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-1 {
     --margin-bottom: var(--space-1);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-2 {
     --margin-bottom: var(--space-2);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-3 {
     --margin-bottom: var(--space-3);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-4 {
     --margin-bottom: var(--space-4);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-5 {
     --margin-bottom: var(--space-5);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-6 {
     --margin-bottom: var(--space-6);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-7 {
     --margin-bottom: var(--space-7);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-8 {
     --margin-bottom: var(--space-8);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-mb-9 {
     --margin-bottom: var(--space-9);
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-1 {
     --margin-bottom: calc(-1 * var(--space-1));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-2 {
     --margin-bottom: calc(-1 * var(--space-2));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-3 {
     --margin-bottom: calc(-1 * var(--space-3));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-4 {
     --margin-bottom: calc(-1 * var(--space-4));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-5 {
     --margin-bottom: calc(-1 * var(--space-5));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-6 {
     --margin-bottom: calc(-1 * var(--space-6));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-7 {
     --margin-bottom: calc(-1 * var(--space-7));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-8 {
     --margin-bottom: calc(-1 * var(--space-8));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .-rt-r-mb-9 {
     --margin-bottom: calc(-1 * var(--space-9));
-    margin-bottom: var(--margin-bottom-override, var(--margin-bottom));
+    margin-block-end: var(--margin-bottom-override, var(--margin-bottom));
   }
 
   .rt-r-ml-auto {
-    margin-left: auto;
+    margin-inline-start: auto;
   }
 
   .rt-r-ml-0 {
     --margin-left: 0px;
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-1 {
     --margin-left: var(--space-1);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-2 {
     --margin-left: var(--space-2);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-3 {
     --margin-left: var(--space-3);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-4 {
     --margin-left: var(--space-4);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-5 {
     --margin-left: var(--space-5);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-6 {
     --margin-left: var(--space-6);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-7 {
     --margin-left: var(--space-7);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-8 {
     --margin-left: var(--space-8);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .rt-r-ml-9 {
     --margin-left: var(--space-9);
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-1 {
     --margin-left: calc(-1 * var(--space-1));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-2 {
     --margin-left: calc(-1 * var(--space-2));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-3 {
     --margin-left: calc(-1 * var(--space-3));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-4 {
     --margin-left: calc(-1 * var(--space-4));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-5 {
     --margin-left: calc(-1 * var(--space-5));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-6 {
     --margin-left: calc(-1 * var(--space-6));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-7 {
     --margin-left: calc(-1 * var(--space-7));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-8 {
     --margin-left: calc(-1 * var(--space-8));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 
   .-rt-r-ml-9 {
     --margin-left: calc(-1 * var(--space-9));
-    margin-left: var(--margin-left-override, var(--margin-left));
+    margin-inline-start: var(--margin-left-override, var(--margin-left));
   }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useDirection } from '@radix-ui/react-direction';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
 import {
   Theme,
@@ -51,6 +52,7 @@ interface ThemePanelImplPrivateProps {
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const { open, onOpenChange, onAppearanceChange: onAppearanceChangeProp, ...panelProps } = props;
     const themeContext = useThemeContext();
     const {
@@ -197,7 +199,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             transitionProperty: 'transform, box-shadow',
             transitionDuration: '200ms',
             transitionTimingFunction: open ? 'ease-out' : 'ease-in',
-            transform: open ? 'none' : 'translateX(105%)',
+            transform: open ? 'none' : dir === 'rtl' ? 'translateX(-105%)' : 'translateX(105%)',
             boxShadow: open ? 'var(--shadow-5)' : 'var(--shadow-2)',
             ...props.style,
           }}

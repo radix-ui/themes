@@ -4,19 +4,19 @@
   }
 
   .rt-r-top-auto {
-    top: auto;
+    inset-block-start: auto;
   }
 
   .rt-r-right-auto {
-    right: auto;
+    inset-inline-end: auto;
   }
 
   .rt-r-bottom-auto {
-    bottom: auto;
+    inset-block-end: auto;
   }
 
   .rt-r-left-auto {
-    left: auto;
+    inset-inline-start: auto;
   }
 
   .rt-r-inset-0 {
@@ -24,19 +24,19 @@
   }
 
   .rt-r-top-0 {
-    top: 0;
+    inset-block-start: 0;
   }
 
   .rt-r-right-0 {
-    right: 0;
+    inset-inline-end: 0;
   }
 
   .rt-r-bottom-0 {
-    bottom: 0;
+    inset-block-end: 0;
   }
 
   .rt-r-left-0 {
-    left: 0;
+    inset-inline-start: 0;
   }
 
   .rt-r-inset-50\% {
@@ -44,19 +44,19 @@
   }
 
   .rt-r-top-50\% {
-    top: 50%;
+    inset-block-start: 50%;
   }
 
   .rt-r-right-50\% {
-    right: 50%;
+    inset-inline-end: 50%;
   }
 
   .rt-r-bottom-50\% {
-    bottom: 50%;
+    inset-block-end: 50%;
   }
 
   .rt-r-left-50\% {
-    left: 50%;
+    inset-inline-start: 50%;
   }
 
   .rt-r-inset-100\% {
@@ -64,18 +64,18 @@
   }
 
   .rt-r-top-100\% {
-    top: 100%;
+    inset-block-start: 100%;
   }
 
   .rt-r-right-100\% {
-    right: 100%;
+    inset-inline-end: 100%;
   }
 
   .rt-r-bottom-100\% {
-    bottom: 100%;
+    inset-block-end: 100%;
   }
 
   .rt-r-left-100\% {
-    left: 100%;
+    inset-inline-start: 100%;
   }
 }

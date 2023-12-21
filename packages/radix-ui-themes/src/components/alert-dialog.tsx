@@ -3,6 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import { useDirection } from '@radix-ui/react-direction';
 import { alertDialogContentPropDefs } from './alert-dialog.props';
 import { withBreakpoints } from '../helpers';
 import { Heading } from './heading';
@@ -35,6 +36,7 @@ interface AlertDialogContentProps
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
   (props, forwardedRef) => {
+    const dir = useDirection();
     const {
       className,
       forceMount,
@@ -44,7 +46,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
     } = props;
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
+        <Theme asChild dir={dir}>
           <AlertDialogPrimitive.Overlay className="rt-DialogOverlay rt-AlertDialogOverlay">
             <AlertDialogPrimitive.Content
               {...contentProps}

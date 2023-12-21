@@ -10,6 +10,12 @@
   }
 }
 
+[dir='rtl'] {
+  .rt-CalloutRoot {
+    text-align: right;
+  }
+}
+
 .rt-CalloutIcon {
   display: flex;
   align-items: center;

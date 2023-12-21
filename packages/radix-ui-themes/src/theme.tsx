@@ -40,7 +40,7 @@ const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRe
   if (isRoot) {
     return (
       <TooltipPrimitive.Provider>
-        <DirectionProvider dir="ltr">
+        <DirectionProvider dir={props.dir === 'rtl' ? 'rtl' : 'ltr'}>
           <ThemeRoot {...props} ref={forwardedRef} />
         </DirectionProvider>
       </TooltipPrimitive.Provider>
@@ -142,7 +142,7 @@ ThemeRoot.displayName = 'ThemeRoot';
 type ThemeImplElement = React.ElementRef<'div'>;
 interface ThemeImplProps extends ThemeImplPublicProps, ThemeImplPrivateProps {}
 interface ThemeImplPublicProps
-  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'dir'>,
+  extends React.ComponentPropsWithoutRef<'div'>,
     Partial<ThemeOptions> {
   asChild?: boolean;
   isRoot?: boolean;
