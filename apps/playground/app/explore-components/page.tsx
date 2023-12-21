@@ -108,6 +108,9 @@ import {
   PopoverTrigger,
   PopoverClose,
   //
+  Progress,
+  progressPropDefs,
+  //
   Quote,
   //
   RadioGroupRoot,
@@ -2684,6 +2687,144 @@ export default function ExploreComponents() {
                     </PopoverContent>
                   </PopoverRoot>
                 </Flex>
+
+                <Heading id="progress" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#progress">
+                    Progress
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            <th colSpan={2}>Accent</th>
+                            <th colSpan={2}>Gray</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {progressPropDefs.variant.values.map((variant, index) => (
+                            <tr key={variant}>
+                              <td>{upperFirst(variant)}</td>
+                              <td>
+                                <Progress value={33 + 17 * index} variant={variant} />
+                              </td>
+                              <td>
+                                <Progress value={33 + 17 * index} variant={variant} highContrast />
+                              </td>
+                              <td>
+                                <Progress value={33 + 17 * index} variant={variant} color="gray" />
+                              </td>
+                              <td>
+                                <Progress
+                                  value={33 + 17 * index}
+                                  variant={variant}
+                                  color="gray"
+                                  highContrast
+                                />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {progressPropDefs.variant.values.map((variant) => (
+                              <th key={variant} colSpan={2}>
+                                {upperFirst(variant)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color, index) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              {progressPropDefs.variant.values.map((variant) => (
+                                <React.Fragment key={variant}>
+                                  <td>
+                                    <Progress
+                                      value={30 + index * 2}
+                                      color={color}
+                                      variant={variant}
+                                    />
+                                  </td>
+                                  <td>
+                                    <Progress
+                                      value={30 + index * 2}
+                                      color={color}
+                                      variant={variant}
+                                      highContrast
+                                    />
+                                  </td>
+                                </React.Fragment>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {progressPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {progressPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              {progressPropDefs.size.values.map((size, sizeIndex) => (
+                                <tr key={size}>
+                                  <td>Size {size}</td>
+                                  {progressPropDefs.radius.values.map((radius) => (
+                                    <td key={radius} style={{ textAlign: 'left' }}>
+                                      <Flex align="center" justify="start" gap="4">
+                                        <Progress
+                                          value={33 + 17 * sizeIndex}
+                                          size={size}
+                                          variant={variant}
+                                          radius={radius}
+                                        />
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
 
                 <Heading id="quote" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#quote">

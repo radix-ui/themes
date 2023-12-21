@@ -48,3 +48,6 @@
 .table :global(.rt-SliderRoot) {
   width: 160px;
 }
+.table :global(.rt-ProgressRoot) {
+  width: 160px;
+}
