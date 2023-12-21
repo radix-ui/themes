@@ -140,6 +140,9 @@ import {
   Slider,
   sliderPropDefs,
   //
+  Spinner,
+  spinnerPropDefs,
+  //
   Strong,
   //
   Switch,
@@ -3475,6 +3478,89 @@ export default function ExploreComponents() {
                                 </tr>
                               ))}
                             </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+                </TabsRoot>
+
+                <Heading id="spinner" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#spinner">
+                    Spinner
+                  </Link>
+                </Heading>
+                <TabsRoot defaultValue="theme-colors">
+                  <TabsList size="2">
+                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
+                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
+                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="theme-colors">
+                    <Grid my="6" gap="6" columns="200px 200px" style={{ whiteSpace: 'nowrap' }}>
+                      <Flex direction="column" gap="6" align="center">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Accent
+                        </Text>
+                        <Spinner />
+                        <Spinner highContrast />
+                      </Flex>
+
+                      <Flex direction="column" gap="6" align="center">
+                        <Text mb="-4" size="1" color="gray" align="center">
+                          Gray
+                        </Text>
+                        <Spinner color="gray" />
+                        <Spinner color="gray" highContrast />
+                      </Flex>
+                    </Grid>
+                  </TabsContent>
+
+                  <TabsContent value="all-colors">
+                    <Box my="6">
+                      <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
+                        <tbody>
+                          {themeAccentColorsOrdered.map((color) => (
+                            <tr key={color}>
+                              <td>{upperFirst(color)}</td>
+                              <td style={{ textAlign: 'left' }}>
+                                <Flex gap="6">
+                                  <Spinner color={color} />
+                                  <Spinner color={color} highContrast />
+                                </Flex>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </Box>
+                  </TabsContent>
+
+                  <TabsContent value="all-sizes">
+                    <Box my="6">
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th />
+                            {spinnerPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {spinnerPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <td>Size {size}</td>
+                              {spinnerPropDefs.radius.values.map((radius) => (
+                                <td key={radius}>
+                                  <Flex align="center" justify="center">
+                                    <Spinner size={size} radius={radius} />
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
                           ))}
                         </tbody>
                       </table>

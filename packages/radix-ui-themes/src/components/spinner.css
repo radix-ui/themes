@@ -1,0 +1,91 @@
+.rt-Spinner {
+  display: block;
+  position: relative;
+}
+
+.rt-SpinnerLeaf {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 12.5% / 2);
+  width: 12.5%;
+  height: 100%;
+  animation: rt-spinner-leaf-fade 800ms linear infinite;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 30%;
+    border-radius: var(--radius-1);
+    background-color: var(--accent-11);
+
+    .rt-Spinner:where(.rt-high-contrast) & {
+      background-color: var(--accent-12);
+    }
+  }
+
+  &:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -800ms;
+  }
+  &:nth-child(2) {
+    transform: rotate(45deg);
+    animation-delay: -700ms;
+  }
+  &:nth-child(3) {
+    transform: rotate(90deg);
+    animation-delay: -600ms;
+  }
+  &:nth-child(4) {
+    transform: rotate(135deg);
+    animation-delay: -500ms;
+  }
+  &:nth-child(5) {
+    transform: rotate(180deg);
+    animation-delay: -400ms;
+  }
+  &:nth-child(6) {
+    transform: rotate(225deg);
+    animation-delay: -300ms;
+  }
+  &:nth-child(7) {
+    transform: rotate(270deg);
+    animation-delay: -200ms;
+  }
+  &:nth-child(8) {
+    transform: rotate(315deg);
+    animation-delay: -100ms;
+  }
+}
+
+@keyframes rt-spinner-leaf-fade {
+  from {
+    opacity: 0.65;
+  }
+  to {
+    opacity: 0.15;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-Spinner {
+    &:where(.rt-r-size-1) {
+      width: var(--space-3);
+      height: var(--space-3);
+    }
+    &:where(.rt-r-size-2) {
+      width: var(--space-4);
+      height: var(--space-4);
+    }
+    &:where(.rt-r-size-3) {
+      width: calc(20px * var(--scaling));
+      height: calc(20px * var(--scaling));
+    }
+  }
+}
