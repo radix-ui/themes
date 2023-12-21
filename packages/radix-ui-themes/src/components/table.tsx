@@ -173,21 +173,7 @@ const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowH
 );
 TableRowHeaderCell.displayName = 'TableRowHeaderCell';
 
-const Table = Object.assign(
-  {},
-  {
-    Root: TableRoot,
-    Header: TableHeader,
-    Body: TableBody,
-    Row: TableRow,
-    Cell: TableCell,
-    ColumnHeaderCell: TableColumnHeaderCell,
-    RowHeaderCell: TableRowHeaderCell,
-  }
-);
-
 export {
-  Table,
   TableRoot,
   TableHeader,
   TableBody,
