@@ -148,6 +148,9 @@ import {
   Slider,
   sliderPropDefs,
   //
+  Spinner,
+  spinnerPropDefs,
+  //
   Strong,
   //
   Switch,
@@ -1374,6 +1377,39 @@ export default function Sink() {
                         </React.Fragment>
                       ))}
                     </details>
+                  </DocsSection>
+
+                  <DocsSection title="Spinner">
+                    <Grid gap="4">
+                      <Flex gap="4" align="center">
+                        <Spinner size="1" />
+                        <Spinner size="2" />
+                        <Spinner size="3" />
+                      </Flex>
+
+                      <Flex gap="4" align="center">
+                        <TextFieldRoot size="1">
+                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                          <TextFieldSlot>
+                            <Spinner size="1" />
+                          </TextFieldSlot>
+                        </TextFieldRoot>
+
+                        <TextFieldRoot size="2">
+                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                          <TextFieldSlot>
+                            <Spinner size="2" />
+                          </TextFieldSlot>
+                        </TextFieldRoot>
+
+                        <TextFieldRoot size="3">
+                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                          <TextFieldSlot>
+                            <Spinner size="3" />
+                          </TextFieldSlot>
+                        </TextFieldRoot>
+                      </Flex>
+                    </Grid>
                   </DocsSection>
 
                   <DocsSection title="Checkbox">

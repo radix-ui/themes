@@ -41,8 +41,9 @@
 @import '../components/section.css';
 @import '../components/select.css';
 @import '../components/separator.css';
-@import '../components/slider.css';
 @import '../components/skeleton.css';
+@import '../components/slider.css';
+@import '../components/spinner.css';
 @import '../components/strong.css';
 @import '../components/switch.css';
 @import '../components/tabs.css';

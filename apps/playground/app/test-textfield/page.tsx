@@ -14,6 +14,7 @@ import {
   Button,
   Text,
   Tooltip,
+  Spinner,
 } from '@radix-ui/themes';
 import {
   StarIcon,
@@ -47,7 +48,32 @@ export default function Test() {
                     <TextFieldInput size="3" placeholder="Your name" />
                   </Flex>
 
-                  <div />
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Spinner (right)
+                    </Heading>
+
+                    <TextFieldRoot size="1">
+                      <TextFieldInput placeholder="Your password" />
+                      <TextFieldSlot>
+                        <Spinner size="1" color="gray" />
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+
+                    <TextFieldRoot size="2">
+                      <TextFieldInput placeholder="Your password" />
+                      <TextFieldSlot>
+                        <Spinner size="2" color="gray" />
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+
+                    <TextFieldRoot size="3">
+                      <TextFieldInput placeholder="Your password" />
+                      <TextFieldSlot color="red">
+                        <Spinner size="3" />
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+                  </Flex>
                   <div />
 
                   <Flex direction="column" align="start" gap="3">

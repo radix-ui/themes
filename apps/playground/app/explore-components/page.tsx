@@ -140,6 +140,9 @@ import {
   Slider,
   sliderPropDefs,
   //
+  Spinner,
+  spinnerPropDefs,
+  //
   Strong,
   //
   Switch,
@@ -3481,6 +3484,42 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
                 </TabsRoot>
+
+                <Heading id="spinner" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#spinner">
+                    Spinner
+                  </Link>
+                </Heading>
+                <Grid gap="4" my="6" style={{ whiteSpace: 'nowrap' }}>
+                  <Flex gap="4" align="center">
+                    <Spinner size="1" />
+                    <Spinner size="2" />
+                    <Spinner size="3" />
+                  </Flex>
+
+                  <Flex gap="4" align="center">
+                    <TextFieldRoot size="1">
+                      <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                      <TextFieldSlot>
+                        <Spinner size="1" />
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+
+                    <TextFieldRoot size="2">
+                      <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                      <TextFieldSlot>
+                        <Spinner size="2" />
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+
+                    <TextFieldRoot size="3">
+                      <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                      <TextFieldSlot>
+                        <Spinner size="3" />
+                      </TextFieldSlot>
+                    </TextFieldRoot>
+                  </Flex>
+                </Grid>
 
                 <Heading id="switch" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#switch">
