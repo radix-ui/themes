@@ -80,8 +80,8 @@
       height: var(--space-4);
     }
     &:where(.rt-r-size-3) {
-      width: calc(20px * var(--scaling));
-      height: calc(20px * var(--scaling));
+      width: calc(1.25 * var(--space-4));
+      height: calc(1.25 * var(--space-4));
     }
   }
 }
