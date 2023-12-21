@@ -20,6 +20,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     className,
+    style,
     size = progressPropDefs.size.default,
     variant = progressPropDefs.variant.default,
     color = progressPropDefs.color.default,
@@ -42,17 +43,16 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
         { 'rt-high-contrast': highContrast },
         withMarginProps(marginProps)
       )}
+      style={
+        {
+          '--progress-duration': 'value' in progressProps ? undefined : duration,
+          '--progress-value': 'value' in progressProps ? progressProps.value : undefined,
+          ...style,
+        } as React.CSSProperties
+      }
       {...progressProps}
     >
-      <ProgressPrimitive.Indicator
-        className="rt-ProgressIndicator"
-        style={
-          {
-            '--progress-duration': 'value' in progressProps ? undefined : duration,
-            '--progress-value': 'value' in progressProps ? progressProps.value : undefined,
-          } as React.CSSProperties
-        }
-      />
+      <ProgressPrimitive.Indicator className="rt-ProgressIndicator" />
     </ProgressPrimitive.Root>
   );
 });

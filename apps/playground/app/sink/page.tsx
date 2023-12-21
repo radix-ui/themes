@@ -1279,19 +1279,14 @@ export default function Sink() {
                             {progressPropDefs.size.values.map((size, i) => (
                               <tr key={size}>
                                 <RowHeaderCell>size {size}</RowHeaderCell>
-                                <td style={{ minWidth: 928 }}>
-                                  <Progress size={size} duration={`${(i + 1) * 3}s`} />
+                                <td style={{ width: 220 }}>
+                                  <Progress size={size} />
                                 </td>
                               </tr>
                             ))}
                           </tbody>
                         </table>
                       </div>
-
-                      <Grid gap="3" mt="6">
-                        <Progress />
-                        <Progress value={66} />
-                      </Grid>
                     </Flex>
 
                     <Text as="p" my="5">
@@ -1360,7 +1355,8 @@ export default function Sink() {
                                   <RowHeaderCell>{color}</RowHeaderCell>
                                   {progressPropDefs.variant.values.map((variant) => (
                                     <td key={variant} style={{ minWidth: 150 }}>
-                                      <Progress variant={variant} color={color} value={66} mt="3" />
+                                      <Progress variant={variant} color={color} mt="3" mb="3" />
+                                      <Progress variant={variant} color={color} value={66} mt="5" />
                                       <Progress
                                         variant={variant}
                                         color={color}
