@@ -6,7 +6,10 @@
   overflow: hidden;
   flex-grow: 1;
   height: var(--progress-height);
-  border-radius: var(--radius-3);
+  border-radius: max(
+    calc(var(--radius-factor) * var(--progress-height) / 3),
+    calc(var(--radius-factor) * var(--radius-thumb))
+  );
 
   /* A pseudo-element for shadows */
   &::after {
