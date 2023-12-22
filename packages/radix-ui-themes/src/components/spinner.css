@@ -1,6 +1,11 @@
+.radix-themes {
+  --spinner-opacity: 0.65;
+}
+
 .rt-Spinner {
   display: block;
   position: relative;
+  opacity: var(--spinner-opacity);
 }
 
 .rt-SpinnerLeaf {
@@ -56,10 +61,10 @@
 
 @keyframes rt-spinner-leaf-fade {
   from {
-    opacity: 0.65;
+    opacity: 1;
   }
   to {
-    opacity: 0.15;
+    opacity: 0.25;
   }
 }
 

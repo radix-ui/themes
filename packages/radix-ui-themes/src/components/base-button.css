@@ -7,6 +7,10 @@
   user-select: none;
   vertical-align: top;
 
+  &:where([data-disabled]) {
+    --spinner-opacity: 1;
+  }
+
   &:where(.rt-loading) {
     position: relative;
   }
