@@ -6,6 +6,10 @@
   flex-shrink: 0;
   user-select: none;
   vertical-align: top;
+
+  &:where(.rt-loading) {
+    position: relative;
+  }
 }
 
 /***************************************************************************************************

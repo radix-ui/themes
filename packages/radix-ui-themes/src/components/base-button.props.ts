@@ -10,12 +10,14 @@ const baseButtonPropDefs = {
   color: colorProp,
   highContrast: highContrastProp,
   radius: radiusProp,
+  loading: { type: 'boolean', default: false },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   color: typeof colorProp;
   highContrast: typeof highContrastProp;
   radius: typeof radiusProp;
+  loading: PropDef<boolean>;
 };
 
 export { baseButtonPropDefs };

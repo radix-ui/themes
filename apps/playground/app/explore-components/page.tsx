@@ -191,6 +191,7 @@ import {
 } from '@radix-ui/react-icons';
 import { getPeopleForColor } from './people';
 import styles from './page.module.css';
+import { LoadingButtons } from '../../components/loading-buttons';
 
 export default function ExploreComponents() {
   return (
@@ -3519,6 +3520,8 @@ export default function ExploreComponents() {
                       </TextFieldSlot>
                     </TextFieldRoot>
                   </Flex>
+
+                  <LoadingButtons />
                 </Grid>
 
                 <Heading id="switch" mb="5">

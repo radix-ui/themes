@@ -195,6 +195,7 @@ import styles from './page.module.css';
 
 import { RadixLogo } from './radix-logo';
 import { PointerCursorsCheckbox } from './pointer-cursors-checkbox';
+import { LoadingButtons } from '../../components/loading-buttons';
 
 export default function Sink() {
   return (
@@ -1409,6 +1410,8 @@ export default function Sink() {
                           </TextFieldSlot>
                         </TextFieldRoot>
                       </Flex>
+
+                      <LoadingButtons />
                     </Grid>
                   </DocsSection>
 
