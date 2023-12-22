@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Flex } from './flex';
 import { spinnerPropDefs } from './spinner.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { VisuallyHidden } from './visually-hidden';
 
 import type { MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -51,7 +52,12 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
   return (
     <Flex asChild position="relative" align="center" justify="center">
       <span>
-        <span style={{ visibility: 'hidden' }}>{children}</span>
+        {/**
+         * `display: contents` removes the content from the accessibility tree in some browsers,
+         * so we force remove it with `aria-hidden` and re-add it in the tree with `VisuallyHidden`
+         */}
+        <span style={{ display: 'contents', visibility: 'hidden' }}>{children}</span>
+        <VisuallyHidden>{children}</VisuallyHidden>
 
         <Flex asChild align="center" justify="center" position="absolute" inset="0">
           <span>{spinner}</span>

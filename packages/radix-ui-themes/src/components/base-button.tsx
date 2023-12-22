@@ -2,7 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { baseButtonPropDefs } from './base-button.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import {
+  extractMarginProps,
+  withMarginProps,
+  withBreakpoints,
+  mapResponsiveProp,
+  mapButtonSizeToSpinnerSize,
+} from '../helpers';
 import { Flex } from './flex';
 import { Spinner } from './spinner';
 import { VisuallyHidden } from './visually-hidden';
@@ -71,7 +77,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
 
           <Flex asChild align="center" justify="center" position="absolute" inset="0">
             <span>
-              <Spinner />
+              <Spinner size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)} />
             </span>
           </Flex>
         </>

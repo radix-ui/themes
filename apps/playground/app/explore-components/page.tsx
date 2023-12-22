@@ -3521,7 +3521,22 @@ export default function ExploreComponents() {
                     </TextFieldRoot>
                   </Flex>
 
-                  <LoadingButtons />
+                  <Flex gap="4" align="center">
+                    <IconButton loading size="3">
+                      <StarIcon />
+                    </IconButton>
+
+                    <Button loading size="3">
+                      Continue
+                    </Button>
+
+                    <Button disabled size="3">
+                      Continue
+                      <Spinner loading>
+                        <ArrowRightIcon />
+                      </Spinner>
+                    </Button>
+                  </Flex>
                 </Grid>
 
                 <Heading id="switch" mb="5">

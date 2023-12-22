@@ -5,7 +5,13 @@ import classNames from 'classnames';
 import { Text } from './text';
 import { textPropDefs } from './text.props';
 import { calloutRootPropDefs } from './callout.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import {
+  extractMarginProps,
+  withMarginProps,
+  withBreakpoints,
+  mapResponsiveProp,
+  mapCalloutSizeToTextSize,
+} from '../helpers';
 
 import type {
   PropsWithoutRefOrColor,
@@ -67,7 +73,12 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
   (props, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);
     return (
-      <Text asChild color={color} size={getTextSize(size)} highContrast={highContrast}>
+      <Text
+        asChild
+        color={color}
+        size={mapResponsiveProp(size, mapCalloutSizeToTextSize)}
+        highContrast={highContrast}
+      >
         <div
           {...props}
           className={classNames('rt-CalloutIcon', props.className)}
@@ -87,7 +98,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
     return (
       <Text
         as="p"
-        size={getTextSize(size)}
+        size={mapResponsiveProp(size, mapCalloutSizeToTextSize)}
         color={color}
         highContrast={highContrast}
         {...props}
@@ -98,21 +109,6 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
   }
 );
 CalloutText.displayName = 'CalloutText';
-
-function getTextSize(size: CalloutRootOwnProps['size']): React.ComponentProps<typeof Text>['size'] {
-  if (size === undefined) return undefined;
-  if (typeof size === 'string') {
-    return getNonResponsiveTextSize(size);
-  }
-  return Object.fromEntries(
-    Object.entries(size).map(([key, value]) => [key, getNonResponsiveTextSize(value)])
-  );
-}
-function getNonResponsiveTextSize(
-  size: (typeof calloutRootPropDefs.size.values)[number]
-): (typeof textPropDefs.size.values)[number] {
-  return size === '3' ? '3' : '2';
-}
 
 const Callout = Object.assign(
   {},
