@@ -2,6 +2,8 @@
 
 ## 2.1.0
 
+- `Button`, `IconButton`:
+  - Add new `loading` prop
 - `Progress`: New component
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
