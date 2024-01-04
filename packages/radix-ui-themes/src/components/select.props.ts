@@ -16,10 +16,12 @@ const selectTriggerPropDefs = {
   variant: { type: 'enum', values: triggerVariants, default: 'surface' },
   color: colorProp,
   radius: radiusProp,
+  placeholder: { type: 'string', default: undefined },
 } satisfies {
   variant: PropDef<(typeof triggerVariants)[number]>;
   color: typeof colorProp;
   radius: typeof radiusProp;
+  placeholder: PropDef<string>;
 };
 
 const contentVariants = ['solid', 'soft'] as const;
