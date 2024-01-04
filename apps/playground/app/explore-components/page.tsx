@@ -191,6 +191,7 @@ import {
 } from '@radix-ui/react-icons';
 import { getPeopleForColor } from './people';
 import styles from './page.module.css';
+import { LoadingButtons } from '../../components/loading-buttons';
 
 export default function ExploreComponents() {
   return (
@@ -3518,6 +3519,23 @@ export default function ExploreComponents() {
                         <Spinner size="3" />
                       </TextFieldSlot>
                     </TextFieldRoot>
+                  </Flex>
+
+                  <Flex gap="4" align="center">
+                    <IconButton loading size="3">
+                      <StarIcon />
+                    </IconButton>
+
+                    <Button loading size="3">
+                      Continue
+                    </Button>
+
+                    <Button disabled size="3">
+                      Continue
+                      <Spinner loading>
+                        <ArrowRightIcon />
+                      </Spinner>
+                    </Button>
                   </Flex>
                 </Grid>
 
