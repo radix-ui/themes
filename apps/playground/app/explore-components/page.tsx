@@ -189,6 +189,7 @@ import {
   MagnifyingGlassIcon,
   StarIcon,
 } from '@radix-ui/react-icons';
+import { KbdSpecimen } from './kbd-specimen';
 import { getPeopleForColor } from './people';
 import styles from './page.module.css';
 import { LoadingButtons } from '../../components/loading-buttons';
@@ -2343,24 +2344,7 @@ export default function ExploreComponents() {
                   </TabsList>
 
                   <TabsContent value="specimen">
-                    <Flex direction="column" gap="4" my="6">
-                      <Text as="p" size="2">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                      <Text as="p" size="3">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                      <Text as="p" size="4">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                      <Text as="p" size="5">
-                        Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
-                        to toggle dark mode.
-                      </Text>
-                    </Flex>
+                    <KbdSpecimen />
                   </TabsContent>
 
                   <TabsContent value="all-sizes">
