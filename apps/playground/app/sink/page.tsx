@@ -4288,9 +4288,9 @@ export default function Sink() {
                         gap="5"
                       >
                         {[...new Array(6)].map((_, i) => (
-                          <Flex grow="1" align="center" justify="center" key={i}>
+                          <Flex flexGrow="1" align="center" justify="center" key={i}>
                             <Box
-                              grow="1"
+                              flexGrow="1"
                               style={{
                                 backgroundColor: 'var(--color-panel-solid)',
                                 boxShadow: `var(--shadow-${i + 1})`,

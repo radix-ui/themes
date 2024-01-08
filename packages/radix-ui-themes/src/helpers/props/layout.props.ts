@@ -71,8 +71,8 @@ const layoutPropDefs = {
   left: { type: 'enum', values: positionEdgeValues, default: undefined, responsive: true },
   width: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
   height: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
-  shrink: { type: 'enum', values: flexShrinkValues, default: undefined, responsive: true },
-  grow: { type: 'enum', values: flexGrowValues, default: undefined, responsive: true },
+  flexShrink: { type: 'enum', values: flexShrinkValues, default: undefined, responsive: true },
+  flexGrow: { type: 'enum', values: flexGrowValues, default: undefined, responsive: true },
   gridColumn: { type: 'string', default: undefined, responsive: true },
   gridColumnStart: { type: 'string', default: undefined, responsive: true },
   gridColumnEnd: { type: 'string', default: undefined, responsive: true },
@@ -95,8 +95,8 @@ const layoutPropDefs = {
   left: PropDef<(typeof positionEdgeValues)[number]>;
   width: PropDef<(typeof widthHeightValues)[number]>;
   height: PropDef<(typeof widthHeightValues)[number]>;
-  shrink: PropDef<(typeof flexShrinkValues)[number]>;
-  grow: PropDef<(typeof flexGrowValues)[number]>;
+  flexShrink: PropDef<(typeof flexShrinkValues)[number]>;
+  flexGrow: PropDef<(typeof flexGrowValues)[number]>;
   gridColumn: PropDef<string>;
   gridColumnStart: PropDef<string>;
   gridColumnEnd: PropDef<string>;
@@ -105,7 +105,12 @@ const layoutPropDefs = {
   gridRowEnd: PropDef<string>;
 };
 
-type LayoutProps = GetPropDefTypes<typeof layoutPropDefs>;
+type LayoutProps = GetPropDefTypes<typeof layoutPropDefs> & {
+  /** @deprecated Rename this prop to `flexShrink`. The `shrink` prop will be removed in the next major release. */
+  shrink?: GetPropDefTypes<typeof layoutPropDefs>['flexShrink'];
+  /** @deprecated Rename this prop to `flexGrow`. The `grow` prop will be removed in the next major release. */
+  grow?: GetPropDefTypes<typeof layoutPropDefs>['flexGrow'];
+};
 
 function extractLayoutProps<T extends LayoutProps>(props: T) {
   const { rest: paddingRest, ...paddingProps } = extractPaddingProps(props);
@@ -118,8 +123,10 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     bottom = layoutPropDefs.bottom.default,
     left = layoutPropDefs.left.default,
     right = layoutPropDefs.right.default,
-    shrink = layoutPropDefs.shrink.default,
-    grow = layoutPropDefs.grow.default,
+    shrink = layoutPropDefs.flexShrink.default,
+    grow = layoutPropDefs.flexGrow.default,
+    flexShrink = layoutPropDefs.flexShrink.default,
+    flexGrow = layoutPropDefs.flexGrow.default,
     gridColumn = layoutPropDefs.gridColumn.default,
     gridColumnStart = layoutPropDefs.gridColumnStart.default,
     gridColumnEnd = layoutPropDefs.gridColumnEnd.default,
@@ -138,8 +145,8 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     bottom,
     left,
     right,
-    shrink,
-    grow,
+    flexShrink,
+    flexGrow,
     gridColumn,
     gridColumnStart,
     gridColumnEnd,
@@ -151,11 +158,11 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
 }
 
 function getLayoutStyles(props: LayoutProps) {
-  const baseLayoutClassNamess = classNames(
+  const baseLayoutClassNames = classNames(
     withPaddingProps(props),
     withBreakpoints(props.position, 'rt-r-position'),
-    withBreakpoints(props.shrink, 'rt-r-fs'),
-    withBreakpoints(props.grow, 'rt-r-fg'),
+    withBreakpoints(props.flexShrink ?? props.shrink, 'rt-r-fs'),
+    withBreakpoints(props.flexGrow ?? props.grow, 'rt-r-fg'),
     withBreakpoints(props.width, 'rt-r-w'),
     withBreakpoints(props.height, 'rt-r-h'),
     withBreakpoints(props.inset, 'rt-r-inset'),
@@ -203,7 +210,7 @@ function getLayoutStyles(props: LayoutProps) {
 
   return [
     classNames(
-      baseLayoutClassNamess,
+      baseLayoutClassNames,
       gridColumnClassNames,
       gridColumnStartClassNames,
       gridColumnEndClassNames,
