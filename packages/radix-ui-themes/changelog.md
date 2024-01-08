@@ -2,6 +2,8 @@
 
 ## 2.1.0
 
+- General
+  - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
 - `Button`, `IconButton`:
   - Add new `loading` prop
 - `Progress`: New component
