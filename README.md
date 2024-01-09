@@ -28,6 +28,10 @@ For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-
 - [Discord](https://discord.com/invite/7Xb99uG) - To get involved with the Radix community, ask questions and share tips.
 - [Twitter](https://twitter.com/radix_ui) - To receive updates, announcements, blog posts, and general Radix tips.
 
+## Local Development
+
+Fork the repository and clone it down to your machine. Then run `yarn && yarn dev` to start the development server, navigate to `http://localhost:3000/sink` to view the playground. Visit other demos by navigating to pages in the app directory (./app/\*), such as `/demo`, `/explore-components`, `/home-os`.
+
 ## License
 
 Licensed under the MIT License, Copyright © 2023-present [WorkOS](https://workos.com).
