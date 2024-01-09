@@ -145,6 +145,8 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     bottom,
     left,
     right,
+    shrink,
+    grow,
     flexShrink,
     flexGrow,
     gridColumn,
