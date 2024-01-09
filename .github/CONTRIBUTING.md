@@ -92,7 +92,7 @@ git push -u origin HEAD
 
 ## Working locally
 
-The repo is managed with Yarn Workspaces.
+The repo is managed with [Yarn Workspaces](https://yarnpkg.com/features/workspaces) and [Turborepo](https://turbo.build/repo).
 
 ### Development
 
