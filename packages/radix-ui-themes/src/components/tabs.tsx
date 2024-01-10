@@ -30,13 +30,21 @@ interface TabsListProps
   extends PropsWithoutRefOrColor<typeof TabsPrimitive.List>,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, size = tabsListPropDefs.size.default, color, ...listProps } = props;
+  const {
+    className,
+    size = tabsListPropDefs.size.default,
+    color,
+    highContrast,
+    ...listProps
+  } = props;
   return (
     <TabsPrimitive.List
       data-accent-color={color}
       {...listProps}
       ref={forwardedRef}
-      className={classNames('rt-TabsList', className, withBreakpoints(size, 'rt-r-size'))}
+      className={classNames('rt-TabsList', className, withBreakpoints(size, 'rt-r-size'), {
+        'rt-high-contrast': highContrast,
+      })}
     />
   );
 });

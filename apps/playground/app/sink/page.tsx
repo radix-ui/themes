@@ -4058,13 +4058,31 @@ export default function Sink() {
                           See color combinations
                         </Text>
                       </summary>
-                      <Grid gap="5" columns="2" align="center">
-                        {tabsListPropDefs.color.values.map((color) => (
+                      <Grid gap="5" columns="3" align="center">
+                        {tabsListPropDefs.color.values.map((color, i) => (
                           <React.Fragment key={color}>
                             <Text>{color}</Text>
                             <Flex>
                               <TabsRoot defaultValue="account" activationMode="manual">
                                 <TabsList size="1" color={color}>
+                                  <TabsTrigger value="account">Account</TabsTrigger>
+                                  <TabsTrigger value="documents">Documents</TabsTrigger>
+                                  <TabsTrigger value="settings">Settings</TabsTrigger>
+                                </TabsList>
+                                <TabsContent value="account">
+                                  <Box py="5">Account</Box>
+                                </TabsContent>
+                                <TabsContent value="documents">
+                                  <Box py="5">Documents</Box>
+                                </TabsContent>
+                                <TabsContent value="settings">
+                                  <Box py="5">Settings</Box>
+                                </TabsContent>
+                              </TabsRoot>
+                            </Flex>
+                            <Flex>
+                              <TabsRoot defaultValue="account" activationMode="manual">
+                                <TabsList size="1" color={color} highContrast>
                                   <TabsTrigger value="account">Account</TabsTrigger>
                                   <TabsTrigger value="documents">Documents</TabsTrigger>
                                   <TabsTrigger value="settings">Settings</TabsTrigger>
