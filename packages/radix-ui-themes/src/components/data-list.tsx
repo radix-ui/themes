@@ -11,30 +11,10 @@ import { DataListRootProps } from './data-list.props';
  * - gap prop?
  * - label width
  * - trim?
+ * - add margin??
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  ({ children, gap = '4', gapX, gapY, layout = 'horizontal', size = '2', trim }, forwardedRef) => (
-    <Text asChild size={size} trim={trim}>
-      <dl
-        ref={forwardedRef}
-        className={classNames(
-          'DataListRoot',
-          withBreakpoints(gap, 'gap'),
-          withBreakpoints(gapX, 'gap-x'),
-          withBreakpoints(gapY, 'gap-y'),
-          withBreakpoints(layout, 'layout')
-        )}
-      >
-        {children}
-      </dl>
-    </Text>
-  )
-);
-
-DataListRoot.displayName = 'DataListRoot';
-
-const DataListRootGrid = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (
     { children, gap = '4', gapX, gapY, columns, rows, direction = 'row', size = '2', trim },
     forwardedRef
@@ -58,7 +38,7 @@ const DataListRootGrid = React.forwardRef<HTMLDListElement, DataListRootProps>(
   )
 );
 
-DataListRootGrid.displayName = 'DataListRootGrid';
+DataListRoot.displayName = 'DataListRootGrid';
 
 interface DataListItemProps extends React.ComponentPropsWithRef<'div'> {
   align?: Responsive<'start' | 'center' | 'end' | 'baseline'>;
@@ -118,4 +98,4 @@ const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'
 
 DataListData.displayName = 'DataListData';
 
-export { DataListRoot, DataListRootGrid, DataListItem, DataListLabel, DataListData };
+export { DataListRoot, DataListItem, DataListLabel, DataListData };
