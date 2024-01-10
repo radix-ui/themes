@@ -107,31 +107,6 @@
   }
 }
 
-/* prettier-ignore */
-.DataListRoot::before,
-  .DataListRoot::after {
-    /* Remove top and bottom item padding */
-    --data-list-padding-trim: calc(var(--data-list-gap-y) / -2);
-    /* Include padding trim when leading trim is used */
-    --leading-trim-start: calc(var(--data-list-padding-trim) + var(--default-leading-trim-start));
-    --leading-trim-end: calc(var(--data-list-padding-trim) + var(--default-leading-trim-end));
-    /* display: table;
-    content: ''; */
-    display: none;
-  }
-:where(.DataListRoot)::before {
-  margin-bottom: var(--data-list-padding-trim);
-}
-:where(.DataListRoot)::after {
-  margin-top: var(--data-list-padding-trim);
-}
-
-/* Make sure that consecutive data lists are spaced, regardless of leading trim */
-.DataListRoot:has(+ .DataListRoot)::after,
-.DataListRoot + .DataListRoot::before {
-  display: none;
-}
-
 .DataListItem {
   position: relative;
   box-sizing: border-box;
