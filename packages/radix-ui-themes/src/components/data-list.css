@@ -1,105 +1,33 @@
 @breakpoints {
   .DataListRoot.gap-0 {
-    --data-list-gap-x: 0px;
-    --data-list-gap-y: 0px;
+    --data-list-gap: 0px;
   }
   .DataListRoot.gap-1 {
-    --data-list-gap-x: var(--space-1);
-    --data-list-gap-y: var(--space-1);
+    --data-list-gap: var(--space-1);
   }
   .DataListRoot.gap-2 {
-    --data-list-gap-x: var(--space-2);
-    --data-list-gap-y: var(--space-2);
+    --data-list-gap: var(--space-2);
   }
   .DataListRoot.gap-3 {
-    --data-list-gap-x: var(--space-3);
-    --data-list-gap-y: var(--space-3);
+    --data-list-gap: var(--space-3);
   }
   .DataListRoot.gap-4 {
-    --data-list-gap-x: var(--space-4);
-    --data-list-gap-y: var(--space-4);
+    --data-list-gap: var(--space-4);
   }
   .DataListRoot.gap-5 {
-    --data-list-gap-x: var(--space-5);
-    --data-list-gap-y: var(--space-5);
+    --data-list-gap: var(--space-5);
   }
   .DataListRoot.gap-6 {
-    --data-list-gap-x: var(--space-6);
-    --data-list-gap-y: var(--space-6);
+    --data-list-gap: var(--space-6);
   }
   .DataListRoot.gap-7 {
-    --data-list-gap-x: var(--space-7);
-    --data-list-gap-y: var(--space-7);
+    --data-list-gap: var(--space-7);
   }
   .DataListRoot.gap-8 {
-    --data-list-gap-x: var(--space-8);
-    --data-list-gap-y: var(--space-8);
+    --data-list-gap: var(--space-8);
   }
   .DataListRoot.gap-9 {
-    --data-list-gap-x: var(--space-9);
-    --data-list-gap-y: var(--space-9);
-  }
-
-  .DataListRoot.gap-x-0 {
-    --data-list-gap-x: 0px;
-  }
-  .DataListRoot.gap-x-1 {
-    --data-list-gap-x: var(--space-1);
-  }
-  .DataListRoot.gap-x-2 {
-    --data-list-gap-x: var(--space-2);
-  }
-  .DataListRoot.gap-x-3 {
-    --data-list-gap-x: var(--space-3);
-  }
-  .DataListRoot.gap-x-4 {
-    --data-list-gap-x: var(--space-4);
-  }
-  .DataListRoot.gap-x-5 {
-    --data-list-gap-x: var(--space-5);
-  }
-  .DataListRoot.gap-x-6 {
-    --data-list-gap-x: var(--space-6);
-  }
-  .DataListRoot.gap-x-7 {
-    --data-list-gap-x: var(--space-7);
-  }
-  .DataListRoot.gap-x-8 {
-    --data-list-gap-x: var(--space-8);
-  }
-  .DataListRoot.gap-x-9 {
-    --data-list-gap-x: var(--space-9);
-  }
-
-  .DataListRoot.gap-y-0 {
-    --data-list-gap-y: 0px;
-  }
-  .DataListRoot.gap-y-1 {
-    --data-list-gap-y: var(--space-1);
-  }
-  .DataListRoot.gap-y-2 {
-    --data-list-gap-y: var(--space-2);
-  }
-  .DataListRoot.gap-y-3 {
-    --data-list-gap-y: var(--space-3);
-  }
-  .DataListRoot.gap-y-4 {
-    --data-list-gap-y: var(--space-4);
-  }
-  .DataListRoot.gap-y-5 {
-    --data-list-gap-y: var(--space-5);
-  }
-  .DataListRoot.gap-y-6 {
-    --data-list-gap-y: var(--space-6);
-  }
-  .DataListRoot.gap-y-7 {
-    --data-list-gap-y: var(--space-7);
-  }
-  .DataListRoot.gap-y-8 {
-    --data-list-gap-y: var(--space-8);
-  }
-  .DataListRoot.gap-y-9 {
-    --data-list-gap-y: var(--space-9);
+    --data-list-gap: var(--space-9);
   }
 }
 
@@ -116,6 +44,7 @@
   }
   .direction-row .DataListItem {
     flex-direction: row;
+    gap: var(--data-list-gap);
     padding: 0;
   }
 }
@@ -135,7 +64,6 @@
   }
   .direction-row .DataListLabel {
     white-space: nowrap;
-    padding-right: var(--data-list-gap-x);
     width: var(--data-list-label-width);
   }
 }
@@ -150,16 +78,6 @@
   .direction-column .DataListData,
   .direction-column-reverse .DataListData {
     padding: 0;
-  }
-  .direction-row .DataListData,
-  .direction-row-reverse .DataListData {
-    /*
-       * At default size, `DataListLabel` content is 20px high. We want to allow the `DataListData`
-       * content to be a bit larger in height without increasing the height of each item, in case
-       * there is a badge or a small button inside.
-       */
-    /* padding-top: calc(var(--data-list-gap-y) * 0.375);
-    padding-bottom: calc(var(--data-list-gap-y) * 0.375); */
   }
 }
 

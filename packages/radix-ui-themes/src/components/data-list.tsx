@@ -2,25 +2,18 @@ import classNames from 'classnames';
 import * as React from 'react';
 import { Responsive, withBreakpoints } from '../helpers';
 import { Flex } from './flex';
-import { Grid } from './grid';
 import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
 
 /*
  * decide what to do with layout prop
- * - gap prop?
  * - label width
- * - trim?
- * - add margin??
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  (
-    { children, gap = '4', gapX, gapY, columns, rows, direction = 'row', size = '2', trim },
-    forwardedRef
-  ) => (
-    <Grid asChild gap={gap} gapX={gapX} gapY={gapY} columns={columns} rows={rows}>
-      <Text asChild size={size} trim={trim}>
+  ({ children, gap = '4', gapX, gapY, direction = 'row', size = '2' }, forwardedRef) => (
+    <Flex asChild gap={gap} direction="column">
+      <Text asChild size={size}>
         <dl
           ref={forwardedRef}
           className={classNames(
@@ -34,7 +27,7 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
           {children}
         </dl>
       </Text>
-    </Grid>
+    </Flex>
   )
 );
 

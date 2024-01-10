@@ -48,7 +48,7 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Varied data</Text>
-              <DataListRoot mt="2" direction="column">
+              <DataListRoot mt="2" direction="column" trim="both">
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Jane Roe</DataListData>
@@ -69,7 +69,7 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Varied data 2</Text>
-              <DataListRoot>
+              <DataListRoot direction="row" trim="both">
                 <DataListItem>
                   <DataListLabel>Status</DataListLabel>
                   <DataListData>
