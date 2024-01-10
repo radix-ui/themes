@@ -25,6 +25,9 @@ For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-
 
 ## Community
 
+See our [contribution guidelines](./.github/CONTRIBUTING.md) for information on local development and creating a pull request.
+
+- [Github Discussions](https://github.com/radix-ui/themes/discussions) - Ask questions and get answers from other community members.
 - [Discord](https://discord.com/invite/7Xb99uG) - To get involved with the Radix community, ask questions and share tips.
 - [Twitter](https://twitter.com/radix_ui) - To receive updates, announcements, blog posts, and general Radix tips.
 
