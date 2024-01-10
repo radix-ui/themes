@@ -3,17 +3,19 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { tabsListPropDefs } from './tabs.props';
+import { tabsListPropDefs, tabsRootPropDefs } from './tabs.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor, colorProp } from '../helpers';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
+type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;
 interface TabsRootProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
-    MarginProps {}
+  extends PropsWithoutRefOrColor<typeof TabsPrimitive.Root>,
+    MarginProps,
+    TabsRootOwnProps {}
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const { className, color, ...rootProps } = marginRest;
+  const { rest, ...marginProps } = extractMarginProps(props);
+  const { className, color, ...rootProps } = rest;
   return (
     <TabsPrimitive.Root
       data-accent-color={color}
