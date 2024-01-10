@@ -1,0 +1,216 @@
+:where(.DataListRoot) {
+  margin: 0;
+}
+
+@breakpoints {
+  .DataListRoot.gap-0 {
+    --data-list-gap-x: 0px;
+    --data-list-gap-y: 0px;
+  }
+  .DataListRoot.gap-1 {
+    --data-list-gap-x: var(--space-1);
+    --data-list-gap-y: var(--space-1);
+  }
+  .DataListRoot.gap-2 {
+    --data-list-gap-x: var(--space-2);
+    --data-list-gap-y: var(--space-2);
+  }
+  .DataListRoot.gap-3 {
+    --data-list-gap-x: var(--space-3);
+    --data-list-gap-y: var(--space-3);
+  }
+  .DataListRoot.gap-4 {
+    --data-list-gap-x: var(--space-4);
+    --data-list-gap-y: var(--space-4);
+  }
+  .DataListRoot.gap-5 {
+    --data-list-gap-x: var(--space-5);
+    --data-list-gap-y: var(--space-5);
+  }
+  .DataListRoot.gap-6 {
+    --data-list-gap-x: var(--space-6);
+    --data-list-gap-y: var(--space-6);
+  }
+  .DataListRoot.gap-7 {
+    --data-list-gap-x: var(--space-7);
+    --data-list-gap-y: var(--space-7);
+  }
+  .DataListRoot.gap-8 {
+    --data-list-gap-x: var(--space-8);
+    --data-list-gap-y: var(--space-8);
+  }
+  .DataListRoot.gap-9 {
+    --data-list-gap-x: var(--space-9);
+    --data-list-gap-y: var(--space-9);
+  }
+
+  .DataListRoot.gap-x-0 {
+    --data-list-gap-x: 0px;
+  }
+  .DataListRoot.gap-x-1 {
+    --data-list-gap-x: var(--space-1);
+  }
+  .DataListRoot.gap-x-2 {
+    --data-list-gap-x: var(--space-2);
+  }
+  .DataListRoot.gap-x-3 {
+    --data-list-gap-x: var(--space-3);
+  }
+  .DataListRoot.gap-x-4 {
+    --data-list-gap-x: var(--space-4);
+  }
+  .DataListRoot.gap-x-5 {
+    --data-list-gap-x: var(--space-5);
+  }
+  .DataListRoot.gap-x-6 {
+    --data-list-gap-x: var(--space-6);
+  }
+  .DataListRoot.gap-x-7 {
+    --data-list-gap-x: var(--space-7);
+  }
+  .DataListRoot.gap-x-8 {
+    --data-list-gap-x: var(--space-8);
+  }
+  .DataListRoot.gap-x-9 {
+    --data-list-gap-x: var(--space-9);
+  }
+
+  .DataListRoot.gap-y-0 {
+    --data-list-gap-y: 0px;
+  }
+  .DataListRoot.gap-y-1 {
+    --data-list-gap-y: var(--space-1);
+  }
+  .DataListRoot.gap-y-2 {
+    --data-list-gap-y: var(--space-2);
+  }
+  .DataListRoot.gap-y-3 {
+    --data-list-gap-y: var(--space-3);
+  }
+  .DataListRoot.gap-y-4 {
+    --data-list-gap-y: var(--space-4);
+  }
+  .DataListRoot.gap-y-5 {
+    --data-list-gap-y: var(--space-5);
+  }
+  .DataListRoot.gap-y-6 {
+    --data-list-gap-y: var(--space-6);
+  }
+  .DataListRoot.gap-y-7 {
+    --data-list-gap-y: var(--space-7);
+  }
+  .DataListRoot.gap-y-8 {
+    --data-list-gap-y: var(--space-8);
+  }
+  .DataListRoot.gap-y-9 {
+    --data-list-gap-y: var(--space-9);
+  }
+}
+
+/* prettier-ignore */
+.DataListRoot::before,
+  .DataListRoot::after {
+    /* Remove top and bottom item padding */
+    --data-list-padding-trim: calc(var(--data-list-gap-y) / -2);
+    /* Include padding trim when leading trim is used */
+    --leading-trim-start: calc(var(--data-list-padding-trim) + var(--default-leading-trim-start));
+    --leading-trim-end: calc(var(--data-list-padding-trim) + var(--default-leading-trim-end));
+    display: table;
+    content: '';
+  }
+:where(.DataListRoot)::before {
+  margin-bottom: var(--data-list-padding-trim);
+}
+:where(.DataListRoot)::after {
+  margin-top: var(--data-list-padding-trim);
+}
+
+/* Make sure that consecutive data lists are spaced, regardless of leading trim */
+.DataListRoot:has(+ .DataListRoot)::after,
+.DataListRoot + .DataListRoot::before {
+  display: none;
+}
+
+.DataListItem {
+  position: relative;
+  box-sizing: border-box;
+}
+
+@breakpoints {
+  .layout-vertical .DataListItem {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-top: calc(var(--data-list-gap-y) / 2);
+    padding-bottom: calc(var(--data-list-gap-y) / 2);
+  }
+  .layout-horizontal .DataListItem {
+    display: table-row;
+    padding: 0;
+  }
+}
+
+.DataListLabel {
+  --data-list-label-width: 200px;
+  color: var(--gray-a11);
+  box-sizing: border-box;
+  vertical-align: inherit;
+}
+
+@breakpoints {
+  .layout-vertical .DataListLabel {
+    display: block;
+    white-space: normal;
+    padding: 0;
+    width: auto;
+  }
+  .layout-horizontal .DataListLabel {
+    display: table-cell;
+    white-space: nowrap;
+    padding-top: calc(var(--data-list-gap-y) / 2);
+    padding-bottom: calc(var(--data-list-gap-y) / 2);
+    padding-right: var(--data-list-gap-x);
+    width: var(--data-list-label-width);
+  }
+}
+
+.DataListData {
+  vertical-align: inherit;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@breakpoints {
+  .layout-vertical .DataListData {
+    display: block;
+    padding: 0;
+  }
+  .layout-horizontal .DataListData {
+    display: table-cell;
+
+    /*
+       * At default size, `DataListLabel` content is 20px high. We want to allow the `DataListData`
+       * content to be a bit larger in height without increasing the height of each item, in case
+       * there is a badge or a small button inside.
+       */
+    padding-top: calc(var(--data-list-gap-y) * 0.375);
+    padding-bottom: calc(var(--data-list-gap-y) * 0.375);
+  }
+}
+
+.DataListDataInner {
+  display: flex;
+}
+
+/*
+   * Improve alignment when nesting flex elements with Text. Prepending contents with a text character
+   * enforces default baseline alignment when child elements contain text within. The character used is
+   * a zero-width joiner, which is invisible, and pseudo-elements aren't copyable.
+   */
+.DataListDataInner::before {
+  content: '\200D';
+}
+
+.DataListDataInnerContents {
+  display: block;
+}
