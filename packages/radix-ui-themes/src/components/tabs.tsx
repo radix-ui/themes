@@ -30,7 +30,7 @@ TabsRoot.displayName = 'TabsRoot';
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
-  extends PropsWithoutRefOrColor<typeof TabsPrimitive.List>,
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
   const { className, size = tabsListPropDefs.size.default, ...listProps } = props;
