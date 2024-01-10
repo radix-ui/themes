@@ -4,6 +4,7 @@ import { Responsive, withBreakpoints } from '../helpers';
 import { Flex } from './flex';
 import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
+import { Grid } from './grid';
 
 /*
  * decide what to do with layout prop
@@ -11,7 +12,7 @@ import { DataListRootProps } from './data-list.props';
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  ({ children, gap = '4', gapX, gapY, direction = 'row', size = '2' }, forwardedRef) => (
+  ({ children, gap = '4', direction = 'row', size = '2' }, forwardedRef) => (
     <Flex asChild gap={gap} direction="column">
       <Text asChild size={size}>
         <dl
@@ -19,8 +20,6 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
           className={classNames(
             'DataListRoot',
             withBreakpoints(gap, 'gap'),
-            withBreakpoints(gapX, 'gap-x'),
-            withBreakpoints(gapY, 'gap-y'),
             withBreakpoints(direction, 'direction')
           )}
         >
