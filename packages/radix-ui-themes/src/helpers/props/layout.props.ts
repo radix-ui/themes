@@ -1,78 +1,31 @@
 import classNames from 'classnames';
 import { withBreakpoints, getResponsiveStyles } from '../breakpoints';
 import { mergeStyles } from '../merge-styles';
-
+import { extractPaddingProps, getPaddingStyles, paddingPropDefs } from './padding.props';
 import type { PropDef, GetPropDefTypes } from './prop-def';
-
-const paddingValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-
-const paddingPropDefs = {
-  p: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-  px: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-  py: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-  pt: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-  pr: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-  pb: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-  pl: { type: 'enum', values: paddingValues, default: undefined, responsive: true },
-} satisfies {
-  p: PropDef<(typeof paddingValues)[number]>;
-  px: PropDef<(typeof paddingValues)[number]>;
-  py: PropDef<(typeof paddingValues)[number]>;
-  pt: PropDef<(typeof paddingValues)[number]>;
-  pr: PropDef<(typeof paddingValues)[number]>;
-  pb: PropDef<(typeof paddingValues)[number]>;
-  pl: PropDef<(typeof paddingValues)[number]>;
-};
-
-type PaddingProps = GetPropDefTypes<typeof paddingPropDefs>;
-
-function extractPaddingProps<T extends PaddingProps>(props: T) {
-  const {
-    p = layoutPropDefs.p.default,
-    px = layoutPropDefs.px.default,
-    py = layoutPropDefs.py.default,
-    pt = layoutPropDefs.pt.default,
-    pr = layoutPropDefs.pr.default,
-    pb = layoutPropDefs.pb.default,
-    pl = layoutPropDefs.pl.default,
-    ...rest
-  } = props;
-  return { p, px, py, pt, pr, pb, pl, rest };
-}
-
-function withPaddingProps(props: PaddingProps) {
-  return [
-    withBreakpoints(props.p, 'rt-r-p'),
-    withBreakpoints(props.px, 'rt-r-px'),
-    withBreakpoints(props.py, 'rt-r-py'),
-    withBreakpoints(props.pt, 'rt-r-pt'),
-    withBreakpoints(props.pr, 'rt-r-pr'),
-    withBreakpoints(props.pb, 'rt-r-pb'),
-    withBreakpoints(props.pl, 'rt-r-pl'),
-  ]
-    .filter(Boolean)
-    .join(' ');
-}
+import { extractHeightProps, getHeightStyles, heightPropDefs } from './height.props';
+import { extractWidthProps, getWidthStyles, widthPropDefs } from './width.props';
 
 const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as const;
-const positionEdgeValues = ['auto', '0', '50%', '100%'] as const;
 // prettier-ignore
-const widthHeightValues = ['auto', 'min-content', 'max-content', '100%', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+const positionEdgeValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9'] as const;
 const flexShrinkValues = ['0', '1'] as const;
 const flexGrowValues = ['0', '1'] as const;
 
+// prettier-ignore
 const layoutPropDefs = {
   ...paddingPropDefs,
+  ...widthPropDefs,
+  ...heightPropDefs,
   position: { type: 'enum', values: positionValues, default: undefined, responsive: true },
-  inset: { type: 'enum', values: positionEdgeValues, default: undefined, responsive: true },
-  top: { type: 'enum', values: positionEdgeValues, default: undefined, responsive: true },
-  right: { type: 'enum', values: positionEdgeValues, default: undefined, responsive: true },
-  bottom: { type: 'enum', values: positionEdgeValues, default: undefined, responsive: true },
-  left: { type: 'enum', values: positionEdgeValues, default: undefined, responsive: true },
-  width: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
-  height: { type: 'enum', values: widthHeightValues, default: undefined, responsive: true },
-  flexShrink: { type: 'enum', values: flexShrinkValues, default: undefined, responsive: true },
-  flexGrow: { type: 'enum', values: flexGrowValues, default: undefined, responsive: true },
+  inset: { type: 'enum | string', values: positionEdgeValues, default: undefined, responsive: true },
+  top: { type: 'enum | string', values: positionEdgeValues, default: undefined, responsive: true },
+  right: { type: 'enum | string', values: positionEdgeValues, default: undefined, responsive: true },
+  bottom: { type: 'enum | string', values: positionEdgeValues, default: undefined, responsive: true },
+  left: { type: 'enum | string', values: positionEdgeValues, default: undefined, responsive: true },
+  flexBasis: { type: 'string', default: undefined, responsive: true},
+  flexShrink: { type: 'enum | string', values: flexShrinkValues, default: undefined, responsive: true },
+  flexGrow: { type: 'enum | string', values: flexGrowValues, default: undefined, responsive: true },
   gridColumn: { type: 'string', default: undefined, responsive: true },
   gridColumnStart: { type: 'string', default: undefined, responsive: true },
   gridColumnEnd: { type: 'string', default: undefined, responsive: true },
@@ -80,21 +33,13 @@ const layoutPropDefs = {
   gridRowStart: { type: 'string', default: undefined, responsive: true },
   gridRowEnd: { type: 'string', default: undefined, responsive: true },
 } satisfies {
-  p: PropDef<(typeof paddingValues)[number]>;
-  px: PropDef<(typeof paddingValues)[number]>;
-  py: PropDef<(typeof paddingValues)[number]>;
-  pt: PropDef<(typeof paddingValues)[number]>;
-  pr: PropDef<(typeof paddingValues)[number]>;
-  pb: PropDef<(typeof paddingValues)[number]>;
-  pl: PropDef<(typeof paddingValues)[number]>;
   position: PropDef<(typeof positionValues)[number]>;
   inset: PropDef<(typeof positionEdgeValues)[number]>;
   top: PropDef<(typeof positionEdgeValues)[number]>;
   right: PropDef<(typeof positionEdgeValues)[number]>;
   bottom: PropDef<(typeof positionEdgeValues)[number]>;
   left: PropDef<(typeof positionEdgeValues)[number]>;
-  width: PropDef<(typeof widthHeightValues)[number]>;
-  height: PropDef<(typeof widthHeightValues)[number]>;
+  flexBasis: PropDef<string>;
   flexShrink: PropDef<(typeof flexShrinkValues)[number]>;
   flexGrow: PropDef<(typeof flexGrowValues)[number]>;
   gridColumn: PropDef<string>;
@@ -113,11 +58,11 @@ type LayoutProps = GetPropDefTypes<typeof layoutPropDefs> & {
 };
 
 function extractLayoutProps<T extends LayoutProps>(props: T) {
-  const { rest: paddingRest, ...paddingProps } = extractPaddingProps(props);
+  const { rest: widthRest, ...widthProps } = extractWidthProps(props);
+  const { rest: heightRest, ...heightProps } = extractHeightProps(widthRest);
+  const { rest: paddingRest, ...paddingProps } = extractPaddingProps(heightRest);
   const {
     position = layoutPropDefs.position.default,
-    width = layoutPropDefs.width.default,
-    height = layoutPropDefs.height.default,
     inset = layoutPropDefs.inset.default,
     top = layoutPropDefs.top.default,
     bottom = layoutPropDefs.bottom.default,
@@ -125,6 +70,7 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     right = layoutPropDefs.right.default,
     shrink = layoutPropDefs.flexShrink.default,
     grow = layoutPropDefs.flexGrow.default,
+    flexBasis = layoutPropDefs.flexBasis.default,
     flexShrink = layoutPropDefs.flexShrink.default,
     flexGrow = layoutPropDefs.flexGrow.default,
     gridColumn = layoutPropDefs.gridColumn.default,
@@ -136,10 +82,10 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     ...rest
   } = paddingRest;
   return {
+    ...widthProps,
+    ...heightProps,
     ...paddingProps,
     position,
-    width,
-    height,
     inset,
     top,
     bottom,
@@ -147,6 +93,7 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
     right,
     shrink,
     grow,
+    flexBasis,
     flexShrink,
     flexGrow,
     gridColumn,
@@ -160,19 +107,66 @@ function extractLayoutProps<T extends LayoutProps>(props: T) {
 }
 
 function getLayoutStyles(props: LayoutProps) {
-  const baseLayoutClassNames = classNames(
-    withPaddingProps(props),
-    withBreakpoints(props.position, 'rt-r-position'),
-    withBreakpoints(props.flexShrink ?? props.shrink, 'rt-r-fs'),
-    withBreakpoints(props.flexGrow ?? props.grow, 'rt-r-fg'),
-    withBreakpoints(props.width, 'rt-r-w'),
-    withBreakpoints(props.height, 'rt-r-h'),
-    withBreakpoints(props.inset, 'rt-r-inset'),
-    withBreakpoints(props.top, 'rt-r-top'),
-    withBreakpoints(props.bottom, 'rt-r-bottom'),
-    withBreakpoints(props.left, 'rt-r-left'),
-    withBreakpoints(props.right, 'rt-r-right')
-  );
+  const [widthClassNames, widthCustomProperties] = getWidthStyles(props);
+  const [heightClassNames, heightCustomProperties] = getHeightStyles(props);
+  const [paddingClassNames, paddingCustomProperties] = getPaddingStyles(props);
+
+  const positionClassNames = withBreakpoints(props.position, 'rt-r-position');
+
+  const [insetClassNames, insetCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-inset',
+    customProperty: '--inset',
+    propValues: layoutPropDefs.inset.values,
+    value: props.inset,
+  });
+
+  const [insetTopClassNames, insetTopCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-top',
+    customProperty: '--top',
+    propValues: layoutPropDefs.top.values,
+    value: props.top,
+  });
+
+  const [insetRightClassNames, insetRightCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-right',
+    customProperty: '--right',
+    propValues: layoutPropDefs.right.values,
+    value: props.right,
+  });
+
+  const [insetBottomClassNames, insetBottomCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-bottom',
+    customProperty: '--bottom',
+    propValues: layoutPropDefs.bottom.values,
+    value: props.bottom,
+  });
+
+  const [insetLeftClassNames, insetLeftCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-left',
+    customProperty: '--left',
+    propValues: layoutPropDefs.left.values,
+    value: props.left,
+  });
+
+  const [flexBasisClassNames, flexBasisCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-fb',
+    customProperty: '--flex-basis',
+    value: props.flexBasis,
+  });
+
+  const [flexShrinkClassNames, flexShrinkCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-fs',
+    customProperty: '--flex-shrink',
+    propValues: layoutPropDefs.flexShrink.values,
+    value: props.flexShrink ?? props.shrink,
+  });
+
+  const [flexGrowClassNames, flexGrowCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-fg',
+    customProperty: '--flex-grow',
+    propValues: layoutPropDefs.flexGrow.values,
+    value: props.flexGrow ?? props.grow,
+  });
 
   const [gridColumnClassNames, gridColumnCustomProperties] = getResponsiveStyles({
     className: 'rt-r-gc',
@@ -212,7 +206,18 @@ function getLayoutStyles(props: LayoutProps) {
 
   return [
     classNames(
-      baseLayoutClassNames,
+      widthClassNames,
+      heightClassNames,
+      paddingClassNames,
+      positionClassNames,
+      insetClassNames,
+      insetTopClassNames,
+      insetRightClassNames,
+      insetBottomClassNames,
+      insetLeftClassNames,
+      flexBasisClassNames,
+      flexShrinkClassNames,
+      flexGrowClassNames,
       gridColumnClassNames,
       gridColumnStartClassNames,
       gridColumnEndClassNames,
@@ -221,6 +226,17 @@ function getLayoutStyles(props: LayoutProps) {
       gridRowEndClassNames
     ),
     mergeStyles(
+      widthCustomProperties,
+      heightCustomProperties,
+      paddingCustomProperties,
+      insetCustomProperties,
+      insetTopCustomProperties,
+      insetRightCustomProperties,
+      insetBottomCustomProperties,
+      insetLeftCustomProperties,
+      flexBasisCustomProperties,
+      flexShrinkCustomProperties,
+      flexGrowCustomProperties,
       gridColumnCustomProperties,
       gridColumnStartCustomProperties,
       gridColumnEndCustomProperties,
@@ -231,13 +247,5 @@ function getLayoutStyles(props: LayoutProps) {
   ] as const;
 }
 
-export {
-  paddingPropDefs,
-  extractPaddingProps,
-  withPaddingProps,
-  layoutPropDefs,
-  extractLayoutProps,
-  getLayoutStyles,
-};
-
-export type { PaddingProps, LayoutProps };
+export { layoutPropDefs, extractLayoutProps, getLayoutStyles };
+export type { LayoutProps };

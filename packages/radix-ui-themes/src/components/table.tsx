@@ -3,13 +3,17 @@ import classNames from 'classnames';
 import { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props';
 import {
   extractMarginProps,
-  withMarginProps,
   extractPaddingProps,
-  withPaddingProps,
+  extractWidthProps,
+  getPaddingStyles,
+  getResponsiveClassNames,
+  getWidthStyles,
+  mergeStyles,
   withBreakpoints,
+  withMarginProps,
 } from '../helpers';
 import { ScrollArea } from './scroll-area';
-import type { MarginProps, PaddingProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type TableRootElement = React.ElementRef<'div'>;
 type TableRootOwnProps = GetPropDefTypes<typeof tableRootPropDefs>;
@@ -22,10 +26,18 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
   const {
     className,
     children,
+    layout = tableRootPropDefs.layout.default,
     size = tableRootPropDefs.size.default,
     variant = tableRootPropDefs.variant.default,
     ...rootProps
   } = marginRest;
+
+  const tableLayoutClassNames = getResponsiveClassNames({
+    className: 'rt-r-tl',
+    value: layout,
+    propValues: tableRootPropDefs.layout.values,
+  });
+
   return (
     <div
       ref={forwardedRef}
@@ -39,7 +51,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
       {...rootProps}
     >
       <ScrollArea>
-        <table className="rt-TableRootTable">{children}</table>
+        <table className={classNames('rt-TableRootTable', tableLayoutClassNames)}>{children}</table>
       </ScrollArea>
     </div>
   );
@@ -96,21 +108,24 @@ type TableCellImplElement = React.ElementRef<'td'>;
 type TableCellImplOwnProps = GetPropDefTypes<typeof tableCellPropDefs>;
 interface TableCellImplProps
   extends Omit<React.ComponentPropsWithoutRef<'td'>, keyof TableCellImplOwnProps>,
-    PaddingProps,
     TableCellImplOwnProps {
   tag?: 'td' | 'th';
 }
 const TableCellImpl = React.forwardRef<TableCellImplElement, TableCellImplProps>(
   (props, forwardedRef) => {
     const { rest: paddingRest, ...paddingProps } = extractPaddingProps(props);
+    const { rest: widthRest, ...widthProps } = extractWidthProps(props);
     const {
       tag: Tag = 'td',
       className,
       style,
       justify = tableCellPropDefs.justify.default,
-      width = tableCellPropDefs.width.default,
       ...cellProps
-    } = paddingRest;
+    } = widthRest;
+
+    const [paddingClassNames, paddingCustomProperties] = getPaddingStyles(paddingProps);
+    const [widthClassNames, widthCustomProperties] = getWidthStyles(widthProps);
+
     return (
       <Tag
         {...cellProps}
@@ -118,10 +133,11 @@ const TableCellImpl = React.forwardRef<TableCellImplElement, TableCellImplProps>
         className={classNames(
           'rt-TableCell',
           className,
-          withPaddingProps(paddingProps),
+          widthClassNames,
+          paddingClassNames,
           withBreakpoints(justify, 'rt-r-ta', { start: 'left', center: 'center', end: 'right' })
         )}
-        style={{ width, ...style }}
+        style={mergeStyles(widthCustomProperties, paddingCustomProperties, style)}
       />
     );
   }
@@ -139,7 +155,6 @@ TableCell.displayName = 'TableCell';
 type TableColumnHeaderCellElement = React.ElementRef<'th'>;
 interface TableColumnHeaderCellProps
   extends Omit<React.ComponentPropsWithoutRef<'th'>, keyof TableCellImplOwnProps>,
-    PaddingProps,
     TableCellImplOwnProps {}
 const TableColumnHeaderCell = React.forwardRef<
   TableColumnHeaderCellElement,
@@ -158,7 +173,6 @@ TableColumnHeaderCell.displayName = 'TableColumnHeaderCell';
 type TableRowHeaderCellElement = React.ElementRef<'th'>;
 interface TableRowHeaderCellProps
   extends Omit<React.ComponentPropsWithoutRef<'th'>, keyof TableCellImplOwnProps>,
-    PaddingProps,
     TableCellImplOwnProps {}
 const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowHeaderCellProps>(
   (props, forwardedRef) => (

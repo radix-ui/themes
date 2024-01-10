@@ -1,6 +1,6 @@
-import { colorProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
+import { colorProp, paddingPropDefs, radiusProp } from '../helpers';
 import { flexPropDefs } from './flex.props';
-import { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;
@@ -20,9 +20,15 @@ const textFieldPropDefs = {
 const textFieldSlotPropDefs = {
   color: colorProp,
   gap: flexPropDefs.gap,
+  px: paddingPropDefs.px,
+  pl: paddingPropDefs.pl,
+  pr: paddingPropDefs.pr,
 } satisfies {
   color: typeof colorProp;
   gap: typeof flexPropDefs.gap;
+  px: typeof paddingPropDefs.px;
+  pl: typeof paddingPropDefs.pl;
+  pr: typeof paddingPropDefs.pr;
 };
 
 export { textFieldPropDefs, textFieldSlotPropDefs };

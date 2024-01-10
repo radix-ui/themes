@@ -6,18 +6,14 @@ import { composeEventHandlers } from '@radix-ui/primitive';
 import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props';
 import {
   extractMarginProps,
-  withMarginProps,
   extractPaddingProps,
-  withPaddingProps,
+  getResponsiveStyles,
+  mergeStyles,
   withBreakpoints,
+  withMarginProps,
 } from '../helpers';
 
-import type {
-  PropsWithoutRefOrColor,
-  MarginProps,
-  PaddingProps,
-  GetPropDefTypes,
-} from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
 type TextFieldContextValue = GetPropDefTypes<typeof textFieldPropDefs>;
 const TextFieldContext = React.createContext<TextFieldContextValue | undefined>(undefined);
@@ -75,10 +71,7 @@ TextFieldRoot.displayName = 'TextFieldRoot';
 
 type TextFieldSlotElement = React.ElementRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
-interface TextFieldSlotProps
-  extends PropsWithoutRefOrColor<'div'>,
-    PaddingProps,
-    TextFieldSlotOwnProps {}
+interface TextFieldSlotProps extends PropsWithoutRefOrColor<'div'>, TextFieldSlotOwnProps {}
 const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
   (props, forwardedRef) => {
     const { rest: paddingRest, ...paddingProps } = extractPaddingProps(props);
@@ -86,8 +79,31 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
       className,
       color = textFieldSlotPropDefs.color.default,
       gap = textFieldSlotPropDefs.gap.default,
+      style,
       ...slotProps
     } = paddingRest;
+
+    const [pxClassNames, pxCustomProperties] = getResponsiveStyles({
+      className: 'rt-r-px',
+      customProperty: ['--padding-left', '--padding-right'],
+      propValues: textFieldSlotPropDefs.px.values,
+      value: paddingProps.px,
+    });
+
+    const [plClassNames, plCustomProperties] = getResponsiveStyles({
+      className: 'rt-r-pl',
+      customProperty: '--padding-left',
+      propValues: textFieldSlotPropDefs.pl.values,
+      value: paddingProps.pl,
+    });
+
+    const [prClassNames, prCustomProperties] = getResponsiveStyles({
+      className: 'rt-r-pr',
+      customProperty: '--padding-right',
+      propValues: textFieldSlotPropDefs.pr.values,
+      value: paddingProps.pr,
+    });
+
     const context = React.useContext(TextFieldContext);
     return (
       <div
@@ -97,10 +113,13 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
         className={classNames(
           'rt-TextFieldSlot',
           className,
+          pxClassNames,
+          plClassNames,
+          prClassNames,
           withBreakpoints(context?.size, 'rt-r-size'),
-          withBreakpoints(gap, 'rt-r-gap'),
-          withPaddingProps(paddingProps)
+          withBreakpoints(gap, 'rt-r-gap')
         )}
+        style={mergeStyles(pxCustomProperties, plCustomProperties, prCustomProperties, style)}
       />
     );
   }

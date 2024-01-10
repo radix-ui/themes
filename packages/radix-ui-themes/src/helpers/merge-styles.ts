@@ -6,7 +6,7 @@ export function mergeStyles(...styles: Array<InlineStyle>): InlineStyle {
 
   for (const style of styles) {
     if (style) {
-      result = { ...style, ...result };
+      result = { ...result, ...style };
     }
   }
 

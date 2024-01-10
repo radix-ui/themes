@@ -154,7 +154,7 @@ function getBaseClassName(
 
 interface GetResponsiveCustomPropertiesOptions {
   value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
-  customProperty: `--${string}`;
+  customProperty: `--${string}` | `--${string}`[];
   propValues?: string[] | readonly string[];
   parseValue?: (value: string | undefined) => string | undefined;
 }
@@ -172,9 +172,8 @@ function getResponsiveCustomProperties({
   }
 
   if (typeof value === 'string') {
-    styles = {
-      [customProperty]: value,
-    };
+    const customProperties = [customProperty].flat();
+    styles = Object.fromEntries(customProperties.map((prop) => [prop, value]));
   }
 
   if (isBreakpointsObject(value)) {
@@ -183,16 +182,20 @@ function getResponsiveCustomProperties({
     for (const breakpoint in object) {
       if (hasOwnProperty(object, breakpoint)) {
         const value = object[breakpoint];
-        const bp = breakpoint === 'initial' ? customProperty : `${customProperty}-${breakpoint}`;
+        const customProperties = [customProperty].flat();
 
         if (propValues.includes(value)) {
           continue;
         }
 
-        styles = {
-          [bp]: value,
-          ...styles,
-        };
+        for (const customProperty of customProperties) {
+          const bp = breakpoint === 'initial' ? customProperty : `${customProperty}-${breakpoint}`;
+
+          styles = {
+            [bp]: value,
+            ...styles,
+          };
+        }
       }
     }
   }

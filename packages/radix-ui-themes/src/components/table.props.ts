@@ -1,12 +1,16 @@
 import type { PropDef } from '../helpers';
+import { paddingPropDefs, widthPropDefs } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'ghost'] as const;
+const layoutValues = ['auto', 'fixed'] as const;
 
 const tableRootPropDefs = {
+  layout: { type: 'enum', values: layoutValues, default: undefined, responsive: true },
   size: { type: 'enum', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', values: variants, default: 'ghost' },
 } satisfies {
+  layout: PropDef<(typeof layoutValues)[number]>;
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
 };
@@ -19,14 +23,14 @@ const tableRowPropDefs = {
   align: PropDef<(typeof rowAlign)[number]>;
 };
 
-const cellJustify = ['start', 'center', 'end'] as const;
+const justifyValues = ['start', 'center', 'end'] as const;
 
 const tableCellPropDefs = {
-  justify: { type: 'enum', values: cellJustify, default: undefined, responsive: true },
-  width: { type: 'string | number', default: undefined },
+  justify: { type: 'enum', values: justifyValues, default: undefined, responsive: true },
+  ...widthPropDefs,
+  ...paddingPropDefs,
 } satisfies {
-  justify: PropDef<(typeof cellJustify)[number]>;
-  width: PropDef<string | number>;
+  justify: PropDef<(typeof justifyValues)[number]>;
 };
 
 export { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs };
