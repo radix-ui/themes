@@ -11,6 +11,7 @@ import {
   Container,
   Text,
 } from '@radix-ui/themes';
+import { StarIcon, MagicWandIcon, StarFilledIcon } from '@radix-ui/react-icons';
 
 export default function DataListPage() {
   return (
@@ -48,17 +49,15 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Varied data</Text>
-              <DataListRoot mt="2" direction="column" trim="both">
+              <DataListRoot mt="2" direction="column">
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Jane Roe</DataListData>
                 </DataListItem>
-
                 <DataListItem>
                   <DataListLabel>Email</DataListLabel>
                   <DataListData>janeroe@foo-corp.com</DataListData>
                 </DataListItem>
-
                 <DataListItem>
                   <DataListLabel>Organization</DataListLabel>
                   <DataListData>
@@ -69,7 +68,7 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Varied data 2</Text>
-              <DataListRoot direction="row" trim="both">
+              <DataListRoot direction="row">
                 <DataListItem>
                   <DataListLabel>Status</DataListLabel>
                   <DataListData>
@@ -92,8 +91,9 @@ export default function DataListPage() {
                   <DataListLabel>Authentication</DataListLabel>
                   <DataListData>
                     <Flex gap="2" mx="-1">
-                      {/* <ProviderIcon provider="google" size="2" />
-                    <ProviderIcon provider="microsoft" size="2" /> */}
+                      <StarIcon />
+                      <MagicWandIcon />
+                      <StarFilledIcon />
                     </Flex>
                   </DataListData>
                 </DataListItem>
