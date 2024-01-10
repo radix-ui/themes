@@ -4049,6 +4049,45 @@ export default function Sink() {
                         ))}
                       </tbody>
                     </table>
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See color combinations
+                        </Text>
+                      </summary>
+                      <Grid gap="5" columns="2" align="center">
+                        {tabsListPropDefs.color.values.map((color) => (
+                          <React.Fragment key={color}>
+                            <Text>{color}</Text>
+                            <Flex>
+                              <TabsRoot
+                                defaultValue="account"
+                                activationMode="manual"
+                                color={color}
+                              >
+                                <TabsList size="1">
+                                  <TabsTrigger value="account">Account</TabsTrigger>
+                                  <TabsTrigger value="documents">Documents</TabsTrigger>
+                                  <TabsTrigger value="settings">Settings</TabsTrigger>
+                                </TabsList>
+                                <TabsContent value="account">
+                                  <Box py="5">Account</Box>
+                                </TabsContent>
+                                <TabsContent value="documents">
+                                  <Box py="5">Documents</Box>
+                                </TabsContent>
+                                <TabsContent value="settings">
+                                  <Box py="5">Settings</Box>
+                                </TabsContent>
+                              </TabsRoot>
+                            </Flex>
+                          </React.Fragment>
+                        ))}
+                      </Grid>
+                    </details>
                   </DocsSection>
 
                   <DocsSection title="AspectRatio">
