@@ -4,11 +4,13 @@ import { Responsive, withBreakpoints } from '../helpers';
 import { Flex } from './flex';
 import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
-import { Grid } from './grid';
 
 /*
  * decide what to do with layout prop
  * - label width
+ * - setup margin props
+ * - handle 'initial etc'
+ * - align isn't doing anything?
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
