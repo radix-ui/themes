@@ -1,21 +1,21 @@
-import { Text } from './text';
 import classNames from 'classnames';
 import * as React from 'react';
 import { Responsive, withBreakpoints } from '../helpers';
+import { Flex } from './flex';
+import { Grid } from './grid';
+import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
 
 /*
  * decide what to do with layout prop
  * - gap prop?
  * - label width
+ * - trim?
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  (
-    { children, gap = '4', gapX, gapY, layout = 'horizontal', size = '2', ...props },
-    forwardedRef
-  ) => (
-    <Text asChild size={size} {...props}>
+  ({ children, gap = '4', gapX, gapY, layout = 'horizontal', size = '2', trim }, forwardedRef) => (
+    <Text asChild size={size} trim={trim}>
       <dl
         ref={forwardedRef}
         className={classNames(
@@ -33,6 +33,32 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
 );
 
 DataListRoot.displayName = 'DataListRoot';
+
+const DataListRootGrid = React.forwardRef<HTMLDListElement, DataListRootProps>(
+  (
+    { children, gap = '4', gapX, gapY, columns, rows, direction = 'row', size = '2', trim },
+    forwardedRef
+  ) => (
+    <Grid asChild gap={gap} gapX={gapX} gapY={gapY} columns={columns} rows={rows}>
+      <Text asChild size={size} trim={trim}>
+        <dl
+          ref={forwardedRef}
+          className={classNames(
+            'DataListRoot',
+            withBreakpoints(gap, 'gap'),
+            withBreakpoints(gapX, 'gap-x'),
+            withBreakpoints(gapY, 'gap-y'),
+            withBreakpoints(direction, 'direction')
+          )}
+        >
+          {children}
+        </dl>
+      </Text>
+    </Grid>
+  )
+);
+
+DataListRootGrid.displayName = 'DataListRootGrid';
 
 interface DataListItemProps extends React.ComponentPropsWithRef<'div'> {
   align?: Responsive<'start' | 'center' | 'end' | 'baseline'>;
@@ -92,4 +118,4 @@ const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'
 
 DataListData.displayName = 'DataListData';
 
-export { DataListRoot, DataListItem, DataListLabel, DataListData };
+export { DataListRoot, DataListRootGrid, DataListItem, DataListLabel, DataListData };

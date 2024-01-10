@@ -115,8 +115,9 @@
     /* Include padding trim when leading trim is used */
     --leading-trim-start: calc(var(--data-list-padding-trim) + var(--default-leading-trim-start));
     --leading-trim-end: calc(var(--data-list-padding-trim) + var(--default-leading-trim-end));
-    display: table;
-    content: '';
+    /* display: table;
+    content: ''; */
+    display: none;
   }
 :where(.DataListRoot)::before {
   margin-bottom: var(--data-list-padding-trim);
@@ -134,18 +135,18 @@
 .DataListItem {
   position: relative;
   box-sizing: border-box;
+  display: flex;
 }
 
 @breakpoints {
-  .layout-vertical .DataListItem {
-    display: flex;
+  .direction-column .DataListItem {
     flex-direction: column;
     gap: var(--space-1);
-    padding-top: calc(var(--data-list-gap-y) / 2);
-    padding-bottom: calc(var(--data-list-gap-y) / 2);
+    /* padding-top: calc(var(--data-list-gap-y) / 2);
+    padding-bottom: calc(var(--data-list-gap-y) / 2); */
   }
-  .layout-horizontal .DataListItem {
-    display: table-row;
+  .direction-row .DataListItem {
+    flex-direction: row;
     padding: 0;
   }
 }
@@ -154,47 +155,44 @@
   --data-list-label-width: 200px;
   color: var(--gray-a11);
   box-sizing: border-box;
-  vertical-align: inherit;
+  display: block;
 }
 
 @breakpoints {
-  .layout-vertical .DataListLabel {
-    display: block;
+  .direction-column .DataListLabel {
     white-space: normal;
     padding: 0;
     width: auto;
   }
-  .layout-horizontal .DataListLabel {
-    display: table-cell;
+  .direction-row .DataListLabel {
     white-space: nowrap;
-    padding-top: calc(var(--data-list-gap-y) / 2);
-    padding-bottom: calc(var(--data-list-gap-y) / 2);
+    /* padding-top: calc(var(--data-list-gap-y) / 2);
+    padding-bottom: calc(var(--data-list-gap-y) / 2); */
     padding-right: var(--data-list-gap-x);
     width: var(--data-list-label-width);
   }
 }
 
 .DataListData {
-  vertical-align: inherit;
   box-sizing: border-box;
   margin: 0;
+  display: block;
 }
 
 @breakpoints {
-  .layout-vertical .DataListData {
-    display: block;
+  .direction-column .DataListData,
+  .direction-column-reverse .DataListData {
     padding: 0;
   }
-  .layout-horizontal .DataListData {
-    display: table-cell;
-
+  .direction-row .DataListData,
+  .direction-row-reverse .DataListData {
     /*
        * At default size, `DataListLabel` content is 20px high. We want to allow the `DataListData`
        * content to be a bit larger in height without increasing the height of each item, in case
        * there is a badge or a small button inside.
        */
-    padding-top: calc(var(--data-list-gap-y) * 0.375);
-    padding-bottom: calc(var(--data-list-gap-y) * 0.375);
+    /* padding-top: calc(var(--data-list-gap-y) * 0.375);
+    padding-bottom: calc(var(--data-list-gap-y) * 0.375); */
   }
 }
 
