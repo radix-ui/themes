@@ -170,7 +170,6 @@ import {
   TabsTrigger,
   TabsContent,
   tabsListPropDefs,
-  tabsRootPropDefs,
   //
   TextArea,
   textAreaPropDefs,
@@ -4060,16 +4059,12 @@ export default function Sink() {
                         </Text>
                       </summary>
                       <Grid gap="5" columns="2" align="center">
-                        {tabsRootPropDefs.color.values.map((color) => (
+                        {tabsListPropDefs.color.values.map((color) => (
                           <React.Fragment key={color}>
                             <Text>{color}</Text>
                             <Flex>
-                              <TabsRoot
-                                defaultValue="account"
-                                activationMode="manual"
-                                color={color}
-                              >
-                                <TabsList size="1">
+                              <TabsRoot defaultValue="account" activationMode="manual">
+                                <TabsList size="1" color={color}>
                                   <TabsTrigger value="account">Account</TabsTrigger>
                                   <TabsTrigger value="documents">Documents</TabsTrigger>
                                   <TabsTrigger value="settings">Settings</TabsTrigger>

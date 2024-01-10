@@ -3,22 +3,19 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { tabsListPropDefs, tabsRootPropDefs } from './tabs.props';
+import { tabsListPropDefs } from './tabs.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
 import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor, colorProp } from '../helpers';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
-type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;
 interface TabsRootProps
-  extends PropsWithoutRefOrColor<typeof TabsPrimitive.Root>,
-    MarginProps,
-    TabsRootOwnProps {}
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
+    MarginProps {}
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
-  const { rest, ...marginProps } = extractMarginProps(props);
-  const { className, color, ...rootProps } = rest;
+  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+  const { className, ...rootProps } = marginRest;
   return (
     <TabsPrimitive.Root
-      data-accent-color={color}
       {...rootProps}
       ref={forwardedRef}
       className={classNames('rt-TabsRoot', className, withMarginProps(marginProps))}
@@ -30,12 +27,13 @@ TabsRoot.displayName = 'TabsRoot';
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
+  extends PropsWithoutRefOrColor<typeof TabsPrimitive.List>,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, size = tabsListPropDefs.size.default, ...listProps } = props;
+  const { className, size = tabsListPropDefs.size.default, color, ...listProps } = props;
   return (
     <TabsPrimitive.List
+      data-accent-color={color}
       {...listProps}
       ref={forwardedRef}
       className={classNames('rt-TabsList', className, withBreakpoints(size, 'rt-r-size'))}
