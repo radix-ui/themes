@@ -1,38 +1,36 @@
-import { Text } from './text';
 import classNames from 'classnames';
 import * as React from 'react';
 import { Responsive, withBreakpoints } from '../helpers';
+import { Flex } from './flex';
+import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
+import { Grid } from './grid';
 
 /*
  * decide what to do with layout prop
- * - gap prop?
  * - label width
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  (
-    { children, gap = '4', gapX, gapY, layout = 'horizontal', size = '2', ...props },
-    forwardedRef
-  ) => (
-    <Text asChild size={size} {...props}>
-      <dl
-        ref={forwardedRef}
-        className={classNames(
-          'DataListRoot',
-          withBreakpoints(gap, 'gap'),
-          withBreakpoints(gapX, 'gap-x'),
-          withBreakpoints(gapY, 'gap-y'),
-          withBreakpoints(layout, 'layout')
-        )}
-      >
-        {children}
-      </dl>
-    </Text>
+  ({ children, gap = '4', direction = 'row', size = '2' }, forwardedRef) => (
+    <Flex asChild gap={gap} direction="column">
+      <Text asChild size={size}>
+        <dl
+          ref={forwardedRef}
+          className={classNames(
+            'DataListRoot',
+            withBreakpoints(gap, 'gap'),
+            withBreakpoints(direction, 'direction')
+          )}
+        >
+          {children}
+        </dl>
+      </Text>
+    </Flex>
   )
 );
 
-DataListRoot.displayName = 'DataListRoot';
+DataListRoot.displayName = 'DataListRootGrid';
 
 interface DataListItemProps extends React.ComponentPropsWithRef<'div'> {
   align?: Responsive<'start' | 'center' | 'end' | 'baseline'>;
