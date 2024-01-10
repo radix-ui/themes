@@ -1,16 +1,8 @@
-import { Text } from '@radix-ui/themes';
+import { Text } from './text';
 import classNames from 'classnames';
 import * as React from 'react';
-import { MarginProps, PropsWithoutRefOrColor, Responsive, withBreakpoints } from '../helpers';
-
-interface DataListRootProps extends PropsWithoutRefOrColor<'dl'>, MarginProps {
-  gap?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  gapX?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  gapY?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
-  size?: React.ComponentPropsWithoutRef<typeof Text>['size'];
-  trim?: React.ComponentPropsWithoutRef<typeof Text>['trim'];
-  layout?: Responsive<'horizontal' | 'vertical'>;
-}
+import { Responsive, withBreakpoints } from '../helpers';
+import { DataListRootProps } from './data-list.props';
 
 /*
  * decide what to do with layout prop
@@ -100,9 +92,4 @@ const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'
 
 DataListData.displayName = 'DataListData';
 
-export const DataList = {
-  Root: DataListRoot,
-  Item: DataListItem,
-  Label: DataListLabel,
-  Data: DataListData,
-};
+export { DataListRoot, DataListItem, DataListLabel, DataListData };

@@ -143,6 +143,8 @@ export { Callout, CalloutRoot, CalloutIcon, CalloutText } from './callout';
 export * from './callout.props';
 export { Card } from './card';
 export * from './card.props';
+export { DataListRoot, DataListData, DataListItem, DataListLabel } from './data-list';
+export * from './data-list.props';
 // export * from './collapsible';
 // export * from './definition-list';
 export { IconButton } from './icon-button';
