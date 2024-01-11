@@ -1,21 +1,19 @@
 import { Text } from './text';
 import classNames from 'classnames';
 import * as React from 'react';
-import { Responsive, withBreakpoints } from '../helpers';
+import { Responsive, withBreakpoints, extractMarginProps, withMarginProps } from '../helpers';
 import { DataListRootProps } from './data-list.props';
 
 /**
- *  - columns instaed of direction?
+ * - columns instaed of direction?
  * - support the breakpoints, related to `withBreakpoints`?
- * - test margin
  * - label width issue
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  (
-    { children, direction = 'row', gap = '4', gapX, gapY, size = '2', trim, ...props },
-    forwardedRef
-  ) => {
+  (props, forwardedRef) => {
+    const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+    const { children, direction = 'row', gap = '4', gapX, gapY, size = '2', trim } = marginRest;
     return (
       <Text asChild size={size} trim={trim} {...props}>
         <dl
@@ -25,7 +23,8 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
             withBreakpoints(gap, 'gap'),
             withBreakpoints(gapX, 'gap-x'),
             withBreakpoints(gapY, 'gap-y'),
-            withBreakpoints(direction, 'direction')
+            withBreakpoints(direction, 'direction'),
+            withMarginProps(marginProps)
           )}
         >
           {children}
