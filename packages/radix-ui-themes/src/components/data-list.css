@@ -137,14 +137,14 @@
 }
 
 @breakpoints {
-  .layout-vertical .DataListItem {
+  .direction-column .DataListItem {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
     padding-top: calc(var(--data-list-gap-y) / 2);
     padding-bottom: calc(var(--data-list-gap-y) / 2);
   }
-  .layout-horizontal .DataListItem {
+  .direction-row .DataListItem {
     display: table-row;
     padding: 0;
   }
@@ -158,13 +158,13 @@
 }
 
 @breakpoints {
-  .layout-vertical .DataListLabel {
+  .direction-column .DataListLabel {
     display: block;
     white-space: normal;
     padding: 0;
     width: auto;
   }
-  .layout-horizontal .DataListLabel {
+  .direction-row .DataListLabel {
     display: table-cell;
     white-space: nowrap;
     padding-top: calc(var(--data-list-gap-y) / 2);
@@ -181,11 +181,11 @@
 }
 
 @breakpoints {
-  .layout-vertical .DataListData {
+  .direction-column .DataListData {
     display: block;
     padding: 0;
   }
-  .layout-horizontal .DataListData {
+  .direction-row .DataListData {
     display: table-cell;
 
     /*

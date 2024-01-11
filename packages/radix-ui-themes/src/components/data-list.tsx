@@ -1,29 +1,39 @@
-import { Text } from '@radix-ui/themes';
+import { Text } from './text';
 import classNames from 'classnames';
 import * as React from 'react';
 import { Responsive, withBreakpoints } from '../helpers';
 import { DataListRootProps } from './data-list.props';
 
+/**
+ * - fix layout direction
+ *  - columns? still need direction
+ * - support the breakpoints, related to `withBreakpoints`?
+ * - fix alignment
+ * - test margin
+ */
+
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (
-    { children, gap = '4', gapX, gapY, layout = 'horizontal', size = '2', ...props },
+    { children, direction = 'row', gap = '4', gapX, gapY, size = '2', trim, ...props },
     forwardedRef
-  ) => (
-    <Text asChild size={size} {...props}>
-      <dl
-        ref={forwardedRef}
-        className={classNames(
-          'DataListRoot',
-          withBreakpoints(gap, 'gap'),
-          withBreakpoints(gapX, 'gap-x'),
-          withBreakpoints(gapY, 'gap-y'),
-          withBreakpoints(layout, 'layout')
-        )}
-      >
-        {children}
-      </dl>
-    </Text>
-  )
+  ) => {
+    return (
+      <Text asChild size={size} trim={trim} {...props}>
+        <dl
+          ref={forwardedRef}
+          className={classNames(
+            'DataListRoot',
+            withBreakpoints(gap, 'gap'),
+            withBreakpoints(gapX, 'gap-x'),
+            withBreakpoints(gapY, 'gap-y'),
+            withBreakpoints(direction, 'direction')
+          )}
+        >
+          {children}
+        </dl>
+      </Text>
+    );
+  }
 );
 
 DataListRoot.displayName = 'DataListRoot';
