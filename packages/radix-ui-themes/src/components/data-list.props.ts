@@ -12,5 +12,4 @@ export interface DataListRootProps extends PropsWithoutRefOrColor<'dl'>, MarginP
   gapY?: Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>;
   size?: React.ComponentPropsWithoutRef<typeof Text>['size'];
   trim?: React.ComponentPropsWithoutRef<typeof Text>['trim'];
-  layout?: Responsive<'horizontal' | 'vertical'>;
 }
