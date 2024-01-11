@@ -5,10 +5,8 @@ import { Responsive, withBreakpoints } from '../helpers';
 import { DataListRootProps } from './data-list.props';
 
 /**
- * - fix layout direction
- *  - columns? still need direction
+ *  - columns instaed of direction?
  * - support the breakpoints, related to `withBreakpoints`?
- * - fix alignment
  * - test margin
  * - label width issue
  */
