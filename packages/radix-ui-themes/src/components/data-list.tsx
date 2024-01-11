@@ -10,6 +10,7 @@ import { DataListRootProps } from './data-list.props';
  * - support the breakpoints, related to `withBreakpoints`?
  * - fix alignment
  * - test margin
+ * - label width issue
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
@@ -49,7 +50,7 @@ const DataListItem = React.forwardRef<HTMLDivElement, DataListItemProps>(
       className={classNames(
         className,
         'DataListItem',
-        withBreakpoints(align, 'va', {
+        withBreakpoints(align, 'rt-r-va', {
           start: 'top',
           center: 'middle',
           end: 'bottom',
