@@ -20,9 +20,9 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
           ref={forwardedRef}
           className={classNames(
             'rt-DataListRoot',
-            withBreakpoints(gap, 'gap'),
-            withBreakpoints(gapX, 'gap-x'),
-            withBreakpoints(gapY, 'gap-y'),
+            withBreakpoints(gap, 'rt-r-gap'),
+            withBreakpoints(gapX, 'rt-r-gap-x'),
+            withBreakpoints(gapY, 'rt-r-gap-y'),
             withBreakpoints(direction, 'rt-r-direction'),
             withMarginProps(marginProps)
           )}
