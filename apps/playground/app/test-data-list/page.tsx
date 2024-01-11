@@ -90,7 +90,7 @@ export default function DataListPage() {
                   <DataListData>janeroe@foo-corpcom</DataListData>
                 </DataListItem>
 
-                <DataListItem align="center">
+                <DataListItem align="end">
                   <DataListLabel>Authentication</DataListLabel>
                   <DataListData>
                     <Flex gap="2" mx="-1">
@@ -106,9 +106,9 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With varied content
               </Heading>
-              <DataListRoot layout={{ initial: 'vertical', sm: 'horizontal' }}>
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }} mt="9">
                 <DataListItem>
-                  <DataListLabel>Status</DataListLabel>
+                  <DataListLabel>Status!!!!!!!</DataListLabel>
                   <DataListData>
                     <Badge color="green" size="1" style={{ marginLeft: -2 }}>
                       Active
@@ -213,7 +213,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With long label
               </Heading>
-              <DataListRoot layout={{ initial: 'vertical', sm: 'horizontal' }}>
+              <DataListRoot direction="column">
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
