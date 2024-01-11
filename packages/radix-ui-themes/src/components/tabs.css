@@ -103,11 +103,6 @@
 
 .rt-TabsList {
   box-shadow: inset 0 -1px 0 0 var(--gray-a5);
-  --tabs-list-active-accent: var(--accent-10);
-
-  &.rt-high-contrast {
-    --tabs-list-active-accent: var(--accent-12);
-  }
 }
 
 .rt-TabsTrigger {
@@ -140,11 +135,12 @@
     left: 0;
     right: 0;
     background-color: var(--accent-10);
-    
-    :where(.rt-TabsTrigger.rt-high-contrast) & {
+  }
+
+  .rt-TabsList.rt-high-contrast & {
+    &:where([data-state='active'])::before {
       background-color: var(--accent-12);
     }
-  }
   }
 }
 
