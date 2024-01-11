@@ -11,10 +11,6 @@ import {
 } from '../helpers';
 import { dataListPropDefs } from './data-list.props';
 
-/**
- * - columns instead of direction?
- * - label width issue
- */
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
 interface DataListRootProps
   extends React.ComponentPropsWithoutRef<'dl'>,
@@ -23,7 +19,11 @@ interface DataListRootProps
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-    const { children, direction = 'row', gap = '4', gapX, gapY, size = '2', trim } = marginRest;
+    const { children, columns = '200px 1fr', gap = '4', gapX, gapY, size = '2', trim } = marginRest;
+    const direction = columns === 'none' ? 'vertical' : 'row';
+    const labelColWidth =
+      typeof columns === 'string' && direction !== 'vertical' ? columns.split(' ')[0] : 'auto';
+
     return (
       <Text asChild size={size} trim={trim}>
         <dl
@@ -36,6 +36,12 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
             withBreakpoints(direction, 'rt-r-direction'),
             withMarginProps(marginProps)
           )}
+          style={
+            {
+              '--data-list-label-width':
+                typeof labelColWidth === 'number' ? `${labelColWidth}px` : labelColWidth,
+            } as React.CSSProperties
+          }
         >
           {children}
         </dl>
@@ -71,21 +77,14 @@ const DataListItem = React.forwardRef<HTMLDivElement, DataListItemProps>(
 
 DataListItem.displayName = 'DataListItem';
 
-interface DataListLabelProps extends React.ComponentPropsWithRef<'dt'> {
-  width?: number | string;
-}
+interface DataListLabelProps extends React.ComponentPropsWithRef<'dt'> {}
 
 const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>(
-  ({ className, style, width, ...props }, forwardedRef) => (
+  ({ className, style, ...props }, forwardedRef) => (
     <dt
       ref={forwardedRef}
       className={classNames(className, 'rt-DataListLabel')}
-      style={
-        {
-          '--data-list-label-width': typeof width === 'number' ? `${width}px` : width,
-          ...style,
-        } as React.CSSProperties
-      }
+      style={style as React.CSSProperties}
       {...props}
     />
   )

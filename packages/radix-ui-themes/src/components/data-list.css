@@ -151,7 +151,6 @@
 }
 
 .rt-DataListLabel {
-  --data-list-label-width: 200px;
   color: var(--gray-a11);
   box-sizing: border-box;
   vertical-align: inherit;
@@ -170,6 +169,7 @@
     padding-top: calc(var(--data-list-gap-y) / 2);
     padding-bottom: calc(var(--data-list-gap-y) / 2);
     padding-right: var(--data-list-gap-x);
+    /** Set via columns prop value in DataListRoot inline styles */
     width: var(--data-list-label-width);
   }
 }

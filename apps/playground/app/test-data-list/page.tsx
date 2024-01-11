@@ -71,7 +71,7 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Varied data 2</Text>
-              <DataListRoot direction="row">
+              <DataListRoot columns="350px 1fr">
                 <DataListItem>
                   <DataListLabel>Status</DataListLabel>
                   <DataListData>
@@ -103,10 +103,10 @@ export default function DataListPage() {
               </DataListRoot>
             </Flex>
             <Box mb="6">
-              <Heading mb="5" size="3">
+              <Heading mt="4" mb="5" size="3">
                 With varied content
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }} mt="9">
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }} mt="2">
                 <DataListItem>
                   <DataListLabel>Status!!!!!!!</DataListLabel>
                   <DataListData>
@@ -169,7 +169,7 @@ export default function DataListPage() {
               </Heading>
               <DataListRoot>
                 <DataListItem>
-                  <DataListLabel width={80}>Appearance</DataListLabel>
+                  <DataListLabel>Appearance</DataListLabel>
                   <DataListData>
                     <Flex align="center" gap="1">
                       <IconButton size="1">
@@ -186,24 +186,24 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 One after another
               </Heading>
-              <DataListRoot>
+              <DataListRoot columns="130px 1fr">
                 <DataListItem>
-                  <DataListLabel width={130}>Appearance</DataListLabel>
+                  <DataListLabel>Appearance</DataListLabel>
                   <DataListData>System</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel width={130}>Radius</DataListLabel>
+                  <DataListLabel>Radius</DataListLabel>
                   <DataListData>Medium</DataListData>
                 </DataListItem>
               </DataListRoot>
 
               <DataListRoot>
                 <DataListItem>
-                  <DataListLabel width={130}>Page background</DataListLabel>
+                  <DataListLabel>Page background</DataListLabel>
                   <DataListData>White</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel width={130}>Link color</DataListLabel>
+                  <DataListLabel>Link color</DataListLabel>
                   <DataListData>Blue</DataListData>
                 </DataListItem>
               </DataListRoot>
