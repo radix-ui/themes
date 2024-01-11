@@ -139,7 +139,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--tabs-list-active-accent);
+    background-color: var(--accent-10);
+    
+    :where(.rt-TabsTrigger.rt-high-contrast) & {
+      background-color: var(--accent-12);
+    }
+  }
   }
 }
 
