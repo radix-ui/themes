@@ -106,7 +106,7 @@
   --tabs-list-active-accent: var(--accent-10);
 
   &.rt-high-contrast {
-    --tabs-list-active-accent: var(--accent-11);
+    --tabs-list-active-accent: var(--accent-12);
   }
 }
 
