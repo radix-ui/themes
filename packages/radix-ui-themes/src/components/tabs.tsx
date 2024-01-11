@@ -5,8 +5,7 @@ import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { tabsListPropDefs } from './tabs.props';
 import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
-
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor, colorProp } from '../helpers';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 interface TabsRootProps
@@ -28,15 +27,24 @@ TabsRoot.displayName = 'TabsRoot';
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
+  extends PropsWithoutRefOrColor<typeof TabsPrimitive.List>,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, size = tabsListPropDefs.size.default, ...listProps } = props;
+  const {
+    className,
+    size = tabsListPropDefs.size.default,
+    color,
+    highContrast,
+    ...listProps
+  } = props;
   return (
     <TabsPrimitive.List
+      data-accent-color={color}
       {...listProps}
       ref={forwardedRef}
-      className={classNames('rt-TabsList', className, withBreakpoints(size, 'rt-r-size'))}
+      className={classNames('rt-TabsList', className, withBreakpoints(size, 'rt-r-size'), {
+        'rt-high-contrast': highContrast,
+      })}
     />
   );
 });

@@ -136,6 +136,12 @@
     right: 0;
     background-color: var(--accent-10);
   }
+
+  :where(.rt-TabsList.rt-high-contrast) & {
+    &:where([data-state='active'])::before {
+      background-color: var(--accent-12);
+    }
+  }
 }
 
 .rt-TabsContent:where(:focus-visible) {
