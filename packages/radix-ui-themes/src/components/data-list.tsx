@@ -1,21 +1,31 @@
 import { Text } from './text';
 import classNames from 'classnames';
 import * as React from 'react';
-import { Responsive, withBreakpoints, extractMarginProps, withMarginProps } from '../helpers';
-import { DataListRootProps } from './data-list.props';
+import {
+  Responsive,
+  withBreakpoints,
+  extractMarginProps,
+  withMarginProps,
+  MarginProps,
+  GetPropDefTypes,
+} from '../helpers';
+import { dataListPropDefs } from './data-list.props';
 
 /**
- * - columns instaed of direction?
- * - support the breakpoints, related to `withBreakpoints`?
+ * - columns instead of direction?
  * - label width issue
  */
-
+type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
+interface DataListRootProps
+  extends React.ComponentPropsWithoutRef<'dl'>,
+    MarginProps,
+    DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (props, forwardedRef) => {
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const { children, direction = 'row', gap = '4', gapX, gapY, size = '2', trim } = marginRest;
     return (
-      <Text asChild size={size} trim={trim} {...props}>
+      <Text asChild size={size} trim={trim}>
         <dl
           ref={forwardedRef}
           className={classNames(
@@ -36,6 +46,7 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
 
 DataListRoot.displayName = 'DataListRoot';
 
+// the align prop is different than text align
 interface DataListItemProps extends React.ComponentPropsWithRef<'div'> {
   align?: Responsive<'start' | 'center' | 'end' | 'baseline'>;
 }
