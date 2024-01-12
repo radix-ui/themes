@@ -10,6 +10,7 @@ import { DataListRootProps } from './data-list.props';
  * TODO
  * - setup margin props
  * - fixup types / enum
+ * - add support for minWidth maxWidth for label
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
