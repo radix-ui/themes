@@ -22,86 +22,37 @@ export default function DataListPage() {
         <Theme>
           <Box ml="5" style={{ maxWidth: '688px', margin: 'auto' }}>
             <Flex gap="2" mt="4" direction="column">
-              <Text weight="medium" mb="2">
+              <Heading mb="5" size="3">
                 Default
-              </Text>
+              </Heading>
               <DataListRoot mt="2">
                 <DataListItem>
-                  <DataListLabel>Obi wan</DataListLabel>
-                  <DataListData>Jedi Master</DataListData>
+                  <DataListLabel>Jedi Master</DataListLabel>
+                  <DataListData>Obi wan</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel>Anakin</DataListLabel>
-                  <DataListData>Padewan</DataListData>
+                  <DataListLabel>Padewan</DataListLabel>
+                  <DataListData>Anakin Skywalker</DataListData>
                 </DataListItem>
               </DataListRoot>
             </Flex>
             <Flex gap="2" mt="4" direction="column">
-              <Text weight="medium">Vertical Layout</Text>
+              <Heading mb="5" size="3">
+                Vertical Layout
+              </Heading>
               <DataListRoot direction="column" mt="2">
                 <DataListItem>
-                  <DataListLabel>Obi wan</DataListLabel>
-                  <DataListData>Jedi Master</DataListData>
+                  <DataListLabel>Jedi Master</DataListLabel>
+                  <DataListData>Obi wan</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel>Anakin</DataListLabel>
-                  <DataListData>Padewan</DataListData>
+                  <DataListLabel>Padewan</DataListLabel>
+                  <DataListData>Anakin Skywalker</DataListData>
                 </DataListItem>
               </DataListRoot>
             </Flex>
-            <Flex gap="2" mt="4" direction="column">
-              <Text weight="medium">Varied data</Text>
-              <DataListRoot mt="2" direction="column">
-                <DataListItem>
-                  <DataListLabel>Name</DataListLabel>
-                  <DataListData>Jane Roe</DataListData>
-                </DataListItem>
-                <DataListItem>
-                  <DataListLabel>Email</DataListLabel>
-                  <DataListData>janeroe@foo-corp.com</DataListData>
-                </DataListItem>
-                <DataListItem>
-                  <DataListLabel>Organization</DataListLabel>
-                  <DataListData>
-                    <Link href="https://foo-corp.com">Foo Corp</Link>
-                  </DataListData>
-                </DataListItem>
-              </DataListRoot>
-            </Flex>
-            <Flex gap="2" mt="4" direction="column">
-              <Text weight="medium">Varied data 2</Text>
-              <DataListRoot direction="row">
-                <DataListItem>
-                  <DataListLabel>Status</DataListLabel>
-                  <DataListData>
-                    <Badge color="green" size="1" style={{ marginLeft: -2 }}>
-                      Active
-                    </Badge>
-                  </DataListData>
-                </DataListItem>
-                <DataListItem>
-                  <DataListLabel>Name</DataListLabel>
-                  <DataListData>Jane Roe</DataListData>
-                </DataListItem>
 
-                <DataListItem>
-                  <DataListLabel>Email</DataListLabel>
-                  <DataListData>janeroe@foo-corpcom</DataListData>
-                </DataListItem>
-
-                <DataListItem align="center">
-                  <DataListLabel>Authentication</DataListLabel>
-                  <DataListData>
-                    <Flex gap="2" mx="-1">
-                      <StarIcon />
-                      <MagicWandIcon />
-                      <StarFilledIcon />
-                    </Flex>
-                  </DataListData>
-                </DataListItem>
-              </DataListRoot>
-            </Flex>
-            <Box mb="6">
+            <Box mb="6" mt="6">
               <Heading mb="5" size="3">
                 With varied content
               </Heading>
@@ -146,7 +97,8 @@ export default function DataListPage() {
                   <DataListLabel>Authentication methods</DataListLabel>
                   <DataListData>
                     <Flex gap="2">
-                      <StarFilledIcon />
+                      <StarIcon />
+                      <MagicWandIcon />
                       <StarFilledIcon />
                     </Flex>
                   </DataListData>
@@ -190,16 +142,20 @@ export default function DataListPage() {
                   <DataListLabel>Appearance</DataListLabel>
                   <DataListData>System</DataListData>
                 </DataListItem>
-
-                <DataListLabel>Radius</DataListLabel>
-                <DataListData>Medium</DataListData>
+                <DataListItem>
+                  <DataListLabel>Radius</DataListLabel>
+                  <DataListData>Medium</DataListData>
+                </DataListItem>
               </DataListRoot>
-
-              <DataListRoot>
-                <DataListLabel>Page background</DataListLabel>
-                <DataListData>White</DataListData>
-                <DataListLabel>Link color</DataListLabel>
-                <DataListData>Blue</DataListData>
+              <DataListRoot mt="4">
+                <DataListItem>
+                  <DataListLabel>Page background</DataListLabel>
+                  <DataListData>White</DataListData>
+                </DataListItem>
+                <DataListItem>
+                  <DataListLabel>Link color</DataListLabel>
+                  <DataListData>Blue</DataListData>
+                </DataListItem>
               </DataListRoot>
             </Box>
 
@@ -220,6 +176,28 @@ export default function DataListPage() {
                   <DataListLabel width="350px">
                     Lorem ipsum dolor sit amet consectetur adipscing elit
                   </DataListLabel>
+                  <DataListData>
+                    <Link href="https://workos.com">WorkOS</Link>
+                  </DataListData>
+                </DataListItem>
+              </DataListRoot>
+            </Box>
+
+            <Box mb="6">
+              <Heading mb="5" size="3">
+                With varied X & Y gaps
+              </Heading>
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }} gapX="7" gapY="2">
+                <DataListItem>
+                  <DataListLabel>Name</DataListLabel>
+                  <DataListData>Vlad Moroz</DataListData>
+                </DataListItem>
+                <DataListItem>
+                  <DataListLabel>Email</DataListLabel>
+                  <DataListData>vlad@workos.com</DataListData>
+                </DataListItem>
+                <DataListItem>
+                  <DataListLabel>Lorem ipsum dolor</DataListLabel>
                   <DataListData>
                     <Link href="https://workos.com">WorkOS</Link>
                   </DataListData>

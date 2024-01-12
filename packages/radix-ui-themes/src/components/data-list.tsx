@@ -1,32 +1,47 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { Responsive, withBreakpoints } from '../helpers';
+import {
+  Responsive,
+  withBreakpoints,
+  MarginProps,
+  GetPropDefTypes,
+  extractMarginProps,
+  withMarginProps,
+} from '../helpers';
 import { Text } from './text';
-import { DataListRootProps } from './data-list.props';
+import { dataListPropDefs } from './data-list.props';
 
 /*
  * TODO
- * - setup margin props
- * - fixup types / enum
  * - add support for minWidth maxWidth for label
- * - support for gapX & gapY as row-gap and column-gap
  */
-
+type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
+interface DataListRootProps
+  extends React.ComponentPropsWithoutRef<'dl'>,
+    MarginProps,
+    DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  ({ children, gap = '4', direction = 'row', size = '2' }, forwardedRef) => (
-    <Text asChild size={size}>
-      <dl
-        ref={forwardedRef}
-        className={classNames(
-          'rt-DataListRoot',
-          withBreakpoints(gap, 'rt-r-gap'),
-          withBreakpoints(direction, 'rt-r-direction')
-        )}
-      >
-        {children}
-      </dl>
-    </Text>
-  )
+  (props, forwardedRef) => {
+    const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+    const { children, direction = 'row', gap = '4', gapX, gapY, size = '2' } = marginRest;
+    return (
+      <Text asChild size={size}>
+        <dl
+          ref={forwardedRef}
+          className={classNames(
+            'rt-DataListRoot',
+            withBreakpoints(gap, 'rt-r-gap'),
+            withBreakpoints(gapX, 'rt-r-gap-x'),
+            withBreakpoints(gapY, 'rt-r-gap-y'),
+            withBreakpoints(direction, 'rt-r-direction'),
+            withMarginProps(marginProps)
+          )}
+        >
+          {children}
+        </dl>
+      </Text>
+    );
+  }
 );
 
 DataListRoot.displayName = 'DataListRootGrid';
