@@ -39,7 +39,7 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Vertical Layout</Text>
-              <DataListRoot direction="column" mt="2">
+              <DataListRoot columns="none" mt="2">
                 <DataListItem>
                   <DataListLabel>Obi wan</DataListLabel>
                   <DataListData>Jedi Master</DataListData>
@@ -52,7 +52,7 @@ export default function DataListPage() {
             </Flex>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium">Varied data</Text>
-              <DataListRoot mt="2" direction="column">
+              <DataListRoot mt="2" columns="none">
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Jane Roe</DataListData>
@@ -106,7 +106,7 @@ export default function DataListPage() {
               <Heading mt="4" mb="5" size="3">
                 With varied content
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }} mt="2">
+              <DataListRoot columns={{ initial: 'none', sm: '200px 1fr' }} mt="2">
                 <DataListItem>
                   <DataListLabel>Status!!!!!!!</DataListLabel>
                   <DataListData>
@@ -213,7 +213,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With long label
               </Heading>
-              <DataListRoot direction="column">
+              <DataListRoot>
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
