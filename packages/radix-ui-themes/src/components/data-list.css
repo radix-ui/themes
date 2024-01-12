@@ -50,7 +50,6 @@
 }
 
 .DataListLabel {
-  --data-list-label-width: 200px;
   color: var(--gray-a11);
   box-sizing: border-box;
   display: block;

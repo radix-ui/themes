@@ -15,11 +15,8 @@ import { DataListRootProps } from './data-list.props';
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  (
-    { children, gap = '4', direction = 'row', columns = 'minmax(200px, 1fr) 1fr', size = '2' },
-    forwardedRef
-  ) => (
-    <Grid asChild gap={gap} columns={columns}>
+  ({ children, gap = '4', direction = 'row', labelWidth = '200px', size = '2' }, forwardedRef) => (
+    <Grid asChild gap={gap}>
       <Text asChild size={size}>
         <dl
           ref={forwardedRef}
@@ -28,6 +25,12 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
             withBreakpoints(gap, 'gap'),
             withBreakpoints(direction, 'direction')
           )}
+          style={
+            {
+              '--data-list-label-width':
+                typeof labelWidth === 'number' ? `${labelWidth}px` : labelWidth,
+            } as React.CSSProperties
+          }
         >
           {children}
         </dl>
@@ -73,7 +76,6 @@ const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>(
       className={classNames(className, 'DataListLabel')}
       style={
         {
-          '--data-list-label-width': typeof width === 'number' ? `${width}px` : width,
           ...style,
         } as React.CSSProperties
       }

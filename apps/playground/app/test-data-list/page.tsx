@@ -188,8 +188,11 @@ export default function DataListPage() {
                 One after another
               </Heading>
               <DataListRoot>
-                <DataListLabel>Appearance</DataListLabel>
-                <DataListData>System</DataListData>
+                <DataListItem>
+                  <DataListLabel>Appearance</DataListLabel>
+                  <DataListData>System</DataListData>
+                </DataListItem>
+
                 <DataListLabel>Radius</DataListLabel>
                 <DataListData>Medium</DataListData>
               </DataListRoot>
@@ -207,15 +210,23 @@ export default function DataListPage() {
                 With long label
               </Heading>
               {/* <DataListRoot layout={{ initial: 'vertical', sm: 'horizontal' }}> */}
-              <DataListRoot direction="row">
-                <DataListLabel>Name</DataListLabel>
-                <DataListData>Vlad Moroz</DataListData>
-                <DataListLabel>Email</DataListLabel>
-                <DataListData>vlad@workos.com</DataListData>
-                <DataListLabel>Lorem ipsum dolor sit amet consectetur adipscing elit</DataListLabel>
-                <DataListData>
-                  <Link href="https://workos.com">WorkOS</Link>
-                </DataListData>
+              <DataListRoot direction="row" labelWidth="350px">
+                <DataListItem>
+                  <DataListLabel>Name</DataListLabel>
+                  <DataListData>Vlad Moroz</DataListData>
+                </DataListItem>
+                <DataListItem>
+                  <DataListLabel>Email</DataListLabel>
+                  <DataListData>vlad@workos.com</DataListData>
+                </DataListItem>
+                <DataListItem>
+                  <DataListLabel>
+                    Lorem ipsum dolor sit amet consectetur adipscing elit
+                  </DataListLabel>
+                  <DataListData>
+                    <Link href="https://workos.com">WorkOS</Link>
+                  </DataListData>
+                </DataListItem>
               </DataListRoot>
             </Box>
           </Box>
