@@ -7,15 +7,13 @@ import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
 
 /*
- * decide what to do with layout prop
- * - label width
+ * TODO
  * - setup margin props
- * - handle 'initial etc'
- * - align isn't doing anything?
+ * - fixup types / enum
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  ({ children, gap = '4', direction = 'row', labelWidth = '200px', size = '2' }, forwardedRef) => (
+  ({ children, gap = '4', direction = 'row', size = '2' }, forwardedRef) => (
     <Grid asChild gap={gap}>
       <Text asChild size={size}>
         <dl
@@ -25,12 +23,6 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
             withBreakpoints(gap, 'rt-r-gap'),
             withBreakpoints(direction, 'rt-r-direction')
           )}
-          style={
-            {
-              '--data-list-label-width':
-                typeof labelWidth === 'number' ? `${labelWidth}px` : labelWidth,
-            } as React.CSSProperties
-          }
         >
           {children}
         </dl>
@@ -70,12 +62,13 @@ interface DataListLabelProps extends React.ComponentPropsWithRef<'dt'> {
 }
 
 const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>(
-  ({ className, style, width, ...props }, forwardedRef) => (
+  ({ className, style, width = '200px', ...props }, forwardedRef) => (
     <dt
       ref={forwardedRef}
       className={classNames(className, 'rt-DataListLabel')}
       style={
         {
+          '--data-list-label-width': typeof width === 'number' ? `${width}px` : width,
           ...style,
         } as React.CSSProperties
       }

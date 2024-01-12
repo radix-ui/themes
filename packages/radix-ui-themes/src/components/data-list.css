@@ -1,32 +1,32 @@
 @breakpoints {
-  .rt-DataListRoot.gap-0 {
+  .rt-DataListRoot.rt-r-gap-0 {
     --data-list-gap: 0px;
   }
-  .rt-DataListRoot.gap-1 {
+  .rt-DataListRoot.rt-r-gap-1 {
     --data-list-gap: var(--space-1);
   }
-  .rt-DataListRoot.gap-2 {
+  .rt-DataListRoot.rt-r-gap-2 {
     --data-list-gap: var(--space-2);
   }
-  .rt-DataListRoot.gap-3 {
+  .rt-DataListRoot.rt-r-gap-3 {
     --data-list-gap: var(--space-3);
   }
-  .rt-DataListRoot.gap-4 {
+  .rt-DataListRoot.rt-r-gap-4 {
     --data-list-gap: var(--space-4);
   }
-  .rt-DataListRoot.gap-5 {
+  .rt-DataListRoot.rt-r-gap-5 {
     --data-list-gap: var(--space-5);
   }
-  .rt-DataListRoot.gap-6 {
+  .rt-DataListRoot.rt-r-gap-6 {
     --data-list-gap: var(--space-6);
   }
-  .rt-DataListRoot.gap-7 {
+  .rt-DataListRoot.rt-r-gap-7 {
     --data-list-gap: var(--space-7);
   }
-  .rt-DataListRoot.gap-8 {
+  .rt-DataListRoot.rt-r-gap-8 {
     --data-list-gap: var(--space-8);
   }
-  .rt-DataListRoot.gap-9 {
+  .rt-DataListRoot.rt-r-gap-9 {
     --data-list-gap: var(--space-9);
   }
 }

@@ -207,17 +207,17 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With long label
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }} labelWidth="350px">
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }}>
                 <DataListItem>
-                  <DataListLabel>Name</DataListLabel>
+                  <DataListLabel width="350px">Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel>Email</DataListLabel>
+                  <DataListLabel width="350px">Email</DataListLabel>
                   <DataListData>vlad@workos.com</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel>
+                  <DataListLabel width="350px">
                     Lorem ipsum dolor sit amet consectetur adipscing elit
                   </DataListLabel>
                   <DataListData>
