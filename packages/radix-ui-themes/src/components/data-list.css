@@ -65,6 +65,7 @@
   .direction-row .DataListLabel {
     white-space: nowrap;
     width: var(--data-list-label-width);
+    flex-shrink: 0;
   }
 }
 

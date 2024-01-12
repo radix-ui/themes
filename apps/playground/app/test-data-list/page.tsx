@@ -188,25 +188,17 @@ export default function DataListPage() {
                 One after another
               </Heading>
               <DataListRoot>
-                <DataListItem>
-                  <DataListLabel width={130}>Appearance</DataListLabel>
-                  <DataListData>System</DataListData>
-                </DataListItem>
-                <DataListItem>
-                  <DataListLabel width={130}>Radius</DataListLabel>
-                  <DataListData>Medium</DataListData>
-                </DataListItem>
+                <DataListLabel>Appearance</DataListLabel>
+                <DataListData>System</DataListData>
+                <DataListLabel>Radius</DataListLabel>
+                <DataListData>Medium</DataListData>
               </DataListRoot>
 
               <DataListRoot>
-                <DataListItem>
-                  <DataListLabel width={130}>Page background</DataListLabel>
-                  <DataListData>White</DataListData>
-                </DataListItem>
-                <DataListItem>
-                  <DataListLabel width={130}>Link color</DataListLabel>
-                  <DataListData>Blue</DataListData>
-                </DataListItem>
+                <DataListLabel>Page background</DataListLabel>
+                <DataListData>White</DataListData>
+                <DataListLabel>Link color</DataListLabel>
+                <DataListData>Blue</DataListData>
               </DataListRoot>
             </Box>
 
@@ -216,24 +208,14 @@ export default function DataListPage() {
               </Heading>
               {/* <DataListRoot layout={{ initial: 'vertical', sm: 'horizontal' }}> */}
               <DataListRoot direction="row">
-                <DataListItem>
-                  <DataListLabel>Name</DataListLabel>
-                  <DataListData>Vlad Moroz</DataListData>
-                </DataListItem>
-
-                <DataListItem>
-                  <DataListLabel>Email</DataListLabel>
-                  <DataListData>vlad@workos.com</DataListData>
-                </DataListItem>
-
-                <DataListItem>
-                  <DataListLabel>
-                    Lorem ipsum dolor sit amet consectetur adipscing elit
-                  </DataListLabel>
-                  <DataListData>
-                    <Link href="https://workos.com">WorkOS</Link>
-                  </DataListData>
-                </DataListItem>
+                <DataListLabel>Name</DataListLabel>
+                <DataListData>Vlad Moroz</DataListData>
+                <DataListLabel>Email</DataListLabel>
+                <DataListData>vlad@workos.com</DataListData>
+                <DataListLabel>Lorem ipsum dolor sit amet consectetur adipscing elit</DataListLabel>
+                <DataListData>
+                  <Link href="https://workos.com">WorkOS</Link>
+                </DataListData>
               </DataListRoot>
             </Box>
           </Box>

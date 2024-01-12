@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import { Responsive, withBreakpoints } from '../helpers';
 import { Flex } from './flex';
+import { Grid } from './grid';
 import { Text } from './text';
 import { DataListRootProps } from './data-list.props';
 
@@ -14,8 +15,11 @@ import { DataListRootProps } from './data-list.props';
  */
 
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
-  ({ children, gap = '4', direction = 'row', size = '2' }, forwardedRef) => (
-    <Flex asChild gap={gap} direction="column">
+  (
+    { children, gap = '4', direction = 'row', columns = 'minmax(200px, 1fr) 1fr', size = '2' },
+    forwardedRef
+  ) => (
+    <Grid asChild gap={gap} columns={columns}>
       <Text asChild size={size}>
         <dl
           ref={forwardedRef}
@@ -28,7 +32,7 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
           {children}
         </dl>
       </Text>
-    </Flex>
+    </Grid>
   )
 );
 
