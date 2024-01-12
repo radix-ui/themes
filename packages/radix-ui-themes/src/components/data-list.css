@@ -31,6 +31,12 @@
   }
 }
 
+.rt-DataListRoot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--data-list-gap);
+}
+
 .rt-DataListItem {
   position: relative;
   box-sizing: border-box;
