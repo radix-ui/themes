@@ -8,7 +8,6 @@ import {
   DataListLabel,
   Flex,
   Theme,
-  Container,
   Text,
   Heading,
   Button,
@@ -106,8 +105,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With varied content
               </Heading>
-              {/* <DataListRoot layout={{ initial: 'vertical', sm: 'horizontal' }}> */}
-              <DataListRoot direction="row">
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }}>
                 <DataListItem>
                   <DataListLabel>Status</DataListLabel>
                   <DataListData>
@@ -209,8 +207,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With long label
               </Heading>
-              {/* <DataListRoot layout={{ initial: 'vertical', sm: 'horizontal' }}> */}
-              <DataListRoot direction="row" labelWidth="350px">
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }} labelWidth="350px">
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>

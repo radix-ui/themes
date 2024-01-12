@@ -21,9 +21,9 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
         <dl
           ref={forwardedRef}
           className={classNames(
-            'DataListRoot',
-            withBreakpoints(gap, 'gap'),
-            withBreakpoints(direction, 'direction')
+            'rt-DataListRoot',
+            withBreakpoints(gap, 'rt-r-gap'),
+            withBreakpoints(direction, 'rt-r-direction')
           )}
           style={
             {
@@ -51,8 +51,8 @@ const DataListItem = React.forwardRef<HTMLDivElement, DataListItemProps>(
       ref={forwardedRef}
       className={classNames(
         className,
-        'DataListItem',
-        withBreakpoints(align, 'va', {
+        'rt-DataListItem',
+        withBreakpoints(align, 'rt-r-va', {
           start: 'top',
           center: 'middle',
           end: 'bottom',
@@ -73,7 +73,7 @@ const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>(
   ({ className, style, width, ...props }, forwardedRef) => (
     <dt
       ref={forwardedRef}
-      className={classNames(className, 'DataListLabel')}
+      className={classNames(className, 'rt-DataListLabel')}
       style={
         {
           ...style,
@@ -88,9 +88,9 @@ DataListLabel.displayName = 'DataListLabel';
 
 const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'dd'>>(
   ({ children, className, ...props }, forwardedRef) => (
-    <dd ref={forwardedRef} className={classNames(className, 'DataListData')} {...props}>
-      <span className="DataListDataInner">
-        <span className="DataListDataInnerContents">{children}</span>
+    <dd ref={forwardedRef} className={classNames(className, 'rt-DataListData')} {...props}>
+      <span className="rt-DataListDataInner">
+        <span className="rt-DataListDataInnerContents">{children}</span>
       </span>
     </dd>
   )
