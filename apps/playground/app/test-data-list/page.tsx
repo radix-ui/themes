@@ -20,7 +20,7 @@ export default function DataListPage() {
     <html>
       <body>
         <Theme>
-          <Box ml="5" style={{ maxWidth: '688px;', margin: 'auto' }}>
+          <Box ml="5" style={{ maxWidth: '688px', margin: 'auto' }}>
             <Flex gap="2" mt="4" direction="column">
               <Text weight="medium" mb="2">
                 Default
