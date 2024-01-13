@@ -143,6 +143,8 @@
   .rt-r-direction-row .rt-DataListLabel {
     white-space: nowrap;
     width: var(--data-list-label-width);
+    min-width: var(--data-list-label-min-width);
+    max-width: var(--data-list-label-max-width);
     flex-shrink: 0;
   }
 }

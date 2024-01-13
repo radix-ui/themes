@@ -72,16 +72,20 @@ DataListItem.displayName = 'DataListItem';
 
 interface DataListLabelProps extends React.ComponentPropsWithRef<'dt'> {
   width?: number | string;
+  minWidth?: number | string;
+  maxWidth?: number | string;
 }
 
 const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>(
-  ({ className, style, width = '200px', ...props }, forwardedRef) => (
+  ({ className, style, width, minWidth = '200px', maxWidth, ...props }, forwardedRef) => (
     <dt
       ref={forwardedRef}
       className={classNames(className, 'rt-DataListLabel')}
       style={
         {
           '--data-list-label-width': typeof width === 'number' ? `${width}px` : width,
+          '--data-list-label-min-width': typeof width === 'number' ? `${width}px` : minWidth,
+          '--data-list-label-max-width': typeof width === 'number' ? `${width}px` : maxWidth,
           ...style,
         } as React.CSSProperties
       }
