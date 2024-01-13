@@ -11,10 +11,6 @@ import {
 import { Text } from './text';
 import { dataListPropDefs } from './data-list.props';
 
-/*
- * TODO
- * - add support for minWidth maxWidth for label
- */
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
 interface DataListRootProps
   extends React.ComponentPropsWithoutRef<'dl'>,
