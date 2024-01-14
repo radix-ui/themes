@@ -8,17 +8,16 @@ type PropDefsWithClassName<T> = T extends Record<string, PropDef>
   ? { [K in keyof T]: T[K] extends { className: string } ? K : never }[keyof T]
   : never;
 
-// type UnionKeys<T> = T extends any ? keyof T : never;
-// type PropDefsMerged<T extends Record<string, PropDef>[]> = {
-//   [K in UnionKeys<T[number]>]: PropDef;
-// };
-// function mergeObjects<T extends Record<string, PropDef>[]>(...args: T): PropDefsMerged<T> {
-//   return Object.assign({}, ...args);
-// }
 function mergePropDefs<T extends Record<string, PropDef>[]>(...args: T): Record<string, PropDef> {
   return Object.assign({}, ...args);
 }
 
+/**
+ * Takes props, checks them against prop defs that have a `className` on them,
+ * adds necessary CSS classes and inline styles, and returns the props without
+ * the corresponding prop defs that were used to formulate the new `className`
+ * and `style` values. Also applies prop def defaults to every prop.
+ */
 function extractProps<
   P extends { className?: string; style?: React.CSSProperties; [key: string]: any },
   T extends Record<string, PropDef>[]

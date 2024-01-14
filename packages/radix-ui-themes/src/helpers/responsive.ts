@@ -108,13 +108,13 @@ function getResponsiveCustomProperties({
 }: GetResponsiveCustomPropertiesOptions) {
   let styles: Record<string, string | undefined> = {};
 
-  // Don't generate custom properties if the value is one of the prop values
+  // Don't generate custom properties if the value is not arbitrary
   if (!value || (typeof value === 'string' && propValues.includes(value))) {
     return undefined;
   }
 
   if (typeof value === 'string') {
-    const customProperties = customProperty.split(',').map((str) => str.trim());
+    const customProperties = getCustomProperties(customProperty);
     styles = Object.fromEntries(customProperties.map((prop) => [prop, value]));
   }
 
@@ -128,9 +128,9 @@ function getResponsiveCustomProperties({
       }
 
       const value = object[bp];
-      const customProperties = customProperty.split(',').map((str) => str.trim());
+      const customProperties = getCustomProperties(customProperty);
 
-      // Don't generate a custom property if the value is one of the prop values
+      // Don't generate a custom property if the value is not arbitrary
       if (propValues.includes(value)) {
         continue;
       }
@@ -154,6 +154,12 @@ function getResponsiveCustomProperties({
   }
 
   return styles;
+}
+
+function getCustomProperties(str: `--${string}`) {
+  // Split comma-separated custom properties. This is an escape hatch for
+  // when you need to generate multiple custom properties with the same value.
+  return str.split(',').map((str) => str.trim());
 }
 
 function isResponsiveObject<Value extends string>(

@@ -17,7 +17,6 @@ const textFieldPropDefs = {
   radius: typeof radiusProp;
 };
 
-// TODO why does text field slot need a color prop?
 const textFieldSlotPropDefs = {
   color: colorProp,
   gap: flexPropDefs.gap,
