@@ -4,16 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { composeEventHandlers } from '@radix-ui/primitive';
 import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props';
-import {
-  extractMarginProps,
-  extractPaddingProps,
-  extractProps,
-  getMarginStyles,
-  getResponsiveClassNames,
-  getResponsiveStyles,
-  marginPropDefs,
-  mergeStyles,
-} from '../helpers';
+import { extractMarginProps, extractProps, marginPropDefs } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 

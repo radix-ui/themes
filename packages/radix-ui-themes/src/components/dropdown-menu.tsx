@@ -10,11 +10,12 @@ import {
   dropdownMenuItemPropDefs,
   dropdownMenuCheckboxItemPropDefs,
 } from './dropdown-menu.props';
-import { extractProps, getResponsiveClassNames, marginPropDefs } from '../helpers';
+import { extractProps } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { ThickCheckIcon, ThickChevronRightIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
+import { baseMenuContentPropDefs } from './base-menu.props';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -271,8 +272,11 @@ const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, children, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
+  const { className, children, container, forceMount, ...subContentProps } = extractProps(
+    { size, variant, color, highContrast, ...props },
+    baseMenuContentPropDefs
+  );
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
@@ -290,13 +294,6 @@ const DropdownMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-DropdownMenuContent',
             'rt-DropdownMenuSubContent',
-            getResponsiveClassNames({
-              className: 'rt-r-size',
-              value: size,
-              propValues: dropdownMenuContentPropDefs.size.values,
-            }),
-            `rt-variant-${variant}`,
-            { 'rt-high-contrast': highContrast },
             className
           )}
         >

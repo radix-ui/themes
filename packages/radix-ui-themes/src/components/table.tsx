@@ -1,16 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props';
-import {
-  extractPaddingProps,
-  extractProps,
-  extractWidthProps,
-  getPaddingStyles,
-  getResponsiveClassNames,
-  getWidthStyles,
-  marginPropDefs,
-  mergeStyles,
-} from '../helpers';
+import { extractProps, getResponsiveClassNames, marginPropDefs } from '../helpers';
 import { ScrollArea } from './scroll-area';
 import type { MarginProps, GetPropDefTypes } from '../helpers';
 

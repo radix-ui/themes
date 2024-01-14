@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import { alertDialogContentPropDefs } from './alert-dialog.props';
-import { extractProps, getResponsiveClassNames } from '../helpers';
+import { extractProps } from '../helpers';
 import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
