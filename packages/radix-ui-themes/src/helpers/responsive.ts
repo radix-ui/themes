@@ -49,10 +49,6 @@ function getResponsiveClassNames({
     return getBaseClassName(className, value, parseValue);
   }
 
-  if (allowArbitraryValues) {
-    return className;
-  }
-
   if (isResponsiveObject(value)) {
     const object = value;
 
@@ -77,6 +73,10 @@ function getResponsiveClassNames({
     }
 
     return classNames.join(' ');
+  }
+
+  if (allowArbitraryValues) {
+    return className;
   }
 }
 
@@ -156,16 +156,19 @@ function getResponsiveCustomProperties({
   return styles;
 }
 
+// Split comma-separated custom properties. This is an escape hatch for
+// when you need to generate multiple custom properties with the same value.
 function getCustomProperties(str: `--${string}`) {
-  // Split comma-separated custom properties. This is an escape hatch for
-  // when you need to generate multiple custom properties with the same value.
   return str.split(',').map((str) => str.trim());
 }
 
 function isResponsiveObject<Value extends string>(
   obj: Responsive<Value | Omit<string, Value>> | undefined
 ): obj is Record<Breakpoints, string> {
-  return typeof obj === 'object' && Object.keys(obj).some((key) => key in breakpoints);
+  return (
+    typeof obj === 'object' &&
+    Object.keys(obj).some((key) => (breakpoints as readonly string[]).includes(key))
+  );
 }
 
 export {

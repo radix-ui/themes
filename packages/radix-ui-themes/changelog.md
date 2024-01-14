@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.1.0
+## 2.1.0 [Unreleased]
 
 - General
   - Add the following props to all layout components:
