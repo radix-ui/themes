@@ -1,16 +1,29 @@
 import React from 'react';
-import type { Responsive } from '../breakpoints';
+import type { Responsive } from '../responsive';
 import type { StringOrValue } from '../string-or-value';
 
-type BooleanPropDef = { type: 'boolean'; default?: boolean; required?: boolean };
-type StringPropDef = { type: 'string'; default?: string; required?: boolean };
-type StringOrNumberPropDef = {
-  type: 'string | number';
-  default?: string | number;
+type BooleanPropDef = {
+  type: 'boolean';
+  default?: boolean;
+  required?: boolean;
+  className?: string;
+};
+type StringPropDef = {
+  type: 'string';
+  default?: string;
   required?: boolean;
 };
-type ReactNodePropDef = { type: 'ReactNode'; default?: React.ReactNode; required?: boolean };
-type EnumPropDef<T> = { type: 'enum'; values: readonly T[]; default?: T; required?: boolean };
+type ReactNodePropDef = {
+  type: 'ReactNode';
+  default?: React.ReactNode;
+  required?: boolean;
+};
+type EnumPropDef<T> = {
+  type: 'enum';
+  values: readonly T[];
+  default?: T;
+  required?: boolean;
+};
 type EnumOrStringPropDef<T> = {
   type: 'enum | string';
   values: readonly T[];
@@ -18,13 +31,32 @@ type EnumOrStringPropDef<T> = {
   required?: boolean;
 };
 
+type NonStylingPropDef = {
+  className?: never;
+  customProperty?: never;
+  parseValue?: never;
+};
+
+type StylingPropDef = {
+  className: string;
+  parseValue?: (value: string) => string | undefined;
+};
+
+type ArbitraryStylingPropDef = {
+  className: string;
+  customProperty: `--${string}`;
+  parseValue?: (value: string) => string | undefined;
+};
+
 type RegularPropDef<T> =
-  | BooleanPropDef
-  | StringPropDef
-  | StringOrNumberPropDef
   | ReactNodePropDef
-  | EnumPropDef<T>
-  | EnumOrStringPropDef<T>;
+  | BooleanPropDef
+  | (StringPropDef & ArbitraryStylingPropDef)
+  | (StringPropDef & NonStylingPropDef)
+  | (EnumPropDef<T> & StylingPropDef)
+  | (EnumPropDef<T> & NonStylingPropDef)
+  | (EnumOrStringPropDef<T> & ArbitraryStylingPropDef)
+  | (EnumOrStringPropDef<T> & NonStylingPropDef);
 type ResponsivePropDef<T = any> = RegularPropDef<T> & { responsive: true };
 type PropDef<T = any> = RegularPropDef<T> | ResponsivePropDef<T>;
 
@@ -32,7 +64,6 @@ type PropDef<T = any> = RegularPropDef<T> | ResponsivePropDef<T>;
 type GetPropDefType<Def> =
 	  Def extends BooleanPropDef ? (Def extends ResponsivePropDef ? Responsive<boolean> : boolean)
   : Def extends StringPropDef ? (Def extends ResponsivePropDef ? Responsive<string> : string)
-  : Def extends StringOrNumberPropDef ? (Def extends ResponsivePropDef ? Responsive<string | number> : string | number)
   : Def extends ReactNodePropDef ? (Def extends ResponsivePropDef ? Responsive<React.ReactNode> : React.ReactNode)
   : Def extends EnumOrStringPropDef<infer Type> ? (Def extends ResponsivePropDef<infer Type extends string> ? Responsive<StringOrValue<Type>> : Type)
   : Def extends EnumPropDef<infer Type> ? (Def extends ResponsivePropDef<infer Type> ? Responsive<Type> : Type)
@@ -42,4 +73,4 @@ type GetPropDefTypes<P> = {
   [K in keyof P]?: GetPropDefType<P[K]>;
 };
 
-export type { PropDef, GetPropDefTypes };
+export type { PropDef, ResponsivePropDef, GetPropDefTypes };

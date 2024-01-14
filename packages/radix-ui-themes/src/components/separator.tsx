@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { separatorPropDefs } from './separator.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -15,24 +15,17 @@ interface SeparatorProps
     MarginProps,
     SeparatorOwnProps {}
 const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const {
-    className,
-    size = separatorPropDefs.size.default,
-    color = separatorPropDefs.color.default,
-    ...separatorProps
-  } = marginRest;
+  const { className, color, ...separatorProps } = extractProps(
+    props,
+    separatorPropDefs,
+    marginPropDefs
+  );
   return (
     <SeparatorPrimitive.Root
       data-accent-color={color}
       {...separatorProps}
       ref={forwardedRef}
-      className={classNames(
-        'rt-Separator',
-        className,
-        withBreakpoints(size, 'rt-r-size'),
-        withMarginProps(marginProps)
-      )}
+      className={classNames('rt-Separator', className)}
     />
   );
 });

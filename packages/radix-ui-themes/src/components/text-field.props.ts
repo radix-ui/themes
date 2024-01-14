@@ -1,13 +1,13 @@
-import { colorProp, radiusProp } from '../helpers';
+import type { PropDef } from '../helpers';
+import { colorProp, paddingPropDefs, radiusProp } from '../helpers';
 import { flexPropDefs } from './flex.props';
-import { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;
 
 const textFieldPropDefs = {
-  size: { type: 'enum', values: sizes, default: '2', responsive: true },
-  variant: { type: 'enum', values: variants, default: 'surface' },
+  size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   color: colorProp,
   radius: radiusProp,
 } satisfies {
@@ -17,12 +17,19 @@ const textFieldPropDefs = {
   radius: typeof radiusProp;
 };
 
+// TODO why does text field slot need a color prop?
 const textFieldSlotPropDefs = {
   color: colorProp,
   gap: flexPropDefs.gap,
+  px: paddingPropDefs.px,
+  pl: paddingPropDefs.pl,
+  pr: paddingPropDefs.pr,
 } satisfies {
   color: typeof colorProp;
   gap: typeof flexPropDefs.gap;
+  px: typeof paddingPropDefs.px;
+  pl: typeof paddingPropDefs.pl;
+  pr: typeof paddingPropDefs.pr;
 };
 
 export { textFieldPropDefs, textFieldSlotPropDefs };

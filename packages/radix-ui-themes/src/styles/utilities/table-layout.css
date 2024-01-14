@@ -1,0 +1,8 @@
+@breakpoints {
+  .rt-r-tl-auto {
+    table-layout: auto;
+  }
+  .rt-r-tl-fixed {
+    table-layout: fixed;
+  }
+}

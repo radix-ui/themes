@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { avatarPropDefs } from './avatar.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -18,31 +18,18 @@ interface AvatarProps
   fallback: NonNullable<AvatarOwnProps['fallback']>;
 }
 const Avatar = React.forwardRef<AvatarElement, AvatarProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const {
-    className,
-    style,
-    size = avatarPropDefs.size.default,
-    variant = avatarPropDefs.variant.default,
-    color = avatarPropDefs.color.default,
-    highContrast = avatarPropDefs.highContrast.default,
-    radius = avatarPropDefs.radius.default,
-    fallback,
-    ...imageProps
-  } = marginRest;
+  const { className, style, color, radius, fallback, ...imageProps } = extractProps(
+    props,
+    avatarPropDefs,
+    marginPropDefs
+  );
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'loaded' | 'error'>('idle');
   return (
+    // TODO as a rule, should we rather spread the props on root?
     <AvatarPrimitive.Root
       data-accent-color={color}
       data-radius={radius}
-      className={classNames(
-        'rt-AvatarRoot',
-        className,
-        withBreakpoints(size, 'rt-r-size'),
-        `rt-variant-${variant}`,
-        { 'rt-high-contrast': highContrast },
-        withMarginProps(marginProps)
-      )}
+      className={classNames('rt-AvatarRoot', className)}
       style={style}
     >
       {status === 'idle' || status === 'loading' ? <span className="rt-AvatarFallback" /> : null}

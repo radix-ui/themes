@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { popoverContentPropDefs } from './popover.props';
-import { withBreakpoints } from '../helpers';
+import { extractProps } from '../helpers';
 import { Theme } from '../theme';
 
 import type { GetPropDefTypes } from '../helpers';
@@ -32,13 +32,10 @@ interface PopoverContentProps
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {
-    const {
-      className,
-      forceMount,
-      container,
-      size = popoverContentPropDefs.size.default,
-      ...contentProps
-    } = props;
+    const { className, forceMount, container, ...contentProps } = extractProps(
+      props,
+      popoverContentPropDefs
+    );
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -48,12 +45,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
             collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
-            className={classNames(
-              'rt-PopperContent',
-              'rt-PopoverContent',
-              className,
-              withBreakpoints(size, 'rt-r-size')
-            )}
+            className={classNames('rt-PopperContent', 'rt-PopoverContent', className)}
           />
         </Theme>
       </PopoverPrimitive.Portal>

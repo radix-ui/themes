@@ -2,15 +2,33 @@
 
 ## 2.1.0
 
-- `Button`, `IconButton`:
+- General
+  - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
+  - Add `flexBasis`, `gridColumn`, `gridColumnStart`, `gridColumnEnd`, `gridRow`, `gridRowStart`, `gridRowEnd`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` props to the layout components
+  - Rework all layout props to allow arbitrary CSS values, including when used with the responsive object syntax. Props that support arbitrary values include `width`, `minWidth`, `maxWidth`, `height`, `minHeight`, `maxHeight`, `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`, `inset`, `top`, `right`, `bottom`, `left`, `flexBasis`, `flexShrink`, `flexGrow`, `gridColumn`, `gridColumnStart`, `gridColumnEnd`, `gridRow`, `gridRowStart`, `gridRowEnd`.
+  - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as a manual string values.
+- Container
+  - Fix incorrect `display="block"` value
+- 3 new components
+  - `Progress`
+  - `Skeleton`
+  - `Spinner`
+- `Button`, `IconButton`
   - Add new `loading` prop
-- `Progress`: New component
+- `Checkbox`, `RadioGroup`, `Switch`
+  - TODO refactored the component implementation
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
 - `Skeleton`: New component
 - `Spinner`: New component
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
+- `Table`
+  - Add new `layout` prop to control the `table-layout` style property
+  - Align `width` prop type signature and implementation on the `TableCell` part with the reworked `width` prop on the layout components
+  - Add `minWidth` and `maxWidth` props to the `TableCell` part
+- `TextAra`
+  - Add `radius` prop
 
 ## 2.0.3
 

@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { sliderPropDefs } from './slider.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -15,35 +15,22 @@ interface SliderProps
     MarginProps,
     SliderOwnProps {}
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const {
-    className,
-    size = sliderPropDefs.size.default,
-    variant = sliderPropDefs.variant.default,
-    color = sliderPropDefs.color.default,
-    highContrast = sliderPropDefs.highContrast.default,
-    radius = sliderPropDefs.radius.default,
-    tabIndex,
-    ...sliderProps
-  } = marginRest;
+  const { className, color, radius, tabIndex, ...sliderProps } = extractProps(
+    props,
+    sliderPropDefs,
+    marginPropDefs
+  );
   return (
     <SliderPrimitive.Root
       data-accent-color={color}
       data-radius={radius}
       ref={forwardedRef}
       {...sliderProps}
-      className={classNames(
-        'rt-SliderRoot',
-        className,
-        withBreakpoints(size, 'rt-r-size'),
-        `rt-variant-${variant}`,
-        { 'rt-high-contrast': highContrast },
-        withMarginProps(marginProps)
-      )}
+      className={classNames('rt-SliderRoot', className)}
     >
       <SliderPrimitive.Track className="rt-SliderTrack">
         <SliderPrimitive.Range
-          className={classNames('rt-SliderRange', { 'rt-high-contrast': highContrast })}
+          className={classNames('rt-SliderRange', { 'rt-high-contrast': props.highContrast })}
           data-inverted={sliderProps.inverted ? '' : undefined}
         />
       </SliderPrimitive.Track>

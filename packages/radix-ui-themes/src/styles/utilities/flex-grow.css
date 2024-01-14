@@ -1,9 +1,42 @@
 @breakpoints {
+  .rt-r-fg {
+    /* Keep this selector here to maintain the source order */
+  }
   .rt-r-fg-0 {
     flex-grow: 0;
   }
-
   .rt-r-fg-1 {
     flex-grow: 1;
+  }
+}
+
+@media all {
+  .rt-r-fg {
+    flex-grow: var(--flex-grow);
+  }
+}
+@media (--xs) {
+  .xs\:rt-r-fg {
+    flex-grow: var(--flex-grow-xs);
+  }
+}
+@media (--sm) {
+  .sm\:rt-r-fg {
+    flex-grow: var(--flex-grow-sm);
+  }
+}
+@media (--md) {
+  .md\:rt-r-fg {
+    flex-grow: var(--flex-grow-md);
+  }
+}
+@media (--lg) {
+  .lg\:rt-r-fg {
+    flex-grow: var(--flex-grow-lg);
+  }
+}
+@media (--xl) {
+  .xl\:rt-r-fg {
+    flex-grow: var(--flex-grow-xl);
   }
 }

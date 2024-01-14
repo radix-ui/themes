@@ -3,11 +3,10 @@ import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { baseButtonPropDefs } from './base-button.props';
 import {
-  extractMarginProps,
-  withMarginProps,
-  withBreakpoints,
-  mapResponsiveProp,
+  extractProps,
   mapButtonSizeToSpinnerSize,
+  mapResponsiveProp,
+  marginPropDefs,
 } from '../helpers';
 import { Flex } from './flex';
 import { Spinner } from './spinner';
@@ -24,20 +23,16 @@ interface BaseButtonProps
   asChild?: boolean;
 }
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+  const { size = baseButtonPropDefs.size.default } = props;
   const {
     className,
     children,
     asChild = false,
-    size = baseButtonPropDefs.size.default,
-    variant = baseButtonPropDefs.variant.default,
-    color = baseButtonPropDefs.color.default,
-    highContrast = baseButtonPropDefs.highContrast.default,
-    radius = baseButtonPropDefs.radius.default,
-    loading = baseButtonPropDefs.loading.default,
-    disabled = loading,
+    color,
+    radius,
+    disabled = props.loading,
     ...baseButtonProps
-  } = marginRest;
+  } = extractProps(props, baseButtonPropDefs, marginPropDefs);
   const Comp = asChild ? Slot : 'button';
   return (
     <Comp
@@ -47,21 +42,10 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-radius={radius}
       {...baseButtonProps}
       ref={forwardedRef}
-      className={classNames(
-        'rt-reset',
-        'rt-BaseButton',
-        className,
-        withBreakpoints(size, 'rt-r-size'),
-        `rt-variant-${variant}`,
-        {
-          'rt-high-contrast': highContrast,
-          'rt-loading': loading,
-        },
-        withMarginProps(marginProps)
-      )}
+      className={classNames('rt-reset', 'rt-BaseButton', className)}
       disabled={disabled}
     >
-      {loading ? (
+      {props.loading ? (
         <>
           {/**
            * We need a wrapper to set `visibility: hidden` to hide the button content whilst we show the `Spinner`.

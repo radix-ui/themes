@@ -9,7 +9,7 @@ const colorProp = {
 
 // `interface HTMLAttributes` includes 'color', which may lead to clashes
 type PropsWithoutRefOrColor<T extends React.ElementType> = Omit<
-  React.ComponentPropsWithRef<T>,
+  React.ComponentPropsWithoutRef<T>,
   'color'
 >;
 

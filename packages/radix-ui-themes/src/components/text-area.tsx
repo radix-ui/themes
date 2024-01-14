@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { textAreaPropDefs } from './text-area.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -12,26 +12,16 @@ interface TextAreaProps
     MarginProps,
     TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-  const {
-    className,
-    size = textAreaPropDefs.size.default,
-    variant = textAreaPropDefs.variant.default,
-    color = textAreaPropDefs.color.default,
-    style,
-    ...textAreaProps
-  } = marginRest;
+  const { className, color, radius, ...textAreaProps } = extractProps(
+    props,
+    textAreaPropDefs,
+    marginPropDefs
+  );
   return (
     <div
       data-accent-color={color}
-      style={style}
-      className={classNames(
-        'rt-TextAreaRoot',
-        className,
-        withBreakpoints(size, 'rt-r-size'),
-        `rt-variant-${variant}`,
-        withMarginProps(marginProps)
-      )}
+      data-radius={radius}
+      className={classNames('rt-TextAreaRoot', className)}
     >
       <textarea className="rt-TextAreaInput" ref={forwardedRef} {...textAreaProps} />
       <div className="rt-TextAreaChrome" />

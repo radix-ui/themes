@@ -1,18 +1,18 @@
 :where(.radix-themes) {
   --switch-disabled-blend-mode: multiply;
-  --switch-button-high-contrast-checked-color-overlay: var(--black-a8);
-  --switch-button-high-contrast-checked-active-before-filter: contrast(0.82) saturate(1.2)
-    brightness(1.16);
+  --switch-high-contrast-checked-color-overlay: var(--black-a8);
+  --switch-high-contrast-checked-active-before-filter: contrast(0.82) saturate(1.2) brightness(1.16);
 }
 
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --switch-disabled-blend-mode: screen;
-  --switch-button-high-contrast-checked-color-overlay: transparent;
-  --switch-button-high-contrast-checked-active-before-filter: brightness(1.08);
+  --switch-high-contrast-checked-color-overlay: transparent;
+  --switch-high-contrast-checked-active-before-filter: brightness(1.08);
 }
 
 .rt-SwitchRoot {
+  position: relative;
   display: inline-flex;
   align-items: center;
   vertical-align: top;
@@ -21,31 +21,21 @@
   /* Align with text line height when possible, fall back to own height */
   height: var(--line-height, var(--switch-height));
 
-  border-radius: var(--switch-border-radius);
-
-  --switch-padding: 1px;
   --switch-width: calc(var(--switch-height) * 1.75);
-  --switch-thumb-size: calc(var(--switch-height) - var(--switch-padding) * 2);
+  --switch-thumb-inset: 1px;
+  --switch-thumb-size: calc(var(--switch-height) - var(--switch-thumb-inset) * 2);
   --switch-thumb-translate-x: calc(var(--switch-width) - var(--switch-height));
-}
 
-.rt-SwitchButton {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  width: var(--switch-width);
-  height: var(--switch-height);
-  padding: var(--switch-padding);
-  border-radius: inherit;
-  cursor: var(--cursor-switch);
-
-  /* A pseudo element for the background color */
   &::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
+    display: block;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    border-radius: var(--switch-border-radius);
+    cursor: var(--cursor-switch);
+
+    /* pointer-events: none; */
+
     transition: background-position, background-color, box-shadow, filter;
     transition-timing-function: linear, ease-in-out, ease-in-out, ease-in-out;
     background-repeat: no-repeat;
@@ -56,6 +46,7 @@
      */
     background-size: calc(var(--switch-width) * 2 + var(--switch-height)) 100%;
   }
+
   &:where([data-state='unchecked'])::before {
     transition-duration: 120ms, 140ms, 140ms, 140ms;
     background-position-x: 100%;
@@ -67,7 +58,7 @@
   &:where(:active)::before {
     transition-duration: 30ms;
   }
-  &:where(:focus-visible) {
+  &:where(:focus-visible)::before {
     outline: 2px solid var(--color-focus-root);
     outline-offset: 2px;
   }
@@ -75,10 +66,11 @@
 
 .rt-SwitchThumb {
   background-color: white;
-  position: relative;
+  position: absolute;
+  left: var(--switch-thumb-inset);
   width: var(--switch-thumb-size);
   height: var(--switch-thumb-size);
-  border-radius: calc(var(--switch-border-radius) - var(--switch-padding));
+  border-radius: calc(var(--switch-border-radius) - var(--switch-thumb-inset));
   transition: transform 140ms cubic-bezier(0.45, 0.05, 0.55, 0.95), box-shadow 140ms ease-in-out;
 
   &:where([data-state='checked']) {
@@ -118,48 +110,46 @@
 /* surface */
 
 :where(.radix-themes) {
-  --switch-button-surface-checked-active-filter: brightness(0.92) saturate(1.1);
+  --switch-root-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --switch-button-surface-checked-active-filter: brightness(1.08);
+  --switch-root-surface-checked-active-filter: brightness(1.08);
 }
 
 .rt-SwitchRoot:where(.rt-variant-surface) {
-  & :where(.rt-SwitchButton) {
+  &::before {
+    background-color: var(--gray-a3);
+    background-image: linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
+    box-shadow: inset 0 0 0 1px var(--gray-a5);
+  }
+  &:where(:active)::before {
+    background-color: var(--gray-a4);
+  }
+  &:where([data-state='checked']:active)::before {
+    filter: var(--switch-root-surface-checked-active-filter);
+  }
+  &:where(.rt-high-contrast) {
     &::before {
-      background-color: var(--gray-a3);
-      background-image: linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
-      box-shadow: inset 0 0 0 1px var(--gray-a5);
-    }
-    &:where(:active)::before {
-      background-color: var(--gray-a4);
+      /* prettier-ignore */
+      background-image:
+        linear-gradient(to right, var(--switch-high-contrast-checked-color-overlay) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
     }
     &:where([data-state='checked']:active)::before {
-      filter: var(--switch-button-surface-checked-active-filter);
+      filter: var(--switch-high-contrast-checked-active-before-filter);
     }
-    &:where(.rt-high-contrast) {
-      &::before {
-        /* prettier-ignore */
-        background-image:
-          linear-gradient(to right, var(--switch-button-high-contrast-checked-color-overlay) 40%, transparent 60%),
-          linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
-      }
-      &:where([data-state='checked']:active)::before {
-        filter: var(--switch-button-high-contrast-checked-active-before-filter);
-      }
-    }
-    &:where([data-disabled]) {
-      cursor: var(--cursor-disabled);
-      mix-blend-mode: var(--switch-disabled-blend-mode);
+  }
+  &:where([data-disabled]) {
+    mix-blend-mode: var(--switch-disabled-blend-mode);
 
-      &::before {
-        filter: none;
-        background-image: none;
-        background-color: var(--gray-a3);
-        box-shadow: inset 0 0 0 1px var(--gray-a3);
-      }
+    &::before {
+      filter: none;
+      background-image: none;
+      background-color: var(--gray-a3);
+      box-shadow: inset 0 0 0 1px var(--gray-a3);
+      cursor: var(--cursor-disabled);
     }
   }
 
@@ -189,56 +179,53 @@
 /* classic */
 
 :where(.radix-themes) {
-  --switch-button-surface-checked-active-filter: brightness(0.92) saturate(1.1);
+  --switch-root-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --switch-button-surface-checked-active-filter: brightness(1.08);
+  --switch-root-surface-checked-active-filter: brightness(1.08);
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic) {
-  & :where(.rt-SwitchButton) {
+  &::before {
+    background-image: linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
+    background-color: var(--gray-a4);
+    box-shadow: var(--shadow-1);
+  }
+  &:where([data-state='unchecked']:active)::before {
+    background-color: var(--gray-a5);
+  }
+  &:where([data-state='checked'])::before {
+    box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4),
+      inset 0 0 0 1px var(--black-a1), inset 0 1.5px 2px 0 var(--black-a2);
+  }
+  &:where([data-state='checked']:active)::before {
+    filter: var(--switch-root-surface-checked-active-filter);
+  }
+  &:where(.rt-high-contrast) {
     &::before {
-      background-image: linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
-      background-color: var(--gray-a4);
-      box-shadow: var(--shadow-1);
-    }
-    &:where([data-state='unchecked']:active)::before {
-      background-color: var(--gray-a5);
-    }
-    &:where([data-state='checked'])::before {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4),
-        inset 0 0 0 1px var(--black-a1), inset 0 1.5px 2px 0 var(--black-a2);
+      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2),
+        inset 0 1.5px 2px 0 var(--black-a2);
+
+      /* prettier-ignore */
+      background-image:
+        linear-gradient(to right, var(--switch-high-contrast-checked-color-overlay) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
     }
     &:where([data-state='checked']:active)::before {
-      filter: var(--switch-button-surface-checked-active-filter);
+      filter: var(--switch-high-contrast-checked-active-before-filter);
     }
-    &:where(.rt-high-contrast) {
-      &::before {
-        box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2),
-          inset 0 1.5px 2px 0 var(--black-a2);
+  }
+  &:where([data-disabled]) {
+    mix-blend-mode: var(--switch-disabled-blend-mode);
 
-        /* prettier-ignore */
-        background-image:
-          linear-gradient(to right, var(--switch-button-high-contrast-checked-color-overlay) 40%, transparent 60%),
-          linear-gradient(to right, var(--accent-9) 40%, transparent 60%);
-      }
-      &:where([data-state='checked']:active)::before {
-        filter: var(--switch-button-high-contrast-checked-active-before-filter);
-      }
-    }
-    &:where([data-disabled]) {
+    &::before {
+      filter: none;
+      background-image: none;
+      background-color: var(--gray-a5);
+      box-shadow: var(--shadow-1);
+      opacity: 0.5;
       cursor: var(--cursor-disabled);
-      background-color: var(--gray-a3);
-      mix-blend-mode: var(--switch-disabled-blend-mode);
-
-      &::before {
-        filter: none;
-        background-image: none;
-        background-color: transparent;
-        box-shadow: var(--shadow-1);
-        opacity: 0.5;
-      }
     }
   }
 
@@ -268,45 +255,43 @@
 /* soft */
 
 .rt-SwitchRoot:where(.rt-variant-soft) {
-  & :where(.rt-SwitchButton) {
-    /* prettier-ignore */
+  /* prettier-ignore */
+  &::before {
+    background-image:
+      linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
+      linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
+      /* Blend with white to increase contrast in dark mode */
+      linear-gradient(to right, var(--accent-a4) 40%, var(--white-a1) 60%),
+      linear-gradient(to right, var(--gray-a2) 40%, var(--gray-a3) 60%);
+  }
+  &:where([data-state='unchecked'])::before {
+    background-color: var(--gray-a3);
+  }
+  &:where(:active)::before {
+    background-color: var(--gray-a4);
+  }
+  &:where(.rt-high-contrast) {
     &::before {
+      /* prettier-ignore */
       background-image:
-        linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
-        linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
-        /* Blend with white to increase contrast in dark mode */
-        linear-gradient(to right, var(--accent-a4) 40%, var(--white-a1) 60%),
-        linear-gradient(to right, var(--gray-a2) 40%, var(--gray-a3) 60%);
+        linear-gradient(to right, var(--switch-high-contrast-checked-color-overlay) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
+        linear-gradient(to right, var(--accent-a6) 40%, var(--white-a1) 60%),
+        linear-gradient(to right, var(--accent-a3) 40%, var(--gray-a3) 60%);
     }
-    &:where([data-state='unchecked'])::before {
-      background-color: var(--gray-a3);
+    &:where([data-state='checked']:active)::before {
+      filter: var(--switch-high-contrast-checked-active-before-filter);
     }
-    &:where(:active)::before {
-      background-color: var(--gray-a4);
-    }
-    &:where(.rt-high-contrast) {
-      &::before {
-        /* prettier-ignore */
-        background-image:
-          linear-gradient(to right, var(--switch-button-high-contrast-checked-color-overlay) 40%, transparent 60%),
-          linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
-          linear-gradient(to right, var(--accent-a6) 40%, transparent 60%),
-          linear-gradient(to right, var(--accent-a6) 40%, var(--white-a1) 60%),
-          linear-gradient(to right, var(--accent-a3) 40%, var(--gray-a3) 60%);
-      }
-      &:where([data-state='checked']:active)::before {
-        filter: var(--switch-button-high-contrast-checked-active-before-filter);
-      }
-    }
-    &:where([data-disabled]) {
-      cursor: var(--cursor-disabled);
-      mix-blend-mode: var(--switch-disabled-blend-mode);
+  }
+  &:where([data-disabled]) {
+    mix-blend-mode: var(--switch-disabled-blend-mode);
 
-      &::before {
-        filter: none;
-        background-image: none;
-        background-color: var(--gray-a4);
-      }
+    &::before {
+      filter: none;
+      background-image: none;
+      background-color: var(--gray-a4);
+      cursor: var(--cursor-disabled);
     }
   }
 

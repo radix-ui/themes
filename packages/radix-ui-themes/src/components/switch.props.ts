@@ -5,8 +5,8 @@ const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;
 
 const switchPropDefs = {
-  size: { type: 'enum', values: sizes, default: '2', responsive: true },
-  variant: { type: 'enum', values: variants, default: 'surface' },
+  size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
+  variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   color: colorProp,
   highContrast: highContrastProp,
   radius: radiusProp,

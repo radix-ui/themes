@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { selectRootPropDefs, selectTriggerPropDefs, selectContentPropDefs } from './select.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { ThickCheckIcon, ChevronDownIcon } from '../icons';
 
@@ -41,16 +41,13 @@ interface SelectTriggerProps
 }
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
   (props, forwardedRef) => {
-    const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-    const {
-      className,
-      variant = selectTriggerPropDefs.variant.default,
-      color = selectTriggerPropDefs.color.default,
-      radius = selectTriggerPropDefs.radius.default,
-      placeholder,
-      ...triggerProps
-    } = marginRest;
-    const { size } = React.useContext(SelectContext);
+    const context = React.useContext(SelectContext);
+    const { className, color, radius, placeholder, ...triggerProps } = extractProps(
+      { size: context?.size, ...props },
+      { size: selectRootPropDefs.size },
+      selectTriggerPropDefs,
+      marginPropDefs
+    );
     return (
       <SelectPrimitive.Trigger asChild>
         <button
@@ -58,14 +55,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
           data-radius={radius}
           {...triggerProps}
           ref={forwardedRef}
-          className={classNames(
-            'rt-reset',
-            'rt-SelectTrigger',
-            className,
-            withBreakpoints(size, 'rt-r-size'),
-            `rt-variant-${variant}`,
-            withMarginProps(marginProps)
-          )}
+          className={classNames('rt-reset', 'rt-SelectTrigger', className)}
         >
           <span className="rt-SelectTriggerInner">
             <SelectPrimitive.Value placeholder={placeholder} />
@@ -89,16 +79,12 @@ interface SelectContentProps
 }
 const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>(
   (props, forwardedRef) => {
-    const {
-      className,
-      children,
-      variant = selectContentPropDefs.variant.default,
-      highContrast = selectContentPropDefs.highContrast.default,
-      color = selectContentPropDefs.color.default,
-      container,
-      ...contentProps
-    } = props;
-    const { size } = React.useContext(SelectContext);
+    const context = React.useContext(SelectContext);
+    const { className, children, color, container, ...contentProps } = extractProps(
+      { size: context?.size, ...props },
+      { size: selectRootPropDefs.size },
+      selectContentPropDefs
+    );
     const themeContext = useThemeContext();
     const resolvedColor = color ?? themeContext.accentColor;
     return (
@@ -112,10 +98,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
             className={classNames(
               { 'rt-PopperContent': contentProps.position === 'popper' },
               'rt-SelectContent',
-              className,
-              withBreakpoints(size, 'rt-r-size'),
-              `rt-variant-${variant}`,
-              { 'rt-high-contrast': highContrast }
+              className
             )}
           >
             <ScrollAreaPrimitive.Root type="auto" className="rt-ScrollAreaRoot">

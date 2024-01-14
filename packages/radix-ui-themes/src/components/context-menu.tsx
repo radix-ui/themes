@@ -10,7 +10,7 @@ import {
   contextMenuItemPropDefs,
   contextMenuCheckboxItemPropDefs,
 } from './context-menu.props';
-import { withBreakpoints } from '../helpers';
+import { getResponsiveClassNames } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { ThickCheckIcon, ThickChevronRightIcon } from '../icons';
 
@@ -68,10 +68,14 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-ContextMenuContent',
-              className,
-              withBreakpoints(size, 'rt-r-size'),
+              getResponsiveClassNames({
+                className: 'rt-r-size',
+                value: size,
+                propValues: contextMenuContentPropDefs.size.values,
+              }),
               `rt-variant-${variant}`,
-              { 'rt-high-contrast': highContrast }
+              { 'rt-high-contrast': highContrast },
+              className
             )}
           >
             <ScrollArea type="auto">
@@ -127,7 +131,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         data-accent-color={color}
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-ContextMenuItem', className)}
+        className={classNames('rt-BaseMenuItem', 'rt-ContextMenuItem', 'rt-reset', className)}
       >
         <Slottable>{children}</Slottable>
         {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
@@ -291,10 +295,14 @@ const ContextMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-ContextMenuContent',
             'rt-ContextMenuSubContent',
-            className,
-            withBreakpoints(size, 'rt-r-size'),
+            getResponsiveClassNames({
+              className: 'rt-r-size',
+              value: size,
+              propValues: contextMenuContentPropDefs.size.values,
+            }),
             `rt-variant-${variant}`,
-            { 'rt-high-contrast': highContrast }
+            { 'rt-high-contrast': highContrast },
+            className
           )}
         >
           <ScrollArea type="auto">

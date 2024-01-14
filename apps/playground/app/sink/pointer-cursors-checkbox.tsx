@@ -1,5 +1,5 @@
 'use client';
-import { Box, Checkbox, Text } from '@radix-ui/themes';
+import { Box, Checkbox, Flex, Text } from '@radix-ui/themes';
 import React from 'react';
 
 export function PointerCursorsCheckbox() {
@@ -7,10 +7,12 @@ export function PointerCursorsCheckbox() {
 
   return (
     <Box>
-      <label>
-        <Checkbox mr="2" onCheckedChange={(value) => setChecked(!!value)} />
-        <Text size="2">Use pointer cursors</Text>
-      </label>
+      <Text as="label" size="2">
+        <Flex gap="2">
+          <Checkbox onCheckedChange={(value) => setChecked(!!value)} />
+          Use pointer cursors
+        </Flex>
+      </Text>
       {checked && (
         <style>
           {`
