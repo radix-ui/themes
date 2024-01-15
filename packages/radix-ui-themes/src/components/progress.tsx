@@ -13,9 +13,7 @@ type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;
 interface ProgressProps
   extends Omit<PropsWithoutRefOrColor<typeof ProgressPrimitive.Root>, 'children'>,
     MarginProps,
-    ProgressOwnProps {
-  duration?: string;
-}
+    ProgressOwnProps {}
 const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwardedRef) => {
   const { className, style, color, radius, duration, ...progressProps } = extractProps(
     props,

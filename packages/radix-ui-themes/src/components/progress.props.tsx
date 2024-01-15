@@ -10,12 +10,14 @@ const progressPropDefs = {
   color: colorProp,
   highContrast: highContrastProp,
   radius: radiusProp,
+  duration: { type: 'string', default: undefined },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   color: typeof colorProp;
   highContrast: typeof highContrastProp;
   radius: typeof radiusProp;
+  duration: PropDef<string>;
 };
 
 export { progressPropDefs };
