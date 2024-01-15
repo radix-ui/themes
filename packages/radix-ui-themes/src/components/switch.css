@@ -107,12 +107,12 @@
 /* surface */
 
 :where(.radix-themes) {
-  --switch-root-surface-checked-active-filter: brightness(0.92) saturate(1.1);
+  --switch-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --switch-root-surface-checked-active-filter: brightness(1.08);
+  --switch-surface-checked-active-filter: brightness(1.08);
 }
 
 .rt-SwitchRoot:where(.rt-variant-surface) {
@@ -125,7 +125,7 @@
     background-color: var(--gray-a4);
   }
   &:where([data-state='checked']:active)::before {
-    filter: var(--switch-root-surface-checked-active-filter);
+    filter: var(--switch-surface-checked-active-filter);
   }
   &:where(.rt-high-contrast) {
     &::before {
@@ -176,11 +176,11 @@
 /* classic */
 
 :where(.radix-themes) {
-  --switch-root-surface-checked-active-filter: brightness(0.92) saturate(1.1);
+  --switch-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --switch-root-surface-checked-active-filter: brightness(1.08);
+  --switch-surface-checked-active-filter: brightness(1.08);
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic) {
@@ -197,7 +197,7 @@
       inset 0 0 0 1px var(--black-a1), inset 0 1.5px 2px 0 var(--black-a2);
   }
   &:where([data-state='checked']:active)::before {
-    filter: var(--switch-root-surface-checked-active-filter);
+    filter: var(--switch-surface-checked-active-filter);
   }
   &:where(.rt-high-contrast) {
     &::before {
