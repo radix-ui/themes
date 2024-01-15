@@ -4167,28 +4167,64 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {textAreaPropDefs.variant.values.map((variant) => (
-                              <th key={variant} style={{ textAlign: 'left' }}>
-                                {upperFirst(variant)}
+                            {textAreaPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
                               </th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {textAreaPropDefs.size.values.map((size) => (
-                            <tr key={size}>
-                              <td>Size {size}</td>
-                              {textAreaPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <TextArea
-                                    size={size}
-                                    variant={variant}
-                                    placeholder="Reply to comment"
-                                    style={{ width: 120 + Number(size) * 20 }}
-                                  />
-                                </td>
-                              ))}
-                            </tr>
+                          {textAreaPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              <tr>
+                                <td>Size 1</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextArea
+                                      size="1"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Reply to comment"
+                                      style={{ width: 140 }}
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 2</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextArea
+                                      size="2"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Reply to comment"
+                                      style={{ width: 160 }}
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 3</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextArea
+                                      size="3"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Reply to comment"
+                                      style={{ width: 180 }}
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                            </React.Fragment>
                           ))}
                         </tbody>
                       </table>

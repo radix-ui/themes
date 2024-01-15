@@ -12,7 +12,7 @@ interface TextAreaProps
     MarginProps,
     TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
-  const { className, color, radius, ...textAreaProps } = extractProps(
+  const { className, color, radius, style, ...textAreaProps } = extractProps(
     props,
     textAreaPropDefs,
     marginPropDefs
@@ -22,6 +22,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
       data-accent-color={color}
       data-radius={radius}
       className={classNames('rt-TextAreaRoot', className)}
+      style={style}
     >
       <textarea className="rt-TextAreaInput" ref={forwardedRef} {...textAreaProps} />
       <div className="rt-TextAreaChrome" />
