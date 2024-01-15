@@ -33,9 +33,6 @@
     height: var(--switch-height);
     border-radius: var(--switch-border-radius);
     cursor: var(--cursor-switch);
-
-    /* pointer-events: none; */
-
     transition: background-position, background-color, box-shadow, filter;
     transition-timing-function: linear, ease-in-out, ease-in-out, ease-in-out;
     background-repeat: no-repeat;
