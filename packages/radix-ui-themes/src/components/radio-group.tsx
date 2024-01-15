@@ -44,7 +44,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
       <RadioGroupPrimitive.Item
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rt-RadioGroupItem', 'rt-reset', className)}
+        className={classNames('rt-reset', 'rt-RadioGroupItem', className)}
       >
         <RadioGroupPrimitive.Indicator className="rt-RadioGroupIndicator" />
       </RadioGroupPrimitive.Item>

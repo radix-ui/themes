@@ -126,7 +126,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         data-accent-color={color}
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rt-BaseMenuItem', 'rt-ContextMenuItem', 'rt-reset', className)}
+        className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-ContextMenuItem', className)}
       >
         <Slottable>{children}</Slottable>
         {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}

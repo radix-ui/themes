@@ -22,7 +22,7 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
       {...linkProps}
       ref={forwardedRef}
       asChild
-      className={classNames('rt-Link', 'rt-reset', className)}
+      className={classNames('rt-reset', 'rt-Link', className)}
     >
       {asChild ? children : <a>{children}</a>}
     </Text>
