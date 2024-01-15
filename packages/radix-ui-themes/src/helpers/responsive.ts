@@ -42,7 +42,7 @@ function getResponsiveClassNames({
   const classNames: string[] = [];
 
   if (!value) {
-    return '';
+    return undefined;
   }
 
   if (typeof value === 'string' && propValues.includes(value)) {
