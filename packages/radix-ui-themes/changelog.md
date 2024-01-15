@@ -4,50 +4,21 @@
 
 - General
   - Add the following props to all layout components:
-    - `minWidth`
-    - `maxWidth`
-    - `minHeight`
-    - `maxHeight`
-    - `flexBasis`
-    - `flexShrink`
-    - `flexGrow`
-    - `gridColumn`
-    - `gridColumnStart`
-    - `gridColumnEnd`
-    - `gridRow`
-    - `gridRowStart`
-    - `gridRowEnd`
+    - `minWidth`, `maxWidth`
+    - `minHeight`, `maxHeight`
+    - `flexBasis`, `flexShrink`, `flexGrow`
+    - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
+    - `gridRow`, `gridRowStart`, `gridRowEnd`
   - Rework all layout props to allow arbitrary CSS values, including when used with the responsive object syntax. Props that support arbitrary values include:
-    - `width`
-    - `minWidth`
-    - `maxWidth`
-    - `height`
-    - `minHeight`
-    - `maxHeight`
-    - `p`
-    - `px`
-    - `py`
-    - `pt`
-    - `pr`
-    - `pb`
-    - `pl`
-    - `inset`
-    - `top`
-    - `right`
-    - `bottom`
-    - `left`
-    - `gap`
-    - `gapX`
-    - `gapY`
-    - `flexBasis`
-    - `flexShrink`
-    - `flexGrow`
-    - `gridColumn`
-    - `gridColumnStart`
-    - `gridColumnEnd`
-    - `gridRow`
-    - `gridRowStart`
-    - `gridRowEnd`
+    - `width`, `minWidth`, `maxWidth`
+    - `height`, `minHeight`, `maxHeight`
+    - `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`
+    - `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`
+    - `inset`, `top`, `right`, `bottom`, `left`
+    - `gap`, `gapX`, `gapY`
+    - `flexBasis`, `flexShrink`, `flexGrow`
+    - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
+    - `gridRow`, `gridRowStart`, `gridRowEnd`
   - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
 - 3 new components
