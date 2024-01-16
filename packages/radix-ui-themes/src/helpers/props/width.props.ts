@@ -6,7 +6,7 @@ const widthPropDefs = {
   width: {
     type: 'enum | string',
     className: 'rt-r-w',
-    customProperty: '--width',
+    customProperties: ['--width'],
     values: widthValues,
     default: undefined,
     responsive: true,
@@ -14,7 +14,7 @@ const widthPropDefs = {
   minWidth: {
     type: 'enum | string',
     className: 'rt-r-min-w',
-    customProperty: '--min-width',
+    customProperties: ['--min-width'],
     values: widthValues,
     default: undefined,
     responsive: true,
@@ -22,7 +22,7 @@ const widthPropDefs = {
   maxWidth: {
     type: 'enum | string',
     className: 'rt-r-max-w',
-    customProperty: '--max-width',
+    customProperties: ['--max-width'],
     values: widthValues,
     default: undefined,
     responsive: true,

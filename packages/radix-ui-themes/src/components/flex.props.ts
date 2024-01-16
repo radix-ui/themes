@@ -47,7 +47,7 @@ const flexPropDefs = {
   gap: {
     type: 'enum | string',
     className: 'rt-r-gap',
-    customProperty: '--gap',
+    customProperties: ['--gap'],
     values: gapValues,
     default: undefined,
     responsive: true,
@@ -55,7 +55,7 @@ const flexPropDefs = {
   gapX: {
     type: 'enum | string',
     className: 'rt-r-cg',
-    customProperty: '--column-gap',
+    customProperties: ['--column-gap'],
     values: gapValues,
     default: undefined,
     responsive: true,
@@ -63,7 +63,7 @@ const flexPropDefs = {
   gapY: {
     type: 'enum | string',
     className: 'rt-r-rg',
-    customProperty: '--row-gap',
+    customProperties: ['--row-gap'],
     values: gapValues,
     default: undefined,
     responsive: true,

@@ -7,21 +7,21 @@ type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
 
 interface GetResponsiveStylesOptions {
   className: string;
-  customProperty: `--${string}`;
+  customProperties: `--${string}`[];
   value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
 
-function getResponsiveStyles({ className, customProperty, ...args }: GetResponsiveStylesOptions) {
-  const classNames = getResponsiveClassNames({
+function getResponsiveStyles({ className, customProperties, ...args }: GetResponsiveStylesOptions) {
+  const responsiveClassNames = getResponsiveClassNames({
     allowArbitraryValues: true,
     className,
     ...args,
   });
 
-  const customProperties = getResponsiveCustomProperties({ customProperty, ...args });
-  return [classNames, customProperties] as const;
+  const responsiveCustomProperties = getResponsiveCustomProperties({ customProperties, ...args });
+  return [responsiveClassNames, responsiveCustomProperties] as const;
 }
 
 interface GetResponsiveClassNamesOptions {
@@ -94,14 +94,14 @@ function getBaseClassName(
 }
 
 interface GetResponsiveCustomPropertiesOptions {
-  customProperty: `--${string}`;
+  customProperties: `--${string}`[];
   value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
 
 function getResponsiveCustomProperties({
-  customProperty,
+  customProperties,
   value,
   propValues,
   parseValue = (value) => value,
@@ -114,7 +114,6 @@ function getResponsiveCustomProperties({
   }
 
   if (typeof value === 'string') {
-    const customProperties = getCustomProperties(customProperty);
     styles = Object.fromEntries(customProperties.map((prop) => [prop, value]));
   }
 
@@ -128,7 +127,6 @@ function getResponsiveCustomProperties({
       }
 
       const value = object[bp];
-      const customProperties = getCustomProperties(customProperty);
 
       // Don't generate a custom property if the value is not arbitrary
       if (propValues.includes(value)) {

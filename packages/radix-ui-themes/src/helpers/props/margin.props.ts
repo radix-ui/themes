@@ -14,7 +14,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-m',
-    customProperty: '--margin',
+    customProperties: ['--margin'],
   },
   mx: {
     type: 'enum | string',
@@ -22,7 +22,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mx',
-    customProperty: '--margin-left, --margin-right',
+    customProperties: ['--margin-left', '--margin-right'],
   },
   my: {
     type: 'enum | string',
@@ -30,7 +30,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-my',
-    customProperty: '--margin-top, --margin-bottom',
+    customProperties: ['--margin-top', '--margin-bottom'],
   },
   mt: {
     type: 'enum | string',
@@ -38,7 +38,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mt',
-    customProperty: '--margin-top',
+    customProperties: ['--margin-top'],
   },
   mr: {
     type: 'enum | string',
@@ -46,7 +46,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mr',
-    customProperty: '--margin-right',
+    customProperties: ['--margin-right'],
   },
   mb: {
     type: 'enum | string',
@@ -54,7 +54,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mb',
-    customProperty: '--margin-bottom',
+    customProperties: ['--margin-bottom'],
   },
   ml: {
     type: 'enum | string',
@@ -62,7 +62,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-ml',
-    customProperty: '--margin-left',
+    customProperties: ['--margin-left'],
   },
 } satisfies {
   m: PropDef<(typeof marginValues)[number]>;
@@ -93,49 +93,49 @@ function extractMarginProps<T extends MarginProps>(props: T) {
 function getMarginStyles(props: MarginProps) {
   const [mClassNames, mCustomProperties] = getResponsiveStyles({
     className: 'rt-r-m',
-    customProperty: '--margin',
+    customProperties: ['--margin'],
     propValues: marginValues,
     value: props.m,
   });
 
   const [mxClassNames, mxCustomProperties] = getResponsiveStyles({
     className: 'rt-r-mx',
-    customProperty: '--margin-left, --margin-right',
+    customProperties: ['--margin-left', '--margin-right'],
     propValues: marginValues,
     value: props.mx,
   });
 
   const [myClassNames, myCustomProperties] = getResponsiveStyles({
     className: 'rt-r-my',
-    customProperty: '--margin-top, --margin-bottom',
+    customProperties: ['--margin-top', '--margin-bottom'],
     propValues: marginValues,
     value: props.my,
   });
 
   const [mtClassNames, mtCustomProperties] = getResponsiveStyles({
     className: 'rt-r-mt',
-    customProperty: '--margin-top',
+    customProperties: ['--margin-top'],
     propValues: marginValues,
     value: props.mt,
   });
 
   const [mrClassNames, mrCustomProperties] = getResponsiveStyles({
     className: 'rt-r-mr',
-    customProperty: '--margin-right',
+    customProperties: ['--margin-right'],
     propValues: marginValues,
     value: props.mr,
   });
 
   const [mbClassNames, mbCustomProperties] = getResponsiveStyles({
     className: 'rt-r-mb',
-    customProperty: '--margin-bottom',
+    customProperties: ['--margin-bottom'],
     propValues: marginValues,
     value: props.mb,
   });
 
   const [mlClassNames, mlCustomProperties] = getResponsiveStyles({
     className: 'rt-r-ml',
-    customProperty: '--margin-left',
+    customProperties: ['--margin-left'],
     propValues: marginValues,
     value: props.ml,
   });

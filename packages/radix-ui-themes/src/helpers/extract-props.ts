@@ -67,7 +67,7 @@ function extractProps<
       if (propDef.type === 'enum | string') {
         const [propClassNames, propCustomProperties] = getResponsiveStyles({
           className: propDef.className,
-          customProperty: propDef.customProperty,
+          customProperties: propDef.customProperties,
           propValues: propDef.values,
           parseValue: propDef.parseValue,
           value,

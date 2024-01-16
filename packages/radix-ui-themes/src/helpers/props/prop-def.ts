@@ -33,7 +33,7 @@ type EnumOrStringPropDef<T> = {
 
 type NonStylingPropDef = {
   className?: never;
-  customProperty?: never;
+  customProperties?: never;
   parseValue?: never;
 };
 
@@ -44,7 +44,7 @@ type StylingPropDef = {
 
 type ArbitraryStylingPropDef = {
   className: string;
-  customProperty: `--${string}`;
+  customProperties: `--${string}`[];
   parseValue?: (value: string) => string | undefined;
 };
 

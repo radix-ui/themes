@@ -19,7 +19,7 @@ const gridPropDefs = {
   columns: {
     type: 'enum | string',
     className: 'rt-r-gtc',
-    customProperty: '--grid-template-columns',
+    customProperties: ['--grid-template-columns'],
     values: columnsValues,
     parseValue: parseGridValue,
     default: undefined,
@@ -28,7 +28,7 @@ const gridPropDefs = {
   rows: {
     type: 'enum | string',
     className: 'rt-r-gtr',
-    customProperty: '--grid-template-rows',
+    customProperties: ['--grid-template-rows'],
     values: rowsValues,
     parseValue: parseGridValue,
     default: undefined,
@@ -59,7 +59,7 @@ const gridPropDefs = {
   gap: {
     type: 'enum | string',
     className: 'rt-r-gap',
-    customProperty: '--gap',
+    customProperties: ['--gap'],
     values: gapValues,
     default: undefined,
     responsive: true,
@@ -67,7 +67,7 @@ const gridPropDefs = {
   gapX: {
     type: 'enum | string',
     className: 'rt-r-cg',
-    customProperty: '--column-gap',
+    customProperties: ['--column-gap'],
     values: gapValues,
     default: undefined,
     responsive: true,
@@ -75,7 +75,7 @@ const gridPropDefs = {
   gapY: {
     type: 'enum | string',
     className: 'rt-r-rg',
-    customProperty: '--row-gap',
+    customProperties: ['--row-gap'],
     values: gapValues,
     default: undefined,
     responsive: true,

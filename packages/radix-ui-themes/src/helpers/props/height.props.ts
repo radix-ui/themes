@@ -6,7 +6,7 @@ const heightPropDefs = {
   height: {
     type: 'enum | string',
     className: 'rt-r-h',
-    customProperty: '--height',
+    customProperties: ['--height'],
     values: heightValues,
     default: undefined,
     responsive: true,
@@ -14,7 +14,7 @@ const heightPropDefs = {
   minHeight: {
     type: 'enum | string',
     className: 'rt-r-min-h',
-    customProperty: '--min-height',
+    customProperties: ['--min-height'],
     values: heightValues,
     default: undefined,
     responsive: true,
@@ -22,7 +22,7 @@ const heightPropDefs = {
   maxHeight: {
     type: 'enum | string',
     className: 'rt-r-max-h',
-    customProperty: '--max-height',
+    customProperties: ['--max-height'],
     values: heightValues,
     default: undefined,
     responsive: true,
