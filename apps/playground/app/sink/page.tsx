@@ -2567,6 +2567,46 @@ export default function Sink() {
                     </table>
 
                     <Text as="p" my="5">
+                      <Code>radius</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See specific radius examples
+                        </Text>
+                      </summary>
+                      <Box mt="3">
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {textAreaPropDefs.size.values.map((size) => (
+                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {textAreaPropDefs.radius.values.map((radius) => (
+                              <tr key={radius}>
+                                <RowHeaderCell>{radius}</RowHeaderCell>
+                                {textAreaPropDefs.size.values.map((size) => (
+                                  <td key={size}>
+                                    <TextArea
+                                      size={size}
+                                      radius={radius}
+                                      placeholder="Your feedback"
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Box>
+                    </details>
+
+                    <Text as="p" my="5">
                       <Code>color</Code> can be set per instance:
                     </Text>
 
@@ -4341,9 +4381,9 @@ export default function Sink() {
                         gap="5"
                       >
                         {[...new Array(6)].map((_, i) => (
-                          <Flex grow="1" align="center" justify="center" key={i}>
+                          <Flex flexGrow="1" align="center" justify="center" key={i}>
                             <Box
-                              grow="1"
+                              flexGrow="1"
                               style={{
                                 backgroundColor: 'var(--color-panel-solid)',
                                 boxShadow: `var(--shadow-${i + 1})`,

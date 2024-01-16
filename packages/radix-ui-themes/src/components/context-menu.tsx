@@ -10,11 +10,12 @@ import {
   contextMenuItemPropDefs,
   contextMenuCheckboxItemPropDefs,
 } from './context-menu.props';
-import { withBreakpoints } from '../helpers';
+import { extractProps } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { ThickCheckIcon, ThickChevronRightIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
+import { baseMenuContentPropDefs } from './base-menu.props';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -44,22 +45,23 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
   (props, forwardedRef) => {
     const themeContext = useThemeContext();
     const {
-      className,
-      children,
       size = contextMenuContentPropDefs.size.default,
       variant = contextMenuContentPropDefs.variant.default,
-      color = contextMenuContentPropDefs.color.default,
       highContrast = contextMenuContentPropDefs.highContrast.default,
+    } = props;
+    const {
+      className,
+      children,
+      color = themeContext.accentColor,
       container,
       forceMount,
       ...contentProps
-    } = props;
-    const resolvedColor = color ?? themeContext.accentColor;
+    } = extractProps(props, baseMenuContentPropDefs);
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <ContextMenuPrimitive.Content
-            data-accent-color={resolvedColor}
+            data-accent-color={color}
             alignOffset={-Number(size) * 4}
             collisionPadding={10}
             {...contentProps}
@@ -68,18 +70,15 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-ContextMenuContent',
-              className,
-              withBreakpoints(size, 'rt-r-size'),
-              `rt-variant-${variant}`,
-              { 'rt-high-contrast': highContrast }
+              className
             )}
           >
             <ScrollArea type="auto">
               <div className={classNames('rt-BaseMenuViewport', 'rt-ContextMenuViewport')}>
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast]
+                    () => ({ size, variant, color, highContrast }),
+                    [size, variant, color, highContrast]
                   )}
                 >
                   {children}
@@ -272,8 +271,11 @@ const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, children, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
+  const { className, children, container, forceMount, ...subContentProps } = extractProps(
+    { size, variant, color, highContrast, ...props },
+    baseMenuContentPropDefs
+  );
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
@@ -291,10 +293,7 @@ const ContextMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-ContextMenuContent',
             'rt-ContextMenuSubContent',
-            className,
-            withBreakpoints(size, 'rt-r-size'),
-            `rt-variant-${variant}`,
-            { 'rt-high-contrast': highContrast }
+            className
           )}
         >
           <ScrollArea type="auto">

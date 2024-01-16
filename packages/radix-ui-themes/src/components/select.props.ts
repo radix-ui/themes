@@ -5,7 +5,7 @@ import type { PropDef } from '../helpers';
 const sizes = ['1', '2', '3'] as const;
 
 const selectRootPropDefs = {
-  size: { type: 'enum', values: sizes, default: '2', responsive: true },
+  size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
 };
@@ -13,7 +13,7 @@ const selectRootPropDefs = {
 const triggerVariants = ['classic', 'surface', 'soft', 'ghost'] as const;
 
 const selectTriggerPropDefs = {
-  variant: { type: 'enum', values: triggerVariants, default: 'surface' },
+  variant: { type: 'enum', className: 'rt-variant', values: triggerVariants, default: 'surface' },
   color: colorProp,
   radius: radiusProp,
   placeholder: { type: 'string', default: undefined },
@@ -27,7 +27,7 @@ const selectTriggerPropDefs = {
 const contentVariants = ['solid', 'soft'] as const;
 
 const selectContentPropDefs = {
-  variant: { type: 'enum', values: contentVariants, default: 'solid' },
+  variant: { type: 'enum', className: 'rt-variant', values: contentVariants, default: 'solid' },
   color: colorProp,
   highContrast: highContrastProp,
 } satisfies {

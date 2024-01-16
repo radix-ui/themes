@@ -7,7 +7,7 @@ const linkPropDefs = {
   size: textPropDefs.size,
   weight: textPropDefs.weight,
   trim: textPropDefs.trim,
-  underline: { type: 'enum', values: underline, default: 'auto' },
+  underline: { type: 'enum', className: 'rt-underline', values: underline, default: 'auto' },
   color: textPropDefs.color,
   highContrast: textPropDefs.highContrast,
 } satisfies {

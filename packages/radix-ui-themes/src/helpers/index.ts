@@ -1,5 +1,6 @@
+export * from './extract-props';
 export * from './props';
-export * from './breakpoints';
+export * from './responsive';
 export * from './extract-props-for-tag';
 export * from './has-own-property';
 export * from './nice-intersection';

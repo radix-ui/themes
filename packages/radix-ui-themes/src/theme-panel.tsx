@@ -203,7 +203,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           }}
         >
           <ScrollArea>
-            <Box grow="1" p="5" position="relative">
+            <Box flexGrow="1" p="5" position="relative">
               <Box position="absolute" top="0" right="0" m="2">
                 <Tooltip
                   content="Press ⌘&thinsp;C to show/hide the Theme Panel"

@@ -4,6 +4,7 @@ const alignValues = ['left', 'center', 'right'] as const;
 
 const alignProp = {
   type: 'enum',
+  className: 'rt-r-align',
   values: alignValues,
   default: undefined,
   responsive: true,

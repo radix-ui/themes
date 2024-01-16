@@ -4,6 +4,7 @@ const trimValues = ['normal', 'start', 'end', 'both'] as const;
 
 const trimProp = {
   type: 'enum',
+  className: 'rt-r-trim',
   values: trimValues,
   default: undefined,
   responsive: true,

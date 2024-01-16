@@ -1,32 +1,31 @@
 .rt-RadioGroupItem {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  height: var(--line-height, var(--radio-group-item-size));
-  border-radius: 100%;
-}
-
-.rt-RadioGroupButton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  height: var(--radio-group-item-size);
-  width: var(--radio-group-item-size);
-  cursor: var(--cursor-radio);
-  border-radius: inherit;
+  vertical-align: top;
+  flex-shrink: 0;
+  height: var(--line-height, var(--radio-group-item-size));
 
-  &:where(:focus-visible) {
+  &::before {
+    content: '';
+    display: block;
+    height: var(--radio-group-item-size);
+    width: var(--radio-group-item-size);
+    cursor: var(--cursor-radio);
+    border-radius: 100%;
+  }
+
+  &:where(:focus-visible)::before {
     outline: 2px solid var(--color-focus-root);
     outline-offset: 2px;
   }
 }
 
 .rt-RadioGroupIndicator {
-  background-color: currentColor;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  height: var(--radio-group-item-size);
+  width: var(--radio-group-item-size);
   border-radius: 100%;
   /* Scale via transform to achieve perfect sub-pixel positioning */
   transform: scale(0.4);
@@ -61,71 +60,98 @@
 /* surface */
 
 .rt-RadioGroupRoot:where(.rt-variant-surface) {
-  :where(.rt-RadioGroupButton[data-state='unchecked']) {
+  & :where(.rt-RadioGroupItem[data-state='unchecked'])::before {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
   }
-  :where(.rt-RadioGroupButton[data-state='checked']) {
+  & :where(.rt-RadioGroupItem[data-state='checked'])::before {
     background-color: var(--accent-9);
-    color: var(--accent-9-contrast);
   }
-  &:where(.rt-high-contrast) :where(.rt-RadioGroupButton[data-state='checked']) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
+  & :where(.rt-RadioGroupIndicator) {
+    background-color: var(--accent-9-contrast);
   }
-  & :where(.rt-RadioGroupButton[data-disabled]) {
+
+  &:where(.rt-high-contrast) {
+    & :where(.rt-RadioGroupItem[data-state='checked'])::before {
+      background-color: var(--accent-12);
+    }
+    & :where(.rt-RadioGroupIndicator) {
+      background-color: var(--accent-1);
+    }
+  }
+
+  & :where(.rt-RadioGroupItem[data-disabled])::before {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
     background-color: var(--gray-a3);
     cursor: var(--cursor-disabled);
-    color: var(--gray-a8);
+  }
+  & :where(.rt-RadioGroupIndicator[data-disabled]) {
+    background-color: var(--gray-a8);
   }
 }
 
 /* classic */
 
 .rt-RadioGroupRoot:where(.rt-variant-classic) {
-  :where(.rt-RadioGroupButton[data-state='unchecked']) {
+  & :where(.rt-RadioGroupItem[data-state='unchecked'])::before {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-7), var(--shadow-1);
   }
-  :where(.rt-RadioGroupButton[data-state='checked']) {
+  & :where(.rt-RadioGroupItem[data-state='checked'])::before {
     background-color: var(--accent-9);
     background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a3));
     box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
-    color: var(--accent-9-contrast);
   }
-  &:where(.rt-high-contrast) :where(.rt-RadioGroupButton[data-state='checked']) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
+  & :where(.rt-RadioGroupIndicator) {
+    background-color: var(--accent-9-contrast);
   }
-  & :where(.rt-RadioGroupButton[data-disabled]) {
+
+  &:where(.rt-high-contrast) {
+    & :where(.rt-RadioGroupItem[data-state='checked'])::before {
+      background-color: var(--accent-12);
+    }
+    & :where(.rt-RadioGroupIndicator) {
+      background-color: var(--accent-1);
+    }
+  }
+
+  & :where(.rt-RadioGroupItem[data-disabled])::before {
     box-shadow: var(--shadow-1);
     background-color: var(--gray-a3);
     background-image: none;
     cursor: var(--cursor-disabled);
-    color: var(--gray-a8);
+  }
+  & :where(.rt-RadioGroupIndicator[data-disabled]) {
+    background-color: var(--gray-a8);
   }
 }
 
 /* soft */
 
 .rt-RadioGroupRoot:where(.rt-variant-soft) {
-  :where(.rt-RadioGroupButton) {
+  & :where(.rt-RadioGroupItem)::before {
     background-color: var(--accent-a5);
   }
-  :where(.rt-RadioGroupButton[data-state='checked']) {
-    color: var(--accent-11);
+  & :where(.rt-RadioGroupIndicator) {
+    background-color: var(--accent-11);
   }
-  &:where(.rt-high-contrast) :where(.rt-RadioGroupButton[data-state='checked']) {
-    color: var(--accent-12);
+
+  &:where(.rt-high-contrast) {
+    & :where(.rt-RadioGroupIndicator) {
+      background-color: var(--accent-12);
+    }
   }
-  & :where(.rt-RadioGroupButton:focus-visible) {
+
+  & :where(.rt-RadioGroupItem:focus-visible)::before {
     /* Use gray outline when component color is gray */
     outline-color: var(--accent-a8);
   }
-  & :where(.rt-RadioGroupButton[data-disabled]) {
+
+  & :where(.rt-RadioGroupItem[data-disabled])::before {
     background-color: var(--gray-a3);
     cursor: var(--cursor-disabled);
-    color: var(--gray-a8);
+  }
+  & :where(.rt-RadioGroupIndicator[data-disabled]) {
+    background-color: var(--gray-a8);
   }
 }

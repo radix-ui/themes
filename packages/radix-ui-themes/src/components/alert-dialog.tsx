@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import { alertDialogContentPropDefs } from './alert-dialog.props';
-import { withBreakpoints } from '../helpers';
+import { extractProps } from '../helpers';
 import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
@@ -35,13 +35,10 @@ interface AlertDialogContentProps
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
   (props, forwardedRef) => {
-    const {
-      className,
-      forceMount,
-      container,
-      size = alertDialogContentPropDefs.size.default,
-      ...contentProps
-    } = props;
+    const { className, forceMount, container, ...contentProps } = extractProps(
+      props,
+      alertDialogContentPropDefs
+    );
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -49,12 +46,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
             <AlertDialogPrimitive.Content
               {...contentProps}
               ref={forwardedRef}
-              className={classNames(
-                'rt-DialogContent',
-                'rt-AlertDialogContent',
-                className,
-                withBreakpoints(size, 'rt-r-size')
-              )}
+              className={classNames('rt-DialogContent', 'rt-AlertDialogContent', className)}
             />
           </AlertDialogPrimitive.Overlay>
         </Theme>

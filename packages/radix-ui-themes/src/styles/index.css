@@ -56,6 +56,7 @@
 @import './utilities/align-items.css';
 @import './utilities/align-self.css';
 @import './utilities/display.css';
+@import './utilities/flex-basis.css';
 @import './utilities/flex-direction.css';
 @import './utilities/flex-grow.css';
 @import './utilities/flex-shrink.css';
@@ -72,14 +73,19 @@
 @import './utilities/grid-template-columns.css';
 @import './utilities/grid-template-rows.css';
 @import './utilities/height.css';
+@import './utilities/min-height.css';
+@import './utilities/max-height.css';
 @import './utilities/inset.css';
 @import './utilities/justify-content.css';
 @import './utilities/leading-trim.css';
 @import './utilities/margin.css';
 @import './utilities/padding.css';
 @import './utilities/position.css';
+@import './utilities/table-layout.css';
 @import './utilities/text-align.css';
 @import './utilities/vertical-align.css';
 @import './utilities/width.css';
+@import './utilities/min-width.css';
+@import './utilities/max-width.css';
 
 @import '../theme-panel.css';

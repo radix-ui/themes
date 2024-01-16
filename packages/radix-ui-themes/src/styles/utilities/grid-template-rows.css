@@ -31,10 +31,8 @@
   }
 }
 
-@media all {
-  .rt-r-gtr {
-    grid-template-rows: var(--grid-template-rows);
-  }
+.rt-r-gtr {
+  grid-template-rows: var(--grid-template-rows);
 }
 @media (--xs) {
   .xs\:rt-r-gtr {

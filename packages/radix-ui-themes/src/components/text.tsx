@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { textPropDefs } from './text.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 
 import type {
   PropsWithoutRefOrColor,
@@ -23,35 +23,20 @@ type TextProps = CommonTextProps &
   (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
 
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
-  const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const {
     children,
     className,
     asChild = false,
     as: Tag = 'span',
-    size = textPropDefs.size.default,
-    weight = textPropDefs.weight.default,
-    align = textPropDefs.align.default,
-    trim = textPropDefs.trim.default,
-    color = textPropDefs.color.default,
-    highContrast = textPropDefs.highContrast.default,
+    color,
     ...textProps
-  } = marginRest;
+  } = extractProps(props, textPropDefs, marginPropDefs);
   return (
     <Slot
       data-accent-color={color}
       {...textProps}
       ref={forwardedRef}
-      className={classNames(
-        'rt-Text',
-        className,
-        withBreakpoints(size, 'rt-r-size'),
-        withBreakpoints(weight, 'rt-r-weight'),
-        withBreakpoints(align, 'rt-r-ta'),
-        withBreakpoints(trim, 'rt-r-lt'),
-        { 'rt-high-contrast': highContrast },
-        withMarginProps(marginProps)
-      )}
+      className={classNames('rt-Text', className)}
     >
       {asChild ? children : <Tag>{children}</Tag>}
     </Slot>

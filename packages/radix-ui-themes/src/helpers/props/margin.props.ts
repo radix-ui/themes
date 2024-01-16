@@ -1,4 +1,6 @@
-import { withBreakpoints } from '../breakpoints';
+import classNames from 'classnames';
+import { getResponsiveStyles } from '../responsive';
+import { mergeStyles } from '../merge-styles';
 
 import type { PropDef, GetPropDefTypes } from './prop-def';
 
@@ -6,13 +8,62 @@ import type { PropDef, GetPropDefTypes } from './prop-def';
 const marginValues = ['auto', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9'] as const;
 
 const marginPropDefs = {
-  m: { type: 'enum', values: marginValues, default: undefined, responsive: true },
-  mx: { type: 'enum', values: marginValues, default: undefined, responsive: true },
-  my: { type: 'enum', values: marginValues, default: undefined, responsive: true },
-  mt: { type: 'enum', values: marginValues, default: undefined, responsive: true },
-  mr: { type: 'enum', values: marginValues, default: undefined, responsive: true },
-  mb: { type: 'enum', values: marginValues, default: undefined, responsive: true },
-  ml: { type: 'enum', values: marginValues, default: undefined, responsive: true },
+  m: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-m',
+    customProperties: ['--margin'],
+  },
+  mx: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-mx',
+    customProperties: ['--margin-left', '--margin-right'],
+  },
+  my: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-my',
+    customProperties: ['--margin-top', '--margin-bottom'],
+  },
+  mt: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-mt',
+    customProperties: ['--margin-top'],
+  },
+  mr: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-mr',
+    customProperties: ['--margin-right'],
+  },
+  mb: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-mb',
+    customProperties: ['--margin-bottom'],
+  },
+  ml: {
+    type: 'enum | string',
+    values: marginValues,
+    default: undefined,
+    responsive: true,
+    className: 'rt-r-ml',
+    customProperties: ['--margin-left'],
+  },
 } satisfies {
   m: PropDef<(typeof marginValues)[number]>;
   mx: PropDef<(typeof marginValues)[number]>;
@@ -39,19 +90,77 @@ function extractMarginProps<T extends MarginProps>(props: T) {
   return { m, mx, my, mt, mr, mb, ml, rest };
 }
 
-function withMarginProps(props: MarginProps) {
+function getMarginStyles(props: MarginProps) {
+  const [mClassNames, mCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-m',
+    customProperties: ['--margin'],
+    propValues: marginValues,
+    value: props.m,
+  });
+
+  const [mxClassNames, mxCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-mx',
+    customProperties: ['--margin-left', '--margin-right'],
+    propValues: marginValues,
+    value: props.mx,
+  });
+
+  const [myClassNames, myCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-my',
+    customProperties: ['--margin-top', '--margin-bottom'],
+    propValues: marginValues,
+    value: props.my,
+  });
+
+  const [mtClassNames, mtCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-mt',
+    customProperties: ['--margin-top'],
+    propValues: marginValues,
+    value: props.mt,
+  });
+
+  const [mrClassNames, mrCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-mr',
+    customProperties: ['--margin-right'],
+    propValues: marginValues,
+    value: props.mr,
+  });
+
+  const [mbClassNames, mbCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-mb',
+    customProperties: ['--margin-bottom'],
+    propValues: marginValues,
+    value: props.mb,
+  });
+
+  const [mlClassNames, mlCustomProperties] = getResponsiveStyles({
+    className: 'rt-r-ml',
+    customProperties: ['--margin-left'],
+    propValues: marginValues,
+    value: props.ml,
+  });
+
   return [
-    withBreakpoints(props.m, 'rt-r-m'),
-    withBreakpoints(props.mx, 'rt-r-mx'),
-    withBreakpoints(props.my, 'rt-r-my'),
-    withBreakpoints(props.mt, 'rt-r-mt'),
-    withBreakpoints(props.mr, 'rt-r-mr'),
-    withBreakpoints(props.mb, 'rt-r-mb'),
-    withBreakpoints(props.ml, 'rt-r-ml'),
-  ]
-    .filter(Boolean)
-    .join(' ');
+    classNames(
+      mClassNames,
+      mxClassNames,
+      myClassNames,
+      mtClassNames,
+      mrClassNames,
+      mbClassNames,
+      mlClassNames
+    ),
+    mergeStyles(
+      mCustomProperties,
+      mxCustomProperties,
+      myCustomProperties,
+      mtCustomProperties,
+      mrCustomProperties,
+      mbCustomProperties,
+      mlCustomProperties
+    ),
+  ] as const;
 }
 
-export { marginPropDefs, extractMarginProps, withMarginProps };
+export { marginPropDefs, extractMarginProps, getMarginStyles };
 export type { MarginProps };

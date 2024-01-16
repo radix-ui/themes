@@ -4,7 +4,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { scrollAreaPropDefs } from './scroll-area.props';
-import { extractMarginProps, withMarginProps, withBreakpoints } from '../helpers';
+import {
+  extractMarginProps,
+  getMarginStyles,
+  getResponsiveClassNames,
+  mergeStyles,
+} from '../helpers';
 
 import type { MarginProps, GetPropDefTypes } from '../helpers';
 
@@ -17,6 +22,7 @@ interface ScrollAreaProps
     ScrollAreaOwnProps {}
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+  const [marginClassNames, marginCustomProperties] = getMarginStyles(marginProps);
   const {
     className,
     style,
@@ -32,8 +38,8 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     <ScrollAreaPrimitive.Root
       type={type}
       scrollHideDelay={scrollHideDelay}
-      className={classNames('rt-ScrollAreaRoot', className, withMarginProps(marginProps))}
-      style={style}
+      className={classNames('rt-ScrollAreaRoot', marginClassNames, className)}
+      style={mergeStyles(marginCustomProperties, style)}
     >
       <ScrollAreaPrimitive.Viewport
         {...viewportProps}
@@ -46,7 +52,14 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         <ScrollAreaPrimitive.Scrollbar
           data-radius={radius}
           orientation="horizontal"
-          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'rt-r-size'))}
+          className={classNames(
+            'rt-ScrollAreaScrollbar',
+            getResponsiveClassNames({
+              className: 'rt-r-size',
+              value: size,
+              propValues: scrollAreaPropDefs.size.values,
+            })
+          )}
         >
           <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
         </ScrollAreaPrimitive.Scrollbar>
@@ -56,7 +69,14 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         <ScrollAreaPrimitive.Scrollbar
           data-radius={radius}
           orientation="vertical"
-          className={classNames('rt-ScrollAreaScrollbar', withBreakpoints(size, 'rt-r-size'))}
+          className={classNames(
+            'rt-ScrollAreaScrollbar',
+            getResponsiveClassNames({
+              className: 'rt-r-size',
+              value: size,
+              propValues: scrollAreaPropDefs.size.values,
+            })
+          )}
         >
           <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
         </ScrollAreaPrimitive.Scrollbar>

@@ -4,12 +4,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { dialogContentPropDefs } from './dialog.props';
-import { withBreakpoints } from '../helpers';
+import { extractProps } from '../helpers';
 import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
 
-import type { ExtractPropsForTag, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { ExtractPropsForTag, GetPropDefTypes } from '../helpers';
 
 interface DialogRootProps
   extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
@@ -33,13 +33,10 @@ interface DialogContentProps
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   (props, forwardedRef) => {
-    const {
-      className,
-      forceMount,
-      container,
-      size = dialogContentPropDefs.size.default,
-      ...contentProps
-    } = props;
+    const { className, forceMount, container, ...contentProps } = extractProps(
+      props,
+      dialogContentPropDefs
+    );
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -47,11 +44,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
             <DialogPrimitive.Content
               {...contentProps}
               ref={forwardedRef}
-              className={classNames(
-                'rt-DialogContent',
-                className,
-                withBreakpoints(size, 'rt-r-size')
-              )}
+              className={classNames('rt-DialogContent', className)}
             />
           </DialogPrimitive.Overlay>
         </Theme>

@@ -5,7 +5,13 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const weights = weightProp.values;
 
 const headingPropDefs = {
-  size: { type: 'enum', values: sizes, default: '6', responsive: true },
+  size: {
+    type: 'enum',
+    className: 'rt-r-size',
+    values: sizes,
+    default: '6',
+    responsive: true,
+  },
   weight: { ...weightProp, default: 'bold' },
   align: alignProp,
   trim: trimProp,

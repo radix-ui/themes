@@ -10,11 +10,12 @@ import {
   dropdownMenuItemPropDefs,
   dropdownMenuCheckboxItemPropDefs,
 } from './dropdown-menu.props';
-import { withBreakpoints } from '../helpers';
+import { extractProps } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
 import { ThickCheckIcon, ThickChevronRightIcon } from '../icons';
 
 import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
+import { baseMenuContentPropDefs } from './base-menu.props';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -44,22 +45,23 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
   (props, forwardedRef) => {
     const themeContext = useThemeContext();
     const {
-      className,
-      children,
       size = dropdownMenuContentPropDefs.size.default,
       variant = dropdownMenuContentPropDefs.variant.default,
       highContrast = dropdownMenuContentPropDefs.highContrast.default,
-      color = dropdownMenuItemPropDefs.color.default,
+    } = props;
+    const {
+      className,
+      children,
+      color = themeContext.accentColor,
       container,
       forceMount,
       ...contentProps
-    } = props;
-    const resolvedColor = color ?? themeContext.accentColor;
+    } = extractProps(props, dropdownMenuContentPropDefs);
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DropdownMenuPrimitive.Content
-            data-accent-color={resolvedColor}
+            data-accent-color={color}
             align="start"
             sideOffset={4}
             collisionPadding={10}
@@ -69,18 +71,15 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-DropdownMenuContent',
-              className,
-              withBreakpoints(size, 'rt-r-size'),
-              `rt-variant-${variant}`,
-              { 'rt-high-contrast': highContrast }
+              className
             )}
           >
             <ScrollArea type="auto">
               <div className={classNames('rt-BaseMenuViewport', 'rt-DropdownMenuViewport')}>
                 <DropdownMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast]
+                    () => ({ size, variant, color, highContrast }),
+                    [size, variant, color, highContrast]
                   )}
                 >
                   {children}
@@ -273,8 +272,11 @@ const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { className, children, container, forceMount, ...subContentProps } = props;
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
+  const { className, children, container, forceMount, ...subContentProps } = extractProps(
+    { size, variant, color, highContrast, ...props },
+    baseMenuContentPropDefs
+  );
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
@@ -292,10 +294,7 @@ const DropdownMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-DropdownMenuContent',
             'rt-DropdownMenuSubContent',
-            className,
-            withBreakpoints(size, 'rt-r-size'),
-            `rt-variant-${variant}`,
-            { 'rt-high-contrast': highContrast }
+            className
           )}
         >
           <ScrollArea type="auto">

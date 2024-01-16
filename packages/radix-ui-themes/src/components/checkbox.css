@@ -1,36 +1,29 @@
 .rt-CheckboxRoot {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: top;
-  flex-shrink: 0;
-  height: var(--line-height, var(--checkbox-size));
-}
-
-.rt-CheckboxButton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  height: var(--checkbox-size);
-  width: var(--checkbox-size);
+  vertical-align: top;
+  flex-shrink: 0;
   cursor: var(--cursor-checkbox);
-  position: relative;
-  border-radius: inherit;
-
-  &:where(:focus-visible) {
+  height: var(--line-height, var(--checkbox-size));
+  &::before {
+    content: '';
+    display: block;
+    height: var(--checkbox-size);
+    width: var(--checkbox-size);
+    border-radius: inherit;
+  }
+  &:where(:focus-visible)::before {
     outline: 2px solid var(--color-focus-root);
     outline-offset: 2px;
   }
 }
 
 .rt-CheckboxIndicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  /* Make sure that the presence of the indicator doesn’t affect alignment */
   position: absolute;
+  width: var(--checkbox-indicator-size);
+  height: var(--checkbox-indicator-size);
 }
 
 /***************************************************************************************************
@@ -43,30 +36,18 @@
   .rt-CheckboxRoot {
     &:where(.rt-r-size-1) {
       --checkbox-size: calc(var(--space-4) * 0.875);
+      --checkbox-indicator-size: calc(8px * var(--scaling));
       border-radius: calc(var(--radius-1) / 1.25);
-
-      & :where(.rt-CheckboxIndicatorIcon) {
-        width: calc(8px * var(--scaling));
-        height: calc(8px * var(--scaling));
-      }
     }
     &:where(.rt-r-size-2) {
       --checkbox-size: var(--space-4);
+      --checkbox-indicator-size: calc(10px * var(--scaling));
       border-radius: var(--radius-1);
-
-      & :where(.rt-CheckboxIndicatorIcon) {
-        width: calc(10px * var(--scaling));
-        height: calc(10px * var(--scaling));
-      }
     }
     &:where(.rt-r-size-3) {
       --checkbox-size: calc(var(--space-4) * 1.25);
+      --checkbox-indicator-size: calc(12px * var(--scaling));
       border-radius: calc(var(--radius-1) * 1.25);
-
-      & :where(.rt-CheckboxIndicatorIcon) {
-        width: calc(12px * var(--scaling));
-        height: calc(12px * var(--scaling));
-      }
     }
   }
 }
@@ -79,73 +60,113 @@
 
 /* surface */
 
-.rt-CheckboxButton:where(.rt-variant-surface) {
+.rt-CheckboxRoot:where(.rt-variant-surface) {
   &:where([data-state='unchecked']) {
-    background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a7);
-  }
-  &:where([data-state='checked']) {
-    background-color: var(--accent-9);
-    color: var(--accent-9-contrast);
-
-    &:where(.rt-high-contrast) {
-      background-color: var(--accent-12);
-      color: var(--accent-1);
+    &::before {
+      background-color: var(--color-surface);
+      box-shadow: inset 0 0 0 1px var(--gray-a7);
     }
   }
+
+  &:where([data-state='checked']) {
+    &::before {
+      background-color: var(--accent-9);
+    }
+    & :where(.rt-CheckboxIndicator) {
+      color: var(--accent-9-contrast);
+    }
+
+    &:where(.rt-high-contrast) {
+      &::before {
+        background-color: var(--accent-12);
+      }
+      & :where(.rt-CheckboxIndicator) {
+        color: var(--accent-1);
+      }
+    }
+  }
+
   &:where(:disabled) {
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
-    background-color: var(--gray-a3);
-    cursor: var(--cursor-disabled);
-    color: var(--gray-a8);
+    &::before {
+      box-shadow: inset 0 0 0 1px var(--gray-a6);
+      background-color: var(--gray-a3);
+      cursor: var(--cursor-disabled);
+    }
+    & :where(.rt-CheckboxIndicator) {
+      color: var(--gray-a8);
+    }
   }
 }
 
 /* classic */
 
-.rt-CheckboxButton:where(.rt-variant-classic) {
+.rt-CheckboxRoot:where(.rt-variant-classic) {
   &:where([data-state='unchecked']) {
-    background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
-  }
-  &:where([data-state='checked']) {
-    background-color: var(--accent-9);
-    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a1));
-    box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
-    color: var(--accent-9-contrast);
-
-    &:where(.rt-high-contrast) {
-      background-color: var(--accent-12);
-      color: var(--accent-1);
+    &::before {
+      background-color: var(--color-surface);
+      box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
     }
   }
+
+  &:where([data-state='checked']) {
+    &::before {
+      background-color: var(--accent-9);
+      background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a1));
+      box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
+    }
+    & :where(.rt-CheckboxIndicator) {
+      color: var(--accent-9-contrast);
+    }
+
+    &:where(.rt-high-contrast) {
+      &::before {
+        background-color: var(--accent-12);
+      }
+      & :where(.rt-CheckboxIndicator) {
+        color: var(--accent-1);
+      }
+    }
+  }
+
   &:where(:disabled) {
-    box-shadow: var(--shadow-1);
-    background-color: var(--gray-a3);
-    background-image: none;
-    cursor: var(--cursor-disabled);
-    color: var(--gray-a8);
+    &::before {
+      box-shadow: var(--shadow-1);
+      background-color: var(--gray-a3);
+      background-image: none;
+      cursor: var(--cursor-disabled);
+    }
+    & :where(.rt-CheckboxIndicator) {
+      color: var(--gray-a8);
+    }
   }
 }
 
 /* soft */
 
-.rt-CheckboxButton:where(.rt-variant-soft) {
-  background-color: var(--accent-a5);
+.rt-CheckboxRoot:where(.rt-variant-soft) {
+  &::before {
+    background-color: var(--accent-a5);
+  }
+
   &:where([data-state='checked']) {
-    color: var(--accent-11);
+    & :where(.rt-CheckboxIndicator) {
+      color: var(--accent-11);
+    }
 
     &:where(.rt-high-contrast) {
-      color: var(--accent-12);
+      & :where(.rt-CheckboxIndicator) {
+        color: var(--accent-12);
+      }
     }
   }
-  &:where(:focus-visible) {
-    /* Use gray outline when component color is gray */
-    outline-color: var(--accent-a8);
-  }
+
   &:where(:disabled) {
-    background-color: var(--gray-a3);
-    cursor: var(--cursor-disabled);
-    color: var(--gray-a8);
+    &::before {
+      background-color: var(--gray-a3);
+      cursor: var(--cursor-disabled);
+    }
+    & :where(.rt-CheckboxIndicator) {
+      color: var(--gray-a8);
+    }
   }
 }

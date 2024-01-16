@@ -3,14 +3,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Text } from './text';
-import { textPropDefs } from './text.props';
 import { calloutRootPropDefs } from './callout.props';
 import {
-  extractMarginProps,
-  withMarginProps,
-  withBreakpoints,
-  mapResponsiveProp,
+  extractProps,
   mapCalloutSizeToTextSize,
+  mapResponsiveProp,
+  marginPropDefs,
 } from '../helpers';
 
 import type {
@@ -32,28 +30,20 @@ interface CalloutRootProps
     CalloutContextValue {}
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
   (props, forwardedRef) => {
-    const { rest: marginRest, ...marginProps } = extractMarginProps(props);
     const {
-      children,
-      className,
       size = calloutRootPropDefs.size.default,
-      variant = calloutRootPropDefs.variant.default,
-      color = calloutRootPropDefs.color.default,
       highContrast = calloutRootPropDefs.highContrast.default,
-      ...rootProps
-    } = marginRest;
+    } = props;
+    const { children, className, color, ...rootProps } = extractProps(
+      props,
+      calloutRootPropDefs,
+      marginPropDefs
+    );
     return (
       <div
         data-accent-color={color}
         {...rootProps}
-        className={classNames(
-          'rt-CalloutRoot',
-          className,
-          withBreakpoints(size, 'rt-r-size'),
-          `rt-variant-${variant}`,
-          { 'rt-high-contrast': highContrast },
-          withMarginProps(marginProps)
-        )}
+        className={classNames('rt-CalloutRoot', className)}
         ref={forwardedRef}
       >
         <CalloutContext.Provider

@@ -1400,7 +1400,7 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="4">
                         {codePropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
+                            <Box flexShrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
@@ -2369,7 +2369,7 @@ export default function ExploreComponents() {
                         <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                           {kbdPropDefs.size.values.map((size) => (
                             <Flex align="center" key={size}>
-                              <Box shrink="0" style={{ width: 80 }}>
+                              <Box flexShrink="0" style={{ width: 80 }}>
                                 <Text color="gray" size="1">
                                   Size {size}
                                 </Text>
@@ -2498,7 +2498,7 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="4">
                         {linkPropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
+                            <Box flexShrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
@@ -2552,7 +2552,7 @@ export default function ExploreComponents() {
                           src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                           fallback="A"
                         />
-                        <Box grow="1">
+                        <Box flexGrow="1">
                           <TextArea
                             size="1"
                             placeholder="Write a comment…"
@@ -2592,7 +2592,7 @@ export default function ExploreComponents() {
                           src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                           fallback="A"
                         />
-                        <Box grow="1">
+                        <Box flexGrow="1">
                           <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
                           <Flex gap="3" mt="3" justify="between">
                             <Flex align="center" gap="2" asChild>
@@ -2627,7 +2627,7 @@ export default function ExploreComponents() {
                           src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                           fallback="A"
                         />
-                        <Box grow="1">
+                        <Box flexGrow="1">
                           <TextArea
                             size="3"
                             placeholder="Write a comment…"
@@ -2666,7 +2666,7 @@ export default function ExploreComponents() {
                           src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                           fallback="A"
                         />
-                        <Box grow="1">
+                        <Box flexGrow="1">
                           <TextArea
                             size="3"
                             placeholder="Write a comment…"
@@ -3262,7 +3262,7 @@ export default function ExploreComponents() {
                   </Link>
                 </Heading>
                 <Flex my="6" gap="9">
-                  <Box shrink="0">
+                  <Box flexShrink="0">
                     <Card size="4" style={{ width: 400 }}>
                       <Flex direction="column" gap="3">
                         <Grid gap="1">
@@ -3290,7 +3290,7 @@ export default function ExploreComponents() {
                       </Flex>
                     </Card>
                   </Box>
-                  <Box shrink="0">
+                  <Box flexShrink="0">
                     <Card size="4" style={{ width: 400 }}>
                       <Flex direction="column" gap="3">
                         <Grid gap="1">
@@ -4038,7 +4038,7 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                         {textPropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
+                            <Box flexShrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
@@ -4167,28 +4167,64 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {textAreaPropDefs.variant.values.map((variant) => (
-                              <th key={variant} style={{ textAlign: 'left' }}>
-                                {upperFirst(variant)}
+                            {textAreaPropDefs.radius.values.map((radius) => (
+                              <th key={radius} style={{ textAlign: 'left' }}>
+                                {radius === 'none' ? 'No radius' : upperFirst(radius)}
                               </th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {textAreaPropDefs.size.values.map((size) => (
-                            <tr key={size}>
-                              <td>Size {size}</td>
-                              {textAreaPropDefs.variant.values.map((variant) => (
-                                <td key={variant}>
-                                  <TextArea
-                                    size={size}
-                                    variant={variant}
-                                    placeholder="Reply to comment"
-                                    style={{ width: 120 + Number(size) * 20 }}
-                                  />
-                                </td>
-                              ))}
-                            </tr>
+                          {textAreaPropDefs.variant.values.map((variant, index) => (
+                            <React.Fragment key={variant}>
+                              {index > 0 && (
+                                <tr>
+                                  <td>&nbsp;</td>
+                                </tr>
+                              )}
+                              <tr>
+                                <td>Size 1</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextArea
+                                      size="1"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Reply to comment"
+                                      style={{ width: 140 }}
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 2</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextArea
+                                      size="2"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Reply to comment"
+                                      style={{ width: 160 }}
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                              <tr>
+                                <td>Size 3</td>
+                                {textAreaPropDefs.radius.values.map((radius) => (
+                                  <td key={radius}>
+                                    <TextArea
+                                      size="3"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Reply to comment"
+                                      style={{ width: 180 }}
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                            </React.Fragment>
                           ))}
                         </tbody>
                       </table>
