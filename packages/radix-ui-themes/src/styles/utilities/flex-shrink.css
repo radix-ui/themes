@@ -10,10 +10,8 @@
   }
 }
 
-@media all {
-  .rt-r-fs {
-    flex-shrink: var(--flex-shrink);
-  }
+.rt-r-fs {
+  flex-shrink: var(--flex-shrink);
 }
 @media (--xs) {
   .xs\:rt-r-fs {

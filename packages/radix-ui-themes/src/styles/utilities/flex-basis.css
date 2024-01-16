@@ -1,7 +1,5 @@
-@media all {
-  .rt-r-fb {
-    flex-basis: var(--flex-basis);
-  }
+.rt-r-fb {
+  flex-basis: var(--flex-basis);
 }
 @media (--xs) {
   .xs\:rt-r-fb {

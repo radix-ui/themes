@@ -20,11 +20,7 @@ const breakpoints = postcss
 const cache = new WeakMap();
 
 module.exports = () => ({
-  postcssPlugin: 'postcss-radix-themes',
-  Comment(comment) {
-    // Remove all comments from CSS source
-    comment.remove();
-  },
+  postcssPlugin: 'postcss-breakpoints',
   Rule(rule) {
     if (rule.parent.name === 'breakpoints') {
       const breakpointsRule = rule.parent;
@@ -32,39 +28,39 @@ module.exports = () => ({
       // when we first meet a given @breakpoints at-rule
       if (!cache.has(breakpointsRule)) {
         // create the final media rules for this @breakpoints at-rule
-        const medias = {
-          all: new postcss.AtRule({ name: 'media', params: 'all' }),
-          ...breakpoints.reduce((breakpointsMedias, breakpoint) => {
-            breakpointsMedias[breakpoint.name] = new postcss.AtRule({
-              name: 'media',
-              params: breakpoint.params,
-            });
-            return breakpointsMedias;
-          }, {}),
-        };
+        const medias = breakpoints.reduce((breakpointsMedias, breakpoint) => {
+          breakpointsMedias[breakpoint.name] = new postcss.AtRule({
+            name: 'media',
+            params: breakpoint.params,
+          });
+          return breakpointsMedias;
+        }, {});
+
         // add an entry to the cache
         cache.set(breakpointsRule, medias);
 
-        // add final media rules to the BEFORE the @breakpoints at-rule
-        // (before so it retains the correct mobile-first order)
-        Object.values(medias).forEach((media) => {
-          breakpointsRule.parent.insertBefore(breakpointsRule, media);
+        // add final media rules after the @breakpoints at-rule
+        const mediaRules = Object.values(medias).reverse();
+        mediaRules.forEach((media) => {
+          breakpointsRule.after(media);
         });
       }
 
-      // add top-level clone in @media all
-      const clone = rule.clone();
-      cache.get(breakpointsRule).all.append(clone);
+      // move the rule itself before @breakpoints at-rule
+      breakpointsRule.before(rule);
+
+      // save clone of the rule before we modify it
+      const originalRule = rule.clone();
+      // clean up the extra indentation
+      rule.selector = rule.selector.replace(/\n\s\s/g, '\n');
+      rule.cleanRaws();
 
       // add breakpoint-level rules
       breakpoints.forEach((breakpoint) => {
-        const clone = rule.clone();
+        const clone = originalRule.clone();
         addPrefix(clone, breakpoint.name);
         cache.get(breakpointsRule)[breakpoint.name].append(clone);
       });
-
-      // remove rule from original @breakpoints at-rule
-      rule.remove();
 
       // remove @breakpoints at-rule and clear cache if it has no rules
       if (breakpointsRule.nodes.length === 0) {

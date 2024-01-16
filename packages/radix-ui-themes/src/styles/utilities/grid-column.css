@@ -31,10 +31,8 @@
   }
 }
 
-@media all {
-  .rt-r-gc {
-    grid-column: var(--grid-column);
-  }
+.rt-r-gc {
+  grid-column: var(--grid-column);
 }
 @media (--xs) {
   .xs\:rt-r-gc {

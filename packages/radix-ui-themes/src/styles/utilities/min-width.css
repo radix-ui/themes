@@ -34,10 +34,8 @@
   }
 }
 
-@media all {
-  .rt-r-min-w {
-    min-width: var(--min-width);
-  }
+.rt-r-min-w {
+  min-width: var(--min-width);
 }
 @media (--xs) {
   .xs\:rt-r-min-w {

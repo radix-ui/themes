@@ -10,10 +10,8 @@
   }
 }
 
-@media all {
-  .rt-r-fg {
-    flex-grow: var(--flex-grow);
-  }
+.rt-r-fg {
+  flex-grow: var(--flex-grow);
 }
 @media (--xs) {
   .xs\:rt-r-fg {

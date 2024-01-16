@@ -34,10 +34,8 @@
   }
 }
 
-@media all {
-  .rt-r-max-h {
-    max-height: var(--max-height);
-  }
+.rt-r-max-h {
+  max-height: var(--max-height);
 }
 @media (--xs) {
   .xs\:rt-r-max-h {

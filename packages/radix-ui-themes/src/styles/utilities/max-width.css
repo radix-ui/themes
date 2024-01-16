@@ -34,10 +34,8 @@
   }
 }
 
-@media all {
-  .rt-r-max-w {
-    max-width: var(--max-width);
-  }
+.rt-r-max-w {
+  max-width: var(--max-width);
 }
 @media (--xs) {
   .xs\:rt-r-max-w {

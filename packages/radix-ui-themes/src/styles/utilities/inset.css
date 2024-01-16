@@ -40,10 +40,8 @@
   }
 }
 
-@media all {
-  .rt-r-inset {
-    inset: var(--inset);
-  }
+.rt-r-inset {
+  inset: var(--inset);
 }
 @media (--xs) {
   .xs\:rt-r-inset {
@@ -113,10 +111,8 @@
   }
 }
 
-@media all {
-  .rt-r-top {
-    top: var(--top);
-  }
+.rt-r-top {
+  top: var(--top);
 }
 @media (--xs) {
   .xs\:rt-r-top {
@@ -186,10 +182,8 @@
   }
 }
 
-@media all {
-  .rt-r-right {
-    right: var(--right);
-  }
+.rt-r-right {
+  right: var(--right);
 }
 @media (--xs) {
   .xs\:rt-r-right {
@@ -259,10 +253,8 @@
   }
 }
 
-@media all {
-  .rt-r-bottom {
-    bottom: var(--bottom);
-  }
+.rt-r-bottom {
+  bottom: var(--bottom);
 }
 @media (--xs) {
   .xs\:rt-r-bottom {
@@ -332,10 +324,8 @@
   }
 }
 
-@media all {
-  .rt-r-left {
-    left: var(--left);
-  }
+.rt-r-left {
+  left: var(--left);
 }
 @media (--xs) {
   .xs\:rt-r-left {

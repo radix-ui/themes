@@ -100,16 +100,14 @@
   }
 }
 
-@media all {
-  .rt-r-gap {
-    gap: var(--gap);
-  }
-  .rt-r-cg {
-    column-gap: var(--column-gap);
-  }
-  .rt-r-rg {
-    row-gap: var(--row-gap);
-  }
+.rt-r-gap {
+  gap: var(--gap);
+}
+.rt-r-cg {
+  column-gap: var(--column-gap);
+}
+.rt-r-rg {
+  row-gap: var(--row-gap);
 }
 @media (--xs) {
   .xs\:rt-r-gap {

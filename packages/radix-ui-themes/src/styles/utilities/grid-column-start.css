@@ -31,10 +31,8 @@
   }
 }
 
-@media all {
-  .rt-r-gcs {
-    grid-column-start: var(--grid-column-start);
-  }
+.rt-r-gcs {
+  grid-column-start: var(--grid-column-start);
 }
 @media (--xs) {
   .xs\:rt-r-gcs {

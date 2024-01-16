@@ -31,10 +31,8 @@
   }
 }
 
-@media all {
-  .rt-r-gre {
-    grid-row-end: var(--grid-row-end);
-  }
+.rt-r-gre {
+  grid-row-end: var(--grid-row-end);
 }
 @media (--xs) {
   .xs\:rt-r-gre {

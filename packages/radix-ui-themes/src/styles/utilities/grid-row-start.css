@@ -31,10 +31,8 @@
   }
 }
 
-@media all {
-  .rt-r-grs {
-    grid-row-start: var(--grid-row-start);
-  }
+.rt-r-grs {
+  grid-row-start: var(--grid-row-start);
 }
 @media (--xs) {
   .xs\:rt-r-grs {

@@ -31,10 +31,8 @@
   }
 }
 
-@media all {
-  .rt-r-gtc {
-    grid-template-columns: var(--grid-template-columns);
-  }
+.rt-r-gtc {
+  grid-template-columns: var(--grid-template-columns);
 }
 @media (--xs) {
   .xs\:rt-r-gtc {
