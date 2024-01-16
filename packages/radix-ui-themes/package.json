@@ -104,7 +104,7 @@
     "postcss-nesting": "^12.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "stylelint": "^15.10.3",
+    "stylelint": "^16.1.0",
     "typescript": "^5.3.3"
   },
   "publishConfig": {
