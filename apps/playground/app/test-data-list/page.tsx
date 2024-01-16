@@ -69,7 +69,7 @@ export default function DataListPage() {
                 <DataListItem align="center">
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>
-                    <Button size="1">Add</Button>
+                    <Button size="2">Add</Button>
                   </DataListData>
                 </DataListItem>
 
@@ -96,7 +96,7 @@ export default function DataListPage() {
                 <DataListItem align="center">
                   <DataListLabel>Authentication methods</DataListLabel>
                   <DataListData>
-                    <Flex gap="2">
+                    <Flex gap="2" align="center" height="100%">
                       <StarIcon />
                       <MagicWandIcon />
                       <StarFilledIcon />
@@ -120,10 +120,10 @@ export default function DataListPage() {
               </Heading>
               <DataListRoot>
                 <DataListItem>
-                  <DataListLabel width={80}>Appearance</DataListLabel>
+                  <DataListLabel>Appearance</DataListLabel>
                   <DataListData>
                     <Flex align="center" gap="1">
-                      <IconButton size="1">
+                      <IconButton size="1" variant="ghost">
                         <InfoCircledIcon />
                       </IconButton>
                       <Text>System</Text>
@@ -165,15 +165,15 @@ export default function DataListPage() {
               </Heading>
               <DataListRoot direction={{ initial: 'column', sm: 'row' }}>
                 <DataListItem>
-                  <DataListLabel width="350px">Name</DataListLabel>
+                  <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel width="350px">Email</DataListLabel>
+                  <DataListLabel>Email</DataListLabel>
                   <DataListData>vlad@workos.com</DataListData>
                 </DataListItem>
                 <DataListItem>
-                  <DataListLabel width="350px">
+                  <DataListLabel>
                     Lorem ipsum dolor sit amet consectetur adipscing elit
                   </DataListLabel>
                   <DataListData>
@@ -187,7 +187,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With varied X & Y gaps
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }} gapX="7" gapY="2">
+              <DataListRoot direction={{ initial: 'column', sm: 'row' }} gapX="6" gapY="2">
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
@@ -201,6 +201,22 @@ export default function DataListPage() {
                   <DataListData>
                     <Link href="https://workos.com">WorkOS</Link>
                   </DataListData>
+                </DataListItem>
+              </DataListRoot>
+            </Box>
+
+            <Box mb="6">
+              <Heading mb="5" size="3">
+                With custom `columns`
+              </Heading>
+              <DataListRoot columns="100px 1fr">
+                <DataListItem>
+                  <DataListLabel>Name</DataListLabel>
+                  <DataListData>Vlad Moroz</DataListData>
+                </DataListItem>
+                <DataListItem>
+                  <DataListLabel>Email</DataListLabel>
+                  <DataListData>vlad@workos.com</DataListData>
                 </DataListItem>
               </DataListRoot>
             </Box>
