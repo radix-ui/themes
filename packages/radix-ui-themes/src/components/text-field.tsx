@@ -68,7 +68,9 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
   (props, forwardedRef) => {
     const context = React.useContext(TextFieldContext);
     const { className, color, ...slotProps } = extractProps(
+      // Pass size value from the context to generate styles
       { size: context?.size, ...props },
+      // Pass size prop def to allow it to be extracted
       { size: textFieldPropDefs.size },
       textFieldSlotPropDefs
     );

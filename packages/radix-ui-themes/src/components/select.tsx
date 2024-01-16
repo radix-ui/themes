@@ -41,7 +41,9 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
   (props, forwardedRef) => {
     const context = React.useContext(SelectContext);
     const { className, color, radius, placeholder, ...triggerProps } = extractProps(
+      // Pass size value from the context to generate styles
       { size: context?.size, ...props },
+      // Pass size prop def to allow it to be extracted
       { size: selectRootPropDefs.size },
       selectTriggerPropDefs,
       marginPropDefs
@@ -79,7 +81,9 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
   (props, forwardedRef) => {
     const context = React.useContext(SelectContext);
     const { className, children, color, container, ...contentProps } = extractProps(
+      // Pass size value from the context to generate styles
       { size: context?.size, ...props },
+      // Pass size prop def to allow it to be extracted
       { size: selectRootPropDefs.size },
       selectContentPropDefs
     );
