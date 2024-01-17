@@ -1,9 +1,13 @@
+/* Root -------------------------------*/
+
 .rt-DataListRoot {
   margin: 0;
   display: grid;
   /** Value  set via props in component **/
   grid-template-columns: auto 1fr;
 }
+
+/* Item ---------------------------------*/
 
 .rt-DataListItem {
   position: relative;
@@ -12,6 +16,7 @@
 }
 
 @breakpoints {
+  /** Orientation */
   .rt-r-o-vertical .rt-DataListItem {
     display: flex;
     flex-direction: column;
@@ -25,6 +30,7 @@
     gap: inherit;
   }
 
+  /** Align properties */
   .rt-DataListItem.rt-r-vaf-start {
     align-items: start;
   }
@@ -41,6 +47,8 @@
     align-items: baseline;
   }
 }
+
+/* Label ------------------*/
 
 .rt-DataListLabel {
   color: var(--gray-a11);
@@ -62,6 +70,8 @@
   }
 }
 
+/* Data --------------------*/
+
 .rt-DataListData {
   box-sizing: border-box;
   margin: 0;
@@ -72,21 +82,4 @@
   .rt-r-o-vertical .rt-DataListData {
     padding: 0;
   }
-}
-
-.rt-DataListDataInner {
-  display: flex;
-}
-
-/*
-   * Improve alignment when nesting flex elements with Text. Prepending contents with a text character
-   * enforces default baseline alignment when child elements contain text within. The character used is
-   * a zero-width joiner, which is invisible, and pseudo-elements aren't copyable.
-   */
-.rt-DataListDataInner::before {
-  content: '\200D';
-}
-
-.rt-DataListDataInnerContents {
-  display: block;
 }

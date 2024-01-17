@@ -1,4 +1,4 @@
-import { PropDef, widthPropDefs } from '../helpers';
+import { PropDef, trimProp, widthPropDefs } from '../helpers';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
@@ -30,6 +30,7 @@ export const dataListPropDefs = {
   },
   size: {
     type: 'enum',
+    className: 'rt-r-size',
     values: sizes,
     default: '2',
     responsive: true,
@@ -40,6 +41,7 @@ export const dataListPropDefs = {
   gapX?: PropDef<(typeof gapValues)[number]>;
   gapY?: PropDef<(typeof gapValues)[number]>;
   size?: PropDef<(typeof sizes)[number]>;
+  trim?: typeof trimProp;
 };
 
 export const dataListItemPropDefs = {

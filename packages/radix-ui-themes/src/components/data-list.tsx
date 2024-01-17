@@ -3,16 +3,6 @@ import * as React from 'react';
 import { MarginProps, GetPropDefTypes, extractProps, marginPropDefs } from '../helpers';
 import { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs } from './data-list.props';
 
-/**
- * - do we need to define gap styles again? ✅
- * - use orientation instead of direction ✅
- * - no columns, try width, min and max width
- * - three sizes ✅
- * - think hard on how to make trim work.
- *    - can we exclue the ::before and ::after
- *    - or we can make it span two columns!!!
- */
-
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
 interface DataListRootProps
   extends React.ComponentPropsWithoutRef<'dl'>,
@@ -53,7 +43,6 @@ const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>((props, 
     props,
     dataListLabelPropDefs
   );
-
   return (
     <dt
       ref={forwardedRef}
@@ -76,9 +65,7 @@ DataListLabel.displayName = 'DataListLabel';
 const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'dd'>>(
   ({ children, className, ...props }, forwardedRef) => (
     <dd ref={forwardedRef} className={classNames(className, 'rt-DataListData')} {...props}>
-      <span className="rt-DataListDataInner">
-        <span className="rt-DataListDataInnerContents">{children}</span>
-      </span>
+      {children}
     </dd>
   )
 );
