@@ -4,6 +4,16 @@ import { MarginProps, GetPropDefTypes, extractProps, marginPropDefs } from '../h
 import { Text } from './text';
 import { dataListPropDefs, dataListItemPropDefs } from './data-list.props';
 
+/**
+ * - do we need to define gap styles again?
+ * - use orientation instead of direction ✅
+ * - no columns, try width, min and max width
+ * - three sizes ✅
+ * - think hard on how to make trim work.
+ *    - can we exclue the ::before and ::after
+ *    - or we can make it span two columns!!!
+ */
+
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
 interface DataListRootProps
   extends React.ComponentPropsWithoutRef<'dl'>,
@@ -11,13 +21,13 @@ interface DataListRootProps
     DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (props, forwardedRef) => {
-    const { className, children, columns, ...dataListProps } = extractProps(
+    const { className, children, columns, size, ...dataListProps } = extractProps(
       props,
       dataListPropDefs,
       marginPropDefs
     );
     return (
-      <Text asChild size={props.size || '2'}>
+      <Text asChild size={size}>
         <dl
           ref={forwardedRef}
           {...dataListProps}

@@ -1,9 +1,9 @@
-import { PropDef, textSize } from '../helpers';
-import { textPropDefs } from './text.props';
+import { PropDef } from '../helpers';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const alignValues = ['start', 'center', 'end', 'baseline'] as const;
+const sizes = ['1', '2', '3'] as const;
 
 export const dataListPropDefs = {
   columns: {
@@ -33,14 +33,19 @@ export const dataListPropDefs = {
     default: undefined,
     responsive: true,
   },
-  size: textPropDefs.size,
+  size: {
+    type: 'enum',
+    values: sizes,
+    default: '2',
+    responsive: true,
+  },
 } satisfies {
   columns?: PropDef<'string'>;
   orientation?: PropDef<(typeof orientationValues)[number]>;
   gap?: PropDef<(typeof gapValues)[number]>;
   gapX?: PropDef<(typeof gapValues)[number]>;
   gapY?: PropDef<(typeof gapValues)[number]>;
-  size?: typeof textSize;
+  size?: PropDef<(typeof sizes)[number]>;
 };
 
 export const dataListItemPropDefs = {
