@@ -5,7 +5,7 @@ import { Text } from './text';
 import { dataListPropDefs, dataListItemPropDefs } from './data-list.props';
 
 /**
- * - do we need to define gap styles again?
+ * - do we need to define gap styles again? ✅
  * - use orientation instead of direction ✅
  * - no columns, try width, min and max width
  * - three sizes ✅
