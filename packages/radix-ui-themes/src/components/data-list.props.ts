@@ -35,6 +35,10 @@ export const dataListPropDefs = {
     default: '2',
     responsive: true,
   },
+  trim: {
+    ...trimProp,
+    className: 'rt-r-dl-lt', // Custom trim styles due to grid layout
+  },
 } satisfies {
   orientation?: PropDef<(typeof orientationValues)[number]>;
   gap?: PropDef<(typeof gapValues)[number]>;

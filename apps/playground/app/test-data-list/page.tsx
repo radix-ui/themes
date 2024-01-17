@@ -25,7 +25,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 Default
               </Heading>
-              <DataListRoot mt="2">
+              <DataListRoot mt="2" trim="both">
                 <DataListItem>
                   <DataListLabel>Jedi Master</DataListLabel>
                   <DataListData>Obi wan</DataListData>
@@ -137,7 +137,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 One after another
               </Heading>
-              <DataListRoot>
+              <DataListRoot trim="end">
                 <DataListItem>
                   <DataListLabel>Appearance</DataListLabel>
                   <DataListData>System</DataListData>
@@ -147,7 +147,7 @@ export default function DataListPage() {
                   <DataListData>Medium</DataListData>
                 </DataListItem>
               </DataListRoot>
-              <DataListRoot mt="4">
+              <DataListRoot mt="4" trim="start">
                 <DataListItem>
                   <DataListLabel>Page background</DataListLabel>
                   <DataListData>White</DataListData>

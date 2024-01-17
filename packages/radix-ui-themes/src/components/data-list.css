@@ -46,6 +46,23 @@
   .rt-DataListItem.rt-r-vaf-baseline {
     align-items: baseline;
   }
+
+  /* Trim */
+  .rt-r-dl-lt-start .rt-DataListItem:first-child,
+  .rt-r-dl-lt-both .rt-DataListItem:first-child {
+    margin-top: calc(
+      var(--default-leading-trim-start) - var(--line-height, calc(1em * var(--default-line-height))) /
+        2
+    );
+  }
+
+  .rt-r-dl-lt-end .rt-DataListItem:last-child,
+  .rt-r-dl-lt-both .rt-DataListItem:last-child {
+    margin-bottom: calc(
+      var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
+        2
+    );
+  }
 }
 
 /* Label -------------------------------*/
