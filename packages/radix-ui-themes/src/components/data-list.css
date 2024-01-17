@@ -7,7 +7,7 @@
   grid-template-columns: auto 1fr;
 }
 
-/* Item ---------------------------------*/
+/* Item -------------------------------*/
 
 .rt-DataListItem {
   position: relative;
@@ -16,7 +16,7 @@
 }
 
 @breakpoints {
-  /** Orientation */
+  /* Orientation */
   .rt-r-o-vertical .rt-DataListItem {
     display: flex;
     flex-direction: column;
@@ -24,13 +24,13 @@
   }
   .rt-r-o-horizontal .rt-DataListItem {
     display: grid;
-    /** Use subgrid so all the label columns remain aligned **/
+    /* Use subgrid so all the label columns remain aligned */
     grid-template-columns: subgrid;
     padding: 0;
     gap: inherit;
   }
 
-  /** Align properties */
+  /* Align properties */
   .rt-DataListItem.rt-r-vaf-start {
     align-items: start;
   }
@@ -48,7 +48,7 @@
   }
 }
 
-/* Label ------------------*/
+/* Label -------------------------------*/
 
 .rt-DataListLabel {
   color: var(--gray-a11);
@@ -70,7 +70,7 @@
   }
 }
 
-/* Data --------------------*/
+/* Data -------------------------------*/
 
 .rt-DataListData {
   box-sizing: border-box;
