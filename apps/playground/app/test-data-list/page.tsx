@@ -93,7 +93,7 @@ export default function DataListPage() {
                   </DataListData>
                 </DataListItem>
 
-                <DataListItem align="center">
+                <DataListItem align={{ initial: 'baseline', sm: 'center' }}>
                   <DataListLabel>Authentication methods</DataListLabel>
                   <DataListData>
                     <Flex gap="2" align="center" height="100%">
