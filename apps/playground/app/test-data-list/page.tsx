@@ -189,8 +189,8 @@ export default function DataListPage() {
               </Heading>
               <DataListRoot
                 orientation={{ initial: 'vertical', sm: 'horizontal' }}
-                gapX="6"
-                gapY="2"
+                gapX="2"
+                gapY="6"
               >
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>

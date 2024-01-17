@@ -21,14 +21,14 @@ export const dataListPropDefs = {
   gap: { type: 'enum', className: 'rt-r-gap', values: gapValues, default: '4', responsive: true },
   gapX: {
     type: 'enum',
-    className: 'rt-r-gap-x',
+    className: 'rt-r-cg',
     values: gapValues,
     default: undefined,
     responsive: true,
   },
   gapY: {
     type: 'enum',
-    className: 'rt-r-gap-y',
+    className: 'rt-r-rg',
     values: gapValues,
     default: undefined,
     responsive: true,

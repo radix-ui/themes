@@ -1,106 +1,21 @@
-@breakpoints {
-  .rt-DataListRoot.rt-r-gap-0 {
-    row-gap: 0px;
-    column-gap: 0px;
-  }
-  .rt-DataListRoot.rt-r-gap-1 {
-    row-gap: var(--space-1);
-    column-gap: var(--space-1);
-  }
-  .rt-DataListRoot.rt-r-gap-2 {
-    row-gap: var(--space-2);
-    column-gap: var(--space-2);
-  }
-  .rt-DataListRoot.rt-r-gap-3 {
-    row-gap: var(--space-3);
-    column-gap: var(--space-3);
-  }
-  .rt-DataListRoot.rt-r-gap-4 {
-    row-gap: var(--space-4);
-    column-gap: var(--space-4);
-  }
-  .rt-DataListRoot.rt-r-gap-5 {
-    row-gap: var(--space-5);
-    column-gap: var(--space-5);
-  }
-  .rt-DataListRoot.rt-r-gap-6 {
-    row-gap: var(--space-6);
-    column-gap: var(--space-6);
-  }
-  .rt-DataListRoot.rt-r-gap-7 {
-    row-gap: var(--space-7);
-    column-gap: var(--space-7);
-  }
-  .rt-DataListRoot.rt-r-gap-8 {
-    row-gap: var(--space-8);
-    column-gap: var(--space-8);
-  }
-  .rt-DataListRoot.rt-r-gap-9 {
-    row-gap: var(--space-9);
-    column-gap: var(--space-9);
-  }
+/* prettier-ignore */
+.DataListRoot::before,
+.DataListRoot::after {
+  /* Remove top and bottom item padding */
+  --data-list-padding-trim: calc(16 / -2);
+  /* Include padding trim when leading trim is used */
+  --leading-trim-start: calc(var(--data-list-padding-trim) + var(--default-leading-trim-start));
+  --leading-trim-end: calc(var(--data-list-padding-trim) + var(--default-leading-trim-end));
+  display: table;
+  content: '';
+  grid-column: span 2;
+}
 
-  .rt-DataListRoot.rt-r-gap-x-0 {
-    row-gap: 0px;
-  }
-  .rt-DataListRoot.rt-r-gap-x-1 {
-    row-gap: var(--space-1);
-  }
-  .rt-DataListRoot.rt-r-gap-x-2 {
-    row-gap: var(--space-2);
-  }
-  .rt-DataListRoot.rt-r-gap-x-3 {
-    row-gap: var(--space-3);
-  }
-  .rt-DataListRoot.rt-r-gap-x-4 {
-    row-gap: var(--space-4);
-  }
-  .rt-DataListRoot.rt-r-gap-x-5 {
-    row-gap: var(--space-5);
-  }
-  .rt-DataListRoot.rt-r-gap-x-6 {
-    row-gap: var(--space-6);
-  }
-  .rt-DataListRoot.rt-r-gap-x-7 {
-    row-gap: var(--space-7);
-  }
-  .rt-DataListRoot.rt-r-gap-x-8 {
-    row-gap: var(--space-8);
-  }
-  .rt-DataListRoot.rt-r-gap-x-9 {
-    row-gap: var(--space-9);
-  }
-
-  .rt-DataListRoot.rt-r-gap-y-0 {
-    column-gap: 0px;
-  }
-  .rt-DataListRoot.rt-r-gap-y-1 {
-    column-gap: var(--space-1);
-  }
-  .rt-DataListRoot.rt-r-gap-y-2 {
-    column-gap: var(--space-2);
-  }
-  .rt-DataListRoot.rt-r-gap-y-3 {
-    column-gap: var(--space-3);
-  }
-  .rt-DataListRoot.rt-r-gap-y-4 {
-    column-gap: var(--space-4);
-  }
-  .rt-DataListRoot.rt-r-gap-y-5 {
-    column-gap: var(--space-5);
-  }
-  .rt-DataListRoot.rt-r-gap-y-6 {
-    column-gap: var(--space-6);
-  }
-  .rt-DataListRoot.rt-r-gap-y-7 {
-    column-gap: var(--space-7);
-  }
-  .rt-DataListRoot.rt-r-gap-y-8 {
-    column-gap: var(--space-8);
-  }
-  .rt-DataListRoot.rt-r-gap-y-9 {
-    column-gap: var(--space-9);
-  }
+:where(.DataListRoot)::before {
+  margin-bottom: var(--data-list-padding-trim);
+}
+:where(.DataListRoot)::after {
+  margin-top: var(--data-list-padding-trim);
 }
 
 .rt-DataListRoot {
