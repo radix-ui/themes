@@ -25,7 +25,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 Default
               </Heading>
-              <DataListRoot mt="2" trim="both">
+              <DataListRoot mt="2">
                 <DataListItem>
                   <DataListLabel>Jedi Master</DataListLabel>
                   <DataListData>Obi wan</DataListData>
@@ -40,7 +40,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 Vertical Layout
               </Heading>
-              <DataListRoot orientation="vertical" mt="2" trim="both">
+              <DataListRoot orientation="vertical" mt="2">
                 <DataListItem>
                   <DataListLabel>Jedi Master</DataListLabel>
                   <DataListData>Obi wan</DataListData>
@@ -56,7 +56,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With varied content
               </Heading>
-              <DataListRoot orientation={{ initial: 'vertical', sm: 'horizontal' }} trim="both">
+              <DataListRoot orientation={{ initial: 'vertical', sm: 'horizontal' }}>
                 <DataListItem>
                   <DataListLabel>Status</DataListLabel>
                   <DataListData>
@@ -211,11 +211,11 @@ export default function DataListPage() {
 
             <Box mb="6">
               <Heading mb="5" size="3">
-                With custom `columns`
+                With custom label width
               </Heading>
               <DataListRoot>
                 <DataListItem>
-                  <DataListLabel width="300px">Name</DataListLabel>
+                  <DataListLabel minWidth="100px">Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
                 </DataListItem>
                 <DataListItem>
