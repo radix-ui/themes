@@ -20,19 +20,13 @@ interface DataListRootProps
     DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (props, forwardedRef) => {
-    const { className, children, size, ...dataListProps } = extractProps(
-      props,
-      dataListPropDefs,
-      marginPropDefs
-    );
+    const { className, ...dataListProps } = extractProps(props, dataListPropDefs, marginPropDefs);
     return (
       <dl
         ref={forwardedRef}
         {...dataListProps}
         className={classNames(className, 'rt-DataListRoot', 'rt-Text')}
-      >
-        {children}
-      </dl>
+      />
     );
   }
 );
