@@ -72,6 +72,7 @@ function extractProps<
           parseValue: propDef.parseValue,
           value,
         });
+        console.log({ propClassNames });
 
         style = mergeStyles(style, propCustomProperties);
         className = classNames(className, propClassNames);

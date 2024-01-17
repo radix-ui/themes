@@ -213,9 +213,9 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With custom `columns`
               </Heading>
-              <DataListRoot columns="100px 1fr">
+              <DataListRoot>
                 <DataListItem>
-                  <DataListLabel>Name</DataListLabel>
+                  <DataListLabel width="300px">Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
                 </DataListItem>
                 <DataListItem>

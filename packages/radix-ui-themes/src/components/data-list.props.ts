@@ -1,4 +1,4 @@
-import { PropDef } from '../helpers';
+import { PropDef, widthPropDefs } from '../helpers';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
@@ -6,11 +6,6 @@ const alignValues = ['start', 'center', 'end', 'baseline'] as const;
 const sizes = ['1', '2', '3'] as const;
 
 export const dataListPropDefs = {
-  columns: {
-    type: 'string',
-    default: undefined,
-    responsive: true,
-  },
   orientation: {
     type: 'enum',
     className: 'rt-r-o',
@@ -40,7 +35,6 @@ export const dataListPropDefs = {
     responsive: true,
   },
 } satisfies {
-  columns?: PropDef<'string'>;
   orientation?: PropDef<(typeof orientationValues)[number]>;
   gap?: PropDef<(typeof gapValues)[number]>;
   gapX?: PropDef<(typeof gapValues)[number]>;
@@ -58,4 +52,26 @@ export const dataListItemPropDefs = {
   },
 } satisfies {
   align?: PropDef<(typeof alignValues)[number]>;
+};
+
+export const dataListLabelPropDefs = {
+  width: {
+    type: 'string',
+    default: undefined,
+    responsive: true,
+  },
+  minWidth: {
+    type: 'string',
+    default: '200px',
+    responsive: true,
+  },
+  maxWidth: {
+    type: 'string',
+    default: undefined,
+    responsive: true,
+  },
+} satisfies {
+  width?: PropDef<'string'>;
+  minWidth?: PropDef<'string'>;
+  maxWidth?: PropDef<'string'>;
 };

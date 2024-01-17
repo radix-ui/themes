@@ -2,7 +2,7 @@
   margin: 0;
   display: grid;
   /** Value  set via props in component **/
-  grid-template-columns: var(--data-list-columns, minmax(200px, max-content) 1fr);
+  grid-template-columns: auto 1fr;
 }
 
 .rt-DataListItem {
@@ -56,6 +56,9 @@
   }
   .rt-r-o-horizontal .rt-DataListLabel {
     white-space: nowrap;
+    width: var(--data-list-label-width);
+    min-width: var(--data-list-label-min-width);
+    max-width: var(--data-list-label-max-width);
   }
 }
 
