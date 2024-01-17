@@ -117,12 +117,12 @@
 }
 
 @breakpoints {
-  .rt-r-direction-column .rt-DataListItem {
+  .rt-r-o-vertical .rt-DataListItem {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
   }
-  .rt-r-direction-row .rt-DataListItem {
+  .rt-r-o-horizontal .rt-DataListItem {
     display: grid;
     /** Use subgrid so all the label columns remain aligned **/
     grid-template-columns: subgrid;
@@ -154,12 +154,12 @@
 }
 
 @breakpoints {
-  .rt-r-direction-column .rt-DataListLabel {
+  .rt-r-o-vertical .rt-DataListLabel {
     white-space: normal;
     padding: 0;
     width: auto;
   }
-  .rt-r-direction-row .rt-DataListLabel {
+  .rt-r-o-horizontal .rt-DataListLabel {
     white-space: nowrap;
   }
 }
@@ -171,8 +171,7 @@
 }
 
 @breakpoints {
-  .rt-r-direction-column .rt-DataListData,
-  .rt-r-direction-column-reverse .rt-DataListData {
+  .rt-r-o-vertical .rt-DataListData {
     padding: 0;
   }
 }

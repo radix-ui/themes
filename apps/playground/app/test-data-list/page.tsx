@@ -40,7 +40,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 Vertical Layout
               </Heading>
-              <DataListRoot direction="column" mt="2">
+              <DataListRoot orientation="vertical" mt="2">
                 <DataListItem>
                   <DataListLabel>Jedi Master</DataListLabel>
                   <DataListData>Obi wan</DataListData>
@@ -56,7 +56,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With varied content
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }}>
+              <DataListRoot orientation={{ initial: 'vertical', sm: 'horizontal' }}>
                 <DataListItem>
                   <DataListLabel>Status</DataListLabel>
                   <DataListData>
@@ -163,7 +163,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With long label
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }}>
+              <DataListRoot orientation={{ initial: 'vertical', sm: 'horizontal' }}>
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
@@ -187,7 +187,11 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 With varied X & Y gaps
               </Heading>
-              <DataListRoot direction={{ initial: 'column', sm: 'row' }} gapX="6" gapY="2">
+              <DataListRoot
+                orientation={{ initial: 'vertical', sm: 'horizontal' }}
+                gapX="6"
+                gapY="2"
+              >
                 <DataListItem>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>Vlad Moroz</DataListData>
