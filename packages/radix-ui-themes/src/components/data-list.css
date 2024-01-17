@@ -1,5 +1,4 @@
 /* Root -------------------------------*/
-
 .rt-DataListRoot {
   margin: 0;
   display: grid;
@@ -8,7 +7,6 @@
 }
 
 /* Item -------------------------------*/
-
 .rt-DataListItem {
   position: relative;
   box-sizing: border-box;
@@ -66,7 +64,6 @@
 }
 
 /* Label -------------------------------*/
-
 .rt-DataListLabel {
   color: var(--gray-a11);
   box-sizing: border-box;
@@ -88,7 +85,6 @@
 }
 
 /* Data -------------------------------*/
-
 .rt-DataListData {
   box-sizing: border-box;
   margin: 0;

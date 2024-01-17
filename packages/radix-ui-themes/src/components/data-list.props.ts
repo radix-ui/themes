@@ -1,4 +1,4 @@
-import { PropDef, trimProp, widthPropDefs } from '../helpers';
+import { PropDef, trimProp } from '../helpers';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;

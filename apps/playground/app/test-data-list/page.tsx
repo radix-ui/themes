@@ -137,7 +137,7 @@ export default function DataListPage() {
               <Heading mb="5" size="3">
                 One after another
               </Heading>
-              <DataListRoot trim="end">
+              <DataListRoot trim="both">
                 <DataListItem>
                   <DataListLabel>Appearance</DataListLabel>
                   <DataListData>System</DataListData>
@@ -147,7 +147,7 @@ export default function DataListPage() {
                   <DataListData>Medium</DataListData>
                 </DataListItem>
               </DataListRoot>
-              <DataListRoot mt="4" trim="start">
+              <DataListRoot mt="4" trim="both">
                 <DataListItem>
                   <DataListLabel>Page background</DataListLabel>
                   <DataListData>White</DataListData>
