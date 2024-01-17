@@ -9,6 +9,5 @@ export * from './padding.props';
 export * from './prop-def';
 export * from './radius.prop';
 export * from './text-align.prop';
-export * from './text-size.prop';
 export * from './weight.prop';
 export * from './width.props';
