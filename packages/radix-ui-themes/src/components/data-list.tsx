@@ -1,15 +1,8 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {
-  Responsive,
-  MarginProps,
-  GetPropDefTypes,
-  extractProps,
-  layoutPropDefs,
-  marginPropDefs,
-} from '../helpers';
+import { MarginProps, GetPropDefTypes, extractProps, marginPropDefs } from '../helpers';
 import { Text } from './text';
-import { dataListPropDefs } from './data-list.props';
+import { dataListPropDefs, dataListItemPropDefs } from './data-list.props';
 
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
 interface DataListRootProps
@@ -18,29 +11,17 @@ interface DataListRootProps
     DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
   (props, forwardedRef) => {
-    // const { rest: marginRest, ...marginProps } = extractMarginProps(props);
-
-    const { className, ...restProps } = extractProps(
+    const { className, children, columns, ...dataListProps } = extractProps(
       props,
       dataListPropDefs,
-      layoutPropDefs,
       marginPropDefs
     );
-    const { children, columns, direction = 'row', gap = '4', gapX, gapY, size = '2' } = restProps;
-
-    console.log({ restProps });
     return (
-      <Text asChild size={size}>
+      <Text asChild size={props.size || '2'}>
         <dl
           ref={forwardedRef}
-          className={classNames(
-            'rt-DataListRoot'
-            // withBreakpoints(gap, 'rt-r-gap'),
-            // withBreakpoints(gapX, 'rt-r-gap-x'),
-            // withBreakpoints(gapY, 'rt-r-gap-y'),
-            // withBreakpoints(direction, 'rt-r-direction'),
-            // withMarginProps(marginProps)
-          )}
+          {...dataListProps}
+          className={classNames(className, 'rt-DataListRoot')}
           style={
             typeof columns === 'string'
               ? ({
@@ -58,38 +39,30 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
 
 DataListRoot.displayName = 'DataListRootGrid';
 
-interface DataListItemProps extends React.ComponentPropsWithRef<'div'> {
-  align?: Responsive<'start' | 'center' | 'end' | 'baseline'>;
-}
+interface DataListItemProps
+  extends React.ComponentPropsWithRef<'div'>,
+    GetPropDefTypes<typeof dataListItemPropDefs> {}
 
-const DataListItem = React.forwardRef<HTMLDivElement, DataListItemProps>(
-  ({ align, className, ...props }, forwardedRef) => (
+const DataListItem = React.forwardRef<HTMLDivElement, DataListItemProps>((props, forwardedRef) => {
+  const { className, ...dataListItemProps } = extractProps(
+    props,
+    dataListItemPropDefs,
+    marginPropDefs
+  );
+  return (
     <div
       ref={forwardedRef}
-      className={classNames(
-        className,
-        'rt-DataListItem'
-        // withBreakpoints(align, 'rt-r-vaf', {
-        //   start: 'top',
-        //   center: 'middle',
-        //   end: 'bottom',
-        // })
-      )}
-      {...props}
+      className={classNames(className, 'rt-DataListItem')}
+      {...dataListItemProps}
     />
-  )
-);
+  );
+});
 
 DataListItem.displayName = 'DataListItem';
 
 const DataListLabel = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'dt'>>(
-  ({ className, style, ...props }, forwardedRef) => (
-    <dt
-      ref={forwardedRef}
-      className={classNames(className, 'rt-DataListLabel')}
-      style={style}
-      {...props}
-    />
+  ({ className, ...props }, forwardedRef) => (
+    <dt ref={forwardedRef} {...props} className={classNames(className, 'rt-DataListLabel')} />
   )
 );
 

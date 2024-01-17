@@ -1,16 +1,21 @@
-import { PropDef, trimProp, textSize } from '../helpers';
+import { PropDef, textSize } from '../helpers';
 import { textPropDefs } from './text.props';
 
 const directionValues = ['row', 'column'] as const;
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+const alignValues = ['start', 'center', 'end', 'baseline'] as const;
 
 export const dataListPropDefs = {
-  columns: { type: 'string', default: undefined, responsive: true },
+  columns: {
+    type: 'string',
+    default: undefined,
+    responsive: true,
+  },
   direction: {
     type: 'enum',
     className: 'rt-r-direction',
     values: directionValues,
-    default: undefined,
+    default: 'row',
     responsive: true,
   },
   gap: { type: 'enum', className: 'rt-r-gap', values: gapValues, default: '4', responsive: true },
@@ -36,4 +41,16 @@ export const dataListPropDefs = {
   gapX?: PropDef<(typeof gapValues)[number]>;
   gapY?: PropDef<(typeof gapValues)[number]>;
   size?: typeof textSize;
+};
+
+export const dataListItemPropDefs = {
+  align: {
+    type: 'enum',
+    className: 'rt-r-vaf',
+    values: alignValues,
+    default: 'baseline',
+    responsive: true,
+  },
+} satisfies {
+  align?: PropDef<(typeof alignValues)[number]>;
 };

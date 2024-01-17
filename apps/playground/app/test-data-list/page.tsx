@@ -66,7 +66,7 @@ export default function DataListPage() {
                   </DataListData>
                 </DataListItem>
 
-                <DataListItem align="center">
+                <DataListItem align={{ initial: 'baseline', sm: 'center' }}>
                   <DataListLabel>Name</DataListLabel>
                   <DataListData>
                     <Button size="2">Add</Button>

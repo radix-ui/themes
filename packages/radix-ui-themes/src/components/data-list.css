@@ -134,12 +134,16 @@
     align-items: start;
   }
 
-  .rt-DataListItem.rt-r-vaf-middle {
+  .rt-DataListItem.rt-r-vaf-center {
     align-items: center;
   }
 
   .rt-DataListItem.rt-r-vaf-end {
     align-items: end;
+  }
+
+  .rt-DataListItem.rt-r-vaf-baseline {
+    align-items: baseline;
   }
 }
 
