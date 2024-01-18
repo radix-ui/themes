@@ -29,6 +29,7 @@
   box-shadow: var(--shadow-6);
   box-sizing: border-box;
   z-index: 1;
+  position: relative;
 
   --inset-padding: var(--dialog-content-padding);
   padding: var(--inset-padding);

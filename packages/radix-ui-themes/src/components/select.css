@@ -36,6 +36,7 @@
 
   overflow: hidden;
   background-color: var(--color-panel-solid);
+  position: relative;
 
   &:where([data-side]) {
     min-width: var(--radix-select-trigger-width);
