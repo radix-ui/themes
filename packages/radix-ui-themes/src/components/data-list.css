@@ -101,87 +101,90 @@
  * WIDTH                                                                                           *
  *                                                                                                 *
  ***************************************************************************************************/
-@breakpoints {
-  .rt-DataListLabel {
-    &:where(.rt-r-dl-width) {
-      /* Keep this selector here to maintain the source order */
-    }
-    &:where(.rt-r-dl-width-1) {
-      width: 100px;
-    }
-    &:where(.rt-r-dl-width-2) {
-      width: 200px;
-    }
-    &:where(.rt-r-dl-width-3) {
-      width: 300px;
-    }
-
-    &:where(.rt-r-dl-min-width) {
-      /* Keep this selector here to maintain the source order */
-    }
-    &:where(.rt-r-dl-min-width-1) {
-      min-width: 100px;
-    }
-    &:where(.rt-r-dl-min-width-2) {
-      min-width: 200px;
-    }
-    &:where(.rt-r-dl-min-width-3) {
-      min-width: 300px;
-    }
-
-    &:where(.rt-r-dl-max-width) {
-      /* Keep this selector here to maintain the source order */
-    }
-    &:where(.rt-r-dl-max-width-1) {
-      max-width: 100px;
-    }
-    &:where(.rt-r-dl-max-width-2) {
-      max-width: 200px;
-    }
-    &:where(.rt-r-dl-max-width-3) {
-      max-width: 300px;
-    }
-  }
-}
 
 .rt-DataListLabel {
+  --dl-width-scale: 24;
+
   &:where(.rt-r-dl-width) {
     width: var(--dl-label-width);
   }
   &:where(.rt-r-dl-width-1) {
-    width: 100px;
+    width: calc(var(--space-1) * var(--dl-width-scale));
   }
   &:where(.rt-r-dl-width-2) {
-    width: 200px;
+    width: calc(var(--space-2) * var(--dl-width-scale));
   }
   &:where(.rt-r-dl-width-3) {
-    width: 300px;
+    width: calc(var(--space-3) * var(--dl-width-scale));
   }
 
   &:where(.rt-r-dl-min-width) {
     min-width: var(--dl-label-min-width);
   }
   &:where(.rt-r-dl-min-width-1) {
-    min-width: 100px;
+    min-width: calc(var(--space-1) * var(--dl-width-scale));
   }
   &:where(.rt-r-dl-min-width-2) {
-    min-width: 200px;
+    min-width: calc(var(--space-2) * var(--dl-width-scale));
   }
   &:where(.rt-r-dl-min-width-3) {
-    min-width: 300px;
+    min-width: calc(var(--space-3) * var(--dl-width-scale));
   }
 
   &:where(.rt-r-dl-max-width) {
     max-width: var(--dl-label-max-width);
   }
   &:where(.rt-r-dl-max-width-1) {
-    max-width: 100px;
+    max-width: calc(var(--space-1) * var(--dl-width-scale));
   }
   &:where(.rt-r-dl-max-width-2) {
-    max-width: 200px;
+    max-width: calc(var(--space-2) * var(--dl-width-scale));
   }
   &:where(.rt-r-dl-max-width-3) {
-    max-width: 300px;
+    max-width: calc(var(--space-3) * var(--dl-width-scale));
+  }
+}
+
+@breakpoints {
+  .rt-DataListLabel {
+    &:where(.rt-r-dl-width) {
+      /* Keep this selector here to maintain the source order */
+    }
+    &:where(.rt-r-dl-width-1) {
+      width: calc(var(--space-1) * var(--dl-width-scale));
+    }
+    &:where(.rt-r-dl-width-2) {
+      width: calc(var(--space-2) * var(--dl-width-scale));
+    }
+    &:where(.rt-r-dl-width-3) {
+      width: calc(var(--space-3) * var(--dl-width-scale));
+    }
+
+    &:where(.rt-r-dl-min-width) {
+      /* Keep this selector here to maintain the source order */
+    }
+    &:where(.rt-r-dl-min-width-1) {
+      min-width: calc(var(--space-1) * var(--dl-width-scale));
+    }
+    &:where(.rt-r-dl-min-width-2) {
+      min-width: calc(var(--space-2) * var(--dl-width-scale));
+    }
+    &:where(.rt-r-dl-min-width-3) {
+      min-width: calc(var(--space-3) * var(--dl-width-scale));
+    }
+
+    &:where(.rt-r-dl-max-width) {
+      /* Keep this selector here to maintain the source order */
+    }
+    &:where(.rt-r-dl-max-width-1) {
+      max-width: calc(var(--space-1) * var(--dl-width-scale));
+    }
+    &:where(.rt-r-dl-max-width-2) {
+      max-width: calc(var(--space-2) * var(--dl-width-scale));
+    }
+    &:where(.rt-r-dl-max-width-3) {
+      max-width: calc(var(--space-3) * var(--dl-width-scale));
+    }
   }
 }
 
