@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { Text } from './text';
 import { MarginProps, GetPropDefTypes, extractProps, marginPropDefs } from '../helpers';
 import { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs } from './data-list.props';
 
@@ -13,11 +14,13 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
   (props, forwardedRef) => {
     const { className, ...dataListProps } = extractProps(props, dataListPropDefs, marginPropDefs);
     return (
-      <dl
-        {...dataListProps}
-        ref={forwardedRef}
-        className={classNames(className, 'rt-DataListRoot', 'rt-Text')}
-      />
+      <Text asChild>
+        <dl
+          {...dataListProps}
+          ref={forwardedRef}
+          className={classNames(className, 'rt-DataListRoot')}
+        />
+      </Text>
     );
   }
 );
