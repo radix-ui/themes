@@ -14,8 +14,8 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
     return (
       <dl
         ref={forwardedRef}
-        {...dataListProps}
         className={classNames(className, 'rt-DataListRoot', 'rt-Text')}
+        {...dataListProps}
       />
     );
   }
