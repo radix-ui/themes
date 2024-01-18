@@ -61,6 +61,7 @@ import {
   DataListItem,
   DataListLabel,
   DataListData,
+  dataListPropDefs,
   //
   DialogRoot,
   DialogTrigger,
@@ -185,7 +186,6 @@ import {
   themeAccentColorsOrdered,
   //
   ThemePanel,
-  dataListPropDefs,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
