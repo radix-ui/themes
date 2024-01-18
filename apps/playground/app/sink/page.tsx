@@ -272,6 +272,9 @@ export default function Sink() {
                             </DialogTrigger>
                             <DialogContent style={{ maxWidth: 450 }}>
                               <Flex direction="column" gap="3">
+                                <InfoCircledIcon
+                                  style={{ position: 'absolute', top: '24px', right: '20px' }}
+                                />
                                 <DialogTitle>Share resource</DialogTitle>
                                 <DialogDescription>
                                   Jan Tschichold was a German calligrapher, typographer and book

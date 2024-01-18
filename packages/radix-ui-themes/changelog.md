@@ -25,6 +25,8 @@
   - `Progress`
   - `Skeleton`
   - `Spinner`
+- `AlertDialog`, `Dialog`, `Popover`, `HoverCard`, `Tooltip`
+  - Add `position: relative` to support absolutely positioned children.
 - `Container`, `Section`
   - Change the incorrect `display="block"` value to `display="initial"`
 - `Checkbox`, `RadioGroup`, `Switch`

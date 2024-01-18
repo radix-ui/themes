@@ -2,6 +2,7 @@
   background-color: var(--color-panel-solid);
   box-shadow: var(--shadow-4);
   overflow: auto;
+  position: relative;
 
   --inset-padding: var(--hover-card-content-padding);
   padding: var(--hover-card-content-padding);
