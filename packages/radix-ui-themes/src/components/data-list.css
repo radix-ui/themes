@@ -1,5 +1,4 @@
 .rt-DataListRoot {
-  margin: 0;
   display: grid;
   /** Value  set via props in component **/
   grid-template-columns: auto 1fr;
@@ -10,6 +9,24 @@
   box-sizing: border-box;
   grid-column: span 2;
 }
+
+.rt-DataListLabel {
+  color: var(--gray-a11);
+  box-sizing: border-box;
+  display: block;
+}
+
+.rt-DataListData {
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * ORIENTATION                                                                                     *
+ *                                                                                                 *
+ ***************************************************************************************************/
 
 @breakpoints {
   .rt-r-o-vertical .rt-DataListItem {
@@ -24,23 +41,29 @@
     padding: 0;
     gap: inherit;
   }
-
-  .rt-DataListItem.rt-r-vaf-start {
-    align-items: start;
+  .rt-r-o-vertical .rt-DataListLabel {
+    white-space: normal;
+    padding: 0;
+    width: auto;
   }
-
-  .rt-DataListItem.rt-r-vaf-center {
-    align-items: center;
+  .rt-r-o-horizontal .rt-DataListLabel {
+    white-space: nowrap;
+    width: var(--data-list-label-width);
+    min-width: var(--data-list-label-min-width);
+    max-width: var(--data-list-label-max-width);
   }
-
-  .rt-DataListItem.rt-r-vaf-end {
-    align-items: end;
+  .rt-r-o-vertical .rt-DataListData {
+    padding: 0;
   }
+}
 
-  .rt-DataListItem.rt-r-vaf-baseline {
-    align-items: baseline;
-  }
+/***************************************************************************************************
+ *                                                                                                 *
+ * TRIM                                                                                            *
+ *                                                                                                 *
+ ***************************************************************************************************/
 
+@breakpoints {
   .rt-r-dl-lt-start .rt-DataListItem:first-child,
   .rt-r-dl-lt-both .rt-DataListItem:first-child {
     margin-top: calc(
@@ -58,34 +81,26 @@
   }
 }
 
-.rt-DataListLabel {
-  color: var(--gray-a11);
-  box-sizing: border-box;
-  display: block;
-}
+/***************************************************************************************************
+ *                                                                                                 *
+ * ALIGN                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
 
 @breakpoints {
-  .rt-r-o-vertical .rt-DataListLabel {
-    white-space: normal;
-    padding: 0;
-    width: auto;
+  .rt-DataListItem.rt-r-vaf-start {
+    align-items: start;
   }
-  .rt-r-o-horizontal .rt-DataListLabel {
-    white-space: nowrap;
-    width: var(--data-list-label-width);
-    min-width: var(--data-list-label-min-width);
-    max-width: var(--data-list-label-max-width);
+
+  .rt-DataListItem.rt-r-vaf-center {
+    align-items: center;
   }
-}
 
-.rt-DataListData {
-  box-sizing: border-box;
-  margin: 0;
-  display: block;
-}
+  .rt-DataListItem.rt-r-vaf-end {
+    align-items: end;
+  }
 
-@breakpoints {
-  .rt-r-o-vertical .rt-DataListData {
-    padding: 0;
+  .rt-DataListItem.rt-r-vaf-baseline {
+    align-items: baseline;
   }
 }
