@@ -20,7 +20,6 @@ const DataListRoot = React.forwardRef<HTMLDListElement, DataListRootProps>(
     );
   }
 );
-
 DataListRoot.displayName = 'DataListRootGrid';
 
 interface DataListItemProps
@@ -32,7 +31,6 @@ const DataListItem = React.forwardRef<HTMLDivElement, DataListItemProps>((props,
     <div ref={forwardedRef} className={classNames(className, 'rt-DataListItem')} {...itemProps} />
   );
 });
-
 DataListItem.displayName = 'DataListItem';
 
 interface DataListLabelProps
@@ -59,7 +57,6 @@ const DataListLabel = React.forwardRef<HTMLElement, DataListLabelProps>((props, 
     />
   );
 });
-
 DataListLabel.displayName = 'DataListLabel';
 
 const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'dd'>>(
@@ -69,7 +66,6 @@ const DataListData = React.forwardRef<HTMLElement, React.ComponentPropsWithRef<'
     </dd>
   )
 );
-
 DataListData.displayName = 'DataListData';
 
 export { DataListRoot, DataListItem, DataListLabel, DataListData };

@@ -4729,7 +4729,7 @@ export default function Sink() {
                     </Flex>
                   </DocsSection>
 
-                  <DocsSection title="Data List">
+                  <DocsSection title="DataList">
                     <Box style={{ maxWidth: '688px' }}>
                       <Flex gap="2" mt="4" direction="column">
                         <Heading mb="5" size="3">
