@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import { Text } from './text';
-import { MarginProps, GetPropDefTypes, extractProps, marginPropDefs } from '../helpers';
+import { extractProps, marginPropDefs } from '../helpers';
 import { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs } from './data-list.props';
+import type { MarginProps, GetPropDefTypes } from '../helpers';
 
 type DataListRootElement = HTMLDListElement;
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
@@ -28,7 +29,7 @@ DataListRoot.displayName = 'DataListRootGrid';
 
 type DataListItemElement = HTMLDivElement;
 type DataListItemOwnProps = GetPropDefTypes<typeof dataListItemPropDefs>;
-interface DataListItemProps extends React.ComponentPropsWithRef<'div'>, DataListItemOwnProps {}
+interface DataListItemProps extends React.ComponentPropsWithoutRef<'div'>, DataListItemOwnProps {}
 const DataListItem = React.forwardRef<DataListItemElement, DataListItemProps>(
   (props, forwardedRef) => {
     const { className, ...itemProps } = extractProps(props, dataListItemPropDefs);
@@ -41,7 +42,7 @@ DataListItem.displayName = 'DataListItem';
 
 type DataListLabelElement = React.ElementRef<'dt'>;
 type DataListLabelOwnProps = GetPropDefTypes<typeof dataListLabelPropDefs>;
-interface DataListLabelProps extends React.ComponentPropsWithRef<'dt'>, DataListLabelOwnProps {}
+interface DataListLabelProps extends React.ComponentPropsWithoutRef<'dt'>, DataListLabelOwnProps {}
 const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>(
   (props, forwardedRef) => {
     const { className, minWidth, maxWidth, width, ...labelProps } = extractProps(
