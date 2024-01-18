@@ -103,6 +103,13 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rt-DataListLabel {
+  --dl-width-scale: 24;
+  width: var(--dl-label-width);
+  min-width: var(--dl-label-min-width);
+  max-width: var(--dl-label-max-width);
+}
+
 @breakpoints {
   .rt-DataListLabel {
     &:where(.rt-r-dl-width) {
@@ -143,50 +150,6 @@
     &:where(.rt-r-dl-max-width-3) {
       max-width: calc(var(--space-3) * var(--dl-width-scale));
     }
-  }
-}
-
-/* When using custom properties, responsive classes aren't added so these are defined again*/
-.rt-DataListLabel {
-  --dl-width-scale: 24;
-
-  &:where(.rt-r-dl-width) {
-    width: var(--dl-label-width);
-  }
-  &:where(.rt-r-dl-width-1) {
-    width: calc(var(--space-1) * var(--dl-width-scale));
-  }
-  &:where(.rt-r-dl-width-2) {
-    width: calc(var(--space-2) * var(--dl-width-scale));
-  }
-  &:where(.rt-r-dl-width-3) {
-    width: calc(var(--space-3) * var(--dl-width-scale));
-  }
-
-  &:where(.rt-r-dl-min-width) {
-    min-width: var(--dl-label-min-width);
-  }
-  &:where(.rt-r-dl-min-width-1) {
-    min-width: calc(var(--space-1) * var(--dl-width-scale));
-  }
-  &:where(.rt-r-dl-min-width-2) {
-    min-width: calc(var(--space-2) * var(--dl-width-scale));
-  }
-  &:where(.rt-r-dl-min-width-3) {
-    min-width: calc(var(--space-3) * var(--dl-width-scale));
-  }
-
-  &:where(.rt-r-dl-max-width) {
-    max-width: var(--dl-label-max-width);
-  }
-  &:where(.rt-r-dl-max-width-1) {
-    max-width: calc(var(--space-1) * var(--dl-width-scale));
-  }
-  &:where(.rt-r-dl-max-width-2) {
-    max-width: calc(var(--space-2) * var(--dl-width-scale));
-  }
-  &:where(.rt-r-dl-max-width-3) {
-    max-width: calc(var(--space-3) * var(--dl-width-scale));
   }
 }
 
