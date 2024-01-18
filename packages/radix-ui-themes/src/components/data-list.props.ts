@@ -7,13 +7,6 @@ const alignValues = ['start', 'center', 'end', 'baseline'] as const;
 const sizes = ['1', '2', '3'] as const;
 
 const dataListPropDefs = {
-  orientation: {
-    type: 'enum',
-    className: 'rt-r-dl-orient',
-    values: orientationValues,
-    default: 'horizontal',
-    responsive: true,
-  },
   gap: {
     type: 'enum | string',
     className: 'rt-r-gap',
@@ -36,6 +29,13 @@ const dataListPropDefs = {
     customProperties: ['--row-gap'],
     values: gapValues,
     default: undefined,
+    responsive: true,
+  },
+  orientation: {
+    type: 'enum',
+    className: 'rt-r-dl-orient',
+    values: orientationValues,
+    default: 'horizontal',
     responsive: true,
   },
   size: {

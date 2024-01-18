@@ -29,31 +29,34 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-r-dl-orient-vertical .rt-DataListItem {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-  .rt-r-dl-orient-horizontal .rt-DataListItem {
-    display: grid;
-    /* Use subgrid so all the label columns remain aligned */
-    grid-template-columns: subgrid;
-    padding: 0;
-    gap: inherit;
-  }
-  .rt-r-dl-orient-vertical .rt-DataListLabel {
-    white-space: normal;
-    padding: 0;
-    width: auto;
-  }
-  .rt-r-dl-orient-horizontal .rt-DataListLabel {
-    white-space: nowrap;
-    width: var(--data-list-label-width);
-    min-width: var(--data-list-label-min-width);
-    max-width: var(--data-list-label-max-width);
-  }
-  .rt-r-dl-orient-vertical .rt-DataListData {
-    padding: 0;
+  .rt-DataListRoot {
+    &:where(.rt-r-dl-orient-vertical) :where(.rt-DataListItem) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    &:where(.rt-r-dl-orient-horizontal) :where(.rt-DataListItem) {
+      display: grid;
+      /* Use subgrid so all the label columns remain aligned */
+      grid-template-columns: subgrid;
+      padding: 0;
+      gap: inherit;
+    }
+    &:where(.rt-r-dl-orient-vertical) :where(.rt-DataListLabel) {
+      white-space: normal;
+      padding: 0;
+      width: auto;
+    }
+    &:where(.rt-r-dl-orient-horizontal) :where(.rt-DataListLabel) {
+      white-space: nowrap;
+      width: var(--data-list-label-width);
+      min-width: var(--data-list-label-min-width);
+      max-width: var(--data-list-label-max-width);
+    }
+    &:where(.rt-r-dl-orient-vertical) :where(.rt-DataListData) {
+      padding: 0;
+    }
   }
 }
 
@@ -64,20 +67,20 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-r-dl-trim-start .rt-DataListItem:first-child,
-  .rt-r-dl-trim-both .rt-DataListItem:first-child {
-    margin-top: calc(
-      var(--default-leading-trim-start) - var(--line-height, calc(1em * var(--default-line-height))) /
-        2
-    );
-  }
+  .rt-DataListRoot {
+    &:where(.rt-r-dl-trim-start, .rt-r-dl-trim-both) :where(.rt-DataListItem:first-child) {
+      margin-top: calc(
+        var(--default-leading-trim-start) -
+          var(--line-height, calc(1em * var(--default-line-height))) / 2
+      );
+    }
 
-  .rt-r-dl-trim-end .rt-DataListItem:last-child,
-  .rt-r-dl-trim-both .rt-DataListItem:last-child {
-    margin-bottom: calc(
-      var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
-        2
-    );
+    &:where(.rt-r-dl-trim-end, .rt-r-dl-trim-both) :where(.rt-DataListItem:last-child) {
+      margin-bottom: calc(
+        var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
+          2
+      );
+    }
   }
 }
 
@@ -88,19 +91,21 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-DataListItem.rt-r-vaf-start {
-    align-items: start;
-  }
+  .rt-DataListItem {
+    &:where(.rt-r-vaf-start) {
+      align-items: start;
+    }
 
-  .rt-DataListItem.rt-r-vaf-center {
-    align-items: center;
-  }
+    &:where(.rt-r-vaf-center) {
+      align-items: center;
+    }
 
-  .rt-DataListItem.rt-r-vaf-end {
-    align-items: end;
-  }
+    &:where(.rt-r-vaf-end) {
+      align-items: end;
+    }
 
-  .rt-DataListItem.rt-r-vaf-baseline {
-    align-items: baseline;
+    &:where(.rt-r-vaf-baseline) {
+      align-items: baseline;
+    }
   }
 }
