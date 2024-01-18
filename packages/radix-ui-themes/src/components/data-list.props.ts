@@ -77,7 +77,7 @@ const dataListLabelPropDefs = {
     className: 'rt-r-dl-width',
     customProperties: ['--dl-label-width'],
     values: widthValues,
-    default: undefined,
+    default: '2',
     responsive: true,
   },
   minWidth: {

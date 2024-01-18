@@ -4887,7 +4887,7 @@ export default function Sink() {
                             <DataListData>vlad@workos.com</DataListData>
                           </DataListItem>
                           <DataListItem>
-                            <DataListLabel>
+                            <DataListLabel minWidth="350px">
                               Lorem ipsum dolor sit amet consectetur adipscing elit
                             </DataListLabel>
                             <DataListData>
@@ -4903,7 +4903,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot
                           orientation={{ initial: 'vertical', sm: 'horizontal' }}
-                          gapX="2"
+                          gapX="4"
                           gapY="6"
                         >
                           <DataListItem>
