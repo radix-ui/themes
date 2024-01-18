@@ -14,16 +14,17 @@ interface BoxProps
     LayoutProps,
     BoxOwnProps {
   asChild?: boolean;
+  as?: 'span' | 'div';
 }
 
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
-  const { className, asChild, ...boxProps } = extractProps(
-    props,
-    boxPropDefs,
-    layoutPropDefs,
-    marginPropDefs
-  );
-  const Comp = asChild ? Slot : 'div';
+  const {
+    className,
+    asChild,
+    as: asElem = 'div',
+    ...boxProps
+  } = extractProps(props, boxPropDefs, layoutPropDefs, marginPropDefs);
+  const Comp = asChild ? Slot : asElem;
   return <Comp {...boxProps} ref={forwardedRef} className={classNames('rt-Box', className)} />;
 });
 Box.displayName = 'Box';

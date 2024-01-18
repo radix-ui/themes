@@ -14,15 +14,16 @@ interface GridProps
     LayoutProps,
     GridOwnProps {
   asChild?: boolean;
+  as?: 'span' | 'div';
 }
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
-  const { className, asChild, ...gridProps } = extractProps(
-    props,
-    gridPropDefs,
-    layoutPropDefs,
-    marginPropDefs
-  );
-  const Comp = asChild ? Slot : 'div';
+  const {
+    className,
+    asChild,
+    as: asElem = 'div',
+    ...gridProps
+  } = extractProps(props, gridPropDefs, layoutPropDefs, marginPropDefs);
+  const Comp = asChild ? Slot : asElem;
   return <Comp {...gridProps} ref={forwardedRef} className={classNames('rt-Grid', className)} />;
 });
 Grid.displayName = 'Grid';

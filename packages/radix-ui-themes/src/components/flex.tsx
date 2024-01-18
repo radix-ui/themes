@@ -14,15 +14,16 @@ interface FlexProps
     LayoutProps,
     FlexOwnProps {
   asChild?: boolean;
+  as?: 'span' | 'div';
 }
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
-  const { className, asChild, ...flexProps } = extractProps(
-    props,
-    flexPropDefs,
-    layoutPropDefs,
-    marginPropDefs
-  );
-  const Comp = asChild ? Slot : 'div';
+  const {
+    className,
+    asChild,
+    as: asElem = 'div',
+    ...flexProps
+  } = extractProps(props, flexPropDefs, layoutPropDefs, marginPropDefs);
+  const Comp = asChild ? Slot : asElem;
   return <Comp {...flexProps} ref={forwardedRef} className={classNames('rt-Flex', className)} />;
 });
 Flex.displayName = 'Flex';

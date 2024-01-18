@@ -29,10 +29,15 @@
   - Change the incorrect `display="block"` value to `display="initial"`
 - `Checkbox`, `RadioGroup`, `Switch`
   - Rework the internal HTML structure and styles. These components now render fewer HTML nodes and forward all props to the topmost node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `Box`
+  - Add support for `as` prop
 - `Button`, `IconButton`
   - Add new `loading` prop
 - `Flex`
   - Add `gapX` and `gapY` props
+  - Add support for `as` prop
+- `Grid`
+  - Add support for `as` prop
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
 - `Table`
