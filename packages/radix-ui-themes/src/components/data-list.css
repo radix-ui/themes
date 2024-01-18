@@ -29,30 +29,30 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-r-o-vertical .rt-DataListItem {
+  .rt-r-dl-orient-vertical .rt-DataListItem {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
   }
-  .rt-r-o-horizontal .rt-DataListItem {
+  .rt-r-dl-orient-horizontal .rt-DataListItem {
     display: grid;
     /* Use subgrid so all the label columns remain aligned */
     grid-template-columns: subgrid;
     padding: 0;
     gap: inherit;
   }
-  .rt-r-o-vertical .rt-DataListLabel {
+  .rt-r-dl-orient-vertical .rt-DataListLabel {
     white-space: normal;
     padding: 0;
     width: auto;
   }
-  .rt-r-o-horizontal .rt-DataListLabel {
+  .rt-r-dl-orient-horizontal .rt-DataListLabel {
     white-space: nowrap;
     width: var(--data-list-label-width);
     min-width: var(--data-list-label-min-width);
     max-width: var(--data-list-label-max-width);
   }
-  .rt-r-o-vertical .rt-DataListData {
+  .rt-r-dl-orient-vertical .rt-DataListData {
     padding: 0;
   }
 }
@@ -64,16 +64,16 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-r-dl-lt-start .rt-DataListItem:first-child,
-  .rt-r-dl-lt-both .rt-DataListItem:first-child {
+  .rt-r-dl-trim-start .rt-DataListItem:first-child,
+  .rt-r-dl-trim-both .rt-DataListItem:first-child {
     margin-top: calc(
       var(--default-leading-trim-start) - var(--line-height, calc(1em * var(--default-line-height))) /
         2
     );
   }
 
-  .rt-r-dl-lt-end .rt-DataListItem:last-child,
-  .rt-r-dl-lt-both .rt-DataListItem:last-child {
+  .rt-r-dl-trim-end .rt-DataListItem:last-child,
+  .rt-r-dl-trim-both .rt-DataListItem:last-child {
     margin-bottom: calc(
       var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
         2

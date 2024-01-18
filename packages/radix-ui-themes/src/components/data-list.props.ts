@@ -9,7 +9,7 @@ const sizes = ['1', '2', '3'] as const;
 const dataListPropDefs = {
   orientation: {
     type: 'enum',
-    className: 'rt-r-o',
+    className: 'rt-r-dl-orient',
     values: orientationValues,
     default: 'horizontal',
     responsive: true,
@@ -38,7 +38,7 @@ const dataListPropDefs = {
   },
   trim: {
     ...trimProp,
-    className: 'rt-r-dl-lt', // Custom trim styles due to grid layout
+    className: 'rt-r-dl-trim', // Custom trim styles due to grid layout
   },
 } satisfies {
   orientation?: PropDef<(typeof orientationValues)[number]>;
