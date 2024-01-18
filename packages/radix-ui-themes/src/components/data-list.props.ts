@@ -61,7 +61,7 @@ const dataListPropDefs = {
 const dataListItemPropDefs = {
   align: {
     type: 'enum',
-    className: 'rt-r-vaf',
+    className: 'rt-r-dl-vaf',
     values: alignValues,
     default: 'baseline',
     responsive: true,

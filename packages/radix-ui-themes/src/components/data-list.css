@@ -91,19 +91,19 @@
 
 @breakpoints {
   .rt-DataListItem {
-    &:where(.rt-r-vaf-start) {
+    &:where(.rt-r-dl-vaf-start) {
       align-items: start;
     }
 
-    &:where(.rt-r-vaf-center) {
+    &:where(.rt-r-dl-vaf-center) {
       align-items: center;
     }
 
-    &:where(.rt-r-vaf-end) {
+    &:where(.rt-r-dl-vaf-end) {
       align-items: end;
     }
 
-    &:where(.rt-r-vaf-baseline) {
+    &:where(.rt-r-dl-vaf-baseline) {
       align-items: baseline;
     }
   }
