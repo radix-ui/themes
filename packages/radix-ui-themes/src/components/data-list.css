@@ -1,4 +1,3 @@
-/* Root -------------------------------*/
 .rt-DataListRoot {
   margin: 0;
   display: grid;
@@ -6,7 +5,6 @@
   grid-template-columns: auto 1fr;
 }
 
-/* Item -------------------------------*/
 .rt-DataListItem {
   position: relative;
   box-sizing: border-box;
@@ -14,7 +12,6 @@
 }
 
 @breakpoints {
-  /* Orientation */
   .rt-r-o-vertical .rt-DataListItem {
     display: flex;
     flex-direction: column;
@@ -28,7 +25,6 @@
     gap: inherit;
   }
 
-  /* Align properties */
   .rt-DataListItem.rt-r-vaf-start {
     align-items: start;
   }
@@ -45,7 +41,6 @@
     align-items: baseline;
   }
 
-  /* Trim */
   .rt-r-dl-lt-start .rt-DataListItem:first-child,
   .rt-r-dl-lt-both .rt-DataListItem:first-child {
     margin-top: calc(
@@ -63,7 +58,6 @@
   }
 }
 
-/* Label -------------------------------*/
 .rt-DataListLabel {
   color: var(--gray-a11);
   box-sizing: border-box;
@@ -84,7 +78,6 @@
   }
 }
 
-/* Data -------------------------------*/
 .rt-DataListData {
   box-sizing: border-box;
   margin: 0;
