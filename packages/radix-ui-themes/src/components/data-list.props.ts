@@ -1,10 +1,11 @@
 import { trimProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
-const orientationValues = ['horizontal', 'vertical'] as const;
-const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const alignValues = ['start', 'center', 'end', 'baseline'] as const;
+const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+const orientationValues = ['horizontal', 'vertical'] as const;
 const sizes = ['1', '2', '3'] as const;
+const widthValues = ['1', '2', '3'] as const;
 
 const dataListPropDefs = {
   gap: {
@@ -72,24 +73,33 @@ const dataListItemPropDefs = {
 
 const dataListLabelPropDefs = {
   width: {
-    type: 'string',
+    type: 'enum | string',
+    className: 'rt-r-dl-width',
+    customProperties: ['--dl-label-width'],
+    values: widthValues,
     default: undefined,
     responsive: true,
   },
   minWidth: {
-    type: 'string',
-    default: '200px',
+    type: 'enum | string',
+    className: 'rt-r-dl-min-width',
+    customProperties: ['--dl-label-min-width'],
+    values: widthValues,
+    default: undefined,
     responsive: true,
   },
   maxWidth: {
-    type: 'string',
+    type: 'enum | string',
+    className: 'rt-r-dl-max-width',
+    customProperties: ['--dl-label-max-width'],
+    values: widthValues,
     default: undefined,
     responsive: true,
   },
 } satisfies {
-  width?: PropDef<'string'>;
-  minWidth?: PropDef<'string'>;
-  maxWidth?: PropDef<'string'>;
+  width?: PropDef<(typeof widthValues)[number]>;
+  minWidth?: PropDef<(typeof widthValues)[number]>;
+  maxWidth?: PropDef<(typeof widthValues)[number]>;
 };
 
 export { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs };

@@ -4737,7 +4737,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot mt="2" trim="both">
                           <DataListItem>
-                            <DataListLabel>Jedi Master</DataListLabel>
+                            <DataListLabel width="3">Jedi Master</DataListLabel>
                             <DataListData>Obi wan</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -4768,7 +4768,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot orientation={{ initial: 'vertical', sm: 'horizontal' }}>
                           <DataListItem>
-                            <DataListLabel>Status</DataListLabel>
+                            <DataListLabel minWidth="225px">Status</DataListLabel>
                             <DataListData>
                               <Badge color="green" size="1" style={{ marginLeft: -2 }}>
                                 Active
@@ -4830,8 +4830,8 @@ export default function Sink() {
                           With nested flex
                         </Heading>
                         <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel>Appearance</DataListLabel>
+                          <DataListItem align="center">
+                            <DataListLabel width="1">Appearance</DataListLabel>
                             <DataListData>
                               <Flex align="center" gap="1">
                                 <IconButton size="1" variant="ghost">
@@ -4850,7 +4850,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot>
                           <DataListItem>
-                            <DataListLabel>Appearance</DataListLabel>
+                            <DataListLabel width="2">Appearance</DataListLabel>
                             <DataListData>System</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -4860,7 +4860,7 @@ export default function Sink() {
                         </DataListRoot>
                         <DataListRoot mt="4">
                           <DataListItem>
-                            <DataListLabel>Page background</DataListLabel>
+                            <DataListLabel width="2">Page background</DataListLabel>
                             <DataListData>White</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -4946,6 +4946,32 @@ export default function Sink() {
                           </DataListItem>
                           <DataListItem>
                             <DataListLabel minWidth="80px">Email</DataListLabel>
+                            <DataListData>vlad@workos.com</DataListData>
+                          </DataListItem>
+                        </DataListRoot>
+                      </Box>
+                      <Box mb="6">
+                        <DataListRoot>
+                          <DataListItem>
+                            <DataListLabel maxWidth="1">Testing max width</DataListLabel>
+                            <DataListData>Vlad Moroz</DataListData>
+                          </DataListItem>
+                          <DataListItem>
+                            <DataListLabel maxWidth="1">Email</DataListLabel>
+                            <DataListData>vlad@workos.com</DataListData>
+                          </DataListItem>
+                        </DataListRoot>
+                      </Box>
+                      <Box mb="6">
+                        <DataListRoot>
+                          <DataListItem>
+                            <DataListLabel width={{ initial: '250px', sm: '500px' }}>
+                              Name
+                            </DataListLabel>
+                            <DataListData>Vlad Moroz</DataListData>
+                          </DataListItem>
+                          <DataListItem>
+                            <DataListLabel>Email</DataListLabel>
                             <DataListData>vlad@workos.com</DataListData>
                           </DataListItem>
                         </DataListRoot>

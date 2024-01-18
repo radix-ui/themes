@@ -45,23 +45,12 @@ type DataListLabelOwnProps = GetPropDefTypes<typeof dataListLabelPropDefs>;
 interface DataListLabelProps extends React.ComponentPropsWithoutRef<'dt'>, DataListLabelOwnProps {}
 const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>(
   (props, forwardedRef) => {
-    const { className, minWidth, maxWidth, width, ...labelProps } = extractProps(
-      props,
-      dataListLabelPropDefs
-    );
+    const { className, ...labelProps } = extractProps(props, dataListLabelPropDefs);
     return (
       <dt
         {...labelProps}
         ref={forwardedRef}
         className={classNames(className, 'rt-DataListLabel')}
-        style={
-          {
-            '--data-list-label-width': width,
-            '--data-list-label-min-width': minWidth,
-            '--data-list-label-max-width': maxWidth,
-            ...labelProps.style,
-          } as React.CSSProperties
-        }
       />
     );
   }

@@ -23,6 +23,29 @@
 
 /***************************************************************************************************
  *                                                                                                 *
+ * ALIGN                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-DataListItem {
+    &:where(.rt-r-dl-vaf-start) {
+      align-items: start;
+    }
+    &:where(.rt-r-dl-vaf-center) {
+      align-items: center;
+    }
+    &:where(.rt-r-dl-vaf-end) {
+      align-items: end;
+    }
+    &:where(.rt-r-dl-vaf-baseline) {
+      align-items: baseline;
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
  * ORIENTATION                                                                                     *
  *                                                                                                 *
  ***************************************************************************************************/
@@ -34,7 +57,6 @@
       flex-direction: column;
       gap: var(--space-1);
     }
-
     &:where(.rt-r-dl-orient-horizontal) :where(.rt-DataListItem) {
       display: grid;
       /* Use subgrid so all the label columns remain aligned */
@@ -46,15 +68,6 @@
       white-space: normal;
       padding: 0;
       width: auto;
-    }
-    &:where(.rt-r-dl-orient-horizontal) :where(.rt-DataListLabel) {
-      white-space: nowrap;
-      width: var(--data-list-label-width);
-      min-width: var(--data-list-label-min-width);
-      max-width: var(--data-list-label-max-width);
-    }
-    &:where(.rt-r-dl-orient-vertical) :where(.rt-DataListData) {
-      padding: 0;
     }
   }
 }
@@ -85,26 +98,145 @@
 
 /***************************************************************************************************
  *                                                                                                 *
- * ALIGN                                                                                           *
+ * WIDTH                                                                                           *
  *                                                                                                 *
  ***************************************************************************************************/
-
 @breakpoints {
-  .rt-DataListItem {
-    &:where(.rt-r-dl-vaf-start) {
-      align-items: start;
+  .rt-DataListLabel {
+    &:where(.rt-r-dl-width) {
+      /* Keep this selector here to maintain the source order */
+    }
+    &:where(.rt-r-dl-width-1) {
+      width: 100px;
+    }
+    &:where(.rt-r-dl-width-2) {
+      width: 200px;
+    }
+    &:where(.rt-r-dl-width-3) {
+      width: 300px;
     }
 
-    &:where(.rt-r-dl-vaf-center) {
-      align-items: center;
+    &:where(.rt-r-dl-min-width) {
+      /* Keep this selector here to maintain the source order */
+    }
+    &:where(.rt-r-dl-min-width-1) {
+      min-width: 100px;
+    }
+    &:where(.rt-r-dl-min-width-2) {
+      min-width: 200px;
+    }
+    &:where(.rt-r-dl-min-width-3) {
+      min-width: 300px;
     }
 
-    &:where(.rt-r-dl-vaf-end) {
-      align-items: end;
+    &:where(.rt-r-dl-max-width) {
+      /* Keep this selector here to maintain the source order */
     }
+    &:where(.rt-r-dl-max-width-1) {
+      max-width: 100px;
+    }
+    &:where(.rt-r-dl-max-width-2) {
+      max-width: 200px;
+    }
+    &:where(.rt-r-dl-max-width-3) {
+      max-width: 300px;
+    }
+  }
+}
 
-    &:where(.rt-r-dl-vaf-baseline) {
-      align-items: baseline;
-    }
+.rt-DataListLabel {
+  &:where(.rt-r-dl-width) {
+    width: var(--dl-label-width);
+  }
+  &:where(.rt-r-dl-width-1) {
+    width: 100px;
+  }
+  &:where(.rt-r-dl-width-2) {
+    width: 200px;
+  }
+  &:where(.rt-r-dl-width-3) {
+    width: 300px;
+  }
+
+  &:where(.rt-r-dl-min-width) {
+    min-width: var(--dl-label-min-width);
+  }
+  &:where(.rt-r-dl-min-width-1) {
+    min-width: 100px;
+  }
+  &:where(.rt-r-dl-min-width-2) {
+    min-width: 200px;
+  }
+  &:where(.rt-r-dl-min-width-3) {
+    min-width: 300px;
+  }
+
+  &:where(.rt-r-dl-max-width) {
+    max-width: var(--dl-label-max-width);
+  }
+  &:where(.rt-r-dl-max-width-1) {
+    max-width: 100px;
+  }
+  &:where(.rt-r-dl-max-width-2) {
+    max-width: 200px;
+  }
+  &:where(.rt-r-dl-max-width-3) {
+    max-width: 300px;
+  }
+}
+
+@media (--xs) {
+  .xs\:rt-r-dl-width {
+    width: var(--dl-label-width-xs);
+  }
+  .xs\:rt-r-dl-min-width {
+    min-width: var(--dl-label-min-width-xs);
+  }
+  .xs\:rt-r-dl-max-width {
+    max-width: var(--dl-label-max-width-xs);
+  }
+}
+@media (--sm) {
+  .sm\:rt-r-dl-width {
+    width: var(--dl-label-width-sm);
+  }
+  .sm\:rt-r-dl-min-width {
+    min-width: var(--dl-label-min-width-sm);
+  }
+  .sm\:rt-r-dl-max-width {
+    max-width: var(--dl-label-max-width-sm);
+  }
+}
+@media (--md) {
+  .md\:rt-r-dl-width {
+    width: var(--dl-label-width-md);
+  }
+  .md\:rt-r-dl-min-width {
+    min-width: var(--dl-label-min-width-md);
+  }
+  .md\:rt-r-dl-max-width {
+    max-width: var(--dl-label-max-width-md);
+  }
+}
+@media (--lg) {
+  .lg\:rt-r-dl-width {
+    width: var(--dl-label-width-lg);
+  }
+  .lg\:rt-r-dl-min-width {
+    min-width: var(--dl-label-min-width-lg);
+  }
+  .lg\:rt-r-dl-max-width {
+    max-width: var(--dl-label-max-width-lg);
+  }
+}
+@media (--xl) {
+  .xl\:rt-r-dl-width {
+    width: var(--dl-label-width-xl);
+  }
+  .xl\:rt-r-dl-min-width {
+    min-width: var(--dl-label-min-width-xl);
+  }
+  .xl\:rt-r-dl-max-width {
+    max-width: var(--dl-label-max-width-xl);
   }
 }
