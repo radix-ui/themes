@@ -1,6 +1,5 @@
 .rt-DataListRoot {
   display: grid;
-  /** Value  set via props in component **/
   grid-template-columns: auto 1fr;
 }
 
