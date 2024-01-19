@@ -42,12 +42,12 @@ ThemePanel.displayName = 'ThemePanel';
 
 type ThemePanelImplElement = React.ElementRef<'div'>;
 // Narrow to only reference the `asChild` Box prop
-type ThemePanelOwnProps = CommonBoxProps & BoxAsChildProps;
+type ThemePanelImplOwnProps = CommonBoxProps & BoxAsChildProps;
 interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-interface ThemePanelImplProps extends ThemePanelOwnProps, ThemePanelImplPrivateProps {
+interface ThemePanelImplProps extends ThemePanelImplOwnProps, ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
