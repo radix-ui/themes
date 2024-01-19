@@ -9,6 +9,7 @@ import {
   contextMenuContentPropDefs,
   contextMenuItemPropDefs,
   contextMenuCheckboxItemPropDefs,
+  contextMenuRadioItemPropDefs,
 } from './context-menu.props';
 import { extractProps } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
@@ -166,7 +167,7 @@ const ContextMenuRadioGroup = React.forwardRef<
 ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup';
 
 type ContextMenuRadioItemElement = React.ElementRef<typeof ContextMenuPrimitive.RadioItem>;
-type ContextMenuRadioItemOwnProps = GetPropDefTypes<typeof contextMenuItemPropDefs>;
+type ContextMenuRadioItemOwnProps = GetPropDefTypes<typeof contextMenuRadioItemPropDefs>;
 interface ContextMenuRadioItemProps
   extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.RadioItem>,
     ContextMenuRadioItemOwnProps {}
@@ -177,7 +178,7 @@ const ContextMenuRadioItem = React.forwardRef<
   const {
     children,
     className,
-    color = contextMenuItemPropDefs.color.default,
+    color = contextMenuRadioItemPropDefs.color.default,
     ...itemProps
   } = props;
   return (
@@ -215,7 +216,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     children,
     className,
     shortcut,
-    color = contextMenuItemPropDefs.color.default,
+    color = contextMenuCheckboxItemPropDefs.color.default,
     ...itemProps
   } = props;
   return (

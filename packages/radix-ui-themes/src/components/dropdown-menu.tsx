@@ -9,6 +9,7 @@ import {
   dropdownMenuContentPropDefs,
   dropdownMenuItemPropDefs,
   dropdownMenuCheckboxItemPropDefs,
+  dropdownMenuRadioItemPropDefs,
 } from './dropdown-menu.props';
 import { extractProps } from '../helpers';
 import { Theme, useThemeContext } from '../theme';
@@ -167,7 +168,7 @@ const DropdownMenuRadioGroup = React.forwardRef<
 DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
 
 type DropdownMenuRadioItemElement = React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>;
-type DropdownMenuRadioItemOwnProps = GetPropDefTypes<typeof dropdownMenuItemPropDefs>;
+type DropdownMenuRadioItemOwnProps = GetPropDefTypes<typeof dropdownMenuRadioItemPropDefs>;
 interface DropdownMenuRadioItemProps
   extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.RadioItem>,
     DropdownMenuRadioItemOwnProps {}
@@ -178,7 +179,7 @@ const DropdownMenuRadioItem = React.forwardRef<
   const {
     children,
     className,
-    color = dropdownMenuItemPropDefs.color.default,
+    color = dropdownMenuRadioItemPropDefs.color.default,
     ...itemProps
   } = props;
   return (
@@ -216,7 +217,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     children,
     className,
     shortcut,
-    color = dropdownMenuItemPropDefs.color.default,
+    color = dropdownMenuCheckboxItemPropDefs.color.default,
     ...itemProps
   } = props;
   return (
