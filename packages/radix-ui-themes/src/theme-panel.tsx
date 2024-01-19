@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
+import { InfoCircledIcon } from './icons';
 import {
   Theme,
   updateThemeAppearanceClass,
@@ -25,8 +26,8 @@ import {
   Popover,
 } from './index';
 
+import type { CommonBoxProps, BoxAsChildProps } from './components/box';
 import type { ThemeOptions } from './index';
-import { InfoCircledIcon } from './icons';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;
@@ -39,15 +40,15 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
 );
 ThemePanel.displayName = 'ThemePanel';
 
-type ThemePanelImplElement = React.ElementRef<typeof Box>;
-interface ThemePanelImplProps
-  extends React.ComponentPropsWithoutRef<typeof Box>,
-    ThemePanelImplPrivateProps {
-  onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
-}
+type ThemePanelImplElement = React.ElementRef<'div'>;
+// Narrow to only reference the `asChild` Box prop
+type ThemePanelOwnProps = CommonBoxProps & BoxAsChildProps;
 interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+}
+interface ThemePanelImplProps extends ThemePanelOwnProps, ThemePanelImplPrivateProps {
+  onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
   (props, forwardedRef) => {

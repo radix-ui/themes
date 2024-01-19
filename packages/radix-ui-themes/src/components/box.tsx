@@ -18,13 +18,13 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
-    as: asElem = 'div',
+    as: Tag = 'div',
     ...boxProps
   } = extractProps(props, boxPropDefs, layoutPropDefs, marginPropDefs);
-  const Comp = asChild ? Slot : asElem;
+  const Comp = asChild ? Slot : Tag;
   return <Comp {...boxProps} ref={forwardedRef} className={classNames('rt-Box', className)} />;
 });
 Box.displayName = 'Box';
 
 export { Box };
-export type { BoxProps };
+export type { BoxProps, CommonBoxProps, BoxAsChildProps };
