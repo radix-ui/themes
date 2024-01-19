@@ -2,20 +2,17 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import { boxPropDefs } from './box.props';
-import { extractProps, layoutPropDefs, marginPropDefs, mergeStyles } from '../helpers';
+import { extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type BoxElement = React.ElementRef<'div'>;
 type BoxOwnProps = GetPropDefTypes<typeof boxPropDefs>;
-interface BoxProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    MarginProps,
-    LayoutProps,
-    BoxOwnProps {
-  asChild?: boolean;
-  as?: 'span' | 'div';
-}
+interface CommonBoxProps extends MarginProps, LayoutProps, BoxOwnProps {}
+type BoxAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'div'>;
+type BoxSpanProps = { as?: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
+type BoxDivProps = { as?: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
+type BoxProps = CommonBoxProps & (BoxAsChildProps | BoxSpanProps | BoxDivProps);
 
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
   const {

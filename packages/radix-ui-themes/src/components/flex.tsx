@@ -4,26 +4,24 @@ import { Slot } from './slot';
 import { flexPropDefs } from './flex.props';
 import { extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type FlexElement = React.ElementRef<'div'>;
 type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs>;
-interface FlexProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    MarginProps,
-    LayoutProps,
-    FlexOwnProps {
-  asChild?: boolean;
-  as?: 'span' | 'div';
-}
+interface CommonFlexProps extends MarginProps, LayoutProps, FlexOwnProps {}
+type FlexAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'div'>;
+type FlexSpanProps = { as?: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
+type FlexDivProps = { as?: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
+type FlexProps = CommonFlexProps & (FlexAsChildProps | FlexSpanProps | FlexDivProps);
+
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const {
     className,
     asChild,
-    as: asElem = 'div',
+    as: Tag = 'div',
     ...flexProps
   } = extractProps(props, flexPropDefs, layoutPropDefs, marginPropDefs);
-  const Comp = asChild ? Slot : asElem;
+  const Comp = asChild ? Slot : Tag;
   return <Comp {...flexProps} ref={forwardedRef} className={classNames('rt-Flex', className)} />;
 });
 Flex.displayName = 'Flex';
