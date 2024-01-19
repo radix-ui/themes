@@ -167,17 +167,25 @@ const DropdownMenuRadioGroup = React.forwardRef<
 DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
 
 type DropdownMenuRadioItemElement = React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>;
+type DropdownMenuRadioItemOwnProps = GetPropDefTypes<typeof dropdownMenuItemPropDefs>;
 interface DropdownMenuRadioItemProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem> {}
+  extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.RadioItem>,
+    DropdownMenuRadioItemOwnProps {}
 const DropdownMenuRadioItem = React.forwardRef<
   DropdownMenuRadioItemElement,
   DropdownMenuRadioItemProps
 >((props, forwardedRef) => {
-  const { children, className, ...itemProps } = props;
+  const {
+    children,
+    className,
+    color = dropdownMenuItemPropDefs.color.default,
+    ...itemProps
+  } = props;
   return (
     <DropdownMenuPrimitive.RadioItem
       {...itemProps}
       ref={forwardedRef}
+      data-accent-color={color}
       className={classNames(
         'rt-BaseMenuItem',
         'rt-BaseMenuRadioItem',
@@ -198,17 +206,24 @@ DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem';
 type DropdownMenuCheckboxItemElement = React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>;
 type DropdownMenuCheckboxItemOwnProps = GetPropDefTypes<typeof dropdownMenuCheckboxItemPropDefs>;
 interface DropdownMenuCheckboxItemProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>,
+  extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.CheckboxItem>,
     DropdownMenuCheckboxItemOwnProps {}
 const DropdownMenuCheckboxItem = React.forwardRef<
   DropdownMenuCheckboxItemElement,
   DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
-  const { children, className, shortcut, ...itemProps } = props;
+  const {
+    children,
+    className,
+    shortcut,
+    color = dropdownMenuItemPropDefs.color.default,
+    ...itemProps
+  } = props;
   return (
     <DropdownMenuPrimitive.CheckboxItem
       {...itemProps}
       ref={forwardedRef}
+      data-accent-color={color}
       className={classNames(
         'rt-BaseMenuItem',
         'rt-BaseMenuCheckboxItem',
