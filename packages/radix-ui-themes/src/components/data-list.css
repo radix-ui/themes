@@ -13,7 +13,6 @@
   color: var(--gray-a11);
   box-sizing: border-box;
   display: block;
-  white-space: nowrap;
 }
 
 .rt-DataListData {
