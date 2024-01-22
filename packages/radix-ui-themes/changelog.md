@@ -45,6 +45,8 @@
   - Add `color` and `highContrast` props to `TabsList`
 - `TextArea`
   - Add `radius` prop
+- `TextField`
+  - Fix an issue with some input `type`s not supporting `getSelectionRange`
 
 ## 2.0.3
 
