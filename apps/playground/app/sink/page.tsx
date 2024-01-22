@@ -4737,7 +4737,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot mt="2" trim="both">
                           <DataListItem>
-                            <DataListLabel width="3">Jedi Master</DataListLabel>
+                            <DataListLabel width="200px">Jedi Master</DataListLabel>
                             <DataListData>Obi wan</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -4850,7 +4850,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot>
                           <DataListItem>
-                            <DataListLabel width="2">Appearance</DataListLabel>
+                            <DataListLabel width="200px">Appearance</DataListLabel>
                             <DataListData>System</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -4860,7 +4860,7 @@ export default function Sink() {
                         </DataListRoot>
                         <DataListRoot mt="4">
                           <DataListItem>
-                            <DataListLabel width="2">Page background</DataListLabel>
+                            <DataListLabel width="200px">Page background</DataListLabel>
                             <DataListData>White</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -4953,11 +4953,11 @@ export default function Sink() {
                       <Box mb="6">
                         <DataListRoot>
                           <DataListItem>
-                            <DataListLabel maxWidth="1">Testing max width</DataListLabel>
+                            <DataListLabel maxWidth="9">Testing max width</DataListLabel>
                             <DataListData>Vlad Moroz</DataListData>
                           </DataListItem>
                           <DataListItem>
-                            <DataListLabel maxWidth="1">Email</DataListLabel>
+                            <DataListLabel maxWidth="9">Email</DataListLabel>
                             <DataListData>vlad@workos.com</DataListData>
                           </DataListItem>
                         </DataListRoot>

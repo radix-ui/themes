@@ -1,4 +1,4 @@
-import { trimProp } from '../helpers';
+import { widthPropDefs, trimProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
@@ -71,35 +71,6 @@ const dataListItemPropDefs = {
   align?: PropDef<(typeof alignValues)[number]>;
 };
 
-const dataListLabelPropDefs = {
-  width: {
-    type: 'enum | string',
-    className: 'rt-r-dl-width',
-    customProperties: ['--dl-label-width'],
-    values: widthValues,
-    default: '2',
-    responsive: true,
-  },
-  minWidth: {
-    type: 'enum | string',
-    className: 'rt-r-dl-min-width',
-    customProperties: ['--dl-label-min-width'],
-    values: widthValues,
-    default: undefined,
-    responsive: true,
-  },
-  maxWidth: {
-    type: 'enum | string',
-    className: 'rt-r-dl-max-width',
-    customProperties: ['--dl-label-max-width'],
-    values: widthValues,
-    default: undefined,
-    responsive: true,
-  },
-} satisfies {
-  width?: PropDef<(typeof widthValues)[number]>;
-  minWidth?: PropDef<(typeof widthValues)[number]>;
-  maxWidth?: PropDef<(typeof widthValues)[number]>;
-};
+const dataListLabelPropDefs = widthPropDefs;
 
 export { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs };
