@@ -44,6 +44,11 @@
   - Add `minWidth` and `maxWidth` props to the `TableCell` part
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
+  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
+    - `--tabs-trigger-active-letter-spacing` -> `--tab-active-letter-spacing`
+    - `--tabs-trigger-active-word-spacing` -> `--tab-active-word-spacing`
+    - `--tabs-trigger-inactive-letter-spacing` -> `--tab-inactive-letter-spacing`
+    - `--tabs-trigger-inactive-word-spacing` -> `--tab-inactive-word-spacing`
 - `TextArea`
   - Add `radius` prop
 

@@ -30,22 +30,22 @@
   position: absolute;
 
   :where(.rt-BaseTabListTrigger[data-state='inactive'], .rt-TabNavLink:not([data-active])) & {
-    letter-spacing: var(--tabs-trigger-inactive-letter-spacing);
-    word-spacing: var(--tabs-trigger-inactive-word-spacing);
+    letter-spacing: var(--tab-inactive-letter-spacing, var(--tabs-trigger-inactive-letter-spacing));
+    word-spacing: var(--tab-inactive-word-spacing, var(--tabs-trigger-inactive-word-spacing));
   }
 
   :where(.rt-BaseTabListTrigger[data-state='active'], .rt-TabNavLink[data-active]) & {
     font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tabs-trigger-active-letter-spacing);
-    word-spacing: var(--tabs-trigger-active-word-spacing);
+    letter-spacing: var(--tab-active-letter-spacing, var(--tabs-trigger-active-letter-spacing));
+    word-spacing: var(--tab-active-word-spacing, var(--tabs-trigger-active-word-spacing));
   }
 }
 
 .rt-BaseTabListTriggerInnerHidden {
   visibility: hidden;
   font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tabs-trigger-active-letter-spacing);
-  word-spacing: var(--tabs-trigger-active-word-spacing);
+  letter-spacing: var(--tab-active-letter-spacing, var(--tabs-trigger-active-letter-spacing));
+  word-spacing: var(--tab-active-word-spacing, var(--tabs-trigger-active-word-spacing));
 }
 
 /***************************************************************************************************
@@ -55,14 +55,14 @@
  ***************************************************************************************************/
 
 .rt-BaseTabListTrigger {
-  padding-left: var(--tabs-trigger-padding-x);
-  padding-right: var(--tabs-trigger-padding-x);
+  padding-left: var(--tab-padding-x);
+  padding-right: var(--tab-padding-x);
 }
 
 .rt-BaseTabListTriggerInner,
 .rt-BaseTabListTriggerInnerHidden {
-  padding: var(--tabs-trigger-inner-padding-y) var(--tabs-trigger-inner-padding-x);
-  border-radius: var(--tabs-trigger-inner-border-radius);
+  padding: var(--tab-inner-padding-y) var(--tab-inner-padding-x);
+  border-radius: var(--tab-inner-border-radius);
 }
 
 @breakpoints {
@@ -72,20 +72,20 @@
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
-      --tabs-trigger-padding-x: var(--space-1);
-      --tabs-trigger-inner-padding-x: var(--space-1);
-      --tabs-trigger-inner-padding-y: calc(var(--space-1) * 0.5);
-      --tabs-trigger-inner-border-radius: var(--radius-1);
+      --tab-padding-x: var(--space-1);
+      --tab-inner-padding-x: var(--space-1);
+      --tab-inner-padding-y: calc(var(--space-1) * 0.5);
+      --tab-inner-border-radius: var(--radius-1);
     }
     &:where(.rt-r-size-2) {
       height: var(--space-7);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
-      --tabs-trigger-padding-x: var(--space-2);
-      --tabs-trigger-inner-padding-x: var(--space-2);
-      --tabs-trigger-inner-padding-y: var(--space-1);
-      --tabs-trigger-inner-border-radius: var(--radius-2);
+      --tab-padding-x: var(--space-2);
+      --tab-inner-padding-x: var(--space-2);
+      --tab-inner-padding-y: var(--space-1);
+      --tab-inner-border-radius: var(--radius-2);
     }
   }
 }

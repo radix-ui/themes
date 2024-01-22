@@ -165,10 +165,6 @@ import {
   TableCell,
   tableRootPropDefs,
   //
-  TabNavRoot,
-  TabNavItem,
-  tabNavPropDefs,
-  //
   TabsRoot,
   TabsList,
   TabsTrigger,

@@ -37,39 +37,41 @@ const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, 
 });
 TabNavRoot.displayName = 'TabNavRoot';
 
-type TabNavItemElement = React.ElementRef<typeof NavigationMenu.Link>;
-interface TabNavItemProps extends React.ComponentPropsWithoutRef<typeof NavigationMenu.Link> {}
-const TabNavItem = React.forwardRef<TabNavItemElement, TabNavItemProps>((props, forwardedRef) => {
-  const { asChild = false, className, children, ...itemProps } = props;
+type TabNavLinkElement = React.ElementRef<typeof NavigationMenu.Link>;
+interface TabNavLinkProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof NavigationMenu.Link>, 'onSelect'> {}
+const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
+  const { asChild = false, className, children, ...linkProps } = props;
   return (
     <NavigationMenu.Item className="rt-TabNavItem">
       <NavigationMenu.Link
-        {...itemProps}
+        {...linkProps}
         ref={forwardedRef}
         className={classNames('rt-reset', 'rt-BaseTabListTrigger', 'rt-TabNavLink', className)}
+        onSelect={() => {}}
         asChild
       >
         {asChild ? (
           getChild(children)
         ) : (
           <a>
-            <TabNavItemInner>{children}</TabNavItemInner>
+            <TabNavLinkInner>{children}</TabNavLinkInner>
           </a>
         )}
       </NavigationMenu.Link>
     </NavigationMenu.Item>
   );
 });
-TabNavItem.displayName = 'TabNavItem';
+TabNavLink.displayName = 'TabNavLink';
 
 function getChild(children: React.ReactNode) {
   const firstChild = React.Children.only(children) as React.ReactElement;
   return React.cloneElement(firstChild, {
-    children: <TabNavItemInner>{firstChild.props.children}</TabNavItemInner>,
+    children: <TabNavLinkInner>{firstChild.props.children}</TabNavLinkInner>,
   });
 }
 
-function TabNavItemInner({ children }: { children: React.ReactNode }) {
+function TabNavLinkInner({ children }: { children: React.ReactNode }) {
   return (
     <>
       <span className="rt-BaseTabListTriggerInner rt-TabNavLinkInner">{children}</span>
@@ -82,9 +84,9 @@ const TabNav = Object.assign(
   {},
   {
     Root: TabNavRoot,
-    Item: TabNavItem,
+    Link: TabNavLink,
   }
 );
 
-export { TabNav, TabNavRoot, TabNavItem };
-export type { TabNavRootProps, TabNavItemProps };
+export { TabNav, TabNavRoot, TabNavLink };
+export type { TabNavRootProps, TabNavLinkProps };
