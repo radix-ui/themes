@@ -34,7 +34,7 @@ const dataListPropDefs = {
   },
   orientation: {
     type: 'enum',
-    className: 'rt-r-dl-orient',
+    className: 'rt-r-orientation',
     values: orientationValues,
     default: 'horizontal',
     responsive: true,

@@ -4831,7 +4831,7 @@ export default function Sink() {
                         </Heading>
                         <DataListRoot>
                           <DataListItem align="center">
-                            <DataListLabel width="1">Appearance</DataListLabel>
+                            <DataListLabel width="100px">Appearance</DataListLabel>
                             <DataListData>
                               <Flex align="center" gap="1">
                                 <IconButton size="1" variant="ghost">

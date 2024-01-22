@@ -1,24 +1,9 @@
-.rt-DataListRoot {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-
-.rt-DataListItem {
-  position: relative;
-  box-sizing: border-box;
-  grid-column: span 2;
-}
-
 .rt-DataListLabel {
   color: var(--gray-a11);
-  box-sizing: border-box;
-  display: block;
 }
 
 .rt-DataListData {
-  box-sizing: border-box;
   margin: 0;
-  display: block;
 }
 
 /***************************************************************************************************
@@ -28,24 +13,33 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-DataListRoot {
-    &:where(.rt-r-dl-orient-vertical) :where(.rt-DataListItem) {
+  :where(.rt-r-orientation-vertical) {
+    &.rt-DataListRoot {
       display: flex;
       flex-direction: column;
-      gap: var(--space-1);
     }
-    &:where(.rt-r-dl-orient-horizontal) :where(.rt-DataListItem) {
+  }
+  :where(.rt-r-orientation-vertical) :where(.rt-DataListItem) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  :where(.rt-r-orientation-vertical) :where(.rt-DataListLabel) {
+    white-space: normal;
+    width: auto;
+  }
+  :where(.rt-r-orientation-horizontal) {
+    &.rt-DataListRoot {
       display: grid;
-      /* Use subgrid so all the label columns remain aligned */
-      grid-template-columns: subgrid;
-      padding: 0;
-      gap: inherit;
+      grid-template-columns: auto 1fr;
     }
-    &:where(.rt-r-dl-orient-vertical) :where(.rt-DataListLabel) {
-      white-space: normal;
-      padding: 0;
-      width: auto;
-    }
+  }
+  :where(.rt-r-orientation-horizontal) :where(.rt-DataListItem) {
+    display: grid;
+    /* Use subgrid so all the label columns remain aligned */
+    grid-template-columns: subgrid;
+    gap: inherit;
+    grid-column: span 2;
   }
 }
 
