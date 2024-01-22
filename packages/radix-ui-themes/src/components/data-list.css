@@ -9,30 +9,28 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  :where(.rt-r-orientation-vertical) {
-    &.rt-DataListRoot {
+  .rt-DataListRoot {
+    &:where(.rt-r-orientation-vertical) {
       display: flex;
       flex-direction: column;
     }
-  }
-  :where(.rt-r-orientation-vertical) :where(.rt-DataListItem) {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-  :where(.rt-r-orientation-horizontal) {
-    &.rt-DataListRoot {
+    &:where(.rt-r-orientation-vertical) :where(.rt-DataListItem) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    &:where(.rt-r-orientation-horizontal) {
       display: grid;
       grid-template-columns: auto 1fr;
     }
-  }
-  :where(.rt-r-orientation-horizontal) :where(.rt-DataListItem) {
-    display: grid;
-    /* Use subgrid so all the label columns remain aligned */
-    grid-template-columns: inherit; /* Fallback */
-    grid-template-columns: subgrid;
-    gap: inherit;
-    grid-column: span 2;
+    &:where(.rt-r-orientation-horizontal) :where(.rt-DataListItem) {
+      display: grid;
+      /* Use subgrid so all the label columns remain aligned */
+      grid-template-columns: inherit; /* Fallback */
+      grid-template-columns: subgrid;
+      gap: inherit;
+      grid-column: span 2;
+    }
   }
 }
 
@@ -43,16 +41,18 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  :where(.rt-r-trim-start, .rt-r-trim-both) :where(.rt-DataListItem:first-child) {
-    margin-top: calc(
-      var(--default-leading-trim-start) - var(--line-height, calc(1em * var(--default-line-height))) /
-        2
-    );
-  }
-  :where(.rt-r-trim-end, .rt-r-trim-both) :where(.rt-DataListItem:last-child) {
-    margin-bottom: calc(
-      var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
-        2
-    );
+  .rt-DataListRoot {
+    &:where(.rt-r-trim-start, .rt-r-trim-both) :where(.rt-DataListItem:first-child) {
+      margin-top: calc(
+        var(--default-leading-trim-start) -
+          var(--line-height, calc(1em * var(--default-line-height))) / 2
+      );
+    }
+    &:where(.rt-r-trim-end, .rt-r-trim-both) :where(.rt-DataListItem:last-child) {
+      margin-bottom: calc(
+        var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
+          2
+      );
+    }
   }
 }
