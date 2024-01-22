@@ -125,6 +125,8 @@ export * from './tooltip.props';
 
 // NAVIGATION
 //------------------------------------------------------------------------------
+export { TabNav, TabNavRoot, TabNavItem } from './tab-nav';
+export * from './tab-nav.props';
 // export * from './menubar';
 // export * from './navigation-menu';
 

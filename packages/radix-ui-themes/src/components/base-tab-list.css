@@ -1,0 +1,140 @@
+.rt-BaseTabList {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.rt-BaseTabListLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  user-select: none;
+}
+
+.rt-BaseTabListLinkInner,
+.rt-BaseTabListLinkInnerHidden {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rt-BaseTabListLinkInner {
+  position: absolute;
+
+  :where(.rt-BaseTabListLink[data-state='inactive'], :not(.rt-TabNavLink[data-active])) & {
+    letter-spacing: var(--tabs-trigger-inactive-letter-spacing);
+    word-spacing: var(--tabs-trigger-inactive-word-spacing);
+  }
+
+  :where(.rt-BaseTabListLink[data-state='active'], .rt-TabNavLink[data-active]) & {
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--tabs-trigger-active-letter-spacing);
+    word-spacing: var(--tabs-trigger-active-word-spacing);
+  }
+}
+
+.rt-BaseTabListLinkInnerHidden {
+  visibility: hidden;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tabs-trigger-active-letter-spacing);
+  word-spacing: var(--tabs-trigger-active-word-spacing);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-BaseTabListLink {
+  padding-left: var(--tabs-trigger-padding-x);
+  padding-right: var(--tabs-trigger-padding-x);
+}
+
+.rt-BaseTabListLinkInner,
+.rt-BaseTabListLinkInnerHidden {
+  padding: var(--tabs-trigger-inner-padding-y) var(--tabs-trigger-inner-padding-x);
+  border-radius: var(--tabs-trigger-inner-border-radius);
+}
+
+@breakpoints {
+  .rt-BaseTabList {
+    &:where(.rt-r-size-1) {
+      height: var(--space-6);
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+      --tabs-trigger-padding-x: var(--space-1);
+      --tabs-trigger-inner-padding-x: var(--space-1);
+      --tabs-trigger-inner-padding-y: calc(var(--space-1) * 0.5);
+      --tabs-trigger-inner-border-radius: var(--radius-1);
+    }
+    &:where(.rt-r-size-2) {
+      height: var(--space-7);
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      --tabs-trigger-padding-x: var(--space-2);
+      --tabs-trigger-inner-padding-x: var(--space-2);
+      --tabs-trigger-inner-padding-y: var(--space-1);
+      --tabs-trigger-inner-border-radius: var(--radius-2);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-BaseTabList {
+  box-shadow: inset 0 -1px 0 0 var(--gray-a5);
+}
+
+.rt-BaseTabListLink {
+  color: var(--gray-a11);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      color: var(--gray-12);
+    }
+    &:where(:hover) :where(.rt-BaseTabListLinkInner) {
+      background-color: var(--gray-a3);
+    }
+    &:where(:focus-visible:hover) :where(.rt-BaseTabListLinkInner) {
+      background-color: var(--accent-a3);
+    }
+  }
+  &:where([data-state='active'], [data-active]) {
+    color: var(--gray-12);
+  }
+  &:where(:focus-visible) :where(.rt-BaseTabListLinkInner) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -2px;
+  }
+  &:where([data-state='active'], [data-active])::before {
+    box-sizing: border-box;
+    content: '';
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--accent-10);
+  }
+
+  :where(.rt-BaseTabList.rt-high-contrast) & {
+    &:where([data-state='active'], [data-active])::before {
+      background-color: var(--accent-12);
+    }
+  }
+}

@@ -36,7 +36,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
       data-accent-color={color}
       {...listProps}
       ref={forwardedRef}
-      className={classNames('rt-TabsList', className)}
+      className={classNames('rt-BaseTabList', 'rt-TabsList', className)}
     />
   );
 });
@@ -51,10 +51,10 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
       <TabsPrimitive.Trigger
         {...triggerProps}
         ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-TabsTrigger', className)}
+        className={classNames('rt-reset', 'rt-BaseTabListLink', 'rt-TabsTRigger', className)}
       >
-        <span className="rt-TabsTriggerInner">{children}</span>
-        <span className="rt-TabsTriggerInnerHidden">{children}</span>
+        <span className="rt-BaseTabListLinkInner rt-TabsTriggerInner">{children}</span>
+        <span className="rt-BaseTabListLinkInnerHidden rt-TabsTriggerInnerHidden">{children}</span>
       </TabsPrimitive.Trigger>
     );
   }
