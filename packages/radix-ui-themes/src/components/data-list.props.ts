@@ -48,7 +48,7 @@ const dataListPropDefs = {
   },
   trim: {
     ...trimProp,
-    className: 'rt-r-dl-trim', // Custom trim styles due to grid layout
+    className: 'rt-r-trim', // Custom trim styles due to grid layout
   },
 } satisfies {
   orientation?: PropDef<(typeof orientationValues)[number]>;

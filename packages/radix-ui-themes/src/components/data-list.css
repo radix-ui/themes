@@ -50,19 +50,16 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  .rt-DataListRoot {
-    &:where(.rt-r-dl-trim-start, .rt-r-dl-trim-both) :where(.rt-DataListItem:first-child) {
-      margin-top: calc(
-        var(--default-leading-trim-start) -
-          var(--line-height, calc(1em * var(--default-line-height))) / 2
-      );
-    }
-
-    &:where(.rt-r-dl-trim-end, .rt-r-dl-trim-both) :where(.rt-DataListItem:last-child) {
-      margin-bottom: calc(
-        var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
-          2
-      );
-    }
+  :where(.rt-r-dl-trim-start, .rt-r-dl-trim-both) :where(.rt-DataListItem:first-child) {
+    margin-top: calc(
+      var(--default-leading-trim-start) - var(--line-height, calc(1em * var(--default-line-height))) /
+        2
+    );
+  }
+  :where(.rt-r-dl-trim-end, .rt-r-dl-trim-both) :where(.rt-DataListItem:last-child) {
+    margin-bottom: calc(
+      var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
+        2
+    );
   }
 }
