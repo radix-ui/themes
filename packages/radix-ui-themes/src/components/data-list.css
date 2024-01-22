@@ -13,23 +13,25 @@
     &:where(.rt-r-orientation-vertical) {
       display: flex;
       flex-direction: column;
-    }
-    &:where(.rt-r-orientation-vertical) :where(.rt-DataListItem) {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
+
+      & :where(.rt-DataListItem) {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
     }
     &:where(.rt-r-orientation-horizontal) {
       display: grid;
       grid-template-columns: auto 1fr;
-    }
-    &:where(.rt-r-orientation-horizontal) :where(.rt-DataListItem) {
-      display: grid;
-      /* Use subgrid so all the label columns remain aligned */
-      grid-template-columns: inherit; /* Fallback */
-      grid-template-columns: subgrid;
-      gap: inherit;
-      grid-column: span 2;
+
+      & :where(.rt-DataListItem) {
+        display: grid;
+        /* Use subgrid so all the label columns remain aligned */
+        grid-template-columns: inherit; /* Fallback */
+        grid-template-columns: subgrid;
+        gap: inherit;
+        grid-column: span 2;
+      }
     }
   }
 }
