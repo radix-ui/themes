@@ -4771,7 +4771,7 @@ function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenu
         <>
           <DropdownMenuSeparator />
 
-          <DropdownMenuCheckboxItem color="indigo" shortcut="⌘+B" checked>
+          <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
             Show Bookmarks
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
@@ -4780,9 +4780,7 @@ function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenu
 
           <DropdownMenuLabel>People</DropdownMenuLabel>
           <DropdownMenuRadioGroup value="pedro">
-            <DropdownMenuRadioItem color="indigo" value="pedro">
-              Pedro Duarte
-            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
 
@@ -4828,7 +4826,7 @@ function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenuCo
         <>
           <ContextMenuSeparator />
 
-          <ContextMenuCheckboxItem color="indigo" shortcut="⌘+B" checked>
+          <ContextMenuCheckboxItem shortcut="⌘+B" checked>
             Show Bookmarks
           </ContextMenuCheckboxItem>
           <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
@@ -4837,9 +4835,7 @@ function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenuCo
 
           <ContextMenuLabel>People</ContextMenuLabel>
           <ContextMenuRadioGroup value="pedro">
-            <ContextMenuRadioItem color="indigo" value="pedro">
-              Pedro Duarte
-            </ContextMenuRadioItem>
+            <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
             <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
           </ContextMenuRadioGroup>
 
