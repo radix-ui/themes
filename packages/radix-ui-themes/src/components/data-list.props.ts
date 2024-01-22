@@ -1,36 +1,15 @@
-import { widthPropDefs, trimProp } from '../helpers';
+import { widthPropDefs, trimProp, gapProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
-const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const orientationValues = ['horizontal', 'vertical'] as const;
 const sizes = ['1', '2', '3'] as const;
-const widthValues = ['1', '2', '3'] as const;
 
 const dataListPropDefs = {
+  ...gapProp,
   gap: {
-    type: 'enum | string',
-    className: 'rt-r-gap',
-    customProperties: ['--gap'],
-    values: gapValues,
+    ...gapProp.gap,
     default: '4',
-    responsive: true,
-  },
-  gapX: {
-    type: 'enum | string',
-    className: 'rt-r-cg',
-    customProperties: ['--column-gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
-  gapY: {
-    type: 'enum | string',
-    className: 'rt-r-rg',
-    customProperties: ['--row-gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
   },
   orientation: {
     type: 'enum',
@@ -51,10 +30,8 @@ const dataListPropDefs = {
     className: 'rt-r-trim', // Custom trim styles due to grid layout
   },
 } satisfies {
+  gap?: Omit<typeof gapProp.gap, 'default'> & { default: string };
   orientation?: PropDef<(typeof orientationValues)[number]>;
-  gap?: PropDef<(typeof gapValues)[number]>;
-  gapX?: PropDef<(typeof gapValues)[number]>;
-  gapY?: PropDef<(typeof gapValues)[number]>;
   size?: PropDef<(typeof sizes)[number]>;
   trim?: typeof trimProp;
 };

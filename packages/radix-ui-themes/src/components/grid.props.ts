@@ -1,3 +1,4 @@
+import { gapProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const displayValues = ['none', 'inline-grid', 'grid'] as const;
@@ -6,9 +7,9 @@ const rowsValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const flowValues = ['row', 'column', 'dense', 'row-dense', 'column-dense'] as const;
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const justifyValues = ['start', 'center', 'end', 'between'] as const;
-const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const gridPropDefs = {
+  ...gapProp,
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -56,30 +57,6 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
-  gap: {
-    type: 'enum | string',
-    className: 'rt-r-gap',
-    customProperties: ['--gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
-  gapX: {
-    type: 'enum | string',
-    className: 'rt-r-cg',
-    customProperties: ['--column-gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
-  gapY: {
-    type: 'enum | string',
-    className: 'rt-r-rg',
-    customProperties: ['--row-gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
   columns: PropDef<(typeof columnsValues)[number]>;
@@ -87,9 +64,6 @@ const gridPropDefs = {
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
-  gap: PropDef<(typeof gapValues)[number]>;
-  gapX: PropDef<(typeof gapValues)[number]>;
-  gapY: PropDef<(typeof gapValues)[number]>;
 };
 
 function parseGridValue(value: string): string {

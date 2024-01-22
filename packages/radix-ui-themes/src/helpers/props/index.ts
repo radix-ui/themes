@@ -1,4 +1,5 @@
 export * from './color.prop';
+export * from './gap.prop';
 export * from './height.props';
 export * from './high-contrast.prop';
 export * from './layout.props';
