@@ -25,7 +25,7 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
     );
   }
 );
-DataListRoot.displayName = 'DataListRootGrid';
+DataListRoot.displayName = 'DataListRoot';
 
 type DataListItemElement = HTMLDivElement;
 type DataListItemOwnProps = GetPropDefTypes<typeof dataListItemPropDefs>;
