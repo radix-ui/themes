@@ -51,10 +51,12 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
       <TabsPrimitive.Trigger
         {...triggerProps}
         ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-BaseTabListLink', 'rt-TabsTRigger', className)}
+        className={classNames('rt-reset', 'rt-BaseTabListTrigger', 'rt-TabsTrigger', className)}
       >
-        <span className="rt-BaseTabListLinkInner rt-TabsTriggerInner">{children}</span>
-        <span className="rt-BaseTabListLinkInnerHidden rt-TabsTriggerInnerHidden">{children}</span>
+        <span className="rt-BaseTabListTriggerInner rt-TabsTriggerInner">{children}</span>
+        <span className="rt-BaseTabListTriggerInnerHidden rt-TabsTriggerInnerHidden">
+          {children}
+        </span>
       </TabsPrimitive.Trigger>
     );
   }

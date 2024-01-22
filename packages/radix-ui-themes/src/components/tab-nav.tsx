@@ -46,7 +46,7 @@ const TabNavItem = React.forwardRef<TabNavItemElement, TabNavItemProps>((props, 
       <NavigationMenu.Link
         {...itemProps}
         ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-BaseTabListLink', 'rt-TabNavLink', className)}
+        className={classNames('rt-reset', 'rt-BaseTabListTrigger', 'rt-TabNavLink', className)}
         asChild
       >
         {asChild ? (
@@ -72,8 +72,8 @@ function getChild(children: React.ReactNode) {
 function TabNavItemInner({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <span className="rt-BaseTabListLinkInner rt-TabNavLinkInner">{children}</span>
-      <span className="rt-BaseTabListLinkInnerHidden rt-TabNavLinkInnerHidden">{children}</span>
+      <span className="rt-BaseTabListTriggerInner rt-TabNavLinkInner">{children}</span>
+      <span className="rt-BaseTabListTriggerInnerHidden rt-TabNavLinkInnerHidden">{children}</span>
     </>
   );
 }
