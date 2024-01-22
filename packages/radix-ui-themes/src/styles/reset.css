@@ -52,3 +52,7 @@
   font-family: inherit;
   margin: 0;
 }
+
+.rt-reset:where(dd) {
+  margin: 0;
+}

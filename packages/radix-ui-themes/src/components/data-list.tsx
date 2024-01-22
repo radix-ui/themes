@@ -61,7 +61,7 @@ type DataListDataElement = React.ElementRef<'dd'>;
 interface DataListDataProps extends React.ComponentPropsWithoutRef<'dd'> {}
 const DataListData = React.forwardRef<DataListDataElement, DataListDataProps>(
   ({ children, className, ...props }, forwardedRef) => (
-    <dd {...props} ref={forwardedRef} className={classNames(className, 'rt-DataListData')}>
+    <dd {...props} ref={forwardedRef} className={classNames(className, 'rt-reset')}>
       {children}
     </dd>
   )
