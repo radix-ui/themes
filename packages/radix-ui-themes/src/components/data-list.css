@@ -37,6 +37,7 @@
   :where(.rt-r-orientation-horizontal) :where(.rt-DataListItem) {
     display: grid;
     /* Use subgrid so all the label columns remain aligned */
+    grid-template-columns: inherit; /* Fallback */
     grid-template-columns: subgrid;
     gap: inherit;
     grid-column: span 2;
@@ -50,13 +51,13 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  :where(.rt-r-dl-trim-start, .rt-r-dl-trim-both) :where(.rt-DataListItem:first-child) {
+  :where(.rt-r-trim-start, .rt-r-trim-both) :where(.rt-DataListItem:first-child) {
     margin-top: calc(
       var(--default-leading-trim-start) - var(--line-height, calc(1em * var(--default-line-height))) /
         2
     );
   }
-  :where(.rt-r-dl-trim-end, .rt-r-dl-trim-both) :where(.rt-DataListItem:last-child) {
+  :where(.rt-r-trim-end, .rt-r-trim-both) :where(.rt-DataListItem:last-child) {
     margin-bottom: calc(
       var(--default-leading-trim-end) - var(--line-height, calc(1em * var(--default-line-height))) /
         2
