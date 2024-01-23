@@ -4,6 +4,10 @@
 
 **An open-source component library optimized for fast development, easy maintenance, and accessibility.**
 
+> [!NOTE]
+> **Usage with Tailwind**<br>
+> There is a known issue when using TailwindCSS with Radix Themes, where the base preflight styles of Tailwind may override the Radix Themes styles. If you are experiencing issues such as buttons not appearing correctly it is likely due to this conflict. This has been fixed in [this pull request](https://github.com/tailwindlabs/tailwindcss/pull/12735) which will be available in the next Tailwind release. More info [here](https://github.com/radix-ui/themes/issues/162).
+
 ---
 
 ## Documentation
