@@ -36,9 +36,22 @@ const baseMenuItemPropDefs = {
 };
 
 const baseMenuCheckboxItemPropDefs = {
+  color: colorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
+  color: typeof colorProp;
   shortcut: PropDef<string>;
 };
 
-export { baseMenuContentPropDefs, baseMenuItemPropDefs, baseMenuCheckboxItemPropDefs };
+const baseMenuRadioItemPropDefs = {
+  color: colorProp,
+} satisfies {
+  color: typeof colorProp;
+};
+
+export {
+  baseMenuContentPropDefs,
+  baseMenuItemPropDefs,
+  baseMenuCheckboxItemPropDefs,
+  baseMenuRadioItemPropDefs,
+};

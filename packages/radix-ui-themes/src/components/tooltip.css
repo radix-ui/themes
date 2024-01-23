@@ -2,6 +2,7 @@
   padding: var(--space-1) var(--space-2);
   background-color: var(--gray-12);
   border-radius: var(--radius-2);
+  position: relative;
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 

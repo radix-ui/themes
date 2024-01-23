@@ -25,7 +25,10 @@
   - `Progress`
   - `Skeleton`
   - `Spinner`
+  - `TabNav`
   - `DataList`
+- `AlertDialog`, `Dialog`, `Popover`, `HoverCard`, `Tooltip`
+  - Add `position: relative` to support absolutely positioned children.
 - `Container`, `Section`
   - Change the incorrect `display="block"` value to `display="initial"`
 - `Checkbox`, `RadioGroup`, `Switch`
@@ -42,8 +45,15 @@
   - Add `minWidth` and `maxWidth` props to the `TableCell` part
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
+  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
+    - `--tabs-trigger-active-letter-spacing` -> `--tab-active-letter-spacing`
+    - `--tabs-trigger-active-word-spacing` -> `--tab-active-word-spacing`
+    - `--tabs-trigger-inactive-letter-spacing` -> `--tab-inactive-letter-spacing`
+    - `--tabs-trigger-inactive-word-spacing` -> `--tab-inactive-word-spacing`
 - `TextArea`
   - Add `radius` prop
+- `TextField`
+  - Fix an issue with some input `type`s not supporting `getSelectionRange`
 
 ## 2.0.3
 

@@ -199,6 +199,7 @@ import styles from './page.module.css';
 import { RadixLogo } from './radix-logo';
 import { PointerCursorsCheckbox } from './pointer-cursors-checkbox';
 import { LoadingButtons } from '../../components/loading-buttons';
+import { TabNavDemo } from './tab-nav-demo';
 
 export default function Sink() {
   return (
@@ -275,6 +276,9 @@ export default function Sink() {
                             </DialogTrigger>
                             <DialogContent style={{ maxWidth: 450 }}>
                               <Flex direction="column" gap="3">
+                                <InfoCircledIcon
+                                  style={{ position: 'absolute', top: '24px', right: '20px' }}
+                                />
                                 <DialogTitle>Share resource</DialogTitle>
                                 <DialogDescription>
                                   Jan Tschichold was a German calligrapher, typographer and book
@@ -4064,6 +4068,44 @@ export default function Sink() {
                     </Flex>
                   </DocsSection>
 
+                  <DocsSection title="Tab Nav">
+                    <table className={styles.table}>
+                      <tbody>
+                        {tabsListPropDefs.size.values.map((size) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <TabNavDemo size={size} />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See color combinations
+                        </Text>
+                      </summary>
+                      <Grid gap="5" columns="3" align="center">
+                        {tabsListPropDefs.color.values.map((color, i) => (
+                          <React.Fragment key={color}>
+                            <Text>{color}</Text>
+                            <Flex>
+                              <TabNavDemo size="1" color={color} />
+                            </Flex>
+                            <Flex>
+                              <TabNavDemo size="1" color={color} highContrast />
+                            </Flex>
+                          </React.Fragment>
+                        ))}
+                      </Grid>
+                    </details>
+                  </DocsSection>
+
                   <DocsSection title="Tabs">
                     <table className={styles.table}>
                       <tbody>
@@ -5146,12 +5188,13 @@ function SelectItemsDemo() {
 }
 
 function DocsSection({ title, children }: { title: string; children: React.ReactNode }) {
+  const hashedTitle = title.toLowerCase().replace(/ /g, '-');
   return (
     <>
       <Container mx="6">
         <Section size="2">
           <Heading size="6" weight="regular" mb="4" as="h2">
-            <Link href={`#${title}`} id={title}>
+            <Link href={`#${hashedTitle}`} id={hashedTitle}>
               {title}
             </Link>
           </Heading>
