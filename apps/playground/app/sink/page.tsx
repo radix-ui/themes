@@ -4976,6 +4976,20 @@ export default function Sink() {
                           </DataListItem>
                         </DataListRoot>
                       </Box>
+                      <Box mb="6">
+                        <DataListRoot>
+                          <DataListItem>
+                            <DataListLabel width={{ initial: '250px', sm: '500px' }} color="tomato">
+                              Name
+                            </DataListLabel>
+                            <DataListData>Vlad Moroz</DataListData>
+                          </DataListItem>
+                          <DataListItem>
+                            <DataListLabel color="tomato">Email</DataListLabel>
+                            <DataListData>vlad@workos.com</DataListData>
+                          </DataListItem>
+                        </DataListRoot>
+                      </Box>
                     </Box>
                   </DocsSection>
                 </main>

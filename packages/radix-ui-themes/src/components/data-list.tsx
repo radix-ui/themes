@@ -45,10 +45,11 @@ type DataListLabelOwnProps = GetPropDefTypes<typeof dataListLabelPropDefs>;
 interface DataListLabelProps extends React.ComponentPropsWithoutRef<'dt'>, DataListLabelOwnProps {}
 const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>(
   (props, forwardedRef) => {
-    const { className, ...labelProps } = extractProps(props, dataListLabelPropDefs);
+    const { className, color, ...labelProps } = extractProps(props, dataListLabelPropDefs);
     return (
       <dt
         {...labelProps}
+        data-accent-color={color}
         ref={forwardedRef}
         className={classNames(className, 'rt-DataListLabel')}
       />
