@@ -1,4 +1,4 @@
-import { gapProp } from '../helpers';
+import { gapProps } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const displayValues = ['none', 'inline-grid', 'grid'] as const;
@@ -9,7 +9,6 @@ const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const justifyValues = ['start', 'center', 'end', 'between'] as const;
 
 const gridPropDefs = {
-  ...gapProp,
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -57,6 +56,7 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
+  ...gapProps,
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
   columns: PropDef<(typeof columnsValues)[number]>;

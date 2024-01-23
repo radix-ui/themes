@@ -1,4 +1,4 @@
-import { gapProp } from '../helpers';
+import { gapProps } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const displayValues = ['none', 'inline-flex', 'flex'] as const;
@@ -8,7 +8,6 @@ const justifyValues = ['start', 'center', 'end', 'between'] as const;
 const wrapValues = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 
 const flexPropDefs = {
-  ...gapProp,
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -45,6 +44,7 @@ const flexPropDefs = {
     default: undefined,
     responsive: true,
   },
+  ...gapProps,
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
   direction: PropDef<(typeof directionValues)[number]>;

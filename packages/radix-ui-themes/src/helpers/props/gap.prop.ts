@@ -2,7 +2,7 @@ import type { PropDef } from './';
 
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
-const gapProp = {
+const gapProps = {
   gap: {
     type: 'enum | string',
     className: 'rt-r-gap',
@@ -33,4 +33,4 @@ const gapProp = {
   gapY?: PropDef<(typeof gapValues)[number]>;
 };
 
-export { gapProp };
+export { gapProps };
