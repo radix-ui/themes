@@ -3,7 +3,8 @@ import * as React from 'react';
 import { Text } from './text';
 import { extractProps, marginPropDefs } from '../helpers';
 import { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs } from './data-list.props';
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type DataListRootElement = HTMLDListElement;
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
@@ -42,7 +43,7 @@ DataListItem.displayName = 'DataListItem';
 
 type DataListLabelElement = React.ElementRef<'dt'>;
 type DataListLabelOwnProps = GetPropDefTypes<typeof dataListLabelPropDefs>;
-interface DataListLabelProps extends React.ComponentPropsWithoutRef<'dt'>, DataListLabelOwnProps {}
+interface DataListLabelProps extends PropsWithoutRefOrColor<'dt'>, DataListLabelOwnProps {}
 const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>(
   (props, forwardedRef) => {
     const { className, color, ...labelProps } = extractProps(props, dataListLabelPropDefs);
@@ -62,7 +63,11 @@ type DataListDataElement = React.ElementRef<'dd'>;
 interface DataListDataProps extends React.ComponentPropsWithoutRef<'dd'> {}
 const DataListData = React.forwardRef<DataListDataElement, DataListDataProps>(
   ({ children, className, ...props }, forwardedRef) => (
-    <dd {...props} ref={forwardedRef} className={classNames(className, 'rt-reset')}>
+    <dd
+      {...props}
+      ref={forwardedRef}
+      className={classNames(className, 'rt-reset', 'rt-DataListData')}
+    >
       {children}
     </dd>
   )
