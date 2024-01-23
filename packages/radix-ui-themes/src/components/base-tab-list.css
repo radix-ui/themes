@@ -30,22 +30,22 @@
   position: absolute;
 
   :where(.rt-BaseTabListTrigger[data-state='inactive'], .rt-TabNavLink:not([data-active])) & {
-    letter-spacing: var(--tab-inactive-letter-spacing, var(--tabs-trigger-inactive-letter-spacing));
-    word-spacing: var(--tab-inactive-word-spacing, var(--tabs-trigger-inactive-word-spacing));
+    letter-spacing: var(--tabs-trigger-inactive-letter-spacing, var(--tab-inactive-letter-spacing));
+    word-spacing: var(--tabs-trigger-inactive-word-spacing, var(--tab-inactive-word-spacing));
   }
 
   :where(.rt-BaseTabListTrigger[data-state='active'], .rt-TabNavLink[data-active]) & {
     font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tab-active-letter-spacing, var(--tabs-trigger-active-letter-spacing));
-    word-spacing: var(--tab-active-word-spacing, var(--tabs-trigger-active-word-spacing));
+    letter-spacing: var(--tabs-trigger-active-letter-spacing, var(--tab-active-letter-spacing));
+    word-spacing: var(--tabs-trigger-active-word-spacing, var(--tab-active-word-spacing));
   }
 }
 
 .rt-BaseTabListTriggerInnerHidden {
   visibility: hidden;
   font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tab-active-letter-spacing, var(--tabs-trigger-active-letter-spacing));
-  word-spacing: var(--tab-active-word-spacing, var(--tabs-trigger-active-word-spacing));
+  letter-spacing: var(--tabs-trigger-active-letter-spacing, var(--tab-active-letter-spacing));
+  word-spacing: var(--tabs-trigger-active-word-spacing, var(--tab-active-word-spacing));
 }
 
 /***************************************************************************************************
