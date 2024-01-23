@@ -26,7 +26,6 @@ import {
   Popover,
 } from './index';
 
-import type { CommonFlexProps, FlexAsChildProps } from './components/flex';
 import type { ThemeOptions } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
@@ -40,14 +39,12 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
 );
 ThemePanel.displayName = 'ThemePanel';
 
-type ThemePanelImplElement = React.ElementRef<'div'>;
-// Narrow to only reference the `asChild` Flex prop
-type ThemePanelImplOwnProps = CommonFlexProps & FlexAsChildProps;
+type ThemePanelImplElement = React.ElementRef<typeof Box>;
 interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-interface ThemePanelImplProps extends ThemePanelImplOwnProps, ThemePanelImplPrivateProps {
+interface ThemePanelImplProps extends ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
@@ -200,7 +197,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             transitionTimingFunction: open ? 'ease-out' : 'ease-in',
             transform: open ? 'none' : 'translateX(105%)',
             boxShadow: open ? 'var(--shadow-5)' : 'var(--shadow-2)',
-            ...props.style,
           }}
         >
           <ScrollArea>
