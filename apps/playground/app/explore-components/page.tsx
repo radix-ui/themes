@@ -1616,7 +1616,7 @@ export default function ExploreComponents() {
                       <Box my="6">
                         <DataListRoot>
                           <DataListItem>
-                            <DataListLabel>Name</DataListLabel>
+                            <DataListLabel width="200px">Name</DataListLabel>
                             <DataListData>Susan Kare</DataListData>
                           </DataListItem>
                           <DataListItem>
@@ -1633,55 +1633,53 @@ export default function ExploreComponents() {
 
                     <TabsContent value="all-orientations">
                       <Box my="6">
-                        <Flex direction="column" gap="4">
-                          {dataListPropDefs.orientation.values.map((orientation) => (
-                            <Flex align="center" key={orientation}>
-                              <Box flexShrink="0" style={{ width: 80 }}>
-                                <Text color="gray" size="1">
-                                  {orientation}
-                                </Text>
-                              </Box>
-
-                              <DataListRoot orientation={orientation} my="3">
-                                <DataListItem>
-                                  <DataListLabel>Name</DataListLabel>
-                                  <DataListData>Susan Kare</DataListData>
-                                </DataListItem>
-                                <DataListItem>
-                                  <DataListLabel>Email</DataListLabel>
-                                  <DataListData>susan.kare@apple.com</DataListData>
-                                </DataListItem>
-                              </DataListRoot>
-                            </Flex>
-                          ))}
-                        </Flex>
+                        <table className={styles.table}>
+                          <tbody>
+                            {dataListPropDefs.orientation.values.map((orientation) => (
+                              <tr key={orientation}>
+                                <td>{upperFirst(orientation)}</td>
+                                <td style={{ textAlign: 'left' }}>
+                                  <DataListRoot orientation={orientation} my="3">
+                                    <DataListItem>
+                                      <DataListLabel>Name</DataListLabel>
+                                      <DataListData>Susan Kare</DataListData>
+                                    </DataListItem>
+                                    <DataListItem>
+                                      <DataListLabel>Email</DataListLabel>
+                                      <DataListData>susan.kare@apple.com</DataListData>
+                                    </DataListItem>
+                                  </DataListRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </Box>
                     </TabsContent>
 
                     <TabsContent value="all-sizes">
                       <Box my="6">
-                        <Flex direction="column" gap="4">
-                          {dataListPropDefs.size.values.map((size) => (
-                            <Flex align="center" key={size}>
-                              <Box flexShrink="0" style={{ width: 80 }}>
-                                <Text color="gray" size="1">
-                                  Size {size}
-                                </Text>
-                              </Box>
-
-                              <DataListRoot size={size} my="3">
-                                <DataListItem>
-                                  <DataListLabel>Name</DataListLabel>
-                                  <DataListData>Susan Kare</DataListData>
-                                </DataListItem>
-                                <DataListItem>
-                                  <DataListLabel>Email</DataListLabel>
-                                  <DataListData>susan.kare@apple.com</DataListData>
-                                </DataListItem>
-                              </DataListRoot>
-                            </Flex>
-                          ))}
-                        </Flex>
+                        <table className={styles.table}>
+                          <tbody>
+                            {dataListPropDefs.size.values.map((size) => (
+                              <tr key={size}>
+                                <td>{`Size ${upperFirst(size)}`}</td>
+                                <td style={{ textAlign: 'left' }}>
+                                  <DataListRoot size={size} my="3">
+                                    <DataListItem>
+                                      <DataListLabel>Name</DataListLabel>
+                                      <DataListData>Susan Kare</DataListData>
+                                    </DataListItem>
+                                    <DataListItem>
+                                      <DataListLabel>Email</DataListLabel>
+                                      <DataListData>susan.kare@apple.com</DataListData>
+                                    </DataListItem>
+                                  </DataListRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </Box>
                     </TabsContent>
                   </TabsRoot>
