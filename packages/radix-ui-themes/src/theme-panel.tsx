@@ -26,7 +26,7 @@ import {
   Popover,
 } from './index';
 
-import type { CommonBoxProps, BoxAsChildProps } from './components/box';
+import type { CommonFlexProps, FlexAsChildProps } from './components/flex';
 import type { ThemeOptions } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
@@ -41,8 +41,8 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
 ThemePanel.displayName = 'ThemePanel';
 
 type ThemePanelImplElement = React.ElementRef<'div'>;
-// Narrow to only reference the `asChild` Box prop
-type ThemePanelImplOwnProps = CommonBoxProps & BoxAsChildProps;
+// Narrow to only reference the `asChild` Flex prop
+type ThemePanelImplOwnProps = CommonFlexProps & FlexAsChildProps;
 interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
