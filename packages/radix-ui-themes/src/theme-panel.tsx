@@ -39,12 +39,14 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
 );
 ThemePanel.displayName = 'ThemePanel';
 
-type ThemePanelImplElement = React.ElementRef<typeof Box>;
+type ThemePanelImplElement = React.ElementRef<'div'>;
 interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-interface ThemePanelImplProps extends ThemePanelImplPrivateProps {
+interface ThemePanelImplProps
+  extends React.ComponentPropsWithoutRef<'div'>,
+    ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
@@ -197,6 +199,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             transitionTimingFunction: open ? 'ease-out' : 'ease-in',
             transform: open ? 'none' : 'translateX(105%)',
             boxShadow: open ? 'var(--shadow-5)' : 'var(--shadow-2)',
+            ...props.style,
           }}
         >
           <ScrollArea>
