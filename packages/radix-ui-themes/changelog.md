@@ -21,10 +21,11 @@
     - `gridRow`, `gridRowStart`, `gridRowEnd`
   - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
-- 3 new components
+- 4 new components
   - `Progress`
   - `Skeleton`
   - `Spinner`
+  - `DataList`
 - `Container`, `Section`
   - Change the incorrect `display="block"` value to `display="initial"`
 - `Checkbox`, `RadioGroup`, `Switch`
