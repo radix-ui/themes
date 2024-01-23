@@ -1,0 +1,19 @@
+/*
+ * We are modeling this after the "text-wrap" property, but use "white-space" because it has better support as of 2024.
+ */
+@breakpoints {
+  .rt-r-tw-wrap {
+    white-space: normal;
+  }
+  .rt-r-tw-nowrap {
+    white-space: nowrap;
+  }
+  .rt-r-tw-pretty {
+    white-space: normal;
+    text-wrap: pretty;
+  }
+  .rt-r-tw-balance {
+    white-space: normal;
+    text-wrap: balance;
+  }
+}
