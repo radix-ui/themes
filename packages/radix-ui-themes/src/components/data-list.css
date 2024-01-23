@@ -3,6 +3,10 @@
 
   &:where([data-accent-color]) {
     color: var(--accent-a11);
+
+    &:where(.rt-high-contrast) {
+      color: var(--accent-12);
+    }
   }
 }
 

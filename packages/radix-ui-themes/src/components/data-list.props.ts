@@ -1,4 +1,4 @@
-import { widthPropDefs, trimProp, gapProp, colorProp } from '../helpers';
+import { widthPropDefs, trimProp, gapProp, colorProp, highContrastProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
@@ -48,6 +48,13 @@ const dataListItemPropDefs = {
   align?: PropDef<(typeof alignValues)[number]>;
 };
 
-const dataListLabelPropDefs = { ...widthPropDefs, colorProp };
+const dataListLabelPropDefs = {
+  ...widthPropDefs,
+  color: colorProp,
+  highContrast: highContrastProp,
+} satisfies {
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
+};
 
 export { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs };
