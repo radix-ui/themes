@@ -11,6 +11,7 @@ import {
   StarFilledIcon,
   MagicWandIcon,
   Cross1Icon,
+  CodeIcon,
 } from '@radix-ui/react-icons';
 import {
   Theme,
@@ -127,6 +128,10 @@ import {
   progressPropDefs,
   //
   Quote,
+  //
+  RadioCardGroupRoot,
+  RadioCardGroupItem,
+  radioCardGroupPropDefs,
   //
   RadioGroupRoot,
   RadioGroupItem,
@@ -5062,6 +5067,168 @@ export default function Sink() {
                         </table>
                       </details>
                     </Box>
+                  </DocsSection>
+
+                  <DocsSection title="RadioCardGroup">
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <RadioCardGroupRoot
+                                columns="3"
+                                defaultValue={String(index)}
+                                variant={variant}
+                              >
+                                <RadioCardGroupItem value="0">
+                                  <CodeIcon />
+                                  <Text size="2">Node.js</Text>
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="1">
+                                  <CodeIcon />
+                                  <Text size="2">Ruby</Text>
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">
+                                  <CodeIcon />
+                                  <Text size="2">Go</Text>
+                                </RadioCardGroupItem>
+                              </RadioCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Box mb="7" />
+
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupPropDefs.size.values.map((size, index) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <RadioCardGroupRoot
+                                size={size}
+                                columns="3"
+                                defaultValue={String(index)}
+                                style={{ width: 400 + Number(size) * 100 }}
+                              >
+                                <RadioCardGroupItem value="0">
+                                  <CodeIcon
+                                    width={size === '3' ? 20 : 15}
+                                    height={size === '3' ? 20 : 15}
+                                  />
+                                  <Text size={size}>Node.js</Text>
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="1">
+                                  <CodeIcon
+                                    width={size === '3' ? 20 : 15}
+                                    height={size === '3' ? 20 : 15}
+                                  />
+                                  <Text size={size}>Ruby</Text>
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">
+                                  <CodeIcon
+                                    width={size === '3' ? 20 : 15}
+                                    height={size === '3' ? 20 : 15}
+                                  />
+                                  <Text size={size}>Go</Text>
+                                </RadioCardGroupItem>
+                              </RadioCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex direction="column" gap="2">
+                                        <RadioCardGroupRoot
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          defaultValue="0"
+                                          variant={variant}
+                                          color={color}
+                                          style={{ width: 400 }}
+                                        >
+                                          <RadioCardGroupItem value="0">
+                                            <CodeIcon />
+                                            <Text size="1">Node.js</Text>
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1">
+                                            <CodeIcon />
+                                            <Text size="1">Ruby</Text>
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">
+                                            <CodeIcon />
+                                            <Text size="1">Go</Text>
+                                          </RadioCardGroupItem>
+                                        </RadioCardGroupRoot>
+
+                                        <RadioCardGroupRoot
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          defaultValue="0"
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                          style={{ width: 400 }}
+                                        >
+                                          <RadioCardGroupItem value="0">
+                                            <CodeIcon />
+                                            <Text size="1">Node.js</Text>
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1">
+                                            <CodeIcon />
+                                            <Text size="1">Ruby</Text>
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">
+                                            <CodeIcon />
+                                            <Text size="1">Go</Text>
+                                          </RadioCardGroupItem>
+                                        </RadioCardGroupRoot>
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
                   </DocsSection>
                 </main>
               </Box>
