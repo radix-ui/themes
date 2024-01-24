@@ -6,7 +6,6 @@
 .rt-RadioCardGroupItem {
   display: flex;
   align-items: center;
-  cursor: var(--cursor-radio);
 }
 
 /* Avoid unintentional drag interactions (e.g. on images) */
@@ -52,6 +51,18 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rt-RadioCardGroupItem {
+  position: relative;
+  /* pseudo element for focus outline */
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+}
+
 /* surface */
 
 .rt-RadioCardGroupRoot:where(.rt-variant-surface) {
@@ -64,21 +75,16 @@
     }
 
     &:where([data-state='checked']) {
-      outline: 2px solid var(--accent-9);
-      outline-offset: -1px;
+      outline: 2px solid var(--accent-10);
+      outline-offset: -2px;
     }
 
-    &:where(:focus-visible) {
-      outline: 2px solid var(--accent-9);
-      outline-offset: -1px;
-      box-shadow: 0 0 0 4px var(--accent-a6);
+    &:where(:focus-visible)::before {
+      outline: 2px solid var(--color-focus-root);
+      outline-offset: 2px;
     }
   }
 
-  &:not(:where(.rt-high-contrast)) :where(.rt-RadioCardGroupItem):where([data-state='checked']) {
-    background-color: var(--accent-a2);
-    color: var(--accent-12);
-  }
   &:where(.rt-high-contrast) :where(.rt-RadioCardGroupItem) {
     &:where([data-state='checked']) {
       outline-color: var(--accent-12);
@@ -93,7 +99,7 @@
 
 .rt-RadioCardGroupRoot:where(.rt-variant-classic) {
   :where(.rt-RadioCardGroupItem) {
-    background-color: var(--color-panel);
+    background-color: var(--color-surface);
     /* A transparent shadow to transition smoothly to `:active` */
     box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
     transition: box-shadow 120ms;
@@ -113,20 +119,20 @@
       outline-offset: -1px;
     }
 
-    &:where(:focus-visible) {
-      transition-duration: 0ms;
-      outline: 2px solid var(--accent-9);
-      outline-offset: -1px;
-      box-shadow: 0 0 0 4px var(--accent-a6);
+    &:where(:focus-visible)::before {
+      outline: 2px solid var(--color-focus-root);
+      outline-offset: 3px;
     }
   }
+}
 
-  &:where(.rt-high-contrast) :where(.rt-RadioCardGroupItem) {
-    &:where([data-state='checked']) {
-      outline-color: var(--accent-12);
-    }
-    &:where(:focus-visible) {
-      outline-color: var(--accent-12);
-    }
+/* all high-contrast */
+
+.rt-RadioCardGroupRoot:where(.rt-high-contrast) :where(.rt-RadioCardGroupItem) {
+  &:where([data-state='checked']) {
+    outline-color: var(--accent-12);
+  }
+  &:where(:focus-visible) {
+    outline-color: var(--accent-12);
   }
 }
