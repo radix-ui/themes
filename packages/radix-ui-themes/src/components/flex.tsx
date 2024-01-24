@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import { flexPropDefs } from './flex.props';
-import { extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
@@ -20,6 +20,7 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
     props,
     flexPropDefs,
     layoutPropDefs,
+    deprecatedLayoutPropDefs,
     marginPropDefs
   );
   const Comp = asChild ? Slot : 'div';

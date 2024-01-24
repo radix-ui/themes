@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import { gridPropDefs } from './grid.props';
-import { extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
 import { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
@@ -20,6 +20,7 @@ const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {
     props,
     gridPropDefs,
     layoutPropDefs,
+    deprecatedLayoutPropDefs,
     marginPropDefs
   );
   const Comp = asChild ? Slot : 'div';
