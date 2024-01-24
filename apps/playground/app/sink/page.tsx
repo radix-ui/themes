@@ -4972,6 +4972,53 @@ export default function Sink() {
                             See color combinations
                           </Text>
                         </summary>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              <ColumnHeaderCell>Color</ColumnHeaderCell>
+                              <ColumnHeaderCell>High Contrast</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            {dataListLabelPropDefs.color.values.map((color) => (
+                              <tr key={color}>
+                                <RowHeaderCell style={{ whiteSpace: 'nowrap' }}>
+                                  {color}
+                                </RowHeaderCell>
+                                <td>
+                                  <DataListRoot my="3">
+                                    <DataListItem>
+                                      <DataListLabel color={color}>Name</DataListLabel>
+                                      <DataListData>Susan Kare</DataListData>
+                                    </DataListItem>
+                                    <DataListItem>
+                                      <DataListLabel color={color}>Email</DataListLabel>
+                                      <DataListData>susan.kare@apple.com</DataListData>
+                                    </DataListItem>
+                                  </DataListRoot>
+                                </td>
+                                <td>
+                                  <DataListRoot my="3" ml="6">
+                                    <DataListItem>
+                                      <DataListLabel highContrast color={color}>
+                                        Name
+                                      </DataListLabel>
+                                      <DataListData>Susan Kare</DataListData>
+                                    </DataListItem>
+                                    <DataListItem>
+                                      <DataListLabel highContrast color={color}>
+                                        Email
+                                      </DataListLabel>
+                                      <DataListData>susan.kare@apple.com</DataListData>
+                                    </DataListItem>
+                                  </DataListRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </details>
                       <Text as="p" my="5">
                         <Code>width</Code> can be set per <Code>DataListLabel</Code> instance:
@@ -5014,90 +5061,6 @@ export default function Sink() {
                           </tbody>
                         </table>
                       </details>
-                    </Box>
-                  </DocsSection>
-
-                  <DocsSection title="DataList">
-                    <Box style={{ maxWidth: '688px' }}>
-                      <Box mb="6">
-                        <Heading mb="5" size="3">
-                          With varied X & Y gaps
-                        </Heading>
-                        <DataListRoot
-                          orientation={{ initial: 'vertical', sm: 'horizontal' }}
-                          gapX="4"
-                          gapY="6"
-                        >
-                          <DataListItem>
-                            <DataListLabel>Name</DataListLabel>
-                            <DataListData>Vlad Moroz</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Lorem ipsum dolor</DataListLabel>
-                            <DataListData>
-                              <Link href="https://workos.com">WorkOS</Link>
-                            </DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-
-                      <Box mb="6">
-                        <Heading mb="5" size="3">
-                          With custom label width
-                        </Heading>
-                        <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel width="350px">Name</DataListLabel>
-                            <DataListData>Vlad Moroz</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-                      <Box mb="6">
-                        <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel minWidth="80px">Name</DataListLabel>
-                            <DataListData>Vlad Moroz</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel minWidth="80px">Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-                      <Box mb="6">
-                        <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel maxWidth="9">Testing max width</DataListLabel>
-                            <DataListData>Vlad Moroz</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel maxWidth="9">Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-                      <Box mb="6">
-                        <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel width={{ initial: '250px', sm: '500px' }}>
-                              Name
-                            </DataListLabel>
-                            <DataListData>Vlad Moroz</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
                     </Box>
                   </DocsSection>
                 </main>
