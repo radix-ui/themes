@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot';
 import { boxPropDefs } from './box.props';
-import { extractProps, layoutPropDefs, marginPropDefs, mergeStyles } from '../helpers';
+import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
@@ -21,6 +21,7 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
     props,
     boxPropDefs,
     layoutPropDefs,
+    deprecatedLayoutPropDefs,
     marginPropDefs
   );
   const Comp = asChild ? Slot : 'div';

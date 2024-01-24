@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { sectionPropDefs } from './section.props';
-import { extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
@@ -17,6 +17,7 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
     props,
     sectionPropDefs,
     layoutPropDefs,
+    deprecatedLayoutPropDefs,
     marginPropDefs
   );
   return (
