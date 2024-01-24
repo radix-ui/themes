@@ -55,6 +55,7 @@
  ***************************************************************************************************/
 
 .rt-BaseTabListTrigger {
+  height: var(--tab-height);
   padding-left: var(--tab-padding-x);
   padding-right: var(--tab-padding-x);
 }
@@ -68,20 +69,20 @@
 @breakpoints {
   .rt-BaseTabList {
     &:where(.rt-r-size-1) {
-      height: var(--space-6);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
+      --tab-height: var(--space-6);
       --tab-padding-x: var(--space-1);
       --tab-inner-padding-x: var(--space-1);
       --tab-inner-padding-y: calc(var(--space-1) * 0.5);
       --tab-inner-border-radius: var(--radius-1);
     }
     &:where(.rt-r-size-2) {
-      height: var(--space-7);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
+      --tab-height: var(--space-7);
       --tab-padding-x: var(--space-2);
       --tab-inner-padding-x: var(--space-2);
       --tab-inner-padding-y: var(--space-1);

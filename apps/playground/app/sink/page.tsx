@@ -4184,6 +4184,35 @@ export default function Sink() {
                         ))}
                       </Grid>
                     </details>
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See wrap & justify options
+                        </Text>
+                      </summary>
+
+                      {tabsListPropDefs.wrap.values.map((wrap) => (
+                        <Flex key={wrap} gap="6">
+                          {tabsListPropDefs.justify.values.map((justify) => (
+                            <Box py="5" width="320px" key={justify}>
+                              <TabsRoot defaultValue="file" activationMode="manual">
+                                <TabsList size="1" wrap={wrap} justify={justify}>
+                                  <TabsTrigger value="file">File</TabsTrigger>
+                                  <TabsTrigger value="edit">Edit</TabsTrigger>
+                                  <TabsTrigger value="view">View</TabsTrigger>
+                                  <TabsTrigger value="history">History</TabsTrigger>
+                                  <TabsTrigger value="bookmarks">Bookmarks</TabsTrigger>
+                                  <TabsTrigger value="profiles">Profiles</TabsTrigger>
+                                  <TabsTrigger value="tab">Tab</TabsTrigger>
+                                  <TabsTrigger value="window">Window</TabsTrigger>
+                                  <TabsTrigger value="help">Help</TabsTrigger>
+                                </TabsList>
+                              </TabsRoot>
+                            </Box>
+                          ))}
+                        </Flex>
+                      ))}
+                    </details>
                   </DocsSection>
 
                   <DocsSection title="AspectRatio">
