@@ -73,6 +73,9 @@ import {
   DataListItem,
   DataListLabel,
   DataListData,
+  dataListPropDefs,
+  dataListItemPropDefs,
+  dataListLabelPropDefs,
   //
   DialogRoot,
   DialogTrigger,
@@ -4772,173 +4775,250 @@ export default function Sink() {
                   </DocsSection>
 
                   <DocsSection title="DataList">
+                    <Flex gap="4" align="center">
+                      <TabsRoot defaultValue="specimen">
+                        <TabsList size="2">
+                          <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                          <TabsTrigger value="all-orientations">All orientations</TabsTrigger>
+                          <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                        </TabsList>
+
+                        <TabsContent value="specimen">
+                          <Box my="6" style={{ maxWidth: '688px' }}>
+                            <DataListRoot>
+                              <DataListItem>
+                                <DataListLabel width="200px">Name</DataListLabel>
+                                <DataListData>Susan Kare</DataListData>
+                              </DataListItem>
+                              <DataListItem>
+                                <DataListLabel>Email</DataListLabel>
+                                <DataListData>susan.kare@apple.com</DataListData>
+                              </DataListItem>
+                              <DataListItem>
+                                <DataListLabel>Status</DataListLabel>
+                                <DataListData>
+                                  <Badge color="green" size="1" style={{ marginLeft: -2 }}>
+                                    Active
+                                  </Badge>
+                                </DataListData>
+                              </DataListItem>
+                              <DataListItem>
+                                <DataListLabel>Organization</DataListLabel>
+                                <DataListData>
+                                  <Link href="https://workos.com">WorkOS</Link>
+                                </DataListData>
+                              </DataListItem>
+                              <DataListItem>
+                                <DataListLabel>Bio</DataListLabel>
+                                <DataListData>
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
+                                  nisl et libero ultricies viverra quis vitae quam. Proin a feugiat
+                                  metus.
+                                </DataListData>
+                              </DataListItem>
+                            </DataListRoot>
+                          </Box>
+                        </TabsContent>
+
+                        <TabsContent value="all-orientations">
+                          <Box my="6">
+                            <table className={styles.table}>
+                              <tbody>
+                                {dataListPropDefs.orientation.values.map((orientation) => (
+                                  <tr key={orientation}>
+                                    <td>
+                                      <ColumnHeaderCell>{upperFirst(orientation)}</ColumnHeaderCell>
+                                    </td>
+                                    <td style={{ textAlign: 'left' }}>
+                                      <DataListRoot orientation={orientation} my="3">
+                                        <DataListItem>
+                                          <DataListLabel>Name</DataListLabel>
+                                          <DataListData>Susan Kare</DataListData>
+                                        </DataListItem>
+                                        <DataListItem>
+                                          <DataListLabel>Email</DataListLabel>
+                                          <DataListData>susan.kare@apple.com</DataListData>
+                                        </DataListItem>
+                                      </DataListRoot>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </Box>
+                        </TabsContent>
+
+                        <TabsContent value="all-sizes">
+                          <Box my="6">
+                            <table className={styles.table}>
+                              <tbody>
+                                {dataListPropDefs.size.values.map((size) => (
+                                  <tr key={size}>
+                                    <td>
+                                      <ColumnHeaderCell>{`Size ${size}`}</ColumnHeaderCell>
+                                    </td>
+                                    <td style={{ textAlign: 'left' }}>
+                                      <DataListRoot size={size} my="3">
+                                        <DataListItem>
+                                          <DataListLabel>Name</DataListLabel>
+                                          <DataListData>Susan Kare</DataListData>
+                                        </DataListItem>
+                                        <DataListItem>
+                                          <DataListLabel>Email</DataListLabel>
+                                          <DataListData>susan.kare@apple.com</DataListData>
+                                        </DataListItem>
+                                      </DataListRoot>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </Box>
+                        </TabsContent>
+                      </TabsRoot>
+                    </Flex>
+                    <Box mt="2">
+                      <Text as="p" my="5">
+                        <Code>gap</Code> can be set per <Code>DataListRoot</Code> instance:
+                      </Text>
+                      <details>
+                        <summary>
+                          <Text size="2" color="gray">
+                            See gap combinations
+                          </Text>
+                        </summary>
+                        <table className={styles.table}>
+                          <tbody>
+                            <Flex gap="2" direction="column">
+                              <Box>
+                                {dataListPropDefs.gap.values.map((gap) => (
+                                  <tr key={gap}>
+                                    <td>
+                                      <ColumnHeaderCell
+                                        style={{ whiteSpace: 'nowrap' }}
+                                      >{`Gap ${gap}`}</ColumnHeaderCell>
+                                    </td>
+                                    <td>
+                                      <DataListRoot gap={gap} my="3">
+                                        <DataListItem>
+                                          <DataListLabel>Name</DataListLabel>
+                                          <DataListData>Susan Kare</DataListData>
+                                        </DataListItem>
+                                        <DataListItem>
+                                          <DataListLabel>Email</DataListLabel>
+                                          <DataListData>susan.kare@apple.com</DataListData>
+                                        </DataListItem>
+                                      </DataListRoot>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </Box>
+                              <Box>
+                                {dataListPropDefs.gap.values.map((gapX) => (
+                                  <tr key={gapX}>
+                                    <td>
+                                      <ColumnHeaderCell
+                                        style={{ whiteSpace: 'nowrap' }}
+                                      >{`Gap-x ${gapX}`}</ColumnHeaderCell>
+                                    </td>
+                                    <td>
+                                      <DataListRoot gapX={gapX} my="3">
+                                        <DataListItem>
+                                          <DataListLabel>Name</DataListLabel>
+                                          <DataListData>Susan Kare</DataListData>
+                                        </DataListItem>
+                                        <DataListItem>
+                                          <DataListLabel>Email</DataListLabel>
+                                          <DataListData>susan.kare@apple.com</DataListData>
+                                        </DataListItem>
+                                      </DataListRoot>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </Box>
+                              <Box>
+                                {dataListPropDefs.gap.values.map((gapY) => (
+                                  <tr key={gapY}>
+                                    <td>
+                                      <ColumnHeaderCell
+                                        style={{ whiteSpace: 'nowrap' }}
+                                      >{`Gap-y ${gapY}`}</ColumnHeaderCell>
+                                    </td>
+                                    <td>
+                                      <DataListRoot gapY={gapY} my="3">
+                                        <DataListItem>
+                                          <DataListLabel>Name</DataListLabel>
+                                          <DataListData>Susan Kare</DataListData>
+                                        </DataListItem>
+                                        <DataListItem>
+                                          <DataListLabel>Email</DataListLabel>
+                                          <DataListData>susan.kare@apple.com</DataListData>
+                                        </DataListItem>
+                                      </DataListRoot>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </Box>
+                            </Flex>
+                          </tbody>
+                        </table>
+                      </details>
+                      <Text as="p" my="5">
+                        <Code>color</Code> can be set per <Code>DataListLabel</Code> instance:
+                      </Text>
+                      <details>
+                        <summary>
+                          <Text size="2" color="gray">
+                            See color combinations
+                          </Text>
+                        </summary>
+                      </details>
+                      <Text as="p" my="5">
+                        <Code>width</Code> can be set per <Code>DataListLabel</Code> instance:
+                      </Text>
+                      <details>
+                        <summary>
+                          <Text size="2" color="gray">
+                            See width examples
+                          </Text>
+                        </summary>
+                        <table className={styles.table}>
+                          <tbody>
+                            {dataListLabelPropDefs.width.values.map((width) => {
+                              const labelWidth = Number(width) * 24;
+                              if (labelWidth < 48) return null;
+                              return (
+                                <tr key={width}>
+                                  <td>
+                                    <ColumnHeaderCell
+                                      style={{ whiteSpace: 'nowrap' }}
+                                    >{`Width ${labelWidth}px`}</ColumnHeaderCell>
+                                  </td>
+                                  <td>
+                                    <DataListRoot my="3">
+                                      <DataListItem>
+                                        <DataListLabel width={`${labelWidth}px`}>
+                                          Name
+                                        </DataListLabel>
+                                        <DataListData>Susan Kare</DataListData>
+                                      </DataListItem>
+                                      <DataListItem>
+                                        <DataListLabel>Email</DataListLabel>
+                                        <DataListData>susan.kare@apple.com</DataListData>
+                                      </DataListItem>
+                                    </DataListRoot>
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </details>
+                    </Box>
+                  </DocsSection>
+
+                  <DocsSection title="DataList">
                     <Box style={{ maxWidth: '688px' }}>
-                      <Flex gap="2" mt="4" direction="column">
-                        <Heading mb="5" size="3">
-                          Default
-                        </Heading>
-                        <DataListRoot mt="2" trim="both">
-                          <DataListItem>
-                            <DataListLabel width="200px">Jedi Master</DataListLabel>
-                            <DataListData>Obi wan</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Padewan</DataListLabel>
-                            <DataListData>Anakin Skywalker</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Flex>
-                      <Flex gap="2" mt="4" direction="column">
-                        <Heading mb="5" size="3">
-                          Vertical Layout
-                        </Heading>
-                        <DataListRoot orientation="vertical" mt="2">
-                          <DataListItem>
-                            <DataListLabel>Jedi Master</DataListLabel>
-                            <DataListData>Obi wan</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Padewan</DataListLabel>
-                            <DataListData>Anakin Skywalker</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Flex>
-
-                      <Box mb="6" mt="6">
-                        <Heading mb="5" size="3">
-                          With varied content
-                        </Heading>
-                        <DataListRoot orientation={{ initial: 'vertical', sm: 'horizontal' }}>
-                          <DataListItem>
-                            <DataListLabel minWidth="225px">Status</DataListLabel>
-                            <DataListData>
-                              <Badge color="green" size="1" style={{ marginLeft: -2 }}>
-                                Active
-                              </Badge>
-                            </DataListData>
-                          </DataListItem>
-
-                          <DataListItem align={{ initial: 'baseline', sm: 'center' }}>
-                            <DataListLabel>Name</DataListLabel>
-                            <DataListData>
-                              <Button size="2">Add</Button>
-                            </DataListData>
-                          </DataListItem>
-
-                          <DataListItem>
-                            <DataListLabel>Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-
-                          <DataListItem>
-                            <DataListLabel>Organization</DataListLabel>
-                            <DataListData>
-                              <Link href="https://workos.com">WorkOS</Link>
-                            </DataListData>
-                          </DataListItem>
-
-                          <DataListItem>
-                            <DataListLabel>Long value</DataListLabel>
-                            <DataListData>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl
-                              et libero ultricies viverra quis vitae quam. Proin a feugiat metus.
-                            </DataListData>
-                          </DataListItem>
-
-                          <DataListItem align={{ initial: 'baseline', sm: 'center' }}>
-                            <DataListLabel>Authentication methods</DataListLabel>
-                            <DataListData>
-                              <Flex gap="2" align="center" height="100%">
-                                <StarIcon />
-                                <MagicWandIcon />
-                                <StarFilledIcon />
-                              </Flex>
-                            </DataListData>
-                          </DataListItem>
-
-                          <DataListItem>
-                            <DataListLabel>Long value</DataListLabel>
-                            <DataListData>
-                              Sed luctus, est id feugiat blandit, sapien nisl lobortis arcu, eu
-                              malesuada nulla ex ut lorem. In odio nisl, consectetur id commodo vel,
-                              posuere eu risus.
-                            </DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-
-                      <Box mb="6">
-                        <Heading mb="5" size="3">
-                          With nested flex
-                        </Heading>
-                        <DataListRoot>
-                          <DataListItem align="center">
-                            <DataListLabel width="100px">Appearance</DataListLabel>
-                            <DataListData>
-                              <Flex align="center" gap="1">
-                                <IconButton size="1" variant="ghost">
-                                  <InfoCircledIcon />
-                                </IconButton>
-                                <Text>System</Text>
-                              </Flex>
-                            </DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-
-                      <Box mb="6">
-                        <Heading mb="5" size="3">
-                          One after another
-                        </Heading>
-                        <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel width="200px">Appearance</DataListLabel>
-                            <DataListData>System</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Radius</DataListLabel>
-                            <DataListData>Medium</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                        <DataListRoot mt="4">
-                          <DataListItem>
-                            <DataListLabel width="200px">Page background</DataListLabel>
-                            <DataListData>White</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Link color</DataListLabel>
-                            <DataListData>Blue</DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-
-                      <Box mb="6">
-                        <Heading mb="5" size="3">
-                          With long label
-                        </Heading>
-                        <DataListRoot
-                          orientation={{ initial: 'vertical', sm: 'horizontal' }}
-                          trim="both"
-                        >
-                          <DataListItem>
-                            <DataListLabel>Name</DataListLabel>
-                            <DataListData>Vlad Moroz</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Email</DataListLabel>
-                            <DataListData>vlad@workos.com</DataListData>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel minWidth="350px">
-                              Lorem ipsum dolor sit amet consectetur adipscing elit
-                            </DataListLabel>
-                            <DataListData>
-                              <Link href="https://workos.com">WorkOS</Link>
-                            </DataListData>
-                          </DataListItem>
-                        </DataListRoot>
-                      </Box>
-
                       <Box mb="6">
                         <Heading mb="5" size="3">
                           With varied X & Y gaps
