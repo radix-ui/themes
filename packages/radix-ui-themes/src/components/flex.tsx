@@ -13,8 +13,6 @@ interface FlexProps
     MarginProps,
     LayoutProps,
     FlexOwnProps {
-  foo?: LayoutProps['flexShrink'];
-  bar?: 'baz';
   asChild?: boolean;
 }
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
