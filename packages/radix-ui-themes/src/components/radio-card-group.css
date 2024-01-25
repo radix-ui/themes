@@ -6,11 +6,15 @@
 .rt-RadioCardGroupItem {
   display: flex;
   align-items: center;
+  white-space: nowrap;
+  min-width: 0;
 }
 
-/* Avoid unintentional drag interactions (e.g. on images) */
-.rt-RadioCardGroupItem * {
+.rt-RadioCardGroupItem > * {
+  /* Avoid unintentional drag interactions (e.g. on images) */
   pointer-events: none;
+  /* Don’t squish icons */
+  flex-shrink: 0;
 }
 
 /***************************************************************************************************
@@ -18,6 +22,13 @@
  * SIZES                                                                                           *
  *                                                                                                 *
  ***************************************************************************************************/
+
+.rt-RadioCardGroupRoot {
+  /* Fit about two cards on mobile devices */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+}
 
 .rt-RadioCardGroupItem {
   padding: var(--radio-card-group-item-padding);
@@ -27,19 +38,31 @@
 
 @breakpoints {
   .rt-RadioCardGroupRoot {
+    /* 40px height for the card with one line of text */
     &:where(.rt-r-size-1) {
-      --radio-card-group-item-padding: var(--space-3);
-      --radio-card-group-item-radius: var(--radius-4);
+      font-size: var(--font-size-2);
+      --line-height: var(--line-height-2);
+      --letter-spacing: var(--letter-spacing-2);
+      --radio-card-group-item-padding: calc(var(--space-3) / 1.2) var(--space-3);
+      --radio-card-group-item-radius: var(--radius-3);
       --radio-card-group-item-gap: var(--space-2);
     }
+    /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
-      --radio-card-group-item-padding: var(--space-4);
-      --radio-card-group-item-radius: var(--radius-4);
+      font-size: var(--font-size-2);
+      --line-height: var(--line-height-2);
+      --letter-spacing: var(--letter-spacing-2);
+      --radio-card-group-item-padding: calc(var(--space-4) * 0.875) var(--space-4);
+      --radio-card-group-item-radius: var(--radius-3);
       --radio-card-group-item-gap: var(--space-3);
     }
+    /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
-      --radio-card-group-item-padding: var(--space-5);
-      --radio-card-group-item-radius: var(--radius-5);
+      font-size: var(--font-size-3);
+      --line-height: var(--line-height-3);
+      --letter-spacing: var(--letter-spacing-3);
+      --radio-card-group-item-padding: calc(var(--space-5) / 1.2) var(--space-5);
+      --radio-card-group-item-radius: var(--radius-4);
       --radio-card-group-item-gap: var(--space-4);
     }
   }
