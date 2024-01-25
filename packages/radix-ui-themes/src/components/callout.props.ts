@@ -7,7 +7,7 @@ const variants = ['soft', 'surface', 'outline'] as const;
 const calloutRootPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  color: { ...colorProp, default: undefined },
+  color: colorProp,
   highContrast: highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;

@@ -88,7 +88,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       selectContentPropDefs
     );
     const themeContext = useThemeContext();
-    const resolvedColor = color ?? themeContext.accentColor;
+    const resolvedColor = color || themeContext.accentColor;
     return (
       <SelectPrimitive.Portal container={container}>
         <Theme asChild>

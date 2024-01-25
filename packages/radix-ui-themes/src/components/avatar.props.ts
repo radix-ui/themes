@@ -7,7 +7,7 @@ const variants = ['solid', 'soft'] as const;
 const avatarPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '3', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  color: { ...colorProp, default: undefined },
+  color: colorProp,
   highContrast: highContrastProp,
   radius: radiusProp,
   fallback: { type: 'ReactNode', default: undefined, required: true },

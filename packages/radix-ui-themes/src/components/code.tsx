@@ -9,7 +9,13 @@ type CodeElement = React.ElementRef<'code'>;
 type CodeOwnProps = GetPropDefTypes<typeof codePropDefs>;
 interface CodeProps extends PropsWithoutRefOrColor<'code'>, MarginProps, CodeOwnProps {}
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
-  const { className, color, ...codeProps } = extractProps(props, codePropDefs, marginPropDefs);
+  const {
+    className,
+    color: accent,
+    ...codeProps
+  } = extractProps(props, codePropDefs, marginPropDefs);
+  // Code ghost color prop should work as an inherited color by default
+  const color = props.variant === 'ghost' ? accent || undefined : accent;
   return (
     <code
       data-accent-color={color}

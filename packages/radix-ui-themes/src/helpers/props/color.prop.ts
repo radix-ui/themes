@@ -4,6 +4,12 @@ import type { PropDef } from '..';
 const colorProp = {
   type: 'enum',
   values: themePropDefs.accentColor.values,
+  default: '' as (typeof themePropDefs.accentColor.values)[number] | undefined,
+} satisfies PropDef<(typeof themePropDefs.accentColor.values)[number]>;
+
+const inheritedColorProp = {
+  type: 'enum',
+  values: themePropDefs.accentColor.values,
   default: undefined as (typeof themePropDefs.accentColor.values)[number] | undefined,
 } satisfies PropDef<(typeof themePropDefs.accentColor.values)[number]>;
 
@@ -13,5 +19,5 @@ type PropsWithoutRefOrColor<T extends React.ElementType> = Omit<
   'color'
 >;
 
-export { colorProp };
+export { colorProp, inheritedColorProp };
 export type { PropsWithoutRefOrColor };

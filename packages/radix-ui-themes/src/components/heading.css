@@ -8,10 +8,11 @@
 
   &:where([data-accent-color]) {
     color: var(--accent-a11);
+  }
 
-    &:where(.rt-high-contrast) {
-      color: var(--accent-12);
-    }
+  &:where([data-accent-color].rt-high-contrast),
+  :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
+    color: var(--accent-12);
   }
 }
 

@@ -1,4 +1,4 @@
-import { weightProp, alignProp, trimProp, colorProp, highContrastProp } from '../helpers';
+import { weightProp, alignProp, trimProp, highContrastProp, inheritedColorProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
@@ -14,14 +14,14 @@ const textPropDefs = {
   weight: weightProp,
   align: alignProp,
   trim: trimProp,
-  color: colorProp,
+  color: inheritedColorProp,
   highContrast: highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   weight: typeof weightProp;
   align: typeof alignProp;
   trim: typeof trimProp;
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
   highContrast: typeof highContrastProp;
 };
 

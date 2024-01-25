@@ -50,19 +50,16 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       variant = dropdownMenuContentPropDefs.variant.default,
       highContrast = dropdownMenuContentPropDefs.highContrast.default,
     } = props;
-    const {
-      className,
-      children,
-      color = themeContext.accentColor,
-      container,
-      forceMount,
-      ...contentProps
-    } = extractProps(props, dropdownMenuContentPropDefs);
+    const { className, children, color, container, forceMount, ...contentProps } = extractProps(
+      props,
+      dropdownMenuContentPropDefs
+    );
+    const resolvedColor = color || themeContext.accentColor;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DropdownMenuPrimitive.Content
-            data-accent-color={color}
+            data-accent-color={resolvedColor}
             align="start"
             sideOffset={4}
             collisionPadding={10}

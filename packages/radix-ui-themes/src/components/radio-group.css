@@ -133,7 +133,7 @@
     background-color: var(--accent-a5);
   }
   & :where(.rt-RadioGroupIndicator) {
-    background-color: var(--accent-11);
+    background-color: var(--accent-a11);
   }
 
   &:where(.rt-high-contrast) {
