@@ -7,6 +7,7 @@ const textWrapProp = {
   className: 'rt-r-tw',
   values: textWrapValues,
   default: undefined,
+  responsive: true,
 } satisfies PropDef<(typeof textWrapValues)[number]>;
 
 export { textWrapProp };
