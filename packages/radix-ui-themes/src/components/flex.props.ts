@@ -1,3 +1,4 @@
+import { gapProps } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const displayValues = ['none', 'inline-flex', 'flex'] as const;
@@ -5,7 +6,6 @@ const directionValues = ['row', 'column', 'row-reverse', 'column-reverse'] as co
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const justifyValues = ['start', 'center', 'end', 'between'] as const;
 const wrapValues = ['nowrap', 'wrap', 'wrap-reverse'] as const;
-const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const flexPropDefs = {
   display: {
@@ -44,39 +44,13 @@ const flexPropDefs = {
     default: undefined,
     responsive: true,
   },
-  gap: {
-    type: 'enum | string',
-    className: 'rt-r-gap',
-    customProperties: ['--gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
-  gapX: {
-    type: 'enum | string',
-    className: 'rt-r-cg',
-    customProperties: ['--column-gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
-  gapY: {
-    type: 'enum | string',
-    className: 'rt-r-rg',
-    customProperties: ['--row-gap'],
-    values: gapValues,
-    default: undefined,
-    responsive: true,
-  },
+  ...gapProps,
 } satisfies {
   display: PropDef<(typeof displayValues)[number]>;
   direction: PropDef<(typeof directionValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
   wrap: PropDef<(typeof wrapValues)[number]>;
-  gap: PropDef<(typeof gapValues)[number]>;
-  gapX: PropDef<(typeof gapValues)[number]>;
-  gapY: PropDef<(typeof gapValues)[number]>;
 };
 
 function parseJustifyValue(value: string) {

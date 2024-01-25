@@ -4,6 +4,7 @@
   min-width: var(--radix-popover-trigger-width);
   outline: 0;
   overflow: auto;
+  position: relative;
 
   --inset-padding: var(--popover-content-padding);
   padding: var(--popover-content-padding);

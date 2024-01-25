@@ -105,10 +105,10 @@
 
   /* Tabs */
 
-  --tabs-trigger-active-letter-spacing: -0.01em;
-  --tabs-trigger-active-word-spacing: 0em;
-  --tabs-trigger-inactive-letter-spacing: 0em;
-  --tabs-trigger-inactive-word-spacing: 0em;
+  --tab-active-letter-spacing: -0.01em;
+  --tab-active-word-spacing: 0em;
+  --tab-inactive-letter-spacing: 0em;
+  --tab-inactive-word-spacing: 0em;
 }
 
 .radix-themes {

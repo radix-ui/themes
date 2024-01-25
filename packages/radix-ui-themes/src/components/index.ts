@@ -125,6 +125,8 @@ export * from './tooltip.props';
 
 // NAVIGATION
 //------------------------------------------------------------------------------
+export { TabNav, TabNavRoot, TabNavLink } from './tab-nav';
+export * from './tab-nav.props';
 // export * from './menubar';
 // export * from './navigation-menu';
 
@@ -143,6 +145,8 @@ export { Callout, CalloutRoot, CalloutIcon, CalloutText } from './callout';
 export * from './callout.props';
 export { Card } from './card';
 export * from './card.props';
+export { DataListRoot, DataListData, DataListItem, DataListLabel } from './data-list';
+export * from './data-list.props';
 // export * from './collapsible';
 // export * from './definition-list';
 export { IconButton } from './icon-button';

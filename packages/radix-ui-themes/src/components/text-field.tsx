@@ -47,7 +47,11 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
           const cursorPosition = targetIsBeforeInput ? 0 : input.value.length;
 
           requestAnimationFrame(() => {
-            input.setSelectionRange(cursorPosition, cursorPosition);
+            // Only some input types support this, browsers will throw an error if not supported
+            // See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange#:~:text=Note%20that%20according,not%20support%20selection%22.
+            try {
+              input.setSelectionRange(cursorPosition, cursorPosition);
+            } catch (e) {}
             input.focus();
           });
         })}
