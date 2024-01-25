@@ -33,6 +33,8 @@
   - Change the incorrect `display="block"` value to `display="initial"`
 - `Checkbox`, `RadioGroup`, `Switch`
   - Rework the internal HTML structure and styles. These components now render fewer HTML nodes and forward all props to the topmost node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `Box`, `Flex`, `Grid`
+  - Add support for `as` prop to render as `span` or `div`
 - `Button`, `IconButton`
   - Add new `loading` prop
 - `Flex`
