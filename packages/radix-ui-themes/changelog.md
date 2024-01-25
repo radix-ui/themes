@@ -22,8 +22,9 @@
   - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
-- 4 new components
+- 6 new components
   - `Progress`
+  - `RadioCardGroup`
   - `Skeleton`
   - `Spinner`
   - `TabNav`

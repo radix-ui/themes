@@ -8,13 +8,13 @@ import { extractProps, marginPropDefs } from '../helpers';
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
 
-type RadioGroupElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
-type RadioGroupOwnProps = GetPropDefTypes<typeof radioGroupPropDefs>;
+type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
+type RadioGroupRootOwnProps = GetPropDefTypes<typeof radioGroupPropDefs>;
 interface RadioGroupRootProps
   extends PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Root>,
     MarginProps,
-    RadioGroupOwnProps {}
-const RadioGroupRoot = React.forwardRef<RadioGroupElement, RadioGroupRootProps>(
+    RadioGroupRootOwnProps {}
+const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootProps>(
   (props, forwardedRef) => {
     const { className, color, ...rootProps } = extractProps(
       props,
