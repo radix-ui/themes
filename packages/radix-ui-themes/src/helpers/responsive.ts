@@ -1,5 +1,5 @@
 import { hasOwnProperty } from './has-own-property';
-import type { StringOrValue } from './string-or-value';
+import type { Union } from './union';
 
 const breakpoints = ['initial', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
 type Breakpoints = (typeof breakpoints)[number];
@@ -8,7 +8,7 @@ type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
 interface GetResponsiveStylesOptions {
   className: string;
   customProperties: `--${string}`[];
-  value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
+  value: Responsive<Union<string, string>> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
@@ -27,7 +27,7 @@ function getResponsiveStyles({ className, customProperties, ...args }: GetRespon
 interface GetResponsiveClassNamesOptions {
   allowArbitraryValues?: boolean;
   className: string;
-  value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
+  value: Responsive<Union<string, string>> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
@@ -95,7 +95,7 @@ function getBaseClassName(
 
 interface GetResponsiveCustomPropertiesOptions {
   customProperties: `--${string}`[];
-  value: Responsive<StringOrValue<string>> | Responsive<string> | undefined;
+  value: Responsive<Union<string, string>> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
@@ -176,4 +176,4 @@ export {
   isResponsiveObject,
 };
 
-export type { Breakpoints, Responsive, StringOrValue };
+export type { Breakpoints, Responsive, Union };
