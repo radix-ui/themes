@@ -1,22 +1,40 @@
-import { textPropDefs } from './text.props';
-import type { PropDef } from '../helpers';
+import {
+  colorProp,
+  highContrastProp,
+  textWrapProp,
+  trimProp,
+  truncateProp,
+  weightProp,
+} from '../helpers';
+import { type PropDef } from '../helpers';
 
+const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const underline = ['auto', 'hover', 'always'] as const;
 
 const linkPropDefs = {
-  size: textPropDefs.size,
-  weight: textPropDefs.weight,
-  trim: textPropDefs.trim,
+  size: {
+    type: 'enum',
+    className: 'rt-r-size',
+    values: sizes,
+    default: undefined,
+    responsive: true,
+  },
+  weight: weightProp,
+  trim: trimProp,
+  truncate: truncateProp,
+  wrap: textWrapProp,
   underline: { type: 'enum', className: 'rt-underline', values: underline, default: 'auto' },
-  color: textPropDefs.color,
-  highContrast: textPropDefs.highContrast,
+  color: colorProp,
+  highContrast: highContrastProp,
 } satisfies {
-  size: typeof textPropDefs.size;
-  weight: typeof textPropDefs.weight;
-  trim: typeof textPropDefs.trim;
+  size: PropDef<(typeof sizes)[number]>;
+  weight: typeof weightProp;
+  trim: typeof trimProp;
+  truncate: typeof truncateProp;
+  wrap: typeof textWrapProp;
   underline: PropDef<(typeof underline)[number]>;
-  color: typeof textPropDefs.color;
-  highContrast: typeof textPropDefs.highContrast;
+  color: typeof colorProp;
+  highContrast: typeof highContrastProp;
 };
 
 export { linkPropDefs };

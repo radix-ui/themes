@@ -37,6 +37,7 @@
 @import '../components/popover.css';
 @import '../components/progress.css';
 @import '../components/quote.css';
+@import '../components/radio-card-group.css';
 @import '../components/radio-group.css';
 @import '../components/scroll-area.css';
 @import '../components/section.css';
@@ -85,6 +86,8 @@
 @import './utilities/position.css';
 @import './utilities/table-layout.css';
 @import './utilities/text-align.css';
+@import './utilities/text-wrap.css';
+@import './utilities/truncate.css';
 @import './utilities/vertical-align.css';
 @import './utilities/width.css';
 @import './utilities/min-width.css';

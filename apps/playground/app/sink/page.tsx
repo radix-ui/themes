@@ -11,6 +11,7 @@ import {
   StarFilledIcon,
   MagicWandIcon,
   Cross1Icon,
+  CodeIcon,
 } from '@radix-ui/react-icons';
 import {
   Theme,
@@ -127,6 +128,10 @@ import {
   progressPropDefs,
   //
   Quote,
+  //
+  RadioCardGroupRoot,
+  RadioCardGroupItem,
+  radioCardGroupPropDefs,
   //
   RadioGroupRoot,
   RadioGroupItem,
@@ -4855,9 +4860,7 @@ export default function Sink() {
                               <tbody>
                                 {dataListPropDefs.orientation.values.map((orientation) => (
                                   <tr key={orientation}>
-                                    <td>
-                                      <ColumnHeaderCell>{upperFirst(orientation)}</ColumnHeaderCell>
-                                    </td>
+                                    <RowHeaderCell>{upperFirst(orientation)}</RowHeaderCell>
                                     <td style={{ textAlign: 'left' }}>
                                       <DataListRoot orientation={orientation} my="3">
                                         <DataListItem>
@@ -4883,9 +4886,7 @@ export default function Sink() {
                               <tbody>
                                 {dataListPropDefs.size.values.map((size) => (
                                   <tr key={size}>
-                                    <td>
-                                      <ColumnHeaderCell>{`Size ${size}`}</ColumnHeaderCell>
-                                    </td>
+                                    <RowHeaderCell>{`Size ${size}`}</RowHeaderCell>
                                     <td style={{ textAlign: 'left' }}>
                                       <DataListRoot size={size} my="3">
                                         <DataListItem>
@@ -4906,191 +4907,331 @@ export default function Sink() {
                         </TabsContent>
                       </TabsRoot>
                     </Flex>
-                    <Box mt="2">
-                      <Text as="p" my="5">
-                        <Code>gap</Code> can be set per <Code>DataListRoot</Code> instance:
-                      </Text>
-                      <details>
-                        <summary>
-                          <Text size="2" color="gray">
-                            See gap combinations
-                          </Text>
-                        </summary>
-                        <table className={styles.table}>
-                          <tbody>
-                            <Flex gap="2" direction="column">
-                              <Box>
-                                {dataListPropDefs.gap.values.map((gap) => (
-                                  <tr key={gap}>
-                                    <td>
-                                      <ColumnHeaderCell
-                                        style={{ whiteSpace: 'nowrap' }}
-                                      >{`Gap ${gap}`}</ColumnHeaderCell>
-                                    </td>
-                                    <td>
-                                      <DataListRoot gap={gap} my="3">
-                                        <DataListItem>
-                                          <DataListLabel>Name</DataListLabel>
-                                          <DataListData>Susan Kare</DataListData>
-                                        </DataListItem>
-                                        <DataListItem>
-                                          <DataListLabel>Email</DataListLabel>
-                                          <DataListData>susan.kare@apple.com</DataListData>
-                                        </DataListItem>
-                                      </DataListRoot>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </Box>
-                              <Box>
-                                {dataListPropDefs.gap.values.map((gapX) => (
-                                  <tr key={gapX}>
-                                    <td>
-                                      <ColumnHeaderCell
-                                        style={{ whiteSpace: 'nowrap' }}
-                                      >{`Gap-x ${gapX}`}</ColumnHeaderCell>
-                                    </td>
-                                    <td>
-                                      <DataListRoot gapX={gapX} my="3">
-                                        <DataListItem>
-                                          <DataListLabel>Name</DataListLabel>
-                                          <DataListData>Susan Kare</DataListData>
-                                        </DataListItem>
-                                        <DataListItem>
-                                          <DataListLabel>Email</DataListLabel>
-                                          <DataListData>susan.kare@apple.com</DataListData>
-                                        </DataListItem>
-                                      </DataListRoot>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </Box>
-                              <Box>
-                                {dataListPropDefs.gap.values.map((gapY) => (
-                                  <tr key={gapY}>
-                                    <td>
-                                      <ColumnHeaderCell
-                                        style={{ whiteSpace: 'nowrap' }}
-                                      >{`Gap-y ${gapY}`}</ColumnHeaderCell>
-                                    </td>
-                                    <td>
-                                      <DataListRoot gapY={gapY} my="3">
-                                        <DataListItem>
-                                          <DataListLabel>Name</DataListLabel>
-                                          <DataListData>Susan Kare</DataListData>
-                                        </DataListItem>
-                                        <DataListItem>
-                                          <DataListLabel>Email</DataListLabel>
-                                          <DataListData>susan.kare@apple.com</DataListData>
-                                        </DataListItem>
-                                      </DataListRoot>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </Box>
-                            </Flex>
-                          </tbody>
-                        </table>
-                      </details>
-                      <Text as="p" my="5">
-                        <Code>color</Code> can be set per <Code>DataListLabel</Code> instance:
-                      </Text>
-                      <details>
-                        <summary>
-                          <Text size="2" color="gray">
-                            See color combinations
-                          </Text>
-                        </summary>
-                        <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              <ColumnHeaderCell />
-                              <ColumnHeaderCell>Color</ColumnHeaderCell>
-                              <ColumnHeaderCell>High Contrast</ColumnHeaderCell>
-                            </tr>
-                          </thead>
 
-                          <tbody>
-                            {dataListLabelPropDefs.color.values.map((color) => (
-                              <tr key={color}>
-                                <RowHeaderCell style={{ whiteSpace: 'nowrap' }}>
-                                  {color}
-                                </RowHeaderCell>
+                    <Text as="p" my="5">
+                      <Code>gap</Code> can be set per <Code>DataListRoot</Code> instance:
+                    </Text>
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See gap combinations
+                        </Text>
+                      </summary>
+                      <table className={styles.table}>
+                        <tbody>
+                          {dataListPropDefs.gap.values.map((gap) => (
+                            <tr key={gap}>
+                              <RowHeaderCell
+                                style={{ whiteSpace: 'nowrap' }}
+                              >{`Gap ${gap}`}</RowHeaderCell>
+                              <td>
+                                <DataListRoot gap={gap} my="3">
+                                  <DataListItem>
+                                    <DataListLabel>Name</DataListLabel>
+                                    <DataListData>Susan Kare</DataListData>
+                                  </DataListItem>
+                                  <DataListItem>
+                                    <DataListLabel>Email</DataListLabel>
+                                    <DataListData>susan.kare@apple.com</DataListData>
+                                  </DataListItem>
+                                </DataListRoot>
+                              </td>
+                            </tr>
+                          ))}
+
+                          {dataListPropDefs.gap.values.map((gapX) => (
+                            <tr key={gapX}>
+                              <RowHeaderCell
+                                style={{ whiteSpace: 'nowrap' }}
+                              >{`Gap-x ${gapX}`}</RowHeaderCell>
+                              <td>
+                                <DataListRoot gapX={gapX} my="3">
+                                  <DataListItem>
+                                    <DataListLabel>Name</DataListLabel>
+                                    <DataListData>Susan Kare</DataListData>
+                                  </DataListItem>
+                                  <DataListItem>
+                                    <DataListLabel>Email</DataListLabel>
+                                    <DataListData>susan.kare@apple.com</DataListData>
+                                  </DataListItem>
+                                </DataListRoot>
+                              </td>
+                            </tr>
+                          ))}
+
+                          {dataListPropDefs.gap.values.map((gapY) => (
+                            <tr key={gapY}>
+                              <RowHeaderCell
+                                style={{ whiteSpace: 'nowrap' }}
+                              >{`Gap-y ${gapY}`}</RowHeaderCell>
+                              <td>
+                                <DataListRoot gapY={gapY} my="3">
+                                  <DataListItem>
+                                    <DataListLabel>Name</DataListLabel>
+                                    <DataListData>Susan Kare</DataListData>
+                                  </DataListItem>
+                                  <DataListItem>
+                                    <DataListLabel>Email</DataListLabel>
+                                    <DataListData>susan.kare@apple.com</DataListData>
+                                  </DataListItem>
+                                </DataListRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </details>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per <Code>DataListLabel</Code> instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See color combinations
+                        </Text>
+                      </summary>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <ColumnHeaderCell />
+                            <ColumnHeaderCell>Color</ColumnHeaderCell>
+                            <ColumnHeaderCell>High Contrast</ColumnHeaderCell>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {dataListLabelPropDefs.color.values.map((color) => (
+                            <tr key={color}>
+                              <RowHeaderCell style={{ whiteSpace: 'nowrap' }}>
+                                {color}
+                              </RowHeaderCell>
+                              <td>
+                                <DataListRoot my="3">
+                                  <DataListItem>
+                                    <DataListLabel color={color}>Name</DataListLabel>
+                                    <DataListData>Susan Kare</DataListData>
+                                  </DataListItem>
+                                  <DataListItem>
+                                    <DataListLabel color={color}>Email</DataListLabel>
+                                    <DataListData>susan.kare@apple.com</DataListData>
+                                  </DataListItem>
+                                </DataListRoot>
+                              </td>
+                              <td>
+                                <DataListRoot my="3" ml="6">
+                                  <DataListItem>
+                                    <DataListLabel highContrast color={color}>
+                                      Name
+                                    </DataListLabel>
+                                    <DataListData>Susan Kare</DataListData>
+                                  </DataListItem>
+                                  <DataListItem>
+                                    <DataListLabel highContrast color={color}>
+                                      Email
+                                    </DataListLabel>
+                                    <DataListData>susan.kare@apple.com</DataListData>
+                                  </DataListItem>
+                                </DataListRoot>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </details>
+
+                    <Text as="p" my="5">
+                      <Code>width</Code> can be set per <Code>DataListLabel</Code> instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See width examples
+                        </Text>
+                      </summary>
+                      <table className={styles.table}>
+                        <tbody>
+                          {dataListLabelPropDefs.width.values.map((width) => {
+                            const labelWidth = Number(width) * 24;
+                            if (labelWidth < 48) return null;
+                            return (
+                              <tr key={width}>
+                                <RowHeaderCell
+                                  style={{ whiteSpace: 'nowrap' }}
+                                >{`Width ${labelWidth}px`}</RowHeaderCell>
                                 <td>
                                   <DataListRoot my="3">
                                     <DataListItem>
-                                      <DataListLabel color={color}>Name</DataListLabel>
+                                      <DataListLabel width={`${labelWidth}px`}>Name</DataListLabel>
                                       <DataListData>Susan Kare</DataListData>
                                     </DataListItem>
                                     <DataListItem>
-                                      <DataListLabel color={color}>Email</DataListLabel>
-                                      <DataListData>susan.kare@apple.com</DataListData>
-                                    </DataListItem>
-                                  </DataListRoot>
-                                </td>
-                                <td>
-                                  <DataListRoot my="3" ml="6">
-                                    <DataListItem>
-                                      <DataListLabel highContrast color={color}>
-                                        Name
-                                      </DataListLabel>
-                                      <DataListData>Susan Kare</DataListData>
-                                    </DataListItem>
-                                    <DataListItem>
-                                      <DataListLabel highContrast color={color}>
-                                        Email
-                                      </DataListLabel>
+                                      <DataListLabel>Email</DataListLabel>
                                       <DataListData>susan.kare@apple.com</DataListData>
                                     </DataListItem>
                                   </DataListRoot>
                                 </td>
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </details>
-                      <Text as="p" my="5">
-                        <Code>width</Code> can be set per <Code>DataListLabel</Code> instance:
-                      </Text>
-                      <details>
-                        <summary>
-                          <Text size="2" color="gray">
-                            See width examples
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </details>
+                  </DocsSection>
+
+                  <DocsSection title="RadioCardGroup">
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <RadioCardGroupRoot
+                                columns="3"
+                                defaultValue={String(index)}
+                                variant={variant}
+                              >
+                                <RadioCardGroupItem value="0">
+                                  <CodeIcon />
+                                  Node.js
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="1">
+                                  <CodeIcon />
+                                  Ruby
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">
+                                  <CodeIcon />
+                                  Go
+                                </RadioCardGroupItem>
+                              </RadioCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Box mb="7" />
+
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupPropDefs.size.values.map((size, index) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <RadioCardGroupRoot
+                                size={size}
+                                columns="3"
+                                defaultValue={String(index)}
+                                style={{ width: 400 + Number(size) * 100 }}
+                              >
+                                <RadioCardGroupItem value="0">
+                                  <CodeIcon />
+                                  Node.js
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="1">
+                                  <CodeIcon />
+                                  Ruby
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">
+                                  <CodeIcon />
+                                  Go
+                                </RadioCardGroupItem>
+                              </RadioCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
                           </Text>
-                        </summary>
-                        <table className={styles.table}>
-                          <tbody>
-                            {dataListLabelPropDefs.width.values.map((width) => {
-                              const labelWidth = Number(width) * 24;
-                              if (labelWidth < 48) return null;
-                              return (
-                                <tr key={width}>
-                                  <td>
-                                    <ColumnHeaderCell
-                                      style={{ whiteSpace: 'nowrap' }}
-                                    >{`Width ${labelWidth}px`}</ColumnHeaderCell>
-                                  </td>
-                                  <td>
-                                    <DataListRoot my="3">
-                                      <DataListItem>
-                                        <DataListLabel width={`${labelWidth}px`}>
-                                          Name
-                                        </DataListLabel>
-                                        <DataListData>Susan Kare</DataListData>
-                                      </DataListItem>
-                                      <DataListItem>
-                                        <DataListLabel>Email</DataListLabel>
-                                        <DataListData>susan.kare@apple.com</DataListData>
-                                      </DataListItem>
-                                    </DataListRoot>
-                                  </td>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex direction="column" gap="2">
+                                        <RadioCardGroupRoot
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          defaultValue="0"
+                                          variant={variant}
+                                          color={color}
+                                          style={{ width: 400 }}
+                                        >
+                                          <RadioCardGroupItem value="0">
+                                            <CodeIcon />
+                                            Node.js
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1">
+                                            <CodeIcon />
+                                            Ruby
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">
+                                            <CodeIcon />
+                                            Go
+                                          </RadioCardGroupItem>
+                                        </RadioCardGroupRoot>
+
+                                        <RadioCardGroupRoot
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          defaultValue="0"
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                          style={{ width: 400 }}
+                                        >
+                                          <RadioCardGroupItem value="0">
+                                            <CodeIcon />
+                                            Node.js
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1">
+                                            <CodeIcon />
+                                            Ruby
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">
+                                            <CodeIcon />
+                                            Go
+                                          </RadioCardGroupItem>
+                                        </RadioCardGroupRoot>
+                                      </Flex>
+                                    </td>
+                                  ))}
                                 </tr>
-                              );
-                            })}
-                          </tbody>
-                        </table>
-                      </details>
-                    </Box>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
                   </DocsSection>
                 </main>
               </Box>

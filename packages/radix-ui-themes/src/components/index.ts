@@ -36,9 +36,10 @@ export { Strong } from './strong';
 // export * from './form'; 👈
 export { Checkbox } from './checkbox';
 export * from './checkbox.props';
+export { RadioCardGroup, RadioCardGroupRoot, RadioCardGroupItem } from './radio-card-group';
+export * from './radio-card-group.props';
 export { RadioGroup, RadioGroupRoot, RadioGroupItem } from './radio-group';
 export * from './radio-group.props';
-// export * from './radio-card-group';
 export {
   Select,
   SelectRoot,
