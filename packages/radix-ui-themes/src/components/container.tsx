@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { containerPropDefs } from './container.props';
-import { extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
 
@@ -17,6 +17,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>((props, for
     props,
     containerPropDefs,
     layoutPropDefs,
+    deprecatedLayoutPropDefs,
     marginPropDefs
   );
   return (

@@ -143,12 +143,31 @@ const layoutPropDefs = {
   gridRowEnd: PropDef<string>;
 };
 
-type LayoutProps = GetPropDefTypes<typeof layoutPropDefs> & {
+const deprecatedLayoutPropDefs = {
   /** @deprecated Rename this prop to `flexShrink`. The `shrink` prop will be removed in the next major release. */
-  shrink?: GetPropDefTypes<typeof layoutPropDefs>['flexShrink'];
+  shrink: {
+    type: 'enum | string',
+    className: 'rt-r-fs',
+    customProperties: ['--flex-shrink'],
+    values: flexShrinkValues,
+    default: undefined,
+    responsive: true,
+  },
   /** @deprecated Rename this prop to `flexGrow`. The `grow` prop will be removed in the next major release. */
-  grow?: GetPropDefTypes<typeof layoutPropDefs>['flexGrow'];
+  grow: {
+    type: 'enum | string',
+    className: 'rt-r-fg',
+    customProperties: ['--flex-grow'],
+    values: flexGrowValues,
+    default: undefined,
+    responsive: true,
+  },
+} satisfies {
+  shrink: PropDef<(typeof flexShrinkValues)[number]>;
+  grow: PropDef<(typeof flexGrowValues)[number]>;
 };
 
-export { layoutPropDefs };
+type LayoutProps = GetPropDefTypes<typeof layoutPropDefs & typeof deprecatedLayoutPropDefs>;
+
+export { layoutPropDefs, deprecatedLayoutPropDefs };
 export type { LayoutProps };

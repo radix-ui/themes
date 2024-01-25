@@ -1,0 +1,62 @@
+.rt-DataListLabel {
+  color: var(--gray-a11);
+
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+
+    &:where(.rt-high-contrast) {
+      color: var(--accent-12);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * ORIENTATION                                                                                     *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-DataListRoot {
+    &:where(.rt-r-orientation-vertical) {
+      display: flex;
+      flex-direction: column;
+
+      & :where(.rt-DataListItem) {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+    }
+    &:where(.rt-r-orientation-horizontal) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+
+      & :where(.rt-DataListItem) {
+        display: grid;
+        /* Use subgrid so all the label columns remain aligned */
+        grid-template-columns: inherit; /* Fallback */
+        grid-template-columns: subgrid;
+        gap: inherit;
+        grid-column: span 2;
+      }
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * TRIM                                                                                            *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-DataListRoot {
+    &:where(.rt-r-trim-start, .rt-r-trim-both) :where(.rt-DataListItem:first-child) {
+      margin-top: calc(var(--default-leading-trim-start) - var(--line-height) / 2);
+    }
+    &:where(.rt-r-trim-end, .rt-r-trim-both) :where(.rt-DataListItem:last-child) {
+      margin-bottom: calc(var(--default-leading-trim-end) - var(--line-height) / 2);
+    }
+  }
+}
