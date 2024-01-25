@@ -20,7 +20,7 @@ const baseTabListPropDefs = {
     default: 'start',
     responsive: true,
   },
-  color: { ...colorProp, default: undefined },
+  color: colorProp,
   highContrast: highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;

@@ -7,7 +7,7 @@ const variants = ['solid', 'soft', 'surface', 'outline'] as const;
 const badgePropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '1', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  color: { ...colorProp, default: undefined },
+  color: colorProp,
   highContrast: highContrastProp,
   radius: radiusProp,
 } satisfies {

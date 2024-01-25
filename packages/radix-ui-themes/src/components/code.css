@@ -10,6 +10,10 @@
     var(--code-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
   );
   border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
+
+  & :where(&) {
+    font-size: inherit;
+  }
 }
 
 /***************************************************************************************************
@@ -78,24 +82,14 @@
 
 .rt-Code:where(.rt-variant-ghost) {
   --code-variant-font-size-adjust: var(--code-font-size-adjust);
-  color: var(--accent-a11);
 
-  &:where(.rt-high-contrast) {
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+  }
+
+  &:where([data-accent-color].rt-high-contrast),
+  :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
     color: var(--accent-12);
-  }
-
-  :where(.rt-Link:not(.rt-underline-hover)) & {
-    text-decoration-line: underline;
-    text-decoration-color: inherit;
-    text-decoration-thickness: inherit;
-  }
-
-  :where(.rt-Link:has(&:only-child)) {
-    &:where(:focus-visible) .rt-Code {
-      text-decoration: none;
-      outline: 2px solid var(--color-focus-root);
-      outline-offset: 2px;
-    }
   }
 }
 
@@ -116,17 +110,17 @@
     color: var(--accent-12);
   }
 
-  :where(.rt-Link:has(&:only-child)) {
-    & .rt-Code {
-      @media (hover: hover) {
-        &:where(:hover) {
-          background-color: var(--accent-10);
-        }
-        &:where(.rt-high-contrast:hover) {
-          background-color: var(--accent-12);
-          /* Re-use base button hover filter */
-          filter: var(--base-button-solid-high-contrast-hover-filter);
-        }
+  :where(.rt-Link) & {
+    /* Create a new stacking context (otherwise, `filter` may do it on hover) */
+    isolation: isolate;
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--accent-10);
+      }
+      &:where(.rt-high-contrast:hover) {
+        background-color: var(--accent-12);
+        /* Re-use base button hover filter */
+        filter: var(--base-button-solid-high-contrast-hover-filter);
       }
     }
     &:where(:focus-visible) .rt-Code {
@@ -144,16 +138,14 @@
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {
-    background-color: var(--accent-a4);
     color: var(--accent-12);
   }
 
-  :where(.rt-Link:has(&:only-child)) {
-    & .rt-Code {
-      @media (hover: hover) {
-        &:where(:hover) {
-          background-color: var(--accent-a4);
-        }
+  :where(.rt-Link) & {
+    isolation: isolate;
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--accent-a4);
       }
     }
     &:where(:focus-visible) .rt-Code {
@@ -177,17 +169,16 @@
     color: var(--accent-12);
   }
 
-  :where(.rt-Link:has(&:only-child)) {
-    & .rt-Code {
-      @media (hover: hover) {
-        &:where(:hover) {
-          background-color: var(--accent-a2);
-        }
+  :where(.rt-Link) & {
+    isolation: isolate;
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--accent-a2);
       }
     }
-    &:where(:focus-visible) .rt-Code {
-      outline: 2px solid var(--color-focus-root);
-      outline-offset: -1px;
-    }
+  }
+  &:where(:focus-visible) .rt-Code {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -1px;
   }
 }

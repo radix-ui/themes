@@ -1,11 +1,11 @@
 import {
-  alignProp,
-  colorProp,
-  highContrastProp,
-  textWrapProp,
-  trimProp,
-  truncateProp,
   weightProp,
+  alignProp,
+  trimProp,
+  highContrastProp,
+  inheritedColorProp,
+  textWrapProp,
+  truncateProp,
 } from '../helpers';
 import type { PropDef } from '../helpers';
 
@@ -24,7 +24,7 @@ const textPropDefs = {
   trim: trimProp,
   truncate: truncateProp,
   wrap: textWrapProp,
-  color: colorProp,
+  color: inheritedColorProp,
   highContrast: highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
@@ -33,7 +33,7 @@ const textPropDefs = {
   trim: typeof trimProp;
   truncate: typeof truncateProp;
   wrap: typeof textWrapProp;
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
   highContrast: typeof highContrastProp;
 };
 

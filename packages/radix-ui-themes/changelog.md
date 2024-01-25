@@ -22,6 +22,7 @@
   - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
+  - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
 - 6 new components
   - `Progress`
   - `RadioCardGroup`
@@ -31,6 +32,8 @@
   - `DataList`
 - `AlertDialog`, `Dialog`, `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
+- `Code`
+  - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`, `Section`
   - Change the incorrect `display="block"` value to `display="initial"`
 - `ContextMenu`, `DropdownMenu`
@@ -39,6 +42,7 @@
   - Rework the internal HTML structure and styles. These components now render fewer HTML nodes and forward all props to the topmost node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `Box`, `Flex`, `Grid`
   - Add support for `as` prop to render as `span` or `div`
+  - For Box, `display: block` style is now enforced regardless of the tag
 - `Button`, `IconButton`
   - Add new `loading` prop
 - `Flex`

@@ -150,7 +150,7 @@
 
   &:where([data-state='checked']) {
     & :where(.rt-CheckboxIndicator) {
-      color: var(--accent-11);
+      color: var(--accent-a11);
     }
 
     &:where(.rt-high-contrast) {

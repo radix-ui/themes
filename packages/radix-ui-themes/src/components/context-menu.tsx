@@ -50,19 +50,16 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       variant = contextMenuContentPropDefs.variant.default,
       highContrast = contextMenuContentPropDefs.highContrast.default,
     } = props;
-    const {
-      className,
-      children,
-      color = themeContext.accentColor,
-      container,
-      forceMount,
-      ...contentProps
-    } = extractProps(props, baseMenuContentPropDefs);
+    const { className, children, color, container, forceMount, ...contentProps } = extractProps(
+      props,
+      baseMenuContentPropDefs
+    );
+    const resolvedColor = color || themeContext.accentColor;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <ContextMenuPrimitive.Content
-            data-accent-color={color}
+            data-accent-color={resolvedColor}
             alignOffset={-Number(size) * 4}
             collisionPadding={10}
             {...contentProps}

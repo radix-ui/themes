@@ -2,14 +2,13 @@
   margin: 0;
   line-height: var(--line-height, var(--default-line-height));
   letter-spacing: var(--letter-spacing, inherit);
-}
 
-:where([data-accent-color]) {
-  &.rt-Text {
+  &:where([data-accent-color]) {
     color: var(--accent-a11);
   }
-  &.rt-Text:where(.rt-high-contrast),
-  &:where(.rt-Text, .rt-Heading) .rt-Text:where(.rt-high-contrast) {
+
+  &:where([data-accent-color].rt-high-contrast),
+  :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
 }

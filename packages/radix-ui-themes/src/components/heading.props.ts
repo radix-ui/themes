@@ -1,7 +1,7 @@
 import {
   alignProp,
-  colorProp,
   highContrastProp,
+  inheritedColorProp,
   textWrapProp,
   trimProp,
   truncateProp,
@@ -25,7 +25,7 @@ const headingPropDefs = {
   trim: trimProp,
   truncate: truncateProp,
   wrap: textWrapProp,
-  color: colorProp,
+  color: inheritedColorProp,
   highContrast: highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
@@ -34,7 +34,7 @@ const headingPropDefs = {
   trim: typeof trimProp;
   truncate: typeof truncateProp;
   wrap: typeof textWrapProp;
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
   highContrast: typeof highContrastProp;
 };
 

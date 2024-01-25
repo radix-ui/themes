@@ -6,4 +6,8 @@
   letter-spacing: calc(
     var(--strong-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
   );
+
+  & :where(&) {
+    font-size: inherit;
+  }
 }

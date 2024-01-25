@@ -9,4 +9,8 @@
     var(--quote-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
   );
   color: inherit;
+
+  & :where(&) {
+    font-size: inherit;
+  }
 }

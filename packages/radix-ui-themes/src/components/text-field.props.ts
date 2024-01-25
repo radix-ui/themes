@@ -1,5 +1,5 @@
 import type { PropDef } from '../helpers';
-import { colorProp, paddingPropDefs, radiusProp } from '../helpers';
+import { colorProp, inheritedColorProp, paddingPropDefs, radiusProp } from '../helpers';
 import { flexPropDefs } from './flex.props';
 
 const sizes = ['1', '2', '3'] as const;
@@ -18,13 +18,13 @@ const textFieldPropDefs = {
 };
 
 const textFieldSlotPropDefs = {
-  color: colorProp,
+  color: inheritedColorProp,
   gap: flexPropDefs.gap,
   px: paddingPropDefs.px,
   pl: paddingPropDefs.pl,
   pr: paddingPropDefs.pr,
 } satisfies {
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
   gap: typeof flexPropDefs.gap;
   px: typeof paddingPropDefs.px;
   pl: typeof paddingPropDefs.pl;
