@@ -47,7 +47,7 @@ function extractProps<
       }
 
       if (propDef.type === 'string') {
-        className = classNames(propDef.className, className);
+        className = classNames(className, propDef.className);
         continue;
       }
 
@@ -80,7 +80,7 @@ function extractProps<
 
       if (propDef.type === 'boolean' && value) {
         // TODO handle responsive boolean props
-        className = classNames(propDef.className, className);
+        className = classNames(className, propDef.className);
         continue;
       }
     }
