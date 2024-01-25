@@ -26,6 +26,7 @@
   - `Skeleton`
   - `Spinner`
   - `TabNav`
+  - `DataList`
 - `AlertDialog`, `Dialog`, `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
 - `Container`, `Section`

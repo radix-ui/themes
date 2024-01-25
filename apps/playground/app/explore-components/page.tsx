@@ -57,6 +57,12 @@ import {
   ContextMenuSeparator,
   contextMenuContentPropDefs,
   //
+  DataListRoot,
+  DataListItem,
+  DataListLabel,
+  DataListData,
+  dataListPropDefs,
+  //
   DialogRoot,
   DialogTrigger,
   DialogContent,
@@ -1592,6 +1598,92 @@ export default function ExploreComponents() {
                     </Box>
                   </TabsContent>
                 </TabsRoot>
+
+                <Heading id="data-list" mb="5">
+                  <Link color="gray" underline="hover" highContrast href="#data-list">
+                    Data List
+                  </Link>
+                </Heading>
+                <Flex gap="4" align="center" mb="9">
+                  <TabsRoot defaultValue="specimen">
+                    <TabsList size="2">
+                      <TabsTrigger value="specimen">Specimen</TabsTrigger>
+                      <TabsTrigger value="all-orientations">All orientations</TabsTrigger>
+                      <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
+                    </TabsList>
+
+                    <TabsContent value="specimen">
+                      <Box my="6">
+                        <DataListRoot>
+                          <DataListItem>
+                            <DataListLabel width="200px">Name</DataListLabel>
+                            <DataListData>Susan Kare</DataListData>
+                          </DataListItem>
+                          <DataListItem>
+                            <DataListLabel>Email</DataListLabel>
+                            <DataListData>susan.kare@apple.com</DataListData>
+                          </DataListItem>
+                          <DataListItem>
+                            <DataListLabel>Occupation</DataListLabel>
+                            <DataListData>Graphic Designer</DataListData>
+                          </DataListItem>
+                        </DataListRoot>
+                      </Box>
+                    </TabsContent>
+
+                    <TabsContent value="all-orientations">
+                      <Box my="6">
+                        <table className={styles.table}>
+                          <tbody>
+                            {dataListPropDefs.orientation.values.map((orientation) => (
+                              <tr key={orientation}>
+                                <td>{upperFirst(orientation)}</td>
+                                <td style={{ textAlign: 'left' }}>
+                                  <DataListRoot orientation={orientation} my="3">
+                                    <DataListItem>
+                                      <DataListLabel>Name</DataListLabel>
+                                      <DataListData>Susan Kare</DataListData>
+                                    </DataListItem>
+                                    <DataListItem>
+                                      <DataListLabel>Email</DataListLabel>
+                                      <DataListData>susan.kare@apple.com</DataListData>
+                                    </DataListItem>
+                                  </DataListRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Box>
+                    </TabsContent>
+
+                    <TabsContent value="all-sizes">
+                      <Box my="6">
+                        <table className={styles.table}>
+                          <tbody>
+                            {dataListPropDefs.size.values.map((size) => (
+                              <tr key={size}>
+                                <td>{`Size ${upperFirst(size)}`}</td>
+                                <td style={{ textAlign: 'left' }}>
+                                  <DataListRoot size={size} my="3">
+                                    <DataListItem>
+                                      <DataListLabel>Name</DataListLabel>
+                                      <DataListData>Susan Kare</DataListData>
+                                    </DataListItem>
+                                    <DataListItem>
+                                      <DataListLabel>Email</DataListLabel>
+                                      <DataListData>susan.kare@apple.com</DataListData>
+                                    </DataListItem>
+                                  </DataListRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Box>
+                    </TabsContent>
+                  </TabsRoot>
+                </Flex>
 
                 <Heading id="dialog" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#dialog">
