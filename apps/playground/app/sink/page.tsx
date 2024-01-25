@@ -5095,15 +5095,15 @@ export default function Sink() {
                               >
                                 <RadioCardGroupItem value="0">
                                   <CodeIcon />
-                                  <Text size="2">Node.js</Text>
+                                  Node.js
                                 </RadioCardGroupItem>
                                 <RadioCardGroupItem value="1">
                                   <CodeIcon />
-                                  <Text size="2">Ruby</Text>
+                                  Ruby
                                 </RadioCardGroupItem>
                                 <RadioCardGroupItem value="2">
                                   <CodeIcon />
-                                  <Text size="2">Go</Text>
+                                  Go
                                 </RadioCardGroupItem>
                               </RadioCardGroupRoot>
                             </td>
@@ -5127,25 +5127,16 @@ export default function Sink() {
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
                                 <RadioCardGroupItem value="0">
-                                  <CodeIcon
-                                    width={size === '3' ? 20 : 15}
-                                    height={size === '3' ? 20 : 15}
-                                  />
-                                  <Text size={size}>Node.js</Text>
+                                  <CodeIcon />
+                                  Node.js
                                 </RadioCardGroupItem>
                                 <RadioCardGroupItem value="1">
-                                  <CodeIcon
-                                    width={size === '3' ? 20 : 15}
-                                    height={size === '3' ? 20 : 15}
-                                  />
-                                  <Text size={size}>Ruby</Text>
+                                  <CodeIcon />
+                                  Ruby
                                 </RadioCardGroupItem>
                                 <RadioCardGroupItem value="2">
-                                  <CodeIcon
-                                    width={size === '3' ? 20 : 15}
-                                    height={size === '3' ? 20 : 15}
-                                  />
-                                  <Text size={size}>Go</Text>
+                                  <CodeIcon />
+                                  Go
                                 </RadioCardGroupItem>
                               </RadioCardGroupRoot>
                             </td>
@@ -5196,15 +5187,15 @@ export default function Sink() {
                                         >
                                           <RadioCardGroupItem value="0">
                                             <CodeIcon />
-                                            <Text size="1">Node.js</Text>
+                                            Node.js
                                           </RadioCardGroupItem>
                                           <RadioCardGroupItem value="1">
                                             <CodeIcon />
-                                            <Text size="1">Ruby</Text>
+                                            Ruby
                                           </RadioCardGroupItem>
                                           <RadioCardGroupItem value="2">
                                             <CodeIcon />
-                                            <Text size="1">Go</Text>
+                                            Go
                                           </RadioCardGroupItem>
                                         </RadioCardGroupRoot>
 
@@ -5220,15 +5211,15 @@ export default function Sink() {
                                         >
                                           <RadioCardGroupItem value="0">
                                             <CodeIcon />
-                                            <Text size="1">Node.js</Text>
+                                            Node.js
                                           </RadioCardGroupItem>
                                           <RadioCardGroupItem value="1">
                                             <CodeIcon />
-                                            <Text size="1">Ruby</Text>
+                                            Ruby
                                           </RadioCardGroupItem>
                                           <RadioCardGroupItem value="2">
                                             <CodeIcon />
-                                            <Text size="1">Go</Text>
+                                            Go
                                           </RadioCardGroupItem>
                                         </RadioCardGroupRoot>
                                       </Flex>
