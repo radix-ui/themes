@@ -30,8 +30,9 @@
   - `Spinner`
   - `TabNav`
   - `DataList`
-- `AlertDialog`, `Dialog`, `Popover`, `HoverCard`, `Tooltip`
+- `AlertDialog`, `Dialog`
   - Add `position: relative` to support absolutely positioned children.
+  - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
 - `Code`
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`, `Section`
@@ -47,6 +48,8 @@
   - Add new `loading` prop
 - `Flex`
   - Add `gapX` and `gapY` props
+- `Popover`, `HoverCard`, `Tooltip`
+  - Add `position: relative` to support absolutely positioned children.
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
 - `Table`
