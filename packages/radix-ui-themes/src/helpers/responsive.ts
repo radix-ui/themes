@@ -8,7 +8,7 @@ type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
 interface GetResponsiveStylesOptions {
   className: string;
   customProperties: `--${string}`[];
-  value: Responsive<Union<string, string>> | Responsive<string> | undefined;
+  value: Responsive<Union> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
@@ -27,7 +27,7 @@ function getResponsiveStyles({ className, customProperties, ...args }: GetRespon
 interface GetResponsiveClassNamesOptions {
   allowArbitraryValues?: boolean;
   className: string;
-  value: Responsive<Union<string, string>> | Responsive<string> | undefined;
+  value: Responsive<Union> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
@@ -95,7 +95,7 @@ function getBaseClassName(
 
 interface GetResponsiveCustomPropertiesOptions {
   customProperties: `--${string}`[];
-  value: Responsive<Union<string, string>> | Responsive<string> | undefined;
+  value: Responsive<Union> | Responsive<string> | undefined;
   propValues: string[] | readonly string[];
   parseValue?: (value: string) => string | undefined;
 }
@@ -152,12 +152,6 @@ function getResponsiveCustomProperties({
   }
 
   return styles;
-}
-
-// Split comma-separated custom properties. This is an escape hatch for
-// when you need to generate multiple custom properties with the same value.
-function getCustomProperties(str: `--${string}`) {
-  return str.split(',').map((str) => str.trim());
 }
 
 function isResponsiveObject<Value extends string>(
