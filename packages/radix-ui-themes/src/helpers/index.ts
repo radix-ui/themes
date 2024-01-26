@@ -6,4 +6,4 @@ export * from './has-own-property';
 export * from './nice-intersection';
 export * from './radix-colors';
 export * from './merge-styles';
-export * from './string-or-value';
+export * from './union';
