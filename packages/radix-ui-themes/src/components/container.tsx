@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import { containerPropDefs } from './container.props';
 import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type ContainerElement = React.ElementRef<'div'>;
 type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs>;
 interface ContainerProps
-  extends React.ComponentPropsWithoutRef<'div'>,
+  extends PropsWithoutRefOrColor<'div'>,
     MarginProps,
     LayoutProps,
     ContainerOwnProps {}

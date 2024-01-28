@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { PropsWithoutRefOrColor } from './helpers';
 
 type IconElement = React.ElementRef<'svg'>;
-interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
+interface IconProps extends PropsWithoutRefOrColor<'svg'> {
   children?: never;
   color?: string;
 }

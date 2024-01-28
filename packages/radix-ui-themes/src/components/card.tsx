@@ -4,11 +4,11 @@ import { Slot } from '@radix-ui/react-slot';
 import { cardPropDefs } from './card.props';
 import { extractProps, marginPropDefs } from '../helpers';
 
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type CardElement = React.ElementRef<'div'>;
 type CardOwnProps = GetPropDefTypes<typeof cardPropDefs>;
-interface CardProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, CardOwnProps {
+interface CardProps extends PropsWithoutRefOrColor<'div'>, MarginProps, CardOwnProps {
   asChild?: boolean;
 }
 const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
