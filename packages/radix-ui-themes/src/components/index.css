@@ -1,0 +1,54 @@
+@import './reset.css';
+
+@import './alert-dialog.css';
+@import './avatar.css';
+@import './badge.css';
+@import './blockquote.css';
+@import './box.css';
+@import './button.css';
+@import './callout.css';
+@import './card.css';
+@import './checkbox.css';
+@import './code.css';
+@import './container.css';
+@import './context-menu.css';
+@import './data-list.css';
+@import './dialog.css';
+@import './dropdown-menu.css';
+@import './em.css';
+@import './flex.css';
+@import './grid.css';
+@import './heading.css';
+@import './hover-card.css';
+@import './icon-button.css';
+@import './inset.css';
+@import './kbd.css';
+@import './link.css';
+@import './popover.css';
+@import './popper.css';
+@import './progress.css';
+@import './quote.css';
+@import './radio-card-group.css';
+@import './radio-group.css';
+@import './scroll-area.css';
+@import './section.css';
+@import './select.css';
+@import './separator.css';
+@import './skeleton.css';
+@import './slider.css';
+@import './spinner.css';
+@import './strong.css';
+@import './switch.css';
+@import './tab-nav.css';
+@import './tabs.css';
+@import './table.css';
+@import './text-area.css';
+@import './text-field.css';
+@import './text.css';
+@import './tooltip.css';
+
+.radix-themes:where([data-is-root-theme='true']) {
+  /* create new stacking context on the root `Theme` so layered components work out of the box */
+  position: relative;
+  z-index: 0;
+}

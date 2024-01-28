@@ -16,6 +16,21 @@
         "default": "./dist/esm/index.js"
       }
     },
+    "./tokens.css": {
+      "import": "./tokens.css",
+      "require": "./tokens.css",
+      "default": "./tokens.css"
+    },
+    "./components.css": {
+      "import": "./components.css",
+      "require": "./components.css",
+      "default": "./components.css"
+    },
+    "./utilities.css": {
+      "import": "./utilities.css",
+      "require": "./utilities.css",
+      "default": "./utilities.css"
+    },
     "./styles.css": {
       "import": "./styles.css",
       "require": "./styles.css",
@@ -33,7 +48,11 @@
     "build:js": "yarn build:js:cjs && yarn build:js:esm",
     "build:js:cjs": "tsc --project tsconfig-cjs.json",
     "build:js:esm": "tsc --project tsconfig-esm.json",
-    "build:css": "postcss src/styles/index.css -o styles.css",
+    "build:css:tokens": "postcss src/styles/tokens/index.css -o tokens.css",
+    "build:css:components": "postcss src/components/index.css -o components.css",
+    "build:css:utilities": "postcss src/styles/utilities/index.css -o utilities.css",
+    "build:css:index": "postcss src/styles/index.css -o styles.css",
+    "build:css": "yarn build:css:tokens && yarn build:css:components && yarn build:css:utilities && yarn build:css:index",
     "dev": "yarn dev:js & yarn dev:css",
     "dev:js": "yarn dev:js:cjs & yarn dev:js:esm",
     "dev:js:cjs": "tsc --project tsconfig-cjs.json --watch",
@@ -42,7 +61,7 @@
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint \"src/**/*.ts*\"",
     "lint:css": "stylelint \"src/**/*.css\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf styles.css",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf *.css",
     "prepublishOnly": "yarn lint"
   },
   "dependencies": {
