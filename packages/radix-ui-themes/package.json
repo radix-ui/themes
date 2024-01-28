@@ -41,6 +41,9 @@
   "license": "MIT",
   "files": [
     "dist/**",
+    "tokens.css",
+    "components.css",
+    "utilities.css",
     "styles.css"
   ],
   "scripts": {
