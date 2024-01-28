@@ -64,8 +64,11 @@
   - Add new `wrap` and `truncate` props
 - `TextArea`
   - Add `radius` prop
+  - Add `resize` prop
+  - Fix an issue when Grammarly extension would break the component styles
 - `TextField`
   - Fix an issue with some input `type`s not supporting `getSelectionRange`
+  - Fix an issue when Grammarly extension would break the component styles
 
 ## 2.0.3
 

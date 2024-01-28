@@ -84,6 +84,7 @@
 @import './utilities/margin.css';
 @import './utilities/padding.css';
 @import './utilities/position.css';
+@import './utilities/resize.css';
 @import './utilities/table-layout.css';
 @import './utilities/text-align.css';
 @import './utilities/text-wrap.css';

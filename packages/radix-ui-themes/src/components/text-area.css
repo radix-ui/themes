@@ -4,11 +4,32 @@
   box-sizing: border-box;
   position: relative;
   z-index: 0;
+
+  /* Allows `resize` property to work on the div */
+  overflow: hidden;
+
+  &:where(:focus-within) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -1px;
+  }
+
+  &::-webkit-resizer {
+    appearance: none;
+    border-radius: 100%;
+    border: 5px solid transparent;
+    background-clip: content-box;
+    background-color: var(--gray-a2);
+    outline: 1px solid var(--gray-a8);
+    outline-offset: -6px;
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .rt-TextAreaInput {
   appearance: none;
   padding: 0;
+  outline: 0;
   border-radius: inherit;
   background-color: transparent;
   font-family: inherit;
@@ -27,7 +48,8 @@
   padding: var(--text-area-padding-y) var(--text-area-padding-x);
 
   &:where(:focus) {
-    outline: 2px solid var(--color-focus-root);
+    outline: 1px solid;
+    outline-color: inherit;
     outline-offset: -1px;
   }
 
@@ -131,7 +153,7 @@
     --text-area-border-width: 1px;
     color: var(--gray-12);
 
-    & + :where(.rt-TextAreaChrome) {
+    & ~ :where(.rt-TextAreaChrome) {
       box-shadow: inset 0 0 0 1px var(--gray-a7);
       background-color: var(--color-surface);
 
@@ -145,12 +167,12 @@
       opacity: 1;
     }
     &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only))
-      + :where(.rt-TextAreaChrome) {
+      ~ :where(.rt-TextAreaChrome) {
       background-color: var(--color-autofill-root);
       box-shadow: inset 0 0 0 1px var(--color-autofill-root), inset 0 0 0 1px var(--gray-a6);
     }
     &:where(:disabled, :read-only) {
-      & + :where(.rt-TextAreaChrome) {
+      & ~ :where(.rt-TextAreaChrome) {
         /* Blend with grey */
         background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
       }
@@ -164,7 +186,7 @@
     --text-area-border-width: 1px;
     color: var(--gray-12);
 
-    & + :where(.rt-TextAreaChrome) {
+    & ~ :where(.rt-TextAreaChrome) {
       background-color: var(--color-surface);
       box-shadow: var(--shadow-1);
 
@@ -178,12 +200,12 @@
       opacity: 1;
     }
     &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only))
-      + :where(.rt-TextAreaChrome) {
+      ~ :where(.rt-TextAreaChrome) {
       background-color: var(--color-autofill-root);
       box-shadow: inset 0 0 0 1px var(--color-autofill-root), var(--shadow-1);
     }
     &:where(:disabled, :read-only) {
-      & + :where(.rt-TextAreaChrome) {
+      & ~ :where(.rt-TextAreaChrome) {
         /* Blend with grey */
         background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
       }
@@ -193,11 +215,15 @@
 
 /* soft */
 .rt-TextAreaRoot:where(.rt-variant-soft) {
+  &:where(:focus-within) {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-8);
+  }
   & :where(.rt-TextAreaInput) {
     --text-area-border-width: 0px;
     color: var(--accent-12);
 
-    & + :where(.rt-TextAreaChrome) {
+    & ~ :where(.rt-TextAreaChrome) {
       background-color: var(--accent-a3);
     }
     &::selection {
@@ -210,15 +236,11 @@
     }
     /* Use gray autofill color when component color is gray */
     &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only))
-      + :where(.rt-TextAreaChrome) {
+      ~ :where(.rt-TextAreaChrome) {
       background-color: var(--accent-a4);
     }
-    &:where(:focus) {
-      /* Use gray outline when component color is gray */
-      outline-color: var(--accent-8);
-    }
     &:where(:disabled, :read-only) {
-      & + :where(.rt-TextAreaChrome) {
+      & ~ :where(.rt-TextAreaChrome) {
         background-color: var(--gray-a4);
       }
     }
@@ -232,9 +254,6 @@
     color: var(--gray-a11);
     /* Safari */
     -webkit-text-fill-color: var(--gray-a11);
-    &:where(:focus) {
-      outline: 2px solid var(--gray-8);
-    }
     &::placeholder {
       opacity: 0.5;
     }
@@ -243,6 +262,9 @@
     }
     &::selection {
       background-color: var(--gray-a5);
+    }
+    .rt-TextAreaRoot:where(:has(&:focus)) {
+      outline-color: var(--gray-8);
     }
   }
 }
