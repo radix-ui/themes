@@ -23,6 +23,7 @@
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
   - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
+  - Remove the native `color` attribute from components that don’t have own `color` props
 - 6 new components
   - `Progress`
   - `RadioCardGroup`
@@ -30,8 +31,9 @@
   - `Spinner`
   - `TabNav`
   - `DataList`
-- `AlertDialog`, `Dialog`, `Popover`, `HoverCard`, `Tooltip`
+- `AlertDialog`, `Dialog`
   - Add `position: relative` to support absolutely positioned children.
+  - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
 - `Code`
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`, `Section`
@@ -47,6 +49,8 @@
   - Add new `loading` prop
 - `Flex`
   - Add `gapX` and `gapY` props
+- `Popover`, `HoverCard`, `Tooltip`
+  - Add `position: relative` to support absolutely positioned children.
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
 - `Table`

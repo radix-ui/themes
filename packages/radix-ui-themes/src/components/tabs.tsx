@@ -9,9 +9,7 @@ import { extractProps, marginPropDefs } from '../helpers';
 import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
-interface TabsRootProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
-    MarginProps {}
+interface TabsRootProps extends PropsWithoutRefOrColor<typeof TabsPrimitive.Root>, MarginProps {}
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
   const { className, ...rootProps } = extractProps(props, marginPropDefs);
   return (
@@ -43,7 +41,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
 TabsList.displayName = 'TabsList';
 
 type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
-interface TabsTriggerProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {}
+interface TabsTriggerProps extends PropsWithoutRefOrColor<typeof TabsPrimitive.Trigger> {}
 const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
   (props, forwardedRef) => {
     const { className, children, ...triggerProps } = props;
@@ -64,7 +62,7 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
 TabsTrigger.displayName = 'TabsTrigger';
 
 type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
-interface TabsContentProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> {}
+interface TabsContentProps extends PropsWithoutRefOrColor<typeof TabsPrimitive.Content> {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
   (props, forwardedRef) => (
     <TabsPrimitive.Content

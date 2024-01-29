@@ -9,16 +9,16 @@ import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
 
-import type { ExtractPropsForTag, GetPropDefTypes } from '../helpers';
+import type { ExtractPropsForTag, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 interface DialogRootProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'modal'> {}
+  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Root>, 'modal'> {}
 const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {...props} modal />;
 DialogRoot.displayName = 'DialogRoot';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
 interface DialogTriggerProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>, 'asChild'> {}
+  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Trigger>, 'asChild'> {}
 const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>(
   (props, forwardedRef) => <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild />
 );
@@ -27,7 +27,7 @@ DialogTrigger.displayName = 'DialogTrigger';
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 type DialogContentOwnProps = GetPropDefTypes<typeof dialogContentPropDefs>;
 interface DialogContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>, 'asChild'>,
+  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Content>, 'asChild'>,
     DialogContentOwnProps {
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
@@ -41,11 +41,15 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DialogPrimitive.Overlay className="rt-DialogOverlay">
-            <DialogPrimitive.Content
-              {...contentProps}
-              ref={forwardedRef}
-              className={classNames('rt-DialogContent', className)}
-            />
+            <div className="rt-DialogScroll">
+              <div className="rt-DialogScrollPadding">
+                <DialogPrimitive.Content
+                  {...contentProps}
+                  ref={forwardedRef}
+                  className={classNames('rt-DialogContent', className)}
+                />
+              </div>
+            </div>
           </DialogPrimitive.Overlay>
         </Theme>
       </DialogPrimitive.Portal>
@@ -78,7 +82,7 @@ DialogDescription.displayName = 'DialogDescription';
 
 type DialogCloseElement = React.ElementRef<typeof DialogPrimitive.Close>;
 interface DialogCloseProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>, 'asChild'> {}
+  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Close>, 'asChild'> {}
 const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
   (props, forwardedRef) => <DialogPrimitive.Close {...props} ref={forwardedRef} asChild />
 );

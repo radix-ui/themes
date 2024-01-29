@@ -3,14 +3,12 @@ import classNames from 'classnames';
 import { tableRootPropDefs, tableRowPropDefs, tableCellPropDefs } from './table.props';
 import { extractProps, getResponsiveClassNames, marginPropDefs } from '../helpers';
 import { ScrollArea } from './scroll-area';
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type TableRootElement = React.ElementRef<'div'>;
 type TableRootOwnProps = GetPropDefTypes<typeof tableRootPropDefs>;
-interface TableRootProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    MarginProps,
-    TableRootOwnProps {}
+interface TableRootProps extends PropsWithoutRefOrColor<'div'>, MarginProps, TableRootOwnProps {}
 const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, forwardedRef) => {
   const { layout: layoutPropDef, ...rootPropDefs } = tableRootPropDefs;
   const { className, children, layout, ...rootProps } = extractProps(
@@ -34,7 +32,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
 TableRoot.displayName = 'Table';
 
 type TableHeaderElement = React.ElementRef<'thead'>;
-interface TableHeaderProps extends React.ComponentPropsWithoutRef<'thead'> {}
+interface TableHeaderProps extends PropsWithoutRefOrColor<'thead'> {}
 const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
   (props, forwardedRef) => (
     <thead
@@ -47,7 +45,7 @@ const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
 TableHeader.displayName = 'TableHeader';
 
 type TableBodyElement = React.ElementRef<'tbody'>;
-interface TableBodyProps extends React.ComponentPropsWithoutRef<'tbody'> {}
+interface TableBodyProps extends PropsWithoutRefOrColor<'tbody'> {}
 const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>((props, forwardedRef) => (
   <tbody {...props} ref={forwardedRef} className={classNames('rt-TableBody', props.className)} />
 ));
@@ -56,7 +54,7 @@ TableBody.displayName = 'TableBody';
 type TableRowElement = React.ElementRef<'tr'>;
 type TableRowOwnProps = GetPropDefTypes<typeof tableRowPropDefs>;
 interface TableRowProps
-  extends Omit<React.ComponentPropsWithoutRef<'tr'>, keyof TableRowOwnProps>,
+  extends Omit<PropsWithoutRefOrColor<'tr'>, keyof TableRowOwnProps>,
     TableRowOwnProps {}
 const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwardedRef) => {
   const { className, ...rowProps } = extractProps(props, tableRowPropDefs);
@@ -67,7 +65,7 @@ TableRow.displayName = 'TableRow';
 type TableCellImplElement = React.ElementRef<'td'>;
 type TableCellImplOwnProps = GetPropDefTypes<typeof tableCellPropDefs>;
 interface TableCellImplProps
-  extends Omit<React.ComponentPropsWithoutRef<'td'>, keyof TableCellImplOwnProps>,
+  extends Omit<PropsWithoutRefOrColor<'td'>, keyof TableCellImplOwnProps>,
     TableCellImplOwnProps {
   tag?: 'td' | 'th';
 }
@@ -82,8 +80,7 @@ const TableCellImpl = React.forwardRef<TableCellImplElement, TableCellImplProps>
 TableCellImpl.displayName = 'TableCellImpl';
 
 type TableCellElement = React.ElementRef<typeof TableCellImpl>;
-interface TableCellProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof TableCellImpl>, 'tag'> {}
+interface TableCellProps extends Omit<PropsWithoutRefOrColor<typeof TableCellImpl>, 'tag'> {}
 const TableCell = React.forwardRef<TableCellElement, TableCellProps>((props, forwardedRef) => (
   <TableCellImpl {...props} tag="td" ref={forwardedRef} />
 ));
@@ -91,7 +88,7 @@ TableCell.displayName = 'TableCell';
 
 type TableColumnHeaderCellElement = React.ElementRef<'th'>;
 interface TableColumnHeaderCellProps
-  extends Omit<React.ComponentPropsWithoutRef<'th'>, keyof TableCellImplOwnProps>,
+  extends Omit<PropsWithoutRefOrColor<'th'>, keyof TableCellImplOwnProps>,
     TableCellImplOwnProps {}
 const TableColumnHeaderCell = React.forwardRef<
   TableColumnHeaderCellElement,
@@ -109,7 +106,7 @@ TableColumnHeaderCell.displayName = 'TableColumnHeaderCell';
 
 type TableRowHeaderCellElement = React.ElementRef<'th'>;
 interface TableRowHeaderCellProps
-  extends Omit<React.ComponentPropsWithoutRef<'th'>, keyof TableCellImplOwnProps>,
+  extends Omit<PropsWithoutRefOrColor<'th'>, keyof TableCellImplOwnProps>,
     TableCellImplOwnProps {}
 const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowHeaderCellProps>(
   (props, forwardedRef) => (

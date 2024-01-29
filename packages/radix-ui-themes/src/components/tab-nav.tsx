@@ -39,7 +39,7 @@ TabNavRoot.displayName = 'TabNavRoot';
 
 type TabNavLinkElement = React.ElementRef<typeof NavigationMenu.Link>;
 interface TabNavLinkProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof NavigationMenu.Link>, 'onSelect'> {}
+  extends Omit<PropsWithoutRefOrColor<typeof NavigationMenu.Link>, 'onSelect'> {}
 const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
   const { asChild = false, className, children, ...linkProps } = props;
   return (

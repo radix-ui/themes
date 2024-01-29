@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import { sectionPropDefs } from './section.props';
 import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type SectionElement = React.ElementRef<'div'>;
 type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs>;
 interface SectionProps
-  extends React.ComponentPropsWithoutRef<'div'>,
+  extends PropsWithoutRefOrColor<'div'>,
     MarginProps,
     LayoutProps,
     SectionOwnProps {}

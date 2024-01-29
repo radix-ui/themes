@@ -9,7 +9,7 @@ import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../he
 type DataListRootElement = HTMLDListElement;
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
 interface DataListRootProps
-  extends React.ComponentPropsWithoutRef<'dl'>,
+  extends PropsWithoutRefOrColor<'dl'>,
     MarginProps,
     DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
@@ -30,7 +30,7 @@ DataListRoot.displayName = 'DataListRoot';
 
 type DataListItemElement = HTMLDivElement;
 type DataListItemOwnProps = GetPropDefTypes<typeof dataListItemPropDefs>;
-interface DataListItemProps extends React.ComponentPropsWithoutRef<'div'>, DataListItemOwnProps {}
+interface DataListItemProps extends PropsWithoutRefOrColor<'div'>, DataListItemOwnProps {}
 const DataListItem = React.forwardRef<DataListItemElement, DataListItemProps>(
   (props, forwardedRef) => {
     const { className, ...itemProps } = extractProps(props, dataListItemPropDefs);
@@ -60,7 +60,7 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
 DataListLabel.displayName = 'DataListLabel';
 
 type DataListDataElement = React.ElementRef<'dd'>;
-interface DataListDataProps extends React.ComponentPropsWithoutRef<'dd'> {}
+interface DataListDataProps extends PropsWithoutRefOrColor<'dd'> {}
 const DataListData = React.forwardRef<DataListDataElement, DataListDataProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <dd
