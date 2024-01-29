@@ -34,7 +34,7 @@
   z-index: 0;
   pointer-events: none;
 
-  :where(.rt-TextFieldInput:focus) + & {
+  :where(.rt-TextFieldInput:focus) ~ & {
     outline: 2px solid var(--color-focus-root);
     outline-offset: -1px;
   }
@@ -94,7 +94,7 @@
         border-radius: max(var(--radius-2), var(--radius-full));
       }
 
-      & + :where(.rt-TextFieldChrome) {
+      & ~ :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
@@ -114,7 +114,7 @@
         border-radius: max(var(--radius-2), var(--radius-full));
       }
 
-      & + :where(.rt-TextFieldChrome) {
+      & ~ :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-2), var(--radius-full));
       }
     }
@@ -130,7 +130,7 @@
         border-radius: max(var(--radius-3), var(--radius-full));
       }
 
-      & + :where(.rt-TextFieldChrome) {
+      & ~ :where(.rt-TextFieldChrome) {
         border-radius: max(var(--radius-3), var(--radius-full));
       }
     }
@@ -155,7 +155,7 @@
   --text-field-border-width: 1px;
   color: var(--gray-12);
 
-  & + :where(.rt-TextFieldChrome) {
+  & ~ :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
     /* Blend inner shadow with page background */
@@ -168,13 +168,13 @@
     opacity: 1;
   }
   &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       background-color: var(--color-autofill-root);
       box-shadow: inset 0 0 0 1px var(--color-autofill-root), inset 0 0 0 1px var(--gray-a6);
     }
   }
   &:where(:disabled, :read-only) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       /* Blend with grey */
       background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
     }
@@ -187,7 +187,7 @@
   --text-field-border-width: 1px;
   color: var(--gray-12);
 
-  & + :where(.rt-TextFieldChrome) {
+  & ~ :where(.rt-TextFieldChrome) {
     background-color: var(--color-surface);
     box-shadow: var(--shadow-1);
     /* Blend inner shadow with page background */
@@ -200,13 +200,13 @@
     opacity: 1;
   }
   &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       background-color: var(--color-autofill-root);
       box-shadow: inset 0 0 0 1px var(--color-autofill-root), var(--shadow-1);
     }
   }
   &:where(:disabled, :read-only) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       /* Blend with grey */
       background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
     }
@@ -218,7 +218,7 @@
   --text-field-border-width: 0px;
   color: var(--accent-12);
 
-  & + :where(.rt-TextFieldChrome) {
+  & ~ :where(.rt-TextFieldChrome) {
     background-color: var(--accent-a3);
   }
   &::placeholder {
@@ -226,19 +226,19 @@
     opacity: 0.6;
   }
   &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       /* Use gray autofill color when component color is gray */
       background-color: var(--accent-a4);
     }
   }
   &:where(:focus) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       /* Use gray outline when component color is gray */
       outline-color: var(--accent-8);
     }
   }
   &:where(:disabled, :read-only) {
-    & + :where(.rt-TextFieldChrome) {
+    & ~ :where(.rt-TextFieldChrome) {
       background-color: var(--gray-a4);
     }
   }
@@ -257,7 +257,7 @@
     /* Safari */
     -webkit-text-fill-color: var(--gray-a11);
 
-    &:where(:focus) + :where(.rt-TextFieldChrome) {
+    &:where(:focus) ~ :where(.rt-TextFieldChrome) {
       outline: 2px solid var(--gray-8);
     }
     &::placeholder {

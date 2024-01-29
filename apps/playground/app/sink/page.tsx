@@ -2582,6 +2582,32 @@ export default function Sink() {
                     </table>
 
                     <Text as="p" my="5">
+                      <Code>resize</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See resize examples
+                        </Text>
+                      </summary>
+                      <Box mt="3">
+                        <table className={styles.table}>
+                          <tbody>
+                            {textAreaPropDefs.resize.values.map((resize) => (
+                              <tr key={resize}>
+                                <RowHeaderCell>{resize}</RowHeaderCell>
+                                <td>
+                                  <TextArea resize={resize} placeholder="Your feedback" />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Box>
+                    </details>
+
+                    <Text as="p" my="5">
                       <Code>radius</Code> can be set per instance:
                     </Text>
 
