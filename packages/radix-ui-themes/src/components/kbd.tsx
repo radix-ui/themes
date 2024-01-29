@@ -14,7 +14,7 @@ const Kbd = React.forwardRef<KbdElement, KbdProps>(
     const Comp = asChild ? Slot : 'kbd';
     const { className, ...kbdProps } = extractProps(props, kbdPropDefs, marginPropDefs);
     return (
-      <Comp {...kbdProps} ref={forwardedRef} className={classNames('rt-reset rt-Kbd', className)} />
+      <Comp {...kbdProps} ref={forwardedRef} className={classNames('rt-reset', 'rt-Kbd', className)} />
     );
   }
 );
