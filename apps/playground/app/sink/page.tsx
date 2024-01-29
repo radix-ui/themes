@@ -4051,9 +4051,15 @@ export default function Sink() {
 
                   <DocsSection title="Kbd">
                     <Flex gap="4">
-                      <Kbd>Enter</Kbd>
-                      <Kbd>Tab</Kbd>
-                      <Kbd>Shift + Tab</Kbd>
+                      <Kbd asChild>
+                        <button>Enter</button>
+                      </Kbd>
+                      <Kbd asChild>
+                        <button>Tab</button>
+                      </Kbd>
+                      <Kbd asChild>
+                        <button>Shift + Tab</button>
+                      </Kbd>
                     </Flex>
 
                     <Flex align="start" direction="column" gap="4" mt="7">

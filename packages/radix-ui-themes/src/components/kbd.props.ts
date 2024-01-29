@@ -10,8 +10,13 @@ const kbdPropDefs = {
     default: undefined,
     responsive: true,
   },
+  asChild: {
+    type: 'boolean',
+    default: undefined,
+  },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
+  asChild: PropDef<boolean>;
 };
 
 export { kbdPropDefs };
