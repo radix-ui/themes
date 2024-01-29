@@ -11,4 +11,4 @@ dist-ssr
 server/dist
 public/dist
 storybook-static/
-/packages/radix-ui-themes/styles.css
+/packages/radix-ui-themes/*.css
