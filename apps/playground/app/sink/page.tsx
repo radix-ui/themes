@@ -2593,14 +2593,6 @@ export default function Sink() {
                       </summary>
                       <Box mt="3">
                         <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              <ColumnHeaderCell />
-                              {textAreaPropDefs.size.values.map((size) => (
-                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
-                              ))}
-                            </tr>
-                          </thead>
                           <tbody>
                             {textAreaPropDefs.resize.values.map((resize) => (
                               <tr key={resize}>
