@@ -139,7 +139,18 @@
 
   &:where(button, [href]) {
     @media (hover: hover) {
-      &:where(:hover)::after {
+      &:where(:hover) {
+        &::after {
+          box-shadow: 0 0 0 1px var(--gray-a7);
+
+          @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
+            box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%);
+          }
+        }
+      }
+    }
+    &:where([data-state='open']) {
+      &::after {
         box-shadow: 0 0 0 1px var(--gray-a7);
 
         @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
@@ -223,6 +234,12 @@
         }
       }
     }
+    &:where([data-state='open']) {
+      &::after {
+        transition-duration: 40ms;
+        box-shadow: var(--card-classic-hover-box-shadow);
+      }
+    }
     &:where(:active:not([data-state='open'])) {
       &::after {
         transition-duration: 40ms;
@@ -245,6 +262,9 @@
       &:where(:hover) {
         background-color: var(--gray-a3);
       }
+    }
+    &:where([data-state='open']) {
+      background-color: var(--gray-a3);
     }
     &:where(:active:not([data-state='open'])) {
       background-color: var(--gray-a4);
