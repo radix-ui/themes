@@ -94,8 +94,10 @@
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a5);
 
-    &:where(:not([data-state='checked']):hover) {
-      box-shadow: inset 0 0 0 1px var(--gray-a7);
+    @media (hover: hover) {
+      &:where(:not([data-state='checked']):hover) {
+        box-shadow: inset 0 0 0 1px var(--gray-a7);
+      }
     }
 
     &:where([data-state='checked']) {
@@ -120,9 +122,11 @@
     transition: box-shadow 120ms;
 
     &:where(:not([data-state='checked'])) {
-      &:where(:hover) {
-        transition-duration: 40ms;
-        box-shadow: var(--card-classic-hover-box-shadow);
+      @media (hover: hover) {
+        &:where(:hover) {
+          transition-duration: 40ms;
+          box-shadow: var(--card-classic-hover-box-shadow);
+        }
       }
 
       &:where(:active) {
