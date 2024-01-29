@@ -8,6 +8,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { themePropDefs, getMatchingGrayColor } from './theme-options';
 
 import type { ThemeOptions } from './theme-options';
+import type { PropsWithoutRefOrColor } from './helpers';
 
 const noop = () => {};
 
@@ -142,7 +143,7 @@ ThemeRoot.displayName = 'ThemeRoot';
 type ThemeImplElement = React.ElementRef<'div'>;
 interface ThemeImplProps extends ThemeImplPublicProps, ThemeImplPrivateProps {}
 interface ThemeImplPublicProps
-  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'dir'>,
+  extends Omit<PropsWithoutRefOrColor<'div'>, 'dir'>,
     Partial<ThemeOptions> {
   asChild?: boolean;
   isRoot?: boolean;

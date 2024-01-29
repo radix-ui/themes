@@ -1,8 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+import type { PropsWithoutRefOrColor } from '../helpers';
+
 type QuoteElement = React.ElementRef<'q'>;
-interface QuoteProps extends React.ComponentPropsWithoutRef<'q'> {}
+interface QuoteProps extends PropsWithoutRefOrColor<'q'> {}
 const Quote = React.forwardRef<QuoteElement, QuoteProps>((props, forwardedRef) => (
   <q {...props} ref={forwardedRef} className={classNames('rt-Quote', props.className)} />
 ));

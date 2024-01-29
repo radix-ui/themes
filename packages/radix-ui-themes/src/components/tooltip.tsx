@@ -7,13 +7,13 @@ import { Text } from './text';
 import { tooltipPropDefs } from './tooltip.props';
 import { Theme } from '../theme';
 
-import type { GetPropDefTypes } from '../helpers';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
 interface TooltipProps
-  extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>,
-    Omit<React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>, 'content'>,
+  extends PropsWithoutRefOrColor<typeof TooltipPrimitive.Root>,
+    Omit<PropsWithoutRefOrColor<typeof TooltipPrimitive.Content>, 'content'>,
     TooltipOwnProps {
   // TODO: See if we can automate making prop defs with `required: true` non nullable
   content: NonNullable<TooltipOwnProps['content']>;
