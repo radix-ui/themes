@@ -31,7 +31,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
   } = extractProps(props, headingPropDefs, marginPropDefs);
   return (
     <Slot
-      data-accent-color={color}
+      data-accent-color={color || undefined}
       {...headingProps}
       ref={forwardedRef}
       className={classNames('rt-Heading', className)}
