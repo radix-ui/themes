@@ -17,7 +17,7 @@ type SelectContextValue = SelectRootOwnProps;
 const SelectContext = React.createContext<SelectContextValue>({});
 
 interface SelectRootProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
+  extends PropsWithoutRefOrColor<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
   const { children, size = selectRootPropDefs.size.default, ...rootProps } = props;
@@ -128,7 +128,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
 SelectContent.displayName = 'SelectContent';
 
 type SelectItemElement = React.ElementRef<typeof SelectPrimitive.Item>;
-interface SelectItemProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {}
+interface SelectItemProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Item> {}
 const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, forwardedRef) => {
   const { className, children, ...itemProps } = props;
   return (
@@ -147,7 +147,7 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
 SelectItem.displayName = 'SelectItem';
 
 type SelectGroupElement = React.ElementRef<typeof SelectPrimitive.Group>;
-interface SelectGroupProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Group> {}
+interface SelectGroupProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Group> {}
 const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
   (props, forwardedRef) => (
     <SelectPrimitive.Group
@@ -160,7 +160,7 @@ const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
 SelectGroup.displayName = 'SelectGroup';
 
 type SelectLabelElement = React.ElementRef<typeof SelectPrimitive.Label>;
-interface SelectLabelProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label> {}
+interface SelectLabelProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Label> {}
 const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
   (props, forwardedRef) => (
     <SelectPrimitive.Label
@@ -173,8 +173,7 @@ const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
 SelectLabel.displayName = 'SelectLabel';
 
 type SelectSeparatorElement = React.ElementRef<typeof SelectPrimitive.Separator>;
-interface SelectSeparatorProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator> {}
+interface SelectSeparatorProps extends PropsWithoutRefOrColor<typeof SelectPrimitive.Separator> {}
 const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparatorProps>(
   (props, forwardedRef) => (
     <SelectPrimitive.Separator

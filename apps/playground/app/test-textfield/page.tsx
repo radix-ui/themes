@@ -56,14 +56,14 @@ export default function Test() {
                     <TextFieldRoot size="1">
                       <TextFieldInput placeholder="Your password" />
                       <TextFieldSlot>
-                        <Spinner size="1" color="gray" />
+                        <Spinner size="1" />
                       </TextFieldSlot>
                     </TextFieldRoot>
 
                     <TextFieldRoot size="2">
                       <TextFieldInput placeholder="Your password" />
                       <TextFieldSlot>
-                        <Spinner size="2" color="gray" />
+                        <Spinner size="2" />
                       </TextFieldSlot>
                     </TextFieldRoot>
 

@@ -4,14 +4,11 @@ import { Slot } from '@radix-ui/react-slot';
 import { skeletonPropDefs } from './skeleton.props';
 import { extractProps, marginPropDefs } from '../helpers';
 
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type SkeletonElement = React.ElementRef<'span'>;
 type SkeletonOwnProps = GetPropDefTypes<typeof skeletonPropDefs>;
-interface SkeletonProps
-  extends React.ComponentPropsWithoutRef<'span'>,
-    MarginProps,
-    SkeletonOwnProps {}
+interface SkeletonProps extends PropsWithoutRefOrColor<'span'>, MarginProps, SkeletonOwnProps {}
 const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwardedRef) => {
   const { children, className, loading, ...skeletonProps } = extractProps(
     props,
