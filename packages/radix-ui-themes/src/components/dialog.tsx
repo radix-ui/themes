@@ -40,13 +40,13 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
-          <DialogPrimitive.Overlay className="rt-DialogOverlay">
-            <div className="rt-DialogScroll">
-              <div className="rt-DialogScrollPadding">
+          <DialogPrimitive.Overlay className="rt-BaseDialogOverlay rt-DialogOverlay">
+            <div className="rt-BaseDialogScroll rt-DialogScroll">
+              <div className="rt-BaseDialogScrollPadding rt-DialogScrollPadding">
                 <DialogPrimitive.Content
                   {...contentProps}
                   ref={forwardedRef}
-                  className={classNames('rt-DialogContent', className)}
+                  className={classNames('rt-BaseDialogContent', 'rt-DialogContent', className)}
                 />
               </div>
             </div>
