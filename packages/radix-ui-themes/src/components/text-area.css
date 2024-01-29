@@ -45,7 +45,6 @@
   & {
     /* Arrow mouse cursor over the scrollbar */
     cursor: auto;
-    scrollbar-width: thin;
   }
   &::-webkit-scrollbar {
     width: var(--space-3);
