@@ -12,18 +12,6 @@
     outline: 2px solid var(--color-focus-root);
     outline-offset: -1px;
   }
-
-  &::-webkit-resizer {
-    appearance: none;
-    border-radius: 100%;
-    border: 5px solid transparent;
-    background-clip: content-box;
-    background-color: var(--gray-a2);
-    outline: 1px solid var(--gray-a8);
-    outline-offset: -6px;
-    width: 40px;
-    height: 40px;
-  }
 }
 
 .rt-TextAreaInput {
