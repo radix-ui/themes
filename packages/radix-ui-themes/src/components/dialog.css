@@ -30,6 +30,8 @@
   max-width: 580px;
   z-index: 1;
   position: relative;
+  box-sizing: border-box;
+  overflow: auto;
 
   --inset-padding: var(--dialog-content-padding);
   padding: var(--inset-padding);
