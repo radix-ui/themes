@@ -26,7 +26,7 @@
 @import './margin.css';
 @import './padding.css';
 @import './position.css';
-/* @import './resize.css'; */
+@import './resize.css';
 @import './table-layout.css';
 @import './text-align.css';
 @import './text-wrap.css';
