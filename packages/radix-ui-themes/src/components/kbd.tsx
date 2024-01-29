@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { kbdPropDefs } from './kbd.props';
+import { Slot } from '@radix-ui/react-slot';
 import { extractProps, GetPropDefTypes, marginPropDefs } from '../helpers';
 
 import type { MarginProps } from '../helpers';
-import { Slot } from '@radix-ui/react-slot';
 
 type KbdElement = React.ElementRef<'kbd'>;
 type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;
