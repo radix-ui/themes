@@ -1,4 +1,5 @@
 @import './reset.css';
+@import './animations.css';
 
 @import './alert-dialog.css';
 @import './avatar.css';
@@ -25,7 +26,6 @@
 @import './kbd.css';
 @import './link.css';
 @import './popover.css';
-@import './popper.css';
 @import './progress.css';
 @import './quote.css';
 @import './radio-card-group.css';
