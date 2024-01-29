@@ -26,7 +26,7 @@ import {
   Popover,
 } from './index';
 
-import type { ThemeOptions } from './index';
+import type { PropsWithoutRefOrColor, ThemeOptions } from './index';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;
@@ -44,9 +44,7 @@ interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-interface ThemePanelImplProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    ThemePanelImplPrivateProps {
+interface ThemePanelImplProps extends PropsWithoutRefOrColor<'div'>, ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(

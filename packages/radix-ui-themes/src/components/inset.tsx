@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { insetPropDefs } from './inset.props';
 import { extractProps, marginPropDefs } from '../helpers';
 
-import type { MarginProps, GetPropDefTypes } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type InsetElement = React.ElementRef<'div'>;
 type InsetOwnProps = GetPropDefTypes<typeof insetPropDefs>;
-interface InsetProps extends React.ComponentPropsWithoutRef<'div'>, MarginProps, InsetOwnProps {}
+interface InsetProps extends PropsWithoutRefOrColor<'div'>, MarginProps, InsetOwnProps {}
 
 const Inset = React.forwardRef<InsetElement, InsetProps>((props, forwardedRef) => {
   const { className, ...insetProps } = extractProps(props, insetPropDefs, marginPropDefs);

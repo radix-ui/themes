@@ -23,6 +23,7 @@
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
   - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
+  - Remove the native `color` attribute from components that don’t have own `color` props
 - 6 new components
   - `Progress`
   - `RadioCardGroup`
