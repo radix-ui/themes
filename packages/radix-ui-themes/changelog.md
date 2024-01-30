@@ -29,13 +29,13 @@
   - Ensure that disabled cursor styles are applied correctly
   - Tweak the background color of all `variant="soft"` menu items
 - 7 new components
+  - `CheckboxCardGroup`
   - `Progress`
   - `RadioCardGroup`
   - `Reset`
   - `Skeleton`
   - `Spinner`
   - `TabNav`
-  - `DataList`
 - `AlertDialog`, `Dialog`
   - Add `position: relative` to support absolutely positioned children.
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
