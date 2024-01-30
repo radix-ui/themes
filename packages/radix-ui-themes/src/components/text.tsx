@@ -33,7 +33,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   } = extractProps(props, textPropDefs, marginPropDefs);
   return (
     <Slot
-      data-accent-color={color}
+      data-accent-color={color || undefined}
       {...textProps}
       ref={forwardedRef}
       className={classNames('rt-Text', className)}
