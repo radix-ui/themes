@@ -5129,17 +5129,17 @@ export default function Sink() {
                                 variant={variant}
                               >
                                 <RadioCardGroupItem value="0">
-                                  <CodeIcon />
-                                  Node.js
+                                  <Flex align="center" gap="2">
+                                    <Box asChild flexShrink="0">
+                                      <CodeIcon />
+                                    </Box>
+                                    <Text truncate>Node.js</Text>
+                                  </Flex>
                                 </RadioCardGroupItem>
                                 <RadioCardGroupItem value="1" disabled>
-                                  <CodeIcon />
                                   Ruby
                                 </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">
-                                  <CodeIcon />
-                                  Go
-                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                               </RadioCardGroupRoot>
                             </td>
                           </tr>
@@ -5161,18 +5161,11 @@ export default function Sink() {
                                 defaultValue={String(index)}
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <RadioCardGroupItem value="0">
-                                  <CodeIcon />
-                                  Node.js
-                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
                                 <RadioCardGroupItem value="1" disabled>
-                                  <CodeIcon />
                                   Ruby
                                 </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">
-                                  <CodeIcon />
-                                  Go
-                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                               </RadioCardGroupRoot>
                             </td>
                           </tr>
@@ -5220,42 +5213,28 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroupItem value="0">
-                                            <CodeIcon />
-                                            Node.js
-                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
                                           <RadioCardGroupItem value="1" disabled>
-                                            <CodeIcon />
                                             Ruby
                                           </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">
-                                            <CodeIcon />
-                                            Go
-                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                                         </RadioCardGroupRoot>
 
                                         <RadioCardGroupRoot
                                           size="1"
                                           gap="2"
                                           columns="3"
-                                          defaultValue="0"
+                                          defaultValue="1"
                                           variant={variant}
                                           color={color}
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroupItem value="0">
-                                            <CodeIcon />
-                                            Node.js
-                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
                                           <RadioCardGroupItem value="1" disabled>
-                                            <CodeIcon />
                                             Ruby
                                           </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">
-                                            <CodeIcon />
-                                            Go
-                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                                         </RadioCardGroupRoot>
                                       </Flex>
                                     </td>
@@ -5276,23 +5255,23 @@ export default function Sink() {
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
-                              <CheckboxCardGroupRoot columns="3" variant={variant}>
-                                <CheckboxCardGroupItem value="0" defaultChecked={index === 0}>
-                                  <CodeIcon />
-                                  Node.js
+                              <CheckboxCardGroupRoot
+                                defaultValue={[String(index)]}
+                                columns="3"
+                                variant={variant}
+                              >
+                                <CheckboxCardGroupItem value="0">
+                                  <Flex align="center" gap="2">
+                                    <Box asChild flexShrink="0">
+                                      <CodeIcon />
+                                    </Box>
+                                    <Text truncate>Node.js</Text>
+                                  </Flex>
                                 </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem
-                                  value="1"
-                                  defaultChecked={index === 1}
-                                  disabled
-                                >
-                                  <CodeIcon />
+                                <CheckboxCardGroupItem value="1" disabled>
                                   Ruby
                                 </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="2" defaultChecked={index === 2}>
-                                  <CodeIcon />
-                                  Go
-                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
                               </CheckboxCardGroupRoot>
                             </td>
                           </tr>
@@ -5309,26 +5288,16 @@ export default function Sink() {
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
                               <CheckboxCardGroupRoot
+                                defaultValue={[String(index)]}
                                 size={size}
                                 columns="3"
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <CheckboxCardGroupItem value="0" defaultChecked={index === 0}>
-                                  <CodeIcon />
-                                  Node.js
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem
-                                  value="1"
-                                  defaultChecked={index === 1}
-                                  disabled
-                                >
-                                  <CodeIcon />
+                                <CheckboxCardGroupItem value="0">Node.js</CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="1" disabled>
                                   Ruby
                                 </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="2" defaultChecked={index === 2}>
-                                  <CodeIcon />
-                                  Go
-                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
                               </CheckboxCardGroupRoot>
                             </td>
                           </tr>
@@ -5368,6 +5337,7 @@ export default function Sink() {
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
                                         <CheckboxCardGroupRoot
+                                          defaultValue={['0']}
                                           size="1"
                                           gap="2"
                                           columns="3"
@@ -5375,21 +5345,19 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <CheckboxCardGroupItem value="0" defaultChecked>
-                                            <CodeIcon />
+                                          <CheckboxCardGroupItem value="0">
                                             Node.js
                                           </CheckboxCardGroupItem>
                                           <CheckboxCardGroupItem value="1" disabled>
-                                            <CodeIcon />
                                             Ruby
                                           </CheckboxCardGroupItem>
                                           <CheckboxCardGroupItem value="2">
-                                            <CodeIcon />
                                             Go
                                           </CheckboxCardGroupItem>
                                         </CheckboxCardGroupRoot>
 
                                         <CheckboxCardGroupRoot
+                                          defaultValue={['1']}
                                           size="1"
                                           gap="2"
                                           columns="3"
@@ -5398,16 +5366,13 @@ export default function Sink() {
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <CheckboxCardGroupItem value="0" defaultChecked>
-                                            <CodeIcon />
+                                          <CheckboxCardGroupItem value="0">
                                             Node.js
                                           </CheckboxCardGroupItem>
                                           <CheckboxCardGroupItem value="1" disabled>
-                                            <CodeIcon />
                                             Ruby
                                           </CheckboxCardGroupItem>
                                           <CheckboxCardGroupItem value="2">
-                                            <CodeIcon />
                                             Go
                                           </CheckboxCardGroupItem>
                                         </CheckboxCardGroupRoot>

@@ -8,19 +8,17 @@
 .rt-CheckboxCardGroupItem {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
-.rt-CheckboxCardGroupItemContent {
-  display: flex;
-  align-items: center;
+.rt-CheckboxCardGroupItemInner {
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  min-width: 0;
 
-  & > * {
+  & * {
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
-    /* Don’t squish icons */
-    flex-shrink: 0;
   }
 }
 
@@ -43,12 +41,6 @@
   padding: var(--radio-card-group-item-padding);
   border-radius: var(--radio-card-group-item-radius);
   gap: var(--radio-card-group-item-gap);
-}
-
-.rt-CheckboxCardGroupItemContent {
-  gap: var(--radio-card-group-item-gap);
-  /* add a little more space on top of the regular gap */
-  margin-right: var(--space-2);
 }
 
 @breakpoints {

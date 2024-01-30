@@ -6,14 +6,17 @@
 .rt-RadioCardGroupItem {
   display: flex;
   align-items: center;
-  white-space: nowrap;
   min-width: 0;
+}
 
-  & > * {
+.rt-RadioCardGroupItemInner {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  & * {
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
-    /* Don’t squish icons */
-    flex-shrink: 0;
   }
 }
 
