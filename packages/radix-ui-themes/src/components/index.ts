@@ -37,6 +37,12 @@ export * from './strong.props';
 // FORMS
 //------------------------------------------------------------------------------
 // export * from './form'; 👈
+export {
+  CheckboxCardGroup,
+  CheckboxCardGroupRoot,
+  CheckboxCardGroupItem,
+} from './checkbox-card-group';
+export * from './checkbox-card-group.props';
 export { Checkbox } from './checkbox';
 export * from './checkbox.props';
 export { RadioCardGroup, RadioCardGroupRoot, RadioCardGroupItem } from './radio-card-group';
