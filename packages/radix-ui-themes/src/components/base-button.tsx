@@ -27,7 +27,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const {
     className,
     children,
-    asChild = false,
+    asChild,
     color,
     radius,
     disabled = props.loading,

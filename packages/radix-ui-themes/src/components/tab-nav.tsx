@@ -44,7 +44,7 @@ interface TabNavLinkProps
   extends Omit<PropsWithoutRefOrColor<typeof NavigationMenu.Link>, 'onSelect'>,
     TabNavLinkOwnProps {}
 const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
-  const { asChild = false, className, children: childrenProp, ...linkProps } = props;
+  const { asChild, className, children: childrenProp, ...linkProps } = props;
 
   const { Root: TabNavLinkRoot, children } = getRoot({
     asChild,

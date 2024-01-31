@@ -26,7 +26,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const {
     children,
     className,
-    asChild = false,
+    asChild,
     as: Tag = 'span',
     color,
     ...textProps

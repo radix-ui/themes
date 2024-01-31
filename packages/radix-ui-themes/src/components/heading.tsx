@@ -24,7 +24,7 @@ const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwarded
   const {
     children,
     className,
-    asChild = false,
+    asChild,
     as: Tag = 'h1',
     color,
     ...headingProps
