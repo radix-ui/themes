@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { Text } from './text';
 import { calloutRootPropDefs } from './callout.props';
 import {
@@ -17,7 +18,6 @@ import type {
   GetPropDefTypes,
   ExtractPropsForTag,
 } from '../helpers';
-import { Slot } from '@radix-ui/react-slot';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 

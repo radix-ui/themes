@@ -30,7 +30,9 @@ export * from './em.props';
 export { Kbd } from './kbd';
 export * from './kbd.props';
 export { Quote } from './quote';
+export * from './quote.props';
 export { Strong } from './strong';
+export * from './strong.props';
 
 // FORMS
 //------------------------------------------------------------------------------

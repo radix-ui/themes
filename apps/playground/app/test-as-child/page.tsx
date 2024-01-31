@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  AspectRatio,
   Avatar,
   Badge,
   Box,
@@ -10,8 +11,14 @@ import {
   DropdownMenu,
   DropdownMenuRoot,
   DropdownMenuTrigger,
+  Em,
   Flex,
+  Kbd,
+  Quote,
+  ScrollArea,
   Section,
+  Strong,
+  Switch,
   TabNavLink,
   TabNavRoot,
   Text,
@@ -86,6 +93,42 @@ export default function Test() {
                     </Flex>
 
                     <Flex gap="5">
+                      <Box width="300px" height="300px">
+                        <ScrollArea asChild>
+                          <section>
+                            <Text as="p">
+                              The goal of typography is to relate font size, line height, and line
+                              width in a proportional way that maximizes beauty and makes reading
+                              easier and more pleasant. The question is: What proportion(s) will
+                              give us the best results? The golden ratio is often observed in nature
+                              where beauty and utility intersect; perhaps we can use this “divine”
+                              proportion to enhance these attributes in our typography.
+                            </Text>
+                            <Text as="p" size="3">
+                              The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has
+                              been applied to all fonts.google.com pages where fonts are rendered.
+                              This results in browsers using the{' '}
+                              <Strong>greyscale antialiasing method</Strong> rather than default{' '}
+                              <Em>subpixel rendering</Em> of fonts. Press <Kbd>⌘ Q</Kbd> to quit.{' '}
+                              <Quote>
+                                I believe this was probably introduced to get around inconsistencies
+                                in rendering between browsers
+                              </Quote>
+                              , particular between Chrome and Safari on MacOS.
+                            </Text>
+                            <Box style={{ width: 300 }}>
+                              <AspectRatio ratio={1}>
+                                <img
+                                  src="https://images.unsplash.com/photo-1683122803696-b3da13b071b2?&auto=format&fit=crop&w=400&q=80"
+                                  alt="A dragonfly on a branch"
+                                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                                />
+                              </AspectRatio>
+                            </Box>
+                          </section>
+                        </ScrollArea>
+                      </Box>
+
                       <Box asChild>
                         <Text>Box as child</Text>
                       </Box>

@@ -8,6 +8,7 @@ import {
   extractMarginProps,
   getMarginStyles,
   getResponsiveClassNames,
+  getRoot,
   mergeStyles,
 } from '../helpers';
 
@@ -23,7 +24,10 @@ interface ScrollAreaProps
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {
   const { rest: marginRest, ...marginProps } = extractMarginProps(props);
   const [marginClassNames, marginCustomProperties] = getMarginStyles(marginProps);
+
   const {
+    asChild,
+    children: childrenProp,
     className,
     style,
     type,
@@ -34,8 +38,15 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     scrollbars = scrollAreaPropDefs.scrollbars.default,
     ...viewportProps
   } = marginRest;
+
+  const { Root: ScrollAreaRoot, children } = getRoot({
+    asChild,
+    children: childrenProp,
+    parent: ScrollAreaPrimitive.Root,
+  });
+
   return (
-    <ScrollAreaPrimitive.Root
+    <ScrollAreaRoot
       type={type}
       scrollHideDelay={scrollHideDelay}
       className={classNames('rt-ScrollAreaRoot', marginClassNames, className)}
@@ -45,7 +56,9 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
         {...viewportProps}
         ref={forwardedRef}
         className="rt-ScrollAreaViewport"
-      />
+      >
+        {children}
+      </ScrollAreaPrimitive.Viewport>
       <div className="rt-ScrollAreaViewportFocusRing" />
 
       {scrollbars !== 'vertical' ? (
@@ -85,7 +98,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
       {scrollbars === 'both' ? (
         <ScrollAreaPrimitive.Corner className="rt-ScrollAreaCorner" />
       ) : null}
-    </ScrollAreaPrimitive.Root>
+    </ScrollAreaRoot>
   );
 });
 ScrollArea.displayName = 'ScrollArea';

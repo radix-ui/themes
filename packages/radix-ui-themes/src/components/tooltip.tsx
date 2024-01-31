@@ -12,8 +12,8 @@ import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
 interface TooltipProps
-  extends PropsWithoutRefOrColor<typeof TooltipPrimitive.Root>,
-    Omit<PropsWithoutRefOrColor<typeof TooltipPrimitive.Content>, 'content'>,
+  extends Omit<PropsWithoutRefOrColor<typeof TooltipPrimitive.Root>, 'asChild'>,
+    Omit<PropsWithoutRefOrColor<typeof TooltipPrimitive.Content>, 'asChild' | 'content'>,
     TooltipOwnProps {
   // TODO: See if we can automate making prop defs with `required: true` non nullable
   content: NonNullable<TooltipOwnProps['content']>;
@@ -43,6 +43,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
             sideOffset={4}
             collisionPadding={10}
             {...tooltipContentProps}
+            asChild={false}
             ref={forwardedRef}
             className={classNames('rt-TooltipContent', className)}
           >

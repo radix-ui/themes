@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { sectionPropDefs } from './section.props';
 import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
 
@@ -13,15 +14,16 @@ interface SectionProps
     LayoutProps,
     SectionOwnProps {}
 const Section = React.forwardRef<SectionElement, SectionProps>((props, forwardedRef) => {
-  const { className, ...sectionProps } = extractProps(
+  const { asChild, className, ...sectionProps } = extractProps(
     props,
     sectionPropDefs,
     layoutPropDefs,
     deprecatedLayoutPropDefs,
     marginPropDefs
   );
+  const Comp = asChild ? Slot : 'section';
   return (
-    <section {...sectionProps} ref={forwardedRef} className={classNames('rt-Section', className)} />
+    <Comp {...sectionProps} ref={forwardedRef} className={classNames('rt-Section', className)} />
   );
 });
 Section.displayName = 'Section';

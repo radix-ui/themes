@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { containerPropDefs } from './container.props';
 import {
   deprecatedLayoutPropDefs,
@@ -10,7 +11,6 @@ import {
 } from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
-import { Slot } from '@radix-ui/react-slot';
 
 type ContainerElement = React.ElementRef<'div'>;
 type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs>;

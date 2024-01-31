@@ -11,7 +11,7 @@ import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../he
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;
 interface ProgressProps
-  extends Omit<PropsWithoutRefOrColor<typeof ProgressPrimitive.Root>, 'children' | 'asChild'>,
+  extends Omit<PropsWithoutRefOrColor<typeof ProgressPrimitive.Root>, 'asChild' | 'children'>,
     MarginProps,
     ProgressOwnProps {}
 const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwardedRef) => {
