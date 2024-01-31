@@ -1,3 +1,4 @@
+import { asChildProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sides = ['all', 'x', 'y', 'top', 'bottom', 'left', 'right'] as const;
@@ -5,6 +6,7 @@ const clipValues = ['border-box', 'padding-box'] as const;
 const paddingValues = ['current', '0'] as const;
 
 const insetPropDefs = {
+  asChild: asChildProp,
   side: {
     type: 'enum',
     className: 'rt-r-side',
@@ -76,6 +78,7 @@ const insetPropDefs = {
     responsive: true,
   },
 } satisfies {
+  asChild: typeof asChildProp;
   side: PropDef<(typeof sides)[number]>;
   clip: PropDef<(typeof clipValues)[number]>;
   p: PropDef<(typeof paddingValues)[number]>;

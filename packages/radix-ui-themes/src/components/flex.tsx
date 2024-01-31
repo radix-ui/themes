@@ -9,9 +9,9 @@ import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor 
 type FlexElement = React.ElementRef<'div'>;
 type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs>;
 interface CommonFlexProps extends MarginProps, LayoutProps, FlexOwnProps {}
-type FlexAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'div'>;
-type FlexDivProps = { as?: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
-type FlexSpanProps = { as: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
+type FlexAsChildProps = { asChild?: true; as?: never } & PropsWithoutRefOrColor<'div'>;
+type FlexDivProps = { as?: 'div'; asChild?: false } & PropsWithoutRefOrColor<'div'>;
+type FlexSpanProps = { as: 'span'; asChild?: false } & PropsWithoutRefOrColor<'span'>;
 type FlexProps = CommonFlexProps & (FlexAsChildProps | FlexSpanProps | FlexDivProps);
 
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {

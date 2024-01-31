@@ -1,13 +1,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
+import { emPropDefs } from './em.props';
 
-import type { PropsWithoutRefOrColor } from '../helpers';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 type QuoteElement = React.ElementRef<'q'>;
-interface QuoteProps extends PropsWithoutRefOrColor<'q'> {}
-const Quote = React.forwardRef<QuoteElement, QuoteProps>((props, forwardedRef) => (
-  <q {...props} ref={forwardedRef} className={classNames('rt-Quote', props.className)} />
-));
+type QuoteOwnProps = GetPropDefTypes<typeof emPropDefs>;
+interface QuoteProps extends PropsWithoutRefOrColor<'q'>, QuoteOwnProps {}
+const Quote = React.forwardRef<QuoteElement, QuoteProps>(({ asChild, ...props }, forwardedRef) => {
+  const Comp = asChild ? Slot : 'q';
+  return <Comp {...props} ref={forwardedRef} className={classNames('rt-Quote', props.className)} />;
+});
 Quote.displayName = 'Quote';
 
 export { Quote };

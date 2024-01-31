@@ -28,14 +28,25 @@ function extractProps<
   const allPropDefs = mergePropDefs(...propDefs);
 
   for (const key in allPropDefs) {
+    let value = extractedProps[key];
     const propDef = allPropDefs[key];
 
     // Apply prop def defaults
-    if (propDef.default !== undefined && extractedProps[key] === undefined) {
-      (extractedProps as Record<string, any>)[key] = propDef.default;
+    if (propDef.default !== undefined && value === undefined) {
+      value = propDef.default;
     }
 
-    const value = extractedProps[key];
+    // Apply the default value if the value is not a valid enum value
+    if (propDef.type === 'enum') {
+      const values = [propDef.default, ...propDef.values];
+
+      if (!values.includes(value) && !isResponsiveObject(value)) {
+        value = propDef.default;
+      }
+    }
+
+    // Apply the value with defaults
+    (extractedProps as Record<string, any>)[key] = value;
 
     if ('className' in propDef && propDef.className) {
       delete extractedProps[key];

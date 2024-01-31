@@ -10,6 +10,7 @@ import {
   //
   radixGetMatchingGrayScale,
 } from './helpers/radix-colors';
+import { asChildProp } from './helpers';
 import type { GetPropDefTypes, PropDef } from './helpers';
 
 const appearances = ['inherit', 'light', 'dark'] as const;
@@ -20,6 +21,7 @@ const radii = ['none', 'small', 'medium', 'large', 'full'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 
 const themePropDefs = {
+  asChild: asChildProp,
   hasBackground: { type: 'boolean', default: true },
   appearance: { type: 'enum', values: appearances, default: 'inherit' },
   accentColor: { type: 'enum', values: accentColors, default: 'indigo' },
@@ -28,6 +30,7 @@ const themePropDefs = {
   radius: { type: 'enum', values: radii, default: 'medium' },
   scaling: { type: 'enum', values: scalings, default: '100%' },
 } satisfies {
+  asChild: typeof asChildProp;
   hasBackground: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;
   accentColor: PropDef<(typeof accentColors)[number]>;

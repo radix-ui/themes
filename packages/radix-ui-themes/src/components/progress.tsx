@@ -11,7 +11,7 @@ import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../he
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;
 interface ProgressProps
-  extends Omit<PropsWithoutRefOrColor<typeof ProgressPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof ProgressPrimitive.Root>, 'children' | 'asChild'>,
     MarginProps,
     ProgressOwnProps {}
 const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwardedRef) => {
@@ -35,6 +35,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
         style
       )}
       {...progressProps}
+      asChild={false}
     >
       <ProgressPrimitive.Indicator className="rt-ProgressIndicator" />
     </ProgressPrimitive.Root>

@@ -1,9 +1,11 @@
+import { asChildProp } from '../helpers';
 import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;
 
 const containerPropDefs = {
+  asChild: asChildProp,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -20,6 +22,7 @@ const containerPropDefs = {
     responsive: true,
   },
 } satisfies {
+  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
 };

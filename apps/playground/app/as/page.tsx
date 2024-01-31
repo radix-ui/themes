@@ -3,9 +3,9 @@ import { Theme, Flex, Heading, Text, Link, Button } from '@radix-ui/themes';
 
 export default function As() {
   return (
-    <Theme asChild accentColor="purple" radius="full">
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body>
+        <Theme asChild accentColor="purple" radius="full">
           <div id="root">
             <Flex direction="column" align="start" gap="3" p="9">
               <Link href="#">a default link</Link>
@@ -54,8 +54,8 @@ export default function As() {
               </ul> */}
             </Flex>
           </div>
-        </body>
-      </html>
-    </Theme>
+        </Theme>
+      </body>
+    </html>
   );
 }

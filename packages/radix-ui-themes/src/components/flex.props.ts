@@ -1,6 +1,7 @@
-import { gapProps } from '../helpers';
+import { asChildProp, gapProps } from '../helpers';
 import type { PropDef } from '../helpers';
 
+const as = ['div', 'span'] as const;
 const displayValues = ['none', 'inline-flex', 'flex'] as const;
 const directionValues = ['row', 'column', 'row-reverse', 'column-reverse'] as const;
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
@@ -8,6 +9,8 @@ const justifyValues = ['start', 'center', 'end', 'between'] as const;
 const wrapValues = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 
 const flexPropDefs = {
+  as: { type: 'enum', values: as, default: 'div' },
+  asChild: asChildProp,
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -46,6 +49,8 @@ const flexPropDefs = {
   },
   ...gapProps,
 } satisfies {
+  as: PropDef<(typeof as)[number]>;
+  asChild: typeof asChildProp;
   display: PropDef<(typeof displayValues)[number]>;
   direction: PropDef<(typeof directionValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;

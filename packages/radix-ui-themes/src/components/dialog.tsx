@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { dialogContentPropDefs } from './dialog.props';
-import { extractProps } from '../helpers';
+import { extractProps, requireReactElement } from '../helpers';
 import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
@@ -45,6 +45,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
               <div className="rt-BaseDialogScrollPadding rt-DialogScrollPadding">
                 <DialogPrimitive.Content
                   {...contentProps}
+                  asChild={false}
                   ref={forwardedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-DialogContent', className)}
                 />
@@ -59,11 +60,11 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
 DialogContent.displayName = 'DialogContent';
 
 type DialogTitleElement = React.ElementRef<typeof Heading>;
-type DialogTitleProps = React.ComponentPropsWithoutRef<typeof Heading>;
+type DialogTitleProps = Omit<React.ComponentPropsWithoutRef<typeof Heading>, 'asChild'>;
 const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Title asChild>
-      <Heading size="5" mb="3" trim="start" {...props} ref={forwardedRef} />
+      <Heading size="5" mb="3" trim="start" {...props} asChild={false} ref={forwardedRef} />
     </DialogPrimitive.Title>
   )
 );
@@ -74,7 +75,7 @@ type DialogDescriptionProps = ExtractPropsForTag<typeof Text, 'p'>;
 const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescriptionProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Description asChild>
-      <Text as="p" size="3" {...props} ref={forwardedRef} />
+      <Text as="p" size="3" {...props} asChild={false} ref={forwardedRef} />
     </DialogPrimitive.Description>
   )
 );
@@ -84,7 +85,11 @@ type DialogCloseElement = React.ElementRef<typeof DialogPrimitive.Close>;
 interface DialogCloseProps
   extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Close>, 'asChild'> {}
 const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
-  (props, forwardedRef) => <DialogPrimitive.Close {...props} ref={forwardedRef} asChild />
+  ({ children, ...props }, forwardedRef) => (
+    <DialogPrimitive.Close {...props} ref={forwardedRef} asChild>
+      {requireReactElement(children)}
+    </DialogPrimitive.Close>
+  )
 );
 DialogClose.displayName = 'DialogClose';
 

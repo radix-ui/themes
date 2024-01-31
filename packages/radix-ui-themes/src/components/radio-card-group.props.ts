@@ -1,4 +1,4 @@
-import { colorProp, highContrastProp } from '../helpers';
+import { asChildProp, colorProp, highContrastProp } from '../helpers';
 import type { PropDef } from '../helpers';
 import { gridPropDefs } from './grid.props';
 
@@ -6,6 +6,7 @@ const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'classic'] as const;
 
 const radioCardGroupPropDefs = {
+  asChild: asChildProp,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   color: colorProp,
@@ -13,6 +14,7 @@ const radioCardGroupPropDefs = {
   columns: gridPropDefs.columns,
   gap: { ...gridPropDefs.gap, default: '4' },
 } satisfies {
+  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   color: typeof colorProp;

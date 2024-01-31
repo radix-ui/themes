@@ -35,7 +35,7 @@ RadioGroupRoot.displayName = 'RadioGroupRoot';
 
 type RadioGroupItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioGroupItemProps
-  extends Omit<PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Item>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Item>, 'children' | 'asChild'>,
     MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   (props, forwardedRef) => {
@@ -43,6 +43,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
     return (
       <RadioGroupPrimitive.Item
         {...itemProps}
+        asChild={false}
         ref={forwardedRef}
         className={classNames('rt-reset', 'rt-RadioGroupItem', className)}
       >

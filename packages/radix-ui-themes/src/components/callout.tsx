@@ -17,6 +17,7 @@ import type {
   GetPropDefTypes,
   ExtractPropsForTag,
 } from '../helpers';
+import { Slot } from '@radix-ui/react-slot';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 
@@ -31,6 +32,7 @@ interface CalloutRootProps
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
   (props, forwardedRef) => {
     const {
+      asChild,
       size = calloutRootPropDefs.size.default,
       highContrast = calloutRootPropDefs.highContrast.default,
     } = props;
@@ -39,8 +41,9 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
       calloutRootPropDefs,
       marginPropDefs
     );
+    const Comp = asChild ? Slot : 'div';
     return (
-      <div
+      <Comp
         data-accent-color={color}
         {...rootProps}
         className={classNames('rt-CalloutRoot', className)}
@@ -51,7 +54,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         >
           {children}
         </CalloutContext.Provider>
-      </div>
+      </Comp>
     );
   }
 );
@@ -92,6 +95,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         color={color}
         highContrast={highContrast}
         {...props}
+        asChild={false}
         ref={forwardedRef}
         className={classNames('rt-CalloutText', props.className)}
       />

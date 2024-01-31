@@ -1,3 +1,4 @@
+export * from './as-child.prop';
 export * from './color.prop';
 export * from './gap.prop';
 export * from './height.props';

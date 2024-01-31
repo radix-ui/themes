@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import { hoverCardContentPropDefs } from './hover-card.props';
-import { extractProps } from '../helpers';
+import { extractProps, requireReactElement } from '../helpers';
 import { Theme } from '../theme';
 
 import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
@@ -19,13 +19,15 @@ type HoverCardTriggerElement = React.ElementRef<typeof HoverCardPrimitive.Trigge
 interface HoverCardTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof HoverCardPrimitive.Trigger>, 'asChild'> {}
 const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTriggerProps>(
-  (props, forwardedRef) => (
+  ({ children, ...props }, forwardedRef) => (
     <HoverCardPrimitive.Trigger
       ref={forwardedRef}
       className={classNames('rt-HoverCardTrigger', props.className)}
       {...props}
       asChild
-    />
+    >
+      {requireReactElement(children)}
+    </HoverCardPrimitive.Trigger>
   )
 );
 HoverCardTrigger.displayName = 'HoverCardTrigger';
@@ -51,6 +53,7 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
             sideOffset={8}
             collisionPadding={10}
             {...contentProps}
+            asChild={false}
             ref={forwardedRef}
             className={classNames('rt-PopperContent', 'rt-HoverCardContent', className)}
           />

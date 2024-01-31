@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { popoverContentPropDefs } from './popover.props';
-import { extractProps } from '../helpers';
+import { extractProps, requireReactElement } from '../helpers';
 import { Theme } from '../theme';
 
 import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
@@ -19,7 +19,11 @@ type PopoverTriggerElement = React.ElementRef<typeof PopoverPrimitive.Trigger>;
 interface PopoverTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof PopoverPrimitive.Trigger>, 'asChild'> {}
 const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerProps>(
-  (props, forwardedRef) => <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild />
+  ({ children, ...props }, forwardedRef) => (
+    <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
+      {requireReactElement(children)}
+    </PopoverPrimitive.Trigger>
+  )
 );
 PopoverTrigger.displayName = 'PopoverTrigger';
 
@@ -44,6 +48,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
             sideOffset={8}
             collisionPadding={10}
             {...contentProps}
+            asChild={false}
             ref={forwardedRef}
             className={classNames('rt-PopperContent', 'rt-PopoverContent', className)}
           />
@@ -58,7 +63,11 @@ type PopoverCloseElement = React.ElementRef<typeof PopoverPrimitive.Close>;
 interface PopoverCloseProps
   extends Omit<PropsWithoutRefOrColor<typeof PopoverPrimitive.Close>, 'asChild'> {}
 const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
-  (props, forwardedRef) => <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild />
+  ({ children, ...props }, forwardedRef) => (
+    <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild>
+      {requireReactElement(children)}
+    </PopoverPrimitive.Close>
+  )
 );
 PopoverClose.displayName = 'PopoverClose';
 
