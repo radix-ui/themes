@@ -30,7 +30,7 @@ PopoverTrigger.displayName = 'PopoverTrigger';
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 type PopoverContentOwnProps = GetPropDefTypes<typeof popoverContentPropDefs>;
 interface PopoverContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof PopoverPrimitive.Content>, 'asChild'>,
+  extends PropsWithoutRefOrColor<typeof PopoverPrimitive.Content>,
     PopoverContentOwnProps {
   container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
 }

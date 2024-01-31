@@ -32,7 +32,7 @@ AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
 type AlertDialogContentOwnProps = GetPropDefTypes<typeof alertDialogContentPropDefs>;
 interface AlertDialogContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof AlertDialogPrimitive.Content>, 'asChild'>,
+  extends PropsWithoutRefOrColor<typeof AlertDialogPrimitive.Content>,
     AlertDialogContentOwnProps {
   container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }

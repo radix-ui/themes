@@ -27,7 +27,7 @@ DialogTrigger.displayName = 'DialogTrigger';
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 type DialogContentOwnProps = GetPropDefTypes<typeof dialogContentPropDefs>;
 interface DialogContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Content>, 'asChild'>,
+  extends PropsWithoutRefOrColor<typeof DialogPrimitive.Content>,
     DialogContentOwnProps {
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }

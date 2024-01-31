@@ -35,7 +35,7 @@ HoverCardTrigger.displayName = 'HoverCardTrigger';
 type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
 type HoverCardContentOwnProps = GetPropDefTypes<typeof hoverCardContentPropDefs>;
 interface HoverCardContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof HoverCardPrimitive.Content>, 'asChild'>,
+  extends PropsWithoutRefOrColor<typeof HoverCardPrimitive.Content>,
     HoverCardContentOwnProps {
   container?: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
 }

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { tabsListPropDefs } from './tabs.props';
+import { tabsContentPropDefs, tabsListPropDefs } from './tabs.props';
 import { extractProps, marginPropDefs } from '../helpers';
 
 import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
@@ -68,7 +68,10 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
 TabsTrigger.displayName = 'TabsTrigger';
 
 type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
-interface TabsContentProps extends PropsWithoutRefOrColor<typeof TabsPrimitive.Content> {}
+type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
+interface TabsContentProps
+  extends PropsWithoutRefOrColor<typeof TabsPrimitive.Content>,
+    TabsContentOwnProps {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
   (props, forwardedRef) => (
     <TabsPrimitive.Content
