@@ -22,7 +22,7 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
       data-radius={radius}
       {...badgeProps}
       ref={forwardedRef}
-      className={classNames('rt-reset rt-Badge', className)}
+      className={classNames('rt-reset', 'rt-Badge', className)}
     />
   );
 });

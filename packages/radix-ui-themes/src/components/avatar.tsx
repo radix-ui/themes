@@ -31,7 +31,7 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
     <AvatarRoot
       data-accent-color={color}
       data-radius={radius}
-      className={classNames('rt-reset rt-AvatarRoot', className)}
+      className={classNames('rt-reset', 'rt-AvatarRoot', className)}
       style={style}
     >
       <AvatarImpl ref={forwardedRef} {...imageProps} />
