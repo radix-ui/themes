@@ -28,6 +28,10 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rt-CalloutRoot {
+  box-sizing: border-box;
+}
+
 @breakpoints {
   .rt-CalloutRoot {
     &:where(.rt-r-size-1) {

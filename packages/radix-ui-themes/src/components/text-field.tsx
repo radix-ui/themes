@@ -113,7 +113,7 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
           spellCheck="false"
           {...inputProps}
           ref={forwardedRef}
-          className={classNames('rt-TextFieldInput', className)}
+          className={classNames('rt-reset', 'rt-TextFieldInput', className)}
         />
         <div data-accent-color={color} data-radius={radius} className="rt-TextFieldChrome" />
       </>

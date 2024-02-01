@@ -101,6 +101,7 @@
 /* surface */
 
 .rt-TableRoot:where(.rt-variant-surface) {
+  box-sizing: border-box;
   border: 1px solid var(--gray-a5);
   border-radius: var(--table-border-radius);
   background-color: var(--color-panel);

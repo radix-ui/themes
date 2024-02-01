@@ -1,7 +1,12 @@
 .rt-Link {
-  cursor: var(--cursor-link);
   color: var(--accent-a11);
   border-radius: calc(0.07em * var(--radius-factor));
+
+  /* Override the cursor on the HTML element even if rendering a <button> */
+  cursor: var(--cursor-link);
+  &:where(:disabled, [data-disabled]) {
+    cursor: var(--cursor-disabled);
+  }
 
   &:where(:focus-visible) {
     outline-color: var(--color-focus-root);

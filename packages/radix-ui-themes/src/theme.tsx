@@ -40,7 +40,7 @@ const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRe
   const isRoot = context === undefined;
   if (isRoot) {
     return (
-      <TooltipPrimitive.Provider>
+      <TooltipPrimitive.Provider delayDuration={200}>
         <DirectionProvider dir="ltr">
           <ThemeRoot {...props} ref={forwardedRef} />
         </DirectionProvider>

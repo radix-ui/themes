@@ -15,16 +15,9 @@
 }
 
 .rt-TextAreaInput {
-  appearance: none;
-  padding: 0;
-  outline: 0;
   border-radius: inherit;
-  background-color: transparent;
-  font-family: inherit;
-  -webkit-tap-highlight-color: transparent;
   resize: none;
 
-  box-sizing: border-box;
   position: relative;
   display: block;
   width: 100%;
@@ -77,6 +70,7 @@
 .rt-TextAreaChrome {
   position: absolute;
   border-radius: inherit;
+  box-sizing: border-box;
   z-index: 0;
   inset: 0;
 }
@@ -245,7 +239,7 @@
       opacity: 0.5;
     }
     &:where(:placeholder-shown) {
-      cursor: default;
+      cursor: var(--cursor-disabled);
     }
     &::selection {
       background-color: var(--gray-a5);
