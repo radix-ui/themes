@@ -173,7 +173,7 @@ ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup';
 type ContextMenuRadioItemElement = React.ElementRef<typeof ContextMenuPrimitive.RadioItem>;
 type ContextMenuRadioItemOwnProps = GetPropDefTypes<typeof contextMenuRadioItemPropDefs>;
 interface ContextMenuRadioItemProps
-  extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.RadioItem>,
+  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.RadioItem>, 'asChild'>,
     ContextMenuRadioItemOwnProps {}
 const ContextMenuRadioItem = React.forwardRef<
   ContextMenuRadioItemElement,
@@ -188,6 +188,7 @@ const ContextMenuRadioItem = React.forwardRef<
   return (
     <ContextMenuPrimitive.RadioItem
       {...itemProps}
+      asChild={false}
       ref={forwardedRef}
       data-accent-color={color}
       className={classNames(
@@ -210,7 +211,7 @@ ContextMenuRadioItem.displayName = 'ContextMenuRadioItem';
 type ContextMenuCheckboxItemElement = React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>;
 type ContextMenuCheckboxItemOwnProps = GetPropDefTypes<typeof contextMenuCheckboxItemPropDefs>;
 interface ContextMenuCheckboxItemProps
-  extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.CheckboxItem>,
+  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.CheckboxItem>, 'asChild'>,
     ContextMenuCheckboxItemOwnProps {}
 const ContextMenuCheckboxItem = React.forwardRef<
   ContextMenuCheckboxItemElement,
@@ -226,6 +227,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
   return (
     <ContextMenuPrimitive.CheckboxItem
       {...itemProps}
+      asChild={false}
       ref={forwardedRef}
       data-accent-color={color}
       className={classNames(
@@ -254,7 +256,7 @@ ContextMenuSub.displayName = 'ContextMenuSub';
 
 type ContextMenuSubTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>;
 interface ContextMenuSubTriggerProps
-  extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.SubTrigger> {}
+  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.SubTrigger>, 'asChild'> {}
 const ContextMenuSubTrigger = React.forwardRef<
   ContextMenuSubTriggerElement,
   ContextMenuSubTriggerProps
@@ -263,6 +265,7 @@ const ContextMenuSubTrigger = React.forwardRef<
   return (
     <ContextMenuPrimitive.SubTrigger
       {...subTriggerProps}
+      asChild={false}
       ref={forwardedRef}
       className={classNames(
         'rt-BaseMenuItem',
@@ -272,7 +275,7 @@ const ContextMenuSubTrigger = React.forwardRef<
         className
       )}
     >
-      <Slottable>{children}</Slottable>
+      {children}
       <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">
         <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon rt-ContextMenuSubTriggerIcon" />
       </div>

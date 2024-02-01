@@ -38,20 +38,16 @@ const baseMenuItemPropDefs = {
 };
 
 const baseMenuCheckboxItemPropDefs = {
-  asChild: asChildProp,
   color: colorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
-  asChild: typeof asChildProp;
   color: typeof colorProp;
   shortcut: PropDef<string>;
 };
 
 const baseMenuRadioItemPropDefs = {
-  asChild: asChildProp,
   color: colorProp,
 } satisfies {
-  asChild: typeof asChildProp;
   color: typeof colorProp;
 };
 
