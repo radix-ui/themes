@@ -53,7 +53,6 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
             sideOffset={8}
             collisionPadding={10}
             {...contentProps}
-            asChild={false}
             ref={forwardedRef}
             className={classNames('rt-PopperContent', 'rt-HoverCardContent', className)}
           />

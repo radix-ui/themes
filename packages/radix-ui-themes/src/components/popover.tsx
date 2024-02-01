@@ -48,7 +48,6 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
             sideOffset={8}
             collisionPadding={10}
             {...contentProps}
-            asChild={false}
             ref={forwardedRef}
             className={classNames('rt-PopperContent', 'rt-PopoverContent', className)}
           />

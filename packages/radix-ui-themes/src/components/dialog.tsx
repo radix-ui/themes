@@ -45,7 +45,6 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
               <div className="rt-BaseDialogScrollPadding rt-DialogScrollPadding">
                 <DialogPrimitive.Content
                   {...contentProps}
-                  asChild={false}
                   ref={forwardedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-DialogContent', className)}
                 />

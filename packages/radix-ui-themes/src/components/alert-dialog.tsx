@@ -50,7 +50,6 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
               <div className="rt-BaseDialogScrollPadding rt-AlertDialogScrollPadding">
                 <AlertDialogPrimitive.Content
                   {...contentProps}
-                  asChild={false}
                   ref={forwardedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-AlertDialogContent', className)}
                 />
