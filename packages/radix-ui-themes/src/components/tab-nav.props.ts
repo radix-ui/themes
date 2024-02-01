@@ -6,5 +6,5 @@ const tabNavLinkPropDefs = {
   asChild: typeof asChildProp;
 };
 
-export { tabNavLinkPropDefs };
 export { baseTabListPropDefs as tabNavPropDefs } from './base-tab-list.props';
+export { tabNavLinkPropDefs };

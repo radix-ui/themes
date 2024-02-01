@@ -12,5 +12,5 @@ const tabsContentPropDefs = {
   asChild: typeof asChildProp;
 };
 
-export { tabsRootPropDefs, tabsContentPropDefs };
 export { baseTabListPropDefs as tabsListPropDefs } from './base-tab-list.props';
+export { tabsRootPropDefs, tabsContentPropDefs };
