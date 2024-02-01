@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import { hoverCardContentPropDefs } from './hover-card.props';
-import { extractProps } from '../helpers';
+import { extractProps, requireReactElement } from '../helpers';
 import { Theme } from '../theme';
 
 import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
@@ -19,13 +19,15 @@ type HoverCardTriggerElement = React.ElementRef<typeof HoverCardPrimitive.Trigge
 interface HoverCardTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof HoverCardPrimitive.Trigger>, 'asChild'> {}
 const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTriggerProps>(
-  (props, forwardedRef) => (
+  ({ children, className, ...props }, forwardedRef) => (
     <HoverCardPrimitive.Trigger
       ref={forwardedRef}
-      className={classNames('rt-HoverCardTrigger', props.className)}
+      className={classNames('rt-HoverCardTrigger', className)}
       {...props}
       asChild
-    />
+    >
+      {requireReactElement(children)}
+    </HoverCardPrimitive.Trigger>
   )
 );
 HoverCardTrigger.displayName = 'HoverCardTrigger';
@@ -33,7 +35,7 @@ HoverCardTrigger.displayName = 'HoverCardTrigger';
 type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
 type HoverCardContentOwnProps = GetPropDefTypes<typeof hoverCardContentPropDefs>;
 interface HoverCardContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof HoverCardPrimitive.Content>, 'asChild'>,
+  extends PropsWithoutRefOrColor<typeof HoverCardPrimitive.Content>,
     HoverCardContentOwnProps {
   container?: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
 }

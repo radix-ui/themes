@@ -3,10 +3,14 @@
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
 .rt-reset:where(a) {
-  cursor: var(--cursor-link);
+  cursor: auto;
   text-decoration: none;
   color: inherit;
   outline: none;
+}
+
+.rt-reset:where(a[href]) {
+  cursor: var(--cursor-link);
 }
 
 .rt-reset:where(button) {

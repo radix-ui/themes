@@ -11,7 +11,7 @@ import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../he
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;
 interface SliderProps
-  extends Omit<PropsWithoutRefOrColor<typeof SliderPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof SliderPrimitive.Root>, 'asChild' | 'children'>,
     MarginProps,
     SliderOwnProps {}
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {
@@ -26,6 +26,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
       data-radius={radius}
       ref={forwardedRef}
       {...sliderProps}
+      asChild={false}
       className={classNames('rt-SliderRoot', className)}
     >
       <SliderPrimitive.Track className="rt-SliderTrack">

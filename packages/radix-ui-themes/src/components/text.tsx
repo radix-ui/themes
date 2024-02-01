@@ -14,11 +14,11 @@ import type {
 type TextElement = React.ElementRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
 type CommonTextProps = NiceIntersection<MarginProps, TextOwnProps>;
-type TextAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'span'>;
-type TextSpanProps = { as?: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
-type TextDivProps = { as: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
-type TextLabelProps = { as: 'label'; asChild?: never } & PropsWithoutRefOrColor<'label'>;
-type TextPProps = { as: 'p'; asChild?: never } & PropsWithoutRefOrColor<'p'>;
+type TextAsChildProps = { asChild: true; as?: never } & PropsWithoutRefOrColor<'span'>;
+type TextSpanProps = { as?: 'span'; asChild?: false } & PropsWithoutRefOrColor<'span'>;
+type TextDivProps = { as: 'div'; asChild?: false } & PropsWithoutRefOrColor<'div'>;
+type TextLabelProps = { as: 'label'; asChild?: false } & PropsWithoutRefOrColor<'label'>;
+type TextPProps = { as: 'p'; asChild?: false } & PropsWithoutRefOrColor<'p'>;
 type TextProps = CommonTextProps &
   (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
 
@@ -26,7 +26,7 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const {
     children,
     className,
-    asChild = false,
+    asChild,
     as: Tag = 'span',
     color,
     ...textProps

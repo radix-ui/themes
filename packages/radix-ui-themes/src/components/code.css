@@ -1,3 +1,6 @@
+/* stylelint-disable selector-max-type */
+/* Disable selector-max-type rule to target individual element types. */
+
 .rt-Code {
   --code-variant-font-size-adjust: calc(var(--code-font-size-adjust) * 0.95);
   box-sizing: border-box;
@@ -110,7 +113,8 @@
     color: var(--accent-12);
   }
 
-  :where(.rt-Link) & {
+  :where(.rt-Link) &,
+  &:where(a, button) {
     /* Create a new stacking context (otherwise, `filter` may do it on hover) */
     isolation: isolate;
     @media (hover: hover) {
@@ -137,7 +141,8 @@
     color: var(--accent-12);
   }
 
-  :where(.rt-Link) & {
+  :where(.rt-Link) &,
+  &:where(a, button) {
     isolation: isolate;
     @media (hover: hover) {
       &:where(:hover) {
@@ -160,7 +165,8 @@
     color: var(--accent-12);
   }
 
-  :where(.rt-Link) & {
+  :where(.rt-Link) &,
+  &:where(a, button) {
     isolation: isolate;
     @media (hover: hover) {
       &:where(:hover) {

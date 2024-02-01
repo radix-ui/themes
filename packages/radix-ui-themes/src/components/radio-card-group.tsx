@@ -38,7 +38,7 @@ RadioCardGroupRoot.displayName = 'RadioCardGroupRoot';
 
 type RadioCardGroupItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioCardGroupItemProps
-  extends PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Item>,
+  extends Omit<PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Item>, 'asChild'>,
     MarginProps {}
 const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCardGroupItemProps>(
   ({ className, ...props }, forwardedRef) => (
@@ -46,6 +46,7 @@ const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCard
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-RadioCardGroupItem', className)}
       {...props}
+      asChild={false}
     />
   )
 );

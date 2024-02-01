@@ -1,5 +1,6 @@
 import {
   alignProp,
+  asChildProp,
   highContrastProp,
   inheritedColorProp,
   textWrapProp,
@@ -9,10 +10,13 @@ import {
 } from '../helpers';
 import type { PropDef } from '../helpers';
 
+const as = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const weights = weightProp.values;
 
 const headingPropDefs = {
+  as: { type: 'enum', values: as, default: 'h1' },
+  asChild: asChildProp,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -28,6 +32,8 @@ const headingPropDefs = {
   color: inheritedColorProp,
   highContrast: highContrastProp,
 } satisfies {
+  as: PropDef<(typeof as)[number]>;
+  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   weight: PropDef<(typeof weights)[number]>;
   align: typeof alignProp;

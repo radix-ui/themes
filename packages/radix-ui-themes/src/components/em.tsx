@@ -1,13 +1,19 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 
-import type { PropsWithoutRefOrColor } from '../helpers';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import { emPropDefs } from './em.props';
 
 type EmElement = React.ElementRef<'em'>;
-interface EmProps extends PropsWithoutRefOrColor<'em'> {}
-const Em = React.forwardRef<EmElement, EmProps>((props, forwardedRef) => (
-  <em {...props} ref={forwardedRef} className={classNames('rt-Em', props.className)} />
-));
+type EmOwnProps = GetPropDefTypes<typeof emPropDefs>;
+interface EmProps extends PropsWithoutRefOrColor<'em'>, EmOwnProps {}
+const Em = React.forwardRef<EmElement, EmProps>(
+  ({ asChild, className, ...props }, forwardedRef) => {
+    const Comp = asChild ? Slot : 'em';
+    return <Comp {...props} ref={forwardedRef} className={classNames('rt-Em', className)} />;
+  }
+);
 Em.displayName = 'Em';
 
 export { Em };

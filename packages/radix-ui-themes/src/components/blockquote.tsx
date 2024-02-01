@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { Text } from './text';
 import { blockquotePropDefs } from './blockquote.props';
 
@@ -12,7 +13,8 @@ interface BlockquoteProps
     MarginProps,
     BlockQuoteOwnProps {}
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {
-  const { children, className, ...blockquoteProps } = props;
+  const { asChild, children, className, ...blockquoteProps } = props;
+  const Comp = asChild ? Slot : 'blockquote';
   return (
     <Text
       asChild
@@ -20,7 +22,7 @@ const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, 
       ref={forwardedRef}
       className={classNames('rt-Blockquote', className)}
     >
-      <blockquote>{children}</blockquote>
+      <Comp>{children}</Comp>
     </Text>
   );
 });

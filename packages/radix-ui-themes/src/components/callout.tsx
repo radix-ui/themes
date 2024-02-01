@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { Text } from './text';
 import { calloutRootPropDefs } from './callout.props';
 import {
@@ -15,7 +16,7 @@ import type {
   PropsWithoutRefOrColor,
   MarginProps,
   GetPropDefTypes,
-  ExtractPropsForTag,
+  ComponentPropsAs,
 } from '../helpers';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
@@ -34,13 +35,14 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
       size = calloutRootPropDefs.size.default,
       highContrast = calloutRootPropDefs.highContrast.default,
     } = props;
-    const { children, className, color, ...rootProps } = extractProps(
+    const { asChild, children, className, color, ...rootProps } = extractProps(
       props,
       calloutRootPropDefs,
       marginPropDefs
     );
+    const Comp = asChild ? Slot : 'div';
     return (
-      <div
+      <Comp
         data-accent-color={color}
         {...rootProps}
         className={classNames('rt-CalloutRoot', className)}
@@ -51,7 +53,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         >
           {children}
         </CalloutContext.Provider>
-      </div>
+      </Comp>
     );
   }
 );
@@ -60,7 +62,7 @@ CalloutRoot.displayName = 'CalloutRoot';
 type CalloutIconElement = React.ElementRef<'div'>;
 interface CalloutIconProps extends PropsWithoutRefOrColor<'div'> {}
 const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
-  (props, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);
     return (
       <Text
@@ -69,11 +71,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
         size={mapResponsiveProp(size, mapCalloutSizeToTextSize)}
         highContrast={highContrast}
       >
-        <div
-          {...props}
-          className={classNames('rt-CalloutIcon', props.className)}
-          ref={forwardedRef}
-        />
+        <div {...props} className={classNames('rt-CalloutIcon', className)} ref={forwardedRef} />
       </Text>
     );
   }
@@ -81,9 +79,9 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
 CalloutIcon.displayName = 'CalloutIcon';
 
 type CalloutTextElement = React.ElementRef<'p'>;
-type CalloutTextProps = ExtractPropsForTag<typeof Text, 'p'>;
+type CalloutTextProps = ComponentPropsAs<typeof Text, 'p'>;
 const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
-  (props, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);
     return (
       <Text
@@ -92,8 +90,9 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         color={color}
         highContrast={highContrast}
         {...props}
+        asChild={false}
         ref={forwardedRef}
-        className={classNames('rt-CalloutText', props.className)}
+        className={classNames('rt-CalloutText', className)}
       />
     );
   }

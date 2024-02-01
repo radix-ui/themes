@@ -14,17 +14,17 @@ import type {
 type HeadingElement = React.ElementRef<'h1'>;
 type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;
 type CommonHeadingProps = NiceIntersection<MarginProps, HeadingOwnProps>;
-type HeadingAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'h1'>;
+type HeadingAsChildProps = { asChild: true; as?: never } & PropsWithoutRefOrColor<'h1'>;
 type HeadingAsProps = {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  asChild?: never;
+  asChild?: false;
 } & PropsWithoutRefOrColor<'h1'>;
 type HeadingProps = CommonHeadingProps & (HeadingAsChildProps | HeadingAsProps);
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const {
     children,
     className,
-    asChild = false,
+    asChild,
     as: Tag = 'h1',
     color,
     ...headingProps

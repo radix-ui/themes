@@ -12,7 +12,7 @@ import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../he
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;
 interface CheckboxProps
-  extends Omit<PropsWithoutRefOrColor<typeof CheckboxPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof CheckboxPrimitive.Root>, 'asChild' | 'children'>,
     MarginProps,
     CheckboxOwnProps {}
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
@@ -25,6 +25,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     <CheckboxPrimitive.Root
       data-accent-color={color}
       {...checkboxProps}
+      asChild={false}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-CheckboxRoot', className)}
     >

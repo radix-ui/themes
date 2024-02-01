@@ -9,9 +9,9 @@ import { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } fro
 type GridElement = React.ElementRef<'div'>;
 type GridOwnProps = GetPropDefTypes<typeof gridPropDefs>;
 interface CommonGridProps extends MarginProps, LayoutProps, GridOwnProps {}
-type GridAsChildProps = { asChild?: boolean; as?: never } & PropsWithoutRefOrColor<'div'>;
-type GridDivProps = { as?: 'div'; asChild?: never } & PropsWithoutRefOrColor<'div'>;
-type GridSpanProps = { as: 'span'; asChild?: never } & PropsWithoutRefOrColor<'span'>;
+type GridAsChildProps = { asChild?: true; as?: never } & PropsWithoutRefOrColor<'div'>;
+type GridDivProps = { as?: 'div'; asChild?: false } & PropsWithoutRefOrColor<'div'>;
+type GridSpanProps = { as: 'span'; asChild?: false } & PropsWithoutRefOrColor<'span'>;
 type GridProps = CommonGridProps & (GridAsChildProps | GridSpanProps | GridDivProps);
 
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {

@@ -11,7 +11,7 @@ import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../he
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 type SwitchOwnProps = GetPropDefTypes<typeof switchPropDefs>;
 interface SwitchProps
-  extends Omit<PropsWithoutRefOrColor<typeof SwitchPrimitive.Root>, 'children'>,
+  extends Omit<PropsWithoutRefOrColor<typeof SwitchPrimitive.Root>, 'asChild' | 'children'>,
     MarginProps,
     SwitchOwnProps {}
 const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef) => {
@@ -25,6 +25,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
       data-accent-color={color}
       data-radius={radius}
       {...switchProps}
+      asChild={false}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-SwitchRoot', className)}
     >

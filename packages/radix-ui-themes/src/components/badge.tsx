@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { badgePropDefs } from './badge.props';
 import { extractProps, marginPropDefs } from '../helpers';
 
@@ -9,18 +10,19 @@ type BadgeElement = React.ElementRef<'span'>;
 type BadgeOwnProps = GetPropDefTypes<typeof badgePropDefs>;
 interface BadgeProps extends PropsWithoutRefOrColor<'span'>, MarginProps, BadgeOwnProps {}
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
-  const { className, color, radius, ...badgeProps } = extractProps(
+  const { asChild, className, color, radius, ...badgeProps } = extractProps(
     props,
     badgePropDefs,
     marginPropDefs
   );
+  const Comp = asChild ? Slot : 'span';
   return (
-    <span
+    <Comp
       data-accent-color={color}
       data-radius={radius}
       {...badgeProps}
       ref={forwardedRef}
-      className={classNames('rt-Badge', className)}
+      className={classNames('rt-reset', 'rt-Badge', className)}
     />
   );
 });

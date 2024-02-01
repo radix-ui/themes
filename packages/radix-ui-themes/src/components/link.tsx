@@ -12,11 +12,9 @@ import {
 
 type LinkElement = React.ElementRef<'a'>;
 type LinkOwnProps = GetPropDefTypes<typeof linkPropDefs>;
-interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps, LinkOwnProps {
-  asChild?: boolean;
-}
+interface LinkProps extends PropsWithoutRefOrColor<'a'>, MarginProps, LinkOwnProps {}
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
-  const { children, className, asChild = false, ...linkProps } = extractProps(props, linkPropDefs);
+  const { children, className, asChild, ...linkProps } = extractProps(props, linkPropDefs);
   return (
     <Text
       {...linkProps}

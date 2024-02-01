@@ -1,7 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import { containerPropDefs } from './container.props';
-import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import {
+  deprecatedLayoutPropDefs,
+  extractProps,
+  getRoot,
+  layoutPropDefs,
+  marginPropDefs,
+} from '../helpers';
 
 import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
@@ -13,17 +20,33 @@ interface ContainerProps
     LayoutProps,
     ContainerOwnProps {}
 const Container = React.forwardRef<ContainerElement, ContainerProps>((props, forwardedRef) => {
-  const { children, className, ...containerProps } = extractProps(
+  const {
+    asChild,
+    children: childrenProp,
+    className,
+    ...containerProps
+  } = extractProps(
     props,
     containerPropDefs,
     layoutPropDefs,
     deprecatedLayoutPropDefs,
     marginPropDefs
   );
+
+  const { Root: ContainerRoot, children } = getRoot({
+    asChild,
+    children: childrenProp,
+    parent: asChild ? Slot : 'div',
+  });
+
   return (
-    <div {...containerProps} ref={forwardedRef} className={classNames('rt-Container', className)}>
+    <ContainerRoot
+      {...containerProps}
+      ref={forwardedRef}
+      className={classNames('rt-Container', className)}
+    >
       <div className="rt-ContainerInner">{children}</div>
-    </div>
+    </ContainerRoot>
   );
 });
 Container.displayName = 'Container';

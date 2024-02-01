@@ -26,10 +26,13 @@ export * from './text.props';
 export { Code } from './code';
 export * from './code.props';
 export { Em } from './em';
+export * from './em.props';
 export { Kbd } from './kbd';
 export * from './kbd.props';
 export { Quote } from './quote';
+export * from './quote.props';
 export { Strong } from './strong';
+export * from './strong.props';
 
 // FORMS
 //------------------------------------------------------------------------------
