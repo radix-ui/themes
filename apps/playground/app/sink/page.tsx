@@ -5129,12 +5129,8 @@ export default function Sink() {
                                 variant={variant}
                               >
                                 <RadioCardGroupItem value="0">
-                                  <Flex align="center" gap="2">
-                                    <Box asChild flexShrink="0">
-                                      <CodeIcon />
-                                    </Box>
-                                    <Text truncate>Node.js</Text>
-                                  </Flex>
+                                  <CodeIcon />
+                                  <Text truncate>Node.js</Text>
                                 </RadioCardGroupItem>
                                 <RadioCardGroupItem value="1" disabled>
                                   Ruby
@@ -5261,12 +5257,8 @@ export default function Sink() {
                                 variant={variant}
                               >
                                 <CheckboxCardGroupItem value="0">
-                                  <Flex align="center" gap="2">
-                                    <Box asChild flexShrink="0">
-                                      <CodeIcon />
-                                    </Box>
-                                    <Text truncate>Node.js</Text>
-                                  </Flex>
+                                  <CodeIcon />
+                                  <Text truncate>Node.js</Text>
                                 </CheckboxCardGroupItem>
                                 <CheckboxCardGroupItem value="1" disabled>
                                   Ruby

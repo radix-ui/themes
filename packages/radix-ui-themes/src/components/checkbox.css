@@ -4,3 +4,8 @@
   outline: 2px solid var(--color-focus-root);
   outline-offset: 2px;
 }
+
+.rt-Checkbox:where(:disabled)::before {
+  background-color: var(--gray-a3);
+  cursor: var(--cursor-disabled);
+}

@@ -41,15 +41,13 @@ interface RadioCardGroupItemProps
   extends Omit<PropsWithoutRefOrColor<typeof RadioGroupPrimitive.Item>, 'asChild'>,
     MarginProps {}
 const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCardGroupItemProps>(
-  ({ className, children, ...props }, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <RadioGroupPrimitive.Item
       {...props}
       asChild={false}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-RadioCardGroupItem', className)}
-    >
-      <div className="rt-RadioCardGroupItemInner">{children}</div>
-    </RadioGroupPrimitive.Item>
+    />
   )
 );
 RadioCardGroupItem.displayName = 'RadioCardGroupItem';

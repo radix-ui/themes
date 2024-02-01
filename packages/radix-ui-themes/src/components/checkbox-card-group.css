@@ -1,24 +1,44 @@
 @import './base-checkbox.css';
 
 .rt-CheckboxCardGroupRoot {
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
   user-select: none;
   cursor: default;
 }
 
 .rt-CheckboxCardGroupItem {
+  min-width: 0;
+
   display: flex;
   align-items: center;
-  min-width: 0;
+  gap: var(--checkbox-card-group-item-gap);
+  padding: var(--checkbox-card-group-item-padding);
+  border-radius: var(--checkbox-card-group-item-radius);
+
+  /* cursors */
+  cursor: var(--cursor-button);
+  &:where(:has(:disabled)) {
+    cursor: var(--cursor-disabled);
+  }
 }
 
 .rt-CheckboxCardGroupItemInner {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  min-width: 0;
 
-  & * {
+  display: flex;
+  align-items: center;
+  gap: var(--checkbox-card-group-item-gap);
+
+  & > * {
+    min-width: 0;
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
+  }
+
+  & > svg {
+    /* Don’t squish icons */
+    flex-shrink: 0;
   }
 }
 
@@ -32,17 +52,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-CheckboxCardGroupRoot {
-  line-height: var(--line-height);
-  letter-spacing: var(--letter-spacing);
-}
-
-.rt-CheckboxCardGroupItem {
-  padding: var(--radio-card-group-item-padding);
-  border-radius: var(--radio-card-group-item-radius);
-  gap: var(--radio-card-group-item-gap);
-}
-
 @breakpoints {
   .rt-CheckboxCardGroupRoot {
     /* 40px height for the card with one line of text */
@@ -50,27 +59,27 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding: calc(var(--space-3) / 1.2) var(--space-3);
-      --radio-card-group-item-radius: var(--radius-3);
-      --radio-card-group-item-gap: var(--space-2);
+      --checkbox-card-group-item-padding: calc(var(--space-3) / 1.2) var(--space-3);
+      --checkbox-card-group-item-radius: var(--radius-3);
+      --checkbox-card-group-item-gap: var(--space-2);
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding: calc(var(--space-4) * 0.875) var(--space-4);
-      --radio-card-group-item-radius: var(--radius-3);
-      --radio-card-group-item-gap: var(--space-3);
+      --checkbox-card-group-item-padding: calc(var(--space-4) * 0.875) var(--space-4);
+      --checkbox-card-group-item-radius: var(--radius-3);
+      --checkbox-card-group-item-gap: var(--space-3);
     }
     /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --radio-card-group-item-padding: calc(var(--space-5) / 1.2) var(--space-5);
-      --radio-card-group-item-radius: var(--radius-4);
-      --radio-card-group-item-gap: var(--space-4);
+      --checkbox-card-group-item-padding: calc(var(--space-5) / 1.2) var(--space-5);
+      --checkbox-card-group-item-radius: var(--radius-4);
+      --checkbox-card-group-item-gap: var(--space-4);
     }
   }
 }
@@ -107,13 +116,14 @@
       }
     }
 
-    &:where(:has(:disabled)) > * {
+    &:where(:has(:disabled)) {
+      background-color: var(--gray-a2);
       color: var(--gray-a9);
     }
 
-    &:has(:focus-visible)::before {
+    &:has(:focus-visible) {
       outline: 2px solid var(--color-focus-root);
-      outline-offset: 2px;
+      outline-offset: -2px;
     }
   }
 }
@@ -123,8 +133,7 @@
 .rt-CheckboxCardGroupRoot:where(.rt-variant-classic) {
   :where(.rt-CheckboxCardGroupItem) {
     background-color: var(--color-surface);
-    /* A transparent shadow to transition smoothly to `:active` */
-    box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
+    box-shadow: var(--shadow-2);
     transition: box-shadow 120ms;
 
     @media (hover: hover) {
@@ -134,18 +143,14 @@
       }
     }
 
-    &:where(:not(:has(:disabled)):active) {
-      transition-duration: 40ms;
-      box-shadow: 0 0 0 1px var(--gray-a5), var(--shadow-2);
-    }
-
-    &:where(:has(:disabled)) > * {
+    &:where(:has(:disabled)) {
+      background-color: var(--gray-a2);
       color: var(--gray-a9);
     }
 
-    &:has(:focus-visible)::before {
+    &:has(:focus-visible) {
       outline: 2px solid var(--color-focus-root);
-      outline-offset: 3px;
+      outline-offset: -1px;
     }
   }
 }

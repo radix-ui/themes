@@ -1,22 +1,35 @@
 .rt-RadioCardGroupRoot {
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
   user-select: none;
   cursor: default;
 }
 
 .rt-RadioCardGroupItem {
+  min-width: 0;
+
   display: flex;
   align-items: center;
-  min-width: 0;
-}
+  justify-content: center;
+  gap: var(--radio-card-group-item-gap);
+  box-sizing: border-box;
+  padding: var(--radio-card-group-item-padding);
+  border-radius: var(--radio-card-group-item-radius);
 
-.rt-RadioCardGroupItemInner {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  & * {
+  & > * {
+    min-width: 0;
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
+  }
+
+  & > svg {
+    /* Don’t squish icons */
+    flex-shrink: 0;
+  }
+
+  /* cursors */
+  &:where(:disabled) {
+    cursor: var(--cursor-disabled);
   }
 }
 
@@ -25,18 +38,6 @@
  * SIZES                                                                                           *
  *                                                                                                 *
  ***************************************************************************************************/
-
-.rt-RadioCardGroupRoot {
-  line-height: var(--line-height);
-  letter-spacing: var(--letter-spacing);
-}
-
-.rt-RadioCardGroupItem {
-  box-sizing: border-box;
-  padding: var(--radio-card-group-item-padding);
-  border-radius: var(--radio-card-group-item-radius);
-  gap: var(--radio-card-group-item-gap);
-}
 
 @breakpoints {
   .rt-RadioCardGroupRoot {
@@ -103,10 +104,8 @@
     }
 
     &:where(:disabled) {
-      &,
-      & > * {
-        color: var(--gray-a9);
-      }
+      background-color: var(--gray-a2);
+      color: var(--gray-a9);
     }
 
     &:where([data-state='checked']) {
@@ -126,8 +125,7 @@
 .rt-RadioCardGroupRoot:where(.rt-variant-classic) {
   :where(.rt-RadioCardGroupItem) {
     background-color: var(--color-surface);
-    /* A transparent shadow to transition smoothly to `:active` */
-    box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
+    box-shadow: var(--shadow-2);
     transition: box-shadow 120ms;
 
     @media (hover: hover) {
@@ -137,16 +135,9 @@
       }
     }
 
-    &:where(:not(:disabled):active) {
-      transition-duration: 40ms;
-      box-shadow: 0 0 0 1px var(--gray-a5), var(--shadow-2);
-    }
-
     &:where(:disabled) {
-      &,
-      & > * {
-        color: var(--gray-a9);
-      }
+      background-color: var(--gray-a2);
+      color: var(--gray-a9);
     }
 
     &:where([data-state='checked']) {
