@@ -32,11 +32,10 @@ interface CalloutRootProps
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
   (props, forwardedRef) => {
     const {
-      asChild,
       size = calloutRootPropDefs.size.default,
       highContrast = calloutRootPropDefs.highContrast.default,
     } = props;
-    const { children, className, color, ...rootProps } = extractProps(
+    const { asChild, children, className, color, ...rootProps } = extractProps(
       props,
       calloutRootPropDefs,
       marginPropDefs
