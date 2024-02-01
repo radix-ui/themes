@@ -16,7 +16,7 @@ import type {
   PropsWithoutRefOrColor,
   MarginProps,
   GetPropDefTypes,
-  ExtractPropsForTag,
+  ComponentPropsAs,
 } from '../helpers';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
@@ -79,7 +79,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
 CalloutIcon.displayName = 'CalloutIcon';
 
 type CalloutTextElement = React.ElementRef<'p'>;
-type CalloutTextProps = ExtractPropsForTag<typeof Text, 'p'>;
+type CalloutTextProps = ComponentPropsAs<typeof Text, 'p'>;
 const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
   ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);

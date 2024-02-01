@@ -9,7 +9,7 @@ import { Heading } from './heading';
 import { Text } from './text';
 import { Theme } from '../theme';
 
-import type { ExtractPropsForTag, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { ComponentPropsAs, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
 
 interface AlertDialogRootProps extends PropsWithoutRefOrColor<typeof AlertDialogPrimitive.Root> {}
 const AlertDialogRoot: React.FC<AlertDialogRootProps> = (props) => (
@@ -75,7 +75,7 @@ const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTi
 AlertDialogTitle.displayName = 'AlertDialogTitle';
 
 type AlertDialogDescriptionElement = HTMLParagraphElement;
-type AlertDialogDescriptionProps = ExtractPropsForTag<typeof Text, 'p'>;
+type AlertDialogDescriptionProps = ComponentPropsAs<typeof Text, 'p'>;
 const AlertDialogDescription = React.forwardRef<
   AlertDialogDescriptionElement,
   AlertDialogDescriptionProps
