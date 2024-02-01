@@ -20,7 +20,11 @@ type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
 interface DialogTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Trigger>, 'asChild'> {}
 const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>(
-  (props, forwardedRef) => <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild />
+  ({ children, ...props }, forwardedRef) => (
+    <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
+      {requireReactElement(children)}
+    </DialogPrimitive.Trigger>
+  )
 );
 DialogTrigger.displayName = 'DialogTrigger';
 
