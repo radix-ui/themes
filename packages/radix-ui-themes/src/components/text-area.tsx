@@ -24,7 +24,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
       className={classNames('rt-TextAreaRoot', className)}
       style={style}
     >
-      <textarea className="rt-TextAreaInput" ref={forwardedRef} {...textAreaProps} />
+      <textarea className="rt-reset rt-TextAreaInput" ref={forwardedRef} {...textAreaProps} />
       <div className="rt-TextAreaChrome" />
     </div>
   );

@@ -18,6 +18,8 @@
 }
 
 .rt-ScrollAreaViewport {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 
@@ -31,6 +33,12 @@
     outline: 2px solid var(--color-focus-root);
     outline-offset: -2px;
   }
+}
+
+.rt-ScrollAreaViewport > * {
+  display: block !important;
+  width: fit-content;
+  flex-grow: 1;
 }
 
 .rt-ScrollAreaScrollbar {

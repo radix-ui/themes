@@ -3,6 +3,7 @@ import type { PropDef } from '../helpers';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;
+const alignValues = ['left', 'center', 'right'] as const;
 
 const containerPropDefs = {
   asChild: asChildProp,
@@ -21,14 +22,27 @@ const containerPropDefs = {
     default: undefined,
     responsive: true,
   },
+  align: {
+    type: 'enum',
+    className: 'rt-r-ai',
+    values: alignValues,
+    parseValue: parseAlignValue,
+    default: undefined,
+    responsive: true,
+  },
 } satisfies {
   asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
+  align: PropDef<(typeof alignValues)[number]>;
 };
 
 function parseDisplayValue(value: string) {
   return value === 'initial' ? 'flex' : value;
+}
+
+function parseAlignValue(value: string) {
+  return value === 'left' ? 'start' : value === 'right' ? 'end' : value;
 }
 
 export { containerPropDefs };

@@ -36,10 +36,10 @@
   --inset-border-width: var(--card-border-width);
   --inset-border-radius: var(--card-border-radius);
   position: relative;
-  box-sizing: border-box;
   border-radius: inherit;
   overflow: hidden;
   padding: var(--card-padding);
+  box-sizing: border-box;
 
   /*
    * Some layout acrobatics with `var(--card-border-width)` because we want:
