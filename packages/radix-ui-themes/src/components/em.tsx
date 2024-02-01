@@ -8,10 +8,12 @@ import { emPropDefs } from './em.props';
 type EmElement = React.ElementRef<'em'>;
 type EmOwnProps = GetPropDefTypes<typeof emPropDefs>;
 interface EmProps extends PropsWithoutRefOrColor<'em'>, EmOwnProps {}
-const Em = React.forwardRef<EmElement, EmProps>(({ asChild, ...props }, forwardedRef) => {
-  const Comp = asChild ? Slot : 'em';
-  return <Comp {...props} ref={forwardedRef} className={classNames('rt-Em', props.className)} />;
-});
+const Em = React.forwardRef<EmElement, EmProps>(
+  ({ asChild, className, ...props }, forwardedRef) => {
+    const Comp = asChild ? Slot : 'em';
+    return <Comp {...props} ref={forwardedRef} className={classNames('rt-Em', className)} />;
+  }
+);
 Em.displayName = 'Em';
 
 export { Em };

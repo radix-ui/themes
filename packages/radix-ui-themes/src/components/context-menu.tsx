@@ -99,12 +99,12 @@ type ContextMenuLabelElement = React.ElementRef<typeof ContextMenuPrimitive.Labe
 interface ContextMenuLabelProps
   extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Label>, 'asChild'> {}
 const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLabelProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Label
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-BaseMenuLabel', 'rt-ContextMenuLabel', props.className)}
+      className={classNames('rt-BaseMenuLabel', 'rt-ContextMenuLabel', className)}
     />
   )
 );
@@ -143,12 +143,12 @@ type ContextMenuGroupElement = React.ElementRef<typeof ContextMenuPrimitive.Grou
 interface ContextMenuGroupProps
   extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Group>, 'asChild'> {}
 const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGroupProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Group
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-BaseMenuGroup', 'rt-ContextMenuGroup', props.className)}
+      className={classNames('rt-BaseMenuGroup', 'rt-ContextMenuGroup', className)}
     />
   )
 );
@@ -160,12 +160,12 @@ interface ContextMenuRadioGroupProps
 const ContextMenuRadioGroup = React.forwardRef<
   ContextMenuRadioGroupElement,
   ContextMenuRadioGroupProps
->((props, forwardedRef) => (
+>(({ className, ...props }, forwardedRef) => (
   <ContextMenuPrimitive.RadioGroup
     {...props}
     asChild={false}
     ref={forwardedRef}
-    className={classNames('rt-BaseMenuRadioGroup', 'rt-ContextMenuRadioGroup', props.className)}
+    className={classNames('rt-BaseMenuRadioGroup', 'rt-ContextMenuRadioGroup', className)}
   />
 ));
 ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup';
@@ -334,12 +334,12 @@ interface ContextMenuSeparatorProps
 const ContextMenuSeparator = React.forwardRef<
   ContextMenuSeparatorElement,
   ContextMenuSeparatorProps
->((props, forwardedRef) => (
+>(({ className, ...props }, forwardedRef) => (
   <ContextMenuPrimitive.Separator
     {...props}
     asChild={false}
     ref={forwardedRef}
-    className={classNames('rt-BaseMenuSeparator', 'rt-ContextMenuSeparator', props.className)}
+    className={classNames('rt-BaseMenuSeparator', 'rt-ContextMenuSeparator', className)}
   />
 ));
 ContextMenuSeparator.displayName = 'ContextMenuSeparator';

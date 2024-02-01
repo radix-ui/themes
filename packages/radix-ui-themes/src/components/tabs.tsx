@@ -74,11 +74,11 @@ interface TabsContentProps
   extends PropsWithoutRefOrColor<typeof TabsPrimitive.Content>,
     TabsContentOwnProps {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <TabsPrimitive.Content
       {...props}
       ref={forwardedRef}
-      className={classNames('rt-TabsContent', props.className)}
+      className={classNames('rt-TabsContent', className)}
     />
   )
 );

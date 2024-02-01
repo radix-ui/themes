@@ -19,10 +19,10 @@ type HoverCardTriggerElement = React.ElementRef<typeof HoverCardPrimitive.Trigge
 interface HoverCardTriggerProps
   extends Omit<PropsWithoutRefOrColor<typeof HoverCardPrimitive.Trigger>, 'asChild'> {}
 const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTriggerProps>(
-  ({ children, ...props }, forwardedRef) => (
+  ({ children, className, ...props }, forwardedRef) => (
     <HoverCardPrimitive.Trigger
       ref={forwardedRef}
-      className={classNames('rt-HoverCardTrigger', props.className)}
+      className={classNames('rt-HoverCardTrigger', className)}
       {...props}
       asChild
     >

@@ -9,11 +9,9 @@ type StrongElement = React.ElementRef<'strong'>;
 type StrongOwnProps = GetPropDefTypes<typeof strongPropDefs>;
 interface StrongProps extends PropsWithoutRefOrColor<'strong'>, StrongOwnProps {}
 const Strong = React.forwardRef<StrongElement, StrongProps>(
-  ({ asChild, ...props }, forwardedRef) => {
+  ({ asChild, className, ...props }, forwardedRef) => {
     const Comp = asChild ? Slot : 'strong';
-    return (
-      <Comp {...props} ref={forwardedRef} className={classNames('rt-Strong', props.className)} />
-    );
+    return <Comp {...props} ref={forwardedRef} className={classNames('rt-Strong', className)} />;
   }
 );
 Strong.displayName = 'Strong';

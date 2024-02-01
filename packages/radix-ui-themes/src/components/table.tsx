@@ -34,21 +34,19 @@ TableRoot.displayName = 'Table';
 type TableHeaderElement = React.ElementRef<'thead'>;
 interface TableHeaderProps extends PropsWithoutRefOrColor<'thead'> {}
 const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
-  (props, forwardedRef) => (
-    <thead
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-TableHeader', props.className)}
-    />
+  ({ className, ...props }, forwardedRef) => (
+    <thead {...props} ref={forwardedRef} className={classNames('rt-TableHeader', className)} />
   )
 );
 TableHeader.displayName = 'TableHeader';
 
 type TableBodyElement = React.ElementRef<'tbody'>;
 interface TableBodyProps extends PropsWithoutRefOrColor<'tbody'> {}
-const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>((props, forwardedRef) => (
-  <tbody {...props} ref={forwardedRef} className={classNames('rt-TableBody', props.className)} />
-));
+const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>(
+  ({ className, ...props }, forwardedRef) => (
+    <tbody {...props} ref={forwardedRef} className={classNames('rt-TableBody', className)} />
+  )
+);
 TableBody.displayName = 'TableBody';
 
 type TableRowElement = React.ElementRef<'tr'>;
@@ -93,13 +91,13 @@ interface TableColumnHeaderCellProps
 const TableColumnHeaderCell = React.forwardRef<
   TableColumnHeaderCellElement,
   TableColumnHeaderCellProps
->((props, forwardedRef) => (
+>(({ className, ...props }, forwardedRef) => (
   <TableCellImpl
     scope="col"
     {...props}
     tag="th"
     ref={forwardedRef}
-    className={classNames('rt-TableColumnHeaderCell', props.className)}
+    className={classNames('rt-TableColumnHeaderCell', className)}
   />
 ));
 TableColumnHeaderCell.displayName = 'TableColumnHeaderCell';
@@ -109,13 +107,13 @@ interface TableRowHeaderCellProps
   extends Omit<PropsWithoutRefOrColor<'th'>, keyof TableCellImplOwnProps>,
     TableCellImplOwnProps {}
 const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowHeaderCellProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <TableCellImpl
       scope="row"
       {...props}
       tag="th"
       ref={forwardedRef}
-      className={classNames('rt-TableRowHeaderCell', props.className)}
+      className={classNames('rt-TableRowHeaderCell', className)}
     />
   )
 );

@@ -63,7 +63,7 @@ CalloutRoot.displayName = 'CalloutRoot';
 type CalloutIconElement = React.ElementRef<'div'>;
 interface CalloutIconProps extends PropsWithoutRefOrColor<'div'> {}
 const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
-  (props, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);
     return (
       <Text
@@ -72,11 +72,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
         size={mapResponsiveProp(size, mapCalloutSizeToTextSize)}
         highContrast={highContrast}
       >
-        <div
-          {...props}
-          className={classNames('rt-CalloutIcon', props.className)}
-          ref={forwardedRef}
-        />
+        <div {...props} className={classNames('rt-CalloutIcon', className)} ref={forwardedRef} />
       </Text>
     );
   }
@@ -86,7 +82,7 @@ CalloutIcon.displayName = 'CalloutIcon';
 type CalloutTextElement = React.ElementRef<'p'>;
 type CalloutTextProps = ExtractPropsForTag<typeof Text, 'p'>;
 const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
-  (props, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);
     return (
       <Text
@@ -97,7 +93,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         {...props}
         asChild={false}
         ref={forwardedRef}
-        className={classNames('rt-CalloutText', props.className)}
+        className={classNames('rt-CalloutText', className)}
       />
     );
   }

@@ -153,12 +153,12 @@ type SelectGroupElement = React.ElementRef<typeof SelectPrimitive.Group>;
 interface SelectGroupProps
   extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Group>, 'asChild'> {}
 const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Group
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-SelectGroup', props.className)}
+      className={classNames('rt-SelectGroup', className)}
     />
   )
 );
@@ -168,12 +168,12 @@ type SelectLabelElement = React.ElementRef<typeof SelectPrimitive.Label>;
 interface SelectLabelProps
   extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Label>, 'asChild'> {}
 const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Label
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-SelectLabel', props.className)}
+      className={classNames('rt-SelectLabel', className)}
     />
   )
 );
@@ -183,12 +183,12 @@ type SelectSeparatorElement = React.ElementRef<typeof SelectPrimitive.Separator>
 interface SelectSeparatorProps
   extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Separator>, 'asChild'> {}
 const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparatorProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Separator
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-SelectSeparator', props.className)}
+      className={classNames('rt-SelectSeparator', className)}
     />
   )
 );

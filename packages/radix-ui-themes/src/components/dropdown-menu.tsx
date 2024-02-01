@@ -100,12 +100,12 @@ type DropdownMenuLabelElement = React.ElementRef<typeof DropdownMenuPrimitive.La
 interface DropdownMenuLabelProps
   extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Label>, 'asChild'> {}
 const DropdownMenuLabel = React.forwardRef<DropdownMenuLabelElement, DropdownMenuLabelProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <DropdownMenuPrimitive.Label
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-BaseMenuLabel', 'rt-DropdownMenuLabel', props.className)}
+      className={classNames('rt-BaseMenuLabel', 'rt-DropdownMenuLabel', className)}
     />
   )
 );
@@ -144,12 +144,12 @@ type DropdownMenuGroupElement = React.ElementRef<typeof DropdownMenuPrimitive.Gr
 interface DropdownMenuGroupProps
   extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Group>, 'asChild'> {}
 const DropdownMenuGroup = React.forwardRef<DropdownMenuGroupElement, DropdownMenuGroupProps>(
-  (props, forwardedRef) => (
+  ({ className, ...props }, forwardedRef) => (
     <DropdownMenuPrimitive.Group
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-BaseMenuGroup', 'rt-DropdownMenuGroup', props.className)}
+      className={classNames('rt-BaseMenuGroup', 'rt-DropdownMenuGroup', className)}
     />
   )
 );
@@ -161,12 +161,12 @@ interface DropdownMenuRadioGroupProps
 const DropdownMenuRadioGroup = React.forwardRef<
   DropdownMenuRadioGroupElement,
   DropdownMenuRadioGroupProps
->((props, forwardedRef) => (
+>(({ className, ...props }, forwardedRef) => (
   <DropdownMenuPrimitive.RadioGroup
     {...props}
     asChild={false}
     ref={forwardedRef}
-    className={classNames('rt-BaseMenuRadioGroup', 'rt-DropdownMenuRadioGroup', props.className)}
+    className={classNames('rt-BaseMenuRadioGroup', 'rt-DropdownMenuRadioGroup', className)}
   />
 ));
 DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
@@ -335,12 +335,12 @@ interface DropdownMenuSeparatorProps
 const DropdownMenuSeparator = React.forwardRef<
   DropdownMenuSeparatorElement,
   DropdownMenuSeparatorProps
->((props, forwardedRef) => (
+>(({ className, ...props }, forwardedRef) => (
   <DropdownMenuPrimitive.Separator
     {...props}
     asChild={false}
     ref={forwardedRef}
-    className={classNames('rt-BaseMenuSeparator', 'rt-DropdownMenuSeparator', props.className)}
+    className={classNames('rt-BaseMenuSeparator', 'rt-DropdownMenuSeparator', className)}
   />
 ));
 DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
