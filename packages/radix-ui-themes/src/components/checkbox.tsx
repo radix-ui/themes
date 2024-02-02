@@ -27,9 +27,12 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
       {...checkboxProps}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-reset', 'rt-CheckboxRoot', className)}
+      className={classNames('rt-reset', 'rt-BaseCheckboxRoot', 'rt-CheckboxRoot', className)}
     >
-      <CheckboxPrimitive.Indicator asChild className="rt-CheckboxIndicator">
+      <CheckboxPrimitive.Indicator
+        asChild
+        className="rt-BaseCheckboxIndicator rt-CheckboxIndicator"
+      >
         <ThickCheckIcon />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

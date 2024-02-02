@@ -27,7 +27,7 @@ type EnumPropDef<T> = {
 type EnumOrStringPropDef<T> = {
   type: 'enum | string';
   values: readonly T[];
-  default?: T;
+  default?: T | string;
   required?: boolean;
 };
 
