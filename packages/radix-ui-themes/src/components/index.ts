@@ -37,11 +37,8 @@ export * from './strong.props';
 // FORMS
 //------------------------------------------------------------------------------
 // export * from './form'; 👈
-export {
-  CheckboxCardGroup,
-  CheckboxCardGroupRoot,
-  CheckboxCardGroupItem,
-} from './checkbox-card-group';
+export { CheckboxCardGroupRoot, CheckboxCardGroupItem } from './checkbox-card-group';
+export * as CheckboxCardGroup from './checkbox-card-group.parts';
 export * from './checkbox-card-group.props';
 export { Checkbox } from './checkbox';
 export * from './checkbox.props';

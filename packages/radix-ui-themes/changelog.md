@@ -28,6 +28,7 @@
   - Ensure all elements that have padding or border styles use `box-sizing: border-box`
   - Ensure that disabled cursor styles are applied correctly
   - Tweak the background color of all `variant="soft"` menu items
+  - Improve tree-shaking of individual component parts
 - 8 new components
   - `CheckboxCardGroup`
   - `DataList`
