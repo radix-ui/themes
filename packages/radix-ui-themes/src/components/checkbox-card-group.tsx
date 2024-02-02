@@ -104,7 +104,6 @@ const CheckboxCardGroupRoot = React.forwardRef<
         {...rootProps}
         ref={forwardedRef}
         className={classNames('rt-CheckboxCardGroupRoot', className)}
-        columns={props.columns ?? 'repeat(auto-fit, minmax(200px, 1fr))'}
       >
         <CheckboxCardGroupContext.Provider value={contextValue}>
           {children}
@@ -131,7 +130,7 @@ const CheckboxCardGroupItem = React.forwardRef<
   const checked = context.value?.includes(props.value);
   return (
     <label className={classNames('rt-reset', 'rt-CheckboxCardGroupItem', className)}>
-      <div className="rt-CheckboxCardGroupItemInner">{children}</div>
+      {children}
       <RovingFocusGroup.Item asChild focusable={!isDisabled}>
         <BaseCheckbox
           name={context.name}

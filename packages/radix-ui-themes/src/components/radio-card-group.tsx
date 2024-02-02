@@ -23,7 +23,7 @@ const RadioCardGroupRoot = React.forwardRef<RadioCardGroupRootElement, RadioCard
       marginPropDefs
     );
     return (
-      <Grid asChild columns={props.columns ?? 'repeat(auto-fit, minmax(160px, 1fr))'}>
+      <Grid asChild>
         <RadioGroupPrimitive.Root
           data-accent-color={color}
           {...rootProps}

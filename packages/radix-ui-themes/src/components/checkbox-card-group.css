@@ -8,12 +8,15 @@
 }
 
 .rt-CheckboxCardGroupItem {
-  min-width: 0;
-
   display: flex;
   align-items: center;
   gap: var(--checkbox-card-group-item-gap);
-  padding: var(--checkbox-card-group-item-padding);
+  padding: var(--checkbox-card-group-item-padding-y) var(--checkbox-card-group-item-padding-x);
+  padding-right: calc(
+    var(--checkbox-card-group-item-padding-x) + var(--checkbox-card-group-item-checkbox-size) +
+      var(--checkbox-card-group-item-gap)
+  );
+  box-sizing: border-box;
   border-radius: var(--checkbox-card-group-item-radius);
 
   /* cursors */
@@ -21,17 +24,8 @@
   &:where(:has(:disabled)) {
     cursor: var(--cursor-disabled);
   }
-}
-
-.rt-CheckboxCardGroupItemInner {
-  min-width: 0;
-
-  display: flex;
-  align-items: center;
-  gap: var(--checkbox-card-group-item-gap);
 
   & > * {
-    min-width: 0;
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
   }
@@ -43,7 +37,8 @@
 }
 
 .rt-CheckboxCardGroupItemCheckbox {
-  margin-left: auto;
+  position: absolute;
+  right: var(--checkbox-card-group-item-padding-x);
 }
 
 /***************************************************************************************************
@@ -59,27 +54,37 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --checkbox-card-group-item-padding: calc(var(--space-3) / 1.2) var(--space-3);
+      --checkbox-card-group-item-padding-x: var(--space-3);
+      --checkbox-card-group-item-padding-y: calc(var(--space-3) / 1.2);
       --checkbox-card-group-item-radius: var(--radius-3);
       --checkbox-card-group-item-gap: var(--space-2);
+      --checkbox-card-group-item-checkbox-size: calc(
+        var(--space-4) * 0.875
+      ); /* keep in sync with checkbox */
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --checkbox-card-group-item-padding: calc(var(--space-4) * 0.875) var(--space-4);
+      --checkbox-card-group-item-padding-x: var(--space-4);
+      --checkbox-card-group-item-padding-y: calc(var(--space-4) * 0.875);
       --checkbox-card-group-item-radius: var(--radius-3);
       --checkbox-card-group-item-gap: var(--space-3);
+      --checkbox-card-group-item-checkbox-size: var(--space-4); /* keep in sync with checkbox */
     }
     /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --checkbox-card-group-item-padding: calc(var(--space-5) / 1.2) var(--space-5);
+      --checkbox-card-group-item-padding-x: var(--space-5);
+      --checkbox-card-group-item-padding-y: calc(var(--space-5) / 1.2);
       --checkbox-card-group-item-radius: var(--radius-4);
       --checkbox-card-group-item-gap: var(--space-4);
+      --checkbox-card-group-item-checkbox-size: calc(
+        var(--space-4) * 1.25
+      ); /* keep in sync with checkbox */
     }
   }
 }

@@ -11,7 +11,7 @@ const radioCardGroupPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   color: colorProp,
   highContrast: highContrastProp,
-  columns: gridPropDefs.columns,
+  columns: { ...gridPropDefs.columns, default: 'repeat(auto-fit, minmax(160px, 1fr))' },
   gap: { ...gridPropDefs.gap, default: '4' },
 } satisfies {
   asChild: typeof asChildProp;

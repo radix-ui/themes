@@ -10,7 +10,7 @@ const checkboxCardGroupPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   color: colorProp,
   highContrast: highContrastProp,
-  columns: gridPropDefs.columns,
+  columns: { ...gridPropDefs.columns, default: 'repeat(auto-fit, minmax(200px, 1fr))' },
   gap: { ...gridPropDefs.gap, default: '4' },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;

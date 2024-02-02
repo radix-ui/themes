@@ -6,8 +6,6 @@
 }
 
 .rt-RadioCardGroupItem {
-  min-width: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,8 +14,12 @@
   padding: var(--radio-card-group-item-padding);
   border-radius: var(--radio-card-group-item-radius);
 
+  /* cursors */
+  &:where(:disabled) {
+    cursor: var(--cursor-disabled);
+  }
+
   & > * {
-    min-width: 0;
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
   }
@@ -25,11 +27,6 @@
   & > svg {
     /* Don’t squish icons */
     flex-shrink: 0;
-  }
-
-  /* cursors */
-  &:where(:disabled) {
-    cursor: var(--cursor-disabled);
   }
 }
 
@@ -111,6 +108,10 @@
     &:where([data-state='checked']) {
       outline: 2px solid var(--accent-10);
       outline-offset: -2px;
+
+      &:where(:disabled) {
+        outline-color: var(--gray-8);
+      }
     }
 
     &:where(:focus-visible)::before {
@@ -143,6 +144,10 @@
     &:where([data-state='checked']) {
       outline: 2px solid var(--accent-9);
       outline-offset: -1px;
+
+      &:where(:disabled) {
+        outline-color: var(--gray-8);
+      }
     }
 
     &:where(:focus-visible)::before {
