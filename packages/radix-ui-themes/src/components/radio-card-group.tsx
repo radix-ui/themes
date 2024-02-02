@@ -52,13 +52,5 @@ const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCard
 );
 RadioCardGroupItem.displayName = 'RadioCardGroupItem';
 
-const RadioCardGroup = Object.assign(
-  {},
-  {
-    Root: RadioCardGroupRoot,
-    Item: RadioCardGroupItem,
-  }
-);
-
-export { RadioCardGroup, RadioCardGroupRoot, RadioCardGroupItem };
+export { RadioCardGroupRoot, RadioCardGroupItem };
 export type { RadioCardGroupRootProps, RadioCardGroupItemProps };

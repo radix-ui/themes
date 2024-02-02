@@ -99,14 +99,5 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
 );
 CalloutText.displayName = 'CalloutText';
 
-const Callout = Object.assign(
-  {},
-  {
-    Root: CalloutRoot,
-    Icon: CalloutIcon,
-    Text: CalloutText,
-  }
-);
-
-export { Callout, CalloutRoot, CalloutIcon, CalloutText };
+export { CalloutRoot, CalloutIcon, CalloutText };
 export type { CalloutRootProps, CalloutIconProps, CalloutTextProps };

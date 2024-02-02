@@ -138,14 +138,5 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
 );
 TextFieldInput.displayName = 'TextFieldInput';
 
-const TextField = Object.assign(
-  {},
-  {
-    Root: TextFieldRoot,
-    Slot: TextFieldSlot,
-    Input: TextFieldInput,
-  }
-);
-
-export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput };
+export { TextFieldRoot, TextFieldSlot, TextFieldInput };
 export type { TextFieldRootProps, TextFieldSlotProps, TextFieldInputProps };

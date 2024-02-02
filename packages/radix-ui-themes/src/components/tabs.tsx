@@ -84,15 +84,5 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
 );
 TabsContent.displayName = 'TabsContent';
 
-const Tabs = Object.assign(
-  {},
-  {
-    Root: TabsRoot,
-    List: TabsList,
-    Trigger: TabsTrigger,
-    Content: TabsContent,
-  }
-);
-
-export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent };
+export { TabsRoot, TabsList, TabsTrigger, TabsContent };
 export type { TabsRootProps, TabsListProps, TabsTriggerProps, TabsContentProps };

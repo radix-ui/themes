@@ -37,20 +37,18 @@ export * from './strong.props';
 // FORMS
 //------------------------------------------------------------------------------
 // export * from './form'; 👈
-export {
-  CheckboxCardGroup,
-  CheckboxCardGroupRoot,
-  CheckboxCardGroupItem,
-} from './checkbox-card-group';
+export { CheckboxCardGroupRoot, CheckboxCardGroupItem } from './checkbox-card-group';
+export * as CheckboxCardGroup from './checkbox-card-group.parts';
 export * from './checkbox-card-group.props';
 export { Checkbox } from './checkbox';
 export * from './checkbox.props';
-export { RadioCardGroup, RadioCardGroupRoot, RadioCardGroupItem } from './radio-card-group';
+export { RadioCardGroupRoot, RadioCardGroupItem } from './radio-card-group';
+export * as RadioCardGroup from './radio-card-group.parts';
 export * from './radio-card-group.props';
-export { RadioGroup, RadioGroupRoot, RadioGroupItem } from './radio-group';
+export { RadioGroupRoot, RadioGroupItem } from './radio-group';
+export * as RadioGroup from './radio-group.parts';
 export * from './radio-group.props';
 export {
-  Select,
   SelectRoot,
   SelectTrigger,
   SelectContent,
@@ -59,6 +57,7 @@ export {
   SelectLabel,
   SelectSeparator,
 } from './select';
+export * as Select from './select.parts';
 export * from './select.props';
 export { Slider } from './slider';
 export * from './slider.props';
@@ -66,13 +65,13 @@ export { Switch } from './switch';
 export * from './switch.props';
 export { TextArea } from './text-area';
 export * from './text-area.props';
-export { TextField, TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field';
+export { TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field';
+export * as TextField from './text-field.parts';
 export * from './text-field.props';
 
 // OVERLAYS
 //------------------------------------------------------------------------------
 export {
-  Dialog,
   DialogRoot,
   DialogTrigger,
   DialogContent,
@@ -80,9 +79,9 @@ export {
   DialogDescription,
   DialogClose,
 } from './dialog';
+export * as Dialog from './dialog.parts';
 export * from './dialog.props';
 export {
-  AlertDialog,
   AlertDialogRoot,
   AlertDialogTrigger,
   AlertDialogContent,
@@ -91,9 +90,9 @@ export {
   AlertDialogAction,
   AlertDialogCancel,
 } from './alert-dialog';
+export * as AlertDialog from './alert-dialog.parts';
 export * from './alert-dialog.props';
 export {
-  DropdownMenu,
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -108,9 +107,9 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSeparator,
 } from './dropdown-menu';
+export * as DropdownMenu from './dropdown-menu.parts';
 export * from './dropdown-menu.props';
 export {
-  ContextMenu,
   ContextMenuRoot,
   ContextMenuTrigger,
   ContextMenuContent,
@@ -125,17 +124,21 @@ export {
   ContextMenuSubContent,
   ContextMenuSeparator,
 } from './context-menu';
+export * as ContextMenu from './context-menu.parts';
 export * from './context-menu.props';
-export { HoverCard, HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card';
+export { HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card';
+export * as HoverCard from './hover-card.parts';
 export * from './hover-card.props';
-export { Popover, PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover';
+export { PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover';
+export * as Popover from './popover.parts';
 export * from './popover.props';
 export { Tooltip } from './tooltip';
 export * from './tooltip.props';
 
 // NAVIGATION
 //------------------------------------------------------------------------------
-export { TabNav, TabNavRoot, TabNavLink } from './tab-nav';
+export { TabNavRoot, TabNavLink } from './tab-nav';
+export * as TabNav from './tab-nav.parts';
 export * from './tab-nav.props';
 // export * from './menubar';
 // export * from './navigation-menu';
@@ -151,11 +154,13 @@ export { Blockquote } from './blockquote';
 export * from './blockquote.props';
 export { Button } from './button';
 export * from './button.props';
-export { Callout, CalloutRoot, CalloutIcon, CalloutText } from './callout';
+export { CalloutRoot, CalloutIcon, CalloutText } from './callout';
+export * as Callout from './callout.parts';
 export * from './callout.props';
 export { Card } from './card';
 export * from './card.props';
 export { DataListRoot, DataListItem, DataListLabel, DataListValue } from './data-list';
+export * as DataList from './data-list.parts';
 export * from './data-list.props';
 // export * from './collapsible';
 // export * from './definition-list';
@@ -174,7 +179,6 @@ export * from './skeleton';
 export { Spinner } from './spinner';
 export * from './spinner.props';
 export {
-  Table,
   TableRoot,
   TableHeader,
   TableRow,
@@ -183,8 +187,10 @@ export {
   TableRowHeaderCell,
   TableCell,
 } from './table';
+export * as Table from './table.parts';
 export * from './table.props';
-export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs';
+export { TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs';
+export * as Tabs from './tabs.parts';
 export * from './tabs.props';
 // export * from './toast';
 // export * from './toggle';
