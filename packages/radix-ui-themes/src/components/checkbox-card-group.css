@@ -11,12 +11,12 @@
   display: flex;
   align-items: center;
   gap: var(--checkbox-card-group-item-gap);
+  box-sizing: border-box;
   padding: var(--checkbox-card-group-item-padding-y) var(--checkbox-card-group-item-padding-x);
   padding-right: calc(
     var(--checkbox-card-group-item-padding-x) + var(--checkbox-card-group-item-checkbox-size) +
       var(--checkbox-card-group-item-gap)
   );
-  box-sizing: border-box;
   border-radius: var(--checkbox-card-group-item-radius);
 
   /* cursors */
