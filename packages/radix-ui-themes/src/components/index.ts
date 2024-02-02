@@ -156,7 +156,7 @@ export * as Callout from './callout.parts';
 export * from './callout.props';
 export { Card } from './card';
 export * from './card.props';
-export { DataListRoot, DataListData, DataListItem, DataListValue } from './data-list';
+export { DataListRoot, DataListItem, DataListLabel, DataListValue } from './data-list';
 export * as DataList from './data-list.parts';
 export * from './data-list.props';
 // export * from './collapsible';
