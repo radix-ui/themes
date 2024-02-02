@@ -5349,7 +5349,7 @@ export default function Sink() {
                                         </CheckboxCardGroupRoot>
 
                                         <CheckboxCardGroupRoot
-                                          defaultValue={['1']}
+                                          defaultValue={['0']}
                                           size="1"
                                           gap="2"
                                           columns="3"

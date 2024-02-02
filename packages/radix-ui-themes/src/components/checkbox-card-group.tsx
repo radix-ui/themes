@@ -25,6 +25,7 @@ const useCheckboxGroupScope = createCheckboxGroupScope();
 
 type CheckboxCardGroupContextValue = {
   size?: Responsive<(typeof checkboxCardGroupPropDefs.size.values)[number]>;
+  highContrast?: boolean;
 };
 
 const [CheckboxCardGroupProvider, useCheckboxCardGroupContext] =
@@ -47,7 +48,11 @@ const CheckboxCardGroupRoot = React.forwardRef<
   );
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCardGroup);
   return (
-    <CheckboxCardGroupProvider scope={__scopeCheckboxCardGroup} size={props.size}>
+    <CheckboxCardGroupProvider
+      scope={__scopeCheckboxCardGroup}
+      size={props.size}
+      highContrast={props.highContrast}
+    >
       <Grid asChild>
         <CheckboxGroupPrimitive.Root
           {...checkboxGroupScope}
@@ -73,8 +78,8 @@ const CheckboxCardGroupItem = React.forwardRef<
   const context = useCheckboxCardGroupContext('item', __scopeCheckboxCardGroup);
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCardGroup);
   const { className: checkboxClassName } = extractProps(
-    // Pass size value from the context and static variant to generate styles
-    { size: context?.size, variant: 'surface', className: '' },
+    // Pass size / highContrast values from the context and static variant to generate styles
+    { size: context?.size, variant: 'surface', highContrast: context?.highContrast, className: '' },
     // Pass size & variant prop defs to allow it to be extracted
     baseCheckboxPropDefs
   );
