@@ -16,8 +16,7 @@
   box-sizing: border-box;
   padding: var(--checkbox-card-group-item-padding-y) var(--checkbox-card-group-item-padding-x);
   padding-right: calc(
-    var(--checkbox-card-group-item-padding-x) + var(--checkbox-card-group-item-checkbox-size) +
-      var(--checkbox-card-group-item-gap)
+    var(--checkbox-card-group-item-padding-x) * 2 + var(--checkbox-card-group-item-checkbox-size)
   );
   border-radius: var(--checkbox-card-group-item-radius);
 
