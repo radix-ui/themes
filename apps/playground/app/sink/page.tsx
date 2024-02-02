@@ -48,6 +48,10 @@ import {
   Checkbox,
   checkboxPropDefs,
   //
+  CheckboxCardGroupRoot,
+  CheckboxCardGroupItem,
+  checkboxCardGroupPropDefs,
+  //
   Code,
   codePropDefs,
   //
@@ -5126,16 +5130,12 @@ export default function Sink() {
                               >
                                 <RadioCardGroupItem value="0">
                                   <CodeIcon />
-                                  Node.js
+                                  <Text truncate>Node.js</Text>
                                 </RadioCardGroupItem>
-                                <RadioCardGroupItem value="1">
-                                  <CodeIcon />
+                                <RadioCardGroupItem value="1" disabled>
                                   Ruby
                                 </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">
-                                  <CodeIcon />
-                                  Go
-                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                               </RadioCardGroupRoot>
                             </td>
                           </tr>
@@ -5157,18 +5157,11 @@ export default function Sink() {
                                 defaultValue={String(index)}
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <RadioCardGroupItem value="0">
-                                  <CodeIcon />
-                                  Node.js
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="1">
-                                  <CodeIcon />
+                                <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
+                                <RadioCardGroupItem value="1" disabled>
                                   Ruby
                                 </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">
-                                  <CodeIcon />
-                                  Go
-                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                               </RadioCardGroupRoot>
                             </td>
                           </tr>
@@ -5216,43 +5209,165 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroupItem value="0">
-                                            <CodeIcon />
-                                            Node.js
-                                          </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="1">
-                                            <CodeIcon />
+                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1" disabled>
                                             Ruby
                                           </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">
-                                            <CodeIcon />
-                                            Go
-                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                                         </RadioCardGroupRoot>
 
                                         <RadioCardGroupRoot
                                           size="1"
                                           gap="2"
                                           columns="3"
-                                          defaultValue="0"
+                                          defaultValue="1"
                                           variant={variant}
                                           color={color}
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroupItem value="0">
-                                            <CodeIcon />
-                                            Node.js
-                                          </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="1">
-                                            <CodeIcon />
+                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1" disabled>
                                             Ruby
                                           </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">
-                                            <CodeIcon />
-                                            Go
-                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
                                         </RadioCardGroupRoot>
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
+                  </DocsSection>
+
+                  <DocsSection title="CheckboxCardGroup">
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <CheckboxCardGroupRoot
+                                defaultValue={[String(index)]}
+                                columns="3"
+                                variant={variant}
+                              >
+                                <CheckboxCardGroupItem value="0">
+                                  <CodeIcon />
+                                  <Text truncate>Node.js</Text>
+                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="1" disabled>
+                                  Ruby
+                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
+                              </CheckboxCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Box mb="7" />
+
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupPropDefs.size.values.map((size, index) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <CheckboxCardGroupRoot
+                                defaultValue={[String(index)]}
+                                size={size}
+                                columns="3"
+                                style={{ width: 400 + Number(size) * 100 }}
+                              >
+                                <CheckboxCardGroupItem value="0">Node.js</CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="1" disabled>
+                                  Ruby
+                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
+                              </CheckboxCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex direction="column" gap="2">
+                                        <CheckboxCardGroupRoot
+                                          defaultValue={['0']}
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          variant={variant}
+                                          color={color}
+                                          style={{ width: 400 }}
+                                        >
+                                          <CheckboxCardGroupItem value="0">
+                                            Node.js
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="1" disabled>
+                                            Ruby
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="2">
+                                            Go
+                                          </CheckboxCardGroupItem>
+                                        </CheckboxCardGroupRoot>
+
+                                        <CheckboxCardGroupRoot
+                                          defaultValue={['0']}
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                          style={{ width: 400 }}
+                                        >
+                                          <CheckboxCardGroupItem value="0">
+                                            Node.js
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="1" disabled>
+                                            Ruby
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="2">
+                                            Go
+                                          </CheckboxCardGroupItem>
+                                        </CheckboxCardGroupRoot>
                                       </Flex>
                                     </td>
                                   ))}

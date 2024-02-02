@@ -43,10 +43,10 @@ interface RadioCardGroupItemProps
 const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCardGroupItemProps>(
   ({ className, ...props }, forwardedRef) => (
     <RadioGroupPrimitive.Item
-      ref={forwardedRef}
-      className={classNames('rt-reset', 'rt-RadioCardGroupItem', className)}
       {...props}
       asChild={false}
+      ref={forwardedRef}
+      className={classNames('rt-reset', 'rt-RadioCardGroupItem', className)}
     />
   )
 );
