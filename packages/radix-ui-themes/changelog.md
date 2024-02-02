@@ -24,9 +24,14 @@
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
   - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
   - Remove the native `color` attribute from components that don’t have own `color` props
-- 6 new components
+  - Rework the availability of `asChild` prop on all components and parts
+  - Ensure all elements that have padding or border styles use `box-sizing: border-box`
+  - Ensure that disabled cursor styles are applied correctly
+  - Tweak the background color of all `variant="soft"` menu items
+- 7 new components
   - `Progress`
   - `RadioCardGroup`
+  - `Reset`
   - `Skeleton`
   - `Spinner`
   - `TabNav`
@@ -36,6 +41,8 @@
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
 - `Code`
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
+- `Container`
+  - Add `align` prop to control whether the container content is aligned to the left, center, or right
 - `Container`, `Section`
   - Change the incorrect `display="block"` value to `display="initial"`
 - `ContextMenu`, `DropdownMenu`
@@ -51,6 +58,8 @@
   - Add `gapX` and `gapY` props
 - `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
+- `ScrollArea`
+  - Fix an issue when Scroll Area would be unable to stretch to 100% height when informed by the parent’s auto height
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
 - `Table`
@@ -73,6 +82,8 @@
 - `TextField`
   - Fix an issue with some input `type`s not supporting `getSelectionRange`
   - Fix an issue when Grammarly extension would break the component styles
+- `Tooltip`
+  - Change the default delay duration to 200ms
 
 ## 2.0.3
 

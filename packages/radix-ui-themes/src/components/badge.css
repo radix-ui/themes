@@ -1,7 +1,6 @@
 .rt-Badge {
   display: inline-flex;
   align-items: center;
-  box-sizing: border-box;
   white-space: nowrap;
   font-weight: var(--font-weight-medium);
   flex-shrink: 0;

@@ -15,6 +15,9 @@
     cursor: var(--cursor-radio);
     border-radius: 100%;
   }
+  &:where([data-disabled])::before {
+    cursor: var(--cursor-disabled);
+  }
 
   &:where(:focus-visible)::before {
     outline: 2px solid var(--color-focus-root);
@@ -83,7 +86,6 @@
   & :where(.rt-RadioGroupItem[data-disabled])::before {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
     background-color: var(--gray-a3);
-    cursor: var(--cursor-disabled);
   }
   & :where(.rt-RadioGroupIndicator[data-disabled]) {
     background-color: var(--gray-a8);
@@ -119,7 +121,6 @@
     box-shadow: var(--shadow-1);
     background-color: var(--gray-a3);
     background-image: none;
-    cursor: var(--cursor-disabled);
   }
   & :where(.rt-RadioGroupIndicator[data-disabled]) {
     background-color: var(--gray-a8);
@@ -130,7 +131,7 @@
 
 .rt-RadioGroupRoot:where(.rt-variant-soft) {
   & :where(.rt-RadioGroupItem)::before {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-a4);
   }
   & :where(.rt-RadioGroupIndicator) {
     background-color: var(--accent-a11);
@@ -149,7 +150,6 @@
 
   & :where(.rt-RadioGroupItem[data-disabled])::before {
     background-color: var(--gray-a3);
-    cursor: var(--cursor-disabled);
   }
   & :where(.rt-RadioGroupIndicator[data-disabled]) {
     background-color: var(--gray-a8);

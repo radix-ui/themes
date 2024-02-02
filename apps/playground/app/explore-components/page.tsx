@@ -60,7 +60,7 @@ import {
   DataListRoot,
   DataListItem,
   DataListLabel,
-  DataListData,
+  DataListValue,
   dataListPropDefs,
   //
   DialogRoot,
@@ -1617,15 +1617,15 @@ export default function ExploreComponents() {
                         <DataListRoot>
                           <DataListItem>
                             <DataListLabel width="200px">Name</DataListLabel>
-                            <DataListData>Susan Kare</DataListData>
+                            <DataListValue>Susan Kare</DataListValue>
                           </DataListItem>
                           <DataListItem>
                             <DataListLabel>Email</DataListLabel>
-                            <DataListData>susan.kare@apple.com</DataListData>
+                            <DataListValue>susan.kare@apple.com</DataListValue>
                           </DataListItem>
                           <DataListItem>
                             <DataListLabel>Occupation</DataListLabel>
-                            <DataListData>Graphic Designer</DataListData>
+                            <DataListValue>Graphic Designer</DataListValue>
                           </DataListItem>
                         </DataListRoot>
                       </Box>
@@ -1642,11 +1642,11 @@ export default function ExploreComponents() {
                                   <DataListRoot orientation={orientation} my="3">
                                     <DataListItem>
                                       <DataListLabel>Name</DataListLabel>
-                                      <DataListData>Susan Kare</DataListData>
+                                      <DataListValue>Susan Kare</DataListValue>
                                     </DataListItem>
                                     <DataListItem>
                                       <DataListLabel>Email</DataListLabel>
-                                      <DataListData>susan.kare@apple.com</DataListData>
+                                      <DataListValue>susan.kare@apple.com</DataListValue>
                                     </DataListItem>
                                   </DataListRoot>
                                 </td>
@@ -1668,11 +1668,11 @@ export default function ExploreComponents() {
                                   <DataListRoot size={size} my="3">
                                     <DataListItem>
                                       <DataListLabel>Name</DataListLabel>
-                                      <DataListData>Susan Kare</DataListData>
+                                      <DataListValue>Susan Kare</DataListValue>
                                     </DataListItem>
                                     <DataListItem>
                                       <DataListLabel>Email</DataListLabel>
-                                      <DataListData>susan.kare@apple.com</DataListData>
+                                      <DataListValue>susan.kare@apple.com</DataListValue>
                                     </DataListItem>
                                   </DataListRoot>
                                 </td>
