@@ -28,8 +28,9 @@
   - Ensure all elements that have padding or border styles use `box-sizing: border-box`
   - Ensure that disabled cursor styles are applied correctly
   - Tweak the background color of all `variant="soft"` menu items
-- 7 new components
+- 8 new components
   - `CheckboxCardGroup`
+  - `DataList`
   - `Progress`
   - `RadioCardGroup`
   - `Reset`
