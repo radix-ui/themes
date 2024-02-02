@@ -95,19 +95,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-CheckboxCardGroupItem {
-  position: relative;
-  /* pseudo element for focus outline */
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-  }
-}
-
 /* surface */
 
 .rt-CheckboxCardGroupRoot:where(.rt-variant-surface) {
