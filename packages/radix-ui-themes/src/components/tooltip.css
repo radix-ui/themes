@@ -1,4 +1,5 @@
 .rt-TooltipContent {
+  box-sizing: border-box;
   padding: var(--space-1) var(--space-2);
   background-color: var(--gray-12);
   border-radius: var(--radius-2);

@@ -7,14 +7,7 @@
 
 .rt-TextFieldInput {
   display: block;
-  box-sizing: border-box;
-  padding: 0;
   width: 100%;
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  font-family: inherit;
-  background-color: transparent;
   position: relative;
   z-index: 1;
 
@@ -30,6 +23,7 @@
 
 .rt-TextFieldChrome {
   position: absolute;
+  box-sizing: border-box;
   inset: 0;
   z-index: 0;
   pointer-events: none;
@@ -264,7 +258,7 @@
       opacity: 0.5;
     }
     &:where(:placeholder-shown) {
-      cursor: default;
+      cursor: var(--cursor-disabled);
     }
     &::selection {
       background-color: var(--gray-a5);
@@ -272,7 +266,7 @@
 
     /* Cursor in slots, as an enhancement */
     .rt-TextFieldRoot:where(:has(&:placeholder-shown)) :where(.rt-TextFieldSlot) {
-      cursor: default;
+      cursor: var(--cursor-disabled);
     }
   }
 }

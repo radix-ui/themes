@@ -31,6 +31,7 @@
 }
 
 .rt-RadioCardGroupItem {
+  box-sizing: border-box;
   padding: var(--radio-card-group-item-padding);
   border-radius: var(--radio-card-group-item-radius);
   gap: var(--radio-card-group-item-gap);

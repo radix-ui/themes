@@ -59,20 +59,20 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
 );
 DataListLabel.displayName = 'DataListLabel';
 
-type DataListDataElement = React.ElementRef<'dd'>;
-interface DataListDataProps extends PropsWithoutRefOrColor<'dd'> {}
-const DataListData = React.forwardRef<DataListDataElement, DataListDataProps>(
+type DataListValueElement = React.ElementRef<'dd'>;
+interface DataListValueProps extends PropsWithoutRefOrColor<'dd'> {}
+const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <dd
       {...props}
       ref={forwardedRef}
-      className={classNames(className, 'rt-reset', 'rt-DataListData')}
+      className={classNames(className, 'rt-reset', 'rt-DataListValue')}
     >
       {children}
     </dd>
   )
 );
-DataListData.displayName = 'DataListData';
+DataListValue.displayName = 'DataListValue';
 
-export { DataListRoot, DataListItem, DataListLabel, DataListData };
-export type { DataListRootProps, DataListItemProps, DataListLabelProps, DataListDataProps };
+export { DataListRoot, DataListItem, DataListLabel, DataListValue };
+export type { DataListRootProps, DataListItemProps, DataListLabelProps, DataListValueProps };

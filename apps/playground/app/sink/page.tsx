@@ -8,8 +8,6 @@ import {
   Share2Icon,
   InfoCircledIcon,
   StarIcon,
-  StarFilledIcon,
-  MagicWandIcon,
   Cross1Icon,
   CodeIcon,
 } from '@radix-ui/react-icons';
@@ -73,9 +71,8 @@ import {
   DataListRoot,
   DataListItem,
   DataListLabel,
-  DataListData,
+  DataListValue,
   dataListPropDefs,
-  dataListItemPropDefs,
   dataListLabelPropDefs,
   //
   DialogRoot,
@@ -4856,33 +4853,33 @@ export default function Sink() {
                             <DataListRoot>
                               <DataListItem>
                                 <DataListLabel width="200px">Name</DataListLabel>
-                                <DataListData>Susan Kare</DataListData>
+                                <DataListValue>Susan Kare</DataListValue>
                               </DataListItem>
                               <DataListItem>
                                 <DataListLabel>Email</DataListLabel>
-                                <DataListData>susan.kare@apple.com</DataListData>
+                                <DataListValue>susan.kare@apple.com</DataListValue>
                               </DataListItem>
                               <DataListItem>
                                 <DataListLabel>Status</DataListLabel>
-                                <DataListData>
+                                <DataListValue>
                                   <Badge color="green" size="1" style={{ marginLeft: -2 }}>
                                     Active
                                   </Badge>
-                                </DataListData>
+                                </DataListValue>
                               </DataListItem>
                               <DataListItem>
                                 <DataListLabel>Organization</DataListLabel>
-                                <DataListData>
+                                <DataListValue>
                                   <Link href="https://workos.com">WorkOS</Link>
-                                </DataListData>
+                                </DataListValue>
                               </DataListItem>
                               <DataListItem>
                                 <DataListLabel>Bio</DataListLabel>
-                                <DataListData>
+                                <DataListValue>
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
                                   nisl et libero ultricies viverra quis vitae quam. Proin a feugiat
                                   metus.
-                                </DataListData>
+                                </DataListValue>
                               </DataListItem>
                             </DataListRoot>
                           </Box>
@@ -4899,11 +4896,11 @@ export default function Sink() {
                                       <DataListRoot orientation={orientation} my="3">
                                         <DataListItem>
                                           <DataListLabel>Name</DataListLabel>
-                                          <DataListData>Susan Kare</DataListData>
+                                          <DataListValue>Susan Kare</DataListValue>
                                         </DataListItem>
                                         <DataListItem>
                                           <DataListLabel>Email</DataListLabel>
-                                          <DataListData>susan.kare@apple.com</DataListData>
+                                          <DataListValue>susan.kare@apple.com</DataListValue>
                                         </DataListItem>
                                       </DataListRoot>
                                     </td>
@@ -4925,11 +4922,11 @@ export default function Sink() {
                                       <DataListRoot size={size} my="3">
                                         <DataListItem>
                                           <DataListLabel>Name</DataListLabel>
-                                          <DataListData>Susan Kare</DataListData>
+                                          <DataListValue>Susan Kare</DataListValue>
                                         </DataListItem>
                                         <DataListItem>
                                           <DataListLabel>Email</DataListLabel>
-                                          <DataListData>susan.kare@apple.com</DataListData>
+                                          <DataListValue>susan.kare@apple.com</DataListValue>
                                         </DataListItem>
                                       </DataListRoot>
                                     </td>
@@ -4962,11 +4959,11 @@ export default function Sink() {
                                 <DataListRoot gap={gap} my="3">
                                   <DataListItem>
                                     <DataListLabel>Name</DataListLabel>
-                                    <DataListData>Susan Kare</DataListData>
+                                    <DataListValue>Susan Kare</DataListValue>
                                   </DataListItem>
                                   <DataListItem>
                                     <DataListLabel>Email</DataListLabel>
-                                    <DataListData>susan.kare@apple.com</DataListData>
+                                    <DataListValue>susan.kare@apple.com</DataListValue>
                                   </DataListItem>
                                 </DataListRoot>
                               </td>
@@ -4982,11 +4979,11 @@ export default function Sink() {
                                 <DataListRoot gapX={gapX} my="3">
                                   <DataListItem>
                                     <DataListLabel>Name</DataListLabel>
-                                    <DataListData>Susan Kare</DataListData>
+                                    <DataListValue>Susan Kare</DataListValue>
                                   </DataListItem>
                                   <DataListItem>
                                     <DataListLabel>Email</DataListLabel>
-                                    <DataListData>susan.kare@apple.com</DataListData>
+                                    <DataListValue>susan.kare@apple.com</DataListValue>
                                   </DataListItem>
                                 </DataListRoot>
                               </td>
@@ -5002,11 +4999,11 @@ export default function Sink() {
                                 <DataListRoot gapY={gapY} my="3">
                                   <DataListItem>
                                     <DataListLabel>Name</DataListLabel>
-                                    <DataListData>Susan Kare</DataListData>
+                                    <DataListValue>Susan Kare</DataListValue>
                                   </DataListItem>
                                   <DataListItem>
                                     <DataListLabel>Email</DataListLabel>
-                                    <DataListData>susan.kare@apple.com</DataListData>
+                                    <DataListValue>susan.kare@apple.com</DataListValue>
                                   </DataListItem>
                                 </DataListRoot>
                               </td>
@@ -5045,11 +5042,11 @@ export default function Sink() {
                                 <DataListRoot my="3">
                                   <DataListItem>
                                     <DataListLabel color={color}>Name</DataListLabel>
-                                    <DataListData>Susan Kare</DataListData>
+                                    <DataListValue>Susan Kare</DataListValue>
                                   </DataListItem>
                                   <DataListItem>
                                     <DataListLabel color={color}>Email</DataListLabel>
-                                    <DataListData>susan.kare@apple.com</DataListData>
+                                    <DataListValue>susan.kare@apple.com</DataListValue>
                                   </DataListItem>
                                 </DataListRoot>
                               </td>
@@ -5059,13 +5056,13 @@ export default function Sink() {
                                     <DataListLabel highContrast color={color}>
                                       Name
                                     </DataListLabel>
-                                    <DataListData>Susan Kare</DataListData>
+                                    <DataListValue>Susan Kare</DataListValue>
                                   </DataListItem>
                                   <DataListItem>
                                     <DataListLabel highContrast color={color}>
                                       Email
                                     </DataListLabel>
-                                    <DataListData>susan.kare@apple.com</DataListData>
+                                    <DataListValue>susan.kare@apple.com</DataListValue>
                                   </DataListItem>
                                 </DataListRoot>
                               </td>
@@ -5099,11 +5096,11 @@ export default function Sink() {
                                   <DataListRoot my="3">
                                     <DataListItem>
                                       <DataListLabel width={`${labelWidth}px`}>Name</DataListLabel>
-                                      <DataListData>Susan Kare</DataListData>
+                                      <DataListValue>Susan Kare</DataListValue>
                                     </DataListItem>
                                     <DataListItem>
                                       <DataListLabel>Email</DataListLabel>
-                                      <DataListData>susan.kare@apple.com</DataListData>
+                                      <DataListValue>susan.kare@apple.com</DataListValue>
                                     </DataListItem>
                                   </DataListRoot>
                                 </td>

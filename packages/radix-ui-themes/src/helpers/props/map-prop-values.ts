@@ -29,8 +29,8 @@ function mapButtonSizeToSpinnerSize(
 ): (typeof spinnerPropDefs.size.values)[number] {
   switch (size) {
     case '1':
-    case '2':
       return '1';
+    case '2':
     case '3':
       return '2';
     case '4':

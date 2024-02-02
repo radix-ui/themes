@@ -57,11 +57,6 @@ function extractProps<
         continue;
       }
 
-      if (propDef.type === 'string') {
-        className = classNames(className, propDef.className);
-        continue;
-      }
-
       if (propDef.type === 'enum') {
         const propClassName = getResponsiveClassNames({
           allowArbitraryValues: false,
@@ -75,11 +70,13 @@ function extractProps<
         continue;
       }
 
-      if (propDef.type === 'enum | string') {
+      if (propDef.type === 'string' || propDef.type === 'enum | string') {
+        const propDefValues = propDef.type === 'string' ? [] : propDef.values;
+
         const [propClassNames, propCustomProperties] = getResponsiveStyles({
           className: propDef.className,
           customProperties: propDef.customProperties,
-          propValues: propDef.values,
+          propValues: propDefValues,
           parseValue: propDef.parseValue,
           value,
         });

@@ -8,6 +8,7 @@
 
   --inset-padding: var(--popover-content-padding);
   padding: var(--popover-content-padding);
+  box-sizing: border-box;
 
   transform-origin: var(--radix-popover-content-transform-origin);
 }

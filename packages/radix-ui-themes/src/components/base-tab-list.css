@@ -13,7 +13,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   flex-shrink: 0;
   position: relative;
   user-select: none;
@@ -55,6 +54,7 @@
  ***************************************************************************************************/
 
 .rt-BaseTabListTrigger {
+  box-sizing: border-box;
   height: var(--tab-height);
   padding-left: var(--tab-padding-x);
   padding-right: var(--tab-padding-x);
@@ -62,6 +62,7 @@
 
 .rt-BaseTabListTriggerInner,
 .rt-BaseTabListTriggerInnerHidden {
+  box-sizing: border-box;
   padding: var(--tab-inner-padding-y) var(--tab-inner-padding-x);
   border-radius: var(--tab-inner-border-radius);
 }

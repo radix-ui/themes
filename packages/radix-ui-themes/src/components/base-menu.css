@@ -17,6 +17,7 @@
   flex-direction: column;
   overflow: auto;
   padding: var(--base-menu-content-padding);
+  box-sizing: border-box;
 
   :where(.rt-BaseMenuContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
     padding-right: var(--space-3);
@@ -30,17 +31,18 @@
   height: var(--base-menu-item-height);
   padding-left: var(--base-menu-item-padding-left);
   padding-right: var(--base-menu-item-padding-right);
-  position: relative;
   box-sizing: border-box;
+  position: relative;
   outline: none;
-  cursor: var(--cursor-menu-item);
   scroll-margin: var(--base-menu-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
 
+  /* Cursors */
+  cursor: var(--cursor-menu-item);
   &:where([data-disabled]) {
-    pointer-events: none;
+    cursor: default;
   }
 }
 
@@ -78,6 +80,7 @@
   height: var(--base-menu-item-height);
   padding-left: var(--base-menu-item-padding-left);
   padding-right: var(--base-menu-item-padding-right);
+  box-sizing: border-box;
   color: var(--gray-a10);
   user-select: none;
   cursor: default;
@@ -236,7 +239,7 @@
     background-color: var(--accent-a3);
   }
   & :where(.rt-BaseMenuItem[data-highlighted]) {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-a4);
 
     &:where([data-accent-color]) {
       color: var(--accent-12);

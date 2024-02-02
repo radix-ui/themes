@@ -254,4 +254,8 @@
     background-image: none;
     box-shadow: none;
   }
+  .rt-SliderThumb:where(&),
+  .rt-SliderThumb:where(&)::after {
+    cursor: var(--cursor-disabled);
+  }
 }

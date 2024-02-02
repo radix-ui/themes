@@ -2,7 +2,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   flex-shrink: 0;
   user-select: none;
   vertical-align: top;
@@ -62,11 +61,16 @@
   position: relative;
   box-sizing: border-box;
   outline: none;
-  cursor: var(--cursor-menu-item);
   scroll-margin: var(--select-content-padding) 0;
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
+
+  /* Cursors */
+  cursor: var(--cursor-menu-item);
+  &:where([data-disabled]) {
+    cursor: default;
+  }
 }
 
 .rt-SelectItemIndicator {
@@ -111,6 +115,7 @@
   color: var(--gray-12);
 
   &:where(:not(.rt-variant-ghost)) {
+    box-sizing: border-box;
     height: var(--select-trigger-height);
   }
   &:where(.rt-variant-ghost) {
@@ -297,7 +302,6 @@
     box-shadow: inset 0 0 0 1px var(--gray-a8);
   }
   &:where(:disabled) {
-    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a2);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
@@ -369,7 +373,6 @@
     }
   }
   &:where(:disabled) {
-    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     /* Use disabled button style for the shadow */
     box-shadow: var(--base-button-classic-disabled-box-shadow);
@@ -415,7 +418,6 @@
     outline-color: var(--accent-8);
   }
   &:where(:disabled) {
-    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: var(--gray-a3);
   }
@@ -431,7 +433,6 @@
     background-color: var(--accent-a3);
   }
   &:where(:disabled) {
-    cursor: var(--cursor-disabled);
     color: var(--gray-a8);
     background-color: transparent;
   }
@@ -472,6 +473,6 @@
 
 .rt-SelectContent:where(.rt-variant-soft) {
   & :where(.rt-SelectItem[data-highlighted]) {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-a4);
   }
 }

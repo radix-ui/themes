@@ -156,7 +156,7 @@ export * as Callout from './callout.parts';
 export * from './callout.props';
 export { Card } from './card';
 export * from './card.props';
-export { DataListRoot, DataListData, DataListItem, DataListLabel } from './data-list';
+export { DataListRoot, DataListData, DataListItem, DataListValue } from './data-list';
 export * as DataList from './data-list.parts';
 export * from './data-list.props';
 // export * from './collapsible';
@@ -198,5 +198,6 @@ export * from './tabs.props';
 //------------------------------------------------------------------------------
 export { AccessibleIcon } from './accessible-icon';
 export { Portal } from './portal';
+export { Reset } from './reset';
 export { Slot, Slottable } from './slot';
 export { VisuallyHidden } from './visually-hidden';

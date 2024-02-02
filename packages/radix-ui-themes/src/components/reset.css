@@ -2,55 +2,173 @@
 /* Disable selector-max-type rule to target individual element types. */
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
-.rt-reset:where(a) {
-  cursor: auto;
-  text-decoration: none;
-  color: inherit;
-  outline: none;
-}
+.rt-reset {
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*              Margins                */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
 
-.rt-reset:where(a[href]) {
-  cursor: var(--cursor-link);
-}
+  &:where(body, blockquote, dl, dd, figure, p) {
+    margin: 0;
+  }
 
-.rt-reset:where(button) {
-  appearance: none;
-  cursor: var(--cursor-button);
-  background-color: transparent;
-  border: none;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  outline: none;
-  color: inherit;
-  padding: 0;
-  margin: 0;
-  text-align: initial;
-  -webkit-tap-highlight-color: transparent;
-}
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*             Typography              */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
 
-.rt-reset:where(h1, h2, h3, h4, h5, h6) {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
+  &:where(address, b, cite, code, dfn, em, i, kbd, q, samp, small, strong, var) {
+    font: unset;
+  }
+  &:where(h1, h2, h3, h4, h5, h6) {
+    font: unset;
+    margin: 0;
+  }
 
-.rt-reset:where(ol, ul) {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*        Interactive elements         */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
 
-.rt-reset:where(p) {
-  margin: 0;
-}
+  &:where(a, button, input, textarea, select) {
+    all: unset;
+    display: inline-block;
+    -webkit-tap-highlight-color: transparent;
+  }
+  &:where(:focus) {
+    outline: none;
+  }
+  &::placeholder {
+    color: unset;
+    opacity: unset;
+  }
 
-.rt-reset:where(pre) {
-  font-family: inherit;
-  margin: 0;
-}
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*               Tables                */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
 
-.rt-reset:where(dd) {
-  margin: 0;
+  &:where(table) {
+    all: unset;
+    display: table;
+  }
+  &:where(caption) {
+    text-align: inherit;
+  }
+  &:where(td) {
+    padding: 0;
+  }
+  &:where(th) {
+    font-weight: unset;
+    text-align: inherit;
+    padding: 0;
+  }
+
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*       Individual style tweaks       */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
+
+  &:where(canvas, object, picture, summary) {
+    display: block;
+  }
+  &:where(del, s) {
+    text-decoration: unset;
+  }
+  &:where(fieldset, hr) {
+    all: unset;
+    display: block;
+  }
+  &:where(legend) {
+    padding: 0;
+    border: none;
+  }
+  &:where(li) {
+    display: block;
+    text-align: unset;
+  }
+  &:where(ol, ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &:where(iframe) {
+    display: block;
+    border: none;
+  }
+  @supports (width: -webkit-fill-available) {
+    &:where(iframe, input, textarea) {
+      width: -webkit-fill-available;
+    }
+  }
+  @supports (width: -moz-available) {
+    &:where(iframe, input, textarea) {
+      width: -moz-available;
+    }
+  }
+  &:where(ins, u) {
+    text-decoration: none;
+  }
+  &:where(img) {
+    display: block;
+    max-width: 100%;
+  }
+  &:where(svg) {
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+  &:where(mark) {
+    all: unset;
+  }
+  &:where(pre) {
+    font: unset;
+    margin: unset;
+  }
+  &:where(q)::before,
+  &:where(q)::after {
+    content: '';
+  }
+  &:where(sub, sup) {
+    font: unset;
+    vertical-align: unset;
+  }
+
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*               Cursors               */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
+
+  &:where(a[href]) {
+    cursor: var(--cursor-link);
+  }
+  &:where(button) {
+    cursor: var(--cursor-button);
+  }
+  &:where(:disabled, [data-disabled]) {
+    cursor: var(--cursor-disabled);
+  }
+  &:where(input[type='checkbox']) {
+    cursor: var(--cursor-checkbox);
+  }
+  &:where(input[type='radio']) {
+    cursor: var(--cursor-radio);
+  }
+
+  /* * * * * * * * * * * * * * * * * * * */
+  /*                                     */
+  /*             Box sizing              */
+  /*                                     */
+  /* * * * * * * * * * * * * * * * * * * */
+
+  & {
+    /* Don't reorder this rule or remove "&" */
+    box-sizing: border-box;
+  }
 }
