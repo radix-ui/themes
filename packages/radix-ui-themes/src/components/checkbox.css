@@ -1,11 +1,13 @@
 @import './base-checkbox.css';
 
-.rt-Checkbox:where(:focus-visible)::before {
-  outline: 2px solid var(--color-focus-root);
-  outline-offset: 2px;
-}
+.rt-CheckboxRoot {
+  &:where(:focus-visible)::before {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: 2px;
+  }
 
-.rt-Checkbox:where(:disabled)::before {
-  background-color: var(--gray-a3);
-  cursor: var(--cursor-disabled);
+  &:where(:disabled)::before {
+    background-color: var(--gray-a3);
+    cursor: var(--cursor-disabled);
+  }
 }
