@@ -8,6 +8,8 @@
 }
 
 .rt-CheckboxCardGroupItem {
+  position: relative;
+
   display: flex;
   align-items: center;
   gap: var(--checkbox-card-group-item-gap);
