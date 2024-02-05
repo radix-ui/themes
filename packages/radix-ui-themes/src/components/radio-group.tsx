@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { radioGroupPropDefs } from './radio-group.props';
-import { extractProps, marginPropDefs } from '../helpers';
+import { radioGroupPropDefs } from './radio-group.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 type RadioGroupRootOwnProps = GetPropDefTypes<typeof radioGroupPropDefs>;

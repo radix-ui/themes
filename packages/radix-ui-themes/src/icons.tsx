@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PropsWithoutRefOrColor } from './helpers';
+import type { PropsWithoutRefOrColor } from './helpers/index.js';
 
 type IconElement = React.ElementRef<'svg'>;
 interface IconProps extends PropsWithoutRefOrColor<'svg'> {

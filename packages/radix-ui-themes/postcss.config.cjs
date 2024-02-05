@@ -6,11 +6,11 @@ module.exports = {
       path: [path.relative(process.cwd(), '../')],
     }),
     require('postcss-nesting'),
-    require('./postcss-breakpoints'),
+    require('./postcss-breakpoints.cjs'),
     require('postcss-custom-media'),
     require('postcss-combine-duplicated-selectors'),
     require('postcss-discard-empty'),
-    require('./postcss-whitespace'),
+    require('./postcss-whitespace.cjs'),
     require('autoprefixer'),
   ],
 };

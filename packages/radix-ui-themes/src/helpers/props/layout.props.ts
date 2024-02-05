@@ -1,7 +1,7 @@
-import { paddingPropDefs } from './padding.props';
-import type { PropDef, GetPropDefTypes } from './prop-def';
-import { heightPropDefs } from './height.props';
-import { widthPropDefs } from './width.props';
+import { paddingPropDefs } from './padding.props.js';
+import type { PropDef, GetPropDefTypes } from './prop-def.js';
+import { heightPropDefs } from './height.props.js';
+import { widthPropDefs } from './width.props.js';
 
 const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as const;
 // prettier-ignore

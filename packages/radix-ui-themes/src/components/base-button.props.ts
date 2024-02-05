@@ -1,5 +1,5 @@
-import { asChildProp, colorProp, highContrastProp, radiusProp } from '../helpers';
-import type { PropDef } from '../helpers';
+import { asChildProp, colorProp, highContrastProp, radiusProp } from '../helpers/index.js';
+import type { PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;

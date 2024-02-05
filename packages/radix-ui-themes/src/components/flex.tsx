@@ -1,10 +1,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from './slot';
-import { flexPropDefs } from './flex.props';
-import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { Slot } from './slot.js';
+import { flexPropDefs } from './flex.props.js';
+import {
+  deprecatedLayoutPropDefs,
+  extractProps,
+  layoutPropDefs,
+  marginPropDefs,
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type {
+  MarginProps,
+  LayoutProps,
+  GetPropDefTypes,
+  PropsWithoutRefOrColor,
+} from '../helpers/index.js';
 
 type FlexElement = React.ElementRef<'div'>;
 type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs>;

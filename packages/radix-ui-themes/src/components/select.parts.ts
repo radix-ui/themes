@@ -1,7 +1,7 @@
-export { SelectRoot as Root } from './select';
-export { SelectTrigger as Trigger } from './select';
-export { SelectContent as Content } from './select';
-export { SelectItem as Item } from './select';
-export { SelectGroup as Group } from './select';
-export { SelectLabel as Label } from './select';
-export { SelectSeparator as Separator } from './select';
+export { SelectRoot as Root } from './select.js';
+export { SelectTrigger as Trigger } from './select.js';
+export { SelectContent as Content } from './select.js';
+export { SelectItem as Item } from './select.js';
+export { SelectGroup as Group } from './select.js';
+export { SelectLabel as Label } from './select.js';
+export { SelectSeparator as Separator } from './select.js';

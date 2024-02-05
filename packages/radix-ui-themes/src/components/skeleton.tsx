@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { skeletonPropDefs } from './skeleton.props';
-import { extractProps, marginPropDefs } from '../helpers';
+import { skeletonPropDefs } from './skeleton.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type SkeletonElement = React.ElementRef<'span'>;
 type SkeletonOwnProps = GetPropDefTypes<typeof skeletonPropDefs>;

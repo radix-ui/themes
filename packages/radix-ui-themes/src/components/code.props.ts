@@ -1,6 +1,6 @@
-import { weightProp, colorProp, highContrastProp } from '../helpers';
-import type { PropDef } from '../helpers';
-import { asChildProp } from '../helpers/props/as-child.prop';
+import { weightProp, colorProp, highContrastProp } from '../helpers/index.js';
+import type { PropDef } from '../helpers/index.js';
+import { asChildProp } from '../helpers/props/as-child.prop.js';
 
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const variants = ['solid', 'soft', 'outline', 'ghost'] as const;

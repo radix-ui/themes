@@ -1,5 +1,5 @@
-import { asChildProp, colorProp } from '../helpers';
-import type { PropDef } from '../helpers';
+import { asChildProp, colorProp } from '../helpers/index.js';
+import type { PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
 

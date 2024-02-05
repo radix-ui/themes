@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { kbdPropDefs } from './kbd.props';
-import { extractProps, GetPropDefTypes, marginPropDefs } from '../helpers';
+import { kbdPropDefs } from './kbd.props.js';
+import { extractProps, GetPropDefTypes, marginPropDefs } from '../helpers/index.js';
 
-import type { MarginProps, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type KbdElement = React.ElementRef<'kbd'>;
 type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;

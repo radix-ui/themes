@@ -1,5 +1,5 @@
-import { themePropDefs } from '../../theme-options';
-import type { PropDef } from '..';
+import { themePropDefs } from './theme.props.js';
+import type { PropDef } from './prop-def.js';
 
 const radiusProp = {
   type: 'enum',

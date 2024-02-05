@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { emPropDefs } from './em.props';
+import { emPropDefs } from './em.props.js';
 
-import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type QuoteElement = React.ElementRef<'q'>;
 type QuoteOwnProps = GetPropDefTypes<typeof emPropDefs>;

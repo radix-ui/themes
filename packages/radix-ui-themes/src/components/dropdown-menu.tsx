@@ -4,19 +4,19 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Slottable } from '@radix-ui/react-slot';
-import { ScrollArea } from './scroll-area';
+import { ScrollArea } from './scroll-area.js';
 import {
   dropdownMenuContentPropDefs,
   dropdownMenuItemPropDefs,
   dropdownMenuCheckboxItemPropDefs,
   dropdownMenuRadioItemPropDefs,
-} from './dropdown-menu.props';
-import { extractProps, requireReactElement } from '../helpers';
-import { Theme, useThemeContext } from '../theme';
-import { ThickCheckIcon, ThickChevronRightIcon } from '../icons';
+} from './dropdown-menu.props.js';
+import { extractProps, requireReactElement } from '../helpers/index.js';
+import { Theme, useThemeContext } from '../theme.js';
+import { ThickCheckIcon, ThickChevronRightIcon } from '../icons.js';
 
-import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers';
-import { baseMenuContentPropDefs } from './base-menu.props';
+import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers/index.js';
+import { baseMenuContentPropDefs } from './base-menu.props.js';
 
 interface DropdownMenuRootProps extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Root> {}
 const DropdownMenuRoot: React.FC<DropdownMenuRootProps> = (props) => (

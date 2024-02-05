@@ -1,5 +1,5 @@
-import { asChildProp } from '../helpers/props/as-child.prop';
-import { textPropDefs } from './text.props';
+import { asChildProp } from '../helpers/props/as-child.prop.js';
+import { textPropDefs } from './text.props.js';
 
 const blockquotePropDefs = {
   asChild: asChildProp,

@@ -6,8 +6,8 @@ import {
   trimProp,
   truncateProp,
   weightProp,
-} from '../helpers';
-import { type PropDef } from '../helpers';
+} from '../helpers/index.js';
+import { type PropDef } from '../helpers/index.js';
 
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const underline = ['auto', 'hover', 'always'] as const;

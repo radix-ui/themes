@@ -1,6 +1,6 @@
-import type { PropDef } from '../helpers';
-import { colorProp, inheritedColorProp, paddingPropDefs, radiusProp } from '../helpers';
-import { flexPropDefs } from './flex.props';
+import type { PropDef } from '../helpers/index.js';
+import { colorProp, inheritedColorProp, paddingPropDefs, radiusProp } from '../helpers/index.js';
+import { flexPropDefs } from './flex.props.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;

@@ -3,16 +3,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import { scrollAreaPropDefs } from './scroll-area.props';
+import { scrollAreaPropDefs } from './scroll-area.props.js';
 import {
   extractMarginProps,
   getMarginStyles,
   getResponsiveClassNames,
   getRoot,
   mergeStyles,
-} from '../helpers';
+} from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 type ScrollAreaOwnProps = GetPropDefTypes<typeof scrollAreaPropDefs>;

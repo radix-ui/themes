@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { getResponsiveStyles } from '../responsive';
-import { mergeStyles } from '../merge-styles';
+import { getResponsiveStyles } from '../responsive.js';
+import { mergeStyles } from '../merge-styles.js';
 
-import type { PropDef, GetPropDefTypes } from './prop-def';
+import type { PropDef, GetPropDefTypes } from './prop-def.js';
 
 // prettier-ignore
 const marginValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9'] as const;

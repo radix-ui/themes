@@ -3,11 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
-import { hoverCardContentPropDefs } from './hover-card.props';
-import { extractProps, requireReactElement } from '../helpers';
-import { Theme } from '../theme';
+import { hoverCardContentPropDefs } from './hover-card.props.js';
+import { extractProps, requireReactElement } from '../helpers/index.js';
+import { Theme } from '../theme.js';
 
-import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 interface HoverCardRootProps extends PropsWithoutRefOrColor<typeof HoverCardPrimitive.Root> {}
 const HoverCardRoot: React.FC<HoverCardRootProps> = (props) => (

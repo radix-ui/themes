@@ -1,10 +1,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { sectionPropDefs } from './section.props';
-import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { sectionPropDefs } from './section.props.js';
+import {
+  deprecatedLayoutPropDefs,
+  extractProps,
+  layoutPropDefs,
+  marginPropDefs,
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type {
+  MarginProps,
+  LayoutProps,
+  GetPropDefTypes,
+  PropsWithoutRefOrColor,
+} from '../helpers/index.js';
 
 type SectionElement = React.ElementRef<'div'>;
 type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs>;

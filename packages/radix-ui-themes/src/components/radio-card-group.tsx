@@ -3,11 +3,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { radioCardGroupPropDefs } from './radio-card-group.props';
-import { extractProps, marginPropDefs } from '../helpers';
-import { Grid } from './grid';
+import { radioCardGroupPropDefs } from './radio-card-group.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { Grid } from './grid.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type RadioCardGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 type RadioCardGroupRootOwnProps = GetPropDefTypes<typeof radioCardGroupPropDefs>;

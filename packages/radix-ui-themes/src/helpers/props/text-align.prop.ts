@@ -1,4 +1,4 @@
-import type { PropDef } from '..';
+import type { PropDef } from './prop-def.js';
 
 const alignValues = ['left', 'center', 'right'] as const;
 

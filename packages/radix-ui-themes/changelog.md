@@ -1,8 +1,10 @@
 # Changelog
 
-## 2.1.0 [Unreleased]
+## 3.0.0 [Unreleased]
 
 - General
+  - Improve ESM compatibility
+  - Improve tree-shaking of individual component parts
   - Add the following props to all layout components:
     - `minWidth`, `maxWidth`
     - `minHeight`, `maxHeight`
@@ -28,7 +30,6 @@
   - Ensure all elements that have padding or border styles use `box-sizing: border-box`
   - Ensure that disabled cursor styles are applied correctly
   - Tweak the background color of all `variant="soft"` menu items
-  - Improve tree-shaking of individual component parts
 - 8 new components
   - `CheckboxCardGroup`
   - `DataList`

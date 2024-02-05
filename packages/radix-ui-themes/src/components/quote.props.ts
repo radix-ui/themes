@@ -1,4 +1,4 @@
-import { asChildProp } from '../helpers';
+import { asChildProp } from '../helpers/index.js';
 
 const quotePropDefs = {
   asChild: asChildProp,
