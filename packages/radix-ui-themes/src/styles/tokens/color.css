@@ -209,13 +209,13 @@
  */
 .radix-themes:where(.light, .light-theme) {
   &,
-  html:where(:has(&[data-is-root-theme='true'])) {
+  :root:where(:has(&[data-is-root-theme='true'])) {
     color-scheme: light;
   }
 }
 .radix-themes:where(.dark, .dark-theme) {
   &,
-  html:where(:has(&[data-is-root-theme='true'])) {
+  :root:where(:has(&[data-is-root-theme='true'])) {
     color-scheme: dark;
   }
 }
