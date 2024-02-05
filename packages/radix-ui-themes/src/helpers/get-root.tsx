@@ -8,7 +8,7 @@ interface GetChildrenArgs<T extends React.ElementType> {
 }
 
 export const getRoot = <
-  T extends React.ElementType,
+  T extends React.ComponentType<any> | keyof JSX.IntrinsicElements,
   U extends React.ComponentProps<T> extends { asChild?: boolean } ? T : Exclude<T, typeof Slot>
 >({
   asChild,
@@ -28,10 +28,12 @@ export const getRoot = <
         });
 
         // Make sure we don't pass `asChild` to DOM elements
-        const asChildProp = (Parent as unknown) === Slot ? undefined : asChild;
+        if ((Parent as unknown) === Slot) {
+          return <Parent {...props}>{child}</Parent>;
+        }
 
         return (
-          <Parent asChild={asChildProp} {...props}>
+          <Parent asChild={asChild} {...props}>
             {child}
           </Parent>
         );
