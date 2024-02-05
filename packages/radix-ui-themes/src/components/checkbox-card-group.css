@@ -31,7 +31,8 @@
     pointer-events: none;
   }
 
-  & > svg {
+  /* stylelint-disable-next-line selector-max-type */
+  & > :where(svg) {
     /* Don’t squish icons */
     flex-shrink: 0;
   }
@@ -114,7 +115,7 @@
       color: var(--gray-a9);
     }
 
-    &:has(:focus-visible) {
+    &:where(:has(:focus-visible)) {
       outline: 2px solid var(--color-focus-root);
       outline-offset: -2px;
     }
@@ -141,7 +142,7 @@
       color: var(--gray-a9);
     }
 
-    &:has(:focus-visible) {
+    &:where(:has(:focus-visible)) {
       outline: 2px solid var(--color-focus-root);
       outline-offset: -1px;
     }
