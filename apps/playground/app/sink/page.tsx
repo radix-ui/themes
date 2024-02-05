@@ -284,31 +284,29 @@ export default function Sink() {
                               <Button variant="solid">Open</Button>
                             </DialogTrigger>
                             <DialogContent asChild style={{ maxWidth: 450 }}>
-                              <ScrollArea>
-                                <Flex direction="column" gap="3">
-                                  <InfoCircledIcon
-                                    style={{ position: 'absolute', top: '24px', right: '20px' }}
-                                  />
-                                  <DialogTitle>Share resource</DialogTitle>
-                                  <DialogDescription>
-                                    Jan Tschichold was a German calligrapher, typographer and book
-                                    designer. He played a significant role in the development of
-                                    graphic design in the 20th century.
-                                  </DialogDescription>
-                                  <Flex gap="3" mt="4" justify="end">
-                                    <DialogClose>
-                                      <Button variant="soft" color="gray">
-                                        Cancel
-                                      </Button>
-                                    </DialogClose>
-                                    <DialogClose>
-                                      <Button variant="solid">
-                                        Share <Share2Icon />
-                                      </Button>
-                                    </DialogClose>
-                                  </Flex>
+                              <Flex direction="column" gap="3">
+                                <InfoCircledIcon
+                                  style={{ position: 'absolute', top: '24px', right: '20px' }}
+                                />
+                                <DialogTitle>Share resource</DialogTitle>
+                                <DialogDescription>
+                                  Jan Tschichold was a German calligrapher, typographer and book
+                                  designer. He played a significant role in the development of
+                                  graphic design in the 20th century.
+                                </DialogDescription>
+                                <Flex gap="3" mt="4" justify="end">
+                                  <DialogClose>
+                                    <Button variant="soft" color="gray">
+                                      Cancel
+                                    </Button>
+                                  </DialogClose>
+                                  <DialogClose>
+                                    <Button variant="solid">
+                                      Share <Share2Icon />
+                                    </Button>
+                                  </DialogClose>
                                 </Flex>
-                              </ScrollArea>
+                              </Flex>
                             </DialogContent>
                           </DialogRoot>
                         </DocsGridSectionItem>

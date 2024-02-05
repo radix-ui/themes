@@ -18,12 +18,8 @@
 }
 
 .rt-BaseDialogScrollPadding {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  box-sizing: border-box;
+  flex-grow: 1;
+  margin: auto;
   padding-top: var(--space-6);
   padding-bottom: max(var(--space-6), 6vh);
   padding-left: var(--space-4);
@@ -31,6 +27,7 @@
 }
 
 .rt-BaseDialogContent {
+  margin: auto;
   width: 100%;
   max-width: 580px;
   z-index: 1;
