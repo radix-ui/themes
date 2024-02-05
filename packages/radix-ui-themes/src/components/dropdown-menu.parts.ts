@@ -1,13 +1,15 @@
-export { DropdownMenuRoot as Root } from './dropdown-menu.js';
-export { DropdownMenuTrigger as Trigger } from './dropdown-menu.js';
-export { DropdownMenuContent as Content } from './dropdown-menu.js';
-export { DropdownMenuLabel as Label } from './dropdown-menu.js';
-export { DropdownMenuItem as Item } from './dropdown-menu.js';
-export { DropdownMenuGroup as Group } from './dropdown-menu.js';
-export { DropdownMenuRadioGroup as RadioGroup } from './dropdown-menu.js';
-export { DropdownMenuRadioItem as RadioItem } from './dropdown-menu.js';
-export { DropdownMenuCheckboxItem as CheckboxItem } from './dropdown-menu.js';
-export { DropdownMenuSub as Sub } from './dropdown-menu.js';
-export { DropdownMenuSubTrigger as SubTrigger } from './dropdown-menu.js';
-export { DropdownMenuSubContent as SubContent } from './dropdown-menu.js';
-export { DropdownMenuSeparator as Separator } from './dropdown-menu.js';
+export {
+  DropdownMenuRoot as Root,
+  DropdownMenuTrigger as Trigger,
+  DropdownMenuContent as Content,
+  DropdownMenuLabel as Label,
+  DropdownMenuItem as Item,
+  DropdownMenuGroup as Group,
+  DropdownMenuRadioGroup as RadioGroup,
+  DropdownMenuRadioItem as RadioItem,
+  DropdownMenuCheckboxItem as CheckboxItem,
+  DropdownMenuSub as Sub,
+  DropdownMenuSubTrigger as SubTrigger,
+  DropdownMenuSubContent as SubContent,
+  DropdownMenuSeparator as Separator,
+} from './dropdown-menu.js';

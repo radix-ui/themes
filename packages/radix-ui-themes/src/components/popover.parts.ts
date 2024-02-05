@@ -1,4 +1,6 @@
-export { PopoverRoot as Root } from './popover.js';
-export { PopoverContent as Content } from './popover.js';
-export { PopoverTrigger as Trigger } from './popover.js';
-export { PopoverClose as Close } from './popover.js';
+export {
+  PopoverRoot as Root,
+  PopoverContent as Content,
+  PopoverTrigger as Trigger,
+  PopoverClose as Close,
+} from './popover.js';
