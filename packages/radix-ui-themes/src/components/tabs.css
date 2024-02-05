@@ -6,5 +6,5 @@
 }
 
 .rt-TabsContent:where(:focus-visible) {
-  outline: 2px solid var(--color-focus-root);
+  outline: 2px solid var(--focus-8);
 }

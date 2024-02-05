@@ -27,7 +27,7 @@
   }
 
   &:where(:focus-visible)::after {
-    outline: 2px solid var(--color-focus-root);
+    outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
 }

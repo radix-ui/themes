@@ -219,13 +219,35 @@
 
 .radix-themes,
 [data-accent-color]:where(:not([data-accent-color='gray'])) {
-  --color-autofill-root: var(--accent-a3);
-  --color-focus-root: var(--accent-8);
-  --color-selection-root: var(--accent-a5);
+  --focus-1: var(--accent-1);
+  --focus-2: var(--accent-2);
+  --focus-3: var(--accent-3);
+  --focus-4: var(--accent-4);
+  --focus-5: var(--accent-5);
+  --focus-6: var(--accent-6);
+  --focus-7: var(--accent-7);
+  --focus-8: var(--accent-8);
+  --focus-9: var(--accent-9);
+  --focus-10: var(--accent-10);
+  --focus-11: var(--accent-11);
+  --focus-12: var(--accent-12);
+
+  --focus-a1: var(--accent-a1);
+  --focus-a2: var(--accent-a2);
+  --focus-a3: var(--accent-a3);
+  --focus-a4: var(--accent-a4);
+  --focus-a5: var(--accent-a5);
+  --focus-a6: var(--accent-a6);
+  --focus-a7: var(--accent-a7);
+  --focus-a8: var(--accent-a8);
+  --focus-a9: var(--accent-a9);
+  --focus-a10: var(--accent-a10);
+  --focus-a11: var(--accent-a11);
+  --focus-a12: var(--accent-a12);
 }
 
 .radix-themes ::selection {
-  background-color: var(--color-selection-root);
+  background-color: var(--focus-a5);
 }
 
 /* * * * * * * * * * * * * * * * * * * */
