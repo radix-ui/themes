@@ -1,10 +1,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from './slot';
-import { boxPropDefs } from './box.props';
-import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { Slot } from './slot.js';
+import { boxPropDefs } from './box.props.js';
+import {
+  deprecatedLayoutPropDefs,
+  extractProps,
+  layoutPropDefs,
+  marginPropDefs,
+} from '../helpers/index.js';
 
-import type { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type {
+  MarginProps,
+  LayoutProps,
+  GetPropDefTypes,
+  PropsWithoutRefOrColor,
+} from '../helpers/index.js';
 
 type BoxElement = React.ElementRef<'div'>;
 type BoxOwnProps = GetPropDefTypes<typeof boxPropDefs>;

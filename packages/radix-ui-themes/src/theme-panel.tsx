@@ -2,31 +2,29 @@
 
 import * as React from 'react';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
-import { InfoCircledIcon } from './icons';
+import { InfoCircledIcon } from './icons.js';
 import {
-  Theme,
-  updateThemeAppearanceClass,
+  AccessibleIcon,
   Box,
   Button,
   Flex,
   Grid,
   Heading,
+  IconButton,
   Kbd,
+  PopoverContent,
+  PopoverRoot,
+  PopoverTrigger,
   ScrollArea,
   Text,
   Tooltip,
-  // helpers
-  themePropDefs,
-  themeAccentColorsOrdered,
-  getMatchingGrayColor,
-  useThemeContext,
-  radixGrayScalesDesaturated,
-  IconButton,
-  AccessibleIcon,
-  Popover,
-} from './index';
+} from './components/index.js';
+import { Theme, updateThemeAppearanceClass, useThemeContext } from './theme.js';
+import { getMatchingGrayColor, themeAccentColorsOrdered } from './theme-options.js';
+import { radixGrayScalesDesaturated, themePropDefs } from './helpers/index.js';
 
-import type { PropsWithoutRefOrColor, ThemeOptions } from './index';
+import type { ThemeOptions } from './theme-options.js';
+import type { PropsWithoutRefOrColor } from './helpers/index.js';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;
@@ -435,22 +433,22 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                   Panel background
                 </Text>
 
-                <Popover.Root>
-                  <Popover.Trigger>
+                <PopoverRoot>
+                  <PopoverTrigger>
                     <IconButton size="1" variant="ghost" color="gray">
                       <AccessibleIcon label="Learn more about panel background options">
                         <InfoCircledIcon />
                       </AccessibleIcon>
                     </IconButton>
-                  </Popover.Trigger>
+                  </PopoverTrigger>
 
-                  <Popover.Content size="1" style={{ maxWidth: 220 }} side="top" align="center">
+                  <PopoverContent size="1" style={{ maxWidth: 220 }} side="top" align="center">
                     <Text as="p" size="2">
                       Whether Card and Table panels are translucent, showing some of the background
                       behind them.
                     </Text>
-                  </Popover.Content>
-                </Popover.Root>
+                  </PopoverContent>
+                </PopoverRoot>
               </Flex>
 
               <Grid

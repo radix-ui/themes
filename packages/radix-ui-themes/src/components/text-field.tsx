@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { composeEventHandlers } from '@radix-ui/primitive';
-import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props';
-import { extractMarginProps, extractProps, marginPropDefs } from '../helpers';
+import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props.js';
+import { extractMarginProps, extractProps, marginPropDefs } from '../helpers/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type TextFieldContextValue = GetPropDefTypes<typeof textFieldPropDefs>;
 const TextFieldContext = React.createContext<TextFieldContextValue | undefined>(undefined);

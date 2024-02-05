@@ -1,6 +1,6 @@
-import { colorProp, highContrastProp } from '../helpers';
-import type { PropDef } from '../helpers';
-import { gridPropDefs } from './grid.props';
+import { colorProp, highContrastProp } from '../helpers/index.js';
+import type { PropDef } from '../helpers/index.js';
+import { gridPropDefs } from './grid.props.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'classic'] as const;

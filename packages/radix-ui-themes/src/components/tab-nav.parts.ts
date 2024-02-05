@@ -1,2 +1,1 @@
-export { TabNavRoot as Root } from './tab-nav';
-export { TabNavLink as Link } from './tab-nav';
+export { TabNavRoot as Root, TabNavLink as Link } from './tab-nav.js';

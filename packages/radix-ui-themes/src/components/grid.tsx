@@ -1,10 +1,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from './slot';
-import { gridPropDefs } from './grid.props';
-import { deprecatedLayoutPropDefs, extractProps, layoutPropDefs, marginPropDefs } from '../helpers';
+import { Slot } from './slot.js';
+import { gridPropDefs } from './grid.props.js';
+import {
+  deprecatedLayoutPropDefs,
+  extractProps,
+  layoutPropDefs,
+  marginPropDefs,
+} from '../helpers/index.js';
 
-import { MarginProps, LayoutProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import {
+  MarginProps,
+  LayoutProps,
+  GetPropDefTypes,
+  PropsWithoutRefOrColor,
+} from '../helpers/index.js';
 
 type GridElement = React.ElementRef<'div'>;
 type GridOwnProps = GetPropDefTypes<typeof gridPropDefs>;

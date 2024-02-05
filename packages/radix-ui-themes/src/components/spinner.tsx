@@ -1,11 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Flex } from './flex';
-import { spinnerPropDefs } from './spinner.props';
-import { extractProps, marginPropDefs } from '../helpers';
-import { VisuallyHidden } from './visually-hidden';
+import { Flex } from './flex.js';
+import { spinnerPropDefs } from './spinner.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { VisuallyHidden } from './visually-hidden.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type SpinnerElement = React.ElementRef<'span'>;
 type SpinnerOwnProps = GetPropDefTypes<typeof spinnerPropDefs>;

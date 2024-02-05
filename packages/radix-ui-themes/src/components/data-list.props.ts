@@ -1,5 +1,11 @@
-import { widthPropDefs, trimProp, gapProps, colorProp, highContrastProp } from '../helpers';
-import type { PropDef } from '../helpers';
+import {
+  widthPropDefs,
+  trimProp,
+  gapProps,
+  colorProp,
+  highContrastProp,
+} from '../helpers/index.js';
+import type { PropDef } from '../helpers/index.js';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const orientationValues = ['horizontal', 'vertical'] as const;

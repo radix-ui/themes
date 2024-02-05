@@ -1,2 +1,1 @@
-export { RadioGroupRoot as Root } from './radio-group';
-export { RadioGroupItem as Item } from './radio-group';
+export { RadioGroupRoot as Root, RadioGroupItem as Item } from './radio-group.js';

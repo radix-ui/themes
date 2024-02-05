@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
-import { progressPropDefs } from './progress.props';
-import { extractProps, marginPropDefs, mergeStyles } from '../helpers';
+import { progressPropDefs } from './progress.props.js';
+import { extractProps, marginPropDefs, mergeStyles } from '../helpers/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;

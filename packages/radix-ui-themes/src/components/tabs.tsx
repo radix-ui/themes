@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { tabsContentPropDefs, tabsListPropDefs, tabsRootPropDefs } from './tabs.props';
-import { extractProps, marginPropDefs } from '../helpers';
+import { tabsContentPropDefs, tabsListPropDefs, tabsRootPropDefs } from './tabs.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;

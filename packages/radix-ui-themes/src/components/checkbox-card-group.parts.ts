@@ -1,2 +1,4 @@
-export { CheckboxCardGroupRoot as Root } from './checkbox-card-group';
-export { CheckboxCardGroupItem as Item } from './checkbox-card-group';
+export {
+  CheckboxCardGroupRoot as Root,
+  CheckboxCardGroupItem as Item,
+} from './checkbox-card-group.js';

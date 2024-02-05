@@ -3,13 +3,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { dialogContentPropDefs } from './dialog.props';
-import { extractProps, requireReactElement } from '../helpers';
-import { Heading } from './heading';
-import { Text } from './text';
-import { Theme } from '../theme';
+import { dialogContentPropDefs } from './dialog.props.js';
+import { extractProps, requireReactElement } from '../helpers/index.js';
+import { Heading } from './heading.js';
+import { Text } from './text.js';
+import { Theme } from '../theme.js';
 
-import type { ComponentPropsAs, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type {
+  ComponentPropsAs,
+  GetPropDefTypes,
+  PropsWithoutRefOrColor,
+} from '../helpers/index.js';
 
 interface DialogRootProps
   extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Root>, 'modal'> {}

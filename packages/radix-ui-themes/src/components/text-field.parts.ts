@@ -1,3 +1,5 @@
-export { TextFieldRoot as Root } from './text-field';
-export { TextFieldSlot as Slot } from './text-field';
-export { TextFieldInput as Input } from './text-field';
+export {
+  TextFieldRoot as Root,
+  TextFieldSlot as Slot,
+  TextFieldInput as Input,
+} from './text-field.js';

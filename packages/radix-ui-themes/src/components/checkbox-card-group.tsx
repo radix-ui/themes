@@ -3,15 +3,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { createContextScope } from '@radix-ui/react-context';
-import * as CheckboxGroupPrimitive from './checkbox-group.primitive';
-import { createCheckboxGroupScope } from './checkbox-group.primitive';
-import { checkboxCardGroupPropDefs } from './checkbox-card-group.props';
-import { baseCheckboxPropDefs } from './base-checkbox.props';
-import { extractProps, marginPropDefs } from '../helpers';
-import { Grid } from './grid';
-import { ThickCheckIcon } from '../icons';
+import * as CheckboxGroupPrimitive from './checkbox-group.primitive.js';
+import { createCheckboxGroupScope } from './checkbox-group.primitive.js';
+import { checkboxCardGroupPropDefs } from './checkbox-card-group.props.js';
+import { baseCheckboxPropDefs } from './base-checkbox.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { Grid } from './grid.js';
+import { ThickCheckIcon } from '../icons.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes, Responsive } from '../helpers';
+import type {
+  PropsWithoutRefOrColor,
+  MarginProps,
+  GetPropDefTypes,
+  Responsive,
+} from '../helpers/index.js';
 import type { Scope } from '@radix-ui/react-context';
 
 const CHECKBOX_CARD_GROUP_NAME = 'CheckboxCardGroup';

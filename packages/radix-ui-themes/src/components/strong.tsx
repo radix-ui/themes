@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { strongPropDefs } from './strong.props';
+import { strongPropDefs } from './strong.props.js';
 
-import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type StrongElement = React.ElementRef<'strong'>;
 type StrongOwnProps = GetPropDefTypes<typeof strongPropDefs>;

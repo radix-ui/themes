@@ -1,4 +1,4 @@
-import { asChildProp } from '../helpers';
+import { asChildProp } from '../helpers/index.js';
 
 const tabsRootPropDefs = {
   asChild: asChildProp,
@@ -12,5 +12,5 @@ const tabsContentPropDefs = {
   asChild: typeof asChildProp;
 };
 
-export { baseTabListPropDefs as tabsListPropDefs } from './base-tab-list.props';
+export { baseTabListPropDefs as tabsListPropDefs } from './base-tab-list.props.js';
 export { tabsRootPropDefs, tabsContentPropDefs };

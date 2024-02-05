@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { insetPropDefs } from './inset.props';
-import { extractProps, marginPropDefs } from '../helpers';
+import { insetPropDefs } from './inset.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type InsetElement = React.ElementRef<'div'>;
 type InsetOwnProps = GetPropDefTypes<typeof insetPropDefs>;

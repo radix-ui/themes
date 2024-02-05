@@ -2,8 +2,8 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 
-import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
-import { emPropDefs } from './em.props';
+import type { GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
+import { emPropDefs } from './em.props.js';
 
 type EmElement = React.ElementRef<'em'>;
 type EmOwnProps = GetPropDefTypes<typeof emPropDefs>;

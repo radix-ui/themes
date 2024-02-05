@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Responsive } from '../responsive';
-import type { Union } from '../union';
+import type { Responsive } from '../responsive.js';
+import type { Union } from '../union.js';
 
 type BooleanPropDef = {
   type: 'boolean';

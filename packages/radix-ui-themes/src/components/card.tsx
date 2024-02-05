@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { cardPropDefs } from './card.props';
-import { extractProps, getRoot, marginPropDefs } from '../helpers';
+import { cardPropDefs } from './card.props.js';
+import { extractProps, getRoot, marginPropDefs } from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type CardElement = React.ElementRef<'div'>;
 type CardOwnProps = GetPropDefTypes<typeof cardPropDefs>;

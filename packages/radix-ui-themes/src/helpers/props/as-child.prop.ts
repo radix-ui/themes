@@ -1,4 +1,4 @@
-import type { PropDef } from '..';
+import type { PropDef } from './prop-def.js';
 
 const asChildProp = {
   type: 'boolean',

@@ -1,5 +1,5 @@
-import { hasOwnProperty } from './has-own-property';
-import type { Union } from './union';
+import { hasOwnProperty } from './has-own-property.js';
+import type { Union } from './union.js';
 
 const breakpoints = ['initial', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
 type Breakpoints = (typeof breakpoints)[number];

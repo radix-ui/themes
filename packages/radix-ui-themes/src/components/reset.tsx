@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { extractProps, marginPropDefs, requireReactElement } from '../helpers';
+import { extractProps, marginPropDefs, requireReactElement } from '../helpers/index.js';
 
-import type { MarginProps, PropsWithoutRefOrColor } from '../helpers';
+import type { MarginProps, PropsWithoutRefOrColor } from '../helpers/index.js';
 
 type ResetElement = React.ElementRef<'div'>;
 interface ResetProps extends PropsWithoutRefOrColor<typeof Slot>, MarginProps {}

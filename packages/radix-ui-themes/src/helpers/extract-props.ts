@@ -1,8 +1,8 @@
 import type * as React from 'react';
 import classNames from 'classnames';
-import { PropDef } from './props';
-import { getResponsiveClassNames, getResponsiveStyles, isResponsiveObject } from './responsive';
-import { mergeStyles } from './merge-styles';
+import { PropDef } from './props/index.js';
+import { getResponsiveClassNames, getResponsiveStyles, isResponsiveObject } from './responsive.js';
+import { mergeStyles } from './merge-styles.js';
 
 type PropDefsWithClassName<T> = T extends Record<string, PropDef>
   ? { [K in keyof T]: T[K] extends { className: string } ? K : never }[keyof T]

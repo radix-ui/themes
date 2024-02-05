@@ -3,10 +3,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import { separatorPropDefs } from './separator.props';
-import { extractProps, marginPropDefs } from '../helpers';
+import { separatorPropDefs } from './separator.props.js';
+import { extractProps, marginPropDefs } from '../helpers/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers';
+import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
 type SeparatorElement = React.ElementRef<typeof SeparatorPrimitive.Root>;
 type SeparatorOwnProps = GetPropDefTypes<typeof separatorPropDefs>;

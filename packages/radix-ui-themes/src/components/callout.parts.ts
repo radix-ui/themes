@@ -1,3 +1,1 @@
-export { CalloutRoot as Root } from './callout';
-export { CalloutIcon as Icon } from './callout';
-export { CalloutText as Text } from './callout';
+export { CalloutRoot as Root, CalloutIcon as Icon, CalloutText as Text } from './callout.js';
