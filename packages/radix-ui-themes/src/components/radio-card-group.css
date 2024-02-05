@@ -24,7 +24,8 @@
     pointer-events: none;
   }
 
-  & > svg {
+  /* stylelint-disable-next-line selector-max-type */
+  & > :where(svg) {
     /* Don’t squish icons */
     flex-shrink: 0;
   }
