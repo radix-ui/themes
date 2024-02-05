@@ -13,7 +13,7 @@ import { Pencil2Icon } from '@radix-ui/react-icons';
 
 export default function Test() {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
         <Theme asChild>
           <div id="root">

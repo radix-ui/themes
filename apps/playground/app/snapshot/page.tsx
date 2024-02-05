@@ -32,7 +32,7 @@ import styles from './page.module.css';
 
 export default function Snapshot() {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
         <Theme asChild appearance="dark" accentColor="grass" radius="small" scaling="110%">
           <div id="root">

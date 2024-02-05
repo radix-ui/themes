@@ -82,61 +82,27 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   const [scaling, setScaling] = React.useState(scalingProp);
   React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
-  // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
-  const ExplicitRootAppearanceScript = React.memo(
-    ({ appearance }: { appearance: Exclude<ThemeOptions['appearance'], 'inherit'> }) => (
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `!(function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');d.style.colorScheme='${appearance}';c.add('${appearance}');}catch(e){}})();`,
-        }}
-      ></script>
-    ),
-    () => true // Never re-render
-  );
-  ExplicitRootAppearanceScript.displayName = 'ExplicitRootAppearanceScript';
-
-  // Client-side only changes when `appearance` prop is changed while developing
-  React.useEffect(() => updateThemeAppearanceClass(appearanceProp), [appearanceProp]);
-
-  const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
-
   return (
-    <>
-      {appearance !== 'inherit' && <ExplicitRootAppearanceScript appearance={appearance} />}
-
-      {hasBackground && (
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-:root, .light, .light-theme { --color-page-background: white; }
-.dark, .dark-theme { --color-page-background: var(--${resolvedGrayColor}-1); }
-body { background-color: var(--color-page-background); }
-`,
-          }}
-        />
-      )}
-
-      <ThemeImpl
-        {...rootProps}
-        ref={forwardedRef}
-        isRoot
-        hasBackground={hasBackground}
-        //
-        appearance={appearance}
-        accentColor={accentColor}
-        grayColor={grayColor}
-        panelBackground={panelBackground}
-        radius={radius}
-        scaling={scaling}
-        //
-        onAppearanceChange={setAppearance}
-        onAccentColorChange={setAccentColor}
-        onGrayColorChange={setGrayColor}
-        onPanelBackgroundChange={setPanelBackground}
-        onRadiusChange={setRadius}
-        onScalingChange={setScaling}
-      />
-    </>
+    <ThemeImpl
+      {...rootProps}
+      ref={forwardedRef}
+      isRoot
+      hasBackground={hasBackground}
+      //
+      appearance={appearance}
+      accentColor={accentColor}
+      grayColor={grayColor}
+      panelBackground={panelBackground}
+      radius={radius}
+      scaling={scaling}
+      //
+      onAppearanceChange={setAppearance}
+      onAccentColorChange={setAccentColor}
+      onGrayColorChange={setGrayColor}
+      onPanelBackgroundChange={setPanelBackground}
+      onRadiusChange={setRadius}
+      onScalingChange={setScaling}
+    />
   );
 });
 ThemeRoot.displayName = 'ThemeRoot';
@@ -156,7 +122,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const {
     asChild,
     isRoot,
-    hasBackground,
+    hasBackground: hasBackgroundProp,
     //
     appearance = context?.appearance ?? themePropDefs.appearance.default,
     accentColor = context?.accentColor ?? themePropDefs.accentColor.default,
@@ -176,12 +142,9 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   } = props;
   const Comp = asChild ? Slot : 'div';
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
-  const isExplicitAppearance = props.appearance !== undefined && props.appearance !== 'inherit';
-  const isExplicitGrayColor = props.grayColor !== undefined;
-  const shouldHaveBackground =
-    !isRoot &&
-    (hasBackground === true ||
-      (hasBackground !== false && (isExplicitAppearance || isExplicitGrayColor)));
+  const isExplicitAppearance = props.appearance === 'light' || props.appearance === 'dark';
+  const hasBackground =
+    hasBackgroundProp === undefined ? isRoot || isExplicitAppearance : hasBackgroundProp;
   return (
     <ThemeContext.Provider
       value={React.useMemo(
@@ -224,7 +187,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         data-accent-color={accentColor}
         data-gray-color={resolvedGrayColor}
         // for nested `Theme` background
-        data-has-background={shouldHaveBackground ? 'true' : 'false'}
+        data-has-background={hasBackground ? 'true' : 'false'}
         data-panel-background={panelBackground}
         data-radius={radius}
         data-scaling={scaling}
@@ -233,13 +196,8 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         className={classNames(
           'radix-themes',
           {
-            // Only apply theme class to nested `Theme` sections.
-            //
-            // If it's the root `Theme`, we either rely on
-            // - something else setting the theme class when root `appearance` is `inherit`
-            // - our script setting it when root `appearance` is explicit
-            light: !isRoot && appearance === 'light',
-            dark: !isRoot && appearance === 'dark',
+            light: appearance === 'light',
+            dark: appearance === 'dark',
           },
           themeProps.className
         )}
@@ -249,22 +207,5 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
 });
 ThemeImpl.displayName = 'ThemeImpl';
 
-function updateThemeAppearanceClass(appearance: ThemeOptions['appearance']) {
-  if (appearance === 'inherit') return;
-  const root = document.documentElement;
-
-  if (root.classList.contains('light-theme') || root.classList.contains('dark-theme')) {
-    root.classList.remove('light-theme', 'dark-theme');
-    root.style.colorScheme = appearance;
-    root.classList.add(`${appearance}-theme`);
-  }
-
-  if (root.classList.contains('light') || root.classList.contains('dark')) {
-    root.classList.remove('light', 'dark');
-    root.style.colorScheme = appearance;
-    root.classList.add(appearance);
-  }
-}
-
-export { Theme, useThemeContext, updateThemeAppearanceClass };
+export { Theme, useThemeContext };
 export type { ThemeProps };
