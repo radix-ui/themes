@@ -41,6 +41,7 @@
   "sideEffects": false,
   "license": "MIT",
   "files": [
+    "src/**",
     "dist/**",
     "tokens.css",
     "components.css",
