@@ -172,7 +172,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
       update();
 
-      // Observe <html> and <body> for `class` changes only when the apperaance is inherited from them
+      // Observe <html> and <body> for `class` changes only when the appearance is inherited from them
       if (appearance === 'inherit') {
         classNameObserver.observe(root, { attributes: true });
         classNameObserver.observe(body, { attributes: true });
