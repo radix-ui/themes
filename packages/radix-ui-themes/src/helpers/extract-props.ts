@@ -63,7 +63,7 @@ function extractProps<
           value.initial = propDef.default;
         }
 
-        // Apply the default value to the `initial` breakpoint is not a valid enum value
+        // Apply the default value to the `initial` breakpoint when it is not a valid enum value
         if (propDef.type === 'enum') {
           const values = [propDef.default, ...propDef.values];
 
