@@ -88,13 +88,12 @@
 - `Theme`
   - Set `min-height: 100vh` on the root `Theme` component
   - Fix an issue when in certain situations, `hasBackground` prop value would have no effect
-  - Refine the logic for when `Theme` has a background color by default.
-    - When there no explicit `hasBackground` prop value is passed, `Theme` will display background color:
-      - When it is the root `Theme` component
-      - When it has an explicit appearance value, e.g. `<Theme apperance="light">` or `<Theme apperance="dark">`
-    - Body background color and is no longer set automatically. The background color is now provided by the root `Theme` by default.
-      - [**Breaking**] The CSS variable `--color-page-background` is no longer available. In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
-      - `suppressHydrationWarning` on `html` is no longer needed (unless required by other libraries, like `next-themes`)
+  - Refine the logic for when `Theme` has a background color by default. `Theme` without an explicit `hasBackground` prop will display a background color:
+    - When it is the root `Theme` component
+    - When it has an explicit appearance value, e.g. `<Theme apperance="light">` or `<Theme apperance="dark">`
+  - Body background color and is no longer set automatically. The background color is now provided by the root `Theme` by default.
+    - [**Breaking**] The CSS variable `--color-page-background` is no longer available. In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
+    - `suppressHydrationWarning` on `html` is no longer needed (unless required by other libraries, like `next-themes`)
 - `Tooltip`
   - Change the default delay duration to 200ms
 
