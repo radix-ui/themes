@@ -36,7 +36,7 @@
 .rt-ThemePanelSwatchInput {
   outline-offset: 2px;
 
-  &:where([data-checked]) {
+  &:where(:checked) {
     outline-style: solid;
     outline-color: var(--gray-12);
   }
@@ -54,7 +54,7 @@
 .rt-ThemePanelRadioCardInput {
   outline-offset: -1px;
 
-  &:where([data-checked]) {
+  &:where(:checked) {
     outline-style: solid;
     outline-color: var(--gray-12);
   }

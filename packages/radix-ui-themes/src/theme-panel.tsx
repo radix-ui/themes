@@ -251,7 +251,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         name="accentColor"
                         value={color}
                         checked={accentColor === color}
-                        data-checked={accentColor === color || undefined}
                         onChange={(event) =>
                           onAccentColorChange(event.target.value as ThemeOptions['accentColor'])
                         }
@@ -295,7 +294,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                           name="grayColor"
                           value={gray}
                           checked={grayColor === gray}
-                          data-checked={grayColor === gray || undefined}
                           onChange={(event) =>
                             onGrayColorChange(event.target.value as ThemeOptions['grayColor'])
                           }
@@ -319,7 +317,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="appearance"
                       value={value}
                       checked={resolvedAppearance === value}
-                      data-checked={resolvedAppearance === value || undefined}
                       // TODO: Currently using `onClick` as a stop-gap solution for `onChange` not working after a few changes
                       onChange={(event) => {
                         // handleAppearanceChange(event.target.value as ThemeOptions['appearance']);
@@ -383,7 +380,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         id={`theme-panel-radius-${value}`}
                         value={value}
                         checked={radius === value}
-                        data-checked={radius === value || undefined}
                         onChange={(event) =>
                           onRadiusChange(event.target.value as ThemeOptions['radius'])
                         }
@@ -425,7 +421,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="scaling"
                       value={value}
                       checked={scaling === value}
-                      data-checked={scaling === value || undefined}
                       onChange={(event) =>
                         onScalingChange(event.target.value as ThemeOptions['scaling'])
                       }
@@ -482,7 +477,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="panelBackground"
                       value={value}
                       checked={panelBackground === value}
-                      data-checked={panelBackground === value || undefined}
                       onChange={(event) =>
                         onPanelBackgroundChange(
                           event.target.value as ThemeOptions['panelBackground']
