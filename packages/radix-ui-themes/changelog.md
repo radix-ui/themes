@@ -57,6 +57,8 @@
   - Add `color` prop to `CheckboxItem` and `RadioItem` parts
 - `Checkbox`, `RadioGroup`, `Switch`
   - Rework the internal HTML structure and styles. These components now render fewer HTML nodes and forward all props to the topmost node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `DropdownMenu`
+  - Use a brighter text color for the highlighted item when the Content part uses `variant="soft"`
 - `Box`, `Flex`, `Grid`
   - Add support for `as` prop to render as `span` or `div`
   - For Box, `display: block` style is now enforced regardless of the tag
@@ -66,6 +68,8 @@
   - Add `gapX` and `gapY` props
 - `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
+- `Separator`
+  - Allow responsive values for the `orientation` prop
 - `ScrollArea`
   - Fix an issue when Scroll Area would be unable to stretch to 100% height when informed by the parent’s auto height
 - `Slider`

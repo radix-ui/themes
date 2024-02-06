@@ -1,16 +1,25 @@
-import { asChildProp, colorProp } from '../helpers/index.js';
+import { colorProp } from '../helpers/index.js';
 import type { PropDef } from '../helpers/index.js';
 
+const orientationValues = ['horizontal', 'vertical'] as const;
 const sizes = ['1', '2', '3', '4'] as const;
 
 const separatorPropDefs = {
-  asChild: asChildProp,
+  orientation: {
+    type: 'enum',
+    className: 'rt-r-orientation',
+    values: orientationValues,
+    default: 'horizontal',
+    responsive: true,
+  },
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '1', responsive: true },
   color: { ...colorProp, default: 'gray' },
+  decorative: { type: 'boolean', default: true },
 } satisfies {
-  asChild: typeof asChildProp;
+  orientation: PropDef<(typeof orientationValues)[number]>;
   size: PropDef<(typeof sizes)[number]>;
   color: typeof colorProp;
+  decorative: PropDef<boolean>;
 };
 
 export { separatorPropDefs };

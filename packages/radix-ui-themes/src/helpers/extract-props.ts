@@ -57,6 +57,22 @@ function extractProps<
         continue;
       }
 
+      if (isResponsiveObject(value)) {
+        // Apply prop def defaults to the `initial` breakpoint
+        if (propDef.default !== undefined && value.initial === undefined) {
+          value.initial = propDef.default;
+        }
+
+        // Apply the default value to the `initial` breakpoint when it is not a valid enum value
+        if (propDef.type === 'enum') {
+          const values = [propDef.default, ...propDef.values];
+
+          if (!values.includes(value.initial)) {
+            value.initial = propDef.default;
+          }
+        }
+      }
+
       if (propDef.type === 'enum') {
         const propClassName = getResponsiveClassNames({
           allowArbitraryValues: false,
