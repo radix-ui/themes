@@ -33,7 +33,11 @@
   /*                                     */
   /* * * * * * * * * * * * * * * * * * * */
 
-  &:where(a, button, input, textarea, select) {
+  &:where(a) {
+    all: unset;
+    -webkit-tap-highlight-color: transparent;
+  }
+  &:where(button, input, textarea, select) {
     all: unset;
     display: inline-block;
     -webkit-tap-highlight-color: transparent;
