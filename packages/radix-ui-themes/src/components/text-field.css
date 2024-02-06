@@ -29,7 +29,7 @@
   pointer-events: none;
 
   :where(.rt-TextFieldInput:focus) ~ & {
-    outline: 2px solid var(--color-focus-root);
+    outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
 }
@@ -163,8 +163,8 @@
   }
   &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
     & ~ :where(.rt-TextFieldChrome) {
-      background-color: var(--color-autofill-root);
-      box-shadow: inset 0 0 0 1px var(--color-autofill-root), inset 0 0 0 1px var(--gray-a6);
+      background-color: var(--focus-a3);
+      box-shadow: inset 0 0 0 1px var(--focus-a3), inset 0 0 0 1px var(--gray-a6);
     }
   }
   &:where(:disabled, :read-only) {
@@ -195,8 +195,8 @@
   }
   &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
     & ~ :where(.rt-TextFieldChrome) {
-      background-color: var(--color-autofill-root);
-      box-shadow: inset 0 0 0 1px var(--color-autofill-root), var(--shadow-1);
+      background-color: var(--focus-a3);
+      box-shadow: inset 0 0 0 1px var(--focus-a3), var(--shadow-1);
     }
   }
   &:where(:disabled, :read-only) {

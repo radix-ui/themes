@@ -8,7 +8,7 @@
   line-height: var(--height);
 
   &:where(:focus-visible) {
-    outline: 2px solid var(--color-focus-root);
+    outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
 }

@@ -9,7 +9,7 @@
   }
 
   &:where(:focus-visible) {
-    outline-color: var(--color-focus-root);
+    outline-color: var(--focus-8);
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 2px;

@@ -120,7 +120,7 @@
     color: var(--gray-12);
   }
   &:where(:focus-visible) :where(.rt-BaseTabListTriggerInner) {
-    outline: 2px solid var(--color-focus-root);
+    outline: 2px solid var(--focus-8);
     outline-offset: -2px;
   }
   &:where([data-state='active'], [data-active])::before {

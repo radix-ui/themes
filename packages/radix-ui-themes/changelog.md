@@ -30,6 +30,11 @@
   - Ensure all elements that have padding or border styles use `box-sizing: border-box`
   - Ensure that disabled cursor styles are applied correctly
   - Tweak the background color of all `variant="soft"` menu items
+  - Replace `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
+    - [**Breaking**] If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
+      - `--color-autofill-root` is replaced by `--focus-a3`
+      - `--color-focus-root` is replaced by `--focus-8`
+      - `--color-selection-root` is replaced by `--focus-a5`
 - 8 new components
   - `CheckboxCardGroup`
   - `DataList`
