@@ -317,11 +317,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="appearance"
                       value={value}
                       checked={resolvedAppearance === value}
-                      // TODO: Currently using `onClick` as a stop-gap solution for `onChange` not working after a few changes
                       onChange={(event) => {
-                        // handleAppearanceChange(event.target.value as ThemeOptions['appearance']);
+                        handleAppearanceChange(event.target.value as 'light' | 'dark');
                       }}
-                      onClick={() => handleAppearanceChange(value)}
                     />
                     <Flex align="center" justify="center" height="6" gap="2">
                       {value === 'light' ? (
