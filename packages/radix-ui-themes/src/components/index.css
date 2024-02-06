@@ -49,7 +49,13 @@
 @import './tooltip.css';
 
 .radix-themes:where([data-is-root-theme='true']) {
-  /* create new stacking context on the root `Theme` so layered components work out of the box */
+  /* Create a new stacking context on the root `Theme` so layered components work out of the box */
   position: relative;
   z-index: 0;
+
+  /* Make sure root `Theme` background covers the viewport */
+  min-height: 100vh;
+  @supports (min-height: 100dvh) {
+    min-height: 100dvh;
+  }
 }

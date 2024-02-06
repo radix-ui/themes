@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Theme,
-  Avatar,
   Flex,
   ThemePanel,
   Heading,
@@ -17,9 +16,13 @@ import {
 
 export default function Test() {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
-        <Theme asChild appearance="dark">
+        {/* For testing: */}
+        {/* <Theme asChild appearance="inherit"> */}
+        {/* <Theme asChild appearance="light"> */}
+        {/* <Theme asChild appearance="dark"> */}
+        <Theme asChild>
           <div id="root">
             <ThemePanel />
 

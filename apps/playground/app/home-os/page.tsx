@@ -31,7 +31,7 @@ export default function HomeOS() {
   const totalCount = adultCount + childCount + infantCount;
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
         <Theme asChild accentColor="orange" radius="large">
           <div id="root">

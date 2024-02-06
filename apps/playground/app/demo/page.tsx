@@ -29,7 +29,7 @@ import styles from './page.module.css';
 
 export default function Demo() {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={styles.body}>
         <Theme asChild appearance="dark" accentColor="mint" radius="large" scaling="110%">
           <div id="root">

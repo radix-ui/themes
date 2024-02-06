@@ -19,7 +19,7 @@ import {
   Text,
   Tooltip,
 } from './components/index.js';
-import { Theme, updateThemeAppearanceClass, useThemeContext } from './theme.js';
+import { Theme, useThemeContext } from './theme.js';
 import { getMatchingGrayColor, themeAccentColorsOrdered } from './theme-options.js';
 import { radixGrayScalesDesaturated, themePropDefs } from './helpers/index.js';
 
@@ -67,19 +67,24 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const hasOnAppearanceChangeProp = onAppearanceChangeProp !== undefined;
     const handleAppearanceChangeProp = useCallbackRef(onAppearanceChangeProp);
     const handleAppearanceChange = React.useCallback(
-      (appearance: ThemeOptions['appearance']) => {
-        onAppearanceChange(appearance);
+      (value: 'light' | 'dark') => {
         const cleanup = disableAnimation();
 
+        if (appearance !== 'inherit') {
+          onAppearanceChange(value);
+          return;
+        }
+
         if (hasOnAppearanceChangeProp) {
-          handleAppearanceChangeProp(appearance as Exclude<ThemeOptions['appearance'], 'inherit'>);
+          handleAppearanceChangeProp(value);
         } else {
-          updateThemeAppearanceClass(appearance);
+          setResolvedAppearance(value);
+          updateRootAppearanceClass(value);
         }
 
         cleanup();
       },
-      [onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp]
+      [appearance, onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp]
     );
 
     const autoMatchedGray = getMatchingGrayColor(accentColor);
@@ -110,6 +115,10 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       setTimeout(() => setCopyState('idle'), 2000);
     }
 
+    const [resolvedAppearance, setResolvedAppearance] = React.useState<'light' | 'dark' | null>(
+      appearance === 'inherit' ? null : appearance
+    );
+
     // quickly show/hide using ⌘C
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
@@ -128,16 +137,13 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       function handleKeydown(event: KeyboardEvent) {
         if (event.metaKey && event.key === 'd') {
           event.preventDefault();
-          handleAppearanceChange(appearance === 'dark' ? 'light' : 'dark');
+          handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light');
         }
       }
       document.addEventListener('keydown', handleKeydown);
       return () => document.removeEventListener('keydown', handleKeydown);
-    }, [appearance, handleAppearanceChange]);
+    }, [handleAppearanceChange, resolvedAppearance]);
 
-    const [resolvedAppearance, setResolvedAppearance] = React.useState<'light' | 'dark' | null>(
-      appearance === 'inherit' ? null : appearance
-    );
     React.useEffect(() => {
       const root = document.documentElement;
       const body = document.body;
@@ -149,26 +155,31 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           body.classList.contains('dark') ||
           body.classList.contains('dark-theme');
 
-        const nextAppearance = hasDarkClass ? 'dark' : 'light';
-
-        if (nextAppearance !== appearance && appearance !== 'inherit') {
-          handleAppearanceChange(nextAppearance);
+        if (appearance === 'inherit') {
+          setResolvedAppearance(hasDarkClass ? 'dark' : 'light');
+        } else {
+          setResolvedAppearance(appearance);
         }
-
-        setResolvedAppearance(hasDarkClass ? 'dark' : 'light');
       }
+
+      const classNameObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === 'class') {
+            update();
+          }
+        });
+      });
 
       update();
 
-      var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.attributeName === 'class') update();
-        });
-      });
-      observer.observe(root, { attributes: true });
-      observer.observe(body, { attributes: true });
-      return () => observer.disconnect();
-    }, [appearance, handleAppearanceChange]);
+      // Observe <html> and <body> for `class` changes only when the appearance is inherited from them
+      if (appearance === 'inherit') {
+        classNameObserver.observe(root, { attributes: true });
+        classNameObserver.observe(body, { attributes: true });
+      }
+
+      return () => classNameObserver.disconnect();
+    }, [appearance]);
 
     return (
       <Theme asChild radius="medium" scaling="100%">
@@ -306,11 +317,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="appearance"
                       value={value}
                       checked={resolvedAppearance === value}
-                      // TODO: Currently using `onClick` as a stop-gap solution for `onChange` not working after a few changes
-                      onChange={(event) => {
-                        // handleAppearanceChange(event.target.value as ThemeOptions['appearance']);
-                      }}
-                      onClick={() => handleAppearanceChange(value)}
+                      onChange={(event) =>
+                        handleAppearanceChange(event.target.value as 'light' | 'dark')
+                      }
                     />
                     <Flex align="center" justify="center" height="6" gap="2">
                       {value === 'light' ? (
@@ -619,6 +628,31 @@ function disableAnimation() {
 
 function upperFirst(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function updateRootAppearanceClass(appearance: 'light' | 'dark') {
+  const root = document.documentElement;
+  const hasLightTheme = root.classList.contains('light-theme');
+  const hasDarkTheme = root.classList.contains('dark-theme');
+  const hasLight = root.classList.contains('light');
+  const hasDark = root.classList.contains('dark');
+
+  if (hasLightTheme || hasDarkTheme) {
+    root.classList.remove('light-theme', 'dark-theme');
+    root.style.colorScheme = appearance;
+    root.classList.add(`${appearance}-theme`);
+  }
+
+  if (hasLight || hasDark) {
+    root.classList.remove('light', 'dark');
+    root.style.colorScheme = appearance;
+    root.classList.add(appearance);
+  }
+
+  if (!hasLightTheme && !hasDarkTheme && !hasLight && !hasDark) {
+    root.style.colorScheme = appearance;
+    root.classList.add(appearance);
+  }
 }
 
 export { ThemePanel };

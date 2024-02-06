@@ -21,6 +21,10 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
+
+  /* iOS Safari */
+  width: 100%;
+  height: 100%;
 }
 
 .rt-ThemePanelSwatch {

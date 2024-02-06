@@ -22,7 +22,7 @@ import {
 
 export default function Ghost() {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
         <Theme asChild accentColor="mint">
           <div id="root">

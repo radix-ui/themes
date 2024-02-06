@@ -203,12 +203,21 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-/* Make sure that forced light/dark appearance also sets corresponding browser colors, like input autofill color */
+/*
+ * Make sure that forced light/dark appearance also sets corresponding browser colors,
+ * like input autofill color and body scrollbar
+ */
 .radix-themes:where(.light, .light-theme) {
-  color-scheme: light;
+  &,
+  :root:where(:has(&[data-is-root-theme='true'])) {
+    color-scheme: light;
+  }
 }
 .radix-themes:where(.dark, .dark-theme) {
-  color-scheme: dark;
+  &,
+  :root:where(:has(&[data-is-root-theme='true'])) {
+    color-scheme: dark;
+  }
 }
 
 /* * * * * * * * * * * * * * * * * * * */

@@ -4109,43 +4109,45 @@ export default function Sink() {
                     </Flex>
                   </DocsSection>
 
-                  <DocsSection title="Tab Nav">
-                    <table className={styles.table}>
-                      <tbody>
-                        {tabsListPropDefs.size.values.map((size) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <TabNavDemo size={size} />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <Text as="p" my="5">
-                      <Code>color</Code> can be set per instance:
-                    </Text>
-                    <details>
-                      <summary>
-                        <Text size="2" color="gray">
-                          See color combinations
-                        </Text>
-                      </summary>
-                      <Grid gap="5" columns="3" align="center">
-                        {tabsListPropDefs.color.values.map((color, i) => (
-                          <React.Fragment key={color}>
-                            <Text>{color}</Text>
-                            <Flex>
-                              <TabNavDemo size="1" color={color} />
-                            </Flex>
-                            <Flex>
-                              <TabNavDemo size="1" color={color} highContrast />
-                            </Flex>
-                          </React.Fragment>
-                        ))}
-                      </Grid>
-                    </details>
-                  </DocsSection>
+                  <React.Suspense fallback={null}>
+                    <DocsSection title="Tab Nav">
+                      <table className={styles.table}>
+                        <tbody>
+                          {tabsListPropDefs.size.values.map((size) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              <td>
+                                <TabNavDemo size={size} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                      <Text as="p" my="5">
+                        <Code>color</Code> can be set per instance:
+                      </Text>
+                      <details>
+                        <summary>
+                          <Text size="2" color="gray">
+                            See color combinations
+                          </Text>
+                        </summary>
+                        <Grid gap="5" columns="3" align="center">
+                          {tabsListPropDefs.color.values.map((color, i) => (
+                            <React.Fragment key={color}>
+                              <Text>{color}</Text>
+                              <Flex>
+                                <TabNavDemo size="1" color={color} />
+                              </Flex>
+                              <Flex>
+                                <TabNavDemo size="1" color={color} highContrast />
+                              </Flex>
+                            </React.Fragment>
+                          ))}
+                        </Grid>
+                      </details>
+                    </DocsSection>
+                  </React.Suspense>
 
                   <DocsSection title="Tabs">
                     <table className={styles.table}>
