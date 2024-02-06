@@ -54,7 +54,7 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
     return (
       <dt
         {...labelProps}
-        data-accent-color={color}
+        data-accent-color={color || undefined}
         ref={forwardedRef}
         className={classNames(className, 'rt-DataListLabel')}
       />

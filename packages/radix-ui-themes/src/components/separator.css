@@ -1,24 +1,19 @@
 .rt-Separator {
+  display: block;
   background-color: var(--accent-a6);
-
-  &:where([data-orientation='vertical']) {
-    width: 1px;
-    height: var(--separator-size);
-  }
-  &:where([data-orientation='horizontal']) {
-    width: var(--separator-size);
-    height: 1px;
-  }
 }
-
-/***************************************************************************************************
- *                                                                                                 *
- * SIZES                                                                                           *
- *                                                                                                 *
- ***************************************************************************************************/
 
 @breakpoints {
   .rt-Separator {
+    &:where(.rt-r-orientation-horizontal) {
+      width: var(--separator-size);
+      height: 1px;
+    }
+    &:where(.rt-r-orientation-vertical) {
+      width: 1px;
+      height: var(--separator-size);
+    }
+
     &:where(.rt-r-size-1) {
       --separator-size: var(--space-4);
     }

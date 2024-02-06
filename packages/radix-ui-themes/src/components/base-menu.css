@@ -240,9 +240,5 @@
   }
   & :where(.rt-BaseMenuItem[data-highlighted]) {
     background-color: var(--accent-a4);
-
-    &:where([data-accent-color]) {
-      color: var(--accent-12);
-    }
   }
 }

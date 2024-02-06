@@ -1,4 +1,4 @@
-import { asChildProp, colorProp, highContrastProp } from '../helpers/index.js';
+import { asChildProp, colorProp, highContrastProp, inheritedColorProp } from '../helpers/index.js';
 import type { PropDef } from '../helpers/index.js';
 
 const contentSizes = ['1', '2'] as const;
@@ -29,26 +29,26 @@ const baseMenuContentPropDefs = {
 
 const baseMenuItemPropDefs = {
   asChild: asChildProp,
-  color: colorProp,
+  color: inheritedColorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
   asChild: typeof asChildProp;
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
   shortcut: PropDef<string>;
 };
 
 const baseMenuCheckboxItemPropDefs = {
-  color: colorProp,
+  color: inheritedColorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
   shortcut: PropDef<string>;
 };
 
 const baseMenuRadioItemPropDefs = {
-  color: colorProp,
+  color: inheritedColorProp,
 } satisfies {
-  color: typeof colorProp;
+  color: typeof inheritedColorProp;
 };
 
 export {
