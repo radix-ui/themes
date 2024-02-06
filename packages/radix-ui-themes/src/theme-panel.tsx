@@ -317,9 +317,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="appearance"
                       value={value}
                       checked={resolvedAppearance === value}
-                      onChange={(event) => {
-                        handleAppearanceChange(event.target.value as 'light' | 'dark');
-                      }}
+                      onChange={(event) =>
+                        handleAppearanceChange(event.target.value as 'light' | 'dark')
+                      }
                     />
                     <Flex align="center" justify="center" height="6" gap="2">
                       {value === 'light' ? (
