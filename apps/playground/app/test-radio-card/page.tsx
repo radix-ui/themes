@@ -8,9 +8,9 @@ import {
   RadioCardGroupItem,
   Heading,
   Box,
-  radioCardGroupPropDefs,
   Separator,
 } from '@radix-ui/themes';
+import { radioCardGroupPropDefs } from '@radix-ui/themes/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import { CrumpledPaperIcon, CubeIcon, GlobeIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 
