@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { popoverContentPropDefs } from './popover.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
-import { Theme } from '../theme.js';
+import { Theme } from './theme.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';

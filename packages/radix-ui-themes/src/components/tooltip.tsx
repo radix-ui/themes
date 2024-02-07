@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { Text } from './text.js';
 import { tooltipPropDefs } from './tooltip.props.js';
-import { Theme } from '../theme.js';
+import { Theme } from './theme.js';
 
 import type { GetPropDefTypes } from '../props/index.js';
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';

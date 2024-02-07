@@ -7,7 +7,7 @@ import { alertDialogContentPropDefs } from './alert-dialog.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Heading } from './heading.js';
 import { Text } from './text.js';
-import { Theme } from '../theme.js';
+import { Theme } from './theme.js';
 
 import type { ComponentPropsAs, ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';

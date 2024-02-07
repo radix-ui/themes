@@ -6,7 +6,7 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { checkboxPropDefs } from './checkbox.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
-import { ThickCheckIcon } from '../icons.js';
+import { ThickCheckIcon } from './icons.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';

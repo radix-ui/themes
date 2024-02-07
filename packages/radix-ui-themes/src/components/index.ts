@@ -36,7 +36,6 @@ export * from './strong.props.js';
 
 // FORMS
 //------------------------------------------------------------------------------
-// export * from './form.js'; 👈
 export { CheckboxCardGroupRoot, CheckboxCardGroupItem } from './checkbox-card-group.js';
 export * as CheckboxCardGroup from './checkbox-card-group.parts.js';
 export * from './checkbox-card-group.props.js';
@@ -140,12 +139,9 @@ export * from './tooltip.props.js';
 export { TabNavRoot, TabNavLink } from './tab-nav.js';
 export * as TabNav from './tab-nav.parts.js';
 export * from './tab-nav.props.js';
-// export * from './menubar.js';
-// export * from './navigation-menu.js';
 
 // COMPONENTS
 //------------------------------------------------------------------------------
-// export * from './accordion.js';
 export { Avatar } from './avatar.js';
 export * from './avatar.props.js';
 export { Badge } from './badge.js';
@@ -162,9 +158,8 @@ export * from './card.props.js';
 export { DataListRoot, DataListItem, DataListLabel, DataListValue } from './data-list.js';
 export * as DataList from './data-list.parts.js';
 export * from './data-list.props.js';
-// export * from './collapsible.js';
-// export * from './definition-list.js';
 export { IconButton } from './icon-button.js';
+export * from './icons.js';
 export * from './icon-button.props.js';
 export { Link } from './link.js';
 export * from './link.props.js';
@@ -192,10 +187,6 @@ export * from './table.props.js';
 export { TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs.js';
 export * as Tabs from './tabs.parts.js';
 export * from './tabs.props.js';
-// export * from './toast.js';
-// export * from './toggle.js';
-// export * from './toggle-group.js';
-// export * from './toolbar.js';
 
 // UTILITIES
 //------------------------------------------------------------------------------
@@ -204,3 +195,8 @@ export { Portal } from './portal.js';
 export { Reset } from './reset.js';
 export { Slot, Slottable } from './slot.js';
 export { VisuallyHidden } from './visually-hidden.js';
+
+// THEME
+//------------------------------------------------------------------------------
+export { Theme, useThemeContext } from './theme.js';
+export { ThemePanel } from './theme-panel.js';

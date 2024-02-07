@@ -182,11 +182,9 @@ import {
   //
   Tooltip,
   //
-  // helpers:
-  themeAccentColorsOrdered,
-  //
   ThemePanel,
 } from '@radix-ui/themes';
+import { themeAccentColorsOrdered } from '@radix-ui/themes/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
   ArrowRightIcon,
@@ -197,7 +195,6 @@ import {
 } from '@radix-ui/react-icons';
 import { getPeopleForColor } from './people';
 import styles from './page.module.css';
-import { LoadingButtons } from '../../components/loading-buttons';
 
 export default function ExploreComponents() {
   return (

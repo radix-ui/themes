@@ -10,7 +10,7 @@ import { baseCheckboxPropDefs } from './base-checkbox.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import { Grid } from './grid.js';
-import { ThickCheckIcon } from '../icons.js';
+import { ThickCheckIcon } from './icons.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes, Responsive } from '../props/index.js';

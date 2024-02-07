@@ -11,8 +11,8 @@ import {
 } from './select.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
-import { Theme, useThemeContext } from '../theme.js';
-import { ThickCheckIcon, ChevronDownIcon } from '../icons.js';
+import { Theme, useThemeContext } from './theme.js';
+import { ThickCheckIcon, ChevronDownIcon } from './icons.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';

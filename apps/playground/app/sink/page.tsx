@@ -196,12 +196,9 @@ import {
   //
   Tooltip,
   //
-  // helpers:
-  themeAccentColorsGrouped,
-  //
   ThemePanel,
-  themeAccentColorsOrdered,
 } from '@radix-ui/themes';
+import { themeAccentColorsGrouped, themeAccentColorsOrdered } from '@radix-ui/themes/props';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
 

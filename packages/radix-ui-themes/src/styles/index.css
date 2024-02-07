@@ -1,5 +1,4 @@
 @import './breakpoints.css';
 @import './tokens/index.css';
 @import '../components/index.css';
-@import '../theme-panel.css';
 @import './utilities/index.css';

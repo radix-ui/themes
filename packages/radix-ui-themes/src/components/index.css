@@ -46,6 +46,7 @@
 @import './text-area.css';
 @import './text-field.css';
 @import './text.css';
+@import './theme-panel.css';
 @import './tooltip.css';
 
 .radix-themes:where([data-is-root-theme='true']) {

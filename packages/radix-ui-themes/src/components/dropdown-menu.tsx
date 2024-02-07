@@ -12,8 +12,8 @@ import {
   dropdownMenuRadioItemPropDefs,
 } from './dropdown-menu.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
-import { Theme, useThemeContext } from '../theme.js';
-import { ThickCheckIcon, ThickChevronRightIcon } from '../icons.js';
+import { Theme, useThemeContext } from './theme.js';
+import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';

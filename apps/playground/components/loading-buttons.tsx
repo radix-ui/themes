@@ -2,17 +2,8 @@
 
 import * as React from 'react';
 import { ArrowRightIcon, StarIcon } from '@radix-ui/react-icons';
-import {
-  Button,
-  Em,
-  Flex,
-  IconButton,
-  Spinner,
-  Text,
-  buttonPropDefs,
-  mapButtonSizeToSpinnerSize,
-  mapResponsiveProp,
-} from '@radix-ui/themes';
+import { Button, Em, Flex, IconButton, Spinner, Text, buttonPropDefs } from '@radix-ui/themes';
+import { mapButtonSizeToSpinnerSize, mapResponsiveProp } from '@radix-ui/themes/helpers';
 
 export function LoadingButtons() {
   const [loading1, onClick1] = useLoading();
