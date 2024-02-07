@@ -5,7 +5,6 @@ export * from './height.props.js';
 export * from './high-contrast.prop.js';
 export * from './layout.props.js';
 export * from './leading-trim.prop.js';
-export * from './map-prop-values.js';
 export * from './margin.props.js';
 export * from './padding.props.js';
 export * from './prop-def.js';

@@ -21,10 +21,11 @@ import {
 } from './components/index.js';
 import { Theme, useThemeContext } from './theme.js';
 import { getMatchingGrayColor, themeAccentColorsOrdered } from './theme-options.js';
-import { radixGrayScalesDesaturated, themePropDefs } from './helpers/index.js';
+import { radixGrayScalesDesaturated } from './helpers/index.js';
+import { themePropDefs } from './props/index.js';
 
 import type { ThemeOptions } from './theme-options.js';
-import type { PropsWithoutRefOrColor } from './helpers/index.js';
+import type { ComponentPropsWithoutColor } from './helpers/index.js';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;
@@ -42,7 +43,9 @@ interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-interface ThemePanelImplProps extends PropsWithoutRefOrColor<'div'>, ThemePanelImplPrivateProps {
+interface ThemePanelImplProps
+  extends ComponentPropsWithoutColor<'div'>,
+    ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(

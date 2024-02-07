@@ -1,4 +1,4 @@
-import { radixColorScales, radixGrayScales } from '../radix-colors.js';
+import { radixColorScales, radixGrayScales } from '../helpers/radix-colors.js';
 import { asChildProp } from './as-child.prop.js';
 import type { GetPropDefTypes, PropDef } from './prop-def.js';
 

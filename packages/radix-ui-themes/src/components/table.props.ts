@@ -1,5 +1,5 @@
-import type { PropDef } from '../helpers/index.js';
-import { paddingPropDefs, widthPropDefs } from '../helpers/index.js';
+import type { PropDef } from '../props/index.js';
+import { paddingPropDefs, widthPropDefs } from '../props/index.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'ghost'] as const;

@@ -4,15 +4,17 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { checkboxPropDefs } from './checkbox.props.js';
-import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 import { ThickCheckIcon } from '../icons.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;
 interface CheckboxProps
-  extends Omit<PropsWithoutRefOrColor<typeof CheckboxPrimitive.Root>, 'asChild' | 'children'>,
+  extends Omit<ComponentPropsWithoutColor<typeof CheckboxPrimitive.Root>, 'asChild' | 'children'>,
     MarginProps,
     CheckboxOwnProps {}
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {

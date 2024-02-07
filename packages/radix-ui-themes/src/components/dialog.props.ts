@@ -1,4 +1,5 @@
-import { asChildProp, type PropDef } from '../helpers/index.js';
+import { asChildProp } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const contentSizes = ['1', '2', '3', '4'] as const;
 

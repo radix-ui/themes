@@ -1,6 +1,12 @@
-import React from 'react';
-import type { Responsive } from '../responsive.js';
-import type { Union } from '../union.js';
+import type React from 'react';
+
+// Creates a union type of string literals with strings, but retains intellisense for the literals.
+// Union<string, 'foo' | 'bar'> => string | Omit<string, 'foo' | 'bar'>
+type Union<S = string, T extends string | number = string> = T | Omit<S, T>;
+
+const breakpoints = ['initial', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
+type Breakpoint = (typeof breakpoints)[number];
+type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
 type BooleanPropDef = {
   type: 'boolean';
@@ -73,4 +79,13 @@ type GetPropDefTypes<P> = {
   [K in keyof P]?: GetPropDefType<P[K]>;
 };
 
-export type { PropDef, ResponsivePropDef, GetPropDefTypes };
+export { breakpoints };
+export type {
+  PropDef,
+  GetPropDefTypes,
+  ResponsivePropDef,
+  //
+  Breakpoint,
+  Responsive,
+  Union,
+};

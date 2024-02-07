@@ -1,5 +1,5 @@
-import { asChildProp } from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+import { asChildProp } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const sides = ['all', 'x', 'y', 'top', 'bottom', 'left', 'right'] as const;
 const clipValues = ['border-box', 'padding-box'] as const;

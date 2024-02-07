@@ -6,10 +6,10 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { DirectionProvider } from '@radix-ui/react-direction';
 import { Slot } from '@radix-ui/react-slot';
 import { getMatchingGrayColor } from './theme-options.js';
-import { themePropDefs } from './helpers/index.js';
+import { themePropDefs } from './props/index.js';
 
 import type { ThemeOptions } from './theme-options.js';
-import type { PropsWithoutRefOrColor } from './helpers/index.js';
+import type { ComponentPropsWithoutColor } from './helpers/index.js';
 
 const noop = () => {};
 
@@ -110,7 +110,7 @@ ThemeRoot.displayName = 'ThemeRoot';
 type ThemeImplElement = React.ElementRef<'div'>;
 interface ThemeImplProps extends ThemeImplPublicProps, ThemeImplPrivateProps {}
 interface ThemeImplPublicProps
-  extends Omit<PropsWithoutRefOrColor<'div'>, 'dir'>,
+  extends Omit<ComponentPropsWithoutColor<'div'>, 'dir'>,
     Partial<ThemeOptions> {
   asChild?: boolean;
   isRoot?: boolean;

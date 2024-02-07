@@ -9,20 +9,17 @@ import { Heading } from './heading.js';
 import { Text } from './text.js';
 import { Theme } from '../theme.js';
 
-import type {
-  ComponentPropsAs,
-  GetPropDefTypes,
-  PropsWithoutRefOrColor,
-} from '../helpers/index.js';
+import type { ComponentPropsAs, ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { GetPropDefTypes } from '../props/index.js';
 
 interface DialogRootProps
-  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Root>, 'modal'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Root>, 'modal'> {}
 const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {...props} modal />;
 DialogRoot.displayName = 'DialogRoot';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
 interface DialogTriggerProps
-  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Trigger>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Trigger>, 'asChild'> {}
 const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -35,7 +32,7 @@ DialogTrigger.displayName = 'DialogTrigger';
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 type DialogContentOwnProps = GetPropDefTypes<typeof dialogContentPropDefs>;
 interface DialogContentProps
-  extends PropsWithoutRefOrColor<typeof DialogPrimitive.Content>,
+  extends ComponentPropsWithoutColor<typeof DialogPrimitive.Content>,
     DialogContentOwnProps {
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
@@ -90,7 +87,7 @@ DialogDescription.displayName = 'DialogDescription';
 
 type DialogCloseElement = React.ElementRef<typeof DialogPrimitive.Close>;
 interface DialogCloseProps
-  extends Omit<PropsWithoutRefOrColor<typeof DialogPrimitive.Close>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Close>, 'asChild'> {}
 const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
   ({ children, ...props }, forwardedRef) => (
     <DialogPrimitive.Close {...props} ref={forwardedRef} asChild>

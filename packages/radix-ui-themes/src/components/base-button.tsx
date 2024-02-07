@@ -2,22 +2,19 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { baseButtonPropDefs } from './base-button.props.js';
-import {
-  extractProps,
-  mapButtonSizeToSpinnerSize,
-  mapResponsiveProp,
-  marginPropDefs,
-} from '../helpers/index.js';
+import { extractProps, mapButtonSizeToSpinnerSize, mapResponsiveProp } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 import { Flex } from './flex.js';
 import { Spinner } from './spinner.js';
 import { VisuallyHidden } from './visually-hidden.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type BaseButtonElement = React.ElementRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
 interface BaseButtonProps
-  extends PropsWithoutRefOrColor<'button'>,
+  extends ComponentPropsWithoutColor<'button'>,
     MarginProps,
     BaseButtonOwnProps {
   asChild?: boolean;

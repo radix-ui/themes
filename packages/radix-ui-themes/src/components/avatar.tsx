@@ -4,9 +4,11 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { avatarPropDefs } from './avatar.props.js';
-import { extractProps, getRoot, marginPropDefs } from '../helpers/index.js';
+import { extractProps, getRoot } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 interface AvatarProps extends MarginProps, AvatarImplProps {}
 const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwardedRef) => {
@@ -44,7 +46,7 @@ type AvatarImplElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 type AvatarOwnProps = GetPropDefTypes<typeof avatarPropDefs>;
 
 interface AvatarImplProps
-  extends PropsWithoutRefOrColor<typeof AvatarPrimitive.Image>,
+  extends ComponentPropsWithoutColor<typeof AvatarPrimitive.Image>,
     AvatarOwnProps {
   // TODO: See if we can automate making prop defs with `required: true` non nullable
   fallback: NonNullable<AvatarOwnProps['fallback']>;

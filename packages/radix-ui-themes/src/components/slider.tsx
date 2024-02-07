@@ -4,14 +4,16 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { sliderPropDefs } from './slider.props.js';
-import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;
 interface SliderProps
-  extends Omit<PropsWithoutRefOrColor<typeof SliderPrimitive.Root>, 'asChild' | 'children'>,
+  extends Omit<ComponentPropsWithoutColor<typeof SliderPrimitive.Root>, 'asChild' | 'children'>,
     MarginProps,
     SliderOwnProps {}
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {

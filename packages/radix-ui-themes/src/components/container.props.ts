@@ -1,5 +1,5 @@
-import { asChildProp } from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+import { asChildProp } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;

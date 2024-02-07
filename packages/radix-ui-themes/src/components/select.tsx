@@ -9,11 +9,13 @@ import {
   selectTriggerPropDefs,
   selectContentPropDefs,
 } from './select.props.js';
-import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 import { Theme, useThemeContext } from '../theme.js';
 import { ThickCheckIcon, ChevronDownIcon } from '../icons.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type SelectRootOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
 
@@ -21,7 +23,7 @@ type SelectContextValue = SelectRootOwnProps;
 const SelectContext = React.createContext<SelectContextValue>({});
 
 interface SelectRootProps
-  extends PropsWithoutRefOrColor<typeof SelectPrimitive.Root>,
+  extends ComponentPropsWithoutColor<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
   const { children, size = selectRootPropDefs.size.default, ...rootProps } = props;
@@ -38,7 +40,7 @@ SelectRoot.displayName = 'SelectRoot';
 type SelectTriggerElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 type SelectTriggerOwnProps = GetPropDefTypes<typeof selectTriggerPropDefs>;
 interface SelectTriggerProps
-  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Trigger>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof SelectPrimitive.Trigger>, 'asChild'>,
     MarginProps,
     SelectTriggerOwnProps {}
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
@@ -77,7 +79,7 @@ SelectTrigger.displayName = 'SelectTrigger';
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
 type SelectContentOwnProps = GetPropDefTypes<typeof selectContentPropDefs>;
 interface SelectContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Content>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof SelectPrimitive.Content>, 'asChild'>,
     SelectContentOwnProps {
   container?: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
 }
@@ -134,7 +136,7 @@ SelectContent.displayName = 'SelectContent';
 
 type SelectItemElement = React.ElementRef<typeof SelectPrimitive.Item>;
 interface SelectItemProps
-  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Item>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof SelectPrimitive.Item>, 'asChild'> {}
 const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, forwardedRef) => {
   const { className, children, ...itemProps } = props;
   return (
@@ -155,7 +157,7 @@ SelectItem.displayName = 'SelectItem';
 
 type SelectGroupElement = React.ElementRef<typeof SelectPrimitive.Group>;
 interface SelectGroupProps
-  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Group>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof SelectPrimitive.Group>, 'asChild'> {}
 const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
   ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Group
@@ -170,7 +172,7 @@ SelectGroup.displayName = 'SelectGroup';
 
 type SelectLabelElement = React.ElementRef<typeof SelectPrimitive.Label>;
 interface SelectLabelProps
-  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Label>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof SelectPrimitive.Label>, 'asChild'> {}
 const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
   ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Label
@@ -185,7 +187,7 @@ SelectLabel.displayName = 'SelectLabel';
 
 type SelectSeparatorElement = React.ElementRef<typeof SelectPrimitive.Separator>;
 interface SelectSeparatorProps
-  extends Omit<PropsWithoutRefOrColor<typeof SelectPrimitive.Separator>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof SelectPrimitive.Separator>, 'asChild'> {}
 const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparatorProps>(
   ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Separator

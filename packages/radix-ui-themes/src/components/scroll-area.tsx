@@ -12,13 +12,14 @@ import {
   mergeStyles,
 } from '../helpers/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 type ScrollAreaOwnProps = GetPropDefTypes<typeof scrollAreaPropDefs>;
 interface ScrollAreaProps
-  extends PropsWithoutRefOrColor<typeof ScrollAreaPrimitive.Root>,
-    Omit<PropsWithoutRefOrColor<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
+  extends ComponentPropsWithoutColor<typeof ScrollAreaPrimitive.Root>,
+    Omit<ComponentPropsWithoutColor<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
     MarginProps,
     ScrollAreaOwnProps {}
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {

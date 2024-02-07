@@ -9,7 +9,7 @@ import {
   //
   radixGetMatchingGrayScale,
 } from './helpers/radix-colors.js';
-import type { ThemeProps } from './helpers/index.js';
+import type { ThemeProps } from './props/index.js';
 
 type ThemeAppearance = NonNullable<ThemeProps['appearance']>;
 type ThemeAccentColor = NonNullable<ThemeProps['accentColor']>;

@@ -4,14 +4,16 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { tabNavLinkPropDefs, tabNavPropDefs } from './tab-nav.props.js';
-import { extractProps, getRoot, marginPropDefs } from '../helpers/index.js';
+import { extractProps, getRoot } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type { MarginProps, GetPropDefTypes, PropsWithoutRefOrColor } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type TabNavRootElement = React.ElementRef<typeof NavigationMenu.Root>;
 type TabNavOwnProps = GetPropDefTypes<typeof tabNavPropDefs>;
 interface TabNavRootProps
-  extends Omit<PropsWithoutRefOrColor<typeof NavigationMenu.Root>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof NavigationMenu.Root>, 'asChild'>,
     MarginProps,
     TabNavOwnProps {}
 const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, forwardedRef) => {
@@ -41,7 +43,7 @@ TabNavRoot.displayName = 'TabNavRoot';
 type TabNavLinkElement = React.ElementRef<typeof NavigationMenu.Link>;
 type TabNavLinkOwnProps = GetPropDefTypes<typeof tabNavLinkPropDefs>;
 interface TabNavLinkProps
-  extends Omit<PropsWithoutRefOrColor<typeof NavigationMenu.Link>, 'onSelect'>,
+  extends Omit<ComponentPropsWithoutColor<typeof NavigationMenu.Link>, 'onSelect'>,
     TabNavLinkOwnProps {}
 const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
   const { asChild, className, children: childrenProp, ...linkProps } = props;

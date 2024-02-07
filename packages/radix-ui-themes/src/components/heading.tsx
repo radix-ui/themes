@@ -2,23 +2,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { headingPropDefs } from './heading.props.js';
-import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type {
-  PropsWithoutRefOrColor,
-  MarginProps,
-  GetPropDefTypes,
-  NiceIntersection,
-} from '../helpers/index.js';
+import type { ComponentPropsWithoutColor, NiceIntersection } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type HeadingElement = React.ElementRef<'h1'>;
 type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;
 type CommonHeadingProps = NiceIntersection<MarginProps, HeadingOwnProps>;
-type HeadingAsChildProps = { asChild: true; as?: never } & PropsWithoutRefOrColor<'h1'>;
+type HeadingAsChildProps = { asChild: true; as?: never } & ComponentPropsWithoutColor<'h1'>;
 type HeadingAsProps = {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   asChild?: false;
-} & PropsWithoutRefOrColor<'h1'>;
+} & ComponentPropsWithoutColor<'h1'>;
 type HeadingProps = CommonHeadingProps & (HeadingAsChildProps | HeadingAsProps);
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const {
