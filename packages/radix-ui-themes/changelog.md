@@ -5,6 +5,9 @@
 - General
   - Improve ESM compatibility
   - Improve tree-shaking of individual component parts
+  - Export component prop definitions and internal helpers from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
+    - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
+    - Note: changes to prop defs and helpers won’t be covered by semver
   - Add the following props to all layout components:
     - `minWidth`, `maxWidth`
     - `minHeight`, `maxHeight`
