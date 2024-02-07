@@ -8,7 +8,6 @@ import { Slot } from '@radix-ui/react-slot';
 import { getMatchingGrayColor } from '../helpers/index.js';
 import { GetPropDefTypes, themePropDefs } from '../props/index.js';
 
-import type { ThemeProps } from '../props/index.js';
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 
 const noop = () => {};
@@ -48,7 +47,8 @@ function useThemeContext() {
   return context;
 }
 
-const Theme = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>((props, forwardedRef) => {
+interface ThemeProps extends ThemeImplPublicProps {}
+const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRef) => {
   const context = React.useContext(ThemeContext);
   const isRoot = context === undefined;
   if (isRoot) {

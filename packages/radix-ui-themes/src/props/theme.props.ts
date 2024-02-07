@@ -44,7 +44,4 @@ const themePropDefs = {
   scaling: PropDef<(typeof scalings)[number]>;
 };
 
-type ThemeProps = GetPropDefTypes<typeof themePropDefs>;
-
 export { themePropDefs, themeAccentColors, themeAccentColorsGrouped, themeAccentColorsOrdered };
-export type { ThemeProps };
