@@ -13,7 +13,6 @@ import {
 } from '@radix-ui/react-icons';
 import {
   Theme,
-  //
   AlertDialogRoot,
   AlertDialogTrigger,
   AlertDialogContent,
@@ -21,42 +20,21 @@ import {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-  //
   AspectRatio,
-  //
   Avatar,
-  avatarPropDefs,
-  //
   Badge,
-  badgePropDefs,
-  //
   Blockquote,
-  //
   Box,
-  //
   Button,
-  buttonPropDefs,
-  //
   CalloutRoot,
   CalloutIcon,
   CalloutText,
-  calloutRootPropDefs,
-  //
   Card,
-  cardPropDefs,
-  //
   Checkbox,
-  checkboxPropDefs,
-  //
   CheckboxCardGroupRoot,
   CheckboxCardGroupItem,
-  checkboxCardGroupPropDefs,
-  //
   Code,
-  codePropDefs,
-  //
   Container,
-  //
   ContextMenuRoot,
   ContextMenuTrigger,
   ContextMenuContent,
@@ -70,22 +48,16 @@ import {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuSeparator,
-  contextMenuContentPropDefs,
-  //
   DataListRoot,
   DataListItem,
   DataListLabel,
   DataListValue,
-  dataListPropDefs,
-  dataListLabelPropDefs,
-  //
   DialogRoot,
   DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
   DialogClose,
-  //
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -99,50 +71,27 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuSeparator,
-  dropdownMenuContentPropDefs,
-  //
   Em,
   Flex,
   Grid,
-  //
   Heading,
-  headingPropDefs,
-  //
   HoverCardRoot,
   HoverCardTrigger,
   HoverCardContent,
-  //
   IconButton,
-  iconButtonPropDefs,
-  //
   Kbd,
-  kbdPropDefs,
-  //
   Link,
-  linkPropDefs,
-  //
   PopoverRoot,
   PopoverContent,
   PopoverTrigger,
-  //
   Progress,
-  progressPropDefs,
-  //
   Quote,
-  //
   RadioCardGroupRoot,
   RadioCardGroupItem,
-  radioCardGroupPropDefs,
-  //
   RadioGroupRoot,
   RadioGroupItem,
-  radioGroupPropDefs,
-  //
   ScrollArea,
-  scrollAreaPropDefs,
-  //
   Section,
-  //
   SelectRoot,
   SelectTrigger,
   SelectContent,
@@ -150,24 +99,12 @@ import {
   SelectGroup,
   SelectLabel,
   SelectSeparator,
-  selectRootPropDefs,
-  selectTriggerPropDefs,
-  selectContentPropDefs,
-  //
   Separator,
-  //
   Skeleton,
-  //
   Slider,
-  sliderPropDefs,
-  //
   Spinner,
-  //
   Strong,
-  //
   Switch,
-  switchPropDefs,
-  //
   TableRoot,
   TableHeader,
   TableRow,
@@ -175,30 +112,52 @@ import {
   TableBody,
   TableRowHeaderCell,
   TableCell,
-  tableRootPropDefs,
-  //
   TabsRoot,
   TabsList,
   TabsTrigger,
   TabsContent,
-  tabsListPropDefs,
-  //
   TextArea,
-  textAreaPropDefs,
-  //
   TextFieldRoot,
   TextFieldSlot,
   TextFieldInput,
-  textFieldPropDefs,
-  //
   Text,
-  textPropDefs,
-  //
   Tooltip,
-  //
   ThemePanel,
 } from '@radix-ui/themes';
-import { themeAccentColorsGrouped, themeAccentColorsOrdered } from '@radix-ui/themes/props';
+import {
+  avatarPropDefs,
+  badgePropDefs,
+  buttonPropDefs,
+  calloutRootPropDefs,
+  cardPropDefs,
+  checkboxPropDefs,
+  checkboxCardGroupPropDefs,
+  codePropDefs,
+  contextMenuContentPropDefs,
+  dataListPropDefs,
+  dataListLabelPropDefs,
+  dropdownMenuContentPropDefs,
+  headingPropDefs,
+  iconButtonPropDefs,
+  kbdPropDefs,
+  linkPropDefs,
+  progressPropDefs,
+  radioCardGroupPropDefs,
+  radioGroupPropDefs,
+  scrollAreaPropDefs,
+  selectRootPropDefs,
+  selectTriggerPropDefs,
+  selectContentPropDefs,
+  sliderPropDefs,
+  switchPropDefs,
+  tableRootPropDefs,
+  tabsListPropDefs,
+  textAreaPropDefs,
+  textFieldPropDefs,
+  textPropDefs,
+  themeAccentColorsGrouped,
+  themeAccentColorsOrdered,
+} from '@radix-ui/themes/props';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
 

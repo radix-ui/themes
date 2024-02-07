@@ -104,6 +104,7 @@ import {
   blockquotePropDefs,
   buttonPropDefs,
   calloutRootPropDefs,
+  cardPropDefs,
   checkboxPropDefs,
   codePropDefs,
   contextMenuContentPropDefs,
@@ -125,8 +126,8 @@ import {
   textAreaPropDefs,
   textFieldPropDefs,
   textPropDefs,
+  themeAccentColorsOrdered,
 } from '@radix-ui/themes/props';
-import { themeAccentColorsOrdered } from '@radix-ui/themes/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
   ArrowRightIcon,
