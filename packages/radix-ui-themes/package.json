@@ -63,6 +63,8 @@
   "files": [
     "src/**",
     "dist/**",
+    "postcss-breakpoints.cjs",
+    "postcss-whitespace.cjs",
     "tokens.css",
     "components.css",
     "utilities.css",
