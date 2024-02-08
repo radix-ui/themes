@@ -27,6 +27,8 @@
   }
   &:where(.rt-variant-ghost) {
     box-sizing: content-box;
+
+    /* Make sure that the height is not stretched in a Flex/Grid layout */
     height: fit-content;
   }
 }

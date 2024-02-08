@@ -7,6 +7,9 @@
   line-height: 1;
   user-select: none;
   cursor: default;
+
+  /* Make sure that the height is not stretched in a Flex/Grid layout */
+  height: fit-content;
 }
 
 /***************************************************************************************************
