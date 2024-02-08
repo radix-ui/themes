@@ -7,6 +7,9 @@
   vertical-align: top;
   line-height: var(--height);
 
+  /* Make sure that font weight is not inherited, e.g. from a wrapping <label> */
+  font-weight: var(--font-weight-regular);
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;

@@ -3,6 +3,9 @@
   flex-direction: column;
   box-sizing: border-box;
 
+  /* Make sure that font weight is not inherited, e.g. from a wrapping <label> */
+  font-weight: var(--font-weight-regular);
+
   /* Allows the `resize` property to work on the div */
   overflow: hidden;
 
