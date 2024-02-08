@@ -1,36 +1,94 @@
 .rt-TextFieldRoot {
   display: flex;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 0;
-}
+  align-items: stretch;
 
-.rt-TextFieldInput {
-  display: block;
-  width: 100%;
-  position: relative;
-  z-index: 1;
+  @supports selector(:has(*)) {
+    &:where(:has(.rt-TextFieldInput:focus)) {
+      outline: 2px solid var(--text-field-focus-color);
+      outline-offset: -1px;
+    }
+  }
+  @supports not selector(:has(*)) {
+    &:where(:focus-within) {
+      outline: 2px solid var(--text-field-focus-color);
+      outline-offset: -1px;
+    }
+  }
 
-  /* Clip text to the inner shadow */
-  border: var(--text-field-border-width) solid transparent;
-
-  &:where(:autofill, [data-com-onepassword-filled]) {
-    /* Reliably removes native autofill colors */
-    background-clip: text;
-    -webkit-text-fill-color: var(--gray-12);
+  &::selection {
+    background-color: var(--text-field-selection-color);
   }
 }
 
-.rt-TextFieldChrome {
-  position: absolute;
-  box-sizing: border-box;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+.rt-TextFieldInput {
+  flex-grow: 1;
 
-  :where(.rt-TextFieldInput:focus) ~ & {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
+  /* Fix date inputs alignment in Chrome and Safari */
+  display: flex;
+  align-items: center;
+
+  /*
+   * Hide type="number" input stepper because it's small, ugly, hard to use, and if
+   * needed, a nicer one can be easily implemented with own buttons in the Slot part.
+   */
+  &:where(type='number') {
+    -moz-appearance: textfield;
+  }
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  /* Remove the native cancel button */
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+
+  &::selection {
+    background-color: var(--text-field-selection-color);
+  }
+
+  /*
+   * Style the date inputs:
+   * https://codepen.io/andresdamelio/pen/KKbvdYb
+   */
+
+  /* Chrome’s calendar icon */
+  &::-webkit-calendar-picker-indicator {
+    padding: calc(var(--text-field-padding) - 2px);
+    margin: calc((var(--text-field-padding) - 2px) * -1);
+    margin-left: var(--space-1);
+    border-radius: var(--text-field-border-radius);
+  }
+  &::-webkit-calendar-picker-indicator:where(:hover) {
+    background-color: var(--gray-a3);
+  }
+  &::-webkit-calendar-picker-indicator:where(:focus-visible) {
+    outline: 2px solid var(--text-field-focus-color);
+  }
+
+  /* Remove focus ring from date fields and use the selection color */
+  &::-webkit-datetime-edit-ampm-field,
+  &::-webkit-datetime-edit-day-field,
+  &::-webkit-datetime-edit-hour-field,
+  &::-webkit-datetime-edit-millisecond-field,
+  &::-webkit-datetime-edit-minute-field,
+  &::-webkit-datetime-edit-month-field,
+  &::-webkit-datetime-edit-second-field,
+  &::-webkit-datetime-edit-week-field,
+  &::-webkit-datetime-edit-year-field {
+    &:where(:focus) {
+      background-color: var(--text-field-selection-color);
+      color: inherit;
+      outline: none;
+    }
+  }
+
+  @supports selector(:has(*)) {
+    &:where(:autofill, [data-com-onepassword-filled]) {
+      /* Reliably removes native autofill colors */
+      background-clip: text;
+      -webkit-text-fill-color: var(--gray-12);
+    }
   }
 }
 
@@ -38,8 +96,6 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  position: relative;
-  z-index: 1;
   color: var(--gray-a11);
   cursor: text;
 
@@ -49,6 +105,12 @@
   &:where(:empty) {
     display: none;
   }
+  &:where(:first-child) {
+    margin-left: calc(var(--text-field-border-width) * -1);
+  }
+  &:where(:last-child) {
+    margin-right: calc(var(--text-field-border-width) * -1);
+  }
 }
 
 /***************************************************************************************************
@@ -57,84 +119,125 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-@breakpoints {
-  .rt-TextFieldSlot {
-    &:where(.rt-r-size-1) {
-      gap: var(--space-2);
-      padding-left: var(--space-1);
-      padding-right: var(--space-1);
-    }
-    &:where(.rt-r-size-2) {
-      gap: var(--space-2);
-      padding-left: var(--space-2);
-      padding-right: var(--space-2);
-    }
-    &:where(.rt-r-size-3) {
-      gap: var(--space-3);
-      padding-left: var(--space-3);
-      padding-right: var(--space-3);
-    }
+.rt-TextFieldRoot {
+  box-sizing: border-box;
+  padding: var(--text-field-border-width);
+  border-radius: var(--text-field-border-radius);
+
+  & > :where(.rt-TextFieldInput:first-child) {
+    /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+    text-indent: var(--text-field-padding);
   }
-  .rt-TextFieldInput {
+
+  /* prettier-ignore */
+  & :where(.rt-TextFieldInput:where(
+    [type="date"], [type="datetime-local"], [type="time"], [type="week"], [type="month"])
+  ) {
+    padding-left: var(--text-field-padding);
+    padding-right: var(--text-field-padding);
+    /* Safari is buggy with text-indent for these input types */
+    text-indent: 0;
+  }
+}
+.rt-TextFieldInput {
+  /* Clip text to the border radius of the Root */
+  border-radius: calc(var(--text-field-border-radius) - var(--text-field-border-width));
+
+  /* Remove border-radius on the left if it's not a first child */
+  .rt-TextFieldRoot > :where(&:not(:first-child)) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  /* Remove border-radius on the right if there’s a slot there */
+  &:where(:has(~ .rt-TextFieldSlot)) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+@breakpoints {
+  .rt-TextFieldRoot {
     &:where(.rt-r-size-1) {
+      --text-field-padding: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
+      --text-field-border-radius: max(var(--radius-2), var(--radius-full));
       height: var(--space-5);
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 
-      &:where(:first-child) {
-        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
-        text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
-        /* Clip text to the visible border radius */
-        border-radius: max(var(--radius-2), var(--radius-full));
+      & :where(.rt-TextFieldSlot) {
+        gap: var(--space-2);
+        padding-left: var(--space-1);
+        padding-right: var(--space-1);
       }
 
-      & ~ :where(.rt-TextFieldChrome) {
-        border-radius: max(var(--radius-2), var(--radius-full));
+      & :where(.rt-TextFieldInput) {
+        /* Reset size 2 padding bottom */
+        padding-bottom: 0px;
+
+        /* Safari credentials autofill icon */
+        &::-webkit-textfield-decoration-container {
+          padding-right: 0px;
+          margin-right: -2px;
+        }
+      }
+
+      /* Safari credentials autofill icon */
+      input::-webkit-textfield-decoration-container {
+        padding-right: 0px;
       }
     }
+
     &:where(.rt-r-size-2) {
+      --text-field-padding: calc(var(--space-2) - var(--text-field-border-width));
+      --text-field-border-radius: max(var(--radius-2), var(--radius-full));
       height: var(--space-6);
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
 
-      /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
-      /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
-      padding-bottom: 0.5px;
+      & :where(.rt-TextFieldInput) {
+        /* Avoid 1px baseline jitter when layout around the text field is subpixel-sized (e.g. vh units). */
+        /* Works because as of Nov 2023, Chrome computes input text bounding box height as 16.5px on @2x screens. */
+        padding-bottom: 0.5px;
 
-      &:where(:first-child) {
-        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
-        text-indent: calc(var(--space-2) - var(--text-field-border-width));
-        /* Clip text to the visible border radius */
-        border-radius: max(var(--radius-2), var(--radius-full));
+        /* Safari credentials autofill icon */
+        &::-webkit-textfield-decoration-container {
+          padding-right: 2px;
+          margin-right: 0px;
+        }
       }
 
-      & ~ :where(.rt-TextFieldChrome) {
-        border-radius: max(var(--radius-2), var(--radius-full));
+      & :where(.rt-TextFieldSlot) {
+        gap: var(--space-2);
+        padding-left: var(--space-2);
+        padding-right: var(--space-2);
       }
     }
+
     &:where(.rt-r-size-3) {
+      --text-field-padding: calc(var(--space-3) - var(--text-field-border-width));
+      --text-field-border-radius: max(var(--radius-3), var(--radius-full));
       height: var(--space-7);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
 
-      &:where(:first-child) {
-        /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
-        text-indent: calc(var(--space-3) - var(--text-field-border-width));
-        /* Clip text to the visible border radius */
-        border-radius: max(var(--radius-3), var(--radius-full));
+      & :where(.rt-TextFieldInput) {
+        /* Reset size 2 padding bottom */
+        padding-bottom: 0px;
+
+        /* Safari credentials autofill icon */
+        &::-webkit-textfield-decoration-container {
+          padding-right: 5px;
+          margin-right: 0px;
+        }
       }
 
-      & ~ :where(.rt-TextFieldChrome) {
-        border-radius: max(var(--radius-3), var(--radius-full));
+      & :where(.rt-TextFieldSlot) {
+        gap: var(--space-3);
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
       }
     }
   }
-}
-
-/* As an enhancement, remove border-radius on the right if there’s a slot */
-.rt-TextFieldInput:where(:has(~ .rt-TextFieldSlot)) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 /***************************************************************************************************
@@ -145,100 +248,91 @@
 
 /* surface */
 
-.rt-TextFieldInput:where(.rt-variant-surface) {
+.rt-TextFieldRoot:where(.rt-variant-surface) {
+  --text-field-selection-color: var(--focus-a5);
+  --text-field-focus-color: var(--focus-8);
   --text-field-border-width: 1px;
+
+  /* Blend inner shadow with page background */
+  background-clip: content-box;
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 var(--text-field-border-width) var(--gray-a7);
   color: var(--gray-12);
 
-  & ~ :where(.rt-TextFieldChrome) {
-    background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a7);
-    /* Blend inner shadow with page background */
-    padding: 1px;
-    background-clip: content-box;
-  }
-  &::placeholder {
-    color: var(--gray-a10);
-    /* Firefox */
-    opacity: 1;
-  }
-  &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
-    & ~ :where(.rt-TextFieldChrome) {
-      background-color: var(--focus-a3);
-      box-shadow: inset 0 0 0 1px var(--focus-a3), inset 0 0 0 1px var(--gray-a6);
+  & :where(.rt-TextFieldInput) {
+    &::placeholder {
+      color: var(--gray-a10);
     }
   }
-  &:where(:disabled, :read-only) {
-    & ~ :where(.rt-TextFieldChrome) {
-      /* Blend with grey */
-      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
-    }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-color: var(--focus-a3);
+    box-shadow: inset 0 0 0 1px var(--focus-a3), inset 0 0 0 1px var(--gray-a6);
+  }
+
+  &:where(:has(.rt-TextFieldInput:where(:disabled, :read-only))) {
+    /* Blend with grey */
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
   }
 }
 
 /* classic */
 
-.rt-TextFieldInput:where(.rt-variant-classic) {
+.rt-TextFieldRoot:where(.rt-variant-classic) {
+  --text-field-selection-color: var(--focus-a5);
+  --text-field-focus-color: var(--focus-8);
   --text-field-border-width: 1px;
+
+  /* Blend inner shadow with page background */
+  background-clip: content-box;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-1);
   color: var(--gray-12);
 
-  & ~ :where(.rt-TextFieldChrome) {
-    background-color: var(--color-surface);
-    box-shadow: var(--shadow-1);
-    /* Blend inner shadow with page background */
-    padding: 1px;
-    background-clip: content-box;
-  }
-  &::placeholder {
-    color: var(--gray-a10);
-    /* Firefox */
-    opacity: 1;
-  }
-  &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
-    & ~ :where(.rt-TextFieldChrome) {
-      background-color: var(--focus-a3);
-      box-shadow: inset 0 0 0 1px var(--focus-a3), var(--shadow-1);
+  & :where(.rt-TextFieldInput) {
+    &::placeholder {
+      color: var(--gray-a10);
     }
   }
-  &:where(:disabled, :read-only) {
-    & ~ :where(.rt-TextFieldChrome) {
-      /* Blend with grey */
-      background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
-    }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-color: var(--focus-a3);
+    box-shadow: inset 0 0 0 1px var(--focus-a3), var(--shadow-1);
+  }
+
+  &:where(:has(.rt-TextFieldInput:where(:disabled, :read-only))) {
+    /* Blend with grey */
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
   }
 }
 
 /* soft */
-.rt-TextFieldInput:where(.rt-variant-soft) {
+
+.rt-TextFieldRoot:where(.rt-variant-soft) {
+  --text-field-selection-color: var(--accent-a5);
+  --text-field-focus-color: var(--accent-8);
   --text-field-border-width: 0px;
+
+  background-color: var(--accent-a3);
   color: var(--accent-12);
 
-  & ~ :where(.rt-TextFieldChrome) {
-    background-color: var(--accent-a3);
-  }
-  &::placeholder {
-    color: var(--accent-12);
-    opacity: 0.6;
-  }
-  &:where(:autofill, [data-com-onepassword-filled]):where(:not(:disabled, :read-only)) {
-    & ~ :where(.rt-TextFieldChrome) {
-      /* Use gray autofill color when component color is gray */
-      background-color: var(--accent-a4);
+  & :where(.rt-TextFieldInput) {
+    &::placeholder {
+      color: var(--accent-12);
+      opacity: 0.6;
     }
   }
-  &:where(:focus) {
-    & ~ :where(.rt-TextFieldChrome) {
-      /* Use gray outline when component color is gray */
-      outline-color: var(--accent-8);
-    }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    /* Use gray autofill color when component color is gray */
+    background-color: var(--accent-a4);
   }
-  &:where(:disabled, :read-only) {
-    & ~ :where(.rt-TextFieldChrome) {
-      background-color: var(--gray-a4);
-    }
-  }
-  &::selection {
-    /* Use gray selection when component color is gray */
-    background-color: var(--accent-a5);
+
+  &:where(:has(.rt-TextFieldInput:where(:disabled, :read-only))) {
+    background-color: var(--gray-a4);
   }
 }
 
@@ -251,19 +345,16 @@
     /* Safari */
     -webkit-text-fill-color: var(--gray-a11);
 
-    &:where(:focus) ~ :where(.rt-TextFieldChrome) {
-      outline: 2px solid var(--gray-8);
-    }
     &::placeholder {
       opacity: 0.5;
     }
     &:where(:placeholder-shown) {
       cursor: var(--cursor-disabled);
     }
-    &::selection {
-      background-color: var(--gray-a5);
+    .rt-TextFieldRoot:where(:has(&)) {
+      --text-field-selection-color: var(--gray-a5);
+      --text-field-focus-color: var(--gray-8);
     }
-
     /* Cursor in slots, as an enhancement */
     .rt-TextFieldRoot:where(:has(&:placeholder-shown)) :where(.rt-TextFieldSlot) {
       cursor: var(--cursor-disabled);

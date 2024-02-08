@@ -8,27 +8,24 @@ import { extractMarginProps, extractProps, marginPropDefs } from '../helpers/ind
 
 import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
 
-type TextFieldContextValue = GetPropDefTypes<typeof textFieldPropDefs>;
-const TextFieldContext = React.createContext<TextFieldContextValue | undefined>(undefined);
+type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldPropDefs>;
+const TextFieldContext = React.createContext<true | undefined>(undefined);
 
 type TextFieldRootElement = React.ElementRef<'div'>;
 interface TextFieldRootProps
   extends PropsWithoutRefOrColor<'div'>,
     MarginProps,
-    TextFieldContextValue {}
+    TextFieldRootOwnProps {}
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
   (props, forwardedRef) => {
-    const {
-      children,
-      className,
-      size = textFieldPropDefs.size.default,
-      variant = textFieldPropDefs.variant.default,
-      color = textFieldPropDefs.color.default,
-      radius = textFieldPropDefs.radius.default,
-      ...rootProps
-    } = extractProps(props, marginPropDefs);
+    const { children, className, color, radius, ...rootProps } = extractProps(
+      props,
+      textFieldPropDefs,
+      marginPropDefs
+    );
     return (
       <div
+        data-accent-color={color}
         data-radius={radius}
         {...rootProps}
         ref={forwardedRef}
@@ -56,9 +53,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
           });
         })}
       >
-        <TextFieldContext.Provider value={{ size, variant, color, radius }}>
-          {children}
-        </TextFieldContext.Provider>
+        <TextFieldContext.Provider value>{children}</TextFieldContext.Provider>
       </div>
     );
   }
@@ -70,14 +65,7 @@ type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
 interface TextFieldSlotProps extends PropsWithoutRefOrColor<'div'>, TextFieldSlotOwnProps {}
 const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
   (props, forwardedRef) => {
-    const context = React.useContext(TextFieldContext);
-    const { className, color, ...slotProps } = extractProps(
-      // Pass size value from the context to generate styles
-      { size: context?.size, ...props },
-      // Pass size prop def to allow it to be extracted
-      { size: textFieldPropDefs.size },
-      textFieldSlotPropDefs
-    );
+    const { className, color, ...slotProps } = extractProps(props, textFieldSlotPropDefs);
     return (
       <div
         data-accent-color={color}
@@ -97,26 +85,18 @@ interface TextFieldInputProps
     MarginProps,
     TextFieldInputOwnProps {}
 const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputProps>(
-  (props, forwardedRef) => {
-    const { rest: marginRest, ...marginProps } = extractMarginProps(props);
+  ({ className, color, radius, size, variant, ...props }, forwardedRef) => {
+    const { rest: inputProps, ...marginProps } = extractMarginProps(props);
     const context = React.useContext(TextFieldContext);
     const hasRoot = context !== undefined;
-    const { className, color, radius, ...inputProps } = extractProps(
-      { ...context, ...marginRest },
-      textFieldPropDefs
-    );
 
     const input = (
-      <>
-        <input
-          data-accent-color={color}
-          spellCheck="false"
-          {...inputProps}
-          ref={forwardedRef}
-          className={classNames('rt-reset', 'rt-TextFieldInput', className)}
-        />
-        <div data-accent-color={color} data-radius={radius} className="rt-TextFieldChrome" />
-      </>
+      <input
+        spellCheck="false"
+        {...inputProps}
+        ref={forwardedRef}
+        className={classNames('rt-reset', 'rt-TextFieldInput', className)}
+      />
     );
 
     if (hasRoot) {
@@ -124,13 +104,7 @@ const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputPro
     }
 
     return (
-      <TextFieldRoot
-        {...marginProps}
-        size={props.size}
-        variant={props.variant}
-        color={props.color}
-        radius={props.radius}
-      >
+      <TextFieldRoot {...marginProps} size={size} variant={variant} color={color} radius={radius}>
         {input}
       </TextFieldRoot>
     );
