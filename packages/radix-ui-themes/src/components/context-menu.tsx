@@ -79,8 +79,8 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               <div className={classNames('rt-BaseMenuViewport', 'rt-ContextMenuViewport')}>
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color, highContrast }),
-                    [size, variant, color, highContrast]
+                    () => ({ size, variant, color: resolvedColor, highContrast }),
+                    [size, variant, resolvedColor, highContrast]
                   )}
                 >
                   {children}

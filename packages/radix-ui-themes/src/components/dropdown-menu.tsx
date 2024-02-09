@@ -80,8 +80,8 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               <div className={classNames('rt-BaseMenuViewport', 'rt-DropdownMenuViewport')}>
                 <DropdownMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color, highContrast }),
-                    [size, variant, color, highContrast]
+                    () => ({ size, variant, color: resolvedColor, highContrast }),
+                    [size, variant, resolvedColor, highContrast]
                   )}
                 >
                   {children}

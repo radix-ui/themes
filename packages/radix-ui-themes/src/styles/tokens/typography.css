@@ -76,6 +76,8 @@
   --code-letter-spacing: -0.007em;
   --code-padding-top: 0.1em;
   --code-padding-bottom: 0.1em;
+  --code-padding-left: 0.25em;
+  --code-padding-right: 0.25em;
 
   /* Strong */
 

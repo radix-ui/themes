@@ -27,7 +27,7 @@
 .rt-BaseMenuItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--space-2);
   height: var(--base-menu-item-height);
   padding-left: var(--base-menu-item-padding-left);
   padding-right: var(--base-menu-item-padding-right);
@@ -49,7 +49,8 @@
 .rt-BaseMenuShortcut {
   display: flex;
   align-items: center;
-  margin-left: var(--space-5);
+  margin-left: auto;
+  padding-left: var(--space-4);
 }
 
 .rt-BaseMenuSubTriggerIcon {

@@ -10,6 +10,7 @@ import {
   StarIcon,
   Cross1Icon,
   CodeIcon,
+  TrashIcon,
 } from '@radix-ui/react-icons';
 import {
   Theme,
@@ -5406,6 +5407,12 @@ function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenu
           <DropdownMenuItem>Name Window…</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+          <DropdownMenuItem color="red">
+            <Box asChild mx="-3px">
+              <TrashIcon />
+            </Box>
+            Delete
+          </DropdownMenuItem>
         </DropdownMenuSubContent>
       </DropdownMenuSub>
 

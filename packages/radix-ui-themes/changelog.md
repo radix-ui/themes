@@ -68,6 +68,8 @@
   - Add `gapX` and `gapY` props
 - `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
+- `Select`
+  - Make sure that Trigger font weight is not inherited, e.g. from a wrapping `<label>` element
 - `Separator`
   - Allow responsive values for the `orientation` prop
 - `ScrollArea`
@@ -91,9 +93,13 @@
   - Add `radius` prop
   - Add `resize` prop
   - Fix an issue when Grammarly extension would break the component styles
+  - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
+  - Rework the internal HTML structure and styles. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `TextField`
   - Fix an issue with some input `type`s not supporting `getSelectionRange`
   - Fix an issue when Grammarly extension would break the component styles
+  - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
+  - Rework the internal HTML structure and styles. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `Theme`
   - Set `min-height: 100vh` on the root `Theme` component
   - Fix an issue when in certain situations, `hasBackground` prop value would have no effect

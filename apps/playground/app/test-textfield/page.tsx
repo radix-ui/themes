@@ -410,6 +410,66 @@ export default function Test() {
                       </TextFieldSlot>
                     </TextFieldRoot>
                   </Flex>
+
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Type date
+                    </Heading>
+
+                    <TextFieldInput size="1" placeholder="Date" type="date" />
+                    <TextFieldInput size="2" placeholder="Date" type="date" />
+                    <TextFieldInput size="3" placeholder="Date" type="date" />
+                  </Flex>
+
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Type datetime-local
+                    </Heading>
+
+                    <TextFieldInput size="1" placeholder="Local datetime" type="datetime-local" />
+                    <TextFieldInput size="2" placeholder="Local datetime" type="datetime-local" />
+                    <TextFieldInput size="3" placeholder="Local datetime" type="datetime-local" />
+                  </Flex>
+
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Type month
+                    </Heading>
+
+                    <TextFieldInput size="1" placeholder="Month" type="month" />
+                    <TextFieldInput size="2" placeholder="Month" type="month" />
+                    <TextFieldInput size="3" placeholder="Month" type="month" />
+                  </Flex>
+
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Type number
+                    </Heading>
+
+                    <TextFieldInput size="1" placeholder="Number" type="number" />
+                    <TextFieldInput size="2" placeholder="Number" type="number" />
+                    <TextFieldInput size="3" placeholder="Number" type="number" />
+                  </Flex>
+
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Type search
+                    </Heading>
+
+                    <TextFieldInput size="1" placeholder="Search" type="search" />
+                    <TextFieldInput size="2" placeholder="Search" type="search" />
+                    <TextFieldInput size="3" placeholder="Search" type="search" />
+                  </Flex>
+
+                  <Flex direction="column" align="start" gap="3">
+                    <Heading size="3" mb="2">
+                      Type time
+                    </Heading>
+
+                    <TextFieldInput size="1" placeholder="Time" type="time" />
+                    <TextFieldInput size="2" placeholder="Time" type="time" />
+                    <TextFieldInput size="3" placeholder="Time" type="time" />
+                  </Flex>
                 </Grid>
               </Section>
             </Container>

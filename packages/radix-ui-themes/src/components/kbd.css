@@ -48,6 +48,9 @@
   border-radius: calc(var(--radius-factor) * 0.35em);
   letter-spacing: var(--letter-spacing, var(--default-letter-spacing));
 
+  /* Make sure that the height is not stretched in a Flex/Grid layout */
+  height: fit-content;
+
   color: var(--gray-12);
   background-color: var(--gray-1);
   box-shadow: var(--kbd-box-shadow);
