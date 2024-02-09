@@ -467,8 +467,28 @@ export default function Test() {
                     </Heading>
 
                     <TextFieldInput size="1" placeholder="Time" type="time" />
-                    <TextFieldInput size="2" placeholder="Time" type="time" />
-                    <TextFieldInput size="3" placeholder="Time" type="time" />
+
+                    <Flex gap="4">
+                      <TextFieldInput size="2" placeholder="Time" type="time" />
+
+                      <TextFieldRoot size="2">
+                        <TextFieldInput placeholder="Time" type="time" />
+                        <TextFieldSlot pr="1">
+                          <Button size="1">Submit</Button>
+                        </TextFieldSlot>
+                      </TextFieldRoot>
+                    </Flex>
+
+                    <Flex gap="4">
+                      <TextFieldInput size="3" placeholder="Time" type="time" />
+
+                      <TextFieldRoot size="3">
+                        <TextFieldInput placeholder="Time" type="time" />
+                        <TextFieldSlot pr="2">
+                          <Button size="1">Submit</Button>
+                        </TextFieldSlot>
+                      </TextFieldRoot>
+                    </Flex>
                   </Flex>
                 </Grid>
               </Section>

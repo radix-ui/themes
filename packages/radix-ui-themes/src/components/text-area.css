@@ -226,7 +226,7 @@
     &::selection {
       background-color: var(--gray-a5);
     }
-    .rt-TextAreaRoot:where(:focus-within) {
+    .rt-TextAreaRoot:where(:focus-within:has(&)) {
       outline-color: var(--gray-8);
     }
   }
