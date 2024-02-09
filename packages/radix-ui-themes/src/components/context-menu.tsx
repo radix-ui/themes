@@ -17,7 +17,6 @@ import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
-import { baseMenuContentPropDefs } from './base-menu.props.js';
 
 interface ContextMenuRootProps
   extends ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Root> {}
@@ -57,7 +56,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     } = props;
     const { className, children, color, container, forceMount, ...contentProps } = extractProps(
       props,
-      baseMenuContentPropDefs
+      contextMenuContentPropDefs
     );
     const resolvedColor = color || themeContext.accentColor;
     return (
@@ -298,7 +297,7 @@ const ContextMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    baseMenuContentPropDefs
+    contextMenuContentPropDefs
   );
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>

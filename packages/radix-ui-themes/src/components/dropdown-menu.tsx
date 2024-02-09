@@ -17,7 +17,6 @@ import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
-import { baseMenuContentPropDefs } from './base-menu.props.js';
 
 interface DropdownMenuRootProps
   extends ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Root> {}
@@ -300,7 +299,7 @@ const DropdownMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    baseMenuContentPropDefs
+    dropdownMenuContentPropDefs
   );
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
