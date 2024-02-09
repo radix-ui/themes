@@ -1,4 +1,4 @@
-import { asChildProp } from '../helpers/props/as-child.prop.js';
+import { asChildProp } from '../props/as-child.prop.js';
 import { textPropDefs } from './text.props.js';
 
 const blockquotePropDefs = {

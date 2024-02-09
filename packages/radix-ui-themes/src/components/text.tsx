@@ -2,23 +2,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { textPropDefs } from './text.props.js';
-import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type {
-  PropsWithoutRefOrColor,
-  MarginProps,
-  GetPropDefTypes,
-  NiceIntersection,
-} from '../helpers/index.js';
+import type { ComponentPropsWithoutColor, NiceIntersection } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type TextElement = React.ElementRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
 type CommonTextProps = NiceIntersection<MarginProps, TextOwnProps>;
-type TextAsChildProps = { asChild: true; as?: never } & PropsWithoutRefOrColor<'span'>;
-type TextSpanProps = { as?: 'span'; asChild?: false } & PropsWithoutRefOrColor<'span'>;
-type TextDivProps = { as: 'div'; asChild?: false } & PropsWithoutRefOrColor<'div'>;
-type TextLabelProps = { as: 'label'; asChild?: false } & PropsWithoutRefOrColor<'label'>;
-type TextPProps = { as: 'p'; asChild?: false } & PropsWithoutRefOrColor<'p'>;
+type TextAsChildProps = { asChild: true; as?: never } & ComponentPropsWithoutColor<'span'>;
+type TextSpanProps = { as?: 'span'; asChild?: false } & ComponentPropsWithoutColor<'span'>;
+type TextDivProps = { as: 'div'; asChild?: false } & ComponentPropsWithoutColor<'div'>;
+type TextLabelProps = { as: 'label'; asChild?: false } & ComponentPropsWithoutColor<'label'>;
+type TextPProps = { as: 'p'; asChild?: false } & ComponentPropsWithoutColor<'p'>;
 type TextProps = CommonTextProps &
   (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
 

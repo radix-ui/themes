@@ -5,19 +5,11 @@ import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { Text } from './text.js';
 import { calloutRootPropDefs } from './callout.props.js';
-import {
-  extractProps,
-  mapCalloutSizeToTextSize,
-  mapResponsiveProp,
-  marginPropDefs,
-} from '../helpers/index.js';
+import { extractProps, mapCalloutSizeToTextSize, mapResponsiveProp } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type {
-  PropsWithoutRefOrColor,
-  MarginProps,
-  GetPropDefTypes,
-  ComponentPropsAs,
-} from '../helpers/index.js';
+import type { ComponentPropsWithoutColor, ComponentPropsAs } from '../helpers/index.js';
+import { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 
@@ -26,7 +18,7 @@ const CalloutContext = React.createContext<CalloutContextValue>({});
 
 type CalloutRootElement = React.ElementRef<'div'>;
 interface CalloutRootProps
-  extends PropsWithoutRefOrColor<'div'>,
+  extends ComponentPropsWithoutColor<'div'>,
     MarginProps,
     CalloutContextValue {}
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
@@ -60,7 +52,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
 CalloutRoot.displayName = 'CalloutRoot';
 
 type CalloutIconElement = React.ElementRef<'div'>;
-interface CalloutIconProps extends PropsWithoutRefOrColor<'div'> {}
+interface CalloutIconProps extends ComponentPropsWithoutColor<'div'> {}
 const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
   ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);

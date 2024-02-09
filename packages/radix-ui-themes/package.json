@@ -17,6 +17,26 @@
         "default": "./dist/esm/index.js"
       }
     },
+    "./helpers": {
+      "require": {
+        "types": "./dist/cjs/helpers/index.d.ts",
+        "default": "./dist/cjs/helpers/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/helpers/index.d.ts",
+        "default": "./dist/esm/helpers/index.js"
+      }
+    },
+    "./props": {
+      "require": {
+        "types": "./dist/cjs/props/index.d.ts",
+        "default": "./dist/cjs/props/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/props/index.d.ts",
+        "default": "./dist/esm/props/index.js"
+      }
+    },
     "./tokens.css": {
       "import": "./tokens.css",
       "require": "./tokens.css",
@@ -43,6 +63,8 @@
   "files": [
     "src/**",
     "dist/**",
+    "postcss-breakpoints.cjs",
+    "postcss-whitespace.cjs",
     "tokens.css",
     "components.css",
     "utilities.css",

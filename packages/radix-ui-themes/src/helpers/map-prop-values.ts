@@ -1,9 +1,9 @@
-import { baseButtonPropDefs } from '../../components/base-button.props.js';
-import { calloutRootPropDefs } from '../../components/callout.props.js';
-import { spinnerPropDefs } from '../../components/spinner.props.js';
-import { textPropDefs } from '../../components/text.props.js';
+import { baseButtonPropDefs } from '../components/base-button.props.js';
+import { calloutRootPropDefs } from '../components/callout.props.js';
+import { spinnerPropDefs } from '../components/spinner.props.js';
+import { textPropDefs } from '../components/text.props.js';
 
-import type { Responsive } from '../../helpers/index.js';
+import type { Responsive } from '../props/index.js';
 
 function mapResponsiveProp<Input extends string, Output>(
   propValue: Responsive<Input> | undefined,

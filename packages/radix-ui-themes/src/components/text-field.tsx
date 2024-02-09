@@ -4,16 +4,18 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { composeEventHandlers } from '@radix-ui/primitive';
 import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props.js';
-import { extractMarginProps, extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractMarginProps, extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import type { PropsWithoutRefOrColor, MarginProps, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldPropDefs>;
 const TextFieldContext = React.createContext<true | undefined>(undefined);
 
 type TextFieldRootElement = React.ElementRef<'div'>;
 interface TextFieldRootProps
-  extends PropsWithoutRefOrColor<'div'>,
+  extends ComponentPropsWithoutColor<'div'>,
     MarginProps,
     TextFieldRootOwnProps {}
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
@@ -62,7 +64,7 @@ TextFieldRoot.displayName = 'TextFieldRoot';
 
 type TextFieldSlotElement = React.ElementRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
-interface TextFieldSlotProps extends PropsWithoutRefOrColor<'div'>, TextFieldSlotOwnProps {}
+interface TextFieldSlotProps extends ComponentPropsWithoutColor<'div'>, TextFieldSlotOwnProps {}
 const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
   (props, forwardedRef) => {
     const { className, color, ...slotProps } = extractProps(props, textFieldSlotPropDefs);
@@ -81,7 +83,7 @@ TextFieldSlot.displayName = 'TextFieldSlot';
 type TextFieldInputElement = React.ElementRef<'input'>;
 type TextFieldInputOwnProps = GetPropDefTypes<typeof textFieldPropDefs>;
 interface TextFieldInputProps
-  extends Omit<PropsWithoutRefOrColor<'input'>, 'size'>,
+  extends Omit<ComponentPropsWithoutColor<'input'>, 'size'>,
     MarginProps,
     TextFieldInputOwnProps {}
 const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputProps>(

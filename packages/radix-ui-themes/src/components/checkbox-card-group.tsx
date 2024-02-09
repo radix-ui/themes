@@ -7,16 +7,13 @@ import * as CheckboxGroupPrimitive from './checkbox-group.primitive.js';
 import { createCheckboxGroupScope } from './checkbox-group.primitive.js';
 import { checkboxCardGroupPropDefs } from './checkbox-card-group.props.js';
 import { baseCheckboxPropDefs } from './base-checkbox.props.js';
-import { extractProps, marginPropDefs } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 import { Grid } from './grid.js';
-import { ThickCheckIcon } from '../icons.js';
+import { ThickCheckIcon } from './icons.js';
 
-import type {
-  PropsWithoutRefOrColor,
-  MarginProps,
-  GetPropDefTypes,
-  Responsive,
-} from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes, Responsive } from '../props/index.js';
 import type { Scope } from '@radix-ui/react-context';
 
 const CHECKBOX_CARD_GROUP_NAME = 'CheckboxCardGroup';
@@ -39,7 +36,7 @@ const [CheckboxCardGroupProvider, useCheckboxCardGroupContext] =
 type CheckboxCardGroupRootElement = React.ElementRef<typeof CheckboxGroupPrimitive.Root>;
 type CheckboxCardGroupRootOwnProps = GetPropDefTypes<typeof checkboxCardGroupPropDefs>;
 interface CheckboxCardGroupRootProps
-  extends PropsWithoutRefOrColor<typeof CheckboxGroupPrimitive.Root>,
+  extends ComponentPropsWithoutColor<typeof CheckboxGroupPrimitive.Root>,
     MarginProps,
     CheckboxCardGroupRootOwnProps {}
 const CheckboxCardGroupRoot = React.forwardRef<

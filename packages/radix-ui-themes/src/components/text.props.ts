@@ -7,8 +7,8 @@ import {
   textWrapProp,
   truncateProp,
   asChildProp,
-} from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+} from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const as = ['span', 'div', 'label', 'p'] as const;
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;

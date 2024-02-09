@@ -1,4 +1,4 @@
-import type { ThemeOptions } from '@radix-ui/themes';
+import type { themeAccentColors } from '@radix-ui/themes/props';
 
 type Person = {
   image: string;
@@ -162,7 +162,7 @@ const allPeople = [
 // neutral
 const neutralPeople = [person15, person03, person05, person01, person09, person16, person24];
 
-function getPeopleForColor(color: ThemeOptions['accentColor']) {
+function getPeopleForColor(color: (typeof themeAccentColors)[number]) {
   switch (color) {
     case 'gray':
       return neutralPeople;

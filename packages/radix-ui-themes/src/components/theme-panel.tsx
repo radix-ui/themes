@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
-import { InfoCircledIcon } from './icons.js';
 import {
   AccessibleIcon,
   Box,
@@ -18,13 +17,13 @@ import {
   ScrollArea,
   Text,
   Tooltip,
-} from './components/index.js';
+} from '../index.js';
 import { Theme, useThemeContext } from './theme.js';
-import { getMatchingGrayColor, themeAccentColorsOrdered } from './theme-options.js';
-import { radixGrayScalesDesaturated, themePropDefs } from './helpers/index.js';
+import { getMatchingGrayColor } from '../helpers/index.js';
+import { themePropDefs, themeAccentColorsOrdered } from '../props/index.js';
 
-import type { ThemeOptions } from './theme-options.js';
-import type { PropsWithoutRefOrColor } from './helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { GetPropDefTypes } from '../props/index.js';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;
@@ -42,8 +41,10 @@ interface ThemePanelImplPrivateProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-interface ThemePanelImplProps extends PropsWithoutRefOrColor<'div'>, ThemePanelImplPrivateProps {
-  onAppearanceChange?: (value: Exclude<ThemeOptions['appearance'], 'inherit'>) => void;
+interface ThemePanelImplProps
+  extends ComponentPropsWithoutColor<'div'>,
+    ThemePanelImplPrivateProps {
+  onAppearanceChange?: (value: 'light' | 'dark') => void;
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
   (props, forwardedRef) => {
@@ -92,7 +93,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
     async function handleCopyThemeConfig() {
-      const theme: Partial<ThemeOptions> = {
+      const theme = {
         appearance: appearance === themePropDefs.appearance.default ? undefined : appearance,
         accentColor: accentColor === themePropDefs.accentColor.default ? undefined : accentColor,
         grayColor: grayColor === themePropDefs.grayColor.default ? undefined : grayColor,
@@ -100,11 +101,11 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           panelBackground === themePropDefs.panelBackground.default ? undefined : panelBackground,
         radius: radius === themePropDefs.radius.default ? undefined : radius,
         scaling: scaling === themePropDefs.scaling.default ? undefined : scaling,
-      };
+      } satisfies GetPropDefTypes<typeof themePropDefs>;
 
       const props = Object.keys(theme)
-        .filter((key) => theme[key as keyof ThemeOptions] !== undefined)
-        .map((key) => `${key}="${theme[key as keyof ThemeOptions]}"`)
+        .filter((key) => theme[key as keyof typeof theme] !== undefined)
+        .map((key) => `${key}="${theme[key as keyof typeof theme]}"`)
         .join(' ');
 
       const textToCopy = props ? `<Theme ${props}>` : '<Theme>';
@@ -252,7 +253,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         value={color}
                         checked={accentColor === color}
                         onChange={(event) =>
-                          onAccentColorChange(event.target.value as ThemeOptions['accentColor'])
+                          onAccentColorChange(event.target.value as typeof accentColor)
                         }
                       />
                     </Tooltip>
@@ -267,7 +268,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               </Flex>
 
               <Grid columns="10" gap="2" mt="3" role="group" aria-labelledby="gray-color-title">
-                {['auto', 'gray', ...radixGrayScalesDesaturated].map((gray) => (
+                {themePropDefs.grayColor.values.map((gray) => (
                   <Flex key={gray} asChild align="center" justify="center">
                     <label
                       className="rt-ThemePanelSwatch"
@@ -295,7 +296,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                           value={gray}
                           checked={grayColor === gray}
                           onChange={(event) =>
-                            onGrayColorChange(event.target.value as ThemeOptions['grayColor'])
+                            onGrayColorChange(event.target.value as typeof grayColor)
                           }
                         />
                       </Tooltip>
@@ -378,9 +379,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         id={`theme-panel-radius-${value}`}
                         value={value}
                         checked={radius === value}
-                        onChange={(event) =>
-                          onRadiusChange(event.target.value as ThemeOptions['radius'])
-                        }
+                        onChange={(event) => onRadiusChange(event.target.value as typeof radius)}
                       />
                       <Theme asChild radius={value}>
                         <Box
@@ -419,9 +418,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       name="scaling"
                       value={value}
                       checked={scaling === value}
-                      onChange={(event) =>
-                        onScalingChange(event.target.value as ThemeOptions['scaling'])
-                      }
+                      onChange={(event) => onScalingChange(event.target.value as typeof scaling)}
                     />
 
                     <Flex align="center" justify="center" height="6">
@@ -446,7 +443,19 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                   <PopoverTrigger>
                     <IconButton size="1" variant="ghost" color="gray">
                       <AccessibleIcon label="Learn more about panel background options">
-                        <InfoCircledIcon />
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 15 15"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.49991 0.876892C3.84222 0.876892 0.877075 3.84204 0.877075 7.49972C0.877075 11.1574 3.84222 14.1226 7.49991 14.1226C11.1576 14.1226 14.1227 11.1574 14.1227 7.49972C14.1227 3.84204 11.1576 0.876892 7.49991 0.876892ZM1.82707 7.49972C1.82707 4.36671 4.36689 1.82689 7.49991 1.82689C10.6329 1.82689 13.1727 4.36671 13.1727 7.49972C13.1727 10.6327 10.6329 13.1726 7.49991 13.1726C4.36689 13.1726 1.82707 10.6327 1.82707 7.49972ZM8.24992 4.49999C8.24992 4.9142 7.91413 5.24999 7.49992 5.24999C7.08571 5.24999 6.74992 4.9142 6.74992 4.49999C6.74992 4.08577 7.08571 3.74999 7.49992 3.74999C7.91413 3.74999 8.24992 4.08577 8.24992 4.49999ZM6.00003 5.99999H6.50003H7.50003C7.77618 5.99999 8.00003 6.22384 8.00003 6.49999V9.99999H8.50003H9.00003V11H8.50003H7.50003H6.50003H6.00003V9.99999H6.50003H7.00003V6.99999H6.50003H6.00003V5.99999Z"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                          />
+                        </svg>
                       </AccessibleIcon>
                     </IconButton>
                   </PopoverTrigger>
@@ -476,9 +485,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       value={value}
                       checked={panelBackground === value}
                       onChange={(event) =>
-                        onPanelBackgroundChange(
-                          event.target.value as ThemeOptions['panelBackground']
-                        )
+                        onPanelBackgroundChange(event.target.value as typeof panelBackground)
                       }
                     />
                     <Flex align="center" justify="center" height="6" gap="2">

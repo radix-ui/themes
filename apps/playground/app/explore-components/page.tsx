@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Theme,
-  //
   AlertDialogRoot,
   AlertDialogTrigger,
   AlertDialogContent,
@@ -9,125 +8,64 @@ import {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-  //
   AspectRatio,
-  //
   Avatar,
-  avatarPropDefs,
-  //
   Badge,
-  badgePropDefs,
-  //
   Blockquote,
-  blockquotePropDefs,
-  //
   Box,
-  //
   Button,
-  buttonPropDefs,
-  //
   CalloutRoot,
   CalloutIcon,
   CalloutText,
-  calloutRootPropDefs,
-  //
   Card,
-  cardPropDefs,
-  //
   Checkbox,
-  checkboxPropDefs,
-  //
   Code,
-  codePropDefs,
-  //
-  Container,
-  //
   ContextMenuRoot,
   ContextMenuTrigger,
   ContextMenuContent,
-  ContextMenuLabel,
   ContextMenuItem,
-  ContextMenuGroup,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuCheckboxItem,
   ContextMenuSub,
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuSeparator,
-  contextMenuContentPropDefs,
-  //
   DataListRoot,
   DataListItem,
   DataListLabel,
   DataListValue,
-  dataListPropDefs,
-  //
   DialogRoot,
   DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
   DialogClose,
-  dialogContentPropDefs,
-  //
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuItem,
-  DropdownMenuGroup,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuCheckboxItem,
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuSeparator,
-  dropdownMenuContentPropDefs,
-  //
   Em,
   Flex,
   Grid,
-  //
   Heading,
-  headingPropDefs,
-  //
   HoverCardRoot,
   HoverCardTrigger,
   HoverCardContent,
-  hoverCardContentPropDefs,
-  //
   IconButton,
-  iconButtonPropDefs,
-  //
   Inset,
-  //
   Kbd,
-  kbdPropDefs,
-  //
   Link,
-  linkPropDefs,
-  //
   PopoverRoot,
   PopoverContent,
   PopoverTrigger,
   PopoverClose,
-  //
   Progress,
-  progressPropDefs,
-  //
   Quote,
-  //
   RadioGroupRoot,
   RadioGroupItem,
-  radioGroupPropDefs,
-  //
   ScrollArea,
-  scrollAreaPropDefs,
-  //
-  Section,
-  //
   SelectRoot,
   SelectTrigger,
   SelectContent,
@@ -135,25 +73,12 @@ import {
   SelectGroup,
   SelectLabel,
   SelectSeparator,
-  selectRootPropDefs,
-  selectTriggerPropDefs,
-  selectContentPropDefs,
-  //
   Separator,
-  //
   Skeleton,
-  //
   Slider,
-  sliderPropDefs,
-  //
   Spinner,
-  spinnerPropDefs,
-  //
   Strong,
-  //
   Switch,
-  switchPropDefs,
-  //
   TableRoot,
   TableHeader,
   TableRow,
@@ -161,32 +86,48 @@ import {
   TableBody,
   TableRowHeaderCell,
   TableCell,
-  tableRootPropDefs,
-  //
   TabsRoot,
   TabsList,
   TabsTrigger,
   TabsContent,
-  tabsListPropDefs,
-  //
   TextArea,
-  textAreaPropDefs,
-  //
   TextFieldRoot,
   TextFieldSlot,
   TextFieldInput,
-  textFieldPropDefs,
-  //
   Text,
-  textPropDefs,
-  //
   Tooltip,
-  //
-  // helpers:
-  themeAccentColorsOrdered,
-  //
   ThemePanel,
 } from '@radix-ui/themes';
+import {
+  avatarPropDefs,
+  badgePropDefs,
+  blockquotePropDefs,
+  buttonPropDefs,
+  calloutRootPropDefs,
+  cardPropDefs,
+  checkboxPropDefs,
+  codePropDefs,
+  contextMenuContentPropDefs,
+  dataListPropDefs,
+  dropdownMenuContentPropDefs,
+  headingPropDefs,
+  hoverCardContentPropDefs,
+  iconButtonPropDefs,
+  kbdPropDefs,
+  linkPropDefs,
+  progressPropDefs,
+  radioGroupPropDefs,
+  selectRootPropDefs,
+  selectTriggerPropDefs,
+  sliderPropDefs,
+  switchPropDefs,
+  tableRootPropDefs,
+  tabsListPropDefs,
+  textAreaPropDefs,
+  textFieldPropDefs,
+  textPropDefs,
+  themeAccentColorsOrdered,
+} from '@radix-ui/themes/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
   ArrowRightIcon,
@@ -197,7 +138,6 @@ import {
 } from '@radix-ui/react-icons';
 import { getPeopleForColor } from './people';
 import styles from './page.module.css';
-import { LoadingButtons } from '../../components/loading-buttons';
 
 export default function ExploreComponents() {
   return (

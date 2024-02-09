@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-  Theme,
-  ThemePanel,
-  Container,
-  Section,
-  Flex,
-  Button,
-  themeAccentColorsOrdered,
-  Text,
-} from '@radix-ui/themes';
+import { Theme, ThemePanel, Container, Section, Flex, Button, Text } from '@radix-ui/themes';
+import { themeAccentColorsOrdered } from '@radix-ui/themes/props';
 import { Pencil2Icon } from '@radix-ui/react-icons';
 
 export default function Test() {

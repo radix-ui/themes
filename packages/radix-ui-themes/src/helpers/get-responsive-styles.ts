@@ -1,9 +1,7 @@
+import { breakpoints } from '../props/prop-def.js';
+import type { Responsive, Union } from '../props/prop-def.js';
 import { hasOwnProperty } from './has-own-property.js';
-import type { Union } from './union.js';
-
-const breakpoints = ['initial', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
-type Breakpoints = (typeof breakpoints)[number];
-type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
+import { isResponsiveObject } from './is-responsive-object.js';
 
 interface GetResponsiveStylesOptions {
   className: string;
@@ -154,20 +152,4 @@ function getResponsiveCustomProperties({
   return styles;
 }
 
-function isResponsiveObject<Value extends string>(
-  obj: Responsive<Value | Omit<string, Value>> | undefined
-): obj is Record<Breakpoints, string> {
-  return (
-    typeof obj === 'object' &&
-    Object.keys(obj).some((key) => (breakpoints as readonly string[]).includes(key))
-  );
-}
-
-export {
-  getResponsiveStyles,
-  getResponsiveCustomProperties,
-  getResponsiveClassNames,
-  isResponsiveObject,
-};
-
-export type { Breakpoints, Responsive, Union };
+export { getResponsiveStyles, getResponsiveCustomProperties, getResponsiveClassNames };

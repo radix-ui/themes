@@ -1,5 +1,5 @@
-import { asChildProp, colorProp, highContrastProp, inheritedColorProp } from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+import { asChildProp, colorProp, highContrastProp, inheritedColorProp } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const contentSizes = ['1', '2'] as const;
 const contentVariants = ['solid', 'soft'] as const;

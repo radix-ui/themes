@@ -4,12 +4,13 @@ import { Slot } from '@radix-ui/react-slot';
 import { Text } from './text.js';
 import { blockquotePropDefs } from './blockquote.props.js';
 
-import type { MarginProps, PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type BlockquoteElement = React.ElementRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;
 interface BlockquoteProps
-  extends PropsWithoutRefOrColor<'blockquote'>,
+  extends ComponentPropsWithoutColor<'blockquote'>,
     MarginProps,
     BlockQuoteOwnProps {}
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {

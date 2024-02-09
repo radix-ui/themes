@@ -1,5 +1,5 @@
-import { colorProp } from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+import { colorProp } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
 const sizes = ['1', '2', '3', '4'] as const;

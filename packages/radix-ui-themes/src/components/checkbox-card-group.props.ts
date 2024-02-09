@@ -1,5 +1,5 @@
-import { colorProp, highContrastProp } from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+import { colorProp, highContrastProp } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 import { gridPropDefs } from './grid.props.js';
 
 const sizes = ['1', '2', '3'] as const;

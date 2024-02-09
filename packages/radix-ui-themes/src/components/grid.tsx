@@ -2,26 +2,18 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot.js';
 import { gridPropDefs } from './grid.props.js';
-import {
-  deprecatedLayoutPropDefs,
-  extractProps,
-  layoutPropDefs,
-  marginPropDefs,
-} from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
+import { deprecatedLayoutPropDefs, layoutPropDefs, marginPropDefs } from '../props/index.js';
 
-import {
-  MarginProps,
-  LayoutProps,
-  GetPropDefTypes,
-  PropsWithoutRefOrColor,
-} from '../helpers/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { MarginProps, LayoutProps, GetPropDefTypes } from '../props/index.js';
 
 type GridElement = React.ElementRef<'div'>;
 type GridOwnProps = GetPropDefTypes<typeof gridPropDefs>;
 interface CommonGridProps extends MarginProps, LayoutProps, GridOwnProps {}
-type GridAsChildProps = { asChild?: true; as?: never } & PropsWithoutRefOrColor<'div'>;
-type GridDivProps = { as?: 'div'; asChild?: false } & PropsWithoutRefOrColor<'div'>;
-type GridSpanProps = { as: 'span'; asChild?: false } & PropsWithoutRefOrColor<'span'>;
+type GridAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithoutColor<'div'>;
+type GridDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithoutColor<'div'>;
+type GridSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithoutColor<'span'>;
 type GridProps = CommonGridProps & (GridAsChildProps | GridSpanProps | GridDivProps);
 
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {

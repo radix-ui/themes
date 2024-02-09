@@ -1,5 +1,5 @@
-import { colorProp, highContrastProp, radiusProp, widthPropDefs } from '../helpers/index.js';
-import type { PropDef } from '../helpers/index.js';
+import { colorProp, highContrastProp, radiusProp, widthPropDefs } from '../props/index.js';
+import type { PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;

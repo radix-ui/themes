@@ -12,13 +12,14 @@ import {
   dropdownMenuRadioItemPropDefs,
 } from './dropdown-menu.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
-import { Theme, useThemeContext } from '../theme.js';
-import { ThickCheckIcon, ThickChevronRightIcon } from '../icons.js';
+import { Theme, useThemeContext } from './theme.js';
+import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 
-import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers/index.js';
-import { baseMenuContentPropDefs } from './base-menu.props.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { GetPropDefTypes } from '../props/index.js';
 
-interface DropdownMenuRootProps extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Root> {}
+interface DropdownMenuRootProps
+  extends ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Root> {}
 const DropdownMenuRoot: React.FC<DropdownMenuRootProps> = (props) => (
   <DropdownMenuPrimitive.Root {...props} />
 );
@@ -26,7 +27,7 @@ DropdownMenuRoot.displayName = 'DropdownMenuRoot';
 
 type DropdownMenuTriggerElement = React.ElementRef<typeof DropdownMenuPrimitive.Trigger>;
 interface DropdownMenuTriggerProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Trigger>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Trigger>, 'asChild'> {}
 const DropdownMenuTrigger = React.forwardRef<DropdownMenuTriggerElement, DropdownMenuTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <DropdownMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -41,7 +42,7 @@ type DropdownMenuContentContextValue = DropdownMenuContentOwnProps;
 const DropdownMenuContentContext = React.createContext<DropdownMenuContentContextValue>({});
 type DropdownMenuContentElement = React.ElementRef<typeof DropdownMenuPrimitive.Content>;
 interface DropdownMenuContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Content>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Content>, 'asChild'>,
     DropdownMenuContentContextValue {
   container?: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
 }
@@ -98,7 +99,7 @@ DropdownMenuContent.displayName = 'DropdownMenuContent';
 
 type DropdownMenuLabelElement = React.ElementRef<typeof DropdownMenuPrimitive.Label>;
 interface DropdownMenuLabelProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Label>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Label>, 'asChild'> {}
 const DropdownMenuLabel = React.forwardRef<DropdownMenuLabelElement, DropdownMenuLabelProps>(
   ({ className, ...props }, forwardedRef) => (
     <DropdownMenuPrimitive.Label
@@ -114,7 +115,7 @@ DropdownMenuLabel.displayName = 'DropdownMenuLabel';
 type DropdownMenuItemElement = React.ElementRef<typeof DropdownMenuPrimitive.Item>;
 type DropdownMenuItemOwnProps = GetPropDefTypes<typeof dropdownMenuItemPropDefs>;
 interface DropdownMenuItemProps
-  extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Item>,
+  extends ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Item>,
     DropdownMenuItemOwnProps {}
 const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuItemProps>(
   (props, forwardedRef) => {
@@ -142,7 +143,7 @@ DropdownMenuItem.displayName = 'DropdownMenuItem';
 
 type DropdownMenuGroupElement = React.ElementRef<typeof DropdownMenuPrimitive.Group>;
 interface DropdownMenuGroupProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Group>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Group>, 'asChild'> {}
 const DropdownMenuGroup = React.forwardRef<DropdownMenuGroupElement, DropdownMenuGroupProps>(
   ({ className, ...props }, forwardedRef) => (
     <DropdownMenuPrimitive.Group
@@ -157,7 +158,7 @@ DropdownMenuGroup.displayName = 'DropdownMenuGroup';
 
 type DropdownMenuRadioGroupElement = React.ElementRef<typeof DropdownMenuPrimitive.RadioGroup>;
 interface DropdownMenuRadioGroupProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.RadioGroup>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.RadioGroup>, 'asChild'> {}
 const DropdownMenuRadioGroup = React.forwardRef<
   DropdownMenuRadioGroupElement,
   DropdownMenuRadioGroupProps
@@ -174,7 +175,7 @@ DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
 type DropdownMenuRadioItemElement = React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>;
 type DropdownMenuRadioItemOwnProps = GetPropDefTypes<typeof dropdownMenuRadioItemPropDefs>;
 interface DropdownMenuRadioItemProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.RadioItem>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.RadioItem>, 'asChild'>,
     DropdownMenuRadioItemOwnProps {}
 const DropdownMenuRadioItem = React.forwardRef<
   DropdownMenuRadioItemElement,
@@ -212,7 +213,7 @@ DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem';
 type DropdownMenuCheckboxItemElement = React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>;
 type DropdownMenuCheckboxItemOwnProps = GetPropDefTypes<typeof dropdownMenuCheckboxItemPropDefs>;
 interface DropdownMenuCheckboxItemProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.CheckboxItem>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.CheckboxItem>, 'asChild'>,
     DropdownMenuCheckboxItemOwnProps {}
 const DropdownMenuCheckboxItem = React.forwardRef<
   DropdownMenuCheckboxItemElement,
@@ -249,7 +250,8 @@ const DropdownMenuCheckboxItem = React.forwardRef<
 });
 DropdownMenuCheckboxItem.displayName = 'DropdownMenuCheckboxItem';
 
-interface DropdownMenuSubProps extends PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Sub> {}
+interface DropdownMenuSubProps
+  extends ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Sub> {}
 const DropdownMenuSub: React.FC<DropdownMenuSubProps> = (props) => (
   <DropdownMenuPrimitive.Sub {...props} />
 );
@@ -257,7 +259,7 @@ DropdownMenuSub.displayName = 'DropdownMenuSub';
 
 type DropdownMenuSubTriggerElement = React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>;
 interface DropdownMenuSubTriggerProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.SubTrigger>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.SubTrigger>, 'asChild'> {}
 const DropdownMenuSubTrigger = React.forwardRef<
   DropdownMenuSubTriggerElement,
   DropdownMenuSubTriggerProps
@@ -287,7 +289,7 @@ DropdownMenuSubTrigger.displayName = 'DropdownMenuSubTrigger';
 
 type DropdownMenuSubContentElement = React.ElementRef<typeof DropdownMenuPrimitive.SubContent>;
 interface DropdownMenuSubContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.SubContent>, 'asChild'> {
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.SubContent>, 'asChild'> {
   container?: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>['container'];
 }
 const DropdownMenuSubContent = React.forwardRef<
@@ -297,7 +299,7 @@ const DropdownMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    baseMenuContentPropDefs
+    dropdownMenuContentPropDefs
   );
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -334,7 +336,7 @@ DropdownMenuSubContent.displayName = 'DropdownMenuSubContent';
 
 type DropdownMenuSeparatorElement = React.ElementRef<typeof DropdownMenuPrimitive.Separator>;
 interface DropdownMenuSeparatorProps
-  extends Omit<PropsWithoutRefOrColor<typeof DropdownMenuPrimitive.Separator>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof DropdownMenuPrimitive.Separator>, 'asChild'> {}
 const DropdownMenuSeparator = React.forwardRef<
   DropdownMenuSeparatorElement,
   DropdownMenuSeparatorProps

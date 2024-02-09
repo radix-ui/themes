@@ -12,13 +12,14 @@ import {
   contextMenuRadioItemPropDefs,
 } from './context-menu.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
-import { Theme, useThemeContext } from '../theme.js';
-import { ThickCheckIcon, ThickChevronRightIcon } from '../icons.js';
+import { Theme, useThemeContext } from './theme.js';
+import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 
-import type { PropsWithoutRefOrColor, GetPropDefTypes } from '../helpers/index.js';
-import { baseMenuContentPropDefs } from './base-menu.props.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { GetPropDefTypes } from '../props/index.js';
 
-interface ContextMenuRootProps extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Root> {}
+interface ContextMenuRootProps
+  extends ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Root> {}
 const ContextMenuRoot: React.FC<ContextMenuRootProps> = (props) => (
   <ContextMenuPrimitive.Root {...props} />
 );
@@ -26,7 +27,7 @@ ContextMenuRoot.displayName = 'ContextMenuRoot';
 
 type ContextMenuTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.Trigger>;
 interface ContextMenuTriggerProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Trigger>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Trigger>, 'asChild'> {}
 const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMenuTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -41,7 +42,7 @@ type ContextMenuContentContextValue = ContextMenuContentOwnProps;
 const ContextMenuContentContext = React.createContext<ContextMenuContentContextValue>({});
 type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Content>;
 interface ContextMenuContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Content>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Content>, 'asChild'>,
     ContextMenuContentContextValue {
   container?: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
 }
@@ -55,7 +56,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     } = props;
     const { className, children, color, container, forceMount, ...contentProps } = extractProps(
       props,
-      baseMenuContentPropDefs
+      contextMenuContentPropDefs
     );
     const resolvedColor = color || themeContext.accentColor;
     return (
@@ -97,7 +98,7 @@ ContextMenuContent.displayName = 'ContextMenuContent';
 
 type ContextMenuLabelElement = React.ElementRef<typeof ContextMenuPrimitive.Label>;
 interface ContextMenuLabelProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Label>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Label>, 'asChild'> {}
 const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLabelProps>(
   ({ className, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Label
@@ -113,7 +114,7 @@ ContextMenuLabel.displayName = 'ContextMenuLabel';
 type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>;
 type ContextMenuItemOwnProps = GetPropDefTypes<typeof contextMenuItemPropDefs>;
 interface ContextMenuItemProps
-  extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Item>,
+  extends ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Item>,
     ContextMenuItemOwnProps {}
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
   (props, forwardedRef) => {
@@ -141,7 +142,7 @@ ContextMenuItem.displayName = 'ContextMenuItem';
 
 type ContextMenuGroupElement = React.ElementRef<typeof ContextMenuPrimitive.Group>;
 interface ContextMenuGroupProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Group>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Group>, 'asChild'> {}
 const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGroupProps>(
   ({ className, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Group
@@ -156,7 +157,7 @@ ContextMenuGroup.displayName = 'ContextMenuGroup';
 
 type ContextMenuRadioGroupElement = React.ElementRef<typeof ContextMenuPrimitive.RadioGroup>;
 interface ContextMenuRadioGroupProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.RadioGroup>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.RadioGroup>, 'asChild'> {}
 const ContextMenuRadioGroup = React.forwardRef<
   ContextMenuRadioGroupElement,
   ContextMenuRadioGroupProps
@@ -173,7 +174,7 @@ ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup';
 type ContextMenuRadioItemElement = React.ElementRef<typeof ContextMenuPrimitive.RadioItem>;
 type ContextMenuRadioItemOwnProps = GetPropDefTypes<typeof contextMenuRadioItemPropDefs>;
 interface ContextMenuRadioItemProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.RadioItem>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.RadioItem>, 'asChild'>,
     ContextMenuRadioItemOwnProps {}
 const ContextMenuRadioItem = React.forwardRef<
   ContextMenuRadioItemElement,
@@ -211,7 +212,7 @@ ContextMenuRadioItem.displayName = 'ContextMenuRadioItem';
 type ContextMenuCheckboxItemElement = React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>;
 type ContextMenuCheckboxItemOwnProps = GetPropDefTypes<typeof contextMenuCheckboxItemPropDefs>;
 interface ContextMenuCheckboxItemProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.CheckboxItem>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.CheckboxItem>, 'asChild'>,
     ContextMenuCheckboxItemOwnProps {}
 const ContextMenuCheckboxItem = React.forwardRef<
   ContextMenuCheckboxItemElement,
@@ -248,7 +249,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
 });
 ContextMenuCheckboxItem.displayName = 'ContextMenuCheckboxItem';
 
-interface ContextMenuSubProps extends PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Sub> {}
+interface ContextMenuSubProps extends ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Sub> {}
 const ContextMenuSub: React.FC<ContextMenuSubProps> = (props) => (
   <ContextMenuPrimitive.Sub {...props} />
 );
@@ -256,7 +257,7 @@ ContextMenuSub.displayName = 'ContextMenuSub';
 
 type ContextMenuSubTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>;
 interface ContextMenuSubTriggerProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.SubTrigger>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.SubTrigger>, 'asChild'> {}
 const ContextMenuSubTrigger = React.forwardRef<
   ContextMenuSubTriggerElement,
   ContextMenuSubTriggerProps
@@ -286,7 +287,7 @@ ContextMenuSubTrigger.displayName = 'ContextMenuSubTrigger';
 
 type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.SubContent>, 'asChild'> {
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.SubContent>, 'asChild'> {
   container?: React.ComponentProps<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuSubContent = React.forwardRef<
@@ -296,7 +297,7 @@ const ContextMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    baseMenuContentPropDefs
+    contextMenuContentPropDefs
   );
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -333,7 +334,7 @@ ContextMenuSubContent.displayName = 'ContextMenuSubContent';
 
 type ContextMenuSeparatorElement = React.ElementRef<typeof ContextMenuPrimitive.Separator>;
 interface ContextMenuSeparatorProps
-  extends Omit<PropsWithoutRefOrColor<typeof ContextMenuPrimitive.Separator>, 'asChild'> {}
+  extends Omit<ComponentPropsWithoutColor<typeof ContextMenuPrimitive.Separator>, 'asChild'> {}
 const ContextMenuSeparator = React.forwardRef<
   ContextMenuSeparatorElement,
   ContextMenuSeparatorProps
