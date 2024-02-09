@@ -39,7 +39,7 @@
    * Hide type="number" input stepper because it's small, ugly, hard to use, and if
    * needed, a nicer one can be easily implemented with own buttons in the Slot part.
    */
-  &:where(type='number') {
+  &:where([type='number']) {
     -moz-appearance: textfield;
   }
   &::-webkit-inner-spin-button {
@@ -60,12 +60,19 @@
    * https://codepen.io/andresdamelio/pen/KKbvdYb
    */
 
-  /* Chrome’s calendar icon */
+  /* Chrome’s calendar and time icons */
   &::-webkit-calendar-picker-indicator {
-    padding: calc(var(--text-field-padding) - 2px);
-    margin: calc((var(--text-field-padding) - 2px) * -1);
+    box-sizing: content-box;
+    width: var(--text-field-native-icon-size);
+    height: var(--text-field-native-icon-size);
+    padding: var(--space-1);
+    margin-left: 0;
+    margin-right: calc(var(--space-1) * -1);
+    border-radius: calc(var(--text-field-border-radius) - 2px);
+  }
+  /* Chrome’s calendar icon */
+  &:where(:not([type='time']))::-webkit-calendar-picker-indicator {
     margin-left: var(--space-1);
-    border-radius: var(--text-field-border-radius);
   }
   &::-webkit-calendar-picker-indicator:where(:hover) {
     background-color: var(--gray-a3);
@@ -129,30 +136,16 @@
 
 .rt-TextFieldRoot {
   box-sizing: border-box;
+  height: var(--text-field-height);
   padding: var(--text-field-border-width);
   border-radius: var(--text-field-border-radius);
-
-  & > :where(.rt-TextFieldInput:first-child) {
-    /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
-    text-indent: var(--text-field-padding);
-  }
-
-  /* prettier-ignore */
-  & :where(.rt-TextFieldInput:where(
-    [type="date"], [type="datetime-local"], [type="time"], [type="week"], [type="month"])
-  ) {
-    padding-left: var(--text-field-padding);
-    padding-right: var(--text-field-padding);
-    /* Safari is buggy with text-indent for these input types */
-    text-indent: 0;
-  }
 }
 .rt-TextFieldInput {
   /* Clip text to the border radius of the Root */
   border-radius: calc(var(--text-field-border-radius) - var(--text-field-border-width));
 
   /* Remove border-radius on the left if it's not a first child */
-  .rt-TextFieldRoot > :where(&:not(:first-child)) {
+  &:where(:not(:first-child)) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -161,14 +154,34 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+  &:where(:first-child) {
+    /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+    text-indent: var(--text-field-padding);
+
+    &:where([type='date'], [type='datetime-local'], [type='time'], [type='week'], [type='month']) {
+      /* Safari is buggy with text-indent for these input types */
+      text-indent: 0;
+      padding-left: var(--text-field-padding);
+    }
+  }
+
+  &:where([type='date'], [type='datetime-local'], [type='time'], [type='week'], [type='month']) {
+    padding-right: var(--text-field-padding);
+
+    &:where(:has(~ .rt-TextFieldSlot)) {
+      padding-right: 0;
+    }
+  }
 }
 
 @breakpoints {
   .rt-TextFieldRoot {
     &:where(.rt-r-size-1) {
+      --text-field-height: var(--space-5);
       --text-field-padding: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
       --text-field-border-radius: max(var(--radius-2), var(--radius-full));
-      height: var(--space-5);
+      --text-field-native-icon-size: var(--space-3);
       font-size: var(--font-size-1);
       letter-spacing: var(--letter-spacing-1);
 
@@ -188,17 +201,13 @@
           margin-right: -2px;
         }
       }
-
-      /* Safari credentials autofill icon */
-      input::-webkit-textfield-decoration-container {
-        padding-right: 0px;
-      }
     }
 
     &:where(.rt-r-size-2) {
+      --text-field-height: var(--space-6);
       --text-field-padding: calc(var(--space-2) - var(--text-field-border-width));
       --text-field-border-radius: max(var(--radius-2), var(--radius-full));
-      height: var(--space-6);
+      --text-field-native-icon-size: var(--space-4);
       font-size: var(--font-size-2);
       letter-spacing: var(--letter-spacing-2);
 
@@ -222,9 +231,10 @@
     }
 
     &:where(.rt-r-size-3) {
+      --text-field-height: var(--space-7);
       --text-field-padding: calc(var(--space-3) - var(--text-field-border-width));
       --text-field-border-radius: max(var(--radius-3), var(--radius-full));
-      height: var(--space-7);
+      --text-field-native-icon-size: var(--space-4);
       font-size: var(--font-size-3);
       letter-spacing: var(--letter-spacing-3);
 
