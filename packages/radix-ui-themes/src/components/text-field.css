@@ -24,7 +24,9 @@
 }
 
 .rt-TextFieldInput {
+  /* Flex layout edge cases — make sure the input can grow, but won't break out of the container */
   flex-grow: 1;
+  min-width: 0;
 
   /* Fix date inputs alignment in Chrome and Safari */
   display: flex;
