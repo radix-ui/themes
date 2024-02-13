@@ -95,6 +95,8 @@
   - Add `gapX` and `gapY` props
 - `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
+- `RadioGroup`
+  - [**Breaking**] Rework the internal HTML structure and styles. This component is now designed to display an optional text label when passing `children` to the `Item` part, and the `Root` part now provides flex column styles and spacing.
 - `Select`
   - Make sure that Trigger font weight is not inherited, e.g. from a wrapping `<label>` element
 - `Separator`
