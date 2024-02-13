@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { radioCardGroupPropDefs } from './radio-card-group.props.js';
+import { radioCardGroupRootPropDefs } from './radio-card-group.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import { Grid } from './grid.js';
@@ -12,7 +12,7 @@ import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type RadioCardGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
-type RadioCardGroupRootOwnProps = GetPropDefTypes<typeof radioCardGroupPropDefs>;
+type RadioCardGroupRootOwnProps = GetPropDefTypes<typeof radioCardGroupRootPropDefs>;
 interface RadioCardGroupRootProps
   extends ComponentPropsWithoutColor<typeof RadioGroupPrimitive.Root>,
     MarginProps,
@@ -21,7 +21,7 @@ const RadioCardGroupRoot = React.forwardRef<RadioCardGroupRootElement, RadioCard
   (props, forwardedRef) => {
     const { className, color, ...rootProps } = extractProps(
       props,
-      radioCardGroupPropDefs,
+      radioCardGroupRootPropDefs,
       marginPropDefs
     );
     return (

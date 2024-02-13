@@ -107,13 +107,23 @@
     display: block;
     border: none;
   }
-  @supports (width: -webkit-fill-available) {
-    &:where(iframe, textarea) {
+  &:where(
+      iframe,
+      textarea,
+      input:not(
+          [type='button'],
+          [type='checkbox'],
+          [type='color'],
+          [type='image'],
+          [type='radio'],
+          [type='reset'],
+          [type='submit']
+        )
+    ) {
+    @supports (width: -webkit-fill-available) {
       width: -webkit-fill-available;
     }
-  }
-  @supports (width: -moz-available) {
-    &:where(iframe, input, textarea) {
+    @supports (width: -moz-available) {
       width: -moz-available;
     }
   }

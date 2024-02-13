@@ -50,37 +50,60 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
 );
 RadioGroupRoot.displayName = 'RadioGroupRoot';
 
-type RadioGroupItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
+type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
 interface RadioGroupItemProps
-  extends Omit<ComponentPropsWithoutColor<typeof RadioGroupPrimitive.Item>, 'asChild'>,
+  extends Omit<ComponentPropsWithoutColor<typeof RadioGroupItemRadio>, 'asChild'>,
     MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   ({ children, className, style, ...props }, forwardedRef) => {
-    const context = React.useContext(RadioGroupContext);
-    const { className: radioClassName } = extractProps(
-      context,
-      radioGroupRootPropDefs,
-      marginPropDefs
-    );
-    // Render `<Text as="label" size={context.size}>` if children are provided, otherwise
-    // render a simple `<label>` to avoid setting a height / line height on the element.
-    // This is so that you can easily use this component in own layout.
-    const Label = children ? Text : 'label';
-    const labelProps = children ? { as: 'label' as const, size: context.size } : {};
+    const { size } = React.useContext(RadioGroupContext);
+
+    // Render `<Text as="label">` if children are provided, otherwise render
+    // the solo radio button to allow building out your custom layouts with it.
+    if (children) {
+      return (
+        <Text
+          as="label"
+          size={size}
+          className={classNames('rt-RadioGroupItem', className)}
+          style={style}
+        >
+          <RadioGroupItemRadio ref={forwardedRef} {...props} />
+          {children && <span>{children}</span>}
+        </Text>
+      );
+    }
+
     return (
-      <Label {...labelProps} className={classNames('rt-RadioGroupItem', className)} style={style}>
-        <RadioGroupPrimitive.Item
-          {...props}
-          asChild={false}
-          ref={forwardedRef}
-          className={classNames('rt-reset', 'rt-BaseRadioRoot', radioClassName)}
-        />
-        {children && <span>{children}</span>}
-      </Label>
+      <RadioGroupItemRadio ref={forwardedRef} className={className} style={style} {...props} />
     );
   }
 );
 RadioGroupItem.displayName = 'RadioGroupItem';
+
+type RadioGroupItemRadioElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
+interface RadioGroupItemRadioProps
+  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {}
+const RadioGroupItemRadio = React.forwardRef<RadioGroupItemRadioElement, RadioGroupItemRadioProps>(
+  (props, forwardedRef) => {
+    const context = React.useContext(RadioGroupContext);
+    const { color, className } = extractProps(
+      { ...props, ...context },
+      radioGroupRootPropDefs,
+      marginPropDefs
+    );
+    return (
+      <RadioGroupPrimitive.Item
+        data-accent-color={color}
+        {...props}
+        asChild={false}
+        ref={forwardedRef}
+        className={classNames('rt-reset', 'rt-BaseRadioRoot', className)}
+      />
+    );
+  }
+);
+RadioGroupItemRadio.displayName = 'RadioGroupItemRadio';
 
 export { RadioGroupRoot, RadioGroupItem };
 export type { RadioGroupRootProps, RadioGroupItemProps };

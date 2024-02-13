@@ -13,120 +13,120 @@ import {
   TrashIcon,
 } from '@radix-ui/react-icons';
 import {
-  Theme,
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogRoot,
+  AlertDialogTitle,
+  AlertDialogTrigger,
   AspectRatio,
   Avatar,
   Badge,
   Blockquote,
   Box,
   Button,
-  CalloutRoot,
   CalloutIcon,
+  CalloutRoot,
   CalloutText,
   Card,
   Checkbox,
-  CheckboxCardGroupRoot,
   CheckboxCardGroupItem,
+  CheckboxCardGroupRoot,
+  CheckboxGroupItem,
+  CheckboxGroupRoot,
   Code,
   Container,
-  ContextMenuRoot,
-  ContextMenuTrigger,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
-  ContextMenuLabel,
-  ContextMenuItem,
   ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuLabel,
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
-  ContextMenuCheckboxItem,
-  ContextMenuSub,
-  ContextMenuSubTrigger,
-  ContextMenuSubContent,
+  ContextMenuRoot,
   ContextMenuSeparator,
-  DataListRoot,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
   DataListItem,
   DataListLabel,
+  DataListRoot,
   DataListValue,
-  DialogRoot,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
   DialogClose,
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
+  DialogContent,
+  DialogDescription,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuItem,
   DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
+  DropdownMenuRoot,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
   Em,
   Flex,
   Grid,
   Heading,
+  HoverCardContent,
   HoverCardRoot,
   HoverCardTrigger,
-  HoverCardContent,
   IconButton,
   Kbd,
   Link,
-  PopoverRoot,
   PopoverContent,
+  PopoverRoot,
   PopoverTrigger,
   Progress,
   Quote,
-  RadioCardGroupRoot,
+  Radio,
   RadioCardGroupItem,
-  RadioGroupRoot,
+  RadioCardGroupRoot,
   RadioGroupItem,
+  RadioGroupRoot,
   ScrollArea,
   Section,
-  SelectRoot,
-  SelectTrigger,
   SelectContent,
-  SelectItem,
   SelectGroup,
+  SelectItem,
   SelectLabel,
+  SelectRoot,
   SelectSeparator,
+  SelectTrigger,
   Separator,
   Skeleton,
   Slider,
   Spinner,
   Strong,
   Switch,
-  TableRoot,
-  TableHeader,
-  TableRow,
-  TableColumnHeaderCell,
   TableBody,
-  TableRowHeaderCell,
   TableCell,
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
+  TableColumnHeaderCell,
+  TableHeader,
+  TableRoot,
+  TableRow,
+  TableRowHeaderCell,
   TabsContent,
+  TabsList,
+  TabsRoot,
+  TabsTrigger,
+  Text,
   TextArea,
+  TextFieldInput,
   TextFieldRoot,
   TextFieldSlot,
-  TextFieldInput,
-  Text,
-  Tooltip,
+  Theme,
   ThemePanel,
-  Radio,
-  CheckboxGroupRoot,
-  CheckboxGroupItem,
+  Tooltip,
 } from '@radix-ui/themes';
 import {
   avatarPropDefs,
@@ -134,23 +134,26 @@ import {
   buttonPropDefs,
   calloutRootPropDefs,
   cardPropDefs,
+  checkboxCardGroupRootPropDefs,
+  checkboxGroupRootPropDefs,
   checkboxPropDefs,
   codePropDefs,
   contextMenuContentPropDefs,
-  dataListPropDefs,
   dataListLabelPropDefs,
+  dataListPropDefs,
   dropdownMenuContentPropDefs,
   headingPropDefs,
   iconButtonPropDefs,
   kbdPropDefs,
   linkPropDefs,
   progressPropDefs,
-  radioCardGroupPropDefs,
+  radioCardGroupRootPropDefs,
   radioGroupRootPropDefs,
+  radioPropDefs,
   scrollAreaPropDefs,
+  selectContentPropDefs,
   selectRootPropDefs,
   selectTriggerPropDefs,
-  selectContentPropDefs,
   sliderPropDefs,
   switchPropDefs,
   tableRootPropDefs,
@@ -160,9 +163,6 @@ import {
   textPropDefs,
   themeAccentColorsGrouped,
   themeAccentColorsOrdered,
-  radioPropDefs,
-  checkboxGroupRootPropDefs,
-  checkboxCardGroupPropDefs,
 } from '@radix-ui/themes/props';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -1862,7 +1862,7 @@ export default function Sink() {
                   <DocsSection title="CheckboxCardGroup">
                     <table className={styles.table}>
                       <tbody>
-                        {checkboxCardGroupPropDefs.variant.values.map((variant, index) => (
+                        {checkboxCardGroupRootPropDefs.variant.values.map((variant, index) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
@@ -1890,7 +1890,7 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {checkboxCardGroupPropDefs.size.values.map((size, index) => (
+                        {checkboxCardGroupRootPropDefs.size.values.map((size, index) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
@@ -1931,7 +1931,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {checkboxCardGroupPropDefs.variant.values.map((variant) => (
+                                {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -1940,7 +1940,7 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {checkboxCardGroupPropDefs.variant.values.map((variant) => (
+                                  {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
                                         <CheckboxCardGroupRoot
@@ -2221,21 +2221,34 @@ export default function Sink() {
                                   {radioPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex gap="2">
-                                        <RadioGroupRoot
-                                          variant={variant}
+                                        <Radio
                                           color={color}
-                                          defaultValue="value"
-                                        >
-                                          <RadioGroupItem value="value" />
-                                        </RadioGroupRoot>
-                                        <RadioGroupRoot
                                           variant={variant}
+                                          name={`radio-${variant}-${color}`}
+                                          value="1"
+                                        />
+                                        <Radio
                                           color={color}
-                                          defaultValue="value"
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}`}
+                                          value="2"
+                                          defaultChecked
+                                        />
+                                        <Radio
+                                          color={color}
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}-high-contrast`}
                                           highContrast
-                                        >
-                                          <RadioGroupItem value="value" />
-                                        </RadioGroupRoot>
+                                          value="1"
+                                        />
+                                        <Radio
+                                          color={color}
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}-high-contrast`}
+                                          highContrast
+                                          value="2"
+                                          defaultChecked
+                                        />
                                       </Flex>
                                     </td>
                                   ))}
@@ -2520,7 +2533,7 @@ export default function Sink() {
                   <DocsSection title="RadioCardGroup">
                     <table className={styles.table}>
                       <tbody>
-                        {radioCardGroupPropDefs.variant.values.map((variant, index) => (
+                        {radioCardGroupRootPropDefs.variant.values.map((variant, index) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
@@ -2548,7 +2561,7 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {radioCardGroupPropDefs.size.values.map((size, index) => (
+                        {radioCardGroupRootPropDefs.size.values.map((size, index) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
@@ -2589,7 +2602,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                {radioCardGroupRootPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -2598,7 +2611,7 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {radioCardGroupPropDefs.variant.values.map((variant) => (
+                                  {radioCardGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
                                         <RadioCardGroupRoot
