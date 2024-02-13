@@ -1,10 +1,10 @@
-.rt-RadioGroupRoot {
+.rt-CheckboxGroupRoot {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
 }
 
-.rt-RadioGroupItem {
+.rt-CheckboxGroupItem {
   display: flex;
   gap: 0.5em;
 

@@ -1,10 +1,13 @@
 .rt-Heading {
-  margin: 0;
-  font-family: var(--heading-font-family);
-  font-style: var(--heading-font-style);
   --leading-trim-start: var(--heading-leading-trim-start);
   --leading-trim-end: var(--heading-leading-trim-end);
+  font-family: var(--heading-font-family);
+  font-style: var(--heading-font-style);
   line-height: var(--line-height);
+
+  :where(&) {
+    margin: 0;
+  }
 
   &:where([data-accent-color]) {
     color: var(--accent-a11);

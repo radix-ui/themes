@@ -22,7 +22,7 @@ function mergePropDefs<T extends Record<string, PropDef>[]>(...args: T): Record<
 function extractProps<
   P extends { className?: string; style?: React.CSSProperties; [key: string]: any },
   T extends Record<string, PropDef>[]
->(props: P, ...propDefs: T): Omit<P, PropDefsWithClassName<T[number]>> {
+>(props: P, ...propDefs: T): Omit<P & { className?: string }, PropDefsWithClassName<T[number]>> {
   let className: string | undefined;
   let style: ReturnType<typeof mergeStyles>;
   const extractedProps = { ...props };

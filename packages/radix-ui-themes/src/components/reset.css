@@ -91,6 +91,8 @@
   &:where(legend) {
     padding: 0;
     border: none;
+    /* Normalize with label */
+    cursor: default;
   }
   &:where(li) {
     display: block;
@@ -106,7 +108,7 @@
     border: none;
   }
   @supports (width: -webkit-fill-available) {
-    &:where(iframe, input, textarea) {
+    &:where(iframe, textarea) {
       width: -webkit-fill-available;
     }
   }

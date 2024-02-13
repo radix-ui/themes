@@ -76,17 +76,17 @@ interface CheckboxCardGroupItemProps
 const CheckboxCardGroupItem = React.forwardRef<
   CheckboxCardGroupItemElement,
   ScopedProps<CheckboxCardGroupItemProps>
->(({ __scopeCheckboxCardGroup, children, className, ...props }, forwardedRef) => {
+>(({ __scopeCheckboxCardGroup, children, className, style, ...props }, forwardedRef) => {
   const context = useCheckboxCardGroupContext('item', __scopeCheckboxCardGroup);
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCardGroup);
   const { className: checkboxClassName } = extractProps(
     // Pass size / highContrast values from the context and static variant to generate styles
-    { size: context?.size, variant: 'surface', highContrast: context?.highContrast, className: '' },
+    { size: context?.size, variant: 'surface', highContrast: context?.highContrast },
     // Pass size & variant prop defs to allow it to be extracted
     baseCheckboxPropDefs
   );
   return (
-    <label className={classNames('rt-reset', 'rt-CheckboxCardGroupItem', className)}>
+    <label className={classNames('rt-CheckboxCardGroupItem', className)} style={style}>
       {children}
       <CheckboxGroupPrimitive.Item
         {...checkboxGroupScope}

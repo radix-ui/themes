@@ -33,8 +33,8 @@
   .rt-BaseCheckboxRoot {
     &:where(.rt-r-size-1) {
       --checkbox-size: calc(var(--space-4) * 0.875);
-      --checkbox-indicator-size: calc(8px * var(--scaling));
-      border-radius: calc(var(--radius-1) / 1.25);
+      --checkbox-indicator-size: calc(9px * var(--scaling));
+      border-radius: calc(var(--radius-1) * 0.875);
     }
     &:where(.rt-r-size-2) {
       --checkbox-size: var(--space-4);

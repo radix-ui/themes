@@ -116,7 +116,7 @@ import {
   kbdPropDefs,
   linkPropDefs,
   progressPropDefs,
-  radioGroupPropDefs,
+  radioGroupRootPropDefs,
   selectRootPropDefs,
   selectTriggerPropDefs,
   sliderPropDefs,
@@ -2901,7 +2901,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radioGroupPropDefs.variant.values.map((variant) => (
+                          {radioGroupRootPropDefs.variant.values.map((variant) => (
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
@@ -2974,7 +2974,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioGroupRootPropDefs.variant.values.map((variant) => (
                               <th key={variant}>{upperFirst(variant)}</th>
                             ))}
                           </tr>
@@ -2983,7 +2983,7 @@ export default function ExploreComponents() {
                           {themeAccentColorsOrdered.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
-                              {radioGroupPropDefs.variant.values.map((variant) => (
+                              {radioGroupRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex align="center" justify="center" gap="4">
                                     <RadioGroupRoot variant={variant} color={color}>
@@ -3022,7 +3022,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioGroupRootPropDefs.variant.values.map((variant) => (
                               <th key={variant} style={{ textAlign: 'left' }}>
                                 {upperFirst(variant)}
                               </th>
@@ -3030,10 +3030,10 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {radioGroupPropDefs.size.values.map((size) => (
+                          {radioGroupRootPropDefs.size.values.map((size) => (
                             <tr key={size}>
                               <td>Size {size}</td>
-                              {radioGroupPropDefs.variant.values.map((variant) => (
+                              {radioGroupRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant} style={{ textAlign: 'left' }}>
                                   <Flex align="center" justify="start" gap="4">
                                     <RadioGroupRoot
