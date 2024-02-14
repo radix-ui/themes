@@ -1,39 +1,3 @@
-@breakpoints {
-  .rt-r-max-h {
-    /* Keep this selector here to maintain the source order */
-  }
-  .rt-r-max-h-0 {
-    max-height: 0;
-  }
-  .rt-r-max-h-1 {
-    max-height: var(--space-1);
-  }
-  .rt-r-max-h-2 {
-    max-height: var(--space-2);
-  }
-  .rt-r-max-h-3 {
-    max-height: var(--space-3);
-  }
-  .rt-r-max-h-4 {
-    max-height: var(--space-4);
-  }
-  .rt-r-max-h-5 {
-    max-height: var(--space-5);
-  }
-  .rt-r-max-h-6 {
-    max-height: var(--space-6);
-  }
-  .rt-r-max-h-7 {
-    max-height: var(--space-7);
-  }
-  .rt-r-max-h-8 {
-    max-height: var(--space-8);
-  }
-  .rt-r-max-h-9 {
-    max-height: var(--space-9);
-  }
-}
-
 .rt-r-max-h {
   max-height: var(--max-height);
 }

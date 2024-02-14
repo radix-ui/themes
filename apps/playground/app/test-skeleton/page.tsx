@@ -42,7 +42,7 @@ export default function Test() {
                 <Section>
                   <Card asChild variant="classic" size="4">
                     <form action="/">
-                      <Box height="7" mb="4">
+                      <Box height="40px" mb="4">
                         <Heading as="h3" size="6" mt="-1">
                           <Skeleton loading={isLoading}>Sign up</Skeleton>
                         </Heading>

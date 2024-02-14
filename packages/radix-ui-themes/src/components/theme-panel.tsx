@@ -322,7 +322,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         handleAppearanceChange(event.target.value as 'light' | 'dark')
                       }
                     />
-                    <Flex align="center" justify="center" height="6" gap="2">
+                    <Flex align="center" justify="center" height="32px" gap="2">
                       {value === 'light' ? (
                         <svg
                           width="15"
@@ -384,8 +384,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       <Theme asChild radius={value}>
                         <Box
                           m="3"
-                          width="6"
-                          height="6"
+                          width="32px"
+                          height="32px"
                           style={{
                             borderTopLeftRadius: value === 'full' ? '80%' : 'var(--radius-5)',
                             backgroundImage:
@@ -421,7 +421,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       onChange={(event) => onScalingChange(event.target.value as typeof scaling)}
                     />
 
-                    <Flex align="center" justify="center" height="6">
+                    <Flex align="center" justify="center" height="32px">
                       <Theme asChild scaling={value}>
                         <Flex align="center" justify="center">
                           <Text size="1" weight="medium">
@@ -488,7 +488,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         onPanelBackgroundChange(event.target.value as typeof panelBackground)
                       }
                     />
-                    <Flex align="center" justify="center" height="6" gap="2">
+                    <Flex align="center" justify="center" height="32px" gap="2">
                       {value === 'solid' ? (
                         <svg
                           width="15"
