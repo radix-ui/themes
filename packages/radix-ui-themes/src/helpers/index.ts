@@ -12,3 +12,4 @@ export * from './map-prop-values.js';
 export * from './merge-styles.js';
 export * from './nice-intersection.js';
 export * from './require-react-element.js';
+export * from './subtract.js';

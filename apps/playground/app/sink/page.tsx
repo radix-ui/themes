@@ -5045,22 +5045,18 @@ export default function Sink() {
                       </summary>
                       <table className={styles.table}>
                         <tbody>
-                          {dataListLabelPropDefs.width.values.map((width) => {
-                            const labelWidth = Number(width) * 24;
-                            if (labelWidth < 48) return null;
+                          {['64px', '80px', '128px'].map((width) => {
                             return (
                               <tr key={width}>
-                                <RowHeaderCell
-                                  style={{ whiteSpace: 'nowrap' }}
-                                >{`Width ${labelWidth}px`}</RowHeaderCell>
+                                <RowHeaderCell>{`${width}`}</RowHeaderCell>
                                 <td>
                                   <DataListRoot my="3">
                                     <DataListItem>
-                                      <DataListLabel width={`${labelWidth}px`}>Name</DataListLabel>
+                                      <DataListLabel width={width}>Name</DataListLabel>
                                       <DataListValue>Susan Kare</DataListValue>
                                     </DataListItem>
                                     <DataListItem>
-                                      <DataListLabel>Email</DataListLabel>
+                                      <DataListLabel width={width}>Email</DataListLabel>
                                       <DataListValue>susan.kare@apple.com</DataListValue>
                                     </DataListItem>
                                   </DataListRoot>
