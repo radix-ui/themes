@@ -84,14 +84,24 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
           className={classNames('rt-RadioGroupItem', className)}
           style={style}
         >
-          <RadioGroupItemRadio ref={forwardedRef} {...props} />
+          <RadioGroupItemRadio
+            __scopeRadioGroup={__scopeRadioGroup}
+            ref={forwardedRef}
+            {...props}
+          />
           {children && <span>{children}</span>}
         </Text>
       );
     }
 
     return (
-      <RadioGroupItemRadio ref={forwardedRef} className={className} style={style} {...props} />
+      <RadioGroupItemRadio
+        __scopeRadioGroup={__scopeRadioGroup}
+        ref={forwardedRef}
+        className={className}
+        style={style}
+        {...props}
+      />
     );
   }
 );
