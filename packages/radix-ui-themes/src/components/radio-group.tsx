@@ -86,8 +86,8 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
         >
           <RadioGroupItemRadio
             __scopeRadioGroup={__scopeRadioGroup}
-            ref={forwardedRef}
             {...props}
+            ref={forwardedRef}
           />
           {children && <span>{children}</span>}
         </Text>
@@ -97,10 +97,10 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
     return (
       <RadioGroupItemRadio
         __scopeRadioGroup={__scopeRadioGroup}
+        {...props}
         ref={forwardedRef}
         className={className}
         style={style}
-        {...props}
       />
     );
   }

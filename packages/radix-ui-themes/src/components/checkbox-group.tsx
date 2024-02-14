@@ -88,8 +88,8 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
         >
           <CheckboxGroupItemCheckbox
             __scopeCheckboxGroup={__scopeCheckboxGroup}
-            ref={forwardedRef}
             {...props}
+            ref={forwardedRef}
           />
           {children && <span>{children}</span>}
         </Text>
@@ -99,10 +99,10 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
     return (
       <CheckboxGroupItemCheckbox
         __scopeCheckboxGroup={__scopeCheckboxGroup}
+        {...props}
         ref={forwardedRef}
         className={className}
         style={style}
-        {...props}
       />
     );
   }
