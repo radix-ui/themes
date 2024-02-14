@@ -1,0 +1,25 @@
+.rt-CheckboxGroupRoot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.rt-CheckboxGroupItem {
+  display: flex;
+  gap: 0.5em;
+
+  /* Make sure whitespace to the right of the text is not clickable */
+  width: fit-content;
+}
+
+.rt-CheckboxGroupItemCheckbox {
+  &:where(:focus-visible)::before {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+
+  &:where(:disabled)::before {
+    background-color: var(--gray-a3);
+    cursor: var(--cursor-disabled);
+  }
+}

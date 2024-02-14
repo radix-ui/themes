@@ -1,0 +1,165 @@
+.rt-BaseRadioRoot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  flex-shrink: 0;
+  cursor: var(--cursor-radio);
+  height: var(--line-height, var(--radio-size));
+
+  &::before {
+    content: '';
+    display: block;
+    height: var(--radio-size);
+    width: var(--radio-size);
+    border-radius: 100%;
+  }
+
+  &::after {
+    pointer-events: none;
+    position: absolute;
+    height: var(--radio-size);
+    width: var(--radio-size);
+    border-radius: 100%;
+    /* Scale via transform to achieve perfect sub-pixel positioning */
+    transform: scale(0.4);
+  }
+
+  &:where(:checked, [data-state='checked']) {
+    &::after {
+      content: '';
+    }
+  }
+
+  &:where(:disabled, [data-disabled])::before {
+    cursor: var(--cursor-disabled);
+  }
+
+  &:where(:focus-visible)::before {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-BaseRadioRoot {
+    &:where(.rt-r-size-1) {
+      --radio-size: calc(var(--space-4) * 0.875);
+    }
+    &:where(.rt-r-size-2) {
+      --radio-size: var(--space-4);
+    }
+    &:where(.rt-r-size-3) {
+      --radio-size: calc(var(--space-4) * 1.25);
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* surface */
+
+.rt-BaseRadioRoot:where(.rt-variant-surface) {
+  &:where(:not(:checked), [data-state='unchecked'])::before {
+    background-color: var(--color-surface);
+    box-shadow: inset 0 0 0 1px var(--gray-a7);
+  }
+  &:where(:checked, [data-state='checked'])::before {
+    background-color: var(--accent-9);
+  }
+  &::after {
+    background-color: var(--accent-9-contrast);
+  }
+
+  &:where(.rt-high-contrast) {
+    &:where(:checked, [data-state='checked'])::before {
+      background-color: var(--accent-12);
+    }
+    &::after {
+      background-color: var(--accent-1);
+    }
+  }
+
+  &:where(:disabled, [data-disabled])::before {
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    background-color: var(--gray-a3);
+  }
+  &:where(:disabled, [data-disabled])::after {
+    background-color: var(--gray-a8);
+  }
+}
+
+/* classic */
+
+.rt-BaseRadioRoot:where(.rt-variant-classic) {
+  &:where(:not(:checked), [data-state='unchecked'])::before {
+    background-color: var(--color-surface);
+    box-shadow: inset 0 0 0 1px var(--gray-7), var(--shadow-1);
+  }
+  &:where(:checked, [data-state='checked'])::before {
+    background-color: var(--accent-9);
+    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a3));
+    box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
+  }
+  &::after {
+    background-color: var(--accent-9-contrast);
+  }
+
+  &:where(.rt-high-contrast) {
+    &:where(:checked, [data-state='checked'])::before {
+      background-color: var(--accent-12);
+    }
+    &::after {
+      background-color: var(--accent-1);
+    }
+  }
+
+  &:where(:disabled, [data-disabled])::before {
+    box-shadow: var(--shadow-1);
+    background-color: var(--gray-a3);
+    background-image: none;
+  }
+  &:where(:disabled, [data-disabled])::after {
+    background-color: var(--gray-a8);
+  }
+}
+
+/* soft */
+
+.rt-BaseRadioRoot:where(.rt-variant-soft) {
+  &::before {
+    background-color: var(--accent-a4);
+  }
+  &::after {
+    background-color: var(--accent-a11);
+  }
+
+  &:where(.rt-high-contrast) {
+    &::after {
+      background-color: var(--accent-12);
+    }
+  }
+
+  &:where(:focus-visible)::before {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-a8);
+  }
+
+  &:where(:disabled, [data-disabled])::before {
+    background-color: var(--gray-a3);
+  }
+  &:where(:disabled, [data-disabled])::after {
+    background-color: var(--gray-a8);
+  }
+}

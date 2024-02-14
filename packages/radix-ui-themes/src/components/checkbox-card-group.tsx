@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { createContextScope } from '@radix-ui/react-context';
 import * as CheckboxGroupPrimitive from './checkbox-group.primitive.js';
 import { createCheckboxGroupScope } from './checkbox-group.primitive.js';
-import { checkboxCardGroupPropDefs } from './checkbox-card-group.props.js';
+import { checkboxCardGroupRootPropDefs } from './checkbox-card-group.props.js';
 import { baseCheckboxPropDefs } from './base-checkbox.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
@@ -19,14 +19,13 @@ import type { Scope } from '@radix-ui/react-context';
 const CHECKBOX_CARD_GROUP_NAME = 'CheckboxCardGroup';
 
 type ScopedProps<P> = P & { __scopeCheckboxCardGroup?: Scope };
-const [createCheckboxCardGroupContext, createCheckboxCardGroupScope] = createContextScope(
-  CHECKBOX_CARD_GROUP_NAME,
-  [createCheckboxGroupScope]
-);
+const [createCheckboxCardGroupContext] = createContextScope(CHECKBOX_CARD_GROUP_NAME, [
+  createCheckboxGroupScope,
+]);
 const useCheckboxGroupScope = createCheckboxGroupScope();
 
 type CheckboxCardGroupContextValue = {
-  size?: Responsive<(typeof checkboxCardGroupPropDefs.size.values)[number]>;
+  size?: Responsive<(typeof checkboxCardGroupRootPropDefs.size.values)[number]>;
   highContrast?: boolean;
 };
 
@@ -34,7 +33,7 @@ const [CheckboxCardGroupProvider, useCheckboxCardGroupContext] =
   createCheckboxCardGroupContext<CheckboxCardGroupContextValue>(CHECKBOX_CARD_GROUP_NAME);
 
 type CheckboxCardGroupRootElement = React.ElementRef<typeof CheckboxGroupPrimitive.Root>;
-type CheckboxCardGroupRootOwnProps = GetPropDefTypes<typeof checkboxCardGroupPropDefs>;
+type CheckboxCardGroupRootOwnProps = GetPropDefTypes<typeof checkboxCardGroupRootPropDefs>;
 interface CheckboxCardGroupRootProps
   extends ComponentPropsWithoutColor<typeof CheckboxGroupPrimitive.Root>,
     MarginProps,
@@ -45,7 +44,7 @@ const CheckboxCardGroupRoot = React.forwardRef<
 >((props: ScopedProps<CheckboxCardGroupRootProps>, forwardedRef) => {
   const { __scopeCheckboxCardGroup, className, color, ...rootProps } = extractProps(
     props,
-    checkboxCardGroupPropDefs,
+    checkboxCardGroupRootPropDefs,
     marginPropDefs
   );
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCardGroup);
@@ -76,17 +75,17 @@ interface CheckboxCardGroupItemProps
 const CheckboxCardGroupItem = React.forwardRef<
   CheckboxCardGroupItemElement,
   ScopedProps<CheckboxCardGroupItemProps>
->(({ __scopeCheckboxCardGroup, children, className, ...props }, forwardedRef) => {
-  const context = useCheckboxCardGroupContext('item', __scopeCheckboxCardGroup);
+>(({ __scopeCheckboxCardGroup, children, className, style, ...props }, forwardedRef) => {
+  const context = useCheckboxCardGroupContext('CheckboxCardGroupItem', __scopeCheckboxCardGroup);
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCardGroup);
   const { className: checkboxClassName } = extractProps(
     // Pass size / highContrast values from the context and static variant to generate styles
-    { size: context?.size, variant: 'surface', highContrast: context?.highContrast, className: '' },
+    { size: context?.size, variant: 'surface', highContrast: context?.highContrast },
     // Pass size & variant prop defs to allow it to be extracted
     baseCheckboxPropDefs
   );
   return (
-    <label className={classNames('rt-reset', 'rt-CheckboxCardGroupItem', className)}>
+    <label className={classNames('rt-CheckboxCardGroupItem', className)} style={style}>
       {children}
       <CheckboxGroupPrimitive.Item
         {...checkboxGroupScope}
@@ -95,8 +94,8 @@ const CheckboxCardGroupItem = React.forwardRef<
         className={classNames(
           'rt-reset',
           'rt-BaseCheckboxRoot',
-          checkboxClassName,
-          'rt-CheckboxCardGroupItemCheckbox'
+          'rt-CheckboxCardGroupItemCheckbox',
+          checkboxClassName
         )}
       >
         <CheckboxGroupPrimitive.Indicator
@@ -112,18 +111,5 @@ const CheckboxCardGroupItem = React.forwardRef<
 });
 CheckboxCardGroupItem.displayName = 'CheckboxCardGroupItem';
 
-const CheckboxCardGroup = Object.assign(
-  {},
-  {
-    Root: CheckboxCardGroupRoot,
-    Item: CheckboxCardGroupItem,
-  }
-);
-
-export {
-  createCheckboxCardGroupScope,
-  CheckboxCardGroup,
-  CheckboxCardGroupRoot,
-  CheckboxCardGroupItem,
-};
+export { CheckboxCardGroupRoot, CheckboxCardGroupItem };
 export type { CheckboxCardGroupRootProps, CheckboxCardGroupItemProps };

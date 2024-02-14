@@ -13,117 +13,120 @@ import {
   TrashIcon,
 } from '@radix-ui/react-icons';
 import {
-  Theme,
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogRoot,
+  AlertDialogTitle,
+  AlertDialogTrigger,
   AspectRatio,
   Avatar,
   Badge,
   Blockquote,
   Box,
   Button,
-  CalloutRoot,
   CalloutIcon,
+  CalloutRoot,
   CalloutText,
   Card,
   Checkbox,
-  CheckboxCardGroupRoot,
   CheckboxCardGroupItem,
+  CheckboxCardGroupRoot,
+  CheckboxGroupItem,
+  CheckboxGroupRoot,
   Code,
   Container,
-  ContextMenuRoot,
-  ContextMenuTrigger,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
-  ContextMenuLabel,
-  ContextMenuItem,
   ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuLabel,
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
-  ContextMenuCheckboxItem,
-  ContextMenuSub,
-  ContextMenuSubTrigger,
-  ContextMenuSubContent,
+  ContextMenuRoot,
   ContextMenuSeparator,
-  DataListRoot,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
   DataListItem,
   DataListLabel,
+  DataListRoot,
   DataListValue,
-  DialogRoot,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
   DialogClose,
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
+  DialogContent,
+  DialogDescription,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuItem,
   DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
+  DropdownMenuRoot,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
   Em,
   Flex,
   Grid,
   Heading,
+  HoverCardContent,
   HoverCardRoot,
   HoverCardTrigger,
-  HoverCardContent,
   IconButton,
   Kbd,
   Link,
-  PopoverRoot,
   PopoverContent,
+  PopoverRoot,
   PopoverTrigger,
   Progress,
   Quote,
-  RadioCardGroupRoot,
+  Radio,
   RadioCardGroupItem,
-  RadioGroupRoot,
+  RadioCardGroupRoot,
   RadioGroupItem,
+  RadioGroupRoot,
   ScrollArea,
   Section,
-  SelectRoot,
-  SelectTrigger,
   SelectContent,
-  SelectItem,
   SelectGroup,
+  SelectItem,
   SelectLabel,
+  SelectRoot,
   SelectSeparator,
+  SelectTrigger,
   Separator,
   Skeleton,
   Slider,
   Spinner,
   Strong,
   Switch,
-  TableRoot,
-  TableHeader,
-  TableRow,
-  TableColumnHeaderCell,
   TableBody,
-  TableRowHeaderCell,
   TableCell,
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
+  TableColumnHeaderCell,
+  TableHeader,
+  TableRoot,
+  TableRow,
+  TableRowHeaderCell,
   TabsContent,
+  TabsList,
+  TabsRoot,
+  TabsTrigger,
+  Text,
   TextArea,
+  TextFieldInput,
   TextFieldRoot,
   TextFieldSlot,
-  TextFieldInput,
-  Text,
-  Tooltip,
+  Theme,
   ThemePanel,
+  Tooltip,
 } from '@radix-ui/themes';
 import {
   avatarPropDefs,
@@ -131,24 +134,26 @@ import {
   buttonPropDefs,
   calloutRootPropDefs,
   cardPropDefs,
+  checkboxCardGroupRootPropDefs,
+  checkboxGroupRootPropDefs,
   checkboxPropDefs,
-  checkboxCardGroupPropDefs,
   codePropDefs,
   contextMenuContentPropDefs,
-  dataListPropDefs,
   dataListLabelPropDefs,
+  dataListPropDefs,
   dropdownMenuContentPropDefs,
   headingPropDefs,
   iconButtonPropDefs,
   kbdPropDefs,
   linkPropDefs,
   progressPropDefs,
-  radioCardGroupPropDefs,
-  radioGroupPropDefs,
+  radioCardGroupRootPropDefs,
+  radioGroupRootPropDefs,
+  radioPropDefs,
   scrollAreaPropDefs,
+  selectContentPropDefs,
   selectRootPropDefs,
   selectTriggerPropDefs,
-  selectContentPropDefs,
   sliderPropDefs,
   switchPropDefs,
   tableRootPropDefs,
@@ -1448,7 +1453,10 @@ export default function Sink() {
                               <tr key={size}>
                                 <RowHeaderCell>size {size}</RowHeaderCell>
                                 <td>
-                                  <Checkbox size={size} defaultChecked />
+                                  <Flex gap="2">
+                                    <Checkbox size={size} />
+                                    <Checkbox size={size} defaultChecked />
+                                  </Flex>
                                 </td>
                               </tr>
                             ))}
@@ -1584,6 +1592,677 @@ export default function Sink() {
                     </details>
                   </DocsSection>
 
+                  <DocsSection title="CheckboxGroup">
+                    <Grid columns="2" gap="9">
+                      <div>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                              <ColumnHeaderCell>checked</ColumnHeaderCell>
+                              <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                              <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {checkboxGroupRootPropDefs.variant.values.map((variant) => (
+                              <React.Fragment key={variant}>
+                                {[variant, '+ high-contrast'].map((label) => (
+                                  <tr key={label}>
+                                    <RowHeaderCell>{label}</RowHeaderCell>
+                                    <td>
+                                      <CheckboxGroupRoot
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                      >
+                                        <CheckboxGroupItem value="value" />
+                                      </CheckboxGroupRoot>
+                                    </td>
+                                    <td>
+                                      <CheckboxGroupRoot
+                                        variant={variant}
+                                        defaultValue={['value']}
+                                        highContrast={label === '+ high-contrast'}
+                                      >
+                                        <CheckboxGroupItem value="value" />
+                                      </CheckboxGroupRoot>
+                                    </td>
+                                    <td>
+                                      <CheckboxGroupRoot
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                      >
+                                        <CheckboxGroupItem value="value" disabled />
+                                      </CheckboxGroupRoot>
+                                    </td>
+                                    <td>
+                                      <CheckboxGroupRoot
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                        disabled
+                                        defaultValue={['value']}
+                                      >
+                                        <CheckboxGroupItem value="value" />
+                                      </CheckboxGroupRoot>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </React.Fragment>
+                            ))}
+                          </tbody>
+                        </table>
+
+                        <table className={styles.table}>
+                          <tbody>
+                            {checkboxGroupRootPropDefs.size.values.map((size) => (
+                              <tr key={size}>
+                                <RowHeaderCell>size {size}</RowHeaderCell>
+                                <td style={{ width: '100%' }}>
+                                  <CheckboxGroupRoot size={size} defaultValue={['red']}>
+                                    <CheckboxGroupItem value="red">Red</CheckboxGroupItem>
+                                    <CheckboxGroupItem value="green">Green</CheckboxGroupItem>
+                                    <CheckboxGroupItem value="blue">Blue</CheckboxGroupItem>
+                                    <CheckboxGroupItem value="violet">Violet</CheckboxGroupItem>
+                                  </CheckboxGroupRoot>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div>
+                        <Box py="4">
+                          <Text as="p" size="2">
+                            Alignment
+                          </Text>
+                        </Box>
+
+                        <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
+                          <Separator size="4" />
+
+                          <CheckboxGroupRoot defaultValue={['1']} size="1">
+                            <Flex direction="column" gap="1">
+                              <Text as="label" size="1">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
+                              </Text>
+                              <Text as="label" size="1">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="2" />
+                                  <Text>Agree to Privacy Policy</Text>
+                                </Flex>
+                              </Text>
+                            </Flex>
+                          </CheckboxGroupRoot>
+
+                          <Separator size="4" />
+
+                          <CheckboxGroupRoot defaultValue={['1']} size="1">
+                            <Flex direction="column" gap="1">
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
+                              </Text>
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="2" />
+                                  <Text>Agree to Privacy Policy</Text>
+                                </Flex>
+                              </Text>
+                            </Flex>
+                          </CheckboxGroupRoot>
+
+                          <Separator size="4" />
+
+                          <CheckboxGroupRoot defaultValue={['1']} size="2">
+                            <Flex direction="column" gap="1">
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
+                              </Text>
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="2" />
+                                  <Text>Agree to Privacy Policy</Text>
+                                </Flex>
+                              </Text>
+                            </Flex>
+                          </CheckboxGroupRoot>
+
+                          <Separator size="4" />
+
+                          <CheckboxGroupRoot defaultValue={['1']} size="2">
+                            <Flex direction="column" gap="1">
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
+                              </Text>
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="2" />
+                                  <Text>Agree to Privacy Policy</Text>
+                                </Flex>
+                              </Text>
+                            </Flex>
+                          </CheckboxGroupRoot>
+
+                          <Separator size="4" />
+
+                          <CheckboxGroupRoot defaultValue={['1']} size="3">
+                            <Flex direction="column" gap="1">
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
+                              </Text>
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="2" />
+                                  <Text>Agree to Privacy Policy</Text>
+                                </Flex>
+                              </Text>
+                            </Flex>
+                          </CheckboxGroupRoot>
+
+                          <Separator size="4" />
+
+                          <CheckboxGroupRoot defaultValue={['1']} size="3">
+                            <Flex direction="column" gap="1">
+                              <Text as="label" size="4">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
+                              </Text>
+                              <Text as="label" size="4">
+                                <Flex gap="2">
+                                  <CheckboxGroupItem value="2" />
+                                  <Text>Agree to Privacy Policy</Text>
+                                </Flex>
+                              </Text>
+                            </Flex>
+                          </CheckboxGroupRoot>
+
+                          <Separator size="4" />
+                        </Flex>
+                      </div>
+                    </Grid>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {checkboxGroupRootPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {checkboxGroupRootPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex gap="2">
+                                        <CheckboxGroupRoot
+                                          variant={variant}
+                                          color={color}
+                                          defaultValue={['value']}
+                                        >
+                                          <CheckboxGroupItem value="value" />
+                                        </CheckboxGroupRoot>
+                                        <CheckboxGroupRoot
+                                          variant={variant}
+                                          color={color}
+                                          defaultValue={['value']}
+                                          highContrast
+                                        >
+                                          <CheckboxGroupItem value="value" />
+                                        </CheckboxGroupRoot>
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
+
+                    <Separator size="3" my="5" />
+                  </DocsSection>
+
+                  <DocsSection title="CheckboxCardGroup">
+                    <table className={styles.table}>
+                      <tbody>
+                        {checkboxCardGroupRootPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <CheckboxCardGroupRoot
+                                defaultValue={[String(index)]}
+                                columns="3"
+                                variant={variant}
+                              >
+                                <CheckboxCardGroupItem value="0">
+                                  <CodeIcon />
+                                  <Text truncate>Node.js</Text>
+                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="1" disabled>
+                                  Ruby
+                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
+                              </CheckboxCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Box mb="7" />
+
+                    <table className={styles.table}>
+                      <tbody>
+                        {checkboxCardGroupRootPropDefs.size.values.map((size, index) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <CheckboxCardGroupRoot
+                                defaultValue={[String(index)]}
+                                size={size}
+                                columns="3"
+                                style={{ width: 400 + Number(size) * 100 }}
+                              >
+                                <CheckboxCardGroupItem value="0">Node.js</CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="1" disabled>
+                                  Ruby
+                                </CheckboxCardGroupItem>
+                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
+                              </CheckboxCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex direction="column" gap="2">
+                                        <CheckboxCardGroupRoot
+                                          defaultValue={['0']}
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          variant={variant}
+                                          color={color}
+                                          style={{ width: 400 }}
+                                        >
+                                          <CheckboxCardGroupItem value="0">
+                                            Node.js
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="1" disabled>
+                                            Ruby
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="2">
+                                            Go
+                                          </CheckboxCardGroupItem>
+                                        </CheckboxCardGroupRoot>
+
+                                        <CheckboxCardGroupRoot
+                                          defaultValue={['0']}
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                          style={{ width: 400 }}
+                                        >
+                                          <CheckboxCardGroupItem value="0">
+                                            Node.js
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="1" disabled>
+                                            Ruby
+                                          </CheckboxCardGroupItem>
+                                          <CheckboxCardGroupItem value="2">
+                                            Go
+                                          </CheckboxCardGroupItem>
+                                        </CheckboxCardGroupRoot>
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
+                  </DocsSection>
+
+                  <DocsSection title="Radio">
+                    <Grid columns="2" gap="9">
+                      <div>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              <ColumnHeaderCell>not checked</ColumnHeaderCell>
+                              <ColumnHeaderCell>checked</ColumnHeaderCell>
+                              <ColumnHeaderCell>disabled</ColumnHeaderCell>
+                              <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {radioPropDefs.variant.values.map((variant) => (
+                              <React.Fragment key={variant}>
+                                {[variant, '+ high-contrast'].map((label) => (
+                                  <tr key={label}>
+                                    <RowHeaderCell>{label}</RowHeaderCell>
+                                    <td>
+                                      <Radio
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                        value="value"
+                                      />
+                                    </td>
+                                    <td>
+                                      <Radio
+                                        checked
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                        value="value"
+                                      />
+                                    </td>
+                                    <td>
+                                      <Radio
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                        value="value"
+                                        disabled
+                                      />
+                                    </td>
+                                    <td>
+                                      <Radio
+                                        checked
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                        disabled
+                                        value="value"
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
+                              </React.Fragment>
+                            ))}
+                          </tbody>
+                        </table>
+
+                        <table className={styles.table}>
+                          <tbody>
+                            {radioPropDefs.size.values.map((size) => (
+                              <tr key={size}>
+                                <RowHeaderCell>size {size}</RowHeaderCell>
+                                <td>
+                                  <Flex gap="2">
+                                    <Radio name={`radio-size-${size}`} size={size} value="value" />
+                                    <Radio
+                                      name={`radio-size-${size}`}
+                                      size={size}
+                                      value="value"
+                                      defaultChecked
+                                    />
+                                  </Flex>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div>
+                        <Box py="4">
+                          <Text as="p" size="2">
+                            Alignment
+                          </Text>
+                        </Box>
+
+                        <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
+                          <Separator size="4" />
+
+                          <Flex direction="column" gap="1">
+                            <Text as="label" size="1">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-1" size="1" value="1" defaultChecked />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                            <Text as="label" size="1">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-1" size="1" value="2" />
+                                <Text>Disagree with Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                          </Flex>
+
+                          <Separator size="4" />
+
+                          <Flex direction="column" gap="1">
+                            <Text as="label" size="2">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-2" size="1" value="1" defaultChecked />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                            <Text as="label" size="2">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-2" size="1" value="2" />
+                                <Text>Disagree with Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                          </Flex>
+
+                          <Separator size="4" />
+
+                          <Flex direction="column" gap="1">
+                            <Text as="label" size="2">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-3" size="2" value="1" defaultChecked />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                            <Text as="label" size="2">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-3" size="2" value="2" />
+                                <Text>Disagree with Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                          </Flex>
+
+                          <Separator size="4" />
+
+                          <Flex direction="column" gap="1">
+                            <Text as="label" size="3">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-4" size="2" value="1" defaultChecked />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                            <Text as="label" size="3">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-4" size="2" value="2" />
+                                <Text>Disagree with Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                          </Flex>
+
+                          <Separator size="4" />
+
+                          <Flex direction="column" gap="1">
+                            <Text as="label" size="3">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-5" size="3" value="1" defaultChecked />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                            <Text as="label" size="3">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-5" size="3" value="2" />
+                                <Text>Disagree with Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                          </Flex>
+
+                          <Separator size="4" />
+
+                          <Flex direction="column" gap="1">
+                            <Text as="label" size="4">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-6" size="3" value="1" defaultChecked />
+                                <Text>Agree to Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                            <Text as="label" size="4">
+                              <Flex gap="2">
+                                <Radio name="radio-alignment-6" size="3" value="2" />
+                                <Text>Disagree with Terms and Conditions</Text>
+                              </Flex>
+                            </Text>
+                          </Flex>
+
+                          <Separator size="4" />
+                        </Flex>
+                      </div>
+                    </Grid>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {radioPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {radioPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex gap="2">
+                                        <Radio
+                                          color={color}
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}`}
+                                          value="1"
+                                        />
+                                        <Radio
+                                          color={color}
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}`}
+                                          value="2"
+                                          defaultChecked
+                                        />
+                                        <Radio
+                                          color={color}
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}-high-contrast`}
+                                          highContrast
+                                          value="1"
+                                        />
+                                        <Radio
+                                          color={color}
+                                          variant={variant}
+                                          name={`radio-${variant}-${color}-high-contrast`}
+                                          highContrast
+                                          value="2"
+                                          defaultChecked
+                                        />
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
+
+                    <Separator size="3" my="5" />
+                  </DocsSection>
+
                   <DocsSection title="RadioGroup">
                     <Grid columns="2" gap="9">
                       <div>
@@ -1598,7 +2277,7 @@ export default function Sink() {
                             </tr>
                           </thead>
                           <tbody>
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioGroupRootPropDefs.variant.values.map((variant) => (
                               <React.Fragment key={variant}>
                                 {[variant, '+ high-contrast'].map((label) => (
                                   <tr key={label}>
@@ -1647,12 +2326,15 @@ export default function Sink() {
 
                         <table className={styles.table}>
                           <tbody>
-                            {radioGroupPropDefs.size.values.map((size) => (
+                            {radioGroupRootPropDefs.size.values.map((size) => (
                               <tr key={size}>
                                 <RowHeaderCell>size {size}</RowHeaderCell>
-                                <td>
-                                  <RadioGroupRoot size={size} defaultValue="value">
-                                    <RadioGroupItem value="value" />
+                                <td style={{ width: '100%' }}>
+                                  <RadioGroupRoot size={size} defaultValue="red">
+                                    <RadioGroupItem value="red">Red</RadioGroupItem>
+                                    <RadioGroupItem value="green">Green</RadioGroupItem>
+                                    <RadioGroupItem value="blue">Blue</RadioGroupItem>
+                                    <RadioGroupItem value="violet">Violet</RadioGroupItem>
                                   </RadioGroupRoot>
                                 </td>
                               </tr>
@@ -1673,21 +2355,17 @@ export default function Sink() {
 
                           <RadioGroupRoot defaultValue="1" size="1">
                             <Flex direction="column" gap="1">
-                              <Text size="1" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="1" />
-                                    <Text>Agree to Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="1">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
                               </Text>
-                              <Text size="1" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="2" />
-                                    <Text>Disagree with Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="1">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="2" />
+                                  <Text>Disagree with Terms and Conditions</Text>
+                                </Flex>
                               </Text>
                             </Flex>
                           </RadioGroupRoot>
@@ -1696,21 +2374,17 @@ export default function Sink() {
 
                           <RadioGroupRoot defaultValue="1" size="1">
                             <Flex direction="column" gap="1">
-                              <Text size="2" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="1" />
-                                    <Text>Agree to Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
                               </Text>
-                              <Text size="2" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="2" />
-                                    <Text>Disagree with Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="2" />
+                                  <Text>Disagree with Terms and Conditions</Text>
+                                </Flex>
                               </Text>
                             </Flex>
                           </RadioGroupRoot>
@@ -1719,21 +2393,17 @@ export default function Sink() {
 
                           <RadioGroupRoot defaultValue="1" size="2">
                             <Flex direction="column" gap="1">
-                              <Text size="2" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="1" />
-                                    <Text>Agree to Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
                               </Text>
-                              <Text size="2" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="2" />
-                                    <Text>Disagree with Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="2">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="2" />
+                                  <Text>Disagree with Terms and Conditions</Text>
+                                </Flex>
                               </Text>
                             </Flex>
                           </RadioGroupRoot>
@@ -1742,21 +2412,17 @@ export default function Sink() {
 
                           <RadioGroupRoot defaultValue="1" size="2">
                             <Flex direction="column" gap="1">
-                              <Text size="3" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="1" />
-                                    <Text>Agree to Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
                               </Text>
-                              <Text size="3" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="2" />
-                                    <Text>Disagree with Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="2" />
+                                  <Text>Disagree with Terms and Conditions</Text>
+                                </Flex>
                               </Text>
                             </Flex>
                           </RadioGroupRoot>
@@ -1765,21 +2431,17 @@ export default function Sink() {
 
                           <RadioGroupRoot defaultValue="1" size="3">
                             <Flex direction="column" gap="1">
-                              <Text size="3" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="1" />
-                                    <Text>Agree to Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
                               </Text>
-                              <Text size="3" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="2" />
-                                    <Text>Disagree with Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="3">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="2" />
+                                  <Text>Disagree with Terms and Conditions</Text>
+                                </Flex>
                               </Text>
                             </Flex>
                           </RadioGroupRoot>
@@ -1788,21 +2450,17 @@ export default function Sink() {
 
                           <RadioGroupRoot defaultValue="1" size="3">
                             <Flex direction="column" gap="1">
-                              <Text size="4" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="1" />
-                                    <Text>Agree to Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="4">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="1" />
+                                  <Text>Agree to Terms and Conditions</Text>
+                                </Flex>
                               </Text>
-                              <Text size="4" asChild>
-                                <label>
-                                  <Flex gap="2">
-                                    <RadioGroupItem value="2" />
-                                    <Text>Disagree with Terms and Conditions</Text>
-                                  </Flex>
-                                </label>
+                              <Text as="label" size="4">
+                                <Flex gap="2">
+                                  <RadioGroupItem value="2" />
+                                  <Text>Disagree with Terms and Conditions</Text>
+                                </Flex>
                               </Text>
                             </Flex>
                           </RadioGroupRoot>
@@ -1831,7 +2489,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {radioGroupPropDefs.variant.values.map((variant) => (
+                                {radioGroupRootPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -1840,7 +2498,7 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {radioGroupPropDefs.variant.values.map((variant) => (
+                                  {radioGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex gap="2">
                                         <RadioGroupRoot
@@ -1870,6 +2528,134 @@ export default function Sink() {
                     </details>
 
                     <Separator size="3" my="5" />
+                  </DocsSection>
+
+                  <DocsSection title="RadioCardGroup">
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupRootPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <RadioCardGroupRoot
+                                columns="3"
+                                defaultValue={String(index)}
+                                variant={variant}
+                              >
+                                <RadioCardGroupItem value="0">
+                                  <CodeIcon />
+                                  <Text truncate>Node.js</Text>
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="1" disabled>
+                                  Ruby
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
+                              </RadioCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Box mb="7" />
+
+                    <table className={styles.table}>
+                      <tbody>
+                        {radioCardGroupRootPropDefs.size.values.map((size, index) => (
+                          <tr key={size}>
+                            <RowHeaderCell>size {size}</RowHeaderCell>
+                            <td>
+                              <RadioCardGroupRoot
+                                size={size}
+                                columns="3"
+                                defaultValue={String(index)}
+                                style={{ width: 400 + Number(size) * 100 }}
+                              >
+                                <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
+                                <RadioCardGroupItem value="1" disabled>
+                                  Ruby
+                                </RadioCardGroupItem>
+                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
+                              </RadioCardGroupRoot>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Text as="p" my="5">
+                      <Code>color</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See colors & variants combinations
+                        </Text>
+                      </summary>
+                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                        <React.Fragment key={label}>
+                          <Text as="p" weight="bold" mt="6" mb="4">
+                            {label}
+                          </Text>
+                          <table className={styles.table}>
+                            <thead>
+                              <tr>
+                                <ColumnHeaderCell />
+                                {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {values.map((color) => (
+                                <tr key={color}>
+                                  <RowHeaderCell>{color}</RowHeaderCell>
+                                  {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                                    <td key={variant}>
+                                      <Flex direction="column" gap="2">
+                                        <RadioCardGroupRoot
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          defaultValue="0"
+                                          variant={variant}
+                                          color={color}
+                                          style={{ width: 400 }}
+                                        >
+                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1" disabled>
+                                            Ruby
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
+                                        </RadioCardGroupRoot>
+
+                                        <RadioCardGroupRoot
+                                          size="1"
+                                          gap="2"
+                                          columns="3"
+                                          defaultValue="1"
+                                          variant={variant}
+                                          color={color}
+                                          highContrast
+                                          style={{ width: 400 }}
+                                        >
+                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
+                                          <RadioCardGroupItem value="1" disabled>
+                                            Ruby
+                                          </RadioCardGroupItem>
+                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
+                                        </RadioCardGroupRoot>
+                                      </Flex>
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </React.Fragment>
+                      ))}
+                    </details>
                   </DocsSection>
 
                   <DocsSection title="Button">
@@ -5070,270 +5856,6 @@ export default function Sink() {
                           })}
                         </tbody>
                       </table>
-                    </details>
-                  </DocsSection>
-
-                  <DocsSection title="RadioCardGroup">
-                    <table className={styles.table}>
-                      <tbody>
-                        {radioCardGroupPropDefs.variant.values.map((variant, index) => (
-                          <tr key={variant}>
-                            <RowHeaderCell>{variant}</RowHeaderCell>
-                            <td>
-                              <RadioCardGroupRoot
-                                columns="3"
-                                defaultValue={String(index)}
-                                variant={variant}
-                              >
-                                <RadioCardGroupItem value="0">
-                                  <CodeIcon />
-                                  <Text truncate>Node.js</Text>
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="1" disabled>
-                                  Ruby
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                              </RadioCardGroupRoot>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <Box mb="7" />
-
-                    <table className={styles.table}>
-                      <tbody>
-                        {radioCardGroupPropDefs.size.values.map((size, index) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <RadioCardGroupRoot
-                                size={size}
-                                columns="3"
-                                defaultValue={String(index)}
-                                style={{ width: 400 + Number(size) * 100 }}
-                              >
-                                <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
-                                <RadioCardGroupItem value="1" disabled>
-                                  Ruby
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                              </RadioCardGroupRoot>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <Text as="p" my="5">
-                      <Code>color</Code> can be set per instance:
-                    </Text>
-
-                    <details>
-                      <summary>
-                        <Text size="2" color="gray">
-                          See colors & variants combinations
-                        </Text>
-                      </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
-                        <React.Fragment key={label}>
-                          <Text as="p" weight="bold" mt="6" mb="4">
-                            {label}
-                          </Text>
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                                {radioCardGroupPropDefs.variant.values.map((variant) => (
-                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {values.map((color) => (
-                                <tr key={color}>
-                                  <RowHeaderCell>{color}</RowHeaderCell>
-                                  {radioCardGroupPropDefs.variant.values.map((variant) => (
-                                    <td key={variant}>
-                                      <Flex direction="column" gap="2">
-                                        <RadioCardGroupRoot
-                                          size="1"
-                                          gap="2"
-                                          columns="3"
-                                          defaultValue="0"
-                                          variant={variant}
-                                          color={color}
-                                          style={{ width: 400 }}
-                                        >
-                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
-                                          <RadioCardGroupItem value="1" disabled>
-                                            Ruby
-                                          </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                                        </RadioCardGroupRoot>
-
-                                        <RadioCardGroupRoot
-                                          size="1"
-                                          gap="2"
-                                          columns="3"
-                                          defaultValue="1"
-                                          variant={variant}
-                                          color={color}
-                                          highContrast
-                                          style={{ width: 400 }}
-                                        >
-                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
-                                          <RadioCardGroupItem value="1" disabled>
-                                            Ruby
-                                          </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                                        </RadioCardGroupRoot>
-                                      </Flex>
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </React.Fragment>
-                      ))}
-                    </details>
-                  </DocsSection>
-
-                  <DocsSection title="CheckboxCardGroup">
-                    <table className={styles.table}>
-                      <tbody>
-                        {radioCardGroupPropDefs.variant.values.map((variant, index) => (
-                          <tr key={variant}>
-                            <RowHeaderCell>{variant}</RowHeaderCell>
-                            <td>
-                              <CheckboxCardGroupRoot
-                                defaultValue={[String(index)]}
-                                columns="3"
-                                variant={variant}
-                              >
-                                <CheckboxCardGroupItem value="0">
-                                  <CodeIcon />
-                                  <Text truncate>Node.js</Text>
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="1" disabled>
-                                  Ruby
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
-                              </CheckboxCardGroupRoot>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <Box mb="7" />
-
-                    <table className={styles.table}>
-                      <tbody>
-                        {radioCardGroupPropDefs.size.values.map((size, index) => (
-                          <tr key={size}>
-                            <RowHeaderCell>size {size}</RowHeaderCell>
-                            <td>
-                              <CheckboxCardGroupRoot
-                                defaultValue={[String(index)]}
-                                size={size}
-                                columns="3"
-                                style={{ width: 400 + Number(size) * 100 }}
-                              >
-                                <CheckboxCardGroupItem value="0">Node.js</CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="1" disabled>
-                                  Ruby
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
-                              </CheckboxCardGroupRoot>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <Text as="p" my="5">
-                      <Code>color</Code> can be set per instance:
-                    </Text>
-
-                    <details>
-                      <summary>
-                        <Text size="2" color="gray">
-                          See colors & variants combinations
-                        </Text>
-                      </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
-                        <React.Fragment key={label}>
-                          <Text as="p" weight="bold" mt="6" mb="4">
-                            {label}
-                          </Text>
-                          <table className={styles.table}>
-                            <thead>
-                              <tr>
-                                <ColumnHeaderCell />
-                                {radioCardGroupPropDefs.variant.values.map((variant) => (
-                                  <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {values.map((color) => (
-                                <tr key={color}>
-                                  <RowHeaderCell>{color}</RowHeaderCell>
-                                  {radioCardGroupPropDefs.variant.values.map((variant) => (
-                                    <td key={variant}>
-                                      <Flex direction="column" gap="2">
-                                        <CheckboxCardGroupRoot
-                                          defaultValue={['0']}
-                                          size="1"
-                                          gap="2"
-                                          columns="3"
-                                          variant={variant}
-                                          color={color}
-                                          style={{ width: 400 }}
-                                        >
-                                          <CheckboxCardGroupItem value="0">
-                                            Node.js
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="1" disabled>
-                                            Ruby
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="2">
-                                            Go
-                                          </CheckboxCardGroupItem>
-                                        </CheckboxCardGroupRoot>
-
-                                        <CheckboxCardGroupRoot
-                                          defaultValue={['0']}
-                                          size="1"
-                                          gap="2"
-                                          columns="3"
-                                          variant={variant}
-                                          color={color}
-                                          highContrast
-                                          style={{ width: 400 }}
-                                        >
-                                          <CheckboxCardGroupItem value="0">
-                                            Node.js
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="1" disabled>
-                                            Ruby
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="2">
-                                            Go
-                                          </CheckboxCardGroupItem>
-                                        </CheckboxCardGroupRoot>
-                                      </Flex>
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </React.Fragment>
-                      ))}
                     </details>
                   </DocsSection>
                 </main>

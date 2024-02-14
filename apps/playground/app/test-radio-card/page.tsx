@@ -10,7 +10,7 @@ import {
   Box,
   Separator,
 } from '@radix-ui/themes';
-import { radioCardGroupPropDefs } from '@radix-ui/themes/props';
+import { radioCardGroupRootPropDefs } from '@radix-ui/themes/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import { CrumpledPaperIcon, CubeIcon, GlobeIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 
@@ -22,7 +22,7 @@ export default function Test() {
           <Theme asChild>
             <div id="root">
               <Container px="8" size="3">
-                {radioCardGroupPropDefs.size.values.map((size) => (
+                {radioCardGroupRootPropDefs.size.values.map((size) => (
                   <React.Fragment key={size}>
                     <Section size="3">
                       <Heading mb="5">Size {size}</Heading>

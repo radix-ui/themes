@@ -38,15 +38,39 @@
       - `--color-autofill-root` is replaced by `--focus-a3`
       - `--color-focus-root` is replaced by `--focus-8`
       - `--color-selection-root` is replaced by `--focus-a5`
-- 8 new components
-  - `CheckboxCardGroup`
+- 10 new components
   - `DataList`
+    - Component for displaying text data as key-value pairs. Parts:
+      - `Root`
+      - `Item`
+      - `Label`
+      - `Value`
   - `Progress`
+    - Progress bar component that indicates completion of a task.
+  - `CheckboxGroup`
+    - Group of checkboxes with an optional text label and roving focus. Parts:
+      - `Root`
+      - `Item`
+  - `CheckboxCardGroup`
+    - Interactive card component to pick one or more value from the list. Parts:
+      - `Root`
+      - `Item`
+  - `Radio`
+    - Standalone element for building your own layouts with radio inputs.
   - `RadioCardGroup`
+    - Interactive card component to pick one of the values from the list. Parts:
+      - `Root`
+      - `Item`
   - `Reset`
+    - Component that resets the styles for any native HTML element.
   - `Skeleton`
+    - Component that may wrap any UI element and turn it into a loading skeleton. Can also render self or a React Fragment conditionally using a `loading` prop.
   - `Spinner`
+    - Loading spinner component. Like Skeleton, it also may wrap any UI element and display itself using a conditional `loading` prop.
   - `TabNav`
+    - Equivalent for `Tabs`, but used for page navigation. Renders regular links and supports roving focus. Parts:
+      - `Root`
+      - `Link`
 - `AlertDialog`, `Dialog`
   - Add `position: relative` to support absolutely positioned children.
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
@@ -71,6 +95,8 @@
   - Add `gapX` and `gapY` props
 - `Popover`, `HoverCard`, `Tooltip`
   - Add `position: relative` to support absolutely positioned children.
+- `RadioGroup`
+  - [**Breaking**] Rework the internal HTML structure and styles. This component is now designed to display an optional text label when passing `children` to the `Item` part, and the `Root` part now provides flex column styles and spacing.
 - `Select`
   - Make sure that Trigger font weight is not inherited, e.g. from a wrapping `<label>` element
 - `Separator`
