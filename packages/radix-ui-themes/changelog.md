@@ -25,7 +25,7 @@
     - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
     - `gridRow`, `gridRowStart`, `gridRowEnd`
   - **[Breaking]** The `width` and `height` props don't map to space scale anymore. This is because in the vast majority of cases, width and height were not set to space scale, and with that, space scale as an IDE autocomplete suggestion felt odd/misleading.
-    - **[Upgrade guide]** Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"`, and so on for other steps.
+    - **[Upgrade guide]** Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
   - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
