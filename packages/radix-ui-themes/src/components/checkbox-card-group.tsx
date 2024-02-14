@@ -76,7 +76,7 @@ const CheckboxCardGroupItem = React.forwardRef<
   CheckboxCardGroupItemElement,
   ScopedProps<CheckboxCardGroupItemProps>
 >(({ __scopeCheckboxCardGroup, children, className, style, ...props }, forwardedRef) => {
-  const context = useCheckboxCardGroupContext('item', __scopeCheckboxCardGroup);
+  const context = useCheckboxCardGroupContext('CheckboxCardGroupItem', __scopeCheckboxCardGroup);
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCardGroup);
   const { className: checkboxClassName } = extractProps(
     // Pass size / highContrast values from the context and static variant to generate styles

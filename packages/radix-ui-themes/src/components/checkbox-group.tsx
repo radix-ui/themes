@@ -23,13 +23,13 @@ const [createCheckboxGroupContext] = createContextScope(CHECKBOX_GROUP_NAME, [
 ]);
 const useCheckboxGroupScope = createCheckboxGroupScope();
 
-type CheckboxGroupContextValue = GetPropDefTypes<typeof checkboxGroupRootPropDefs>;
+type CheckboxGroupRootOwnProps = GetPropDefTypes<typeof checkboxGroupRootPropDefs>;
+type CheckboxGroupContextValue = CheckboxGroupRootOwnProps;
 
 const [CheckboxGroupProvider, useCheckboxGroupContext] =
   createCheckboxGroupContext<CheckboxGroupContextValue>(CHECKBOX_GROUP_NAME);
 
 type CheckboxGroupRootElement = React.ElementRef<typeof CheckboxGroupPrimitive.Root>;
-type CheckboxGroupRootOwnProps = GetPropDefTypes<typeof checkboxGroupRootPropDefs>;
 interface CheckboxGroupRootProps
   extends ComponentPropsWithoutColor<typeof CheckboxGroupPrimitive.Root>,
     MarginProps,
@@ -71,32 +71,42 @@ type CheckboxGroupItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.I
 interface CheckboxGroupItemProps
   extends Omit<React.ComponentPropsWithoutRef<typeof CheckboxGroupPrimitive.Item>, 'asChild'>,
     MarginProps {}
-const CheckboxGroupItem = React.forwardRef<
-  CheckboxGroupItemElement,
-  ScopedProps<CheckboxGroupItemProps>
->(({ __scopeCheckboxGroup, children, className, style, ...props }, forwardedRef) => {
-  const { size } = useCheckboxGroupContext('item', __scopeCheckboxGroup);
+const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGroupItemProps>(
+  (_props: ScopedProps<CheckboxGroupItemProps>, forwardedRef) => {
+    const { __scopeCheckboxGroup, children, className, style, ...props } = _props;
+    const { size } = useCheckboxGroupContext('CheckboxGroupItem', __scopeCheckboxGroup);
 
-  // Render `<Text as="label">` if children are provided, otherwise render
-  // the solo checkbox to allow building out your custom layouts with it.
-  if (children) {
+    // Render `<Text as="label">` if children are provided, otherwise render
+    // the solo checkbox to allow building out your custom layouts with it.
+    if (children) {
+      return (
+        <Text
+          as="label"
+          size={size}
+          className={classNames('rt-CheckboxGroupItem', className)}
+          style={style}
+        >
+          <CheckboxGroupItemCheckbox
+            __scopeCheckboxGroup={__scopeCheckboxGroup}
+            ref={forwardedRef}
+            {...props}
+          />
+          {children && <span>{children}</span>}
+        </Text>
+      );
+    }
+
     return (
-      <Text
-        as="label"
-        size={size}
-        className={classNames('rt-CheckboxGroupItem', className)}
+      <CheckboxGroupItemCheckbox
+        __scopeCheckboxGroup={__scopeCheckboxGroup}
+        ref={forwardedRef}
+        className={className}
         style={style}
-      >
-        <CheckboxGroupItemCheckbox ref={forwardedRef} {...props} />
-        {children && <span>{children}</span>}
-      </Text>
+        {...props}
+      />
     );
   }
-
-  return (
-    <CheckboxGroupItemCheckbox ref={forwardedRef} className={className} style={style} {...props} />
-  );
-});
+);
 CheckboxGroupItem.displayName = 'CheckboxGroupItem';
 
 type CheckboxGroupItemCheckboxElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
@@ -106,7 +116,7 @@ const CheckboxGroupItemCheckbox = React.forwardRef<
   CheckboxGroupItemCheckboxElement,
   ScopedProps<CheckboxGroupItemCheckboxProps>
 >(({ __scopeCheckboxGroup, ...props }, forwardedRef) => {
-  const context = useCheckboxGroupContext('item', __scopeCheckboxGroup);
+  const context = useCheckboxGroupContext('CheckboxGroupItemCheckbox', __scopeCheckboxGroup);
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxGroup);
   const { color, className } = extractProps(
     { ...props, ...context },
@@ -115,8 +125,8 @@ const CheckboxGroupItemCheckbox = React.forwardRef<
   );
   return (
     <CheckboxGroupPrimitive.Item
-      data-accent-color={color}
       {...checkboxGroupScope}
+      data-accent-color={color}
       {...props}
       ref={forwardedRef}
       className={classNames(

@@ -2,18 +2,30 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { createContextScope } from '@radix-ui/react-context';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { Text } from './text.js';
+import { createRadioGroupScope } from '@radix-ui/react-radio-group';
 import { radioGroupRootPropDefs } from './radio-group.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
+import { Text } from './text.js';
+
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { Scope } from '@radix-ui/react-context';
+
+const RADIO_GROUP_NAME = 'RadioGroup';
+
+type ScopedProps<P> = P & { __scopeRadioGroup?: Scope };
+const [createRadioGroupContext] = createContextScope(RADIO_GROUP_NAME, [createRadioGroupScope]);
+const useRadioGroupScope = createRadioGroupScope();
 
 type RadioGroupRootOwnProps = GetPropDefTypes<typeof radioGroupRootPropDefs>;
 type RadioGroupContextValue = RadioGroupRootOwnProps;
-const RadioGroupContext = React.createContext<RadioGroupContextValue>({});
+
+const [RadioGroupProvider, useRadioGroupContext] =
+  createRadioGroupContext<RadioGroupContextValue>(RADIO_GROUP_NAME);
 
 type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
@@ -28,23 +40,26 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
       size = radioGroupRootPropDefs.size.default,
       variant = radioGroupRootPropDefs.variant.default,
       ...props
-    },
+    }: ScopedProps<RadioGroupRootProps>,
     forwardedRef
   ) => {
-    const { className, ...rootProps } = extractProps(props, marginPropDefs);
+    const { __scopeRadioGroup, className, ...rootProps } = extractProps(props, marginPropDefs);
+    const radioGroupScope = useRadioGroupScope(__scopeRadioGroup);
     return (
-      <RadioGroupContext.Provider
-        value={React.useMemo(
-          () => ({ color, highContrast, size, variant }),
-          [color, highContrast, size, variant]
-        )}
+      <RadioGroupProvider
+        scope={__scopeRadioGroup}
+        color={color}
+        highContrast={highContrast}
+        size={size}
+        variant={variant}
       >
         <RadioGroupPrimitive.Root
+          {...radioGroupScope}
           {...rootProps}
           ref={forwardedRef}
           className={classNames('rt-RadioGroupRoot', className)}
         />
-      </RadioGroupContext.Provider>
+      </RadioGroupProvider>
     );
   }
 );
@@ -55,8 +70,9 @@ interface RadioGroupItemProps
   extends Omit<ComponentPropsWithoutColor<typeof RadioGroupItemRadio>, 'asChild'>,
     MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
-  ({ children, className, style, ...props }, forwardedRef) => {
-    const { size } = React.useContext(RadioGroupContext);
+  (_props: ScopedProps<RadioGroupItemProps>, forwardedRef) => {
+    const { __scopeRadioGroup, children, className, style, ...props } = _props;
+    const { size } = useRadioGroupContext('RadioGroupItem', __scopeRadioGroup);
 
     // Render `<Text as="label">` if children are provided, otherwise render
     // the solo radio button to allow building out your custom layouts with it.
@@ -84,25 +100,28 @@ RadioGroupItem.displayName = 'RadioGroupItem';
 type RadioGroupItemRadioElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioGroupItemRadioProps
   extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {}
-const RadioGroupItemRadio = React.forwardRef<RadioGroupItemRadioElement, RadioGroupItemRadioProps>(
-  (props, forwardedRef) => {
-    const context = React.useContext(RadioGroupContext);
-    const { color, className } = extractProps(
-      { ...props, ...context },
-      radioGroupRootPropDefs,
-      marginPropDefs
-    );
-    return (
-      <RadioGroupPrimitive.Item
-        data-accent-color={color}
-        {...props}
-        asChild={false}
-        ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-BaseRadioRoot', className)}
-      />
-    );
-  }
-);
+const RadioGroupItemRadio = React.forwardRef<
+  RadioGroupItemRadioElement,
+  ScopedProps<RadioGroupItemRadioProps>
+>(({ __scopeRadioGroup, ...props }, forwardedRef) => {
+  const context = useRadioGroupContext('RadioGroupItemRadio', __scopeRadioGroup);
+  const radioGroupScope = useRadioGroupScope(__scopeRadioGroup);
+  const { color, className } = extractProps(
+    { ...props, ...context },
+    radioGroupRootPropDefs,
+    marginPropDefs
+  );
+  return (
+    <RadioGroupPrimitive.Item
+      {...radioGroupScope}
+      data-accent-color={color}
+      {...props}
+      asChild={false}
+      ref={forwardedRef}
+      className={classNames('rt-reset', 'rt-BaseRadioRoot', className)}
+    />
+  );
+});
 RadioGroupItemRadio.displayName = 'RadioGroupItemRadio';
 
 export { RadioGroupRoot, RadioGroupItem };
