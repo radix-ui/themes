@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { containerPropDefs } from './container.props.js';
-import { extractProps, getRoot, subtract } from '../helpers/index.js';
+import { extractProps, getRoot } from '../helpers/index.js';
 import {
   deprecatedLayoutPropDefs,
   heightPropDefs,
@@ -31,7 +31,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
     } = extractProps(
       props,
       containerPropDefs,
-      subtract(layoutPropDefs, widthPropDefs),
+      layoutPropDefs,
       deprecatedLayoutPropDefs,
       marginPropDefs
     );
