@@ -1014,7 +1014,7 @@ export default function ExploreComponents() {
                         </Flex>
 
                         <Card variant="classic" size="4" style={{ width: 400 }}>
-                          <Box height="7" mb="4">
+                          <Box height="40px" mb="4">
                             <Heading as="h3" size="6" mt="-1">
                               Sign up
                             </Heading>

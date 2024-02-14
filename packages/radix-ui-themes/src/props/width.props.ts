@@ -4,26 +4,23 @@ const widthValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const widthPropDefs = {
   width: {
-    type: 'enum | string',
+    type: 'string',
     className: 'rt-r-w',
     customProperties: ['--width'],
-    values: widthValues,
     default: undefined,
     responsive: true,
   },
   minWidth: {
-    type: 'enum | string',
+    type: 'string',
     className: 'rt-r-min-w',
     customProperties: ['--min-width'],
-    values: widthValues,
     default: undefined,
     responsive: true,
   },
   maxWidth: {
-    type: 'enum | string',
+    type: 'string',
     className: 'rt-r-max-w',
     customProperties: ['--max-width'],
-    values: widthValues,
     default: undefined,
     responsive: true,
   },
