@@ -2,8 +2,7 @@
   border-radius: var(--radius-1);
 }
 
-.rt-Skeleton,
-.rt-Skeleton:where(.rt-TextFieldInput) + :where(.rt-TextFieldChrome) {
+.rt-Skeleton {
   animation: rt-skeleton-pulse 1000ms infinite alternate-reverse !important;
   background-image: none !important;
   background-clip: border-box !important;
@@ -43,8 +42,7 @@
 
 .rt-Skeleton > *,
 .rt-Skeleton::after,
-.rt-Skeleton::before,
-.rt-Skeleton:where(.rt-TextFieldInput) {
+.rt-Skeleton::before {
   visibility: hidden !important;
 }
 

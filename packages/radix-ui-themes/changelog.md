@@ -129,10 +129,15 @@
   - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
   - Rework the internal HTML structure and styles. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `TextField`
+  - **[Breaking]** Remove the `Input` part to simplify how props are forwarded and rework internal HTML structure and styles.
+    - **[Upgrade guide]**:
+      - All `TextField.Input` parts used **without** `TextField.Root` should be renamed to `TextField.Root`
+      - All `TextField.Input` parts used **within** `TextField.Root` should be removed and their props should be put directly on the `TextField.Root` part
+      - All `TextField.Slot` parts placed to the right of `TextField.Input` will need `side="right"` prop. However, no adjustment is needed when two slots were used within one `TextField`, e.g. one slot on the left and another one on the right. In that case, the slots will be automatically placed on different sides.
+      - Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
   - Fix an issue with some input `type`s not supporting `getSelectionRange`
   - Fix an issue when Grammarly extension would break the component styles
   - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
-  - Rework the internal HTML structure and styles. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `ThemePanel`
   - Change the hotkey to toggle the Theme Panel to "T" keypress and dark mode to "D" keypress (without modifiers).
 - `Theme`

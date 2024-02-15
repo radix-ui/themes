@@ -2,48 +2,64 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { composeEventHandlers } from '@radix-ui/primitive';
-import { textFieldPropDefs, textFieldSlotPropDefs } from './text-field.props.js';
-import { extractMarginProps, extractProps } from '../helpers/index.js';
+import { textFieldRootPropDefs, textFieldSlotPropDefs } from './text-field.props.js';
+import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithoutColor, NotInputTextualAttributes } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import { composeRefs } from '@radix-ui/react-compose-refs';
 
-type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldPropDefs>;
-const TextFieldContext = React.createContext<true | undefined>(undefined);
-
-type TextFieldRootElement = React.ElementRef<'div'>;
-interface TextFieldRootProps
-  extends ComponentPropsWithoutColor<'div'>,
-    MarginProps,
-    TextFieldRootOwnProps {}
+type TextFieldRootElement = React.ElementRef<'input'>;
+type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
+  type?:
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'hidden'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week';
+};
+type TextFieldInputProps = Omit<
+  ComponentPropsWithoutColor<'input'>,
+  NotInputTextualAttributes | 'size' | 'type'
+>;
+interface TextFieldRootProps extends TextFieldInputProps, MarginProps, TextFieldRootOwnProps {}
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
   (props, forwardedRef) => {
-    const { children, className, color, radius, ...rootProps } = extractProps(
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    const { children, className, color, radius, style, ...inputProps } = extractProps(
       props,
-      textFieldPropDefs,
+      textFieldRootPropDefs,
       marginPropDefs
     );
     return (
       <div
         data-accent-color={color}
         data-radius={radius}
-        {...rootProps}
-        ref={forwardedRef}
+        style={style}
         className={classNames('rt-TextFieldRoot', className)}
-        onPointerDown={composeEventHandlers(rootProps.onPointerDown, (event) => {
+        onPointerDown={(event) => {
           const target = event.target as HTMLElement;
           if (target.closest('input, button, a')) return;
 
-          const input = event.currentTarget.querySelector(
-            '.rt-TextFieldInput'
-          ) as HTMLInputElement | null;
+          const input = inputRef.current;
           if (!input) return;
 
-          const position = input.compareDocumentPosition(target);
-          const targetIsBeforeInput = (position & Node.DOCUMENT_POSITION_PRECEDING) !== 0;
-          const cursorPosition = targetIsBeforeInput ? 0 : input.value.length;
+          // Same selector as in the CSS to find the right slot
+          const isRightSlot = target.closest(`
+            .rt-TextFieldSlot[data-side='right'],
+            .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
+          `);
+
+          const cursorPosition = isRightSlot ? input.value.length : 0;
 
           requestAnimationFrame(() => {
             // Only some input types support this, browsers will throw an error if not supported
@@ -53,9 +69,15 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
             } catch (e) {}
             input.focus();
           });
-        })}
+        }}
       >
-        <TextFieldContext.Provider value>{children}</TextFieldContext.Provider>
+        <input
+          spellCheck="false"
+          {...inputProps}
+          ref={composeRefs(inputRef, forwardedRef)}
+          className="rt-reset rt-TextFieldInput"
+        />
+        {children}
       </div>
     );
   }
@@ -67,10 +89,11 @@ type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
 interface TextFieldSlotProps extends ComponentPropsWithoutColor<'div'>, TextFieldSlotOwnProps {}
 const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
   (props, forwardedRef) => {
-    const { className, color, ...slotProps } = extractProps(props, textFieldSlotPropDefs);
+    const { className, color, side, ...slotProps } = extractProps(props, textFieldSlotPropDefs);
     return (
       <div
         data-accent-color={color}
+        data-side={side}
         {...slotProps}
         ref={forwardedRef}
         className={classNames('rt-TextFieldSlot', className)}
@@ -80,39 +103,5 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
 );
 TextFieldSlot.displayName = 'TextFieldSlot';
 
-type TextFieldInputElement = React.ElementRef<'input'>;
-type TextFieldInputOwnProps = GetPropDefTypes<typeof textFieldPropDefs>;
-interface TextFieldInputProps
-  extends Omit<ComponentPropsWithoutColor<'input'>, 'size'>,
-    MarginProps,
-    TextFieldInputOwnProps {}
-const TextFieldInput = React.forwardRef<TextFieldInputElement, TextFieldInputProps>(
-  ({ className, color, radius, size, variant, ...props }, forwardedRef) => {
-    const { rest: inputProps, ...marginProps } = extractMarginProps(props);
-    const context = React.useContext(TextFieldContext);
-    const hasRoot = context !== undefined;
-
-    const input = (
-      <input
-        spellCheck="false"
-        {...inputProps}
-        ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-TextFieldInput', className)}
-      />
-    );
-
-    if (hasRoot) {
-      return input;
-    }
-
-    return (
-      <TextFieldRoot {...marginProps} size={size} variant={variant} color={color} radius={radius}>
-        {input}
-      </TextFieldRoot>
-    );
-  }
-);
-TextFieldInput.displayName = 'TextFieldInput';
-
-export { TextFieldRoot, TextFieldSlot, TextFieldInput };
-export type { TextFieldRootProps, TextFieldSlotProps, TextFieldInputProps };
+export { TextFieldRoot, TextFieldSlot };
+export type { TextFieldRootProps, TextFieldSlotProps };

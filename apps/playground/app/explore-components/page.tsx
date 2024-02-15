@@ -93,7 +93,6 @@ import {
   TextArea,
   TextFieldRoot,
   TextFieldSlot,
-  TextFieldInput,
   Text,
   Tooltip,
   ThemePanel,
@@ -124,7 +123,7 @@ import {
   tableRootPropDefs,
   tabsListPropDefs,
   textAreaPropDefs,
-  textFieldPropDefs,
+  textFieldRootPropDefs,
   textPropDefs,
   themeAccentColorsOrdered,
 } from '@radix-ui/themes/props';
@@ -1025,7 +1024,7 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Email address
                               </Text>
-                              <TextFieldInput variant="classic" placeholder="Enter your email" />
+                              <TextFieldRoot variant="classic" placeholder="Enter your email" />
                             </label>
                           </Box>
 
@@ -1040,7 +1039,7 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Password
                               </Text>
-                              <TextFieldInput variant="classic" placeholder="Enter your password" />
+                              <TextFieldRoot variant="classic" placeholder="Enter your password" />
                             </label>
                           </Box>
 
@@ -1648,7 +1647,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="1" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             size="1"
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
@@ -1658,7 +1657,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="1" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             size="1"
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
@@ -1696,7 +1695,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="2" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
                           />
@@ -1705,7 +1704,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="2" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
                           />
@@ -1740,7 +1739,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="2" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
                           />
@@ -1749,7 +1748,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="2" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
                           />
@@ -1784,7 +1783,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="3" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             size="3"
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
@@ -1794,7 +1793,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="3" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldInput
+                          <TextFieldRoot
                             size="3"
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
@@ -3299,7 +3298,7 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="3">
                         <Grid gap="1">
                           <Text weight="bold">Email</Text>
-                          <TextFieldInput variant="classic" placeholder="Your email" />
+                          <TextFieldRoot variant="classic" placeholder="Your email" />
                         </Grid>
                         <Grid gap="1">
                           <Text weight="bold">Subject</Text>
@@ -3330,7 +3329,7 @@ export default function ExploreComponents() {
                             <Skeleton>Email</Skeleton>
                           </Text>
                           <Skeleton>
-                            <TextFieldInput variant="classic" placeholder="Your email" />
+                            <TextFieldRoot variant="classic" placeholder="Your email" />
                           </Skeleton>
                         </Grid>
                         <Grid gap="1">
@@ -3531,22 +3530,19 @@ export default function ExploreComponents() {
                   </Flex>
 
                   <Flex gap="4" align="center">
-                    <TextFieldRoot size="1">
-                      <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                    <TextFieldRoot size="1" defaultValue="horsebatterystaple" type="password">
                       <TextFieldSlot>
                         <Spinner size="1" />
                       </TextFieldSlot>
                     </TextFieldRoot>
 
-                    <TextFieldRoot size="2">
-                      <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                    <TextFieldRoot size="2" defaultValue="horsebatterystaple" type="password">
                       <TextFieldSlot>
                         <Spinner size="2" />
                       </TextFieldSlot>
                     </TextFieldRoot>
 
-                    <TextFieldRoot size="3">
-                      <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                    <TextFieldRoot size="3" defaultValue="horsebatterystaple" type="password">
                       <TextFieldSlot>
                         <Spinner size="3" />
                       </TextFieldSlot>
@@ -4288,15 +4284,14 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {textFieldPropDefs.variant.values.map((variant) => (
+                          {textFieldRootPropDefs.variant.values.map((variant) => (
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <TextFieldRoot variant={variant}>
+                                <TextFieldRoot variant={variant} placeholder="Search">
                                   <TextFieldSlot>
                                     <MagnifyingGlassIcon width="16" height="16" />
                                   </TextFieldSlot>
-                                  <TextFieldInput placeholder="Search" />
                                   <TextFieldSlot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
@@ -4305,11 +4300,10 @@ export default function ExploreComponents() {
                                 </TextFieldRoot>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant} color="gray">
+                                <TextFieldRoot variant={variant} color="gray" placeholder="Search">
                                   <TextFieldSlot>
                                     <MagnifyingGlassIcon width="16" height="16" />
                                   </TextFieldSlot>
-                                  <TextFieldInput placeholder="Search" />
                                   <TextFieldSlot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
@@ -4318,15 +4312,15 @@ export default function ExploreComponents() {
                                 </TextFieldRoot>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant}>
+                                <TextFieldRoot
+                                  variant={variant}
+                                  placeholder="Search"
+                                  defaultValue="Quick brown fox"
+                                  disabled
+                                >
                                   <TextFieldSlot>
                                     <MagnifyingGlassIcon width="16" height="16" />
                                   </TextFieldSlot>
-                                  <TextFieldInput
-                                    placeholder="Search"
-                                    defaultValue="Quick brown fox"
-                                    disabled
-                                  />
                                   <TextFieldSlot>
                                     <IconButton variant="ghost" color="gray" size="1" disabled>
                                       <InfoCircledIcon />
@@ -4335,15 +4329,15 @@ export default function ExploreComponents() {
                                 </TextFieldRoot>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant}>
+                                <TextFieldRoot
+                                  variant={variant}
+                                  placeholder="Search"
+                                  defaultValue="Quick brown fox"
+                                  readOnly
+                                >
                                   <TextFieldSlot>
                                     <MagnifyingGlassIcon width="16" height="16" />
                                   </TextFieldSlot>
-                                  <TextFieldInput
-                                    placeholder="Search"
-                                    defaultValue="Quick brown fox"
-                                    readOnly
-                                  />
                                   <TextFieldSlot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
@@ -4364,7 +4358,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {textFieldPropDefs.variant.values.map((variant) => (
+                            {textFieldRootPropDefs.variant.values.map((variant) => (
                               <th key={variant}>{upperFirst(variant)}</th>
                             ))}
                           </tr>
@@ -4373,13 +4367,16 @@ export default function ExploreComponents() {
                           {themeAccentColorsOrdered.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
-                              {textFieldPropDefs.variant.values.map((variant) => (
+                              {textFieldRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <TextFieldRoot color={color} variant={variant}>
+                                  <TextFieldRoot
+                                    color={color}
+                                    variant={variant}
+                                    placeholder="Search"
+                                  >
                                     <TextFieldSlot>
                                       <MagnifyingGlassIcon width="16" height="16" />
                                     </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
                                     <TextFieldSlot>
                                       <IconButton variant="ghost" color="gray" size="1">
                                         <InfoCircledIcon />
@@ -4401,7 +4398,7 @@ export default function ExploreComponents() {
                         <thead>
                           <tr>
                             <th />
-                            {textFieldPropDefs.radius.values.map((radius) => (
+                            {textFieldRootPropDefs.radius.values.map((radius) => (
                               <th key={radius} style={{ textAlign: 'left' }}>
                                 {radius === 'none' ? 'No radius' : upperFirst(radius)}
                               </th>
@@ -4409,7 +4406,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {textFieldPropDefs.variant.values.map((variant, index) => (
+                          {textFieldRootPropDefs.variant.values.map((variant, index) => (
                             <React.Fragment key={variant}>
                               {index > 0 && (
                                 <tr>
@@ -4418,36 +4415,36 @@ export default function ExploreComponents() {
                               )}
                               <tr>
                                 <td>Size 1</td>
-                                {textFieldPropDefs.radius.values.map((radius) => (
+                                {textFieldRootPropDefs.radius.values.map((radius) => (
                                   <td key={radius}>
                                     <TextFieldRoot
                                       size="1"
                                       variant={variant}
                                       radius={radius}
                                       style={{ width: 140 }}
+                                      placeholder="Search"
                                     >
                                       <TextFieldSlot>
                                         <MagnifyingGlassIcon width="14" height="14" />
                                       </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
                                     </TextFieldRoot>
                                   </td>
                                 ))}
                               </tr>
                               <tr>
                                 <td>Size 2</td>
-                                {textFieldPropDefs.radius.values.map((radius) => (
+                                {textFieldRootPropDefs.radius.values.map((radius) => (
                                   <td key={radius}>
                                     <TextFieldRoot
                                       size="2"
                                       variant={variant}
                                       radius={radius}
                                       style={{ width: 160 }}
+                                      placeholder="Search"
                                     >
                                       <TextFieldSlot>
                                         <MagnifyingGlassIcon width="16" height="16" />
                                       </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
                                       <TextFieldSlot>
                                         <IconButton variant="ghost" color="gray" size="1">
                                           <InfoCircledIcon />
@@ -4459,13 +4456,17 @@ export default function ExploreComponents() {
                               </tr>
                               <tr>
                                 <td>Size 3</td>
-                                {textFieldPropDefs.radius.values.map((radius) => (
+                                {textFieldRootPropDefs.radius.values.map((radius) => (
                                   <td key={radius}>
-                                    <TextFieldRoot size="3" variant={variant} radius={radius}>
+                                    <TextFieldRoot
+                                      size="3"
+                                      variant={variant}
+                                      radius={radius}
+                                      placeholder="Search"
+                                    >
                                       <TextFieldSlot>
                                         <MagnifyingGlassIcon width="18" height="18" />
                                       </TextFieldSlot>
-                                      <TextFieldInput placeholder="Search" />
                                       <TextFieldSlot>
                                         <IconButton variant="ghost" color="gray" size="2">
                                           <InfoCircledIcon />

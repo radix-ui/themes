@@ -111,19 +111,23 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  color: var(--gray-a11);
   cursor: text;
 
-  &:where([data-accent-color]) {
-    color: var(--accent-a11);
-  }
-  &:where(:empty) {
-    display: none;
-  }
-  &:where(:first-child) {
+  /* A slot that is not a right-side slot goes on the left */
+  &:where(:not([data-side='right'])) {
+    order: -1;
     margin-left: calc(var(--text-field-border-width) * -1);
+    margin-right: 0;
   }
-  &:where(:last-child) {
+
+  &:where([data-side='right']),
+  /*
+   * A slot followed by a left-side slot that is not a left-side slot itself goes on the right.
+   * In simple terms, this makes it so that two slots without an explicit side work automatically.
+   */
+  :where(&:not([data-side='right'])) ~ &:where(:not([data-side='left'])) {
+    order: 0;
+    margin-left: 0;
     margin-right: calc(var(--text-field-border-width) * -1);
   }
 }
@@ -144,34 +148,33 @@
   /* Clip text to the border radius of the Root */
   border-radius: calc(var(--text-field-border-radius) - var(--text-field-border-width));
 
-  /* Remove border-radius on the left if it's not a first child */
-  &:where(:not(:first-child)) {
+  /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+  text-indent: var(--text-field-padding);
+
+  &:where([type='date'], [type='datetime-local'], [type='time'], [type='week'], [type='month']) {
+    /* Safari is buggy with text-indent for these input types */
+    text-indent: 0;
+    padding-left: var(--text-field-padding);
+    padding-right: var(--text-field-padding);
+  }
+
+  /* Remove border-radius and text-indent/padding on the left if there’s a left-side slot */
+  &:where(:has(~ .rt-TextFieldSlot:not([data-side='right']))) {
+    text-indent: 0;
+    padding-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  /* Remove border-radius on the right if there’s a slot there */
-  &:where(:has(~ .rt-TextFieldSlot)) {
+
+  /* Remove border-radius and padding on the right if there’s a right-side slot */
+  /* prettier-ignore */
+  &:where(:has(
+    ~ .rt-TextFieldSlot[data-side='right'],
+    ~ .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
+  )) {
+    padding-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-
-  &:where(:first-child) {
-    /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
-    text-indent: var(--text-field-padding);
-
-    &:where([type='date'], [type='datetime-local'], [type='time'], [type='week'], [type='month']) {
-      /* Safari is buggy with text-indent for these input types */
-      text-indent: 0;
-      padding-left: var(--text-field-padding);
-    }
-  }
-
-  &:where([type='date'], [type='datetime-local'], [type='time'], [type='week'], [type='month']) {
-    padding-right: var(--text-field-padding);
-
-    &:where(:has(~ .rt-TextFieldSlot)) {
-      padding-right: 0;
-    }
   }
 }
 
@@ -283,6 +286,14 @@
     }
   }
 
+  & :where(.rt-TextFieldSlot) {
+    color: var(--gray-a11);
+
+    &:where([data-accent-color]) {
+      color: var(--accent-a11);
+    }
+  }
+
   /* prettier-ignore */
   &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     background-color: var(--focus-a3);
@@ -311,6 +322,14 @@
   & :where(.rt-TextFieldInput) {
     &::placeholder {
       color: var(--gray-a10);
+    }
+  }
+
+  & :where(.rt-TextFieldSlot) {
+    color: var(--gray-a11);
+
+    &:where([data-accent-color]) {
+      color: var(--accent-a11);
     }
   }
 
@@ -343,6 +362,14 @@
     }
   }
 
+  & :where(.rt-TextFieldSlot) {
+    color: var(--accent-12);
+
+    &:where([data-accent-color]) {
+      color: var(--accent-a11);
+    }
+  }
+
   /* prettier-ignore */
   &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     /* Use gray autofill color when component color is gray */
@@ -368,14 +395,15 @@
     }
     &:where(:placeholder-shown) {
       cursor: var(--cursor-disabled);
+
+      & ~ :where(.rt-TextFieldSlot) {
+        cursor: var(--cursor-disabled);
+      }
     }
+
     .rt-TextFieldRoot:where(:has(&)) {
       --text-field-selection-color: var(--gray-a5);
       --text-field-focus-color: var(--gray-8);
-    }
-    /* Cursor in slots, as an enhancement */
-    .rt-TextFieldRoot:where(:has(&:placeholder-shown)) :where(.rt-TextFieldSlot) {
-      cursor: var(--cursor-disabled);
     }
   }
 }

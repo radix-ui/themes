@@ -14,7 +14,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
-  TextFieldInput,
+  TextFieldRoot,
   Grid,
   SelectRoot,
   SelectTrigger,
@@ -60,7 +60,7 @@ export default function Demo() {
                       <Text size="1" weight="bold" color="gray" mb="1">
                         Name
                       </Text>
-                      <TextFieldInput defaultValue={user.name} mb="2" />
+                      <TextFieldRoot defaultValue={user.name} mb="2" />
                       <Text size="1" weight="bold" color="gray" mb="1">
                         Role
                       </Text>

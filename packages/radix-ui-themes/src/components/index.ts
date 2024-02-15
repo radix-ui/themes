@@ -124,7 +124,7 @@ export * as Table from './table.parts.js';
 export { TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs.js';
 export * as Tabs from './tabs.parts.js';
 export { TextArea } from './text-area.js';
-export { TextFieldRoot, TextFieldSlot, TextFieldInput } from './text-field.js';
+export { TextFieldRoot, TextFieldSlot } from './text-field.js';
 export * as TextField from './text-field.parts.js';
 export { Text } from './text.js';
 export { ThemePanel } from './theme-panel.js';
