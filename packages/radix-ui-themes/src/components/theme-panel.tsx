@@ -121,25 +121,22 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     );
 
     const keyboardInputElement = `
-      input:not([type="radio"], [type="checkbox"]),
+      [contenteditable],
       [role="combobox"],
-      [role="combobox"] *,
       [role="listbox"],
-      [role="listbox"] *,
       [role="menu"],
-      [role="menu"] *,
+      input:not([type="radio"], [type="checkbox"]),
       select,
-      textarea,
-      [contenteditable]
+      textarea
     `;
 
-    // quickly show/hide using "C" keypress
+    // quickly show/hide using "T" keypress
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
         const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
-        const isKeyboardInputActive = document.activeElement?.matches(keyboardInputElement);
-        const isKeyC = event.key === 'c' && !isModifierActive;
-        if (isKeyC && !isKeyboardInputActive) {
+        const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
+        const isKeyT = event.key.toUpperCase() === 'T' && !isModifierActive;
+        if (isKeyT && !isKeyboardInputActive) {
           onOpenChange(!open);
         }
       }
@@ -230,12 +227,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             <Box flexGrow="1" p="5" position="relative">
               <Box position="absolute" top="0" right="0" m="2">
                 <Tooltip
-                  content="Press C to show/hide the Theme Panel"
+                  content="Press T to show/hide the Theme Panel"
                   side="bottom"
                   sideOffset={6}
                 >
                   <Kbd asChild size="3" tabIndex={0} className="rt-ThemePanelShortcut">
-                    <button onClick={() => onOpenChange(!open)}>C</button>
+                    <button onClick={() => onOpenChange(!open)}>T</button>
                   </Kbd>
                 </Tooltip>
               </Box>
