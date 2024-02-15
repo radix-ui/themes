@@ -120,30 +120,43 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       appearance === 'inherit' ? null : appearance
     );
 
-    // quickly show/hide using ⌘C
+    const keyboardInputElement = `
+      [contenteditable],
+      [role="combobox"],
+      [role="listbox"],
+      [role="menu"],
+      input:not([type="radio"], [type="checkbox"]),
+      select,
+      textarea
+    `;
+
+    // quickly show/hide using "T" keypress
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
-        const isCmdC =
-          event.metaKey && event.key === 'c' && !event.shiftKey && !event.altKey && !event.ctrlKey;
-        if (isCmdC && window.getSelection()?.toString() === '') {
+        const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
+        const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
+        const isKeyT = event.key.toUpperCase() === 'T' && !isModifierActive;
+        if (isKeyT && !isKeyboardInputActive) {
           onOpenChange(!open);
         }
       }
       document.addEventListener('keydown', handleKeydown);
       return () => document.removeEventListener('keydown', handleKeydown);
-    }, [onOpenChange, open]);
+    }, [onOpenChange, open, keyboardInputElement]);
 
-    // quickly toggle appearance using cmd+d
+    // quickly toggle appearance using "D" keypress
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
-        if (event.metaKey && event.key === 'd') {
-          event.preventDefault();
+        const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
+        const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
+        const isKeyD = event.key.toUpperCase() === 'D' && !isModifierActive;
+        if (isKeyD && !isKeyboardInputActive) {
           handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light');
         }
       }
       document.addEventListener('keydown', handleKeydown);
       return () => document.removeEventListener('keydown', handleKeydown);
-    }, [handleAppearanceChange, resolvedAppearance]);
+    }, [handleAppearanceChange, resolvedAppearance, keyboardInputElement]);
 
     React.useEffect(() => {
       const root = document.documentElement;
@@ -214,12 +227,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
             <Box flexGrow="1" p="5" position="relative">
               <Box position="absolute" top="0" right="0" m="2">
                 <Tooltip
-                  content="Press ⌘&thinsp;C to show/hide the Theme Panel"
+                  content="Press T to show/hide the Theme Panel"
                   side="bottom"
                   sideOffset={6}
                 >
-                  <Kbd size="3" tabIndex={0} className="rt-ThemePanelShortcut">
-                    ⌘&thinsp;C
+                  <Kbd asChild size="3" tabIndex={0} className="rt-ThemePanelShortcut">
+                    <button onClick={() => onOpenChange(!open)}>T</button>
                   </Kbd>
                 </Tooltip>
               </Box>

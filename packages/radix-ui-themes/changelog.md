@@ -133,6 +133,8 @@
   - Fix an issue when Grammarly extension would break the component styles
   - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
   - Rework the internal HTML structure and styles. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `ThemePanel`
+  - Change the hotkey to toggle the Theme Panel to "T" keypress and dark mode to "D" keypress (without modifiers).
 - `Theme`
   - Set `min-height: 100vh` on the root `Theme` component
   - Fix an issue when in certain situations, `hasBackground` prop value would have no effect
