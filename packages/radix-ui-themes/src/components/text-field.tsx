@@ -53,9 +53,13 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
           const input = inputRef.current;
           if (!input) return;
 
-          const position = input.compareDocumentPosition(target);
-          const targetIsBeforeInput = (position & Node.DOCUMENT_POSITION_PRECEDING) !== 0;
-          const cursorPosition = targetIsBeforeInput ? 0 : input.value.length;
+          // Same selector as in the CSS to find the right slot
+          const isRightSlot = target.closest(`
+            .rt-TextFieldSlot[data-side='right'],
+            .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
+          `);
+
+          const cursorPosition = isRightSlot ? input.value.length : 0;
 
           requestAnimationFrame(() => {
             // Only some input types support this, browsers will throw an error if not supported
