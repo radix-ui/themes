@@ -71,7 +71,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
           spellCheck="false"
           {...inputProps}
           ref={composeRefs(inputRef, forwardedRef)}
-          className={'rt-reset rt-TextFieldInput'}
+          className="rt-reset rt-TextFieldInput"
         />
         {children}
       </div>
