@@ -111,15 +111,7 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  color: var(--gray-a11);
   cursor: text;
-
-  &:where([data-accent-color]) {
-    color: var(--accent-a11);
-  }
-  &:where(:empty) {
-    display: none;
-  }
 
   /* A slot that is not a right-side slot goes on the left */
   &:where(:not([data-side='right'])) {
@@ -178,8 +170,8 @@
   /* prettier-ignore */
   &:where(:has(
     ~ .rt-TextFieldSlot[data-side='right'],
-    ~ .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left']))
-  ) {
+    ~ .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
+  )) {
     padding-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -294,6 +286,14 @@
     }
   }
 
+  & :where(.rt-TextFieldSlot) {
+    color: var(--gray-a11);
+
+    &:where([data-accent-color]) {
+      color: var(--accent-a11);
+    }
+  }
+
   /* prettier-ignore */
   &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     background-color: var(--focus-a3);
@@ -325,6 +325,14 @@
     }
   }
 
+  & :where(.rt-TextFieldSlot) {
+    color: var(--gray-a11);
+
+    &:where([data-accent-color]) {
+      color: var(--accent-a11);
+    }
+  }
+
   /* prettier-ignore */
   &:where(:has(.rt-TextFieldInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     background-color: var(--focus-a3);
@@ -351,6 +359,14 @@
     &::placeholder {
       color: var(--accent-12);
       opacity: 0.6;
+    }
+  }
+
+  & :where(.rt-TextFieldSlot) {
+    color: var(--accent-12);
+
+    &:where([data-accent-color]) {
+      color: var(--accent-a11);
     }
   }
 
