@@ -59,6 +59,9 @@
   width: var(--slider-thumb-size);
   height: var(--slider-thumb-size);
 
+  /* Safari */
+  outline: 0;
+
   &::before {
     content: '';
     position: absolute;
