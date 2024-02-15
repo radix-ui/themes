@@ -76,6 +76,8 @@
 - `AlertDialog`, `Dialog`
   - Add `position: relative` to support absolutely positioned children.
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
+- `Blockquote`, `Code`, `Em`, `Heading`, `Quote`, `Link`, `Strong`, `Text`
+  - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
 - `Code`
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`
@@ -107,19 +109,19 @@
   - Fix an issue when Scroll Area would be unable to stretch to 100% height when informed by the parent’s auto height
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
+  - Fix an overzealous focus outline in Safari
 - `Table`
   - Add new `layout` prop to control the `table-layout` style property
   - Align `width` prop type signature and implementation on the `TableCell` part with the reworked `width` prop on the layout components
   - Add `minWidth` and `maxWidth` props to the `TableCell` part
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
+  - Add margin props `TabsList` and `TabsContent`
   - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
     - `--tabs-trigger-active-letter-spacing` -> `--tab-active-letter-spacing`
     - `--tabs-trigger-active-word-spacing` -> `--tab-active-word-spacing`
     - `--tabs-trigger-inactive-letter-spacing` -> `--tab-inactive-letter-spacing`
     - `--tabs-trigger-inactive-word-spacing` -> `--tab-inactive-word-spacing`
-- `Text`, `Heading`, `Link`
-  - Add new `wrap` and `truncate` props
 - `TextArea`
   - Add `radius` prop
   - Add `resize` prop

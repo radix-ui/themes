@@ -32,9 +32,10 @@ type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
   extends Omit<ComponentPropsWithoutColor<typeof TabsPrimitive.List>, 'asChild'>,
+    MarginProps,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, color, ...listProps } = extractProps(props, tabsListPropDefs);
+  const { className, color, ...listProps } = extractProps(props, tabsListPropDefs, marginPropDefs);
   return (
     <TabsPrimitive.List
       data-accent-color={color}
@@ -74,15 +75,19 @@ type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
 type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
 interface TabsContentProps
   extends ComponentPropsWithoutColor<typeof TabsPrimitive.Content>,
+    MarginProps,
     TabsContentOwnProps {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <TabsPrimitive.Content
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-TabsContent', className)}
-    />
-  )
+  (props, forwardedRef) => {
+    const { className, ...contentProps } = extractProps(props, marginPropDefs);
+    return (
+      <TabsPrimitive.Content
+        {...contentProps}
+        ref={forwardedRef}
+        className={classNames('rt-TabsContent', className)}
+      />
+    );
+  }
 );
 TabsContent.displayName = 'TabsContent';
 
