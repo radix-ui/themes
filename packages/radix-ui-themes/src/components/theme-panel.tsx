@@ -144,12 +144,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       return () => document.removeEventListener('keydown', handleKeydown);
     }, [onOpenChange, open, keyboardInputElement]);
 
-    // quickly toggle appearance using cmd+d
+    // quickly toggle appearance using "D" keypress
     React.useEffect(() => {
       function handleKeydown(event: KeyboardEvent) {
         const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
-        const isKeyboardInputActive = document.activeElement?.matches(keyboardInputElement);
-        const isKeyD = event.key === 'd' && !isModifierActive;
+        const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
+        const isKeyD = event.key.toUpperCase() === 'D' && !isModifierActive;
         if (isKeyD && !isKeyboardInputActive) {
           handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light');
         }
