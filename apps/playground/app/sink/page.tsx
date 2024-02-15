@@ -121,7 +121,6 @@ import {
   TabsTrigger,
   Text,
   TextArea,
-  TextFieldInput,
   TextFieldRoot,
   TextFieldSlot,
   Theme,
@@ -159,7 +158,7 @@ import {
   tableRootPropDefs,
   tabsListPropDefs,
   textAreaPropDefs,
-  textFieldPropDefs,
+  textFieldRootPropDefs,
   textPropDefs,
   themeAccentColorsGrouped,
   themeAccentColorsOrdered,
@@ -1367,22 +1366,19 @@ export default function Sink() {
                       </Flex>
 
                       <Flex gap="4" align="center">
-                        <TextFieldRoot size="1">
-                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                        <TextFieldRoot defaultValue="horsebatterystaple" type="password" size="1">
                           <TextFieldSlot>
                             <Spinner size="1" />
                           </TextFieldSlot>
                         </TextFieldRoot>
 
-                        <TextFieldRoot size="2">
-                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                        <TextFieldRoot defaultValue="horsebatterystaple" type="password" size="2">
                           <TextFieldSlot>
                             <Spinner size="2" />
                           </TextFieldSlot>
                         </TextFieldRoot>
 
-                        <TextFieldRoot size="3">
-                          <TextFieldInput defaultValue="horsebatterystaple" type="password" />
+                        <TextFieldRoot defaultValue="horsebatterystaple" type="password" size="3">
                           <TextFieldSlot>
                             <Spinner size="3" />
                           </TextFieldSlot>
@@ -2948,7 +2944,7 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
-                          {textFieldPropDefs.size.values.map((size) => (
+                          {textFieldRootPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
                           <ColumnHeaderCell>disabled</ColumnHeaderCell>
@@ -2956,29 +2952,30 @@ export default function Sink() {
                         </tr>
                       </thead>
                       <tbody>
-                        {textFieldPropDefs.variant.values.map((variant) => (
+                        {textFieldRootPropDefs.variant.values.map((variant) => (
                           <React.Fragment key={variant}>
                             {[variant, '+ gray'].map((label) => (
                               <tr key={label}>
                                 <RowHeaderCell>{label}</RowHeaderCell>
-                                {textFieldPropDefs.size.values.map((size) => (
+                                {textFieldRootPropDefs.size.values.map((size) => (
                                   <td key={size}>
                                     <Flex direction="column" gap="2">
-                                      <TextFieldInput
+                                      <TextFieldRoot
                                         size={size}
                                         variant={variant}
                                         color={label === '+ gray' ? 'gray' : undefined}
                                         placeholder="Your name"
                                       />
+
                                       <TextFieldRoot
                                         size={size}
                                         variant={variant}
                                         color={label === '+ gray' ? 'gray' : undefined}
+                                        placeholder="Your name"
                                       >
                                         <TextFieldSlot>
                                           <InfoCircledIcon />
                                         </TextFieldSlot>
-                                        <TextFieldInput placeholder="Your name" />
                                         <TextFieldSlot>
                                           <IconButton
                                             size={size === '3' ? '2' : '1'}
@@ -2996,7 +2993,8 @@ export default function Sink() {
                                           </IconButton>
                                         </TextFieldSlot>
                                       </TextFieldRoot>
-                                      <TextFieldInput
+
+                                      <TextFieldRoot
                                         size={size}
                                         variant={variant}
                                         color={label === '+ gray' ? 'gray' : undefined}
@@ -3008,27 +3006,30 @@ export default function Sink() {
                                 ))}
                                 <td>
                                   <Flex direction="column" gap="2">
-                                    <TextFieldInput
+                                    <TextFieldRoot
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
                                       disabled
                                     />
+
                                     <TextFieldRoot
+                                      disabled
+                                      placeholder="Your name"
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                     >
                                       <TextFieldSlot>
                                         <InfoCircledIcon />
                                       </TextFieldSlot>
-                                      <TextFieldInput placeholder="Your name" disabled />
                                       <TextFieldSlot>
                                         <IconButton size="1" variant="ghost" color="gray">
                                           <StarIcon />
                                         </IconButton>
                                       </TextFieldSlot>
                                     </TextFieldRoot>
-                                    <TextFieldInput
+
+                                    <TextFieldRoot
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
@@ -3039,27 +3040,30 @@ export default function Sink() {
                                 </td>
                                 <td>
                                   <Flex direction="column" gap="2">
-                                    <TextFieldInput
+                                    <TextFieldRoot
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
                                       readOnly
                                     />
+
                                     <TextFieldRoot
+                                      readOnly
+                                      placeholder="Your name"
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                     >
                                       <TextFieldSlot>
                                         <InfoCircledIcon />
                                       </TextFieldSlot>
-                                      <TextFieldInput placeholder="Your name" readOnly />
                                       <TextFieldSlot>
                                         <IconButton size="1" variant="ghost" color="gray">
                                           <StarIcon />
                                         </IconButton>
                                       </TextFieldSlot>
                                     </TextFieldRoot>
-                                    <TextFieldInput
+
+                                    <TextFieldRoot
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
@@ -3079,7 +3083,7 @@ export default function Sink() {
                     <Flex align="center" gap="4" mb="9">
                       <Box>
                         <form action="/">
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="classic"
                             autoComplete="email"
@@ -3087,7 +3091,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="classic"
                             autoComplete="current-password"
@@ -3100,7 +3104,7 @@ export default function Sink() {
                       </Box>
                       <Box>
                         <form action="/">
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="surface"
                             autoComplete="email"
@@ -3108,7 +3112,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="surface"
                             autoComplete="current-password"
@@ -3121,7 +3125,7 @@ export default function Sink() {
                       </Box>
                       <Box>
                         <form action="/">
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="soft"
                             autoComplete="email"
@@ -3129,7 +3133,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="soft"
                             autoComplete="current-password"
@@ -3142,7 +3146,7 @@ export default function Sink() {
                       </Box>
                       <Box>
                         <form action="/">
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="soft"
                             color="gray"
@@ -3151,7 +3155,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldInput
+                          <TextFieldRoot
                             mb="2"
                             variant="soft"
                             color="gray"
@@ -3180,18 +3184,18 @@ export default function Sink() {
                           <thead>
                             <tr>
                               <ColumnHeaderCell />
-                              {textFieldPropDefs.size.values.map((size) => (
+                              {textFieldRootPropDefs.size.values.map((size) => (
                                 <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
-                            {textFieldPropDefs.radius.values.map((radius) => (
+                            {textFieldRootPropDefs.radius.values.map((radius) => (
                               <tr key={radius}>
                                 <RowHeaderCell>{radius}</RowHeaderCell>
-                                {textFieldPropDefs.size.values.map((size) => (
+                                {textFieldRootPropDefs.size.values.map((size) => (
                                   <td key={size}>
-                                    <TextFieldInput
+                                    <TextFieldRoot
                                       size={size}
                                       radius={radius}
                                       placeholder="Your name"
@@ -3224,7 +3228,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {textFieldPropDefs.variant.values.map((variant) => (
+                                {textFieldRootPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -3233,9 +3237,9 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {textFieldPropDefs.variant.values.map((variant) => (
+                                  {textFieldRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
-                                      <TextFieldInput
+                                      <TextFieldRoot
                                         variant={variant}
                                         color={color}
                                         placeholder="Your name"
@@ -5148,7 +5152,7 @@ export default function Sink() {
                       sense of how harmonious they are.
                     </Text>
                     <Flex gap="9">
-                      {textFieldPropDefs.size.values.map((size) => (
+                      {textFieldRootPropDefs.size.values.map((size) => (
                         <PlaygroundForm
                           key={size}
                           size={size}
@@ -5420,7 +5424,7 @@ export default function Sink() {
                             <Slider defaultValue={[33]} />
                           </div>
                           <Switch defaultChecked />
-                          <TextFieldInput placeholder="Your name" />
+                          <TextFieldRoot placeholder="Your name" />
                           <TextArea placeholder="Your feedback" />
                           <Heading size="5">Principles of the Typographic Craft</Heading>
 
@@ -5457,7 +5461,7 @@ export default function Sink() {
                                 <Skeleton>Email</Skeleton>
                               </Text>
                               <Skeleton>
-                                <TextFieldInput variant="classic" placeholder="Your email" />
+                                <TextFieldRoot variant="classic" placeholder="Your email" />
                               </Skeleton>
                             </Grid>
                             <Grid gap="1">
@@ -5542,7 +5546,7 @@ export default function Sink() {
                             <Switch defaultChecked />
                           </Skeleton>
                           <Skeleton>
-                            <TextFieldInput placeholder="Your name" />
+                            <TextFieldRoot placeholder="Your name" />
                           </Skeleton>
                           <Skeleton>
                             <TextArea placeholder="Your feedback" />
@@ -6163,7 +6167,7 @@ function PlaygroundForm({
   size,
   ...props
 }: React.ComponentProps<typeof Flex> & {
-  size?: React.ComponentProps<typeof TextFieldInput>['size'];
+  size?: React.ComponentProps<typeof TextFieldRoot>['size'];
 }) {
   return (
     <Flex direction="column" gap="3" {...props}>
@@ -6171,7 +6175,7 @@ function PlaygroundForm({
         <Text size={size} weight="bold">
           Email
         </Text>
-        <TextFieldInput size={size} variant="classic" placeholder="Your email" />
+        <TextFieldRoot size={size} variant="classic" placeholder="Your email" />
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">

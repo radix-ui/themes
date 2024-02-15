@@ -9,7 +9,6 @@ type InputAttributes =
   | 'checked'
   | 'defaultChecked'
   | 'defaultValue'
-  | 'dirname'
   | 'disabled'
   | 'form'
   | 'formaction'
@@ -38,14 +37,46 @@ type InputAttributes =
   | 'value'
   | 'width';
 
-type InputCommonAttributes = 'disabled' | 'form' | 'name' | 'required' | 'defaultValue' | 'value';
-type InputRadioAttributes = InputCommonAttributes | 'defaultChecked' | 'checked';
+// Includes all text-like inputs, e.g. text, email, password, number, date, etc.
+type InputTextualAttributes =
+  | 'autoCapitalize'
+  | 'autoComplete'
+  | 'defaultValue'
+  | 'disabled'
+  | 'form'
+  | 'list'
+  | 'maxLength'
+  | 'minLength'
+  | 'min'
+  | 'multiple'
+  | 'max'
+  | 'name'
+  | 'pattern'
+  | 'placeholder'
+  | 'readOnly'
+  | 'required'
+  | 'size'
+  | 'step'
+  | 'type'
+  | 'value';
+
+type InputRadioAttributes =
+  | 'checked'
+  | 'defaultChecked'
+  | 'defaultValue'
+  | 'disabled'
+  | 'form'
+  | 'name'
+  | 'required'
+  | 'value';
 
 type NotInputRadioAttributes = Exclude<InputAttributes, InputRadioAttributes>;
+type NotInputTextualAttributes = Exclude<InputAttributes, InputTextualAttributes>;
 
 export type {
   InputAttributes,
-  InputCommonAttributes,
   InputRadioAttributes,
+  InputTextualAttributes,
   NotInputRadioAttributes,
+  NotInputTextualAttributes,
 };

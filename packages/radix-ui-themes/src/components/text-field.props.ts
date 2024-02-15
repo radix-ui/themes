@@ -5,7 +5,7 @@ import { flexPropDefs } from './flex.props.js';
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;
 
-const textFieldPropDefs = {
+const textFieldRootPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   color: colorProp,
@@ -17,13 +17,17 @@ const textFieldPropDefs = {
   radius: typeof radiusProp;
 };
 
+const sides = ['left', 'right'] as const;
+
 const textFieldSlotPropDefs = {
+  side: { type: 'enum', values: sides, default: undefined },
   color: inheritedColorProp,
   gap: flexPropDefs.gap,
   px: paddingPropDefs.px,
   pl: paddingPropDefs.pl,
   pr: paddingPropDefs.pr,
 } satisfies {
+  side: PropDef<(typeof sides)[number]>;
   color: typeof inheritedColorProp;
   gap: typeof flexPropDefs.gap;
   px: typeof paddingPropDefs.px;
@@ -31,4 +35,4 @@ const textFieldSlotPropDefs = {
   pr: typeof paddingPropDefs.pr;
 };
 
-export { textFieldPropDefs, textFieldSlotPropDefs };
+export { textFieldRootPropDefs, textFieldSlotPropDefs };

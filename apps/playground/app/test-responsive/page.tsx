@@ -3,7 +3,7 @@ import {
   Theme,
   Flex,
   Grid,
-  TextFieldInput,
+  TextFieldRoot,
   Text,
   SelectRoot,
   SelectTrigger,
@@ -38,7 +38,7 @@ export default function Test() {
                         <Text size={{ initial: '1', sm: '2', lg: '3' }} weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           size={{ initial: '1', sm: '2', lg: '3' }}
                           variant="classic"
                           placeholder="Your email"
