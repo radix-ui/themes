@@ -8,17 +8,35 @@
 }
 
 .rt-CheckboxCardGroupItem {
+  border-radius: var(--checkbox-card-group-item-radius);
   position: relative;
+
+  /* Don't inherit text alignment */
+  text-align: initial;
+
+  /* Blend inset shadow with container background */
+  --checkbox-card-group-item-after-border-radius: calc(var(--card-border-radius) - var(--card-border-width));
+  border: var(--card-border-width) solid transparent;
+  background-clip: padding-box;
 
   display: flex;
   align-items: center;
   gap: var(--checkbox-card-group-item-gap);
   box-sizing: border-box;
-  padding: var(--checkbox-card-group-item-padding-y) var(--checkbox-card-group-item-padding-x);
-  padding-right: calc(
-    var(--checkbox-card-group-item-padding-x) * 2 + var(--checkbox-card-group-item-checkbox-size)
+
+  --inset-border-width: var(--checkbox-card-group-item-border-width);
+  --inset-border-radius: var(--checkbox-card-group-item-radius);
+  --inset-padding-top: calc(var(--checkbox-card-group-item-padding-y) - var(--inset-border-width));
+  --inset-padding-bottom: calc(var(--checkbox-card-group-item-padding-y) - var(--inset-border-width));
+  --inset-padding-left: calc(var(--checkbox-card-group-item-padding-left) - var(--inset-border-width));
+  --inset-padding-right: calc(var(--checkbox-card-group-item-padding-right) - var(--inset-border-width));
+  --checkbox-card-group-item-padding-right: calc(
+    var(--checkbox-card-group-item-padding-left) * 2 + var(--checkbox-card-group-item-checkbox-size)
   );
-  border-radius: var(--checkbox-card-group-item-radius);
+  padding-top: var(--checkbox-card-group-item-padding-y);
+  padding-bottom: var(--checkbox-card-group-item-padding-y);
+  padding-left: var(--checkbox-card-group-item-padding-left);
+  padding-right: var(--checkbox-card-group-item-padding-right);
 
   /* cursors */
   cursor: var(--cursor-button);
@@ -40,7 +58,7 @@
 
 .rt-CheckboxCardGroupItemCheckbox {
   position: absolute;
-  right: var(--checkbox-card-group-item-padding-x);
+  right: var(--checkbox-card-group-item-padding-left);
 }
 
 /***************************************************************************************************
@@ -56,37 +74,36 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --checkbox-card-group-item-padding-x: var(--space-3);
+      --checkbox-card-group-item-padding-left: var(--space-3);
       --checkbox-card-group-item-padding-y: calc(var(--space-3) / 1.2);
       --checkbox-card-group-item-radius: var(--radius-3);
       --checkbox-card-group-item-gap: var(--space-2);
-      --checkbox-card-group-item-checkbox-size: calc(
-        var(--space-4) * 0.875
-      ); /* keep in sync with checkbox */
+      /* keep in sync with checkbox */
+      --checkbox-card-group-item-checkbox-size: calc(var(--space-4) * 0.875);
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --checkbox-card-group-item-padding-x: var(--space-4);
+      --checkbox-card-group-item-padding-left: var(--space-4);
       --checkbox-card-group-item-padding-y: calc(var(--space-4) * 0.875);
       --checkbox-card-group-item-radius: var(--radius-3);
       --checkbox-card-group-item-gap: var(--space-3);
-      --checkbox-card-group-item-checkbox-size: var(--space-4); /* keep in sync with checkbox */
+      /* keep in sync with checkbox */
+      --checkbox-card-group-item-checkbox-size: var(--space-4);
     }
     /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --checkbox-card-group-item-padding-x: var(--space-5);
+      --checkbox-card-group-item-padding-left: var(--space-5);
       --checkbox-card-group-item-padding-y: calc(var(--space-5) / 1.2);
       --checkbox-card-group-item-radius: var(--radius-4);
       --checkbox-card-group-item-gap: var(--space-4);
-      --checkbox-card-group-item-checkbox-size: calc(
-        var(--space-4) * 1.25
-      ); /* keep in sync with checkbox */
+      /* keep in sync with checkbox */
+      --checkbox-card-group-item-checkbox-size: calc(var(--space-4) * 1.25);
     }
   }
 }
@@ -101,12 +118,13 @@
 
 .rt-CheckboxCardGroupRoot:where(.rt-variant-surface) {
   :where(.rt-CheckboxCardGroupItem) {
+    --checkbox-card-group-item-border-width: 1px;
     background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a5);
+    box-shadow: inset 0 0 0 var(--checkbox-card-group-item-border-width) var(--gray-a5);
 
     @media (hover: hover) {
       &:where(:not(:has(:disabled)):hover) {
-        box-shadow: inset 0 0 0 1px var(--gray-a7);
+        box-shadow: inset 0 0 0 var(--checkbox-card-group-item-border-width) var(--gray-a7);
       }
     }
 
@@ -126,6 +144,7 @@
 
 .rt-CheckboxCardGroupRoot:where(.rt-variant-classic) {
   :where(.rt-CheckboxCardGroupItem) {
+    --checkbox-card-group-item-border-width: 1px;
     background-color: var(--color-surface);
     box-shadow: var(--shadow-2);
     transition: box-shadow 120ms;
@@ -151,7 +170,6 @@
 
 /* all high-contrast */
 
-.rt-CheckboxCardGroupRoot:where(.rt-high-contrast)
-  :where(.rt-CheckboxCardGroupItem[data-state='checked']) {
+.rt-CheckboxCardGroupRoot:where(.rt-high-contrast) :where(.rt-CheckboxCardGroupItem[data-state='checked']) {
   outline-color: var(--accent-12);
 }

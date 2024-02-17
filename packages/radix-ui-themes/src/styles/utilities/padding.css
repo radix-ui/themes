@@ -39,7 +39,10 @@
     padding: var(--space-9);
   }
   .rt-r-p-inset {
-    padding: var(--inset-padding);
+    padding-top: var(--inset-padding-top);
+    padding-right: var(--inset-padding-right);
+    padding-bottom: var(--inset-padding-bottom);
+    padding-left: var(--inset-padding-left);
   }
 }
 
@@ -123,8 +126,8 @@
     padding-right: var(--space-9);
   }
   .rt-r-px-inset {
-    padding-left: var(--inset-padding);
-    padding-right: var(--inset-padding);
+    padding-left: var(--inset-padding-left);
+    padding-right: var(--inset-padding-right);
   }
 }
 
@@ -214,8 +217,8 @@
     padding-bottom: var(--space-9);
   }
   .rt-r-py-inset {
-    padding-top: var(--inset-padding);
-    padding-bottom: var(--inset-padding);
+    padding-top: var(--inset-padding-top);
+    padding-bottom: var(--inset-padding-bottom);
   }
 }
 
@@ -295,7 +298,7 @@
     padding-top: var(--space-9);
   }
   .rt-r-pt-inset {
-    padding-top: var(--inset-padding);
+    padding-top: var(--inset-padding-top);
   }
 }
 
@@ -338,9 +341,6 @@
   .rt-r-pr {
     /* Keep this selector here to maintain the source order */
   }
-  .rt-r-pt-inset {
-    padding-top: var(--inset-padding);
-  }
   .rt-r-pr-0 {
     padding-right: 0;
   }
@@ -372,7 +372,7 @@
     padding-right: var(--space-9);
   }
   .rt-r-pr-inset {
-    padding-right: var(--inset-padding);
+    padding-right: var(--inset-padding-right);
   }
 }
 
@@ -446,7 +446,7 @@
     padding-bottom: var(--space-9);
   }
   .rt-r-pb-inset {
-    padding-bottom: var(--inset-padding);
+    padding-bottom: var(--inset-padding-bottom);
   }
 }
 
@@ -520,7 +520,7 @@
     padding-left: var(--space-9);
   }
   .rt-r-pl-inset {
-    padding-left: var(--inset-padding);
+    padding-left: var(--inset-padding-left);
   }
 }
 

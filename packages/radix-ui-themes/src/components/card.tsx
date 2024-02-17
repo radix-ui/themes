@@ -31,9 +31,9 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
     <CardRoot
       ref={forwardedRef}
       {...cardProps}
-      className={classNames('rt-reset', 'rt-Card', className)}
+      className={classNames('rt-reset', 'rt-BaseCard', 'rt-Card', className)}
     >
-      <div className="rt-CardInner">{children}</div>
+      <div className="rt-BaseCardInner rt-CardInner">{children}</div>
     </CardRoot>
   );
 });

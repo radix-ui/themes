@@ -11,7 +11,14 @@
   justify-content: center;
   gap: var(--radio-card-group-item-gap);
   box-sizing: border-box;
-  padding: var(--radio-card-group-item-padding);
+
+  --inset-border-width: var(--radio-card-group-item-border-width);
+  --inset-border-radius: var(--radio-card-group-item-radius);
+  --inset-padding-top: calc(var(--radio-card-group-item-padding-y) - var(--inset-border-width));
+  --inset-padding-bottom: calc(var(--radio-card-group-item-padding-y) - var(--inset-border-width));
+  --inset-padding-left: calc(var(--radio-card-group-item-padding-x) - var(--inset-border-width));
+  --inset-padding-right: calc(var(--radio-card-group-item-padding-x) - var(--inset-border-width));
+  padding: var(--radio-card-group-item-padding-y) var(--radio-card-group-item-padding-x);
   border-radius: var(--radio-card-group-item-radius);
 
   & > * {
@@ -39,7 +46,8 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding: calc(var(--space-3) / 1.2) var(--space-3);
+      --radio-card-group-item-padding-x: var(--space-3);
+      --radio-card-group-item-padding-y: calc(var(--space-3) / 1.2);
       --radio-card-group-item-radius: var(--radius-3);
       --radio-card-group-item-gap: var(--space-2);
     }
@@ -48,7 +56,8 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding: calc(var(--space-4) * 0.875) var(--space-4);
+      --radio-card-group-item-padding-x: var(--space-4);
+      --radio-card-group-item-padding-y: calc(var(--space-4) * 0.875);
       --radio-card-group-item-radius: var(--radius-3);
       --radio-card-group-item-gap: var(--space-3);
     }
@@ -57,7 +66,8 @@
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --radio-card-group-item-padding: calc(var(--space-5) / 1.2) var(--space-5);
+      --radio-card-group-item-padding-x: var(--space-5);
+      --radio-card-group-item-padding-y: calc(var(--space-5) / 1.2);
       --radio-card-group-item-radius: var(--radius-4);
       --radio-card-group-item-gap: var(--space-4);
     }
@@ -73,8 +83,9 @@
 .rt-RadioCardGroupItem {
   position: relative;
 
-  /* pseudo element for an extra background color layer */
-  &::before {
+  /* Pseudo elements for an extra background color layer and for the outline */
+  &::before,
+  &::after {
     content: '';
     display: block;
     position: absolute;
@@ -87,14 +98,18 @@
 /* surface */
 
 .rt-RadioCardGroupRoot:where(.rt-variant-surface) {
+  --radio-card-group-item-border-width: 1px;
+
   :where(.rt-RadioCardGroupItem) {
-    outline-offset: -2px;
     background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a5);
+    box-shadow: inset 0 0 0 var(--radio-card-group-item-border-width) var(--gray-a5);
+    &::after {
+      outline-offset: -2px;
+    }
 
     @media (hover: hover) {
       &:where(:not(:disabled):not([data-state='checked']):hover) {
-        box-shadow: inset 0 0 0 1px var(--gray-a7);
+        box-shadow: inset 0 0 0 var(--radio-card-group-item-border-width) var(--gray-a7);
       }
     }
   }
@@ -103,11 +118,15 @@
 /* classic */
 
 .rt-RadioCardGroupRoot:where(.rt-variant-classic) {
+  --radio-card-group-item-border-width: 1px;
+
   :where(.rt-RadioCardGroupItem) {
-    outline-offset: -1px;
     background-color: var(--color-surface);
     box-shadow: var(--shadow-2);
     transition: box-shadow 120ms;
+    &::after {
+      outline-offset: -1px;
+    }
 
     @media (hover: hover) {
       &:where(:not(:disabled):not([data-state='checked']):hover) {
@@ -120,14 +139,14 @@
 
 /* all checked */
 
-.rt-RadioCardGroupItem:where([data-state='checked']) {
+.rt-RadioCardGroupItem:where([data-state='checked'])::after {
   outline: 2px solid var(--accent-10);
 }
 
 /* all high-contrast */
 
 .rt-RadioCardGroupRoot:where(.rt-high-contrast) {
-  & :where(.rt-RadioCardGroupItem[data-state='checked']) {
+  & :where(.rt-RadioCardGroupItem[data-state='checked'])::after {
     outline-color: var(--accent-12);
   }
 }
@@ -135,14 +154,14 @@
 /* all focus */
 
 .rt-RadioCardGroupItem:where(:focus-visible) {
-  outline: 2px solid var(--focus-8);
-
-  &:where([data-state='checked']) {
-    outline-color: var(--focus-10);
-  }
-
   &::before {
     background-color: var(--focus-a3);
+  }
+  &::after {
+    outline: 2px solid var(--focus-8);
+  }
+  &:where([data-state='checked'])::after {
+    outline-color: var(--focus-10);
   }
 }
 
@@ -150,10 +169,12 @@
 
 .rt-RadioCardGroupItem:where(:disabled) {
   cursor: var(--cursor-disabled);
-  outline-color: var(--gray-8);
   color: var(--gray-a9);
 
   &::before {
     background-color: var(--gray-a2);
+  }
+  &::after {
+    outline-color: var(--gray-8);
   }
 }

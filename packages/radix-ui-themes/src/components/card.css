@@ -1,30 +1,15 @@
+@import './base-card.css';
+
 /* stylelint-disable selector-max-type */
 /* Disable selector-max-type rule to target `button` and `a` tags. */
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
 .rt-Card {
-  border-radius: var(--card-border-radius);
-  position: relative;
-
-  /* Don't inherit text alignment */
-  text-align: initial;
-
-  /* Blend inset shadow with container background */
-  --card-after-border-radius: calc(var(--card-border-radius) - var(--card-border-width));
-  border: var(--card-border-width) solid transparent;
-  background-clip: padding-box;
-
-  &:where(button, a) {
-    display: block;
-  }
-
-  &::after {
-    inset: 0;
-    position: absolute;
-    pointer-events: none;
-    border-radius: inherit;
-    content: '';
-  }
+  --base-card-padding-top: var(--card-padding);
+  --base-card-padding-right: var(--card-padding);
+  --base-card-padding-bottom: var(--card-padding);
+  --base-card-padding-left: var(--card-padding);
+  --base-card-border-radius: var(--card-border-radius);
 
   &:where(:focus-visible)::after {
     outline: 2px solid var(--focus-8);
@@ -32,63 +17,11 @@
   }
 }
 
-.rt-CardInner {
-  --inset-border-width: var(--card-border-width);
-  --inset-border-radius: var(--card-border-radius);
-  position: relative;
-  border-radius: inherit;
-  overflow: hidden;
-  padding: var(--card-padding);
-  box-sizing: border-box;
-
-  /*
-   * Some layout acrobatics with `var(--card-border-width)` because we want:
-   * 1. <Card> with fixed height to clip overflowing content.
-   * 2. <Inset> that clips to card’s border-box or padding-box depending on the `clip` value.
-   *
-   * To have both (1) and (2), we clip the content at the outer edge of `.rt-Card` border.
-   * To achieve that, `.rt-CardInner` size is increased by the border width amount and put
-   * back in place using a matching negative margin; inset padding needs a compensation too.
-   */
-  --inset-padding: calc(var(--card-padding) - var(--card-border-width));
-  width: calc(100% + var(--card-border-width) * 2);
-  height: calc(100% + var(--card-border-width) * 2);
-  margin: calc(-1 * var(--card-border-width));
-}
-
-/***************************************************************************************************
- *                                                                                                 *
- * SIZES                                                                                           *
- *                                                                                                 *
- ***************************************************************************************************/
-
-.rt-Card {
-  &:where(.rt-variant-ghost) {
-    /* We reset the defined margin variables to avoid inheriting them from a higher component */
-    /* If a margin IS defined on the component itself, the utility class will win and reset it */
-    --margin-top: 0px;
-    --margin-right: 0px;
-    --margin-bottom: 0px;
-    --margin-left: 0px;
-
-    /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top) - var(--card-padding));
-    --margin-right-override: calc(var(--margin-right) - var(--card-padding));
-    --margin-bottom-override: calc(var(--margin-bottom) - var(--card-padding));
-    --margin-left-override: calc(var(--margin-left) - var(--card-padding));
-
-    /* Reset the overrides on direct children */
-    :where(&) > * {
-      --margin-top-override: initial;
-      --margin-right-override: initial;
-      --margin-bottom-override: initial;
-      --margin-left-override: initial;
-    }
-
-    margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
-      var(--margin-left-override);
-  }
-}
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Sizes                */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 @breakpoints {
   .rt-Card {
@@ -115,28 +48,13 @@
   }
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * VARIANTS                                                                                        *
- *                                                                                                 *
- ***************************************************************************************************/
-
-/* surface */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants – surface          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-surface) {
-  --card-border-width: 1px;
-  background-color: var(--color-panel);
-
-  &::after {
-    border-radius: var(--card-after-border-radius);
-    box-shadow: 0 0 0 1px var(--gray-a5);
-
-    /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
-    @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-      box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%);
-    }
-  }
-
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover) {
@@ -163,8 +81,7 @@
         box-shadow: 0 0 0 1px var(--gray-a7), 0 0 0 1px var(--gray-a6);
 
         @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-          box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%),
-            0 0 0 1px var(--gray-a5);
+          box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%), 0 0 0 1px var(--gray-a5);
         }
       }
       &:where(:focus-visible) {
@@ -173,6 +90,12 @@
     }
   }
 }
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants – classic          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 /* prettier-ignore */
 :where(.radix-themes) {
@@ -199,7 +122,6 @@
     0 0 12px -2px var(--gray-a3),
     0 0 16px -8px var(--gray-a9);
 }
-
 /* prettier-ignore */
 @supports (color: color-mix(in oklab, white, black)) {
   :is(.dark, .dark-theme),
@@ -213,18 +135,7 @@
       0 0 16px -8px var(--gray-a9);
   }
 }
-
 .rt-Card:where(.rt-variant-classic) {
-  --card-border-width: 1px;
-  background-color: var(--color-panel);
-
-  &::after {
-    border-radius: var(--card-after-border-radius);
-    /* A transparent shadow to transition smoothly to `:active` */
-    box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
-    transition: box-shadow 120ms;
-  }
-
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover) {
@@ -252,11 +163,13 @@
   }
 }
 
-/* ghost */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*          Variants – ghost           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-ghost) {
-  --card-border-width: 0px;
-
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover) {

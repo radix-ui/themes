@@ -1,0 +1,126 @@
+.rt-BaseCard {
+  display: block;
+  position: relative;
+  border-radius: var(--base-card-border-radius);
+
+  /* Don't inherit text alignment */
+  text-align: initial;
+
+  /* Blend inset shadow with container background */
+  --base-card-after-border-radius: calc(var(--base-card-border-radius) - var(--base-card-border-width));
+  border: var(--base-card-border-width) solid transparent;
+  background-clip: padding-box;
+
+  &::after {
+    inset: 0;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+    content: '';
+  }
+}
+
+.rt-BaseCardInner {
+  --inset-border-width: var(--base-card-border-width);
+  --inset-border-radius: var(--base-card-border-radius);
+  position: relative;
+  border-radius: inherit;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: var(--base-card-padding-top);
+  padding-right: var(--base-card-padding-right);
+  padding-bottom: var(--base-card-padding-bottom);
+  padding-left: var(--base-card-padding-left);
+
+  /*
+   * Some layout acrobatics with `var(--base-card-border-width)` because we want:
+   * 1. <Card> with fixed height to clip overflowing content.
+   * 2. <Inset> that clips to card’s border-box or padding-box depending on the `clip` value.
+   *
+   * To have both (1) and (2), we clip the content at the outer edge of `.rt-BaseCard` border.
+   * To achieve that, `.rt-BaseCardInner` size is increased by the border width amount and put
+   * back in place using a matching negative margin; inset padding needs a compensation too.
+   */
+  --inset-padding-top: calc(var(--base-card-padding-top) - var(--base-card-border-width));
+  --inset-padding-right: calc(var(--base-card-padding-right) - var(--base-card-border-width));
+  --inset-padding-bottom: calc(var(--base-card-padding-bottom) - var(--base-card-border-width));
+  --inset-padding-left: calc(var(--base-card-padding-left) - var(--base-card-border-width));
+  width: calc(100% + var(--base-card-border-width) * 2);
+  height: calc(100% + var(--base-card-border-width) * 2);
+  margin: calc(-1 * var(--base-card-border-width));
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants – surface          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-BaseCard:where(.rt-variant-surface) {
+  --base-card-border-width: 1px;
+  background-color: var(--color-panel);
+
+  &::after {
+    border-radius: var(--base-card-after-border-radius);
+    box-shadow: 0 0 0 1px var(--gray-a5);
+
+    /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
+    @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
+      box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%);
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants – classic          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-BaseCard:where(.rt-variant-classic) {
+  --base-card-border-width: 1px;
+  background-color: var(--color-panel);
+
+  &::after {
+    border-radius: var(--base-card-after-border-radius);
+    /* A transparent shadow to transition smoothly to `:active` */
+    box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
+    transition: box-shadow 120ms;
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*          Variants – ghost           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-BaseCard:where(.rt-variant-ghost) {
+  --base-card-border-width: 0px;
+
+  /* We reset the defined margin variables to avoid inheriting them from a higher component */
+  /* If a margin IS defined on the component itself, the utility class will win and reset it */
+  --margin-top: 0px;
+  --margin-right: 0px;
+  --margin-bottom: 0px;
+  --margin-left: 0px;
+
+  /* Define the overrides to incorporate the negative margins */
+  --margin-top-override: calc(var(--margin-top) - var(--base-card-padding-top));
+  --margin-right-override: calc(var(--margin-right) - var(--base-card-padding-right));
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--base-card-padding-bottom));
+  --margin-left-override: calc(var(--margin-left) - var(--base-card-padding-left));
+
+  margin-top: var(--margin-top-override);
+  margin-right: var(--margin-right-override);
+  margin-bottom: var(--margin-bottom-override);
+  margin-left: var(--margin-left-override);
+
+  /* Reset the overrides on direct children */
+  :where(&) > * {
+    --margin-top-override: initial;
+    --margin-right-override: initial;
+    --margin-bottom-override: initial;
+    --margin-left-override: initial;
+  }
+}
