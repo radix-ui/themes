@@ -115,7 +115,7 @@
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
-      background-color: var(--color-panel);
+      background-color: var(--color-surface);
     }
     &::after {
       box-shadow: var(--base-card-classic-box-shadow-inner);
@@ -156,8 +156,9 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardGroupItem:where(:focus-visible) {
-  background-color: var(--focus-a7);
-
+  &::before {
+    background-image: linear-gradient(var(--focus-a3), var(--focus-a3));
+  }
   &::after {
     outline: 2px solid var(--focus-8);
   }

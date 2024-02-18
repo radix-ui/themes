@@ -20,7 +20,9 @@
       outline: inherit;
     }
     &:where(:active:not([data-state='open'])) {
-      background-color: var(--focus-a5);
+      &::before {
+        background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
+      }
     }
   }
 }

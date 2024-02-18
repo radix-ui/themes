@@ -141,7 +141,7 @@
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
-      background-color: var(--color-panel);
+      background-color: var(--color-surface);
     }
     &::after {
       box-shadow: var(--base-card-classic-box-shadow-inner);
