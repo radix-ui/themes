@@ -12,9 +12,16 @@
   --base-card-border-radius: var(--card-border-radius);
   --base-card-border-width: var(--card-border-width);
 
-  &:where(:focus-visible)::after {
+  &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
+
+    &::after {
+      outline: inherit;
+    }
+    &:where(:active:not([data-state='open'])) {
+      background-color: var(--focus-a5);
+    }
   }
 }
 
@@ -56,48 +63,30 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-surface) {
-  --base-card-border-width: 1px;
-  background-color: var(--color-panel);
+  --card-border-width: 1px;
 
+  &::before {
+    background-color: var(--color-panel);
+  }
   &::after {
-    box-shadow: 0 0 0 1px var(--gray-a5);
-
-    /* When possible, use only a half-transparent gray for nicer border blending with inset images in dark mode */
-    @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-      box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%);
-    }
+    box-shadow: var(--base-card-surface-box-shadow);
   }
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover) {
         &::after {
-          box-shadow: 0 0 0 1px var(--gray-a7);
-
-          @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-            box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%);
-          }
+          box-shadow: var(--base-card-surface-hover-box-shadow);
         }
       }
     }
     &:where([data-state='open']) {
       &::after {
-        box-shadow: 0 0 0 1px var(--gray-a7);
-
-        @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-          box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%);
-        }
+        box-shadow: var(--base-card-surface-hover-box-shadow);
       }
     }
     &:where(:active:not([data-state='open'])) {
       &::after {
-        box-shadow: 0 0 0 1px var(--gray-a7), 0 0 0 1px var(--gray-a6);
-
-        @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-          box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%), 0 0 0 1px var(--gray-a5);
-        }
-      }
-      &:where(:focus-visible) {
-        background-color: var(--gray-a3);
+        box-shadow: var(--base-card-surface-active-box-shadow);
       }
     }
   }
@@ -111,36 +100,38 @@
 
 .rt-Card:where(.rt-variant-classic) {
   --card-border-width: 1px;
-  background-color: var(--color-panel);
 
-  &::after {
-    /* A transparent shadow to transition smoothly to `:active` */
-    box-shadow: 0 0 0 1px var(--color-transparent), var(--shadow-2);
-    transition: box-shadow 120ms;
+  transition: box-shadow 120ms;
+  box-shadow: var(--base-card-classic-box-shadow-outer);
+
+  &::before {
+    background-color: var(--color-panel);
   }
-
+  &::after {
+    box-shadow: var(--base-card-classic-box-shadow-inner);
+  }
   &:where(button, [href]) {
     @media (hover: hover) {
       &:where(:hover) {
+        transition-duration: 40ms;
+        box-shadow: var(--base-card-classic-hover-box-shadow-outer);
         &::after {
-          transition-duration: 40ms;
-          box-shadow: var(--base-card-classic-hover-box-shadow);
+          box-shadow: var(--base-card-classic-hover-box-shadow-inner);
         }
       }
     }
     &:where([data-state='open']) {
+      transition-duration: 40ms;
+      box-shadow: var(--base-card-classic-hover-box-shadow-outer);
       &::after {
-        transition-duration: 40ms;
-        box-shadow: var(--base-card-classic-hover-box-shadow);
+        box-shadow: var(--base-card-classic-hover-box-shadow-inner);
       }
     }
     &:where(:active:not([data-state='open'])) {
+      transition-duration: 40ms;
+      box-shadow: var(--base-card-classic-active-box-shadow-outer);
       &::after {
-        transition-duration: 40ms;
-        box-shadow: 0 0 0 1px var(--gray-a5), var(--shadow-2);
-      }
-      &:where(:focus-visible) {
-        background-color: var(--gray-a3);
+        box-shadow: var(--base-card-classic-active-box-shadow-inner);
       }
     }
   }
