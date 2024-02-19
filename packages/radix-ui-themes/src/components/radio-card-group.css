@@ -155,13 +155,13 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardGroupItem:where(:focus-visible) {
-  &::before {
-    background-image: linear-gradient(var(--focus-a3), var(--focus-a3));
-  }
   &::after {
     outline: 2px solid var(--focus-8);
   }
   &:where([data-state='checked']) {
+    &::before {
+      background-image: linear-gradient(var(--focus-a3), var(--focus-a3));
+    }
     &::after {
       outline-color: var(--focus-10);
     }
