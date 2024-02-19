@@ -168,8 +168,8 @@
   margin-bottom: var(--margin-bottom-override);
   margin-left: var(--margin-left-override);
 
-  /* Reset the overrides */
-  .rt-CardInner {
+  /* Reset the overrides on direct children */
+  :where(&) > * {
     --margin-top-override: initial;
     --margin-right-override: initial;
     --margin-bottom-override: initial;
