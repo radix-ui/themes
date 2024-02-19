@@ -35,8 +35,11 @@
   box-sizing: border-box;
   overflow: auto;
 
-  --inset-padding: var(--dialog-content-padding);
-  padding: var(--inset-padding);
+  --inset-padding-top: var(--dialog-content-padding);
+  --inset-padding-right: var(--dialog-content-padding);
+  --inset-padding-bottom: var(--dialog-content-padding);
+  --inset-padding-left: var(--dialog-content-padding);
+  padding: var(--dialog-content-padding);
   box-sizing: border-box;
 
   background-color: var(--color-panel-solid);

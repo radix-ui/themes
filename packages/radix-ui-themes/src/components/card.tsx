@@ -14,27 +14,14 @@ interface CardProps extends ComponentPropsWithoutColor<'div'>, MarginProps, Card
   asChild?: boolean;
 }
 const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
-  const {
-    asChild,
-    children: childrenProp,
-    className,
-    ...cardProps
-  } = extractProps(props, cardPropDefs, marginPropDefs);
-
-  const { Root: CardRoot, children } = getRoot({
-    asChild,
-    children: childrenProp,
-    parent: asChild ? Slot : 'div',
-  });
-
+  const { asChild, className, ...cardProps } = extractProps(props, cardPropDefs, marginPropDefs);
+  const Comp = asChild ? Slot : 'div';
   return (
-    <CardRoot
+    <Comp
       ref={forwardedRef}
       {...cardProps}
-      className={classNames('rt-reset', 'rt-Card', className)}
-    >
-      <div className="rt-CardInner">{children}</div>
-    </CardRoot>
+      className={classNames('rt-reset', 'rt-BaseCard', 'rt-Card', className)}
+    />
   );
 });
 Card.displayName = 'Card';

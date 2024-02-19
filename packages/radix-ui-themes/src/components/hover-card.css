@@ -4,7 +4,10 @@
   overflow: auto;
   position: relative;
 
-  --inset-padding: var(--hover-card-content-padding);
+  --inset-padding-top: var(--hover-card-content-padding);
+  --inset-padding-right: var(--hover-card-content-padding);
+  --inset-padding-bottom: var(--hover-card-content-padding);
+  --inset-padding-left: var(--hover-card-content-padding);
   padding: var(--hover-card-content-padding);
   box-sizing: border-box;
 

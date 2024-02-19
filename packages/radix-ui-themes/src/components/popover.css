@@ -6,7 +6,10 @@
   overflow: auto;
   position: relative;
 
-  --inset-padding: var(--popover-content-padding);
+  --inset-padding-top: var(--popover-content-padding);
+  --inset-padding-right: var(--popover-content-padding);
+  --inset-padding-bottom: var(--popover-content-padding);
+  --inset-padding-left: var(--popover-content-padding);
   padding: var(--popover-content-padding);
   box-sizing: border-box;
 

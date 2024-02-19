@@ -48,8 +48,6 @@
       - `Item`
       - `Label`
       - `Value`
-  - `Progress`
-    - Progress bar component that indicates completion of a task.
   - `CheckboxGroup`
     - Group of checkboxes with an optional text label and roving focus. Parts:
       - `Root`
@@ -58,6 +56,8 @@
     - Interactive card component to pick one or more value from the list. Parts:
       - `Root`
       - `Item`
+  - `Progress`
+    - Progress bar component that indicates completion of a task.
   - `Radio`
     - Standalone element for building your own layouts with radio inputs.
   - `RadioCardGroup`
@@ -81,6 +81,11 @@
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
 - `Blockquote`, `Code`, `Em`, `Heading`, `Quote`, `Link`, `Strong`, `Text`
   - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
+- `Card`
+  - Rework the internal HTML structure and styles. This component now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+    - **[Upgrade guide]** If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly.
+    - **[Upgrade guide]** Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
+      If you need to override background color for non-ghost variant,
 - `Code`
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`

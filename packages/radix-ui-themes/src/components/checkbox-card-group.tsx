@@ -85,7 +85,10 @@ const CheckboxCardGroupItem = React.forwardRef<
     baseCheckboxPropDefs
   );
   return (
-    <label className={classNames('rt-CheckboxCardGroupItem', className)} style={style}>
+    <label
+      className={classNames('rt-BaseCard', 'rt-CheckboxCardGroupItem', className)}
+      style={style}
+    >
       {children}
       <CheckboxGroupPrimitive.Item
         {...checkboxGroupScope}

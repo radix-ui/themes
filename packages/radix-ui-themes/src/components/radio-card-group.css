@@ -1,36 +1,43 @@
+@import './base-card.css';
+
 .rt-RadioCardGroupRoot {
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
-  user-select: none;
   cursor: default;
 }
 
 .rt-RadioCardGroupItem {
+  --base-card-padding-top: var(--radio-card-group-item-padding-y);
+  --base-card-padding-right: var(--radio-card-group-item-padding-x);
+  --base-card-padding-bottom: var(--radio-card-group-item-padding-y);
+  --base-card-padding-left: var(--radio-card-group-item-padding-x);
+  --base-card-border-radius: var(--radio-card-group-item-border-radius);
+  --base-card-border-width: var(--radio-card-group-item-border-width);
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--radio-card-group-item-gap);
-  box-sizing: border-box;
-  padding: var(--radio-card-group-item-padding);
-  border-radius: var(--radio-card-group-item-radius);
 
   & > * {
     /* Avoid unintentional drag interactions (e.g. on images) */
     pointer-events: none;
   }
-
   /* stylelint-disable-next-line selector-max-type */
   & > :where(svg) {
     /* Don’t squish icons */
     flex-shrink: 0;
   }
+  &::after {
+    outline-offset: -1px;
+  }
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * SIZES                                                                                           *
- *                                                                                                 *
- ***************************************************************************************************/
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Sizes                */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 @breakpoints {
   .rt-RadioCardGroupRoot {
@@ -39,8 +46,9 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding: calc(var(--space-3) / 1.2) var(--space-3);
-      --radio-card-group-item-radius: var(--radius-3);
+      --radio-card-group-item-padding-x: var(--space-3);
+      --radio-card-group-item-padding-y: calc(var(--space-3) / 1.2);
+      --radio-card-group-item-border-radius: var(--radius-3);
       --radio-card-group-item-gap: var(--space-2);
     }
     /* 48px height for the card with one line of text */
@@ -48,8 +56,9 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding: calc(var(--space-4) * 0.875) var(--space-4);
-      --radio-card-group-item-radius: var(--radius-3);
+      --radio-card-group-item-padding-x: var(--space-4);
+      --radio-card-group-item-padding-y: calc(var(--space-4) * 0.875);
+      --radio-card-group-item-border-radius: var(--radius-3);
       --radio-card-group-item-gap: var(--space-3);
     }
     /* 64px height for the card with one line of text */
@@ -57,103 +66,127 @@
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --radio-card-group-item-padding: calc(var(--space-5) / 1.2) var(--space-5);
-      --radio-card-group-item-radius: var(--radius-4);
+      --radio-card-group-item-padding-x: var(--space-5);
+      --radio-card-group-item-padding-y: calc(var(--space-5) / 1.2);
+      --radio-card-group-item-border-radius: var(--radius-4);
       --radio-card-group-item-gap: var(--space-4);
     }
   }
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * VARIANTS                                                                                        *
- *                                                                                                 *
- ***************************************************************************************************/
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants / Surface          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCardGroupItem {
-  position: relative;
+:where(.rt-RadioCardGroupRoot.rt-variant-surface) {
+  .rt-RadioCardGroupItem {
+    --radio-card-group-item-border-width: 1px;
+    --radio-card-group-item-background-color: var(--color-surface);
 
-  /* pseudo element for an extra background color layer */
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-  }
-}
-
-/* surface */
-
-.rt-RadioCardGroupRoot:where(.rt-variant-surface) {
-  :where(.rt-RadioCardGroupItem) {
-    outline-offset: -2px;
-    background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-a5);
-
+    &::before {
+      background-color: var(--radio-card-group-item-background-color);
+    }
+    &::after {
+      box-shadow: var(--base-card-surface-box-shadow);
+    }
     @media (hover: hover) {
       &:where(:not(:disabled):not([data-state='checked']):hover) {
-        box-shadow: inset 0 0 0 1px var(--gray-a7);
+        &::after {
+          box-shadow: var(--base-card-surface-hover-box-shadow);
+        }
       }
     }
   }
 }
 
-/* classic */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants / Classic          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCardGroupRoot:where(.rt-variant-classic) {
-  :where(.rt-RadioCardGroupItem) {
-    outline-offset: -1px;
-    background-color: var(--color-surface);
-    box-shadow: var(--shadow-2);
+:where(.rt-RadioCardGroupRoot.rt-variant-classic) {
+  .rt-RadioCardGroupItem {
+    --radio-card-group-item-border-width: 1px;
+    --radio-card-group-item-background-color: var(--color-surface);
+
     transition: box-shadow 120ms;
+    box-shadow: var(--base-card-classic-box-shadow-outer);
 
+    &::before {
+      background-color: var(--radio-card-group-item-background-color);
+    }
+    &::after {
+      box-shadow: var(--base-card-classic-box-shadow-inner);
+    }
     @media (hover: hover) {
       &:where(:not(:disabled):not([data-state='checked']):hover) {
         transition-duration: 40ms;
-        box-shadow: var(--card-classic-hover-box-shadow);
+        box-shadow: var(--base-card-classic-hover-box-shadow-outer);
+        &::after {
+          box-shadow: var(--base-card-classic-hover-box-shadow-inner);
+        }
       }
     }
   }
 }
 
-/* all checked */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*             All checked             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardGroupItem:where([data-state='checked']) {
-  outline: 2px solid var(--accent-10);
-}
-
-/* all high-contrast */
-
-.rt-RadioCardGroupRoot:where(.rt-high-contrast) {
-  & :where(.rt-RadioCardGroupItem[data-state='checked']) {
-    outline-color: var(--accent-12);
+  &::after {
+    outline: 2px solid var(--accent-10);
+  }
+  :where(.rt-RadioCardGroupRoot.rt-high-contrast) & {
+    &::after {
+      outline-color: var(--accent-12);
+    }
   }
 }
 
-/* all focus */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*              All focus              */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardGroupItem:where(:focus-visible) {
-  outline: 2px solid var(--focus-8);
-
-  &:where([data-state='checked']) {
-    outline-color: var(--focus-10);
+  &::after {
+    outline: 2px solid var(--focus-8);
   }
-
-  &::before {
-    background-color: var(--focus-a3);
+  &:where([data-state='checked']) {
+    &::before {
+      background-image: linear-gradient(var(--focus-a3), var(--focus-a3));
+    }
+    &::after {
+      outline-color: var(--focus-10);
+    }
   }
 }
 
-/* all disabled */
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            All disabled             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardGroupItem:where(:disabled) {
   cursor: var(--cursor-disabled);
-  outline-color: var(--gray-8);
   color: var(--gray-a9);
 
+  &::selection {
+    background-color: var(--gray-a5);
+  }
   &::before {
-    background-color: var(--gray-a2);
+    background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
+  }
+  &::after {
+    outline-color: var(--gray-8);
   }
 }

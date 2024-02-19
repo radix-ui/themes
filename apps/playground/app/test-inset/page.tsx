@@ -40,6 +40,11 @@ import {
   AlertDialogCancel,
   Separator,
   ThemePanel,
+  RadioCardGroup,
+  RadioCardGroupItem,
+  RadioCardGroupRoot,
+  CheckboxCardGroupItem,
+  CheckboxCardGroupRoot,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 
@@ -62,23 +67,47 @@ export default function Test() {
               <Container>
                 <Section>
                   <Grid columns="3" gap="9">
-                    <Card size="3">
-                      <Text as="p" size="5" weight="bold" trim="start">
-                        Title
-                      </Text>
-                      <Text as="p" size="2" color="gray" mb="2">
-                        Subtitle
-                      </Text>
+                    <Box>
+                      <Card size="3">
+                        <Text as="p" size="5" weight="bold" trim="start">
+                          Title
+                        </Text>
+                        <Text as="p" size="2" color="gray" mb="2">
+                          Subtitle
+                        </Text>
 
-                      <Text as="p" trim="end">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-                        Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
-                      </Text>
+                        <Text as="p" trim="end">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+                          Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
+                        </Text>
 
-                      <Inset side="bottom" clip="padding-box" pt="current">
-                        <AspectRatio ratio={16 / 9}>{image}</AspectRatio>
-                      </Inset>
-                    </Card>
+                        <Inset side="bottom" clip="padding-box" pt="current">
+                          <AspectRatio ratio={16 / 9}>{image}</AspectRatio>
+                        </Inset>
+                      </Card>
+
+                      <Box my="5">
+                        <CheckboxCardGroupRoot columns="1" defaultValue={['1']} size="3">
+                          <CheckboxCardGroupItem value="1">
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="left">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
+                            </Box>
+                            <Box as="span">Checkbox Card 1</Box>
+                          </CheckboxCardGroupItem>
+
+                          <CheckboxCardGroupItem value="2">
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="left">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
+                            </Box>
+                            <Box as="span">Checkbox Card 2</Box>
+                          </CheckboxCardGroupItem>
+                        </CheckboxCardGroupRoot>
+                      </Box>
+                    </Box>
 
                     <Box>
                       <Card size="3">
@@ -105,9 +134,31 @@ export default function Test() {
                           <Button>Save</Button>
                         </Flex>
                       </Card>
+
+                      <Box my="5">
+                        <RadioCardGroupRoot columns="1" defaultValue="1" size="3">
+                          <RadioCardGroupItem value="1">
+                            <Box flexGrow="1">Radio Card 1</Box>
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="right">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
+                            </Box>
+                          </RadioCardGroupItem>
+
+                          <RadioCardGroupItem value="2">
+                            <Box flexGrow="1">Radio Card 2</Box>
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="right">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
+                            </Box>
+                          </RadioCardGroupItem>
+                        </RadioCardGroupRoot>
+                      </Box>
                     </Box>
 
-                    <Grid rows="3" gap="3">
+                    <Flex direction="column" gap="3">
                       <div>
                         <PopoverRoot>
                           <PopoverTrigger>
@@ -133,7 +184,7 @@ export default function Test() {
                       <div>
                         <HoverCardRoot>
                           <HoverCardTrigger>
-                            <Link>Hover Card</Link>
+                            <Button variant="solid">Hover Card</Button>
                           </HoverCardTrigger>
                           <HoverCardContent style={{ width: 400 }}>
                             <Flex>
@@ -212,7 +263,7 @@ export default function Test() {
                           </AlertDialogContent>
                         </AlertDialogRoot>
                       </div>
-                    </Grid>
+                    </Flex>
                   </Grid>
                 </Section>
               </Container>
