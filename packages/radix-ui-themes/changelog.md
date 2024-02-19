@@ -40,7 +40,7 @@
       - `--color-autofill-root` is replaced by `--focus-a3`
       - `--color-focus-root` is replaced by `--focus-8`
       - `--color-selection-root` is replaced by `--focus-a5`
-- 10 new components
+- 11 new components
   - `DataList`
     - Component for displaying text data as key-value pairs. Parts:
       - `Root`
@@ -65,6 +65,8 @@
       - `Item`
   - `Reset`
     - Component that resets the styles for any native HTML element.
+  - `SegmentedControl`
+    - Component for selecting a single option out of many and for controlling tab-like interfaces
   - `Skeleton`
     - Component that may wrap any UI element and turn it into a loading skeleton. Can also render self or a React Fragment conditionally using a `loading` prop.
   - `Spinner`
