@@ -76,16 +76,17 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants – surface          */
+/*         Variants / Surface          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-RadioCardGroupRoot.rt-variant-surface) {
   .rt-RadioCardGroupItem {
     --radio-card-group-item-border-width: 1px;
+    --radio-card-group-item-background-color: var(--color-surface);
 
     &::before {
-      background-color: var(--color-surface);
+      background-color: var(--radio-card-group-item-background-color);
     }
     &::after {
       box-shadow: var(--base-card-surface-box-shadow);
@@ -102,19 +103,20 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants – classic          */
+/*         Variants / Classic          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-RadioCardGroupRoot.rt-variant-classic) {
   .rt-RadioCardGroupItem {
     --radio-card-group-item-border-width: 1px;
+    --radio-card-group-item-background-color: var(--color-surface);
 
     transition: box-shadow 120ms;
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
-      background-color: var(--color-surface);
+      background-color: var(--radio-card-group-item-background-color);
     }
     &::after {
       box-shadow: var(--base-card-classic-box-shadow-inner);

@@ -8,16 +8,12 @@
 }
 
 .rt-CheckboxCardGroupItem {
-  --base-card-padding-top: var(--checkbox-card-group-item-padding-y);
+  --base-card-padding-top: var(--checkbox-card-group-item-padding-top);
   --base-card-padding-right: var(--checkbox-card-group-item-padding-right);
-  --base-card-padding-bottom: var(--checkbox-card-group-item-padding-y);
+  --base-card-padding-bottom: var(--checkbox-card-group-item-padding-bottom);
   --base-card-padding-left: var(--checkbox-card-group-item-padding-left);
   --base-card-border-radius: var(--checkbox-card-group-item-border-radius);
   --base-card-border-width: var(--checkbox-card-group-item-border-width);
-
-  --checkbox-card-group-item-padding-right: calc(
-    var(--checkbox-card-group-item-padding-left) * 2 + var(--checkbox-card-group-item-checkbox-size)
-  );
 
   display: flex;
   align-items: center;
@@ -49,11 +45,17 @@
   right: var(--checkbox-card-group-item-padding-left);
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * SIZES                                                                                           *
- *                                                                                                 *
- ***************************************************************************************************/
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Sizes                */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-CheckboxCardGroupItem {
+  --checkbox-card-group-item-padding-right: calc(
+    var(--checkbox-card-group-item-padding-left) * 2 + var(--checkbox-card-group-item-checkbox-size)
+  );
+}
 
 @breakpoints {
   .rt-CheckboxCardGroupRoot {
@@ -62,8 +64,9 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
+      --checkbox-card-group-item-padding-top: calc(var(--space-3) / 1.2);
+      --checkbox-card-group-item-padding-bottom: calc(var(--space-3) / 1.2);
       --checkbox-card-group-item-padding-left: var(--space-3);
-      --checkbox-card-group-item-padding-y: calc(var(--space-3) / 1.2);
       --checkbox-card-group-item-border-radius: var(--radius-3);
       --checkbox-card-group-item-gap: var(--space-2);
       /* keep in sync with checkbox */
@@ -74,8 +77,9 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
+      --checkbox-card-group-item-padding-top: calc(var(--space-4) * 0.875);
+      --checkbox-card-group-item-padding-bottom: calc(var(--space-4) * 0.875);
       --checkbox-card-group-item-padding-left: var(--space-4);
-      --checkbox-card-group-item-padding-y: calc(var(--space-4) * 0.875);
       --checkbox-card-group-item-border-radius: var(--radius-3);
       --checkbox-card-group-item-gap: var(--space-3);
       /* keep in sync with checkbox */
@@ -86,8 +90,9 @@
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
+      --checkbox-card-group-item-padding-top: calc(var(--space-5) / 1.2);
+      --checkbox-card-group-item-padding-bottom: calc(var(--space-5) / 1.2);
       --checkbox-card-group-item-padding-left: var(--space-5);
-      --checkbox-card-group-item-padding-y: calc(var(--space-5) / 1.2);
       --checkbox-card-group-item-border-radius: var(--radius-4);
       --checkbox-card-group-item-gap: var(--space-4);
       /* keep in sync with checkbox */
@@ -98,16 +103,17 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants – surface          */
+/*         Variants / Surface          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-CheckboxCardGroupRoot.rt-variant-surface) {
   .rt-CheckboxCardGroupItem {
     --checkbox-card-group-item-border-width: 1px;
+    --checkbox-card-group-item-background-color: var(--color-surface);
 
     &::before {
-      background-color: var(--color-surface);
+      background-color: var(--checkbox-card-group-item-background-color);
     }
     &::after {
       box-shadow: var(--base-card-surface-box-shadow);
@@ -124,19 +130,20 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants – classic          */
+/*         Variants / Classic          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-CheckboxCardGroupRoot.rt-variant-classic) {
   .rt-CheckboxCardGroupItem {
     --checkbox-card-group-item-border-width: 1px;
+    --checkbox-card-group-item-background-color: var(--color-surface);
 
     transition: box-shadow 120ms;
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
-      background-color: var(--color-surface);
+      background-color: var(--checkbox-card-group-item-background-color);
     }
     &::after {
       box-shadow: var(--base-card-classic-box-shadow-inner);

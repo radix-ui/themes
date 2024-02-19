@@ -60,15 +60,16 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants – surface          */
+/*         Variants / Surface          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-surface) {
   --card-border-width: 1px;
+  --card-background-color: var(--color-panel);
 
   &::before {
-    background-color: var(--color-panel);
+    background-color: var(--card-background-color);
   }
   &::after {
     box-shadow: var(--base-card-surface-box-shadow);
@@ -96,18 +97,19 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants – classic          */
+/*         Variants / Classic          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-classic) {
   --card-border-width: 1px;
+  --card-background-color: var(--color-panel);
 
   transition: box-shadow 120ms;
   box-shadow: var(--base-card-classic-box-shadow-outer);
 
   &::before {
-    background-color: var(--color-panel);
+    background-color: var(--card-background-color);
   }
   &::after {
     box-shadow: var(--base-card-classic-box-shadow-inner);
@@ -141,7 +143,7 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*          Variants – ghost           */
+/*          Variants / Ghost           */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
