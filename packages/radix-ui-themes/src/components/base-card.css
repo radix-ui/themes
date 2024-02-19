@@ -20,19 +20,18 @@
    * 1. <Card> with fixed height to clip overflowing content.
    * 2. <Inset> that clips to card’s border-box or padding-box depending on the `clip` value.
    *
-   * To have both (1) and (2), we clip the content at the outer edge of `.rt-BaseCard` border.
-   * To achieve that, `.rt-BaseCardInner` size is increased by the border width amount and put
-   * back in place using a matching negative margin; inset padding needs a compensation too.
+   * To have both (1) and (2), we clip the content at the outer edge of `.rt-BaseCard` border, and use
+   * a ::before pseudo-element for the background color, which is smaller by the border width on each side.
    */
   --inset-padding-top: calc(var(--base-card-padding-top) - var(--base-card-border-width));
   --inset-padding-right: calc(var(--base-card-padding-right) - var(--base-card-border-width));
   --inset-padding-bottom: calc(var(--base-card-padding-bottom) - var(--base-card-border-width));
   --inset-padding-left: calc(var(--base-card-padding-left) - var(--base-card-border-width));
 
-  /* Create a new stacking context to confine ::before background color to the boundaries of this element */
-  contain: paint;
-
-  /* Pseudo-element used for the background color */
+  /*
+   * ::before is used for the background color.
+   * ::after is used for the inner border that goes on top the children.
+   */
   &::before,
   &::after {
     content: '';
@@ -43,8 +42,16 @@
     inset: var(--base-card-border-width);
   }
 
+  /*
+   * Background color:
+   * 1. "z-index: -1" so that the background goes below the children
+   * 2. "contain: paint" creates a new stacking context so that ::before doesn’t go below the card’s sibling elements
+   */
   &::before {
     z-index: -1;
+  }
+  & {
+    contain: paint;
   }
 }
 

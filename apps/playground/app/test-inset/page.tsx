@@ -89,21 +89,21 @@ export default function Test() {
                       <Box my="5">
                         <CheckboxCardGroupRoot columns="1" defaultValue={['1']} size="3">
                           <CheckboxCardGroupItem value="1">
-                            <Inset clip="padding-box" side="left">
-                              <AspectRatio ratio={1}>{image}</AspectRatio>
-                            </Inset>
-                            <Box as="span" width="120px">
-                              Checkbox Card 1
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="left">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
                             </Box>
+                            <Box as="span">Checkbox Card 1</Box>
                           </CheckboxCardGroupItem>
 
                           <CheckboxCardGroupItem value="2">
-                            <Inset clip="padding-box" side="left">
-                              <AspectRatio ratio={1}>{image}</AspectRatio>
-                            </Inset>
-                            <Box as="span" width="120px">
-                              Checkbox Card 2
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="left">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
                             </Box>
+                            <Box as="span">Checkbox Card 2</Box>
                           </CheckboxCardGroupItem>
                         </CheckboxCardGroupRoot>
                       </Box>
@@ -138,21 +138,21 @@ export default function Test() {
                       <Box my="5">
                         <RadioCardGroupRoot columns="1" defaultValue="1" size="3">
                           <RadioCardGroupItem value="1">
-                            <Box as="span" width="220px">
-                              Radio Card 1
+                            <Box flexGrow="1">Radio Card 1</Box>
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="right">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
                             </Box>
-                            <Inset clip="padding-box" side="right">
-                              <AspectRatio ratio={1}>{image}</AspectRatio>
-                            </Inset>
                           </RadioCardGroupItem>
 
                           <RadioCardGroupItem value="2">
-                            <Box as="span" width="220px">
-                              Radio Card 2
+                            <Box flexGrow="1">Radio Card 2</Box>
+                            <Box asChild width="64px">
+                              <Inset clip="padding-box" side="right">
+                                <AspectRatio ratio={1}>{image}</AspectRatio>
+                              </Inset>
                             </Box>
-                            <Inset clip="padding-box" side="right">
-                              <AspectRatio ratio={1}>{image}</AspectRatio>
-                            </Inset>
                           </RadioCardGroupItem>
                         </RadioCardGroupRoot>
                       </Box>

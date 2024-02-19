@@ -4,7 +4,6 @@
 .rt-CheckboxCardGroupRoot {
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
-  user-select: none;
   cursor: default;
 }
 
@@ -23,11 +22,7 @@
   display: flex;
   align-items: center;
   gap: var(--checkbox-card-group-item-gap);
-
   cursor: var(--cursor-button);
-  &:where(:has(:disabled)) {
-    cursor: var(--cursor-disabled);
-  }
 
   &:where(:has(:focus-visible)) {
     outline: 2px solid var(--focus-8);
@@ -170,5 +165,8 @@
 
   &::before {
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
+  }
+  &::selection {
+    background-color: var(--gray-a5);
   }
 }

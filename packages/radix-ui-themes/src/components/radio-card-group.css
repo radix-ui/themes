@@ -3,7 +3,6 @@
 .rt-RadioCardGroupRoot {
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
-  user-select: none;
   cursor: default;
 }
 
@@ -179,6 +178,9 @@
   cursor: var(--cursor-disabled);
   color: var(--gray-a9);
 
+  &::selection {
+    background-color: var(--gray-a5);
+  }
   &::before {
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
   }

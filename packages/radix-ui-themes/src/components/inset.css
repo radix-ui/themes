@@ -6,7 +6,6 @@
   --margin-bottom: 0px;
   --margin-left: 0px;
   overflow: hidden;
-  flex-grow: 1;
 
   /* Reset the overrides on direct children */
   :where(&) > * {
