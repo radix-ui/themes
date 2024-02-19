@@ -93,7 +93,7 @@
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
     &:where([data-state='open']) {
-      animation-duration: 300ms;
+      animation-duration: 160ms;
 
       &:where([data-side='top']) {
         animation-name: rt-slide-from-top, rt-fade-in;
@@ -110,7 +110,7 @@
     }
 
     &:where([data-state='closed']) {
-      animation-duration: 150ms;
+      animation-duration: 100ms;
 
       &:where([data-side='top']) {
         animation-name: rt-slide-to-top, rt-fade-out;
