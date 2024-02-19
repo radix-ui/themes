@@ -91,6 +91,8 @@ export * as RadioGroup from './radio-group.parts.js';
 export { Radio } from './radio.js';
 export { Reset } from './reset.js';
 export { ScrollArea } from './scroll-area.js';
+export { SegmentedControlRoot, SegmentedControlItem } from './segmented-control.js';
+export * as SegmentedControl from './segmented-control.parts.js';
 export { Section } from './section.js';
 export {
   SelectRoot,

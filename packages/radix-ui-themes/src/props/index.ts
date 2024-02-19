@@ -52,6 +52,7 @@ export * from '../components/quote.props.js';
 export * from '../components/radio.props.js';
 export * from '../components/radio-card-group.props.js';
 export * from '../components/radio-group.props.js';
+export * from '../components/segmented-control.props.js';
 export * from '../components/scroll-area.props.js';
 export * from '../components/section.props.js';
 export * from '../components/select.props.js';

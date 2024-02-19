@@ -1,0 +1,293 @@
+.rt-SegmentedControlRoot {
+  display: inline-grid;
+  vertical-align: top;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: stretch;
+  color: var(--gray-12);
+  background-color: var(--color-surface);
+  background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  position: relative;
+  min-width: max-content;
+
+  /* Create a new stacking context */
+  isolation: isolate;
+}
+
+.rt-SegmentedControlItem {
+  display: flex;
+  align-items: stretch;
+  user-select: none;
+
+  &:where(:first-child) {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+  &:where(:nth-last-child(2)) {
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+  &:focus-visible {
+    border-radius: inherit;
+    outline: 2px solid var(--focus-8);
+    outline-offset: -1px;
+  }
+}
+
+.rt-SegmentedControlItemLabel {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+
+  /* stylelint-disable-next-line selector-max-type */
+  & :where(svg) {
+    /* Don’t squish icons */
+    flex-shrink: 0;
+  }
+
+  @media (hover: hover) {
+    :where(.rt-SegmentedControlItem[data-state='off']:hover) & {
+      background-color: var(--gray-a2);
+    }
+  }
+}
+
+.rt-SegmentedControlItemLabelInactive {
+  position: absolute;
+
+  transition: opacity 80ms;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tab-inactive-letter-spacing);
+  word-spacing: var(--tab-inactive-word-spacing);
+
+  opacity: 1;
+  transition-timing-function: ease-out;
+  :where(.rt-SegmentedControlItem[data-state='on']) & {
+    opacity: 0;
+    transition-timing-function: ease-in;
+  }
+}
+
+.rt-SegmentedControlItemLabelActive {
+  transition: opacity 80ms;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tab-active-letter-spacing);
+  word-spacing: var(--tab-active-word-spacing);
+
+  opacity: 0;
+  transition-timing-function: ease-in;
+  :where(.rt-SegmentedControlItem[data-state='on']) & {
+    opacity: 1;
+    transition-timing-function: ease-out;
+  }
+}
+
+.rt-SegmentedControlItemSeparator {
+  /*
+   * Place the separator below the indicator.
+   * Be careful not to introduce a stacking context on ".rt-SegmentedControlItem":
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
+   */
+  z-index: -1;
+
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: -0.5px;
+  margin-right: -0.5px;
+  width: 1px;
+  background-color: var(--gray-a4);
+  transition: opacity 80ms;
+
+  /* Make separators slow to disappear and fast to appear, syncing it well with the indicator motion */
+  transition-timing-function: ease-out;
+
+  :where(.rt-SegmentedControlItem:first-child) &,
+  :where(.rt-SegmentedControlItem:where([data-state='on'], :focus-visible)) &,
+  :where(.rt-SegmentedControlItem:where([data-state='on'], :focus-visible)) + * & {
+    opacity: 0;
+    transition-timing-function: ease-in;
+  }
+  /* Don't transition when the separator is hidden because of the focus outline */
+  :where(.rt-SegmentedControlRoot:has(:focus-visible)) & {
+    transition-duration: 0ms;
+  }
+}
+
+:where(.radix-themes) {
+  --segmented-control-indicator-background-color: var(--color-background);
+}
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+  --segmented-control-indicator-background-color: var(--gray-a3);
+}
+
+.rt-SegmentedControlIndicator {
+  display: none;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  pointer-events: none;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-duration: 100ms;
+
+  &::before {
+    inset: 1px;
+    position: absolute;
+    border-radius: max(0.5px, calc(var(--segmented-control-border-radius) - 1px));
+    background-color: var(--segmented-control-indicator-background-color);
+    content: '';
+  }
+
+  :where(.rt-SegmentedControlItem[data-state='on']) ~ & {
+    display: block;
+  }
+
+  &:where(:nth-child(2)) {
+    width: calc(100% / 1);
+  }
+  &:where(:nth-child(3)) {
+    width: calc(100% / 2);
+  }
+  &:where(:nth-child(4)) {
+    width: calc(100% / 3);
+  }
+  &:where(:nth-child(5)) {
+    width: calc(100% / 4);
+  }
+  &:where(:nth-child(6)) {
+    width: calc(100% / 5);
+  }
+  &:where(:nth-child(7)) {
+    width: calc(100% / 6);
+  }
+  &:where(:nth-child(8)) {
+    width: calc(100% / 7);
+  }
+  &:where(:nth-child(9)) {
+    width: calc(100% / 8);
+  }
+  &:where(:nth-child(10)) {
+    width: calc(100% / 9);
+  }
+  &:where(:nth-child(11)) {
+    width: calc(100% / 10);
+  }
+
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(1)) ~ & {
+    transform: translateX(0%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(2)) ~ & {
+    transform: translateX(100%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(3)) ~ & {
+    transform: translateX(200%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(4)) ~ & {
+    transform: translateX(300%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(5)) ~ & {
+    transform: translateX(400%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(6)) ~ & {
+    transform: translateX(500%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(7)) ~ & {
+    transform: translateX(600%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(8)) ~ & {
+    transform: translateX(700%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(9)) ~ & {
+    transform: translateX(800%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(10)) ~ & {
+    transform: translateX(900%);
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Sizes                */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-SegmentedControlItemLabel {
+  box-sizing: border-box;
+}
+.rt-SegmentedControlRoot {
+  border-radius: var(--segmented-control-border-radius);
+}
+
+@breakpoints {
+  .rt-SegmentedControlRoot {
+    &:where(.rt-r-size-1) {
+      --segmented-control-border-radius: max(var(--radius-2), var(--radius-full));
+      height: var(--space-5);
+
+      & :where(.rt-SegmentedControlItemLabel) {
+        font-size: var(--font-size-1);
+        letter-spacing: var(--letter-spacing-1);
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+        gap: var(--space-1);
+      }
+    }
+    &:where(.rt-r-size-2) {
+      --segmented-control-border-radius: max(var(--radius-2), var(--radius-full));
+      height: var(--space-6);
+
+      & :where(.rt-SegmentedControlItemLabel) {
+        font-size: var(--font-size-2);
+        letter-spacing: var(--letter-spacing-2);
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+        gap: var(--space-2);
+      }
+    }
+    &:where(.rt-r-size-3) {
+      --segmented-control-border-radius: max(var(--radius-3), var(--radius-full));
+      height: var(--space-7);
+
+      & :where(.rt-SegmentedControlItemLabel) {
+        font-size: var(--font-size-3);
+        letter-spacing: var(--letter-spacing-3);
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+        gap: var(--space-3);
+      }
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants / Surface          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-SegmentedControlRoot:where(.rt-variant-surface) {
+  & .rt-SegmentedControlIndicator {
+    &::before {
+      box-shadow: 0 0 0 1px var(--gray-a5);
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Variants / Classic          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-SegmentedControlRoot:where(.rt-variant-classic) {
+  & .rt-SegmentedControlIndicator {
+    &::before {
+      box-shadow: var(--shadow-2);
+    }
+  }
+}
