@@ -5915,7 +5915,7 @@ export default function Sink() {
                             </tr>
                           </thead>
                           <tbody>
-                            {selectTriggerPropDefs.radius.values.map((radius) => (
+                            {segmentedControlRootPropDefs.radius.values.map((radius) => (
                               <tr key={radius}>
                                 <RowHeaderCell>{radius}</RowHeaderCell>
                                 {segmentedControlRootPropDefs.size.values.map((size) => (
