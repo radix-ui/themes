@@ -95,6 +95,8 @@ import {
   RadioGroupRoot,
   ScrollArea,
   Section,
+  SegmentedControlItem,
+  SegmentedControlRoot,
   SelectContent,
   SelectGroup,
   SelectItem,
@@ -150,6 +152,7 @@ import {
   radioGroupRootPropDefs,
   radioPropDefs,
   scrollAreaPropDefs,
+  segmentedControlRootPropDefs,
   selectContentPropDefs,
   selectRootPropDefs,
   selectTriggerPropDefs,
@@ -5857,6 +5860,183 @@ export default function Sink() {
                         </tbody>
                       </table>
                     </details>
+                  </DocsSection>
+
+                  <DocsSection title="Segmented Control">
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          {segmentedControlRootPropDefs.size.values.map((size) => (
+                            <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {segmentedControlRootPropDefs.variant.values.map((variant) => (
+                          <tr key={variant}>
+                            <RowHeaderCell>{variant}</RowHeaderCell>
+                            {segmentedControlRootPropDefs.size.values.map((size) => (
+                              <td key={size}>
+                                <SegmentedControlRoot
+                                  size={size}
+                                  variant={variant}
+                                  defaultValue="1"
+                                >
+                                  <SegmentedControlItem value="1">One</SegmentedControlItem>
+                                  <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                                  <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                                </SegmentedControlRoot>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <Text as="p" my="5">
+                      <Code>radius</Code> can be set per instance:
+                    </Text>
+
+                    <details>
+                      <summary>
+                        <Text size="2" color="gray">
+                          See specific radius examples
+                        </Text>
+                      </summary>
+                      <Box mt="3">
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <ColumnHeaderCell />
+                              {segmentedControlRootPropDefs.size.values.map((size) => (
+                                <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {segmentedControlRootPropDefs.radius.values.map((radius) => (
+                              <tr key={radius}>
+                                <RowHeaderCell>{radius}</RowHeaderCell>
+                                {segmentedControlRootPropDefs.size.values.map((size) => (
+                                  <td key={size}>
+                                    <SegmentedControlRoot
+                                      size={size}
+                                      radius={radius}
+                                      defaultValue="1"
+                                    >
+                                      <SegmentedControlItem value="1">One</SegmentedControlItem>
+                                      <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                                      <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                                    </SegmentedControlRoot>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Box>
+                    </details>
+
+                    <Separator size="4" my="9" />
+
+                    <Flex direction="column" gap="4" my="7">
+                      <Flex gap="4" align="center">
+                        <SegmentedControlRoot>
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot>
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot>
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot>
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot>
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
+                          <SegmentedControlItem value="5">Five</SegmentedControlItem>
+                        </SegmentedControlRoot>
+                      </Flex>
+
+                      <Flex gap="4" align="center">
+                        <SegmentedControlRoot defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
+                          <SegmentedControlItem value="5">Five</SegmentedControlItem>
+                        </SegmentedControlRoot>
+                      </Flex>
+
+                      <Flex gap="4" align="center">
+                        <SegmentedControlRoot variant="classic" defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot variant="classic" defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot variant="classic" defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot variant="classic" defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
+                        </SegmentedControlRoot>
+
+                        <SegmentedControlRoot variant="classic" defaultValue="1">
+                          <SegmentedControlItem value="1">One</SegmentedControlItem>
+                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
+                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
+                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
+                          <SegmentedControlItem value="5">Five</SegmentedControlItem>
+                        </SegmentedControlRoot>
+                      </Flex>
+                    </Flex>
                   </DocsSection>
                 </main>
               </Box>
