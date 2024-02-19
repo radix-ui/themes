@@ -107,7 +107,7 @@
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-border-radius);
 
-  animation-duration: 150ms;
+  animation-duration: 120ms;
   animation-timing-function: ease-out;
 
   &:where([data-state='visible']) {

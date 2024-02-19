@@ -7,22 +7,22 @@
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 
-  animation-duration: 200ms;
+  animation-duration: 140ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
   @media (prefers-reduced-motion: no-preference) {
     &:where([data-state='delayed-open']) {
       &:where([data-side='top']) {
-        animation-name: rt-slide-up, rt-fade-in;
+        animation-name: rt-slide-from-top, rt-fade-in;
       }
       &:where([data-side='bottom']) {
-        animation-name: rt-slide-down, rt-fade-in;
+        animation-name: rt-slide-from-bottom, rt-fade-in;
       }
       &:where([data-side='left']) {
-        animation-name: rt-slide-left, rt-fade-in;
+        animation-name: rt-slide-from-left, rt-fade-in;
       }
       &:where([data-side='right']) {
-        animation-name: rt-slide-right, rt-fade-in;
+        animation-name: rt-slide-from-right, rt-fade-in;
       }
     }
   }
