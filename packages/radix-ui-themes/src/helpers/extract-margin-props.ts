@@ -1,5 +1,5 @@
-import { marginPropDefs } from '../props/margin.props';
-import type { MarginProps } from '../props/margin.props';
+import { marginPropDefs } from '../props/margin.props.js';
+import type { MarginProps } from '../props/margin.props.js';
 
 export function extractMarginProps<T extends MarginProps>(props: T) {
   const {
