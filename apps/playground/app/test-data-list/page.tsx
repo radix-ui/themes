@@ -41,22 +41,21 @@ export default function DataListPage() {
                 }
 
                 .rt-DataListItem {
-                  position: relative;
                   background-color: var(--red-a3);
+                }
+
+                .rt-DataListLabel {
+                  position: relative;
 
                   &::before {
                     content: '';
                     position: absolute;
                     height: 1px;
                     left: 0;
-                    right: 0;
                     top: 15px;
+                    width: var(--container-2);
                     pointer-events: none;
                     background-color: var(--red-a8);
-                  }
-
-                  &:first-child::before {
-                    margin-top: var(--data-list-first-item-label-margin-top);
                   }
                 }
               }
@@ -185,10 +184,77 @@ export default function DataListPage() {
 
                 <Flex direction="column">
                   <Heading mb="4" size="3">
+                    Mixed alignment
+                  </Heading>
+                  <DataListRoot trim={trim}>
+                    <DataListItem align="baseline">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>Baseline</DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="start">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>Start</DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="stretch">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>Stretch</DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="center">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>Center</DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="end">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>End</DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="baseline">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>
+                        <Button size="3">Baseline</Button>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="start">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>
+                        <Button size="3">Start</Button>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="stretch">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>
+                        <Button size="3">Stretch</Button>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="center">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>
+                        <Button size="3">Center</Button>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem align="end">
+                      <DataListLabel>Align</DataListLabel>
+                      <DataListValue>
+                        <Button size="3">End</Button>
+                      </DataListValue>
+                    </DataListItem>
+                  </DataListRoot>
+                </Flex>
+
+                <Flex direction="column">
+                  <Heading mb="4" size="3">
                     Single item
                   </Heading>
                   <DataListRoot trim={trim}>
-                    <DataListItem align="center">
+                    <DataListItem>
                       <DataListLabel>Foo</DataListLabel>
                       <DataListValue>Bar</DataListValue>
                     </DataListItem>
