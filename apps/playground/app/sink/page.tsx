@@ -5616,15 +5616,9 @@ export default function Sink() {
                               <DataListItem>
                                 <DataListLabel>Status</DataListLabel>
                                 <DataListValue>
-                                  <Badge color="green" size="1" style={{ marginLeft: -2 }}>
+                                  <Button color="green" size="1">
                                     Active
-                                  </Badge>
-                                </DataListValue>
-                              </DataListItem>
-                              <DataListItem>
-                                <DataListLabel>Organization</DataListLabel>
-                                <DataListValue>
-                                  <Link href="https://workos.com">WorkOS</Link>
+                                  </Button>
                                 </DataListValue>
                               </DataListItem>
                               <DataListItem>
@@ -5633,6 +5627,12 @@ export default function Sink() {
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
                                   nisl et libero ultricies viverra quis vitae quam. Proin a feugiat
                                   metus.
+                                </DataListValue>
+                              </DataListItem>
+                              <DataListItem>
+                                <DataListLabel>Organization</DataListLabel>
+                                <DataListValue>
+                                  <Link href="https://workos.com">WorkOS</Link>
                                 </DataListValue>
                               </DataListItem>
                             </DataListRoot>
