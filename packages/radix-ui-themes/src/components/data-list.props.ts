@@ -49,10 +49,18 @@ const dataListItemPropDefs = {
 };
 
 const dataListLabelPropDefs = {
-  ...widthPropDefs,
+  width: widthPropDefs.width,
+  minWidth: {
+    ...widthPropDefs.minWidth,
+    default: '120px',
+  },
+  maxWidth: widthPropDefs.maxWidth,
   color: colorProp,
   highContrast: highContrastProp,
 } satisfies {
+  width: PropDef<string>;
+  minWidth: PropDef<string>;
+  maxWidth: PropDef<string>;
   color: typeof colorProp;
   highContrast: typeof highContrastProp;
 };

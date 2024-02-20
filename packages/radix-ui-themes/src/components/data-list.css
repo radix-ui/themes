@@ -1,5 +1,29 @@
+.rt-DataListRoot {
+  --data-list-value-trim: calc(var(--space-2) / -2);
+  --data-list-leading-trim-start: calc(var(--default-leading-trim-start) - var(--line-height) / 2);
+  --data-list-leading-trim-end: calc(var(--default-leading-trim-end) - var(--line-height) / 2);
+}
+
+.rt-DataListItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
 .rt-DataListLabel {
+  display: flex;
+  gap: var(--space-2);
   color: var(--gray-a11);
+
+  /* Ensure label can be truncated */
+  min-width: 0px;
+
+  :where(.rt-DataListItem:first-child) & {
+    margin-top: var(--data-list-first-item-label-margin-top);
+  }
+  :where(.rt-DataListItem:last-child) & {
+    margin-bottom: var(--data-list-last-item-label-margin-bottom);
+  }
 
   &:where([data-accent-color]) {
     color: var(--accent-a11);
@@ -7,6 +31,23 @@
     &:where(.rt-high-contrast) {
       color: var(--accent-12);
     }
+  }
+}
+
+.rt-DataListValue {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--data-list-value-margin-top);
+  margin-bottom: var(--data-list-value-margin-bottom);
+
+  /* Ensure value can be truncated */
+  min-width: 0px;
+
+  :where(.rt-DataListItem:first-child) & {
+    margin-top: var(--data-list-first-item-value-margin-top);
+  }
+  :where(.rt-DataListItem:last-child) & {
+    margin-bottom: var(--data-list-last-item-value-margin-bottom);
   }
 }
 
@@ -19,6 +60,13 @@
 @breakpoints {
   .rt-DataListRoot {
     &:where(.rt-r-orientation-vertical) {
+      --data-list-value-margin-top: 0px;
+      --data-list-value-margin-bottom: 0px;
+      --data-list-first-item-label-margin-top: var(--leading-trim-start);
+      --data-list-last-item-label-margin-bottom: 0px;
+      --data-list-first-item-value-margin-top: 0px;
+      --data-list-last-item-value-margin-bottom: var(--leading-trim-end);
+
       display: flex;
       flex-direction: column;
 
@@ -29,6 +77,13 @@
       }
     }
     &:where(.rt-r-orientation-horizontal) {
+      --data-list-value-margin-top: var(--data-list-value-trim);
+      --data-list-value-margin-bottom: var(--data-list-value-trim);
+      --data-list-first-item-label-margin-top: var(--leading-trim-start);
+      --data-list-last-item-label-margin-bottom: var(--leading-trim-end);
+      --data-list-first-item-value-margin-top: var(--leading-trim-start);
+      --data-list-last-item-value-margin-bottom: var(--leading-trim-end);
+
       display: grid;
       grid-template-columns: auto 1fr;
 
@@ -52,11 +107,21 @@
 
 @breakpoints {
   .rt-DataListRoot {
-    &:where(.rt-r-trim-start, .rt-r-trim-both) :where(.rt-DataListItem:first-child) {
-      margin-top: calc(var(--default-leading-trim-start) - var(--line-height) / 2);
+    &:where(.rt-r-trim-normal) {
+      --leading-trim-start: initial;
+      --leading-trim-end: initial;
     }
-    &:where(.rt-r-trim-end, .rt-r-trim-both) :where(.rt-DataListItem:last-child) {
-      margin-bottom: calc(var(--default-leading-trim-end) - var(--line-height) / 2);
+    &:where(.rt-r-trim-start) {
+      --leading-trim-start: var(--data-list-leading-trim-start);
+      --leading-trim-end: initial;
+    }
+    &:where(.rt-r-trim-end) {
+      --leading-trim-start: initial;
+      --leading-trim-end: var(--data-list-leading-trim-end);
+    }
+    &:where(.rt-r-trim-both) {
+      --leading-trim-start: var(--data-list-leading-trim-start);
+      --leading-trim-end: var(--data-list-leading-trim-end);
     }
   }
 }
