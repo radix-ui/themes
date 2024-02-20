@@ -251,6 +251,144 @@ export default function DataListPage() {
 
                 <Flex direction="column">
                   <Heading mb="4" size="3">
+                    Mixed alignment (separate roots)
+                  </Heading>
+
+                  <Flex direction="column" gap="4">
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="baseline">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Baseline</DataListValue>
+                      </DataListItem>
+                      <DataListItem align="baseline">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Baseline</DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="start">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Start</DataListValue>
+                      </DataListItem>
+                      <DataListItem align="start">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Start</DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="stretch">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Stretch</DataListValue>
+                      </DataListItem>
+                      <DataListItem align="stretch">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Stretch</DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="center">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Center</DataListValue>
+                      </DataListItem>
+                      <DataListItem align="center">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>Center</DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="end">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>End</DataListValue>
+                      </DataListItem>
+                      <DataListItem align="end">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>End</DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="baseline">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Baseline</Button>
+                        </DataListValue>
+                      </DataListItem>
+                      <DataListItem align="baseline">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Baseline</Button>
+                        </DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="start">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Start</Button>
+                        </DataListValue>
+                      </DataListItem>
+                      <DataListItem align="start">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Start</Button>
+                        </DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="stretch">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Stretch</Button>
+                        </DataListValue>
+                      </DataListItem>
+                      <DataListItem align="stretch">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Stretch</Button>
+                        </DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="center">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Center</Button>
+                        </DataListValue>
+                      </DataListItem>
+                      <DataListItem align="center">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">Center</Button>
+                        </DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+
+                    <DataListRoot trim={trim}>
+                      <DataListItem align="end">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">End</Button>
+                        </DataListValue>
+                      </DataListItem>
+                      <DataListItem align="end">
+                        <DataListLabel>Align</DataListLabel>
+                        <DataListValue>
+                          <Button size="3">End</Button>
+                        </DataListValue>
+                      </DataListItem>
+                    </DataListRoot>
+                  </Flex>
+                </Flex>
+
+                <Flex direction="column">
+                  <Heading mb="4" size="3">
                     Single item
                   </Heading>
                   <DataListRoot trim={trim}>
