@@ -16,7 +16,7 @@
   color: var(--gray-a11);
 
   /* Ensure label can be truncated */
-  min-width: 0px;
+  min-width: var(--data-list-label-min-width);
 
   :where(.rt-DataListItem:first-child) & {
     margin-top: var(--data-list-first-item-label-margin-top);
@@ -71,6 +71,7 @@
       flex-direction: column;
 
       & :where(.rt-DataListItem) {
+        --data-list-label-min-width: 0px;
         display: flex;
         flex-direction: column;
         gap: var(--space-1);
@@ -88,6 +89,7 @@
       grid-template-columns: auto 1fr;
 
       & :where(.rt-DataListItem) {
+        --data-list-label-min-width: 120px;
         display: grid;
         /* Use subgrid so all the label columns remain aligned */
         grid-template-columns: inherit; /* Fallback */
