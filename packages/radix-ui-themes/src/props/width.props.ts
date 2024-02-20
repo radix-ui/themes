@@ -1,7 +1,5 @@
 import { GetPropDefTypes, PropDef } from './prop-def.js';
 
-const widthValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-
 const widthPropDefs = {
   width: {
     type: 'string',
@@ -25,9 +23,9 @@ const widthPropDefs = {
     responsive: true,
   },
 } satisfies {
-  width: PropDef<(typeof widthValues)[number]>;
-  minWidth: PropDef<(typeof widthValues)[number]>;
-  maxWidth: PropDef<(typeof widthValues)[number]>;
+  width: PropDef<string>;
+  minWidth: PropDef<string>;
+  maxWidth: PropDef<string>;
 };
 
 type WidthProps = GetPropDefTypes<typeof widthPropDefs>;
