@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { avatarPropDefs } from './avatar.props.js';
-import { extractProps, getRoot } from '../helpers/index.js';
+import { extractProps, getSubtree } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -12,32 +12,23 @@ import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 interface AvatarProps extends MarginProps, AvatarImplProps {}
 const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwardedRef) => {
-  const {
-    asChild,
-    children: childrenProp,
-    className,
-    style,
-    color,
-    radius,
-    ...imageProps
-  } = extractProps(props, avatarPropDefs, marginPropDefs);
-
-  const { Root: AvatarRoot } = getRoot({
-    asChild,
-    children: childrenProp,
-    parent: AvatarPrimitive.Root,
-  });
+  const { asChild, children, className, style, color, radius, ...imageProps } = extractProps(
+    props,
+    avatarPropDefs,
+    marginPropDefs
+  );
 
   return (
     // TODO as a rule, should we rather spread the props on root?
-    <AvatarRoot
+    <AvatarPrimitive.Root
       data-accent-color={color}
       data-radius={radius}
       className={classNames('rt-reset', 'rt-AvatarRoot', className)}
       style={style}
+      asChild={asChild}
     >
-      <AvatarImpl ref={forwardedRef} {...imageProps} />
-    </AvatarRoot>
+      {getSubtree({ asChild, children }, <AvatarImpl ref={forwardedRef} {...imageProps} />)}
+    </AvatarPrimitive.Root>
   );
 });
 Avatar.displayName = 'Avatar';

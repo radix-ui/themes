@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { tabNavLinkPropDefs, tabNavPropDefs } from './tab-nav.props.js';
-import { extractProps, getRoot } from '../helpers/index.js';
+import { extractProps, getSubtree } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -46,27 +46,26 @@ interface TabNavLinkProps
   extends Omit<ComponentPropsWithoutColor<typeof NavigationMenu.Link>, 'onSelect'>,
     TabNavLinkOwnProps {}
 const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
-  const { asChild, className, children: childrenProp, ...linkProps } = props;
-
-  const { Root: TabNavLinkRoot, children } = getRoot({
-    asChild,
-    children: childrenProp,
-    parent: NavigationMenu.Link,
-  });
+  const { asChild, children, className, ...linkProps } = props;
 
   return (
     <NavigationMenu.Item className="rt-TabNavItem">
-      <TabNavLinkRoot
+      <NavigationMenu.Link
         {...linkProps}
         ref={forwardedRef}
         className={classNames('rt-reset', 'rt-BaseTabListTrigger', 'rt-TabNavLink', className)}
         onSelect={() => {}}
+        asChild={asChild}
       >
-        <span className="rt-BaseTabListTriggerInner rt-TabNavLinkInner">{children}</span>
-        <span className="rt-BaseTabListTriggerInnerHidden rt-TabNavLinkInnerHidden">
-          {children}
-        </span>
-      </TabNavLinkRoot>
+        {getSubtree({ asChild, children }, (children) => (
+          <>
+            <span className="rt-BaseTabListTriggerInner rt-TabNavLinkInner">{children}</span>
+            <span className="rt-BaseTabListTriggerInnerHidden rt-TabNavLinkInnerHidden">
+              {children}
+            </span>
+          </>
+        ))}
+      </NavigationMenu.Link>
     </NavigationMenu.Item>
   );
 });

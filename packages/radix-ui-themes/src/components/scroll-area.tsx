@@ -8,8 +8,8 @@ import {
   extractMarginProps,
   getMarginStyles,
   getResponsiveClassNames,
-  getRoot,
   mergeStyles,
+  getSubtree,
 } from '../helpers/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -28,7 +28,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
 
   const {
     asChild,
-    children: childrenProp,
+    children,
     className,
     style,
     type,
@@ -40,66 +40,66 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     ...viewportProps
   } = marginRest;
 
-  const { Root: ScrollAreaRoot, children } = getRoot({
-    asChild,
-    children: childrenProp,
-    parent: ScrollAreaPrimitive.Root,
-  });
-
   return (
-    <ScrollAreaRoot
+    <ScrollAreaPrimitive.Root
       type={type}
       scrollHideDelay={scrollHideDelay}
       className={classNames('rt-ScrollAreaRoot', marginClassNames, className)}
       style={mergeStyles(marginCustomProperties, style)}
+      asChild={asChild}
     >
-      <ScrollAreaPrimitive.Viewport
-        {...viewportProps}
-        ref={forwardedRef}
-        className="rt-ScrollAreaViewport"
-      >
-        {children}
-      </ScrollAreaPrimitive.Viewport>
-      <div className="rt-ScrollAreaViewportFocusRing" />
+      {getSubtree({ asChild, children }, (children) => (
+        <>
+          <ScrollAreaPrimitive.Viewport
+            {...viewportProps}
+            ref={forwardedRef}
+            className="rt-ScrollAreaViewport"
+          >
+            {children}
+          </ScrollAreaPrimitive.Viewport>
 
-      {scrollbars !== 'vertical' ? (
-        <ScrollAreaPrimitive.Scrollbar
-          data-radius={radius}
-          orientation="horizontal"
-          className={classNames(
-            'rt-ScrollAreaScrollbar',
-            getResponsiveClassNames({
-              className: 'rt-r-size',
-              value: size,
-              propValues: scrollAreaPropDefs.size.values,
-            })
-          )}
-        >
-          <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
-        </ScrollAreaPrimitive.Scrollbar>
-      ) : null}
+          <div className="rt-ScrollAreaViewportFocusRing" />
 
-      {scrollbars !== 'horizontal' ? (
-        <ScrollAreaPrimitive.Scrollbar
-          data-radius={radius}
-          orientation="vertical"
-          className={classNames(
-            'rt-ScrollAreaScrollbar',
-            getResponsiveClassNames({
-              className: 'rt-r-size',
-              value: size,
-              propValues: scrollAreaPropDefs.size.values,
-            })
-          )}
-        >
-          <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
-        </ScrollAreaPrimitive.Scrollbar>
-      ) : null}
+          {scrollbars !== 'vertical' ? (
+            <ScrollAreaPrimitive.Scrollbar
+              data-radius={radius}
+              orientation="horizontal"
+              className={classNames(
+                'rt-ScrollAreaScrollbar',
+                getResponsiveClassNames({
+                  className: 'rt-r-size',
+                  value: size,
+                  propValues: scrollAreaPropDefs.size.values,
+                })
+              )}
+            >
+              <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
+            </ScrollAreaPrimitive.Scrollbar>
+          ) : null}
 
-      {scrollbars === 'both' ? (
-        <ScrollAreaPrimitive.Corner className="rt-ScrollAreaCorner" />
-      ) : null}
-    </ScrollAreaRoot>
+          {scrollbars !== 'horizontal' ? (
+            <ScrollAreaPrimitive.Scrollbar
+              data-radius={radius}
+              orientation="vertical"
+              className={classNames(
+                'rt-ScrollAreaScrollbar',
+                getResponsiveClassNames({
+                  className: 'rt-r-size',
+                  value: size,
+                  propValues: scrollAreaPropDefs.size.values,
+                })
+              )}
+            >
+              <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
+            </ScrollAreaPrimitive.Scrollbar>
+          ) : null}
+
+          {scrollbars === 'both' ? (
+            <ScrollAreaPrimitive.Corner className="rt-ScrollAreaCorner" />
+          ) : null}
+        </>
+      ))}
+    </ScrollAreaPrimitive.Root>
   );
 });
 ScrollArea.displayName = 'ScrollArea';
