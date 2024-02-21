@@ -27,7 +27,7 @@
     border-top-right-radius: inherit;
     border-bottom-right-radius: inherit;
   }
-  &:focus-visible {
+  &:where(:focus-visible) {
     border-radius: inherit;
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
@@ -271,7 +271,7 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-SegmentedControlRoot:where(.rt-variant-surface) {
-  & .rt-SegmentedControlIndicator {
+  & :where(.rt-SegmentedControlIndicator) {
     &::before {
       box-shadow: 0 0 0 1px var(--gray-a5);
     }
@@ -285,7 +285,7 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-SegmentedControlRoot:where(.rt-variant-classic) {
-  & .rt-SegmentedControlIndicator {
+  & :where(.rt-SegmentedControlIndicator) {
     &::before {
       box-shadow: var(--shadow-2);
     }

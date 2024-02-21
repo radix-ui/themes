@@ -5616,15 +5616,9 @@ export default function Sink() {
                               <DataListItem>
                                 <DataListLabel>Status</DataListLabel>
                                 <DataListValue>
-                                  <Badge color="green" size="1" style={{ marginLeft: -2 }}>
+                                  <Button color="green" size="1">
                                     Active
-                                  </Badge>
-                                </DataListValue>
-                              </DataListItem>
-                              <DataListItem>
-                                <DataListLabel>Organization</DataListLabel>
-                                <DataListValue>
-                                  <Link href="https://workos.com">WorkOS</Link>
+                                  </Button>
                                 </DataListValue>
                               </DataListItem>
                               <DataListItem>
@@ -5633,6 +5627,12 @@ export default function Sink() {
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
                                   nisl et libero ultricies viverra quis vitae quam. Proin a feugiat
                                   metus.
+                                </DataListValue>
+                              </DataListItem>
+                              <DataListItem>
+                                <DataListLabel>Organization</DataListLabel>
+                                <DataListValue>
+                                  <Link href="https://workos.com">WorkOS</Link>
                                 </DataListValue>
                               </DataListItem>
                             </DataListRoot>
@@ -5692,80 +5692,6 @@ export default function Sink() {
                         </TabsContent>
                       </TabsRoot>
                     </Flex>
-
-                    <Text as="p" my="5">
-                      <Code>gap</Code> can be set per <Code>DataListRoot</Code> instance:
-                    </Text>
-                    <details>
-                      <summary>
-                        <Text size="2" color="gray">
-                          See gap combinations
-                        </Text>
-                      </summary>
-                      <table className={styles.table}>
-                        <tbody>
-                          {dataListPropDefs.gap.values.map((gap) => (
-                            <tr key={gap}>
-                              <RowHeaderCell
-                                style={{ whiteSpace: 'nowrap' }}
-                              >{`Gap ${gap}`}</RowHeaderCell>
-                              <td>
-                                <DataListRoot gap={gap} my="3">
-                                  <DataListItem>
-                                    <DataListLabel>Name</DataListLabel>
-                                    <DataListValue>Susan Kare</DataListValue>
-                                  </DataListItem>
-                                  <DataListItem>
-                                    <DataListLabel>Email</DataListLabel>
-                                    <DataListValue>susan.kare@apple.com</DataListValue>
-                                  </DataListItem>
-                                </DataListRoot>
-                              </td>
-                            </tr>
-                          ))}
-
-                          {dataListPropDefs.gap.values.map((gapX) => (
-                            <tr key={gapX}>
-                              <RowHeaderCell
-                                style={{ whiteSpace: 'nowrap' }}
-                              >{`Gap-x ${gapX}`}</RowHeaderCell>
-                              <td>
-                                <DataListRoot gapX={gapX} my="3">
-                                  <DataListItem>
-                                    <DataListLabel>Name</DataListLabel>
-                                    <DataListValue>Susan Kare</DataListValue>
-                                  </DataListItem>
-                                  <DataListItem>
-                                    <DataListLabel>Email</DataListLabel>
-                                    <DataListValue>susan.kare@apple.com</DataListValue>
-                                  </DataListItem>
-                                </DataListRoot>
-                              </td>
-                            </tr>
-                          ))}
-
-                          {dataListPropDefs.gap.values.map((gapY) => (
-                            <tr key={gapY}>
-                              <RowHeaderCell
-                                style={{ whiteSpace: 'nowrap' }}
-                              >{`Gap-y ${gapY}`}</RowHeaderCell>
-                              <td>
-                                <DataListRoot gapY={gapY} my="3">
-                                  <DataListItem>
-                                    <DataListLabel>Name</DataListLabel>
-                                    <DataListValue>Susan Kare</DataListValue>
-                                  </DataListItem>
-                                  <DataListItem>
-                                    <DataListLabel>Email</DataListLabel>
-                                    <DataListValue>susan.kare@apple.com</DataListValue>
-                                  </DataListItem>
-                                </DataListRoot>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </details>
 
                     <Text as="p" my="5">
                       <Code>color</Code> can be set per <Code>DataListLabel</Code> instance:
