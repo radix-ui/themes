@@ -345,12 +345,80 @@ export default function DataListPage() {
                   </Heading>
                   <DataListRoot orientation="vertical" trim={trim}>
                     <DataListItem>
-                      <DataListLabel>Obi wan</DataListLabel>
-                      <DataListValue>Jedi Master</DataListValue>
+                      <DataListLabel>Status</DataListLabel>
+                      <DataListValue>
+                        <Badge color="green" size="1">
+                          Active
+                        </Badge>
+                      </DataListValue>
                     </DataListItem>
+
                     <DataListItem>
-                      <DataListLabel>Anakin</DataListLabel>
-                      <DataListValue>Padewan</DataListValue>
+                      <DataListLabel>Name</DataListLabel>
+                      <DataListValue>
+                        <Button size="1">Add</Button>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Flex</DataListLabel>
+                      <DataListValue>
+                        <Flex align="center" gap="2">
+                          <IconButton size="1" variant="soft">
+                            <InfoCircledIcon />
+                          </IconButton>
+                          <Text>Info</Text>
+                        </Flex>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Email</DataListLabel>
+                      <DataListValue>vlad@workos.com</DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Organization</DataListLabel>
+                      <DataListValue>
+                        <Link href="https://workos.com">WorkOS</Link>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Long value</DataListLabel>
+                      <DataListValue>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl et
+                        libero ultricies viverra quis vitae quam. Proin a feugiat metus.
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Truncated value</DataListLabel>
+                      <DataListValue>
+                        <Text truncate>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl et
+                          libero ultricies viverra quis vitae quam. Proin a feugiat metus.
+                        </Text>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Authentication methods</DataListLabel>
+                      <DataListValue>
+                        <Flex gap="2">
+                          <StarFilledIcon />
+                          <StarFilledIcon />
+                        </Flex>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Long value</DataListLabel>
+                      <DataListValue>
+                        Sed luctus, est id feugiat blandit, sapien nisl lobortis arcu, eu malesuada
+                        nulla ex ut lorem. In odio nisl, consectetur id commodo vel, posuere eu
+                        risus.
+                      </DataListValue>
                     </DataListItem>
                   </DataListRoot>
                 </Flex>

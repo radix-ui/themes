@@ -20,17 +20,11 @@ const dataListPropDefs = {
     default: '2',
     responsive: true,
   },
-  ...gapProps,
-  gap: {
-    ...gapProps.gap,
-    default: '4',
-  },
   trim: {
     ...trimProp,
     className: 'rt-r-trim', // Custom trim styles due to grid layout
   },
 } satisfies {
-  gap?: PropDef<(typeof gapProps.gap.values)[number]>;
   orientation?: PropDef<(typeof orientationValues)[number]>;
   size?: PropDef<(typeof sizes)[number]>;
   trim?: typeof trimProp;

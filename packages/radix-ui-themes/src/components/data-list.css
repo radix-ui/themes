@@ -1,9 +1,3 @@
-.rt-DataListItem {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-}
-
 .rt-DataListLabel {
   display: flex;
   gap: var(--space-2);
@@ -62,6 +56,32 @@
   }
 }
 
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Sizes                */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@breakpoints {
+  .rt-DataListRoot {
+    &:where(.rt-r-size-1) {
+      gap: var(--space-3);
+    }
+    &:where(.rt-r-size-2) {
+      gap: var(--space-4);
+    }
+    &:where(.rt-r-size-3) {
+      gap: calc(var(--space-4) * 1.25);
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*             Orientation             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
 @breakpoints {
   .rt-DataListRoot {
     &:where(.rt-r-orientation-vertical) {
@@ -103,6 +123,7 @@
         grid-template-columns: subgrid;
         gap: inherit;
         grid-column: span 2;
+        align-items: baseline;
       }
 
       & :where(.rt-DataListLabel) {
@@ -111,7 +132,15 @@
       }
     }
   }
+}
 
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*              Alignment              */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@breakpoints {
   /*
    * Make sure that the margin adjustments cooperate with "align-items".
    * To do that, we need to remove the corresponding margin adjustment depending on the "align-items" value.
@@ -156,11 +185,11 @@
   }
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * TRIM                                                                                            *
- *                                                                                                 *
- ***************************************************************************************************/
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*                Trim                 */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
 
 .rt-DataListRoot {
   --data-list-leading-trim-start: calc(var(--default-leading-trim-start) - var(--line-height) / 2);
