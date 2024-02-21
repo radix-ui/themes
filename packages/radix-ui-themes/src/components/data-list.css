@@ -118,10 +118,19 @@
    * We can't set `--data-list-value-margin-top` directly because at breakpoints it would lose the orientation value.
    */
   .rt-DataListItem {
-    /* No poking out at the top */
+    /* Match the default: poke out at the top and bottom, but not when it’s the first or last item */
+    &:where(.rt-r-ai-baseline) {
+      --data-list-value-trim-start: -0.25em;
+      --data-list-value-trim-end: -0.25em;
+      --data-list-first-item-value-trim-start: 0px;
+      --data-list-last-item-value-trim-end: 0px;
+    }
+    /* No poking out at the top; and not at the bottom when it’s the first or last item */
     &:where(.rt-r-ai-start) {
       --data-list-value-trim-start: 0px;
       --data-list-value-trim-end: -0.25em;
+      --data-list-first-item-value-trim-start: 0px;
+      --data-list-last-item-value-trim-end: 0px;
     }
     /* Allow to poke out from any side, as for centering to work the top and bottom margins have to be always equal */
     &:where(.rt-r-ai-center) {
@@ -130,18 +139,17 @@
       --data-list-first-item-value-trim-start: -0.25em;
       --data-list-last-item-value-trim-end: -0.25em;
     }
-    /* No poking out at the bottom */
+    /* No poking out at the bottom; and not at the top when it’s the first or last item */
     &:where(.rt-r-ai-end) {
       --data-list-value-trim-start: -0.25em;
       --data-list-value-trim-end: 0px;
+      --data-list-first-item-value-trim-start: 0px;
+      --data-list-last-item-value-trim-end: 0px;
     }
     /* No poking out when stretched */
     &:where(.rt-r-ai-stretch) {
       --data-list-value-trim-start: 0px;
       --data-list-value-trim-end: 0px;
-    }
-    /* No poking out when the item is first or last, unless it’s "align-items: center" */
-    &:where(.rt-r-ai-baseline, .rt-r-ai-start, .rt-r-ai-end, .rt-r-ai-stretch) {
       --data-list-first-item-value-trim-start: 0px;
       --data-list-last-item-value-trim-end: 0px;
     }
