@@ -40,9 +40,8 @@
   --data-list-last-item-value-margin-bottom: 0px;
 
   /* How much the value part can poke outside of the row when in a horizontal data list */
-  --data-list-value-trim: calc(var(--space-1) / -2);
-  --data-list-value-trim-start: var(--data-list-value-trim);
-  --data-list-value-trim-end: var(--data-list-value-trim);
+  --data-list-value-trim-start: -0.25em;
+  --data-list-value-trim-end: -0.25em;
   --data-list-first-item-value-trim-start: 0px;
   --data-list-last-item-value-trim-end: 0px;
 }
@@ -122,18 +121,18 @@
     /* No poking out at the top */
     &:where(.rt-r-ai-start) {
       --data-list-value-trim-start: 0px;
-      --data-list-value-trim-end: var(--data-list-value-trim);
+      --data-list-value-trim-end: -0.25em;
     }
     /* Allow to poke out from any side, as for centering to work the top and bottom margins have to be always equal */
     &:where(.rt-r-ai-center) {
-      --data-list-value-trim-start: var(--data-list-value-trim);
-      --data-list-value-trim-end: var(--data-list-value-trim);
-      --data-list-first-item-value-trim-start: var(--data-list-value-trim);
-      --data-list-last-item-value-trim-end: var(--data-list-value-trim);
+      --data-list-value-trim-start: -0.25em;
+      --data-list-value-trim-end: -0.25em;
+      --data-list-first-item-value-trim-start: -0.25em;
+      --data-list-last-item-value-trim-end: -0.25em;
     }
     /* No poking out at the bottom */
     &:where(.rt-r-ai-end) {
-      --data-list-value-trim-start: var(--data-list-value-trim);
+      --data-list-value-trim-start: -0.25em;
       --data-list-value-trim-end: 0px;
     }
     /* No poking out when stretched */
