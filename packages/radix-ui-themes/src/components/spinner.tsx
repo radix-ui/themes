@@ -19,7 +19,7 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
     marginPropDefs
   );
 
-  if (!loading) return <>{children}</>;
+  if (!loading) return children;
 
   const spinner = (
     <span {...spinnerProps} ref={forwardedRef} className={classNames('rt-Spinner', className)}>

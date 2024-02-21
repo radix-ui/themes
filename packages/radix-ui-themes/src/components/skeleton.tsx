@@ -18,7 +18,7 @@ const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwar
     marginPropDefs
   );
 
-  if (!loading) return <>{children}</>;
+  if (!loading) return children;
 
   const Tag = React.isValidElement(children) ? Slot : 'span';
 
