@@ -186,75 +186,8 @@ export default function DataListPage() {
                   <Heading mb="4" size="3">
                     Mixed alignment
                   </Heading>
-                  <DataListRoot trim={trim}>
-                    <DataListItem align="baseline">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>Baseline</DataListValue>
-                    </DataListItem>
 
-                    <DataListItem align="start">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>Start</DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="stretch">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>Stretch</DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="center">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>Center</DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="end">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>End</DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="baseline">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>
-                        <Button size="3">Baseline</Button>
-                      </DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="start">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>
-                        <Button size="3">Start</Button>
-                      </DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="stretch">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>
-                        <Button size="3">Stretch</Button>
-                      </DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="center">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>
-                        <Button size="3">Center</Button>
-                      </DataListValue>
-                    </DataListItem>
-
-                    <DataListItem align="end">
-                      <DataListLabel>Align</DataListLabel>
-                      <DataListValue>
-                        <Button size="3">End</Button>
-                      </DataListValue>
-                    </DataListItem>
-                  </DataListRoot>
-                </Flex>
-
-                <Flex direction="column">
-                  <Heading mb="4" size="3">
-                    Mixed alignment (separate roots)
-                  </Heading>
-
-                  <Flex direction="column" gap="4">
+                  <Flex direction="column" gap="6">
                     <DataListRoot trim={trim}>
                       {[1, 2, 3].map((i) => (
                         <DataListItem align="baseline" key={i}>
@@ -305,7 +238,7 @@ export default function DataListPage() {
                         <DataListItem align="baseline" key={i}>
                           <DataListLabel>Align</DataListLabel>
                           <DataListValue>
-                            <Button size="3">Baseline</Button>
+                            <Button size="2">Baseline</Button>
                           </DataListValue>{' '}
                         </DataListItem>
                       ))}
@@ -316,7 +249,7 @@ export default function DataListPage() {
                         <DataListItem align="start" key={i}>
                           <DataListLabel>Align</DataListLabel>
                           <DataListValue>
-                            <Button size="3">Start</Button>
+                            <Button size="2">Start</Button>
                           </DataListValue>
                         </DataListItem>
                       ))}
@@ -327,7 +260,7 @@ export default function DataListPage() {
                         <DataListItem align="stretch" key={i}>
                           <DataListLabel>Align</DataListLabel>
                           <DataListValue>
-                            <Button size="3">Stretch</Button>
+                            <Button size="2">Stretch</Button>
                           </DataListValue>
                         </DataListItem>
                       ))}
@@ -338,7 +271,7 @@ export default function DataListPage() {
                         <DataListItem align="center" key={i}>
                           <DataListLabel>Align</DataListLabel>
                           <DataListValue>
-                            <Button size="3">Center</Button>
+                            <Button size="2">Center</Button>
                           </DataListValue>
                         </DataListItem>
                       ))}
@@ -349,7 +282,7 @@ export default function DataListPage() {
                         <DataListItem align="end" key={i}>
                           <DataListLabel>Align</DataListLabel>
                           <DataListValue>
-                            <Button size="3">End</Button>
+                            <Button size="2">End</Button>
                           </DataListValue>
                         </DataListItem>
                       ))}

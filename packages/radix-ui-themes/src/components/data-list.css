@@ -1,9 +1,3 @@
-.rt-DataListRoot {
-  --data-list-value-trim: calc(var(--space-2) / -2);
-  --data-list-leading-trim-start: calc(var(--default-leading-trim-start) - var(--line-height) / 2);
-  --data-list-leading-trim-end: calc(var(--default-leading-trim-end) - var(--line-height) / 2);
-}
-
 .rt-DataListItem {
   display: flex;
   align-items: baseline;
@@ -14,16 +8,6 @@
   display: flex;
   gap: var(--space-2);
   color: var(--gray-a11);
-
-  /* Ensure label can be truncated */
-  min-width: var(--data-list-label-min-width);
-
-  :where(.rt-DataListItem:first-child) & {
-    margin-top: var(--data-list-first-item-label-margin-top);
-  }
-  :where(.rt-DataListItem:last-child) & {
-    margin-bottom: var(--data-list-last-item-label-margin-bottom);
-  }
 
   &:where([data-accent-color]) {
     color: var(--accent-a11);
@@ -37,18 +21,9 @@
 .rt-DataListValue {
   display: flex;
   gap: var(--space-2);
-  margin-top: var(--data-list-value-margin-top);
-  margin-bottom: var(--data-list-value-margin-bottom);
 
   /* Ensure value can be truncated */
   min-width: 0px;
-
-  :where(.rt-DataListItem:first-child) & {
-    margin-top: var(--data-list-first-item-value-margin-top);
-  }
-  :where(.rt-DataListItem:last-child) & {
-    margin-bottom: var(--data-list-last-item-value-margin-bottom);
-  }
 }
 
 /***************************************************************************************************
@@ -57,39 +32,72 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
+.rt-DataListItem {
+  /* The actual margins that value part gets. These are re-assigned to other vars depending on the orientation */
+  --data-list-value-margin-top: 0px;
+  --data-list-value-margin-bottom: 0px;
+  --data-list-first-item-value-margin-top: 0px;
+  --data-list-last-item-value-margin-bottom: 0px;
+
+  /* How much the value part can poke outside of the row when in a horizontal data list */
+  --data-list-value-trim: calc(var(--space-1) / -2);
+  --data-list-value-trim-start: var(--data-list-value-trim);
+  --data-list-value-trim-end: var(--data-list-value-trim);
+  --data-list-first-item-value-trim-start: 0px;
+  --data-list-last-item-value-trim-end: 0px;
+}
+
+.rt-DataListValue {
+  margin-top: var(--data-list-value-margin-top);
+  margin-bottom: var(--data-list-value-margin-bottom);
+
+  /*
+   * The first/last item should not poke out of the Root boundaries –
+   * unless it has "align-items: center", but that’s handled later.
+   */
+  :where(.rt-DataListItem:first-child) & {
+    margin-top: var(--data-list-first-item-value-margin-top);
+  }
+  :where(.rt-DataListItem:last-child) & {
+    margin-bottom: var(--data-list-last-item-value-margin-bottom);
+  }
+}
+
 @breakpoints {
   .rt-DataListRoot {
     &:where(.rt-r-orientation-vertical) {
-      --data-list-value-margin-top: 0px;
-      --data-list-value-margin-bottom: 0px;
-      --data-list-first-item-label-margin-top: var(--leading-trim-start);
-      --data-list-last-item-label-margin-bottom: 0px;
-      --data-list-first-item-value-margin-top: 0px;
-      --data-list-last-item-value-margin-bottom: var(--leading-trim-end);
-
       display: flex;
       flex-direction: column;
 
       & :where(.rt-DataListItem) {
-        --data-list-label-min-width: 0px;
+        /* No poking out of the row when orientation is vertical */
+        --data-list-value-margin-top: 0px;
+        --data-list-value-margin-bottom: 0px;
+        --data-list-first-item-value-margin-top: 0px;
+        --data-list-last-item-value-margin-bottom: 0px;
+
         display: flex;
         flex-direction: column;
         gap: var(--space-1);
       }
-    }
-    &:where(.rt-r-orientation-horizontal) {
-      --data-list-value-margin-top: var(--data-list-value-trim);
-      --data-list-value-margin-bottom: var(--data-list-value-trim);
-      --data-list-first-item-label-margin-top: var(--leading-trim-start);
-      --data-list-last-item-label-margin-bottom: var(--leading-trim-end);
-      --data-list-first-item-value-margin-top: var(--leading-trim-start);
-      --data-list-last-item-value-margin-bottom: var(--leading-trim-end);
 
+      & :where(.rt-DataListLabel) {
+        /* Ensure label can be truncated */
+        min-width: 0px;
+      }
+    }
+
+    &:where(.rt-r-orientation-horizontal) {
       display: grid;
       grid-template-columns: auto 1fr;
 
       & :where(.rt-DataListItem) {
-        --data-list-label-min-width: 120px;
+        /* Allow the value to poke out of the row when orientation is horizontal */
+        --data-list-value-margin-top: var(--data-list-value-trim-start);
+        --data-list-value-margin-bottom: var(--data-list-value-trim-end);
+        --data-list-first-item-value-margin-top: var(--data-list-first-item-value-trim-start);
+        --data-list-last-item-value-margin-bottom: var(--data-list-last-item-value-trim-end);
+
         display: grid;
         /* Use subgrid so all the label columns remain aligned */
         grid-template-columns: inherit; /* Fallback */
@@ -97,6 +105,46 @@
         gap: inherit;
         grid-column: span 2;
       }
+
+      & :where(.rt-DataListLabel) {
+        /* Set an implicit min. width when orientation is horizontal */
+        min-width: 120px;
+      }
+    }
+  }
+
+  /*
+   * Make sure that the margin adjustments cooperate with "align-items".
+   * To do that, we need to remove the corresponding margin adjustment depending on the "align-items" value.
+   * We can't set `--data-list-value-margin-top` directly because at breakpoints it would lose the orientation value.
+   */
+  .rt-DataListItem {
+    /* No poking out at the top */
+    &:where(.rt-r-ai-start) {
+      --data-list-value-trim-start: 0px;
+      --data-list-value-trim-end: var(--data-list-value-trim);
+    }
+    /* Allow to poke out from any side, as for centering to work the top and bottom margins have to be always equal */
+    &:where(.rt-r-ai-center) {
+      --data-list-value-trim-start: var(--data-list-value-trim);
+      --data-list-value-trim-end: var(--data-list-value-trim);
+      --data-list-first-item-value-trim-start: var(--data-list-value-trim);
+      --data-list-last-item-value-trim-end: var(--data-list-value-trim);
+    }
+    /* No poking out at the bottom */
+    &:where(.rt-r-ai-end) {
+      --data-list-value-trim-start: var(--data-list-value-trim);
+      --data-list-value-trim-end: 0px;
+    }
+    /* No poking out when stretched */
+    &:where(.rt-r-ai-stretch) {
+      --data-list-value-trim-start: 0px;
+      --data-list-value-trim-end: 0px;
+    }
+    /* No poking out when the item is first or last, unless it’s "align-items: center" */
+    &:where(.rt-r-ai-baseline, .rt-r-ai-start, .rt-r-ai-end, .rt-r-ai-stretch) {
+      --data-list-first-item-value-trim-start: 0px;
+      --data-list-last-item-value-trim-end: 0px;
     }
   }
 }
@@ -106,6 +154,20 @@
  * TRIM                                                                                            *
  *                                                                                                 *
  ***************************************************************************************************/
+
+.rt-DataListRoot {
+  --data-list-leading-trim-start: calc(var(--default-leading-trim-start) - var(--line-height) / 2);
+  --data-list-leading-trim-end: calc(var(--default-leading-trim-end) - var(--line-height) / 2);
+}
+
+.rt-DataListItem {
+  &:where(:first-child) {
+    margin-top: var(--leading-trim-start);
+  }
+  &:where(:last-child) {
+    margin-bottom: var(--leading-trim-end);
+  }
+}
 
 @breakpoints {
   .rt-DataListRoot {
