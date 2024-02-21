@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { containerPropDefs } from './container.props.js';
-import { extractProps, getRoot } from '../helpers/index.js';
+import { extractProps, firstChildMightAdoptSubtree } from '../helpers/index.js';
 import {
   deprecatedLayoutPropDefs,
   heightPropDefs,
@@ -23,12 +23,7 @@ interface ContainerProps
     ContainerOwnProps {}
 const Container = React.forwardRef<ContainerElement, ContainerProps>(
   ({ width, minWidth, maxWidth, ...props }, forwardedRef) => {
-    const {
-      asChild,
-      children: childrenProp,
-      className,
-      ...containerProps
-    } = extractProps(
+    const { asChild, children, className, ...containerProps } = extractProps(
       props,
       containerPropDefs,
       layoutPropDefs,
@@ -42,22 +37,20 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
       heightPropDefs
     );
 
-    const { Root: ContainerRoot, children } = getRoot({
-      asChild,
-      children: childrenProp,
-      parent: asChild ? Slot : 'div',
-    });
+    const Comp = asChild ? Slot : 'div';
 
     return (
-      <ContainerRoot
+      <Comp
         {...containerProps}
         ref={forwardedRef}
         className={classNames('rt-Container', className)}
       >
-        <div className={classNames('rt-ContainerInner', innerClassName)} style={innerStyle}>
-          {children}
-        </div>
-      </ContainerRoot>
+        {firstChildMightAdoptSubtree({ asChild, children }, (children) => (
+          <div className={classNames('rt-ContainerInner', innerClassName)} style={innerStyle}>
+            {children}
+          </div>
+        ))}
+      </Comp>
     );
   }
 );
