@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { avatarPropDefs } from './avatar.props.js';
-import { extractProps, firstChildMightAdoptSubtree } from '../helpers/index.js';
+import { extractProps, getSubtree } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -27,10 +27,7 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
       style={style}
       asChild={asChild}
     >
-      {firstChildMightAdoptSubtree(
-        { asChild, children },
-        <AvatarImpl ref={forwardedRef} {...imageProps} />
-      )}
+      {getSubtree({ asChild, children }, <AvatarImpl ref={forwardedRef} {...imageProps} />)}
     </AvatarPrimitive.Root>
   );
 });

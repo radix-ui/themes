@@ -7,7 +7,7 @@ import * as React from 'react';
  * Using it ensures if a consumer uses the `asChild` prop, the elements are in
  * correct order in the DOM, adopting the intended consumer `children`.
  */
-export function firstChildMightAdoptSubtree(
+export function getSubtree(
   options: { asChild: boolean | undefined; children: React.ReactNode },
   content: React.ReactNode | ((children: React.ReactNode) => React.ReactNode)
 ) {

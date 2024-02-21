@@ -9,7 +9,7 @@ import {
   getMarginStyles,
   getResponsiveClassNames,
   mergeStyles,
-  firstChildMightAdoptSubtree,
+  getSubtree,
 } from '../helpers/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -48,7 +48,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
       style={mergeStyles(marginCustomProperties, style)}
       asChild={asChild}
     >
-      {firstChildMightAdoptSubtree({ asChild, children }, (children) => (
+      {getSubtree({ asChild, children }, (children) => (
         <>
           <ScrollAreaPrimitive.Viewport
             {...viewportProps}

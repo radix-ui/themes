@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { containerPropDefs } from './container.props.js';
-import { extractProps, firstChildMightAdoptSubtree } from '../helpers/index.js';
+import { extractProps, getSubtree } from '../helpers/index.js';
 import {
   deprecatedLayoutPropDefs,
   heightPropDefs,
@@ -45,7 +45,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
         ref={forwardedRef}
         className={classNames('rt-Container', className)}
       >
-        {firstChildMightAdoptSubtree({ asChild, children }, (children) => (
+        {getSubtree({ asChild, children }, (children) => (
           <div className={classNames('rt-ContainerInner', innerClassName)} style={innerStyle}>
             {children}
           </div>

@@ -4,7 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { tabNavLinkPropDefs, tabNavPropDefs } from './tab-nav.props.js';
-import { extractProps, firstChildMightAdoptSubtree } from '../helpers/index.js';
+import { extractProps, getSubtree } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -57,7 +57,7 @@ const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, 
         onSelect={() => {}}
         asChild={asChild}
       >
-        {firstChildMightAdoptSubtree({ asChild, children }, (children) => (
+        {getSubtree({ asChild, children }, (children) => (
           <>
             <span className="rt-BaseTabListTriggerInner rt-TabNavLinkInner">{children}</span>
             <span className="rt-BaseTabListTriggerInnerHidden rt-TabNavLinkInnerHidden">
