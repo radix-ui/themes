@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { cardPropDefs } from './card.props.js';
-import { extractProps, getRoot } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
