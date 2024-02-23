@@ -37,26 +37,7 @@
         "default": "./dist/esm/props/index.js"
       }
     },
-    "./tokens.css": {
-      "import": "./tokens.css",
-      "require": "./tokens.css",
-      "default": "./tokens.css"
-    },
-    "./components.css": {
-      "import": "./components.css",
-      "require": "./components.css",
-      "default": "./components.css"
-    },
-    "./utilities.css": {
-      "import": "./utilities.css",
-      "require": "./utilities.css",
-      "default": "./utilities.css"
-    },
-    "./styles.css": {
-      "import": "./styles.css",
-      "require": "./styles.css",
-      "default": "./styles.css"
-    }
+    "./*": "./*"
   },
   "sideEffects": false,
   "license": "MIT",
