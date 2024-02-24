@@ -1,5 +1,5 @@
 import { asChildProp, gapProps } from '../props/index.js';
-import type { PropDef } from '../props/index.js';
+import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const as = ['div', 'span'] as const;
 const displayValues = ['none', 'inline-grid', 'grid'] as const;
@@ -10,8 +10,26 @@ const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const justifyValues = ['start', 'center', 'end', 'between'] as const;
 
 const gridPropDefs = {
+  /**
+   * Controls whether to render **div** or **span**
+   *
+   * @example
+   * as="div"
+   * as="span"
+   */
   as: { type: 'enum', values: as, default: 'div' },
-  asChild: asChildProp,
+  ...asChildProp,
+  /**
+   * Sets the CSS **display** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * display="inline-grid"
+   * display={{ sm: 'none', lg: 'grid' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   */
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -19,6 +37,20 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-template-columns** property.
+   * Supports numeric string values, CSS strings and responsive objects.
+   *
+   * Use numeric string values to create grid columns of even size.
+   *
+   * @example
+   * columns="3"
+   * columns="100px 1fr"
+   * columns={{ xs: '1', md: 'auto 1fr' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+   */
   columns: {
     type: 'enum | string',
     className: 'rt-r-gtc',
@@ -28,6 +60,20 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-template-rows** property.
+   * Supports numeric string values, CSS strings and responsive objects.
+   *
+   * Use numeric string values to create grid rows of even size.
+   *
+   * @example
+   * rows="3"
+   * rows="100px 1fr"
+   * rows={{ xs: '1', md: 'auto 1fr' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
+   */
   rows: {
     type: 'enum | string',
     className: 'rt-r-gtr',
@@ -37,6 +83,17 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-auto-flow** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * flow="column"
+   * flow={{ sm: 'column', lg: 'row' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
+   */
   flow: {
     type: 'enum',
     className: 'rt-r-gaf',
@@ -44,6 +101,17 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **align-items** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * align="center"
+   * align={{ sm: 'baseline', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+   */
   align: {
     type: 'enum',
     className: 'rt-r-ai',
@@ -51,6 +119,17 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **justify-content** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * justify="between"
+   * justify={{ sm: 'start', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+   */
   justify: {
     type: 'enum',
     className: 'rt-r-jc',
@@ -62,7 +141,6 @@ const gridPropDefs = {
   ...gapProps,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
-  asChild: typeof asChildProp;
   display: PropDef<(typeof displayValues)[number]>;
   columns: PropDef<(typeof columnsValues)[number]>;
   rows: PropDef<(typeof rowsValues)[number]>;
@@ -83,4 +161,8 @@ function parseJustifyValue(value: string) {
   return value === 'between' ? 'space-between' : value;
 }
 
+// Use all of the imported prop defs to ensure that JSDoc works
+type GridOwnProps = GetPropDefTypes<typeof gridPropDefs & typeof asChildProp>;
+
 export { gridPropDefs };
+export type { GridOwnProps };

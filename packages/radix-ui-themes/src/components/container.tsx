@@ -3,19 +3,12 @@ import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { containerPropDefs } from './container.props.js';
 import { extractProps, getSubtree } from '../helpers/index.js';
-import {
-  deprecatedLayoutPropDefs,
-  heightPropDefs,
-  layoutPropDefs,
-  marginPropDefs,
-  widthPropDefs,
-} from '../props/index.js';
+import { heightPropDefs, layoutPropDefs, marginPropDefs, widthPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../props/index.js';
+import type { MarginProps, LayoutProps, ContainerOwnProps } from '../props/index.js';
 
 type ContainerElement = React.ElementRef<'div'>;
-type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs>;
 interface ContainerProps
   extends ComponentPropsWithoutColor<'div'>,
     MarginProps,
@@ -27,7 +20,6 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
       props,
       containerPropDefs,
       layoutPropDefs,
-      deprecatedLayoutPropDefs,
       marginPropDefs
     );
 

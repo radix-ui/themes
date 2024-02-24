@@ -3,13 +3,12 @@ import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import { sectionPropDefs } from './section.props.js';
 import { extractProps } from '../helpers/index.js';
-import { deprecatedLayoutPropDefs, layoutPropDefs, marginPropDefs } from '../props/index.js';
+import { layoutPropDefs, marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../props/index.js';
+import type { MarginProps, LayoutProps, SectionOwnProps } from '../props/index.js';
 
 type SectionElement = React.ElementRef<'div'>;
-type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs>;
 interface SectionProps
   extends ComponentPropsWithoutColor<'div'>,
     MarginProps,
@@ -20,7 +19,6 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
     props,
     sectionPropDefs,
     layoutPropDefs,
-    deprecatedLayoutPropDefs,
     marginPropDefs
   );
   const Comp = asChild ? Slot : 'section';

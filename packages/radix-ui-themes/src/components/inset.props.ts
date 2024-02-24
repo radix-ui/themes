@@ -6,7 +6,7 @@ const clipValues = ['border-box', 'padding-box'] as const;
 const paddingValues = ['current', '0'] as const;
 
 const insetPropDefs = {
-  asChild: asChildProp,
+  ...asChildProp,
   side: {
     type: 'enum',
     className: 'rt-r-side',
@@ -78,7 +78,6 @@ const insetPropDefs = {
     responsive: true,
   },
 } satisfies {
-  asChild: typeof asChildProp;
   side: PropDef<(typeof sides)[number]>;
   clip: PropDef<(typeof clipValues)[number]>;
   p: PropDef<(typeof paddingValues)[number]>;

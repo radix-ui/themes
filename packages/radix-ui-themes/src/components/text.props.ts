@@ -15,7 +15,7 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const textPropDefs = {
   as: { type: 'enum', values: as, default: 'span' },
-  asChild: asChildProp,
+  ...asChildProp,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -32,7 +32,6 @@ const textPropDefs = {
   highContrast: highContrastProp,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
-  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   weight: typeof weightProp;
   align: typeof alignProp;

@@ -1,6 +1,7 @@
 import { themePropDefs } from './theme.props.js';
 import type { PropDef } from './prop-def.js';
 
+/** Sets the color */
 const colorProp = {
   type: 'enum',
   values: themePropDefs.accentColor.values,
