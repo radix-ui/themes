@@ -99,7 +99,6 @@ import {
 } from '@radix-ui/themes';
 import {
   accentColors,
-  accentColors,
   avatarPropDefs,
   badgePropDefs,
   blockquotePropDefs,
