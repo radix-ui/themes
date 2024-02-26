@@ -179,13 +179,22 @@
     @media (hover: hover) {
       &:where(:hover) {
         background-color: var(--gray-a3);
+        &:where(:focus-visible) {
+          background-color: var(--focus-a2);
+        }
       }
     }
     &:where([data-state='open']) {
       background-color: var(--gray-a3);
+      &:where(:focus-visible) {
+        background-color: var(--focus-a2);
+      }
     }
     &:where(:active:not([data-state='open'])) {
       background-color: var(--gray-a4);
+      &:where(:focus-visible) {
+        background-color: var(--focus-a2);
+      }
     }
   }
 }
