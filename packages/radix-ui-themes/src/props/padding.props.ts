@@ -155,7 +155,6 @@ const paddingPropDefs = {
   pl: PropDef<(typeof paddingValues)[number]>;
 };
 
-// Use all of the imported prop defs to ensure that JSDoc works
 type PaddingProps = GetPropDefTypes<typeof paddingPropDefs>;
 
 export { paddingPropDefs };
