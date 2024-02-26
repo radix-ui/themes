@@ -1,6 +1,5 @@
 .rt-DataListLabel {
   display: flex;
-  gap: var(--space-2);
   color: var(--gray-a11);
 
   &:where([data-accent-color]) {
@@ -14,7 +13,7 @@
 
 .rt-DataListValue {
   display: flex;
-  gap: var(--space-2);
+  margin: 0;
 
   /* Ensure value can be truncated */
   min-width: 0px;
@@ -139,6 +138,16 @@
 /*              Alignment              */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
+
+.rt-DataListValue {
+  &::before {
+    /*
+     * Zero-width joiner to establish a baseline.
+     * Allows Flex children with text to align automatically.
+     */
+    content: '‍';
+  }
+}
 
 @breakpoints {
   /*
