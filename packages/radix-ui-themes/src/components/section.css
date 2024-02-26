@@ -14,8 +14,12 @@
       padding-bottom: var(--space-7);
     }
     &:where(.rt-r-size-3) {
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding-top: var(--space-9);
+      padding-bottom: var(--space-9);
+    }
+    &:where(.rt-r-size-4) {
+      padding-top: calc(80px * var(--scaling));
+      padding-bottom: calc(80px * var(--scaling));
     }
   }
 }

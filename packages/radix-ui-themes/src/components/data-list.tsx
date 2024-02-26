@@ -26,7 +26,7 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
         <dl
           {...dataListProps}
           ref={forwardedRef}
-          className={classNames(className, 'rt-DataListRoot')}
+          className={classNames('rt-DataListRoot', className)}
         />
       </Text>
     );
@@ -41,7 +41,7 @@ const DataListItem = React.forwardRef<DataListItemElement, DataListItemProps>(
   (props, forwardedRef) => {
     const { className, ...itemProps } = extractProps(props, dataListItemPropDefs);
     return (
-      <div {...itemProps} ref={forwardedRef} className={classNames(className, 'rt-DataListItem')} />
+      <div {...itemProps} ref={forwardedRef} className={classNames('rt-DataListItem', className)} />
     );
   }
 );
@@ -58,7 +58,7 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
         {...labelProps}
         data-accent-color={color || undefined}
         ref={forwardedRef}
-        className={classNames(className, 'rt-DataListLabel')}
+        className={classNames('rt-DataListLabel', className)}
       />
     );
   }

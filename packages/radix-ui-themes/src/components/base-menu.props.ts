@@ -28,11 +28,10 @@ const baseMenuContentPropDefs = {
 };
 
 const baseMenuItemPropDefs = {
-  asChild: asChildProp,
+  ...asChildProp,
   color: inheritedColorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
-  asChild: typeof asChildProp;
   color: typeof inheritedColorProp;
   shortcut: PropDef<string>;
 };

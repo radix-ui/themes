@@ -1,12 +1,31 @@
 import { asChildProp } from '../props/index.js';
-import type { PropDef } from '../props/index.js';
+import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;
 const alignValues = ['left', 'center', 'right'] as const;
 
 const containerPropDefs = {
-  asChild: asChildProp,
+  ...asChildProp,
+  /**
+   * Controls the **max-width** of the content within the container.
+   * Supports the predefined values and responsive objects.
+   *
+   * @values
+   * | Size     | Max. width |
+   * | :------- | ---------: |
+   * | size="1" | 448px      |
+   * | size="2" | 688px      |
+   * | size="3" | 880px      |
+   * | size="4" | 1136px     |
+   *
+   * @example
+   * size="4"
+   * size={{ sm: '3', lg: '4' }}
+   *
+   * @link
+   * https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/container.css
+   */
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -14,6 +33,14 @@ const containerPropDefs = {
     default: '4',
     responsive: true,
   },
+  /**
+   * Controls whether the container is visible or hidden.
+   * Supports "none", "initial", and responsive object values.
+   *
+   * @example
+   * display="none"
+   * display={{ sm: 'none', lg: 'initial' }}
+   */
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -22,6 +49,13 @@ const containerPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Controls the alignment of the content within the container.
+   *
+   * @example
+   * align="center"
+   * align={{ initial: 'left', lg: 'center' }}
+   */
   align: {
     type: 'enum',
     className: 'rt-r-ai',
@@ -31,7 +65,6 @@ const containerPropDefs = {
     responsive: true,
   },
 } satisfies {
-  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
@@ -45,4 +78,8 @@ function parseAlignValue(value: string) {
   return value === 'left' ? 'start' : value === 'right' ? 'end' : value;
 }
 
+// Use all of the imported prop defs to ensure that JSDoc works
+type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs & typeof asChildProp>;
+
 export { containerPropDefs };
+export type { ContainerOwnProps };

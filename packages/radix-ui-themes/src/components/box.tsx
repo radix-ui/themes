@@ -3,13 +3,12 @@ import classNames from 'classnames';
 import { Slot } from './slot.js';
 import { boxPropDefs } from './box.props.js';
 import { extractProps } from '../helpers/index.js';
-import { deprecatedLayoutPropDefs, layoutPropDefs, marginPropDefs } from '../props/index.js';
+import { layoutPropDefs, marginPropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, LayoutProps, GetPropDefTypes } from '../props/index.js';
+import type { MarginProps, LayoutProps, BoxOwnProps } from '../props/index.js';
 
 type BoxElement = React.ElementRef<'div'>;
-type BoxOwnProps = GetPropDefTypes<typeof boxPropDefs>;
 interface CommonBoxProps extends MarginProps, LayoutProps, BoxOwnProps {}
 type BoxAsChildProps = { asChild: true; as?: never } & ComponentPropsWithoutColor<'div'>;
 type BoxDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithoutColor<'div'>;
@@ -22,7 +21,7 @@ const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {
     asChild,
     as: Tag = 'div',
     ...boxProps
-  } = extractProps(props, boxPropDefs, layoutPropDefs, deprecatedLayoutPropDefs, marginPropDefs);
+  } = extractProps(props, boxPropDefs, layoutPropDefs, marginPropDefs);
   const Comp = asChild ? Slot : Tag;
   return <Comp {...boxProps} ref={forwardedRef} className={classNames('rt-Box', className)} />;
 });

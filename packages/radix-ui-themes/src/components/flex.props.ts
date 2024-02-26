@@ -1,5 +1,5 @@
 import { asChildProp, gapProps } from '../props/index.js';
-import type { PropDef } from '../props/index.js';
+import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const as = ['div', 'span'] as const;
 const displayValues = ['none', 'inline-flex', 'flex'] as const;
@@ -9,8 +9,26 @@ const justifyValues = ['start', 'center', 'end', 'between'] as const;
 const wrapValues = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 
 const flexPropDefs = {
+  /**
+   * Controls whether to render **div** or **span**
+   *
+   * @example
+   * as="div"
+   * as="span"
+   */
   as: { type: 'enum', values: as, default: 'div' },
-  asChild: asChildProp,
+  ...asChildProp,
+  /**
+   * Sets the CSS **display** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * display="inline-flex"
+   * display={{ sm: 'none', lg: 'flex' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   */
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -18,6 +36,17 @@ const flexPropDefs = {
     default: 'flex',
     responsive: true,
   },
+  /**
+   * Sets the CSS **flex-direction** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * direction="column"
+   * direction={{ sm: 'column', lg: 'row' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+   */
   direction: {
     type: 'enum',
     className: 'rt-r-fd',
@@ -25,6 +54,17 @@ const flexPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **align-items** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * align="center"
+   * align={{ sm: 'baseline', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+   */
   align: {
     type: 'enum',
     className: 'rt-r-ai',
@@ -32,6 +72,17 @@ const flexPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **justify-content** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * justify="between"
+   * justify={{ sm: 'start', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+   */
   justify: {
     type: 'enum',
     className: 'rt-r-jc',
@@ -40,6 +91,17 @@ const flexPropDefs = {
     default: 'start',
     responsive: true,
   },
+  /**
+   * Sets the CSS **flex-wrap** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * wrap="wrap"
+   * wrap={{ sm: 'wrap', lg: 'nowrap' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
+   */
   wrap: {
     type: 'enum',
     className: 'rt-r-fw',
@@ -50,7 +112,6 @@ const flexPropDefs = {
   ...gapProps,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
-  asChild: typeof asChildProp;
   display: PropDef<(typeof displayValues)[number]>;
   direction: PropDef<(typeof directionValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
@@ -62,4 +123,8 @@ function parseJustifyValue(value: string) {
   return value === 'between' ? 'space-between' : value;
 }
 
+// Use all of the imported prop defs to ensure that JSDoc works
+type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs & typeof gapProps & typeof asChildProp>;
+
 export { flexPropDefs };
+export type { FlexOwnProps };

@@ -1,40 +1,46 @@
-import { themePropDefs } from './theme.props.js';
 import type { PropDef } from './prop-def.js';
+
+// prettier-ignore
+const colorsRegular = ['tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'brown', 'orange'] as const;
+const colorsBright = ['sky', 'mint', 'lime', 'yellow', 'amber'] as const;
+const colorsMetal = ['gold', 'bronze'] as const;
+const colorsGray = ['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const;
+
+// prettier-ignore
+const accentColors = ['gray', 'gold', 'bronze', 'brown', 'yellow', 'amber', 'orange', 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'lime', 'mint', 'sky'] as const;
+const accentColorsGrouped = [
+  { label: 'Regulars', values: colorsRegular },
+  { label: 'Brights', values: colorsBright },
+  { label: 'Metals', values: colorsMetal },
+  { label: 'Gray', values: ['gray'] as const },
+];
+
+const grayColors = ['auto', ...colorsGray] as const;
 
 const colorProp = {
   type: 'enum',
-  values: themePropDefs.accentColor.values,
-  default: '' as (typeof themePropDefs.accentColor.values)[number] | undefined,
-} satisfies PropDef<(typeof themePropDefs.accentColor.values)[number]>;
-
-const inheritedColorProp = {
-  type: 'enum',
-  values: themePropDefs.accentColor.values,
-  default: undefined as (typeof themePropDefs.accentColor.values)[number] | undefined,
-} satisfies PropDef<(typeof themePropDefs.accentColor.values)[number]>;
+  values: accentColors,
+  default: '' as (typeof accentColors)[number] | undefined,
+} satisfies PropDef<(typeof accentColors)[number]>;
 
 // Difference between `colorProp` and `inheritedColorProp` is in the defaults:
 //
-// default: '' sets an empty `data-accent-color` attribute to define the right
-// high-contrast colors for descendants that inherit a colour by default, e.g.:
+// `default: ''` sets an empty `data-accent-color` attribute to define the right
+// high-contrast colors for descendants that inherit a colour by default.
 //
-// ```
-// <Text>
-//   This text inherits body color
-// </Text>
-//
-// <Callout.Root>
-//   <Callout.Text>
-//     <Text>
-//       This text inherits Callout color
-//     </Text>
-//     <Text highContrast>
-//       This text uses high-contrast version of the Callout color
-//     </Text>
-//   <Callout.Text>
-// </Callout.Root>
-// ```
-//
-// default: undefined allows Text to inherit color directly, but respond to the behaviour above.
+// `default: undefined` allows components like Text to inherit color directly,
+// but respond to `data-accent-color` on parent when it's `highContrast`.
+const inheritedColorProp = {
+  type: 'enum',
+  values: accentColors,
+  default: undefined as (typeof accentColors)[number] | undefined,
+} satisfies PropDef<(typeof accentColors)[number]>;
 
-export { colorProp, inheritedColorProp };
+export {
+  colorProp,
+  inheritedColorProp,
+  //
+  accentColors,
+  accentColorsGrouped,
+  grayColors,
+};

@@ -8,6 +8,7 @@ const options = {
   format: 'cjs',
   target: 'es2020',
   sourcemap: true,
+  minify: true,
 };
 
 // Check if "watch=true" flag is passed

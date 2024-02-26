@@ -13,7 +13,7 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const variants = ['solid', 'soft', 'outline', 'ghost'] as const;
 
 const codePropDefs = {
-  asChild: asChildProp,
+  ...asChildProp,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -28,7 +28,6 @@ const codePropDefs = {
   truncate: truncateProp,
   wrap: textWrapProp,
 } satisfies {
-  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   weight: typeof weightProp;

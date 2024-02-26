@@ -13,7 +13,7 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const underline = ['auto', 'hover', 'always'] as const;
 
 const linkPropDefs = {
-  asChild: asChildProp,
+  ...asChildProp,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -29,7 +29,6 @@ const linkPropDefs = {
   color: colorProp,
   highContrast: highContrastProp,
 } satisfies {
-  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   weight: typeof weightProp;
   trim: typeof trimProp;

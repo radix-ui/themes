@@ -1,10 +1,11 @@
-import { themePropDefs } from './theme.props.js';
 import type { PropDef } from './prop-def.js';
+
+const radii = ['none', 'small', 'medium', 'large', 'full'] as const;
 
 const radiusProp = {
   type: 'enum',
-  values: themePropDefs.radius.values,
+  values: radii,
   default: undefined,
-} satisfies PropDef<(typeof themePropDefs.radius.values)[number]>;
+} satisfies PropDef<(typeof radii)[number]>;
 
-export { radiusProp };
+export { radiusProp, radii };

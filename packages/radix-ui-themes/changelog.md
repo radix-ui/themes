@@ -26,8 +26,9 @@
     - `gridRow`, `gridRowStart`, `gridRowEnd`
   - **[Breaking]** The `width` and `height` props don't map to space scale anymore. This is because in the vast majority of cases, width and height were not set to space scale, and with that, space scale as an IDE autocomplete suggestion felt odd/misleading.
     - **[Upgrade guide]** Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
-  - Deprecate `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`. The older `shrink` and `grow` props will be removed in the next major release.
+  - **[Breaking]** Rename `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`
   - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
+  - Document all layout props with JSDoc
   - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
   - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
   - Speed up most of the animations
@@ -90,8 +91,7 @@
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`
   - Add `align` prop to control whether the container content is aligned to the left, center, or right
-- `Container`, `Section`
-  - Change the incorrect `display="block"` value to `display="initial"`
+  - **[Breaking]** Change the `display="block"` value to `display="initial"` (the former value was broken)
 - `ContextMenu`, `DropdownMenu`
   - Add `color` prop to `CheckboxItem` and `RadioItem` parts
 - `Checkbox`, `RadioGroup`, `Switch`
@@ -109,6 +109,10 @@
   - Add `position: relative` to support absolutely positioned children.
 - `RadioGroup`
   - [**Breaking**] Rework the internal HTML structure and styles. This component is now designed to display an optional text label when passing `children` to the `Item` part, and the `Root` part now provides flex column styles and spacing.
+- `Section`
+  - **[Breaking]** Change the `display="block"` value to `display="initial"` (the former value was broken)
+  - **[Breaking]** Use a new value for `size="3"`, use the previous value for `size="4"`
+    - **[Upgrade guide]** Update all your Sections that used `size="3"` to `size="4"`
 - `Select`
   - Make sure that Trigger font weight is not inherited, e.g. from a wrapping `<label>` element
 - `Separator`
@@ -157,6 +161,7 @@
   - Body background color and is no longer set automatically. The background color is now provided by the root `Theme` by default.
     - **[Breaking]** The CSS variable `--color-page-background` is no longer available. In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
     - `suppressHydrationWarning` on `html` is no longer needed (unless required by other libraries, like `next-themes`)
+  - Document all Theme props with JSDoc
 - `Tooltip`
   - Change the default delay duration to 200ms
 

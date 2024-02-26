@@ -20,7 +20,7 @@ import {
 } from '../index.js';
 import { Theme, useThemeContext } from './theme.js';
 import { getMatchingGrayColor } from '../helpers/index.js';
-import { themePropDefs, themeAccentColorsOrdered } from '../props/index.js';
+import { themePropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
@@ -246,7 +246,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               </Text>
 
               <Grid columns="10" gap="2" mt="3" role="group" aria-labelledby="accent-color-title">
-                {themeAccentColorsOrdered.map((color) => (
+                {themePropDefs.accentColor.values.map((color) => (
                   <label
                     key={color}
                     className="rt-ThemePanelSwatch"

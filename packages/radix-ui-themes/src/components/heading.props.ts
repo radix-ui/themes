@@ -16,7 +16,7 @@ const weights = weightProp.values;
 
 const headingPropDefs = {
   as: { type: 'enum', values: as, default: 'h1' },
-  asChild: asChildProp,
+  ...asChildProp,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -33,7 +33,6 @@ const headingPropDefs = {
   highContrast: highContrastProp,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
-  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   weight: PropDef<(typeof weights)[number]>;
   align: typeof alignProp;

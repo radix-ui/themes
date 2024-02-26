@@ -1,4 +1,4 @@
-import { widthPropDefs, trimProp, gapProps, colorProp, highContrastProp } from '../props/index.js';
+import { widthPropDefs, trimProp, colorProp, highContrastProp } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;

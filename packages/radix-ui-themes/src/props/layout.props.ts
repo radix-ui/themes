@@ -13,6 +13,17 @@ const layoutPropDefs = {
   ...paddingPropDefs,
   ...widthPropDefs,
   ...heightPropDefs,
+  /**
+   * Sets the CSS **position** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * position="absolute"
+   * position={{ sm: 'absolute', lg: 'sticky' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/position
+   */
   position: {
     type: 'enum',
     className: 'rt-r-position',
@@ -20,6 +31,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **inset** property.
+   * Supports space scale values, CSS strings, and responsive objects.
+   *
+   * @example
+   * inset="4"
+   * inset="100px"
+   * inset={{ sm: '0', lg: '50%' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/inset
+   */
   inset: {
     type: 'enum | string',
     className: 'rt-r-inset',
@@ -28,6 +51,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **top** property.
+   * Supports space scale values, CSS strings, and responsive objects.
+   *
+   * @example
+   * top="4"
+   * top="100px"
+   * top={{ sm: '0', lg: '50%' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/top
+   */
   top: {
     type: 'enum | string',
     className: 'rt-r-top',
@@ -36,6 +71,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **right** property.
+   * Supports space scale values, CSS strings, and responsive objects.
+   *
+   * @example
+   * right="4"
+   * right="100px"
+   * right={{ sm: '0', lg: '50%' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/right
+   */
   right: {
     type: 'enum | string',
     className: 'rt-r-right',
@@ -44,6 +91,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **bottom** property.
+   * Supports space scale values, CSS strings, and responsive objects.
+   *
+   * @example
+   * bottom="4"
+   * bottom="100px"
+   * bottom={{ sm: '0', lg: '50%' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/bottom
+   */
   bottom: {
     type: 'enum | string',
     className: 'rt-r-bottom',
@@ -52,6 +111,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **left** property.
+   * Supports space scale values, CSS strings, and responsive objects.
+   *
+   * @example
+   * left="4"
+   * left="100px"
+   * left={{ sm: '0', lg: '50%' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/left
+   */
   left: {
     type: 'enum | string',
     className: 'rt-r-left',
@@ -60,6 +131,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **flex-basis** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * flexBasis="0"
+   * flexBasis="100%"
+   * flexBasis={{ sm: '200px', lg: 'auto' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
+   */
   flexBasis: {
     type: 'string',
     className: 'rt-r-fb',
@@ -67,6 +150,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **flex-shrink** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * flexShrink="0"
+   * flexShrink="1"
+   * flexShrink={{ sm: '0', lg: '1' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
+   */
   flexShrink: {
     type: 'enum | string',
     className: 'rt-r-fs',
@@ -75,6 +170,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **flex-grow** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * flexGrow="0"
+   * flexGrow="1"
+   * flexGrow={{ sm: '0', lg: '1' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
+   */
   flexGrow: {
     type: 'enum | string',
     className: 'rt-r-fg',
@@ -83,6 +190,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-column** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridColumn="1"
+   * gridColumn="1 / -1"
+   * gridColumn={{ sm: '1 / 3', lg: 'span 3' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
+   */
   gridColumn: {
     type: 'string',
     className: 'rt-r-gc',
@@ -90,6 +209,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-column-start** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridColumnStart="1"
+   * gridColumnStart="auto"
+   * gridColumnStart={{ sm: '2', lg: 'span 3' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start
+   */
   gridColumnStart: {
     type: 'string',
     className: 'rt-r-gcs',
@@ -97,6 +228,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-column-end** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridColumnEnd="1"
+   * gridColumnEnd="auto"
+   * gridColumnEnd={{ sm: '2', lg: 'span 3' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end
+   */
   gridColumnEnd: {
     type: 'string',
     className: 'rt-r-gce',
@@ -104,6 +247,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-row** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridRow="1"
+   * gridRow="auto"
+   * gridRow={{ sm: '2', lg: 'span 3' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
+   */
   gridRow: {
     type: 'string',
     className: 'rt-r-gr',
@@ -111,6 +266,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-row-start** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridRowStart="1"
+   * gridRowStart="auto"
+   * gridRowStart={{ sm: '2', lg: 'span 3' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start
+   */
   gridRowStart: {
     type: 'string',
     className: 'rt-r-grs',
@@ -118,6 +285,18 @@ const layoutPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-row-end** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridRowEnd="1"
+   * gridRowEnd="auto"
+   * gridRowEnd={{ sm: '2', lg: 'span 3' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end
+   */
   gridRowEnd: {
     type: 'string',
     className: 'rt-r-gre',
@@ -143,31 +322,10 @@ const layoutPropDefs = {
   gridRowEnd: PropDef<string>;
 };
 
-const deprecatedLayoutPropDefs = {
-  /** @deprecated Rename this prop to `flexShrink`. The `shrink` prop will be removed in the next major release. */
-  shrink: {
-    type: 'enum | string',
-    className: 'rt-r-fs',
-    customProperties: ['--flex-shrink'],
-    values: flexShrinkValues,
-    default: undefined,
-    responsive: true,
-  },
-  /** @deprecated Rename this prop to `flexGrow`. The `grow` prop will be removed in the next major release. */
-  grow: {
-    type: 'enum | string',
-    className: 'rt-r-fg',
-    customProperties: ['--flex-grow'],
-    values: flexGrowValues,
-    default: undefined,
-    responsive: true,
-  },
-} satisfies {
-  shrink: PropDef<(typeof flexShrinkValues)[number]>;
-  grow: PropDef<(typeof flexGrowValues)[number]>;
-};
+// Use all of the imported prop defs to ensure that JSDoc works
+type LayoutProps = GetPropDefTypes<
+  typeof paddingPropDefs & typeof widthPropDefs & typeof heightPropDefs & typeof layoutPropDefs
+>;
 
-type LayoutProps = GetPropDefTypes<typeof layoutPropDefs & typeof deprecatedLayoutPropDefs>;
-
-export { layoutPropDefs, deprecatedLayoutPropDefs };
+export { layoutPropDefs };
 export type { LayoutProps };

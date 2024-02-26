@@ -1,11 +1,29 @@
 import { asChildProp } from '../props/index.js';
-import type { PropDef } from '../props/index.js';
+import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
-const sizes = ['1', '2', '3'] as const;
+const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;
 
 const sectionPropDefs = {
-  asChild: asChildProp,
+  ...asChildProp,
+  /**
+   * Controls the vertical padding of the section.
+   *
+   * @values
+   * | Size     | Padding |
+   * | :------- | ------: |
+   * | size="1" | 24px    |
+   * | size="2" | 40px    |
+   * | size="3" | 64px    |
+   * | size="4" | 80px    |
+   *
+   * @example
+   * size="4"
+   * size={{ sm: '3', lg: '4' }}
+   *
+   * @link
+   * https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/section.css
+   */
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -13,6 +31,14 @@ const sectionPropDefs = {
     default: '3',
     responsive: true,
   },
+  /**
+   * Controls whether the section is visible or hidden.
+   * Supports "none", "initial", and responsive object values.
+   *
+   * @example
+   * display="none"
+   * display={{ sm: 'none', lg: 'initial' }}
+   */
   display: {
     type: 'enum',
     className: 'rt-r-display',
@@ -22,7 +48,6 @@ const sectionPropDefs = {
     responsive: true,
   },
 } satisfies {
-  asChild: typeof asChildProp;
   size: PropDef<(typeof sizes)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
 };
@@ -31,4 +56,8 @@ function parseDisplayValue(value: string) {
   return value === 'initial' ? 'block' : value;
 }
 
+// Use all of the imported prop defs to ensure that JSDoc works
+type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs & typeof asChildProp>;
+
 export { sectionPropDefs };
+export type { SectionOwnProps };
