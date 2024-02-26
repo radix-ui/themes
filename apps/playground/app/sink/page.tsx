@@ -130,6 +130,8 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import {
+  accentColors,
+  accentColorsGrouped,
   avatarPropDefs,
   badgePropDefs,
   buttonPropDefs,
@@ -163,8 +165,6 @@ import {
   textAreaPropDefs,
   textFieldRootPropDefs,
   textPropDefs,
-  themeAccentColorsGrouped,
-  themeAccentColorsOrdered,
 } from '@radix-ui/themes/props';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
@@ -444,7 +444,7 @@ export default function Sink() {
                                   See colors & variants combinations
                                 </Text>
                               </summary>
-                              {themeAccentColorsGrouped.map(({ label, values }) => (
+                              {accentColorsGrouped.map(({ label, values }) => (
                                 <React.Fragment key={label}>
                                   <Text as="p" weight="bold" mt="6" mb="4">
                                     {label}
@@ -723,7 +723,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -953,7 +953,7 @@ export default function Sink() {
                           See colors
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1152,7 +1152,7 @@ export default function Sink() {
                           See colors
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1319,7 +1319,7 @@ export default function Sink() {
                           See colors
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1552,7 +1552,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1808,7 +1808,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -1921,7 +1921,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2199,7 +2199,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2479,7 +2479,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2592,7 +2592,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2759,7 +2759,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -2900,7 +2900,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3222,7 +3222,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3408,7 +3408,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3532,7 +3532,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -3683,7 +3683,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -4335,7 +4335,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -4702,7 +4702,7 @@ export default function Sink() {
                           See colors & variants combinations
                         </Text>
                       </summary>
-                      {themeAccentColorsGrouped.map(({ label, values }) => (
+                      {accentColorsGrouped.map(({ label, values }) => (
                         <React.Fragment key={label}>
                           <Text as="p" weight="bold" mt="6" mb="4">
                             {label}
@@ -5339,7 +5339,7 @@ export default function Sink() {
 
                   <DocsSection title="Separator">
                     <Flex direction="column" gap="5" my="5">
-                      {themeAccentColorsOrdered.map((color) => (
+                      {accentColors.map((color) => (
                         <Separator key={color} size="4" color={color} />
                       ))}
                     </Flex>

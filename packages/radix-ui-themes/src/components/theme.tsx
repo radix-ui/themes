@@ -6,7 +6,7 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { DirectionProvider } from '@radix-ui/react-direction';
 import { Slot } from '@radix-ui/react-slot';
 import { getMatchingGrayColor } from '../helpers/index.js';
-import { GetPropDefTypes, themePropDefs } from '../props/index.js';
+import { ThemeOwnProps, themePropDefs } from '../props/index.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 
@@ -124,7 +124,7 @@ type ThemeImplElement = React.ElementRef<'div'>;
 interface ThemeImplProps extends ThemeImplPublicProps, ThemeImplPrivateProps {}
 interface ThemeImplPublicProps
   extends Omit<ComponentPropsWithoutColor<'div'>, 'dir'>,
-    GetPropDefTypes<typeof themePropDefs> {}
+    ThemeOwnProps {}
 interface ThemeImplPrivateProps extends Partial<ThemeChangeHandlers> {
   isRoot?: boolean;
 }

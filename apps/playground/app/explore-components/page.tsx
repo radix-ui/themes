@@ -98,6 +98,8 @@ import {
   ThemePanel,
 } from '@radix-ui/themes';
 import {
+  accentColors,
+  accentColors,
   avatarPropDefs,
   badgePropDefs,
   blockquotePropDefs,
@@ -125,7 +127,6 @@ import {
   textAreaPropDefs,
   textFieldRootPropDefs,
   textPropDefs,
-  themeAccentColorsOrdered,
 } from '@radix-ui/themes/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
@@ -364,7 +365,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {avatarPropDefs.variant.values.map((variant, index) => (
@@ -513,7 +514,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {badgePropDefs.variant.values.map((variant) => (
@@ -644,7 +645,7 @@ export default function ExploreComponents() {
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               <td style={{ textAlign: 'left' }}>
@@ -781,7 +782,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {buttonPropDefs.variant.values.map((variant) => (
@@ -924,7 +925,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {calloutRootPropDefs.variant.values.map((variant) => (
@@ -1191,7 +1192,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {checkboxPropDefs.variant.values.map((variant) => (
@@ -1318,7 +1319,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color} style={{ verticalAlign: 'baseline' }}>
                               <td>{upperFirst(color)}</td>
                               {codePropDefs.variant.values.map((variant) => (
@@ -1459,7 +1460,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {contextMenuContentPropDefs.variant.values.map((variant) => (
@@ -1913,7 +1914,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {dropdownMenuContentPropDefs.variant.values.map((variant) => (
@@ -2083,7 +2084,7 @@ export default function ExploreComponents() {
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               <td>
@@ -2244,7 +2245,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {iconButtonPropDefs.variant.values.map((variant) => (
@@ -2504,7 +2505,7 @@ export default function ExploreComponents() {
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               <td style={{ textAlign: 'left' }}>
@@ -2786,7 +2787,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color, index) => (
+                          {accentColors.map((color, index) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {progressPropDefs.variant.values.map((variant) => (
@@ -2979,7 +2980,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {radioGroupRootPropDefs.variant.values.map((variant) => (
@@ -3195,7 +3196,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {selectTriggerPropDefs.variant.values.map((variant) => (
@@ -3442,7 +3443,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color, index) => (
+                          {accentColors.map((color, index) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {sliderPropDefs.variant.values.map((variant) => (
@@ -3645,7 +3646,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {switchPropDefs.variant.values.map((variant) => (
@@ -4043,7 +4044,7 @@ export default function ExploreComponents() {
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color} style={{ verticalAlign: 'baseline' }}>
                               <td>{upperFirst(color)}</td>
                               <td>
@@ -4170,7 +4171,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {textAreaPropDefs.variant.values.map((variant) => (
@@ -4364,7 +4365,7 @@ export default function ExploreComponents() {
                           </tr>
                         </thead>
                         <tbody>
-                          {themeAccentColorsOrdered.map((color) => (
+                          {accentColors.map((color) => (
                             <tr key={color}>
                               <td>{upperFirst(color)}</td>
                               {textFieldRootPropDefs.variant.values.map((variant) => (

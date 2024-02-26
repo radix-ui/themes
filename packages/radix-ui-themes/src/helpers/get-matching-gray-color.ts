@@ -1,6 +1,6 @@
-import { themeAccentColors } from '../props/index.js';
+import { accentColors } from '../props/index.js';
 
-type ThemeAccentColor = (typeof themeAccentColors)[number];
+type ThemeAccentColor = (typeof accentColors)[number];
 
 export function getMatchingGrayColor(accentColor: ThemeAccentColor) {
   switch (accentColor) {
