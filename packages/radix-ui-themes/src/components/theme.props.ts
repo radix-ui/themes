@@ -39,7 +39,7 @@ const themePropDefs = {
   grayColor: { type: 'enum', values: grayColors, default: 'auto' },
   /**
    * Controls whether to use a solid or translucent background color on panelled
-   * elements such as Card or Table.
+   * elements such as Card or Table is solid or translucent.
    *
    * @link
    * https://www.radix-ui.com/themes/docs/theme/visual-style
@@ -73,4 +73,3 @@ type ThemeOwnProps = GetPropDefTypes<typeof themePropDefs & typeof asChildProp>;
 
 export { themePropDefs };
 export type { ThemeOwnProps };
-themePropDefs.a;
