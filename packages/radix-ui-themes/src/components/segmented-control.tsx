@@ -77,7 +77,7 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
   ({ children, className, ...props }, forwardedRef) => (
     <ToggleGroupPrimitive.Item
       ref={forwardedRef}
-      className={classNames(className, 'rt-reset', 'rt-SegmentedControlItem')}
+      className={classNames('rt-reset', 'rt-SegmentedControlItem', className)}
       {...props}
       disabled={false}
       asChild={false}
