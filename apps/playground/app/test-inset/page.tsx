@@ -86,7 +86,7 @@ export default function Test() {
                         </Inset>
                       </Card>
 
-                      <Box my="5" m="2">
+                      <Box my="5">
                         <CheckboxCardGroupRoot columns="1" defaultValue={['1']} size="3">
                           <CheckboxCardGroupItem value="1">
                             <Box asChild width="64px">
@@ -106,7 +106,6 @@ export default function Test() {
                             <Box as="span">Checkbox Card 2</Box>
                           </CheckboxCardGroupItem>
                         </CheckboxCardGroupRoot>
-                        B B B
                       </Box>
                     </Box>
 
