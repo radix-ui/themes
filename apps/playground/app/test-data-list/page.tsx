@@ -164,9 +164,23 @@ export default function DataListPage() {
                     <DataListItem align="center">
                       <DataListLabel>Authentication methods</DataListLabel>
                       <DataListValue>
-                        <Flex gap="2">
+                        <Flex gap="2" align="center">
                           <StarFilledIcon />
                           <StarFilledIcon />
+                        </Flex>
+                      </DataListValue>
+                    </DataListItem>
+
+                    <DataListItem>
+                      <DataListLabel>Accent</DataListLabel>
+                      <DataListValue>
+                        <Flex gap="2" align="center">
+                          <Box
+                            width="16px"
+                            height="16px"
+                            style={{ backgroundColor: 'royalblue' }}
+                          />
+                          <Text>Blue</Text>
                         </Flex>
                       </DataListValue>
                     </DataListItem>

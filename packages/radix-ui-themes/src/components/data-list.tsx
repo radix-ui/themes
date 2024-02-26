@@ -69,11 +69,7 @@ type DataListValueElement = React.ElementRef<'dd'>;
 interface DataListValueProps extends ComponentPropsWithoutColor<'dd'> {}
 const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>(
   ({ children, className, ...props }, forwardedRef) => (
-    <dd
-      {...props}
-      ref={forwardedRef}
-      className={classNames(className, 'rt-reset', 'rt-DataListValue')}
-    >
+    <dd {...props} ref={forwardedRef} className={classNames(className, 'rt-DataListValue')}>
       {children}
     </dd>
   )
