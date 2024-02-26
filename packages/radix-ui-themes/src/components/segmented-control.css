@@ -273,7 +273,7 @@
 .rt-SegmentedControlRoot:where(.rt-variant-surface) {
   & :where(.rt-SegmentedControlIndicator) {
     &::before {
-      box-shadow: 0 0 0 1px var(--gray-a5);
+      box-shadow: 0 0 0 1px var(--gray-a4);
     }
   }
 }

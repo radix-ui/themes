@@ -83,7 +83,7 @@
   - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
 - `Card`
   - Rework the internal HTML structure and styles. This component now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
-    - **[Upgrade guide]** If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly.
+    - **[Upgrade guide]** If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly, or set your background color on an `<Inset p="current">` element nested as the first child of the Card.
     - **[Upgrade guide]** Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
       If you need to override background color for non-ghost variant,
 - `Code`
