@@ -8,7 +8,7 @@ import { tooltipPropDefs } from './tooltip.props.js';
 import { Theme } from './theme.js';
 
 import type { GetPropDefTypes } from '../props/index.js';
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import { extractProps, type ComponentPropsWithoutColor } from '../helpers/index.js';
 
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
@@ -33,7 +33,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     container,
     forceMount,
     ...tooltipContentProps
-  } = props;
+  } = extractProps(props, tooltipPropDefs);
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
   return (
     <TooltipPrimitive.Root {...rootProps}>

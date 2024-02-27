@@ -29,7 +29,6 @@
 .rt-BaseDialogContent {
   margin: auto;
   width: 100%;
-  max-width: 580px;
   z-index: 1;
   position: relative;
   box-sizing: border-box;

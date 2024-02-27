@@ -1,6 +1,17 @@
 import { GetPropDefTypes, PropDef } from './prop-def.js';
 
 const heightPropDefs = {
+  /**
+   * Sets the CSS **height** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * height="100px"
+   * height={{ md: '100vh', xl: '600px' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/height
+   */
   height: {
     type: 'string',
     className: 'rt-r-h',
@@ -8,6 +19,17 @@ const heightPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **min-height** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * minHeight="100px"
+   * minHeight={{ md: '100vh', xl: '600px' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
+   */
   minHeight: {
     type: 'string',
     className: 'rt-r-min-h',
@@ -15,6 +37,17 @@ const heightPropDefs = {
     default: undefined,
     responsive: true,
   },
+  /**
+   * Sets the CSS **max-height** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * maxHeight="100px"
+   * maxHeight={{ md: '100vh', xl: '600px' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/max-height
+   */
   maxHeight: {
     type: 'string',
     className: 'rt-r-max-h',

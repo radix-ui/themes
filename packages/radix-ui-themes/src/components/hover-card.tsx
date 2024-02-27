@@ -8,7 +8,7 @@ import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Theme } from './theme.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { GetPropDefTypes } from '../props/index.js';
+import type { HoverCardContentOwnProps } from '../props/index.js';
 
 interface HoverCardRootProps extends ComponentPropsWithoutColor<typeof HoverCardPrimitive.Root> {}
 const HoverCardRoot: React.FC<HoverCardRootProps> = (props) => (
@@ -34,7 +34,6 @@ const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTrig
 HoverCardTrigger.displayName = 'HoverCardTrigger';
 
 type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
-type HoverCardContentOwnProps = GetPropDefTypes<typeof hoverCardContentPropDefs>;
 interface HoverCardContentProps
   extends ComponentPropsWithoutColor<typeof HoverCardPrimitive.Content>,
     HoverCardContentOwnProps {

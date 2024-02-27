@@ -247,7 +247,7 @@ export default function Sink() {
                             <DialogTrigger>
                               <Button variant="solid">Open</Button>
                             </DialogTrigger>
-                            <DialogContent asChild style={{ maxWidth: 450 }}>
+                            <DialogContent asChild maxWidth="450px">
                               <Flex direction="column" gap="3">
                                 <InfoCircledIcon
                                   style={{ position: 'absolute', top: '24px', right: '20px' }}
@@ -280,7 +280,7 @@ export default function Sink() {
                             <HoverCardTrigger>
                               <Link>A fancy link</Link>
                             </HoverCardTrigger>
-                            <HoverCardContent style={{ width: 200 }}>
+                            <HoverCardContent width="200px">
                               <Text as="p" size="2">
                                 Jan Tschichold was a German calligrapher, typographer and book
                                 designer. He played a significant role in the development of graphic
@@ -298,12 +298,7 @@ export default function Sink() {
                               </Button>
                             </Tooltip>
 
-                            <Tooltip
-                              content="The goal of typography is to relate font size, line height, and line width in a
-                    proportional way that maximizes beauty and makes reading easier and more
-                    pleasant."
-                              style={{ maxWidth: 200 }}
-                            >
+                            <Tooltip content="The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant.">
                               <Button variant="solid" size="1">
                                 Multiline
                               </Button>
@@ -316,7 +311,7 @@ export default function Sink() {
                             <AlertDialogTrigger>
                               <Button variant="solid">Open</Button>
                             </AlertDialogTrigger>
-                            <AlertDialogContent style={{ maxWidth: 450 }}>
+                            <AlertDialogContent maxWidth="450px">
                               <Flex direction="column" gap="3">
                                 <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
                                 <AlertDialogDescription>
@@ -345,7 +340,7 @@ export default function Sink() {
                             <PopoverTrigger>
                               <Button variant="solid">Popover</Button>
                             </PopoverTrigger>
-                            <PopoverContent style={{ width: 200 }}>
+                            <PopoverContent width="200px">
                               <Text as="p" size="2" mb="2">
                                 Jan Tschichold was a German calligrapher, typographer and book
                                 designer. He played a significant role in the development of graphic
@@ -6096,7 +6091,7 @@ type RightClickAreaProps = React.ComponentProps<typeof Grid> & {
 function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
   return (
     <Grid
-      height={size === '2' ? '8' : '6'}
+      height={size === '2' ? '48px' : '32px'}
       px="3"
       {...props}
       style={{
