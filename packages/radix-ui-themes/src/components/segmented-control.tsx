@@ -5,9 +5,11 @@ import classNames from 'classnames';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { segmentedControlRootPropDefs } from './segmented-control.props.js';
+import { extractProps } from '../helpers/index.js';
+import { marginPropDefs } from '../props/index.js';
 
-import { extractProps, type ComponentPropsWithoutColor } from '../helpers/index.js';
-import { marginPropDefs, type GetPropDefTypes, type MarginProps } from '../props/index.js';
+import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type SegmentedControlRootOwnProps = GetPropDefTypes<typeof segmentedControlRootPropDefs>;
 
