@@ -14,7 +14,7 @@ const hoverCardContentPropDefs = {
   },
   width: widthPropDefs.width,
   minWidth: widthPropDefs.minWidth,
-  maxWidth: { ...widthPropDefs.maxWidth, default: '480px' } as const,
+  maxWidth: { ...widthPropDefs.maxWidth, default: '480px' },
   ...heightPropDefs,
 } satisfies {
   width: PropDef<string>;

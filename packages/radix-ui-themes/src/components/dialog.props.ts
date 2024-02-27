@@ -14,7 +14,7 @@ const dialogContentPropDefs = {
   },
   width: widthPropDefs.width,
   minWidth: widthPropDefs.minWidth,
-  maxWidth: { ...widthPropDefs.maxWidth, default: '600px' } as const,
+  maxWidth: { ...widthPropDefs.maxWidth, default: '600px' },
 } satisfies {
   size: PropDef<(typeof contentSizes)[number]>;
   width: PropDef<string>;
