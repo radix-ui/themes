@@ -10,7 +10,7 @@ import { Text } from './text.js';
 import { Theme } from './theme.js';
 
 import type { ComponentPropsAs, ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { GetPropDefTypes } from '../props/index.js';
+import type { AlertDialogContentOwnProps } from '../props/index.js';
 
 interface AlertDialogRootProps
   extends ComponentPropsWithoutColor<typeof AlertDialogPrimitive.Root> {}
@@ -32,7 +32,6 @@ const AlertDialogTrigger = React.forwardRef<AlertDialogTriggerElement, AlertDial
 AlertDialogTrigger.displayName = 'AlertDialogTrigger';
 
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
-type AlertDialogContentOwnProps = GetPropDefTypes<typeof alertDialogContentPropDefs>;
 interface AlertDialogContentProps
   extends ComponentPropsWithoutColor<typeof AlertDialogPrimitive.Content>,
     AlertDialogContentOwnProps {

@@ -8,7 +8,7 @@ import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Theme } from './theme.js';
 
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { GetPropDefTypes } from '../props/index.js';
+import type { PopoverContentOwnProps } from '../props/index.js';
 
 interface PopoverRootProps extends ComponentPropsWithoutColor<typeof PopoverPrimitive.Root> {}
 const PopoverRoot: React.FC<PopoverRootProps> = (props: PopoverRootProps) => (
@@ -29,7 +29,6 @@ const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerPro
 PopoverTrigger.displayName = 'PopoverTrigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
-type PopoverContentOwnProps = GetPropDefTypes<typeof popoverContentPropDefs>;
 interface PopoverContentProps
   extends ComponentPropsWithoutColor<typeof PopoverPrimitive.Content>,
     PopoverContentOwnProps {

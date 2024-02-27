@@ -79,7 +79,10 @@
       - `Link`
 - `AlertDialog`, `Dialog`
   - Add `position: relative` to support absolutely positioned children.
-  - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog content
+  - Add `width`, `minWidth`, `maxWidth` props to the Content part.
+  - Set `maxWidth="600px"` by default on the Content part.
+    - **[Upgrade guide]** This slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
+  - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog Content part. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `Blockquote`, `Code`, `Em`, `Heading`, `Quote`, `Link`, `Strong`, `Text`
   - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
 - `Card`
@@ -105,8 +108,11 @@
   - Add new `loading` prop
 - `Flex`
   - Add `gapX` and `gapY` props
-- `Popover`, `HoverCard`, `Tooltip`
+- `Popover`, `HoverCard`
   - Add `position: relative` to support absolutely positioned children.
+  - Add `width`, `minWidth`, `maxWidth`, `height`, `minHeight`, `maxHeight` props to the Content part.
+  - Set `maxWidth="480px"` by default on the Content part.
+    - **[Upgrade guide]** If you use popovers and hover cards that need a wider width, override `maxWidth` with your own value.
 - `RadioGroup`
   - [**Breaking**] Rework the internal HTML structure and styles. This component is now designed to display an optional text label when passing `children` to the `Item` part, and the `Root` part now provides flex column styles and spacing.
 - `Section`
@@ -163,6 +169,9 @@
     - `suppressHydrationWarning` on `html` is no longer needed (unless required by other libraries, like `next-themes`)
   - Document all Theme props with JSDoc
 - `Tooltip`
+  - Add `width`, `minWidth`, `maxWidth` props.
+  - Set `maxWidth="200px"` by default on the tooltip content
+    - **[Upgrade guide]** If you use tooltips that need to be wider, override `maxWidth` with your own value.
   - Change the default delay duration to 200ms
 
 ## 2.0.3

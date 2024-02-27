@@ -68,10 +68,11 @@ type PropDef<T = any> = RegularPropDef<T> | ResponsivePropDef<T>;
 
 // prettier-ignore
 type GetPropDefType<Def> =
-	  Def extends BooleanPropDef ? (Def extends ResponsivePropDef ? Responsive<boolean> : boolean)
+    Def extends BooleanPropDef ? (Def extends ResponsivePropDef ? Responsive<boolean> : boolean)
   : Def extends StringPropDef ? (Def extends ResponsivePropDef ? Responsive<string> : string)
   : Def extends ReactNodePropDef ? (Def extends ResponsivePropDef ? Responsive<React.ReactNode> : React.ReactNode)
-  : Def extends EnumOrStringPropDef<infer Type> ? (Def extends ResponsivePropDef<infer Type extends string> ? Responsive<Union<string, Type>> : Type)
+  : Def extends EnumOrStringPropDef<infer Type> ?
+    Def extends ResponsivePropDef<infer Type extends string> ? Responsive<Union<string, Type>> : Type
   : Def extends EnumPropDef<infer Type> ? (Def extends ResponsivePropDef<infer Type> ? Responsive<Type> : Type)
   : never;
 

@@ -16,7 +16,6 @@ const widthPropDefs = {
     type: 'string',
     className: 'rt-r-w',
     customProperties: ['--width'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -34,7 +33,6 @@ const widthPropDefs = {
     type: 'string',
     className: 'rt-r-min-w',
     customProperties: ['--min-width'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -52,7 +50,6 @@ const widthPropDefs = {
     type: 'string',
     className: 'rt-r-max-w',
     customProperties: ['--max-width'],
-    default: undefined,
     responsive: true,
   },
 } satisfies {

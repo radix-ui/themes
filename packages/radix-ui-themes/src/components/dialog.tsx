@@ -10,7 +10,7 @@ import { Text } from './text.js';
 import { Theme } from './theme.js';
 
 import type { ComponentPropsAs, ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { GetPropDefTypes } from '../props/index.js';
+import type { DialogContentOwnProps } from '../props/index.js';
 
 interface DialogRootProps
   extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Root>, 'modal'> {}
@@ -30,7 +30,6 @@ const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>
 DialogTrigger.displayName = 'DialogTrigger';
 
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
-type DialogContentOwnProps = GetPropDefTypes<typeof dialogContentPropDefs>;
 interface DialogContentProps
   extends ComponentPropsWithoutColor<typeof DialogPrimitive.Content>,
     DialogContentOwnProps {

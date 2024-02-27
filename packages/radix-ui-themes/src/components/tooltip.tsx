@@ -4,8 +4,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { Text } from './text.js';
-import { tooltipPropDefs } from './tooltip.props.js';
 import { Theme } from './theme.js';
+import { extractProps } from '../helpers/index.js';
+import { tooltipPropDefs } from './tooltip.props.js';
 
 import type { GetPropDefTypes } from '../props/index.js';
 import type { ComponentPropsWithoutColor } from '../helpers/index.js';
@@ -33,7 +34,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     container,
     forceMount,
     ...tooltipContentProps
-  } = props;
+  } = extractProps(props, tooltipPropDefs);
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
   return (
     <TooltipPrimitive.Root {...rootProps}>
