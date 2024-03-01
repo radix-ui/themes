@@ -75,7 +75,7 @@
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint \"src/**/*.ts*\"",
     "lint:css": "stylelint \"src/**/*.css\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf *.css",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "prepublishOnly": "yarn lint"
   },
   "dependencies": {
