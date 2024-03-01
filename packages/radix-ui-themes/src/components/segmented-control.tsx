@@ -31,6 +31,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
       value: valueProp,
       defaultValue: defaultValueProp,
       onValueChange: onValueChangeProp,
+      ...rootProps
     } = extractProps(props, segmentedControlRootPropDefs, marginPropDefs);
 
     const [value, setValue] = useControllableState({
@@ -49,7 +50,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
             setValue(value);
           }
         }}
-        {...props}
+        {...rootProps}
         type="single"
         value={value}
         asChild={false}
