@@ -1,0 +1,17 @@
+@import './box.css';
+@import './flex.css';
+@import './grid.css';
+@import './section.css';
+@import './container.css';
+
+.radix-themes:where([data-is-root-theme='true']) {
+  /* Create a new stacking context on the root `Theme` so layered components work out of the box */
+  position: relative;
+  z-index: 0;
+
+  /* Make sure root `Theme` background covers the viewport */
+  min-height: 100vh;
+  @supports (min-height: 100dvh) {
+    min-height: 100dvh;
+  }
+}
