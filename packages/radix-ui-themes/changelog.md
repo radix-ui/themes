@@ -8,6 +8,10 @@
   - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
     - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
     - Note: changes to prop defs and helpers won’t be covered by semver
+  - Add a wildcard entry point to the package to allow direct access to the package internals as an escape hatch if you have a complex tooling setup that can’t support modern module resolution rules
+  - Add extra CSS file exports for advanced use-cases:
+    - Export individual `tokens.css`, `components.css`, and `utilities.css` files in case you need fine-grained control of the CSS precedence. For example, this allows to import Radix Themes `utilities.css` after your own CSS, and everything else before that.
+    - Export `layout.css` that only includes styles for the layout components (Box, Flex, Grid, Container, Section). Individual exports `layout/tokens.css`, `layout/components.css`, and `layout/utilities.css` are also available to support the above use-case.
   - Add the following props to all layout components:
     - `minWidth`, `maxWidth`
     - `minHeight`, `maxHeight`
