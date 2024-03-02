@@ -11,6 +11,8 @@
 .light,
 .light-theme {
   --jade-surface: #f1faf5cc;
+  --jade-indicator: var(--jade-9);
+  --jade-track: var(--jade-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --jade-surface: color(display-p3 0.9529 0.9804 0.9608 / 0.8);
@@ -21,6 +23,8 @@
 .dark,
 .dark-theme {
   --jade-surface: #13271f80;
+  --jade-indicator: var(--jade-9);
+  --jade-track: var(--jade-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --jade-surface: color(display-p3 0.0863 0.149 0.1176 / 0.5);
@@ -57,4 +61,6 @@
 
   --accent-contrast: var(--jade-contrast);
   --accent-surface: var(--jade-surface);
+  --accent-indicator: var(--jade-indicator);
+  --accent-track: var(--jade-track);
 }

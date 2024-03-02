@@ -11,6 +11,8 @@
 .light,
 .light-theme {
   --green-surface: #f1faf4cc;
+  --green-indicator: var(--green-9);
+  --green-track: var(--green-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --green-surface: color(display-p3 0.9569 0.9804 0.9608 / 0.8);
@@ -21,6 +23,8 @@
 .dark,
 .dark-theme {
   --green-surface: #15251d80;
+  --green-indicator: var(--green-9);
+  --green-track: var(--green-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --green-surface: color(display-p3 0.0941 0.1412 0.1098 / 0.5);
@@ -57,4 +61,6 @@
 
   --accent-contrast: var(--green-contrast);
   --accent-surface: var(--green-surface);
+  --accent-indicator: var(--green-indicator);
+  --accent-track: var(--green-track);
 }

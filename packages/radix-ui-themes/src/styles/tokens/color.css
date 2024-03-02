@@ -173,4 +173,6 @@
 
   --accent-contrast: var(--gray-contrast);
   --accent-surface: var(--gray-surface);
+  --accent-indicator: var(--gray-indicator);
+  --accent-track: var(--gray-track);
 }

@@ -11,6 +11,8 @@
 .light,
 .light-theme {
   --tomato-surface: #fff6f5cc;
+  --tomato-indicator: var(--tomato-9);
+  --tomato-track: var(--tomato-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --tomato-surface: color(display-p3 0.9922 0.9647 0.9608 / 0.8);
@@ -21,6 +23,8 @@
 .dark,
 .dark-theme {
   --tomato-surface: #2d191580;
+  --tomato-indicator: var(--tomato-9);
+  --tomato-track: var(--tomato-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --tomato-surface: color(display-p3 0.1569 0.0941 0.0784 / 0.5);
@@ -57,4 +61,6 @@
 
   --accent-contrast: var(--tomato-contrast);
   --accent-surface: var(--tomato-surface);
+  --accent-indicator: var(--tomato-indicator);
+  --accent-track: var(--tomato-track);
 }

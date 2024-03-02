@@ -11,6 +11,8 @@
 .light,
 .light-theme {
   --iris-surface: #f6f6ffcc;
+  --iris-indicator: var(--iris-9);
+  --iris-track: var(--iris-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --iris-surface: color(display-p3 0.9647 0.9647 0.9961 / 0.8);
@@ -21,6 +23,8 @@
 .dark,
 .dark-theme {
   --iris-surface: #1d1b3980;
+  --iris-indicator: var(--iris-9);
+  --iris-track: var(--iris-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --iris-surface: color(display-p3 0.1098 0.102 0.2118 / 0.5);
@@ -57,4 +61,6 @@
 
   --accent-contrast: var(--iris-contrast);
   --accent-surface: var(--iris-surface);
+  --accent-indicator: var(--iris-indicator);
+  --accent-track: var(--iris-track);
 }

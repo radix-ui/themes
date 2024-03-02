@@ -7,6 +7,8 @@
 .light,
 .light-theme {
   --olive-surface: #ffffffcc;
+  --olive-indicator: var(--olive-9);
+  --olive-track: var(--olive-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --olive-surface: color(display-p3 1 1 1 / 0.8);
@@ -17,6 +19,8 @@
 .dark,
 .dark-theme {
   --olive-surface: #1f201e80;
+  --olive-indicator: var(--olive-9);
+  --olive-track: var(--olive-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --olive-surface: color(display-p3 0.1176 0.1255 0.1176 / 0.5);
@@ -52,4 +56,6 @@
   --gray-a12: var(--olive-a12);
 
   --gray-surface: var(--olive-surface);
+  --gray-indicator: var(--olive-indicator);
+  --gray-track: var(--olive-track);
 }

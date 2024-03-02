@@ -7,6 +7,8 @@
 .light,
 .light-theme {
   --sage-surface: #ffffffcc;
+  --sage-indicator: var(--sage-9);
+  --sage-track: var(--sage-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --sage-surface: color(display-p3 1 1 1 / 0.8);
@@ -17,6 +19,8 @@
 .dark,
 .dark-theme {
   --sage-surface: #1e201f80;
+  --sage-indicator: var(--sage-9);
+  --sage-track: var(--sage-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --sage-surface: color(display-p3 0.1176 0.1255 0.1176 / 0.5);
@@ -52,4 +56,6 @@
   --gray-a12: var(--sage-a12);
 
   --gray-surface: var(--sage-surface);
+  --gray-indicator: var(--sage-indicator);
+  --gray-track: var(--sage-track);
 }

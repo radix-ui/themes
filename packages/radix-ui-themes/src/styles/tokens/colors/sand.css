@@ -7,6 +7,8 @@
 .light,
 .light-theme {
   --sand-surface: #ffffffcc;
+  --sand-indicator: var(--sand-9);
+  --sand-track: var(--sand-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --sand-surface: color(display-p3 1 1 1 / 0.8);
@@ -17,6 +19,8 @@
 .dark,
 .dark-theme {
   --sand-surface: #21212080;
+  --sand-indicator: var(--sand-9);
+  --sand-track: var(--sand-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --sand-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
@@ -52,4 +56,6 @@
   --gray-a12: var(--sand-a12);
 
   --gray-surface: var(--sand-surface);
+  --gray-indicator: var(--sand-indicator);
+  --gray-track: var(--sand-track);
 }

@@ -11,6 +11,8 @@
 .light,
 .light-theme {
   --grass-surface: #f3faf3cc;
+  --grass-indicator: var(--grass-9);
+  --grass-track: var(--grass-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --grass-surface: color(display-p3 0.9569 0.9804 0.9569 / 0.8);
@@ -21,6 +23,8 @@
 .dark,
 .dark-theme {
   --grass-surface: #19231b80;
+  --grass-indicator: var(--grass-9);
+  --grass-track: var(--grass-9);
   @supports (color: color(display-p3 1 1 1)) {
     @media (color-gamut: p3) {
       --grass-surface: color(display-p3 0.102 0.1333 0.102 / 0.5);
@@ -57,4 +61,6 @@
 
   --accent-contrast: var(--grass-contrast);
   --accent-surface: var(--grass-surface);
+  --accent-indicator: var(--grass-indicator);
+  --accent-track: var(--grass-track);
 }
