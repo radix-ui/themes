@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/violet.css';
+@import '@radix-ui/colors/violet-dark.css';
+@import '@radix-ui/colors/violet-alpha.css';
+@import '@radix-ui/colors/violet-dark-alpha.css';
+
+:root {
+  --violet-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --violet-surface: #f9f6ffcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --violet-surface: color(display-p3 0.9725 0.9647 0.9961 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --violet-surface: #25193980;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --violet-surface: color(display-p3 0.1333 0.102 0.2118 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='violet'] {
+  --color-surface-accent: var(--violet-surface);
+
+  --accent-1: var(--violet-1);
+  --accent-2: var(--violet-2);
+  --accent-3: var(--violet-3);
+  --accent-4: var(--violet-4);
+  --accent-5: var(--violet-5);
+  --accent-6: var(--violet-6);
+  --accent-7: var(--violet-7);
+  --accent-8: var(--violet-8);
+  --accent-9: var(--violet-9);
+  --accent-9-contrast: var(--violet-9-contrast);
+  --accent-10: var(--violet-10);
+  --accent-11: var(--violet-11);
+  --accent-12: var(--violet-12);
+
+  --accent-a1: var(--violet-a1);
+  --accent-a2: var(--violet-a2);
+  --accent-a3: var(--violet-a3);
+  --accent-a4: var(--violet-a4);
+  --accent-a5: var(--violet-a5);
+  --accent-a6: var(--violet-a6);
+  --accent-a7: var(--violet-a7);
+  --accent-a8: var(--violet-a8);
+  --accent-a9: var(--violet-a9);
+  --accent-a10: var(--violet-a10);
+  --accent-a11: var(--violet-a11);
+  --accent-a12: var(--violet-a12);
+}

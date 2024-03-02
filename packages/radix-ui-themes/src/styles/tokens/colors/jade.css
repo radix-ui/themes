@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/jade.css';
+@import '@radix-ui/colors/jade-dark.css';
+@import '@radix-ui/colors/jade-alpha.css';
+@import '@radix-ui/colors/jade-dark-alpha.css';
+
+:root {
+  --jade-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --jade-surface: #f1faf5cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --jade-surface: color(display-p3 0.9529 0.9804 0.9608 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --jade-surface: #13271f80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --jade-surface: color(display-p3 0.0863 0.149 0.1176 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='jade'] {
+  --color-surface-accent: var(--jade-surface);
+
+  --accent-1: var(--jade-1);
+  --accent-2: var(--jade-2);
+  --accent-3: var(--jade-3);
+  --accent-4: var(--jade-4);
+  --accent-5: var(--jade-5);
+  --accent-6: var(--jade-6);
+  --accent-7: var(--jade-7);
+  --accent-8: var(--jade-8);
+  --accent-9: var(--jade-9);
+  --accent-9-contrast: var(--jade-9-contrast);
+  --accent-10: var(--jade-10);
+  --accent-11: var(--jade-11);
+  --accent-12: var(--jade-12);
+
+  --accent-a1: var(--jade-a1);
+  --accent-a2: var(--jade-a2);
+  --accent-a3: var(--jade-a3);
+  --accent-a4: var(--jade-a4);
+  --accent-a5: var(--jade-a5);
+  --accent-a6: var(--jade-a6);
+  --accent-a7: var(--jade-a7);
+  --accent-a8: var(--jade-a8);
+  --accent-a9: var(--jade-a9);
+  --accent-a10: var(--jade-a10);
+  --accent-a11: var(--jade-a11);
+  --accent-a12: var(--jade-a12);
+}

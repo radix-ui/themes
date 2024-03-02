@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/sky.css';
+@import '@radix-ui/colors/sky-dark.css';
+@import '@radix-ui/colors/sky-alpha.css';
+@import '@radix-ui/colors/sky-dark-alpha.css';
+
+:root {
+  --sky-9-contrast: #1c2024; /* light mode slate 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --sky-surface: #eef9fdcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sky-surface: color(display-p3 0.9412 0.9765 0.9843 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --sky-surface: #13233b80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sky-surface: color(display-p3 0.0863 0.1333 0.2196 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='sky'] {
+  --color-surface-accent: var(--sky-surface);
+
+  --accent-1: var(--sky-1);
+  --accent-2: var(--sky-2);
+  --accent-3: var(--sky-3);
+  --accent-4: var(--sky-4);
+  --accent-5: var(--sky-5);
+  --accent-6: var(--sky-6);
+  --accent-7: var(--sky-7);
+  --accent-8: var(--sky-8);
+  --accent-9: var(--sky-9);
+  --accent-9-contrast: var(--sky-9-contrast);
+  --accent-10: var(--sky-10);
+  --accent-11: var(--sky-11);
+  --accent-12: var(--sky-12);
+
+  --accent-a1: var(--sky-a1);
+  --accent-a2: var(--sky-a2);
+  --accent-a3: var(--sky-a3);
+  --accent-a4: var(--sky-a4);
+  --accent-a5: var(--sky-a5);
+  --accent-a6: var(--sky-a6);
+  --accent-a7: var(--sky-a7);
+  --accent-a8: var(--sky-a8);
+  --accent-a9: var(--sky-a9);
+  --accent-a10: var(--sky-a10);
+  --accent-a11: var(--sky-a11);
+  --accent-a12: var(--sky-a12);
+}

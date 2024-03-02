@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/green-dark.css';
+@import '@radix-ui/colors/green-alpha.css';
+@import '@radix-ui/colors/green-dark-alpha.css';
+
+:root {
+  --green-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --green-surface: #f1faf4cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --green-surface: color(display-p3 0.9569 0.9804 0.9608 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --green-surface: #15251d80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --green-surface: color(display-p3 0.0941 0.1412 0.1098 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='green'] {
+  --color-surface-accent: var(--green-surface);
+
+  --accent-1: var(--green-1);
+  --accent-2: var(--green-2);
+  --accent-3: var(--green-3);
+  --accent-4: var(--green-4);
+  --accent-5: var(--green-5);
+  --accent-6: var(--green-6);
+  --accent-7: var(--green-7);
+  --accent-8: var(--green-8);
+  --accent-9: var(--green-9);
+  --accent-9-contrast: var(--green-9-contrast);
+  --accent-10: var(--green-10);
+  --accent-11: var(--green-11);
+  --accent-12: var(--green-12);
+
+  --accent-a1: var(--green-a1);
+  --accent-a2: var(--green-a2);
+  --accent-a3: var(--green-a3);
+  --accent-a4: var(--green-a4);
+  --accent-a5: var(--green-a5);
+  --accent-a6: var(--green-a6);
+  --accent-a7: var(--green-a7);
+  --accent-a8: var(--green-a8);
+  --accent-a9: var(--green-a9);
+  --accent-a10: var(--green-a10);
+  --accent-a11: var(--green-a11);
+  --accent-a12: var(--green-a12);
+}

@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/plum.css';
+@import '@radix-ui/colors/plum-dark.css';
+@import '@radix-ui/colors/plum-alpha.css';
+@import '@radix-ui/colors/plum-dark-alpha.css';
+
+:root {
+  --plum-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --plum-surface: #fdf5fdcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --plum-surface: color(display-p3 0.9843 0.9647 0.9843 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --plum-surface: #2f152f80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --plum-surface: color(display-p3 0.1647 0.0863 0.1725 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='plum'] {
+  --color-surface-accent: var(--plum-surface);
+
+  --accent-1: var(--plum-1);
+  --accent-2: var(--plum-2);
+  --accent-3: var(--plum-3);
+  --accent-4: var(--plum-4);
+  --accent-5: var(--plum-5);
+  --accent-6: var(--plum-6);
+  --accent-7: var(--plum-7);
+  --accent-8: var(--plum-8);
+  --accent-9: var(--plum-9);
+  --accent-9-contrast: var(--plum-9-contrast);
+  --accent-10: var(--plum-10);
+  --accent-11: var(--plum-11);
+  --accent-12: var(--plum-12);
+
+  --accent-a1: var(--plum-a1);
+  --accent-a2: var(--plum-a2);
+  --accent-a3: var(--plum-a3);
+  --accent-a4: var(--plum-a4);
+  --accent-a5: var(--plum-a5);
+  --accent-a6: var(--plum-a6);
+  --accent-a7: var(--plum-a7);
+  --accent-a8: var(--plum-a8);
+  --accent-a9: var(--plum-a9);
+  --accent-a10: var(--plum-a10);
+  --accent-a11: var(--plum-a11);
+  --accent-a12: var(--plum-a12);
+}

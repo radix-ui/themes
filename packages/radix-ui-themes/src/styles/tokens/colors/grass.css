@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/grass.css';
+@import '@radix-ui/colors/grass-dark.css';
+@import '@radix-ui/colors/grass-alpha.css';
+@import '@radix-ui/colors/grass-dark-alpha.css';
+
+:root {
+  --grass-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --grass-surface: #f3faf3cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --grass-surface: color(display-p3 0.9569 0.9804 0.9569 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --grass-surface: #19231b80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --grass-surface: color(display-p3 0.102 0.1333 0.102 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='grass'] {
+  --color-surface-accent: var(--grass-surface);
+
+  --accent-1: var(--grass-1);
+  --accent-2: var(--grass-2);
+  --accent-3: var(--grass-3);
+  --accent-4: var(--grass-4);
+  --accent-5: var(--grass-5);
+  --accent-6: var(--grass-6);
+  --accent-7: var(--grass-7);
+  --accent-8: var(--grass-8);
+  --accent-9: var(--grass-9);
+  --accent-9-contrast: var(--grass-9-contrast);
+  --accent-10: var(--grass-10);
+  --accent-11: var(--grass-11);
+  --accent-12: var(--grass-12);
+
+  --accent-a1: var(--grass-a1);
+  --accent-a2: var(--grass-a2);
+  --accent-a3: var(--grass-a3);
+  --accent-a4: var(--grass-a4);
+  --accent-a5: var(--grass-a5);
+  --accent-a6: var(--grass-a6);
+  --accent-a7: var(--grass-a7);
+  --accent-a8: var(--grass-a8);
+  --accent-a9: var(--grass-a9);
+  --accent-a10: var(--grass-a10);
+  --accent-a11: var(--grass-a11);
+  --accent-a12: var(--grass-a12);
+}

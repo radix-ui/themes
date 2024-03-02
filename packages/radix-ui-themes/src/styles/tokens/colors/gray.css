@@ -1,0 +1,35 @@
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/gray-alpha.css';
+@import '@radix-ui/colors/gray-dark-alpha.css';
+
+:root,
+.light,
+.light-theme {
+  --gray-surface: #ffffffcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gray-surface: color(display-p3 1 1 1 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --gray-surface: #21212180;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gray-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --gray-2-translucent: #1d1d1db3;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gray-2-translucent: color(display-p3 0.1137 0.1137 0.1137 / 0.7);
+    }
+  }
+}

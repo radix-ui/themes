@@ -1,0 +1,66 @@
+@import '@radix-ui/colors/olive.css';
+@import '@radix-ui/colors/olive-dark.css';
+@import '@radix-ui/colors/olive-alpha.css';
+@import '@radix-ui/colors/olive-dark-alpha.css';
+
+:root,
+.light,
+.light-theme {
+  --olive-surface: #ffffffcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --olive-surface: color(display-p3 1 1 1 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --olive-surface: #1f201e80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --olive-surface: color(display-p3 0.1176 0.1255 0.1176 / 0.5);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --olive-2-translucent: #1b1c1ab3;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --olive-2-translucent: color(display-p3 0.1059 0.1137 0.102 / 0.7);
+    }
+  }
+}
+
+.radix-themes:where([data-gray-color='olive']) {
+  --gray-surface: var(--olive-surface);
+
+  --gray-1: var(--olive-1);
+  --gray-2: var(--olive-2);
+  --gray-2-translucent: var(--olive-2-translucent);
+  --gray-3: var(--olive-3);
+  --gray-4: var(--olive-4);
+  --gray-5: var(--olive-5);
+  --gray-6: var(--olive-6);
+  --gray-7: var(--olive-7);
+  --gray-8: var(--olive-8);
+  --gray-9: var(--olive-9);
+  --gray-10: var(--olive-10);
+  --gray-11: var(--olive-11);
+  --gray-12: var(--olive-12);
+
+  --gray-a1: var(--olive-a1);
+  --gray-a2: var(--olive-a2);
+  --gray-a3: var(--olive-a3);
+  --gray-a4: var(--olive-a4);
+  --gray-a5: var(--olive-a5);
+  --gray-a6: var(--olive-a6);
+  --gray-a7: var(--olive-a7);
+  --gray-a8: var(--olive-a8);
+  --gray-a9: var(--olive-a9);
+  --gray-a10: var(--olive-a10);
+  --gray-a11: var(--olive-a11);
+  --gray-a12: var(--olive-a12);
+}

@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/pink.css';
+@import '@radix-ui/colors/pink-dark.css';
+@import '@radix-ui/colors/pink-alpha.css';
+@import '@radix-ui/colors/pink-dark-alpha.css';
+
+:root {
+  --pink-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --pink-surface: #fef5facc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --pink-surface: color(display-p3 0.9922 0.9608 0.9804 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --pink-surface: #31132980;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --pink-surface: color(display-p3 0.1725 0.0784 0.149 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='pink'] {
+  --color-surface-accent: var(--pink-surface);
+
+  --accent-1: var(--pink-1);
+  --accent-2: var(--pink-2);
+  --accent-3: var(--pink-3);
+  --accent-4: var(--pink-4);
+  --accent-5: var(--pink-5);
+  --accent-6: var(--pink-6);
+  --accent-7: var(--pink-7);
+  --accent-8: var(--pink-8);
+  --accent-9: var(--pink-9);
+  --accent-9-contrast: var(--pink-9-contrast);
+  --accent-10: var(--pink-10);
+  --accent-11: var(--pink-11);
+  --accent-12: var(--pink-12);
+
+  --accent-a1: var(--pink-a1);
+  --accent-a2: var(--pink-a2);
+  --accent-a3: var(--pink-a3);
+  --accent-a4: var(--pink-a4);
+  --accent-a5: var(--pink-a5);
+  --accent-a6: var(--pink-a6);
+  --accent-a7: var(--pink-a7);
+  --accent-a8: var(--pink-a8);
+  --accent-a9: var(--pink-a9);
+  --accent-a10: var(--pink-a10);
+  --accent-a11: var(--pink-a11);
+  --accent-a12: var(--pink-a12);
+}

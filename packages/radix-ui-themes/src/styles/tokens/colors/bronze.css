@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/bronze.css';
+@import '@radix-ui/colors/bronze-dark.css';
+@import '@radix-ui/colors/bronze-alpha.css';
+@import '@radix-ui/colors/bronze-dark-alpha.css';
+
+:root {
+  --bronze-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --bronze-surface: #fdf5f3cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --bronze-surface: color(display-p3 0.9843 0.9608 0.9529 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --bronze-surface: #27211d80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --bronze-surface: color(display-p3 0.1412 0.1255 0.1176 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='bronze'] {
+  --color-surface-accent: var(--bronze-surface);
+
+  --accent-1: var(--bronze-1);
+  --accent-2: var(--bronze-2);
+  --accent-3: var(--bronze-3);
+  --accent-4: var(--bronze-4);
+  --accent-5: var(--bronze-5);
+  --accent-6: var(--bronze-6);
+  --accent-7: var(--bronze-7);
+  --accent-8: var(--bronze-8);
+  --accent-9: var(--bronze-9);
+  --accent-9-contrast: var(--bronze-9-contrast);
+  --accent-10: var(--bronze-10);
+  --accent-11: var(--bronze-11);
+  --accent-12: var(--bronze-12);
+
+  --accent-a1: var(--bronze-a1);
+  --accent-a2: var(--bronze-a2);
+  --accent-a3: var(--bronze-a3);
+  --accent-a4: var(--bronze-a4);
+  --accent-a5: var(--bronze-a5);
+  --accent-a6: var(--bronze-a6);
+  --accent-a7: var(--bronze-a7);
+  --accent-a8: var(--bronze-a8);
+  --accent-a9: var(--bronze-a9);
+  --accent-a10: var(--bronze-a10);
+  --accent-a11: var(--bronze-a11);
+  --accent-a12: var(--bronze-a12);
+}

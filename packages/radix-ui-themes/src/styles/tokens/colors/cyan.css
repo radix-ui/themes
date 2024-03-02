@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/cyan.css';
+@import '@radix-ui/colors/cyan-dark.css';
+@import '@radix-ui/colors/cyan-alpha.css';
+@import '@radix-ui/colors/cyan-dark-alpha.css';
+
+:root {
+  --cyan-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --cyan-surface: #eff9facc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --cyan-surface: color(display-p3 0.9412 0.9765 0.9804 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --cyan-surface: #11252d80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --cyan-surface: color(display-p3 0.0784 0.1412 0.1725 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='cyan'] {
+  --color-surface-accent: var(--cyan-surface);
+
+  --accent-1: var(--cyan-1);
+  --accent-2: var(--cyan-2);
+  --accent-3: var(--cyan-3);
+  --accent-4: var(--cyan-4);
+  --accent-5: var(--cyan-5);
+  --accent-6: var(--cyan-6);
+  --accent-7: var(--cyan-7);
+  --accent-8: var(--cyan-8);
+  --accent-9: var(--cyan-9);
+  --accent-9-contrast: var(--cyan-9-contrast);
+  --accent-10: var(--cyan-10);
+  --accent-11: var(--cyan-11);
+  --accent-12: var(--cyan-12);
+
+  --accent-a1: var(--cyan-a1);
+  --accent-a2: var(--cyan-a2);
+  --accent-a3: var(--cyan-a3);
+  --accent-a4: var(--cyan-a4);
+  --accent-a5: var(--cyan-a5);
+  --accent-a6: var(--cyan-a6);
+  --accent-a7: var(--cyan-a7);
+  --accent-a8: var(--cyan-a8);
+  --accent-a9: var(--cyan-a9);
+  --accent-a10: var(--cyan-a10);
+  --accent-a11: var(--cyan-a11);
+  --accent-a12: var(--cyan-a12);
+}

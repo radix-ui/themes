@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/amber.css';
+@import '@radix-ui/colors/amber-dark.css';
+@import '@radix-ui/colors/amber-alpha.css';
+@import '@radix-ui/colors/amber-dark-alpha.css';
+
+:root {
+  --amber-9-contrast: #21201c; /* light mode sand 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --amber-surface: #fefae4cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --amber-surface: color(display-p3 0.9922 0.9843 0.902 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --amber-surface: #271f1380;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --amber-surface: color(display-p3 0.1412 0.1176 0.0784 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='amber'] {
+  --color-surface-accent: var(--amber-surface);
+
+  --accent-1: var(--amber-1);
+  --accent-2: var(--amber-2);
+  --accent-3: var(--amber-3);
+  --accent-4: var(--amber-4);
+  --accent-5: var(--amber-5);
+  --accent-6: var(--amber-6);
+  --accent-7: var(--amber-7);
+  --accent-8: var(--amber-8);
+  --accent-9: var(--amber-9);
+  --accent-9-contrast: var(--amber-9-contrast);
+  --accent-10: var(--amber-10);
+  --accent-11: var(--amber-11);
+  --accent-12: var(--amber-12);
+
+  --accent-a1: var(--amber-a1);
+  --accent-a2: var(--amber-a2);
+  --accent-a3: var(--amber-a3);
+  --accent-a4: var(--amber-a4);
+  --accent-a5: var(--amber-a5);
+  --accent-a6: var(--amber-a6);
+  --accent-a7: var(--amber-a7);
+  --accent-a8: var(--amber-a8);
+  --accent-a9: var(--amber-a9);
+  --accent-a10: var(--amber-a10);
+  --accent-a11: var(--amber-a11);
+  --accent-a12: var(--amber-a12);
+}

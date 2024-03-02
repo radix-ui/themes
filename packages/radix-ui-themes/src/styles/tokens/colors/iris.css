@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/iris.css';
+@import '@radix-ui/colors/iris-dark.css';
+@import '@radix-ui/colors/iris-alpha.css';
+@import '@radix-ui/colors/iris-dark-alpha.css';
+
+:root {
+  --iris-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --iris-surface: #f6f6ffcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --iris-surface: color(display-p3 0.9647 0.9647 0.9961 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --iris-surface: #1d1b3980;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --iris-surface: color(display-p3 0.1098 0.102 0.2118 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='iris'] {
+  --color-surface-accent: var(--iris-surface);
+
+  --accent-1: var(--iris-1);
+  --accent-2: var(--iris-2);
+  --accent-3: var(--iris-3);
+  --accent-4: var(--iris-4);
+  --accent-5: var(--iris-5);
+  --accent-6: var(--iris-6);
+  --accent-7: var(--iris-7);
+  --accent-8: var(--iris-8);
+  --accent-9: var(--iris-9);
+  --accent-9-contrast: var(--iris-9-contrast);
+  --accent-10: var(--iris-10);
+  --accent-11: var(--iris-11);
+  --accent-12: var(--iris-12);
+
+  --accent-a1: var(--iris-a1);
+  --accent-a2: var(--iris-a2);
+  --accent-a3: var(--iris-a3);
+  --accent-a4: var(--iris-a4);
+  --accent-a5: var(--iris-a5);
+  --accent-a6: var(--iris-a6);
+  --accent-a7: var(--iris-a7);
+  --accent-a8: var(--iris-a8);
+  --accent-a9: var(--iris-a9);
+  --accent-a10: var(--iris-a10);
+  --accent-a11: var(--iris-a11);
+  --accent-a12: var(--iris-a12);
+}

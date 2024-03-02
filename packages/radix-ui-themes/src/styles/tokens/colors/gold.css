@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/gold.css';
+@import '@radix-ui/colors/gold-dark.css';
+@import '@radix-ui/colors/gold-alpha.css';
+@import '@radix-ui/colors/gold-dark-alpha.css';
+
+:root {
+  --gold-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --gold-surface: #f9f8efcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gold-surface: color(display-p3 0.9765 0.9725 0.9412 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --gold-surface: #25231d80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gold-surface: color(display-p3 0.1412 0.1333 0.1098 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='gold'] {
+  --color-surface-accent: var(--gold-surface);
+
+  --accent-1: var(--gold-1);
+  --accent-2: var(--gold-2);
+  --accent-3: var(--gold-3);
+  --accent-4: var(--gold-4);
+  --accent-5: var(--gold-5);
+  --accent-6: var(--gold-6);
+  --accent-7: var(--gold-7);
+  --accent-8: var(--gold-8);
+  --accent-9: var(--gold-9);
+  --accent-9-contrast: var(--gold-9-contrast);
+  --accent-10: var(--gold-10);
+  --accent-11: var(--gold-11);
+  --accent-12: var(--gold-12);
+
+  --accent-a1: var(--gold-a1);
+  --accent-a2: var(--gold-a2);
+  --accent-a3: var(--gold-a3);
+  --accent-a4: var(--gold-a4);
+  --accent-a5: var(--gold-a5);
+  --accent-a6: var(--gold-a6);
+  --accent-a7: var(--gold-a7);
+  --accent-a8: var(--gold-a8);
+  --accent-a9: var(--gold-a9);
+  --accent-a10: var(--gold-a10);
+  --accent-a11: var(--gold-a11);
+  --accent-a12: var(--gold-a12);
+}

@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/indigo.css';
+@import '@radix-ui/colors/indigo-dark.css';
+@import '@radix-ui/colors/indigo-alpha.css';
+@import '@radix-ui/colors/indigo-dark-alpha.css';
+
+:root {
+  --indigo-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --indigo-surface: #f5f8ffcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --indigo-surface: color(display-p3 0.9647 0.9725 0.9961 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --indigo-surface: #171d3b80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --indigo-surface: color(display-p3 0.0941 0.1098 0.2196 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='indigo'] {
+  --color-surface-accent: var(--indigo-surface);
+
+  --accent-1: var(--indigo-1);
+  --accent-2: var(--indigo-2);
+  --accent-3: var(--indigo-3);
+  --accent-4: var(--indigo-4);
+  --accent-5: var(--indigo-5);
+  --accent-6: var(--indigo-6);
+  --accent-7: var(--indigo-7);
+  --accent-8: var(--indigo-8);
+  --accent-9: var(--indigo-9);
+  --accent-9-contrast: var(--indigo-9-contrast);
+  --accent-10: var(--indigo-10);
+  --accent-11: var(--indigo-11);
+  --accent-12: var(--indigo-12);
+
+  --accent-a1: var(--indigo-a1);
+  --accent-a2: var(--indigo-a2);
+  --accent-a3: var(--indigo-a3);
+  --accent-a4: var(--indigo-a4);
+  --accent-a5: var(--indigo-a5);
+  --accent-a6: var(--indigo-a6);
+  --accent-a7: var(--indigo-a7);
+  --accent-a8: var(--indigo-a8);
+  --accent-a9: var(--indigo-a9);
+  --accent-a10: var(--indigo-a10);
+  --accent-a11: var(--indigo-a11);
+  --accent-a12: var(--indigo-a12);
+}

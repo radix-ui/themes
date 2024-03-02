@@ -1,0 +1,66 @@
+@import '@radix-ui/colors/sand.css';
+@import '@radix-ui/colors/sand-dark.css';
+@import '@radix-ui/colors/sand-alpha.css';
+@import '@radix-ui/colors/sand-dark-alpha.css';
+
+:root,
+.light,
+.light-theme {
+  --sand-surface: #ffffffcc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sand-surface: color(display-p3 1 1 1 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --sand-surface: #21212080;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sand-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --sand-2-translucent: #1d1d1bb3;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sand-2-translucent: color(display-p3 0.1137 0.1137 0.1059 / 0.7);
+    }
+  }
+}
+
+.radix-themes:where([data-gray-color='sand']) {
+  --gray-surface: var(--sand-surface);
+
+  --gray-1: var(--sand-1);
+  --gray-2: var(--sand-2);
+  --gray-2-translucent: var(--sand-2-translucent);
+  --gray-3: var(--sand-3);
+  --gray-4: var(--sand-4);
+  --gray-5: var(--sand-5);
+  --gray-6: var(--sand-6);
+  --gray-7: var(--sand-7);
+  --gray-8: var(--sand-8);
+  --gray-9: var(--sand-9);
+  --gray-10: var(--sand-10);
+  --gray-11: var(--sand-11);
+  --gray-12: var(--sand-12);
+
+  --gray-a1: var(--sand-a1);
+  --gray-a2: var(--sand-a2);
+  --gray-a3: var(--sand-a3);
+  --gray-a4: var(--sand-a4);
+  --gray-a5: var(--sand-a5);
+  --gray-a6: var(--sand-a6);
+  --gray-a7: var(--sand-a7);
+  --gray-a8: var(--sand-a8);
+  --gray-a9: var(--sand-a9);
+  --gray-a10: var(--sand-a10);
+  --gray-a11: var(--sand-a11);
+  --gray-a12: var(--sand-a12);
+}

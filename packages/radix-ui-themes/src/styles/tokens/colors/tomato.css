@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/tomato.css';
+@import '@radix-ui/colors/tomato-dark.css';
+@import '@radix-ui/colors/tomato-alpha.css';
+@import '@radix-ui/colors/tomato-dark-alpha.css';
+
+:root {
+  --tomato-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --tomato-surface: #fff6f5cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --tomato-surface: color(display-p3 0.9922 0.9647 0.9608 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --tomato-surface: #2d191580;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --tomato-surface: color(display-p3 0.1569 0.0941 0.0784 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='tomato'] {
+  --color-surface-accent: var(--tomato-surface);
+
+  --accent-1: var(--tomato-1);
+  --accent-2: var(--tomato-2);
+  --accent-3: var(--tomato-3);
+  --accent-4: var(--tomato-4);
+  --accent-5: var(--tomato-5);
+  --accent-6: var(--tomato-6);
+  --accent-7: var(--tomato-7);
+  --accent-8: var(--tomato-8);
+  --accent-9: var(--tomato-9);
+  --accent-9-contrast: var(--tomato-9-contrast);
+  --accent-10: var(--tomato-10);
+  --accent-11: var(--tomato-11);
+  --accent-12: var(--tomato-12);
+
+  --accent-a1: var(--tomato-a1);
+  --accent-a2: var(--tomato-a2);
+  --accent-a3: var(--tomato-a3);
+  --accent-a4: var(--tomato-a4);
+  --accent-a5: var(--tomato-a5);
+  --accent-a6: var(--tomato-a6);
+  --accent-a7: var(--tomato-a7);
+  --accent-a8: var(--tomato-a8);
+  --accent-a9: var(--tomato-a9);
+  --accent-a10: var(--tomato-a10);
+  --accent-a11: var(--tomato-a11);
+  --accent-a12: var(--tomato-a12);
+}

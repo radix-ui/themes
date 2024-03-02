@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/yellow.css';
+@import '@radix-ui/colors/yellow-dark.css';
+@import '@radix-ui/colors/yellow-alpha.css';
+@import '@radix-ui/colors/yellow-dark-alpha.css';
+
+:root {
+  --yellow-9-contrast: #21201c; /* light mode sand 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --yellow-surface: #fefbe4cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --yellow-surface: color(display-p3 0.9961 0.9922 0.902 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --yellow-surface: #231f1380;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --yellow-surface: color(display-p3 0.1333 0.1176 0.0706 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='yellow'] {
+  --color-surface-accent: var(--yellow-surface);
+
+  --accent-1: var(--yellow-1);
+  --accent-2: var(--yellow-2);
+  --accent-3: var(--yellow-3);
+  --accent-4: var(--yellow-4);
+  --accent-5: var(--yellow-5);
+  --accent-6: var(--yellow-6);
+  --accent-7: var(--yellow-7);
+  --accent-8: var(--yellow-8);
+  --accent-9: var(--yellow-9);
+  --accent-9-contrast: var(--yellow-9-contrast);
+  --accent-10: var(--yellow-10);
+  --accent-11: var(--yellow-11);
+  --accent-12: var(--yellow-12);
+
+  --accent-a1: var(--yellow-a1);
+  --accent-a2: var(--yellow-a2);
+  --accent-a3: var(--yellow-a3);
+  --accent-a4: var(--yellow-a4);
+  --accent-a5: var(--yellow-a5);
+  --accent-a6: var(--yellow-a6);
+  --accent-a7: var(--yellow-a7);
+  --accent-a8: var(--yellow-a8);
+  --accent-a9: var(--yellow-a9);
+  --accent-a10: var(--yellow-a10);
+  --accent-a11: var(--yellow-a11);
+  --accent-a12: var(--yellow-a12);
+}

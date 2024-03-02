@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/crimson.css';
+@import '@radix-ui/colors/crimson-dark.css';
+@import '@radix-ui/colors/crimson-alpha.css';
+@import '@radix-ui/colors/crimson-dark-alpha.css';
+
+:root {
+  --crimson-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --crimson-surface: #fef5f8cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --crimson-surface: color(display-p3 0.9922 0.9608 0.9725 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --crimson-surface: #2f151f80;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --crimson-surface: color(display-p3 0.1647 0.0863 0.1176 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='crimson'] {
+  --color-surface-accent: var(--crimson-surface);
+
+  --accent-1: var(--crimson-1);
+  --accent-2: var(--crimson-2);
+  --accent-3: var(--crimson-3);
+  --accent-4: var(--crimson-4);
+  --accent-5: var(--crimson-5);
+  --accent-6: var(--crimson-6);
+  --accent-7: var(--crimson-7);
+  --accent-8: var(--crimson-8);
+  --accent-9: var(--crimson-9);
+  --accent-9-contrast: var(--crimson-9-contrast);
+  --accent-10: var(--crimson-10);
+  --accent-11: var(--crimson-11);
+  --accent-12: var(--crimson-12);
+
+  --accent-a1: var(--crimson-a1);
+  --accent-a2: var(--crimson-a2);
+  --accent-a3: var(--crimson-a3);
+  --accent-a4: var(--crimson-a4);
+  --accent-a5: var(--crimson-a5);
+  --accent-a6: var(--crimson-a6);
+  --accent-a7: var(--crimson-a7);
+  --accent-a8: var(--crimson-a8);
+  --accent-a9: var(--crimson-a9);
+  --accent-a10: var(--crimson-a10);
+  --accent-a11: var(--crimson-a11);
+  --accent-a12: var(--crimson-a12);
+}

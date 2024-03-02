@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/lime.css';
+@import '@radix-ui/colors/lime-dark.css';
+@import '@radix-ui/colors/lime-alpha.css';
+@import '@radix-ui/colors/lime-dark-alpha.css';
+
+:root {
+  --lime-9-contrast: #1d211c; /* light mode olive 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --lime-surface: #f6f9f0cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --lime-surface: color(display-p3 0.9725 0.9765 0.9412 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --lime-surface: #1b211580;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --lime-surface: color(display-p3 0.1098 0.1255 0.0784 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='lime'] {
+  --color-surface-accent: var(--lime-surface);
+
+  --accent-1: var(--lime-1);
+  --accent-2: var(--lime-2);
+  --accent-3: var(--lime-3);
+  --accent-4: var(--lime-4);
+  --accent-5: var(--lime-5);
+  --accent-6: var(--lime-6);
+  --accent-7: var(--lime-7);
+  --accent-8: var(--lime-8);
+  --accent-9: var(--lime-9);
+  --accent-9-contrast: var(--lime-9-contrast);
+  --accent-10: var(--lime-10);
+  --accent-11: var(--lime-11);
+  --accent-12: var(--lime-12);
+
+  --accent-a1: var(--lime-a1);
+  --accent-a2: var(--lime-a2);
+  --accent-a3: var(--lime-a3);
+  --accent-a4: var(--lime-a4);
+  --accent-a5: var(--lime-a5);
+  --accent-a6: var(--lime-a6);
+  --accent-a7: var(--lime-a7);
+  --accent-a8: var(--lime-a8);
+  --accent-a9: var(--lime-a9);
+  --accent-a10: var(--lime-a10);
+  --accent-a11: var(--lime-a11);
+  --accent-a12: var(--lime-a12);
+}

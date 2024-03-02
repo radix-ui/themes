@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/teal.css';
+@import '@radix-ui/colors/teal-dark.css';
+@import '@radix-ui/colors/teal-alpha.css';
+@import '@radix-ui/colors/teal-dark-alpha.css';
+
+:root {
+  --teal-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --teal-surface: #f0faf8cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --teal-surface: color(display-p3 0.9451 0.9804 0.9725 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --teal-surface: #13272580;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --teal-surface: color(display-p3 0.0863 0.149 0.1412 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='teal'] {
+  --color-surface-accent: var(--teal-surface);
+
+  --accent-1: var(--teal-1);
+  --accent-2: var(--teal-2);
+  --accent-3: var(--teal-3);
+  --accent-4: var(--teal-4);
+  --accent-5: var(--teal-5);
+  --accent-6: var(--teal-6);
+  --accent-7: var(--teal-7);
+  --accent-8: var(--teal-8);
+  --accent-9: var(--teal-9);
+  --accent-9-contrast: var(--teal-9-contrast);
+  --accent-10: var(--teal-10);
+  --accent-11: var(--teal-11);
+  --accent-12: var(--teal-12);
+
+  --accent-a1: var(--teal-a1);
+  --accent-a2: var(--teal-a2);
+  --accent-a3: var(--teal-a3);
+  --accent-a4: var(--teal-a4);
+  --accent-a5: var(--teal-a5);
+  --accent-a6: var(--teal-a6);
+  --accent-a7: var(--teal-a7);
+  --accent-a8: var(--teal-a8);
+  --accent-a9: var(--teal-a9);
+  --accent-a10: var(--teal-a10);
+  --accent-a11: var(--teal-a11);
+  --accent-a12: var(--teal-a12);
+}

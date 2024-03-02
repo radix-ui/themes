@@ -1,0 +1,60 @@
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/red-dark.css';
+@import '@radix-ui/colors/red-alpha.css';
+@import '@radix-ui/colors/red-dark-alpha.css';
+
+:root {
+  --red-9-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --red-surface: #fff5f5cc;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --red-surface: color(display-p3 0.9961 0.9647 0.9647 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --red-surface: #2f151780;
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --red-surface: color(display-p3 0.1647 0.0863 0.0863 / 0.5);
+    }
+  }
+}
+
+[data-accent-color='red'] {
+  --color-surface-accent: var(--red-surface);
+
+  --accent-1: var(--red-1);
+  --accent-2: var(--red-2);
+  --accent-3: var(--red-3);
+  --accent-4: var(--red-4);
+  --accent-5: var(--red-5);
+  --accent-6: var(--red-6);
+  --accent-7: var(--red-7);
+  --accent-8: var(--red-8);
+  --accent-9: var(--red-9);
+  --accent-9-contrast: var(--red-9-contrast);
+  --accent-10: var(--red-10);
+  --accent-11: var(--red-11);
+  --accent-12: var(--red-12);
+
+  --accent-a1: var(--red-a1);
+  --accent-a2: var(--red-a2);
+  --accent-a3: var(--red-a3);
+  --accent-a4: var(--red-a4);
+  --accent-a5: var(--red-a5);
+  --accent-a6: var(--red-a6);
+  --accent-a7: var(--red-a7);
+  --accent-a8: var(--red-a8);
+  --accent-a9: var(--red-a9);
+  --accent-a10: var(--red-a10);
+  --accent-a11: var(--red-a11);
+  --accent-a12: var(--red-a12);
+}
