@@ -11,7 +11,7 @@
   --color-background: white;
   --color-overlay: var(--black-a6);
   --color-panel-solid: white;
-  --color-panel-translucent: rgba(255, 255, 255, 0.75);
+  --color-panel-translucent: rgba(255, 255, 255, 0.7);
   --color-surface: rgba(255, 255, 255, 0.85);
 }
 :is(.dark, .dark-theme),
@@ -126,9 +126,11 @@
 .radix-themes {
   &:where([data-panel-background='solid']) {
     --color-panel: var(--color-panel-solid);
+    --backdrop-filter-panel: none;
   }
   &:where([data-panel-background='translucent']) {
     --color-panel: var(--color-panel-translucent);
+    --backdrop-filter-panel: blur(64px);
   }
 }
 
