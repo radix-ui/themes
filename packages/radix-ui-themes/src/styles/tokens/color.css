@@ -11,15 +11,15 @@
   --color-background: white;
   --color-overlay: var(--black-a6);
   --color-panel-solid: white;
-  --color-panel-translucent: rgba(255, 255, 255, 0.8);
-  --color-surface: rgba(255, 255, 255, 0.9);
+  --color-panel-translucent: rgba(255, 255, 255, 0.75);
+  --color-surface: rgba(255, 255, 255, 0.85);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --color-background: var(--gray-1);
   --color-overlay: var(--black-a8);
   --color-panel-solid: var(--gray-2);
-  --color-panel-translucent: var(--gray-2-translucent);
+  --color-panel-translucent: var(--gray-a2);
   --color-surface: rgba(0, 0, 0, 0.25);
 }
 

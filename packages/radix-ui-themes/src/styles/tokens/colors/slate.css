@@ -24,20 +24,9 @@
   }
 }
 
-.dark,
-.dark-theme {
-  --slate-2-translucent: #1b1d1eb3;
-  @supports (color: color(display-p3 1 1 1)) {
-    @media (color-gamut: p3) {
-      --slate-2-translucent: color(display-p3 0.1059 0.1137 0.1176 / 0.7);
-    }
-  }
-}
-
 .radix-themes:where([data-gray-color='slate']) {
   --gray-1: var(--slate-1);
   --gray-2: var(--slate-2);
-  --gray-2-translucent: var(--slate-2-translucent);
   --gray-3: var(--slate-3);
   --gray-4: var(--slate-4);
   --gray-5: var(--slate-5);

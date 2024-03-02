@@ -24,20 +24,9 @@
   }
 }
 
-.dark,
-.dark-theme {
-  --sage-2-translucent: #1a1c1bb3;
-  @supports (color: color(display-p3 1 1 1)) {
-    @media (color-gamut: p3) {
-      --sage-2-translucent: color(display-p3 0.102 0.1137 0.1059 / 0.7);
-    }
-  }
-}
-
 .radix-themes:where([data-gray-color='sage']) {
   --gray-1: var(--sage-1);
   --gray-2: var(--sage-2);
-  --gray-2-translucent: var(--sage-2-translucent);
   --gray-3: var(--sage-3);
   --gray-4: var(--sage-4);
   --gray-5: var(--sage-5);

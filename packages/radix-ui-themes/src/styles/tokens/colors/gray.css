@@ -23,13 +23,3 @@
     }
   }
 }
-
-.dark,
-.dark-theme {
-  --gray-2-translucent: #1d1d1db3;
-  @supports (color: color(display-p3 1 1 1)) {
-    @media (color-gamut: p3) {
-      --gray-2-translucent: color(display-p3 0.1137 0.1137 0.1137 / 0.7);
-    }
-  }
-}
