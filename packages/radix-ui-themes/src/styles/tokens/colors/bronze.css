@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/bronze-dark-alpha.css';
 
 :root {
-  --bronze-9-contrast: white;
+  --bronze-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='bronze'] {
-  --color-surface-accent: var(--bronze-surface);
-
   --accent-1: var(--bronze-1);
   --accent-2: var(--bronze-2);
   --accent-3: var(--bronze-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--bronze-7);
   --accent-8: var(--bronze-8);
   --accent-9: var(--bronze-9);
-  --accent-9-contrast: var(--bronze-9-contrast);
   --accent-10: var(--bronze-10);
   --accent-11: var(--bronze-11);
   --accent-12: var(--bronze-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--bronze-a10);
   --accent-a11: var(--bronze-a11);
   --accent-a12: var(--bronze-a12);
+
+  --accent-contrast: var(--bronze-contrast);
+  --accent-surface: var(--bronze-surface);
 }

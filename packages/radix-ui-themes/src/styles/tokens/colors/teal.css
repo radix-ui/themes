@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/teal-dark-alpha.css';
 
 :root {
-  --teal-9-contrast: white;
+  --teal-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='teal'] {
-  --color-surface-accent: var(--teal-surface);
-
   --accent-1: var(--teal-1);
   --accent-2: var(--teal-2);
   --accent-3: var(--teal-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--teal-7);
   --accent-8: var(--teal-8);
   --accent-9: var(--teal-9);
-  --accent-9-contrast: var(--teal-9-contrast);
   --accent-10: var(--teal-10);
   --accent-11: var(--teal-11);
   --accent-12: var(--teal-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--teal-a10);
   --accent-a11: var(--teal-a11);
   --accent-a12: var(--teal-a12);
+
+  --accent-contrast: var(--teal-contrast);
+  --accent-surface: var(--teal-surface);
 }

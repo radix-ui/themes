@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/blue-dark-alpha.css';
 
 :root {
-  --blue-9-contrast: white;
+  --blue-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='blue'] {
-  --color-surface-accent: var(--blue-surface);
-
   --accent-1: var(--blue-1);
   --accent-2: var(--blue-2);
   --accent-3: var(--blue-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--blue-7);
   --accent-8: var(--blue-8);
   --accent-9: var(--blue-9);
-  --accent-9-contrast: var(--blue-9-contrast);
   --accent-10: var(--blue-10);
   --accent-11: var(--blue-11);
   --accent-12: var(--blue-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--blue-a10);
   --accent-a11: var(--blue-a11);
   --accent-a12: var(--blue-a12);
+
+  --accent-contrast: var(--blue-contrast);
+  --accent-surface: var(--blue-surface);
 }

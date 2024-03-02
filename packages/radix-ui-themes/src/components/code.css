@@ -8,9 +8,7 @@
   font-style: var(--code-font-style);
   font-weight: var(--code-font-weight);
   line-height: 1.25;
-  letter-spacing: calc(
-    var(--code-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
-  );
+  letter-spacing: calc(var(--code-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing)));
   border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
 
   box-sizing: border-box;
@@ -109,7 +107,7 @@
 
 .rt-Code:where(.rt-variant-solid) {
   background-color: var(--accent-a9);
-  color: var(--accent-9-contrast);
+  color: var(--accent-contrast);
 
   &:where(.rt-high-contrast) {
     background-color: var(--accent-12);
@@ -166,8 +164,7 @@
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {
-    box-shadow: inset 0 0 0 max(1px, 0.033em) var(--accent-a7),
-      inset 0 0 0 max(1px, 0.033em) var(--gray-a11);
+    box-shadow: inset 0 0 0 max(1px, 0.033em) var(--accent-a7), inset 0 0 0 max(1px, 0.033em) var(--gray-a11);
     color: var(--accent-12);
   }
 

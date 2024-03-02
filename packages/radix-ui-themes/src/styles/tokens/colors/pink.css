@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/pink-dark-alpha.css';
 
 :root {
-  --pink-9-contrast: white;
+  --pink-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='pink'] {
-  --color-surface-accent: var(--pink-surface);
-
   --accent-1: var(--pink-1);
   --accent-2: var(--pink-2);
   --accent-3: var(--pink-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--pink-7);
   --accent-8: var(--pink-8);
   --accent-9: var(--pink-9);
-  --accent-9-contrast: var(--pink-9-contrast);
   --accent-10: var(--pink-10);
   --accent-11: var(--pink-11);
   --accent-12: var(--pink-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--pink-a10);
   --accent-a11: var(--pink-a11);
   --accent-a12: var(--pink-a12);
+
+  --accent-contrast: var(--pink-contrast);
+  --accent-surface: var(--pink-surface);
 }

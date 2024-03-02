@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/crimson-dark-alpha.css';
 
 :root {
-  --crimson-9-contrast: white;
+  --crimson-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='crimson'] {
-  --color-surface-accent: var(--crimson-surface);
-
   --accent-1: var(--crimson-1);
   --accent-2: var(--crimson-2);
   --accent-3: var(--crimson-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--crimson-7);
   --accent-8: var(--crimson-8);
   --accent-9: var(--crimson-9);
-  --accent-9-contrast: var(--crimson-9-contrast);
   --accent-10: var(--crimson-10);
   --accent-11: var(--crimson-11);
   --accent-12: var(--crimson-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--crimson-a10);
   --accent-a11: var(--crimson-a11);
   --accent-a12: var(--crimson-a12);
+
+  --accent-contrast: var(--crimson-contrast);
+  --accent-surface: var(--crimson-surface);
 }

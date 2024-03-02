@@ -35,8 +35,6 @@
 }
 
 .radix-themes:where([data-gray-color='olive']) {
-  --gray-surface: var(--olive-surface);
-
   --gray-1: var(--olive-1);
   --gray-2: var(--olive-2);
   --gray-2-translucent: var(--olive-2-translucent);
@@ -63,4 +61,6 @@
   --gray-a10: var(--olive-a10);
   --gray-a11: var(--olive-a11);
   --gray-a12: var(--olive-a12);
+
+  --gray-surface: var(--olive-surface);
 }

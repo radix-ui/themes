@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/lime-dark-alpha.css';
 
 :root {
-  --lime-9-contrast: #1d211c; /* light mode olive 12 */
+  --lime-contrast: #1d211c; /* light mode olive 12 */
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='lime'] {
-  --color-surface-accent: var(--lime-surface);
-
   --accent-1: var(--lime-1);
   --accent-2: var(--lime-2);
   --accent-3: var(--lime-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--lime-7);
   --accent-8: var(--lime-8);
   --accent-9: var(--lime-9);
-  --accent-9-contrast: var(--lime-9-contrast);
   --accent-10: var(--lime-10);
   --accent-11: var(--lime-11);
   --accent-12: var(--lime-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--lime-a10);
   --accent-a11: var(--lime-a11);
   --accent-a12: var(--lime-a12);
+
+  --accent-contrast: var(--lime-contrast);
+  --accent-surface: var(--lime-surface);
 }

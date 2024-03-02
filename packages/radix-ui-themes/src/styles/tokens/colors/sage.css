@@ -35,8 +35,6 @@
 }
 
 .radix-themes:where([data-gray-color='sage']) {
-  --gray-surface: var(--sage-surface);
-
   --gray-1: var(--sage-1);
   --gray-2: var(--sage-2);
   --gray-2-translucent: var(--sage-2-translucent);
@@ -63,4 +61,6 @@
   --gray-a10: var(--sage-a10);
   --gray-a11: var(--sage-a11);
   --gray-a12: var(--sage-a12);
+
+  --gray-surface: var(--sage-surface);
 }

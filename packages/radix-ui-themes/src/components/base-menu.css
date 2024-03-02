@@ -210,10 +210,10 @@
   }
   & :where(.rt-BaseMenuItem[data-highlighted]) {
     background-color: var(--accent-9);
-    color: var(--accent-9-contrast);
+    color: var(--accent-contrast);
 
     & :where(.rt-BaseMenuSubTriggerIcon) {
-      color: var(--accent-9-contrast);
+      color: var(--accent-contrast);
     }
   }
   &:where(.rt-high-contrast) {
@@ -227,7 +227,7 @@
 
       &:where([data-accent-color]) {
         background-color: var(--accent-9);
-        color: var(--accent-9-contrast);
+        color: var(--accent-contrast);
       }
     }
   }

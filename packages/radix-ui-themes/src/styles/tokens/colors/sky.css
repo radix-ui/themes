@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/sky-dark-alpha.css';
 
 :root {
-  --sky-9-contrast: #1c2024; /* light mode slate 12 */
+  --sky-contrast: #1c2024; /* light mode slate 12 */
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='sky'] {
-  --color-surface-accent: var(--sky-surface);
-
   --accent-1: var(--sky-1);
   --accent-2: var(--sky-2);
   --accent-3: var(--sky-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--sky-7);
   --accent-8: var(--sky-8);
   --accent-9: var(--sky-9);
-  --accent-9-contrast: var(--sky-9-contrast);
   --accent-10: var(--sky-10);
   --accent-11: var(--sky-11);
   --accent-12: var(--sky-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--sky-a10);
   --accent-a11: var(--sky-a11);
   --accent-a12: var(--sky-a12);
+
+  --accent-contrast: var(--sky-contrast);
+  --accent-surface: var(--sky-surface);
 }

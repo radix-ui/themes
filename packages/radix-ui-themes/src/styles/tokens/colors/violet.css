@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/violet-dark-alpha.css';
 
 :root {
-  --violet-9-contrast: white;
+  --violet-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='violet'] {
-  --color-surface-accent: var(--violet-surface);
-
   --accent-1: var(--violet-1);
   --accent-2: var(--violet-2);
   --accent-3: var(--violet-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--violet-7);
   --accent-8: var(--violet-8);
   --accent-9: var(--violet-9);
-  --accent-9-contrast: var(--violet-9-contrast);
   --accent-10: var(--violet-10);
   --accent-11: var(--violet-11);
   --accent-12: var(--violet-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--violet-a10);
   --accent-a11: var(--violet-a11);
   --accent-a12: var(--violet-a12);
+
+  --accent-contrast: var(--violet-contrast);
+  --accent-surface: var(--violet-surface);
 }

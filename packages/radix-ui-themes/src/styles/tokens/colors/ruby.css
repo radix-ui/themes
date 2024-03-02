@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/ruby-dark-alpha.css';
 
 :root {
-  --ruby-9-contrast: white;
+  --ruby-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='ruby'] {
-  --color-surface-accent: var(--ruby-surface);
-
   --accent-1: var(--ruby-1);
   --accent-2: var(--ruby-2);
   --accent-3: var(--ruby-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--ruby-7);
   --accent-8: var(--ruby-8);
   --accent-9: var(--ruby-9);
-  --accent-9-contrast: var(--ruby-9-contrast);
   --accent-10: var(--ruby-10);
   --accent-11: var(--ruby-11);
   --accent-12: var(--ruby-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--ruby-a10);
   --accent-a11: var(--ruby-a11);
   --accent-a12: var(--ruby-a12);
+
+  --accent-contrast: var(--ruby-contrast);
+  --accent-surface: var(--ruby-surface);
 }

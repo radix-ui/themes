@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/orange-dark-alpha.css';
 
 :root {
-  --orange-9-contrast: white;
+  --orange-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='orange'] {
-  --color-surface-accent: var(--orange-surface);
-
   --accent-1: var(--orange-1);
   --accent-2: var(--orange-2);
   --accent-3: var(--orange-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--orange-7);
   --accent-8: var(--orange-8);
   --accent-9: var(--orange-9);
-  --accent-9-contrast: var(--orange-9-contrast);
   --accent-10: var(--orange-10);
   --accent-11: var(--orange-11);
   --accent-12: var(--orange-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--orange-a10);
   --accent-a11: var(--orange-a11);
   --accent-a12: var(--orange-a12);
+
+  --accent-contrast: var(--orange-contrast);
+  --accent-surface: var(--orange-surface);
 }

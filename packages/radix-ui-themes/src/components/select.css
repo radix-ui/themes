@@ -464,7 +464,7 @@
 .rt-SelectContent:where(.rt-variant-solid) {
   & :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-9);
-    color: var(--accent-9-contrast);
+    color: var(--accent-contrast);
   }
   &:where(.rt-high-contrast) :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-12);

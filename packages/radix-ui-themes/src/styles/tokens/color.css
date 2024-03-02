@@ -139,12 +139,10 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 :root {
-  --gray-9-contrast: white;
+  --gray-contrast: white;
 }
 
 [data-accent-color='gray'] {
-  --color-surface-accent: var(--gray-surface);
-
   --accent-1: var(--gray-1);
   --accent-2: var(--gray-2);
   --accent-3: var(--gray-3);
@@ -154,7 +152,6 @@
   --accent-7: var(--gray-7);
   --accent-8: var(--gray-8);
   --accent-9: var(--gray-9);
-  --accent-9-contrast: var(--gray-9-contrast);
   --accent-10: var(--gray-10);
   --accent-11: var(--gray-11);
   --accent-12: var(--gray-12);
@@ -171,4 +168,7 @@
   --accent-a10: var(--gray-a10);
   --accent-a11: var(--gray-a11);
   --accent-a12: var(--gray-a12);
+
+  --accent-contrast: var(--gray-contrast);
+  --accent-surface: var(--gray-surface);
 }

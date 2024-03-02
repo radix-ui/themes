@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/mint-dark-alpha.css';
 
 :root {
-  --mint-9-contrast: #1a211e; /* light mode sage 12 */
+  --mint-contrast: #1a211e; /* light mode sage 12 */
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='mint'] {
-  --color-surface-accent: var(--mint-surface);
-
   --accent-1: var(--mint-1);
   --accent-2: var(--mint-2);
   --accent-3: var(--mint-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--mint-7);
   --accent-8: var(--mint-8);
   --accent-9: var(--mint-9);
-  --accent-9-contrast: var(--mint-9-contrast);
   --accent-10: var(--mint-10);
   --accent-11: var(--mint-11);
   --accent-12: var(--mint-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--mint-a10);
   --accent-a11: var(--mint-a11);
   --accent-a12: var(--mint-a12);
+
+  --accent-contrast: var(--mint-contrast);
+  --accent-surface: var(--mint-surface);
 }

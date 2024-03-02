@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/amber-dark-alpha.css';
 
 :root {
-  --amber-9-contrast: #21201c; /* light mode sand 12 */
+  --amber-contrast: #21201c; /* light mode sand 12 */
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='amber'] {
-  --color-surface-accent: var(--amber-surface);
-
   --accent-1: var(--amber-1);
   --accent-2: var(--amber-2);
   --accent-3: var(--amber-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--amber-7);
   --accent-8: var(--amber-8);
   --accent-9: var(--amber-9);
-  --accent-9-contrast: var(--amber-9-contrast);
   --accent-10: var(--amber-10);
   --accent-11: var(--amber-11);
   --accent-12: var(--amber-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--amber-a10);
   --accent-a11: var(--amber-a11);
   --accent-a12: var(--amber-a12);
+
+  --accent-contrast: var(--amber-contrast);
+  --accent-surface: var(--amber-surface);
 }

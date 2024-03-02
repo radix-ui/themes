@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/green-dark-alpha.css';
 
 :root {
-  --green-9-contrast: white;
+  --green-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='green'] {
-  --color-surface-accent: var(--green-surface);
-
   --accent-1: var(--green-1);
   --accent-2: var(--green-2);
   --accent-3: var(--green-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--green-7);
   --accent-8: var(--green-8);
   --accent-9: var(--green-9);
-  --accent-9-contrast: var(--green-9-contrast);
   --accent-10: var(--green-10);
   --accent-11: var(--green-11);
   --accent-12: var(--green-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--green-a10);
   --accent-a11: var(--green-a11);
   --accent-a12: var(--green-a12);
+
+  --accent-contrast: var(--green-contrast);
+  --accent-surface: var(--green-surface);
 }

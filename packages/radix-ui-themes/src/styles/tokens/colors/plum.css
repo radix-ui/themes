@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/plum-dark-alpha.css';
 
 :root {
-  --plum-9-contrast: white;
+  --plum-contrast: white;
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='plum'] {
-  --color-surface-accent: var(--plum-surface);
-
   --accent-1: var(--plum-1);
   --accent-2: var(--plum-2);
   --accent-3: var(--plum-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--plum-7);
   --accent-8: var(--plum-8);
   --accent-9: var(--plum-9);
-  --accent-9-contrast: var(--plum-9-contrast);
   --accent-10: var(--plum-10);
   --accent-11: var(--plum-11);
   --accent-12: var(--plum-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--plum-a10);
   --accent-a11: var(--plum-a11);
   --accent-a12: var(--plum-a12);
+
+  --accent-contrast: var(--plum-contrast);
+  --accent-surface: var(--plum-surface);
 }

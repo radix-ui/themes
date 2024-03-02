@@ -4,7 +4,7 @@
 @import '@radix-ui/colors/yellow-dark-alpha.css';
 
 :root {
-  --yellow-9-contrast: #21201c; /* light mode sand 12 */
+  --yellow-contrast: #21201c; /* light mode sand 12 */
 }
 
 :root,
@@ -29,8 +29,6 @@
 }
 
 [data-accent-color='yellow'] {
-  --color-surface-accent: var(--yellow-surface);
-
   --accent-1: var(--yellow-1);
   --accent-2: var(--yellow-2);
   --accent-3: var(--yellow-3);
@@ -40,7 +38,6 @@
   --accent-7: var(--yellow-7);
   --accent-8: var(--yellow-8);
   --accent-9: var(--yellow-9);
-  --accent-9-contrast: var(--yellow-9-contrast);
   --accent-10: var(--yellow-10);
   --accent-11: var(--yellow-11);
   --accent-12: var(--yellow-12);
@@ -57,4 +54,7 @@
   --accent-a10: var(--yellow-a10);
   --accent-a11: var(--yellow-a11);
   --accent-a12: var(--yellow-a12);
+
+  --accent-contrast: var(--yellow-contrast);
+  --accent-surface: var(--yellow-surface);
 }
