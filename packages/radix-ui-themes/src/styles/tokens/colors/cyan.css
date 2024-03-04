@@ -31,36 +31,3 @@
     }
   }
 }
-
-[data-accent-color='cyan'] {
-  --accent-1: var(--cyan-1);
-  --accent-2: var(--cyan-2);
-  --accent-3: var(--cyan-3);
-  --accent-4: var(--cyan-4);
-  --accent-5: var(--cyan-5);
-  --accent-6: var(--cyan-6);
-  --accent-7: var(--cyan-7);
-  --accent-8: var(--cyan-8);
-  --accent-9: var(--cyan-9);
-  --accent-10: var(--cyan-10);
-  --accent-11: var(--cyan-11);
-  --accent-12: var(--cyan-12);
-
-  --accent-a1: var(--cyan-a1);
-  --accent-a2: var(--cyan-a2);
-  --accent-a3: var(--cyan-a3);
-  --accent-a4: var(--cyan-a4);
-  --accent-a5: var(--cyan-a5);
-  --accent-a6: var(--cyan-a6);
-  --accent-a7: var(--cyan-a7);
-  --accent-a8: var(--cyan-a8);
-  --accent-a9: var(--cyan-a9);
-  --accent-a10: var(--cyan-a10);
-  --accent-a11: var(--cyan-a11);
-  --accent-a12: var(--cyan-a12);
-
-  --accent-contrast: var(--cyan-contrast);
-  --accent-surface: var(--cyan-surface);
-  --accent-indicator: var(--cyan-indicator);
-  --accent-track: var(--cyan-track);
-}

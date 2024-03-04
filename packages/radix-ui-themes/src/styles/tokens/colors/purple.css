@@ -31,36 +31,3 @@
     }
   }
 }
-
-[data-accent-color='purple'] {
-  --accent-1: var(--purple-1);
-  --accent-2: var(--purple-2);
-  --accent-3: var(--purple-3);
-  --accent-4: var(--purple-4);
-  --accent-5: var(--purple-5);
-  --accent-6: var(--purple-6);
-  --accent-7: var(--purple-7);
-  --accent-8: var(--purple-8);
-  --accent-9: var(--purple-9);
-  --accent-10: var(--purple-10);
-  --accent-11: var(--purple-11);
-  --accent-12: var(--purple-12);
-
-  --accent-a1: var(--purple-a1);
-  --accent-a2: var(--purple-a2);
-  --accent-a3: var(--purple-a3);
-  --accent-a4: var(--purple-a4);
-  --accent-a5: var(--purple-a5);
-  --accent-a6: var(--purple-a6);
-  --accent-a7: var(--purple-a7);
-  --accent-a8: var(--purple-a8);
-  --accent-a9: var(--purple-a9);
-  --accent-a10: var(--purple-a10);
-  --accent-a11: var(--purple-a11);
-  --accent-a12: var(--purple-a12);
-
-  --accent-contrast: var(--purple-contrast);
-  --accent-surface: var(--purple-surface);
-  --accent-indicator: var(--purple-indicator);
-  --accent-track: var(--purple-track);
-}

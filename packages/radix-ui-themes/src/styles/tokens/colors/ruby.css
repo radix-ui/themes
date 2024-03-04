@@ -31,36 +31,3 @@
     }
   }
 }
-
-[data-accent-color='ruby'] {
-  --accent-1: var(--ruby-1);
-  --accent-2: var(--ruby-2);
-  --accent-3: var(--ruby-3);
-  --accent-4: var(--ruby-4);
-  --accent-5: var(--ruby-5);
-  --accent-6: var(--ruby-6);
-  --accent-7: var(--ruby-7);
-  --accent-8: var(--ruby-8);
-  --accent-9: var(--ruby-9);
-  --accent-10: var(--ruby-10);
-  --accent-11: var(--ruby-11);
-  --accent-12: var(--ruby-12);
-
-  --accent-a1: var(--ruby-a1);
-  --accent-a2: var(--ruby-a2);
-  --accent-a3: var(--ruby-a3);
-  --accent-a4: var(--ruby-a4);
-  --accent-a5: var(--ruby-a5);
-  --accent-a6: var(--ruby-a6);
-  --accent-a7: var(--ruby-a7);
-  --accent-a8: var(--ruby-a8);
-  --accent-a9: var(--ruby-a9);
-  --accent-a10: var(--ruby-a10);
-  --accent-a11: var(--ruby-a11);
-  --accent-a12: var(--ruby-a12);
-
-  --accent-contrast: var(--ruby-contrast);
-  --accent-surface: var(--ruby-surface);
-  --accent-indicator: var(--ruby-indicator);
-  --accent-track: var(--ruby-track);
-}

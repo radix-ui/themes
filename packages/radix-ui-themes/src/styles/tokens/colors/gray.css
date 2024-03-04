@@ -3,6 +3,10 @@
 @import '@radix-ui/colors/gray-alpha.css';
 @import '@radix-ui/colors/gray-dark-alpha.css';
 
+:root {
+  --gray-contrast: white;
+}
+
 :root,
 .light,
 .light-theme {

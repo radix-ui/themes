@@ -3,6 +3,10 @@
 @import '@radix-ui/colors/slate-alpha.css';
 @import '@radix-ui/colors/slate-dark-alpha.css';
 
+:root {
+  --slate-contrast: white;
+}
+
 :root,
 .light,
 .light-theme {
@@ -26,36 +30,4 @@
       --slate-surface: color(display-p3 0.1176 0.1255 0.1333 / 0.5);
     }
   }
-}
-
-.radix-themes:where([data-gray-color='slate']) {
-  --gray-1: var(--slate-1);
-  --gray-2: var(--slate-2);
-  --gray-3: var(--slate-3);
-  --gray-4: var(--slate-4);
-  --gray-5: var(--slate-5);
-  --gray-6: var(--slate-6);
-  --gray-7: var(--slate-7);
-  --gray-8: var(--slate-8);
-  --gray-9: var(--slate-9);
-  --gray-10: var(--slate-10);
-  --gray-11: var(--slate-11);
-  --gray-12: var(--slate-12);
-
-  --gray-a1: var(--slate-a1);
-  --gray-a2: var(--slate-a2);
-  --gray-a3: var(--slate-a3);
-  --gray-a4: var(--slate-a4);
-  --gray-a5: var(--slate-a5);
-  --gray-a6: var(--slate-a6);
-  --gray-a7: var(--slate-a7);
-  --gray-a8: var(--slate-a8);
-  --gray-a9: var(--slate-a9);
-  --gray-a10: var(--slate-a10);
-  --gray-a11: var(--slate-a11);
-  --gray-a12: var(--slate-a12);
-
-  --gray-surface: var(--slate-surface);
-  --gray-indicator: var(--slate-indicator);
-  --gray-track: var(--slate-track);
 }

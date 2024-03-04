@@ -3,6 +3,10 @@
 @import '@radix-ui/colors/mauve-alpha.css';
 @import '@radix-ui/colors/mauve-dark-alpha.css';
 
+:root {
+  --mauve-contrast: white;
+}
+
 :root,
 .light,
 .light-theme {
@@ -26,36 +30,4 @@
       --mauve-surface: color(display-p3 0.1333 0.1255 0.1333 / 0.5);
     }
   }
-}
-
-.radix-themes:where([data-gray-color='mauve']) {
-  --gray-1: var(--mauve-1);
-  --gray-2: var(--mauve-2);
-  --gray-3: var(--mauve-3);
-  --gray-4: var(--mauve-4);
-  --gray-5: var(--mauve-5);
-  --gray-6: var(--mauve-6);
-  --gray-7: var(--mauve-7);
-  --gray-8: var(--mauve-8);
-  --gray-9: var(--mauve-9);
-  --gray-10: var(--mauve-10);
-  --gray-11: var(--mauve-11);
-  --gray-12: var(--mauve-12);
-
-  --gray-a1: var(--mauve-a1);
-  --gray-a2: var(--mauve-a2);
-  --gray-a3: var(--mauve-a3);
-  --gray-a4: var(--mauve-a4);
-  --gray-a5: var(--mauve-a5);
-  --gray-a6: var(--mauve-a6);
-  --gray-a7: var(--mauve-a7);
-  --gray-a8: var(--mauve-a8);
-  --gray-a9: var(--mauve-a9);
-  --gray-a10: var(--mauve-a10);
-  --gray-a11: var(--mauve-a11);
-  --gray-a12: var(--mauve-a12);
-
-  --gray-surface: var(--mauve-surface);
-  --gray-indicator: var(--mauve-indicator);
-  --gray-track: var(--mauve-track);
 }

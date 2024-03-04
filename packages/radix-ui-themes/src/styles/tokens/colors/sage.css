@@ -3,6 +3,10 @@
 @import '@radix-ui/colors/sage-alpha.css';
 @import '@radix-ui/colors/sage-dark-alpha.css';
 
+:root {
+  --sage-contrast: white;
+}
+
 :root,
 .light,
 .light-theme {
@@ -26,36 +30,4 @@
       --sage-surface: color(display-p3 0.1176 0.1255 0.1176 / 0.5);
     }
   }
-}
-
-.radix-themes:where([data-gray-color='sage']) {
-  --gray-1: var(--sage-1);
-  --gray-2: var(--sage-2);
-  --gray-3: var(--sage-3);
-  --gray-4: var(--sage-4);
-  --gray-5: var(--sage-5);
-  --gray-6: var(--sage-6);
-  --gray-7: var(--sage-7);
-  --gray-8: var(--sage-8);
-  --gray-9: var(--sage-9);
-  --gray-10: var(--sage-10);
-  --gray-11: var(--sage-11);
-  --gray-12: var(--sage-12);
-
-  --gray-a1: var(--sage-a1);
-  --gray-a2: var(--sage-a2);
-  --gray-a3: var(--sage-a3);
-  --gray-a4: var(--sage-a4);
-  --gray-a5: var(--sage-a5);
-  --gray-a6: var(--sage-a6);
-  --gray-a7: var(--sage-a7);
-  --gray-a8: var(--sage-a8);
-  --gray-a9: var(--sage-a9);
-  --gray-a10: var(--sage-a10);
-  --gray-a11: var(--sage-a11);
-  --gray-a12: var(--sage-a12);
-
-  --gray-surface: var(--sage-surface);
-  --gray-indicator: var(--sage-indicator);
-  --gray-track: var(--sage-track);
 }
