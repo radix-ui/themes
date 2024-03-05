@@ -2,6 +2,9 @@
   display: flex;
   align-items: stretch;
 
+  /* Reset text alignment (because the input inherits it from root, and the root inherits it by default). */
+  text-align: start;
+
   /* Make sure that font weight is not inherited, e.g. from a wrapping <label> */
   font-weight: var(--font-weight-regular);
 
