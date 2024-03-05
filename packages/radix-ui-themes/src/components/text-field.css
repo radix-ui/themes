@@ -35,6 +35,9 @@
   display: flex;
   align-items: center;
 
+  /* Inherit alignment from root in case it's overriden */
+  text-align: inherit;
+
   /*
    * Hide type="number" input stepper because it's small, ugly, hard to use, and if
    * needed, a nicer one can be easily implemented with own buttons in the Slot part.
