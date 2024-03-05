@@ -135,7 +135,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       function handleKeydown(event: KeyboardEvent) {
         const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
         const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
-        const isKeyT = event.key.toUpperCase() === 'T' && !isModifierActive;
+        const isKeyT = event.key?.toUpperCase() === 'T' && !isModifierActive;
         if (isKeyT && !isKeyboardInputActive) {
           onOpenChange(!open);
         }
@@ -149,7 +149,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       function handleKeydown(event: KeyboardEvent) {
         const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
         const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
-        const isKeyD = event.key.toUpperCase() === 'D' && !isModifierActive;
+        const isKeyD = event.key?.toUpperCase() === 'D' && !isModifierActive;
         if (isKeyD && !isKeyboardInputActive) {
           handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light');
         }
