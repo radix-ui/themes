@@ -335,6 +335,7 @@
   - Refine horizontal paddings
   - Refine label look and feel
   - Rework `size="3"`
+  - Update the disabled trigger text color so it’s easier to read, similarly to Text Field
 - `ScrollArea`
   - Upgrade the primitive version, fixing an upstream type issue
   - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
