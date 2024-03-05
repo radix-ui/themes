@@ -12,3 +12,5 @@ server/dist
 public/dist
 storybook-static/
 /packages/radix-ui-themes/*.css
+/packages/radix-ui-themes/tokens
+/packages/radix-ui-themes/layout
