@@ -49,7 +49,7 @@
 
 .rt-Badge:where(.rt-variant-solid) {
   background-color: var(--accent-9);
-  color: var(--accent-9-contrast);
+  color: var(--accent-contrast);
 
   &:where(.rt-high-contrast) {
     background-color: var(--accent-12);
@@ -60,7 +60,7 @@
 /* surface */
 
 .rt-Badge:where(.rt-variant-surface) {
-  background-color: var(--color-surface-accent);
+  background-color: var(--accent-surface);
   box-shadow: inset 0 0 0 1px var(--accent-a6);
   color: var(--accent-a11);
 

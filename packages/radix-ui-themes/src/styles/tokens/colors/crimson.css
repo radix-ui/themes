@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/crimson.css';
+@import '@radix-ui/colors/crimson-dark.css';
+@import '@radix-ui/colors/crimson-alpha.css';
+@import '@radix-ui/colors/crimson-dark-alpha.css';
+
+:root {
+  --crimson-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --crimson-surface: #fef5f8cc;
+  --crimson-indicator: var(--crimson-9);
+  --crimson-track: var(--crimson-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --crimson-surface: color(display-p3 0.9922 0.9608 0.9725 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --crimson-surface: #2f151f80;
+  --crimson-indicator: var(--crimson-9);
+  --crimson-track: var(--crimson-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --crimson-surface: color(display-p3 0.1647 0.0863 0.1176 / 0.5);
+    }
+  }
+}

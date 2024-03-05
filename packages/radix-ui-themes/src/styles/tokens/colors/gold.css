@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/gold.css';
+@import '@radix-ui/colors/gold-dark.css';
+@import '@radix-ui/colors/gold-alpha.css';
+@import '@radix-ui/colors/gold-dark-alpha.css';
+
+:root {
+  --gold-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --gold-surface: #f9f8efcc;
+  --gold-indicator: var(--gold-9);
+  --gold-track: var(--gold-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gold-surface: color(display-p3 0.9765 0.9725 0.9412 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --gold-surface: #25231d80;
+  --gold-indicator: var(--gold-9);
+  --gold-track: var(--gold-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gold-surface: color(display-p3 0.1412 0.1333 0.1098 / 0.5);
+    }
+  }
+}

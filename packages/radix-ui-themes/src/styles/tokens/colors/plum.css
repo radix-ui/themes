@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/plum.css';
+@import '@radix-ui/colors/plum-dark.css';
+@import '@radix-ui/colors/plum-alpha.css';
+@import '@radix-ui/colors/plum-dark-alpha.css';
+
+:root {
+  --plum-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --plum-surface: #fdf5fdcc;
+  --plum-indicator: var(--plum-9);
+  --plum-track: var(--plum-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --plum-surface: color(display-p3 0.9843 0.9647 0.9843 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --plum-surface: #2f152f80;
+  --plum-indicator: var(--plum-9);
+  --plum-track: var(--plum-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --plum-surface: color(display-p3 0.1647 0.0863 0.1725 / 0.5);
+    }
+  }
+}

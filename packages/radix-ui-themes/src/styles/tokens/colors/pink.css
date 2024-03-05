@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/pink.css';
+@import '@radix-ui/colors/pink-dark.css';
+@import '@radix-ui/colors/pink-alpha.css';
+@import '@radix-ui/colors/pink-dark-alpha.css';
+
+:root {
+  --pink-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --pink-surface: #fef5facc;
+  --pink-indicator: var(--pink-9);
+  --pink-track: var(--pink-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --pink-surface: color(display-p3 0.9922 0.9608 0.9804 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --pink-surface: #31132980;
+  --pink-indicator: var(--pink-9);
+  --pink-track: var(--pink-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --pink-surface: color(display-p3 0.1725 0.0784 0.149 / 0.5);
+    }
+  }
+}

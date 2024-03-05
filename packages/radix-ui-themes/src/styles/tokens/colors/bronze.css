@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/bronze.css';
+@import '@radix-ui/colors/bronze-dark.css';
+@import '@radix-ui/colors/bronze-alpha.css';
+@import '@radix-ui/colors/bronze-dark-alpha.css';
+
+:root {
+  --bronze-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --bronze-surface: #fdf5f3cc;
+  --bronze-indicator: var(--bronze-9);
+  --bronze-track: var(--bronze-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --bronze-surface: color(display-p3 0.9843 0.9608 0.9529 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --bronze-surface: #27211d80;
+  --bronze-indicator: var(--bronze-9);
+  --bronze-track: var(--bronze-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --bronze-surface: color(display-p3 0.1412 0.1255 0.1176 / 0.5);
+    }
+  }
+}

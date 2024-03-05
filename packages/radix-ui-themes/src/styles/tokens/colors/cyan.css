@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/cyan.css';
+@import '@radix-ui/colors/cyan-dark.css';
+@import '@radix-ui/colors/cyan-alpha.css';
+@import '@radix-ui/colors/cyan-dark-alpha.css';
+
+:root {
+  --cyan-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --cyan-surface: #eff9facc;
+  --cyan-indicator: var(--cyan-9);
+  --cyan-track: var(--cyan-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --cyan-surface: color(display-p3 0.9412 0.9765 0.9804 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --cyan-surface: #11252d80;
+  --cyan-indicator: var(--cyan-9);
+  --cyan-track: var(--cyan-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --cyan-surface: color(display-p3 0.0784 0.1412 0.1725 / 0.5);
+    }
+  }
+}

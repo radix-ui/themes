@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/indigo.css';
+@import '@radix-ui/colors/indigo-dark.css';
+@import '@radix-ui/colors/indigo-alpha.css';
+@import '@radix-ui/colors/indigo-dark-alpha.css';
+
+:root {
+  --indigo-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --indigo-surface: #f5f8ffcc;
+  --indigo-indicator: var(--indigo-9);
+  --indigo-track: var(--indigo-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --indigo-surface: color(display-p3 0.9647 0.9725 0.9961 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --indigo-surface: #171d3b80;
+  --indigo-indicator: var(--indigo-9);
+  --indigo-track: var(--indigo-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --indigo-surface: color(display-p3 0.0941 0.1098 0.2196 / 0.5);
+    }
+  }
+}

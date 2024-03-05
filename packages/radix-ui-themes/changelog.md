@@ -3,49 +3,61 @@
 ## 3.0.0 [Unreleased]
 
 - General
-  - Improve ESM compatibility
-  - Improve tree-shaking of individual component parts
-  - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
-    - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
-    - Note: changes to prop defs and helpers won’t be covered by semver
-  - Add a wildcard entry point to the package to allow direct access to the package internals as an escape hatch if you have a complex tooling setup that can’t support modern module resolution rules
-  - Add extra CSS file exports for advanced use-cases:
-    - Export individual `tokens.css`, `components.css`, and `utilities.css` files in case you need fine-grained control of the CSS precedence. For example, this allows to import Radix Themes `utilities.css` after your own CSS, and everything else before that.
-    - Export `layout.css` that only includes styles for the layout components (Box, Flex, Grid, Container, Section). Individual exports `layout/tokens.css`, `layout/components.css`, and `layout/utilities.css` are also available to support the above use-case.
-  - Add the following props to all layout components:
-    - `minWidth`, `maxWidth`
-    - `minHeight`, `maxHeight`
-    - `flexBasis`, `flexShrink`, `flexGrow`
-    - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
-    - `gridRow`, `gridRowStart`, `gridRowEnd`
-  - Rework all layout props to allow arbitrary CSS values, including when used with the responsive object syntax. Props that support arbitrary values include:
-    - `width`, `minWidth`, `maxWidth`
-    - `height`, `minHeight`, `maxHeight`
-    - `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`
-    - `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`
-    - `inset`, `top`, `right`, `bottom`, `left`
-    - `gap`, `gapX`, `gapY`
-    - `flexBasis`, `flexShrink`, `flexGrow`
-    - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
-    - `gridRow`, `gridRowStart`, `gridRowEnd`
-  - **[Breaking]** The `width` and `height` props don't map to space scale anymore. This is because in the vast majority of cases, width and height were not set to space scale, and with that, space scale as an IDE autocomplete suggestion felt odd/misleading.
-    - **[Upgrade guide]** Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
-  - **[Breaking]** Rename `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`
-  - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
-  - Document all layout props with JSDoc
-  - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
-  - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
-  - Speed up most of the animations
-  - Remove the native `color` attribute from components that don’t have own `color` props
-  - Rework the availability of `asChild` prop on all components and parts
-  - Ensure all elements that have padding or border styles use `box-sizing: border-box`
-  - Ensure that disabled cursor styles are applied correctly
-  - Tweak the background color of all `variant="soft"` menu items
-  - Replace `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
-    - **[Breaking]** If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
-      - `--color-autofill-root` is replaced by `--focus-a3`
-      - `--color-focus-root` is replaced by `--focus-8`
-      - `--color-selection-root` is replaced by `--focus-a5`
+  - Package structure
+    - Improve ESM compatibility
+    - Improve tree-shaking of individual component parts
+    - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
+      - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
+      - Note: changes to prop defs and helpers won’t be covered by semver
+    - Add a wildcard entry point to the package to allow direct access to the package internals as an escape hatch if you have a complex tooling setup that can’t support modern module resolution rules
+    - Add extra CSS file exports for advanced use-cases:
+      - Export individual `tokens.css`, `components.css`, and `utilities.css` files in case you need fine-grained control of the CSS precedence. For example, this allows to import Radix Themes `utilities.css` after your own CSS, and everything else before that.
+      - Additionally to the above, you can customise which colors to import. Instead of importing `tokens.css`, you can also import `tokens/base.css` and `tokens/colors/*.css`, where `*` corresponds to the names of the accent and gray colors you need in your project.
+      - Export `layout.css` that only includes styles for the layout components (Box, Flex, Grid, Container, Section). Individual exports `layout/tokens.css`, `layout/components.css`, and `layout/utilities.css` are also available to support the above use-case.
+  - Props
+    - Add the following props to all layout components:
+      - `minWidth`, `maxWidth`
+      - `minHeight`, `maxHeight`
+      - `flexBasis`, `flexShrink`, `flexGrow`
+      - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
+      - `gridRow`, `gridRowStart`, `gridRowEnd`
+    - Rework all layout props to allow arbitrary CSS values, including when used with the responsive object syntax. Props that support arbitrary values include:
+      - `width`, `minWidth`, `maxWidth`
+      - `height`, `minHeight`, `maxHeight`
+      - `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`
+      - `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`
+      - `inset`, `top`, `right`, `bottom`, `left`
+      - `gap`, `gapX`, `gapY`
+      - `flexBasis`, `flexShrink`, `flexGrow`
+      - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
+      - `gridRow`, `gridRowStart`, `gridRowEnd`
+    - **[Breaking]** The `width` and `height` props don't map to space scale anymore. This is because in the vast majority of cases, width and height were not set to space scale, and with that, space scale as an IDE autocomplete suggestion felt odd/misleading.
+      - **[Upgrade guide]** Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
+    - **[Breaking]** Rename `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`
+    - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
+    - Document all layout props with JSDoc
+    - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
+    - Remove the native `color` attribute from components that don’t have own `color` props
+    - **[Breaking]** Rework the availability of `asChild` prop on all components and parts
+  - Colors
+    - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
+    - Tweak the background color of all `variant="soft"` menu items
+    - Rename `--color-surface-accent` to `--accent-surface`
+      - **[Upgrade guide]** If you were using this token for your custom components, make sure to replace the corresponding references
+    - Rename `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
+      - **[Upgrade guide]** If you were using these tokens for your custom components, make sure to replace the corresponding references
+    - Remove `--gray-2-translucent` and the corresponding tinted gray colors
+    - Tweak `--color-surface` and `--color-panel-translucent` values
+    - Replace `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
+      - **[Breaking]** If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
+        - `--color-autofill-root` is replaced by `--focus-a3`
+        - `--color-focus-root` is replaced by `--focus-8`
+        - `--color-selection-root` is replaced by `--focus-a5`
+  - Other
+    - Speed up most of the animations
+    - Ensure all elements that have padding or border styles use `box-sizing: border-box`
+    - Ensure that disabled cursor styles are applied correctly
+    - Add a blur backdrop filter effect to the translucent panels
 - 11 new components
   - `DataList`
     - Component for displaying text data as key-value pairs. Parts:

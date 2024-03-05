@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/red-dark.css';
+@import '@radix-ui/colors/red-alpha.css';
+@import '@radix-ui/colors/red-dark-alpha.css';
+
+:root {
+  --red-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --red-surface: #fff5f5cc;
+  --red-indicator: var(--red-9);
+  --red-track: var(--red-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --red-surface: color(display-p3 0.9961 0.9647 0.9647 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --red-surface: #2f151780;
+  --red-indicator: var(--red-9);
+  --red-track: var(--red-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --red-surface: color(display-p3 0.1647 0.0863 0.0863 / 0.5);
+    }
+  }
+}

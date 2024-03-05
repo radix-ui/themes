@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/ruby.css';
+@import '@radix-ui/colors/ruby-dark.css';
+@import '@radix-ui/colors/ruby-alpha.css';
+@import '@radix-ui/colors/ruby-dark-alpha.css';
+
+:root {
+  --ruby-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --ruby-surface: #fff5f6cc;
+  --ruby-indicator: var(--ruby-9);
+  --ruby-track: var(--ruby-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --ruby-surface: color(display-p3 0.9961 0.9647 0.9647 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --ruby-surface: #2b191d80;
+  --ruby-indicator: var(--ruby-9);
+  --ruby-track: var(--ruby-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --ruby-surface: color(display-p3 0.1569 0.0941 0.1098 / 0.5);
+    }
+  }
+}

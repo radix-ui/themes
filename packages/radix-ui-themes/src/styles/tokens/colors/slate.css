@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/slate.css';
+@import '@radix-ui/colors/slate-dark.css';
+@import '@radix-ui/colors/slate-alpha.css';
+@import '@radix-ui/colors/slate-dark-alpha.css';
+
+:root {
+  --slate-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --slate-surface: #ffffffcc;
+  --slate-indicator: var(--slate-9);
+  --slate-track: var(--slate-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --slate-surface: color(display-p3 1 1 1 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --slate-surface: #1f212380;
+  --slate-indicator: var(--slate-9);
+  --slate-track: var(--slate-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --slate-surface: color(display-p3 0.1176 0.1255 0.1333 / 0.5);
+    }
+  }
+}

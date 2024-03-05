@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/purple.css';
+@import '@radix-ui/colors/purple-dark.css';
+@import '@radix-ui/colors/purple-alpha.css';
+@import '@radix-ui/colors/purple-dark-alpha.css';
+
+:root {
+  --purple-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --purple-surface: #faf5fecc;
+  --purple-indicator: var(--purple-9);
+  --purple-track: var(--purple-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --purple-surface: color(display-p3 0.9804 0.9647 0.9922 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --purple-surface: #2b173580;
+  --purple-indicator: var(--purple-9);
+  --purple-track: var(--purple-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --purple-surface: color(display-p3 0.149 0.0941 0.1961 / 0.5);
+    }
+  }
+}

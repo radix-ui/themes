@@ -132,7 +132,7 @@
   }
 
   & :where(.rt-SliderRange) {
-    background-color: var(--accent-9);
+    background-color: var(--accent-track);
     background-image: var(--slider-range-high-contrast-background-image);
     box-shadow: inset 0 0 0 1px var(--gray-a5);
   }
@@ -167,14 +167,13 @@
   }
 
   & :where(.rt-SliderRange) {
-    background-color: var(--accent-9);
+    background-color: var(--accent-track);
     background-image: var(--slider-range-high-contrast-background-image);
-    box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4),
-      inset 0 0 0 1px var(--black-a1), inset 0 1.5px 2px 0 var(--black-a2);
+    box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4), inset 0 0 0 1px var(--black-a1),
+      inset 0 1.5px 2px 0 var(--black-a2);
 
     &:where(.rt-high-contrast) {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2),
-        inset 0 1.5px 2px 0 var(--black-a2);
+      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2), inset 0 1.5px 2px 0 var(--black-a2);
     }
   }
 
@@ -213,8 +212,8 @@
   }
 
   & :where(.rt-SliderThumb) {
-    --slider-thumb-box-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2),
-      0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
+    --slider-thumb-box-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2),
+      0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
 
     &:where([data-disabled])::after {
       background-color: var(--gray-1);

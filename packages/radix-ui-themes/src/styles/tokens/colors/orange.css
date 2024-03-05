@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/orange.css';
+@import '@radix-ui/colors/orange-dark.css';
+@import '@radix-ui/colors/orange-alpha.css';
+@import '@radix-ui/colors/orange-dark-alpha.css';
+
+:root {
+  --orange-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --orange-surface: #fff5e9cc;
+  --orange-indicator: var(--orange-9);
+  --orange-track: var(--orange-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --orange-surface: color(display-p3 0.9961 0.9608 0.9176 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --orange-surface: #271d1380;
+  --orange-indicator: var(--orange-9);
+  --orange-track: var(--orange-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --orange-surface: color(display-p3 0.1412 0.1098 0.0706 / 0.5);
+    }
+  }
+}

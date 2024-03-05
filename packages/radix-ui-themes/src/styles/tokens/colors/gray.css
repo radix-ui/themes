@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/gray-alpha.css';
+@import '@radix-ui/colors/gray-dark-alpha.css';
+
+:root {
+  --gray-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --gray-surface: #ffffffcc;
+  --gray-indicator: var(--gray-9);
+  --gray-track: var(--gray-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gray-surface: color(display-p3 1 1 1 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --gray-surface: #21212180;
+  --gray-indicator: var(--gray-9);
+  --gray-track: var(--gray-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --gray-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
+    }
+  }
+}

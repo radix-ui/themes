@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/jade.css';
+@import '@radix-ui/colors/jade-dark.css';
+@import '@radix-ui/colors/jade-alpha.css';
+@import '@radix-ui/colors/jade-dark-alpha.css';
+
+:root {
+  --jade-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --jade-surface: #f1faf5cc;
+  --jade-indicator: var(--jade-9);
+  --jade-track: var(--jade-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --jade-surface: color(display-p3 0.9529 0.9804 0.9608 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --jade-surface: #13271f80;
+  --jade-indicator: var(--jade-9);
+  --jade-track: var(--jade-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --jade-surface: color(display-p3 0.0863 0.149 0.1176 / 0.5);
+    }
+  }
+}

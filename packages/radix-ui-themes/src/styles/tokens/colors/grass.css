@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/grass.css';
+@import '@radix-ui/colors/grass-dark.css';
+@import '@radix-ui/colors/grass-alpha.css';
+@import '@radix-ui/colors/grass-dark-alpha.css';
+
+:root {
+  --grass-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --grass-surface: #f3faf3cc;
+  --grass-indicator: var(--grass-9);
+  --grass-track: var(--grass-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --grass-surface: color(display-p3 0.9569 0.9804 0.9569 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --grass-surface: #19231b80;
+  --grass-indicator: var(--grass-9);
+  --grass-track: var(--grass-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --grass-surface: color(display-p3 0.102 0.1333 0.102 / 0.5);
+    }
+  }
+}

@@ -141,7 +141,7 @@
 
 .rt-RadioCardGroupItem:where([data-state='checked']) {
   &::after {
-    outline: 2px solid var(--accent-10);
+    outline: 2px solid var(--accent-indicator);
   }
   :where(.rt-RadioCardGroupRoot.rt-high-contrast) & {
     &::after {

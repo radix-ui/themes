@@ -1,0 +1,36 @@
+@import '@radix-ui/colors/lime.css';
+@import '@radix-ui/colors/lime-dark.css';
+@import '@radix-ui/colors/lime-alpha.css';
+@import '@radix-ui/colors/lime-dark-alpha.css';
+
+:root {
+  --lime-contrast: #1d211c; /* light mode olive 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --lime-surface: #f6f9f0cc;
+  --lime-indicator: var(--lime-9);
+  --lime-track: var(--lime-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --lime-surface: color(display-p3 0.9725 0.9765 0.9412 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --lime-surface: #1b211580;
+  --lime-indicator: var(--lime-9);
+  --lime-track: var(--lime-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --lime-surface: color(display-p3 0.1098 0.1255 0.0784 / 0.5);
+    }
+  }
+  @supports (color: color-mix(in oklab, white, black)) {
+    --lime-track: color-mix(in oklab, var(--lime-8), var(--lime-9) 65%);
+  }
+}

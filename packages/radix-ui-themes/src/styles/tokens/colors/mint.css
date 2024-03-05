@@ -1,0 +1,36 @@
+@import '@radix-ui/colors/mint.css';
+@import '@radix-ui/colors/mint-dark.css';
+@import '@radix-ui/colors/mint-alpha.css';
+@import '@radix-ui/colors/mint-dark-alpha.css';
+
+:root {
+  --mint-contrast: #1a211e; /* light mode sage 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --mint-surface: #effaf8cc;
+  --mint-indicator: var(--mint-9);
+  --mint-track: var(--mint-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --mint-surface: color(display-p3 0.9451 0.9804 0.9725 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --mint-surface: #15272780;
+  --mint-indicator: var(--mint-9);
+  --mint-track: var(--mint-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --mint-surface: color(display-p3 0.0941 0.149 0.1412 / 0.5);
+    }
+  }
+  @supports (color: color-mix(in oklab, white, black)) {
+    --mint-track: color-mix(in oklab, var(--mint-8), var(--mint-9) 65%);
+  }
+}

@@ -1,0 +1,36 @@
+@import '@radix-ui/colors/yellow.css';
+@import '@radix-ui/colors/yellow-dark.css';
+@import '@radix-ui/colors/yellow-alpha.css';
+@import '@radix-ui/colors/yellow-dark-alpha.css';
+
+:root {
+  --yellow-contrast: #21201c; /* light mode sand 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --yellow-surface: #fefbe4cc;
+  --yellow-indicator: var(--yellow-10);
+  --yellow-track: var(--yellow-10);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --yellow-surface: color(display-p3 0.9961 0.9922 0.902 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --yellow-surface: #231f1380;
+  --yellow-indicator: var(--yellow-9);
+  --yellow-track: var(--yellow-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --yellow-surface: color(display-p3 0.1333 0.1176 0.0706 / 0.5);
+    }
+  }
+  @supports (color: color-mix(in oklab, white, black)) {
+    --yellow-track: color-mix(in oklab, var(--yellow-8), var(--yellow-9) 65%);
+  }
+}

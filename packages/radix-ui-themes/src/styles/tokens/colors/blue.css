@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/blue-dark.css';
+@import '@radix-ui/colors/blue-alpha.css';
+@import '@radix-ui/colors/blue-dark-alpha.css';
+
+:root {
+  --blue-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --blue-surface: #f1f9ffcc;
+  --blue-indicator: var(--blue-9);
+  --blue-track: var(--blue-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --blue-surface: color(display-p3 0.9529 0.9765 0.9961 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --blue-surface: #11213d80;
+  --blue-indicator: var(--blue-9);
+  --blue-track: var(--blue-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --blue-surface: color(display-p3 0.0706 0.1255 0.2196 / 0.5);
+    }
+  }
+}

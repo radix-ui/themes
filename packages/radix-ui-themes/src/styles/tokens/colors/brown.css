@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/brown.css';
+@import '@radix-ui/colors/brown-dark.css';
+@import '@radix-ui/colors/brown-alpha.css';
+@import '@radix-ui/colors/brown-dark-alpha.css';
+
+:root {
+  --brown-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --brown-surface: #fbf8f4cc;
+  --brown-indicator: var(--brown-9);
+  --brown-track: var(--brown-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --brown-surface: color(display-p3 0.9843 0.9725 0.9569 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --brown-surface: #271f1b80;
+  --brown-indicator: var(--brown-9);
+  --brown-track: var(--brown-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --brown-surface: color(display-p3 0.1412 0.1176 0.102 / 0.5);
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/sand.css';
+@import '@radix-ui/colors/sand-dark.css';
+@import '@radix-ui/colors/sand-alpha.css';
+@import '@radix-ui/colors/sand-dark-alpha.css';
+
+:root {
+  --sand-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --sand-surface: #ffffffcc;
+  --sand-indicator: var(--sand-9);
+  --sand-track: var(--sand-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sand-surface: color(display-p3 1 1 1 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --sand-surface: #21212080;
+  --sand-indicator: var(--sand-9);
+  --sand-track: var(--sand-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sand-surface: color(display-p3 0.1255 0.1255 0.1255 / 0.5);
+    }
+  }
+}

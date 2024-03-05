@@ -1,0 +1,36 @@
+@import '@radix-ui/colors/sky.css';
+@import '@radix-ui/colors/sky-dark.css';
+@import '@radix-ui/colors/sky-alpha.css';
+@import '@radix-ui/colors/sky-dark-alpha.css';
+
+:root {
+  --sky-contrast: #1c2024; /* light mode slate 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --sky-surface: #eef9fdcc;
+  --sky-indicator: var(--sky-9);
+  --sky-track: var(--sky-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sky-surface: color(display-p3 0.9412 0.9765 0.9843 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --sky-surface: #13233b80;
+  --sky-indicator: var(--sky-9);
+  --sky-track: var(--sky-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --sky-surface: color(display-p3 0.0863 0.1333 0.2196 / 0.5);
+    }
+  }
+  @supports (color: color-mix(in oklab, white, black)) {
+    --sky-track: color-mix(in oklab, var(--sky-8), var(--sky-9) 65%);
+  }
+}

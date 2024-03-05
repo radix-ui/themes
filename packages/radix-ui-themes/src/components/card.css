@@ -70,6 +70,7 @@
 
   &::before {
     background-color: var(--card-background-color);
+    backdrop-filter: var(--backdrop-filter-panel);
   }
   &::after {
     box-shadow: var(--base-card-surface-box-shadow);
@@ -110,6 +111,7 @@
 
   &::before {
     background-color: var(--card-background-color);
+    backdrop-filter: var(--backdrop-filter-panel);
   }
   &::after {
     box-shadow: var(--base-card-classic-box-shadow-inner);

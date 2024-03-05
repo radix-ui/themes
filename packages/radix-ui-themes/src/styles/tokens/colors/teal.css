@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/teal.css';
+@import '@radix-ui/colors/teal-dark.css';
+@import '@radix-ui/colors/teal-alpha.css';
+@import '@radix-ui/colors/teal-dark-alpha.css';
+
+:root {
+  --teal-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --teal-surface: #f0faf8cc;
+  --teal-indicator: var(--teal-9);
+  --teal-track: var(--teal-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --teal-surface: color(display-p3 0.9451 0.9804 0.9725 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --teal-surface: #13272580;
+  --teal-indicator: var(--teal-9);
+  --teal-track: var(--teal-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --teal-surface: color(display-p3 0.0863 0.149 0.1412 / 0.5);
+    }
+  }
+}

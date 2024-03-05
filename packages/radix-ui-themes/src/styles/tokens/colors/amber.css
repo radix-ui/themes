@@ -1,0 +1,36 @@
+@import '@radix-ui/colors/amber.css';
+@import '@radix-ui/colors/amber-dark.css';
+@import '@radix-ui/colors/amber-alpha.css';
+@import '@radix-ui/colors/amber-dark-alpha.css';
+
+:root {
+  --amber-contrast: #21201c; /* light mode sand 12 */
+}
+
+:root,
+.light,
+.light-theme {
+  --amber-surface: #fefae4cc;
+  --amber-indicator: var(--amber-9);
+  --amber-track: var(--amber-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --amber-surface: color(display-p3 0.9922 0.9843 0.902 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --amber-surface: #271f1380;
+  --amber-indicator: var(--amber-9);
+  --amber-track: var(--amber-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --amber-surface: color(display-p3 0.1412 0.1176 0.0784 / 0.5);
+    }
+  }
+  @supports (color: color-mix(in oklab, white, black)) {
+    --amber-track: color-mix(in oklab, var(--amber-8), var(--amber-9) 75%);
+  }
+}

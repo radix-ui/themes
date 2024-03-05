@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/tomato.css';
+@import '@radix-ui/colors/tomato-dark.css';
+@import '@radix-ui/colors/tomato-alpha.css';
+@import '@radix-ui/colors/tomato-dark-alpha.css';
+
+:root {
+  --tomato-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --tomato-surface: #fff6f5cc;
+  --tomato-indicator: var(--tomato-9);
+  --tomato-track: var(--tomato-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --tomato-surface: color(display-p3 0.9922 0.9647 0.9608 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --tomato-surface: #2d191580;
+  --tomato-indicator: var(--tomato-9);
+  --tomato-track: var(--tomato-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --tomato-surface: color(display-p3 0.1569 0.0941 0.0784 / 0.5);
+    }
+  }
+}

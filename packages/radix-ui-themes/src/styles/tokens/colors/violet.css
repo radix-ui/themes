@@ -1,0 +1,33 @@
+@import '@radix-ui/colors/violet.css';
+@import '@radix-ui/colors/violet-dark.css';
+@import '@radix-ui/colors/violet-alpha.css';
+@import '@radix-ui/colors/violet-dark-alpha.css';
+
+:root {
+  --violet-contrast: white;
+}
+
+:root,
+.light,
+.light-theme {
+  --violet-surface: #f9f6ffcc;
+  --violet-indicator: var(--violet-9);
+  --violet-track: var(--violet-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --violet-surface: color(display-p3 0.9725 0.9647 0.9961 / 0.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme {
+  --violet-surface: #25193980;
+  --violet-indicator: var(--violet-9);
+  --violet-track: var(--violet-9);
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --violet-surface: color(display-p3 0.1333 0.102 0.2118 / 0.5);
+    }
+  }
+}

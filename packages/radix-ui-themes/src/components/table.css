@@ -105,6 +105,7 @@
   border: 1px solid var(--gray-a5);
   border-radius: var(--table-border-radius);
   background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
   background-clip: padding-box;
   position: relative;
 
