@@ -305,7 +305,7 @@
     box-shadow: inset 0 0 0 1px var(--gray-a8);
   }
   &:where(:disabled) {
-    color: var(--gray-a8);
+    color: var(--gray-a11);
     background-color: var(--gray-a2);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
@@ -376,12 +376,14 @@
     }
   }
   &:where(:disabled) {
-    color: var(--gray-a8);
+    color: var(--gray-a11);
+    background-color: var(--gray-2);
+    background-image: none;
     /* Use disabled button style for the shadow */
     box-shadow: var(--base-button-classic-disabled-box-shadow);
     &::before {
-      background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
-        linear-gradient(var(--color-surface), transparent);
+      background-color: var(--gray-a2);
+      background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1));
     }
   }
   &:where([data-placeholder]) {
@@ -421,7 +423,7 @@
     outline-color: var(--accent-8);
   }
   &:where(:disabled) {
-    color: var(--gray-a8);
+    color: var(--gray-a11);
     background-color: var(--gray-a3);
   }
 }
@@ -436,8 +438,17 @@
     background-color: var(--accent-a3);
   }
   &:where(:disabled) {
-    color: var(--gray-a8);
+    color: var(--gray-a11);
     background-color: transparent;
+  }
+}
+
+/* all disabled */
+.rt-SelectTrigger {
+  &:where(:disabled) {
+    & :where(.rt-SelectIcon) {
+      color: var(--gray-a9);
+    }
   }
 }
 
