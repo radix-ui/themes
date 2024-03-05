@@ -40,12 +40,14 @@
   &:where(button) {
     all: unset;
     display: inline-block;
+    text-indent: initial;
     -webkit-tap-highlight-color: transparent;
   }
   &:where(input, textarea, select) {
     all: unset;
     display: inline-block;
     text-align: start;
+    text-indent: initial;
     -webkit-tap-highlight-color: transparent;
   }
   &:where(:focus) {
@@ -67,6 +69,7 @@
   &:where(table) {
     all: unset;
     display: table;
+    text-indent: initial;
   }
   &:where(caption) {
     text-align: inherit;
