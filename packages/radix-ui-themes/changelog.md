@@ -186,7 +186,7 @@
   - Document all Theme props with JSDoc
 - `Tooltip`
   - Add `width`, `minWidth`, `maxWidth` props.
-  - Set `maxWidth="200px"` by default on the tooltip content
+  - Set `maxWidth="360px"` by default on the tooltip content
     - **[Upgrade guide]** If you use tooltips that need to be wider, override `maxWidth` with your own value.
   - Change the default delay duration to 200ms
 

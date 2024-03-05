@@ -5,7 +5,7 @@ const tooltipPropDefs = {
   content: { type: 'ReactNode', default: undefined, required: true },
   width: widthPropDefs.width,
   minWidth: widthPropDefs.minWidth,
-  maxWidth: { ...widthPropDefs.maxWidth, default: '200px' },
+  maxWidth: { ...widthPropDefs.maxWidth, default: '360px' },
 } satisfies {
   width: PropDef<string>;
   minWidth: PropDef<string>;
