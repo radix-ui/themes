@@ -46,7 +46,7 @@ interface SelectTriggerProps
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
   (props, forwardedRef) => {
     const context = React.useContext(SelectContext);
-    const { className, color, radius, placeholder, ...triggerProps } = extractProps(
+    const { children, className, color, radius, placeholder, ...triggerProps } = extractProps(
       // Pass size value from the context to generate styles
       { size: context?.size, ...props },
       // Pass size prop def to allow it to be extracted
@@ -64,7 +64,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
           className={classNames('rt-reset', 'rt-SelectTrigger', className)}
         >
           <span className="rt-SelectTriggerInner">
-            <SelectPrimitive.Value placeholder={placeholder} />
+            <SelectPrimitive.Value placeholder={placeholder}>{children}</SelectPrimitive.Value>
           </span>
           <SelectPrimitive.Icon asChild>
             <ChevronDownIcon className="rt-SelectIcon" />
