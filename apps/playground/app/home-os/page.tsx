@@ -14,9 +14,23 @@ import {
   Text,
   IconButton,
   Link,
-  DropdownMenu,
-  Dialog,
-  Popover,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DialogRoot,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
   Separator,
   //
   ThemePanel,
@@ -88,8 +102,8 @@ export default function HomeOS() {
                       </Button>
                     </div>
 
-                    <DropdownMenu.Root>
-                      <DropdownMenu.Trigger>
+                    <DropdownMenuRoot>
+                      <DropdownMenuTrigger>
                         <IconButton
                           variant="ghost"
                           color="gray"
@@ -97,32 +111,32 @@ export default function HomeOS() {
                         >
                           <HamburgerMenuIcon />
                         </IconButton>
-                      </DropdownMenu.Trigger>
-                      <DropdownMenu.Content align="end">
-                        <DropdownMenu.Item>Sign up</DropdownMenu.Item>
-                        <DropdownMenu.Item>Log in</DropdownMenu.Item>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem>Sign up</DropdownMenuItem>
+                        <DropdownMenuItem>Log in</DropdownMenuItem>
 
-                        <DropdownMenu.Separator />
+                        <DropdownMenuSeparator />
 
-                        <DropdownMenu.Item>Air Cover</DropdownMenu.Item>
-                        <DropdownMenu.Item>Cancellations</DropdownMenu.Item>
-                        <DropdownMenu.Sub>
-                          <DropdownMenu.SubTrigger>Hosting</DropdownMenu.SubTrigger>
+                        <DropdownMenuItem>Air Cover</DropdownMenuItem>
+                        <DropdownMenuItem>Cancellations</DropdownMenuItem>
+                        <DropdownMenuSub>
+                          <DropdownMenuSubTrigger>Hosting</DropdownMenuSubTrigger>
 
-                          <DropdownMenu.SubContent>
-                            <DropdownMenu.Item>Resources</DropdownMenu.Item>
-                            <DropdownMenu.Item>Community forum</DropdownMenu.Item>
-                            <DropdownMenu.Item>Hosting guide</DropdownMenu.Item>
-                            <DropdownMenu.Separator />
-                            <DropdownMenu.Item>Your home</DropdownMenu.Item>
-                          </DropdownMenu.SubContent>
-                        </DropdownMenu.Sub>
+                          <DropdownMenuSubContent>
+                            <DropdownMenuItem>Resources</DropdownMenuItem>
+                            <DropdownMenuItem>Community forum</DropdownMenuItem>
+                            <DropdownMenuItem>Hosting guide</DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Your home</DropdownMenuItem>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuSub>
 
-                        <DropdownMenu.Separator />
+                        <DropdownMenuSeparator />
 
-                        <DropdownMenu.Item>Help Centre</DropdownMenu.Item>
-                      </DropdownMenu.Content>
-                    </DropdownMenu.Root>
+                        <DropdownMenuItem>Help Centre</DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenuRoot>
                   </div>
                 </header>
 
@@ -314,8 +328,8 @@ export default function HomeOS() {
                             <LabelValueCard label="Check-out" value="05/06/2023" />
                           </div>
 
-                          <Popover.Root>
-                            <Popover.Trigger>
+                          <PopoverRoot>
+                            <PopoverTrigger>
                               <button className={styles.guestTrigger}>
                                 <div>
                                   <Text as="p" size="1" weight="bold">
@@ -329,8 +343,8 @@ export default function HomeOS() {
 
                                 <ChevronDownIcon />
                               </button>
-                            </Popover.Trigger>
-                            <Popover.Content
+                            </PopoverTrigger>
+                            <PopoverContent
                               align="center"
                               style={{
                                 boxSizing: 'border-box',
@@ -361,8 +375,8 @@ export default function HomeOS() {
                                 value={infantCount}
                                 onValueChange={setInfantCount}
                               />
-                            </Popover.Content>
-                          </Popover.Root>
+                            </PopoverContent>
+                          </PopoverRoot>
 
                           <ConfirmBookingDialog guestCount={totalCount}>
                             <Button size="3" variant="solid" style={{ width: '100%' }}>
@@ -478,16 +492,16 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 function ConfirmBookingDialog({ children, guestCount }: any) {
   return (
-    <Dialog.Root>
-      <Dialog.Trigger>{children}</Dialog.Trigger>
-      <Dialog.Content style={{ maxWidth: 550 }}>
-        <Dialog.Title size="5">Confirm and pay</Dialog.Title>
-        <Dialog.Description
+    <DialogRoot>
+      <DialogTrigger>{children}</DialogTrigger>
+      <DialogContent style={{ maxWidth: 550 }}>
+        <DialogTitle size="5">Confirm and pay</DialogTitle>
+        <DialogDescription
           size="2"
           style={{ marginTop: 'var(--space-2)', marginBottom: 'var(--space-5)' }}
         >
           Your booking is only moments away.
-        </Dialog.Description>
+        </DialogDescription>
 
         <Text as="p" weight="bold" style={{ marginBottom: 'var(--space-3)' }}>
           Your trip
@@ -510,17 +524,17 @@ function ConfirmBookingDialog({ children, guestCount }: any) {
             marginTop: 'var(--space-5)',
           }}
         >
-          <Dialog.Close>
+          <DialogClose>
             <Button variant="soft" color="gray">
               Cancel
             </Button>
-          </Dialog.Close>
-          <Dialog.Close>
+          </DialogClose>
+          <DialogClose>
             <Button variant="solid">Confirm booking</Button>
-          </Dialog.Close>
+          </DialogClose>
         </div>
-      </Dialog.Content>
-    </Dialog.Root>
+      </DialogContent>
+    </DialogRoot>
   );
 }
 
