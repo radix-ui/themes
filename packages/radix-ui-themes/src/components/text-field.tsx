@@ -13,6 +13,7 @@ import { composeRefs } from '@radix-ui/react-compose-refs';
 type TextFieldRootElement = React.ElementRef<'input'>;
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
   type?:
+    | 'color'
     | 'date'
     | 'datetime-local'
     | 'email'
