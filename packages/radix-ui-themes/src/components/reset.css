@@ -199,7 +199,7 @@
   /*                                     */
   /* * * * * * * * * * * * * * * * * * * */
 
-  &:where(a[href]) {
+  &:where(:any-link) {
     cursor: var(--cursor-link);
   }
   &:where(button) {

@@ -75,7 +75,7 @@
   &::after {
     box-shadow: var(--base-card-surface-box-shadow);
   }
-  &:where(button, [href]) {
+  &:where(:any-link, button) {
     @media (hover: hover) {
       &:where(:hover) {
         &::after {
@@ -116,7 +116,7 @@
   &::after {
     box-shadow: var(--base-card-classic-box-shadow-inner);
   }
-  &:where(button, [href]) {
+  &:where(:any-link, button) {
     @media (hover: hover) {
       &:where(:hover) {
         transition-duration: 40ms;
@@ -177,7 +177,7 @@
     --margin-bottom-override: initial;
     --margin-left-override: initial;
   }
-  &:where(button, [href]) {
+  &:where(:any-link, button) {
     @media (hover: hover) {
       &:where(:hover) {
         background-color: var(--gray-a3);

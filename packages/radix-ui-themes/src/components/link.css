@@ -1,14 +1,17 @@
 .rt-Link {
   color: var(--accent-a11);
-  border-radius: calc(0.07em * var(--radius-factor));
 
   /* Override the cursor on the HTML element even if rendering a <button> */
-  cursor: var(--cursor-link);
+  &:where(:any-link, button) {
+    cursor: var(--cursor-link);
+  }
+
   &:where(:disabled, [data-disabled]) {
     cursor: var(--cursor-disabled);
   }
 
   &:where(:focus-visible) {
+    border-radius: calc(0.07em * var(--radius-factor));
     outline-color: var(--focus-8);
     outline-width: 2px;
     outline-style: solid;
@@ -28,46 +31,48 @@
  ***************************************************************************************************/
 
 .rt-Link {
-  text-decoration-line: none;
-  text-decoration-style: solid;
-  text-decoration-thickness: min(2px, max(1px, 0.05em));
-  text-underline-offset: calc(0.025em + 2px);
-  text-decoration-color: var(--accent-a5);
+  &:where(:any-link) {
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: min(2px, max(1px, 0.05em));
+    text-underline-offset: calc(0.025em + 2px);
+    text-decoration-color: var(--accent-a5);
 
-  /* Enhancement for bright colors */
-  @supports (color: color-mix(in oklab, white, black)) {
-    text-decoration-color: color-mix(in oklab, var(--accent-a5), var(--gray-a6));
-  }
+    /* Enhancement for bright colors */
+    @supports (color: color-mix(in oklab, white, black)) {
+      text-decoration-color: color-mix(in oklab, var(--accent-a5), var(--gray-a6));
+    }
 
-  &:where(.rt-underline-auto) {
-    @media (hover: hover) {
-      &:where(:hover) {
+    &:where(.rt-underline-auto) {
+      @media (hover: hover) {
+        &:where(:hover) {
+          text-decoration-line: underline;
+        }
+      }
+
+      &:where([data-accent-color].rt-high-contrast),
+      :where([data-accent-color]:not(.radix-themes, .rt-high-contrast)) & {
         text-decoration-line: underline;
+        text-decoration-color: var(--accent-a6);
+
+        /* Enhancement for bright colors */
+        @supports (color: color-mix(in oklab, white, black)) {
+          text-decoration-color: color-mix(in oklab, var(--accent-a6), var(--gray-a6));
+        }
       }
     }
 
-    &:where([data-accent-color].rt-high-contrast),
-    :where([data-accent-color]:not(.radix-themes, .rt-high-contrast)) & {
+    &:where(.rt-underline-hover) {
+      @media (hover: hover) {
+        &:where(:hover) {
+          text-decoration-line: underline;
+        }
+      }
+    }
+
+    &:where(.rt-underline-always) {
       text-decoration-line: underline;
-      text-decoration-color: var(--accent-a6);
-
-      /* Enhancement for bright colors */
-      @supports (color: color-mix(in oklab, white, black)) {
-        text-decoration-color: color-mix(in oklab, var(--accent-a6), var(--gray-a6));
-      }
     }
-  }
-
-  &:where(.rt-underline-hover) {
-    @media (hover: hover) {
-      &:where(:hover) {
-        text-decoration-line: underline;
-      }
-    }
-  }
-
-  &:where(.rt-underline-always) {
-    text-decoration-line: underline;
   }
 }
 

@@ -56,7 +56,7 @@
   box-shadow: var(--kbd-box-shadow);
   transition: box-shadow 120ms, background-color 120ms;
 
-  &:where(a, button) {
+  &:where(:any-link, button) {
     @media (hover: hover) {
       &:where(:hover) {
         transition-duration: 40ms, 40ms;
