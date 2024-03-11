@@ -1,16 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  Tooltip,
-  IconButton,
-  PopoverRoot,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverClose,
-  Text,
-  Button,
-} from '@radix-ui/themes';
+import { Tooltip, IconButton, Popover, Text, Button } from '@radix-ui/themes';
 import { HeartFilledIcon, PlusIcon, DownloadIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 
@@ -46,9 +37,9 @@ function ImageCard({ id }: any) {
             </IconButton>
           </Tooltip>
         </div>
-        <PopoverRoot open={open} onOpenChange={setOpen}>
+        <Popover.Root open={open} onOpenChange={setOpen}>
           <Tooltip content="Download">
-            <PopoverTrigger>
+            <Popover.Trigger>
               <IconButton
                 size="3"
                 variant="solid"
@@ -58,9 +49,9 @@ function ImageCard({ id }: any) {
               >
                 <DownloadIcon />
               </IconButton>
-            </PopoverTrigger>
+            </Popover.Trigger>
           </Tooltip>
-          <PopoverContent align="center" className={styles.downloadPopover}>
+          <Popover.Content align="center" className={styles.downloadPopover}>
             <div style={{ boxSizing: 'border-box', width: 200, padding: 'var(--space-4)' }}>
               <Text as="p" size="3" style={{ marginBottom: 'var(--space-2)' }}>
                 Choose a size:
@@ -91,14 +82,14 @@ function ImageCard({ id }: any) {
                 ))}
               </div>
 
-              <PopoverClose>
+              <Popover.Close>
                 <Button variant="solid" size="2">
                   Download <DownloadIcon />
                 </Button>
-              </PopoverClose>
+              </Popover.Close>
             </div>
-          </PopoverContent>
-        </PopoverRoot>
+          </Popover.Content>
+        </Popover.Root>
       </div>
     </div>
   );
