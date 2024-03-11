@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--radio-card-group-item-gap);
+  gap: var(--space-2);
 
   & > * {
     /* Avoid unintentional drag interactions (e.g. on images) */
@@ -49,7 +49,6 @@
       --radio-card-group-item-padding-x: var(--space-3);
       --radio-card-group-item-padding-y: calc(var(--space-3) / 1.2);
       --radio-card-group-item-border-radius: var(--radius-3);
-      --radio-card-group-item-gap: var(--space-2);
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
@@ -59,7 +58,6 @@
       --radio-card-group-item-padding-x: var(--space-4);
       --radio-card-group-item-padding-y: calc(var(--space-4) * 0.875);
       --radio-card-group-item-border-radius: var(--radius-3);
-      --radio-card-group-item-gap: var(--space-3);
     }
     /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
@@ -69,7 +67,6 @@
       --radio-card-group-item-padding-x: var(--space-5);
       --radio-card-group-item-padding-y: calc(var(--space-5) / 1.2);
       --radio-card-group-item-border-radius: var(--radius-4);
-      --radio-card-group-item-gap: var(--space-4);
     }
   }
 }

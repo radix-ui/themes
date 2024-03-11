@@ -17,7 +17,7 @@
 
   display: flex;
   align-items: center;
-  gap: var(--checkbox-card-group-item-gap);
+  gap: var(--space-2);
   cursor: var(--cursor-button);
 
   &:where(:has(:focus-visible)) {
@@ -68,7 +68,6 @@
       --checkbox-card-group-item-padding-bottom: calc(var(--space-3) / 1.2);
       --checkbox-card-group-item-padding-left: var(--space-3);
       --checkbox-card-group-item-border-radius: var(--radius-3);
-      --checkbox-card-group-item-gap: var(--space-2);
       /* keep in sync with checkbox */
       --checkbox-card-group-item-checkbox-size: calc(var(--space-4) * 0.875);
     }
@@ -81,7 +80,6 @@
       --checkbox-card-group-item-padding-bottom: calc(var(--space-4) * 0.875);
       --checkbox-card-group-item-padding-left: var(--space-4);
       --checkbox-card-group-item-border-radius: var(--radius-3);
-      --checkbox-card-group-item-gap: var(--space-3);
       /* keep in sync with checkbox */
       --checkbox-card-group-item-checkbox-size: var(--space-4);
     }
@@ -94,7 +92,6 @@
       --checkbox-card-group-item-padding-bottom: calc(var(--space-5) / 1.2);
       --checkbox-card-group-item-padding-left: var(--space-5);
       --checkbox-card-group-item-border-radius: var(--radius-4);
-      --checkbox-card-group-item-gap: var(--space-4);
       /* keep in sync with checkbox */
       --checkbox-card-group-item-checkbox-size: calc(var(--space-4) * 1.25);
     }
