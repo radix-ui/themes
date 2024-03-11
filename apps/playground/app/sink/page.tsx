@@ -143,7 +143,7 @@ import {
   codePropDefs,
   contextMenuContentPropDefs,
   dataListLabelPropDefs,
-  dataListPropDefs,
+  dataListRootPropDefs,
   dropdownMenuContentPropDefs,
   headingPropDefs,
   iconButtonPropDefs,
@@ -5638,7 +5638,7 @@ export default function Sink() {
                           <Box my="6">
                             <table className={styles.table}>
                               <tbody>
-                                {dataListPropDefs.orientation.values.map((orientation) => (
+                                {dataListRootPropDefs.orientation.values.map((orientation) => (
                                   <tr key={orientation}>
                                     <RowHeaderCell>{upperFirst(orientation)}</RowHeaderCell>
                                     <td style={{ textAlign: 'left' }}>
@@ -5664,7 +5664,7 @@ export default function Sink() {
                           <Box my="6">
                             <table className={styles.table}>
                               <tbody>
-                                {dataListPropDefs.size.values.map((size) => (
+                                {dataListRootPropDefs.size.values.map((size) => (
                                   <tr key={size}>
                                     <RowHeaderCell>{`Size ${size}`}</RowHeaderCell>
                                     <td style={{ textAlign: 'left' }}>

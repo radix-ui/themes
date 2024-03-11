@@ -10,7 +10,7 @@ const paddingPropDefs = {
    * @example
    * p="4"
    * p="100px"
-   * p={{ sm: '0', lg: '9' }}
+   * p={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding
@@ -30,7 +30,7 @@ const paddingPropDefs = {
    * @example
    * px="4"
    * px="100px"
-   * px={{ sm: '0', lg: '9' }}
+   * px={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
@@ -51,7 +51,7 @@ const paddingPropDefs = {
    * @example
    * py="4"
    * py="100px"
-   * py={{ sm: '0', lg: '9' }}
+   * py={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top
@@ -72,7 +72,7 @@ const paddingPropDefs = {
    * @example
    * pt="4"
    * pt="100px"
-   * pt={{ sm: '0', lg: '9' }}
+   * pt={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top
@@ -92,7 +92,7 @@ const paddingPropDefs = {
    * @example
    * pr="4"
    * pr="100px"
-   * pr={{ sm: '0', lg: '9' }}
+   * pr={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right
@@ -112,7 +112,7 @@ const paddingPropDefs = {
    * @example
    * pb="4"
    * pb="100px"
-   * pb={{ sm: '0', lg: '9' }}
+   * pb={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
@@ -132,7 +132,7 @@ const paddingPropDefs = {
    * @example
    * pl="4"
    * pl="100px"
-   * pl={{ sm: '0', lg: '9' }}
+   * pl={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left

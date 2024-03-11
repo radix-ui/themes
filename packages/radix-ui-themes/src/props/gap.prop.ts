@@ -10,7 +10,7 @@ const gapProps = {
    * @example
    * gap="4"
    * gap="20px"
-   * gap={{ sm: '0', lg: '1em' }}
+   * gap={{ sm: '2', lg: '3em' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/gap
@@ -30,7 +30,7 @@ const gapProps = {
    * @example
    * gapX="4"
    * gapX="20px"
-   * gapX={{ sm: '0', lg: '1em' }}
+   * gapX={{ sm: '2', lg: '3em' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
@@ -50,7 +50,7 @@ const gapProps = {
    * @example
    * gapY="4"
    * gapY="20px"
-   * gapY={{ sm: '0', lg: '1em' }}
+   * gapY={{ sm: '2', lg: '3em' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap

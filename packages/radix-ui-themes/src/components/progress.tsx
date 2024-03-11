@@ -13,9 +13,14 @@ import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;
 interface ProgressProps
-  extends Omit<ComponentPropsWithoutColor<typeof ProgressPrimitive.Root>, 'asChild' | 'children'>,
+  extends Omit<
+      ComponentPropsWithoutColor<typeof ProgressPrimitive.Root>,
+      'asChild' | 'defaultValue' | 'children'
+    >,
     MarginProps,
-    ProgressOwnProps {}
+    ProgressOwnProps {
+  duration?: `${number}s` | `${number}ms`;
+}
 const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwardedRef) => {
   const { className, style, color, radius, duration, ...progressProps } = extractProps(
     props,

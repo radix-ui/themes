@@ -5,7 +5,7 @@ const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const orientationValues = ['horizontal', 'vertical'] as const;
 const sizes = ['1', '2', '3'] as const;
 
-const dataListPropDefs = {
+const dataListRootPropDefs = {
   orientation: {
     type: 'enum',
     className: 'rt-r-orientation',
@@ -51,4 +51,4 @@ const dataListLabelPropDefs = {
   highContrast: typeof highContrastProp;
 };
 
-export { dataListPropDefs, dataListItemPropDefs, dataListLabelPropDefs };
+export { dataListRootPropDefs, dataListItemPropDefs, dataListLabelPropDefs };

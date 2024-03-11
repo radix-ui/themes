@@ -11,7 +11,7 @@ const marginPropDefs = {
    * @example
    * m="4"
    * m="100px"
-   * m={{ sm: '0', lg: '9' }}
+   * m={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin
@@ -31,7 +31,7 @@ const marginPropDefs = {
    * @example
    * mx="4"
    * mx="100px"
-   * mx={{ sm: '0', lg: '9' }}
+   * mx={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left
@@ -52,7 +52,7 @@ const marginPropDefs = {
    * @example
    * my="4"
    * my="100px"
-   * my={{ sm: '0', lg: '9' }}
+   * my={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top
@@ -73,7 +73,7 @@ const marginPropDefs = {
    * @example
    * mt="4"
    * mt="100px"
-   * mt={{ sm: '0', lg: '9' }}
+   * mt={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top
@@ -93,7 +93,7 @@ const marginPropDefs = {
    * @example
    * mr="4"
    * mr="100px"
-   * mr={{ sm: '0', lg: '9' }}
+   * mr={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right
@@ -113,7 +113,7 @@ const marginPropDefs = {
    * @example
    * mb="4"
    * mb="100px"
-   * mb={{ sm: '0', lg: '9' }}
+   * mb={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom
@@ -133,7 +133,7 @@ const marginPropDefs = {
    * @example
    * ml="4"
    * ml="100px"
-   * ml={{ sm: '0', lg: '9' }}
+   * ml={{ sm: '6', lg: '9' }}
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left
