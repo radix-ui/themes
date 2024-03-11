@@ -2,7 +2,7 @@
 /* Disable selector-max-type rule to target individual element types. */
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
-:where(.rt-reset) {
+.rt-reset {
   /* * * * * * * * * * * * * * * * * * * */
   /*                                     */
   /*              Margins                */
