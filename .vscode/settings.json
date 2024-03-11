@@ -1,5 +1,0 @@
-{
-  "search.exclude": {
-    "packages/radix-ui-themes/*.css": true
-  }
-}
