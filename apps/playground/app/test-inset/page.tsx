@@ -40,8 +40,9 @@ import {
   AlertDialogCancel,
   Separator,
   ThemePanel,
-  RadioCardGroupRoot,
+  RadioCardGroup,
   RadioCardGroupItem,
+  RadioCardGroupRoot,
   CheckboxCardGroupItem,
   CheckboxCardGroupRoot,
 } from '@radix-ui/themes';
