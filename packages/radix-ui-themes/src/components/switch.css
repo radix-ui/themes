@@ -18,8 +18,13 @@
   vertical-align: top;
   flex-shrink: 0;
 
-  /* Align with text line height when possible, fall back to own height */
-  height: var(--line-height, var(--switch-height));
+  /* Unless in a skeleton, align with text line height when possible and fall back to own height */
+  height: var(--skeleton-height, var(--line-height, var(--switch-height)));
+  --skeleton-height-override: var(--switch-height);
+
+  /* Set root radius when in a skeleton */
+  border-radius: var(--skeleton-radius);
+  --skeleton-radius-override: var(--switch-border-radius);
 
   --switch-width: calc(var(--switch-height) * 1.75);
   --switch-thumb-inset: 1px;

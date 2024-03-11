@@ -1,4 +1,6 @@
 @import './reset.css';
+/* Import Skeleton before other components so that its default border-radius doesn’t have a higher specificity */
+@import './skeleton.css';
 @import './animations.css';
 @import './layout.css';
 
@@ -34,7 +36,6 @@
 @import './segmented-control.css';
 @import './select.css';
 @import './separator.css';
-@import './skeleton.css';
 @import './slider.css';
 @import './spinner.css';
 @import './strong.css';

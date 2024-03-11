@@ -10,7 +10,7 @@ import {
 import { type PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-const underline = ['auto', 'hover', 'always'] as const;
+const underline = ['auto', 'always', 'hover', 'none'] as const;
 
 const linkPropDefs = {
   ...asChildProp,

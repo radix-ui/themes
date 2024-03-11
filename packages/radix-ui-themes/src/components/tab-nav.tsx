@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { tabNavLinkPropDefs, tabNavPropDefs } from './tab-nav.props.js';
+import { tabNavLinkPropDefs, tabNavRootPropDefs } from './tab-nav.props.js';
 import { extractProps, getSubtree } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
@@ -11,15 +11,16 @@ import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type TabNavRootElement = React.ElementRef<typeof NavigationMenu.Root>;
-type TabNavOwnProps = GetPropDefTypes<typeof tabNavPropDefs>;
+type TabNavRootElementProps = React.HTMLAttributes<React.ElementRef<typeof NavigationMenu.Root>>;
+type TabNavOwnProps = GetPropDefTypes<typeof tabNavRootPropDefs>;
 interface TabNavRootProps
-  extends Omit<ComponentPropsWithoutColor<typeof NavigationMenu.Root>, 'asChild'>,
+  extends Omit<TabNavRootElementProps, 'defaultValue' | 'dir' | 'color'>,
     MarginProps,
     TabNavOwnProps {}
 const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, forwardedRef) => {
   const { children, className, color, ...rootProps } = extractProps(
     props,
-    tabNavPropDefs,
+    tabNavRootPropDefs,
     marginPropDefs
   );
   return (

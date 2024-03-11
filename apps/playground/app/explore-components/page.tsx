@@ -108,7 +108,7 @@ import {
   checkboxPropDefs,
   codePropDefs,
   contextMenuContentPropDefs,
-  dataListPropDefs,
+  dataListRootPropDefs,
   dropdownMenuContentPropDefs,
   headingPropDefs,
   hoverCardContentPropDefs,
@@ -1574,7 +1574,7 @@ export default function ExploreComponents() {
                       <Box my="6">
                         <table className={styles.table}>
                           <tbody>
-                            {dataListPropDefs.orientation.values.map((orientation) => (
+                            {dataListRootPropDefs.orientation.values.map((orientation) => (
                               <tr key={orientation}>
                                 <td>{upperFirst(orientation)}</td>
                                 <td style={{ textAlign: 'left' }}>
@@ -1600,7 +1600,7 @@ export default function ExploreComponents() {
                       <Box my="6">
                         <table className={styles.table}>
                           <tbody>
-                            {dataListPropDefs.size.values.map((size) => (
+                            {dataListRootPropDefs.size.values.map((size) => (
                               <tr key={size}>
                                 <td>{`Size ${upperFirst(size)}`}</td>
                                 <td style={{ textAlign: 'left' }}>

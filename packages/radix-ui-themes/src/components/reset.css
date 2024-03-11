@@ -37,18 +37,55 @@
     all: unset;
     -webkit-tap-highlight-color: transparent;
   }
-  &:where(button) {
+  &:where(
+      button,
+      select,
+
+      /* Buttons */
+      [type='button'],
+      [type='image'],
+      [type='reset'],
+      [type='submit'],
+
+      /* Non-textual inputs */
+      [type='checkbox'],
+      [type='color'],
+      [type='radio'],
+      [type='range'],
+    ) {
     all: unset;
     display: inline-block;
     text-indent: initial;
     -webkit-tap-highlight-color: transparent;
   }
-  &:where(input, textarea, select) {
+  &:where(select) {
+    text-align: start;
+  }
+  &:where(
+      textarea,
+      input:not(
+          /* Buttons */
+          [type='button'],
+          [type='image'],
+          [type='reset'],
+          [type='submit'],
+
+          /* Non-textual inputs */
+          [type='checkbox'],
+          [type='color'],
+          [type='radio'],
+          [type='range']
+        )
+    ) {
     all: unset;
-    display: inline-block;
+    display: block;
+    width: stretch;
     text-align: start;
     text-indent: initial;
     -webkit-tap-highlight-color: transparent;
+
+    /* Make sure parent <label> doesn't change the text cursor */
+    cursor: text;
   }
   &:where(:focus) {
     outline: none;
@@ -89,6 +126,9 @@
   /*                                     */
   /* * * * * * * * * * * * * * * * * * * */
 
+  &:where(abbr, acronym) {
+    text-decoration: none;
+  }
   &:where(canvas, object, picture, summary) {
     display: block;
   }
@@ -118,35 +158,8 @@
     display: block;
     border: none;
   }
-  &:where(
-      textarea,
-      input:not(
-          [type='button'],
-          [type='checkbox'],
-          [type='color'],
-          [type='image'],
-          [type='radio'],
-          [type='reset'],
-          [type='submit']
-        )
-    ) {
-    /* Make sure parent <label> doesn't change the cursor */
-    cursor: text;
-
-    @supports (width: -webkit-fill-available) {
-      width: -webkit-fill-available;
-    }
-    @supports (width: -moz-available) {
-      width: -moz-available;
-    }
-  }
   &:where(iframe) {
-    @supports (width: -webkit-fill-available) {
-      width: -webkit-fill-available;
-    }
-    @supports (width: -moz-available) {
-      width: -moz-available;
-    }
+    width: stretch;
   }
   &:where(ins, u) {
     text-decoration: none;
@@ -175,6 +188,10 @@
     font: unset;
     vertical-align: unset;
   }
+  &:where(details) ::marker,
+  &:where(summary)::marker {
+    content: none;
+  }
 
   /* * * * * * * * * * * * * * * * * * * */
   /*                                     */
@@ -182,7 +199,7 @@
   /*                                     */
   /* * * * * * * * * * * * * * * * * * * */
 
-  &:where(a[href]) {
+  &:where(:any-link) {
     cursor: var(--cursor-link);
   }
   &:where(button) {
@@ -204,7 +221,9 @@
   /*                                     */
   /* * * * * * * * * * * * * * * * * * * */
 
-  & {
+  &,
+  &::before,
+  &::after {
     /* Don't reorder this rule or remove "&" */
     box-sizing: border-box;
   }

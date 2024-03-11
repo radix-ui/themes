@@ -120,7 +120,7 @@
   }
 
   :where(.rt-Link) &,
-  &:where(a, button) {
+  &:where(:any-link, button) {
     /* Create a new stacking context (otherwise, `filter` may do it on hover) */
     isolation: isolate;
     @media (hover: hover) {
@@ -147,7 +147,7 @@
   }
 
   :where(.rt-Link) &,
-  &:where(a, button) {
+  &:where(:any-link, button) {
     isolation: isolate;
     @media (hover: hover) {
       &:where(:hover) {
@@ -169,7 +169,7 @@
   }
 
   :where(.rt-Link) &,
-  &:where(a, button) {
+  &:where(:any-link, button) {
     isolation: isolate;
     @media (hover: hover) {
       &:where(:hover) {

@@ -54,7 +54,32 @@ export default function Test() {
                     <i>Italic text</i>
                     <iframe src="https://example.com" />
                     <img src="https://source.unsplash.com/random" />
+
+                    {/* All input types: */}
                     <input placeholder="Input control" />
+                    {/* <input placeholder="Input control" type="button" /> */}
+                    {/* <input placeholder="Input control" type="image" /> */}
+                    {/* <input placeholder="Input control" type="text" /> */}
+                    {/* <input placeholder="Input control" type="checkbox" /> */}
+                    {/* <input placeholder="Input control" type="color" /> */}
+                    {/* <input placeholder="Input control" type="date" /> */}
+                    {/* <input placeholder="Input control" type="datetime-local" /> */}
+                    {/* <input placeholder="Input control" type="email" /> */}
+                    {/* <input placeholder="Input control" type="file" /> */}
+                    {/* <input placeholder="Input control" type="hidden" /> */}
+                    {/* <input placeholder="Input control" type="month" /> */}
+                    {/* <input placeholder="Input control" type="number" /> */}
+                    {/* <input placeholder="Input control" type="password" /> */}
+                    {/* <input placeholder="Input control" type="radio" /> */}
+                    {/* <input placeholder="Input control" type="range" /> */}
+                    {/* <input placeholder="Input control" type="reset" /> */}
+                    {/* <input placeholder="Input control" type="search" /> */}
+                    {/* <input placeholder="Input control" type="submit" /> */}
+                    {/* <input placeholder="Input control" type="tel" /> */}
+                    {/* <input placeholder="Input control" type="time" /> */}
+                    {/* <input placeholder="Input control" type="url" /> */}
+                    {/* <input placeholder="Input control" type="week" /> */}
+
                     <ins>Inserted text</ins>
                     <kbd>Keyboard input</kbd>
                     <label>Form field label text</label>

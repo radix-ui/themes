@@ -1,8 +1,7 @@
-:where(.rt-Skeleton) {
-  border-radius: var(--radius-1);
-}
-
 .rt-Skeleton {
+  --skeleton-radius: var(--skeleton-radius-override);
+  --skeleton-height: var(--skeleton-height-override);
+  border-radius: var(--radius-1);
   animation: rt-skeleton-pulse 1000ms infinite alternate-reverse !important;
   background-image: none !important;
   background-clip: border-box !important;

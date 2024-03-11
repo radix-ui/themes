@@ -4,7 +4,7 @@ import { Text } from './text.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import {
-  dataListPropDefs,
+  dataListRootPropDefs,
   dataListItemPropDefs,
   dataListLabelPropDefs,
 } from './data-list.props.js';
@@ -13,14 +13,18 @@ import type { ComponentPropsWithoutColor } from '../helpers/index.js';
 import type { MarginProps, GetPropDefTypes } from '../props/index.js';
 
 type DataListRootElement = HTMLDListElement;
-type DataListRootOwnProps = GetPropDefTypes<typeof dataListPropDefs>;
+type DataListRootOwnProps = GetPropDefTypes<typeof dataListRootPropDefs>;
 interface DataListRootProps
   extends ComponentPropsWithoutColor<'dl'>,
     MarginProps,
     DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
   (props, forwardedRef) => {
-    const { className, ...dataListProps } = extractProps(props, dataListPropDefs, marginPropDefs);
+    const { className, ...dataListProps } = extractProps(
+      props,
+      dataListRootPropDefs,
+      marginPropDefs
+    );
     return (
       <Text asChild>
         <dl

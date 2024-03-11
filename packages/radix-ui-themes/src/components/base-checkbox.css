@@ -6,14 +6,21 @@
   vertical-align: top;
   flex-shrink: 0;
   cursor: var(--cursor-checkbox);
-  height: var(--line-height, var(--checkbox-size));
+
+  /* Unless in a skeleton, align with text line height when possible and fall back to own height */
+  height: var(--skeleton-height, var(--line-height, var(--checkbox-size)));
+  --skeleton-height-override: var(--checkbox-size);
+
+  /* Set root radius when in a skeleton */
+  border-radius: var(--skeleton-radius);
+  --skeleton-radius-override: var(--checkbox-border-radius);
 
   &::before {
     content: '';
     display: block;
     height: var(--checkbox-size);
     width: var(--checkbox-size);
-    border-radius: inherit;
+    border-radius: var(--checkbox-border-radius);
   }
 }
 
@@ -34,17 +41,17 @@
     &:where(.rt-r-size-1) {
       --checkbox-size: calc(var(--space-4) * 0.875);
       --checkbox-indicator-size: calc(9px * var(--scaling));
-      border-radius: calc(var(--radius-1) * 0.875);
+      --checkbox-border-radius: calc(var(--radius-1) * 0.875);
     }
     &:where(.rt-r-size-2) {
       --checkbox-size: var(--space-4);
       --checkbox-indicator-size: calc(10px * var(--scaling));
-      border-radius: var(--radius-1);
+      --checkbox-border-radius: var(--radius-1);
     }
     &:where(.rt-r-size-3) {
       --checkbox-size: calc(var(--space-4) * 1.25);
       --checkbox-indicator-size: calc(12px * var(--scaling));
-      border-radius: calc(var(--radius-1) * 1.25);
+      --checkbox-border-radius: calc(var(--radius-1) * 1.25);
     }
   }
 }
