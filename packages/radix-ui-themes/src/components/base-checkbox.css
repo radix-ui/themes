@@ -7,12 +7,13 @@
   flex-shrink: 0;
   cursor: var(--cursor-checkbox);
 
-  /* Set root radius when a skeleton is displayed */
-  --skeleton-radius: var(--checkbox-border-radius);
-
   /* Unless in a skeleton, align with text line height when possible and fall back to own height */
-  --control-height: var(--checkbox-size);
-  height: var(--skeleton-height, var(--line-height, var(--control-height)));
+  height: var(--skeleton-height, var(--line-height, var(--checkbox-size)));
+  --skeleton-height-override: var(--checkbox-size);
+
+  /* Set root radius when in a skeleton */
+  border-radius: var(--skeleton-radius);
+  --skeleton-radius-override: var(--checkbox-border-radius);
 
   &::before {
     content: '';

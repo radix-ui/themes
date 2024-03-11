@@ -13,7 +13,6 @@
   pointer-events: none !important;
   user-select: none !important;
   cursor: default !important;
-  --skeleton-height: var(--control-height);
 }
 
 /*
