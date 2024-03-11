@@ -6,7 +6,13 @@
   vertical-align: top;
   flex-shrink: 0;
   cursor: var(--cursor-radio);
-  height: var(--line-height, var(--radio-size));
+
+  /* Set root radius when a skeleton is displayed */
+  --skeleton-radius: 100%;
+
+  /* Unless in a skeleton, align with text line height when possible and fall back to own height */
+  --control-height: var(--radio-size);
+  height: var(--skeleton-height, var(--line-height, var(--control-height)));
 
   &::before {
     content: '';
