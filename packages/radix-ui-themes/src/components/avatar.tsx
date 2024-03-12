@@ -37,7 +37,7 @@ type AvatarImplElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 type AvatarOwnProps = GetPropDefTypes<typeof avatarPropDefs>;
 
 interface AvatarImplProps
-  extends ComponentPropsWithout<RemovedProps, typeof AvatarPrimitive.Image>,
+  extends ComponentPropsWithout<typeof AvatarPrimitive.Image, RemovedProps>,
     AvatarOwnProps {
   // TODO: See if we can automate making prop defs with `required: true` non nullable
   fallback: NonNullable<AvatarOwnProps['fallback']>;

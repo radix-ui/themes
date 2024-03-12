@@ -10,7 +10,7 @@ import type { MarginProps, LayoutProps, SectionOwnProps } from '../props/index.j
 
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps
-  extends ComponentPropsWithout<RemovedProps, 'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
     LayoutProps,
     SectionOwnProps {}

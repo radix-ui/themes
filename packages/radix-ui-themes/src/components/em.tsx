@@ -8,7 +8,7 @@ import { emPropDefs } from './em.props.js';
 
 type EmElement = React.ElementRef<'em'>;
 type EmOwnProps = GetPropDefTypes<typeof emPropDefs>;
-interface EmProps extends ComponentPropsWithout<RemovedProps, 'em'>, EmOwnProps {}
+interface EmProps extends ComponentPropsWithout<'em', RemovedProps>, EmOwnProps {}
 const Em = React.forwardRef<EmElement, EmProps>(
   ({ asChild, className, ...props }, forwardedRef) => {
     const Comp = asChild ? Slot : 'em';

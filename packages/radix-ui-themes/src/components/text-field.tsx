@@ -34,8 +34,8 @@ type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
     | 'week';
 };
 type TextFieldInputProps = ComponentPropsWithout<
-  NotInputTextualAttributes | 'color' | 'defaultValue' | 'size' | 'type' | 'value',
-  'input'
+  'input',
+  NotInputTextualAttributes | 'color' | 'defaultValue' | 'size' | 'type' | 'value'
 >;
 interface TextFieldRootProps extends TextFieldInputProps, MarginProps, TextFieldRootOwnProps {}
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
@@ -93,7 +93,7 @@ TextFieldRoot.displayName = 'TextFieldRoot';
 type TextFieldSlotElement = React.ElementRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
 interface TextFieldSlotProps
-  extends ComponentPropsWithout<RemovedProps, 'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     TextFieldSlotOwnProps {}
 const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
   (props, forwardedRef) => {

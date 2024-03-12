@@ -11,7 +11,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type CodeElement = React.ElementRef<'code'>;
 type CodeOwnProps = GetPropDefTypes<typeof codePropDefs>;
 interface CodeProps
-  extends ComponentPropsWithout<RemovedProps, 'code'>,
+  extends ComponentPropsWithout<'code', RemovedProps>,
     MarginProps,
     CodeOwnProps {}
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {

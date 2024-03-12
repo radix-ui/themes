@@ -40,7 +40,7 @@ SelectRoot.displayName = 'SelectRoot';
 type SelectTriggerElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 type SelectTriggerOwnProps = GetPropDefTypes<typeof selectTriggerPropDefs>;
 interface SelectTriggerProps
-  extends ComponentPropsWithout<RemovedProps, typeof SelectPrimitive.Trigger>,
+  extends ComponentPropsWithout<typeof SelectPrimitive.Trigger, RemovedProps>,
     MarginProps,
     SelectTriggerOwnProps {}
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
@@ -79,7 +79,7 @@ SelectTrigger.displayName = 'SelectTrigger';
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
 type SelectContentOwnProps = GetPropDefTypes<typeof selectContentPropDefs>;
 interface SelectContentProps
-  extends ComponentPropsWithout<RemovedProps, typeof SelectPrimitive.Content>,
+  extends ComponentPropsWithout<typeof SelectPrimitive.Content, RemovedProps>,
     SelectContentOwnProps {
   container?: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Portal>['container'];
 }
@@ -136,7 +136,7 @@ SelectContent.displayName = 'SelectContent';
 
 type SelectItemElement = React.ElementRef<typeof SelectPrimitive.Item>;
 interface SelectItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof SelectPrimitive.Item> {}
+  extends ComponentPropsWithout<typeof SelectPrimitive.Item, RemovedProps> {}
 const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, forwardedRef) => {
   const { className, children, ...itemProps } = props;
   return (
@@ -157,7 +157,7 @@ SelectItem.displayName = 'SelectItem';
 
 type SelectGroupElement = React.ElementRef<typeof SelectPrimitive.Group>;
 interface SelectGroupProps
-  extends ComponentPropsWithout<RemovedProps, typeof SelectPrimitive.Group> {}
+  extends ComponentPropsWithout<typeof SelectPrimitive.Group, RemovedProps> {}
 const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
   ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Group
@@ -172,7 +172,7 @@ SelectGroup.displayName = 'SelectGroup';
 
 type SelectLabelElement = React.ElementRef<typeof SelectPrimitive.Label>;
 interface SelectLabelProps
-  extends ComponentPropsWithout<RemovedProps, typeof SelectPrimitive.Label> {}
+  extends ComponentPropsWithout<typeof SelectPrimitive.Label, RemovedProps> {}
 const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
   ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Label
@@ -187,7 +187,7 @@ SelectLabel.displayName = 'SelectLabel';
 
 type SelectSeparatorElement = React.ElementRef<typeof SelectPrimitive.Separator>;
 interface SelectSeparatorProps
-  extends ComponentPropsWithout<RemovedProps, typeof SelectPrimitive.Separator> {}
+  extends ComponentPropsWithout<typeof SelectPrimitive.Separator, RemovedProps> {}
 const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparatorProps>(
   ({ className, ...props }, forwardedRef) => (
     <SelectPrimitive.Separator

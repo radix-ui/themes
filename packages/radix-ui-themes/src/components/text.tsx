@@ -11,14 +11,14 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type TextElement = React.ElementRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
 type CommonTextProps = NiceIntersection<MarginProps, TextOwnProps>;
-type TextAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<RemovedProps, 'span'>;
-type TextSpanProps = { as?: 'span'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'span'>;
-type TextDivProps = { as: 'div'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'div'>;
+type TextAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<'span', RemovedProps>;
+type TextSpanProps = { as?: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
+type TextDivProps = { as: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
 type TextLabelProps = { as: 'label'; asChild?: false } & ComponentPropsWithout<
-  RemovedProps,
-  'label'
+  'label',
+  RemovedProps
 >;
-type TextPProps = { as: 'p'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'p'>;
+type TextPProps = { as: 'p'; asChild?: false } & ComponentPropsWithout<'p', RemovedProps>;
 type TextProps = CommonTextProps &
   (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
 

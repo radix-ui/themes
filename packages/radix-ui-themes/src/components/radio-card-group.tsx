@@ -15,8 +15,8 @@ type RadioCardGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Roo
 type RadioCardGroupRootOwnProps = GetPropDefTypes<typeof radioCardGroupRootPropDefs>;
 interface RadioCardGroupRootProps
   extends ComponentPropsWithout<
-      'asChild' | 'color' | 'defaultChecked',
-      typeof RadioGroupPrimitive.Root
+      typeof RadioGroupPrimitive.Root,
+      'asChild' | 'color' | 'defaultChecked'
     >,
     MarginProps,
     RadioCardGroupRootOwnProps {}
@@ -43,7 +43,7 @@ RadioCardGroupRoot.displayName = 'RadioCardGroupRoot';
 
 type RadioCardGroupItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioCardGroupItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof RadioGroupPrimitive.Item>,
+  extends ComponentPropsWithout<typeof RadioGroupPrimitive.Item, RemovedProps>,
     MarginProps {}
 const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCardGroupItemProps>(
   ({ className, ...props }, forwardedRef) => (

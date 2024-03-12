@@ -9,7 +9,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type LinkElement = React.ElementRef<'a'>;
 type LinkOwnProps = GetPropDefTypes<typeof linkPropDefs>;
-interface LinkProps extends ComponentPropsWithout<RemovedProps, 'a'>, MarginProps, LinkOwnProps {}
+interface LinkProps extends ComponentPropsWithout<'a', RemovedProps>, MarginProps, LinkOwnProps {}
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const { children, className, asChild, ...linkProps } = extractProps(props, linkPropDefs);
   return (

@@ -9,7 +9,7 @@ import type { ComponentPropsWithout, NiceIntersection, RemovedProps } from '../h
 import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type HeadingElement = React.ElementRef<'h1'>;
-type HeadingElementProps = ComponentPropsWithout<RemovedProps, 'h1'>;
+type HeadingElementProps = ComponentPropsWithout<'h1', RemovedProps>;
 type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;
 type CommonHeadingProps = NiceIntersection<MarginProps, HeadingOwnProps>;
 type HeadingAsChildProps = { asChild: true; as?: never } & HeadingElementProps;

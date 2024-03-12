@@ -10,7 +10,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type BlockquoteElement = React.ElementRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;
 interface BlockquoteProps
-  extends ComponentPropsWithout<RemovedProps, 'blockquote'>,
+  extends ComponentPropsWithout<'blockquote', RemovedProps>,
     MarginProps,
     BlockQuoteOwnProps {}
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {

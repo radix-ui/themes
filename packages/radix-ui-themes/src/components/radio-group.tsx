@@ -30,8 +30,8 @@ const [RadioGroupProvider, useRadioGroupContext] =
 type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
   extends ComponentPropsWithout<
-      'asChild' | 'color' | 'defaultChecked',
-      typeof RadioGroupPrimitive.Root
+      typeof RadioGroupPrimitive.Root,
+      'asChild' | 'color' | 'defaultChecked'
     >,
     MarginProps,
     RadioGroupRootOwnProps {}
@@ -70,7 +70,7 @@ RadioGroupRoot.displayName = 'RadioGroupRoot';
 
 type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
 interface RadioGroupItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof RadioGroupItemRadio>,
+  extends ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>,
     MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   (_props: ScopedProps<RadioGroupItemProps>, forwardedRef) => {

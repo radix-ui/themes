@@ -14,7 +14,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type SegmentedControlRootOwnProps = GetPropDefTypes<typeof segmentedControlRootPropDefs>;
 
 interface SegmentedControlRootProps
-  extends ComponentPropsWithout<RemovedProps | 'dir', 'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps | 'dir'>,
     SegmentedControlRootOwnProps,
     MarginProps {
   value?: string;
@@ -71,8 +71,8 @@ interface SegmentedControlItemOwnProps {
 
 interface SegmentedControlItemProps
   extends ComponentPropsWithout<
-      RemovedProps | 'disabled' | 'type' | 'value',
-      typeof ToggleGroupPrimitive.Item
+      typeof ToggleGroupPrimitive.Item,
+      RemovedProps | 'disabled' | 'type' | 'value'
     >,
     SegmentedControlItemOwnProps {}
 

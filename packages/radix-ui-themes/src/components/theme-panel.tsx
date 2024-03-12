@@ -42,7 +42,7 @@ interface ThemePanelImplPrivateProps {
   onOpenChange: (open: boolean) => void;
 }
 interface ThemePanelImplProps
-  extends ComponentPropsWithout<RemovedProps, 'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: 'light' | 'dark') => void;
 }

@@ -18,7 +18,7 @@ PopoverRoot.displayName = 'PopoverRoot';
 
 type PopoverTriggerElement = React.ElementRef<typeof PopoverPrimitive.Trigger>;
 interface PopoverTriggerProps
-  extends ComponentPropsWithout<RemovedProps, typeof PopoverPrimitive.Trigger> {}
+  extends ComponentPropsWithout<typeof PopoverPrimitive.Trigger, RemovedProps> {}
 const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -30,7 +30,7 @@ PopoverTrigger.displayName = 'PopoverTrigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
-  extends ComponentPropsWithout<RemovedProps, typeof PopoverPrimitive.Content>,
+  extends ComponentPropsWithout<typeof PopoverPrimitive.Content, RemovedProps>,
     PopoverContentOwnProps {
   container?: React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Portal>['container'];
 }
@@ -60,7 +60,7 @@ PopoverContent.displayName = 'PopoverContent';
 
 type PopoverCloseElement = React.ElementRef<typeof PopoverPrimitive.Close>;
 interface PopoverCloseProps
-  extends ComponentPropsWithout<RemovedProps, typeof PopoverPrimitive.Close> {}
+  extends ComponentPropsWithout<typeof PopoverPrimitive.Close, RemovedProps> {}
 const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild>

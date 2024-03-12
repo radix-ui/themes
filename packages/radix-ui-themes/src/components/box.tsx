@@ -10,9 +10,9 @@ import type { MarginProps, LayoutProps, BoxOwnProps } from '../props/index.js';
 
 type BoxElement = React.ElementRef<'div'>;
 interface CommonBoxProps extends MarginProps, LayoutProps, BoxOwnProps {}
-type BoxAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<RemovedProps, 'div'>;
-type BoxDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'div'>;
-type BoxSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'span'>;
+type BoxAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<'div', RemovedProps>;
+type BoxDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
+type BoxSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
 type BoxProps = CommonBoxProps & (BoxAsChildProps | BoxSpanProps | BoxDivProps);
 
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {

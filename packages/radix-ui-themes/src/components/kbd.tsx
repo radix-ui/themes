@@ -10,7 +10,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type KbdElement = React.ElementRef<'kbd'>;
 type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;
-interface KbdProps extends ComponentPropsWithout<RemovedProps, 'kbd'>, MarginProps, KbdOwnProps {}
+interface KbdProps extends ComponentPropsWithout<'kbd', RemovedProps>, MarginProps, KbdOwnProps {}
 const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
   const { asChild, className, ...kbdProps } = extractProps(props, kbdPropDefs, marginPropDefs);
   const Comp = asChild ? Slot : 'kbd';

@@ -14,7 +14,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type BaseButtonElement = React.ElementRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
 interface BaseButtonProps
-  extends ComponentPropsWithout<RemovedProps, 'button'>,
+  extends ComponentPropsWithout<'button', RemovedProps>,
     MarginProps,
     BaseButtonOwnProps {}
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {

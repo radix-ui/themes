@@ -17,8 +17,8 @@ type RadioOwnProps = GetPropDefTypes<typeof radioPropDefs> & {
   onValueChange?: (value: string) => void;
 };
 type RadioInputProps = ComponentPropsWithout<
-  NotInputRadioAttributes | 'color' | 'defaultValue' | 'value',
-  'input'
+  'input',
+  NotInputRadioAttributes | 'color' | 'defaultValue' | 'value'
 >;
 interface RadioProps extends RadioInputProps, MarginProps, RadioOwnProps {}
 

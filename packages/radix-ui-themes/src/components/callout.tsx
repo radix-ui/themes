@@ -18,7 +18,7 @@ const CalloutContext = React.createContext<CalloutContextValue>({});
 
 type CalloutRootElement = React.ElementRef<'div'>;
 interface CalloutRootProps
-  extends ComponentPropsWithout<RemovedProps, 'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
     CalloutContextValue {}
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
@@ -52,7 +52,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
 CalloutRoot.displayName = 'CalloutRoot';
 
 type CalloutIconElement = React.ElementRef<'div'>;
-interface CalloutIconProps extends ComponentPropsWithout<RemovedProps, 'div'> {}
+interface CalloutIconProps extends ComponentPropsWithout<'div', RemovedProps> {}
 const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
   ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);

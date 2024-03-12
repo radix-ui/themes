@@ -10,7 +10,7 @@ import type { MarginProps, LayoutProps, ContainerOwnProps } from '../props/index
 
 type ContainerElement = React.ElementRef<'div'>;
 interface ContainerProps
-  extends ComponentPropsWithout<RemovedProps, 'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
     LayoutProps,
     ContainerOwnProps {}

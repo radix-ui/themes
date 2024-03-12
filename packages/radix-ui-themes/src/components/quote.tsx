@@ -8,7 +8,7 @@ import type { GetPropDefTypes } from '../props/index.js';
 
 type QuoteElement = React.ElementRef<'q'>;
 type QuoteOwnProps = GetPropDefTypes<typeof emPropDefs>;
-interface QuoteProps extends ComponentPropsWithout<RemovedProps, 'q'>, QuoteOwnProps {}
+interface QuoteProps extends ComponentPropsWithout<'q', RemovedProps>, QuoteOwnProps {}
 const Quote = React.forwardRef<QuoteElement, QuoteProps>(
   ({ asChild, className, ...props }, forwardedRef) => {
     const Comp = asChild ? Slot : 'q';

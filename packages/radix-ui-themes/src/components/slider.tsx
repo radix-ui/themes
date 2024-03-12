@@ -14,8 +14,8 @@ type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;
 interface SliderProps
   extends ComponentPropsWithout<
-      'asChild' | 'color' | 'children' | 'defaultChecked',
-      typeof SliderPrimitive.Root
+      typeof SliderPrimitive.Root,
+      'asChild' | 'color' | 'children' | 'defaultChecked'
     >,
     MarginProps,
     SliderOwnProps {}

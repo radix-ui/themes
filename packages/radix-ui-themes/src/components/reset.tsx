@@ -5,7 +5,7 @@ import { requireReactElement } from '../helpers/index.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 
-interface ResetProps extends ComponentPropsWithout<RemovedProps, typeof Slot> {}
+interface ResetProps extends ComponentPropsWithout<typeof Slot, RemovedProps> {}
 const Reset = React.forwardRef<HTMLElement, ResetProps>(
   ({ className, children, ...props }, forwardedRef) => {
     return (

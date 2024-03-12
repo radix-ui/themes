@@ -36,8 +36,8 @@ type CheckboxCardGroupRootElement = React.ElementRef<typeof CheckboxGroupPrimiti
 type CheckboxCardGroupRootOwnProps = GetPropDefTypes<typeof checkboxCardGroupRootPropDefs>;
 interface CheckboxCardGroupRootProps
   extends ComponentPropsWithout<
-      'asChild' | 'color' | 'defaultChecked',
-      typeof CheckboxGroupPrimitive.Root
+      typeof CheckboxGroupPrimitive.Root,
+      'asChild' | 'color' | 'defaultChecked'
     >,
     MarginProps,
     CheckboxCardGroupRootOwnProps {}
@@ -73,7 +73,7 @@ CheckboxCardGroupRoot.displayName = 'CheckboxCardGroupRoot';
 
 type CheckboxCardGroupItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxCardGroupItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof CheckboxGroupPrimitive.Item>,
+  extends ComponentPropsWithout<typeof CheckboxGroupPrimitive.Item, RemovedProps>,
     MarginProps {}
 const CheckboxCardGroupItem = React.forwardRef<
   CheckboxCardGroupItemElement,

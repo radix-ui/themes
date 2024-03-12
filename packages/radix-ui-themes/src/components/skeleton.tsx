@@ -11,7 +11,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type SkeletonElement = React.ElementRef<'span'>;
 type SkeletonOwnProps = GetPropDefTypes<typeof skeletonPropDefs>;
 interface SkeletonProps
-  extends ComponentPropsWithout<RemovedProps, 'span'>,
+  extends ComponentPropsWithout<'span', RemovedProps>,
     MarginProps,
     SkeletonOwnProps {}
 const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwardedRef) => {

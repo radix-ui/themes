@@ -13,7 +13,7 @@ type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {
   value?: string;
 };
 interface TextAreaProps
-  extends ComponentPropsWithout<RemovedProps | 'size' | 'value', 'textarea'>,
+  extends ComponentPropsWithout<'textarea', RemovedProps | 'size' | 'value'>,
     MarginProps,
     TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {

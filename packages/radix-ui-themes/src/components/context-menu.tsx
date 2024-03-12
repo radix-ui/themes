@@ -27,7 +27,7 @@ ContextMenuRoot.displayName = 'ContextMenuRoot';
 
 type ContextMenuTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.Trigger>;
 interface ContextMenuTriggerProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Trigger> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Trigger, RemovedProps> {}
 const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMenuTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -42,7 +42,7 @@ type ContextMenuContentContextValue = ContextMenuContentOwnProps;
 const ContextMenuContentContext = React.createContext<ContextMenuContentContextValue>({});
 type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Content>;
 interface ContextMenuContentProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Content>,
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Content, RemovedProps>,
     ContextMenuContentContextValue {
   container?: React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Portal>['container'];
 }
@@ -98,7 +98,7 @@ ContextMenuContent.displayName = 'ContextMenuContent';
 
 type ContextMenuLabelElement = React.ElementRef<typeof ContextMenuPrimitive.Label>;
 interface ContextMenuLabelProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Label> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Label, RemovedProps> {}
 const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLabelProps>(
   ({ className, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Label
@@ -114,7 +114,7 @@ ContextMenuLabel.displayName = 'ContextMenuLabel';
 type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>;
 type ContextMenuItemOwnProps = GetPropDefTypes<typeof contextMenuItemPropDefs>;
 interface ContextMenuItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Item>,
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Item, RemovedProps>,
     ContextMenuItemOwnProps {}
 const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItemProps>(
   (props, forwardedRef) => {
@@ -142,7 +142,7 @@ ContextMenuItem.displayName = 'ContextMenuItem';
 
 type ContextMenuGroupElement = React.ElementRef<typeof ContextMenuPrimitive.Group>;
 interface ContextMenuGroupProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Group> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Group, RemovedProps> {}
 const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGroupProps>(
   ({ className, ...props }, forwardedRef) => (
     <ContextMenuPrimitive.Group
@@ -157,7 +157,7 @@ ContextMenuGroup.displayName = 'ContextMenuGroup';
 
 type ContextMenuRadioGroupElement = React.ElementRef<typeof ContextMenuPrimitive.RadioGroup>;
 interface ContextMenuRadioGroupProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.RadioGroup> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.RadioGroup, RemovedProps> {}
 const ContextMenuRadioGroup = React.forwardRef<
   ContextMenuRadioGroupElement,
   ContextMenuRadioGroupProps
@@ -174,7 +174,7 @@ ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup';
 type ContextMenuRadioItemElement = React.ElementRef<typeof ContextMenuPrimitive.RadioItem>;
 type ContextMenuRadioItemOwnProps = GetPropDefTypes<typeof contextMenuRadioItemPropDefs>;
 interface ContextMenuRadioItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.RadioItem>,
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.RadioItem, RemovedProps>,
     ContextMenuRadioItemOwnProps {}
 const ContextMenuRadioItem = React.forwardRef<
   ContextMenuRadioItemElement,
@@ -212,7 +212,7 @@ ContextMenuRadioItem.displayName = 'ContextMenuRadioItem';
 type ContextMenuCheckboxItemElement = React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>;
 type ContextMenuCheckboxItemOwnProps = GetPropDefTypes<typeof contextMenuCheckboxItemPropDefs>;
 interface ContextMenuCheckboxItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.CheckboxItem>,
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.CheckboxItem, RemovedProps>,
     ContextMenuCheckboxItemOwnProps {}
 const ContextMenuCheckboxItem = React.forwardRef<
   ContextMenuCheckboxItemElement,
@@ -250,7 +250,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
 ContextMenuCheckboxItem.displayName = 'ContextMenuCheckboxItem';
 
 interface ContextMenuSubProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Sub> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Sub, RemovedProps> {}
 const ContextMenuSub: React.FC<ContextMenuSubProps> = (props) => (
   <ContextMenuPrimitive.Sub {...props} />
 );
@@ -258,7 +258,7 @@ ContextMenuSub.displayName = 'ContextMenuSub';
 
 type ContextMenuSubTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>;
 interface ContextMenuSubTriggerProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.SubTrigger> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.SubTrigger, RemovedProps> {}
 const ContextMenuSubTrigger = React.forwardRef<
   ContextMenuSubTriggerElement,
   ContextMenuSubTriggerProps
@@ -288,7 +288,7 @@ ContextMenuSubTrigger.displayName = 'ContextMenuSubTrigger';
 
 type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.SubContent> {
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.SubContent, RemovedProps> {
   container?: React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuSubContent = React.forwardRef<
@@ -335,7 +335,7 @@ ContextMenuSubContent.displayName = 'ContextMenuSubContent';
 
 type ContextMenuSeparatorElement = React.ElementRef<typeof ContextMenuPrimitive.Separator>;
 interface ContextMenuSeparatorProps
-  extends ComponentPropsWithout<RemovedProps, typeof ContextMenuPrimitive.Separator> {}
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.Separator, RemovedProps> {}
 const ContextMenuSeparator = React.forwardRef<
   ContextMenuSeparatorElement,
   ContextMenuSeparatorProps

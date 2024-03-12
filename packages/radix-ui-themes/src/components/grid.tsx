@@ -10,9 +10,9 @@ import type { MarginProps, LayoutProps, GridOwnProps } from '../props/index.js';
 
 type GridElement = React.ElementRef<'div'>;
 interface CommonGridProps extends MarginProps, LayoutProps, GridOwnProps {}
-type GridAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithout<RemovedProps, 'div'>;
-type GridDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'div'>;
-type GridSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'span'>;
+type GridAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithout<'div', RemovedProps>;
+type GridDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
+type GridSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
 type GridProps = CommonGridProps & (GridAsChildProps | GridSpanProps | GridDivProps);
 
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {

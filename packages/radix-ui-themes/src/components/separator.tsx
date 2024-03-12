@@ -12,7 +12,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type SeparatorElement = React.ElementRef<'span'>;
 type SeparatorOwnProps = GetPropDefTypes<typeof separatorPropDefs>;
 interface SeparatorProps
-  extends ComponentPropsWithout<RemovedProps, 'span'>,
+  extends ComponentPropsWithout<'span', RemovedProps>,
     MarginProps,
     SeparatorOwnProps {}
 const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, forwardedRef) => {

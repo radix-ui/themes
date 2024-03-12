@@ -11,7 +11,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type BadgeElement = React.ElementRef<'span'>;
 type BadgeOwnProps = GetPropDefTypes<typeof badgePropDefs>;
 interface BadgeProps
-  extends ComponentPropsWithout<RemovedProps, 'span'>,
+  extends ComponentPropsWithout<'span', RemovedProps>,
     MarginProps,
     BadgeOwnProps {}
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {

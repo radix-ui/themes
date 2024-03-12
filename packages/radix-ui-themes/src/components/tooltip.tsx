@@ -15,7 +15,7 @@ type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
 interface TooltipProps
   extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>,
-    ComponentPropsWithout<RemovedProps | 'content', typeof TooltipPrimitive.Content>,
+    ComponentPropsWithout<typeof TooltipPrimitive.Content, RemovedProps | 'content'>,
     TooltipOwnProps {
   content: React.ReactNode;
   container?: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Portal>['container'];

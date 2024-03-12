@@ -10,7 +10,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type CardElement = React.ElementRef<'div'>;
 type CardOwnProps = GetPropDefTypes<typeof cardPropDefs>;
-interface CardProps extends ComponentPropsWithout<RemovedProps, 'div'>, MarginProps, CardOwnProps {}
+interface CardProps extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, CardOwnProps {}
 const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
   const { asChild, className, ...cardProps } = extractProps(props, cardPropDefs, marginPropDefs);
   const Comp = asChild ? Slot : 'div';

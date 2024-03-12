@@ -11,7 +11,7 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type TabNavRootElement = React.ElementRef<typeof NavigationMenu.Root>;
-type TabNavRootElementProps = ComponentPropsWithout<RemovedProps, 'nav'>;
+type TabNavRootElementProps = ComponentPropsWithout<'nav', RemovedProps>;
 type TabNavOwnProps = GetPropDefTypes<typeof tabNavRootPropDefs>;
 interface TabNavRootProps
   extends Omit<TabNavRootElementProps, 'defaultValue' | 'dir' | 'color'>,
@@ -44,7 +44,7 @@ TabNavRoot.displayName = 'TabNavRoot';
 type TabNavLinkElement = React.ElementRef<typeof NavigationMenu.Link>;
 type TabNavLinkOwnProps = GetPropDefTypes<typeof tabNavLinkPropDefs>;
 interface TabNavLinkProps
-  extends ComponentPropsWithout<RemovedProps | 'onSelect', typeof NavigationMenu.Link>,
+  extends ComponentPropsWithout<typeof NavigationMenu.Link, RemovedProps | 'onSelect'>,
     TabNavLinkOwnProps {}
 const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
   const { asChild, children, className, ...linkProps } = props;

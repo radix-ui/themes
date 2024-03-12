@@ -31,7 +31,10 @@ const [CheckboxGroupProvider, useCheckboxGroupContext] =
 
 type CheckboxGroupRootElement = React.ElementRef<typeof CheckboxGroupPrimitive.Root>;
 interface CheckboxGroupRootProps
-  extends ComponentPropsWithout<RemovedProps, typeof CheckboxGroupPrimitive.Root>,
+  extends ComponentPropsWithout<
+      typeof CheckboxGroupPrimitive.Root,
+      'asChild' | 'color' | 'defaultChecked'
+    >,
     MarginProps,
     CheckboxGroupRootOwnProps {}
 const CheckboxGroupRoot = React.forwardRef<CheckboxGroupRootElement, CheckboxGroupRootProps>(
@@ -69,7 +72,7 @@ CheckboxGroupRoot.displayName = 'CheckboxGroupRoot';
 
 type CheckboxGroupItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxGroupItemProps
-  extends ComponentPropsWithout<RemovedProps, typeof CheckboxGroupPrimitive.Item>,
+  extends ComponentPropsWithout<typeof CheckboxGroupPrimitive.Item, RemovedProps>,
     MarginProps {}
 const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGroupItemProps>(
   (_props: ScopedProps<CheckboxGroupItemProps>, forwardedRef) => {
@@ -111,7 +114,7 @@ CheckboxGroupItem.displayName = 'CheckboxGroupItem';
 
 type CheckboxGroupItemCheckboxElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxGroupItemCheckboxProps
-  extends ComponentPropsWithout<RemovedProps, typeof CheckboxGroupPrimitive.Item> {}
+  extends ComponentPropsWithout<typeof CheckboxGroupPrimitive.Item, RemovedProps> {}
 const CheckboxGroupItemCheckbox = React.forwardRef<
   CheckboxGroupItemCheckboxElement,
   ScopedProps<CheckboxGroupItemCheckboxProps>

@@ -13,7 +13,7 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;
 interface TabsRootProps
-  extends ComponentPropsWithout<'asChild' | 'color' | 'defaultChecked', typeof TabsPrimitive.Root>,
+  extends ComponentPropsWithout<typeof TabsPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'>,
     MarginProps,
     TabsRootOwnProps {}
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
@@ -31,7 +31,7 @@ TabsRoot.displayName = 'TabsRoot';
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
-  extends ComponentPropsWithout<RemovedProps, typeof TabsPrimitive.List>,
+  extends ComponentPropsWithout<typeof TabsPrimitive.List, RemovedProps>,
     MarginProps,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
@@ -50,7 +50,7 @@ TabsList.displayName = 'TabsList';
 
 type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
 interface TabsTriggerProps
-  extends ComponentPropsWithout<RemovedProps, typeof TabsPrimitive.Trigger> {}
+  extends ComponentPropsWithout<typeof TabsPrimitive.Trigger, RemovedProps> {}
 const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
   (props, forwardedRef) => {
     const { className, children, ...triggerProps } = props;
@@ -74,7 +74,7 @@ TabsTrigger.displayName = 'TabsTrigger';
 type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
 type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
 interface TabsContentProps
-  extends ComponentPropsWithout<RemovedProps, typeof TabsPrimitive.Content>,
+  extends ComponentPropsWithout<typeof TabsPrimitive.Content, RemovedProps>,
     MarginProps,
     TabsContentOwnProps {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(

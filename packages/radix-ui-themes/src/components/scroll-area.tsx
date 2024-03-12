@@ -18,8 +18,8 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 type ScrollAreaOwnProps = GetPropDefTypes<typeof scrollAreaPropDefs>;
 interface ScrollAreaProps
-  extends ComponentPropsWithout<RemovedProps, typeof ScrollAreaPrimitive.Root>,
-    ComponentPropsWithout<RemovedProps | 'dir', typeof ScrollAreaPrimitive.Viewport>,
+  extends ComponentPropsWithout<typeof ScrollAreaPrimitive.Root, RemovedProps>,
+    ComponentPropsWithout<typeof ScrollAreaPrimitive.Viewport, RemovedProps | 'dir'>,
     MarginProps,
     ScrollAreaOwnProps {}
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {
