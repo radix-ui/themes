@@ -1296,6 +1296,10 @@ export default function Sink() {
                         <Spinner size="1" />
                         <Spinner size="2" />
                         <Spinner size="3" />
+
+                        <Spinner>
+                          <Button>Hello</Button>
+                        </Spinner>
                       </Flex>
 
                       <Flex gap="4" align="center">

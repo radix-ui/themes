@@ -4,7 +4,6 @@ import { Flex } from './flex.js';
 import { spinnerPropDefs } from './spinner.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
-import { VisuallyHidden } from './visually-hidden.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes, MarginProps } from '../props/index.js';
@@ -44,10 +43,16 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
       <span>
         {/**
          * `display: contents` removes the content from the accessibility tree in some browsers,
-         * so we force remove it with `aria-hidden` and re-add it in the tree with `VisuallyHidden`
+         * so we force remove it with `aria-hidden`
          */}
-        <span style={{ display: 'contents', visibility: 'hidden' }}>{children}</span>
-        <VisuallyHidden>{children}</VisuallyHidden>
+        <span
+          aria-hidden
+          style={{ display: 'contents', visibility: 'hidden' }}
+          // Workaround to use `inert` until https://github.com/facebook/react/pull/24730 is merged.
+          {...{ inert: true ? '' : undefined }}
+        >
+          {children}
+        </span>
 
         <Flex asChild align="center" justify="center" position="absolute" inset="0">
           <span>{spinner}</span>
