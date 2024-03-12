@@ -7,13 +7,16 @@ import { switchPropDefs } from './switch.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 type SwitchOwnProps = GetPropDefTypes<typeof switchPropDefs>;
 interface SwitchProps
-  extends Omit<ComponentPropsWithoutColor<typeof SwitchPrimitive.Root>, 'asChild' | 'children'>,
+  extends ComponentPropsWithout<
+      typeof SwitchPrimitive.Root,
+      'asChild' | 'color' | 'defaultValue' | 'children'
+    >,
     MarginProps,
     SwitchOwnProps {}
 const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef) => {

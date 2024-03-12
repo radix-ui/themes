@@ -8,17 +8,15 @@ import { Flex } from './flex.js';
 import { Spinner } from './spinner.js';
 import { VisuallyHidden } from './visually-hidden.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type BaseButtonElement = React.ElementRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
 interface BaseButtonProps
-  extends ComponentPropsWithoutColor<'button'>,
+  extends ComponentPropsWithout<'button', RemovedProps>,
     MarginProps,
-    BaseButtonOwnProps {
-  asChild?: boolean;
-}
+    BaseButtonOwnProps {}
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
   const { size = baseButtonPropDefs.size.default } = props;
   const {

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 
 type IconElement = React.ElementRef<'svg'>;
-interface IconProps extends ComponentPropsWithoutColor<'svg'> {
+interface IconProps extends ComponentPropsWithout<'svg', RemovedProps> {
   children?: never;
   color?: string;
 }

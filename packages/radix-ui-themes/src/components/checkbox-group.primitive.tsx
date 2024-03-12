@@ -126,7 +126,8 @@ const ITEM_NAME = 'CheckboxGroupItem';
 
 type CheckboxGroupItemElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxProps = Radix.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
-interface CheckboxGroupItemProps extends Omit<CheckboxProps, 'onCheckedChange' | 'name'> {
+interface CheckboxGroupItemProps
+  extends Omit<CheckboxProps, 'checked' | 'defaultChecked' | 'onCheckedChange' | 'name'> {
   value: string;
 }
 

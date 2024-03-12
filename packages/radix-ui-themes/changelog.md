@@ -37,7 +37,7 @@
     - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
     - Document all layout props with JSDoc
     - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
-    - Remove the native `color` attribute from components that don’t have own `color` props
+    - Remove the native `color`, `defaultValue`, and `defaultChecked` attributes from components that inherit them from the native HTML elements to avoid confusion with their custom implementations
     - **[Breaking]** Rework the availability of `asChild` prop on all components and parts
   - Colors
     - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color

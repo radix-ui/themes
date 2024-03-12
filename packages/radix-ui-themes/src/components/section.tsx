@@ -5,12 +5,12 @@ import { sectionPropDefs } from './section.props.js';
 import { extractProps } from '../helpers/index.js';
 import { layoutPropDefs, marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { MarginProps, LayoutProps, SectionOwnProps } from '../props/index.js';
 
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps
-  extends ComponentPropsWithoutColor<'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
     LayoutProps,
     SectionOwnProps {}

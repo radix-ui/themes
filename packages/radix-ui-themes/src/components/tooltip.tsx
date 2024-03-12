@@ -9,17 +9,16 @@ import { extractProps } from '../helpers/index.js';
 import { tooltipPropDefs } from './tooltip.props.js';
 
 import type { GetPropDefTypes } from '../props/index.js';
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
 interface TooltipProps
-  extends Omit<ComponentPropsWithoutColor<typeof TooltipPrimitive.Root>, 'asChild'>,
-    Omit<ComponentPropsWithoutColor<typeof TooltipPrimitive.Content>, 'asChild' | 'content'>,
+  extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>,
+    ComponentPropsWithout<typeof TooltipPrimitive.Content, RemovedProps | 'content'>,
     TooltipOwnProps {
-  // TODO: See if we can automate making prop defs with `required: true` non nullable
-  content: NonNullable<TooltipOwnProps['content']>;
-  container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
+  content: React.ReactNode;
+  container?: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Portal>['container'];
 }
 const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwardedRef) => {
   const {

@@ -6,12 +6,18 @@ import { textFieldRootPropDefs, textFieldSlotPropDefs } from './text-field.props
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor, NotInputTextualAttributes } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type {
+  ComponentPropsWithout,
+  NotInputTextualAttributes,
+  RemovedProps,
+} from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 import { composeRefs } from '@radix-ui/react-compose-refs';
 
 type TextFieldRootElement = React.ElementRef<'input'>;
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
+  defaultValue?: string;
+  value?: string;
   type?:
     | 'date'
     | 'datetime-local'
@@ -27,9 +33,9 @@ type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
     | 'url'
     | 'week';
 };
-type TextFieldInputProps = Omit<
-  ComponentPropsWithoutColor<'input'>,
-  NotInputTextualAttributes | 'size' | 'type'
+type TextFieldInputProps = ComponentPropsWithout<
+  'input',
+  NotInputTextualAttributes | 'color' | 'defaultValue' | 'size' | 'type' | 'value'
 >;
 interface TextFieldRootProps extends TextFieldInputProps, MarginProps, TextFieldRootOwnProps {}
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
@@ -86,7 +92,9 @@ TextFieldRoot.displayName = 'TextFieldRoot';
 
 type TextFieldSlotElement = React.ElementRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
-interface TextFieldSlotProps extends ComponentPropsWithoutColor<'div'>, TextFieldSlotOwnProps {}
+interface TextFieldSlotProps
+  extends ComponentPropsWithout<'div', RemovedProps>,
+    TextFieldSlotOwnProps {}
 const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
   (props, forwardedRef) => {
     const { className, color, side, ...slotProps } = extractProps(props, textFieldSlotPropDefs);

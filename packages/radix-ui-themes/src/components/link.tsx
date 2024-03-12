@@ -4,12 +4,12 @@ import { Text } from './text.js';
 import { linkPropDefs } from './link.props.js';
 import { extractProps } from '../helpers/index.js';
 
-import { type ComponentPropsWithoutColor } from '../helpers/index.js';
-import { type MarginProps, type GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type LinkElement = React.ElementRef<'a'>;
 type LinkOwnProps = GetPropDefTypes<typeof linkPropDefs>;
-interface LinkProps extends ComponentPropsWithoutColor<'a'>, MarginProps, LinkOwnProps {}
+interface LinkProps extends ComponentPropsWithout<'a', RemovedProps>, MarginProps, LinkOwnProps {}
 const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
   const { children, className, asChild, ...linkProps } = extractProps(props, linkPropDefs);
   return (

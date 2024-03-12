@@ -6,12 +6,15 @@ import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import { VisuallyHidden } from './visually-hidden.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type SpinnerElement = React.ElementRef<'span'>;
 type SpinnerOwnProps = GetPropDefTypes<typeof spinnerPropDefs>;
-interface SpinnerProps extends ComponentPropsWithoutColor<'span'>, MarginProps, SpinnerOwnProps {}
+interface SpinnerProps
+  extends ComponentPropsWithout<'span', RemovedProps>,
+    MarginProps,
+    SpinnerOwnProps {}
 const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwardedRef) => {
   const { className, children, loading, ...spinnerProps } = extractProps(
     props,

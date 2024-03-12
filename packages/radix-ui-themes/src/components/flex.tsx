@@ -5,14 +5,14 @@ import { flexPropDefs } from './flex.props.js';
 import { extractProps } from '../helpers/index.js';
 import { layoutPropDefs, marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { MarginProps, LayoutProps, FlexOwnProps } from '../props/index.js';
 
 type FlexElement = React.ElementRef<'div'>;
 interface CommonFlexProps extends MarginProps, LayoutProps, FlexOwnProps {}
-type FlexAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithoutColor<'div'>;
-type FlexDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithoutColor<'div'>;
-type FlexSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithoutColor<'span'>;
+type FlexAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithout<'div', RemovedProps>;
+type FlexDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
+type FlexSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
 type FlexProps = CommonFlexProps & (FlexAsChildProps | FlexSpanProps | FlexDivProps);
 
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {

@@ -7,13 +7,16 @@ import { sliderPropDefs } from './slider.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;
 interface SliderProps
-  extends Omit<ComponentPropsWithoutColor<typeof SliderPrimitive.Root>, 'asChild' | 'children'>,
+  extends ComponentPropsWithout<
+      typeof SliderPrimitive.Root,
+      'asChild' | 'color' | 'children' | 'defaultChecked'
+    >,
     MarginProps,
     SliderOwnProps {}
 const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef) => {

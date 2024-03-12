@@ -5,14 +5,14 @@ import { gridPropDefs } from './grid.props.js';
 import { extractProps } from '../helpers/index.js';
 import { layoutPropDefs, marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { MarginProps, LayoutProps, GridOwnProps } from '../props/index.js';
 
 type GridElement = React.ElementRef<'div'>;
 interface CommonGridProps extends MarginProps, LayoutProps, GridOwnProps {}
-type GridAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithoutColor<'div'>;
-type GridDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithoutColor<'div'>;
-type GridSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithoutColor<'span'>;
+type GridAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithout<'div', RemovedProps>;
+type GridDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
+type GridSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
 type GridProps = CommonGridProps & (GridAsChildProps | GridSpanProps | GridDivProps);
 
 const Grid = React.forwardRef<GridElement, GridProps>((props, forwardedRef) => {

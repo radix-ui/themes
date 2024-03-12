@@ -7,10 +7,11 @@ import { hoverCardContentPropDefs } from './hover-card.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Theme } from './theme.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { HoverCardContentOwnProps } from '../props/index.js';
 
-interface HoverCardRootProps extends ComponentPropsWithoutColor<typeof HoverCardPrimitive.Root> {}
+interface HoverCardRootProps
+  extends React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Root> {}
 const HoverCardRoot: React.FC<HoverCardRootProps> = (props) => (
   <HoverCardPrimitive.Root closeDelay={150} openDelay={200} {...props} />
 );
@@ -18,7 +19,7 @@ HoverCardRoot.displayName = 'HoverCardRoot';
 
 type HoverCardTriggerElement = React.ElementRef<typeof HoverCardPrimitive.Trigger>;
 interface HoverCardTriggerProps
-  extends Omit<ComponentPropsWithoutColor<typeof HoverCardPrimitive.Trigger>, 'asChild'> {}
+  extends ComponentPropsWithout<typeof HoverCardPrimitive.Trigger, RemovedProps> {}
 const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTriggerProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <HoverCardPrimitive.Trigger
@@ -35,9 +36,9 @@ HoverCardTrigger.displayName = 'HoverCardTrigger';
 
 type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
 interface HoverCardContentProps
-  extends ComponentPropsWithoutColor<typeof HoverCardPrimitive.Content>,
+  extends ComponentPropsWithout<typeof HoverCardPrimitive.Content, RemovedProps>,
     HoverCardContentOwnProps {
-  container?: React.ComponentProps<typeof HoverCardPrimitive.Portal>['container'];
+  container?: React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Portal>['container'];
 }
 const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardContentProps>(
   (props, forwardedRef) => {

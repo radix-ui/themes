@@ -5,13 +5,13 @@ import { extractProps, getResponsiveClassNames } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import { ScrollArea } from './scroll-area.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type TableRootElement = React.ElementRef<'div'>;
 type TableRootOwnProps = GetPropDefTypes<typeof tableRootPropDefs>;
 interface TableRootProps
-  extends ComponentPropsWithoutColor<'div'>,
+  extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
     TableRootOwnProps {}
 const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, forwardedRef) => {
@@ -37,7 +37,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
 TableRoot.displayName = 'Table';
 
 type TableHeaderElement = React.ElementRef<'thead'>;
-interface TableHeaderProps extends ComponentPropsWithoutColor<'thead'> {}
+interface TableHeaderProps extends ComponentPropsWithout<'thead', RemovedProps> {}
 const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
   ({ className, ...props }, forwardedRef) => (
     <thead {...props} ref={forwardedRef} className={classNames('rt-TableHeader', className)} />
@@ -46,7 +46,7 @@ const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
 TableHeader.displayName = 'TableHeader';
 
 type TableBodyElement = React.ElementRef<'tbody'>;
-interface TableBodyProps extends ComponentPropsWithoutColor<'tbody'> {}
+interface TableBodyProps extends ComponentPropsWithout<'tbody', RemovedProps> {}
 const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>(
   ({ className, ...props }, forwardedRef) => (
     <tbody {...props} ref={forwardedRef} className={classNames('rt-TableBody', className)} />
@@ -56,71 +56,60 @@ TableBody.displayName = 'TableBody';
 
 type TableRowElement = React.ElementRef<'tr'>;
 type TableRowOwnProps = GetPropDefTypes<typeof tableRowPropDefs>;
-interface TableRowProps
-  extends Omit<ComponentPropsWithoutColor<'tr'>, keyof TableRowOwnProps>,
-    TableRowOwnProps {}
+interface TableRowProps extends ComponentPropsWithout<'tr', RemovedProps>, TableRowOwnProps {}
 const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwardedRef) => {
   const { className, ...rowProps } = extractProps(props, tableRowPropDefs);
   return <tr {...rowProps} ref={forwardedRef} className={classNames('rt-TableRow', className)} />;
 });
 TableRow.displayName = 'TableRow';
 
-type TableCellImplElement = React.ElementRef<'td'>;
-type TableCellImplOwnProps = GetPropDefTypes<typeof tableCellPropDefs>;
-interface TableCellImplProps
-  extends Omit<ComponentPropsWithoutColor<'td'>, keyof TableCellImplOwnProps>,
-    TableCellImplOwnProps {
-  tag?: 'td' | 'th';
-}
-const TableCellImpl = React.forwardRef<TableCellImplElement, TableCellImplProps>(
-  (props, forwardedRef) => {
-    const { tag: Tag = 'td', className, ...cellProps } = extractProps(props, tableCellPropDefs);
-    return (
-      <Tag {...cellProps} ref={forwardedRef} className={classNames('rt-TableCell', className)} />
-    );
-  }
-);
-TableCellImpl.displayName = 'TableCellImpl';
-
-type TableCellElement = React.ElementRef<typeof TableCellImpl>;
-interface TableCellProps extends Omit<ComponentPropsWithoutColor<typeof TableCellImpl>, 'tag'> {}
-const TableCell = React.forwardRef<TableCellElement, TableCellProps>((props, forwardedRef) => (
-  <TableCellImpl {...props} tag="td" ref={forwardedRef} />
-));
+type TableCellElement = React.ElementRef<'td'>;
+type TableCellOwnProps = GetPropDefTypes<typeof tableCellPropDefs>;
+interface TableCellProps
+  extends ComponentPropsWithout<'td', RemovedProps | 'width'>,
+    TableCellOwnProps {}
+const TableCell = React.forwardRef<TableCellElement, TableCellProps>((props, forwardedRef) => {
+  const { className, ...cellProps } = extractProps(props, tableCellPropDefs);
+  return <td className={classNames('rt-TableCell', className)} ref={forwardedRef} {...cellProps} />;
+});
 TableCell.displayName = 'TableCell';
 
 type TableColumnHeaderCellElement = React.ElementRef<'th'>;
 interface TableColumnHeaderCellProps
-  extends Omit<ComponentPropsWithoutColor<'th'>, keyof TableCellImplOwnProps>,
-    TableCellImplOwnProps {}
+  extends ComponentPropsWithout<'th', RemovedProps>,
+    TableCellOwnProps {}
 const TableColumnHeaderCell = React.forwardRef<
   TableColumnHeaderCellElement,
   TableColumnHeaderCellProps
->(({ className, ...props }, forwardedRef) => (
-  <TableCellImpl
-    scope="col"
-    {...props}
-    tag="th"
-    ref={forwardedRef}
-    className={classNames('rt-TableColumnHeaderCell', className)}
-  />
-));
+>((props, forwardedRef) => {
+  const { className, ...cellProps } = extractProps(props, tableCellPropDefs);
+  return (
+    <th
+      className={classNames('rt-TableCell', 'rt-TableColumnHeaderCell', className)}
+      scope="col"
+      ref={forwardedRef}
+      {...cellProps}
+    />
+  );
+});
 TableColumnHeaderCell.displayName = 'TableColumnHeaderCell';
 
 type TableRowHeaderCellElement = React.ElementRef<'th'>;
 interface TableRowHeaderCellProps
-  extends Omit<ComponentPropsWithoutColor<'th'>, keyof TableCellImplOwnProps>,
-    TableCellImplOwnProps {}
+  extends ComponentPropsWithout<'th', RemovedProps>,
+    TableCellOwnProps {}
 const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowHeaderCellProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <TableCellImpl
-      scope="row"
-      {...props}
-      tag="th"
-      ref={forwardedRef}
-      className={classNames('rt-TableRowHeaderCell', className)}
-    />
-  )
+  (props, forwardedRef) => {
+    const { className, ...cellProps } = extractProps(props, tableCellPropDefs);
+    return (
+      <th
+        className={classNames('rt-TableCell', 'rt-TableRowHeaderCell', className)}
+        scope="row"
+        ref={forwardedRef}
+        {...cellProps}
+      />
+    );
+  }
 );
 TableRowHeaderCell.displayName = 'TableRowHeaderCell';
 

@@ -1,5 +1,4 @@
-export * from './component-props-as.js';
-export * from './component-props-without-color.js';
+export * from './component-props.js';
 export * from './extract-margin-props.js';
 export * from './extract-props.js';
 export * from './get-margin-styles.js';

@@ -5,12 +5,12 @@ import { kbdPropDefs } from './kbd.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type KbdElement = React.ElementRef<'kbd'>;
 type KbdOwnProps = GetPropDefTypes<typeof kbdPropDefs>;
-interface KbdProps extends ComponentPropsWithoutColor<'kbd'>, MarginProps, KbdOwnProps {}
+interface KbdProps extends ComponentPropsWithout<'kbd', RemovedProps>, MarginProps, KbdOwnProps {}
 const Kbd = React.forwardRef<KbdElement, KbdProps>((props, forwardedRef) => {
   const { asChild, className, ...kbdProps } = extractProps(props, kbdPropDefs, marginPropDefs);
   const Comp = asChild ? Slot : 'kbd';

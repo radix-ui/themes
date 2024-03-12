@@ -4,13 +4,16 @@ import { textAreaPropDefs } from './text-area.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
-type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs>;
+type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {
+  defaultValue?: string;
+  value?: string;
+};
 interface TextAreaProps
-  extends Omit<ComponentPropsWithoutColor<'textarea'>, 'size'>,
+  extends ComponentPropsWithout<'textarea', RemovedProps | 'size' | 'value'>,
     MarginProps,
     TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {

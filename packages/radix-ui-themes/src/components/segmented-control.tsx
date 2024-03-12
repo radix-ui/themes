@@ -8,13 +8,13 @@ import { segmentedControlRootPropDefs } from './segmented-control.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type SegmentedControlRootOwnProps = GetPropDefTypes<typeof segmentedControlRootPropDefs>;
 
 interface SegmentedControlRootProps
-  extends Omit<ComponentPropsWithoutColor<'div'>, 'defaultValue' | 'dir'>,
+  extends ComponentPropsWithout<'div', RemovedProps | 'dir'>,
     SegmentedControlRootOwnProps,
     MarginProps {
   value?: string;
@@ -70,9 +70,9 @@ interface SegmentedControlItemOwnProps {
 }
 
 interface SegmentedControlItemProps
-  extends Omit<
-      ComponentPropsWithoutColor<typeof ToggleGroupPrimitive.Item>,
-      'disabled' | 'type' | 'value'
+  extends ComponentPropsWithout<
+      typeof ToggleGroupPrimitive.Item,
+      RemovedProps | 'disabled' | 'type' | 'value'
     >,
     SegmentedControlItemOwnProps {}
 
