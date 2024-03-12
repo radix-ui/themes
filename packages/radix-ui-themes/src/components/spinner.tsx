@@ -2,9 +2,8 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Flex } from './flex.js';
 import { spinnerPropDefs } from './spinner.props.js';
-import { extractProps, requireReactElement } from '../helpers/index.js';
+import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
-import { VisuallyHidden } from './visually-hidden.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes, MarginProps } from '../props/index.js';
