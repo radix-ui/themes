@@ -5,12 +5,15 @@ import { skeletonPropDefs } from './skeleton.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type SkeletonElement = React.ElementRef<'span'>;
 type SkeletonOwnProps = GetPropDefTypes<typeof skeletonPropDefs>;
-interface SkeletonProps extends ComponentPropsWithoutColor<'span'>, MarginProps, SkeletonOwnProps {}
+interface SkeletonProps
+  extends ComponentPropsWithout<RemovedProps, 'span'>,
+    MarginProps,
+    SkeletonOwnProps {}
 const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwardedRef) => {
   const { children, className, loading, ...skeletonProps } = extractProps(
     props,

@@ -8,17 +8,17 @@ import { radioPropDefs } from './radio.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor, NotInputRadioAttributes } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, NotInputRadioAttributes } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type RadioElement = React.ElementRef<'input'>;
 type RadioOwnProps = GetPropDefTypes<typeof radioPropDefs> & {
   value: string;
   onValueChange?: (value: string) => void;
 };
-type RadioInputProps = Omit<
-  ComponentPropsWithoutColor<'input'>,
-  NotInputRadioAttributes | 'defaultValue' | 'value'
+type RadioInputProps = ComponentPropsWithout<
+  NotInputRadioAttributes | 'color' | 'defaultValue' | 'value',
+  'input'
 >;
 interface RadioProps extends RadioInputProps, MarginProps, RadioOwnProps {}
 

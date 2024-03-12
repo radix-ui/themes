@@ -11,8 +11,8 @@ import { marginPropDefs } from '../props/index.js';
 
 import { Text } from './text.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 import type { Scope } from '@radix-ui/react-context';
 
 const RADIO_GROUP_NAME = 'RadioGroup';
@@ -29,7 +29,10 @@ const [RadioGroupProvider, useRadioGroupContext] =
 
 type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
-  extends ComponentPropsWithoutColor<typeof RadioGroupPrimitive.Root>,
+  extends ComponentPropsWithout<
+      'asChild' | 'color' | 'defaultChecked',
+      typeof RadioGroupPrimitive.Root
+    >,
     MarginProps,
     RadioGroupRootOwnProps {}
 const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootProps>(
@@ -67,7 +70,7 @@ RadioGroupRoot.displayName = 'RadioGroupRoot';
 
 type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
 interface RadioGroupItemProps
-  extends Omit<ComponentPropsWithoutColor<typeof RadioGroupItemRadio>, 'asChild'>,
+  extends ComponentPropsWithout<RemovedProps, typeof RadioGroupItemRadio>,
     MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   (_props: ScopedProps<RadioGroupItemProps>, forwardedRef) => {

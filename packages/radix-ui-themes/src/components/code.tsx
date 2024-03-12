@@ -5,12 +5,15 @@ import { codePropDefs } from './code.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type CodeElement = React.ElementRef<'code'>;
 type CodeOwnProps = GetPropDefTypes<typeof codePropDefs>;
-interface CodeProps extends ComponentPropsWithoutColor<'code'>, MarginProps, CodeOwnProps {}
+interface CodeProps
+  extends ComponentPropsWithout<RemovedProps, 'code'>,
+    MarginProps,
+    CodeOwnProps {}
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { asChild, className, color, ...codeProps } = extractProps(
     props,

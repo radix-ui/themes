@@ -7,16 +7,13 @@ import { progressPropDefs } from './progress.props.js';
 import { extractProps, mergeStyles } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;
 interface ProgressProps
-  extends Omit<
-      ComponentPropsWithoutColor<typeof ProgressPrimitive.Root>,
-      'asChild' | 'defaultValue' | 'children'
-    >,
+  extends ComponentPropsWithout<RemovedProps | 'children', typeof ProgressPrimitive.Root>,
     MarginProps,
     ProgressOwnProps {
   duration?: `${number}s` | `${number}ms`;

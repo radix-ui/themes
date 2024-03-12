@@ -9,17 +9,16 @@ import { Heading } from './heading.js';
 import { Text } from './text.js';
 import { Theme } from './theme.js';
 
-import type { ComponentPropsAs, ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsAs, ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { DialogContentOwnProps } from '../props/index.js';
 
-interface DialogRootProps
-  extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Root>, 'modal'> {}
+interface DialogRootProps extends ComponentPropsWithout<'modal', typeof DialogPrimitive.Root> {}
 const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {...props} modal />;
 DialogRoot.displayName = 'DialogRoot';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
 interface DialogTriggerProps
-  extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Trigger>, 'asChild'> {}
+  extends ComponentPropsWithout<RemovedProps, typeof DialogPrimitive.Trigger> {}
 const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -31,9 +30,9 @@ DialogTrigger.displayName = 'DialogTrigger';
 
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 interface DialogContentProps
-  extends ComponentPropsWithoutColor<typeof DialogPrimitive.Content>,
+  extends ComponentPropsWithout<RemovedProps, typeof DialogPrimitive.Content>,
     DialogContentOwnProps {
-  container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
+  container?: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>['container'];
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   (props, forwardedRef) => {
@@ -63,7 +62,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
 DialogContent.displayName = 'DialogContent';
 
 type DialogTitleElement = React.ElementRef<typeof Heading>;
-type DialogTitleProps = Omit<React.ComponentPropsWithoutRef<typeof Heading>, 'asChild'>;
+type DialogTitleProps = ComponentPropsWithout<'asChild', typeof Heading>;
 const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
   (props, forwardedRef) => (
     <DialogPrimitive.Title asChild>
@@ -86,7 +85,7 @@ DialogDescription.displayName = 'DialogDescription';
 
 type DialogCloseElement = React.ElementRef<typeof DialogPrimitive.Close>;
 interface DialogCloseProps
-  extends Omit<ComponentPropsWithoutColor<typeof DialogPrimitive.Close>, 'asChild'> {}
+  extends ComponentPropsWithout<RemovedProps, typeof DialogPrimitive.Close> {}
 const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
   ({ children, ...props }, forwardedRef) => (
     <DialogPrimitive.Close {...props} ref={forwardedRef} asChild>

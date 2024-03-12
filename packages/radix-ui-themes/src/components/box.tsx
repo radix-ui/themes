@@ -5,14 +5,14 @@ import { boxPropDefs } from './box.props.js';
 import { extractProps } from '../helpers/index.js';
 import { layoutPropDefs, marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { MarginProps, LayoutProps, BoxOwnProps } from '../props/index.js';
 
 type BoxElement = React.ElementRef<'div'>;
 interface CommonBoxProps extends MarginProps, LayoutProps, BoxOwnProps {}
-type BoxAsChildProps = { asChild: true; as?: never } & ComponentPropsWithoutColor<'div'>;
-type BoxDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithoutColor<'div'>;
-type BoxSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithoutColor<'span'>;
+type BoxAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<RemovedProps, 'div'>;
+type BoxDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'div'>;
+type BoxSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<RemovedProps, 'span'>;
 type BoxProps = CommonBoxProps & (BoxAsChildProps | BoxSpanProps | BoxDivProps);
 
 const Box = React.forwardRef<BoxElement, BoxProps>((props, forwardedRef) => {

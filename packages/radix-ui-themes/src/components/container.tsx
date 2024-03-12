@@ -5,12 +5,12 @@ import { containerPropDefs } from './container.props.js';
 import { extractProps, getSubtree } from '../helpers/index.js';
 import { heightPropDefs, layoutPropDefs, marginPropDefs, widthPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { MarginProps, LayoutProps, ContainerOwnProps } from '../props/index.js';
 
 type ContainerElement = React.ElementRef<'div'>;
 interface ContainerProps
-  extends ComponentPropsWithoutColor<'div'>,
+  extends ComponentPropsWithout<RemovedProps, 'div'>,
     MarginProps,
     LayoutProps,
     ContainerOwnProps {}

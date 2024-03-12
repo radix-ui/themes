@@ -7,13 +7,13 @@ import { tabsContentPropDefs, tabsListPropDefs, tabsRootPropDefs } from './tabs.
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;
 interface TabsRootProps
-  extends ComponentPropsWithoutColor<typeof TabsPrimitive.Root>,
+  extends ComponentPropsWithout<'asChild' | 'color' | 'defaultChecked', typeof TabsPrimitive.Root>,
     MarginProps,
     TabsRootOwnProps {}
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
@@ -31,7 +31,7 @@ TabsRoot.displayName = 'TabsRoot';
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
-  extends Omit<ComponentPropsWithoutColor<typeof TabsPrimitive.List>, 'asChild'>,
+  extends ComponentPropsWithout<RemovedProps, typeof TabsPrimitive.List>,
     MarginProps,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
@@ -50,7 +50,7 @@ TabsList.displayName = 'TabsList';
 
 type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
 interface TabsTriggerProps
-  extends Omit<ComponentPropsWithoutColor<typeof TabsPrimitive.Trigger>, 'asChild'> {}
+  extends ComponentPropsWithout<RemovedProps, typeof TabsPrimitive.Trigger> {}
 const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
   (props, forwardedRef) => {
     const { className, children, ...triggerProps } = props;
@@ -74,7 +74,7 @@ TabsTrigger.displayName = 'TabsTrigger';
 type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
 type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
 interface TabsContentProps
-  extends ComponentPropsWithoutColor<typeof TabsPrimitive.Content>,
+  extends ComponentPropsWithout<RemovedProps, typeof TabsPrimitive.Content>,
     MarginProps,
     TabsContentOwnProps {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(

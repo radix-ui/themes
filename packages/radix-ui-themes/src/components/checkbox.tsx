@@ -8,13 +8,13 @@ import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import { ThickCheckIcon } from './icons.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;
 interface CheckboxProps
-  extends Omit<ComponentPropsWithoutColor<typeof CheckboxPrimitive.Root>, 'asChild' | 'children'>,
+  extends ComponentPropsWithout<RemovedProps | 'children', typeof CheckboxPrimitive.Root>,
     MarginProps,
     CheckboxOwnProps {}
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {

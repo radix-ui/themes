@@ -8,13 +8,16 @@ import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 import { Grid } from './grid.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type RadioCardGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 type RadioCardGroupRootOwnProps = GetPropDefTypes<typeof radioCardGroupRootPropDefs>;
 interface RadioCardGroupRootProps
-  extends ComponentPropsWithoutColor<typeof RadioGroupPrimitive.Root>,
+  extends ComponentPropsWithout<
+      'asChild' | 'color' | 'defaultChecked',
+      typeof RadioGroupPrimitive.Root
+    >,
     MarginProps,
     RadioCardGroupRootOwnProps {}
 const RadioCardGroupRoot = React.forwardRef<RadioCardGroupRootElement, RadioCardGroupRootProps>(
@@ -40,7 +43,7 @@ RadioCardGroupRoot.displayName = 'RadioCardGroupRoot';
 
 type RadioCardGroupItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioCardGroupItemProps
-  extends Omit<ComponentPropsWithoutColor<typeof RadioGroupPrimitive.Item>, 'asChild'>,
+  extends ComponentPropsWithout<RemovedProps, typeof RadioGroupPrimitive.Item>,
     MarginProps {}
 const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCardGroupItemProps>(
   ({ className, ...props }, forwardedRef) => (

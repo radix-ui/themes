@@ -7,10 +7,10 @@ import { popoverContentPropDefs } from './popover.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Theme } from './theme.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { PopoverContentOwnProps } from '../props/index.js';
 
-interface PopoverRootProps extends ComponentPropsWithoutColor<typeof PopoverPrimitive.Root> {}
+interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
 const PopoverRoot: React.FC<PopoverRootProps> = (props: PopoverRootProps) => (
   <PopoverPrimitive.Root {...props} />
 );
@@ -18,7 +18,7 @@ PopoverRoot.displayName = 'PopoverRoot';
 
 type PopoverTriggerElement = React.ElementRef<typeof PopoverPrimitive.Trigger>;
 interface PopoverTriggerProps
-  extends Omit<ComponentPropsWithoutColor<typeof PopoverPrimitive.Trigger>, 'asChild'> {}
+  extends ComponentPropsWithout<RemovedProps, typeof PopoverPrimitive.Trigger> {}
 const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -30,9 +30,9 @@ PopoverTrigger.displayName = 'PopoverTrigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
-  extends ComponentPropsWithoutColor<typeof PopoverPrimitive.Content>,
+  extends ComponentPropsWithout<RemovedProps, typeof PopoverPrimitive.Content>,
     PopoverContentOwnProps {
-  container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
+  container?: React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Portal>['container'];
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {
@@ -60,7 +60,7 @@ PopoverContent.displayName = 'PopoverContent';
 
 type PopoverCloseElement = React.ElementRef<typeof PopoverPrimitive.Close>;
 interface PopoverCloseProps
-  extends Omit<ComponentPropsWithoutColor<typeof PopoverPrimitive.Close>, 'asChild'> {}
+  extends ComponentPropsWithout<RemovedProps, typeof PopoverPrimitive.Close> {}
 const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild>

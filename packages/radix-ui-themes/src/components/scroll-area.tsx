@@ -12,14 +12,14 @@ import {
   getSubtree,
 } from '../helpers/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
-import type { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 type ScrollAreaOwnProps = GetPropDefTypes<typeof scrollAreaPropDefs>;
 interface ScrollAreaProps
-  extends ComponentPropsWithoutColor<typeof ScrollAreaPrimitive.Root>,
-    Omit<ComponentPropsWithoutColor<typeof ScrollAreaPrimitive.Viewport>, 'dir'>,
+  extends ComponentPropsWithout<RemovedProps, typeof ScrollAreaPrimitive.Root>,
+    ComponentPropsWithout<RemovedProps | 'dir', typeof ScrollAreaPrimitive.Viewport>,
     MarginProps,
     ScrollAreaOwnProps {}
 const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, forwardedRef) => {

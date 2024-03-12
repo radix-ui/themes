@@ -8,8 +8,8 @@ import { calloutRootPropDefs } from './callout.props.js';
 import { extractProps, mapCalloutSizeToTextSize, mapResponsiveProp } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor, ComponentPropsAs } from '../helpers/index.js';
-import { MarginProps, GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsAs, ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 
@@ -18,7 +18,7 @@ const CalloutContext = React.createContext<CalloutContextValue>({});
 
 type CalloutRootElement = React.ElementRef<'div'>;
 interface CalloutRootProps
-  extends ComponentPropsWithoutColor<'div'>,
+  extends ComponentPropsWithout<RemovedProps, 'div'>,
     MarginProps,
     CalloutContextValue {}
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
@@ -52,7 +52,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
 CalloutRoot.displayName = 'CalloutRoot';
 
 type CalloutIconElement = React.ElementRef<'div'>;
-interface CalloutIconProps extends ComponentPropsWithoutColor<'div'> {}
+interface CalloutIconProps extends ComponentPropsWithout<RemovedProps, 'div'> {}
 const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
   ({ className, ...props }, forwardedRef) => {
     const { color, size, highContrast } = React.useContext(CalloutContext);

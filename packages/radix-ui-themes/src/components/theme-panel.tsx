@@ -22,7 +22,7 @@ import { Theme, useThemeContext } from './theme.js';
 import { getMatchingGrayColor } from '../helpers/index.js';
 import { themePropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithoutColor } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
@@ -42,7 +42,7 @@ interface ThemePanelImplPrivateProps {
   onOpenChange: (open: boolean) => void;
 }
 interface ThemePanelImplProps
-  extends ComponentPropsWithoutColor<'div'>,
+  extends ComponentPropsWithout<RemovedProps, 'div'>,
     ThemePanelImplPrivateProps {
   onAppearanceChange?: (value: 'light' | 'dark') => void;
 }
