@@ -181,6 +181,12 @@ export default function Test() {
                     </ul>
                     <u>Text with unarticulated annotation</u>
                     <var>Variable</var>
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    />
                   </ResetChildren>
                 </Section>
               </Container>
