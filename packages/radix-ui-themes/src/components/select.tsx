@@ -201,21 +201,21 @@ const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparator
 SelectSeparator.displayName = 'SelectSeparator';
 
 export {
-  SelectRoot,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectSeparator,
+  SelectRoot as Root,
+  SelectTrigger as Trigger,
+  SelectContent as Content,
+  SelectItem as Item,
+  SelectGroup as Group,
+  SelectLabel as Label,
+  SelectSeparator as Separator,
 };
 
 export type {
-  SelectRootProps,
-  SelectTriggerProps,
-  SelectContentProps,
-  SelectItemProps,
-  SelectGroupProps,
-  SelectLabelProps,
-  SelectSeparatorProps,
+  SelectRootProps as RootProps,
+  SelectTriggerProps as TriggerProps,
+  SelectContentProps as ContentProps,
+  SelectItemProps as ItemProps,
+  SelectGroupProps as GroupProps,
+  SelectLabelProps as LabelProps,
+  SelectSeparatorProps as SeparatorProps,
 };

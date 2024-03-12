@@ -137,5 +137,5 @@ const RadioGroupItemRadio = React.forwardRef<
 });
 RadioGroupItemRadio.displayName = 'RadioGroupItemRadio';
 
-export { RadioGroupRoot, RadioGroupItem };
-export type { RadioGroupRootProps, RadioGroupItemProps };
+export { RadioGroupRoot as Root, RadioGroupItem as Item };
+export type { RadioGroupRootProps as RootProps, RadioGroupItemProps as ItemProps };

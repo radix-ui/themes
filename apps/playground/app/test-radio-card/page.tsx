@@ -4,8 +4,7 @@ import {
   Text,
   Container,
   Section,
-  RadioCardGroupRoot,
-  RadioCardGroupItem,
+  RadioCardGroup,
   Heading,
   Box,
   Separator,
@@ -31,36 +30,36 @@ export default function Test() {
                         <Text as="div" color="gray" size="2" mb="3">
                           Plain text
                         </Text>
-                        <RadioCardGroupRoot size={size} defaultValue="1">
-                          <RadioCardGroupItem value="1">Next.js</RadioCardGroupItem>
-                          <RadioCardGroupItem value="2">Remix</RadioCardGroupItem>
-                          <RadioCardGroupItem value="3">Astro</RadioCardGroupItem>
-                          <RadioCardGroupItem value="4">HTMX</RadioCardGroupItem>
-                        </RadioCardGroupRoot>
+                        <RadioCardGroup.Root size={size} defaultValue="1">
+                          <RadioCardGroup.Item value="1">Next.js</RadioCardGroup.Item>
+                          <RadioCardGroup.Item value="2">Remix</RadioCardGroup.Item>
+                          <RadioCardGroup.Item value="3">Astro</RadioCardGroup.Item>
+                          <RadioCardGroup.Item value="4">HTMX</RadioCardGroup.Item>
+                        </RadioCardGroup.Root>
                       </Box>
 
                       <Box>
                         <Text as="div" color="gray" size="2" mb="3">
                           With icons
                         </Text>
-                        <RadioCardGroupRoot size={size} defaultValue="1">
-                          <RadioCardGroupItem value="1">
+                        <RadioCardGroup.Root size={size} defaultValue="1">
+                          <RadioCardGroup.Item value="1">
                             <VercelLogoIcon />
                             Next.js
-                          </RadioCardGroupItem>
-                          <RadioCardGroupItem value="2">
+                          </RadioCardGroup.Item>
+                          <RadioCardGroup.Item value="2">
                             <CubeIcon />
                             Remix
-                          </RadioCardGroupItem>
-                          <RadioCardGroupItem value="3">
+                          </RadioCardGroup.Item>
+                          <RadioCardGroup.Item value="3">
                             <GlobeIcon />
                             Astro
-                          </RadioCardGroupItem>
-                          <RadioCardGroupItem value="4">
+                          </RadioCardGroup.Item>
+                          <RadioCardGroup.Item value="4">
                             <CrumpledPaperIcon />
                             HTMX
-                          </RadioCardGroupItem>
-                        </RadioCardGroupRoot>
+                          </RadioCardGroup.Item>
+                        </RadioCardGroup.Root>
                       </Box>
                     </Section>
 

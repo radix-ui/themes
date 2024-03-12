@@ -11,9 +11,7 @@ import {
   Heading,
   IconButton,
   Kbd,
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
+  Popover,
   ScrollArea,
   Text,
   Tooltip,
@@ -452,8 +450,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                   Panel background
                 </Text>
 
-                <PopoverRoot>
-                  <PopoverTrigger>
+                <Popover.Root>
+                  <Popover.Trigger>
                     <IconButton size="1" variant="ghost" color="gray">
                       <AccessibleIcon label="Learn more about panel background options">
                         <svg
@@ -471,15 +469,15 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                         </svg>
                       </AccessibleIcon>
                     </IconButton>
-                  </PopoverTrigger>
+                  </Popover.Trigger>
 
-                  <PopoverContent size="1" style={{ maxWidth: 220 }} side="top" align="center">
+                  <Popover.Content size="1" style={{ maxWidth: 220 }} side="top" align="center">
                     <Text as="p" size="2">
                       Whether Card and Table panels are translucent, showing some of the background
                       behind them.
                     </Text>
-                  </PopoverContent>
-                </PopoverRoot>
+                  </Popover.Content>
+                </Popover.Root>
               </Flex>
 
               <Grid

@@ -3,43 +3,43 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { TabNavRoot, TabNavLink } from '@radix-ui/themes';
+import { TabNav } from '@radix-ui/themes';
 
 const TabNavDemo = React.forwardRef<
-  React.ElementRef<typeof TabNavRoot>,
-  React.ComponentPropsWithoutRef<typeof TabNavRoot>
+  React.ElementRef<typeof TabNav.Root>,
+  React.ComponentPropsWithoutRef<typeof TabNav.Root>
 >((props, forwardedRef) => {
   const params = useSearchParams();
   const tab = params.get('tab');
   return (
-    <TabNavRoot {...props} ref={forwardedRef}>
-      <TabNavLink asChild active={tab === 'account' || tab === null}>
+    <TabNav.Root {...props} ref={forwardedRef}>
+      <TabNav.Link asChild active={tab === 'account' || tab === null}>
         <NextLink href="/sink?tab=account#tab-nav" scroll={false}>
           Account
         </NextLink>
-      </TabNavLink>
-      <TabNavLink asChild active={tab === 'documents'}>
+      </TabNav.Link>
+      <TabNav.Link asChild active={tab === 'documents'}>
         <NextLink href="/sink?tab=documents#tab-nav" scroll={false}>
           Documents
         </NextLink>
-      </TabNavLink>
-      <TabNavLink asChild active={tab === 'settings'}>
+      </TabNav.Link>
+      <TabNav.Link asChild active={tab === 'settings'}>
         <NextLink href="/sink?tab=settings#tab-nav" scroll={false}>
           Settings
         </NextLink>
-      </TabNavLink>
+      </TabNav.Link>
 
       {/* without asChild */}
-      {/* <TabNavLink href="/sink?tab=account#tab-nav" active={tab === 'account' || tab === null}>
+      {/* <TabNav.Link href="/sink?tab=account#tab-nav" active={tab === 'account' || tab === null}>
         Account
-      </TabNavLink>
-      <TabNavLink href="/sink?tab=documents#tab-nav" active={tab === 'documents'}>
+      </TabNav.Link>
+      <TabNav.Link href="/sink?tab=documents#tab-nav" active={tab === 'documents'}>
         Documents
-      </TabNavLink>
-      <TabNavLink href="/sink?tab=settings#tab-nav" active={tab === 'settings'}>
+      </TabNav.Link>
+      <TabNav.Link href="/sink?tab=settings#tab-nav" active={tab === 'settings'}>
         Settings
-      </TabNavLink> */}
-    </TabNavRoot>
+      </TabNav.Link> */}
+    </TabNav.Root>
   );
 });
 TabNavDemo.displayName = 'TabNavDemo';

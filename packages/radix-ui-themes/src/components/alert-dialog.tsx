@@ -112,21 +112,21 @@ const AlertDialogCancel = React.forwardRef<AlertDialogCancelElement, AlertDialog
 AlertDialogCancel.displayName = 'AlertDialogCancel';
 
 export {
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
+  AlertDialogRoot as Root,
+  AlertDialogTrigger as Trigger,
+  AlertDialogContent as Content,
+  AlertDialogTitle as Title,
+  AlertDialogDescription as Description,
+  AlertDialogAction as Action,
+  AlertDialogCancel as Cancel,
 };
 
 export type {
-  AlertDialogRootProps,
-  AlertDialogTriggerProps,
-  AlertDialogContentProps,
-  AlertDialogTitleProps,
-  AlertDialogDescriptionProps,
-  AlertDialogActionProps,
-  AlertDialogCancelProps,
+  AlertDialogRootProps as RootProps,
+  AlertDialogTriggerProps as TriggerProps,
+  AlertDialogContentProps as ContentProps,
+  AlertDialogTitleProps as TitleProps,
+  AlertDialogDescriptionProps as DescriptionProps,
+  AlertDialogActionProps as ActionProps,
+  AlertDialogCancelProps as CancelProps,
 };

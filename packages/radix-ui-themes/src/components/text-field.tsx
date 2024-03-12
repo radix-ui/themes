@@ -111,5 +111,5 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
 );
 TextFieldSlot.displayName = 'TextFieldSlot';
 
-export { TextFieldRoot, TextFieldSlot };
-export type { TextFieldRootProps, TextFieldSlotProps };
+export { TextFieldRoot as Root, TextFieldSlot as Slot };
+export type { TextFieldRootProps as RootProps, TextFieldSlotProps as SlotProps };

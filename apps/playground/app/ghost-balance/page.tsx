@@ -8,9 +8,7 @@ import {
   Button,
   IconButton,
   Link,
-  PopoverRoot,
-  PopoverTrigger,
-  PopoverContent,
+  Popover,
 } from '@radix-ui/themes';
 import {
   ChatBubbleIcon,
@@ -114,21 +112,21 @@ export default function Ghost() {
                         align={direction === 'row' ? 'center' : 'start'}
                         gap="4"
                       >
-                        <PopoverRoot>
-                          <PopoverTrigger>
+                        <Popover.Root>
+                          <Popover.Trigger>
                             <Button variant="ghost">Open</Button>
-                          </PopoverTrigger>
-                          <PopoverContent sideOffset={0} style={{ padding: 100 }} />
-                        </PopoverRoot>
+                          </Popover.Trigger>
+                          <Popover.Content sideOffset={0} style={{ padding: 100 }} />
+                        </Popover.Root>
 
-                        <PopoverRoot>
-                          <PopoverTrigger>
+                        <Popover.Root>
+                          <Popover.Trigger>
                             <IconButton variant="ghost">
                               <DotsHorizontalIcon />
                             </IconButton>
-                          </PopoverTrigger>
-                          <PopoverContent sideOffset={0} style={{ padding: 100 }} />
-                        </PopoverRoot>
+                          </Popover.Trigger>
+                          <Popover.Content sideOffset={0} style={{ padding: 100 }} />
+                        </Popover.Root>
                       </Flex>
                     </Flex>
                   </Section>

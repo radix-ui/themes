@@ -2,55 +2,55 @@
 
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
-import { TabNavRoot, TabNavLink, Heading, Flex, Text } from '@radix-ui/themes';
+import { TabNav, Heading, Flex } from '@radix-ui/themes';
 
 export function Nav() {
   const pathname = usePathname();
   return (
     <Flex direction="column" gap="9">
       <Flex direction="column" gap="2">
-        <Heading size="3">Straight up `TabNavLink`</Heading>
-        <TabNavRoot>
-          <TabNavLink href="/test-tabnav" active={pathname === '/test-tabnav'}>
+        <Heading size="3">Straight up `TabNav.Link`</Heading>
+        <TabNav.Root>
+          <TabNav.Link href="/test-tabnav" active={pathname === '/test-tabnav'}>
             Accounts
-          </TabNavLink>
-          <TabNavLink href="/test-tabnav/documents" active={pathname === '/test-tabnav/documents'}>
+          </TabNav.Link>
+          <TabNav.Link href="/test-tabnav/documents" active={pathname === '/test-tabnav/documents'}>
             Documents
-          </TabNavLink>
-          <TabNavLink href="/test-tabnav/settings" active={pathname === '/test-tabnav/settings'}>
+          </TabNav.Link>
+          <TabNav.Link href="/test-tabnav/settings" active={pathname === '/test-tabnav/settings'}>
             Settings
-          </TabNavLink>
-        </TabNavRoot>
+          </TabNav.Link>
+        </TabNav.Root>
       </Flex>
 
       <Flex direction="column" gap="2">
-        <Heading size="3">{`<TabNavLink asChild>`} with `NextLink`</Heading>
-        <TabNavRoot>
-          <TabNavLink asChild active={pathname === '/test-tabnav'}>
+        <Heading size="3">{`<TabNav.Link asChild>`} with `NextLink`</Heading>
+        <TabNav.Root>
+          <TabNav.Link asChild active={pathname === '/test-tabnav'}>
             <NextLink href="/test-tabnav">Accounts</NextLink>
-          </TabNavLink>
-          <TabNavLink asChild active={pathname === '/test-tabnav/documents'}>
+          </TabNav.Link>
+          <TabNav.Link asChild active={pathname === '/test-tabnav/documents'}>
             <NextLink href="/test-tabnav/documents">Documents</NextLink>
-          </TabNavLink>
-          <TabNavLink asChild active={pathname === '/test-tabnav/settings'}>
+          </TabNav.Link>
+          <TabNav.Link asChild active={pathname === '/test-tabnav/settings'}>
             <NextLink href="/test-tabnav/settings">Settings</NextLink>
-          </TabNavLink>
-        </TabNavRoot>
+          </TabNav.Link>
+        </TabNav.Root>
       </Flex>
 
       <Flex direction="column" gap="2">
-        <Heading size="3">{`<NextLink passHref legacyBehavior>`} with `TabNavLink`</Heading>
-        <TabNavRoot>
+        <Heading size="3">{`<NextLink passHref legacyBehavior>`} with `TabNav.Link`</Heading>
+        <TabNav.Root>
           <NextLink passHref legacyBehavior href="/test-tabnav">
-            <TabNavLink active={pathname === '/test-tabnav'}>Accounts</TabNavLink>
+            <TabNav.Link active={pathname === '/test-tabnav'}>Accounts</TabNav.Link>
           </NextLink>
           <NextLink passHref legacyBehavior href="/test-tabnav/documents">
-            <TabNavLink active={pathname === '/test-tabnav/documents'}>Documents</TabNavLink>
+            <TabNav.Link active={pathname === '/test-tabnav/documents'}>Documents</TabNav.Link>
           </NextLink>
           <NextLink passHref legacyBehavior href="/test-tabnav/settings">
-            <TabNavLink active={pathname === '/test-tabnav/settings'}>Settings</TabNavLink>
+            <TabNav.Link active={pathname === '/test-tabnav/settings'}>Settings</TabNav.Link>
           </NextLink>
-        </TabNavRoot>
+        </TabNav.Root>
       </Flex>
     </Flex>
   );

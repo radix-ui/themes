@@ -6,8 +6,7 @@ import {
   Section,
   Flex,
   Heading,
-  CalloutRoot,
-  CalloutText,
+  Callout,
   Link,
   Code,
   Blockquote,
@@ -84,12 +83,12 @@ export default function Test() {
                         to a <Link href="#">zephyr</Link>.
                       </Code>
 
-                      <CalloutRoot>
-                        <CalloutText>
+                      <Callout.Root>
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code variant="ghost">kiwi bowls</Code> to a <Link href="#">zephyr</Link>.
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
 
                     <Flex direction="column" align="start" gap="4">
@@ -152,12 +151,12 @@ export default function Test() {
                         to a <Link href="#">zephyr</Link>.
                       </Code>
 
-                      <CalloutRoot highContrast>
-                        <CalloutText>
+                      <Callout.Root highContrast>
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code variant="ghost">kiwi bowls</Code> to a <Link href="#">zephyr</Link>.
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
 
                     <Flex direction="column" align="start" gap="4">
@@ -274,8 +273,8 @@ export default function Test() {
                         .
                       </Code>
 
-                      <CalloutRoot>
-                        <CalloutText>
+                      <Callout.Root>
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code color="indigo" variant="ghost">
                             kiwi bowls
@@ -285,8 +284,8 @@ export default function Test() {
                             zephyr
                           </Link>
                           .
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
 
                     <Flex direction="column" align="start" gap="4">
@@ -403,8 +402,8 @@ export default function Test() {
                         .
                       </Code>
 
-                      <CalloutRoot>
-                        <CalloutText>
+                      <Callout.Root>
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code color="indigo" highContrast variant="ghost">
                             kiwi bowls
@@ -414,8 +413,8 @@ export default function Test() {
                             zephyr
                           </Link>
                           .
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
 
                     <Flex direction="column" align="start" gap="4">
@@ -478,12 +477,12 @@ export default function Test() {
                         to a <Link href="#">zephyr</Link>.
                       </Code>
 
-                      <CalloutRoot color="indigo">
-                        <CalloutText>
+                      <Callout.Root color="indigo">
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code variant="ghost">kiwi bowls</Code> to a <Link href="#">zephyr</Link>.
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
 
                     <Flex direction="column" align="start" gap="4">
@@ -546,12 +545,12 @@ export default function Test() {
                         to a <Link href="#">zephyr</Link>.
                       </Code>
 
-                      <CalloutRoot color="indigo" highContrast>
-                        <CalloutText>
+                      <Callout.Root color="indigo" highContrast>
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code variant="ghost">kiwi bowls</Code> to a <Link href="#">zephyr</Link>.
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
 
                     <Flex direction="column" align="start" gap="4">
@@ -667,8 +666,8 @@ export default function Test() {
                         .
                       </Code>
 
-                      <CalloutRoot color="indigo">
-                        <CalloutText>
+                      <Callout.Root color="indigo">
+                        <Callout.Text>
                           Ambiguous voice of a heart which prefers{' '}
                           <Code highContrast variant="ghost">
                             kiwi bowls
@@ -678,8 +677,8 @@ export default function Test() {
                             zephyr
                           </Link>
                           .
-                        </CalloutText>
-                      </CalloutRoot>
+                        </Callout.Text>
+                      </Callout.Root>
                     </Flex>
                   </Flex>
                 </Section>

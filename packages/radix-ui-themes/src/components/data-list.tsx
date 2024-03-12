@@ -84,5 +84,15 @@ const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>
 );
 DataListValue.displayName = 'DataListValue';
 
-export { DataListRoot, DataListItem, DataListLabel, DataListValue };
-export type { DataListRootProps, DataListItemProps, DataListLabelProps, DataListValueProps };
+export {
+  DataListRoot as Root,
+  DataListItem as Item,
+  DataListLabel as Label,
+  DataListValue as Value,
+};
+export type {
+  DataListRootProps as RootProps,
+  DataListItemProps as ItemProps,
+  DataListLabelProps as LabelProps,
+  DataListValueProps as ValueProps,
+};

@@ -117,5 +117,5 @@ const CheckboxCardGroupItem = React.forwardRef<
 });
 CheckboxCardGroupItem.displayName = 'CheckboxCardGroupItem';
 
-export { CheckboxCardGroupRoot, CheckboxCardGroupItem };
-export type { CheckboxCardGroupRootProps, CheckboxCardGroupItemProps };
+export { CheckboxCardGroupRoot as Root, CheckboxCardGroupItem as Item };
+export type { CheckboxCardGroupRootProps as RootProps, CheckboxCardGroupItemProps as ItemProps };

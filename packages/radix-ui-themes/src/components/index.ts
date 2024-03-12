@@ -1,135 +1,58 @@
-export { AccessibleIcon } from './accessible-icon.js';
-export {
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
-} from './alert-dialog.js';
-export * as AlertDialog from './alert-dialog.parts.js';
-export { AspectRatio } from './aspect-ratio.js';
-export { Avatar } from './avatar.js';
-export { Badge } from './badge.js';
-export { Blockquote } from './blockquote.js';
-export { Box } from './box.js';
-export { Button } from './button.js';
-export { CalloutRoot, CalloutIcon, CalloutText } from './callout.js';
-export * as Callout from './callout.parts.js';
-export { Card } from './card.js';
-export { CheckboxCardGroupRoot, CheckboxCardGroupItem } from './checkbox-card-group.js';
-export * as CheckboxCardGroup from './checkbox-card-group.parts.js';
-export { CheckboxGroupRoot, CheckboxGroupItem } from './checkbox-group.js';
-export * as CheckboxGroup from './checkbox-group.parts.js';
-export { Checkbox } from './checkbox.js';
-export { Code } from './code.js';
-export { Container } from './container.js';
-export {
-  ContextMenuRoot,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuLabel,
-  ContextMenuItem,
-  ContextMenuGroup,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuCheckboxItem,
-  ContextMenuSub,
-  ContextMenuSubTrigger,
-  ContextMenuSubContent,
-  ContextMenuSeparator,
-} from './context-menu.js';
-export * as ContextMenu from './context-menu.parts.js';
-export { DataListRoot, DataListItem, DataListLabel, DataListValue } from './data-list.js';
-export * as DataList from './data-list.parts.js';
-export {
-  DialogRoot,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-  DialogClose,
-} from './dialog.js';
-export * as Dialog from './dialog.parts.js';
-export {
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuItem,
-  DropdownMenuGroup,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuSeparator,
-} from './dropdown-menu.js';
-export * as DropdownMenu from './dropdown-menu.parts.js';
-export { Em } from './em.js';
-export { Flex } from './flex.js';
-export { Grid } from './grid.js';
-export { Heading } from './heading.js';
-export { HoverCardRoot, HoverCardTrigger, HoverCardContent } from './hover-card.js';
-export * as HoverCard from './hover-card.parts.js';
-export { IconButton } from './icon-button.js';
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
-export { Inset } from './inset.js';
-export { Kbd } from './kbd.js';
-export { Link } from './link.js';
-export { PopoverRoot, PopoverTrigger, PopoverContent, PopoverClose } from './popover.js';
-export * as Popover from './popover.parts.js';
-export { Portal } from './portal.js';
-export { Progress } from './progress.js';
-export { Quote } from './quote.js';
-export { RadioCardGroupRoot, RadioCardGroupItem } from './radio-card-group.js';
-export * as RadioCardGroup from './radio-card-group.parts.js';
-export { RadioGroupRoot, RadioGroupItem } from './radio-group.js';
-export * as RadioGroup from './radio-group.parts.js';
-export { Radio } from './radio.js';
-export { Reset } from './reset.js';
-export { ScrollArea } from './scroll-area.js';
-export { SegmentedControlRoot, SegmentedControlItem } from './segmented-control.js';
-export * as SegmentedControl from './segmented-control.parts.js';
-export { Section } from './section.js';
-export {
-  SelectRoot,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectSeparator,
-} from './select.js';
-export * as Select from './select.parts.js';
-export { Separator } from './separator.js';
-export { Skeleton } from './skeleton.js';
-export { Slider } from './slider.js';
-export { Slot, Slottable } from './slot.js';
-export { Spinner } from './spinner.js';
-export { Strong } from './strong.js';
-export { Switch } from './switch.js';
-export { TabNavRoot, TabNavLink } from './tab-nav.js';
-export * as TabNav from './tab-nav.parts.js';
-export {
-  TableRoot,
-  TableHeader,
-  TableRow,
-  TableBody,
-  TableColumnHeaderCell,
-  TableRowHeaderCell,
-  TableCell,
-} from './table.js';
-export * as Table from './table.parts.js';
-export { TabsRoot, TabsList, TabsTrigger, TabsContent } from './tabs.js';
-export * as Tabs from './tabs.parts.js';
-export { TextArea } from './text-area.js';
-export { TextFieldRoot, TextFieldSlot } from './text-field.js';
-export * as TextField from './text-field.parts.js';
-export { Text } from './text.js';
-export { ThemePanel } from './theme-panel.js';
-export { Theme, useThemeContext } from './theme.js';
-export { Tooltip } from './tooltip.js';
-export { VisuallyHidden } from './visually-hidden.js';
+export * from './accessible-icon.js';
+export * as AlertDialog from './alert-dialog.js';
+export * from './aspect-ratio.js';
+export * from './avatar.js';
+export * from './badge.js';
+export * from './blockquote.js';
+export * from './box.js';
+export * from './button.js';
+export * as Callout from './callout.js';
+export * from './card.js';
+export * as CheckboxCardGroup from './checkbox-card-group.js';
+export * as CheckboxGroup from './checkbox-group.js';
+export * from './checkbox.js';
+export * from './code.js';
+export * from './container.js';
+export * as ContextMenu from './context-menu.js';
+export * as DataList from './data-list.js';
+export * as Dialog from './dialog.js';
+export * as DropdownMenu from './dropdown-menu.js';
+export * from './em.js';
+export * from './flex.js';
+export * from './grid.js';
+export * from './heading.js';
+export * as HoverCard from './hover-card.js';
+export * from './icon-button.js';
+export * from './icons.js';
+export * from './inset.js';
+export * from './kbd.js';
+export * from './link.js';
+export * as Popover from './popover.js';
+export * from './portal.js';
+export * from './progress.js';
+export * from './quote.js';
+export * as RadioCardGroup from './radio-card-group.js';
+export * as RadioGroup from './radio-group.js';
+export * from './radio.js';
+export * from './reset.js';
+export * from './scroll-area.js';
+export * as SegmentedControl from './segmented-control.js';
+export * from './section.js';
+export * as Select from './select.js';
+export * from './separator.js';
+export * from './skeleton.js';
+export * from './slider.js';
+export * from './slot.js';
+export * from './spinner.js';
+export * from './strong.js';
+export * from './switch.js';
+export * as TabNav from './tab-nav.js';
+export * as Table from './table.js';
+export * as Tabs from './tabs.js';
+export * from './text-area.js';
+export * as TextField from './text-field.js';
+export * from './text.js';
+export * from './theme-panel.js';
+export * from './theme.js';
+export * from './tooltip.js';
+export * from './visually-hidden.js';

@@ -6,8 +6,7 @@ import {
   Section,
   Grid,
   Flex,
-  TextFieldRoot,
-  TextFieldSlot,
+  TextField,
   Heading,
   IconButton,
   Button,
@@ -42,9 +41,9 @@ export default function Test() {
                       Just the input
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search" />
-                    <TextFieldRoot size="2" placeholder="Search" />
-                    <TextFieldRoot size="3" placeholder="Search" />
+                    <TextField.Root size="1" placeholder="Search" />
+                    <TextField.Root size="2" placeholder="Search" />
+                    <TextField.Root size="3" placeholder="Search" />
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -52,23 +51,23 @@ export default function Test() {
                       Spinner
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Your password">
-                      <TextFieldSlot side="right">
+                    <TextField.Root size="1" placeholder="Your password">
+                      <TextField.Slot side="right">
                         <Spinner size="1" />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Your password">
-                      <TextFieldSlot side="right">
+                    <TextField.Root size="2" placeholder="Your password">
+                      <TextField.Slot side="right">
                         <Spinner size="2" />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Your password">
-                      <TextFieldSlot side="right">
+                    <TextField.Root size="3" placeholder="Your password">
+                      <TextField.Slot side="right">
                         <Spinner size="3" />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <div />
@@ -78,23 +77,23 @@ export default function Test() {
                       Slot
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -102,23 +101,23 @@ export default function Test() {
                       Slot {'side="left"'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -126,23 +125,23 @@ export default function Test() {
                       Slot {'side="right"'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -150,32 +149,32 @@ export default function Test() {
                       Slots without sides
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red">
+                      </TextField.Slot>
+                      <TextField.Slot color="red">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red">
+                      </TextField.Slot>
+                      <TextField.Slot color="red">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red">
+                      </TextField.Slot>
+                      <TextField.Slot color="red">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -183,32 +182,32 @@ export default function Test() {
                       Slot {'side="left", side="right"'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red" side="right">
+                      </TextField.Slot>
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red" side="right">
+                      </TextField.Slot>
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red" side="right">
+                      </TextField.Slot>
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -216,32 +215,32 @@ export default function Test() {
                       Slot {'side="right", side="left"'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot side="left">
+                      </TextField.Slot>
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot side="left">
+                      </TextField.Slot>
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot side="left">
+                      </TextField.Slot>
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -249,32 +248,32 @@ export default function Test() {
                       Slot {'side="left", no side'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red">
+                      </TextField.Slot>
+                      <TextField.Slot color="red">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red">
+                      </TextField.Slot>
+                      <TextField.Slot color="red">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot side="left">
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot side="left">
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red">
+                      </TextField.Slot>
+                      <TextField.Slot color="red">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -282,32 +281,32 @@ export default function Test() {
                       Slot {'side="right", no side'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot color="red" side="right">
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -315,32 +314,32 @@ export default function Test() {
                       Slot {'no side, side="right"'}
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red" side="right">
+                      </TextField.Slot>
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red" side="right">
+                      </TextField.Slot>
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot>
                         <MagnifyingGlassIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot color="red" side="right">
+                      </TextField.Slot>
+                      <TextField.Slot color="red" side="right">
                         <ExclamationTriangleIcon />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -348,70 +347,70 @@ export default function Test() {
                       Ghost buttons
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Your password">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" placeholder="Your password">
+                      <TextField.Slot>
                         <IconButton size="1" variant="ghost" color="gray">
                           <LockClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="1" variant="ghost" color="gray">
                           <EyeClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Your password">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" placeholder="Your password">
+                      <TextField.Slot>
                         <IconButton size="1" variant="ghost" color="gray">
                           <LockClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="1" variant="ghost" color="gray">
                           <EyeClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Your password">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Your password">
+                      <TextField.Slot>
                         <IconButton size="2" variant="ghost" color="gray">
                           <LockClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="2" variant="ghost" color="gray">
                           <EyeClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Your password">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Your password">
+                      <TextField.Slot>
                         <IconButton size="3" variant="ghost" color="gray">
                           <LockClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="3" variant="ghost" color="gray">
                           <EyeClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" disabled placeholder="Your password">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" disabled placeholder="Your password">
+                      <TextField.Slot>
                         <IconButton size="3" variant="ghost" color="gray">
                           <LockClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="3" variant="ghost" color="gray">
                           <EyeClosedIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -419,75 +418,75 @@ export default function Test() {
                       Mixed content
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="1" variant="ghost" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="1" variant="ghost" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="1" variant="ghost" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="1" variant="ghost" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot>
+                      </TextField.Slot>
+                      <TextField.Slot>
                         <IconButton size="2" variant="ghost" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="2" variant="ghost" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot gap="4">
+                      </TextField.Slot>
+                      <TextField.Slot gap="4">
                         <IconButton size="3" variant="ghost" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="3" variant="ghost" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" disabled placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" disabled placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot gap="4">
+                      </TextField.Slot>
+                      <TextField.Slot gap="4">
                         <IconButton size="3" variant="ghost" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="3" variant="ghost" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -495,92 +494,92 @@ export default function Test() {
                       Fringe (overrides)
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot pr="0" gap="1">
+                      </TextField.Slot>
+                      <TextField.Slot pr="0" gap="1">
                         <IconButton size="1" variant="soft" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="1" variant="soft" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot px="1" gap="1">
+                      </TextField.Slot>
+                      <TextField.Slot px="1" gap="1">
                         <IconButton size="1" variant="soft" color="gray">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="1" variant="soft" color="gray">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="Search">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="Search">
+                      <TextField.Slot>
                         <InfoCircledIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot px="1" gap="1">
+                      </TextField.Slot>
+                      <TextField.Slot px="1" gap="1">
                         <IconButton size="2" variant="soft" radius="full">
                           <Share2Icon />
                         </IconButton>
                         <IconButton size="2" variant="soft" radius="full">
                           <StarIcon />
                         </IconButton>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" placeholder="your.email" defaultValue="benoit">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" placeholder="your.email" defaultValue="benoit">
+                      <TextField.Slot>
                         <EnvelopeOpenIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot px="1" gap="2">
+                      </TextField.Slot>
+                      <TextField.Slot px="1" gap="2">
                         <Text size="3">@workos.com</Text>
                         <Tooltip content="Send email">
                           <IconButton variant="solid">
                             <PaperPlaneIcon />
                           </IconButton>
                         </Tooltip>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot
+                    <TextField.Root
                       size="3"
                       radius="full"
                       placeholder="your.email"
                       defaultValue="benoit"
                     >
-                      <TextFieldSlot>
+                      <TextField.Slot>
                         <EnvelopeOpenIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot px="1" gap="2">
+                      </TextField.Slot>
+                      <TextField.Slot px="1" gap="2">
                         <Text size="3">@workos.com</Text>
                         <Button variant="solid">Send</Button>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot
+                    <TextField.Root
                       size="3"
                       radius="full"
                       disabled
                       placeholder="your.email"
                       defaultValue="benoit"
                     >
-                      <TextFieldSlot>
+                      <TextField.Slot>
                         <EnvelopeOpenIcon />
-                      </TextFieldSlot>
-                      <TextFieldSlot px="1" gap="2">
+                      </TextField.Slot>
+                      <TextField.Slot px="1" gap="2">
                         <Text size="3">@workos.com</Text>
                         <Button variant="solid">Send</Button>
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -588,9 +587,9 @@ export default function Test() {
                       Type date
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Date" type="date" />
-                    <TextFieldRoot size="2" placeholder="Date" type="date" />
-                    <TextFieldRoot size="3" placeholder="Date" type="date" />
+                    <TextField.Root size="1" placeholder="Date" type="date" />
+                    <TextField.Root size="2" placeholder="Date" type="date" />
+                    <TextField.Root size="3" placeholder="Date" type="date" />
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -598,9 +597,9 @@ export default function Test() {
                       Type datetime-local
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Local datetime" type="datetime-local" />
-                    <TextFieldRoot size="2" placeholder="Local datetime" type="datetime-local" />
-                    <TextFieldRoot size="3" placeholder="Local datetime" type="datetime-local" />
+                    <TextField.Root size="1" placeholder="Local datetime" type="datetime-local" />
+                    <TextField.Root size="2" placeholder="Local datetime" type="datetime-local" />
+                    <TextField.Root size="3" placeholder="Local datetime" type="datetime-local" />
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -608,9 +607,9 @@ export default function Test() {
                       Type month
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Month" type="month" />
-                    <TextFieldRoot size="2" placeholder="Month" type="month" />
-                    <TextFieldRoot size="3" placeholder="Month" type="month" />
+                    <TextField.Root size="1" placeholder="Month" type="month" />
+                    <TextField.Root size="2" placeholder="Month" type="month" />
+                    <TextField.Root size="3" placeholder="Month" type="month" />
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -618,9 +617,9 @@ export default function Test() {
                       Type number
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Number" type="number" />
-                    <TextFieldRoot size="2" placeholder="Number" type="number" />
-                    <TextFieldRoot size="3" placeholder="Number" type="number" />
+                    <TextField.Root size="1" placeholder="Number" type="number" />
+                    <TextField.Root size="2" placeholder="Number" type="number" />
+                    <TextField.Root size="3" placeholder="Number" type="number" />
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -628,9 +627,9 @@ export default function Test() {
                       Type search
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Search" type="search" />
-                    <TextFieldRoot size="2" placeholder="Search" type="search" />
-                    <TextFieldRoot size="3" placeholder="Search" type="search" />
+                    <TextField.Root size="1" placeholder="Search" type="search" />
+                    <TextField.Root size="2" placeholder="Search" type="search" />
+                    <TextField.Root size="3" placeholder="Search" type="search" />
                   </Flex>
 
                   <Flex direction="column" align="start" gap="3">
@@ -638,26 +637,26 @@ export default function Test() {
                       Type time
                     </Heading>
 
-                    <TextFieldRoot size="1" placeholder="Time" type="time" />
+                    <TextField.Root size="1" placeholder="Time" type="time" />
 
                     <Flex gap="4">
-                      <TextFieldRoot size="2" placeholder="Time" type="time" />
+                      <TextField.Root size="2" placeholder="Time" type="time" />
 
-                      <TextFieldRoot size="2" placeholder="Time" type="time">
-                        <TextFieldSlot side="right" pr="1">
+                      <TextField.Root size="2" placeholder="Time" type="time">
+                        <TextField.Slot side="right" pr="1">
                           <Button size="1">Submit</Button>
-                        </TextFieldSlot>
-                      </TextFieldRoot>
+                        </TextField.Slot>
+                      </TextField.Root>
                     </Flex>
 
                     <Flex gap="4">
-                      <TextFieldRoot size="3" placeholder="Time" type="time" />
+                      <TextField.Root size="3" placeholder="Time" type="time" />
 
-                      <TextFieldRoot size="3" placeholder="Time" type="time">
-                        <TextFieldSlot side="right" pr="2">
+                      <TextField.Root size="3" placeholder="Time" type="time">
+                        <TextField.Slot side="right" pr="2">
                           <Button size="1">Submit</Button>
-                        </TextFieldSlot>
-                      </TextFieldRoot>
+                        </TextField.Slot>
+                      </TextField.Root>
                     </Flex>
                   </Flex>
                 </Grid>

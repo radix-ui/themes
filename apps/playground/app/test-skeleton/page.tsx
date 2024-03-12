@@ -13,9 +13,8 @@ import {
   Link,
   ThemePanel,
   Heading,
-  TextFieldRoot,
+  TextField,
   Skeleton,
-  TextFieldSlot,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import { MixIcon } from '@radix-ui/react-icons';
@@ -56,7 +55,7 @@ export default function Test() {
                             <Skeleton loading={isLoading}>Email address</Skeleton>
                           </Text>
                           <Skeleton loading={isLoading}>
-                            <TextFieldRoot
+                            <TextField.Root
                               id="email"
                               type="email"
                               variant="classic"
@@ -78,7 +77,7 @@ export default function Test() {
                             <Skeleton loading={isLoading}>Password</Skeleton>
                           </Text>
                           <Skeleton loading={isLoading}>
-                            <TextFieldRoot
+                            <TextField.Root
                               id="password"
                               variant="classic"
                               type="password"
