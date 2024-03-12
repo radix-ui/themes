@@ -100,6 +100,10 @@
   - Set `maxWidth="600px"` by default on the Content part.
     - **[Upgrade guide]** This slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog Content part. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `Badge`
+  - Remove `user-select: none`
+  - Add `size="3"`, make `size="2"` much smaller, tweak `size="1"` dimensions
+    - **[Upgrade guide]** Replace your `size="2"` usage with `size="3"`
 - `Blockquote`, `Code`, `Em`, `Heading`, `Quote`, `Link`, `Strong`, `Text`
   - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
 - `Card`

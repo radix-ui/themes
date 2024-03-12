@@ -2,7 +2,7 @@ import { colorProp, highContrastProp, radiusProp } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 import { asChildProp } from '../props/as-child.prop.js';
 
-const sizes = ['1', '2'] as const;
+const sizes = ['1', '2', '3'] as const;
 const variants = ['solid', 'soft', 'surface', 'outline'] as const;
 
 const badgePropDefs = {

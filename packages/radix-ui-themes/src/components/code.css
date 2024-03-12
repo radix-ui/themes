@@ -109,14 +109,19 @@
   background-color: var(--accent-a9);
   color: var(--accent-contrast);
 
-  &:where(.rt-high-contrast) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
-  }
-
   &::selection {
     background-color: var(--accent-7);
     color: var(--accent-12);
+  }
+
+  &:where(.rt-high-contrast) {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+
+    &::selection {
+      background-color: var(--accent-a11);
+      color: var(--accent-1);
+    }
   }
 
   :where(.rt-Link) &,
