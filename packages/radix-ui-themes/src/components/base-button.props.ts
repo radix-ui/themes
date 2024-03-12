@@ -1,16 +1,21 @@
-import { asChildProp, colorProp, highContrastProp, radiusProp } from '../props/index.js';
+import {
+  asChildPropDef,
+  colorPropDef,
+  highContrastPropDef,
+  radiusPropDef,
+} from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
 
 const baseButtonPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'solid' },
-  ...colorProp,
-  ...highContrastProp,
-  ...radiusProp,
+  ...colorPropDef,
+  ...highContrastPropDef,
+  ...radiusPropDef,
   loading: { type: 'boolean', className: 'rt-loading', default: false },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;

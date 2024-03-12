@@ -1,4 +1,4 @@
-import { colorProp } from '../props/index.js';
+import { colorPropDef } from '../props/index.js';
 import type { PropDef, accentColors } from '../props/index.js';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
@@ -13,12 +13,12 @@ const separatorPropDefs = {
     responsive: true,
   },
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '1', responsive: true },
-  color: { ...colorProp.color, default: 'gray' },
+  color: { ...colorPropDef.color, default: 'gray' },
   decorative: { type: 'boolean', default: true },
 } satisfies {
   orientation: PropDef<(typeof orientationValues)[number]>;
   size: PropDef<(typeof sizes)[number]>;
-  color: typeof colorProp.color;
+  color: typeof colorPropDef.color;
   decorative: PropDef<boolean>;
 };
 

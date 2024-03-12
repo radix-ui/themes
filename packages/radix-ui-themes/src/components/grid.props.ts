@@ -1,4 +1,4 @@
-import { asChildProp, gapProps } from '../props/index.js';
+import { asChildPropDef, gapPropDefs } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const as = ['div', 'span'] as const;
@@ -18,7 +18,7 @@ const gridPropDefs = {
    * as="span"
    */
   as: { type: 'enum', values: as, default: 'div' },
-  ...asChildProp,
+  ...asChildPropDef,
   /**
    * Sets the CSS **display** property.
    * Supports a subset of the corresponding CSS values and responsive objects.
@@ -138,7 +138,7 @@ const gridPropDefs = {
     default: undefined,
     responsive: true,
   },
-  ...gapProps,
+  ...gapPropDefs,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
@@ -162,7 +162,7 @@ function parseJustifyValue(value: string) {
 }
 
 // Use all of the imported prop defs to ensure that JSDoc works
-type GridOwnProps = GetPropDefTypes<typeof gridPropDefs & typeof asChildProp>;
+type GridOwnProps = GetPropDefTypes<typeof gridPropDefs & typeof asChildPropDef>;
 
 export { gridPropDefs };
 export type { GridOwnProps };

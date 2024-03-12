@@ -1,4 +1,4 @@
-import { colorProp, highContrastProp, radiusProp } from '../props/index.js';
+import { colorPropDef, highContrastPropDef, radiusPropDef } from '../props/index.js';
 
 import type { PropDef } from '../props/index.js';
 
@@ -14,8 +14,8 @@ const triggerVariants = ['classic', 'surface', 'soft', 'ghost'] as const;
 
 const selectTriggerPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: triggerVariants, default: 'surface' },
-  ...colorProp,
-  ...radiusProp,
+  ...colorPropDef,
+  ...radiusPropDef,
   placeholder: { type: 'string', default: undefined },
 } satisfies {
   variant: PropDef<(typeof triggerVariants)[number]>;
@@ -26,8 +26,8 @@ const contentVariants = ['solid', 'soft'] as const;
 
 const selectContentPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: contentVariants, default: 'solid' },
-  ...colorProp,
-  ...highContrastProp,
+  ...colorPropDef,
+  ...highContrastPropDef,
 } satisfies {
   variant: PropDef<(typeof contentVariants)[number]>;
 };

@@ -1,4 +1,4 @@
-import { asChildProp, colorProp, highContrastProp } from '../props/index.js';
+import { asChildPropDef, colorPropDef, highContrastPropDef } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 import { gridPropDefs } from './grid.props.js';
 
@@ -6,11 +6,11 @@ const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'classic'] as const;
 
 const checkboxCardGroupRootPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
-  ...colorProp,
-  ...highContrastProp,
+  ...colorPropDef,
+  ...highContrastPropDef,
   columns: { ...gridPropDefs.columns, default: 'repeat(auto-fit, minmax(200px, 1fr))' },
   gap: { ...gridPropDefs.gap, default: '4' },
 } satisfies {

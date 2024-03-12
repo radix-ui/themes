@@ -2,7 +2,7 @@ import type { PropDef } from './prop-def.js';
 
 const gapValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
-const gapProps = {
+const gapPropDefs = {
   /**
    * Sets the CSS **gap** property.
    * Supports space scale values, CSS strings, and responsive objects.
@@ -69,4 +69,4 @@ const gapProps = {
   gapY?: PropDef<(typeof gapValues)[number]>;
 };
 
-export { gapProps };
+export { gapPropDefs };

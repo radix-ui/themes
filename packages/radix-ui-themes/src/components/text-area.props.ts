@@ -1,4 +1,4 @@
-import { colorProp, radiusProp } from '../props/index.js';
+import { colorPropDef, radiusPropDef } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3'] as const;
@@ -10,8 +10,8 @@ const textAreaPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   resize: { type: 'enum', className: 'rt-r-resize', values: resizeValues, default: undefined, responsive: true },
-  ...colorProp,
-  ...radiusProp,
+  ...colorPropDef,
+  ...radiusPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;

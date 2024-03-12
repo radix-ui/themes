@@ -2,7 +2,7 @@ import type { PropDef } from './prop-def.js';
 
 const weights = ['light', 'regular', 'medium', 'bold'] as const;
 
-const weightProp = {
+const weightPropDef = {
   weight: {
     type: 'enum',
     className: 'rt-r-weight',
@@ -14,4 +14,4 @@ const weightProp = {
   weight: PropDef<(typeof weights)[number]>;
 };
 
-export { weightProp };
+export { weightPropDef };

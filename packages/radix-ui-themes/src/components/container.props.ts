@@ -1,4 +1,4 @@
-import { asChildProp } from '../props/index.js';
+import { asChildPropDef } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
@@ -6,7 +6,7 @@ const displayValues = ['none', 'initial'] as const;
 const alignValues = ['left', 'center', 'right'] as const;
 
 const containerPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   /**
    * Controls the **max-width** of the content within the container.
    * Supports the predefined values and responsive objects.
@@ -79,7 +79,7 @@ function parseAlignValue(value: string) {
 }
 
 // Use all of the imported prop defs to ensure that JSDoc works
-type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs & typeof asChildProp>;
+type ContainerOwnProps = GetPropDefTypes<typeof containerPropDefs & typeof asChildPropDef>;
 
 export { containerPropDefs };
 export type { ContainerOwnProps };

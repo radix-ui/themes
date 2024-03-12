@@ -1,4 +1,4 @@
-import { asChildProp } from '../props/index.js';
+import { asChildPropDef } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const sides = ['all', 'x', 'y', 'top', 'bottom', 'left', 'right'] as const;
@@ -6,7 +6,7 @@ const clipValues = ['border-box', 'padding-box'] as const;
 const paddingValues = ['current', '0'] as const;
 
 const insetPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   side: {
     type: 'enum',
     className: 'rt-r-side',

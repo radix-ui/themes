@@ -1,4 +1,4 @@
-import { colorProp, highContrastProp } from '../props/index.js';
+import { colorPropDef, highContrastPropDef } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const sizes = ['1', '2'] as const;
@@ -21,8 +21,8 @@ const baseTabListPropDefs = {
     default: 'start',
     responsive: true,
   },
-  ...colorProp,
-  ...highContrastProp,
+  ...colorPropDef,
+  ...highContrastPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   wrap: PropDef<(typeof wrapValues)[number]>;

@@ -1,11 +1,11 @@
-import { asChildProp } from '../props/index.js';
+import { asChildPropDef } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;
 
 const sectionPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   /**
    * Controls the vertical padding of the section.
    *
@@ -57,7 +57,7 @@ function parseDisplayValue(value: string) {
 }
 
 // Use all of the imported prop defs to ensure that JSDoc works
-type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs & typeof asChildProp>;
+type SectionOwnProps = GetPropDefTypes<typeof sectionPropDefs & typeof asChildPropDef>;
 
 export { sectionPropDefs };
 export type { SectionOwnProps };

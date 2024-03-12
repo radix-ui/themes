@@ -1,6 +1,6 @@
 import type { PropDef } from './prop-def.js';
 
-const highContrastProp = {
+const highContrastPropDef = {
   highContrast: {
     type: 'boolean',
     className: 'rt-high-contrast',
@@ -10,4 +10,4 @@ const highContrastProp = {
   highContrast: PropDef<boolean>;
 };
 
-export { highContrastProp };
+export { highContrastPropDef };

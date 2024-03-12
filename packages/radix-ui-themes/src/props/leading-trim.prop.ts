@@ -2,7 +2,7 @@ import type { PropDef } from './prop-def.js';
 
 const leadingTrimValues = ['normal', 'start', 'end', 'both'] as const;
 
-const leadingTrimProp = {
+const leadingTrimPropDef = {
   trim: {
     type: 'enum',
     className: 'rt-r-lt',
@@ -14,4 +14,4 @@ const leadingTrimProp = {
   trim: PropDef<(typeof leadingTrimValues)[number]>;
 };
 
-export { leadingTrimProp };
+export { leadingTrimPropDef };

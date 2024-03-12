@@ -1,4 +1,4 @@
-import { asChildProp } from '../props/index.js';
+import { asChildPropDef } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const as = ['div', 'span'] as const;
@@ -13,7 +13,7 @@ const boxPropDefs = {
    * as="span"
    */
   as: { type: 'enum', values: as, default: 'div' },
-  ...asChildProp,
+  ...asChildPropDef,
   /**
    * Sets the CSS **display** property.
    * Supports a subset of the corresponding CSS values and responsive objects.
@@ -38,7 +38,7 @@ const boxPropDefs = {
 };
 
 // Use all of the imported prop defs to ensure that JSDoc works
-type BoxOwnProps = GetPropDefTypes<typeof boxPropDefs & typeof asChildProp>;
+type BoxOwnProps = GetPropDefTypes<typeof boxPropDefs & typeof asChildPropDef>;
 
 export { boxPropDefs };
 export type { BoxOwnProps };

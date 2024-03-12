@@ -1,6 +1,6 @@
 import type { PropDef } from './prop-def.js';
 
-const asChildProp = {
+const asChildPropDef = {
   /**
    * Composes the component into its immediate child instead of rendering its own HTML element.
    * You’ll have to provide a single React Element child.
@@ -13,4 +13,4 @@ const asChildProp = {
   asChild: PropDef<boolean>;
 };
 
-export { asChildProp };
+export { asChildPropDef };

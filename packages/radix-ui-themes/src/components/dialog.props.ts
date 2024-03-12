@@ -1,10 +1,10 @@
-import { asChildProp, widthPropDefs } from '../props/index.js';
+import { asChildPropDef, widthPropDefs } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const contentSizes = ['1', '2', '3', '4'] as const;
 
 const dialogContentPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -23,7 +23,7 @@ const dialogContentPropDefs = {
 };
 
 type DialogContentOwnProps = GetPropDefTypes<
-  typeof dialogContentPropDefs & typeof asChildProp & typeof widthPropDefs
+  typeof dialogContentPropDefs & typeof asChildPropDef & typeof widthPropDefs
 >;
 
 export { dialogContentPropDefs };

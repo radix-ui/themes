@@ -1,9 +1,9 @@
-import { asChildProp, textWrapProp, truncateProp } from '../props/index.js';
+import { asChildPropDef, textWrapPropDef, truncatePropDef } from '../props/index.js';
 
 const emPropDefs = {
-  ...asChildProp,
-  ...truncateProp,
-  ...textWrapProp,
+  ...asChildPropDef,
+  ...truncatePropDef,
+  ...textWrapPropDef,
 } satisfies {};
 
 export { emPropDefs };

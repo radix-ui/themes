@@ -1,11 +1,11 @@
 import {
-  asChildProp,
-  colorProp,
-  highContrastProp,
-  textWrapProp,
-  leadingTrimProp,
-  truncateProp,
-  weightProp,
+  asChildPropDef,
+  colorPropDef,
+  highContrastPropDef,
+  textWrapPropDef,
+  leadingTrimPropDef,
+  truncatePropDef,
+  weightPropDef,
 } from '../props/index.js';
 import { type PropDef } from '../props/index.js';
 
@@ -13,7 +13,7 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const underline = ['auto', 'always', 'hover', 'none'] as const;
 
 const linkPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -21,13 +21,13 @@ const linkPropDefs = {
     default: undefined,
     responsive: true,
   },
-  ...weightProp,
-  ...leadingTrimProp,
-  ...truncateProp,
-  ...textWrapProp,
+  ...weightPropDef,
+  ...leadingTrimPropDef,
+  ...truncatePropDef,
+  ...textWrapPropDef,
   underline: { type: 'enum', className: 'rt-underline', values: underline, default: 'auto' },
-  ...colorProp,
-  ...highContrastProp,
+  ...colorPropDef,
+  ...highContrastPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
 

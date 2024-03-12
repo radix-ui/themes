@@ -1,10 +1,10 @@
 import {
-  asChildProp,
-  highContrastProp,
-  inheritedColorProp,
-  textWrapProp,
-  truncateProp,
-  weightProp,
+  asChildPropDef,
+  highContrastPropDef,
+  inheritedColorPropDef,
+  textWrapPropDef,
+  truncatePropDef,
+  weightPropDef,
 } from '../props/index.js';
 
 import type { PropDef } from '../props/index.js';
@@ -12,7 +12,7 @@ import type { PropDef } from '../props/index.js';
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const blockquotePropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -20,11 +20,11 @@ const blockquotePropDefs = {
     default: undefined,
     responsive: true,
   },
-  ...weightProp,
-  ...inheritedColorProp,
-  ...highContrastProp,
-  ...truncateProp,
-  ...textWrapProp,
+  ...weightPropDef,
+  ...inheritedColorPropDef,
+  ...highContrastPropDef,
+  ...truncatePropDef,
+  ...textWrapPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
 };

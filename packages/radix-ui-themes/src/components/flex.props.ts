@@ -1,4 +1,4 @@
-import { asChildProp, gapProps } from '../props/index.js';
+import { asChildPropDef, gapPropDefs } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const as = ['div', 'span'] as const;
@@ -17,7 +17,7 @@ const flexPropDefs = {
    * as="span"
    */
   as: { type: 'enum', values: as, default: 'div' },
-  ...asChildProp,
+  ...asChildPropDef,
   /**
    * Sets the CSS **display** property.
    * Supports a subset of the corresponding CSS values and responsive objects.
@@ -109,7 +109,7 @@ const flexPropDefs = {
     default: undefined,
     responsive: true,
   },
-  ...gapProps,
+  ...gapPropDefs,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
@@ -124,7 +124,9 @@ function parseJustifyValue(value: string) {
 }
 
 // Use all of the imported prop defs to ensure that JSDoc works
-type FlexOwnProps = GetPropDefTypes<typeof flexPropDefs & typeof gapProps & typeof asChildProp>;
+type FlexOwnProps = GetPropDefTypes<
+  typeof flexPropDefs & typeof gapPropDefs & typeof asChildPropDef
+>;
 
 export { flexPropDefs };
 export type { FlexOwnProps };

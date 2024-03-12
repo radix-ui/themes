@@ -1,4 +1,4 @@
-import { asChildProp } from '../props/as-child.prop.js';
+import { asChildPropDef } from '../props/as-child.prop.js';
 import { accentColors, grayColors } from '../props/color.prop.js';
 import { radii } from '../props/radius.prop.js';
 import type { GetPropDefTypes, PropDef } from '../props/prop-def.js';
@@ -8,7 +8,7 @@ const panelBackgrounds = ['solid', 'translucent'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 
 const themePropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   /**
    * Whether to apply background color to the Theme element.
    *
@@ -69,7 +69,7 @@ const themePropDefs = {
   scaling: PropDef<(typeof scalings)[number]>;
 };
 
-type ThemeOwnProps = GetPropDefTypes<typeof themePropDefs & typeof asChildProp>;
+type ThemeOwnProps = GetPropDefTypes<typeof themePropDefs & typeof asChildPropDef>;
 
 export { themePropDefs };
 export type { ThemeOwnProps };

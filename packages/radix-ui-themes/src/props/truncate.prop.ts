@@ -1,6 +1,6 @@
 import type { PropDef } from './prop-def.js';
 
-const truncateProp = {
+const truncatePropDef = {
   truncate: {
     type: 'boolean',
     className: 'rt-truncate',
@@ -10,4 +10,4 @@ const truncateProp = {
   truncate: PropDef<boolean>;
 };
 
-export { truncateProp };
+export { truncatePropDef };
