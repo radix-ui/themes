@@ -114,21 +114,21 @@ const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowH
 TableRowHeaderCell.displayName = 'TableRowHeaderCell';
 
 export {
-  TableRoot,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableColumnHeaderCell,
-  TableRowHeaderCell,
+  TableRoot as Root,
+  TableHeader as Header,
+  TableBody as Body,
+  TableRow as Row,
+  TableCell as Cell,
+  TableColumnHeaderCell as ColumnHeaderCell,
+  TableRowHeaderCell as RowHeaderCell,
 };
 
 export type {
-  TableRootProps,
-  TableHeaderProps,
-  TableBodyProps,
-  TableRowProps,
-  TableCellProps,
-  TableColumnHeaderCellProps,
-  TableRowHeaderCellProps,
+  TableRootProps as RootProps,
+  TableHeaderProps as HeaderProps,
+  TableBodyProps as BodyProps,
+  TableRowProps as RowProps,
+  TableCellProps as CellProps,
+  TableColumnHeaderCellProps as ColumnHeaderCellProps,
+  TableRowHeaderCellProps as RowHeaderCellProps,
 };

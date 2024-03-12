@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, Container, Section, Reset, Box, Flex, Text } from '@radix-ui/themes';
+import { Theme, Container, Section, Reset } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 
 export default function Test() {

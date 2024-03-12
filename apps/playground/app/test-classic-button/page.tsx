@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, ThemePanel, Container, Section, Flex, Button, Text } from '@radix-ui/themes';
+import { Theme, ThemePanel, Container, Section, Flex, Button } from '@radix-ui/themes';
 import { accentColors } from '@radix-ui/themes/props';
 import { Pencil2Icon } from '@radix-ui/react-icons';
 

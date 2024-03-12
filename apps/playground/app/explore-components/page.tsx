@@ -1,98 +1,46 @@
 import * as React from 'react';
 import {
   Theme,
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
+  AlertDialog,
   AspectRatio,
   Avatar,
   Badge,
   Blockquote,
   Box,
   Button,
-  CalloutRoot,
-  CalloutIcon,
-  CalloutText,
+  Callout,
   Card,
   Checkbox,
   Code,
-  ContextMenuRoot,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuSub,
-  ContextMenuSubTrigger,
-  ContextMenuSubContent,
-  ContextMenuSeparator,
-  DataListRoot,
-  DataListItem,
-  DataListLabel,
-  DataListValue,
-  DialogRoot,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-  DialogClose,
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuSeparator,
+  ContextMenu,
+  DataList,
+  Dialog,
+  DropdownMenu,
   Em,
   Flex,
   Grid,
   Heading,
-  HoverCardRoot,
-  HoverCardTrigger,
-  HoverCardContent,
+  HoverCard,
   IconButton,
   Inset,
   Kbd,
   Link,
-  PopoverRoot,
-  PopoverContent,
-  PopoverTrigger,
-  PopoverClose,
+  Popover,
   Progress,
   Quote,
-  RadioGroupRoot,
-  RadioGroupItem,
+  RadioGroup,
   ScrollArea,
-  SelectRoot,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectSeparator,
+  Select,
   Separator,
   Skeleton,
   Slider,
   Spinner,
   Strong,
   Switch,
-  TableRoot,
-  TableHeader,
-  TableRow,
-  TableColumnHeaderCell,
-  TableBody,
-  TableRowHeaderCell,
-  TableCell,
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
+  Table,
+  Tabs,
   TextArea,
-  TextFieldRoot,
-  TextFieldSlot,
+  TextField,
   Text,
   Tooltip,
   ThemePanel,
@@ -156,107 +104,107 @@ export default function ExploreComponents() {
                   </Link>
                 </Heading>
                 <Flex gap="4" align="center" mb="9">
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
+                  <AlertDialog.Root>
+                    <AlertDialog.Trigger>
                       <Button size="1">Open</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="1" style={{ width: 'calc(300px * var(--scaling))' }}>
-                      <AlertDialogTitle size="2" mb="1">
+                    </AlertDialog.Trigger>
+                    <AlertDialog.Content size="1" style={{ width: 'calc(300px * var(--scaling))' }}>
+                      <AlertDialog.Title size="2" mb="1">
                         Revoke access
-                      </AlertDialogTitle>
-                      <AlertDialogDescription size="1" mb="3">
+                      </AlertDialog.Title>
+                      <AlertDialog.Description size="1" mb="3">
                         Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
-                      </AlertDialogDescription>
+                      </AlertDialog.Description>
 
                       <Flex gap="2" mt="3" justify="end">
-                        <AlertDialogCancel>
+                        <AlertDialog.Cancel>
                           <Button size="1" variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
+                        </AlertDialog.Cancel>
+                        <AlertDialog.Action>
                           <Button size="1" color="red">
                             Revoke
                           </Button>
-                        </AlertDialogAction>
+                        </AlertDialog.Action>
                       </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
+                    </AlertDialog.Content>
+                  </AlertDialog.Root>
 
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
+                  <AlertDialog.Root>
+                    <AlertDialog.Trigger>
                       <Button size="2">Open</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="2" style={{ width: 'calc(400px * var(--scaling))' }}>
-                      <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
-                      <AlertDialogDescription size="2" mb="4">
+                    </AlertDialog.Trigger>
+                    <AlertDialog.Content size="2" style={{ width: 'calc(400px * var(--scaling))' }}>
+                      <AlertDialog.Title mb="2">Revoke access</AlertDialog.Title>
+                      <AlertDialog.Description size="2" mb="4">
                         Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
-                      </AlertDialogDescription>
+                      </AlertDialog.Description>
 
                       <Flex gap="3" mt="4" justify="end">
-                        <AlertDialogCancel>
+                        <AlertDialog.Cancel>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
+                        </AlertDialog.Cancel>
+                        <AlertDialog.Action>
                           <Button color="red">Revoke</Button>
-                        </AlertDialogAction>
+                        </AlertDialog.Action>
                       </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
+                    </AlertDialog.Content>
+                  </AlertDialog.Root>
 
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
+                  <AlertDialog.Root>
+                    <AlertDialog.Trigger>
                       <Button size="3">Open</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="3" style={{ width: 'calc(400px * var(--scaling))' }}>
-                      <AlertDialogTitle>Revoke access</AlertDialogTitle>
-                      <AlertDialogDescription size="2" mb="4">
+                    </AlertDialog.Trigger>
+                    <AlertDialog.Content size="3" style={{ width: 'calc(400px * var(--scaling))' }}>
+                      <AlertDialog.Title>Revoke access</AlertDialog.Title>
+                      <AlertDialog.Description size="2" mb="4">
                         Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
-                      </AlertDialogDescription>
+                      </AlertDialog.Description>
 
                       <Flex gap="3" mt="4" justify="end">
-                        <AlertDialogCancel>
+                        <AlertDialog.Cancel>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
+                        </AlertDialog.Cancel>
+                        <AlertDialog.Action>
                           <Button color="red">Revoke</Button>
-                        </AlertDialogAction>
+                        </AlertDialog.Action>
                       </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
+                    </AlertDialog.Content>
+                  </AlertDialog.Root>
 
-                  <AlertDialogRoot>
-                    <AlertDialogTrigger>
+                  <AlertDialog.Root>
+                    <AlertDialog.Trigger>
                       <Button size="4">Open</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent size="4" style={{ width: 'calc(450px * var(--scaling))' }}>
-                      <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
-                      <AlertDialogDescription size="3" mb="5">
+                    </AlertDialog.Trigger>
+                    <AlertDialog.Content size="4" style={{ width: 'calc(450px * var(--scaling))' }}>
+                      <AlertDialog.Title size="6">Revoke access</AlertDialog.Title>
+                      <AlertDialog.Description size="3" mb="5">
                         Are you sure? This application will no longer be accessible and any existing
                         sessions will be expired.
-                      </AlertDialogDescription>
+                      </AlertDialog.Description>
 
                       <Flex gap="3" mt="5" justify="end">
-                        <AlertDialogCancel>
+                        <AlertDialog.Cancel>
                           <Button size="3" variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </AlertDialogCancel>
-                        <AlertDialogAction>
+                        </AlertDialog.Cancel>
+                        <AlertDialog.Action>
                           <Button size="3" color="red">
                             Revoke
                           </Button>
-                        </AlertDialogAction>
+                        </AlertDialog.Action>
                       </Flex>
-                    </AlertDialogContent>
-                  </AlertDialogRoot>
+                    </AlertDialog.Content>
+                  </AlertDialog.Root>
                 </Flex>
 
                 <Heading id="aspect-ratio" mb="5">
@@ -280,13 +228,13 @@ export default function ExploreComponents() {
                     Avatar
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -348,9 +296,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -405,9 +353,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -448,21 +396,21 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="badge" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#badge">
                     Badge
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -499,9 +447,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -533,9 +481,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -573,22 +521,22 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="blockquote" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#blockquote">
                     Blockquote
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                    <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Grid my="6" gap="6" columns="auto auto" style={{ whiteSpace: 'nowrap' }}>
                       <Flex direction="column" gap="6">
                         <Text mb="-4" size="1" color="gray" align="center">
@@ -638,9 +586,9 @@ export default function ExploreComponents() {
                         </Blockquote>
                       </Flex>
                     </Grid>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -666,9 +614,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <tbody>
@@ -687,9 +635,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-weights">
+                  <Tabs.Content value="all-weights">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -708,21 +656,21 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="button" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#button">
                     Button
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -767,9 +715,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -801,9 +749,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -841,21 +789,21 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="callout" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#callout">
                     Callout
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -870,49 +818,49 @@ export default function ExploreComponents() {
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <CalloutRoot variant={variant}>
-                                  <CalloutIcon>
+                                <Callout.Root variant={variant}>
+                                  <Callout.Icon>
                                     <InfoCircledIcon width="16" height="16" />
-                                  </CalloutIcon>
-                                  <CalloutText>
+                                  </Callout.Icon>
+                                  <Callout.Text>
                                     Please <Link href="#">upgrade</Link> to the new version.
-                                  </CalloutText>
-                                </CalloutRoot>
-                                <CalloutRoot variant={variant} highContrast mt="4">
-                                  <CalloutIcon>
+                                  </Callout.Text>
+                                </Callout.Root>
+                                <Callout.Root variant={variant} highContrast mt="4">
+                                  <Callout.Icon>
                                     <InfoCircledIcon width="16" height="16" />
-                                  </CalloutIcon>
-                                  <CalloutText>
+                                  </Callout.Icon>
+                                  <Callout.Text>
                                     Please <Link href="#">upgrade</Link> to the new version.
-                                  </CalloutText>
-                                </CalloutRoot>
+                                  </Callout.Text>
+                                </Callout.Root>
                               </td>
                               <td>
-                                <CalloutRoot variant={variant} color="gray">
-                                  <CalloutIcon>
+                                <Callout.Root variant={variant} color="gray">
+                                  <Callout.Icon>
                                     <InfoCircledIcon width="16" height="16" />
-                                  </CalloutIcon>
-                                  <CalloutText>
+                                  </Callout.Icon>
+                                  <Callout.Text>
                                     Please <Link href="#">upgrade</Link> to the new version.
-                                  </CalloutText>
-                                </CalloutRoot>
-                                <CalloutRoot variant={variant} color="gray" highContrast mt="4">
-                                  <CalloutIcon>
+                                  </Callout.Text>
+                                </Callout.Root>
+                                <Callout.Root variant={variant} color="gray" highContrast mt="4">
+                                  <Callout.Icon>
                                     <InfoCircledIcon width="16" height="16" />
-                                  </CalloutIcon>
-                                  <CalloutText>
+                                  </Callout.Icon>
+                                  <Callout.Text>
                                     Please <Link href="#">upgrade</Link> to the new version.
-                                  </CalloutText>
-                                </CalloutRoot>
+                                  </Callout.Text>
+                                </Callout.Root>
                               </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -929,22 +877,22 @@ export default function ExploreComponents() {
                               <td>{upperFirst(color)}</td>
                               {calloutRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <CalloutRoot variant={variant} color={color}>
-                                    <CalloutIcon>
+                                  <Callout.Root variant={variant} color={color}>
+                                    <Callout.Icon>
                                       <InfoCircledIcon width="16" height="16" />
-                                    </CalloutIcon>
-                                    <CalloutText>
+                                    </Callout.Icon>
+                                    <Callout.Text>
                                       Please <Link href="#">upgrade</Link> to the new version.
-                                    </CalloutText>
-                                  </CalloutRoot>
-                                  <CalloutRoot variant={variant} color={color} highContrast mt="4">
-                                    <CalloutIcon>
+                                    </Callout.Text>
+                                  </Callout.Root>
+                                  <Callout.Root variant={variant} color={color} highContrast mt="4">
+                                    <Callout.Icon>
                                       <InfoCircledIcon width="16" height="16" />
-                                    </CalloutIcon>
-                                    <CalloutText>
+                                    </Callout.Icon>
+                                    <Callout.Text>
                                       Please <Link href="#">upgrade</Link> to the new version.
-                                    </CalloutText>
-                                  </CalloutRoot>
+                                    </Callout.Text>
+                                  </Callout.Root>
                                 </td>
                               ))}
                             </tr>
@@ -952,9 +900,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -974,14 +922,14 @@ export default function ExploreComponents() {
                               {calloutRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex>
-                                    <CalloutRoot variant={variant} size={size}>
-                                      <CalloutIcon>
+                                    <Callout.Root variant={variant} size={size}>
+                                      <Callout.Icon>
                                         <InfoCircledIcon {...calloutSizeToIconSize(size)} />
-                                      </CalloutIcon>
-                                      <CalloutText>
+                                      </Callout.Icon>
+                                      <Callout.Text>
                                         Please <Link href="#">upgrade</Link> to the new version.
-                                      </CalloutText>
-                                    </CalloutRoot>
+                                      </Callout.Text>
+                                    </Callout.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -990,8 +938,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="card" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#card">
@@ -1024,7 +972,7 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Email address
                               </Text>
-                              <TextFieldRoot variant="classic" placeholder="Enter your email" />
+                              <TextField.Root variant="classic" placeholder="Enter your email" />
                             </label>
                           </Box>
 
@@ -1039,7 +987,7 @@ export default function ExploreComponents() {
                               <Text as="div" size="2" weight="medium" mb="2">
                                 Password
                               </Text>
-                              <TextFieldRoot variant="classic" placeholder="Enter your password" />
+                              <TextField.Root variant="classic" placeholder="Enter your password" />
                             </label>
                           </Box>
 
@@ -1118,13 +1066,13 @@ export default function ExploreComponents() {
                     Checkbox
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1177,9 +1125,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1213,9 +1161,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1244,22 +1192,22 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="code" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#code">
                     Code
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                    <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1304,9 +1252,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1338,9 +1286,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <Flex direction="column" gap="4">
                         {codePropDefs.size.values.map((size) => (
@@ -1355,9 +1303,9 @@ export default function ExploreComponents() {
                         ))}
                       </Flex>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-weights">
+                  <Tabs.Content value="all-weights">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -1372,21 +1320,21 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="context-menu" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#context-menu">
                     Context Menu
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1401,53 +1349,53 @@ export default function ExploreComponents() {
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
+                                <ContextMenu.Root>
+                                  <ContextMenu.Trigger>
                                     <RightClickArea variant={variant} />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant}>
+                                  </ContextMenu.Trigger>
+                                  <ContextMenu.Content variant={variant}>
                                     <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
+                                  </ContextMenu.Content>
+                                </ContextMenu.Root>
                               </td>
                               <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
+                                <ContextMenu.Root>
+                                  <ContextMenu.Trigger>
                                     <RightClickArea variant={variant} highContrast />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant} highContrast>
+                                  </ContextMenu.Trigger>
+                                  <ContextMenu.Content variant={variant} highContrast>
                                     <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
+                                  </ContextMenu.Content>
+                                </ContextMenu.Root>
                               </td>
                               <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
+                                <ContextMenu.Root>
+                                  <ContextMenu.Trigger>
                                     <RightClickArea variant={variant} color="gray" />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant} color="gray">
+                                  </ContextMenu.Trigger>
+                                  <ContextMenu.Content variant={variant} color="gray">
                                     <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
+                                  </ContextMenu.Content>
+                                </ContextMenu.Root>
                               </td>
                               <td>
-                                <ContextMenuRoot>
-                                  <ContextMenuTrigger>
+                                <ContextMenu.Root>
+                                  <ContextMenu.Trigger>
                                     <RightClickArea variant={variant} color="gray" highContrast />
-                                  </ContextMenuTrigger>
-                                  <ContextMenuContent variant={variant} color="gray" highContrast>
+                                  </ContextMenu.Trigger>
+                                  <ContextMenu.Content variant={variant} color="gray" highContrast>
                                     <ExampleContextMenuContent />
-                                  </ContextMenuContent>
-                                </ContextMenuRoot>
+                                  </ContextMenu.Content>
+                                </ContextMenu.Root>
                               </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1465,30 +1413,30 @@ export default function ExploreComponents() {
                               {contextMenuContentPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex align="center" justify="center" gap="4">
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
+                                    <ContextMenu.Root>
+                                      <ContextMenu.Trigger>
                                         <RightClickArea variant={variant} color={color} />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContent variant={variant} color={color}>
+                                      </ContextMenu.Trigger>
+                                      <ContextMenu.Content variant={variant} color={color}>
                                         <ExampleContextMenuContent />
-                                      </ContextMenuContent>
-                                    </ContextMenuRoot>
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
+                                      </ContextMenu.Content>
+                                    </ContextMenu.Root>
+                                    <ContextMenu.Root>
+                                      <ContextMenu.Trigger>
                                         <RightClickArea
                                           variant={variant}
                                           color={color}
                                           highContrast
                                         />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContent
+                                      </ContextMenu.Trigger>
+                                      <ContextMenu.Content
                                         variant={variant}
                                         color={color}
                                         highContrast
                                       >
                                         <ExampleContextMenuContent />
-                                      </ContextMenuContent>
-                                    </ContextMenuRoot>
+                                      </ContextMenu.Content>
+                                    </ContextMenu.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -1497,9 +1445,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1519,14 +1467,14 @@ export default function ExploreComponents() {
                               {contextMenuContentPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex>
-                                    <ContextMenuRoot>
-                                      <ContextMenuTrigger>
+                                    <ContextMenu.Root>
+                                      <ContextMenu.Trigger>
                                         <RightClickArea size={size} variant={variant} />
-                                      </ContextMenuTrigger>
-                                      <ContextMenuContent size={size} variant={variant}>
+                                      </ContextMenu.Trigger>
+                                      <ContextMenu.Content size={size} variant={variant}>
                                         <ExampleContextMenuContent />
-                                      </ContextMenuContent>
-                                    </ContextMenuRoot>
+                                      </ContextMenu.Content>
+                                    </ContextMenu.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -1535,8 +1483,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="data-list" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#data-list">
@@ -1544,33 +1492,33 @@ export default function ExploreComponents() {
                   </Link>
                 </Heading>
                 <Flex gap="4" align="center" mb="9">
-                  <TabsRoot defaultValue="specimen">
-                    <TabsList size="2">
-                      <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                      <TabsTrigger value="all-orientations">All orientations</TabsTrigger>
-                      <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    </TabsList>
+                  <Tabs.Root defaultValue="specimen">
+                    <Tabs.List size="2">
+                      <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                      <Tabs.Trigger value="all-orientations">All orientations</Tabs.Trigger>
+                      <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                    </Tabs.List>
 
-                    <TabsContent value="specimen">
+                    <Tabs.Content value="specimen">
                       <Box my="6">
-                        <DataListRoot>
-                          <DataListItem>
-                            <DataListLabel width="200px">Name</DataListLabel>
-                            <DataListValue>Susan Kare</DataListValue>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Email</DataListLabel>
-                            <DataListValue>susan.kare@apple.com</DataListValue>
-                          </DataListItem>
-                          <DataListItem>
-                            <DataListLabel>Occupation</DataListLabel>
-                            <DataListValue>Graphic Designer</DataListValue>
-                          </DataListItem>
-                        </DataListRoot>
+                        <DataList.Root>
+                          <DataList.Item>
+                            <DataList.Label width="200px">Name</DataList.Label>
+                            <DataList.Value>Susan Kare</DataList.Value>
+                          </DataList.Item>
+                          <DataList.Item>
+                            <DataList.Label>Email</DataList.Label>
+                            <DataList.Value>susan.kare@apple.com</DataList.Value>
+                          </DataList.Item>
+                          <DataList.Item>
+                            <DataList.Label>Occupation</DataList.Label>
+                            <DataList.Value>Graphic Designer</DataList.Value>
+                          </DataList.Item>
+                        </DataList.Root>
                       </Box>
-                    </TabsContent>
+                    </Tabs.Content>
 
-                    <TabsContent value="all-orientations">
+                    <Tabs.Content value="all-orientations">
                       <Box my="6">
                         <table className={styles.table}>
                           <tbody>
@@ -1578,25 +1526,25 @@ export default function ExploreComponents() {
                               <tr key={orientation}>
                                 <td>{upperFirst(orientation)}</td>
                                 <td style={{ textAlign: 'left' }}>
-                                  <DataListRoot orientation={orientation} my="3">
-                                    <DataListItem>
-                                      <DataListLabel>Name</DataListLabel>
-                                      <DataListValue>Susan Kare</DataListValue>
-                                    </DataListItem>
-                                    <DataListItem>
-                                      <DataListLabel>Email</DataListLabel>
-                                      <DataListValue>susan.kare@apple.com</DataListValue>
-                                    </DataListItem>
-                                  </DataListRoot>
+                                  <DataList.Root orientation={orientation} my="3">
+                                    <DataList.Item>
+                                      <DataList.Label>Name</DataList.Label>
+                                      <DataList.Value>Susan Kare</DataList.Value>
+                                    </DataList.Item>
+                                    <DataList.Item>
+                                      <DataList.Label>Email</DataList.Label>
+                                      <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                    </DataList.Item>
+                                  </DataList.Root>
                                 </td>
                               </tr>
                             ))}
                           </tbody>
                         </table>
                       </Box>
-                    </TabsContent>
+                    </Tabs.Content>
 
-                    <TabsContent value="all-sizes">
+                    <Tabs.Content value="all-sizes">
                       <Box my="6">
                         <table className={styles.table}>
                           <tbody>
@@ -1604,24 +1552,24 @@ export default function ExploreComponents() {
                               <tr key={size}>
                                 <td>{`Size ${upperFirst(size)}`}</td>
                                 <td style={{ textAlign: 'left' }}>
-                                  <DataListRoot size={size} my="3">
-                                    <DataListItem>
-                                      <DataListLabel>Name</DataListLabel>
-                                      <DataListValue>Susan Kare</DataListValue>
-                                    </DataListItem>
-                                    <DataListItem>
-                                      <DataListLabel>Email</DataListLabel>
-                                      <DataListValue>susan.kare@apple.com</DataListValue>
-                                    </DataListItem>
-                                  </DataListRoot>
+                                  <DataList.Root size={size} my="3">
+                                    <DataList.Item>
+                                      <DataList.Label>Name</DataList.Label>
+                                      <DataList.Value>Susan Kare</DataList.Value>
+                                    </DataList.Item>
+                                    <DataList.Item>
+                                      <DataList.Label>Email</DataList.Label>
+                                      <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                    </DataList.Item>
+                                  </DataList.Root>
                                 </td>
                               </tr>
                             ))}
                           </tbody>
                         </table>
                       </Box>
-                    </TabsContent>
-                  </TabsRoot>
+                    </Tabs.Content>
+                  </Tabs.Root>
                 </Flex>
 
                 <Heading id="dialog" mb="5">
@@ -1630,24 +1578,24 @@ export default function ExploreComponents() {
                   </Link>
                 </Heading>
                 <Flex gap="4" align="center" mb="9">
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button size="1">Open</Button>
-                    </DialogTrigger>
-                    <DialogContent size="1" style={{ maxWidth: 300 }}>
-                      <DialogTitle size="3" mb="1">
+                    </Dialog.Trigger>
+                    <Dialog.Content size="1" style={{ maxWidth: 300 }}>
+                      <Dialog.Title size="3" mb="1">
                         Edit profile
-                      </DialogTitle>
-                      <DialogDescription size="2" mb="3">
+                      </Dialog.Title>
+                      <Dialog.Description size="2" mb="3">
                         Make changes to your profile.
-                      </DialogDescription>
+                      </Dialog.Description>
 
                       <Flex direction="column" gap="3">
                         <label>
                           <Text as="div" size="1" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             size="1"
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
@@ -1657,7 +1605,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="1" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             size="1"
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
@@ -1666,36 +1614,36 @@ export default function ExploreComponents() {
                       </Flex>
 
                       <Flex gap="2" mt="3" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button size="1" variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button size="1" autoFocus>
                             Save
                           </Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
 
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button size="2">Open</Button>
-                    </DialogTrigger>
-                    <DialogContent size="2" style={{ maxWidth: 400 }}>
-                      <DialogTitle mb="2">Edit profile</DialogTitle>
-                      <DialogDescription size="2" mb="4">
+                    </Dialog.Trigger>
+                    <Dialog.Content size="2" style={{ maxWidth: 400 }}>
+                      <Dialog.Title mb="2">Edit profile</Dialog.Title>
+                      <Dialog.Description size="2" mb="4">
                         Make changes to your profile.
-                      </DialogDescription>
+                      </Dialog.Description>
 
                       <Flex direction="column" gap="3">
                         <label>
                           <Text as="div" size="2" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
                           />
@@ -1704,7 +1652,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="2" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
                           />
@@ -1712,34 +1660,34 @@ export default function ExploreComponents() {
                       </Flex>
 
                       <Flex gap="3" mt="4" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button autoFocus>Save</Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
 
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button size="3">Open</Button>
-                    </DialogTrigger>
-                    <DialogContent size="3" style={{ maxWidth: 500 }}>
-                      <DialogTitle>Edit profile</DialogTitle>
-                      <DialogDescription size="2" mb="4">
+                    </Dialog.Trigger>
+                    <Dialog.Content size="3" style={{ maxWidth: 500 }}>
+                      <Dialog.Title>Edit profile</Dialog.Title>
+                      <Dialog.Description size="2" mb="4">
                         Make changes to your profile.
-                      </DialogDescription>
+                      </Dialog.Description>
 
                       <Flex direction="column" gap="3">
                         <label>
                           <Text as="div" size="2" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
                           />
@@ -1748,7 +1696,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="2" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
                           />
@@ -1756,34 +1704,34 @@ export default function ExploreComponents() {
                       </Flex>
 
                       <Flex gap="3" mt="4" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button autoFocus>Save</Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
 
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button size="4">Open</Button>
-                    </DialogTrigger>
-                    <DialogContent size="4">
-                      <DialogTitle size="6">Edit profile</DialogTitle>
-                      <DialogDescription size="3" mb="5">
+                    </Dialog.Trigger>
+                    <Dialog.Content size="4">
+                      <Dialog.Title size="6">Edit profile</Dialog.Title>
+                      <Dialog.Description size="3" mb="5">
                         Make changes to your profile.
-                      </DialogDescription>
+                      </Dialog.Description>
 
                       <Flex direction="column" gap="5">
                         <label>
                           <Text as="div" size="3" mb="1" weight="bold">
                             Name
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             size="3"
                             defaultValue="Freja Johnsen"
                             placeholder="Enter your full name"
@@ -1793,7 +1741,7 @@ export default function ExploreComponents() {
                           <Text as="div" size="3" mb="1" weight="bold">
                             Email
                           </Text>
-                          <TextFieldRoot
+                          <TextField.Root
                             size="3"
                             defaultValue="freja@example.com"
                             placeholder="Enter your email"
@@ -1802,19 +1750,19 @@ export default function ExploreComponents() {
                       </Flex>
 
                       <Flex gap="3" mt="5" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button size="3" variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button size="3" autoFocus>
                             Save
                           </Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
                 </Flex>
 
                 <Heading id="dropdown-menu" mb="5">
@@ -1822,13 +1770,13 @@ export default function ExploreComponents() {
                     Dropdown Menu
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1843,65 +1791,65 @@ export default function ExploreComponents() {
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <DropdownMenuRoot>
-                                  <DropdownMenuTrigger>
+                                <DropdownMenu.Root>
+                                  <DropdownMenu.Trigger>
                                     <Button variant={variant}>
                                       Options
                                       <CaretDownIcon width="16" height="16" />
                                     </Button>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent variant={variant}>
+                                  </DropdownMenu.Trigger>
+                                  <DropdownMenu.Content variant={variant}>
                                     <ExampleDropdownMenuContent />
-                                  </DropdownMenuContent>
-                                </DropdownMenuRoot>
+                                  </DropdownMenu.Content>
+                                </DropdownMenu.Root>
                               </td>
                               <td>
-                                <DropdownMenuRoot>
-                                  <DropdownMenuTrigger>
+                                <DropdownMenu.Root>
+                                  <DropdownMenu.Trigger>
                                     <Button variant={variant} highContrast>
                                       Options
                                       <CaretDownIcon width="16" height="16" />
                                     </Button>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent variant={variant} highContrast>
+                                  </DropdownMenu.Trigger>
+                                  <DropdownMenu.Content variant={variant} highContrast>
                                     <ExampleDropdownMenuContent />
-                                  </DropdownMenuContent>
-                                </DropdownMenuRoot>
+                                  </DropdownMenu.Content>
+                                </DropdownMenu.Root>
                               </td>
                               <td>
-                                <DropdownMenuRoot>
-                                  <DropdownMenuTrigger>
+                                <DropdownMenu.Root>
+                                  <DropdownMenu.Trigger>
                                     <Button variant={variant} color="gray">
                                       Options
                                       <CaretDownIcon width="16" height="16" />
                                     </Button>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent variant={variant} color="gray">
+                                  </DropdownMenu.Trigger>
+                                  <DropdownMenu.Content variant={variant} color="gray">
                                     <ExampleDropdownMenuContent />
-                                  </DropdownMenuContent>
-                                </DropdownMenuRoot>
+                                  </DropdownMenu.Content>
+                                </DropdownMenu.Root>
                               </td>
                               <td>
-                                <DropdownMenuRoot>
-                                  <DropdownMenuTrigger>
+                                <DropdownMenu.Root>
+                                  <DropdownMenu.Trigger>
                                     <Button variant={variant} color="gray" highContrast>
                                       Options
                                       <CaretDownIcon width="16" height="16" />
                                     </Button>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent variant={variant} color="gray" highContrast>
+                                  </DropdownMenu.Trigger>
+                                  <DropdownMenu.Content variant={variant} color="gray" highContrast>
                                     <ExampleDropdownMenuContent />
-                                  </DropdownMenuContent>
-                                </DropdownMenuRoot>
+                                  </DropdownMenu.Content>
+                                </DropdownMenu.Root>
                               </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1919,32 +1867,32 @@ export default function ExploreComponents() {
                               {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex align="center" justify="center" gap="4">
-                                    <DropdownMenuRoot>
-                                      <DropdownMenuTrigger>
+                                    <DropdownMenu.Root>
+                                      <DropdownMenu.Trigger>
                                         <Button variant={variant} color={color}>
                                           Options
                                           <CaretDownIcon width="16" height="16" />
                                         </Button>
-                                      </DropdownMenuTrigger>
-                                      <DropdownMenuContent variant={variant} color={color}>
+                                      </DropdownMenu.Trigger>
+                                      <DropdownMenu.Content variant={variant} color={color}>
                                         <ExampleDropdownMenuContent />
-                                      </DropdownMenuContent>
-                                    </DropdownMenuRoot>
-                                    <DropdownMenuRoot>
-                                      <DropdownMenuTrigger>
+                                      </DropdownMenu.Content>
+                                    </DropdownMenu.Root>
+                                    <DropdownMenu.Root>
+                                      <DropdownMenu.Trigger>
                                         <Button variant={variant} color={color} highContrast>
                                           Options
                                           <CaretDownIcon width="16" height="16" />
                                         </Button>
-                                      </DropdownMenuTrigger>
-                                      <DropdownMenuContent
+                                      </DropdownMenu.Trigger>
+                                      <DropdownMenu.Content
                                         variant={variant}
                                         color={color}
                                         highContrast
                                       >
                                         <ExampleDropdownMenuContent />
-                                      </DropdownMenuContent>
-                                    </DropdownMenuRoot>
+                                      </DropdownMenu.Content>
+                                    </DropdownMenu.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -1953,9 +1901,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -1975,17 +1923,17 @@ export default function ExploreComponents() {
                               {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex>
-                                    <DropdownMenuRoot>
-                                      <DropdownMenuTrigger>
+                                    <DropdownMenu.Root>
+                                      <DropdownMenu.Trigger>
                                         <Button size={size} variant={variant}>
                                           Options
                                           <CaretDownIcon {...buttonSizeToIconSize(size)} />
                                         </Button>
-                                      </DropdownMenuTrigger>
-                                      <DropdownMenuContent size={size} variant={variant}>
+                                      </DropdownMenu.Trigger>
+                                      <DropdownMenu.Content size={size} variant={variant}>
                                         <ExampleDropdownMenuContent />
-                                      </DropdownMenuContent>
-                                    </DropdownMenuRoot>
+                                      </DropdownMenu.Content>
+                                    </DropdownMenu.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -1994,8 +1942,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="em" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#em">
@@ -2016,14 +1964,14 @@ export default function ExploreComponents() {
                     Heading
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="specimen">
+                <Tabs.Root defaultValue="specimen">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                    <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="specimen">
                     <Box my="6" style={{ width: 'calc(560px * var(--scaling))' }}>
                       <Heading size="9">
                         The principles of the typographic craft are difficult to master
@@ -2077,9 +2025,9 @@ export default function ExploreComponents() {
                         </Text>
                       </Box>
                     </Flex>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -2099,9 +2047,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -2120,9 +2068,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-weights">
+                  <Tabs.Content value="all-weights">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -2139,8 +2087,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="hover-card" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#hover-card">
@@ -2151,12 +2099,12 @@ export default function ExploreComponents() {
                   {hoverCardContentPropDefs.size.values.map((size) => (
                     <Text key={size} size={size}>
                       Technology revolutionized{' '}
-                      <HoverCardRoot>
-                        <HoverCardTrigger>
+                      <HoverCard.Root>
+                        <HoverCard.Trigger>
                           <Link href="#">typography</Link>
-                        </HoverCardTrigger>
+                        </HoverCard.Trigger>
 
-                        <HoverCardContent size={size} side="top">
+                        <HoverCard.Content size={size} side="top">
                           <Flex>
                             <Inset side="left" pr="current">
                               <InsetImage style={{ width: 120 }} />
@@ -2167,8 +2115,8 @@ export default function ExploreComponents() {
                               displayed.
                             </Text>
                           </Flex>
-                        </HoverCardContent>
-                      </HoverCardRoot>{' '}
+                        </HoverCard.Content>
+                      </HoverCard.Root>{' '}
                       in the latter twentieth century.
                     </Text>
                   ))}
@@ -2179,13 +2127,13 @@ export default function ExploreComponents() {
                     Icon Button
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2230,9 +2178,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2264,9 +2212,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2304,8 +2252,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="inset" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#inset">
@@ -2367,13 +2315,13 @@ export default function ExploreComponents() {
                     Kbd
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
+                <Tabs.Root defaultValue="specimen">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
 
-                  <TabsContent value="specimen">
+                  <Tabs.Content value="specimen">
                     <Flex direction="column" gap="4" my="6">
                       <Text as="p" size="2">
                         Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd>{' '}
@@ -2392,9 +2340,9 @@ export default function ExploreComponents() {
                         to toggle dark mode.
                       </Text>
                     </Flex>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <Box my="6">
                         <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
@@ -2411,22 +2359,22 @@ export default function ExploreComponents() {
                         </Flex>
                       </Box>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="link" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#link">
                     Link
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="specimen">
+                <Tabs.Root defaultValue="specimen">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                    <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="specimen">
                     <Grid
                       my="6"
                       gap="6"
@@ -2498,9 +2446,9 @@ export default function ExploreComponents() {
                         </Text>
                       </Flex>
                     </Grid>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -2522,9 +2470,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <Flex direction="column" gap="4">
                         {linkPropDefs.size.values.map((size) => (
@@ -2541,9 +2489,9 @@ export default function ExploreComponents() {
                         ))}
                       </Flex>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-weights">
+                  <Tabs.Content value="all-weights">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -2560,8 +2508,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="popover" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#popover">
@@ -2569,14 +2517,14 @@ export default function ExploreComponents() {
                   </Link>
                 </Heading>
                 <Flex align="center" gap="4" my="6">
-                  <PopoverRoot>
-                    <PopoverTrigger>
+                  <Popover.Root>
+                    <Popover.Trigger>
                       <Button size="1">
                         <ChatBubbleIcon width="14" height="14" />
                         Comment
                       </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="1" style={{ width: 250 }}>
+                    </Popover.Trigger>
+                    <Popover.Content size="1" style={{ width: 250 }}>
                       <Flex gap="3">
                         <Avatar
                           size="2"
@@ -2598,25 +2546,25 @@ export default function ExploreComponents() {
                               </label>
                             </Flex>
 
-                            <PopoverClose>
+                            <Popover.Close>
                               <Button autoFocus size="1">
                                 Comment
                               </Button>
-                            </PopoverClose>
+                            </Popover.Close>
                           </Flex>
                         </Box>
                       </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
+                    </Popover.Content>
+                  </Popover.Root>
 
-                  <PopoverRoot>
-                    <PopoverTrigger>
+                  <Popover.Root>
+                    <Popover.Trigger>
                       <Button size="2">
                         <ChatBubbleIcon width="16" height="16" />
                         Comment
                       </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="2" style={{ width: 320 }}>
+                    </Popover.Trigger>
+                    <Popover.Content size="2" style={{ width: 320 }}>
                       <Flex gap="4">
                         <Avatar
                           size="3"
@@ -2633,25 +2581,25 @@ export default function ExploreComponents() {
                               </label>
                             </Flex>
 
-                            <PopoverClose>
+                            <Popover.Close>
                               <Button autoFocus size="2">
                                 Comment
                               </Button>
-                            </PopoverClose>
+                            </Popover.Close>
                           </Flex>
                         </Box>
                       </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
+                    </Popover.Content>
+                  </Popover.Root>
 
-                  <PopoverRoot>
-                    <PopoverTrigger>
+                  <Popover.Root>
+                    <Popover.Trigger>
                       <Button size="3">
                         <ChatBubbleIcon width="16" height="16" />
                         Comment
                       </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="3" style={{ width: 400 }}>
+                    </Popover.Trigger>
+                    <Popover.Content size="3" style={{ width: 400 }}>
                       <Flex gap="4">
                         <Avatar
                           size="4"
@@ -2672,25 +2620,25 @@ export default function ExploreComponents() {
                               </label>
                             </Flex>
 
-                            <PopoverClose>
+                            <Popover.Close>
                               <Button autoFocus size="3">
                                 Comment
                               </Button>
-                            </PopoverClose>
+                            </Popover.Close>
                           </Flex>
                         </Box>
                       </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
+                    </Popover.Content>
+                  </Popover.Root>
 
-                  <PopoverRoot>
-                    <PopoverTrigger>
+                  <Popover.Root>
+                    <Popover.Trigger>
                       <Button size="4">
                         <ChatBubbleIcon width="18" height="18" />
                         Comment
                       </Button>
-                    </PopoverTrigger>
-                    <PopoverContent size="4" style={{ width: 400 }}>
+                    </Popover.Trigger>
+                    <Popover.Content size="4" style={{ width: 400 }}>
                       <Flex gap="4">
                         <Avatar
                           size="5"
@@ -2711,16 +2659,16 @@ export default function ExploreComponents() {
                               </label>
                             </Flex>
 
-                            <PopoverClose>
+                            <Popover.Close>
                               <Button autoFocus size="3">
                                 Comment
                               </Button>
-                            </PopoverClose>
+                            </Popover.Close>
                           </Flex>
                         </Box>
                       </Flex>
-                    </PopoverContent>
-                  </PopoverRoot>
+                    </Popover.Content>
+                  </Popover.Root>
                 </Flex>
 
                 <Heading id="progress" mb="5">
@@ -2728,13 +2676,13 @@ export default function ExploreComponents() {
                     Progress
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2770,9 +2718,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2813,9 +2761,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2858,8 +2806,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="quote" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#quote">
@@ -2882,13 +2830,13 @@ export default function ExploreComponents() {
                     Radio Group
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2905,59 +2853,59 @@ export default function ExploreComponents() {
                               <td>{upperFirst(variant)}</td>
                               <td>
                                 <Flex align="center" justify="center" gap="4">
-                                  <RadioGroupRoot variant={variant}>
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
-                                  <RadioGroupRoot variant={variant} defaultValue="value">
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                  <RadioGroup.Root variant={variant}>
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
+                                  <RadioGroup.Root variant={variant} defaultValue="value">
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
                                 </Flex>
                               </td>
                               <td>
                                 <Flex align="center" justify="center" gap="4">
-                                  <RadioGroupRoot
+                                  <RadioGroup.Root
                                     variant={variant}
                                     highContrast
                                     defaultValue="value"
                                   >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
                                 </Flex>
                               </td>
                               <td>
                                 <Flex align="center" justify="center" gap="4">
-                                  <RadioGroupRoot variant={variant} color="gray">
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
-                                  <RadioGroupRoot
+                                  <RadioGroup.Root variant={variant} color="gray">
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
+                                  <RadioGroup.Root
                                     variant={variant}
                                     color="gray"
                                     defaultValue="value"
                                   >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
                                 </Flex>
                               </td>
                               <td>
                                 <Flex align="center" justify="center" gap="4">
-                                  <RadioGroupRoot
+                                  <RadioGroup.Root
                                     variant={variant}
                                     color="gray"
                                     highContrast
                                     defaultValue="value"
                                   >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
                                 </Flex>
                               </td>
                               <td>
                                 <Flex align="center" justify="center" gap="4">
-                                  <RadioGroupRoot variant={variant} disabled>
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
-                                  <RadioGroupRoot variant={variant} disabled defaultValue="value">
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                  <RadioGroup.Root variant={variant} disabled>
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
+                                  <RadioGroup.Root variant={variant} disabled defaultValue="value">
+                                    <RadioGroup.Item value="value" />
+                                  </RadioGroup.Root>
                                 </Flex>
                               </td>
                             </tr>
@@ -2965,9 +2913,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -2985,26 +2933,26 @@ export default function ExploreComponents() {
                               {radioGroupRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
                                   <Flex align="center" justify="center" gap="4">
-                                    <RadioGroupRoot variant={variant} color={color}>
-                                      <RadioGroupItem value="value" />
-                                    </RadioGroupRoot>
+                                    <RadioGroup.Root variant={variant} color={color}>
+                                      <RadioGroup.Item value="value" />
+                                    </RadioGroup.Root>
 
-                                    <RadioGroupRoot
+                                    <RadioGroup.Root
                                       variant={variant}
                                       color={color}
                                       defaultValue="value"
                                     >
-                                      <RadioGroupItem value="value" />
-                                    </RadioGroupRoot>
+                                      <RadioGroup.Item value="value" />
+                                    </RadioGroup.Root>
 
-                                    <RadioGroupRoot
+                                    <RadioGroup.Root
                                       variant={variant}
                                       color={color}
                                       highContrast
                                       defaultValue="value"
                                     >
-                                      <RadioGroupItem value="value" />
-                                    </RadioGroupRoot>
+                                      <RadioGroup.Item value="value" />
+                                    </RadioGroup.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -3013,9 +2961,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3035,13 +2983,13 @@ export default function ExploreComponents() {
                               {radioGroupRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant} style={{ textAlign: 'left' }}>
                                   <Flex align="center" justify="start" gap="4">
-                                    <RadioGroupRoot
+                                    <RadioGroup.Root
                                       size={size}
                                       variant={variant}
                                       defaultValue="value"
                                     >
-                                      <RadioGroupItem value="value" />
-                                    </RadioGroupRoot>
+                                      <RadioGroup.Item value="value" />
+                                    </RadioGroup.Root>
                                   </Flex>
                                 </td>
                               ))}
@@ -3050,8 +2998,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="scroll area" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#scroll area">
@@ -3112,13 +3060,13 @@ export default function ExploreComponents() {
                     Select
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3135,55 +3083,55 @@ export default function ExploreComponents() {
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <SelectRoot defaultValue="apple">
-                                  <SelectTrigger variant={variant} />
-                                  <SelectContent
+                                <Select.Root defaultValue="apple">
+                                  <Select.Trigger variant={variant} />
+                                  <Select.Content
                                     variant={selectTriggerVariantToSelectContentVariant(variant)}
                                   >
                                     <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
+                                  </Select.Content>
+                                </Select.Root>
                               </td>
                               <td>
-                                <SelectRoot defaultValue="apple">
-                                  <SelectTrigger variant={variant} color="gray" />
-                                  <SelectContent
+                                <Select.Root defaultValue="apple">
+                                  <Select.Trigger variant={variant} color="gray" />
+                                  <Select.Content
                                     variant={selectTriggerVariantToSelectContentVariant(variant)}
                                     color="gray"
                                     highContrast
                                   >
                                     <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
+                                  </Select.Content>
+                                </Select.Root>
                               </td>
                               <td>
-                                <SelectRoot>
-                                  <SelectTrigger variant={variant} placeholder="Choose a fruit…" />
-                                  <SelectContent
+                                <Select.Root>
+                                  <Select.Trigger variant={variant} placeholder="Choose a fruit…" />
+                                  <Select.Content
                                     variant={selectTriggerVariantToSelectContentVariant(variant)}
                                   >
                                     <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
+                                  </Select.Content>
+                                </Select.Root>
                               </td>
                               <td>
-                                <SelectRoot defaultValue="apple" disabled>
-                                  <SelectTrigger variant={variant} />
-                                  <SelectContent
+                                <Select.Root defaultValue="apple" disabled>
+                                  <Select.Trigger variant={variant} />
+                                  <Select.Content
                                     variant={selectTriggerVariantToSelectContentVariant(variant)}
                                   >
                                     <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
+                                  </Select.Content>
+                                </Select.Root>
                               </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3200,15 +3148,15 @@ export default function ExploreComponents() {
                               <td>{upperFirst(color)}</td>
                               {selectTriggerPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <SelectRoot defaultValue="apple">
-                                    <SelectTrigger variant={variant} color={color} />
-                                    <SelectContent
+                                  <Select.Root defaultValue="apple">
+                                    <Select.Trigger variant={variant} color={color} />
+                                    <Select.Content
                                       variant={selectTriggerVariantToSelectContentVariant(variant)}
                                       color={color}
                                     >
                                       <ExampleSelectContent />
-                                    </SelectContent>
-                                  </SelectRoot>
+                                    </Select.Content>
+                                  </Select.Root>
                                 </td>
                               ))}
                             </tr>
@@ -3216,9 +3164,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3244,16 +3192,16 @@ export default function ExploreComponents() {
                                   <td>Size {size}</td>
                                   {selectTriggerPropDefs.radius.values.map((radius) => (
                                     <td key={radius} style={{ textAlign: 'left' }}>
-                                      <SelectRoot size={size} defaultValue="apple">
-                                        <SelectTrigger variant={variant} radius={radius} />
-                                        <SelectContent
+                                      <Select.Root size={size} defaultValue="apple">
+                                        <Select.Trigger variant={variant} radius={radius} />
+                                        <Select.Content
                                           variant={selectTriggerVariantToSelectContentVariant(
                                             variant
                                           )}
                                         >
                                           <ExampleSelectContent />
-                                        </SelectContent>
-                                      </SelectRoot>
+                                        </Select.Content>
+                                      </Select.Root>
                                     </td>
                                   ))}
                                 </tr>
@@ -3263,8 +3211,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="separator" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#separator">
@@ -3298,17 +3246,17 @@ export default function ExploreComponents() {
                       <Flex direction="column" gap="3">
                         <Grid gap="1">
                           <Text weight="bold">Email</Text>
-                          <TextFieldRoot variant="classic" placeholder="Your email" />
+                          <TextField.Root variant="classic" placeholder="Your email" />
                         </Grid>
                         <Grid gap="1">
                           <Text weight="bold">Subject</Text>
-                          <SelectRoot defaultValue="customer">
-                            <SelectTrigger variant="classic" />
-                            <SelectContent>
-                              <SelectItem value="customer">Customer feedback</SelectItem>
-                              <SelectItem value="help">Help</SelectItem>
-                            </SelectContent>
-                          </SelectRoot>
+                          <Select.Root defaultValue="customer">
+                            <Select.Trigger variant="classic" />
+                            <Select.Content>
+                              <Select.Item value="customer">Customer feedback</Select.Item>
+                              <Select.Item value="help">Help</Select.Item>
+                            </Select.Content>
+                          </Select.Root>
                         </Grid>
                         <Grid gap="1">
                           <Text weight="bold">Feedback</Text>
@@ -3329,18 +3277,18 @@ export default function ExploreComponents() {
                             <Skeleton>Email</Skeleton>
                           </Text>
                           <Skeleton>
-                            <TextFieldRoot variant="classic" placeholder="Your email" />
+                            <TextField.Root variant="classic" placeholder="Your email" />
                           </Skeleton>
                         </Grid>
                         <Grid gap="1">
                           <Text weight="bold">
                             <Skeleton>Subject</Skeleton>
                           </Text>
-                          <SelectRoot defaultValue="customer">
+                          <Select.Root defaultValue="customer">
                             <Skeleton>
-                              <SelectTrigger variant="classic" />
+                              <Select.Trigger variant="classic" />
                             </Skeleton>
-                          </SelectRoot>
+                          </Select.Root>
                         </Grid>
                         <Grid gap="1">
                           <Text weight="bold">
@@ -3368,13 +3316,13 @@ export default function ExploreComponents() {
                     Slider
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3426,9 +3374,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3469,9 +3417,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3514,8 +3462,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="spinner" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#spinner">
@@ -3530,23 +3478,23 @@ export default function ExploreComponents() {
                   </Flex>
 
                   <Flex gap="4" align="center">
-                    <TextFieldRoot size="1" defaultValue="horsebatterystaple" type="password">
-                      <TextFieldSlot>
+                    <TextField.Root size="1" defaultValue="horsebatterystaple" type="password">
+                      <TextField.Slot>
                         <Spinner size="1" />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="2" defaultValue="horsebatterystaple" type="password">
-                      <TextFieldSlot>
+                    <TextField.Root size="2" defaultValue="horsebatterystaple" type="password">
+                      <TextField.Slot>
                         <Spinner size="2" />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
 
-                    <TextFieldRoot size="3" defaultValue="horsebatterystaple" type="password">
-                      <TextFieldSlot>
+                    <TextField.Root size="3" defaultValue="horsebatterystaple" type="password">
+                      <TextField.Slot>
                         <Spinner size="3" />
-                      </TextFieldSlot>
-                    </TextFieldRoot>
+                      </TextField.Slot>
+                    </TextField.Root>
                   </Flex>
 
                   <Flex gap="4" align="center">
@@ -3572,13 +3520,13 @@ export default function ExploreComponents() {
                     Switch
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3631,9 +3579,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3667,9 +3615,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -3712,8 +3660,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="table" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#table">
@@ -3733,35 +3681,35 @@ export default function ExploreComponents() {
                         <PanelBackgroundImage id="1" width="100%" height="200%" />
                       </Flex>
 
-                      <TableRoot variant="surface" size="2">
-                        <TableHeader>
-                          <TableRow>
-                            <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                            <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                            <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-                          </TableRow>
-                        </TableHeader>
+                      <Table.Root variant="surface" size="2">
+                        <Table.Header>
+                          <Table.Row>
+                            <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+                            <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+                            <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                          </Table.Row>
+                        </Table.Header>
 
-                        <TableBody>
-                          <TableRow>
-                            <TableRowHeaderCell>Danilo Sousa</TableRowHeaderCell>
-                            <TableCell>danilo@example.com</TableCell>
-                            <TableCell>Developer</TableCell>
-                          </TableRow>
+                        <Table.Body>
+                          <Table.Row>
+                            <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+                            <Table.Cell>danilo@example.com</Table.Cell>
+                            <Table.Cell>Developer</Table.Cell>
+                          </Table.Row>
 
-                          <TableRow>
-                            <TableRowHeaderCell>Zahra Ambessa</TableRowHeaderCell>
-                            <TableCell>zahra@example.com</TableCell>
-                            <TableCell>Admin</TableCell>
-                          </TableRow>
+                          <Table.Row>
+                            <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+                            <Table.Cell>zahra@example.com</Table.Cell>
+                            <Table.Cell>Admin</Table.Cell>
+                          </Table.Row>
 
-                          <TableRow>
-                            <TableRowHeaderCell>Jasper Eriksson</TableRowHeaderCell>
-                            <TableCell>jasper@example.com</TableCell>
-                            <TableCell>Developer</TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </TableRoot>
+                          <Table.Row>
+                            <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+                            <Table.Cell>jasper@example.com</Table.Cell>
+                            <Table.Cell>Developer</Table.Cell>
+                          </Table.Row>
+                        </Table.Body>
+                      </Table.Root>
                     </Flex>
                   </Flex>
 
@@ -3794,35 +3742,35 @@ export default function ExploreComponents() {
                                 paddingBottom: 'var(--space-8)',
                               }}
                             >
-                              <TableRoot variant={variant} size={size}>
-                                <TableHeader>
-                                  <TableRow>
-                                    <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                                    <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                                    <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-                                  </TableRow>
-                                </TableHeader>
+                              <Table.Root variant={variant} size={size}>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+                                    <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+                                    <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                                  </Table.Row>
+                                </Table.Header>
 
-                                <TableBody>
-                                  <TableRow>
-                                    <TableRowHeaderCell>Danilo Sousa</TableRowHeaderCell>
-                                    <TableCell>danilo@example.com</TableCell>
-                                    <TableCell>Developer</TableCell>
-                                  </TableRow>
+                                <Table.Body>
+                                  <Table.Row>
+                                    <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+                                    <Table.Cell>danilo@example.com</Table.Cell>
+                                    <Table.Cell>Developer</Table.Cell>
+                                  </Table.Row>
 
-                                  <TableRow>
-                                    <TableRowHeaderCell>Zahra Ambessa</TableRowHeaderCell>
-                                    <TableCell>zahra@example.com</TableCell>
-                                    <TableCell>Admin</TableCell>
-                                  </TableRow>
+                                  <Table.Row>
+                                    <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+                                    <Table.Cell>zahra@example.com</Table.Cell>
+                                    <Table.Cell>Admin</Table.Cell>
+                                  </Table.Row>
 
-                                  <TableRow>
-                                    <TableRowHeaderCell>Jasper Eriksson</TableRowHeaderCell>
-                                    <TableCell>jasper@example.com</TableCell>
-                                    <TableCell>Developer</TableCell>
-                                  </TableRow>
-                                </TableBody>
-                              </TableRoot>
+                                  <Table.Row>
+                                    <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+                                    <Table.Cell>jasper@example.com</Table.Cell>
+                                    <Table.Cell>Developer</Table.Cell>
+                                  </Table.Row>
+                                </Table.Body>
+                              </Table.Root>
                             </td>
                           ))}
                         </tr>
@@ -3838,13 +3786,13 @@ export default function ExploreComponents() {
                 </Heading>
                 <Flex gap="8" align="end" mb="9">
                   {tabsListPropDefs.size.values.map((size) => (
-                    <TabsRoot key={size} defaultValue="account" activationMode="manual">
-                      <TabsList size={size}>
-                        <TabsTrigger value="account">Account</TabsTrigger>
-                        <TabsTrigger value="documents">Documents</TabsTrigger>
-                        <TabsTrigger value="settings">Settings</TabsTrigger>
-                      </TabsList>
-                    </TabsRoot>
+                    <Tabs.Root key={size} defaultValue="account" activationMode="manual">
+                      <Tabs.List size={size}>
+                        <Tabs.Trigger value="account">Account</Tabs.Trigger>
+                        <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+                        <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+                      </Tabs.List>
+                    </Tabs.Root>
                   ))}
                 </Flex>
 
@@ -3853,15 +3801,15 @@ export default function ExploreComponents() {
                     Text
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="specimen">
-                  <TabsList size="2">
-                    <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                    <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                  </TabsList>
+                <Tabs.Root defaultValue="specimen">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                    <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                  </Tabs.List>
 
-                  <TabsContent value="specimen">
+                  <Tabs.Content value="specimen">
                     <Box my="6" style={{ width: 'calc(760px * var(--scaling))' }}>
                       <Text as="p" size="5">
                         The goal of typography is to relate font size, line height, and line width
@@ -4037,9 +3985,9 @@ export default function ExploreComponents() {
                         </Text>
                       </Flex>
                     </Grid>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -4059,9 +4007,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                         {textPropDefs.size.values.map((size) => (
@@ -4076,9 +4024,9 @@ export default function ExploreComponents() {
                         ))}
                       </Flex>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-weights">
+                  <Tabs.Content value="all-weights">
                     <Box my="6">
                       <table className={styles.table} style={{ whiteSpace: 'nowrap' }}>
                         <tbody>
@@ -4095,21 +4043,21 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="text-area" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#text-area">
                     Text Area
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -4156,9 +4104,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -4187,9 +4135,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -4257,21 +4205,21 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="text-field" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#text-field">
                     Text Field
                   </Link>
                 </Heading>
-                <TabsRoot defaultValue="theme-colors">
-                  <TabsList size="2">
-                    <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                    <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                    <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="theme-colors">
+                <Tabs.Root defaultValue="theme-colors">
+                  <Tabs.List size="2">
+                    <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                    <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  </Tabs.List>
+                  <Tabs.Content value="theme-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -4288,71 +4236,71 @@ export default function ExploreComponents() {
                             <tr key={variant}>
                               <td>{upperFirst(variant)}</td>
                               <td>
-                                <TextFieldRoot variant={variant} placeholder="Search">
-                                  <TextFieldSlot>
+                                <TextField.Root variant={variant} placeholder="Search">
+                                  <TextField.Slot>
                                     <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldSlot>
+                                  </TextField.Slot>
+                                  <TextField.Slot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
                                     </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                  </TextField.Slot>
+                                </TextField.Root>
                               </td>
                               <td>
-                                <TextFieldRoot variant={variant} color="gray" placeholder="Search">
-                                  <TextFieldSlot>
+                                <TextField.Root variant={variant} color="gray" placeholder="Search">
+                                  <TextField.Slot>
                                     <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldSlot>
+                                  </TextField.Slot>
+                                  <TextField.Slot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
                                     </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                  </TextField.Slot>
+                                </TextField.Root>
                               </td>
                               <td>
-                                <TextFieldRoot
+                                <TextField.Root
                                   variant={variant}
                                   placeholder="Search"
                                   defaultValue="Quick brown fox"
                                   disabled
                                 >
-                                  <TextFieldSlot>
+                                  <TextField.Slot>
                                     <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldSlot>
+                                  </TextField.Slot>
+                                  <TextField.Slot>
                                     <IconButton variant="ghost" color="gray" size="1" disabled>
                                       <InfoCircledIcon />
                                     </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                  </TextField.Slot>
+                                </TextField.Root>
                               </td>
                               <td>
-                                <TextFieldRoot
+                                <TextField.Root
                                   variant={variant}
                                   placeholder="Search"
                                   defaultValue="Quick brown fox"
                                   readOnly
                                 >
-                                  <TextFieldSlot>
+                                  <TextField.Slot>
                                     <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldSlot>
+                                  </TextField.Slot>
+                                  <TextField.Slot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
                                     </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                  </TextField.Slot>
+                                </TextField.Root>
                               </td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-colors">
+                  <Tabs.Content value="all-colors">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -4369,20 +4317,20 @@ export default function ExploreComponents() {
                               <td>{upperFirst(color)}</td>
                               {textFieldRootPropDefs.variant.values.map((variant) => (
                                 <td key={variant}>
-                                  <TextFieldRoot
+                                  <TextField.Root
                                     color={color}
                                     variant={variant}
                                     placeholder="Search"
                                   >
-                                    <TextFieldSlot>
+                                    <TextField.Slot>
                                       <MagnifyingGlassIcon width="16" height="16" />
-                                    </TextFieldSlot>
-                                    <TextFieldSlot>
+                                    </TextField.Slot>
+                                    <TextField.Slot>
                                       <IconButton variant="ghost" color="gray" size="1">
                                         <InfoCircledIcon />
                                       </IconButton>
-                                    </TextFieldSlot>
-                                  </TextFieldRoot>
+                                    </TextField.Slot>
+                                  </TextField.Root>
                                 </td>
                               ))}
                             </tr>
@@ -4390,9 +4338,9 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
+                  </Tabs.Content>
 
-                  <TabsContent value="all-sizes">
+                  <Tabs.Content value="all-sizes">
                     <Box my="6">
                       <table className={styles.table}>
                         <thead>
@@ -4417,17 +4365,17 @@ export default function ExploreComponents() {
                                 <td>Size 1</td>
                                 {textFieldRootPropDefs.radius.values.map((radius) => (
                                   <td key={radius}>
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       size="1"
                                       variant={variant}
                                       radius={radius}
                                       style={{ width: 140 }}
                                       placeholder="Search"
                                     >
-                                      <TextFieldSlot>
+                                      <TextField.Slot>
                                         <MagnifyingGlassIcon width="14" height="14" />
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
+                                      </TextField.Slot>
+                                    </TextField.Root>
                                   </td>
                                 ))}
                               </tr>
@@ -4435,22 +4383,22 @@ export default function ExploreComponents() {
                                 <td>Size 2</td>
                                 {textFieldRootPropDefs.radius.values.map((radius) => (
                                   <td key={radius}>
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       size="2"
                                       variant={variant}
                                       radius={radius}
                                       style={{ width: 160 }}
                                       placeholder="Search"
                                     >
-                                      <TextFieldSlot>
+                                      <TextField.Slot>
                                         <MagnifyingGlassIcon width="16" height="16" />
-                                      </TextFieldSlot>
-                                      <TextFieldSlot>
+                                      </TextField.Slot>
+                                      <TextField.Slot>
                                         <IconButton variant="ghost" color="gray" size="1">
                                           <InfoCircledIcon />
                                         </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
+                                      </TextField.Slot>
+                                    </TextField.Root>
                                   </td>
                                 ))}
                               </tr>
@@ -4458,21 +4406,21 @@ export default function ExploreComponents() {
                                 <td>Size 3</td>
                                 {textFieldRootPropDefs.radius.values.map((radius) => (
                                   <td key={radius}>
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       size="3"
                                       variant={variant}
                                       radius={radius}
                                       placeholder="Search"
                                     >
-                                      <TextFieldSlot>
+                                      <TextField.Slot>
                                         <MagnifyingGlassIcon width="18" height="18" />
-                                      </TextFieldSlot>
-                                      <TextFieldSlot>
+                                      </TextField.Slot>
+                                      <TextField.Slot>
                                         <IconButton variant="ghost" color="gray" size="2">
                                           <InfoCircledIcon />
                                         </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
+                                      </TextField.Slot>
+                                    </TextField.Root>
                                   </td>
                                 ))}
                               </tr>
@@ -4481,8 +4429,8 @@ export default function ExploreComponents() {
                         </tbody>
                       </table>
                     </Box>
-                  </TabsContent>
-                </TabsRoot>
+                  </Tabs.Content>
+                </Tabs.Root>
 
                 <Heading id="tooltip" mb="5">
                   <Link color="gray" underline="hover" highContrast href="#tooltip">
@@ -4539,29 +4487,29 @@ function AvatarIconFallback() {
 function ExampleDropdownMenuContent() {
   return (
     <>
-      <DropdownMenuItem shortcut="⌘ E">Edit</DropdownMenuItem>
-      <DropdownMenuItem shortcut="⌘ D">Duplicate</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem shortcut="⌘ N">Archive</DropdownMenuItem>
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
 
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger>More</DropdownMenuSubTrigger>
-        <DropdownMenuSubContent>
-          <DropdownMenuItem>Move to project…</DropdownMenuItem>
-          <DropdownMenuItem>Move to folder…</DropdownMenuItem>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>Move to project…</DropdownMenu.Item>
+          <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
 
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Advanced options…</DropdownMenuItem>
-        </DropdownMenuSubContent>
-      </DropdownMenuSub>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Advanced options…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
 
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Share</DropdownMenuItem>
-      <DropdownMenuItem>Add to favorites</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem shortcut="⌘ ⌫" color="red">
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Share</DropdownMenu.Item>
+      <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
         Delete
-      </DropdownMenuItem>
+      </DropdownMenu.Item>
     </>
   );
 }
@@ -4603,29 +4551,29 @@ function RightClickArea(props: {
 function ExampleContextMenuContent() {
   return (
     <>
-      <ContextMenuItem shortcut="⌘ E">Edit</ContextMenuItem>
-      <ContextMenuItem shortcut="⌘ D">Duplicate</ContextMenuItem>
-      <ContextMenuSeparator />
-      <ContextMenuItem shortcut="⌘ N">Archive</ContextMenuItem>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
 
-      <ContextMenuSub>
-        <ContextMenuSubTrigger>More</ContextMenuSubTrigger>
-        <ContextMenuSubContent>
-          <ContextMenuItem>Move to project…</ContextMenuItem>
-          <ContextMenuItem>Move to folder…</ContextMenuItem>
+      <ContextMenu.Sub>
+        <ContextMenu.SubTrigger>More</ContextMenu.SubTrigger>
+        <ContextMenu.SubContent>
+          <ContextMenu.Item>Move to project…</ContextMenu.Item>
+          <ContextMenu.Item>Move to folder…</ContextMenu.Item>
 
-          <ContextMenuSeparator />
-          <ContextMenuItem>Advanced options…</ContextMenuItem>
-        </ContextMenuSubContent>
-      </ContextMenuSub>
+          <ContextMenu.Separator />
+          <ContextMenu.Item>Advanced options…</ContextMenu.Item>
+        </ContextMenu.SubContent>
+      </ContextMenu.Sub>
 
-      <ContextMenuSeparator />
-      <ContextMenuItem>Share</ContextMenuItem>
-      <ContextMenuItem>Add to favorites</ContextMenuItem>
-      <ContextMenuSeparator />
-      <ContextMenuItem shortcut="⌘ ⌫" color="red">
+      <ContextMenu.Separator />
+      <ContextMenu.Item>Share</ContextMenu.Item>
+      <ContextMenu.Item>Add to favorites</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
         Delete
-      </ContextMenuItem>
+      </ContextMenu.Item>
     </>
   );
 }
@@ -4633,22 +4581,22 @@ function ExampleContextMenuContent() {
 function ExampleSelectContent() {
   return (
     <>
-      <SelectGroup>
-        <SelectLabel>Fruits</SelectLabel>
-        <SelectItem value="orange">Orange</SelectItem>
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="grapes" disabled>
+      <Select.Group>
+        <Select.Label>Fruits</Select.Label>
+        <Select.Item value="orange">Orange</Select.Item>
+        <Select.Item value="apple">Apple</Select.Item>
+        <Select.Item value="grapes" disabled>
           Grape
-        </SelectItem>
-      </SelectGroup>
+        </Select.Item>
+      </Select.Group>
 
-      <SelectSeparator />
+      <Select.Separator />
 
-      <SelectGroup>
-        <SelectLabel>Vegetables</SelectLabel>
-        <SelectItem value="carrot">Carrot</SelectItem>
-        <SelectItem value="potato">Potato</SelectItem>
-      </SelectGroup>
+      <Select.Group>
+        <Select.Label>Vegetables</Select.Label>
+        <Select.Item value="carrot">Carrot</Select.Item>
+        <Select.Item value="potato">Potato</Select.Item>
+      </Select.Group>
     </>
   );
 }

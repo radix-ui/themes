@@ -3,12 +3,9 @@ import {
   Theme,
   Flex,
   Grid,
-  TextFieldRoot,
+  TextField,
   Text,
-  SelectRoot,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
+  Select,
   TextArea,
   Button,
   Container,
@@ -38,7 +35,7 @@ export default function Test() {
                         <Text size={{ initial: '1', sm: '2', lg: '3' }} weight="bold">
                           Email
                         </Text>
-                        <TextFieldRoot
+                        <TextField.Root
                           size={{ initial: '1', sm: '2', lg: '3' }}
                           variant="classic"
                           placeholder="Your email"
@@ -48,16 +45,16 @@ export default function Test() {
                         <Text size={{ initial: '1', sm: '2', lg: '3' }} weight="bold">
                           Subject
                         </Text>
-                        <SelectRoot
+                        <Select.Root
                           defaultValue="customer"
                           size={{ initial: '1', sm: '2', lg: '3' }}
                         >
-                          <SelectTrigger variant="classic" />
-                          <SelectContent>
-                            <SelectItem value="customer">Customer feedback</SelectItem>
-                            <SelectItem value="help">Help</SelectItem>
-                          </SelectContent>
-                        </SelectRoot>
+                          <Select.Trigger variant="classic" />
+                          <Select.Content>
+                            <Select.Item value="customer">Customer feedback</Select.Item>
+                            <Select.Item value="help">Help</Select.Item>
+                          </Select.Content>
+                        </Select.Root>
                       </Grid>
                       <Grid gap={{ initial: '1', sm: '2', lg: '3' }}>
                         <Text size={{ initial: '1', sm: '2', lg: '3' }} weight="bold">

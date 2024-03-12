@@ -13,118 +13,53 @@ import {
   TrashIcon,
 } from '@radix-ui/react-icons';
 import {
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogRoot,
-  AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialog,
   AspectRatio,
   Avatar,
   Badge,
   Blockquote,
   Box,
   Button,
-  CalloutIcon,
-  CalloutRoot,
-  CalloutText,
+  Callout,
   Card,
   Checkbox,
-  CheckboxCardGroupItem,
-  CheckboxCardGroupRoot,
-  CheckboxGroupItem,
-  CheckboxGroupRoot,
+  CheckboxCardGroup,
+  CheckboxGroup,
   Code,
   Container,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuRoot,
-  ContextMenuSeparator,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
-  DataListItem,
-  DataListLabel,
-  DataListRoot,
-  DataListValue,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuRoot,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
+  ContextMenu,
+  DataList,
+  Dialog,
+  DropdownMenu,
   Em,
   Flex,
   Grid,
   Heading,
-  HoverCardContent,
-  HoverCardRoot,
-  HoverCardTrigger,
+  HoverCard,
   IconButton,
   Kbd,
   Link,
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
+  Popover,
   Progress,
   Quote,
   Radio,
-  RadioCardGroupItem,
-  RadioCardGroupRoot,
-  RadioGroupItem,
-  RadioGroupRoot,
+  RadioCardGroup,
+  RadioGroup,
   ScrollArea,
   Section,
-  SegmentedControlItem,
-  SegmentedControlRoot,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectRoot,
-  SelectSeparator,
-  SelectTrigger,
+  SegmentedControl,
+  Select,
   Separator,
   Skeleton,
   Slider,
   Spinner,
   Strong,
   Switch,
-  TableBody,
-  TableCell,
-  TableColumnHeaderCell,
-  TableHeader,
-  TableRoot,
-  TableRow,
-  TableRowHeaderCell,
-  TabsContent,
-  TabsList,
-  TabsRoot,
-  TabsTrigger,
+  Table,
+  Tabs,
   Text,
   TextArea,
-  TextFieldRoot,
-  TextFieldSlot,
+  TextField,
   Theme,
   ThemePanel,
   Tooltip,
@@ -243,51 +178,51 @@ export default function Sink() {
                     <Section>
                       <Grid columns="3" gapY="9">
                         <DocsGridSectionItem title="Dialog">
-                          <DialogRoot>
-                            <DialogTrigger>
+                          <Dialog.Root>
+                            <Dialog.Trigger>
                               <Button variant="solid">Open</Button>
-                            </DialogTrigger>
-                            <DialogContent asChild maxWidth="450px">
+                            </Dialog.Trigger>
+                            <Dialog.Content asChild maxWidth="450px">
                               <Flex direction="column" gap="3">
                                 <InfoCircledIcon
                                   style={{ position: 'absolute', top: '24px', right: '20px' }}
                                 />
-                                <DialogTitle>Share resource</DialogTitle>
-                                <DialogDescription>
+                                <Dialog.Title>Share resource</Dialog.Title>
+                                <Dialog.Description>
                                   Jan Tschichold was a German calligrapher, typographer and book
                                   designer. He played a significant role in the development of
                                   graphic design in the 20th century.
-                                </DialogDescription>
+                                </Dialog.Description>
                                 <Flex gap="3" mt="4" justify="end">
-                                  <DialogClose>
+                                  <Dialog.Close>
                                     <Button variant="soft" color="gray">
                                       Cancel
                                     </Button>
-                                  </DialogClose>
-                                  <DialogClose>
+                                  </Dialog.Close>
+                                  <Dialog.Close>
                                     <Button variant="solid">
                                       Share <Share2Icon />
                                     </Button>
-                                  </DialogClose>
+                                  </Dialog.Close>
                                 </Flex>
                               </Flex>
-                            </DialogContent>
-                          </DialogRoot>
+                            </Dialog.Content>
+                          </Dialog.Root>
                         </DocsGridSectionItem>
 
                         <DocsGridSectionItem title="HoverCard">
-                          <HoverCardRoot>
-                            <HoverCardTrigger>
+                          <HoverCard.Root>
+                            <HoverCard.Trigger>
                               <Link>A fancy link</Link>
-                            </HoverCardTrigger>
-                            <HoverCardContent width="200px">
+                            </HoverCard.Trigger>
+                            <HoverCard.Content width="200px">
                               <Text as="p" size="2">
                                 Jan Tschichold was a German calligrapher, typographer and book
                                 designer. He played a significant role in the development of graphic
                                 design in the 20th century.
                               </Text>
-                            </HoverCardContent>
-                          </HoverCardRoot>
+                            </HoverCard.Content>
+                          </HoverCard.Root>
                         </DocsGridSectionItem>
 
                         <DocsGridSectionItem title="Tooltip">
@@ -307,40 +242,40 @@ export default function Sink() {
                         </DocsGridSectionItem>
 
                         <DocsGridSectionItem title="AlertDialog">
-                          <AlertDialogRoot>
-                            <AlertDialogTrigger>
+                          <AlertDialog.Root>
+                            <AlertDialog.Trigger>
                               <Button variant="solid">Open</Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent maxWidth="450px">
+                            </AlertDialog.Trigger>
+                            <AlertDialog.Content maxWidth="450px">
                               <Flex direction="column" gap="3">
-                                <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
-                                <AlertDialogDescription>
+                                <AlertDialog.Title>Revoke setup link</AlertDialog.Title>
+                                <AlertDialog.Description>
                                   The setup link will no longer be accessible and any existing setup
                                   sessions will be revoked.
-                                </AlertDialogDescription>
+                                </AlertDialog.Description>
                                 <Flex gap="3" mt="4" justify="end">
-                                  <AlertDialogCancel>
+                                  <AlertDialog.Cancel>
                                     <Button variant="soft" color="gray">
                                       Cancel
                                     </Button>
-                                  </AlertDialogCancel>
-                                  <AlertDialogAction>
+                                  </AlertDialog.Cancel>
+                                  <AlertDialog.Action>
                                     <Button variant="solid" color="red">
                                       Revoke link
                                     </Button>
-                                  </AlertDialogAction>
+                                  </AlertDialog.Action>
                                 </Flex>
                               </Flex>
-                            </AlertDialogContent>
-                          </AlertDialogRoot>
+                            </AlertDialog.Content>
+                          </AlertDialog.Root>
                         </DocsGridSectionItem>
 
                         <DocsGridSectionItem title="Popover">
-                          <PopoverRoot>
-                            <PopoverTrigger>
+                          <Popover.Root>
+                            <Popover.Trigger>
                               <Button variant="solid">Popover</Button>
-                            </PopoverTrigger>
-                            <PopoverContent width="200px">
+                            </Popover.Trigger>
+                            <Popover.Content width="200px">
                               <Text as="p" size="2" mb="2">
                                 Jan Tschichold was a German calligrapher, typographer and book
                                 designer. He played a significant role in the development of graphic
@@ -349,8 +284,8 @@ export default function Sink() {
                               <Button variant="solid" size="1">
                                 Share <Share2Icon />
                               </Button>
-                            </PopoverContent>
-                          </PopoverRoot>
+                            </Popover.Content>
+                          </Popover.Root>
                         </DocsGridSectionItem>
                       </Grid>
                     </Section>
@@ -380,49 +315,49 @@ export default function Sink() {
                                     <RowHeaderCell>{variant}</RowHeaderCell>
                                     {dropdownMenuContentPropDefs.size.values.map((size) => (
                                       <td key={size}>
-                                        <DropdownMenuRoot>
-                                          <DropdownMenuTrigger>
+                                        <DropdownMenu.Root>
+                                          <DropdownMenu.Trigger>
                                             <Button size={size} variant="soft" color="gray">
                                               <DotsHorizontalIcon />
                                             </Button>
-                                          </DropdownMenuTrigger>
+                                          </DropdownMenu.Trigger>
                                           <DropdownMenuContentDemo size={size} variant={variant} />
-                                        </DropdownMenuRoot>
+                                        </DropdownMenu.Root>
                                       </td>
                                     ))}
                                     <td>
-                                      <DropdownMenuRoot>
-                                        <DropdownMenuTrigger>
+                                      <DropdownMenu.Root>
+                                        <DropdownMenu.Trigger>
                                           <Button variant="soft" color="gray">
                                             <DotsHorizontalIcon />
                                           </Button>
-                                        </DropdownMenuTrigger>
+                                        </DropdownMenu.Trigger>
                                         <DropdownMenuContentDemo variant={variant} highContrast />
-                                      </DropdownMenuRoot>
+                                      </DropdownMenu.Root>
                                     </td>
                                     <td>
-                                      <DropdownMenuRoot>
-                                        <DropdownMenuTrigger>
+                                      <DropdownMenu.Root>
+                                        <DropdownMenu.Trigger>
                                           <Button variant="soft" color="gray">
                                             <DotsHorizontalIcon />
                                           </Button>
-                                        </DropdownMenuTrigger>
+                                        </DropdownMenu.Trigger>
                                         <DropdownMenuContentDemo variant={variant} color="gray" />
-                                      </DropdownMenuRoot>
+                                      </DropdownMenu.Root>
                                     </td>
                                     <td>
-                                      <DropdownMenuRoot>
-                                        <DropdownMenuTrigger>
+                                      <DropdownMenu.Root>
+                                        <DropdownMenu.Trigger>
                                           <Button variant="soft" color="gray">
                                             <DotsHorizontalIcon />
                                           </Button>
-                                        </DropdownMenuTrigger>
+                                        </DropdownMenu.Trigger>
                                         <DropdownMenuContentDemo
                                           variant={variant}
                                           color="gray"
                                           highContrast
                                         />
-                                      </DropdownMenuRoot>
+                                      </DropdownMenu.Root>
                                     </td>
                                   </tr>
                                 ))}
@@ -464,29 +399,29 @@ export default function Sink() {
                                           {dropdownMenuContentPropDefs.variant.values.map(
                                             (variant) => (
                                               <td key={variant}>
-                                                <DropdownMenuRoot>
-                                                  <DropdownMenuTrigger>
+                                                <DropdownMenu.Root>
+                                                  <DropdownMenu.Trigger>
                                                     <Button variant="soft" color="gray">
                                                       <DotsHorizontalIcon />
                                                     </Button>
-                                                  </DropdownMenuTrigger>
+                                                  </DropdownMenu.Trigger>
                                                   <DropdownMenuContentDemo
                                                     variant={variant}
                                                     color={color}
                                                   />
-                                                </DropdownMenuRoot>
-                                                <DropdownMenuRoot>
-                                                  <DropdownMenuTrigger>
+                                                </DropdownMenu.Root>
+                                                <DropdownMenu.Root>
+                                                  <DropdownMenu.Trigger>
                                                     <Button variant="soft" color="gray" ml="2">
                                                       <DotsHorizontalIcon />
                                                     </Button>
-                                                  </DropdownMenuTrigger>
+                                                  </DropdownMenu.Trigger>
                                                   <DropdownMenuContentDemo
                                                     variant={variant}
                                                     color={color}
                                                     highContrast
                                                   />
-                                                </DropdownMenuRoot>
+                                                </DropdownMenu.Root>
                                               </td>
                                             )
                                           )}
@@ -514,12 +449,12 @@ export default function Sink() {
                                 <tr key={variant}>
                                   {contextMenuContentPropDefs.size.values.map((size) => (
                                     <td key={size}>
-                                      <ContextMenuRoot>
-                                        <ContextMenuTrigger>
+                                      <ContextMenu.Root>
+                                        <ContextMenu.Trigger>
                                           <RightClickArea size={size} />
-                                        </ContextMenuTrigger>
+                                        </ContextMenu.Trigger>
                                         <ContextMenuContentDemo size={size} variant={variant} />
-                                      </ContextMenuRoot>
+                                      </ContextMenu.Root>
                                     </td>
                                   ))}
                                 </tr>
@@ -557,51 +492,51 @@ export default function Sink() {
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             {selectRootPropDefs.size.values.map((size) => (
                               <td key={size}>
-                                <SelectRoot defaultValue="apple" size={size}>
-                                  <SelectTrigger variant={variant} />
-                                  <SelectContent>
+                                <Select.Root defaultValue="apple" size={size}>
+                                  <Select.Trigger variant={variant} />
+                                  <Select.Content>
                                     <SelectItemsDemo />
-                                  </SelectContent>
-                                </SelectRoot>
+                                  </Select.Content>
+                                </Select.Root>
                               </td>
                             ))}
                             <td>
-                              <SelectRoot size="2">
-                                <SelectTrigger variant={variant} placeholder="Choose a fruit" />
-                                <SelectContent>
+                              <Select.Root size="2">
+                                <Select.Trigger variant={variant} placeholder="Choose a fruit" />
+                                <Select.Content>
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td />
                             <td>
-                              <SelectRoot defaultValue="apple" size="2">
-                                <SelectTrigger variant={variant} color="gray" />
-                                <SelectContent>
+                              <Select.Root defaultValue="apple" size="2">
+                                <Select.Trigger variant={variant} color="gray" />
+                                <Select.Content>
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot size="2">
-                                <SelectTrigger
+                              <Select.Root size="2">
+                                <Select.Trigger
                                   variant={variant}
                                   color="gray"
                                   placeholder="Choose a fruit"
                                 />
-                                <SelectContent>
+                                <Select.Content>
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td />
                             <td>
-                              <SelectRoot defaultValue="apple" size="2" disabled>
-                                <SelectTrigger variant={variant} />
-                                <SelectContent>
+                              <Select.Root defaultValue="apple" size="2" disabled>
+                                <Select.Trigger variant={variant} />
+                                <Select.Content>
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                           </tr>
                         ))}
@@ -626,41 +561,41 @@ export default function Sink() {
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
-                              <SelectRoot defaultValue="apple" size="1">
-                                <SelectTrigger />
-                                <SelectContent variant={variant} position="popper">
+                              <Select.Root defaultValue="apple" size="1">
+                                <Select.Trigger />
+                                <Select.Content variant={variant} position="popper">
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot defaultValue="apple" size="1">
-                                <SelectTrigger />
-                                <SelectContent variant={variant} highContrast position="popper">
+                              <Select.Root defaultValue="apple" size="1">
+                                <Select.Trigger />
+                                <Select.Content variant={variant} highContrast position="popper">
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot defaultValue="apple" size="1">
-                                <SelectTrigger />
-                                <SelectContent variant={variant} color="gray" position="popper">
+                              <Select.Root defaultValue="apple" size="1">
+                                <Select.Trigger />
+                                <Select.Content variant={variant} color="gray" position="popper">
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot defaultValue="apple" size="1">
-                                <SelectTrigger />
-                                <SelectContent
+                              <Select.Root defaultValue="apple" size="1">
+                                <Select.Trigger />
+                                <Select.Content
                                   variant={variant}
                                   color="gray"
                                   highContrast
                                   position="popper"
                                 >
                                   <SelectItemsDemo />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                           </tr>
                         ))}
@@ -693,12 +628,12 @@ export default function Sink() {
                                 <RowHeaderCell>{radius}</RowHeaderCell>
                                 {selectRootPropDefs.size.values.map((size) => (
                                   <td key={size}>
-                                    <SelectRoot defaultValue="apple" size={size}>
-                                      <SelectTrigger radius={radius} />
-                                      <SelectContent>
+                                    <Select.Root defaultValue="apple" size={size}>
+                                      <Select.Trigger radius={radius} />
+                                      <Select.Content>
                                         <SelectItemsDemo />
-                                      </SelectContent>
-                                    </SelectRoot>
+                                      </Select.Content>
+                                    </Select.Root>
                                   </td>
                                 ))}
                               </tr>
@@ -738,12 +673,12 @@ export default function Sink() {
                                   <RowHeaderCell>{color}</RowHeaderCell>
                                   {selectTriggerPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
-                                      <SelectRoot defaultValue="apple" size="1">
-                                        <SelectTrigger variant={variant} color={color} />
-                                        <SelectContent variant="soft" color={color}>
+                                      <Select.Root defaultValue="apple" size="1">
+                                        <Select.Trigger variant={variant} color={color} />
+                                        <Select.Content variant="soft" color={color}>
                                           <SelectItemsDemo />
-                                        </SelectContent>
-                                      </SelectRoot>
+                                        </Select.Content>
+                                      </Select.Root>
                                     </td>
                                   ))}
                                 </tr>
@@ -1364,23 +1299,23 @@ export default function Sink() {
                       </Flex>
 
                       <Flex gap="4" align="center">
-                        <TextFieldRoot defaultValue="horsebatterystaple" type="password" size="1">
-                          <TextFieldSlot>
+                        <TextField.Root defaultValue="horsebatterystaple" type="password" size="1">
+                          <TextField.Slot>
                             <Spinner size="1" />
-                          </TextFieldSlot>
-                        </TextFieldRoot>
+                          </TextField.Slot>
+                        </TextField.Root>
 
-                        <TextFieldRoot defaultValue="horsebatterystaple" type="password" size="2">
-                          <TextFieldSlot>
+                        <TextField.Root defaultValue="horsebatterystaple" type="password" size="2">
+                          <TextField.Slot>
                             <Spinner size="2" />
-                          </TextFieldSlot>
-                        </TextFieldRoot>
+                          </TextField.Slot>
+                        </TextField.Root>
 
-                        <TextFieldRoot defaultValue="horsebatterystaple" type="password" size="3">
-                          <TextFieldSlot>
+                        <TextField.Root defaultValue="horsebatterystaple" type="password" size="3">
+                          <TextField.Slot>
                             <Spinner size="3" />
-                          </TextFieldSlot>
-                        </TextFieldRoot>
+                          </TextField.Slot>
+                        </TextField.Root>
                       </Flex>
 
                       <LoadingButtons />
@@ -1606,39 +1541,39 @@ export default function Sink() {
                                   <tr key={label}>
                                     <RowHeaderCell>{label}</RowHeaderCell>
                                     <td>
-                                      <CheckboxGroupRoot
+                                      <CheckboxGroup.Root
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                       >
-                                        <CheckboxGroupItem value="value" />
-                                      </CheckboxGroupRoot>
+                                        <CheckboxGroup.Item value="value" />
+                                      </CheckboxGroup.Root>
                                     </td>
                                     <td>
-                                      <CheckboxGroupRoot
+                                      <CheckboxGroup.Root
                                         variant={variant}
                                         defaultValue={['value']}
                                         highContrast={label === '+ high-contrast'}
                                       >
-                                        <CheckboxGroupItem value="value" />
-                                      </CheckboxGroupRoot>
+                                        <CheckboxGroup.Item value="value" />
+                                      </CheckboxGroup.Root>
                                     </td>
                                     <td>
-                                      <CheckboxGroupRoot
+                                      <CheckboxGroup.Root
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                       >
-                                        <CheckboxGroupItem value="value" disabled />
-                                      </CheckboxGroupRoot>
+                                        <CheckboxGroup.Item value="value" disabled />
+                                      </CheckboxGroup.Root>
                                     </td>
                                     <td>
-                                      <CheckboxGroupRoot
+                                      <CheckboxGroup.Root
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                         disabled
                                         defaultValue={['value']}
                                       >
-                                        <CheckboxGroupItem value="value" />
-                                      </CheckboxGroupRoot>
+                                        <CheckboxGroup.Item value="value" />
+                                      </CheckboxGroup.Root>
                                     </td>
                                   </tr>
                                 ))}
@@ -1653,12 +1588,12 @@ export default function Sink() {
                               <tr key={size}>
                                 <RowHeaderCell>size {size}</RowHeaderCell>
                                 <td style={{ width: '100%' }}>
-                                  <CheckboxGroupRoot size={size} defaultValue={['red']}>
-                                    <CheckboxGroupItem value="red">Red</CheckboxGroupItem>
-                                    <CheckboxGroupItem value="green">Green</CheckboxGroupItem>
-                                    <CheckboxGroupItem value="blue">Blue</CheckboxGroupItem>
-                                    <CheckboxGroupItem value="violet">Violet</CheckboxGroupItem>
-                                  </CheckboxGroupRoot>
+                                  <CheckboxGroup.Root size={size} defaultValue={['red']}>
+                                    <CheckboxGroup.Item value="red">Red</CheckboxGroup.Item>
+                                    <CheckboxGroup.Item value="green">Green</CheckboxGroup.Item>
+                                    <CheckboxGroup.Item value="blue">Blue</CheckboxGroup.Item>
+                                    <CheckboxGroup.Item value="violet">Violet</CheckboxGroup.Item>
+                                  </CheckboxGroup.Root>
                                 </td>
                               </tr>
                             ))}
@@ -1676,117 +1611,117 @@ export default function Sink() {
                         <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
                           <Separator size="4" />
 
-                          <CheckboxGroupRoot defaultValue={['1']} size="1">
+                          <CheckboxGroup.Root defaultValue={['1']} size="1">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="1">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="1" />
+                                  <CheckboxGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="1">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="2" />
+                                  <CheckboxGroup.Item value="2" />
                                   <Text>Agree to Privacy Policy</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </CheckboxGroupRoot>
+                          </CheckboxGroup.Root>
 
                           <Separator size="4" />
 
-                          <CheckboxGroupRoot defaultValue={['1']} size="1">
+                          <CheckboxGroup.Root defaultValue={['1']} size="1">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="1" />
+                                  <CheckboxGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="2" />
+                                  <CheckboxGroup.Item value="2" />
                                   <Text>Agree to Privacy Policy</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </CheckboxGroupRoot>
+                          </CheckboxGroup.Root>
 
                           <Separator size="4" />
 
-                          <CheckboxGroupRoot defaultValue={['1']} size="2">
+                          <CheckboxGroup.Root defaultValue={['1']} size="2">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="1" />
+                                  <CheckboxGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="2" />
+                                  <CheckboxGroup.Item value="2" />
                                   <Text>Agree to Privacy Policy</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </CheckboxGroupRoot>
+                          </CheckboxGroup.Root>
 
                           <Separator size="4" />
 
-                          <CheckboxGroupRoot defaultValue={['1']} size="2">
+                          <CheckboxGroup.Root defaultValue={['1']} size="2">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="1" />
+                                  <CheckboxGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="2" />
+                                  <CheckboxGroup.Item value="2" />
                                   <Text>Agree to Privacy Policy</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </CheckboxGroupRoot>
+                          </CheckboxGroup.Root>
 
                           <Separator size="4" />
 
-                          <CheckboxGroupRoot defaultValue={['1']} size="3">
+                          <CheckboxGroup.Root defaultValue={['1']} size="3">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="1" />
+                                  <CheckboxGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="2" />
+                                  <CheckboxGroup.Item value="2" />
                                   <Text>Agree to Privacy Policy</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </CheckboxGroupRoot>
+                          </CheckboxGroup.Root>
 
                           <Separator size="4" />
 
-                          <CheckboxGroupRoot defaultValue={['1']} size="3">
+                          <CheckboxGroup.Root defaultValue={['1']} size="3">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="4">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="1" />
+                                  <CheckboxGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="4">
                                 <Flex gap="2">
-                                  <CheckboxGroupItem value="2" />
+                                  <CheckboxGroup.Item value="2" />
                                   <Text>Agree to Privacy Policy</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </CheckboxGroupRoot>
+                          </CheckboxGroup.Root>
 
                           <Separator size="4" />
                         </Flex>
@@ -1824,21 +1759,21 @@ export default function Sink() {
                                   {checkboxGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex gap="2">
-                                        <CheckboxGroupRoot
+                                        <CheckboxGroup.Root
                                           variant={variant}
                                           color={color}
                                           defaultValue={['value']}
                                         >
-                                          <CheckboxGroupItem value="value" />
-                                        </CheckboxGroupRoot>
-                                        <CheckboxGroupRoot
+                                          <CheckboxGroup.Item value="value" />
+                                        </CheckboxGroup.Root>
+                                        <CheckboxGroup.Root
                                           variant={variant}
                                           color={color}
                                           defaultValue={['value']}
                                           highContrast
                                         >
-                                          <CheckboxGroupItem value="value" />
-                                        </CheckboxGroupRoot>
+                                          <CheckboxGroup.Item value="value" />
+                                        </CheckboxGroup.Root>
                                       </Flex>
                                     </td>
                                   ))}
@@ -1860,20 +1795,20 @@ export default function Sink() {
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
-                              <CheckboxCardGroupRoot
+                              <CheckboxCardGroup.Root
                                 defaultValue={[String(index)]}
                                 columns="3"
                                 variant={variant}
                               >
-                                <CheckboxCardGroupItem value="0">
+                                <CheckboxCardGroup.Item value="0">
                                   <CodeIcon />
                                   <Text truncate>Node.js</Text>
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="1" disabled>
+                                </CheckboxCardGroup.Item>
+                                <CheckboxCardGroup.Item value="1" disabled>
                                   Ruby
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
-                              </CheckboxCardGroupRoot>
+                                </CheckboxCardGroup.Item>
+                                <CheckboxCardGroup.Item value="2">Go</CheckboxCardGroup.Item>
+                              </CheckboxCardGroup.Root>
                             </td>
                           </tr>
                         ))}
@@ -1888,18 +1823,18 @@ export default function Sink() {
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
-                              <CheckboxCardGroupRoot
+                              <CheckboxCardGroup.Root
                                 defaultValue={[String(index)]}
                                 size={size}
                                 columns="3"
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <CheckboxCardGroupItem value="0">Node.js</CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="1" disabled>
+                                <CheckboxCardGroup.Item value="0">Node.js</CheckboxCardGroup.Item>
+                                <CheckboxCardGroup.Item value="1" disabled>
                                   Ruby
-                                </CheckboxCardGroupItem>
-                                <CheckboxCardGroupItem value="2">Go</CheckboxCardGroupItem>
-                              </CheckboxCardGroupRoot>
+                                </CheckboxCardGroup.Item>
+                                <CheckboxCardGroup.Item value="2">Go</CheckboxCardGroup.Item>
+                              </CheckboxCardGroup.Root>
                             </td>
                           </tr>
                         ))}
@@ -1937,7 +1872,7 @@ export default function Sink() {
                                   {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
-                                        <CheckboxCardGroupRoot
+                                        <CheckboxCardGroup.Root
                                           defaultValue={['0']}
                                           size="1"
                                           gap="2"
@@ -1946,18 +1881,18 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <CheckboxCardGroupItem value="0">
+                                          <CheckboxCardGroup.Item value="0">
                                             Node.js
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="1" disabled>
+                                          </CheckboxCardGroup.Item>
+                                          <CheckboxCardGroup.Item value="1" disabled>
                                             Ruby
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="2">
+                                          </CheckboxCardGroup.Item>
+                                          <CheckboxCardGroup.Item value="2">
                                             Go
-                                          </CheckboxCardGroupItem>
-                                        </CheckboxCardGroupRoot>
+                                          </CheckboxCardGroup.Item>
+                                        </CheckboxCardGroup.Root>
 
-                                        <CheckboxCardGroupRoot
+                                        <CheckboxCardGroup.Root
                                           defaultValue={['0']}
                                           size="1"
                                           gap="2"
@@ -1967,16 +1902,16 @@ export default function Sink() {
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <CheckboxCardGroupItem value="0">
+                                          <CheckboxCardGroup.Item value="0">
                                             Node.js
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="1" disabled>
+                                          </CheckboxCardGroup.Item>
+                                          <CheckboxCardGroup.Item value="1" disabled>
                                             Ruby
-                                          </CheckboxCardGroupItem>
-                                          <CheckboxCardGroupItem value="2">
+                                          </CheckboxCardGroup.Item>
+                                          <CheckboxCardGroup.Item value="2">
                                             Go
-                                          </CheckboxCardGroupItem>
-                                        </CheckboxCardGroupRoot>
+                                          </CheckboxCardGroup.Item>
+                                        </CheckboxCardGroup.Root>
                                       </Flex>
                                     </td>
                                   ))}
@@ -2277,39 +2212,39 @@ export default function Sink() {
                                   <tr key={label}>
                                     <RowHeaderCell>{label}</RowHeaderCell>
                                     <td>
-                                      <RadioGroupRoot
+                                      <RadioGroup.Root
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                       >
-                                        <RadioGroupItem value="value" />
-                                      </RadioGroupRoot>
+                                        <RadioGroup.Item value="value" />
+                                      </RadioGroup.Root>
                                     </td>
                                     <td>
-                                      <RadioGroupRoot
+                                      <RadioGroup.Root
                                         variant={variant}
                                         defaultValue="value"
                                         highContrast={label === '+ high-contrast'}
                                       >
-                                        <RadioGroupItem value="value" />
-                                      </RadioGroupRoot>
+                                        <RadioGroup.Item value="value" />
+                                      </RadioGroup.Root>
                                     </td>
                                     <td>
-                                      <RadioGroupRoot
+                                      <RadioGroup.Root
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                       >
-                                        <RadioGroupItem value="value" disabled />
-                                      </RadioGroupRoot>
+                                        <RadioGroup.Item value="value" disabled />
+                                      </RadioGroup.Root>
                                     </td>
                                     <td>
-                                      <RadioGroupRoot
+                                      <RadioGroup.Root
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                         disabled
                                         defaultValue="value"
                                       >
-                                        <RadioGroupItem value="value" />
-                                      </RadioGroupRoot>
+                                        <RadioGroup.Item value="value" />
+                                      </RadioGroup.Root>
                                     </td>
                                   </tr>
                                 ))}
@@ -2324,12 +2259,12 @@ export default function Sink() {
                               <tr key={size}>
                                 <RowHeaderCell>size {size}</RowHeaderCell>
                                 <td style={{ width: '100%' }}>
-                                  <RadioGroupRoot size={size} defaultValue="red">
-                                    <RadioGroupItem value="red">Red</RadioGroupItem>
-                                    <RadioGroupItem value="green">Green</RadioGroupItem>
-                                    <RadioGroupItem value="blue">Blue</RadioGroupItem>
-                                    <RadioGroupItem value="violet">Violet</RadioGroupItem>
-                                  </RadioGroupRoot>
+                                  <RadioGroup.Root size={size} defaultValue="red">
+                                    <RadioGroup.Item value="red">Red</RadioGroup.Item>
+                                    <RadioGroup.Item value="green">Green</RadioGroup.Item>
+                                    <RadioGroup.Item value="blue">Blue</RadioGroup.Item>
+                                    <RadioGroup.Item value="violet">Violet</RadioGroup.Item>
+                                  </RadioGroup.Root>
                                 </td>
                               </tr>
                             ))}
@@ -2347,117 +2282,117 @@ export default function Sink() {
                         <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
                           <Separator size="4" />
 
-                          <RadioGroupRoot defaultValue="1" size="1">
+                          <RadioGroup.Root defaultValue="1" size="1">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="1">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="1" />
+                                  <RadioGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="1">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="2" />
+                                  <RadioGroup.Item value="2" />
                                   <Text>Disagree with Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </RadioGroupRoot>
+                          </RadioGroup.Root>
 
                           <Separator size="4" />
 
-                          <RadioGroupRoot defaultValue="1" size="1">
+                          <RadioGroup.Root defaultValue="1" size="1">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="1" />
+                                  <RadioGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="2" />
+                                  <RadioGroup.Item value="2" />
                                   <Text>Disagree with Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </RadioGroupRoot>
+                          </RadioGroup.Root>
 
                           <Separator size="4" />
 
-                          <RadioGroupRoot defaultValue="1" size="2">
+                          <RadioGroup.Root defaultValue="1" size="2">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="1" />
+                                  <RadioGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="2">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="2" />
+                                  <RadioGroup.Item value="2" />
                                   <Text>Disagree with Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </RadioGroupRoot>
+                          </RadioGroup.Root>
 
                           <Separator size="4" />
 
-                          <RadioGroupRoot defaultValue="1" size="2">
+                          <RadioGroup.Root defaultValue="1" size="2">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="1" />
+                                  <RadioGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="2" />
+                                  <RadioGroup.Item value="2" />
                                   <Text>Disagree with Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </RadioGroupRoot>
+                          </RadioGroup.Root>
 
                           <Separator size="4" />
 
-                          <RadioGroupRoot defaultValue="1" size="3">
+                          <RadioGroup.Root defaultValue="1" size="3">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="1" />
+                                  <RadioGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="3">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="2" />
+                                  <RadioGroup.Item value="2" />
                                   <Text>Disagree with Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </RadioGroupRoot>
+                          </RadioGroup.Root>
 
                           <Separator size="4" />
 
-                          <RadioGroupRoot defaultValue="1" size="3">
+                          <RadioGroup.Root defaultValue="1" size="3">
                             <Flex direction="column" gap="1">
                               <Text as="label" size="4">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="1" />
+                                  <RadioGroup.Item value="1" />
                                   <Text>Agree to Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                               <Text as="label" size="4">
                                 <Flex gap="2">
-                                  <RadioGroupItem value="2" />
+                                  <RadioGroup.Item value="2" />
                                   <Text>Disagree with Terms and Conditions</Text>
                                 </Flex>
                               </Text>
                             </Flex>
-                          </RadioGroupRoot>
+                          </RadioGroup.Root>
 
                           <Separator size="4" />
                         </Flex>
@@ -2495,21 +2430,21 @@ export default function Sink() {
                                   {radioGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex gap="2">
-                                        <RadioGroupRoot
+                                        <RadioGroup.Root
                                           variant={variant}
                                           color={color}
                                           defaultValue="value"
                                         >
-                                          <RadioGroupItem value="value" />
-                                        </RadioGroupRoot>
-                                        <RadioGroupRoot
+                                          <RadioGroup.Item value="value" />
+                                        </RadioGroup.Root>
+                                        <RadioGroup.Root
                                           variant={variant}
                                           color={color}
                                           defaultValue="value"
                                           highContrast
                                         >
-                                          <RadioGroupItem value="value" />
-                                        </RadioGroupRoot>
+                                          <RadioGroup.Item value="value" />
+                                        </RadioGroup.Root>
                                       </Flex>
                                     </td>
                                   ))}
@@ -2531,20 +2466,20 @@ export default function Sink() {
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
-                              <RadioCardGroupRoot
+                              <RadioCardGroup.Root
                                 columns="3"
                                 defaultValue={String(index)}
                                 variant={variant}
                               >
-                                <RadioCardGroupItem value="0">
+                                <RadioCardGroup.Item value="0">
                                   <CodeIcon />
                                   <Text truncate>Node.js</Text>
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="1" disabled>
+                                </RadioCardGroup.Item>
+                                <RadioCardGroup.Item value="1" disabled>
                                   Ruby
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                              </RadioCardGroupRoot>
+                                </RadioCardGroup.Item>
+                                <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
+                              </RadioCardGroup.Root>
                             </td>
                           </tr>
                         ))}
@@ -2559,18 +2494,18 @@ export default function Sink() {
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
-                              <RadioCardGroupRoot
+                              <RadioCardGroup.Root
                                 size={size}
                                 columns="3"
                                 defaultValue={String(index)}
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
-                                <RadioCardGroupItem value="1" disabled>
+                                <RadioCardGroup.Item value="0">Node.js</RadioCardGroup.Item>
+                                <RadioCardGroup.Item value="1" disabled>
                                   Ruby
-                                </RadioCardGroupItem>
-                                <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                              </RadioCardGroupRoot>
+                                </RadioCardGroup.Item>
+                                <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
+                              </RadioCardGroup.Root>
                             </td>
                           </tr>
                         ))}
@@ -2608,7 +2543,7 @@ export default function Sink() {
                                   {radioCardGroupRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
-                                        <RadioCardGroupRoot
+                                        <RadioCardGroup.Root
                                           size="1"
                                           gap="2"
                                           columns="3"
@@ -2617,14 +2552,16 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
-                                          <RadioCardGroupItem value="1" disabled>
+                                          <RadioCardGroup.Item value="0">
+                                            Node.js
+                                          </RadioCardGroup.Item>
+                                          <RadioCardGroup.Item value="1" disabled>
                                             Ruby
-                                          </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                                        </RadioCardGroupRoot>
+                                          </RadioCardGroup.Item>
+                                          <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
+                                        </RadioCardGroup.Root>
 
-                                        <RadioCardGroupRoot
+                                        <RadioCardGroup.Root
                                           size="1"
                                           gap="2"
                                           columns="3"
@@ -2634,12 +2571,14 @@ export default function Sink() {
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroupItem value="0">Node.js</RadioCardGroupItem>
-                                          <RadioCardGroupItem value="1" disabled>
+                                          <RadioCardGroup.Item value="0">
+                                            Node.js
+                                          </RadioCardGroup.Item>
+                                          <RadioCardGroup.Item value="1" disabled>
                                             Ruby
-                                          </RadioCardGroupItem>
-                                          <RadioCardGroupItem value="2">Go</RadioCardGroupItem>
-                                        </RadioCardGroupRoot>
+                                          </RadioCardGroup.Item>
+                                          <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
+                                        </RadioCardGroup.Root>
                                       </Flex>
                                     </td>
                                   ))}
@@ -2958,23 +2897,23 @@ export default function Sink() {
                                 {textFieldRootPropDefs.size.values.map((size) => (
                                   <td key={size}>
                                     <Flex direction="column" gap="2">
-                                      <TextFieldRoot
+                                      <TextField.Root
                                         size={size}
                                         variant={variant}
                                         color={label === '+ gray' ? 'gray' : undefined}
                                         placeholder="Your name"
                                       />
 
-                                      <TextFieldRoot
+                                      <TextField.Root
                                         size={size}
                                         variant={variant}
                                         color={label === '+ gray' ? 'gray' : undefined}
                                         placeholder="Your name"
                                       >
-                                        <TextFieldSlot>
+                                        <TextField.Slot>
                                           <InfoCircledIcon />
-                                        </TextFieldSlot>
-                                        <TextFieldSlot>
+                                        </TextField.Slot>
+                                        <TextField.Slot>
                                           <IconButton
                                             size={size === '3' ? '2' : '1'}
                                             variant="ghost"
@@ -2989,10 +2928,10 @@ export default function Sink() {
                                           >
                                             <StarIcon />
                                           </IconButton>
-                                        </TextFieldSlot>
-                                      </TextFieldRoot>
+                                        </TextField.Slot>
+                                      </TextField.Root>
 
-                                      <TextFieldRoot
+                                      <TextField.Root
                                         size={size}
                                         variant={variant}
                                         color={label === '+ gray' ? 'gray' : undefined}
@@ -3004,30 +2943,30 @@ export default function Sink() {
                                 ))}
                                 <td>
                                   <Flex direction="column" gap="2">
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
                                       disabled
                                     />
 
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       disabled
                                       placeholder="Your name"
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                     >
-                                      <TextFieldSlot>
+                                      <TextField.Slot>
                                         <InfoCircledIcon />
-                                      </TextFieldSlot>
-                                      <TextFieldSlot>
+                                      </TextField.Slot>
+                                      <TextField.Slot>
                                         <IconButton size="1" variant="ghost" color="gray">
                                           <StarIcon />
                                         </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
+                                      </TextField.Slot>
+                                    </TextField.Root>
 
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
@@ -3038,30 +2977,30 @@ export default function Sink() {
                                 </td>
                                 <td>
                                   <Flex direction="column" gap="2">
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
                                       readOnly
                                     />
 
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       readOnly
                                       placeholder="Your name"
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                     >
-                                      <TextFieldSlot>
+                                      <TextField.Slot>
                                         <InfoCircledIcon />
-                                      </TextFieldSlot>
-                                      <TextFieldSlot>
+                                      </TextField.Slot>
+                                      <TextField.Slot>
                                         <IconButton size="1" variant="ghost" color="gray">
                                           <StarIcon />
                                         </IconButton>
-                                      </TextFieldSlot>
-                                    </TextFieldRoot>
+                                      </TextField.Slot>
+                                    </TextField.Root>
 
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       variant={variant}
                                       color={label === '+ gray' ? 'gray' : undefined}
                                       placeholder="Your name"
@@ -3081,7 +3020,7 @@ export default function Sink() {
                     <Flex align="center" gap="4" mb="9">
                       <Box>
                         <form action="/">
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="classic"
                             autoComplete="email"
@@ -3089,7 +3028,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="classic"
                             autoComplete="current-password"
@@ -3102,7 +3041,7 @@ export default function Sink() {
                       </Box>
                       <Box>
                         <form action="/">
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="surface"
                             autoComplete="email"
@@ -3110,7 +3049,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="surface"
                             autoComplete="current-password"
@@ -3123,7 +3062,7 @@ export default function Sink() {
                       </Box>
                       <Box>
                         <form action="/">
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="soft"
                             autoComplete="email"
@@ -3131,7 +3070,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="soft"
                             autoComplete="current-password"
@@ -3144,7 +3083,7 @@ export default function Sink() {
                       </Box>
                       <Box>
                         <form action="/">
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="soft"
                             color="gray"
@@ -3153,7 +3092,7 @@ export default function Sink() {
                             size="2"
                             type="email"
                           />
-                          <TextFieldRoot
+                          <TextField.Root
                             mb="2"
                             variant="soft"
                             color="gray"
@@ -3193,7 +3132,7 @@ export default function Sink() {
                                 <RowHeaderCell>{radius}</RowHeaderCell>
                                 {textFieldRootPropDefs.size.values.map((size) => (
                                   <td key={size}>
-                                    <TextFieldRoot
+                                    <TextField.Root
                                       size={size}
                                       radius={radius}
                                       placeholder="Your name"
@@ -3237,7 +3176,7 @@ export default function Sink() {
                                   <RowHeaderCell>{color}</RowHeaderCell>
                                   {textFieldRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
-                                      <TextFieldRoot
+                                      <TextField.Root
                                         variant={variant}
                                         color={color}
                                         placeholder="Your name"
@@ -4623,28 +4562,28 @@ export default function Sink() {
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td style={{ width: 450 }}>
-                              <CalloutRoot variant={variant}>
-                                <CalloutIcon>
+                              <Callout.Root variant={variant}>
+                                <Callout.Icon>
                                   <InfoCircledIcon />
-                                </CalloutIcon>
-                                <CalloutText>
+                                </Callout.Icon>
+                                <Callout.Text>
                                   We have detected multiple issues in your application configuration
                                   file. Please read our <Link href="/">Configuration Guide</Link>{' '}
                                   for more details.
-                                </CalloutText>
-                              </CalloutRoot>
+                                </Callout.Text>
+                              </Callout.Root>
                             </td>
                             <td style={{ width: 450 }}>
-                              <CalloutRoot variant={variant} highContrast>
-                                <CalloutIcon>
+                              <Callout.Root variant={variant} highContrast>
+                                <Callout.Icon>
                                   <InfoCircledIcon />
-                                </CalloutIcon>
-                                <CalloutText>
+                                </Callout.Icon>
+                                <Callout.Text>
                                   We have detected multiple issues in your application configuration
                                   file. Please read our <Link href="/">Configuration Guide</Link>{' '}
                                   for more details.
-                                </CalloutText>
-                              </CalloutRoot>
+                                </Callout.Text>
+                              </Callout.Root>
                             </td>
                           </tr>
                         ))}
@@ -4657,30 +4596,32 @@ export default function Sink() {
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td style={{ width: 450 }}>
-                              <CalloutRoot size={size}>
-                                <CalloutIcon>
+                              <Callout.Root size={size}>
+                                <Callout.Icon>
                                   <InfoCircledIcon
                                     width={size === '3' ? 20 : 15}
                                     height={size === '3' ? 20 : 15}
                                   />
-                                </CalloutIcon>
-                                <CalloutText>
+                                </Callout.Icon>
+                                <Callout.Text>
                                   We have detected multiple issues in your application configuration
                                   file. Please read our <Link href="/">Configuration Guide</Link>{' '}
                                   for more details.
-                                </CalloutText>
-                              </CalloutRoot>
+                                </Callout.Text>
+                              </Callout.Root>
                             </td>
                             <td style={{ width: 450 }}>
-                              <CalloutRoot size={size}>
-                                <CalloutIcon>
+                              <Callout.Root size={size}>
+                                <Callout.Icon>
                                   <InfoCircledIcon
                                     width={size === '3' ? 20 : 15}
                                     height={size === '3' ? 20 : 15}
                                   />
-                                </CalloutIcon>
-                                <CalloutText>There was an error in your configuration.</CalloutText>
-                              </CalloutRoot>
+                                </Callout.Icon>
+                                <Callout.Text>
+                                  There was an error in your configuration.
+                                </Callout.Text>
+                              </Callout.Root>
                             </td>
                           </tr>
                         ))}
@@ -4718,33 +4659,33 @@ export default function Sink() {
                                   {calloutRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" align="start" gap="2">
-                                        <CalloutRoot variant={variant} color={color}>
-                                          <CalloutIcon>
+                                        <Callout.Root variant={variant} color={color}>
+                                          <Callout.Icon>
                                             <InfoCircledIcon />
-                                          </CalloutIcon>
+                                          </Callout.Icon>
                                           <Flex gap="3">
-                                            <CalloutText>
+                                            <Callout.Text>
                                               We have detected multiple issues in your application
                                               configuration file. Please read our{' '}
                                               <Link href="/">Configuration Guide</Link> for more
                                               details.
-                                            </CalloutText>
+                                            </Callout.Text>
                                             <IconButton size="1" variant="soft">
                                               <Cross1Icon />
                                             </IconButton>
                                           </Flex>
-                                        </CalloutRoot>
-                                        <CalloutRoot variant={variant} color={color} highContrast>
-                                          <CalloutIcon>
+                                        </Callout.Root>
+                                        <Callout.Root variant={variant} color={color} highContrast>
+                                          <Callout.Icon>
                                             <InfoCircledIcon />
-                                          </CalloutIcon>
-                                          <CalloutText>
+                                          </Callout.Icon>
+                                          <Callout.Text>
                                             We have detected multiple issues in your application
                                             configuration file. Please read our{' '}
                                             <Link href="/">Configuration Guide</Link> for more
                                             details.
-                                          </CalloutText>
-                                        </CalloutRoot>
+                                          </Callout.Text>
+                                        </Callout.Root>
                                       </Flex>
                                     </td>
                                   ))}
@@ -4766,53 +4707,53 @@ export default function Sink() {
                       <Flex direction="column" my="5" gap="5" style={{ maxWidth: 500 }}>
                         {calloutRootPropDefs.size.values.map((size) => (
                           <React.Fragment key={size}>
-                            <CalloutRoot size={size}>
-                              <CalloutText trim="both">
+                            <Callout.Root size={size}>
+                              <Callout.Text trim="both">
                                 We have detected multiple issues in your application configuration
                                 file. Please read our <Link href="/">Configuration Guide</Link> for
                                 more details.
-                              </CalloutText>
-                            </CalloutRoot>
+                              </Callout.Text>
+                            </Callout.Root>
 
-                            <CalloutRoot size={size}>
-                              <CalloutText trim="start">
+                            <Callout.Root size={size}>
+                              <Callout.Text trim="start">
                                 There was an error in your configuration.
-                              </CalloutText>
-                              <CalloutText trim="end">
+                              </Callout.Text>
+                              <Callout.Text trim="end">
                                 We have detected multiple issues in your application configuration
                                 file. Please read our <Link href="/">Configuration Guide</Link> for
                                 more details.
-                              </CalloutText>
-                            </CalloutRoot>
+                              </Callout.Text>
+                            </Callout.Root>
 
-                            <CalloutRoot size={size}>
-                              <CalloutIcon>
+                            <Callout.Root size={size}>
+                              <Callout.Icon>
                                 <InfoCircledIcon
                                   width={size === '3' ? 20 : 15}
                                   height={size === '3' ? 20 : 15}
                                 />
-                              </CalloutIcon>
-                              <CalloutText>
+                              </Callout.Icon>
+                              <Callout.Text>
                                 We have detected multiple issues in your application configuration
                                 file. Please read our <Link href="/">Configuration Guide</Link> for
                                 more details.
-                              </CalloutText>
-                            </CalloutRoot>
+                              </Callout.Text>
+                            </Callout.Root>
 
-                            <CalloutRoot size={size}>
-                              <CalloutIcon>
+                            <Callout.Root size={size}>
+                              <Callout.Icon>
                                 <InfoCircledIcon
                                   width={size === '3' ? 20 : 15}
                                   height={size === '3' ? 20 : 15}
                                 />
-                              </CalloutIcon>
-                              <CalloutText>There was an error in your configuration.</CalloutText>
-                              <CalloutText>
+                              </Callout.Icon>
+                              <Callout.Text>There was an error in your configuration.</Callout.Text>
+                              <Callout.Text>
                                 We have detected multiple issues in your application configuration
                                 file. Please read our <Link href="/">Configuration Guide</Link> for
                                 more details.
-                              </CalloutText>
-                            </CalloutRoot>
+                              </Callout.Text>
+                            </Callout.Root>
 
                             <Separator />
                           </React.Fragment>
@@ -4901,22 +4842,22 @@ export default function Sink() {
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
-                              <TabsRoot defaultValue="account" activationMode="manual">
-                                <TabsList size={size}>
-                                  <TabsTrigger value="account">Account</TabsTrigger>
-                                  <TabsTrigger value="documents">Documents</TabsTrigger>
-                                  <TabsTrigger value="settings">Settings</TabsTrigger>
-                                </TabsList>
-                                <TabsContent value="account">
+                              <Tabs.Root defaultValue="account" activationMode="manual">
+                                <Tabs.List size={size}>
+                                  <Tabs.Trigger value="account">Account</Tabs.Trigger>
+                                  <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+                                  <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+                                </Tabs.List>
+                                <Tabs.Content value="account">
                                   <Box py="5">Account</Box>
-                                </TabsContent>
-                                <TabsContent value="documents">
+                                </Tabs.Content>
+                                <Tabs.Content value="documents">
                                   <Box py="5">Documents</Box>
-                                </TabsContent>
-                                <TabsContent value="settings">
+                                </Tabs.Content>
+                                <Tabs.Content value="settings">
                                   <Box py="5">Settings</Box>
-                                </TabsContent>
-                              </TabsRoot>
+                                </Tabs.Content>
+                              </Tabs.Root>
                             </td>
                           </tr>
                         ))}
@@ -4936,40 +4877,40 @@ export default function Sink() {
                           <React.Fragment key={color}>
                             <Text>{color}</Text>
                             <Flex>
-                              <TabsRoot defaultValue="account" activationMode="manual">
-                                <TabsList size="1" color={color}>
-                                  <TabsTrigger value="account">Account</TabsTrigger>
-                                  <TabsTrigger value="documents">Documents</TabsTrigger>
-                                  <TabsTrigger value="settings">Settings</TabsTrigger>
-                                </TabsList>
-                                <TabsContent value="account">
+                              <Tabs.Root defaultValue="account" activationMode="manual">
+                                <Tabs.List size="1" color={color}>
+                                  <Tabs.Trigger value="account">Account</Tabs.Trigger>
+                                  <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+                                  <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+                                </Tabs.List>
+                                <Tabs.Content value="account">
                                   <Box py="5">Account</Box>
-                                </TabsContent>
-                                <TabsContent value="documents">
+                                </Tabs.Content>
+                                <Tabs.Content value="documents">
                                   <Box py="5">Documents</Box>
-                                </TabsContent>
-                                <TabsContent value="settings">
+                                </Tabs.Content>
+                                <Tabs.Content value="settings">
                                   <Box py="5">Settings</Box>
-                                </TabsContent>
-                              </TabsRoot>
+                                </Tabs.Content>
+                              </Tabs.Root>
                             </Flex>
                             <Flex>
-                              <TabsRoot defaultValue="account" activationMode="manual">
-                                <TabsList size="1" color={color} highContrast>
-                                  <TabsTrigger value="account">Account</TabsTrigger>
-                                  <TabsTrigger value="documents">Documents</TabsTrigger>
-                                  <TabsTrigger value="settings">Settings</TabsTrigger>
-                                </TabsList>
-                                <TabsContent value="account">
+                              <Tabs.Root defaultValue="account" activationMode="manual">
+                                <Tabs.List size="1" color={color} highContrast>
+                                  <Tabs.Trigger value="account">Account</Tabs.Trigger>
+                                  <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+                                  <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+                                </Tabs.List>
+                                <Tabs.Content value="account">
                                   <Box py="5">Account</Box>
-                                </TabsContent>
-                                <TabsContent value="documents">
+                                </Tabs.Content>
+                                <Tabs.Content value="documents">
                                   <Box py="5">Documents</Box>
-                                </TabsContent>
-                                <TabsContent value="settings">
+                                </Tabs.Content>
+                                <Tabs.Content value="settings">
                                   <Box py="5">Settings</Box>
-                                </TabsContent>
-                              </TabsRoot>
+                                </Tabs.Content>
+                              </Tabs.Root>
                             </Flex>
                           </React.Fragment>
                         ))}
@@ -4986,19 +4927,19 @@ export default function Sink() {
                         <Flex key={wrap} gap="6">
                           {tabsListPropDefs.justify.values.map((justify) => (
                             <Box py="5" width="320px" key={justify}>
-                              <TabsRoot defaultValue="file" activationMode="manual">
-                                <TabsList size="1" wrap={wrap} justify={justify}>
-                                  <TabsTrigger value="file">File</TabsTrigger>
-                                  <TabsTrigger value="edit">Edit</TabsTrigger>
-                                  <TabsTrigger value="view">View</TabsTrigger>
-                                  <TabsTrigger value="history">History</TabsTrigger>
-                                  <TabsTrigger value="bookmarks">Bookmarks</TabsTrigger>
-                                  <TabsTrigger value="profiles">Profiles</TabsTrigger>
-                                  <TabsTrigger value="tab">Tab</TabsTrigger>
-                                  <TabsTrigger value="window">Window</TabsTrigger>
-                                  <TabsTrigger value="help">Help</TabsTrigger>
-                                </TabsList>
-                              </TabsRoot>
+                              <Tabs.Root defaultValue="file" activationMode="manual">
+                                <Tabs.List size="1" wrap={wrap} justify={justify}>
+                                  <Tabs.Trigger value="file">File</Tabs.Trigger>
+                                  <Tabs.Trigger value="edit">Edit</Tabs.Trigger>
+                                  <Tabs.Trigger value="view">View</Tabs.Trigger>
+                                  <Tabs.Trigger value="history">History</Tabs.Trigger>
+                                  <Tabs.Trigger value="bookmarks">Bookmarks</Tabs.Trigger>
+                                  <Tabs.Trigger value="profiles">Profiles</Tabs.Trigger>
+                                  <Tabs.Trigger value="tab">Tab</Tabs.Trigger>
+                                  <Tabs.Trigger value="window">Window</Tabs.Trigger>
+                                  <Tabs.Trigger value="help">Help</Tabs.Trigger>
+                                </Tabs.List>
+                              </Tabs.Root>
                             </Box>
                           ))}
                         </Flex>
@@ -5364,12 +5305,12 @@ export default function Sink() {
                         </a>
                       </Card>
 
-                      <DropdownMenuRoot>
-                        <DropdownMenuTrigger>
+                      <DropdownMenu.Root>
+                        <DropdownMenu.Trigger>
                           <Button>Dropdown Menu</Button>
-                        </DropdownMenuTrigger>
+                        </DropdownMenu.Trigger>
                         <DropdownMenuContentDemo />
-                      </DropdownMenuRoot>
+                      </DropdownMenu.Root>
 
                       <Button>Button</Button>
 
@@ -5409,20 +5350,20 @@ export default function Sink() {
                           </IconButton>
                           <Kbd>⌘ Q</Kbd>
                           <Link href="/">This is a link</Link>
-                          <RadioGroupRoot defaultValue="value" size="3">
-                            <RadioGroupItem value="value" />
-                          </RadioGroupRoot>
-                          <SelectRoot defaultValue="apple">
-                            <SelectTrigger />
-                            <SelectContent>
+                          <RadioGroup.Root defaultValue="value" size="3">
+                            <RadioGroup.Item value="value" />
+                          </RadioGroup.Root>
+                          <Select.Root defaultValue="apple">
+                            <Select.Trigger />
+                            <Select.Content>
                               <SelectItemsDemo />
-                            </SelectContent>
-                          </SelectRoot>
+                            </Select.Content>
+                          </Select.Root>
                           <div style={{ minWidth: 150 }}>
                             <Slider defaultValue={[33]} />
                           </div>
                           <Switch defaultChecked />
-                          <TextFieldRoot placeholder="Your name" />
+                          <TextField.Root placeholder="Your name" />
                           <TextArea placeholder="Your feedback" />
                           <Heading size="5">Principles of the Typographic Craft</Heading>
 
@@ -5434,16 +5375,16 @@ export default function Sink() {
                             results?
                           </Blockquote>
 
-                          <CalloutRoot>
-                            <CalloutIcon>
+                          <Callout.Root>
+                            <Callout.Icon>
                               <InfoCircledIcon />
-                            </CalloutIcon>
-                            <CalloutText>
+                            </Callout.Icon>
+                            <Callout.Text>
                               We have detected multiple issues in your application configuration
                               file. Please read our <Link href="/">Configuration Guide</Link> for
                               more details.
-                            </CalloutText>
-                          </CalloutRoot>
+                            </Callout.Text>
+                          </Callout.Root>
 
                           <TableExample variant="surface" noEmail />
 
@@ -5459,18 +5400,18 @@ export default function Sink() {
                                 <Skeleton>Email</Skeleton>
                               </Text>
                               <Skeleton>
-                                <TextFieldRoot variant="classic" placeholder="Your email" />
+                                <TextField.Root variant="classic" placeholder="Your email" />
                               </Skeleton>
                             </Grid>
                             <Grid gap="1">
                               <Text weight="bold">
                                 <Skeleton>Subject</Skeleton>
                               </Text>
-                              <SelectRoot defaultValue="customer">
+                              <Select.Root defaultValue="customer">
                                 <Skeleton>
-                                  <SelectTrigger variant="classic" />
+                                  <Select.Trigger variant="classic" />
                                 </Skeleton>
-                              </SelectRoot>
+                              </Select.Root>
                             </Grid>
                             <Grid gap="1">
                               <Text weight="bold">
@@ -5522,19 +5463,19 @@ export default function Sink() {
                           <Skeleton>
                             <Link href="/">This is a link</Link>
                           </Skeleton>
-                          <RadioGroupRoot defaultValue="value" size="3">
+                          <RadioGroup.Root defaultValue="value" size="3">
                             <Skeleton>
-                              <RadioGroupItem value="value" />
+                              <RadioGroup.Item value="value" />
                             </Skeleton>
-                          </RadioGroupRoot>
-                          <SelectRoot defaultValue="apple">
+                          </RadioGroup.Root>
+                          <Select.Root defaultValue="apple">
                             <Skeleton>
-                              <SelectTrigger />
+                              <Select.Trigger />
                             </Skeleton>
-                            <SelectContent>
+                            <Select.Content>
                               <SelectItemsDemo />
-                            </SelectContent>
-                          </SelectRoot>
+                            </Select.Content>
+                          </Select.Root>
                           <div style={{ minWidth: 150 }}>
                             <Skeleton>
                               <Slider defaultValue={[33]} />
@@ -5544,7 +5485,7 @@ export default function Sink() {
                             <Switch defaultChecked />
                           </Skeleton>
                           <Skeleton>
-                            <TextFieldRoot placeholder="Your name" />
+                            <TextField.Root placeholder="Your name" />
                           </Skeleton>
                           <Skeleton>
                             <TextArea placeholder="Your feedback" />
@@ -5564,16 +5505,16 @@ export default function Sink() {
                           </Skeleton>
 
                           <Skeleton>
-                            <CalloutRoot>
-                              <CalloutIcon>
+                            <Callout.Root>
+                              <Callout.Icon>
                                 <InfoCircledIcon />
-                              </CalloutIcon>
-                              <CalloutText>
+                              </Callout.Icon>
+                              <Callout.Text>
                                 We have detected multiple issues in your application configuration
                                 file. Please read our <Link href="/">Configuration Guide</Link> for
                                 more details.
-                              </CalloutText>
-                            </CalloutRoot>
+                              </Callout.Text>
+                            </Callout.Root>
                           </Skeleton>
 
                           <Skeleton>
@@ -5590,51 +5531,51 @@ export default function Sink() {
 
                   <DocsSection title="DataList">
                     <Flex gap="4" align="center">
-                      <TabsRoot defaultValue="specimen">
-                        <TabsList size="2">
-                          <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                          <TabsTrigger value="all-orientations">All orientations</TabsTrigger>
-                          <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                        </TabsList>
+                      <Tabs.Root defaultValue="specimen">
+                        <Tabs.List size="2">
+                          <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                          <Tabs.Trigger value="all-orientations">All orientations</Tabs.Trigger>
+                          <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                        </Tabs.List>
 
-                        <TabsContent value="specimen">
+                        <Tabs.Content value="specimen">
                           <Box my="6" style={{ maxWidth: '688px' }}>
-                            <DataListRoot>
-                              <DataListItem>
-                                <DataListLabel width="200px">Name</DataListLabel>
-                                <DataListValue>Susan Kare</DataListValue>
-                              </DataListItem>
-                              <DataListItem>
-                                <DataListLabel>Email</DataListLabel>
-                                <DataListValue>susan.kare@apple.com</DataListValue>
-                              </DataListItem>
-                              <DataListItem>
-                                <DataListLabel>Status</DataListLabel>
-                                <DataListValue>
+                            <DataList.Root>
+                              <DataList.Item>
+                                <DataList.Label width="200px">Name</DataList.Label>
+                                <DataList.Value>Susan Kare</DataList.Value>
+                              </DataList.Item>
+                              <DataList.Item>
+                                <DataList.Label>Email</DataList.Label>
+                                <DataList.Value>susan.kare@apple.com</DataList.Value>
+                              </DataList.Item>
+                              <DataList.Item>
+                                <DataList.Label>Status</DataList.Label>
+                                <DataList.Value>
                                   <Button color="green" size="1">
                                     Active
                                   </Button>
-                                </DataListValue>
-                              </DataListItem>
-                              <DataListItem>
-                                <DataListLabel>Bio</DataListLabel>
-                                <DataListValue>
+                                </DataList.Value>
+                              </DataList.Item>
+                              <DataList.Item>
+                                <DataList.Label>Bio</DataList.Label>
+                                <DataList.Value>
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
                                   nisl et libero ultricies viverra quis vitae quam. Proin a feugiat
                                   metus.
-                                </DataListValue>
-                              </DataListItem>
-                              <DataListItem>
-                                <DataListLabel>Organization</DataListLabel>
-                                <DataListValue>
+                                </DataList.Value>
+                              </DataList.Item>
+                              <DataList.Item>
+                                <DataList.Label>Organization</DataList.Label>
+                                <DataList.Value>
                                   <Link href="https://workos.com">WorkOS</Link>
-                                </DataListValue>
-                              </DataListItem>
-                            </DataListRoot>
+                                </DataList.Value>
+                              </DataList.Item>
+                            </DataList.Root>
                           </Box>
-                        </TabsContent>
+                        </Tabs.Content>
 
-                        <TabsContent value="all-orientations">
+                        <Tabs.Content value="all-orientations">
                           <Box my="6">
                             <table className={styles.table}>
                               <tbody>
@@ -5642,25 +5583,25 @@ export default function Sink() {
                                   <tr key={orientation}>
                                     <RowHeaderCell>{upperFirst(orientation)}</RowHeaderCell>
                                     <td style={{ textAlign: 'left' }}>
-                                      <DataListRoot orientation={orientation} my="3">
-                                        <DataListItem>
-                                          <DataListLabel>Name</DataListLabel>
-                                          <DataListValue>Susan Kare</DataListValue>
-                                        </DataListItem>
-                                        <DataListItem>
-                                          <DataListLabel>Email</DataListLabel>
-                                          <DataListValue>susan.kare@apple.com</DataListValue>
-                                        </DataListItem>
-                                      </DataListRoot>
+                                      <DataList.Root orientation={orientation} my="3">
+                                        <DataList.Item>
+                                          <DataList.Label>Name</DataList.Label>
+                                          <DataList.Value>Susan Kare</DataList.Value>
+                                        </DataList.Item>
+                                        <DataList.Item>
+                                          <DataList.Label>Email</DataList.Label>
+                                          <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                        </DataList.Item>
+                                      </DataList.Root>
                                     </td>
                                   </tr>
                                 ))}
                               </tbody>
                             </table>
                           </Box>
-                        </TabsContent>
+                        </Tabs.Content>
 
-                        <TabsContent value="all-sizes">
+                        <Tabs.Content value="all-sizes">
                           <Box my="6">
                             <table className={styles.table}>
                               <tbody>
@@ -5668,24 +5609,24 @@ export default function Sink() {
                                   <tr key={size}>
                                     <RowHeaderCell>{`Size ${size}`}</RowHeaderCell>
                                     <td style={{ textAlign: 'left' }}>
-                                      <DataListRoot size={size} my="3">
-                                        <DataListItem>
-                                          <DataListLabel>Name</DataListLabel>
-                                          <DataListValue>Susan Kare</DataListValue>
-                                        </DataListItem>
-                                        <DataListItem>
-                                          <DataListLabel>Email</DataListLabel>
-                                          <DataListValue>susan.kare@apple.com</DataListValue>
-                                        </DataListItem>
-                                      </DataListRoot>
+                                      <DataList.Root size={size} my="3">
+                                        <DataList.Item>
+                                          <DataList.Label>Name</DataList.Label>
+                                          <DataList.Value>Susan Kare</DataList.Value>
+                                        </DataList.Item>
+                                        <DataList.Item>
+                                          <DataList.Label>Email</DataList.Label>
+                                          <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                        </DataList.Item>
+                                      </DataList.Root>
                                     </td>
                                   </tr>
                                 ))}
                               </tbody>
                             </table>
                           </Box>
-                        </TabsContent>
-                      </TabsRoot>
+                        </Tabs.Content>
+                      </Tabs.Root>
                     </Flex>
 
                     <Text as="p" my="5">
@@ -5714,32 +5655,32 @@ export default function Sink() {
                                 {color}
                               </RowHeaderCell>
                               <td>
-                                <DataListRoot my="3">
-                                  <DataListItem>
-                                    <DataListLabel color={color}>Name</DataListLabel>
-                                    <DataListValue>Susan Kare</DataListValue>
-                                  </DataListItem>
-                                  <DataListItem>
-                                    <DataListLabel color={color}>Email</DataListLabel>
-                                    <DataListValue>susan.kare@apple.com</DataListValue>
-                                  </DataListItem>
-                                </DataListRoot>
+                                <DataList.Root my="3">
+                                  <DataList.Item>
+                                    <DataList.Label color={color}>Name</DataList.Label>
+                                    <DataList.Value>Susan Kare</DataList.Value>
+                                  </DataList.Item>
+                                  <DataList.Item>
+                                    <DataList.Label color={color}>Email</DataList.Label>
+                                    <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                  </DataList.Item>
+                                </DataList.Root>
                               </td>
                               <td>
-                                <DataListRoot my="3" ml="6">
-                                  <DataListItem>
-                                    <DataListLabel highContrast color={color}>
+                                <DataList.Root my="3" ml="6">
+                                  <DataList.Item>
+                                    <DataList.Label highContrast color={color}>
                                       Name
-                                    </DataListLabel>
-                                    <DataListValue>Susan Kare</DataListValue>
-                                  </DataListItem>
-                                  <DataListItem>
-                                    <DataListLabel highContrast color={color}>
+                                    </DataList.Label>
+                                    <DataList.Value>Susan Kare</DataList.Value>
+                                  </DataList.Item>
+                                  <DataList.Item>
+                                    <DataList.Label highContrast color={color}>
                                       Email
-                                    </DataListLabel>
-                                    <DataListValue>susan.kare@apple.com</DataListValue>
-                                  </DataListItem>
-                                </DataListRoot>
+                                    </DataList.Label>
+                                    <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                  </DataList.Item>
+                                </DataList.Root>
                               </td>
                             </tr>
                           ))}
@@ -5764,16 +5705,16 @@ export default function Sink() {
                               <tr key={width}>
                                 <RowHeaderCell>{`${width}`}</RowHeaderCell>
                                 <td>
-                                  <DataListRoot my="3">
-                                    <DataListItem>
-                                      <DataListLabel width={width}>Name</DataListLabel>
-                                      <DataListValue>Susan Kare</DataListValue>
-                                    </DataListItem>
-                                    <DataListItem>
-                                      <DataListLabel width={width}>Email</DataListLabel>
-                                      <DataListValue>susan.kare@apple.com</DataListValue>
-                                    </DataListItem>
-                                  </DataListRoot>
+                                  <DataList.Root my="3">
+                                    <DataList.Item>
+                                      <DataList.Label width={width}>Name</DataList.Label>
+                                      <DataList.Value>Susan Kare</DataList.Value>
+                                    </DataList.Item>
+                                    <DataList.Item>
+                                      <DataList.Label width={width}>Email</DataList.Label>
+                                      <DataList.Value>susan.kare@apple.com</DataList.Value>
+                                    </DataList.Item>
+                                  </DataList.Root>
                                 </td>
                               </tr>
                             );
@@ -5799,15 +5740,15 @@ export default function Sink() {
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             {segmentedControlRootPropDefs.size.values.map((size) => (
                               <td key={size}>
-                                <SegmentedControlRoot
+                                <SegmentedControl.Root
                                   size={size}
                                   variant={variant}
                                   defaultValue="1"
                                 >
-                                  <SegmentedControlItem value="1">One</SegmentedControlItem>
-                                  <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                                  <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                                </SegmentedControlRoot>
+                                  <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                                  <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                                  <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                                </SegmentedControl.Root>
                               </td>
                             ))}
                           </tr>
@@ -5841,15 +5782,15 @@ export default function Sink() {
                                 <RowHeaderCell>{radius}</RowHeaderCell>
                                 {segmentedControlRootPropDefs.size.values.map((size) => (
                                   <td key={size}>
-                                    <SegmentedControlRoot
+                                    <SegmentedControl.Root
                                       size={size}
                                       radius={radius}
                                       defaultValue="1"
                                     >
-                                      <SegmentedControlItem value="1">One</SegmentedControlItem>
-                                      <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                                      <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                                    </SegmentedControlRoot>
+                                      <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                                      <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                                      <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                                    </SegmentedControl.Root>
                                   </td>
                                 ))}
                               </tr>
@@ -5863,99 +5804,99 @@ export default function Sink() {
 
                     <Flex direction="column" gap="4" my="7">
                       <Flex gap="4" align="center">
-                        <SegmentedControlRoot>
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root>
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot>
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root>
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot>
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root>
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot>
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root>
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                          <SegmentedControl.Item value="4">Four</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot>
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
-                          <SegmentedControlItem value="5">Five</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root>
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                          <SegmentedControl.Item value="4">Four</SegmentedControl.Item>
+                          <SegmentedControl.Item value="5">Five</SegmentedControl.Item>
+                        </SegmentedControl.Root>
                       </Flex>
 
                       <Flex gap="4" align="center">
-                        <SegmentedControlRoot defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                          <SegmentedControl.Item value="4">Four</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
-                          <SegmentedControlItem value="5">Five</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                          <SegmentedControl.Item value="4">Four</SegmentedControl.Item>
+                          <SegmentedControl.Item value="5">Five</SegmentedControl.Item>
+                        </SegmentedControl.Root>
                       </Flex>
 
                       <Flex gap="4" align="center">
-                        <SegmentedControlRoot variant="classic" defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root variant="classic" defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot variant="classic" defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root variant="classic" defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot variant="classic" defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root variant="classic" defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot variant="classic" defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root variant="classic" defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                          <SegmentedControl.Item value="4">Four</SegmentedControl.Item>
+                        </SegmentedControl.Root>
 
-                        <SegmentedControlRoot variant="classic" defaultValue="1">
-                          <SegmentedControlItem value="1">One</SegmentedControlItem>
-                          <SegmentedControlItem value="2">Two</SegmentedControlItem>
-                          <SegmentedControlItem value="3">Three</SegmentedControlItem>
-                          <SegmentedControlItem value="4">Four</SegmentedControlItem>
-                          <SegmentedControlItem value="5">Five</SegmentedControlItem>
-                        </SegmentedControlRoot>
+                        <SegmentedControl.Root variant="classic" defaultValue="1">
+                          <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                          <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                          <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                          <SegmentedControl.Item value="4">Four</SegmentedControl.Item>
+                          <SegmentedControl.Item value="5">Five</SegmentedControl.Item>
+                        </SegmentedControl.Root>
                       </Flex>
                     </Flex>
                   </DocsSection>
@@ -5969,119 +5910,119 @@ export default function Sink() {
   );
 }
 
-function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenuContent>) {
+function DropdownMenuContentDemo(props: React.ComponentProps<typeof DropdownMenu.Content>) {
   return (
-    <DropdownMenuContent {...props}>
-      <DropdownMenuItem shortcut="⌘+T">New Tab</DropdownMenuItem>
-      <DropdownMenuItem shortcut="⌘+N">New Window</DropdownMenuItem>
-      <DropdownMenuItem shortcut="⇧+⌘+N" disabled>
+    <DropdownMenu.Content {...props}>
+      <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘+N">New Window</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⇧+⌘+N" disabled>
         New Private Window
-      </DropdownMenuItem>
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger>More Tools</DropdownMenuSubTrigger>
+      </DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
 
-        <DropdownMenuSubContent>
-          <DropdownMenuItem shortcut="⌘+S">Save Page As…</DropdownMenuItem>
-          <DropdownMenuItem>Create Shortcut…</DropdownMenuItem>
-          <DropdownMenuItem>Name Window…</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Developer Tools</DropdownMenuItem>
-          <DropdownMenuItem color="red">
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item shortcut="⌘+S">Save Page As…</DropdownMenu.Item>
+          <DropdownMenu.Item>Create Shortcut…</DropdownMenu.Item>
+          <DropdownMenu.Item>Name Window…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Developer Tools</DropdownMenu.Item>
+          <DropdownMenu.Item color="red">
             <Box asChild mx="-3px">
               <TrashIcon />
             </Box>
             Delete
-          </DropdownMenuItem>
-        </DropdownMenuSubContent>
-      </DropdownMenuSub>
+          </DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
 
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuLabel>Other</DropdownMenuLabel>
-        <DropdownMenuItem shortcut="⌘+P">Print</DropdownMenuItem>
-        <DropdownMenuItem shortcut="⌘+Q" asChild>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Group>
+        <DropdownMenu.Label>Other</DropdownMenu.Label>
+        <DropdownMenu.Item shortcut="⌘+P">Print</DropdownMenu.Item>
+        <DropdownMenu.Item shortcut="⌘+Q" asChild>
           <a href="#logout">Logout</a>
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
+        </DropdownMenu.Item>
+      </DropdownMenu.Group>
 
       {props.variant === 'solid' && (
         <>
-          <DropdownMenuSeparator />
+          <DropdownMenu.Separator />
 
-          <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
+          <DropdownMenu.CheckboxItem shortcut="⌘+B" checked>
             Show Bookmarks
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
+          </DropdownMenu.CheckboxItem>
+          <DropdownMenu.CheckboxItem>Show Full URLs</DropdownMenu.CheckboxItem>
 
-          <DropdownMenuSeparator />
+          <DropdownMenu.Separator />
 
-          <DropdownMenuLabel>People</DropdownMenuLabel>
-          <DropdownMenuRadioGroup value="pedro">
-            <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
+          <DropdownMenu.Label>People</DropdownMenu.Label>
+          <DropdownMenu.RadioGroup value="pedro">
+            <DropdownMenu.RadioItem value="pedro">Pedro Duarte</DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="colm">Colm Tuite</DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
 
-          <DropdownMenuSeparator />
+          <DropdownMenu.Separator />
 
-          <DropdownMenuItem color="red">Delete</DropdownMenuItem>
+          <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
         </>
       )}
-    </DropdownMenuContent>
+    </DropdownMenu.Content>
   );
 }
 
-function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenuContent>) {
+function ContextMenuContentDemo(props: React.ComponentProps<typeof ContextMenu.Content>) {
   return (
-    <ContextMenuContent {...props}>
-      <ContextMenuItem shortcut="⌘+T">New Tab</ContextMenuItem>
-      <ContextMenuItem shortcut="⌘+N">New Window</ContextMenuItem>
-      <ContextMenuItem shortcut="⇧+⌘+N" disabled>
+    <ContextMenu.Content {...props}>
+      <ContextMenu.Item shortcut="⌘+T">New Tab</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘+N">New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⇧+⌘+N" disabled>
         New Private Window
-      </ContextMenuItem>
-      <ContextMenuSub>
-        <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+      </ContextMenu.Item>
+      <ContextMenu.Sub>
+        <ContextMenu.SubTrigger>More Tools</ContextMenu.SubTrigger>
 
-        <ContextMenuSubContent>
-          <ContextMenuItem shortcut="⌘+S">Save Page As…</ContextMenuItem>
-          <ContextMenuItem>Create Shortcut…</ContextMenuItem>
-          <ContextMenuItem>Name Window…</ContextMenuItem>
-          <ContextMenuSeparator />
-          <ContextMenuItem>Developer Tools</ContextMenuItem>
-        </ContextMenuSubContent>
-      </ContextMenuSub>
+        <ContextMenu.SubContent>
+          <ContextMenu.Item shortcut="⌘+S">Save Page As…</ContextMenu.Item>
+          <ContextMenu.Item>Create Shortcut…</ContextMenu.Item>
+          <ContextMenu.Item>Name Window…</ContextMenu.Item>
+          <ContextMenu.Separator />
+          <ContextMenu.Item>Developer Tools</ContextMenu.Item>
+        </ContextMenu.SubContent>
+      </ContextMenu.Sub>
 
-      <ContextMenuSeparator />
-      <ContextMenuGroup>
-        <ContextMenuLabel>Other</ContextMenuLabel>
-        <ContextMenuItem shortcut="⌘+P">Print</ContextMenuItem>
-        <ContextMenuItem shortcut="⌘+Q" asChild>
+      <ContextMenu.Separator />
+      <ContextMenu.Group>
+        <ContextMenu.Label>Other</ContextMenu.Label>
+        <ContextMenu.Item shortcut="⌘+P">Print</ContextMenu.Item>
+        <ContextMenu.Item shortcut="⌘+Q" asChild>
           <a href="#logout">Logout</a>
-        </ContextMenuItem>
-      </ContextMenuGroup>
+        </ContextMenu.Item>
+      </ContextMenu.Group>
 
       {props.variant === 'solid' && (
         <>
-          <ContextMenuSeparator />
+          <ContextMenu.Separator />
 
-          <ContextMenuCheckboxItem shortcut="⌘+B" checked>
+          <ContextMenu.CheckboxItem shortcut="⌘+B" checked>
             Show Bookmarks
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+          </ContextMenu.CheckboxItem>
+          <ContextMenu.CheckboxItem>Show Full URLs</ContextMenu.CheckboxItem>
 
-          <ContextMenuSeparator />
+          <ContextMenu.Separator />
 
-          <ContextMenuLabel>People</ContextMenuLabel>
-          <ContextMenuRadioGroup value="pedro">
-            <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
+          <ContextMenu.Label>People</ContextMenu.Label>
+          <ContextMenu.RadioGroup value="pedro">
+            <ContextMenu.RadioItem value="pedro">Pedro Duarte</ContextMenu.RadioItem>
+            <ContextMenu.RadioItem value="colm">Colm Tuite</ContextMenu.RadioItem>
+          </ContextMenu.RadioGroup>
 
-          <DropdownMenuSeparator />
+          <DropdownMenu.Separator />
 
-          <ContextMenuItem color="red">Delete</ContextMenuItem>
+          <ContextMenu.Item color="red">Delete</ContextMenu.Item>
         </>
       )}
-    </ContextMenuContent>
+    </ContextMenu.Content>
   );
 }
 
@@ -6112,22 +6053,22 @@ function RightClickArea({ size = '2', ...props }: RightClickAreaProps) {
 function SelectItemsDemo() {
   return (
     <>
-      <SelectGroup>
-        <SelectLabel>Fruits</SelectLabel>
-        <SelectItem value="orange">Orange</SelectItem>
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="grapes" disabled>
+      <Select.Group>
+        <Select.Label>Fruits</Select.Label>
+        <Select.Item value="orange">Orange</Select.Item>
+        <Select.Item value="apple">Apple</Select.Item>
+        <Select.Item value="grapes" disabled>
           Grape
-        </SelectItem>
-      </SelectGroup>
+        </Select.Item>
+      </Select.Group>
 
-      <SelectSeparator />
+      <Select.Separator />
 
-      <SelectGroup>
-        <SelectLabel>Vegetables</SelectLabel>
-        <SelectItem value="carrot">Carrot</SelectItem>
-        <SelectItem value="potato">Potato</SelectItem>
-      </SelectGroup>
+      <Select.Group>
+        <Select.Label>Vegetables</Select.Label>
+        <Select.Item value="carrot">Carrot</Select.Item>
+        <Select.Item value="potato">Potato</Select.Item>
+      </Select.Group>
     </>
   );
 }
@@ -6268,7 +6209,7 @@ function PlaygroundForm({
   size,
   ...props
 }: React.ComponentProps<typeof Flex> & {
-  size?: React.ComponentProps<typeof TextFieldRoot>['size'];
+  size?: React.ComponentProps<typeof TextField.Root>['size'];
 }) {
   return (
     <Flex direction="column" gap="3" {...props}>
@@ -6276,19 +6217,19 @@ function PlaygroundForm({
         <Text size={size} weight="bold">
           Email
         </Text>
-        <TextFieldRoot size={size} variant="classic" placeholder="Your email" />
+        <TextField.Root size={size} variant="classic" placeholder="Your email" />
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
           Subject
         </Text>
-        <SelectRoot defaultValue="customer" size={size}>
-          <SelectTrigger variant="classic" />
-          <SelectContent>
-            <SelectItem value="customer">Customer feedback</SelectItem>
-            <SelectItem value="help">Help</SelectItem>
-          </SelectContent>
-        </SelectRoot>
+        <Select.Root defaultValue="customer" size={size}>
+          <Select.Trigger variant="classic" />
+          <Select.Content>
+            <Select.Item value="customer">Customer feedback</Select.Item>
+            <Select.Item value="help">Help</Select.Item>
+          </Select.Content>
+        </Select.Root>
       </Grid>
       <Grid gap="1">
         <Text size={size} weight="bold">
@@ -6308,39 +6249,39 @@ function PlaygroundForm({
   );
 }
 
-function TableExample(props: React.ComponentProps<typeof TableRoot> & { noEmail?: boolean }) {
+function TableExample(props: React.ComponentProps<typeof Table.Root> & { noEmail?: boolean }) {
   const { noEmail, ...rootProps } = props;
   return (
-    <TableRoot {...rootProps}>
-      <TableHeader>
-        <TableRow>
-          <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-          {!noEmail && <TableColumnHeaderCell>Email</TableColumnHeaderCell>}
-          <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableRowHeaderCell>Andy</TableRowHeaderCell>
-          {!noEmail && <TableCell>andy@workos.com</TableCell>}
-          <TableCell>Developer</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableRowHeaderCell>Benoit</TableRowHeaderCell>
-          {!noEmail && <TableCell>benoit@workos.com</TableCell>}
-          <TableCell>Admin</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableRowHeaderCell>Lucas</TableRowHeaderCell>
-          {!noEmail && <TableCell>lucas@workos.com</TableCell>}
-          <TableCell>Developer</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableRowHeaderCell>Vlad</TableRowHeaderCell>
-          {!noEmail && <TableCell>vlad@workos.com</TableCell>}
-          <TableCell>Designer</TableCell>
-        </TableRow>
-      </TableBody>
-    </TableRoot>
+    <Table.Root {...rootProps}>
+      <Table.Header>
+        <Table.Row>
+          <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+          {!noEmail && <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>}
+          <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.RowHeaderCell>Andy</Table.RowHeaderCell>
+          {!noEmail && <Table.Cell>andy@workos.com</Table.Cell>}
+          <Table.Cell>Developer</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.RowHeaderCell>Benoit</Table.RowHeaderCell>
+          {!noEmail && <Table.Cell>benoit@workos.com</Table.Cell>}
+          <Table.Cell>Admin</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.RowHeaderCell>Lucas</Table.RowHeaderCell>
+          {!noEmail && <Table.Cell>lucas@workos.com</Table.Cell>}
+          <Table.Cell>Developer</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.RowHeaderCell>Vlad</Table.RowHeaderCell>
+          {!noEmail && <Table.Cell>vlad@workos.com</Table.Cell>}
+          <Table.Cell>Designer</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table.Root>
   );
 }

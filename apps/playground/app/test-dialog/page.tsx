@@ -1,16 +1,5 @@
 import * as React from 'react';
-import {
-  Theme,
-  Flex,
-  Button,
-  Container,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-} from '@radix-ui/themes';
+import { Theme, Flex, Button, Container, Dialog } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import { Share2Icon } from '@radix-ui/react-icons';
 
@@ -23,39 +12,39 @@ export default function Test() {
             <div id="root">
               <Container px="8">
                 <Flex align="center" justify="center" height="150vh" gap="5" pb="60vh">
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button variant="solid">Short dialog</Button>
-                    </DialogTrigger>
-                    <DialogContent style={{ maxWidth: 400 }}>
-                      <DialogTitle>Short dialog</DialogTitle>
-                      <DialogDescription>
+                    </Dialog.Trigger>
+                    <Dialog.Content style={{ maxWidth: 400 }}>
+                      <Dialog.Title>Short dialog</Dialog.Title>
+                      <Dialog.Description>
                         Under a sky as clear as a sapphire, the audacious wind embarked on yet
                         another sojourn. Its origin, coupled with its destination, remained a
                         riddle, shelved in the library of the unknown.
-                      </DialogDescription>
+                      </Dialog.Description>
                       <Flex gap="3" mt="4" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button variant="solid">
                             Share <Share2Icon />
                           </Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
 
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button variant="solid">Long dialog</Button>
-                    </DialogTrigger>
-                    <DialogContent style={{ maxWidth: 400 }}>
-                      <DialogTitle>Long dialog</DialogTitle>
-                      <DialogDescription>
+                    </Dialog.Trigger>
+                    <Dialog.Content style={{ maxWidth: 400 }}>
+                      <Dialog.Title>Long dialog</Dialog.Title>
+                      <Dialog.Description>
                         The wind was a nomadic spirit; it was a tale that wrote itself, a song that
                         hummed its own melodies. It darted through the expansive, golden fields of
                         barley, teasing them into a gentle, alluring dance. Each undulation in the
@@ -85,29 +74,29 @@ export default function Test() {
                         endless parchment. The wind traveling through the fields wasn’t merely an
                         occurrence; it was a testament to life, a novel written by the unseen, read
                         by the felt.
-                      </DialogDescription>
+                      </Dialog.Description>
                       <Flex gap="3" mt="4" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button variant="solid">
                             Share <Share2Icon />
                           </Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
 
-                  <DialogRoot>
-                    <DialogTrigger>
+                  <Dialog.Root>
+                    <Dialog.Trigger>
                       <Button variant="solid">Fixed height dialog</Button>
-                    </DialogTrigger>
-                    <DialogContent style={{ maxWidth: 400, maxHeight: 400 }}>
-                      <DialogTitle>Fixed height dialog</DialogTitle>
-                      <DialogDescription>
+                    </Dialog.Trigger>
+                    <Dialog.Content style={{ maxWidth: 400, maxHeight: 400 }}>
+                      <Dialog.Title>Fixed height dialog</Dialog.Title>
+                      <Dialog.Description>
                         The wind was a nomadic spirit; it was a tale that wrote itself, a song that
                         hummed its own melodies. It darted through the expansive, golden fields of
                         barley, teasing them into a gentle, alluring dance. Each undulation in the
@@ -137,21 +126,21 @@ export default function Test() {
                         endless parchment. The wind traveling through the fields wasn’t merely an
                         occurrence; it was a testament to life, a novel written by the unseen, read
                         by the felt.
-                      </DialogDescription>
+                      </Dialog.Description>
                       <Flex gap="3" mt="4" justify="end">
-                        <DialogClose>
+                        <Dialog.Close>
                           <Button variant="soft" color="gray">
                             Cancel
                           </Button>
-                        </DialogClose>
-                        <DialogClose>
+                        </Dialog.Close>
+                        <Dialog.Close>
                           <Button variant="solid">
                             Share <Share2Icon />
                           </Button>
-                        </DialogClose>
+                        </Dialog.Close>
                       </Flex>
-                    </DialogContent>
-                  </DialogRoot>
+                    </Dialog.Content>
+                  </Dialog.Root>
                 </Flex>
               </Container>
             </div>

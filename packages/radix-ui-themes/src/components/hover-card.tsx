@@ -64,5 +64,9 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
 );
 HoverCardContent.displayName = 'HoverCardContent';
 
-export { HoverCardRoot, HoverCardTrigger, HoverCardContent };
-export type { HoverCardRootProps, HoverCardTriggerProps, HoverCardContentProps };
+export { HoverCardRoot as Root, HoverCardTrigger as Trigger, HoverCardContent as Content };
+export type {
+  HoverCardRootProps as RootProps,
+  HoverCardTriggerProps as TriggerProps,
+  HoverCardContentProps as ContentProps,
+};

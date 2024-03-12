@@ -4,18 +4,13 @@ import {
   Badge,
   Box,
   Button,
-  CheckboxGroupItem,
-  CheckboxGroupRoot,
+  CheckboxGroup,
   Container,
-  DataListItem,
-  DataListLabel,
-  DataListRoot,
-  DataListValue,
+  DataList,
   Flex,
   Heading,
   IconButton,
-  RadioGroupItem,
-  RadioGroupRoot,
+  RadioGroup,
   Section,
   Separator,
   Text,
@@ -72,27 +67,27 @@ export default function DataListPage() {
                     <Text as="div" size="2" weight="bold" mb="1">
                       Debug layout
                     </Text>
-                    <CheckboxGroupRoot
+                    <CheckboxGroup.Root
                       value={debug ? ['debug'] : []}
                       onValueChange={(value) => setDebug(value.includes('debug'))}
                     >
-                      <CheckboxGroupItem value="debug">Show debug view</CheckboxGroupItem>
-                    </CheckboxGroupRoot>
+                      <CheckboxGroup.Item value="debug">Show debug view</CheckboxGroup.Item>
+                    </CheckboxGroup.Root>
                   </Box>
 
                   <Box mb="5">
                     <Text as="div" size="2" weight="bold" mb="1">
                       Trim
                     </Text>
-                    <RadioGroupRoot
+                    <RadioGroup.Root
                       value={trim}
                       onValueChange={(value: typeof trim) => setTrim(value)}
                     >
-                      <RadioGroupItem value="normal">Normal</RadioGroupItem>
-                      <RadioGroupItem value="start">Start</RadioGroupItem>
-                      <RadioGroupItem value="end">End</RadioGroupItem>
-                      <RadioGroupItem value="both">Both</RadioGroupItem>
-                    </RadioGroupRoot>
+                      <RadioGroup.Item value="normal">Normal</RadioGroup.Item>
+                      <RadioGroup.Item value="start">Start</RadioGroup.Item>
+                      <RadioGroup.Item value="end">End</RadioGroup.Item>
+                      <RadioGroup.Item value="both">Both</RadioGroup.Item>
+                    </RadioGroup.Root>
                   </Box>
 
                   <Separator size="4" />
@@ -102,78 +97,78 @@ export default function DataListPage() {
                   <Heading mb="4" size="3">
                     Mixed content
                   </Heading>
-                  <DataListRoot trim={trim}>
-                    <DataListItem>
-                      <DataListLabel>Status</DataListLabel>
-                      <DataListValue>
+                  <DataList.Root trim={trim}>
+                    <DataList.Item>
+                      <DataList.Label>Status</DataList.Label>
+                      <DataList.Value>
                         <Badge color="green" size="1">
                           Active
                         </Badge>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem align="center">
-                      <DataListLabel>Name</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item align="center">
+                      <DataList.Label>Name</DataList.Label>
+                      <DataList.Value>
                         <Button size="1">Add</Button>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem align="center">
-                      <DataListLabel>Flex</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item align="center">
+                      <DataList.Label>Flex</DataList.Label>
+                      <DataList.Value>
                         <Flex align="center" gap="2">
                           <IconButton size="1" variant="soft">
                             <InfoCircledIcon />
                           </IconButton>
                           <Text>Info</Text>
                         </Flex>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Email</DataListLabel>
-                      <DataListValue>vlad@workos.com</DataListValue>
-                    </DataListItem>
+                    <DataList.Item>
+                      <DataList.Label>Email</DataList.Label>
+                      <DataList.Value>vlad@workos.com</DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Organization</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Organization</DataList.Label>
+                      <DataList.Value>
                         <Link href="https://workos.com">WorkOS</Link>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Long value</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Long value</DataList.Label>
+                      <DataList.Value>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl et
                         libero ultricies viverra quis vitae quam. Proin a feugiat metus.
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Truncated value</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Truncated value</DataList.Label>
+                      <DataList.Value>
                         <Text truncate>
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl et
                           libero ultricies viverra quis vitae quam. Proin a feugiat metus.
                         </Text>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem align="center">
-                      <DataListLabel>Authentication methods</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item align="center">
+                      <DataList.Label>Authentication methods</DataList.Label>
+                      <DataList.Value>
                         <Flex gap="2" align="center">
                           <StarFilledIcon />
                           <StarFilledIcon />
                         </Flex>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Accent</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Accent</DataList.Label>
+                      <DataList.Value>
                         <Flex gap="2" align="center">
                           <Box
                             width="16px"
@@ -182,18 +177,18 @@ export default function DataListPage() {
                           />
                           <Text>Blue</Text>
                         </Flex>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Long value</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Long value</DataList.Label>
+                      <DataList.Value>
                         Sed luctus, est id feugiat blandit, sapien nisl lobortis arcu, eu malesuada
                         nulla ex ut lorem. In odio nisl, consectetur id commodo vel, posuere eu
                         risus.
-                      </DataListValue>
-                    </DataListItem>
-                  </DataListRoot>
+                      </DataList.Value>
+                    </DataList.Item>
+                  </DataList.Root>
                 </Flex>
 
                 <Flex direction="column">
@@ -202,105 +197,105 @@ export default function DataListPage() {
                   </Heading>
 
                   <Flex direction="column" gap="6">
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="baseline" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>Baseline</DataListValue>
-                        </DataListItem>
+                        <DataList.Item align="baseline" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>Baseline</DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="start" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>Start</DataListValue>
-                        </DataListItem>
+                        <DataList.Item align="start" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>Start</DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="stretch" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>Stretch</DataListValue>
-                        </DataListItem>
+                        <DataList.Item align="stretch" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>Stretch</DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="center" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>Center</DataListValue>
-                        </DataListItem>
+                        <DataList.Item align="center" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>Center</DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="end" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>End</DataListValue>
-                        </DataListItem>
+                        <DataList.Item align="end" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>End</DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="baseline" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>
+                        <DataList.Item align="baseline" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>
                             <Button size="2">Baseline</Button>
-                          </DataListValue>{' '}
-                        </DataListItem>
+                          </DataList.Value>{' '}
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="start" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>
+                        <DataList.Item align="start" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>
                             <Button size="2">Start</Button>
-                          </DataListValue>
-                        </DataListItem>
+                          </DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="stretch" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>
+                        <DataList.Item align="stretch" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>
                             <Button size="2">Stretch</Button>
-                          </DataListValue>
-                        </DataListItem>
+                          </DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="center" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>
+                        <DataList.Item align="center" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>
                             <Button size="2">Center</Button>
-                          </DataListValue>
-                        </DataListItem>
+                          </DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
 
-                    <DataListRoot trim={trim}>
+                    <DataList.Root trim={trim}>
                       {[1, 2, 3].map((i) => (
-                        <DataListItem align="end" key={i}>
-                          <DataListLabel>Align</DataListLabel>
-                          <DataListValue>
+                        <DataList.Item align="end" key={i}>
+                          <DataList.Label>Align</DataList.Label>
+                          <DataList.Value>
                             <Button size="2">End</Button>
-                          </DataListValue>
-                        </DataListItem>
+                          </DataList.Value>
+                        </DataList.Item>
                       ))}
-                    </DataListRoot>
+                    </DataList.Root>
                   </Flex>
                 </Flex>
 
@@ -308,133 +303,133 @@ export default function DataListPage() {
                   <Heading mb="4" size="3">
                     Single item
                   </Heading>
-                  <DataListRoot trim={trim}>
-                    <DataListItem>
-                      <DataListLabel>Foo</DataListLabel>
-                      <DataListValue>Bar</DataListValue>
-                    </DataListItem>
-                  </DataListRoot>
+                  <DataList.Root trim={trim}>
+                    <DataList.Item>
+                      <DataList.Label>Foo</DataList.Label>
+                      <DataList.Value>Bar</DataList.Value>
+                    </DataList.Item>
+                  </DataList.Root>
                 </Flex>
 
                 <Flex direction="column">
                   <Heading mb="4" size="3">
                     Long labels
                   </Heading>
-                  <DataListRoot trim={trim}>
-                    <DataListItem>
-                      <DataListLabel>Name</DataListLabel>
-                      <DataListValue>Vlad Moroz</DataListValue>
-                    </DataListItem>
+                  <DataList.Root trim={trim}>
+                    <DataList.Item>
+                      <DataList.Label>Name</DataList.Label>
+                      <DataList.Value>Vlad Moroz</DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Email</DataListLabel>
-                      <DataListValue>vlad@workos.com</DataListValue>
-                    </DataListItem>
+                    <DataList.Item>
+                      <DataList.Label>Email</DataList.Label>
+                      <DataList.Value>vlad@workos.com</DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>
+                    <DataList.Item>
+                      <DataList.Label>
                         Lorem ipsum dolor sit amet consectetur adipscing elit
-                      </DataListLabel>
-                      <DataListValue>
+                      </DataList.Label>
+                      <DataList.Value>
                         <Link href="https://workos.com">WorkOS</Link>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel maxWidth="360px">
+                    <DataList.Item>
+                      <DataList.Label maxWidth="360px">
                         <Text truncate>
                           Sed luctus, est id feugiat blandit, sapien nisl lobortis arcu, eu
                           malesuada nulla ex ut lorem. In odio nisl, consectetur id commodo vel,
                           posuere eu risus.
                         </Text>
-                      </DataListLabel>
-                      <DataListValue>← should be truncated</DataListValue>
-                    </DataListItem>
-                  </DataListRoot>
+                      </DataList.Label>
+                      <DataList.Value>← should be truncated</DataList.Value>
+                    </DataList.Item>
+                  </DataList.Root>
                 </Flex>
 
                 <Flex direction="column">
                   <Heading mb="4" size="3">
                     Vertical layout
                   </Heading>
-                  <DataListRoot orientation="vertical" trim={trim}>
-                    <DataListItem>
-                      <DataListLabel>Status</DataListLabel>
-                      <DataListValue>
+                  <DataList.Root orientation="vertical" trim={trim}>
+                    <DataList.Item>
+                      <DataList.Label>Status</DataList.Label>
+                      <DataList.Value>
                         <Badge color="green" size="1">
                           Active
                         </Badge>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Name</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Name</DataList.Label>
+                      <DataList.Value>
                         <Button size="1">Add</Button>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Flex</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Flex</DataList.Label>
+                      <DataList.Value>
                         <Flex align="center" gap="2">
                           <IconButton size="1" variant="soft">
                             <InfoCircledIcon />
                           </IconButton>
                           <Text>Info</Text>
                         </Flex>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Email</DataListLabel>
-                      <DataListValue>vlad@workos.com</DataListValue>
-                    </DataListItem>
+                    <DataList.Item>
+                      <DataList.Label>Email</DataList.Label>
+                      <DataList.Value>vlad@workos.com</DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Organization</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Organization</DataList.Label>
+                      <DataList.Value>
                         <Link href="https://workos.com">WorkOS</Link>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Long value</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Long value</DataList.Label>
+                      <DataList.Value>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl et
                         libero ultricies viverra quis vitae quam. Proin a feugiat metus.
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Truncated value</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Truncated value</DataList.Label>
+                      <DataList.Value>
                         <Text truncate>
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl et
                           libero ultricies viverra quis vitae quam. Proin a feugiat metus.
                         </Text>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Authentication methods</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Authentication methods</DataList.Label>
+                      <DataList.Value>
                         <Flex gap="2">
                           <StarFilledIcon />
                           <StarFilledIcon />
                         </Flex>
-                      </DataListValue>
-                    </DataListItem>
+                      </DataList.Value>
+                    </DataList.Item>
 
-                    <DataListItem>
-                      <DataListLabel>Long value</DataListLabel>
-                      <DataListValue>
+                    <DataList.Item>
+                      <DataList.Label>Long value</DataList.Label>
+                      <DataList.Value>
                         Sed luctus, est id feugiat blandit, sapien nisl lobortis arcu, eu malesuada
                         nulla ex ut lorem. In odio nisl, consectetur id commodo vel, posuere eu
                         risus.
-                      </DataListValue>
-                    </DataListItem>
-                  </DataListRoot>
+                      </DataList.Value>
+                    </DataList.Item>
+                  </DataList.Root>
                 </Flex>
               </Flex>
             </Section>

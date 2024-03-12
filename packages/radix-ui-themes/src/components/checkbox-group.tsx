@@ -151,5 +151,5 @@ const CheckboxGroupItemCheckbox = React.forwardRef<
 });
 CheckboxGroupItemCheckbox.displayName = 'CheckboxGroupItemCheckbox';
 
-export { CheckboxGroupRoot, CheckboxGroupItem };
-export type { CheckboxGroupRootProps, CheckboxGroupItemProps };
+export { CheckboxGroupRoot as Root, CheckboxGroupItem as Item };
+export type { CheckboxGroupRootProps as RootProps, CheckboxGroupItemProps as ItemProps };

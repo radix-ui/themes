@@ -6,6 +6,7 @@
   - Package structure
     - Improve ESM compatibility
     - Improve tree-shaking of individual component parts
+    - Drop named exports for multi-part components (use dot notation instead, ie. `Dialog.Root`)
     - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
       - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
       - Note: changes to prop defs and helpers won’t be covered by semver

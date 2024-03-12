@@ -72,5 +72,5 @@ const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, 
 });
 TabNavLink.displayName = 'TabNavLink';
 
-export { TabNavRoot, TabNavLink };
-export type { TabNavRootProps, TabNavLinkProps };
+export { TabNavRoot as Root, TabNavLink as Link };
+export type { TabNavRootProps as RootProps, TabNavLinkProps as LinkProps };

@@ -4,13 +4,9 @@ import {
   Avatar,
   Badge,
   Box,
-  Button,
   Card,
   Code,
   Container,
-  DropdownMenu,
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
   Em,
   Flex,
   Kbd,
@@ -18,9 +14,7 @@ import {
   ScrollArea,
   Section,
   Strong,
-  Switch,
-  TabNavLink,
-  TabNavRoot,
+  TabNav,
   Text,
   Theme,
 } from '@radix-ui/themes';
@@ -73,23 +67,23 @@ export default function Test() {
                     </Flex>
 
                     <Flex gap="5">
-                      <TabNavRoot>
-                        <TabNavLink href="#">Tab 1</TabNavLink>
-                        <TabNavLink href="#">Tab 2</TabNavLink>
-                        <TabNavLink href="#">Tab 3</TabNavLink>
-                      </TabNavRoot>
+                      <TabNav.Root>
+                        <TabNav.Link href="#">Tab 1</TabNav.Link>
+                        <TabNav.Link href="#">Tab 2</TabNav.Link>
+                        <TabNav.Link href="#">Tab 3</TabNav.Link>
+                      </TabNav.Root>
 
-                      <TabNavRoot>
-                        <TabNavLink asChild>
+                      <TabNav.Root>
+                        <TabNav.Link asChild>
                           <NextLink href="#">Next Link 1</NextLink>
-                        </TabNavLink>
-                        <TabNavLink asChild>
+                        </TabNav.Link>
+                        <TabNav.Link asChild>
                           <NextLink href="#">Next Link 2</NextLink>
-                        </TabNavLink>
-                        <TabNavLink asChild>
+                        </TabNav.Link>
+                        <TabNav.Link asChild>
                           <NextLink href="#">Next Link 3</NextLink>
-                        </TabNavLink>
-                      </TabNavRoot>
+                        </TabNav.Link>
+                      </TabNav.Root>
                     </Flex>
 
                     <Flex gap="5">
