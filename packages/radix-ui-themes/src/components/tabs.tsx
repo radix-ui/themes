@@ -26,7 +26,7 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
     />
   );
 });
-TabsRoot.displayName = 'TabsRoot';
+TabsRoot.displayName = 'Tabs.Root';
 
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
@@ -46,7 +46,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
     />
   );
 });
-TabsList.displayName = 'TabsList';
+TabsList.displayName = 'Tabs.List';
 
 type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
 interface TabsTriggerProps
@@ -69,7 +69,7 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
     );
   }
 );
-TabsTrigger.displayName = 'TabsTrigger';
+TabsTrigger.displayName = 'Tabs.Trigger';
 
 type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
 type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
@@ -89,7 +89,7 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
     );
   }
 );
-TabsContent.displayName = 'TabsContent';
+TabsContent.displayName = 'Tabs.Content';
 
 export { TabsRoot as Root, TabsList as List, TabsTrigger as Trigger, TabsContent as Content };
 export type {

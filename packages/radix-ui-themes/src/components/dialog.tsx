@@ -14,7 +14,7 @@ import type { DialogContentOwnProps } from '../props/index.js';
 
 interface DialogRootProps extends ComponentPropsWithout<typeof DialogPrimitive.Root, 'modal'> {}
 const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {...props} modal />;
-DialogRoot.displayName = 'DialogRoot';
+DialogRoot.displayName = 'Dialog.Root';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
 interface DialogTriggerProps
@@ -26,7 +26,7 @@ const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>
     </DialogPrimitive.Trigger>
   )
 );
-DialogTrigger.displayName = 'DialogTrigger';
+DialogTrigger.displayName = 'Dialog.Trigger';
 
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 interface DialogContentProps
@@ -59,7 +59,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     );
   }
 );
-DialogContent.displayName = 'DialogContent';
+DialogContent.displayName = 'Dialog.Content';
 
 type DialogTitleElement = React.ElementRef<typeof Heading>;
 type DialogTitleProps = ComponentPropsWithout<typeof Heading, 'asChild'>;
@@ -70,7 +70,7 @@ const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
     </DialogPrimitive.Title>
   )
 );
-DialogTitle.displayName = 'DialogTitle';
+DialogTitle.displayName = 'Dialog.Title';
 
 type DialogDescriptionElement = HTMLParagraphElement;
 type DialogDescriptionProps = ComponentPropsAs<typeof Text, 'p'>;
@@ -81,7 +81,7 @@ const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescr
     </DialogPrimitive.Description>
   )
 );
-DialogDescription.displayName = 'DialogDescription';
+DialogDescription.displayName = 'Dialog.Description';
 
 type DialogCloseElement = React.ElementRef<typeof DialogPrimitive.Close>;
 interface DialogCloseProps
@@ -93,7 +93,7 @@ const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
     </DialogPrimitive.Close>
   )
 );
-DialogClose.displayName = 'DialogClose';
+DialogClose.displayName = 'Dialog.Close';
 
 export {
   DialogRoot as Root,

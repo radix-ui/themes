@@ -66,7 +66,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
     );
   }
 );
-RadioGroupRoot.displayName = 'RadioGroupRoot';
+RadioGroupRoot.displayName = 'RadioGroup.Root';
 
 type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
 interface RadioGroupItemProps
@@ -108,7 +108,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
     );
   }
 );
-RadioGroupItem.displayName = 'RadioGroupItem';
+RadioGroupItem.displayName = 'RadioGroup.Item';
 
 type RadioGroupItemRadioElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioGroupItemRadioProps
@@ -135,7 +135,7 @@ const RadioGroupItemRadio = React.forwardRef<
     />
   );
 });
-RadioGroupItemRadio.displayName = 'RadioGroupItemRadio';
+RadioGroupItemRadio.displayName = 'RadioGroup.ItemRadio';
 
 export { RadioGroupRoot as Root, RadioGroupItem as Item };
 export type { RadioGroupRootProps as RootProps, RadioGroupItemProps as ItemProps };

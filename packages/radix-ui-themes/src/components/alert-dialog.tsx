@@ -17,7 +17,7 @@ interface AlertDialogRootProps
 const AlertDialogRoot: React.FC<AlertDialogRootProps> = (props) => (
   <AlertDialogPrimitive.Root {...props} />
 );
-AlertDialogRoot.displayName = 'AlertDialogRoot';
+AlertDialogRoot.displayName = 'AlertDialog.Root';
 
 type AlertDialogTriggerElement = React.ElementRef<typeof AlertDialogPrimitive.Trigger>;
 interface AlertDialogTriggerProps
@@ -29,7 +29,7 @@ const AlertDialogTrigger = React.forwardRef<AlertDialogTriggerElement, AlertDial
     </AlertDialogPrimitive.Trigger>
   )
 );
-AlertDialogTrigger.displayName = 'AlertDialogTrigger';
+AlertDialogTrigger.displayName = 'AlertDialog.Trigger';
 
 type AlertDialogContentElement = React.ElementRef<typeof AlertDialogPrimitive.Content>;
 interface AlertDialogContentProps
@@ -62,7 +62,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
     );
   }
 );
-AlertDialogContent.displayName = 'AlertDialogContent';
+AlertDialogContent.displayName = 'AlertDialog.Content';
 
 type AlertDialogTitleElement = React.ElementRef<typeof Heading>;
 type AlertDialogTitleProps = ComponentPropsWithout<typeof Heading, 'asChild'>;
@@ -73,7 +73,7 @@ const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTi
     </AlertDialogPrimitive.Title>
   )
 );
-AlertDialogTitle.displayName = 'AlertDialogTitle';
+AlertDialogTitle.displayName = 'AlertDialog.Title';
 
 type AlertDialogDescriptionElement = HTMLParagraphElement;
 type AlertDialogDescriptionProps = ComponentPropsAs<typeof Text, 'p'>;
@@ -85,7 +85,7 @@ const AlertDialogDescription = React.forwardRef<
     <Text as="p" size="3" {...props} asChild={false} ref={forwardedRef} />
   </AlertDialogPrimitive.Description>
 ));
-AlertDialogDescription.displayName = 'AlertDialogDescription';
+AlertDialogDescription.displayName = 'AlertDialog.Description';
 
 type AlertDialogActionElement = React.ElementRef<typeof AlertDialogPrimitive.Action>;
 interface AlertDialogActionProps
@@ -97,7 +97,7 @@ const AlertDialogAction = React.forwardRef<AlertDialogActionElement, AlertDialog
     </AlertDialogPrimitive.Action>
   )
 );
-AlertDialogAction.displayName = 'AlertDialogAction';
+AlertDialogAction.displayName = 'AlertDialog.Action';
 
 type AlertDialogCancelElement = React.ElementRef<typeof AlertDialogPrimitive.Cancel>;
 interface AlertDialogCancelProps
@@ -109,7 +109,7 @@ const AlertDialogCancel = React.forwardRef<AlertDialogCancelElement, AlertDialog
     </AlertDialogPrimitive.Cancel>
   )
 );
-AlertDialogCancel.displayName = 'AlertDialogCancel';
+AlertDialogCancel.displayName = 'AlertDialog.Cancel';
 
 export {
   AlertDialogRoot as Root,

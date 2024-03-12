@@ -63,7 +63,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
   }
 );
 
-SegmentedControlRoot.displayName = 'SegmentedControlRoot';
+SegmentedControlRoot.displayName = 'SegmentedControl.Root';
 
 interface SegmentedControlItemOwnProps {
   value: string;
@@ -94,7 +94,7 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
   )
 );
 
-SegmentedControlItem.displayName = 'SegmentedControlItem';
+SegmentedControlItem.displayName = 'SegmentedControl.Item';
 
 export { SegmentedControlRoot as Root, SegmentedControlItem as Item };
 export type { SegmentedControlRootProps as RootProps, SegmentedControlItemProps as ItemProps };

@@ -69,7 +69,7 @@ const CheckboxCardGroupRoot = React.forwardRef<
     </CheckboxCardGroupProvider>
   );
 });
-CheckboxCardGroupRoot.displayName = 'CheckboxCardGroupRoot';
+CheckboxCardGroupRoot.displayName = 'CheckboxCardGroup.Root';
 
 type CheckboxCardGroupItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxCardGroupItemProps
@@ -115,7 +115,7 @@ const CheckboxCardGroupItem = React.forwardRef<
     </label>
   );
 });
-CheckboxCardGroupItem.displayName = 'CheckboxCardGroupItem';
+CheckboxCardGroupItem.displayName = 'CheckboxCardGroup.Item';
 
 export { CheckboxCardGroupRoot as Root, CheckboxCardGroupItem as Item };
 export type { CheckboxCardGroupRootProps as RootProps, CheckboxCardGroupItemProps as ItemProps };

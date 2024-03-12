@@ -88,7 +88,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
     );
   }
 );
-TextFieldRoot.displayName = 'TextFieldRoot';
+TextFieldRoot.displayName = 'TextField.Root';
 
 type TextFieldSlotElement = React.ElementRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
@@ -109,7 +109,7 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
     );
   }
 );
-TextFieldSlot.displayName = 'TextFieldSlot';
+TextFieldSlot.displayName = 'TextField.Slot';
 
 export { TextFieldRoot as Root, TextFieldSlot as Slot };
 export type { TextFieldRootProps as RootProps, TextFieldSlotProps as SlotProps };

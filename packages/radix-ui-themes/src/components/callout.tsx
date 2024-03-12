@@ -49,7 +49,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
     );
   }
 );
-CalloutRoot.displayName = 'CalloutRoot';
+CalloutRoot.displayName = 'Callout.Root';
 
 type CalloutIconElement = React.ElementRef<'div'>;
 interface CalloutIconProps extends ComponentPropsWithout<'div', RemovedProps> {}
@@ -68,7 +68,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
     );
   }
 );
-CalloutIcon.displayName = 'CalloutIcon';
+CalloutIcon.displayName = 'Callout.Icon';
 
 type CalloutTextElement = React.ElementRef<'p'>;
 type CalloutTextProps = ComponentPropsAs<typeof Text, 'p'>;
@@ -89,7 +89,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
     );
   }
 );
-CalloutText.displayName = 'CalloutText';
+CalloutText.displayName = 'Callout.Text';
 
 export { CalloutRoot as Root, CalloutIcon as Icon, CalloutText as Text };
 export type {

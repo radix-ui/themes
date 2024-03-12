@@ -15,7 +15,7 @@ interface HoverCardRootProps
 const HoverCardRoot: React.FC<HoverCardRootProps> = (props) => (
   <HoverCardPrimitive.Root closeDelay={150} openDelay={200} {...props} />
 );
-HoverCardRoot.displayName = 'HoverCardRoot';
+HoverCardRoot.displayName = 'HoverCard.Root';
 
 type HoverCardTriggerElement = React.ElementRef<typeof HoverCardPrimitive.Trigger>;
 interface HoverCardTriggerProps
@@ -32,7 +32,7 @@ const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTrig
     </HoverCardPrimitive.Trigger>
   )
 );
-HoverCardTrigger.displayName = 'HoverCardTrigger';
+HoverCardTrigger.displayName = 'HoverCard.Trigger';
 
 type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
 interface HoverCardContentProps
@@ -62,7 +62,7 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
     );
   }
 );
-HoverCardContent.displayName = 'HoverCardContent';
+HoverCardContent.displayName = 'HoverCard.Content';
 
 export { HoverCardRoot as Root, HoverCardTrigger as Trigger, HoverCardContent as Content };
 export type {

@@ -68,7 +68,7 @@ const CheckboxGroupRoot = React.forwardRef<CheckboxGroupRootElement, CheckboxGro
     );
   }
 );
-CheckboxGroupRoot.displayName = 'CheckboxGroupRoot';
+CheckboxGroupRoot.displayName = 'CheckboxGroup.Root';
 
 type CheckboxGroupItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxGroupItemProps
@@ -110,7 +110,7 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
     );
   }
 );
-CheckboxGroupItem.displayName = 'CheckboxGroupItem';
+CheckboxGroupItem.displayName = 'CheckboxGroup.Item';
 
 type CheckboxGroupItemCheckboxElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxGroupItemCheckboxProps
@@ -149,7 +149,7 @@ const CheckboxGroupItemCheckbox = React.forwardRef<
     </CheckboxGroupPrimitive.Item>
   );
 });
-CheckboxGroupItemCheckbox.displayName = 'CheckboxGroupItemCheckbox';
+CheckboxGroupItemCheckbox.displayName = 'CheckboxGroup.ItemCheckbox';
 
 export { CheckboxGroupRoot as Root, CheckboxGroupItem as Item };
 export type { CheckboxGroupRootProps as RootProps, CheckboxGroupItemProps as ItemProps };
