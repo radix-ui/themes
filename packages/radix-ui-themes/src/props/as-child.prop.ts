@@ -9,6 +9,8 @@ const asChildProp = {
     type: 'boolean',
     default: undefined,
   },
-} satisfies { asChild: PropDef<boolean> };
+} satisfies {
+  asChild: PropDef<boolean>;
+};
 
 export { asChildProp };

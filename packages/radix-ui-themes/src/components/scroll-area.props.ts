@@ -7,11 +7,10 @@ const scrollbarsValues = ['vertical', 'horizontal', 'both'] as const;
 const scrollAreaPropDefs = {
   ...asChildProp,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '1', responsive: true },
-  radius: radiusProp,
+  ...radiusProp,
   scrollbars: { type: 'enum', values: scrollbarsValues, default: 'both' },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
-  radius: typeof radiusProp;
   scrollbars: PropDef<(typeof scrollbarsValues)[number]>;
 };
 

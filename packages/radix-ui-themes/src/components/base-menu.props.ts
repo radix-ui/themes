@@ -18,37 +18,31 @@ const baseMenuContentPropDefs = {
     values: contentVariants,
     default: 'solid',
   },
-  color: colorProp,
-  highContrast: highContrastProp,
+  ...colorProp,
+  ...highContrastProp,
 } satisfies {
   size: PropDef<(typeof contentSizes)[number]>;
   variant: PropDef<(typeof contentVariants)[number]>;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
 };
 
 const baseMenuItemPropDefs = {
   ...asChildProp,
-  color: inheritedColorProp,
+  ...inheritedColorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
-  color: typeof inheritedColorProp;
   shortcut: PropDef<string>;
 };
 
 const baseMenuCheckboxItemPropDefs = {
-  color: inheritedColorProp,
+  ...inheritedColorProp,
   shortcut: { type: 'string', default: undefined },
 } satisfies {
-  color: typeof inheritedColorProp;
   shortcut: PropDef<string>;
 };
 
 const baseMenuRadioItemPropDefs = {
-  color: inheritedColorProp,
-} satisfies {
-  color: typeof inheritedColorProp;
-};
+  ...inheritedColorProp,
+} satisfies {};
 
 export {
   baseMenuContentPropDefs,

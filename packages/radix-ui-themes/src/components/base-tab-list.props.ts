@@ -21,14 +21,12 @@ const baseTabListPropDefs = {
     default: 'start',
     responsive: true,
   },
-  color: colorProp,
-  highContrast: highContrastProp,
+  ...colorProp,
+  ...highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   wrap: PropDef<(typeof wrapValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
 };
 
 export { baseTabListPropDefs };

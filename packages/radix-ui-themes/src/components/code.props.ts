@@ -22,19 +22,14 @@ const codePropDefs = {
     responsive: true,
   },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  weight: weightProp,
-  color: colorProp,
-  highContrast: highContrastProp,
-  truncate: truncateProp,
-  wrap: textWrapProp,
+  ...weightProp,
+  ...colorProp,
+  ...highContrastProp,
+  ...truncateProp,
+  ...textWrapProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
-  weight: typeof weightProp;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
-  truncate: typeof truncateProp;
-  wrap: typeof textWrapProp;
 };
 
 export { codePropDefs };

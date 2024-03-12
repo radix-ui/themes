@@ -20,18 +20,13 @@ const blockquotePropDefs = {
     default: undefined,
     responsive: true,
   },
-  weight: weightProp,
-  color: inheritedColorProp,
-  highContrast: highContrastProp,
-  truncate: truncateProp,
-  wrap: textWrapProp,
+  ...weightProp,
+  ...inheritedColorProp,
+  ...highContrastProp,
+  ...truncateProp,
+  ...textWrapProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
-  weight: typeof weightProp;
-  color: typeof inheritedColorProp;
-  highContrast: typeof highContrastProp;
-  truncate: typeof truncateProp;
-  wrap: typeof textWrapProp;
 };
 
 export { blockquotePropDefs };

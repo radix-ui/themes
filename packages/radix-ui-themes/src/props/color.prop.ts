@@ -18,10 +18,14 @@ const accentColorsGrouped = [
 const grayColors = ['auto', ...colorsGray] as const;
 
 const colorProp = {
-  type: 'enum',
-  values: accentColors,
-  default: '' as (typeof accentColors)[number] | undefined,
-} satisfies PropDef<(typeof accentColors)[number]>;
+  color: {
+    type: 'enum',
+    values: accentColors,
+    default: '' as (typeof accentColors)[number] | undefined,
+  },
+} satisfies {
+  color: PropDef<(typeof accentColors)[number]>;
+};
 
 // Difference between `colorProp` and `inheritedColorProp` is in the defaults:
 //
@@ -31,10 +35,14 @@ const colorProp = {
 // `default: undefined` allows components like Text to inherit color directly,
 // but respond to `data-accent-color` on parent when it's `highContrast`.
 const inheritedColorProp = {
-  type: 'enum',
-  values: accentColors,
-  default: undefined as (typeof accentColors)[number] | undefined,
-} satisfies PropDef<(typeof accentColors)[number]>;
+  color: {
+    type: 'enum',
+    values: accentColors,
+    default: undefined as (typeof accentColors)[number] | undefined,
+  },
+} satisfies {
+  color: PropDef<(typeof accentColors)[number]>;
+};
 
 export {
   colorProp,

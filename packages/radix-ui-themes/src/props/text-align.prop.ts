@@ -1,13 +1,17 @@
 import type { PropDef } from './prop-def.js';
 
-const alignValues = ['left', 'center', 'right'] as const;
+const textAlignValues = ['left', 'center', 'right'] as const;
 
-const alignProp = {
-  type: 'enum',
-  className: 'rt-r-ta',
-  values: alignValues,
-  default: undefined,
-  responsive: true,
-} satisfies PropDef<(typeof alignValues)[number]>;
+const textAlignProp = {
+  align: {
+    type: 'enum',
+    className: 'rt-r-ta',
+    values: textAlignValues,
+    default: undefined,
+    responsive: true,
+  },
+} satisfies {
+  align: PropDef<(typeof textAlignValues)[number]>;
+};
 
-export { alignProp };
+export { textAlignProp };

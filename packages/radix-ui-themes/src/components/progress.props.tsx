@@ -8,16 +8,13 @@ const progressPropDefs = {
   ...widthPropDefs,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
-  color: colorProp,
-  highContrast: highContrastProp,
-  radius: radiusProp,
+  ...colorProp,
+  ...highContrastProp,
+  ...radiusProp,
   duration: { type: 'string', default: undefined },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
-  radius: typeof radiusProp;
   duration: PropDef<string>;
 };
 

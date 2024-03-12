@@ -1,7 +1,7 @@
 import {
   weightProp,
-  alignProp,
-  trimProp,
+  textAlignProp,
+  leadingTrimProp,
   highContrastProp,
   inheritedColorProp,
   textWrapProp,
@@ -23,23 +23,16 @@ const textPropDefs = {
     default: undefined,
     responsive: true,
   },
-  weight: weightProp,
-  align: alignProp,
-  trim: trimProp,
-  truncate: truncateProp,
-  wrap: textWrapProp,
-  color: inheritedColorProp,
-  highContrast: highContrastProp,
+  ...weightProp,
+  ...textAlignProp,
+  ...leadingTrimProp,
+  ...truncateProp,
+  ...textWrapProp,
+  ...inheritedColorProp,
+  ...highContrastProp,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
   size: PropDef<(typeof sizes)[number]>;
-  weight: typeof weightProp;
-  align: typeof alignProp;
-  trim: typeof trimProp;
-  truncate: typeof truncateProp;
-  wrap: typeof textWrapProp;
-  color: typeof inheritedColorProp;
-  highContrast: typeof highContrastProp;
 };
 
 export { textPropDefs };

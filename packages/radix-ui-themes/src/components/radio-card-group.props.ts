@@ -9,15 +9,13 @@ const radioCardGroupRootPropDefs = {
   ...asChildProp,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
-  color: colorProp,
-  highContrast: highContrastProp,
+  ...colorProp,
+  ...highContrastProp,
   columns: { ...gridPropDefs.columns, default: 'repeat(auto-fit, minmax(160px, 1fr))' },
   gap: { ...gridPropDefs.gap, default: '4' },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
   columns: PropDef<(typeof gridPropDefs.columns.values)[number]>;
   gap: PropDef<(typeof gridPropDefs.gap.values)[number]>;
 };

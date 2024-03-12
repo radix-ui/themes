@@ -8,16 +8,13 @@ const avatarPropDefs = {
   ...asChildProp,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '3', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  color: colorProp,
-  highContrast: highContrastProp,
-  radius: radiusProp,
+  ...colorProp,
+  ...highContrastProp,
+  ...radiusProp,
   fallback: { type: 'ReactNode', default: undefined, required: true },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
-  radius: typeof radiusProp;
   fallback: PropDef<React.ReactNode>;
 };
 

@@ -8,27 +8,24 @@ const variants = ['classic', 'surface', 'soft'] as const;
 const textFieldRootPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
-  color: colorProp,
-  radius: radiusProp,
+  ...colorProp,
+  ...radiusProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
-  color: typeof colorProp;
-  radius: typeof radiusProp;
 };
 
 const sides = ['left', 'right'] as const;
 
 const textFieldSlotPropDefs = {
   side: { type: 'enum', values: sides, default: undefined },
-  color: inheritedColorProp,
+  ...inheritedColorProp,
   gap: flexPropDefs.gap,
   px: paddingPropDefs.px,
   pl: paddingPropDefs.pl,
   pr: paddingPropDefs.pr,
 } satisfies {
   side: PropDef<(typeof sides)[number]>;
-  color: typeof inheritedColorProp;
   gap: typeof flexPropDefs.gap;
   px: typeof paddingPropDefs.px;
   pl: typeof paddingPropDefs.pl;

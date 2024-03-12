@@ -3,7 +3,7 @@ import {
   colorProp,
   highContrastProp,
   textWrapProp,
-  trimProp,
+  leadingTrimProp,
   truncateProp,
   weightProp,
 } from '../props/index.js';
@@ -21,22 +21,17 @@ const linkPropDefs = {
     default: undefined,
     responsive: true,
   },
-  weight: weightProp,
-  trim: trimProp,
-  truncate: truncateProp,
-  wrap: textWrapProp,
+  ...weightProp,
+  ...leadingTrimProp,
+  ...truncateProp,
+  ...textWrapProp,
   underline: { type: 'enum', className: 'rt-underline', values: underline, default: 'auto' },
-  color: colorProp,
-  highContrast: highContrastProp,
+  ...colorProp,
+  ...highContrastProp,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
-  weight: typeof weightProp;
-  trim: typeof trimProp;
-  truncate: typeof truncateProp;
-  wrap: typeof textWrapProp;
+
   underline: PropDef<(typeof underline)[number]>;
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
 };
 
 export { linkPropDefs };
