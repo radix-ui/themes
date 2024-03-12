@@ -118,6 +118,7 @@
   - Rework the internal HTML structure and styles. These components now render fewer HTML nodes and forward all props to the topmost node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `DropdownMenu`
   - Use a brighter text color for the highlighted item when the Content part uses `variant="soft"`
+  - Add an optional `TriggerIcon` part that renders an arrow down indicator
 - `Box`, `Flex`, `Grid`
   - Add support for `as` prop to render as `span` or `div`
   - For Box, `display: block` style is now enforced regardless of the tag
