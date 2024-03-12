@@ -36,7 +36,7 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
     );
   }
 );
-DataListRoot.displayName = 'DataListRoot';
+DataListRoot.displayName = 'DataList.Root';
 
 type DataListItemElement = HTMLDivElement;
 type DataListItemOwnProps = GetPropDefTypes<typeof dataListItemPropDefs>;
@@ -51,7 +51,7 @@ const DataListItem = React.forwardRef<DataListItemElement, DataListItemProps>(
     );
   }
 );
-DataListItem.displayName = 'DataListItem';
+DataListItem.displayName = 'DataList.Item';
 
 type DataListLabelElement = React.ElementRef<'dt'>;
 type DataListLabelOwnProps = GetPropDefTypes<typeof dataListLabelPropDefs>;
@@ -71,7 +71,7 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
     );
   }
 );
-DataListLabel.displayName = 'DataListLabel';
+DataListLabel.displayName = 'DataList.Label';
 
 type DataListValueElement = React.ElementRef<'dd'>;
 interface DataListValueProps extends ComponentPropsWithout<'dd', RemovedProps> {}
@@ -82,7 +82,7 @@ const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>
     </dd>
   )
 );
-DataListValue.displayName = 'DataListValue';
+DataListValue.displayName = 'DataList.Value';
 
 export {
   DataListRoot as Root,

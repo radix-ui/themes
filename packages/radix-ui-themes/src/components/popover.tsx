@@ -14,7 +14,7 @@ interface PopoverRootProps extends React.ComponentPropsWithoutRef<typeof Popover
 const PopoverRoot: React.FC<PopoverRootProps> = (props: PopoverRootProps) => (
   <PopoverPrimitive.Root {...props} />
 );
-PopoverRoot.displayName = 'PopoverRoot';
+PopoverRoot.displayName = 'Popover.Root';
 
 type PopoverTriggerElement = React.ElementRef<typeof PopoverPrimitive.Trigger>;
 interface PopoverTriggerProps
@@ -26,7 +26,7 @@ const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerPro
     </PopoverPrimitive.Trigger>
   )
 );
-PopoverTrigger.displayName = 'PopoverTrigger';
+PopoverTrigger.displayName = 'Popover.Trigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
@@ -56,7 +56,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
     );
   }
 );
-PopoverContent.displayName = 'PopoverContent';
+PopoverContent.displayName = 'Popover.Content';
 
 type PopoverCloseElement = React.ElementRef<typeof PopoverPrimitive.Close>;
 interface PopoverCloseProps
@@ -68,7 +68,7 @@ const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
     </PopoverPrimitive.Close>
   )
 );
-PopoverClose.displayName = 'PopoverClose';
+PopoverClose.displayName = 'Popover.Close';
 
 export {
   PopoverRoot as Root,

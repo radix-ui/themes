@@ -39,7 +39,7 @@ const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, 
     </NavigationMenu.Root>
   );
 });
-TabNavRoot.displayName = 'TabNavRoot';
+TabNavRoot.displayName = 'TabNav.Root';
 
 type TabNavLinkElement = React.ElementRef<typeof NavigationMenu.Link>;
 type TabNavLinkOwnProps = GetPropDefTypes<typeof tabNavLinkPropDefs>;
@@ -70,7 +70,7 @@ const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, 
     </NavigationMenu.Item>
   );
 });
-TabNavLink.displayName = 'TabNavLink';
+TabNavLink.displayName = 'TabNav.Link';
 
 export { TabNavRoot as Root, TabNavLink as Link };
 export type { TabNavRootProps as RootProps, TabNavLinkProps as LinkProps };

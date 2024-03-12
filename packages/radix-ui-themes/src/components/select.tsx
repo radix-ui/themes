@@ -35,7 +35,7 @@ const SelectRoot: React.FC<SelectRootProps> = (props) => {
     </SelectPrimitive.Root>
   );
 };
-SelectRoot.displayName = 'SelectRoot';
+SelectRoot.displayName = 'Select.Root';
 
 type SelectTriggerElement = React.ElementRef<typeof SelectPrimitive.Trigger>;
 type SelectTriggerOwnProps = GetPropDefTypes<typeof selectTriggerPropDefs>;
@@ -74,7 +74,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
     );
   }
 );
-SelectTrigger.displayName = 'SelectTrigger';
+SelectTrigger.displayName = 'Select.Trigger';
 
 type SelectContentElement = React.ElementRef<typeof SelectPrimitive.Content>;
 type SelectContentOwnProps = GetPropDefTypes<typeof selectContentPropDefs>;
@@ -132,7 +132,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
     );
   }
 );
-SelectContent.displayName = 'SelectContent';
+SelectContent.displayName = 'Select.Content';
 
 type SelectItemElement = React.ElementRef<typeof SelectPrimitive.Item>;
 interface SelectItemProps
@@ -153,7 +153,7 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
     </SelectPrimitive.Item>
   );
 });
-SelectItem.displayName = 'SelectItem';
+SelectItem.displayName = 'Select.Item';
 
 type SelectGroupElement = React.ElementRef<typeof SelectPrimitive.Group>;
 interface SelectGroupProps
@@ -168,7 +168,7 @@ const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
     />
   )
 );
-SelectGroup.displayName = 'SelectGroup';
+SelectGroup.displayName = 'Select.Group';
 
 type SelectLabelElement = React.ElementRef<typeof SelectPrimitive.Label>;
 interface SelectLabelProps
@@ -183,7 +183,7 @@ const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
     />
   )
 );
-SelectLabel.displayName = 'SelectLabel';
+SelectLabel.displayName = 'Select.Label';
 
 type SelectSeparatorElement = React.ElementRef<typeof SelectPrimitive.Separator>;
 interface SelectSeparatorProps
@@ -198,7 +198,7 @@ const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparator
     />
   )
 );
-SelectSeparator.displayName = 'SelectSeparator';
+SelectSeparator.displayName = 'Select.Separator';
 
 export {
   SelectRoot as Root,

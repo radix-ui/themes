@@ -23,7 +23,7 @@ interface DropdownMenuRootProps
 const DropdownMenuRoot: React.FC<DropdownMenuRootProps> = (props) => (
   <DropdownMenuPrimitive.Root {...props} />
 );
-DropdownMenuRoot.displayName = 'DropdownMenuRoot';
+DropdownMenuRoot.displayName = 'DropdownMenu.Root';
 
 type DropdownMenuTriggerElement = React.ElementRef<typeof DropdownMenuPrimitive.Trigger>;
 interface DropdownMenuTriggerProps
@@ -35,7 +35,7 @@ const DropdownMenuTrigger = React.forwardRef<DropdownMenuTriggerElement, Dropdow
     </DropdownMenuPrimitive.Trigger>
   )
 );
-DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';
+DropdownMenuTrigger.displayName = 'DropdownMenu.Trigger';
 
 type DropdownMenuContentOwnProps = GetPropDefTypes<typeof dropdownMenuContentPropDefs>;
 type DropdownMenuContentContextValue = DropdownMenuContentOwnProps;
@@ -95,7 +95,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     );
   }
 );
-DropdownMenuContent.displayName = 'DropdownMenuContent';
+DropdownMenuContent.displayName = 'DropdownMenu.Content';
 
 type DropdownMenuLabelElement = React.ElementRef<typeof DropdownMenuPrimitive.Label>;
 interface DropdownMenuLabelProps
@@ -110,7 +110,7 @@ const DropdownMenuLabel = React.forwardRef<DropdownMenuLabelElement, DropdownMen
     />
   )
 );
-DropdownMenuLabel.displayName = 'DropdownMenuLabel';
+DropdownMenuLabel.displayName = 'DropdownMenu.Label';
 
 type DropdownMenuItemElement = React.ElementRef<typeof DropdownMenuPrimitive.Item>;
 type DropdownMenuItemOwnProps = GetPropDefTypes<typeof dropdownMenuItemPropDefs>;
@@ -139,7 +139,7 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
     );
   }
 );
-DropdownMenuItem.displayName = 'DropdownMenuItem';
+DropdownMenuItem.displayName = 'DropdownMenu.Item';
 
 type DropdownMenuGroupElement = React.ElementRef<typeof DropdownMenuPrimitive.Group>;
 interface DropdownMenuGroupProps
@@ -154,7 +154,7 @@ const DropdownMenuGroup = React.forwardRef<DropdownMenuGroupElement, DropdownMen
     />
   )
 );
-DropdownMenuGroup.displayName = 'DropdownMenuGroup';
+DropdownMenuGroup.displayName = 'DropdownMenu.Group';
 
 type DropdownMenuRadioGroupElement = React.ElementRef<typeof DropdownMenuPrimitive.RadioGroup>;
 interface DropdownMenuRadioGroupProps
@@ -170,7 +170,7 @@ const DropdownMenuRadioGroup = React.forwardRef<
     className={classNames('rt-BaseMenuRadioGroup', 'rt-DropdownMenuRadioGroup', className)}
   />
 ));
-DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
+DropdownMenuRadioGroup.displayName = 'DropdownMenu.RadioGroup';
 
 type DropdownMenuRadioItemElement = React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>;
 type DropdownMenuRadioItemOwnProps = GetPropDefTypes<typeof dropdownMenuRadioItemPropDefs>;
@@ -208,7 +208,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     </DropdownMenuPrimitive.RadioItem>
   );
 });
-DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem';
+DropdownMenuRadioItem.displayName = 'DropdownMenu.RadioItem';
 
 type DropdownMenuCheckboxItemElement = React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>;
 type DropdownMenuCheckboxItemOwnProps = GetPropDefTypes<typeof dropdownMenuCheckboxItemPropDefs>;
@@ -248,14 +248,14 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     </DropdownMenuPrimitive.CheckboxItem>
   );
 });
-DropdownMenuCheckboxItem.displayName = 'DropdownMenuCheckboxItem';
+DropdownMenuCheckboxItem.displayName = 'DropdownMenu.CheckboxItem';
 
 interface DropdownMenuSubProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub> {}
 const DropdownMenuSub: React.FC<DropdownMenuSubProps> = (props) => (
   <DropdownMenuPrimitive.Sub {...props} />
 );
-DropdownMenuSub.displayName = 'DropdownMenuSub';
+DropdownMenuSub.displayName = 'DropdownMenu.Sub';
 
 type DropdownMenuSubTriggerElement = React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>;
 interface DropdownMenuSubTriggerProps
@@ -285,7 +285,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     </DropdownMenuPrimitive.SubTrigger>
   );
 });
-DropdownMenuSubTrigger.displayName = 'DropdownMenuSubTrigger';
+DropdownMenuSubTrigger.displayName = 'DropdownMenu.SubTrigger';
 
 type DropdownMenuSubContentElement = React.ElementRef<typeof DropdownMenuPrimitive.SubContent>;
 interface DropdownMenuSubContentProps
@@ -332,7 +332,7 @@ const DropdownMenuSubContent = React.forwardRef<
     </DropdownMenuPrimitive.Portal>
   );
 });
-DropdownMenuSubContent.displayName = 'DropdownMenuSubContent';
+DropdownMenuSubContent.displayName = 'DropdownMenu.SubContent';
 
 type DropdownMenuSeparatorElement = React.ElementRef<typeof DropdownMenuPrimitive.Separator>;
 interface DropdownMenuSeparatorProps
@@ -348,7 +348,7 @@ const DropdownMenuSeparator = React.forwardRef<
     className={classNames('rt-BaseMenuSeparator', 'rt-DropdownMenuSeparator', className)}
   />
 ));
-DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
+DropdownMenuSeparator.displayName = 'DropdownMenu.Separator';
 
 export {
   DropdownMenuRoot as Root,

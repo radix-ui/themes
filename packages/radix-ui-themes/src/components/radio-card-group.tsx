@@ -39,7 +39,7 @@ const RadioCardGroupRoot = React.forwardRef<RadioCardGroupRootElement, RadioCard
     );
   }
 );
-RadioCardGroupRoot.displayName = 'RadioCardGroupRoot';
+RadioCardGroupRoot.displayName = 'RadioCardGroup.Root';
 
 type RadioCardGroupItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioCardGroupItemProps
@@ -55,7 +55,7 @@ const RadioCardGroupItem = React.forwardRef<RadioCardGroupItemElement, RadioCard
     />
   )
 );
-RadioCardGroupItem.displayName = 'RadioCardGroupItem';
+RadioCardGroupItem.displayName = 'RadioCardGroup.Item';
 
 export { RadioCardGroupRoot as Root, RadioCardGroupItem as Item };
 export type { RadioCardGroupRootProps as RootProps, RadioCardGroupItemProps as ItemProps };

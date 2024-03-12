@@ -34,7 +34,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
     </div>
   );
 });
-TableRoot.displayName = 'Table';
+TableRoot.displayName = 'Table.Root';
 
 type TableHeaderElement = React.ElementRef<'thead'>;
 interface TableHeaderProps extends ComponentPropsWithout<'thead', RemovedProps> {}
@@ -43,7 +43,7 @@ const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
     <thead {...props} ref={forwardedRef} className={classNames('rt-TableHeader', className)} />
   )
 );
-TableHeader.displayName = 'TableHeader';
+TableHeader.displayName = 'Table.Header';
 
 type TableBodyElement = React.ElementRef<'tbody'>;
 interface TableBodyProps extends ComponentPropsWithout<'tbody', RemovedProps> {}
@@ -52,7 +52,7 @@ const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>(
     <tbody {...props} ref={forwardedRef} className={classNames('rt-TableBody', className)} />
   )
 );
-TableBody.displayName = 'TableBody';
+TableBody.displayName = 'Table.Body';
 
 type TableRowElement = React.ElementRef<'tr'>;
 type TableRowOwnProps = GetPropDefTypes<typeof tableRowPropDefs>;
@@ -61,7 +61,7 @@ const TableRow = React.forwardRef<TableRowElement, TableRowProps>((props, forwar
   const { className, ...rowProps } = extractProps(props, tableRowPropDefs);
   return <tr {...rowProps} ref={forwardedRef} className={classNames('rt-TableRow', className)} />;
 });
-TableRow.displayName = 'TableRow';
+TableRow.displayName = 'Table.Row';
 
 type TableCellElement = React.ElementRef<'td'>;
 type TableCellOwnProps = GetPropDefTypes<typeof tableCellPropDefs>;
@@ -72,7 +72,7 @@ const TableCell = React.forwardRef<TableCellElement, TableCellProps>((props, for
   const { className, ...cellProps } = extractProps(props, tableCellPropDefs);
   return <td className={classNames('rt-TableCell', className)} ref={forwardedRef} {...cellProps} />;
 });
-TableCell.displayName = 'TableCell';
+TableCell.displayName = 'Table.Cell';
 
 type TableColumnHeaderCellElement = React.ElementRef<'th'>;
 interface TableColumnHeaderCellProps
@@ -92,7 +92,7 @@ const TableColumnHeaderCell = React.forwardRef<
     />
   );
 });
-TableColumnHeaderCell.displayName = 'TableColumnHeaderCell';
+TableColumnHeaderCell.displayName = 'Table.ColumnHeaderCell';
 
 type TableRowHeaderCellElement = React.ElementRef<'th'>;
 interface TableRowHeaderCellProps
@@ -111,7 +111,7 @@ const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowH
     );
   }
 );
-TableRowHeaderCell.displayName = 'TableRowHeaderCell';
+TableRowHeaderCell.displayName = 'Table.RowHeaderCell';
 
 export {
   TableRoot as Root,
