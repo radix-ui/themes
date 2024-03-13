@@ -16,8 +16,8 @@ import { composeRefs } from '@radix-ui/react-compose-refs';
 
 type TextFieldRootElement = React.ElementRef<'input'>;
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
-  defaultValue?: string;
-  value?: string;
+  defaultValue?: string | number;
+  value?: string | number;
   type?:
     | 'date'
     | 'datetime-local'
