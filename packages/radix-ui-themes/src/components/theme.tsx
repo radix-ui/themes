@@ -71,7 +71,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
       accentColor: accentColorProp = themePropDefs.accentColor.default,
       grayColor: grayColorProp = themePropDefs.grayColor.default,
       panelBackground: panelBackgroundProp = themePropDefs.panelBackground.default,
-      radius: radiusPropDef = themePropDefs.radius.default,
+      radius: radiusProp = themePropDefs.radius.default,
       scaling: scalingProp = themePropDefs.scaling.default,
       hasBackground = themePropDefs.hasBackground.default,
       ...rootProps
@@ -88,8 +88,8 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
     const [panelBackground, setPanelBackground] = React.useState(panelBackgroundProp);
     React.useEffect(() => setPanelBackground(panelBackgroundProp), [panelBackgroundProp]);
 
-    const [radius, setRadius] = React.useState(radiusPropDef);
-    React.useEffect(() => setRadius(radiusPropDef), [radiusPropDef]);
+    const [radius, setRadius] = React.useState(radiusProp);
+    React.useEffect(() => setRadius(radiusProp), [radiusProp]);
 
     const [scaling, setScaling] = React.useState(scalingProp);
     React.useEffect(() => setScaling(scalingProp), [scalingProp]);
