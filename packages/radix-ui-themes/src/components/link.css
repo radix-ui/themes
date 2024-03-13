@@ -2,6 +2,7 @@
   color: var(--accent-a11);
 
   /* Override the cursor on the HTML element even if rendering a <button> */
+  /* stylelint-disable selector-max-type */
   &:where(:any-link, button) {
     cursor: var(--cursor-link);
   }
