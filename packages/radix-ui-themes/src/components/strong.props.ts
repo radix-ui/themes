@@ -4,6 +4,6 @@ const strongPropDefs = {
   ...asChildPropDef,
   ...truncatePropDef,
   ...textWrapPropDef,
-} satisfies {};
+};
 
 export { strongPropDefs };

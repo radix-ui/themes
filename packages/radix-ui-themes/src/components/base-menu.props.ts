@@ -47,7 +47,7 @@ const baseMenuCheckboxItemPropDefs = {
 
 const baseMenuRadioItemPropDefs = {
   ...inheritedColorPropDef,
-} satisfies {};
+};
 
 export {
   baseMenuContentPropDefs,

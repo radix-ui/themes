@@ -4,6 +4,6 @@ const emPropDefs = {
   ...asChildPropDef,
   ...truncatePropDef,
   ...textWrapPropDef,
-} satisfies {};
+};
 
 export { emPropDefs };

@@ -51,6 +51,6 @@ const dataListLabelPropDefs = {
   ...widthPropDefs,
   ...colorPropDef,
   ...highContrastPropDef,
-} satisfies {};
+};
 
 export { dataListRootPropDefs, dataListItemPropDefs, dataListLabelPropDefs };

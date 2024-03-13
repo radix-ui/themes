@@ -4,6 +4,6 @@ const quotePropDefs = {
   ...asChildPropDef,
   ...truncatePropDef,
   ...textWrapPropDef,
-} satisfies {};
+};
 
 export { quotePropDefs };
