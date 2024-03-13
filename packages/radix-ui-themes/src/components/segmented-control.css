@@ -1,6 +1,8 @@
-.rt-SegmentedControlRoot {
+.radix-themes {
   --segmented-control-transition-duration: 80ms;
+}
 
+.rt-SegmentedControlRoot {
   display: inline-grid;
   vertical-align: top;
   grid-auto-flow: column;
