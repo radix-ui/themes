@@ -51,7 +51,7 @@ const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemPro
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
+      className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCard', className)}
     />
   )
 );

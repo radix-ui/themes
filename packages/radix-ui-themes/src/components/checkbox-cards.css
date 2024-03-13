@@ -7,7 +7,7 @@
   cursor: default;
 }
 
-.rt-CheckboxCardsItem {
+.rt-CheckboxCard {
   --base-card-padding-top: var(--checkbox-cards-item-padding-top);
   --base-card-padding-right: var(--checkbox-cards-item-padding-right);
   --base-card-padding-bottom: var(--checkbox-cards-item-padding-bottom);
@@ -40,7 +40,7 @@
   }
 }
 
-.rt-CheckboxCardsItemCheckbox {
+.rt-CheckboxCardCheckbox {
   position: absolute;
   right: var(--checkbox-cards-item-padding-left);
 }
@@ -51,7 +51,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-CheckboxCardsItem {
+.rt-CheckboxCard {
   --checkbox-cards-item-padding-right: calc(
     var(--checkbox-cards-item-padding-left) * 2 + var(--checkbox-cards-item-checkbox-size)
   );
@@ -105,7 +105,7 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-CheckboxCardsRoot.rt-variant-surface) {
-  .rt-CheckboxCardsItem {
+  .rt-CheckboxCard {
     --checkbox-cards-item-border-width: 1px;
     --checkbox-cards-item-background-color: var(--color-surface);
 
@@ -132,7 +132,7 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-CheckboxCardsRoot.rt-variant-classic) {
-  .rt-CheckboxCardsItem {
+  .rt-CheckboxCard {
     --checkbox-cards-item-border-width: 1px;
     --checkbox-cards-item-background-color: var(--color-surface);
 
@@ -163,7 +163,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-CheckboxCardsItem:where(:has(:disabled)) {
+.rt-CheckboxCard:where(:has(:disabled)) {
   cursor: var(--cursor-disabled);
   color: var(--gray-a9);
 
