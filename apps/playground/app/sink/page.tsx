@@ -43,7 +43,7 @@ import {
   Progress,
   Quote,
   Radio,
-  RadioCardGroup,
+  RadioCards,
   RadioGroup,
   ScrollArea,
   Section,
@@ -85,7 +85,7 @@ import {
   kbdPropDefs,
   linkPropDefs,
   progressPropDefs,
-  radioCardGroupRootPropDefs,
+  radioCardsRootPropDefs,
   radioGroupRootPropDefs,
   radioPropDefs,
   scrollAreaPropDefs,
@@ -2455,27 +2455,27 @@ export default function Sink() {
                     <Separator size="3" my="5" />
                   </DocsSection>
 
-                  <DocsSection title="RadioCardGroup">
+                  <DocsSection title="RadioCards">
                     <table className={styles.table}>
                       <tbody>
-                        {radioCardGroupRootPropDefs.variant.values.map((variant, index) => (
+                        {radioCardsRootPropDefs.variant.values.map((variant, index) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
-                              <RadioCardGroup.Root
+                              <RadioCards.Root
                                 columns="3"
                                 defaultValue={String(index)}
                                 variant={variant}
                               >
-                                <RadioCardGroup.Item value="0">
+                                <RadioCards.Item value="0">
                                   <CodeIcon />
                                   <Text truncate>Node.js</Text>
-                                </RadioCardGroup.Item>
-                                <RadioCardGroup.Item value="1" disabled>
+                                </RadioCards.Item>
+                                <RadioCards.Item value="1" disabled>
                                   Ruby
-                                </RadioCardGroup.Item>
-                                <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
-                              </RadioCardGroup.Root>
+                                </RadioCards.Item>
+                                <RadioCards.Item value="2">Go</RadioCards.Item>
+                              </RadioCards.Root>
                             </td>
                           </tr>
                         ))}
@@ -2486,22 +2486,22 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {radioCardGroupRootPropDefs.size.values.map((size, index) => (
+                        {radioCardsRootPropDefs.size.values.map((size, index) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
-                              <RadioCardGroup.Root
+                              <RadioCards.Root
                                 size={size}
                                 columns="3"
                                 defaultValue={String(index)}
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <RadioCardGroup.Item value="0">Node.js</RadioCardGroup.Item>
-                                <RadioCardGroup.Item value="1" disabled>
+                                <RadioCards.Item value="0">Node.js</RadioCards.Item>
+                                <RadioCards.Item value="1" disabled>
                                   Ruby
-                                </RadioCardGroup.Item>
-                                <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
-                              </RadioCardGroup.Root>
+                                </RadioCards.Item>
+                                <RadioCards.Item value="2">Go</RadioCards.Item>
+                              </RadioCards.Root>
                             </td>
                           </tr>
                         ))}
@@ -2527,7 +2527,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                                {radioCardsRootPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -2536,10 +2536,10 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                                  {radioCardsRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
-                                        <RadioCardGroup.Root
+                                        <RadioCards.Root
                                           size="1"
                                           gap="2"
                                           columns="3"
@@ -2548,16 +2548,14 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroup.Item value="0">
-                                            Node.js
-                                          </RadioCardGroup.Item>
-                                          <RadioCardGroup.Item value="1" disabled>
+                                          <RadioCards.Item value="0">Node.js</RadioCards.Item>
+                                          <RadioCards.Item value="1" disabled>
                                             Ruby
-                                          </RadioCardGroup.Item>
-                                          <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
-                                        </RadioCardGroup.Root>
+                                          </RadioCards.Item>
+                                          <RadioCards.Item value="2">Go</RadioCards.Item>
+                                        </RadioCards.Root>
 
-                                        <RadioCardGroup.Root
+                                        <RadioCards.Root
                                           size="1"
                                           gap="2"
                                           columns="3"
@@ -2567,14 +2565,12 @@ export default function Sink() {
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <RadioCardGroup.Item value="0">
-                                            Node.js
-                                          </RadioCardGroup.Item>
-                                          <RadioCardGroup.Item value="1" disabled>
+                                          <RadioCards.Item value="0">Node.js</RadioCards.Item>
+                                          <RadioCards.Item value="1" disabled>
                                             Ruby
-                                          </RadioCardGroup.Item>
-                                          <RadioCardGroup.Item value="2">Go</RadioCardGroup.Item>
-                                        </RadioCardGroup.Root>
+                                          </RadioCards.Item>
+                                          <RadioCards.Item value="2">Go</RadioCards.Item>
+                                        </RadioCards.Root>
                                       </Flex>
                                     </td>
                                   ))}

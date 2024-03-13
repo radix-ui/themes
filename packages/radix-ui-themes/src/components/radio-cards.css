@@ -1,18 +1,18 @@
 @import './base-card.css';
 
-.rt-RadioCardGroupRoot {
+.rt-RadioCardsRoot {
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
   cursor: default;
 }
 
-.rt-RadioCardGroupItem {
-  --base-card-padding-top: var(--radio-card-group-item-padding-y);
-  --base-card-padding-right: var(--radio-card-group-item-padding-x);
-  --base-card-padding-bottom: var(--radio-card-group-item-padding-y);
-  --base-card-padding-left: var(--radio-card-group-item-padding-x);
-  --base-card-border-radius: var(--radio-card-group-item-border-radius);
-  --base-card-border-width: var(--radio-card-group-item-border-width);
+.rt-RadioCardsItem {
+  --base-card-padding-top: var(--radio-card-padding-y);
+  --base-card-padding-right: var(--radio-card-padding-x);
+  --base-card-padding-bottom: var(--radio-card-padding-y);
+  --base-card-padding-left: var(--radio-card-padding-x);
+  --base-card-border-radius: var(--radio-card-border-radius);
+  --base-card-border-width: var(--radio-card-border-width);
 
   display: flex;
   align-items: center;
@@ -40,33 +40,33 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 @breakpoints {
-  .rt-RadioCardGroupRoot {
+  .rt-RadioCardsRoot {
     /* 40px height for the card with one line of text */
     &:where(.rt-r-size-1) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding-x: var(--space-3);
-      --radio-card-group-item-padding-y: calc(var(--space-3) / 1.2);
-      --radio-card-group-item-border-radius: var(--radius-3);
+      --radio-card-padding-x: var(--space-3);
+      --radio-card-padding-y: calc(var(--space-3) / 1.2);
+      --radio-card-border-radius: var(--radius-3);
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-group-item-padding-x: var(--space-4);
-      --radio-card-group-item-padding-y: calc(var(--space-4) * 0.875);
-      --radio-card-group-item-border-radius: var(--radius-3);
+      --radio-card-padding-x: var(--space-4);
+      --radio-card-padding-y: calc(var(--space-4) * 0.875);
+      --radio-card-border-radius: var(--radius-3);
     }
     /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --radio-card-group-item-padding-x: var(--space-5);
-      --radio-card-group-item-padding-y: calc(var(--space-5) / 1.2);
-      --radio-card-group-item-border-radius: var(--radius-4);
+      --radio-card-padding-x: var(--space-5);
+      --radio-card-padding-y: calc(var(--space-5) / 1.2);
+      --radio-card-border-radius: var(--radius-4);
     }
   }
 }
@@ -77,13 +77,13 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-:where(.rt-RadioCardGroupRoot.rt-variant-surface) {
-  .rt-RadioCardGroupItem {
-    --radio-card-group-item-border-width: 1px;
-    --radio-card-group-item-background-color: var(--color-surface);
+:where(.rt-RadioCardsRoot.rt-variant-surface) {
+  .rt-RadioCardsItem {
+    --radio-card-border-width: 1px;
+    --radio-card-background-color: var(--color-surface);
 
     &::before {
-      background-color: var(--radio-card-group-item-background-color);
+      background-color: var(--radio-card-background-color);
     }
     &::after {
       box-shadow: var(--base-card-surface-box-shadow);
@@ -104,16 +104,16 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-:where(.rt-RadioCardGroupRoot.rt-variant-classic) {
-  .rt-RadioCardGroupItem {
-    --radio-card-group-item-border-width: 1px;
-    --radio-card-group-item-background-color: var(--color-surface);
+:where(.rt-RadioCardsRoot.rt-variant-classic) {
+  .rt-RadioCardsItem {
+    --radio-card-border-width: 1px;
+    --radio-card-background-color: var(--color-surface);
 
     transition: box-shadow 120ms;
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
-      background-color: var(--radio-card-group-item-background-color);
+      background-color: var(--radio-card-background-color);
     }
     &::after {
       box-shadow: var(--base-card-classic-box-shadow-inner);
@@ -136,11 +136,11 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCardGroupItem:where([data-state='checked']) {
+.rt-RadioCardsItem:where([data-state='checked']) {
   &::after {
     outline: 2px solid var(--accent-indicator);
   }
-  :where(.rt-RadioCardGroupRoot.rt-high-contrast) & {
+  :where(.rt-RadioCardsRoot.rt-high-contrast) & {
     &::after {
       outline-color: var(--accent-12);
     }
@@ -153,7 +153,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCardGroupItem:where(:focus-visible) {
+.rt-RadioCardsItem:where(:focus-visible) {
   &::after {
     outline: 2px solid var(--focus-8);
   }
@@ -173,7 +173,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCardGroupItem:where(:disabled) {
+.rt-RadioCardsItem:where(:disabled) {
   cursor: var(--cursor-disabled);
   color: var(--gray-a9);
 

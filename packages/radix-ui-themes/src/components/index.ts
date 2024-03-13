@@ -31,7 +31,7 @@ export * as Popover from './popover.js';
 export * from './portal.js';
 export * from './progress.js';
 export * from './quote.js';
-export * as RadioCardGroup from './radio-card-group.js';
+export * as RadioCards from './radio-cards.js';
 export * as RadioGroup from './radio-group.js';
 export * from './radio.js';
 export * from './reset.js';

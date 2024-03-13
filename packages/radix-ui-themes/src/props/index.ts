@@ -49,7 +49,7 @@ export * from '../components/popover.props.js';
 export * from '../components/progress.props.js';
 export * from '../components/quote.props.js';
 export * from '../components/radio.props.js';
-export * from '../components/radio-card-group.props.js';
+export * from '../components/radio-cards.props.js';
 export * from '../components/radio-group.props.js';
 export * from '../components/scroll-area.props.js';
 export * from '../components/section.props.js';
