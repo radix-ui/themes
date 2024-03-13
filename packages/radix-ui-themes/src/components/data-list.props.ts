@@ -30,9 +30,9 @@ const dataListRootPropDefs = {
     className: 'rt-r-trim', // Custom trim styles due to grid layout
   },
 } satisfies {
-  orientation?: PropDef<(typeof orientationValues)[number]>;
-  size?: PropDef<(typeof sizes)[number]>;
-  trim?: typeof leadingTrimPropDef.trim;
+  orientation: PropDef<(typeof orientationValues)[number]>;
+  size: PropDef<(typeof sizes)[number]>;
+  trim: typeof leadingTrimPropDef.trim;
 };
 
 const dataListItemPropDefs = {
@@ -44,7 +44,7 @@ const dataListItemPropDefs = {
     responsive: true,
   },
 } satisfies {
-  align?: PropDef<(typeof alignValues)[number]>;
+  align: PropDef<(typeof alignValues)[number]>;
 };
 
 const dataListLabelPropDefs = {

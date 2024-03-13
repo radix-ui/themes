@@ -64,9 +64,9 @@ const gapPropDefs = {
     responsive: true,
   },
 } satisfies {
-  gap?: PropDef<(typeof gapValues)[number]>;
-  gapX?: PropDef<(typeof gapValues)[number]>;
-  gapY?: PropDef<(typeof gapValues)[number]>;
+  gap: PropDef<(typeof gapValues)[number]>;
+  gapX: PropDef<(typeof gapValues)[number]>;
+  gapY: PropDef<(typeof gapValues)[number]>;
 };
 
 export { gapPropDefs };
