@@ -1,10 +1,10 @@
-import { asChildProp, heightPropDefs, widthPropDefs } from '../props/index.js';
+import { asChildPropDef, heightPropDefs, widthPropDefs } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const contentSizes = ['1', '2', '3'] as const;
 
 const hoverCardContentPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -25,7 +25,7 @@ const hoverCardContentPropDefs = {
 
 type HoverCardContentOwnProps = GetPropDefTypes<
   typeof hoverCardContentPropDefs &
-    typeof asChildProp &
+    typeof asChildPropDef &
     typeof widthPropDefs &
     typeof heightPropDefs
 >;

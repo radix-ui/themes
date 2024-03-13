@@ -4,7 +4,7 @@ export * from './prop-def.js';
 // Individual props
 export * from './as-child.prop.js';
 export * from './color.prop.js';
-export * from './gap.prop.js';
+export * from './gap.props.js';
 export * from './height.props.js';
 export * from './high-contrast.prop.js';
 export * from './layout.props.js';

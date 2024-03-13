@@ -1,12 +1,9 @@
-import { asChildProp, textWrapProp, truncateProp } from '../props/index.js';
+import { asChildPropDef, textWrapPropDef, truncatePropDef } from '../props/index.js';
 
 const strongPropDefs = {
-  ...asChildProp,
-  truncate: truncateProp,
-  wrap: textWrapProp,
-} satisfies {
-  truncate: typeof truncateProp;
-  wrap: typeof textWrapProp;
+  ...asChildPropDef,
+  ...truncatePropDef,
+  ...textWrapPropDef,
 };
 
 export { strongPropDefs };

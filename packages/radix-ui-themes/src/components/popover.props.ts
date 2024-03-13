@@ -1,10 +1,10 @@
-import { asChildProp, heightPropDefs, widthPropDefs } from '../props/index.js';
+import { asChildPropDef, heightPropDefs, widthPropDefs } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const contentSizes = ['1', '2', '3', '4'] as const;
 
 const popoverContentPropDefs = {
-  ...asChildProp,
+  ...asChildPropDef,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -24,7 +24,10 @@ const popoverContentPropDefs = {
 };
 
 type PopoverContentOwnProps = GetPropDefTypes<
-  typeof popoverContentPropDefs & typeof asChildProp & typeof widthPropDefs & typeof heightPropDefs
+  typeof popoverContentPropDefs &
+    typeof asChildPropDef &
+    typeof widthPropDefs &
+    typeof heightPropDefs
 >;
 
 export { popoverContentPropDefs };

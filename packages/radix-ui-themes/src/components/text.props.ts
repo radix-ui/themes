@@ -1,12 +1,12 @@
 import {
-  weightProp,
-  alignProp,
-  trimProp,
-  highContrastProp,
-  inheritedColorProp,
-  textWrapProp,
-  truncateProp,
-  asChildProp,
+  weightPropDef,
+  textAlignPropDef,
+  leadingTrimPropDef,
+  highContrastPropDef,
+  inheritedColorPropDef,
+  textWrapPropDef,
+  truncatePropDef,
+  asChildPropDef,
 } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
@@ -15,7 +15,7 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const textPropDefs = {
   as: { type: 'enum', values: as, default: 'span' },
-  ...asChildProp,
+  ...asChildPropDef,
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -23,23 +23,16 @@ const textPropDefs = {
     default: undefined,
     responsive: true,
   },
-  weight: weightProp,
-  align: alignProp,
-  trim: trimProp,
-  truncate: truncateProp,
-  wrap: textWrapProp,
-  color: inheritedColorProp,
-  highContrast: highContrastProp,
+  ...weightPropDef,
+  ...textAlignPropDef,
+  ...leadingTrimPropDef,
+  ...truncatePropDef,
+  ...textWrapPropDef,
+  ...inheritedColorPropDef,
+  ...highContrastPropDef,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
   size: PropDef<(typeof sizes)[number]>;
-  weight: typeof weightProp;
-  align: typeof alignProp;
-  trim: typeof trimProp;
-  truncate: typeof truncateProp;
-  wrap: typeof textWrapProp;
-  color: typeof inheritedColorProp;
-  highContrast: typeof highContrastProp;
 };
 
 export { textPropDefs };

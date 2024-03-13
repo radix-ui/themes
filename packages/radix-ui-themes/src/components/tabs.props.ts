@@ -1,12 +1,12 @@
-import { asChildProp } from '../props/index.js';
+import { asChildPropDef } from '../props/index.js';
 
 const tabsRootPropDefs = {
-  ...asChildProp,
-} satisfies {};
+  ...asChildPropDef,
+};
 
 const tabsContentPropDefs = {
-  ...asChildProp,
-} satisfies {};
+  ...asChildPropDef,
+};
 
 export { baseTabListPropDefs as tabsListPropDefs } from './base-tab-list.props.js';
 export { tabsRootPropDefs, tabsContentPropDefs };

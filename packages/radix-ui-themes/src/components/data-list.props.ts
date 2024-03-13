@@ -1,4 +1,9 @@
-import { widthPropDefs, trimProp, colorProp, highContrastProp } from '../props/index.js';
+import {
+  widthPropDefs,
+  leadingTrimPropDef,
+  colorPropDef,
+  highContrastPropDef,
+} from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
@@ -21,13 +26,13 @@ const dataListRootPropDefs = {
     responsive: true,
   },
   trim: {
-    ...trimProp,
+    ...leadingTrimPropDef.trim,
     className: 'rt-r-trim', // Custom trim styles due to grid layout
   },
 } satisfies {
-  orientation?: PropDef<(typeof orientationValues)[number]>;
-  size?: PropDef<(typeof sizes)[number]>;
-  trim?: typeof trimProp;
+  orientation: PropDef<(typeof orientationValues)[number]>;
+  size: PropDef<(typeof sizes)[number]>;
+  trim: typeof leadingTrimPropDef.trim;
 };
 
 const dataListItemPropDefs = {
@@ -39,16 +44,13 @@ const dataListItemPropDefs = {
     responsive: true,
   },
 } satisfies {
-  align?: PropDef<(typeof alignValues)[number]>;
+  align: PropDef<(typeof alignValues)[number]>;
 };
 
 const dataListLabelPropDefs = {
   ...widthPropDefs,
-  color: colorProp,
-  highContrast: highContrastProp,
-} satisfies {
-  color: typeof colorProp;
-  highContrast: typeof highContrastProp;
+  ...colorPropDef,
+  ...highContrastPropDef,
 };
 
 export { dataListRootPropDefs, dataListItemPropDefs, dataListLabelPropDefs };
