@@ -192,6 +192,10 @@
   &:where(summary)::marker {
     content: none;
   }
+  &:where(video) {
+    display: block;
+    width: stretch;
+  }
 
   /* * * * * * * * * * * * * * * * * * * */
   /*                                     */
