@@ -1,5 +1,5 @@
 .radix-themes {
-  --segmented-control-transition-duration: 80ms;
+  --segmented-control-transition-duration: 100ms;
 }
 
 .rt-SegmentedControlRoot {
@@ -61,7 +61,7 @@
 .rt-SegmentedControlItemLabelInactive {
   position: absolute;
 
-  transition: opacity var(--segmented-control-transition-duration);
+  transition: opacity calc(0.8 * var(--segmented-control-transition-duration));
   font-weight: var(--font-weight-regular);
   letter-spacing: var(--tab-inactive-letter-spacing);
   word-spacing: var(--tab-inactive-word-spacing);
@@ -75,7 +75,7 @@
 }
 
 .rt-SegmentedControlItemLabelActive {
-  transition: opacity var(--segmented-control-transition-duration);
+  transition: opacity calc(0.8 * var(--segmented-control-transition-duration));
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tab-active-letter-spacing);
   word-spacing: var(--tab-active-word-spacing);
@@ -102,7 +102,7 @@
   margin-right: -0.5px;
   width: 1px;
   background-color: var(--gray-a4);
-  transition: opacity var(--segmented-control-transition-duration);
+  transition: opacity calc(0.8 * var(--segmented-control-transition-duration));
 
   /* Make separators slow to disappear and fast to appear, syncing it well with the indicator motion */
   transition-timing-function: ease-out;
@@ -137,7 +137,7 @@
   pointer-events: none;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition-duration: 100ms;
+  transition-duration: var(--segmented-control-transition-duration);
 
   &::before {
     inset: 1px;
