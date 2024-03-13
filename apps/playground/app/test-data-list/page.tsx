@@ -26,7 +26,7 @@ export default function DataListPage() {
 
   return (
     <html data-debug-layout={debug}>
-      <body>
+      <body style={{ minWidth: 768 }}>
         <style
           dangerouslySetInnerHTML={{
             __html: `
@@ -61,7 +61,7 @@ export default function DataListPage() {
 
         <NextThemeProvider>
           <Theme>
-            <Container size="2">
+            <Container size="2" mx="5">
               <Section>
                 <Flex gap="7" direction="column">
                   <Box>
