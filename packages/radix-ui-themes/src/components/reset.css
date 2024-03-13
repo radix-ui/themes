@@ -55,10 +55,14 @@
     ) {
     all: unset;
     display: inline-block;
+    font-weight: normal;
+    font-style: normal;
     text-indent: initial;
     -webkit-tap-highlight-color: transparent;
   }
   &:where(select) {
+    font-weight: normal;
+    font-style: normal;
     text-align: start;
   }
   &:where(
@@ -80,6 +84,8 @@
     all: unset;
     display: block;
     width: stretch;
+    font-weight: normal;
+    font-style: normal;
     text-align: start;
     text-indent: initial;
     -webkit-tap-highlight-color: transparent;
