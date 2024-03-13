@@ -13,10 +13,11 @@ import {
 } from './dropdown-menu.props.js';
 import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Theme, useThemeContext } from './theme.js';
-import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
+import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
+import type { IconProps } from './icons.js';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -353,6 +354,7 @@ DropdownMenuSeparator.displayName = 'DropdownMenu.Separator';
 export {
   DropdownMenuRoot as Root,
   DropdownMenuTrigger as Trigger,
+  ChevronDownIcon as TriggerIcon,
   DropdownMenuContent as Content,
   DropdownMenuLabel as Label,
   DropdownMenuItem as Item,
@@ -369,6 +371,7 @@ export {
 export type {
   DropdownMenuRootProps as RootProps,
   DropdownMenuTriggerProps as TriggerProps,
+  IconProps as TriggerIconProps,
   DropdownMenuContentProps as ContentProps,
   DropdownMenuLabelProps as LabelProps,
   DropdownMenuItemProps as ItemProps,

@@ -318,7 +318,7 @@ export default function Sink() {
                                         <DropdownMenu.Root>
                                           <DropdownMenu.Trigger>
                                             <Button size={size} variant="soft" color="gray">
-                                              <DotsHorizontalIcon />
+                                              More <DropdownMenu.TriggerIcon />
                                             </Button>
                                           </DropdownMenu.Trigger>
                                           <DropdownMenuContentDemo size={size} variant={variant} />
@@ -329,7 +329,7 @@ export default function Sink() {
                                       <DropdownMenu.Root>
                                         <DropdownMenu.Trigger>
                                           <Button variant="soft" color="gray">
-                                            <DotsHorizontalIcon />
+                                            More <DropdownMenu.TriggerIcon />
                                           </Button>
                                         </DropdownMenu.Trigger>
                                         <DropdownMenuContentDemo variant={variant} highContrast />
@@ -339,7 +339,7 @@ export default function Sink() {
                                       <DropdownMenu.Root>
                                         <DropdownMenu.Trigger>
                                           <Button variant="soft" color="gray">
-                                            <DotsHorizontalIcon />
+                                            More <DropdownMenu.TriggerIcon />
                                           </Button>
                                         </DropdownMenu.Trigger>
                                         <DropdownMenuContentDemo variant={variant} color="gray" />
@@ -349,7 +349,7 @@ export default function Sink() {
                                       <DropdownMenu.Root>
                                         <DropdownMenu.Trigger>
                                           <Button variant="soft" color="gray">
-                                            <DotsHorizontalIcon />
+                                            More <DropdownMenu.TriggerIcon />
                                           </Button>
                                         </DropdownMenu.Trigger>
                                         <DropdownMenuContentDemo
@@ -401,9 +401,9 @@ export default function Sink() {
                                               <td key={variant}>
                                                 <DropdownMenu.Root>
                                                   <DropdownMenu.Trigger>
-                                                    <Button variant="soft" color="gray">
+                                                    <IconButton variant="soft" color="gray">
                                                       <DotsHorizontalIcon />
-                                                    </Button>
+                                                    </IconButton>
                                                   </DropdownMenu.Trigger>
                                                   <DropdownMenuContentDemo
                                                     variant={variant}
@@ -412,9 +412,9 @@ export default function Sink() {
                                                 </DropdownMenu.Root>
                                                 <DropdownMenu.Root>
                                                   <DropdownMenu.Trigger>
-                                                    <Button variant="soft" color="gray" ml="2">
+                                                    <IconButton variant="soft" color="gray" ml="2">
                                                       <DotsHorizontalIcon />
-                                                    </Button>
+                                                    </IconButton>
                                                   </DropdownMenu.Trigger>
                                                   <DropdownMenuContentDemo
                                                     variant={variant}
@@ -5311,7 +5311,9 @@ export default function Sink() {
 
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger>
-                          <Button>Dropdown Menu</Button>
+                          <Button>
+                            Dropdown Menu <DropdownMenu.TriggerIcon />
+                          </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenuContentDemo />
                       </DropdownMenu.Root>
