@@ -19,7 +19,7 @@ import {
   Separator,
   ThemePanel,
   RadioCardGroup,
-  CheckboxCardGroup,
+  CheckboxCards,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 
@@ -62,25 +62,25 @@ export default function Test() {
                       </Card>
 
                       <Box my="5">
-                        <CheckboxCardGroup.Root columns="1" defaultValue={['1']} size="3">
-                          <CheckboxCardGroup.Item value="1">
+                        <CheckboxCards.Root columns="1" defaultValue={['1']} size="3">
+                          <CheckboxCards.Item value="1">
                             <Box asChild width="64px">
                               <Inset clip="padding-box" side="left">
                                 <AspectRatio ratio={1}>{image}</AspectRatio>
                               </Inset>
                             </Box>
                             <Box as="span">Checkbox Card 1</Box>
-                          </CheckboxCardGroup.Item>
+                          </CheckboxCards.Item>
 
-                          <CheckboxCardGroup.Item value="2">
+                          <CheckboxCards.Item value="2">
                             <Box asChild width="64px">
                               <Inset clip="padding-box" side="left">
                                 <AspectRatio ratio={1}>{image}</AspectRatio>
                               </Inset>
                             </Box>
                             <Box as="span">Checkbox Card 2</Box>
-                          </CheckboxCardGroup.Item>
-                        </CheckboxCardGroup.Root>
+                          </CheckboxCards.Item>
+                        </CheckboxCards.Root>
                       </Box>
                     </Box>
 

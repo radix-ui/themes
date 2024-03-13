@@ -27,7 +27,7 @@ export * from '../components/box.props.js';
 export * from '../components/button.props.js';
 export * from '../components/callout.props.js';
 export * from '../components/card.props.js';
-export * from '../components/checkbox-card-group.props.js';
+export * from '../components/checkbox-cards.props.js';
 export * from '../components/checkbox-group.props.js';
 export * from '../components/checkbox.props.js';
 export * from '../components/code.props.js';

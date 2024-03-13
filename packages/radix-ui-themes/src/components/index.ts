@@ -8,7 +8,7 @@ export * from './box.js';
 export * from './button.js';
 export * as Callout from './callout.js';
 export * from './card.js';
-export * as CheckboxCardGroup from './checkbox-card-group.js';
+export * as CheckboxCards from './checkbox-cards.js';
 export * as CheckboxGroup from './checkbox-group.js';
 export * from './checkbox.js';
 export * from './code.js';

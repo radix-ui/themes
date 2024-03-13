@@ -5,7 +5,7 @@ import {
   Theme,
   Container,
   Section,
-  CheckboxCardGroup,
+  CheckboxCards,
   Grid,
   Button,
   Heading,
@@ -33,26 +33,26 @@ export default function Test() {
                   <Grid columns="2" gap="7" align="start">
                     <Grid gap="5">
                       <Heading>Uncontrolled</Heading>
-                      <CheckboxCardGroup.Root name="frameworks" defaultValue={['next']}>
-                        <CheckboxCardGroup.Item value="next">Next.js</CheckboxCardGroup.Item>
-                        <CheckboxCardGroup.Item value="remix">Remix</CheckboxCardGroup.Item>
-                        <CheckboxCardGroup.Item value="astro">Astro</CheckboxCardGroup.Item>
-                        <CheckboxCardGroup.Item value="htmx">HTMX</CheckboxCardGroup.Item>
-                      </CheckboxCardGroup.Root>
+                      <CheckboxCards.Root name="frameworks" defaultValue={['next']}>
+                        <CheckboxCards.Item value="next">Next.js</CheckboxCards.Item>
+                        <CheckboxCards.Item value="remix">Remix</CheckboxCards.Item>
+                        <CheckboxCards.Item value="astro">Astro</CheckboxCards.Item>
+                        <CheckboxCards.Item value="htmx">HTMX</CheckboxCards.Item>
+                      </CheckboxCards.Root>
                     </Grid>
 
                     <Grid gap="5">
                       <Heading>Controlled</Heading>
-                      <CheckboxCardGroup.Root
+                      <CheckboxCards.Root
                         name="frameworks"
                         value={frameworks}
                         onValueChange={setFrameworks}
                       >
-                        <CheckboxCardGroup.Item value="next">Next.js</CheckboxCardGroup.Item>
-                        <CheckboxCardGroup.Item value="remix">Remix</CheckboxCardGroup.Item>
-                        <CheckboxCardGroup.Item value="astro">Astro</CheckboxCardGroup.Item>
-                        <CheckboxCardGroup.Item value="htmx">HTMX</CheckboxCardGroup.Item>
-                      </CheckboxCardGroup.Root>
+                        <CheckboxCards.Item value="next">Next.js</CheckboxCards.Item>
+                        <CheckboxCards.Item value="remix">Remix</CheckboxCards.Item>
+                        <CheckboxCards.Item value="astro">Astro</CheckboxCards.Item>
+                        <CheckboxCards.Item value="htmx">HTMX</CheckboxCards.Item>
+                      </CheckboxCards.Root>
 
                       <div>
                         <Code size="2">{JSON.stringify(frameworks)}</Code>
@@ -69,12 +69,12 @@ export default function Test() {
                       <Grid gap="5">
                         <Heading>Within Form</Heading>
 
-                        <CheckboxCardGroup.Root name="frameworks">
-                          <CheckboxCardGroup.Item value="next">Next.js</CheckboxCardGroup.Item>
-                          <CheckboxCardGroup.Item value="remix">Remix</CheckboxCardGroup.Item>
-                          <CheckboxCardGroup.Item value="astro">Astro</CheckboxCardGroup.Item>
-                          <CheckboxCardGroup.Item value="htmx">HTMX</CheckboxCardGroup.Item>
-                        </CheckboxCardGroup.Root>
+                        <CheckboxCards.Root name="frameworks">
+                          <CheckboxCards.Item value="next">Next.js</CheckboxCards.Item>
+                          <CheckboxCards.Item value="remix">Remix</CheckboxCards.Item>
+                          <CheckboxCards.Item value="astro">Astro</CheckboxCards.Item>
+                          <CheckboxCards.Item value="htmx">HTMX</CheckboxCards.Item>
+                        </CheckboxCards.Root>
 
                         <Button type="submit" size="3">
                           Submit

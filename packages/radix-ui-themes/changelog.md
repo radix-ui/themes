@@ -70,8 +70,8 @@
     - Group of checkboxes with an optional text label and roving focus. Parts:
       - `Root`
       - `Item`
-  - `CheckboxCardGroup`
-    - Interactive card component to pick one or more value from the list. Parts:
+  - `CheckboxCards`
+    - Interactive card components to pick one or more value from the list. Parts:
       - `Root`
       - `Item`
   - `Progress`

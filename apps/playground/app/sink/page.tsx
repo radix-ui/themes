@@ -23,7 +23,7 @@ import {
   Callout,
   Card,
   Checkbox,
-  CheckboxCardGroup,
+  CheckboxCards,
   CheckboxGroup,
   Code,
   Container,
@@ -72,7 +72,7 @@ import {
   buttonPropDefs,
   calloutRootPropDefs,
   cardPropDefs,
-  checkboxCardGroupRootPropDefs,
+  checkboxCardsRootPropDefs,
   checkboxGroupRootPropDefs,
   checkboxPropDefs,
   codePropDefs,
@@ -1792,27 +1792,27 @@ export default function Sink() {
                     <Separator size="3" my="5" />
                   </DocsSection>
 
-                  <DocsSection title="CheckboxCardGroup">
+                  <DocsSection title="CheckboxCards">
                     <table className={styles.table}>
                       <tbody>
-                        {checkboxCardGroupRootPropDefs.variant.values.map((variant, index) => (
+                        {checkboxCardsRootPropDefs.variant.values.map((variant, index) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
                             <td>
-                              <CheckboxCardGroup.Root
+                              <CheckboxCards.Root
                                 defaultValue={[String(index)]}
                                 columns="3"
                                 variant={variant}
                               >
-                                <CheckboxCardGroup.Item value="0">
+                                <CheckboxCards.Item value="0">
                                   <CodeIcon />
                                   <Text truncate>Node.js</Text>
-                                </CheckboxCardGroup.Item>
-                                <CheckboxCardGroup.Item value="1" disabled>
+                                </CheckboxCards.Item>
+                                <CheckboxCards.Item value="1" disabled>
                                   Ruby
-                                </CheckboxCardGroup.Item>
-                                <CheckboxCardGroup.Item value="2">Go</CheckboxCardGroup.Item>
-                              </CheckboxCardGroup.Root>
+                                </CheckboxCards.Item>
+                                <CheckboxCards.Item value="2">Go</CheckboxCards.Item>
+                              </CheckboxCards.Root>
                             </td>
                           </tr>
                         ))}
@@ -1823,22 +1823,22 @@ export default function Sink() {
 
                     <table className={styles.table}>
                       <tbody>
-                        {checkboxCardGroupRootPropDefs.size.values.map((size, index) => (
+                        {checkboxCardsRootPropDefs.size.values.map((size, index) => (
                           <tr key={size}>
                             <RowHeaderCell>size {size}</RowHeaderCell>
                             <td>
-                              <CheckboxCardGroup.Root
+                              <CheckboxCards.Root
                                 defaultValue={[String(index)]}
                                 size={size}
                                 columns="3"
                                 style={{ width: 400 + Number(size) * 100 }}
                               >
-                                <CheckboxCardGroup.Item value="0">Node.js</CheckboxCardGroup.Item>
-                                <CheckboxCardGroup.Item value="1" disabled>
+                                <CheckboxCards.Item value="0">Node.js</CheckboxCards.Item>
+                                <CheckboxCards.Item value="1" disabled>
                                   Ruby
-                                </CheckboxCardGroup.Item>
-                                <CheckboxCardGroup.Item value="2">Go</CheckboxCardGroup.Item>
-                              </CheckboxCardGroup.Root>
+                                </CheckboxCards.Item>
+                                <CheckboxCards.Item value="2">Go</CheckboxCards.Item>
+                              </CheckboxCards.Root>
                             </td>
                           </tr>
                         ))}
@@ -1864,7 +1864,7 @@ export default function Sink() {
                             <thead>
                               <tr>
                                 <ColumnHeaderCell />
-                                {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                                {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                                   <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
                                 ))}
                               </tr>
@@ -1873,10 +1873,10 @@ export default function Sink() {
                               {values.map((color) => (
                                 <tr key={color}>
                                   <RowHeaderCell>{color}</RowHeaderCell>
-                                  {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                                  {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                                     <td key={variant}>
                                       <Flex direction="column" gap="2">
-                                        <CheckboxCardGroup.Root
+                                        <CheckboxCards.Root
                                           defaultValue={['0']}
                                           size="1"
                                           gap="2"
@@ -1885,18 +1885,14 @@ export default function Sink() {
                                           color={color}
                                           style={{ width: 400 }}
                                         >
-                                          <CheckboxCardGroup.Item value="0">
-                                            Node.js
-                                          </CheckboxCardGroup.Item>
-                                          <CheckboxCardGroup.Item value="1" disabled>
+                                          <CheckboxCards.Item value="0">Node.js</CheckboxCards.Item>
+                                          <CheckboxCards.Item value="1" disabled>
                                             Ruby
-                                          </CheckboxCardGroup.Item>
-                                          <CheckboxCardGroup.Item value="2">
-                                            Go
-                                          </CheckboxCardGroup.Item>
-                                        </CheckboxCardGroup.Root>
+                                          </CheckboxCards.Item>
+                                          <CheckboxCards.Item value="2">Go</CheckboxCards.Item>
+                                        </CheckboxCards.Root>
 
-                                        <CheckboxCardGroup.Root
+                                        <CheckboxCards.Root
                                           defaultValue={['0']}
                                           size="1"
                                           gap="2"
@@ -1906,16 +1902,12 @@ export default function Sink() {
                                           highContrast
                                           style={{ width: 400 }}
                                         >
-                                          <CheckboxCardGroup.Item value="0">
-                                            Node.js
-                                          </CheckboxCardGroup.Item>
-                                          <CheckboxCardGroup.Item value="1" disabled>
+                                          <CheckboxCards.Item value="0">Node.js</CheckboxCards.Item>
+                                          <CheckboxCards.Item value="1" disabled>
                                             Ruby
-                                          </CheckboxCardGroup.Item>
-                                          <CheckboxCardGroup.Item value="2">
-                                            Go
-                                          </CheckboxCardGroup.Item>
-                                        </CheckboxCardGroup.Root>
+                                          </CheckboxCards.Item>
+                                          <CheckboxCards.Item value="2">Go</CheckboxCards.Item>
+                                        </CheckboxCards.Root>
                                       </Flex>
                                     </td>
                                   ))}
