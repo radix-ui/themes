@@ -3399,17 +3399,9 @@ export default function Sink() {
                             {badgePropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <Flex key={variant} gap="3" wrap="wrap" style={{ maxWidth: 600 }}>
-                                  {(['red', 'yellow', 'green', 'gray'] as const).map((color) => (
+                                  {(['orange', 'violet', 'cyan', 'gray'] as const).map((color) => (
                                     <Flex key={color} direction="column" gap="1">
                                       <Badge size={size} variant={variant} color={color}>
-                                        {upperFirst(color)}
-                                      </Badge>
-                                      <Badge
-                                        size={size}
-                                        variant={variant}
-                                        color={color}
-                                        highContrast
-                                      >
                                         {upperFirst(color)}
                                       </Badge>
                                     </Flex>
