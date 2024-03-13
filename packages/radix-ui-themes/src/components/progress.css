@@ -21,7 +21,7 @@
 }
 
 :where(.radix-themes) {
-  --progress-indicator-after-linear-gradient: var(--white-a8), var(--white-a11), var(--white-a8);
+  --progress-indicator-after-linear-gradient: var(--white-a5), var(--white-a9), var(--white-a5);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
@@ -140,16 +140,16 @@
 
 @keyframes rt-progress-indicator-surface-indeterminate-fade {
   100% {
-    background-color: var(--accent-5);
+    background-color: var(--accent-7);
   }
 }
 
 @keyframes rt-progress-indicator-surface-indeterminate-pulse {
   0% {
-    background-color: var(--accent-5);
+    background-color: var(--accent-7);
   }
   100% {
-    background-color: var(--accent-7);
+    background-color: var(--accent-track);
   }
 }
 
@@ -171,16 +171,16 @@
 
 @keyframes rt-progress-indicator-classic-indeterminate-fade {
   100% {
-    background-color: var(--accent-5);
+    background-color: var(--accent-7);
   }
 }
 
 @keyframes rt-progress-indicator-classic-indeterminate-pulse {
   0% {
-    background-color: var(--accent-5);
+    background-color: var(--accent-7);
   }
   100% {
-    background-color: var(--accent-7);
+    background-color: var(--accent-track);
   }
 }
 
@@ -195,7 +195,7 @@
 
   & :where(.rt-ProgressIndicator) {
     background-image: linear-gradient(var(--accent-a5), var(--accent-a5));
-    background-color: var(--accent-7);
+    background-color: var(--accent-8);
 
     &::after {
       opacity: 0.75;
@@ -205,16 +205,16 @@
 
 @keyframes rt-progress-indicator-soft-indeterminate-fade {
   100% {
-    background-color: var(--accent-2);
+    background-color: var(--accent-5);
   }
 }
 
 @keyframes rt-progress-indicator-soft-indeterminate-pulse {
   0% {
-    background-color: var(--accent-2);
+    background-color: var(--accent-5);
   }
   100% {
-    background-color: var(--accent-5);
+    background-color: var(--accent-7);
   }
 }
 
@@ -234,15 +234,15 @@
 
 @keyframes rt-progress-indicator-high-contrast-indeterminate-fade {
   100% {
-    opacity: 0.4;
+    opacity: 0.8;
   }
 }
 
 @keyframes rt-progress-indicator-high-contrast-indeterminate-pulse {
   0% {
-    opacity: 0.4;
+    opacity: 0.8;
   }
   100% {
-    opacity: 0.6;
+    opacity: 1;
   }
 }
