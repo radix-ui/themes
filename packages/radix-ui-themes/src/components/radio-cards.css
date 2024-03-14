@@ -6,13 +6,13 @@
   cursor: default;
 }
 
-.rt-RadioCard {
-  --base-card-padding-top: var(--radio-card-padding-y);
-  --base-card-padding-right: var(--radio-card-padding-x);
-  --base-card-padding-bottom: var(--radio-card-padding-y);
-  --base-card-padding-left: var(--radio-card-padding-x);
-  --base-card-border-radius: var(--radio-card-border-radius);
-  --base-card-border-width: var(--radio-card-border-width);
+.rt-RadioCardsItem {
+  --base-card-padding-top: var(--radio-cards-item-padding-y);
+  --base-card-padding-right: var(--radio-cards-item-padding-x);
+  --base-card-padding-bottom: var(--radio-cards-item-padding-y);
+  --base-card-padding-left: var(--radio-cards-item-padding-x);
+  --base-card-border-radius: var(--radio-cards-item-border-radius);
+  --base-card-border-width: var(--radio-cards-item-border-width);
 
   display: flex;
   align-items: center;
@@ -46,27 +46,27 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-padding-x: var(--space-3);
-      --radio-card-padding-y: calc(var(--space-3) / 1.2);
-      --radio-card-border-radius: var(--radius-3);
+      --radio-cards-item-padding-x: var(--space-3);
+      --radio-cards-item-padding-y: calc(var(--space-3) / 1.2);
+      --radio-cards-item-border-radius: var(--radius-3);
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --radio-card-padding-x: var(--space-4);
-      --radio-card-padding-y: calc(var(--space-4) * 0.875);
-      --radio-card-border-radius: var(--radius-3);
+      --radio-cards-item-padding-x: var(--space-4);
+      --radio-cards-item-padding-y: calc(var(--space-4) * 0.875);
+      --radio-cards-item-border-radius: var(--radius-3);
     }
     /* 64px height for the card with one line of text */
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --radio-card-padding-x: var(--space-5);
-      --radio-card-padding-y: calc(var(--space-5) / 1.2);
-      --radio-card-border-radius: var(--radius-4);
+      --radio-cards-item-padding-x: var(--space-5);
+      --radio-cards-item-padding-y: calc(var(--space-5) / 1.2);
+      --radio-cards-item-border-radius: var(--radius-4);
     }
   }
 }
@@ -78,12 +78,12 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-RadioCardsRoot.rt-variant-surface) {
-  .rt-RadioCard {
-    --radio-card-border-width: 1px;
-    --radio-card-background-color: var(--color-surface);
+  .rt-RadioCardsItem {
+    --radio-cards-item-border-width: 1px;
+    --radio-cards-item-background-color: var(--color-surface);
 
     &::before {
-      background-color: var(--radio-card-background-color);
+      background-color: var(--radio-cards-item-background-color);
     }
     &::after {
       box-shadow: var(--base-card-surface-box-shadow);
@@ -105,15 +105,15 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 :where(.rt-RadioCardsRoot.rt-variant-classic) {
-  .rt-RadioCard {
-    --radio-card-border-width: 1px;
-    --radio-card-background-color: var(--color-surface);
+  .rt-RadioCardsItem {
+    --radio-cards-item-border-width: 1px;
+    --radio-cards-item-background-color: var(--color-surface);
 
     transition: box-shadow 120ms;
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
-      background-color: var(--radio-card-background-color);
+      background-color: var(--radio-cards-item-background-color);
     }
     &::after {
       box-shadow: var(--base-card-classic-box-shadow-inner);
@@ -136,7 +136,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCard:where([data-state='checked']) {
+.rt-RadioCardsItem:where([data-state='checked']) {
   &::after {
     outline: 2px solid var(--accent-indicator);
   }
@@ -153,7 +153,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCard:where(:focus-visible) {
+.rt-RadioCardsItem:where(:focus-visible) {
   &::after {
     outline: 2px solid var(--focus-8);
   }
@@ -173,7 +173,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-RadioCard:where(:disabled) {
+.rt-RadioCardsItem:where(:disabled) {
   cursor: var(--cursor-disabled);
   color: var(--gray-a9);
 
