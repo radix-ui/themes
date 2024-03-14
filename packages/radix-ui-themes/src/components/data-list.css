@@ -143,6 +143,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
+.rt-DataListLabel,
 .rt-DataListValue {
   &::before {
     /*
