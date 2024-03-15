@@ -70,16 +70,16 @@
     - Group of checkboxes with an optional text label and roving focus. Parts:
       - `Root`
       - `Item`
-  - `CheckboxCardGroup`
-    - Interactive card component to pick one or more value from the list. Parts:
+  - `CheckboxCards`
+    - Interactive card components to pick one or more value from the list. Parts:
       - `Root`
       - `Item`
   - `Progress`
     - Progress bar component that indicates completion of a task.
   - `Radio`
     - Standalone element for building your own layouts with radio inputs.
-  - `RadioCardGroup`
-    - Interactive card component to pick one of the values from the list. Parts:
+  - `RadioCards`
+    - Interactive card components to pick one of the values from the list. Parts:
       - `Root`
       - `Item`
   - `Reset`

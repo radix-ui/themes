@@ -18,8 +18,8 @@ import {
   AlertDialog,
   Separator,
   ThemePanel,
-  RadioCardGroup,
-  CheckboxCardGroup,
+  RadioCards,
+  CheckboxCards,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 
@@ -62,25 +62,25 @@ export default function Test() {
                       </Card>
 
                       <Box my="5">
-                        <CheckboxCardGroup.Root columns="1" defaultValue={['1']} size="3">
-                          <CheckboxCardGroup.Item value="1">
+                        <CheckboxCards.Root columns="1" defaultValue={['1']} size="3">
+                          <CheckboxCards.Item value="1">
                             <Box asChild width="64px">
                               <Inset clip="padding-box" side="left">
                                 <AspectRatio ratio={1}>{image}</AspectRatio>
                               </Inset>
                             </Box>
                             <Box as="span">Checkbox Card 1</Box>
-                          </CheckboxCardGroup.Item>
+                          </CheckboxCards.Item>
 
-                          <CheckboxCardGroup.Item value="2">
+                          <CheckboxCards.Item value="2">
                             <Box asChild width="64px">
                               <Inset clip="padding-box" side="left">
                                 <AspectRatio ratio={1}>{image}</AspectRatio>
                               </Inset>
                             </Box>
                             <Box as="span">Checkbox Card 2</Box>
-                          </CheckboxCardGroup.Item>
-                        </CheckboxCardGroup.Root>
+                          </CheckboxCards.Item>
+                        </CheckboxCards.Root>
                       </Box>
                     </Box>
 
@@ -111,25 +111,25 @@ export default function Test() {
                       </Card>
 
                       <Box my="5">
-                        <RadioCardGroup.Root columns="1" defaultValue="1" size="3">
-                          <RadioCardGroup.Item value="1">
+                        <RadioCards.Root columns="1" defaultValue="1" size="3">
+                          <RadioCards.Item value="1">
                             <Box flexGrow="1">Radio Card 1</Box>
                             <Box asChild width="64px">
                               <Inset clip="padding-box" side="right">
                                 <AspectRatio ratio={1}>{image}</AspectRatio>
                               </Inset>
                             </Box>
-                          </RadioCardGroup.Item>
+                          </RadioCards.Item>
 
-                          <RadioCardGroup.Item value="2">
+                          <RadioCards.Item value="2">
                             <Box flexGrow="1">Radio Card 2</Box>
                             <Box asChild width="64px">
                               <Inset clip="padding-box" side="right">
                                 <AspectRatio ratio={1}>{image}</AspectRatio>
                               </Inset>
                             </Box>
-                          </RadioCardGroup.Item>
-                        </RadioCardGroup.Root>
+                          </RadioCards.Item>
+                        </RadioCards.Root>
                       </Box>
                     </Box>
 
