@@ -290,6 +290,135 @@ export default function Test() {
 
                     <Flex direction="column" align="start" gap="4">
                       <Text color="gray" size="2">
+                        All inline components with high contrast
+                      </Text>
+
+                      <Heading>
+                        Ambiguous voice of a heart which prefers{' '}
+                        <Code highContrast variant="ghost">
+                          kiwi bowls
+                        </Code>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Heading>
+
+                      <Text>
+                        Ambiguous voice of a heart which prefers{' '}
+                        <Code highContrast variant="ghost">
+                          kiwi bowls
+                        </Code>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Text>
+
+                      <Text>
+                        Ambiguous voice of a heart which prefers{' '}
+                        <Link highContrast href="#">
+                          <Code highContrast variant="ghost">
+                            kiwi bowls
+                          </Code>
+                        </Link>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Text>
+
+                      <Text>
+                        Ambiguous voice of a heart which{' '}
+                        <Link highContrast href="#">
+                          prefers{' '}
+                          <Code highContrast variant="ghost">
+                            kiwi bowls
+                          </Code>
+                        </Link>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Text>
+
+                      <Blockquote>
+                        Ambiguous voice of a heart which prefers{' '}
+                        <Code highContrast variant="ghost">
+                          kiwi bowls
+                        </Code>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Blockquote>
+
+                      <Blockquote>
+                        Ambiguous voice of a heart which prefers{' '}
+                        <Link highContrast href="#">
+                          <Code highContrast variant="ghost">
+                            kiwi bowls
+                          </Code>
+                        </Link>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Blockquote>
+
+                      <Blockquote>
+                        Ambiguous voice of a heart which{' '}
+                        <Link highContrast href="#">
+                          prefers{' '}
+                          <Code highContrast variant="ghost">
+                            kiwi bowls
+                          </Code>
+                        </Link>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Blockquote>
+
+                      <Code size="2">
+                        Ambiguous voice of a heart which{' '}
+                        <Link highContrast href="#">
+                          prefers{' '}
+                          <Code highContrast variant="ghost">
+                            kiwi bowls
+                          </Code>
+                        </Link>{' '}
+                        to a{' '}
+                        <Link highContrast href="#">
+                          zephyr
+                        </Link>
+                        .
+                      </Code>
+
+                      <Callout.Root>
+                        <Callout.Text>
+                          Ambiguous voice of a heart which prefers{' '}
+                          <Code highContrast variant="ghost">
+                            kiwi bowls
+                          </Code>{' '}
+                          to a{' '}
+                          <Link highContrast href="#">
+                            zephyr
+                          </Link>
+                          .
+                        </Callout.Text>
+                      </Callout.Root>
+                    </Flex>
+
+                    <Flex direction="column" align="start" gap="4">
+                      <Text color="gray" size="2">
                         All inline components with {'color="indigo"'} and high contrast
                       </Text>
 
