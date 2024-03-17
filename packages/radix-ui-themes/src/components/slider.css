@@ -17,6 +17,7 @@
   touch-action: none;
 
   &:where([data-orientation='horizontal']) {
+    width: stretch;
     height: var(--slider-track-size);
   }
   &:where([data-orientation='vertical']) {
