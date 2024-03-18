@@ -23,15 +23,17 @@
   width: 100%;
   height: 100%;
 
-  /* Stop Chrome back/forward two-finger swipe */
-  overscroll-behavior-x: contain;
-
   &:where(:focus-visible) + :where(.rt-ScrollAreaViewportFocusRing) {
     position: absolute;
     inset: 0;
     pointer-events: none;
     outline: 2px solid var(--focus-8);
     outline-offset: -2px;
+  }
+
+  /* Stop Chrome back/forward two-finger swipe when there is a horizontal scrollbar */
+  &:where(:has(.rt-ScrollAreaScrollbar[data-orientation='horizontal'])) {
+    overscroll-behavior-x: contain;
   }
 }
 
