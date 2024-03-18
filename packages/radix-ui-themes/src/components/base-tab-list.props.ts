@@ -18,7 +18,7 @@ const baseTabListPropDefs = {
     type: 'enum',
     className: 'rt-r-jc',
     values: justifyValues,
-    default: 'start',
+    default: undefined,
     responsive: true,
   },
   ...colorPropDef,

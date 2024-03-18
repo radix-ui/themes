@@ -15,7 +15,7 @@ interface ContainerProps
     LayoutProps,
     ContainerOwnProps {}
 const Container = React.forwardRef<ContainerElement, ContainerProps>(
-  ({ width, minWidth, maxWidth, ...props }, forwardedRef) => {
+  ({ width, minWidth, maxWidth, height, minHeight, maxHeight, ...props }, forwardedRef) => {
     const { asChild, children, className, ...containerProps } = extractProps(
       props,
       containerPropDefs,
@@ -24,7 +24,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
     );
 
     const { className: innerClassName, style: innerStyle } = extractProps(
-      { width, minWidth, maxWidth },
+      { width, minWidth, maxWidth, height, minHeight, maxHeight },
       widthPropDefs,
       heightPropDefs
     );

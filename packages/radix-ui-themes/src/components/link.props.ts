@@ -30,7 +30,6 @@ const linkPropDefs = {
   ...highContrastPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
-
   underline: PropDef<(typeof underline)[number]>;
 };
 

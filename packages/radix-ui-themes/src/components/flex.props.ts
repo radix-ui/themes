@@ -33,7 +33,7 @@ const flexPropDefs = {
     type: 'enum',
     className: 'rt-r-display',
     values: displayValues,
-    default: 'flex',
+    default: undefined,
     responsive: true,
   },
   /**
@@ -88,7 +88,7 @@ const flexPropDefs = {
     className: 'rt-r-jc',
     values: justifyValues,
     parseValue: parseJustifyValue,
-    default: 'start',
+    default: undefined,
     responsive: true,
   },
   /**
