@@ -1,4 +1,6 @@
 .rt-Inset {
+  box-sizing: border-box;
+
   /* We reset the defined margin variables to avoid inheriting them from a higher component */
   /* If a margin IS defined on the component itself, the utility class will win and reset it */
   --margin-top: 0px;
