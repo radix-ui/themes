@@ -66,7 +66,6 @@ import {
 } from '@radix-ui/themes';
 import {
   accentColors,
-  accentColorsGrouped,
   avatarPropDefs,
   badgePropDefs,
   buttonPropDefs,
@@ -6271,3 +6270,32 @@ function TableExample(props: React.ComponentProps<typeof Table.Root> & { noEmail
     </Table.Root>
   );
 }
+
+const colorsRegular = [
+  'tomato',
+  'red',
+  'ruby',
+  'crimson',
+  'pink',
+  'plum',
+  'purple',
+  'violet',
+  'iris',
+  'indigo',
+  'blue',
+  'cyan',
+  'teal',
+  'jade',
+  'green',
+  'grass',
+  'brown',
+  'orange',
+] as const;
+const colorsBright = ['sky', 'mint', 'lime', 'yellow', 'amber'] as const;
+const colorsMetal = ['gold', 'bronze'] as const;
+const accentColorsGrouped = [
+  { label: 'Regulars', values: colorsRegular },
+  { label: 'Brights', values: colorsBright },
+  { label: 'Metals', values: colorsMetal },
+  { label: 'Gray', values: ['gray'] as const },
+];
