@@ -6,6 +6,10 @@
   user-select: none;
   vertical-align: top;
 
+  font-family: var(--default-font-family);
+  font-style: normal;
+  text-align: center;
+
   &:where([data-disabled]) {
     --spinner-opacity: 1;
   }

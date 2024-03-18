@@ -3,6 +3,9 @@
   overflow-x: auto;
   white-space: nowrap;
 
+  font-family: var(--default-font-family);
+  font-style: normal;
+
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
