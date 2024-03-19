@@ -3,6 +3,7 @@ import type { PropDef, GetPropDefTypes } from './prop-def.js';
 import { heightPropDefs } from './height.props.js';
 import { widthPropDefs } from './width.props.js';
 
+const overflowValues = ['visible', 'hidden', 'clip', 'scroll', 'auto'] as const;
 const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as const;
 // prettier-ignore
 const positionEdgeValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9'] as const;
@@ -128,6 +129,60 @@ const layoutPropDefs = {
     className: 'rt-r-left',
     customProperties: ['--left'],
     values: positionEdgeValues,
+    default: undefined,
+    responsive: true,
+  },
+  /**
+   * Sets the CSS **overflow** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * overflow="hidden"
+   * overflow={{ sm: 'hidden', lg: 'visible' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+   */
+  overflow: {
+    type: 'enum',
+    className: 'rt-r-overflow',
+    values: overflowValues,
+    default: undefined,
+    responsive: true,
+  },
+  /**
+   * Sets the CSS **overflow-x** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * overflowX="hidden"
+   * overflowX={{ sm: 'hidden', md: 'visible' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+   */
+  overflowX: {
+    type: 'enum',
+    className: 'rt-r-ox',
+    values: overflowValues,
+    default: undefined,
+    responsive: true,
+  },
+  /**
+   * Sets the CSS **overflow-y** property.
+   * Supports the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * overflowY="hidden"
+   * overflowY={{ sm: 'hidden', md: 'visible' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+   */
+  overflowY: {
+    type: 'enum',
+    className: 'rt-r-oy',
+    values: overflowValues,
     default: undefined,
     responsive: true,
   },
@@ -311,6 +366,9 @@ const layoutPropDefs = {
   right: PropDef<(typeof positionEdgeValues)[number]>;
   bottom: PropDef<(typeof positionEdgeValues)[number]>;
   left: PropDef<(typeof positionEdgeValues)[number]>;
+  overflow: PropDef<(typeof overflowValues)[number]>;
+  overflowX: PropDef<(typeof overflowValues)[number]>;
+  overflowY: PropDef<(typeof overflowValues)[number]>;
   flexBasis: PropDef<string>;
   flexShrink: PropDef<(typeof flexShrinkValues)[number]>;
   flexGrow: PropDef<(typeof flexGrowValues)[number]>;
