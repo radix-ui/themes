@@ -1,6 +1,4 @@
 .rt-Link {
-  color: var(--accent-a11);
-
   /* Override the cursor on the HTML element even if rendering a <button> */
   /* stylelint-disable selector-max-type */
   &:where(:any-link, button) {
@@ -19,7 +17,6 @@
     outline-offset: 2px;
   }
 
-  &:where([data-accent-color].rt-high-contrast),
   :where([data-accent-color]:not(.radix-themes, .rt-high-contrast)) & {
     color: var(--accent-12);
   }
@@ -51,7 +48,7 @@
         }
       }
 
-      &:where([data-accent-color].rt-high-contrast),
+      &:where(.rt-high-contrast),
       :where([data-accent-color]:not(.radix-themes, .rt-high-contrast)) & {
         text-decoration-line: underline;
         text-decoration-color: var(--accent-a6);
