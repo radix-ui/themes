@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-grow: 1;
 
   border-radius: max(
     calc(var(--radius-factor) * var(--slider-track-size) / 3),
@@ -17,10 +17,11 @@
   touch-action: none;
 
   &:where([data-orientation='horizontal']) {
+    width: stretch;
     height: var(--slider-track-size);
   }
   &:where([data-orientation='vertical']) {
-    height: 100%;
+    height: stretch;
     flex-direction: column;
     width: var(--slider-track-size);
   }

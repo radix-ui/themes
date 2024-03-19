@@ -149,6 +149,7 @@
   - Fix an issue when Scroll Area would be unable to stretch to 100% height when informed by the parent’s auto height
 - `Slider`
   - Change the size of the bounding box to match the size of the Slider track
+  - Replace `flex-shrink: 0` with `flex-grow: 1` and `width: stretch` / `height: stretch` to allow the slider element to flex and shrink in layouts more intuitively.
   - Fix an overzealous focus outline in Safari
 - `Table`
   - Add new `layout` prop to control the `table-layout` style property
