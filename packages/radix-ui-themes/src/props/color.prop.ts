@@ -1,21 +1,9 @@
 import type { PropDef } from './prop-def.js';
 
 // prettier-ignore
-const colorsRegular = ['tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'brown', 'orange'] as const;
-const colorsBright = ['sky', 'mint', 'lime', 'yellow', 'amber'] as const;
-const colorsMetal = ['gold', 'bronze'] as const;
-const colorsGray = ['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const;
-
-// prettier-ignore
 const accentColors = ['gray', 'gold', 'bronze', 'brown', 'yellow', 'amber', 'orange', 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'lime', 'mint', 'sky'] as const;
-const accentColorsGrouped = [
-  { label: 'Regulars', values: colorsRegular },
-  { label: 'Brights', values: colorsBright },
-  { label: 'Metals', values: colorsMetal },
-  { label: 'Gray', values: ['gray'] as const },
-];
 
-const grayColors = ['auto', ...colorsGray] as const;
+const grayColors = ['auto', 'gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const;
 
 const colorPropDef = {
   color: {
@@ -49,6 +37,5 @@ export {
   inheritedColorPropDef,
   //
   accentColors,
-  accentColorsGrouped,
   grayColors,
 };
