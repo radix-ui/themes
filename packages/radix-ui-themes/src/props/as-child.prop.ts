@@ -7,7 +7,6 @@ const asChildPropDef = {
    */
   asChild: {
     type: 'boolean',
-    default: undefined,
   },
 } satisfies {
   asChild: PropDef<boolean>;

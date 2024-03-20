@@ -7,7 +7,6 @@ const leadingTrimPropDef = {
     type: 'enum',
     className: 'rt-r-lt',
     values: leadingTrimValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

@@ -34,7 +34,6 @@ const gridPropDefs = {
     type: 'enum',
     className: 'rt-r-display',
     values: displayValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -57,7 +56,6 @@ const gridPropDefs = {
     customProperties: ['--grid-template-columns'],
     values: columnsValues,
     parseValue: parseGridValue,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -80,7 +78,6 @@ const gridPropDefs = {
     customProperties: ['--grid-template-rows'],
     values: rowsValues,
     parseValue: parseGridValue,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -98,7 +95,6 @@ const gridPropDefs = {
     type: 'enum',
     className: 'rt-r-gaf',
     values: flowValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -116,7 +112,6 @@ const gridPropDefs = {
     type: 'enum',
     className: 'rt-r-ai',
     values: alignValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -135,7 +130,6 @@ const gridPropDefs = {
     className: 'rt-r-jc',
     values: justifyValues,
     parseValue: parseJustifyValue,
-    default: undefined,
     responsive: true,
   },
   ...gapPropDefs,

@@ -9,7 +9,7 @@ const resizeValues = ['none', 'vertical', 'horizontal', 'both'] as const;
 const textAreaPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
-  resize: { type: 'enum', className: 'rt-r-resize', values: resizeValues, default: undefined, responsive: true },
+  resize: { type: 'enum', className: 'rt-r-resize', values: resizeValues,  responsive: true },
   ...colorPropDef,
   ...radiusPropDef,
 } satisfies {

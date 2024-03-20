@@ -16,7 +16,7 @@ const avatarPropDefs = {
   ...colorPropDef,
   ...highContrastPropDef,
   ...radiusPropDef,
-  fallback: { type: 'ReactNode', default: undefined, required: true },
+  fallback: { type: 'ReactNode', required: true },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;

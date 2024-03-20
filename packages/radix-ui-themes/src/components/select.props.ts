@@ -16,7 +16,7 @@ const selectTriggerPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: triggerVariants, default: 'surface' },
   ...colorPropDef,
   ...radiusPropDef,
-  placeholder: { type: 'string', default: undefined },
+  placeholder: { type: 'string' },
 } satisfies {
   variant: PropDef<(typeof triggerVariants)[number]>;
   placeholder: PropDef<string>;

@@ -16,7 +16,6 @@ const heightPropDefs = {
     type: 'string',
     className: 'rt-r-h',
     customProperties: ['--height'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -34,7 +33,6 @@ const heightPropDefs = {
     type: 'string',
     className: 'rt-r-min-h',
     customProperties: ['--min-height'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -52,7 +50,6 @@ const heightPropDefs = {
     type: 'string',
     className: 'rt-r-max-h',
     customProperties: ['--max-height'],
-    default: undefined,
     responsive: true,
   },
 } satisfies {

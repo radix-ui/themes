@@ -23,7 +23,6 @@ const tableRootPropDefs = {
     type: 'enum',
     className: 'rt-r-tl',
     values: layoutValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {
@@ -40,7 +39,6 @@ const tableRowPropDefs = {
     className: 'rt-r-va',
     values: rowAlign,
     parseValue: parseAlignValue,
-    default: undefined,
     responsive: true,
   },
 } satisfies {
@@ -64,7 +62,6 @@ const tableCellPropDefs = {
     className: 'rt-r-ta',
     values: justifyValues,
     parseValue: parseJustifyValue,
-    default: undefined,
     responsive: true,
   },
   ...widthPropDefs,

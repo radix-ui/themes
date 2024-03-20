@@ -23,7 +23,7 @@ const textFieldRootPropDefs = {
 const sides = ['left', 'right'] as const;
 
 const textFieldSlotPropDefs = {
-  side: { type: 'enum', values: sides, default: undefined },
+  side: { type: 'enum', values: sides },
   ...inheritedColorPropDef,
   gap: flexPropDefs.gap,
   px: paddingPropDefs.px,

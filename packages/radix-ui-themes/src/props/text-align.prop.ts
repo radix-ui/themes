@@ -7,7 +7,6 @@ const textAlignPropDef = {
     type: 'enum',
     className: 'rt-r-ta',
     values: textAlignValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

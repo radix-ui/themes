@@ -26,7 +26,6 @@ const insetPropDefs = {
     className: 'rt-r-p',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
   px: {
@@ -34,7 +33,6 @@ const insetPropDefs = {
     className: 'rt-r-px',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
   py: {
@@ -42,7 +40,6 @@ const insetPropDefs = {
     className: 'rt-r-py',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
   pt: {
@@ -50,7 +47,6 @@ const insetPropDefs = {
     className: 'rt-r-pt',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
   pr: {
@@ -58,7 +54,6 @@ const insetPropDefs = {
     className: 'rt-r-pr',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
   pb: {
@@ -66,7 +61,6 @@ const insetPropDefs = {
     className: 'rt-r-pb',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
   pl: {
@@ -74,7 +68,6 @@ const insetPropDefs = {
     className: 'rt-r-pl',
     values: paddingValues,
     parseValue: parsePaddingValue,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

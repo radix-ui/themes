@@ -29,7 +29,6 @@ const boxPropDefs = {
     type: 'enum',
     className: 'rt-r-display',
     values: displayValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

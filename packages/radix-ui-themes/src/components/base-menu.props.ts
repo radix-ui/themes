@@ -33,14 +33,14 @@ const baseMenuContentPropDefs = {
 const baseMenuItemPropDefs = {
   ...asChildPropDef,
   ...inheritedColorPropDef,
-  shortcut: { type: 'string', default: undefined },
+  shortcut: { type: 'string' },
 } satisfies {
   shortcut: PropDef<string>;
 };
 
 const baseMenuCheckboxItemPropDefs = {
   ...inheritedColorPropDef,
-  shortcut: { type: 'string', default: undefined },
+  shortcut: { type: 'string' },
 } satisfies {
   shortcut: PropDef<string>;
 };

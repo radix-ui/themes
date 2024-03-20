@@ -29,7 +29,6 @@ const layoutPropDefs = {
     type: 'enum',
     className: 'rt-r-position',
     values: positionValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -49,7 +48,6 @@ const layoutPropDefs = {
     className: 'rt-r-inset',
     customProperties: ['--inset'],
     values: positionEdgeValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -69,7 +67,6 @@ const layoutPropDefs = {
     className: 'rt-r-top',
     customProperties: ['--top'],
     values: positionEdgeValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -89,7 +86,6 @@ const layoutPropDefs = {
     className: 'rt-r-right',
     customProperties: ['--right'],
     values: positionEdgeValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -109,7 +105,6 @@ const layoutPropDefs = {
     className: 'rt-r-bottom',
     customProperties: ['--bottom'],
     values: positionEdgeValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -129,7 +124,6 @@ const layoutPropDefs = {
     className: 'rt-r-left',
     customProperties: ['--left'],
     values: positionEdgeValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -147,7 +141,6 @@ const layoutPropDefs = {
     type: 'enum',
     className: 'rt-r-overflow',
     values: overflowValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -165,7 +158,6 @@ const layoutPropDefs = {
     type: 'enum',
     className: 'rt-r-ox',
     values: overflowValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -183,7 +175,6 @@ const layoutPropDefs = {
     type: 'enum',
     className: 'rt-r-oy',
     values: overflowValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -202,7 +193,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-fb',
     customProperties: ['--flex-basis'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -222,7 +212,6 @@ const layoutPropDefs = {
     className: 'rt-r-fs',
     customProperties: ['--flex-shrink'],
     values: flexShrinkValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -242,7 +231,6 @@ const layoutPropDefs = {
     className: 'rt-r-fg',
     customProperties: ['--flex-grow'],
     values: flexGrowValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -261,7 +249,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-gc',
     customProperties: ['--grid-column'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -280,7 +267,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-gcs',
     customProperties: ['--grid-column-start'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -299,7 +285,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-gce',
     customProperties: ['--grid-column-end'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -318,7 +303,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-gr',
     customProperties: ['--grid-row'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -337,7 +321,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-grs',
     customProperties: ['--grid-row-start'],
-    default: undefined,
     responsive: true,
   },
   /**
@@ -356,7 +339,6 @@ const layoutPropDefs = {
     type: 'string',
     className: 'rt-r-gre',
     customProperties: ['--grid-row-end'],
-    default: undefined,
     responsive: true,
   },
 } satisfies {

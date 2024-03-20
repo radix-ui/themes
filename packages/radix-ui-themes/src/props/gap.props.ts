@@ -20,7 +20,6 @@ const gapPropDefs = {
     className: 'rt-r-gap',
     customProperties: ['--gap'],
     values: gapValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -40,7 +39,6 @@ const gapPropDefs = {
     className: 'rt-r-cg',
     customProperties: ['--column-gap'],
     values: gapValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -60,7 +58,6 @@ const gapPropDefs = {
     className: 'rt-r-rg',
     customProperties: ['--row-gap'],
     values: gapValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

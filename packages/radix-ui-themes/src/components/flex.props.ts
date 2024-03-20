@@ -33,7 +33,6 @@ const flexPropDefs = {
     type: 'enum',
     className: 'rt-r-display',
     values: displayValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -51,7 +50,6 @@ const flexPropDefs = {
     type: 'enum',
     className: 'rt-r-fd',
     values: directionValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -69,7 +67,6 @@ const flexPropDefs = {
     type: 'enum',
     className: 'rt-r-ai',
     values: alignValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -88,7 +85,6 @@ const flexPropDefs = {
     className: 'rt-r-jc',
     values: justifyValues,
     parseValue: parseJustifyValue,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -106,7 +102,6 @@ const flexPropDefs = {
     type: 'enum',
     className: 'rt-r-fw',
     values: wrapValues,
-    default: undefined,
     responsive: true,
   },
   ...gapPropDefs,

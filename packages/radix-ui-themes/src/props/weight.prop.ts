@@ -7,7 +7,6 @@ const weightPropDef = {
     type: 'enum',
     className: 'rt-r-weight',
     values: weights,
-    default: undefined,
     responsive: true,
   },
 } satisfies {
