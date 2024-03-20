@@ -10,10 +10,9 @@ import type { MarginProps, LayoutProps, FlexOwnProps } from '../props/index.js';
 
 type FlexElement = React.ElementRef<'div'>;
 interface CommonFlexProps extends MarginProps, LayoutProps, FlexOwnProps {}
-type FlexAsChildProps = { asChild?: true; as?: never } & ComponentPropsWithout<'div', RemovedProps>;
-type FlexDivProps = { as?: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
-type FlexSpanProps = { as: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
-type FlexProps = CommonFlexProps & (FlexAsChildProps | FlexSpanProps | FlexDivProps);
+type FlexDivProps = { as?: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
+type FlexSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;
+type FlexProps = CommonFlexProps & (FlexSpanProps | FlexDivProps);
 
 const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
   const {
@@ -28,4 +27,4 @@ const Flex = React.forwardRef<FlexElement, FlexProps>((props, forwardedRef) => {
 Flex.displayName = 'Flex';
 
 export { Flex };
-export type { FlexProps, CommonFlexProps, FlexAsChildProps };
+export type { FlexProps };

@@ -11,16 +11,11 @@ import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 type TextElement = React.ElementRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
 type CommonTextProps = NiceIntersection<MarginProps, TextOwnProps>;
-type TextAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<'span', RemovedProps>;
-type TextSpanProps = { as?: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
-type TextDivProps = { as: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
-type TextLabelProps = { as: 'label'; asChild?: false } & ComponentPropsWithout<
-  'label',
-  RemovedProps
->;
-type TextPProps = { as: 'p'; asChild?: false } & ComponentPropsWithout<'p', RemovedProps>;
-type TextProps = CommonTextProps &
-  (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
+type TextSpanProps = { as?: 'span' } & ComponentPropsWithout<'span', RemovedProps>;
+type TextDivProps = { as: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
+type TextLabelProps = { as: 'label' } & ComponentPropsWithout<'label', RemovedProps>;
+type TextPProps = { as: 'p' } & ComponentPropsWithout<'p', RemovedProps>;
+type TextProps = CommonTextProps & (TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
 
 const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
   const {
