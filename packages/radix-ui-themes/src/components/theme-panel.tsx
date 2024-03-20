@@ -168,7 +168,7 @@ const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, 
   );
 
   // quickly show/hide using "T" keypress
-  const toggleOpen = React.useCallback(() => setOpen((prev: boolean) => !prev), [setOpen]);
+  const toggleOpen = React.useCallback(() => setOpen((prev) => !prev), [setOpen]);
   useHotKey(openHotkey, toggleOpen);
 
   // quickly toggle appearance using "D" keypress
