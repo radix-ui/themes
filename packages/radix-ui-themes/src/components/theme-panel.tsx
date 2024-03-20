@@ -66,6 +66,10 @@ type ThemePanelElement = React.ElementRef<'div'>;
 interface ThemePanelProps extends ComponentPropsWithout<'div', RemovedProps> {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** Whether the theme panel is open by default.
+   * Doesn't have any effect if `open` is also set.
+   * @default true
+   */
   defaultOpen?: boolean;
   onAppearanceChange?: (value: 'light' | 'dark') => void;
   /** A hotkey to quickly show/hide the panel.
@@ -83,7 +87,7 @@ interface ThemePanelProps extends ComponentPropsWithout<'div', RemovedProps> {
 const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, forwardedRef) => {
   const {
     open: openProp,
-    defaultOpen,
+    defaultOpen = true,
     onOpenChange,
     onAppearanceChange: onAppearanceChangeProp,
     openHotkey = 'T',
