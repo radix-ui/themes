@@ -24,6 +24,42 @@ import { themePropDefs } from '../props/index.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
 
+const keyboardInputElement = `
+  [contenteditable],
+  [role="combobox"],
+  [role="listbox"],
+  [role="menu"],
+  input:not([type="radio"], [type="checkbox"]),
+  select,
+  textarea
+`;
+
+/** Listen to keydown events and fire a callback when a hotkey is pressed */
+const useHotKey = (
+  key: string,
+  callback: () => void,
+  options?: {
+    /** Determines whether the hotkey listener is active or not */
+    enabled?: boolean;
+  }
+) => {
+  const { enabled = true } = options ?? {};
+  const callbackRef = useCallbackRef(callback);
+  React.useEffect(() => {
+    if (!enabled) return;
+    function handleKeydown(event: KeyboardEvent) {
+      const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
+      const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
+      const isKeyActive = event.key?.toUpperCase() === key;
+      if (isKeyActive && !isModifierActive && !isKeyboardInputActive) {
+        callbackRef();
+      }
+    }
+    document.addEventListener('keydown', handleKeydown);
+    return () => document.removeEventListener('keydown', handleKeydown);
+  }, [key, callbackRef, enabled]);
+};
+
 type ThemePanelElement = React.ElementRef<'div'>;
 
 interface ThemePanelProps extends ComponentPropsWithout<'div', RemovedProps> {
@@ -117,43 +153,16 @@ const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, 
     appearance === 'inherit' ? null : appearance
   );
 
-  const keyboardInputElement = `
-      [contenteditable],
-      [role="combobox"],
-      [role="listbox"],
-      [role="menu"],
-      input:not([type="radio"], [type="checkbox"]),
-      select,
-      textarea
-    `;
-
   // quickly show/hide using "T" keypress
-  React.useEffect(() => {
-    function handleKeydown(event: KeyboardEvent) {
-      const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
-      const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
-      const isKeyT = event.key?.toUpperCase() === 'T' && !isModifierActive;
-      if (isKeyT && !isKeyboardInputActive) {
-        setOpen(!open);
-      }
-    }
-    document.addEventListener('keydown', handleKeydown);
-    return () => document.removeEventListener('keydown', handleKeydown);
-  }, [setOpen, open, keyboardInputElement]);
+  const toggleOpen = React.useCallback(() => setOpen((prev: boolean) => !prev), [setOpen]);
+  useHotKey('T', toggleOpen);
 
   // quickly toggle appearance using "D" keypress
-  React.useEffect(() => {
-    function handleKeydown(event: KeyboardEvent) {
-      const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
-      const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
-      const isKeyD = event.key?.toUpperCase() === 'D' && !isModifierActive;
-      if (isKeyD && !isKeyboardInputActive) {
-        handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light');
-      }
-    }
-    document.addEventListener('keydown', handleKeydown);
-    return () => document.removeEventListener('keydown', handleKeydown);
-  }, [handleAppearanceChange, resolvedAppearance, keyboardInputElement]);
+  const toggleAppearance = React.useCallback(
+    () => handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light'),
+    [handleAppearanceChange, resolvedAppearance]
+  );
+  useHotKey('D', toggleAppearance);
 
   React.useEffect(() => {
     const root = document.documentElement;
