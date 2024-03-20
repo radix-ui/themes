@@ -36,7 +36,7 @@ const keyboardInputElement = `
 
 /** Listen to keydown events and fire a callback when a hotkey is pressed */
 const useHotKey = (
-  key: string,
+  key: string | null | false,
   callback: () => void,
   options?: {
     /** Determines whether the hotkey listener is active or not */
@@ -46,11 +46,12 @@ const useHotKey = (
   const { enabled = true } = options ?? {};
   const callbackRef = useCallbackRef(callback);
   React.useEffect(() => {
-    if (!enabled) return;
+    if (!key) return;
+    if (enabled === false) return;
     function handleKeydown(event: KeyboardEvent) {
       const isModifierActive = event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
       const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
-      const isKeyActive = event.key?.toUpperCase() === key;
+      const isKeyActive = event.key?.toUpperCase() === (key as string).toUpperCase();
       if (isKeyActive && !isModifierActive && !isKeyboardInputActive) {
         callbackRef();
       }
@@ -67,13 +68,26 @@ interface ThemePanelProps extends ComponentPropsWithout<'div', RemovedProps> {
   onOpenChange?: (open: boolean) => void;
   defaultOpen?: boolean;
   onAppearanceChange?: (value: 'light' | 'dark') => void;
+  /** A hotkey to quickly show/hide the panel.
+   * Set to `null` or `false` to disable the hotkey.
+   * @default "T"
+   */
+  openHotkey?: string | null | false;
+  /** A hotkey to quickly toggle the appearance.
+   * Set to `null` or `false` to disable the hotkey.
+   * @default "D"
+   * */
+  toogleAppearanceHotkey?: string | null | false;
 }
+
 const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, forwardedRef) => {
   const {
     open: openProp,
     defaultOpen,
     onOpenChange,
     onAppearanceChange: onAppearanceChangeProp,
+    openHotkey = 'T',
+    toogleAppearanceHotkey = 'D',
     ...panelProps
   } = props;
   const themeContext = useThemeContext();
@@ -155,14 +169,14 @@ const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, 
 
   // quickly show/hide using "T" keypress
   const toggleOpen = React.useCallback(() => setOpen((prev: boolean) => !prev), [setOpen]);
-  useHotKey('T', toggleOpen);
+  useHotKey(openHotkey, toggleOpen);
 
   // quickly toggle appearance using "D" keypress
   const toggleAppearance = React.useCallback(
     () => handleAppearanceChange(resolvedAppearance === 'light' ? 'dark' : 'light'),
     [handleAppearanceChange, resolvedAppearance]
   );
-  useHotKey('D', toggleAppearance);
+  useHotKey(toogleAppearanceHotkey, toggleAppearance);
 
   React.useEffect(() => {
     const root = document.documentElement;
@@ -231,13 +245,21 @@ const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, 
       >
         <ScrollArea>
           <Box flexGrow="1" p="5" position="relative">
-            <Box position="absolute" top="0" right="0" m="2">
-              <Tooltip content="Press T to show/hide the Theme Panel" side="bottom" sideOffset={6}>
-                <Kbd asChild size="3" tabIndex={0} className="rt-ThemePanelShortcut">
-                  <button onClick={() => setOpen(!open)}>T</button>
-                </Kbd>
-              </Tooltip>
-            </Box>
+            {!!openHotkey && (
+              <Box position="absolute" top="0" right="0" m="2">
+                <Tooltip
+                  content={`Press ${openHotkey} to show/hide the Theme Panel`}
+                  side="bottom"
+                  sideOffset={6}
+                >
+                  <Kbd asChild size="3" tabIndex={0} className="rt-ThemePanelShortcut">
+                    <button onClick={toggleOpen} type="button">
+                      {openHotkey}
+                    </button>
+                  </Kbd>
+                </Tooltip>
+              </Box>
+            )}
 
             <Heading size="5" trim="both" as="h3" mb="5">
               Theme
@@ -618,6 +640,7 @@ const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, 
     </Theme>
   );
 });
+
 ThemePanel.displayName = 'ThemePanel';
 
 // https://github.com/pacocoursey/next-themes/blob/main/packages/next-themes/src/index.tsx#L285
