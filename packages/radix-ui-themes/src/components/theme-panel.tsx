@@ -87,7 +87,7 @@ interface ThemePanelProps extends ComponentPropsWithout<'div', RemovedProps> {
 const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, forwardedRef) => {
   const {
     open: openProp,
-    defaultOpen = true,
+    defaultOpen,
     onOpenChange,
     onAppearanceChange: onAppearanceChangeProp,
     openHotkey = 'T',
@@ -110,7 +110,7 @@ const ThemePanel = React.forwardRef<ThemePanelElement, ThemePanelProps>((props, 
     onScalingChange,
   } = themeContext;
 
-  const [open = false, setOpen] = useControllableState({
+  const [open = true, setOpen] = useControllableState({
     prop: openProp,
     defaultProp: defaultOpen,
     onChange: onOpenChange,
