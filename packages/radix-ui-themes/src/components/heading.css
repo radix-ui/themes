@@ -3,6 +3,7 @@
   --leading-trim-end: var(--heading-leading-trim-end);
   font-family: var(--heading-font-family);
   font-style: var(--heading-font-style);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height);
 
   :where(&) {
