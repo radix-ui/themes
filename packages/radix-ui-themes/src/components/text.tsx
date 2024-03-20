@@ -5,12 +5,12 @@ import { textPropDefs } from './text.props.js';
 import { extractProps } from '../helpers/index.js';
 import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithout, NiceIntersection, RemovedProps } from '../helpers/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type TextElement = React.ElementRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
-type CommonTextProps = NiceIntersection<MarginProps, TextOwnProps>;
+interface CommonTextProps extends MarginProps, TextOwnProps {}
 type TextSpanProps = { as?: 'span' } & ComponentPropsWithout<'span', RemovedProps>;
 type TextDivProps = { as: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type TextLabelProps = { as: 'label' } & ComponentPropsWithout<'label', RemovedProps>;
