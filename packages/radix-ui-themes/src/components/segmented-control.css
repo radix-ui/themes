@@ -14,6 +14,10 @@
   position: relative;
   min-width: max-content;
 
+  font-family: var(--default-font-family);
+  font-style: normal;
+  text-align: center;
+
   /* Create a new stacking context */
   isolation: isolate;
 }
