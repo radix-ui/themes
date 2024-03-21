@@ -17,7 +17,6 @@ const blockquotePropDefs = {
     type: 'enum',
     className: 'rt-r-size',
     values: sizes,
-    default: undefined,
     responsive: true,
   },
   ...weightPropDef,

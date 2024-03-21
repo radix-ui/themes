@@ -7,7 +7,6 @@ const textWrapPropDef = {
     type: 'enum',
     className: 'rt-r-tw',
     values: textWrapValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

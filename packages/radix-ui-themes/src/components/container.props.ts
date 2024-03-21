@@ -46,7 +46,6 @@ const containerPropDefs = {
     className: 'rt-r-display',
     values: displayValues,
     parseValue: parseDisplayValue,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -61,7 +60,6 @@ const containerPropDefs = {
     className: 'rt-r-ai',
     values: alignValues,
     parseValue: parseAlignValue,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

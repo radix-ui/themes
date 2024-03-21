@@ -19,7 +19,6 @@ const marginPropDefs = {
   m: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-m',
     customProperties: ['--m'],
@@ -40,7 +39,6 @@ const marginPropDefs = {
   mx: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-mx',
     customProperties: ['--ml', '--mr'],
@@ -61,7 +59,6 @@ const marginPropDefs = {
   my: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-my',
     customProperties: ['--mt', '--mb'],
@@ -81,7 +78,6 @@ const marginPropDefs = {
   mt: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-mt',
     customProperties: ['--mt'],
@@ -101,7 +97,6 @@ const marginPropDefs = {
   mr: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-mr',
     customProperties: ['--mr'],
@@ -121,7 +116,6 @@ const marginPropDefs = {
   mb: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-mb',
     customProperties: ['--mb'],
@@ -141,7 +135,6 @@ const marginPropDefs = {
   ml: {
     type: 'enum | string',
     values: marginValues,
-    default: undefined,
     responsive: true,
     className: 'rt-r-ml',
     customProperties: ['--ml'],

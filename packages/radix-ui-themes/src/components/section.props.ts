@@ -44,7 +44,6 @@ const sectionPropDefs = {
     className: 'rt-r-display',
     values: displayValues,
     parseValue: parseDisplayValue,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

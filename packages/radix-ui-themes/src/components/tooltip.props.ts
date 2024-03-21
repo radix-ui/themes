@@ -2,7 +2,7 @@ import { widthPropDefs } from '../props/index.js';
 import type { GetPropDefTypes, PropDef } from '../props/index.js';
 
 const tooltipPropDefs = {
-  content: { type: 'ReactNode', default: undefined, required: true },
+  content: { type: 'ReactNode', required: true },
   width: widthPropDefs.width,
   minWidth: widthPropDefs.minWidth,
   maxWidth: { ...widthPropDefs.maxWidth, default: '360px' },

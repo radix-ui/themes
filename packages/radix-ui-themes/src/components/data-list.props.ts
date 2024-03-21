@@ -40,7 +40,6 @@ const dataListItemPropDefs = {
     type: 'enum',
     className: 'rt-r-ai',
     values: alignValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {

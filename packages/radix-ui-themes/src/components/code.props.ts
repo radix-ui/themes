@@ -18,7 +18,6 @@ const codePropDefs = {
     type: 'enum',
     className: 'rt-r-size',
     values: sizes,
-    default: undefined,
     responsive: true,
   },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },

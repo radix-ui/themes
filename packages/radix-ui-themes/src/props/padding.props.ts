@@ -20,7 +20,6 @@ const paddingPropDefs = {
     className: 'rt-r-p',
     customProperties: ['--p'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -41,7 +40,6 @@ const paddingPropDefs = {
     className: 'rt-r-px',
     customProperties: ['--pl', '--pr'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -62,7 +60,6 @@ const paddingPropDefs = {
     className: 'rt-r-py',
     customProperties: ['--pt', '--pb'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -82,7 +79,6 @@ const paddingPropDefs = {
     className: 'rt-r-pt',
     customProperties: ['--pt'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -102,7 +98,6 @@ const paddingPropDefs = {
     className: 'rt-r-pr',
     customProperties: ['--pr'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -122,7 +117,6 @@ const paddingPropDefs = {
     className: 'rt-r-pb',
     customProperties: ['--pb'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
   /**
@@ -142,7 +136,6 @@ const paddingPropDefs = {
     className: 'rt-r-pl',
     customProperties: ['--pl'],
     values: paddingValues,
-    default: undefined,
     responsive: true,
   },
 } satisfies {
