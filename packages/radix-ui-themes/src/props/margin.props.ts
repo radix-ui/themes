@@ -22,7 +22,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-m',
-    customProperties: ['--margin'],
+    customProperties: ['--m'],
   },
   /**
    * Sets the CSS **margin-left** and **margin-right** properties.
@@ -43,7 +43,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mx',
-    customProperties: ['--margin-left', '--margin-right'],
+    customProperties: ['--ml', '--mr'],
   },
   /**
    * Sets the CSS **margin-top** and **margin-bottom** properties.
@@ -64,7 +64,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-my',
-    customProperties: ['--margin-top', '--margin-bottom'],
+    customProperties: ['--mt', '--mb'],
   },
   /**
    * Sets the CSS **margin-top** property.
@@ -84,7 +84,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mt',
-    customProperties: ['--margin-top'],
+    customProperties: ['--mt'],
   },
   /**
    * Sets the CSS **margin-right** property.
@@ -104,7 +104,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mr',
-    customProperties: ['--margin-right'],
+    customProperties: ['--mr'],
   },
   /**
    * Sets the CSS **margin-bottom** property.
@@ -124,7 +124,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-mb',
-    customProperties: ['--margin-bottom'],
+    customProperties: ['--mb'],
   },
   /**
    * Sets the CSS **margin-left** property.
@@ -144,7 +144,7 @@ const marginPropDefs = {
     default: undefined,
     responsive: true,
     className: 'rt-r-ml',
-    customProperties: ['--margin-left'],
+    customProperties: ['--ml'],
   },
 } satisfies {
   m: PropDef<(typeof marginValues)[number]>;

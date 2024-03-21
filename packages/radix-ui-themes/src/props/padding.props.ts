@@ -18,7 +18,7 @@ const paddingPropDefs = {
   p: {
     type: 'enum | string',
     className: 'rt-r-p',
-    customProperties: ['--padding'],
+    customProperties: ['--p'],
     values: paddingValues,
     default: undefined,
     responsive: true,
@@ -39,7 +39,7 @@ const paddingPropDefs = {
   px: {
     type: 'enum | string',
     className: 'rt-r-px',
-    customProperties: ['--padding-left', '--padding-right'],
+    customProperties: ['--pl', '--pr'],
     values: paddingValues,
     default: undefined,
     responsive: true,
@@ -60,7 +60,7 @@ const paddingPropDefs = {
   py: {
     type: 'enum | string',
     className: 'rt-r-py',
-    customProperties: ['--padding-top', '--padding-bottom'],
+    customProperties: ['--pt', '--pb'],
     values: paddingValues,
     default: undefined,
     responsive: true,
@@ -80,7 +80,7 @@ const paddingPropDefs = {
   pt: {
     type: 'enum | string',
     className: 'rt-r-pt',
-    customProperties: ['--padding-top'],
+    customProperties: ['--pt'],
     values: paddingValues,
     default: undefined,
     responsive: true,
@@ -100,7 +100,7 @@ const paddingPropDefs = {
   pr: {
     type: 'enum | string',
     className: 'rt-r-pr',
-    customProperties: ['--padding-right'],
+    customProperties: ['--pr'],
     values: paddingValues,
     default: undefined,
     responsive: true,
@@ -120,7 +120,7 @@ const paddingPropDefs = {
   pb: {
     type: 'enum | string',
     className: 'rt-r-pb',
-    customProperties: ['--padding-bottom'],
+    customProperties: ['--pb'],
     values: paddingValues,
     default: undefined,
     responsive: true,
@@ -140,7 +140,7 @@ const paddingPropDefs = {
   pl: {
     type: 'enum | string',
     className: 'rt-r-pl',
-    customProperties: ['--padding-left'],
+    customProperties: ['--pl'],
     values: paddingValues,
     default: undefined,
     responsive: true,
