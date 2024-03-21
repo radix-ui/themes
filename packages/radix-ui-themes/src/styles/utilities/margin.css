@@ -451,8 +451,8 @@
   }
 }
 .rt-r-my {
-  --margin-top: var(--mt-xs);
-  --margin-bottom: var(--mb-xs);
+  --margin-top: var(--mt);
+  --margin-bottom: var(--mb);
 }
 @media (--xs) {
   .xs\:rt-r-my {
@@ -576,7 +576,7 @@
   }
 }
 .rt-r-mt {
-  --margin-top: var(--mt-xs);
+  --margin-top: var(--mt);
 }
 @media (--xs) {
   .xs\:rt-r-mt {
