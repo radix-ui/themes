@@ -7,7 +7,8 @@
     - Improve ESM compatibility
     - Improve tree-shaking of individual component parts
     - **[Breaking]** Drop named exports for multi-part components
-      - **[Upgrade guide]** use dot notation instead, ie. `Dialog.Root`
+      - **[Upgrade guide]** Use dot notation for all multi-part components instead, ie. `Dialog.Root`
+      - Note: Our new approach allows dot notation to work reliably in server components too
     - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
       - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
       - Note: changes to prop defs and helpers won’t be covered by semver
@@ -160,7 +161,7 @@
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
   - Add margin props `TabsList` and `TabsContent`
-  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
+  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components:
     - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
     - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
     - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
