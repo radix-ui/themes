@@ -6,7 +6,9 @@
   - Package structure
     - Improve ESM compatibility
     - Improve tree-shaking of individual component parts
-    - Drop named exports for multi-part components (use dot notation instead, ie. `Dialog.Root`)
+    - **[Breaking]** Drop named exports for multi-part components
+      - **[Upgrade guide]** Use dot notation for all multi-part components instead, ie. `Dialog.Root`
+      - Note: Our new approach allows dot notation to work reliably in server components too
     - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
       - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths
       - Note: changes to prop defs and helpers won’t be covered by semver
@@ -22,6 +24,7 @@
       - `flexBasis`, `flexShrink`, `flexGrow`
       - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
       - `gridRow`, `gridRowStart`, `gridRowEnd`
+      - `overflow`, `overflowX`, `overflowY`
     - Rework all layout props to allow arbitrary CSS values, including when used with the responsive object syntax. Props that support arbitrary values include:
       - `width`, `minWidth`, `maxWidth`
       - `height`, `minHeight`, `maxHeight`
@@ -34,7 +37,8 @@
       - `gridRow`, `gridRowStart`, `gridRowEnd`
     - **[Breaking]** The `width` and `height` props don't map to space scale anymore. This is because in the vast majority of cases, width and height were not set to space scale, and with that, space scale as an IDE autocomplete suggestion felt odd/misleading.
       - **[Upgrade guide]** Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
-    - **[Breaking]** Rename `shrink` and `grow` props in favour of `flexShrink` and `flexGrow`
+    - **[Breaking]** Rename `shrink` and `grow` props:
+      - **[Upgrade guide]** Use `flexShrink` and `flexGrow` instead
     - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
     - Document all layout props with JSDoc
     - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
@@ -43,14 +47,14 @@
   - Colors
     - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
     - Tweak the background color of all `variant="soft"` menu items
-    - Rename `--color-surface-accent` to `--accent-surface`
+    - **[Breaking]** Rename `--color-surface-accent` to `--accent-surface`
       - **[Upgrade guide]** If you were using this token for your custom components, make sure to replace the corresponding references
-    - Rename `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
+    - **[Breaking]** Rename `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
       - **[Upgrade guide]** If you were using these tokens for your custom components, make sure to replace the corresponding references
     - Remove `--gray-2-translucent` and the corresponding tinted gray colors
     - Tweak `--color-surface` and `--color-panel-translucent` values
-    - Replace `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
-      - **[Breaking]** If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
+    - **[Breaking]** Replace `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
+      - **[Upgrade guide]** If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
         - `--color-autofill-root` is replaced by `--focus-a3`
         - `--color-focus-root` is replaced by `--focus-8`
         - `--color-selection-root` is replaced by `--focus-a5`
@@ -98,11 +102,11 @@
   - Add `position: relative` to support absolutely positioned children.
   - Add `width`, `minWidth`, `maxWidth` props to the Content part.
   - Set `maxWidth="600px"` by default on the Content part.
-    - **[Upgrade guide]** This slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
+    - **[Upgrade guide]** This is slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
   - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog Content part. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
 - `Badge`
   - Remove `user-select: none`
-  - Add `size="3"`, make `size="2"` much smaller, tweak `size="1"` dimensions
+  - **[Breaking]** Add `size="3"`, make `size="2"` much smaller, tweak `size="1"` dimensions
     - **[Upgrade guide]** Replace your `size="2"` usage with `size="3"`
 - `Blockquote`, `Code`, `Em`, `Heading`, `Quote`, `Link`, `Strong`, `Text`
   - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
@@ -110,7 +114,6 @@
   - Rework the internal HTML structure and styles. This component now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
     - **[Upgrade guide]** If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly, or set your background color on an `<Inset p="current">` element nested as the first child of the Card.
     - **[Upgrade guide]** Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
-      If you need to override background color for non-ghost variant,
 - `Code`
   - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
 - `Container`
@@ -158,11 +161,11 @@
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
   - Add margin props `TabsList` and `TabsContent`
-  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
-    - `--tabs-trigger-active-letter-spacing` -> `--tab-active-letter-spacing`
-    - `--tabs-trigger-active-word-spacing` -> `--tab-active-word-spacing`
-    - `--tabs-trigger-inactive-letter-spacing` -> `--tab-inactive-letter-spacing`
-    - `--tabs-trigger-inactive-word-spacing` -> `--tab-inactive-word-spacing`
+  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components:
+    - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
+    - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
+    - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
+    - `--tabs-trigger-inactive-word-spacing` → `--tab-inactive-word-spacing`
 - `TextArea`
   - Add `radius` prop
   - Add `resize` prop
@@ -187,7 +190,7 @@
   - Refine the logic for when `Theme` has a background color by default. `Theme` without an explicit `hasBackground` prop will display a background color:
     - When it is the root `Theme` component
     - When it has an explicit appearance value, e.g. `<Theme apperance="light">` or `<Theme apperance="dark">`
-  - Body background color and is no longer set automatically. The background color is now provided by the root `Theme` by default.
+  - Body background color is no longer set automatically. The background color is now provided by the root `Theme` by default.
     - **[Breaking]** The CSS variable `--color-page-background` is no longer available. In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
     - `suppressHydrationWarning` on `html` is no longer needed (unless required by other libraries, like `next-themes`)
   - Document all Theme props with JSDoc
