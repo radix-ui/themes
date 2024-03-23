@@ -9,6 +9,11 @@
   --margin-left: 0px;
 
   overflow: hidden;
+
+  /*
+   * Note: Next.js may collapse this into a shorthand "margin" declaration when bundling the CSS.
+   * If any of the variables are set to "initial", the shorthand syntax will become invalid and botch the Inset styles.
+   */
   margin-top: var(--margin-top-override);
   margin-right: var(--margin-right-override);
   margin-bottom: var(--margin-bottom-override);
@@ -44,7 +49,7 @@
     &:where(.rt-r-side-top) {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
-      --margin-bottom-override: initial;
+      --margin-bottom-override: var(--margin-bottom);
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
       border-top-left-radius: var(--inset-border-radius-calc);
       border-top-right-radius: var(--inset-border-radius-calc);
@@ -52,7 +57,7 @@
       border-bottom-right-radius: 0px;
     }
     &:where(.rt-r-side-bottom) {
-      --margin-top-override: initial;
+      --margin-top-override: var(--margin-top);
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
@@ -65,7 +70,7 @@
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
-      --margin-right-override: initial;
+      --margin-right-override: var(--margin-right);
       border-top-left-radius: var(--inset-border-radius-calc);
       border-top-right-radius: 0px;
       border-bottom-left-radius: var(--inset-border-radius-calc);
@@ -75,24 +80,24 @@
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-      --margin-left-override: initial;
+      --margin-left-override: var(--margin-left);
       border-top-left-radius: 0px;
       border-top-right-radius: var(--inset-border-radius-calc);
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: var(--inset-border-radius-calc);
     }
     &:where(.rt-r-side-x) {
-      --margin-top-override: initial;
-      --margin-bottom-override: initial;
+      --margin-top-override: var(--margin-top);
       --margin-right-override: calc(var(--margin-right) - var(--inset-padding-right-calc));
+      --margin-bottom-override: var(--margin-bottom);
       --margin-left-override: calc(var(--margin-left) - var(--inset-padding-left-calc));
       border-radius: 0px;
     }
     &:where(.rt-r-side-y) {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
-      --margin-right-override: initial;
+      --margin-right-override: var(--margin-right);
       --margin-bottom-override: calc(var(--margin-bottom) - var(--inset-padding-bottom-calc));
-      --margin-left-override: initial;
+      --margin-left-override: var(--margin-left);
       border-radius: 0px;
     }
     &:where(.rt-r-side-all) {
