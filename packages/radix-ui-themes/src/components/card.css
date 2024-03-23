@@ -203,7 +203,7 @@
 
 /* Better -webkit-tap-highlight-color */
 .rt-Card:where(:any-link, button, label) {
-  @media (hover: none) {
+  @media (pointer: coarse) {
     &:where(:active:not(:focus-visible, [data-state='open'])) {
       &::before {
         background-image: linear-gradient(var(--gray-a4), var(--gray-a4));

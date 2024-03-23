@@ -41,7 +41,7 @@
       text-decoration-color: color-mix(in oklab, var(--accent-a5), var(--gray-a6));
     }
 
-    @media (hover: none) {
+    @media (pointer: coarse) {
       /* Better -webkit-tap-highlight-color */
       &:where(:active:not(:focus-visible, [data-state='open'])) {
         border-radius: calc(0.1em * var(--radius-factor));

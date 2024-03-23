@@ -18,7 +18,7 @@
   /* stylelint-disable-next-line selector-max-type */
   &:where(label) {
     /* Better -webkit-tap-highlight-color */
-    @media (hover: none) {
+    @media (pointer: coarse) {
       -webkit-tap-highlight-color: transparent;
       &:where(:active) {
         border-radius: calc(0.1em * var(--radius-factor));

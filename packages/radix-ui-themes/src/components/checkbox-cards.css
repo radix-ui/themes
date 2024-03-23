@@ -166,7 +166,7 @@
 
 /* Better -webkit-tap-highlight-color */
 .rt-CheckboxCardsItem {
-  @media (hover: none) {
+  @media (pointer: coarse) {
     &:where(:active:not(:focus-visible)) {
       &::before {
         background-image: linear-gradient(var(--gray-a4), var(--gray-a4));

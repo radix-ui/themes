@@ -59,7 +59,7 @@ export default function Test() {
                     </DropdownMenu.Root>
 
                     <Link href="#" onClick={(event) => event.preventDefault()}>
-                      Click me
+                      Link
                     </Link>
 
                     <CheckboxGroup.Root defaultValue={['1']}>

@@ -157,7 +157,7 @@
     }
   }
   /* Better -webkit-tap-highlight-color */
-  @media (hover: none) {
+  @media (pointer: coarse) {
     &:where(:active:not([data-state='open'])) {
       outline: 0.5em solid var(--accent-a4);
       outline-offset: 0;
@@ -278,7 +278,7 @@
     filter: var(--base-button-solid-active-filter);
   }
   /* Better -webkit-tap-highlight-color */
-  @media (hover: none) {
+  @media (pointer: coarse) {
     &:where(:active:not([data-state='open'])) {
       outline: 0.5em solid var(--accent-a4);
       outline-offset: 0;
