@@ -1,4 +1,4 @@
-[![Radix Themes Logo](../../themes.png)](https://radix-ui.com/themes)
+[![Radix Themes Logo](https://radix-ui.com/social/themes.png)](https://radix-ui.com/themes)
 
 # Radix Themes
 
