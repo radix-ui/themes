@@ -15,7 +15,7 @@
     color: var(--accent-12);
   }
 
-  /* stylelint-disable-next-line selector-max-type */
+  /* stylelint-disable selector-max-type */
   &:where(label) {
     /* Better -webkit-tap-highlight-color */
     @media (pointer: coarse) {
