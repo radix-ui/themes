@@ -19,6 +19,7 @@
   align-items: center;
   gap: var(--space-2);
   cursor: var(--cursor-button);
+  -webkit-tap-highlight-color: transparent;
 
   &:where(:has(:focus-visible)) {
     outline: 2px solid var(--focus-8);
@@ -152,6 +153,23 @@
         &::after {
           box-shadow: var(--base-card-classic-hover-box-shadow-inner);
         }
+      }
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         All tap highlights          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+/* Better -webkit-tap-highlight-color */
+.rt-CheckboxCardsItem {
+  @media (pointer: coarse) {
+    &:where(:active:not(:focus-visible)) {
+      &::before {
+        background-image: linear-gradient(var(--gray-a4), var(--gray-a4));
       }
     }
   }

@@ -60,6 +60,9 @@
     text-indent: initial;
     -webkit-tap-highlight-color: transparent;
   }
+  &:where(label) {
+    -webkit-tap-highlight-color: transparent;
+  }
   &:where(select) {
     font-weight: normal;
     font-style: normal;

@@ -41,6 +41,15 @@
       text-decoration-color: color-mix(in oklab, var(--accent-a5), var(--gray-a6));
     }
 
+    @media (pointer: coarse) {
+      /* Better -webkit-tap-highlight-color */
+      &:where(:active:not(:focus-visible, [data-state='open'])) {
+        border-radius: calc(0.1em * var(--radius-factor));
+        outline: 1.5em solid var(--accent-a4);
+        outline-offset: -1em;
+      }
+    }
+
     &:where(.rt-underline-auto) {
       @media (hover: hover) {
         &:where(:hover) {
