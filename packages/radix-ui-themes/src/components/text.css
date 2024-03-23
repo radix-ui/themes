@@ -14,6 +14,21 @@
   :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
+
+  /* stylelint-disable-next-line selector-max-type */
+  &:where(label) {
+    /* Better -webkit-tap-highlight-color */
+    @media (hover: none) {
+      -webkit-tap-highlight-color: transparent;
+      &:where(:active) {
+        border-radius: calc(0.1em * var(--radius-factor));
+        outline-color: var(--gray-a4);
+        outline-width: 1.5em;
+        outline-style: solid;
+        outline-offset: -1em;
+      }
+    }
+  }
 }
 
 /***************************************************************************************************

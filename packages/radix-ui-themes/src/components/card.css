@@ -75,7 +75,7 @@
   &::after {
     box-shadow: var(--base-card-surface-box-shadow);
   }
-  &:where(:any-link, button) {
+  &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
         &::after {
@@ -116,7 +116,7 @@
   &::after {
     box-shadow: var(--base-card-classic-box-shadow-inner);
   }
-  &:where(:any-link, button) {
+  &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
         transition-duration: 40ms;
@@ -177,7 +177,7 @@
     --margin-bottom-override: initial;
     --margin-left-override: initial;
   }
-  &:where(:any-link, button) {
+  &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
         background-color: var(--gray-a3);
@@ -196,6 +196,17 @@
       background-color: var(--gray-a4);
       &:where(:focus-visible) {
         background-color: var(--focus-a2);
+      }
+    }
+  }
+}
+
+/* Better -webkit-tap-highlight-color */
+.rt-Card:where(:any-link, button, label) {
+  @media (hover: none) {
+    &:where(:active:not(:focus-visible, [data-state='open'])) {
+      &::before {
+        background-image: linear-gradient(var(--gray-a4), var(--gray-a4));
       }
     }
   }
