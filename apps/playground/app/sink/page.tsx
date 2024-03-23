@@ -3804,7 +3804,22 @@ export default function Sink() {
                   </DocsSection>
 
                   <DocsSection title="Typography">
-                    <Flex direction="column" gap="5" style={{ maxWidth: 688 }}>
+                    <Flex direction="column" gap="5" style={{ maxWidth: 400 }}>
+                      <Quote wrap="balance">
+                        I believe this was probably introduced to get around inconsistencies in
+                        rendering between browsers
+                      </Quote>
+
+                      <Em wrap="balance">
+                        I believe this was probably introduced to get around inconsistencies in
+                        rendering between browsers
+                      </Em>
+
+                      <Strong wrap="balance">
+                        I believe this was probably introduced to get around inconsistencies in
+                        rendering between browsers
+                      </Strong>
+
                       <Text as="p" size="3">
                         The CSS rule <Code>-webkit-font-smoothing: antialiased;</Code> has been
                         applied to all fonts.google.com pages where fonts are rendered. This results
