@@ -51,7 +51,7 @@
       [type='checkbox'],
       [type='color'],
       [type='radio'],
-      [type='range'],
+      [type='range']
     ) {
     all: unset;
     display: inline-block;
