@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+
+- Fix a syntax error in the reset stylesheet
+- Fix Checkbox `size="1"` indicator checkmark alignment in Safari
+- Fix Checkbox and Radio disabled cursor styles not working in Safari
+
 ## 3.0.0
 
 - General
