@@ -28,6 +28,11 @@
   position: absolute;
   width: var(--checkbox-indicator-size);
   height: var(--checkbox-indicator-size);
+
+  /* Required for subpixel alignment in Safari */
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 /***************************************************************************************************

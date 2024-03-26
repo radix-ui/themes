@@ -13,13 +13,18 @@
 }
 
 .rt-CheckboxGroupItemCheckbox {
-  &:where(:focus-visible)::before {
-    outline: 2px solid var(--focus-8);
-    outline-offset: 2px;
+  &:where(:focus-visible) {
+    &::before {
+      outline: 2px solid var(--focus-8);
+      outline-offset: 2px;
+    }
   }
 
-  &:where(:disabled)::before {
-    background-color: var(--gray-a3);
+  &:where(:disabled) {
     cursor: var(--cursor-disabled);
+
+    &::before {
+      background-color: var(--gray-a3);
+    }
   }
 }
