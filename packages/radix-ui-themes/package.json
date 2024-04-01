@@ -137,7 +137,7 @@
   "devDependencies": {
     "@types/react": "^18.2.53",
     "@types/react-dom": "^18.2.18",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.19",
     "esbuild": "^0.20.0",
     "eslint": "^8.15.0",
     "eslint-config-custom": "*",
