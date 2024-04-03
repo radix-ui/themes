@@ -95,6 +95,9 @@
 
     /* Make sure parent <label> doesn't change the text cursor */
     cursor: text;
+
+    /* Recover textarea pre-wrap in Firefox */
+    white-space: pre-wrap;
   }
   &:where(:focus) {
     outline: none;
