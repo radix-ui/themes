@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.2
+
+- Remove unnecessary browser prefixes from the CSS, reducing the bundle size by 17 KB
+- Fix a regression when `Link` would not use an automatic high-contrast color when nested within colored text.
+- Fix a regression when `Link` wouldn't display hover styles when rendered as a `button`
+- Fix a regression when `TextArea` would not preserve sequences of white space in Firefox
+
 ## 3.0.1
 
 - Fix a syntax error in the reset stylesheet
