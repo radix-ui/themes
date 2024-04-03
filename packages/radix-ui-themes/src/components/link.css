@@ -29,7 +29,7 @@
  ***************************************************************************************************/
 
 .rt-Link {
-  &:where(:any-link) {
+  &:where(:any-link, button) {
     text-decoration-line: none;
     text-decoration-style: solid;
     text-decoration-thickness: min(2px, max(1px, 0.05em));
