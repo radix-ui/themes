@@ -1,8 +1,12 @@
 @import './reset.css';
-/* Import Skeleton before other components so that its default border-radius doesn’t have a higher specificity */
-@import './skeleton.css';
 @import './animations.css';
 @import './layout.css';
+
+/* Import Skeleton before other components so that its default border-radius doesn’t have a higher specificity */
+@import './skeleton.css';
+
+/* Import Text before other components as it’s commonly extended */
+@import './text.css';
 
 @import './alert-dialog.css';
 @import './avatar.css';
@@ -45,7 +49,6 @@
 @import './tabs.css';
 @import './text-area.css';
 @import './text-field.css';
-@import './text.css';
 @import './theme-panel.css';
 @import './tooltip.css';
 
