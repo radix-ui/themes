@@ -13,20 +13,17 @@ import { GetPropDefTypes, MarginProps } from '../props/index.js';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 
-type CalloutContextValue = CalloutRootOwnProps;
+type CalloutContextValue = { size?: CalloutRootOwnProps['size'] };
 const CalloutContext = React.createContext<CalloutContextValue>({});
 
 type CalloutRootElement = React.ElementRef<'div'>;
 interface CalloutRootProps
   extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
-    CalloutContextValue {}
+    CalloutRootOwnProps {}
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
   (props, forwardedRef) => {
-    const {
-      size = calloutRootPropDefs.size.default,
-      highContrast = calloutRootPropDefs.highContrast.default,
-    } = props;
+    const { size = calloutRootPropDefs.size.default } = props;
     const { asChild, children, className, color, ...rootProps } = extractProps(
       props,
       calloutRootPropDefs,
@@ -40,9 +37,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         className={classNames('rt-CalloutRoot', className)}
         ref={forwardedRef}
       >
-        <CalloutContext.Provider
-          value={React.useMemo(() => ({ size, color, highContrast }), [size, color, highContrast])}
-        >
+        <CalloutContext.Provider value={React.useMemo(() => ({ size }), [size])}>
           {children}
         </CalloutContext.Provider>
       </Comp>
