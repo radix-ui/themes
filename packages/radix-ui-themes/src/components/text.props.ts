@@ -3,7 +3,7 @@ import {
   textAlignPropDef,
   leadingTrimPropDef,
   highContrastPropDef,
-  inheritedColorPropDef,
+  colorPropDef,
   textWrapPropDef,
   truncatePropDef,
   asChildPropDef,
@@ -27,7 +27,7 @@ const textPropDefs = {
   ...leadingTrimPropDef,
   ...truncatePropDef,
   ...textWrapPropDef,
-  ...inheritedColorPropDef,
+  ...colorPropDef,
   ...highContrastPropDef,
 } satisfies {
   as: PropDef<(typeof as)[number]>;

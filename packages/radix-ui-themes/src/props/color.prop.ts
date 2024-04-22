@@ -9,32 +9,27 @@ const colorPropDef = {
   color: {
     type: 'enum',
     values: accentColors,
-    default: '' as (typeof accentColors)[number] | undefined,
-  },
-} satisfies {
-  color: PropDef<(typeof accentColors)[number]>;
-};
-
-// Difference between `colorPropDef` and `inheritedColorPropDef` is in the defaults:
-//
-// `default: ''` sets an empty `data-accent-color` attribute to define the right
-// high-contrast colors for descendants that inherit a colour by default.
-//
-// `default: undefined` allows components like Text to inherit color directly,
-// but respond to `data-accent-color` on parent when it's `highContrast`.
-const inheritedColorPropDef = {
-  color: {
-    type: 'enum',
-    values: accentColors,
     default: undefined as (typeof accentColors)[number] | undefined,
   },
 } satisfies {
   color: PropDef<(typeof accentColors)[number]>;
 };
 
+// 1. When used on components that compose Text, sets the color of the text to the current accent.
+// 2. Defines accent color for descendant text components with `highContrast={true}`.
+const accentColorPropDef = {
+  color: {
+    type: 'enum',
+    values: accentColors,
+    default: '' as (typeof accentColors)[number],
+  },
+} satisfies {
+  color: PropDef<(typeof accentColors)[number]>;
+};
+
 export {
+  accentColorPropDef,
   colorPropDef,
-  inheritedColorPropDef,
   //
   accentColors,
   grayColors,

@@ -1,6 +1,6 @@
 import {
   asChildPropDef,
-  colorPropDef,
+  accentColorPropDef,
   highContrastPropDef,
   textWrapPropDef,
   leadingTrimPropDef,
@@ -25,7 +25,7 @@ const linkPropDefs = {
   ...truncatePropDef,
   ...textWrapPropDef,
   underline: { type: 'enum', className: 'rt-underline', values: underline, default: 'auto' },
-  ...colorPropDef,
+  ...accentColorPropDef,
   ...highContrastPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;

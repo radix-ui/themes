@@ -1,6 +1,6 @@
 import {
   asChildPropDef,
-  colorPropDef,
+  accentColorPropDef,
   highContrastPropDef,
   radiusPropDef,
 } from '../props/index.js';
@@ -13,7 +13,7 @@ const avatarPropDefs = {
   ...asChildPropDef,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '3', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  ...colorPropDef,
+  ...accentColorPropDef,
   ...highContrastPropDef,
   ...radiusPropDef,
   fallback: { type: 'ReactNode', required: true },
