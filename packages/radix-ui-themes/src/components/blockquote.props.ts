@@ -1,7 +1,7 @@
 import {
   asChildPropDef,
   highContrastPropDef,
-  inheritedColorPropDef,
+  colorPropDef,
   textWrapPropDef,
   truncatePropDef,
   weightPropDef,
@@ -20,7 +20,7 @@ const blockquotePropDefs = {
     responsive: true,
   },
   ...weightPropDef,
-  ...inheritedColorPropDef,
+  ...colorPropDef,
   ...highContrastPropDef,
   ...truncatePropDef,
   ...textWrapPropDef,

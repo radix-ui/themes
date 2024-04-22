@@ -1,4 +1,4 @@
-import { colorPropDef, highContrastPropDef, radiusPropDef } from '../props/index.js';
+import { accentColorPropDef, highContrastPropDef, radiusPropDef } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 import { asChildPropDef } from '../props/as-child.prop.js';
 
@@ -9,7 +9,7 @@ const badgePropDefs = {
   ...asChildPropDef,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '1', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
-  ...colorPropDef,
+  ...accentColorPropDef,
   ...highContrastPropDef,
   ...radiusPropDef,
 } satisfies {

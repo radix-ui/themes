@@ -1,7 +1,7 @@
 import {
   widthPropDefs,
   leadingTrimPropDef,
-  inheritedColorPropDef,
+  colorPropDef,
   highContrastPropDef,
 } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
@@ -48,7 +48,7 @@ const dataListItemPropDefs = {
 
 const dataListLabelPropDefs = {
   ...widthPropDefs,
-  ...inheritedColorPropDef,
+  ...colorPropDef,
   ...highContrastPropDef,
 };
 
