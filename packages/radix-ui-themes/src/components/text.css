@@ -21,11 +21,8 @@
     @media (pointer: coarse) {
       -webkit-tap-highlight-color: transparent;
       &:where(:active) {
-        border-radius: calc(0.1em * var(--radius-factor));
-        outline-color: var(--gray-a4);
-        outline-width: 1.5em;
-        outline-style: solid;
-        outline-offset: -1em;
+        outline: 0.75em solid var(--gray-a4);
+        outline-offset: -0.6em;
       }
     }
   }

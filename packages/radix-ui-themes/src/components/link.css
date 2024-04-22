@@ -44,9 +44,8 @@
     @media (pointer: coarse) {
       /* Better -webkit-tap-highlight-color */
       &:where(:active:not(:focus-visible, [data-state='open'])) {
-        border-radius: calc(0.1em * var(--radius-factor));
-        outline: 1.5em solid var(--accent-a4);
-        outline-offset: -1em;
+        outline: 0.75em solid var(--accent-a4);
+        outline-offset: -0.6em;
       }
     }
 
