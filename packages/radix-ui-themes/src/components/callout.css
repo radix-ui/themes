@@ -1,4 +1,5 @@
 .rt-CalloutRoot {
+  box-sizing: border-box;
   display: grid;
   align-items: flex-start;
   justify-content: flex-start;
@@ -14,7 +15,7 @@
   display: flex;
   align-items: center;
   grid-column-start: -2;
-  height: var(--line-height);
+  height: var(--callout-icon-height);
 }
 
 /* Anything that’s not an icon goes to the right of the icon */
@@ -28,10 +29,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-CalloutRoot {
-  box-sizing: border-box;
-}
-
 @breakpoints {
   .rt-CalloutRoot {
     &:where(.rt-r-size-1) {
@@ -39,18 +36,21 @@
       column-gap: var(--space-2);
       padding: var(--space-3);
       border-radius: var(--radius-3);
+      --callout-icon-height: var(--line-height-2);
     }
     &:where(.rt-r-size-2) {
       row-gap: var(--space-2);
       column-gap: var(--space-3);
       padding: var(--space-4);
       border-radius: var(--radius-4);
+      --callout-icon-height: var(--line-height-2);
     }
     &:where(.rt-r-size-3) {
       row-gap: var(--space-3);
       column-gap: var(--space-4);
       padding: var(--space-5);
       border-radius: var(--radius-5);
+      --callout-icon-height: var(--line-height-3);
     }
   }
 }
