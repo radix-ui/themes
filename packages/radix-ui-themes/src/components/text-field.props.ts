@@ -1,10 +1,5 @@
 import type { PropDef } from '../props/index.js';
-import {
-  colorPropDef,
-  inheritedColorPropDef,
-  paddingPropDefs,
-  radiusPropDef,
-} from '../props/index.js';
+import { colorPropDef, paddingPropDefs, radiusPropDef } from '../props/index.js';
 import { flexPropDefs } from './flex.props.js';
 
 const sizes = ['1', '2', '3'] as const;
@@ -24,7 +19,7 @@ const sides = ['left', 'right'] as const;
 
 const textFieldSlotPropDefs = {
   side: { type: 'enum', values: sides },
-  ...inheritedColorPropDef,
+  ...colorPropDef,
   gap: flexPropDefs.gap,
   px: paddingPropDefs.px,
   pl: paddingPropDefs.pl,

@@ -1,4 +1,4 @@
-import { colorPropDef, highContrastPropDef, radiusPropDef, widthPropDefs } from '../props/index.js';
+import { colorPropDef, highContrastPropDef, radiusPropDef } from '../props/index.js';
 import type { PropDef } from '../props/index.js';
 
 const sizes = ['1', '2', '3'] as const;

@@ -1,6 +1,6 @@
 import {
   weightPropDef,
-  colorPropDef,
+  accentColorPropDef,
   highContrastPropDef,
   textWrapPropDef,
   truncatePropDef,
@@ -22,7 +22,7 @@ const codePropDefs = {
   },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
   ...weightPropDef,
-  ...colorPropDef,
+  ...accentColorPropDef,
   ...highContrastPropDef,
   ...truncatePropDef,
   ...textWrapPropDef,

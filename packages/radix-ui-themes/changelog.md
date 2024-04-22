@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.3
+
+- Fix a regression when `Link` would use an automatic high-contrast color when an explicit `color` value was used.
+- Fix a regression when `Link` would not use the correct text selection and focus color when nested in gray text.
+- Remove an unnecessary `data-accent-color` attribute from components where it had no practical effect to be there.
+- Rework the internals of the `color` prop definition.
+
 ## 3.0.2
 
 - Remove unnecessary browser prefixes from the CSS, reducing the bundle size by 17 KB

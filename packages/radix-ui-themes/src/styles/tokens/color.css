@@ -72,7 +72,7 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .radix-themes,
-[data-accent-color]:where(:not([data-accent-color='gray'])) {
+[data-accent-color]:where(:not([data-accent-color=''], [data-accent-color='gray'])) {
   --focus-1: var(--accent-1);
   --focus-2: var(--accent-2);
   --focus-3: var(--accent-3);
