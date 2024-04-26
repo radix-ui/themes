@@ -11,3 +11,8 @@
   /* Make sure whitespace to the right of the text is not clickable */
   width: fit-content;
 }
+
+.rt-RadioGroupItemInner {
+  /* Make layouts with text truncation possible */
+  min-width: 0;
+}

@@ -92,7 +92,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
             {...props}
             ref={forwardedRef}
           />
-          {children && <span>{children}</span>}
+          {children && <span className="rt-RadioGroupItemInner">{children}</span>}
         </Text>
       );
     }
