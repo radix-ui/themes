@@ -94,7 +94,7 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
             {...props}
             ref={forwardedRef}
           />
-          {children && <span>{children}</span>}
+          {children && <span className="rt-CheckboxGroupItemInner">{children}</span>}
         </Text>
       );
     }

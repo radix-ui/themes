@@ -142,7 +142,7 @@
   &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     /* Blend with focus color */
     background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-    box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a4);
+    box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
   }
 
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
@@ -172,7 +172,7 @@
   &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     /* Blend with focus color */
     background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-    box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a4);
+    box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
   }
 
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
@@ -207,7 +207,7 @@
   /* prettier-ignore */
   &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     /* Use gray autofill color when component color is gray */
-    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a3);
+    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
   }
 
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {

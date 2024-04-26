@@ -5,6 +5,7 @@
 - Fix a regression when `Link` would use an automatic high-contrast color when an explicit `color` value was used.
 - Fix a regression when `Link` would not use the correct text selection and focus color when nested in gray text.
 - Tweak `Link` tap highlight style
+- Tweak `CheckboxGroup.Item` and `RadioGroup.Item` so that a layout with overflowing text truncation would be possible to achieve
 - Remove an unnecessary `data-accent-color` attribute from components where it had no practical effect to be there.
 - Rework the internals of the `color` prop definition.
 - Rework the autofilled and disabled colors for `TextField` and `TextArea`
