@@ -2,6 +2,7 @@
 
 ## 3.0.3
 
+- Add an internal `--spinner-animation-duration` CSS variable
 - Fix a regression when `Link` would use an automatic high-contrast color when an explicit `color` value was used.
 - Fix a regression when `Link` would not use the correct text selection and focus color when nested in gray text.
 - Tweak `Link` tap highlight style
