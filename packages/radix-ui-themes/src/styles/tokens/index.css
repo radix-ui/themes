@@ -1,5 +1,3 @@
-@import './base.css';
-
 @import './colors/gray.css';
 @import './colors/mauve.css';
 @import './colors/slate.css';
@@ -32,3 +30,5 @@
 @import './colors/tomato.css';
 @import './colors/violet.css';
 @import './colors/yellow.css';
+
+@import './base.css';
