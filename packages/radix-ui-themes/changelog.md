@@ -2,7 +2,7 @@
 
 ## 3.0.3
 
-- Add an internal `--spinner-animation-duration` CSS variable
+- Fix an issue when the theme `grayColor` setting would have no effect in combination with explicit `appearance="light"` or `appearance="dark"` values
 - Fix a regression when `Link` would use an automatic high-contrast color when an explicit `color` value was used.
 - Fix a regression when `Link` would not use the correct text selection and focus color when nested in gray text.
 - Tweak `Link` tap highlight style
@@ -10,6 +10,7 @@
 - Remove an unnecessary `data-accent-color` attribute from components where it had no practical effect to be there.
 - Rework the internals of the `color` prop definition.
 - Rework the autofilled and disabled colors for `TextField` and `TextArea`
+- Add an internal `--spinner-animation-duration` CSS variable for the `Spinner` component
 
 ## 3.0.2
 
