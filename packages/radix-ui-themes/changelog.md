@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.4 (unreleased)
+
+- Support the `max` prop on the `Progress` component
+
 ## 3.0.3
 
 - Fix an issue when the theme `grayColor` setting would have no effect in combination with explicit `appearance="light"` or `appearance="dark"` values

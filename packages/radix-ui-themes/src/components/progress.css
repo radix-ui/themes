@@ -1,5 +1,6 @@
 .rt-ProgressRoot {
   --progress-value: 0;
+  --progress-max: 100;
   --progress-duration: 5s;
   pointer-events: none;
   position: relative;
@@ -32,7 +33,7 @@
   height: 100%;
   width: 100%;
 
-  transform: scaleX(calc(var(--progress-value) / 100));
+  transform: scaleX(calc(var(--progress-value) / var(--progress-max)));
   transform-origin: left center;
   transition: transform 120ms;
 

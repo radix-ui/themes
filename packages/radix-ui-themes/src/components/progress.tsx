@@ -35,6 +35,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
         {
           '--progress-duration': 'value' in progressProps ? undefined : duration,
           '--progress-value': 'value' in progressProps ? progressProps.value : undefined,
+          '--progress-max': 'max' in progressProps ? progressProps.max : undefined,
         },
         style
       )}
