@@ -1,4 +1,6 @@
-import { asChildPropDef, type PropDef } from '../props/index.js';
+import { asChildPropDef } from '../props/as-child.prop.js';
+
+import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3', '4', '5'] as const;
 const variants = ['surface', 'classic', 'ghost'] as const;

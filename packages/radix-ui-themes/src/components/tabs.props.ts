@@ -1,4 +1,4 @@
-import { asChildPropDef } from '../props/index.js';
+import { asChildPropDef } from '../props/as-child.prop.js';
 
 const tabsRootPropDefs = {
   ...asChildPropDef,

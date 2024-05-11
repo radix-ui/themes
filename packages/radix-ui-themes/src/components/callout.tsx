@@ -3,13 +3,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
+
 import { Text } from './text.js';
 import { calloutRootPropDefs } from './callout.props.js';
-import { extractProps, mapCalloutSizeToTextSize, mapResponsiveProp } from '../helpers/index.js';
-import { marginPropDefs } from '../props/index.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { mapResponsiveProp, mapCalloutSizeToTextSize } from '../helpers/map-prop-values.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { ComponentPropsAs, ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import { GetPropDefTypes, MarginProps } from '../props/index.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type {
+  ComponentPropsWithout,
+  RemovedProps,
+  ComponentPropsAs,
+} from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 

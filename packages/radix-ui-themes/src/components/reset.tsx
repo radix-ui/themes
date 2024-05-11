@@ -1,9 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { requireReactElement } from '../helpers/index.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import { requireReactElement } from '../helpers/require-react-element.js';
+
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 interface ResetProps extends ComponentPropsWithout<typeof Slot, RemovedProps> {}
 const Reset = React.forwardRef<HTMLElement, ResetProps>(

@@ -3,17 +3,19 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { createContextScope } from '@radix-ui/react-context';
+
 import * as CheckboxGroupPrimitive from './checkbox-group.primitive.js';
 import { createCheckboxGroupScope } from './checkbox-group.primitive.js';
 import { checkboxGroupRootPropDefs } from './checkbox-group.props.js';
-import { extractProps } from '../helpers/index.js';
-import { marginPropDefs } from '../props/index.js';
 import { ThickCheckIcon } from './icons.js';
 import { Text } from './text.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 import type { Scope } from '@radix-ui/react-context';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 const CHECKBOX_GROUP_NAME = 'CheckboxGroup';
 

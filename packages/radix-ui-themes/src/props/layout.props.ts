@@ -1,7 +1,8 @@
 import { paddingPropDefs } from './padding.props.js';
-import type { PropDef, GetPropDefTypes } from './prop-def.js';
 import { heightPropDefs } from './height.props.js';
 import { widthPropDefs } from './width.props.js';
+
+import type { PropDef, GetPropDefTypes } from './prop-def.js';
 
 const overflowValues = ['visible', 'hidden', 'clip', 'scroll', 'auto'] as const;
 const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as const;

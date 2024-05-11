@@ -1,7 +1,8 @@
 # Changelog
 
-## 3.0.4 (unreleased)
+## 3.0.4
 
+- Fix an issue when the Radix Themes package couldn’t be bundled with webpack because of a circular dependency within
 - Support the `max` prop on the `Progress` component
 
 ## 3.0.3

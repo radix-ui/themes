@@ -4,6 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Slottable } from '@radix-ui/react-slot';
+
 import { ScrollArea } from './scroll-area.js';
 import {
   dropdownMenuContentPropDefs,
@@ -11,13 +12,14 @@ import {
   dropdownMenuCheckboxItemPropDefs,
   dropdownMenuRadioItemPropDefs,
 } from './dropdown-menu.props.js';
-import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Theme, useThemeContext } from './theme.js';
 import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { requireReactElement } from '../helpers/require-react-element.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes } from '../props/index.js';
 import type { IconProps } from './icons.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}

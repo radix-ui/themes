@@ -1,5 +1,6 @@
-import { radiusPropDef } from '../props/index.js';
-import type { PropDef } from '../props/index.js';
+import { radiusPropDef } from '../props/radius.prop.js';
+
+import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'classic'] as const;

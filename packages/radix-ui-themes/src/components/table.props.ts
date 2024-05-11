@@ -1,5 +1,7 @@
-import type { PropDef } from '../props/index.js';
-import { paddingPropDefs, widthPropDefs } from '../props/index.js';
+import { paddingPropDefs } from '../props/padding.props.js';
+import { widthPropDefs } from '../props/width.props.js';
+
+import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'ghost'] as const;

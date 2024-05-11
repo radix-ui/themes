@@ -1,5 +1,6 @@
-import { asChildPropDef } from '../props/index.js';
-import type { GetPropDefTypes, PropDef } from '../props/index.js';
+import { asChildPropDef } from '../props/as-child.prop.js';
+
+import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 
 const as = ['div', 'span'] as const;
 const displayValues = ['none', 'inline', 'inline-block', 'block'] as const;

@@ -5,10 +5,12 @@ import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { DirectionProvider } from '@radix-ui/react-direction';
 import { Slot } from '@radix-ui/react-slot';
-import { getMatchingGrayColor } from '../helpers/index.js';
-import { ThemeOwnProps, themePropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
+import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
+import { themePropDefs } from './theme.props.js';
+
+import type { ThemeOwnProps } from './theme.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 const noop = () => {};
 

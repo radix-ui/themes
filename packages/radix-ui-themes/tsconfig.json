@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "jsx": "react",
     "declaration": true,
@@ -7,6 +9,7 @@
     "outDir": "dist",
     "strict": true,
     "skipLibCheck": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true
   }
 }

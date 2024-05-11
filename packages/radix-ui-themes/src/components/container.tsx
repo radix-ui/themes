@@ -1,12 +1,19 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
-import { containerPropDefs } from './container.props.js';
-import { extractProps, getSubtree } from '../helpers/index.js';
-import { heightPropDefs, layoutPropDefs, marginPropDefs, widthPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { MarginProps, LayoutProps, ContainerOwnProps } from '../props/index.js';
+import { containerPropDefs } from './container.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { getSubtree } from '../helpers/get-subtree.js';
+import { heightPropDefs } from '../props/height.props.js';
+import { layoutPropDefs } from '../props/layout.props.js';
+import { marginPropDefs } from '../props/margin.props.js';
+import { widthPropDefs } from '../props/width.props.js';
+
+import type { LayoutProps } from '../props/layout.props.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type { ContainerOwnProps } from './container.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 type ContainerElement = React.ElementRef<'div'>;
 interface ContainerProps
