@@ -5,15 +5,16 @@ import classNames from 'classnames';
 import { createContextScope } from '@radix-ui/react-context';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import { createRadioGroupScope } from '@radix-ui/react-radio-group';
+
 import { radioGroupRootPropDefs } from './radio-group.props.js';
-import { extractProps } from '../helpers/index.js';
-import { marginPropDefs } from '../props/index.js';
-
 import { Text } from './text.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes, MarginProps } from '../props/index.js';
 import type { Scope } from '@radix-ui/react-context';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 const RADIO_GROUP_NAME = 'RadioGroup';
 

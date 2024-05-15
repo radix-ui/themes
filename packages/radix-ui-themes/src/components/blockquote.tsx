@@ -1,11 +1,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
+
 import { Text } from './text.js';
 import { blockquotePropDefs } from './blockquote.props.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes, MarginProps } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type BlockquoteElement = React.ElementRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;

@@ -1,5 +1,7 @@
-import { asChildPropDef, radiusPropDef } from '../props/index.js';
-import type { PropDef } from '../props/index.js';
+import { asChildPropDef } from '../props/as-child.prop.js';
+import { radiusPropDef } from '../props/radius.prop.js';
+
+import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3'] as const;
 const scrollbarsValues = ['vertical', 'horizontal', 'both'] as const;

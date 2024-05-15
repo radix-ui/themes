@@ -1,6 +1,7 @@
 import { asChildPropDef } from '../props/as-child.prop.js';
 import { accentColors, grayColors } from '../props/color.prop.js';
 import { radii } from '../props/radius.prop.js';
+
 import type { GetPropDefTypes, PropDef } from '../props/prop-def.js';
 
 const appearances = ['inherit', 'light', 'dark'] as const;

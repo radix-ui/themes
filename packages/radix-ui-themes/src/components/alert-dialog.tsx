@@ -3,14 +3,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+
 import { alertDialogContentPropDefs } from './alert-dialog.props.js';
-import { extractProps, requireReactElement } from '../helpers/index.js';
 import { Heading } from './heading.js';
 import { Text } from './text.js';
 import { Theme } from './theme.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { requireReactElement } from '../helpers/require-react-element.js';
 
-import type { ComponentPropsAs, ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { AlertDialogContentOwnProps } from '../props/index.js';
+import type { AlertDialogContentOwnProps } from './alert-dialog.props.js';
+import type {
+  ComponentPropsWithout,
+  RemovedProps,
+  ComponentPropsAs,
+} from '../helpers/component-props.js';
 
 interface AlertDialogRootProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root> {}

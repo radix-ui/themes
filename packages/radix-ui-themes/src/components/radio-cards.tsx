@@ -3,13 +3,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { radioCardsRootPropDefs } from './radio-cards.props.js';
-import { extractProps } from '../helpers/index.js';
-import { marginPropDefs } from '../props/index.js';
-import { Grid } from './grid.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes, MarginProps } from '../props/index.js';
+import { radioCardsRootPropDefs } from './radio-cards.props.js';
+import { Grid } from './grid.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
+
+import type { MarginProps } from '../props/margin.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type RadioCardsRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 type RadioCardsRootOwnProps = GetPropDefTypes<typeof radioCardsRootPropDefs>;

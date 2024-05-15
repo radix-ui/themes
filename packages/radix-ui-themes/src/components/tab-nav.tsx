@@ -3,12 +3,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { tabNavLinkPropDefs, tabNavRootPropDefs } from './tab-nav.props.js';
-import { extractProps, getSubtree } from '../helpers/index.js';
-import { marginPropDefs } from '../props/index.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes, MarginProps } from '../props/index.js';
+import { tabNavLinkPropDefs, tabNavRootPropDefs } from './tab-nav.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { getSubtree } from '../helpers/get-subtree.js';
+import { marginPropDefs } from '../props/margin.props.js';
+
+import type { MarginProps } from '../props/margin.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type TabNavRootElement = React.ElementRef<typeof NavigationMenu.Root>;
 type TabNavRootElementProps = ComponentPropsWithout<'nav', RemovedProps>;

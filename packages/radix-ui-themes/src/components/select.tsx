@@ -4,18 +4,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
+import { ChevronDownIcon, ThickCheckIcon } from './icons.js';
 import {
   selectRootPropDefs,
   selectTriggerPropDefs,
   selectContentPropDefs,
 } from './select.props.js';
-import { extractProps } from '../helpers/index.js';
-import { marginPropDefs } from '../props/index.js';
-import { Theme, useThemeContext } from './theme.js';
-import { ThickCheckIcon, ChevronDownIcon } from './icons.js';
+import { useThemeContext, Theme } from './theme.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes, MarginProps } from '../props/index.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 type SelectRootOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
 

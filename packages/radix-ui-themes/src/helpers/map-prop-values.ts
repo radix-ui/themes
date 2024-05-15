@@ -3,7 +3,7 @@ import { calloutRootPropDefs } from '../components/callout.props.js';
 import { spinnerPropDefs } from '../components/spinner.props.js';
 import { textPropDefs } from '../components/text.props.js';
 
-import type { Responsive } from '../props/index.js';
+import type { Responsive } from '../props/prop-def.js';
 
 function mapResponsiveProp<Input extends string, Output>(
   propValue: Responsive<Input> | undefined,

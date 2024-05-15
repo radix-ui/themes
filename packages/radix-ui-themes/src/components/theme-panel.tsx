@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
+
 import {
   AccessibleIcon,
   Box,
@@ -17,11 +18,11 @@ import {
   Tooltip,
 } from '../index.js';
 import { Theme, useThemeContext } from './theme.js';
-import { getMatchingGrayColor } from '../helpers/index.js';
-import { themePropDefs } from '../props/index.js';
+import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
+import { themePropDefs } from './theme.props.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
-import type { GetPropDefTypes } from '../props/index.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;

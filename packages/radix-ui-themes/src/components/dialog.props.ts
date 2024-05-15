@@ -1,5 +1,7 @@
-import { asChildPropDef, widthPropDefs } from '../props/index.js';
-import type { GetPropDefTypes, PropDef } from '../props/index.js';
+import { asChildPropDef } from '../props/as-child.prop.js';
+import { widthPropDefs } from '../props/width.props.js';
+
+import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 
 const contentSizes = ['1', '2', '3', '4'] as const;
 

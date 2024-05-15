@@ -1,7 +1,10 @@
 import classNames from 'classnames';
-import { MarginProps, marginPropDefs } from '../props/margin.props.js';
+
 import { getResponsiveStyles } from './get-responsive-styles.js';
 import { mergeStyles } from './merge-styles.js';
+import { marginPropDefs } from '../props/margin.props.js';
+
+import type { MarginProps } from '../props/margin.props.js';
 
 const marginValues = marginPropDefs.m.values;
 
