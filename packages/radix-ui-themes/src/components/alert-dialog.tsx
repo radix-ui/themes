@@ -44,17 +44,18 @@ interface AlertDialogContentProps
   container?: React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Portal>['container'];
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
-  (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = extractProps(
-      props,
-      alertDialogContentPropDefs
-    );
+  ({ align, ...props }, forwardedRef) => {
+    const { align: alignPropDef, ...propDefs } = alertDialogContentPropDefs;
+    const { className: alignClassName } = extractProps({ align }, { align: alignPropDef });
+    const { className, forceMount, container, ...contentProps } = extractProps(props, propDefs);
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <AlertDialogPrimitive.Overlay className="rt-BaseDialogOverlay rt-AlertDialogOverlay">
             <div className="rt-BaseDialogScroll rt-AlertDialogScroll">
-              <div className="rt-BaseDialogScrollPadding rt-AlertDialogScrollPadding">
+              <div
+                className={`rt-BaseDialogScrollPadding rt-AlertDialogScrollPadding ${alignClassName}`}
+              >
                 <AlertDialogPrimitive.Content
                   {...contentProps}
                   ref={forwardedRef}
