@@ -27,10 +27,10 @@
 }
 
 @breakpoints {
-  .rt-BaseDialogScrollPadding.rt-r-align-start {
+  .rt-BaseDialogScrollPadding:where(.rt-r-align-start) {
     margin-top: 0;
   }
-  .rt-BaseDialogScrollPadding.rt-r-align-center {
+  .rt-BaseDialogScrollPadding:where(.rt-r-align-center) {
     margin-top: auto;
   }
 }
