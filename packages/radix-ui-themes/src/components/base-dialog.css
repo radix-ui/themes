@@ -26,6 +26,15 @@
   padding-right: var(--space-4);
 }
 
+@breakpoints {
+  .rt-BaseDialogScrollPadding.rt-r-align-start {
+    margin-top: 0;
+  }
+  .rt-BaseDialogScrollPadding.rt-r-align-center {
+    margin-top: auto;
+  }
+}
+
 .rt-BaseDialogContent {
   margin: auto;
   width: 100%;

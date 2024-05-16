@@ -41,17 +41,18 @@ interface DialogContentProps
   container?: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>['container'];
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
-  (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = extractProps(
-      props,
-      dialogContentPropDefs
-    );
+  ({ align, ...props }, forwardedRef) => {
+    const { align: alignPropDef, ...propDefs } = dialogContentPropDefs;
+    const { className: alignClassName } = extractProps({ align }, { align: alignPropDef });
+    const { className, forceMount, container, ...contentProps } = extractProps(props, propDefs);
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DialogPrimitive.Overlay className="rt-BaseDialogOverlay rt-DialogOverlay">
             <div className="rt-BaseDialogScroll rt-DialogScroll">
-              <div className="rt-BaseDialogScrollPadding rt-DialogScrollPadding">
+              <div
+                className={`rt-BaseDialogScrollPadding rt-DialogScrollPadding ${alignClassName}`}
+              >
                 <DialogPrimitive.Content
                   {...contentProps}
                   ref={forwardedRef}

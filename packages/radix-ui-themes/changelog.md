@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.5
+
+- Add `align`, `height`, `minHeight`, and `maxHeight` props to `AlertDialog.Content` and `Dialog.Content`
+
 ## 3.0.4
 
 - Fix an issue when the Radix Themes package couldn’t be bundled with webpack because of a circular dependency within
