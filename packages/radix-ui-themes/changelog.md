@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0
+
+- Upgrade Radix Primitives to the new version with the built-in RSC support
+
 ## 3.0.5
 
 - Add `align`, `height`, `minHeight`, and `maxHeight` props to `AlertDialog.Content` and `Dialog.Content`
