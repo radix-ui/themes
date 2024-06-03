@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import classNames from 'classnames';
 import * as PopoverPrimitive from '@radix-ui/react-popover';

@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
