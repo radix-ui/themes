@@ -18,6 +18,7 @@ import {
   Tooltip,
 } from '../index.js';
 import { Theme, useThemeContext } from './theme.js';
+import { inert } from '../helpers/inert.js';
 import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
 import { themePropDefs } from './theme.props.js';
 
@@ -204,7 +205,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
           mr="4"
           mt="4"
           // @ts-ignore
-          inert={open ? undefined : ''}
+          inert={open ? undefined : inert}
           {...panelProps}
           ref={forwardedRef}
           style={{

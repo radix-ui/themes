@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 
+import { inert } from '../helpers/inert.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
 import { skeletonPropDefs } from './skeleton.props.js';
@@ -34,8 +35,8 @@ const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwar
       className={classNames('rt-Skeleton', className)}
       data-inline-skeleton={React.isValidElement(children) ? undefined : true}
       tabIndex={-1}
-      // Workaround to use `inert` until https://github.com/facebook/react/pull/24730 is merged.
-      {...{ inert: true ? '' : undefined }}
+      // @ts-ignore
+      inert={inert}
       {...skeletonProps}
     >
       {children}
