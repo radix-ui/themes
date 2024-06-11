@@ -15,11 +15,12 @@ import { NextThemeProvider } from '../next-theme-provider';
 
 export default function Test() {
   const [frameworks, setFrameworks] = React.useState(['next']);
-  const [frameworksForm, setFrameworksForm] = React.useState([]);
+  const [frameworksForm, setFrameworksForm] = React.useState<FormDataEntryValue[]>([]);
 
   function handleChange(event: React.FormEvent<HTMLFormElement>) {
     const formData = new FormData(event.currentTarget);
-    setFrameworksForm(formData.getAll('frameworks'));
+    const values = formData.getAll('frameworks');
+    setFrameworksForm(values);
   }
 
   return (

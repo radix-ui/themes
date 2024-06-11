@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { createCheckboxScope } from '@radix-ui/react-checkbox';
@@ -9,7 +11,6 @@ import { createRovingFocusGroupScope } from '@radix-ui/react-roving-focus';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { useDirection } from '@radix-ui/react-direction';
 
-import type * as Radix from '@radix-ui/react-primitive';
 import type { Scope } from '@radix-ui/react-context';
 
 /* -------------------------------------------------------------------------------------------------
@@ -38,12 +39,12 @@ const [CheckboxGroupProvider, useCheckboxGroupContext] =
   createCheckboxGroupContext<CheckboxGroupContextValue>(CHECKBOX_GROUP_NAME);
 
 type CheckboxGroupElement = React.ElementRef<typeof Primitive.div>;
-type RovingFocusGroupProps = Radix.ComponentPropsWithoutRef<typeof RovingFocusGroup.Root>;
-type PrimitiveDivProps = Radix.ComponentPropsWithoutRef<typeof Primitive.div>;
+type RovingFocusGroupProps = React.ComponentPropsWithoutRef<typeof RovingFocusGroup.Root>;
+type PrimitiveDivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface CheckboxGroupProps extends PrimitiveDivProps {
   name?: CheckboxGroupContextValue['name'];
-  required?: Radix.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>['required'];
-  disabled?: Radix.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>['disabled'];
+  required?: React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>['required'];
+  disabled?: React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>['disabled'];
   dir?: RovingFocusGroupProps['dir'];
   orientation?: RovingFocusGroupProps['orientation'];
   loop?: RovingFocusGroupProps['loop'];
@@ -125,7 +126,7 @@ CheckboxGroup.displayName = CHECKBOX_GROUP_NAME;
 const ITEM_NAME = 'CheckboxGroupItem';
 
 type CheckboxGroupItemElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
-type CheckboxProps = Radix.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
+type CheckboxProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxGroupItemProps
   extends Omit<CheckboxProps, 'checked' | 'defaultChecked' | 'onCheckedChange' | 'name'> {
   value: string;
@@ -179,7 +180,7 @@ CheckboxGroupItem.displayName = ITEM_NAME;
 const INDICATOR_NAME = 'CheckboxGroupIndicator';
 
 type CheckboxGroupIndicatorElement = React.ElementRef<typeof CheckboxPrimitive.Indicator>;
-type CheckboxIndicatorProps = Radix.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Indicator>;
+type CheckboxIndicatorProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Indicator>;
 interface CheckboxGroupIndicatorProps extends CheckboxIndicatorProps {}
 
 const CheckboxGroupIndicator = React.forwardRef<

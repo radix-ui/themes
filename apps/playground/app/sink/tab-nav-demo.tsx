@@ -10,7 +10,7 @@ const TabNavDemo = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabNav.Root>
 >((props, forwardedRef) => {
   const params = useSearchParams();
-  const tab = params.get('tab');
+  const tab = params?.get('tab');
   return (
     <TabNav.Root {...props} ref={forwardedRef}>
       <TabNav.Link asChild active={tab === 'account' || tab === null}>

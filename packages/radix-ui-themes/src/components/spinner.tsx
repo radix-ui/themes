@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { Flex } from './flex.js';
 import { spinnerPropDefs } from './spinner.props.js';
+import { inert } from '../helpers/inert.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
 
@@ -50,8 +51,8 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
         <span
           aria-hidden
           style={{ display: 'contents', visibility: 'hidden' }}
-          // Workaround to use `inert` until https://github.com/facebook/react/pull/24730 is merged.
-          {...{ inert: true ? '' : undefined }}
+          // @ts-ignore
+          inert={undefined}
         >
           {children}
         </span>

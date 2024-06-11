@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import classNames from 'classnames';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
@@ -58,7 +56,7 @@ const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, 
         {...linkProps}
         ref={forwardedRef}
         className={classNames('rt-reset', 'rt-BaseTabListTrigger', 'rt-TabNavLink', className)}
-        onSelect={() => {}}
+        onSelect={undefined}
         asChild={asChild}
       >
         {getSubtree({ asChild, children }, (children) => (

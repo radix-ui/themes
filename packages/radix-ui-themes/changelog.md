@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.0
+
+- Support React 19
+- Upgrade Radix Primitives to the newest versions
+
 ## 3.0.5
 
 - Add `align`, `height`, `minHeight`, and `maxHeight` props to `AlertDialog.Content` and `Dialog.Content`
