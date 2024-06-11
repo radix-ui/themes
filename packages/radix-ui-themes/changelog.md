@@ -2,7 +2,8 @@
 
 ## 3.1.0
 
-- Upgrade Radix Primitives to the new version with the built-in RSC support
+- Support React 19
+- Upgrade Radix Primitives to the newest versions
 
 ## 3.0.5
 

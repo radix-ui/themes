@@ -17,7 +17,6 @@ import {
   Skeleton,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
-import { MixIcon } from '@radix-ui/react-icons';
 
 export default function Test() {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -28,7 +27,11 @@ export default function Test() {
       setIsLoading(false);
     }, 2000);
 
-    return () => clearTimeout(loadingTimeoutRef.current);
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (

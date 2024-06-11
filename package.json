@@ -1,4 +1,5 @@
 {
+  "name": "monorepo",
   "private": true,
   "packageManager": "yarn@1.22.18",
   "workspaces": [
@@ -12,8 +13,8 @@
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "eslint": "^8.29.0",
+    "eslint": "8.29.0",
     "eslint-config-custom": "*",
-    "turbo": "latest"
+    "turbo": "2.0.3"
   }
 }
