@@ -32,7 +32,6 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
       data-radius={radius}
       ref={forwardedRef}
       className={classNames('rt-ProgressRoot', className)}
-      value={'value' in progressProps ? progressProps.value : null}
       style={mergeStyles(
         {
           '--progress-duration': 'value' in progressProps ? undefined : duration,
