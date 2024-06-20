@@ -352,543 +352,543 @@
   resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-3.0.0.tgz#e8a591a303c44e503bd1212cacf40a09511165e0"
   integrity sha512-FUOsGBkHrYJwCSEtWRCIfQbZG7q1e6DgxCIOe1SUQzDe/7rXXeA47s8yCn6fuTNQAj1Zq4oTFi9Yjp3wzElcxg==
 
-"@radix-ui/number@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/number/-/number-1.1.0-rc.5.tgz#7622939d4c83c807a1c9df54198d4fdb0e7440e0"
-  integrity sha512-IhGpiSi5wbozbAqFG6KvQCOiDmeX3e9YpUCsD/WxUEzMsPYzL4qMEM2RKLddUJ8twY5XzijfRZCZ20wqHkpDew==
+"@radix-ui/number@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/number/-/number-1.1.0.tgz#1e95610461a09cdf8bb05c152e76ca1278d5da46"
+  integrity sha512-V3gRzhVNU1ldS5XhAPTom1fOIo4ccrjjJgmE+LI2h/WaFpHmx0MQApT+KZHnx8abG6Avtfcz4WoEciMnpFT3HQ==
 
-"@radix-ui/primitive@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/primitive/-/primitive-1.1.0-rc.5.tgz#44948b6f125d2a45202ffe894c7d52ef8176e36f"
-  integrity sha512-HkKmS0yp/8OLbljRUUBN2bQeWGmBuiEyd+Ms9LWnb1eFN7iKu3c4s9I7y27Pg0iHxDqc6GznHAdiv1uTHTGBEA==
+"@radix-ui/primitive@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/primitive/-/primitive-1.1.0.tgz#42ef83b3b56dccad5d703ae8c42919a68798bbe2"
+  integrity sha512-4Z8dn6Upk0qk4P74xBhZ6Hd/w0mPEzOOLxy4xiPXOXqjF7jZS0VAKk7/x/H6FyY2zCkYJqePf1G5KmkmNJ4RBA==
 
-"@radix-ui/react-accessible-icon@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-accessible-icon/-/react-accessible-icon-1.1.0-rc.5.tgz#9f4225afc6df12eccec6b6007da06fa0e05f43a7"
-  integrity sha512-8+qH/btDBt6H/lXdYuG+cv2KZ+LeikOF/ZxHWrXG4CwbjItx7ndAF6Bl7wYRMrzqsUVYx30qRsgtQHNzWsZweg==
+"@radix-ui/react-accessible-icon@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-accessible-icon/-/react-accessible-icon-1.1.0.tgz#2ae1f2b21842cc3ed4b829203b557951112b7c91"
+  integrity sha512-i9Zg4NOSXlfUva0agzI2DjWrvFJm9uO4L6CMW7nmMa5CIOOX/Yin894W7WwjodFQWPwe5kmAJ4JF33R8slKI2g==
   dependencies:
-    "@radix-ui/react-visually-hidden" "1.1.0-rc.5"
+    "@radix-ui/react-visually-hidden" "1.1.0"
 
-"@radix-ui/react-alert-dialog@1.1.0-rc.6":
-  version "1.1.0-rc.6"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-alert-dialog/-/react-alert-dialog-1.1.0-rc.6.tgz#9ee4276287f0c7aef197082fe579bfb503156095"
-  integrity sha512-gUeJlyosO2Kv7pOKF2r1U5f5A0H9dPEjW/F0y4Ye8WFAM6gEo0SmNbZnGsH+sXvjlsUVs7yIaF/dlyFsTvfDmA==
+"@radix-ui/react-alert-dialog@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-alert-dialog/-/react-alert-dialog-1.1.0.tgz#a13098b9b239bc31582615c95948fd2a8a866b22"
+  integrity sha512-kM8Pfn78tg0aqFD2E1KfO0sZDY75hTkrZd9DIWkncQFwlIB1FV96J0+KsNvK1AotgQO8IMxntRyPMrh8+2vghA==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-dialog" "1.1.0-rc.7"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-dialog" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-slot" "1.1.0"
 
-"@radix-ui/react-arrow@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-arrow/-/react-arrow-1.1.0-rc.5.tgz#0dbee94555968ea61f05758a1fe918ba36104f69"
-  integrity sha512-S93duFC7KvKVevKn5jSG8ej7Sq9I+WgAVIb5BtwweIV7j7xm/kQFgX+eb8MGlFLp1g5eUh+tVXC+bSfDPa2R/Q==
+"@radix-ui/react-arrow@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-arrow/-/react-arrow-1.1.0.tgz#744f388182d360b86285217e43b6c63633f39e7a"
+  integrity sha512-FmlW1rCg7hBpEBwFbjHwCW6AmWLQM6g/v0Sn8XbP9NvmSZ2San1FpQeyPtufzOMSIx7Y4dzjlHoifhp+7NkZhw==
   dependencies:
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/react-aspect-ratio@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-1.1.0-rc.5.tgz#7dec537aa59252bb68565e1dbba20058b4080308"
-  integrity sha512-G9F3fp3z7PSt8/WMuOmYstcVn7ZAd0nmX1UEa3nzQMXt2E2db2dOYHwljMW6v7wjCeUD3pwDQqIcfUGWQUJNMg==
+"@radix-ui/react-aspect-ratio@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-1.1.0.tgz#b646d044420a63046ad794db1efa3001c4be24ef"
+  integrity sha512-dP87DM/Y7jFlPgUZTlhx6FF5CEzOiaxp2rBCKlaXlpH5Ip/9Fg5zZ9lDOQ5o/MOfUlf36eak14zoWYpgcgGoOg==
   dependencies:
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/react-avatar@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-avatar/-/react-avatar-1.1.0-rc.5.tgz#3b94de705f6dfd01d7e3214f2bbd1470d7596607"
-  integrity sha512-/wjyavTFkRrcL1/8Rz1/TQnfTKAnQIgKX4E25y1WH3fDhkF0lyqvJLjZ1QJ4fbEb+DEudzdrWmPkEsXPWzQfjA==
+"@radix-ui/react-avatar@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-avatar/-/react-avatar-1.1.0.tgz#457c81334c93f4608df15f081e7baa286558d6a2"
+  integrity sha512-Q/PbuSMk/vyAd/UoIShVGZ7StHHeRFYU7wXmi5GV+8cLXflZAEpHL/F697H1klrzxKXNtZ97vWiC0q3RKUH8UA==
   dependencies:
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
 
-"@radix-ui/react-checkbox@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-1.1.0-rc.5.tgz#8480cd9a6c8a032ad08c6ee4b9ca1c2985799df8"
-  integrity sha512-LP6SLMuzgqBvE3/+jneew7PwCqEpIfK47ZJoudQ7BPzU8RIJc5Er41ic/uguYbdd1gItBNmAy4zmBfRiSmsoPA==
+"@radix-ui/react-checkbox@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-1.1.0.tgz#ecfcdc4bd27f0606931c328836a09cc76085307a"
+  integrity sha512-3+kSzVfMONtP3B6CvaOrXLVTyGYws7tGmG5kOY0AfyH9sexkLytIwciNwjZhY0RoGOEbxI7bMS21XYB8H5itWQ==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-use-previous" "1.1.0-rc.5"
-    "@radix-ui/react-use-size" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-use-size" "1.1.0"
 
-"@radix-ui/react-collection@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-collection/-/react-collection-1.1.0-rc.5.tgz#1f55e5f2256734a1fd6048fedd5d3c37205eb675"
-  integrity sha512-Ce0dFqXJVFkMvlnpbYY1cJrXE10fEilaPhsAQEXUTRh2NIjZmSoO4XcZLjeTbfkQkYV1UB7jLvw/ov0PlEm0Nw==
+"@radix-ui/react-collection@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-collection/-/react-collection-1.1.0.tgz#f18af78e46454a2360d103c2251773028b7724ed"
+  integrity sha512-GZsZslMJEyo1VKm5L1ZJY8tGDxZNPAoUeQUIbKeJfoi7Q4kmig5AsgLMYYuyYbfjd8fBmFORAIwYAkXMnXZgZw==
   dependencies:
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-slot" "1.1.0"
 
-"@radix-ui/react-compose-refs@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.0-rc.5.tgz#81c86f36edcd7338596ae1a7557407efc71a6722"
-  integrity sha512-YzJrfBBSmfe17kuiBaZwBKL7CSRGRei2V5ENQsLUWpLgGRH0tTNpWKXq9N/9cPqGfcvdfD9i3OzUPlOBLg7jfg==
+"@radix-ui/react-compose-refs@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.0.tgz#656432461fc8283d7b591dcf0d79152fae9ecc74"
+  integrity sha512-b4inOtiaOnYf9KWyO3jAeeCG6FeyfY6ldiEPanbUjWd+xIk5wZeHa8yVwmrJ2vderhu/BQvzCrJI0lHd+wIiqw==
 
-"@radix-ui/react-context-menu@2.2.0-rc.5":
-  version "2.2.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-2.2.0-rc.5.tgz#08a771752de46e93427f014b14a9b205c7d94881"
-  integrity sha512-a+L8C28Rr2cEeS9WiVBHh6jqPgriUd9DxUmsobd8ly8cNlGq661eEGQDLPB0jy6tlXHuXRac0D/dqDMrDrJX0w==
+"@radix-ui/react-context-menu@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-2.2.0.tgz#b0279c1087723b7a4eeb04f666cc40db21c6fc4c"
+  integrity sha512-kpfVfuj54sO23NKKMLMjIsUdohl0D76W+nL5wAWuxT+HOZlMoH/0E8GynQbrrD36rbp58xOdBBSckof7Ucz+DQ==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-menu" "2.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-menu" "2.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
-"@radix-ui/react-context@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context/-/react-context-1.1.0-rc.5.tgz#51ba1e34469c145f704805e8e2c4b634c41155d4"
-  integrity sha512-nzqCSUthc1OYjEunu9S7P0PsquRSpKZ6qXbohEYUTWlEnmW0a75fBL2c4Oyg9U+WJ8T34Uj92hjoRYAGuiyaiw==
+"@radix-ui/react-context@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context/-/react-context-1.1.0.tgz#6df8d983546cfd1999c8512f3a8ad85a6e7fcee8"
+  integrity sha512-OKrckBy+sMEgYM/sMmqmErVn0kZqrHPJze+Ql3DzYsDDp0hl0L62nx/2122/Bvps1qz645jlcu2tD9lrRSdf8A==
 
-"@radix-ui/react-dialog@1.1.0-rc.7":
-  version "1.1.0-rc.7"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-1.1.0-rc.7.tgz#919f519732dc431c5c8afc2e404ef65c3a1f1f5e"
-  integrity sha512-7ZaUkV5a732Zxft4qtWgyOzpSX14vtuEUpJzxVVnlSXdXEo+vnS5Nre2VyvWeOqSJJYcuNBWenaM6/GlIiLrSA==
+"@radix-ui/react-dialog@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-1.1.0.tgz#9d354a8c7f534d49fffd2544fb7b371cb49da71c"
+  integrity sha512-oiSJcsjbdC8JqbXrOuhOd7oaEaPp3x2L2zn6V7ie6SSpEjrAha/WabDX4po6laGwbhAu9DT0XxHL0DmcIXrR0A==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-focus-guards" "1.1.0-rc.5"
-    "@radix-ui/react-focus-scope" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-portal" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-focus-guards" "1.1.0"
+    "@radix-ui/react-focus-scope" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-portal" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-slot" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.7"
 
-"@radix-ui/react-direction@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-direction/-/react-direction-1.1.0-rc.5.tgz#581474837bc52b97030f2f6d3cbf68456c5991d1"
-  integrity sha512-/Qx3lfzxXtPaVaYT2Mbs9srC2Qrbwv2jletb7sPhPU78BkVbrMMGYcqNsRyLJWryEwTaY6DSe8DNV90S6Lmm3A==
+"@radix-ui/react-direction@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-direction/-/react-direction-1.1.0.tgz#a7d39855f4d077adc2a1922f9c353c5977a09cdc"
+  integrity sha512-BUuBvgThEiAXh2DWu93XsT+a3aWrGqolGlqqw5VU1kG7p/ZH2cuDlM1sRLNnY3QcBS69UIz2mcKhMxDsdewhjg==
 
-"@radix-ui/react-dismissable-layer@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.0-rc.5.tgz#41b1c588f1621c8e8b8e6b3cf02e0f1fb92c2ec5"
-  integrity sha512-IV3WPdjle0tFaWTEcSUyJmH0pCh+q3l95YfgkvhPpCtAI3//lhh0OvTNyjHbyRLn2jSysaNlFrAO2RvWQ3PbYg==
+"@radix-ui/react-dismissable-layer@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.0.tgz#2cd0a49a732372513733754e6032d3fb7988834e"
+  integrity sha512-/UovfmmXGptwGcBQawLzvn2jOfM0t4z3/uKffoBlj724+n3FvBbZ7M0aaBOmkp6pqFYpO4yx8tSVJjx3Fl2jig==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-escape-keydown" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-escape-keydown" "1.1.0"
 
-"@radix-ui/react-dropdown-menu@2.1.0-rc.5":
-  version "2.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.1.0-rc.5.tgz#b46e1e31e541e65daebaac76d2729309d37f969d"
-  integrity sha512-vOodS4DNugiA01cP7QYZcqzhQNM3/9r5dhideTyuvaPTsf5paQgyR4LQxwlJIlcfc7NEc0g6UQ5TIonEIP6vDw==
+"@radix-ui/react-dropdown-menu@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.1.0.tgz#9e4693f3b300cd54e553a486ddd7a5df355b78ba"
+  integrity sha512-8fAz27yxVaYTkXMm5dVOcKCHOiio9b4nl7rO1HmK8rpzcEl0kSSmwFQsYDyJxB/Em48PvXTez/iaBj3VEd2N4g==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-menu" "2.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-menu" "2.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
-"@radix-ui/react-focus-guards@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.0-rc.5.tgz#db198e581baad1308eb9469b5064fcf1885cb971"
-  integrity sha512-ZkCC3AN99+iGweuS+Mv+WS8CSzoo0pnx2TuT1Bk6Y1uJ1PvBywzSHXwdhrs0DmnjRhoOd9L41Q8GXLHPf8mRdA==
+"@radix-ui/react-focus-guards@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.0.tgz#8e9abb472a9a394f59a1b45f3dd26cfe3fc6da13"
+  integrity sha512-w6XZNUPVv6xCpZUqb/yN9DL6auvpGX3C/ee6Hdi16v2UUy25HV2Q5bcflsiDyT/g5RwbPQ/GIT1vLkeRb+ITBw==
 
-"@radix-ui/react-focus-scope@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.0-rc.5.tgz#bd4aa0293e77bc19b8da64d10c075dca32d878bd"
-  integrity sha512-YQjmm7NLqczgMoFS+Go1EuYWG/ZB5UrrJ8vqWkQdGwPZeJDU7NJPIbJT3//sbSXPXYmJ3kvAtMqhOgyLfJXM7w==
+"@radix-ui/react-focus-scope@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.0.tgz#ebe2891a298e0a33ad34daab2aad8dea31caf0b2"
+  integrity sha512-200UD8zylvEyL8Bx+z76RJnASR2gRMuxlgFCPAe/Q/679a/r0eK3MBVYMb7vZODZcffZBdob1EGnky78xmVvcA==
   dependencies:
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
 
-"@radix-ui/react-form@0.1.0-rc.5":
-  version "0.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-form/-/react-form-0.1.0-rc.5.tgz#421cca50b57df557a1283bfc02e566bcdd3171a8"
-  integrity sha512-MhU2NtNOKI8z3ikhNBNvRp+7l36g6HVMD/6aIAfMG2s2ZuQyGwJqbyW5f5zdyE5a/wCheEMUc/5K7sVhKI5Q+A==
+"@radix-ui/react-form@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-form/-/react-form-0.1.0.tgz#7111a6aa54a2bde0d11fb72643f9ffc871ac58ad"
+  integrity sha512-1/oVYPDjbFILOLIarcGcMKo+y6SbTVT/iUKVEw59CF4offwZgBgC3ZOeSBewjqU0vdA6FWTPWTN63obj55S/tQ==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-label" "2.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-label" "2.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/react-hover-card@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-hover-card/-/react-hover-card-1.1.0-rc.5.tgz#068cf214585bef95241092ce6ea023bc2b383f0d"
-  integrity sha512-3Hby/xoq4DP44ifM42El7i536i1jvHQNCOwUC/5gz6LJM5p2pZ1bKv71+WXEUL8/yH6yZ6I9qk7vRfVdE0U2xg==
+"@radix-ui/react-hover-card@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-hover-card/-/react-hover-card-1.1.0.tgz#2b68844727b1532bfdaff76d67095e253473b640"
+  integrity sha512-vckj26sPXXFsX/fi1kqvTDMJAXtur9TyP1NgV5m2QJbV3R+E766QJRccsJkfdo9uBvhLsRCg8gz1tRUbe4HCqA==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-popper" "1.2.0-rc.5"
-    "@radix-ui/react-portal" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-popper" "1.2.0"
+    "@radix-ui/react-portal" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
 "@radix-ui/react-icons@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-icons/-/react-icons-1.3.0.tgz#c61af8f323d87682c5ca76b856d60c2312dbcb69"
   integrity sha512-jQxj/0LKgp+j9BiTXz3O3sgs26RNet2iLWmsPyRz2SIcR4q/4SbazXfnYwbAr+vLYKSfc7qxzyGQA1HLlYiuNw==
 
-"@radix-ui/react-id@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-id/-/react-id-1.1.0-rc.5.tgz#9f2f6e8c0f5f916f65af521c6f34d2aa64f5dfd9"
-  integrity sha512-SzYaWz2PV9lDCXyMgvAQQSymKwQRS9fn7S19tcrw0Og6yDV3Kj2aWo0D4Q8TciDM8pxqUUkhpCVPbt/8jeQL5A==
+"@radix-ui/react-id@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-id/-/react-id-1.1.0.tgz#de47339656594ad722eb87f94a6b25f9cffae0ed"
+  integrity sha512-EJUrI8yYh7WOjNOqpoJaf1jlFIH2LvtgAl+YcFqNCa+4hj64ZXmPkAKOFs/ukjz3byN6bdb/AVUqHkI8/uWWMA==
   dependencies:
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
 
-"@radix-ui/react-label@2.1.0-rc.5":
-  version "2.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-2.1.0-rc.5.tgz#9ee66ab86bfb77a31917723cf48f056817ae4f48"
-  integrity sha512-WFSrhxORPLf4TusobrNoYHo9GKsBcICIgUj1pgwy/lRmmKYqV/kKK0onEJ99OisidTZgGFpUlUwgOIHyiNHYog==
+"@radix-ui/react-label@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-2.1.0.tgz#3aa2418d70bb242be37c51ff5e51a2adcbc372e3"
+  integrity sha512-peLblDlFw/ngk3UWq0VnYaOLy6agTZZ+MUO/WhVfm14vJGML+xH4FAl2XQGLqdefjNb7ApRg6Yn7U42ZhmYXdw==
   dependencies:
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/react-menu@2.1.0-rc.5":
-  version "2.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-2.1.0-rc.5.tgz#c2df2fee6f5ad36f46eb1898e20e3e79fbb2793a"
-  integrity sha512-2PG1x/ZymnhMzI46bQTRVyoj3onaRPFmj5W8/60CWgPY3GoMyzqR7c/ybjL2KpAYMYjD1HXC6l0XtD1wXwrBQQ==
+"@radix-ui/react-menu@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-2.1.0.tgz#383d078f3e3708f4134e2d61a66c39b40c41c99c"
+  integrity sha512-0AxIUQJpimipHDgTVISZbdOY+wZzgICKAsqfI1rF2Hp0Jh3YSv9e9J1tYYyurPBONe5vKi3hZPtVt2E85Sac7A==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-collection" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-focus-guards" "1.1.0-rc.5"
-    "@radix-ui/react-focus-scope" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-popper" "1.2.0-rc.5"
-    "@radix-ui/react-portal" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-roving-focus" "1.1.0-rc.5"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-collection" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-focus-guards" "1.1.0"
+    "@radix-ui/react-focus-scope" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-popper" "1.2.0"
+    "@radix-ui/react-portal" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-roving-focus" "1.1.0"
+    "@radix-ui/react-slot" "1.1.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.7"
 
-"@radix-ui/react-navigation-menu@1.2.0-rc.5":
-  version "1.2.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.0-rc.5.tgz#d8cdc60bc31f58ef1b00c3be2a1d4625b2a63d63"
-  integrity sha512-e+IHyyRrtorp8LZwHEKN0A6pTVMtMop6bvQDp/iVz6d3Kf8kB8uoqMdPBgz1tjpq3MeUUdeQDxePY3vLPipnfw==
+"@radix-ui/react-navigation-menu@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.0.tgz#884c9b9fd141cc5db257bd3f6bf3b84e349c6617"
+  integrity sha512-OQ8tcwAOR0DhPlSY3e4VMXeHiol7la4PPdJWhhwJiJA+NLX0SaCaonOkRnI3gCDHoZ7Fo7bb/G6q25fRM2Y+3Q==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-collection" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
-    "@radix-ui/react-use-previous" "1.1.0-rc.5"
-    "@radix-ui/react-visually-hidden" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-collection" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-visually-hidden" "1.1.0"
 
-"@radix-ui/react-popover@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-popover/-/react-popover-1.1.0-rc.5.tgz#fc682aa38902188760c0ee7d7a1c0033b9917ff2"
-  integrity sha512-H7Dilg8NW/4/52edrpxLH/ylIk9rYqp3+ZdNtEG1n9eHRUorLeD/QAZvKgN4TjLdRRIhRanSrSK1/mYahtWgtg==
+"@radix-ui/react-popover@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popover/-/react-popover-1.1.0.tgz#98ffbbf31bdce9d299cbd10f2de3c816c6556bd5"
+  integrity sha512-2wdgj6eKNVoFNFtYv2xwkzhIJPlJ5L2aV0eKTZHi5dUVrGy+MhgoV8IyyeFpkZQrwwFzbFlnWl1bwyjVBCNapQ==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-focus-guards" "1.1.0-rc.5"
-    "@radix-ui/react-focus-scope" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-popper" "1.2.0-rc.5"
-    "@radix-ui/react-portal" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-focus-guards" "1.1.0"
+    "@radix-ui/react-focus-scope" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-popper" "1.2.0"
+    "@radix-ui/react-portal" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-slot" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.7"
 
-"@radix-ui/react-popper@1.2.0-rc.5":
-  version "1.2.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-1.2.0-rc.5.tgz#acf47ed4ace306d4d386401b664831273956e5e7"
-  integrity sha512-x06/J5w4nUE0At82hj6kIhxXTnUbqnqanEHBmV94ikAanNjlL21jr7VQlFeZdF3zZooprwaTlUEHp6NjLuLURw==
+"@radix-ui/react-popper@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-1.2.0.tgz#a3e500193d144fe2d8f5d5e60e393d64111f2a7a"
+  integrity sha512-ZnRMshKF43aBxVWPWvbj21+7TQCvhuULWJ4gNIKYpRlQt5xGRhLx66tMp8pya2UkGHTSlhpXwmjqltDYHhw7Vg==
   dependencies:
     "@floating-ui/react-dom" "^2.0.0"
-    "@radix-ui/react-arrow" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
-    "@radix-ui/react-use-rect" "1.1.0-rc.5"
-    "@radix-ui/react-use-size" "1.1.0-rc.5"
-    "@radix-ui/rect" "1.1.0-rc.5"
+    "@radix-ui/react-arrow" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
+    "@radix-ui/react-use-rect" "1.1.0"
+    "@radix-ui/react-use-size" "1.1.0"
+    "@radix-ui/rect" "1.1.0"
 
-"@radix-ui/react-portal@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-portal/-/react-portal-1.1.0-rc.5.tgz#6f9cb61288bd53d53c0584c9965644bc61153bc1"
-  integrity sha512-YToH0ddkTzygYcDiq5zX/6by+JrXu1drF/SaghlkNycJ5/pIa2POp+cz7xVQxcGxhd2r/MmERYtSCU6HXmcEWA==
+"@radix-ui/react-portal@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-portal/-/react-portal-1.1.0.tgz#7d8591034d85478c172a91b1b879df8cf8b60bf0"
+  integrity sha512-0tXZ5O6qAVvuN9SWP0X+zadHf9hzHiMf/vxOU+kXO+fbtS8lS57MXa6EmikDxk9s/Bmkk80+dcxgbvisIyeqxg==
   dependencies:
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/react-presence@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-presence/-/react-presence-1.1.0-rc.5.tgz#60ee85073f0927b4f361f57d41c8828b0bc9e114"
-  integrity sha512-736xC7eLlbqRQ6cvsT3vL5Oh7UF6A+aVyvzgGIlWnpHs3qHBcWgwFekgUevoCL+4oRqWknTAGzv0nch8NLSsZA==
+"@radix-ui/react-presence@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-presence/-/react-presence-1.1.0.tgz#227d84d20ca6bfe7da97104b1a8b48a833bfb478"
+  integrity sha512-Gq6wuRN/asf9H/E/VzdKoUtT8GC9PQc9z40/vEr0VCJ4u5XvvhWIrSsCB6vD2/cH7ugTdSfYq9fLJCcM00acrQ==
   dependencies:
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
 
-"@radix-ui/react-primitive@2.0.0-rc.2":
-  version "2.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-2.0.0-rc.2.tgz#2fc8e9b480af099f39a2990d7ee184d86002a657"
-  integrity sha512-nmGkOKHPiZ/UFjDf1kfORK3xVEuZvXVdXD4pSDyA/PWRZtFx4Ex61m80EzA18AwNJQIjixHXYXzjFJj2FeZglA==
+"@radix-ui/react-primitive@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-2.0.0.tgz#fe05715faa9203a223ccc0be15dc44b9f9822884"
+  integrity sha512-ZSpFm0/uHa8zTvKBDjLFWLo8dkr4MBsiDLz0g3gMUwqgLHz9rTaRRGYDgvZPtBJgYCBKXkS9fzmoySgr8CO6Cw==
   dependencies:
-    "@radix-ui/react-slot" "1.1.0-rc.5"
+    "@radix-ui/react-slot" "1.1.0"
 
-"@radix-ui/react-progress@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-progress/-/react-progress-1.1.0-rc.5.tgz#0debcc2543ddc46ab2702ed9b31fbb61dd6f0a19"
-  integrity sha512-bEQ1CfG760Rt31gYTg9QyUlkPu5PzLxlYHvrjDp8DU1dVFaHyZhDG/A81Ca5BB2VXApJrTzpuV84ff6XIaPewg==
+"@radix-ui/react-progress@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-progress/-/react-progress-1.1.0.tgz#28c267885ec154fc557ec7a66cb462787312f7e2"
+  integrity sha512-aSzvnYpP725CROcxAOEBVZZSIQVQdHgBr2QQFKySsaD14u8dNT0batuXI+AAGDdAHfXH8rbnHmjYFqVJ21KkRg==
   dependencies:
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/react-radio-group@1.2.0-rc.5":
-  version "1.2.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-radio-group/-/react-radio-group-1.2.0-rc.5.tgz#5fa02374f8845b61dfa902c9233fa128b7134347"
-  integrity sha512-sjMjgiGHT02Hg5O6EFmMAo5rQishvtkEnwxE3Xq8F9O/NNTXE/KALmlxT3slVhW66e4AY6pxr4+mLqMODeFnPA==
+"@radix-ui/react-radio-group@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-radio-group/-/react-radio-group-1.2.0.tgz#f937dd6b9436ded80c4bebdf3901c20cb8bcbb5a"
+  integrity sha512-yv+oiLaicYMBpqgfpSPw6q+RyXlLdIpQWDHZbUKURxe+nEh53hFXPPlfhfQQtYkS5MMK/5IWIa76SksleQZSzw==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-roving-focus" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-use-previous" "1.1.0-rc.5"
-    "@radix-ui/react-use-size" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-roving-focus" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-use-size" "1.1.0"
 
-"@radix-ui/react-roving-focus@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.0-rc.5.tgz#ebb80f421904ebeeaa0c56c048fb539bf29a2977"
-  integrity sha512-lOm7JWrmHhKrnFhBHwV+/WgOz1Z3R6dg7cKTdiPgb7gFtbOzVVupvUNlz2bdTrxcwuV+jn8zRrtli/xOcbA5aw==
+"@radix-ui/react-roving-focus@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.0.tgz#b30c59daf7e714c748805bfe11c76f96caaac35e"
+  integrity sha512-EA6AMGeq9AEeQDeSH0aZgG198qkfHSbvWTf1HvoDmOB5bBG/qTxjYMWUKMnYiV6J/iP/J8MEFSuB2zRU2n7ODA==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-collection" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-collection" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
-"@radix-ui/react-scroll-area@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-scroll-area/-/react-scroll-area-1.1.0-rc.5.tgz#562c8fbe42a395b047436885cbd91ea6f7156b08"
-  integrity sha512-V8RmfahHmCzN6xNTM/6/zjLXEA1lH0T4f8vj2e8eKOFDwJLjhHPAfl7zuZZ2l+m9sChSgseFIx2T69ilva9U8A==
+"@radix-ui/react-scroll-area@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-scroll-area/-/react-scroll-area-1.1.0.tgz#50b24b0fc9ada151d176395bcf47b2ec68feada5"
+  integrity sha512-9ArIZ9HWhsrfqS765h+GZuLoxaRHD/j0ZWOWilsCvYTpYJp8XwCqNG7Dt9Nu/TItKOdgLGkOPCodQvDc+UMwYg==
   dependencies:
-    "@radix-ui/number" "1.1.0-rc.5"
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
+    "@radix-ui/number" "1.1.0"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
 
-"@radix-ui/react-select@2.1.0-rc.5":
-  version "2.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-select/-/react-select-2.1.0-rc.5.tgz#79571d6469967cace67bb6040f9508ca8ca82346"
-  integrity sha512-KOd6FKs3nLvYip667RWvHHqo3OLsDOSVszDuSVU4M+13QLCuKzAQIo71AFcCLnpsbsKfXRe+8u8dWX0c6q1dzg==
+"@radix-ui/react-select@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-select/-/react-select-2.1.0.tgz#cf2721ed98914078a30093116189be979ec424b1"
+  integrity sha512-g6uR+e9o4EB3laMekSDEEKpwRmoZdfiZmZSfc1fO4A1EAVCukZplyNB2TIrNao5cw9HQOyhhy2W1ZQo72RXrJg==
   dependencies:
-    "@radix-ui/number" "1.1.0-rc.5"
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-collection" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-focus-guards" "1.1.0-rc.5"
-    "@radix-ui/react-focus-scope" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-popper" "1.2.0-rc.5"
-    "@radix-ui/react-portal" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
-    "@radix-ui/react-use-previous" "1.1.0-rc.5"
-    "@radix-ui/react-visually-hidden" "1.1.0-rc.5"
+    "@radix-ui/number" "1.1.0"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-collection" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-focus-guards" "1.1.0"
+    "@radix-ui/react-focus-scope" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-popper" "1.2.0"
+    "@radix-ui/react-portal" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-slot" "1.1.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-visually-hidden" "1.1.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.7"
 
-"@radix-ui/react-slider@1.2.0-rc.8":
-  version "1.2.0-rc.8"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-slider/-/react-slider-1.2.0-rc.8.tgz#6ccef6a2a164667025cc17a8c346426677a09739"
-  integrity sha512-o5cYOKnrcVlR5obpiYL3V+svKgar/ccPXpWzTi7kX4hN1hCC7UPW31Ux0C/2oKDg+4emZhU34IpOyiOLHUg2Wg==
+"@radix-ui/react-slider@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slider/-/react-slider-1.2.0.tgz#7a4c817d24386b420631a3fdc75563706d743472"
+  integrity sha512-dAHCDA4/ySXROEPaRtaMV5WHL8+JB/DbtyTbJjYkY0RXmKMO2Ln8DFZhywG5/mVQ4WqHDBc8smc14yPXPqZHYA==
   dependencies:
-    "@radix-ui/number" "1.1.0-rc.5"
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-collection" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
-    "@radix-ui/react-use-previous" "1.1.0-rc.5"
-    "@radix-ui/react-use-size" "1.1.0-rc.5"
+    "@radix-ui/number" "1.1.0"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-collection" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-use-size" "1.1.0"
 
-"@radix-ui/react-slot@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.0-rc.5.tgz#08e9c38005ebb091536cb96565e8329b993424c8"
-  integrity sha512-Mqxdz9IP3oDvnhBCgPhTpSnODjaZgmjUdLzahJSy0Z9xxxh4Q5gAdiL1G6/jQktjcNNg9R674I8NRsrUQvUEyw==
+"@radix-ui/react-slot@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.0.tgz#7c5e48c36ef5496d97b08f1357bb26ed7c714b84"
+  integrity sha512-FUCf5XMfmW4dtYl69pdS4DbxKy8nj4M7SafBgPllysxmdachynNflAdp/gCsnYWNDnge6tI9onzMp5ARYc1KNw==
   dependencies:
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
+    "@radix-ui/react-compose-refs" "1.1.0"
 
-"@radix-ui/react-switch@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-switch/-/react-switch-1.1.0-rc.5.tgz#ff544caba7281e98db9d626988fc1d32d7e21282"
-  integrity sha512-1kpbeJloLRvua26HfpWzzWzBC2GhLcjlRgjhlXxaH0/lx8wQhbyOnLtsur7BY3tXiZI6J//LFMQ6Ot8Z71OA0A==
+"@radix-ui/react-switch@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-switch/-/react-switch-1.1.0.tgz#fcf8e778500f1d60d4b2bec2fc3fad77a7c118e3"
+  integrity sha512-OBzy5WAj641k0AOSpKQtreDMe+isX0MQJ1IVyF03ucdF3DunOnROVrjWs8zsXUxC3zfZ6JL9HFVCUlMghz9dJw==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-use-previous" "1.1.0-rc.5"
-    "@radix-ui/react-use-size" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-use-size" "1.1.0"
 
-"@radix-ui/react-tabs@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-tabs/-/react-tabs-1.1.0-rc.5.tgz#f8a253ca2e6ebd177e3af4a7f3d91a6f7e30a108"
-  integrity sha512-eY0lRISOb96BWjGDmk4xXSkHExVzyeTfzvF7iN5LaKpzmuQRSkzksRym1b+GpovfmDrAUQ2DlWUdVW+FQfNTvw==
+"@radix-ui/react-tabs@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-tabs/-/react-tabs-1.1.0.tgz#0a6db1caed56776a1176aae68532060e301cc1c0"
+  integrity sha512-bZgOKB/LtZIij75FSuPzyEti/XBhJH52ExgtdVqjCIh+Nx/FW+LhnbXtbCzIi34ccyMsyOja8T0thCzoHFXNKA==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-roving-focus" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-roving-focus" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
-"@radix-ui/react-toggle-group@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle-group/-/react-toggle-group-1.1.0-rc.5.tgz#5596d1f04f018cee08e16c1bd6d9bcfb20989b8b"
-  integrity sha512-2cXUykGXf6yUaMRfU1RVkNWxoX7kciAnE1wh9XV7Y0SKwdWOyfWBXaq3DvQxSbM7xacDXHkybzM3W2e5nDhknA==
+"@radix-ui/react-toggle-group@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle-group/-/react-toggle-group-1.1.0.tgz#28714c4d1ff4961a8fd259b1feef58b4cac92f80"
+  integrity sha512-PpTJV68dZU2oqqgq75Uzto5o/XfOVgkrJ9rulVmfTKxWp3HfUjHE6CP/WLRR4AzPX9HWxw7vFow2me85Yu+Naw==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-direction" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-roving-focus" "1.1.0-rc.5"
-    "@radix-ui/react-toggle" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-roving-focus" "1.1.0"
+    "@radix-ui/react-toggle" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
-"@radix-ui/react-toggle@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle/-/react-toggle-1.1.0-rc.5.tgz#580d33935d7b1d2dac2a943169d7b64c1632ecc2"
-  integrity sha512-/mxPJaFu36OMYPRZXmR1msDgaqG+ZoJizPD2tnUVCM9mkGg1/E7opptp8fqGh1c+Enoucaox/OzCIl89wlXgEw==
+"@radix-ui/react-toggle@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle/-/react-toggle-1.1.0.tgz#1f7697b82917019330a16c6f96f649f46b4606cf"
+  integrity sha512-gwoxaKZ0oJ4vIgzsfESBuSgJNdc0rv12VhHgcqN0TEJmmZixXG/2XpsLK8kzNWYcnaoRIEEQc0bEi3dIvdUpjw==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
 
-"@radix-ui/react-tooltip@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-1.1.0-rc.5.tgz#7a60ff43cef1967445c41dbf1e5223106fae675e"
-  integrity sha512-rM8xJhkjLMvpsw/fk6YeWSttQJd7vXsKNcRQur8AwmiL3kr7TzGiqRv2p8TshBvQosXWaZAhfvAKez34gLVAdQ==
+"@radix-ui/react-tooltip@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-1.1.0.tgz#861c268b9c73472a32a312dbc0135ea581262ca6"
+  integrity sha512-DZZvEn5WUJyd9+JzVT/cTjt7m0rymjxpzJZMmb09lCWo8kRqOp4rsckFrGgocD5cR8e3gtaNINvWWqFMccvV/w==
   dependencies:
-    "@radix-ui/primitive" "1.1.0-rc.5"
-    "@radix-ui/react-compose-refs" "1.1.0-rc.5"
-    "@radix-ui/react-context" "1.1.0-rc.5"
-    "@radix-ui/react-dismissable-layer" "1.1.0-rc.5"
-    "@radix-ui/react-id" "1.1.0-rc.5"
-    "@radix-ui/react-popper" "1.2.0-rc.5"
-    "@radix-ui/react-portal" "1.1.0-rc.5"
-    "@radix-ui/react-presence" "1.1.0-rc.5"
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
-    "@radix-ui/react-slot" "1.1.0-rc.5"
-    "@radix-ui/react-use-controllable-state" "1.1.0-rc.5"
-    "@radix-ui/react-visually-hidden" "1.1.0-rc.5"
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-popper" "1.2.0"
+    "@radix-ui/react-portal" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-slot" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-visually-hidden" "1.1.0"
 
-"@radix-ui/react-use-callback-ref@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0-rc.5.tgz#af549a7199a8b443a0d93a8932cd0e06c91479c8"
-  integrity sha512-3QAuFnIyDu4lkYewnJxMKuHlJlkrItkOs2F6aeWtp7x+xn6PcFFJAQAReXFiIL1MEr3kRk4M38r5oL9y8fEAOg==
+"@radix-ui/react-use-callback-ref@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0.tgz#bce938ca413675bc937944b0d01ef6f4a6dc5bf1"
+  integrity sha512-CasTfvsy+frcFkbXtSJ2Zu9JHpN8TYKxkgJGWbjiZhFivxaeW7rMeZt7QELGVLaYVfFMsKHjb7Ak0nMEe+2Vfw==
 
-"@radix-ui/react-use-controllable-state@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.1.0-rc.5.tgz#d5fbe44144b737cf366b836c5b0a90d2793cf966"
-  integrity sha512-0mCeslwoXyufkyEu+2qHwYD1LvcRnQWABEfNqs0ynN0RMI+t0S/NmJDGhlvw7duOpuswf8oDvoXHfKXwVeMYGw==
+"@radix-ui/react-use-controllable-state@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.1.0.tgz#1321446857bb786917df54c0d4d084877aab04b0"
+  integrity sha512-MtfMVJiSr2NjzS0Aa90NPTnvTSg6C/JLCV7ma0W6+OMV78vd8OyRpID+Ng9LxzsPbLeuBnWBA1Nq30AtBIDChw==
   dependencies:
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
 
-"@radix-ui/react-use-escape-keydown@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.0-rc.5.tgz#d030366d9223d377a9e75ed9c3ca048947771ba7"
-  integrity sha512-u3chfzShjjZpnNrTWRzHCdUUuvX57isInPBuCacze/A0CjbwCZ8DpIvrstodAh+I0rrIHs0/+N9gcFT/DDJgow==
+"@radix-ui/react-use-escape-keydown@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.0.tgz#31a5b87c3b726504b74e05dac1edce7437b98754"
+  integrity sha512-L7vwWlR1kTTQ3oh7g1O0CBF3YCyyTj8NmhLR+phShpyA50HCfBFKVJTpshm9PzLiKmehsrQzTYTpX9HvmC9rhw==
   dependencies:
-    "@radix-ui/react-use-callback-ref" "1.1.0-rc.5"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
 
-"@radix-ui/react-use-layout-effect@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0-rc.5.tgz#e3eb871d22020bf776d93070e412ec426f2f38ff"
-  integrity sha512-pkF2RpLptXGOX34MDLOWCcZgIW4dIfOhOA1KmySo4V5+G9eGPBBDUmbBS5VoUoDAIXZa+PDrqg5/lWDRbx1FbA==
+"@radix-ui/react-use-layout-effect@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0.tgz#3c2c8ce04827b26a39e442ff4888d9212268bd27"
+  integrity sha512-+FPE0rOdziWSrH9athwI1R0HDVbWlEhd+FR+aSDk4uWGmSJ9Z54sdZVDQPZAinJhJXwfT+qnj969mCsT2gfm5w==
 
-"@radix-ui/react-use-previous@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-previous/-/react-use-previous-1.1.0-rc.5.tgz#516165b47efc58336b8cabe3c224f08f9e16a33c"
-  integrity sha512-L34Btv/YPZ2KSaQ2oFpwyYkcy+sr9Rk0gu/ZRW1VM+f3AcN4d0QHrDBE5TCmw7gkY2n9zpIsvkmkpnFu9ZYtew==
+"@radix-ui/react-use-previous@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-previous/-/react-use-previous-1.1.0.tgz#d4dd37b05520f1d996a384eb469320c2ada8377c"
+  integrity sha512-Z/e78qg2YFnnXcW88A4JmTtm4ADckLno6F7OXotmkQfeuCVaKuYzqAATPhVzl3delXE7CxIV8shofPn3jPc5Og==
 
-"@radix-ui/react-use-rect@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-rect/-/react-use-rect-1.1.0-rc.5.tgz#63a09baea3b6a9c47166247f9d6e2546e0c6c1ab"
-  integrity sha512-fpyWy/Q0DZNgMFiXbI81vbygTepnmuaEcAyYRqVZGDydV4CfkNpNCEpQISRV3VW7CWZA8fhfnUw0PJsqVR3jGQ==
+"@radix-ui/react-use-rect@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-rect/-/react-use-rect-1.1.0.tgz#13b25b913bd3e3987cc9b073a1a164bb1cf47b88"
+  integrity sha512-0Fmkebhr6PiseyZlYAOtLS+nb7jLmpqTrJyv61Pe68MKYW6OWdRE2kI70TaYY27u7H0lajqM3hSMMLFq18Z7nQ==
   dependencies:
-    "@radix-ui/rect" "1.1.0-rc.5"
+    "@radix-ui/rect" "1.1.0"
 
-"@radix-ui/react-use-size@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-size/-/react-use-size-1.1.0-rc.5.tgz#d5d43cc208c375dcc83ee291203d412c39cfaf1f"
-  integrity sha512-4eZJ1yoAKT9x4oYGdBry1Dg37RqeeIlhp/P37ejq+PBn9SU+qb3OT65PoWfCDYPxu5SVEN5S77sx8q4o4qrhjQ==
+"@radix-ui/react-use-size@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-size/-/react-use-size-1.1.0.tgz#b4dba7fbd3882ee09e8d2a44a3eed3a7e555246b"
+  integrity sha512-XW3/vWuIXHa+2Uwcc2ABSfcCledmXhhQPlGbfcRXbiUQI5Icjcg19BGCZVKKInYbvUCut/ufbbLLPFC5cbb1hw==
   dependencies:
-    "@radix-ui/react-use-layout-effect" "1.1.0-rc.5"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
 
-"@radix-ui/react-visually-hidden@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.1.0-rc.5.tgz#61559bf7dd5913f6c62afe571d8b03989122d06f"
-  integrity sha512-y68kcxQTP520s1g4iR0f1NYPQUFG6BISbMpTVYb9Y8LJz3Dpj/tI3lRvfTGn/Z8VnJrO9bsuMsiWoP4q9MJhdw==
+"@radix-ui/react-visually-hidden@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.1.0.tgz#ad47a8572580f7034b3807c8e6740cd41038a5a2"
+  integrity sha512-N8MDZqtgCgG5S3aV60INAB475osJousYpZ4cTJ2cFbMpdHS5Y6loLTH8LPtkj2QN0x93J30HT/M3qJXM0+lyeQ==
   dependencies:
-    "@radix-ui/react-primitive" "2.0.0-rc.2"
+    "@radix-ui/react-primitive" "2.0.0"
 
-"@radix-ui/rect@1.1.0-rc.5":
-  version "1.1.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/rect/-/rect-1.1.0-rc.5.tgz#705123e6073e8fe96896cb98d808e6c891a5a0c5"
-  integrity sha512-WugB/dzuKeryqmUOCjAkA/kUX4SB//3aFo3SDcmdNS4NU4T9279mSU/esHxeZpXIftptM+zomOG/4m1Q7DOluA==
+"@radix-ui/rect@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/rect/-/rect-1.1.0.tgz#f817d1d3265ac5415dadc67edab30ae196696438"
+  integrity sha512-A9+lCBZoaMJlVKcRBz2YByCG+Cp2t6nAnMnNba+XiWxnj6r4JUFqfsgwocMBZU9LPtdxC6wB56ySYpc7LQIoJg==
 
 "@rushstack/eslint-patch@^1.3.3":
   version "1.10.3"
