@@ -16,5 +16,8 @@
     "eslint": "8.29.0",
     "eslint-config-custom": "*",
     "turbo": "2.0.3"
+  },
+  "resolutions": {
+    "**/string-width": "4.2.3"
   }
 }
