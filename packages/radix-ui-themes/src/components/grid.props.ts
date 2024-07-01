@@ -134,6 +134,22 @@ const gridPropDefs = {
     parseValue: parseJustifyValue,
     responsive: true,
   },
+  /**
+   * Sets the CSS **grid-template** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * template={'"icon title" auto ". description" 1fr / auto 1fr'}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template
+   */
+  template: {
+    type: 'string',
+    className: 'rt-r-gt',
+    customProperties: ['--grid-template'],
+    responsive: true,
+  },
   ...gapPropDefs,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
@@ -143,6 +159,7 @@ const gridPropDefs = {
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
+  template: PropDef<string>;
 };
 
 function parseGridValue(value: string): string {
