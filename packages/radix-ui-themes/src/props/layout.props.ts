@@ -235,6 +235,22 @@ const layoutPropDefs = {
     responsive: true,
   },
   /**
+   * Sets the CSS **grid-area** property.
+   * Supports CSS strings and responsive objects.
+   *
+   * @example
+   * gridArea="header"
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area
+   */
+  gridArea: {
+    type: 'string',
+    className: 'rt-r-ga',
+    customProperties: ['--grid-area'],
+    responsive: true,
+  },
+  /**
    * Sets the CSS **grid-column** property.
    * Supports CSS strings and responsive objects.
    *
@@ -361,6 +377,7 @@ const layoutPropDefs = {
   gridRow: PropDef<string>;
   gridRowStart: PropDef<string>;
   gridRowEnd: PropDef<string>;
+  gridArea: PropDef<string>;
 };
 
 // Use all of the imported prop defs to ensure that JSDoc works
