@@ -1,0 +1,9 @@
+@breakpoints {
+  .rt-r-ga {
+    /* Keep this selector here to maintain the source order */
+  }
+}
+
+.rt-r-ga {
+  grid-area: var(--grid-area);
+}
