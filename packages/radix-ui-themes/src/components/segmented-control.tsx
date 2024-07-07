@@ -1,16 +1,16 @@
 'use client';
 
-import * as React from 'react';
-import classNames from 'classnames';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
+import classNames from 'classnames';
+import * as React from 'react';
 
-import { segmentedControlRootPropDefs } from './segmented-control.props.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
+import { segmentedControlRootPropDefs } from './segmented-control.props.js';
 
-import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type SegmentedControlRootOwnProps = GetPropDefTypes<typeof segmentedControlRootPropDefs>;
@@ -98,5 +98,5 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
 
 SegmentedControlItem.displayName = 'SegmentedControl.Item';
 
-export { SegmentedControlRoot as Root, SegmentedControlItem as Item };
-export type { SegmentedControlRootProps as RootProps, SegmentedControlItemProps as ItemProps };
+export { SegmentedControlItem as Item, SegmentedControlRoot as Root };
+export type { SegmentedControlItemProps as ItemProps, SegmentedControlRootProps as RootProps };
