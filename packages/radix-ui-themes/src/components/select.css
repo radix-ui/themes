@@ -398,7 +398,8 @@
 /* soft / ghost */
 
 .rt-SelectTrigger:where(.rt-variant-soft),
-.rt-SelectTrigger:where(.rt-variant-ghost) {
+.rt-SelectTrigger:where(.rt-variant-ghost),
+.rt-SelectTrigger:where(.rt-variant-borderless) {
   color: var(--accent-12);
 
   &:where([data-placeholder]) {
@@ -430,7 +431,8 @@
   }
 }
 
-.rt-SelectTrigger:where(.rt-variant-ghost) {
+.rt-SelectTrigger:where(.rt-variant-ghost),
+.rt-SelectTrigger:where(.rt-variant-borderless) {
   @media (hover: hover) {
     &:where(:hover) {
       background-color: var(--accent-a3);
