@@ -1,4 +1,5 @@
 .rt-DataListRoot {
+  overflow-wrap: anywhere;
   font-family: var(--default-font-family);
   font-weight: var(--font-weight-normal);
   font-style: normal;
