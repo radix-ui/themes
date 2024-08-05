@@ -237,6 +237,23 @@ export default function Sink() {
                                 Multiline
                               </Button>
                             </Tooltip>
+
+                            <Tooltip content={
+                               <DataList.Root my="1">
+                                <DataList.Item>
+                                  <DataList.Label style={{ color: 'var(--gray-5)'}}>Name</DataList.Label>
+                                  <DataList.Value style={{ color: 'var(--gray-1)'}}>Susan Kare</DataList.Value>
+                                </DataList.Item>
+                                <DataList.Item>
+                                  <DataList.Label style={{ color: 'var(--gray-5)'}}>Email</DataList.Label>
+                                  <DataList.Value style={{ color: 'var(--gray-1)'}}>susan.kare@apple.com</DataList.Value>
+                                </DataList.Item>
+                              </DataList.Root>
+                            }>
+                              <Button variant="solid" size="1">
+                                Non-string ReactNode
+                              </Button>
+                            </Tooltip>
                           </Flex>
                         </DocsGridSectionItem>
 
