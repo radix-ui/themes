@@ -1,6 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { useControllableState } from '@radix-ui/react-use-controllable-state';
 
 import { checkboxPropDefs } from './checkbox.props.js';
 import { ThickCheckIcon, ThickDividerHorizontalIcon } from './icons.js';
@@ -21,16 +24,28 @@ interface CheckboxProps
     MarginProps,
     CheckboxOwnProps {}
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
-  const { className, color, checked, ...checkboxProps } = extractProps(
-    props,
-    checkboxPropDefs,
-    marginPropDefs
-  );
+  const {
+    className,
+    color,
+    checked: checkedProp,
+    defaultChecked: defaultCheckedProp,
+    onCheckedChange,
+    ...checkboxProps
+  } = extractProps(props, checkboxPropDefs, marginPropDefs);
+
+  const [checked, setChecked] = useControllableState({
+    prop: checkedProp,
+    defaultProp: defaultCheckedProp,
+    onChange: onCheckedChange,
+  });
+
   return (
     <CheckboxPrimitive.Root
       data-accent-color={color}
       {...checkboxProps}
+      defaultChecked={defaultCheckedProp}
       checked={checked}
+      onCheckedChange={setChecked}
       asChild={false}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseCheckboxRoot', 'rt-CheckboxRoot', className)}

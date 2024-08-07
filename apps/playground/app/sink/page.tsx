@@ -1362,7 +1362,7 @@ export default function Sink() {
                                       <Checkbox
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
-                                        checked='indeterminate'
+                                        defaultChecked="indeterminate"
                                       />
                                     </td>
                                     <td>
