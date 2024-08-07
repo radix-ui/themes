@@ -39,6 +39,22 @@ const gridPropDefs = {
     responsive: true,
   },
   /**
+   * Sets the CSS **grid-template** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * template='"header header" "sidebar content"'
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
+   */
+  areas: {
+    type: 'string',
+    className: 'rt-r-gta',
+    customProperties: ['--grid-template-areas'],
+    responsive: true,
+  },
+  /**
    * Sets the CSS **grid-template-columns** property.
    * Supports numeric string values, CSS strings and responsive objects.
    *
@@ -134,32 +150,16 @@ const gridPropDefs = {
     parseValue: parseJustifyValue,
     responsive: true,
   },
-  /**
-   * Sets the CSS **grid-template** property.
-   * Supports a subset of the corresponding CSS values and responsive objects.
-   *
-   * @example
-   * template={'"icon title" auto ". description" 1fr / auto 1fr'}
-   *
-   * @link
-   * https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template
-   */
-  template: {
-    type: 'string',
-    className: 'rt-r-gt',
-    customProperties: ['--grid-template'],
-    responsive: true,
-  },
   ...gapPropDefs,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
   display: PropDef<(typeof displayValues)[number]>;
+  areas: PropDef<string>;
   columns: PropDef<(typeof columnsValues)[number]>;
   rows: PropDef<(typeof rowsValues)[number]>;
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
-  template: PropDef<string>;
 };
 
 function parseGridValue(value: string): string {

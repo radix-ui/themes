@@ -29,7 +29,13 @@ export default function Test() {
                     style={{ maxWidth: 500 }}
                     mx="auto"
                   >
-                    <Grid template={'"icon title" auto ". body" 1fr / auto 1fr'} gap={{ initial: '3', sm: '4', lg: '5' }} align="center">
+                    <Grid
+                      align="center"
+                      gap={{ initial: '3', sm: '4', lg: '5' }}
+                      columns="auto 1fr"
+                      rows="auto 1fr"
+                      areas='"icon title" ". body"'
+                    >
                       <Box asChild gridArea="icon">
                         <GridIcon />
                       </Box>
@@ -38,7 +44,10 @@ export default function Test() {
                       </Box>
                       <Box asChild gridArea="body">
                         <Text>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, officiis labore commodi maxime corporis expedita aliquid vero praesentium dolor id numquam illo est, quod voluptatem mollitia inventore pariatur odit delectus.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, officiis
+                          labore commodi maxime corporis expedita aliquid vero praesentium dolor id
+                          numquam illo est, quod voluptatem mollitia inventore pariatur odit
+                          delectus.
                         </Text>
                       </Box>
                     </Grid>

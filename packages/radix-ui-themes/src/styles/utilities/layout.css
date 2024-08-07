@@ -17,7 +17,7 @@
 @import './grid-row.css';
 @import './grid-row-start.css';
 @import './grid-row-end.css';
-@import './grid-template.css';
+@import './grid-template-areas.css';
 @import './grid-template-columns.css';
 @import './grid-template-rows.css';
 @import './height.css';
