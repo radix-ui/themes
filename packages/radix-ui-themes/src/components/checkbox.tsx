@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
 import { checkboxPropDefs } from './checkbox.props.js';
-import { ThickCheckIcon } from './icons.js';
+import { ThickCheckIcon, ThickDividerHorizontalIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
 
@@ -21,7 +21,7 @@ interface CheckboxProps
     MarginProps,
     CheckboxOwnProps {}
 const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwardedRef) => {
-  const { className, color, ...checkboxProps } = extractProps(
+  const { className, color, checked, ...checkboxProps } = extractProps(
     props,
     checkboxPropDefs,
     marginPropDefs
@@ -30,6 +30,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     <CheckboxPrimitive.Root
       data-accent-color={color}
       {...checkboxProps}
+      checked={checked}
       asChild={false}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseCheckboxRoot', 'rt-CheckboxRoot', className)}
@@ -38,7 +39,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
         asChild
         className="rt-BaseCheckboxIndicator rt-CheckboxIndicator"
       >
-        <ThickCheckIcon />
+        {checked === 'indeterminate' ? <ThickDividerHorizontalIcon /> : <ThickCheckIcon />}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

@@ -77,7 +77,7 @@
     }
   }
 
-  &:where([data-state='checked']) {
+  &:where([data-state='checked'], [data-state='indeterminate']) {
     &::before {
       background-color: var(--accent-indicator);
     }
@@ -116,7 +116,7 @@
     }
   }
 
-  &:where([data-state='checked']) {
+  &:where([data-state='checked'], [data-state='indeterminate']) {
     &::before {
       background-color: var(--accent-indicator);
       background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a1));
@@ -155,7 +155,7 @@
     background-color: var(--accent-a5);
   }
 
-  &:where([data-state='checked']) {
+  &:where([data-state='checked'], [data-state='indeterminate']) {
     & :where(.rt-BaseCheckboxIndicator) {
       color: var(--accent-a11);
     }

@@ -5,6 +5,29 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-p
 type IconElement = React.ElementRef<'svg'>;
 interface IconProps extends ComponentPropsWithout<'svg', RemovedProps | 'children'> {}
 
+const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+    return (
+      <svg
+      width="9"
+      height="9"
+      viewBox="0 0 9 9"
+      fill="currentcolor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={forwardedRef}
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M0.75 4.5C0.75 4.08579 1.08579 3.75 1.5 3.75H7.5C7.91421 3.75 8.25 4.08579 8.25 4.5C8.25 4.91421 7.91421 5.25 7.5 5.25H1.5C1.08579 5.25 0.75 4.91421 0.75 4.5Z"
+        />
+      </svg>
+    );
+  }
+);
+
+ThickDividerHorizontalIcon.displayName = 'ThickDividerHorizontalIcon';
+
 const ThickCheckIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
     <svg
@@ -64,5 +87,5 @@ const ThickChevronRightIcon = React.forwardRef<IconElement, IconProps>((props, f
 });
 ThickChevronRightIcon.displayName = 'ThickChevronRightIcon';
 
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon };
+export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon };
 export type { IconProps };

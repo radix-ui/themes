@@ -1334,6 +1334,7 @@ export default function Sink() {
                               <ColumnHeaderCell />
                               <ColumnHeaderCell>not checked</ColumnHeaderCell>
                               <ColumnHeaderCell>checked</ColumnHeaderCell>
+                              <ColumnHeaderCell>indeterminate</ColumnHeaderCell>
                               <ColumnHeaderCell>disabled</ColumnHeaderCell>
                               <ColumnHeaderCell>disabled checked</ColumnHeaderCell>
                             </tr>
@@ -1355,6 +1356,13 @@ export default function Sink() {
                                         variant={variant}
                                         highContrast={label === '+ high-contrast'}
                                         defaultChecked
+                                      />
+                                    </td>
+                                    <td>
+                                      <Checkbox
+                                        variant={variant}
+                                        highContrast={label === '+ high-contrast'}
+                                        checked='indeterminate'
                                       />
                                     </td>
                                     <td>
