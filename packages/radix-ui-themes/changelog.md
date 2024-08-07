@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.1.2
+
+- Add `areas` prop to the `Grid` component and `gridArea` prop to all layout components (`Box`, `Container`, `Flex`, `Grid`, `Section`)
+- Add `overflow-wrap: anywhere` style to the `DataList` component so that long values—such as IDs—can break over to next line
+- Support indeterminate indicator for the indeterminate `Checkbox` component
+
+## 3.1.1
+
+- Upgrade Radix Primitives to the newest versions
+
 ## 3.1.0
 
 - Support React 19
