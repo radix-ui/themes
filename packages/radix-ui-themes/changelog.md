@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.3
+
+- Support indeterminate indicator for the uncontrolled `Checkbox` component
+
 ## 3.1.2
 
 - Add `areas` prop to the `Grid` component and `gridArea` prop to all layout components (`Box`, `Container`, `Flex`, `Grid`, `Section`)
