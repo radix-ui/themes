@@ -9,6 +9,7 @@
 @import './flex-shrink.css';
 @import './flex-wrap.css';
 @import './gap.css';
+@import './grid-area.css';
 @import './grid-auto-flow.css';
 @import './grid-column.css';
 @import './grid-column-start.css';
@@ -16,6 +17,7 @@
 @import './grid-row.css';
 @import './grid-row-start.css';
 @import './grid-row-end.css';
+@import './grid-template-areas.css';
 @import './grid-template-columns.css';
 @import './grid-template-rows.css';
 @import './height.css';
