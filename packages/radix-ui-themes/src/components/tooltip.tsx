@@ -47,9 +47,13 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
             ref={forwardedRef}
             className={classNames('rt-TooltipContent', className)}
           >
-            <Text as="p" className="rt-TooltipText" size="1">
-              {content}
-            </Text>
+            {typeof content === 'string' ? (
+              <Text as="p" className="rt-TooltipText" size="1">
+                {content}
+              </Text>
+            ) : (
+              <>{content}</>
+            )}
             <TooltipPrimitive.Arrow className="rt-TooltipArrow" />
           </TooltipPrimitive.Content>
         </Theme>
