@@ -100,7 +100,7 @@ The repo is managed with [Yarn Workspaces](https://yarnpkg.com/features/workspac
 # install dependencies
 yarn install
 
-# start Storybook and see examples in the browser
+# start playground and see examples in the browser
 yarn dev
 ```
 
