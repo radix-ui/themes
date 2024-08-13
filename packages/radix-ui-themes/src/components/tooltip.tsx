@@ -31,6 +31,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     content,
     container,
     forceMount,
+    textAs,
     ...tooltipContentProps
   } = extractProps(props, tooltipPropDefs);
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
@@ -47,13 +48,9 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
             ref={forwardedRef}
             className={classNames('rt-TooltipContent', className)}
           >
-            {typeof content === 'string' ? (
-              <Text as="p" className="rt-TooltipText" size="1">
-                {content}
-              </Text>
-            ) : (
-              <>{content}</>
-            )}
+            <Text as={textAs ?? 'p'} className="rt-TooltipText" size="1">
+              {content}
+            </Text>
             <TooltipPrimitive.Arrow className="rt-TooltipArrow" />
           </TooltipPrimitive.Content>
         </Theme>
