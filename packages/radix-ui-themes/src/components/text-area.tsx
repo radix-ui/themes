@@ -11,8 +11,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
 type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {
-  defaultValue?: string;
-  value?: string;
+  defaultValue?: string | number;
+  value?: string | number;
 };
 interface TextAreaProps
   extends ComponentPropsWithout<'textarea', RemovedProps | 'size' | 'value'>,
