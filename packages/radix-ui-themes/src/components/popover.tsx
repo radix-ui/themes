@@ -70,15 +70,27 @@ const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
 );
 PopoverClose.displayName = 'Popover.Close';
 
+type PopoverAnchorElement = React.ElementRef<typeof PopoverPrimitive.Anchor>;
+interface PopoverAnchorProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Anchor> {}
+const PopoverAnchor = React.forwardRef<PopoverAnchorElement, PopoverAnchorProps>(
+  ({ children, ...props }, forwardedRef) => (
+    <PopoverPrimitive.Anchor {...props} ref={forwardedRef} />
+  )
+);
+
+PopoverAnchor.displayName = 'Popover.Anchor';
+
 export {
   PopoverRoot as Root,
   PopoverContent as Content,
   PopoverTrigger as Trigger,
   PopoverClose as Close,
+  PopoverAnchor as Anchor,
 };
 export type {
   PopoverRootProps as RootProps,
   PopoverContentProps as ContentProps,
   PopoverTriggerProps as TriggerProps,
   PopoverCloseProps as CloseProps,
+  PopoverAnchorProps as AnchorProps,
 };
