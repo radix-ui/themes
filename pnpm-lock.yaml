@@ -6,7 +6,6 @@ settings:
 
 overrides:
   string-width: 4.2.3
-  string-width-cjs: 4.2.3
 
 importers:
 
