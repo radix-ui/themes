@@ -1,11 +1,7 @@
 {
   "name": "monorepo",
   "private": true,
-  "packageManager": "yarn@1.22.18",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --no-cache --continue",
@@ -14,10 +10,13 @@
   },
   "devDependencies": {
     "eslint": "8.29.0",
-    "eslint-config-custom": "*",
+    "eslint-config-custom": "workspace:*",
     "turbo": "2.0.3"
   },
-  "resolutions": {
-    "**/string-width": "4.2.3"
+  "pnpm": {
+    "overrides": {
+      "string-width": "4.2.3",
+      "string-width-cjs": "4.2.3"
+    }
   }
 }
