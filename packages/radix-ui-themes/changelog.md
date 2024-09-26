@@ -2,7 +2,7 @@
 
 ## 3.1.5
 
-- Added responsive styles for `gridArea` prop. See [#569](https://github.com/radix-ui/themes/pull/569)
+- Add responsive styles for `gridArea` prop. See [#569](https://github.com/radix-ui/themes/pull/569)
 
 ## 3.1.4
 
