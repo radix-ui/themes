@@ -7,9 +7,4 @@ module.exports = {
     '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'ignore' }],
   },
-  parserOptions: {
-    babelOptions: {
-      presets: [require.resolve('next/babel')],
-    },
-  },
 };
