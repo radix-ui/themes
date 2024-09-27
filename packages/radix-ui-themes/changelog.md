@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.5
+
+- Add responsive styles for `gridArea` prop. See [#569](https://github.com/radix-ui/themes/pull/569)
+
 ## 3.1.4
 
 - Export `ThemeContext` see [#582](https://github.com/radix-ui/themes/pull/582)
