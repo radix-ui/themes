@@ -166,7 +166,8 @@ module.exports = {
       {
         args: 'none',
         ignoreRestSiblings: true,
-        varsIgnorePattern: '^(event|_)$',
+        destructuredArrayIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
       },
     ],
     'no-use-before-define': [
@@ -307,6 +308,8 @@ module.exports = {
           {
             args: 'none',
             ignoreRestSiblings: true,
+            destructuredArrayIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
           },
         ],
         'no-useless-constructor': 'off',

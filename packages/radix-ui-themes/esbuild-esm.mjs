@@ -1,4 +1,6 @@
 import esbuild from 'esbuild';
+import fs from 'fs';
+import path from 'path';
 
 const dir = 'dist/esm';
 
@@ -23,8 +25,6 @@ if (process.argv[2]) {
 esbuild.build(options).catch(() => process.exit(1));
 
 // Create a package.json file in the dist/esm directory with "type": "module" field
-import fs from 'fs';
-import path from 'path';
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir, { recursive: true });
 }
