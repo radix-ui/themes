@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { Flex } from './flex.js';
 import { spinnerPropDefs } from './spinner.props.js';
-import { inert } from '../helpers/inert.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
 

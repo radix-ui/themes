@@ -20,10 +20,8 @@
     "seedrandom": "3.0.5"
   },
   "devDependencies": {
-    "@types/node": "17.0.12",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "eslint-config-custom": "workspace:*",
-    "typescript": "5.4.5"
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.13",
+    "typescript": "5.5.4"
   }
 }
