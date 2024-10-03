@@ -1,7 +1,7 @@
 {
   "name": "monorepo",
   "private": true,
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.12.0",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --no-cache --continue",
