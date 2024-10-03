@@ -232,7 +232,7 @@ export default function Sink() {
                               </Button>
                             </Tooltip>
 
-                            <Tooltip content="The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant.">
+                            <Tooltip content="The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant.">
                               <Button variant="solid" size="1">
                                 Multiline
                               </Button>
@@ -3770,7 +3770,7 @@ export default function Sink() {
                                   Typography
                                 </Text>
                                 <Text as="p" color="gray" size={size} style={{ maxWidth: '40ch' }}>
-                                  The goal of typography is to relate font size, line height, and
+                                  The goal of typography is to relate font size, line height, and
                                   line width in a proportional way that maximizes beauty and makes
                                   reading easier and more pleasant.
                                 </Text>
@@ -3797,17 +3797,28 @@ export default function Sink() {
                         </Text>
                         <TableExample />
                       </Flex>
+
+                      <Flex direction="column" gap="3">
+                        <Text color="gray" size="2">
+                          minimal
+                        </Text>
+                        <TableExample variant="minimal" />
+                      </Flex>
                     </Grid>
 
+                    <Separator size="4" my="5" />
+
                     <Grid columns="3" gap="5" mt="5">
-                      {tableRootPropDefs.size.values.map((size) => (
-                        <div key={size}>
-                          <Text as="p" color="gray" size="2" mb="3">
-                            size {size}
-                          </Text>
-                          <TableExample size={size} variant="surface" noEmail />
-                        </div>
-                      ))}
+                      {tableRootPropDefs.variant.values.flatMap((variant) =>
+                        tableRootPropDefs.size.values.map((size) => (
+                          <div key={variant + size}>
+                            <Text as="p" color="gray" size="2" mb="3">
+                              variant {variant}, size {size}
+                            </Text>
+                            <TableExample size={size} variant={variant} noEmail />
+                          </div>
+                        ))
+                      )}
                     </Grid>
                   </DocsSection>
 
@@ -3831,27 +3842,27 @@ export default function Sink() {
                       </Heading>
 
                       <Heading size="8">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                       </Heading>
 
                       <Heading size="7">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way
                       </Heading>
 
                       <Heading size="6">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way
                       </Heading>
 
                       <Text color="gray" size="5">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant.
                       </Text>
 
                       <Text as="p" size="4">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant. The question is: What proportion(s) will give us the best
                         results? The golden ratio is often observed in nature where beauty and
@@ -3860,7 +3871,7 @@ export default function Sink() {
                       </Text>
 
                       <Text as="p" size="3" style={{ maxWidth: 600 }}>
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant. The question is: What proportion(s) will give us the best
                         results? The golden ratio is often observed in nature where beauty and
@@ -3870,7 +3881,7 @@ export default function Sink() {
 
                       <Grid columns="2" gap="5">
                         <Text as="p" size="2" style={{ maxWidth: 400 }}>
-                          The goal of typography is to relate font size, line height, and line width
+                          The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant. The question is: What proportion(s) will give us the best
                           results? The golden ratio is often observed in nature where beauty and
@@ -3879,7 +3890,7 @@ export default function Sink() {
                         </Text>
 
                         <Text as="p" size="1" style={{ maxWidth: 400 }}>
-                          The goal of typography is to relate font size, line height, and line width
+                          The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant. The question is: What proportion(s) will give us the best
                           results? The golden ratio is often observed in nature where beauty and
@@ -3938,7 +3949,7 @@ export default function Sink() {
                           The principles of the Typographic Craft are difficult to master
                         </Heading>
                         <Text as="p" size="4">
-                          The goal of typography is to relate font size, line height, and line width
+                          The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant.
                         </Text>
@@ -3950,7 +3961,7 @@ export default function Sink() {
                             The principles of the Typographic Craft are difficult to master
                           </Heading>
                           <Text as="p" size="3">
-                            The goal of typography is to relate font size, line height, and line
+                            The goal of typography is to relate font size, line height, and line
                             width in a proportional way that maximizes beauty and makes reading
                             easier and more pleasant.
                           </Text>
@@ -3960,7 +3971,7 @@ export default function Sink() {
                             The principles of the Typographic Craft are difficult to master
                           </Heading>
                           <Text as="p" size="2">
-                            The goal of typography is to relate font size, line height, and line
+                            The goal of typography is to relate font size, line height, and line
                             width in a proportional way that maximizes beauty and makes reading
                             easier and more pleasant.
                           </Text>
@@ -3970,30 +3981,30 @@ export default function Sink() {
                       <Grid columns="3" gap="5">
                         <Box>
                           <Heading size="2" mb="1">
-                            The principles of the Typographic Craft are difficult to master
+                            The principles of the Typographic Craft are difficult to master
                           </Heading>
                           <Text as="p" size="2">
-                            The goal of typography is to relate font size, line height, and line
+                            The goal of typography is to relate font size, line height, and line
                             width in a proportional way that maximizes beauty and makes reading
                             easier and more pleasant.
                           </Text>
                         </Box>
                         <Box>
                           <Heading size="2" mb="1">
-                            The principles of the Typographic Craft are difficult to master
+                            The principles of the Typographic Craft are difficult to master
                           </Heading>
                           <Text as="p" size="1">
-                            The goal of typography is to relate font size, line height, and line
+                            The goal of typography is to relate font size, line height, and line
                             width in a proportional way that maximizes beauty and makes reading
                             easier and more pleasant.
                           </Text>
                         </Box>
                         <Box>
                           <Heading size="1" mb="1">
-                            The principles of the Typographic Craft are difficult to master
+                            The principles of the Typographic Craft are difficult to master
                           </Heading>
                           <Text as="p" size="1">
-                            The goal of typography is to relate font size, line height, and line
+                            The goal of typography is to relate font size, line height, and line
                             width in a proportional way that maximizes beauty and makes reading
                             easier and more pleasant.
                           </Text>
@@ -4517,21 +4528,21 @@ export default function Sink() {
                   <DocsSection title="Blockquote">
                     <Flex direction="column" align="start" gap="5">
                       <Blockquote size="6" style={{ maxWidth: '50ch' }}>
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes beauty and makes reading easier and
                         more pleasant. The question is: What proportion(s) will give us the best
                         results?
                       </Blockquote>
 
                       <Blockquote size="4" style={{ maxWidth: '50ch' }} color="gray" highContrast>
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes <Text color="pink">beauty</Text> and
                         makes reading easier and more pleasant. The question is: What proportion(s)
                         will give us the best results?
                       </Blockquote>
 
                       <Blockquote size="2" style={{ maxWidth: '50ch' }} color="blue">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way that maximizes <Text highContrast>beauty</Text> and
                         makes reading easier and more pleasant. The question is: What proportion(s)
                         will give us the best results?
@@ -4979,7 +4990,7 @@ export default function Sink() {
                           }}
                         />
                         <Text as="p">
-                          The goal of typography is to relate font size, line height, and line width
+                          The goal of typography is to relate font size, line height, and line width
                           in a proportional way that maximizes beauty and makes reading easier and
                           more pleasant. The question is: What proportion(s) will give us the best
                           results? The golden ratio is often observed in nature where beauty and
@@ -5361,7 +5372,7 @@ export default function Sink() {
                           <Heading size="5">Principles of the Typographic Craft</Heading>
 
                           <Blockquote size="2" style={{ maxWidth: '50ch' }} color="gray">
-                            The goal of typography is to relate font size, line height, and line
+                            The goal of typography is to relate font size, line height, and line
                             width in a proportional way that maximizes{' '}
                             <Text highContrast>beauty</Text> and makes reading easier and more
                             pleasant. The question is: What proportion(s) will give us the best
@@ -5489,7 +5500,7 @@ export default function Sink() {
 
                           <Skeleton>
                             <Blockquote size="2" style={{ maxWidth: '50ch' }} color="gray">
-                              The goal of typography is to relate font size, line height, and line
+                              The goal of typography is to relate font size, line height, and line
                               width in a proportional way that maximizes{' '}
                               <Text highContrast>beauty</Text> and makes reading easier and more
                               pleasant. The question is: What proportion(s) will give us the best

@@ -1,3 +1,11 @@
+.rt-TableRoot {
+  --table-root-border-width: 0;
+  --table-root-border-style: none;
+  --table-root-border-color: var(--gray-a5);
+
+  border: var(--table-root-border-width) var(--table-root-border-style) var(--table-root-border-color);
+}
+
 .rt-TableRootTable {
   --table-row-background-color: transparent;
   --table-row-box-shadow: inset 0 -1px var(--gray-a5);
@@ -32,16 +40,17 @@
   box-shadow: var(--table-row-box-shadow);
   box-sizing: border-box;
   vertical-align: inherit;
-  padding: var(--table-cell-padding);
+  padding: var(--table-cell-padding-top) var(--table-cell-padding-right) var(--table-cell-padding-bottom)
+    var(--table-cell-padding-left);
   /* Works as min-height */
   height: var(--table-cell-min-height);
 
   /* Inset with Table */
   .rt-Inset :where(&:first-child) {
-    padding-left: var(--inset-padding-left, var(--table-cell-padding));
+    padding-left: var(--inset-padding-left, var(--table-cell-padding-left));
   }
   .rt-Inset :where(&:last-child) {
-    padding-right: var(--inset-padding-right, var(--table-cell-padding));
+    padding-right: var(--inset-padding-right, var(--table-cell-padding-right));
   }
 }
 .rt-TableColumnHeaderCell {
@@ -59,9 +68,14 @@
 
 @breakpoints {
   .rt-TableRoot {
+    /* for backward compatibility */
+    --table-cell-padding: var(--table-cell-padding-top) var(--table-cell-padding-right);
     &:where(.rt-r-size-1) {
       --table-border-radius: var(--radius-3);
-      --table-cell-padding: var(--space-2);
+      --table-cell-padding-top: var(--space-2);
+      --table-cell-padding-bottom: var(--space-2);
+      --table-cell-padding-right: var(--space-2);
+      --table-cell-padding-left: var(--space-2);
       --table-cell-min-height: calc(36px * var(--scaling));
 
       & :where(.rt-TableRootTable) {
@@ -71,7 +85,10 @@
     }
     &:where(.rt-r-size-2) {
       --table-border-radius: var(--radius-4);
-      --table-cell-padding: var(--space-3);
+      --table-cell-padding-top: var(--space-3);
+      --table-cell-padding-bottom: var(--space-3);
+      --table-cell-padding-right: var(--space-3);
+      --table-cell-padding-left: var(--space-3);
       --table-cell-min-height: calc(44px * var(--scaling));
 
       & :where(.rt-TableRootTable) {
@@ -81,7 +98,10 @@
     }
     &:where(.rt-r-size-3) {
       --table-border-radius: var(--radius-4);
-      --table-cell-padding: var(--space-3) var(--space-4);
+      --table-cell-padding-top: var(--space-3);
+      --table-cell-padding-bottom: var(--space-3);
+      --table-cell-padding-right: var(--space-4);
+      --table-cell-padding-left: var(--space-4);
       --table-cell-min-height: var(--space-8);
 
       & :where(.rt-TableRootTable) {
@@ -101,8 +121,9 @@
 /* surface */
 
 .rt-TableRoot:where(.rt-variant-surface) {
+  --table-root-border-width: 1px;
+  --table-root-border-style: solid;
   box-sizing: border-box;
-  border: 1px solid var(--gray-a5);
   border-radius: var(--table-border-radius);
   background-color: var(--color-panel);
   backdrop-filter: var(--backdrop-filter-panel);
@@ -111,7 +132,7 @@
 
   /* When possible, use half-transparent gray for nicer border blending with the background */
   @supports (box-shadow: 0 0 0 1px color-mix(in oklab, white, black)) {
-    border-color: color-mix(in oklab, var(--gray-a5), var(--gray-6));
+    --table-root-border-color: color-mix(in oklab, var(--gray-a5), var(--gray-6));
   }
 
   & :where(.rt-TableRootTable) {
@@ -131,4 +152,38 @@
 .rt-TableRoot:where(.rt-variant-ghost) {
   --scrollarea-scrollbar-horizontal-margin-left: 0;
   --scrollarea-scrollbar-horizontal-margin-right: 0;
+}
+
+/* minimal */
+
+.rt-TableRoot:where(.rt-variant-minimal) {
+  --scrollarea-scrollbar-horizontal-margin-left: 0;
+  --scrollarea-scrollbar-horizontal-margin-right: 0;
+  & :where(.rt-TableRootTable) {
+    --table-row-box-shadow: none;
+  }
+  & :where(.rt-TableCell:first-child) {
+    --table-cell-padding-left: 0;
+  }
+  & :where(.rt-TableCell:last-child) {
+    --table-cell-padding-right: 0;
+  }
+
+  @breakpoints {
+    &:where(.rt-r-size-1) {
+      --table-cell-padding-top: var(--space-1);
+      --table-cell-padding-bottom: var(--space-1);
+      --table-cell-min-height: calc(28px * var(--scaling));
+    }
+    &:where(.rt-r-size-2) {
+      --table-cell-padding-top: var(--space-2);
+      --table-cell-padding-bottom: var(--space-2);
+      --table-cell-min-height: calc(36px * var(--scaling));
+    }
+    &:where(.rt-r-size-3) {
+      --table-cell-padding-top: var(--space-2);
+      --table-cell-padding-bottom: var(--space-2);
+      --table-cell-min-height: calc(40px * var(--scaling));
+    }
+  }
 }
