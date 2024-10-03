@@ -4,7 +4,6 @@
   outline: 0;
   overflow: auto;
   position: relative;
-
   --inset-padding-top: var(--popover-content-padding);
   --inset-padding-right: var(--popover-content-padding);
   --inset-padding-bottom: var(--popover-content-padding);
