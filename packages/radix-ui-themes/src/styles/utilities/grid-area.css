@@ -1,3 +1,33 @@
 .rt-r-ga {
   grid-area: var(--grid-area);
 }
+
+@media (--xs) {
+  .xs\:rt-r-ga {
+    grid-area: var(--grid-area-xs);
+  }
+}
+
+@media (--sm) {
+  .sm\:rt-r-ga {
+    grid-area: var(--grid-area-sm);
+  }
+}
+
+@media (--md) {
+  .md\:rt-r-ga {
+    grid-area: var(--grid-area-md);
+  }
+}
+
+@media (--lg) {
+  .lg\:rt-r-ga {
+    grid-area: var(--grid-area-lg);
+  }
+}
+
+@media (--xl) {
+  .xl\:rt-r-ga {
+    grid-area: var(--grid-area-xl);
+  }
+}

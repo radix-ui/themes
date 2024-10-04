@@ -68,10 +68,10 @@ git pull upstream main
 node -v
 ```
 
-1. Install dependencies with [yarn](https://yarnpkg.com):
+1. Install dependencies with [pnpm](https://pnpm.io):
 
 ```sh
-yarn install
+pnpm install
 ```
 
 1. Create a new branch related to your PR:
@@ -92,20 +92,20 @@ git push -u origin HEAD
 
 ## Working locally
 
-The repo is managed with [Yarn Workspaces](https://yarnpkg.com/features/workspaces) and [Turborepo](https://turbo.build/repo).
+The repo is managed with [pnpm Workspaces](https://pnpm.io/workspaces) and [Turborepo](https://turbo.build/repo).
 
 ### Development
 
 ```bash
 # install dependencies
-yarn install
+pnpm install
 
 # start playground and see examples in the browser
-yarn dev
+pnpm dev
 ```
 
 After staring the development server, navigate to `http://localhost:3000/sink` to view the playground. Visit other demos by navigating to pages in the app directory (./app/\*), such as `/demo`, `/explore-components`, `/home-os`.
 
 Make your changes and check that they resolve the problem with an example in `/sink` or another demo page. If there are no examples in the playground to support your change, we suggest adding one and then running local development to make sure nothing is broken.
 
-Lastly, run `yarn build` to ensure that the build runs successfully before submitting the pull request.
+Lastly, run `pnpm build` to ensure that the build runs successfully before submitting the pull request.
