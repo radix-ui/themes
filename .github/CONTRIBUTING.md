@@ -100,7 +100,7 @@ The repo is managed with [pnpm Workspaces](https://pnpm.io/workspaces) and [Turb
 # install dependencies
 pnpm install
 
-# start Storybook and see examples in the browser
+# start playground and see examples in the browser
 pnpm dev
 ```
 
