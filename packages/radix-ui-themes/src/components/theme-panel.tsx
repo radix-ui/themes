@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
+import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import {
   AccessibleIcon,
   Box,
@@ -23,30 +24,28 @@ import { themePropDefs } from '../props/index.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/index.js';
 import type { GetPropDefTypes } from '../props/index.js';
 
-interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
-  defaultOpen?: boolean;
-}
-const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
-  ({ defaultOpen = true, ...props }, forwardedRef) => {
-    const [open, setOpen] = React.useState(defaultOpen);
-    return <ThemePanelImpl {...props} ref={forwardedRef} open={open} onOpenChange={setOpen} />;
-  }
-);
-ThemePanel.displayName = 'ThemePanel';
-
 type ThemePanelImplElement = React.ElementRef<'div'>;
-interface ThemePanelImplPrivateProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}
-interface ThemePanelImplProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    ThemePanelImplPrivateProps {
+
+interface ThemePanelProps extends ComponentPropsWithout<'div', RemovedProps> {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  /** Whether the theme panel is open by default.
+   * Doesn't have any effect if `open` is also set.
+   * @default true
+   */
+  defaultOpen?: boolean;
   onAppearanceChange?: (value: 'light' | 'dark') => void;
 }
-const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
+
+const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
   (props, forwardedRef) => {
-    const { open, onOpenChange, onAppearanceChange: onAppearanceChangeProp, ...panelProps } = props;
+    const {
+      open: openProp,
+      defaultOpen,
+      onOpenChange,
+      onAppearanceChange: onAppearanceChangeProp,
+      ...panelProps
+    } = props;
     const themeContext = useThemeContext();
     const {
       appearance,
@@ -62,6 +61,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       scaling,
       onScalingChange,
     } = themeContext;
+
+    const [open = true, setOpen] = useControllableState({
+      prop: openProp,
+      defaultProp: defaultOpen,
+      onChange: onOpenChange,
+    });
 
     const hasOnAppearanceChangeProp = onAppearanceChangeProp !== undefined;
     const handleAppearanceChangeProp = useCallbackRef(onAppearanceChangeProp);
@@ -135,12 +140,12 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
         const isKeyT = event.key?.toUpperCase() === 'T' && !isModifierActive;
         if (isKeyT && !isKeyboardInputActive) {
-          onOpenChange(!open);
+          setOpen((prev) => !prev);
         }
       }
       document.addEventListener('keydown', handleKeydown);
       return () => document.removeEventListener('keydown', handleKeydown);
-    }, [onOpenChange, open, keyboardInputElement]);
+    }, [setOpen, keyboardInputElement]);
 
     // quickly toggle appearance using "D" keypress
     React.useEffect(() => {
@@ -230,7 +235,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                   sideOffset={6}
                 >
                   <Kbd asChild size="3" tabIndex={0} className="rt-ThemePanelShortcut">
-                    <button onClick={() => onOpenChange(!open)}>T</button>
+                    <button onClick={() => setOpen((prev) => !prev)}>T</button>
                   </Kbd>
                 </Tooltip>
               </Box>
@@ -621,7 +626,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     );
   }
 );
-ThemePanelImpl.displayName = 'ThemePanelImpl';
+ThemePanel.displayName = 'ThemePanel';
 
 // https://github.com/pacocoursey/next-themes/blob/main/packages/next-themes/src/index.tsx#L285
 function disableAnimation() {
