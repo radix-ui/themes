@@ -5722,6 +5722,7 @@ export default function Sink() {
                       <thead>
                         <tr>
                           <ColumnHeaderCell />
+                          <ColumnHeaderCell>disabled</ColumnHeaderCell>
                           {segmentedControlRootPropDefs.size.values.map((size) => (
                             <ColumnHeaderCell key={size}>size {size}</ColumnHeaderCell>
                           ))}
@@ -5731,6 +5732,18 @@ export default function Sink() {
                         {segmentedControlRootPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <RowHeaderCell>{variant}</RowHeaderCell>
+                            <td>
+                              <SegmentedControl.Root
+                                size="1"
+                                variant={variant}
+                                defaultValue="1"
+                                disabled={true}
+                              >
+                                <SegmentedControl.Item value="1">One</SegmentedControl.Item>
+                                <SegmentedControl.Item value="2">Two</SegmentedControl.Item>
+                                <SegmentedControl.Item value="3">Three</SegmentedControl.Item>
+                              </SegmentedControl.Root>
+                            </td>
                             {segmentedControlRootPropDefs.size.values.map((size) => (
                               <td key={size}>
                                 <SegmentedControl.Root

@@ -56,7 +56,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
         type="single"
         value={value}
         asChild={false}
-        disabled={false}
+        disabled={!!props.disabled}
       >
         {children}
         <div className="rt-SegmentedControlIndicator" />
