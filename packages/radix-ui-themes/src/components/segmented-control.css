@@ -20,6 +20,12 @@
 
   /* Create a new stacking context */
   isolation: isolate;
+
+  &.disabled {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+    background-color: var(--gray-3);
+  }
 }
 
 .rt-SegmentedControlItem {
@@ -56,7 +62,7 @@
   }
 
   @media (hover: hover) {
-    :where(.rt-SegmentedControlItem[data-state='off']:hover) & {
+    :where(.rt-SegmentedControlItem[data-state='off']:not([disabled]):hover) & {
       background-color: var(--gray-a2);
     }
   }
@@ -153,6 +159,15 @@
 
   :where(.rt-SegmentedControlItem[data-state='on']) ~ & {
     display: block;
+  }
+
+  :where(.rt-SegmentedControlItem[disabled]) ~ & {
+    --segmented-control-indicator-background-color: var(--gray-a3);
+
+    &::before {
+      inset: 0px;
+      box-shadow: none;
+    }
   }
 
   &:where(:nth-child(2)) {
@@ -279,9 +294,11 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-SegmentedControlRoot:where(.rt-variant-surface) {
-  & :where(.rt-SegmentedControlIndicator) {
-    &::before {
-      box-shadow: 0 0 0 1px var(--gray-a4);
+  & :where(.rt-SegmentedControlItem:not([disabled])) {
+    & :where(.rt-SegmentedControlIndicator) {
+      &::before {
+        box-shadow: 0 0 0 1px var(--gray-a4);
+      }
     }
   }
 }
@@ -293,9 +310,11 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-SegmentedControlRoot:where(.rt-variant-classic) {
-  & :where(.rt-SegmentedControlIndicator) {
-    &::before {
-      box-shadow: var(--shadow-2);
+  & :where(.rt-SegmentedControlItem:not([disabled])) {
+    & :where(.rt-SegmentedControlIndicator) {
+      &::before {
+        box-shadow: var(--shadow-2);
+      }
     }
   }
 }
