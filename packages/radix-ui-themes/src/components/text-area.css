@@ -56,6 +56,13 @@
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
   }
+
+  /* Remove outline on Firefox */
+  @supports (-moz-appearance: none) {
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 /***************************************************************************************************
