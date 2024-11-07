@@ -44,6 +44,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
 
     return (
       <ToggleGroupPrimitive.Root
+        data-disabled={props.disabled || undefined}
         data-radius={radius}
         ref={forwardedRef}
         className={classNames('rt-SegmentedControlRoot', className)}
