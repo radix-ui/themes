@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.6
+
+- Updated all Radix Primitives
+
 ## 3.1.5
 
 - Fix responsive styles for `gridArea` prop ([#569](https://github.com/radix-ui/themes/pull/569))
