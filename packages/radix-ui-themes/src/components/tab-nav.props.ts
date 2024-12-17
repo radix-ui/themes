@@ -9,5 +9,5 @@ const tabNavLinkPropDefs = {
   active: PropDef<boolean>;
 };
 
-export { baseTabListPropDefs as tabNavRootPropDefs } from './base-tab-list.props.js';
+export { baseTabListPropDefs as tabNavRootPropDefs } from './_internal/base-tab-list.props.js';
 export { tabNavLinkPropDefs };
