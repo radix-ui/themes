@@ -43,6 +43,7 @@
     "./postcss-whitespace.cjs": {
       "require": "./postcss-breakpoints.cjs"
     },
+    "./*.css": "./*.css",
     "./*": {
       "require": {
         "types": "./dist/cjs/components/*.d.ts",
