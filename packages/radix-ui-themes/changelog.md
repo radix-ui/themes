@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.2.0
+
+- Add standalone entrypoints for all components for example:
+  ```tsx
+  import { AlertDialog } from '@radix-ui/themes/alert-dialog';
+  import { Box } from '@radix-ui/themes/box';
+  ```
+
 ## 3.1.6
 
 - Updated all Radix Primitives
