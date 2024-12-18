@@ -41,7 +41,7 @@
       "require": "./postcss-breakpoints.cjs"
     },
     "./postcss-whitespace.cjs": {
-      "require": "./postcss-breakpoints.cjs"
+      "require": "./postcss-whitespace.cjs"
     },
     "./*.css": "./*.css",
     "./*": {
