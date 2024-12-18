@@ -4,8 +4,8 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { createContextScope } from '@radix-ui/react-context';
 
-import * as CheckboxGroupPrimitive from './checkbox-group.primitive.js';
-import { createCheckboxGroupScope } from './checkbox-group.primitive.js';
+import * as CheckboxGroupPrimitive from './_internal/checkbox-group.primitive.js';
+import { createCheckboxGroupScope } from './_internal/checkbox-group.primitive.js';
 import { checkboxGroupRootPropDefs } from './checkbox-group.props.js';
 import { ThickCheckIcon } from './icons.js';
 import { Text } from './text.js';

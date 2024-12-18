@@ -1,4 +1,4 @@
-@import './base-checkbox.css';
+@import './_internal/base-checkbox.css';
 
 .rt-CheckboxRoot {
   &:where(:focus-visible) {

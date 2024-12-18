@@ -1,4 +1,4 @@
-@import './base-tab-list.css';
+@import './_internal/base-tab-list.css';
 
 .rt-TabNavItem {
   display: flex;

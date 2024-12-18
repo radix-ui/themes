@@ -1,4 +1,4 @@
-import type { baseButtonPropDefs } from '../components/base-button.props.js';
+import type { baseButtonPropDefs } from '../components/_internal/base-button.props.js';
 import type { calloutRootPropDefs } from '../components/callout.props.js';
 import type { spinnerPropDefs } from '../components/spinner.props.js';
 import type { textPropDefs } from '../components/text.props.js';

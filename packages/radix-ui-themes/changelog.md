@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.2.0
+
+- Add standalone entrypoints for all components for example:
+  ```tsx
+  import { AlertDialog } from '@radix-ui/themes/alert-dialog';
+  import { Box } from '@radix-ui/themes/box';
+  // We recommend using namespaced imports for compound components
+  import * as CheckboxGroup from '@radix-ui/themes/checkbox-group';
+  ```
+
 ## 3.1.6
 
 - Updated all Radix Primitives
