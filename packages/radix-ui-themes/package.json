@@ -96,7 +96,7 @@
     "lint": "pnpm lint:js && pnpm lint:css",
     "lint:js": "eslint \"src/**/*.ts*\"",
     "lint:css": "stylelint \"src/**/*.css\"",
-    "clean": "rm -rf .turbo node_modules dist tokens layout *.css",
+    "clean": "rm -rf node_modules dist tokens layout *.css",
     "prepublishOnly": "pnpm lint"
   },
   "dependencies": {

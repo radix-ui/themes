@@ -92,7 +92,7 @@ git push -u origin HEAD
 
 ## Working locally
 
-The repo is managed with [pnpm Workspaces](https://pnpm.io/workspaces) and [Turborepo](https://turbo.build/repo).
+The repo is managed with [pnpm Workspaces](https://pnpm.io/workspaces).
 
 ### Development
 
