@@ -20,17 +20,14 @@ import { NextThemeProvider } from '../next-theme-provider';
 
 export default function Test() {
   const [isLoading, setIsLoading] = React.useState(true);
-  const loadingTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const loadingTimeoutRef = React.useRef<number>(undefined);
 
   React.useEffect(() => {
-    loadingTimeoutRef.current = setTimeout(() => {
+    loadingTimeoutRef.current = window.setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-
     return () => {
-      if (loadingTimeoutRef.current) {
-        clearTimeout(loadingTimeoutRef.current);
-      }
+      window.clearTimeout(loadingTimeoutRef.current!);
     };
   }, []);
 
