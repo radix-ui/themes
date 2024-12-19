@@ -13,7 +13,7 @@ This is currently done manually. PRs that fix bugs or add features should includ
 ### Publishing a stable release
 
 1. Checkout latest `main`
-2. Run `pnpm clean && pnpm i && pnpm build`
+2. Run `pnpm clean && pnpm i && pnpm build:pkg`
 3. Run `pnpm lint` and ensure there are no errors
 4. Update the version in `packages/radix-ui-themes/package.json` and ensure the changelog is up to date
 5. Run `pnpm publish -r` to publish the new version

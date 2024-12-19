@@ -3,16 +3,17 @@
   "private": true,
   "packageManager": "pnpm@9.12.0",
   "scripts": {
-    "build": "pnpm -r --if-present build",
+    "build": "turbo run build",
     "build:pkg": "pnpm --filter @radix-ui/themes build",
-    "dev": "pnpm -r --if-present dev",
-    "lint": "pnpm -r --if-present lint",
-    "clean": "pnpm -r --if-present clean && rm -rf node_modules"
+    "dev": "turbo run dev --no-cache --continue",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules .turbo"
   },
   "devDependencies": {
     "@types/node": "^20.16.10",
     "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0"
+    "@types/react-dom": "^18.3.0",
+    "turbo": "^2.3.3"
   },
   "pnpm": {
     "overrides": {
