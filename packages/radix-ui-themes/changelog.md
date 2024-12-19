@@ -9,6 +9,7 @@
   // We recommend using namespaced imports for compound components
   import * as CheckboxGroup from '@radix-ui/themes/checkbox-group';
   ```
+- Fix visibility flash with closing dialogs ([#649](https://github.com/radix-ui/themes/pull/649))
 
 ## 3.1.6
 
