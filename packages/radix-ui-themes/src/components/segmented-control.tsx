@@ -91,7 +91,9 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
       <span className="rt-SegmentedControlItemSeparator" />
       <span className="rt-SegmentedControlItemLabel">
         <span className="rt-SegmentedControlItemLabelActive">{children}</span>
-        <span className="rt-SegmentedControlItemLabelInactive">{children}</span>
+        <span className="rt-SegmentedControlItemLabelInactive" aria-hidden>
+          {children}
+        </span>
       </span>
     </ToggleGroupPrimitive.Item>
   )
