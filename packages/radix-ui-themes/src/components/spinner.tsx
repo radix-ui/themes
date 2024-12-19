@@ -50,7 +50,7 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
         <span
           aria-hidden
           style={{ display: 'contents', visibility: 'hidden' }}
-          // @ts-ignore
+          // @ts-expect-error
           inert={undefined}
         >
           {children}

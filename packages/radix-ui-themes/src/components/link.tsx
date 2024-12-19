@@ -22,7 +22,12 @@ const Link = React.forwardRef<LinkElement, LinkProps>((props, forwardedRef) => {
       asChild
       className={classNames('rt-reset', 'rt-Link', className)}
     >
-      {asChild ? children : <a>{children}</a>}
+      {asChild ? (
+        children
+      ) : (
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        <a>{children}</a>
+      )}
     </Text>
   );
 });
