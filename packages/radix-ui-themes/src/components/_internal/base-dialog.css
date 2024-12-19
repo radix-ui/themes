@@ -84,11 +84,10 @@
 
 @media (prefers-reduced-motion: no-preference) {
   @keyframes rt-dialog-overlay-no-op {
-    0%,
-    99% {
+    from {
       opacity: 1;
     }
-    100% {
+    to {
       opacity: 0;
     }
   }
@@ -124,6 +123,7 @@
       animation: rt-fade-in 200ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     &:where([data-state='closed'])::before {
+      opacity: 0;
       animation: rt-fade-out 160ms cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
@@ -133,6 +133,7 @@
       animation: rt-dialog-content-show 200ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     &:where([data-state='closed']) {
+      opacity: 0;
       animation: rt-dialog-content-hide 100ms cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
