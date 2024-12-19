@@ -84,11 +84,12 @@
 
 @media (prefers-reduced-motion: no-preference) {
   @keyframes rt-dialog-overlay-no-op {
-    from {
+    0%,
+    99% {
       opacity: 1;
     }
-    to {
-      opacity: 1;
+    100% {
+      opacity: 0;
     }
   }
 
@@ -119,7 +120,6 @@
     &:where([data-state='closed']) {
       animation: rt-dialog-overlay-no-op 160ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     &:where([data-state='open'])::before {
       animation: rt-fade-in 200ms cubic-bezier(0.16, 1, 0.3, 1);
     }
