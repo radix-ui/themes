@@ -3,8 +3,8 @@
   "private": true,
   "packageManager": "pnpm@9.12.0",
   "scripts": {
-    "build": "pnpm --filter @radix-ui/themes build",
-    "build:all": "pnpm -r --if-present build",
+    "build": "pnpm -r --if-present build",
+    "build:pkg": "pnpm --filter @radix-ui/themes build",
     "dev": "pnpm -r --if-present dev",
     "lint": "pnpm -r --if-present lint",
     "clean": "pnpm -r --if-present clean && rm -rf node_modules"
