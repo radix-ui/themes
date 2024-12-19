@@ -16,6 +16,7 @@ export function getSubtree(
 
   const firstChild = React.Children.only(children) as React.ReactElement;
   return React.cloneElement(firstChild, {
+    // @ts-expect-error
     children: typeof content === 'function' ? content(firstChild.props.children) : content,
   });
 }
