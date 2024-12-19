@@ -6,7 +6,6 @@
     "dev": "next dev --port 3030",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "clean": "rm -rf node_modules .next"
   },
   "dependencies": {
@@ -20,8 +19,6 @@
     "seedrandom": "3.0.5"
   },
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.13",
     "typescript": "^5.7.2"
   }
 }
