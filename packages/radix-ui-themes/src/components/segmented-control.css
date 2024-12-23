@@ -293,11 +293,9 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-SegmentedControlRoot:where(.rt-variant-surface) {
-  & :where(.rt-SegmentedControlItem:not([disabled])) {
-    & :where(.rt-SegmentedControlIndicator) {
-      &::before {
-        box-shadow: 0 0 0 1px var(--gray-a4);
-      }
+  & :where(.rt-SegmentedControlItem:not([disabled])) ~ :where(.rt-SegmentedControlIndicator) {
+    &::before {
+      box-shadow: 0 0 0 1px var(--gray-a4);
     }
   }
 }
@@ -309,11 +307,9 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-SegmentedControlRoot:where(.rt-variant-classic) {
-  & :where(.rt-SegmentedControlItem:not([disabled])) {
-    & :where(.rt-SegmentedControlIndicator) {
-      &::before {
-        box-shadow: var(--shadow-2);
-      }
+  & :where(.rt-SegmentedControlItem:not([disabled])) ~ :where(.rt-SegmentedControlIndicator) {
+    &::before {
+      box-shadow: var(--shadow-2);
     }
   }
 }
