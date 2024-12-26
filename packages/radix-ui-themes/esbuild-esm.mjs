@@ -1,6 +1,7 @@
 import esbuild from 'esbuild';
 import fs from 'fs';
 import path from 'path';
+import pkg from './package.json' assert { type: 'json' };
 
 const dir = 'dist/esm';
 
@@ -30,6 +31,6 @@ if (!fs.existsSync(dir)) {
 }
 fs.writeFileSync(
   path.join(dir, 'package.json'),
-  JSON.stringify({ type: 'module' }, null, 2) + '\n',
+  JSON.stringify({ type: 'module', sideEffects: pkg.sideEffects }, null, 2) + '\n',
   'utf-8'
 );
