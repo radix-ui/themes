@@ -2,7 +2,7 @@
 
 ## 3.2.0
 
-- Add standalone entrypoints for all components for example:
+- Add standalone entrypoints for all components. For example:
   ```tsx
   import { AlertDialog } from '@radix-ui/themes/alert-dialog';
   import { Box } from '@radix-ui/themes/box';
