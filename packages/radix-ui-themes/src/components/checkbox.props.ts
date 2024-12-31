@@ -1,1 +1,1 @@
-export { baseCheckboxPropDefs as checkboxPropDefs } from './_internal/base-checkbox.props.js';
+export { baseCheckboxPropDefs as checkboxPropDefs } from './base-checkbox.props.js';

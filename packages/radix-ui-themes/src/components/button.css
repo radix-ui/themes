@@ -1,4 +1,4 @@
-@import './_internal/base-button.css';
+@import './base-button.css';
 
 .rt-Button {
   &:where(:not(.rt-variant-ghost)) {

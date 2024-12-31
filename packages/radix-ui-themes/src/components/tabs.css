@@ -1,4 +1,4 @@
-@import './_internal/base-tab-list.css';
+@import './base-tab-list.css';
 
 .rt-TabsContent {
   position: relative;

@@ -1,4 +1,4 @@
-@import './_internal/base-menu.css';
+@import './base-menu.css';
 
 .rt-ContextMenuContent {
   max-height: var(--radix-context-menu-content-available-height);
