@@ -17,6 +17,16 @@
         "default": "./dist/esm/index.js"
       }
     },
+    "./components/*": {
+      "require": {
+        "types": "./dist/cjs/components/*.d.ts",
+        "default": "./dist/cjs/components/*.js"
+      },
+      "import": {
+        "types": "./dist/esm/components/*.d.ts",
+        "default": "./dist/esm/components/*.js"
+      }
+    },
     "./helpers": {
       "require": {
         "types": "./dist/cjs/helpers/index.d.ts",
@@ -37,23 +47,7 @@
         "default": "./dist/esm/props/index.js"
       }
     },
-    "./postcss-breakpoints.cjs": {
-      "require": "./postcss-breakpoints.cjs"
-    },
-    "./postcss-whitespace.cjs": {
-      "require": "./postcss-whitespace.cjs"
-    },
-    "./*.css": "./*.css",
-    "./*": {
-      "require": {
-        "types": "./dist/cjs/components/*.d.ts",
-        "default": "./dist/cjs/components/*.js"
-      },
-      "import": {
-        "types": "./dist/esm/components/*.d.ts",
-        "default": "./dist/esm/components/*.js"
-      }
-    }
+    "./*": "./*"
   },
   "sideEffects": false,
   "license": "MIT",

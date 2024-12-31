@@ -4,10 +4,10 @@
 
 - Add standalone entrypoints for all components. For example:
   ```tsx
-  import { AlertDialog } from '@radix-ui/themes/alert-dialog';
-  import { Box } from '@radix-ui/themes/box';
+  import { AlertDialog } from '@radix-ui/themes/components/alert-dialog';
+  import { Box } from '@radix-ui/themes/components/box';
   // We recommend using namespaced imports for compound components
-  import * as CheckboxGroup from '@radix-ui/themes/checkbox-group';
+  import * as CheckboxGroup from '@radix-ui/themes/components/checkbox-group';
   ```
 - Fix visibility flash with closing dialogs ([#649](https://github.com/radix-ui/themes/pull/649))
 - Fix regression that caused Segmented Control indicators to lose box shadows ([#650](https://github.com/radix-ui/themes/pull/657))
