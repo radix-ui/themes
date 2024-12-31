@@ -1,4 +1,4 @@
-@import './base-card.css';
+@import './_internal/base-card.css';
 
 .rt-RadioCardsRoot {
   line-height: var(--line-height);

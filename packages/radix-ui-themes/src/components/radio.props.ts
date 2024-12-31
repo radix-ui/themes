@@ -1,1 +1,1 @@
-export { baseRadioPropDefs as radioPropDefs } from './base-radio.props.js';
+export { baseRadioPropDefs as radioPropDefs } from './_internal/base-radio.props.js';
