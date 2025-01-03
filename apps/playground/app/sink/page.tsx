@@ -602,6 +602,17 @@ export default function Sink() {
                     </table>
 
                     <Text as="p" my="5">
+                      Custom indicator:
+                    </Text>
+
+                    <Select.Root defaultValue="apple" indicator={<StarIcon />}>
+                      <Select.Trigger />
+                      <Select.Content>
+                        <SelectItemsDemo />
+                      </Select.Content>
+                    </Select.Root>
+
+                    <Text as="p" my="5">
                       <Code>radius</Code> can be set per instance:
                     </Text>
 
