@@ -29,7 +29,7 @@ interface SelectRootProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
-  const { children, size = selectRootPropDefs.size.default, indicator, ...rootProps } = props;
+  const { children, size = selectRootPropDefs.size.default, indicator = <ThickCheckIcon />, ...rootProps } = props;
   return (
     <SelectPrimitive.Root {...rootProps}>
       <SelectContext.Provider value={React.useMemo(() => ({ size, indicator }), [size, indicator])}>
@@ -152,7 +152,7 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
     >
       <SelectPrimitive.ItemIndicator className="rt-SelectItemIndicator">
         <Box asChild className="rt-SelectItemIndicatorIcon">
-          {context.indicator ?? <ThickCheckIcon  />}
+          {context.indicator}
         </Box>
       </SelectPrimitive.ItemIndicator>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
