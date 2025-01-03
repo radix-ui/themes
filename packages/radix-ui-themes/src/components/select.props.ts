@@ -8,8 +8,10 @@ const sizes = ['1', '2', '3'] as const;
 
 const selectRootPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
+  indicator: { type: 'ReactNode' },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
+  indicator: PropDef<React.ReactNode>;
 };
 
 const triggerVariants = ['classic', 'surface', 'soft', 'ghost'] as const;

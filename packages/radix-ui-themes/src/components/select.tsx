@@ -18,6 +18,7 @@ import { useThemeContext, Theme } from './theme.js';
 import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import { Box } from './box';
 
 type SelectRootOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
 
@@ -28,10 +29,10 @@ interface SelectRootProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
     SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
-  const { children, size = selectRootPropDefs.size.default, ...rootProps } = props;
+  const { children, size = selectRootPropDefs.size.default, indicator, ...rootProps } = props;
   return (
     <SelectPrimitive.Root {...rootProps}>
-      <SelectContext.Provider value={React.useMemo(() => ({ size }), [size])}>
+      <SelectContext.Provider value={React.useMemo(() => ({ size, indicator }), [size, indicator])}>
         {children}
       </SelectContext.Provider>
     </SelectPrimitive.Root>
@@ -141,6 +142,7 @@ interface SelectItemProps
   extends ComponentPropsWithout<typeof SelectPrimitive.Item, RemovedProps> {}
 const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, forwardedRef) => {
   const { className, children, ...itemProps } = props;
+  const context = React.useContext(SelectContext);
   return (
     <SelectPrimitive.Item
       {...itemProps}
@@ -149,7 +151,9 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
       className={classNames('rt-SelectItem', className)}
     >
       <SelectPrimitive.ItemIndicator className="rt-SelectItemIndicator">
-        <ThickCheckIcon className="rt-SelectItemIndicatorIcon" />
+        <Box asChild className="rt-SelectItemIndicatorIcon">
+          {context.indicator ?? <ThickCheckIcon  />}
+        </Box>
       </SelectPrimitive.ItemIndicator>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
