@@ -1,4 +1,4 @@
-import type { accentColors } from '../props/color.prop';
+import type { accentColors } from '../props/color.prop.js';
 
 type ThemeAccentColor = (typeof accentColors)[number];
 

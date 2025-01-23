@@ -1,9 +1,9 @@
-import { asChildPropDef } from '../props/as-child.prop';
-import { colorPropDef } from '../props/color.prop';
-import { highContrastPropDef } from '../props/high-contrast.prop';
-import { gridPropDefs } from './grid.props';
+import { asChildPropDef } from '../props/as-child.prop.js';
+import { colorPropDef } from '../props/color.prop.js';
+import { highContrastPropDef } from '../props/high-contrast.prop.js';
+import { gridPropDefs } from './grid.props.js';
 
-import type { PropDef } from '../props/prop-def';
+import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['surface', 'classic'] as const;

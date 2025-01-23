@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 type IconElement = React.ElementRef<'svg'>;
 interface IconProps extends ComponentPropsWithout<'svg', RemovedProps | 'children'> {}

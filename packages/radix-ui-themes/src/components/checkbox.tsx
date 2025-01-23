@@ -5,14 +5,14 @@ import classNames from 'classnames';
 import { Checkbox as CheckboxPrimitive } from 'radix-ui';
 import { useControllableState } from 'radix-ui/internal';
 
-import { checkboxPropDefs } from './checkbox.props';
-import { ThickCheckIcon, ThickDividerHorizontalIcon } from './icons';
-import { extractProps } from '../helpers/extract-props';
-import { marginPropDefs } from '../props/margin.props';
+import { checkboxPropDefs } from './checkbox.props.js';
+import { ThickCheckIcon, ThickDividerHorizontalIcon } from './icons.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { MarginProps } from '../props/margin.props';
-import type { ComponentPropsWithout } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { MarginProps } from '../props/margin.props.js';
+import type { ComponentPropsWithout } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;

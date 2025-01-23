@@ -1,4 +1,4 @@
-import type { PropDef } from './prop-def';
+import type { PropDef } from './prop-def.js';
 
 const asChildPropDef = {
   /**

@@ -2,13 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { HoverCard as HoverCardPrimitive } from 'radix-ui';
 
-import { hoverCardContentPropDefs } from './hover-card.props';
-import { extractProps } from '../helpers/extract-props';
-import { requireReactElement } from '../helpers/require-react-element';
-import { Theme } from './theme';
+import { hoverCardContentPropDefs } from './hover-card.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { requireReactElement } from '../helpers/require-react-element.js';
+import { Theme } from './theme.js';
 
-import type { HoverCardContentOwnProps } from './hover-card.props';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { HoverCardContentOwnProps } from './hover-card.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 interface HoverCardRootProps
   extends React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Root> {}

@@ -4,11 +4,11 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Direction, Slot, Tooltip as TooltipPrimitive } from 'radix-ui';
 
-import { getMatchingGrayColor } from '../helpers/get-matching-gray-color';
-import { themePropDefs } from './theme.props';
+import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
+import { themePropDefs } from './theme.props.js';
 
-import type { ThemeOwnProps } from './theme.props';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { ThemeOwnProps } from './theme.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 const noop = () => {};
 

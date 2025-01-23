@@ -1,16 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { Slot } from './slot';
-import { boxPropDefs } from './box.props';
-import { extractProps } from '../helpers/extract-props';
-import { layoutPropDefs } from '../props/layout.props';
-import { marginPropDefs } from '../props/margin.props';
+import { Slot } from './slot.js';
+import { boxPropDefs } from './box.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { layoutPropDefs } from '../props/layout.props.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { LayoutProps } from '../props/layout.props';
-import type { MarginProps } from '../props/margin.props';
-import type { BoxOwnProps } from './box.props';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { LayoutProps } from '../props/layout.props.js';
+import type { MarginProps } from '../props/margin.props.js';
+import type { BoxOwnProps } from './box.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 type BoxElement = React.ElementRef<'div'>;
 interface CommonBoxProps extends MarginProps, LayoutProps, BoxOwnProps {}

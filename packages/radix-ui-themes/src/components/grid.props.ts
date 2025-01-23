@@ -1,7 +1,7 @@
-import { asChildPropDef } from '../props/as-child.prop';
-import { gapPropDefs } from '../props/gap.props';
+import { asChildPropDef } from '../props/as-child.prop.js';
+import { gapPropDefs } from '../props/gap.props.js';
 
-import type { PropDef, GetPropDefTypes } from '../props/prop-def';
+import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 
 const as = ['div', 'span'] as const;
 const displayValues = ['none', 'inline-grid', 'grid'] as const;

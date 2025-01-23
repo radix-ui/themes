@@ -2,13 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slider as SliderPrimitive } from 'radix-ui';
 
-import { sliderPropDefs } from './slider.props';
-import { extractProps } from '../helpers/extract-props';
-import { marginPropDefs } from '../props/margin.props';
+import { sliderPropDefs } from './slider.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { MarginProps } from '../props/margin.props';
-import type { ComponentPropsWithout } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { MarginProps } from '../props/margin.props.js';
+import type { ComponentPropsWithout } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
 type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;

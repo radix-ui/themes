@@ -2,13 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from 'radix-ui';
 
-import { badgePropDefs } from './badge.props';
-import { extractProps } from '../helpers/extract-props';
-import { marginPropDefs } from '../props/margin.props';
+import { badgePropDefs } from './badge.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { MarginProps } from '../props/margin.props';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { MarginProps } from '../props/margin.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type BadgeElement = React.ElementRef<'span'>;
 type BadgeOwnProps = GetPropDefTypes<typeof badgePropDefs>;

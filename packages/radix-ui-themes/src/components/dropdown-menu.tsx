@@ -4,21 +4,21 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { DropdownMenu as DropdownMenuPrimitive, Slot } from 'radix-ui';
 
-import { ScrollArea } from './scroll-area';
+import { ScrollArea } from './scroll-area.js';
 import {
   dropdownMenuContentPropDefs,
   dropdownMenuItemPropDefs,
   dropdownMenuCheckboxItemPropDefs,
   dropdownMenuRadioItemPropDefs,
-} from './dropdown-menu.props';
-import { Theme, useThemeContext } from './theme';
-import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon } from './icons';
-import { extractProps } from '../helpers/extract-props';
-import { requireReactElement } from '../helpers/require-react-element';
+} from './dropdown-menu.props.js';
+import { Theme, useThemeContext } from './theme.js';
+import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { requireReactElement } from '../helpers/require-react-element.js';
 
-import type { IconProps } from './icons';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { IconProps } from './icons.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}

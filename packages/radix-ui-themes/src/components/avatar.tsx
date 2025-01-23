@@ -4,14 +4,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Avatar as AvatarPrimitive } from 'radix-ui';
 
-import { avatarPropDefs } from './avatar.props';
-import { extractProps } from '../helpers/extract-props';
-import { getSubtree } from '../helpers/get-subtree';
-import { marginPropDefs } from '../props/margin.props';
+import { avatarPropDefs } from './avatar.props.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { getSubtree } from '../helpers/get-subtree.js';
+import { marginPropDefs } from '../props/margin.props.js';
 
-import type { MarginProps } from '../props/margin.props';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { MarginProps } from '../props/margin.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface AvatarProps extends MarginProps, AvatarImplProps {}
 const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwardedRef) => {

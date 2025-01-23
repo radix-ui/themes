@@ -1,4 +1,4 @@
-import type { GetPropDefTypes, PropDef } from './prop-def';
+import type { GetPropDefTypes, PropDef } from './prop-def.js';
 
 const widthPropDefs = {
   /**

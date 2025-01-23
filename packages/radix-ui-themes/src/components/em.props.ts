@@ -1,6 +1,6 @@
-import { asChildPropDef } from '../props/as-child.prop';
-import { textWrapPropDef } from '../props/text-wrap.prop';
-import { truncatePropDef } from '../props/truncate.prop';
+import { asChildPropDef } from '../props/as-child.prop.js';
+import { textWrapPropDef } from '../props/text-wrap.prop.js';
+import { truncatePropDef } from '../props/truncate.prop.js';
 
 const emPropDefs = {
   ...asChildPropDef,

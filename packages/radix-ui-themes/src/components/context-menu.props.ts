@@ -3,4 +3,4 @@ export {
   baseMenuItemPropDefs as contextMenuItemPropDefs,
   baseMenuCheckboxItemPropDefs as contextMenuCheckboxItemPropDefs,
   baseMenuRadioItemPropDefs as contextMenuRadioItemPropDefs,
-} from './_internal/base-menu.props';
+} from './_internal/base-menu.props.js';

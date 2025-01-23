@@ -4,20 +4,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { ContextMenu as ContextMenuPrimitive, Slot } from 'radix-ui';
 
-import { ScrollArea } from './scroll-area';
+import { ScrollArea } from './scroll-area.js';
 import {
   contextMenuContentPropDefs,
   contextMenuItemPropDefs,
   contextMenuCheckboxItemPropDefs,
   contextMenuRadioItemPropDefs,
-} from './context-menu.props';
-import { Theme, useThemeContext } from './theme';
-import { ThickCheckIcon, ThickChevronRightIcon } from './icons';
-import { extractProps } from '../helpers/extract-props';
-import { requireReactElement } from '../helpers/require-react-element';
+} from './context-menu.props.js';
+import { Theme, useThemeContext } from './theme.js';
+import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
+import { extractProps } from '../helpers/extract-props.js';
+import { requireReactElement } from '../helpers/require-react-element.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}

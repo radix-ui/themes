@@ -1,8 +1,8 @@
-import { asChildPropDef } from '../props/as-child.prop';
-import { accentColors, grayColors } from '../props/color.prop';
-import { radii } from '../props/radius.prop';
+import { asChildPropDef } from '../props/as-child.prop.js';
+import { accentColors, grayColors } from '../props/color.prop.js';
+import { radii } from '../props/radius.prop.js';
 
-import type { GetPropDefTypes, PropDef } from '../props/prop-def';
+import type { GetPropDefTypes, PropDef } from '../props/prop-def.js';
 
 const appearances = ['inherit', 'light', 'dark'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;

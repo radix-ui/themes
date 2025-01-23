@@ -2,17 +2,17 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from 'radix-ui';
 
-import { baseButtonPropDefs } from './base-button.props';
-import { Flex } from '../flex';
-import { Spinner } from '../spinner';
-import { VisuallyHidden } from '../visually-hidden';
-import { extractProps } from '../../helpers/extract-props';
-import { mapResponsiveProp, mapButtonSizeToSpinnerSize } from '../../helpers/map-prop-values';
-import { marginPropDefs } from '../../props/margin.props';
+import { baseButtonPropDefs } from './base-button.props.js';
+import { Flex } from '../flex.js';
+import { Spinner } from '../spinner.js';
+import { VisuallyHidden } from '../visually-hidden.js';
+import { extractProps } from '../../helpers/extract-props.js';
+import { mapResponsiveProp, mapButtonSizeToSpinnerSize } from '../../helpers/map-prop-values.js';
+import { marginPropDefs } from '../../props/margin.props.js';
 
-import type { MarginProps } from '../../props/margin.props';
-import type { ComponentPropsWithout, RemovedProps } from '../../helpers/component-props';
-import type { GetPropDefTypes } from '../../props/prop-def';
+import type { MarginProps } from '../../props/margin.props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../../helpers/component-props.js';
+import type { GetPropDefTypes } from '../../props/prop-def.js';
 
 type BaseButtonElement = React.ElementRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
