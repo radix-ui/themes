@@ -2,20 +2,14 @@
   "name": "@radix-ui/themes",
   "version": "3.2.0-rc.5",
   "type": "commonjs",
-  "main": "./dist/cjs/index.js",
-  "types": "./dist/cjs/index.d.ts",
-  "module": "./dist/esm/index.js",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "module": "./src/index.ts",
   "style": "./styles.css",
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      },
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      }
+      "require": "./src/index.ts",
+      "import": "./src/index.ts"
     },
     "./components/*": {
       "require": {
@@ -48,6 +42,56 @@
       }
     },
     "./*": "./*"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "./dist/cjs/index.js",
+    "types": "./dist/cjs/index.d.ts",
+    "module": "./dist/esm/index.js",
+    "style": "./styles.css",
+    "exports": {
+      ".": {
+        "require": {
+          "types": "./dist/cjs/index.d.ts",
+          "default": "./dist/cjs/index.js"
+        },
+        "import": {
+          "types": "./dist/esm/index.d.ts",
+          "default": "./dist/esm/index.js"
+        }
+      },
+      "./components/*": {
+        "require": {
+          "types": "./dist/cjs/components/*.d.ts",
+          "default": "./dist/cjs/components/*.js"
+        },
+        "import": {
+          "types": "./dist/esm/components/*.d.ts",
+          "default": "./dist/esm/components/*.js"
+        }
+      },
+      "./helpers": {
+        "require": {
+          "types": "./dist/cjs/helpers/index.d.ts",
+          "default": "./dist/cjs/helpers/index.js"
+        },
+        "import": {
+          "types": "./dist/esm/helpers/index.d.ts",
+          "default": "./dist/esm/helpers/index.js"
+        }
+      },
+      "./props": {
+        "require": {
+          "types": "./dist/cjs/props/index.d.ts",
+          "default": "./dist/cjs/props/index.js"
+        },
+        "import": {
+          "types": "./dist/esm/props/index.d.ts",
+          "default": "./dist/esm/props/index.js"
+        }
+      },
+      "./*": "./*"
+    }
   },
   "sideEffects": false,
   "license": "MIT",
@@ -87,8 +131,9 @@
     "dev:js:esm": "node esbuild-esm.mjs watch=true",
     "dev:js:esm:types": "tsc --watch --incremental --outdir dist/esm >/dev/null",
     "dev:css": "postcss src/styles/index.css -o styles.css --watch",
-    "lint": "pnpm lint:js && pnpm lint:css",
+    "lint": "pnpm lint:js && pnpm lint:css && pnpm lint:ts",
     "lint:js": "eslint \"src/**/*.ts*\"",
+    "lint:ts": "tsc --noEmit",
     "lint:css": "stylelint \"src/**/*.css\"",
     "clean": "rm -rf .turbo node_modules dist tokens layout *.css",
     "prepublishOnly": "pnpm lint"
@@ -96,7 +141,7 @@
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
     "classnames": "^2.3.2",
-    "radix-ui": "^1.1.0",
+    "radix-ui": "1.1.1",
     "react-remove-scroll-bar": "^2.3.8"
   },
   "peerDependencies": {
@@ -114,11 +159,12 @@
     }
   },
   "devDependencies": {
+    "@eslint/js": "^9.18.0",
     "autoprefixer": "10.4.19",
     "esbuild": "0.20.0",
-    "eslint": "^9.17.0",
+    "eslint": "^9.18.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
     "postcss": "8.4.33",
@@ -133,9 +179,6 @@
     "stylelint": "16.6.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "homepage": "https://radix-ui.com/themes",
   "repository": {

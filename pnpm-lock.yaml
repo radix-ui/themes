@@ -23,6 +23,9 @@ importers:
       turbo:
         specifier: ^2.3.3
         version: 2.3.4
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.3
 
   apps/playground:
     dependencies:
@@ -70,12 +73,15 @@ importers:
         specifier: ^2.3.2
         version: 2.5.1
       radix-ui:
-        specifier: ^1.1.0
-        version: 1.1.0(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.1.1
+        version: 1.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-remove-scroll-bar:
         specifier: ^2.3.8
         version: 2.3.8(@types/react@19.0.8)(react@19.0.0)
     devDependencies:
+      '@eslint/js':
+        specifier: ^9.18.0
+        version: 9.18.0
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.33)
@@ -83,13 +89,13 @@ importers:
         specifier: 0.20.0
         version: 0.20.0
       eslint:
-        specifier: ^9.17.0
+        specifier: ^9.18.0
         version: 9.18.0
       eslint-plugin-jsx-a11y:
         specifier: ^6.10.2
         version: 6.10.2(eslint@9.18.0)
       eslint-plugin-react:
-        specifier: ^7.37.2
+        specifier: ^7.37.4
         version: 7.37.4(eslint@9.18.0)
       eslint-plugin-react-hooks:
         specifier: ^5.1.0
@@ -2393,8 +2399,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  radix-ui@1.1.0:
-    resolution: {integrity: sha512-ZTzeeHbbjFIONyS7OnU6UKJ2OWwMiGz4VTX9m8AhOoPXKPlp9Pi65JbZjolV4CVWv0FXj4DZIaogqFHSyB+2Ag==}
+  radix-ui@1.1.1:
+    resolution: {integrity: sha512-MiHy27NoxAK4N0li5kssNpuu8d0T5YvLx6aRugNByVkM8RUMvljH6H/solosrBSRVSGoeINd4vz4LRcb1CnyVA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -5277,7 +5283,7 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  radix-ui@1.1.0(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  radix-ui@1.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@radix-ui/react-accessible-icon': 1.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-accordion': 1.2.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
