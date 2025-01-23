@@ -1,6 +1,6 @@
-export { AccessibleIcon } from './accessible-icon';
+export { AccessibleIcon, type AccessibleIconProps } from './accessible-icon';
 export * as AlertDialog from './alert-dialog';
-export { AspectRatio } from './aspect-ratio';
+export { AspectRatio, type AspectRatioProps } from './aspect-ratio';
 export { Avatar, type AvatarProps } from './avatar';
 export { Badge, type BadgeProps } from './badge';
 export { Blockquote, type BlockquoteProps } from './blockquote';
