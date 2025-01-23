@@ -1,7 +1,7 @@
 {
   "name": "monorepo",
   "private": true,
-  "packageManager": "pnpm@9.12.0",
+  "packageManager": "pnpm@10.0.0",
   "scripts": {
     "build": "turbo run build",
     "build:pkg": "pnpm --filter @radix-ui/themes build",
