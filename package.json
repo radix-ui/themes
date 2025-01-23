@@ -13,7 +13,8 @@
     "@types/node": "^20.16.10",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "turbo": "^2.3.3"
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
   },
   "pnpm": {
     "overrides": {
