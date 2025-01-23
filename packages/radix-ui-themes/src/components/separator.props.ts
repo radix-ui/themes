@@ -1,6 +1,6 @@
-import { colorPropDef } from '../props/color.prop.js';
+import { colorPropDef } from '../props/color.prop';
 
-import type { PropDef } from '../props/prop-def.js';
+import type { PropDef } from '../props/prop-def';
 
 const orientationValues = ['horizontal', 'vertical'] as const;
 const sizes = ['1', '2', '3', '4'] as const;

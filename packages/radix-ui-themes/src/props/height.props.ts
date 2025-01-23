@@ -1,4 +1,4 @@
-import type { PropDef, GetPropDefTypes } from './prop-def.js';
+import type { PropDef, GetPropDefTypes } from './prop-def';
 
 const heightPropDefs = {
   /**

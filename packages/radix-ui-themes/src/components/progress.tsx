@@ -1,15 +1,15 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import * as ProgressPrimitive from '@radix-ui/react-progress';
+import { Progress as ProgressPrimitive } from 'radix-ui';
 
-import { progressPropDefs } from './progress.props.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { mergeStyles } from '../helpers/merge-styles.js';
-import { marginPropDefs } from '../props/margin.props.js';
+import { progressPropDefs } from './progress.props';
+import { extractProps } from '../helpers/extract-props';
+import { mergeStyles } from '../helpers/merge-styles';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { MarginProps } from '../props/margin.props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;

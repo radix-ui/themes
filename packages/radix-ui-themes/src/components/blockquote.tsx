@@ -1,13 +1,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from 'radix-ui';
 
-import { Text } from './text.js';
+import { Text } from './text';
 
-import type { blockquotePropDefs } from './blockquote.props.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { blockquotePropDefs } from './blockquote.props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type BlockquoteElement = React.ElementRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;
@@ -17,7 +17,7 @@ interface BlockquoteProps
     BlockQuoteOwnProps {}
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {
   const { asChild, children, className, ...blockquoteProps } = props;
-  const Comp = asChild ? Slot : 'blockquote';
+  const Comp = asChild ? Slot.Root : 'blockquote';
   return (
     <Text
       asChild

@@ -1,8 +1,8 @@
-import { asChildPropDef } from '../../props/as-child.prop.js';
-import { colorPropDef } from '../../props/color.prop.js';
-import { highContrastPropDef } from '../../props/high-contrast.prop.js';
+import { asChildPropDef } from '../../props/as-child.prop';
+import { colorPropDef } from '../../props/color.prop';
+import { highContrastPropDef } from '../../props/high-contrast.prop';
 
-import type { PropDef } from '../../props/prop-def.js';
+import type { PropDef } from '../../props/prop-def';
 
 const contentSizes = ['1', '2'] as const;
 const contentVariants = ['solid', 'soft'] as const;

@@ -1,4 +1,4 @@
-import type { PropDef } from './prop-def.js';
+import type { PropDef } from './prop-def';
 
 const weights = ['light', 'regular', 'medium', 'bold'] as const;
 

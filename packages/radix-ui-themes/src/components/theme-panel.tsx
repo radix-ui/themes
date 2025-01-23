@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
+import { useCallbackRef } from 'radix-ui/internal';
 
 import {
   AccessibleIcon,
@@ -16,14 +16,14 @@ import {
   ScrollArea,
   Text,
   Tooltip,
-} from '../index.js';
-import { Theme, useThemeContext } from './theme.js';
-import { inert } from '../helpers/inert.js';
-import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
-import { themePropDefs } from './theme.props.js';
+} from '../index';
+import { Theme, useThemeContext } from './theme';
+import { inert } from '../helpers/inert';
+import { getMatchingGrayColor } from '../helpers/get-matching-gray-color';
+import { themePropDefs } from './theme.props';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   defaultOpen?: boolean;

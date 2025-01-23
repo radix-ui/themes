@@ -1,13 +1,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { textAreaPropDefs } from './text-area.props.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
+import { textAreaPropDefs } from './text-area.props';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { MarginProps } from '../props/margin.props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
 type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {

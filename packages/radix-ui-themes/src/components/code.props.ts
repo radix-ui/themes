@@ -1,11 +1,11 @@
-import { asChildPropDef } from '../props/as-child.prop.js';
-import { accentColorPropDef } from '../props/color.prop.js';
-import { highContrastPropDef } from '../props/high-contrast.prop.js';
-import { textWrapPropDef } from '../props/text-wrap.prop.js';
-import { truncatePropDef } from '../props/truncate.prop.js';
-import { weightPropDef } from '../props/weight.prop.js';
+import { asChildPropDef } from '../props/as-child.prop';
+import { accentColorPropDef } from '../props/color.prop';
+import { highContrastPropDef } from '../props/high-contrast.prop';
+import { textWrapPropDef } from '../props/text-wrap.prop';
+import { truncatePropDef } from '../props/truncate.prop';
+import { weightPropDef } from '../props/weight.prop';
 
-import type { PropDef } from '../props/prop-def.js';
+import type { PropDef } from '../props/prop-def';
 
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const variants = ['solid', 'soft', 'outline', 'ghost'] as const;

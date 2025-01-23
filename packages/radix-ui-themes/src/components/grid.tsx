@@ -1,16 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { Slot } from './slot.js';
-import { gridPropDefs } from './grid.props.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { layoutPropDefs } from '../props/layout.props.js';
-import { marginPropDefs } from '../props/margin.props.js';
+import { Slot } from './slot';
+import { gridPropDefs } from './grid.props';
+import { extractProps } from '../helpers/extract-props';
+import { layoutPropDefs } from '../props/layout.props';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { LayoutProps } from '../props/layout.props.js';
-import type { MarginProps } from '../props/margin.props.js';
-import type { GridOwnProps } from './grid.props.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { LayoutProps } from '../props/layout.props';
+import type { MarginProps } from '../props/margin.props';
+import type { GridOwnProps } from './grid.props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
 
 type GridElement = React.ElementRef<'div'>;
 interface CommonGridProps extends MarginProps, LayoutProps, GridOwnProps {}

@@ -1,1 +1,2 @@
-export { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { AccessibleIcon as AccessibleIconPrimitive } from 'radix-ui';
+export const AccessibleIcon = AccessibleIconPrimitive.Root;

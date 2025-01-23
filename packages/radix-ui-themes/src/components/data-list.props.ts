@@ -1,9 +1,9 @@
-import { colorPropDef } from '../props/color.prop.js';
-import { highContrastPropDef } from '../props/high-contrast.prop.js';
-import { leadingTrimPropDef } from '../props/leading-trim.prop.js';
-import { widthPropDefs } from '../props/width.props.js';
+import { colorPropDef } from '../props/color.prop';
+import { highContrastPropDef } from '../props/high-contrast.prop';
+import { leadingTrimPropDef } from '../props/leading-trim.prop';
+import { widthPropDefs } from '../props/width.props';
 
-import type { PropDef } from '../props/prop-def.js';
+import type { PropDef } from '../props/prop-def';
 
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const orientationValues = ['horizontal', 'vertical'] as const;

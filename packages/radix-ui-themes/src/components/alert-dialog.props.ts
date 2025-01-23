@@ -1,2 +1,2 @@
-export { dialogContentPropDefs as alertDialogContentPropDefs } from './dialog.props.js';
-export type { DialogContentOwnProps as AlertDialogContentOwnProps } from './dialog.props.js';
+export { dialogContentPropDefs as alertDialogContentPropDefs } from './dialog.props';
+export type { DialogContentOwnProps as AlertDialogContentOwnProps } from './dialog.props';

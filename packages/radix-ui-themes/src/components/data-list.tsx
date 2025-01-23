@@ -1,18 +1,18 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { Text } from './text.js';
+import { Text } from './text';
 import {
   dataListRootPropDefs,
   dataListItemPropDefs,
   dataListLabelPropDefs,
-} from './data-list.props.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
+} from './data-list.props';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { MarginProps } from '../props/margin.props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type DataListRootElement = HTMLDListElement;
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListRootPropDefs>;

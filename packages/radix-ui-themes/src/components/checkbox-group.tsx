@@ -2,25 +2,24 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { createContextScope } from '@radix-ui/react-context';
+import { Context } from 'radix-ui/internal';
 
-import * as CheckboxGroupPrimitive from './checkbox-group.primitive.js';
-import { createCheckboxGroupScope } from './checkbox-group.primitive.js';
-import { checkboxGroupRootPropDefs } from './checkbox-group.props.js';
-import { ThickCheckIcon } from './icons.js';
-import { Text } from './text.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
+import * as CheckboxGroupPrimitive from './checkbox-group.primitive';
+import { createCheckboxGroupScope } from './checkbox-group.primitive';
+import { checkboxGroupRootPropDefs } from './checkbox-group.props';
+import { ThickCheckIcon } from './icons';
+import { Text } from './text';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { Scope } from '@radix-ui/react-context';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 const CHECKBOX_GROUP_NAME = 'CheckboxGroup';
 
-type ScopedProps<P> = P & { __scopeCheckboxGroup?: Scope };
-const [createCheckboxGroupContext] = createContextScope(CHECKBOX_GROUP_NAME, [
+type ScopedProps<P> = P & { __scopeCheckboxGroup?: Context.Scope };
+const [createCheckboxGroupContext] = Context.createContextScope(CHECKBOX_GROUP_NAME, [
   createCheckboxGroupScope,
 ]);
 const useCheckboxGroupScope = createCheckboxGroupScope();

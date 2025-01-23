@@ -1,7 +1,7 @@
-import { colorPropDef } from '../../props/color.prop.js';
-import { highContrastPropDef } from '../../props/high-contrast.prop.js';
+import { colorPropDef } from '../../props/color.prop';
+import { highContrastPropDef } from '../../props/high-contrast.prop';
 
-import type { PropDef } from '../../props/prop-def.js';
+import type { PropDef } from '../../props/prop-def';
 
 const sizes = ['1', '2'] as const;
 const wrapValues = ['nowrap', 'wrap', 'wrap-reverse'] as const;

@@ -1,1 +1,1 @@
-export { baseButtonPropDefs as iconButtonPropDefs } from './_internal/base-button.props.js';
+export { baseButtonPropDefs as iconButtonPropDefs } from './_internal/base-button.props';

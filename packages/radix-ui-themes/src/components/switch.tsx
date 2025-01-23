@@ -1,14 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import * as SwitchPrimitive from '@radix-ui/react-switch';
+import { Switch as SwitchPrimitive } from 'radix-ui';
 
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
-import { switchPropDefs } from './switch.props.js';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
+import { switchPropDefs } from './switch.props';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
-import type { ComponentPropsWithout } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
+import type { ComponentPropsWithout } from '../helpers/component-props';
 
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 type SwitchOwnProps = GetPropDefTypes<typeof switchPropDefs>;

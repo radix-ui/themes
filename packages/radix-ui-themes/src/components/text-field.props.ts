@@ -1,9 +1,9 @@
-import { colorPropDef } from '../props/color.prop.js';
-import { paddingPropDefs } from '../props/padding.props.js';
-import { radiusPropDef } from '../props/radius.prop.js';
-import { flexPropDefs } from './flex.props.js';
+import { colorPropDef } from '../props/color.prop';
+import { paddingPropDefs } from '../props/padding.props';
+import { radiusPropDef } from '../props/radius.prop';
+import { flexPropDefs } from './flex.props';
 
-import type { PropDef } from '../props/prop-def.js';
+import type { PropDef } from '../props/prop-def';
 
 const sizes = ['1', '2', '3'] as const;
 const variants = ['classic', 'surface', 'soft'] as const;

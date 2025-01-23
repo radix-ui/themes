@@ -1,20 +1,21 @@
 import React from 'react';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
 
 type IconElement = React.ElementRef<'svg'>;
 interface IconProps extends ComponentPropsWithout<'svg', RemovedProps | 'children'> {}
 
-const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>(
+  (props, forwardedRef) => {
     return (
       <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentcolor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-      ref={forwardedRef}
+        width="9"
+        height="9"
+        viewBox="0 0 9 9"
+        fill="currentcolor"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+        ref={forwardedRef}
       >
         <path
           fillRule="evenodd"

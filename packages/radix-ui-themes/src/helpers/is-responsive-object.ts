@@ -1,6 +1,6 @@
-import { breakpoints } from '../props/prop-def.js';
+import { breakpoints } from '../props/prop-def';
 
-import type { Responsive, Breakpoint } from '../props/prop-def.js';
+import type { Responsive, Breakpoint } from '../props/prop-def';
 
 export function isResponsiveObject<Value extends string>(
   obj: Responsive<Value | Omit<string, Value>> | undefined

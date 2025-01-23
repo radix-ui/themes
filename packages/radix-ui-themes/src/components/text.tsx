@@ -1,14 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from 'radix-ui';
 
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
-import { textPropDefs } from './text.props.js';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
+import { textPropDefs } from './text.props';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
 
 type TextElement = React.ElementRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
@@ -29,14 +29,14 @@ const Text = React.forwardRef<TextElement, TextProps>((props, forwardedRef) => {
     ...textProps
   } = extractProps(props, textPropDefs, marginPropDefs);
   return (
-    <Slot
+    <Slot.Root
       data-accent-color={color}
       {...textProps}
       ref={forwardedRef}
       className={classNames('rt-Text', className)}
     >
       {asChild ? children : <Tag>{children}</Tag>}
-    </Slot>
+    </Slot.Root>
   );
 });
 Text.displayName = 'Text';

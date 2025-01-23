@@ -2,15 +2,13 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { DirectionProvider } from '@radix-ui/react-direction';
-import { Slot } from '@radix-ui/react-slot';
+import { Direction, Slot, Tooltip as TooltipPrimitive } from 'radix-ui';
 
-import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
-import { themePropDefs } from './theme.props.js';
+import { getMatchingGrayColor } from '../helpers/get-matching-gray-color';
+import { themePropDefs } from './theme.props';
 
-import type { ThemeOwnProps } from './theme.props.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { ThemeOwnProps } from './theme.props';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
 
 const noop = () => {};
 
@@ -56,9 +54,9 @@ const Theme = React.forwardRef<ThemeImplElement, ThemeProps>((props, forwardedRe
   if (isRoot) {
     return (
       <TooltipPrimitive.Provider delayDuration={200}>
-        <DirectionProvider dir="ltr">
+        <Direction.Provider dir="ltr">
           <ThemeRoot {...props} ref={forwardedRef} />
-        </DirectionProvider>
+        </Direction.Provider>
       </TooltipPrimitive.Provider>
     );
   }
@@ -153,7 +151,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     //
     ...themeProps
   } = props;
-  const Comp = asChild ? Slot : 'div';
+  const Comp = asChild ? Slot.Root : 'div';
   const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
   const isExplicitAppearance = props.appearance === 'light' || props.appearance === 'dark';
   const hasBackground =

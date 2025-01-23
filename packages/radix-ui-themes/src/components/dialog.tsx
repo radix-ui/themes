@@ -1,20 +1,20 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Dialog as DialogPrimitive } from 'radix-ui';
 
-import { dialogContentPropDefs } from './dialog.props.js';
-import { Heading } from './heading.js';
-import { Text } from './text.js';
-import { Theme } from './theme.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { requireReactElement } from '../helpers/require-react-element.js';
+import { dialogContentPropDefs } from './dialog.props';
+import { Heading } from './heading';
+import { Text } from './text';
+import { Theme } from './theme';
+import { extractProps } from '../helpers/extract-props';
+import { requireReactElement } from '../helpers/require-react-element';
 
-import type { DialogContentOwnProps } from './dialog.props.js';
+import type { DialogContentOwnProps } from './dialog.props';
 import type {
   ComponentPropsWithout,
   RemovedProps,
   ComponentPropsAs,
-} from '../helpers/component-props.js';
+} from '../helpers/component-props';
 
 interface DialogRootProps extends ComponentPropsWithout<typeof DialogPrimitive.Root, 'modal'> {}
 const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {...props} modal />;

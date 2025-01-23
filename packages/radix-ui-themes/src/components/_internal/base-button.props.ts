@@ -1,9 +1,9 @@
-import { asChildPropDef } from '../../props/as-child.prop.js';
-import { accentColorPropDef } from '../../props/color.prop.js';
-import { highContrastPropDef } from '../../props/high-contrast.prop.js';
-import { radiusPropDef } from '../../props/radius.prop.js';
+import { asChildPropDef } from '../../props/as-child.prop';
+import { accentColorPropDef } from '../../props/color.prop';
+import { highContrastPropDef } from '../../props/high-contrast.prop';
+import { radiusPropDef } from '../../props/radius.prop';
 
-import type { PropDef } from '../../props/prop-def.js';
+import type { PropDef } from '../../props/prop-def';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;

@@ -2,31 +2,24 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import * as SelectPrimitive from '@radix-ui/react-select';
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+import { Select as SelectPrimitive, ScrollArea as ScrollAreaPrimitive } from 'radix-ui';
 
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
-import { ChevronDownIcon, ThickCheckIcon } from './icons.js';
-import {
-  selectRootPropDefs,
-  selectTriggerPropDefs,
-  selectContentPropDefs,
-} from './select.props.js';
-import { useThemeContext, Theme } from './theme.js';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
+import { ChevronDownIcon, ThickCheckIcon } from './icons';
+import { selectRootPropDefs, selectTriggerPropDefs, selectContentPropDefs } from './select.props';
+import { useThemeContext, Theme } from './theme';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
 
 type SelectRootOwnProps = GetPropDefTypes<typeof selectRootPropDefs>;
 
 type SelectContextValue = SelectRootOwnProps;
 const SelectContext = React.createContext<SelectContextValue>({});
 
-interface SelectRootProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
-    SelectContextValue {}
+interface SelectRootProps extends SelectPrimitive.SelectProps, SelectContextValue {}
 const SelectRoot: React.FC<SelectRootProps> = (props) => {
   const { children, size = selectRootPropDefs.size.default, ...rootProps } = props;
   return (

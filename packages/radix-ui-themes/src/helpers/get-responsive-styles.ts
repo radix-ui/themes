@@ -1,8 +1,8 @@
-import { breakpoints } from '../props/prop-def.js';
-import { hasOwnProperty } from './has-own-property.js';
-import { isResponsiveObject } from './is-responsive-object.js';
+import { breakpoints } from '../props/prop-def';
+import { hasOwnProperty } from './has-own-property';
+import { isResponsiveObject } from './is-responsive-object';
 
-import type { Responsive, Union } from '../props/prop-def.js';
+import type { Responsive, Union } from '../props/prop-def';
 
 interface GetResponsiveStylesOptions {
   className: string;

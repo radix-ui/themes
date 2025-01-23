@@ -2,25 +2,25 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { createContextScope } from '@radix-ui/react-context';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { createRadioGroupScope } from '@radix-ui/react-radio-group';
+import { Context } from 'radix-ui/internal';
+import { RadioGroup as RadioGroupPrimitive } from 'radix-ui';
 
-import { radioGroupRootPropDefs } from './radio-group.props.js';
-import { Text } from './text.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
+import { radioGroupRootPropDefs } from './radio-group.props';
+import { Text } from './text';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { Scope } from '@radix-ui/react-context';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 const RADIO_GROUP_NAME = 'RadioGroup';
 
-type ScopedProps<P> = P & { __scopeRadioGroup?: Scope };
-const [createRadioGroupContext] = createContextScope(RADIO_GROUP_NAME, [createRadioGroupScope]);
-const useRadioGroupScope = createRadioGroupScope();
+type ScopedProps<P> = P & { __scopeRadioGroup?: Context.Scope };
+const [createRadioGroupContext] = Context.createContextScope(RADIO_GROUP_NAME, [
+  RadioGroupPrimitive.createRadioGroupScope,
+]);
+const useRadioGroupScope = RadioGroupPrimitive.createRadioGroupScope();
 
 type RadioGroupRootOwnProps = GetPropDefTypes<typeof radioGroupRootPropDefs>;
 type RadioGroupContextValue = RadioGroupRootOwnProps;

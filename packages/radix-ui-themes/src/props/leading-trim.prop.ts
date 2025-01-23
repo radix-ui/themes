@@ -1,4 +1,4 @@
-import type { PropDef } from './prop-def.js';
+import type { PropDef } from './prop-def';
 
 const leadingTrimValues = ['normal', 'start', 'end', 'both'] as const;
 

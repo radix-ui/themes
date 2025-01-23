@@ -2,23 +2,22 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-import { Slottable } from '@radix-ui/react-slot';
+import { ContextMenu as ContextMenuPrimitive, Slot } from 'radix-ui';
 
-import { ScrollArea } from './scroll-area.js';
+import { ScrollArea } from './scroll-area';
 import {
   contextMenuContentPropDefs,
   contextMenuItemPropDefs,
   contextMenuCheckboxItemPropDefs,
   contextMenuRadioItemPropDefs,
-} from './context-menu.props.js';
-import { Theme, useThemeContext } from './theme.js';
-import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { requireReactElement } from '../helpers/require-react-element.js';
+} from './context-menu.props';
+import { Theme, useThemeContext } from './theme';
+import { ThickCheckIcon, ThickChevronRightIcon } from './icons';
+import { extractProps } from '../helpers/extract-props';
+import { requireReactElement } from '../helpers/require-react-element';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 interface ContextMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
@@ -134,7 +133,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         ref={forwardedRef}
         className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-ContextMenuItem', className)}
       >
-        <Slottable>{children}</Slottable>
+        <Slot.Slottable>{children}</Slot.Slottable>
         {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
       </ContextMenuPrimitive.Item>
     );
@@ -202,7 +201,7 @@ const ContextMenuRadioItem = React.forwardRef<
         className
       )}
     >
-      <Slottable>{children}</Slottable>
+      <Slot.Slottable>{children}</Slot.Slottable>
       <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
         <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </ContextMenuPrimitive.ItemIndicator>
@@ -241,7 +240,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
         className
       )}
     >
-      <Slottable>{children}</Slottable>
+      <Slot.Slottable>{children}</Slot.Slottable>
       <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
         <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </ContextMenuPrimitive.ItemIndicator>

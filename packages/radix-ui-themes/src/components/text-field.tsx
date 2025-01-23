@@ -2,16 +2,16 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { composeRefs } from '@radix-ui/react-compose-refs';
+import { composeRefs } from 'radix-ui/internal';
 
-import { textFieldRootPropDefs, textFieldSlotPropDefs } from './text-field.props.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { marginPropDefs } from '../props/margin.props.js';
+import { textFieldRootPropDefs, textFieldSlotPropDefs } from './text-field.props';
+import { extractProps } from '../helpers/extract-props';
+import { marginPropDefs } from '../props/margin.props';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { NotInputTextualAttributes } from '../helpers/input-attributes.js';
-import type { MarginProps } from '../props/margin.props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { NotInputTextualAttributes } from '../helpers/input-attributes';
+import type { MarginProps } from '../props/margin.props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type TextFieldRootElement = React.ElementRef<'input'>;
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {

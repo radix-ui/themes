@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { BaseButton } from './_internal/base-button.js';
+import { BaseButton } from './_internal/base-button';
 
 type ButtonElement = React.ElementRef<typeof BaseButton>;
 interface ButtonProps extends React.ComponentPropsWithoutRef<typeof BaseButton> {}

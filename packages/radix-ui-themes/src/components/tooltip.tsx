@@ -1,14 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { Tooltip as TooltipPrimitive } from 'radix-ui';
 
-import { Text } from './text.js';
-import { Theme } from './theme.js';
-import { extractProps } from '../helpers/extract-props.js';
-import { tooltipPropDefs } from './tooltip.props.js';
+import { Text } from './text';
+import { Theme } from './theme';
+import { extractProps } from '../helpers/extract-props';
+import { tooltipPropDefs } from './tooltip.props';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;

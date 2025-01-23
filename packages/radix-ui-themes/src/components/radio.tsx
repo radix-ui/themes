@@ -3,16 +3,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { composeEventHandlers } from '@radix-ui/primitive';
-import { composeRefs } from '@radix-ui/react-compose-refs';
+import { composeRefs } from 'radix-ui/internal';
 
-import { radioPropDefs } from './radio.props.js';
-import { marginPropDefs } from '../props/margin.props.js';
-import { extractProps } from '../helpers/extract-props.js';
+import { radioPropDefs } from './radio.props';
+import { marginPropDefs } from '../props/margin.props';
+import { extractProps } from '../helpers/extract-props';
 
-import type { MarginProps } from '../props/margin.props.js';
-import type { ComponentPropsWithout } from '../helpers/component-props.js';
-import type { NotInputRadioAttributes } from '../helpers/input-attributes.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { MarginProps } from '../props/margin.props';
+import type { ComponentPropsWithout } from '../helpers/component-props';
+import type { NotInputRadioAttributes } from '../helpers/input-attributes';
+import type { GetPropDefTypes } from '../props/prop-def';
 
 type RadioElement = React.ElementRef<'input'>;
 type RadioOwnProps = GetPropDefTypes<typeof radioPropDefs> & {

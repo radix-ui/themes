@@ -1,6 +1,6 @@
-import { asChildPropDef } from '../props/as-child.prop.js';
+import { asChildPropDef } from '../props/as-child.prop';
 
-import type { PropDef } from '../props/prop-def.js';
+import type { PropDef } from '../props/prop-def';
 
 const tabNavLinkPropDefs = {
   ...asChildPropDef,
@@ -9,5 +9,5 @@ const tabNavLinkPropDefs = {
   active: PropDef<boolean>;
 };
 
-export { baseTabListPropDefs as tabNavRootPropDefs } from './_internal/base-tab-list.props.js';
+export { baseTabListPropDefs as tabNavRootPropDefs } from './_internal/base-tab-list.props';
 export { tabNavLinkPropDefs };

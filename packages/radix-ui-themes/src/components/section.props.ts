@@ -1,6 +1,6 @@
-import { asChildPropDef } from '../props/as-child.prop.js';
+import { asChildPropDef } from '../props/as-child.prop';
 
-import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
+import type { PropDef, GetPropDefTypes } from '../props/prop-def';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const displayValues = ['none', 'initial'] as const;
