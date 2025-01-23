@@ -12,6 +12,7 @@
 - Fix visibility flash with closing dialogs ([#649](https://github.com/radix-ui/themes/pull/649))
 - Fix regression that caused Segmented Control indicators to lose box shadows ([#650](https://github.com/radix-ui/themes/pull/657))
 - Add `aria-hidden="true"` to duplicate nodes in `SegmentedControl.Item` to prevent double-reading by screen readers ([#651](https://github.com/radix-ui/themes/pull/651))
+- Updated all Radix Primitives to the latest versions
 
 ## 3.1.6
 

@@ -1,6 +1,6 @@
 {
   "name": "@radix-ui/themes",
-  "version": "3.2.0-rc.6",
+  "version": "3.2.0-rc.7",
   "type": "commonjs",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -140,7 +140,7 @@
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
     "classnames": "^2.3.2",
-    "radix-ui": "1.1.2",
+    "radix-ui": "^1.1.2",
     "react-remove-scroll-bar": "^2.3.8"
   },
   "peerDependencies": {
