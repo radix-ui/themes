@@ -73,8 +73,8 @@ importers:
         specifier: ^2.3.2
         version: 2.5.1
       radix-ui:
-        specifier: 1.1.1
-        version: 1.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.1.2
+        version: 1.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-remove-scroll-bar:
         specifier: ^2.3.8
         version: 2.3.8(@types/react@19.0.8)(react@19.0.0)
@@ -2399,8 +2399,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  radix-ui@1.1.1:
-    resolution: {integrity: sha512-MiHy27NoxAK4N0li5kssNpuu8d0T5YvLx6aRugNByVkM8RUMvljH6H/solosrBSRVSGoeINd4vz4LRcb1CnyVA==}
+  radix-ui@1.1.2:
+    resolution: {integrity: sha512-P2F30iTIG/eheoZbF3QXo7kDoFgnj/zxX1NwPq02G00ggq7OSXFsMuyn98WHtQCql2DsO8ZCbBk+VbbgVrlwOg==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -5283,8 +5283,9 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  radix-ui@1.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  radix-ui@1.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
+      '@radix-ui/primitive': 1.1.1
       '@radix-ui/react-accessible-icon': 1.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-accordion': 1.2.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-alert-dialog': 1.1.5(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
