@@ -1,16 +1,15 @@
 {
   "name": "@radix-ui/themes",
   "version": "3.2.0",
-  "type": "commonjs",
-  "main": "./dist/cjs/index.js",
-  "types": "./dist/cjs/index.d.ts",
-  "module": "./dist/esm/index.js",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "style": "./styles.css",
   "exports": {
     ".": {
       "require": {
         "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
+        "default": "./dist/cjs/index.cjs"
       },
       "import": {
         "types": "./dist/esm/index.d.ts",
@@ -20,7 +19,7 @@
     "./components/*": {
       "require": {
         "types": "./dist/cjs/components/*.d.ts",
-        "default": "./dist/cjs/components/*.js"
+        "default": "./dist/cjs/components/*.cjs"
       },
       "import": {
         "types": "./dist/esm/components/*.d.ts",
@@ -30,7 +29,7 @@
     "./helpers": {
       "require": {
         "types": "./dist/cjs/helpers/index.d.ts",
-        "default": "./dist/cjs/helpers/index.js"
+        "default": "./dist/cjs/helpers/index.cjs"
       },
       "import": {
         "types": "./dist/esm/helpers/index.d.ts",
@@ -40,7 +39,7 @@
     "./props": {
       "require": {
         "types": "./dist/cjs/props/index.d.ts",
-        "default": "./dist/cjs/props/index.js"
+        "default": "./dist/cjs/props/index.cjs"
       },
       "import": {
         "types": "./dist/esm/props/index.d.ts",

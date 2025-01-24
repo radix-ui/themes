@@ -1,7 +1,4 @@
 import esbuild from 'esbuild';
-import fs from 'fs';
-import path from 'path';
-import pkg from '../package.json' with { type: 'json' };
 
 const dir = 'dist/esm';
 
@@ -25,13 +22,3 @@ if (process.argv[2]) {
 }
 
 esbuild.build(options).catch(() => process.exit(1));
-
-// Create a package.json file in the dist/esm directory with "type": "module" field
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir, { recursive: true });
-}
-fs.writeFileSync(
-  path.join(dir, 'package.json'),
-  JSON.stringify({ type: 'module', sideEffects: pkg.sideEffects }, null, 2) + '\n',
-  'utf-8',
-);

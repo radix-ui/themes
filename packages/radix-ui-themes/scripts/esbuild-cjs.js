@@ -8,6 +8,7 @@ const options = {
   outdir: dir,
   format: 'cjs',
   target: 'es2020',
+  outExtension: { '.js': '.cjs' },
   sourcemap: true,
   minify: true,
 };

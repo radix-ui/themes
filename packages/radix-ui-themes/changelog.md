@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.0
+
+- **[Breaking]** Radix Themes is now ESM-first. If you are building on a currently supported version of Node, this should probably require no changes on your part.
+  - For TypeScript users who still require CJS support, make sure your `moduleResolution` is set to `Node16` or `NodeNext`. Older versions of Node may not recognize the `exports` field which is required to map imports correctly.
+
 ## 3.2.1
 
 - Added CSS files to package `sideEffects` field to prevent CSS removal in some bundlers ([#659](https://github.com/radix-ui/themes/pull/659))
