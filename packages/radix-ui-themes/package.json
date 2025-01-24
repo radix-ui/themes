@@ -92,7 +92,7 @@
       "./*": "./*"
     }
   },
-  "sideEffects": false,
+  "sideEffects": ["*.css"],
   "license": "MIT",
   "files": [
     "src/**",
