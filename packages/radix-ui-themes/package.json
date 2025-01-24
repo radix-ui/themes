@@ -12,34 +12,16 @@
       "import": "./src/index.ts"
     },
     "./components/*": {
-      "require": {
-        "types": "./dist/cjs/components/*.d.ts",
-        "default": "./dist/cjs/components/*.js"
-      },
-      "import": {
-        "types": "./dist/esm/components/*.d.ts",
-        "default": "./dist/esm/components/*.js"
-      }
+      "require": "./src/components/*.tsx",
+      "import": "./src/components/*.tsx"
     },
     "./helpers": {
-      "require": {
-        "types": "./dist/cjs/helpers/index.d.ts",
-        "default": "./dist/cjs/helpers/index.js"
-      },
-      "import": {
-        "types": "./dist/esm/helpers/index.d.ts",
-        "default": "./dist/esm/helpers/index.js"
-      }
+      "require": "./src/helpers/index.ts",
+      "import": "./src/helpers/index.ts"
     },
     "./props": {
-      "require": {
-        "types": "./dist/cjs/props/index.d.ts",
-        "default": "./dist/cjs/props/index.js"
-      },
-      "import": {
-        "types": "./dist/esm/props/index.d.ts",
-        "default": "./dist/esm/props/index.js"
-      }
+      "require": "./src/props/index.ts",
+      "import": "./src/props/index.ts"
     },
     "./*": "./*"
   },
