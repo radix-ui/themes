@@ -5,6 +5,7 @@
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "jsx": "react",
     "declaration": true,
+    "declarationMap": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "strict": true,

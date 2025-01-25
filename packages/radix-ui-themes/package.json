@@ -2,79 +2,59 @@
   "name": "@radix-ui/themes",
   "version": "3.2.0",
   "type": "commonjs",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "module": "./src/index.ts",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
   "style": "./styles.css",
   "exports": {
     ".": {
-      "require": "./src/index.ts",
-      "import": "./src/index.ts"
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      }
     },
     "./components/*": {
-      "require": "./src/components/*.tsx",
-      "import": "./src/components/*.tsx"
+      "require": {
+        "types": "./dist/cjs/components/*.d.ts",
+        "default": "./dist/cjs/components/*.js"
+      },
+      "import": {
+        "types": "./dist/esm/components/*.d.ts",
+        "default": "./dist/esm/components/*.js"
+      }
     },
     "./helpers": {
-      "require": "./src/helpers/index.ts",
-      "import": "./src/helpers/index.ts"
+      "require": {
+        "types": "./dist/cjs/helpers/index.d.ts",
+        "default": "./dist/cjs/helpers/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/helpers/index.d.ts",
+        "default": "./dist/esm/helpers/index.js"
+      }
     },
     "./props": {
-      "require": "./src/props/index.ts",
-      "import": "./src/props/index.ts"
+      "require": {
+        "types": "./dist/cjs/props/index.d.ts",
+        "default": "./dist/cjs/props/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/props/index.d.ts",
+        "default": "./dist/esm/props/index.js"
+      }
     },
     "./*": "./*"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "./dist/cjs/index.js",
-    "types": "./dist/cjs/index.d.ts",
-    "module": "./dist/esm/index.js",
-    "exports": {
-      ".": {
-        "require": {
-          "types": "./dist/cjs/index.d.ts",
-          "default": "./dist/cjs/index.js"
-        },
-        "import": {
-          "types": "./dist/esm/index.d.ts",
-          "default": "./dist/esm/index.js"
-        }
-      },
-      "./components/*": {
-        "require": {
-          "types": "./dist/cjs/components/*.d.ts",
-          "default": "./dist/cjs/components/*.js"
-        },
-        "import": {
-          "types": "./dist/esm/components/*.d.ts",
-          "default": "./dist/esm/components/*.js"
-        }
-      },
-      "./helpers": {
-        "require": {
-          "types": "./dist/cjs/helpers/index.d.ts",
-          "default": "./dist/cjs/helpers/index.js"
-        },
-        "import": {
-          "types": "./dist/esm/helpers/index.d.ts",
-          "default": "./dist/esm/helpers/index.js"
-        }
-      },
-      "./props": {
-        "require": {
-          "types": "./dist/cjs/props/index.d.ts",
-          "default": "./dist/cjs/props/index.js"
-        },
-        "import": {
-          "types": "./dist/esm/props/index.d.ts",
-          "default": "./dist/esm/props/index.js"
-        }
-      },
-      "./*": "./*"
-    }
+    "access": "public"
   },
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "license": "MIT",
   "files": [
     "src/**",
