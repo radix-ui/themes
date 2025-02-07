@@ -35,6 +35,7 @@ export function getMatchingGrayColor(accentColor: ThemeAccentColor) {
     case 'bronze':
       return 'sand';
     case 'gray':
+    case 'custom':
       return 'gray';
   }
 }

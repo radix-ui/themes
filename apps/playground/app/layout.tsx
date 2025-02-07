@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './globals.css';
+import './custom.css';
 import '@radix-ui/themes/styles.css';
 
 export const metadata = {
