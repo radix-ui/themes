@@ -30,4 +30,8 @@
   .rt-r-display-none {
     display: none;
   }
+
+  .rt-r-display-contents {
+    display: contents;
+  }
 }
