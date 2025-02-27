@@ -4,6 +4,7 @@
 
 - Added support for `display: contents` to `Box` component
 - Added CSS files to package `sideEffects` field to prevent CSS removal in some bundlers ([#659](https://github.com/radix-ui/themes/pull/659))
+- Updated `radix-ui` minimum dependency to `1.1.3`
 
 ## 3.2.0
 
