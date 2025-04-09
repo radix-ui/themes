@@ -13,7 +13,7 @@ import type { NotInputTextualAttributes } from '../helpers/input-attributes.js';
 import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type TextFieldRootElement = React.ElementRef<'input'>;
+type TextFieldRootElement = React.ComponentRef<'input'>;
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
   defaultValue?: string | number;
   value?: string | number;
@@ -43,7 +43,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
     const { children, className, color, radius, style, ...inputProps } = extractProps(
       props,
       textFieldRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <div
@@ -85,11 +85,11 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
         {children}
       </div>
     );
-  }
+  },
 );
 TextFieldRoot.displayName = 'TextField.Root';
 
-type TextFieldSlotElement = React.ElementRef<'div'>;
+type TextFieldSlotElement = React.ComponentRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs>;
 interface TextFieldSlotProps
   extends ComponentPropsWithout<'div', RemovedProps>,
@@ -106,7 +106,7 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
         className={classNames('rt-TextFieldSlot', className)}
       />
     );
-  }
+  },
 );
 TextFieldSlot.displayName = 'TextField.Slot';
 

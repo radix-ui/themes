@@ -28,7 +28,7 @@ type RadioGroupContextValue = RadioGroupRootOwnProps;
 const [RadioGroupProvider, useRadioGroupContext] =
   createRadioGroupContext<RadioGroupContextValue>(RADIO_GROUP_NAME);
 
-type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
+type RadioGroupRootElement = React.ComponentRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
   extends ComponentPropsWithout<
       typeof RadioGroupPrimitive.Root,
@@ -45,7 +45,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
       variant = radioGroupRootPropDefs.variant.default,
       ...props
     }: ScopedProps<RadioGroupRootProps>,
-    forwardedRef
+    forwardedRef,
   ) => {
     const { __scopeRadioGroup, className, ...rootProps } = extractProps(props, marginPropDefs);
     const radioGroupScope = useRadioGroupScope(__scopeRadioGroup);
@@ -65,11 +65,11 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
         />
       </RadioGroupProvider>
     );
-  }
+  },
 );
 RadioGroupRoot.displayName = 'RadioGroup.Root';
 
-type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
+type RadioGroupItemElement = React.ComponentRef<typeof RadioGroupItemRadio>;
 interface RadioGroupItemProps
   extends ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>,
     MarginProps {}
@@ -107,11 +107,11 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
         style={style}
       />
     );
-  }
+  },
 );
 RadioGroupItem.displayName = 'RadioGroup.Item';
 
-type RadioGroupItemRadioElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
+type RadioGroupItemRadioElement = React.ComponentRef<typeof RadioGroupPrimitive.Item>;
 interface RadioGroupItemRadioProps
   extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {}
 const RadioGroupItemRadio = React.forwardRef<
@@ -123,7 +123,7 @@ const RadioGroupItemRadio = React.forwardRef<
   const { color, className } = extractProps(
     { ...props, ...context },
     radioGroupRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <RadioGroupPrimitive.Item

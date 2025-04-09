@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type SliderElement = React.ElementRef<typeof SliderPrimitive.Root>;
+type SliderElement = React.ComponentRef<typeof SliderPrimitive.Root>;
 type SliderOwnProps = GetPropDefTypes<typeof sliderPropDefs>;
 interface SliderProps
   extends ComponentPropsWithout<
@@ -23,7 +23,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
   const { className, color, radius, tabIndex, ...sliderProps } = extractProps(
     props,
     sliderPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <SliderPrimitive.Root

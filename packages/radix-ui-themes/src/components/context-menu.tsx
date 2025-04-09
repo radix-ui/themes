@@ -26,7 +26,7 @@ const ContextMenuRoot: React.FC<ContextMenuRootProps> = (props) => (
 );
 ContextMenuRoot.displayName = 'ContextMenu.Root';
 
-type ContextMenuTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.Trigger>;
+type ContextMenuTriggerElement = React.ComponentRef<typeof ContextMenuPrimitive.Trigger>;
 interface ContextMenuTriggerProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.Trigger, RemovedProps> {}
 const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMenuTriggerProps>(
@@ -34,14 +34,14 @@ const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMe
     <ContextMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </ContextMenuPrimitive.Trigger>
-  )
+  ),
 );
 ContextMenuTrigger.displayName = 'ContextMenu.Trigger';
 
 type ContextMenuContentOwnProps = GetPropDefTypes<typeof contextMenuContentPropDefs>;
 type ContextMenuContentContextValue = ContextMenuContentOwnProps;
 const ContextMenuContentContext = React.createContext<ContextMenuContentContextValue>({});
-type ContextMenuContentElement = React.ElementRef<typeof ContextMenuPrimitive.Content>;
+type ContextMenuContentElement = React.ComponentRef<typeof ContextMenuPrimitive.Content>;
 interface ContextMenuContentProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.Content, RemovedProps>,
     ContextMenuContentContextValue {
@@ -57,7 +57,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     } = props;
     const { className, children, color, container, forceMount, ...contentProps } = extractProps(
       props,
-      contextMenuContentPropDefs
+      contextMenuContentPropDefs,
     );
     const resolvedColor = color || themeContext.accentColor;
     return (
@@ -74,7 +74,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-ContextMenuContent',
-              className
+              className,
             )}
           >
             <ScrollArea type="auto">
@@ -82,7 +82,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
                     () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast]
+                    [size, variant, resolvedColor, highContrast],
                   )}
                 >
                   {children}
@@ -93,11 +93,11 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
         </Theme>
       </ContextMenuPrimitive.Portal>
     );
-  }
+  },
 );
 ContextMenuContent.displayName = 'ContextMenu.Content';
 
-type ContextMenuLabelElement = React.ElementRef<typeof ContextMenuPrimitive.Label>;
+type ContextMenuLabelElement = React.ComponentRef<typeof ContextMenuPrimitive.Label>;
 interface ContextMenuLabelProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.Label, RemovedProps> {}
 const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLabelProps>(
@@ -108,11 +108,11 @@ const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLa
       ref={forwardedRef}
       className={classNames('rt-BaseMenuLabel', 'rt-ContextMenuLabel', className)}
     />
-  )
+  ),
 );
 ContextMenuLabel.displayName = 'ContextMenu.Label';
 
-type ContextMenuItemElement = React.ElementRef<typeof ContextMenuPrimitive.Item>;
+type ContextMenuItemElement = React.ComponentRef<typeof ContextMenuPrimitive.Item>;
 type ContextMenuItemOwnProps = GetPropDefTypes<typeof contextMenuItemPropDefs>;
 interface ContextMenuItemProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.Item, RemovedProps>,
@@ -137,11 +137,11 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
       </ContextMenuPrimitive.Item>
     );
-  }
+  },
 );
 ContextMenuItem.displayName = 'ContextMenu.Item';
 
-type ContextMenuGroupElement = React.ElementRef<typeof ContextMenuPrimitive.Group>;
+type ContextMenuGroupElement = React.ComponentRef<typeof ContextMenuPrimitive.Group>;
 interface ContextMenuGroupProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.Group, RemovedProps> {}
 const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGroupProps>(
@@ -152,11 +152,11 @@ const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGr
       ref={forwardedRef}
       className={classNames('rt-BaseMenuGroup', 'rt-ContextMenuGroup', className)}
     />
-  )
+  ),
 );
 ContextMenuGroup.displayName = 'ContextMenu.Group';
 
-type ContextMenuRadioGroupElement = React.ElementRef<typeof ContextMenuPrimitive.RadioGroup>;
+type ContextMenuRadioGroupElement = React.ComponentRef<typeof ContextMenuPrimitive.RadioGroup>;
 interface ContextMenuRadioGroupProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.RadioGroup, RemovedProps> {}
 const ContextMenuRadioGroup = React.forwardRef<
@@ -172,7 +172,7 @@ const ContextMenuRadioGroup = React.forwardRef<
 ));
 ContextMenuRadioGroup.displayName = 'ContextMenu.RadioGroup';
 
-type ContextMenuRadioItemElement = React.ElementRef<typeof ContextMenuPrimitive.RadioItem>;
+type ContextMenuRadioItemElement = React.ComponentRef<typeof ContextMenuPrimitive.RadioItem>;
 type ContextMenuRadioItemOwnProps = GetPropDefTypes<typeof contextMenuRadioItemPropDefs>;
 interface ContextMenuRadioItemProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.RadioItem, RemovedProps>,
@@ -198,7 +198,7 @@ const ContextMenuRadioItem = React.forwardRef<
         'rt-BaseMenuRadioItem',
         'rt-ContextMenuItem',
         'rt-ContextMenuRadioItem',
-        className
+        className,
       )}
     >
       <Slot.Slottable>{children}</Slot.Slottable>
@@ -210,7 +210,7 @@ const ContextMenuRadioItem = React.forwardRef<
 });
 ContextMenuRadioItem.displayName = 'ContextMenu.RadioItem';
 
-type ContextMenuCheckboxItemElement = React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>;
+type ContextMenuCheckboxItemElement = React.ComponentRef<typeof ContextMenuPrimitive.CheckboxItem>;
 type ContextMenuCheckboxItemOwnProps = GetPropDefTypes<typeof contextMenuCheckboxItemPropDefs>;
 interface ContextMenuCheckboxItemProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.CheckboxItem, RemovedProps>,
@@ -237,7 +237,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
         'rt-BaseMenuCheckboxItem',
         'rt-ContextMenuItem',
         'rt-ContextMenuCheckboxItem',
-        className
+        className,
       )}
     >
       <Slot.Slottable>{children}</Slot.Slottable>
@@ -257,7 +257,7 @@ const ContextMenuSub: React.FC<ContextMenuSubProps> = (props) => (
 );
 ContextMenuSub.displayName = 'ContextMenu.Sub';
 
-type ContextMenuSubTriggerElement = React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>;
+type ContextMenuSubTriggerElement = React.ComponentRef<typeof ContextMenuPrimitive.SubTrigger>;
 interface ContextMenuSubTriggerProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.SubTrigger, RemovedProps> {}
 const ContextMenuSubTrigger = React.forwardRef<
@@ -275,7 +275,7 @@ const ContextMenuSubTrigger = React.forwardRef<
         'rt-BaseMenuSubTrigger',
         'rt-ContextMenuItem',
         'rt-ContextMenuSubTrigger',
-        className
+        className,
       )}
     >
       {children}
@@ -287,7 +287,7 @@ const ContextMenuSubTrigger = React.forwardRef<
 });
 ContextMenuSubTrigger.displayName = 'ContextMenu.SubTrigger';
 
-type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
+type ContextMenuSubContentElement = React.ComponentRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.SubContent, RemovedProps> {
   container?: React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Portal>['container'];
@@ -299,7 +299,7 @@ const ContextMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    contextMenuContentPropDefs
+    contextMenuContentPropDefs,
   );
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -319,7 +319,7 @@ const ContextMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-ContextMenuContent',
             'rt-ContextMenuSubContent',
-            className
+            className,
           )}
         >
           <ScrollArea type="auto">
@@ -334,7 +334,7 @@ const ContextMenuSubContent = React.forwardRef<
 });
 ContextMenuSubContent.displayName = 'ContextMenu.SubContent';
 
-type ContextMenuSeparatorElement = React.ElementRef<typeof ContextMenuPrimitive.Separator>;
+type ContextMenuSeparatorElement = React.ComponentRef<typeof ContextMenuPrimitive.Separator>;
 interface ContextMenuSeparatorProps
   extends ComponentPropsWithout<typeof ContextMenuPrimitive.Separator, RemovedProps> {}
 const ContextMenuSeparator = React.forwardRef<

@@ -12,7 +12,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type TabNavRootElement = React.ElementRef<typeof NavigationMenu.Root>;
+type TabNavRootElement = React.ComponentRef<typeof NavigationMenu.Root>;
 type TabNavRootElementProps = ComponentPropsWithout<'nav', RemovedProps>;
 type TabNavOwnProps = GetPropDefTypes<typeof tabNavRootPropDefs>;
 interface TabNavRootProps
@@ -23,7 +23,7 @@ const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, 
   const { children, className, color, ...rootProps } = extractProps(
     props,
     tabNavRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <NavigationMenu.Root
@@ -43,7 +43,7 @@ const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, 
 });
 TabNavRoot.displayName = 'TabNav.Root';
 
-type TabNavLinkElement = React.ElementRef<typeof NavigationMenu.Link>;
+type TabNavLinkElement = React.ComponentRef<typeof NavigationMenu.Link>;
 type TabNavLinkOwnProps = GetPropDefTypes<typeof tabNavLinkPropDefs>;
 interface TabNavLinkProps
   extends ComponentPropsWithout<typeof NavigationMenu.Link, RemovedProps | 'onSelect'>,

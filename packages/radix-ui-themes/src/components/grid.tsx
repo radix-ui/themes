@@ -12,7 +12,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { GridOwnProps } from './grid.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type GridElement = React.ElementRef<'div'>;
+type GridElement = React.ComponentRef<'div'>;
 interface CommonGridProps extends MarginProps, LayoutProps, GridOwnProps {}
 type GridDivProps = { as?: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type GridSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;

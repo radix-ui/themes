@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type TextElement = React.ElementRef<'span'>;
+type TextElement = React.ComponentRef<'span'>;
 type TextOwnProps = GetPropDefTypes<typeof textPropDefs>;
 interface CommonTextProps extends MarginProps, TextOwnProps {}
 type TextSpanProps = { as?: 'span' } & ComponentPropsWithout<'span', RemovedProps>;

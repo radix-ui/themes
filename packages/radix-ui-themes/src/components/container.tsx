@@ -15,7 +15,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ContainerOwnProps } from './container.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type ContainerElement = React.ElementRef<'div'>;
+type ContainerElement = React.ComponentRef<'div'>;
 interface ContainerProps
   extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
@@ -27,13 +27,13 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
       props,
       containerPropDefs,
       layoutPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
 
     const { className: innerClassName, style: innerStyle } = extractProps(
       { width, minWidth, maxWidth, height, minHeight, maxHeight },
       widthPropDefs,
-      heightPropDefs
+      heightPropDefs,
     );
 
     const Comp = asChild ? Slot.Root : 'div';
@@ -51,7 +51,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
         ))}
       </Comp>
     );
-  }
+  },
 );
 Container.displayName = 'Container';
 

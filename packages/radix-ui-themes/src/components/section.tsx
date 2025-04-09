@@ -12,7 +12,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { SectionOwnProps } from './section.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type SectionElement = React.ElementRef<'div'>;
+type SectionElement = React.ComponentRef<'div'>;
 interface SectionProps
   extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
@@ -23,7 +23,7 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
     props,
     sectionPropDefs,
     layoutPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const Comp = asChild ? Slot.Root : 'section';
   return (

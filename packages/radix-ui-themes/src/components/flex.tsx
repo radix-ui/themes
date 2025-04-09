@@ -12,7 +12,7 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-p
 import type { LayoutProps } from '../props/layout.props.js';
 import type { MarginProps } from '../props/margin.props.js';
 
-type FlexElement = React.ElementRef<'div'>;
+type FlexElement = React.ComponentRef<'div'>;
 interface CommonFlexProps extends MarginProps, LayoutProps, FlexOwnProps {}
 type FlexDivProps = { as?: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type FlexSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;

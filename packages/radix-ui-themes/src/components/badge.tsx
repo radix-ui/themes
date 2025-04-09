@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type BadgeElement = React.ElementRef<'span'>;
+type BadgeElement = React.ComponentRef<'span'>;
 type BadgeOwnProps = GetPropDefTypes<typeof badgePropDefs>;
 interface BadgeProps
   extends ComponentPropsWithout<'span', RemovedProps>,
@@ -20,7 +20,7 @@ const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) =
   const { asChild, className, color, radius, ...badgeProps } = extractProps(
     props,
     badgePropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const Comp = asChild ? Slot.Root : 'span';
   return (

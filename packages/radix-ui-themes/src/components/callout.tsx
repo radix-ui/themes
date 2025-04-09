@@ -23,7 +23,7 @@ type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 type CalloutContextValue = { size?: CalloutRootOwnProps['size'] };
 const CalloutContext = React.createContext<CalloutContextValue>({});
 
-type CalloutRootElement = React.ElementRef<'div'>;
+type CalloutRootElement = React.ComponentRef<'div'>;
 interface CalloutRootProps
   extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
@@ -34,7 +34,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
     const { asChild, children, className, color, ...rootProps } = extractProps(
       props,
       calloutRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     const Comp = asChild ? Slot.Root : 'div';
     return (
@@ -49,22 +49,22 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         </CalloutContext.Provider>
       </Comp>
     );
-  }
+  },
 );
 CalloutRoot.displayName = 'Callout.Root';
 
-type CalloutIconElement = React.ElementRef<'div'>;
+type CalloutIconElement = React.ComponentRef<'div'>;
 interface CalloutIconProps extends ComponentPropsWithout<'div', RemovedProps> {}
 const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
   ({ className, ...props }, forwardedRef) => {
     return (
       <div {...props} className={classNames('rt-CalloutIcon', className)} ref={forwardedRef} />
     );
-  }
+  },
 );
 CalloutIcon.displayName = 'Callout.Icon';
 
-type CalloutTextElement = React.ElementRef<'p'>;
+type CalloutTextElement = React.ComponentRef<'p'>;
 type CalloutTextProps = ComponentPropsAs<typeof Text, 'p'>;
 const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
   ({ className, ...props }, forwardedRef) => {
@@ -79,7 +79,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         className={classNames('rt-CalloutText', className)}
       />
     );
-  }
+  },
 );
 CalloutText.displayName = 'Callout.Text';
 

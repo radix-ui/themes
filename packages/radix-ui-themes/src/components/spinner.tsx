@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type SpinnerElement = React.ElementRef<'span'>;
+type SpinnerElement = React.ComponentRef<'span'>;
 type SpinnerOwnProps = GetPropDefTypes<typeof spinnerPropDefs>;
 interface SpinnerProps
   extends ComponentPropsWithout<'span', RemovedProps>,
@@ -20,7 +20,7 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
   const { className, children, loading, ...spinnerProps } = extractProps(
     props,
     spinnerPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   if (!loading) return children;

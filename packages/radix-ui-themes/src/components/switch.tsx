@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 import type { ComponentPropsWithout } from '../helpers/component-props.js';
 
-type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
+type SwitchElement = React.ComponentRef<typeof SwitchPrimitive.Root>;
 type SwitchOwnProps = GetPropDefTypes<typeof switchPropDefs>;
 interface SwitchProps
   extends ComponentPropsWithout<
@@ -23,7 +23,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   const { className, color, radius, ...switchProps } = extractProps(
     props,
     switchPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <SwitchPrimitive.Root

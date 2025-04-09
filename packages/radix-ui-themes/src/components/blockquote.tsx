@@ -9,7 +9,7 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-p
 import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type BlockquoteElement = React.ElementRef<'blockquote'>;
+type BlockquoteElement = React.ComponentRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;
 interface BlockquoteProps
   extends ComponentPropsWithout<'blockquote', RemovedProps>,

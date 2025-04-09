@@ -13,7 +13,7 @@ import type { ComponentPropsWithout } from '../helpers/component-props.js';
 import type { NotInputRadioAttributes } from '../helpers/input-attributes.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type RadioElement = React.ElementRef<'input'>;
+type RadioElement = React.ComponentRef<'input'>;
 type RadioOwnProps = GetPropDefTypes<typeof radioPropDefs> & {
   value: string;
   onValueChange?: (value: string) => void;
@@ -29,7 +29,7 @@ const Radio = React.forwardRef<RadioElement, RadioProps>((props, forwardedRef) =
   const { className, color, onChange, onValueChange, ...radioProps } = extractProps(
     props,
     radioPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <input
@@ -37,7 +37,7 @@ const Radio = React.forwardRef<RadioElement, RadioProps>((props, forwardedRef) =
       data-accent-color={color}
       {...radioProps}
       onChange={composeEventHandlers(onChange, (event) =>
-        onValueChange?.(event.currentTarget.value)
+        onValueChange?.(event.currentTarget.value),
       )}
       ref={composeRefs(ref, forwardedRef)}
       className={classNames('rt-reset', 'rt-BaseRadioRoot', 'rt-RadioRoot', className)}

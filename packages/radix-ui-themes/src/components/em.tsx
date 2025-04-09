@@ -8,7 +8,7 @@ import { extractProps } from '../helpers/extract-props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type EmElement = React.ElementRef<'em'>;
+type EmElement = React.ComponentRef<'em'>;
 type EmOwnProps = GetPropDefTypes<typeof emPropDefs>;
 interface EmProps extends ComponentPropsWithout<'em', RemovedProps>, EmOwnProps {}
 const Em = React.forwardRef<EmElement, EmProps>((props, forwardedRef) => {
