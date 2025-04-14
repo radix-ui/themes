@@ -3,20 +3,18 @@
 import * as React from 'react';
 import { useCallbackRef } from 'radix-ui/internal';
 
-import {
-  AccessibleIcon,
-  Box,
-  Button,
-  Flex,
-  Grid,
-  Heading,
-  IconButton,
-  Kbd,
-  Popover,
-  ScrollArea,
-  Text,
-  Tooltip,
-} from '../index.js';
+import { AccessibleIcon } from './accessible-icon.js';
+import { Box } from './box.js';
+import { Button } from './button.js';
+import { Flex } from './flex.js';
+import { Grid } from './grid.js';
+import { Heading } from './heading.js';
+import { IconButton } from './icon-button.js';
+import { Kbd } from './kbd.js';
+import * as Popover from './popover.js';
+import { ScrollArea } from './scroll-area.js';
+import { Text } from './text.js';
+import { Tooltip } from './tooltip.js';
 import { Theme, useThemeContext } from './theme.js';
 import { inert } from '../helpers/inert.js';
 import { getMatchingGrayColor } from '../helpers/get-matching-gray-color.js';
@@ -473,7 +471,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
                   <Popover.Content size="1" style={{ maxWidth: 220 }} side="top" align="center">
                     <Text as="p" size="2">
-                      Whether Card and Table panels are translucent, showing some of the background
+                      Whether Card and Table panels are translucent, showing some of the background
                       behind them.
                     </Text>
                   </Popover.Content>
