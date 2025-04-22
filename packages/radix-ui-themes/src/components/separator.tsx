@@ -19,7 +19,7 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
   const { className, color, decorative, ...separatorProps } = extractProps(
     props,
     separatorPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <span

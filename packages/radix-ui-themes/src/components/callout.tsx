@@ -34,7 +34,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
     const { asChild, children, className, color, ...rootProps } = extractProps(
       props,
       calloutRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     const Comp = asChild ? Slot.Root : 'div';
     return (
@@ -49,7 +49,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         </CalloutContext.Provider>
       </Comp>
     );
-  }
+  },
 );
 CalloutRoot.displayName = 'Callout.Root';
 
@@ -60,7 +60,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
     return (
       <div {...props} className={classNames('rt-CalloutIcon', className)} ref={forwardedRef} />
     );
-  }
+  },
 );
 CalloutIcon.displayName = 'Callout.Icon';
 
@@ -79,7 +79,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         className={classNames('rt-CalloutText', className)}
       />
     );
-  }
+  },
 );
 CalloutText.displayName = 'Callout.Text';
 

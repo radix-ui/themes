@@ -31,7 +31,7 @@ const AlertDialogTrigger = React.forwardRef<AlertDialogTriggerElement, AlertDial
     <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </AlertDialogPrimitive.Trigger>
-  )
+  ),
 );
 AlertDialogTrigger.displayName = 'AlertDialog.Trigger';
 
@@ -65,7 +65,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
         </Theme>
       </AlertDialogPrimitive.Portal>
     );
-  }
+  },
 );
 AlertDialogContent.displayName = 'AlertDialog.Content';
 
@@ -76,7 +76,7 @@ const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTi
     <AlertDialogPrimitive.Title asChild>
       <Heading size="5" mb="3" trim="start" {...props} asChild={false} ref={forwardedRef} />
     </AlertDialogPrimitive.Title>
-  )
+  ),
 );
 AlertDialogTitle.displayName = 'AlertDialog.Title';
 
@@ -100,7 +100,7 @@ const AlertDialogAction = React.forwardRef<AlertDialogActionElement, AlertDialog
     <AlertDialogPrimitive.Action {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </AlertDialogPrimitive.Action>
-  )
+  ),
 );
 AlertDialogAction.displayName = 'AlertDialog.Action';
 
@@ -112,7 +112,7 @@ const AlertDialogCancel = React.forwardRef<AlertDialogCancelElement, AlertDialog
     <AlertDialogPrimitive.Cancel {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </AlertDialogPrimitive.Cancel>
-  )
+  ),
 );
 AlertDialogCancel.displayName = 'AlertDialog.Cancel';
 

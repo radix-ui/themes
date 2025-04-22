@@ -22,7 +22,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   const { className, color, radius, style, ...textAreaProps } = extractProps(
     props,
     textAreaPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <div

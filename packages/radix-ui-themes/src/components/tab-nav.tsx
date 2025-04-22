@@ -23,7 +23,7 @@ const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, 
   const { children, className, color, ...rootProps } = extractProps(
     props,
     tabNavRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <NavigationMenu.Root

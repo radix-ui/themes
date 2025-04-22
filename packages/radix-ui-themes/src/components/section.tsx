@@ -23,7 +23,7 @@ const Section = React.forwardRef<SectionElement, SectionProps>((props, forwarded
     props,
     sectionPropDefs,
     layoutPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const Comp = asChild ? Slot.Root : 'section';
   return (

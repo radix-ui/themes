@@ -66,7 +66,7 @@ export function getMarginStyles(props: MarginProps) {
       mtClassNames,
       mrClassNames,
       mbClassNames,
-      mlClassNames
+      mlClassNames,
     ),
     mergeStyles(
       mCustomProperties,
@@ -75,7 +75,7 @@ export function getMarginStyles(props: MarginProps) {
       mtCustomProperties,
       mrCustomProperties,
       mbCustomProperties,
-      mlCustomProperties
+      mlCustomProperties,
     ),
   ] as const;
 }

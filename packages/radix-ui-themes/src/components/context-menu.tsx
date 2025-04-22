@@ -34,7 +34,7 @@ const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMe
     <ContextMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </ContextMenuPrimitive.Trigger>
-  )
+  ),
 );
 ContextMenuTrigger.displayName = 'ContextMenu.Trigger';
 
@@ -57,7 +57,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
     } = props;
     const { className, children, color, container, forceMount, ...contentProps } = extractProps(
       props,
-      contextMenuContentPropDefs
+      contextMenuContentPropDefs,
     );
     const resolvedColor = color || themeContext.accentColor;
     return (
@@ -74,7 +74,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-ContextMenuContent',
-              className
+              className,
             )}
           >
             <ScrollArea type="auto">
@@ -82,7 +82,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
                     () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast]
+                    [size, variant, resolvedColor, highContrast],
                   )}
                 >
                   {children}
@@ -93,7 +93,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
         </Theme>
       </ContextMenuPrimitive.Portal>
     );
-  }
+  },
 );
 ContextMenuContent.displayName = 'ContextMenu.Content';
 
@@ -108,7 +108,7 @@ const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLa
       ref={forwardedRef}
       className={classNames('rt-BaseMenuLabel', 'rt-ContextMenuLabel', className)}
     />
-  )
+  ),
 );
 ContextMenuLabel.displayName = 'ContextMenu.Label';
 
@@ -137,7 +137,7 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
       </ContextMenuPrimitive.Item>
     );
-  }
+  },
 );
 ContextMenuItem.displayName = 'ContextMenu.Item';
 
@@ -152,7 +152,7 @@ const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGr
       ref={forwardedRef}
       className={classNames('rt-BaseMenuGroup', 'rt-ContextMenuGroup', className)}
     />
-  )
+  ),
 );
 ContextMenuGroup.displayName = 'ContextMenu.Group';
 
@@ -198,7 +198,7 @@ const ContextMenuRadioItem = React.forwardRef<
         'rt-BaseMenuRadioItem',
         'rt-ContextMenuItem',
         'rt-ContextMenuRadioItem',
-        className
+        className,
       )}
     >
       <Slot.Slottable>{children}</Slot.Slottable>
@@ -237,7 +237,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
         'rt-BaseMenuCheckboxItem',
         'rt-ContextMenuItem',
         'rt-ContextMenuCheckboxItem',
-        className
+        className,
       )}
     >
       <Slot.Slottable>{children}</Slot.Slottable>
@@ -275,7 +275,7 @@ const ContextMenuSubTrigger = React.forwardRef<
         'rt-BaseMenuSubTrigger',
         'rt-ContextMenuItem',
         'rt-ContextMenuSubTrigger',
-        className
+        className,
       )}
     >
       {children}
@@ -299,7 +299,7 @@ const ContextMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    contextMenuContentPropDefs
+    contextMenuContentPropDefs,
   );
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -319,7 +319,7 @@ const ContextMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-ContextMenuContent',
             'rt-ContextMenuSubContent',
-            className
+            className,
           )}
         >
           <ScrollArea type="auto">

@@ -32,7 +32,7 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
   ({ defaultOpen = true, ...props }, forwardedRef) => {
     const [open, setOpen] = React.useState(defaultOpen);
     return <ThemePanelImpl {...props} ref={forwardedRef} open={open} onOpenChange={setOpen} />;
-  }
+  },
 );
 ThemePanel.displayName = 'ThemePanel';
 
@@ -85,7 +85,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
 
         cleanup();
       },
-      [appearance, onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp]
+      [appearance, onAppearanceChange, hasOnAppearanceChangeProp, handleAppearanceChangeProp],
     );
 
     const autoMatchedGray = getMatchingGrayColor(accentColor);
@@ -117,7 +117,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     }
 
     const [resolvedAppearance, setResolvedAppearance] = React.useState<'light' | 'dark' | null>(
-      appearance === 'inherit' ? null : appearance
+      appearance === 'inherit' ? null : appearance,
     );
 
     const keyboardInputElement = `
@@ -290,8 +290,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                           gray === 'auto'
                             ? `var(--${autoMatchedGray}-9)`
                             : gray === 'gray'
-                            ? 'var(--gray-9)'
-                            : `var(--${gray}-9)`,
+                              ? 'var(--gray-9)'
+                              : `var(--${gray}-9)`,
                         // we override --gray so pure gray doesn't exist anymore
                         // recover something as close as possible by desaturating
                         filter: gray === 'gray' ? 'saturate(0)' : undefined,
@@ -621,7 +621,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         </Flex>
       </Theme>
     );
-  }
+  },
 );
 ThemePanelImpl.displayName = 'ThemePanelImpl';
 
@@ -630,8 +630,8 @@ function disableAnimation() {
   const css = document.createElement('style');
   css.appendChild(
     document.createTextNode(
-      `*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`
-    )
+      `*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`,
+    ),
   );
   document.head.appendChild(css);
 

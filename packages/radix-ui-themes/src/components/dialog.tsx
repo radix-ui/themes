@@ -28,7 +28,7 @@ const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>
     <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </DialogPrimitive.Trigger>
-  )
+  ),
 );
 DialogTrigger.displayName = 'Dialog.Trigger';
 
@@ -62,7 +62,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
         </Theme>
       </DialogPrimitive.Portal>
     );
-  }
+  },
 );
 DialogContent.displayName = 'Dialog.Content';
 
@@ -73,7 +73,7 @@ const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
     <DialogPrimitive.Title asChild>
       <Heading size="5" mb="3" trim="start" {...props} asChild={false} ref={forwardedRef} />
     </DialogPrimitive.Title>
-  )
+  ),
 );
 DialogTitle.displayName = 'Dialog.Title';
 
@@ -84,7 +84,7 @@ const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescr
     <DialogPrimitive.Description asChild>
       <Text as="p" size="3" {...props} asChild={false} ref={forwardedRef} />
     </DialogPrimitive.Description>
-  )
+  ),
 );
 DialogDescription.displayName = 'Dialog.Description';
 
@@ -96,7 +96,7 @@ const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
     <DialogPrimitive.Close {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </DialogPrimitive.Close>
-  )
+  ),
 );
 DialogClose.displayName = 'Dialog.Close';
 

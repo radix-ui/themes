@@ -47,7 +47,7 @@ const CheckboxGroupRoot = React.forwardRef<CheckboxGroupRootElement, CheckboxGro
       variant = checkboxGroupRootPropDefs.variant.default,
       ...props
     }: ScopedProps<CheckboxGroupRootProps>,
-    forwardedRef
+    forwardedRef,
   ) => {
     const { __scopeCheckboxGroup, className, ...rootProps } = extractProps(props, marginPropDefs);
     const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxGroup);
@@ -67,7 +67,7 @@ const CheckboxGroupRoot = React.forwardRef<CheckboxGroupRootElement, CheckboxGro
         />
       </CheckboxGroupProvider>
     );
-  }
+  },
 );
 CheckboxGroupRoot.displayName = 'CheckboxGroup.Root';
 
@@ -109,7 +109,7 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
         style={style}
       />
     );
-  }
+  },
 );
 CheckboxGroupItem.displayName = 'CheckboxGroup.Item';
 
@@ -125,7 +125,7 @@ const CheckboxGroupItemCheckbox = React.forwardRef<
   const { color, className } = extractProps(
     { ...props, ...context },
     checkboxGroupRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <CheckboxGroupPrimitive.Item
@@ -137,7 +137,7 @@ const CheckboxGroupItemCheckbox = React.forwardRef<
         'rt-reset',
         'rt-BaseCheckboxRoot',
         'rt-CheckboxGroupItemCheckbox',
-        className
+        className,
       )}
     >
       <CheckboxGroupPrimitive.Indicator

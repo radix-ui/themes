@@ -7,7 +7,8 @@
     "build:pkg": "pnpm --filter @radix-ui/themes build",
     "dev": "turbo run dev --no-cache --continue",
     "lint": "turbo run lint",
-    "clean": "turbo run clean && rm -rf node_modules .turbo"
+    "clean": "turbo run clean && rm -rf node_modules .turbo",
+    "prettier": "prettier . --write"
   },
   "devDependencies": {
     "@types/node": "^20.16.10",

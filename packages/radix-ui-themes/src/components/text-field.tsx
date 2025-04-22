@@ -43,7 +43,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
     const { children, className, color, radius, style, ...inputProps } = extractProps(
       props,
       textFieldRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <div
@@ -85,7 +85,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
         {children}
       </div>
     );
-  }
+  },
 );
 TextFieldRoot.displayName = 'TextField.Root';
 
@@ -106,7 +106,7 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
         className={classNames('rt-TextFieldSlot', className)}
       />
     );
-  }
+  },
 );
 TextFieldSlot.displayName = 'TextField.Slot';
 

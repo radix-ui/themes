@@ -45,7 +45,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
       variant = radioGroupRootPropDefs.variant.default,
       ...props
     }: ScopedProps<RadioGroupRootProps>,
-    forwardedRef
+    forwardedRef,
   ) => {
     const { __scopeRadioGroup, className, ...rootProps } = extractProps(props, marginPropDefs);
     const radioGroupScope = useRadioGroupScope(__scopeRadioGroup);
@@ -65,7 +65,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
         />
       </RadioGroupProvider>
     );
-  }
+  },
 );
 RadioGroupRoot.displayName = 'RadioGroup.Root';
 
@@ -107,7 +107,7 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
         style={style}
       />
     );
-  }
+  },
 );
 RadioGroupItem.displayName = 'RadioGroup.Item';
 
@@ -123,7 +123,7 @@ const RadioGroupItemRadio = React.forwardRef<
   const { color, className } = extractProps(
     { ...props, ...context },
     radioGroupRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <RadioGroupPrimitive.Item

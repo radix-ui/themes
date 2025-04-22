@@ -68,7 +68,7 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
         </span>
       </TabsPrimitive.Trigger>
     );
-  }
+  },
 );
 TabsTrigger.displayName = 'Tabs.Trigger';
 
@@ -88,7 +88,7 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
         className={classNames('rt-TabsContent', className)}
       />
     );
-  }
+  },
 );
 TabsContent.displayName = 'Tabs.Content';
 

@@ -23,7 +23,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
   const { className, style, color, radius, duration, ...progressProps } = extractProps(
     props,
     progressPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   return (
@@ -38,7 +38,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
           '--progress-value': 'value' in progressProps ? progressProps.value : undefined,
           '--progress-max': 'max' in progressProps ? progressProps.max : undefined,
         },
-        style
+        style,
       )}
       {...progressProps}
       asChild={false}

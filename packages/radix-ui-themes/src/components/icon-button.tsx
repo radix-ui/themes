@@ -8,7 +8,7 @@ interface IconButtonProps extends React.ComponentPropsWithoutRef<typeof BaseButt
 const IconButton = React.forwardRef<IconButtonElement, IconButtonProps>(
   ({ className, ...props }, forwardedRef) => (
     <BaseButton {...props} ref={forwardedRef} className={classNames('rt-IconButton', className)} />
-  )
+  ),
 );
 IconButton.displayName = 'IconButton';
 

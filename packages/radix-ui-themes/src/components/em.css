@@ -5,9 +5,7 @@
   font-style: var(--em-font-style);
   font-weight: var(--em-font-weight);
   line-height: 1.25;
-  letter-spacing: calc(
-    var(--em-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
-  );
+  letter-spacing: calc(var(--em-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing)));
   color: inherit;
 
   & :where(&) {

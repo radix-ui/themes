@@ -10,9 +10,9 @@ export const requireReactElement = <T extends React.ReactNode>(children: T): T =
         .map((child) =>
           typeof child === 'object' && 'type' in child && typeof child.type === 'string'
             ? child.type
-            : typeof child
+            : typeof child,
         )
-        .join(', ')}`
+        .join(', ')}`,
     );
   }
 

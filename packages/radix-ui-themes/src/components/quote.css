@@ -5,9 +5,7 @@
   font-style: var(--quote-font-style);
   font-weight: var(--quote-font-weight);
   line-height: 1.25;
-  letter-spacing: calc(
-    var(--quote-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
-  );
+  letter-spacing: calc(var(--quote-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing)));
   color: inherit;
 
   & :where(&) {

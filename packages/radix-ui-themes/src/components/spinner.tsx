@@ -20,7 +20,7 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
   const { className, children, loading, ...spinnerProps } = extractProps(
     props,
     spinnerPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   if (!loading) return children;

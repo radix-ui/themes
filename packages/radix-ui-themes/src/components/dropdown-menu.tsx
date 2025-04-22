@@ -35,7 +35,7 @@ const DropdownMenuTrigger = React.forwardRef<DropdownMenuTriggerElement, Dropdow
     <DropdownMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </DropdownMenuPrimitive.Trigger>
-  )
+  ),
 );
 DropdownMenuTrigger.displayName = 'DropdownMenu.Trigger';
 
@@ -58,7 +58,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
     } = props;
     const { className, children, color, container, forceMount, ...contentProps } = extractProps(
       props,
-      dropdownMenuContentPropDefs
+      dropdownMenuContentPropDefs,
     );
     const resolvedColor = color || themeContext.accentColor;
     return (
@@ -76,7 +76,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-DropdownMenuContent',
-              className
+              className,
             )}
           >
             <ScrollArea type="auto">
@@ -84,7 +84,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
                 <DropdownMenuContentContext.Provider
                   value={React.useMemo(
                     () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast]
+                    [size, variant, resolvedColor, highContrast],
                   )}
                 >
                   {children}
@@ -95,7 +95,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
         </Theme>
       </DropdownMenuPrimitive.Portal>
     );
-  }
+  },
 );
 DropdownMenuContent.displayName = 'DropdownMenu.Content';
 
@@ -110,7 +110,7 @@ const DropdownMenuLabel = React.forwardRef<DropdownMenuLabelElement, DropdownMen
       ref={forwardedRef}
       className={classNames('rt-BaseMenuLabel', 'rt-DropdownMenuLabel', className)}
     />
-  )
+  ),
 );
 DropdownMenuLabel.displayName = 'DropdownMenu.Label';
 
@@ -139,7 +139,7 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
         {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}
       </DropdownMenuPrimitive.Item>
     );
-  }
+  },
 );
 DropdownMenuItem.displayName = 'DropdownMenu.Item';
 
@@ -154,7 +154,7 @@ const DropdownMenuGroup = React.forwardRef<DropdownMenuGroupElement, DropdownMen
       ref={forwardedRef}
       className={classNames('rt-BaseMenuGroup', 'rt-DropdownMenuGroup', className)}
     />
-  )
+  ),
 );
 DropdownMenuGroup.displayName = 'DropdownMenu.Group';
 
@@ -200,7 +200,7 @@ const DropdownMenuRadioItem = React.forwardRef<
         'rt-BaseMenuRadioItem',
         'rt-DropdownMenuItem',
         'rt-DropdownMenuRadioItem',
-        className
+        className,
       )}
     >
       {children}
@@ -239,7 +239,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
         'rt-BaseMenuCheckboxItem',
         'rt-DropdownMenuItem',
         'rt-DropdownMenuCheckboxItem',
-        className
+        className,
       )}
     >
       {children}
@@ -277,7 +277,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
         'rt-BaseMenuSubTrigger',
         'rt-DropdownMenuItem',
         'rt-DropdownMenuSubTrigger',
-        className
+        className,
       )}
     >
       {children}
@@ -301,7 +301,7 @@ const DropdownMenuSubContent = React.forwardRef<
   const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
   const { className, children, container, forceMount, ...subContentProps } = extractProps(
     { size, variant, color, highContrast, ...props },
-    dropdownMenuContentPropDefs
+    dropdownMenuContentPropDefs,
   );
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
@@ -321,7 +321,7 @@ const DropdownMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-DropdownMenuContent',
             'rt-DropdownMenuSubContent',
-            className
+            className,
           )}
         >
           <ScrollArea type="auto">

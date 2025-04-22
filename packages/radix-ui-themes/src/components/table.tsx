@@ -22,7 +22,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
   const { className, children, layout, ...rootProps } = extractProps(
     props,
     rootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const tableLayoutClassNames = getResponsiveClassNames({
     value: layout,
@@ -44,7 +44,7 @@ interface TableHeaderProps extends ComponentPropsWithout<'thead', RemovedProps> 
 const TableHeader = React.forwardRef<TableHeaderElement, TableHeaderProps>(
   ({ className, ...props }, forwardedRef) => (
     <thead {...props} ref={forwardedRef} className={classNames('rt-TableHeader', className)} />
-  )
+  ),
 );
 TableHeader.displayName = 'Table.Header';
 
@@ -53,7 +53,7 @@ interface TableBodyProps extends ComponentPropsWithout<'tbody', RemovedProps> {}
 const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>(
   ({ className, ...props }, forwardedRef) => (
     <tbody {...props} ref={forwardedRef} className={classNames('rt-TableBody', className)} />
-  )
+  ),
 );
 TableBody.displayName = 'Table.Body';
 
@@ -112,7 +112,7 @@ const TableRowHeaderCell = React.forwardRef<TableRowHeaderCellElement, TableRowH
         {...cellProps}
       />
     );
-  }
+  },
 );
 TableRowHeaderCell.displayName = 'Table.RowHeaderCell';
 
