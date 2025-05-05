@@ -51,7 +51,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
       // Pass size prop def to allow it to be extracted
       { size: selectRootPropDefs.size },
       selectTriggerPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <SelectPrimitive.Trigger asChild>
@@ -71,7 +71,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
         </button>
       </SelectPrimitive.Trigger>
     );
-  }
+  },
 );
 SelectTrigger.displayName = 'Select.Trigger';
 
@@ -90,7 +90,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       { size: context?.size, ...props },
       // Pass size prop def to allow it to be extracted
       { size: selectRootPropDefs.size },
-      selectContentPropDefs
+      selectContentPropDefs,
     );
     const themeContext = useThemeContext();
     const resolvedColor = color || themeContext.accentColor;
@@ -106,7 +106,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
             className={classNames(
               { 'rt-PopperContent': contentProps.position === 'popper' },
               'rt-SelectContent',
-              className
+              className,
             )}
           >
             <ScrollAreaPrimitive.Root type="auto" className="rt-ScrollAreaRoot">
@@ -129,7 +129,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
         </Theme>
       </SelectPrimitive.Portal>
     );
-  }
+  },
 );
 SelectContent.displayName = 'Select.Content';
 
@@ -165,7 +165,7 @@ const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
       ref={forwardedRef}
       className={classNames('rt-SelectGroup', className)}
     />
-  )
+  ),
 );
 SelectGroup.displayName = 'Select.Group';
 
@@ -180,7 +180,7 @@ const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
       ref={forwardedRef}
       className={classNames('rt-SelectLabel', className)}
     />
-  )
+  ),
 );
 SelectLabel.displayName = 'Select.Label';
 
@@ -195,7 +195,7 @@ const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparator
       ref={forwardedRef}
       className={classNames('rt-SelectSeparator', className)}
     />
-  )
+  ),
 );
 SelectSeparator.displayName = 'Select.Separator';
 

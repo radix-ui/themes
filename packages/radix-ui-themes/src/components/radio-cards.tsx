@@ -25,7 +25,7 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
     const { className, color, ...rootProps } = extractProps(
       props,
       radioCardsRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <Grid asChild>
@@ -37,7 +37,7 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
         />
       </Grid>
     );
-  }
+  },
 );
 RadioCardsRoot.displayName = 'RadioCards.Root';
 
@@ -53,7 +53,7 @@ const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemPro
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
     />
-  )
+  ),
 );
 RadioCardsItem.displayName = 'RadioCards.Item';
 

@@ -82,7 +82,7 @@ function getResponsiveClassNames({
 function getBaseClassName(
   className: string,
   value: string,
-  parseValue: (value: string) => string | undefined
+  parseValue: (value: string) => string | undefined,
 ): string {
   const delimiter = className ? '-' : '';
   const matchedValue = parseValue(value);

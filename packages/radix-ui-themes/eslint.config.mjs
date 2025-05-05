@@ -63,5 +63,5 @@ export default tseslint.config(
       'jsx-a11y/label-has-associated-control': 'off',
       'no-irregular-whitespace': 'off',
     },
-  }
+  },
 );

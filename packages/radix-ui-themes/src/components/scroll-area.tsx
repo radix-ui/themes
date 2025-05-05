@@ -68,7 +68,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
                   className: 'rt-r-size',
                   value: size,
                   propValues: scrollAreaPropDefs.size.values,
-                })
+                }),
               )}
             >
               <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
@@ -85,7 +85,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
                   className: 'rt-r-size',
                   value: size,
                   propValues: scrollAreaPropDefs.size.values,
-                })
+                }),
               )}
             >
               <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />

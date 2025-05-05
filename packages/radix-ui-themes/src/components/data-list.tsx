@@ -25,7 +25,7 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
     const { className, ...dataListProps } = extractProps(
       props,
       dataListRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <Text asChild>
@@ -36,7 +36,7 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
         />
       </Text>
     );
-  }
+  },
 );
 DataListRoot.displayName = 'DataList.Root';
 
@@ -51,7 +51,7 @@ const DataListItem = React.forwardRef<DataListItemElement, DataListItemProps>(
     return (
       <div {...itemProps} ref={forwardedRef} className={classNames('rt-DataListItem', className)} />
     );
-  }
+  },
 );
 DataListItem.displayName = 'DataList.Item';
 
@@ -71,7 +71,7 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
         className={classNames('rt-DataListLabel', className)}
       />
     );
-  }
+  },
 );
 DataListLabel.displayName = 'DataList.Label';
 
@@ -82,7 +82,7 @@ const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>
     <dd {...props} ref={forwardedRef} className={classNames(className, 'rt-DataListValue')}>
       {children}
     </dd>
-  )
+  ),
 );
 DataListValue.displayName = 'DataList.Value';
 

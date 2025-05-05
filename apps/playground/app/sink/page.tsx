@@ -387,7 +387,7 @@ export default function Sink() {
                                             <ColumnHeaderCell key={variant}>
                                               {variant}
                                             </ColumnHeaderCell>
-                                          )
+                                          ),
                                         )}
                                       </tr>
                                     </thead>
@@ -422,7 +422,7 @@ export default function Sink() {
                                                   />
                                                 </DropdownMenu.Root>
                                               </td>
-                                            )
+                                            ),
                                           )}
                                         </tr>
                                       ))}

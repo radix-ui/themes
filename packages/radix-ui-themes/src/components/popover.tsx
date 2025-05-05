@@ -24,7 +24,7 @@ const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerPro
     <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </PopoverPrimitive.Trigger>
-  )
+  ),
 );
 PopoverTrigger.displayName = 'Popover.Trigger';
 
@@ -38,7 +38,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
   (props, forwardedRef) => {
     const { className, forceMount, container, ...contentProps } = extractProps(
       props,
-      popoverContentPropDefs
+      popoverContentPropDefs,
     );
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
@@ -54,7 +54,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
         </Theme>
       </PopoverPrimitive.Portal>
     );
-  }
+  },
 );
 PopoverContent.displayName = 'Popover.Content';
 
@@ -66,7 +66,7 @@ const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
     <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </PopoverPrimitive.Close>
-  )
+  ),
 );
 PopoverClose.displayName = 'Popover.Close';
 
@@ -76,7 +76,7 @@ interface PopoverAnchorProps
 const PopoverAnchor = React.forwardRef<PopoverAnchorElement, PopoverAnchorProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Anchor {...props} ref={forwardedRef} />
-  )
+  ),
 );
 
 PopoverAnchor.displayName = 'Popover.Anchor';

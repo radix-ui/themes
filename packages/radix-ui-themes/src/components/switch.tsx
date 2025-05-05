@@ -23,7 +23,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   const { className, color, radius, ...switchProps } = extractProps(
     props,
     switchPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <SwitchPrimitive.Root

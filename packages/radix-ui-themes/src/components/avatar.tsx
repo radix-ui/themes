@@ -18,7 +18,7 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
   const { asChild, children, className, style, color, radius, ...imageProps } = extractProps(
     props,
     avatarPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   return (
@@ -76,7 +76,7 @@ const AvatarImpl = React.forwardRef<AvatarImplElement, AvatarImplProps>(
         />
       </>
     );
-  }
+  },
 );
 
 AvatarImpl.displayName = 'AvatarImpl';

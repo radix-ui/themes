@@ -7,9 +7,10 @@ import { mergeStyles } from './merge-styles.js';
 import type * as React from 'react';
 import type { PropDef } from '../props/prop-def.js';
 
-type PropDefsWithClassName<T> = T extends Record<string, PropDef>
-  ? { [K in keyof T]: T[K] extends { className: string } ? K : never }[keyof T]
-  : never;
+type PropDefsWithClassName<T> =
+  T extends Record<string, PropDef>
+    ? { [K in keyof T]: T[K] extends { className: string } ? K : never }[keyof T]
+    : never;
 
 function mergePropDefs<T extends Record<string, PropDef>[]>(...args: T): Record<string, PropDef> {
   return Object.assign({}, ...args);
@@ -23,7 +24,7 @@ function mergePropDefs<T extends Record<string, PropDef>[]>(...args: T): Record<
  */
 function extractProps<
   P extends { className?: string; style?: React.CSSProperties; [key: string]: any },
-  T extends Record<string, PropDef>[]
+  T extends Record<string, PropDef>[],
 >(
   props: P,
   ...propDefs: T

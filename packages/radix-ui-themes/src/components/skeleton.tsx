@@ -21,7 +21,7 @@ const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwar
   const { children, className, loading, ...skeletonProps } = extractProps(
     props,
     skeletonPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   if (!loading) return children;

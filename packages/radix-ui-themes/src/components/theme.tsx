@@ -116,7 +116,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         onScalingChange={setScaling}
       />
     );
-  }
+  },
 );
 ThemeRoot.displayName = 'ThemeRoot';
 
@@ -190,7 +190,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
-        ]
+        ],
       )}
     >
       <Comp
@@ -210,7 +210,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
             light: appearance === 'light',
             dark: appearance === 'dark',
           },
-          themeProps.className
+          themeProps.className,
         )}
       />
     </ThemeContext.Provider>

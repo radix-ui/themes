@@ -24,7 +24,7 @@ const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>(
         />
       </svg>
     );
-  }
+  },
 );
 
 ThickDividerHorizontalIcon.displayName = 'ThickDividerHorizontalIcon';

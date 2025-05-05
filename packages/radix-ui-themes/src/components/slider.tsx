@@ -23,7 +23,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
   const { className, color, radius, tabIndex, ...sliderProps } = extractProps(
     props,
     sliderPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <SliderPrimitive.Root
