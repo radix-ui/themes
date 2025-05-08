@@ -17,7 +17,7 @@ const HoverCardRoot: React.FC<HoverCardRootProps> = (props) => (
 );
 HoverCardRoot.displayName = 'HoverCard.Root';
 
-type HoverCardTriggerElement = React.ElementRef<typeof HoverCardPrimitive.Trigger>;
+type HoverCardTriggerElement = React.ComponentRef<typeof HoverCardPrimitive.Trigger>;
 interface HoverCardTriggerProps
   extends ComponentPropsWithout<typeof HoverCardPrimitive.Trigger, RemovedProps> {}
 const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTriggerProps>(
@@ -30,11 +30,11 @@ const HoverCardTrigger = React.forwardRef<HoverCardTriggerElement, HoverCardTrig
     >
       {requireReactElement(children)}
     </HoverCardPrimitive.Trigger>
-  )
+  ),
 );
 HoverCardTrigger.displayName = 'HoverCard.Trigger';
 
-type HoverCardContentElement = React.ElementRef<typeof HoverCardPrimitive.Content>;
+type HoverCardContentElement = React.ComponentRef<typeof HoverCardPrimitive.Content>;
 interface HoverCardContentProps
   extends ComponentPropsWithout<typeof HoverCardPrimitive.Content, RemovedProps>,
     HoverCardContentOwnProps {
@@ -44,7 +44,7 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
   (props, forwardedRef) => {
     const { className, forceMount, container, ...contentProps } = extractProps(
       props,
-      hoverCardContentPropDefs
+      hoverCardContentPropDefs,
     );
     return (
       <HoverCardPrimitive.Portal container={container} forceMount={forceMount}>
@@ -60,7 +60,7 @@ const HoverCardContent = React.forwardRef<HoverCardContentElement, HoverCardCont
         </Theme>
       </HoverCardPrimitive.Portal>
     );
-  }
+  },
 );
 HoverCardContent.displayName = 'HoverCard.Content';
 

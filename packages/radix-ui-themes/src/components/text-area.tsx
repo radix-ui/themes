@@ -9,7 +9,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type TextAreaElement = React.ElementRef<'textarea'>;
+type TextAreaElement = React.ComponentRef<'textarea'>;
 type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {
   defaultValue?: string;
   value?: string;
@@ -22,7 +22,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   const { className, color, radius, style, ...textAreaProps } = extractProps(
     props,
     textAreaPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <div

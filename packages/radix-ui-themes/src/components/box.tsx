@@ -12,7 +12,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { BoxOwnProps } from './box.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type BoxElement = React.ElementRef<'div'>;
+type BoxElement = React.ComponentRef<'div'>;
 interface CommonBoxProps extends MarginProps, LayoutProps, BoxOwnProps {}
 type BoxDivProps = { as?: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type BoxSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;

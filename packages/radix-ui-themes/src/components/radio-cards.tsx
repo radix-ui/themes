@@ -11,7 +11,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type RadioCardsRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
+type RadioCardsRootElement = React.ComponentRef<typeof RadioGroupPrimitive.Root>;
 type RadioCardsRootOwnProps = GetPropDefTypes<typeof radioCardsRootPropDefs>;
 interface RadioCardsRootProps
   extends ComponentPropsWithout<
@@ -25,7 +25,7 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
     const { className, color, ...rootProps } = extractProps(
       props,
       radioCardsRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <Grid asChild>
@@ -37,11 +37,11 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
         />
       </Grid>
     );
-  }
+  },
 );
 RadioCardsRoot.displayName = 'RadioCards.Root';
 
-type RadioCardsItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
+type RadioCardsItemElement = React.ComponentRef<typeof RadioGroupPrimitive.Item>;
 interface RadioCardsItemProps
   extends ComponentPropsWithout<typeof RadioGroupPrimitive.Item, RemovedProps>,
     MarginProps {}
@@ -53,7 +53,7 @@ const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemPro
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
     />
-  )
+  ),
 );
 RadioCardsItem.displayName = 'RadioCards.Item';
 

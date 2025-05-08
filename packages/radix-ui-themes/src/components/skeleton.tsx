@@ -11,7 +11,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type SkeletonElement = React.ElementRef<'span'>;
+type SkeletonElement = React.ComponentRef<'span'>;
 type SkeletonOwnProps = GetPropDefTypes<typeof skeletonPropDefs>;
 interface SkeletonProps
   extends ComponentPropsWithout<'span', RemovedProps>,
@@ -21,7 +21,7 @@ const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwar
   const { children, className, loading, ...skeletonProps } = extractProps(
     props,
     skeletonPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   if (!loading) return children;

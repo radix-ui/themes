@@ -387,7 +387,7 @@ export default function Sink() {
                                             <ColumnHeaderCell key={variant}>
                                               {variant}
                                             </ColumnHeaderCell>
-                                          )
+                                          ),
                                         )}
                                       </tr>
                                     </thead>
@@ -422,7 +422,7 @@ export default function Sink() {
                                                   />
                                                 </DropdownMenu.Root>
                                               </td>
-                                            )
+                                            ),
                                           )}
                                         </tr>
                                       ))}
@@ -6165,7 +6165,7 @@ function CustomUserIcon() {
 }
 
 const SampleNestedUI = React.forwardRef<
-  React.ElementRef<typeof Flex>,
+  React.ComponentRef<typeof Flex>,
   React.ComponentPropsWithoutRef<typeof Flex>
 >(({ children, title, ...props }, forwardedRef) => {
   return (

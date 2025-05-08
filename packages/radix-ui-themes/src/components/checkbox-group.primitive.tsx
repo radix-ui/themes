@@ -20,7 +20,7 @@ const CHECKBOX_GROUP_NAME = 'CheckboxGroup';
 type ScopedProps<P> = P & { __scopeCheckboxGroup?: Context.Scope };
 const [createCheckboxGroupContext, createCheckboxGroupScope] = Context.createContextScope(
   CHECKBOX_GROUP_NAME,
-  [RovingFocus.createRovingFocusGroupScope, CheckboxPrimitive.createCheckboxScope]
+  [RovingFocus.createRovingFocusGroupScope, CheckboxPrimitive.createCheckboxScope],
 );
 const useRovingFocusGroupScope = RovingFocus.createRovingFocusGroupScope();
 const useCheckboxScope = CheckboxPrimitive.createCheckboxScope();
@@ -37,7 +37,7 @@ type CheckboxGroupContextValue = {
 const [CheckboxGroupProvider, useCheckboxGroupContext] =
   createCheckboxGroupContext<CheckboxGroupContextValue>(CHECKBOX_GROUP_NAME);
 
-type CheckboxGroupElement = React.ElementRef<typeof Primitive.div>;
+type CheckboxGroupElement = React.ComponentRef<typeof Primitive.div>;
 type RovingFocusGroupProps = React.ComponentPropsWithoutRef<typeof RovingFocus.Root>;
 type PrimitiveDivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface CheckboxGroupProps extends PrimitiveDivProps {
@@ -77,13 +77,13 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
 
     const handleItemCheck = React.useCallback(
       (itemValue: string) => setValue((prevValue = []) => [...prevValue, itemValue]),
-      [setValue]
+      [setValue],
     );
 
     const handleItemUncheck = React.useCallback(
       (itemValue: string) =>
         setValue((prevValue = []) => prevValue.filter((value) => value !== itemValue)),
-      [setValue]
+      [setValue],
     );
 
     return (
@@ -113,7 +113,7 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
         </RovingFocus.Root>
       </CheckboxGroupProvider>
     );
-  }
+  },
 );
 
 CheckboxGroup.displayName = CHECKBOX_GROUP_NAME;
@@ -124,7 +124,7 @@ CheckboxGroup.displayName = CHECKBOX_GROUP_NAME;
 
 const ITEM_NAME = 'CheckboxGroupItem';
 
-type CheckboxGroupItemElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
+type CheckboxGroupItemElement = React.ComponentRef<typeof CheckboxPrimitive.Root>;
 type CheckboxProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
 interface CheckboxGroupItemProps
   extends Omit<CheckboxProps, 'checked' | 'defaultChecked' | 'onCheckedChange' | 'name'> {
@@ -138,7 +138,7 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
     const isDisabled = context.disabled || disabled;
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeCheckboxGroup);
     const checkboxScope = useCheckboxScope(__scopeCheckboxGroup);
-    const ref = React.useRef<React.ElementRef<typeof CheckboxPrimitive.Root>>(null);
+    const ref = React.useRef<React.ComponentRef<typeof CheckboxPrimitive.Root>>(null);
     const composedRefs = useComposedRefs(forwardedRef, ref);
     const checked = context.value?.includes(itemProps.value);
 
@@ -162,7 +162,7 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
         />
       </RovingFocus.Item>
     );
-  }
+  },
 );
 
 CheckboxGroupItem.displayName = ITEM_NAME;
@@ -173,7 +173,7 @@ CheckboxGroupItem.displayName = ITEM_NAME;
 
 const INDICATOR_NAME = 'CheckboxGroupIndicator';
 
-type CheckboxGroupIndicatorElement = React.ElementRef<typeof CheckboxPrimitive.Indicator>;
+type CheckboxGroupIndicatorElement = React.ComponentRef<typeof CheckboxPrimitive.Indicator>;
 type CheckboxIndicatorProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Indicator>;
 interface CheckboxGroupIndicatorProps extends CheckboxIndicatorProps {}
 

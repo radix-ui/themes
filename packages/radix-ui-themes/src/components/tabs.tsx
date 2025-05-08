@@ -11,7 +11,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
+type TabsRootElement = React.ComponentRef<typeof TabsPrimitive.Root>;
 type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;
 interface TabsRootProps
   extends ComponentPropsWithout<typeof TabsPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'>,
@@ -29,7 +29,7 @@ const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwar
 });
 TabsRoot.displayName = 'Tabs.Root';
 
-type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
+type TabsListElement = React.ComponentRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
   extends ComponentPropsWithout<typeof TabsPrimitive.List, RemovedProps>,
@@ -49,7 +49,7 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
 });
 TabsList.displayName = 'Tabs.List';
 
-type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
+type TabsTriggerElement = React.ComponentRef<typeof TabsPrimitive.Trigger>;
 interface TabsTriggerProps
   extends ComponentPropsWithout<typeof TabsPrimitive.Trigger, RemovedProps> {}
 const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
@@ -68,11 +68,11 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
         </span>
       </TabsPrimitive.Trigger>
     );
-  }
+  },
 );
 TabsTrigger.displayName = 'Tabs.Trigger';
 
-type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
+type TabsContentElement = React.ComponentRef<typeof TabsPrimitive.Content>;
 type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
 interface TabsContentProps
   extends ComponentPropsWithout<typeof TabsPrimitive.Content, RemovedProps>,
@@ -88,7 +88,7 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
         className={classNames('rt-TabsContent', className)}
       />
     );
-  }
+  },
 );
 TabsContent.displayName = 'Tabs.Content';
 

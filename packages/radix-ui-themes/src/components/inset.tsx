@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type InsetElement = React.ElementRef<'div'>;
+type InsetElement = React.ComponentRef<'div'>;
 type InsetOwnProps = GetPropDefTypes<typeof insetPropDefs>;
 interface InsetProps
   extends ComponentPropsWithout<'div', RemovedProps>,

@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
-type IconElement = React.ElementRef<'svg'>;
+type IconElement = React.ComponentRef<'svg'>;
 interface IconProps extends ComponentPropsWithout<'svg', RemovedProps | 'children'> {}
 
 const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>(
@@ -24,7 +24,7 @@ const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>(
         />
       </svg>
     );
-  }
+  },
 );
 
 ThickDividerHorizontalIcon.displayName = 'ThickDividerHorizontalIcon';
