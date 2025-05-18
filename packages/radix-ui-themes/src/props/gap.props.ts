@@ -23,7 +23,7 @@ const gapPropDefs = {
     responsive: true,
   },
   /**
-   * Sets the CSS **row-gap** property.
+   * Sets the CSS **column-gap** property.
    * Supports space scale values, CSS strings, and responsive objects.
    *
    * @example
@@ -32,7 +32,7 @@ const gapPropDefs = {
    * gapX={{ sm: '2', lg: '3em' }}
    *
    * @link
-   * https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
    */
   gapX: {
     type: 'enum | string',
@@ -42,7 +42,7 @@ const gapPropDefs = {
     responsive: true,
   },
   /**
-   * Sets the CSS **column-gap** property.
+   * Sets the CSS **row-gap** property.
    * Supports space scale values, CSS strings, and responsive objects.
    *
    * @example
@@ -51,7 +51,7 @@ const gapPropDefs = {
    * gapY={{ sm: '2', lg: '3em' }}
    *
    * @link
-   * https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
    */
   gapY: {
     type: 'enum | string',
