@@ -153,7 +153,7 @@ const layoutPropDefs = {
    * overflowX={{ sm: 'hidden', md: 'visible' }}
    *
    * @link
-   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x
    */
   overflowX: {
     type: 'enum',
@@ -170,7 +170,7 @@ const layoutPropDefs = {
    * overflowY={{ sm: 'hidden', md: 'visible' }}
    *
    * @link
-   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y
    */
   overflowY: {
     type: 'enum',
