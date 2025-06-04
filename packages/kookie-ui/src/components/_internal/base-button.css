@@ -17,6 +17,8 @@
   &:where(.rt-loading) {
     position: relative;
   }
+
+  height: var(--base-button-height);
 }
 
 /***************************************************************************************************
@@ -24,18 +26,6 @@
  * SIZES                                                                                           *
  *                                                                                                 *
  ***************************************************************************************************/
-
-.rt-BaseButton {
-  &:where(:not(.rt-variant-ghost)) {
-    height: var(--base-button-height);
-  }
-  &:where(.rt-variant-ghost) {
-    box-sizing: content-box;
-
-    /* Make sure that the height is not stretched in a Flex/Grid layout */
-    height: fit-content;
-  }
-}
 
 @breakpoints {
   .rt-BaseButton {

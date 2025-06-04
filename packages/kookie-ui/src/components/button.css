@@ -18,30 +18,6 @@
 .rt-Button {
   &:where(.rt-variant-ghost) {
     padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
-
-    /* We reset the defined margin variables to avoid inheriting them from a higher component */
-    /* If a margin IS defined on the component itself, the utility class will win and reset it */
-    --margin-top: 0px;
-    --margin-right: 0px;
-    --margin-bottom: 0px;
-    --margin-left: 0px;
-
-    /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top) - var(--button-ghost-padding-y));
-    --margin-right-override: calc(var(--margin-right) - var(--button-ghost-padding-x));
-    --margin-bottom-override: calc(var(--margin-bottom) - var(--button-ghost-padding-y));
-    --margin-left-override: calc(var(--margin-left) - var(--button-ghost-padding-x));
-
-    /* Reset the overrides on direct children */
-    :where(&) > * {
-      --margin-top-override: initial;
-      --margin-right-override: initial;
-      --margin-bottom-override: initial;
-      --margin-left-override: initial;
-    }
-
-    margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
-      var(--margin-left-override);
   }
 }
 
