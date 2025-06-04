@@ -28,6 +28,11 @@
 
 @breakpoints {
   .rt-Heading {
+    &:where(.rt-r-size-0) {
+      font-size: calc(var(--font-size-0) * var(--heading-font-size-adjust));
+      --line-height: var(--heading-line-height-0);
+      letter-spacing: calc(var(--letter-spacing-0) + var(--heading-letter-spacing));
+    }
     &:where(.rt-r-size-1) {
       font-size: calc(var(--font-size-1) * var(--heading-font-size-adjust));
       --line-height: var(--heading-line-height-1);

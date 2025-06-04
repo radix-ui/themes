@@ -65,7 +65,7 @@
    * https://codepen.io/andresdamelio/pen/KKbvdYb
    */
 
-  /* Chrome’s calendar and time icons */
+  /* Chrome's calendar and time icons */
   &::-webkit-calendar-picker-indicator {
     box-sizing: content-box;
     width: var(--text-field-native-icon-size);
@@ -75,7 +75,7 @@
     margin-right: calc(var(--space-1) * -1);
     border-radius: calc(var(--text-field-border-radius) - 2px);
   }
-  /* Chrome’s calendar icon */
+  /* Chrome's calendar icon */
   &:where(:not([type='time']))::-webkit-calendar-picker-indicator {
     margin-left: var(--space-1);
   }
@@ -164,7 +164,7 @@
     padding-right: var(--text-field-padding);
   }
 
-  /* Remove border-radius and text-indent/padding on the left if there’s a left-side slot */
+  /* Remove border-radius and text-indent/padding on the left if there's a left-side slot */
   &:where(:has(~ .rt-TextFieldSlot:not([data-side='right']))) {
     text-indent: 0;
     padding-left: 0;
@@ -172,7 +172,7 @@
     border-bottom-left-radius: 0;
   }
 
-  /* Remove border-radius and padding on the right if there’s a right-side slot */
+  /* Remove border-radius and padding on the right if there's a right-side slot */
   /* prettier-ignore */
   &:where(:has(
     ~ .rt-TextFieldSlot[data-side='right'],
@@ -321,11 +321,22 @@
   --text-field-focus-color: var(--focus-8);
   --text-field-border-width: 1px;
 
-  /* Blend inner shadow with page background */
-  background-clip: content-box;
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-1);
+  background: linear-gradient(to bottom, var(--color-surface), var(--gray-1));
+  box-shadow: var(--shadow-2);
   color: var(--gray-12);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
+      box-shadow: var(--shadow-2);
+    }
+  }
+
+  &:where(:has(.rt-TextFieldInput:focus)) {
+    box-shadow:
+      inset 0 0 0 1px var(--focus-8),
+      var(--shadow-1);
+  }
 
   & :where(.rt-TextFieldInput) {
     &::placeholder {
@@ -351,6 +362,7 @@
   &:where(:has(.rt-TextFieldInput:where(:disabled, :read-only))) {
     /* Blend with grey */
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
+    box-shadow: none;
   }
 }
 

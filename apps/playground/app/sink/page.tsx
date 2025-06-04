@@ -113,7 +113,7 @@ export default function Sink() {
     <html lang="en" className={styles.root} suppressHydrationWarning>
       <body>
         <NextThemeProvider>
-          <Theme asChild>
+          <Theme asChild accentColor="blue" grayColor="slate">
             <div id="root">
               <div
                 style={{
@@ -139,7 +139,7 @@ export default function Sink() {
                 }}
               />
               {/* <HideCursor /> */}
-              <ThemePanel defaultOpen={false} />
+              <ThemePanel defaultOpen={true} />
 
               <Box position="relative">
                 <header
@@ -387,7 +387,7 @@ export default function Sink() {
                                             <ColumnHeaderCell key={variant}>
                                               {variant}
                                             </ColumnHeaderCell>
-                                          )
+                                          ),
                                         )}
                                       </tr>
                                     </thead>
@@ -422,7 +422,7 @@ export default function Sink() {
                                                   />
                                                 </DropdownMenu.Root>
                                               </td>
-                                            )
+                                            ),
                                           )}
                                         </tr>
                                       ))}

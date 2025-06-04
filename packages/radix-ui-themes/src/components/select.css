@@ -322,71 +322,38 @@
 
 /* prettier-ignore */
 :where(.radix-themes) {
-  --select-trigger-classic-box-shadow:
-		inset 0 0 0 1px var(--gray-a5),
-		inset 0 2px 1px var(--white-a11),
-		inset 0 -2px 1px var(--gray-a4)
-	;
+  --select-trigger-classic-shadow: var(--shadow-2);
+  --select-trigger-classic-hover-shadow: var(--shadow-2);
+  --select-trigger-classic-disabled-shadow: none;
 }
 
 /* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --select-trigger-classic-box-shadow:
-    inset 0 0 0 1px var(--white-a4),
-    inset 0 1px 1px var(--white-a4),
-    inset 0 -1px 1px var(--black-a9)
-	;
+  --select-trigger-classic-shadow: var(--shadow-2);
+  --select-trigger-classic-hover-shadow: var(--shadow-2);
+  --select-trigger-classic-disabled-shadow: none;
 }
 
 .rt-SelectTrigger:where(.rt-variant-classic) {
   color: var(--gray-12);
-  background-image: linear-gradient(var(--gray-2), var(--gray-1));
-  box-shadow: var(--select-trigger-classic-box-shadow);
-  position: relative;
-  z-index: 0;
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    border: 2px solid transparent;
-    background-clip: content-box;
-    border-radius: inherit;
-    pointer-events: none;
-    background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
-      linear-gradient(var(--color-surface), transparent);
-  }
+  background: linear-gradient(to bottom, var(--color-surface), var(--gray-1));
+  box-shadow: var(--select-trigger-classic-shadow);
 
   @media (hover: hover) {
     &:where(:hover) {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger-classic-box-shadow);
-
-      &::before {
-        background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
-          linear-gradient(var(--gray-2), var(--gray-1));
-      }
+      background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
+      box-shadow: var(--select-trigger-classic-hover-shadow);
     }
   }
   &:where([data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger-classic-box-shadow);
-
-    &::before {
-      background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
-        linear-gradient(var(--gray-2), var(--gray-1));
-    }
+    background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
+    box-shadow: var(--select-trigger-classic-hover-shadow);
   }
   &:where(:disabled) {
     color: var(--gray-a11);
-    background-color: var(--gray-2);
-    background-image: none;
-    /* Use disabled button style for the shadow */
-    box-shadow: var(--base-button-classic-disabled-box-shadow);
-    &::before {
-      background-color: var(--gray-a2);
-      background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1));
-    }
+    background: var(--gray-a2);
+    box-shadow: var(--select-trigger-classic-disabled-shadow);
   }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {

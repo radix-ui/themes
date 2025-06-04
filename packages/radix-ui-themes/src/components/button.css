@@ -53,6 +53,12 @@
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
 
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 13px;
+        height: 13px;
+      }
+
       &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-2);
         padding-right: var(--space-2);
@@ -68,6 +74,12 @@
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 15px;
+        height: 15px;
+      }
 
       &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-3);
@@ -85,6 +97,12 @@
       line-height: var(--line-height-3);
       letter-spacing: var(--letter-spacing-3);
 
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 17px;
+        height: 17px;
+      }
+
       &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-4);
         padding-right: var(--space-4);
@@ -100,6 +118,12 @@
       font-size: var(--font-size-4);
       line-height: var(--line-height-4);
       letter-spacing: var(--letter-spacing-4);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 19px;
+        height: 19px;
+      }
 
       &:where(:not(.rt-variant-ghost)) {
         padding-left: var(--space-5);

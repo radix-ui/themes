@@ -1,4 +1,5 @@
 .radix-themes {
+  --font-size-0: calc(10px * var(--scaling));
   --font-size-1: calc(12px * var(--scaling));
   --font-size-2: calc(14px * var(--scaling));
   --font-size-3: calc(16px * var(--scaling));
@@ -14,6 +15,7 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
+  --line-height-0: calc(12px * var(--scaling));
   --line-height-1: calc(16px * var(--scaling));
   --line-height-2: calc(20px * var(--scaling));
   --line-height-3: calc(24px * var(--scaling));
@@ -24,6 +26,7 @@
   --line-height-8: calc(40px * var(--scaling));
   --line-height-9: calc(60px * var(--scaling));
 
+  --letter-spacing-0: 0.005em;
   --letter-spacing-1: 0.0025em;
   --letter-spacing-2: 0em;
   --letter-spacing-3: 0em;
@@ -36,9 +39,8 @@
 
   /* default values */
 
-  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto,
-    'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji';
+  --default-font-family: var(--font-geist-sans, 'Geist'), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
+    Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
   --default-font-style: normal;
   --default-font-weight: var(--font-weight-regular);
@@ -56,6 +58,7 @@
   --heading-leading-trim-end: var(--default-leading-trim-end);
   --heading-letter-spacing: 0em;
 
+  --heading-line-height-0: calc(12px * var(--scaling));
   --heading-line-height-1: calc(16px * var(--scaling));
   --heading-line-height-2: calc(18px * var(--scaling));
   --heading-line-height-3: calc(22px * var(--scaling));
@@ -68,8 +71,8 @@
 
   /* Code */
 
-  --code-font-family: 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono', monospace,
-    'Apple Color Emoji', 'Segoe UI Emoji';
+  --code-font-family: var(--font-geist-mono, 'Geist Mono'), 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono',
+    monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
   --code-font-size-adjust: 0.95;
   --code-font-style: normal;
   --code-font-weight: inherit;

@@ -10,7 +10,7 @@ import { weightPropDef } from '../props/weight.prop.js';
 import type { PropDef } from '../props/prop-def.js';
 
 const as = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
-const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+const sizes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
 const headingPropDefs = {
   as: { type: 'enum', values: as, default: 'h1' },

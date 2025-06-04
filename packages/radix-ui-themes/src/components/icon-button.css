@@ -41,6 +41,37 @@
 }
 
 @breakpoints {
+  .rt-IconButton {
+    &:where(.rt-r-size-1) {
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 13px;
+        height: 13px;
+      }
+    }
+    &:where(.rt-r-size-2) {
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    &:where(.rt-r-size-3) {
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 17px;
+        height: 17px;
+      }
+    }
+    &:where(.rt-r-size-4) {
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: 19px;
+        height: 19px;
+      }
+    }
+  }
+
   .rt-IconButton:where(.rt-variant-ghost) {
     &:where(.rt-r-size-1) {
       --icon-button-ghost-padding: var(--space-1);

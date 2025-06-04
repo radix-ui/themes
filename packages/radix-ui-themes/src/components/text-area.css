@@ -156,11 +156,22 @@
 .rt-TextAreaRoot:where(.rt-variant-classic) {
   --text-area-border-width: 1px;
 
-  /* Blend inner shadow with page background */
-  background-clip: content-box;
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-1);
+  background: linear-gradient(to bottom, var(--color-surface), var(--gray-1));
+  box-shadow: var(--shadow-2);
   color: var(--gray-12);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
+      box-shadow: var(--shadow-2);
+    }
+  }
+
+  &:where(:focus-within) {
+    box-shadow:
+      inset 0 0 0 1px var(--focus-8),
+      var(--shadow-1);
+  }
 
   & :where(.rt-TextAreaInput) {
     &::placeholder {
@@ -178,6 +189,7 @@
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
     /* Blend with grey */
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
+    box-shadow: none;
   }
 }
 

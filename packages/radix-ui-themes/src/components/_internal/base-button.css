@@ -72,88 +72,32 @@
 
 /* prettier-ignore */
 :where(.radix-themes) {
-  --base-button-classic-after-inset: 2px;
-  --base-button-classic-box-shadow-top:
-    inset 0 0 0 1px var(--gray-a4),
-    inset 0 -2px 1px var(--gray-a3);
-  --base-button-classic-box-shadow-bottom:
-    inset 0 4px 2px -2px var(--white-a9),
-    inset 0 2px 1px -1px var(--white-a9);
-  --base-button-classic-disabled-box-shadow:
-    var(--base-button-classic-box-shadow-top),
-    var(--base-button-classic-box-shadow-bottom);
-  --base-button-classic-active-filter: brightness(0.92) saturate(1.1);
-  --base-button-classic-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
-  --base-button-classic-high-contrast-active-filter: contrast(0.82) saturate(1.2) brightness(1.16);
+  --base-button-classic-shadow: var(--shadow-3);
+  --base-button-classic-hover-shadow: var(--shadow-3);
+  --base-button-classic-active-shadow: var(--shadow-2);
+  --base-button-classic-disabled-shadow: none;
 }
 /* prettier-ignore */
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --base-button-classic-after-inset: 1px;
-  --base-button-classic-box-shadow-top:
-    inset 0 0 0 1px var(--white-a2),
-    inset 0 4px 2px -2px var(--white-a3),
-    inset 0 1px 1px var(--white-a6),
-    inset 0 -1px 1px var(--black-a6);
-  --base-button-classic-box-shadow-bottom: 0 0 transparent;
-  --base-button-classic-disabled-box-shadow:
-    inset 0 0 0 1px var(--gray-a5),
-    inset 0 4px 2px -2px var(--gray-a2),
-    inset 0 1px 1px var(--gray-a5),
-    inset 0 -1px 1px var(--black-a3),
-    inset 0 0 0 1px var(--gray-a2);
-  --base-button-classic-active-filter: brightness(1.08);
-  --base-button-classic-high-contrast-hover-filter: contrast(0.88) saturate(1.3) brightness(1.14);
-  --base-button-classic-high-contrast-active-filter: brightness(0.95) saturate(1.2);
+  --base-button-classic-shadow: var(--shadow-3);
+  --base-button-classic-hover-shadow: var(--shadow-3);
+  --base-button-classic-active-shadow: var(--shadow-2);
+  --base-button-classic-disabled-shadow: none;
 }
 
 .rt-BaseButton:where(.rt-variant-classic) {
-  background-color: var(--accent-9);
+  background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
   color: var(--accent-contrast);
-  position: relative;
-  z-index: 0;
+  box-shadow: var(--base-button-classic-shadow);
 
-  /* prettier-ignore */
-  background-image:
-    linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
-    linear-gradient(to bottom, transparent 50%, var(--accent-9) 80%);
-
-  /* prettier-ignore */
-  box-shadow:
-    var(--base-button-classic-box-shadow-top),
-    inset 0 0 0 1px var(--accent-9),
-    var(--base-button-classic-box-shadow-bottom);
-
-  &::after {
-    content: '';
-    position: absolute;
-    border-radius: inherit;
-    pointer-events: none;
-    inset: 0;
-    z-index: -1;
-    border: var(--base-button-classic-after-inset) solid transparent;
-    background-clip: content-box;
-    background-color: inherit;
-    background-image: linear-gradient(var(--black-a1), transparent, var(--white-a2));
-    box-shadow: inset 0 2px 3px -1px var(--white-a4);
-  }
   &:where(.rt-high-contrast) {
-    background-color: var(--accent-12);
+    background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
     color: var(--gray-1);
 
-    /* prettier-ignore */
-    background-image:
-      linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
-      linear-gradient(to bottom, transparent 50%, var(--accent-12) 80%);
-
-    /* prettier-ignore */
-    box-shadow:
-      var(--base-button-classic-box-shadow-top),
-      inset 0 0 0 1px var(--accent-12),
-      var(--base-button-classic-box-shadow-bottom);
-
-    &::after {
-      background-image: linear-gradient(var(--black-a3), transparent, var(--white-a2));
+    /* Use solid color for non-gray accent colors */
+    &:where(:not([data-accent-color='gray'])) {
+      background: var(--accent-12);
     }
   }
   /* Better -webkit-tap-highlight-color */
@@ -169,81 +113,52 @@
   }
   @media (hover: hover) {
     &:where(:hover) {
-      &::after {
-        background-color: var(--accent-10);
-        background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
-      }
+      background: linear-gradient(to bottom, var(--accent-10), var(--accent-11));
+      box-shadow: var(--base-button-classic-hover-shadow);
       &:where(.rt-high-contrast) {
-        filter: var(--base-button-classic-high-contrast-hover-filter);
-        &::after {
-          background-color: var(--accent-12);
-          background-image: linear-gradient(var(--black-a5), transparent, var(--white-a2));
+        background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
+        filter: contrast(0.88) saturate(1.1) brightness(1.1);
+
+        /* Use solid color for non-gray accent colors */
+        &:where(:not([data-accent-color='gray'])) {
+          background: var(--accent-12);
         }
       }
     }
   }
   &:where([data-state='open']) {
-    &::after {
-      background-color: var(--accent-10);
-      background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
-    }
+    background: linear-gradient(to bottom, var(--accent-10), var(--accent-11));
+    box-shadow: var(--base-button-classic-hover-shadow);
     &:where(.rt-high-contrast) {
-      filter: var(--base-button-classic-high-contrast-hover-filter);
-      &::after {
-        background-color: var(--accent-12);
-        background-image: linear-gradient(var(--black-a5), transparent, var(--white-a2));
+      background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
+      filter: contrast(0.88) saturate(1.1) brightness(1.1);
+
+      /* Use solid color for non-gray accent colors */
+      &:where(:not([data-accent-color='gray'])) {
+        background: var(--accent-12);
       }
     }
   }
   &:where(:active:not([data-state='open'], [data-disabled])) {
-    background-color: var(--accent-9);
-    background-image: linear-gradient(var(--black-a1), transparent);
-    padding-top: var(--base-button-classic-active-padding-top);
-
-    /* prettier-ignore */
-    box-shadow:
-      inset 0 4px 2px -2px var(--gray-a4),
-      inset 0 1px 1px var(--gray-a7),
-      inset 0 0 0 1px var(--gray-a5),
-      inset 0 0 0 1px var(--accent-9),
-      inset 0 3px 2px var(--gray-a3),
-      inset 0 0 0 1px var(--white-a7),
-      inset 0 -2px 1px var(--white-a5);
-
-    &::after {
-      box-shadow: none;
-      background-color: inherit;
-      background-image: linear-gradient(var(--black-a2), transparent, var(--white-a3));
-    }
+    background: linear-gradient(to bottom, var(--accent-10), var(--accent-9));
+    box-shadow: var(--base-button-classic-active-shadow);
 
     &:where(.rt-high-contrast) {
-      background-color: var(--accent-12);
-      filter: var(--base-button-classic-high-contrast-active-filter);
+      background: linear-gradient(to bottom, var(--accent-12), var(--accent-11));
+      filter: contrast(0.82) saturate(1.2) brightness(1.16);
 
-      /* prettier-ignore */
-      box-shadow:
-        var(--base-button__classic-active__shadow-front-layer),
-        inset 0 0 0 1px var(--accent-12),
-        var(--base-button__classic-active__shadow-bottom-layer);
-
-      &::after {
-        background-image: linear-gradient(var(--black-a5), transparent, var(--white-a3));
+      /* Use solid color for non-gray accent colors */
+      &:where(:not([data-accent-color='gray'])) {
+        background: var(--accent-12);
       }
     }
   }
   &:where([data-disabled]) {
     color: var(--gray-a8);
-    background-color: var(--gray-2);
-    background-image: none;
-    box-shadow: var(--base-button-classic-disabled-box-shadow);
+    background: var(--gray-a3);
+    box-shadow: var(--base-button-classic-disabled-shadow);
     outline: none;
     filter: none;
-
-    &::after {
-      box-shadow: none;
-      background-color: var(--gray-a2);
-      background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1));
-    }
   }
 }
 
@@ -397,7 +312,9 @@
     outline-offset: -1px;
   }
   &:where(.rt-high-contrast) {
-    box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+    box-shadow:
+      inset 0 0 0 1px var(--accent-a7),
+      inset 0 0 0 1px var(--gray-a11);
     color: var(--accent-12);
   }
   &:where([data-disabled]) {
