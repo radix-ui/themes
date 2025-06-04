@@ -39,7 +39,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
     const [value, setValue] = useControllableState({
       prop: valueProp,
       onChange: onValueChangeProp,
-      defaultProp: defaultValueProp,
+      defaultProp: defaultValueProp ?? '',
     });
 
     return (
@@ -63,7 +63,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
         <div className="rt-SegmentedControlIndicator" />
       </ToggleGroupPrimitive.Root>
     );
-  }
+  },
 );
 
 SegmentedControlRoot.displayName = 'SegmentedControl.Root';
@@ -96,7 +96,7 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
         </span>
       </span>
     </ToggleGroupPrimitive.Item>
-  )
+  ),
 );
 
 SegmentedControlItem.displayName = 'SegmentedControl.Item';

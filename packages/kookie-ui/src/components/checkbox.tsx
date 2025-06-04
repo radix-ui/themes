@@ -35,7 +35,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
 
   const [checked, setChecked] = useControllableState({
     prop: checkedProp,
-    defaultProp: defaultCheckedProp,
+    defaultProp: defaultCheckedProp ?? false,
     onChange: onCheckedChange,
   });
 
