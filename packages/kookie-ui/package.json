@@ -1,6 +1,7 @@
 {
   "name": "@kushagradhawan/kookie-ui",
   "version": "0.1.0",
+  "description": "A modern React component library with beautiful design tokens and flexible theming",
   "type": "commonjs",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
