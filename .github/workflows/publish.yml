@@ -47,7 +47,7 @@ jobs:
         id: version
         run: |
           cd packages/kookie-ui
-          echo "version=$(node -p require('./package.json').version)" >> $GITHUB_OUTPUT
+          echo "version=$(node -p 'require(\"./package.json\").version')" >> $GITHUB_OUTPUT
 
       - name: Check if version exists on NPM
         id: check_version
