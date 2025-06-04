@@ -103,42 +103,36 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-classic) {
-  --card-border-width: 1px;
+  --card-border-width: 0px;
   --card-background-color: var(--color-panel);
 
   transition: box-shadow 120ms;
   box-shadow: var(--base-card-classic-box-shadow-outer);
 
   &::before {
-    background-color: var(--card-background-color);
+    background: linear-gradient(to bottom, var(--color-surface), var(--gray-1));
     backdrop-filter: var(--backdrop-filter-panel);
-  }
-  &::after {
-    box-shadow: var(--base-card-classic-box-shadow-inner);
   }
   &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
         transition-duration: 40ms;
         box-shadow: var(--base-card-classic-hover-box-shadow-outer);
-        &::after {
-          box-shadow: var(--base-card-classic-hover-box-shadow-inner);
+        &::before {
+          background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
         }
       }
     }
     &:where([data-state='open']) {
       transition-duration: 40ms;
       box-shadow: var(--base-card-classic-hover-box-shadow-outer);
-      &::after {
-        box-shadow: var(--base-card-classic-hover-box-shadow-inner);
+      &::before {
+        background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
       }
     }
     &:where(:active:not([data-state='open'])) {
       transition-duration: 40ms;
       box-shadow: var(--base-card-classic-active-box-shadow-outer);
-      &::after {
-        box-shadow: var(--base-card-classic-active-box-shadow-inner);
-      }
     }
   }
 }

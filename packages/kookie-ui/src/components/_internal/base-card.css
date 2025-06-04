@@ -88,13 +88,8 @@
  */
 
 :where(.radix-themes) {
-  --base-card-classic-box-shadow-inner: var(--shadow-2);
   --base-card-classic-box-shadow-outer: var(--shadow-2);
-
-  --base-card-classic-hover-box-shadow-inner: var(--shadow-3);
   --base-card-classic-hover-box-shadow-outer: var(--shadow-3);
-
-  --base-card-classic-active-box-shadow-inner: var(--shadow-2);
   --base-card-classic-active-box-shadow-outer: var(--shadow-2);
 
   --base-card-classic-border-color: var(--gray-a3);
