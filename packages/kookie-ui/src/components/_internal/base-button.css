@@ -351,3 +351,58 @@
     background-color: var(--gray-a2);
   }
 }
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * TOGGLE PRESSED STATES                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Toggle button pressed states for all variants */
+.rt-BaseButton:where([data-state='on']) {
+  /* Classic variant pressed */
+  &:where(.rt-variant-classic) {
+    background: linear-gradient(to bottom, var(--accent-10), var(--accent-11));
+    box-shadow: var(--base-button-classic-hover-shadow);
+
+    &:where(.rt-high-contrast) {
+      background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
+      filter: contrast(0.88) saturate(1.1) brightness(1.1);
+
+      &:where(:not([data-accent-color='gray'])) {
+        background: var(--accent-12);
+      }
+    }
+  }
+
+  /* Solid variant pressed */
+  &:where(.rt-variant-solid) {
+    background-color: var(--accent-10);
+
+    &:where(.rt-high-contrast) {
+      background-color: var(--accent-12);
+      filter: var(--base-button-solid-high-contrast-hover-filter);
+    }
+  }
+
+  /* Soft variant pressed */
+  &:where(.rt-variant-soft) {
+    background-color: var(--accent-a5);
+  }
+
+  /* Ghost variant pressed */
+  &:where(.rt-variant-ghost) {
+    background-color: var(--accent-a4);
+  }
+
+  /* Outline variant pressed */
+  &:where(.rt-variant-outline) {
+    background-color: var(--accent-a3);
+  }
+
+  /* Surface variant pressed */
+  &:where(.rt-variant-surface) {
+    background-color: var(--accent-a3);
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
+  }
+}
