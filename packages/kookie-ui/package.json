@@ -10,6 +10,7 @@
     "themes",
     "radix"
   ],
+  "author": "Kushagra Dhawan",
   "type": "commonjs",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
