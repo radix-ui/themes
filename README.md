@@ -1,20 +1,20 @@
-[![Radix Themes Logo](https://radix-ui.com/social/themes.png)](https://radix-ui.com/themes)
+# Kookie UI
 
-# Radix Themes
+**A fork of Radix Themes - An open-source component library optimized for fast development, easy maintenance, and accessibility.**
 
-**An open-source component library optimized for fast development, easy maintenance, and accessibility.**
+Built on top of the excellent foundation provided by [Radix UI](https://radix-ui.com/).
 
 ---
 
 ## Documentation
 
-For full documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/themes/docs).
+This is a fork of Radix Themes with custom styling enhancements. For base documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/themes/docs).
 
 ## Releases
 
-For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
+For original Radix Themes releases, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
 
-## Authors
+## Original Authors
 
 - Benoît Grélard ([@benoitgrelard](https://twitter.com/benoitgrelard))
 - Vlad Moroz ([@vladyslavmoroz](https://twitter.com/vladyslavmoroz))
@@ -34,5 +34,7 @@ See our [contribution guidelines](./.github/CONTRIBUTING.md) for information on 
 ## License
 
 Licensed under the MIT License, Copyright © 2023-present [WorkOS](https://workos.com).
+
+This project is a fork of [Radix Themes](https://github.com/radix-ui/themes) and maintains the original license.
 
 See [LICENSE](./LICENSE) for more information.

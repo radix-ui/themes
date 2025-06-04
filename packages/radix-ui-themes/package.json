@@ -1,5 +1,5 @@
 {
-  "name": "@radix-ui/themes",
+  "name": "@kookie-ui/themes",
   "version": "3.2.1",
   "type": "commonjs",
   "main": "./dist/cjs/index.js",
@@ -141,12 +141,12 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
   },
-  "homepage": "https://radix-ui.com/themes",
+  "homepage": "https://github.com/kushagradhawan/HelloKookie",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/radix-ui/themes.git"
+    "url": "git+https://github.com/kushagradhawan/HelloKookie.git"
   },
   "bugs": {
-    "url": "https://github.com/radix-ui/themes/issues"
+    "url": "https://github.com/kushagradhawan/HelloKookie/issues"
   }
 }
