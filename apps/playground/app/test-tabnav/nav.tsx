@@ -2,7 +2,7 @@
 
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
-import { TabNav, Heading, Flex } from '@radix-ui/themes';
+import { TabNav, Heading, Flex } from '@kushagradhawan/kookie-ui';
 
 export function Nav() {
   const pathname = usePathname();

@@ -12,7 +12,7 @@ import {
   Section,
   Card,
   IconButton,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 import { SunIcon } from '@radix-ui/react-icons';
 

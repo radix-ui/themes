@@ -12,7 +12,7 @@ import {
   Container,
   Section,
   Separator,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 
 export default function Test() {
   return (

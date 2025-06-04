@@ -3,7 +3,7 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { TabNav } from '@radix-ui/themes';
+import { TabNav } from '@kushagradhawan/kookie-ui';
 
 const TabNavDemo = React.forwardRef<
   React.ElementRef<typeof TabNav.Root>,

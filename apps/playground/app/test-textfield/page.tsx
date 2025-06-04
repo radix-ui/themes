@@ -13,7 +13,7 @@ import {
   Text,
   Tooltip,
   Spinner,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import {
   StarIcon,
   ExclamationTriangleIcon,

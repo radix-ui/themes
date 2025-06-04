@@ -9,7 +9,7 @@ import {
   IconButton,
   Link,
   Popover,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import {
   ChatBubbleIcon,
   DotsHorizontalIcon,

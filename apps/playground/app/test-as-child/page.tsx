@@ -17,7 +17,7 @@ import {
   TabNav,
   Text,
   Theme,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 import NextLink from 'next/link';
 

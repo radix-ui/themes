@@ -30,14 +30,14 @@ const themePropDefs = {
    * @link
    * https://www.radix-ui.com/themes/docs/theme/color
    */
-  accentColor: { type: 'enum', values: accentColors, default: 'indigo' },
+  accentColor: { type: 'enum', values: accentColors, default: 'blue' },
   /**
    * Selects one of the gray color options to use in the Theme.
    *
    * @link
    * https://www.radix-ui.com/themes/docs/theme/color
    */
-  grayColor: { type: 'enum', values: grayColors, default: 'auto' },
+  grayColor: { type: 'enum', values: grayColors, default: 'slate' },
   /**
    * Controls whether to use a solid or translucent background color on panelled
    * elements such as Card or Table is solid or translucent.

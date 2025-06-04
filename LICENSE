@@ -1,6 +1,10 @@
 MIT License
 
-Copyright (c) 2023 WorkOS
+Copyright (c) 2023 WorkOS (Original Radix UI Themes)
+Copyright (c) 2024 Kushagra Dhawan (Kookie UI modifications)
+
+This project is a fork of Radix UI Themes (https://github.com/radix-ui/themes)
+Original work Copyright (c) 2023 WorkOS
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

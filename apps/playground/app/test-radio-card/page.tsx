@@ -8,8 +8,8 @@ import {
   Heading,
   Box,
   Separator,
-} from '@radix-ui/themes';
-import { radioCardsRootPropDefs } from '@radix-ui/themes/props';
+} from '@kushagradhawan/kookie-ui';
+import { radioCardsRootPropDefs } from '@kushagradhawan/kookie-ui/props';
 import { NextThemeProvider } from '../next-theme-provider';
 import { CrumpledPaperIcon, CubeIcon, GlobeIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 

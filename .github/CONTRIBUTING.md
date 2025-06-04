@@ -1,10 +1,20 @@
-# Contributing to Radix Themes
+# Contributing to Kookie UI
 
-## Code of Conduct
+We're excited that you're interested in contributing to Kookie UI! Community contributions are how we keep this project fresh and exciting.
 
-Radix has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it.
+Before contributing, please read our [code of conduct](CODE_OF_CONDUCT.md).
 
-Please read [the full text](/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+For bigger changes, please [open an issue first](https://github.com/KushagraDhawan1997/hello-kookie-ui/issues) to discuss what you'd like to change.
+
+## Ways to contribute
+
+- **Try things out!** Play around with Kookie UI and let us know how it goes via [GitHub Issues](https://github.com/KushagraDhawan1997/hello-kookie-ui/issues). What's working? What's confusing? What's missing?
+- **Join the conversation.** Discussions are where we hash out ideas, answer questions, and show off what folks in the community build with Kookie UI!
+- **Report.** Create issues with bug reports so we can make Kookie UI even better.
+
+## Questions
+
+If you have questions about Kookie UI, be sure to check out the [original Radix docs](https://radix-ui.com/themes/docs) where we have several examples and detailed API references that may help you solve your problem. You can also share your questions on [GitHub Discussions](https://github.com/KushagraDhawan1997/hello-kookie-ui/discussions).
 
 ## Heuristics
 
@@ -14,24 +24,19 @@ Please read [the full text](/CODE_OF_CONDUCT.md) so that you can understand what
 > A technique designed for solving a problem more quickly when classic methods are too slow, or for finding an approximate solution when classic methods fail to find any exact solution
 
 - Priority is the best User Experience
-- Complexity should be introduced when it’s inevitable
+- Complexity should be introduced when it's inevitable
 - Code should be easy to reason about
 - Code should be easy to delete
 - Avoid abstracting too early
 - Avoid thinking too far in the future
-
-## Questions
-
-If you have questions about Radix Themes, be sure to check out the docs where we have several examples and detailed API references that may help you solve your problem. You can also share your questions on [GitHub Discussions](https://github.com/radix-ui/themes/discussions).
 
 ## How to contribute
 
 There are many ways to contribute to the project. Code is just one possible means of contribution.
 
 - **Feedback.** Tell us what we're doing well or where we can improve.
-- **Support.** You can answer questions on StackOverflow or [GitHub Discussions](https://github.com/radix-ui/themes/discussions), or provide solutions for others in [open issues](https://github.com/radix-ui/themes/issues).
-- **Write.** If you come up with an interesting example, write about it. Post it to your blog and share it with us. We'd love to see what folks in the community build with Radix Themes!
-- **Report.** Create issues with bug reports so we can make Radix Themes even better.
+- **Support.** You can answer questions on StackOverflow or [GitHub Discussions](https://github.com/KushagraDhawan1997/hello-kookie-ui/discussions), or provide solutions for others in [open issues](https://github.com/KushagraDhawan1997/hello-kookie-ui/issues).
+- **Write.** If you come up with an interesting example, write about it. Post it to your blog and share it with us. We'd love to see what folks in the community build with Kookie UI!
 
 ## Working on your first Pull Request?
 
@@ -64,7 +69,7 @@ git pull upstream main
 
 1. Make sure your Node version matches the [.nvmrc](../.nvmrc).
 
-```
+```sh
 node -v
 ```
 

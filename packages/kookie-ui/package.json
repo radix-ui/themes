@@ -1,6 +1,6 @@
 {
-  "name": "@kookie-ui/themes",
-  "version": "3.2.1",
+  "name": "@kushagradhawan/kookie-ui",
+  "version": "0.1.0",
   "type": "commonjs",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
@@ -97,7 +97,11 @@
     "lint:ts": "tsc --noEmit",
     "lint:css": "stylelint \"src/**/*.css\"",
     "clean": "rm -rf .turbo node_modules dist tokens layout *.css",
-    "prepublishOnly": "pnpm lint"
+    "prepublishOnly": "pnpm lint",
+    "release": "node scripts/release.js",
+    "release:patch": "node scripts/release.js patch",
+    "release:minor": "node scripts/release.js minor",
+    "release:major": "node scripts/release.js major"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",

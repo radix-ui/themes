@@ -11,7 +11,7 @@ import {
   IconButton,
   Box,
   Heading,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 import { GridIcon, SunIcon } from '@radix-ui/react-icons';
 

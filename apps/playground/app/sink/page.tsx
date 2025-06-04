@@ -63,7 +63,7 @@ import {
   Theme,
   ThemePanel,
   Tooltip,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import {
   accentColors,
   avatarPropDefs,
@@ -99,7 +99,7 @@ import {
   textAreaPropDefs,
   textFieldRootPropDefs,
   textPropDefs,
-} from '@radix-ui/themes/props';
+} from '@kushagradhawan/kookie-ui/props';
 // import { HideCursor } from './hide-cursor';
 import styles from './page.module.css';
 
@@ -165,7 +165,7 @@ export default function Sink() {
                 </nav> */}
                     <Flex py="6" align="center" gap="1">
                       <RadixLogo />
-                      <Heading size="5">Radix Themes</Heading>
+                      <Heading size="5">Kookie UI</Heading>
                     </Flex>
                   </Container>
                 </header>
@@ -3770,7 +3770,7 @@ export default function Sink() {
                                   Typography
                                 </Text>
                                 <Text as="p" color="gray" size={size} style={{ maxWidth: '40ch' }}>
-                                  The goal of typography is to relate font size, line height, and
+                                  The goal of typography is to relate font size, line height, and
                                   line width in a proportional way that maximizes beauty and makes
                                   reading easier and more pleasant.
                                 </Text>
@@ -3831,15 +3831,16 @@ export default function Sink() {
                       </Heading>
 
                       <Heading size="8">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                       </Heading>
 
                       <Heading size="7">
-                        The goal of typography is to relate font size, line height, and line width
+                        The goal of typography is to relate font size, line height, and line width
                         in a proportional way
                       </Heading>
 
                       <Heading size="6">
+                        The goal of typography is to relate font size, line height, and line width
                         The goal of typography is to relate font size, line height, and line width
                         in a proportional way
                       </Heading>

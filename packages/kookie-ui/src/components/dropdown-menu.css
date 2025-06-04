@@ -1,0 +1,46 @@
+@import './_internal/base-menu.css';
+
+.rt-DropdownMenuContent {
+  max-height: var(--radix-dropdown-menu-content-available-height);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+
+.rt-DropdownMenuTriggerIcon {
+  flex-shrink: 0;
+
+  /* Default size for when not in a sized button */
+  width: 9px;
+  height: 9px;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * TRIGGER ICON RESPONSIVE SIZING                                                                  *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  /* Size 1 Button */
+  .rt-Button:where(.rt-r-size-1) :where(.rt-DropdownMenuTriggerIcon) {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Size 2 Button */
+  .rt-Button:where(.rt-r-size-2) :where(.rt-DropdownMenuTriggerIcon) {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Size 3 Button */
+  .rt-Button:where(.rt-r-size-3) :where(.rt-DropdownMenuTriggerIcon) {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Size 4 Button */
+  .rt-Button:where(.rt-r-size-4) :where(.rt-DropdownMenuTriggerIcon) {
+    width: 12px;
+    height: 12px;
+  }
+}

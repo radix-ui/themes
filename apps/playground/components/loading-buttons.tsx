@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { ArrowRightIcon, StarIcon } from '@radix-ui/react-icons';
-import { Button, Em, Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
-import { buttonPropDefs } from '@radix-ui/themes/props';
-import { mapButtonSizeToSpinnerSize, mapResponsiveProp } from '@radix-ui/themes/helpers';
+import { Button, Em, Flex, IconButton, Spinner, Text } from '@kushagradhawan/kookie-ui';
+import { buttonPropDefs } from '@kushagradhawan/kookie-ui/props';
+import { mapButtonSizeToSpinnerSize, mapResponsiveProp } from '@kushagradhawan/kookie-ui/helpers';
 
 export function LoadingButtons() {
   const [loading1, onClick1] = useLoading();

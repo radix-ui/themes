@@ -10,7 +10,7 @@ import {
   Link,
   Code,
   Blockquote,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 
 export default function Test() {

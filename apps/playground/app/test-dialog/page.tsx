@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, Flex, Button, Container, Dialog, Text } from '@radix-ui/themes';
+import { Theme, Flex, Button, Container, Dialog, Text } from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 import { Share2Icon } from '@radix-ui/react-icons';
 

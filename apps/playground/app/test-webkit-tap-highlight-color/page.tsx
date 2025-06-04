@@ -15,7 +15,7 @@ import {
   DropdownMenu,
   Link,
   CheckboxGroup,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 import { TrashIcon } from '@radix-ui/react-icons';
 

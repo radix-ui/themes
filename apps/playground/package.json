@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",
-    "@radix-ui/themes": "workspace:*",
+    "@kushagradhawan/kookie-ui": "workspace:*",
     "geist": "^1.4.2",
     "next": "^15.1.2",
     "next-themes": "0.2.1",

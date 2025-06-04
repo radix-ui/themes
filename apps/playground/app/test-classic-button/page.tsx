@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Theme, ThemePanel, Container, Section, Flex, Button } from '@radix-ui/themes';
-import { accentColors } from '@radix-ui/themes/props';
+import { Theme, ThemePanel, Container, Section, Flex, Button } from '@kushagradhawan/kookie-ui';
+import { accentColors } from '@kushagradhawan/kookie-ui/props';
 import { Pencil2Icon } from '@radix-ui/react-icons';
 
 export default function Test() {

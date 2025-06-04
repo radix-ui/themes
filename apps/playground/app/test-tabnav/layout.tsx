@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, Container, Section, Box } from '@radix-ui/themes';
+import { Theme, Container, Section, Box } from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 import { Nav } from './nav';
 

@@ -20,7 +20,7 @@ import {
   Separator,
   //
   ThemePanel,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import styles from './page.module.css';
 
 export default function HomeOS() {

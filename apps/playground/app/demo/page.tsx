@@ -13,7 +13,7 @@ import {
   Select,
   //
   ThemePanel,
-} from '@radix-ui/themes';
+} from '@kushagradhawan/kookie-ui';
 import { Pencil1Icon } from '@radix-ui/react-icons';
 import { users } from './users';
 import styles from './page.module.css';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, Avatar, Flex, ThemePanel } from '@radix-ui/themes';
+import { Theme, Avatar, Flex, ThemePanel } from '@kushagradhawan/kookie-ui';
 import { NextThemeProvider } from '../next-theme-provider';
 
 export default function Test() {
