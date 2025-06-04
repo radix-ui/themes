@@ -60,5 +60,7 @@ export * as TextField from './text-field.js';
 export { Text, type TextProps } from './text.js';
 export { ThemePanel, type ThemePanelProps } from './theme-panel.js';
 export { Theme, ThemeContext, type ThemeProps, useThemeContext } from './theme.js';
+export { ToggleButton, type ToggleButtonProps } from './toggle-button.js';
+export { ToggleIconButton, type ToggleIconButtonProps } from './toggle-icon-button.js';
 export { Tooltip, type TooltipProps } from './tooltip.js';
 export { VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.js';

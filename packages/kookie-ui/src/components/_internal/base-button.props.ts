@@ -16,10 +16,12 @@ const baseButtonPropDefs = {
   ...highContrastPropDef,
   ...radiusPropDef,
   loading: { type: 'boolean', className: 'rt-loading', default: false },
+  fullWidth: { type: 'boolean', className: 'rt-full-width', default: false },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   loading: PropDef<boolean>;
+  fullWidth: PropDef<boolean>;
 };
 
 export { baseButtonPropDefs };

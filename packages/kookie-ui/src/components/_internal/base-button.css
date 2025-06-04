@@ -21,6 +21,11 @@
   height: var(--base-button-height);
 }
 
+.rt-BaseButton:where(.rt-full-width) {
+  display: flex;
+  width: 100%;
+}
+
 /***************************************************************************************************
  *                                                                                                 *
  * SIZES                                                                                           *

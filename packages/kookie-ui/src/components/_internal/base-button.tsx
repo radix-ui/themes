@@ -16,22 +16,36 @@ import type { GetPropDefTypes } from '../../props/prop-def.js';
 
 type BaseButtonElement = React.ElementRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
-interface BaseButtonProps
-  extends ComponentPropsWithout<'button', RemovedProps>,
-    MarginProps,
-    BaseButtonOwnProps {}
+
+// Polymorphic types
+type PolymorphicBaseButtonProps<C extends React.ElementType = 'button'> = {
+  as?: C;
+} & BaseButtonOwnProps &
+  MarginProps &
+  Omit<React.ComponentPropsWithoutRef<C>, keyof BaseButtonOwnProps | keyof MarginProps | 'as'>;
+
+interface BaseButtonProps extends PolymorphicBaseButtonProps {}
+
 const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, forwardedRef) => {
   const { size = baseButtonPropDefs.size.default } = props;
   const {
     className,
     children,
     asChild,
+    as,
     color,
     radius,
     disabled = props.loading,
     ...baseButtonProps
   } = extractProps(props, baseButtonPropDefs, marginPropDefs);
-  const Comp = asChild ? Slot.Root : 'button';
+
+  // asChild takes precedence over as prop
+  const Comp = asChild ? Slot.Root : as || 'button';
+
+  // Only pass disabled for elements that support it
+  const shouldPassDisabled =
+    asChild || !as || ['button', 'input', 'textarea', 'select'].includes(as);
+
   return (
     <Comp
       // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
@@ -41,7 +55,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       {...baseButtonProps}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
-      disabled={disabled}
+      {...(shouldPassDisabled && { disabled })}
     >
       {props.loading ? (
         <>
