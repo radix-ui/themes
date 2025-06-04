@@ -11,6 +11,10 @@
     "radix"
   ],
   "author": "Kushagra Dhawan",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
   "type": "commonjs",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
@@ -65,7 +69,6 @@
   "sideEffects": [
     "*.css"
   ],
-  "license": "MIT",
   "files": [
     "src/**",
     "dist/**",
