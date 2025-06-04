@@ -47,17 +47,24 @@ jobs:
         id: version
         run: |
           cd packages/kookie-ui
-          echo "version=$(node -p 'require(\"./package.json\").version')" >> $GITHUB_OUTPUT
+          VERSION=$(node -p 'require("./package.json").version')
+          echo "Extracted version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Check if version exists on NPM
         id: check_version
         run: |
           cd packages/kookie-ui
-          if npm view @kushagradhawan/kookie-ui@${{ steps.version.outputs.version }} version 2>/dev/null; then
+          VERSION="${{ steps.version.outputs.version }}"
+          echo "Checking if version $VERSION exists on NPM..."
+          if npm view @kushagradhawan/kookie-ui@$VERSION version 2>/dev/null; then
+            echo "Version $VERSION already exists on NPM"
             echo "exists=true" >> $GITHUB_OUTPUT
           else
+            echo "Version $VERSION does not exist on NPM - proceeding with publish"
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
+          echo "Check result: $(cat $GITHUB_OUTPUT | grep exists)"
 
       - name: Publish to NPM
         if: steps.check_version.outputs.exists == 'false'
