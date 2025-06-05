@@ -1,0 +1,52 @@
+.rt-Image {
+  display: block;
+  object-fit: var(--object-fit);
+  box-shadow: var(--box-shadow);
+  border-radius: max(var(--radius-3), var(--radius-full));
+}
+
+/* Object fit variants */
+.rt-r-fit-cover {
+  --object-fit: cover;
+}
+
+.rt-r-fit-contain {
+  --object-fit: contain;
+}
+
+.rt-r-fit-fill {
+  --object-fit: fill;
+}
+
+.rt-r-fit-scale-down {
+  --object-fit: scale-down;
+}
+
+.rt-r-fit-none {
+  --object-fit: none;
+}
+
+/* Shadow variants */
+.rt-r-shadow-1 {
+  --box-shadow: var(--shadow-1);
+}
+
+.rt-r-shadow-2 {
+  --box-shadow: var(--shadow-2);
+}
+
+.rt-r-shadow-3 {
+  --box-shadow: var(--shadow-3);
+}
+
+.rt-r-shadow-4 {
+  --box-shadow: var(--shadow-4);
+}
+
+.rt-r-shadow-5 {
+  --box-shadow: var(--shadow-5);
+}
+
+.rt-r-shadow-6 {
+  --box-shadow: var(--shadow-6);
+}

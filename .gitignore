@@ -78,3 +78,8 @@ Thumbs.db
 # IDEs
 .vscode
 .idea
+
+# Playground (local development only)
+apps/playground/app/page.tsx
+apps/playground/components/
+apps/playground/public/images/

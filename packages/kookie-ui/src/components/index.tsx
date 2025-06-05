@@ -30,6 +30,7 @@ export {
   ThickChevronRightIcon,
   ThickDividerHorizontalIcon,
 } from './icons.js';
+export { Image, type ImageProps } from './image.js';
 export { Inset, type InsetProps } from './inset.js';
 export { Kbd, type KbdProps } from './kbd.js';
 export { Link, type LinkProps } from './link.js';

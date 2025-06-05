@@ -1,6 +1,44 @@
 # Changelog
 
-## 0.1.5
+## 0.1.8
+
+### 🖼️ New Image Component
+
+- **Added comprehensive Image component**: Framework-agnostic image component with full prop-based styling
+  - **Object fit control**: `fit` prop with values `cover`, `contain`, `fill`, `scale-down`, `none`
+  - **Shadow system**: `shadow` prop with values `1` through `6` using design system shadow tokens
+  - **Radius support**: Fully responsive to theme radius settings and explicit `radius` prop
+  - **Responsive sizing**: Support for `width`, `height`, `maxWidth`, `maxHeight` with responsive objects
+  - **Native lazy loading**: `loading="lazy"` by default with option for `loading="eager"`
+  - **Accessibility ready**: Proper alt text handling and all standard img attributes
+- **Shadow prop system**: New `shadow.props.ts` with design system integration
+- **Enhanced CSS utilities**: Added object-fit and box-shadow utilities to component system
+
+### 🔧 Font Rendering Fixes
+
+- **Fixed Text component font inheritance**: Added explicit `font-family: var(--default-font-family)` to ensure Geist font renders consistently
+  - Resolves issue where Text components wouldn't show Geist font when used as a library
+  - Now consistent with Button and other components that explicitly declare font-family
+  - Better fallback handling for environments without proper Theme wrapper
+
+### 📚 Documentation & Examples
+
+- **Comprehensive ImageExample**: Added playground examples showcasing all Image component features
+  - Basic usage patterns (landscape, portrait, square formats)
+  - Object fit demonstrations with visual comparisons
+  - Shadow variations across all shadow levels
+  - Radius options from theme integration
+  - Responsive sizing patterns and constraints
+  - Real-world usage examples (hero images, cards, thumbnails)
+
+### 🎨 Theme Integration
+
+- **Improved radius inheritance**: Fixed Image component to properly inherit theme radius scaling
+  - Responds correctly to ThemePanel radius changes
+  - Uses `max(var(--radius-3), var(--radius-full))` pattern consistent with other components
+  - Proper CSS variable cascade from theme context
+
+## 0.1.6
 
 ### 🚀 Production Readiness Improvements
 
