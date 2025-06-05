@@ -13,7 +13,7 @@
     0 1px 3px 0 var(--black-a1);
 
   --shadow-3:
-    0 0 0 1px var(--gray-a3),
+    0 0 0 1px var(--gray-a4),
     0 2px 3px -2px var(--gray-a3),
     0 3px 12px -4px var(--black-a2),
     0 4px 16px -8px var(--black-a2);
@@ -51,7 +51,7 @@
       0 1px 3px 0 var(--black-a1);
 
     --shadow-3:
-      0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%),
+      0 0 0 1px color-mix(in oklab, var(--gray-a4), var(--gray-4) 25%),
       0 2px 3px -2px var(--gray-a3),
       0 3px 12px -4px var(--black-a2),
       0 4px 16px -8px var(--black-a2);
@@ -91,7 +91,7 @@
     0 1px 3px 0 var(--black-a5);
 
   --shadow-3:
-    0 0 0 1px var(--gray-a6),
+    0 0 0 1px var(--gray-a7),
     0 2px 3px -2px var(--black-a3),
     0 3px 8px -2px var(--black-a6),
     0 4px 12px -4px var(--black-a7);
@@ -131,7 +131,7 @@
       0 1px 3px 0 var(--black-a5);
 
     --shadow-3:
-      0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%),
+      0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%),
       0 2px 3px -2px var(--black-a3),
       0 3px 8px -2px var(--black-a6),
       0 4px 12px -4px var(--black-a7);

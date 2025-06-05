@@ -17,12 +17,12 @@ import type { GetPropDefTypes } from '../../props/prop-def.js';
 type BaseButtonElement = React.ElementRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
 
-// Polymorphic types
+// Polymorphic types using the proper ComponentPropsWithout pattern
 type PolymorphicBaseButtonProps<C extends React.ElementType = 'button'> = {
   as?: C;
 } & BaseButtonOwnProps &
   MarginProps &
-  Omit<React.ComponentPropsWithoutRef<C>, keyof BaseButtonOwnProps | keyof MarginProps | 'as'>;
+  ComponentPropsWithout<C, RemovedProps | keyof BaseButtonOwnProps | keyof MarginProps | 'as'>;
 
 interface BaseButtonProps extends PolymorphicBaseButtonProps {}
 
@@ -46,6 +46,19 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const shouldPassDisabled =
     asChild || !as || ['button', 'input', 'textarea', 'select'].includes(as);
 
+  // Generate unique ID for loading announcements
+  const loadingId = React.useId();
+  const describedById = props.loading ? `${loadingId}-loading` : undefined;
+
+  // Enhanced accessibility props for loading state
+  const accessibilityProps = props.loading
+    ? {
+        'aria-busy': true,
+        'aria-disabled': true,
+        'aria-describedby': describedById,
+      }
+    : {};
+
   return (
     <Comp
       // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
@@ -53,6 +66,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-accent-color={color}
       data-radius={radius}
       {...baseButtonProps}
+      {...accessibilityProps}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
       {...(shouldPassDisabled && { disabled })}
@@ -69,11 +83,19 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
           <span style={{ display: 'contents', visibility: 'hidden' }} aria-hidden>
             {children}
           </span>
-          <VisuallyHidden>{children}</VisuallyHidden>
+
+          {/* Enhanced accessibility for loading state */}
+          <VisuallyHidden>
+            <span id={describedById}>Loading, please wait...</span>
+            {children}
+          </VisuallyHidden>
 
           <Flex asChild align="center" justify="center" position="absolute" inset="0">
             <span>
-              <Spinner size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)} />
+              <Spinner
+                size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)}
+                aria-hidden="true"
+              />
             </span>
           </Flex>
         </>

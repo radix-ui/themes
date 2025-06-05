@@ -1,0 +1,43 @@
+.radix-themes {
+  /* Duration tokens */
+  --duration-1: 100ms; /* Micro interactions */
+  --duration-2: 150ms; /* Fast transitions */
+  --duration-3: 200ms; /* Standard transitions */
+  --duration-4: 300ms; /* Slower transitions */
+  --duration-5: 500ms; /* Slow animations */
+
+  /* Easing tokens */
+  --ease-1: ease-out; /* Fast start, slow end */
+  --ease-2: ease-in-out; /* Smooth both ways */
+  --ease-3: cubic-bezier(0.4, 0, 0.2, 1); /* Material Design standard */
+  --ease-4: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Ease out back */
+  --ease-5: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce */
+
+  /* Common transition combinations */
+  --transition-fast: var(--duration-2) var(--ease-1);
+  --transition-standard: var(--duration-3) var(--ease-2);
+  --transition-slow: var(--duration-4) var(--ease-3);
+
+  /* Specific component transitions */
+  --transition-button:
+    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    filter var(--duration-2) var(--ease-1), transform var(--duration-1) var(--ease-1);
+
+  --transition-focus: outline var(--duration-2) var(--ease-1), outline-offset var(--duration-2) var(--ease-1);
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .radix-themes {
+    --duration-1: 0ms;
+    --duration-2: 0ms;
+    --duration-3: 0ms;
+    --duration-4: 0ms;
+    --duration-5: 0ms;
+    --transition-fast: none;
+    --transition-standard: none;
+    --transition-slow: none;
+    --transition-button: none;
+    --transition-focus: none;
+  }
+}

@@ -1,10 +1,15 @@
 .rt-BaseButton {
+  all: unset;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   user-select: none;
-  vertical-align: top;
+  position: relative;
+  cursor: default;
+  gap: var(--base-button-gap);
+  transition: var(--transition-button);
 
   font-family: var(--default-font-family);
   font-style: normal;
@@ -12,10 +17,28 @@
 
   &:where([data-disabled]) {
     --spinner-opacity: 1;
+    /* Disabled cursor and interaction prevention */
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   &:where(.rt-loading) {
     position: relative;
+    cursor: wait;
+  }
+
+  /* Scale animation on press for all button variants */
+  &:where(:active:not([data-disabled], [data-state='open'])) {
+    transform: scale(0.98);
+  }
+
+  /* Reduced motion support for transforms */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:where(:active:not([data-disabled], [data-state='open'])) {
+      transform: none;
+    }
   }
 
   height: var(--base-button-height);
@@ -71,6 +94,8 @@
   --base-button-classic-hover-shadow: var(--shadow-3);
   --base-button-classic-active-shadow: var(--shadow-2);
   --base-button-classic-disabled-shadow: none;
+  --base-button-classic-hover-filter: brightness(1.08) saturate(1.02) contrast(1.02);
+  --base-button-classic-active-filter: brightness(0.88) saturate(1.05) contrast(1.1);
 }
 /* prettier-ignore */
 :is(.dark, .dark-theme),
@@ -79,6 +104,8 @@
   --base-button-classic-hover-shadow: var(--shadow-3);
   --base-button-classic-active-shadow: var(--shadow-2);
   --base-button-classic-disabled-shadow: none;
+  --base-button-classic-hover-filter: brightness(1.12) saturate(1.05) contrast(1.02);
+  --base-button-classic-active-filter: brightness(0.92) saturate(1.1) contrast(1.05);
 }
 
 .rt-BaseButton:where(.rt-variant-classic) {
@@ -108,8 +135,9 @@
   }
   @media (hover: hover) {
     &:where(:hover) {
-      background: linear-gradient(to bottom, var(--accent-10), var(--accent-11));
+      background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
       box-shadow: var(--base-button-classic-hover-shadow);
+      filter: var(--base-button-classic-hover-filter);
       &:where(.rt-high-contrast) {
         background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
         filter: contrast(0.88) saturate(1.1) brightness(1.1);
@@ -122,8 +150,9 @@
     }
   }
   &:where([data-state='open']) {
-    background: linear-gradient(to bottom, var(--accent-10), var(--accent-11));
+    background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
     box-shadow: var(--base-button-classic-hover-shadow);
+    filter: var(--base-button-classic-hover-filter);
     &:where(.rt-high-contrast) {
       background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
       filter: contrast(0.88) saturate(1.1) brightness(1.1);
@@ -135,11 +164,12 @@
     }
   }
   &:where(:active:not([data-state='open'], [data-disabled])) {
-    background: linear-gradient(to bottom, var(--accent-10), var(--accent-9));
+    background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
     box-shadow: var(--base-button-classic-active-shadow);
+    filter: var(--base-button-classic-active-filter);
 
     &:where(.rt-high-contrast) {
-      background: linear-gradient(to bottom, var(--accent-12), var(--accent-11));
+      background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
       filter: contrast(0.82) saturate(1.2) brightness(1.16);
 
       /* Use solid color for non-gray accent colors */
@@ -154,6 +184,8 @@
     box-shadow: var(--base-button-classic-disabled-shadow);
     outline: none;
     filter: none;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -222,6 +254,8 @@
     background-color: var(--gray-a3);
     outline: none;
     filter: none;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -236,6 +270,8 @@
   &:where([data-disabled]) {
     color: var(--gray-a8);
     background-color: var(--gray-a3);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -260,6 +296,8 @@
   &:where([data-disabled]) {
     color: var(--gray-a8);
     background-color: var(--gray-a3);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -282,6 +320,8 @@
   &:where([data-disabled]) {
     color: var(--gray-a8);
     background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -316,6 +356,8 @@
     color: var(--gray-a8);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
     background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -349,6 +391,8 @@
     color: var(--gray-a8);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
     background-color: var(--gray-a2);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -360,14 +404,23 @@
 
 /* Toggle button pressed states for all variants */
 .rt-BaseButton:where([data-state='on']) {
+  /* Add scale transform for pressed state - same as active */
+  transform: scale(0.98);
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transform: none;
+  }
+
   /* Classic variant pressed */
   &:where(.rt-variant-classic) {
-    background: linear-gradient(to bottom, var(--accent-10), var(--accent-11));
-    box-shadow: var(--base-button-classic-hover-shadow);
+    background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
+    box-shadow: var(--base-button-classic-active-shadow);
+    filter: var(--base-button-classic-active-filter);
 
     &:where(.rt-high-contrast) {
       background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
-      filter: contrast(0.88) saturate(1.1) brightness(1.1);
+      filter: contrast(0.82) saturate(1.2) brightness(1.16);
 
       &:where(:not([data-accent-color='gray'])) {
         background: var(--accent-12);
@@ -378,10 +431,11 @@
   /* Solid variant pressed */
   &:where(.rt-variant-solid) {
     background-color: var(--accent-10);
+    filter: var(--base-button-solid-active-filter);
 
     &:where(.rt-high-contrast) {
       background-color: var(--accent-12);
-      filter: var(--base-button-solid-high-contrast-hover-filter);
+      filter: var(--base-button-solid-high-contrast-active-filter);
     }
   }
 
@@ -404,5 +458,60 @@
   &:where(.rt-variant-surface) {
     background-color: var(--accent-a3);
     box-shadow: inset 0 0 0 1px var(--accent-a8);
+  }
+}
+
+/* Disabled state for ALL toggle buttons (pressed and unpressed) */
+.rt-BaseButton:where([disabled][aria-pressed]) {
+  /* Remove scale transform when disabled */
+  transform: none;
+
+  /* Apply consistent disabled styling across all variants */
+  color: var(--gray-a8);
+  background-color: var(--gray-a3);
+  background: var(--gray-a3);
+  box-shadow: none;
+  filter: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+
+  /* Override any pressed state styling with higher specificity */
+  &:where([data-state='on']) {
+    transform: none;
+    background: var(--gray-a3);
+    background-color: var(--gray-a3);
+    box-shadow: none;
+    filter: none;
+  }
+
+  /* Override variant-specific pressed states */
+  &:where(.rt-variant-classic) {
+    background: var(--gray-a3);
+    box-shadow: none;
+    filter: none;
+  }
+
+  &:where(.rt-variant-solid) {
+    background-color: var(--gray-a3);
+    filter: none;
+  }
+
+  &:where(.rt-variant-soft) {
+    background-color: var(--gray-a3);
+  }
+
+  &:where(.rt-variant-ghost) {
+    background-color: var(--gray-a3);
+  }
+
+  &:where(.rt-variant-outline) {
+    background-color: var(--gray-a3);
+    box-shadow: none;
+  }
+
+  &:where(.rt-variant-surface) {
+    background-color: var(--gray-a3);
+    box-shadow: none;
   }
 }
