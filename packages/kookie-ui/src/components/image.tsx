@@ -21,11 +21,17 @@ type ImageOwnProps = GetPropDefTypes<typeof imagePropDefs> & {
 };
 
 interface ImageProps
-  extends ComponentPropsWithout<'img', RemovedProps | 'color' | 'width' | 'height'>,
+  extends ComponentPropsWithout<'img', RemovedProps | 'color' | 'width' | 'height' | 'alt'>,
     MarginProps,
     WidthProps,
     HeightProps,
-    ImageOwnProps {}
+    ImageOwnProps {
+  /**
+   * The alt attribute provides alternative information for an image if a user for some reason cannot view it.
+   * Required for accessibility.
+   */
+  alt: string;
+}
 
 const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) => {
   const {
@@ -33,6 +39,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     radius,
     style,
     loading = 'lazy',
+    alt,
     ...imgProps
   } = extractProps(props, imagePropDefs, marginPropDefs, widthPropDefs, heightPropDefs);
 
@@ -42,6 +49,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       loading={loading}
       style={style}
       className={classNames('rt-Image', className)}
+      alt={alt}
       {...imgProps}
       ref={forwardedRef}
     />
