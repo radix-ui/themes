@@ -1,5 +1,60 @@
 # Changelog
 
+## 0.1.9
+
+### 🖼️ Major Image Component Enhancements
+
+- **BREAKING/IMPROVED: Revolutionary asChild API**: Complete rewrite of asChild functionality for intuitive usage
+
+  - **Perfect API**: Now supports `<Image src="..." alt="..." asChild><a href="#" /></Image>` - all image props go on Image component
+  - **Automatic style resets**: No more manual styling needed - automatically resets `textDecoration`, `border`, `background`, etc.
+  - **Built-in img injection**: Component automatically creates `<img>` elements inside child components
+  - **Follows Radix patterns**: Now matches Card and other Radix component asChild behavior
+
+- **NEW: Blur variant**: Added `variant="blur"` with sophisticated layered blur effect
+
+  - **Layered architecture**: Foreground sharp image with blurred, saturated background offset
+  - **Design system integration**: Uses CSS variables (`--blur-filter`, `--blur-opacity`, `--blur-offset-y`)
+  - **Full compatibility**: Works with all existing props (radius, shadow, fit, etc.)
+  - **AsChild support**: Blur variant fully supports asChild with proper interactive states
+
+- **Enhanced transitions**: Built-in smooth animations using design system tokens
+
+  - **Design system compliance**: Uses `transition: var(--transition-button)` instead of hardcoded values
+  - **Interactive state consistency**: Hover, focus, and active states follow Card component patterns
+  - **Automatic compatibility**: No manual transition styles needed for asChild usage
+
+- **Improved CSS architecture**: Better specificity and linting compliance
+  - **Proper stylelint directives**: Added `/* stylelint-disable selector-max-type */` for type selectors
+  - **Card-pattern consistency**: Interactive states follow established Card component architecture
+  - **Clean CSS variables**: Blur effects use CSS custom properties for maintainability
+
+### 📚 Comprehensive Button Examples Enhancement
+
+- **NEW: "As another element" tabs**: Added missing documentation for asChild and as prop usage across all button components
+
+  - **Button component**: Shows asChild for navigation, download links, external links with proper security attributes
+  - **IconButton component**: Demonstrates navigation icons, social actions, accessibility patterns with aria-label usage
+  - **ToggleButton component**: Toggle states as links, bookmark toggles, interactive toolbar examples
+
+- **Accessibility focus**: Enhanced examples showing proper ARIA attributes and semantic HTML usage
+  - **Screen reader support**: Comprehensive aria-label examples for IconButton components
+  - **Semantic navigation**: Button-as-link patterns for proper navigation semantics
+  - **Form integration**: Examples of buttons in form contexts with proper type attributes
+
+### 🔧 Technical Improvements
+
+- **CSS linter compliance**: Fixed all selector specificity and type selector issues
+- **TypeScript accuracy**: Proper typing for React.cloneElement operations and child prop handling
+- **Performance optimization**: Reduced redundant style applications and improved render efficiency
+- **Error handling**: Better void element handling to prevent img children errors
+
+### 🎨 Design System Consistency
+
+- **Variant naming alignment**: Changed from `variant="default"` to `variant="surface"` matching Radix conventions
+- **Token usage standardization**: Consistent use of design system tokens across all components
+- **Interactive state patterns**: Unified hover, focus, and active state implementations
+
 ## 0.1.8
 
 ### 🖼️ New Image Component

@@ -1,8 +1,96 @@
+/* stylelint-disable selector-max-type */
+/* Disable selector-max-type rule to target `button` and `a` tags. */
+/* Make sure these tags are wrapped in `:where()` for 0 specificity. */
+
 .rt-Image {
   display: block;
   object-fit: var(--object-fit);
   box-shadow: var(--box-shadow);
-  border-radius: max(var(--radius-3), var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-full));
+  transition: var(--transition-button);
+}
+
+/* Interactive states - follows Card pattern */
+.rt-Image:where(:any-link, button, label) {
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      transform: scale(1.02);
+      box-shadow:
+        var(--box-shadow, var(--shadow-2)),
+        0 0 0 1px var(--gray-a4);
+    }
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+
+  &:where(:active) {
+    transform: scale(0.98);
+  }
+}
+
+/* Blur variant wrapper */
+.rt-variant-blur {
+  position: relative;
+  display: inline-block;
+}
+
+/* Interactive states for blur variant - follows Card pattern */
+.rt-variant-blur:where(:any-link, button, label) {
+  cursor: pointer;
+  transition: var(--transition-button);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      transform: scale(1.02);
+    }
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+
+  &:where(:active) {
+    transform: scale(0.98);
+  }
+}
+
+/* Disable individual image interactions when inside blur variant */
+/* stylelint-disable-next-line selector-max-specificity */
+.rt-variant-blur:where(:any-link, button, label) .rt-Image {
+  cursor: inherit;
+  transform: none !important;
+  outline: none !important;
+  box-shadow: var(--box-shadow) !important;
+}
+
+/* Blur background image */
+.rt-Image--blur-bg {
+  position: absolute;
+  top: var(--blur-offset-y, 8px);
+  left: var(--blur-offset-x, 0);
+  filter: var(--blur-filter);
+  opacity: var(--blur-opacity);
+  z-index: -1;
+}
+
+/* Blur variant CSS variables */
+.rt-variant-blur {
+  --blur-filter: blur(16px) saturate(1.5);
+  --blur-opacity: 0.5;
+  --blur-offset-y: 8px;
+  --blur-offset-x: 0;
+}
+
+/* Image inside blur variant gets positioned */
+.rt-Image--blur {
+  position: relative;
+  z-index: 1;
 }
 
 /* Object fit variants */
