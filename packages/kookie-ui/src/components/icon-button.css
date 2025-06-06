@@ -16,29 +16,29 @@
     &:where(.rt-r-size-1) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: 13px;
-        height: 13px;
+        width: 16px;
+        height: 16px;
       }
     }
     &:where(.rt-r-size-2) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: 15px;
-        height: 15px;
+        width: 18px;
+        height: 18px;
       }
     }
     &:where(.rt-r-size-3) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: 17px;
-        height: 17px;
+        width: 20px;
+        height: 20px;
       }
     }
     &:where(.rt-r-size-4) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: 19px;
-        height: 19px;
+        width: 22px;
+        height: 22px;
       }
     }
   }

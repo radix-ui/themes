@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.10
+
+### 🎯 Icon Size Improvements
+
+- **Enhanced icon visibility**: Increased icon sizes across all button components for better readability
+
+  - **Size 1**: 13px → **16px** (+3px)
+  - **Size 2**: 15px → **18px** (+3px)
+  - **Size 3**: 17px → **20px** (+3px)
+  - **Size 4**: 19px → **22px** (+3px)
+
+- **Consistent sizing**: All button types now use unified icon sizes
+
+  - **Button**: Updated SVG sizing for improved visual balance with text
+  - **IconButton**: Enhanced icon prominence for better usability
+  - **ToggleIconButton**: Inherits IconButton sizing for consistency
+
+- **Simplified examples**: Removed redundant manual icon sizing from playground examples
+  - **Automatic inheritance**: Icons now automatically get correct size from CSS
+  - **Single source of truth**: Icon sizes defined only in component CSS
+  - **Cleaner codebase**: Eliminated duplicate size calculations
+
+### 🔧 Technical Improvements
+
+- **CSS-driven sizing**: Icons automatically sized via `& :where(svg)` selectors
+- **Better maintainability**: Icon size changes only require CSS updates
+- **Consistent progression**: Clean even-number sizing (16, 18, 20, 22px)
+
 ## 0.1.9
 
 ### 🖼️ Major Image Component Enhancements
@@ -28,19 +56,6 @@
   - **Proper stylelint directives**: Added `/* stylelint-disable selector-max-type */` for type selectors
   - **Card-pattern consistency**: Interactive states follow established Card component architecture
   - **Clean CSS variables**: Blur effects use CSS custom properties for maintainability
-
-### 📚 Comprehensive Button Examples Enhancement
-
-- **NEW: "As another element" tabs**: Added missing documentation for asChild and as prop usage across all button components
-
-  - **Button component**: Shows asChild for navigation, download links, external links with proper security attributes
-  - **IconButton component**: Demonstrates navigation icons, social actions, accessibility patterns with aria-label usage
-  - **ToggleButton component**: Toggle states as links, bookmark toggles, interactive toolbar examples
-
-- **Accessibility focus**: Enhanced examples showing proper ARIA attributes and semantic HTML usage
-  - **Screen reader support**: Comprehensive aria-label examples for IconButton components
-  - **Semantic navigation**: Button-as-link patterns for proper navigation semantics
-  - **Form integration**: Examples of buttons in form contexts with proper type attributes
 
 ### 🔧 Technical Improvements
 
@@ -75,16 +90,6 @@
   - Resolves issue where Text components wouldn't show Geist font when used as a library
   - Now consistent with Button and other components that explicitly declare font-family
   - Better fallback handling for environments without proper Theme wrapper
-
-### 📚 Documentation & Examples
-
-- **Comprehensive ImageExample**: Added playground examples showcasing all Image component features
-  - Basic usage patterns (landscape, portrait, square formats)
-  - Object fit demonstrations with visual comparisons
-  - Shadow variations across all shadow levels
-  - Radius options from theme integration
-  - Responsive sizing patterns and constraints
-  - Real-world usage examples (hero images, cards, thumbnails)
 
 ### 🎨 Theme Integration
 
@@ -138,16 +143,9 @@
 - Better disabled state styling with proper visual hierarchy
 - Enhanced development warnings for accessibility compliance
 - Optimized button interaction performance
-- Fixed TypeScript errors in ToggleIconButton component
-- Updated examples with proper accessibility attributes
-- **Fixed TypeScript consistency**: BaseButton now uses ComponentPropsWithout pattern like all other components
-- **Code quality improvements**: Fixed trailing commas and formatting in checkbox/radio card components
-
-### 📚 Example Updates
-
-- **ToggleButtonExample**: Added comprehensive accessibility attributes to all icon buttons
-- **Enhanced interactive examples**: Better state management and visual feedback
-- **Improved layout organization**: Cleaner grid layouts and better visual hierarchy
+  - Fixed TypeScript errors in ToggleIconButton component
+  - **Fixed TypeScript consistency**: BaseButton now uses ComponentPropsWithout pattern like all other components
+  - **Code quality improvements**: Fixed trailing commas and formatting in checkbox/radio card components
 
 ## 0.1.4
 
