@@ -1,28 +1,17 @@
-import * as React from 'react';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import type { Metadata } from 'next';
+import { Theme } from '@kushagradhawan/kookie-ui';
 import './globals.css';
-import '@kushagradhawan/kookie-ui/styles.css';
-import { NextThemeProvider } from './next-theme-provider';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Kookie UI Playground',
-  description: 'A playground of Kookie UI components',
-  icons: {
-    icon: '/favicon.ico',
-  },
+  description: 'Testing ground for Kookie UI components',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en">
       <body>
-        <NextThemeProvider>{children}</NextThemeProvider>
+        <Theme>{children}</Theme>
       </body>
     </html>
   );

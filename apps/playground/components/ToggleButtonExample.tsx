@@ -10,17 +10,7 @@ import {
   Text,
   Tabs,
 } from '@kushagradhawan/kookie-ui';
-import {
-  Heart,
-  Star,
-  Bookmark,
-  Share,
-  Settings,
-  Plus,
-  ChevronRight,
-  ToggleLeft,
-  ToggleRight,
-} from 'lucide-react';
+import { Heart, Star, Bookmark, Share, Settings, Plus, ChevronRight } from 'lucide-react';
 
 export function ToggleButtonExample() {
   const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
@@ -96,6 +86,7 @@ export function ToggleButtonExample() {
           <Tabs.Trigger value="all">All colors</Tabs.Trigger>
           <Tabs.Trigger value="sizes">All sizes</Tabs.Trigger>
           <Tabs.Trigger value="interactive">Interactive</Tabs.Trigger>
+          <Tabs.Trigger value="aselements">As another element</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab - Variants × States */}
@@ -148,25 +139,25 @@ export function ToggleButtonExample() {
                       {variant}
                     </Text>
                     <ToggleButton variant={variant} size="2">
-                      Toggle <ToggleLeft size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                     <ToggleButton variant={variant} size="2" color="gray">
-                      Toggle <ToggleLeft size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                     <ToggleButton variant={variant} size="2" highContrast>
-                      Toggle <ToggleLeft size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                     <ToggleButton variant={variant} size="2" defaultPressed>
-                      Toggle <ToggleRight size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                     <ToggleButton variant={variant} size="2" disabled>
-                      Toggle <ToggleLeft size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                     <ToggleButton variant={variant} size="2" loading>
-                      Toggle <ToggleLeft size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                     <ToggleButton variant={variant} size="2" loading defaultPressed>
-                      Toggle <ToggleRight size={16} />
+                      Toggle <ChevronRight size={16} />
                     </ToggleButton>
                   </React.Fragment>
                 ))}
@@ -640,9 +631,7 @@ export function ToggleButtonExample() {
                         color="blue"
                         aria-label={`Bookmark size ${size} ${radius.label} radius`}
                       >
-                        <Bookmark
-                          size={size === '1' ? 12 : size === '2' ? 14 : size === '3' ? 16 : 18}
-                        />
+                        <Bookmark />
                       </ToggleIconButton>
                     ))}
                   </React.Fragment>
@@ -724,6 +713,246 @@ export function ToggleButtonExample() {
               </Text>
               <Text size="2" color="gray" style={{ fontFamily: 'monospace' }}>
                 {JSON.stringify(toggleStates, null, 2)}
+              </Text>
+            </Flex>
+          </Flex>
+        </Tabs.Content>
+
+        {/* As Another Element Tab - asChild and as prop */}
+        <Tabs.Content value="aselements">
+          <Flex pt="6" direction="column" gap="6">
+            <Flex direction="column" gap="2">
+              <Text size="3" weight="medium">
+                As another element
+              </Text>
+              <Text size="2" color="gray">
+                Use the asChild prop to render toggle buttons as links or other elements. Use the as
+                prop to change the underlying HTML element.
+              </Text>
+            </Flex>
+
+            <Flex direction="column" gap="4">
+              <Text size="2" weight="medium">
+                ToggleButton with asChild prop
+              </Text>
+              <Grid
+                columns="3"
+                gap="4"
+                style={{
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  alignItems: 'start',
+                }}
+              >
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Toggle as Link
+                  </Text>
+                  <Text size="1" color="gray">
+                    Navigation toggle
+                  </Text>
+                  <ToggleButton variant="soft" size="2" color="blue" asChild>
+                    <a href="#section">
+                      View Section <ChevronRight size={14} />
+                    </a>
+                  </ToggleButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Filter Toggle
+                  </Text>
+                  <Text size="1" color="gray">
+                    Filter as link
+                  </Text>
+                  <ToggleButton variant="outline" size="2" color="green" asChild>
+                    <a href="?filter=active">
+                      Show Active <ChevronRight size={14} />
+                    </a>
+                  </ToggleButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Download Toggle
+                  </Text>
+                  <Text size="1" color="gray">
+                    Toggle download state
+                  </Text>
+                  <ToggleButton variant="solid" size="2" color="purple" asChild>
+                    <a href="/download" download>
+                      Download <ChevronRight size={14} />
+                    </a>
+                  </ToggleButton>
+                </Flex>
+              </Grid>
+            </Flex>
+
+            <Flex direction="column" gap="4">
+              <Text size="2" weight="medium">
+                ToggleIconButton with asChild prop
+              </Text>
+              <Grid
+                columns="4"
+                gap="4"
+                style={{
+                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  alignItems: 'start',
+                }}
+              >
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Bookmark Link
+                  </Text>
+                  <Text size="1" color="gray">
+                    Toggle bookmark state
+                  </Text>
+                  <ToggleIconButton
+                    variant="soft"
+                    size="3"
+                    color="orange"
+                    asChild
+                    aria-label="Bookmark page"
+                  >
+                    <a href="/bookmark">
+                      <Bookmark size={16} />
+                    </a>
+                  </ToggleIconButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Share Toggle
+                  </Text>
+                  <Text size="1" color="gray">
+                    Toggle share panel
+                  </Text>
+                  <ToggleIconButton
+                    variant="outline"
+                    size="3"
+                    color="blue"
+                    asChild
+                    aria-label="Toggle share"
+                  >
+                    <a href="#share">
+                      <Share size={16} />
+                    </a>
+                  </ToggleIconButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Like Toggle
+                  </Text>
+                  <Text size="1" color="gray">
+                    Toggle like state
+                  </Text>
+                  <ToggleIconButton
+                    variant="ghost"
+                    size="3"
+                    color="red"
+                    asChild
+                    aria-label="Toggle like"
+                  >
+                    <a href="/like">
+                      <Heart size={16} />
+                    </a>
+                  </ToggleIconButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Star Rating
+                  </Text>
+                  <Text size="1" color="gray">
+                    Toggle star rating
+                  </Text>
+                  <ToggleIconButton
+                    variant="surface"
+                    size="3"
+                    color="yellow"
+                    asChild
+                    aria-label="Toggle star"
+                  >
+                    <a href="/rate">
+                      <Star size={16} />
+                    </a>
+                  </ToggleIconButton>
+                </Flex>
+              </Grid>
+            </Flex>
+
+            <Flex direction="column" gap="4">
+              <Text size="2" weight="medium">
+                Using as prop
+              </Text>
+              <Grid
+                columns="3"
+                gap="4"
+                style={{
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  alignItems: 'start',
+                }}
+              >
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Toggle as div
+                  </Text>
+                  <Text size="1" color="gray">
+                    as="div" with onClick
+                  </Text>
+                  <ToggleButton
+                    variant="soft"
+                    size="2"
+                    as="div"
+                    onClick={() => alert('Toggle div clicked!')}
+                  >
+                    Custom Toggle <ChevronRight size={14} />
+                  </ToggleButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Toggle as span
+                  </Text>
+                  <Text size="1" color="gray">
+                    as="span" for inline
+                  </Text>
+                  <ToggleButton
+                    variant="outline"
+                    size="2"
+                    as="span"
+                    onClick={() => alert('Toggle span clicked!')}
+                  >
+                    Inline Toggle <ChevronRight size={14} />
+                  </ToggleButton>
+                </Flex>
+
+                <Flex direction="column" gap="3">
+                  <Text size="2" color="gray" weight="medium">
+                    Form Toggle
+                  </Text>
+                  <Text size="1" color="gray">
+                    For form controls
+                  </Text>
+                  <ToggleIconButton
+                    variant="classic"
+                    size="3"
+                    aria-label="Toggle setting"
+                    onClick={() => alert('Settings toggled!')}
+                  >
+                    <Settings size={16} />
+                  </ToggleIconButton>
+                </Flex>
+              </Grid>
+            </Flex>
+
+            <Flex direction="column" gap="4">
+              <Text size="2" weight="medium">
+                Accessibility notes
+              </Text>
+              <Text size="2" color="gray">
+                Toggle buttons maintain their pressed state and should clearly communicate their
+                current state to assistive technologies. Always provide appropriate labels.
               </Text>
             </Flex>
           </Flex>

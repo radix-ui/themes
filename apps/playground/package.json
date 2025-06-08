@@ -10,9 +10,9 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@radix-ui/react-icons": "^1.3.2",
     "@kushagradhawan/kookie-ui": "workspace:*",
-    "geist": "^1.4.2",
+    "@radix-ui/react-icons": "^1.3.2",
+    "lucide-react": "^0.513.0",
     "next": "^15.1.2",
     "next-themes": "0.2.1",
     "react": "^19.0.0",

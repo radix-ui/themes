@@ -1,8 +1,9 @@
-:root {
-  --font-geist-sans: 'GeistSans', 'Geist';
-  --font-geist-mono: 'GeistMono', 'Geist Mono';
+@import '@kushagradhawan/kookie-ui/styles.css';
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
