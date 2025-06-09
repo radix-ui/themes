@@ -298,6 +298,7 @@ const SidebarItem = React.forwardRef<HTMLDivElement, SidebarItemProps>(
         onFocus={handleFocus}
         onBlur={handleBlur}
         tabIndex={0}
+        role="menuitem"
         {...itemProps}
       >
         <Slot.Slottable>{children}</Slot.Slottable>
