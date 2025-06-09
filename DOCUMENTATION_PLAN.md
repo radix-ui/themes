@@ -1,431 +1,452 @@
-# Kookie UI Documentation - Storybook Implementation Plan
+# Kookie UI Documentation - Unified Playground + MDX Site
 
 ## Overview
 
-Replace the current playground with Storybook as a separate app in the monorepo. Leverage Storybook's ecosystem for comprehensive component documentation and interactive examples that showcase perfect brand expression using Kookie UI.
+Create a **unified Next.js + MDX documentation site** that includes both a global playground and individual component playgrounds. Move the current playground into the docs site as the "Global Playground" while adding focused component playgrounds for each component.
 
 ---
 
-## Phase 1: Storybook Foundation Setup
+## Phase 1: Unified Documentation Site Setup
 
 **Timeline: 1-2 days**
 
-### 1.1 Remove Current Playground
+### 1.1 Create Unified Documentation Site
 
-- [ ] Stop development server
-- [ ] Delete `apps/playground` directory completely
-- [ ] Remove playground references from:
-  - [ ] Root `package.json` scripts
-  - [ ] `turbo.json` pipeline
-  - [ ] `pnpm-workspace.yaml` (if referenced)
-
-### 1.2 Create Storybook App Structure
-
-- [ ] Create `apps/storybook` directory
-- [ ] Initialize Storybook 8.x with Vite builder:
+- [ ] Create `apps/docs` directory 
+- [ ] Initialize Next.js 14 with App Router:
   ```bash
-  cd apps && npx storybook@latest init
-  mv storybook-static storybook
+  cd apps && npx create-next-app@latest docs --typescript --tailwind --app --src-dir
   ```
-- [ ] Install essential dependencies:
+- [ ] Install MDX dependencies:
   ```bash
-  pnpm add -D @storybook/react-vite @storybook/addon-essentials
-  pnpm add -D @storybook/addon-docs @storybook/addon-controls
-  pnpm add -D @storybook/addon-a11y @storybook/addon-design-tokens
+  cd docs
+  pnpm add @next/mdx @mdx-js/loader @mdx-js/react
+  pnpm add @types/mdx remark-gfm rehype-highlight
+  pnpm add lucide-react
   ```
 
-### 1.3 Monorepo Integration
+### 1.2 Move Current Playground Into Docs Site
 
-- [ ] Add `"@kushagradhawan/kookie-ui": "workspace:*"` to storybook package.json
-- [ ] Add `lucide-react` dependency to storybook app
-- [ ] Update `turbo.json` to include storybook app:
+- [ ] **Move** `apps/playground/components/*` → `apps/docs/src/components/playground/`
+- [ ] Create global playground route: `apps/docs/src/app/playground/page.tsx`
+- [ ] Import and display comprehensive examples:
+  ```typescript
+  // apps/docs/src/app/playground/page.tsx
+  import { DropdownMenuExample } from '@/components/playground/DropdownMenuExample'
+  import { ButtonExample } from '@/components/playground/ButtonExample'
+
+  export default function PlaygroundPage() {
+    return (
+      <div className="container mx-auto py-8">
+        <h1>Global Playground</h1>
+        <Tabs defaultValue="button">
+          <TabsList>
+            <TabsTrigger value="button">Button</TabsTrigger>
+            <TabsTrigger value="dropdown">DropdownMenu</TabsTrigger>
+            {/* All components */}
+          </TabsList>
+          <TabsContent value="button">
+            <ButtonExample />
+          </TabsContent>
+          <TabsContent value="dropdown">
+            <DropdownMenuExample />
+          </TabsContent>
+        </Tabs>
+      </div>
+    )
+  }
+  ```
+
+### 1.3 Component-Specific Playgrounds
+
+- [ ] Create individual component playground sections:
+  ```typescript
+  // apps/docs/src/components/component-playground.tsx
+  export function ComponentPlayground({ 
+    component,
+    examples 
+  }: {
+    component: string
+    examples: React.ComponentType[]
+  }) {
+    return (
+      <div className="border rounded-lg p-6">
+        <h3 className="text-lg font-semibold mb-4">
+          {component} Playground
+        </h3>
+        <Tabs defaultValue="basic">
+          <TabsList>
+            <TabsTrigger value="basic">Basic</TabsTrigger>
+            <TabsTrigger value="variants">All Variants</TabsTrigger>
+            <TabsTrigger value="interactive">Interactive</TabsTrigger>
+          </TabsList>
+          {examples.map((Example, i) => (
+            <TabsContent key={i} value={`example-${i}`}>
+              <Example />
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    )
+  }
+  ```
+
+### 1.4 Update Monorepo Configuration
+
+- [ ] Remove old playground from `turbo.json`
+- [ ] Add docs app to `turbo.json`:
   ```json
   {
-    "storybook:dev": {
+    "docs:dev": {
       "cache": false,
       "persistent": true
     },
-    "storybook:build": {
+    "docs:build": {
       "dependsOn": ["build"],
-      "outputs": ["storybook-static/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     }
   }
   ```
-- [ ] Add scripts to root package.json:
+- [ ] Update root package.json scripts:
   ```json
   {
-    "storybook": "pnpm --filter storybook dev",
-    "storybook:build": "pnpm --filter storybook build"
+    "docs": "pnpm --filter docs dev",
+    "docs:build": "pnpm --filter docs build",
+    "playground": "pnpm docs" // Redirect to docs site
   }
   ```
 
-### 1.4 Basic Storybook Configuration
+---
 
-- [ ] Configure `.storybook/main.ts` for monorepo
-- [ ] Set up `.storybook/preview.ts` with Kookie UI theme
-- [ ] Import Kookie UI styles in preview
-- [ ] Configure TypeScript paths for workspace packages
+## Site Structure: Global + Component Playgrounds
+
+### 1. Global Playground (`/playground`)
+```typescript
+// Your current comprehensive playground - MOVED to docs site
+export function GlobalPlayground() {
+  return (
+    <div className="max-w-7xl mx-auto">
+      <h1>Kookie UI Playground</h1>
+      <p>Comprehensive testing environment for all components</p>
+      
+      <Tabs defaultValue="button">
+        <TabsList>
+          <TabsTrigger value="button">Button</TabsTrigger>
+          <TabsTrigger value="dropdown">DropdownMenu</TabsTrigger>
+          <TabsTrigger value="textfield">TextField</TabsTrigger>
+          {/* All components */}
+        </TabsList>
+        
+        <TabsContent value="button">
+          <ButtonExample /> {/* Your existing comprehensive example */}
+        </TabsContent>
+        
+        <TabsContent value="dropdown">
+          <DropdownMenuExample /> {/* Your existing comprehensive example */}
+        </TabsContent>
+      </Tabs>
+    </div>
+  )
+}
+```
+
+### 2. Component Documentation (`/components/button`)
+```mdx
+# Button
+
+Displays a button or a component that looks like a button.
+
+## Quick Example
+
+<ComponentExample>
+  <Button>Click me</Button>
+</ComponentExample>
+
+## Installation
+
+```bash
+pnpm add @kushagradhawan/kookie-ui
+```
+
+## Component Playground
+
+<ComponentPlayground 
+  component="Button"
+  examples={[
+    ButtonBasicExample,
+    ButtonVariantsExample,
+    ButtonInteractiveExample
+  ]}
+/>
+
+## All Variants & States
+
+<ComponentMatrix>
+  <ButtonComprehensiveMatrix />
+</ComponentMatrix>
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| variant | 'solid' \| 'soft' \| 'outline' \| 'ghost' | 'solid' | Visual style |
+
+## Examples
+
+### Basic Usage
+
+<ComponentExample>
+  <Button variant="solid">Primary Button</Button>
+</ComponentExample>
+
+### All Variants
+
+<ComponentExample>
+  <div className="flex gap-2">
+    <Button variant="solid">Solid</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="ghost">Ghost</Button>
+  </div>
+</ComponentExample>
+```
+
+### 3. Navigation Between Playgrounds
+```typescript
+// Docs site navigation
+const navigation = [
+  {
+    title: "Playground",
+    href: "/playground", // Global playground
+  },
+  {
+    title: "Components",
+    items: [
+      { title: "Button", href: "/components/button" }, // Individual playground + docs
+      { title: "DropdownMenu", href: "/components/dropdown-menu" },
+      // Each has its own focused playground
+    ]
+  }
+]
+```
 
 ---
 
-## Phase 2: Core Storybook Infrastructure
-
-**Timeline: 2-3 days**
-
-### 2.1 Theme Integration
-
-- [ ] Import `@kushagradhawan/kookie-ui/styles.css` in preview
-- [ ] Set up Kookie UI Theme provider wrapper
-- [ ] Configure Storybook theme to match Kookie UI branding
-- [ ] Add theme switching support (if applicable)
-
-### 2.2 Essential Addons Configuration
-
-- [ ] **Controls**: Auto-generate interactive prop controls
-- [ ] **Docs**: Auto-documentation from JSDoc comments
-- [ ] **A11y**: Accessibility testing integration
-- [ ] **Design Tokens**: Showcase color/spacing systems
-- [ ] **Actions**: Event handling demonstration
-
-### 2.3 Story Templates & Patterns
-
-- [ ] Create base story template following current ButtonExample structure
-- [ ] Set up story naming conventions:
-  ```
-  Components/Button
-  Components/TextField
-  Layout/Container
-  Tokens/Colors
-  ```
-- [ ] Configure CSF 3.0 format with TypeScript
-- [ ] Create reusable story decorators for common layouts
-
-### 2.4 Documentation Infrastructure
-
-- [ ] Configure auto-generated prop tables
-- [ ] Set up custom MDX documentation pages
-- [ ] Create welcome/getting started page
-- [ ] Add component status badges (stable, beta, deprecated)
-
----
-
-## Phase 3: Convert Playground to Stories
-
-**Timeline: 3-4 days**
-
-### 3.1 Button Component Stories (Template)
-
-- [ ] Convert `ButtonExample` to comprehensive Button stories:
-
-  ```typescript
-  // Button.stories.ts
-  export default {
-    title: 'Components/Button',
-    component: Button,
-    argTypes: {
-      variant: { control: 'select' },
-      color: { control: 'select' },
-      size: { control: 'select' },
-    }
-  } satisfies Meta<typeof Button>;
-
-  export const Overview = () => <ButtonExample />;
-  export const ThemeColors = () => <ButtonThemeMatrix />;
-  export const AllColors = () => <ButtonColorMatrix />;
-  export const AllSizes = () => <ButtonSizeMatrix />;
-  export const Interactive = (args) => <Button {...args}>Next</Button>;
-  ```
-
-### 3.2 Story Component Extraction
-
-- [ ] Extract current tab content into separate story components:
-  - [ ] `ButtonThemeMatrix` (variants × states)
-  - [ ] `ButtonColorMatrix` (colors × variants)
-  - [ ] `ButtonSizeMatrix` (sizes × radius)
-- [ ] Add interactive individual stories with controls
-- [ ] Document all props with JSDoc comments
-
-### 3.3 Enhanced Story Features
-
-- [ ] Add code snippets for each example
-- [ ] Implement copy-to-clipboard functionality
-- [ ] Show component source code
-- [ ] Add usage guidelines in story docs
-- [ ] Include accessibility notes
-
-### 3.4 Visual Testing Setup
-
-- [ ] Configure screenshot testing with Chromatic (optional)
-- [ ] Set up visual regression detection
-- [ ] Add responsive breakpoint testing
-
----
-
-## Phase 4: Comprehensive Component Coverage
-
-**Timeline: 4-5 days**
-
-### 4.1 Core Form Components
-
-- [ ] TextField stories with all variants/states
-- [ ] Select component comprehensive coverage
-- [ ] TextArea component documentation
-- [ ] Form validation examples
-
-### 4.2 Layout & Typography
-
-- [ ] Text component with typography scale
-- [ ] Heading hierarchy demonstration
-- [ ] Container and layout components
-- [ ] Spacing and grid examples
-
-### 4.3 Interactive Components
-
-- [ ] Card component variations
-- [ ] ToggleButton (unique to Kookie UI)
-- [ ] Navigation components
-- [ ] Dialog/Modal components (if any)
-
-### 4.4 Advanced Features
-
-- [ ] Component composition examples
-- [ ] Complex form patterns
-- [ ] Real-world usage scenarios
-- [ ] Integration with external libraries
-
----
-
-## Phase 5: Design System Documentation
-
-**Timeline: 2-3 days**
-
-### 5.1 Design Tokens Stories
-
-- [ ] Color palette comprehensive display
-- [ ] Typography scale demonstration
-- [ ] Spacing system visualization
-- [ ] Border radius token examples
-- [ ] Interactive token explorer
-
-### 5.2 Theming Documentation
-
-- [ ] Theme customization examples
-- [ ] CSS custom properties showcase
-- [ ] Component variant system explanation
-- [ ] Dark/light mode examples (if applicable)
-
-### 5.3 Getting Started Guide
-
-- [ ] Installation and setup stories
-- [ ] First component implementation
-- [ ] Common patterns and recipes
-- [ ] Migration guides (if needed)
-
----
-
-## Phase 6: Advanced Features & Polish
-
-**Timeline: 2-3 days**
-
-### 6.1 Enhanced Developer Experience
-
-- [ ] Add search functionality
-- [ ] Configure keyboard shortcuts
-- [ ] Add component source linking
-- [ ] Set up hot reloading optimization
-
-### 6.2 Brand Expression & Polish
-
-- [ ] Custom Storybook theme matching Kookie UI
-- [ ] Add micro-interactions and animations
-- [ ] Polish story layouts and spacing
-- [ ] Add delightful easter eggs
-
-### 6.3 Performance & SEO
-
-- [ ] Optimize build performance
-- [ ] Configure proper meta tags
-- [ ] Add analytics integration (if needed)
-- [ ] Optimize asset loading
-
-### 6.4 Accessibility Excellence
-
-- [ ] Run comprehensive a11y audits
-- [ ] Add keyboard navigation examples
-- [ ] Document screen reader support
-- [ ] Include WCAG compliance notes
-
----
-
-## Phase 7: Deployment & CI/CD
+## Phase 2: Extract and Organize Playground Components
 
 **Timeline: 1-2 days**
 
-### 7.1 Build & Deployment
+### 2.1 Shared Playground Components
 
-- [ ] Configure production build pipeline
-- [ ] Set up Vercel/Netlify deployment
-- [ ] Configure custom domain (if needed)
-- [ ] Add build status monitoring
+- [ ] Create reusable playground building blocks:
+  ```typescript
+  // apps/docs/src/components/playground/shared/
+  export const ColorMatrix = ({ component, variant }) => {
+    return (
+      <Grid columns="6" gap="3">
+        {colors.map(color => (
+          <ComponentWrapper key={color} color={color}>
+            {component}
+          </ComponentWrapper>
+        ))}
+      </Grid>
+    )
+  }
 
-### 7.2 Automation & Quality
+  export const VariantMatrix = ({ component, variants }) => {
+    return (
+      <Flex gap="3">
+        {variants.map(variant => (
+          <ComponentWrapper key={variant} variant={variant}>
+            {component}
+          </ComponentWrapper>
+        ))}
+      </Flex>
+    )
+  }
+  ```
 
-- [ ] Set up automated Chromatic builds
-- [ ] Configure PR preview deployments
-- [ ] Add visual regression testing
-- [ ] Monitor bundle size and performance
+### 2.2 Component-Specific Playgrounds
+
+- [ ] Extract focused examples from comprehensive ones:
+  ```typescript
+  // apps/docs/src/components/playground/button/
+  export const ButtonBasicExample = () => (
+    <Button>Click me</Button>
+  )
+
+  export const ButtonVariantsExample = () => (
+    <Flex gap="2">
+      <Button variant="solid">Solid</Button>
+      <Button variant="soft">Soft</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
+    </Flex>
+  )
+
+  export const ButtonComprehensiveMatrix = () => (
+    // Extract the comprehensive matrix from ButtonExample
+    <ColorMatrix component={Button} variants={['solid', 'soft']} />
+  )
+  ```
+
+### 2.3 Interactive Playground Features
+
+- [ ] Add real-time prop editing:
+  ```typescript
+  export const InteractivePlayground = ({ component: Component }) => {
+    const [variant, setVariant] = useState('solid')
+    const [size, setSize] = useState('2')
+    const [color, setColor] = useState('blue')
+
+    return (
+      <div className="grid grid-cols-2 gap-6">
+        <div>
+          <h4>Controls</h4>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectItem value="solid">Solid</SelectItem>
+            <SelectItem value="soft">Soft</SelectItem>
+          </Select>
+          {/* More controls */}
+        </div>
+        
+        <div>
+          <h4>Preview</h4>
+          <Component variant={variant} size={size} color={color}>
+            Example
+          </Component>
+        </div>
+      </div>
+    )
+  }
+  ```
 
 ---
 
-## Success Metrics
+## Phase 3: Enhanced Documentation Experience
 
-### Technical Goals
+**Timeline: 2-3 days**
 
-- [ ] All stories load in <2s
-- [ ] 100% component API coverage
-- [ ] Zero TypeScript errors
-- [ ] Responsive design across all viewports
-- [ ] Accessibility score >95%
+### 3.1 Navigation & Search
 
-### Developer Experience Goals
+- [ ] **Global Playground Link** - Quick access to comprehensive testing
+- [ ] **Component-specific Playgrounds** - Focused development per component
+- [ ] **Cross-linking** - Jump between global and component views
 
-- [ ] Developers can find component examples in <30s
-- [ ] Interactive controls work for all props
-- [ ] Copy-paste examples work immediately
-- [ ] Clear component status and guidelines
+### 3.2 Copy-Paste Experience
 
-### Brand Expression Goals
+- [ ] **Code examples** - Copy button on all examples
+- [ ] **Live editing** - Modify examples in real-time
+- [ ] **Export to playground** - Send configuration to global playground
 
-- [ ] Storybook feels like native Kookie UI application
-- [ ] Every interaction showcases design quality
-- [ ] Perfect visual hierarchy and spacing
-- [ ] Design system principles clearly demonstrated
+### 3.3 Development Workflow Integration
+
+- [ ] **Hot reloading** - Changes reflect immediately
+- [ ] **Error boundaries** - Graceful error handling in playgrounds
+- [ ] **Performance monitoring** - Track component performance
 
 ---
 
-## Technical Stack
-
-### Core Technologies
-
-- **Storybook 8.x** - Latest with Vite builder
-- **TypeScript** - Full type safety with CSF 3.0
-- **Kookie UI** - All components from workspace
-- **Lucide React** - Consistent iconography
-
-### Essential Addons
-
-- **@storybook/addon-essentials** - Core functionality
-- **@storybook/addon-docs** - Auto-documentation
-- **@storybook/addon-a11y** - Accessibility testing
-- **@storybook/addon-design-tokens** - Token visualization
-
-### Development Tools
-
-- **Vite** - Fast build and HMR
-- **pnpm** - Package management
-- **Turbo** - Monorepo optimization
-- **Chromatic** - Visual testing (optional)
-
-### Deployment
-
-- **Vercel** - Recommended for static hosting
-- **Custom Domain** - Brand consistency
-- **Analytics** - Usage insights (optional)
-
----
-
-## Monorepo Structure
+## Site Structure (Updated)
 
 ```
 HelloKookie/
 ├── apps/
-│   └── storybook/                 # New Storybook app
-│       ├── .storybook/
-│       │   ├── main.ts
-│       │   ├── preview.ts
-│       │   └── theme.ts
+│   └── docs/                          # Unified documentation site
 │       ├── src/
-│       │   └── stories/
-│       │       ├── Button.stories.ts
-│       │       ├── TextField.stories.ts
-│       │       ├── tokens/
-│       │       │   ├── Colors.stories.ts
-│       │       │   └── Typography.stories.ts
-│       │       └── examples/
-│       │           └── RealWorld.stories.ts
-│       ├── package.json
-│       └── tsconfig.json
+│       │   ├── app/
+│       │   │   ├── playground/          # Global playground (moved from apps/playground)
+│       │   │   │   └── page.tsx         # Comprehensive testing environment
+│       │   │   ├── components/
+│       │   │   │   ├── button/
+│       │   │   │   │   └── page.mdx     # Button docs + component playground
+│       │   │   │   └── dropdown-menu/
+│       │   │   │       └── page.mdx     # DropdownMenu docs + component playground
+│       │   │   └── layout.tsx
+│       │   └── components/
+│       │       ├── playground/          # Playground components (moved)
+│       │       │   ├── ButtonExample.tsx
+│       │       │   ├── DropdownMenuExample.tsx
+│       │       │   ├── button/          # Component-specific playground pieces
+│       │       │   │   ├── BasicExample.tsx
+│       │       │   │   ├── VariantsExample.tsx
+│       │       │   │   └── ComprehensiveMatrix.tsx
+│       │       │   └── shared/          # Reusable playground utilities
+│       │       │       ├── ColorMatrix.tsx
+│       │       │       └── VariantMatrix.tsx
+│       │       ├── component-example.tsx
+│       │       ├── component-playground.tsx
+│       │       └── code-block.tsx
+│       ├── next.config.js
+│       └── package.json
 ├── packages/
-│   └── kookie-ui/                 # Component library
-└── turbo.json                     # Updated with storybook tasks
+│   └── kookie-ui/
+└── turbo.json
 ```
 
 ---
 
-## Story Organization Strategy
+## Development Workflow
 
-### 1. **Components** - Individual component docs
+### Global Testing & Development
+```bash
+# Start docs site
+pnpm docs
 
-```
-Components/Button
-Components/TextField
-Components/Card
-Components/ToggleButton
-```
-
-### 2. **Tokens** - Design system foundations
-
-```
-Tokens/Colors
-Tokens/Typography
-Tokens/Spacing
-Tokens/Radius
+# Navigate to /playground
+# Test all components together
+# Comprehensive matrices and edge cases
 ```
 
-### 3. **Examples** - Real-world patterns
+### Component-Specific Development
+```bash
+# Same docs site
+pnpm docs
 
-```
-Examples/Forms
-Examples/Layouts
-Examples/Navigation
-Examples/E-commerce
+# Navigate to /components/button
+# Focused playground + documentation
+# Individual component testing
 ```
 
-### 4. **Getting Started** - Documentation
-
-```
-Welcome
-Installation
-Migration
-Contributing
+### Documentation Writing
+```bash
+# Write MDX with embedded playgrounds
+# Real examples from global playground
+# Component-specific focused examples
 ```
 
 ---
 
-## Migration from Current Playground
+## Benefits of Unified Approach
 
-### Preserve Current Work
+### For Development
+- **One environment** - Everything in one place
+- **Consistent experience** - Same UI patterns throughout
+- **Easy navigation** - Jump between global and focused views
+- **Reusable components** - Share playground pieces between global and component views
 
-- [ ] Extract `ButtonExample` logic into reusable components
-- [ ] Convert tab structure to separate stories
-- [ ] Maintain comprehensive prop coverage
-- [ ] Keep clean matrix layouts
+### For Documentation
+- **Complete coverage** - Global overview + detailed component docs
+- **Interactive examples** - Live playgrounds everywhere
+- **Professional presentation** - Cohesive design system showcase
+- **Easy maintenance** - One site to manage
 
-### Enhance with Storybook Features
-
-- [ ] Add interactive controls for real-time editing
-- [ ] Generate automatic prop documentation
-- [ ] Include accessibility testing
-- [ ] Add visual regression testing
+### For Users
+- **Quick overview** - Global playground for exploration
+- **Focused learning** - Component-specific playgrounds for implementation
+- **Copy-paste ready** - Examples that work immediately
+- **Progressive disclosure** - Start simple, dive deep as needed
 
 ---
 
 ## Next Steps
 
-1. **Review and approve** this updated plan
-2. **Start with Phase 1** when ready to execute
-3. **Use ButtonExample** as the template for all components
-4. **Leverage Storybook ecosystem** for maximum efficiency
-5. **Deploy and iterate** based on developer feedback
+1. **Create unified docs site** - Single Next.js app
+2. **Move current playground** - Into `/playground` route of docs site
+3. **Create component playgrounds** - Individual focused testing environments
+4. **Add MDX documentation** - Component docs with embedded playgrounds
+5. **Link everything together** - Seamless navigation between global and component views
 
-This approach will give us industry-standard documentation with minimal effort, leveraging your excellent playground work as the foundation.
+This gives you the **ultimate development and documentation experience** - comprehensive testing environment combined with professional component documentation!
+
+Want to start implementing this unified approach?

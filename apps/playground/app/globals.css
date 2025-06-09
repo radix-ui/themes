@@ -1,9 +1,0 @@
-@import '@kushagradhawan/kookie-ui/styles.css';
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-}

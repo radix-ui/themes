@@ -1,0 +1,320 @@
+import {
+  Button,
+  Container,
+  Heading,
+  Text,
+  Flex,
+  Card,
+  Section,
+  Separator,
+} from '@kushagradhawan/kookie-ui';
+
+export const metadata = {
+  title: 'Button - Kookie UI',
+  description: 'Trigger an action or event, such as submitting a form or displaying a dialog.',
+};
+
+<Container size="4">
+  <Section size="3">
+    <Flex direction="column" gap="6">
+
+# Button
+
+Trigger an action or event, such as submitting a form or displaying a dialog.
+
+<CodePreview code={`<Button>Click me</Button>`}>
+  <div style={{ display: 'inline-block' }}>
+    <Button>Click me</Button>
+  </div>
+</CodePreview>
+
+## Installation
+
+```
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```jsx
+import { Button } from '@kushagradhawan/kookie-ui';
+
+<Button variant="outline">Button</Button>;
+```
+
+## API Reference
+
+This component is based on the `button` element and supports common margin props.
+
+| Prop         | Type                                                                            | Default   | Description              |
+| ------------ | ------------------------------------------------------------------------------- | --------- | ------------------------ |
+| size         | `"1"` \| `"2"` \| `"3"` \| `"4"`                                                | `"2"`     | Size of the button       |
+| variant      | `"classic"` \| `"solid"` \| `"soft"` \| `"surface"` \| `"outline"` \| `"ghost"` | `"solid"` | Visual style variant     |
+| color        | `string`                                                                        | -         | Accent color             |
+| highContrast | `boolean`                                                                       | `false`   | Increases color contrast |
+| radius       | `"none"` \| `"small"` \| `"medium"` \| `"large"` \| `"full"`                    | -         | Border radius            |
+| loading      | `boolean`                                                                       | `false`   | Shows loading spinner    |
+| fullWidth    | `boolean`                                                                       | `false`   | Makes button full width  |
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the button.
+
+<CodePreview
+  code={`<Flex gap="3" align="center">
+  <Button size="1" variant="soft">
+    Edit profile
+  </Button>
+  <Button size="2" variant="soft">
+    Edit profile
+  </Button>
+  <Button size="3" variant="soft">
+    Edit profile
+  </Button>
+  <Button size="4" variant="soft">
+    Edit profile
+  </Button>
+</Flex>`}
+>
+  <Flex gap="3" align="center">
+    <Button size="1" variant="soft">
+      Edit profile
+    </Button>
+    <Button size="2" variant="soft">
+      Edit profile
+    </Button>
+    <Button size="3" variant="soft">
+      Edit profile
+    </Button>
+    <Button size="4" variant="soft">
+      Edit profile
+    </Button>
+  </Flex>
+</CodePreview>
+
+### Variant
+
+Use the `variant` prop to control the visual style of the button.
+
+<CodePreview
+  code={`<Flex align="center" gap="3" wrap="wrap">
+  <Button variant="classic">Edit profile</Button>
+  <Button variant="solid">Edit profile</Button>
+  <Button variant="soft">Edit profile</Button>
+  <Button variant="surface">Edit profile</Button>
+  <Button variant="outline">Edit profile</Button>
+</Flex>`}
+>
+  <Flex align="center" gap="3" wrap="wrap">
+    <Button variant="classic">Edit profile</Button>
+    <Button variant="solid">Edit profile</Button>
+    <Button variant="soft">Edit profile</Button>
+    <Button variant="surface">Edit profile</Button>
+    <Button variant="outline">Edit profile</Button>
+  </Flex>
+</CodePreview>
+
+#### Ghost
+
+Use the `ghost` variant to display a button without chrome. Ghost buttons behave like text in layout.
+
+<CodePreview code={`<Button variant="ghost">Edit profile</Button>`}>
+  <div style={{ display: 'inline-block' }}>
+    <Button variant="ghost">Edit profile</Button>
+  </div>
+</CodePreview>
+
+### Color
+
+Use the `color` prop to assign a specific color.
+
+<CodePreview
+  code={`<Flex gap="3" wrap="wrap">
+  <Button color="indigo" variant="soft">
+    Edit profile
+  </Button>
+  <Button color="cyan" variant="soft">
+    Edit profile
+  </Button>
+  <Button color="orange" variant="soft">
+    Edit profile
+  </Button>
+  <Button color="crimson" variant="soft">
+    Edit profile
+  </Button>
+</Flex>`}
+>
+  <Flex gap="3" wrap="wrap">
+    <Button color="indigo" variant="soft">
+      Edit profile
+    </Button>
+    <Button color="cyan" variant="soft">
+      Edit profile
+    </Button>
+    <Button color="orange" variant="soft">
+      Edit profile
+    </Button>
+    <Button color="crimson" variant="soft">
+      Edit profile
+    </Button>
+  </Flex>
+</CodePreview>
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+<CodePreview
+  code={`<Flex direction="column" gap="3">
+  <Flex gap="3" wrap="wrap">
+    <Button color="gray" variant="classic">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="solid">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="soft">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="surface">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="outline">
+      Edit profile
+    </Button>
+  </Flex>
+  <Flex gap="3" wrap="wrap">
+    <Button color="gray" variant="classic" highContrast>
+      Edit profile
+    </Button>
+    <Button color="gray" variant="solid" highContrast>
+      Edit profile
+    </Button>
+    <Button color="gray" variant="soft" highContrast>
+      Edit profile
+    </Button>
+    <Button color="gray" variant="surface" highContrast>
+      Edit profile
+    </Button>
+    <Button color="gray" variant="outline" highContrast>
+      Edit profile
+    </Button>
+  </Flex>
+</Flex>`}
+>
+  <Flex direction="column" gap="3">
+    <Flex gap="3" wrap="wrap">
+      <Button color="gray" variant="classic">
+        Edit profile
+      </Button>
+      <Button color="gray" variant="solid">
+        Edit profile
+      </Button>
+      <Button color="gray" variant="soft">
+        Edit profile
+      </Button>
+      <Button color="gray" variant="surface">
+        Edit profile
+      </Button>
+      <Button color="gray" variant="outline">
+        Edit profile
+      </Button>
+    </Flex>
+    <Flex gap="3" wrap="wrap">
+      <Button color="gray" variant="classic" highContrast>
+        Edit profile
+      </Button>
+      <Button color="gray" variant="solid" highContrast>
+        Edit profile
+      </Button>
+      <Button color="gray" variant="soft" highContrast>
+        Edit profile
+      </Button>
+      <Button color="gray" variant="surface" highContrast>
+        Edit profile
+      </Button>
+      <Button color="gray" variant="outline" highContrast>
+        Edit profile
+      </Button>
+    </Flex>
+  </Flex>
+</CodePreview>
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+<CodePreview
+  code={`<Flex gap="3">
+  <Button radius="none" variant="soft">
+    Edit profile
+  </Button>
+  <Button radius="large" variant="soft">
+    Edit profile
+  </Button>
+  <Button radius="full" variant="soft">
+    Edit profile
+  </Button>
+</Flex>`}
+>
+  <Flex gap="3">
+    <Button radius="none" variant="soft">
+      Edit profile
+    </Button>
+    <Button radius="large" variant="soft">
+      Edit profile
+    </Button>
+    <Button radius="full" variant="soft">
+      Edit profile
+    </Button>
+  </Flex>
+</CodePreview>
+
+### Loading
+
+Use the `loading` prop to display a loading spinner in place of button content, preserving the original size of the button in its normal state. The button will be disabled while loading.
+
+<CodePreview
+  code={`<Flex gap="3" wrap="wrap">
+  <Button loading variant="classic">
+    Bookmark
+  </Button>
+  <Button loading variant="solid">
+    Bookmark
+  </Button>
+  <Button loading variant="soft">
+    Bookmark
+  </Button>
+  <Button loading variant="surface">
+    Bookmark
+  </Button>
+  <Button loading variant="outline">
+    Bookmark
+  </Button>
+</Flex>`}
+>
+  <Flex gap="3" wrap="wrap">
+    <Button loading variant="classic">
+      Bookmark
+    </Button>
+    <Button loading variant="solid">
+      Bookmark
+    </Button>
+    <Button loading variant="soft">
+      Bookmark
+    </Button>
+    <Button loading variant="surface">
+      Bookmark
+    </Button>
+    <Button loading variant="outline">
+      Bookmark
+    </Button>
+  </Flex>
+</CodePreview>
+
+    </Flex>
+
+  </Section>
+</Container>

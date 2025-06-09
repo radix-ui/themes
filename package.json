@@ -6,6 +6,8 @@
     "build": "turbo run build",
     "build:pkg": "pnpm --filter @kushagradhawan/kookie-ui build",
     "dev": "turbo run dev --no-cache --continue",
+    "docs": "pnpm --filter docs dev",
+    "docs:build": "pnpm --filter docs build",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules .turbo"
   },

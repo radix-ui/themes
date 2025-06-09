@@ -1,0 +1,132 @@
+/* Sidebar Root Container */
+.rt-SidebarRoot {
+  --sidebar-width: 16rem;
+  --sidebar-width-icon: 3rem;
+  
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  width: var(--sidebar-width);
+  transition: transform 0.2s ease, width 0.2s ease;
+}
+
+/* Sidebar Container */
+.rt-SidebarContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-panel-solid);
+  border-right: 1px solid var(--gray-a5);
+}
+
+/* Sidebar Header */
+.rt-SidebarHeader {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--gray-a5);
+}
+
+/* Sidebar Content */
+.rt-SidebarContent {
+  flex: 1;
+  padding: var(--space-2);
+  min-height: 0;
+}
+
+/* Sidebar Footer */
+.rt-SidebarFooter {
+  padding: var(--space-3);
+  border-top: 1px solid var(--gray-a5);
+}
+
+/* Sidebar Inset (main content area) */
+.rt-SidebarInset {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.2s ease;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  .rt-SidebarRoot {
+    &:where(.rt-r-size-1) {
+      --sidebar-width: 14rem;
+      --sidebar-width-icon: 2.5rem;
+    }
+    &:where(.rt-r-size-3) {
+      --sidebar-width: 18rem;
+      --sidebar-width-icon: 3.5rem;
+    }
+  }
+}
+
+/* Size-specific padding adjustments */
+.rt-SidebarHeader {
+  &:where(.rt-r-size-1) {
+    padding: var(--space-2);
+  }
+  &:where(.rt-r-size-3) {
+    padding: var(--space-4);
+  }
+}
+
+.rt-SidebarFooter {
+  &:where(.rt-r-size-1) {
+    padding: var(--space-2);
+  }
+  &:where(.rt-r-size-3) {
+    padding: var(--space-4);
+  }
+}
+
+.rt-SidebarContent {
+  &:where(.rt-r-size-1) {
+    padding: var(--space-1);
+  }
+  &:where(.rt-r-size-3) {
+    padding: var(--space-3);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-SidebarContainer {
+  &:where(.rt-variant-classic) {
+    background-color: var(--color-surface);
+    border: 1px solid var(--gray-a5);
+  }
+  &:where(.rt-variant-ghost) {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+/* Ensure menu items inherit proper theming and spacing for sidebar */
+.rt-SidebarContent :where(.rt-BaseMenuItem) {
+  border-radius: var(--radius-2);
+  margin-bottom: var(--space-1);
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .rt-SidebarRoot {
+    display: none;
+  }
+  
+  .rt-SidebarInset {
+    margin-left: 0;
+  }
+} 
