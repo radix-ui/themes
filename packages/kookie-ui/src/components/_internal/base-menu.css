@@ -28,7 +28,9 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  height: var(--base-menu-item-height);
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
   padding-left: var(--base-menu-item-padding-left);
   padding-right: var(--base-menu-item-padding-right);
   box-sizing: border-box;
@@ -78,7 +80,9 @@
 .rt-BaseMenuLabel {
   display: flex;
   align-items: center;
-  height: var(--base-menu-item-height);
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
   padding-left: var(--base-menu-item-padding-left);
   padding-right: var(--base-menu-item-padding-right);
   box-sizing: border-box;
@@ -107,6 +111,7 @@
       --base-menu-content-padding: var(--space-1);
       --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
       --base-menu-item-padding-right: var(--space-2);
+      --base-menu-item-padding-y: calc(var(--space-1) * 0.75);
       --base-menu-item-height: var(--space-5);
       border-radius: var(--radius-3);
 
@@ -115,6 +120,13 @@
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
         border-radius: var(--radius-1);
+
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--space-4);
+          height: var(--space-4);
+          flex-shrink: 0;
+        }
       }
 
       & :where(.rt-BaseMenuLabel) {
@@ -141,6 +153,7 @@
       --base-menu-content-padding: var(--space-2);
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
+      --base-menu-item-padding-y: var(--space-1);
       --base-menu-item-height: var(--space-6);
       border-radius: var(--radius-4);
 
@@ -149,6 +162,13 @@
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
         border-radius: var(--radius-2);
+
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--space-4);
+          height: var(--space-4);
+          flex-shrink: 0;
+        }
       }
 
       & :where(.rt-BaseMenuLabel) {
@@ -192,6 +212,11 @@
 .rt-BaseMenuShortcut {
   color: var(--gray-a11);
 }
+
+/* Ensure gray text appears muted in non-highlighted state */
+.rt-BaseMenuItem :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+  color: var(--gray-a10);
+}
 .rt-BaseMenuItem:where([data-disabled], [data-highlighted]),
 .rt-BaseMenuSubTrigger:where([data-state='open']) {
   & :where(.rt-BaseMenuShortcut) {
@@ -215,6 +240,16 @@
     & :where(.rt-BaseMenuSubTriggerIcon) {
       color: var(--accent-contrast);
     }
+
+    /* Force all text elements to inherit hover color, including those with color="gray" */
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    /* Also target any element with data-accent-color="gray" */
+    & :where([data-accent-color='gray']) {
+      color: inherit !important;
+    }
   }
   &:where(.rt-high-contrast) {
     & :where(.rt-BaseMenuItem[data-highlighted]) {
@@ -225,9 +260,27 @@
         color: var(--accent-1);
       }
 
+      /* Force all text elements to inherit hover color in high contrast mode */
+      & :where(.rt-Text) {
+        color: inherit !important;
+      }
+
+      /* Also target any element with data-accent-color="gray" in high contrast */
+      & :where([data-accent-color='gray']) {
+        color: inherit !important;
+      }
+
       &:where([data-accent-color]) {
         background-color: var(--accent-9);
         color: var(--accent-contrast);
+
+        & :where(.rt-Text) {
+          color: inherit !important;
+        }
+
+        & :where([data-accent-color='gray']) {
+          color: inherit !important;
+        }
       }
     }
   }
@@ -241,5 +294,10 @@
   }
   & :where(.rt-BaseMenuItem[data-highlighted]) {
     background-color: var(--accent-a4);
+
+    /* In soft variant, improve contrast for gray text while maintaining hierarchy */
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+      color: var(--gray-11) !important;
+    }
   }
 }
