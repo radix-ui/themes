@@ -195,6 +195,52 @@
   }
 }
 
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Variants / Soft           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-Card:where(.rt-variant-soft) {
+  --card-border-width: 0px;
+  --card-background-color: var(--gray-a3);
+
+  &::before {
+    background-color: var(--card-background-color);
+  }
+  &::after {
+    box-shadow: none;
+    border: none;
+    outline: none;
+  }
+  &:where(:focus-visible) {
+    outline: none;
+    
+    &::after {
+      outline: none;
+    }
+  }
+  &:where(:any-link, button, label) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        &::before {
+          background-color: var(--gray-a4);
+        }
+      }
+    }
+    &:where([data-state='open']) {
+      &::before {
+        background-color: var(--gray-a4);
+      }
+    }
+    &:where(:active:not([data-state='open'])) {
+      &::before {
+        background-color: var(--gray-a5);
+      }
+    }
+  }
+}
+
 /* Better -webkit-tap-highlight-color */
 .rt-Card:where(:any-link, button, label) {
   @media (pointer: coarse) {

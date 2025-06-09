@@ -3,7 +3,7 @@ import { asChildPropDef } from '../props/as-child.prop.js';
 import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3', '4', '5'] as const;
-const variants = ['surface', 'classic', 'ghost'] as const;
+const variants = ['surface', 'classic', 'ghost', 'soft'] as const;
 
 const cardPropDefs = {
   ...asChildPropDef,
