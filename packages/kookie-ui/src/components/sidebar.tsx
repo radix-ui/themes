@@ -4,14 +4,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import { sidebarPropDefs } from './sidebar.props.js';
-import { Button } from './button.js';
+
 import { IconButton } from './icon-button.js';
 import { ScrollArea } from './scroll-area.js';
 import { Separator } from './separator.js';
 import { Theme, useThemeContext } from './theme.js';
 import { ChevronDownIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
-import { requireReactElement } from '../helpers/require-react-element.js';
+
 
 // Import base menu styling and components
 import { baseMenuItemPropDefs } from './_internal/base-menu.props.js';
@@ -88,7 +88,7 @@ const SidebarRoot = React.forwardRef<SidebarRootElement, SidebarRootProps>(
       variant = sidebarPropDefs.variant.default,
       side = sidebarPropDefs.side.default,
       collapsible = sidebarPropDefs.collapsible.default,
-      floating = sidebarPropDefs.floating.default,
+      floating: _floating = sidebarPropDefs.floating.default,
       color,
       highContrast = sidebarPropDefs.highContrast.default,
     } = props;
@@ -324,7 +324,7 @@ SidebarGroup.displayName = 'Sidebar.Group';
 interface SidebarSeparatorProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarSeparator = React.forwardRef<HTMLDivElement, SidebarSeparatorProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, ..._props }, ref) => (
     <Separator
       ref={ref}
       className={classNames('rt-BaseMenuSeparator', className)}
@@ -395,6 +395,12 @@ const SidebarCheckboxItem = React.forwardRef<HTMLDivElement, SidebarCheckboxItem
           className
         )}
         onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleClick(e as any);
+          }
+        }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onFocus={handleFocus}
@@ -486,6 +492,7 @@ const SidebarRadioItem = React.forwardRef<HTMLDivElement, SidebarRadioItemProps>
         onBlur={handleBlur}
         tabIndex={0}
         role="menuitemradio"
+        aria-checked={false}
         {...props}
       >
         <Slot.Slottable>{children}</Slot.Slottable>

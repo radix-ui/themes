@@ -34,7 +34,7 @@ interface ImageProps
 }
 
 const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) => {
-  const { variant = 'surface', fit = 'cover', children } = props;
+  const { variant = 'surface', fit: _fit = 'cover', children } = props;
   const {
     asChild,
     className,
