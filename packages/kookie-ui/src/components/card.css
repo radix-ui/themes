@@ -203,7 +203,7 @@
 
 .rt-Card:where(.rt-variant-soft) {
   --card-border-width: 0px;
-  --card-background-color: var(--gray-a3);
+  --card-background-color: var(--gray-a2);
 
   &::before {
     background-color: var(--card-background-color);
@@ -224,18 +224,18 @@
     @media (hover: hover) {
       &:where(:hover) {
         &::before {
-          background-color: var(--gray-a4);
+          background-color: var(--gray-a3);
         }
       }
     }
     &:where([data-state='open']) {
       &::before {
-        background-color: var(--gray-a4);
+        background-color: var(--gray-a3);
       }
     }
     &:where(:active:not([data-state='open'])) {
       &::before {
-        background-color: var(--gray-a5);
+        background-color: var(--gray-a4);
       }
     }
   }

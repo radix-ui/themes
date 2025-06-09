@@ -4,26 +4,27 @@ import { CodePreview } from './components/code-preview'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h1: (props) => <Heading size="8" {...props} />,
-    h2: (props) => <Heading size="6" {...props} />, 
-    h3: (props) => <Heading size="5" {...props} />,
-    h4: (props) => <Heading size="4" {...props} />,
-    p: (props) => <Text size="3" {...props} />,
-    code: (props) => <Code {...props} />,
-    pre: (props) => (
-      <Card>
+    h1: (props: any) => <Heading size="8" {...props} />,
+    h2: (props: any) => <Heading size="6" {...props} />, 
+    h3: (props: any) => <Heading size="5" {...props} />,
+    h4: (props: any) => <Heading size="4" {...props} />,
+    p: (props: any) => <Text size="2" {...props} />,
+    code: (props: any) => <Code {...props} />,
+    pre: (props: any) => (
+      <Card variant="soft">
         <pre 
           style={{
-            padding: "var(--space-3)",
-            backgroundColor: "var(--color-surface)",
+            padding: "var(--space-4)",
+            backgroundColor: "transparent",
             borderRadius: "var(--radius-3)",
-            overflow: "auto"
+            overflow: "auto",
+            margin: 0
           }} 
           {...props} 
         />
       </Card>
     ),
-    table: (props) => (
+    table: (props: any) => (
       <div style={{ overflowX: "auto", marginBottom: "var(--space-4)" }}>
         <table 
           style={{
@@ -35,9 +36,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       </div>
     ),
-    thead: (props) => <thead {...props} />,
-    tbody: (props) => <tbody {...props} />,
-    tr: (props) => (
+    thead: (props: any) => <thead {...props} />,
+    tbody: (props: any) => <tbody {...props} />,
+    tr: (props: any) => (
       <tr 
         style={{
           borderBottom: "1px solid var(--gray-6)",
@@ -45,7 +46,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props} 
       />
     ),
-    th: (props) => (
+    th: (props: any) => (
       <th 
         style={{
           textAlign: "left",
@@ -57,7 +58,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props} 
       />
     ),
-    td: (props) => (
+    td: (props: any) => (
       <td 
         style={{
           padding: "var(--space-3) var(--space-2)",

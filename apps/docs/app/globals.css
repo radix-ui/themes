@@ -15,7 +15,8 @@ body {
 pre {
   overflow-x: auto;
   border-radius: var(--radius-3);
-  border: 1px solid var(--color-border);
+  background-color: var(--gray-a2);
+  padding: var(--space-4);
 }
 
 code {

@@ -35,7 +35,14 @@ export function CodePreview({ children, code, title }: CodePreviewProps) {
             </Tabs.Content>
             
             <Tabs.Content value="code">
-              <pre className="bg-gray-50 p-4 rounded-md text-sm overflow-x-auto">
+              <pre style={{ 
+                margin: 0,
+                backgroundColor: 'var(--gray-a2)',
+                padding: 'var(--space-4)',
+                borderRadius: 'var(--radius-3)',
+                fontSize: 'var(--font-size-2)',
+                overflowX: 'auto'
+              }}>
                 <code>{code}</code>
               </pre>
             </Tabs.Content>
