@@ -1,5 +1,6 @@
 import { asChildPropDef } from '../props/as-child.prop.js';
 import { accentColors, grayColors } from '../props/color.prop.js';
+import { highContrastPropDef } from '../props/high-contrast.prop.js';
 import { radii } from '../props/radius.prop.js';
 
 import type { GetPropDefTypes, PropDef } from '../props/prop-def.js';
@@ -60,6 +61,7 @@ const themePropDefs = {
    * https://www.radix-ui.com/themes/docs/theme/layout
    */
   scaling: { type: 'enum', values: scalings, default: '100%' },
+  ...highContrastPropDef,
 } satisfies {
   hasBackground: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;

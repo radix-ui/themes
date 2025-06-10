@@ -21,6 +21,7 @@ type ThemeScaling = (typeof themePropDefs.scaling.values)[number];
 
 interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeAppearance) => void;
+  onHighContrastChange: (highContrast: boolean) => void;
   onAccentColorChange: (accentColor: ThemeAccentColor) => void;
   onGrayColorChange: (grayColor: ThemeGrayColor) => void;
   onPanelBackgroundChange: (panelBackground: ThemePanelBackground) => void;
@@ -30,6 +31,7 @@ interface ThemeChangeHandlers {
 
 interface ThemeContextValue extends ThemeChangeHandlers {
   appearance: ThemeAppearance;
+  highContrast?: boolean;
   accentColor: ThemeAccentColor;
   grayColor: ThemeGrayColor;
   resolvedGrayColor: ThemeGrayColor;
@@ -68,6 +70,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
   (props, forwardedRef) => {
     const {
       appearance: appearanceProp = themePropDefs.appearance.default,
+      highContrast: highContrastProp = themePropDefs.highContrast.default,
       accentColor: accentColorProp = themePropDefs.accentColor.default,
       grayColor: grayColorProp = themePropDefs.grayColor.default,
       panelBackground: panelBackgroundProp = themePropDefs.panelBackground.default,
@@ -78,6 +81,9 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
     } = props;
     const [appearance, setAppearance] = React.useState(appearanceProp);
     React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
+
+    const [highContrast, setHighContrast] = React.useState(highContrastProp);
+    React.useEffect(() => setHighContrast(highContrastProp), [highContrastProp]);
 
     const [accentColor, setAccentColor] = React.useState(accentColorProp);
     React.useEffect(() => setAccentColor(accentColorProp), [accentColorProp]);
@@ -102,6 +108,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         hasBackground={hasBackground}
         //
         appearance={appearance}
+        highContrast={highContrast}
         accentColor={accentColor}
         grayColor={grayColor}
         panelBackground={panelBackground}
@@ -109,6 +116,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         scaling={scaling}
         //
         onAppearanceChange={setAppearance}
+        onHighContrastChange={setHighContrast}
         onAccentColorChange={setAccentColor}
         onGrayColorChange={setGrayColor}
         onPanelBackgroundChange={setPanelBackground}
@@ -136,6 +144,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     hasBackground: hasBackgroundProp,
     //
     appearance = context?.appearance ?? themePropDefs.appearance.default,
+    highContrast = context?.highContrast ?? themePropDefs.highContrast.default,
     accentColor = context?.accentColor ?? themePropDefs.accentColor.default,
     grayColor = context?.resolvedGrayColor ?? themePropDefs.grayColor.default,
     panelBackground = context?.panelBackground ?? themePropDefs.panelBackground.default,
@@ -143,6 +152,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     scaling = context?.scaling ?? themePropDefs.scaling.default,
     //
     onAppearanceChange = noop,
+    onHighContrastChange = noop,
     onAccentColorChange = noop,
     onGrayColorChange = noop,
     onPanelBackgroundChange = noop,
@@ -161,6 +171,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
       value={React.useMemo(
         () => ({
           appearance,
+          highContrast,
           accentColor,
           grayColor,
           resolvedGrayColor,
@@ -169,6 +180,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           scaling,
           //
           onAppearanceChange,
+          onHighContrastChange,
           onAccentColorChange,
           onGrayColorChange,
           onPanelBackgroundChange,
@@ -177,6 +189,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         }),
         [
           appearance,
+          highContrast,
           accentColor,
           grayColor,
           resolvedGrayColor,
@@ -185,6 +198,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           scaling,
           //
           onAppearanceChange,
+          onHighContrastChange,
           onAccentColorChange,
           onGrayColorChange,
           onPanelBackgroundChange,
@@ -195,6 +209,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     >
       <Comp
         data-is-root-theme={isRoot ? 'true' : 'false'}
+        data-high-contrast={highContrast ? 'true' : 'false'}
         data-accent-color={accentColor}
         data-gray-color={resolvedGrayColor}
         // for nested `Theme` background
