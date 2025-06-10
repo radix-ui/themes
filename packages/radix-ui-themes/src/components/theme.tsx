@@ -224,6 +224,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           {
             light: appearance === 'light',
             dark: appearance === 'dark',
+            'more-contrast': highContrast,
           },
           themeProps.className
         )}
