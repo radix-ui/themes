@@ -216,6 +216,8 @@
       color: var(--accent-contrast);
     }
   }
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     & :where(.rt-BaseMenuItem[data-highlighted]) {
       background-color: var(--accent-12);

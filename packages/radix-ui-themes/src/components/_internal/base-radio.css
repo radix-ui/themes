@@ -89,6 +89,8 @@
     background-color: var(--accent-contrast);
   }
 
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     &:where(:checked, [data-state='checked'])::before {
       background-color: var(--accent-12);
@@ -123,6 +125,8 @@
     background-color: var(--accent-contrast);
   }
 
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     &:where(:checked, [data-state='checked'])::before {
       background-color: var(--accent-12);
@@ -152,6 +156,8 @@
     background-color: var(--accent-a11);
   }
 
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     &::after {
       background-color: var(--accent-12);

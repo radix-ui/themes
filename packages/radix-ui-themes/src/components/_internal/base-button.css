@@ -137,6 +137,8 @@
     background-image: linear-gradient(var(--black-a1), transparent, var(--white-a2));
     box-shadow: inset 0 2px 3px -1px var(--white-a4);
   }
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     background-color: var(--accent-12);
     color: var(--gray-1);
@@ -173,6 +175,8 @@
         background-color: var(--accent-10);
         background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
       }
+      .more-contrast &,
+      [data-high-contrast="true"] &,
       &:where(.rt-high-contrast) {
         filter: var(--base-button-classic-high-contrast-hover-filter);
         &::after {
@@ -187,6 +191,8 @@
       background-color: var(--accent-10);
       background-image: linear-gradient(var(--black-a2) -15%, transparent, var(--white-a3));
     }
+    .more-contrast &,
+    [data-high-contrast="true"] &,
     &:where(.rt-high-contrast) {
       filter: var(--base-button-classic-high-contrast-hover-filter);
       &::after {
@@ -216,6 +222,8 @@
       background-image: linear-gradient(var(--black-a2), transparent, var(--white-a3));
     }
 
+    .more-contrast &,
+    [data-high-contrast="true"] &,
     &:where(.rt-high-contrast) {
       background-color: var(--accent-12);
       filter: var(--base-button-classic-high-contrast-active-filter);
@@ -288,6 +296,8 @@
     outline: 2px solid var(--focus-8);
     outline-offset: 2px;
   }
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     background-color: var(--accent-12);
     color: var(--gray-1);
@@ -320,6 +330,8 @@
 .rt-BaseButton:where(.rt-variant-soft, .rt-variant-ghost) {
   color: var(--accent-a11);
 
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
@@ -396,6 +408,8 @@
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
     color: var(--accent-12);
@@ -430,6 +444,8 @@
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }

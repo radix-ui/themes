@@ -173,6 +173,8 @@
     box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4), inset 0 0 0 1px var(--black-a1),
       inset 0 1.5px 2px 0 var(--black-a2);
 
+    .more-contrast &,
+    [data-high-contrast="true"] &,
     &:where(.rt-high-contrast) {
       box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2), inset 0 1.5px 2px 0 var(--black-a2);
     }
@@ -232,6 +234,8 @@
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --slider-range-high-contrast-background-image: none;
 }
+:where(:not(.more-contrast)) .rt-SliderRoot,
+:where(:not([data-high-contrast="true"])) .rt-SliderRoot,
 .rt-SliderRoot:where(:not(.rt-high-contrast)) {
   --slider-range-high-contrast-background-image: none;
 }

@@ -138,6 +138,8 @@
     background-color: var(--accent-indicator);
   }
 
+  .more-contrast &,
+  [data-high-contrast="true"] &,
   :where(.rt-BaseTabList.rt-high-contrast) & {
     &:where([data-state='active'], [data-active])::before {
       background-color: var(--accent-12);
