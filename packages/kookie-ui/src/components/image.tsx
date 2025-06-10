@@ -52,7 +52,7 @@ interface ImageProps
 }
 
 const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) => {
-  const { variant = 'surface', fit = 'cover', children } = props;
+  const { variant = 'surface', children } = props;
   const {
     asChild,
     className,
@@ -74,6 +74,22 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   const [imageError, setImageError] = React.useState(false);
   const [showPlaceholder, setShowPlaceholder] = React.useState(!!placeholder);
 
+  // Handle image load - moved to top to avoid conditional hook call
+  const handleLoad = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
+    setImageLoaded(true);
+    setImageError(false);
+    setShowPlaceholder(false);
+    userOnLoad?.(event);
+  }, [userOnLoad]);
+
+  // Handle image error - moved to top to avoid conditional hook call
+  const handleError = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
+    setImageLoaded(false);
+    setImageError(true);
+    setShowPlaceholder(false);
+    userOnError?.(event);
+  }, [userOnError]);
+
   // Validate required props
   if (!src) {
     console.warn('Image component: src prop is required');
@@ -83,22 +99,6 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   if (!asChild && alt === undefined) {
     console.warn('Image component: alt prop is required for accessibility when not using asChild');
   }
-
-  // Handle image load
-  const handleLoad = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
-    setImageLoaded(true);
-    setImageError(false);
-    setShowPlaceholder(false);
-    userOnLoad?.(event);
-  }, [userOnLoad]);
-
-  // Handle image error
-  const handleError = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
-    setImageLoaded(false);
-    setImageError(true);
-    setShowPlaceholder(false);
-    userOnError?.(event);
-  }, [userOnError]);
 
   // Create skeleton placeholder
   const skeletonElement = showSkeleton && !imageLoaded && !imageError ? (
