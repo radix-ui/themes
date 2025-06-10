@@ -1,0 +1,114 @@
+import {
+  Card,
+  Container,
+  Heading,
+  Text,
+  Flex,
+  Section,
+} from '@kushagradhawan/kookie-ui';
+
+export const metadata = {
+  title: 'Card - Kookie UI',
+  description:
+    'A flexible container component for grouping related content with multiple variants and sizes.',
+};
+
+<Container size="3">
+  <Section size="3">
+    <Flex direction="column" gap="6">
+
+# Card
+
+A foundational container component designed to group related content and provide visual separation. Built with semantic HTML and supports various visual styles to match different design contexts.
+
+The Card component provides a consistent way to present content with proper spacing, elevation, and visual hierarchy across your application.
+
+<CodePreview code={`import { Card } from '@kushagradhawan/kookie-ui';
+
+<Card>
+  {/* Your content goes here */}
+</Card>`}>
+  <Card style={{ width: '200px', height: '100px' }} />
+</CodePreview>
+
+## API Reference
+
+This component is based on the `div` element and supports common margin props.
+
+| Prop    | Type                                           | Default     | Description              |
+| ------- | ---------------------------------------------- | ----------- | ------------------------ |
+| size    | `"1"` \| `"2"` \| `"3"` \| `"4"` \| `"5"`      | `"1"`       | Size and padding of card |
+| variant | `"surface"` \| `"classic"` \| `"ghost"` \| `"soft"` | `"surface"` | Visual style variant     |
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the card's padding and border radius. Larger sizes provide more breathing room for content.
+
+<CodePreview
+  code={`<Flex gap="3" align="start" wrap="wrap">
+  <Card size="1" style={{ width: '120px', height: '80px' }} />
+  <Card size="2" style={{ width: '120px', height: '80px' }} />
+  <Card size="3" style={{ width: '120px', height: '80px' }} />
+  <Card size="4" style={{ width: '120px', height: '80px' }} />
+  <Card size="5" style={{ width: '120px', height: '80px' }} />
+</Flex>`}
+>
+<Flex gap="3" align="start" wrap="wrap">
+  <Card size="1" style={{ width: '120px', height: '80px' }} />
+  <Card size="2" style={{ width: '120px', height: '80px' }} />
+  <Card size="3" style={{ width: '120px', height: '80px' }} />
+  <Card size="4" style={{ width: '120px', height: '80px' }} />
+  <Card size="5" style={{ width: '120px', height: '80px' }} />
+</Flex>
+</CodePreview>
+
+### Variant
+
+Each variant provides different visual emphasis and interaction styles:
+
+- **Surface**: Default variant with border and subtle elevation
+- **Classic**: Elevated appearance with gradient background and shadow
+- **Ghost**: Minimal variant that inherits parent spacing, ideal for list items
+- **Soft**: New minimal variant with subtle background tint, no borders or shadows
+
+<CodePreview
+  code={`<Flex direction="column" gap="3">
+  <Flex gap="3" wrap="wrap">
+    <Card variant="surface" style={{ width: '140px', height: '100px' }} />
+    <Card variant="classic" style={{ width: '140px', height: '100px' }} />
+    <Card variant="ghost" style={{ width: '140px', height: '100px' }} />
+    <Card variant="soft" style={{ width: '140px', height: '100px' }} />
+  </Flex>
+</Flex>`}
+>
+<Flex direction="column" gap="3">
+  <Flex gap="3" wrap="wrap">
+    <Card variant="surface" style={{ width: '140px', height: '100px' }} />
+    <Card variant="classic" style={{ width: '140px', height: '100px' }} />
+    <Card variant="ghost" style={{ width: '140px', height: '100px' }} />
+    <Card variant="soft" style={{ width: '140px', height: '100px' }} />
+  </Flex>
+</Flex>
+</CodePreview>
+
+### Soft Variant (New in Kookie UI)
+
+The `soft` variant is a new addition to Kookie UI that provides a minimal appearance with just a subtle background tint. Unlike other variants, it has no borders, shadows, or elevated appearance, making it perfect for subtle content grouping.
+
+<CodePreview
+  code={`<Flex direction="column" gap="3">
+  <Card variant="soft" size="3" style={{ width: '300px', height: '120px' }} />
+  <Card variant="soft" size="4" style={{ width: '300px', height: '120px' }} />
+</Flex>`}
+>
+<Flex direction="column" gap="3">
+  <Card variant="soft" size="3" style={{ width: '300px', height: '120px' }} />
+  <Card variant="soft" size="4" style={{ width: '300px', height: '120px' }} />
+</Flex>
+</CodePreview>
+
+    </Flex>
+  </Section>
+</Container> 

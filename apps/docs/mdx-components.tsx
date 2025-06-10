@@ -1,15 +1,14 @@
-import type { MDXComponents } from 'mdx/types'
 import { Heading, Text, Card, Flex, Code } from '@kushagradhawan/kookie-ui'
 import { CodePreview } from './components/code-preview'
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+export function useMDXComponents(components: any) {
   return {
-    h1: (props: any) => <Heading size="8" {...props} />,
-    h2: (props: any) => <Heading size="6" {...props} />, 
-    h3: (props: any) => <Heading size="5" {...props} />,
-    h4: (props: any) => <Heading size="4" {...props} />,
-    p: (props: any) => <Text size="2" {...props} />,
-    code: (props: any) => <Code {...props} />,
+    h1: (props: any) => <Heading size="8" highContrast color="gray" {...props} />,
+    h2: (props: any) => <Heading size="6" highContrast color="gray" {...props} />, 
+    h3: (props: any) => <Heading size="5" highContrast color="gray" {...props} />,
+    h4: (props: any) => <Heading size="4" highContrast color="gray" {...props} />,
+    p: (props: any) => <Text size="3" color="gray" {...props} />,
+    code: (props: any) => <Code color="gray" {...props} />,
     pre: (props: any) => (
       <Card variant="soft">
         <pre 

@@ -1,0 +1,14 @@
+# Ignore MDX files to prevent formatting issues with button text
+# Multiline button text in MDX gets wrapped in Text components which overrides font sizes
+*.mdx
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Dependencies
+node_modules/
+
+# Generated files
+*.generated.* 

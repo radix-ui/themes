@@ -138,3 +138,8 @@
 .rt-r-shadow-6 {
   --box-shadow: var(--shadow-6);
 }
+
+/* Loading states */
+.rt-Image--placeholder {
+  z-index: 0;
+}
