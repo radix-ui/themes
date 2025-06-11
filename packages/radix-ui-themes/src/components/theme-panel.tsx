@@ -444,7 +444,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               </Grid>
 
               <Text id="radius-title" as="p" size="2" weight="medium" mt="5">
-              Radius
+                Radius
               </Text>
 
               <Grid columns="5" gap="2" mt="3" role="group" aria-labelledby="radius-title">
