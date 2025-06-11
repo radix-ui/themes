@@ -85,6 +85,8 @@
       color: var(--accent-contrast);
     }
 
+    :where(.more-contrast) &,
+    :where([data-high-contrast="true"]) &,
     &:where(.rt-high-contrast) {
       &::before {
         background-color: var(--accent-12);
@@ -126,6 +128,8 @@
       color: var(--accent-contrast);
     }
 
+    :where(.more-contrast) &,
+    :where([data-high-contrast="true"]) &,
     &:where(.rt-high-contrast) {
       &::before {
         background-color: var(--accent-12);
@@ -160,6 +164,8 @@
       color: var(--accent-a11);
     }
 
+    :where(.more-contrast) &,
+    :where([data-high-contrast="true"]) &,
     &:where(.rt-high-contrast) {
       & :where(.rt-BaseCheckboxIndicator) {
         color: var(--accent-12);
