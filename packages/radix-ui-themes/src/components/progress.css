@@ -220,8 +220,8 @@
 }
 
 /* all high-contrast */
-.more-contrast .rt-ProgressRoot,
-[data-high-contrast="true"] .rt-ProgressRoot,
+:where(.more-contrast) .rt-ProgressRoot,
+:where([data-high-contrast="true"]) .rt-ProgressRoot,
 .rt-ProgressRoot:where(.rt-high-contrast) {
   --progress-indicator-indeterminate-animation-start: rt-progress-indicator-high-contrast-indeterminate-fade;
   --progress-indicator-indeterminate-animation-repeat: rt-progress-indicator-high-contrast-indeterminate-pulse;

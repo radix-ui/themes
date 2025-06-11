@@ -6,8 +6,8 @@
   text-align: left;
   color: var(--accent-a11);
 
-  .more-contrast &,
-  [data-high-contrast="true"] &,
+  :where(.more-contrast) &,
+  :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }

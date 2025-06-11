@@ -56,8 +56,8 @@
         }
       }
 
-      .more-contrast &,
-      [data-high-contrast="true"] &,
+      :where(.more-contrast) &,
+      :where([data-high-contrast="true"]) &,
       &:where(.rt-high-contrast),
       :where(:not(.more-contrast)) :where([data-accent-color]:not(.radix-themes)) &:where([data-accent-color='']),
       :where(:not([data-high-contrast="true"])) :where([data-accent-color]:not(.radix-themes)) &:where([data-accent-color='']),

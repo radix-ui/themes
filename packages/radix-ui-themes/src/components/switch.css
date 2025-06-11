@@ -139,8 +139,8 @@
   &:where([data-state='checked']:active)::before {
     filter: var(--switch-surface-checked-active-filter);
   }
-  .more-contrast &,
-  [data-high-contrast="true"] &,
+  :where(.more-contrast) &,
+  :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::before {
       /* prettier-ignore */
@@ -171,8 +171,8 @@
       box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1),
         0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 
-      .more-contrast &,
-      [data-high-contrast="true"] &,
+      :where(.more-contrast) &,
+      :where([data-high-contrast="true"]) &,
       &:where(.rt-high-contrast) {
         box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2),
           -1px 0 1px var(--black-a2);
@@ -213,8 +213,8 @@
   &:where([data-state='checked']:active)::before {
     filter: var(--switch-surface-checked-active-filter);
   }
-  .more-contrast &,
-  [data-high-contrast="true"] &,
+  :where(.more-contrast) &,
+  :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::before {
       box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2), inset 0 1.5px 2px 0 var(--black-a2);
@@ -248,8 +248,8 @@
       box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1),
         0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 
-      .more-contrast &,
-      [data-high-contrast="true"] &,
+      :where(.more-contrast) &,
+      :where([data-high-contrast="true"]) &,
       &:where(.rt-high-contrast) {
         box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2),
           -1px 0 1px var(--black-a2);
@@ -282,8 +282,8 @@
   &:where(:active)::before {
     background-color: var(--gray-a4);
   }
-  .more-contrast &,
-  [data-high-contrast="true"] &,
+  :where(.more-contrast) &,
+  :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::before {
       /* prettier-ignore */

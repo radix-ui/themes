@@ -124,8 +124,8 @@
     background-color: var(--accent-9);
     color: var(--accent-contrast);
   }
-  .more-contrast & :where(.rt-AvatarFallback),
-  [data-high-contrast="true"] & :where(.rt-AvatarFallback),
+  :where(.more-contrast) & :where(.rt-AvatarFallback),
+  :where([data-high-contrast="true"]) & :where(.rt-AvatarFallback),
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
     background-color: var(--accent-12);
     color: var(--accent-1);
@@ -139,8 +139,8 @@
     background-color: var(--accent-a3);
     color: var(--accent-a11);
   }
-  .more-contrast & :where(.rt-AvatarFallback),
-  [data-high-contrast="true"] & :where(.rt-AvatarFallback),
+  :where(.more-contrast) & :where(.rt-AvatarFallback),
+  :where([data-high-contrast="true"]) & :where(.rt-AvatarFallback),
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
     color: var(--accent-12);
   }

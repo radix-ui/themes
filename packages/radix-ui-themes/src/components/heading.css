@@ -14,11 +14,11 @@
     color: var(--accent-a11);
   }
 
-  .more-contrast &:where([data-accent-color]),
-  [data-high-contrast="true"] &:where([data-accent-color]),
+  :where(.more-contrast) &:where([data-accent-color]),
+  :where([data-high-contrast="true"]) &:where([data-accent-color]),
   &:where([data-accent-color].rt-high-contrast),
-  .more-contrast :where([data-accent-color]:not(.radix-themes)) &,
-  [data-high-contrast="true"] :where([data-accent-color]:not(.radix-themes)) &,
+  :where(.more-contrast) :where([data-accent-color]:not(.radix-themes)) &,
+  :where([data-high-contrast="true"]) :where([data-accent-color]:not(.radix-themes)) &,
   :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }

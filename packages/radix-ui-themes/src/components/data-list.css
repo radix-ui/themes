@@ -10,8 +10,8 @@
   display: flex;
   color: var(--gray-a11);
 
-  .more-contrast &,
-  [data-high-contrast="true"] &,
+  :where(.more-contrast) &,
+  :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     color: var(--gray-12);
   }
@@ -19,8 +19,8 @@
   &:where([data-accent-color]) {
     color: var(--accent-a11);
 
-    .more-contrast &,
-    [data-high-contrast="true"] &,
+    :where(.more-contrast) &,
+    :where([data-high-contrast="true"]) &,
     &:where(.rt-high-contrast) {
       color: var(--accent-12);
     }
