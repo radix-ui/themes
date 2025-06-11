@@ -402,6 +402,39 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                       }
                     />
                     <Flex align="center" justify="center" height="32px" gap="2">
+                      {value === 'true' ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          className="lucide lucide-contrast-icon lucide-contrast"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 18a6 6 0 0 0 0-12v12z" fill="currentColor" />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          className="lucide lucide-contrast-icon lucide-contrast"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 18a6 6 0 0 0 0-12v12z" />
+                        </svg>
+                      )}
                       <Text size="1" weight="medium">
                         {upperFirst(value)}
                       </Text>
@@ -411,7 +444,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
               </Grid>
 
               <Text id="radius-title" as="p" size="2" weight="medium" mt="5">
-                Radius
+              Radius
               </Text>
 
               <Grid columns="5" gap="2" mt="3" role="group" aria-labelledby="radius-title">
