@@ -88,5 +88,22 @@ const ThickChevronRightIcon = React.forwardRef<IconElement, IconProps>((props, f
 });
 ThickChevronRightIcon.displayName = 'ThickChevronRightIcon';
 
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon };
+const ThickDotIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg
+      width="9"
+      height="9"
+      viewBox="0 0 9 9"
+      fill="currentcolor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={forwardedRef}
+    >
+      <circle cx="4.5" cy="4.5" r="2" />
+    </svg>
+  );
+});
+ThickDotIcon.displayName = 'ThickDotIcon';
+
+export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon, ThickDotIcon };
 export type { IconProps };

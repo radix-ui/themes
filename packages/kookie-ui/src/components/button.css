@@ -31,8 +31,8 @@
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-4);
-        height: var(--space-4);
+        width: calc(var(--space-3) * 1.175);
+        height: calc(var(--space-3) * 1.175);
       }
 
       &:where(:not(.rt-variant-ghost)) {

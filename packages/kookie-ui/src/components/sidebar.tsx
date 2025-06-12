@@ -2,29 +2,35 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { Slot } from './slot';
+import { Accordion } from 'radix-ui';
 
-import { sidebarPropDefs } from './sidebar.props.js';
+import { sidebarPropDefs } from './sidebar.props';
+import { Theme, useThemeContext } from './theme';
+import { IconButton } from './icon-button';
+import { ScrollArea } from './scroll-area';
+import { Separator } from './separator';
+import { ChevronDownIcon, ThickChevronRightIcon } from './icons';
+import { extractProps } from '../helpers/extract-props';
 
-import { IconButton } from './icon-button.js';
-import { ScrollArea } from './scroll-area.js';
-import { Separator } from './separator.js';
-import { Theme, useThemeContext } from './theme.js';
-import { ChevronDownIcon } from './icons.js';
-import { extractProps } from '../helpers/extract-props.js';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
+import type { GetPropDefTypes } from '../props/prop-def';
 
-
-// Import base menu styling and components
-import { baseMenuItemPropDefs } from './_internal/base-menu.props.js';
-import { Slot } from 'radix-ui';
-
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
-
-// Context for sidebar state
+// Sidebar context for state management
 type SidebarContextProps = {
+  state: 'expanded' | 'collapsed';
   open: boolean;
   setOpen: (open: boolean) => void;
-  collapsible: 'icon' | 'offcanvas' | 'none';
+  openMobile: boolean;
+  setOpenMobile: (open: boolean) => void;
+  isMobile: boolean;
+  toggleSidebar: () => void;
+  side: 'left' | 'right';
+  type: 'sidebar' | 'floating';
+  variant: 'soft' | 'surface' | 'ghost';
+  menuVariant: 'solid' | 'soft';
+  collapsible: 'offcanvas' | 'icon' | 'none';
+  size: '1' | '2';
 };
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null);
@@ -32,9 +38,26 @@ const SidebarContext = React.createContext<SidebarContextProps | null>(null);
 function useSidebar() {
   const context = React.useContext(SidebarContext);
   if (!context) {
-    throw new Error('useSidebar must be used within a Sidebar.Provider');
+    throw new Error('useSidebar must be used within a SidebarProvider.');
   }
   return context;
+}
+
+// Hook to detect mobile (simplified version)
+function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState(false);
+  
+  React.useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+  
+  return isMobile;
 }
 
 // Provider component
@@ -42,27 +65,60 @@ interface SidebarProviderProps extends React.ComponentPropsWithoutRef<'div'> {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  side?: 'left' | 'right';
 }
 
 const SidebarProvider = React.forwardRef<HTMLDivElement, SidebarProviderProps>(
-  ({ defaultOpen = true, open: openProp, onOpenChange: setOpenProp, children, ...props }, forwardedRef) => {
+  ({ defaultOpen = true, open: openProp, onOpenChange: setOpenProp, side = 'left', className, children, ...props }, forwardedRef) => {
+    const isMobile = useIsMobile();
+    const [openMobile, setOpenMobile] = React.useState(false);
+    
     // Internal state for uncontrolled mode
     const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
     
     // Use controlled state if provided, otherwise internal state
     const open = openProp ?? internalOpen;
     
-    const setOpen = React.useCallback((value: boolean) => {
+    const setOpen = React.useCallback((value: boolean | ((value: boolean) => boolean)) => {
+      const openState = typeof value === 'function' ? value(open) : value;
       if (setOpenProp) {
-        setOpenProp(value); // Controlled mode
+        setOpenProp(openState);
       } else {
-        setInternalOpen(value); // Uncontrolled mode
+        setInternalOpen(openState);
       }
-    }, [setOpenProp]);
+    }, [setOpenProp, open]);
+
+    // Helper to toggle the sidebar
+    const toggleSidebar = React.useCallback(() => {
+      return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
+    }, [isMobile, setOpen, setOpenMobile]);
+
+    // State for data attributes
+    const state = open ? 'expanded' : 'collapsed';
+    
+    const contextValue = React.useMemo<Partial<SidebarContextProps>>(
+      () => ({
+        state,
+        open,
+        setOpen,
+        isMobile,
+        openMobile,
+        setOpenMobile,
+        toggleSidebar,
+        side,
+      }),
+      [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar, side]
+    );
 
     return (
-      <div {...props} ref={forwardedRef}>
-        <SidebarContext.Provider value={{ open, setOpen, collapsible: 'icon' }}>
+      <div
+        {...props}
+        ref={forwardedRef}
+        className={classNames('rt-SidebarProvider', className)}
+        data-state={state}
+        data-side={side}
+      >
+        <SidebarContext.Provider value={contextValue as SidebarContextProps}>
           {children}
         </SidebarContext.Provider>
       </div>
@@ -71,49 +127,112 @@ const SidebarProvider = React.forwardRef<HTMLDivElement, SidebarProviderProps>(
 );
 SidebarProvider.displayName = 'Sidebar.Provider';
 
-// Root sidebar container
-type SidebarRootOwnProps = GetPropDefTypes<typeof sidebarPropDefs>;
-type SidebarRootElement = HTMLDivElement;
-interface SidebarRootProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    SidebarRootOwnProps {}
+// Main Sidebar component
+type SidebarOwnProps = GetPropDefTypes<typeof sidebarPropDefs>;
+interface SidebarProps extends ComponentPropsWithout<'div', RemovedProps>, SidebarOwnProps {}
 
-const SidebarRoot = React.forwardRef<SidebarRootElement, SidebarRootProps>(
+const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
   (props, forwardedRef) => {
     const themeContext = useThemeContext();
-    const { open } = useSidebar();
-    
+    const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+
     const {
       size = sidebarPropDefs.size.default,
       variant = sidebarPropDefs.variant.default,
+      menuVariant = sidebarPropDefs.menuVariant.default,
+      type = sidebarPropDefs.type.default,
       side = sidebarPropDefs.side.default,
       collapsible = sidebarPropDefs.collapsible.default,
-      floating: _floating = sidebarPropDefs.floating.default,
       color,
       highContrast = sidebarPropDefs.highContrast.default,
+      asChild,
     } = props;
 
     const { className, children, ...rootProps } = extractProps(props, sidebarPropDefs);
+    const { asChild: _, ...safeRootProps } = rootProps; // Remove asChild from DOM props
     const resolvedColor = color || themeContext.accentColor;
+
+    // Update context with current props - we'll pass the resolved values
+    const resolvedSize = typeof size === 'object' ? size.initial || '2' : size;
+    const context = React.useContext(SidebarContext);
+    if (context) {
+      context.side = side;
+      context.type = type;
+      context.variant = variant;
+      context.menuVariant = menuVariant;
+      context.collapsible = collapsible;
+      context.size = resolvedSize;
+    }
+
+    if (collapsible === 'none') {
+      return (
+        <div
+          {...safeRootProps}
+          ref={forwardedRef}
+          data-accent-color={resolvedColor}
+          data-state={state}
+          data-side={side}
+          data-type={type}
+          data-collapsible={collapsible}
+          className={classNames('rt-SidebarRoot', `rt-r-size-${size}`, className)}
+        >
+          <Theme>
+            <div 
+              className={classNames('rt-SidebarContainer', `rt-variant-${variant}`)}
+              data-accent-color={resolvedColor}
+              data-high-contrast={highContrast || undefined}
+              data-side={side}
+            >
+              {children}
+            </div>
+          </Theme>
+        </div>
+      );
+    }
+
+    if (isMobile) {
+      return (
+        <div
+          {...safeRootProps}
+          ref={forwardedRef}
+          data-accent-color={resolvedColor}
+          data-state={openMobile ? 'open' : 'closed'}
+          data-side={side}
+          data-type={type}
+          data-collapsible={collapsible}
+          className={classNames('rt-SidebarRoot', 'rt-SidebarRoot--mobile', className)}
+        >
+          <Theme>
+            <div 
+              className={classNames('rt-SidebarContainer', `rt-variant-${variant}`, `rt-r-size-${size}`)}
+              data-accent-color={resolvedColor}
+              data-high-contrast={highContrast || undefined}
+              data-side={side}
+            >
+              {children}
+            </div>
+          </Theme>
+        </div>
+      );
+    }
 
     return (
       <div
-        {...rootProps}
+        {...safeRootProps}
         ref={forwardedRef}
         data-accent-color={resolvedColor}
-        data-state={open ? 'expanded' : 'collapsed'}
+        data-state={state}
         data-side={side}
+        data-type={type}
         data-collapsible={collapsible}
-        className={classNames(
-          'rt-SidebarRoot',
-          className
-        )}
+        className={classNames('rt-SidebarRoot', className)}
       >
-        <Theme asChild>
+        <Theme>
           <div 
             className={classNames('rt-SidebarContainer', `rt-variant-${variant}`, `rt-r-size-${size}`)}
             data-accent-color={resolvedColor}
             data-high-contrast={highContrast || undefined}
+            data-side={side}
           >
             {children}
           </div>
@@ -122,415 +241,429 @@ const SidebarRoot = React.forwardRef<SidebarRootElement, SidebarRootProps>(
     );
   }
 );
-SidebarRoot.displayName = 'Sidebar.Root';
+Sidebar.displayName = 'Sidebar.Root';
 
 // Sidebar content area
-type SidebarContentElement = HTMLDivElement;
-interface SidebarContentProps extends ComponentPropsWithout<'div', RemovedProps> {}
+interface SidebarContentProps extends React.ComponentPropsWithoutRef<'div'> {}
 
-const SidebarContent = React.forwardRef<SidebarContentElement, SidebarContentProps>(
-  ({ className, children, ...props }, forwardedRef) => (
-    <ScrollArea type="auto">
-      <div
-        {...props}
-        ref={forwardedRef}
-        className={classNames('rt-SidebarContent', 'rt-BaseMenuContent', className)}
-      >
-        {children}
-      </div>
-    </ScrollArea>
-  )
+const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
+  ({ className, children, ...props }, forwardedRef) => {
+    const context = React.useContext(SidebarContext);
+    const { size = '2', menuVariant = 'soft' } = context || {};
+    
+    return (
+      <ScrollArea type="auto">
+        <div
+          {...props}
+          ref={forwardedRef}
+          className={classNames(
+            'rt-SidebarContent', 
+            `rt-r-size-${size}`,
+            `rt-menu-variant-${menuVariant}`,
+            className
+          )}
+        >
+          {children}
+        </div>
+      </ScrollArea>
+    );
+  }
 );
 SidebarContent.displayName = 'Sidebar.Content';
 
 // Sidebar header
-type SidebarHeaderElement = HTMLDivElement;
-interface SidebarHeaderProps extends ComponentPropsWithout<'div', RemovedProps> {}
+interface SidebarHeaderProps extends React.ComponentPropsWithoutRef<'div'> {
+  /**
+   * Whether to use the default flex container layout.
+   * @default true
+   */
+  asContainer?: boolean;
+}
 
-const SidebarHeader = React.forwardRef<SidebarHeaderElement, SidebarHeaderProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-SidebarHeader', 'rt-BaseMenuContent', className)}
-    />
-  )
+const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps>(
+  ({ className, asContainer = true, ...props }, forwardedRef) => {
+    const context = React.useContext(SidebarContext);
+    const { size = '2', menuVariant = 'soft' } = context || {};
+    
+    return (
+      <div
+        {...props}
+        ref={forwardedRef}
+        className={classNames(
+          'rt-SidebarHeader',
+          `rt-r-size-${size}`,
+          `rt-menu-variant-${menuVariant}`,
+          {
+            'rt-SidebarHeader--container': asContainer,
+          },
+          className
+        )}
+      />
+    );
+  }
 );
 SidebarHeader.displayName = 'Sidebar.Header';
 
 // Sidebar footer
-type SidebarFooterElement = HTMLDivElement;
-interface SidebarFooterProps extends ComponentPropsWithout<'div', RemovedProps> {}
+interface SidebarFooterProps extends React.ComponentPropsWithoutRef<'div'> {
+  /**
+   * Whether to use the default flex container layout.
+   * @default true
+   */
+  asContainer?: boolean;
+}
 
-const SidebarFooter = React.forwardRef<SidebarFooterElement, SidebarFooterProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-SidebarFooter', 'rt-BaseMenuContent', className)}
-    />
-  )
+const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
+  ({ className, asContainer = true, ...props }, forwardedRef) => {
+    const context = React.useContext(SidebarContext);
+    const { size = '2', menuVariant = 'soft' } = context || {};
+    
+    return (
+      <div
+        {...props}
+        ref={forwardedRef}
+        className={classNames(
+          'rt-SidebarFooter',
+          `rt-r-size-${size}`,
+          `rt-menu-variant-${menuVariant}`,
+          {
+            'rt-SidebarFooter--container': asContainer,
+          },
+          className
+        )}
+      />
+    );
+  }
 );
 SidebarFooter.displayName = 'Sidebar.Footer';
 
 // Sidebar trigger button
-type SidebarTriggerElement = React.ElementRef<typeof IconButton>;
 interface SidebarTriggerProps extends ComponentPropsWithout<typeof IconButton, RemovedProps> {}
 
-const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerProps>(
-  ({ onClick, ...props }, forwardedRef) => {
-    const { setOpen, open } = useSidebar();
+const SidebarTrigger = React.forwardRef<
+  React.ElementRef<typeof IconButton>,
+  SidebarTriggerProps
+>(({ onClick, children, ...props }, forwardedRef) => {
+  const { toggleSidebar } = useSidebar();
+  
+  return (
+    <IconButton
+      {...props}
+      ref={forwardedRef}
+      variant="ghost"
+      onClick={(event) => {
+        onClick?.(event);
+        toggleSidebar();
+      }}
+    >
+      {children || <ChevronDownIcon />}
+    </IconButton>
+  );
+});
+SidebarTrigger.displayName = 'Sidebar.Trigger';
+
+// Removed SidebarInset - not needed
+
+// Sidebar separator
+interface SidebarSeparatorProps extends ComponentPropsWithout<typeof Separator, RemovedProps> {}
+
+const SidebarSeparator = React.forwardRef<
+  React.ComponentRef<typeof Separator>,
+  SidebarSeparatorProps
+>(({ className, ...props }, forwardedRef) => (
+  <Separator
+    {...props}
+    ref={forwardedRef}
+    className={classNames('rt-SidebarSeparator', className)}
+  />
+));
+SidebarSeparator.displayName = 'Sidebar.Separator';
+
+// Menu components - reusing dropdown menu structure
+interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'ul'> {}
+
+const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(
+  ({ className, ...props }, forwardedRef) => (
+    <ul
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-SidebarMenu', className)}
+    />
+  )
+);
+SidebarMenu.displayName = 'Sidebar.Menu';
+
+interface SidebarMenuItemProps extends React.ComponentPropsWithoutRef<'li'> {}
+
+const SidebarMenuItem = React.forwardRef<HTMLLIElement, SidebarMenuItemProps>(
+  ({ className, ...props }, forwardedRef) => (
+    <li
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-SidebarMenuItem', className)}
+    />
+  )
+);
+SidebarMenuItem.displayName = 'Sidebar.MenuItem';
+
+interface SidebarMenuButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+  asChild?: boolean;
+  isActive?: boolean;
+}
+
+const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonProps>(
+  ({ asChild = false, isActive = false, className, onMouseEnter, onMouseLeave, ...props }, forwardedRef) => {
+    const [isHighlighted, setIsHighlighted] = React.useState(false);
+    const Comp = asChild ? Slot : 'button';
     
     return (
-      <IconButton
+      <Comp
         {...props}
         ref={forwardedRef}
-        variant="ghost"
-        onClick={(event) => {
-          onClick?.(event);
-          setOpen(!open);
+        className={classNames(
+          'rt-reset',
+          'rt-SidebarMenuButton',
+          className
+        )}
+        data-active={isActive || undefined}
+        data-highlighted={isHighlighted || undefined}
+        onMouseEnter={(event) => {
+          setIsHighlighted(true);
+          onMouseEnter?.(event);
         }}
-      >
-        <ChevronDownIcon />
-      </IconButton>
+        onMouseLeave={(event) => {
+          setIsHighlighted(false);
+          onMouseLeave?.(event);
+        }}
+      />
     );
   }
 );
-SidebarTrigger.displayName = 'Sidebar.Trigger';
+SidebarMenuButton.displayName = 'Sidebar.MenuButton';
 
-// Main content area (pushes to make room for sidebar)
-type SidebarInsetElement = HTMLDivElement;
-interface SidebarInsetProps extends ComponentPropsWithout<'main', RemovedProps> {}
+// Sub-menu components using Radix Accordion
+interface SidebarMenuSubProps extends React.ComponentPropsWithoutRef<'div'> {
+  defaultOpen?: boolean;
+}
 
-const SidebarInset = React.forwardRef<SidebarInsetElement, SidebarInsetProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <main
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-SidebarInset', className)}
-    />
-  )
-);
-SidebarInset.displayName = 'Sidebar.Inset';
-
-// Create sidebar-specific menu components that don't require DropdownMenu context
-interface SidebarLabelProps extends React.ComponentPropsWithoutRef<'div'> {}
-
-const SidebarLabel = React.forwardRef<HTMLDivElement, SidebarLabelProps>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={classNames('rt-BaseMenuLabel', className)}
-      {...props}
-    />
-  )
-);
-SidebarLabel.displayName = 'Sidebar.Label';
-
-type SidebarItemOwnProps = GetPropDefTypes<typeof baseMenuItemPropDefs>;
-interface SidebarItemProps 
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    SidebarItemOwnProps {}
-
-const SidebarItem = React.forwardRef<HTMLDivElement, SidebarItemProps>(
-  (props, ref) => {
-    const {
-      className,
-      children,
-      color = baseMenuItemPropDefs.color.default,
-      shortcut,
-      asChild = false,
-      onMouseEnter,
-      onMouseLeave,
-      onFocus,
-      onBlur,
-      ...itemProps
-    } = props;
-    
-    const [highlighted, setHighlighted] = React.useState(false);
-    
-    const handleMouseEnter = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      setHighlighted(true);
-      onMouseEnter?.(e);
-    }, [onMouseEnter]);
-    
-    const handleMouseLeave = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      setHighlighted(false);
-      onMouseLeave?.(e);
-    }, [onMouseLeave]);
-    
-    const handleFocus = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
-      setHighlighted(true);
-      onFocus?.(e);
-    }, [onFocus]);
-    
-    const handleBlur = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
-      setHighlighted(false);
-      onBlur?.(e);
-    }, [onBlur]);
-    
-    if (asChild) {
-      return (
-        <Slot.Root
-          ref={ref}
-          data-accent-color={color}
-          data-highlighted={highlighted || undefined}
-          className={classNames('rt-reset', 'rt-BaseMenuItem', className)}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...itemProps}
-        >
-          {children}
-        </Slot.Root>
-      );
-    }
-    
+const SidebarMenuSub = React.forwardRef<HTMLDivElement, SidebarMenuSubProps>(
+  ({ defaultOpen = false, children, ...props }, forwardedRef) => {
     return (
-      <div
-        ref={ref}
-        data-accent-color={color}
-        data-highlighted={highlighted || undefined}
-        className={classNames('rt-reset', 'rt-BaseMenuItem', className)}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        tabIndex={0}
-        role="menuitem"
-        {...itemProps}
-      >
-        <Slot.Slottable>{children}</Slot.Slottable>
-        {shortcut && <div className="rt-BaseMenuShortcut">{shortcut}</div>}
+      <div {...props} ref={forwardedRef}>
+        <Accordion.Root
+          type="single"
+          collapsible
+          defaultValue={defaultOpen ? 'item' : undefined}
+        >
+          <Accordion.Item value="item">
+            {children}
+          </Accordion.Item>
+        </Accordion.Root>
       </div>
     );
   }
 );
-SidebarItem.displayName = 'Sidebar.Item';
+SidebarMenuSub.displayName = 'Sidebar.MenuSub';
 
+interface SidebarMenuSubTriggerProps extends React.ComponentPropsWithoutRef<typeof Accordion.Trigger> {
+  asChild?: boolean;
+}
+
+const SidebarMenuSubTrigger = React.forwardRef<
+  React.ElementRef<typeof Accordion.Trigger>,
+  SidebarMenuSubTriggerProps
+>(({ asChild = false, className, children, onMouseEnter, onMouseLeave, ...props }, forwardedRef) => {
+  const [isHighlighted, setIsHighlighted] = React.useState(false);
+  
+  return (
+    <Accordion.Header asChild>
+      <div>
+        <Accordion.Trigger
+          {...props}
+          ref={forwardedRef}
+          asChild={asChild}
+          className={classNames(
+            'rt-reset',
+            'rt-SidebarMenuButton',
+            'rt-SidebarMenuSubTrigger',
+            className
+          )}
+          data-highlighted={isHighlighted || undefined}
+          onMouseEnter={(event) => {
+            setIsHighlighted(true);
+            onMouseEnter?.(event);
+          }}
+          onMouseLeave={(event) => {
+            setIsHighlighted(false);
+            onMouseLeave?.(event);
+          }}
+        >
+          {asChild ? (
+            children
+          ) : (
+            <>
+              {children}
+              <ThickChevronRightIcon 
+                className={classNames(
+                  'rt-BaseMenuSubTriggerIcon',
+                  'rt-SidebarMenuSubTriggerIcon'
+                )}
+              />
+            </>
+          )}
+        </Accordion.Trigger>
+      </div>
+    </Accordion.Header>
+  );
+});
+SidebarMenuSubTrigger.displayName = 'Sidebar.MenuSubTrigger';
+
+interface SidebarMenuSubContentProps extends React.ComponentPropsWithoutRef<typeof Accordion.Content> {}
+
+const SidebarMenuSubContent = React.forwardRef<
+  React.ElementRef<typeof Accordion.Content>,
+  SidebarMenuSubContentProps
+>(({ className, children, ...props }, forwardedRef) => {
+  return (
+    <Accordion.Content
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-SidebarMenuSubContent', className)}
+    >
+      <div className="rt-SidebarMenuSubList">
+        {children}
+      </div>
+    </Accordion.Content>
+  );
+});
+SidebarMenuSubContent.displayName = 'Sidebar.MenuSubContent';
+
+// Group components
 interface SidebarGroupProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, ...props }, forwardedRef) => (
     <div
-      ref={ref}
-      className={classNames('rt-BaseMenuGroup', className)}
       {...props}
+      ref={forwardedRef}
+      className={classNames('rt-SidebarGroup', className)}
     />
   )
 );
 SidebarGroup.displayName = 'Sidebar.Group';
 
-interface SidebarSeparatorProps extends React.ComponentPropsWithoutRef<'div'> {}
+interface SidebarGroupLabelProps extends React.ComponentPropsWithoutRef<'div'> {
+  asChild?: boolean;
+}
 
-const SidebarSeparator = React.forwardRef<HTMLDivElement, SidebarSeparatorProps>(
-  ({ className, ..._props }, ref) => (
-    <Separator
-      ref={ref}
-      className={classNames('rt-BaseMenuSeparator', className)}
+const SidebarGroupLabel = React.forwardRef<HTMLDivElement, SidebarGroupLabelProps>(
+  ({ asChild = false, className, ...props }, forwardedRef) => {
+    const Comp = asChild ? Slot : 'div';
+    
+    return (
+      <Comp
+        {...props}
+        ref={forwardedRef}
+        className={classNames('rt-SidebarGroupLabel', className)}
+      />
+    );
+  }
+);
+SidebarGroupLabel.displayName = 'Sidebar.GroupLabel';
+
+interface SidebarGroupContentProps extends React.ComponentPropsWithoutRef<'div'> {}
+
+const SidebarGroupContent = React.forwardRef<HTMLDivElement, SidebarGroupContentProps>(
+  ({ className, ...props }, forwardedRef) => (
+    <div
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-SidebarGroupContent', className)}
     />
   )
 );
-SidebarSeparator.displayName = 'Sidebar.Separator';
+SidebarGroupContent.displayName = 'Sidebar.GroupContent';
 
-// Sidebar checkbox item with proper prop filtering
-interface SidebarCheckboxItemProps extends React.ComponentPropsWithoutRef<'div'> {
-  checked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
-  color?: string;
-  shortcut?: string;
-}
-
-const SidebarCheckboxItem = React.forwardRef<HTMLDivElement, SidebarCheckboxItemProps>(
-  ({ 
-    className, 
-    checked, 
-    onCheckedChange, 
-    children, 
-    color, 
-    shortcut, 
-    onMouseEnter,
-    onMouseLeave,
-    onFocus,
-    onBlur,
-    onClick,
-    ...props 
-  }, ref) => {
-    const [highlighted, setHighlighted] = React.useState(false);
-    
-    const handleMouseEnter = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      setHighlighted(true);
-      onMouseEnter?.(e);
-    }, [onMouseEnter]);
-    
-    const handleMouseLeave = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      setHighlighted(false);
-      onMouseLeave?.(e);
-    }, [onMouseLeave]);
-    
-    const handleFocus = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
-      setHighlighted(true);
-      onFocus?.(e);
-    }, [onFocus]);
-    
-    const handleBlur = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
-      setHighlighted(false);
-      onBlur?.(e);
-    }, [onBlur]);
-    
-    const handleClick = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      onCheckedChange?.(!checked);
-      onClick?.(e);
-    }, [checked, onCheckedChange, onClick]);
-    
-    return (
-      <div
-        ref={ref}
-        data-accent-color={color}
-        data-highlighted={highlighted || undefined}
-        className={classNames(
-          'rt-reset',
-          'rt-BaseMenuItem',
-          'rt-BaseMenuCheckboxItem',
-          className
-        )}
-        onClick={handleClick}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            handleClick(e as any);
-          }
-        }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        tabIndex={0}
-        role="menuitemcheckbox"
-        aria-checked={checked}
-        {...props}
-      >
-        <Slot.Slottable>{children}</Slot.Slottable>
-        {checked && <div className="rt-BaseMenuItemIndicator">✓</div>}
-        {shortcut && <div className="rt-BaseMenuShortcut">{shortcut}</div>}
-      </div>
-    );
-  }
-);
-SidebarCheckboxItem.displayName = 'Sidebar.CheckboxItem';
-
-// Sidebar radio group with proper prop filtering  
-interface SidebarRadioGroupProps extends React.ComponentPropsWithoutRef<'div'> {
-  value?: string;
-  onValueChange?: (value: string) => void;
-}
-
-const SidebarRadioGroup = React.forwardRef<HTMLDivElement, SidebarRadioGroupProps>(
-  ({ className, value, onValueChange, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={classNames('rt-BaseMenuGroup', className)}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
-SidebarRadioGroup.displayName = 'Sidebar.RadioGroup';
-
-// Sidebar radio item with proper prop filtering
-interface SidebarRadioItemProps extends React.ComponentPropsWithoutRef<'div'> {
-  value?: string;
-  color?: string;
-  shortcut?: string;
-}
-
-const SidebarRadioItem = React.forwardRef<HTMLDivElement, SidebarRadioItemProps>(
-  ({ 
-    className, 
-    value, 
-    children, 
-    color, 
-    shortcut, 
-    onMouseEnter,
-    onMouseLeave,
-    onFocus,
-    onBlur,
-    ...props 
-  }, ref) => {
-    const [highlighted, setHighlighted] = React.useState(false);
-    
-    const handleMouseEnter = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      setHighlighted(true);
-      onMouseEnter?.(e);
-    }, [onMouseEnter]);
-    
-    const handleMouseLeave = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      setHighlighted(false);
-      onMouseLeave?.(e);
-    }, [onMouseLeave]);
-    
-    const handleFocus = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
-      setHighlighted(true);
-      onFocus?.(e);
-    }, [onFocus]);
-    
-    const handleBlur = React.useCallback((e: React.FocusEvent<HTMLDivElement>) => {
-      setHighlighted(false);
-      onBlur?.(e);
-    }, [onBlur]);
-    
-    return (
-      <div
-        ref={ref}
-        data-accent-color={color}
-        data-highlighted={highlighted || undefined}
-        className={classNames('rt-reset', 'rt-BaseMenuItem', className)}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        tabIndex={0}
-        role="menuitemradio"
-        aria-checked={false}
-        {...props}
-      >
-        <Slot.Slottable>{children}</Slot.Slottable>
-        {shortcut && <div className="rt-BaseMenuShortcut">{shortcut}</div>}
-      </div>
-    );
-  }
-);
-SidebarRadioItem.displayName = 'Sidebar.RadioItem';
-
-// Export all components
+// Export all components following shadcn's pattern
 export {
   SidebarProvider as Provider,
-  SidebarRoot as Root,
+  Sidebar as Root,
   SidebarContent as Content,
   SidebarHeader as Header,
   SidebarFooter as Footer,
   SidebarTrigger as Trigger,
-  SidebarInset as Inset,
-  // Re-export DropdownMenu components as sidebar menu components
-  SidebarLabel as Label,
-  SidebarItem as Item,
-  SidebarGroup as Group,
   SidebarSeparator as Separator,
-  SidebarCheckboxItem as CheckboxItem,
-  SidebarRadioGroup as RadioGroup,
-  SidebarRadioItem as RadioItem,
+  SidebarMenu as Menu,
+  SidebarMenuItem as MenuItem,
+  SidebarMenuButton as MenuButton,
+  SidebarMenuSub as MenuSub,
+  SidebarMenuSubTrigger as MenuSubTrigger,
+  SidebarMenuSubContent as MenuSubContent,
+  SidebarGroup as Group,
+  SidebarGroupLabel as GroupLabel,
+  SidebarGroupContent as GroupContent,
   // Export hook
   useSidebar,
 };
 
+/**
+ * Enhanced Sidebar Header and Footer Usage Examples:
+ * 
+ * 1. Simple default container (backwards compatible):
+ * <Sidebar.Header>
+ *   <Logo />
+ *   <span>App Name</span>
+ * </Sidebar.Header>
+ * 
+ * 2. Custom flex layout:
+ * <Sidebar.Header className="rt-justify-between rt-gap-3">
+ *   <Logo />
+ *   <Sidebar.MenuButton>
+ *     <SettingsIcon />
+ *   </Sidebar.MenuButton>
+ * </Sidebar.Header>
+ * 
+ * 3. Column layout for multiple rows:
+ * <Sidebar.Header className="rt-flex-col rt-gap-2" asContainer={false}>
+ *   <div className="rt-flex rt-items-center rt-gap-2">
+ *     <Logo />
+ *     <span>App Name</span>
+ *   </div>
+ *   <Sidebar.MenuButton>
+ *     <UserAvatar />
+ *     <span>John Doe</span>
+ *   </Sidebar.MenuButton>
+ * </Sidebar.Header>
+ * 
+ * 4. Interactive footer with menu button:
+ * <Sidebar.Footer>
+ *   <Sidebar.MenuButton>
+ *     <UserIcon />
+ *     <span>Settings</span>
+ *     <ChevronUpIcon />
+ *   </Sidebar.MenuButton>
+ * </Sidebar.Footer>
+ * 
+ * 5. Custom footer layout:
+ * <Sidebar.Footer className="rt-justify-between">
+ *   <span>v1.0.0</span>
+ *   <Sidebar.MenuButton>
+ *     <HelpIcon />
+ *   </Sidebar.MenuButton>
+ * </Sidebar.Footer>
+ * 
+ * Available utility classes:
+ * - Layout: rt-flex-row, rt-flex-col
+ * - Alignment: rt-items-center, rt-items-start, rt-items-end
+ * - Justification: rt-justify-between, rt-justify-center, rt-justify-start, rt-justify-end
+ * - Gap: rt-gap-1, rt-gap-2, rt-gap-3, rt-gap-4
+ */
+
 export type {
   SidebarProviderProps as ProviderProps,
-  SidebarRootProps as RootProps,
+  SidebarProps as RootProps,
   SidebarContentProps as ContentProps,
   SidebarHeaderProps as HeaderProps,
   SidebarFooterProps as FooterProps,
   SidebarTriggerProps as TriggerProps,
-  SidebarInsetProps as InsetProps,
 }; 

@@ -27,18 +27,11 @@
     cursor: wait;
   }
 
-  /* Scale animation on press for all button variants */
-  &:where(:active:not([data-disabled], [data-state='open'])) {
-    transform: scale(0.98);
-  }
+  /* Removed scale animation on press - keeping transition for other effects */
 
-  /* Reduced motion support for transforms */
+  /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
-
-    &:where(:active:not([data-disabled], [data-state='open'])) {
-      transform: none;
-    }
   }
 
   height: var(--base-button-height);

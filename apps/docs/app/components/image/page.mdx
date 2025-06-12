@@ -18,8 +18,8 @@ export const metadata = {
     'Display images with advanced loading states, blur effects, and responsive behavior. Built with performance and accessibility in mind.',
 };
 
-<Container size="3">
-  <Section size="3">
+<Container size="2">
+  <Section size="2">
     <Flex direction="column" gap="6">
 
 # Image
@@ -50,19 +50,20 @@ The Image component provides smooth loading transitions, placeholder support, an
 
 This component is based on the `img` element and supports common margin, width, and height props.
 
-| Prop         | Type                                                                   | Default     | Description                                |
-| ------------ | ---------------------------------------------------------------------- | ----------- | ------------------------------------------ |
-| variant      | `"surface"` \| `"blur"`                                                | `"surface"` | Visual style variant                       |
-| fit          | `"cover"` \| `"contain"` \| `"fill"` \| `"scale-down"` \| `"none"`     | `"cover"`   | How image should resize to fit container   |
-| radius       | `"none"` \| `"small"` \| `"medium"` \| `"large"` \| `"full"`           | -           | Border radius                              |
-| shadow       | `"1"` \| `"2"` \| `"3"` \| `"4"` \| `"5"` \| `"6"`                     | -           | Box shadow                                 |
-| loading      | `"eager"` \| `"lazy"`                                                  | `"lazy"`    | Loading behavior                           |
-| placeholder  | `string`                                                               | -           | Placeholder image URL while loading        |
-| showSkeleton | `boolean`                                                              | `false`     | Shows skeleton placeholder while loading   |
-| onLoad       | `(event: React.SyntheticEvent<HTMLImageElement>) => void`              | -           | Callback when image loads                  |
-| onError      | `(event: React.SyntheticEvent<HTMLImageElement>) => void`              | -           | Callback when image fails to load          |
-| alt          | `string`                                                               | -           | Alternative text (required for accessibility) |
-| asChild      | `boolean`                                                              | `false`     | Merge props into immediate child element   |
+| Prop         | Type                                                                   | Default     |
+| ------------ | ---------------------------------------------------------------------- | ----------- |
+| variant      | `"surface"` \| `"blur"`                                                | `"surface"` |
+| fit          | `"cover"` \| `"contain"` \| `"fill"` \| `"scale-down"` \| `"none"`     | `"cover"`   |
+| radius       | `"none"` \| `"small"` \| `"medium"` \| `"large"` \| `"full"`           | -           |
+| shadow       | `"1"` \| `"2"` \| `"3"` \| `"4"` \| `"5"` \| `"6"`                     | -           |
+| loading      | `"eager"` \| `"lazy"`                                                  | `"lazy"`    |
+| placeholder  | `string`                                                               | -           |
+| showSkeleton | `boolean`                                                              | `false`     |
+| fadeIn       | `boolean`                                                              | `true`      |
+| onLoad       | `(event: React.SyntheticEvent<HTMLImageElement>) => void`              | -           |
+| onError      | `(event: React.SyntheticEvent<HTMLImageElement>) => void`              | -           |
+| alt          | `string`                                                               | -           |
+| asChild      | `boolean`                                                              | `false`     |
 
 ## Examples
 
@@ -427,6 +428,71 @@ Add depth with shadow variants:
   />
 </Flex>
 </CodePreview>
+
+### Fade In Control
+
+Control whether images should fade in smoothly when loaded or appear immediately:
+
+<CodePreview code={`<Flex gap="4" direction="column">
+  <Flex direction="column" gap="2">
+    <Text size="2" weight="bold">Fade In: true (default)</Text>
+    <Text size="1" color="gray">Smooth transition for content images</Text>
+    <Image 
+      src="${demoImages.medium}"
+      alt="Fade in demo"
+      fadeIn={true}
+      width="200"
+      height="150"
+      radius="medium"
+    />
+  </Flex>
+  
+  <Flex direction="column" gap="2">
+    <Text size="2" weight="bold">Fade In: false</Text>
+    <Text size="1" color="gray">Immediate visibility for backgrounds</Text>
+    <Image 
+      src="${demoImages.secondary}"
+      alt="No fade demo"
+      fadeIn={false}
+      width="200"
+      height="150"
+      radius="medium"
+    />
+  </Flex>
+</Flex>`}>
+<Flex gap="4" direction="column">
+  <Flex direction="column" gap="2">
+    <Text size="2" weight="bold">Fade In: true (default)</Text>
+    <Text size="1" color="gray">Smooth transition for content images</Text>
+    <Image 
+      src={demoImages.medium}
+      alt="Fade in demo"
+      fadeIn={true}
+      width="200"
+      height="150"
+      radius="medium"
+    />
+  </Flex>
+  
+  <Flex direction="column" gap="2">
+    <Text size="2" weight="bold">Fade In: false</Text>
+    <Text size="1" color="gray">Immediate visibility for backgrounds</Text>
+    <Image 
+      src={demoImages.secondary}
+      alt="No fade demo"
+      fadeIn={false}
+      width="200"
+      height="150"
+      radius="medium"
+    />
+  </Flex>
+</Flex>
+</CodePreview>
+
+#### When to Use fadeIn={false}:
+- Background images that need immediate visibility
+- UI elements like logos that should feel instant
+- Decorative images where loading transitions would be jarring
 
 ### Interactive Images
 

@@ -12,7 +12,7 @@ import {
   dropdownMenuRadioItemPropDefs,
 } from './dropdown-menu.props.js';
 import { Theme, useThemeContext } from './theme.js';
-import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
+import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDotIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
 
@@ -205,7 +205,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     >
       {children}
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
-        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-DropdownMenuItemIndicatorIcon" />
+        <ThickDotIcon className="rt-BaseMenuItemIndicatorIcon rt-DropdownMenuItemIndicatorIcon" />
       </DropdownMenuPrimitive.ItemIndicator>
     </DropdownMenuPrimitive.RadioItem>
   );

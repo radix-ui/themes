@@ -29,6 +29,10 @@ type ImageOwnProps = GetPropDefTypes<typeof imagePropDefs> & {
    */
   showSkeleton?: boolean;
   /**
+   * Whether the image should fade in when loaded. Set to false for background images or when you want immediate visibility.
+   */
+  fadeIn?: boolean;
+  /**
    * Callback fired when the image successfully loads.
    */
   onLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
@@ -63,6 +67,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     src,
     placeholder,
     showSkeleton = false,
+    fadeIn = true,
     onLoad: userOnLoad,
     onError: userOnError,
     children: _children, // Extract children to exclude from imgProps
@@ -73,6 +78,9 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const [imageError, setImageError] = React.useState(false);
   const [showPlaceholder, setShowPlaceholder] = React.useState(!!placeholder);
+  
+  // Ref to check if image is already loaded (for cached images)
+  const imgRef = React.useRef<HTMLImageElement>(null);
 
   // Handle image load - moved to top to avoid conditional hook call
   const handleLoad = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
@@ -89,6 +97,16 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     setShowPlaceholder(false);
     userOnError?.(event);
   }, [userOnError]);
+
+  // Check if image is already loaded (for cached images)
+  React.useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) {
+      setImageLoaded(true);
+      setImageError(false);
+      setShowPlaceholder(false);
+    }
+  }, [src]);
 
   // Validate required props
   if (!src) {
@@ -146,8 +164,8 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       loading={loading}
       style={{
         ...style,
-        opacity: imageLoaded ? 1 : 0,
-        transition: 'opacity 0.3s ease-out',
+        opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+        transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
       }}
       className={classNames(
         'rt-reset',
@@ -160,7 +178,14 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       onLoad={handleLoad}
       onError={handleError}
       {...imgProps}
-      ref={forwardedRef}
+      ref={(node) => {
+        imgRef.current = node;
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(node);
+        } else if (forwardedRef) {
+          forwardedRef.current = node;
+        }
+      }}
     />
   );
 
@@ -224,8 +249,8 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
                 ...style, 
                 position: 'relative', 
                 zIndex: 1,
-                opacity: imageLoaded ? 1 : 0,
-                transition: 'opacity 0.3s ease-out',
+                opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+                transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
               }}
               className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur', className)}
               alt={alt}
@@ -233,7 +258,14 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
               onLoad={handleLoad}
               onError={handleError}
               {...imgProps}
-              ref={forwardedRef}
+              ref={(node) => {
+                imgRef.current = node;
+                if (typeof forwardedRef === 'function') {
+                  forwardedRef(node);
+                } else if (forwardedRef) {
+                  forwardedRef.current = node;
+                }
+              }}
             />
           </>
         ),
@@ -290,8 +322,8 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
             ...style, 
             position: 'relative', 
             zIndex: 1,
-            opacity: imageLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease-out',
+            opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+            transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
           }}
           className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur', className)}
           alt={alt}
@@ -299,7 +331,14 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
           onLoad={handleLoad}
           onError={handleError}
           {...imgProps}
-          ref={forwardedRef}
+          ref={(node) => {
+            imgRef.current = node;
+            if (typeof forwardedRef === 'function') {
+              forwardedRef(node);
+            } else if (forwardedRef) {
+              forwardedRef.current = node;
+            }
+          }}
         />
       </div>
     );
