@@ -1,0 +1,145 @@
+import {
+  Text,
+  Container,
+  Flex,
+  Card,
+  Section,
+  Heading,
+} from '@kushagradhawan/kookie-ui';
+
+export const metadata = {
+  title: 'Text - Kookie UI',
+  description:
+    'Display text content with flexible styling options supporting multiple sizes, weights, and semantic meaning.',
+};
+
+<Container size="3">
+  <Section size="3">
+    <Flex direction="column" gap="6">
+
+# Text
+
+A versatile component for displaying text content with comprehensive styling options. Built with the Geist font family and designed for optimal readability across all variants.
+
+The Text component adapts to your theme and provides consistent visual hierarchy while maintaining excellent contrast and accessibility.
+
+<CodePreview code={`import { Text } from '@kushagradhawan/kookie-ui';
+
+<Text>This is some descriptive text content.</Text>`}>
+  <Text>This is some descriptive text content.</Text>
+</CodePreview>
+
+## API Reference
+
+This component is based on the `span` element by default and supports common margin props.
+
+| Prop         | Type                                                          | Default  | Description                  |
+| ------------ | ------------------------------------------------------------- | -------- | ---------------------------- |
+| as           | `"span"` \| `"div"` \| `"label"` \| `"p"`                     | `"span"` | HTML element to render       |
+| size         | `"0"` \| `"1"` \| `"2"` \| `"3"` \| `"4"` \| `"5"` \| `"6"` \| `"7"` \| `"8"` \| `"9"` | -        | Size of the text             |
+| weight       | `"light"` \| `"regular"` \| `"medium"` \| `"bold"`            | -        | Font weight                  |
+| color        | `string`                                                      | -        | Text color                   |
+| highContrast | `boolean`                                                     | `false`  | Increases color contrast     |
+
+## Examples
+
+### Size
+
+Use the `size` prop to control text dimensions. Sizes are designed to create clear visual hierarchy:
+
+<CodePreview
+  code={`<Flex direction="column" gap="2">
+  <Text size="0">Size 0 - Caption text</Text>  
+  <Text size="1">Size 1 - Small text</Text>
+  <Text size="2">Size 2 - Default body text</Text>
+  <Text size="3">Size 3 - Medium text</Text>
+  <Text size="4">Size 4 - Large text</Text>
+  <Text size="5">Size 5 - XL text</Text>
+  <Text size="6">Size 6 - XXL text</Text>
+  <Text size="7">Size 7 - XXXL text</Text>
+  <Text size="8">Size 8 - Display text</Text>
+  <Text size="9">Size 9 - Hero text</Text>
+</Flex>`}
+>
+<Flex direction="column" gap="2">
+<Text size="0">Size 0 - Caption text</Text>
+<Text size="1">Size 1 - Small text</Text>
+<Text size="2">Size 2 - Default body text</Text>
+<Text size="3">Size 3 - Medium text</Text>
+<Text size="4">Size 4 - Large text</Text>
+<Text size="5">Size 5 - XL text</Text>
+<Text size="6">Size 6 - XXL text</Text>
+<Text size="7">Size 7 - XXXL text</Text>
+<Text size="8">Size 8 - Display text</Text>
+<Text size="9">Size 9 - Hero text</Text>  
+</Flex>
+</CodePreview>
+
+### Weight
+
+Control font weight to establish hierarchy and emphasis:
+
+<CodePreview
+  code={`<Flex direction="column" gap="2">
+  <Text weight="light">Light weight text</Text>
+  <Text weight="regular">Regular weight text</Text>
+  <Text weight="medium">Medium weight text</Text>
+  <Text weight="bold">Bold weight text</Text>
+</Flex>`}
+>
+<Flex direction="column" gap="2">
+<Text weight="light">Light weight text</Text>
+<Text weight="regular">Regular weight text</Text>
+<Text weight="medium">Medium weight text</Text>
+<Text weight="bold">Bold weight text</Text>
+</Flex>
+</CodePreview>
+
+### Color
+
+Use semantic colors to convey meaning and status:
+
+<CodePreview
+  code={`<Flex direction="column" gap="2">
+  <Text>Default text color</Text>
+  <Text color="gray">Gray text for secondary content</Text>
+  <Text color="blue">Blue text for links or info</Text>
+  <Text color="green">Green text for success</Text>
+  <Text color="orange">Orange text for warnings</Text>
+  <Text color="red">Red text for errors</Text>
+</Flex>`}
+>
+<Flex direction="column" gap="2">
+<Text>Default text color</Text>
+<Text color="gray">Gray text for secondary content</Text>
+<Text color="blue">Blue text for links or info</Text>
+<Text color="green">Green text for success</Text>
+<Text color="orange">Orange text for warnings</Text>
+<Text color="red">Red text for errors</Text>
+</Flex>
+</CodePreview>
+
+### High Contrast
+
+Use high contrast for better accessibility and emphasis:
+
+<CodePreview
+  code={`<Flex direction="column" gap="3">
+  <Text color="gray">Standard Contrast</Text>
+  <Text color="gray" highContrast>High Contrast</Text>
+  <Text color="blue">Standard Blue</Text>
+  <Text color="blue" highContrast>High Contrast Blue</Text>
+</Flex>`}
+>
+<Flex direction="column" gap="3">
+<Text color="gray">Standard Contrast</Text>
+<Text color="gray" highContrast>High Contrast</Text>
+<Text color="blue">Standard Blue</Text>
+<Text color="blue" highContrast>High Contrast Blue</Text>
+</Flex>
+</CodePreview>
+
+
+    </Flex>
+  </Section>
+</Container> 

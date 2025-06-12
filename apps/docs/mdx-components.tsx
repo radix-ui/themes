@@ -10,7 +10,7 @@ export function useMDXComponents(components: any) {
     p: (props: any) => <Text size="3" color="gray" {...props} />,
     code: (props: any) => <Code color="gray" {...props} />,
     pre: (props: any) => (
-      <Card variant="soft">
+      <Card variant="classic">
         <pre 
           style={{
             padding: "var(--space-4)",

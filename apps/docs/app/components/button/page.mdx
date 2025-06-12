@@ -7,7 +7,9 @@ import {
   Card,
   Section,
   Separator,
+  Spinner,
 } from '@kushagradhawan/kookie-ui';
+import { Heart, Save } from 'lucide-react';
 
 export const metadata = {
   title: 'Button - Kookie UI',
@@ -15,15 +17,13 @@ export const metadata = {
     'Trigger actions and interactions with a versatile button component supporting multiple variants, sizes, and states.',
 };
 
-<Container size="3">
-  <Section size="3">
+<Container size="2">
+  <Section size="2">
     <Flex direction="column" gap="6">
 
 # Button
 
-A foundational interactive component designed to trigger actions and interactions. Built with accessibility in mind, supporting keyboard navigation, focus states, and semantic HTML.
-
-The Button component adapts to your theme's accent color by default, providing consistent visual hierarchy across different variants while maintaining optimal contrast and readability.
+A foundational interactive component for triggering actions and interactions. Built with accessibility in mind and adapts to your theme's accent color.
 
 <CodePreview code={`import { Button } from '@kushagradhawan/kookie-ui';
 
@@ -35,23 +35,25 @@ The Button component adapts to your theme's accent color by default, providing c
 
 ## API Reference
 
-This component is based on the `button` element and supports common margin props.
+This component is polymorphic and supports rendering as different elements via the `as` prop or composing with other components via `asChild`. Based on the `button` element by default and supports common margin props.
 
-| Prop         | Type                                                                            | Default   | Description              |
-| ------------ | ------------------------------------------------------------------------------- | --------- | ------------------------ |
-| size         | `"1"` \| `"2"` \| `"3"` \| `"4"`                                                | `"2"`     | Size of the button       |
-| variant      | `"classic"` \| `"solid"` \| `"soft"` \| `"surface"` \| `"outline"` \| `"ghost"` | `"solid"` | Visual style variant     |
-| color        | `string`                                                                        | -         | Accent color             |
-| highContrast | `boolean`                                                                       | `false`   | Increases color contrast |
-| radius       | `"none"` \| `"small"` \| `"medium"` \| `"large"` \| `"full"`                    | -         | Border radius            |
-| loading      | `boolean`                                                                       | `false`   | Shows loading spinner    |
-| fullWidth    | `boolean`                                                                       | `false`   | Makes button full width  |
+| Prop         | Type                                                                            | Default   |
+| ------------ | ------------------------------------------------------------------------------- | --------- |
+| as           | `React.ElementType`                                                             | `"button"` |
+| asChild      | `boolean`                                                                       | `false`   |
+| size         | `"1"` \| `"2"` \| `"3"` \| `"4"`                                                | `"2"`     |
+| variant      | `"classic"` \| `"solid"` \| `"soft"` \| `"surface"` \| `"outline"` \| `"ghost"` | `"solid"` |
+| color        | `string`                                                                        | -         |
+| highContrast | `boolean`                                                                       | `false`   |
+| radius       | `"none"` \| `"small"` \| `"medium"` \| `"large"` \| `"full"`                    | -         |
+| loading      | `boolean`                                                                       | `false`   |
+| fullWidth    | `boolean`                                                                       | `false`   |
 
 ## Examples
 
 ### Size
 
-Use the `size` prop to control the button's dimensions and font size. Sizes are designed to maintain consistent visual hierarchy and work well together in interfaces.
+Control the button's dimensions and font size.
 
 <CodePreview
   code={`<Flex gap="3" align="center">
@@ -71,7 +73,7 @@ Use the `size` prop to control the button's dimensions and font size. Sizes are 
 
 ### Variant
 
-Each variant is designed for specific use cases and visual hierarchy:
+Different visual styles for various use cases:
 
 <CodePreview
   code={`<Flex align="center" gap="3" wrap="wrap">
@@ -95,7 +97,7 @@ Each variant is designed for specific use cases and visual hierarchy:
 
 ### Color
 
-By default, buttons use your theme's accent color. Use the `color` prop to override this when you need semantic meaning or specific branding. This is especially useful for destructive actions (red), success states (green), or warning actions (orange).
+Override the default accent color for semantic meaning or specific branding.
 
 <CodePreview
   code={`<Flex gap="3" wrap="wrap">
@@ -115,7 +117,7 @@ By default, buttons use your theme's accent color. Use the `color` prop to overr
 
 ### High-contrast
 
-Use the `highContrast` prop to increase color contrast with the background. This is particularly useful for accessibility or when buttons need to stand out more prominently against complex backgrounds.
+Increase color contrast for better accessibility or prominence.
 
 <CodePreview
   code={`<Flex direction="column" gap="3">
@@ -155,7 +157,7 @@ Use the `highContrast` prop to increase color contrast with the background. This
 
 ### Radius
 
-Override the default border radius to match your design system. The `radius` prop accepts theme radius values or can be left undefined to inherit from your theme's button radius.
+Override the default border radius.
 
 <CodePreview
   code={`<Flex gap="3">
@@ -173,7 +175,7 @@ Override the default border radius to match your design system. The `radius` pro
 
 ### Loading
 
-Use the `loading` prop to show a spinner while async operations are in progress. The button automatically becomes disabled and maintains its original dimensions to prevent layout shift. The spinner inherits the button's color and size.
+Show a loading spinner during async operations.
 
 <CodePreview
   code={`<Flex gap="3" wrap="wrap">
@@ -192,6 +194,97 @@ Use the `loading` prop to show a spinner while async operations are in progress.
 <Button loading variant="outline">Download</Button>
 </Flex>
 </CodePreview>
+
+### Spinner with Icon
+
+Use a standalone Spinner wrapped around icons for more sophisticated loading states.
+
+<CodePreview
+  code={`<Flex gap="3" wrap="wrap">
+  <Button disabled variant="classic">
+    <Spinner loading>
+      <Heart />
+    </Spinner>
+    Like
+  </Button>
+  <Button disabled variant="solid">
+    <Spinner loading>
+      <Save />
+    </Spinner>
+    Save
+  </Button>
+  <Button disabled variant="soft">
+    <Spinner loading>
+      <Heart />
+    </Spinner>
+    Like
+  </Button>
+  <Button disabled variant="surface">
+    <Spinner loading>
+      <Save />
+    </Spinner>
+    Save
+  </Button>
+  <Button disabled variant="outline">
+    <Spinner loading>
+      <Heart />
+    </Spinner>
+    Like
+  </Button>
+</Flex>`}
+>
+<Flex gap="3" wrap="wrap">
+<Button disabled variant="classic"><Spinner loading><Heart /></Spinner>Like</Button>
+<Button disabled variant="solid"><Spinner loading><Save /></Spinner>Save</Button>
+<Button disabled variant="soft"><Spinner loading><Heart /></Spinner>Like</Button>
+<Button disabled variant="surface"><Spinner loading><Save /></Spinner>Save</Button>
+<Button disabled variant="outline"><Spinner loading><Heart /></Spinner>Like</Button>
+</Flex>
+</CodePreview>
+
+### As Different Elements
+
+Render as different HTML elements while maintaining button styling:
+
+<CodePreview
+  code={`<Flex gap="3" wrap="wrap">
+  <Button as="a" href="#" variant="soft">Link Button</Button>
+  <Button as="div" variant="soft">Div Button</Button>
+  <Button as="span" variant="soft">Span Button</Button>
+</Flex>`}
+>
+<Flex gap="3" wrap="wrap">
+<Button as="a" href="#" variant="soft">Link Button</Button>
+<Button as="div" variant="soft">Div Button</Button>
+<Button as="span" variant="soft">Span Button</Button>
+</Flex>
+</CodePreview>
+
+### Composition with asChild
+
+Compose button styling with your own components:
+
+<CodePreview
+  code={`<Flex gap="3" wrap="wrap">
+  <Button asChild variant="soft">
+    <a href="#">Custom Link</a>
+  </Button>
+  <Button asChild variant="outline">
+    <button type="submit">Submit Form</button>
+  </Button>
+</Flex>`}
+>
+<Flex gap="3" wrap="wrap">
+<Button asChild variant="soft">
+<a href="#">Custom Link</a>
+</Button>
+<Button asChild variant="outline">
+<button type="submit">Submit Form</button>
+</Button>
+</Flex>
+</CodePreview>
+
+
 
     </Flex>
   </Section>

@@ -1,0 +1,586 @@
+import {
+  DropdownMenu,
+  Button,
+  Container,
+  Heading,
+  Text,
+  Flex,
+  Card,
+  Section,
+  Separator,
+  Badge,
+  Avatar,
+} from '@kushagradhawan/kookie-ui';
+import { 
+  ChevronDown,
+  Settings, 
+  User, 
+  LogOut,
+  Edit,
+  Copy,
+  Trash,
+  Share,
+  Download,
+  Star,
+  Heart,
+  Mail,
+  Phone,
+  MessageSquare,
+  Calendar,
+  Clock,
+  CheckCircle,
+  Bell
+} from 'lucide-react';
+
+export const metadata = {
+  title: 'Dropdown Menu - Kookie UI',
+  description:
+    'Display contextual actions and options with a flexible dropdown menu component supporting nested submenus, keyboard navigation, and rich content.',
+};
+
+<Container size="3">
+  <Section size="3">
+    <Flex direction="column" gap="6">
+
+# Dropdown Menu
+
+A versatile contextual menu component that displays a list of actions or options. Built with full keyboard navigation support, collision detection, and the ability to handle complex content including multiline items and rich layouts.
+
+The Dropdown Menu component adapts to your theme's accent color and provides consistent styling across different variants while maintaining accessibility standards and smooth animations.
+
+<CodePreview code={`import { DropdownMenu, Button } from '@kushagradhawan/kookie-ui';
+
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>
+    <Button variant="soft">Options <DropdownMenu.TriggerIcon /></Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item>Edit</DropdownMenu.Item>
+    <DropdownMenu.Item>Copy</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>Delete</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>`}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft">Options <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>Edit</DropdownMenu.Item>
+      <DropdownMenu.Item>Copy</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</CodePreview>
+
+## API Reference
+
+The Dropdown Menu is built as a compound component with multiple parts that work together to create flexible menu experiences.
+
+### DropdownMenu.Root
+
+Container component that manages the dropdown state and context.
+
+| Prop         | Type                    | Default | Description                    |
+| ------------ | ----------------------- | ------- | ------------------------------ |
+| defaultOpen  | `boolean`               | `false` | Default open state             |
+| open         | `boolean`               | -       | Controlled open state          |
+| onOpenChange | `(open: boolean) => void` | -       | Callback when open state changes |
+| modal        | `boolean`               | `true`  | Whether to use modal behavior  |
+
+### DropdownMenu.Trigger
+
+Button element that opens the dropdown menu when activated.
+
+| Prop    | Type        | Default | Description                    |
+| ------- | ----------- | ------- | ------------------------------ |
+| asChild | `boolean`   | `false` | Compose into child element     |
+
+### DropdownMenu.Content
+
+The container for dropdown menu items with positioning and styling.
+
+| Prop         | Type                           | Default  | Description                  |
+| ------------ | ------------------------------ | -------- | ---------------------------- |
+| size         | `"1"` \| `"2"`                 | `"2"`    | Size of the menu content     |
+| variant      | `"solid"` \| `"soft"`          | `"solid"` | Visual style variant         |
+| color        | `string`                       | -        | Accent color                 |
+| highContrast | `boolean`                      | `false`  | Increases color contrast     |
+| align        | `"start"` \| `"center"` \| `"end"` | `"start"` | Alignment relative to trigger |
+| side         | `"top"` \| `"right"` \| `"bottom"` \| `"left"` | `"bottom"` | Side to position relative to trigger |
+| sideOffset   | `number`                       | `4`      | Distance from the trigger    |
+
+### DropdownMenu.Item
+
+Individual menu item that can be activated by clicking or keyboard navigation.
+
+| Prop     | Type      | Default | Description                |
+| -------- | --------- | ------- | -------------------------- |
+| color    | `string`  | -       | Accent color               |
+| shortcut | `string`  | -       | Keyboard shortcut display  |
+| disabled | `boolean` | `false` | Whether item is disabled   |
+| asChild  | `boolean` | `false` | Compose into child element |
+
+### DropdownMenu.CheckboxItem
+
+Menu item with checkbox functionality for toggleable options.
+
+| Prop     | Type                       | Default | Description                    |
+| -------- | -------------------------- | ------- | ------------------------------ |
+| checked  | `boolean` \| `"indeterminate"` | -       | Checked state                  |
+| onCheckedChange | `(checked: boolean) => void` | -       | Callback when checked changes  |
+| color    | `string`                   | -       | Accent color                   |
+| shortcut | `string`                   | -       | Keyboard shortcut display      |
+| disabled | `boolean`                  | `false` | Whether item is disabled       |
+
+### DropdownMenu.RadioGroup & DropdownMenu.RadioItem
+
+Components for creating radio button groups within the dropdown menu.
+
+| Prop (RadioGroup) | Type                    | Default | Description                    |
+| ----------------- | ----------------------- | ------- | ------------------------------ |
+| value             | `string`                | -       | Selected value                 |
+| onValueChange     | `(value: string) => void` | -       | Callback when value changes    |
+
+| Prop (RadioItem) | Type      | Default | Description                |
+| ---------------- | --------- | ------- | -------------------------- |
+| value            | `string`  | -       | Value for this radio item  |
+| color            | `string`  | -       | Accent color               |
+| disabled         | `boolean` | `false` | Whether item is disabled   |
+
+## Examples
+
+### Basic Usage
+
+Simple dropdown menu with common actions:
+
+<CodePreview code={`<DropdownMenu.Root>
+  <DropdownMenu.Trigger>
+    <Button variant="soft"><User />Account <DropdownMenu.TriggerIcon /></Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item><Edit />Edit Profile</DropdownMenu.Item>
+    <DropdownMenu.Item><Settings />Settings</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item color="red"><LogOut />Sign Out</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>`}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft"><User />Account <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item><Edit />Edit Profile</DropdownMenu.Item>
+      <DropdownMenu.Item><Settings />Settings</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red"><LogOut />Sign Out</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</CodePreview>
+
+### Size Variants
+
+Control the menu size to match your interface density:
+
+<CodePreview code={`<Flex gap="4" align="center">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft" size="1">Small Menu <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content size="1">
+      <DropdownMenu.Item>Copy</DropdownMenu.Item>
+      <DropdownMenu.Item>Move</DropdownMenu.Item>
+      <DropdownMenu.Item>Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft" size="2">Default Menu <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content size="2">
+      <DropdownMenu.Item>Copy</DropdownMenu.Item>
+      <DropdownMenu.Item>Move</DropdownMenu.Item>
+      <DropdownMenu.Item>Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>`}>
+  <Flex gap="4" align="center">
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>
+        <Button variant="soft" size="1">Small Menu <DropdownMenu.TriggerIcon /></Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content size="1">
+        <DropdownMenu.Item>Copy</DropdownMenu.Item>
+        <DropdownMenu.Item>Move</DropdownMenu.Item>
+        <DropdownMenu.Item>Delete</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>
+        <Button variant="soft" size="2">Default Menu <DropdownMenu.TriggerIcon /></Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content size="2">
+        <DropdownMenu.Item>Copy</DropdownMenu.Item>
+        <DropdownMenu.Item>Move</DropdownMenu.Item>
+        <DropdownMenu.Item>Delete</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  </Flex>
+</CodePreview>
+
+### Content Variants
+
+Choose between solid and soft appearances:
+
+<CodePreview code={`<Flex gap="4" align="center">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft">Solid Menu <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="solid">
+      <DropdownMenu.Item>New File</DropdownMenu.Item>
+      <DropdownMenu.Item>Open</DropdownMenu.Item>
+      <DropdownMenu.Item>Save</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft">Soft Menu <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="soft">
+      <DropdownMenu.Item>New File</DropdownMenu.Item>
+      <DropdownMenu.Item>Open</DropdownMenu.Item>
+      <DropdownMenu.Item>Save</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>`}>
+  <Flex gap="4" align="center">
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>
+        <Button variant="soft">Solid Menu <DropdownMenu.TriggerIcon /></Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content variant="solid">
+        <DropdownMenu.Item>New File</DropdownMenu.Item>
+        <DropdownMenu.Item>Open</DropdownMenu.Item>
+        <DropdownMenu.Item>Save</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>
+        <Button variant="soft">Soft Menu <DropdownMenu.TriggerIcon /></Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content variant="soft">
+        <DropdownMenu.Item>New File</DropdownMenu.Item>
+        <DropdownMenu.Item>Open</DropdownMenu.Item>
+        <DropdownMenu.Item>Save</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  </Flex>
+</CodePreview>
+
+### Multiline Content Support
+
+The dropdown menu supports rich, multiline content with flexible height items:
+
+<CodePreview code={`<DropdownMenu.Root>
+  <DropdownMenu.Trigger>
+    <Button variant="soft"><Bell />Notifications <DropdownMenu.TriggerIcon /></Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content style={{ minWidth: '280px' }}>
+    <DropdownMenu.Item>
+      <Flex direction="column" gap="1" align="start">
+        <Flex align="center" gap="2">
+          <Mail />
+          <Text size="2" weight="medium">New Message</Text>
+        </Flex>
+        <Text size="2" color="gray">You have received a new message in your inbox</Text>
+      </Flex>
+    </DropdownMenu.Item>
+    
+    <DropdownMenu.Separator />
+    
+    <DropdownMenu.Item>
+      <Flex direction="column" gap="1" align="start">
+        <Flex align="center" gap="2">
+          <Calendar />
+          <Text size="2" weight="medium">Meeting Reminder</Text>
+        </Flex>
+        <Text size="2" color="gray">Team standup starts in 15 minutes</Text>
+      </Flex>
+    </DropdownMenu.Item>
+
+    <DropdownMenu.Separator />
+    
+    <DropdownMenu.Item>
+      <Flex direction="column" gap="1" align="start">
+        <Flex align="center" gap="2">
+          <CheckCircle />
+          <Text size="2" weight="medium">Task Completed</Text>
+        </Flex>
+        <Text size="2" color="gray">Design review has been marked as complete</Text>
+      </Flex>
+    </DropdownMenu.Item>
+
+    <DropdownMenu.Separator />
+    
+    <DropdownMenu.Item>
+      <Text size="2" weight="medium" color="blue">View All Notifications</Text>
+    </DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>`}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft"><Bell />Notifications <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content style={{ minWidth: '280px' }}>
+      <DropdownMenu.Item>
+        <Flex direction="column" gap="1" align="start">
+          <Flex align="center" gap="2">
+            <Mail />
+            <Text size="2" weight="medium">New Message</Text>
+          </Flex>
+          <Text size="2" color="gray">You have received a new message in your inbox</Text>
+        </Flex>
+      </DropdownMenu.Item>
+      
+      <DropdownMenu.Separator />
+      
+      <DropdownMenu.Item>
+        <Flex direction="column" gap="1" align="start">
+          <Flex align="center" gap="2">
+            <Calendar />
+            <Text size="2" weight="medium">Meeting Reminder</Text>
+          </Flex>
+          <Text size="2" color="gray">Team standup starts in 15 minutes</Text>
+        </Flex>
+      </DropdownMenu.Item>
+
+      <DropdownMenu.Separator />
+      
+      <DropdownMenu.Item>
+        <Flex direction="column" gap="1" align="start">
+          <Flex align="center" gap="2">
+            <CheckCircle />
+            <Text size="2" weight="medium">Task Completed</Text>
+          </Flex>
+          <Text size="2" color="gray">Design review has been marked as complete</Text>
+        </Flex>
+      </DropdownMenu.Item>
+
+      <DropdownMenu.Separator />
+      
+      <DropdownMenu.Item>
+        <Text size="2" weight="medium" color="blue">View All Notifications</Text>
+      </DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</CodePreview>
+
+### Checkbox Items
+
+Create menus with toggleable options using checkbox items:
+
+<CodePreview code={`<DropdownMenu.Root>
+  <DropdownMenu.Trigger>
+    <Button variant="soft"><Settings />View Options <DropdownMenu.TriggerIcon /></Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Label>Show</DropdownMenu.Label>
+    <DropdownMenu.CheckboxItem checked={true}><CheckCircle />Completed Tasks</DropdownMenu.CheckboxItem>
+    <DropdownMenu.CheckboxItem checked={false}><Clock />Pending Tasks</DropdownMenu.CheckboxItem>
+    <DropdownMenu.CheckboxItem checked="indeterminate"><Star />Starred Items</DropdownMenu.CheckboxItem>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item><Settings />More Settings...</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>`}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft"><Settings />View Options <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Label>Show</DropdownMenu.Label>
+      <DropdownMenu.CheckboxItem checked={true}><CheckCircle />Completed Tasks</DropdownMenu.CheckboxItem>
+      <DropdownMenu.CheckboxItem checked={false}><Clock />Pending Tasks</DropdownMenu.CheckboxItem>
+      <DropdownMenu.CheckboxItem checked="indeterminate"><Star />Starred Items</DropdownMenu.CheckboxItem>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item><Settings />More Settings...</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</CodePreview>
+
+### Radio Groups
+
+Create single-selection menus with radio button groups:
+
+<CodePreview code={`<DropdownMenu.Root>
+  <DropdownMenu.Trigger>
+    <Button variant="soft">Sort Options <DropdownMenu.TriggerIcon /></Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Label>Sort by</DropdownMenu.Label>
+    <DropdownMenu.RadioGroup value="date">
+      <DropdownMenu.RadioItem value="date"><Calendar />Date Created</DropdownMenu.RadioItem>
+      <DropdownMenu.RadioItem value="name">Name</DropdownMenu.RadioItem>
+      <DropdownMenu.RadioItem value="size">File Size</DropdownMenu.RadioItem>
+    </DropdownMenu.RadioGroup>
+    <DropdownMenu.Separator />
+    <DropdownMenu.RadioGroup value="asc">
+      <DropdownMenu.RadioItem value="asc">Ascending</DropdownMenu.RadioItem>
+      <DropdownMenu.RadioItem value="desc">Descending</DropdownMenu.RadioItem>
+    </DropdownMenu.RadioGroup>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>`}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft">Sort Options <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Label>Sort by</DropdownMenu.Label>
+      <DropdownMenu.RadioGroup value="date">
+        <DropdownMenu.RadioItem value="date"><Calendar />Date Created</DropdownMenu.RadioItem>
+        <DropdownMenu.RadioItem value="name">Name</DropdownMenu.RadioItem>
+        <DropdownMenu.RadioItem value="size">File Size</DropdownMenu.RadioItem>
+      </DropdownMenu.RadioGroup>
+      <DropdownMenu.Separator />
+      <DropdownMenu.RadioGroup value="asc">
+        <DropdownMenu.RadioItem value="asc">Ascending</DropdownMenu.RadioItem>
+        <DropdownMenu.RadioItem value="desc">Descending</DropdownMenu.RadioItem>
+      </DropdownMenu.RadioGroup>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</CodePreview>
+
+### Nested Submenus
+
+Create hierarchical menus with nested submenus:
+
+<CodePreview code={`<DropdownMenu.Root>
+  <DropdownMenu.Trigger>
+    <Button variant="soft">File Actions <DropdownMenu.TriggerIcon /></Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item><Edit />Edit</DropdownMenu.Item>
+    <DropdownMenu.Item><Copy />Duplicate</DropdownMenu.Item>
+    
+    <DropdownMenu.Sub>
+      <DropdownMenu.SubTrigger><Share />Share</DropdownMenu.SubTrigger>
+      <DropdownMenu.SubContent>
+        <DropdownMenu.Item><Mail />Email Link</DropdownMenu.Item>
+        <DropdownMenu.Item><Copy />Copy Link</DropdownMenu.Item>
+        <DropdownMenu.Item><MessageSquare />Send Message</DropdownMenu.Item>
+      </DropdownMenu.SubContent>
+    </DropdownMenu.Sub>
+    
+    <DropdownMenu.Sub>
+      <DropdownMenu.SubTrigger><Download />Export</DropdownMenu.SubTrigger>
+      <DropdownMenu.SubContent>
+        <DropdownMenu.Item>Export as PDF</DropdownMenu.Item>
+        <DropdownMenu.Item>Export as CSV</DropdownMenu.Item>
+        <DropdownMenu.Item>Export as JSON</DropdownMenu.Item>
+      </DropdownMenu.SubContent>
+    </DropdownMenu.Sub>
+    
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item color="red"><Trash />Delete</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>`}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft">File Actions <DropdownMenu.TriggerIcon /></Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item><Edit />Edit</DropdownMenu.Item>
+      <DropdownMenu.Item><Copy />Duplicate</DropdownMenu.Item>
+      
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger><Share />Share</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item><Mail />Email Link</DropdownMenu.Item>
+          <DropdownMenu.Item><Copy />Copy Link</DropdownMenu.Item>
+          <DropdownMenu.Item><MessageSquare />Send Message</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger><Download />Export</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>Export as PDF</DropdownMenu.Item>
+          <DropdownMenu.Item>Export as CSV</DropdownMenu.Item>
+          <DropdownMenu.Item>Export as JSON</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red"><Trash />Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</CodePreview>
+
+### Custom Trigger Elements
+
+Use `asChild` to create dropdown menus with custom trigger elements:
+
+<CodePreview code={`<Flex gap="4" align="center">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger asChild>
+      <Button variant="ghost" size="1">⋯</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item><Edit />Edit</DropdownMenu.Item>
+      <DropdownMenu.Item><Share />Share</DropdownMenu.Item>
+      <DropdownMenu.Item><Copy />Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red"><Trash />Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger asChild>
+      <Button variant="outline"><Settings />Settings</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item><User />Profile</DropdownMenu.Item>
+      <DropdownMenu.Item><Settings />Preferences</DropdownMenu.Item>
+      <DropdownMenu.Item><Star />Favorites</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red"><LogOut />Sign Out</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>`}>
+  <Flex gap="4" align="center">
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <Button variant="ghost" size="1">⋯</Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item><Edit />Edit</DropdownMenu.Item>
+        <DropdownMenu.Item><Share />Share</DropdownMenu.Item>
+        <DropdownMenu.Item><Copy />Duplicate</DropdownMenu.Item>
+        <DropdownMenu.Separator />
+        <DropdownMenu.Item color="red"><Trash />Delete</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+    
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <Button variant="outline"><Settings />Settings</Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item><User />Profile</DropdownMenu.Item>
+        <DropdownMenu.Item><Settings />Preferences</DropdownMenu.Item>
+        <DropdownMenu.Item><Star />Favorites</DropdownMenu.Item>
+        <DropdownMenu.Separator />
+        <DropdownMenu.Item color="red"><LogOut />Sign Out</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  </Flex>
+</CodePreview>
+
+    </Flex>
+  </Section>
+</Container> 

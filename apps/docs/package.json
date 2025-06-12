@@ -18,12 +18,19 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rehype-highlight": "^7.0.2",
-    "remark-gfm": "^4.0.1"
+    "rehype-pretty-code": "^0.14.1",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^3.6.0",
+    "simple-icons": "^15.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "10.4.19",
+    "postcss": "8.4.33",
+    "tailwindcss": "^4.1.8",
     "typescript": "^5"
   }
 }

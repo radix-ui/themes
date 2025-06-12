@@ -1,5 +1,74 @@
 # Changelog
 
+## 0.1.16
+
+### 🎨 SVG Icon Sizing Consistency
+
+- **Fixed size 1 icon inconsistency**: Updated size 1 SVGs across all components to use `calc(var(--space-3) * 1.175)` instead of `var(--space-4)`
+  - **Button**: Size 1 SVGs now properly sized at ~14px instead of 16px
+  - **IconButton**: Consistent smaller icons for compact size 1 variant
+  - **BaseMenu/DropdownMenu**: Menu item icons now scale correctly with size
+  - **Sidebar**: All sidebar menu button icons follow consistent sizing
+  - **System-wide consistency**: Sizes 1-2 now use calculated values, sizes 3-4 use standard tokens
+
+### 🖼️ Image Component Enhancements
+
+- **Fixed fadeIn behavior for cached images**: Resolved issue where cached images would remain invisible
+  - **Smart loading detection**: Added `useEffect` to check `img.complete && img.naturalWidth > 0` for already-loaded images
+  - **Immediate visibility**: Cached images now appear instantly without waiting for onLoad event
+  - **Cross-variant support**: Fix applied to surface, blur, and asChild variants
+- **New fadeIn prop control**: Added `fadeIn` boolean prop (default: true) for controlling fade-in behavior
+  - **Content images**: `fadeIn={true}` provides smooth loading transitions
+  - **Background images**: `fadeIn={false}` ensures immediate visibility
+  - **Better UX**: Prevents jarring loading states for decorative elements
+
+### 🏠 Sidebar Component Improvements
+
+- **Added collapsible functionality**: Implemented smooth sidebar collapse/expand with transform-based animations
+  - **Transform animations**: Uses `translateX(-100%/100%)` instead of width-based animations for better performance
+  - **Smooth transitions**: `transition: transform var(--duration-3) var(--ease-2)` with reduced motion support
+  - **State management**: Proper `data-state="collapsed/expanded"` attributes for styling
+- **Enhanced SidebarTrigger**: Added support for custom icons with fallback
+  - **Flexible icon support**: Accepts children prop for custom icons (e.g., PanelLeft from Lucide)
+  - **Fallback behavior**: Defaults to ChevronDown when no children provided
+  - **Consistent styling**: Inherits IconButton ghost variant styling
+- **Fixed padding consistency**: Resolved size 1 header/footer padding mismatch
+  - **Container alignment**: Size 1 containers now use `--sidebar-content-padding: var(--space-1)`
+  - **Visual consistency**: Header, content, and footer padding now properly aligned
+  - **Size-specific styling**: Both size 1 and 2 have consistent internal spacing
+
+### 🎮 Comprehensive Sidebar Playground
+
+- **Added interactive playground**: New `/playground/sidebar` page with full sidebar demonstration
+  - **Live controls**: Toggle type, variant, menu variant, side, and size
+  - **Real navigation**: Working menu items with active states and sub-menus
+  - **Workspace dropdown**: Functional workspace selector in footer
+  - **Background integration**: Unsplash background image with proper fadeIn={false} usage
+  - **Responsive design**: Proper layout with collapsible sidebar trigger
+
+### 📚 Documentation Updates
+
+- **Enhanced Image documentation**: Added comprehensive fadeIn prop documentation
+  - **API reference**: Complete prop table with fadeIn boolean description
+  - **Usage examples**: When to use fadeIn={false} for backgrounds vs fadeIn={true} for content
+  - **Code examples**: Practical demonstrations of both fade behaviors
+- **Improved component examples**: Better real-world usage patterns across documentation
+
+### 🔧 Technical Improvements
+
+- **CSS architecture**: Improved specificity and maintainability across components
+- **Animation performance**: Transform-based animations for better GPU acceleration
+- **State management**: Enhanced sidebar context with proper state handling
+- **TypeScript consistency**: Better type definitions and prop handling
+- **Reduced motion support**: All new animations respect `prefers-reduced-motion: reduce`
+
+### 🎯 Design System Consistency
+
+- **Token usage**: Consistent use of design system spacing and timing tokens
+- **Component patterns**: Sidebar follows established patterns from other components
+- **Interactive states**: Unified hover, focus, and active state implementations
+- **Accessibility**: Proper ARIA attributes and keyboard navigation support
+
 ## 0.1.10
 
 ### 🎯 Icon Size Improvements
