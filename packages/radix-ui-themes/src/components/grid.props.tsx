@@ -10,6 +10,17 @@ const rowsValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const flowValues = ['row', 'column', 'dense', 'row-dense', 'column-dense'] as const;
 const alignValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 const justifyValues = ['start', 'center', 'end', 'between'] as const;
+const alignContentValues = [
+  'start',
+  'center',
+  'end',
+  'baseline',
+  'between',
+  'around',
+  'evenly',
+  'stretch',
+] as const;
+const justifyItemsValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 
 const gridPropDefs = {
   /**
@@ -150,6 +161,41 @@ const gridPropDefs = {
     parseValue: parseJustifyValue,
     responsive: true,
   },
+  /**
+   * Sets the CSS **align-content** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * alignContent="between"
+   * alignContent={{ sm: 'start', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+   */
+  alignContent: {
+    type: 'enum',
+    className: 'rt-r-ac',
+    values: alignContentValues,
+    parseValue: parseAlignContentValue,
+    responsive: true,
+  },
+  /**
+   * Sets the CSS **justify-items** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * justifyItems="center"
+   * justifyItems={{ sm: 'start', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+   */
+  justifyItems: {
+    type: 'enum',
+    className: 'rt-r-ji',
+    values: justifyItemsValues,
+    responsive: true,
+  },
   ...gapPropDefs,
 } satisfies {
   as: PropDef<(typeof as)[number]>;
@@ -160,6 +206,8 @@ const gridPropDefs = {
   flow: PropDef<(typeof flowValues)[number]>;
   align: PropDef<(typeof alignValues)[number]>;
   justify: PropDef<(typeof justifyValues)[number]>;
+  alignContent: PropDef<(typeof alignContentValues)[number]>;
+  justifyItems: PropDef<(typeof justifyItemsValues)[number]>;
 };
 
 function parseGridValue(value: string): string {
@@ -172,6 +220,19 @@ function parseGridValue(value: string): string {
 
 function parseJustifyValue(value: string) {
   return value === 'between' ? 'space-between' : value;
+}
+
+function parseAlignContentValue(value: string) {
+  switch (value) {
+    case 'between':
+      return 'space-between';
+    case 'around':
+      return 'space-around';
+    case 'evenly':
+      return 'space-evenly';
+    default:
+      return value;
+  }
 }
 
 // Use all of the imported prop defs to ensure that JSDoc works
