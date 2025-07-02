@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { Slot } from './slot';
+import { Slot } from './slot.js';
 import { Accordion } from 'radix-ui';
 
-import { sidebarPropDefs } from './sidebar.props';
-import { Theme, useThemeContext } from './theme';
-import { IconButton } from './icon-button';
+import { sidebarPropDefs } from './sidebar.props.js';
+import { Theme, useThemeContext } from './theme.js';
+import { IconButton } from './icon-button.js';
 import { ScrollArea } from './scroll-area.js';
 import { Separator } from './separator.js';
 import { ChevronDownIcon, ThickChevronRightIcon } from './icons.js';
@@ -15,8 +15,8 @@ import { extractProps } from '../helpers/extract-props.js';
 import { Kbd } from './kbd.js';
 import { Badge } from './badge.js';
 
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props';
-import type { GetPropDefTypes } from '../props/prop-def';
+import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { GetPropDefTypes } from '../props/prop-def.js';
 import type { BadgeProps } from './badge.js';
 
 // Badge configuration type for sidebar menu buttons
