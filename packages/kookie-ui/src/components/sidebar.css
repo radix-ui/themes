@@ -1,0 +1,1043 @@
+/* Sidebar Provider - handles positioning */
+.rt-SidebarProvider {
+  /* Positioning based on side */
+  &:where([data-side="left"]) {
+    /* Left side is default - no additional positioning needed */
+    order: -1; /* Ensure it appears first in flex container */
+  }
+  
+  &:where([data-side="right"]) {
+    /* Position on the right side */
+    order: 999; /* Push to end in flex container */
+  }
+}
+
+/* Sidebar Root Container */
+.rt-SidebarRoot {
+  --sidebar-width: 16rem; /* Fixed width */
+  --sidebar-base-border-radius: 0; /* Default to no radius */
+  
+  width: var(--sidebar-width);
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+
+  /* Make sure Theme wrapper also participates in flex layout */
+  & :where(.radix-themes) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+
+  /* Floating type - ONLY visual changes */
+  &:where([data-type="floating"]) {
+    border-radius: var(--sidebar-base-border-radius);
+    margin: var(--space-2);
+    height: calc(100% - var(--space-4));
+    overflow: visible; /* Ensure shadow is not clipped */
+    position: relative; /* Ensure proper stacking context for floating sidebars */
+    
+    /* Ensure Theme wrapper has proper border radius in floating mode */
+    & :where(.radix-themes) {
+      border-radius: inherit;
+    }
+  }
+}
+
+/* Set border radius for floating sidebars based on size - set on the root where it's used */
+.rt-SidebarRoot:where([data-type="floating"]) {
+  /* Default radius for floating sidebars */
+  --sidebar-base-border-radius: var(--radius-5);
+  
+  &:where(.rt-r-size-1) {
+    --sidebar-base-border-radius: var(--radius-5);
+  }
+  
+  &:where(.rt-r-size-2) {
+    --sidebar-base-border-radius: var(--radius-6);
+  }
+}
+
+/* Sidebar Container */
+.rt-SidebarContainer {
+  --sidebar-base-border-radius: 0; /* Default to no radius */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
+  border-radius: inherit;
+  flex: 1;
+}
+
+.rt-SidebarContainer:where(.rt-variant-surface) {
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
+  
+  /* Component-level overrides (higher specificity) - remap --color-panel */
+  &:where([data-panel-background='solid']) {
+    --color-panel: var(--color-panel-solid);
+    backdrop-filter: none;
+    --backdrop-filter-panel: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    --color-panel: var(--color-panel-translucent);
+    backdrop-filter: var(--backdrop-filter-panel);
+    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+  
+  /* Floating sidebars get full inset border */
+  :where(.rt-SidebarRoot[data-type="floating"]) & {
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+  
+  /* Non-floating sidebars get border only on the content-facing side */
+  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="left"]) & {
+    box-shadow: inset -1px 0 0 0 var(--gray-a6);
+  }
+  
+  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="right"]) & {
+    box-shadow: inset 1px 0 0 0 var(--gray-a6);
+  }
+}
+
+/* Sidebar Header */
+.rt-SidebarHeader {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-radius: var(--sidebar-base-border-radius) var(--sidebar-base-border-radius) 0 0;
+  
+  /* Support for SidebarMenuButton inside header */
+  & :where(.rt-SidebarMenuButton) {
+    /* Inherit all base MenuButton styles */
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--sidebar-item-height);
+    padding-top: var(--sidebar-item-padding-y);
+    padding-bottom: var(--sidebar-item-padding-y);
+    padding-left: var(--sidebar-item-padding-left);
+    padding-right: var(--sidebar-item-padding-right);
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: var(--cursor-menu-item);
+    user-select: none;
+    
+    /* Header-specific styling */
+    justify-content: flex-start;
+    border-radius: var(--sidebar-base-border-radius) var(--sidebar-base-border-radius) 0 0;
+    
+    /* Transitions */
+    transition: background var(--duration-2) var(--ease-1), 
+                box-shadow var(--duration-2) var(--ease-1),
+                filter var(--duration-2) var(--ease-1);
+    
+    /* Note: Hover/active states are handled by menu variants */
+    
+    /* Focus state */
+    &:where(:focus-visible) {
+      outline: 2px solid var(--focus-8);
+      outline-offset: 2px;
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+}
+
+/* Header container variant - default flex container */
+.rt-SidebarHeader:where(.rt-SidebarHeader--container) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--sidebar-content-padding);
+  min-height: var(--sidebar-item-height);
+  
+  /* Make MenuButtons expand to full width */
+  & :where(.rt-SidebarMenuButton) {
+    flex: 1;
+  }
+}
+
+/* Flex utilities for header layouts */
+.rt-SidebarHeader:where(.rt-flex-row) {
+  flex-direction: row;
+}
+
+.rt-SidebarHeader:where(.rt-flex-col) {
+  flex-direction: column;
+}
+
+.rt-SidebarHeader:where(.rt-items-center) {
+  align-items: center;
+}
+
+.rt-SidebarHeader:where(.rt-items-start) {
+  align-items: flex-start;
+}
+
+.rt-SidebarHeader:where(.rt-items-end) {
+  align-items: flex-end;
+}
+
+.rt-SidebarHeader:where(.rt-justify-between) {
+  justify-content: space-between;
+}
+
+.rt-SidebarHeader:where(.rt-justify-center) {
+  justify-content: center;
+}
+
+.rt-SidebarHeader:where(.rt-justify-start) {
+  justify-content: flex-start;
+}
+
+.rt-SidebarHeader:where(.rt-justify-end) {
+  justify-content: flex-end;
+}
+
+.rt-SidebarHeader:where(.rt-gap-1) {
+  gap: var(--space-1);
+}
+
+.rt-SidebarHeader:where(.rt-gap-2) {
+  gap: var(--space-2);
+}
+
+.rt-SidebarHeader:where(.rt-gap-3) {
+  gap: var(--space-3);
+}
+
+.rt-SidebarHeader:where(.rt-gap-4) {
+  gap: var(--space-4);
+}
+
+/* Sidebar Content - based on rt-BaseMenuContent */
+.rt-SidebarContent {
+  --scrollarea-scrollbar-vertical-margin-top: var(--sidebar-content-padding);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--sidebar-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--sidebar-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--sidebar-content-padding);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 0; /* Critical for flex children to shrink */
+
+  /* Ensure ScrollArea takes full height within SidebarContent */
+  & :where(.rt-ScrollAreaRoot) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  & :where(.rt-ScrollAreaViewport) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+}
+
+/* Sidebar Menu - based on rt-BaseMenuViewport */
+.rt-SidebarMenu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* Use gap for consistent spacing */
+  padding: var(--sidebar-content-padding);
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  min-height: 0;
+
+  :where(.rt-SidebarContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
+    padding-right: var(--space-3);
+  }
+}
+
+/* Sidebar Menu Item */
+.rt-SidebarMenuItem {
+  list-style: none;
+}
+
+/* Sidebar Menu Button - matches rt-BaseMenuItem */
+.rt-SidebarMenuButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--sidebar-item-height);
+  padding-top: var(--sidebar-item-padding-y);
+  padding-bottom: var(--sidebar-item-padding-y);
+  padding-left: var(--sidebar-item-padding-left);
+  padding-right: var(--sidebar-item-padding-right);
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  scroll-margin: var(--sidebar-content-padding) 0;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--radius-2);
+
+  /* Transitions - similar to button but without transform */
+  transition: background var(--duration-2) var(--ease-1), 
+              box-shadow var(--duration-2) var(--ease-1),
+              filter var(--duration-2) var(--ease-1);
+
+  /* Fix sticky text highlighting after selection in Firefox */
+  user-select: none;
+
+  /* Cursors */
+  cursor: var(--cursor-menu-item);
+  &:where([data-disabled]) {
+    cursor: default;
+    color: var(--gray-a8);
+  }
+
+  /* Active navigation state - always accent-based */
+  &:where([data-active], .rt-active) {
+    background-color: var(--accent-a3);
+    color: var(--accent-a12);
+  }
+
+  /* Focus state */
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+
+  /* Accent color support */
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+  }
+
+  /* Gray text support */
+  & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+    color: var(--gray-a10);
+  }
+
+  /* Ensure shortcuts inherit color in disabled/highlighted/active states */
+  &:where([data-disabled], [data-highlighted], [data-active]) {
+    & :where(.rt-SidebarMenuShortcut) {
+      color: inherit;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/* Sidebar Menu Sub Components - Radix Accordion */
+.rt-SidebarMenuSubTrigger {
+  justify-content: space-between;
+}
+
+/* Accordion trigger icon rotation */
+.rt-SidebarMenuSubTrigger {
+  & :where(.rt-SidebarMenuSubTriggerIcon) {
+    transition: transform 0.2s ease;
+  }
+  
+  &:where([data-state="open"]) :where(.rt-SidebarMenuSubTriggerIcon) {
+    transform: rotate(90deg);
+  }
+}
+
+.rt-SidebarMenuSubContent {
+  overflow: hidden;
+  
+  /* Allow focus outlines to show */
+  &:where(:focus-within) {
+    overflow: visible;
+  }
+  
+  /* Radix Accordion animation support */
+  &:where([data-state="open"]) {
+    animation: rt-sidebar-slide-down 200ms ease-out;
+  }
+  
+  &:where([data-state="closed"]) {
+    animation: rt-sidebar-slide-up 200ms ease-out;
+  }
+}
+
+@keyframes rt-sidebar-slide-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes rt-sidebar-slide-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.rt-SidebarMenuSubList {
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--gray-a5);
+  margin-left: var(--space-3);
+}
+
+/* Sub-menu items have consistent heights based on size - match dropdown menu exactly */
+:where(.rt-SidebarContent.rt-r-size-1) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
+  padding-left: var(--space-3);
+  padding-top: calc(var(--space-1) * 0.75);
+  padding-bottom: calc(var(--space-1) * 0.75);
+  min-height: var(--space-5); /* 20px */
+  font-size: var(--font-size-1);
+}
+
+:where(.rt-SidebarContent.rt-r-size-2) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
+  padding-left: var(--space-3);
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+  min-height: var(--space-6); /* 24px */
+  font-size: var(--font-size-2);
+}
+
+/* Sidebar Footer */
+.rt-SidebarFooter {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-top: auto;
+  border-radius: 0 0 var(--sidebar-base-border-radius) var(--sidebar-base-border-radius);
+  
+  /* Support for SidebarMenuButton inside footer */
+  & :where(.rt-SidebarMenuButton) {
+    /* Inherit all base MenuButton styles */
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--sidebar-item-height);
+    padding-top: var(--sidebar-item-padding-y);
+    padding-bottom: var(--sidebar-item-padding-y);
+    padding-left: var(--sidebar-item-padding-left);
+    padding-right: var(--sidebar-item-padding-right);
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: var(--cursor-menu-item);
+    user-select: none;
+    
+    /* Footer-specific styling */
+    justify-content: flex-start;
+    border-radius: 0 0 var(--sidebar-base-border-radius) var(--sidebar-base-border-radius);
+    
+    /* Transitions */
+    transition: background var(--duration-2) var(--ease-1), 
+                box-shadow var(--duration-2) var(--ease-1),
+                filter var(--duration-2) var(--ease-1);
+    
+    /* Note: Hover/active states are handled by menu variants */
+    
+    /* Focus state */
+    &:where(:focus-visible) {
+      outline: 2px solid var(--focus-8);
+      outline-offset: 2px;
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+}
+
+/* Footer container variant - default flex container */
+.rt-SidebarFooter:where(.rt-SidebarFooter--container) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--sidebar-content-padding);
+  min-height: var(--sidebar-item-height);
+  
+  /* Make MenuButtons expand to full width */
+  & :where(.rt-SidebarMenuButton) {
+    flex: 1;
+  }
+}
+
+/* Flex utilities for footer layouts */
+.rt-SidebarFooter:where(.rt-flex-row) {
+  flex-direction: row;
+}
+
+.rt-SidebarFooter:where(.rt-flex-col) {
+  flex-direction: column;
+}
+
+.rt-SidebarFooter:where(.rt-items-center) {
+  align-items: center;
+}
+
+.rt-SidebarFooter:where(.rt-items-start) {
+  align-items: flex-start;
+}
+
+.rt-SidebarFooter:where(.rt-items-end) {
+  align-items: flex-end;
+}
+
+.rt-SidebarFooter:where(.rt-justify-between) {
+  justify-content: space-between;
+}
+
+.rt-SidebarFooter:where(.rt-justify-center) {
+  justify-content: center;
+}
+
+.rt-SidebarFooter:where(.rt-justify-start) {
+  justify-content: flex-start;
+}
+
+.rt-SidebarFooter:where(.rt-justify-end) {
+  justify-content: flex-end;
+}
+
+.rt-SidebarFooter:where(.rt-gap-1) {
+  gap: var(--space-1);
+}
+
+.rt-SidebarFooter:where(.rt-gap-2) {
+  gap: var(--space-2);
+}
+
+.rt-SidebarFooter:where(.rt-gap-3) {
+  gap: var(--space-3);
+}
+
+.rt-SidebarFooter:where(.rt-gap-4) {
+  gap: var(--space-4);
+}
+
+/* Sidebar Separator - ensure full width and proper spacing */
+.rt-SidebarSeparator {
+  width: 100%;
+  margin: var(--space-2) 0;
+}
+
+/* Sidebar Group Components - add spacing between groups */
+.rt-SidebarGroup {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  
+  /* Add spacing between groups without manual separators */
+  &:where(:not(:first-child)) {
+    margin-top: var(--space-4);
+  }
+}
+
+.rt-SidebarGroupLabel {
+  display: flex;
+  align-items: center;
+  min-height: var(--sidebar-item-height);
+  padding-top: var(--sidebar-item-padding-y);
+  padding-bottom: var(--sidebar-item-padding-y);
+  padding-left: var(--sidebar-item-padding-left);
+  padding-right: var(--sidebar-item-padding-right);
+  box-sizing: border-box;
+  color: var(--gray-a10);
+  user-select: none;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.rt-SidebarGroupContent {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+@breakpoints {
+  /* Container sizing - padding and border radius like Card */
+  .rt-SidebarContainer {
+    &:where(.rt-r-size-1) {
+      --sidebar-base-padding: var(--space-3);
+      /* Ensure header/footer menu buttons share the same sizing variables as content */
+      --sidebar-content-padding: var(--space-1);
+      --sidebar-item-padding-left: var(--space-2);
+      --sidebar-item-padding-right: var(--space-2);
+      --sidebar-item-padding-y: calc(var(--space-1) * 0.75);
+      --sidebar-item-height: var(--space-5);
+    }
+    &:where(.rt-r-size-2) {
+      --sidebar-base-padding: var(--space-4);
+      /* Ensure header/footer menu buttons share the same sizing variables as content */
+      --sidebar-content-padding: var(--space-2);
+      --sidebar-item-padding-left: var(--space-3);
+      --sidebar-item-padding-right: var(--space-3);
+      --sidebar-item-padding-y: var(--space-1);
+      --sidebar-item-height: var(--space-6);
+    }
+  }
+
+  /* Content sizing - like base menu (dropdown menu) */
+  .rt-SidebarContent {
+    &:where(.rt-r-size-1) {
+      --sidebar-content-padding: var(--space-1);
+      --sidebar-item-padding-left: calc(var(--space-5) / 1.2);
+      --sidebar-item-padding-right: var(--space-2);
+      --sidebar-item-padding-y: calc(var(--space-1) * 0.75);
+      --sidebar-item-height: var(--space-5);
+      border-radius: var(--radius-3);
+
+      /* reset with :not:has so we still support browsers without :has */
+      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+        --sidebar-item-padding-left: var(--space-2);
+      }
+      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+        --sidebar-item-padding-left: calc(var(--space-5) / 1.2);
+      }
+    }
+    &:where(.rt-r-size-2) {
+      --sidebar-content-padding: var(--space-2);
+      --sidebar-item-padding-left: var(--space-3);
+      --sidebar-item-padding-right: var(--space-3);
+      --sidebar-item-padding-y: var(--space-1);
+      --sidebar-item-height: var(--space-6);
+      border-radius: var(--radius-4);
+
+      /* reset with :not:has so we still support browsers without :has */
+      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+        --sidebar-item-padding-left: var(--space-3);
+      }
+      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+        --sidebar-item-padding-left: var(--space-5);
+      }
+    }
+  }
+
+  /* Size-specific menu button styling - matches base menu items */
+  .rt-SidebarContent:where(.rt-r-size-1) {
+    & :where(.rt-SidebarMenuButton) {
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+      border-radius: var(--radius-1);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
+        flex-shrink: 0;
+      }
+    }
+
+    /* Sub-trigger icon sizing - matches base menu exactly */
+    & :where(.rt-BaseMenuSubTriggerIcon) {
+      width: var(--indicator-icon-size-1);
+      height: var(--indicator-icon-size-1);
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    /* Group label sizing - matches base menu */
+    & :where(.rt-SidebarGroupLabel) {
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+    }
+  }
+
+  /* Header and footer styling for size 1 */
+  .rt-SidebarContainer:where(.rt-r-size-1) {
+    & :where(.rt-SidebarHeader .rt-SidebarMenuButton) {
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+      border-radius: var(--radius-1);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
+        flex-shrink: 0;
+      }
+    }
+
+    & :where(.rt-SidebarFooter .rt-SidebarMenuButton) {
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+      border-radius: var(--radius-1);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .rt-SidebarContent:where(.rt-r-size-2) {
+    & :where(.rt-SidebarMenuButton) {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      border-radius: var(--radius-3);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
+        flex-shrink: 0;
+      }
+    }
+
+    /* Sub-trigger icon sizing - matches base menu exactly */
+    & :where(.rt-BaseMenuSubTriggerIcon) {
+      width: var(--indicator-icon-size-2);
+      height: var(--indicator-icon-size-2);
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    /* Group label sizing - matches base menu */
+    & :where(.rt-SidebarGroupLabel) {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+    }
+  }
+
+  /* Header and footer styling for size 2 */
+  .rt-SidebarContainer:where(.rt-r-size-2) {
+    & :where(.rt-SidebarHeader .rt-SidebarMenuButton) {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      border-radius: var(--radius-3);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
+        flex-shrink: 0;
+      }
+    }
+
+    & :where(.rt-SidebarFooter .rt-SidebarMenuButton) {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      border-radius: var(--radius-3);
+
+      /* stylelint-disable-next-line selector-max-type */
+      & :where(svg) {
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Sidebar Container Variants */
+.rt-SidebarContainer {
+  &:where(.rt-variant-ghost) {
+    background-color: transparent;
+    backdrop-filter: none;
+    border: none;
+  }
+  &:where(.rt-variant-soft) {
+    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    background-color: var(--accent-2);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-panel);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+  }
+}
+
+/* Floating shadows - only for ghost variant */
+.rt-SidebarContainer:where(.rt-variant-ghost) {
+  :where(.rt-SidebarRoot[data-type="floating"]) & {
+    box-shadow: var(--shadow-4);
+  }
+}
+
+/* Menu Button Variants - Independent of Container */
+
+/* Menu Variant: Solid */
+.rt-SidebarHeader:where(.rt-menu-variant-solid),
+.rt-SidebarContent:where(.rt-menu-variant-solid),
+.rt-SidebarFooter:where(.rt-menu-variant-solid) {
+  /* Active navigation state for solid variant */
+  & :where(.rt-SidebarMenuButton[data-active]) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+
+    /* Force all text elements to inherit active color */
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    & :where([data-accent-color='gray']) {
+      color: inherit !important;
+    }
+  }
+
+  /* Hover/highlighted state for solid variant */
+  & :where(.rt-SidebarMenuButton[data-highlighted]) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+
+    /* Force all text elements to inherit hover color */
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    & :where([data-accent-color='gray']) {
+      color: inherit !important;
+    }
+  }
+
+  /* High contrast support for solid variant */
+  &:where(.rt-high-contrast) {
+    & :where(.rt-SidebarMenuButton[data-active]),
+    & :where(.rt-SidebarMenuButton[data-highlighted]) {
+      background-color: var(--accent-12);
+      color: var(--accent-1);
+
+      & :where(.rt-Text) {
+        color: inherit !important;
+      }
+
+      & :where([data-accent-color='gray']) {
+        color: inherit !important;
+      }
+
+      &:where([data-accent-color]) {
+        background-color: var(--accent-9);
+        color: var(--accent-contrast);
+
+        & :where(.rt-Text) {
+          color: inherit !important;
+        }
+
+        & :where([data-accent-color='gray']) {
+          color: inherit !important;
+        }
+      }
+    }
+  }
+}
+
+/* Menu Variant: Soft */
+.rt-SidebarHeader:where(.rt-menu-variant-soft),
+.rt-SidebarContent:where(.rt-menu-variant-soft),
+.rt-SidebarFooter:where(.rt-menu-variant-soft) {
+  /* Active navigation state for soft variant */
+  & :where(.rt-SidebarMenuButton[data-active]) {
+    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    background-color: var(--accent-3);
+    color: var(--accent-12);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      color: var(--accent-a12);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-SidebarContainer[data-panel-background='solid']) & {
+      background-color: var(--accent-3);
+      color: var(--accent-12);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-SidebarContainer[data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      color: var(--accent-a12);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+
+    /* Avoid double backdrop-filter on surface variant - container already has backdrop-filter */
+    :where(.rt-SidebarContainer.rt-variant-surface) & {
+      backdrop-filter: none;
+    }
+
+    /* In soft variant, improve contrast for gray text while maintaining hierarchy */
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+      color: var(--gray-11) !important;
+    }
+  }
+
+  /* Hover/highlighted state for soft variant */
+  & :where(.rt-SidebarMenuButton[data-highlighted]) {
+    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    background-color: var(--accent-3);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-SidebarContainer[data-panel-background='solid']) & {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-SidebarContainer[data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+
+    /* Avoid double backdrop-filter on surface variant - container already has backdrop-filter */
+    :where(.rt-SidebarContainer.rt-variant-surface) & {
+      backdrop-filter: none;
+    }
+
+    /* In soft variant, improve contrast for gray text while maintaining hierarchy */
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+      color: var(--gray-11) !important;
+    }
+  }
+}
+
+/* Ensure menu items inherit proper theming and spacing for sidebar */
+.rt-SidebarContent :where(.rt-BaseMenuItem) {
+  border-radius: var(--radius-2);
+  margin-bottom: var(--space-1);
+}
+
+/* Collapsible behavior */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
+  transform: translateX(-100%);
+  transition: transform var(--duration-3) var(--ease-2);
+}
+
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="expanded"]) {
+  transform: translateX(0);
+  transition: transform var(--duration-3) var(--ease-2);
+}
+
+/* Right-side sidebar adjustments */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"][data-side="right"]) {
+  transform: translateX(100%);
+}
+
+/* Reduced motion support for collapsible */
+@media (prefers-reduced-motion: reduce) {
+  .rt-SidebarRoot:where([data-collapsible="icon"]) {
+    transition: none;
+  }
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .rt-SidebarRoot {
+    display: none;
+  }
+}
+
+/* Reduce right padding on menu buttons with trailing elements */
+.rt-SidebarMenuButton:where(:has(.rt-SidebarMenuShortcut, .rt-SidebarMenuBadge)) {
+  /* Size-specific right padding reduction */
+  :where(.rt-SidebarContent.rt-r-size-1) & {
+    padding-right: calc(var(--space-1) * 0.75); /* 3px - matches top/bottom padding */
+  }
+  
+  :where(.rt-SidebarContent.rt-r-size-2) & {
+    padding-right: var(--space-1); /* 4px - matches top/bottom padding */
+  }
+  
+  /* Also apply to header and footer menu buttons */
+  :where(.rt-SidebarContainer.rt-r-size-1) & {
+    padding-right: calc(var(--space-1) * 0.75); /* 3px - matches top/bottom padding */
+  }
+  
+  :where(.rt-SidebarContainer.rt-r-size-2) & {
+    padding-right: var(--space-1); /* 4px - matches top/bottom padding */
+  }
+}
+
+.rt-SidebarMenuShortcut {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: var(--space-4);
+  color: var(--gray-a11);
+}
+
+.rt-SidebarMenuBadge {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: var(--space-2);
+} 
