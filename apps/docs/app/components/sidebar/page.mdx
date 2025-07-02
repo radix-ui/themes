@@ -1,0 +1,929 @@
+import {
+  Sidebar,
+  Theme,
+  Container,
+  Text,
+  Box,
+  Flex,
+  Section,
+  Image,
+  Avatar,
+  DropdownMenu,
+  Button,
+  Heading,
+} from '@kushagradhawan/kookie-ui';
+import { 
+  Home, 
+  FileText, 
+  Star, 
+  Settings, 
+  User,
+  BarChart3,
+  Users,
+  ShoppingCart,
+  Calendar,
+  Mail,
+  Bell,
+  Folder,
+  Heart,
+  Building2,
+  ChevronDown,
+  Plus,
+  Check,
+} from 'lucide-react';
+
+export const metadata = {
+  title: 'Sidebar - Kookie UI',
+  description: 'A navigation sidebar with translucent effects and contextual styling.',
+};
+
+<Container size="3">
+  <Section size="2">
+    <Flex direction="column" gap="6">
+
+# Sidebar
+
+A sophisticated navigation component with translucent effects that blend seamlessly with background content while maintaining excellent readability.
+
+<CodePreview code={`import { Sidebar } from '@kushagradhawan/kookie-ui';
+
+<Sidebar.Provider>
+  <Sidebar.Root>
+    <Sidebar.Content>
+      <Sidebar.Menu>
+        <Sidebar.Group>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton>
+              <Home />
+              Dashboard
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Group>
+      </Sidebar.Menu>
+    </Sidebar.Content>
+  </Sidebar.Root>
+</Sidebar.Provider>`}>
+  <Flex height="360px" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-2)',backgroundColor: 'var(--color-background)' }}>
+    <Sidebar.Provider>
+      <Sidebar.Root variant="soft" type="floating">
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Home />Dashboard</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><FileText />Documents</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Settings />Settings</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+    <Flex flexGrow="1" p="4">
+      <Text size="2" color="gray">Main content</Text>
+    </Flex>
+  </Flex>
+</CodePreview>
+
+
+
+<CodePreview code={`import { Sidebar } from '@kushagradhawan/kookie-ui';
+
+<Sidebar.Provider>
+  <Sidebar.Root>
+    <Sidebar.Content>
+      <Sidebar.Menu>
+        <Sidebar.Group>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton>
+              <Home />
+              Dashboard
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Group>
+      </Sidebar.Menu>
+    </Sidebar.Content>
+  </Sidebar.Root>
+</Sidebar.Provider>`}>
+  <Flex height="360px" style={{ position:'relative', borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-2)',backgroundColor: 'var(--color-background)' }}>
+    <Sidebar.Provider>
+     <Image 
+      src="https://images.unsplash.com/photo-1743657166982-9e3ff272122b?q=80&w=3628&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Light background"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+      <Sidebar.Root variant="soft" type="floating">
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Home />Dashboard</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><FileText />Documents</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Settings />Settings</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+    <Flex flexGrow="1" p="4" style={{}}>
+      <Text size="2" color="gray">Main content</Text>
+    </Flex>
+  </Flex>
+</CodePreview>
+
+## Ghost Variant with Translucent Effects
+
+The ghost variant creates translucent overlays that blend with background content. When combined with translucent panel backgrounds, it creates sophisticated layered interfaces.
+
+### Light Mode Context
+
+<CodePreview code={`<Theme appearance="light" panelBackground="translucent">
+  <Box position="relative" height="400px">
+    <Image 
+      src="/docs-test-light.jpg"
+      alt="Light background"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+    <Sidebar.Provider>
+      <Sidebar.Root variant="ghost" >
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton isActive><Home />Home</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><FileText />Documents</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Star />Favorites</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+  </Box>
+</Theme>`}>
+<Box shadow="3" style={{ borderRadius: 'var(--radius-3)', overflow: 'hidden' }}>
+  <Theme appearance="light" panelBackground="translucent">
+    <Box position="relative" height="400px">
+      <Image 
+        src="/docs-test-light.jpg"
+        alt="Light background"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      <Sidebar.Provider>
+        <Sidebar.Root variant="ghost" >
+                  <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton isActive><Home />Home</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><FileText />Documents</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Star />Favorites</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+        </Sidebar.Root>
+      </Sidebar.Provider>
+    </Box>
+  </Theme>
+</Box>
+</CodePreview>
+
+### Dark Mode Context
+
+<CodePreview code={`<Theme appearance="dark" panelBackground="translucent">
+  <Box position="relative" height="400px">
+    <Image 
+      src="/docs-test-dark.jpg"
+      alt="Dark background"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+    <Sidebar.Provider>
+      <Sidebar.Root variant="ghost" >
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton isActive><Home />Library</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Star />Favorites</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Settings />Settings</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+  </Box>
+</Theme>`}>
+<Box shadow="3" style={{ borderRadius: 'var(--radius-3)', overflow: 'hidden' }}>
+  <Theme appearance="dark" panelBackground="translucent">
+    <Box position="relative" height="400px">
+      <Image 
+        src="/docs-test-dark.jpg"
+        alt="Dark background"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      <Sidebar.Provider>
+        <Sidebar.Root variant="ghost" >
+                  <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton isActive><Home />Library</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Star />Favorites</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton><Settings />Settings</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+        </Sidebar.Root>
+      </Sidebar.Provider>
+    </Box>
+  </Theme>
+</Box>
+</CodePreview>
+
+## Organized Navigation with Groups
+
+Use `Sidebar.Group` with `Sidebar.GroupLabel` to organize navigation items into logical sections. This creates clear visual hierarchy and improves navigation experience.
+
+<CodePreview code={`<Sidebar.Provider>
+  <Sidebar.Root variant="surface" type="floating">
+    <Sidebar.Content>
+      <Sidebar.Menu>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>
+            <Text>Navigation</Text>
+          </Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton isActive>
+                <Home />
+                <Text>Dashboard</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <BarChart3 />
+                <Text>Analytics</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+        
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>
+            <Text>Management</Text>
+          </Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <Users />
+                <Text>Users</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <ShoppingCart />
+                <Text>Orders</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Menu>
+    </Sidebar.Content>
+  </Sidebar.Root>
+</Sidebar.Provider>`}>
+  <Flex height="460px" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-2)', backgroundColor: 'var(--color-background)' }}>
+    <Sidebar.Provider>
+      <Sidebar.Root variant="surface" type="floating" menuVariant="soft">
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Navigation</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton isActive>
+                    <Home />
+                    <Text>Dashboard</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <BarChart3 />
+                    <Text>Analytics</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+            
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Management</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Users />
+                    <Text>Users</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <ShoppingCart />
+                    <Text>Orders</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+    <Flex flexGrow="1" p="4">
+      <Text size="2" color="gray">Main content area</Text>
+    </Flex>
+  </Flex>
+</CodePreview>
+
+## Sub-menus and Nested Navigation
+
+Create expandable sub-menus using `Sidebar.MenuSub`, `Sidebar.MenuSubTrigger`, and `Sidebar.MenuSubContent` for hierarchical navigation structures.
+
+<CodePreview code={`<Sidebar.Provider>
+  <Sidebar.Root variant="surface" type="floating">
+    <Sidebar.Content>
+      <Sidebar.Menu>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>
+            <Text>Projects</Text>
+          </Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuSub>
+                <Sidebar.MenuSubTrigger>
+                  <Folder />
+                  <Text>All Projects</Text>
+                </Sidebar.MenuSubTrigger>
+                <Sidebar.MenuSubContent>
+                  <Sidebar.MenuButton>
+                    <Text>Project Alpha</Text>
+                  </Sidebar.MenuButton>
+                  <Sidebar.MenuButton isActive>
+                    <Text>Project Beta</Text>
+                  </Sidebar.MenuButton>
+                  <Sidebar.MenuButton>
+                    <Text>Project Gamma</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuSubContent>
+              </Sidebar.MenuSub>
+            </Sidebar.MenuItem>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <Heart />
+                <Text>Favorites</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+        
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>
+            <Text>Tools</Text>
+          </Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <Calendar />
+                <Text>Calendar</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <Mail />
+                <Text>Messages</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Menu>
+    </Sidebar.Content>
+  </Sidebar.Root>
+</Sidebar.Provider>`}>
+  <Flex height="500px" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-2)', backgroundColor: 'var(--color-background)' }}>
+    <Sidebar.Provider>
+      <Sidebar.Root variant="surface" type="floating" menuVariant="soft">
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Projects</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuSub>
+                    <Sidebar.MenuSubTrigger>
+                      <Folder />
+                      <Text>All Projects</Text>
+                    </Sidebar.MenuSubTrigger>
+                    <Sidebar.MenuSubContent>
+                      <Sidebar.MenuButton>
+                        <Text>Project Alpha</Text>
+                      </Sidebar.MenuButton>
+                      <Sidebar.MenuButton isActive>
+                        <Text>Project Beta</Text>
+                      </Sidebar.MenuButton>
+                      <Sidebar.MenuButton>
+                        <Text>Project Gamma</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuSubContent>
+                  </Sidebar.MenuSub>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Heart />
+                    <Text>Favorites</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+            
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Tools</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Calendar />
+                    <Text>Calendar</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Mail />
+                    <Text>Messages</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+    <Flex flexGrow="1" p="4">
+      <Text size="2" color="gray">Main content area</Text>
+    </Flex>
+  </Flex>
+</CodePreview>
+
+## Complete Sidebar with Header and Footer
+
+Create rich navigation experiences with headers and footers. Perfect for user profiles, workspace selection, and contextual actions.
+
+<CodePreview code={`<Sidebar.Provider>
+  <Sidebar.Root variant="soft" type="floating">
+    <Sidebar.Header>
+      <Sidebar.MenuButton>
+        <Avatar size="2" src="/logo-dark-large.png" fallback="JD" />
+      </Sidebar.MenuButton>
+    </Sidebar.Header>
+    
+    <Sidebar.Content>
+      <Sidebar.Menu>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>
+            <Text>Navigation</Text>
+          </Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton isActive>
+                <Home />
+                <Text>Dashboard</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <BarChart3 />
+                <Text>Analytics</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+        
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>
+            <Text>Management</Text>
+          </Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <Users />
+                <Text>Users</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton>
+                <FileText />
+                <Text>Documents</Text>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Menu>
+    </Sidebar.Content>
+    
+    <Sidebar.Footer>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+          <Sidebar.MenuButton>
+            <Building2 />
+            <Text>Acme Corp</Text>
+            <ChevronDown />
+          </Sidebar.MenuButton>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content align="start" sideOffset={8}>
+          <DropdownMenu.Item>
+            <Check />
+            <Text>Acme Corp</Text>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            <Text>Globex Inc</Text>
+          </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>
+            <Plus />
+            <Text>Create workspace</Text>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
+    </Sidebar.Footer>
+  </Sidebar.Root>
+</Sidebar.Provider>`}>
+  <Flex height="560px" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-2)', backgroundColor: 'var(--color-background)' }}>
+    <Sidebar.Provider>
+      <Sidebar.Root variant="soft" color="gray" type="floating" menuVariant="soft">
+        
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Navigation</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton isActive>
+                    <Home />
+                    <Text>Dashboard</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <BarChart3 />
+                    <Text>Analytics</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+            
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Management</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Users />
+                    <Text>Users</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <FileText />
+                    <Text>Documents</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+        
+        <Sidebar.Footer>
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <Sidebar.MenuButton>
+                <Building2 />
+                <Text>Acme Corp</Text>
+                <ChevronDown />
+              </Sidebar.MenuButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content variant="soft" color="gray" align="start" sideOffset={8}>
+              <DropdownMenu.Item>
+                <Check />
+                <Text>Acme Corp</Text>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                <Text>Globex Inc</Text>
+              </DropdownMenu.Item>
+              <DropdownMenu.Separator />
+              <DropdownMenu.Item>
+                <Plus />
+                <Text>Create workspace</Text>
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+        </Sidebar.Footer>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+    <Flex flexGrow="1" p="4">
+      <Text size="2" color="gray">Main content area</Text>
+    </Flex>
+  </Flex>
+</CodePreview>
+
+## Comprehensive Navigation Example
+
+Here's a complete example showing all sidebar features working together with translucent effects over a background image.
+
+<CodePreview code={`<Theme panelBackground="translucent">
+  <Box position="relative" height="600px">
+    <Image 
+      src="https://images.unsplash.com/photo-1742783201678-33840ee6ee0b"
+      alt="Background"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+    <Sidebar.Provider>
+      <Sidebar.Root variant="soft" type="floating" menuVariant="soft">
+        <Sidebar.Header>
+          <Sidebar.MenuButton>
+            <Avatar size="2" src="/logo-dark-large.png" fallback="JD" />
+          </Sidebar.MenuButton>
+        </Sidebar.Header>
+        
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Navigation</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton isActive>
+                    <Home />
+                    <Text>Dashboard</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <BarChart3 />
+                    <Text>Analytics</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+            
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Projects</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuSub>
+                    <Sidebar.MenuSubTrigger>
+                      <Folder />
+                      <Text>All Projects</Text>
+                    </Sidebar.MenuSubTrigger>
+                    <Sidebar.MenuSubContent>
+                      <Sidebar.MenuButton>
+                        <Text>Project Alpha</Text>
+                      </Sidebar.MenuButton>
+                      <Sidebar.MenuButton>
+                        <Text>Project Beta</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuSubContent>
+                  </Sidebar.MenuSub>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Heart />
+                    <Text>Favorites</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+            
+            <Sidebar.Group>
+              <Sidebar.GroupLabel>
+                <Text>Tools</Text>
+              </Sidebar.GroupLabel>
+              <Sidebar.GroupContent>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Calendar />
+                    <Text>Calendar</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Bell />
+                    <Text>Notifications</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton>
+                    <Settings />
+                    <Text>Settings</Text>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+          </Sidebar.Menu>
+        </Sidebar.Content>
+        
+        <Sidebar.Footer>
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <Sidebar.MenuButton>
+                <Building2 />
+                <Text>Acme Corp</Text>
+                <ChevronDown />
+              </Sidebar.MenuButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content align="start" sideOffset={8}>
+              <DropdownMenu.Item>
+                <Check />
+                <Text>Acme Corp</Text>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                <Text>Globex Inc</Text>
+              </DropdownMenu.Item>
+              <DropdownMenu.Separator />
+              <DropdownMenu.Item>
+                <Plus />
+                <Text>Create workspace</Text>
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+        </Sidebar.Footer>
+      </Sidebar.Root>
+    </Sidebar.Provider>
+  </Box>
+</Theme>`}>
+  <Box shadow="3" style={{ borderRadius: 'var(--radius-3)', overflow: 'hidden' }}>
+    <Theme panelBackground="translucent">
+      <Box position="relative" height="600px">
+        <Image 
+          src="https://images.unsplash.com/photo-1742783201678-33840ee6ee0b?q=80&w=3732&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Background"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        <Sidebar.Provider>
+          <Sidebar.Root variant="soft" type="floating" menuVariant="soft">
+            <Sidebar.Header>
+              <Sidebar.MenuButton>
+                <Avatar size="2" src="/logo-dark-large.png" fallback="JD" />
+              </Sidebar.MenuButton>
+            </Sidebar.Header>
+            
+            <Sidebar.Content>
+              <Sidebar.Menu>
+                <Sidebar.Group>
+                  <Sidebar.GroupLabel>
+                    <Text>Navigation</Text>
+                  </Sidebar.GroupLabel>
+                  <Sidebar.GroupContent>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton isActive>
+                        <Home />
+                        <Text>Dashboard</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <BarChart3 />
+                        <Text>Analytics</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.GroupContent>
+                </Sidebar.Group>
+                
+                <Sidebar.Group>
+                  <Sidebar.GroupLabel>
+                    <Text>Projects</Text>
+                  </Sidebar.GroupLabel>
+                  <Sidebar.GroupContent>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuSub>
+                        <Sidebar.MenuSubTrigger>
+                          <Folder />
+                          <Text>All Projects</Text>
+                        </Sidebar.MenuSubTrigger>
+                        <Sidebar.MenuSubContent>
+                          <Sidebar.MenuButton>
+                            <Text>Project Alpha</Text>
+                          </Sidebar.MenuButton>
+                          <Sidebar.MenuButton>
+                            <Text>Project Beta</Text>
+                          </Sidebar.MenuButton>
+                        </Sidebar.MenuSubContent>
+                      </Sidebar.MenuSub>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <Heart />
+                        <Text>Favorites</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.GroupContent>
+                </Sidebar.Group>
+                
+                <Sidebar.Group>
+                  <Sidebar.GroupLabel>
+                    <Text>Tools</Text>
+                  </Sidebar.GroupLabel>
+                  <Sidebar.GroupContent>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <Calendar />
+                        <Text>Calendar</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <Bell />
+                        <Text>Notifications</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <Settings />
+                        <Text>Settings</Text>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.GroupContent>
+                </Sidebar.Group>
+              </Sidebar.Menu>
+            </Sidebar.Content>
+            
+            <Sidebar.Footer>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Sidebar.MenuButton>
+                    <Building2 />
+                    <Text>Acme Corp</Text>
+                    <ChevronDown />
+                  </Sidebar.MenuButton>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content align="start" sideOffset={8}>
+                  <DropdownMenu.Item>
+                    <Check />
+                    <Text>Acme Corp</Text>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item>
+                    <Text>Globex Inc</Text>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Separator />
+                  <DropdownMenu.Item>
+                    <Plus />
+                    <Text>Create workspace</Text>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
+            </Sidebar.Footer>
+          </Sidebar.Root>
+        </Sidebar.Provider>
+      </Box>
+    </Theme>
+  </Box>
+</CodePreview>
+
+    </Flex>
+  </Section>
+</Container> 

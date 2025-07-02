@@ -20,6 +20,7 @@
   flex-shrink: 0;
   position: relative;
   user-select: none;
+  transition: var(--transition-tabs);
 }
 
 .rt-BaseTabListTriggerInner,
@@ -27,6 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition-tabs);
 }
 
 .rt-BaseTabListTriggerInner {
@@ -35,12 +37,14 @@
   :where(.rt-BaseTabListTrigger[data-state='inactive'], .rt-TabNavLink:not([data-active])) & {
     letter-spacing: var(--tab-inactive-letter-spacing);
     word-spacing: var(--tab-inactive-word-spacing);
+    transition-delay: var(--duration-1); /* 100ms - allows staggered effect vs active state's 0ms */
   }
 
   :where(.rt-BaseTabListTrigger[data-state='active'], .rt-TabNavLink[data-active]) & {
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--tab-active-letter-spacing);
     word-spacing: var(--tab-active-word-spacing);
+    transition-delay: 0ms; /* Immediate transition for active state */
   }
 }
 
@@ -80,7 +84,7 @@
       --tab-height: var(--space-6);
       --tab-padding-x: var(--space-1);
       --tab-inner-padding-x: var(--space-1);
-      --tab-inner-padding-y: calc(var(--space-1) * 0.5);
+      --tab-inner-padding-y: calc(var(--space-1) * var(--spacing-multiplier-small));
       --tab-inner-border-radius: var(--radius-1);
     }
     &:where(.rt-r-size-2) {
@@ -103,7 +107,7 @@
  ***************************************************************************************************/
 
 .rt-BaseTabList {
-  box-shadow: inset 0 -1px 0 0 var(--gray-a5);
+  box-shadow: inset 0 calc(-1 * var(--border-width-standard)) 0 0 var(--gray-a5);
 }
 
 .rt-BaseTabListTrigger {
@@ -114,28 +118,73 @@
       color: var(--gray-12);
     }
     &:where(:hover) :where(.rt-BaseTabListTriggerInner) {
+      /* Base state: solid gray for solid panels */
       background-color: var(--gray-a3);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--gray-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      :where(.rt-BaseTabList[data-panel-background='solid']) & {
+        background-color: var(--gray-a3);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      :where(.rt-BaseTabList[data-panel-background='translucent']) & {
+        background-color: var(--gray-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
     }
     &:where(:focus-visible:hover) :where(.rt-BaseTabListTriggerInner) {
+      /* Base state: solid accent for solid panels */
       background-color: var(--accent-a3);
+
+      /* Theme-level translucent override for focus+hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for focus+hover */
+      :where(.rt-BaseTabList[data-panel-background='solid']) & {
+        background-color: var(--accent-a3);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      :where(.rt-BaseTabList[data-panel-background='translucent']) & {
+        background-color: var(--accent-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
     }
   }
   &:where([data-state='active'], [data-active]) {
     color: var(--gray-12);
   }
   &:where(:focus-visible) :where(.rt-BaseTabListTriggerInner) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -2px;
+    outline: var(--focus-outline-width) solid var(--focus-8);
+    outline-offset: var(--focus-outline-offset-inset);
   }
   &:where([data-state='active'], [data-active])::before {
     box-sizing: border-box;
     content: '';
-    height: 2px;
+    height: var(--focus-outline-width); /* Consistent with focus outline thickness */
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: var(--accent-indicator);
+    transform-origin: center;
+    transition: 
+      transform var(--duration-3) var(--ease-3),
+      opacity var(--duration-2) var(--ease-1),
+      background-color var(--duration-2) var(--ease-1);
   }
 
   :where(.rt-BaseTabList.rt-high-contrast) & {
@@ -144,3 +193,5 @@
     }
   }
 }
+
+

@@ -17,16 +17,17 @@ interface BadgeProps
     MarginProps,
     BadgeOwnProps {}
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
-  const { asChild, className, color, radius, ...badgeProps } = extractProps(
+  const { asChild, className, color, radius, panelBackground, ...badgeProps } = extractProps(
     props,
     badgePropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const Comp = asChild ? Slot.Root : 'span';
   return (
     <Comp
       data-accent-color={color}
       data-radius={radius}
+      data-panel-background={panelBackground}
       {...badgeProps}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-Badge', className)}

@@ -88,6 +88,20 @@
   }
 }
 
+@keyframes rt-tab-indicator-appear {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .rt-PopperContent {
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
@@ -95,6 +109,7 @@
     &:where([data-state='open']) {
       animation-duration: 160ms;
 
+      /* Direction-aware animations (for dropdown menus with data-side) */
       &:where([data-side='top']) {
         animation-name: rt-slide-from-top, rt-fade-in;
       }
@@ -107,11 +122,17 @@
       &:where([data-side='right']) {
         animation-name: rt-slide-from-right, rt-fade-in;
       }
+      
+      /* Default animation (for selects without data-side) */
+      &:where(:not([data-side])) {
+        animation-name: rt-slide-from-bottom, rt-fade-in;
+      }
     }
 
     &:where([data-state='closed']) {
       animation-duration: 100ms;
 
+      /* Direction-aware animations (for dropdown menus with data-side) */
       &:where([data-side='top']) {
         animation-name: rt-slide-to-top, rt-fade-out;
       }
@@ -124,6 +145,16 @@
       &:where([data-side='right']) {
         animation-name: rt-slide-to-right, rt-fade-out;
       }
+      
+      /* Default animation (for selects without data-side) */
+      &:where(:not([data-side])) {
+        animation-name: rt-slide-to-bottom, rt-fade-out;
+      }
     }
+  }
+
+  /* Tab indicator animations - only when motion is preferred */
+  .rt-BaseTabListTrigger:where([data-state='active'], [data-active])::before {
+    animation: rt-tab-indicator-appear var(--duration-3) var(--ease-3);
   }
 }

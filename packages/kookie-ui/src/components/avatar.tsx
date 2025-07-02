@@ -15,17 +15,29 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface AvatarProps extends MarginProps, AvatarImplProps {}
 const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwardedRef) => {
-  const { asChild, children, className, style, color, radius, ...imageProps } = extractProps(
-    props,
-    avatarPropDefs,
-    marginPropDefs
-  );
+  const { asChild, children, className, style, color, radius, panelBackground, ...imageProps } =
+    extractProps(props, avatarPropDefs, marginPropDefs);
+
+  // Check if children contain a disabled element
+  const isDisabled = React.useMemo(() => {
+    if (!asChild || !children) return false;
+
+    // If children is a React element, check its props
+    if (React.isValidElement(children)) {
+      const childProps = children.props as any;
+      return childProps.disabled === true || childProps['data-disabled'] === true;
+    }
+
+    return false;
+  }, [asChild, children]);
 
   return (
     // TODO as a rule, should we rather spread the props on root?
     <AvatarPrimitive.Root
       data-accent-color={color}
       data-radius={radius}
+      data-panel-background={panelBackground}
+      data-disabled={isDisabled || undefined}
       className={classNames('rt-reset', 'rt-AvatarRoot', className)}
       style={style}
       asChild={asChild}
@@ -49,6 +61,7 @@ interface AvatarImplProps
 const AvatarImpl = React.forwardRef<AvatarImplElement, AvatarImplProps>(
   ({ fallback, ...imageProps }, forwardedRef) => {
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'loaded' | 'error'>('idle');
+
     return (
       <>
         {status === 'idle' || status === 'loading' ? <span className="rt-AvatarFallback" /> : null}
@@ -76,7 +89,7 @@ const AvatarImpl = React.forwardRef<AvatarImplElement, AvatarImplProps>(
         />
       </>
     );
-  }
+  },
 );
 
 AvatarImpl.displayName = 'AvatarImpl';

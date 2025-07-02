@@ -36,10 +36,15 @@ interface TabsListProps
     MarginProps,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
-  const { className, color, ...listProps } = extractProps(props, tabsListPropDefs, marginPropDefs);
+  const { className, color, panelBackground, ...listProps } = extractProps(
+    props,
+    tabsListPropDefs,
+    marginPropDefs,
+  );
   return (
     <TabsPrimitive.List
       data-accent-color={color}
+      data-panel-background={panelBackground}
       {...listProps}
       asChild={false}
       ref={forwardedRef}
@@ -68,7 +73,7 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
         </span>
       </TabsPrimitive.Trigger>
     );
-  }
+  },
 );
 TabsTrigger.displayName = 'Tabs.Trigger';
 
@@ -88,7 +93,7 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
         className={classNames('rt-TabsContent', className)}
       />
     );
-  }
+  },
 );
 TabsContent.displayName = 'Tabs.Content';
 

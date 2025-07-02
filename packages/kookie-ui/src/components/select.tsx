@@ -51,13 +51,17 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
       // Pass size prop def to allow it to be extracted
       { size: selectRootPropDefs.size },
       selectTriggerPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
+
+    // Extract panelBackground separately since it needs to be passed as data attribute
+    const { panelBackground } = props;
     return (
       <SelectPrimitive.Trigger asChild>
         <button
           data-accent-color={color}
           data-radius={radius}
+          data-panel-background={panelBackground}
           {...triggerProps}
           ref={forwardedRef}
           className={classNames('rt-reset', 'rt-SelectTrigger', className)}
@@ -71,7 +75,7 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
         </button>
       </SelectPrimitive.Trigger>
     );
-  }
+  },
 );
 SelectTrigger.displayName = 'Select.Trigger';
 
@@ -90,7 +94,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
       { size: context?.size, ...props },
       // Pass size prop def to allow it to be extracted
       { size: selectRootPropDefs.size },
-      selectContentPropDefs
+      selectContentPropDefs,
     );
     const themeContext = useThemeContext();
     const resolvedColor = color || themeContext.accentColor;
@@ -104,13 +108,17 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
             asChild={false}
             ref={forwardedRef}
             className={classNames(
-              { 'rt-PopperContent': contentProps.position === 'popper' },
+              'rt-PopperContent',
+              'rt-BaseMenuContent',
               'rt-SelectContent',
-              className
+              className,
             )}
           >
             <ScrollAreaPrimitive.Root type="auto" className="rt-ScrollAreaRoot">
-              <SelectPrimitive.Viewport asChild className="rt-SelectViewport">
+              <SelectPrimitive.Viewport
+                asChild
+                className={classNames('rt-BaseMenuViewport', 'rt-SelectViewport')}
+              >
                 <ScrollAreaPrimitive.Viewport
                   className="rt-ScrollAreaViewport"
                   style={{ overflowY: undefined }}
@@ -129,7 +137,7 @@ const SelectContent = React.forwardRef<SelectContentElement, SelectContentProps>
         </Theme>
       </SelectPrimitive.Portal>
     );
-  }
+  },
 );
 SelectContent.displayName = 'Select.Content';
 
@@ -143,7 +151,7 @@ const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, 
       {...itemProps}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-SelectItem', className)}
+      className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-SelectItem', className)}
     >
       <SelectPrimitive.ItemIndicator className="rt-SelectItemIndicator">
         <ThickCheckIcon className="rt-SelectItemIndicatorIcon" />
@@ -165,7 +173,7 @@ const SelectGroup = React.forwardRef<SelectGroupElement, SelectGroupProps>(
       ref={forwardedRef}
       className={classNames('rt-SelectGroup', className)}
     />
-  )
+  ),
 );
 SelectGroup.displayName = 'Select.Group';
 
@@ -178,9 +186,9 @@ const SelectLabel = React.forwardRef<SelectLabelElement, SelectLabelProps>(
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-SelectLabel', className)}
+      className={classNames('rt-BaseMenuLabel', 'rt-SelectLabel', className)}
     />
-  )
+  ),
 );
 SelectLabel.displayName = 'Select.Label';
 
@@ -193,9 +201,9 @@ const SelectSeparator = React.forwardRef<SelectSeparatorElement, SelectSeparator
       {...props}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-SelectSeparator', className)}
+      className={classNames('rt-BaseMenuSeparator', 'rt-SelectSeparator', className)}
     />
-  )
+  ),
 );
 SelectSeparator.displayName = 'Select.Separator';
 

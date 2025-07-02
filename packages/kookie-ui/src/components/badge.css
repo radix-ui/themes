@@ -1,3 +1,6 @@
+/* stylelint-disable selector-max-type */
+/* Disable selector-max-type rule to target individual element types. */
+
 .rt-Badge {
   display: inline-flex;
   align-items: center;
@@ -7,9 +10,21 @@
   font-style: normal;
   flex-shrink: 0;
   line-height: 1;
+  transition: var(--transition-badge);
 
   /* Make sure that the height is not stretched in a Flex/Grid layout */
   height: fit-content;
+  
+  /* Fix Chrome background bleeding on rounded corners */
+  background-clip: padding-box;
+  
+  /* Force Chrome to recalculate styles when radius changes */
+  will-change: border-radius;
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 /***************************************************************************************************
@@ -21,12 +36,18 @@
 @breakpoints {
   .rt-Badge {
     &:where(.rt-r-size-1) {
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
-      letter-spacing: var(--letter-spacing-1);
+      font-size: var(--font-size-0);
+      line-height: var(--line-height-0);
+      letter-spacing: var(--letter-spacing-0);
       padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 1.5);
       gap: calc(var(--space-1) * 1.5);
       border-radius: max(var(--radius-1), var(--radius-full));
+      
+      /* Ghost variant gets reduced padding */
+      &:where(.rt-variant-ghost) {
+        padding: calc(var(--space-1) * 0.25) var(--space-1);
+        gap: var(--space-1);
+      }
     }
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-1);
@@ -35,6 +56,12 @@
       padding: var(--space-1) var(--space-2);
       gap: calc(var(--space-1) * 1.5);
       border-radius: max(var(--radius-2), var(--radius-full));
+      
+      /* Ghost variant gets reduced padding */
+      &:where(.rt-variant-ghost) {
+        padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 1.25);
+        gap: var(--space-1);
+      }
     }
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-2);
@@ -43,6 +70,12 @@
       padding: var(--space-1) calc(var(--space-2) * 1.25);
       gap: var(--space-2);
       border-radius: max(var(--radius-2), var(--radius-full));
+      
+      /* Ghost variant gets reduced padding */
+      &:where(.rt-variant-ghost) {
+        padding: calc(var(--space-1) * 0.75) var(--space-2);
+        gap: calc(var(--space-1) * 1.5);
+      }
     }
   }
 }
@@ -78,9 +111,32 @@
 /* surface */
 
 .rt-Badge:where(.rt-variant-surface) {
-  background-color: var(--accent-surface);
-  box-shadow: inset 0 0 0 1px var(--accent-a6);
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px var(--accent-7);
   color: var(--accent-a11);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-7);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
 
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
@@ -90,8 +146,29 @@
 /* soft */
 
 .rt-Badge:where(.rt-variant-soft) {
-  background-color: var(--accent-a3);
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-3);
   color: var(--accent-a11);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-3);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
@@ -100,10 +177,148 @@
 /* outline */
 
 .rt-Badge:where(.rt-variant-outline) {
-  box-shadow: inset 0 0 0 1px var(--accent-a8);
+  /* Base state: solid accent for solid panels */
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--accent-7);
   color: var(--accent-a11);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    box-shadow: inset 0 0 0 1px var(--accent-7);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
   &:where(.rt-high-contrast) {
-    box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
     color: var(--accent-12);
+    
+    /* High contrast adjustments */
+    box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+    
+    :where([data-panel-background='translucent']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+    }
+  }
+}
+
+/* ghost */
+
+.rt-Badge:where(.rt-variant-ghost) {
+  /* Transparent by default */
+  background-color: transparent;
+  color: var(--accent-a11);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+}
+
+/* classic */
+
+.rt-Badge:where(.rt-variant-classic) {
+  position: relative;
+  top: var(--classic-elevation-offset);
+  color: var(--accent-a11);
+  background-color: var(--accent-2);
+      /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 var(--classic-border-width) var(--white-a12),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+      0 0 0 var(--classic-border-width) var(--accent-a5),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+
+  :where(.dark, .dark-theme) &,
+  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+          /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+        inset 0 var(--classic-border-width) var(--accent-a11),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+        inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+        0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+    background-color: var(--accent-2);
+  }
+
+  &:where(:any-link, button) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--accent-3);
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 var(--classic-border-width) var(--white-a12),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+          0 0 0 var(--classic-border-width) var(--accent-a5),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7),
+          0 0 0 var(--classic-border-width) var(--accent-a5);
+
+        :where(.dark, .dark-theme) &,
+        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+          /* prettier-ignore */
+          box-shadow:
+            inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+            inset 0 var(--classic-border-width) var(--accent-a11),
+            inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+            inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+            0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+            0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+            0 0 0 var(--classic-border-width) var(--accent-a5);
+        }
+      }
+    }
+    &:where([data-state='open']) {
+      background-color: var(--accent-3);
+              /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 var(--classic-border-width) var(--white-a12),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+          0 0 0 var(--classic-border-width) var(--accent-a5),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7),
+          0 0 0 var(--classic-border-width) var(--accent-a5);
+
+      :where(.dark, .dark-theme) &,
+      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+          inset 0 var(--classic-border-width) var(--accent-a11),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+          0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+          0 0 0 var(--classic-border-width) var(--accent-a5);
+      }
+    }
+    &:where(:active:not([data-state='open'])) {
+      padding-top: calc(var(--space-1) * 0.75);
+      padding-bottom: calc(var(--space-1) * 0.25);
+      background-color: var(--accent-3);
+      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
+    }
+    &:where(:focus-visible) {
+      outline: 2px solid var(--focus-8);
+    }
   }
 }

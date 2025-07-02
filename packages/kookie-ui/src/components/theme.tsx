@@ -116,7 +116,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         onScalingChange={setScaling}
       />
     );
-  }
+  },
 );
 ThemeRoot.displayName = 'ThemeRoot';
 
@@ -135,12 +135,14 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     isRoot,
     hasBackground: hasBackgroundProp,
     //
-    appearance = context?.appearance ?? themePropDefs.appearance.default,
-    accentColor = context?.accentColor ?? themePropDefs.accentColor.default,
-    grayColor = context?.resolvedGrayColor ?? themePropDefs.grayColor.default,
-    panelBackground = context?.panelBackground ?? themePropDefs.panelBackground.default,
-    radius = context?.radius ?? themePropDefs.radius.default,
-    scaling = context?.scaling ?? themePropDefs.scaling.default,
+    appearance = props.appearance ?? context?.appearance ?? themePropDefs.appearance.default,
+    accentColor = props.accentColor ?? context?.accentColor ?? themePropDefs.accentColor.default,
+    grayColor = props.grayColor ?? context?.resolvedGrayColor ?? themePropDefs.grayColor.default,
+    panelBackground = props.panelBackground ??
+      context?.panelBackground ??
+      themePropDefs.panelBackground.default,
+    radius = props.radius ?? context?.radius ?? themePropDefs.radius.default,
+    scaling = props.scaling ?? context?.scaling ?? themePropDefs.scaling.default,
     //
     onAppearanceChange = noop,
     onAccentColorChange = noop,
@@ -190,7 +192,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
-        ]
+        ],
       )}
     >
       <Comp
@@ -210,7 +212,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
             light: appearance === 'light',
             dark: appearance === 'dark',
           },
-          themeProps.className
+          themeProps.className,
         )}
       />
     </ThemeContext.Provider>

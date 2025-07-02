@@ -24,15 +24,15 @@
 @breakpoints {
   .rt-Button {
     &:where(.rt-r-size-1) {
-      gap: var(--space-1);
+      gap: var(--component-gap-1);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: calc(var(--space-3) * 1.175);
-        height: calc(var(--space-3) * 1.175);
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
       }
 
       &:where(:not(.rt-variant-ghost)) {
@@ -40,21 +40,21 @@
         padding-right: var(--space-2);
       }
       &:where(.rt-variant-ghost) {
-        gap: var(--space-1);
+        gap: var(--component-gap-ghost-1);
         --button-ghost-padding-x: var(--space-2);
         --button-ghost-padding-y: var(--space-1);
       }
     }
     &:where(.rt-r-size-2) {
-      gap: var(--space-2);
+      gap: var(--component-gap-2);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-4);
-        height: var(--space-4);
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
       }
 
       &:where(:not(.rt-variant-ghost)) {
@@ -62,21 +62,21 @@
         padding-right: var(--space-3);
       }
       &:where(.rt-variant-ghost) {
-        gap: var(--space-1);
+        gap: var(--component-gap-ghost-2);
         --button-ghost-padding-x: var(--space-2);
         --button-ghost-padding-y: var(--space-1);
       }
     }
     &:where(.rt-r-size-3) {
-      gap: var(--space-3);
+      gap: var(--component-gap-3);
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
       letter-spacing: var(--letter-spacing-3);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-5);
-        height: var(--space-5);
+        width: var(--content-icon-size-3);
+        height: var(--content-icon-size-3);
       }
 
       &:where(:not(.rt-variant-ghost)) {
@@ -84,21 +84,21 @@
         padding-right: var(--space-4);
       }
       &:where(.rt-variant-ghost) {
-        gap: var(--space-2);
+        gap: var(--component-gap-ghost-3);
         --button-ghost-padding-x: var(--space-3);
         --button-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
     }
     &:where(.rt-r-size-4) {
-      gap: var(--space-3);
+      gap: var(--component-gap-4);
       font-size: var(--font-size-4);
       line-height: var(--line-height-4);
       letter-spacing: var(--letter-spacing-4);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-5);
-        height: var(--space-5);
+        width: var(--content-icon-size-4);
+        height: var(--content-icon-size-4);
       }
 
       &:where(:not(.rt-variant-ghost)) {
@@ -106,7 +106,7 @@
         padding-right: var(--space-5);
       }
       &:where(.rt-variant-ghost) {
-        gap: var(--space-2);
+        gap: var(--component-gap-ghost-4);
         --button-ghost-padding-x: var(--space-4);
         --button-ghost-padding-y: var(--space-2);
       }
@@ -120,6 +120,6 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-Button:where(:not(.rt-variant-ghost)) {
+.rt-Button {
   font-weight: var(--font-weight-medium);
 }

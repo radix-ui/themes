@@ -3,8 +3,10 @@
 .rt-TabsContent {
   position: relative;
   outline: 0;
+  transition: var(--transition-fast);
 }
 
 .rt-TabsContent:where(:focus-visible) {
-  outline: 2px solid var(--focus-8);
+      outline: var(--focus-outline-width) solid var(--focus-8);
+  transition: var(--transition-focus);
 }

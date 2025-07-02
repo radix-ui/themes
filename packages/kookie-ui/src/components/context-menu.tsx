@@ -15,6 +15,7 @@ import { Theme, useThemeContext } from './theme.js';
 import { ThickCheckIcon, ThickChevronRightIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
+import { Kbd } from './kbd.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
@@ -34,7 +35,7 @@ const ContextMenuTrigger = React.forwardRef<ContextMenuTriggerElement, ContextMe
     <ContextMenuPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </ContextMenuPrimitive.Trigger>
-  )
+  ),
 );
 ContextMenuTrigger.displayName = 'ContextMenu.Trigger';
 
@@ -54,17 +55,24 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       size = contextMenuContentPropDefs.size.default,
       variant = contextMenuContentPropDefs.variant.default,
       highContrast = contextMenuContentPropDefs.highContrast.default,
+      panelBackground = props.panelBackground ?? themeContext.panelBackground,
     } = props;
-    const { className, children, color, container, forceMount, ...contentProps } = extractProps(
-      props,
-      contextMenuContentPropDefs
-    );
+    const {
+      className,
+      children,
+      color,
+      container,
+      forceMount,
+      panelBackground: _,
+      ...contentProps
+    } = extractProps(props, contextMenuContentPropDefs);
     const resolvedColor = color || themeContext.accentColor;
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <ContextMenuPrimitive.Content
             data-accent-color={resolvedColor}
+            data-panel-background={panelBackground}
             alignOffset={-Number(size) * 4}
             collisionPadding={10}
             {...contentProps}
@@ -74,15 +82,15 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               'rt-PopperContent',
               'rt-BaseMenuContent',
               'rt-ContextMenuContent',
-              className
+              className,
             )}
           >
             <ScrollArea type="auto">
               <div className={classNames('rt-BaseMenuViewport', 'rt-ContextMenuViewport')}>
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast]
+                    () => ({ size, variant, color: resolvedColor, highContrast, panelBackground }),
+                    [size, variant, resolvedColor, highContrast, panelBackground],
                   )}
                 >
                   {children}
@@ -93,7 +101,7 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
         </Theme>
       </ContextMenuPrimitive.Portal>
     );
-  }
+  },
 );
 ContextMenuContent.displayName = 'ContextMenu.Content';
 
@@ -108,7 +116,7 @@ const ContextMenuLabel = React.forwardRef<ContextMenuLabelElement, ContextMenuLa
       ref={forwardedRef}
       className={classNames('rt-BaseMenuLabel', 'rt-ContextMenuLabel', className)}
     />
-  )
+  ),
 );
 ContextMenuLabel.displayName = 'ContextMenu.Label';
 
@@ -134,10 +142,14 @@ const ContextMenuItem = React.forwardRef<ContextMenuItemElement, ContextMenuItem
         className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-ContextMenuItem', className)}
       >
         <Slot.Slottable>{children}</Slot.Slottable>
-        {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
+        {shortcut && (
+          <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">
+            <Kbd size="1">{shortcut}</Kbd>
+          </div>
+        )}
       </ContextMenuPrimitive.Item>
     );
-  }
+  },
 );
 ContextMenuItem.displayName = 'ContextMenu.Item';
 
@@ -152,7 +164,7 @@ const ContextMenuGroup = React.forwardRef<ContextMenuGroupElement, ContextMenuGr
       ref={forwardedRef}
       className={classNames('rt-BaseMenuGroup', 'rt-ContextMenuGroup', className)}
     />
-  )
+  ),
 );
 ContextMenuGroup.displayName = 'ContextMenu.Group';
 
@@ -198,7 +210,7 @@ const ContextMenuRadioItem = React.forwardRef<
         'rt-BaseMenuRadioItem',
         'rt-ContextMenuItem',
         'rt-ContextMenuRadioItem',
-        className
+        className,
       )}
     >
       <Slot.Slottable>{children}</Slot.Slottable>
@@ -237,14 +249,18 @@ const ContextMenuCheckboxItem = React.forwardRef<
         'rt-BaseMenuCheckboxItem',
         'rt-ContextMenuItem',
         'rt-ContextMenuCheckboxItem',
-        className
+        className,
       )}
     >
       <Slot.Slottable>{children}</Slot.Slottable>
       <ContextMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-ContextMenuItemIndicator">
         <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </ContextMenuPrimitive.ItemIndicator>
-      {shortcut && <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">{shortcut}</div>}
+      {shortcut && (
+        <div className="rt-BaseMenuShortcut rt-ContextMenuShortcut">
+          <Kbd size="1">{shortcut}</Kbd>
+        </div>
+      )}
     </ContextMenuPrimitive.CheckboxItem>
   );
 });
@@ -275,7 +291,7 @@ const ContextMenuSubTrigger = React.forwardRef<
         'rt-BaseMenuSubTrigger',
         'rt-ContextMenuItem',
         'rt-ContextMenuSubTrigger',
-        className
+        className,
       )}
     >
       {children}
@@ -296,16 +312,25 @@ const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { size, variant, color, highContrast } = React.useContext(ContextMenuContentContext);
-  const { className, children, container, forceMount, ...subContentProps } = extractProps(
-    { size, variant, color, highContrast, ...props },
-    contextMenuContentPropDefs
+  const { size, variant, color, highContrast, panelBackground } =
+    React.useContext(ContextMenuContentContext);
+  const {
+    className,
+    children,
+    container,
+    forceMount,
+    panelBackground: _,
+    ...subContentProps
+  } = extractProps(
+    { size, variant, color, highContrast, panelBackground, ...props },
+    contextMenuContentPropDefs,
   );
   return (
     <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
         <ContextMenuPrimitive.SubContent
           data-accent-color={color}
+          data-panel-background={panelBackground}
           alignOffset={-Number(size) * 4}
           // Side offset accounts for the outer solid box-shadow
           sideOffset={1}
@@ -319,7 +344,7 @@ const ContextMenuSubContent = React.forwardRef<
             'rt-BaseMenuSubContent',
             'rt-ContextMenuContent',
             'rt-ContextMenuSubContent',
-            className
+            className,
           )}
         >
           <ScrollArea type="auto">

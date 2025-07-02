@@ -20,7 +20,7 @@ function mapResponsiveProp<Input extends string, Output>(
 function mapCalloutSizeToTextSize(
   size: (typeof calloutRootPropDefs.size.values)[number]
 ): (typeof textPropDefs.size.values)[number] {
-  return size === '3' ? '3' : '2';
+  return size === '3' ? '3' : size === '1' ? '1' : '2';
 }
 
 function mapButtonSizeToSpinnerSize(

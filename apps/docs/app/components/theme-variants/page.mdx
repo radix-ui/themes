@@ -1,0 +1,312 @@
+import {
+  Container,
+  Heading,
+  Text,
+  Flex,
+  Section,
+  Button,
+  Badge,
+  Card,
+  Code,
+  Callout,
+  Theme,
+  Box,
+  TextField,
+} from '@kushagradhawan/kookie-ui';
+import { Info, Lightbulb, Palette } from 'lucide-react';
+
+export const metadata = {
+  title: 'Theme Variants - Kookie UI',
+  description: 'Understanding the complete variant system, panel background adaptation, and modern glass morphism effects.',
+};
+
+<Container size="2">
+  <Section size="2">
+    <Flex direction="column" gap="6">
+
+# Theme Variants
+
+Kookie UI features a **comprehensive variant system** that provides consistent, adaptive styling across all components. This system maintains API compatibility with Radix Themes while implementing a systematic variant architecture for modern UI design.
+
+<Callout.Root variant="soft" color="blue">
+  <Callout.Icon>
+    <Info />
+  </Callout.Icon>
+  <Callout.Text>
+    **Complete Variant System**: Components support up to 6 variant types (classic, solid, soft, surface, outline, ghost) with automatic panel background adaptation for beautiful glass morphism effects.
+  </Callout.Text>
+</Callout.Root>
+
+## Variant Types Overview
+
+Our design system supports **6 core variant types** with specific use cases:
+
+### 1. Classic Variant - Traditional Depth
+Traditional UI with depth, shadows, and gradients for professional applications.
+
+### 2. Solid Variant - High Contrast  
+High-contrast, prominent elements for primary actions and call-to-action buttons.
+
+### 3. Soft Variant - Branded Subtlety
+Subtle branded styling with accent colors for secondary actions and themed components.
+
+### 4. Surface Variant - Neutral Surfaces
+Neutral surface styling for containers, forms, and professional non-branded appearance.
+
+### 5. Outline Variant - Minimal Borders
+Minimal styling with border-only design for secondary buttons and clean form inputs.
+
+### 6. Ghost Variant - Ultra Minimal
+Invisible until interaction, perfect for floating labels and ultra-clean interfaces.
+
+## Panel Background System
+
+The **core innovation** of our variant system is automatic adaptation to panel background settings.
+
+### Theme-Level Control
+
+```jsx
+<Theme panelBackground="solid">      {/* All components use solid colors */}
+<Theme panelBackground="translucent"> {/* All components use alpha colors + blur */}
+```
+
+### Visual Comparison
+
+<CodePreview code={`// Solid Panel Background (Default)
+<Theme panelBackground="solid">
+  <Flex gap="3" wrap="wrap">
+    <Button variant="soft">Soft Button</Button>
+    <TextField variant="surface" placeholder="Surface Input" />
+    <Button variant="outline">Outline Button</Button>
+    <Badge variant="soft">Soft Badge</Badge>
+  </Flex>
+</Theme>
+
+// Translucent Panel Background  
+<Theme panelBackground="translucent">
+  <Flex gap="3" wrap="wrap">
+    <Button variant="soft">Soft Button</Button>
+    <TextField variant="surface" placeholder="Surface Input" />
+    <Button variant="outline">Outline Button</Button>
+    <Badge variant="soft">Soft Badge</Badge>
+  </Flex>
+</Theme>`}>
+  <Flex direction="column" gap="4">
+    <Box>
+      <Text size="2" weight="bold" mb="2">Solid Panel Background (Default)</Text>
+      <Theme panelBackground="solid">
+        <Flex gap="3" wrap="wrap">
+          <Button variant="soft">Soft Button</Button>
+          <TextField variant="surface" placeholder="Surface Input" />
+          <Button variant="outline">Outline Button</Button>
+          <Badge variant="soft">Soft Badge</Badge>
+        </Flex>
+      </Theme>
+    </Box>
+    
+    <Box>
+      <Text size="2" weight="bold" mb="2">Translucent Panel Background</Text>
+      <Theme panelBackground="translucent">
+        <Flex gap="3" wrap="wrap">
+          <Button variant="soft">Soft Button</Button>
+          <TextField variant="surface" placeholder="Surface Input" />
+          <Button variant="outline">Outline Button</Button>
+          <Badge variant="soft">Soft Badge</Badge>
+        </Flex>
+      </Theme>
+    </Box>
+  </Flex>
+</CodePreview>
+
+## Component Categories
+
+Components are organized into **three surface categories** based on their color system:
+
+### Interactive Components (Accent Colors)
+- **Button, IconButton**: All variants (classic, solid, soft, surface, outline, ghost)
+- **Badge**: Accent-based variants  
+- **Switch**: Accent-based styling
+
+### Container Components (Panel Colors)
+- **Card**: Uses neutral panel color system
+- **Sidebar**: Panel-based container surfaces
+- **Dialog, Popover**: Neutral panel surfaces
+
+### Form Components (Surface Colors)
+- **TextField, TextArea, Select**: Form-specific surface system
+- **Checkbox, Radio**: Form control surfaces
+- **CheckboxCards, RadioCards**: Form surface styling
+
+## Variant Showcase
+
+### All Button Variants
+
+<CodePreview code={`<Flex gap="3" wrap="wrap">
+  <Button variant="classic">Classic</Button>
+  <Button variant="solid">Solid</Button>
+  <Button variant="soft">Soft</Button>
+  <Button variant="surface">Surface</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+</Flex>`}>
+  <Flex gap="3" wrap="wrap">
+    <Button variant="classic">Classic</Button>
+    <Button variant="solid">Solid</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="surface">Surface</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="ghost">Ghost</Button>
+  </Flex>
+</CodePreview>
+
+### Form Component Variants
+
+<CodePreview code={`<Flex direction="column" gap="3">
+  <TextField variant="classic" placeholder="Classic TextField" />
+  <TextField variant="soft" placeholder="Soft TextField" />
+  <TextField variant="surface" placeholder="Surface TextField" />
+  <TextField variant="outline" placeholder="Outline TextField" />
+  <TextField variant="ghost" placeholder="Ghost TextField" />
+</Flex>`}>
+  <Flex direction="column" gap="3">
+    <TextField variant="classic" placeholder="Classic TextField" />
+    <TextField variant="soft" placeholder="Soft TextField" />
+    <TextField variant="surface" placeholder="Surface TextField" />
+    <TextField variant="outline" placeholder="Outline TextField" />
+    <TextField variant="ghost" placeholder="Ghost TextField" />
+  </Flex>
+</CodePreview>
+
+## Component-Level Overrides
+
+Components support individual `panelBackground` control:
+
+<CodePreview code={`<Theme panelBackground="translucent">
+  <Flex gap="3" wrap="wrap" align="center">
+    <Button variant="soft">Uses theme (translucent)</Button>
+    <Button variant="soft" panelBackground="solid">
+      Override to solid
+    </Button>
+    <TextField 
+      variant="surface" 
+      panelBackground="solid"
+      placeholder="Solid form input"
+    />
+  </Flex>
+</Theme>`}>
+  <Theme panelBackground="translucent">
+    <Flex gap="3" wrap="wrap" align="center">
+      <Button variant="soft">Uses theme (translucent)</Button>
+      <Button variant="soft" panelBackground="solid">
+        Override to solid
+      </Button>
+      <TextField 
+        variant="surface" 
+        panelBackground="solid"
+        placeholder="Solid form input"
+      />
+    </Flex>
+  </Theme>
+</CodePreview>
+
+## Variant Usage Guidelines
+
+### When to Use Each Variant
+
+| Variant | Use Case | Best For |
+|---------|----------|----------|
+| **Classic** | Traditional depth | Professional apps, classic interfaces |
+| **Solid** | High prominence | Primary actions, CTAs |
+| **Soft** | Branded subtlety | Secondary actions, themed components |
+| **Surface** | Neutral styling | Standard forms, neutral containers |
+| **Outline** | Minimal borders | Clean inputs, secondary buttons |
+| **Ghost** | Ultra minimal | Floating labels, subtle interactions |
+
+### Component Support Matrix
+
+| Component | Classic | Solid | Soft | Surface | Outline | Ghost |
+|-----------|---------|-------|------|---------|---------|-------|
+| **Button** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **TextField** | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+| **Card** | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ |
+| **Badge** | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
+
+<Callout.Root variant="soft" color="amber">
+  <Callout.Icon>
+    <Lightbulb />
+  </Callout.Icon>
+  <Callout.Text>
+    **Note**: Form components don't have solid variants since they're not action elements. Container components focus on surface and soft variants for appropriate styling hierarchy.
+  </Callout.Text>
+</Callout.Root>
+
+## Panel Background Benefits
+
+### Solid Panel Background
+- **Better contrast** with solid color scales
+- **Improved readability** on opaque backgrounds  
+- **Consistent brand presence** without transparency artifacts
+- **Content-focused** interfaces
+
+### Translucent Panel Background
+- **Modern glass effects** with alpha transparency
+- **Backdrop blur compatibility** for advanced UI aesthetics
+- **Layered visual hierarchy** through transparency
+- **Contemporary design** aesthetics
+
+## Implementation Details
+
+### Automatic Color Adaptation
+
+Components automatically switch between color systems:
+
+```css
+.rt-Component:where(.rt-variant-soft) {
+  /* Base: solid accent for solid panels */
+  background-color: var(--accent-3);
+
+  /* Auto-switch to alpha for translucent panels */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+}
+```
+
+### Backdrop Filter System
+
+- **`--backdrop-filter-panel`**: Strong blur (24px) for containers
+- **`--backdrop-filter-components`**: Subtle blur (12px) for interactive elements
+- **Automatic disabling**: Both become `none` on solid panels
+
+### Surface Token Systems
+
+The system uses three token systems:
+
+1. **Accent colors**: `accent-2` → `accent-a2` for themed components
+2. **Panel colors**: `--color-panel` for neutral containers  
+3. **Surface colors**: `--color-surface` for form inputs
+
+## Migration Guide
+
+### Zero Breaking Changes
+All enhancements maintain **full API compatibility**. Existing code continues to work unchanged while gaining enhanced functionality.
+
+### Enhanced Features
+- **Panel background awareness** for all variants
+- **Component-level overrides** with `panelBackground` prop
+- **Systematic color usage** across all components
+- **Modern glass effects** support
+
+<Callout.Root variant="soft" color="green">
+  <Callout.Icon>
+    <Palette />
+  </Callout.Icon>
+  <Callout.Text>
+    **Design System Benefits**: This systematic approach provides a complete, flexible, and future-proof variant system that scales across all component types while maintaining design consistency and user choice.
+  </Callout.Text>
+</Callout.Root>
+
+    </Flex>
+  </Section>
+</Container> 

@@ -1,10 +1,13 @@
 .rt-PopoverContent {
-  background-color: var(--color-panel-solid);
+  /* Base state: use --color-panel which adapts to theme context */
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
   box-shadow: var(--shadow-5);
   min-width: var(--radix-popover-trigger-width);
   outline: 0;
   overflow: auto;
   position: relative;
+  transition: var(--transition-background-blur);
 
   --inset-padding-top: var(--popover-content-padding);
   --inset-padding-right: var(--popover-content-padding);
@@ -14,6 +17,22 @@
   box-sizing: border-box;
 
   transform-origin: var(--radix-popover-content-transform-origin);
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--color-panel-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--color-panel-translucent);
+    backdrop-filter: var(--backdrop-filter-panel);
+  }
 }
 
 /***************************************************************************************************
@@ -26,7 +45,7 @@
   .rt-PopoverContent {
     &:where(.rt-r-size-1) {
       --popover-content-padding: var(--space-3);
-      border-radius: var(--radius-4);
+      border-radius: var(--radius-3);
     }
     &:where(.rt-r-size-2) {
       --popover-content-padding: var(--space-4);
@@ -38,7 +57,7 @@
     }
     &:where(.rt-r-size-4) {
       --popover-content-padding: var(--space-6);
-      border-radius: var(--radius-5);
+      border-radius: var(--radius-6);
     }
   }
 }

@@ -5,6 +5,7 @@
   justify-content: flex-start;
   text-align: left;
   color: var(--accent-a11);
+  transition: var(--transition-card);
 
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
@@ -18,7 +19,14 @@
   height: var(--callout-icon-height);
 }
 
-/* Anything that’s not an icon goes to the right of the icon */
+/* stylelint-disable-next-line selector-max-type */
+.rt-CalloutIcon :where(svg) {
+  width: var(--callout-icon-size);
+  height: var(--callout-icon-size);
+  flex-shrink: 0;
+}
+
+/* Anything that's not an icon goes to the right of the icon */
 .rt-CalloutRoot > :where(:not(.rt-CalloutIcon)) {
   grid-column-start: -1;
 }
@@ -36,7 +44,8 @@
       column-gap: var(--space-2);
       padding: var(--space-3);
       border-radius: var(--radius-3);
-      --callout-icon-height: var(--line-height-2);
+      --callout-icon-height: var(--line-height-1);
+      --callout-icon-size: var(--content-icon-size-1);
     }
     &:where(.rt-r-size-2) {
       row-gap: var(--space-2);
@@ -44,6 +53,7 @@
       padding: var(--space-4);
       border-radius: var(--radius-4);
       --callout-icon-height: var(--line-height-2);
+      --callout-icon-size: var(--content-icon-size-2);
     }
     &:where(.rt-r-size-3) {
       row-gap: var(--space-3);
@@ -51,6 +61,7 @@
       padding: var(--space-5);
       border-radius: var(--radius-5);
       --callout-icon-height: var(--line-height-3);
+      --callout-icon-size: var(--content-icon-size-3);
     }
   }
 }
@@ -64,18 +75,76 @@
 /* soft */
 
 .rt-CalloutRoot:where(.rt-variant-soft) {
-  background-color: var(--accent-a3);
+  /* Base state: solid colors for solid panels */
+  background-color: var(--accent-3);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-panel);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-3);
+    backdrop-filter: none;
+    --backdrop-filter-panel: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-panel);
+    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+  }
 }
 
 /* surface */
 
 .rt-CalloutRoot:where(.rt-variant-surface) {
-  box-shadow: inset 0 0 0 1px var(--accent-a6);
-  background-color: var(--accent-a2);
+  /* Base state: solid colors for solid panels */
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-6);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a6);
+    backdrop-filter: var(--backdrop-filter-panel);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-6);
+    backdrop-filter: none;
+    --backdrop-filter-panel: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a6);
+    backdrop-filter: var(--backdrop-filter-panel);
+    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+  }
 }
 
 /* outline */
 
 .rt-CalloutRoot:where(.rt-variant-outline) {
-  box-shadow: inset 0 0 0 1px var(--accent-a7);
+  /* Base state: solid colors for solid panels */
+  box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-7);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a7);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-7);
+  }
+
+  &:where([data-panel-background='translucent']) {
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a7);
+  }
 }

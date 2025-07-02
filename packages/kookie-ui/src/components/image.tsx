@@ -8,12 +8,15 @@ import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
 import { widthPropDefs } from '../props/width.props.js';
 import { heightPropDefs } from '../props/height.props.js';
+import { layoutPropDefs } from '../props/layout.props.js';
 import { Skeleton } from './skeleton.js';
+import { Box } from './box.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { MarginProps } from '../props/margin.props.js';
 import type { WidthProps } from '../props/width.props.js';
 import type { HeightProps } from '../props/height.props.js';
+import type { LayoutProps } from '../props/layout.props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type ImageElement = React.ElementRef<'img'>;
@@ -40,6 +43,10 @@ type ImageOwnProps = GetPropDefTypes<typeof imagePropDefs> & {
    * Callback fired when the image fails to load.
    */
   onError?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
+  /**
+   * Style object to apply to the wrapper container. Useful for overriding display, width, height, etc.
+   */
+  wrapperStyle?: React.CSSProperties;
 };
 
 interface ImageProps
@@ -47,6 +54,7 @@ interface ImageProps
     MarginProps,
     WidthProps,
     HeightProps,
+    LayoutProps,
     ImageOwnProps {
   /**
    * The alt attribute provides alternative information for an image if a user for some reason cannot view it.
@@ -56,7 +64,7 @@ interface ImageProps
 }
 
 const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) => {
-  const { variant = 'surface', children } = props;
+  const { variant = 'surface', wrapperStyle, ...restProps } = props;
   const {
     asChild,
     className,
@@ -70,33 +78,46 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     fadeIn = true,
     onLoad: userOnLoad,
     onError: userOnError,
-    children: _children, // Extract children to exclude from imgProps
+    children,
     ...imgProps
-  } = extractProps(props, imagePropDefs, marginPropDefs, widthPropDefs, heightPropDefs);
+  } = extractProps(
+    restProps,
+    imagePropDefs,
+    marginPropDefs,
+    widthPropDefs,
+    heightPropDefs,
+    layoutPropDefs,
+  );
 
   // Loading state management
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const [imageError, setImageError] = React.useState(false);
   const [showPlaceholder, setShowPlaceholder] = React.useState(!!placeholder);
-  
+
   // Ref to check if image is already loaded (for cached images)
   const imgRef = React.useRef<HTMLImageElement>(null);
 
   // Handle image load - moved to top to avoid conditional hook call
-  const handleLoad = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
-    setImageLoaded(true);
-    setImageError(false);
-    setShowPlaceholder(false);
-    userOnLoad?.(event);
-  }, [userOnLoad]);
+  const handleLoad = React.useCallback(
+    (event: React.SyntheticEvent<HTMLImageElement>) => {
+      setImageLoaded(true);
+      setImageError(false);
+      setShowPlaceholder(false);
+      userOnLoad?.(event);
+    },
+    [userOnLoad],
+  );
 
   // Handle image error - moved to top to avoid conditional hook call
-  const handleError = React.useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
-    setImageLoaded(false);
-    setImageError(true);
-    setShowPlaceholder(false);
-    userOnError?.(event);
-  }, [userOnError]);
+  const handleError = React.useCallback(
+    (event: React.SyntheticEvent<HTMLImageElement>) => {
+      setImageLoaded(false);
+      setImageError(true);
+      setShowPlaceholder(false);
+      userOnError?.(event);
+    },
+    [userOnError],
+  );
 
   // Check if image is already loaded (for cached images)
   React.useEffect(() => {
@@ -119,43 +140,35 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   }
 
   // Create skeleton placeholder
-  const skeletonElement = showSkeleton && !imageLoaded && !imageError ? (
-    <Skeleton
-      style={{
-        ...style,
-        width: '100%',
-        height: '100px', // Default height, can be overridden by style
-        borderRadius: radius ? `var(--radius-${radius})` : undefined,
-      }}
-      className={className}
-    />
-  ) : null;
+  const skeletonElement =
+    showSkeleton && !imageLoaded && !imageError ? (
+      <Skeleton
+        width="100%"
+        height="100px" // Default height, can be overridden by style
+        style={{
+          ...style,
+          borderRadius: radius ? `var(--radius-${radius})` : undefined,
+        }}
+        className={className}
+      />
+    ) : null;
 
   // Create placeholder image element
-  const placeholderElement = placeholder && showPlaceholder ? (
-    <img
-      data-radius={radius}
-      style={{
-        ...style,
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        filter: 'blur(4px)',
-        opacity: 0.7,
-        transition: 'opacity 0.3s ease-out',
-      }}
-      className={classNames(
-        'rt-reset',
-        'rt-Image',
-        'rt-Image--placeholder',
-        className,
-      )}
-      alt=""
-      src={placeholder}
-    />
-  ) : null;
+  const placeholderElement =
+    placeholder && showPlaceholder ? (
+      <img
+        data-radius={radius}
+        style={{
+          ...style,
+          filter: 'blur(4px)',
+          opacity: 0.7,
+          transition: 'opacity 0.3s ease-out',
+        }}
+        className={classNames('rt-reset', 'rt-Image', 'rt-Image--placeholder', className)}
+        alt=""
+        src={placeholder}
+      />
+    ) : null;
 
   // Create the standard img element
   const imgElement = (
@@ -164,7 +177,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       loading={loading}
       style={{
         ...style,
-        opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+        opacity: fadeIn ? (imageLoaded ? (style?.opacity ?? 1) : 0) : (style?.opacity ?? 1),
         transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
       }}
       className={classNames(
@@ -190,13 +203,16 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   );
 
   // Wrapper for images with placeholders
-  const imageWithPlaceholder = (placeholder || showSkeleton) ? (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
-      {skeletonElement}
-      {placeholderElement}
-      {imgElement}
-    </div>
-  ) : imgElement;
+  const imageWithPlaceholder =
+    placeholder || showSkeleton ? (
+      <Box position="relative" display="inline-block" style={wrapperStyle}>
+        {skeletonElement}
+        {placeholderElement}
+        {imgElement}
+      </Box>
+    ) : (
+      imgElement
+    );
 
   // Handle asChild - inject img into the child element
   if (asChild && children) {
@@ -207,8 +223,6 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       return React.cloneElement(child, {
         className: classNames(child.props?.className, 'rt-variant-blur'),
         style: {
-          position: 'relative',
-          display: 'inline-block',
           textDecoration: 'none', // Reset link underlines
           color: 'inherit', // Reset link colors
           border: 'none', // Reset button borders
@@ -219,7 +233,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
           ...child.props?.style,
         },
         children: (
-          <>
+          <Box position="relative" display="inline-block" style={wrapperStyle}>
             {/* Background blurred image */}
             <img
               data-radius={radius}
@@ -245,11 +259,11 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
             <img
               data-radius={radius}
               loading={loading}
-              style={{ 
-                ...style, 
-                position: 'relative', 
+              style={{
+                ...style,
+                position: 'relative',
                 zIndex: 1,
-                opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+                opacity: fadeIn ? (imageLoaded ? (style?.opacity ?? 1) : 0) : (style?.opacity ?? 1),
                 transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
               }}
               className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur', className)}
@@ -267,7 +281,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
                 }
               }}
             />
-          </>
+          </Box>
         ),
       });
     } else {
@@ -292,7 +306,12 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   // Regular rendering without asChild
   if (variant === 'blur') {
     return (
-      <div className="rt-variant-blur" style={{ position: 'relative', display: 'inline-block' }}>
+      <Box
+        className="rt-variant-blur"
+        position="relative"
+        display="inline-block"
+        style={wrapperStyle}
+      >
         {/* Background blurred image */}
         <img
           data-radius={radius}
@@ -318,11 +337,11 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
         <img
           data-radius={radius}
           loading={loading}
-          style={{ 
-            ...style, 
-            position: 'relative', 
+          style={{
+            ...style,
+            position: 'relative',
             zIndex: 1,
-            opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+            opacity: fadeIn ? (imageLoaded ? (style?.opacity ?? 1) : 0) : (style?.opacity ?? 1),
             transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
           }}
           className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur', className)}
@@ -340,7 +359,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
             }
           }}
         />
-      </div>
+      </Box>
     );
   }
 

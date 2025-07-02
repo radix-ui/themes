@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { Card, Flex, Tabs, Text } from '@kushagradhawan/kookie-ui'
-import { CodeBlock } from './code-block'
+import { Card, Flex, Tabs, Text } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from './code-block';
 
 interface CodePreviewProps {
-  children: React.ReactNode
-  code: string
-  title?: string
+  children: React.ReactNode;
+  code: string;
+  title?: string;
 }
 
 export function CodePreview({ children, code, title }: CodePreviewProps) {
@@ -20,21 +20,21 @@ export function CodePreview({ children, code, title }: CodePreviewProps) {
 
         <Tabs.Content value="preview">
           <Flex direction="column" gap="4" p="4" py="8">
-            {title && <Text size="2" color="gray">{title}</Text>}
+            {title && (
+              <Text size="2" color="gray">
+                {title}
+              </Text>
+            )}
             <div key="preview-content">{children}</div>
           </Flex>
         </Tabs.Content>
-        
+
         <Tabs.Content value="code">
-          <CodeBlock 
-            showLineNumbers={true} 
-            autoFormat={true} 
-            showCard={false}
-          >
+          <CodeBlock showLineNumbers={true} autoFormat={true} showCard={false}>
             {code}
           </CodeBlock>
         </Tabs.Content>
       </Tabs.Root>
     </Card>
-  )
-} 
+  );
+}

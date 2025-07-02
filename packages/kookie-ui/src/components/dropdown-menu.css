@@ -9,8 +9,8 @@
   flex-shrink: 0;
 
   /* Default size for when not in a sized button */
-  width: 9px;
-  height: 9px;
+  width: var(--trigger-icon-size-default);
+  height: var(--trigger-icon-size-default);
 }
 
 /***************************************************************************************************
@@ -22,25 +22,25 @@
 @breakpoints {
   /* Size 1 Button */
   .rt-Button:where(.rt-r-size-1) :where(.rt-DropdownMenuTriggerIcon) {
-    width: 10px;
-    height: 10px;
+    width: var(--trigger-icon-size-1);
+    height: var(--trigger-icon-size-1);
   }
 
   /* Size 2 Button */
   .rt-Button:where(.rt-r-size-2) :where(.rt-DropdownMenuTriggerIcon) {
-    width: 11px;
-    height: 11px;
+    width: var(--trigger-icon-size-2);
+    height: var(--trigger-icon-size-2);
   }
 
   /* Size 3 Button */
   .rt-Button:where(.rt-r-size-3) :where(.rt-DropdownMenuTriggerIcon) {
-    width: 11px;
-    height: 11px;
+    width: var(--trigger-icon-size-3);
+    height: var(--trigger-icon-size-3);
   }
 
   /* Size 4 Button */
   .rt-Button:where(.rt-r-size-4) :where(.rt-DropdownMenuTriggerIcon) {
-    width: 12px;
-    height: 12px;
+    width: var(--trigger-icon-size-4);
+    height: var(--trigger-icon-size-4);
   }
 }

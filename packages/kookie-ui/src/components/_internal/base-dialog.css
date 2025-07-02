@@ -50,9 +50,26 @@
   padding: var(--dialog-content-padding);
   box-sizing: border-box;
 
-  background-color: var(--color-panel-solid);
+  /* Base state: use contextual dialog color that auto-resolves */
+  background-color: var(--color-dialog);
   box-shadow: var(--shadow-6);
   outline: none;
+
+  /* Theme-level backdrop filter for auto dialogs */
+  :where([data-panel-background='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-dialog);
+  }
+
+  /* Component-level overrides (when panelBackground prop is explicitly set) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--color-dialog-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--color-dialog-translucent);
+    backdrop-filter: var(--backdrop-filter-dialog);
+  }
 }
 
 /***************************************************************************************************
@@ -64,20 +81,20 @@
 @breakpoints {
   .rt-BaseDialogContent {
     &:where(.rt-r-size-1) {
-      --dialog-content-padding: var(--space-3);
-      border-radius: var(--radius-4);
+      --dialog-content-padding: var(--space-4);
+      border-radius: var(--radius-5);
     }
     &:where(.rt-r-size-2) {
-      --dialog-content-padding: var(--space-4);
-      border-radius: var(--radius-4);
+      --dialog-content-padding: var(--space-5);
+      border-radius: var(--radius-6);
     }
     &:where(.rt-r-size-3) {
-      --dialog-content-padding: var(--space-5);
-      border-radius: var(--radius-5);
+      --dialog-content-padding: var(--space-6);
+      border-radius: var(--radius-7);
     }
     &:where(.rt-r-size-4) {
-      --dialog-content-padding: var(--space-6);
-      border-radius: var(--radius-5);
+      --dialog-content-padding: var(--space-7);
+      border-radius: var(--radius-8);
     }
   }
 }

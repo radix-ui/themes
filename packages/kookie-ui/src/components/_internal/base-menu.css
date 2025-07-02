@@ -8,7 +8,27 @@
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: var(--base-menu-bg);
+  
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
+  box-shadow: var(--shadow-5);
+  transition: var(--transition-background-blur);
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--color-panel-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--color-panel-translucent);
+    backdrop-filter: var(--backdrop-filter-panel);
+  }
 }
 
 .rt-BaseMenuViewport {
@@ -37,6 +57,7 @@
   position: relative;
   outline: none;
   scroll-margin: var(--base-menu-content-padding) 0;
+  transition: var(--transition-menu);
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
@@ -46,6 +67,11 @@
   &:where([data-disabled]) {
     cursor: default;
   }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .rt-BaseMenuShortcut {
@@ -53,6 +79,7 @@
   align-items: center;
   margin-left: auto;
   padding-left: var(--space-4);
+  margin-right: calc(-2px * var(--scaling)); /* Pulls closer to edge */
 }
 
 .rt-BaseMenuSubTriggerIcon {
@@ -96,7 +123,16 @@
 }
 
 .rt-BaseMenuArrow {
-  fill: var(--base-menu-bg);
+  fill: var(--color-panel);
+
+  /* Component-level overrides (higher specificity) */
+  :where(.rt-BaseMenuContent[data-panel-background='solid']) & {
+    fill: var(--color-panel-solid);
+  }
+
+  :where(.rt-BaseMenuContent[data-panel-background='translucent']) & {
+    fill: var(--color-panel-translucent);
+  }
 }
 
 /***************************************************************************************************
@@ -108,7 +144,7 @@
 @breakpoints {
   .rt-BaseMenuContent {
     &:where(.rt-r-size-1) {
-      --base-menu-content-padding: var(--space-1);
+      --base-menu-content-padding: var(--space-2);
       --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
       --base-menu-item-padding-right: var(--space-2);
       --base-menu-item-padding-y: calc(var(--space-1) * 0.75);
@@ -116,6 +152,7 @@
       border-radius: var(--radius-3);
 
       & :where(.rt-BaseMenuItem) {
+        gap: var(--component-gap-2);
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
@@ -123,8 +160,8 @@
 
         /* stylelint-disable-next-line selector-max-type */
         & :where(svg) {
-          width: calc(var(--space-3) * 1.175);
-          height: calc(var(--space-3) * 1.175);
+          width: var(--content-icon-size-1);
+          height: var(--content-icon-size-1);
           flex-shrink: 0;
         }
       }
@@ -136,8 +173,8 @@
       }
 
       & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
-        width: calc(8px * var(--scaling));
-        height: calc(8px * var(--scaling));
+        width: var(--indicator-icon-size-1);
+        height: var(--indicator-icon-size-1);
       }
 
       /* reset with :not:has so we still support browsers without :has */
@@ -150,14 +187,15 @@
     }
 
     &:where(.rt-r-size-2) {
-      --base-menu-content-padding: var(--space-2);
+      --base-menu-content-padding: var(--space-3);
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
       --base-menu-item-padding-y: var(--space-1);
       --base-menu-item-height: var(--space-6);
-      border-radius: var(--radius-4);
+      border-radius: var(--radius-5);
 
       & :where(.rt-BaseMenuItem) {
+        gap: var(--component-gap-3);
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
@@ -165,8 +203,8 @@
 
         /* stylelint-disable-next-line selector-max-type */
         & :where(svg) {
-          width: var(--space-4);
-          height: var(--space-4);
+          width: var(--content-icon-size-2);
+          height: var(--content-icon-size-2);
           flex-shrink: 0;
         }
       }
@@ -178,8 +216,51 @@
       }
 
       & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
-        width: calc(10px * var(--scaling));
-        height: calc(10px * var(--scaling));
+        width: var(--indicator-icon-size-2);
+        height: var(--indicator-icon-size-2);
+      }
+
+      /* reset with :not:has so we still support browsers without :has */
+      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+        --base-menu-item-padding-left: var(--space-3);
+      }
+      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+        --base-menu-item-padding-left: var(--space-5);
+      }
+    }
+
+    &:where(.rt-r-size-3) {
+      --base-menu-content-padding: var(--space-3);
+      --base-menu-item-padding-left: var(--space-3);
+      --base-menu-item-padding-right: var(--space-3);
+      --base-menu-item-padding-y: var(--space-1);
+      --base-menu-item-height: var(--space-6);
+      border-radius: var(--radius-6);
+
+      & :where(.rt-BaseMenuItem) {
+        gap: var(--component-gap-4);
+        font-size: var(--font-size-3);
+        line-height: var(--line-height-2);
+        letter-spacing: var(--letter-spacing-3);
+        border-radius: var(--radius-2);
+
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--content-icon-size-2);
+          height: var(--content-icon-size-2);
+          flex-shrink: 0;
+        }
+      }
+
+      & :where(.rt-BaseMenuLabel) {
+        font-size: var(--font-size-2);
+        line-height: var(--line-height-2);
+        letter-spacing: var(--letter-spacing-2);
+      }
+
+      & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
+        width: var(--indicator-icon-size-2);
+        height: var(--indicator-icon-size-2);
       }
 
       /* reset with :not:has so we still support browsers without :has */
@@ -198,11 +279,6 @@
  * VARIANTS                                                                                        *
  *                                                                                                 *
  ***************************************************************************************************/
-
-.rt-BaseMenuContent {
-  --base-menu-bg: var(--color-panel-solid);
-  box-shadow: var(--shadow-5);
-}
 .rt-BaseMenuItem:where([data-accent-color]) {
   color: var(--accent-a11);
 }
@@ -230,8 +306,46 @@
 /* solid */
 
 .rt-BaseMenuContent:where(.rt-variant-solid) {
+  & :where(.rt-BaseMenuSubTrigger) {
+    transition: var(--transition-menu);
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+    
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
   & :where(.rt-BaseMenuSubTrigger[data-state='open']) {
-    background-color: var(--gray-a3);
+    /* Base state: solid gray for solid panels */
+    background-color: var(--gray-3);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--gray-a3);
+      /* Remove individual backdrop-filter to prevent layering with container backdrop-filter */
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--gray-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--gray-a3);
+      /* No backdrop-filter here to prevent double-blur with container */
+    }
+  }
+  & :where(.rt-BaseMenuItem) {
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
   }
   & :where(.rt-BaseMenuItem[data-highlighted]) {
     background-color: var(--accent-9);
@@ -289,11 +403,68 @@
 /* soft */
 
 .rt-BaseMenuContent:where(.rt-variant-soft) {
+  & :where(.rt-BaseMenuSubTrigger) {
+    transition: var(--transition-menu);
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+    
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
   & :where(.rt-BaseMenuSubTrigger[data-state='open']) {
-    background-color: var(--accent-a3);
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-3);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      /* Remove individual backdrop-filter to prevent layering with container backdrop-filter */
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+      /* No backdrop-filter here to prevent double-blur with container */
+    }
+  }
+  & :where(.rt-BaseMenuItem) {
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
   }
   & :where(.rt-BaseMenuItem[data-highlighted]) {
-    background-color: var(--accent-a4);
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+      /* Remove individual backdrop-filter to prevent layering with container backdrop-filter */
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-4);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a4);
+      /* No backdrop-filter here to prevent double-blur with container */
+    }
 
     /* In soft variant, improve contrast for gray text while maintaining hierarchy */
     & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {

@@ -14,12 +14,18 @@ type CardElement = React.ElementRef<'div'>;
 type CardOwnProps = GetPropDefTypes<typeof cardPropDefs>;
 interface CardProps extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, CardOwnProps {}
 const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
-  const { asChild, className, ...cardProps } = extractProps(props, cardPropDefs, marginPropDefs);
+  const { asChild, className, panelBackground, flush, ...cardProps } = extractProps(
+    props,
+    cardPropDefs,
+    marginPropDefs,
+  );
   const Comp = asChild ? Slot.Root : 'div';
   return (
     <Comp
       ref={forwardedRef}
       {...cardProps}
+      data-panel-background={panelBackground}
+      data-flush={flush ? 'true' : undefined}
       className={classNames('rt-reset', 'rt-BaseCard', 'rt-Card', className)}
     />
   );

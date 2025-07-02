@@ -6,6 +6,7 @@ import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
 import { popoverContentPropDefs } from './popover.props.js';
 import { Theme } from './theme.js';
+import { useThemeContext } from './theme.js';
 
 import type { PopoverContentOwnProps } from './popover.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
@@ -24,7 +25,7 @@ const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerPro
     <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </PopoverPrimitive.Trigger>
-  )
+  ),
 );
 PopoverTrigger.displayName = 'Popover.Trigger';
 
@@ -36,10 +37,15 @@ interface PopoverContentProps
 }
 const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentProps>(
   (props, forwardedRef) => {
-    const { className, forceMount, container, ...contentProps } = extractProps(
-      props,
-      popoverContentPropDefs
-    );
+    const themeContext = useThemeContext();
+    const panelBackground = props.panelBackground ?? themeContext.panelBackground;
+    const {
+      className,
+      forceMount,
+      container,
+      panelBackground: _,
+      ...contentProps
+    } = extractProps(props, popoverContentPropDefs);
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -49,12 +55,13 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
             collisionPadding={10}
             {...contentProps}
             ref={forwardedRef}
+            data-panel-background={panelBackground}
             className={classNames('rt-PopperContent', 'rt-PopoverContent', className)}
           />
         </Theme>
       </PopoverPrimitive.Portal>
     );
-  }
+  },
 );
 PopoverContent.displayName = 'Popover.Content';
 
@@ -66,7 +73,7 @@ const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
     <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </PopoverPrimitive.Close>
-  )
+  ),
 );
 PopoverClose.displayName = 'Popover.Close';
 
@@ -76,7 +83,7 @@ interface PopoverAnchorProps
 const PopoverAnchor = React.forwardRef<PopoverAnchorElement, PopoverAnchorProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Anchor {...props} ref={forwardedRef} />
-  )
+  ),
 );
 
 PopoverAnchor.displayName = 'Popover.Anchor';

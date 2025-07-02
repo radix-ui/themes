@@ -15,6 +15,7 @@ import { Theme, useThemeContext } from './theme.js';
 import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDotIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
+import { Kbd } from './kbd.js';
 
 import type { IconProps } from './icons.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
@@ -55,17 +56,24 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       size = dropdownMenuContentPropDefs.size.default,
       variant = dropdownMenuContentPropDefs.variant.default,
       highContrast = dropdownMenuContentPropDefs.highContrast.default,
+      panelBackground = props.panelBackground ?? themeContext.panelBackground,
     } = props;
-    const { className, children, color, container, forceMount, ...contentProps } = extractProps(
-      props,
-      dropdownMenuContentPropDefs,
-    );
+    const {
+      className,
+      children,
+      color,
+      container,
+      forceMount,
+      panelBackground: _,
+      ...contentProps
+    } = extractProps(props, dropdownMenuContentPropDefs);
     const resolvedColor = color || themeContext.accentColor;
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DropdownMenuPrimitive.Content
             data-accent-color={resolvedColor}
+            data-panel-background={panelBackground}
             align="start"
             sideOffset={4}
             collisionPadding={10}
@@ -83,8 +91,8 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               <div className={classNames('rt-BaseMenuViewport', 'rt-DropdownMenuViewport')}>
                 <DropdownMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast }),
-                    [size, variant, resolvedColor, highContrast],
+                    () => ({ size, variant, color: resolvedColor, highContrast, panelBackground }),
+                    [size, variant, resolvedColor, highContrast, panelBackground],
                   )}
                 >
                   {children}
@@ -136,7 +144,11 @@ const DropdownMenuItem = React.forwardRef<DropdownMenuItemElement, DropdownMenuI
         className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-DropdownMenuItem', className)}
       >
         <Slot.Slottable>{children}</Slot.Slottable>
-        {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}
+        {shortcut && (
+          <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
+            <Kbd size="1">{shortcut}</Kbd>
+          </div>
+        )}
       </DropdownMenuPrimitive.Item>
     );
   },
@@ -246,7 +258,11 @@ const DropdownMenuCheckboxItem = React.forwardRef<
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
         <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
       </DropdownMenuPrimitive.ItemIndicator>
-      {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}
+      {shortcut && (
+        <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
+          <Kbd size="1">{shortcut}</Kbd>
+        </div>
+      )}
     </DropdownMenuPrimitive.CheckboxItem>
   );
 });
@@ -298,9 +314,18 @@ const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { size, variant, color, highContrast } = React.useContext(DropdownMenuContentContext);
-  const { className, children, container, forceMount, ...subContentProps } = extractProps(
-    { size, variant, color, highContrast, ...props },
+  const { size, variant, color, highContrast, panelBackground } = React.useContext(
+    DropdownMenuContentContext,
+  );
+  const {
+    className,
+    children,
+    container,
+    forceMount,
+    panelBackground: _,
+    ...subContentProps
+  } = extractProps(
+    { size, variant, color, highContrast, panelBackground, ...props },
     dropdownMenuContentPropDefs,
   );
   return (
@@ -308,6 +333,7 @@ const DropdownMenuSubContent = React.forwardRef<
       <Theme asChild>
         <DropdownMenuPrimitive.SubContent
           data-accent-color={color}
+          data-panel-background={panelBackground}
           alignOffset={-Number(size) * 4}
           // Side offset accounts for the outer solid box-shadow
           sideOffset={1}

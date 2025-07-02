@@ -19,15 +19,16 @@ interface TextAreaProps
     MarginProps,
     TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
-  const { className, color, radius, style, ...textAreaProps } = extractProps(
+  const { className, color, radius, panelBackground, style, ...textAreaProps } = extractProps(
     props,
     textAreaPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <div
       data-accent-color={color}
       data-radius={radius}
+      data-panel-background={panelBackground}
       className={classNames('rt-TextAreaRoot', className)}
       style={style}
     >

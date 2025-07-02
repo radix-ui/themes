@@ -31,15 +31,16 @@ interface CalloutRootProps
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
   (props, forwardedRef) => {
     const { size = calloutRootPropDefs.size.default } = props;
-    const { asChild, children, className, color, ...rootProps } = extractProps(
+    const { asChild, children, className, color, panelBackground, ...rootProps } = extractProps(
       props,
       calloutRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     const Comp = asChild ? Slot.Root : 'div';
     return (
       <Comp
         data-accent-color={color}
+        data-panel-background={panelBackground}
         {...rootProps}
         className={classNames('rt-CalloutRoot', className)}
         ref={forwardedRef}
@@ -49,7 +50,7 @@ const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
         </CalloutContext.Provider>
       </Comp>
     );
-  }
+  },
 );
 CalloutRoot.displayName = 'Callout.Root';
 
@@ -60,7 +61,7 @@ const CalloutIcon = React.forwardRef<CalloutIconElement, CalloutIconProps>(
     return (
       <div {...props} className={classNames('rt-CalloutIcon', className)} ref={forwardedRef} />
     );
-  }
+  },
 );
 CalloutIcon.displayName = 'Callout.Icon';
 
@@ -79,7 +80,7 @@ const CalloutText = React.forwardRef<CalloutTextElement, CalloutTextProps>(
         className={classNames('rt-CalloutText', className)}
       />
     );
-  }
+  },
 );
 CalloutText.displayName = 'Callout.Text';
 

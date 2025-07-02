@@ -40,15 +40,13 @@ interface TextFieldRootProps extends TextFieldInputProps, MarginProps, TextField
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
   (props, forwardedRef) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
-    const { children, className, color, radius, style, ...inputProps } = extractProps(
-      props,
-      textFieldRootPropDefs,
-      marginPropDefs
-    );
+    const { children, className, color, radius, panelBackground, style, ...inputProps } =
+      extractProps(props, textFieldRootPropDefs, marginPropDefs);
     return (
       <div
         data-accent-color={color}
         data-radius={radius}
+        data-panel-background={panelBackground}
         style={style}
         className={classNames('rt-TextFieldRoot', className)}
         onPointerDown={(event) => {
@@ -85,7 +83,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
         {children}
       </div>
     );
-  }
+  },
 );
 TextFieldRoot.displayName = 'TextField.Root';
 
@@ -106,7 +104,7 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
         className={classNames('rt-TextFieldSlot', className)}
       />
     );
-  }
+  },
 );
 TextFieldSlot.displayName = 'TextField.Slot';
 

@@ -12,15 +12,21 @@ const selectRootPropDefs = {
   size: PropDef<(typeof sizes)[number]>;
 };
 
-const triggerVariants = ['classic', 'surface', 'soft', 'ghost'] as const;
+const triggerVariants = ['classic', 'surface', 'soft', 'outline', 'ghost'] as const;
 
 const selectTriggerPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: triggerVariants, default: 'surface' },
+  panelBackground: {
+    type: 'enum',
+    className: 'rt-panel-background',
+    values: ['solid', 'translucent'],
+  },
   ...colorPropDef,
   ...radiusPropDef,
   placeholder: { type: 'string' },
 } satisfies {
   variant: PropDef<(typeof triggerVariants)[number]>;
+  panelBackground: PropDef<'solid' | 'translucent'>;
   placeholder: PropDef<string>;
 };
 

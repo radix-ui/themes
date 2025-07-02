@@ -7,7 +7,226 @@
   width: var(--avatar-size);
   height: var(--avatar-size);
   flex-shrink: 0;
+  position: relative;
 }
+
+/* Interactive states for avatars used as buttons/links */
+/* stylelint-disable selector-max-type */
+.rt-AvatarRoot:where(button),
+.rt-AvatarRoot:where(a),
+.rt-AvatarRoot:where([role="button"]) {
+  cursor: pointer;
+  transition: var(--transition-button);
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &:where(:focus-visible) {
+    outline: var(--focus-outline-width) solid var(--focus-8);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  /* NO scale transform - buttons don't use it */
+
+  &:where(:disabled),
+  &:where([data-disabled]) {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Apply subtle filters to avatars that display images on interaction */
+  @media (hover: hover) {
+    &:where(:hover:not(:disabled, [data-disabled])) :where(.rt-AvatarImage) {
+      filter: var(--avatar-image-hover-filter);
+    }
+  }
+
+  &:where(:active:not(:disabled, [data-disabled])) :where(.rt-AvatarImage) {
+    filter: var(--avatar-image-active-filter);
+  }
+
+  /* Disabled state for avatar images */
+  &:where(:disabled, [data-disabled]) :where(.rt-AvatarImage) {
+    filter: grayscale(1) opacity(0.6);
+  }
+
+  /* Classic variant - 3D button effects */
+  &:where(.rt-variant-classic) {
+    @media (hover: hover) {
+      &:where(:hover:not(:disabled, [data-disabled]))  {
+        background-color: var(--accent-3);
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 var(--classic-border-width) var(--white-a12),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+          0 0 0 var(--classic-border-width) var(--accent-a5),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+
+        :where(.dark, .dark-theme) &,
+        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+          /* prettier-ignore */
+          box-shadow:
+            inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+            inset 0 var(--classic-border-width) var(--accent-a11),
+            inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+            inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+            0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+            0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+            0 0 0 var(--classic-border-width) var(--accent-a5);
+        }
+
+        & :where(.rt-AvatarFallback) {
+          background-color: inherit;
+          box-shadow: inherit;
+        }
+      }
+    }
+
+    &:where(:active:not(:disabled, [data-disabled]))  {
+      padding-top: var(--classic-active-padding-offset-2);
+      padding-bottom: 0;
+      background-color: var(--accent-3);
+      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
+      /* keep root top unchanged; internal illusion achieved by padding */
+
+      & :where(.rt-AvatarFallback) {
+        padding-top: inherit;
+        padding-bottom: 0;
+        background-color: inherit;
+        box-shadow: inherit;
+      }
+    }
+  }
+
+  /* Solid variant - filter effects like buttons */
+  &:where(.rt-variant-solid) {
+    @media (hover: hover) {
+      &:where(:hover:not(:disabled, [data-disabled]))  {
+        background-color: var(--accent-10);
+        & :where(.rt-AvatarFallback) {
+          background-color: inherit;
+        }
+      }
+    }
+    &:where(:active:not(:disabled, [data-disabled]))  {
+      background-color: var(--accent-10);
+      filter: var(--base-button-solid-active-filter);
+      & :where(.rt-AvatarFallback) {
+        background-color: inherit;
+        filter: inherit;
+      }
+    }
+    
+    &:where(.rt-high-contrast) {
+      @media (hover: hover) {
+        &:where(:hover:not(:disabled, [data-disabled]))  {
+          background-color: var(--accent-12);
+          filter: var(--base-button-solid-high-contrast-hover-filter);
+          & :where(.rt-AvatarFallback) {
+            background-color: inherit;
+            filter: inherit;
+          }
+        }
+      }
+      &:where(:active:not(:disabled, [data-disabled]))  {
+        background-color: var(--accent-12);
+        filter: var(--base-button-solid-high-contrast-active-filter);
+        & :where(.rt-AvatarFallback) {
+          background-color: inherit;
+          filter: inherit;
+        }
+      }
+    }
+  }
+
+  /* Soft variant - background color changes with panel awareness */
+  &:where(.rt-variant-soft) {
+    @media (hover: hover) {
+      &:where(:hover:not(:disabled, [data-disabled]))  {
+        background-color: var(--accent-4);
+
+        :where([data-panel-background='translucent']) & {
+          background-color: var(--accent-a4);
+        }
+
+        & :where(.rt-AvatarFallback) {
+          background-color: inherit;
+        }
+      }
+    }
+    &:where(:active:not(:disabled, [data-disabled]))  {
+      background-color: var(--accent-5);
+
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a5);
+      }
+
+      & :where(.rt-AvatarFallback) {
+        background-color: inherit;
+      }
+    }
+  }
+
+  /* Surface variant - border color changes */
+  &:where(.rt-variant-surface) {
+    @media (hover: hover) {
+      &:where(:hover:not(:disabled, [data-disabled]))  {
+        box-shadow: inset 0 0 0 1px var(--accent-8);
+        :where([data-panel-background='translucent']) & {
+          box-shadow: inset 0 0 0 1px var(--accent-a8);
+        }
+        & :where(.rt-AvatarFallback) {
+          box-shadow: inherit;
+        }
+      }
+    }
+    &:where(:active:not(:disabled, [data-disabled]))  {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a3);
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
+      & :where(.rt-AvatarFallback) {
+        background-color: inherit;
+        box-shadow: inherit;
+      }
+    }
+  }
+
+  /* Outline variant - background appears on interaction */
+  &:where(.rt-variant-outline) {
+    @media (hover: hover) {
+      &:where(:hover:not(:disabled, [data-disabled]))  {
+        background-color: var(--accent-2);
+        :where([data-panel-background='translucent']) & {
+          background-color: var(--accent-a2);
+          backdrop-filter: var(--backdrop-filter-components);
+        }
+        & :where(.rt-AvatarFallback) {
+          background-color: inherit;
+          backdrop-filter: inherit;
+        }
+      }
+    }
+    &:where(:active:not(:disabled, [data-disabled]))  {
+      background-color: var(--accent-3);
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+      & :where(.rt-AvatarFallback) {
+        background-color: inherit;
+        backdrop-filter: inherit;
+      }
+    }
+  }
+}
+/* stylelint-enable selector-max-type */
 
 .rt-AvatarImage {
   width: 100%;
@@ -54,7 +273,7 @@
       --avatar-size: var(--space-5);
       --avatar-fallback-one-letter-font-size: var(--font-size-2);
       --avatar-fallback-two-letters-font-size: var(--font-size-1);
-      border-radius: max(var(--radius-2), var(--radius-full));
+      border-radius: max(var(--radius-1), var(--radius-full));
       letter-spacing: var(--letter-spacing-1);
     }
     &:where(.rt-r-size-2) {
@@ -75,37 +294,42 @@
       --avatar-size: var(--space-8);
       --avatar-fallback-one-letter-font-size: var(--font-size-5);
       --avatar-fallback-two-letters-font-size: var(--font-size-4);
-      border-radius: max(var(--radius-3), var(--radius-full));
+      border-radius: max(var(--radius-4), var(--radius-full));
       letter-spacing: var(--letter-spacing-4);
     }
     &:where(.rt-r-size-5) {
       --avatar-size: var(--space-9);
       --avatar-fallback-one-letter-font-size: var(--font-size-6);
-      border-radius: max(var(--radius-4), var(--radius-full));
-      letter-spacing: var(--letter-spacing-6);
+      --avatar-fallback-two-letters-font-size: var(--font-size-5);
+      border-radius: max(var(--radius-5), var(--radius-full));
+      letter-spacing: var(--letter-spacing-5);
     }
     &:where(.rt-r-size-6) {
       --avatar-size: 80px;
       --avatar-fallback-one-letter-font-size: var(--font-size-7);
-      border-radius: max(var(--radius-5), var(--radius-full));
-      letter-spacing: var(--letter-spacing-7);
+      --avatar-fallback-two-letters-font-size: var(--font-size-6);
+      border-radius: max(var(--radius-6), var(--radius-full));
+      letter-spacing: var(--letter-spacing-6);
     }
     &:where(.rt-r-size-7) {
       --avatar-size: 96px;
       --avatar-fallback-one-letter-font-size: var(--font-size-7);
-      border-radius: max(var(--radius-5), var(--radius-full));
+      --avatar-fallback-two-letters-font-size: var(--font-size-6);
+      border-radius: max(var(--radius-7), var(--radius-full));
       letter-spacing: var(--letter-spacing-7);
     }
     &:where(.rt-r-size-8) {
       --avatar-size: 128px;
       --avatar-fallback-one-letter-font-size: var(--font-size-8);
-      border-radius: max(var(--radius-6), var(--radius-full));
+      --avatar-fallback-two-letters-font-size: var(--font-size-7);
+      border-radius: max(var(--radius-8), var(--radius-full));
       letter-spacing: var(--letter-spacing-8);
     }
     &:where(.rt-r-size-9) {
       --avatar-size: 160px;
       --avatar-fallback-one-letter-font-size: var(--font-size-9);
-      border-radius: max(var(--radius-6), var(--radius-full));
+      --avatar-fallback-two-letters-font-size: var(--font-size-8);
+      border-radius: max(var(--radius-9), var(--radius-full));
       letter-spacing: var(--letter-spacing-9);
     }
   }
@@ -128,16 +352,219 @@
     background-color: var(--accent-12);
     color: var(--accent-1);
   }
+  &:where([data-disabled]) :where(.rt-AvatarFallback) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    filter: none;
+  }
 }
 
 /* soft */
 
 .rt-AvatarRoot:where(.rt-variant-soft) {
   & :where(.rt-AvatarFallback) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-3);
+    color: var(--accent-11);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      color: var(--accent-a11);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
+      background-color: var(--accent-3);
+      color: var(--accent-11);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      color: var(--accent-a11);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+  }
+  &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
+    background-color: var(--accent-3);
+    color: var(--accent-12);
+    
+    :where([data-panel-background='translucent']) & {
     background-color: var(--accent-a3);
+      color: var(--accent-a12);
+    }
+  }
+  &:where([data-disabled]) :where(.rt-AvatarFallback) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    backdrop-filter: none;
+  }
+}
+
+/* surface */
+
+.rt-AvatarRoot:where(.rt-variant-surface) {
+  & :where(.rt-AvatarFallback) {
+    /* Base state: solid colors for solid panels */
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-7);
     color: var(--accent-a11);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 1px var(--accent-a7);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 1px var(--accent-a7);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
     color: var(--accent-12);
   }
+  &:where([data-disabled]) :where(.rt-AvatarFallback) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a2);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    backdrop-filter: none;
+  }
+}
+
+/* outline */
+
+.rt-AvatarRoot:where(.rt-variant-outline) {
+  & :where(.rt-AvatarFallback) {
+    /* Base state: solid colors for solid panels */
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    color: var(--accent-11);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+      color: var(--accent-a11);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+      color: var(--accent-11);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+      color: var(--accent-a11);
+    }
+  }
+  &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
+    box-shadow:
+      inset 0 0 0 1px var(--accent-7),
+      inset 0 0 0 1px var(--gray-11);
+    color: var(--accent-12);
+    
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent']) & {
+      box-shadow:
+        inset 0 0 0 1px var(--accent-a7),
+        inset 0 0 0 1px var(--gray-a11);
+    }
+
+    /* Component-level overrides for high contrast */
+    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
+      box-shadow:
+        inset 0 0 0 1px var(--accent-7),
+        inset 0 0 0 1px var(--gray-11);
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
+      box-shadow:
+        inset 0 0 0 1px var(--accent-a7),
+        inset 0 0 0 1px var(--gray-a11);
+    }
+  }
+  &:where([data-disabled]) :where(.rt-AvatarFallback) {
+    color: var(--gray-a8);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--gray-a7);
+    backdrop-filter: none;
+  }
+}
+
+/* classic */
+
+.rt-AvatarRoot:where(.rt-variant-classic) {
+  /* Match button's slight elevation */
+  position: relative;
+  top: var(--classic-elevation-offset);
+  & :where(.rt-AvatarFallback) {
+    position: relative;
+    top: 0; /* reset – elevation handled by root now */
+    color: var(--accent-a11);
+    background-color: var(--accent-2);
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 var(--classic-border-width) var(--white-a12),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+      0 0 0 var(--classic-border-width) var(--accent-a5),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+
+    :where(.dark, .dark-theme) &,
+    :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+        inset 0 var(--classic-border-width) var(--accent-a11),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+        inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
+        0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+    }
+  }
+  &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
+    color: var(--accent-12);
+    background-color: var(--accent-2);
+  }
+  &:where([data-disabled]) :where(.rt-AvatarFallback) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    box-shadow: none;
+    top: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* Avatar image filter tokens                                                                     */
+/* ---------------------------------------------------------------------------------------------- */
+
+:where(.radix-themes) {
+  /* Hover and active filters for avatars that display images */
+  --avatar-image-hover-filter: brightness(0.95) saturate(1.05);
+  --avatar-image-active-filter: brightness(0.9) saturate(1.1);
+}
+
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+  --avatar-image-hover-filter: brightness(1.05) saturate(1.05);
+  --avatar-image-active-filter: brightness(1.1) saturate(1.1);
 }

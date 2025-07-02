@@ -16,34 +16,62 @@
     &:where(.rt-r-size-1) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: calc(var(--space-3) * 1.175);
-        height: calc(var(--space-3) * 1.175);
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
       }
     }
     &:where(.rt-r-size-2) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-4);
-        height: var(--space-4);
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
       }
     }
     &:where(.rt-r-size-3) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-5);
-        height: var(--space-5);
+        width: var(--content-icon-size-3);
+        height: var(--content-icon-size-3);
       }
     }
     &:where(.rt-r-size-4) {
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-5);
-        height: var(--space-5);
+        width: var(--content-icon-size-4);
+        height: var(--content-icon-size-4);
       }
     }
   }
 
   .rt-IconButton:where(.rt-variant-ghost) {
+    &:where([data-flush='true']) {
+      /* We reset the defined margin variables to avoid inheriting them from a higher component */
+      /* If a margin IS defined on the component itself, the utility class will win and reset it */
+      --margin-top: 0px;
+      --margin-right: 0px;
+      --margin-bottom: 0px;
+      --margin-left: 0px;
+
+      /* Define the overrides to incorporate the negative margins using ghost padding */
+      --margin-top-override: calc(var(--margin-top) - var(--icon-button-ghost-padding));
+      --margin-right-override: calc(var(--margin-right) - var(--icon-button-ghost-padding));
+      --margin-bottom-override: calc(var(--margin-bottom) - var(--icon-button-ghost-padding));
+      --margin-left-override: calc(var(--margin-left) - var(--icon-button-ghost-padding));
+
+      margin-top: var(--margin-top-override);
+      margin-right: var(--margin-right-override);
+      margin-bottom: var(--margin-bottom-override);
+      margin-left: var(--margin-left-override);
+
+      /* Reset the overrides on direct children */
+      :where(&) > * {
+        --margin-top-override: initial;
+        --margin-right-override: initial;
+        --margin-bottom-override: initial;
+        --margin-left-override: initial;
+      }
+    }
+
     &:where(.rt-r-size-1) {
       --icon-button-ghost-padding: var(--space-1);
     }

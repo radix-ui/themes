@@ -1,0 +1,118 @@
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*        Design System Constants      */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+:where(.radix-themes) {
+  /* Backdrop blur constants */
+  --backdrop-blur-panel: 40px;
+  --backdrop-blur-components: 8px;
+  --backdrop-blur-heavy: 16px;
+  --backdrop-blur-light: 8px;
+  --backdrop-blur-dialog: 16px;
+  
+  /* Panel background opacity constants */
+  --panel-opacity-light: 0.25;
+  --panel-opacity-heavy: 0.75;
+  --surface-opacity-light: 0.25;
+  --surface-opacity-heavy: 0.75;
+  --surface-opacity-dark: 0.25;
+  
+  /* Dialog background opacity constants (stronger than panel) */
+  --dialog-opacity-light: 0.75;
+  --dialog-opacity-heavy: 0.75;
+  --dialog-opacity-dark: 0.75;
+  
+  /* Dark mode panel background mix percentages */
+  --panel-mix-percentage: 50%;
+  --surface-mix-percentage: 75%;
+  
+  /* Dark mode dialog background mix percentages (stronger than panel) */
+  --dialog-mix-percentage: 50%;
+  
+  /* Standard border width constants */
+  --border-width-standard: 1px;
+  
+  /* Classic variant 3D effect constants */
+  --classic-elevation-offset: -0.03em;
+  --classic-active-padding-offset-1: 1px;
+  --classic-active-padding-offset-2: 2px;
+  --classic-shadow-blur-small: 0.17em;
+  --classic-shadow-blur-medium: 0.25em;
+  --classic-shadow-blur-large: 0.5em;
+  --classic-border-width: 0.05em;
+  --classic-border-width-thick: 0.075em;
+  --classic-border-width-thin: 0.1em;
+  --classic-shadow-offset-y: 0.08em;
+  --classic-shadow-offset-negative: -0.1em;
+  --classic-word-spacing: -0.1em;
+  
+  
+  /* Color mixing percentages */
+  --color-mix-percentage-light: 25%;
+  --color-mix-percentage-medium: 50%;
+  --color-mix-percentage-heavy: 75%;
+  
+  /* Trigger icon size constants (for dropdowns, selects) */
+  --trigger-icon-size-default: 9px;
+  --trigger-icon-size-1: 10px;
+  --trigger-icon-size-2: 11px;
+  --trigger-icon-size-3: 11px;
+  --trigger-icon-size-4: 12px;
+  
+  /* Content icon size constants (for buttons, menu items) */
+  --content-icon-size-1: calc(var(--space-3) * 1.175); /* ~14.1px */
+  --content-icon-size-2: var(--space-4);               /* 16px */
+  --content-icon-size-3: calc(var(--space-4) * 1.175); /* ~18.8px */
+  --content-icon-size-4: var(--space-5);               /* 20px */
+  
+  /* Indicator icon size constants (for checkboxes, radio, sub-triggers) */
+  --indicator-icon-size-1: calc(8px * var(--scaling));  /* ~8px */
+  --indicator-icon-size-2: calc(10px * var(--scaling)); /* ~10px */
+  
+  /* Transition constants */
+  --transition-backdrop-filter: backdrop-filter var(--duration-2) var(--ease-1);
+  --transition-background-blur: background-color var(--duration-2) var(--ease-1), backdrop-filter var(--duration-2) var(--ease-1);
+  
+  /* Spacing multipliers for component sizing */
+  --spacing-multiplier-small: 0.5;
+  --spacing-multiplier-medium: 0.75;
+  --spacing-multiplier-large: 1.25;
+  --spacing-multiplier-extra-large: 1.5;
+  --spacing-multiplier-double: 2;
+  
+  /* Component gap spacing constants (shared between Button, Select, etc.) */
+  --component-gap-1: var(--space-1);        /* 4px */
+  --component-gap-2: var(--space-2);        /* 8px */
+  --component-gap-3: var(--space-3);        /* 12px */
+  --component-gap-4: var(--space-3);        /* 12px */
+  
+  /* Ghost variant gap constants */
+  --component-gap-ghost-1: var(--space-1);              /* 4px */
+  --component-gap-ghost-2: calc(var(--space-1) * 1.5);  /* 6px */
+  --component-gap-ghost-3: var(--space-2);              /* 8px */
+  --component-gap-ghost-4: var(--space-2);              /* 8px */
+  
+  /* Font size multipliers */
+  --font-size-multiplier-badge: 0.8;
+  --font-size-multiplier-kbd: 0.8;
+  
+  /* Border radius multipliers for different component heights */
+  --radius-multiplier-compact: 0.35em;
+  --radius-multiplier-standard: 1em;
+  
+  /* Focus outline constants */
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+  --focus-outline-offset-inset: -1px;
+  
+  /* Component padding relationships */
+  --padding-ratio-horizontal: 1.5; /* horizontal padding is typically 1.5x vertical */
+  --padding-ratio-ghost: 0.25; /* ghost variants use 25% of normal padding */
+  
+  /* Scale transform constants */
+  --scale-active: 0.98;
+  --scale-pressed: 0.96;
+  --scale-normal: 1;
+} 

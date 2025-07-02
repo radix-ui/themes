@@ -7,13 +7,22 @@
   font-weight: var(--font-weight-regular);
   font-style: normal;
   text-align: start;
+  transition: var(--transition-text-field);
 
   /* Allows the `resize` property to work on the div */
   overflow: hidden;
 
   &:where(:focus-within) {
-    outline: 2px solid var(--focus-8);
+    outline: 2px solid var(--text-area-focus-color, var(--focus-8));
     outline-offset: -1px;
+  }
+
+  &::selection {
+    background-color: var(--text-area-selection-color, var(--focus-a5));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 
@@ -24,6 +33,12 @@
   display: block;
   width: 100%;
   flex-grow: 1;
+
+  /* Remove default browser styling */
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
 
   /* scrollbar */
   & {
@@ -55,6 +70,10 @@
     /* Reliably removes native autofill colors */
     background-clip: text;
     -webkit-text-fill-color: var(--gray-12);
+  }
+
+  &::selection {
+    background-color: var(--text-area-selection-color, var(--focus-a5));
   }
 }
 
@@ -122,15 +141,40 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* surface */
-.rt-TextAreaRoot:where(.rt-variant-surface) {
+/* outline */
+.rt-TextAreaRoot:where(.rt-variant-outline) {
+  --text-area-selection-color: var(--focus-a5);
+  --text-area-focus-color: var(--focus-8);
   --text-area-border-width: 1px;
 
   /* Blend inner shadow with page background */
   background-clip: content-box;
   background-color: var(--color-surface);
-  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a7);
+  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
   color: var(--gray-12);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides for surface variant */
+  &:where([data-panel-background='solid']) {
+    --color-surface: var(--color-surface-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    --color-surface: var(--color-surface-translucent);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Hover effects */
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a8);
+    }
+  }
 
   & :where(.rt-TextAreaInput) {
     &::placeholder {
@@ -142,7 +186,7 @@
   &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     /* Blend with focus color */
     background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-    box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+    box-shadow: inset 0 0 0 1px var(--focus-a5);
   }
 
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
@@ -154,23 +198,57 @@
 
 /* classic */
 .rt-TextAreaRoot:where(.rt-variant-classic) {
-  --text-area-border-width: 1px;
+  --text-area-selection-color: var(--focus-a5);
+  --text-area-focus-color: var(--focus-8);
+  --text-area-border-width: 0px;
 
-  background: linear-gradient(to bottom, var(--color-surface), var(--gray-1));
-  box-shadow: var(--shadow-2);
+  position: relative;
+  top: calc(var(--classic-elevation-offset) / 3); /* More pronounced than before */
+  background-color: var(--color-surface);
   color: var(--gray-12);
 
+  /* 3D inset effect - same as TextField */
+  /* prettier-ignore */
+  box-shadow:
+    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / 1.5) var(--gray-a3),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a1),
+    inset 0 calc(var(--classic-border-width) * 2) calc(var(--classic-shadow-blur-medium) / 3) var(--gray-a2),
+    0 0 0 var(--classic-border-width) var(--gray-a5);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides for surface variant */
+  &:where([data-panel-background='solid']) {
+    --color-surface: var(--color-surface-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    --color-surface: var(--color-surface-translucent);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Hover effects - slightly reduced inset */
   @media (hover: hover) {
-    &:where(:hover) {
-      background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
-      box-shadow: var(--shadow-2);
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(var(--classic-border-width) / 1.5) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a2),
+        inset 0 calc(-1 * var(--classic-border-width) / 1.5) var(--gray-a1),
+        inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / 4) var(--gray-a2),
+        0 0 0 var(--classic-border-width) var(--gray-a6);
     }
   }
 
-  &:where(:focus-within) {
+  /* Focus state - accent ring with minimal inset */
+  &:where(:has(.rt-TextAreaInput:focus)) {
+    /* prettier-ignore */
     box-shadow:
-      inset 0 0 0 1px var(--focus-8),
-      var(--shadow-1);
+      inset 0 calc(var(--classic-border-width) / 2) calc(var(--classic-shadow-blur-small) / 3) var(--gray-a1),
+      0 0 0 2px var(--focus-8);
   }
 
   & :where(.rt-TextAreaInput) {
@@ -183,37 +261,76 @@
   &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
     /* Blend with focus color */
     background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-    box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+    box-shadow: var(--shadow-2);
   }
 
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
     /* Blend with grey */
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
-    box-shadow: none;
+    box-shadow: var(--shadow-1);
   }
 }
 
 /* soft */
 .rt-TextAreaRoot:where(.rt-variant-soft) {
+  --text-area-selection-color: var(--accent-a5);
+  --text-area-focus-color: var(--accent-8);
   --text-area-border-width: 0px;
 
-  background-color: var(--accent-a3);
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-3);
   color: var(--accent-12);
 
-  & :where(.rt-TextAreaInput) {
-    &::selection {
-      /* Use gray selection when component color is gray */
-      background-color: var(--accent-a5);
-    }
-    &::placeholder {
-      color: var(--accent-12);
-      opacity: 0.65;
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-3);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Hover effects */
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-4);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a4);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-4);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a4);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
     }
   }
 
-  &:where(:focus-within) {
-    /* Use gray outline when component color is gray */
-    outline-color: var(--accent-8);
+  & :where(.rt-TextAreaInput) {
+    &::placeholder {
+      color: var(--accent-12);
+      opacity: 0.6;
+    }
   }
 
   /* prettier-ignore */
@@ -227,7 +344,182 @@
   }
 }
 
-/* all disabled and read-only text-areas */
+/* ghost */
+.rt-TextAreaRoot:where(.rt-variant-ghost) {
+  --text-area-selection-color: var(--accent-a5);
+  --text-area-focus-color: var(--accent-8);
+  --text-area-border-width: 0px;
+
+  background-color: transparent;
+  color: var(--gray-12);
+
+  & :where(.rt-TextAreaInput) {
+    &::placeholder {
+      color: var(--gray-a10);
+    }
+  }
+
+  /* Hover effects */
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-2);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-2);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
+    }
+  }
+
+  /* Show styling only on focus/interaction */
+  &:where(:focus-within) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-2);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      backdrop-filter: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+  }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+  }
+
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    background-color: var(--gray-a2);
+    color: var(--gray-a8);
+  }
+}
+
+/* surface */
+.rt-TextAreaRoot:where(.rt-variant-surface) {
+  --text-area-selection-color: var(--accent-a5);
+  --text-area-focus-color: var(--accent-8);
+  --text-area-border-width: 1px;
+
+  background-color: transparent;
+  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-7);
+  color: var(--gray-12);
+  transition: var(--transition-background-blur);
+
+  /* Theme-level panel awareness (NO backdrop filter for true transparency) */
+  :where([data-panel-background='translucent']) & {
+    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a7);
+  }
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid']) {
+    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-7);
+  }
+
+  &:where([data-panel-background='translucent']) {
+    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a7);
+  }
+
+  & :where(.rt-TextAreaInput) {
+    &::placeholder {
+      color: var(--gray-a10);
+    }
+  }
+
+  /* Hover effects */
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-2);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-2);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
+    }
+  }
+
+  /* Interaction states get light background */
+  &:where(:focus-within) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
+      backdrop-filter: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+  }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+  }
+
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    background-color: var(--gray-a2);
+    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
+    color: var(--gray-a8);
+  }
+}
+
+/* all disabled and read-only text areas */
 .rt-TextAreaInput {
   &:where(:disabled, :read-only) {
     cursor: text;
@@ -241,11 +533,10 @@
     &:where(:placeholder-shown) {
       cursor: var(--cursor-disabled);
     }
-    &::selection {
-      background-color: var(--gray-a5);
-    }
-    .rt-TextAreaRoot:where(:focus-within:has(&)) {
-      outline-color: var(--gray-8);
+
+    .rt-TextAreaRoot:where(:has(&)) {
+      --text-area-selection-color: var(--gray-a5);
+      --text-area-focus-color: var(--gray-8);
     }
   }
 }

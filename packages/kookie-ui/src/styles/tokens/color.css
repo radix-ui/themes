@@ -11,16 +11,22 @@
   --color-background: white;
   --color-overlay: var(--black-a6);
   --color-panel-solid: white;
-  --color-panel-translucent: rgba(255, 255, 255, 0.7);
-  --color-surface: rgba(255, 255, 255, 0.85);
+  --color-panel-translucent: rgba(255, 255, 255, var(--panel-opacity-light));
+  --color-surface-solid: white;
+  --color-surface-translucent: rgba(255, 255, 255, var(--surface-opacity-light));
+  --color-dialog-solid: white;
+  --color-dialog-translucent: rgba(255, 255, 255, var(--dialog-opacity-light));
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --color-background: var(--gray-1);
   --color-overlay: var(--black-a8);
   --color-panel-solid: var(--gray-2);
-  --color-panel-translucent: var(--gray-a2);
-  --color-surface: rgba(0, 0, 0, 0.25);
+  --color-panel-translucent: color-mix(in srgb, var(--gray-2) var(--panel-mix-percentage), transparent);
+  --color-surface-solid: var(--gray-1);
+  --color-surface-translucent: rgba(0, 0, 0, var(--surface-opacity-dark));
+  --color-dialog-solid: var(--gray-2);
+  --color-dialog-translucent: color-mix(in srgb, var(--gray-2) var(--dialog-mix-percentage), transparent);
 }
 
 /* * * * * * * * * * * * * * * * * * * */
@@ -126,11 +132,19 @@
 .radix-themes {
   &:where([data-panel-background='solid']) {
     --color-panel: var(--color-panel-solid);
+    --color-surface: var(--color-surface-solid);
+    --color-dialog: var(--color-dialog-solid);
     --backdrop-filter-panel: none;
+    --backdrop-filter-components: none;
+    --backdrop-filter-dialog: none;
   }
   &:where([data-panel-background='translucent']) {
     --color-panel: var(--color-panel-translucent);
-    --backdrop-filter-panel: blur(64px);
+    --color-surface: var(--color-surface-translucent);
+    --color-dialog: var(--color-dialog-translucent);
+    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    --backdrop-filter-dialog: blur(var(--backdrop-blur-dialog));
   }
 }
 

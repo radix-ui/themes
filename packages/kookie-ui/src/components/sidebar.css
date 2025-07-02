@@ -15,9 +15,10 @@
 /* Sidebar Root Container */
 .rt-SidebarRoot {
   --sidebar-width: 16rem; /* Fixed width */
+  --sidebar-base-border-radius: 0; /* Default to no radius */
   
   width: var(--sidebar-width);
-  height: 100vh;
+  height: 100%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -32,10 +33,11 @@
 
   /* Floating type - ONLY visual changes */
   &:where([data-type="floating"]) {
-    border-radius: var(--radius-4);
+    border-radius: var(--sidebar-base-border-radius);
     margin: var(--space-2);
-    height: calc(100vh - var(--space-4));
+    height: calc(100% - var(--space-4));
     overflow: visible; /* Ensure shadow is not clipped */
+    position: relative; /* Ensure proper stacking context for floating sidebars */
     
     /* Ensure Theme wrapper has proper border radius in floating mode */
     & :where(.radix-themes) {
@@ -44,15 +46,65 @@
   }
 }
 
+/* Set border radius for floating sidebars based on size - set on the root where it's used */
+.rt-SidebarRoot:where([data-type="floating"]) {
+  /* Default radius for floating sidebars */
+  --sidebar-base-border-radius: var(--radius-5);
+  
+  &:where(.rt-r-size-1) {
+    --sidebar-base-border-radius: var(--radius-5);
+  }
+  
+  &:where(.rt-r-size-2) {
+    --sidebar-base-border-radius: var(--radius-6);
+  }
+}
+
 /* Sidebar Container */
 .rt-SidebarContainer {
+  --sidebar-base-border-radius: 0; /* Default to no radius */
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: var(--color-panel-solid);
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
   border-radius: inherit;
   flex: 1;
+}
+
+.rt-SidebarContainer:where(.rt-variant-surface) {
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
+  
+  /* Component-level overrides (higher specificity) - remap --color-panel */
+  &:where([data-panel-background='solid']) {
+    --color-panel: var(--color-panel-solid);
+    backdrop-filter: none;
+    --backdrop-filter-panel: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    --color-panel: var(--color-panel-translucent);
+    backdrop-filter: var(--backdrop-filter-panel);
+    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+  
+  /* Floating sidebars get full inset border */
+  :where(.rt-SidebarRoot[data-type="floating"]) & {
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+  
+  /* Non-floating sidebars get border only on the content-facing side */
+  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="left"]) & {
+    box-shadow: inset -1px 0 0 0 var(--gray-a6);
+  }
+  
+  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="right"]) & {
+    box-shadow: inset 1px 0 0 0 var(--gray-a6);
+  }
 }
 
 /* Sidebar Header */
@@ -92,15 +144,7 @@
                 box-shadow var(--duration-2) var(--ease-1),
                 filter var(--duration-2) var(--ease-1);
     
-    /* Hover states - use data-highlighted from component */
-    &:where([data-highlighted]:not([data-disabled])) {
-      background-color: var(--gray-a3);
-    }
-    
-    /* Active/Press state */
-    &:where(:active:not([data-disabled])) {
-      background-color: var(--gray-a4);
-    }
+    /* Note: Hover/active states are handled by menu variants */
     
     /* Focus state */
     &:where(:focus-visible) {
@@ -269,23 +313,7 @@
     color: var(--gray-a8);
   }
 
-  /* Hover state (mouse) + programmatic highlight */
-  &:where([data-highlighted]:not([data-disabled])) {
-    background-color: var(--gray-a3);
-  }
-
-  @media (hover: hover) {
-    &:where(:hover:not([data-disabled])) {
-      background-color: var(--gray-a3);
-    }
-  }
-
-  /* Active/Press state */
-  &:where(:active:not([data-disabled])) {
-    background-color: var(--gray-a4);
-  }
-
-  /* Active navigation state */
+  /* Active navigation state - always accent-based */
   &:where([data-active], .rt-active) {
     background-color: var(--accent-a3);
     color: var(--accent-a12);
@@ -305,6 +333,13 @@
   /* Gray text support */
   & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
     color: var(--gray-a10);
+  }
+
+  /* Ensure shortcuts inherit color in disabled/highlighted/active states */
+  &:where([data-disabled], [data-highlighted], [data-active]) {
+    & :where(.rt-SidebarMenuShortcut) {
+      color: inherit;
+    }
   }
 
   /* Reduced motion support */
@@ -426,15 +461,7 @@
                 box-shadow var(--duration-2) var(--ease-1),
                 filter var(--duration-2) var(--ease-1);
     
-    /* Hover states - use data-highlighted from component */
-    &:where([data-highlighted]:not([data-disabled])) {
-      background-color: var(--gray-a3);
-    }
-    
-    /* Active/Press state */
-    &:where(:active:not([data-disabled])) {
-      background-color: var(--gray-a4);
-    }
+    /* Note: Hover/active states are handled by menu variants */
     
     /* Focus state */
     &:where(:focus-visible) {
@@ -567,7 +594,6 @@
   .rt-SidebarContainer {
     &:where(.rt-r-size-1) {
       --sidebar-base-padding: var(--space-3);
-      --sidebar-base-border-radius: var(--radius-4);
       /* Ensure header/footer menu buttons share the same sizing variables as content */
       --sidebar-content-padding: var(--space-1);
       --sidebar-item-padding-left: var(--space-2);
@@ -577,7 +603,6 @@
     }
     &:where(.rt-r-size-2) {
       --sidebar-base-padding: var(--space-4);
-      --sidebar-base-border-radius: var(--radius-4);
       /* Ensure header/footer menu buttons share the same sizing variables as content */
       --sidebar-content-padding: var(--space-2);
       --sidebar-item-padding-left: var(--space-3);
@@ -633,16 +658,16 @@
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: calc(var(--space-3) * 1.175);
-        height: calc(var(--space-3) * 1.175);
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
         flex-shrink: 0;
       }
     }
 
     /* Sub-trigger icon sizing - matches base menu exactly */
     & :where(.rt-BaseMenuSubTriggerIcon) {
-      width: calc(8px * var(--scaling));
-      height: calc(8px * var(--scaling));
+      width: var(--indicator-icon-size-1);
+      height: var(--indicator-icon-size-1);
       flex-shrink: 0;
       margin-left: auto;
     }
@@ -665,8 +690,8 @@
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: calc(var(--space-3) * 1.175);
-        height: calc(var(--space-3) * 1.175);
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
         flex-shrink: 0;
       }
     }
@@ -679,8 +704,8 @@
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: calc(var(--space-3) * 1.175);
-        height: calc(var(--space-3) * 1.175);
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
         flex-shrink: 0;
       }
     }
@@ -691,20 +716,20 @@
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
-      border-radius: var(--radius-2);
+      border-radius: var(--radius-3);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-4);
-        height: var(--space-4);
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
         flex-shrink: 0;
       }
     }
 
     /* Sub-trigger icon sizing - matches base menu exactly */
     & :where(.rt-BaseMenuSubTriggerIcon) {
-      width: calc(10px * var(--scaling));
-      height: calc(10px * var(--scaling));
+      width: var(--indicator-icon-size-2);
+      height: var(--indicator-icon-size-2);
       flex-shrink: 0;
       margin-left: auto;
     }
@@ -723,12 +748,12 @@
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
-      border-radius: var(--radius-2);
+      border-radius: var(--radius-3);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-4);
-        height: var(--space-4);
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
         flex-shrink: 0;
       }
     }
@@ -737,12 +762,12 @@
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
-      border-radius: var(--radius-2);
+      border-radius: var(--radius-3);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--space-4);
-        height: var(--space-4);
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
         flex-shrink: 0;
       }
     }
@@ -759,21 +784,31 @@
 .rt-SidebarContainer {
   &:where(.rt-variant-ghost) {
     background-color: transparent;
+    backdrop-filter: none;
     border: none;
   }
   &:where(.rt-variant-soft) {
-    background-color: var(--accent-a2);
-  }
-  &:where(.rt-variant-surface) {
-    background-color: var(--color-surface);
+    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    background-color: var(--accent-2);
     
-    /* Border on the side opposite to sidebar position */
-    &:where([data-side="left"]) {
-      border-right: 1px solid var(--gray-a6);
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-panel);
     }
-    
-    &:where([data-side="right"]) {
-      border-left: 1px solid var(--gray-a6);
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
     }
   }
 }
@@ -782,13 +817,6 @@
 .rt-SidebarContainer:where(.rt-variant-ghost) {
   :where(.rt-SidebarRoot[data-type="floating"]) & {
     box-shadow: var(--shadow-4);
-  }
-}
-
-/* Floating borders - only for surface variant */
-.rt-SidebarContainer:where(.rt-variant-surface) {
-  :where(.rt-SidebarRoot[data-type="floating"]) & {
-    border: 1px solid var(--gray-a6);
   }
 }
 
@@ -865,8 +893,38 @@
 .rt-SidebarFooter:where(.rt-menu-variant-soft) {
   /* Active navigation state for soft variant */
   & :where(.rt-SidebarMenuButton[data-active]) {
-    background-color: var(--accent-a4);
-    color: var(--accent-a12);
+    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    background-color: var(--accent-3);
+    color: var(--accent-12);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      color: var(--accent-a12);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-SidebarContainer[data-panel-background='solid']) & {
+      background-color: var(--accent-3);
+      color: var(--accent-12);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-SidebarContainer[data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      color: var(--accent-a12);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+
+    /* Avoid double backdrop-filter on surface variant - container already has backdrop-filter */
+    :where(.rt-SidebarContainer.rt-variant-surface) & {
+      backdrop-filter: none;
+    }
 
     /* In soft variant, improve contrast for gray text while maintaining hierarchy */
     & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
@@ -876,7 +934,34 @@
 
   /* Hover/highlighted state for soft variant */
   & :where(.rt-SidebarMenuButton[data-highlighted]) {
-    background-color: var(--accent-a4);
+    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    background-color: var(--accent-3);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-SidebarContainer[data-panel-background='solid']) & {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    :where(.rt-SidebarContainer[data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+
+    /* Avoid double backdrop-filter on surface variant - container already has backdrop-filter */
+    :where(.rt-SidebarContainer.rt-variant-surface) & {
+      backdrop-filter: none;
+    }
 
     /* In soft variant, improve contrast for gray text while maintaining hierarchy */
     & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
@@ -884,12 +969,6 @@
     }
   }
 }
-
-
-
-
-
-
 
 /* Ensure menu items inherit proper theming and spacing for sidebar */
 .rt-SidebarContent :where(.rt-BaseMenuItem) {
@@ -925,4 +1004,40 @@
   .rt-SidebarRoot {
     display: none;
   }
+}
+
+/* Reduce right padding on menu buttons with trailing elements */
+.rt-SidebarMenuButton:where(:has(.rt-SidebarMenuShortcut, .rt-SidebarMenuBadge)) {
+  /* Size-specific right padding reduction */
+  :where(.rt-SidebarContent.rt-r-size-1) & {
+    padding-right: calc(var(--space-1) * 0.75); /* 3px - matches top/bottom padding */
+  }
+  
+  :where(.rt-SidebarContent.rt-r-size-2) & {
+    padding-right: var(--space-1); /* 4px - matches top/bottom padding */
+  }
+  
+  /* Also apply to header and footer menu buttons */
+  :where(.rt-SidebarContainer.rt-r-size-1) & {
+    padding-right: calc(var(--space-1) * 0.75); /* 3px - matches top/bottom padding */
+  }
+  
+  :where(.rt-SidebarContainer.rt-r-size-2) & {
+    padding-right: var(--space-1); /* 4px - matches top/bottom padding */
+  }
+}
+
+.rt-SidebarMenuShortcut {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: var(--space-4);
+  color: var(--gray-a11);
+}
+
+.rt-SidebarMenuBadge {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: var(--space-2);
 } 

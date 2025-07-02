@@ -6,6 +6,7 @@
   user-select: none;
   vertical-align: top;
   line-height: var(--height);
+  transition: var(--transition-select);
 
   font-family: var(--default-font-family);
   font-weight: var(--font-weight-regular);
@@ -15,6 +16,11 @@
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 
@@ -26,10 +32,9 @@
 
 .rt-SelectIcon {
   flex-shrink: 0;
-
-  :where(.rt-SelectTrigger:not(.rt-variant-ghost)) & {
-    opacity: 0.9;
-  }
+  margin-left: auto;
+  width: var(--trigger-icon-size-default);
+  height: var(--trigger-icon-size-default);
 }
 
 .rt-SelectContent {
@@ -39,7 +44,9 @@
   --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
 
   overflow: hidden;
-  background-color: var(--color-panel-solid);
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
+  box-shadow: var(--shadow-5);
 
   &:where([data-side]) {
     min-width: var(--radix-select-trigger-width);
@@ -124,33 +131,11 @@
     height: var(--select-trigger-height);
   }
   &:where(.rt-variant-ghost) {
-    box-sizing: content-box;
-    height: fit-content;
-    padding: var(--select-trigger-ghost-padding-y) var(--select-trigger-ghost-padding-x);
+    box-sizing: border-box;
+    height: var(--select-trigger-height);
+    padding: 0 var(--select-trigger-ghost-padding-x);
 
-    /* We reset the defined margin variables to avoid inheriting them from a higher component */
-    /* If a margin IS defined on the component itself, the utility class will win and reset it */
-    --margin-top: 0px;
-    --margin-right: 0px;
-    --margin-bottom: 0px;
-    --margin-left: 0px;
 
-    /* Define the overrides to incorporate the negative margins */
-    --margin-top-override: calc(var(--margin-top) - var(--select-trigger-ghost-padding-y));
-    --margin-right-override: calc(var(--margin-right) - var(--select-trigger-ghost-padding-x));
-    --margin-bottom-override: calc(var(--margin-bottom) - var(--select-trigger-ghost-padding-y));
-    --margin-left-override: calc(var(--margin-left) - var(--select-trigger-ghost-padding-x));
-
-    /* Reset the overrides on direct children */
-    :where(&) > * {
-      --margin-top-override: initial;
-      --margin-right-override: initial;
-      --margin-bottom-override: initial;
-      --margin-left-override: initial;
-    }
-
-    margin: var(--margin-top-override) var(--margin-right-override) var(--margin-bottom-override)
-      var(--margin-left-override);
   }
 }
 
@@ -158,7 +143,7 @@
   .rt-SelectTrigger {
     &:where(.rt-r-size-1) {
       --select-trigger-height: var(--space-5);
-      gap: var(--space-1);
+      gap: var(--component-gap-1);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
@@ -169,13 +154,17 @@
         padding-right: var(--space-2);
       }
       &:where(.rt-variant-ghost) {
+        gap: var(--component-gap-ghost-1);
         --select-trigger-ghost-padding-x: var(--space-2);
-        --select-trigger-ghost-padding-y: var(--space-1);
+      }
+      & :where(.rt-SelectIcon) {
+        width: var(--trigger-icon-size-1);
+        height: var(--trigger-icon-size-1);
       }
     }
     &:where(.rt-r-size-2) {
       --select-trigger-height: var(--space-6);
-      gap: calc(var(--space-1) * 1.5);
+      gap: var(--component-gap-2);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
@@ -186,13 +175,17 @@
         padding-right: var(--space-3);
       }
       &:where(.rt-variant-ghost) {
+        gap: var(--component-gap-ghost-2);
         --select-trigger-ghost-padding-x: var(--space-2);
-        --select-trigger-ghost-padding-y: var(--space-1);
+      }
+      & :where(.rt-SelectIcon) {
+        width: var(--trigger-icon-size-2);
+        height: var(--trigger-icon-size-2);
       }
     }
     &:where(.rt-r-size-3) {
       --select-trigger-height: var(--space-7);
-      gap: var(--space-2);
+      gap: var(--component-gap-3);
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
       letter-spacing: var(--letter-spacing-3);
@@ -203,12 +196,12 @@
         padding-right: var(--space-4);
       }
       &:where(.rt-variant-ghost) {
+        gap: var(--component-gap-ghost-3);
         --select-trigger-ghost-padding-x: var(--space-3);
-        --select-trigger-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
       & :where(.rt-SelectIcon) {
-        width: 11px;
-        height: 11px;
+        width: var(--trigger-icon-size-3);
+        height: var(--trigger-icon-size-3);
       }
     }
   }
@@ -291,25 +284,43 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* surface */
-
-.rt-SelectTrigger:where(.rt-variant-surface) {
-  color: var(--gray-12);
+/* Outline variant - neutral with gray border (previously surface) */
+.rt-SelectTrigger:where(.rt-variant-outline) {
+  --select-trigger-border-width: 1px;
+  
   background-color: var(--color-surface);
-  box-shadow: inset 0 0 0 1px var(--gray-a7);
+  color: var(--gray-12);
+  box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a6);
 
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    --color-surface: var(--color-surface-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    --color-surface: var(--color-surface-translucent);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Hover effects */
   @media (hover: hover) {
-    &:where(:hover) {
-      box-shadow: inset 0 0 0 1px var(--gray-a8);
+    &:where(:hover:not(:focus-visible)) {
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a8);
     }
   }
   &:where([data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--gray-a8);
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a8);
   }
   &:where(:disabled) {
     color: var(--gray-a11);
     background-color: var(--gray-a2);
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a6);
   }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
@@ -318,42 +329,76 @@
   }
 }
 
-/* classic */
-
-/* prettier-ignore */
-:where(.radix-themes) {
-  --select-trigger-classic-shadow: var(--shadow-2);
-  --select-trigger-classic-hover-shadow: var(--shadow-2);
-  --select-trigger-classic-disabled-shadow: none;
-}
-
-/* prettier-ignore */
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --select-trigger-classic-shadow: var(--shadow-2);
-  --select-trigger-classic-hover-shadow: var(--shadow-2);
-  --select-trigger-classic-disabled-shadow: none;
-}
-
+/* Classic variant - 3D inset form input */
 .rt-SelectTrigger:where(.rt-variant-classic) {
-  color: var(--gray-12);
-  background: linear-gradient(to bottom, var(--color-surface), var(--gray-1));
-  box-shadow: var(--select-trigger-classic-shadow);
+  --select-trigger-border-width: 0px;
+  
+  position: relative;
+  /* Subtle inset positioning */
+  top: calc(var(--classic-elevation-offset) / 3); /* More pronounced than before */
 
+  background-color: var(--color-surface);
+  color: var(--gray-12);
+
+  /* 3D inset effect - more pronounced but still subtle */
+  /* prettier-ignore */
+  box-shadow:
+    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / 1.5) var(--gray-a3),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a1),
+    inset 0 calc(var(--classic-border-width) * 2) calc(var(--classic-shadow-blur-medium) / 3) var(--gray-a2),
+    0 0 0 var(--classic-border-width) var(--gray-a5);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides for surface variant */
+  &:where([data-panel-background='solid']) {
+    --color-surface: var(--color-surface-solid);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    --color-surface: var(--color-surface-translucent);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Hover effects - slightly reduced inset */
   @media (hover: hover) {
-    &:where(:hover) {
-      background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
-      box-shadow: var(--select-trigger-classic-hover-shadow);
+    &:where(:hover:not(:focus-visible)) {
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(var(--classic-border-width) / 1.5) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a2),
+        inset 0 calc(-1 * var(--classic-border-width) / 1.5) var(--gray-a1),
+        inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / 4) var(--gray-a2),
+        0 0 0 var(--classic-border-width) var(--gray-a6);
     }
   }
   &:where([data-state='open']) {
-    background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
-    box-shadow: var(--select-trigger-classic-hover-shadow);
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(var(--classic-border-width) / 1.5) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a2),
+      inset 0 calc(-1 * var(--classic-border-width) / 1.5) var(--gray-a1),
+      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / 4) var(--gray-a2),
+      0 0 0 var(--classic-border-width) var(--gray-a6);
   }
+
+  /* Focus state - accent ring with minimal inset */
+  &:where(:focus-visible) {
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(var(--classic-border-width) / 2) calc(var(--classic-shadow-blur-small) / 3) var(--gray-a1),
+      0 0 0 2px var(--focus-8);
+  }
+
   &:where(:disabled) {
     color: var(--gray-a11);
-    background: var(--gray-a2);
-    box-shadow: var(--select-trigger-classic-disabled-shadow);
+    background-color: var(--gray-a2);
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(var(--classic-border-width) / 2) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a1),
+      inset 0 0 0 var(--classic-border-width) var(--gray-a6);
   }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
@@ -362,12 +407,71 @@
   }
 }
 
-/* soft / ghost */
-
-.rt-SelectTrigger:where(.rt-variant-soft),
-.rt-SelectTrigger:where(.rt-variant-ghost) {
+/* Soft variant - branded with accent colors */
+.rt-SelectTrigger:where(.rt-variant-soft) {
+  --select-trigger-border-width: 0px;
+  
+  /* Use solid accent for solid panels, alpha accent for translucent panels */
+  background-color: var(--accent-3);
   color: var(--accent-12);
 
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a3);
+    color: var(--accent-a12);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-3);
+    color: var(--accent-12);
+    backdrop-filter: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a3);
+    color: var(--accent-a12);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  @media (hover: hover) {
+    &:where(:hover:not(:focus-visible)) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-4);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a4);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-4);
+        backdrop-filter: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a4);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+    }
+  }
+  &:where([data-state='open']) {
+    background-color: var(--accent-4);
+    
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+    }
+  }
+  &:where(:focus-visible) {
+    outline-color: var(--accent-8);
+  }
+  &:where(:disabled) {
+    color: var(--gray-a11);
+    background-color: var(--gray-a3);
+    backdrop-filter: none;
+  }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
       color: var(--accent-12);
@@ -376,39 +480,182 @@
   }
 }
 
-.rt-SelectTrigger:where(.rt-variant-soft) {
-  background-color: var(--accent-a3);
+/* Surface variant - transparent with accent border (previously outline) */
+.rt-SelectTrigger:where(.rt-variant-surface) {
+  --select-trigger-border-width: 1px;
+  
+  background-color: transparent;
+  box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-7);
+  color: var(--gray-12);
+  transition: var(--transition-background-blur);
+
+  /* Theme-level panel awareness (NO backdrop filter for true transparency) */
+  :where([data-panel-background='translucent']) & {
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a7);
+  }
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid']) {
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-7);
+  }
+
+  &:where([data-panel-background='translucent']) {
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a7);
+  }
+
+  /* Hover effects */
+  @media (hover: hover) {
+    &:where(:hover:not(:focus-visible)) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-2);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-2);
+        backdrop-filter: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+    }
+  }
+
+  /* Interaction states get light background */
+  &:where([data-state='open']) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
+      backdrop-filter: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+  }
+
+  &:where(:focus-visible) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
+      backdrop-filter: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+  }
+
+  &:where(:disabled) {
+    background-color: var(--gray-a2);
+    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a6);
+    color: var(--gray-a8);
+  }
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+    }
+  }
+}
+
+/* Ghost variant - transparent until interaction */
+.rt-SelectTrigger:where(.rt-variant-ghost) {
+  --select-trigger-border-width: 0px;
+  
+  background-color: transparent;
+  color: var(--accent-12);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    color: var(--accent-a12);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    color: var(--accent-12);
+  }
+
+  &:where([data-panel-background='translucent']) {
+    color: var(--accent-a12);
+  }
 
   @media (hover: hover) {
-    &:where(:hover) {
-      background-color: var(--accent-a4);
+    &:where(:hover:not(:focus-visible)) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-2);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-2);
+        backdrop-filter: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
     }
   }
   &:where([data-state='open']) {
-    background-color: var(--accent-a4);
+    background-color: var(--accent-2);
+    
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
   }
   &:where(:focus-visible) {
-    /* Use gray outline when component color is gray */
     outline-color: var(--accent-8);
   }
   &:where(:disabled) {
     color: var(--gray-a11);
-    background-color: var(--gray-a3);
-  }
-}
-
-.rt-SelectTrigger:where(.rt-variant-ghost) {
-  @media (hover: hover) {
-    &:where(:hover) {
-      background-color: var(--accent-a3);
-    }
-  }
-  &:where([data-state='open']) {
-    background-color: var(--accent-a3);
-  }
-  &:where(:disabled) {
-    color: var(--gray-a11);
     background-color: transparent;
+  }
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+    }
   }
 }
 
@@ -427,10 +674,9 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-.rt-SelectContent {
-  box-shadow: var(--shadow-5);
+.rt-SelectItem:where([data-accent-color]) {
+  color: var(--accent-a11);
 }
-
 .rt-SelectItem:where([data-disabled]) {
   color: var(--gray-a8);
 }
@@ -439,16 +685,56 @@
   background-color: var(--gray-a6);
 }
 
+/* Ensure gray text appears muted in non-highlighted state */
+.rt-SelectItem :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+  color: var(--gray-a10);
+}
+
 /* solid */
 
 .rt-SelectContent:where(.rt-variant-solid) {
   & :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-9);
     color: var(--accent-contrast);
+
+    /* Force all text elements to inherit hover color, including those with color="gray" */
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    /* Also target any element with data-accent-color="gray" */
+    & :where([data-accent-color='gray']) {
+      color: inherit !important;
+    }
   }
-  &:where(.rt-high-contrast) :where(.rt-SelectItem[data-highlighted]) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
+  &:where(.rt-high-contrast) {
+    & :where(.rt-SelectItem[data-highlighted]) {
+      background-color: var(--accent-12);
+      color: var(--accent-1);
+
+      /* Force all text elements to inherit hover color in high contrast mode */
+      & :where(.rt-Text) {
+        color: inherit !important;
+      }
+
+      /* Also target any element with data-accent-color="gray" in high contrast */
+      & :where([data-accent-color='gray']) {
+        color: inherit !important;
+      }
+
+      &:where([data-accent-color]) {
+        background-color: var(--accent-9);
+        color: var(--accent-contrast);
+
+        & :where(.rt-Text) {
+          color: inherit !important;
+        }
+
+        & :where([data-accent-color='gray']) {
+          color: inherit !important;
+        }
+      }
+    }
   }
 }
 
@@ -457,5 +743,10 @@
 .rt-SelectContent:where(.rt-variant-soft) {
   & :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-a4);
+
+    /* In soft variant, improve contrast for gray text while maintaining hierarchy */
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+      color: var(--gray-11) !important;
+    }
   }
 }

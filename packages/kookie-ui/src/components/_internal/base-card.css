@@ -3,6 +3,7 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--base-card-border-radius);
+  transition: var(--transition-card);
 
   /* Don't inherit typographic properties */
   font-family: var(--default-font-family);
@@ -70,9 +71,9 @@
   --base-card-surface-active-box-shadow: 0 0 0 1px var(--gray-a6);
 
   @supports (color: color-mix(in oklab, white, black)) {
-    --base-card-surface-box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%);
-    --base-card-surface-hover-box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%);
-    --base-card-surface-active-box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
+    --base-card-surface-box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) var(--color-mix-percentage-light));
+    --base-card-surface-hover-box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) var(--color-mix-percentage-light));
+    --base-card-surface-active-box-shadow: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) var(--color-mix-percentage-light));
   }
 }
 
@@ -83,21 +84,68 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 /*
- * Using standard shadow tokens for consistency across the design system.
- * Maps shadow variants to the standard --shadow-{1-6} tokens.
+ * Using the same elevated 3D effect as Button classic variant for consistency.
+ * Creates a sophisticated multi-layer shadow system with inset and outer shadows.
  */
 
 :where(.radix-themes) {
-  --base-card-classic-box-shadow-outer: var(--shadow-2);
-  --base-card-classic-hover-box-shadow-outer: var(--shadow-3);
-  --base-card-classic-active-box-shadow-outer: var(--shadow-2);
+  /* Base state - elevated 3D effect (exact same structure as Button) */
+  --base-card-classic-box-shadow-outer: 
+    inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
+    inset 0 var(--classic-border-width) var(--white-a12),
+    inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
+    0 0 0 var(--classic-border-width) var(--gray-a5),
+    0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
 
+  /* Hover state - enhanced elevation (exact same structure as Button) */
+  --base-card-classic-hover-box-shadow-outer: 
+    inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
+    inset 0 var(--classic-border-width) var(--white-a12),
+    inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
+    0 0 0 var(--classic-border-width) var(--gray-a5),
+    0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
+    0 0 0 var(--classic-border-width) var(--gray-a5);
+
+  /* Active state - pressed down effect (exact same structure as Button) */
+  --base-card-classic-active-box-shadow-outer: 
+    inset 0 var(--classic-border-width) var(--black-a3), 
+    0 0 0 var(--classic-border-width) var(--gray-a7);
+
+  /* Dark mode overrides (exact same structure as Button) */
+  :where(.dark, .dark-theme) &,
+  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+    --base-card-classic-box-shadow-outer: 
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
+      inset 0 var(--classic-border-width) var(--gray-a11),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+      inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
+      0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+
+    --base-card-classic-hover-box-shadow-outer: 
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
+      inset 0 var(--classic-border-width) var(--gray-a11),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+      inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+      0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+      0 0 0 var(--classic-border-width) var(--gray-a5);
+
+    --base-card-classic-active-box-shadow-outer: 
+      inset 0 var(--classic-border-width) var(--black-a3), 
+      0 0 0 var(--classic-border-width) var(--gray-a7);
+  }
+
+  /* Border color definitions (kept for compatibility) */
   --base-card-classic-border-color: var(--gray-a3);
   --base-card-classic-hover-border-color: var(--gray-a3);
   --base-card-classic-active-border-color: var(--gray-a4);
+  
   @supports (color: color-mix(in oklab, white, black)) {
-    --base-card-classic-border-color: color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%);
-    --base-card-classic-hover-border-color: color-mix(in oklab, var(--gray-a4), var(--gray-4) 25%);
-    --base-card-classic-active-border-color: color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%);
+    --base-card-classic-border-color: color-mix(in oklab, var(--gray-a3), var(--gray-3) var(--color-mix-percentage-light));
+    --base-card-classic-hover-border-color: color-mix(in oklab, var(--gray-a4), var(--gray-4) var(--color-mix-percentage-light));
+    --base-card-classic-active-border-color: color-mix(in oklab, var(--gray-a3), var(--gray-3) var(--color-mix-percentage-light));
   }
 }

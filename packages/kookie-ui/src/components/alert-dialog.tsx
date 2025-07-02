@@ -31,7 +31,7 @@ const AlertDialogTrigger = React.forwardRef<AlertDialogTriggerElement, AlertDial
     <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </AlertDialogPrimitive.Trigger>
-  )
+  ),
 );
 AlertDialogTrigger.displayName = 'AlertDialog.Trigger';
 
@@ -43,9 +43,23 @@ interface AlertDialogContentProps
 }
 const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDialogContentProps>(
   ({ align, ...props }, forwardedRef) => {
-    const { align: alignPropDef, ...propDefs } = alertDialogContentPropDefs;
+    const {
+      align: alignPropDef,
+      panelBackground: panelBackgroundPropDef,
+      ...propDefs
+    } = alertDialogContentPropDefs;
     const { className: alignClassName } = extractProps({ align }, { align: alignPropDef });
-    const { className, forceMount, container, ...contentProps } = extractProps(props, propDefs);
+    const { panelBackground } = extractProps(
+      { panelBackground: props.panelBackground },
+      { panelBackground: panelBackgroundPropDef },
+    );
+    const {
+      className,
+      forceMount,
+      container,
+      panelBackground: _,
+      ...contentProps
+    } = extractProps(props, propDefs);
     return (
       <AlertDialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -58,6 +72,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
                   {...contentProps}
                   ref={forwardedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-AlertDialogContent', className)}
+                  data-panel-background={panelBackground}
                 />
               </div>
             </div>
@@ -65,7 +80,7 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
         </Theme>
       </AlertDialogPrimitive.Portal>
     );
-  }
+  },
 );
 AlertDialogContent.displayName = 'AlertDialog.Content';
 
@@ -76,7 +91,7 @@ const AlertDialogTitle = React.forwardRef<AlertDialogTitleElement, AlertDialogTi
     <AlertDialogPrimitive.Title asChild>
       <Heading size="5" mb="3" trim="start" {...props} asChild={false} ref={forwardedRef} />
     </AlertDialogPrimitive.Title>
-  )
+  ),
 );
 AlertDialogTitle.displayName = 'AlertDialog.Title';
 
@@ -100,7 +115,7 @@ const AlertDialogAction = React.forwardRef<AlertDialogActionElement, AlertDialog
     <AlertDialogPrimitive.Action {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </AlertDialogPrimitive.Action>
-  )
+  ),
 );
 AlertDialogAction.displayName = 'AlertDialog.Action';
 
@@ -112,7 +127,7 @@ const AlertDialogCancel = React.forwardRef<AlertDialogCancelElement, AlertDialog
     <AlertDialogPrimitive.Cancel {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </AlertDialogPrimitive.Cancel>
-  )
+  ),
 );
 AlertDialogCancel.displayName = 'AlertDialog.Cancel';
 

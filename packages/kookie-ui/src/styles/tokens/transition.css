@@ -21,7 +21,33 @@
   /* Specific component transitions */
   --transition-button:
     background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    filter var(--duration-2) var(--ease-1), transform var(--duration-1) var(--ease-1);
+    filter var(--duration-2) var(--ease-1), transform var(--duration-1) var(--ease-1),
+    padding var(--duration-1) var(--ease-1);
+
+  --transition-text-field:
+    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    backdrop-filter var(--duration-2) var(--ease-1);
+
+  --transition-select:
+    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    backdrop-filter var(--duration-2) var(--ease-1);
+
+  --transition-badge:
+    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    padding var(--duration-1) var(--ease-1);
+
+  --transition-card:
+    background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    backdrop-filter var(--duration-2) var(--ease-1), top var(--duration-2) var(--ease-1);
+
+  --transition-tabs:
+    color var(--duration-2) var(--ease-1), background-color var(--duration-2) var(--ease-1),
+    font-weight var(--duration-3) var(--ease-2), letter-spacing var(--duration-3) var(--ease-2),
+    word-spacing var(--duration-3) var(--ease-2), transform var(--duration-2) var(--ease-1);
+
+  --transition-menu:
+    background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1),
+    backdrop-filter var(--duration-2) var(--ease-1);
 
   --transition-focus: outline var(--duration-2) var(--ease-1), outline-offset var(--duration-2) var(--ease-1);
 }
@@ -38,6 +64,12 @@
     --transition-standard: none;
     --transition-slow: none;
     --transition-button: none;
+    --transition-text-field: none;
+    --transition-select: none;
+    --transition-badge: none;
+    --transition-card: none;
+    --transition-tabs: none;
+    --transition-menu: none;
     --transition-focus: none;
   }
 }

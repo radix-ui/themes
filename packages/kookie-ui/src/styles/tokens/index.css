@@ -31,4 +31,5 @@
 @import './colors/violet.css';
 @import './colors/yellow.css';
 
+@import './constants.css';
 @import './base.css';

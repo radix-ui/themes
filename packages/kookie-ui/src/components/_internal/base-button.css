@@ -81,104 +81,118 @@
 
 /* classic */
 
-/* prettier-ignore */
-:where(.radix-themes) {
-  --base-button-classic-shadow: var(--shadow-3);
-  --base-button-classic-hover-shadow: var(--shadow-3);
-  --base-button-classic-active-shadow: var(--shadow-2);
-  --base-button-classic-disabled-shadow: none;
-  --base-button-classic-hover-filter: brightness(1.08) saturate(1.02) contrast(1.02);
-  --base-button-classic-active-filter: brightness(0.88) saturate(1.05) contrast(1.1);
-}
-/* prettier-ignore */
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --base-button-classic-shadow: var(--shadow-3);
-  --base-button-classic-hover-shadow: var(--shadow-3);
-  --base-button-classic-active-shadow: var(--shadow-2);
-  --base-button-classic-disabled-shadow: none;
-  --base-button-classic-hover-filter: brightness(1.12) saturate(1.05) contrast(1.02);
-  --base-button-classic-active-filter: brightness(0.92) saturate(1.1) contrast(1.05);
-}
-
 .rt-BaseButton:where(.rt-variant-classic) {
-  background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
-  color: var(--accent-contrast);
-  box-shadow: var(--base-button-classic-shadow);
+  position: relative;
+  top: var(--classic-elevation-offset);
+  color: var(--accent-a11);
+  background-color: var(--accent-2);
+  /* prettier-ignore */
+  box-shadow:
+    inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+    inset 0 var(--classic-border-width) var(--white-a12),
+    inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+    0 0 0 var(--classic-border-width) var(--accent-a5),
+             0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+
+  :where(.dark, .dark-theme) &,
+  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+      inset 0 var(--classic-border-width) var(--accent-a11),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
+      0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+  }
 
   &:where(.rt-high-contrast) {
-    background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
-    color: var(--gray-1);
+    color: var(--accent-12);
+    background-color: var(--accent-2);
+  }
 
-    /* Use solid color for non-gray accent colors */
-    &:where(:not([data-accent-color='gray'])) {
-      background: var(--accent-12);
-    }
-  }
-  /* Better -webkit-tap-highlight-color */
-  @media (pointer: coarse) {
-    &:where(:active:not([data-state='open'])) {
-      outline: 0.5em solid var(--accent-a4);
-      outline-offset: 0;
-    }
-  }
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: 2px;
   }
+
   @media (hover: hover) {
     &:where(:hover) {
-      background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
-      box-shadow: var(--base-button-classic-hover-shadow);
-      filter: var(--base-button-classic-hover-filter);
-      &:where(.rt-high-contrast) {
-        background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
-        filter: contrast(0.88) saturate(1.1) brightness(1.1);
+      background-color: var(--accent-3);
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+        inset 0 var(--classic-border-width) var(--white-a12),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+        inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+        0 0 0 var(--classic-border-width) var(--accent-a5),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7),
+        0 0 0 var(--classic-border-width) var(--accent-a5);
 
-        /* Use solid color for non-gray accent colors */
-        &:where(:not([data-accent-color='gray'])) {
-          background: var(--accent-12);
-        }
+      :where(.dark, .dark-theme) &,
+      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+          inset 0 var(--classic-border-width) var(--accent-a11),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+          0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+          0 0 0 var(--classic-border-width) var(--accent-a5);
       }
     }
   }
+
   &:where([data-state='open']) {
-    background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
-    box-shadow: var(--base-button-classic-hover-shadow);
-    filter: var(--base-button-classic-hover-filter);
-    &:where(.rt-high-contrast) {
-      background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
-      filter: contrast(0.88) saturate(1.1) brightness(1.1);
+    background-color: var(--accent-3);
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 var(--classic-border-width) var(--white-a12),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+      0 0 0 var(--classic-border-width) var(--accent-a5),
+             0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7),
+      0 0 0 var(--classic-border-width) var(--accent-a5);
 
-      /* Use solid color for non-gray accent colors */
-      &:where(:not([data-accent-color='gray'])) {
-        background: var(--accent-12);
-      }
+    :where(.dark, .dark-theme) &,
+    :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+        inset 0 var(--classic-border-width) var(--accent-a11),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+                 inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+                 0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+                 0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+        0 0 0 var(--classic-border-width) var(--accent-a5);
     }
   }
+
   &:where(:active:not([data-state='open'], [data-disabled])) {
-    background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
-    box-shadow: var(--base-button-classic-active-shadow);
-    filter: var(--base-button-classic-active-filter);
+    padding-top: var(--base-button-classic-active-padding-top);
+    padding-bottom: 0;
+    background-color: var(--accent-3);
+    box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
+  }
 
-    &:where(.rt-high-contrast) {
-      background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
-      filter: contrast(0.82) saturate(1.2) brightness(1.16);
-
-      /* Use solid color for non-gray accent colors */
-      &:where(:not([data-accent-color='gray'])) {
-        background: var(--accent-12);
-      }
+  @media (pointer: coarse) {
+    &:where(:active:not([data-state='open'])) {
+      outline: var(--classic-shadow-blur-large) solid var(--accent-a4);
+      outline-offset: 0;
     }
   }
+
   &:where([data-disabled]) {
     color: var(--gray-a8);
-    background: var(--gray-a3);
-    box-shadow: var(--base-button-classic-disabled-shadow);
+    background-color: var(--gray-a3);
+    box-shadow: none;
     outline: none;
-    filter: none;
     cursor: not-allowed;
     pointer-events: none;
+    top: 0;
   }
 }
 
@@ -215,7 +229,7 @@
   /* Better -webkit-tap-highlight-color */
   @media (pointer: coarse) {
     &:where(:active:not([data-state='open'])) {
-      outline: 0.5em solid var(--accent-a4);
+      outline: var(--classic-shadow-blur-large) solid var(--accent-a4);
       outline-offset: 0;
     }
   }
@@ -269,7 +283,27 @@
 }
 
 .rt-BaseButton:where(.rt-variant-soft) {
-  background-color: var(--accent-a3);
+  /* Base state: solid color for solid panels */
+  background-color: var(--accent-3);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-3);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a3);
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
 
   &:where(:focus-visible) {
     outline: 2px solid var(--accent-8);
@@ -277,14 +311,68 @@
   }
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-a4);
+      background-color: var(--accent-4);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a4);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-4);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a4);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
     }
   }
   &:where([data-state='open']) {
-    background-color: var(--accent-a4);
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-4);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a4);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-5);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a5);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-5);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a5);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where([data-disabled]) {
     color: var(--gray-a8);
@@ -295,9 +383,61 @@
 }
 
 .rt-BaseButton:where(.rt-variant-ghost) {
+  &:where([data-flush='true']) {
+    /* We reset the defined margin variables to avoid inheriting them from a higher component */
+    /* If a margin IS defined on the component itself, the utility class will win and reset it */
+    --margin-top: 0px;
+    --margin-right: 0px;
+    --margin-bottom: 0px;
+    --margin-left: 0px;
+
+    /* Calculate padding values for different button sizes */
+    --button-padding-x: calc(var(--base-button-height) * var(--padding-ratio-horizontal) / 4);
+    --button-padding-y: calc(var(--base-button-height) / 8);
+
+    /* Define the overrides to incorporate the negative margins */
+    --margin-top-override: calc(var(--margin-top) - var(--button-padding-y));
+    --margin-right-override: calc(var(--margin-right) - var(--button-padding-x));
+    --margin-bottom-override: calc(var(--margin-bottom) - var(--button-padding-y));
+    --margin-left-override: calc(var(--margin-left) - var(--button-padding-x));
+
+    margin-top: var(--margin-top-override);
+    margin-right: var(--margin-right-override);
+    margin-bottom: var(--margin-bottom-override);
+    margin-left: var(--margin-left-override);
+
+    /* Reset the overrides on direct children */
+    :where(&) > * {
+      --margin-top-override: initial;
+      --margin-right-override: initial;
+      --margin-bottom-override: initial;
+      --margin-left-override: initial;
+    }
+  }
+
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-a3);
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-3);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-3);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
     }
   }
   &:where(:focus-visible) {
@@ -305,10 +445,50 @@
     outline-offset: -1px;
   }
   &:where([data-state='open']) {
-    background-color: var(--accent-a3);
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-3);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-a4);
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-4);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a4);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where([data-disabled]) {
     color: var(--gray-a8);
@@ -321,19 +501,97 @@
 /* outline */
 
 .rt-BaseButton:where(.rt-variant-outline) {
-  box-shadow: inset 0 0 0 1px var(--accent-a8);
-  color: var(--accent-a11);
+  /* Base state: solid colors for solid panels */
+  box-shadow: inset 0 0 0 1px var(--accent-8);
+  color: var(--accent-11);
+  transition: var(--transition-background-blur);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    color: var(--accent-a11);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    color: var(--accent-11);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    color: var(--accent-a11);
+  }
 
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-a2);
+      background-color: var(--accent-2);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--accent-2);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--accent-a2);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
     }
   }
   &:where([data-state='open']) {
-    background-color: var(--accent-a2);
+    background-color: var(--accent-2);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-2);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a2);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-a3);
+    background-color: var(--accent-3);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
@@ -341,9 +599,29 @@
   }
   &:where(.rt-high-contrast) {
     box-shadow:
-      inset 0 0 0 1px var(--accent-a7),
-      inset 0 0 0 1px var(--gray-a11);
+      inset 0 0 0 1px var(--accent-7),
+      inset 0 0 0 1px var(--gray-11);
     color: var(--accent-12);
+    
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent']) & {
+      box-shadow:
+        inset 0 0 0 1px var(--accent-a7),
+        inset 0 0 0 1px var(--gray-a11);
+    }
+
+    /* Component-level overrides for high contrast */
+    &:where([data-panel-background='solid']) {
+      box-shadow:
+        inset 0 0 0 1px var(--accent-7),
+        inset 0 0 0 1px var(--gray-11);
+    }
+
+    &:where([data-panel-background='translucent']) {
+      box-shadow:
+        inset 0 0 0 1px var(--accent-a7),
+        inset 0 0 0 1px var(--gray-a11);
+    }
   }
   &:where([data-disabled]) {
     color: var(--gray-a8);
@@ -357,21 +635,89 @@
 /* surface */
 
 .rt-BaseButton:where(.rt-variant-surface) {
-  background-color: var(--accent-surface);
-  box-shadow: inset 0 0 0 1px var(--accent-a7);
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px var(--accent-7);
   color: var(--accent-a11);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-7);
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+    backdrop-filter: var(--backdrop-filter-components);
+          --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
 
   @media (hover: hover) {
     &:where(:hover) {
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent']) & {
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid']) {
+        box-shadow: inset 0 0 0 1px var(--accent-8);
+      }
+
+      &:where([data-panel-background='translucent']) {
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
     }
   }
   &:where([data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid']) {
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+    }
+
+    &:where([data-panel-background='translucent']) {
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
   }
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-a3);
-    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    background-color: var(--accent-3);
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
   }
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
@@ -407,17 +753,13 @@
 
   /* Classic variant pressed */
   &:where(.rt-variant-classic) {
-    background: linear-gradient(to bottom, var(--accent-9), var(--accent-10));
-    box-shadow: var(--base-button-classic-active-shadow);
-    filter: var(--base-button-classic-active-filter);
+    padding-top: var(--base-button-classic-active-padding-top);
+    padding-bottom: 0;
+    background-color: var(--accent-3);
+    box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
 
     &:where(.rt-high-contrast) {
-      background: linear-gradient(to bottom, var(--accent-11), var(--accent-12));
-      filter: contrast(0.82) saturate(1.2) brightness(1.16);
-
-      &:where(:not([data-accent-color='gray'])) {
-        background: var(--accent-12);
-      }
+      background-color: var(--accent-3);
     }
   }
 
@@ -434,23 +776,87 @@
 
   /* Soft variant pressed */
   &:where(.rt-variant-soft) {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override for pressed */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+    }
+
+    /* Component-level overrides for pressed */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-4);
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a4);
+    }
   }
 
   /* Ghost variant pressed */
   &:where(.rt-variant-ghost) {
-    background-color: var(--accent-a4);
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override for pressed */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+    }
+
+    /* Component-level overrides for pressed */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-4);
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a4);
+    }
   }
 
   /* Outline variant pressed */
   &:where(.rt-variant-outline) {
-    background-color: var(--accent-a3);
+    background-color: var(--accent-3);
+    
+    /* Theme-level translucent override for pressed */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Component-level overrides for pressed */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+      backdrop-filter: var(--backdrop-filter-components);
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
   }
 
   /* Surface variant pressed */
   &:where(.rt-variant-surface) {
-    background-color: var(--accent-a3);
-    box-shadow: inset 0 0 0 1px var(--accent-a8);
+    background-color: var(--accent-3);
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    
+    /* Theme-level translucent override for pressed */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    /* Component-level overrides for pressed */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
   }
 }
 
@@ -480,9 +886,11 @@
 
   /* Override variant-specific pressed states */
   &:where(.rt-variant-classic) {
-    background: var(--gray-a3);
+    background-color: var(--gray-a3);
     box-shadow: none;
-    filter: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    top: 0;
   }
 
   &:where(.rt-variant-solid) {

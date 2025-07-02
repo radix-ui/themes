@@ -35,6 +35,8 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     as,
     color,
     radius,
+    panelBackground,
+    flush,
     disabled = props.loading,
     ...baseButtonProps
   } = extractProps(props, baseButtonPropDefs, marginPropDefs);
@@ -65,6 +67,8 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-disabled={disabled || undefined}
       data-accent-color={color}
       data-radius={radius}
+      data-panel-background={panelBackground}
+      data-flush={flush ? 'true' : undefined}
       {...baseButtonProps}
       {...accessibilityProps}
       ref={forwardedRef}

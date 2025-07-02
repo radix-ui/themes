@@ -1,27 +1,7 @@
 /* stylelint-disable selector-max-type */
 /* Disable selector-max-type rule to target individual element types. */
 
-:where(.radix-themes) {
-  /* prettier-ignore */
-  --kbd-box-shadow:
-    inset 0 -0.05em 0.5em var(--gray-a2),
-    inset 0 0.05em var(--white-a12),
-    inset 0 0.25em 0.5em var(--gray-a2),
-    inset 0 -0.05em var(--gray-a6),
-    0 0 0 0.05em var(--gray-a5),
-    0 0.08em 0.17em var(--gray-a7);
-}
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  /* prettier-ignore */
-  --kbd-box-shadow:
-    inset 0 -0.05em 0.5em var(--gray-a3),
-    inset 0 0.05em var(--gray-a11),
-    inset 0 0.25em 0.5em var(--gray-a2),
-    inset 0 -0.1em var(--black-a11),
-    0 0 0 0.075em var(--gray-a7),
-    0 0.08em 0.17em var(--black-a12);
-}
+
 
 .rt-Kbd {
   display: inline-flex;
@@ -30,30 +10,49 @@
   flex-shrink: 0;
   font-family: var(--default-font-family);
   font-weight: normal;
-  vertical-align: text-top;
+  vertical-align: middle;
   white-space: nowrap;
   user-select: none;
 
   position: relative;
-  top: -0.03em;
+  top: var(--classic-elevation-offset);
 
-  font-size: 0.75em;
   min-width: 1.75em;
-  line-height: 1.7em;
   box-sizing: border-box;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-bottom: 0.05em;
-  word-spacing: -0.1em;
-  border-radius: calc(var(--radius-factor) * 0.35em);
-  letter-spacing: var(--letter-spacing, var(--default-letter-spacing));
+  word-spacing: var(--classic-word-spacing);
+  border-radius: max(var(--radius-2), var(--radius-full));
+  
+  /* Default sizing (size 2) */
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+  padding: var(--space-1) var(--space-2);
 
   /* Make sure that the height is not stretched in a Flex/Grid layout */
   height: fit-content;
 
   color: var(--gray-12);
   background-color: var(--gray-1);
-  box-shadow: var(--kbd-box-shadow);
+  /* prettier-ignore */
+  box-shadow:
+    inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
+    inset 0 var(--classic-border-width) var(--white-a12),
+    inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
+    0 0 0 var(--classic-border-width) var(--gray-a5),
+    0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
+
+  :where(.dark, .dark-theme) &,
+  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
+      inset 0 var(--classic-border-width) var(--gray-a11),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+      inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+      0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+  }
   transition: box-shadow 120ms, background-color 120ms;
 
   &:where(:any-link, button) {
@@ -61,20 +60,62 @@
       &:where(:hover) {
         transition-duration: 40ms, 40ms;
         background-color: var(--color-background);
-        box-shadow: var(--kbd-box-shadow), 0 0 0 0.05em var(--gray-a5);
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2), 
+          inset 0 var(--classic-border-width) var(--white-a12),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+          inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
+          0 0 0 var(--classic-border-width) var(--gray-a5),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
+          0 0 0 var(--classic-border-width) var(--gray-a5);
+
+        :where(.dark, .dark-theme) &,
+        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+                  /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
+          inset 0 var(--classic-border-width) var(--gray-a11),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+          0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+          0 0 0 var(--classic-border-width) var(--gray-a5);
+        }
       }
     }
     &:where([data-state='open']) {
       transition-duration: 40ms, 40ms;
       background-color: var(--color-background);
-      box-shadow: var(--kbd-box-shadow), 0 0 0 0.05em var(--gray-a5);
+              /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
+          inset 0 var(--classic-border-width) var(--white-a12),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+          inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
+          0 0 0 var(--classic-border-width) var(--gray-a5),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
+          0 0 0 var(--classic-border-width) var(--gray-a5);
+
+      :where(.dark, .dark-theme) &,
+      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
+          inset 0 var(--classic-border-width) var(--gray-a11),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+          0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+          0 0 0 var(--classic-border-width) var(--gray-a5);
+      }
     }
     &:where(:active:not([data-state='open'])) {
-      padding-top: 0.05em;
+      padding-top: var(--classic-border-width);
       padding-bottom: 0;
       transition-duration: 40ms, 40ms;
       background-color: var(--gray-2);
-      box-shadow: inset 0 0.05em var(--black-a3), 0 0 0 0.05em var(--gray-a7);
+      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--gray-a7);
     }
     &:where(:focus-visible) {
       outline: 2px solid var(--focus-8);
@@ -91,40 +132,67 @@
 @breakpoints {
   .rt-Kbd {
     &:where(.rt-r-size-1) {
-      font-size: calc(var(--font-size-1) * 0.8);
-      --letter-spacing: var(--letter-spacing-1);
+      font-size: var(--font-size-0);
+      line-height: var(--line-height-0);
+      letter-spacing: var(--letter-spacing-0);
+      padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 1.5);
+      border-radius: max(var(--radius-1), var(--radius-full));
     }
     &:where(.rt-r-size-2) {
-      font-size: calc(var(--font-size-2) * 0.8);
-      --letter-spacing: var(--letter-spacing-2);
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+      padding: var(--space-1) var(--space-2);
+      border-radius: max(var(--radius-2), var(--radius-full));
     }
     &:where(.rt-r-size-3) {
-      font-size: calc(var(--font-size-3) * 0.8);
-      --letter-spacing: var(--letter-spacing-3);
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      padding: var(--space-1) calc(var(--space-2) * 1.25);
+      border-radius: max(var(--radius-2), var(--radius-full));
     }
     &:where(.rt-r-size-4) {
-      font-size: calc(var(--font-size-4) * 0.8);
-      --letter-spacing: var(--letter-spacing-4);
+      font-size: var(--font-size-3);
+      line-height: var(--line-height-3);
+      letter-spacing: var(--letter-spacing-3);
+      padding: calc(var(--space-1) * 1.25) calc(var(--space-2) * 1.5);
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
     &:where(.rt-r-size-5) {
-      font-size: calc(var(--font-size-5) * 0.8);
-      --letter-spacing: var(--letter-spacing-5);
+      font-size: var(--font-size-4);
+      line-height: var(--line-height-4);
+      letter-spacing: var(--letter-spacing-4);
+      padding: calc(var(--space-1) * 1.5) var(--space-3);
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
     &:where(.rt-r-size-6) {
-      font-size: calc(var(--font-size-6) * 0.8);
-      --letter-spacing: var(--letter-spacing-6);
+      font-size: var(--font-size-5);
+      line-height: var(--line-height-5);
+      letter-spacing: var(--letter-spacing-5);
+      padding: calc(var(--space-1) * 1.75) calc(var(--space-3) * 1.25);
+      border-radius: max(var(--radius-4), var(--radius-full));
     }
     &:where(.rt-r-size-7) {
-      font-size: calc(var(--font-size-7) * 0.8);
-      --letter-spacing: var(--letter-spacing-7);
+      font-size: var(--font-size-6);
+      line-height: var(--line-height-6);
+      letter-spacing: var(--letter-spacing-6);
+      padding: var(--space-2) calc(var(--space-3) * 1.5);
+      border-radius: max(var(--radius-4), var(--radius-full));
     }
     &:where(.rt-r-size-8) {
-      font-size: calc(var(--font-size-8) * 0.8);
-      --letter-spacing: var(--letter-spacing-8);
+      font-size: var(--font-size-7);
+      line-height: var(--line-height-7);
+      letter-spacing: var(--letter-spacing-7);
+      padding: calc(var(--space-2) * 1.25) var(--space-4);
+      border-radius: max(var(--radius-5), var(--radius-full));
     }
     &:where(.rt-r-size-9) {
-      font-size: calc(var(--font-size-9) * 0.8);
-      --letter-spacing: var(--letter-spacing-9);
+      font-size: var(--font-size-8);
+      line-height: var(--line-height-8);
+      letter-spacing: var(--letter-spacing-8);
+      padding: calc(var(--space-2) * 1.5) calc(var(--space-4) * 1.25);
+      border-radius: max(var(--radius-5), var(--radius-full));
     }
   }
 }
