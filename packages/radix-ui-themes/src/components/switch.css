@@ -139,7 +139,7 @@
   &:where([data-state='checked']:active)::before {
     filter: var(--switch-surface-checked-active-filter);
   }
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::before {
@@ -171,7 +171,7 @@
       box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1),
         0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 
-      :where(.more-contrast) &,
+      :where(.high-contrast) &,
       :where([data-high-contrast="true"]) &,
       &:where(.rt-high-contrast) {
         box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2),
@@ -213,7 +213,7 @@
   &:where([data-state='checked']:active)::before {
     filter: var(--switch-surface-checked-active-filter);
   }
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::before {
@@ -248,7 +248,7 @@
       box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1),
         0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
 
-      :where(.more-contrast) &,
+      :where(.high-contrast) &,
       :where([data-high-contrast="true"]) &,
       &:where(.rt-high-contrast) {
         box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2),
@@ -282,7 +282,7 @@
   &:where(:active)::before {
     background-color: var(--gray-a4);
   }
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::before {

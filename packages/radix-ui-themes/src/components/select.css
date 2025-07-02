@@ -479,7 +479,7 @@
     background-color: var(--accent-9);
     color: var(--accent-contrast);
   }
-  :where(.more-contrast) & :where(.rt-SelectItem[data-highlighted]),
+  :where(.high-contrast) & :where(.rt-SelectItem[data-highlighted]),
   :where([data-high-contrast="true"]) & :where(.rt-SelectItem[data-highlighted]),
   &:where(.rt-high-contrast) :where(.rt-SelectItem[data-highlighted]) {
     background-color: var(--accent-12);

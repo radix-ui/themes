@@ -10,10 +10,10 @@
     color: var(--accent-a11);
   }
 
-  :where(.more-contrast) &:where([data-accent-color]),
+  :where(.high-contrast) &:where([data-accent-color]),
   :where([data-high-contrast="true"]) &:where([data-accent-color]),
   &:where([data-accent-color].rt-high-contrast),
-  :where(.more-contrast) :where([data-accent-color]:not(.radix-themes)) &,
+  :where(.high-contrast) :where([data-accent-color]:not(.radix-themes)) &,
   :where([data-high-contrast="true"]) :where([data-accent-color]:not(.radix-themes)) &,
   :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
     color: var(--accent-12);

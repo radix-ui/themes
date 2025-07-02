@@ -89,7 +89,7 @@
     background-color: var(--accent-contrast);
   }
 
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &:where(:checked, [data-state='checked'])::before {
@@ -125,7 +125,7 @@
     background-color: var(--accent-contrast);
   }
 
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &:where(:checked, [data-state='checked'])::before {
@@ -156,7 +156,7 @@
     background-color: var(--accent-a11);
   }
 
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     &::after {

@@ -216,7 +216,7 @@
       color: var(--accent-contrast);
     }
   }
-  :where(.more-contrast) &,
+  :where(.high-contrast) &,
   :where([data-high-contrast="true"]) &,
   &:where(.rt-high-contrast) {
     & :where(.rt-BaseMenuItem[data-highlighted]) {

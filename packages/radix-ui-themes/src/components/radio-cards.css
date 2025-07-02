@@ -140,7 +140,7 @@
   &::after {
     outline: 2px solid var(--accent-indicator);
   }
-  :where(.more-contrast) :where(.rt-RadioCardsRoot) &,
+  :where(.high-contrast) :where(.rt-RadioCardsRoot) &,
   :where([data-high-contrast="true"]) :where(.rt-RadioCardsRoot) &,
   :where(.rt-RadioCardsRoot.rt-high-contrast) & {
     &::after {
