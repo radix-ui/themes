@@ -1,10 +1,10 @@
 .radix-themes {
   /* Duration tokens */
-  --duration-1: 100ms; /* Micro interactions */
-  --duration-2: 150ms; /* Fast transitions */
-  --duration-3: 200ms; /* Standard transitions */
-  --duration-4: 300ms; /* Slower transitions */
-  --duration-5: 500ms; /* Slow animations */
+  --duration-1: 50ms; /* Micro interactions */
+  --duration-2: 100ms; /* Fast transitions */
+  --duration-3: 150ms; /* Standard transitions */
+  --duration-4: 200ms; /* Slower transitions */
+  --duration-5: 300ms; /* Slow animations */
 
   /* Easing tokens */
   --ease-1: ease-out; /* Fast start, slow end */
@@ -41,9 +41,9 @@
     backdrop-filter var(--duration-2) var(--ease-1), top var(--duration-2) var(--ease-1);
 
   --transition-tabs:
-    color var(--duration-2) var(--ease-1), background-color var(--duration-2) var(--ease-1),
-    font-weight var(--duration-3) var(--ease-2), letter-spacing var(--duration-3) var(--ease-2),
-    word-spacing var(--duration-3) var(--ease-2), transform var(--duration-2) var(--ease-1);
+    color var(--duration-1) var(--ease-1), background-color var(--duration-1) var(--ease-1),
+    font-weight var(--duration-2) var(--ease-2), letter-spacing var(--duration-2) var(--ease-2),
+    word-spacing var(--duration-2) var(--ease-2), transform var(--duration-1) var(--ease-1);
 
   --transition-menu:
     background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1),

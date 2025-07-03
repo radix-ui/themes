@@ -6,14 +6,14 @@
 
 :where(.radix-themes) {
   /* Backdrop blur constants */
-  --backdrop-blur-panel: 40px;
-  --backdrop-blur-components: 8px;
-  --backdrop-blur-heavy: 16px;
-  --backdrop-blur-light: 8px;
-  --backdrop-blur-dialog: 16px;
+  --backdrop-blur-panel: 64px;
+  --backdrop-blur-components: 16px;
+  --backdrop-blur-heavy: 48px;
+  --backdrop-blur-light: 16px;
+  --backdrop-blur-dialog: 32px;
   
   /* Panel background opacity constants */
-  --panel-opacity-light: 0.25;
+  --panel-opacity-light: 0.75;
   --panel-opacity-heavy: 0.75;
   --surface-opacity-light: 0.25;
   --surface-opacity-heavy: 0.75;
@@ -115,4 +115,10 @@
   --scale-active: 0.98;
   --scale-pressed: 0.96;
   --scale-normal: 1;
+  
+  /* Nested backdrop-filter detection constants */
+  --backdrop-filter-nested-disabled: none;
+  --backdrop-filter-nested-enabled: var(--backdrop-filter-components);
+  --backdrop-filter-nested-panel: var(--backdrop-filter-panel);
+  --backdrop-filter-nested-dialog: var(--backdrop-filter-dialog);
 } 

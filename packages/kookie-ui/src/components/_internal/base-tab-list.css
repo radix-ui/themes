@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition-tabs);
+  transition: var(--transition-tabs), var(--transition-background-blur);
 }
 
 .rt-BaseTabListTriggerInner {
@@ -138,6 +138,11 @@
         background-color: var(--gray-a3);
         backdrop-filter: var(--backdrop-filter-components);
         --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
       }
     }
     &:where(:focus-visible:hover) :where(.rt-BaseTabListTriggerInner) {

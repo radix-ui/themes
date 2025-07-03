@@ -104,10 +104,10 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .rt-PopperContent {
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-timing-function: var(--ease-3);
 
     &:where([data-state='open']) {
-      animation-duration: 160ms;
+      animation-duration: var(--duration-2);
 
       /* Direction-aware animations (for dropdown menus with data-side) */
       &:where([data-side='top']) {
@@ -130,7 +130,7 @@
     }
 
     &:where([data-state='closed']) {
-      animation-duration: 100ms;
+      animation-duration: var(--duration-1);
 
       /* Direction-aware animations (for dropdown menus with data-side) */
       &:where([data-side='top']) {
@@ -155,6 +155,6 @@
 
   /* Tab indicator animations - only when motion is preferred */
   .rt-BaseTabListTrigger:where([data-state='active'], [data-active])::before {
-    animation: rt-tab-indicator-appear var(--duration-3) var(--ease-3);
+    animation: rt-tab-indicator-appear var(--duration-2) var(--ease-3);
   }
 }

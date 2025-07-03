@@ -578,6 +578,11 @@
         backdrop-filter: var(--backdrop-filter-components);
         --backdrop-filter-components: blur(var(--backdrop-blur-components));
       }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
+      }
     }
   }
 
@@ -601,6 +606,11 @@
     &:where([data-panel-background='translucent']) {
       background-color: var(--accent-a2);
       backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      backdrop-filter: none !important;
     }
   }
 
@@ -680,6 +690,11 @@
         backdrop-filter: var(--backdrop-filter-components);
         --backdrop-filter-components: blur(var(--backdrop-blur-components));
       }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
+      }
     }
   }
 
@@ -707,6 +722,11 @@
       background-color: var(--accent-a2);
       box-shadow: inset 0 0 0 var(--text-field-border-width) var(--accent-a8);
       backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      backdrop-filter: none !important;
     }
   }
 

@@ -192,6 +192,7 @@
 
 .rt-Card:where(.rt-variant-ghost) {
   --card-border-width: 0px;
+  transition: var(--transition-background-blur);
 
   &:where([data-flush='true']) {
     /* We reset the defined margin variables to avoid inheriting them from a higher component */
@@ -224,20 +225,98 @@
   &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
-        background-color: var(--gray-a3);
+        /* Base state: solid accent for solid panels */
+        background-color: var(--gray-3);
+
+        /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent']) & {
+          background-color: var(--gray-a3);
+          backdrop-filter: var(--backdrop-filter-components);
+        }
+
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid']) {
+          background-color: var(--gray-3);
+          backdrop-filter: none;
+          --backdrop-filter-components: none;
+        }
+
+        &:where([data-panel-background='translucent']) {
+          background-color: var(--gray-a3);
+          backdrop-filter: var(--backdrop-filter-components);
+          --backdrop-filter-components: blur(var(--backdrop-blur-components));
+        }
+
+        /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+        :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+          backdrop-filter: none !important;
+        }
+
         &:where(:focus-visible) {
           background-color: var(--focus-a2);
         }
       }
     }
     &:where([data-state='open']) {
-      background-color: var(--gray-a3);
+      /* Base state: solid accent for solid panels */
+      background-color: var(--gray-3);
+
+      /* Theme-level translucent override for open */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--gray-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for open */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--gray-3);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--gray-a3);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
+      }
+
       &:where(:focus-visible) {
         background-color: var(--focus-a2);
       }
     }
     &:where(:active:not([data-state='open'])) {
-      background-color: var(--gray-a4);
+      /* Base state: solid accent for solid panels */
+      background-color: var(--gray-4);
+
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent']) & {
+        background-color: var(--gray-a4);
+        backdrop-filter: var(--backdrop-filter-components);
+      }
+
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid']) {
+        background-color: var(--gray-4);
+        backdrop-filter: none;
+        --backdrop-filter-components: none;
+      }
+
+      &:where([data-panel-background='translucent']) {
+        background-color: var(--gray-a4);
+        backdrop-filter: var(--backdrop-filter-components);
+        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
+      }
+
       &:where(:focus-visible) {
         background-color: var(--focus-a2);
       }
@@ -330,6 +409,11 @@
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
           }
+
+          /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+          :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+            backdrop-filter: none !important;
+          }
         }
       }
     }
@@ -355,6 +439,11 @@
           background-color: var(--gray-a3);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+        }
+
+        /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+        :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+          backdrop-filter: none !important;
         }
       }
     }

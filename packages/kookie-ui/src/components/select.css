@@ -635,6 +635,11 @@
         background-color: var(--accent-a2);
         backdrop-filter: var(--backdrop-filter-components);
       }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
+      }
     }
   }
   &:where([data-state='open']) {
@@ -643,6 +648,11 @@
     :where([data-panel-background='translucent']) & {
       background-color: var(--accent-a2);
       backdrop-filter: var(--backdrop-filter-components);
+    }
+
+    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      backdrop-filter: none !important;
     }
   }
   &:where(:focus-visible) {

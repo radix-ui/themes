@@ -211,6 +211,11 @@
           background-color: inherit;
           backdrop-filter: inherit;
         }
+
+        /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+        :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+          backdrop-filter: none !important;
+        }
       }
     }
     &:where(:active:not(:disabled, [data-disabled]))  {
@@ -222,6 +227,11 @@
       & :where(.rt-AvatarFallback) {
         background-color: inherit;
         backdrop-filter: inherit;
+      }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
       }
     }
   }
