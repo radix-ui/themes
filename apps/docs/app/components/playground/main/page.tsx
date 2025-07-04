@@ -2,21 +2,35 @@
 
 import { Theme, Box, Flex, Heading, Separator, Container, Image } from '@kushagradhawan/kookie-ui';
 import { useControls, Leva } from 'leva';
+import AlertDialogPlayground from '../AlertDialogPlayground';
+import AspectRatioPlayground from '../AspectRatioPlayground';
 import AvatarPlayground from '../AvatarPlayground';
 import BadgePlayground from '../BadgePlayground';
 import ButtonPlayground from '../ButtonPlayground';
+import CalloutPlayground from '../CalloutPlayground';
 import CardPlayground from '../CardPlayground';
+import CheckboxPlayground from '../CheckboxPlayground';
+import CheckboxCardsPlayground from '../CheckboxCardsPlayground';
+import CheckboxGroupPlayground from '../CheckboxGroupPlayground';
+import ContextMenuPlayground from '../ContextMenuPlayground';
 import DialogPlayground from '../DialogPlayground';
 import DropdownMenuPlayground from '../DropdownMenuPlayground';
 import IconButtonPlayground from '../IconButtonPlayground';
+import ImagePlayground from '../ImagePlayground';
+import PopoverPlayground from '../PopoverPlayground';
+import ProgressPlayground from '../ProgressPlayground';
+import RadioPlayground from '../RadioPlayground';
+import RadioCardsPlayground from '../RadioCardsPlayground';
+import RadioGroupPlayground from '../RadioGroupPlayground';
 import SelectPlayground from '../SelectPlayground';
+import SegmentedControlPlayground from '../SegmentedControlPlayground';
+import SliderPlayground from '../SliderPlayground';
+import SwitchPlayground from '../SwitchPlayground';
+import TabsPlayground from '../TabsPlayground';
 import TextAreaPlayground from '../TextAreaPlayground';
 import TextFieldPlayground from '../TextFieldPlayground';
-import AlertDialogPlayground from '../AlertDialogPlayground';
-import CalloutPlayground from '../CalloutPlayground';
-import ContextMenuPlayground from '../ContextMenuPlayground';
-import TabsPlayground from '../TabsPlayground';
-import PopoverPlayground from '../PopoverPlayground';
+import ToggleButtonPlayground from '../ToggleButtonPlayground';
+import ToggleIconButtonPlayground from '../ToggleIconButtonPlayground';
 
 const backgroundImages = {
   'Abstract Dark':
@@ -78,11 +92,15 @@ export default function MainPlayground() {
           </Box>
         )}
         <Container size="4" py="9">
-          <Flex direction="column" gap="9">
+          <Flex direction="column" gap="128px">
             {/* Alert Dialog Playground */}
-
             <Box>
               <AlertDialogPlayground />
+            </Box>
+
+            {/* AspectRatio Playground */}
+            <Box>
+              <AspectRatioPlayground />
             </Box>
 
             {/* Avatar Playground */}
@@ -100,17 +118,32 @@ export default function MainPlayground() {
               <ButtonPlayground />
             </Box>
 
-            {/* Card Playground */}
-            <Box>
-              <CardPlayground />
-            </Box>
-
             {/* Callout Playground */}
             <Box>
               <CalloutPlayground />
             </Box>
 
-            {/* ContextMenu Playground */}
+            {/* Card Playground */}
+            <Box>
+              <CardPlayground />
+            </Box>
+
+            {/* Checkbox Playground */}
+            <Box>
+              <CheckboxPlayground />
+            </Box>
+
+            {/* Checkbox Cards Playground */}
+            <Box>
+              <CheckboxCardsPlayground />
+            </Box>
+
+            {/* Checkbox Group Playground */}
+            <Box>
+              <CheckboxGroupPlayground />
+            </Box>
+
+            {/* Context Menu Playground */}
             <Box>
               <ContextMenuPlayground />
             </Box>
@@ -120,7 +153,7 @@ export default function MainPlayground() {
               <DialogPlayground />
             </Box>
 
-            {/* DropdownMenu Playground */}
+            {/* Dropdown Menu Playground */}
             <Box>
               <DropdownMenuPlayground />
             </Box>
@@ -130,9 +163,34 @@ export default function MainPlayground() {
               <IconButtonPlayground />
             </Box>
 
+            {/* Image Playground */}
+            <Box>
+              <ImagePlayground />
+            </Box>
+
             {/* Popover Playground */}
             <Box>
               <PopoverPlayground />
+            </Box>
+
+            {/* Progress Playground */}
+            <Box>
+              <ProgressPlayground />
+            </Box>
+
+            {/* Radio Playground */}
+            <Box>
+              <RadioPlayground />
+            </Box>
+
+            {/* Radio Cards Playground */}
+            <Box>
+              <RadioCardsPlayground />
+            </Box>
+
+            {/* Radio Group Playground */}
+            <Box>
+              <RadioGroupPlayground />
             </Box>
 
             {/* Select Playground */}
@@ -140,14 +198,19 @@ export default function MainPlayground() {
               <SelectPlayground />
             </Box>
 
-            {/* TextArea Playground */}
+            {/* Segmented Control Playground */}
             <Box>
-              <TextAreaPlayground />
+              <SegmentedControlPlayground />
             </Box>
 
-            {/* TextField Playground */}
+            {/* Slider Playground */}
             <Box>
-              <TextFieldPlayground />
+              <SliderPlayground />
+            </Box>
+
+            {/* Switch Playground */}
+            <Box>
+              <SwitchPlayground />
             </Box>
 
             {/* Tabs Playground */}
@@ -155,7 +218,25 @@ export default function MainPlayground() {
               <TabsPlayground />
             </Box>
 
-            {/* Future component playgrounds will be added here */}
+            {/* Text Area Playground */}
+            <Box>
+              <TextAreaPlayground />
+            </Box>
+
+            {/* Text Field Playground */}
+            <Box>
+              <TextFieldPlayground />
+            </Box>
+
+            {/* Toggle Button Playground */}
+            <Box>
+              <ToggleButtonPlayground />
+            </Box>
+
+            {/* Toggle Icon Button Playground */}
+            <Box>
+              <ToggleIconButtonPlayground />
+            </Box>
           </Flex>
         </Container>
       </Theme>

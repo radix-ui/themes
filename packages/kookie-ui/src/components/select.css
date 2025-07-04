@@ -14,8 +14,8 @@
   text-align: start;
 
   &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
+    outline: var(--focus-outline-width) solid var(--focus-8);
+    outline-offset: var(--focus-outline-offset-inset);
   }
 
   /* Reduced motion support */
@@ -95,7 +95,7 @@
 }
 
 .rt-SelectSeparator {
-  height: 1px;
+  height: var(--separator-height-thin);
   margin-top: var(--space-2);
   margin-bottom: var(--space-2);
   margin-left: var(--select-item-indicator-width);
@@ -218,7 +218,7 @@
     &:where(.rt-r-size-1) {
       --select-content-padding: var(--space-1);
       --select-item-height: var(--space-5);
-      --select-item-indicator-width: calc(var(--space-5) / 1.2);
+      --select-item-indicator-width: calc(var(--space-5) / var(--select-item-indicator-width-factor));
       --select-separator-margin-right: var(--space-2);
       border-radius: var(--radius-3);
 
@@ -234,8 +234,8 @@
         border-radius: var(--radius-1);
       }
       & :where(.rt-SelectItemIndicatorIcon) {
-        width: calc(8px * var(--scaling));
-        height: calc(8px * var(--scaling));
+        width: var(--select-indicator-icon-size-1);
+        height: var(--select-indicator-icon-size-1);
       }
     }
     &:where(.rt-r-size-2, .rt-r-size-3) {
@@ -261,8 +261,8 @@
         letter-spacing: var(--letter-spacing-2);
       }
       & :where(.rt-SelectItemIndicatorIcon) {
-        width: calc(10px * var(--scaling));
-        height: calc(10px * var(--scaling));
+        width: var(--select-indicator-icon-size-2);
+        height: var(--select-indicator-icon-size-2);
       }
     }
     &:where(.rt-r-size-3) {
@@ -271,8 +271,8 @@
         letter-spacing: var(--letter-spacing-3);
       }
       & :where(.rt-SelectItemIndicatorIcon) {
-        width: calc(10px * var(--scaling));
-        height: calc(10px * var(--scaling));
+        width: var(--select-indicator-icon-size-3);
+        height: var(--select-indicator-icon-size-3);
       }
     }
   }
@@ -286,7 +286,7 @@
 
 /* Outline variant - neutral with gray border (previously surface) */
 .rt-SelectTrigger:where(.rt-variant-outline) {
-  --select-trigger-border-width: 1px;
+  --select-trigger-border-width: var(--border-width-standard);
   
   background-color: var(--color-surface);
   color: var(--gray-12);
@@ -331,22 +331,22 @@
 
 /* Classic variant - 3D inset form input */
 .rt-SelectTrigger:where(.rt-variant-classic) {
-  --select-trigger-border-width: 0px;
+  --select-trigger-border-width: var(--border-width-none);
   
   position: relative;
   /* Subtle inset positioning */
-  top: calc(var(--classic-elevation-offset) / 3); /* More pronounced than before */
+  top: calc(var(--classic-elevation-offset) / var(--classic-elevation-factor-subtle));
 
   background-color: var(--color-surface);
   color: var(--gray-12);
 
   /* 3D inset effect - more pronounced but still subtle */
   /* prettier-ignore */
-  box-shadow:
-    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / 1.5) var(--gray-a3),
-    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a1),
-    inset 0 calc(var(--classic-border-width) * 2) calc(var(--classic-shadow-blur-medium) / 3) var(--gray-a2),
-    0 0 0 var(--classic-border-width) var(--gray-a5);
+      box-shadow:
+      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-light)) var(--gray-a4),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a2),
+      inset 0 calc(var(--classic-border-width) * var(--classic-border-multiplier-double)) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-medium-factor-third)) var(--gray-a3),
+      0 0 0 var(--classic-border-width) var(--gray-a5);
 
   /* Theme-level translucent override */
   :where([data-panel-background='translucent']) & {
@@ -368,19 +368,19 @@
   @media (hover: hover) {
     &:where(:hover:not(:focus-visible)) {
       /* prettier-ignore */
-      box-shadow:
-        inset 0 calc(var(--classic-border-width) / 1.5) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a2),
-        inset 0 calc(-1 * var(--classic-border-width) / 1.5) var(--gray-a1),
-        inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / 4) var(--gray-a2),
-        0 0 0 var(--classic-border-width) var(--gray-a6);
+          box-shadow:
+      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-light)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a3),
+      inset 0 calc(-1 * var(--classic-border-width) / var(--classic-border-factor-light)) var(--gray-a2),
+      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-factor-subtle)) var(--gray-a3),
+      0 0 0 var(--classic-border-width) var(--gray-a6);
     }
   }
   &:where([data-state='open']) {
     /* prettier-ignore */
     box-shadow:
-      inset 0 calc(var(--classic-border-width) / 1.5) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a2),
-      inset 0 calc(-1 * var(--classic-border-width) / 1.5) var(--gray-a1),
-      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / 4) var(--gray-a2),
+      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-light)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a3),
+      inset 0 calc(-1 * var(--classic-border-width) / var(--classic-border-factor-light)) var(--gray-a2),
+      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-factor-subtle)) var(--gray-a3),
       0 0 0 var(--classic-border-width) var(--gray-a6);
   }
 
@@ -388,8 +388,8 @@
   &:where(:focus-visible) {
     /* prettier-ignore */
     box-shadow:
-      inset 0 calc(var(--classic-border-width) / 2) calc(var(--classic-shadow-blur-small) / 3) var(--gray-a1),
-      0 0 0 2px var(--focus-8);
+      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-half)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-heavy)) var(--gray-a2),
+      0 0 0 var(--focus-outline-width) var(--focus-8);
   }
 
   &:where(:disabled) {
@@ -397,7 +397,7 @@
     background-color: var(--gray-a2);
     /* prettier-ignore */
     box-shadow:
-      inset 0 calc(var(--classic-border-width) / 2) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a1),
+      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-half)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a2),
       inset 0 0 0 var(--classic-border-width) var(--gray-a6);
   }
   &:where([data-placeholder]) {
@@ -409,7 +409,7 @@
 
 /* Soft variant - branded with accent colors */
 .rt-SelectTrigger:where(.rt-variant-soft) {
-  --select-trigger-border-width: 0px;
+  --select-trigger-border-width: var(--border-width-none);
   
   /* Use solid accent for solid panels, alpha accent for translucent panels */
   background-color: var(--accent-3);
@@ -482,7 +482,7 @@
 
 /* Surface variant - transparent with accent border (previously outline) */
 .rt-SelectTrigger:where(.rt-variant-surface) {
-  --select-trigger-border-width: 1px;
+  --select-trigger-border-width: var(--border-width-standard);
   
   background-color: transparent;
   box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-7);
@@ -595,7 +595,7 @@
 
 /* Ghost variant - transparent until interaction */
 .rt-SelectTrigger:where(.rt-variant-ghost) {
-  --select-trigger-border-width: 0px;
+  --select-trigger-border-width: var(--border-width-none);
   
   background-color: transparent;
   color: var(--accent-12);

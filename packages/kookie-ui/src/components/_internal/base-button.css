@@ -758,13 +758,7 @@
 
 /* Toggle button pressed states for all variants */
 .rt-BaseButton:where([data-state='on']) {
-  /* Add scale transform for pressed state - same as active */
-  transform: scale(0.98);
-
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    transform: none;
-  }
+  /* No scale transform for toggle buttons - removed for better UX */
 
   /* Classic variant pressed */
   &:where(.rt-variant-classic) {

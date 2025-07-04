@@ -41,7 +41,7 @@
       letter-spacing: var(--letter-spacing-0);
       padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 1.5);
       gap: calc(var(--space-1) * 1.5);
-      border-radius: max(var(--radius-1), var(--radius-full));
+      border-radius: max(calc(var(--radius-1) * var(--spacing-multiplier-medium)), var(--radius-full));
       
       /* Ghost variant gets reduced padding */
       &:where(.rt-variant-ghost) {

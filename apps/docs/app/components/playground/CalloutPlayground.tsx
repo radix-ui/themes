@@ -50,6 +50,9 @@ export default function CalloutPlayground() {
       <Heading size="6" weight="bold">
         Callout
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A prominent message component for highlighting important information or alerts.
+      </Text>
 
       <Tabs.Root defaultValue="variants">
         <Tabs.List size="2">
@@ -497,102 +500,101 @@ export default function CalloutPlayground() {
         {/* Content Examples Tab */}
         <Tabs.Content value="content-examples">
           <Box pt="4">
-            <Flex direction="column" gap="6">
-              {/* Short Content Callouts */}
-              <Box>
-                <Heading size="4" mb="3">
-                  Short Content
-                </Heading>
-                <Flex direction="column" gap="3">
-                  {variants.map((variant) => (
-                    <Callout.Root key={variant} variant={variant} size="2">
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
+                    <Text size="1" color="gray">
+                      Content Type
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '400px' }}>
+                    <Text size="1" color="gray">
+                      Example
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      Description
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Short Content
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Callout.Root variant="soft" size="2" color="blue">
                       <Callout.Icon>
                         <Info />
                       </Callout.Icon>
-                      <Callout.Text>
-                        {variant.charAt(0).toUpperCase() + variant.slice(1)} variant:{' '}
-                        {sampleContent.short}
-                      </Callout.Text>
+                      <Callout.Text>{sampleContent.short}</Callout.Text>
                     </Callout.Root>
-                  ))}
-                </Flex>
-              </Box>
-
-              {/* Medium Content Callouts */}
-              <Box>
-                <Heading size="4" mb="3">
-                  Medium Content
-                </Heading>
-                <Flex direction="column" gap="3">
-                  <Callout.Root variant="soft" size="2" color="blue">
-                    <Callout.Icon>
-                      <Info />
-                    </Callout.Icon>
-                    <Callout.Text>{sampleContent.medium}</Callout.Text>
-                  </Callout.Root>
-                  <Callout.Root variant="surface" size="2" color="green">
-                    <Callout.Icon>
-                      <CheckCircle />
-                    </Callout.Icon>
-                    <Callout.Text>{sampleContent.medium}</Callout.Text>
-                  </Callout.Root>
-                  <Callout.Root variant="outline" size="2" color="red">
-                    <Callout.Icon>
-                      <AlertTriangle />
-                    </Callout.Icon>
-                    <Callout.Text>{sampleContent.medium}</Callout.Text>
-                  </Callout.Root>
-                </Flex>
-              </Box>
-
-              {/* Long Content Callouts */}
-              <Box>
-                <Heading size="4" mb="3">
-                  Long Content
-                </Heading>
-                <Flex direction="column" gap="3">
-                  <Callout.Root variant="soft" size="3" color="yellow">
-                    <Callout.Icon>
-                      <Lightbulb />
-                    </Callout.Icon>
-                    <Callout.Text>{sampleContent.long}</Callout.Text>
-                  </Callout.Root>
-                  <Callout.Root variant="surface" size="3" color="purple">
-                    <Callout.Icon>
-                      <AlertCircle />
-                    </Callout.Icon>
-                    <Callout.Text>{sampleContent.long}</Callout.Text>
-                  </Callout.Root>
-                </Flex>
-              </Box>
-
-              {/* High Contrast Examples */}
-              <Box>
-                <Heading size="4" mb="3">
-                  High Contrast
-                </Heading>
-                <Flex direction="column" gap="3">
-                  <Callout.Root variant="soft" size="2" color="blue" highContrast>
-                    <Callout.Icon>
-                      <Info />
-                    </Callout.Icon>
-                    <Callout.Text>High contrast blue callout for better accessibility</Callout.Text>
-                  </Callout.Root>
-                  <Callout.Root variant="surface" size="2" color="red" highContrast>
-                    <Callout.Icon>
-                      <XCircle />
-                    </Callout.Icon>
-                    <Callout.Text>High contrast red callout for critical messages</Callout.Text>
-                  </Callout.Root>
-                  <Callout.Root variant="outline" size="2" color="green" highContrast>
-                    <Callout.Icon>
-                      <CheckCircle />
-                    </Callout.Icon>
-                    <Callout.Text>High contrast green callout for success messages</Callout.Text>
-                  </Callout.Root>
-                </Flex>
-              </Box>
-            </Flex>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Brief informational messages</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Medium Content
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Callout.Root variant="surface" size="2" color="green">
+                      <Callout.Icon>
+                        <CheckCircle />
+                      </Callout.Icon>
+                      <Callout.Text>{sampleContent.medium}</Callout.Text>
+                    </Callout.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Detailed explanations and instructions</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Long Content
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Callout.Root variant="soft" size="3" color="yellow">
+                      <Callout.Icon>
+                        <Lightbulb />
+                      </Callout.Icon>
+                      <Callout.Text>{sampleContent.long}</Callout.Text>
+                    </Callout.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Comprehensive warnings and tips</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      High Contrast
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Callout.Root variant="surface" size="2" color="red" highContrast>
+                      <Callout.Icon>
+                        <XCircle />
+                      </Callout.Icon>
+                      <Callout.Text>High contrast red callout for critical messages</Callout.Text>
+                    </Callout.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Enhanced accessibility for critical alerts</Text>
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table.Root>
           </Box>
         </Tabs.Content>
       </Tabs.Root>

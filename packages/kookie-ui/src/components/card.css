@@ -103,82 +103,40 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-Card:where(.rt-variant-classic) {
-  --card-border-width: 0px;
-  --card-background-color: var(--gray-1);
+  --card-border-width: 1px;
+  --card-background-color: var(--color-surface);
 
-  /* Add elevation offset like Button classic variant */
-  position: relative;
-  top: var(--classic-elevation-offset);
-
-  /* Apply shadows directly like Button classic variant */
-  box-shadow:
-    inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
-    inset 0 var(--classic-border-width) var(--white-a12),
-    inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
-    0 0 0 var(--classic-border-width) var(--gray-a5),
-    0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
-
-  /* Dark mode shadows */
-  :where(.dark, .dark-theme) &,
-  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-    box-shadow:
-      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
-      inset 0 var(--classic-border-width) var(--gray-a11),
-      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-      inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
-      0 0 0 var(--classic-border-width-thick) var(--gray-a7),
-      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
-  }
+  transition: box-shadow 120ms;
+  box-shadow: var(--base-card-classic-box-shadow-outer);
 
   &::before {
     background-color: var(--card-background-color);
     backdrop-filter: var(--backdrop-filter-panel);
   }
+  &::after {
+    box-shadow: var(--base-card-classic-box-shadow-inner);
+  }
   &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 var(--classic-border-width) var(--white-a12),
-          0 0 0 var(--classic-border-width) var(--gray-a5);
-
-        :where(.dark, .dark-theme) &,
-        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-          box-shadow:
-            inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
-            inset 0 var(--classic-border-width) var(--gray-a11),
-            0 0 0 var(--classic-border-width) var(--gray-a5);
-        }
-
-        &::before {
-          background-color: var(--gray-2);
+        transition-duration: 40ms;
+        box-shadow: var(--base-card-classic-hover-box-shadow-outer);
+        &::after {
+          box-shadow: var(--base-card-classic-hover-box-shadow-inner);
         }
       }
     }
     &:where([data-state='open']) {
-      box-shadow:
-        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
-        inset 0 var(--classic-border-width) var(--white-a12),
-        0 0 0 var(--classic-border-width) var(--gray-a5);
-
-      :where(.dark, .dark-theme) &,
-      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
-          inset 0 var(--classic-border-width) var(--gray-a11),
-          0 0 0 var(--classic-border-width) var(--gray-a5);
-      }
-
-      &::before {
-        background-color: var(--gray-2);
+      transition-duration: 40ms;
+      box-shadow: var(--base-card-classic-hover-box-shadow-outer);
+      &::after {
+        box-shadow: var(--base-card-classic-hover-box-shadow-inner);
       }
     }
     &:where(:active:not([data-state='open'])) {
-      top: 0; /* Remove elevation when pressed */
-      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--gray-a7);
-      &::before {
-        background-color: var(--gray-2);
+      box-shadow: var(--base-card-classic-active-box-shadow-outer);
+      &::after {
+        box-shadow: var(--base-card-classic-active-box-shadow-inner);
       }
     }
   }
@@ -193,6 +151,11 @@
 .rt-Card:where(.rt-variant-ghost) {
   --card-border-width: 0px;
   transition: var(--transition-background-blur);
+
+  /* Disable base card backdrop-filter to prevent double blur effect */
+  &::before {
+    backdrop-filter: none !important;
+  }
 
   &:where([data-flush='true']) {
     /* We reset the defined margin variables to avoid inheriting them from a higher component */

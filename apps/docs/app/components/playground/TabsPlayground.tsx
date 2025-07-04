@@ -42,6 +42,9 @@ export default function TabsPlayground() {
       <Heading size="6" weight="bold">
         Tabs
       </Heading>
+      <Text size="2" color="gray">
+        A set of layered sections of content—known as tab panels—that are displayed one at a time.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

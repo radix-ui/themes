@@ -102,8 +102,11 @@ export default function DropdownMenuPlayground() {
   return (
     <Flex direction="column" gap="6">
       <Heading size="6" weight="bold">
-        DropdownMenu
+        Dropdown Menu
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A menu that appears when clicking a trigger element, providing a list of actions or options.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

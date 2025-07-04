@@ -1,14 +1,14 @@
 .rt-ProgressRoot {
   --progress-value: 0;
   --progress-max: 100;
-  --progress-duration: 5s;
+  --progress-duration: var(--progress-default-duration);
   pointer-events: none;
   position: relative;
   overflow: hidden;
   flex-grow: 1;
   height: var(--progress-height);
   border-radius: max(
-    calc(var(--radius-factor) * var(--progress-height) / 3),
+    calc(var(--radius-factor) * var(--progress-height) / var(--progress-border-radius-factor)),
     calc(var(--radius-factor) * var(--radius-thumb))
   );
 
@@ -30,18 +30,18 @@
 }
 .rt-ProgressIndicator {
   display: block;
-  height: 100%;
-  width: 100%;
+  height: var(--position-full);
+  width: var(--position-full);
 
   transform: scaleX(calc(var(--progress-value) / var(--progress-max)));
   transform-origin: left center;
-  transition: transform 120ms;
+  transition: var(--transition-progress);
 
   &:where([data-state='indeterminate']) {
     animation-name: rt-progress-indicator-indeterminate-grow, var(--progress-indicator-indeterminate-animation-start),
       var(--progress-indicator-indeterminate-animation-repeat);
-    animation-delay: 0s, calc(var(--progress-duration) + 5s), calc(var(--progress-duration) + 7.5s);
-    animation-duration: var(--progress-duration), 2.5s, 5s;
+    animation-delay: 0s, calc(var(--progress-duration) + var(--progress-animation-delay-start)), calc(var(--progress-duration) + var(--progress-animation-delay-shine));
+    animation-duration: var(--progress-duration), var(--progress-animation-duration-fade), var(--progress-animation-duration-pulse);
     animation-iteration-count: 1, 1, infinite;
     animation-fill-mode: both, none, none;
     animation-direction: normal, normal, alternate;
@@ -51,19 +51,19 @@
       position: absolute;
       inset: 0;
       content: '';
-      width: 400%;
+      width: calc(var(--position-full) * var(--progress-shine-width-multiplier));
 
       animation-name: rt-progress-indicator-indeterminate-shine-from-left;
-      animation-delay: calc(var(--progress-duration) + 5s);
-      animation-duration: 5s;
+      animation-delay: calc(var(--progress-duration) + var(--progress-animation-delay-start));
+      animation-duration: var(--progress-animation-duration-pulse);
       animation-fill-mode: backwards;
       animation-iteration-count: infinite;
 
       background-image: linear-gradient(
         to right,
-        transparent 25%,
+        transparent var(--progress-gradient-stop-start),
         var(--progress-indicator-after-linear-gradient),
-        transparent 75%
+        transparent var(--progress-gradient-stop-end)
       );
     }
   }
@@ -71,29 +71,29 @@
 
 @keyframes rt-progress-indicator-indeterminate-grow {
   0% {
-    transform: scaleX(0.01);
+    transform: scaleX(var(--progress-scale-initial));
   }
   20% {
-    transform: scaleX(0.1);
+    transform: scaleX(var(--progress-scale-step-1));
   }
   30% {
-    transform: scaleX(0.6);
+    transform: scaleX(var(--progress-scale-step-2));
   }
   40%,
   50% {
-    transform: scaleX(0.9);
+    transform: scaleX(var(--progress-scale-step-3));
   }
   100% {
-    transform: scaleX(1);
+    transform: scaleX(var(--progress-scale-final));
   }
 }
 
 @keyframes rt-progress-indicator-indeterminate-shine-from-left {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(var(--position-negative-full));
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(var(--position-zero));
   }
 }
 
@@ -109,7 +109,7 @@
       --progress-height: var(--space-1);
     }
     &:where(.rt-r-size-2) {
-      --progress-height: calc(var(--space-2) * 0.75);
+      --progress-height: calc(var(--space-2) * var(--size-multiplier-small));
     }
     &:where(.rt-r-size-3) {
       --progress-height: var(--space-2);
@@ -131,7 +131,7 @@
   background-color: var(--gray-a3);
 
   &::after {
-    box-shadow: inset 0 0 0 1px var(--gray-a4);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a4);
   }
 
   & :where(.rt-ProgressIndicator) {
@@ -159,10 +159,12 @@
 .rt-ProgressRoot:where(.rt-variant-classic) {
   --progress-indicator-indeterminate-animation-start: rt-progress-indicator-classic-indeterminate-fade;
   --progress-indicator-indeterminate-animation-repeat: rt-progress-indicator-classic-indeterminate-pulse;
+  position: relative;
+  top: calc(var(--classic-elevation-offset) / var(--classic-elevation-factor-subtle));
   background-color: var(--gray-a3);
 
   &::after {
-    box-shadow: var(--shadow-1);
+    box-shadow: var(--classic-inset-shadow-dark);
   }
 
   & :where(.rt-ProgressIndicator) {
@@ -199,7 +201,7 @@
     background-color: var(--accent-8);
 
     &::after {
-      opacity: 0.75;
+      opacity: var(--opacity-soft-variant);
     }
   }
 }
@@ -228,22 +230,22 @@
     background-color: var(--accent-12);
 
     &::after {
-      opacity: 0.75;
+      opacity: var(--opacity-soft-variant);
     }
   }
 }
 
 @keyframes rt-progress-indicator-high-contrast-indeterminate-fade {
   100% {
-    opacity: 0.8;
+    opacity: var(--opacity-high-contrast);
   }
 }
 
 @keyframes rt-progress-indicator-high-contrast-indeterminate-pulse {
   0% {
-    opacity: 0.8;
+    opacity: var(--opacity-high-contrast);
   }
   100% {
-    opacity: 1;
+    opacity: var(--progress-scale-final);
   }
 }

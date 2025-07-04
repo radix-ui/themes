@@ -268,28 +268,32 @@ export default function NestedBackdropFilterTest() {
                   </Text>
                 </Box>
 
-                <Card panelBackground="translucent" p="3">
-                  <Flex direction="column" gap="3">
-                    <Text weight="bold" size="2">
-                      Outer Card
-                    </Text>
+                <Card panelBackground="translucent">
+                  <Box p="3">
+                    <Flex direction="column" gap="3">
+                      <Text weight="bold" size="2">
+                        Outer Card
+                      </Text>
 
-                    <Card panelBackground="translucent" p="3">
-                      <Flex direction="column" gap="2">
-                        <Text weight="bold" size="1">
-                          Inner Card
-                        </Text>
-                        <Button variant="ghost" size="1">
-                          Nested Ghost
-                        </Button>
-                        <TextField.Root size="1" placeholder="Nested field" variant="ghost" />
-                      </Flex>
-                    </Card>
+                      <Card panelBackground="translucent">
+                        <Box p="3">
+                          <Flex direction="column" gap="2">
+                            <Text weight="bold" size="1">
+                              Inner Card
+                            </Text>
+                            <Button variant="ghost" size="1">
+                              Nested Ghost
+                            </Button>
+                            <TextField.Root size="1" placeholder="Nested field" variant="ghost" />
+                          </Flex>
+                        </Box>
+                      </Card>
 
-                    <Button variant="ghost" size="2">
-                      Outer Ghost
-                    </Button>
-                  </Flex>
+                      <Button variant="ghost" size="2">
+                        Outer Ghost
+                      </Button>
+                    </Flex>
+                  </Box>
                 </Card>
               </Flex>
             </Card>
@@ -356,7 +360,7 @@ export default function NestedBackdropFilterTest() {
             </Text>
 
             <Grid columns={{ initial: '1', sm: '2', md: '3' }} gap="4">
-              <Card asChild variant="ghost" style={{ cursor: 'pointer' }} p="4">
+              <Card asChild variant="ghost" style={{ cursor: 'pointer', padding: '16px' }}>
                 <button>
                   <Flex direction="column" gap="2" align="start">
                     <Text weight="bold" size="3">
@@ -372,7 +376,7 @@ export default function NestedBackdropFilterTest() {
                 </button>
               </Card>
 
-              <Card asChild variant="ghost" style={{ cursor: 'pointer' }} p="4">
+              <Card asChild variant="ghost" style={{ cursor: 'pointer', padding: '16px' }}>
                 <button>
                   <Flex direction="column" gap="2" align="start">
                     <Text weight="bold" size="3">
@@ -388,7 +392,7 @@ export default function NestedBackdropFilterTest() {
                 </button>
               </Card>
 
-              <Card asChild variant="ghost" style={{ cursor: 'pointer' }} p="4">
+              <Card asChild variant="ghost" style={{ cursor: 'pointer', padding: '16px' }}>
                 <button>
                   <Flex direction="column" gap="2" align="start">
                     <Text weight="bold" size="3">
@@ -409,18 +413,20 @@ export default function NestedBackdropFilterTest() {
           {/* Footer */}
           <Separator />
 
-          <Card variant="soft" p="4">
-            <Flex direction="column" gap="2">
-              <Text weight="bold" size="3">
-                Expected Behavior
-              </Text>
-              <Text size="2" color="gray" style={{ lineHeight: 1.6 }}>
-                All components should transition smoothly from transparent to background on
-                hover/focus without any flickering or visual glitches. The backdrop-filter is
-                automatically disabled when components are inside translucent containers to prevent
-                nested backdrop-filter conflicts.
-              </Text>
-            </Flex>
+          <Card variant="soft">
+            <Box p="4">
+              <Flex direction="column" gap="2">
+                <Text weight="bold" size="3">
+                  Expected Behavior
+                </Text>
+                <Text size="2" color="gray" style={{ lineHeight: 1.6 }}>
+                  All components should transition smoothly from transparent to background on
+                  hover/focus without any flickering or visual glitches. The backdrop-filter is
+                  automatically disabled when components are inside translucent containers to
+                  prevent nested backdrop-filter conflicts.
+                </Text>
+              </Flex>
+            </Box>
           </Card>
         </Flex>
       </Container>

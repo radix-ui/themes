@@ -48,6 +48,9 @@ export default function PopoverPlayground() {
       <Heading size="6" weight="bold">
         Popover
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A floating panel that displays rich content relative to a trigger element.
+      </Text>
 
       <Tabs.Root defaultValue="sizes">
         <Tabs.List size="2">

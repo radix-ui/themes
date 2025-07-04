@@ -23,6 +23,9 @@ export default function DialogPlayground() {
       <Heading size="6" weight="bold">
         Dialog
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A modal window that overlays the main content and requires user interaction to dismiss.
+      </Text>
 
       <Tabs.Root defaultValue="basic">
         <Tabs.List size="2">

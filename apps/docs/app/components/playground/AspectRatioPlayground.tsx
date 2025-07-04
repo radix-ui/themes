@@ -1,0 +1,264 @@
+'use client';
+
+import React from 'react';
+import {
+  AspectRatio,
+  Image,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+} from '@kushagradhawan/kookie-ui';
+import { demoImages } from '../../../lib/demo-images';
+
+const commonRatios = [
+  { ratio: 16 / 9, label: '16:9 (Widescreen)' },
+  { ratio: 4 / 3, label: '4:3 (Standard)' },
+  { ratio: 3 / 2, label: '3:2 (Photography)' },
+  { ratio: 1, label: '1:1 (Square)' },
+  { ratio: 9 / 16, label: '9:16 (Portrait)' },
+  { ratio: 21 / 9, label: '21:9 (Ultrawide)' },
+] as const;
+
+const variants = ['surface', 'blur'] as const;
+const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
+const fitOptions = ['cover', 'contain', 'fill'] as const;
+
+export default function AspectRatioPlayground() {
+  return (
+    <Flex direction="column" gap="6">
+      <Heading size="6" weight="bold">
+        Aspect Ratio
+      </Heading>
+      <Text size="3" color="gray" mt="2">
+        A component that maintains a consistent aspect ratio for its content.
+      </Text>
+
+      <Tabs.Root defaultValue="common-ratios">
+        <Tabs.List size="2">
+          <Tabs.Trigger value="common-ratios">Common Ratios</Tabs.Trigger>
+          <Tabs.Trigger value="with-variants">With Variants</Tabs.Trigger>
+          <Tabs.Trigger value="with-radius">With Radius</Tabs.Trigger>
+        </Tabs.List>
+
+        {/* Common Ratios Tab */}
+        <Tabs.Content value="common-ratios">
+          <Box pt="4">
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '150px' }}>
+                    <Text size="1" color="gray">
+                      Aspect Ratio
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '300px' }}>
+                    <Text size="1" color="gray">
+                      Preview
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {commonRatios.map(({ ratio, label }) => (
+                  <Table.Row key={label}>
+                    <Table.RowHeaderCell>
+                      <Text size="1" color="gray">
+                        {label}
+                      </Text>
+                    </Table.RowHeaderCell>
+                    <Table.Cell>
+                      <AspectRatio ratio={ratio}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Aspect ratio demo"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table.Root>
+          </Box>
+        </Tabs.Content>
+
+        {/* With Variants Tab */}
+        <Tabs.Content value="with-variants">
+          <Box pt="4">
+            <Text size="2" color="gray" mb="3">
+              Image variants within aspect ratio containers
+            </Text>
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
+                    <Text size="1" color="gray">
+                      Image Variant
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      16:9 (Widescreen)
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      1:1 (Square)
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      9:16 (Portrait)
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {variants.map((variant) => (
+                  <Table.Row key={variant}>
+                    <Table.RowHeaderCell>
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {variant}
+                      </Text>
+                    </Table.RowHeaderCell>
+                    <Table.Cell>
+                      <AspectRatio ratio={16 / 9}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Widescreen demo"
+                          variant={variant}
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <AspectRatio ratio={1}>
+                        <Image
+                          src={demoImages.square}
+                          alt="Square demo"
+                          variant={variant}
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <AspectRatio ratio={9 / 16}>
+                        <Image
+                          src={demoImages.portrait}
+                          alt="Portrait demo"
+                          variant={variant}
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table.Root>
+          </Box>
+        </Tabs.Content>
+
+        {/* With Radius Tab */}
+        <Tabs.Content value="with-radius">
+          <Box pt="4">
+            <Text size="2" color="gray" mb="3">
+              Image radius variants within aspect ratio containers
+            </Text>
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
+                    <Text size="1" color="gray">
+                      Image Radius
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      16:9 (Widescreen)
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      1:1 (Square)
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      9:16 (Portrait)
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {radiusOptions.map((radius) => (
+                  <Table.Row key={radius}>
+                    <Table.RowHeaderCell>
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {radius === 'none' ? 'No radius' : radius}
+                      </Text>
+                    </Table.RowHeaderCell>
+                    <Table.Cell>
+                      <AspectRatio ratio={16 / 9}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Widescreen demo"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius={radius as any}
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <AspectRatio ratio={1}>
+                        <Image
+                          src={demoImages.square}
+                          alt="Square demo"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius={radius as any}
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <AspectRatio ratio={9 / 16}>
+                        <Image
+                          src={demoImages.portrait}
+                          alt="Portrait demo"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius={radius as any}
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table.Root>
+          </Box>
+        </Tabs.Content>
+      </Tabs.Root>
+    </Flex>
+  );
+}

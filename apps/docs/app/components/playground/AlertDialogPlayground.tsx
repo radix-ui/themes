@@ -23,6 +23,9 @@ export default function AlertDialogPlayground() {
       <Heading size="6" weight="bold">
         Alert Dialog
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A modal dialog that interrupts the user with important content and expects a response.
+      </Text>
 
       <Tabs.Root defaultValue="basic">
         <Tabs.List size="2">
@@ -118,7 +121,7 @@ export default function AlertDialogPlayground() {
                             </Button>
                           </AlertDialog.Cancel>
                           <AlertDialog.Action>
-                            <Button variant="soft" color="amber">
+                            <Button variant="solid" color="orange">
                               Proceed
                             </Button>
                           </AlertDialog.Action>

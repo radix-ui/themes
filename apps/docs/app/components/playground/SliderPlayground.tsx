@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IconButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
-import { Heart, Star, Plus, Download } from 'lucide-react';
+import { Slider, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -33,18 +32,18 @@ const accentColors = [
   'sky',
 ] as const;
 
-const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
-const sizes = ['1', '2', '3', '4'] as const;
+const variants = ['classic', 'surface', 'soft'] as const;
+const sizes = ['1', '2', '3'] as const;
 const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 
-export default function IconButtonPlayground() {
+export default function SliderPlayground() {
   return (
     <Flex direction="column" gap="6">
       <Heading size="6" weight="bold">
-        Icon Button
+        Slider
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A compact button component that displays only an icon without text.
+      <Text size="2" color="gray">
+        An input where the user selects a value from within a given range.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">
@@ -53,7 +52,8 @@ export default function IconButtonPlayground() {
           <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
           <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
-          <Tabs.Trigger value="flush">Flush Ghost</Tabs.Trigger>
+          <Tabs.Trigger value="orientations">Orientations</Tabs.Trigger>
+          <Tabs.Trigger value="states">States</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -70,7 +70,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -88,9 +88,12 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant}>
-                        <Heart />
-                      </IconButton>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        defaultValue={[65]}
+                        style={{ width: '150px' }}
+                      />
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -102,9 +105,13 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant} color="gray">
-                        <Heart />
-                      </IconButton>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        color="gray"
+                        defaultValue={[65]}
+                        style={{ width: '150px' }}
+                      />
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -127,7 +134,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -147,9 +154,13 @@ export default function IconButtonPlayground() {
                       </Table.RowHeaderCell>
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color}>
-                            <Star />
-                          </IconButton>
+                          <Slider
+                            size="2"
+                            variant={variant}
+                            color={color}
+                            defaultValue={[65]}
+                            style={{ width: '150px' }}
+                          />
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -165,9 +176,14 @@ export default function IconButtonPlayground() {
                       </Table.RowHeaderCell>
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color} highContrast>
-                            <Star />
-                          </IconButton>
+                          <Slider
+                            size="2"
+                            variant={variant}
+                            color={color}
+                            highContrast
+                            defaultValue={[65]}
+                            style={{ width: '150px' }}
+                          />
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -192,7 +208,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -211,9 +227,12 @@ export default function IconButtonPlayground() {
                     </Table.RowHeaderCell>
                     {variants.map((variant) => (
                       <Table.Cell key={variant}>
-                        <IconButton size={size as any} variant={variant}>
-                          <Plus />
-                        </IconButton>
+                        <Slider
+                          size={size as any}
+                          variant={variant}
+                          defaultValue={[65]}
+                          style={{ width: '150px' }}
+                        />
                       </Table.Cell>
                     ))}
                   </Table.Row>
@@ -237,7 +256,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -256,9 +275,13 @@ export default function IconButtonPlayground() {
                     </Table.RowHeaderCell>
                     {variants.map((variant) => (
                       <Table.Cell key={variant}>
-                        <IconButton size="2" variant={variant} radius={radius as any}>
-                          <Download />
-                        </IconButton>
+                        <Slider
+                          size="2"
+                          variant={variant}
+                          radius={radius as any}
+                          defaultValue={[65]}
+                          style={{ width: '150px' }}
+                        />
                       </Table.Cell>
                     ))}
                   </Table.Row>
@@ -268,80 +291,184 @@ export default function IconButtonPlayground() {
           </Box>
         </Tabs.Content>
 
-        {/* Flush Tab */}
-        <Tabs.Content value="flush">
+        {/* Orientations Tab */}
+        <Tabs.Content value="orientations">
           <Box pt="4">
             <Table.Root>
               <Table.Header>
                 <Table.Row>
                   <Table.ColumnHeaderCell style={{ width: '120px' }}>
                     <Text size="1" color="gray">
-                      Flush State
+                      Orientation
                     </Text>
                   </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '400px' }}>
-                    <Text size="1" color="gray">
-                      Ghost IconButton (in container with padding)
-                    </Text>
-                  </Table.ColumnHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.ColumnHeaderCell
+                      key={variant}
+                      style={{ width: '200px', textAlign: 'left' }}
+                    >
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {variant}
+                      </Text>
+                    </Table.ColumnHeaderCell>
+                  ))}
                 </Table.Row>
               </Table.Header>
               <Table.Body>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Standard
+                      Horizontal
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2">
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2">
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        orientation="horizontal"
+                        defaultValue={[65]}
+                        style={{ width: '150px' }}
+                      />
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Flush
+                      Vertical
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Flex justify="center" align="center" style={{ height: '100px' }}>
+                        <Slider
+                          size="2"
+                          variant={variant}
+                          orientation="vertical"
+                          defaultValue={[65]}
+                          style={{ height: '80px' }}
+                        />
+                      </Flex>
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+              </Table.Body>
+            </Table.Root>
+          </Box>
+        </Tabs.Content>
+
+        {/* States Tab */}
+        <Tabs.Content value="states">
+          <Box pt="4">
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
+                    <Text size="1" color="gray">
+                      State
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.ColumnHeaderCell
+                      key={variant}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {variant}
+                      </Text>
+                    </Table.ColumnHeaderCell>
+                  ))}
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Default
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        defaultValue={[65]}
+                        style={{ width: '150px' }}
+                      />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Disabled
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        disabled
+                        defaultValue={[65]}
+                        style={{ width: '150px' }}
+                      />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Range
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        defaultValue={[25, 75]}
+                        style={{ width: '150px' }}
+                      />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Range Disabled
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        disabled
+                        defaultValue={[25, 75]}
+                        style={{ width: '150px' }}
+                      />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      High Contrast
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Slider
+                        size="2"
+                        variant={variant}
+                        highContrast
+                        defaultValue={[65]}
+                        style={{ width: '150px' }}
+                      />
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
               </Table.Body>
             </Table.Root>

@@ -43,6 +43,9 @@ export default function TextAreaPlayground() {
       <Heading size="6" weight="bold">
         Text Area
       </Heading>
+      <Text size="2" color="gray">
+        Captures multi-line user input.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

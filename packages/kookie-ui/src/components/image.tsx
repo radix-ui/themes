@@ -287,7 +287,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     } else {
       // For surface variant with asChild
       return React.cloneElement(child, {
-        className: classNames(child.props?.className, 'rt-Image'),
+        className: classNames(child.props?.className),
         style: {
           textDecoration: 'none', // Reset link underlines
           color: 'inherit', // Reset link colors
@@ -296,6 +296,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
           padding: 0, // Reset button padding
           font: 'inherit', // Reset button fonts
           cursor: 'pointer', // Ensure interactive cursor
+          display: 'inline-block', // Ensure proper sizing
           ...child.props?.style, // Allow user overrides
         },
         children: imageWithPlaceholder,

@@ -42,6 +42,9 @@ export default function BadgePlayground() {
       <Heading size="6" weight="bold">
         Badge
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A small status indicator component for labeling and categorizing content.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

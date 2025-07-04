@@ -45,11 +45,26 @@
     font-weight var(--duration-2) var(--ease-2), letter-spacing var(--duration-2) var(--ease-2),
     word-spacing var(--duration-2) var(--ease-2), transform var(--duration-1) var(--ease-1);
 
+  --transition-segmented-control:
+    opacity var(--duration-2) var(--ease-1), transform var(--duration-2) var(--ease-3),
+    background-color var(--duration-2) var(--ease-1);
+
   --transition-menu:
     background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1),
     backdrop-filter var(--duration-2) var(--ease-1);
 
+  --transition-checkbox:
+    background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    color var(--duration-1) var(--ease-1);
+
+  --transition-radio:
+    background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
+    color var(--duration-1) var(--ease-1);
+
   --transition-focus: outline var(--duration-2) var(--ease-1), outline-offset var(--duration-2) var(--ease-1);
+
+  /* Progress component transition */
+  --transition-progress: transform var(--duration-2) var(--ease-1);
 }
 
 /* Respect user preference for reduced motion */
@@ -69,7 +84,11 @@
     --transition-badge: none;
     --transition-card: none;
     --transition-tabs: none;
+    --transition-segmented-control: none;
     --transition-menu: none;
+    --transition-checkbox: none;
+    --transition-radio: none;
     --transition-focus: none;
+    --transition-progress: none;
   }
 }

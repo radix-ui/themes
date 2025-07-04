@@ -42,6 +42,9 @@ export default function TextFieldPlayground() {
       <Heading size="6" weight="bold">
         Text Field
       </Heading>
+      <Text size="2" color="gray">
+        Captures user input with an optional slot for buttons and icons.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

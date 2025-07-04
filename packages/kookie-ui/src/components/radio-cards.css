@@ -1,4 +1,5 @@
 @import './_internal/base-card.css';
+@import './_internal/base-radio.css';
 
 .rt-RadioCardsRoot {
   line-height: var(--line-height);
@@ -47,7 +48,7 @@
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
       --radio-cards-item-padding-x: var(--space-3);
-      --radio-cards-item-padding-y: calc(var(--space-3) / 1.2);
+      --radio-cards-item-padding-y: calc(var(--space-3) * var(--spacing-multiplier-medium));
       --radio-cards-item-border-radius: var(--radius-3);
     }
     /* 48px height for the card with one line of text */
@@ -56,7 +57,7 @@
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
       --radio-cards-item-padding-x: var(--space-4);
-      --radio-cards-item-padding-y: calc(var(--space-4) * 0.875);
+      --radio-cards-item-padding-y: calc(var(--space-4) * var(--spacing-multiplier-medium));
       --radio-cards-item-border-radius: var(--radius-3);
     }
     /* 64px height for the card with one line of text */
@@ -65,7 +66,7 @@
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
       --radio-cards-item-padding-x: var(--space-5);
-      --radio-cards-item-padding-y: calc(var(--space-5) / 1.2);
+      --radio-cards-item-padding-y: calc(var(--space-5) * var(--spacing-multiplier-medium));
       --radio-cards-item-border-radius: var(--radius-4);
     }
   }
@@ -79,8 +80,10 @@
 
 :where(.rt-RadioCardsRoot.rt-variant-surface) {
   .rt-RadioCardsItem {
-    --radio-cards-item-border-width: 1px;
+    --radio-cards-item-border-width: var(--border-width-standard);
     --radio-cards-item-background-color: var(--color-surface);
+
+    transition: var(--transition-card);
 
     &::before {
       background-color: var(--radio-cards-item-background-color);
@@ -90,11 +93,21 @@
     }
     @media (hover: hover) {
       &:where(:not(:disabled):not([data-state='checked']):hover) {
+        transition-duration: var(--duration-1);
         &::after {
           box-shadow: var(--base-card-surface-hover-box-shadow);
         }
       }
     }
+  }
+
+  /* Component-level panel background overrides (higher specificity) */
+  &:where([data-panel-background='solid']) .rt-RadioCardsItem {
+    --color-surface: var(--color-surface-solid);
+  }
+
+  &:where([data-panel-background='translucent']) .rt-RadioCardsItem {
+    --color-surface: var(--color-surface-translucent);
   }
 }
 
@@ -106,10 +119,10 @@
 
 :where(.rt-RadioCardsRoot.rt-variant-classic) {
   .rt-RadioCardsItem {
-    --radio-cards-item-border-width: 1px;
+    --radio-cards-item-border-width: var(--border-width-standard);
     --radio-cards-item-background-color: var(--color-surface);
 
-    transition: box-shadow 120ms;
+    transition: var(--transition-card);
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
@@ -120,13 +133,22 @@
     }
     @media (hover: hover) {
       &:where(:not(:disabled):not([data-state='checked']):hover) {
-        transition-duration: 40ms;
+        transition-duration: var(--duration-1);
         box-shadow: var(--base-card-classic-hover-box-shadow-outer);
         &::after {
           box-shadow: var(--base-card-classic-hover-box-shadow-inner);
         }
       }
     }
+  }
+
+  /* Component-level panel background overrides (higher specificity) */
+  &:where([data-panel-background='solid']) .rt-RadioCardsItem {
+    --color-surface: var(--color-surface-solid);
+  }
+
+  &:where([data-panel-background='translucent']) .rt-RadioCardsItem {
+    --color-surface: var(--color-surface-translucent);
   }
 }
 
@@ -137,8 +159,9 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardsItem:where([data-state='checked']) {
+  transition: var(--transition-fast);
   &::after {
-    outline: 2px solid var(--accent-indicator);
+    outline: var(--focus-outline-width) solid var(--accent-indicator);
   }
   :where(.rt-RadioCardsRoot.rt-high-contrast) & {
     &::after {
@@ -154,8 +177,9 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .rt-RadioCardsItem:where(:focus-visible) {
+  transition: var(--transition-focus);
   &::after {
-    outline: 2px solid var(--focus-8);
+    outline: var(--focus-outline-width) solid var(--focus-8);
   }
   &:where([data-state='checked']) {
     &::before {

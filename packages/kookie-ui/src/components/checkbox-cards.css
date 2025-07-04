@@ -22,8 +22,9 @@
   -webkit-tap-highlight-color: transparent;
 
   &:where(:has(:focus-visible)) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
+    transition: var(--transition-focus);
+    outline: var(--focus-outline-width) solid var(--focus-8);
+    outline-offset: var(--focus-outline-offset-inset);
 
     &::after {
       outline: inherit;
@@ -65,20 +66,20 @@
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --checkbox-cards-item-padding-top: calc(var(--space-3) / 1.2);
-      --checkbox-cards-item-padding-bottom: calc(var(--space-3) / 1.2);
+      --checkbox-cards-item-padding-top: calc(var(--space-3) * var(--spacing-multiplier-medium));
+      --checkbox-cards-item-padding-bottom: calc(var(--space-3) * var(--spacing-multiplier-medium));
       --checkbox-cards-item-padding-left: var(--space-3);
       --checkbox-cards-item-border-radius: var(--radius-3);
       /* keep in sync with checkbox */
-      --checkbox-cards-item-checkbox-size: calc(var(--space-4) * 0.875);
+      --checkbox-cards-item-checkbox-size: calc(var(--space-4) * var(--spacing-multiplier-medium));
     }
     /* 48px height for the card with one line of text */
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       --line-height: var(--line-height-2);
       --letter-spacing: var(--letter-spacing-2);
-      --checkbox-cards-item-padding-top: calc(var(--space-4) * 0.875);
-      --checkbox-cards-item-padding-bottom: calc(var(--space-4) * 0.875);
+      --checkbox-cards-item-padding-top: calc(var(--space-4) * var(--spacing-multiplier-medium));
+      --checkbox-cards-item-padding-bottom: calc(var(--space-4) * var(--spacing-multiplier-medium));
       --checkbox-cards-item-padding-left: var(--space-4);
       --checkbox-cards-item-border-radius: var(--radius-3);
       /* keep in sync with checkbox */
@@ -89,12 +90,12 @@
       font-size: var(--font-size-3);
       --line-height: var(--line-height-3);
       --letter-spacing: var(--letter-spacing-3);
-      --checkbox-cards-item-padding-top: calc(var(--space-5) / 1.2);
-      --checkbox-cards-item-padding-bottom: calc(var(--space-5) / 1.2);
+      --checkbox-cards-item-padding-top: calc(var(--space-5) * var(--spacing-multiplier-medium));
+      --checkbox-cards-item-padding-bottom: calc(var(--space-5) * var(--spacing-multiplier-medium));
       --checkbox-cards-item-padding-left: var(--space-5);
       --checkbox-cards-item-border-radius: var(--radius-4);
       /* keep in sync with checkbox */
-      --checkbox-cards-item-checkbox-size: calc(var(--space-4) * 1.25);
+      --checkbox-cards-item-checkbox-size: calc(var(--space-4) * var(--spacing-multiplier-large));
     }
   }
 }
@@ -107,8 +108,10 @@
 
 :where(.rt-CheckboxCardsRoot.rt-variant-surface) {
   .rt-CheckboxCardsItem {
-    --checkbox-cards-item-border-width: 1px;
+    --checkbox-cards-item-border-width: var(--border-width-standard);
     --checkbox-cards-item-background-color: var(--color-surface);
+
+    transition: var(--transition-card);
 
     &::before {
       background-color: var(--checkbox-cards-item-background-color);
@@ -118,11 +121,21 @@
     }
     @media (hover: hover) {
       &:where(:not(:has(:disabled)):hover) {
+        transition-duration: var(--duration-1);
         &::after {
           box-shadow: var(--base-card-surface-hover-box-shadow);
         }
       }
     }
+  }
+
+  /* Component-level panel background overrides (higher specificity) */
+  &:where([data-panel-background='solid']) .rt-CheckboxCardsItem {
+    --color-surface: var(--color-surface-solid);
+  }
+
+  &:where([data-panel-background='translucent']) .rt-CheckboxCardsItem {
+    --color-surface: var(--color-surface-translucent);
   }
 }
 
@@ -134,10 +147,10 @@
 
 :where(.rt-CheckboxCardsRoot.rt-variant-classic) {
   .rt-CheckboxCardsItem {
-    --checkbox-cards-item-border-width: 1px;
+    --checkbox-cards-item-border-width: var(--border-width-standard);
     --checkbox-cards-item-background-color: var(--color-surface);
 
-    transition: box-shadow 120ms;
+    transition: var(--transition-card);
     box-shadow: var(--base-card-classic-box-shadow-outer);
 
     &::before {
@@ -148,13 +161,22 @@
     }
     @media (hover: hover) {
       &:where(:not(:has(:disabled)):hover) {
-        transition-duration: 40ms;
+        transition-duration: var(--duration-1);
         box-shadow: var(--base-card-classic-hover-box-shadow-outer);
         &::after {
           box-shadow: var(--base-card-classic-hover-box-shadow-inner);
         }
       }
     }
+  }
+
+  /* Component-level panel background overrides (higher specificity) */
+  &:where([data-panel-background='solid']) .rt-CheckboxCardsItem {
+    --color-surface: var(--color-surface-solid);
+  }
+
+  &:where([data-panel-background='translucent']) .rt-CheckboxCardsItem {
+    --color-surface: var(--color-surface-translucent);
   }
 }
 

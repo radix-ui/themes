@@ -6,6 +6,7 @@ import { radioCardsRootPropDefs } from './radio-cards.props.js';
 import { Grid } from './grid.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
+import { useThemeContext } from './theme.js';
 
 import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
@@ -22,15 +23,19 @@ interface RadioCardsRootProps
     RadioCardsRootOwnProps {}
 const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootProps>(
   (props, forwardedRef) => {
-    const { className, color, ...rootProps } = extractProps(
-      props,
-      radioCardsRootPropDefs,
-      marginPropDefs,
-    );
+    const themeContext = useThemeContext();
+    const panelBackground = props.panelBackground ?? themeContext.panelBackground;
+    const {
+      className,
+      color,
+      panelBackground: _,
+      ...rootProps
+    } = extractProps(props, radioCardsRootPropDefs, marginPropDefs);
     return (
       <Grid asChild>
         <RadioGroupPrimitive.Root
           data-accent-color={color}
+          data-panel-background={panelBackground}
           {...rootProps}
           ref={forwardedRef}
           className={classNames('rt-RadioCardsRoot', className)}

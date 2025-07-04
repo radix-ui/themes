@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IconButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
-import { Heart, Star, Plus, Download } from 'lucide-react';
+import { Progress, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -33,18 +32,18 @@ const accentColors = [
   'sky',
 ] as const;
 
-const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
-const sizes = ['1', '2', '3', '4'] as const;
+const variants = ['classic', 'surface', 'soft'] as const;
+const sizes = ['1', '2', '3'] as const;
 const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 
-export default function IconButtonPlayground() {
+export default function ProgressPlayground() {
   return (
     <Flex direction="column" gap="6">
       <Heading size="6" weight="bold">
-        Icon Button
+        Progress
       </Heading>
       <Text size="3" color="gray" mt="2">
-        A compact button component that displays only an icon without text.
+        A visual indicator showing the completion progress of a task or operation.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">
@@ -53,7 +52,7 @@ export default function IconButtonPlayground() {
           <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
           <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
-          <Tabs.Trigger value="flush">Flush Ghost</Tabs.Trigger>
+          <Tabs.Trigger value="states">States</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -70,7 +69,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -88,9 +87,7 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant}>
-                        <Heart />
-                      </IconButton>
+                      <Progress size="2" variant={variant} value={65} />
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -102,9 +99,7 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant} color="gray">
-                        <Heart />
-                      </IconButton>
+                      <Progress size="2" variant={variant} color="gray" value={65} />
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -127,7 +122,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -147,9 +142,7 @@ export default function IconButtonPlayground() {
                       </Table.RowHeaderCell>
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color}>
-                            <Star />
-                          </IconButton>
+                          <Progress size="2" variant={variant} color={color} value={65} />
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -165,9 +158,13 @@ export default function IconButtonPlayground() {
                       </Table.RowHeaderCell>
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color} highContrast>
-                            <Star />
-                          </IconButton>
+                          <Progress
+                            size="2"
+                            variant={variant}
+                            color={color}
+                            highContrast
+                            value={65}
+                          />
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -192,7 +189,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -211,9 +208,7 @@ export default function IconButtonPlayground() {
                     </Table.RowHeaderCell>
                     {variants.map((variant) => (
                       <Table.Cell key={variant}>
-                        <IconButton size={size as any} variant={variant}>
-                          <Plus />
-                        </IconButton>
+                        <Progress size={size as any} variant={variant} value={65} />
                       </Table.Cell>
                     ))}
                   </Table.Row>
@@ -237,7 +232,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -256,9 +251,7 @@ export default function IconButtonPlayground() {
                     </Table.RowHeaderCell>
                     {variants.map((variant) => (
                       <Table.Cell key={variant}>
-                        <IconButton size="2" variant={variant} radius={radius as any}>
-                          <Download />
-                        </IconButton>
+                        <Progress size="2" variant={variant} radius={radius as any} value={65} />
                       </Table.Cell>
                     ))}
                   </Table.Row>
@@ -268,80 +261,101 @@ export default function IconButtonPlayground() {
           </Box>
         </Tabs.Content>
 
-        {/* Flush Tab */}
-        <Tabs.Content value="flush">
+        {/* States Tab */}
+        <Tabs.Content value="states">
           <Box pt="4">
             <Table.Root>
               <Table.Header>
                 <Table.Row>
                   <Table.ColumnHeaderCell style={{ width: '120px' }}>
                     <Text size="1" color="gray">
-                      Flush State
+                      State
                     </Text>
                   </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '400px' }}>
-                    <Text size="1" color="gray">
-                      Ghost IconButton (in container with padding)
-                    </Text>
-                  </Table.ColumnHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.ColumnHeaderCell
+                      key={variant}
+                      style={{ width: '200px', textAlign: 'left' }}
+                    >
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {variant}
+                      </Text>
+                    </Table.ColumnHeaderCell>
+                  ))}
                 </Table.Row>
               </Table.Header>
               <Table.Body>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Standard
+                      25%
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2">
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2">
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Progress size="2" variant={variant} value={25} />
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Flush
+                      50%
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Progress size="2" variant={variant} value={50} />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      75%
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Progress size="2" variant={variant} value={75} />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      100%
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Progress size="2" variant={variant} value={100} />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Indeterminate
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Progress size="2" variant={variant} />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Indeterminate (Gray)
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Progress size="2" variant={variant} color="gray" />
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
               </Table.Body>
             </Table.Root>

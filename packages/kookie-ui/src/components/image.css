@@ -16,21 +16,45 @@
 
   @media (hover: hover) {
     &:where(:hover) {
-      transform: scale(1.02);
       box-shadow:
         var(--box-shadow, var(--shadow-2)),
         0 0 0 1px var(--gray-a4);
+      filter: brightness(1.05) contrast(1.02);
     }
+  }
+
+  &:where(:active) {
+    filter: brightness(0.98) contrast(1.02);
   }
 
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
-    outline-offset: 2px;
+    outline-offset: -2px;
+  }
+}
+
+/* Interactive states for asChild usage - target the wrapper element */
+:where(:any-link, button, label) .rt-Image {
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      box-shadow:
+        var(--box-shadow, var(--shadow-2)),
+        0 0 0 1px var(--gray-a4);
+      filter: brightness(1.05) contrast(1.02);
+    }
   }
 
   &:where(:active) {
-    transform: scale(0.98);
+    filter: brightness(0.98) contrast(1.02);
   }
+}
+
+/* Focus states for asChild usage - apply to the wrapper */
+:where(:any-link, button, label):where(:focus-visible) .rt-Image {
+  outline: 2px solid var(--focus-8);
+  outline-offset: -2px;
 }
 
 /* Blur variant wrapper */
@@ -46,17 +70,17 @@
 
   @media (hover: hover) {
     &:where(:hover) {
-      transform: scale(1.02);
+      filter: brightness(1.05) contrast(1.02);
     }
+  }
+
+  &:where(:active) {
+    filter: brightness(0.98) contrast(1.02);
   }
 
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
-    outline-offset: 2px;
-  }
-
-  &:where(:active) {
-    transform: scale(0.98);
+    outline-offset: -2px;
   }
 }
 

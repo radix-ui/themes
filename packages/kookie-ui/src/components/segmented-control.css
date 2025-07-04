@@ -1,5 +1,6 @@
 .radix-themes {
-  --segmented-control-transition-duration: 100ms;
+  /* Use standard duration token instead of custom duration */
+  --segmented-control-transition-duration: var(--duration-1); /* 100ms - Fast transitions */
 }
 
 .rt-SegmentedControlRoot {
@@ -20,6 +21,33 @@
 
   /* Create a new stacking context */
   isolation: isolate;
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    background-color: var(--color-surface-translucent);
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    backdrop-filter: var(--backdrop-filter-panel);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid']) {
+    background-color: var(--color-surface);
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    backdrop-filter: none;
+    --backdrop-filter-panel: none;
+  }
+
+  &:where([data-panel-background='translucent']) {
+    background-color: var(--color-surface-translucent);
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+    backdrop-filter: var(--backdrop-filter-panel);
+    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+  }
+
+  /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+  :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+    backdrop-filter: none !important;
+  }
 }
 
 .rt-SegmentedControlRoot:where([data-disabled]) {
@@ -42,8 +70,8 @@
   }
   &:where(:focus-visible) {
     border-radius: inherit;
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
+    outline: var(--focus-outline-width) solid var(--focus-8);
+    outline-offset: var(--focus-outline-offset-inset);
   }
 }
 
@@ -70,30 +98,30 @@
 .rt-SegmentedControlItemLabelInactive {
   position: absolute;
 
-  transition: opacity calc(0.8 * var(--segmented-control-transition-duration));
+  transition: var(--transition-tabs);
   font-weight: var(--font-weight-regular);
   letter-spacing: var(--tab-inactive-letter-spacing);
   word-spacing: var(--tab-inactive-word-spacing);
 
   opacity: 1;
-  transition-timing-function: ease-out;
+  transition-delay: var(--duration-1); /* Staggered effect like tabs */
   :where(.rt-SegmentedControlItem[data-state='on']) & {
     opacity: 0;
-    transition-timing-function: ease-in;
+    transition-delay: 0ms; /* Immediate transition for state change */
   }
 }
 
 .rt-SegmentedControlItemLabelActive {
-  transition: opacity calc(0.8 * var(--segmented-control-transition-duration));
+  transition: var(--transition-tabs);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tab-active-letter-spacing);
   word-spacing: var(--tab-active-word-spacing);
 
   opacity: 0;
-  transition-timing-function: ease-in;
+  transition-delay: 0ms; /* Immediate transition for active state like tabs */
   :where(.rt-SegmentedControlItem[data-state='on']) & {
     opacity: 1;
-    transition-timing-function: ease-out;
+    transition-delay: 0ms; /* Immediate transition for active state */
   }
 }
 
@@ -105,22 +133,21 @@
    */
   z-index: -1;
 
-  margin-top: 3px;
-  margin-bottom: 3px;
-  margin-left: -0.5px;
-  margin-right: -0.5px;
-  width: 1px;
+  margin-top: calc(var(--space-1) * 0.75); /* 3px - slightly smaller than space-1 */
+  margin-bottom: calc(var(--space-1) * 0.75); /* 3px */
+  margin-left: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
+  margin-right: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
+  width: var(--border-width-standard); /* 1px */
   background-color: var(--gray-a4);
-  transition: opacity calc(0.8 * var(--segmented-control-transition-duration));
+  transition: opacity calc(0.8 * var(--segmented-control-transition-duration)) var(--ease-1);
 
   /* Make separators slow to disappear and fast to appear, syncing it well with the indicator motion */
-  transition-timing-function: ease-out;
 
   :where(.rt-SegmentedControlItem:first-child) &,
   :where(.rt-SegmentedControlItem:where([data-state='on'], :focus-visible)) &,
   :where(.rt-SegmentedControlItem:where([data-state='on'], :focus-visible)) + * & {
     opacity: 0;
-    transition-timing-function: ease-in;
+    transition-timing-function: var(--ease-1);
   }
   /* Don't transition when the separator is hidden because of the focus outline */
   :where(.rt-SegmentedControlRoot:has(:focus-visible)) & {
@@ -144,14 +171,12 @@
   left: 0;
   height: 100%;
   pointer-events: none;
-  transition-property: transform;
-  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition-duration: var(--segmented-control-transition-duration);
+  transition: transform var(--segmented-control-transition-duration) var(--ease-3);
 
   &::before {
-    inset: 1px;
+    inset: var(--border-width-standard); /* 1px */
     position: absolute;
-    border-radius: max(0.5px, calc(var(--segmented-control-border-radius) - 1px));
+    border-radius: max(calc(var(--border-width-standard) * 0.5), calc(var(--segmented-control-border-radius) - var(--border-width-standard)));
     background-color: var(--segmented-control-indicator-background-color);
     content: '';
   }
@@ -164,7 +189,7 @@
     --segmented-control-indicator-background-color: var(--gray-a3);
 
     &::before {
-      inset: 0px;
+      inset: 0;
       box-shadow: none;
     }
   }
@@ -248,7 +273,7 @@
 @breakpoints {
   .rt-SegmentedControlRoot {
     &:where(.rt-r-size-1) {
-      --segmented-control-border-radius: max(var(--radius-2), var(--radius-full));
+      --segmented-control-border-radius: max(calc(var(--radius-1) * var(--spacing-multiplier-large)), var(--radius-full));
       height: var(--space-5);
 
       & :where(.rt-SegmentedControlItemLabel) {
@@ -295,7 +320,7 @@
 .rt-SegmentedControlRoot:where(.rt-variant-surface) {
   & :where(.rt-SegmentedControlItem:not([disabled])) ~ :where(.rt-SegmentedControlIndicator) {
     &::before {
-      box-shadow: 0 0 0 1px var(--gray-a4);
+      box-shadow: 0 0 0 var(--border-width-standard) var(--gray-a4);
     }
   }
 }
@@ -309,7 +334,27 @@
 .rt-SegmentedControlRoot:where(.rt-variant-classic) {
   & :where(.rt-SegmentedControlItem:not([disabled])) ~ :where(.rt-SegmentedControlIndicator) {
     &::before {
-      box-shadow: var(--shadow-2);
+      /* Use the same elevated 3D effect as Button classic variant */
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
+        inset 0 var(--classic-border-width) var(--white-a12),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+        inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
+        0 0 0 var(--classic-border-width) var(--gray-a5),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
+
+      :where(.dark, .dark-theme) &,
+      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+        /* prettier-ignore */
+        box-shadow:
+          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
+          inset 0 var(--classic-border-width) var(--gray-a11),
+          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
+          inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
+          0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+      }
     }
   }
 }

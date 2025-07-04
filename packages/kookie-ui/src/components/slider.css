@@ -7,7 +7,7 @@
   flex-grow: 1;
 
   border-radius: max(
-    calc(var(--radius-factor) * var(--slider-track-size) / 3),
+    calc(var(--radius-factor) * var(--slider-track-size) / var(--slider-track-radius-factor)),
     calc(var(--radius-factor) * var(--radius-thumb))
   );
 
@@ -47,11 +47,11 @@
   border-radius: inherit;
 
   &:where([data-orientation='horizontal']) {
-    height: 100%;
+    height: var(--position-full);
   }
 
   &:where([data-orientation='vertical']) {
-    width: 100%;
+    width: var(--position-full);
   }
 }
 
@@ -67,10 +67,10 @@
     content: '';
     position: absolute;
     z-index: -1;
-    width: calc(var(--slider-thumb-size) * 3);
-    height: calc(var(--slider-thumb-size) * 3);
-    top: 50%;
-    left: 50%;
+    width: calc(var(--slider-thumb-size) * var(--slider-thumb-hit-area-multiplier));
+    height: calc(var(--slider-thumb-size) * var(--slider-thumb-hit-area-multiplier));
+    top: var(--position-center);
+    left: var(--position-center);
     transform: translate(-50%, -50%);
   }
 
@@ -78,7 +78,7 @@
   &::after {
     content: '';
     position: absolute;
-    inset: calc(-0.25 * var(--slider-track-size));
+    inset: calc(var(--slider-thumb-inset-factor) * var(--slider-track-size) * -1);
     background-color: white;
     border-radius: max(var(--radius-1), var(--radius-thumb));
     box-shadow: var(--slider-thumb-box-shadow);
@@ -86,7 +86,7 @@
   }
 
   &:where(:focus-visible)::after {
-    box-shadow: var(--slider-thumb-box-shadow), 0 0 0 3px var(--accent-3), 0 0 0 5px var(--focus-8);
+    box-shadow: var(--slider-thumb-box-shadow), 0 0 0 var(--slider-focus-ring-inner) var(--accent-3), 0 0 0 var(--slider-focus-ring-outer) var(--focus-8);
   }
 
   &:where(:active) {
@@ -103,13 +103,13 @@
 @breakpoints {
   .rt-SliderRoot {
     &:where(.rt-r-size-1) {
-      --slider-track-size: calc(var(--space-2) * 0.75);
+      --slider-track-size: calc(var(--space-2) * var(--size-multiplier-small));
     }
     &:where(.rt-r-size-2) {
       --slider-track-size: var(--space-2);
     }
     &:where(.rt-r-size-3) {
-      --slider-track-size: calc(var(--space-2) * 1.25);
+      --slider-track-size: calc(var(--space-2) * var(--size-multiplier-large));
     }
   }
 }
@@ -125,17 +125,17 @@
 .rt-SliderRoot:where(.rt-variant-surface) {
   & :where(.rt-SliderTrack) {
     background-color: var(--gray-a3);
-    box-shadow: inset 0 0 0 1px var(--gray-a5);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a5);
 
     &:where([data-disabled]) {
-      box-shadow: inset 0 0 0 1px var(--gray-a4);
+      box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a4);
     }
   }
 
   & :where(.rt-SliderRange) {
     background-color: var(--accent-track);
     background-image: var(--slider-range-high-contrast-background-image);
-    box-shadow: inset 0 0 0 1px var(--gray-a5);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a5);
   }
 
   & :where(.rt-SliderThumb) {
@@ -160,21 +160,21 @@
       inset: 0;
       position: absolute;
       border-radius: inherit;
-      box-shadow: var(--shadow-1);
+      box-shadow: var(--classic-inset-shadow-dark);
     }
     &:where([data-disabled])::before {
-      opacity: 0.5;
+      opacity: var(--opacity-disabled);
     }
   }
 
   & :where(.rt-SliderRange) {
     background-color: var(--accent-track);
     background-image: var(--slider-range-high-contrast-background-image);
-    box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4), inset 0 0 0 1px var(--black-a1),
-      inset 0 1.5px 2px 0 var(--black-a2);
+    box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a3), inset 0 0 0 var(--border-width-standard) var(--accent-a4), inset 0 0 0 var(--border-width-standard) var(--black-a1),
+      inset 0 var(--slider-classic-inset-offset) 2px 0 var(--black-a2);
 
     &:where(.rt-high-contrast) {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2), inset 0 1.5px 2px 0 var(--black-a2);
+      box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a3), inset 0 0 0 var(--border-width-standard) var(--black-a2), inset 0 var(--slider-classic-inset-offset) 2px 0 var(--black-a2);
     }
   }
 

@@ -53,6 +53,27 @@
    */
   &::before {
     z-index: -1;
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      backdrop-filter: var(--backdrop-filter-panel);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-BaseCard[data-panel-background='solid']) & {
+      backdrop-filter: none;
+      --backdrop-filter-panel: none;
+    }
+
+    :where(.rt-BaseCard[data-panel-background='translucent']) & {
+      backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+    }
+
+    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      backdrop-filter: none !important;
+    }
   }
   & {
     contain: paint;
@@ -98,6 +119,8 @@
     0 0 0 var(--classic-border-width) var(--gray-a5),
     0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
 
+  --base-card-classic-box-shadow-inner: none;
+
   /* Hover state - enhanced elevation (exact same structure as Button) */
   --base-card-classic-hover-box-shadow-outer: 
     inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
@@ -108,10 +131,14 @@
     0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
     0 0 0 var(--classic-border-width) var(--gray-a5);
 
+  --base-card-classic-hover-box-shadow-inner: none;
+
   /* Active state - pressed down effect (exact same structure as Button) */
   --base-card-classic-active-box-shadow-outer: 
     inset 0 var(--classic-border-width) var(--black-a3), 
     0 0 0 var(--classic-border-width) var(--gray-a7);
+
+  --base-card-classic-active-box-shadow-inner: none;
 
   /* Dark mode overrides (exact same structure as Button) */
   :where(.dark, .dark-theme) &,
@@ -136,6 +163,10 @@
     --base-card-classic-active-box-shadow-outer: 
       inset 0 var(--classic-border-width) var(--black-a3), 
       0 0 0 var(--classic-border-width) var(--gray-a7);
+
+    --base-card-classic-box-shadow-inner: none;
+    --base-card-classic-hover-box-shadow-inner: none;
+    --base-card-classic-active-box-shadow-inner: none;
   }
 
   /* Border color definitions (kept for compatibility) */

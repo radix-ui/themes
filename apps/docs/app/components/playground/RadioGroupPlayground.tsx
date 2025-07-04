@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IconButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
-import { Heart, Star, Plus, Download } from 'lucide-react';
+import { RadioGroup, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -33,18 +32,29 @@ const accentColors = [
   'sky',
 ] as const;
 
-const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
-const sizes = ['1', '2', '3', '4'] as const;
-const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
+const variants = ['classic', 'solid', 'soft'] as const;
+const sizes = ['1', '2', '3'] as const;
 
-export default function IconButtonPlayground() {
+const fruitOptions = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'orange', label: 'Orange' },
+];
+
+const colorOptions = [
+  { value: 'red', label: 'Red' },
+  { value: 'green', label: 'Green' },
+  { value: 'blue', label: 'Blue' },
+];
+
+export default function RadioGroupPlayground() {
   return (
     <Flex direction="column" gap="6">
       <Heading size="6" weight="bold">
-        Icon Button
+        Radio Group
       </Heading>
       <Text size="3" color="gray" mt="2">
-        A compact button component that displays only an icon without text.
+        A container that manages a collection of radio buttons with shared state and behavior.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">
@@ -52,8 +62,7 @@ export default function IconButtonPlayground() {
           <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
           <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
-          <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
-          <Tabs.Trigger value="flush">Flush Ghost</Tabs.Trigger>
+          <Tabs.Trigger value="orientation">Orientation</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -70,7 +79,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -88,9 +97,13 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant}>
-                        <Heart />
-                      </IconButton>
+                      <RadioGroup.Root size="2" variant={variant} defaultValue="apple">
+                        {fruitOptions.map((option) => (
+                          <RadioGroup.Item key={option.value} value={option.value}>
+                            {option.label}
+                          </RadioGroup.Item>
+                        ))}
+                      </RadioGroup.Root>
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -102,9 +115,13 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant} color="gray">
-                        <Heart />
-                      </IconButton>
+                      <RadioGroup.Root size="2" variant={variant} color="gray" defaultValue="apple">
+                        {fruitOptions.map((option) => (
+                          <RadioGroup.Item key={option.value} value={option.value}>
+                            {option.label}
+                          </RadioGroup.Item>
+                        ))}
+                      </RadioGroup.Root>
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -127,7 +144,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -138,40 +155,29 @@ export default function IconButtonPlayground() {
               </Table.Header>
               <Table.Body>
                 {accentColors.map((color) => (
-                  <React.Fragment key={color}>
-                    <Table.Row>
-                      <Table.RowHeaderCell>
-                        <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                          {color}
-                        </Text>
-                      </Table.RowHeaderCell>
-                      {variants.map((variant) => (
-                        <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color}>
-                            <Star />
-                          </IconButton>
-                        </Table.Cell>
-                      ))}
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.RowHeaderCell>
-                        <Text
-                          size="1"
-                          color="gray"
-                          style={{ textTransform: 'capitalize', opacity: 0.7 }}
+                  <Table.Row key={color}>
+                    <Table.RowHeaderCell>
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {color}
+                      </Text>
+                    </Table.RowHeaderCell>
+                    {variants.map((variant) => (
+                      <Table.Cell key={variant}>
+                        <RadioGroup.Root
+                          size="2"
+                          variant={variant}
+                          color={color}
+                          defaultValue="red"
                         >
-                          {color} HC
-                        </Text>
-                      </Table.RowHeaderCell>
-                      {variants.map((variant) => (
-                        <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color} highContrast>
-                            <Star />
-                          </IconButton>
-                        </Table.Cell>
-                      ))}
-                    </Table.Row>
-                  </React.Fragment>
+                          {colorOptions.map((option) => (
+                            <RadioGroup.Item key={option.value} value={option.value}>
+                              {option.label}
+                            </RadioGroup.Item>
+                          ))}
+                        </RadioGroup.Root>
+                      </Table.Cell>
+                    ))}
+                  </Table.Row>
                 ))}
               </Table.Body>
             </Table.Root>
@@ -192,7 +198,7 @@ export default function IconButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '200px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -211,9 +217,13 @@ export default function IconButtonPlayground() {
                     </Table.RowHeaderCell>
                     {variants.map((variant) => (
                       <Table.Cell key={variant}>
-                        <IconButton size={size as any} variant={variant}>
-                          <Plus />
-                        </IconButton>
+                        <RadioGroup.Root size={size as any} variant={variant} defaultValue="apple">
+                          {fruitOptions.map((option) => (
+                            <RadioGroup.Item key={option.value} value={option.value}>
+                              {option.label}
+                            </RadioGroup.Item>
+                          ))}
+                        </RadioGroup.Root>
                       </Table.Cell>
                     ))}
                   </Table.Row>
@@ -223,21 +233,21 @@ export default function IconButtonPlayground() {
           </Box>
         </Tabs.Content>
 
-        {/* All Radius Tab */}
-        <Tabs.Content value="all-radius">
+        {/* Orientation Tab */}
+        <Tabs.Content value="orientation">
           <Box pt="4">
             <Table.Root>
               <Table.Header>
                 <Table.Row>
                   <Table.ColumnHeaderCell style={{ width: '120px' }}>
                     <Text size="1" color="gray">
-                      Radius
+                      Orientation
                     </Text>
                   </Table.ColumnHeaderCell>
                   {variants.map((variant) => (
                     <Table.ColumnHeaderCell
                       key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
+                      style={{ width: '250px', textAlign: 'left' }}
                     >
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
@@ -247,101 +257,69 @@ export default function IconButtonPlayground() {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {radiusOptions.map((radius) => (
-                  <Table.Row key={radius}>
-                    <Table.RowHeaderCell>
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {radius === 'none' ? 'No radius' : radius}
-                      </Text>
-                    </Table.RowHeaderCell>
-                    {variants.map((variant) => (
-                      <Table.Cell key={variant}>
-                        <IconButton size="2" variant={variant} radius={radius as any}>
-                          <Download />
-                        </IconButton>
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* Flush Tab */}
-        <Tabs.Content value="flush">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Flush State
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '400px' }}>
-                    <Text size="1" color="gray">
-                      Ghost IconButton (in container with padding)
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Standard
+                      Vertical
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2">
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2">
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <RadioGroup.Root
+                        size="2"
+                        variant={variant}
+                        orientation="vertical"
+                        defaultValue="apple"
+                      >
+                        {fruitOptions.map((option) => (
+                          <RadioGroup.Item key={option.value} value={option.value}>
+                            {option.label}
+                          </RadioGroup.Item>
+                        ))}
+                      </RadioGroup.Root>
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Flush
+                      Horizontal
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <RadioGroup.Root
+                        size="2"
+                        variant={variant}
+                        orientation="horizontal"
+                        defaultValue="apple"
+                      >
+                        {fruitOptions.map((option) => (
+                          <RadioGroup.Item key={option.value} value={option.value}>
+                            {option.label}
+                          </RadioGroup.Item>
+                        ))}
+                      </RadioGroup.Root>
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Disabled
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <RadioGroup.Root size="2" variant={variant} disabled defaultValue="apple">
+                        {fruitOptions.map((option) => (
+                          <RadioGroup.Item key={option.value} value={option.value}>
+                            {option.label}
+                          </RadioGroup.Item>
+                        ))}
+                      </RadioGroup.Root>
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
               </Table.Body>
             </Table.Root>

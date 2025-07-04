@@ -6,7 +6,7 @@
 
 :where(.radix-themes) {
   /* Backdrop blur constants */
-  --backdrop-blur-panel: 64px;
+  --backdrop-blur-panel: 48px;
   --backdrop-blur-components: 16px;
   --backdrop-blur-heavy: 48px;
   --backdrop-blur-light: 16px;
@@ -33,21 +33,76 @@
   
   /* Standard border width constants */
   --border-width-standard: 1px;
+  --border-width-inset: 1px;
+  --border-width-none: 0px;
   
-  /* Classic variant 3D effect constants */
-  --classic-elevation-offset: -0.03em;
-  --classic-active-padding-offset-1: 1px;
-  --classic-active-padding-offset-2: 2px;
-  --classic-shadow-blur-small: 0.17em;
-  --classic-shadow-blur-medium: 0.25em;
-  --classic-shadow-blur-large: 0.5em;
-  --classic-border-width: 0.05em;
-  --classic-border-width-thick: 0.075em;
+  /* Classic variant 3D effect constants - softened for smaller controls */
+  --classic-elevation-offset: -0.02em;
+  --classic-active-padding-offset-1: 0.5px;
+  --classic-active-padding-offset-2: 1px;
+  --classic-shadow-blur-small: 0.15em;
+  --classic-shadow-blur-medium: 0.2em;
+  --classic-shadow-blur-large: 0.4em;
+  --classic-border-width: 0.03em;
+  --classic-border-width-thick: 0.05em;
   --classic-border-width-thin: 0.1em;
-  --classic-shadow-offset-y: 0.08em;
+  --classic-shadow-offset-y: 0.04em;
   --classic-shadow-offset-negative: -0.1em;
   --classic-word-spacing: -0.1em;
+  --classic-inset-shadow-offset: 0.5px;
+  --classic-inset-shadow-offset-negative: -0.5px;
+  --classic-inset-shadow-blur: 0.5px;
   
+  /* Classic variant division factors for different intensities */
+  --classic-elevation-factor-subtle: 3;     /* For select: calc(var(--classic-elevation-offset) / 3) */
+  --classic-shadow-factor-light: 1.5;       /* For lighter shadows: calc(var(--classic-shadow-blur-small) / 1.5) */
+  --classic-shadow-factor-medium: 2;        /* For medium shadows: calc(var(--classic-shadow-blur-small) / 2) */
+  --classic-shadow-factor-heavy: 3;         /* For heavy shadows: calc(var(--classic-shadow-blur-small) / 3) */
+  --classic-shadow-factor-subtle: 4;        /* For subtle shadows: calc(var(--classic-shadow-blur-medium) / 4) */
+  --classic-border-factor-half: 2;          /* For half borders: calc(var(--classic-border-width) / 2) */
+  --classic-border-factor-light: 1.5;       /* For light borders: calc(var(--classic-border-width) / 1.5) */
+  --classic-border-multiplier-double: 2;    /* For double borders: calc(var(--classic-border-width) * 2) */
+  --classic-shadow-medium-factor-third: 3;  /* For medium shadow thirds: calc(var(--classic-shadow-blur-medium) / 3) */
+  
+  /* Classic inset shadow tokens - based on text field pattern for consistent 3D effects */
+  /* Light mode inset shadows - creates sophisticated multi-layer depth */
+  --classic-inset-shadow-light:
+    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-light)) var(--gray-a3),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a1),
+    inset 0 calc(var(--classic-border-width) * var(--classic-border-multiplier-double)) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-medium-factor-third)) var(--gray-a2),
+    0 0 0 var(--classic-border-width) var(--gray-a5);
+  
+  /* Hover state - slightly reduced inset effect */
+  --classic-inset-shadow-light-hover:
+    inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-light)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a2),
+    inset 0 calc(-1 * var(--classic-border-width) / var(--classic-border-factor-light)) var(--gray-a1),
+    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-factor-subtle)) var(--gray-a2),
+    0 0 0 var(--classic-border-width) var(--gray-a6);
+  
+  /* Focus state - minimal inset with accent ring */
+  --classic-inset-shadow-light-focus:
+    inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-half)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-heavy)) var(--gray-a1),
+    0 0 0 var(--focus-outline-width) var(--focus-8);
+  
+  /* Darker inset shadow tokens - for form controls and smaller components */
+  /* These provide more pronounced depth for better visual hierarchy */
+  --classic-inset-shadow-dark:
+    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-light)) var(--gray-a4),
+    inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a2),
+    inset 0 calc(var(--classic-border-width) * var(--classic-border-multiplier-double)) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-medium-factor-third)) var(--gray-a3),
+    0 0 0 var(--classic-border-width) var(--gray-a5);
+  
+  /* Hover state - slightly reduced inset effect with darker shadows */
+  --classic-inset-shadow-dark-hover:
+    inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-light)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a3),
+    inset 0 calc(-1 * var(--classic-border-width) / var(--classic-border-factor-light)) var(--gray-a2),
+    inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-factor-subtle)) var(--gray-a3),
+    0 0 0 var(--classic-border-width) var(--gray-a6);
+  
+  /* Focus state - minimal inset with accent ring and darker base */
+  --classic-inset-shadow-dark-focus:
+    inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-half)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-heavy)) var(--gray-a2),
+    0 0 0 var(--focus-outline-width) var(--focus-8);
   
   /* Color mixing percentages */
   --color-mix-percentage-light: 25%;
@@ -68,12 +123,72 @@
   --content-icon-size-4: var(--space-5);               /* 20px */
   
   /* Indicator icon size constants (for checkboxes, radio, sub-triggers) */
-  --indicator-icon-size-1: calc(8px * var(--scaling));  /* ~8px */
-  --indicator-icon-size-2: calc(10px * var(--scaling)); /* ~10px */
+  --indicator-icon-size-1: calc(9px * var(--scaling));  /* ~9px - used by checkbox size 1 */
+  --indicator-icon-size-2: calc(10px * var(--scaling)); /* ~10px - used by checkbox size 2 */
+  --indicator-icon-size-3: calc(12px * var(--scaling)); /* ~12px - used by checkbox size 3 */
+  
+  /* Select-specific indicator icon sizes */
+  --select-indicator-icon-size-1: calc(8px * var(--scaling));  /* ~8px - used by select size 1 */
+  --select-indicator-icon-size-2: calc(10px * var(--scaling)); /* ~10px - used by select size 2 */
+  --select-indicator-icon-size-3: calc(10px * var(--scaling)); /* ~10px - used by select size 3 */
+  
+  /* Select component specific constants */
+  --select-item-indicator-width-factor: 1.2; /* Division factor for indicator width calculation */
+  
+  /* Separator constants */
+  --separator-height-thin: 1px;
+  
+  /* Progress component constants */
+  --progress-default-duration: 5s;
+  --progress-animation-delay-start: 5s;
+  --progress-animation-delay-shine: 7.5s;
+  --progress-animation-duration-fade: 2.5s;
+  --progress-animation-duration-pulse: 5s;
+  --progress-shine-width-multiplier: 4; /* width: 400% -> calc(100% * 4) */
+  --progress-gradient-stop-start: 25%;
+  --progress-gradient-stop-end: 75%;
+  --progress-border-radius-factor: 3; /* For calc(var(--progress-height) / 3) */
+  
+  /* Progress animation scale values */
+  --progress-scale-initial: 0.01;
+  --progress-scale-step-1: 0.1;  /* 20% */
+  --progress-scale-step-2: 0.6;  /* 30% */
+  --progress-scale-step-3: 0.9;  /* 40-50% */
+  --progress-scale-final: 1;     /* 100% */
+  
+  /* Progress animation timing percentages */
+  --progress-timing-step-1: 20%;
+  --progress-timing-step-2: 30%;
+  --progress-timing-step-3: 40%;
+  --progress-timing-step-4: 50%;
+  
+  /* Slider component constants */
+  --slider-thumb-hit-area-multiplier: 3; /* For calc(var(--slider-thumb-size) * 3) */
+  --slider-thumb-inset-factor: 0.25; /* For calc(-0.25 * var(--slider-track-size)) */
+  --slider-track-radius-factor: 3; /* For calc(var(--slider-track-size) / 3) */
+  --slider-focus-ring-inner: 3px;
+  --slider-focus-ring-outer: 5px;
+  --slider-classic-inset-offset: 1.5px;
+  
+  /* Size multipliers */
+  --size-multiplier-small: 0.75;
+  --size-multiplier-large: 1.25;
+  
+  /* Opacity constants */
+  --opacity-disabled: 0.5;
+  --opacity-soft-variant: 0.75;
+  --opacity-high-contrast: 0.8;
+  
+  /* Positioning constants */
+  --position-center: 50%;
+  --position-full: 100%;
+  --position-negative-full: -100%;
+  --position-zero: 0%;
   
   /* Transition constants */
   --transition-backdrop-filter: backdrop-filter var(--duration-2) var(--ease-1);
   --transition-background-blur: background-color var(--duration-2) var(--ease-1), backdrop-filter var(--duration-2) var(--ease-1);
+  --transition-transform-progress: transform 120ms;
   
   /* Spacing multipliers for component sizing */
   --spacing-multiplier-small: 0.5;

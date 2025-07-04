@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Avatar, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { User } from 'lucide-react';
 
 const accentColors = [
   'gray',
@@ -51,6 +52,9 @@ export default function AvatarPlayground() {
       <Heading size="6" weight="bold">
         Avatar
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A circular component for displaying user profile pictures, initials, or icons.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">
@@ -60,7 +64,6 @@ export default function AvatarPlayground() {
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
           <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
           <Tabs.Trigger value="with-images">With images</Tabs.Trigger>
-          <Tabs.Trigger value="fallbacks">Fallbacks</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -90,29 +93,52 @@ export default function AvatarPlayground() {
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Accent
+                      Accent (Initials)
                     </Text>
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <Avatar
-                        size="3"
-                        panelBackground="translucent"
-                        variant={variant}
-                        fallback="JD"
-                      />
+                      <Avatar size="3" variant={variant} fallback="JD" />
                     </Table.Cell>
                   ))}
                 </Table.Row>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Gray
+                      Accent (Icon)
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Avatar size="3" variant={variant} fallback="">
+                        <User size={16} />
+                      </Avatar>
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Gray (Initials)
                     </Text>
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
                       <Avatar size="3" variant={variant} color="gray" fallback="JD" />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Gray (Icon)
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Avatar size="3" variant={variant} color="gray" fallback="">
+                        <User size={16} />
+                      </Avatar>
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -452,99 +478,6 @@ export default function AvatarPlayground() {
                   <Table.Cell>
                     <Avatar size="5" src="https://broken-url.com/image.jpg" fallback="BR" />
                   </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* Fallbacks Tab */}
-        <Tabs.Content value="fallbacks">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Fallback Type
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '100px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Single Letter
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <Flex gap="2" align="start">
-                        <Avatar size="2" variant={variant} fallback="A" />
-                        <Avatar size="3" variant={variant} fallback="B" />
-                        <Avatar size="4" variant={variant} fallback="C" />
-                      </Flex>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Two Letters
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <Flex gap="2" align="start">
-                        <Avatar size="2" variant={variant} fallback="AB" />
-                        <Avatar size="3" variant={variant} fallback="CD" />
-                        <Avatar size="4" variant={variant} fallback="EF" />
-                      </Flex>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Custom Element
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <Flex gap="2" align="start">
-                        <Avatar size="2" variant={variant} fallback={<Text size="1">👤</Text>} />
-                        <Avatar size="3" variant={variant} fallback={<Text size="2">🎭</Text>} />
-                        <Avatar size="4" variant={variant} fallback={<Text size="3">🦄</Text>} />
-                      </Flex>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Gray Color
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <Flex gap="2" align="start">
-                        <Avatar size="2" variant={variant} color="gray" fallback="GR" />
-                        <Avatar size="3" variant={variant} color="gray" fallback="AY" />
-                        <Avatar size="4" variant={variant} color="gray" fallback="CO" />
-                      </Flex>
-                    </Table.Cell>
-                  ))}
                 </Table.Row>
               </Table.Body>
             </Table.Root>

@@ -100,8 +100,12 @@ export default function ContextMenuPlayground() {
   return (
     <Flex direction="column" gap="6">
       <Heading size="6" weight="bold">
-        ContextMenu
+        Context Menu
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A menu that appears when right-clicking on an element, providing contextual actions and
+        options.
+      </Text>
 
       <Tabs.Root defaultValue="basic-usage">
         <Tabs.List size="2">
@@ -573,330 +577,368 @@ export default function ContextMenuPlayground() {
         {/* Complex Menus Tab */}
         <Tabs.Content value="complex-menus">
           <Box pt="4">
-            <Flex direction="column" gap="6">
-              {/* File Explorer Context Menu */}
-              <Box>
-                <Heading size="4" mb="3">
-                  File Explorer Context Menu
-                </Heading>
-                <Flex gap="4" wrap="wrap">
-                  <ContextMenu.Root>
-                    <ContextMenu.Trigger>
-                      <Box
-                        p="4"
-                        style={{
-                          backgroundColor: 'var(--gray-a2)',
-                          borderRadius: 'var(--radius-3)',
-                          cursor: 'context-menu',
-                          border: '1px dashed var(--gray-a6)',
-                          textAlign: 'center',
-                          width: '120px',
-                          height: '80px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Text size="2">Right-click here</Text>
-                      </Box>
-                    </ContextMenu.Trigger>
-                    <ContextMenu.Content>
-                      <ContextMenu.Item>
-                        <Plus size={16} />
-                        New file
-                      </ContextMenu.Item>
-                      <ContextMenu.Item>
-                        <Folder size={16} />
-                        New folder
-                      </ContextMenu.Item>
-                      <ContextMenu.Separator />
-                      <ContextMenu.Item>
-                        <Edit size={16} />
-                        Rename
-                      </ContextMenu.Item>
-                      <ContextMenu.Item>
-                        <Copy size={16} />
-                        Copy
-                      </ContextMenu.Item>
-                      <ContextMenu.Item>
-                        <Move size={16} />
-                        Cut
-                      </ContextMenu.Item>
-                      <ContextMenu.Separator />
-                      <ContextMenu.Sub>
-                        <ContextMenu.SubTrigger>
-                          <Share size={16} />
-                          Share
-                        </ContextMenu.SubTrigger>
-                        <ContextMenu.SubContent>
-                          <ContextMenu.Item>
-                            <Link size={16} />
-                            Copy link
-                          </ContextMenu.Item>
-                          <ContextMenu.Item>
-                            <Users size={16} />
-                            Share with people
-                          </ContextMenu.Item>
-                          <ContextMenu.Item>
-                            <ExternalLink size={16} />
-                            Share publicly
-                          </ContextMenu.Item>
-                        </ContextMenu.SubContent>
-                      </ContextMenu.Sub>
-                      <ContextMenu.Sub>
-                        <ContextMenu.SubTrigger>
-                          <MoreHorizontal size={16} />
-                          More actions
-                        </ContextMenu.SubTrigger>
-                        <ContextMenu.SubContent>
-                          <ContextMenu.Item>
-                            <Archive size={16} />
-                            Archive
-                          </ContextMenu.Item>
-                          <ContextMenu.Item>
-                            <Download size={16} />
-                            Download
-                          </ContextMenu.Item>
-                          <ContextMenu.Item>
-                            <History size={16} />
-                            View history
-                          </ContextMenu.Item>
-                          <ContextMenu.Separator />
-                          <ContextMenu.Item>
-                            <Lock size={16} />
-                            Make private
-                          </ContextMenu.Item>
-                          <ContextMenu.Item>
-                            <Pin size={16} />
-                            Pin to sidebar
-                          </ContextMenu.Item>
-                        </ContextMenu.SubContent>
-                      </ContextMenu.Sub>
-                      <ContextMenu.Separator />
-                      <ContextMenu.Item>
-                        <Settings size={16} />
-                        Properties
-                      </ContextMenu.Item>
-                      <ContextMenu.Item color="red">
-                        <Trash2 size={16} />
-                        Delete
-                      </ContextMenu.Item>
-                    </ContextMenu.Content>
-                  </ContextMenu.Root>
-                </Flex>
-              </Box>
-
-              {/* Settings Context Menu with Checkboxes and Radio Groups */}
-              <Box>
-                <Heading size="4" mb="3">
-                  Settings Context Menu
-                </Heading>
-                <Flex gap="4" wrap="wrap">
-                  <ContextMenu.Root>
-                    <ContextMenu.Trigger>
-                      <Box
-                        p="4"
-                        style={{
-                          backgroundColor: 'var(--gray-a2)',
-                          borderRadius: 'var(--radius-3)',
-                          cursor: 'context-menu',
-                          border: '1px dashed var(--gray-a6)',
-                          textAlign: 'center',
-                          width: '120px',
-                          height: '80px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Text size="2">Right-click here</Text>
-                      </Box>
-                    </ContextMenu.Trigger>
-                    <ContextMenu.Content>
-                      <ContextMenu.Label>General Settings</ContextMenu.Label>
-                      <ContextMenu.CheckboxItem
-                        checked={checkedItems.notifications}
-                        onCheckedChange={() => toggleCheckedItem('notifications')}
-                      >
-                        <Bell size={16} />
-                        Enable notifications
-                      </ContextMenu.CheckboxItem>
-                      <ContextMenu.CheckboxItem
-                        checked={checkedItems.autoSave}
-                        onCheckedChange={() => toggleCheckedItem('autoSave')}
-                      >
-                        <Archive size={16} />
-                        Auto-save documents
-                      </ContextMenu.CheckboxItem>
-                      <ContextMenu.CheckboxItem
-                        checked={checkedItems.spellCheck}
-                        onCheckedChange={() => toggleCheckedItem('spellCheck')}
-                      >
-                        <Check size={16} />
-                        Enable spell check
-                      </ContextMenu.CheckboxItem>
-
-                      <ContextMenu.Separator />
-
-                      <ContextMenu.Label>View Options</ContextMenu.Label>
-                      <ContextMenu.RadioGroup value={selectedView} onValueChange={setSelectedView}>
-                        <ContextMenu.RadioItem value="list">
-                          <List size={16} />
-                          List view
-                        </ContextMenu.RadioItem>
-                        <ContextMenu.RadioItem value="grid">
-                          <Grid size={16} />
-                          Grid view
-                        </ContextMenu.RadioItem>
-                        <ContextMenu.RadioItem value="cards">
-                          <Layers size={16} />
-                          Card view
-                        </ContextMenu.RadioItem>
-                      </ContextMenu.RadioGroup>
-
-                      <ContextMenu.Separator />
-
-                      <ContextMenu.Label>Theme</ContextMenu.Label>
-                      <ContextMenu.RadioGroup
-                        value={selectedTheme}
-                        onValueChange={setSelectedTheme}
-                      >
-                        <ContextMenu.RadioItem value="light">
-                          <Circle size={16} />
-                          Light theme
-                        </ContextMenu.RadioItem>
-                        <ContextMenu.RadioItem value="dark">
-                          <Dot size={16} />
-                          Dark theme
-                        </ContextMenu.RadioItem>
-                        <ContextMenu.RadioItem value="auto">
-                          <Palette size={16} />
-                          Auto theme
-                        </ContextMenu.RadioItem>
-                      </ContextMenu.RadioGroup>
-
-                      <ContextMenu.Separator />
-
-                      <ContextMenu.Item>
-                        <Settings size={16} />
-                        Advanced settings
-                      </ContextMenu.Item>
-                    </ContextMenu.Content>
-                  </ContextMenu.Root>
-                </Flex>
-              </Box>
-
-              {/* Rich Text Editor Context Menu */}
-              <Box>
-                <Heading size="4" mb="3">
-                  Rich Text Editor Context Menu
-                </Heading>
-                <ContextMenu.Root>
-                  <ContextMenu.Trigger>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        cursor: 'context-menu',
-                        border: '1px dashed var(--gray-a6)',
-                        textAlign: 'center',
-                        width: '120px',
-                        height: '80px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Text size="2">Right-click here</Text>
-                    </Box>
-                  </ContextMenu.Trigger>
-                  <ContextMenu.Content>
-                    <ContextMenu.Item shortcut="⌘X">
-                      <Move size={16} />
-                      Cut
-                    </ContextMenu.Item>
-                    <ContextMenu.Item shortcut="⌘C">
-                      <Copy size={16} />
-                      Copy
-                    </ContextMenu.Item>
-                    <ContextMenu.Item shortcut="⌘V">
-                      <Plus size={16} />
-                      Paste
-                    </ContextMenu.Item>
-                    <ContextMenu.Separator />
-                    <ContextMenu.Sub>
-                      <ContextMenu.SubTrigger>
-                        <Palette size={16} />
-                        Format text
-                      </ContextMenu.SubTrigger>
-                      <ContextMenu.SubContent>
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      Menu Type
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      Right-click trigger
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '300px' }}>
+                    <Text size="1" color="gray">
+                      Description
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      File Explorer Menu
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <ContextMenu.Root>
+                      <ContextMenu.Trigger>
+                        <Box
+                          p="4"
+                          style={{
+                            backgroundColor: 'var(--gray-a2)',
+                            borderRadius: 'var(--radius-3)',
+                            cursor: 'context-menu',
+                            border: '1px dashed var(--gray-a6)',
+                            textAlign: 'center',
+                            width: '120px',
+                            height: '80px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Text size="2">Right-click here</Text>
+                        </Box>
+                      </ContextMenu.Trigger>
+                      <ContextMenu.Content>
                         <ContextMenu.Item>
-                          <Text style={{ fontWeight: 'bold' }}>Bold</Text>
+                          <Plus size={16} />
+                          New file
                         </ContextMenu.Item>
                         <ContextMenu.Item>
-                          <Text style={{ fontStyle: 'italic' }}>Italic</Text>
-                        </ContextMenu.Item>
-                        <ContextMenu.Item>
-                          <Text style={{ textDecoration: 'underline' }}>Underline</Text>
+                          <Folder size={16} />
+                          New folder
                         </ContextMenu.Item>
                         <ContextMenu.Separator />
                         <ContextMenu.Item>
-                          <Code size={16} />
-                          Code format
+                          <Edit size={16} />
+                          Rename
                         </ContextMenu.Item>
                         <ContextMenu.Item>
-                          <Link size={16} />
-                          Add link
-                        </ContextMenu.Item>
-                      </ContextMenu.SubContent>
-                    </ContextMenu.Sub>
-                    <ContextMenu.Sub>
-                      <ContextMenu.SubTrigger>
-                        <Plus size={16} />
-                        Insert
-                      </ContextMenu.SubTrigger>
-                      <ContextMenu.SubContent>
-                        <ContextMenu.Item>
-                          <Image size={16} />
-                          Image
+                          <Copy size={16} />
+                          Copy
                         </ContextMenu.Item>
                         <ContextMenu.Item>
-                          <Video size={16} />
-                          Video
-                        </ContextMenu.Item>
-                        <ContextMenu.Item>
-                          <FileText size={16} />
-                          File
+                          <Move size={16} />
+                          Cut
                         </ContextMenu.Item>
                         <ContextMenu.Separator />
+                        <ContextMenu.Sub>
+                          <ContextMenu.SubTrigger>
+                            <Share size={16} />
+                            Share
+                          </ContextMenu.SubTrigger>
+                          <ContextMenu.SubContent>
+                            <ContextMenu.Item>
+                              <Link size={16} />
+                              Copy link
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Users size={16} />
+                              Share with people
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <ExternalLink size={16} />
+                              Share publicly
+                            </ContextMenu.Item>
+                          </ContextMenu.SubContent>
+                        </ContextMenu.Sub>
+                        <ContextMenu.Sub>
+                          <ContextMenu.SubTrigger>
+                            <MoreHorizontal size={16} />
+                            More actions
+                          </ContextMenu.SubTrigger>
+                          <ContextMenu.SubContent>
+                            <ContextMenu.Item>
+                              <Archive size={16} />
+                              Archive
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Download size={16} />
+                              Download
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <History size={16} />
+                              View history
+                            </ContextMenu.Item>
+                            <ContextMenu.Separator />
+                            <ContextMenu.Item>
+                              <Lock size={16} />
+                              Make private
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Pin size={16} />
+                              Pin to sidebar
+                            </ContextMenu.Item>
+                          </ContextMenu.SubContent>
+                        </ContextMenu.Sub>
+                        <ContextMenu.Separator />
                         <ContextMenu.Item>
-                          <BarChart3 size={16} />
-                          Chart
+                          <Settings size={16} />
+                          Properties
                         </ContextMenu.Item>
+                        <ContextMenu.Item color="red">
+                          <Trash2 size={16} />
+                          Delete
+                        </ContextMenu.Item>
+                      </ContextMenu.Content>
+                    </ContextMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">
+                      File management with submenus for sharing and advanced actions
+                    </Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Settings Menu
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <ContextMenu.Root>
+                      <ContextMenu.Trigger>
+                        <Box
+                          p="4"
+                          style={{
+                            backgroundColor: 'var(--gray-a2)',
+                            borderRadius: 'var(--radius-3)',
+                            cursor: 'context-menu',
+                            border: '1px dashed var(--gray-a6)',
+                            textAlign: 'center',
+                            width: '120px',
+                            height: '80px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Text size="2">Right-click here</Text>
+                        </Box>
+                      </ContextMenu.Trigger>
+                      <ContextMenu.Content>
+                        <ContextMenu.Label>General Settings</ContextMenu.Label>
+                        <ContextMenu.CheckboxItem
+                          checked={checkedItems.notifications}
+                          onCheckedChange={() => toggleCheckedItem('notifications')}
+                        >
+                          <Bell size={16} />
+                          Enable notifications
+                        </ContextMenu.CheckboxItem>
+                        <ContextMenu.CheckboxItem
+                          checked={checkedItems.autoSave}
+                          onCheckedChange={() => toggleCheckedItem('autoSave')}
+                        >
+                          <Archive size={16} />
+                          Auto-save documents
+                        </ContextMenu.CheckboxItem>
+                        <ContextMenu.CheckboxItem
+                          checked={checkedItems.spellCheck}
+                          onCheckedChange={() => toggleCheckedItem('spellCheck')}
+                        >
+                          <Check size={16} />
+                          Enable spell check
+                        </ContextMenu.CheckboxItem>
+
+                        <ContextMenu.Separator />
+
+                        <ContextMenu.Label>View Options</ContextMenu.Label>
+                        <ContextMenu.RadioGroup
+                          value={selectedView}
+                          onValueChange={setSelectedView}
+                        >
+                          <ContextMenu.RadioItem value="list">
+                            <List size={16} />
+                            List view
+                          </ContextMenu.RadioItem>
+                          <ContextMenu.RadioItem value="grid">
+                            <Grid size={16} />
+                            Grid view
+                          </ContextMenu.RadioItem>
+                          <ContextMenu.RadioItem value="cards">
+                            <Layers size={16} />
+                            Card view
+                          </ContextMenu.RadioItem>
+                        </ContextMenu.RadioGroup>
+
+                        <ContextMenu.Separator />
+
+                        <ContextMenu.Label>Theme</ContextMenu.Label>
+                        <ContextMenu.RadioGroup
+                          value={selectedTheme}
+                          onValueChange={setSelectedTheme}
+                        >
+                          <ContextMenu.RadioItem value="light">
+                            <Circle size={16} />
+                            Light theme
+                          </ContextMenu.RadioItem>
+                          <ContextMenu.RadioItem value="dark">
+                            <Dot size={16} />
+                            Dark theme
+                          </ContextMenu.RadioItem>
+                          <ContextMenu.RadioItem value="auto">
+                            <Palette size={16} />
+                            Auto theme
+                          </ContextMenu.RadioItem>
+                        </ContextMenu.RadioGroup>
+
+                        <ContextMenu.Separator />
+
                         <ContextMenu.Item>
-                          <Calendar size={16} />
-                          Date
+                          <Settings size={16} />
+                          Advanced settings
                         </ContextMenu.Item>
+                      </ContextMenu.Content>
+                    </ContextMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Settings menu with checkboxes, radio groups, and labels</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Text Editor Menu
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <ContextMenu.Root>
+                      <ContextMenu.Trigger>
+                        <Box
+                          p="4"
+                          style={{
+                            backgroundColor: 'var(--gray-a2)',
+                            borderRadius: 'var(--radius-3)',
+                            cursor: 'context-menu',
+                            border: '1px dashed var(--gray-a6)',
+                            textAlign: 'center',
+                            width: '120px',
+                            height: '80px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Text size="2">Right-click here</Text>
+                        </Box>
+                      </ContextMenu.Trigger>
+                      <ContextMenu.Content>
+                        <ContextMenu.Item shortcut="⌘X">
+                          <Move size={16} />
+                          Cut
+                        </ContextMenu.Item>
+                        <ContextMenu.Item shortcut="⌘C">
+                          <Copy size={16} />
+                          Copy
+                        </ContextMenu.Item>
+                        <ContextMenu.Item shortcut="⌘V">
+                          <Plus size={16} />
+                          Paste
+                        </ContextMenu.Item>
+                        <ContextMenu.Separator />
+                        <ContextMenu.Sub>
+                          <ContextMenu.SubTrigger>
+                            <Palette size={16} />
+                            Format text
+                          </ContextMenu.SubTrigger>
+                          <ContextMenu.SubContent>
+                            <ContextMenu.Item>
+                              <Text style={{ fontWeight: 'bold' }}>Bold</Text>
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Text style={{ fontStyle: 'italic' }}>Italic</Text>
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Text style={{ textDecoration: 'underline' }}>Underline</Text>
+                            </ContextMenu.Item>
+                            <ContextMenu.Separator />
+                            <ContextMenu.Item>
+                              <Code size={16} />
+                              Code format
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Link size={16} />
+                              Add link
+                            </ContextMenu.Item>
+                          </ContextMenu.SubContent>
+                        </ContextMenu.Sub>
+                        <ContextMenu.Sub>
+                          <ContextMenu.SubTrigger>
+                            <Plus size={16} />
+                            Insert
+                          </ContextMenu.SubTrigger>
+                          <ContextMenu.SubContent>
+                            <ContextMenu.Item>
+                              <Image size={16} />
+                              Image
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Video size={16} />
+                              Video
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <FileText size={16} />
+                              File
+                            </ContextMenu.Item>
+                            <ContextMenu.Separator />
+                            <ContextMenu.Item>
+                              <BarChart3 size={16} />
+                              Chart
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Calendar size={16} />
+                              Date
+                            </ContextMenu.Item>
+                            <ContextMenu.Item>
+                              <Database size={16} />
+                              Table
+                            </ContextMenu.Item>
+                          </ContextMenu.SubContent>
+                        </ContextMenu.Sub>
+                        <ContextMenu.Separator />
                         <ContextMenu.Item>
-                          <Database size={16} />
-                          Table
+                          <MessageCircle size={16} />
+                          Add comment
                         </ContextMenu.Item>
-                      </ContextMenu.SubContent>
-                    </ContextMenu.Sub>
-                    <ContextMenu.Separator />
-                    <ContextMenu.Item>
-                      <MessageCircle size={16} />
-                      Add comment
-                    </ContextMenu.Item>
-                    <ContextMenu.Item shortcut="⌘/">
-                      <Settings size={16} />
-                      Editor settings
-                    </ContextMenu.Item>
-                  </ContextMenu.Content>
-                </ContextMenu.Root>
-              </Box>
-            </Flex>
+                        <ContextMenu.Item shortcut="⌘/">
+                          <Settings size={16} />
+                          Editor settings
+                        </ContextMenu.Item>
+                      </ContextMenu.Content>
+                    </ContextMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Rich text editor with formatting and insertion submenus</Text>
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table.Root>
           </Box>
         </Tabs.Content>
       </Tabs.Root>

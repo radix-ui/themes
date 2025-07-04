@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IconButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
-import { Heart, Star, Plus, Download } from 'lucide-react';
+import { Checkbox, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -33,18 +32,17 @@ const accentColors = [
   'sky',
 ] as const;
 
-const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
-const sizes = ['1', '2', '3', '4'] as const;
-const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
+const variants = ['classic', 'solid', 'soft'] as const;
+const sizes = ['1', '2', '3'] as const;
 
-export default function IconButtonPlayground() {
+export default function CheckboxPlayground() {
   return (
     <Flex direction="column" gap="6">
       <Heading size="6" weight="bold">
-        Icon Button
+        Checkbox
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A compact button component that displays only an icon without text.
+      <Text size="2" color="gray">
+        A control that allows the user to toggle between checked and not checked.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">
@@ -52,8 +50,7 @@ export default function IconButtonPlayground() {
           <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
           <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
-          <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
-          <Tabs.Trigger value="flush">Flush Ghost</Tabs.Trigger>
+          <Tabs.Trigger value="states">States</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -88,9 +85,7 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant}>
-                        <Heart />
-                      </IconButton>
+                      <Checkbox size="2" variant={variant} defaultChecked />
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -102,9 +97,7 @@ export default function IconButtonPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <IconButton size="2" variant={variant} color="gray">
-                        <Heart />
-                      </IconButton>
+                      <Checkbox size="2" variant={variant} color="gray" defaultChecked />
                     </Table.Cell>
                   ))}
                 </Table.Row>
@@ -147,9 +140,7 @@ export default function IconButtonPlayground() {
                       </Table.RowHeaderCell>
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color}>
-                            <Star />
-                          </IconButton>
+                          <Checkbox size="2" variant={variant} color={color} defaultChecked />
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -165,9 +156,13 @@ export default function IconButtonPlayground() {
                       </Table.RowHeaderCell>
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
-                          <IconButton size="2" variant={variant} color={color} highContrast>
-                            <Star />
-                          </IconButton>
+                          <Checkbox
+                            size="2"
+                            variant={variant}
+                            color={color}
+                            highContrast
+                            defaultChecked
+                          />
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -211,9 +206,7 @@ export default function IconButtonPlayground() {
                     </Table.RowHeaderCell>
                     {variants.map((variant) => (
                       <Table.Cell key={variant}>
-                        <IconButton size={size as any} variant={variant}>
-                          <Plus />
-                        </IconButton>
+                        <Checkbox size={size as any} variant={variant} defaultChecked />
                       </Table.Cell>
                     ))}
                   </Table.Row>
@@ -223,15 +216,15 @@ export default function IconButtonPlayground() {
           </Box>
         </Tabs.Content>
 
-        {/* All Radius Tab */}
-        <Tabs.Content value="all-radius">
+        {/* States Tab */}
+        <Tabs.Content value="states">
           <Box pt="4">
             <Table.Root>
               <Table.Header>
                 <Table.Row>
                   <Table.ColumnHeaderCell style={{ width: '120px' }}>
                     <Text size="1" color="gray">
-                      Radius
+                      State
                     </Text>
                   </Table.ColumnHeaderCell>
                   {variants.map((variant) => (
@@ -247,101 +240,65 @@ export default function IconButtonPlayground() {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {radiusOptions.map((radius) => (
-                  <Table.Row key={radius}>
-                    <Table.RowHeaderCell>
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {radius === 'none' ? 'No radius' : radius}
-                      </Text>
-                    </Table.RowHeaderCell>
-                    {variants.map((variant) => (
-                      <Table.Cell key={variant}>
-                        <IconButton size="2" variant={variant} radius={radius as any}>
-                          <Download />
-                        </IconButton>
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* Flush Tab */}
-        <Tabs.Content value="flush">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Flush State
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '400px' }}>
-                    <Text size="1" color="gray">
-                      Ghost IconButton (in container with padding)
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Standard
+                      Unchecked
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2">
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2">
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Checkbox size="2" variant={variant} />
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Flush
+                      Checked
                     </Text>
                   </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-2)',
-                      }}
-                    >
-                      <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Heart />
-                      </IconButton>
-                      <IconButton variant="ghost" size="2" flush>
-                        <Star />
-                      </IconButton>
-                      <Text size="2">end</Text>
-                    </Box>
-                  </Table.Cell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Checkbox size="2" variant={variant} defaultChecked />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Indeterminate
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Checkbox size="2" variant={variant} checked="indeterminate" />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Disabled
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Checkbox size="2" variant={variant} disabled />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Disabled Checked
+                    </Text>
+                  </Table.RowHeaderCell>
+                  {variants.map((variant) => (
+                    <Table.Cell key={variant}>
+                      <Checkbox size="2" variant={variant} disabled defaultChecked />
+                    </Table.Cell>
+                  ))}
                 </Table.Row>
               </Table.Body>
             </Table.Root>

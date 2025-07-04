@@ -12,6 +12,7 @@ import { Grid } from './grid.js';
 import { ThickCheckIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
+import { useThemeContext } from './theme.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { MarginProps } from '../props/margin.props.js';
@@ -44,11 +45,15 @@ interface CheckboxCardsRootProps
     CheckboxCardsRootOwnProps {}
 const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCardsRootProps>(
   (props: ScopedProps<CheckboxCardsRootProps>, forwardedRef) => {
-    const { __scopeCheckboxCards, className, color, ...rootProps } = extractProps(
-      props,
-      checkboxCardsRootPropDefs,
-      marginPropDefs,
-    );
+    const themeContext = useThemeContext();
+    const panelBackground = props.panelBackground ?? themeContext.panelBackground;
+    const {
+      __scopeCheckboxCards,
+      className,
+      color,
+      panelBackground: _,
+      ...rootProps
+    } = extractProps(props, checkboxCardsRootPropDefs, marginPropDefs);
     const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
     return (
       <CheckboxCardsProvider
@@ -60,6 +65,7 @@ const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCar
           <CheckboxGroupPrimitive.Root
             {...checkboxGroupScope}
             data-accent-color={color}
+            data-panel-background={panelBackground}
             {...rootProps}
             ref={forwardedRef}
             className={classNames('rt-CheckboxCardsRoot', className)}
@@ -81,9 +87,10 @@ const CheckboxCardsItem = React.forwardRef<
 >(({ __scopeCheckboxCards, children, className, style, ...props }, forwardedRef) => {
   const context = useCheckboxCardsContext('CheckboxCardsItem', __scopeCheckboxCards);
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
+
   const { className: checkboxClassName } = extractProps(
     // Pass size / highContrast values from the context and static variant to generate styles
-    { size: context?.size, variant: 'surface', highContrast: context?.highContrast },
+    { size: context?.size, variant: 'solid', highContrast: context?.highContrast },
     // Pass size & variant prop defs to allow it to be extracted
     baseCheckboxPropDefs,
   );

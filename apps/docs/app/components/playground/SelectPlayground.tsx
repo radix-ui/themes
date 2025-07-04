@@ -50,6 +50,9 @@ export default function SelectPlayground() {
       <Heading size="6" weight="bold">
         Select
       </Heading>
+      <Text size="2" color="gray">
+        Displays a list of options for the user to pick from—triggered by a button.
+      </Text>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

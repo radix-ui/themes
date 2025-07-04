@@ -25,6 +25,7 @@
     height: var(--radio-size);
     width: var(--radio-size);
     border-radius: 100%;
+    transition: var(--transition-radio);
   }
 
   &::after {
@@ -35,6 +36,7 @@
     border-radius: 100%;
     /* Scale via transform to achieve perfect sub-pixel positioning */
     transform: scale(0.4);
+    transition: var(--transition-radio);
   }
 
   &:where(:checked, [data-state='checked']) {
@@ -75,9 +77,9 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* surface */
+/* solid */
 
-.rt-BaseRadioRoot:where(.rt-variant-surface) {
+.rt-BaseRadioRoot:where(.rt-variant-solid) {
   &:where(:not(:checked), [data-state='unchecked'])::before {
     background-color: var(--color-surface);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -110,35 +112,89 @@
 /* classic */
 
 .rt-BaseRadioRoot:where(.rt-variant-classic) {
+  position: relative;
+  top: var(--classic-elevation-offset);
+  
   &:where(:not(:checked), [data-state='unchecked'])::before {
-    background-color: var(--color-surface);
-    box-shadow: inset 0 0 0 1px var(--gray-7), var(--shadow-1);
+    background-color: var(--accent-2);
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 var(--classic-border-width) var(--white-a12),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+      0 0 0 var(--classic-border-width) var(--accent-a5),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
   }
+  
+  :where(.dark, .dark-theme) &,
+  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+    &:where(:not(:checked), [data-state='unchecked'])::before {
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+        inset 0 var(--classic-border-width) var(--accent-a11),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+        inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
+        0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+    }
+  }
+  
   &:where(:checked, [data-state='checked'])::before {
-    background-color: var(--accent-indicator);
-    background-image: linear-gradient(to bottom, var(--white-a3), transparent, var(--black-a3));
-    box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px var(--black-a4);
+    background-color: var(--accent-3);
+    /* prettier-ignore */
+    box-shadow:
+      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 var(--classic-border-width) var(--white-a12),
+      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
+      0 0 0 var(--classic-border-width) var(--accent-a5),
+      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
   }
   &::after {
-    background-color: var(--accent-contrast);
+    background-color: var(--accent-a11);
+  }
+  
+  :where(.dark, .dark-theme) &,
+  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+    &:where(:checked, [data-state='checked'])::before {
+      background-color: var(--accent-3);
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
+        inset 0 var(--classic-border-width) var(--accent-a11),
+        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
+        inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
+        0 0 0 var(--classic-border-width-thick) var(--accent-a7),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+    }
   }
 
   &:where(.rt-high-contrast) {
-    &:where(:checked, [data-state='checked'])::before {
+    &::after {
       background-color: var(--accent-12);
     }
-    &::after {
-      background-color: var(--accent-1);
+  }
+
+  &:where(:active:not(:disabled, [data-disabled])) {
+    top: calc(var(--classic-elevation-offset) + var(--classic-active-padding-offset-1));
+    
+    &::before {
+      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
     }
   }
 
   &:where(:disabled, [data-disabled])::before {
-    box-shadow: var(--shadow-1);
     background-color: var(--gray-a3);
+    box-shadow: none;
     background-image: none;
   }
   &:where(:disabled, [data-disabled])::after {
     background-color: var(--gray-a8);
+  }
+  &:where(:disabled, [data-disabled]) {
+    top: 0;
   }
 }
 

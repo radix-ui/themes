@@ -20,6 +20,9 @@ export default function CardPlayground() {
       <Heading size="6" weight="bold">
         Card
       </Heading>
+      <Text size="3" color="gray" mt="2">
+        A flexible container component for grouping related content with consistent styling.
+      </Text>
 
       <Tabs.Root defaultValue="variants">
         <Tabs.List size="2">
@@ -65,11 +68,26 @@ export default function CardPlayground() {
                       <Card
                         variant={variant}
                         size="3"
-                        style={{ width: '180px', height: '100px' }}
+                        style={{
+                          width: '180px',
+                          height: '100px',
+                          ...(variant === 'ghost' && {
+                            border: '1px dashed var(--gray-a6)',
+                          }),
+                        }}
                       />
                     </Table.Cell>
                     <Table.Cell>
-                      <Card variant={variant} size="3" style={{ width: '280px' }}>
+                      <Card
+                        variant={variant}
+                        size="3"
+                        style={{
+                          width: '280px',
+                          ...(variant === 'ghost' && {
+                            border: '1px dashed var(--gray-a6)',
+                          }),
+                        }}
+                      >
                         <Flex direction="column" gap="2">
                           <Heading size="3">Card Title</Heading>
                           <Text size="2" color="gray">
@@ -356,7 +374,7 @@ export default function CardPlayground() {
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '400px' }}>
                     <Text size="1" color="gray">
-                      Ghost Card (in container with padding)
+                      Ghost Card
                     </Text>
                   </Table.ColumnHeaderCell>
                 </Table.Row>
@@ -369,24 +387,17 @@ export default function CardPlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        width: '360px',
-                      }}
-                    >
-                      <Text size="2" mb="3">
-                        Container content above
-                      </Text>
-                      <Card variant="ghost" size="3">
+                    <Flex direction="column" gap="3" style={{ width: '360px' }}>
+                      <Text size="2">Container content above</Text>
+                      <Card
+                        variant="ghost"
+                        size="3"
+                        style={{ border: '1px dashed var(--gray-a6)' }}
+                      >
                         <Text size="2">Standard ghost card content</Text>
                       </Card>
-                      <Text size="2" mt="3">
-                        Container content below
-                      </Text>
-                    </Box>
+                      <Text size="2">Container content below</Text>
+                    </Flex>
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
@@ -396,24 +407,18 @@ export default function CardPlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <Box
-                      p="4"
-                      style={{
-                        backgroundColor: 'var(--gray-a2)',
-                        borderRadius: 'var(--radius-3)',
-                        width: '360px',
-                      }}
-                    >
-                      <Text size="2" mb="3">
-                        Container content above
-                      </Text>
-                      <Card variant="ghost" size="3" flush>
+                    <Flex direction="column" gap="3" style={{ width: '360px' }}>
+                      <Text size="2">Container content above</Text>
+                      <Card
+                        variant="ghost"
+                        size="3"
+                        flush
+                        style={{ border: '1px dashed var(--gray-a6)' }}
+                      >
                         <Text size="2">Flush ghost card content</Text>
                       </Card>
-                      <Text size="2" mt="3">
-                        Container content below
-                      </Text>
-                    </Box>
+                      <Text size="2">Container content below</Text>
+                    </Flex>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
