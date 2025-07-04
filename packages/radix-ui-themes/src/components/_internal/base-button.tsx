@@ -14,7 +14,7 @@ import type { MarginProps } from '../../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../../helpers/component-props.js';
 import type { GetPropDefTypes } from '../../props/prop-def.js';
 
-type BaseButtonElement = React.ElementRef<'button'>;
+type BaseButtonElement = React.ComponentRef<'button'>;
 type BaseButtonOwnProps = GetPropDefTypes<typeof baseButtonPropDefs>;
 interface BaseButtonProps
   extends ComponentPropsWithout<'button', RemovedProps>,

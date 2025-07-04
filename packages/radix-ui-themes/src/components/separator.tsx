@@ -9,7 +9,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type SeparatorElement = React.ElementRef<'span'>;
+type SeparatorElement = React.ComponentRef<'span'>;
 type SeparatorOwnProps = GetPropDefTypes<typeof separatorPropDefs>;
 interface SeparatorProps
   extends ComponentPropsWithout<'span', RemovedProps>,
@@ -19,7 +19,7 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
   const { className, color, decorative, ...separatorProps } = extractProps(
     props,
     separatorPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <span

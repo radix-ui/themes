@@ -8,7 +8,7 @@ import { strongPropDefs } from './strong.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type StrongElement = React.ElementRef<'strong'>;
+type StrongElement = React.ComponentRef<'strong'>;
 type StrongOwnProps = GetPropDefTypes<typeof strongPropDefs>;
 interface StrongProps extends ComponentPropsWithout<'strong', RemovedProps>, StrongOwnProps {}
 const Strong = React.forwardRef<StrongElement, StrongProps>((props, forwardedRef) => {

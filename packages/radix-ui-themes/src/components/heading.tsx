@@ -10,7 +10,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type HeadingElement = React.ElementRef<'h1'>;
+type HeadingElement = React.ComponentRef<'h1'>;
 type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;
 interface HeadingProps
   extends ComponentPropsWithout<'h1', RemovedProps>,

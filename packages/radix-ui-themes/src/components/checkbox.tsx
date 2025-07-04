@@ -14,7 +14,7 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
-type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
+type CheckboxElement = React.ComponentRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;
 interface CheckboxProps
   extends ComponentPropsWithout<

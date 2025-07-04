@@ -116,11 +116,11 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         onScalingChange={setScaling}
       />
     );
-  }
+  },
 );
 ThemeRoot.displayName = 'ThemeRoot';
 
-type ThemeImplElement = React.ElementRef<'div'>;
+type ThemeImplElement = React.ComponentRef<'div'>;
 interface ThemeImplProps extends ThemeImplPublicProps, ThemeImplPrivateProps {}
 interface ThemeImplPublicProps
   extends ComponentPropsWithout<'div', RemovedProps | 'dir'>,
@@ -190,7 +190,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
-        ]
+        ],
       )}
     >
       <Comp
@@ -210,7 +210,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
             light: appearance === 'light',
             dark: appearance === 'dark',
           },
-          themeProps.className
+          themeProps.className,
         )}
       />
     </ThemeContext.Provider>

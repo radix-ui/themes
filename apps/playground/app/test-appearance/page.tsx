@@ -93,7 +93,7 @@ export default function Test() {
 }
 
 const SampleNestedUI = React.forwardRef<
-  React.ElementRef<typeof Flex>,
+  React.ComponentRef<typeof Flex>,
   React.ComponentPropsWithoutRef<typeof Flex>
 >(({ children, title, ...props }, forwardedRef) => {
   return (
