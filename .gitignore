@@ -80,3 +80,6 @@ Thumbs.db
 .idea
 
 
+
+# Turbo cache
+.turbo/
