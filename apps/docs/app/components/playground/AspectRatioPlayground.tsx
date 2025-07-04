@@ -70,17 +70,19 @@ export default function AspectRatioPlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <AspectRatio ratio={ratio}>
-                        <Image
-                          src={demoImages.landscape}
-                          alt="Aspect ratio demo"
-                          variant="surface"
-                          width="100%"
-                          height="100%"
-                          radius="medium"
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '200px' }}>
+                        <AspectRatio ratio={ratio}>
+                          <Image
+                            src={demoImages.landscape}
+                            alt="Aspect ratio demo"
+                            variant="surface"
+                            width="100%"
+                            height="100%"
+                            radius="medium"
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -129,43 +131,49 @@ export default function AspectRatioPlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <AspectRatio ratio={16 / 9}>
-                        <Image
-                          src={demoImages.landscape}
-                          alt="Widescreen demo"
-                          variant={variant}
-                          width="100%"
-                          height="100%"
-                          radius="medium"
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '150px' }}>
+                        <AspectRatio ratio={16 / 9}>
+                          <Image
+                            src={demoImages.landscape}
+                            alt="Widescreen demo"
+                            variant={variant}
+                            width="100%"
+                            height="100%"
+                            radius="medium"
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                     <Table.Cell>
-                      <AspectRatio ratio={1}>
-                        <Image
-                          src={demoImages.square}
-                          alt="Square demo"
-                          variant={variant}
-                          width="100%"
-                          height="100%"
-                          radius="medium"
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '120px' }}>
+                        <AspectRatio ratio={1}>
+                          <Image
+                            src={demoImages.square}
+                            alt="Square demo"
+                            variant={variant}
+                            width="100%"
+                            height="100%"
+                            radius="medium"
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                     <Table.Cell>
-                      <AspectRatio ratio={9 / 16}>
-                        <Image
-                          src={demoImages.portrait}
-                          alt="Portrait demo"
-                          variant={variant}
-                          width="100%"
-                          height="100%"
-                          radius="medium"
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '80px' }}>
+                        <AspectRatio ratio={9 / 16}>
+                          <Image
+                            src={demoImages.portrait}
+                            alt="Portrait demo"
+                            variant={variant}
+                            width="100%"
+                            height="100%"
+                            radius="medium"
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -214,43 +222,49 @@ export default function AspectRatioPlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <AspectRatio ratio={16 / 9}>
-                        <Image
-                          src={demoImages.landscape}
-                          alt="Widescreen demo"
-                          variant="surface"
-                          width="100%"
-                          height="100%"
-                          radius={radius as any}
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '150px' }}>
+                        <AspectRatio ratio={16 / 9}>
+                          <Image
+                            src={demoImages.landscape}
+                            alt="Widescreen demo"
+                            variant="surface"
+                            width="100%"
+                            height="100%"
+                            radius={radius as any}
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                     <Table.Cell>
-                      <AspectRatio ratio={1}>
-                        <Image
-                          src={demoImages.square}
-                          alt="Square demo"
-                          variant="surface"
-                          width="100%"
-                          height="100%"
-                          radius={radius as any}
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '120px' }}>
+                        <AspectRatio ratio={1}>
+                          <Image
+                            src={demoImages.square}
+                            alt="Square demo"
+                            variant="surface"
+                            width="100%"
+                            height="100%"
+                            radius={radius as any}
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                     <Table.Cell>
-                      <AspectRatio ratio={9 / 16}>
-                        <Image
-                          src={demoImages.portrait}
-                          alt="Portrait demo"
-                          variant="surface"
-                          width="100%"
-                          height="100%"
-                          radius={radius as any}
-                          fit="cover"
-                        />
-                      </AspectRatio>
+                      <Box style={{ width: '80px' }}>
+                        <AspectRatio ratio={9 / 16}>
+                          <Image
+                            src={demoImages.portrait}
+                            alt="Portrait demo"
+                            variant="surface"
+                            width="100%"
+                            height="100%"
+                            radius={radius as any}
+                            fit="cover"
+                          />
+                        </AspectRatio>
+                      </Box>
                     </Table.Cell>
                   </Table.Row>
                 ))}

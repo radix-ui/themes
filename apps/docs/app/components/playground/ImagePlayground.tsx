@@ -191,26 +191,66 @@ export default function ImagePlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <Image
-                        src={demoImages.landscape}
-                        alt="Demo image"
-                        variant="surface"
-                        width="120px"
-                        height="120px"
-                        radius="medium"
-                        fit={fit}
-                      />
+                      {fit === 'contain' || fit === 'fill' || fit === 'scale-down' ? (
+                        <Box
+                          style={{
+                            border: '1px dashed var(--gray-a6)',
+                            borderRadius: 'var(--radius-3)',
+                            display: 'inline-block',
+                          }}
+                        >
+                          <Image
+                            src={demoImages.landscape}
+                            alt="Demo image"
+                            variant="surface"
+                            width="120px"
+                            height="120px"
+                            radius="medium"
+                            fit={fit}
+                          />
+                        </Box>
+                      ) : (
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Demo image"
+                          variant="surface"
+                          width="120px"
+                          height="120px"
+                          radius="medium"
+                          fit={fit}
+                        />
+                      )}
                     </Table.Cell>
                     <Table.Cell>
-                      <Image
-                        src={demoImages.portrait}
-                        alt="Demo image"
-                        variant="surface"
-                        width="160px"
-                        height="80px"
-                        radius="medium"
-                        fit={fit}
-                      />
+                      {fit === 'contain' || fit === 'fill' || fit === 'scale-down' ? (
+                        <Box
+                          style={{
+                            border: '1px dashed var(--gray-a6)',
+                            borderRadius: 'var(--radius-3)',
+                            display: 'inline-block',
+                          }}
+                        >
+                          <Image
+                            src={demoImages.portrait}
+                            alt="Demo image"
+                            variant="surface"
+                            width="160px"
+                            height="80px"
+                            radius="medium"
+                            fit={fit}
+                          />
+                        </Box>
+                      ) : (
+                        <Image
+                          src={demoImages.portrait}
+                          alt="Demo image"
+                          variant="surface"
+                          width="160px"
+                          height="80px"
+                          radius="medium"
+                          fit={fit}
+                        />
+                      )}
                     </Table.Cell>
                     <Table.Cell>
                       <Text size="1" color="gray">

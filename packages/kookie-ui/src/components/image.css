@@ -60,6 +60,10 @@
 /* Blur variant wrapper */
 .rt-variant-blur {
   position: relative;
+}
+
+/* Blur variant when used with asChild - use inline-block for proper sizing */
+.rt-variant-blur--as-child {
   display: inline-block;
 }
 
@@ -93,28 +97,14 @@
   box-shadow: var(--box-shadow) !important;
 }
 
-/* Blur background image */
+/* Blur background image - simplified */
 .rt-Image--blur-bg {
-  position: absolute;
-  top: var(--blur-offset-y, 8px);
-  left: var(--blur-offset-x, 0);
-  filter: var(--blur-filter);
-  opacity: var(--blur-opacity);
-  z-index: -1;
+  /* No additional styles needed - all handled inline */
 }
 
-/* Blur variant CSS variables */
-.rt-variant-blur {
-  --blur-filter: blur(16px) saturate(1.5);
-  --blur-opacity: 0.5;
-  --blur-offset-y: 8px;
-  --blur-offset-x: 0;
-}
-
-/* Image inside blur variant gets positioned */
+/* Image inside blur variant - simplified */
 .rt-Image--blur {
-  position: relative;
-  z-index: 1;
+  /* No additional styles needed - all handled inline */
 }
 
 /* Object fit variants */

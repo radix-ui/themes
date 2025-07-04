@@ -15,7 +15,7 @@
   /* Panel background opacity constants */
   --panel-opacity-light: 0.75;
   --panel-opacity-heavy: 0.75;
-  --surface-opacity-light: 0.25;
+  --surface-opacity-light: 0.5;
   --surface-opacity-heavy: 0.75;
   --surface-opacity-dark: 0.25;
   

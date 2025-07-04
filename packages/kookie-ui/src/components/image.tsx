@@ -79,7 +79,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     onLoad: userOnLoad,
     onError: userOnError,
     children,
-    ...imgProps
+    ...wrapperProps
   } = extractProps(
     restProps,
     imagePropDefs,
@@ -97,7 +97,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   // Ref to check if image is already loaded (for cached images)
   const imgRef = React.useRef<HTMLImageElement>(null);
 
-  // Handle image load - moved to top to avoid conditional hook call
+  // Handle image load
   const handleLoad = React.useCallback(
     (event: React.SyntheticEvent<HTMLImageElement>) => {
       setImageLoaded(true);
@@ -108,7 +108,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     [userOnLoad],
   );
 
-  // Handle image error - moved to top to avoid conditional hook call
+  // Handle image error
   const handleError = React.useCallback(
     (event: React.SyntheticEvent<HTMLImageElement>) => {
       setImageLoaded(false);
@@ -139,14 +139,30 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     console.warn('Image component: alt prop is required for accessibility when not using asChild');
   }
 
+  // Common image styles that apply to the actual img element
+  const imgStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    opacity: fadeIn ? (imageLoaded ? 1 : 0) : 1,
+    transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
+    ...style, // Allow style overrides for the image
+  };
+
+  // Wrapper styles that get all the sizing and positioning
+  const wrapperStyleFinal: React.CSSProperties = {
+    position: 'relative',
+    display: 'block', // Use block instead of inline-block to work better with AspectRatio
+    ...wrapperStyle,
+  };
+
   // Create skeleton placeholder
   const skeletonElement =
     showSkeleton && !imageLoaded && !imageError ? (
       <Skeleton
         width="100%"
-        height="100px" // Default height, can be overridden by style
+        height="100px" // Default height, can be overridden by wrapper
         style={{
-          ...style,
           borderRadius: radius ? `var(--radius-${radius})` : undefined,
         }}
         className={className}
@@ -159,7 +175,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       <img
         data-radius={radius}
         style={{
-          ...style,
+          ...imgStyle,
           filter: 'blur(4px)',
           opacity: 0.7,
           transition: 'opacity 0.3s ease-out',
@@ -170,51 +186,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       />
     ) : null;
 
-  // Create the standard img element
-  const imgElement = (
-    <img
-      data-radius={radius}
-      loading={loading}
-      style={{
-        ...style,
-        opacity: fadeIn ? (imageLoaded ? (style?.opacity ?? 1) : 0) : (style?.opacity ?? 1),
-        transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
-      }}
-      className={classNames(
-        'rt-reset',
-        'rt-Image',
-        variant === 'blur' && 'rt-Image--blur',
-        className,
-      )}
-      alt={alt}
-      src={src}
-      onLoad={handleLoad}
-      onError={handleError}
-      {...imgProps}
-      ref={(node) => {
-        imgRef.current = node;
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else if (forwardedRef) {
-          forwardedRef.current = node;
-        }
-      }}
-    />
-  );
-
-  // Wrapper for images with placeholders
-  const imageWithPlaceholder =
-    placeholder || showSkeleton ? (
-      <Box position="relative" display="inline-block" style={wrapperStyle}>
-        {skeletonElement}
-        {placeholderElement}
-        {imgElement}
-      </Box>
-    ) : (
-      imgElement
-    );
-
-  // Handle asChild - inject img into the child element
+  // Handle asChild - inject content into the child element
   if (asChild && children) {
     const child = React.Children.only(children) as React.ReactElement<any>;
 
@@ -223,55 +195,48 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       return React.cloneElement(child, {
         className: classNames(child.props?.className, 'rt-variant-blur'),
         style: {
-          textDecoration: 'none', // Reset link underlines
-          color: 'inherit', // Reset link colors
-          border: 'none', // Reset button borders
-          background: 'none', // Reset button backgrounds
-          padding: 0, // Reset button padding
-          font: 'inherit', // Reset button fonts
-          cursor: 'pointer', // Ensure interactive cursor
+          textDecoration: 'none',
+          color: 'inherit',
+          border: 'none',
+          background: 'none',
+          padding: 0,
+          font: 'inherit',
+          cursor: 'pointer',
+          ...wrapperStyleFinal,
+          ...style, // Apply sizing to the child element
           ...child.props?.style,
         },
         children: (
-          <Box position="relative" display="inline-block" style={wrapperStyle}>
+          <>
             {/* Background blurred image */}
             <img
               data-radius={radius}
               loading={loading}
               style={{
-                ...style,
                 position: 'absolute',
-                top: '8px',
+                top: '0',
                 left: '0',
+                width: '105%',
+                height: '105%',
+                transform: 'translate(-2.5%, -2.5%)',
+                filter: 'blur(16px) saturate(1.5)',
+                opacity: 0.5,
+                zIndex: -1,
               }}
-              className={classNames(
-                'rt-reset',
-                'rt-Image',
-                'rt-Image--blur',
-                'rt-Image--blur-bg',
-                className,
-              )}
+              className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur-bg', className)}
               alt=""
               src={src}
-              {...imgProps}
             />
             {/* Foreground image */}
             <img
               data-radius={radius}
               loading={loading}
-              style={{
-                ...style,
-                position: 'relative',
-                zIndex: 1,
-                opacity: fadeIn ? (imageLoaded ? (style?.opacity ?? 1) : 0) : (style?.opacity ?? 1),
-                transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
-              }}
+              style={imgStyle}
               className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur', className)}
               alt={alt}
               src={src}
               onLoad={handleLoad}
               onError={handleError}
-              {...imgProps}
               ref={(node) => {
                 imgRef.current = node;
                 if (typeof forwardedRef === 'function') {
@@ -281,7 +246,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
                 }
               }}
             />
-          </Box>
+          </>
         ),
       });
     } else {
@@ -289,68 +254,84 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       return React.cloneElement(child, {
         className: classNames(child.props?.className),
         style: {
-          textDecoration: 'none', // Reset link underlines
-          color: 'inherit', // Reset link colors
-          border: 'none', // Reset button borders
-          background: 'none', // Reset button backgrounds
-          padding: 0, // Reset button padding
-          font: 'inherit', // Reset button fonts
-          cursor: 'pointer', // Ensure interactive cursor
-          display: 'inline-block', // Ensure proper sizing
-          ...child.props?.style, // Allow user overrides
+          textDecoration: 'none',
+          color: 'inherit',
+          border: 'none',
+          background: 'none',
+          padding: 0,
+          font: 'inherit',
+          cursor: 'pointer',
+          ...wrapperStyleFinal,
+          ...child.props?.style,
         },
-        children: imageWithPlaceholder,
+        children: (
+          <>
+            {skeletonElement}
+            {placeholderElement}
+            <img
+              data-radius={radius}
+              loading={loading}
+              style={imgStyle}
+              className={classNames('rt-reset', 'rt-Image', className)}
+              alt={alt}
+              src={src}
+              onLoad={handleLoad}
+              onError={handleError}
+              ref={(node) => {
+                imgRef.current = node;
+                if (typeof forwardedRef === 'function') {
+                  forwardedRef(node);
+                } else if (forwardedRef) {
+                  forwardedRef.current = node;
+                }
+              }}
+            />
+          </>
+        ),
       });
     }
   }
 
-  // Regular rendering without asChild
+  // Regular rendering without asChild - both variants use Box wrapper
   if (variant === 'blur') {
     return (
       <Box
-        className="rt-variant-blur"
-        position="relative"
-        display="inline-block"
-        style={wrapperStyle}
+        className={classNames('rt-variant-blur', className)}
+        style={{
+          ...style, // Include the width/height styles from extractProps
+          ...wrapperStyleFinal,
+        }}
+        {...wrapperProps} // Apply other props to wrapper
       >
         {/* Background blurred image */}
         <img
           data-radius={radius}
           loading={loading}
           style={{
-            ...style,
             position: 'absolute',
-            top: '8px',
+            top: '0',
             left: '0',
+            width: '105%',
+            height: '105%',
+            transform: 'translate(-2.5%, -2.5%)',
+            filter: 'blur(16px) saturate(1.5)',
+            opacity: 0.5,
+            zIndex: -1,
           }}
-          className={classNames(
-            'rt-reset',
-            'rt-Image',
-            'rt-Image--blur',
-            'rt-Image--blur-bg',
-            className,
-          )}
+          className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur-bg', className)}
           alt=""
           src={src}
-          {...imgProps}
         />
         {/* Foreground image */}
         <img
           data-radius={radius}
           loading={loading}
-          style={{
-            ...style,
-            position: 'relative',
-            zIndex: 1,
-            opacity: fadeIn ? (imageLoaded ? (style?.opacity ?? 1) : 0) : (style?.opacity ?? 1),
-            transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
-          }}
+          style={imgStyle}
           className={classNames('rt-reset', 'rt-Image', 'rt-Image--blur', className)}
           alt={alt}
           src={src}
           onLoad={handleLoad}
           onError={handleError}
-          {...imgProps}
           ref={(node) => {
             imgRef.current = node;
             if (typeof forwardedRef === 'function') {
@@ -364,7 +345,38 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     );
   }
 
-  return imageWithPlaceholder;
+  // Surface variant - also use Box wrapper for consistency
+  return (
+    <Box
+      className={className}
+      style={{
+        ...style, // Include the width/height styles from extractProps
+        ...wrapperStyleFinal,
+      }}
+      {...wrapperProps} // Apply other props to wrapper
+    >
+      {skeletonElement}
+      {placeholderElement}
+      <img
+        data-radius={radius}
+        loading={loading}
+        style={imgStyle}
+        className={classNames('rt-reset', 'rt-Image', className)}
+        alt={alt}
+        src={src}
+        onLoad={handleLoad}
+        onError={handleError}
+        ref={(node) => {
+          imgRef.current = node;
+          if (typeof forwardedRef === 'function') {
+            forwardedRef(node);
+          } else if (forwardedRef) {
+            forwardedRef.current = node;
+          }
+        }}
+      />
+    </Box>
+  );
 });
 
 Image.displayName = 'Image';
