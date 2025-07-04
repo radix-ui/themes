@@ -387,7 +387,7 @@ export default function CardPlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <Flex direction="column" gap="3" style={{ width: '360px' }}>
+                    <Flex direction="column" gap="3" width="360px">
                       <Text size="2">Container content above</Text>
                       <Card
                         variant="ghost"
@@ -407,7 +407,7 @@ export default function CardPlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <Flex direction="column" gap="3" style={{ width: '360px' }}>
+                    <Flex direction="column" gap="3" width="360px">
                       <Text size="2">Container content above</Text>
                       <Card
                         variant="ghost"

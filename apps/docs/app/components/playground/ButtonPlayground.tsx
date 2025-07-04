@@ -403,7 +403,12 @@ export default function ButtonPlayground() {
                   <Table.Cell>
                     <Flex align="center" gap="2">
                       <Text size="2">Container text</Text>
-                      <Button variant="ghost" size="2" flush>
+                      <Button
+                        variant="ghost"
+                        size="2"
+                        flush
+                        style={{ border: '1px dashed var(--gray-a6)' }}
+                      >
                         <ArrowRight />
                         Next
                       </Button>

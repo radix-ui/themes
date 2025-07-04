@@ -523,269 +523,201 @@ export default function DropdownMenuPlayground() {
         {/* Complex Menus Tab */}
         <Tabs.Content value="complex-menus">
           <Box pt="4">
-            <Flex direction="column" gap="6">
-              <Box>
-                <Heading size="4" mb="3">
-                  Notion-style Page Menu
-                </Heading>
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger>
-                    <Button variant="surface" size="2">
-                      <MoreHorizontal size={16} />
-                      Options
-                    </Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Item shortcut="⌘E">
-                      <Edit size={16} />
-                      Rename
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item shortcut="⌘D">
-                      <Copy size={16} />
-                      Duplicate
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Star size={16} />
-                      Add to favorites
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Link size={16} />
-                      Copy link
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Item>
-                      <Users size={16} />
-                      Share
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <MessageCircle size={16} />
-                      Add comment
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Clock size={16} />
-                      Page history
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Item>
-                      <Archive size={16} />
-                      Move to trash
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item color="red">
-                      <Trash2 size={16} />
-                      Delete permanently
-                    </DropdownMenu.Item>
-                  </DropdownMenu.Content>
-                </DropdownMenu.Root>
-              </Box>
-
-              <Box>
-                <Heading size="4" mb="3">
-                  Figma-style Layer Menu
-                </Heading>
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger>
-                    <Button variant="surface" size="2">
-                      <Layers size={16} />
-                      Actions
-                    </Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Label>Arrange</DropdownMenu.Label>
-                    <DropdownMenu.Item shortcut="⌘]">
-                      <Layers size={16} />
-                      Bring to front
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item shortcut="⌘[">
-                      <Layers size={16} />
-                      Send to back
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Label>Edit</DropdownMenu.Label>
-                    <DropdownMenu.Item shortcut="⌘C">
-                      <Copy size={16} />
-                      Copy
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item shortcut="⌘D">
-                      <Copy size={16} />
-                      Duplicate
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Move size={16} />
-                      Move to page
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.CheckboxItem checked>
-                      <Eye size={16} />
-                      Visible
-                    </DropdownMenu.CheckboxItem>
-                    <DropdownMenu.CheckboxItem>
-                      <Lock size={16} />
-                      Locked
-                    </DropdownMenu.CheckboxItem>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Item color="red" shortcut="⌫">
-                      <Trash2 size={16} />
-                      Delete layer
-                    </DropdownMenu.Item>
-                  </DropdownMenu.Content>
-                </DropdownMenu.Root>
-              </Box>
-
-              <Box>
-                <Heading size="4" mb="3">
-                  Advanced Workspace Menu
-                </Heading>
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger>
-                    <Button variant="surface" size="2">
-                      <Settings size={16} />
-                      Workspace
-                    </Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Label>Create</DropdownMenu.Label>
-                    <DropdownMenu.Item shortcut="⌘N">
-                      <FileText size={16} />
-                      New page
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Sub>
-                      <DropdownMenu.SubTrigger>
-                        <Plus size={16} />
-                        New from template
-                      </DropdownMenu.SubTrigger>
-                      <DropdownMenu.SubContent>
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      Menu Type
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
+                    <Text size="1" color="gray">
+                      Trigger
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '300px' }}>
+                    <Text size="1" color="gray">
+                      Description
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Page Actions
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <DropdownMenu.Root>
+                      <DropdownMenu.Trigger>
+                        <Button variant="surface" size="2">
+                          <MoreHorizontal size={16} />
+                          Options
+                        </Button>
+                      </DropdownMenu.Trigger>
+                      <DropdownMenu.Content>
                         <DropdownMenu.Item>
-                          <FileText size={16} />
-                          Meeting notes
+                          <Edit size={16} />
+                          Rename
                         </DropdownMenu.Item>
                         <DropdownMenu.Item>
+                          <Copy size={16} />
+                          Duplicate
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <Star size={16} />
+                          Add to favorites
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.Item>
+                          <Users size={16} />
+                          Share
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item color="red">
+                          <Trash2 size={16} />
+                          Delete
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Basic page management with common actions</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Layer Actions
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <DropdownMenu.Root>
+                      <DropdownMenu.Trigger>
+                        <Button variant="surface" size="2">
+                          <Layers size={16} />
+                          Actions
+                        </Button>
+                      </DropdownMenu.Trigger>
+                      <DropdownMenu.Content>
+                        <DropdownMenu.Label>Edit</DropdownMenu.Label>
+                        <DropdownMenu.Item>
+                          <Copy size={16} />
+                          Copy
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <Move size={16} />
+                          Move
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.CheckboxItem checked>
+                          <Eye size={16} />
+                          Visible
+                        </DropdownMenu.CheckboxItem>
+                        <DropdownMenu.CheckboxItem>
+                          <Lock size={16} />
+                          Locked
+                        </DropdownMenu.CheckboxItem>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.Item color="red">
+                          <Trash2 size={16} />
+                          Delete
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Layer management with checkboxes and labels</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Workspace Settings
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <DropdownMenu.Root>
+                      <DropdownMenu.Trigger>
+                        <Button variant="surface" size="2">
+                          <Settings size={16} />
+                          Workspace
+                        </Button>
+                      </DropdownMenu.Trigger>
+                      <DropdownMenu.Content>
+                        <DropdownMenu.Label>Create</DropdownMenu.Label>
+                        <DropdownMenu.Item>
+                          <FileText size={16} />
+                          New page
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <Plus size={16} />
+                          New template
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.Label>View</DropdownMenu.Label>
+                        <DropdownMenu.RadioGroup value="comfortable">
+                          <DropdownMenu.RadioItem value="compact">Compact</DropdownMenu.RadioItem>
+                          <DropdownMenu.RadioItem value="comfortable">
+                            Comfortable
+                          </DropdownMenu.RadioItem>
+                        </DropdownMenu.RadioGroup>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Workspace menu with radio groups and submenus</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Content Creation
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <DropdownMenu.Root>
+                      <DropdownMenu.Trigger>
+                        <Button variant="surface" size="2">
+                          <Plus size={16} />
+                          Content
+                        </Button>
+                      </DropdownMenu.Trigger>
+                      <DropdownMenu.Content>
+                        <DropdownMenu.Label>Basic</DropdownMenu.Label>
+                        <DropdownMenu.Item>
+                          <FileText size={16} />
+                          Text
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <Image size={16} />
+                          Image
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <Video size={16} />
+                          Video
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.Label>Advanced</DropdownMenu.Label>
+                        <DropdownMenu.Item>
                           <Database size={16} />
-                          Project tracker
+                          Table
                         </DropdownMenu.Item>
                         <DropdownMenu.Item>
                           <Calendar size={16} />
-                          Content calendar
+                          Calendar
                         </DropdownMenu.Item>
-                        <DropdownMenu.Item>
-                          <Users size={16} />
-                          Team wiki
-                        </DropdownMenu.Item>
-                      </DropdownMenu.SubContent>
-                    </DropdownMenu.Sub>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Label>Team</DropdownMenu.Label>
-                    <DropdownMenu.Item>
-                      <Users size={16} />
-                      Invite members
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Bell size={16} />
-                      Notification settings
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Sub>
-                      <DropdownMenu.SubTrigger>
-                        <Settings size={16} />
-                        Workspace settings
-                      </DropdownMenu.SubTrigger>
-                      <DropdownMenu.SubContent>
-                        <DropdownMenu.Item>
-                          <User size={16} />
-                          General
-                        </DropdownMenu.Item>
-                        <DropdownMenu.Item>
-                          <Lock size={16} />
-                          Security
-                        </DropdownMenu.Item>
-                        <DropdownMenu.Item>
-                          <Zap size={16} />
-                          Integrations
-                        </DropdownMenu.Item>
-                        <DropdownMenu.Item>
-                          <Database size={16} />
-                          Import & export
-                        </DropdownMenu.Item>
-                      </DropdownMenu.SubContent>
-                    </DropdownMenu.Sub>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Label>View</DropdownMenu.Label>
-                    <DropdownMenu.RadioGroup value="comfortable">
-                      <DropdownMenu.RadioItem value="compact">Compact view</DropdownMenu.RadioItem>
-                      <DropdownMenu.RadioItem value="comfortable">
-                        Comfortable view
-                      </DropdownMenu.RadioItem>
-                      <DropdownMenu.RadioItem value="spacious">
-                        Spacious view
-                      </DropdownMenu.RadioItem>
-                    </DropdownMenu.RadioGroup>
-                  </DropdownMenu.Content>
-                </DropdownMenu.Root>
-              </Box>
-
-              <Box>
-                <Heading size="4" mb="3">
-                  Rich Content Menu
-                </Heading>
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger>
-                    <Button variant="surface" size="2">
-                      <Plus size={16} />
-                      Content
-                    </Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Label>Basic blocks</DropdownMenu.Label>
-                    <DropdownMenu.Item>
-                      <FileText size={16} />
-                      Text
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Image size={16} />
-                      Image
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Video size={16} />
-                      Video
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Code size={16} />
-                      Code block
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Label>Database</DropdownMenu.Label>
-                    <DropdownMenu.Item>
-                      <Database size={16} />
-                      Table
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Calendar size={16} />
-                      Calendar
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <List size={16} />
-                      List view
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <Grid size={16} />
-                      Gallery
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Label>Advanced</DropdownMenu.Label>
-                    <DropdownMenu.Item>
-                      <Link size={16} />
-                      Embed
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <GitBranch size={16} />
-                      Synced block
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                      <ExternalLink size={16} />
-                      Link to page
-                    </DropdownMenu.Item>
-                  </DropdownMenu.Content>
-                </DropdownMenu.Root>
-              </Box>
-            </Flex>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">Content creation menu with organized sections</Text>
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table.Root>
           </Box>
         </Tabs.Content>
       </Tabs.Root>

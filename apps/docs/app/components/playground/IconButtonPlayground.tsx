@@ -333,10 +333,20 @@ export default function IconButtonPlayground() {
                       }}
                     >
                       <Text size="2">Actions:</Text>
-                      <IconButton variant="ghost" size="2" flush>
+                      <IconButton
+                        variant="ghost"
+                        size="2"
+                        flush
+                        style={{ border: '1px dashed var(--gray-a6)' }}
+                      >
                         <Heart />
                       </IconButton>
-                      <IconButton variant="ghost" size="2" flush>
+                      <IconButton
+                        variant="ghost"
+                        size="2"
+                        flush
+                        style={{ border: '1px dashed var(--gray-a6)' }}
+                      >
                         <Star />
                       </IconButton>
                       <Text size="2">end</Text>

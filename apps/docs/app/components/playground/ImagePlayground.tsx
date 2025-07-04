@@ -10,6 +10,7 @@ import {
   Heading,
   Tabs,
   Table,
+  Skeleton,
 } from '@kushagradhawan/kookie-ui';
 import { demoImages } from '../../../lib/demo-images';
 
@@ -235,7 +236,7 @@ export default function ImagePlayground() {
                             alt="Demo image"
                             variant="surface"
                             width="160px"
-                            height="80px"
+                            height="120px"
                             radius="medium"
                             fit={fit}
                           />
@@ -246,7 +247,7 @@ export default function ImagePlayground() {
                           alt="Demo image"
                           variant="surface"
                           width="160px"
-                          height="80px"
+                          height="120px"
                           radius="medium"
                           fit={fit}
                         />
@@ -368,17 +369,12 @@ export default function ImagePlayground() {
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '200px' }}>
                     <Text size="1" color="gray">
-                      Landscape Image
+                      Surface
                     </Text>
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '200px' }}>
                     <Text size="1" color="gray">
-                      Portrait Image
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
-                    <Text size="1" color="gray">
-                      Blur Variant
+                      Blur
                     </Text>
                   </Table.ColumnHeaderCell>
                 </Table.Row>
@@ -391,43 +387,34 @@ export default function ImagePlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <AspectRatio ratio={16 / 9}>
-                      <Image
-                        src={demoImages.landscape}
-                        alt="Landscape in 16:9"
-                        variant="surface"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
+                    <Box width="160px">
+                      <AspectRatio ratio={16 / 9}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Surface variant in 16:9"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Box>
                   </Table.Cell>
                   <Table.Cell>
-                    <AspectRatio ratio={16 / 9}>
-                      <Image
-                        src={demoImages.portrait}
-                        alt="Portrait in 16:9"
-                        variant="surface"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <AspectRatio ratio={16 / 9}>
-                      <Image
-                        src={demoImages.landscape}
-                        alt="Blur variant in 16:9"
-                        variant="blur"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
+                    <Box width="160px">
+                      <AspectRatio ratio={16 / 9}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Blur variant in 16:9"
+                          variant="blur"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Box>
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
@@ -437,43 +424,34 @@ export default function ImagePlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <AspectRatio ratio={1}>
-                      <Image
-                        src={demoImages.landscape}
-                        alt="Landscape in 1:1"
-                        variant="surface"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
+                    <Box width="120px">
+                      <AspectRatio ratio={1}>
+                        <Image
+                          src={demoImages.square}
+                          alt="Surface variant in 1:1"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Box>
                   </Table.Cell>
                   <Table.Cell>
-                    <AspectRatio ratio={1}>
-                      <Image
-                        src={demoImages.portrait}
-                        alt="Portrait in 1:1"
-                        variant="surface"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <AspectRatio ratio={1}>
-                      <Image
-                        src={demoImages.square}
-                        alt="Square in 1:1"
-                        variant="blur"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
+                    <Box width="120px">
+                      <AspectRatio ratio={1}>
+                        <Image
+                          src={demoImages.square}
+                          alt="Blur variant in 1:1"
+                          variant="blur"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Box>
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
@@ -483,43 +461,34 @@ export default function ImagePlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <AspectRatio ratio={4 / 3}>
-                      <Image
-                        src={demoImages.landscape}
-                        alt="Landscape in 4:3"
-                        variant="surface"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
+                    <Box width="140px">
+                      <AspectRatio ratio={4 / 3}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Surface variant in 4:3"
+                          variant="surface"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Box>
                   </Table.Cell>
                   <Table.Cell>
-                    <AspectRatio ratio={4 / 3}>
-                      <Image
-                        src={demoImages.portrait}
-                        alt="Portrait in 4:3"
-                        variant="surface"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <AspectRatio ratio={4 / 3}>
-                      <Image
-                        src={demoImages.portrait}
-                        alt="Portrait blur in 4:3"
-                        variant="blur"
-                        width="100%"
-                        height="100%"
-                        radius="medium"
-                        fit="cover"
-                      />
-                    </AspectRatio>
+                    <Box width="140px">
+                      <AspectRatio ratio={4 / 3}>
+                        <Image
+                          src={demoImages.landscape}
+                          alt="Blur variant in 4:3"
+                          variant="blur"
+                          width="100%"
+                          height="100%"
+                          radius="medium"
+                          fit="cover"
+                        />
+                      </AspectRatio>
+                    </Box>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>

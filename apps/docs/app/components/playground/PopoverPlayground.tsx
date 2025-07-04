@@ -96,12 +96,12 @@ export default function PopoverPlayground() {
                             <Info />
                           </IconButton>
                         </Popover.Trigger>
-                        <Popover.Content size={size} style={{ width: '280px' }}>
+                        <Popover.Content size={size} width="280px">
                           <Flex direction="column" gap="2">
                             <Text size={getTextSize(size)} weight="medium">
                               Quick tip
                             </Text>
-                            <Text size="1" color="gray">
+                            <Text size={getTextSize(size)} color="gray">
                               This feature helps you organize your content more effectively.
                             </Text>
                           </Flex>
@@ -116,7 +116,7 @@ export default function PopoverPlayground() {
                             View Profile
                           </Button>
                         </Popover.Trigger>
-                        <Popover.Content size={size} style={{ width: '320px' }}>
+                        <Popover.Content size={size} width="320px">
                           <Flex direction="column" gap="3">
                             <Flex align="center" gap="3">
                               <Box
@@ -150,7 +150,7 @@ export default function PopoverPlayground() {
                                 </Text>
                               </Flex>
                             </Flex>
-                            <Text size="1" color="gray">
+                            <Text size={getTextSize(size)} color="gray">
                               Sarah specializes in creating intuitive user experiences for complex
                               enterprise software. She has over 5 years of experience in design
                               systems and user research.
@@ -213,7 +213,7 @@ export default function PopoverPlayground() {
                           Ask AI
                         </Button>
                       </Popover.Trigger>
-                      <Popover.Content size="3" style={{ width: '380px' }}>
+                      <Popover.Content size="3" width="380px">
                         <Flex direction="column" gap="4">
                           <Flex align="center" gap="2">
                             <Bot size={16} />
@@ -274,7 +274,7 @@ export default function PopoverPlayground() {
                           @alexsmith
                         </Button>
                       </Popover.Trigger>
-                      <Popover.Content size="3" style={{ width: '300px' }}>
+                      <Popover.Content size="3" width="300px">
                         <Flex direction="column" gap="4">
                           <Flex align="center" gap="3">
                             <Box
@@ -358,7 +358,7 @@ export default function PopoverPlayground() {
                           Leave Feedback
                         </Button>
                       </Popover.Trigger>
-                      <Popover.Content size="4" style={{ width: '380px' }}>
+                      <Popover.Content size="4" width="380px">
                         <Flex direction="column" gap="5">
                           <Heading size="5">Quick Feedback</Heading>
 
@@ -421,7 +421,7 @@ export default function PopoverPlayground() {
                           Component Details
                         </Button>
                       </Popover.Trigger>
-                      <Popover.Content size="2" style={{ width: '320px' }}>
+                      <Popover.Content size="2" width="320px">
                         <Flex direction="column" gap="3">
                           <Flex direction="column" gap="1">
                             <Text size="3" weight="medium">

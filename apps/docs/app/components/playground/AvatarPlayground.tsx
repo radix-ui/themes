@@ -110,7 +110,7 @@ export default function AvatarPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <Avatar size="3" variant={variant} fallback="">
+                      <Avatar size="3" variant={variant} fallback="U">
                         <User size={16} />
                       </Avatar>
                     </Table.Cell>
@@ -136,7 +136,7 @@ export default function AvatarPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <Avatar size="3" variant={variant} color="gray" fallback="">
+                      <Avatar size="3" variant={variant} color="gray" fallback="U">
                         <User size={16} />
                       </Avatar>
                     </Table.Cell>

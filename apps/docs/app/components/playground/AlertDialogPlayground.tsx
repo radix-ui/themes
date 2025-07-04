@@ -17,6 +17,18 @@ import { Trash2, AlertTriangle, UserX } from 'lucide-react';
 const sizes = ['1', '2', '3', '4'] as const;
 const alignments = ['start', 'center'] as const;
 
+// Helper function to get appropriate text size based on dialog size
+const getTextSize = (dialogSize: string): '1' | '2' | '3' => {
+  const sizeMap = { '1': '1', '2': '2', '3': '2', '4': '3' } as const;
+  return sizeMap[dialogSize as keyof typeof sizeMap];
+};
+
+// Helper function to get appropriate heading size based on dialog size
+const getHeadingSize = (dialogSize: string): '2' | '3' | '4' | '5' => {
+  const sizeMap = { '1': '2', '2': '3', '3': '4', '4': '5' } as const;
+  return sizeMap[dialogSize as keyof typeof sizeMap];
+};
+
 export default function AlertDialogPlayground() {
   return (
     <Flex direction="column" gap="6">
@@ -213,17 +225,12 @@ export default function AlertDialogPlayground() {
                           </Button>
                         </AlertDialog.Trigger>
                         <AlertDialog.Content size={size}>
-                          <AlertDialog.Title>Delete Confirmation</AlertDialog.Title>
-                          <AlertDialog.Description>
-                            This alert dialog demonstrates size {size} with appropriate padding and
-                            spacing.
+                          <AlertDialog.Title size={getHeadingSize(size)}>
+                            Delete Confirmation
+                          </AlertDialog.Title>
+                          <AlertDialog.Description size={getTextSize(size)}>
+                            Are you sure you want to delete this item? This action cannot be undone.
                           </AlertDialog.Description>
-                          <Box mt="4">
-                            <Text size="2">
-                              Alert dialogs scale with size. Larger sizes provide more space for
-                              detailed warnings.
-                            </Text>
-                          </Box>
                           <Flex gap="3" mt="4" justify="end">
                             <AlertDialog.Cancel>
                               <Button variant="soft" color="gray">
@@ -297,13 +304,6 @@ export default function AlertDialogPlayground() {
                           <AlertDialog.Description>
                             This alert dialog is aligned to the {align} of the viewport.
                           </AlertDialog.Description>
-                          <Box mt="4">
-                            <Text size="2">
-                              {align === 'center'
-                                ? 'Centered alignment draws attention to critical actions.'
-                                : 'Top alignment maintains reading flow for less critical alerts.'}
-                            </Text>
-                          </Box>
                           <Flex gap="3" mt="4" justify="end">
                             <AlertDialog.Cancel>
                               <Button variant="soft" color="gray">

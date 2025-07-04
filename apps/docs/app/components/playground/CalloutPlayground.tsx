@@ -564,7 +564,7 @@ export default function CalloutPlayground() {
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
-                    <Callout.Root variant="soft" size="3" color="yellow">
+                    <Callout.Root variant="soft" size="2" color="yellow">
                       <Callout.Icon>
                         <Lightbulb />
                       </Callout.Icon>

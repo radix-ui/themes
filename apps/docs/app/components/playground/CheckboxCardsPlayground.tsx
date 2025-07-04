@@ -258,17 +258,29 @@ export default function CheckboxCardsPlayground() {
                         <CheckboxCards.Root
                           size={size as any}
                           variant={variant}
-                          defaultValue={['email']}
+                          defaultValue={['notifications', 'analytics']}
                           columns="2"
                         >
-                          {contactOptions.slice(0, 2).map((option) => (
-                            <CheckboxCards.Item key={option.value} value={option.value}>
-                              <Flex align="center" gap="2">
-                                <option.icon size={16} />
-                                <Text size="2">{option.label}</Text>
-                              </Flex>
-                            </CheckboxCards.Item>
-                          ))}
+                          <CheckboxCards.Item value="notifications">
+                            <Flex direction="column" align="start" gap="1">
+                              <Text size="2" weight="medium">
+                                Notifications
+                              </Text>
+                              <Text size="1" color="gray">
+                                Email alerts
+                              </Text>
+                            </Flex>
+                          </CheckboxCards.Item>
+                          <CheckboxCards.Item value="analytics">
+                            <Flex direction="column" align="start" gap="1">
+                              <Text size="2" weight="medium">
+                                Analytics
+                              </Text>
+                              <Text size="1" color="gray">
+                                Usage tracking
+                              </Text>
+                            </Flex>
+                          </CheckboxCards.Item>
                         </CheckboxCards.Root>
                       </Table.Cell>
                     ))}

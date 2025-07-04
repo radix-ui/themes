@@ -261,18 +261,16 @@ export default function CheckboxGroupPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <Flex direction="row" gap="3">
-                        <CheckboxGroup.Root
-                          size="2"
-                          variant={variant}
-                          orientation="horizontal"
-                          defaultValue={['red', 'blue']}
-                        >
-                          <CheckboxGroup.Item value="red">Red</CheckboxGroup.Item>
-                          <CheckboxGroup.Item value="blue">Blue</CheckboxGroup.Item>
-                          <CheckboxGroup.Item value="green">Green</CheckboxGroup.Item>
-                        </CheckboxGroup.Root>
-                      </Flex>
+                      <CheckboxGroup.Root
+                        size="2"
+                        variant={variant}
+                        orientation="horizontal"
+                        defaultValue={['red', 'blue']}
+                      >
+                        <CheckboxGroup.Item value="red">Red</CheckboxGroup.Item>
+                        <CheckboxGroup.Item value="blue">Blue</CheckboxGroup.Item>
+                        <CheckboxGroup.Item value="green">Green</CheckboxGroup.Item>
+                      </CheckboxGroup.Root>
                     </Table.Cell>
                   ))}
                 </Table.Row>

@@ -12,10 +12,22 @@ import {
   Table,
   IconButton,
 } from '@kushagradhawan/kookie-ui';
-import { Settings, Info } from 'lucide-react';
+import { Info } from 'lucide-react';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const alignments = ['start', 'center'] as const;
+
+// Helper function to get appropriate text size based on dialog size
+const getTextSize = (dialogSize: string): '1' | '2' | '3' => {
+  const sizeMap = { '1': '1', '2': '2', '3': '2', '4': '3' } as const;
+  return sizeMap[dialogSize as keyof typeof sizeMap];
+};
+
+// Helper function to get appropriate heading size based on dialog size
+const getHeadingSize = (dialogSize: string): '2' | '3' | '4' | '5' => {
+  const sizeMap = { '1': '2', '2': '3', '3': '4', '4': '5' } as const;
+  return sizeMap[dialogSize as keyof typeof sizeMap];
+};
 
 export default function DialogPlayground() {
   return (
@@ -98,50 +110,21 @@ export default function DialogPlayground() {
                 <Table.Row>
                   <Table.RowHeaderCell>
                     <Text size="1" color="gray">
-                      Settings Dialog
+                      Confirmation Dialog
                     </Text>
                   </Table.RowHeaderCell>
                   <Table.Cell>
                     <Dialog.Root>
                       <Dialog.Trigger>
-                        <IconButton variant="ghost">
-                          <Settings />
-                        </IconButton>
+                        <Button variant="soft">Confirm Action</Button>
                       </Dialog.Trigger>
                       <Dialog.Content>
-                        <Dialog.Title>Settings</Dialog.Title>
+                        <Dialog.Title>Confirm Changes</Dialog.Title>
                         <Dialog.Description>
-                          Manage your account settings and preferences.
+                          Are you sure you want to save these changes? This will update your
+                          preferences.
                         </Dialog.Description>
-                        <Box mt="4">
-                          <Flex direction="column" gap="3">
-                            <Box>
-                              <Text size="2" weight="medium">
-                                Notifications
-                              </Text>
-                              <Text size="1" color="gray">
-                                Manage how you receive notifications
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Text size="2" weight="medium">
-                                Privacy
-                              </Text>
-                              <Text size="1" color="gray">
-                                Control your privacy settings
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Text size="2" weight="medium">
-                                Account
-                              </Text>
-                              <Text size="1" color="gray">
-                                Update your account information
-                              </Text>
-                            </Box>
-                          </Flex>
-                        </Box>
-                        <Flex gap="3" mt="6" justify="end">
+                        <Flex gap="3" mt="4" justify="end">
                           <Dialog.Close>
                             <Button variant="soft" color="gray">
                               Cancel
@@ -155,7 +138,7 @@ export default function DialogPlayground() {
                     </Dialog.Root>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text size="2">Settings dialog with structured content and icon trigger</Text>
+                    <Text size="2">Confirmation dialog for user actions</Text>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
@@ -202,17 +185,12 @@ export default function DialogPlayground() {
                           </Button>
                         </Dialog.Trigger>
                         <Dialog.Content size={size}>
-                          <Dialog.Title>Dialog Size {size}</Dialog.Title>
-                          <Dialog.Description>
-                            This dialog demonstrates size {size} with appropriate padding and
-                            spacing.
+                          <Dialog.Title size={getHeadingSize(size)}>
+                            Dialog Size {size}
+                          </Dialog.Title>
+                          <Dialog.Description size={getTextSize(size)}>
+                            This dialog demonstrates size {size} with appropriate content scaling.
                           </Dialog.Description>
-                          <Box mt="4">
-                            <Text size="2">
-                              Content area scales with the dialog size. Larger sizes provide more
-                              space for complex content.
-                            </Text>
-                          </Box>
                           <Flex gap="3" mt="4" justify="end">
                             <Dialog.Close>
                               <Button variant="soft" color="gray">
@@ -283,13 +261,6 @@ export default function DialogPlayground() {
                           <Dialog.Description>
                             This dialog is aligned to the {align} of the viewport.
                           </Dialog.Description>
-                          <Box mt="4">
-                            <Text size="2">
-                              {align === 'center'
-                                ? 'Centered alignment is ideal for most dialogs as it provides balanced visual weight.'
-                                : 'Top alignment is useful for dialogs that might expand or when you want to preserve reading flow.'}
-                            </Text>
-                          </Box>
                           <Flex gap="3" mt="4" justify="end">
                             <Dialog.Close>
                               <Button variant="soft" color="gray">

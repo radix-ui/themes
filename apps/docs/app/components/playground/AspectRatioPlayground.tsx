@@ -10,6 +10,7 @@ import {
   Heading,
   Tabs,
   Table,
+  Skeleton,
 } from '@kushagradhawan/kookie-ui';
 import { demoImages } from '../../../lib/demo-images';
 
@@ -23,7 +24,6 @@ const commonRatios = [
 ] as const;
 
 const variants = ['surface', 'blur'] as const;
-const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 const fitOptions = ['cover', 'contain', 'fill'] as const;
 
 export default function AspectRatioPlayground() {
@@ -40,7 +40,6 @@ export default function AspectRatioPlayground() {
         <Tabs.List size="2">
           <Tabs.Trigger value="common-ratios">Common Ratios</Tabs.Trigger>
           <Tabs.Trigger value="with-variants">With Variants</Tabs.Trigger>
-          <Tabs.Trigger value="with-radius">With Radius</Tabs.Trigger>
         </Tabs.List>
 
         {/* Common Ratios Tab */}
@@ -70,7 +69,7 @@ export default function AspectRatioPlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <Box style={{ width: '200px' }}>
+                      <Box width="200px">
                         <AspectRatio ratio={ratio}>
                           <Image
                             src={demoImages.landscape}
@@ -94,9 +93,6 @@ export default function AspectRatioPlayground() {
         {/* With Variants Tab */}
         <Tabs.Content value="with-variants">
           <Box pt="4">
-            <Text size="2" color="gray" mb="3">
-              Image variants within aspect ratio containers
-            </Text>
             <Table.Root>
               <Table.Header>
                 <Table.Row>
@@ -131,7 +127,7 @@ export default function AspectRatioPlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <Box style={{ width: '150px' }}>
+                      <Box width="150px">
                         <AspectRatio ratio={16 / 9}>
                           <Image
                             src={demoImages.landscape}
@@ -146,7 +142,7 @@ export default function AspectRatioPlayground() {
                       </Box>
                     </Table.Cell>
                     <Table.Cell>
-                      <Box style={{ width: '120px' }}>
+                      <Box width="150px">
                         <AspectRatio ratio={1}>
                           <Image
                             src={demoImages.square}
@@ -161,7 +157,7 @@ export default function AspectRatioPlayground() {
                       </Box>
                     </Table.Cell>
                     <Table.Cell>
-                      <Box style={{ width: '80px' }}>
+                      <Box width="150px">
                         <AspectRatio ratio={9 / 16}>
                           <Image
                             src={demoImages.portrait}
@@ -170,97 +166,6 @@ export default function AspectRatioPlayground() {
                             width="100%"
                             height="100%"
                             radius="medium"
-                            fit="cover"
-                          />
-                        </AspectRatio>
-                      </Box>
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* With Radius Tab */}
-        <Tabs.Content value="with-radius">
-          <Box pt="4">
-            <Text size="2" color="gray" mb="3">
-              Image radius variants within aspect ratio containers
-            </Text>
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Image Radius
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
-                    <Text size="1" color="gray">
-                      16:9 (Widescreen)
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
-                    <Text size="1" color="gray">
-                      1:1 (Square)
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '200px' }}>
-                    <Text size="1" color="gray">
-                      9:16 (Portrait)
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {radiusOptions.map((radius) => (
-                  <Table.Row key={radius}>
-                    <Table.RowHeaderCell>
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {radius === 'none' ? 'No radius' : radius}
-                      </Text>
-                    </Table.RowHeaderCell>
-                    <Table.Cell>
-                      <Box style={{ width: '150px' }}>
-                        <AspectRatio ratio={16 / 9}>
-                          <Image
-                            src={demoImages.landscape}
-                            alt="Widescreen demo"
-                            variant="surface"
-                            width="100%"
-                            height="100%"
-                            radius={radius as any}
-                            fit="cover"
-                          />
-                        </AspectRatio>
-                      </Box>
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Box style={{ width: '120px' }}>
-                        <AspectRatio ratio={1}>
-                          <Image
-                            src={demoImages.square}
-                            alt="Square demo"
-                            variant="surface"
-                            width="100%"
-                            height="100%"
-                            radius={radius as any}
-                            fit="cover"
-                          />
-                        </AspectRatio>
-                      </Box>
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Box style={{ width: '80px' }}>
-                        <AspectRatio ratio={9 / 16}>
-                          <Image
-                            src={demoImages.portrait}
-                            alt="Portrait demo"
-                            variant="surface"
-                            width="100%"
-                            height="100%"
-                            radius={radius as any}
                             fit="cover"
                           />
                         </AspectRatio>
