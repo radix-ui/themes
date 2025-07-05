@@ -35,8 +35,8 @@ export default function AlertDialogPlayground() {
       <Heading size="6" weight="bold">
         Alert Dialog
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A modal dialog that interrupts the user with important content and expects a response.
+      <Text size="3" color="gray">
+        A modal dialog for confirming destructive or critical actions.
       </Text>
 
       <Tabs.Root defaultValue="basic">

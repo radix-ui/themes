@@ -13,8 +13,8 @@ export default function SegmentedControlPlayground() {
       <Heading size="6" weight="bold">
         Segmented Control
       </Heading>
-      <Text size="2" color="gray">
-        A set of two or more segments, each of which functions as a mutually exclusive button.
+      <Text size="3" color="gray">
+        A control for switching between multiple segments or views.
       </Text>
 
       <Tabs.Root defaultValue="variants">

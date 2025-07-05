@@ -32,8 +32,8 @@ export default function AspectRatioPlayground() {
       <Heading size="6" weight="bold">
         Aspect Ratio
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A component that maintains a consistent aspect ratio for its content.
+      <Text size="3" color="gray">
+        Maintains a consistent aspect ratio for its child content.
       </Text>
 
       <Tabs.Root defaultValue="common-ratios">

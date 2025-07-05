@@ -60,7 +60,7 @@ export default function RadioCardsPlayground() {
       <Heading size="6" weight="bold">
         Radio Cards
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A group of card-style radio buttons for selecting one option with enhanced visual
         presentation.
       </Text>

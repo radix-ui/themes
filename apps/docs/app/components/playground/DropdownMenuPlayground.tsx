@@ -104,8 +104,8 @@ export default function DropdownMenuPlayground() {
       <Heading size="6" weight="bold">
         Dropdown Menu
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A menu that appears when clicking a trigger element, providing a list of actions or options.
+      <Text size="3" color="gray">
+        A menu that displays a list of actions or options triggered by a button or element.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

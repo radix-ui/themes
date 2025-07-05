@@ -50,8 +50,8 @@ export default function CalloutPlayground() {
       <Heading size="6" weight="bold">
         Callout
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A prominent message component for highlighting important information or alerts.
+      <Text size="3" color="gray">
+        Used to highlight important information, tips, or warnings in your UI.
       </Text>
 
       <Tabs.Root defaultValue="variants">

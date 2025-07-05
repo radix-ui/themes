@@ -42,7 +42,7 @@ export default function BadgePlayground() {
       <Heading size="6" weight="bold">
         Badge
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A small status indicator component for labeling and categorizing content.
       </Text>
 

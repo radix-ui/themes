@@ -60,9 +60,8 @@ export default function CheckboxCardsPlayground() {
       <Heading size="6" weight="bold">
         Checkbox Cards
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A group of card-style checkboxes for selecting multiple options with enhanced visual
-        presentation.
+      <Text size="3" color="gray">
+        A set of cards with checkboxes for multi-select options.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

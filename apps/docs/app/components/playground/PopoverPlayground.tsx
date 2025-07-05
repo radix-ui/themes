@@ -48,7 +48,7 @@ export default function PopoverPlayground() {
       <Heading size="6" weight="bold">
         Popover
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A floating panel that displays rich content relative to a trigger element.
       </Text>
 

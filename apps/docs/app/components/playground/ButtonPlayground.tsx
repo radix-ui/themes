@@ -43,7 +43,7 @@ export default function ButtonPlayground() {
       <Heading size="6" weight="bold">
         Button
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         An interactive element that triggers actions when clicked or activated.
       </Text>
 

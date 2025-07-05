@@ -52,8 +52,8 @@ export default function AvatarPlayground() {
       <Heading size="6" weight="bold">
         Avatar
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A circular component for displaying user profile pictures, initials, or icons.
+      <Text size="3" color="gray">
+        Displays a user or entity image, initials, or fallback icon.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

@@ -26,9 +26,8 @@ export default function ImagePlayground() {
       <Heading size="6" weight="bold">
         Image
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        An enhanced image component with built-in variants, styling options, and responsive
-        behavior.
+      <Text size="3" color="gray">
+        Displays images with support for aspect ratio, fit, and fallback.
       </Text>
 
       <Tabs.Root defaultValue="variants">

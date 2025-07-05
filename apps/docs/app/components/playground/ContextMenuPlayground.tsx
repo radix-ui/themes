@@ -102,9 +102,8 @@ export default function ContextMenuPlayground() {
       <Heading size="6" weight="bold">
         Context Menu
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A menu that appears when right-clicking on an element, providing contextual actions and
-        options.
+      <Text size="3" color="gray">
+        A contextual menu that appears on right-click or long-press.
       </Text>
 
       <Tabs.Root defaultValue="basic-usage">

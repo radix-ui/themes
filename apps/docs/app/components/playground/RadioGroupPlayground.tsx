@@ -53,7 +53,7 @@ export default function RadioGroupPlayground() {
       <Heading size="6" weight="bold">
         Radio Group
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A container that manages a collection of radio buttons with shared state and behavior.
       </Text>
 
@@ -62,7 +62,6 @@ export default function RadioGroupPlayground() {
           <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
           <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
-          <Tabs.Trigger value="orientation">Orientation</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -228,99 +227,6 @@ export default function RadioGroupPlayground() {
                     ))}
                   </Table.Row>
                 ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* Orientation Tab */}
-        <Tabs.Content value="orientation">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Orientation
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '250px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Vertical
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <RadioGroup.Root
-                        size="2"
-                        variant={variant}
-                        orientation="vertical"
-                        defaultValue="apple"
-                      >
-                        {fruitOptions.map((option) => (
-                          <RadioGroup.Item key={option.value} value={option.value}>
-                            {option.label}
-                          </RadioGroup.Item>
-                        ))}
-                      </RadioGroup.Root>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Horizontal
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <RadioGroup.Root
-                        size="2"
-                        variant={variant}
-                        orientation="horizontal"
-                        defaultValue="apple"
-                      >
-                        {fruitOptions.map((option) => (
-                          <RadioGroup.Item key={option.value} value={option.value}>
-                            {option.label}
-                          </RadioGroup.Item>
-                        ))}
-                      </RadioGroup.Root>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Disabled
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <RadioGroup.Root size="2" variant={variant} disabled defaultValue="apple">
-                        {fruitOptions.map((option) => (
-                          <RadioGroup.Item key={option.value} value={option.value}>
-                            {option.label}
-                          </RadioGroup.Item>
-                        ))}
-                      </RadioGroup.Root>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
               </Table.Body>
             </Table.Root>
           </Box>

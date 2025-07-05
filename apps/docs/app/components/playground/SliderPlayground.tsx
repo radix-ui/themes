@@ -42,8 +42,8 @@ export default function SliderPlayground() {
       <Heading size="6" weight="bold">
         Slider
       </Heading>
-      <Text size="2" color="gray">
-        An input where the user selects a value from within a given range.
+      <Text size="3" color="gray">
+        A control for selecting a value or range from a track.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

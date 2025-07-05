@@ -49,8 +49,8 @@ export default function ToggleButtonPlayground() {
       <Heading size="6" weight="bold">
         Toggle Button
       </Heading>
-      <Text size="2" color="gray">
-        A two-state button that can be either on or off.
+      <Text size="3" color="gray">
+        A button that toggles between selected and unselected states.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

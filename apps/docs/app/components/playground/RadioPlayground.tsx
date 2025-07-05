@@ -41,7 +41,7 @@ export default function RadioPlayground() {
       <Heading size="6" weight="bold">
         Radio
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A circular input control for selecting one option from a group of mutually exclusive
         choices.
       </Text>

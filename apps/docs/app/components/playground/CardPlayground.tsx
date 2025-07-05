@@ -20,7 +20,7 @@ export default function CardPlayground() {
       <Heading size="6" weight="bold">
         Card
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A flexible container component for grouping related content with consistent styling.
       </Text>
 
@@ -265,30 +265,30 @@ export default function CardPlayground() {
                 <Table.Row>
                   <Table.ColumnHeaderCell style={{ width: '120px' }}>
                     <Text size="1" color="gray">
-                      Content Type
+                      Variant
                     </Text>
                   </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '250px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '250px' }}>
                     <Text size="1" color="gray">
                       Simple
                     </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell style={{ width: '250px' }}>
+                    <Text size="1" color="gray">
+                      Rich Content
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {variants.map((variant) => (
+                  <Table.Row key={variant}>
+                    <Table.RowHeaderCell>
+                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
+                        {variant}
+                      </Text>
+                    </Table.RowHeaderCell>
+                    <Table.Cell>
                       <Card variant={variant} size="3" style={{ width: '230px' }}>
                         <Flex direction="column" gap="2">
                           <Text size="2" weight="medium" style={{ textTransform: 'capitalize' }}>
@@ -300,16 +300,7 @@ export default function CardPlayground() {
                         </Flex>
                       </Card>
                     </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Rich Content
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
+                    <Table.Cell>
                       <Card variant={variant} size="4" style={{ width: '230px' }}>
                         <Flex direction="column" gap="3">
                           <Heading size="4">Product Card</Heading>
@@ -327,35 +318,8 @@ export default function CardPlayground() {
                         </Flex>
                       </Card>
                     </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Nested Cards
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <Card variant={variant} size="4" style={{ width: '230px' }}>
-                        <Flex direction="column" gap="3">
-                          <Heading size="4">Container</Heading>
-                          <Text size="2" color="gray">
-                            Card with nested content
-                          </Text>
-                          <Flex direction="column" gap="2">
-                            <Card variant="soft" size="1">
-                              <Text size="1">Nested soft</Text>
-                            </Card>
-                            <Card variant="ghost" size="1">
-                              <Text size="1">Nested ghost</Text>
-                            </Card>
-                          </Flex>
-                        </Flex>
-                      </Card>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
+                  </Table.Row>
+                ))}
               </Table.Body>
             </Table.Root>
           </Box>

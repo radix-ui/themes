@@ -64,8 +64,8 @@ export default function ToggleIconButtonPlayground() {
       <Heading size="6" weight="bold">
         Toggle Icon Button
       </Heading>
-      <Text size="2" color="gray">
-        A two-state button that can be either on or off, specifically for icons.
+      <Text size="3" color="gray">
+        An icon-only button that toggles between selected and unselected states.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

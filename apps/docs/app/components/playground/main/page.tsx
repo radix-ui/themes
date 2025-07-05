@@ -15,6 +15,7 @@ import CheckboxGroupPlayground from '../CheckboxGroupPlayground';
 import ContextMenuPlayground from '../ContextMenuPlayground';
 import DialogPlayground from '../DialogPlayground';
 import DropdownMenuPlayground from '../DropdownMenuPlayground';
+import HeadingPlayground from '../HeadingPlayground';
 import IconButtonPlayground from '../IconButtonPlayground';
 import ImagePlayground from '../ImagePlayground';
 import PopoverPlayground from '../PopoverPlayground';
@@ -29,6 +30,7 @@ import SwitchPlayground from '../SwitchPlayground';
 import TabsPlayground from '../TabsPlayground';
 import TextAreaPlayground from '../TextAreaPlayground';
 import TextFieldPlayground from '../TextFieldPlayground';
+import TextPlayground from '../TextPlayground';
 import ToggleButtonPlayground from '../ToggleButtonPlayground';
 import ToggleIconButtonPlayground from '../ToggleIconButtonPlayground';
 
@@ -158,6 +160,11 @@ export default function MainPlayground() {
               <DropdownMenuPlayground />
             </Box>
 
+            {/* Heading Playground */}
+            <Box>
+              <HeadingPlayground />
+            </Box>
+
             {/* Icon Button Playground */}
             <Box>
               <IconButtonPlayground />
@@ -216,6 +223,11 @@ export default function MainPlayground() {
             {/* Tabs Playground */}
             <Box>
               <TabsPlayground />
+            </Box>
+
+            {/* Text Playground */}
+            <Box>
+              <TextPlayground />
             </Box>
 
             {/* Text Area Playground */}

@@ -41,8 +41,8 @@ export default function CheckboxPlayground() {
       <Heading size="6" weight="bold">
         Checkbox
       </Heading>
-      <Text size="2" color="gray">
-        A control that allows the user to toggle between checked and not checked.
+      <Text size="3" color="gray">
+        A basic checkbox component for binary choices.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">

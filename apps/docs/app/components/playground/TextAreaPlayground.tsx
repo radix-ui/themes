@@ -43,7 +43,7 @@ export default function TextAreaPlayground() {
       <Heading size="6" weight="bold">
         Text Area
       </Heading>
-      <Text size="2" color="gray">
+      <Text size="3" color="gray">
         Captures multi-line user input.
       </Text>
 

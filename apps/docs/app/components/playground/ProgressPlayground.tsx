@@ -42,7 +42,7 @@ export default function ProgressPlayground() {
       <Heading size="6" weight="bold">
         Progress
       </Heading>
-      <Text size="3" color="gray" mt="2">
+      <Text size="3" color="gray">
         A visual indicator showing the completion progress of a task or operation.
       </Text>
 

@@ -43,8 +43,8 @@ export default function IconButtonPlayground() {
       <Heading size="6" weight="bold">
         Icon Button
       </Heading>
-      <Text size="3" color="gray" mt="2">
-        A compact button component that displays only an icon without text.
+      <Text size="3" color="gray">
+        An icon-only button for compact actions and toolbars.
       </Text>
 
       <Tabs.Root defaultValue="theme-colors">
