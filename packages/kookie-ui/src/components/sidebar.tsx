@@ -240,6 +240,8 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
             data-accent-color={resolvedColor}
             data-high-contrast={highContrast || undefined}
             data-side={side}
+            data-type={type}
+            data-collapsible={collapsible}
             data-panel-background={panelBackground}
           >
             {children}
@@ -270,6 +272,8 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
           data-accent-color={resolvedColor}
           data-high-contrast={highContrast || undefined}
           data-side={side}
+          data-type={type}
+          data-collapsible={collapsible}
           data-panel-background={panelBackground}
         >
           {children}
@@ -286,7 +290,12 @@ interface SidebarContentProps extends React.ComponentPropsWithoutRef<'div'> {}
 const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
   ({ className, children, ...props }, forwardedRef) => {
     const context = React.useContext(SidebarContext);
-    const { size = '2', menuVariant = 'soft' } = context || {};
+    const {
+      size = '2',
+      menuVariant = 'soft',
+      type = 'sidebar',
+      collapsible = 'none',
+    } = context || {};
 
     return (
       <ScrollArea type="auto">
@@ -294,11 +303,14 @@ const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
           {...props}
           ref={forwardedRef}
           className={classNames(
+            'rt-BaseMenuContent',
             'rt-SidebarContent',
             `rt-r-size-${size}`,
             `rt-menu-variant-${menuVariant}`,
             className,
           )}
+          data-type={type}
+          data-collapsible={collapsible}
         >
           {children}
         </div>
@@ -420,7 +432,11 @@ interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'ul'> {}
 
 const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(
   ({ className, ...props }, forwardedRef) => (
-    <ul {...props} ref={forwardedRef} className={classNames('rt-SidebarMenu', className)} />
+    <ul
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-BaseMenuViewport', 'rt-SidebarMenu', className)}
+    />
   ),
 );
 SidebarMenu.displayName = 'Sidebar.Menu';
@@ -466,7 +482,7 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
       <Comp
         {...props}
         ref={forwardedRef}
-        className={classNames('rt-reset', 'rt-SidebarMenuButton', className)}
+        className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-SidebarMenuButton', className)}
         data-active={isActive || undefined}
         data-highlighted={isHighlighted || undefined}
         onMouseEnter={(event) => {
@@ -558,6 +574,7 @@ const SidebarMenuSubTrigger = React.forwardRef<
             asChild={asChild}
             className={classNames(
               'rt-reset',
+              'rt-BaseMenuItem',
               'rt-SidebarMenuButton',
               'rt-SidebarMenuSubTrigger',
               className,
@@ -617,7 +634,11 @@ interface SidebarGroupProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
   ({ className, ...props }, forwardedRef) => (
-    <div {...props} ref={forwardedRef} className={classNames('rt-SidebarGroup', className)} />
+    <div
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-BaseMenuGroup', 'rt-SidebarGroup', className)}
+    />
   ),
 );
 SidebarGroup.displayName = 'Sidebar.Group';
@@ -634,7 +655,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, SidebarGroupLabelProp
       <Comp
         {...props}
         ref={forwardedRef}
-        className={classNames('rt-SidebarGroupLabel', className)}
+        className={classNames('rt-BaseMenuLabel', 'rt-SidebarGroupLabel', className)}
       />
     );
   },

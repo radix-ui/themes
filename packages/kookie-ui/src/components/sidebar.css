@@ -1,3 +1,5 @@
+@import './_internal/base-menu.css';
+
 /* Sidebar Provider - handles positioning */
 .rt-SidebarProvider {
   /* Positioning based on side */
@@ -120,11 +122,11 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    min-height: var(--sidebar-item-height);
-    padding-top: var(--sidebar-item-padding-y);
-    padding-bottom: var(--sidebar-item-padding-y);
-    padding-left: var(--sidebar-item-padding-left);
-    padding-right: var(--sidebar-item-padding-right);
+    min-height: var(--base-menu-item-height);
+    padding-top: var(--base-menu-item-padding-y);
+    padding-bottom: var(--base-menu-item-padding-y);
+    padding-left: var(--base-menu-item-padding-left);
+    padding-right: var(--base-menu-item-padding-right);
     box-sizing: border-box;
     position: relative;
     outline: none;
@@ -165,8 +167,8 @@
   flex-direction: row;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--sidebar-content-padding);
-  min-height: var(--sidebar-item-height);
+  padding: var(--base-menu-content-padding);
+  min-height: var(--base-menu-item-height);
   
   /* Make MenuButtons expand to full width */
   & :where(.rt-SidebarMenuButton) {
@@ -229,16 +231,22 @@
 
 /* Sidebar Content - based on rt-BaseMenuContent */
 .rt-SidebarContent {
-  --scrollarea-scrollbar-vertical-margin-top: var(--sidebar-content-padding);
-  --scrollarea-scrollbar-vertical-margin-bottom: var(--sidebar-content-padding);
-  --scrollarea-scrollbar-horizontal-margin-left: var(--sidebar-content-padding);
-  --scrollarea-scrollbar-horizontal-margin-right: var(--sidebar-content-padding);
+  --scrollarea-scrollbar-vertical-margin-top: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--base-menu-content-padding);
 
   display: flex;
   flex-direction: column;
   flex: 1;
   box-sizing: border-box;
   min-height: 0; /* Critical for flex children to shrink */
+
+  /* Override base menu styling that's not appropriate for sidebars */
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 
   /* Ensure ScrollArea takes full height within SidebarContent */
   & :where(.rt-ScrollAreaRoot) {
@@ -261,8 +269,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2); /* Use gap for consistent spacing */
-  padding: var(--sidebar-content-padding);
+  padding: var(--base-menu-content-padding);
   box-sizing: border-box;
   list-style: none;
   margin: 0;
@@ -278,30 +285,28 @@
   list-style: none;
 }
 
-/* Sidebar Menu Button - matches rt-BaseMenuItem */
+/* Sidebar Menu Button - inherit from BaseMenuItem */
 .rt-SidebarMenuButton {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: var(--sidebar-item-height);
-  padding-top: var(--sidebar-item-padding-y);
-  padding-bottom: var(--sidebar-item-padding-y);
-  padding-left: var(--sidebar-item-padding-left);
-  padding-right: var(--sidebar-item-padding-right);
+  gap: var(--space-2); /* Will be overridden by size-specific gap */
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
+  padding-left: var(--base-menu-item-padding-left);
+  padding-right: var(--base-menu-item-padding-right);
   box-sizing: border-box;
   position: relative;
   outline: none;
-  scroll-margin: var(--sidebar-content-padding) 0;
+  scroll-margin: var(--base-menu-content-padding) 0;
   background: none;
   border: none;
   width: 100%;
   text-align: left;
-  border-radius: var(--radius-2);
+  border-radius: var(--radius-2); /* Will be overridden by size-specific radius */
 
-  /* Transitions - similar to button but without transform */
-  transition: background var(--duration-2) var(--ease-1), 
-              box-shadow var(--duration-2) var(--ease-1),
-              filter var(--duration-2) var(--ease-1);
+  /* Transitions - inherit from base menu */
+  transition: var(--transition-menu);
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
@@ -330,8 +335,8 @@
     color: var(--accent-a11);
   }
 
-  /* Gray text support */
-  & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+  /* Gray text support - inherit from base menu */
+  & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
     color: var(--gray-a10);
   }
 
@@ -437,11 +442,11 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    min-height: var(--sidebar-item-height);
-    padding-top: var(--sidebar-item-padding-y);
-    padding-bottom: var(--sidebar-item-padding-y);
-    padding-left: var(--sidebar-item-padding-left);
-    padding-right: var(--sidebar-item-padding-right);
+    min-height: var(--base-menu-item-height);
+    padding-top: var(--base-menu-item-padding-y);
+    padding-bottom: var(--base-menu-item-padding-y);
+    padding-left: var(--base-menu-item-padding-left);
+    padding-right: var(--base-menu-item-padding-right);
     box-sizing: border-box;
     position: relative;
     outline: none;
@@ -482,8 +487,8 @@
   flex-direction: row;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--sidebar-content-padding);
-  min-height: var(--sidebar-item-height);
+  padding: var(--base-menu-content-padding);
+  min-height: var(--base-menu-item-height);
   
   /* Make MenuButtons expand to full width */
   & :where(.rt-SidebarMenuButton) {
@@ -550,37 +555,33 @@
   margin: var(--space-2) 0;
 }
 
-/* Sidebar Group Components - add spacing between groups */
+/* Sidebar Group Components - identical to base menu */
 .rt-SidebarGroup {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  
-  /* Add spacing between groups without manual separators */
-  &:where(:not(:first-child)) {
-    margin-top: var(--space-4);
-  }
+  /* No styling - purely semantic like BaseMenuGroup */
 }
 
 .rt-SidebarGroupLabel {
+  /* Inherit all BaseMenuLabel styles */
   display: flex;
   align-items: center;
-  min-height: var(--sidebar-item-height);
-  padding-top: var(--sidebar-item-padding-y);
-  padding-bottom: var(--sidebar-item-padding-y);
-  padding-left: var(--sidebar-item-padding-left);
-  padding-right: var(--sidebar-item-padding-right);
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
+  padding-left: var(--base-menu-item-padding-left);
+  padding-right: var(--base-menu-item-padding-right);
   box-sizing: border-box;
   color: var(--gray-a10);
   user-select: none;
   cursor: default;
-  flex-shrink: 0;
+
+  /* Add margin-top when following menu items - identical to BaseMenuLabel */
+  :where(.rt-SidebarMenuItem) + & {
+    margin-top: var(--space-2);
+  }
 }
 
 .rt-SidebarGroupContent {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
+  /* No styling - purely semantic container */
 }
 
 /***************************************************************************************************
@@ -590,67 +591,38 @@
  ***************************************************************************************************/
 
 @breakpoints {
-  /* Container sizing - padding and border radius like Card */
+  /* Container sizing - inherit from base menu */
   .rt-SidebarContainer {
     &:where(.rt-r-size-1) {
       --sidebar-base-padding: var(--space-3);
-      /* Ensure header/footer menu buttons share the same sizing variables as content */
-      --sidebar-content-padding: var(--space-1);
-      --sidebar-item-padding-left: var(--space-2);
-      --sidebar-item-padding-right: var(--space-2);
-      --sidebar-item-padding-y: calc(var(--space-1) * 0.75);
-      --sidebar-item-height: var(--space-5);
     }
     &:where(.rt-r-size-2) {
       --sidebar-base-padding: var(--space-4);
-      /* Ensure header/footer menu buttons share the same sizing variables as content */
-      --sidebar-content-padding: var(--space-2);
-      --sidebar-item-padding-left: var(--space-3);
-      --sidebar-item-padding-right: var(--space-3);
-      --sidebar-item-padding-y: var(--space-1);
-      --sidebar-item-height: var(--space-6);
     }
   }
 
-  /* Content sizing - like base menu (dropdown menu) */
+  /* Content sizing - use base menu tokens directly */
   .rt-SidebarContent {
     &:where(.rt-r-size-1) {
-      --sidebar-content-padding: var(--space-1);
-      --sidebar-item-padding-left: calc(var(--space-5) / 1.2);
-      --sidebar-item-padding-right: var(--space-2);
-      --sidebar-item-padding-y: calc(var(--space-1) * 0.75);
-      --sidebar-item-height: var(--space-5);
-      border-radius: var(--radius-3);
-
-      /* reset with :not:has so we still support browsers without :has */
-      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
-        --sidebar-item-padding-left: var(--space-2);
-      }
-      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
-        --sidebar-item-padding-left: calc(var(--space-5) / 1.2);
-      }
+      --sidebar-content-padding: var(--base-menu-content-padding);
+      --sidebar-item-padding-left: var(--base-menu-item-padding-left);
+      --sidebar-item-padding-right: var(--base-menu-item-padding-right);
+      --sidebar-item-padding-y: var(--base-menu-item-padding-y);
+      --sidebar-item-height: var(--base-menu-item-height);
     }
     &:where(.rt-r-size-2) {
-      --sidebar-content-padding: var(--space-2);
-      --sidebar-item-padding-left: var(--space-3);
-      --sidebar-item-padding-right: var(--space-3);
-      --sidebar-item-padding-y: var(--space-1);
-      --sidebar-item-height: var(--space-6);
-      border-radius: var(--radius-4);
-
-      /* reset with :not:has so we still support browsers without :has */
-      &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
-        --sidebar-item-padding-left: var(--space-3);
-      }
-      &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
-        --sidebar-item-padding-left: var(--space-5);
-      }
+      --sidebar-content-padding: var(--base-menu-content-padding);
+      --sidebar-item-padding-left: var(--base-menu-item-padding-left);
+      --sidebar-item-padding-right: var(--base-menu-item-padding-right);
+      --sidebar-item-padding-y: var(--base-menu-item-padding-y);
+      --sidebar-item-height: var(--base-menu-item-height);
     }
   }
 
-  /* Size-specific menu button styling - matches base menu items */
+  /* Size-specific menu button styling - inherit from base menu */
   .rt-SidebarContent:where(.rt-r-size-1) {
     & :where(.rt-SidebarMenuButton) {
+      gap: var(--component-gap-2);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
@@ -671,52 +643,15 @@
       flex-shrink: 0;
       margin-left: auto;
     }
-
-    /* Group label sizing - matches base menu */
-    & :where(.rt-SidebarGroupLabel) {
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
-      letter-spacing: var(--letter-spacing-1);
-    }
-  }
-
-  /* Header and footer styling for size 1 */
-  .rt-SidebarContainer:where(.rt-r-size-1) {
-    & :where(.rt-SidebarHeader .rt-SidebarMenuButton) {
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
-      letter-spacing: var(--letter-spacing-1);
-      border-radius: var(--radius-1);
-
-      /* stylelint-disable-next-line selector-max-type */
-      & :where(svg) {
-        width: var(--content-icon-size-1);
-        height: var(--content-icon-size-1);
-        flex-shrink: 0;
-      }
-    }
-
-    & :where(.rt-SidebarFooter .rt-SidebarMenuButton) {
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
-      letter-spacing: var(--letter-spacing-1);
-      border-radius: var(--radius-1);
-
-      /* stylelint-disable-next-line selector-max-type */
-      & :where(svg) {
-        width: var(--content-icon-size-1);
-        height: var(--content-icon-size-1);
-        flex-shrink: 0;
-      }
-    }
   }
 
   .rt-SidebarContent:where(.rt-r-size-2) {
     & :where(.rt-SidebarMenuButton) {
+      gap: var(--component-gap-3);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
-      border-radius: var(--radius-3);
+      border-radius: var(--radius-2);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
@@ -733,45 +668,9 @@
       flex-shrink: 0;
       margin-left: auto;
     }
-
-    /* Group label sizing - matches base menu */
-    & :where(.rt-SidebarGroupLabel) {
-      font-size: var(--font-size-2);
-      line-height: var(--line-height-2);
-      letter-spacing: var(--letter-spacing-2);
-    }
   }
 
-  /* Header and footer styling for size 2 */
-  .rt-SidebarContainer:where(.rt-r-size-2) {
-    & :where(.rt-SidebarHeader .rt-SidebarMenuButton) {
-      font-size: var(--font-size-2);
-      line-height: var(--line-height-2);
-      letter-spacing: var(--letter-spacing-2);
-      border-radius: var(--radius-3);
 
-      /* stylelint-disable-next-line selector-max-type */
-      & :where(svg) {
-        width: var(--content-icon-size-2);
-        height: var(--content-icon-size-2);
-        flex-shrink: 0;
-      }
-    }
-
-    & :where(.rt-SidebarFooter .rt-SidebarMenuButton) {
-      font-size: var(--font-size-2);
-      line-height: var(--line-height-2);
-      letter-spacing: var(--letter-spacing-2);
-      border-radius: var(--radius-3);
-
-      /* stylelint-disable-next-line selector-max-type */
-      & :where(svg) {
-        width: var(--content-icon-size-2);
-        height: var(--content-icon-size-2);
-        flex-shrink: 0;
-      }
-    }
-  }
 }
 
 /***************************************************************************************************
@@ -788,24 +687,24 @@
     border: none;
   }
   &:where(.rt-variant-soft) {
-    /* Use solid accent for solid panels, alpha accent for translucent panels */
-    background-color: var(--accent-2);
+    /* Use solid gray for solid panels, alpha gray for translucent panels */
+    background-color: var(--gray-2);
     
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a2);
+      background-color: var(--gray-a2);
       backdrop-filter: var(--backdrop-filter-panel);
     }
 
     /* Component-level overrides (higher specificity) */
     &:where([data-panel-background='solid']) {
-      background-color: var(--accent-2);
+      background-color: var(--gray-2);
       backdrop-filter: none;
       --backdrop-filter-components: none;
     }
 
     &:where([data-panel-background='translucent']) {
-      background-color: var(--accent-a2);
+      background-color: var(--gray-a2);
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
       --backdrop-filter-components: blur(var(--backdrop-blur-components));
@@ -822,11 +721,76 @@
 
 /* Menu Button Variants - Independent of Container */
 
-/* Menu Variant: Solid */
+/* Menu Variant: Solid - EXACT match to base menu */
 .rt-SidebarHeader:where(.rt-menu-variant-solid),
 .rt-SidebarContent:where(.rt-menu-variant-solid),
 .rt-SidebarFooter:where(.rt-menu-variant-solid) {
-  /* Active navigation state for solid variant */
+  /* Sub-trigger transitions - match base menu */
+  & :where(.rt-SidebarMenuSubTrigger) {
+    transition: var(--transition-menu);
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+    
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
+
+  /* Sub-trigger open state - match base menu */
+  & :where(.rt-SidebarMenuSubTrigger[data-state='open']) {
+    /* Base state: solid gray for solid panels */
+    background-color: var(--gray-3);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--gray-a3);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--gray-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--gray-a3);
+    }
+  }
+
+  /* Menu item transitions - match base menu */
+  & :where(.rt-SidebarMenuButton) {
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
+
+  /* Hover/highlighted state for solid variant - EXACT match to base menu */
+  & :where(.rt-SidebarMenuButton[data-highlighted]) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+
+    & :where(.rt-BaseMenuSubTriggerIcon) {
+      color: var(--accent-contrast);
+    }
+
+    /* Force all text elements to inherit hover color, including those with color="gray" */
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    /* Also target any element with data-accent-color="gray" */
+    & :where([data-accent-color='gray']:not(.rt-Badge)) {
+      color: inherit !important;
+    }
+  }
+
+  /* Active navigation state for solid variant - same as highlighted */
   & :where(.rt-SidebarMenuButton[data-active]) {
     background-color: var(--accent-9);
     color: var(--accent-contrast);
@@ -836,38 +800,28 @@
       color: inherit !important;
     }
 
-    & :where([data-accent-color='gray']) {
+    & :where([data-accent-color='gray']:not(.rt-Badge)) {
       color: inherit !important;
     }
   }
 
-  /* Hover/highlighted state for solid variant */
-  & :where(.rt-SidebarMenuButton[data-highlighted]) {
-    background-color: var(--accent-9);
-    color: var(--accent-contrast);
-
-    /* Force all text elements to inherit hover color */
-    & :where(.rt-Text) {
-      color: inherit !important;
-    }
-
-    & :where([data-accent-color='gray']) {
-      color: inherit !important;
-    }
-  }
-
-  /* High contrast support for solid variant */
+  /* High contrast support for solid variant - EXACT match to base menu */
   &:where(.rt-high-contrast) {
-    & :where(.rt-SidebarMenuButton[data-active]),
     & :where(.rt-SidebarMenuButton[data-highlighted]) {
       background-color: var(--accent-12);
       color: var(--accent-1);
 
+      & :where(.rt-BaseMenuSubTriggerIcon) {
+        color: var(--accent-1);
+      }
+
+      /* Force all text elements to inherit hover color in high contrast mode */
       & :where(.rt-Text) {
         color: inherit !important;
       }
 
-      & :where([data-accent-color='gray']) {
+      /* Also target any element with data-accent-color="gray" in high contrast */
+      & :where([data-accent-color='gray']:not(.rt-Badge)) {
         color: inherit !important;
       }
 
@@ -879,7 +833,33 @@
           color: inherit !important;
         }
 
-        & :where([data-accent-color='gray']) {
+        & :where([data-accent-color='gray']:not(.rt-Badge)) {
+          color: inherit !important;
+        }
+      }
+    }
+
+    & :where(.rt-SidebarMenuButton[data-active]) {
+      background-color: var(--accent-12);
+      color: var(--accent-1);
+
+      & :where(.rt-Text) {
+        color: inherit !important;
+      }
+
+      & :where([data-accent-color='gray']:not(.rt-Badge)) {
+        color: inherit !important;
+      }
+
+      &:where([data-accent-color]) {
+        background-color: var(--accent-9);
+        color: var(--accent-contrast);
+
+        & :where(.rt-Text) {
+          color: inherit !important;
+        }
+
+        & :where([data-accent-color='gray']:not(.rt-Badge)) {
           color: inherit !important;
         }
       }
@@ -887,13 +867,85 @@
   }
 }
 
-/* Menu Variant: Soft */
+/* Menu Variant: Soft - EXACT match to base menu */
 .rt-SidebarHeader:where(.rt-menu-variant-soft),
 .rt-SidebarContent:where(.rt-menu-variant-soft),
 .rt-SidebarFooter:where(.rt-menu-variant-soft) {
-  /* Active navigation state for soft variant */
+  /* Sub-trigger transitions - match base menu */
+  & :where(.rt-SidebarMenuSubTrigger) {
+    transition: var(--transition-menu);
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+    
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
+
+  /* Sub-trigger open state - match base menu */
+  & :where(.rt-SidebarMenuSubTrigger[data-state='open']) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-3);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a3);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-3);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a3);
+    }
+  }
+
+  /* Menu item transitions - match base menu */
+  & :where(.rt-SidebarMenuButton) {
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
+
+  /* Hover/highlighted state for soft variant - EXACT match to base menu */
+  & :where(.rt-SidebarMenuButton[data-highlighted]) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--accent-a4);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--accent-4);
+      backdrop-filter: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--accent-a4);
+    }
+
+    /* In soft variant, improve contrast for gray text while maintaining hierarchy */
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
+      color: var(--gray-11) !important;
+    }
+  }
+
+  /* Active navigation state for soft variant - use accent-3 like sub-trigger */
   & :where(.rt-SidebarMenuButton[data-active]) {
-    /* Use solid accent for solid panels, alpha accent for translucent panels */
+    /* Base state: solid accent for solid panels */
     background-color: var(--accent-3);
     color: var(--accent-12);
 
@@ -901,70 +953,23 @@
     :where([data-panel-background='translucent']) & {
       background-color: var(--accent-a3);
       color: var(--accent-a12);
-      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
-      backdrop-filter: var(--backdrop-filter-components);
     }
 
     /* Component-level overrides (higher specificity) */
-    :where(.rt-SidebarContainer[data-panel-background='solid']) & {
+    &:where([data-panel-background='solid']) {
       background-color: var(--accent-3);
       color: var(--accent-12);
       backdrop-filter: none;
       --backdrop-filter-components: none;
     }
 
-    :where(.rt-SidebarContainer[data-panel-background='translucent']) & {
+    &:where([data-panel-background='translucent']) {
       background-color: var(--accent-a3);
       color: var(--accent-a12);
-      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
-      backdrop-filter: var(--backdrop-filter-components);
-      --backdrop-filter-components: blur(var(--backdrop-blur-components));
-    }
-
-    /* Avoid double backdrop-filter on surface variant - container already has backdrop-filter */
-    :where(.rt-SidebarContainer.rt-variant-surface) & {
-      backdrop-filter: none;
     }
 
     /* In soft variant, improve contrast for gray text while maintaining hierarchy */
-    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
-      color: var(--gray-11) !important;
-    }
-  }
-
-  /* Hover/highlighted state for soft variant */
-  & :where(.rt-SidebarMenuButton[data-highlighted]) {
-    /* Use solid accent for solid panels, alpha accent for translucent panels */
-    background-color: var(--accent-3);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a3);
-      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
-      backdrop-filter: var(--backdrop-filter-components);
-    }
-
-    /* Component-level overrides (higher specificity) */
-    :where(.rt-SidebarContainer[data-panel-background='solid']) & {
-      background-color: var(--accent-3);
-      backdrop-filter: none;
-      --backdrop-filter-components: none;
-    }
-
-    :where(.rt-SidebarContainer[data-panel-background='translucent']) & {
-      background-color: var(--accent-a3);
-      /* Only apply backdrop-filter if parent container doesn't have it (ghost variant) */
-      backdrop-filter: var(--backdrop-filter-components);
-      --backdrop-filter-components: blur(var(--backdrop-blur-components));
-    }
-
-    /* Avoid double backdrop-filter on surface variant - container already has backdrop-filter */
-    :where(.rt-SidebarContainer.rt-variant-surface) & {
-      backdrop-filter: none;
-    }
-
-    /* In soft variant, improve contrast for gray text while maintaining hierarchy */
-    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
       color: var(--gray-11) !important;
     }
   }
@@ -976,23 +981,115 @@
   margin-bottom: var(--space-1);
 }
 
-/* Collapsible behavior */
+/* Collapsible behavior - INSTANT TOGGLE APPROACH */
+.rt-SidebarRoot:where([data-collapsible="icon"]) {
+  /* No transitions - instant state changes for better UX */
+  transition: none;
+  overflow: hidden; /* Prevent content from spilling out when width is 0 */
+  flex-shrink: 0; /* Don't let flex container shrink this */
+}
+
+/* Exception: floating ghost sidebars need visible overflow for shadows */
+.rt-SidebarContainer:where(.rt-variant-ghost[data-collapsible="icon"][data-type="floating"]) {
+  overflow: visible !important; /* Allow shadows to show - override the hidden overflow */
+}
+
+/* Collapsed state - instant width change, no layout escape */
 .rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
-  transform: translateX(-100%);
-  transition: transform var(--duration-3) var(--ease-2);
+  width: 0;
+  min-width: 0; /* Allow width to go to 0 */
+  opacity: 0; /* Hide content for accessibility */
+  pointer-events: none; /* Disable interactions */
+  /* Keep in layout flow - no position changes */
+}
+
+/* Expanded state */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="expanded"]) {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width); /* Prevent shrinking */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Container locking for stable layouts */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
+  /* Ensure the collapsed sidebar doesn't affect sibling layout */
+  flex-basis: 0;
+  width: 0;
 }
 
 .rt-SidebarRoot:where([data-collapsible="icon"][data-state="expanded"]) {
-  transform: translateX(0);
-  transition: transform var(--duration-3) var(--ease-2);
+  flex-basis: var(--sidebar-width);
+  width: var(--sidebar-width);
 }
 
-/* Right-side sidebar adjustments */
-.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"][data-side="right"]) {
-  transform: translateX(100%);
+/* Floating sidebars: Similar approach but can fully hide */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"]) {
+  /* Same instant approach */
+  transition: none;
+  overflow: hidden; /* Default: prevent spillover */
+  flex-shrink: 0;
 }
 
-/* Reduced motion support for collapsible */
+/* Exception: floating ghost sidebars need visible overflow for shadows */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"]:has(.rt-variant-ghost)) {
+  overflow: visible; /* Allow shadows to show */
+}
+
+/* Collapsed state - instant width change, no layout escape */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
+  width: 0;
+  min-width: 0;
+  opacity: 0;
+  pointer-events: none;
+  /* For floating, we can add margin to create visual separation when expanded */
+  margin: 0;
+}
+
+.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"][data-state="expanded"]) {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  opacity: 1;
+  pointer-events: auto;
+  /* Restore floating margins */
+  margin: var(--space-2);
+  /* Remove the width override - let margin work naturally */
+}
+
+/* Content protection - prevent internal reflow */
+.rt-SidebarContainer:where([data-collapsible="icon"]) {
+  /* Lock the content size to prevent internal shifting */
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  flex-shrink: 0;
+}
+
+.rt-SidebarContent:where([data-collapsible="icon"]) {
+  /* Prevent content from reflowing */
+  width: 100%;
+  min-width: var(--sidebar-width);
+  flex-shrink: 0;
+}
+
+/* Mobile responsive behavior - hide completely */
+@media (max-width: 768px) {
+  .rt-SidebarRoot {
+    display: none;
+  }
+  
+  .rt-SidebarRoot:where([data-state="expanded"]) {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    z-index: 50;
+    box-shadow: var(--shadow-6);
+  }
+}
+
+/* Reduced motion support - already no animations */
 @media (prefers-reduced-motion: reduce) {
   .rt-SidebarRoot:where([data-collapsible="icon"]) {
     transition: none;
@@ -1008,22 +1105,13 @@
 
 /* Reduce right padding on menu buttons with trailing elements */
 .rt-SidebarMenuButton:where(:has(.rt-SidebarMenuShortcut, .rt-SidebarMenuBadge)) {
-  /* Size-specific right padding reduction */
+  /* Use base menu padding tokens */
   :where(.rt-SidebarContent.rt-r-size-1) & {
-    padding-right: calc(var(--space-1) * 0.75); /* 3px - matches top/bottom padding */
+    padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
   }
   
   :where(.rt-SidebarContent.rt-r-size-2) & {
-    padding-right: var(--space-1); /* 4px - matches top/bottom padding */
-  }
-  
-  /* Also apply to header and footer menu buttons */
-  :where(.rt-SidebarContainer.rt-r-size-1) & {
-    padding-right: calc(var(--space-1) * 0.75); /* 3px - matches top/bottom padding */
-  }
-  
-  :where(.rt-SidebarContainer.rt-r-size-2) & {
-    padding-right: var(--space-1); /* 4px - matches top/bottom padding */
+    padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
   }
 }
 

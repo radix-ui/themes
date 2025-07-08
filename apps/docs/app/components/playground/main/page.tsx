@@ -1,7 +1,43 @@
 'use client';
 
-import { Theme, Box, Flex, Heading, Separator, Container, Image } from '@kushagradhawan/kookie-ui';
+import { Theme, Box, Flex, Heading, Container, Image, Sidebar } from '@kushagradhawan/kookie-ui';
 import { useControls, Leva } from 'leva';
+import { useRef, useCallback, useState } from 'react';
+import {
+  AlertTriangle,
+  RectangleHorizontal,
+  User,
+  Award,
+  Mouse,
+  MessageSquare,
+  CreditCard,
+  CheckSquare,
+  Grid3X3,
+  Check,
+  MoreHorizontal,
+  MessageCircle,
+  ChevronDown,
+  Type,
+  MousePointer,
+  Image as ImageIcon,
+  HelpCircle,
+  BarChart3,
+  Circle,
+  SquareCheckBig,
+  Users,
+  List,
+  ToggleLeft,
+  Navigation,
+  PanelLeft,
+  Sliders,
+  ToggleRight,
+  Folder,
+  Table,
+  FileText,
+  Search,
+  UserCheck,
+} from 'lucide-react';
+
 import AlertDialogPlayground from '../AlertDialogPlayground';
 import AspectRatioPlayground from '../AspectRatioPlayground';
 import AvatarPlayground from '../AvatarPlayground';
@@ -33,6 +69,9 @@ import TextFieldPlayground from '../TextFieldPlayground';
 import TextPlayground from '../TextPlayground';
 import ToggleButtonPlayground from '../ToggleButtonPlayground';
 import ToggleIconButtonPlayground from '../ToggleIconButtonPlayground';
+import UserCardPlayground from '../UserCardPlayground';
+import SidebarPlayground from '../SidebarPlayground';
+import TablePlayground from '../TablePlayground';
 
 const backgroundImages = {
   'Abstract Dark':
@@ -43,7 +82,131 @@ const backgroundImages = {
     'https://images.unsplash.com/photo-1741145018917-216c9275bc3a?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 };
 
+const componentSections = [
+  {
+    title: 'Actions',
+    components: [
+      { id: 'button', name: 'Button', icon: Mouse, component: ButtonPlayground },
+      {
+        id: 'icon-button',
+        name: 'Icon Button',
+        icon: MousePointer,
+        component: IconButtonPlayground,
+      },
+      {
+        id: 'toggle-button',
+        name: 'Toggle Button',
+        icon: ToggleLeft,
+        component: ToggleButtonPlayground,
+      },
+      {
+        id: 'toggle-icon-button',
+        name: 'Toggle Icon Button',
+        icon: ToggleRight,
+        component: ToggleIconButtonPlayground,
+      },
+    ],
+  },
+  {
+    title: 'Forms',
+    components: [
+      { id: 'checkbox', name: 'Checkbox', icon: CheckSquare, component: CheckboxPlayground },
+      {
+        id: 'checkbox-cards',
+        name: 'Checkbox Cards',
+        icon: Grid3X3,
+        component: CheckboxCardsPlayground,
+      },
+      {
+        id: 'checkbox-group',
+        name: 'Checkbox Group',
+        icon: Check,
+        component: CheckboxGroupPlayground,
+      },
+      { id: 'radio', name: 'Radio', icon: Circle, component: RadioPlayground },
+      {
+        id: 'radio-cards',
+        name: 'Radio Cards',
+        icon: SquareCheckBig,
+        component: RadioCardsPlayground,
+      },
+      { id: 'radio-group', name: 'Radio Group', icon: Users, component: RadioGroupPlayground },
+      { id: 'select', name: 'Select', icon: ChevronDown, component: SelectPlayground },
+      {
+        id: 'segmented-control',
+        name: 'Segmented Control',
+        icon: List,
+        component: SegmentedControlPlayground,
+      },
+      { id: 'slider', name: 'Slider', icon: Sliders, component: SliderPlayground },
+      { id: 'switch', name: 'Switch', icon: ToggleLeft, component: SwitchPlayground },
+      { id: 'text-area', name: 'Text Area', icon: FileText, component: TextAreaPlayground },
+      { id: 'text-field', name: 'Text Field', icon: Search, component: TextFieldPlayground },
+    ],
+  },
+  {
+    title: 'Display',
+    components: [
+      { id: 'avatar', name: 'Avatar', icon: User, component: AvatarPlayground },
+      { id: 'badge', name: 'Badge', icon: Award, component: BadgePlayground },
+      { id: 'card', name: 'Card', icon: CreditCard, component: CardPlayground },
+      { id: 'user-card', name: 'User Card', icon: UserCheck, component: UserCardPlayground },
+      { id: 'callout', name: 'Callout', icon: MessageSquare, component: CalloutPlayground },
+      { id: 'heading', name: 'Heading', icon: Type, component: HeadingPlayground },
+      { id: 'text', name: 'Text', icon: FileText, component: TextPlayground },
+      { id: 'image', name: 'Image', icon: ImageIcon, component: ImagePlayground },
+      { id: 'progress', name: 'Progress', icon: BarChart3, component: ProgressPlayground },
+      { id: 'table', name: 'Table', icon: Table, component: TablePlayground },
+    ],
+  },
+  {
+    title: 'Overlays',
+    components: [
+      {
+        id: 'alert-dialog',
+        name: 'Alert Dialog',
+        icon: AlertTriangle,
+        component: AlertDialogPlayground,
+      },
+      {
+        id: 'context-menu',
+        name: 'Context Menu',
+        icon: MoreHorizontal,
+        component: ContextMenuPlayground,
+      },
+      { id: 'dialog', name: 'Dialog', icon: MessageCircle, component: DialogPlayground },
+      {
+        id: 'dropdown-menu',
+        name: 'Dropdown Menu',
+        icon: ChevronDown,
+        component: DropdownMenuPlayground,
+      },
+      { id: 'popover', name: 'Popover', icon: HelpCircle, component: PopoverPlayground },
+    ],
+  },
+  {
+    title: 'Navigation',
+    components: [
+      { id: 'sidebar', name: 'Sidebar', icon: PanelLeft, component: SidebarPlayground },
+      { id: 'tabs', name: 'Tabs', icon: Folder, component: TabsPlayground },
+    ],
+  },
+  {
+    title: 'Layout',
+    components: [
+      {
+        id: 'aspect-ratio',
+        name: 'Aspect Ratio',
+        icon: RectangleHorizontal,
+        component: AspectRatioPlayground,
+      },
+    ],
+  },
+];
+
 export default function MainPlayground() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const backgroundControls = useControls('Background Image', {
     enabled: { value: false, label: 'Show Background' },
     image: {
@@ -54,6 +217,17 @@ export default function MainPlayground() {
     opacity: { value: 1, min: 0, max: 1, step: 0.1, label: 'Opacity' },
     blur: { value: true, label: 'Blur Effect' },
   });
+
+  const scrollToComponent = useCallback((componentId: string) => {
+    const element = document.getElementById(componentId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -93,165 +267,88 @@ export default function MainPlayground() {
             />
           </Box>
         )}
-        <Container size="4" py="9">
-          <Flex direction="column" gap="128px">
-            {/* Alert Dialog Playground */}
-            <Box>
-              <AlertDialogPlayground />
-            </Box>
 
-            {/* AspectRatio Playground */}
-            <Box>
-              <AspectRatioPlayground />
-            </Box>
-
-            {/* Avatar Playground */}
-            <Box>
-              <AvatarPlayground />
-            </Box>
-
-            {/* Badge Playground */}
-            <Box>
-              <BadgePlayground />
-            </Box>
-
-            {/* Button Playground */}
-            <Box>
-              <ButtonPlayground />
-            </Box>
-
-            {/* Callout Playground */}
-            <Box>
-              <CalloutPlayground />
-            </Box>
-
-            {/* Card Playground */}
-            <Box>
-              <CardPlayground />
-            </Box>
-
-            {/* Checkbox Playground */}
-            <Box>
-              <CheckboxPlayground />
-            </Box>
-
-            {/* Checkbox Cards Playground */}
-            <Box>
-              <CheckboxCardsPlayground />
-            </Box>
-
-            {/* Checkbox Group Playground */}
-            <Box>
-              <CheckboxGroupPlayground />
-            </Box>
-
-            {/* Context Menu Playground */}
-            <Box>
-              <ContextMenuPlayground />
-            </Box>
-
-            {/* Dialog Playground */}
-            <Box>
-              <DialogPlayground />
-            </Box>
-
-            {/* Dropdown Menu Playground */}
-            <Box>
-              <DropdownMenuPlayground />
-            </Box>
-
-            {/* Heading Playground */}
-            <Box>
-              <HeadingPlayground />
-            </Box>
-
-            {/* Icon Button Playground */}
-            <Box>
-              <IconButtonPlayground />
-            </Box>
-
-            {/* Image Playground */}
-            <Box>
-              <ImagePlayground />
-            </Box>
-
-            {/* Popover Playground */}
-            <Box>
-              <PopoverPlayground />
-            </Box>
-
-            {/* Progress Playground */}
-            <Box>
-              <ProgressPlayground />
-            </Box>
-
-            {/* Radio Playground */}
-            <Box>
-              <RadioPlayground />
-            </Box>
-
-            {/* Radio Cards Playground */}
-            <Box>
-              <RadioCardsPlayground />
-            </Box>
-
-            {/* Radio Group Playground */}
-            <Box>
-              <RadioGroupPlayground />
-            </Box>
-
-            {/* Select Playground */}
-            <Box>
-              <SelectPlayground />
-            </Box>
-
-            {/* Segmented Control Playground */}
-            <Box>
-              <SegmentedControlPlayground />
-            </Box>
-
-            {/* Slider Playground */}
-            <Box>
-              <SliderPlayground />
-            </Box>
-
-            {/* Switch Playground */}
-            <Box>
-              <SwitchPlayground />
-            </Box>
-
-            {/* Tabs Playground */}
-            <Box>
-              <TabsPlayground />
-            </Box>
-
-            {/* Text Playground */}
-            <Box>
-              <TextPlayground />
-            </Box>
-
-            {/* Text Area Playground */}
-            <Box>
-              <TextAreaPlayground />
-            </Box>
-
-            {/* Text Field Playground */}
-            <Box>
-              <TextFieldPlayground />
-            </Box>
-
-            {/* Toggle Button Playground */}
-            <Box>
-              <ToggleButtonPlayground />
-            </Box>
-
-            {/* Toggle Icon Button Playground */}
-            <Box>
-              <ToggleIconButtonPlayground />
-            </Box>
-          </Flex>
-        </Container>
+        <Sidebar.Provider>
+          <PlaygroundContent scrollToComponent={scrollToComponent} containerRef={containerRef} />
+        </Sidebar.Provider>
       </Theme>
     </>
+  );
+}
+
+// Inner component that uses the sidebar context
+function PlaygroundContent({
+  scrollToComponent,
+  containerRef,
+}: {
+  scrollToComponent: (id: string) => void;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  const { state: sidebarState } = Sidebar.useSidebar();
+  const isSidebarExpanded = sidebarState === 'expanded';
+
+  return (
+    <Flex style={{ height: '100vh', position: 'relative' }}>
+      <Sidebar.Root variant="soft" menuVariant="soft" size="2" collapsible="icon">
+        <Sidebar.Content>
+          <Sidebar.Menu>
+            {componentSections.map((section) => (
+              <Sidebar.Group key={section.title}>
+                <Sidebar.GroupLabel>{section.title}</Sidebar.GroupLabel>
+                {section.components.map((component) => (
+                  <Sidebar.MenuItem key={component.id}>
+                    <Sidebar.MenuButton onClick={() => scrollToComponent(component.id)}>
+                      <component.icon />
+                      <span>{component.name}</span>
+                    </Sidebar.MenuButton>
+                  </Sidebar.MenuItem>
+                ))}
+              </Sidebar.Group>
+            ))}
+          </Sidebar.Menu>
+        </Sidebar.Content>
+      </Sidebar.Root>
+
+      {/* Main content area - expands when sidebar is collapsed */}
+      <Box
+        style={{
+          flex: 1,
+          overflow: 'auto',
+          position: 'relative',
+        }}
+      >
+        {/* Responsive sidebar trigger - moves based on sidebar state */}
+        <Box
+          style={{
+            position: 'fixed',
+            top: 'var(--space-4)',
+            left: isSidebarExpanded
+              ? 'calc(16rem + var(--space-4))' // Next to expanded sidebar
+              : 'var(--space-4)', // Left edge when sidebar is collapsed
+            zIndex: 50,
+            transition: 'left var(--duration-3) var(--ease-2)', // Smooth transition for trigger position
+          }}
+        >
+          <Sidebar.Trigger variant="ghost" size="2" color="gray" highContrast>
+            <PanelLeft />
+          </Sidebar.Trigger>
+        </Box>
+
+        {/* Component sections */}
+        <Container size="4" py="6" ref={containerRef}>
+          <Flex direction="column" gap="9">
+            {componentSections.map((section) => (
+              <Box key={section.title}>
+                {section.components.map((component) => (
+                  <Box key={component.id} id={component.id} pb="9">
+                    <component.component />
+                  </Box>
+                ))}
+              </Box>
+            ))}
+          </Flex>
+        </Container>
+      </Box>
+    </Flex>
   );
 }
