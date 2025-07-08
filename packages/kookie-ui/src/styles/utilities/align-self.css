@@ -1,6 +1,6 @@
 @breakpoints {
   .rt-r-as-start {
-    align-self: flex-start;
+    align-self: start;
   }
 
   .rt-r-as-center {
@@ -8,7 +8,7 @@
   }
 
   .rt-r-as-end {
-    align-self: flex-end;
+    align-self: end;
   }
 
   .rt-r-as-baseline {

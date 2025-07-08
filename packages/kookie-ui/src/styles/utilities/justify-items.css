@@ -1,0 +1,21 @@
+@breakpoints {
+  .rt-r-ji-start {
+    justify-items: start;
+  }
+
+  .rt-r-ji-center {
+    justify-items: center;
+  }
+
+  .rt-r-ji-end {
+    justify-items: end;
+  }
+
+  .rt-r-ji-baseline {
+    justify-items: baseline;
+  }
+
+  .rt-r-ji-stretch {
+    justify-items: stretch;
+  }
+}

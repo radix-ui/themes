@@ -1,5 +1,6 @@
 @import '../breakpoints.css';
 
+@import './align-content.css';
 @import './align-items.css';
 @import './align-self.css';
 @import './display.css';
@@ -25,6 +26,8 @@
 @import './max-height.css';
 @import './inset.css';
 @import './justify-content.css';
+@import './justify-items.css';
+@import './justify-self.css';
 @import './margin.css';
 @import './overflow.css';
 @import './padding.css';

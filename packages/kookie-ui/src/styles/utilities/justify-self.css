@@ -1,0 +1,21 @@
+@breakpoints {
+  .rt-r-js-start {
+    justify-self: start;
+  }
+
+  .rt-r-js-center {
+    justify-self: center;
+  }
+
+  .rt-r-js-end {
+    justify-self: end;
+  }
+
+  .rt-r-js-baseline {
+    justify-self: baseline;
+  }
+
+  .rt-r-js-stretch {
+    justify-self: stretch;
+  }
+}

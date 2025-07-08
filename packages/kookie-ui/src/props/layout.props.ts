@@ -10,6 +10,8 @@ const positionValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'] as 
 const positionEdgeValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9'] as const;
 const flexShrinkValues = ['0', '1'] as const;
 const flexGrowValues = ['0', '1'] as const;
+const alignSelfValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
+const justifySelfValues = ['start', 'center', 'end', 'baseline', 'stretch'] as const;
 
 const layoutPropDefs = {
   ...paddingPropDefs,
@@ -358,6 +360,40 @@ const layoutPropDefs = {
     customProperties: ['--grid-row-end'],
     responsive: true,
   },
+  /**
+   * Sets the CSS **align-self** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * alignSelf="center"
+   * alignSelf={{ sm: 'start', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
+   */
+  alignSelf: {
+    type: 'enum',
+    className: 'rt-r-as',
+    values: alignSelfValues,
+    responsive: true,
+  },
+  /**
+   * Sets the CSS **justify-self** property.
+   * Supports a subset of the corresponding CSS values and responsive objects.
+   *
+   * @example
+   * justifySelf="center"
+   * justifySelf={{ sm: 'start', lg: 'center' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
+   */
+  justifySelf: {
+    type: 'enum',
+    className: 'rt-r-js',
+    values: justifySelfValues,
+    responsive: true,
+  },
 } satisfies {
   position: PropDef<(typeof positionValues)[number]>;
   inset: PropDef<(typeof positionEdgeValues)[number]>;
@@ -378,6 +414,8 @@ const layoutPropDefs = {
   gridRowStart: PropDef<string>;
   gridRowEnd: PropDef<string>;
   gridArea: PropDef<string>;
+  alignSelf: PropDef<(typeof alignSelfValues)[number]>;
+  justifySelf: PropDef<(typeof justifySelfValues)[number]>;
 };
 
 // Use all of the imported prop defs to ensure that JSDoc works
