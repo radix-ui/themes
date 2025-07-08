@@ -1,7 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ToggleButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  ToggleButton,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 import { Heart, Star, Bookmark, ThumbsUp, Play, Pause } from 'lucide-react';
 
 const accentColors = [
@@ -46,12 +55,17 @@ export default function ToggleButtonPlayground() {
 
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Toggle Button
-      </Heading>
-      <Text size="3" color="gray">
-        A button that toggles between selected and unselected states.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="green" style={{ alignSelf: 'flex-start' }}>
+          New
+        </Badge>
+        <Heading size="6" weight="bold">
+          Toggle Button
+        </Heading>
+        <Text size="3" color="gray">
+          A button that toggles between selected and unselected states.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">
@@ -254,7 +268,7 @@ export default function ToggleButtonPlayground() {
                           size={size as any}
                           variant={variant}
                           pressed={toggleStates[`size-${size}-${variant}`]}
-                          onPressedChange={(pressed) =>
+                          onPressedChange={(pressed: boolean) =>
                             handleToggle(`size-${size}-${variant}`, pressed)
                           }
                         >
@@ -307,7 +321,7 @@ export default function ToggleButtonPlayground() {
                           variant={variant}
                           radius={radius as any}
                           pressed={toggleStates[`radius-${radius}-${variant}`]}
-                          onPressedChange={(pressed) =>
+                          onPressedChange={(pressed: boolean) =>
                             handleToggle(`radius-${radius}-${variant}`, pressed)
                           }
                         >
@@ -358,7 +372,9 @@ export default function ToggleButtonPlayground() {
                         size="2"
                         variant={variant}
                         pressed={toggleStates[`left-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`left-${variant}`, pressed)}
+                        onPressedChange={(pressed: boolean) =>
+                          handleToggle(`left-${variant}`, pressed)
+                        }
                       >
                         <Heart />
                         Like
@@ -378,7 +394,9 @@ export default function ToggleButtonPlayground() {
                         size="2"
                         variant={variant}
                         pressed={toggleStates[`right-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`right-${variant}`, pressed)}
+                        onPressedChange={(pressed: boolean) =>
+                          handleToggle(`right-${variant}`, pressed)
+                        }
                       >
                         Bookmark
                         <Bookmark />
@@ -398,7 +416,9 @@ export default function ToggleButtonPlayground() {
                         size="2"
                         variant={variant}
                         pressed={toggleStates[`icon-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`icon-${variant}`, pressed)}
+                        onPressedChange={(pressed: boolean) =>
+                          handleToggle(`icon-${variant}`, pressed)
+                        }
                       >
                         <Star />
                       </ToggleButton>
@@ -417,7 +437,9 @@ export default function ToggleButtonPlayground() {
                         size="2"
                         variant={variant}
                         pressed={toggleStates[`play-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`play-${variant}`, pressed)}
+                        onPressedChange={(pressed: boolean) =>
+                          handleToggle(`play-${variant}`, pressed)
+                        }
                       >
                         {toggleStates[`play-${variant}`] ? <Pause /> : <Play />}
                         {toggleStates[`play-${variant}`] ? 'Pause' : 'Play'}

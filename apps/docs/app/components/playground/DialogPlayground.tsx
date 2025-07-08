@@ -11,6 +11,7 @@ import {
   Tabs,
   Table,
   IconButton,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import { Info } from 'lucide-react';
 
@@ -32,12 +33,17 @@ const getHeadingSize = (dialogSize: string): '2' | '3' | '4' | '5' => {
 export default function DialogPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Dialog
-      </Heading>
-      <Text size="3" color="gray">
-        A modal dialog that overlays the page content for focused tasks or messages.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Dialog
+        </Heading>
+        <Text size="3" color="gray">
+          A modal dialog that overlays the page content for focused tasks or messages.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="basic">
         <Tabs.List size="2">

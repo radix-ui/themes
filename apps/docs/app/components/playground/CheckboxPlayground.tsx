@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Checkbox, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { Checkbox, Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -38,12 +38,17 @@ const sizes = ['1', '2', '3'] as const;
 export default function CheckboxPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Checkbox
-      </Heading>
-      <Text size="3" color="gray">
-        A basic checkbox component for binary choices.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Checkbox
+        </Heading>
+        <Text size="3" color="gray">
+          A basic checkbox component for binary choices.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

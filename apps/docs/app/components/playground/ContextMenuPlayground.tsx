@@ -11,6 +11,7 @@ import {
   Tabs,
   Table,
   Separator,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import {
   Settings,
@@ -99,12 +100,17 @@ export default function ContextMenuPlayground() {
 
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Context Menu
-      </Heading>
-      <Text size="3" color="gray">
-        A contextual menu that appears on right-click or long-press.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Context Menu
+        </Heading>
+        <Text size="3" color="gray">
+          A contextual menu that appears on right-click or long-press.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="basic-usage">
         <Tabs.List size="2">
@@ -162,6 +168,7 @@ export default function ContextMenuPlayground() {
                         </Box>
                       </ContextMenu.Trigger>
                       <ContextMenu.Content>
+                        <ContextMenu.Label>File Actions</ContextMenu.Label>
                         <ContextMenu.Item>
                           <Edit size={16} />
                           Rename
@@ -179,6 +186,7 @@ export default function ContextMenuPlayground() {
                           Share
                         </ContextMenu.Item>
                         <ContextMenu.Separator />
+                        <ContextMenu.Label>Organization</ContextMenu.Label>
                         <ContextMenu.Item>
                           <Archive size={16} />
                           Move to archive
@@ -219,6 +227,7 @@ export default function ContextMenuPlayground() {
                         </Box>
                       </ContextMenu.Trigger>
                       <ContextMenu.Content>
+                        <ContextMenu.Label>Text Actions</ContextMenu.Label>
                         <ContextMenu.Item>
                           <Copy size={16} />
                           Copy text
@@ -228,6 +237,7 @@ export default function ContextMenuPlayground() {
                           Edit
                         </ContextMenu.Item>
                         <ContextMenu.Separator />
+                        <ContextMenu.Label>Formatting</ContextMenu.Label>
                         <ContextMenu.Item>
                           <Palette size={16} />
                           Format
@@ -238,6 +248,7 @@ export default function ContextMenuPlayground() {
                             Insert link
                           </ContextMenu.SubTrigger>
                           <ContextMenu.SubContent>
+                            <ContextMenu.Label>Link Types</ContextMenu.Label>
                             <ContextMenu.Item>
                               <ExternalLink size={16} />
                               External link
@@ -252,6 +263,7 @@ export default function ContextMenuPlayground() {
                             </ContextMenu.Item>
                           </ContextMenu.SubContent>
                         </ContextMenu.Sub>
+                        <ContextMenu.Separator />
                         <ContextMenu.Item>
                           <MessageCircle size={16} />
                           Add comment

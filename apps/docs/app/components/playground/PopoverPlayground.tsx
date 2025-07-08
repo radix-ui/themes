@@ -13,6 +13,7 @@ import {
   IconButton,
   TextArea,
   TextField,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import { MessageCircle, User, Info, Send, Bot, Heart, Star, MapPin } from 'lucide-react';
 
@@ -45,12 +46,17 @@ const getInputSize = (popoverSize: string): '1' | '2' | '3' => {
 export default function PopoverPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Popover
-      </Heading>
-      <Text size="3" color="gray">
-        A floating panel that displays rich content relative to a trigger element.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Popover
+        </Heading>
+        <Text size="3" color="gray">
+          A floating panel that displays rich content relative to a trigger element.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="sizes">
         <Tabs.List size="2">

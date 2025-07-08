@@ -1,7 +1,16 @@
 'use client';
 
 import React from 'react';
-import { RadioGroup, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  RadioGroup,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -50,12 +59,17 @@ const colorOptions = [
 export default function RadioGroupPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Radio Group
-      </Heading>
-      <Text size="3" color="gray">
-        A container that manages a collection of radio buttons with shared state and behavior.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Radio Group
+        </Heading>
+        <Text size="3" color="gray">
+          A container that manages a collection of radio buttons with shared state and behavior.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

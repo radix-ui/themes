@@ -11,6 +11,7 @@ import {
   Tabs,
   Table,
   IconButton,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import { Trash2, AlertTriangle, UserX } from 'lucide-react';
 
@@ -32,12 +33,17 @@ const getHeadingSize = (dialogSize: string): '2' | '3' | '4' | '5' => {
 export default function AlertDialogPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Alert Dialog
-      </Heading>
-      <Text size="3" color="gray">
-        A modal dialog for confirming destructive or critical actions.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Alert Dialog
+        </Heading>
+        <Text size="3" color="gray">
+          A modal dialog for confirming destructive or critical actions.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="basic">
         <Tabs.List size="2">

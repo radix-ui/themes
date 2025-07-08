@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Avatar, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { Avatar, Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 import { User } from 'lucide-react';
 
 const accentColors = [
@@ -49,12 +49,17 @@ const fallbackOptions = ['JD', 'A', 'KD', 'M', 'R'];
 export default function AvatarPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Avatar
-      </Heading>
-      <Text size="3" color="gray">
-        Displays a user or entity image, initials, or fallback icon.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Avatar
+        </Heading>
+        <Text size="3" color="gray">
+          Displays a user or entity image, initials, or fallback icon.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

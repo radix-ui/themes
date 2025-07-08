@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Select, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { Select, Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -47,12 +47,17 @@ const sampleItems = [
 export default function SelectPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Select
-      </Heading>
-      <Text size="2" color="gray">
-        Displays a list of options for the user to pick from—triggered by a button.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Select
+        </Heading>
+        <Text size="2" color="gray">
+          Displays a list of options for the user to pick from—triggered by a button.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

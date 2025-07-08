@@ -11,6 +11,7 @@ import {
   Tabs,
   Table,
   Skeleton,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import { demoImages } from '../../../lib/demo-images';
 
@@ -23,12 +24,17 @@ const shadowOptions = ['1', '2', '3', '4', '5', '6'] as const;
 export default function ImagePlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Image
-      </Heading>
-      <Text size="3" color="gray">
-        Displays images with support for aspect ratio, fit, and fallback.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="green" style={{ alignSelf: 'flex-start' }}>
+          New
+        </Badge>
+        <Heading size="6" weight="bold">
+          Image
+        </Heading>
+        <Text size="3" color="gray">
+          Displays images with support for aspect ratio, fit, and fallback.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="variants">
         <Tabs.List size="2">

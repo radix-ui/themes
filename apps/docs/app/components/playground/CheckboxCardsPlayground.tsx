@@ -1,7 +1,16 @@
 'use client';
 
 import React from 'react';
-import { CheckboxCards, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  CheckboxCards,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 import { Star, Heart, Bookmark, Home, Settings, User, Mail, Phone, Globe } from 'lucide-react';
 
 const accentColors = [
@@ -57,12 +66,17 @@ const contactOptions = [
 export default function CheckboxCardsPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Checkbox Cards
-      </Heading>
-      <Text size="3" color="gray">
-        A set of cards with checkboxes for multi-select options.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Checkbox Cards
+        </Heading>
+        <Text size="3" color="gray">
+          A set of cards with checkboxes for multi-select options.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

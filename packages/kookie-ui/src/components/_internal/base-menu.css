@@ -290,7 +290,7 @@
 }
 
 /* Ensure gray text appears muted in non-highlighted state */
-.rt-BaseMenuItem :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+.rt-BaseMenuItem :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
   color: var(--gray-a10);
 }
 .rt-BaseMenuItem:where([data-disabled], [data-highlighted]),
@@ -361,7 +361,7 @@
     }
 
     /* Also target any element with data-accent-color="gray" */
-    & :where([data-accent-color='gray']) {
+    & :where([data-accent-color='gray']:not(.rt-Badge)) {
       color: inherit !important;
     }
   }
@@ -380,7 +380,7 @@
       }
 
       /* Also target any element with data-accent-color="gray" in high contrast */
-      & :where([data-accent-color='gray']) {
+      & :where([data-accent-color='gray']:not(.rt-Badge)) {
         color: inherit !important;
       }
 
@@ -392,7 +392,7 @@
           color: inherit !important;
         }
 
-        & :where([data-accent-color='gray']) {
+        & :where([data-accent-color='gray']:not(.rt-Badge)) {
           color: inherit !important;
         }
       }
@@ -467,7 +467,7 @@
     }
 
     /* In soft variant, improve contrast for gray text while maintaining hierarchy */
-    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']) {
+    & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
       color: var(--gray-11) !important;
     }
   }

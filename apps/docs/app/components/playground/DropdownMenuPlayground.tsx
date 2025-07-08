@@ -11,6 +11,7 @@ import {
   Tabs,
   Table,
   Separator,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import {
   Settings,
@@ -101,12 +102,17 @@ const sizes = ['1', '2'] as const; // DropdownMenu only supports sizes 1 and 2
 export default function DropdownMenuPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Dropdown Menu
-      </Heading>
-      <Text size="3" color="gray">
-        A menu that displays a list of actions or options triggered by a button or element.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Dropdown Menu
+        </Heading>
+        <Text size="3" color="gray">
+          A menu that displays a list of actions or options triggered by a button or element.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">
@@ -157,31 +163,48 @@ export default function DropdownMenuPlayground() {
                           </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content>
-                          <DropdownMenu.Item>
-                            <Edit size={16} />
-                            Rename page
-                          </DropdownMenu.Item>
-                          <DropdownMenu.Item>
-                            <Copy size={16} />
-                            Duplicate
-                          </DropdownMenu.Item>
-                          <DropdownMenu.Item>
-                            <Star size={16} />
-                            Add to favorites
-                          </DropdownMenu.Item>
-                          <DropdownMenu.Item>
-                            <Users size={16} />
-                            Share & permissions
-                          </DropdownMenu.Item>
+                          <DropdownMenu.Group>
+                            <DropdownMenu.Label>Page Actions</DropdownMenu.Label>
+                            <DropdownMenu.Item>
+                              <Edit size={16} />
+                              Rename page
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item>
+                              <Copy size={16} />
+                              Duplicate
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item>
+                              <Star size={16} />
+                              Add to favorites
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item>
+                              <Users size={16} />
+                              Share & permissions
+                            </DropdownMenu.Item>
+                          </DropdownMenu.Group>
                           <DropdownMenu.Separator />
-                          <DropdownMenu.Item>
-                            <Archive size={16} />
-                            Move to archive
-                          </DropdownMenu.Item>
-                          <DropdownMenu.Item color="red">
-                            <Trash2 size={16} />
-                            Delete page
-                          </DropdownMenu.Item>
+                          <DropdownMenu.Group>
+                            <DropdownMenu.Label>View Options</DropdownMenu.Label>
+                            <DropdownMenu.CheckboxItem checked>
+                              <Eye size={16} />
+                              Show preview
+                            </DropdownMenu.CheckboxItem>
+                            <DropdownMenu.CheckboxItem>
+                              <Bookmark size={16} />
+                              Pin to sidebar
+                            </DropdownMenu.CheckboxItem>
+                          </DropdownMenu.Group>
+                          <DropdownMenu.Separator />
+                          <DropdownMenu.Group>
+                            <DropdownMenu.Item>
+                              <Archive size={16} />
+                              Move to archive
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item color="red">
+                              <Trash2 size={16} />
+                              Delete page
+                            </DropdownMenu.Item>
+                          </DropdownMenu.Group>
                         </DropdownMenu.Content>
                       </DropdownMenu.Root>
                     </Table.Cell>
@@ -203,6 +226,7 @@ export default function DropdownMenuPlayground() {
                           </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content color="gray">
+                          <DropdownMenu.Label>Project Actions</DropdownMenu.Label>
                           <DropdownMenu.Item>
                             <Eye size={16} />
                             View project
@@ -219,6 +243,16 @@ export default function DropdownMenuPlayground() {
                             <Settings size={16} />
                             Project settings
                           </DropdownMenu.Item>
+                          <DropdownMenu.Separator />
+                          <DropdownMenu.Label>Access Control</DropdownMenu.Label>
+                          <DropdownMenu.CheckboxItem checked>
+                            <Lock size={16} />
+                            Private project
+                          </DropdownMenu.CheckboxItem>
+                          <DropdownMenu.CheckboxItem>
+                            <Users size={16} />
+                            Allow comments
+                          </DropdownMenu.CheckboxItem>
                           <DropdownMenu.Separator />
                           <DropdownMenu.Item color="red">
                             <Trash2 size={16} />
@@ -602,7 +636,7 @@ export default function DropdownMenuPlayground() {
                         </Button>
                       </DropdownMenu.Trigger>
                       <DropdownMenu.Content>
-                        <DropdownMenu.Label>Edit</DropdownMenu.Label>
+                        <DropdownMenu.Label>Edit Actions</DropdownMenu.Label>
                         <DropdownMenu.Item>
                           <Copy size={16} />
                           Copy
@@ -611,7 +645,12 @@ export default function DropdownMenuPlayground() {
                           <Move size={16} />
                           Move
                         </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <RotateCcw size={16} />
+                          Rotate
+                        </DropdownMenu.Item>
                         <DropdownMenu.Separator />
+                        <DropdownMenu.Label>Visibility</DropdownMenu.Label>
                         <DropdownMenu.CheckboxItem checked>
                           <Eye size={16} />
                           Visible
@@ -656,14 +695,28 @@ export default function DropdownMenuPlayground() {
                           <Plus size={16} />
                           New template
                         </DropdownMenu.Item>
+                        <DropdownMenu.Item>
+                          <Folder size={16} />
+                          New folder
+                        </DropdownMenu.Item>
                         <DropdownMenu.Separator />
-                        <DropdownMenu.Label>View</DropdownMenu.Label>
+                        <DropdownMenu.Label>View Mode</DropdownMenu.Label>
                         <DropdownMenu.RadioGroup value="comfortable">
                           <DropdownMenu.RadioItem value="compact">Compact</DropdownMenu.RadioItem>
                           <DropdownMenu.RadioItem value="comfortable">
                             Comfortable
                           </DropdownMenu.RadioItem>
                         </DropdownMenu.RadioGroup>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.Label>Settings</DropdownMenu.Label>
+                        <DropdownMenu.CheckboxItem checked>
+                          <Bell size={16} />
+                          Notifications
+                        </DropdownMenu.CheckboxItem>
+                        <DropdownMenu.CheckboxItem>
+                          <Zap size={16} />
+                          Auto-save
+                        </DropdownMenu.CheckboxItem>
                       </DropdownMenu.Content>
                     </DropdownMenu.Root>
                   </Table.Cell>

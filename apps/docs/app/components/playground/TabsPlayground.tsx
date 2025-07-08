@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Tabs, Text, Flex, Box, Heading, Table } from '@kushagradhawan/kookie-ui';
+import { Tabs, Text, Flex, Box, Heading, Table, Badge } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -39,12 +39,17 @@ const wrapOptions = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 export default function TabsPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Tabs
-      </Heading>
-      <Text size="2" color="gray">
-        A set of layered sections of content—known as tab panels—that are displayed one at a time.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Tabs
+        </Heading>
+        <Text size="2" color="gray">
+          A set of layered sections of content—known as tab panels—that are displayed one at a time.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

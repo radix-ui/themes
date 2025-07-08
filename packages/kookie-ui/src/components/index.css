@@ -53,6 +53,7 @@
 @import './text-field.css';
 @import './theme-panel.css';
 @import './tooltip.css';
+@import './user-card.css';
 
 .radix-themes:where([data-is-root-theme='true']) {
   /* Create a new stacking context on the root `Theme` so layered components work out of the box */

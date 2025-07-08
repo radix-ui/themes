@@ -1,0 +1,29 @@
+/* UserCard component styles */
+.rt-UserCard {
+  /* Base styles inherited from Card */
+  
+  /* Size-specific gap adjustments */
+  &:where(.rt-r-size-1) {
+    & :where(.rt-Flex) {
+      gap: var(--space-2);
+    }
+  }
+  
+  &:where(.rt-r-size-2) {
+    & :where(.rt-Flex) {
+      gap: var(--space-3);
+    }
+  }
+  
+  &:where(.rt-r-size-3) {
+    & :where(.rt-Flex) {
+      gap: var(--space-4);
+    }
+  }
+  
+  &:where(.rt-r-size-4) {
+    & :where(.rt-Flex) {
+      gap: var(--space-5);
+    }
+  }
+} 

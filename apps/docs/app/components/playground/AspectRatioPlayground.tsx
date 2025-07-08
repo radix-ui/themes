@@ -11,6 +11,7 @@ import {
   Tabs,
   Table,
   Skeleton,
+  Badge,
 } from '@kushagradhawan/kookie-ui';
 import { demoImages } from '../../../lib/demo-images';
 
@@ -29,12 +30,17 @@ const fitOptions = ['cover', 'contain', 'fill'] as const;
 export default function AspectRatioPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Aspect Ratio
-      </Heading>
-      <Text size="3" color="gray">
-        Maintains a consistent aspect ratio for its child content.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Aspect Ratio
+        </Heading>
+        <Text size="3" color="gray">
+          Maintains a consistent aspect ratio for its child content.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="common-ratios">
         <Tabs.List size="2">

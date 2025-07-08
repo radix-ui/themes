@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Card, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { Card, Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 
 const variants = ['classic', 'surface', 'soft', 'outline', 'ghost'] as const;
 const sizes = ['1', '2', '3', '4', '5'] as const;
@@ -17,12 +17,17 @@ const sampleContent = {
 export default function CardPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Card
-      </Heading>
-      <Text size="3" color="gray">
-        A flexible container component for grouping related content with consistent styling.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Card
+        </Heading>
+        <Text size="3" color="gray">
+          A flexible container component for grouping related content with consistent styling.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="variants">
         <Tabs.List size="2">

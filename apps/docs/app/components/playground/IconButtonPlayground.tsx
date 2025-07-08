@@ -1,7 +1,16 @@
 'use client';
 
 import React from 'react';
-import { IconButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  IconButton,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 import { Heart, Star, Plus, Download } from 'lucide-react';
 
 const accentColors = [
@@ -40,12 +49,17 @@ const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 export default function IconButtonPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Icon Button
-      </Heading>
-      <Text size="3" color="gray">
-        An icon-only button for compact actions and toolbars.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Icon Button
+        </Heading>
+        <Text size="3" color="gray">
+          An icon-only button for compact actions and toolbars.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

@@ -6,7 +6,7 @@
   display: block;
   object-fit: var(--object-fit);
   box-shadow: var(--box-shadow);
-  border-radius: max(var(--radius-4), var(--radius-full));
+  border-radius: max(var(--radius-4), min(var(--radius-full), var(--radius-6)));
   transition: var(--transition-button);
 }
 

@@ -64,5 +64,6 @@ export { Theme, ThemeContext, type ThemeProps, useThemeContext } from './theme.j
 export { ToggleButton, type ToggleButtonProps } from './toggle-button.js';
 export { ToggleIconButton, type ToggleIconButtonProps } from './toggle-icon-button.js';
 export { Tooltip, type TooltipProps } from './tooltip.js';
+export { UserCard, type UserCardProps } from './user-card.js';
 export { VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.js';
 export * as Sidebar from './sidebar.js';

@@ -39,12 +39,17 @@ const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 export default function BadgePlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Badge
-      </Heading>
-      <Text size="3" color="gray">
-        A small status indicator component for labeling and categorizing content.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Badge
+        </Heading>
+        <Text size="3" color="gray">
+          A small status indicator component for labeling and categorizing content.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

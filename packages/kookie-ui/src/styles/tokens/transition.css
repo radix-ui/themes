@@ -1,10 +1,10 @@
 .radix-themes {
   /* Duration tokens */
-  --duration-1: 50ms; /* Micro interactions */
-  --duration-2: 100ms; /* Fast transitions */
-  --duration-3: 150ms; /* Standard transitions */
-  --duration-4: 200ms; /* Slower transitions */
-  --duration-5: 300ms; /* Slow animations */
+  --duration-1: 75ms; /* Micro interactions */
+  --duration-2: 125ms; /* Fast transitions */
+  --duration-3: 175ms; /* Standard transitions */
+  --duration-4: 225ms; /* Slower transitions */
+  --duration-5: 325ms; /* Slow animations */
 
   /* Easing tokens */
   --ease-1: ease-out; /* Fast start, slow end */

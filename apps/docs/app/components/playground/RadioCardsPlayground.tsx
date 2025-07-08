@@ -1,7 +1,16 @@
 'use client';
 
 import React from 'react';
-import { RadioCards, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  RadioCards,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 import { Star, Heart, Bookmark, Home, Settings, User } from 'lucide-react';
 
 const accentColors = [
@@ -57,13 +66,18 @@ const navigationOptions = [
 export default function RadioCardsPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Radio Cards
-      </Heading>
-      <Text size="3" color="gray">
-        A group of card-style radio buttons for selecting one option with enhanced visual
-        presentation.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Radio Cards
+        </Heading>
+        <Text size="3" color="gray">
+          A group of card-style radio buttons for selecting one option with enhanced visual
+          presentation.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

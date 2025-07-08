@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 
 const sizes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const accentColors = [
@@ -37,12 +37,17 @@ const weights = ['light', 'regular', 'medium', 'bold'] as const;
 export default function TextPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Text
-      </Heading>
-      <Text size="3" color="gray">
-        A component for displaying text content with consistent typography and styling.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Text
+        </Heading>
+        <Text size="3" color="gray">
+          A component for displaying text content with consistent typography and styling.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="sizes">
         <Tabs.List size="2">

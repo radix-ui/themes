@@ -1,7 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ToggleIconButton, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  ToggleIconButton,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 import {
   Heart,
   Star,
@@ -61,12 +70,17 @@ export default function ToggleIconButtonPlayground() {
 
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Toggle Icon Button
-      </Heading>
-      <Text size="3" color="gray">
-        An icon-only button that toggles between selected and unselected states.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="green" style={{ alignSelf: 'flex-start' }}>
+          New
+        </Badge>
+        <Heading size="6" weight="bold">
+          Toggle Icon Button
+        </Heading>
+        <Text size="3" color="gray">
+          An icon-only button that toggles between selected and unselected states.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">

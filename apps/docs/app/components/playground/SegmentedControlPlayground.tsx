@@ -1,7 +1,16 @@
 'use client';
 
 import React from 'react';
-import { SegmentedControl, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import {
+  SegmentedControl,
+  Text,
+  Flex,
+  Box,
+  Heading,
+  Tabs,
+  Table,
+  Badge,
+} from '@kushagradhawan/kookie-ui';
 
 const variants = ['surface', 'classic'] as const;
 const sizes = ['1', '2', '3'] as const;
@@ -10,12 +19,17 @@ const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 export default function SegmentedControlPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Segmented Control
-      </Heading>
-      <Text size="3" color="gray">
-        A control for switching between multiple segments or views.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Segmented Control
+        </Heading>
+        <Text size="3" color="gray">
+          A control for switching between multiple segments or views.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="variants">
         <Tabs.List size="2">

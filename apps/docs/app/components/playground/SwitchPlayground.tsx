@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Switch, Text, Flex, Box, Heading, Tabs, Table } from '@kushagradhawan/kookie-ui';
+import { Switch, Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 
 const accentColors = [
   'gray',
@@ -39,12 +39,17 @@ const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 export default function SwitchPlayground() {
   return (
     <Flex direction="column" gap="6">
-      <Heading size="6" weight="bold">
-        Switch
-      </Heading>
-      <Text size="3" color="gray">
-        A control for toggling between on and off states.
-      </Text>
+      <Flex direction="column" gap="2">
+        <Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>
+          Updated
+        </Badge>
+        <Heading size="6" weight="bold">
+          Switch
+        </Heading>
+        <Text size="3" color="gray">
+          A control for toggling between on and off states.
+        </Text>
+      </Flex>
 
       <Tabs.Root defaultValue="theme-colors">
         <Tabs.List size="2">
