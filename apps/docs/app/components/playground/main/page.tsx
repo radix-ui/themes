@@ -215,7 +215,7 @@ export default function MainPlayground() {
       label: 'Image',
     },
     opacity: { value: 1, min: 0, max: 1, step: 0.1, label: 'Opacity' },
-    blur: { value: true, label: 'Blur Effect' },
+    blur: { value: false, label: 'Blur Effect' },
   });
 
   const scrollToComponent = useCallback((componentId: string) => {
@@ -244,7 +244,7 @@ export default function MainPlayground() {
       <Theme>
         {backgroundControls.enabled && (
           <Box
-            p="6"
+            p="1"
             position="fixed"
             top="0"
             left="0"
@@ -264,6 +264,7 @@ export default function MainPlayground() {
               }}
               wrapperStyle={{ width: '100%', height: '100%', display: 'block' }}
               fit="cover"
+              radius="large"
             />
           </Box>
         )}
@@ -289,7 +290,7 @@ function PlaygroundContent({
 
   return (
     <Flex style={{ height: '100vh', position: 'relative' }}>
-      <Sidebar.Root variant="soft" menuVariant="soft" size="2" collapsible="icon">
+      <Sidebar.Root variant="ghost" menuVariant="soft" size="2" collapsible="icon" type="sidebar">
         <Sidebar.Content>
           <Sidebar.Menu>
             {componentSections.map((section) => (
@@ -324,7 +325,7 @@ function PlaygroundContent({
             top: 'var(--space-4)',
             left: isSidebarExpanded
               ? 'calc(16rem + var(--space-4))' // Next to expanded sidebar
-              : 'var(--space-4)', // Left edge when sidebar is collapsed
+              : 'calc(var(--sidebar-icon-width-2) + var(--space-4))', // Next to collapsed icon sidebar (size 2)
             zIndex: 50,
             transition: 'left var(--duration-3) var(--ease-2)', // Smooth transition for trigger position
           }}

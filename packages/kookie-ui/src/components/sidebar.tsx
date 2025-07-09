@@ -40,7 +40,7 @@ type SidebarContextProps = {
   toggleSidebar: () => void;
   side: 'left' | 'right';
   type: 'sidebar' | 'floating';
-  variant: 'soft' | 'surface' | 'ghost';
+  variant: 'soft' | 'outline' | 'surface' | 'ghost';
   menuVariant: 'solid' | 'soft';
   collapsible: 'offcanvas' | 'icon' | 'none';
   size: '1' | '2';
@@ -298,7 +298,7 @@ const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
     } = context || {};
 
     return (
-      <ScrollArea type="auto">
+      <ScrollArea type="hover">
         <div
           {...props}
           ref={forwardedRef}

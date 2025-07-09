@@ -75,7 +75,7 @@
   flex: 1;
 }
 
-.rt-SidebarContainer:where(.rt-variant-surface) {
+.rt-SidebarContainer:where(.rt-variant-outline) {
   background-color: var(--color-panel);
   backdrop-filter: var(--backdrop-filter-panel);
   
@@ -303,7 +303,7 @@
   border: none;
   width: 100%;
   text-align: left;
-  border-radius: var(--radius-2); /* Will be overridden by size-specific radius */
+  /* No default border radius - inherited from size-specific rules */
 
   /* Transitions - inherit from base menu */
   transition: var(--transition-menu);
@@ -580,9 +580,6 @@
   }
 }
 
-.rt-SidebarGroupContent {
-  /* No styling - purely semantic container */
-}
 
 /***************************************************************************************************
  *                                                                                                 *
@@ -627,6 +624,7 @@
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
       border-radius: var(--radius-1);
+      font-weight: var(--font-weight-medium); /* Add this line */
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
@@ -652,6 +650,8 @@
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
       border-radius: var(--radius-2);
+      font-weight: var(--font-weight-medium); /* Add this line */
+
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
@@ -710,14 +710,64 @@
       --backdrop-filter-components: blur(var(--backdrop-blur-components));
     }
   }
-}
+  &:where(.rt-variant-surface) {
+    /* Base state: neutral gray background (maintains sidebar neutrality) */
+    background-color: var(--gray-1);
+    
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent']) & {
+      background-color: var(--gray-a1);
+      backdrop-filter: var(--backdrop-filter-panel);
+    }
 
-/* Floating shadows - only for ghost variant */
-.rt-SidebarContainer:where(.rt-variant-ghost) {
-  :where(.rt-SidebarRoot[data-type="floating"]) & {
-    box-shadow: var(--shadow-4);
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid']) {
+      background-color: var(--gray-1);
+      backdrop-filter: none;
+      --backdrop-filter-panel: none;
+      --backdrop-filter-components: none;
+    }
+
+    &:where([data-panel-background='translucent']) {
+      background-color: var(--gray-a1);
+      backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    }
+    
+    /* Inset border like Card surface variant */
+    /* Floating sidebars get full inset border */
+    :where(.rt-SidebarRoot[data-type="floating"]) & {
+      box-shadow: inset 0 0 0 1px var(--gray-6);
+      
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent']) & {
+        box-shadow: inset 0 0 0 1px var(--gray-a6);
+      }
+    }
+    
+    /* Non-floating sidebars get border only on the content-facing side */
+    :where(.rt-SidebarRoot[data-type="sidebar"][data-side="left"]) & {
+      box-shadow: inset -1px 0 0 0 var(--gray-6);
+      
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent']) & {
+        box-shadow: inset -1px 0 0 0 var(--gray-a6);
+      }
+    }
+    
+    :where(.rt-SidebarRoot[data-type="sidebar"][data-side="right"]) & {
+      box-shadow: inset 1px 0 0 0 var(--gray-6);
+      
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent']) & {
+        box-shadow: inset 1px 0 0 0 var(--gray-a6);
+      }
+    }
   }
 }
+
+/* Ghost variant should have no shadows or background - it's truly transparent */
 
 /* Menu Button Variants - Independent of Container */
 
@@ -975,75 +1025,233 @@
   }
 }
 
-/* Ensure menu items inherit proper theming and spacing for sidebar */
+/* Add balanced spacing for sidebar menu items while preserving base menu border radius */
 .rt-SidebarContent :where(.rt-BaseMenuItem) {
-  border-radius: var(--radius-2);
-  margin-bottom: var(--space-1);
+  margin-top: calc(var(--space-1) / 2);
+  margin-bottom: calc(var(--space-1) / 2);
 }
 
-/* Collapsible behavior - INSTANT TOGGLE APPROACH */
+/* Collapsible behavior - ICON-ONLY MODE APPROACH */
 .rt-SidebarRoot:where([data-collapsible="icon"]) {
   /* No transitions - instant state changes for better UX */
   transition: none;
-  overflow: hidden; /* Prevent content from spilling out when width is 0 */
+  overflow: visible; /* Allow content to be visible */
   flex-shrink: 0; /* Don't let flex container shrink this */
 }
 
-/* Exception: floating ghost sidebars need visible overflow for shadows */
-.rt-SidebarContainer:where(.rt-variant-ghost[data-collapsible="icon"][data-type="floating"]) {
-  overflow: visible !important; /* Allow shadows to show - override the hidden overflow */
+/* Icon-only width - size-specific space tokens */
+:where(.radix-themes) {
+  --sidebar-icon-width-1: calc(var(--space-9) + var(--space-1)); /* Size 1: 36px */
+  --sidebar-icon-width-2: calc(var(--space-9) + var(--space-3)); /* Size 2: 76px */
 }
 
-/* Collapsed state - instant width change, no layout escape */
+/* Icon-only collapsed state - show narrow sidebar with icons only */
 .rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
-  width: 0;
-  min-width: 0; /* Allow width to go to 0 */
-  opacity: 0; /* Hide content for accessibility */
-  pointer-events: none; /* Disable interactions */
-  /* Keep in layout flow - no position changes */
+  opacity: 1; /* Keep visible */
+  pointer-events: auto; /* Keep interactive */
+  
+  /* Size-specific widths */
+  &:where(.rt-r-size-1) {
+    width: var(--sidebar-icon-width-1);
+    min-width: var(--sidebar-icon-width-1);
+  }
+  
+  &:where(.rt-r-size-2) {
+    width: var(--sidebar-icon-width-2);
+    min-width: var(--sidebar-icon-width-2);
+  }
 }
 
-/* Expanded state */
+/* Expanded state - full width */
 .rt-SidebarRoot:where([data-collapsible="icon"][data-state="expanded"]) {
   width: var(--sidebar-width);
-  min-width: var(--sidebar-width); /* Prevent shrinking */
+  min-width: var(--sidebar-width);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Container locking for stable layouts */
-.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
-  /* Ensure the collapsed sidebar doesn't affect sibling layout */
-  flex-basis: 0;
-  width: 0;
-}
-
-.rt-SidebarRoot:where([data-collapsible="icon"][data-state="expanded"]) {
-  flex-basis: var(--sidebar-width);
-  width: var(--sidebar-width);
-}
-
-/* Floating sidebars: Similar approach but can fully hide */
-.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"]) {
-  /* Same instant approach */
-  transition: none;
-  overflow: hidden; /* Default: prevent spillover */
+/* Container sizing for icon mode */
+.rt-SidebarContainer:where([data-collapsible="icon"]) {
+  /* Allow dynamic width based on state */
+  width: 100%;
+  min-width: 0;
   flex-shrink: 0;
 }
 
-/* Exception: floating ghost sidebars need visible overflow for shadows */
-.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"]:has(.rt-variant-ghost)) {
-  overflow: visible; /* Allow shadows to show */
+/* Content adjustments for icon mode */
+.rt-SidebarContent:where([data-collapsible="icon"]) {
+  /* Allow content to shrink in icon mode */
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
-/* Collapsed state - instant width change, no layout escape */
+/* Hide text content in collapsed icon mode */
 .rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
-  width: 0;
-  min-width: 0;
-  opacity: 0;
-  pointer-events: none;
-  /* For floating, we can add margin to create visual separation when expanded */
-  margin: 0;
+  /* Style menu buttons for icon-only mode */
+  & :where(.rt-SidebarMenuButton) {
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--space-2) var(--space-1);
+    gap: var(--space-1);
+    min-height: auto;
+    
+    /* Show text spans as small labels under icons */
+    /* stylelint-disable-next-line selector-max-type */
+    & :where(span) {
+      display: block;
+      font-size: var(--font-size-0);
+      line-height: var(--line-height-0);
+      color: var(--gray-a10);
+      text-align: center;
+      font-weight: var(--font-weight-medium);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  /* ------------------------------------------------------------------------------------------ */
+  /* Dynamic width calculation for labels inside collapsed icon sidebar                        */
+  /* ------------------------------------------------------------------------------------------ */
+
+  /* Compute usable label width based on sidebar icon width minus menu and item paddings */
+  &:where(.rt-r-size-1) {
+    /* Group labels (no button padding) */
+    --sidebar-group-label-width: calc(var(--sidebar-icon-width-1) - (var(--space-2) * 2));
+    /* Button labels (inside menu buttons, subtract button padding) */
+    --sidebar-button-label-width: calc(var(--sidebar-group-label-width) - (var(--space-1) * 2));
+  }
+
+  &:where(.rt-r-size-2) {
+    --sidebar-group-label-width: calc(var(--sidebar-icon-width-2) - (var(--space-2) * 2));
+    --sidebar-button-label-width: calc(var(--sidebar-group-label-width) - (var(--space-1) * 2));
+  }
+ 
+  /* Apply the computed width to both group labels and the spans inside icon buttons */
+  & :where(.rt-SidebarGroupLabel) {
+    max-width: var(--sidebar-group-label-width);
+  }
+ 
+  /* stylelint-disable-next-line selector-max-type */
+  & :where(.rt-SidebarMenuButton span) {
+    max-width: var(--sidebar-button-label-width);
+    min-width: 0; /* allow shrinking */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--gray-a12);
+    font-weight: var(--font-weight-medium);
+  }
+
+/* stylelint-disable selector-max-type, selector-max-specificity */
+  &.rt-menu-variant-solid :where(.rt-SidebarMenuButton[data-highlighted] span),
+  &.rt-menu-variant-solid :where(.rt-SidebarMenuButton[data-active] span) {
+    color: var(--accent-contrast) !important;
+  }
+
+  /* stylelint-enable selector-max-type, selector-max-specificity */
+
+  /* Size-specific overrides no longer needed – allow full width */
+  /* The general label/span rules below already handle ellipsis and overflow */
+  
+  /* Show group labels as small text instead of separators */
+  :where(.rt-SidebarGroupLabel) {
+    /* Use block display to make text-overflow ellipsis work reliably */
+    display: block;
+    text-align: center;
+    min-width: 0;
+    min-height: auto; /* Remove inherited min-height constraint */
+    max-width: var(--sidebar-group-label-width);
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-0);
+    color: var(--gray-a9);
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-1) var(--space-1);
+    margin: var(--space-2) 0 var(--space-1) 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    /* Hide label for the first group if you prefer */
+    :where(.rt-SidebarGroup:first-child) & {
+      margin-top: 0;
+    }
+  }
+  
+  /* Hide badges and shortcuts */
+  :where(.rt-SidebarMenuBadge),
+  :where(.rt-SidebarMenuShortcut) {
+    display: none;
+  }
+  
+  /* Keep sub-menu trigger icons hidden in icon mode, but preserve accordion functionality */
+  :where(.rt-SidebarMenuSubTriggerIcon) {
+    display: none;
+  }
+  
+  /* Remove nested styling from sub-menu list to make items look like top-level */
+  :where(.rt-SidebarMenuSubList) {
+    padding-left: 0; /* Remove indentation */
+    border-left: none; /* Remove border */
+    margin-left: 0; /* Remove margin */
+  }
+  
+  /* Tighter menu padding for icon-only mode */
+  :where(.rt-SidebarMenu) {
+    padding: var(--space-2);
+  }
+}
+
+/* Icon size remapping for collapsed state - make icons more prominent */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-state="collapsed"]) {
+  /* Size 1 → use much larger icons (size 3 equivalent) */
+  &:where(.rt-r-size-1) {
+    /* stylelint-disable-next-line selector-max-type */
+    & :where(.rt-SidebarMenuButton svg) {
+      width: var(--content-icon-size-2) !important;  /* ~19px instead of ~14px */
+      height: var(--content-icon-size-2) !important;
+      color: currentColor !important; /* Ensure icon color is visible */
+    }
+  }
+  
+  /* Size 2 → use largest icons (size 4 equivalent) */
+  &:where(.rt-r-size-2) {
+    /* stylelint-disable-next-line selector-max-type */
+    & :where(.rt-SidebarMenuButton svg) {
+      width: var(--content-icon-size-3) !important;  /* 20px instead of 16px */
+      height: var(--content-icon-size-3) !important;
+      color: currentColor !important; /* Ensure icon color is visible */
+    }
+  }
+}
+
+/* Floating sidebars in icon mode */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"]) {
+  /* Same instant approach */
+  transition: none;
+  overflow: visible; /* Allow content to be visible outside container */
+  flex-shrink: 0;
+}
+
+/* Floating collapsed state */
+.rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"][data-state="collapsed"]) {
+  opacity: 1;
+  pointer-events: auto;
+  /* Keep floating margins but adjust for smaller width */
+  margin: var(--space-2);
+  
+  /* Size-specific widths */
+  &:where(.rt-r-size-1) {
+    width: var(--sidebar-icon-width-1);
+    min-width: var(--sidebar-icon-width-1);
+  }
+  
+  &:where(.rt-r-size-2) {
+    width: var(--sidebar-icon-width-2);
+    min-width: var(--sidebar-icon-width-2);
+  }
 }
 
 .rt-SidebarRoot:where([data-collapsible="icon"][data-type="floating"][data-state="expanded"]) {
@@ -1053,31 +1261,17 @@
   pointer-events: auto;
   /* Restore floating margins */
   margin: var(--space-2);
-  /* Remove the width override - let margin work naturally */
 }
 
-/* Content protection - prevent internal reflow */
-.rt-SidebarContainer:where([data-collapsible="icon"]) {
-  /* Lock the content size to prevent internal shifting */
-  width: var(--sidebar-width);
-  min-width: var(--sidebar-width);
-  flex-shrink: 0;
-}
+/* Ghost sidebars have no shadows or background, so no special overflow handling needed */
 
-.rt-SidebarContent:where([data-collapsible="icon"]) {
-  /* Prevent content from reflowing */
-  width: 100%;
-  min-width: var(--sidebar-width);
-  flex-shrink: 0;
-}
-
-/* Mobile responsive behavior - hide completely */
+/* Mobile responsive behavior - hide completely on mobile regardless of icon mode */
 @media (max-width: 768px) {
-  .rt-SidebarRoot {
+  .rt-SidebarRoot:where([data-collapsible="icon"]) {
     display: none;
   }
   
-  .rt-SidebarRoot:where([data-state="expanded"]) {
+  .rt-SidebarRoot:where([data-collapsible="icon"][data-state="expanded"]) {
     display: flex;
     position: fixed;
     top: 0;

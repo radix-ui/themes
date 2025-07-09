@@ -51,7 +51,7 @@ import {
   PanelLeft,
 } from 'lucide-react';
 
-const containerVariants = ['surface', 'soft', 'ghost'] as const;
+const containerVariants = ['outline', 'soft', 'surface', 'ghost'] as const;
 const menuVariants = ['solid', 'soft'] as const;
 const sizes = ['1', '2'] as const;
 
@@ -118,7 +118,7 @@ export default function SidebarPlayground() {
                         <Box
                           style={{
                             border: '1px solid var(--gray-a6)',
-                            borderRadius: 'var(--radius-3)',
+                            borderRadius: 'var(--radius-5)',
                             overflow: 'hidden',
                           }}
                         >
@@ -224,8 +224,9 @@ export default function SidebarPlayground() {
                     </Table.Cell>
                     <Table.Cell>
                       <Text size="1" color="gray">
-                        {variant === 'surface' && 'Panel background with borders'}
+                        {variant === 'outline' && 'Panel background with borders'}
                         {variant === 'soft' && 'Soft gray background'}
+                        {variant === 'surface' && 'Neutral gray with inset borders'}
                         {variant === 'ghost' && 'Transparent with shadow'}
                       </Text>
                     </Table.Cell>
@@ -249,7 +250,7 @@ export default function SidebarPlayground() {
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '400px' }}>
                     <Text size="1" color="gray">
-                      Sidebar (with surface container)
+                      Sidebar (with outline container)
                     </Text>
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '200px' }}>
@@ -272,13 +273,13 @@ export default function SidebarPlayground() {
                         <Box
                           style={{
                             border: '1px solid var(--gray-a6)',
-                            borderRadius: 'var(--radius-3)',
+                            borderRadius: 'var(--radius-5)',
                             overflow: 'hidden',
                           }}
                         >
                           <Flex style={{ height: '100%' }}>
                             <Sidebar.Root
-                              variant="surface"
+                              variant="outline"
                               menuVariant={variant}
                               size="2"
                               collapsible="icon"
@@ -408,7 +409,7 @@ export default function SidebarPlayground() {
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '400px' }}>
                     <Text size="1" color="gray">
-                      Sidebar (with surface container)
+                      Sidebar (with outline container)
                     </Text>
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell style={{ width: '200px' }}>
@@ -430,12 +431,13 @@ export default function SidebarPlayground() {
                       <Box
                         style={{
                           border: '1px solid var(--gray-a6)',
+                          borderRadius: 'var(--radius-5)',
                           overflow: 'hidden',
                         }}
                       >
                         <Flex height="100%">
                           <Sidebar.Root
-                            variant="surface"
+                            variant="outline"
                             menuVariant="soft"
                             size="2"
                             type="sidebar"
@@ -521,6 +523,7 @@ export default function SidebarPlayground() {
                         <Box
                           style={{
                             border: '1px solid var(--gray-a6)',
+                            borderRadius: 'var(--radius-1)',
                             overflow: variant === 'ghost' ? 'visible' : 'hidden', // Allow shadow to show for ghost variant
                             backgroundColor: 'var(--gray-1)',
                             padding: variant === 'ghost' ? 'var(--space-1)' : '0', // Give shadow breathing room
@@ -597,8 +600,9 @@ export default function SidebarPlayground() {
                     </Table.Cell>
                     <Table.Cell>
                       <Text size="1" color="gray">
-                        {variant === 'surface' && 'Floating panel with borders'}
+                        {variant === 'outline' && 'Floating panel with borders'}
                         {variant === 'soft' && 'Floating with soft gray background'}
+                        {variant === 'surface' && 'Floating with neutral gray and inset borders'}
                         {variant === 'ghost' && 'Floating transparent with shadow'}
                       </Text>
                     </Table.Cell>
@@ -644,13 +648,13 @@ export default function SidebarPlayground() {
                       <Box
                         style={{
                           border: '1px solid var(--gray-a6)',
-                          borderRadius: 'var(--radius-3)',
+                          borderRadius: 'var(--radius-5)',
                           overflow: 'hidden',
                         }}
                       >
                         <Flex style={{ height: '100%' }}>
                           <Sidebar.Root
-                            variant="surface"
+                            variant="outline"
                             menuVariant="soft"
                             size="2"
                             collapsible="icon"
@@ -756,7 +760,7 @@ export default function SidebarPlayground() {
                       <Box
                         style={{
                           border: '1px solid var(--gray-a6)',
-                          borderRadius: 'var(--radius-3)',
+                          borderRadius: 'var(--radius-5)',
                           overflow: 'hidden',
                         }}
                       >
@@ -868,7 +872,7 @@ export default function SidebarPlayground() {
                       <Box
                         style={{
                           border: '1px solid var(--gray-a6)',
-                          borderRadius: 'var(--radius-3)',
+                          borderRadius: 'var(--radius-5)',
                           overflow: 'hidden',
                         }}
                       >
@@ -1108,7 +1112,7 @@ export default function SidebarPlayground() {
                         <Sidebar.Provider>
                           <Flex>
                             <Sidebar.Root
-                              variant="ghost"
+                              variant="surface"
                               menuVariant="solid"
                               size="2"
                               type="floating"
@@ -1361,7 +1365,7 @@ export default function SidebarPlayground() {
                           <Box
                             style={{
                               border: '1px solid var(--gray-a6)',
-                              borderRadius: 'var(--radius-3)',
+                              borderRadius: 'var(--radius-5)',
                               overflow: 'hidden',
                             }}
                           >
@@ -1505,13 +1509,13 @@ export default function SidebarPlayground() {
                         <Box
                           style={{
                             border: '1px solid var(--gray-a6)',
-                            borderRadius: 'var(--radius-3)',
+                            borderRadius: 'var(--radius-5)',
                             overflow: 'hidden',
                           }}
                         >
                           <Flex style={{ height: '100%' }}>
                             <Sidebar.Root
-                              variant="surface"
+                              variant="outline"
                               menuVariant="solid"
                               size={size as any}
                               collapsible="icon"
@@ -1613,7 +1617,7 @@ export default function SidebarPlayground() {
                         <Box
                           style={{
                             border: '1px solid var(--gray-a6)',
-                            borderRadius: 'var(--radius-3)',
+                            borderRadius: 'var(--radius-5)',
                             overflow: 'hidden',
                           }}
                         >

@@ -1,5 +1,5 @@
 [data-radius] {
-  --radius-1: calc(8px * var(--scaling) * var(--radius-factor));
+  --radius-1: calc(7px * var(--scaling) * var(--radius-factor));
   --radius-2: calc(10px * var(--scaling) * var(--radius-factor));
   --radius-3: calc(12px * var(--scaling) * var(--radius-factor));
   --radius-4: calc(14px * var(--scaling) * var(--radius-factor));

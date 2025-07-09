@@ -14,7 +14,7 @@ export {
 
 // Sidebar container props
 const sizes = ['1', '2'] as const;
-const variants = ['soft', 'surface', 'ghost'] as const;
+const variants = ['soft', 'outline', 'surface', 'ghost'] as const;
 const menuVariants = ['solid', 'soft'] as const;
 const types = ['sidebar', 'floating'] as const;
 const sides = ['left', 'right'] as const;
@@ -23,7 +23,7 @@ const collapsibleModes = ['offcanvas', 'icon', 'none'] as const;
 const sidebarPropDefs = {
   ...asChildPropDef,
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
-  variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
+  variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'outline' },
   menuVariant: {
     type: 'enum',
     className: 'rt-menu-variant',
