@@ -8,6 +8,7 @@
 /* Import Text before other components as it’s commonly extended */
 @import './text.css';
 
+@import './accordion.css';
 @import './alert-dialog.css';
 @import './avatar.css';
 @import './badge.css';

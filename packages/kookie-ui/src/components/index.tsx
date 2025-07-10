@@ -1,4 +1,5 @@
 export { AccessibleIcon, type AccessibleIconProps } from './accessible-icon.js';
+export * as Accordion from './accordion.js';
 export * as AlertDialog from './alert-dialog.js';
 export { AspectRatio, type AspectRatioProps } from './aspect-ratio.js';
 export { Avatar, type AvatarProps } from './avatar.js';

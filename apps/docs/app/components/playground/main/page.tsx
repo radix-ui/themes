@@ -38,6 +38,7 @@ import {
   UserCheck,
 } from 'lucide-react';
 
+import AccordionPlayground from '../AccordionPlayground';
 import AlertDialogPlayground from '../AlertDialogPlayground';
 import AspectRatioPlayground from '../AspectRatioPlayground';
 import AvatarPlayground from '../AvatarPlayground';
@@ -194,6 +195,12 @@ const componentSections = [
   {
     title: 'Layout',
     components: [
+      {
+        id: 'accordion',
+        name: 'Accordion',
+        icon: List,
+        component: AccordionPlayground,
+      },
       {
         id: 'aspect-ratio',
         name: 'Aspect Ratio',

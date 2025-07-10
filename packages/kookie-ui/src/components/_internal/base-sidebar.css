@@ -1,0 +1,141 @@
+/* Base Sidebar Layout and Container Styles */
+
+/* Sidebar Provider - handles positioning */
+.rt-SidebarProvider {
+  /* Positioning based on side */
+  &:where([data-side="left"]) {
+    /* Left side is default - no additional positioning needed */
+    order: -1; /* Ensure it appears first in flex container */
+  }
+  
+  &:where([data-side="right"]) {
+    /* Position on the right side */
+    order: 999; /* Push to end in flex container */
+  }
+}
+
+/* Sidebar Root Container */
+.rt-SidebarRoot {
+  --sidebar-width: 16rem; /* Fixed width */
+  --sidebar-base-border-radius: 0; /* Default to no radius */
+  
+  width: var(--sidebar-width);
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+
+  /* Make sure Theme wrapper also participates in flex layout */
+  & :where(.radix-themes) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+
+  /* Floating type - ONLY visual changes */
+  &:where([data-type="floating"]) {
+    border-radius: var(--sidebar-base-border-radius);
+    margin: var(--space-2);
+    height: calc(100% - var(--space-4));
+    overflow: visible; /* Ensure shadow is not clipped */
+    position: relative; /* Ensure proper stacking context for floating sidebars */
+    
+    /* Ensure Theme wrapper has proper border radius in floating mode */
+    & :where(.radix-themes) {
+      border-radius: inherit;
+    }
+  }
+}
+
+/* Set border radius for floating sidebars based on size - set on the root where it's used */
+.rt-SidebarRoot:where([data-type="floating"]) {
+  /* Default radius for floating sidebars */
+  --sidebar-base-border-radius: var(--radius-5);
+  
+  &:where(.rt-r-size-1) {
+    --sidebar-base-border-radius: var(--radius-5);
+  }
+  
+  &:where(.rt-r-size-2) {
+    --sidebar-base-border-radius: var(--radius-6);
+  }
+}
+
+/* Sidebar Container */
+.rt-SidebarContainer {
+  --sidebar-base-border-radius: 0; /* Default to no radius */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-panel);
+  backdrop-filter: var(--backdrop-filter-panel);
+  border-radius: inherit;
+  flex: 1;
+}
+
+/* Sidebar Header */
+.rt-SidebarHeader {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-radius: var(--sidebar-base-border-radius) var(--sidebar-base-border-radius) 0 0;
+}
+
+/* Sidebar Content - based on rt-BaseMenuContent */
+.rt-SidebarContent {
+  --scrollarea-scrollbar-vertical-margin-top: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--base-menu-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--base-menu-content-padding);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 0; /* Critical for flex children to shrink */
+
+  /* Override base menu styling that's not appropriate for sidebars */
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+
+  /* Ensure ScrollArea takes full height within SidebarContent */
+  & :where(.rt-ScrollAreaRoot) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  & :where(.rt-ScrollAreaViewport) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+}
+
+/* Sidebar Footer */
+.rt-SidebarFooter {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-top: auto;
+  border-radius: 0 0 var(--sidebar-base-border-radius) var(--sidebar-base-border-radius);
+}
+
+/* Sidebar Separator - ensure full width and proper spacing */
+.rt-SidebarSeparator {
+  width: 100%;
+  margin: var(--space-2) 0;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .rt-SidebarRoot {
+    display: none;
+  }
+} 

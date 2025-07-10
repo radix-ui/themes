@@ -1,0 +1,254 @@
+/* Accordion Root */
+.rt-AccordionRoot {
+  border-radius: var(--radius-3);
+  overflow: hidden;
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-surface)) {
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-classic)) {
+  background-color: var(--color-surface);
+  box-shadow: var(--classic-inset-shadow-light);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-soft)) {
+  background-color: var(--accent-a3);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-outline)) {
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-ghost)) {
+  background-color: transparent;
+}
+
+/* Panel background support */
+:where(.rt-AccordionRoot[data-panel-background="translucent"]) {
+  background-color: color-mix(in srgb, var(--color-panel-translucent), transparent var(--panel-opacity-light));
+  backdrop-filter: var(--backdrop-blur-panel);
+}
+
+/* Accordion Item */
+.rt-AccordionItem {
+  overflow: hidden;
+}
+
+:where(.rt-AccordionItem:not(:last-child)) {
+  border-bottom: 1px solid var(--gray-a6);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-ghost)) :where(.rt-AccordionItem:not(:last-child)) {
+  border-bottom: 1px solid var(--gray-a4);
+}
+
+/* Accordion Header */
+.rt-AccordionHeader {
+  display: flex;
+}
+
+/* Accordion Trigger */
+.rt-AccordionTrigger {
+  all: unset;
+  font-family: inherit;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-3);
+  color: var(--gray-12);
+  cursor: pointer;
+  transition: var(--transition-standard);
+}
+
+/* Size variants */
+:where(.rt-AccordionRoot:where(.rt-r-size-1)) .rt-AccordionTrigger {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-1);
+}
+
+:where(.rt-AccordionRoot:where(.rt-r-size-2)) .rt-AccordionTrigger {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-2);
+}
+
+:where(.rt-AccordionRoot:where(.rt-r-size-3)) .rt-AccordionTrigger {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-size-3);
+}
+
+:where(.rt-AccordionRoot:where(.rt-r-size-4)) .rt-AccordionTrigger {
+  padding: var(--space-5) var(--space-6);
+  font-size: var(--font-size-4);
+}
+
+/* Trigger hover states */
+:where(.rt-AccordionTrigger:hover) {
+  background-color: var(--gray-a3);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-soft)) :where(.rt-AccordionTrigger:hover) {
+  background-color: var(--accent-a4);
+}
+
+:where(.rt-AccordionRoot:where(.rt-variant-ghost)) :where(.rt-AccordionTrigger:hover) {
+  background-color: var(--gray-a2);
+}
+
+/* Trigger focus states */
+:where(.rt-AccordionTrigger:focus-visible) {
+  outline: var(--focus-outline-width) solid var(--focus-8);
+  outline-offset: var(--focus-outline-offset-inset);
+}
+
+/* Accordion Content */
+.rt-AccordionContent {
+  overflow: hidden;
+  /* remove padding here */
+  font-size: var(--font-size-2);
+  color: var(--gray-11);
+  line-height: var(--line-height-4);
+}
+
+.rt-AccordionContentInner {
+  padding: 0 var(--space-4) var(--space-3);
+}
+
+/* Size variants for content */
+:where(.rt-AccordionRoot:where(.rt-r-size-1)) .rt-AccordionContentInner {
+  padding: 0 var(--space-3) var(--space-2);
+  font-size: var(--font-size-1);
+}
+
+:where(.rt-AccordionRoot:where(.rt-r-size-2)) .rt-AccordionContentInner {
+  padding: 0 var(--space-4) var(--space-3);
+  font-size: var(--font-size-2);
+}
+
+:where(.rt-AccordionRoot:where(.rt-r-size-3)) .rt-AccordionContentInner {
+  padding: 0 var(--space-5) var(--space-4);
+  font-size: var(--font-size-3);
+}
+
+:where(.rt-AccordionRoot:where(.rt-r-size-4)) .rt-AccordionContentInner {
+  padding: 0 var(--space-6) var(--space-5);
+  font-size: var(--font-size-4);
+}
+
+/* Content animations */
+:where(.rt-AccordionContent[data-state="open"]) {
+  animation: rt-slide-down var(--duration-2) var(--ease-1);
+}
+
+:where(.rt-AccordionContent[data-state="closed"]) {
+  animation: rt-slide-up var(--duration-2) var(--ease-1);
+}
+
+@keyframes rt-slide-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes rt-slide-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* High contrast mode */
+:where(.rt-AccordionRoot[data-high-contrast]) .rt-AccordionTrigger {
+  color: var(--gray-12);
+}
+
+:where(.rt-AccordionRoot[data-high-contrast]) .rt-AccordionContent {
+  color: var(--gray-12);
+}
+
+/* Color accent support */
+:where(.rt-AccordionRoot:where(.rt-variant-soft)[data-accent-color]) :where(.rt-AccordionTrigger:hover) {
+  background-color: var(--accent-a4);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :where(.rt-AccordionContent[data-state="open"]),
+  :where(.rt-AccordionContent[data-state="closed"]) {
+    animation: none;
+  }
+} 
+
+/* Soft variant detailed styling */
+.rt-AccordionRoot:where(.rt-variant-soft) {
+  background-color: var(--accent-3);
+  color: var(--accent-12);
+  transition: var(--transition-background-blur);
+}
+
+/* Theme-level translucent override (root Theme sets data-panel-background on children) */
+:where([data-panel-background='translucent']) .rt-AccordionRoot:where(.rt-variant-soft) {
+  background-color: var(--accent-a3);
+  backdrop-filter: var(--backdrop-filter-components);
+}
+
+/* Component-level overrides */
+.rt-AccordionRoot:where(.rt-variant-soft[data-panel-background='solid']) {
+  background-color: var(--accent-3);
+  backdrop-filter: none;
+}
+
+.rt-AccordionRoot:where(.rt-variant-soft[data-panel-background='translucent']) {
+  background-color: var(--accent-a3);
+  backdrop-filter: var(--backdrop-filter-components);
+  --backdrop-filter-components: blur(var(--backdrop-blur-components));
+}
+
+/* Adjusted hover selectors to lower specificity */
+@media (hover: hover) {
+  :where(.rt-AccordionRoot.rt-variant-soft:hover) {
+    background-color: var(--accent-4);
+  }
+  :where([data-panel-background='translucent']) :where(.rt-AccordionRoot.rt-variant-soft:hover) {
+    background-color: var(--accent-a4);
+  }
+  :where(.rt-AccordionRoot.rt-variant-soft[data-panel-background='solid']:hover) {
+    background-color: var(--accent-4);
+    backdrop-filter: none;
+  }
+  :where(.rt-AccordionRoot.rt-variant-soft[data-panel-background='translucent']:hover) {
+    background-color: var(--accent-a4);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+}
+
+/* Ghost variant hover with lowered specificity */
+@media (hover: hover) {
+  :where(.rt-AccordionRoot.rt-variant-ghost:hover) {
+    background-color: var(--accent-2);
+  }
+  :where([data-panel-background='translucent']) :where(.rt-AccordionRoot.rt-variant-ghost:hover) {
+    background-color: var(--accent-a2);
+    backdrop-filter: var(--backdrop-filter-components);
+  }
+  :where(.rt-AccordionRoot.rt-variant-ghost[data-panel-background='solid']:hover) {
+    background-color: var(--accent-2);
+    backdrop-filter: none;
+  }
+  :where(.rt-AccordionRoot.rt-variant-ghost[data-panel-background='translucent']:hover) {
+    background-color: var(--accent-a2);
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+} 

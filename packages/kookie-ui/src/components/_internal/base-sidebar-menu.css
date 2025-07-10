@@ -1,0 +1,223 @@
+/* Base Sidebar Menu Styles */
+
+/* Sidebar Menu - based on rt-BaseMenuViewport */
+.rt-SidebarMenu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--base-menu-content-padding);
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  min-height: 0;
+
+  :where(.rt-SidebarContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
+    padding-right: var(--space-3);
+  }
+}
+
+/* Sidebar Menu Item */
+.rt-SidebarMenuItem {
+  list-style: none;
+}
+
+/* Sidebar Menu Button - inherit from BaseMenuItem */
+.rt-SidebarMenuButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2); /* Will be overridden by size-specific gap */
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
+  padding-left: var(--base-menu-item-padding-left);
+  padding-right: var(--base-menu-item-padding-right);
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  scroll-margin: var(--base-menu-content-padding) 0;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  /* No default border radius - inherited from size-specific rules */
+
+  /* Transitions - inherit from base menu */
+  transition: var(--transition-menu);
+
+  /* Fix sticky text highlighting after selection in Firefox */
+  user-select: none;
+
+  /* Cursors */
+  cursor: var(--cursor-menu-item);
+  &:where([data-disabled]) {
+    cursor: default;
+    color: var(--gray-a8);
+  }
+
+  /* Active navigation state - always accent-based */
+  &:where([data-active], .rt-active) {
+    background-color: var(--accent-a3);
+    color: var(--accent-a12);
+  }
+
+  /* Focus state */
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
+
+  /* Accent color support */
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+  }
+
+  /* Gray text support - inherit from base menu */
+  & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
+    color: var(--gray-a10);
+  }
+
+  /* Ensure shortcuts inherit color in disabled/highlighted/active states */
+  &:where([data-disabled], [data-highlighted], [data-active]) {
+    & :where(.rt-SidebarMenuShortcut) {
+      color: inherit;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/* Sidebar Menu Sub Components - Radix Accordion */
+.rt-SidebarMenuSubTrigger {
+  justify-content: space-between;
+}
+
+/* Accordion trigger icon rotation */
+.rt-SidebarMenuSubTrigger {
+  & :where(.rt-SidebarMenuSubTriggerIcon) {
+    transition: transform 0.2s ease;
+  }
+  
+  &:where([data-state="open"]) :where(.rt-SidebarMenuSubTriggerIcon) {
+    transform: rotate(90deg);
+  }
+}
+
+.rt-SidebarMenuSubContent {
+  overflow: hidden;
+  
+  /* Allow focus outlines to show */
+  &:where(:focus-within) {
+    overflow: visible;
+  }
+  
+  /* Radix Accordion animation support */
+  &:where([data-state="open"]) {
+    animation: rt-sidebar-slide-down 200ms ease-out;
+  }
+  
+  &:where([data-state="closed"]) {
+    animation: rt-sidebar-slide-up 200ms ease-out;
+  }
+}
+
+@keyframes rt-sidebar-slide-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes rt-sidebar-slide-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.rt-SidebarMenuSubList {
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--gray-a5);
+  margin-left: var(--space-3);
+}
+
+/* Sub-menu items have consistent heights based on size - match dropdown menu exactly */
+:where(.rt-SidebarContent.rt-r-size-1) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
+  padding-left: var(--space-3);
+  padding-top: calc(var(--space-1) * 0.75);
+  padding-bottom: calc(var(--space-1) * 0.75);
+  min-height: var(--space-5); /* 20px */
+  font-size: var(--font-size-1);
+}
+
+:where(.rt-SidebarContent.rt-r-size-2) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
+  padding-left: var(--space-3);
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+  min-height: var(--space-6); /* 24px */
+  font-size: var(--font-size-2);
+}
+
+/* Sidebar Group Components - identical to base menu */
+.rt-SidebarGroup {
+  /* No styling - purely semantic like BaseMenuGroup */
+}
+
+.rt-SidebarGroupLabel {
+  /* Inherit all BaseMenuLabel styles */
+  display: flex;
+  align-items: center;
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
+  padding-left: var(--base-menu-item-padding-left);
+  padding-right: var(--base-menu-item-padding-right);
+  box-sizing: border-box;
+  color: var(--gray-a10);
+  user-select: none;
+  cursor: default;
+
+  /* Add margin-top when following menu items - identical to BaseMenuLabel */
+  :where(.rt-SidebarMenuItem) + & {
+    margin-top: var(--space-2);
+  }
+}
+
+/* Reduce right padding on menu buttons with trailing elements */
+.rt-SidebarMenuButton:where(:has(.rt-SidebarMenuShortcut, .rt-SidebarMenuBadge)) {
+  /* Use base menu padding tokens */
+  :where(.rt-SidebarContent.rt-r-size-1) & {
+    padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
+  }
+  
+  :where(.rt-SidebarContent.rt-r-size-2) & {
+    padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
+  }
+}
+
+.rt-SidebarMenuShortcut {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: var(--space-4);
+  color: var(--gray-a11);
+}
+
+.rt-SidebarMenuBadge {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: var(--space-2);
+}
+
+/* Add balanced spacing for sidebar menu items while preserving base menu border radius */
+.rt-SidebarContent :where(.rt-BaseMenuItem) {
+  margin-top: calc(var(--space-1) / 2);
+  margin-bottom: calc(var(--space-1) / 2);
+} 
