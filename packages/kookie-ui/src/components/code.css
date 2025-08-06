@@ -144,7 +144,7 @@
 /* soft */
 
 .rt-Code:where(.rt-variant-soft) {
-  background-color: var(--accent-a3);
+  background-color: var(--accent-a2);
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {

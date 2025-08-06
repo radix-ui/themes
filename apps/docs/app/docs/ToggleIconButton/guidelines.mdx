@@ -1,0 +1,348 @@
+import { ToggleIconButton, Flex, Box, Text, Callout } from '@kushagradhawan/kookie-ui';
+import { Bold, Italic, Underline, TriangleAlertIcon } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
+
+# Guidelines
+
+ToggleIconButtons are icon state switches. When someone sees a toggle icon button, they instantly understand it can be turned on and off through icon interaction. Your job as a designer is to make the current state clear and guide people toward successful state changes.
+
+This guide teaches you the psychological principles, visual hierarchy, and design decisions that create toggle icon button interfaces people trust and understand intuitively.
+
+## Psychology
+
+ToggleIconButton uses the same psychological principles as Button. For comprehensive documentation on priority, meaning, trust, and feedback psychology, see the **[Button Guidelines documentation](../Button/guidelines)**.
+
+## Hierarchy
+
+ToggleIconButton uses the same hierarchy principles as Button. For comprehensive documentation on clear paths, progressive disclosure, and spatial relationships, see the **[Button Guidelines documentation](../Button/guidelines)**.
+
+## Color Psychology
+
+ToggleIconButton uses the same color psychology system as Button. For comprehensive documentation on color meanings and usage, see the **[Button Guidelines documentation](../Button/guidelines)**.
+
+## Size and Space
+
+ToggleIconButton uses the same size and space principles as Button but with square aspect ratios. For comprehensive documentation on size communication and consistency, see the **[Button Guidelines documentation](../Button/guidelines)**.
+
+## Variants
+
+ToggleIconButton uses the same variant system as Button. For comprehensive documentation on variant usage and selection, see the **[Button Guidelines documentation](../Button/guidelines)**.
+
+## Icon Recognition
+
+ToggleIconButton relies entirely on visual symbols to communicate meaning and state. The icon must be instantly recognizable and its meaning clear in context.
+
+### Universal Icons
+
+Use universally recognized icons for common toggle actions. These icons have established meanings across digital interfaces.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+      <ToggleIconButton size="3" variant="soft" aria-label="Italic text" pressed={false}>
+        <Italic />
+      </ToggleIconButton>
+      <ToggleIconButton size="3" variant="soft" aria-label="Underline text" pressed={true}>
+        <Underline />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Universal icons - instantly recognizable */}
+<ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+
+<ToggleIconButton size="3" variant="soft" aria-label="Italic text" pressed={false}>
+  <Italic />
+</ToggleIconButton>
+
+<ToggleIconButton size="3" variant="soft" aria-label="Underline text" pressed={true}>
+  <Underline />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+**Universal Icon Examples:**
+- **Formatting:** Bold, italic, underline, strikethrough
+- **View modes:** List/grid, show/hide, expand/collapse
+- **States:** On/off, enabled/disabled, active/inactive
+- **Actions:** Play/pause, mute/unmute, lock/unlock
+
+### Context-Dependent Icons
+
+Some icons require context to be understood. Ensure the surrounding interface provides clear context for the icon's meaning.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Text>Text Editor</Text>
+      <ToggleIconButton size="2" variant="ghost" aria-label="Toggle spell check" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Context makes the icon meaning clear */}
+<Text>Text Editor</Text>
+<ToggleIconButton size="2" variant="ghost" aria-label="Toggle spell check" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+### Custom Icons
+
+When using custom icons, ensure they follow established visual patterns and are tested for recognition.
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>Test custom icons with users to ensure they're recognizable. Consider providing tooltips or labels for complex or unique icons.</Callout.Text>
+</Callout.Root>
+
+## Toggle State Design
+
+ToggleIconButton requires clear visual communication of their current state. Users must instantly understand whether a toggle is on or off, and what will happen when they interact with it.
+
+### Visual State Indicators
+
+ToggleIconButton uses visual cues to communicate their current state. The pressed state should be immediately recognizable through color, styling, or other visual treatments.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="soft" aria-label="Dark mode" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+      <ToggleIconButton size="3" variant="soft" aria-label="Light mode" pressed={false}>
+        <Bold />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Clear visual indication of pressed state */}
+<ToggleIconButton size="3" variant="soft" aria-label="Dark mode" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+
+<ToggleIconButton size="3" variant="soft" aria-label="Light mode" pressed={false}>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+**State Communication Principles:**
+- **Pressed state:** Should feel "active" or "engaged" through visual treatment
+- **Unpressed state:** Should feel "inactive" or "available" but not engaged
+- **State changes:** Should provide immediate visual feedback when toggled
+- **Consistency:** Same visual treatment should mean same state across all toggles
+
+### State Labels
+
+ToggleIconButton labels should clearly communicate what the current state is and what will happen when toggled.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="outline" aria-label="Bold enabled" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+      <ToggleIconButton size="3" variant="outline" aria-label="Bold disabled" pressed={false}>
+        <Bold />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Clear state labels */}
+<ToggleIconButton size="3" variant="outline" aria-label="Bold enabled" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+
+<ToggleIconButton size="3" variant="outline" aria-label="Bold disabled" pressed={false}>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+**Labeling Best Practices:**
+- **Current state:** Label should describe the current state ("Bold enabled", "Dark mode")
+- **Action clarity:** Users should understand what will happen when toggled
+- **Consistency:** Use consistent terminology across related toggles
+- **Context:** Labels should make sense in the current interface context
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>ToggleIconButton labels should describe the current state, not the action. Users already know they can click to toggle - they need to know what state they're currently in.</Callout.Text>
+</Callout.Root>
+
+## Accessibility Requirements
+
+ToggleIconButton has stricter accessibility requirements than regular buttons due to their reliance on visual symbols and toggle state management.
+
+### Mandatory Labeling
+
+Every ToggleIconButton must have an accessible name through `aria-label` or `aria-labelledby`. This is not optional—it's required for screen reader users.
+
+<CodeBlock
+  preview={
+    <Flex gap="3" wrap="wrap">
+      <ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+      <ToggleIconButton size="3" variant="soft" aria-label="Italic text" pressed={false}>
+        <Italic />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Required: Clear, descriptive labels */}
+<ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+
+<ToggleIconButton size="3" variant="soft" aria-label="Italic text" pressed={false}>
+  <Italic />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+### Tooltip Integration
+
+Use tooltips to provide additional context beyond the aria-label, especially for complex actions or custom icons.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="soft" aria-label="Bold text" tooltip="Toggle bold formatting" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Tooltip provides additional context */}
+<ToggleIconButton 
+  size="3" 
+  variant="soft" 
+  aria-label="Bold text"
+  tooltip="Toggle bold formatting"
+  pressed={true}
+>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+## Common Mistakes
+
+### Unclear Icons
+
+Using ambiguous or unrecognizable icons that require explanation.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="soft" aria-label="Custom action" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* ❌ Avoid: Unclear icon meaning */}
+<ToggleIconButton size="3" variant="soft" aria-label="Custom action" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+
+{/* ✅ Better: Clear, descriptive label */}
+<ToggleIconButton size="3" variant="soft" aria-label="Bold text enabled" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+### Missing Labels
+
+Forgetting to provide accessible names for ToggleIconButton.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="soft" pressed={true}>
+        <Bold />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* ❌ Avoid: No accessible name */}
+<ToggleIconButton size="3" variant="soft" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+
+{/* ✅ Required: Accessible name */}
+<ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+### Inconsistent Sizing
+
+Manually sizing icons instead of letting the component handle sizing automatically.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+        <Bold size={16} />
+      </ToggleIconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* ❌ Avoid: Manual icon sizing */}
+<ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+  <Bold size={16} />
+</ToggleIconButton>
+
+{/* ✅ Better: Let component handle sizing */}
+<ToggleIconButton size="3" variant="soft" aria-label="Bold text" pressed={true}>
+  <Bold />
+</ToggleIconButton>
+```
+
+</CodeBlock>
+
+## Implementation
+
+ToggleIconButton uses the same implementation principles as Button. For comprehensive documentation on implementation best practices, see the **[Button Guidelines documentation](../Button/guidelines)**. 

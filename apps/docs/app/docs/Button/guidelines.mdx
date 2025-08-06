@@ -1,0 +1,216 @@
+import { Button, Flex, Box, Text, Callout, IconButton, Theme } from '@kushagradhawan/kookie-ui';
+import { TriangleAlertIcon, ChevronDown, Check, ChevronRight, Plus } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
+
+# Guidelines
+
+Design buttons as promises that users can trust. When someone sees a button, they instantly form expectations about what will happen when they tap it. Your job as a designer is to honor those expectations and guide people naturally toward successful task completion.
+
+## Hierarchy
+
+Create effective button hierarchies by understanding human decision-making patterns and designing interfaces that guide people naturally toward successful outcomes.
+
+### Clear Path
+
+Guide people toward one primary action per interface section. Multiple competing primary actions create decision paralysis and reduce conversion rates. This principle is backed by extensive usability research: people perform better when interfaces provide clear guidance rather than unlimited choice.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="solid">Complete</Button>
+      <Button size="3" variant="outline">Save</Button>
+      <Button size="3" variant="ghost">Continue</Button>
+    </Flex>
+  }
+/>
+
+Make the primary action obvious at a glance. Secondary actions should enable the primary action or provide necessary alternatives. Utility actions should be available but not distracting.
+
+### Progressive Disclosure
+
+Start with the most common path and reveal additional options progressively. Don't overwhelm people with choices. This reduces cognitive load and guides people toward successful task completion.
+
+Think about your interface like a conversation. You wouldn't start a conversation by listing every possible topic. You'd begin with the most relevant point and let the conversation develop naturally.
+
+### Spatial Relationships
+
+Use button positioning to reinforce hierarchy. Primary actions typically appear on the right in Western interfaces (following reading patterns), while secondary actions appear on the left. This spatial convention supports the visual hierarchy created by button treatments.
+
+Group related actions together and separate unrelated ones. Proximity communicates relationship—buttons that appear together feel related, while separated buttons feel independent.
+
+## Context
+
+Consider context when choosing visual treatments. The same visual treatment can feel appropriate or jarring depending on context. A bold red "Delete Account" button feels wrong in a settings page but right in a confirmation dialog. People bring expectations from their current task and mental state.
+
+Think about where someone is in their journey. Are they exploring options or ready to commit? Are they in a flow state or making a careful decision? The context determines which visual treatment will feel natural and supportive.
+
+## Trust
+
+Build user confidence through consistent button treatments. When similar actions look similar across your interface, people develop confidence in your system. They can predict behavior based on appearance, which reduces cognitive load and increases task completion rates. 
+
+Avoid inconsistent button treatments that force people to pause and evaluate each interaction. This breaks flow states and increases abandonment. Every inconsistency is a small betrayal of user expectations.
+
+## Variants
+
+Use each variant to serve specific psychological and contextual needs. Think of these as tools for communicating intent and guiding user behavior, not just visual options.
+
+### Solid
+
+Use solid buttons for primary importance and to build user confidence in critical actions. The solid background creates maximum contrast against most interface backgrounds, naturally drawing attention and suggesting decisive action.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="solid">Button</Button>
+      <Button size="3" variant="solid" color="teal">Button</Button>
+      <Button size="3" variant="solid" color="crimson">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose solid buttons for primary workflow completion (Submit Form, Save Changes, Continue), high-stakes confirmations (Complete Purchase, Publish Article), and call-to-action buttons in marketing contexts.
+
+### Outline
+
+Use outline buttons to provide definite affordance while maintaining visual restraint. The border creates clear boundaries without competing for attention. This treatment strikes an ideal balance between presence and restraint.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="outline" color="crimson">Button</Button>
+      <Button size="3" variant="outline" color="gray">Button</Button>
+      <Button size="3" variant="outline" color="blue">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose outline buttons for secondary actions alongside primary buttons (Cancel, Go Back), alternative paths that shouldn't overshadow the main action (Skip, Preview), and exploration actions (View Details, Learn More).
+
+### Ghost
+
+Use ghost buttons for utility actions that should be discoverable but not prominent. They remain nearly invisible until interaction, perfect for utility actions that should be discoverable but not prominent. This treatment respects the principle that not every action needs visual weight.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="ghost">Button</Button>
+      <Button size="3" variant="ghost"><Plus />Button</Button>
+      <Button size="3" variant="ghost" color="gray">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose ghost buttons for utility functions (Sort, Filter, Settings, Edit), secondary navigation (Pagination, Breadcrumbs), content actions (Share, Bookmark, Like), and administrative functions that support the main workflow.
+
+### Soft
+
+Use soft buttons to provide color presence without harsh boundaries, creating gentle visual treatment that integrates naturally with content while maintaining clear interactive affordance.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="soft">Button</Button>
+      <Button size="3" variant="soft" color="iris">Button</Button>
+      <Button size="3" variant="soft" color="green">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose soft buttons for content-area actions (Reply to Comment, Quote Text, Expand Section), gentle calls-to-action in text-heavy layouts, and interface sections where harsh contrasts feel inappropriate.
+
+### Surface
+
+Use surface buttons to combine background and border for consistent appearance across varying container backgrounds. This dual-layer approach ensures reliable visual recognition regardless of surrounding color context.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="surface">Button</Button>
+      <Button size="3" variant="surface" color="iris">Button</Button>
+      <Button size="3" variant="surface" color="gray">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose surface buttons for modular components used in multiple contexts (Card actions, Widget controls), buttons on cards with changing background colors, and dynamic layouts where background varies.
+
+### Classic
+
+Use classic buttons for sophisticated shadow systems that create depth, making buttons feel like physical objects that respond to touch. This treatment creates buttons that feel more tangible and engaging than flat alternatives.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="classic">Button</Button>
+      <Button size="3" variant="classic" color="iris">Button</Button>
+      <Button size="3" variant="classic" color="gold">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose classic buttons for standalone focal points in spacious layouts, premium or tactile interface experiences, hero sections and marketing contexts, and applications where physical metaphors enhance usability.
+
+## Material
+
+Choose material to define the fundamental substance from which your interface is constructed. Just as physical materials have distinct properties that affect how we interact with them, digital materials create different experiences and expectations. The material choice affects not just appearance, but the entire relationship between user and interface.
+
+### Solid
+
+Use solid material to create interfaces that feel grounded and reliable. Like concrete or metal, solid materials provide clear boundaries and predictable behavior. Users can trust that solid elements will behave consistently and provide stable interaction surfaces.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Button size="3" variant="solid">Button</Button>
+      <Button size="3" variant="outline">Button</Button>
+      <Button size="3" variant="soft">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose solid material for primary interfaces, data-heavy applications, and contexts where clarity and reliability are paramount. Solid materials excel in professional environments, form interfaces, and any situation where users need to feel confident about their interactions.
+
+### Translucent
+
+Use translucent material to create interfaces that feel layered and responsive to their environment. Like glass or water, translucent materials reveal context while maintaining their own identity. They create depth by allowing background elements to influence the interface without losing focus.
+
+<CodeBlock
+  background="https://images.unsplash.com/vector-1741379682511-1250c5feacd1?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  backgroundProps={{
+    height: "300px",
+    width: "100%",
+    radius: "3"
+  }}
+  preview={
+    <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
+      <Button highContrast size="4" color="gray" variant="classic" material="translucent">Button</Button>
+      <Button size="4" color="" variant="solid" material="translucent">Button</Button>
+      <Button highContrast size="4" color="gray" variant="soft" material="translucent">Button</Button>
+      <Button highContrast size="4" color="gray" variant="surface" material="translucent">Button</Button>
+    </Flex>
+  }
+/>
+
+Choose translucent material for overlay interfaces, hero sections, and contexts where you want to create visual depth and connection to background content. Translucent materials work well in marketing contexts, immersive experiences, and interfaces that need to feel modern and sophisticated.
+
+### Experience
+
+Consider your application's purpose and the user's mental state when choosing between solid and translucent materials. Are they focused on completing specific tasks, or are they exploring and discovering? Are they in a professional context that demands clarity, or a creative context that benefits from visual richness?
+
+Solid materials create interfaces that feel like tools: precise, reliable, and focused on task completion. Translucent materials create interfaces that feel like environments: immersive, contextual, and responsive to their surroundings.
+
+The material choice should support the user's goals and create the appropriate emotional relationship with your interface. Just as you wouldn't build a kitchen counter from tissue paper or a window from concrete, choose materials that match the functional and emotional requirements of your interface context.
+
+## Mistakes
+
+Avoid these common button design problems that stem from treating buttons as decorative elements rather than functional communication tools. These mistakes break user expectations and create friction in interfaces that should feel effortless.
+
+**Decision paralysis through competing primary actions** is the most common and destructive mistake. When multiple solid buttons appear in the same interface section, people don't know which action you want them to take. Their eyes dart between options, cognitive load increases, and conversion rates drop. This happens because human decision-making works best with clear guidance rather than unlimited choice. The solution isn't to make all buttons equally prominent—it's to establish clear hierarchy where one action is obviously primary and others support that choice.
+
+**Inconsistent visual treatments** across your interface force people to relearn your system at every interaction. When similar actions look different in different contexts, users lose confidence in their ability to predict behavior. This creates a cascade of problems: people slow down to evaluate each button, they second-guess their choices, and they develop distrust in your interface. Consistency isn't about rigid rules—it's about creating predictable patterns that reduce cognitive load and build user confidence.
+
+## Implementation
+
+For technical implementation details, see [API](./api). For design tokens and specifications, see [Specs](./specs).
+
+

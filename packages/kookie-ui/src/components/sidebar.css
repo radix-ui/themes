@@ -44,12 +44,12 @@
 }
 
 .rt-SidebarContainer:where(.rt-variant-soft) {
-  /* Use solid gray for solid panels, alpha gray for translucent panels */
+  /* Base state: solid colors for solid panels */
   background-color: var(--gray-2);
-  
+
   /* Theme-level translucent override */
   :where([data-panel-background='translucent']) & {
-    background-color: var(--gray-a2);
+    background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
     backdrop-filter: var(--backdrop-filter-panel);
   }
 
@@ -61,7 +61,7 @@
   }
 
   &:where([data-panel-background='translucent']) {
-    background-color: var(--gray-a2);
+    background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
     backdrop-filter: var(--backdrop-filter-panel);
     --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
@@ -74,7 +74,7 @@
   
   /* Theme-level translucent override */
   :where([data-panel-background='translucent']) & {
-    background-color: var(--gray-a1);
+    background-color: color-mix(in srgb, var(--gray-a1), var(--gray-1) 60%);
     backdrop-filter: var(--backdrop-filter-panel);
   }
 
@@ -87,7 +87,7 @@
   }
 
   &:where([data-panel-background='translucent']) {
-    background-color: var(--gray-a1);
+    background-color: color-mix(in srgb, var(--gray-a1), var(--gray-1) 60%);
     backdrop-filter: var(--backdrop-filter-panel);
     --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
@@ -866,5 +866,16 @@
 @media (prefers-reduced-motion: reduce) {
   .rt-SidebarRoot:where([data-collapsible="icon"]) {
     transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  :where(.rt-SidebarMenuButton):focus-visible {
+    outline: 2px solid CanvasText;
+  }
+  
+  :where(.rt-SidebarTrigger):focus-visible {
+    outline: 2px solid CanvasText;
   }
 } 

@@ -1,0 +1,55 @@
+# Changelog
+
+All notable changes to the ToggleIconButton component will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- Controlled and uncontrolled state handling through `pressed` and `onPressedChange` props
+- Default state configuration with `defaultPressed` prop
+- Automatic ARIA attribute management for accessibility compliance
+- Mandatory accessibility labeling (aria-label/aria-labelledby) for icon-only interactions
+- Automatic icon sizing based on button size with manual sizing prevention
+- Square aspect ratios for consistent visual alignment
+- Enhanced tooltip support for icon context
+
+### Changed
+- Clear visual feedback for pressed and unpressed states
+- Consistent state communication across all variants
+- Smooth state transitions with proper animation timing
+- Enhanced contrast for state differentiation
+- Seamless icon integration with automatic sizing
+- Consistent icon scaling across all button sizes
+
+### Fixed
+- Enforced aria-label or aria-labelledby requirements for icon-only interactions
+- Development-time warnings for missing accessibility labels
+- Enhanced screen reader support for icon-only content
+- Automatic aria-pressed attribute management for toggle states
+- Optimized re-renders for state changes
+- Efficient icon sizing calculations
+
+## [1.0.0] - 2024-01-15
+
+### Added
+- Initial release of ToggleIconButton component
+- Toggle state functionality with icon-only interface
+- Four size options: 1, 2, 3, 4
+- Six visual variants: classic, solid, soft, outline, surface, ghost
+- Comprehensive color system with semantic options
+- Full accessibility support with keyboard navigation
+- Loading states with visual feedback
+- Disabled states with proper ARIA attributes
+- Polymorphic rendering with `as` prop
+- High contrast mode support
+- Responsive design with breakpoint support
+
+### Technical
+- Built on Radix UI Toggle primitive for robust state management
+- Seamless integration with IconButton through asChild pattern
+- CSS custom properties for theming
+- TypeScript support with comprehensive type definitions
+- Design token integration for consistent spacing and sizing 

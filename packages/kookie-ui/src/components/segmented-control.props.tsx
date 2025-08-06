@@ -2,13 +2,13 @@ import { radiusPropDef } from '../props/radius.prop.js';
 
 import type { PropDef } from '../props/prop-def.js';
 
-const sizes = ['1', '2', '3'] as const;
-const variants = ['surface', 'classic'] as const;
+const sizes = ['1', '2', '3', '4'] as const;
+const variants = ['soft'] as const;
 
 const segmentedControlRootPropDefs = {
   disabled: { type: 'boolean', className: 'disabled', default: false },
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
-  variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
+  variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'soft' },
   panelBackground: {
     type: 'enum',
     className: 'rt-panel-background',

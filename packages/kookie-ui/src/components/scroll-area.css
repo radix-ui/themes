@@ -39,7 +39,7 @@
 
 .rt-ScrollAreaViewport > * {
   display: block !important;
-  width: fit-content;
+  min-width: 0;
   flex-grow: 1;
 }
 

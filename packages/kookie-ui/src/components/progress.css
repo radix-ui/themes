@@ -7,95 +7,72 @@
   overflow: hidden;
   flex-grow: 1;
   height: var(--progress-height);
-  border-radius: max(
-    calc(var(--radius-factor) * var(--progress-height) / var(--progress-border-radius-factor)),
-    calc(var(--radius-factor) * var(--radius-thumb))
-  );
+  border-radius: var(--progress-radius);
 
-  /* A pseudo-element for shadows */
-  &::after {
-    position: absolute;
-    inset: 0;
-    content: '';
-    border-radius: inherit;
+  /* 
+   * Theme-level translucent override
+   * Applies backdrop filter for elevated visual effects
+   */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parent elements */
+  isolation: isolate;
+
+  /* 
+   * Component-level material overrides
+   * These ensure proper rendering based on material setting
+   */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
 }
 
-:where(.radix-themes) {
-  --progress-indicator-after-linear-gradient: var(--white-a5), var(--white-a9), var(--white-a5);
-}
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --progress-indicator-after-linear-gradient: var(--white-a3), var(--white-a6), var(--white-a3);
-}
+
 .rt-ProgressIndicator {
   display: block;
   height: var(--position-full);
-  width: var(--position-full);
-
-  transform: scaleX(calc(var(--progress-value) / var(--progress-max)));
-  transform-origin: left center;
+  width: max(calc(var(--progress-value) / var(--progress-max) * 100%), var(--progress-height));
+  border-radius: var(--progress-indicator-radius);
   transition: var(--transition-progress);
 
   &:where([data-state='indeterminate']) {
-    animation-name: rt-progress-indicator-indeterminate-grow, var(--progress-indicator-indeterminate-animation-start),
-      var(--progress-indicator-indeterminate-animation-repeat);
-    animation-delay: 0s, calc(var(--progress-duration) + var(--progress-animation-delay-start)), calc(var(--progress-duration) + var(--progress-animation-delay-shine));
-    animation-duration: var(--progress-duration), var(--progress-animation-duration-fade), var(--progress-animation-duration-pulse);
-    animation-iteration-count: 1, 1, infinite;
-    animation-fill-mode: both, none, none;
-    animation-direction: normal, normal, alternate;
-
-    /* A pseudo-element for a shine animation */
-    &::after {
-      position: absolute;
-      inset: 0;
-      content: '';
-      width: calc(var(--position-full) * var(--progress-shine-width-multiplier));
-
-      animation-name: rt-progress-indicator-indeterminate-shine-from-left;
-      animation-delay: calc(var(--progress-duration) + var(--progress-animation-delay-start));
-      animation-duration: var(--progress-animation-duration-pulse);
-      animation-fill-mode: backwards;
-      animation-iteration-count: infinite;
-
-      background-image: linear-gradient(
-        to right,
-        transparent var(--progress-gradient-stop-start),
-        var(--progress-indicator-after-linear-gradient),
-        transparent var(--progress-gradient-stop-end)
-      );
-    }
+    animation-name: rt-progress-indicator-indeterminate-grow;
+    animation-duration: var(--progress-duration);
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: normal;
   }
 }
 
 @keyframes rt-progress-indicator-indeterminate-grow {
   0% {
-    transform: scaleX(var(--progress-scale-initial));
+    width: calc(var(--progress-scale-initial) * 100%);
   }
   20% {
-    transform: scaleX(var(--progress-scale-step-1));
+    width: calc(var(--progress-scale-step-1) * 100%);
   }
   30% {
-    transform: scaleX(var(--progress-scale-step-2));
+    width: calc(var(--progress-scale-step-2) * 100%);
   }
   40%,
   50% {
-    transform: scaleX(var(--progress-scale-step-3));
+    width: calc(var(--progress-scale-step-3) * 100%);
   }
   100% {
-    transform: scaleX(var(--progress-scale-final));
+    width: calc(var(--progress-scale-final) * 100%);
   }
 }
 
-@keyframes rt-progress-indicator-indeterminate-shine-from-left {
-  0% {
-    transform: translateX(var(--position-negative-full));
-  }
-  100% {
-    transform: translateX(var(--position-zero));
-  }
-}
+
 
 /***************************************************************************************************
  *                                                                                                 *
@@ -106,13 +83,49 @@
 @breakpoints {
   .rt-ProgressRoot {
     &:where(.rt-r-size-1) {
-      --progress-height: var(--space-1);
+      --progress-height: var(--progress-slider-height-1);
+      --progress-radius: var(--progress-slider-radius-1);
+      --progress-indicator-radius: var(--progress-slider-radius-1);
     }
     &:where(.rt-r-size-2) {
-      --progress-height: calc(var(--space-2) * var(--size-multiplier-small));
+      --progress-height: var(--progress-slider-height-2);
+      --progress-radius: var(--progress-slider-radius-2);
+      --progress-indicator-radius: var(--progress-slider-radius-2);
     }
     &:where(.rt-r-size-3) {
-      --progress-height: var(--space-2);
+      --progress-height: var(--progress-slider-height-3);
+      --progress-radius: var(--progress-slider-radius-3);
+      --progress-indicator-radius: var(--progress-slider-radius-3);
+    }
+    &:where(.rt-r-size-4) {
+      --progress-height: var(--progress-slider-height-4);
+      --progress-radius: var(--progress-slider-radius-4);
+      --progress-indicator-radius: var(--progress-slider-radius-4);
+    }
+    &:where(.rt-r-size-5) {
+      --progress-height: var(--progress-slider-height-5);
+      --progress-radius: var(--progress-slider-radius-5);
+      --progress-indicator-radius: var(--progress-slider-radius-5);
+    }
+    &:where(.rt-r-size-6) {
+      --progress-height: var(--progress-slider-height-6);
+      --progress-radius: var(--progress-slider-radius-6);
+      --progress-indicator-radius: var(--progress-slider-radius-6);
+    }
+    &:where(.rt-r-size-7) {
+      --progress-height: var(--progress-slider-height-7);
+      --progress-radius: var(--progress-slider-radius-7);
+      --progress-indicator-radius: var(--progress-slider-radius-7);
+    }
+    &:where(.rt-r-size-8) {
+      --progress-height: var(--progress-slider-height-8);
+      --progress-radius: var(--progress-slider-radius-8);
+      --progress-indicator-radius: var(--progress-slider-radius-8);
+    }
+    &:where(.rt-r-size-9) {
+      --progress-height: var(--progress-slider-height-9);
+      --progress-radius: var(--progress-slider-radius-9);
+      --progress-indicator-radius: var(--progress-slider-radius-9);
     }
   }
 }
@@ -126,126 +139,94 @@
 /* surface */
 
 .rt-ProgressRoot:where(.rt-variant-surface) {
-  --progress-indicator-indeterminate-animation-start: rt-progress-indicator-surface-indeterminate-fade;
-  --progress-indicator-indeterminate-animation-repeat: rt-progress-indicator-surface-indeterminate-pulse;
-  background-color: var(--gray-a3);
+  background-color: var(--gray-2);
+  box-shadow: inset 0 0 0 1px var(--gray-6);
 
-  &::after {
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--gray-a4);
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--gray-2);
+    box-shadow: inset 0 0 0 1px var(--gray-6);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
 
   & :where(.rt-ProgressIndicator) {
-    background-color: var(--accent-track);
+    background-color: var(--accent-9);
   }
 }
 
-@keyframes rt-progress-indicator-surface-indeterminate-fade {
-  100% {
-    background-color: var(--accent-7);
-  }
-}
 
-@keyframes rt-progress-indicator-surface-indeterminate-pulse {
-  0% {
-    background-color: var(--accent-7);
-  }
-  100% {
-    background-color: var(--accent-track);
-  }
-}
 
-/* classic */
 
-.rt-ProgressRoot:where(.rt-variant-classic) {
-  --progress-indicator-indeterminate-animation-start: rt-progress-indicator-classic-indeterminate-fade;
-  --progress-indicator-indeterminate-animation-repeat: rt-progress-indicator-classic-indeterminate-pulse;
-  position: relative;
-  top: calc(var(--classic-elevation-offset) / var(--classic-elevation-factor-subtle));
-  background-color: var(--gray-a3);
 
-  &::after {
-    box-shadow: var(--classic-inset-shadow-dark);
-  }
 
-  & :where(.rt-ProgressIndicator) {
-    background-color: var(--accent-track);
-  }
-}
-
-@keyframes rt-progress-indicator-classic-indeterminate-fade {
-  100% {
-    background-color: var(--accent-7);
-  }
-}
-
-@keyframes rt-progress-indicator-classic-indeterminate-pulse {
-  0% {
-    background-color: var(--accent-7);
-  }
-  100% {
-    background-color: var(--accent-track);
-  }
-}
 
 /* soft */
 
 .rt-ProgressRoot:where(.rt-variant-soft) {
-  --progress-indicator-indeterminate-animation-start: rt-progress-indicator-soft-indeterminate-fade;
-  --progress-indicator-indeterminate-animation-repeat: rt-progress-indicator-soft-indeterminate-pulse;
-  background-color: var(--gray-a4);
-  /* Blend with white to increase contrast in dark mode */
-  background-image: linear-gradient(var(--white-a1), var(--white-a1));
+  background-color: var(--gray-3);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+  }
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--gray-3);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+  }
 
   & :where(.rt-ProgressIndicator) {
-    background-image: linear-gradient(var(--accent-a5), var(--accent-a5));
-    background-color: var(--accent-8);
-
-    &::after {
-      opacity: var(--opacity-soft-variant);
-    }
+    background-color: var(--accent-9);
   }
 }
 
-@keyframes rt-progress-indicator-soft-indeterminate-fade {
-  100% {
-    background-color: var(--accent-5);
+/* outline */
+
+.rt-ProgressRoot:where(.rt-variant-outline) {
+  /* Base state: no background, just border */
+  box-shadow: inset 0 0 0 1px var(--gray-6);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    box-shadow: inset 0 0 0 1px var(--gray-6);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+
+  & :where(.rt-ProgressIndicator) {
+    background-color: var(--accent-9);
   }
 }
 
-@keyframes rt-progress-indicator-soft-indeterminate-pulse {
-  0% {
-    background-color: var(--accent-5);
-  }
-  100% {
-    background-color: var(--accent-7);
-  }
-}
+
 
 /* all high-contrast */
 .rt-ProgressRoot:where(.rt-high-contrast) {
-  --progress-indicator-indeterminate-animation-start: rt-progress-indicator-high-contrast-indeterminate-fade;
-  --progress-indicator-indeterminate-animation-repeat: rt-progress-indicator-high-contrast-indeterminate-pulse;
 
   & :where(.rt-ProgressIndicator) {
     background-color: var(--accent-12);
-
-    &::after {
-      opacity: var(--opacity-soft-variant);
-    }
   }
 }
 
-@keyframes rt-progress-indicator-high-contrast-indeterminate-fade {
-  100% {
-    opacity: var(--opacity-high-contrast);
-  }
-}
 
-@keyframes rt-progress-indicator-high-contrast-indeterminate-pulse {
-  0% {
-    opacity: var(--opacity-high-contrast);
-  }
-  100% {
-    opacity: var(--progress-scale-final);
-  }
-}

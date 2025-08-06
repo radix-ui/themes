@@ -1,10 +1,15 @@
 .radix-themes {
   /* Duration tokens */
-  --duration-1: 75ms; /* Micro interactions */
-  --duration-2: 125ms; /* Fast transitions */
-  --duration-3: 175ms; /* Standard transitions */
-  --duration-4: 225ms; /* Slower transitions */
-  --duration-5: 325ms; /* Slow animations */
+  --duration-1: 50ms; /* Micro interactions */
+  --duration-2: 75ms; /* Fast transitions */
+  --duration-3: 100ms; /* Standard transitions */
+  --duration-4: 150ms; /* Slower transitions */
+  --duration-5: 200ms; /* Slow animations */
+
+  /* Spring-specific duration tokens */
+  --duration-spring-1: 200ms; /* Quick spring */
+  --duration-spring-2: 250ms; /* Standard spring */
+  --duration-spring-3: 300ms; /* Slow spring */
 
   /* Easing tokens */
   --ease-1: ease-out; /* Fast start, slow end */
@@ -13,24 +18,34 @@
   --ease-4: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Ease out back */
   --ease-5: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce */
 
+  /* Spring-specific easing tokens */
+  --ease-spring-1: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Spring out back */
+  --ease-spring-2: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Spring bounce */
+  --ease-spring-3: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring elastic */
+
   /* Common transition combinations */
   --transition-fast: var(--duration-2) var(--ease-1);
   --transition-standard: var(--duration-3) var(--ease-2);
   --transition-slow: var(--duration-4) var(--ease-3);
 
+  /* Spring transition combinations */
+  --transition-spring-fast: var(--duration-spring-1) var(--ease-spring-1);
+  --transition-spring-standard: var(--duration-spring-2) var(--ease-spring-1);
+  --transition-spring-slow: var(--duration-spring-3) var(--ease-spring-1);
+  --transition-spring-bounce: var(--duration-spring-2) var(--ease-spring-2);
+  --transition-spring-elastic: var(--duration-spring-3) var(--ease-spring-3);
+
   /* Specific component transitions */
   --transition-button:
     background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    filter var(--duration-2) var(--ease-1), transform var(--duration-1) var(--ease-1),
+    backdrop-filter var(--duration-2) var(--ease-1), transform var(--duration-1) var(--ease-1),
     padding var(--duration-1) var(--ease-1);
 
   --transition-text-field:
-    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    backdrop-filter var(--duration-2) var(--ease-1);
+    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1);
 
   --transition-select:
-    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    backdrop-filter var(--duration-2) var(--ease-1);
+    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1);
 
   --transition-badge:
     background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
@@ -38,7 +53,7 @@
 
   --transition-card:
     background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    backdrop-filter var(--duration-2) var(--ease-1), top var(--duration-2) var(--ease-1);
+    top var(--duration-2) var(--ease-1);
 
   --transition-tabs:
     color var(--duration-1) var(--ease-1), background-color var(--duration-1) var(--ease-1),
@@ -50,8 +65,7 @@
     background-color var(--duration-2) var(--ease-1);
 
   --transition-menu:
-    background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1),
-    backdrop-filter var(--duration-2) var(--ease-1);
+    background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
 
   --transition-checkbox:
     background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
@@ -65,6 +79,15 @@
 
   /* Progress component transition */
   --transition-progress: transform var(--duration-2) var(--ease-1);
+
+  /* Accordion component transitions */
+  --transition-accordion-content: height var(--duration-spring-2) var(--ease-spring-1), opacity var(--duration-spring-2) var(--ease-spring-1), transform var(--duration-spring-2) var(--ease-spring-1);
+  --transition-accordion-trigger: background-color var(--duration-spring-1) var(--ease-spring-1), transform var(--duration-spring-1) var(--ease-spring-1);
+  --transition-accordion-trigger-active: transform var(--duration-1) var(--ease-spring-2);
+  
+  /* GPU-optimized spring transitions */
+  --transition-spring-gpu: transform var(--duration-spring-2) var(--ease-spring-1), opacity var(--duration-spring-2) var(--ease-spring-1);
+  --transition-spring-gpu-fast: transform var(--duration-spring-1) var(--ease-spring-1), opacity var(--duration-spring-1) var(--ease-spring-1);
 }
 
 /* Respect user preference for reduced motion */
@@ -75,9 +98,17 @@
     --duration-3: 0ms;
     --duration-4: 0ms;
     --duration-5: 0ms;
+    --duration-spring-1: 0ms;
+    --duration-spring-2: 0ms;
+    --duration-spring-3: 0ms;
     --transition-fast: none;
     --transition-standard: none;
     --transition-slow: none;
+    --transition-spring-fast: none;
+    --transition-spring-standard: none;
+    --transition-spring-slow: none;
+    --transition-spring-bounce: none;
+    --transition-spring-elastic: none;
     --transition-button: none;
     --transition-text-field: none;
     --transition-select: none;
@@ -90,5 +121,10 @@
     --transition-radio: none;
     --transition-focus: none;
     --transition-progress: none;
+    --transition-accordion-content: none;
+    --transition-accordion-trigger: none;
+    --transition-accordion-trigger-active: none;
+    --transition-spring-gpu: none;
+    --transition-spring-gpu-fast: none;
   }
 }

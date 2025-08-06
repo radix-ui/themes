@@ -2,12 +2,12 @@
   box-sizing: border-box;
   padding: var(--space-1) var(--space-2);
   background-color: var(--gray-12);
-  border-radius: var(--radius-2);
+  border-radius: var(--radius-1);
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 
-  animation-duration: 140ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-duration: var(--duration-2);
+  animation-timing-function: var(--ease-3);
 
   @media (prefers-reduced-motion: no-preference) {
     &:where([data-state='delayed-open']) {

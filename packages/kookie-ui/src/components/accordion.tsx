@@ -29,28 +29,65 @@ interface AccordionRootProps
 
 const AccordionRoot = React.forwardRef<AccordionRootElement, AccordionRootProps>(
   (props, forwardedRef) => {
-    const { className, panelBackground, flush, radius, ...extractedRadixProps } = extractProps(
-      props,
-      accordionRootPropDefs,
-    );
+    const { className, panelBackground, material, flush, radius, color, ...extractedRadixProps } =
+      extractProps(props, accordionRootPropDefs);
 
     const radixProps = extractedRadixProps as React.ComponentPropsWithoutRef<
       typeof AccordionPrimitive.Root
     >;
+
+    // Show deprecation warning for panelBackground when used
+    React.useEffect(() => {
+      if (props.panelBackground !== undefined) {
+        console.warn(
+          'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
+        );
+      }
+    }, [props.panelBackground]);
+
+    // Material takes precedence over panelBackground
+    const effectiveMaterial = material ?? panelBackground;
 
     // Ensure single accordions can collapse by default unless explicitly set
     if (radixProps.type === 'single' && radixProps.collapsible === undefined) {
       radixProps.collapsible = true;
     }
 
+    // Handle Home/End key navigation for multi-item accordions
+    const handleKeyDown = React.useCallback(
+      (event: React.KeyboardEvent) => {
+        if (radixProps.type === 'multiple') {
+          const items = event.currentTarget.querySelectorAll('[data-radix-accordion-item]');
+
+          if (event.key === 'Home') {
+            event.preventDefault();
+            const firstTrigger = items[0]?.querySelector(
+              '[data-radix-accordion-trigger]',
+            ) as HTMLElement;
+            firstTrigger?.focus();
+          } else if (event.key === 'End') {
+            event.preventDefault();
+            const lastTrigger = items[items.length - 1]?.querySelector(
+              '[data-radix-accordion-trigger]',
+            ) as HTMLElement;
+            lastTrigger?.focus();
+          }
+        }
+      },
+      [radixProps.type],
+    );
+
     return (
       <AccordionPrimitive.Root
         {...radixProps}
         ref={forwardedRef}
         className={classNames('rt-AccordionRoot', className)}
-        data-panel-background={panelBackground}
+        data-accent-color={color}
+        data-panel-background={effectiveMaterial}
+        data-material={effectiveMaterial}
         data-flush={flush || undefined}
         data-radius={radius}
+        onKeyDown={handleKeyDown}
       />
     );
   },
@@ -109,10 +146,20 @@ const AccordionTrigger = React.forwardRef<AccordionTriggerElement, AccordionTrig
   ({ children, ...props }, forwardedRef) => {
     const { className, ...triggerProps } = extractProps(props, accordionTriggerPropDefs);
 
+    // Radix UI handles focus management automatically
+    const triggerRef = React.useRef<HTMLButtonElement>(null);
+
     return (
       <AccordionPrimitive.Trigger
         {...triggerProps}
-        ref={forwardedRef}
+        ref={(node) => {
+          triggerRef.current = node;
+          if (typeof forwardedRef === 'function') {
+            forwardedRef(node);
+          } else if (forwardedRef) {
+            forwardedRef.current = node;
+          }
+        }}
         className={classNames('rt-AccordionTrigger', className)}
       >
         {children}
@@ -137,6 +184,7 @@ const AccordionContent = React.forwardRef<AccordionContentElement, AccordionCont
         {...contentProps}
         ref={forwardedRef}
         className={classNames('rt-AccordionContent', className)}
+        aria-live="polite"
       >
         <div className="rt-AccordionContentInner">{children}</div>
       </AccordionPrimitive.Content>

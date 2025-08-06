@@ -1,0 +1,51 @@
+import { Card, Flex, Text, Heading, Grid, Badge, Image } from '@kushagradhawan/kookie-ui';
+import Link from 'next/link';
+
+# Button
+
+ <Image caption="This is an image" style ={{marginBottom: '100px', borderRadius: 'var(--radius-6)'}} src="/Button.png" alt="Button component overview" /> 
+
+Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next—design them to build user confidence and guide decision-making naturally.
+
+Choose from six visual variants to match your interface context, four sizes for different interface densities, and comprehensive color options for semantic communication. The component supports responsive layouts, and provides accessibility compliance out of the box.
+
+
+## Guide
+
+<Grid columns={{ initial: '1', sm: '2' }} gap="4" my="6">
+  {[
+    {
+      href: '?tab=api',
+      title: 'API',
+      description: 'Props, integration patterns, and technical implementation for developers',
+    },
+    {
+      href: '?tab=accessibility',
+      title: 'Accessibility',
+      description: 'Keyboard navigation, screen readers, and inclusive design patterns',
+    },
+    {
+      href: '?tab=guidelines',
+      title: 'Guidelines',
+      description: 'Psychology, hierarchy, and design principles for effective interfaces',
+    },
+    {
+      href: '?tab=specs',
+      title: 'Specs',
+      description: 'Design tokens, measurements, and system specifications',
+    }
+  ].map(({ href, title, description, badge }) => (
+    <Card asChild key={href} size="3" variant="classic">
+      <Link href={href}>
+        <Flex direction="column" gap="2">
+          <Heading size="3" weight="medium">{title}</Heading>
+          <Text size="3" color="gray">{description}</Text>
+        </Flex>
+      </Link>
+    </Card>
+  ))}
+</Grid>
+
+
+
+

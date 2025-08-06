@@ -33,3 +33,5 @@
 
 @import './constants.css';
 @import './base.css';
+@import './blur.css';
+@import './opacity.css';

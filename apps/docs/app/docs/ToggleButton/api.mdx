@@ -1,0 +1,131 @@
+import { Table, Text, Code, Box, Callout, Flex, ToggleButton } from '@kushagradhawan/kookie-ui';
+import { Bold, Italic, Underline } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
+
+# API
+
+The ToggleButton component extends Button with toggle state management for on/off interactions. It provides controlled and uncontrolled state handling, visual feedback for pressed states, and maintains all Button functionality.
+
+For comprehensive documentation on shared features like variants, sizes, colors, states, and other Button functionality, see the **[Button API documentation](../Button/api)**.
+
+## Import
+
+```tsx
+import { ToggleButton } from '@kushagradhawan/kookie-ui';
+```
+
+## Props
+
+ToggleButton inherits all Button props and adds toggle-specific state management props.
+
+<Box my="8">
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell style={{ width: '50px' }}>Responsive </Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`pressed`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>—</Table.Cell>
+        <Table.Cell>—</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onPressedChange`</Table.RowHeaderCell>
+        <Table.Cell>`(pressed: boolean) => void`</Table.Cell>
+        <Table.Cell>—</Table.Cell>
+        <Table.Cell>—</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultPressed`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>`false`</Table.Cell>
+        <Table.Cell>—</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+## Variants
+
+ToggleButton uses the same variant system as Button. For comprehensive documentation on variants, see the **[Button API documentation](../Button/api)**.
+
+## Sizes
+
+ToggleButton uses the same size system as Button. For comprehensive documentation on sizes, see the **[Button API documentation](../Button/api)**.
+
+## Colors
+
+ToggleButton uses the same color system as Button. For comprehensive documentation on colors, see the **[Button API documentation](../Button/api)**.
+
+## States
+
+ToggleButton uses the same state system as Button with additional pressed state support. For comprehensive documentation on loading, disabled, high contrast, and interactive states, see the **[Button API documentation](../Button/api)**.
+
+### Pressed State
+
+ToggleButton adds a pressed state that provides visual feedback for on/off interactions.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <ToggleButton size="3" variant="soft" pressed={true}>
+        Enable Feature
+      </ToggleButton>
+      <ToggleButton size="3" variant="soft" pressed={false}>
+        Disable Feature
+      </ToggleButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Pressed state - on */}
+<ToggleButton size="3" variant="soft" pressed={true}>
+  Enable Feature
+</ToggleButton>
+
+{/* Pressed state - off */}
+<ToggleButton size="3" variant="soft" pressed={false}>
+  Disable Feature
+</ToggleButton>
+```
+
+</CodeBlock>
+
+## Layout
+
+ToggleButton uses the same layout system as Button. For comprehensive documentation on full width and other layout features, see the **[Button API documentation](../Button/api)**.
+
+## Margin
+
+ToggleButton uses the same margin system as Button. For comprehensive documentation on margin props, see the **[Button API documentation](../Button/api)**.
+
+## Tooltips
+
+ToggleButton uses the same tooltip system as Button. For comprehensive documentation on tooltips, see the **[Button API documentation](../Button/api)**.
+
+## Icons
+
+ToggleButton uses the same icon system as Button. For comprehensive documentation on icons, see the **[Button API documentation](../Button/api)**.
+
+## Polymorphism
+
+ToggleButton uses the same polymorphism system as Button. For comprehensive documentation on as prop and asChild functionality, see the **[Button API documentation](../Button/api)**.
+
+## Responsive
+
+ToggleButton uses the same responsive system as Button. For comprehensive documentation on responsive props, see the **[Button API documentation](../Button/api)**.
+
+## Form Integration
+
+ToggleButton uses the same form integration system as Button. For comprehensive documentation on form integration, see the **[Button API documentation](../Button/api)**.
+
+## Panel Background
+
+ToggleButton uses the same panel background system as Button. For comprehensive documentation on panel backgrounds, see the **[Button API documentation](../Button/api)**. 

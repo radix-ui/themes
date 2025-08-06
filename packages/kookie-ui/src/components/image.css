@@ -1,159 +1,228 @@
+/**
+ * Image Component Styles
+ * 
+ * This file contains the core styling for the Image component, providing
+ * responsive image display with accessibility features, interactive states,
+ * and comprehensive support for different usage contexts.
+ * 
+ * Key features:
+ * - Object-fit control for responsive image scaling
+ * - Interactive states for clickable images
+ * - Accessibility support (forced colors, reduced motion, screen readers)
+ * - Caption styling for additional context
+ * - Placeholder and loading state support
+ * - AsChild pattern compatibility
+ */
+
 /* stylelint-disable selector-max-type */
 /* Disable selector-max-type rule to target `button` and `a` tags. */
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
+/* 
+ * Base Image styling
+ * Provides foundation styles for all image instances
+ */
 .rt-Image {
   display: block;
-  object-fit: var(--object-fit);
-  box-shadow: var(--box-shadow);
-  border-radius: max(var(--radius-4), min(var(--radius-full), var(--radius-6)));
-  transition: var(--transition-button);
+  object-fit: var(--object-fit); /* Controlled by fit prop */
+  border-radius: var(--radius-4); /* Default radius, can be overridden */
 }
 
-/* Interactive states - follows Card pattern */
+/* 
+ * Screen reader only class for accessibility announcements
+ * Visually hidden but available to assistive technology
+ * Used for error messages and loading state announcements
+ */
+.rt-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 
+ * Reduced motion support for accessibility
+ * Respects user's motion preferences and disables animations
+ */
+@media (prefers-reduced-motion: reduce) {
+  .rt-Image {
+    transition: none;
+  }
+}
+
+/* 
+ * Forced colors support for high contrast mode
+ * Ensures images remain visible in Windows high contrast mode
+ */
+@media (forced-colors: active) {
+  .rt-Image {
+    border: 1px solid CanvasText;
+  }
+  
+  /* Enhanced focus visibility in forced colors mode */
+  .rt-Image:where(:focus-visible) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* 
+ * Interactive states for clickable images
+ * Follows the Card component pattern for consistent interaction feedback
+ * Applied when Image is used as a link, button, or label
+ */
 .rt-Image:where(:any-link, button, label) {
   cursor: pointer;
+  transition: var(--transition-card), filter var(--duration-2) var(--ease-1); /* Smooth transitions for interactive states */
 
+  /* 
+   * Hover effects with progressive enhancement
+   * Only applies on devices that support hover (excludes touch devices)
+   */
   @media (hover: hover) {
     &:where(:hover) {
-      box-shadow:
-        var(--box-shadow, var(--shadow-2)),
-        0 0 0 1px var(--gray-a4);
-      filter: brightness(1.05) contrast(1.02);
+      box-shadow: var(--shadow-3); /* Subtle elevation on hover */
+      filter: brightness(1.05) contrast(1.02); /* Slight brightness/contrast boost */
     }
   }
 
+  /* 
+   * Active state for pressed/clicked feedback
+   * Provides immediate visual response to user interaction
+   */
   &:where(:active) {
-    filter: brightness(0.98) contrast(1.02);
+    filter: brightness(0.98) contrast(1.02); /* Slightly darker when pressed */
   }
 
+  /* 
+   * Focus-visible state for keyboard navigation
+   * Ensures accessibility for keyboard users
+   */
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
-    outline-offset: -2px;
+    outline-offset: -2px; /* Inner outline to stay within image bounds */
   }
 }
 
-/* Interactive states for asChild usage - target the wrapper element */
-:where(:any-link, button, label) .rt-Image {
+/* 
+ * Interactive states for asChild usage
+ * When Image is used with asChild pattern, styles apply to the wrapper element
+ * This ensures interactive feedback works correctly in composed scenarios
+ */
+:where(:any-link, button, label) {
   cursor: pointer;
+  transition: var(--transition-card), filter var(--duration-2) var(--ease-1); /* Smooth transitions for interactive states */
 
+  /* Hover effects for wrapper elements */
   @media (hover: hover) {
     &:where(:hover) {
-      box-shadow:
-        var(--box-shadow, var(--shadow-2)),
-        0 0 0 1px var(--gray-a4);
+      /* box-shadow: var(--shadow-3); */
       filter: brightness(1.05) contrast(1.02);
     }
   }
 
+  /* Active state for wrapper elements */
   &:where(:active) {
     filter: brightness(0.98) contrast(1.02);
   }
 }
 
-/* Focus states for asChild usage - apply to the wrapper */
+/* 
+ * Focus states for asChild usage
+ * Apply focus outline to the wrapper element when using composition pattern
+ */
 :where(:any-link, button, label):where(:focus-visible) .rt-Image {
   outline: 2px solid var(--focus-8);
   outline-offset: -2px;
 }
 
-/* Blur variant wrapper */
-.rt-variant-blur {
-  position: relative;
-}
 
-/* Blur variant when used with asChild - use inline-block for proper sizing */
-.rt-variant-blur--as-child {
-  display: inline-block;
-}
 
-/* Interactive states for blur variant - follows Card pattern */
-.rt-variant-blur:where(:any-link, button, label) {
-  cursor: pointer;
-  transition: var(--transition-button);
+/* 
+ * Object-fit variants for responsive image scaling
+ * These classes control how images are resized to fit their containers
+ * Each variant serves different use cases and design requirements
+ */
 
-  @media (hover: hover) {
-    &:where(:hover) {
-      filter: brightness(1.05) contrast(1.02);
-    }
-  }
-
-  &:where(:active) {
-    filter: brightness(0.98) contrast(1.02);
-  }
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -2px;
-  }
-}
-
-/* Disable individual image interactions when inside blur variant */
-/* stylelint-disable-next-line selector-max-specificity */
-.rt-variant-blur:where(:any-link, button, label) .rt-Image {
-  cursor: inherit;
-  transform: none !important;
-  outline: none !important;
-  box-shadow: var(--box-shadow) !important;
-}
-
-/* Blur background image - simplified */
-.rt-Image--blur-bg {
-  /* No additional styles needed - all handled inline */
-}
-
-/* Image inside blur variant - simplified */
-.rt-Image--blur {
-  /* No additional styles needed - all handled inline */
-}
-
-/* Object fit variants */
+/* 
+ * Cover fit: Scales image to cover entire container
+ * May crop edges but ensures no empty space
+ * Best for: Hero images, thumbnails, card backgrounds
+ */
 .rt-r-fit-cover {
   --object-fit: cover;
 }
 
+/* 
+ * Contain fit: Scales image to fit entirely within container
+ * May leave empty space but shows complete image
+ * Best for: Product images, logos, artwork
+ */
 .rt-r-fit-contain {
   --object-fit: contain;
 }
 
+/* 
+ * Fill fit: Stretches image to fill container exactly
+ * May distort aspect ratio, use with caution
+ * Best for: When exact dimensions are required regardless of distortion
+ */
 .rt-r-fit-fill {
   --object-fit: fill;
 }
 
+/* 
+ * Scale-down fit: Acts like contain but never scales up
+ * Prevents small images from becoming pixelated
+ * Best for: User-uploaded content, variable-sized images
+ */
 .rt-r-fit-scale-down {
   --object-fit: scale-down;
 }
 
+/* 
+ * None fit: Image keeps original size
+ * May overflow container or leave empty space
+ * Best for: Pixel-perfect images, sprites, when original sizing is important
+ */
 .rt-r-fit-none {
   --object-fit: none;
 }
 
-/* Shadow variants */
-.rt-r-shadow-1 {
-  --box-shadow: var(--shadow-1);
-}
+/* 
+ * Loading and placeholder states
+ * Styles for different image loading phases
+ */
 
-.rt-r-shadow-2 {
-  --box-shadow: var(--shadow-2);
-}
-
-.rt-r-shadow-3 {
-  --box-shadow: var(--shadow-3);
-}
-
-.rt-r-shadow-4 {
-  --box-shadow: var(--shadow-4);
-}
-
-.rt-r-shadow-5 {
-  --box-shadow: var(--shadow-5);
-}
-
-.rt-r-shadow-6 {
-  --box-shadow: var(--shadow-6);
-}
-
-/* Loading states */
+/* 
+ * Placeholder image styling
+ * Positioned behind the main image with lower z-index
+ */
 .rt-Image--placeholder {
-  z-index: 0;
+  z-index: 0; /* Ensures placeholder appears behind main image */
+}
+
+/* 
+ * Caption styling for additional image context
+ * Provides consistent typography and layout for image descriptions
+ */
+.rt-Image-caption {
+  font-size: var(--font-size-1); /* Small, readable text */
+  font-weight: var(--font-weight-regular); /* Regular weight for readability */
+  color: var(--gray-11); /* Subtle but readable color */
+  margin-top: var(--space-2); /* Consistent spacing from image */
+  text-align: center; /* Centered alignment for visual balance */
+  
+  /* 
+   * Text wrapping and hyphenation for better layout
+   * Prevents caption text from breaking the layout
+   */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto; /* Automatic hyphenation for long words */
 }

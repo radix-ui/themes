@@ -1,0 +1,985 @@
+import { IconButton, Flex, Box, Text, Callout, Theme } from '@kushagradhawan/kookie-ui';
+import { Settings, Heart, Download, TriangleAlertIcon, Share2, Edit, Trash2, Search, ChevronRight, Star, Bookmark, MoreHorizontal } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
+import { getDemoImage } from '../../../lib/demo-images';
+
+# Guidelines
+
+Design icon buttons as visual promises that users can instantly understand. When someone sees an icon button, they should immediately recognize its purpose without needing to think. Your job as a designer is to choose icons that communicate meaning clearly and position them in contexts that reinforce their purpose.
+
+Use these psychological principles, visual hierarchy techniques, and design decisions to create icon button interfaces that people understand intuitively and trust completely.
+
+## Psychology
+
+Understand that human perception operates below conscious awareness. People don't analyze icon treatments—they recognize them instantly. Use these psychological patterns to design interfaces that feel effortless and trustworthy.
+
+### Recognition
+
+Use universally recognized icons to leverage existing mental models. People have built-in associations with common symbols that developed through years of digital interface exposure. A gear icon means settings, a heart means favorites, a download arrow means save. These associations are automatic and don't require learning.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Add to favorites">
+        <Heart />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Download">
+        <Download />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Universal icons - instantly recognizable */}
+<IconButton size="3" variant="soft" aria-label="Settings">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Add to favorites">
+  <Heart />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Download">
+  <Download />
+</IconButton>
+```
+
+</CodeBlock>
+
+This recognition happens automatically in people's minds. You don't need to teach users what these icons mean—they know instantly by looking. Your job is to make sure the icon choice matches the user's expectations.
+
+### Context
+
+Consider the surrounding interface when choosing icons. The same icon can feel appropriate or confusing depending on context. A heart icon means "like" in social contexts but "favorites" in shopping contexts. People bring expectations from their current task and mental state.
+
+Think about where someone is in their journey. Are they browsing content or managing settings? Are they in a social context or a professional one? The context determines which icon will feel natural and supportive.
+
+### Trust
+
+Build user confidence through consistent icon usage. When similar actions use similar icons across your interface, people develop confidence in your system. They can predict behavior based on appearance, which reduces cognitive load and increases task completion rates.
+
+Avoid inconsistent icon usage that forces people to pause and evaluate each interaction. This breaks flow states and increases abandonment. Every inconsistency is a small betrayal of user expectations.
+
+### Feedback
+
+Provide clear state changes to reassure users. Clear state changes (hover, focus, loading) reassure people that their actions are recognized and being processed. Without proper feedback, users wonder if their tap registered or if the system is responding.
+
+This is especially critical for icon buttons where visual feedback is the primary confirmation of interaction success.
+
+## Hierarchy
+
+Create effective icon button hierarchies by understanding human decision-making patterns and designing interfaces that guide people naturally toward successful outcomes.
+
+### Clear Purpose
+
+Guide people toward one primary action per interface section. Multiple competing icon buttons create decision paralysis and reduce conversion rates. This principle is backed by extensive usability research: people perform better when interfaces provide clear guidance rather than unlimited choice.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" aria-label="Primary action">
+        <Star />
+      </IconButton>
+      <IconButton size="3" variant="outline" aria-label="Secondary action">
+        <Bookmark />
+      </IconButton>
+      <IconButton size="3" variant="ghost" aria-label="Utility action">
+        <Share2 />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use one solid button per section as the primary path */}
+<IconButton size="3" variant="solid" aria-label="Primary action">
+  <Star />
+</IconButton>
+
+{/* Use secondary actions to support without competing */}
+<IconButton size="3" variant="outline" aria-label="Secondary action">
+  <Bookmark />
+</IconButton>
+
+{/* Keep utility actions discoverable but subtle */}
+<IconButton size="3" variant="ghost" aria-label="Utility action">
+  <Share2 />
+</IconButton>
+```
+
+</CodeBlock>
+
+Make the primary action obvious at a glance. Secondary actions should enable the primary action or provide necessary alternatives. Utility actions should be available but not distracting.
+
+### Progressive Disclosure
+
+Start with the most common path and reveal additional options progressively. Don't overwhelm people with choices. This reduces cognitive load and guides people toward successful task completion.
+
+Think about your interface like a conversation. You wouldn't start a conversation by listing every possible topic. You'd begin with the most relevant point and let the conversation develop naturally.
+
+### Spatial Relationships
+
+Use icon button positioning to reinforce hierarchy. Primary actions typically appear in prominent positions, while secondary actions appear in supporting positions. This spatial convention supports the visual hierarchy created by button treatments.
+
+Group related actions together and separate unrelated ones. Proximity communicates relationship—buttons that appear together feel related, while separated buttons feel independent.
+
+## Color Psychology
+
+Use color to communicate meaning beyond aesthetics. Different colors trigger different emotional responses and behavioral expectations. Choose colors that support user success rather than creating confusion.
+
+### Blue: Trust and Stability
+
+Use blue to create associations with competence, reliability, and forward progress. It's the default choice for most primary actions because it feels safe and professional. Blue suggests "this is the right thing to do."
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" color="blue" aria-label="Save changes">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" color="blue" aria-label="Update profile">
+        <Edit />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use blue for professional, trustworthy actions */}
+<IconButton size="3" variant="solid" color="blue" aria-label="Save changes">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="soft" color="blue" aria-label="Update profile">
+  <Edit />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose blue for actions that should feel confident and reliable: saving work, updating settings, continuing workflows, or confirming positive changes.
+
+### Green: Success and Progress
+
+Use green to leverage universal associations with growth, safety, and positive outcomes. It's ideal for actions that represent completion, approval, or moving forward successfully.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" color="mint" aria-label="Confirm request">
+        <Star />
+      </IconButton>
+      <IconButton size="3" variant="outline" color="mint" aria-label="Approve">
+        <Heart />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use green for positive, successful actions */}
+<IconButton size="3" variant="soft" color="mint" aria-label="Confirm request">
+  <Star />
+</IconButton>
+<IconButton size="3" variant="outline" color="mint" aria-label="Approve">
+  <Heart />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose green for confirmations, approvals, completions, and actions that represent positive progress or successful outcomes.
+
+### Orange: Attention and Caution
+
+Use orange to draw attention for actions requiring consideration. It draws from universal warning signals and captures attention without creating alarm. It suggests "pay attention to this" without creating alarm.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" color="orange" aria-label="Review changes">
+        <Search />
+      </IconButton>
+      <IconButton size="3" variant="soft" color="orange" aria-label="Requires approval">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use orange for actions requiring attention */}
+<IconButton size="3" variant="solid" color="orange" aria-label="Review changes">
+  <Search />
+</IconButton>
+<IconButton size="3" variant="soft" color="orange" aria-label="Requires approval">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose orange for actions that need consideration, review processes, or situations where people should pause and think before proceeding.
+
+### Red: Destructive Actions
+
+Use red sparingly for unmistakable signals of high-risk actions. It triggers immediate attention and suggests potential loss or irreversible change. Reserve it for genuinely destructive actions.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" color="crimson" aria-label="Delete account">
+        <Trash2 />
+      </IconButton>
+      <IconButton size="3" variant="soft" color="crimson" aria-label="Remove item">
+        <Trash2 />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use red for destructive, irreversible actions */}
+<IconButton size="3" variant="solid" color="crimson" aria-label="Delete account">
+  <Trash2 />
+</IconButton>
+<IconButton size="3" variant="soft" color="crimson" aria-label="Remove item">
+  <Trash2 />
+</IconButton>
+```
+
+</CodeBlock>
+
+Reserve red for deletions, cancellations, and other actions that cause loss or cannot be easily undone. Overusing red dilutes its psychological impact.
+
+### Gray: Neutral Actions
+
+Use gray to suggest neutrality and provide visual rest. It's perfect for actions that don't carry emotional weight or need to recede into the background while remaining functional. For better aesthetics, use high contrast grays for improved visual definition.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" color="gray" highContrast aria-label="Cancel">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="outline" color="gray" aria-label="Go back">
+        <ChevronRight />
+      </IconButton>
+      <IconButton size="3" variant="ghost" color="gray" aria-label="Reset">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use high contrast grays for better visual definition */}
+<IconButton size="3" variant="solid" color="gray" highContrast aria-label="Cancel">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="outline" color="gray" aria-label="Go back">
+  <ChevronRight />
+</IconButton>
+<IconButton size="3" variant="ghost" color="gray" aria-label="Reset">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose gray for cancellations, neutral navigation, and actions that help people exit or step back without judgment.
+
+## Size and Space
+
+Use icon button sizing to affect both usability and visual hierarchy. Each size serves specific interface needs and psychological purposes, from efficient utility interactions to prominent conversion actions.
+
+### Size Communicates Importance
+
+Use larger buttons to suggest greater importance and make interaction easier. Use smaller buttons to conserve space and reduce visual noise. Match size to both functional needs and the user's mental model of action importance.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <IconButton variant="solid" size="1" aria-label="Filter">
+        <Search />
+      </IconButton>
+      <IconButton variant="solid" size="2" aria-label="Add item">
+        <Settings />
+      </IconButton>
+      <IconButton variant="solid" size="3" aria-label="Get started">
+        <Star />
+      </IconButton>
+      <IconButton variant="solid" size="4" aria-label="Start trial">
+        <Heart />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use size 1 for utility functions in dense interfaces */}
+<IconButton variant="solid" size="1" aria-label="Filter">
+  <Search />
+</IconButton>
+
+{/* Use size 2 for standard actions and everyday interactions */}
+<IconButton variant="solid" size="2" aria-label="Add item">
+  <Settings />
+</IconButton>
+
+{/* Use size 3 for important actions and primary CTAs */}
+<IconButton variant="solid" size="3" aria-label="Get started">
+  <Star />
+</IconButton>
+
+{/* Use size 4 for hero actions and conversion focus */}
+<IconButton variant="solid" size="4" aria-label="Start trial">
+  <Heart />
+</IconButton>
+```
+
+</CodeBlock>
+
+Consider the user's context and the action's importance in their workflow. Utility functions can be small and efficient. Primary actions should be prominent and easy to target.
+
+### Consistency in Groups
+
+Use consistent sizing when multiple icon buttons appear together to create visual cohesion and prevent users from having to interpret size differences as hierarchical signals. This consistency feels organized and trustworthy.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" aria-label="Save">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="outline" aria-label="Cancel">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="ghost" aria-label="Reset">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use consistent sizing within groups to create harmony */}
+<IconButton size="3" variant="solid" aria-label="Save">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="outline" aria-label="Cancel">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="ghost" aria-label="Reset">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+Use variant and color to create hierarchy within consistently-sized button groups. This approach feels more sophisticated than mixing sizes arbitrarily.
+
+### Breathing Room
+
+Give icon buttons adequate space to feel clickable and prevent accidental activation. Cramped buttons create anxiety and increase error rates. Generous spacing suggests confidence and quality.
+
+Consider touch targets on mobile devices. Even small buttons need adequate spacing to prevent mis-taps. The visual button can be small, but the interactive area should be generous.
+
+## Variants
+
+Use each variant to serve specific psychological and contextual needs. Think of these as tools for communicating intent and guiding user behavior, not just visual options.
+
+### Solid: Primary Actions
+
+Use solid buttons for primary importance and to build user confidence in critical actions. The solid background creates maximum contrast against most interface backgrounds, naturally drawing attention and suggesting decisive action.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" aria-label="Complete">
+        <Star />
+      </IconButton>
+      <IconButton size="3" variant="solid" color="green" aria-label="Approve">
+        <Heart />
+      </IconButton>
+      <IconButton size="3" variant="solid" color="crimson" aria-label="Delete">
+        <Trash2 />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use solid for primary workflow completion */}
+<IconButton size="3" variant="solid" aria-label="Complete">
+  <Star />
+</IconButton>
+
+{/* Use solid for high-stakes confirmations */}
+<IconButton size="3" variant="solid" color="green" aria-label="Approve">
+  <Heart />
+</IconButton>
+
+{/* Use solid for professional actions */}
+<IconButton size="3" variant="solid" color="crimson" aria-label="Delete">
+  <Trash2 />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose solid buttons for primary workflow completion (Submit Form, Save Changes, Continue), high-stakes confirmations (Complete Purchase, Publish Article), and call-to-action buttons in marketing contexts.
+
+### Outline: Secondary Actions
+
+Use outline buttons to provide definite affordance while maintaining visual restraint. The border creates clear boundaries without competing for attention. This treatment strikes an ideal balance between presence and restraint.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="outline" color="crimson" aria-label="Cancel">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="outline" color="gray" aria-label="Go back">
+        <ChevronRight />
+      </IconButton>
+      <IconButton size="3" variant="outline" color="blue" aria-label="Learn more">
+        <Search />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use outline for secondary actions alongside primary buttons */}
+<IconButton size="3" variant="outline" color="crimson" aria-label="Cancel">
+  <Settings />
+</IconButton>
+
+{/* Use outline for neutral navigation */}
+<IconButton size="3" variant="outline" color="gray" aria-label="Go back">
+  <ChevronRight />
+</IconButton>
+
+{/* Use outline for exploration actions */}
+<IconButton size="3" variant="outline" color="blue" aria-label="Learn more">
+  <Search />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose outline buttons for secondary actions alongside primary buttons (Cancel, Go Back), alternative paths that shouldn't overshadow the main action (Skip, Preview), and exploration actions (View Details, Learn More).
+
+### Ghost: Utility Functions
+
+Use ghost buttons for utility actions that should be discoverable but not prominent. They remain nearly invisible until interaction, perfect for utility actions that should be discoverable but not prominent. This treatment respects the principle that not every action needs visual weight.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="ghost" aria-label="Edit">
+        <Edit />
+      </IconButton>
+      <IconButton size="3" variant="ghost" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="ghost" color="gray" aria-label="Share">
+        <Share2 />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use ghost for utility functions */}
+<IconButton size="3" variant="ghost" aria-label="Edit">
+  <Edit />
+</IconButton>
+
+{/* Use ghost for administrative functions */}
+<IconButton size="3" variant="ghost" aria-label="Settings">
+  <Settings />
+</IconButton>
+
+{/* Use ghost for content actions */}
+<IconButton size="3" variant="ghost" color="gray" aria-label="Share">
+  <Share2 />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose ghost buttons for utility functions (Sort, Filter, Settings, Edit), secondary navigation (Pagination, Breadcrumbs), content actions (Share, Bookmark, Like), and administrative functions that support the main workflow.
+
+### Soft: Content Integration
+
+Use soft buttons to provide color presence without harsh boundaries, creating gentle visual treatment that integrates naturally with content while maintaining clear interactive affordance.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Reply">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" color="iris" aria-label="Continue reading">
+        <ChevronRight />
+      </IconButton>
+      <IconButton size="3" variant="soft" color="green" aria-label="Subscribe">
+        <Star />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use soft for content-area actions */}
+<IconButton size="3" variant="soft" aria-label="Reply">
+  <Settings />
+</IconButton>
+
+{/* Use soft for gentle calls-to-action */}
+<IconButton size="3" variant="soft" color="iris" aria-label="Continue reading">
+  <ChevronRight />
+</IconButton>
+
+{/* Use soft for text-heavy layout integration */}
+<IconButton size="3" variant="soft" color="green" aria-label="Subscribe">
+  <Star />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose soft buttons for content-area actions (Reply to Comment, Quote Text, Expand Section), gentle calls-to-action in text-heavy layouts, and interface sections where harsh contrasts feel inappropriate.
+
+### Surface: Consistent Recognition
+
+Use surface buttons to combine background and border for consistent appearance across varying container backgrounds. This dual-layer approach ensures reliable visual recognition regardless of surrounding color context.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="surface" aria-label="View details">
+        <Search />
+      </IconButton>
+      <IconButton size="3" variant="surface" color="iris" aria-label="Show options">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="surface" color="gray" aria-label="Settings">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use surface for modular components across contexts */}
+<IconButton size="3" variant="surface" aria-label="View details">
+  <Search />
+</IconButton>
+
+{/* Use surface for card actions */}
+<IconButton size="3" variant="surface" color="iris" aria-label="Show options">
+  <Settings />
+</IconButton>
+
+{/* Use surface for widget controls */}
+<IconButton size="3" variant="surface" color="gray" aria-label="Settings">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose surface buttons for modular components used in multiple contexts (Card actions, Widget controls), buttons on cards with changing background colors, and dynamic layouts where background varies.
+
+### Classic: Premium Experience
+
+Use classic buttons for sophisticated shadow systems that create depth, making buttons feel like physical objects that respond to touch. This treatment creates buttons that feel more tangible and engaging than flat alternatives.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="classic" aria-label="Join waitlist">
+        <Star />
+      </IconButton>
+      <IconButton size="3" variant="classic" color="iris" aria-label="Start trial">
+        <Heart />
+      </IconButton>
+      <IconButton size="3" variant="classic" color="gold" aria-label="Get premium">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use classic for hero sections and marketing */}
+<IconButton size="3" variant="classic" aria-label="Join waitlist">
+  <Star />
+</IconButton>
+
+{/* Use classic for premium experiences */}
+<IconButton size="3" variant="classic" color="iris" aria-label="Start trial">
+  <Heart />
+</IconButton>
+
+{/* Use classic for standalone focal points */}
+<IconButton size="3" variant="classic" color="gold" aria-label="Get premium">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose classic buttons for standalone focal points in spacious layouts, premium or tactile interface experiences, hero sections and marketing contexts, and applications where physical metaphors enhance usability.
+
+## Material
+
+Choose material to define the fundamental substance from which your interface is constructed. Just as physical materials have distinct properties that affect how we interact with them, digital materials create different experiences and expectations. The material choice affects not just appearance, but the entire relationship between user and interface.
+
+### Solid: Foundation and Stability
+
+Use solid material to create interfaces that feel grounded and reliable. Like concrete or metal, solid materials provide clear boundaries and predictable behavior. Users can trust that solid elements will behave consistently and provide stable interaction surfaces.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" aria-label="Save changes">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="outline" aria-label="Cancel">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Preview">
+        <Search />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use solid material for clear, stable interaction */}
+<IconButton size="3" variant="solid" aria-label="Save changes">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="outline" aria-label="Cancel">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Preview">
+  <Search />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose solid material for primary interfaces, data-heavy applications, and contexts where clarity and reliability are paramount. Solid materials excel in professional environments, form interfaces, and any situation where users need to feel confident about their interactions.
+
+### Translucent: Depth and Context
+
+Use translucent material to create interfaces that feel layered and responsive to their environment. Like glass or water, translucent materials reveal context while maintaining their own identity. They create depth by allowing background elements to influence the interface without losing focus.
+
+<CodeBlock
+  preview={
+    <Flex 
+      position="relative" 
+      align="center" 
+      justify="center" 
+      height="400px"
+      width="100%"
+      style={{
+        backgroundImage: `url(${getDemoImage('background')})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        borderRadius: 'var(--radius-3)'
+      }}
+    >
+      <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
+        <IconButton size="4" color="gray" variant="classic" material="translucent" aria-label="Classic">
+          <Settings />
+        </IconButton>
+        <IconButton size="4" variant="solid" material="translucent" aria-label="Solid">
+          <Star />
+        </IconButton>
+        <IconButton size="4" color="gray" variant="soft" material="translucent" aria-label="Soft">
+          <Heart />
+        </IconButton>
+        <IconButton size="4" color="gray" variant="surface" material="translucent" aria-label="Surface">
+          <Search />
+        </IconButton>
+      </Flex>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use translucent material to adapt to background context */}
+<IconButton size="4" color="gray" variant="classic" material="translucent" aria-label="Classic">
+  <Settings />
+</IconButton>
+<IconButton size="4" variant="solid" material="translucent" aria-label="Solid">
+  <Star />
+</IconButton>
+<IconButton size="4" color="gray" variant="soft" material="translucent" aria-label="Soft">
+  <Heart />
+</IconButton>
+<IconButton size="4" color="gray" variant="surface" material="translucent" aria-label="Surface">
+  <Search />
+</IconButton>
+```
+
+</CodeBlock>
+
+Choose translucent material for overlay interfaces, hero sections, and contexts where you want to create visual depth and connection to background content. Translucent materials work well in marketing contexts, immersive experiences, and interfaces that need to feel modern and sophisticated.
+
+### Material as Experience
+
+Consider your application's purpose and the user's mental state when choosing between solid and translucent materials. Are they focused on completing specific tasks, or are they exploring and discovering? Are they in a professional context that demands clarity, or a creative context that benefits from visual richness?
+
+Solid materials create interfaces that feel like tools: precise, reliable, and focused on task completion. Translucent materials create interfaces that feel like environments: immersive, contextual, and responsive to their surroundings.
+
+The material choice should support the user's goals and create the appropriate emotional relationship with your interface. Just as you wouldn't build a kitchen counter from tissue paper or a window from concrete, choose materials that match the functional and emotional requirements of your interface context.
+
+## Icon Recognition
+
+Icon buttons rely entirely on visual symbols to communicate meaning. The icon must be instantly recognizable and its meaning clear in context.
+
+### Universal Icons
+
+Use universally recognized icons for common actions. These icons have established meanings across digital interfaces.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Download">
+        <Download />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Add to favorites">
+        <Heart />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Universal icons - instantly recognizable */}
+<IconButton size="3" variant="soft" aria-label="Settings">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Download">
+  <Download />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Add to favorites">
+  <Heart />
+</IconButton>
+```
+
+</CodeBlock>
+
+**Universal Icon Examples:**
+- **Settings/Configuration:** Gear/cog icons
+- **Download:** Downward arrow or download symbol
+- **Share:** Share/export symbols
+- **Edit:** Pencil or edit symbols
+- **Delete:** Trash can or X symbols
+- **Search:** Magnifying glass
+- **Navigation:** Arrow directions
+
+### Context-Dependent Icons
+
+Some icons require context to be understood. Ensure the surrounding interface provides clear context for the icon's meaning.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Text>Article Title</Text>
+      <IconButton size="2" variant="ghost" aria-label="Bookmark article">
+        <Heart />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Context makes the icon meaning clear */}
+<Text>Article Title</Text>
+<IconButton size="2" variant="ghost" aria-label="Bookmark article">
+  <Heart />
+</IconButton>
+```
+
+</CodeBlock>
+
+### Custom Icons
+
+When using custom icons, ensure they follow established visual patterns and are tested for recognition.
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>Test custom icons with users to ensure they're recognizable. Consider providing tooltips or labels for complex or unique icons.</Callout.Text>
+</Callout.Root>
+
+## Accessibility Requirements
+
+Icon buttons have stricter accessibility requirements than text buttons due to their reliance on visual symbols.
+
+### Mandatory Labeling
+
+Every icon button must have an accessible name through `aria-label` or `aria-labelledby`. This is not optional—it's required for screen reader users.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Open settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Add to favorites">
+        <Heart />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Required: Clear, descriptive labels */}
+<IconButton size="3" variant="soft" aria-label="Open settings">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Add to favorites">
+  <Heart />
+</IconButton>
+```
+
+</CodeBlock>
+
+### Tooltip Integration
+
+Use tooltips to provide additional context beyond the aria-label, especially for complex actions or custom icons.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Export data" tooltip="Export data as CSV">
+        <Download />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Tooltip provides additional context */}
+<IconButton 
+  size="3" 
+  variant="soft" 
+  aria-label="Export data"
+  tooltip="Export data as CSV"
+>
+  <Download />
+</IconButton>
+```
+
+</CodeBlock>
+
+## Common Mistakes
+
+Avoid these common icon button design problems that stem from treating icons as decorative elements rather than functional communication tools. These mistakes break user expectations and create friction in interfaces that should feel effortless.
+
+**Decision paralysis through competing primary actions** is the most common and destructive mistake. When multiple solid icon buttons appear in the same interface section, people don't know which action you want them to take. Their eyes dart between options, cognitive load increases, and conversion rates drop. This happens because human decision-making works best with clear guidance rather than unlimited choice. The solution isn't to make all buttons equally prominent—it's to establish clear hierarchy where one action is obviously primary and others support that choice.
+
+**Inconsistent visual treatments** across your interface force people to relearn your system at every interaction. When similar actions look different in different contexts, users lose confidence in their ability to predict behavior. This creates a cascade of problems: people slow down to evaluate each button, they second-guess their choices, and they develop distrust in your interface. Consistency isn't about rigid rules—it's about creating predictable patterns that reduce cognitive load and build user confidence.
+
+**Mismatched color psychology** happens when designers choose colors based on aesthetics rather than meaning. Using red for a "Subscribe" button or green for "Delete Account" creates cognitive dissonance. People have deep, unconscious associations with colors that developed over millions of years of evolution. Red means danger, green means safety, blue means trust. Fighting these associations confuses users and can trigger inappropriate emotional responses that work against your goals.
+
+**Inadequate touch targets and spacing** create physical frustration that translates to emotional frustration. When buttons are too small or too close together, people make mistakes, feel clumsy, and develop negative associations with your interface. This is especially critical on mobile devices where fat fingers and small screens create inherent challenges. The visual button can be small for aesthetic reasons, but the interactive area must be generous enough for confident, accurate interaction.
+
+**Missing feedback states** leave people uncertain about whether their actions registered. Without clear hover, focus, and loading states, users wonder if they tapped correctly, if the system is responding, or if they need to try again. This uncertainty creates anxiety and often leads to repeated interactions that can cause problems (like double-submissions). Every button interaction should provide immediate visual feedback that the action was recognized and is being processed.
+
+**Unclear icons** using ambiguous or unrecognizable icons that require explanation.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Custom action">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* ❌ Avoid: Unclear icon meaning */}
+<IconButton size="3" variant="soft" aria-label="Custom action">
+  <Settings />
+</IconButton>
+
+{/* ✅ Better: Clear, descriptive label */}
+<IconButton size="3" variant="soft" aria-label="Open settings panel">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+**Missing labels** forgetting to provide accessible names for icon buttons.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* ❌ Avoid: No accessible name */}
+<IconButton size="3" variant="soft">
+  <Settings />
+</IconButton>
+
+{/* ✅ Required: Accessible name */}
+<IconButton size="3" variant="soft" aria-label="Settings">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+**Inconsistent sizing** manually sizing icons instead of letting the component handle sizing automatically.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="soft" aria-label="Settings">
+        <Settings size={16} />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* ❌ Avoid: Manual icon sizing */}
+<IconButton size="3" variant="soft" aria-label="Settings">
+  <Settings size={16} />
+</IconButton>
+
+{/* ✅ Better: Let component handle sizing */}
+<IconButton size="3" variant="soft" aria-label="Settings">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+## Implementation
+
+For technical implementation details, see [API](./api). For design tokens and specifications, see [Specs](./specs). 

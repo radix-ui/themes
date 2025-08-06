@@ -91,6 +91,8 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
         {...contentProps}
         ref={forwardedRef}
         className={classNames('rt-TabsContent', className)}
+        aria-live="polite"
+        aria-atomic="true"
       />
     );
   },

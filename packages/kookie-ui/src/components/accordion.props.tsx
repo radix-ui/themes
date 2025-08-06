@@ -16,11 +16,16 @@ const accordionRootPropDefs = {
   ...colorPropDef,
   ...highContrastPropDef,
   ...radiusPropDef,
+  material: { type: 'enum', values: panelBackgrounds, default: undefined },
+  /**
+   * @deprecated Use `material` prop instead. This prop will be removed in a future version.
+   */
   panelBackground: { type: 'enum', values: panelBackgrounds, default: undefined },
   flush: { type: 'boolean', default: false },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
+  material: PropDef<(typeof panelBackgrounds)[number] | undefined>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
   flush: PropDef<boolean>;
 };
@@ -63,6 +68,7 @@ export type AccordionRootOwnProps = {
   color?: string;
   highContrast?: boolean;
   radius?: string;
+  material?: (typeof panelBackgrounds)[number];
   panelBackground?: (typeof panelBackgrounds)[number];
   flush?: boolean;
 };

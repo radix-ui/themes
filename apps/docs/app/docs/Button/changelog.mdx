@@ -1,0 +1,61 @@
+# Changelog
+
+All notable changes to the Button component will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- Enhanced loading state accessibility with `aria-busy`, `aria-disabled`, and `aria-describedby` attributes
+- Built-in tooltip support through `tooltip`, `tooltipSide`, `tooltipAlign` props
+- New `material` prop for solid/translucent theme contexts
+- `flush` prop for seamless text integration with ghost variants
+- Full margin prop system with responsive support
+- Enhanced form integration with complete HTML form attribute support
+- **RTL (Right-to-Left) layout support** for international applications
+- **Windows High Contrast mode support** via `forced-colors` media query
+- **Enhanced reduced motion support** for users with vestibular disorders
+- **Improved loading state announcements** with contextual button text
+- **Tooltip accessibility integration** with proper `aria-describedby` associations
+
+### Changed
+- Improved 3D shadow system for classic variant with better depth perception
+- Enhanced active state feedback with subtle padding adjustments
+- Better contrast relationships in both light and dark themes
+- Comprehensive transition token system with duration and easing tokens
+- Automatic reduced motion support via `prefers-reduced-motion`
+
+### Deprecated
+- `panelBackground` prop in favor of `material` prop
+
+### Fixed
+- Better color saturation and brightness in high contrast mode
+- Enhanced focus indicators for improved accessibility
+- Consistent contrast ratios across all variants and states
+- Full TypeScript support for polymorphic `as` prop with better type inference
+- **Loading state accessibility** with proper button text context in announcements
+- **Focus management** with enhanced forced-colors support for Windows High Contrast
+- **Spinner animations** now respect `prefers-reduced-motion` user preference
+- **Tooltip associations** properly linked to buttons via unique IDs
+
+## [1.0.0] - 2024-01-15
+
+### Added
+- Initial release of Button component
+- Six visual variants: classic, solid, soft, outline, surface, ghost
+- Four size options: 1, 2, 3, 4
+- Comprehensive color system with semantic options
+- Full accessibility support with keyboard navigation
+- Loading states with visual feedback
+- Disabled states with proper ARIA attributes
+- Polymorphic rendering with `as` prop
+- High contrast mode support
+- Responsive design with breakpoint support
+
+### Technical
+- Built on Radix UI primitives for robust accessibility
+- CSS custom properties for theming
+- TypeScript support with comprehensive type definitions
+- Design token integration for consistent spacing and sizing 

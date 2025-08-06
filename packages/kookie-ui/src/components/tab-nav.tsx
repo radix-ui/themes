@@ -20,10 +20,10 @@ interface TabNavRootProps
     MarginProps,
     TabNavOwnProps {}
 const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, forwardedRef) => {
-  const { children, className, color, ...rootProps } = extractProps(
+  const { children, className, color, panelBackground, ...rootProps } = extractProps(
     props,
     tabNavRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <NavigationMenu.Root
@@ -35,6 +35,7 @@ const TabNavRoot = React.forwardRef<TabNavRootElement, TabNavRootProps>((props, 
     >
       <NavigationMenu.List
         className={classNames('rt-reset', 'rt-BaseTabList', 'rt-TabNavList', className)}
+        data-panel-background={panelBackground}
       >
         {children}
       </NavigationMenu.List>
@@ -49,7 +50,7 @@ interface TabNavLinkProps
   extends ComponentPropsWithout<typeof NavigationMenu.Link, RemovedProps | 'onSelect'>,
     TabNavLinkOwnProps {}
 const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, forwardedRef) => {
-  const { asChild, children, className, ...linkProps } = props;
+  const { asChild, children, className, active, ...linkProps } = props;
 
   return (
     <NavigationMenu.Item className="rt-TabNavItem">
@@ -59,6 +60,8 @@ const TabNavLink = React.forwardRef<TabNavLinkElement, TabNavLinkProps>((props, 
         className={classNames('rt-reset', 'rt-BaseTabListTrigger', 'rt-TabNavLink', className)}
         onSelect={undefined}
         asChild={asChild}
+        aria-current={active ? 'page' : undefined}
+        data-active={active || undefined}
       >
         {getSubtree({ asChild, children }, (children) => (
           <>

@@ -10,7 +10,19 @@ import { useThemeContext } from './theme.js';
 
 import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { GetPropDefTypes, Responsive } from '../props/prop-def.js';
+
+type RadioCardsContextValue = {
+  size?: Responsive<(typeof radioCardsRootPropDefs.size.values)[number]>;
+  variant?: (typeof radioCardsRootPropDefs.variant.values)[number];
+};
+
+const RadioCardsContext = React.createContext<RadioCardsContextValue | undefined>(undefined);
+
+const useRadioCardsContext = () => {
+  const context = React.useContext(RadioCardsContext);
+  return context;
+};
 
 type RadioCardsRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 type RadioCardsRootOwnProps = GetPropDefTypes<typeof radioCardsRootPropDefs>;
@@ -32,15 +44,17 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
       ...rootProps
     } = extractProps(props, radioCardsRootPropDefs, marginPropDefs);
     return (
-      <Grid asChild>
-        <RadioGroupPrimitive.Root
-          data-accent-color={color}
-          data-panel-background={panelBackground}
-          {...rootProps}
-          ref={forwardedRef}
-          className={classNames('rt-RadioCardsRoot', className)}
-        />
-      </Grid>
+      <RadioCardsContext.Provider value={{ size: props.size, variant: props.variant }}>
+        <Grid asChild>
+          <RadioGroupPrimitive.Root
+            data-accent-color={color}
+            data-panel-background={panelBackground}
+            {...rootProps}
+            ref={forwardedRef}
+            className={classNames('rt-RadioCardsRoot', className)}
+          />
+        </Grid>
+      </RadioCardsContext.Provider>
     );
   },
 );
@@ -51,14 +65,27 @@ interface RadioCardsItemProps
   extends ComponentPropsWithout<typeof RadioGroupPrimitive.Item, RemovedProps>,
     MarginProps {}
 const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <RadioGroupPrimitive.Item
-      {...props}
-      asChild={false}
-      ref={forwardedRef}
-      className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
-    />
-  ),
+  ({ className, ...props }, forwardedRef) => {
+    const context = useRadioCardsContext();
+    const variantClass = context?.variant ? `rt-variant-${context.variant}` : undefined;
+    const sizeClass = context?.size ? `rt-r-size-${context.size}` : undefined;
+
+    return (
+      <RadioGroupPrimitive.Item
+        {...props}
+        asChild={false}
+        ref={forwardedRef}
+        className={classNames(
+          'rt-reset',
+          'rt-BaseCard',
+          'rt-RadioCardsItem',
+          variantClass,
+          sizeClass,
+          className,
+        )}
+      />
+    );
+  },
 );
 RadioCardsItem.displayName = 'RadioCards.Item';
 

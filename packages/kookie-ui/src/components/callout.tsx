@@ -20,32 +20,55 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type CalloutRootOwnProps = GetPropDefTypes<typeof calloutRootPropDefs>;
 
-type CalloutContextValue = { size?: CalloutRootOwnProps['size'] };
+type CalloutContextValue = {
+  size?: CalloutRootOwnProps['size'];
+  variant?: CalloutRootOwnProps['variant'];
+  color?: CalloutRootOwnProps['color'];
+};
 const CalloutContext = React.createContext<CalloutContextValue>({});
 
 type CalloutRootElement = React.ElementRef<'div'>;
 interface CalloutRootProps
   extends ComponentPropsWithout<'div', RemovedProps>,
     MarginProps,
-    CalloutRootOwnProps {}
+    CalloutRootOwnProps {
+  /** Controls the ARIA live region behavior for screen readers */
+  live?: 'off' | 'polite' | 'assertive';
+  /** Semantic role for the callout */
+  role?: 'alert' | 'status' | 'note';
+}
 const CalloutRoot = React.forwardRef<CalloutRootElement, CalloutRootProps>(
   (props, forwardedRef) => {
-    const { size = calloutRootPropDefs.size.default } = props;
-    const { asChild, children, className, color, panelBackground, ...rootProps } = extractProps(
-      props,
-      calloutRootPropDefs,
-      marginPropDefs,
-    );
+    const {
+      size = calloutRootPropDefs.size.default,
+      live = 'polite',
+      role = 'status',
+      variant,
+    } = props;
+    const { asChild, children, className, color, panelBackground, material, ...rootProps } =
+      extractProps(props, calloutRootPropDefs, marginPropDefs);
     const Comp = asChild ? Slot.Root : 'div';
+
+    // Determine appropriate ARIA attributes based on role and live
+    const ariaProps = {
+      role,
+      'aria-live': live,
+      'aria-atomic': true,
+    };
+
     return (
       <Comp
         data-accent-color={color}
         data-panel-background={panelBackground}
+        data-material={material}
         {...rootProps}
+        {...ariaProps}
         className={classNames('rt-CalloutRoot', className)}
         ref={forwardedRef}
       >
-        <CalloutContext.Provider value={React.useMemo(() => ({ size }), [size])}>
+        <CalloutContext.Provider
+          value={React.useMemo(() => ({ size, variant, color }), [size, variant, color])}
+        >
           {children}
         </CalloutContext.Provider>
       </Comp>

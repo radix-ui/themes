@@ -1,0 +1,142 @@
+import { ToggleIconButton, Flex, Box, Callout, Table, Text } from '@kushagradhawan/kookie-ui';
+import { Bold, TriangleAlertIcon } from 'lucide-react';
+
+# Specs
+
+The ToggleIconButton system extends Button with toggle state management and icon-specific specifications. It uses the same mathematical precision and design tokens as Button but adds square aspect ratios, automatic icon sizing, and toggle state indicators for icon-only on/off interactions.
+
+ToggleIconButton inherits most specifications from Button. This documentation focuses on what's unique to ToggleIconButton.
+
+## Typography
+
+ToggleIconButton does not use typography since it contains only icons. For typography specifications, see the **[Button Specs documentation](../Button/specs)**.
+
+## Spacing
+
+ToggleIconButton uses the same spacing system as Button but with square aspect ratios. For comprehensive spacing specifications, see the **[Button Specs documentation](../Button/specs)**.
+
+### Square Dimensions
+
+ToggleIconButton maintains a perfect square aspect ratio (height = width) regardless of content. This ensures consistent visual alignment in toolbars, grids, and compact interfaces where rectangular buttons would create visual noise.
+
+**Square Aspect Ratio:** ToggleIconButton maintains a perfect square aspect ratio (height = width) regardless of content. This ensures consistent visual alignment in toolbars, grids, and compact interfaces where rectangular buttons would create visual noise.
+
+### Automatic Icon Sizing
+
+ToggleIconButton automatically sizes icons based on the button size. The component handles all icon scaling internally to maintain visual consistency and prevent manual sizing errors.
+
+<Table.Root size="3" variant="ghost" my="8">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>Size</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Icon Size</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Icon Token</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>Compact (1)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>12px × 12px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-1`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Standard (2)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>16px × 16px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-2`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Large (3)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>18px × 18px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-3`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Extra Large (4)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>20px × 20px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-4`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+
+**Icon Scaling:** Icons scale proportionally with button size to maintain visual balance. The scaling follows the same modular scale as Button typography (12px → 16px → 18px → 20px) for consistent visual rhythm across the interface.
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>Never manually size icons in ToggleIconButton. The component automatically applies the correct size based on the button size prop.</Callout.Text>
+</Callout.Root>
+
+### Flush Behavior
+
+ToggleIconButton uses the same flush system as Button. For comprehensive documentation on flush behavior, see the **[Button Specs documentation](../Button/specs)**.
+
+## Color System
+
+ToggleIconButton uses the same color system as Button. For comprehensive documentation on color tokens, variant specifications, and state management, see the **[Button Specs documentation](../Button/specs)**.
+
+## Variant Tokens
+
+ToggleIconButton uses the same variant tokens as Button. For comprehensive documentation on variant specifications, see the **[Button Specs documentation](../Button/specs)**.
+
+## Interactions
+
+ToggleIconButton uses the same interaction system as Button with additional toggle state management. For comprehensive documentation on hover, focus, and active states, see the **[Button Specs documentation](../Button/specs)**.
+
+### Toggle State Management
+
+ToggleIconButton adds toggle state management that provides visual feedback for on/off interactions.
+
+**State Communication:**
+- **Pressed state:** Visual indication that toggle is active/on
+- **Unpressed state:** Visual indication that toggle is inactive/off
+- **State transitions:** Smooth visual feedback when toggling between states
+- **Accessibility:** Automatic ARIA attribute management for screen readers
+
+**Toggle Implementation:**
+- Built on Radix UI Toggle primitive for robust state management
+- Seamless integration with IconButton component through asChild pattern
+- Automatic `aria-pressed` attribute management based on toggle state
+- Enhanced keyboard navigation support for toggle interactions
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>ToggleIconButton automatically manages aria-pressed attributes and provides screen reader announcements for toggle states. No manual ARIA configuration is required.</Callout.Text>
+</Callout.Root>
+
+## Panel Backgrounds
+
+ToggleIconButton uses the same panel background system as Button. For comprehensive documentation on solid and translucent backgrounds, see the **[Button Specs documentation](../Button/specs)**. 

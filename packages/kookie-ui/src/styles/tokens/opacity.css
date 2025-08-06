@@ -1,0 +1,32 @@
+:where(.radix-themes) {
+  --opacity-factor: 1;
+  --opacity-1: calc(0.1 * var(--opacity-factor));
+  --opacity-2: calc(0.2 * var(--opacity-factor));
+  --opacity-3: calc(0.3 * var(--opacity-factor));
+  --opacity-4: calc(0.4 * var(--opacity-factor));
+  --opacity-5: calc(0.5 * var(--opacity-factor));
+  --opacity-6: calc(0.6 * var(--opacity-factor));
+  --opacity-7: calc(0.7 * var(--opacity-factor));
+  --opacity-8: calc(0.8 * var(--opacity-factor));
+  --opacity-9: calc(0.9 * var(--opacity-factor));
+}
+
+[data-opacity='none'] {
+  --opacity-factor: 0;
+}
+
+[data-opacity='subtle'] {
+  --opacity-factor: 0.5;
+}
+
+[data-opacity='medium'] {
+  --opacity-factor: 1;
+}
+
+[data-opacity='strong'] {
+  --opacity-factor: 1.5;
+}
+
+[data-opacity='full'] {
+  --opacity-factor: 2.0;
+} 

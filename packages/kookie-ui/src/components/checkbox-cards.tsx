@@ -28,6 +28,7 @@ const useCheckboxGroupScope = createCheckboxGroupScope();
 
 type CheckboxCardsContextValue = {
   size?: Responsive<(typeof checkboxCardsRootPropDefs.size.values)[number]>;
+  variant?: (typeof checkboxCardsRootPropDefs.variant.values)[number];
   highContrast?: boolean;
 };
 
@@ -59,6 +60,7 @@ const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCar
       <CheckboxCardsProvider
         scope={__scopeCheckboxCards}
         size={props.size}
+        variant={props.variant}
         highContrast={props.highContrast}
       >
         <Grid asChild>
@@ -89,13 +91,29 @@ const CheckboxCardsItem = React.forwardRef<
   const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
 
   const { className: checkboxClassName } = extractProps(
-    // Pass size / highContrast values from the context and static variant to generate styles
-    { size: context?.size, variant: 'solid', highContrast: context?.highContrast },
+    // Pass size / highContrast values from the context and variant to generate styles
+    {
+      size: context?.size,
+      variant: context?.variant || 'solid',
+      highContrast: context?.highContrast,
+    },
     // Pass size & variant prop defs to allow it to be extracted
     baseCheckboxPropDefs,
   );
+  const variantClass = context?.variant ? `rt-variant-${context.variant}` : undefined;
+  const sizeClass = context?.size ? `rt-r-size-${context.size}` : undefined;
+
   return (
-    <label className={classNames('rt-BaseCard', 'rt-CheckboxCardsItem', className)} style={style}>
+    <label
+      className={classNames(
+        'rt-BaseCard',
+        'rt-CheckboxCardsItem',
+        variantClass,
+        sizeClass,
+        className,
+      )}
+      style={style}
+    >
       {children}
       <CheckboxGroupPrimitive.Item
         {...checkboxGroupScope}

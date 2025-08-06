@@ -15,6 +15,28 @@
   border-radius: var(--skeleton-radius);
   --skeleton-radius-override: var(--checkbox-border-radius);
 
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parents */
+  isolation: isolate;
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+
   &::before {
     content: '';
     display: block;
@@ -81,14 +103,15 @@
 .rt-BaseCheckboxRoot:where(.rt-variant-solid) {
   &:where([data-state='unchecked']) {
     &::before {
-      background-color: var(--color-surface);
-      box-shadow: inset 0 0 0 var(--border-width-inset) var(--gray-a7);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px var(--accent-9);
     }
   }
 
   &:where([data-state='checked'], [data-state='indeterminate']) {
     &::before {
-      background-color: var(--accent-indicator);
+      background-color: var(--accent-9);
+      box-shadow: inset 0 0 0 1px var(--accent-9);
     }
     & :where(.rt-BaseCheckboxIndicator) {
       color: var(--accent-contrast);
@@ -97,17 +120,18 @@
     &:where(.rt-high-contrast) {
       &::before {
         background-color: var(--accent-12);
+        box-shadow: inset 0 0 0 1px var(--accent-12);
       }
       & :where(.rt-BaseCheckboxIndicator) {
-        color: var(--accent-1);
+        color: var(--gray-1);
       }
     }
   }
 
   &:where(:disabled) {
     &::before {
-      box-shadow: inset 0 0 0 var(--border-width-inset) var(--gray-a6);
-      background-color: transparent;
+      box-shadow: inset 0 0 0 1px var(--gray-a6);
+      background-color: var(--gray-a3);
     }
     & :where(.rt-BaseCheckboxIndicator) {
       color: var(--gray-a8);
@@ -123,28 +147,22 @@
   
   &:where([data-state='unchecked']) {
     &::before {
-      background-color: var(--accent-2);
-      /* prettier-ignore */
-      box-shadow:
-        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-        inset 0 var(--classic-border-width) var(--white-a12),
-        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-        inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-        0 0 0 var(--classic-border-width) var(--accent-a5),
-        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
-    }
-    
-    :where(.dark, .dark-theme) &,
-    :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-      &::before {
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-          inset 0 var(--classic-border-width) var(--accent-a11),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
-          0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+      color: var(--accent-a11);
+      background-color: var(--color-surface-solid);
+      box-shadow: var(--shadow-2);
+
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: var(--color-surface-translucent);
+      }
+
+      /* Component-level overrides (higher specificity) */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--color-surface-solid);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: var(--color-surface-translucent);
       }
     }
   }
@@ -152,35 +170,44 @@
   &:where([data-state='checked'], [data-state='indeterminate']) {
     &::before {
       background-color: var(--accent-3);
-      /* prettier-ignore */
-      box-shadow:
-        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-        inset 0 var(--classic-border-width) var(--white-a12),
-        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-        inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-        0 0 0 var(--classic-border-width) var(--accent-a5),
-        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+      box-shadow: var(--shadow-1);
+
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      }
+
+      /* Component-level overrides (higher specificity) */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      }
     }
     & :where(.rt-BaseCheckboxIndicator) {
       color: var(--accent-a11);
     }
-    
-    :where(.dark, .dark-theme) &,
-    :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-      &::before {
-        background-color: var(--accent-3);
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-          inset 0 var(--classic-border-width) var(--accent-a11),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
-          0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
-      }
-    }
 
     &:where(.rt-high-contrast) {
+      &::before {
+        background-color: var(--accent-3);
+
+        /* Theme-level translucent override for high contrast */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        }
+
+        /* Component-level overrides for high contrast */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-3);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        }
+      }
       & :where(.rt-BaseCheckboxIndicator) {
         color: var(--accent-12);
       }
@@ -191,7 +218,22 @@
     top: calc(var(--classic-elevation-offset) + var(--classic-active-padding-offset-1));
     
     &::before {
-      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
+      background-color: var(--accent-3);
+      box-shadow: var(--shadow-1);
+
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      }
+
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      }
     }
   }
 
@@ -212,7 +254,21 @@
 
 .rt-BaseCheckboxRoot:where(.rt-variant-soft) {
   &::before {
-    background-color: var(--accent-a5);
+    background-color: var(--accent-3);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-3);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
   }
 
   &:where([data-state='checked'], [data-state='indeterminate']) {
@@ -229,7 +285,151 @@
 
   &:where(:disabled) {
     &::before {
+      background-color: var(--gray-a3);
+    }
+    & :where(.rt-BaseCheckboxIndicator) {
+      color: var(--gray-a8);
+    }
+  }
+}
+
+
+
+/* outline */
+
+.rt-BaseCheckboxRoot:where(.rt-variant-outline) {
+  &:where([data-state='unchecked']) {
+    &::before {
+      box-shadow: inset 0 0 0 1px var(--accent-6);
+      color: var(--accent-11);
+
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        box-shadow: inset 0 0 0 1px var(--accent-a6);
+        color: var(--accent-a11);
+      }
+
+      /* Component-level overrides (higher specificity) */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        box-shadow: inset 0 0 0 1px var(--accent-6);
+        color: var(--accent-11);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        box-shadow: inset 0 0 0 1px var(--accent-a6);
+        color: var(--accent-a11);
+      }
+    }
+  }
+
+  &:where([data-state='checked'], [data-state='indeterminate']) {
+    &::before {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
+      }
+
+      /* Component-level overrides (higher specificity) */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-2);
+        box-shadow: inset 0 0 0 1px var(--accent-7);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
+      }
+    }
+    & :where(.rt-BaseCheckboxIndicator) {
+      color: var(--accent-a11);
+    }
+
+    &:where(.rt-high-contrast) {
+      & :where(.rt-BaseCheckboxIndicator) {
+        color: var(--accent-12);
+      }
+    }
+  }
+
+  &:where(:disabled) {
+    &::before {
+      box-shadow: inset 0 0 0 1px var(--gray-a7);
       background-color: transparent;
+    }
+    & :where(.rt-BaseCheckboxIndicator) {
+      color: var(--gray-a8);
+    }
+  }
+}
+
+/* surface */
+
+.rt-BaseCheckboxRoot:where(.rt-variant-surface) {
+  &:where([data-state='unchecked']) {
+    &::before {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 1px var(--accent-6);
+
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a6);
+      }
+
+      /* Component-level overrides (higher specificity) */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-2);
+        box-shadow: inset 0 0 0 1px var(--accent-6);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a6);
+      }
+    }
+  }
+
+  &:where([data-state='checked'], [data-state='indeterminate']) {
+    &::before {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+
+      /* Theme-level translucent override */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
+
+      /* Component-level overrides (higher specificity) */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+        box-shadow: inset 0 0 0 1px var(--accent-8);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
+    }
+    & :where(.rt-BaseCheckboxIndicator) {
+      color: var(--accent-a11);
+    }
+
+    &:where(.rt-high-contrast) {
+      & :where(.rt-BaseCheckboxIndicator) {
+        color: var(--accent-12);
+      }
+    }
+  }
+
+  &:where(:disabled) {
+    &::before {
+      box-shadow: inset 0 0 0 1px var(--gray-a6);
+      background-color: var(--gray-a2);
     }
     & :where(.rt-BaseCheckboxIndicator) {
       color: var(--gray-a8);

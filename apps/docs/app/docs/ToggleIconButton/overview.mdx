@@ -1,0 +1,53 @@
+import { Card, Flex, Text, Heading, Grid, Badge } from '@kushagradhawan/kookie-ui';
+import Link from 'next/link';
+
+# ToggleIconButton
+
+Use toggle icon buttons for compact, stateful interactions that remember their on/off position. Toggle icon buttons provide efficient interaction patterns for toolbars, navigation elements, and utility functions where space is limited and visual clarity is essential.
+
+Choose from six visual variants to match your interface context, four sizes for different interface densities, and comprehensive color options for semantic communication. The component automatically handles state management, icon sizing, enforces accessibility requirements, and provides built-in tooltip integration for enhanced usability.
+
+For interfaces that need to feel elevated above their background context, use the `material` prop to create depth and establish visual hierarchy through translucency.
+
+## Guide
+
+<Grid columns={{ initial: '1', sm: '2' }} gap="4" my="6">
+  {[
+    {
+      href: '?tab=api',
+      title: 'API',
+      description: 'Props, integration patterns, and technical implementation for developers',
+      badge: 'Develop'
+    },
+    {
+      href: '?tab=accessibility',
+      title: 'Accessibility',
+      description: 'Keyboard navigation, screen readers, and inclusive design patterns',
+      badge: 'Design'
+    },
+    {
+      href: '?tab=guidelines',
+      title: 'Guidelines',
+      description: 'Psychology, hierarchy, and design principles for effective interfaces',
+      badge: 'Design'
+    },
+    {
+      href: '?tab=specs',
+      title: 'Specs',
+      description: 'Design tokens, measurements, and system specifications',
+      badge: 'Design'
+    }
+  ].map(({ href, title, description, badge }) => (
+    <Card asChild key={href} size="4" variant="classic">
+      <Link href={href}>
+        <Flex direction="column" gap="4">
+          <Flex gap="2" justify="start" align="start" direction="row">
+            <Heading size="4" weight="medium">{title}</Heading>
+            <Badge size="2" variant="soft" color={badge === 'Develop' ? 'orange' : 'blue'}>{badge}</Badge>
+          </Flex>
+          <Text size="3" color="gray">{description}</Text>
+        </Flex>
+      </Link>
+    </Card>
+  ))}
+</Grid> 

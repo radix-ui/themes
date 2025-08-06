@@ -43,20 +43,99 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
     const {
       align: alignPropDef,
       panelBackground: panelBackgroundPropDef,
+      material: materialPropDef,
       ...propDefs
     } = dialogContentPropDefs;
+
     const { className: alignClassName } = extractProps({ align }, { align: alignPropDef });
-    const { panelBackground } = extractProps(
+
+    // Extract panelBackground and material from props
+    const { panelBackground: extractedPanelBackground } = extractProps(
       { panelBackground: props.panelBackground },
       { panelBackground: panelBackgroundPropDef },
     );
+
+    const { material: extractedMaterial } = extractProps(
+      { material: props.material },
+      { material: materialPropDef },
+    );
+
+    // Handle material prop with panelBackground fallback
+    const materialValue = React.useMemo(() => {
+      if (extractedMaterial !== undefined) {
+        console.warn(
+          'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
+        );
+      }
+      return extractedMaterial ?? extractedPanelBackground;
+    }, [extractedMaterial, extractedPanelBackground]);
+
     const {
       className,
       forceMount,
       container,
       panelBackground: _,
+      material: __,
       ...contentProps
     } = extractProps(props, propDefs);
+
+    // Focus management
+    const contentRef = React.useRef<HTMLDivElement>(null);
+    const combinedRef = React.useMemo(
+      () => (node: HTMLDivElement | null) => {
+        contentRef.current = node;
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(node);
+        } else if (forwardedRef) {
+          forwardedRef.current = node;
+        }
+      },
+      [forwardedRef],
+    );
+
+    // Focus trap effect
+    React.useEffect(() => {
+      // SSR safety - only run on client
+      if (typeof window === 'undefined') return;
+
+      const content = contentRef.current;
+      if (!content) return;
+
+      const focusableElements = content.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Tab') {
+          if (event.shiftKey) {
+            if (document.activeElement === firstElement) {
+              event.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              event.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      };
+
+      content.addEventListener('keydown', handleKeyDown);
+
+      // Focus first element when dialog opens
+      firstElement.focus();
+
+      return () => {
+        content.removeEventListener('keydown', handleKeyDown);
+      };
+    }, []);
+
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -67,9 +146,20 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
               >
                 <DialogPrimitive.Content
                   {...contentProps}
-                  ref={forwardedRef}
+                  ref={combinedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-DialogContent', className)}
-                  data-panel-background={panelBackground}
+                  data-material={materialValue}
+                  data-panel-background={materialValue}
+                  tabIndex={-1}
+                  role="dialog"
+                  aria-modal="true"
+                />
+                {/* ARIA live region for screen reader announcements */}
+                <div
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="rt-sr-only"
+                  id="dialog-announcement"
                 />
               </div>
             </div>

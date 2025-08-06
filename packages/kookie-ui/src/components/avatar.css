@@ -8,6 +8,26 @@
   height: var(--avatar-size);
   flex-shrink: 0;
   position: relative;
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parents */
+  isolation: isolate;
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
 }
 
 /* Interactive states for avatars used as buttons/links */
@@ -56,27 +76,21 @@
   &:where(.rt-variant-classic) {
     @media (hover: hover) {
       &:where(:hover:not(:disabled, [data-disabled]))  {
-        background-color: var(--accent-3);
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 var(--classic-border-width) var(--white-a12),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-          0 0 0 var(--classic-border-width) var(--accent-a5),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+        background-color: var(--gray-2);
+        box-shadow: var(--shadow-2);
 
-        :where(.dark, .dark-theme) &,
-        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-          /* prettier-ignore */
-          box-shadow:
-            inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-            inset 0 var(--classic-border-width) var(--accent-a11),
-            inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-            inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
-            0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-            0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
-            0 0 0 var(--classic-border-width) var(--accent-a5);
+        /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
+        }
+
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--gray-2);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
         }
 
         & :where(.rt-AvatarFallback) {
@@ -89,9 +103,22 @@
     &:where(:active:not(:disabled, [data-disabled]))  {
       padding-top: var(--classic-active-padding-offset-2);
       padding-bottom: 0;
-      background-color: var(--accent-3);
-      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
-      /* keep root top unchanged; internal illusion achieved by padding */
+      background-color: var(--gray-3);
+      box-shadow: var(--shadow-1);
+
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+      }
+
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--gray-3);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+      }
 
       & :where(.rt-AvatarFallback) {
         padding-top: inherit;
@@ -107,17 +134,45 @@
     @media (hover: hover) {
       &:where(:hover:not(:disabled, [data-disabled]))  {
         background-color: var(--accent-10);
+        
+        /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
+        }
+
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-10);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
+        }
+
         & :where(.rt-AvatarFallback) {
           background-color: inherit;
         }
       }
     }
     &:where(:active:not(:disabled, [data-disabled]))  {
-      background-color: var(--accent-10);
-      filter: var(--base-button-solid-active-filter);
+      background-color: var(--accent-11);
+      
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a11), var(--accent-11) 10%);
+      }
+
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-11);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a11), var(--accent-11) 10%);
+      }
+
       & :where(.rt-AvatarFallback) {
         background-color: inherit;
-        filter: inherit;
       }
     }
     
@@ -125,19 +180,45 @@
       @media (hover: hover) {
         &:where(:hover:not(:disabled, [data-disabled]))  {
           background-color: var(--accent-12);
-          filter: var(--base-button-solid-high-contrast-hover-filter);
+          
+          /* Theme-level translucent override for hover */
+          :where([data-panel-background='translucent'], [data-material='translucent']) & {
+            background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+          }
+
+          /* Component-level overrides for hover */
+          &:where([data-panel-background='solid'], [data-material='solid']) {
+            background-color: var(--accent-12);
+          }
+
+          &:where([data-panel-background='translucent'], [data-material='translucent']) {
+            background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+          }
+
           & :where(.rt-AvatarFallback) {
             background-color: inherit;
-            filter: inherit;
           }
         }
       }
       &:where(:active:not(:disabled, [data-disabled]))  {
         background-color: var(--accent-12);
-        filter: var(--base-button-solid-high-contrast-active-filter);
+        
+        /* Theme-level translucent override for active */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+        }
+
+        /* Component-level overrides for active */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-12);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+        }
+
         & :where(.rt-AvatarFallback) {
           background-color: inherit;
-          filter: inherit;
         }
       }
     }
@@ -148,9 +229,19 @@
     @media (hover: hover) {
       &:where(:hover:not(:disabled, [data-disabled]))  {
         background-color: var(--accent-4);
+        
+        /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+        }
 
-        :where([data-panel-background='translucent']) & {
-          background-color: var(--accent-a4);
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-4);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
         }
 
         & :where(.rt-AvatarFallback) {
@@ -160,9 +251,19 @@
     }
     &:where(:active:not(:disabled, [data-disabled]))  {
       background-color: var(--accent-5);
+      
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
+      }
 
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a5);
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-5);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
       }
 
       & :where(.rt-AvatarFallback) {
@@ -175,22 +276,53 @@
   &:where(.rt-variant-surface) {
     @media (hover: hover) {
       &:where(:hover:not(:disabled, [data-disabled]))  {
-        box-shadow: inset 0 0 0 1px var(--accent-8);
-        :where([data-panel-background='translucent']) & {
-          box-shadow: inset 0 0 0 1px var(--accent-a8);
+        background-color: var(--accent-3);
+        box-shadow: inset 0 0 0 1px var(--accent-7);
+        
+        /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+          box-shadow: inset 0 0 0 1px var(--accent-a7);
         }
+
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-3);
+          box-shadow: inset 0 0 0 1px var(--accent-7);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+          box-shadow: inset 0 0 0 1px var(--accent-a7);
+        }
+
         & :where(.rt-AvatarFallback) {
+          background-color: inherit;
           box-shadow: inherit;
         }
       }
     }
     &:where(:active:not(:disabled, [data-disabled]))  {
-      background-color: var(--accent-3);
+      background-color: var(--accent-4);
       box-shadow: inset 0 0 0 1px var(--accent-8);
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a3);
+      
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
         box-shadow: inset 0 0 0 1px var(--accent-a8);
       }
+
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-4);
+        box-shadow: inset 0 0 0 1px var(--accent-8);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
+
       & :where(.rt-AvatarFallback) {
         background-color: inherit;
         box-shadow: inherit;
@@ -203,35 +335,55 @@
     @media (hover: hover) {
       &:where(:hover:not(:disabled, [data-disabled]))  {
         background-color: var(--accent-2);
-        :where([data-panel-background='translucent']) & {
-          background-color: var(--accent-a2);
-          backdrop-filter: var(--backdrop-filter-components);
-        }
-        & :where(.rt-AvatarFallback) {
-          background-color: inherit;
-          backdrop-filter: inherit;
+        box-shadow: inset 0 0 0 1px var(--accent-7);
+        
+        /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+          box-shadow: inset 0 0 0 1px var(--accent-a7);
         }
 
-        /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-        :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-          backdrop-filter: none !important;
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-2);
+          box-shadow: inset 0 0 0 1px var(--accent-7);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+          box-shadow: inset 0 0 0 1px var(--accent-a7);
+        }
+
+        & :where(.rt-AvatarFallback) {
+          background-color: inherit;
+          box-shadow: inherit;
         }
       }
     }
     &:where(:active:not(:disabled, [data-disabled]))  {
       background-color: var(--accent-3);
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a3);
-        backdrop-filter: var(--backdrop-filter-components);
-      }
-      & :where(.rt-AvatarFallback) {
-        background-color: inherit;
-        backdrop-filter: inherit;
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+      
+      /* Theme-level translucent override for active */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
       }
 
-      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-        backdrop-filter: none !important;
+      /* Component-level overrides for active */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+        box-shadow: inset 0 0 0 1px var(--accent-8);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a8);
+      }
+
+      & :where(.rt-AvatarFallback) {
+        background-color: inherit;
+        box-shadow: inherit;
       }
     }
   }
@@ -355,12 +507,41 @@
 
 .rt-AvatarRoot:where(.rt-variant-solid) {
   & :where(.rt-AvatarFallback) {
+    /* Base state: solid color for solid panels */
     background-color: var(--accent-9);
     color: var(--accent-contrast);
+
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a9), var(--accent-9) 10%);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
+      background-color: var(--accent-9);
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a9), var(--accent-9) 10%);
+    }
   }
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
     background-color: var(--accent-12);
-    color: var(--accent-1);
+    color: var(--gray-1);
+
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+    }
+
+    /* Component-level overrides for high contrast */
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
+      background-color: var(--accent-12);
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+    }
   }
   &:where([data-disabled]) :where(.rt-AvatarFallback) {
     color: var(--gray-a8);
@@ -378,40 +559,26 @@
     color: var(--accent-11);
 
     /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a3);
-      color: var(--accent-a11);
-      backdrop-filter: var(--backdrop-filter-components);
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
     }
 
     /* Component-level overrides (higher specificity) */
-    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
       background-color: var(--accent-3);
-      color: var(--accent-11);
-      backdrop-filter: none;
-      --backdrop-filter-components: none;
     }
 
-    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
-      background-color: var(--accent-a3);
-      color: var(--accent-a11);
-      backdrop-filter: var(--backdrop-filter-components);
-      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
     }
   }
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
     background-color: var(--accent-3);
     color: var(--accent-12);
-    
-    :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a3);
-      color: var(--accent-a12);
-    }
   }
   &:where([data-disabled]) :where(.rt-AvatarFallback) {
     color: var(--gray-a8);
     background-color: var(--gray-a3);
-    backdrop-filter: none;
   }
 }
 
@@ -419,31 +586,26 @@
 
 .rt-AvatarRoot:where(.rt-variant-surface) {
   & :where(.rt-AvatarFallback) {
-    /* Base state: solid colors for solid panels */
+    /* Base state: solid accent for solid panels */
     background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 1px var(--accent-7);
+    box-shadow: inset 0 0 0 1px var(--accent-6);
     color: var(--accent-a11);
 
     /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 1px var(--accent-a7);
-      backdrop-filter: var(--backdrop-filter-components);
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a6);
     }
 
     /* Component-level overrides (higher specificity) */
-    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
       background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 1px var(--accent-7);
-      backdrop-filter: none;
-      --backdrop-filter-components: none;
+      box-shadow: inset 0 0 0 1px var(--accent-6);
     }
 
-    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 1px var(--accent-a7);
-      backdrop-filter: var(--backdrop-filter-components);
-      --backdrop-filter-components: blur(var(--backdrop-blur-components));
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a6);
     }
   }
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
@@ -453,7 +615,6 @@
     color: var(--gray-a8);
     background-color: var(--gray-a2);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
-    backdrop-filter: none;
   }
 }
 
@@ -462,98 +623,79 @@
 .rt-AvatarRoot:where(.rt-variant-outline) {
   & :where(.rt-AvatarFallback) {
     /* Base state: solid colors for solid panels */
-    background-color: transparent;
-    box-shadow: inset 0 0 0 1px var(--accent-8);
+    box-shadow: inset 0 0 0 1px var(--accent-6);
     color: var(--accent-11);
 
     /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-a6);
       color: var(--accent-a11);
     }
 
     /* Component-level overrides (higher specificity) */
-    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
-      box-shadow: inset 0 0 0 1px var(--accent-8);
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-6);
       color: var(--accent-11);
-      backdrop-filter: none;
-      --backdrop-filter-components: none;
     }
 
-    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      box-shadow: inset 0 0 0 1px var(--accent-a6);
       color: var(--accent-a11);
     }
   }
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
-    box-shadow:
-      inset 0 0 0 1px var(--accent-7),
-      inset 0 0 0 1px var(--gray-11);
     color: var(--accent-12);
-    
-    /* Theme-level translucent override for high contrast */
-    :where([data-panel-background='translucent']) & {
-      box-shadow:
-        inset 0 0 0 1px var(--accent-a7),
-        inset 0 0 0 1px var(--gray-a11);
-    }
-
-    /* Component-level overrides for high contrast */
-    :where(.rt-AvatarRoot[data-panel-background='solid']) & {
-      box-shadow:
-        inset 0 0 0 1px var(--accent-7),
-        inset 0 0 0 1px var(--gray-11);
-    }
-
-    :where(.rt-AvatarRoot[data-panel-background='translucent']) & {
-      box-shadow:
-        inset 0 0 0 1px var(--accent-a7),
-        inset 0 0 0 1px var(--gray-a11);
-    }
   }
   &:where([data-disabled]) :where(.rt-AvatarFallback) {
     color: var(--gray-a8);
     background-color: transparent;
     box-shadow: inset 0 0 0 1px var(--gray-a7);
-    backdrop-filter: none;
   }
 }
 
 /* classic */
 
 .rt-AvatarRoot:where(.rt-variant-classic) {
-  /* Match button's slight elevation */
   position: relative;
   top: var(--classic-elevation-offset);
   & :where(.rt-AvatarFallback) {
     position: relative;
     top: 0; /* reset – elevation handled by root now */
     color: var(--accent-a11);
-    background-color: var(--accent-2);
-    /* prettier-ignore */
-    box-shadow:
-      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-      inset 0 var(--classic-border-width) var(--white-a12),
-      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-      0 0 0 var(--classic-border-width) var(--accent-a5),
-      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+    background-color: var(--color-surface-solid);
+    box-shadow: var(--shadow-2);
 
-    :where(.dark, .dark-theme) &,
-    :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-      /* prettier-ignore */
-      box-shadow:
-        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-        inset 0 var(--classic-border-width) var(--accent-a11),
-        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-        inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
-        0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+    /* Theme-level translucent override */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: var(--color-surface-translucent);
+    }
+
+    /* Component-level overrides (higher specificity) */
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
+      background-color: var(--color-surface-solid);
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      background-color: var(--color-surface-translucent);
     }
   }
   &:where(.rt-high-contrast) :where(.rt-AvatarFallback) {
-    color: var(--accent-12);
-    background-color: var(--accent-2);
+    color: var(--gray-12);
+    background-color: var(--color-surface-solid);
+
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: var(--color-surface-translucent);
+    }
+
+    /* Component-level overrides for high contrast */
+    :where(.rt-AvatarRoot[data-panel-background='solid'], .rt-AvatarRoot[data-material='solid']) & {
+      background-color: var(--color-surface-solid);
+    }
+
+    :where(.rt-AvatarRoot[data-panel-background='translucent'], .rt-AvatarRoot[data-material='translucent']) & {
+      background-color: var(--color-surface-translucent);
+    }
   }
   &:where([data-disabled]) :where(.rt-AvatarFallback) {
     color: var(--gray-a8);

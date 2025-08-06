@@ -1,11 +1,35 @@
+/**
+ * IconButton Component Styles
+ * 
+ * This file contains the core styling for the IconButton component, which
+ * extends the base button with specialized behavior for icon-only interactions.
+ * Icon buttons maintain square aspect ratios and provide consistent icon sizing
+ * across all variants and sizes.
+ * 
+ * Key features:
+ * - Square aspect ratios for consistent visual alignment
+ * - Automatic icon sizing based on button size
+ * - Specialized flush behavior for ghost variants
+ * - Responsive design with mobile-first approach
+ * - Seamless text integration with negative margins
+ */
+
 @import './_internal/base-button.css';
 
 /***************************************************************************************************
  *                                                                                                 *
  * SIZES                                                                                           *
  *                                                                                                 *
+ * Icon button sizes maintain square aspect ratios for consistent visual alignment.
+ * Each size corresponds to the same dimensions as regular buttons but ensures
+ * perfect squares for optimal icon display and touch targets.
+ *                                                                                                 *
  ***************************************************************************************************/
 
+/* 
+ * Base icon button styling that ensures square aspect ratios
+ * Uses the same height as base buttons but sets width to match
+ */
 .rt-IconButton {
   height: var(--base-button-height);
   width: var(--base-button-height);
@@ -13,28 +37,54 @@
 
 @breakpoints {
   .rt-IconButton {
+    /* 
+     * Size 1: Compact (24px x 24px)
+     * Designed for toolbars and dense interfaces
+     */
     &:where(.rt-r-size-1) {
+      /* 
+       * Icon sizing for size 1
+       * Icons are automatically sized to match the button's scale
+       */
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
         width: var(--content-icon-size-1);
         height: var(--content-icon-size-1);
       }
     }
+    
+    /* 
+     * Size 2: Standard (32px x 32px)
+     * Default size for most interface contexts
+     */
     &:where(.rt-r-size-2) {
+      /* Icon sizing for size 2 */
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
         width: var(--content-icon-size-2);
         height: var(--content-icon-size-2);
       }
     }
+    
+    /* 
+     * Size 3: Large (40px x 40px)
+     * Recommended for important actions and mobile touch targets
+     */
     &:where(.rt-r-size-3) {
+      /* Icon sizing for size 3 */
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
         width: var(--content-icon-size-3);
         height: var(--content-icon-size-3);
       }
     }
+    
+    /* 
+     * Size 4: Extra Large (48px x 48px)
+     * Designed for hero sections and maximum visual impact
+     */
     &:where(.rt-r-size-4) {
+      /* Icon sizing for size 4 */
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
         width: var(--content-icon-size-4);
@@ -43,27 +93,42 @@
     }
   }
 
+  /* 
+   * Specialized flush behavior for ghost variant icon buttons
+   * This creates seamless text integration by using negative margins
+   * to compensate for the button's padding
+   */
   .rt-IconButton:where(.rt-variant-ghost) {
     &:where([data-flush='true']) {
-      /* We reset the defined margin variables to avoid inheriting them from a higher component */
-      /* If a margin IS defined on the component itself, the utility class will win and reset it */
+      /* 
+       * Reset defined margin variables to avoid inheriting from higher components
+       * If a margin IS defined on the component itself, the utility class will win and reset it
+       */
       --margin-top: 0px;
       --margin-right: 0px;
       --margin-bottom: 0px;
       --margin-left: 0px;
 
-      /* Define the overrides to incorporate the negative margins using ghost padding */
+      /* 
+       * Define overrides to incorporate negative margins using ghost padding
+       * This creates the seamless integration effect by pulling the button
+       * closer to surrounding text
+       */
       --margin-top-override: calc(var(--margin-top) - var(--icon-button-ghost-padding));
       --margin-right-override: calc(var(--margin-right) - var(--icon-button-ghost-padding));
       --margin-bottom-override: calc(var(--margin-bottom) - var(--icon-button-ghost-padding));
       --margin-left-override: calc(var(--margin-left) - var(--icon-button-ghost-padding));
 
+      /* Apply the calculated negative margins */
       margin-top: var(--margin-top-override);
       margin-right: var(--margin-right-override);
       margin-bottom: var(--margin-bottom-override);
       margin-left: var(--margin-left-override);
 
-      /* Reset the overrides on direct children */
+      /* 
+       * Reset the overrides on direct children
+       * This prevents the negative margins from affecting child elements
+       */
       :where(&) > * {
         --margin-top-override: initial;
         --margin-right-override: initial;
@@ -72,6 +137,10 @@
       }
     }
 
+    /* 
+     * Ghost padding values for different sizes
+     * These determine the amount of negative margin applied in flush mode
+     */
     &:where(.rt-r-size-1) {
       --icon-button-ghost-padding: var(--space-1);
     }

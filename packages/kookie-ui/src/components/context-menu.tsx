@@ -1,3 +1,7 @@
+/**
+ * Context Menu component that provides right-click menu functionality.
+ * Requires client-side rendering due to event handling and portal usage.
+ */
 'use client';
 
 import * as React from 'react';
@@ -51,11 +55,34 @@ interface ContextMenuContentProps
 const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMenuContentProps>(
   (props, forwardedRef) => {
     const themeContext = useThemeContext();
+
+    // Show deprecation warning for panelBackground when used
+    React.useEffect(() => {
+      if (props.panelBackground !== undefined) {
+        console.warn(
+          'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
+        );
+      }
+    }, [props.panelBackground]);
+
+    // Material takes precedence over panelBackground
+    const effectiveMaterial =
+      props.material ?? props.panelBackground ?? themeContext.panelBackground;
+
+    // Memoize theme context values to prevent unnecessary re-renders
+    const memoizedThemeContext = React.useMemo(
+      () => ({
+        material: effectiveMaterial,
+        accentColor: themeContext.accentColor,
+      }),
+      [effectiveMaterial, themeContext.accentColor],
+    );
+
     const {
       size = contextMenuContentPropDefs.size.default,
       variant = contextMenuContentPropDefs.variant.default,
       highContrast = contextMenuContentPropDefs.highContrast.default,
-      panelBackground = props.panelBackground ?? themeContext.panelBackground,
+      material = memoizedThemeContext.material,
     } = props;
     const {
       className,
@@ -63,16 +90,23 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
       color,
       container,
       forceMount,
-      panelBackground: _,
+      material: _,
+      panelBackground: __,
       ...contentProps
     } = extractProps(props, contextMenuContentPropDefs);
-    const resolvedColor = color || themeContext.accentColor;
+
+    // Memoize color resolution to prevent unnecessary re-renders
+    const resolvedColor = React.useMemo(
+      () => color || memoizedThemeContext.accentColor,
+      [color, memoizedThemeContext.accentColor],
+    );
     return (
       <ContextMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <ContextMenuPrimitive.Content
             data-accent-color={resolvedColor}
-            data-panel-background={panelBackground}
+            data-material={material}
+            data-panel-background={material}
             alignOffset={-Number(size) * 4}
             collisionPadding={10}
             {...contentProps}
@@ -89,8 +123,8 @@ const ContextMenuContent = React.forwardRef<ContextMenuContentElement, ContextMe
               <div className={classNames('rt-BaseMenuViewport', 'rt-ContextMenuViewport')}>
                 <ContextMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast, panelBackground }),
-                    [size, variant, resolvedColor, highContrast, panelBackground],
+                    () => ({ size, variant, color: resolvedColor, highContrast, material }),
+                    [size, variant, resolvedColor, highContrast, material],
                   )}
                 >
                   {children}
@@ -305,24 +339,31 @@ ContextMenuSubTrigger.displayName = 'ContextMenu.SubTrigger';
 
 type ContextMenuSubContentElement = React.ElementRef<typeof ContextMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps
-  extends ComponentPropsWithout<typeof ContextMenuPrimitive.SubContent, RemovedProps> {
+  extends ComponentPropsWithout<typeof ContextMenuPrimitive.SubContent, RemovedProps>,
+    ContextMenuContentContextValue {
   container?: React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Portal>['container'];
 }
 const ContextMenuSubContent = React.forwardRef<
   ContextMenuSubContentElement,
   ContextMenuSubContentProps
 >((props, forwardedRef) => {
-  const { size, variant, color, highContrast, panelBackground } =
-    React.useContext(ContextMenuContentContext);
+  // Memoize context consumption to prevent unnecessary re-renders
+  const contextValue = React.useContext(ContextMenuContentContext);
+  const { size, variant, color, highContrast, material } = React.useMemo(
+    () => contextValue,
+    [contextValue],
+  );
+
   const {
     className,
     children,
     container,
     forceMount,
-    panelBackground: _,
+    material: _,
+    panelBackground: __,
     ...subContentProps
   } = extractProps(
-    { size, variant, color, highContrast, panelBackground, ...props },
+    { size, variant, color, highContrast, material, ...props },
     contextMenuContentPropDefs,
   );
   return (
@@ -330,7 +371,8 @@ const ContextMenuSubContent = React.forwardRef<
       <Theme asChild>
         <ContextMenuPrimitive.SubContent
           data-accent-color={color}
-          data-panel-background={panelBackground}
+          data-material={material}
+          data-panel-background={material}
           alignOffset={-Number(size) * 4}
           // Side offset accounts for the outer solid box-shadow
           sideOffset={1}

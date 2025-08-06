@@ -6,6 +6,7 @@ import type { GetPropDefTypes, PropDef } from '../props/prop-def.js';
 
 const appearances = ['inherit', 'light', 'dark'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
+const materials = ['solid', 'translucent'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
 
 const themePropDefs = {
@@ -45,6 +46,16 @@ const themePropDefs = {
    * @link
    * https://www.radix-ui.com/themes/docs/theme/visual-style
    */
+  material: { type: 'enum', values: materials, default: 'translucent' },
+  /**
+   * Controls whether to use a solid or translucent background color on panelled
+   * elements such as Card or Table is solid or translucent.
+   *
+   * @deprecated Use `material` prop instead. This prop will be removed in a future version.
+   *
+   * @link
+   * https://www.radix-ui.com/themes/docs/theme/visual-style
+   */
   panelBackground: { type: 'enum', values: panelBackgrounds, default: 'translucent' },
   /**
    * Sets the default radius of the components.
@@ -65,6 +76,7 @@ const themePropDefs = {
   appearance: PropDef<(typeof appearances)[number]>;
   accentColor: PropDef<(typeof accentColors)[number]>;
   grayColor: PropDef<(typeof grayColors)[number]>;
+  material: PropDef<(typeof materials)[number]>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number]>;
   radius: PropDef<(typeof radii)[number]>;
   scaling: PropDef<(typeof scalings)[number]>;

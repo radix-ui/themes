@@ -11,22 +11,22 @@
   --color-background: white;
   --color-overlay: var(--black-a6);
   --color-panel-solid: white;
-  --color-panel-translucent: rgba(255, 255, 255, var(--panel-opacity-light));
+  --color-panel-translucent: rgba(255, 255, 255, var(--panel-opacity));
   --color-surface-solid: white;
-  --color-surface-translucent: rgba(255, 255, 255, var(--surface-opacity-light));
+  --color-surface-translucent: rgba(255, 255, 255, var(--surface-opacity));
   --color-dialog-solid: white;
-  --color-dialog-translucent: rgba(255, 255, 255, var(--dialog-opacity-light));
+  --color-dialog-translucent: rgba(255, 255, 255, var(--dialog-opacity));
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --color-background: var(--gray-1);
   --color-overlay: var(--black-a8);
   --color-panel-solid: var(--gray-2);
-  --color-panel-translucent: color-mix(in srgb, var(--gray-2) var(--panel-mix-percentage), transparent);
-  --color-surface-solid: var(--gray-1);
-  --color-surface-translucent: rgba(0, 0, 0, var(--surface-opacity-dark));
+  --color-panel-translucent: color-mix(in srgb, var(--gray-2) var(--panel-opacity-percentage), transparent);
+  --color-surface-solid: var(--gray-2)  ;
+  --color-surface-translucent: color-mix(in srgb, var(--gray-2) var(--surface-opacity-percentage), transparent);
   --color-dialog-solid: var(--gray-2);
-  --color-dialog-translucent: color-mix(in srgb, var(--gray-2) var(--dialog-mix-percentage), transparent);
+  --color-dialog-translucent: color-mix(in srgb, var(--gray-2) var(--dialog-opacity-percentage), transparent);
 }
 
 /* * * * * * * * * * * * * * * * * * * */
@@ -138,7 +138,7 @@
     --backdrop-filter-components: none;
     --backdrop-filter-dialog: none;
   }
-  &:where([data-panel-background='translucent']) {
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
     --color-panel: var(--color-panel-translucent);
     --color-surface: var(--color-surface-translucent);
     --color-dialog: var(--color-dialog-translucent);

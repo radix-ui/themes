@@ -1,0 +1,94 @@
+import { ToggleButton, Flex, Box, Text, Callout } from '@kushagradhawan/kookie-ui';
+import { Bold, TriangleAlertIcon } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
+
+# Accessibility
+
+ToggleButton accessibility extends Button with specialized requirements for toggle interactions. It provides proper ARIA attributes for toggle states, enhanced screen reader support for on/off announcements, and maintains all Button accessibility features.
+
+For comprehensive documentation on shared accessibility features, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Color and Contrast
+
+ToggleButton uses the same color and contrast system as Button. For comprehensive documentation on color accessibility and high contrast support, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Keyboard Navigation
+
+ToggleButton uses the same keyboard navigation system as Button. For comprehensive documentation on keyboard accessibility, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Screen Reader Support
+
+ToggleButton extends Button's screen reader support with specialized toggle state announcements and ARIA attributes for on/off interactions.
+
+### Toggle State Announcements
+
+ToggleButton uses proper ARIA attributes to announce toggle states to screen readers. The `aria-pressed` attribute communicates the current on/off state.
+
+<CodeBlock
+  preview={
+    <Flex gap="3" wrap="wrap">
+      <ToggleButton size="3" variant="solid" pressed={true}>
+        Enable Feature
+      </ToggleButton>
+      <ToggleButton size="3" variant="solid" pressed={false}>
+        Disable Feature
+      </ToggleButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Screen readers announce "Enable Feature, pressed" */}
+<ToggleButton size="3" variant="solid" pressed={true}>
+  Enable Feature
+</ToggleButton>
+
+{/* Screen readers announce "Disable Feature, not pressed" */}
+<ToggleButton size="3" variant="solid" pressed={false}>
+  Disable Feature
+</ToggleButton>
+```
+
+</CodeBlock>
+
+**Toggle State Communication:**
+- **Pressed state:** Screen readers announce "pressed" to indicate the toggle is on
+- **Unpressed state:** Screen readers announce "not pressed" to indicate the toggle is off
+- **State changes:** Screen readers announce the new state when toggled
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>ToggleButton automatically manages aria-pressed attributes based on the pressed prop. Screen readers will announce state changes when the toggle is activated.</Callout.Text>
+</Callout.Root>
+
+## Touch Targets
+
+ToggleButton uses the same touch target system as Button. For comprehensive documentation on touch target accessibility, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Motion Preferences
+
+ToggleButton uses the same motion preferences system as Button. For comprehensive documentation on motion accessibility, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Enhanced Loading States
+
+ToggleButton uses the same enhanced loading states system as Button. For comprehensive documentation on loading state accessibility, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Tooltip Accessibility
+
+ToggleButton uses the same tooltip accessibility system as Button. For comprehensive documentation on tooltip accessibility, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+## Testing Guidelines
+
+ToggleButton uses the same testing guidelines as Button with additional focus on toggle-specific accessibility. For comprehensive documentation on accessibility testing, see the **[Button Accessibility documentation](../Button/accessibility)**.
+
+### Toggle-Specific Testing
+
+When testing ToggleButton accessibility, ensure:
+
+1. **Toggle State Announcements:** Screen readers announce "pressed" and "not pressed" states correctly
+2. **State Changes:** Screen readers announce state changes when toggled
+3. **ARIA Attributes:** aria-pressed attribute is properly managed
+4. **Keyboard Toggle:** Toggle state changes with keyboard interaction (Space/Enter)
+5. **Visual Feedback:** Pressed state provides clear visual indication 

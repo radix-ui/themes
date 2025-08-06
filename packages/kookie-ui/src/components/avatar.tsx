@@ -15,8 +15,17 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 
 interface AvatarProps extends MarginProps, AvatarImplProps {}
 const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwardedRef) => {
-  const { asChild, children, className, style, color, radius, panelBackground, ...imageProps } =
-    extractProps(props, avatarPropDefs, marginPropDefs);
+  const {
+    asChild,
+    children,
+    className,
+    style,
+    color,
+    radius,
+    material,
+    panelBackground,
+    ...imageProps
+  } = extractProps(props, avatarPropDefs, marginPropDefs);
 
   // Check if children contain a disabled element
   const isDisabled = React.useMemo(() => {
@@ -36,6 +45,7 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
     <AvatarPrimitive.Root
       data-accent-color={color}
       data-radius={radius}
+      data-material={material}
       data-panel-background={panelBackground}
       data-disabled={isDisabled || undefined}
       className={classNames('rt-reset', 'rt-AvatarRoot', className)}

@@ -69,6 +69,18 @@
   }
 }
 
+/* Enhanced reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .rt-Spinner {
+    animation: none;
+  }
+  
+  .rt-SpinnerLeaf {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
 /***************************************************************************************************
  *                                                                                                 *
  * SIZES                                                                                           *

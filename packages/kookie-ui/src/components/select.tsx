@@ -45,7 +45,18 @@ interface SelectTriggerProps
 const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>(
   (props, forwardedRef) => {
     const context = React.useContext(SelectContext);
-    const { children, className, color, radius, placeholder, ...triggerProps } = extractProps(
+    const {
+      children,
+      className,
+      color,
+      radius,
+      placeholder,
+      error,
+      loading,
+      disabled,
+      readOnly,
+      ...triggerProps
+    } = extractProps(
       // Pass size value from the context to generate styles
       { size: context?.size, ...props },
       // Pass size prop def to allow it to be extracted
@@ -56,13 +67,27 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
 
     // Extract panelBackground separately since it needs to be passed as data attribute
     const { panelBackground } = props;
+
+    const ariaProps = React.useMemo(
+      () => ({
+        'aria-invalid': error || undefined,
+        'aria-busy': loading || undefined,
+        'aria-disabled': disabled || undefined,
+        'aria-readonly': readOnly || undefined,
+      }),
+      [error, loading, disabled, readOnly],
+    );
+
     return (
       <SelectPrimitive.Trigger asChild>
         <button
           data-accent-color={color}
           data-radius={radius}
           data-panel-background={panelBackground}
+          data-error={error}
+          data-loading={loading}
           {...triggerProps}
+          {...ariaProps}
           ref={forwardedRef}
           className={classNames('rt-reset', 'rt-SelectTrigger', className)}
         >
@@ -70,7 +95,25 @@ const SelectTrigger = React.forwardRef<SelectTriggerElement, SelectTriggerProps>
             <SelectPrimitive.Value placeholder={placeholder}>{children}</SelectPrimitive.Value>
           </span>
           <SelectPrimitive.Icon asChild>
-            <ChevronDownIcon className="rt-SelectIcon" />
+            {loading ? (
+              <div className="rt-SelectIcon rt-SelectLoadingIcon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeDasharray="32"
+                    strokeDashoffset="32"
+                    className="rt-SelectLoadingIconCircle"
+                  />
+                </svg>
+              </div>
+            ) : (
+              <ChevronDownIcon className="rt-SelectIcon" />
+            )}
           </SelectPrimitive.Icon>
         </button>
       </SelectPrimitive.Trigger>

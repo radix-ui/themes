@@ -1,0 +1,32 @@
+:where(.radix-themes) {
+  --blur-factor: 1;
+  --blur-1: calc(2px * var(--scaling) * var(--blur-factor));
+  --blur-2: calc(4px * var(--scaling) * var(--blur-factor));
+  --blur-3: calc(8px * var(--scaling) * var(--blur-factor));
+  --blur-4: calc(12px * var(--scaling) * var(--blur-factor));
+  --blur-5: calc(16px * var(--scaling) * var(--blur-factor));
+  --blur-6: calc(20px * var(--scaling) * var(--blur-factor));
+  --blur-7: calc(28px * var(--scaling) * var(--blur-factor));
+  --blur-8: calc(36px * var(--scaling) * var(--blur-factor));
+  --blur-9: calc(44px * var(--scaling) * var(--blur-factor));
+}
+
+[data-blur='none'] {
+  --blur-factor: 0;
+}
+
+[data-blur='small'] {
+  --blur-factor: 0.75;
+}
+
+[data-blur='medium'] {
+  --blur-factor: 1;
+}
+
+[data-blur='large'] {
+  --blur-factor: 1.5;
+}
+
+[data-blur='extra'] {
+  --blur-factor: 2.0;
+} 

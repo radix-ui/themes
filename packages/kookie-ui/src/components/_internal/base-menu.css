@@ -13,10 +13,21 @@
   backdrop-filter: var(--backdrop-filter-panel);
   box-shadow: var(--shadow-5);
   transition: var(--transition-background-blur);
+  
+  /* GPU optimization: limit paint scope and prevent backdrop-filter layering */
+  contain: paint;
+  isolation: isolate;
 
-  /* Reduced motion support */
+  /* Optimize backdrop-filter performance during animations */
+  &:where([data-state="open"]) {
+    will-change: transform, opacity;
+  }
+
+  /* Enhanced reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
+    will-change: auto;
+    backdrop-filter: none; /* Remove blur for motion-sensitive users */
   }
 
   /* Component-level overrides (higher specificity) */
@@ -68,9 +79,16 @@
     cursor: default;
   }
 
-  /* Reduced motion support */
+  /* Focus-visible support */
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -2px;
+  }
+
+  /* Enhanced reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
+    backdrop-filter: none; /* Remove any backdrop effects for motion-sensitive users */
   }
 }
 
@@ -303,15 +321,16 @@
   background-color: var(--gray-a6);
 }
 
-/* solid */
+/* solid and soft variants - consolidated to reduce duplication */
 
-.rt-BaseMenuContent:where(.rt-variant-solid) {
+.rt-BaseMenuContent:where(.rt-variant-solid, .rt-variant-soft) {
   & :where(.rt-BaseMenuSubTrigger) {
     transition: var(--transition-menu);
     
-    /* Reduced motion support */
+    /* Enhanced reduced motion support */
     @media (prefers-reduced-motion: reduce) {
       transition: none;
+      backdrop-filter: none; /* Remove backdrop effects for motion-sensitive users */
     }
     
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
@@ -319,6 +338,17 @@
       transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
     }
   }
+  
+  & :where(.rt-BaseMenuItem) {
+    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
+    :where([data-panel-background='translucent']) & {
+      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    }
+  }
+}
+
+/* solid variant specific styles */
+.rt-BaseMenuContent:where(.rt-variant-solid) {
   & :where(.rt-BaseMenuSubTrigger[data-state='open']) {
     /* Base state: solid gray for solid panels */
     background-color: var(--gray-3);
@@ -341,12 +371,7 @@
       /* No backdrop-filter here to prevent double-blur with container */
     }
   }
-  & :where(.rt-BaseMenuItem) {
-    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
-    :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
-    }
-  }
+  
   & :where(.rt-BaseMenuItem[data-highlighted]) {
     background-color: var(--accent-9);
     color: var(--accent-contrast);
@@ -365,6 +390,7 @@
       color: inherit !important;
     }
   }
+  
   &:where(.rt-high-contrast) {
     & :where(.rt-BaseMenuItem[data-highlighted]) {
       background-color: var(--accent-12);
@@ -400,22 +426,8 @@
   }
 }
 
-/* soft */
-
+/* soft variant specific styles */
 .rt-BaseMenuContent:where(.rt-variant-soft) {
-  & :where(.rt-BaseMenuSubTrigger) {
-    transition: var(--transition-menu);
-    
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
-    
-    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
-    :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
-    }
-  }
   & :where(.rt-BaseMenuSubTrigger[data-state='open']) {
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-3);
@@ -438,12 +450,7 @@
       /* No backdrop-filter here to prevent double-blur with container */
     }
   }
-  & :where(.rt-BaseMenuItem) {
-    /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
-    :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
-    }
-  }
+  
   & :where(.rt-BaseMenuItem[data-highlighted]) {
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-4);
@@ -470,5 +477,21 @@
     & :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
       color: var(--gray-11) !important;
     }
+  }
+}
+
+/* Forced colors support */
+@media (forced-colors: active) {
+  .rt-BaseMenuItem:where(:focus-visible) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  
+  .rt-BaseMenuContent {
+    border: 1px solid CanvasText;
+  }
+  
+  .rt-BaseMenuSeparator {
+    background-color: CanvasText;
   }
 }

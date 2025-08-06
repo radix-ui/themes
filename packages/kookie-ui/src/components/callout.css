@@ -7,8 +7,44 @@
   color: var(--accent-a11);
   transition: var(--transition-card);
 
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parents */
+  isolation: isolate;
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
+  }
+
+  /* Focus styles for accessibility */
+  &:where(:focus-visible) {
+    outline: 2px solid var(--accent-8);
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  /* Forced colors support */
+  @media (forced-colors: active) {
+    border: 1px solid CanvasText;
   }
 }
 
@@ -75,56 +111,56 @@
 /* soft */
 
 .rt-CalloutRoot:where(.rt-variant-soft) {
-  /* Base state: solid colors for solid panels */
-  background-color: var(--accent-3);
+  /* Base state: solid color for solid panels */
+  background-color: var(--accent-2);
+  color: var(--accent-a11);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a3);
-    backdrop-filter: var(--backdrop-filter-panel);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    background-color: var(--accent-3);
-    backdrop-filter: none;
-    --backdrop-filter-panel: none;
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--accent-2);
   }
 
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--accent-a3);
-    backdrop-filter: var(--backdrop-filter-panel);
-    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
   }
 }
 
 /* surface */
 
 .rt-CalloutRoot:where(.rt-variant-surface) {
-  /* Base state: solid colors for solid panels */
+  /* Base state: solid accent for solid panels */
   background-color: var(--accent-2);
-  box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-6);
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  color: var(--accent-a11);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a6);
-    backdrop-filter: var(--backdrop-filter-panel);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
+  &:where([data-panel-background='solid'], [data-material='solid']) {
     background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-6);
-    backdrop-filter: none;
-    --backdrop-filter-panel: none;
+    box-shadow: inset 0 0 0 1px var(--accent-6);
   }
 
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a6);
-    backdrop-filter: var(--backdrop-filter-panel);
-    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
   }
 }
 
@@ -132,19 +168,70 @@
 
 .rt-CalloutRoot:where(.rt-variant-outline) {
   /* Base state: solid colors for solid panels */
-  box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-7);
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  color: var(--accent-11);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a7);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+    color: var(--accent-a11);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-7);
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    box-shadow: inset 0 0 0 1px var(--accent-6);
+    color: var(--accent-11);
   }
 
-  &:where([data-panel-background='translucent']) {
-    box-shadow: inset 0 0 0 var(--border-width-standard) var(--accent-a7);
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+    color: var(--accent-a11);
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+}
+
+/* classic */
+
+.rt-CalloutRoot:where(.rt-variant-classic) {
+  /* Base state: solid surface for solid panels */
+  background-color: var(--color-surface-solid);
+  box-shadow: var(--shadow-2);
+  color: var(--accent-a11);
+  transition: var(--transition-text-field);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: var(--color-surface-translucent);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--color-surface-solid);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: var(--color-surface-translucent);
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+    background-color: var(--color-surface-solid);
+
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: var(--color-surface-translucent);
+    }
+
+    /* Component-level overrides for high contrast */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--color-surface-solid);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: var(--color-surface-translucent);
+    }
   }
 }

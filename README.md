@@ -1,40 +1,44 @@
 # Kookie UI
 
-**A fork of Radix Themes - An open-source component library optimized for fast development, easy maintenance, and accessibility.**
+**A beautiful React component library built on top of Radix UI Themes.**
 
-Built on top of the excellent foundation provided by [Radix UI](https://radix-ui.com/).
+Kookie UI is a fork of [Radix Themes](https://radix-ui.com/themes) that maintains full API compatibility while introducing enhanced styling, improved accessibility, and additional features for modern web applications.
 
----
+## Features
+
+- 🎨 **Enhanced Design System** - Improved styling and visual hierarchy
+- ♿ **Accessibility First** - Built-in ARIA support and keyboard navigation
+- 🚀 **TypeScript Ready** - Full type safety and IntelliSense support
+- 📱 **Responsive** - Mobile-first design with flexible layouts
+- 🎯 **Developer Experience** - Intuitive API and comprehensive documentation
+
+## Quick Start
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+```tsx
+import { Button, Card, Text } from '@kushagradhawan/kookie-ui';
+
+export default function App() {
+  return (
+    <Card>
+      <Text>Hello from Kookie UI!</Text>
+      <Button>Get Started</Button>
+    </Card>
+  );
+}
+```
 
 ## Documentation
 
-This is a fork of Radix Themes with custom styling enhancements. For base documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/themes/docs).
+Visit our [documentation](https://your-docs-url.com) for comprehensive guides, API references, and examples.
 
-## Releases
+## Credits
 
-For original Radix Themes releases, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
-
-## Original Authors
-
-- Benoît Grélard ([@benoitgrelard](https://twitter.com/benoitgrelard))
-- Vlad Moroz ([@vladyslavmoroz](https://twitter.com/vladyslavmoroz))
-- Andy Hook ([@Andy_Hook](https://twitter.com/Andy_Hook))
-- Lucas Motta ([@elmotta](https://twitter.com/elmotta))
-
----
-
-## Community
-
-See our [contribution guidelines](./.github/CONTRIBUTING.md) for information on local development and creating a pull request.
-
-- [Github Discussions](https://github.com/radix-ui/themes/discussions) - Ask questions and get answers from other community members.
-- [Discord](https://discord.com/invite/7Xb99uG) - To get involved with the Radix community, ask questions and share tips.
-- [Twitter](https://twitter.com/radix_ui) - To receive updates, announcements, blog posts, and general Radix tips.
+This project is built on the excellent foundation of [Radix UI](https://radix-ui.com/) and [Radix Themes](https://radix-ui.com/themes). Thank you to the Radix team for creating such a solid base for modern React applications.
 
 ## License
 
-Licensed under the MIT License, Copyright © 2023-present [WorkOS](https://workos.com).
-
-This project is a fork of [Radix Themes](https://github.com/radix-ui/themes) and maintains the original license.
-
-See [LICENSE](./LICENSE) for more information.
+MIT License - see [LICENSE](./LICENSE) for details.

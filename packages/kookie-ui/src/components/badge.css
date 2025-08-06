@@ -1,6 +1,3 @@
-/* stylelint-disable selector-max-type */
-/* Disable selector-max-type rule to target individual element types. */
-
 .rt-Badge {
   display: inline-flex;
   align-items: center;
@@ -21,10 +18,38 @@
   /* Force Chrome to recalculate styles when radius changes */
   will-change: border-radius;
 
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parents */
+  isolation: isolate;
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
+
+  /* Forced colors support */
+  @media (forced-colors: active) {
+    border: 1px solid CanvasText;
+    color: CanvasText;
+    background-color: Canvas;
+  }
+
 }
 
 /***************************************************************************************************
@@ -55,7 +80,7 @@
       letter-spacing: var(--letter-spacing-1);
       padding: var(--space-1) var(--space-2);
       gap: calc(var(--space-1) * 1.5);
-      border-radius: max(var(--radius-2), var(--radius-full));
+      border-radius: max(var(--radius-1), var(--radius-full));
       
       /* Ghost variant gets reduced padding */
       &:where(.rt-variant-ghost) {
@@ -77,6 +102,20 @@
         gap: calc(var(--space-1) * 1.5);
       }
     }
+    &:where(.rt-r-size-4) {
+      font-size: var(--font-size-3);
+      line-height: var(--line-height-3);
+      letter-spacing: var(--letter-spacing-3);
+      padding: calc(var(--space-1) * 1.25) calc(var(--space-2) * 1.5);
+      gap: calc(var(--space-2) * 1.25);
+      border-radius: max(var(--radius-3), var(--radius-full));
+      
+      /* Ghost variant gets reduced padding */
+      &:where(.rt-variant-ghost) {
+        padding: var(--space-1) calc(var(--space-2) * 1.25);
+        gap: var(--space-2);
+      }
+    }
   }
 }
 
@@ -89,22 +128,52 @@
 /* solid */
 
 .rt-Badge:where(.rt-variant-solid) {
+  /* Base state: solid color for solid panels */
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 
-  &::selection {
-    background-color: var(--accent-7);
-    color: var(--accent-12);
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a9), var(--accent-9) 10%);
   }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--accent-9);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a9), var(--accent-9) 10%);
+  }
+
 
   &:where(.rt-high-contrast) {
     background-color: var(--accent-12);
-    color: var(--accent-1);
+    color: var(--gray-1);
 
-    &::selection {
-      background-color: var(--accent-a11);
-      color: var(--accent-1);
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
     }
+
+    /* Component-level overrides for high contrast */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-12);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
+    }
+
+
+  }
+  &:where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    outline: none;
+    filter: none;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -113,29 +182,24 @@
 .rt-Badge:where(.rt-variant-surface) {
   /* Base state: solid accent for solid panels */
   background-color: var(--accent-2);
-  box-shadow: inset 0 0 0 1px var(--accent-7);
+  box-shadow: inset 0 0 0 1px var(--accent-6);
   color: var(--accent-a11);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 1px var(--accent-a7);
-    backdrop-filter: var(--backdrop-filter-components);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
+  &:where([data-panel-background='solid'], [data-material='solid']) {
     background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 1px var(--accent-7);
-    backdrop-filter: none;
-    --backdrop-filter-components: none;
+    box-shadow: inset 0 0 0 1px var(--accent-6);
   }
 
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 1px var(--accent-a7);
-    backdrop-filter: var(--backdrop-filter-components);
-    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
   &:where(.rt-high-contrast) {
@@ -143,73 +207,81 @@
   }
 }
 
-/* soft */
+/* soft / ghost */
 
-.rt-Badge:where(.rt-variant-soft) {
-  /* Base state: solid accent for solid panels */
-  background-color: var(--accent-3);
+.rt-Badge:where(.rt-variant-soft, .rt-variant-ghost) {
   color: var(--accent-a11);
 
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+  &:where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.rt-Badge:where(.rt-variant-soft) {
+  /* Base state: solid color for solid panels */
+  background-color: var(--accent-3);
+
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a3);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
     backdrop-filter: var(--backdrop-filter-components);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
+  &:where([data-panel-background='solid'], [data-material='solid']) {
     background-color: var(--accent-3);
     backdrop-filter: none;
     --backdrop-filter-components: none;
   }
 
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--accent-a3);
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
     backdrop-filter: var(--backdrop-filter-components);
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
 
-  &:where(.rt-high-contrast) {
-    color: var(--accent-12);
+
+  &:where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
 /* outline */
 
 .rt-Badge:where(.rt-variant-outline) {
-  /* Base state: solid accent for solid panels */
-  background-color: transparent;
-  box-shadow: inset 0 0 0 1px var(--accent-7);
-  color: var(--accent-a11);
+  /* Base state: solid colors for solid panels */
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  color: var(--accent-11);
+  transition: var(--transition-background-blur);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    box-shadow: inset 0 0 0 1px var(--accent-a8);
-    backdrop-filter: var(--backdrop-filter-components);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+    color: var(--accent-a11);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    box-shadow: inset 0 0 0 1px var(--accent-7);
-    backdrop-filter: none;
-    --backdrop-filter-components: none;
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    box-shadow: inset 0 0 0 1px var(--accent-6);
+    color: var(--accent-11);
   }
 
-  &:where([data-panel-background='translucent']) {
-    box-shadow: inset 0 0 0 1px var(--accent-a8);
-    backdrop-filter: var(--backdrop-filter-components);
-    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+    color: var(--accent-a11);
   }
 
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
-    
-    /* High contrast adjustments */
-    box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
-    
-    :where([data-panel-background='translucent']) & {
-      box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
-    }
   }
 }
 
@@ -231,94 +303,44 @@
   position: relative;
   top: var(--classic-elevation-offset);
   color: var(--accent-a11);
-  background-color: var(--accent-2);
-      /* prettier-ignore */
-    box-shadow:
-      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-      inset 0 var(--classic-border-width) var(--white-a12),
-      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-      inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-      0 0 0 var(--classic-border-width) var(--accent-a5),
-      0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7);
+  background-color: var(--color-surface-solid);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-text-field);
 
-  :where(.dark, .dark-theme) &,
-  :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-          /* prettier-ignore */
-      box-shadow:
-        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-        inset 0 var(--classic-border-width) var(--accent-a11),
-        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-        inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
-        0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: var(--color-surface-translucent);
   }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--color-surface-solid);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: var(--color-surface-translucent);
+  }
+
+  /* Dark mode uses same styling as light mode for simplicity */
 
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
-    background-color: var(--accent-2);
+    background-color: var(--color-surface-solid);
+
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: var(--color-surface-translucent);
+    }
+
+    /* Component-level overrides for high contrast */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--color-surface-solid);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: var(--color-surface-translucent);
+    }
   }
 
-  &:where(:any-link, button) {
-    @media (hover: hover) {
-      &:where(:hover) {
-        background-color: var(--accent-3);
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 var(--classic-border-width) var(--white-a12),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-          0 0 0 var(--classic-border-width) var(--accent-a5),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7),
-          0 0 0 var(--classic-border-width) var(--accent-a5);
 
-        :where(.dark, .dark-theme) &,
-        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-          /* prettier-ignore */
-          box-shadow:
-            inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-            inset 0 var(--classic-border-width) var(--accent-a11),
-            inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-            inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
-            0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-            0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
-            0 0 0 var(--classic-border-width) var(--accent-a5);
-        }
-      }
-    }
-    &:where([data-state='open']) {
-      background-color: var(--accent-3);
-              /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 var(--classic-border-width) var(--white-a12),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 calc(-1 * var(--classic-border-width)) var(--accent-a6),
-          0 0 0 var(--classic-border-width) var(--accent-a5),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--accent-a7),
-          0 0 0 var(--classic-border-width) var(--accent-a5);
-
-      :where(.dark, .dark-theme) &,
-      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--accent-a3),
-          inset 0 var(--classic-border-width) var(--accent-a11),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--accent-a2),
-          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
-          0 0 0 var(--classic-border-width-thick) var(--accent-a7),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
-          0 0 0 var(--classic-border-width) var(--accent-a5);
-      }
-    }
-    &:where(:active:not([data-state='open'])) {
-      padding-top: calc(var(--space-1) * 0.75);
-      padding-bottom: calc(var(--space-1) * 0.25);
-      background-color: var(--accent-3);
-      box-shadow: inset 0 var(--classic-border-width) var(--black-a3), 0 0 0 var(--classic-border-width) var(--accent-a7);
-    }
-    &:where(:focus-visible) {
-      outline: 2px solid var(--focus-8);
-    }
-  }
 }

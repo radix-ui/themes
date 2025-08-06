@@ -12,6 +12,26 @@
   /* Allows the `resize` property to work on the div */
   overflow: hidden;
 
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parents */
+  isolation: isolate;
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
   &:where(:focus-within) {
     outline: 2px solid var(--text-area-focus-color, var(--focus-8));
     outline-offset: -1px;
@@ -95,12 +115,12 @@
   .rt-TextAreaRoot {
     &:where(.rt-r-size-1) {
       min-height: var(--space-8);
-      border-radius: var(--radius-2);
+      border-radius: var(--radius-3);
 
       & :where(.rt-TextAreaInput) {
         /* Clip text to border */
-        --text-area-padding-y: calc(var(--space-1) - var(--text-area-border-width));
-        --text-area-padding-x: calc(var(--space-1) * 1.5 - var(--text-area-border-width));
+        --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
+        --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
@@ -108,12 +128,12 @@
     }
     &:where(.rt-r-size-2) {
       min-height: var(--space-9);
-      border-radius: var(--radius-2);
+      border-radius: var(--radius-4);
 
       & :where(.rt-TextAreaInput) {
         /* Clip text to border */
-        --text-area-padding-y: calc(var(--space-1) * 1.5 - var(--text-area-border-width));
-        --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
+        --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
+        --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
@@ -121,12 +141,12 @@
     }
     &:where(.rt-r-size-3) {
       min-height: 80px;
-      border-radius: var(--radius-3);
+      border-radius: var(--radius-5);
 
       & :where(.rt-TextAreaInput) {
         /* Clip text to border */
-        --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
-        --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
+        --text-area-padding-y: calc(var(--space-3) - var(--text-area-border-width));
+        --text-area-padding-x: calc(var(--space-4) - var(--text-area-border-width));
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
         letter-spacing: var(--letter-spacing-3);
@@ -147,32 +167,46 @@
   --text-area-focus-color: var(--focus-8);
   --text-area-border-width: 1px;
 
-  /* Blend inner shadow with page background */
-  background-clip: content-box;
-  background-color: var(--color-surface);
-  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
-  color: var(--gray-12);
+  /* Base state: solid colors for solid panels */
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  transition: var(--transition-background-blur);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    backdrop-filter: var(--backdrop-filter-components);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
-  /* Component-level overrides for surface variant */
-  &:where([data-panel-background='solid']) {
-    --color-surface: var(--color-surface-solid);
-    backdrop-filter: none;
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    box-shadow: inset 0 0 0 1px var(--accent-6);
   }
 
-  &:where([data-panel-background='translucent']) {
-    --color-surface: var(--color-surface-translucent);
-    backdrop-filter: var(--backdrop-filter-components);
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
   /* Hover effects */
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a8);
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+      
+              /* Theme-level translucent override for hover */
+        :where([data-panel-background='translucent'], [data-material='translucent']) & {
+          background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+          box-shadow: inset 0 0 0 1px var(--accent-a7);
+        }
+
+        /* Component-level overrides for hover */
+        &:where([data-panel-background='solid'], [data-material='solid']) {
+          background-color: var(--accent-2);
+          box-shadow: inset 0 0 0 1px var(--accent-7);
+        }
+
+        &:where([data-panel-background='translucent'], [data-material='translucent']) {
+          background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+          box-shadow: inset 0 0 0 1px var(--accent-a7);
+        }
     }
   }
 
@@ -202,53 +236,50 @@
   --text-area-focus-color: var(--focus-8);
   --text-area-border-width: 0px;
 
-  position: relative;
-  top: calc(var(--classic-elevation-offset) / 3); /* More pronounced than before */
-  background-color: var(--color-surface);
-  color: var(--gray-12);
-
-  /* 3D inset effect - same as TextField */
-  /* prettier-ignore */
-      box-shadow:
-      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / 1.5) var(--gray-a4),
-      inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a2),
-      inset 0 calc(var(--classic-border-width) * 2) calc(var(--classic-shadow-blur-medium) / 3) var(--gray-a3),
-      0 0 0 var(--classic-border-width) var(--gray-a5);
+  /* Base state: solid surface for solid panels */
+  background-color: var(--color-surface-solid);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-text-field);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    backdrop-filter: var(--backdrop-filter-components);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: var(--color-surface-translucent);
   }
 
-  /* Component-level overrides for surface variant */
-  &:where([data-panel-background='solid']) {
-    --color-surface: var(--color-surface-solid);
-    backdrop-filter: none;
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--color-surface-solid);
   }
 
-  &:where([data-panel-background='translucent']) {
-    --color-surface: var(--color-surface-translucent);
-    backdrop-filter: var(--backdrop-filter-components);
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: var(--color-surface-translucent);
   }
 
-  /* Hover effects - slightly reduced inset */
+  /* Hover effects */
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      /* prettier-ignore */
-          box-shadow:
-      inset 0 calc(var(--classic-border-width) / 1.5) calc(var(--classic-shadow-blur-small) / 2) var(--gray-a3),
-      inset 0 calc(-1 * var(--classic-border-width) / 1.5) var(--gray-a2),
-      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / 4) var(--gray-a3),
-      0 0 0 var(--classic-border-width) var(--gray-a6);
+      background-color: var(--accent-2);
+      box-shadow: var(--shadow-2);
+
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-2);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+      }
     }
   }
 
   /* Focus state - accent ring with minimal inset */
   &:where(:has(.rt-TextAreaInput:focus)) {
-    /* prettier-ignore */
-    box-shadow:
-      inset 0 calc(var(--classic-border-width) / 2) calc(var(--classic-shadow-blur-small) / 3) var(--gray-a2),
-      0 0 0 2px var(--focus-8);
+    box-shadow: var(--shadow-2), 0 0 0 2px var(--focus-8);
   }
 
   & :where(.rt-TextAreaInput) {
@@ -277,51 +308,41 @@
   --text-area-focus-color: var(--accent-8);
   --text-area-border-width: 0px;
 
-  /* Base state: solid accent for solid panels */
+  /* Base state: solid color for solid panels */
   background-color: var(--accent-3);
-  color: var(--accent-12);
+  transition: var(--transition-background-blur);
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a3);
-    backdrop-filter: var(--backdrop-filter-components);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
+  &:where([data-panel-background='solid'], [data-material='solid']) {
     background-color: var(--accent-3);
-    backdrop-filter: none;
-    --backdrop-filter-components: none;
   }
 
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--accent-a3);
-    backdrop-filter: var(--backdrop-filter-components);
-    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
   }
 
   /* Hover effects */
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      /* Base state: solid accent for solid panels */
       background-color: var(--accent-4);
-
+      
       /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a4);
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
       }
 
       /* Component-level overrides for hover */
-      &:where([data-panel-background='solid']) {
+      &:where([data-panel-background='solid'], [data-material='solid']) {
         background-color: var(--accent-4);
-        backdrop-filter: none;
-        --backdrop-filter-components: none;
       }
 
-      &:where([data-panel-background='translucent']) {
-        background-color: var(--accent-a4);
-        backdrop-filter: var(--backdrop-filter-components);
-        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
       }
     }
   }
@@ -363,31 +384,26 @@
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
       /* Base state: solid accent for solid panels */
-      background-color: var(--accent-2);
-
+      background-color: var(--accent-3);
+      
       /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
       }
 
       /* Component-level overrides for hover */
-      &:where([data-panel-background='solid']) {
-        background-color: var(--accent-2);
-        backdrop-filter: none;
-        --backdrop-filter-components: none;
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
       }
 
-      &:where([data-panel-background='translucent']) {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
-        --backdrop-filter-components: blur(var(--backdrop-blur-components));
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
       }
 
       /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
         backdrop-filter: none !important;
-      }
+      } */
     }
   }
 
@@ -397,26 +413,23 @@
     background-color: var(--accent-2);
 
     /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: var(--accent-a2);
-      backdrop-filter: var(--backdrop-filter-components);
     }
 
     /* Component-level overrides */
-    &:where([data-panel-background='solid']) {
+    &:where([data-panel-background='solid'], [data-material='solid']) {
       background-color: var(--accent-2);
-      backdrop-filter: none;
     }
 
-    &:where([data-panel-background='translucent']) {
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
       background-color: var(--accent-a2);
-      backdrop-filter: var(--backdrop-filter-components);
     }
 
     /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
       backdrop-filter: none !important;
-    }
+    } */
   }
 
   /* prettier-ignore */
@@ -437,23 +450,26 @@
   --text-area-focus-color: var(--accent-8);
   --text-area-border-width: 1px;
 
-  background-color: transparent;
-  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-7);
-  color: var(--gray-12);
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px var(--accent-6);
   transition: var(--transition-background-blur);
 
-  /* Theme-level panel awareness (NO backdrop filter for true transparency) */
-  :where([data-panel-background='translucent']) & {
-    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a7);
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
-  /* Component-level overrides */
-  &:where([data-panel-background='solid']) {
-    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-7);
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-6);
   }
 
-  &:where([data-panel-background='translucent']) {
-    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a7);
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
   }
 
   & :where(.rt-TextAreaInput) {
@@ -465,31 +481,24 @@
   /* Hover effects */
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      /* Base state: solid accent for solid panels */
-      background-color: var(--accent-2);
-
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+      
       /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
       }
 
       /* Component-level overrides for hover */
-      &:where([data-panel-background='solid']) {
-        background-color: var(--accent-2);
-        backdrop-filter: none;
-        --backdrop-filter-components: none;
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+        box-shadow: inset 0 0 0 1px var(--accent-7);
       }
 
-      &:where([data-panel-background='translucent']) {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
-        --backdrop-filter-components: blur(var(--backdrop-blur-components));
-      }
-
-      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-        backdrop-filter: none !important;
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
       }
     }
   }
@@ -501,29 +510,26 @@
     box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
 
     /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: var(--accent-a2);
       box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
-      backdrop-filter: var(--backdrop-filter-components);
     }
 
     /* Component-level overrides */
-    &:where([data-panel-background='solid']) {
+    &:where([data-panel-background='solid'], [data-material='solid']) {
       background-color: var(--accent-2);
       box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
-      backdrop-filter: none;
     }
 
-    &:where([data-panel-background='translucent']) {
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
       background-color: var(--accent-a2);
       box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
-      backdrop-filter: var(--backdrop-filter-components);
     }
 
     /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
       backdrop-filter: none !important;
-    }
+    } */
   }
 
   /* prettier-ignore */
@@ -559,4 +565,80 @@
       --text-area-focus-color: var(--gray-8);
     }
   }
+}
+
+/* Error state styling */
+.rt-TextAreaRoot:where(.rt-error) {
+  --text-area-selection-color: var(--red-a5);
+  --text-area-focus-color: var(--red-8);
+}
+
+.rt-TextAreaRoot:where(.rt-error.rt-variant-outline) {
+  box-shadow: inset 0 0 0 1px var(--red-6);
+  
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      box-shadow: inset 0 0 0 1px var(--red-7);
+    }
+  }
+}
+
+.rt-TextAreaRoot:where(.rt-error.rt-variant-surface) {
+  box-shadow: inset 0 0 0 1px var(--red-6);
+  
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      box-shadow: inset 0 0 0 1px var(--red-7);
+    }
+  }
+}
+
+.rt-TextAreaRoot:where(.rt-error.rt-variant-classic) {
+  box-shadow: var(--shadow-2), inset 0 0 0 1px var(--red-6);
+  
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      box-shadow: var(--shadow-3), inset 0 0 0 1px var(--red-7);
+    }
+  }
+}
+
+.rt-TextAreaRoot:where(.rt-error.rt-variant-soft) {
+  background-color: var(--red-2);
+  
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      background-color: var(--red-4);
+    }
+  }
+}
+
+.rt-TextAreaRoot:where(.rt-error.rt-variant-ghost) {
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      background-color: var(--red-3);
+    }
+  }
+  
+  &:where(:focus-within) {
+    background-color: var(--red-2);
+  }
+}
+
+/* Error message styling */
+.rt-TextAreaErrorMessage {
+  color: var(--red-11);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.rt-TextAreaErrorMessage::before {
+  content: "⚠";
+  color: var(--red-9);
+  font-size: var(--font-size-1);
+  line-height: 1;
 }

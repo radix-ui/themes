@@ -1,0 +1,72 @@
+# Changelog
+
+All notable changes to the IconButton component will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- **BREAKING**: Runtime accessibility validation for production environments
+- **BREAKING**: Keyboard event handling for Enter and Space key activation
+- Enhanced WCAG 2.2 AA compliance with proper focus management
+- Improved error messaging for missing accessible names
+
+### Changed
+- **BREAKING**: Development-only accessibility warnings replaced with runtime validation
+- Enhanced keyboard accessibility with proper Enter/Space key handling
+- Better error handling for accessibility violations in production
+
+### Fixed
+- **WCAG 2.1.1 Keyboard (Level A)**: Added Enter and Space key activation support
+- **WCAG 4.1.2 Name, Role, Value**: Runtime enforcement of accessible names
+- Improved focus management for tooltip interactions
+- Enhanced error messages for accessibility compliance
+
+## [1.0.0] - 2024-01-15
+
+### Added
+- Initial release of IconButton component with comprehensive icon-only functionality
+- Four size options (1, 2, 3, 4) with square aspect ratios
+- Six visual variants: solid, outline, soft, ghost, surface, classic
+- Comprehensive color system with semantic options (blue, mint, orange, crimson, gray)
+- Full accessibility support with keyboard navigation and screen reader compatibility
+- Loading states with visual feedback and ARIA announcements
+- Disabled states with proper ARIA attributes and visual indicators
+- Polymorphic rendering with `as` prop and `asChild` support
+- High contrast mode for enhanced visibility
+- Responsive design with breakpoint support
+- Flush behavior for seamless text integration
+- Tooltip system with customizable positioning and timing
+- Form integration with submit and reset functionality
+- Panel background support for both solid and translucent materials
+- Enhanced accessibility features with mandatory labeling requirements
+- Automatic icon sizing system that scales with button size
+- Square aspect ratios for consistent visual alignment in toolbars and grids
+- Built-in tooltip integration for icon-only interactions
+- Advanced tooltip positioning and timing controls
+- Material support for both solid and translucent interfaces
+
+### Changed
+- Systematic icon sizing that follows Button typography scale (12px → 16px → 18px → 20px)
+- Improved visual rhythm and consistency across all interface elements
+- Enhanced integration with overall design system tokens
+- Better accessibility compliance with WCAG 2.1 standards
+
+### Fixed
+- Runtime validation of accessibility requirements with development warnings
+- Enhanced ARIA attribute support for screen reader compatibility
+- Automatic icon size application through CSS custom properties
+- Prevention of manual icon sizing that could break visual consistency
+- Improved focus management and keyboard navigation
+- Better touch target sizing for mobile accessibility
+
+### Technical
+- Built on Radix UI primitives for robust accessibility foundation
+- CSS custom properties for comprehensive theming support
+- TypeScript support with comprehensive type definitions
+- Design token integration for consistent spacing, sizing, and colors
+- Systematic color contrast calculations meeting WCAG standards
+- Motion preference support for users with vestibular disorders
+- Touch target optimization for mobile and accessibility compliance 

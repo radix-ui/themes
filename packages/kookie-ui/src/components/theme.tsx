@@ -15,6 +15,7 @@ const noop = () => {};
 type ThemeAppearance = (typeof themePropDefs.appearance.values)[number];
 type ThemeAccentColor = (typeof themePropDefs.accentColor.values)[number];
 type ThemeGrayColor = (typeof themePropDefs.grayColor.values)[number];
+type ThemeMaterial = (typeof themePropDefs.material.values)[number];
 type ThemePanelBackground = (typeof themePropDefs.panelBackground.values)[number];
 type ThemeRadius = (typeof themePropDefs.radius.values)[number];
 type ThemeScaling = (typeof themePropDefs.scaling.values)[number];
@@ -23,6 +24,7 @@ interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeAppearance) => void;
   onAccentColorChange: (accentColor: ThemeAccentColor) => void;
   onGrayColorChange: (grayColor: ThemeGrayColor) => void;
+  onMaterialChange: (material: ThemeMaterial) => void;
   onPanelBackgroundChange: (panelBackground: ThemePanelBackground) => void;
   onRadiusChange: (radius: ThemeRadius) => void;
   onScalingChange: (scaling: ThemeScaling) => void;
@@ -33,6 +35,7 @@ interface ThemeContextValue extends ThemeChangeHandlers {
   accentColor: ThemeAccentColor;
   grayColor: ThemeGrayColor;
   resolvedGrayColor: ThemeGrayColor;
+  material: ThemeMaterial;
   panelBackground: ThemePanelBackground;
   radius: ThemeRadius;
   scaling: ThemeScaling;
@@ -70,12 +73,23 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
       appearance: appearanceProp = themePropDefs.appearance.default,
       accentColor: accentColorProp = themePropDefs.accentColor.default,
       grayColor: grayColorProp = themePropDefs.grayColor.default,
+      material: materialProp = themePropDefs.material.default,
       panelBackground: panelBackgroundProp = themePropDefs.panelBackground.default,
       radius: radiusProp = themePropDefs.radius.default,
       scaling: scalingProp = themePropDefs.scaling.default,
       hasBackground = themePropDefs.hasBackground.default,
       ...rootProps
     } = props;
+
+    // Show deprecation warning for panelBackground when used
+    React.useEffect(() => {
+      if (props.panelBackground !== undefined) {
+        console.warn(
+          'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
+        );
+      }
+    }, [props.panelBackground]);
+
     const [appearance, setAppearance] = React.useState(appearanceProp);
     React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
 
@@ -85,8 +99,15 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
     const [grayColor, setGrayColor] = React.useState(grayColorProp);
     React.useEffect(() => setGrayColor(grayColorProp), [grayColorProp]);
 
+    // Material takes precedence over panelBackground
+    const effectiveMaterial =
+      materialProp !== themePropDefs.material.default ? materialProp : panelBackgroundProp;
+    const [material, setMaterial] = React.useState(effectiveMaterial);
+    React.useEffect(() => setMaterial(effectiveMaterial), [effectiveMaterial]);
+
+    // Keep panelBackground in sync with material for backward compatibility
     const [panelBackground, setPanelBackground] = React.useState(panelBackgroundProp);
-    React.useEffect(() => setPanelBackground(panelBackgroundProp), [panelBackgroundProp]);
+    React.useEffect(() => setPanelBackground(material), [material]);
 
     const [radius, setRadius] = React.useState(radiusProp);
     React.useEffect(() => setRadius(radiusProp), [radiusProp]);
@@ -104,6 +125,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         appearance={appearance}
         accentColor={accentColor}
         grayColor={grayColor}
+        material={material}
         panelBackground={panelBackground}
         radius={radius}
         scaling={scaling}
@@ -111,6 +133,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         onAppearanceChange={setAppearance}
         onAccentColorChange={setAccentColor}
         onGrayColorChange={setGrayColor}
+        onMaterialChange={setMaterial}
         onPanelBackgroundChange={setPanelBackground}
         onRadiusChange={setRadius}
         onScalingChange={setScaling}
@@ -138,6 +161,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     appearance = props.appearance ?? context?.appearance ?? themePropDefs.appearance.default,
     accentColor = props.accentColor ?? context?.accentColor ?? themePropDefs.accentColor.default,
     grayColor = props.grayColor ?? context?.resolvedGrayColor ?? themePropDefs.grayColor.default,
+    material = props.material ?? context?.material ?? themePropDefs.material.default,
     panelBackground = props.panelBackground ??
       context?.panelBackground ??
       themePropDefs.panelBackground.default,
@@ -147,6 +171,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     onAppearanceChange = noop,
     onAccentColorChange = noop,
     onGrayColorChange = noop,
+    onMaterialChange = noop,
     onPanelBackgroundChange = noop,
     onRadiusChange = noop,
     onScalingChange = noop,
@@ -166,6 +191,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           accentColor,
           grayColor,
           resolvedGrayColor,
+          material,
           panelBackground,
           radius,
           scaling,
@@ -173,6 +199,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onAppearanceChange,
           onAccentColorChange,
           onGrayColorChange,
+          onMaterialChange,
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
@@ -182,6 +209,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           accentColor,
           grayColor,
           resolvedGrayColor,
+          material,
           panelBackground,
           radius,
           scaling,
@@ -189,6 +217,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onAppearanceChange,
           onAccentColorChange,
           onGrayColorChange,
+          onMaterialChange,
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
@@ -201,6 +230,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         data-gray-color={resolvedGrayColor}
         // for nested `Theme` background
         data-has-background={hasBackground ? 'true' : 'false'}
+        data-material={material}
         data-panel-background={panelBackground}
         data-radius={radius}
         data-scaling={scaling}

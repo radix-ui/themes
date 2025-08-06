@@ -7,6 +7,7 @@ import type { PropDef } from '../../props/prop-def.js';
 const contentSizes = ['1', '2'] as const;
 const contentVariants = ['solid', 'soft'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
+const materials = ['solid', 'translucent'] as const;
 
 const baseMenuContentPropDefs = {
   size: {
@@ -22,6 +23,14 @@ const baseMenuContentPropDefs = {
     values: contentVariants,
     default: 'solid',
   },
+  material: {
+    type: 'enum',
+    values: materials,
+    default: undefined,
+  },
+  /**
+   * @deprecated Use `material` prop instead. This prop will be removed in a future version.
+   */
   panelBackground: {
     type: 'enum',
     values: panelBackgrounds,
@@ -32,6 +41,7 @@ const baseMenuContentPropDefs = {
 } satisfies {
   size: PropDef<(typeof contentSizes)[number]>;
   variant: PropDef<(typeof contentVariants)[number]>;
+  material: PropDef<(typeof materials)[number] | undefined>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
 };
 

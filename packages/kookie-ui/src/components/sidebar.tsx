@@ -285,10 +285,19 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
 Sidebar.displayName = 'Sidebar.Root';
 
 // Sidebar content area
-interface SidebarContentProps extends React.ComponentPropsWithoutRef<'div'> {}
+interface SidebarContentProps extends React.ComponentPropsWithoutRef<'div'> {
+  /**
+   * Accessible label for the navigation region.
+   * @default "Main navigation"
+   */
+  'aria-label'?: string;
+}
 
 const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
-  ({ className, children, ...props }, forwardedRef) => {
+  (
+    { className, children, 'aria-label': ariaLabel = 'Main navigation', ...props },
+    forwardedRef,
+  ) => {
     const context = React.useContext(SidebarContext);
     const {
       size = '2',
@@ -302,6 +311,9 @@ const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
         <div
           {...props}
           ref={forwardedRef}
+          id="sidebar-navigation"
+          role="navigation"
+          aria-label={ariaLabel}
           className={classNames(
             'rt-BaseMenuContent',
             'rt-SidebarContent',
@@ -391,13 +403,16 @@ interface SidebarTriggerProps extends ComponentPropsWithout<typeof IconButton, R
 
 const SidebarTrigger = React.forwardRef<React.ElementRef<typeof IconButton>, SidebarTriggerProps>(
   ({ onClick, children, ...props }, forwardedRef) => {
-    const { toggleSidebar } = useSidebar();
+    const { toggleSidebar, state } = useSidebar();
 
     return (
       <IconButton
         {...props}
         ref={forwardedRef}
         variant="ghost"
+        aria-label={state === 'expanded' ? 'Collapse sidebar' : 'Expand sidebar'}
+        aria-expanded={state === 'expanded'}
+        aria-controls="sidebar-navigation"
         onClick={(event) => {
           onClick?.(event);
           toggleSidebar();
@@ -435,6 +450,7 @@ const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(
     <ul
       {...props}
       ref={forwardedRef}
+      role="menu"
       className={classNames('rt-BaseMenuViewport', 'rt-SidebarMenu', className)}
     />
   ),
@@ -468,6 +484,7 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
       children,
       onMouseEnter,
       onMouseLeave,
+      onKeyDown,
       ...props
     },
     forwardedRef,
@@ -478,13 +495,46 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
 
     const Comp = asChild ? Slot : 'button';
 
+    const handleKeyDown = React.useCallback(
+      (event: React.KeyboardEvent<HTMLButtonElement>) => {
+        switch (event.key) {
+          case 'Enter':
+          case ' ':
+            event.preventDefault();
+            if (props.onClick) props.onClick(event as any);
+            break;
+          case 'ArrowDown':
+            event.preventDefault();
+            // Focus next menu item
+            const nextItem = (event.currentTarget as HTMLElement).nextElementSibling?.querySelector(
+              '[role="menuitem"]',
+            ) as HTMLElement;
+            if (nextItem) nextItem.focus();
+            break;
+          case 'ArrowUp':
+            event.preventDefault();
+            // Focus previous menu item
+            const prevItem = (
+              event.currentTarget as HTMLElement
+            ).previousElementSibling?.querySelector('[role="menuitem"]') as HTMLElement;
+            if (prevItem) prevItem.focus();
+            break;
+        }
+        onKeyDown?.(event);
+      },
+      [props.onClick, onKeyDown],
+    );
+
     return (
       <Comp
         {...props}
         ref={forwardedRef}
+        role="menuitem"
+        aria-current={isActive ? 'page' : undefined}
         className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-SidebarMenuButton', className)}
         data-active={isActive || undefined}
         data-highlighted={isHighlighted || undefined}
+        onKeyDown={handleKeyDown}
         onMouseEnter={(event) => {
           setIsHighlighted(true);
           onMouseEnter?.(event);
@@ -572,6 +622,8 @@ const SidebarMenuSubTrigger = React.forwardRef<
             {...props}
             ref={forwardedRef}
             asChild={asChild}
+            role="menuitem"
+            aria-haspopup="true"
             className={classNames(
               'rt-reset',
               'rt-BaseMenuItem',
@@ -655,6 +707,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, SidebarGroupLabelProp
       <Comp
         {...props}
         ref={forwardedRef}
+        role="group"
         className={classNames('rt-BaseMenuLabel', 'rt-SidebarGroupLabel', className)}
       />
     );

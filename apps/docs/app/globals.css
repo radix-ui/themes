@@ -1,5 +1,5 @@
-@import "tailwindcss/preflight";
 @import "@kushagradhawan/kookie-ui/styles.css";
+@import "tailwindcss/preflight.css";
 
 /* Minimal global styles for the documentation site */
 html,
@@ -7,21 +7,275 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   margin: 0;
+  font-family: var(--font-sans) !important;
+  /* Safari font scaling fixes */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Prevent Safari from zooming on input focus */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Safari-specific viewport fixes */
+@supports (-webkit-touch-callout: none) {
+  html {
+    /* Prevent Safari from scaling fonts */
+    -webkit-text-size-adjust: none;
+  }
 }
 
 * {
   box-sizing: border-box;
+  /* outline: dashed 1px var(--gray-3); */
 }
 
-/* Code block styling for documentation */
+/* Code block styling with Nord theme support */
 pre {
   overflow-x: auto;
-  border-radius: var(--radius-3);
+  border-radius: var(--radius-6);
   background-color: var(--gray-a2);
-  padding: var(--space-4);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  position: relative;
+  width: 100%; /* Ensure full width */
 }
 
-code {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-2);
+/* Code elements inside pre (from rehype-pretty-code) */
+pre code {
+  font-family: var(--font-mono) !important;
+  line-height: 1.6;
 }
+
+/* Theme support for rehype-pretty-code dual themes */
+/* When using defaultColor: false, Shiki only adds CSS variables to spans */
+pre[data-theme] code {
+  background: none !important;
+}
+
+/* Default to light theme for all tokens */
+pre[data-theme] code span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+/* Override with dark theme colors when inside a dark context */
+.dark pre[data-theme] code span,
+.dark-theme pre[data-theme] code span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Override KookieUI Code component styles for code elements inside pre and rehype-pretty-code figures */
+pre code.rt-Code,
+figure[data-rehype-pretty-code-figure] code.rt-Code {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+  font-family: var(--font-mono) !important;
+  font-size: calc(var(--font-size-3) * 0.95) !important; /* Change this to adjust size */
+  line-height: 2 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Line highlighting for rehype-pretty-code */
+[data-highlighted-line] {
+  background-color: var(--accent-a3);
+  border-left: 2px solid var(--accent-9);
+  padding-left: calc(var(--space-4) - 2px);
+  margin-left: calc(-1 * var(--space-4));
+  margin-right: calc(-1 * var(--space-4));
+  padding-right: var(--space-4);
+}
+
+/* Character highlighting */
+[data-highlighted-chars] {
+  background-color: var(--accent-a4);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-1);
+}
+
+/* Word highlighting */
+[data-highlighted-word] {
+  background-color: var(--accent-a4);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--accent-a6);
+}
+
+/* Title styling */
+[data-rehype-pretty-code-title] {
+  background-color: var(--gray-a4);
+  color: var(--gray-12);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-3);
+  font-weight: 500;
+  border-bottom: 1px solid var(--gray-a6);
+  border-radius: var(--radius-3) var(--radius-3) 0 0;
+}
+
+Line numbers support
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2em;
+  margin-right: var(--space-3);
+  text-align: right;
+  color: var(--gray-a9);
+  user-select: none;
+}
+
+/* Caption styling */
+pre + figcaption {
+  background-color: var(--gray-a2);
+  padding: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-4);
+  border: 1px solid var(--gray-a6);
+  border-top: none;
+  border-radius: 0 0 var(--radius-3) var(--radius-3);
+  font-size: var(--font-size-1);
+  color: var(--gray-11);
+}
+
+/* Scroll offset for headings when using anchor links */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 120px;
+}
+
+/* Hide scrollbars for code content while keeping scroll functionality */
+.code-content::-webkit-scrollbar,
+.code-content::-webkit-scrollbar-horizontal,
+.code-content::-webkit-scrollbar-vertical,
+.code-content::-webkit-scrollbar-track,
+.code-content::-webkit-scrollbar-thumb,
+.code-content::-webkit-scrollbar-corner {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Also hide scrollbars on any pre/code elements inside code content */
+.code-content pre::-webkit-scrollbar,
+.code-content pre::-webkit-scrollbar-horizontal,
+.code-content pre::-webkit-scrollbar-vertical,
+.code-content pre::-webkit-scrollbar-track,
+.code-content pre::-webkit-scrollbar-thumb,
+.code-content pre::-webkit-scrollbar-corner,
+.code-content code::-webkit-scrollbar,
+.code-content code::-webkit-scrollbar-horizontal,
+.code-content code::-webkit-scrollbar-vertical,
+.code-content code::-webkit-scrollbar-track,
+.code-content code::-webkit-scrollbar-thumb,
+.code-content code::-webkit-scrollbar-corner {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* CodeBlock component styles */
+.code-content {
+  border-radius: var(--radius-5);
+  overflow: auto;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Hide scrollbars while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  /* Prevent scroll chaining */
+  overscroll-behavior: none;
+  /* Safari-specific optimizations */
+  -webkit-transform: translateZ(0); /* Force hardware acceleration */
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: max-height; /* Hint to browser about what will change */
+  /* Additional Safari optimizations */
+  -webkit-backface-visibility: hidden; /* Prevent flickering */
+  backface-visibility: hidden; /* Prevent flickering */
+  -webkit-perspective: 1000px; /* Improve 3D rendering */
+  perspective: 1000px; /* Improve 3D rendering */
+}
+
+/* Disable vertical scrolling when code content is collapsed */
+.code-content:not(.expanded) {
+  overflow-y: hidden;
+  /* Prevent touch scrolling on mobile */
+  touch-action: pan-x;
+}
+
+.code-chevron {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Scroll shadow overlay for collapsed code content */
+.code-scroll-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--color-background) 100%,
+    transparent
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 0 0 var(--radius-5) var(--radius-5);
+}
+
+.code-scroll-shadow.visible {
+  opacity: 1;
+}
+
+/* SpecsBlock component styles */
+.specs-content {
+  border-radius: var(--radius-6);
+  overflow: auto;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Hide scrollbars while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  /* Prevent scroll chaining */
+  overscroll-behavior: none;
+  /* Safari-specific optimizations */
+  -webkit-transform: translateZ(0); /* Force hardware acceleration */
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: max-height; /* Hint to browser about what will change */
+  /* Additional Safari optimizations */
+  -webkit-backface-visibility: hidden; /* Prevent flickering */
+  backface-visibility: hidden; /* Prevent flickering */
+  -webkit-perspective: 1000px; /* Improve 3D rendering */
+  perspective: 1000px; /* Improve 3D rendering */
+}
+
+/* Disable vertical scrolling when specs content is collapsed */
+.specs-content:not(.expanded) {
+  overflow-y: hidden;
+  /* Prevent touch scrolling on mobile */
+  touch-action: pan-x;
+}
+
+/* Hide scrollbars for specs content while keeping scroll functionality */
+.specs-content::-webkit-scrollbar,
+.specs-content::-webkit-scrollbar-horizontal,
+.specs-content::-webkit-scrollbar-vertical,
+.specs-content::-webkit-scrollbar-track,
+.specs-content::-webkit-scrollbar-thumb,
+.specs-content::-webkit-scrollbar-corner {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+

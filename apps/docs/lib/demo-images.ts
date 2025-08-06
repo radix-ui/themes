@@ -1,7 +1,7 @@
 // Demo images for documentation examples
 // Using a single reliable image for all examples
 
-const SINGLE_IMAGE = "https://images.unsplash.com/photo-1741145018917-216c9275bc3a?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+const SINGLE_IMAGE = "https://images.unsplash.com/photo-1703884617388-53484ea4fca1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
 export const demoImages = {
   // All examples use the same image

@@ -35,9 +35,7 @@
   background-color: var(--gray-1);
   /* prettier-ignore */
   box-shadow:
-    inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
     inset 0 var(--classic-border-width) var(--white-a12),
-    inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
     inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
     0 0 0 var(--classic-border-width) var(--gray-a5),
     0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
@@ -46,68 +44,49 @@
   :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
     /* prettier-ignore */
     box-shadow:
-      inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
       inset 0 var(--classic-border-width) var(--gray-a11),
-      inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-      inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
+      inset 0 calc(-1 * var(--classic-border-width)) var(--black-a11),
       0 0 0 var(--classic-border-width-thick) var(--gray-a7),
       0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
   }
   transition: box-shadow 120ms, background-color 120ms;
 
   &:where(:any-link, button) {
-    @media (hover: hover) {
-      &:where(:hover) {
-        transition-duration: 40ms, 40ms;
-        background-color: var(--color-background);
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2), 
-          inset 0 var(--classic-border-width) var(--white-a12),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
-          0 0 0 var(--classic-border-width) var(--gray-a5),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
-          0 0 0 var(--classic-border-width) var(--gray-a5);
+          @media (hover: hover) {
+        &:where(:hover) {
+          transition-duration: 40ms, 40ms;
+          background-color: var(--color-background);
+          /* prettier-ignore */
+          box-shadow:
+            0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
+            0 0 0 var(--classic-border-width) var(--gray-a5);
 
-        :where(.dark, .dark-theme) &,
-        :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-                  /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
-          inset 0 var(--classic-border-width) var(--gray-a11),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
-          0 0 0 var(--classic-border-width-thick) var(--gray-a7),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
-          0 0 0 var(--classic-border-width) var(--gray-a5);
+          :where(.dark, .dark-theme) &,
+          :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
+            /* prettier-ignore */
+            box-shadow:
+              0 0 0 var(--classic-border-width-thick) var(--gray-a7),
+              0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
+              0 0 0 var(--classic-border-width) var(--gray-a5);
+          }
         }
       }
-    }
     &:where([data-state='open']) {
       transition-duration: 40ms, 40ms;
       background-color: var(--color-background);
-              /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 var(--classic-border-width) var(--white-a12),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
-          0 0 0 var(--classic-border-width) var(--gray-a5),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7),
-          0 0 0 var(--classic-border-width) var(--gray-a5);
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 var(--classic-border-width) var(--white-a12),
+        0 0 0 var(--classic-border-width) var(--gray-a5),
+        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
 
       :where(.dark, .dark-theme) &,
       :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
         /* prettier-ignore */
         box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
           inset 0 var(--classic-border-width) var(--gray-a11),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 var(--classic-shadow-offset-negative) var(--black-a11),
           0 0 0 var(--classic-border-width-thick) var(--gray-a7),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12),
-          0 0 0 var(--classic-border-width) var(--gray-a5);
+          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
       }
     }
     &:where(:active:not([data-state='open'])) {

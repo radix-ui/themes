@@ -1,0 +1,334 @@
+import { Button, Flex, Box, Callout, Table, Text, Theme } from '@kushagradhawan/kookie-ui';
+import { TriangleAlertIcon, Info } from 'lucide-react';
+
+# Specs
+
+Designer reference for Button component layout, spacing, and variant specifications.
+
+## Layout
+
+The Button component uses systematic spacing and sizing that scales consistently across all variants. Height, padding, border radius, and typography follow the design system's spacing scale.
+
+<SpecsBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <Button variant="solid" size="3">Button</Button>
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Height',
+      size1: '24px',
+      size2: '32px',
+      size3: '40px',
+      size4: '48px'
+    },
+    {
+      property: 'Horizontal Padding',
+      size1: '8px',
+      size2: '12px',
+      size3: '16px',
+      size4: '24px'
+    },
+    {
+      property: 'Border Radius',
+      size1: '6px',
+      size2: '8px',
+      size3: '10px',
+      size4: '12px'
+    },
+    {
+      property: 'Icon Size',
+      size1: '14.4px',
+      size2: '16px',
+      size3: '19.2px',
+      size4: '24px'
+    },
+    {
+      property: 'Icon-Text Gap',
+      size1: '4px',
+      size2: '6px',
+      size3: '8px',
+      size4: '8px'
+    },
+    {
+      property: 'Typography',
+      size1: '12px',
+      size2: '14px',
+      size3: '16px',
+      size4: '18px'
+    }
+  ]}
+  tooltips={{
+    'Height': {
+      size1: 'space-5',
+      size2: 'space-6',
+      size3: 'space-7',
+      size4: 'space-8'
+    },
+    'Horizontal Padding': {
+      size1: 'space-2',
+      size2: 'space-3',
+      size3: 'space-4',
+      size4: 'space-5'
+    },
+    'Border Radius': {
+      size1: 'radius-1',
+      size2: 'radius-2',
+      size3: 'radius-3',
+      size4: 'radius-4'
+    },
+    'Icon Size': {
+      size1: 'content-icon-size-1',
+      size2: 'content-icon-size-2',
+      size3: 'content-icon-size-3',
+      size4: 'content-icon-size-4'
+    },
+    'Icon-Text Gap': {
+      size1: 'component-gap-1',
+      size2: 'component-gap-2',
+      size3: 'component-gap-3',
+      size4: 'component-gap-4'
+    },
+    'Typography': {
+      size1: 'font-size-1',
+      size2: 'font-size-2',
+      size3: 'font-size-3',
+      size4: 'font-size-4'
+    }
+  }}
+/>
+
+Ghost buttons use reduced padding for seamless text integration. This variant maintains full accessibility while achieving visual integration with surrounding content.
+
+<SpecsBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <Button variant="ghost" size="3">Ghost Button</Button>
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Horizontal Padding',
+      size1: '4px',
+      size2: '4px',
+      size3: '6px',
+      size4: '8px'
+    },
+    {
+      property: 'Vertical Padding',
+      size1: '4px',
+      size2: '4px',
+      size3: '6px',
+      size4: '6px'
+    },
+    {
+      property: 'Icon-Text Gap',
+      size1: '4px',
+      size2: '6px',
+      size3: '6px',
+      size4: '6px'
+    }
+  ]}
+  tooltips={{
+    'Horizontal Padding': {
+      size1: 'space-1',
+      size2: 'space-1',
+      size3: 'space-2',
+      size4: 'space-2'
+    },
+    'Vertical Padding': {
+      size1: 'space-1',
+      size2: 'space-1',
+      size3: 'space-2',
+      size4: 'space-2'
+    },
+    'Icon-Text Gap': {
+      size1: 'component-gap-ghost-1',
+      size2: 'component-gap-ghost-2',
+      size3: 'component-gap-ghost-3',
+      size4: 'component-gap-ghost-4'
+    }
+  }}
+/>
+
+## Variants
+
+<SpecsBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <Button variant="classic" size="3">Classic</Button>
+      <Button variant="solid" size="3">Solid</Button>
+      <Button variant="soft" size="3">Soft</Button>
+      <Button variant="outline" size="3">Outline</Button>
+      <Button variant="surface" size="3">Surface</Button>
+      <Button variant="ghost" size="3">Ghost</Button>
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Classic',
+      Background: 'Light background',
+      Border: 'Shadow-based border',
+      Shadow: 'Standard shadow'
+    },
+    {
+      property: 'Solid',
+      Background: 'Background color',
+      Border: 'None',
+      Shadow: 'None'
+    },
+    {
+      property: 'Soft',
+      Background: 'Tinted background',
+      Border: 'None',
+      Shadow: 'None'
+    },
+    {
+      property: 'Outline',
+      Background: 'Transparent',
+      Border: 'Border line',
+      Shadow: 'None'
+    },
+    {
+      property: 'Surface',
+      Background: 'Light background',
+      Border: 'Border line',
+      Shadow: 'None'
+    },
+    {
+      property: 'Ghost',
+      Background: 'Transparent',
+      Border: 'None',
+      Shadow: 'None'
+    }
+  ]}
+  tooltips={{
+    'Classic': {
+      background: 'Uses color-surface-solid with elevation offset',
+      border: 'Complex shadow-based border system',
+      shadow: 'Inset + border + drop shadow layers'
+    },
+    'Solid': {
+      background: 'Uses accent-9 background with accent-contrast text',
+      border: 'No border needed with full background',
+      shadow: 'No shadow with full background'
+    },
+    'Soft': {
+      background: 'Uses accent-3 for subtle emphasis',
+      border: 'No border for clean appearance',
+      shadow: 'No shadow for flat appearance'
+    },
+    'Outline': {
+      background: 'Transparent with inset border definition',
+      border: 'box-shadow: inset 0 0 0 1px var(--accent-6)',
+      shadow: 'No shadow with border definition'
+    },
+    'Surface': {
+      background: 'Uses accent-2 background with inset border',
+      border: 'box-shadow: inset 0 0 0 1px var(--accent-6)',
+      shadow: 'No shadow with background definition'
+    },
+    'Ghost': {
+      background: 'Transparent with accent-3 on hover',
+      border: 'No border for minimal appearance',
+      shadow: 'No shadow for minimal appearance'
+    }
+  }}
+/>
+
+## Material Effects
+
+The Button component supports both solid and translucent materials. Translucent materials use backdrop blur effects for modern glass-morphism interfaces while maintaining accessibility compliance.
+
+<SpecsBlock
+  preview={
+    <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
+      <Button highContrast size="4" color="gray" variant="classic" material="translucent">Classic</Button>
+      <Button size="4" color="gray" variant="solid" material="translucent">Solid</Button>
+      <Button highContrast size="4" color="gray" variant="soft" material="translucent">Soft</Button>
+      <Button highContrast size="4" color="gray" variant="surface" material="translucent">Surface</Button>
+    </Flex>
+  }
+  background="https://images.unsplash.com/vector-1741103922268-b32c11b13733?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  backgroundProps={{
+    height: '300px',
+    width: '100%'
+  }}
+  specs={[
+    {
+      property: 'Solid Material',
+      Background: '100% opaque',
+      Backdrop: 'None'
+    },
+    {
+      property: 'Translucent Material',
+      Background: '60-90% transparent',
+      Backdrop: '12px blur'
+    }
+  ]}
+  tooltips={{
+    'Solid Material': {
+      background: 'Uses solid color values',
+      backdrop: 'No backdrop filter applied'
+    },
+    'Translucent Material': {
+      background: 'Uses color-mix() with transparency',
+      backdrop: 'var(--backdrop-filter-components)'
+    }
+  }}
+/>
+
+## Size
+
+Button sizes follow a systematic progression that balances visual hierarchy with accessibility requirements. Each size maintains appropriate touch targets and visual weight for its intended use case.
+
+<SpecsBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <Button variant="solid" size="1">Button</Button>
+      <Button variant="solid" size="2">Button</Button>
+      <Button variant="solid" size="3">Button</Button>
+      <Button variant="solid" size="4">Button</Button>
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Height',
+      Value: '24px → 32px → 40px → 48px'
+    },
+    {
+      property: 'Horizontal Padding',
+      Value: '8px → 12px → 16px → 24px'
+    },
+    {
+      property: 'Border Radius',
+      Value: '6px → 8px → 10px → 12px'
+    },
+    {
+      property: 'Typography',
+      Value: '12px → 14px → 16px → 18px'
+    },
+    {
+      property: 'Icon Size',
+      Value: '14.4px → 16px → 19.2px → 24px'
+    }
+  ]}
+  tooltips={{
+    'Height': {
+      value: 'space-5 → space-6 → space-7 → space-8'
+    },
+    'Horizontal Padding': {
+      value: 'space-2 → space-3 → space-4 → space-5'
+    },
+    'Border Radius': {
+      value: 'radius-1 → radius-2 → radius-3 → radius-4'
+    },
+    'Typography': {
+      value: 'font-size-1 → font-size-2 → font-size-3 → font-size-4'
+    },
+    'Icon Size': {
+      value: 'content-icon-size-1 → content-icon-size-2 → content-icon-size-3 → content-icon-size-4'
+    }
+  }}
+/>

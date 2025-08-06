@@ -40,47 +40,96 @@ interface TextFieldRootProps extends TextFieldInputProps, MarginProps, TextField
 const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
   (props, forwardedRef) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
-    const { children, className, color, radius, panelBackground, style, ...inputProps } =
+    const { children, className, color, radius, panelBackground, material, style, ...inputProps } =
       extractProps(props, textFieldRootPropDefs, marginPropDefs);
+    const effectiveMaterial = material || panelBackground;
+
+    // Generate unique IDs for accessibility
+    const errorId = React.useId();
+
+    // Determine invalid state
+    const isInvalid = inputProps.error || inputProps.isInvalid;
+
+    // Build aria-describedby string
+    const describedBy = React.useMemo(() => {
+      const parts = [];
+      if (inputProps.errorMessage) parts.push(errorId);
+      if (inputProps['aria-describedby']) parts.push(inputProps['aria-describedby']);
+      return parts.length > 0 ? parts.join(' ') : undefined;
+    }, [inputProps.errorMessage, inputProps['aria-describedby'], errorId]);
+
+    // Build aria attributes
+    const ariaProps = React.useMemo(
+      () => ({
+        'aria-invalid': isInvalid,
+        'aria-describedby': describedBy,
+        'aria-labelledby': inputProps['aria-labelledby'],
+      }),
+      [isInvalid, describedBy, inputProps['aria-labelledby']],
+    );
+
+    // Filter out our custom props to avoid DOM warnings
+    const {
+      error,
+      errorMessage,
+      isInvalid: _isInvalid,
+      required,
+      'aria-describedby': _ariaDescribedby,
+      'aria-labelledby': _ariaLabelledby,
+      ...nativeInputProps
+    } = inputProps;
+
+    // Memoized pointer event handler
+    const handlePointerDown = React.useCallback((event: React.PointerEvent) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('input, button, a')) return;
+
+      const input = inputRef.current;
+      if (!input) return;
+
+      // Same selector as in the CSS to find the right slot
+      const isRightSlot = target.closest(`
+        .rt-TextFieldSlot[data-side='right'],
+        .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
+      `);
+
+      const cursorPosition = isRightSlot ? input.value.length : 0;
+
+      requestAnimationFrame(() => {
+        // Only some input types support this, browsers will throw an error if not supported
+        // See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange#:~:text=Note%20that%20according,not%20support%20selection%22.
+        try {
+          input.setSelectionRange(cursorPosition, cursorPosition);
+        } catch {}
+        input.focus();
+      });
+    }, []);
+
     return (
       <div
         data-accent-color={color}
         data-radius={radius}
-        data-panel-background={panelBackground}
+        data-panel-background={effectiveMaterial}
+        data-material={effectiveMaterial}
         style={style}
-        className={classNames('rt-TextFieldRoot', className)}
-        onPointerDown={(event) => {
-          const target = event.target as HTMLElement;
-          if (target.closest('input, button, a')) return;
-
-          const input = inputRef.current;
-          if (!input) return;
-
-          // Same selector as in the CSS to find the right slot
-          const isRightSlot = target.closest(`
-            .rt-TextFieldSlot[data-side='right'],
-            .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
-          `);
-
-          const cursorPosition = isRightSlot ? input.value.length : 0;
-
-          requestAnimationFrame(() => {
-            // Only some input types support this, browsers will throw an error if not supported
-            // See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange#:~:text=Note%20that%20according,not%20support%20selection%22.
-            try {
-              input.setSelectionRange(cursorPosition, cursorPosition);
-            } catch {}
-            input.focus();
-          });
-        }}
+        className={classNames('rt-TextFieldRoot', className, {
+          'rt-error': isInvalid,
+        })}
+        onPointerDown={handlePointerDown}
       >
         <input
           spellCheck="false"
-          {...inputProps}
+          {...nativeInputProps}
+          {...ariaProps}
           ref={composeRefs(inputRef, forwardedRef)}
           className="rt-reset rt-TextFieldInput"
         />
         {children}
+        {inputProps.errorMessage && (
+          <div id={errorId} className="rt-TextFieldErrorMessage" role="alert" aria-live="polite">
+            {inputProps.errorMessage}
+          </div>
+        )}
       </div>
     );
   },

@@ -13,6 +13,39 @@
   font-style: normal;
   text-align: start;
 
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  /* Prevent backdrop-filter stacking with parents */
+  isolation: isolate;
+
+  /* Component-level overrides */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    backdrop-filter: none;
+    --backdrop-filter-components: none;
+  }
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+  }
+
+  &:where(.rt-high-contrast) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--accent-12);
+    }
+  }
+
+  /* Selected values use medium font weight */
+  &:where(:not([data-placeholder])) {
+    & :where(.rt-SelectTriggerInner) {
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
   &:where(:focus-visible) {
     outline: var(--focus-outline-width) solid var(--focus-8);
     outline-offset: var(--focus-outline-offset-inset);
@@ -284,387 +317,579 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* Outline variant - neutral with gray border (previously surface) */
-.rt-SelectTrigger:where(.rt-variant-outline) {
-  --select-trigger-border-width: var(--border-width-standard);
-  
-  background-color: var(--color-surface);
-  color: var(--gray-12);
-  box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a6);
+/* classic */
 
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    backdrop-filter: var(--backdrop-filter-components);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    --color-surface: var(--color-surface-solid);
-    backdrop-filter: none;
-  }
-
-  &:where([data-panel-background='translucent']) {
-    --color-surface: var(--color-surface-translucent);
-    backdrop-filter: var(--backdrop-filter-components);
-  }
-
-  /* Hover effects */
-  @media (hover: hover) {
-    &:where(:hover:not(:focus-visible)) {
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a8);
-    }
-  }
-  &:where([data-state='open']) {
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a8);
-  }
-  &:where(:disabled) {
-    color: var(--gray-a11);
-    background-color: var(--gray-a2);
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a6);
-  }
-  &:where([data-placeholder]) {
-    & :where(.rt-SelectTriggerInner) {
-      color: var(--gray-a10);
-    }
-  }
-}
-
-/* Classic variant - 3D inset form input */
 .rt-SelectTrigger:where(.rt-variant-classic) {
-  --select-trigger-border-width: var(--border-width-none);
-  
   position: relative;
-  /* Subtle inset positioning */
-  top: calc(var(--classic-elevation-offset) / var(--classic-elevation-factor-subtle));
-
+  top: var(--classic-elevation-offset);
+  color: var(--accent-a11);
   background-color: var(--color-surface);
-  color: var(--gray-12);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-text-field);
 
-  /* 3D inset effect - more pronounced but still subtle */
-  /* prettier-ignore */
-      box-shadow:
-      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-light)) var(--gray-a4),
-      inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a2),
-      inset 0 calc(var(--classic-border-width) * var(--classic-border-multiplier-double)) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-medium-factor-third)) var(--gray-a3),
-      0 0 0 var(--classic-border-width) var(--gray-a5);
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
 
   /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    backdrop-filter: var(--backdrop-filter-components);
-  }
-
-  /* Component-level overrides for surface variant */
-  &:where([data-panel-background='solid']) {
-    --color-surface: var(--color-surface-solid);
-    backdrop-filter: none;
-  }
-
-  &:where([data-panel-background='translucent']) {
-    --color-surface: var(--color-surface-translucent);
-    backdrop-filter: var(--backdrop-filter-components);
-  }
-
-  /* Hover effects - slightly reduced inset */
-  @media (hover: hover) {
-    &:where(:hover:not(:focus-visible)) {
-      /* prettier-ignore */
-          box-shadow:
-      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-light)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a3),
-      inset 0 calc(-1 * var(--classic-border-width) / var(--classic-border-factor-light)) var(--gray-a2),
-      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-factor-subtle)) var(--gray-a3),
-      0 0 0 var(--classic-border-width) var(--gray-a6);
-    }
-  }
-  &:where([data-state='open']) {
-    /* prettier-ignore */
-    box-shadow:
-      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-light)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a3),
-      inset 0 calc(-1 * var(--classic-border-width) / var(--classic-border-factor-light)) var(--gray-a2),
-      inset 0 var(--classic-border-width) calc(var(--classic-shadow-blur-medium) / var(--classic-shadow-factor-subtle)) var(--gray-a3),
-      0 0 0 var(--classic-border-width) var(--gray-a6);
-  }
-
-  /* Focus state - accent ring with minimal inset */
-  &:where(:focus-visible) {
-    /* prettier-ignore */
-    box-shadow:
-      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-half)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-heavy)) var(--gray-a2),
-      0 0 0 var(--focus-outline-width) var(--focus-8);
-  }
-
-  &:where(:disabled) {
-    color: var(--gray-a11);
-    background-color: var(--gray-a2);
-    /* prettier-ignore */
-    box-shadow:
-      inset 0 calc(var(--classic-border-width) / var(--classic-border-factor-half)) calc(var(--classic-shadow-blur-small) / var(--classic-shadow-factor-medium)) var(--gray-a2),
-      inset 0 0 0 var(--classic-border-width) var(--gray-a6);
-  }
-  &:where([data-placeholder]) {
-    & :where(.rt-SelectTriggerInner) {
-      color: var(--gray-a10);
-    }
-  }
-}
-
-/* Soft variant - branded with accent colors */
-.rt-SelectTrigger:where(.rt-variant-soft) {
-  --select-trigger-border-width: var(--border-width-none);
-  
-  /* Use solid accent for solid panels, alpha accent for translucent panels */
-  background-color: var(--accent-3);
-  color: var(--accent-12);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--accent-a3);
-    color: var(--accent-a12);
-    backdrop-filter: var(--backdrop-filter-components);
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: var(--color-surface);
   }
 
   /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    background-color: var(--accent-3);
-    color: var(--accent-12);
-    backdrop-filter: none;
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--color-surface);
   }
 
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--accent-a3);
-    color: var(--accent-a12);
-    backdrop-filter: var(--backdrop-filter-components);
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: var(--color-surface);
+  }
+
+  &:where(.rt-high-contrast) {
+    background-color: var(--color-surface);
+
+    /* Theme-level translucent override for high contrast */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: var(--color-surface);
+    }
+
+    /* Component-level overrides for high contrast */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--color-surface);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: var(--color-surface);
+    }
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
   }
 
   @media (hover: hover) {
-    &:where(:hover:not(:focus-visible)) {
-      /* Base state: solid accent for solid panels */
-      background-color: var(--accent-4);
+    &:where(:hover) {
+      background-color: var(--accent-2);
+      box-shadow: var(--shadow-2);
 
       /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a4);
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
       }
 
       /* Component-level overrides for hover */
-      &:where([data-panel-background='solid']) {
-        background-color: var(--accent-4);
-        backdrop-filter: none;
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-2);
       }
 
-      &:where([data-panel-background='translucent']) {
-        background-color: var(--accent-a4);
-        backdrop-filter: var(--backdrop-filter-components);
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
       }
     }
   }
+
+  &:where([data-state='open']) {
+    background-color: var(--accent-3);
+    box-shadow: var(--shadow-1);
+
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-3);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+  }
+
+  &:where(:active:not([data-state='open'], [data-disabled])) {
+    background-color: var(--accent-3);
+    box-shadow: var(--shadow-1);
+
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-3);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+  }
+
+  &:where(:disabled) {
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    box-shadow: none;
+    outline: none;
+    cursor: not-allowed;
+    pointer-events: none;
+    top: 0;
+  }
+
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+    }
+  }
+}
+
+/* soft */
+
+.rt-SelectTrigger:where(.rt-variant-soft) {
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-3);
+  color: var(--accent-a11);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--accent-3);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--accent-8);
+    outline-offset: -1px;
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-4);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-4);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+      }
+    }
+  }
+
   &:where([data-state='open']) {
     background-color: var(--accent-4);
     
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a4);
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
     }
-  }
-  &:where(:focus-visible) {
-    outline-color: var(--accent-8);
-  }
-  &:where(:disabled) {
-    color: var(--gray-a11);
-    background-color: var(--gray-a3);
-    backdrop-filter: none;
-  }
-  &:where([data-placeholder]) {
-    & :where(.rt-SelectTriggerInner) {
-      color: var(--accent-12);
-      opacity: 0.6;
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-4);
     }
-  }
-}
 
-/* Surface variant - transparent with accent border (previously outline) */
-.rt-SelectTrigger:where(.rt-variant-surface) {
-  --select-trigger-border-width: var(--border-width-standard);
-  
-  background-color: transparent;
-  box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-7);
-  color: var(--gray-12);
-  transition: var(--transition-background-blur);
-
-  /* Theme-level panel awareness (NO backdrop filter for true transparency) */
-  :where([data-panel-background='translucent']) & {
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a7);
-  }
-
-  /* Component-level overrides */
-  &:where([data-panel-background='solid']) {
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-7);
-  }
-
-  &:where([data-panel-background='translucent']) {
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a7);
-  }
-
-  /* Hover effects */
-  @media (hover: hover) {
-    &:where(:hover:not(:focus-visible)) {
-      /* Base state: solid accent for solid panels */
-      background-color: var(--accent-2);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid']) {
-        background-color: var(--accent-2);
-        backdrop-filter: none;
-      }
-
-      &:where([data-panel-background='translucent']) {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
-      }
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
     }
   }
 
-  /* Interaction states get light background */
-  &:where([data-state='open']) {
-    /* Base state: solid accent for solid panels */
-    background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
-      backdrop-filter: var(--backdrop-filter-components);
+  &:where(:active:not([data-state='open'])) {
+    background-color: var(--accent-5);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
     }
 
-    /* Component-level overrides */
-    &:where([data-panel-background='solid']) {
-      background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
-      backdrop-filter: none;
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-5);
     }
 
-    &:where([data-panel-background='translucent']) {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
-      backdrop-filter: var(--backdrop-filter-components);
-    }
-  }
-
-  &:where(:focus-visible) {
-    /* Base state: solid accent for solid panels */
-    background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
-      backdrop-filter: var(--backdrop-filter-components);
-    }
-
-    /* Component-level overrides */
-    &:where([data-panel-background='solid']) {
-      background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-8);
-      backdrop-filter: none;
-    }
-
-    &:where([data-panel-background='translucent']) {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--accent-a8);
-      backdrop-filter: var(--backdrop-filter-components);
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
     }
   }
 
   &:where(:disabled) {
-    background-color: var(--gray-a2);
-    box-shadow: inset 0 0 0 var(--select-trigger-border-width) var(--gray-a6);
     color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    cursor: not-allowed;
+    pointer-events: none;
   }
+
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
-      color: var(--gray-a10);
+      color: var(--accent-a11);
+      opacity: 0.6;
+      font-weight: var(--font-weight-regular);
     }
   }
 }
 
-/* Ghost variant - transparent until interaction */
+/* ghost */
+
 .rt-SelectTrigger:where(.rt-variant-ghost) {
-  --select-trigger-border-width: var(--border-width-none);
-  
   background-color: transparent;
-  color: var(--accent-12);
+  color: var(--accent-a11);
 
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    color: var(--accent-a12);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
+  &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
 
-  &:where([data-panel-background='translucent']) {
-    color: var(--accent-a12);
-  }
-
-  @media (hover: hover) {
-    &:where(:hover:not(:focus-visible)) {
-      /* Base state: solid accent for solid panels */
-      background-color: var(--accent-2);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent']) & {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid']) {
-        background-color: var(--accent-2);
-        backdrop-filter: none;
-      }
-
-      &:where([data-panel-background='translucent']) {
-        background-color: var(--accent-a2);
-        backdrop-filter: var(--backdrop-filter-components);
-      }
-
-      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-        backdrop-filter: none !important;
-      }
-    }
-  }
-  &:where([data-state='open']) {
-    background-color: var(--accent-2);
-    
-    :where([data-panel-background='translucent']) & {
-      background-color: var(--accent-a2);
-      backdrop-filter: var(--backdrop-filter-components);
-    }
-
-    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-      backdrop-filter: none !important;
-    }
-  }
-  &:where(:focus-visible) {
-    outline-color: var(--accent-8);
-  }
-  &:where(:disabled) {
-    color: var(--gray-a11);
-    background-color: transparent;
-  }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
       color: var(--gray-a10);
+      font-weight: var(--font-weight-regular);
+    }
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      /* Base state: solid accent for solid panels */
+      background-color: var(--accent-3);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      }
+
+      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+      /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        backdrop-filter: none !important;
+      } */
+    }
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -1px;
+  }
+
+  &:where([data-state='open']) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-3);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-3);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    }
+
+    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      backdrop-filter: none !important;
+    } */
+  }
+
+  &:where(:active:not([data-state='open'])) {
+    /* Base state: solid accent for solid panels */
+    background-color: var(--accent-4);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-4);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+    }
+
+    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
+    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      backdrop-filter: none !important;
+    } */
+  }
+
+  &:where(:disabled) {
+    color: var(--gray-a8);
+    background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* outline */
+
+.rt-SelectTrigger:where(.rt-variant-outline) {
+  /* Base state: solid colors for solid panels */
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  color: var(--accent-11);
+  transition: var(--transition-background-blur);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+    color: var(--accent-a11);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    box-shadow: inset 0 0 0 1px var(--accent-6);
+    color: var(--accent-11);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+    color: var(--accent-a11);
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-2);
+        box-shadow: inset 0 0 0 1px var(--accent-7);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
+      }
+    }
+  }
+
+  &:where([data-state='open']) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-7);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a7);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-2);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a7);
+    }
+  }
+
+  &:where(:active:not([data-state='open'])) {
+    background-color: var(--accent-3);
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -1px;
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+
+  &:where(:disabled) {
+    color: var(--gray-a8);
+    box-shadow: inset 0 0 0 1px var(--gray-a7);
+    background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+      font-weight: var(--font-weight-regular);
+    }
+  }
+}
+
+/* surface */
+
+.rt-SelectTrigger:where(.rt-variant-surface) {
+  /* Base state: solid accent for solid panels */
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  color: var(--accent-a11);
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+  }
+
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-6);
+  }
+
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a6);
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-7);
+      
+      /* Theme-level translucent override for hover */
+      :where([data-panel-background='translucent'], [data-material='translucent']) & {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
+      }
+
+      /* Component-level overrides for hover */
+      &:where([data-panel-background='solid'], [data-material='solid']) {
+        background-color: var(--accent-3);
+        box-shadow: inset 0 0 0 1px var(--accent-7);
+      }
+
+      &:where([data-panel-background='translucent'], [data-material='translucent']) {
+        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+        box-shadow: inset 0 0 0 1px var(--accent-a7);
+      }
+    }
+  }
+
+  &:where([data-state='open']) {
+    background-color: var(--accent-3);
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    
+    /* Theme-level translucent override for open */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    /* Component-level overrides for open */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-3);
+      box-shadow: inset 0 0 0 1px var(--accent-8);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+  }
+
+  &:where(:active:not([data-state='open'])) {
+    background-color: var(--accent-4);
+    box-shadow: inset 0 0 0 1px var(--accent-8);
+    
+    /* Theme-level translucent override for active */
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    /* Component-level overrides for active */
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-4);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+      box-shadow: inset 0 0 0 1px var(--accent-a8);
+    }
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -1px;
+  }
+
+  &:where(.rt-high-contrast) {
+    color: var(--accent-12);
+  }
+
+  &:where(:disabled) {
+    color: var(--gray-a8);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    background-color: var(--gray-a2);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:where([data-placeholder]) {
+    & :where(.rt-SelectTriggerInner) {
+      color: var(--gray-a10);
+      font-weight: var(--font-weight-regular);
     }
   }
 }
@@ -675,6 +900,59 @@
     & :where(.rt-SelectIcon) {
       color: var(--gray-a9);
     }
+  }
+}
+
+/* Error state styling */
+.rt-SelectTrigger:where([data-error="true"]) {
+  box-shadow: inset 0 0 0 1px var(--red-9);
+}
+
+.rt-SelectTrigger:where([data-error="true"]:focus-visible) {
+  outline: 2px solid var(--red-8);
+}
+
+/* Loading state styling */
+.rt-SelectLoadingIcon {
+  animation: rt-spin 1s linear infinite;
+}
+
+.rt-SelectLoadingIconCircle {
+  animation: rt-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rt-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rt-dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .rt-SelectLoadingIcon,
+  .rt-SelectLoadingIconCircle {
+    animation: none;
+  }
+}
+
+/* Forced colors support */
+@media (forced-colors: active) {
+  .rt-SelectTrigger:where([data-error="true"]) {
+    border: 1px solid CanvasText;
   }
 }
 

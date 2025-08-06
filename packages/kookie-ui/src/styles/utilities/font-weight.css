@@ -1,4 +1,12 @@
 @breakpoints {
+  .rt-r-weight-thin {
+    font-weight: var(--font-weight-thin);
+  }
+
+  .rt-r-weight-extralight {
+    font-weight: var(--font-weight-extralight);
+  }
+
   .rt-r-weight-light {
     font-weight: var(--font-weight-light);
   }
@@ -11,7 +19,15 @@
     font-weight: var(--font-weight-medium);
   }
 
+  .rt-r-weight-semibold {
+    font-weight: var(--font-weight-semibold);
+  }
+
   .rt-r-weight-bold {
     font-weight: var(--font-weight-bold);
+  }
+
+  .rt-r-weight-extrabold {
+    font-weight: var(--font-weight-extrabold);
   }
 }

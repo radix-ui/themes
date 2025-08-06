@@ -1,6 +1,6 @@
 import type { PropDef } from './prop-def.js';
 
-const weights = ['light', 'regular', 'medium', 'bold'] as const;
+const weights = ['thin', 'extralight', 'light', 'regular', 'medium', 'semibold', 'bold', 'extrabold'] as const;
 
 const weightPropDef = {
   weight: {

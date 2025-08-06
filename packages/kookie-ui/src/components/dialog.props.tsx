@@ -8,6 +8,7 @@ import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 const alignValues = ['start', 'center'] as const;
 const contentSizes = ['1', '2', '3', '4'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
+const materials = ['solid', 'translucent'] as const;
 
 const dialogContentPropDefs = {
   ...asChildPropDef,
@@ -25,6 +26,7 @@ const dialogContentPropDefs = {
     responsive: true,
   },
   panelBackground: { type: 'enum', values: panelBackgrounds, default: undefined },
+  material: { type: 'enum', values: materials, default: undefined },
   width: widthPropDefs.width,
   minWidth: widthPropDefs.minWidth,
   maxWidth: { ...widthPropDefs.maxWidth, default: '600px' },
@@ -33,6 +35,7 @@ const dialogContentPropDefs = {
   align: PropDef<(typeof alignValues)[number]>;
   size: PropDef<(typeof contentSizes)[number]>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
+  material: PropDef<(typeof materials)[number] | undefined>;
   width: PropDef<string>;
   minWidth: PropDef<string>;
   maxWidth: PropDef<string>;

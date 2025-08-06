@@ -10,8 +10,6 @@
   grid-auto-columns: 1fr;
   align-items: stretch;
   color: var(--gray-12);
-  background-color: var(--color-surface);
-  background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
   position: relative;
   min-width: max-content;
 
@@ -22,26 +20,27 @@
   /* Create a new stacking context */
   isolation: isolate;
 
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent']) & {
-    background-color: var(--color-surface-translucent);
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
-    backdrop-filter: var(--backdrop-filter-panel);
+  /* 
+   * Theme-level translucent override
+   * Applies backdrop filter for elevated visual effects
+   */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
 
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    background-color: var(--color-surface);
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  /* 
+   * Component-level material overrides
+   * These ensure proper rendering based on material setting
+   */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
     backdrop-filter: none;
-    --backdrop-filter-panel: none;
+    --backdrop-filter-components: none;
   }
-
-  &:where([data-panel-background='translucent']) {
-    background-color: var(--color-surface-translucent);
-    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
-    backdrop-filter: var(--backdrop-filter-panel);
-    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
+  
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    backdrop-filter: var(--backdrop-filter-components);
+    --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
 
   /* Disable backdrop-filter when inside elements that already have backdrop-filter */
@@ -158,10 +157,6 @@
 :where(.radix-themes) {
   --segmented-control-indicator-background-color: var(--color-background);
 }
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --segmented-control-indicator-background-color: var(--gray-a3);
-}
 
 .rt-SegmentedControlIndicator {
   display: none;
@@ -178,6 +173,7 @@
     position: absolute;
     border-radius: max(calc(var(--border-width-standard) * 0.5), calc(var(--segmented-control-border-radius) - var(--border-width-standard)));
     background-color: var(--segmented-control-indicator-background-color);
+    box-shadow: var(--shadow-2);
     content: '';
   }
 
@@ -263,8 +259,14 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-SegmentedControlItemLabel {
+.rt-SegmentedControlItemLabel,
+.rt-SegmentedControlItemLabelInactive,
+.rt-SegmentedControlItemLabelActive {
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
 }
 .rt-SegmentedControlRoot {
   border-radius: var(--segmented-control-border-radius);
@@ -273,7 +275,7 @@
 @breakpoints {
   .rt-SegmentedControlRoot {
     &:where(.rt-r-size-1) {
-      --segmented-control-border-radius: max(calc(var(--radius-1) * var(--spacing-multiplier-large)), var(--radius-full));
+      --segmented-control-border-radius: max(var(--radius-1), var(--radius-full));
       height: var(--space-5);
 
       & :where(.rt-SegmentedControlItemLabel) {
@@ -281,7 +283,14 @@
         letter-spacing: var(--letter-spacing-1);
         padding-left: var(--space-3);
         padding-right: var(--space-3);
-        gap: var(--space-1);
+        gap: var(--component-gap-1);
+
+        /* Icon sizing for size 1 */
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--content-icon-size-1);
+          height: var(--content-icon-size-1);
+        }
       }
     }
     &:where(.rt-r-size-2) {
@@ -293,7 +302,14 @@
         letter-spacing: var(--letter-spacing-2);
         padding-left: var(--space-4);
         padding-right: var(--space-4);
-        gap: var(--space-2);
+        gap: var(--component-gap-2);
+
+        /* Icon sizing for size 2 */
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--content-icon-size-2);
+          height: var(--content-icon-size-2);
+        }
       }
     }
     &:where(.rt-r-size-3) {
@@ -305,7 +321,33 @@
         letter-spacing: var(--letter-spacing-3);
         padding-left: var(--space-4);
         padding-right: var(--space-4);
-        gap: var(--space-3);
+        gap: var(--component-gap-3);
+
+        /* Icon sizing for size 3 */
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--content-icon-size-3);
+          height: var(--content-icon-size-3);
+        }
+      }
+    }
+    &:where(.rt-r-size-4) {
+      --segmented-control-border-radius: max(var(--radius-4), var(--radius-full));
+      height: var(--space-8);
+
+      & :where(.rt-SegmentedControlItemLabel) {
+        font-size: var(--font-size-4);
+        letter-spacing: var(--letter-spacing-4);
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+        gap: var(--component-gap-4);
+
+        /* Icon sizing for size 4 */
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--content-icon-size-4);
+          height: var(--content-icon-size-4);
+        }
       }
     }
   }
@@ -313,48 +355,25 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*         Variants / Surface          */
+/*         Variants / Soft             */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-SegmentedControlRoot:where(.rt-variant-surface) {
-  & :where(.rt-SegmentedControlItem:not([disabled])) ~ :where(.rt-SegmentedControlIndicator) {
-    &::before {
-      box-shadow: 0 0 0 var(--border-width-standard) var(--gray-a4);
-    }
+.rt-SegmentedControlRoot:where(.rt-variant-soft) {
+  /* Base state: solid color for solid panels */
+  background-color: var(--gray-3);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent'], [data-material='translucent']) & {
+    background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
   }
-}
 
-/* * * * * * * * * * * * * * * * * * * */
-/*                                     */
-/*         Variants / Classic          */
-/*                                     */
-/* * * * * * * * * * * * * * * * * * * */
+  /* Component-level overrides (higher specificity) */
+  &:where([data-panel-background='solid'], [data-material='solid']) {
+    background-color: var(--gray-3);
+  }
 
-.rt-SegmentedControlRoot:where(.rt-variant-classic) {
-  & :where(.rt-SegmentedControlItem:not([disabled])) ~ :where(.rt-SegmentedControlIndicator) {
-    &::before {
-      /* Use the same elevated 3D effect as Button classic variant */
-      /* prettier-ignore */
-      box-shadow:
-        inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a2),
-        inset 0 var(--classic-border-width) var(--white-a12),
-        inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-        inset 0 calc(-1 * var(--classic-border-width)) var(--gray-a6),
-        0 0 0 var(--classic-border-width) var(--gray-a5),
-        0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
-
-      :where(.dark, .dark-theme) &,
-      :where(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) & {
-        /* prettier-ignore */
-        box-shadow:
-          inset 0 calc(-1 * var(--classic-border-width)) var(--classic-shadow-blur-large) var(--gray-a3),
-          inset 0 var(--classic-border-width) var(--gray-a11),
-          inset 0 var(--classic-shadow-blur-medium) var(--classic-shadow-blur-large) var(--gray-a2),
-          inset 0 calc(-2 * var(--classic-border-width)) var(--black-a11),
-          0 0 0 var(--classic-border-width-thick) var(--gray-a7),
-          0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--black-a12);
-      }
-    }
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
   }
 }

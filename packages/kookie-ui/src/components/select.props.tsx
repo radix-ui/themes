@@ -21,12 +21,20 @@ const selectTriggerPropDefs = {
     className: 'rt-panel-background',
     values: ['solid', 'translucent'],
   },
+  error: { type: 'boolean' },
+  loading: { type: 'boolean' },
+  disabled: { type: 'boolean' },
+  readOnly: { type: 'boolean' },
   ...colorPropDef,
   ...radiusPropDef,
   placeholder: { type: 'string' },
 } satisfies {
   variant: PropDef<(typeof triggerVariants)[number]>;
   panelBackground: PropDef<'solid' | 'translucent'>;
+  error: PropDef<boolean>;
+  loading: PropDef<boolean>;
+  disabled: PropDef<boolean>;
+  readOnly: PropDef<boolean>;
   placeholder: PropDef<string>;
 };
 

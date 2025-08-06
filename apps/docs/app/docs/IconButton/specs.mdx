@@ -1,0 +1,756 @@
+import { IconButton, Flex, Box, Callout, Table, Text } from '@kushagradhawan/kookie-ui';
+import { Settings, TriangleAlertIcon, Info, Heart, Download, Share2, Star, Search } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
+import { getDemoImage } from '../../../lib/demo-images';
+
+# Specs
+
+The IconButton system uses mathematical precision and design tokens to create consistent, accessible icon-only interactions. It extends Button specifications with specialized square aspect ratios, automatic icon sizing, and optimized touch targets for icon-based interfaces.
+
+Every measurement, color, and interaction follows systematic design tokens that ensure visual consistency and accessibility compliance across all interface contexts.
+
+## Typography
+
+IconButton does not use typography since it contains only icons. The component relies entirely on visual symbols to communicate meaning, with accessibility provided through ARIA attributes and tooltips.
+
+## Spacing
+
+IconButton uses systematic spacing that creates consistent visual rhythm and optimal touch targets. All spacing follows design tokens that scale proportionally across sizes.
+
+### Square Dimensions
+
+IconButton maintains perfect square aspect ratios (height = width) regardless of content. This ensures consistent visual alignment in toolbars, grids, and compact interfaces where rectangular buttons would create visual noise.
+
+<SpecsBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <IconButton size="1" variant="soft" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="2" variant="soft" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="4" variant="soft" aria-label="Settings">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Height',
+      size1: '24px',
+      size2: '32px',
+      size3: '40px',
+      size4: '48px'
+    },
+    {
+      property: 'Width',
+      size1: '24px',
+      size2: '32px',
+      size3: '40px',
+      size4: '48px'
+    },
+    {
+      property: 'Padding',
+      size1: '4px',
+      size2: '8px',
+      size3: '12px',
+      size4: '16px'
+    }
+  ]}
+  tooltips={{
+    'Height': {
+      size1: 'space-5',
+      size2: 'space-6',
+      size3: 'space-7',
+      size4: 'space-8'
+    },
+    'Width': {
+      size1: 'space-5',
+      size2: 'space-6',
+      size3: 'space-7',
+      size4: 'space-8'
+    },
+    'Padding': {
+      size1: 'space-1',
+      size2: 'space-2',
+      size3: 'space-3',
+      size4: 'space-4'
+    }
+  }}
+/>
+
+**Square Aspect Ratio:** All IconButton sizes maintain 1:1 aspect ratios for consistent visual alignment. This creates predictable grid systems and reduces visual complexity in dense interfaces.
+
+### Automatic Icon Sizing
+
+IconButton automatically sizes icons based on the button size. The component handles all icon scaling internally to maintain visual consistency and prevent manual sizing errors.
+
+<Table.Root size="3" variant="ghost" my="8">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>Size</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Icon Size</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Icon Token</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>Compact (1)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>12px × 12px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-1`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Standard (2)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>16px × 16px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-2`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Large (3)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>18px × 18px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-3`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Extra Large (4)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>20px × 20px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--content-icon-size-4`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+
+**Icon Scaling:** Icons scale proportionally with button size to maintain visual balance. The scaling follows the same modular scale as Button typography (12px → 16px → 18px → 20px) for consistent visual rhythm across the interface.
+
+<Callout.Root size="3" variant="surface" color="gray" my="8">
+  <Callout.Icon>
+    <TriangleAlertIcon />
+  </Callout.Icon>
+  <Callout.Text>Never manually size icons in IconButton. The component automatically applies the correct size based on the button size prop.</Callout.Text>
+</Callout.Root>
+
+### Flush Behavior
+
+IconButton's ghost variant includes specialized flush behavior that removes visual padding for seamless text integration. This creates negative margins that compensate for the ghost variant's internal padding.
+
+<CodeBlock
+  preview={
+    <Flex align="center" gap="2">
+      <Text>Inline text with</Text>
+      <IconButton variant="ghost" size="3" flush aria-label="flush action">
+        <Settings />
+      </IconButton>
+      <Text>continuing seamlessly</Text>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Flush removes visual padding for seamless integration */}
+<Flex align="center" gap="2">
+  <Text>Inline text with</Text>
+  <IconButton variant="ghost" size="3" flush aria-label="flush action">
+    <Settings />
+  </IconButton>
+  <Text>continuing seamlessly</Text>
+</Flex>
+```
+
+</CodeBlock>
+
+**Technical Implementation:** Flush uses calculated negative margins that offset the button's visual padding while preserving the full interaction area. The button appears seamlessly integrated with text, but maintains its complete touch target for accessibility.
+
+**Scaling Logic:** Flush margins scale proportionally with button sizes using mathematical relationships that ensure consistent visual alignment regardless of size.
+
+## Color System
+
+IconButton uses a systematic color approach that ensures all button combinations maintain minimum 3:1 contrast ratios meeting WCAG accessibility standards. The color system automatically calculates these relationships to ensure compliance without manual testing.
+
+### Color Tokens
+
+IconButton uses the same color tokens as Button for consistent visual language across the interface.
+
+<Table.Root size="3" variant="ghost" my="8">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>Variant</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Background</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Foreground</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Border</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>Solid</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-9`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-contrast`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Soft</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-11`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Outline</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>Transparent</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-11`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-6`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Ghost</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>Transparent</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-11`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+
+### High Contrast Mode
+
+The `highContrast` prop automatically ensures maximum visibility for users with visual impairments or challenging viewing conditions.
+
+<CodeBlock
+  preview={
+    <Flex gap="3" wrap="wrap">
+      <IconButton size="3" variant="solid" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="solid" highContrast aria-label="Settings">
+        <Settings />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Standard contrast for most interfaces */}
+<IconButton size="3" variant="solid" aria-label="Settings">
+  <Settings />
+</IconButton>
+
+{/* Automatically enhanced contrast for accessibility */}
+<IconButton size="3" variant="solid" highContrast aria-label="Settings">
+  <Settings />
+</IconButton>
+```
+
+</CodeBlock>
+
+## Variant Tokens
+
+IconButton uses the same variant tokens as Button for consistent visual language and interaction patterns.
+
+### Variant Specifications
+
+Each variant uses specific design tokens that ensure consistent appearance and behavior across all interface contexts.
+
+<Table.Root size="3" variant="ghost" my="8">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>Variant</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Border Radius</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Shadow</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Focus Ring</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>Solid</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--radius-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Soft</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--radius-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Outline</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--radius-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Ghost</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--radius-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Surface</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--radius-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>None</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Classic</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--radius-3`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--shadow-2`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+
+## Interactions
+
+IconButton uses systematic interaction states that provide clear feedback and maintain accessibility compliance across all variants and sizes.
+
+### Hover States
+
+Hover states use subtle color shifts that maintain contrast ratios while providing clear interaction feedback.
+
+<CodeBlock
+  preview={
+    <Flex gap="3" wrap="wrap">
+      <IconButton size="3" variant="solid" aria-label="Settings">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="outline" aria-label="Heart">
+        <Heart />
+      </IconButton>
+      <IconButton size="3" variant="ghost" aria-label="Share">
+        <Share2 />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Hover states provide clear interaction feedback */}
+<IconButton size="3" variant="solid" aria-label="Settings">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="outline" aria-label="Heart">
+  <Heart />
+</IconButton>
+<IconButton size="3" variant="ghost" aria-label="Share">
+  <Share2 />
+</IconButton>
+```
+
+</CodeBlock>
+
+### Focus States
+
+Focus states use 2px outlines with appropriate colors and offsets per variant to ensure accessibility compliance.
+
+<Table.Root size="3" variant="ghost" my="8">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>Variant</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Focus Ring Color</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Focus Ring Offset</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>Solid</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>2px</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Soft</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>2px</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Outline</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>2px</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Ghost</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>`--accent-8`</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>2px</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+
+### Active States
+
+Active states provide immediate feedback for button presses, using subtle color shifts that maintain visual hierarchy.
+
+### Loading States
+
+Loading states automatically provide comprehensive accessibility support beyond basic visual feedback.
+
+<CodeBlock
+  preview={
+    <IconButton size="3" loading aria-label="Processing">
+      <Download />
+    </IconButton>
+  }
+>
+
+```tsx
+{/* Enhanced loading accessibility automatically included */}
+<IconButton loading aria-label="Processing">
+  <Download />
+</IconButton>
+```
+
+</CodeBlock>
+
+**Automatic accessibility features:**
+- `aria-busy="true"` automatically announces processing state
+- `aria-disabled="true"` automatically prevents interaction
+- `aria-describedby` automatically links to loading announcement
+- VisuallyHidden text automatically includes: "Loading, please wait..."
+- Original button text automatically remains available to screen readers
+
+## Panel Backgrounds
+
+IconButton supports both solid and translucent materials to create different interface experiences.
+
+### Solid Material
+
+Solid material creates interfaces that feel grounded and reliable, with clear boundaries and predictable behavior.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <IconButton size="3" variant="solid" aria-label="Save changes">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="outline" aria-label="Cancel">
+        <Settings />
+      </IconButton>
+      <IconButton size="3" variant="soft" aria-label="Preview">
+        <Search />
+      </IconButton>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use solid material for clear, stable interaction */}
+<IconButton size="3" variant="solid" aria-label="Save changes">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="outline" aria-label="Cancel">
+  <Settings />
+</IconButton>
+<IconButton size="3" variant="soft" aria-label="Preview">
+  <Search />
+</IconButton>
+```
+
+</CodeBlock>
+
+### Translucent Material
+
+Translucent material creates interfaces that feel layered and responsive to their environment, revealing context while maintaining identity.
+
+<CodeBlock
+  preview={
+    <Flex 
+      position="relative" 
+      align="center" 
+      justify="center" 
+      height="200px"
+      width="100%"
+      style={{
+        backgroundImage: `url(${getDemoImage('background')})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        borderRadius: 'var(--radius-3)'
+      }}
+    >
+      <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
+        <IconButton size="4" color="gray" variant="classic" material="translucent" aria-label="Classic">
+          <Settings />
+        </IconButton>
+        <IconButton size="4" variant="solid" material="translucent" aria-label="Solid">
+          <Star />
+        </IconButton>
+        <IconButton size="4" color="gray" variant="soft" material="translucent" aria-label="Soft">
+          <Heart />
+        </IconButton>
+      </Flex>
+    </Flex>
+  }
+>
+
+```tsx
+{/* Use translucent material to adapt to background context */}
+<IconButton size="4" color="gray" variant="classic" material="translucent" aria-label="Classic">
+  <Settings />
+</IconButton>
+<IconButton size="4" variant="solid" material="translucent" aria-label="Solid">
+  <Star />
+</IconButton>
+<IconButton size="4" color="gray" variant="soft" material="translucent" aria-label="Soft">
+  <Heart />
+</IconButton>
+```
+
+</CodeBlock>
+
+## Touch Targets
+
+IconButton automatically accommodates users with varying motor abilities. All sizes automatically meet or exceed accessibility guidelines for minimum touch targets.
+
+<Table.Root size="3" variant="ghost" my="8">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>Size</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Touch Target</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>Accessibility</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>Compact (1)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>24px × 24px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>Dense interfaces</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Standard (2)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>32px × 32px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>Standard interfaces</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Large (3)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>40px × 40px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>Mobile touch targets</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>Extra Large (4)</Table.RowHeaderCell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>48px × 48px</Text>
+        </Flex>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap="2">
+          <Text>Maximum accessibility</Text>
+        </Flex>
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+
+## Motion Preferences
+
+IconButton automatically respects user motion preferences. All transitions and animations automatically disable when users indicate motion sensitivity, ensuring comfortable interaction for users with vestibular disorders.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  transition: none;
+  animation: none;
+}
+``` 

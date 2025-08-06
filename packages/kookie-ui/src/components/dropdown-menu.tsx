@@ -52,11 +52,34 @@ interface DropdownMenuContentProps
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
     const themeContext = useThemeContext();
+
+    // Show deprecation warning for panelBackground when used
+    React.useEffect(() => {
+      if (props.panelBackground !== undefined) {
+        console.warn(
+          'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
+        );
+      }
+    }, [props.panelBackground]);
+
+    // Material takes precedence over panelBackground
+    const effectiveMaterial =
+      props.material ?? props.panelBackground ?? themeContext.panelBackground;
+
+    // Memoize theme context values to prevent unnecessary re-renders
+    const memoizedThemeContext = React.useMemo(
+      () => ({
+        material: effectiveMaterial,
+        accentColor: themeContext.accentColor,
+      }),
+      [effectiveMaterial, themeContext.accentColor],
+    );
+
     const {
       size = dropdownMenuContentPropDefs.size.default,
       variant = dropdownMenuContentPropDefs.variant.default,
       highContrast = dropdownMenuContentPropDefs.highContrast.default,
-      panelBackground = props.panelBackground ?? themeContext.panelBackground,
+      material = memoizedThemeContext.material,
     } = props;
     const {
       className,
@@ -64,16 +87,23 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       color,
       container,
       forceMount,
-      panelBackground: _,
+      material: _,
+      panelBackground: __,
       ...contentProps
     } = extractProps(props, dropdownMenuContentPropDefs);
-    const resolvedColor = color || themeContext.accentColor;
+
+    // Memoize color resolution to prevent unnecessary re-renders
+    const resolvedColor = React.useMemo(
+      () => color || memoizedThemeContext.accentColor,
+      [color, memoizedThemeContext.accentColor],
+    );
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DropdownMenuPrimitive.Content
             data-accent-color={resolvedColor}
-            data-panel-background={panelBackground}
+            data-material={material}
+            data-panel-background={material}
             align="start"
             sideOffset={4}
             collisionPadding={10}
@@ -91,8 +121,8 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               <div className={classNames('rt-BaseMenuViewport', 'rt-DropdownMenuViewport')}>
                 <DropdownMenuContentContext.Provider
                   value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast, panelBackground }),
-                    [size, variant, resolvedColor, highContrast, panelBackground],
+                    () => ({ size, variant, color: resolvedColor, highContrast, material }),
+                    [size, variant, resolvedColor, highContrast, material],
                   )}
                 >
                   {children}
@@ -307,25 +337,31 @@ DropdownMenuSubTrigger.displayName = 'DropdownMenu.SubTrigger';
 
 type DropdownMenuSubContentElement = React.ElementRef<typeof DropdownMenuPrimitive.SubContent>;
 interface DropdownMenuSubContentProps
-  extends ComponentPropsWithout<typeof DropdownMenuPrimitive.SubContent, RemovedProps> {
+  extends ComponentPropsWithout<typeof DropdownMenuPrimitive.SubContent, RemovedProps>,
+    DropdownMenuContentContextValue {
   container?: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Portal>['container'];
 }
 const DropdownMenuSubContent = React.forwardRef<
   DropdownMenuSubContentElement,
   DropdownMenuSubContentProps
 >((props, forwardedRef) => {
-  const { size, variant, color, highContrast, panelBackground } = React.useContext(
-    DropdownMenuContentContext,
+  // Memoize context consumption to prevent unnecessary re-renders
+  const contextValue = React.useContext(DropdownMenuContentContext);
+  const { size, variant, color, highContrast, material } = React.useMemo(
+    () => contextValue,
+    [contextValue],
   );
+
   const {
     className,
     children,
     container,
     forceMount,
-    panelBackground: _,
+    material: _,
+    panelBackground: __,
     ...subContentProps
   } = extractProps(
-    { size, variant, color, highContrast, panelBackground, ...props },
+    { size, variant, color, highContrast, material, ...props },
     dropdownMenuContentPropDefs,
   );
   return (
@@ -333,7 +369,8 @@ const DropdownMenuSubContent = React.forwardRef<
       <Theme asChild>
         <DropdownMenuPrimitive.SubContent
           data-accent-color={color}
-          data-panel-background={panelBackground}
+          data-material={material}
+          data-panel-background={material}
           alignOffset={-Number(size) * 4}
           // Side offset accounts for the outer solid box-shadow
           sideOffset={1}
