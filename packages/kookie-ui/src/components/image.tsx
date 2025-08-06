@@ -193,7 +193,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     placeholder,
     showSkeleton = false, // Default to no skeleton for simpler UX
     fadeIn = true, // Default to fade-in for smooth loading experience
-
+    loadingAriaLabel, // Extract but don't use
     errorAriaLabel = 'Failed to load image',
     radius,
     caption,

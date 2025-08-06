@@ -51,7 +51,7 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
     const isInvalid = inputProps.error || inputProps.isInvalid;
 
     const { 'aria-describedby': ariaDescribedby, 'aria-labelledby': ariaLabelledby } = inputProps;
-    
+
     // Build aria-describedby string
     const describedBy = React.useMemo(() => {
       const parts = [];

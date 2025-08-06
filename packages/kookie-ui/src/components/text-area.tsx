@@ -28,7 +28,7 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   const errorId = React.useId();
 
   const { 'aria-describedby': ariaDescribedby, 'aria-labelledby': ariaLabelledby } = textAreaProps;
-  
+
   // Determine invalid state
   const isInvalid = textAreaProps.error || textAreaProps.isInvalid;
 
