@@ -50,22 +50,24 @@ const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>
     // Determine invalid state
     const isInvalid = inputProps.error || inputProps.isInvalid;
 
+    const { 'aria-describedby': ariaDescribedby, 'aria-labelledby': ariaLabelledby } = inputProps;
+    
     // Build aria-describedby string
     const describedBy = React.useMemo(() => {
       const parts = [];
       if (inputProps.errorMessage) parts.push(errorId);
-      if (inputProps['aria-describedby']) parts.push(inputProps['aria-describedby']);
+      if (ariaDescribedby) parts.push(ariaDescribedby);
       return parts.length > 0 ? parts.join(' ') : undefined;
-    }, [inputProps.errorMessage, inputProps['aria-describedby'], errorId]);
+    }, [inputProps.errorMessage, ariaDescribedby, errorId]);
 
     // Build aria attributes
     const ariaProps = React.useMemo(
       () => ({
         'aria-invalid': isInvalid,
         'aria-describedby': describedBy,
-        'aria-labelledby': inputProps['aria-labelledby'],
+        'aria-labelledby': ariaLabelledby,
       }),
-      [isInvalid, describedBy, inputProps['aria-labelledby']],
+      [isInvalid, describedBy, ariaLabelledby],
     );
 
     // Filter out our custom props to avoid DOM warnings

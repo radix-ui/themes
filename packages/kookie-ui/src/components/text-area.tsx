@@ -27,6 +27,8 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   // Generate unique IDs for accessibility
   const errorId = React.useId();
 
+  const { 'aria-describedby': ariaDescribedby, 'aria-labelledby': ariaLabelledby } = textAreaProps;
+  
   // Determine invalid state
   const isInvalid = textAreaProps.error || textAreaProps.isInvalid;
 
@@ -34,18 +36,18 @@ const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwar
   const describedBy = React.useMemo(() => {
     const parts = [];
     if (textAreaProps.errorMessage) parts.push(errorId);
-    if (textAreaProps['aria-describedby']) parts.push(textAreaProps['aria-describedby']);
+    if (ariaDescribedby) parts.push(ariaDescribedby);
     return parts.length > 0 ? parts.join(' ') : undefined;
-  }, [textAreaProps.errorMessage, textAreaProps['aria-describedby'], errorId]);
+  }, [textAreaProps.errorMessage, ariaDescribedby, errorId]);
 
   // Build aria attributes
   const ariaProps = React.useMemo(
     () => ({
       'aria-invalid': isInvalid,
       'aria-describedby': describedBy,
-      'aria-labelledby': textAreaProps['aria-labelledby'],
+      'aria-labelledby': ariaLabelledby,
     }),
-    [isInvalid, describedBy, textAreaProps['aria-labelledby']],
+    [isInvalid, describedBy, ariaLabelledby],
   );
 
   // Filter out our custom props to avoid DOM warnings

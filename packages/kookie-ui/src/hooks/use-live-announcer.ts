@@ -5,8 +5,6 @@ import * as React from 'react';
  * Creates a hidden aria-live region for announcing dynamic content changes
  */
 export function useLiveAnnouncer() {
-  const [announcements, setAnnouncements] = React.useState<string[]>([]);
-  const announcementId = React.useId();
 
   // Create aria-live region if it doesn't exist
   React.useEffect(() => {

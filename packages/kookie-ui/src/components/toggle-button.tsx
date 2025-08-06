@@ -97,17 +97,15 @@ const ToggleButton = React.forwardRef<ToggleButtonElement, ToggleButtonProps>(
 
     // Development-only warning for controlled/uncontrolled pattern
     // This helps developers avoid common state management mistakes
-    if (process.env.NODE_ENV === 'development') {
-      React.useEffect(() => {
-        if (pressed !== undefined && onPressedChange === undefined) {
-          console.warn(
-            'ToggleButton: You provided a `pressed` prop without an `onPressedChange` handler. ' +
-              'This will result in a read-only toggle button. If you want the button to be interactive, ' +
-              'you should provide an `onPressedChange` handler.',
-          );
-        }
-      }, [pressed, onPressedChange]);
-    }
+    React.useEffect(() => {
+      if (process.env.NODE_ENV === 'development' && pressed !== undefined && onPressedChange === undefined) {
+        console.warn(
+          'ToggleButton: You provided a `pressed` prop without an `onPressedChange` handler. ' +
+            'This will result in a read-only toggle button. If you want the button to be interactive, ' +
+            'you should provide an `onPressedChange` handler.',
+        );
+      }
+    }, [pressed, onPressedChange]);
 
     // Render the toggle button using Radix UI's Toggle primitive
     // This provides proper ARIA attributes and keyboard navigation

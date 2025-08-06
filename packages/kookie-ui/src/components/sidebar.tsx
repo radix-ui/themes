@@ -160,7 +160,7 @@ interface SidebarProps extends ComponentPropsWithout<'div', RemovedProps>, Sideb
 
 const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwardedRef) => {
   const themeContext = useThemeContext();
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+  const { isMobile, state, openMobile } = useSidebar();
 
   const {
     size = sidebarPropDefs.size.default,
@@ -172,7 +172,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
     panelBackground,
     color,
     highContrast = sidebarPropDefs.highContrast.default,
-    asChild,
+
   } = props;
 
   const { className, children, ...rootProps } = extractProps(props, sidebarPropDefs);
@@ -495,15 +495,16 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
 
     const Comp = asChild ? Slot : 'button';
 
+    const { onClick } = props;
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLButtonElement>) => {
         switch (event.key) {
           case 'Enter':
           case ' ':
             event.preventDefault();
-            if (props.onClick) props.onClick(event as any);
+            if (onClick) onClick(event as any);
             break;
-          case 'ArrowDown':
+          case 'ArrowDown': {
             event.preventDefault();
             // Focus next menu item
             const nextItem = (event.currentTarget as HTMLElement).nextElementSibling?.querySelector(
@@ -511,7 +512,8 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
             ) as HTMLElement;
             if (nextItem) nextItem.focus();
             break;
-          case 'ArrowUp':
+          }
+          case 'ArrowUp': {
             event.preventDefault();
             // Focus previous menu item
             const prevItem = (
@@ -519,10 +521,11 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
             ).previousElementSibling?.querySelector('[role="menuitem"]') as HTMLElement;
             if (prevItem) prevItem.focus();
             break;
+          }
         }
         onKeyDown?.(event);
       },
-      [props.onClick, onKeyDown],
+      [onClick, onKeyDown],
     );
 
     return (

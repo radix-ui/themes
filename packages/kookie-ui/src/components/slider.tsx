@@ -109,6 +109,7 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
   // Live region state for accessibility announcements
   const [announceValue, setAnnounceValue] = React.useState<string>('');
 
+  const { onValueChange } = sliderProps;
   // Handle value changes with snapping
   const handleValueChange = React.useCallback(
     (newValue: number[]) => {
@@ -119,9 +120,9 @@ const Slider = React.forwardRef<SliderElement, SliderProps>((props, forwardedRef
       const valueText = formatValueText(finalValue);
       setAnnounceValue(valueText);
 
-      sliderProps.onValueChange?.(finalValue);
+      onValueChange?.(finalValue);
     },
-    [snapToTicks, ticks, snapToNearestTick, formatValueText, sliderProps.onValueChange],
+    [snapToTicks, ticks, snapToNearestTick, formatValueText, onValueChange],
   );
 
   // Clear announcement after a delay to prevent spam

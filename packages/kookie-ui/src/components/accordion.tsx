@@ -10,7 +10,6 @@ import {
   accordionContentPropDefs,
 } from './accordion.props.js';
 import { extractProps } from '../helpers/extract-props.js';
-import { requireReactElement } from '../helpers/require-react-element.js';
 
 import type {
   AccordionRootOwnProps,

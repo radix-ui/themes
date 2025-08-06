@@ -3,7 +3,6 @@ import { Toggle } from 'radix-ui';
 import { IconButton } from './icon-button.js';
 import { BaseButton } from './_internal/base-button.js';
 import { useLiveAnnouncer } from '../hooks/use-live-announcer.js';
-import type { BaseButtonProps } from './_internal/base-button.js';
 import type { IconButtonProps } from './icon-button.js';
 
 type ToggleIconButtonElement = React.ElementRef<typeof BaseButton>;
@@ -160,17 +159,15 @@ const ToggleIconButton = React.forwardRef<
 
   // Development-only warning for controlled/uncontrolled pattern
   // This helps developers avoid common state management mistakes
-  if (process.env.NODE_ENV === 'development') {
-    React.useEffect(() => {
-      if (pressed !== undefined && onPressedChange === undefined) {
-        console.warn(
-          'ToggleIconButton: You provided a `pressed` prop without an `onPressedChange` handler. ' +
-            'This will result in a read-only toggle button. If you want the button to be interactive, ' +
-            'you should provide an `onPressedChange` handler.',
-        );
-      }
-    }, [pressed, onPressedChange]);
-  }
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && pressed !== undefined && onPressedChange === undefined) {
+      console.warn(
+        'ToggleIconButton: You provided a `pressed` prop without an `onPressedChange` handler. ' +
+          'This will result in a read-only toggle button. If you want the button to be interactive, ' +
+          'you should provide an `onPressedChange` handler.',
+      );
+    }
+  }, [pressed, onPressedChange]);
 
   // Render the toggle icon button using Radix UI's Toggle primitive
   // This provides proper ARIA attributes and keyboard navigation
