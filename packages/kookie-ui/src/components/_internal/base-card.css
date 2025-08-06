@@ -102,35 +102,35 @@
       --base-card-padding-right: var(--space-3);
       --base-card-padding-bottom: var(--space-3);
       --base-card-padding-left: var(--space-3);
-      --base-card-border-radius: var(--radius-3);
+      --base-card-border-radius: var(--radius-5);
     }
     &:where(.rt-r-size-2) {
       --base-card-padding-top: var(--space-4);
       --base-card-padding-right: var(--space-4);
       --base-card-padding-bottom: var(--space-4);
       --base-card-padding-left: var(--space-4);
-      --base-card-border-radius: var(--radius-4);
+      --base-card-border-radius: var(--radius-6);
     }
     &:where(.rt-r-size-3) {
       --base-card-padding-top: var(--space-5);
       --base-card-padding-right: var(--space-5);
       --base-card-padding-bottom: var(--space-5);
       --base-card-padding-left: var(--space-5);
-      --base-card-border-radius: var(--radius-5);
+      --base-card-border-radius: var(--radius-7);
     }
     &:where(.rt-r-size-4) {
       --base-card-padding-top: var(--space-6);
       --base-card-padding-right: var(--space-6);
       --base-card-padding-bottom: var(--space-6);
       --base-card-padding-left: var(--space-6);
-      --base-card-border-radius: var(--radius-6);
+      --base-card-border-radius: var(--radius-8);
     }
     &:where(.rt-r-size-5) {
       --base-card-padding-top: var(--space-7);
       --base-card-padding-right: var(--space-7);
       --base-card-padding-bottom: var(--space-7);
       --base-card-padding-left: var(--space-7);
-      --base-card-border-radius: var(--radius-7);
+      --base-card-border-radius: var(--radius-9);
     }
     }
   }
