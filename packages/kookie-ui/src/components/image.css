@@ -25,7 +25,7 @@
 .rt-Image {
   display: block;
   object-fit: var(--object-fit); /* Controlled by fit prop */
-  border-radius: var(--radius-4); /* Default radius, can be overridden */
+  border-radius: var(--radius-2); /* Default radius, can be overridden */
 }
 
 /* 

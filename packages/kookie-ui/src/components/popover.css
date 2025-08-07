@@ -44,20 +44,20 @@
 @breakpoints {
   .rt-PopoverContent {
     &:where(.rt-r-size-1) {
-      --popover-content-padding: var(--space-3);
-      border-radius: var(--radius-3);
+      --popover-content-padding: var(--space-5);
+      border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-2)));
     }
     &:where(.rt-r-size-2) {
-      --popover-content-padding: var(--space-4);
-      border-radius: var(--radius-4);
+      --popover-content-padding: var(--space-6);
+      border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-3)));
     }
     &:where(.rt-r-size-3) {
-      --popover-content-padding: var(--space-5);
-      border-radius: var(--radius-5);
+      --popover-content-padding: var(--space-7);
+      border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-4)));
     }
     &:where(.rt-r-size-4) {
-      --popover-content-padding: var(--space-6);
-      border-radius: var(--radius-6);
+      --popover-content-padding: var(--space-8);
+      border-radius: min(var(--radius-8), calc(var(--radius-4) + var(--space-5)));
     }
   }
 }

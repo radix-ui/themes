@@ -115,7 +115,7 @@
   .rt-TextAreaRoot {
     &:where(.rt-r-size-1) {
       min-height: var(--space-8);
-      border-radius: var(--radius-3);
+      border-radius: var(--radius-1);
 
       & :where(.rt-TextAreaInput) {
         /* Clip text to border */
@@ -128,12 +128,12 @@
     }
     &:where(.rt-r-size-2) {
       min-height: var(--space-9);
-      border-radius: var(--radius-4);
+      border-radius: var(--radius-2);
 
       & :where(.rt-TextAreaInput) {
         /* Clip text to border */
         --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
-        --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
+        --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
@@ -141,12 +141,12 @@
     }
     &:where(.rt-r-size-3) {
       min-height: 80px;
-      border-radius: var(--radius-5);
+      border-radius: var(--radius-3);
 
       & :where(.rt-TextAreaInput) {
         /* Clip text to border */
         --text-area-padding-y: calc(var(--space-3) - var(--text-area-border-width));
-        --text-area-padding-x: calc(var(--space-4) - var(--text-area-border-width));
+        --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
         letter-spacing: var(--letter-spacing-3);

@@ -1,13 +1,18 @@
 [data-radius] {
+  /*  */
   --radius-1: calc(6px * var(--scaling) * var(--radius-factor));
   --radius-2: calc(8px * var(--scaling) * var(--radius-factor));
   --radius-3: calc(10px * var(--scaling) * var(--radius-factor));
   --radius-4: calc(12px * var(--scaling) * var(--radius-factor));
+  
+  /*  */
   --radius-5: calc(16px * var(--scaling) * var(--radius-factor));
   --radius-6: calc(20px * var(--scaling) * var(--radius-factor));
   --radius-7: calc(24px * var(--scaling) * var(--radius-factor));
-  --radius-8: calc(32px * var(--scaling) * var(--radius-factor));
-  --radius-9: calc(40px * var(--scaling) * var(--radius-factor));
+  --radius-8: calc(28px * var(--scaling) * var(--radius-factor));
+  
+  /*  */
+  --radius-9: calc(32px * var(--scaling) * var(--radius-factor));
 }
 
 
