@@ -49,6 +49,7 @@
 .rt-TextAreaInput {
   border-radius: inherit;
   resize: none;
+  min-width: 0; /* allow shrinking in flex/relative containers */
 
   display: block;
   width: 100%;

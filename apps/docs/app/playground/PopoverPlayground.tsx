@@ -15,7 +15,21 @@ import {
   TextField,
   Badge,
 } from '@kushagradhawan/kookie-ui';
-import { MessageCircle, User, Info, Send, Bot, Heart, Star, MapPin } from 'lucide-react';
+import {
+  MessageCircle,
+  User,
+  Info,
+  Send,
+  Bot,
+  Heart,
+  Star,
+  MapPin,
+  ChevronLeft,
+  Pencil,
+  Share2,
+  MoreHorizontal,
+  X,
+} from 'lucide-react';
 
 const sizes = ['1', '2', '3', '4'] as const;
 
@@ -169,6 +183,115 @@ export default function PopoverPlayground() {
                                 Message
                               </Button>
                             </Flex>
+                          </Flex>
+                        </Popover.Content>
+                      </Popover.Root>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table.Root>
+          </Box>
+
+          {/* With Toolbar per size */}
+          <Box pt="6">
+            <Heading size="4" mb="3">
+              With Toolbar
+            </Heading>
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
+                    <Text size="1" color="gray">
+                      Size
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>
+                    <Text size="1" color="gray">
+                      Example
+                    </Text>
+                  </Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {sizes.map((size) => (
+                  <Table.Row key={`toolbar-${size}`}>
+                    <Table.RowHeaderCell>
+                      <Text size="1" color="gray">
+                        Size {size}
+                      </Text>
+                    </Table.RowHeaderCell>
+                    <Table.Cell>
+                      <Popover.Root>
+                        <Popover.Trigger>
+                          <Button variant="soft" size={size}>
+                            Open
+                          </Button>
+                        </Popover.Trigger>
+                        <Popover.Content size={size} width="360px">
+                          <Popover.Toolbar>
+                            <Popover.Toolbar.Left>
+                              <IconButton
+                                radius="full"
+                                variant="classic"
+                                size={getButtonSize(size)}
+                              >
+                                <ChevronLeft />
+                              </IconButton>
+                              <IconButton
+                                radius="full"
+                                variant="classic"
+                                size={getButtonSize(size)}
+                              >
+                                <Pencil />
+                              </IconButton>
+                            </Popover.Toolbar.Left>
+                            <Popover.Toolbar.Center>
+                              <Text asChild size={getTextSize(size)} weight="medium">
+                                <Popover.Toolbar.Title>Compose</Popover.Toolbar.Title>
+                              </Text>
+                            </Popover.Toolbar.Center>
+                            <Popover.Toolbar.Right>
+                              <IconButton
+                                radius="full"
+                                variant="classic"
+                                size={getButtonSize(size)}
+                              >
+                                <MoreHorizontal />
+                              </IconButton>
+                              <Popover.Close>
+                                <IconButton
+                                  radius="full"
+                                  variant="classic"
+                                  size={getButtonSize(size)}
+                                  color="gray"
+                                >
+                                  <X />
+                                </IconButton>
+                              </Popover.Close>
+                            </Popover.Toolbar.Right>
+                          </Popover.Toolbar>
+
+                          <Flex direction="column" gap="3">
+                            <Text size={getTextSize(size)} color="gray">
+                              Content scrolls behind the toolbar. The top padding equals the toolbar
+                              height.
+                            </Text>
+                            <Text size="1" color="gray">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                              justo massa, aliquet quis elit in, pretium facilisis justo. Donec
+                              faucibus, arcu at viverra commodo, nisl tortor lacinia dui, eget
+                              gravida mi eros vitae nunc.
+                            </Text>
+                            <Text size="1" color="gray">
+                              Mauris lacinia, nibh id viverra cursus, urna lacus finibus augue, vel
+                              pretium ligula arcu et lacus. Integer et turpis id dui mollis viverra.
+                              Integer non gravida libero.
+                            </Text>
+                            <Text size="1" color="gray">
+                              Sed a efficitur mauris. Pellentesque habitant morbi tristique senectus
+                              et netus et malesuada fames ac turpis egestas.
+                            </Text>
                           </Flex>
                         </Popover.Content>
                       </Popover.Root>

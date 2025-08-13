@@ -16,15 +16,15 @@
   --surface-opacity-dark: var(--opacity-7);
     
   /* Dialog background opacity constants (stronger than panel) */
-  --dialog-opacity: var(--opacity-7);
+  --dialog-opacity: var(--opacity-9);
   --dialog-opacity-percentage: calc(var(--dialog-opacity) * 100%);
     
   /* Panel background opacity constants */
-  --panel-opacity: var(--opacity-6);
+  --panel-opacity: var(--opacity-8);
   --panel-opacity-percentage: calc(var(--panel-opacity) * 100%);
   
   /* Surface background opacity constants */
-  --surface-opacity: var(--opacity-5);
+  --surface-opacity: var(--opacity-7);
   --surface-opacity-percentage: calc(var(--surface-opacity) * 100%);
   
   /* Standard border width constants */
@@ -159,6 +159,9 @@
   
   /* Transition constants */
   --transition-background-blur: background-color var(--duration-2) var(--ease-1);
+
+  /* Sheet animation constants */
+  --sheet-slide-distance: 50%;
   
   /* Spacing multipliers for component sizing */
   --spacing-multiplier-small: 0.5;

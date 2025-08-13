@@ -68,3 +68,6 @@ export { Tooltip, type TooltipProps } from './tooltip.js';
 export { UserCard, type UserCardProps } from './user-card.js';
 export { VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.js';
 export * as Sidebar from './sidebar.js';
+export * as Shell from './shell.js';
+export * as Sheet from './sheet.js';
+export * as Chatbar from './chatbar.js';

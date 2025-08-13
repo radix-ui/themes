@@ -109,8 +109,8 @@
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-border-radius);
 
-  animation-duration: 120ms;
-  animation-timing-function: ease-out;
+  animation-duration: var(--motion-duration-micro);
+  animation-timing-function: var(--motion-ease-standard);
 
   &:where([data-state='visible']) {
     animation-name: rt-fade-in;
@@ -135,7 +135,7 @@
 .rt-ScrollAreaThumb {
   background-color: var(--gray-a8);
   border-radius: inherit;
-  transition: background-color 100ms;
+  transition: background-color var(--motion-duration-micro) var(--motion-ease-standard);
 
   @media (hover: hover) {
     &:where(:hover) {

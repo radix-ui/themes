@@ -26,7 +26,7 @@ body {
 
 * {
   box-sizing: border-box;
-  /* outline: dashed 1px var(--gray-3); */
+  /* outline: dashed 0.25px var(--gray-6); */
 }
 
 /* Code block styling with Nord theme support */

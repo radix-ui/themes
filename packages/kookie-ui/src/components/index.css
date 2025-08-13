@@ -38,11 +38,13 @@
 @import './radio-cards.css';
 @import './radio-group.css';
 @import './radio.css';
+@import './sheet.css';
 @import './scroll-area.css';
 @import './segmented-control.css';
 @import './select.css';
 @import './separator.css';
 @import './sidebar.css';
+@import './shell.css';
 @import './slider.css';
 @import './spinner.css';
 @import './strong.css';
@@ -55,6 +57,7 @@
 @import './theme-panel.css';
 @import './tooltip.css';
 @import './user-card.css';
+@import './chatbar.css';
 
 .radix-themes:where([data-is-root-theme='true']) {
   /* Create a new stacking context on the root `Theme` so layered components work out of the box */

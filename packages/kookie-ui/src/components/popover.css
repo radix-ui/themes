@@ -13,6 +13,8 @@
   --inset-padding-right: var(--popover-content-padding);
   --inset-padding-bottom: var(--popover-content-padding);
   --inset-padding-left: var(--popover-content-padding);
+  /* Default toolbar padding maps to content padding; overridden per size below */
+  --popover-toolbar-padding: var(--popover-content-padding);
   padding: var(--popover-content-padding);
   box-sizing: border-box;
 
@@ -33,6 +35,45 @@
     background-color: var(--color-panel-translucent);
     backdrop-filter: var(--backdrop-filter-panel);
   }
+
+  /* Toolbar integration */
+  &:where([data-has-toolbar]) {
+    /* When toolbar is present, top padding equals toolbar height */
+    padding-top: var(--popover-toolbar-offset, var(--popover-content-padding));
+  }
+}
+
+.rt-PopoverToolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: var(--space-1);
+  padding: var(--popover-toolbar-padding);
+  background-color: var(--color-panel);
+}
+
+.rt-PopoverToolbarSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rt-PopoverToolbarLeft { justify-self: start; }
+
+.rt-PopoverToolbarCenter { grid-column: 2; justify-self: center; min-width: 0; text-align: center; }
+
+.rt-PopoverToolbarRight { justify-self: end; }
+
+.rt-PopoverToolbarTitle {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /***************************************************************************************************
@@ -45,18 +86,22 @@
   .rt-PopoverContent {
     &:where(.rt-r-size-1) {
       --popover-content-padding: var(--space-5);
+      --popover-toolbar-padding: var(--space-2);
       border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-2)));
     }
     &:where(.rt-r-size-2) {
       --popover-content-padding: var(--space-6);
+      --popover-toolbar-padding: var(--space-2);
       border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-3)));
     }
     &:where(.rt-r-size-3) {
       --popover-content-padding: var(--space-7);
+      --popover-toolbar-padding: var(--space-3);
       border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-4)));
     }
     &:where(.rt-r-size-4) {
       --popover-content-padding: var(--space-8);
+      --popover-toolbar-padding: var(--space-4);
       border-radius: min(var(--radius-8), calc(var(--radius-4) + var(--space-5)));
     }
   }

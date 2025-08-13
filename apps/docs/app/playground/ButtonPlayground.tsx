@@ -98,7 +98,7 @@ export default function ButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
                       <Button size="2" variant={variant}>
-                        Kookie
+                        Button
                       </Button>
                     </Table.Cell>
                   ))}
@@ -112,7 +112,7 @@ export default function ButtonPlayground() {
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
                       <Button size="2" variant={variant} color="gray">
-                        Kookie
+                        Button
                       </Button>
                     </Table.Cell>
                   ))}
@@ -157,7 +157,7 @@ export default function ButtonPlayground() {
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
                           <Button size="2" variant={variant} color={color}>
-                            Kookie
+                            Button
                           </Button>
                         </Table.Cell>
                       ))}
@@ -175,7 +175,7 @@ export default function ButtonPlayground() {
                       {variants.map((variant) => (
                         <Table.Cell key={variant}>
                           <Button size="2" variant={variant} color={color} highContrast>
-                            Kookie
+                            Button
                           </Button>
                         </Table.Cell>
                       ))}

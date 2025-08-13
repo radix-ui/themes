@@ -6,11 +6,11 @@ import { Slot } from './slot.js';
 import { Accordion } from 'radix-ui';
 
 import { sidebarPropDefs } from './sidebar.props.js';
-import { Theme, useThemeContext } from './theme.js';
-import { IconButton } from './icon-button.js';
+import { useThemeContext } from './theme.js';
+// import { IconButton } from './icon-button.js';
 import { ScrollArea } from './scroll-area.js';
 import { Separator } from './separator.js';
-import { ChevronDownIcon, ThickChevronRightIcon } from './icons.js';
+import { ThickChevronRightIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { Kbd } from './kbd.js';
 import { Badge } from './badge.js';
@@ -29,130 +29,15 @@ type BadgeConfig = {
   radius?: BadgeProps['radius'];
 };
 
-// Sidebar context for state management
-type SidebarContextProps = {
-  state: 'expanded' | 'collapsed';
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  openMobile: boolean;
-  setOpenMobile: (open: boolean) => void;
-  isMobile: boolean;
-  toggleSidebar: () => void;
-  side: 'left' | 'right';
-  type: 'sidebar' | 'floating';
-  variant: 'soft' | 'outline' | 'surface' | 'ghost';
-  menuVariant: 'solid' | 'soft';
-  collapsible: 'offcanvas' | 'icon' | 'none';
+// Internal presentational context (not exported) for size/menu variant
+type SidebarVisualContextValue = {
   size: '1' | '2';
+  menuVariant: 'solid' | 'soft';
 };
-
-const SidebarContext = React.createContext<SidebarContextProps | null>(null);
-
-function useSidebar() {
-  const context = React.useContext(SidebarContext);
-  if (!context) {
-    throw new Error('useSidebar must be used within a SidebarProvider.');
-  }
-  return context;
+const SidebarVisualContext = React.createContext<SidebarVisualContextValue | null>(null);
+function useSidebarVisual() {
+  return React.useContext(SidebarVisualContext);
 }
-
-// Hook to detect mobile (simplified version)
-function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
-
-  return isMobile;
-}
-
-// Provider component
-interface SidebarProviderProps extends React.ComponentPropsWithoutRef<'div'> {
-  defaultOpen?: boolean;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  side?: 'left' | 'right';
-}
-
-const SidebarProvider = React.forwardRef<HTMLDivElement, SidebarProviderProps>(
-  (
-    {
-      defaultOpen = true,
-      open: openProp,
-      onOpenChange: setOpenProp,
-      side = 'left',
-      className,
-      children,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const isMobile = useIsMobile();
-    const [openMobile, setOpenMobile] = React.useState(false);
-
-    // Internal state for uncontrolled mode
-    const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-
-    // Use controlled state if provided, otherwise internal state
-    const open = openProp ?? internalOpen;
-
-    const setOpen = React.useCallback(
-      (value: boolean | ((value: boolean) => boolean)) => {
-        const openState = typeof value === 'function' ? value(open) : value;
-        if (setOpenProp) {
-          setOpenProp(openState);
-        } else {
-          setInternalOpen(openState);
-        }
-      },
-      [setOpenProp, open],
-    );
-
-    // Helper to toggle the sidebar
-    const toggleSidebar = React.useCallback(() => {
-      return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
-    }, [isMobile, setOpen, setOpenMobile]);
-
-    // State for data attributes
-    const state = open ? 'expanded' : 'collapsed';
-
-    const contextValue = React.useMemo<Partial<SidebarContextProps>>(
-      () => ({
-        state,
-        open,
-        setOpen,
-        isMobile,
-        openMobile,
-        setOpenMobile,
-        toggleSidebar,
-        side,
-      }),
-      [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar, side],
-    );
-
-    return (
-      <div
-        {...props}
-        ref={forwardedRef}
-        className={classNames('rt-SidebarProvider', className)}
-        data-state={state}
-        data-side={side}
-      >
-        <SidebarContext.Provider value={contextValue as SidebarContextProps}>
-          {children}
-        </SidebarContext.Provider>
-      </div>
-    );
-  },
-);
-SidebarProvider.displayName = 'Sidebar.Provider';
 
 // Main Sidebar component
 type SidebarOwnProps = GetPropDefTypes<typeof sidebarPropDefs>;
@@ -160,19 +45,17 @@ interface SidebarProps extends ComponentPropsWithout<'div', RemovedProps>, Sideb
 
 const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwardedRef) => {
   const themeContext = useThemeContext();
-  const { isMobile, state, openMobile } = useSidebar();
 
   const {
     size = sidebarPropDefs.size.default,
     variant = sidebarPropDefs.variant.default,
     menuVariant = sidebarPropDefs.menuVariant.default,
-    type = sidebarPropDefs.type.default,
-    side = sidebarPropDefs.side.default,
-    collapsible = sidebarPropDefs.collapsible.default,
+    // type = sidebarPropDefs.type.default,
+    // side = sidebarPropDefs.side.default,
+    // collapsible = sidebarPropDefs.collapsible.default,
     panelBackground,
     color,
     highContrast = sidebarPropDefs.highContrast.default,
-
   } = props;
 
   const { className, children, ...rootProps } = extractProps(props, sidebarPropDefs);
@@ -181,104 +64,28 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
 
   // Update context with current props - we'll pass the resolved values
   const resolvedSize = typeof size === 'object' ? size.initial || '2' : size;
-  const context = React.useContext(SidebarContext);
-  if (context) {
-    context.side = side;
-    context.type = type;
-    context.variant = variant;
-    context.menuVariant = menuVariant;
-    context.collapsible = collapsible;
-    context.size = resolvedSize;
-  }
-
-  if (collapsible === 'none') {
-    return (
-      <div
-        {...safeRootProps}
-        ref={forwardedRef}
-        data-accent-color={resolvedColor}
-        data-state={state}
-        data-side={side}
-        data-type={type}
-        data-collapsible={collapsible}
-        className={classNames('rt-SidebarRoot', `rt-r-size-${size}`, className)}
-      >
-        <Theme>
-          <div
-            className={classNames('rt-SidebarContainer', `rt-variant-${variant}`)}
-            data-accent-color={resolvedColor}
-            data-high-contrast={highContrast || undefined}
-            data-side={side}
-            data-panel-background={panelBackground}
-          >
-            {children}
-          </div>
-        </Theme>
-      </div>
-    );
-  }
-
-  if (isMobile) {
-    return (
-      <div
-        {...safeRootProps}
-        ref={forwardedRef}
-        data-accent-color={resolvedColor}
-        data-state={openMobile ? 'open' : 'closed'}
-        data-side={side}
-        data-type={type}
-        data-collapsible={collapsible}
-        className={classNames('rt-SidebarRoot', 'rt-SidebarRoot--mobile', className)}
-      >
-        <Theme>
-          <div
-            className={classNames(
-              'rt-SidebarContainer',
-              `rt-variant-${variant}`,
-              `rt-r-size-${size}`,
-            )}
-            data-accent-color={resolvedColor}
-            data-high-contrast={highContrast || undefined}
-            data-side={side}
-            data-type={type}
-            data-collapsible={collapsible}
-            data-panel-background={panelBackground}
-          >
-            {children}
-          </div>
-        </Theme>
-      </div>
-    );
-  }
-
   return (
     <div
       {...safeRootProps}
       ref={forwardedRef}
       data-accent-color={resolvedColor}
-      data-state={state}
-      data-side={side}
-      data-type={type}
-      data-collapsible={collapsible}
       className={classNames('rt-SidebarRoot', className)}
     >
-      <Theme>
+      <SidebarVisualContext.Provider value={{ size: resolvedSize, menuVariant }}>
         <div
           className={classNames(
             'rt-SidebarContainer',
             `rt-variant-${variant}`,
-            `rt-r-size-${size}`,
+            `rt-r-size-${resolvedSize}`,
+            `rt-menu-variant-${menuVariant}`,
           )}
           data-accent-color={resolvedColor}
           data-high-contrast={highContrast || undefined}
-          data-side={side}
-          data-type={type}
-          data-collapsible={collapsible}
           data-panel-background={panelBackground}
         >
           {children}
         </div>
-      </Theme>
+      </SidebarVisualContext.Provider>
     </div>
   );
 });
@@ -286,33 +93,34 @@ Sidebar.displayName = 'Sidebar.Root';
 
 // Sidebar content area
 interface SidebarContentProps extends React.ComponentPropsWithoutRef<'div'> {
-  /**
-   * Accessible label for the navigation region.
-   * @default "Main navigation"
-   */
+  id?: string;
+  role?: 'navigation' | 'none';
   'aria-label'?: string;
 }
 
 const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
   (
-    { className, children, 'aria-label': ariaLabel = 'Main navigation', ...props },
+    {
+      className,
+      children,
+      role = 'navigation',
+      'aria-label': ariaLabel = 'Main navigation',
+      id,
+      ...props
+    },
     forwardedRef,
   ) => {
-    const context = React.useContext(SidebarContext);
-    const {
-      size = '2',
-      menuVariant = 'soft',
-      type = 'sidebar',
-      collapsible = 'none',
-    } = context || {};
+    const visual = useSidebarVisual();
+    const size = visual?.size ?? '2';
+    const menuVariant = visual?.menuVariant ?? 'soft';
 
     return (
       <ScrollArea type="hover">
         <div
           {...props}
           ref={forwardedRef}
-          id="sidebar-navigation"
-          role="navigation"
+          id={id}
+          role={role}
           aria-label={ariaLabel}
           className={classNames(
             'rt-BaseMenuContent',
@@ -321,8 +129,6 @@ const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
             `rt-menu-variant-${menuVariant}`,
             className,
           )}
-          data-type={type}
-          data-collapsible={collapsible}
         >
           {children}
         </div>
@@ -343,8 +149,9 @@ interface SidebarHeaderProps extends React.ComponentPropsWithoutRef<'div'> {
 
 const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps>(
   ({ className, asContainer = true, ...props }, forwardedRef) => {
-    const context = React.useContext(SidebarContext);
-    const { size = '2', menuVariant = 'soft' } = context || {};
+    const visual = useSidebarVisual();
+    const size = visual?.size ?? '2';
+    const menuVariant = visual?.menuVariant ?? 'soft';
 
     return (
       <div
@@ -376,8 +183,9 @@ interface SidebarFooterProps extends React.ComponentPropsWithoutRef<'div'> {
 
 const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
   ({ className, asContainer = true, ...props }, forwardedRef) => {
-    const context = React.useContext(SidebarContext);
-    const { size = '2', menuVariant = 'soft' } = context || {};
+    const visual = useSidebarVisual();
+    const size = visual?.size ?? '2';
+    const menuVariant = visual?.menuVariant ?? 'soft';
 
     return (
       <div
@@ -399,31 +207,7 @@ const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
 SidebarFooter.displayName = 'Sidebar.Footer';
 
 // Sidebar trigger button
-interface SidebarTriggerProps extends ComponentPropsWithout<typeof IconButton, RemovedProps> {}
-
-const SidebarTrigger = React.forwardRef<React.ElementRef<typeof IconButton>, SidebarTriggerProps>(
-  ({ onClick, children, ...props }, forwardedRef) => {
-    const { toggleSidebar, state } = useSidebar();
-
-    return (
-      <IconButton
-        {...props}
-        ref={forwardedRef}
-        variant="ghost"
-        aria-label={state === 'expanded' ? 'Collapse sidebar' : 'Expand sidebar'}
-        aria-expanded={state === 'expanded'}
-        aria-controls="sidebar-navigation"
-        onClick={(event) => {
-          onClick?.(event);
-          toggleSidebar();
-        }}
-      >
-        {children || <ChevronDownIcon />}
-      </IconButton>
-    );
-  },
-);
-SidebarTrigger.displayName = 'Sidebar.Trigger';
+// removed Trigger in presentational-only Sidebar
 
 // Removed SidebarInset - not needed
 
@@ -490,8 +274,8 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
     forwardedRef,
   ) => {
     const [isHighlighted, setIsHighlighted] = React.useState(false);
-    const context = React.useContext(SidebarContext);
-    const { size: sidebarSize = '2' } = context || {};
+    const visual = useSidebarVisual();
+    const sidebarSize = visual?.size ?? '2';
 
     const Comp = asChild ? Slot : 'button';
 
@@ -733,12 +517,10 @@ SidebarGroupContent.displayName = 'Sidebar.GroupContent';
 
 // Export all components following shadcn's pattern
 export {
-  SidebarProvider as Provider,
   Sidebar as Root,
   SidebarContent as Content,
   SidebarHeader as Header,
   SidebarFooter as Footer,
-  SidebarTrigger as Trigger,
   SidebarSeparator as Separator,
   SidebarMenu as Menu,
   SidebarMenuItem as MenuItem,
@@ -749,8 +531,6 @@ export {
   SidebarGroup as Group,
   SidebarGroupLabel as GroupLabel,
   SidebarGroupContent as GroupContent,
-  // Export hook
-  useSidebar,
 };
 
 /**
@@ -807,11 +587,9 @@ export {
  */
 
 export type {
-  SidebarProviderProps as ProviderProps,
   SidebarProps as RootProps,
   SidebarContentProps as ContentProps,
   SidebarHeaderProps as HeaderProps,
   SidebarFooterProps as FooterProps,
-  SidebarTriggerProps as TriggerProps,
   BadgeConfig,
 };

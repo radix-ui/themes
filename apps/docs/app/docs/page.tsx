@@ -1,7 +1,7 @@
 'use client';
 
 import ComponentPage from '../components/ComponentPage';
-import IntroductionMDX from './Introduction.mdx';
+import IntroductionMDX from './Introduction/Introduction.mdx';
 
 export default function DocsPage() {
   return (

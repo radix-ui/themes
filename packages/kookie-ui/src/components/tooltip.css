@@ -6,8 +6,8 @@
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 
-  animation-duration: var(--duration-2);
-  animation-timing-function: var(--ease-3);
+  animation-duration: var(--motion-duration-small);
+  animation-timing-function: var(--motion-spring-snappy);
 
   @media (prefers-reduced-motion: no-preference) {
     &:where([data-state='delayed-open']) {

@@ -100,42 +100,9 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes rt-dialog-overlay-no-op {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes rt-dialog-content-show {
-    from {
-      opacity: 0;
-      transform: translateY(5px) scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0px) scale(1);
-    }
-  }
-
-  @keyframes rt-dialog-content-hide {
-    from {
-      opacity: 1;
-      transform: translateY(0px) scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(5px) scale(0.99);
-    }
-  }
-
   .rt-BaseDialogOverlay {
     /* Keep the overlay mounted until the children have animated */
-    &:where([data-state='closed']) {
-      animation: rt-dialog-overlay-no-op var(--duration-4) var(--ease-spring-1);
-    }
+    &:where([data-state='closed']) { animation: rt-dialog-overlay-no-op var(--motion-duration-small) var(--motion-spring-snappy); }
     &:where([data-state='open'])::before {
       animation: rt-fade-in var(--duration-5) var(--ease-spring-1);
     }
@@ -146,13 +113,8 @@
   }
 
   .rt-BaseDialogContent {
-    &:where([data-state='open']) {
-      animation: rt-dialog-content-show var(--duration-5) var(--ease-spring-1);
-    }
-    &:where([data-state='closed']) {
-      opacity: 0;
-      animation: rt-dialog-content-hide var(--duration-3) var(--ease-spring-1);
-    }
+    &:where([data-state='open']) { animation: rt-dialog-content-show var(--motion-duration-medium) var(--motion-spring-snappy); }
+    &:where([data-state='closed']) { opacity: 0; animation: rt-dialog-content-hide var(--motion-duration-small) var(--motion-spring-snappy); }
   }
 }
 

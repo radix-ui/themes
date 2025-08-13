@@ -1,0 +1,119 @@
+/*
+  Shell Root
+  - Vertical app scaffold with sticky header and flexible body
+  - Avoid margins; rely on flex/grid gaps and padding tokens only
+*/
+.rt-ShellRoot {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  block-size: 100vh;
+}
+@supports (height: 100dvh) {
+  .rt-ShellRoot { block-size: 100dvh; }
+}
+
+/* Global Header (sticky) */
+.rt-ShellHeader {
+  position: sticky;
+  top: 0;
+  inset-inline: 0;
+  z-index: var(--shell-z-header, 10);
+  block-size: var(--shell-header-height, 64px);
+  display: flex;
+  align-items: center;
+  background-color: var(--color-panel);
+}
+
+/* Body: sidebars + content arranged inline with overflow confined */
+.rt-ShellBody {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  inline-size: 100%;
+  flex: 1 1 auto;
+  block-size: auto;
+  min-block-size: 0;
+  min-inline-size: 0;
+  overflow: hidden;
+}
+
+/* Sidebar container (holds rail/panel or single-morph) */
+.rt-ShellSidebar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  block-size: 100%;
+  min-block-size: 0;
+}
+
+/* Rail section (typically icon-sized navigation) */
+.rt-ShellSidebarRail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  block-size: 100%;
+  min-block-size: 0;
+  overflow: hidden;
+  opacity: 1;
+}
+
+/* Panel section (detail/inspector). Transitions its inline-size */
+.rt-ShellSidebarPanel {
+  display: block;
+  transition:
+    opacity var(--motion-duration-small) var(--motion-ease-standard),
+    inline-size var(--motion-duration-small) var(--motion-ease-standard);
+  block-size: 100%;
+  min-block-size: 0;
+  overflow: hidden;
+  opacity: 1;
+}
+
+/* Rail should also transition width when shown/hidden */
+.rt-ShellSidebarRail {
+  transition:
+    opacity var(--motion-duration-small) var(--motion-ease-standard),
+    inline-size var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Single-markup morph container */
+.rt-ShellSidebarSingle {
+  transition:
+    opacity var(--motion-duration-small) var(--motion-ease-standard),
+    inline-size var(--motion-duration-small) var(--motion-ease-standard);
+  block-size: 100%;
+  overflow: hidden;
+  opacity: 1;
+}
+
+/* Fade out when hidden, before collapsing width via JS orchestration */
+:where(.rt-ShellSidebarRail):not([data-visible]),
+:where(.rt-ShellSidebarPanel):not([data-visible]),
+:where(.rt-ShellSidebarSingle):not([data-visible]) {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-ShellSidebarRail,
+  .rt-ShellSidebarPanel,
+  .rt-ShellSidebarSingle {
+    transition: none;
+  }
+}
+
+/* Content: the only scrollable area; min width protects content from collapsing */
+.rt-ShellContent {
+  flex: 1 1 auto;
+  block-size: 100%;
+  min-block-size: 0;
+  min-inline-size: 0;
+  overflow: auto;
+}
+
+/* Overlay mode: disable panel animation only (keep rail/sidebar transitions) */
+:where(.rt-SheetContent) :where(.rt-ShellSidebarPanel) {
+  transition: none !important;
+}

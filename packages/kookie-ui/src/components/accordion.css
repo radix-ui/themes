@@ -484,11 +484,11 @@
 
 /* Content animations */
 :where(.rt-AccordionContent[data-state="open"]) {
-  animation: rt-slide-down var(--duration-spring-2) var(--ease-spring-1);
+  animation: rt-slide-down var(--motion-duration-small) var(--motion-spring-snappy);
 }
 
 :where(.rt-AccordionContent[data-state="closed"]) {
-  animation: rt-slide-up var(--duration-spring-1) var(--ease-spring-1);
+  animation: rt-slide-up var(--motion-duration-micro) var(--motion-spring-snappy);
 }
 
 @keyframes rt-slide-down {

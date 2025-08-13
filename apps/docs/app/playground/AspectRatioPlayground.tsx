@@ -24,7 +24,7 @@ const commonRatios = [
   { ratio: 21 / 9, label: '21:9 (Ultrawide)' },
 ] as const;
 
-const variants = ['surface', 'blur'] as const;
+const variants = ['surface'] as const;
 const fitOptions = ['cover', 'contain', 'fill'] as const;
 
 export default function AspectRatioPlayground() {

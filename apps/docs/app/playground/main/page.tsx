@@ -1,6 +1,15 @@
 'use client';
 
-import { Theme, Box, Flex, Heading, Container, Image, Sidebar } from '@kushagradhawan/kookie-ui';
+import {
+  Theme,
+  Box,
+  Flex,
+  Heading,
+  Container,
+  Image,
+  Sidebar,
+  Shell,
+} from '@kushagradhawan/kookie-ui';
 import { useControls, Leva } from 'leva';
 import { useRef, useCallback, useState } from 'react';
 import { PanelLeft } from 'lucide-react';
@@ -102,7 +111,7 @@ const componentSections = [
     title: 'Navigation and search',
     components: [
       { id: 'text-field', name: 'Text Field', component: TextFieldPlayground },
-      { id: 'sidebar', name: 'Sidebar', component: SidebarPlayground },
+      // { id: 'sidebar', name: 'Sidebar', component: SidebarPlayground },
     ],
   },
   {
@@ -242,9 +251,7 @@ export default function MainPlayground() {
           </Box>
         )}
 
-        <Sidebar.Provider>
-          <PlaygroundContent scrollToComponent={scrollToComponent} containerRef={containerRef} />
-        </Sidebar.Provider>
+        <PlaygroundContent scrollToComponent={scrollToComponent} containerRef={containerRef} />
       </Theme>
     </>
   );
@@ -258,56 +265,36 @@ function PlaygroundContent({
   scrollToComponent: (id: string) => void;
   containerRef: React.RefObject<HTMLDivElement | null>;
 }) {
-  const { state: sidebarState } = Sidebar.useSidebar();
-  const isSidebarExpanded = sidebarState === 'expanded';
-
+  const [selectedSectionTitle, setSelectedSectionTitle] = useState<string>(
+    componentSections[0]?.title ?? 'Content',
+  );
   return (
-    <Flex style={{ height: '100vh', position: 'relative' }}>
-      <Sidebar.Root variant="soft" menuVariant="soft" size="2" collapsible="icon" type="floating">
-        <Sidebar.Content>
-          <Sidebar.Menu>
-            {componentSections.map((section) => (
-              <Sidebar.Group key={section.title}>
-                <Sidebar.GroupLabel>{section.title}</Sidebar.GroupLabel>
-                {section.components.map((component) => (
-                  <Sidebar.MenuItem key={component.id}>
-                    <Sidebar.MenuButton onClick={() => scrollToComponent(component.id)}>
-                      <span>{component.name}</span>
-                    </Sidebar.MenuButton>
-                  </Sidebar.MenuItem>
-                ))}
-              </Sidebar.Group>
-            ))}
-          </Sidebar.Menu>
-        </Sidebar.Content>
-      </Sidebar.Root>
-
-      {/* Main content area - expands when sidebar is collapsed */}
-      <Box
-        style={{
-          flex: 1,
-          overflow: 'auto',
-          position: 'relative',
-        }}
-      >
-        {/* Responsive sidebar trigger - moves based on sidebar state */}
-        <Box
-          style={{
-            position: 'fixed',
-            top: 'var(--space-4)',
-            left: isSidebarExpanded
-              ? 'calc(16rem + var(--space-4))' // Next to expanded sidebar
-              : 'calc(var(--sidebar-icon-width-2) + var(--space-4))', // Next to collapsed icon sidebar (size 2)
-            zIndex: 50,
-            transition: 'left var(--duration-3) var(--ease-2)', // Smooth transition for trigger position
-          }}
-        >
-          <Sidebar.Trigger variant="ghost" size="2" color="gray" highContrast>
+    <Shell.Root>
+      <Shell.Header>
+        <Flex align="center" gap="2" px="3">
+          <Shell.Trigger side="start" aria-label="Toggle navigation">
             <PanelLeft />
-          </Sidebar.Trigger>
-        </Box>
+          </Shell.Trigger>
+        </Flex>
+      </Shell.Header>
 
-        {/* Component sections */}
+      <Shell.Sidebar side="start" defaultValue="open" as="div">
+        <Shell.Sidebar.Rail>
+          <RailMenu
+            sections={componentSections}
+            onSelect={(title) => setSelectedSectionTitle(title)}
+          />
+        </Shell.Sidebar.Rail>
+        <Shell.Sidebar.Panel>
+          <PanelMenu
+            sections={componentSections}
+            selectedTitle={selectedSectionTitle}
+            onSelectComponent={(id) => scrollToComponent(id)}
+          />
+        </Shell.Sidebar.Panel>
+      </Shell.Sidebar>
+
+      <Shell.Content>
         <Container size="4" py="6" ref={containerRef}>
           <Flex direction="column" gap="9">
             {componentSections.map((section) => (
@@ -321,7 +308,68 @@ function PlaygroundContent({
             ))}
           </Flex>
         </Container>
-      </Box>
-    </Flex>
+      </Shell.Content>
+    </Shell.Root>
+  );
+}
+
+function RailMenu({
+  sections,
+  onSelect,
+}: {
+  sections: { title: string; components: { id: string; name: string }[] }[];
+  onSelect: (title: string) => void;
+}) {
+  const { panel } = Shell.useSidebar('start');
+  return (
+    <Sidebar.Root variant="soft" menuVariant="soft" size="2">
+      <Sidebar.Content aria-label="Playground sections" role="none">
+        <Sidebar.Menu>
+          {sections.map((section) => (
+            <Sidebar.MenuItem key={section.title}>
+              <Sidebar.MenuButton
+                onClick={() => {
+                  onSelect(section.title);
+                  panel.show();
+                }}
+              >
+                <span>{section.title}</span>
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          ))}
+        </Sidebar.Menu>
+      </Sidebar.Content>
+    </Sidebar.Root>
+  );
+}
+
+function PanelMenu({
+  sections,
+  selectedTitle,
+  onSelectComponent,
+}: {
+  sections: { title: string; components: { id: string; name: string }[] }[];
+  selectedTitle: string;
+  onSelectComponent: (id: string) => void;
+}) {
+  const selected = sections.find((s) => s.title === selectedTitle);
+  if (!selected) return null;
+  return (
+    <Sidebar.Root variant="soft" menuVariant="soft" size="2">
+      <Sidebar.Content aria-label="Playground navigation">
+        <Sidebar.Menu>
+          <Sidebar.Group>
+            <Sidebar.GroupLabel>{selected.title}</Sidebar.GroupLabel>
+            {selected.components.map((component) => (
+              <Sidebar.MenuItem key={component.id}>
+                <Sidebar.MenuButton onClick={() => onSelectComponent(component.id)}>
+                  <span>{component.name}</span>
+                </Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            ))}
+          </Sidebar.Group>
+        </Sidebar.Menu>
+      </Sidebar.Content>
+    </Sidebar.Root>
   );
 }

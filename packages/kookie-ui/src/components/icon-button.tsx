@@ -114,6 +114,8 @@ const IconButton = React.forwardRef(
     }: IconButtonProps,
     forwardedRef: React.ForwardedRef<IconButtonElement>,
   ) => {
+    // Generate unique ID for tooltip accessibility
+    const tooltipId = React.useId();
     // Runtime accessibility validation to ensure WCAG compliance
     // This helps catch accessibility issues during development
     const hasAriaLabel = 'aria-label' in props && props['aria-label'];
@@ -130,10 +132,18 @@ const IconButton = React.forwardRef(
       );
     }
 
+    // Prepare accessibility props for tooltip integration
+    const hasTooltip = Boolean(tooltip);
+    const tooltipAccessibilityProps = React.useMemo(
+      () => (hasTooltip ? { 'aria-describedby': tooltipId } : {}),
+      [hasTooltip, tooltipId],
+    );
+
     // Create the base icon button element with accessibility props
     const iconButton = (
       <BaseButton
         {...props}
+        {...tooltipAccessibilityProps}
         ref={forwardedRef}
         className={classNames('rt-IconButton', className)}
       />
@@ -153,6 +163,7 @@ const IconButton = React.forwardRef(
         align={tooltipAlign}
         delayDuration={tooltipDelayDuration}
         disableHoverableContent={tooltipDisableHoverableContent}
+        id={tooltipId}
       >
         {iconButton}
       </Tooltip>

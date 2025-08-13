@@ -1,0 +1,90 @@
+:where(.rt-SheetContent) {
+  position: fixed !important;
+  /* Use physical properties to integrate with width/height responsive utilities */
+  width: var(--width, 90vw) !important;
+  max-width: var(--max-width, 100vw) !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  will-change: transform;
+}
+
+/* Logical side anchoring (RTL-aware via logical inset) */
+:where(.rt-SheetContent[data-side='start']) {
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  margin: 0 !important;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+:where(.rt-SheetContent[data-side='end']) {
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+:where(.rt-SheetContent[data-side='top']) {
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  height: var(--height, 75vh) !important;
+  margin: 0 !important;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+:where(.rt-SheetContent[data-side='bottom']) {
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  height: var(--height, 75vh) !important;
+  margin: 0 !important;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+/* Overlay adjustments: avoid double-fade jank from base dialog */
+:where(.rt-SheetOverlay)::before { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Override base dialog animations specifically for Sheet */
+  .rt-SheetContent:where([data-state='open']) {
+    animation-duration: var(--motion-duration-medium);
+    animation-timing-function: var(--motion-spring-snappy);
+    animation-fill-mode: both;
+  }
+  .rt-SheetContent:where([data-state='closed']) {
+    /* Keep visible to allow reverse slide-out */
+    opacity: 1;
+    animation-duration: var(--motion-duration-small);
+    animation-timing-function: var(--motion-spring-snappy);
+    animation-fill-mode: both;
+  }
+
+  .rt-SheetContent:where([data-state='open'][data-side='start']) { animation-name: rt-sheet-open-from-start, rt-fade-in !important; }
+  .rt-SheetContent:where([data-state='closed'][data-side='start']) { animation-name: rt-sheet-close-to-start, rt-fade-out !important; }
+
+  .rt-SheetContent:where([data-state='open'][data-side='end']) { animation-name: rt-sheet-open-from-end, rt-fade-in !important; }
+  .rt-SheetContent:where([data-state='closed'][data-side='end']) { animation-name: rt-sheet-close-to-end, rt-fade-out !important; }
+
+  .rt-SheetContent:where([data-state='open'][data-side='top']) { animation-name: rt-sheet-open-from-top, rt-fade-in !important; }
+  .rt-SheetContent:where([data-state='closed'][data-side='top']) { animation-name: rt-sheet-close-to-top, rt-fade-out !important; }
+
+  .rt-SheetContent:where([data-state='open'][data-side='bottom']) { animation-name: rt-sheet-open-from-bottom, rt-fade-in !important; }
+  .rt-SheetContent:where([data-state='closed'][data-side='bottom']) { animation-name: rt-sheet-close-to-bottom, rt-fade-out !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-SheetContent { animation: none !important; }
+}

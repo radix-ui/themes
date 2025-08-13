@@ -21,7 +21,7 @@ const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwar
   const { children, className, loading, ...skeletonProps } = extractProps(
     props,
     skeletonPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   if (!loading) return children;
@@ -35,7 +35,6 @@ const Skeleton = React.forwardRef<SkeletonElement, SkeletonProps>((props, forwar
       className={classNames('rt-Skeleton', className)}
       data-inline-skeleton={React.isValidElement(children) ? undefined : true}
       tabIndex={-1}
-      // @ts-expect-error
       inert={inert}
       {...skeletonProps}
     >

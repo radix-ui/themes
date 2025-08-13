@@ -141,6 +141,13 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const shouldPassDisabled =
     asChild || !as || ['button', 'input', 'textarea', 'select'].includes(as);
 
+  // Determine if we are rendering a real <button> element so we can set a safe
+  // default type. Native <button> defaults to type="submit" which can cause
+  // accidental form submissions. We default to type="button" unless the user
+  // explicitly provided a type or we're using asChild (unknown underlying node).
+  const isNativeButtonElement = !asChild && (!as || as === 'button');
+  const hasExplicitTypeAttribute = 'type' in (baseButtonProps as Record<string, unknown>);
+
   // Generate unique ID for loading announcements
   const loadingId = React.useId();
   const describedById = props.loading ? `${loadingId}-loading` : undefined;
@@ -190,6 +197,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       }}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
       {...(shouldPassDisabled && { disabled })}
+      {...(isNativeButtonElement && !hasExplicitTypeAttribute ? { type: 'button' } : {})}
     >
       {props.loading ? (
         <>

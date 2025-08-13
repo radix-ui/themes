@@ -1,0 +1,138 @@
+# Workspace Shells and Layout Patterns
+
+Kookie User Interface provides a systematic approach to application layouts through Shell and Sidebar components. The Shell manages layout structure while Sidebar handles presentation, creating a clean separation of concerns that scales from simple forms to complex editors.
+
+## Core Architecture
+
+### Shell Component
+
+The Shell component controls layout dimensions, visibility, and accessibility attributes. It manages:
+- Column widths and transitions
+- Region visibility states  
+- Data attributes for styling
+- ARIA attributes and focus management
+- RTL support and reduced motion
+
+Shell does not handle visual styling, content, or interaction logic—it purely manages structure.
+
+### Sidebar Component
+
+Sidebar provides the presentation layer and adapts to Shell's layout state. It handles:
+- Visual appearance and styling
+- Content rendering and interaction
+- Icon and label layouts
+- Menu structures and navigation
+
+Sidebar receives layout state via data attributes set by Shell, ensuring consistent behavior across different layout modes.
+
+## Layout Patterns
+
+Kookie UI supports two fundamental layout patterns that determine how sidebars behave:
+
+### Single Markup Pattern
+
+One content area that morphs between states:
+- **Panel**: Full-width sidebar with complete navigation
+- **Rail**: Compact sidebar with icon + label stacking
+- **Collapsed**: Hidden sidebar with no visible content
+
+Content remounts as layout changes, and the trigger cycles through: panel → rail → collapsed → panel.
+
+### Split Layout Pattern
+
+Separate Rail and Panel slots with independent visibility:
+- **Rail**: Top-level navigation items (always visible when open)
+- **Panel**: Contextual submenu content (driven by rail selection)
+- **Trigger**: Only controls rail state (open/collapsed)
+
+Rail controls Panel visibility through application logic, and Panel visibility persists across rail collapses, maintaining user context.
+
+## State Management
+
+Shell manages two distinct state types:
+
+- **Rail State**: `'open' | 'collapsed'` for split layouts
+- **Single View**: `'panel' | 'rail' | 'collapsed'` for single markup
+
+Panel visibility derives from rail state and application requests, ensuring panel intent persists when rail collapses. This prevents users from losing their place when toggling the rail.
+
+## Developer Experience
+
+### useSidebar Hook
+
+The `Shell.useSidebar(side)` hook provides an ergonomic API that abstracts lower-level state management:
+
+```typescript
+const sidebar = Shell.useSidebar('start');
+
+// Split layout controls
+sidebar.rail.open();
+sidebar.rail.close(); 
+sidebar.rail.toggle();
+
+// Panel visibility
+sidebar.panel.show();
+sidebar.panel.hide();
+
+// Single markup cycling
+sidebar.single.cycle();
+```
+
+This API provides predictable behavior and reduces boilerplate code.
+
+### Pattern Detection
+
+Shell automatically detects the layout pattern based on the presence of `Shell.Sidebar.Rail` and `Shell.Sidebar.Panel` children. No configuration is needed—the component adapts its behavior automatically.
+
+## Accessibility and Standards
+
+### Data Attributes
+
+Shell sets comprehensive data attributes for styling and behavior:
+- `data-state` for single markup patterns
+- `data-rail` and `data-panel` for split layouts
+- `data-visible` for individual slot visibility
+
+### ARIA Support
+
+- `id` attributes for `aria-controls` relationships
+- `aria-hidden` and `inert` attributes for hidden content
+- `aria-expanded` on triggers reflecting panel visibility
+- Focus management prevents hidden content from receiving focus
+
+### Responsive Behavior
+
+Layouts adapt to window size, platform conventions, and user preferences:
+- Smooth transitions between states (respecting `prefers-reduced-motion`)
+- RTL support through `dir` attribute
+- CSS custom properties for width control (`--shell-sidebar-panel-width`, `--shell-sidebar-rail-width`)
+
+## User Responsibilities
+
+### Shell Users
+Control layout structure, manage responsive behavior, and ensure accessibility compliance. Shell handles the complex layout logic so you can focus on your application's unique needs.
+
+### Sidebar Users  
+Provide navigation content, handle user interactions, and adapt visual presentation to layout states. Sidebar automatically responds to Shell's layout changes through data attributes.
+
+### Application Developers
+Use the `useSidebar` hook to control sidebar behavior, manage panel content based on rail selections, and maintain state consistency across layout changes. The hook provides a clean, predictable interface for all sidebar operations.
+
+## Implementation Guidelines
+
+### No Margins Policy
+Layouts are built using `flex`/`grid` with `gap` for spacing. Never use margins—they can cause layout inconsistencies and break the Shell's sizing calculations.
+
+### Content Persistence
+In split layouts, panel content and selection state should persist across rail collapses. This maintains user context and prevents frustration from lost work.
+
+### Trigger Behavior
+Triggers have a single, predictable role:
+- **Split layouts**: Toggle rail state only
+- **Single markup**: Cycle through allowed views
+
+Triggers never directly control panel visibility in split layouts—that's handled by application logic.
+
+## Conclusion
+
+The Shell and Sidebar architecture provides a robust foundation for application layouts. By separating layout control from presentation, Kookie UI enables teams to build consistent, accessible interfaces that scale with complexity. The automatic pattern detection, ergonomic APIs, and comprehensive accessibility support reduce implementation overhead while ensuring best practices are followed automatically.

@@ -78,7 +78,7 @@
  */
 .rt-Image:where(:any-link, button, label) {
   cursor: pointer;
-  transition: var(--transition-card), filter var(--duration-2) var(--ease-1); /* Smooth transitions for interactive states */
+  transition: var(--transition-card), filter var(--motion-duration-small) var(--motion-ease-standard); /* Smooth transitions for interactive states */
 
   /* 
    * Hover effects with progressive enhancement
@@ -116,7 +116,7 @@
  */
 :where(:any-link, button, label) {
   cursor: pointer;
-  transition: var(--transition-card), filter var(--duration-2) var(--ease-1); /* Smooth transitions for interactive states */
+  transition: var(--transition-card), filter var(--motion-duration-small) var(--motion-ease-standard); /* Smooth transitions for interactive states */
 
   /* Hover effects for wrapper elements */
   @media (hover: hover) {

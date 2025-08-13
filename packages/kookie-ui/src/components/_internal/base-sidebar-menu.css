@@ -97,7 +97,7 @@
 /* Accordion trigger icon rotation */
 .rt-SidebarMenuSubTrigger {
   & :where(.rt-SidebarMenuSubTriggerIcon) {
-    transition: transform 0.2s ease;
+    transition: transform var(--motion-duration-micro) var(--motion-ease-standard);
   }
   
   &:where([data-state="open"]) :where(.rt-SidebarMenuSubTriggerIcon) {
@@ -115,11 +115,11 @@
   
   /* Radix Accordion animation support */
   &:where([data-state="open"]) {
-    animation: rt-sidebar-slide-down 200ms ease-out;
+    animation: rt-sidebar-slide-down var(--motion-duration-small) var(--motion-ease-standard);
   }
   
   &:where([data-state="closed"]) {
-    animation: rt-sidebar-slide-up 200ms ease-out;
+    animation: rt-sidebar-slide-up var(--motion-duration-small) var(--motion-ease-standard);
   }
 }
 

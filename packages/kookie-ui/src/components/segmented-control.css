@@ -1,6 +1,6 @@
 .radix-themes {
   /* Use standard duration token instead of custom duration */
-  --segmented-control-transition-duration: var(--duration-1); /* 100ms - Fast transitions */
+  --segmented-control-transition-duration: var(--motion-duration-micro); /* Micro-interactions */
 }
 
 .rt-SegmentedControlRoot {
@@ -138,7 +138,7 @@
   margin-right: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
   width: var(--border-width-standard); /* 1px */
   background-color: var(--gray-a4);
-  transition: opacity calc(0.8 * var(--segmented-control-transition-duration)) var(--ease-1);
+  transition: opacity calc(0.8 * var(--segmented-control-transition-duration)) var(--motion-ease-standard);
 
   /* Make separators slow to disappear and fast to appear, syncing it well with the indicator motion */
 
@@ -166,7 +166,7 @@
   left: 0;
   height: 100%;
   pointer-events: none;
-  transition: transform var(--segmented-control-transition-duration) var(--ease-3);
+  transition: transform var(--segmented-control-transition-duration) var(--motion-spring-snappy);
 
   &::before {
     inset: var(--border-width-standard); /* 1px */

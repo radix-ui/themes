@@ -7,87 +7,132 @@
   --duration-5: 200ms; /* Slow animations */
 
   /* Spring-specific duration tokens */
-  --duration-spring-1: 200ms; /* Quick spring */
-  --duration-spring-2: 250ms; /* Standard spring */
-  --duration-spring-3: 300ms; /* Slow spring */
+  --duration-spring-1: 100ms; /* Quick spring */
+  --duration-spring-2: 150ms; /* Standard spring */
+  --duration-spring-3: 200ms; /* Slow spring */
 
-  /* Easing tokens */
-  --ease-1: ease-out; /* Fast start, slow end */
-  --ease-2: ease-in-out; /* Smooth both ways */
-  --ease-3: cubic-bezier(0.4, 0, 0.2, 1); /* Material Design standard */
-  --ease-4: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Ease out back */
-  --ease-5: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce */
+  /* Easing tokens (spring-aligned) */
+  --ease-1: var(--ease-spring-1); /* Spring default */
+  --ease-2: var(--ease-spring-2); /* Spring bounce */
+  --ease-3: var(--ease-spring-3); /* Spring elastic */
+  --ease-4: var(--ease-spring-1);
+  --ease-5: var(--ease-spring-2);
 
   /* Spring-specific easing tokens */
   --ease-spring-1: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Spring out back */
   --ease-spring-2: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Spring bounce */
   --ease-spring-3: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring elastic */
 
-  /* Common transition combinations */
-  --transition-fast: var(--duration-2) var(--ease-1);
-  --transition-standard: var(--duration-3) var(--ease-2);
-  --transition-slow: var(--duration-4) var(--ease-3);
+  /* Common transition combinations (semantic) */
+  --transition-fast: var(--motion-duration-micro) var(--motion-ease-standard);
+  --transition-standard: var(--motion-duration-small) var(--motion-ease-standard);
+  --transition-slow: var(--motion-duration-medium) var(--motion-ease-smooth);
 
-  /* Spring transition combinations */
-  --transition-spring-fast: var(--duration-spring-1) var(--ease-spring-1);
-  --transition-spring-standard: var(--duration-spring-2) var(--ease-spring-1);
-  --transition-spring-slow: var(--duration-spring-3) var(--ease-spring-1);
-  --transition-spring-bounce: var(--duration-spring-2) var(--ease-spring-2);
-  --transition-spring-elastic: var(--duration-spring-3) var(--ease-spring-3);
+  /* Spring transition combinations (semantic) */
+  --transition-spring-fast: var(--motion-duration-micro) var(--motion-spring-snappy);
+  --transition-spring-standard: var(--motion-duration-small) var(--motion-spring-snappy);
+  --transition-spring-slow: var(--motion-duration-medium) var(--motion-spring-snappy);
+  --transition-spring-bounce: var(--motion-duration-small) var(--motion-spring-bounce);
+  --transition-spring-elastic: var(--motion-duration-medium) var(--motion-spring-elastic);
+
+  /* Semantic motion tokens */
+  --motion-duration-micro: 75ms;   /* Micro-interactions (150–250ms) */
+  --motion-duration-small: 150ms;   /* Small UI changes (200–400ms) */
+  --motion-duration-medium: 250ms;  /* Medium/large changes (400–800ms) */
+  --motion-duration-large: 350ms;   /* Large movements (400–800ms) */
+
+  --motion-ease-standard: ease-in-out;     /* Most UI changes */
+  --motion-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); /* Material-like */
+  --motion-ease-anticipate: cubic-bezier(0.36, 0, 0.66, -0.56);
+  --motion-ease-follow: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Spring semantics mapped to existing spring curves */
+  --motion-spring-snappy: var(--ease-spring-1);
+  --motion-spring-bounce: var(--ease-spring-2);
+  --motion-spring-elastic: var(--ease-spring-3);
+
+  /* Stagger tokens */
+  --motion-stagger-1: 15ms;
+  --motion-stagger-2: 30ms;
+  --motion-stagger-3: 45ms;
+
+  /* JS-friendly spring params (for future usage) */
+  --spring-snappy-mass: 1;
+  --spring-snappy-stiffness: 280;
+  --spring-snappy-damping: 24;
+  --spring-snappy-initial-velocity: 0;
+
+  --spring-smooth-mass: 1;
+  --spring-smooth-stiffness: 200;
+  --spring-smooth-damping: 30;
+  --spring-smooth-initial-velocity: 0;
 
   /* Specific component transitions */
   --transition-button:
-    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    backdrop-filter var(--duration-2) var(--ease-1), transform var(--duration-1) var(--ease-1),
-    padding var(--duration-1) var(--ease-1);
+    background var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    backdrop-filter var(--motion-duration-small) var(--motion-ease-standard),
+    transform var(--motion-duration-micro) var(--motion-spring-snappy),
+    padding var(--motion-duration-micro) var(--motion-ease-standard);
 
   --transition-text-field:
-    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1);
+    background var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-select:
-    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1);
+    background var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-badge:
-    background var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    padding var(--duration-1) var(--ease-1);
+    background var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    padding var(--motion-duration-micro) var(--motion-ease-standard);
 
   --transition-card:
-    background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    top var(--duration-2) var(--ease-1);
+    background-color var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    top var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-tabs:
-    color var(--duration-1) var(--ease-1), background-color var(--duration-1) var(--ease-1),
-    font-weight var(--duration-2) var(--ease-2), letter-spacing var(--duration-2) var(--ease-2),
-    word-spacing var(--duration-2) var(--ease-2), transform var(--duration-1) var(--ease-1);
+    color var(--motion-duration-micro) var(--motion-ease-standard),
+    background-color var(--motion-duration-micro) var(--motion-ease-standard),
+    font-weight var(--motion-duration-small) var(--motion-ease-standard),
+    letter-spacing var(--motion-duration-small) var(--motion-ease-standard),
+    word-spacing var(--motion-duration-small) var(--motion-ease-standard),
+    transform var(--motion-duration-micro) var(--motion-spring-snappy);
 
   --transition-segmented-control:
-    opacity var(--duration-2) var(--ease-1), transform var(--duration-2) var(--ease-3),
-    background-color var(--duration-2) var(--ease-1);
+    opacity var(--motion-duration-small) var(--motion-ease-standard),
+    transform var(--motion-duration-small) var(--motion-spring-snappy),
+    background-color var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-menu:
-    background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+    background var(--motion-duration-micro) var(--motion-ease-standard),
+    color var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-checkbox:
-    background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    color var(--duration-1) var(--ease-1);
+    background-color var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    color var(--motion-duration-micro) var(--motion-ease-standard);
 
   --transition-radio:
-    background-color var(--duration-2) var(--ease-1), box-shadow var(--duration-2) var(--ease-1),
-    color var(--duration-1) var(--ease-1);
+    background-color var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    color var(--motion-duration-micro) var(--motion-ease-standard);
 
-  --transition-focus: outline var(--duration-2) var(--ease-1), outline-offset var(--duration-2) var(--ease-1);
+  --transition-focus: outline var(--motion-duration-small) var(--motion-ease-standard), outline-offset var(--motion-duration-small) var(--motion-ease-standard);
 
   /* Progress component transition */
-  --transition-progress: transform var(--duration-2) var(--ease-1);
+  --transition-progress: transform var(--motion-duration-small) var(--motion-ease-standard);
 
   /* Accordion component transitions */
-  --transition-accordion-content: height var(--duration-spring-2) var(--ease-spring-1), opacity var(--duration-spring-2) var(--ease-spring-1), transform var(--duration-spring-2) var(--ease-spring-1);
-  --transition-accordion-trigger: background-color var(--duration-spring-1) var(--ease-spring-1), transform var(--duration-spring-1) var(--ease-spring-1);
-  --transition-accordion-trigger-active: transform var(--duration-1) var(--ease-spring-2);
+  --transition-accordion-content: height var(--motion-duration-small) var(--motion-spring-snappy), opacity var(--motion-duration-small) var(--motion-spring-snappy), transform var(--motion-duration-small) var(--motion-spring-snappy);
+  --transition-accordion-trigger: background-color var(--motion-duration-small) var(--motion-spring-snappy), transform var(--motion-duration-micro) var(--motion-spring-snappy);
+  --transition-accordion-trigger-active: transform var(--motion-duration-micro) var(--motion-spring-bounce);
   
   /* GPU-optimized spring transitions */
-  --transition-spring-gpu: transform var(--duration-spring-2) var(--ease-spring-1), opacity var(--duration-spring-2) var(--ease-spring-1);
-  --transition-spring-gpu-fast: transform var(--duration-spring-1) var(--ease-spring-1), opacity var(--duration-spring-1) var(--ease-spring-1);
+  --transition-spring-gpu: transform var(--motion-duration-small) var(--motion-spring-snappy), opacity var(--motion-duration-small) var(--motion-spring-snappy);
+  --transition-spring-gpu-fast: transform var(--motion-duration-micro) var(--motion-spring-snappy), opacity var(--motion-duration-micro) var(--motion-spring-snappy);
 }
 
 /* Respect user preference for reduced motion */

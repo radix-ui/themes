@@ -335,14 +335,14 @@
     
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
     :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+      transition: background var(--motion-duration-micro) var(--motion-ease-standard), color var(--motion-duration-small) var(--motion-ease-standard);
     }
   }
   
   & :where(.rt-BaseMenuItem) {
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
     :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+      transition: background var(--motion-duration-micro) var(--motion-ease-standard), color var(--motion-duration-small) var(--motion-ease-standard);
     }
   }
 }

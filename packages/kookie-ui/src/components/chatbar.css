@@ -1,0 +1,105 @@
+/* Container */
+.rt-ChatbarField { 
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Unstyled textarea (reset) */
+.rt-ChatbarInput {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  resize: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  text-align: start;
+  transition: height 150ms ease-out;
+}
+
+/* Main container - flex layout */
+.rt-ChatbarCard :where(.rt-ChatbarGrid) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* Compact state - horizontal flex */
+.rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarGrid) {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Textarea flex behavior */
+.rt-ChatbarTextarea {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Send button smooth transitions */
+.rt-ChatbarSend {
+  transition: opacity 150ms ease-in-out;
+}
+
+/* Row visibility and layout */
+.rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarRow) { display: none; }
+.rt-ChatbarRoot:where([data-state="open"]) :where(.rt-ChatbarRow) { 
+  display: block;
+  width: 100%;
+}
+
+/* Container widths */
+.rt-ChatbarCard {
+  width: 100%;
+}
+
+/* Inline slot positioning */
+.rt-ChatbarInlineStart,
+.rt-ChatbarInlineEnd {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Row slot positioning */
+.rt-ChatbarRowStart {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.rt-ChatbarRowEnd {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Size-based font sizing for chatbar */
+@breakpoints {
+  .rt-ChatbarRoot {
+    &:where(.rt-r-size-1) {
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+    }
+    &:where(.rt-r-size-2) {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+    }
+    &:where(.rt-r-size-3) {
+      font-size: var(--font-size-3);
+      line-height: var(--line-height-3);
+    }
+  }
+}
+
