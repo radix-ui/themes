@@ -115,11 +115,11 @@ export {
 export type { IconProps };
 
 // Additional minimal icons
-const CloseIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+const CloseIcon = React.forwardRef<IconElement, IconProps>((_props, _forwardedRef) => {
   return (
     <svg
-      {...props}
-      ref={forwardedRef}
+      {..._props}
+      ref={_forwardedRef}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -178,7 +178,7 @@ const FileIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) 
 });
 FileIcon.displayName = 'FileIcon';
 
-const FileTextIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+const FileTextIcon = React.forwardRef<IconElement, IconProps>((_props, _forwardedRef) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

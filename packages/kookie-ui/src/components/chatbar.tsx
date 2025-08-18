@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { IconButton, type IconButtonProps } from './icon-button.js';
 import { CloseIcon, FileTextIcon } from './icons.js';
 import { Flex } from './flex.js';
-import { Inset } from './inset.js';
+
 import { ScrollArea } from './scroll-area.js';
 import { Slot } from './slot.js';
 import { Card } from './card.js';
@@ -741,7 +741,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
       requestAnimationFrame(() => updateHeight());
       onChange?.(event);
     },
-    [expandOn, open, setOpen, setValue, onChange, updateHeight],
+    [expandOn, open, setOpen, setValue, onChange, updateHeight, recomputeMetrics],
   );
 
   const handlePaste = React.useCallback<React.ClipboardEventHandler<HTMLTextAreaElement>>(
@@ -958,7 +958,6 @@ const Attachment = React.forwardRef<HTMLDivElement, AttachmentProps>((props, for
           <Flex align="center" gap="3" pr={!isImage ? '6' : undefined}>
             <div className="rt-ChatbarAttachmentPreview" aria-hidden>
               {isImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img className="rt-ChatbarAttachmentImage" src={attachment.url} alt="" />
               ) : (
                 <FileTextIcon />

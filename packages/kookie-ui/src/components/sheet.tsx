@@ -169,7 +169,6 @@ const Content = React.forwardRef<SheetContentElement, SheetContentProps>(
         }
       }
       if (!hasTitle && !hasAriaLabel) {
-        // eslint-disable-next-line no-console
         console.warn(
           'Sheet.Content: Missing accessible name. Include Sheet.Title as a child or provide aria-label.',
         );

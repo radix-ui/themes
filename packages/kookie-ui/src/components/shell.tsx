@@ -41,8 +41,7 @@ type ShellDirection = 'ltr' | 'rtl';
 type ShellSide = 'start' | 'end';
 /** Section slot identifiers inside a sidebar. */
 type SidebarSection = 'rail' | 'panel';
-// kept for single-markup backward-compat (do not use directly in API)
-type SidebarMode = 'panel' | 'rail' | 'both' | 'collapsed';
+
 /** Split-mode rail state. */
 type RailValue = 'open' | 'collapsed';
 /** Single-markup view for morphing sidebars. */
@@ -239,14 +238,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
         const current = singleViewBySide[side];
         const idx = order.indexOf(current);
         const next = order[(idx + 1) % order.length];
-        
-        // Add transition state to prevent content flashing during collapse
-        if (next === 'collapsed' && current === 'rail') {
-          // Set transitioning state first to hide content immediately
-          setSingleViewBySide(side, 'collapsed');
-        } else {
-          setSingleViewBySide(side, next);
-        }
+        setSingleViewBySide(side, next);
       },
       [singleViewBySide, setSingleViewBySide],
     );
@@ -500,35 +492,6 @@ interface ShellSidebarProps extends React.ComponentPropsWithoutRef<'div'> {
   'aria-label'?: string;
 }
 
-// Reserved helper (kept for parity with other components). Intentionally unused.
-// Removing it could be a breaking change in builds that rely on tree-shaken exports.
-type ControlledState = {
-  isControlled: boolean;
-  value: boolean;
-  setValue: (next: boolean) => void;
-};
-function useControlledBoolean(
-  valueProp: boolean | undefined,
-  defaultValue: boolean | undefined,
-  onChange?: (v: boolean) => void,
-): ControlledState {
-  const isControlled = valueProp !== undefined;
-  const [uncontrolled, setUncontrolled] = React.useState<boolean>(defaultValue ?? true);
-  const value = isControlled ? (valueProp as boolean) : uncontrolled;
-  const setValue = React.useCallback(
-    (next: boolean) => {
-      if (isControlled) {
-        onChange?.(next);
-      } else {
-        setUncontrolled(next);
-        onChange?.(next);
-      }
-    },
-    [isControlled, onChange],
-  );
-  return { isControlled, value, setValue };
-}
-
 // Rail
 /** Rail component that provides event emission context for stateless navigation. */
 interface RailProps extends React.ComponentPropsWithoutRef<'div'> {}
@@ -695,7 +658,7 @@ const SidebarInner = (
     return { ...defaultOverlay, ...(overlay || {}) } as Partial<
       Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', boolean>
     >;
-  }, [overlay]);
+  }, [overlay, defaultOverlay]);
 
   const [currentBp, setCurrentBp] = React.useState<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'>(
     'initial',
@@ -1030,7 +993,7 @@ function useSidebar(side: ShellSide): {
   const isSplit = shell.patternBySide[side] === 'split';
   const railValue = shell.railBySide[side];
   const activeTool = shell.activeToolBySide[side];
-  const activeContext = shell.activeContextBySide[side];
+
   const panelVisible =
     shell.panelRequestedBySide[side] && railValue === 'open' && activeTool !== null;
   return {
