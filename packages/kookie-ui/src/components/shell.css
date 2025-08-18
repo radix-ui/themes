@@ -8,6 +8,14 @@
   display: flex;
   flex-direction: column;
   block-size: 100vh;
+  /* Default sizing tokens for rail/panel widths */
+  --shell-sidebar-rail-width: var(--space-9, 64px);
+  --shell-sidebar-panel-width: 288px;
+  --shell-sidebar-combined-width: calc(
+    var(--shell-sidebar-rail-width) + var(--shell-sidebar-panel-width)
+  );
+  /* Overlay width hook - set by JS to one of the tokens above */
+  --shell-overlay-width: auto;
 }
 @supports (height: 100dvh) {
   .rt-ShellRoot { block-size: 100dvh; }
@@ -57,43 +65,53 @@
   block-size: 100%;
   min-block-size: 0;
   overflow: hidden;
-  opacity: 1;
+  /* Staggered animation: width first, then content fade */
+  opacity: 0;
+  transition:
+    inline-size var(--motion-duration-small) var(--motion-ease-standard),
+    opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
 }
 
 /* Panel section (detail/inspector). Transitions its inline-size */
 .rt-ShellSidebarPanel {
   display: block;
+  /* Staggered animation: width first, then content fade */
+  opacity: 0;
   transition:
-    opacity var(--motion-duration-small) var(--motion-ease-standard),
-    inline-size var(--motion-duration-small) var(--motion-ease-standard);
+    inline-size var(--motion-duration-small) var(--motion-ease-standard),
+    opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
   block-size: 100%;
   min-block-size: 0;
   overflow: hidden;
-  opacity: 1;
 }
 
-/* Rail should also transition width when shown/hidden */
-.rt-ShellSidebarRail {
-  transition:
-    opacity var(--motion-duration-small) var(--motion-ease-standard),
-    inline-size var(--motion-duration-small) var(--motion-ease-standard);
-}
+
 
 /* Single-markup morph container */
 .rt-ShellSidebarSingle {
+  /* Staggered animation: width first, then content fade */
+  opacity: 0;
   transition:
-    opacity var(--motion-duration-small) var(--motion-ease-standard),
-    inline-size var(--motion-duration-small) var(--motion-ease-standard);
+    inline-size var(--motion-duration-small) var(--motion-ease-standard),
+    opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
   block-size: 100%;
   overflow: hidden;
-  opacity: 1;
 }
 
-/* Fade out when hidden, before collapsing width via JS orchestration */
+/* Exit animation: fade out content first, then collapse width */
 :where(.rt-ShellSidebarRail):not([data-visible]),
 :where(.rt-ShellSidebarPanel):not([data-visible]),
 :where(.rt-ShellSidebarSingle):not([data-visible]) {
   opacity: 0;
+  /* Exit animation: fade out content first, then collapse width */
+  transition:
+    opacity var(--motion-duration-small) var(--motion-ease-standard),
+    inline-size var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
+}
+
+/* When visible: show content after width settles */
+[data-visible] {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

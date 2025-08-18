@@ -614,20 +614,20 @@
   --card-border-width: 0px;
   
   /* Base state: solid colors for solid panels */
-  --card-background-color: var(--gray-2);
+  --card-background-color: var(--gray-3);
 
   /* Theme-level translucent override */
   :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    --card-background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
+    --card-background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
   }
 
   /* Component-level overrides (higher specificity) */
   &:where([data-panel-background='solid'], [data-material='solid']) {
-    --card-background-color: var(--gray-2);
+    --card-background-color: var(--gray-3);
   }
 
   &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    --card-background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
+    --card-background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
   }
 
   &::before {

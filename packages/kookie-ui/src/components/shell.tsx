@@ -71,6 +71,13 @@ type ShellContextValue = {
   singleViewBySide: Record<ShellSide, SingleView>;
   setSingleViewBySide: (side: ShellSide, view: SingleView) => void;
   cycleSingleView: (side: ShellSide) => void;
+  // Active tool coordination state
+  activeToolBySide: Record<ShellSide, string | null>;
+  setActiveTool: (side: ShellSide, tool: string | null) => void;
+  onItemSelected: (side: ShellSide, item: string) => void;
+  // Context (panel-level) coordination state
+  activeContextBySide: Record<ShellSide, string | null>;
+  setActiveContext: (side: ShellSide, context: string | null) => void;
   getRegionId: (side: ShellSide) => string;
   getPanelId: (side: ShellSide) => string;
   getRailId: (side: ShellSide) => string;
@@ -93,6 +100,33 @@ type SidebarSectionContextValue = {
 const SidebarSectionContext = React.createContext<SidebarSectionContextValue | null>(null);
 function useSidebarSection() {
   return React.useContext(SidebarSectionContext);
+}
+
+// Rail context for event emission pattern
+type RailContextValue = {
+  onItemSelected: (item: string) => void;
+};
+const RailContext = React.createContext<RailContextValue | null>(null);
+
+/** Hook to emit rail selection events. Use this in Rail children to emit item selection. */
+function useRailEvents() {
+  const ctx = React.useContext(RailContext);
+  if (!ctx) throw new Error('useRailEvents must be used within <Shell.Sidebar.Rail>');
+  return ctx;
+}
+
+// Panel context for active tool consumption
+type PanelContextValue = {
+  activeTool: string | null;
+  activeContext: string | null;
+};
+const PanelContext = React.createContext<PanelContextValue | null>(null);
+
+/** Hook to access active tool state. Use this in Panel children to render based on active tool. */
+function usePanelState() {
+  const ctx = React.useContext(PanelContext);
+  if (!ctx) throw new Error('usePanelState must be used within <Shell.Sidebar.Panel>');
+  return ctx;
 }
 
 // Utilities
@@ -120,6 +154,11 @@ interface ShellRootProps extends React.ComponentPropsWithoutRef<'div'> {
   rtl?: boolean;
   headerHeight?: string;
   zHeader?: number;
+  cascadeSide?: ShellSide;
+  activeTool?: string | null;
+  onToolChange?: (id: string | null) => void;
+  activeContext?: string | null;
+  onContextChange?: (id: string | null) => void;
 }
 
 const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
@@ -129,6 +168,11 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
       rtl,
       headerHeight = '64px',
       zHeader,
+      cascadeSide = 'start',
+      activeTool: activeToolProp,
+      onToolChange,
+      activeContext: activeContextProp,
+      onContextChange,
       className,
       style,
       children,
@@ -163,7 +207,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
     }, []);
     const [panelRequestedBySide, setPanelRequestedBySideState] = React.useState<
       Record<ShellSide, boolean>
-    >({ start: true, end: false });
+    >({ start: false, end: false });
     const setPanelRequestedBySide = React.useCallback((side: ShellSide, requested: boolean) => {
       setPanelRequestedBySideState((prev) =>
         prev[side] === requested ? prev : { ...prev, [side]: requested },
@@ -195,10 +239,75 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
         const current = singleViewBySide[side];
         const idx = order.indexOf(current);
         const next = order[(idx + 1) % order.length];
-        setSingleViewBySide(side, next);
+        
+        // Add transition state to prevent content flashing during collapse
+        if (next === 'collapsed' && current === 'rail') {
+          // Set transitioning state first to hide content immediately
+          setSingleViewBySide(side, 'collapsed');
+        } else {
+          setSingleViewBySide(side, next);
+        }
       },
       [singleViewBySide, setSingleViewBySide],
     );
+
+    // === Active tool coordination state ===
+    // Track which tool/mode is active per side for coordinated rail/panel communication
+    const [activeToolBySide, setActiveToolBySideState] = React.useState<
+      Record<ShellSide, string | null>
+    >({
+      start: null,
+      end: null,
+    });
+    const setActiveTool = React.useCallback(
+      (side: ShellSide, tool: string | null) => {
+        setActiveToolBySideState((prev) =>
+          prev[side] === tool ? prev : { ...prev, [side]: tool },
+        );
+        // Auto-hide panel when no tool is active
+        if (tool === null) {
+          setPanelRequestedBySide(side, false);
+        }
+      },
+      [setPanelRequestedBySide],
+    );
+    const onItemSelected = React.useCallback(
+      (side: ShellSide, item: string) => {
+        setActiveTool(side, item);
+        // Auto-show panel when item is selected
+        setPanelRequestedBySide(side, true);
+      },
+      [setActiveTool, setPanelRequestedBySide],
+    );
+
+    // === Active context coordination state ===
+    const [activeContextBySide, setActiveContextBySideState] = React.useState<
+      Record<ShellSide, string | null>
+    >({ start: null, end: null });
+    const setActiveContext = React.useCallback(
+      (side: ShellSide, context: string | null) => {
+        setActiveContextBySideState((prev) =>
+          prev[side] === context ? prev : { ...prev, [side]: context },
+        );
+        if (side === cascadeSide) onContextChange?.(context);
+      },
+      [cascadeSide, onContextChange],
+    );
+
+    // === Controlled prop sync (cascade side) ===
+    React.useEffect(() => {
+      if (activeToolProp !== undefined && activeToolBySide[cascadeSide] !== activeToolProp) {
+        setActiveToolBySideState((prev) => ({ ...prev, [cascadeSide]: activeToolProp }));
+      }
+    }, [activeToolProp, cascadeSide, activeToolBySide]);
+    React.useEffect(() => {
+      if (
+        activeContextProp !== undefined &&
+        activeContextBySide[cascadeSide] !== activeContextProp
+      ) {
+        setActiveContextBySideState((prev) => ({ ...prev, [cascadeSide]: activeContextProp }));
+      }
+    }, [activeContextProp, cascadeSide, activeContextBySide]);
 
     // === Stable ids per side ===
     // These IDs are used to wire aria-controls and aria-expanded for triggers,
@@ -240,6 +349,11 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
         singleViewBySide,
         setSingleViewBySide,
         cycleSingleView,
+        activeToolBySide,
+        setActiveTool,
+        onItemSelected,
+        activeContextBySide,
+        setActiveContext,
         getRegionId,
         getPanelId,
         getRailId,
@@ -258,6 +372,11 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
         singleViewBySide,
         setSingleViewBySide,
         cycleSingleView,
+        activeToolBySide,
+        setActiveTool,
+        onItemSelected,
+        activeContextBySide,
+        setActiveContext,
         getRegionId,
         getPanelId,
         getRailId,
@@ -411,21 +530,44 @@ function useControlledBoolean(
 }
 
 // Rail
-/** Marker component for `Sidebar.Rail` slot (no DOM). */
+/** Rail component that provides event emission context for stateless navigation. */
 interface RailProps extends React.ComponentPropsWithoutRef<'div'> {}
 const Rail = Object.assign(
   React.forwardRef<HTMLDivElement, RailProps>(({ children }, _ref) => {
-    return <>{children}</>;
+    const sidebarSection = useSidebarSection();
+    const shell = useShell();
+    const side = sidebarSection?.side ?? 'start';
+
+    const railContext = React.useMemo<RailContextValue>(
+      () => ({
+        onItemSelected: (item: string) => shell.onItemSelected(side, item),
+      }),
+      [shell, side],
+    );
+
+    return <RailContext.Provider value={railContext}>{children}</RailContext.Provider>;
   }),
   { displayName: 'Shell.Sidebar.Rail', __shellSlot: 'rail' as const },
 );
 
 // Panel
-/** Marker component for `Sidebar.Panel` slot (no DOM). */
+/** Panel component that provides active tool context for stateless content rendering. */
 interface PanelProps extends React.ComponentPropsWithoutRef<'div'> {}
 const Panel = Object.assign(
   React.forwardRef<HTMLDivElement, PanelProps>(({ children }, _ref) => {
-    return <>{children}</>;
+    const sidebarSection = useSidebarSection();
+    const shell = useShell();
+    const side = sidebarSection?.side ?? 'start';
+
+    const panelContext = React.useMemo<PanelContextValue>(
+      () => ({
+        activeTool: shell.activeToolBySide[side],
+        activeContext: shell.activeContextBySide[side],
+      }),
+      [shell.activeToolBySide, shell.activeContextBySide, side],
+    );
+
+    return <PanelContext.Provider value={panelContext}>{children}</PanelContext.Provider>;
   }),
   { displayName: 'Shell.Sidebar.Panel', __shellSlot: 'panel' as const },
 );
@@ -509,6 +651,7 @@ const SidebarInner = (
   const railValue = shell.railBySide[side];
   const panelRequested = shell.panelRequestedBySide[side];
   const singleView = shell.singleViewBySide[side];
+  const activeTool = shell.activeToolBySide[side];
 
   // Emit changes for uncontrolled
   const prevRailRef = React.useRef<RailValue | null>(null);
@@ -530,10 +673,13 @@ const SidebarInner = (
     }
   }, [hasSlots, singleView, view, onViewChange]);
 
-  // Derived visibility: panel intent is sticky; visibility depends on rail being open
+  // Derived visibility:
+  // - Split (rail+panel): panel shows when rail is open, panel is requested, and a tool is active
+  // - Panel-only (no rail): panel shows unconditionally (no tool gating)
+  // - Single-markup: shows when view === 'panel' and a tool is active
   const railVisible = hasSlots ? hasRail && railValue === 'open' : singleView === 'rail';
   const panelVisible = hasSlots
-    ? hasPanel && railValue === 'open' && panelRequested
+    ? hasPanel && (hasRail ? railValue === 'open' && panelRequested && activeTool !== null : true)
     : singleView === 'panel';
 
   // Overlay behavior (non-inline): mount as a Sheet from the top (default)
@@ -610,9 +756,11 @@ const SidebarInner = (
     const sheetSide = overlaySide ?? side;
 
     // Choose what to render in overlay
-    // Split pattern: default to combined (rail + panel). Panel visibility follows panel intent.
+    // Split pattern: default to combined (rail + panel). Panel visibility follows panel intent and active tool.
     // Single-markup: render the provided children as-is.
-    const overlayPanelVisible = hasSlots ? hasPanel && panelRequested : false;
+    const overlayPanelVisible = hasSlots
+      ? hasPanel && (hasRail ? panelRequested && activeTool !== null : true)
+      : false;
     const overlayContent = hasSlots ? (
       <div style={{ display: 'flex', height: '100%', minBlockSize: 0 }}>
         {hasRail ? (
@@ -647,16 +795,16 @@ const SidebarInner = (
       children
     );
 
-    // Compute sheet width based on split/single pattern
+    // Compute sheet width based on split/single pattern using CSS tokens
     const computedWidth =
       sheetSide === 'start' || sheetSide === 'end'
         ? hasSlots
-          ? panelRequested
-            ? 'calc(var(--shell-sidebar-rail-width, 64px) + var(--shell-sidebar-panel-width, 288px))'
-            : 'var(--shell-sidebar-rail-width, 64px)'
+          ? overlayPanelVisible
+            ? 'var(--shell-sidebar-combined-width)'
+            : 'var(--shell-sidebar-rail-width)'
           : singleView === 'rail'
-            ? 'var(--shell-sidebar-rail-width, 64px)'
-            : 'var(--shell-sidebar-panel-width, 288px)'
+            ? 'var(--shell-sidebar-rail-width)'
+            : 'var(--shell-sidebar-panel-width)'
         : '100vw';
 
     return (
@@ -845,13 +993,14 @@ Trigger.displayName = 'Shell.Trigger';
 (Sidebar as any).Panel = Panel;
 (Sidebar as any).Trigger = LocalTrigger;
 
-export { Root, Header, Footer, Content, Sidebar, Trigger, useShell };
+export { Root, Header, Footer, Content, Sidebar, Trigger, useShell, useRailEvents, usePanelState };
 // Convenience per-side API
 /**
  * Convenience hook to interrogate and control one sidebar.
  * - `rail`: open/collapsed helpers for split pattern
  * - `panel`: show/hide helpers; visibility is conditional on rail open in split pattern
  * - `single`: view control for single-markup pattern
+ * - `activeTool`: active tool coordination state
  */
 function useSidebar(side: ShellSide): {
   side: ShellSide;
@@ -862,14 +1011,28 @@ function useSidebar(side: ShellSide): {
     open: () => void;
     close: () => void;
     toggle: () => void;
+    onItemSelected: (item: string) => void;
   };
-  panel: { isVisible: boolean; show: () => void; hide: () => void };
+  panel: {
+    isVisible: boolean;
+    show: () => void;
+    hide: () => void;
+    activeTool: string | null;
+    activeContext: string | null;
+  };
   single: { view: SingleView; setView: (view: SingleView) => void; cycle: () => void };
+  activeTool: string | null;
+  setActiveTool: (tool: string | null) => void;
+  activeContext: string | null;
+  setActiveContext: (context: string | null) => void;
 } {
   const shell = useShell();
   const isSplit = shell.patternBySide[side] === 'split';
   const railValue = shell.railBySide[side];
-  const panelVisible = shell.panelRequestedBySide[side] && railValue === 'open';
+  const activeTool = shell.activeToolBySide[side];
+  const activeContext = shell.activeContextBySide[side];
+  const panelVisible =
+    shell.panelRequestedBySide[side] && railValue === 'open' && activeTool !== null;
   return {
     side,
     isSplit,
@@ -882,17 +1045,24 @@ function useSidebar(side: ShellSide): {
         shell.setPanelRequestedBySide(side, false);
       },
       toggle: () => shell.toggleRail(side),
+      onItemSelected: (item: string) => shell.onItemSelected(side, item),
     },
     panel: {
       isVisible: panelVisible,
       show: () => shell.setPanelRequestedBySide(side, true),
       hide: () => shell.setPanelRequestedBySide(side, false),
+      activeTool: shell.activeToolBySide[side],
+      activeContext: shell.activeContextBySide[side],
     },
     single: {
       view: shell.singleViewBySide[side],
       setView: (view: SingleView) => shell.setSingleViewBySide(side, view),
       cycle: () => shell.cycleSingleView(side),
     },
+    activeTool: shell.activeToolBySide[side],
+    setActiveTool: (tool: string | null) => shell.setActiveTool(side, tool),
+    activeContext: shell.activeContextBySide[side],
+    setActiveContext: (context: string | null) => shell.setActiveContext(side, context),
   };
 }
 

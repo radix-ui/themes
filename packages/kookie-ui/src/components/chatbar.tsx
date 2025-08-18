@@ -2,9 +2,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import { IconButton, type IconButtonProps } from './icon-button.js';
+import { CloseIcon, FileTextIcon } from './icons.js';
 import { Flex } from './flex.js';
+import { Inset } from './inset.js';
+import { ScrollArea } from './scroll-area.js';
 import { Slot } from './slot.js';
 import { Card } from './card.js';
+import { Text } from './text.js';
+import { useDropzone } from 'react-dropzone';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 // Avoid SSR warnings by using an isomorphic layout effect
@@ -13,6 +18,24 @@ const useIsomorphicLayoutEffect =
 
 type ExpandOn = 'none' | 'focus' | 'overflow' | 'both';
 type SendMode = 'always' | 'whenDirty' | 'never';
+
+// Attachments
+/** Status flag for attachment lifecycle. */
+type AttachmentStatus = 'idle' | 'uploading' | 'error' | 'done';
+/**
+ * Attachment data model used by Chatbar.
+ * - `url` is an object URL used for image previews and is revoked on removal.
+ */
+interface ChatbarAttachment {
+  id: string;
+  name: string;
+  size: number;
+  type: string;
+  url?: string;
+  status?: AttachmentStatus;
+  progress?: number;
+  meta?: Record<string, unknown>;
+}
 
 interface ChatbarContextValue {
   open: boolean;
@@ -31,10 +54,35 @@ interface ChatbarContextValue {
   disabled?: boolean;
   readOnly?: boolean;
 
-  onSend?: (value: string) => void;
+  // Submit returns both message and attachments
+  onSubmit?: (payload: { value: string; attachments: ChatbarAttachment[] }) => void;
 
   rootRef: React.RefObject<HTMLDivElement | null>;
   textareaRef: React.RefObject<HTMLTextAreaElement | null>;
+
+  // Attachments state
+  attachments: ChatbarAttachment[];
+  setAttachments(next: ChatbarAttachment[]): void;
+  isAttachmentsControlled: boolean;
+
+  // Config
+  accept?: string | string[];
+  multiple: boolean;
+  maxAttachments?: number;
+  maxFileSize?: number;
+  paste: boolean;
+  pasteAccept?: string | string[];
+  clearOnSubmit: boolean;
+
+  // Dropzone
+  dropzone: boolean;
+
+  // Events
+  onAttachmentReject?: (rejections: { file: File; reason: 'type' | 'size' | 'count' }[]) => void;
+
+  // Helpers
+  appendFiles(files: File[]): void;
+  appendFilesFromPaste(files: File[]): void;
 }
 
 const ChatbarContext = React.createContext<ChatbarContextValue | null>(null);
@@ -44,6 +92,21 @@ const useChatbarContext = () => {
   return ctx;
 };
 
+/**
+ * Chatbar container and state provider.
+ *
+ * Value & Open
+ * - Supports controlled/uncontrolled `value` and `open`.
+ *
+ * Attachments
+ * - Controlled/uncontrolled attachments with client-side filtering.
+ * - Filters by `accept`/`pasteAccept`, `maxAttachments`, and `maxFileSize`.
+ * - Rejections are reported via `onAttachmentReject`.
+ *
+ * Submit
+ * - `onSubmit({ value, attachments })` emits both message and attachments.
+ * - `clearOnSubmit` clears message and attachments by default.
+ */
 interface ChatbarRootBaseProps {
   value?: string;
   defaultValue?: string;
@@ -65,7 +128,8 @@ interface ChatbarRootBaseProps {
   disabled?: boolean;
   readOnly?: boolean;
 
-  onSend?: (value: string) => void;
+  /** Combined submit payload */
+  onSubmit?: (payload: { value: string; attachments: ChatbarAttachment[] }) => void;
 
   size?: '1' | '2' | '3';
   variant?: 'surface' | 'outline' | 'classic' | 'ghost' | 'soft';
@@ -73,6 +137,32 @@ interface ChatbarRootBaseProps {
   width?: React.CSSProperties['width'];
   maxWidth?: React.CSSProperties['maxWidth'];
   asChild?: boolean;
+
+  // Attachments API
+  attachments?: ChatbarAttachment[];
+  defaultAttachments?: ChatbarAttachment[];
+  onAttachmentsChange?: (attachments: ChatbarAttachment[]) => void;
+  accept?: string | string[];
+  multiple?: boolean;
+  maxAttachments?: number;
+  maxFileSize?: number;
+  paste?: boolean;
+  pasteAccept?: string | string[];
+  clearOnSubmit?: boolean;
+  onAttachmentReject?: (rejections: { file: File; reason: 'type' | 'size' | 'count' }[]) => void;
+
+  /**
+   * Enables drag-and-drop file uploads when true.
+   *
+   * When enabled:
+   * - Files can be dropped anywhere on the chatbar
+   * - Same validation rules apply (accept, maxFileSize, maxAttachments)
+   * - Visual feedback shows during drag operations
+   * - Rejected files trigger onAttachmentReject
+   *
+   * @default true
+   */
+  dropzone?: boolean;
 }
 
 type RootElement = React.ElementRef<'div'>;
@@ -85,9 +175,26 @@ type RootElement = React.ElementRef<'div'>;
  * - Exposes `data-state`, `data-disabled`, and `data-readonly` attributes for styling.
  * - Sets `aria-expanded` to reflect open/closed state for assistive technologies.
  *
+ * Attachments
+ * - Controlled/uncontrolled attachments with client-side filtering.
+ * - Filters by `accept`/`pasteAccept`, `maxAttachments`, and `maxFileSize`.
+ * - Rejections are reported via `onAttachmentReject`.
+ * - Paste-to-attach: when `paste` is enabled, pasting files adds attachments.
+ *
+ * Dropzone
+ * - When `dropzone` is true, enables drag-and-drop file uploads.
+ * - Files are validated using the same rules as paste and file picker.
+ * - Visual feedback via `data-drop-active` attribute during drag operations.
+ * - Rejected files trigger `onAttachmentReject` with appropriate reasons.
+ *
+ * Submit
+ * - `onSubmit` receives both message text and attachments array.
+ * - `clearOnSubmit` controls whether attachments are cleared after submission.
+ *
  * Accessibility
  * - Consumers should label the `Textarea` via `aria-label`/`aria-labelledby`.
  * - `aria-expanded` on the root reflects the disclosure state of the input area.
+ * - Dropzone provides proper ARIA attributes for drag and drop operations.
  */
 interface RootProps
   extends ComponentPropsWithout<'div', RemovedProps | 'onSubmit'>,
@@ -110,12 +217,24 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     sendMode = 'whenDirty',
     disabled,
     readOnly,
-    onSend,
+    onSubmit,
     size = '2',
     variant,
     width,
     maxWidth,
     asChild,
+    attachments: attachmentsProp,
+    defaultAttachments = [],
+    onAttachmentsChange,
+    accept,
+    multiple = true,
+    maxAttachments,
+    maxFileSize,
+    paste = true,
+    pasteAccept,
+    clearOnSubmit = true,
+    onAttachmentReject,
+    dropzone = true,
     ...divProps
   } = props;
 
@@ -129,6 +248,146 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
 
   const rootRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  // Attachments state
+  const isAttachmentsControlled = attachmentsProp != null;
+  const [attachmentsUncontrolled, setAttachmentsUncontrolled] =
+    React.useState<ChatbarAttachment[]>(defaultAttachments);
+  const attachments = isAttachmentsControlled
+    ? (attachmentsProp as ChatbarAttachment[])
+    : attachmentsUncontrolled;
+
+  // Track generated object URLs for cleanup
+  const generatedUrlSetRef = React.useRef<Set<string>>(new Set());
+
+  const toArray = (val: string | string[] | undefined) =>
+    Array.isArray(val) ? val : typeof val === 'string' ? val.split(',').map((s) => s.trim()) : [];
+
+  const accepts = toArray(accept);
+  const pasteAccepts = toArray(pasteAccept).length > 0 ? toArray(pasteAccept) : accepts;
+
+  const matchesAccept = (file: File, patterns: string[]) => {
+    if (patterns.length === 0) return true;
+    const mime = file.type.toLowerCase();
+    const name = file.name.toLowerCase();
+    for (const patRaw of patterns) {
+      const pat = patRaw.toLowerCase();
+      if (pat.includes('/')) {
+        // MIME pattern
+        const [type, subtype] = pat.split('/');
+        const [fmType, fmSubtype] = mime.split('/');
+        if (type === '*' || (type === fmType && (subtype === '*' || subtype === fmSubtype)))
+          return true;
+      } else if (pat.startsWith('.')) {
+        if (name.endsWith(pat)) return true;
+      }
+    }
+    return false;
+  };
+
+  /**
+   * Maps File objects to attachments with validation and preview URL generation.
+   */
+  const mapFilesToAttachments = (
+    files: File[],
+  ): {
+    accepted: ChatbarAttachment[];
+    rejected: { file: File; reason: 'type' | 'size' | 'count' }[];
+  } => {
+    const next: ChatbarAttachment[] = [];
+    const rejected: { file: File; reason: 'type' | 'size' | 'count' }[] = [];
+
+    const remainingSlots =
+      typeof maxAttachments === 'number'
+        ? Math.max(maxAttachments - attachments.length, 0)
+        : Infinity;
+
+    for (const file of files) {
+      if (next.length >= remainingSlots) {
+        rejected.push({ file, reason: 'count' });
+        continue;
+      }
+      if (typeof maxFileSize === 'number' && file.size > maxFileSize) {
+        rejected.push({ file, reason: 'size' });
+        continue;
+      }
+      if (!matchesAccept(file, accepts)) {
+        rejected.push({ file, reason: 'type' });
+        continue;
+      }
+      const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+      const looksLikeImageByExt = /\.(png|jpe?g|gif|webp|bmp|svg)$/i.test(file.name);
+      const isImageType = (file.type || '').toLowerCase().startsWith('image/');
+      const url = isImageType || looksLikeImageByExt ? URL.createObjectURL(file) : undefined;
+      if (url) generatedUrlSetRef.current.add(url);
+      next.push({ id, name: file.name, size: file.size, type: file.type, url, status: 'idle' });
+    }
+    return { accepted: next, rejected };
+  };
+
+  const appendFiles = (files: File[]) => {
+    const { accepted, rejected } = mapFilesToAttachments(files);
+    if (accepted.length > 0) {
+      const merged = attachments.concat(accepted);
+      if (!isAttachmentsControlled) setAttachmentsUncontrolled(merged);
+      onAttachmentsChange?.(merged);
+    }
+    if (rejected.length > 0) onAttachmentReject?.(rejected);
+  };
+
+  const appendFilesFromPaste = (files: File[]) => {
+    // Use pasteAccepts for type filtering
+    const matches = (file: File) => {
+      if (pasteAccepts.length === 0) return matchesAccept(file, accepts);
+      return matchesAccept(file, pasteAccepts);
+    };
+    const acceptedFiles: File[] = [];
+    const rejected: { file: File; reason: 'type' | 'size' | 'count' }[] = [];
+
+    // Enforce maxAttachments and maxFileSize
+    const remainingSlots =
+      typeof maxAttachments === 'number'
+        ? Math.max(maxAttachments - attachments.length, 0)
+        : Infinity;
+    for (const file of files) {
+      if (acceptedFiles.length >= remainingSlots) {
+        rejected.push({ file, reason: 'count' });
+        continue;
+      }
+      if (typeof maxFileSize === 'number' && file.size > maxFileSize) {
+        rejected.push({ file, reason: 'size' });
+        continue;
+      }
+      if (!matches(file)) {
+        rejected.push({ file, reason: 'type' });
+        continue;
+      }
+      acceptedFiles.push(file);
+    }
+    if (acceptedFiles.length > 0) appendFiles(acceptedFiles);
+    if (rejected.length > 0) onAttachmentReject?.(rejected);
+  };
+
+  // Revoke object URLs that are no longer referenced by current attachments
+  React.useEffect(() => {
+    const currentUrls = new Set(attachments.map((a) => a.url).filter(Boolean) as string[]);
+    for (const url of Array.from(generatedUrlSetRef.current)) {
+      if (!currentUrls.has(url)) {
+        URL.revokeObjectURL(url);
+        generatedUrlSetRef.current.delete(url);
+      }
+    }
+  }, [attachments]);
+
+  // Revoke any remaining generated URLs on unmount
+  React.useEffect(() => {
+    return () => {
+      for (const url of Array.from(generatedUrlSetRef.current)) {
+        URL.revokeObjectURL(url);
+      }
+      generatedUrlSetRef.current.clear();
+    };
+  }, []);
 
   const Comp = asChild ? Slot : ('div' as any);
 
@@ -147,6 +406,48 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     },
     [isOpenControlled, onOpenChangeProp, value],
   );
+
+  // Dropzone functionality
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: (acceptedFiles, rejectedFiles) => {
+      if (acceptedFiles.length > 0) {
+        appendFiles(acceptedFiles);
+      }
+      if (rejectedFiles.length > 0 && onAttachmentReject) {
+        const rejections = rejectedFiles.map(({ file, errors }) => {
+          const reason =
+            errors[0]?.code === 'file-too-large'
+              ? 'size'
+              : errors[0]?.code === 'file-invalid-type'
+                ? 'type'
+                : 'count';
+          return { file, reason: reason as 'type' | 'size' | 'count' };
+        });
+        onAttachmentReject(rejections);
+      }
+    },
+    accept:
+      accepts.length > 0
+        ? accepts.reduce(
+            (acc, pattern) => {
+              if (pattern.includes('/')) {
+                // MIME type pattern
+                acc[pattern] = [];
+              } else if (pattern.startsWith('.')) {
+                // File extension pattern
+                acc[pattern] = [];
+              }
+              return acc;
+            },
+            {} as Record<string, string[]>,
+          )
+        : undefined,
+    multiple,
+    maxSize: maxFileSize,
+    noClick: true,
+    noKeyboard: true,
+    disabled: !dropzone || disabled,
+  });
 
   return (
     <ChatbarContext.Provider
@@ -170,9 +471,26 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
         sendMode,
         disabled,
         readOnly,
-        onSend,
+        onSubmit,
         rootRef,
         textareaRef,
+        attachments,
+        setAttachments: (next) => {
+          if (!isAttachmentsControlled) setAttachmentsUncontrolled(next);
+          onAttachmentsChange?.(next);
+        },
+        isAttachmentsControlled,
+        accept,
+        multiple,
+        maxAttachments,
+        maxFileSize,
+        paste,
+        pasteAccept,
+        clearOnSubmit,
+        onAttachmentReject,
+        dropzone,
+        appendFiles,
+        appendFilesFromPaste,
       }}
     >
       <Comp
@@ -188,18 +506,44 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
         data-state={open ? 'open' : 'closed'}
         data-disabled={disabled ? '' : undefined}
         data-readonly={readOnly ? '' : undefined}
+        data-drop-active={dropzone && isDragActive ? '' : undefined}
         aria-expanded={open}
         onBlurCapture={handleBlurCapture}
       >
-        <Card className="rt-ChatbarCard" size={size as any} variant={variant as any}>
-          <div className="rt-ChatbarGrid">{children}</div>
-        </Card>
+        {dropzone && <input {...getInputProps()} />}
+        <div {...(dropzone ? getRootProps() : {})} style={{ width: '100%', height: '100%' }}>
+          <Card
+            className="rt-ChatbarCard"
+            size={Math.min(3, Number(size) + 1).toString() as '1' | '2' | '3'}
+            variant={variant as any}
+            style={{ position: 'relative' }}
+          >
+            <div className="rt-ChatbarGrid">{children}</div>
+            {dropzone && isDragActive && (
+              <div className="rt-ChatbarDropOverlay">
+                <div className="rt-ChatbarDropContent">
+                  <Text color="gray" size={size} weight="medium">
+                    Drop files here to attach
+                  </Text>
+                </div>
+              </div>
+            )}
+          </Card>
+        </div>
       </Comp>
     </ChatbarContext.Provider>
   );
 });
 Root.displayName = 'Chatbar.Root';
 
+/**
+ * Multi-line text input for Chatbar.
+ * - Uses onChange to control value and avoid duplicate updates.
+ * - Auto-resizes between minLines and maxLines.
+ * - Expands on focus/overflow per `expandOn`.
+ * - Paste-to-attach: when `paste` is enabled on Root, pasting files adds attachments.
+ * - Provide `aria-label` or `aria-labelledby` for an accessible name.
+ */
 interface TextareaProps extends Omit<React.ComponentPropsWithoutRef<'textarea'>, 'size'> {
   asChild?: boolean;
   /**
@@ -257,6 +601,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
     value,
     isValueControlled,
     sendMode,
+    paste,
+    appendFilesFromPaste,
     size,
   } = ctx;
 
@@ -400,6 +746,17 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
 
   const handlePaste = React.useCallback<React.ClipboardEventHandler<HTMLTextAreaElement>>(
     (event) => {
+      // Attach files from clipboard if enabled
+      if (paste) {
+        const items = Array.from(event.clipboardData?.items ?? []);
+        const files = items
+          .filter((i) => i.kind === 'file')
+          .map((i) => i.getAsFile())
+          .filter((f): f is File => !!f);
+        if (files.length > 0) {
+          appendFilesFromPaste(files);
+        }
+      }
       setTimeout(() => {
         // If pasting in compact mode, force sizing as open if content overflowed
         if (!open) {
@@ -410,7 +767,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
       }, 0);
       onPaste?.(event);
     },
-    [open, updateHeight, onPaste],
+    [paste, open, updateHeight, onPaste, appendFilesFromPaste],
   );
 
   const handleKeyDown = React.useCallback<React.KeyboardEventHandler<HTMLTextAreaElement>>(
@@ -441,8 +798,11 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
           return;
         }
         event.preventDefault();
-        ctx.onSend?.(value);
-        if (!isValueControlled) setValue('');
+        ctx.onSubmit?.({ value, attachments: ctx.attachments });
+        if (ctx.clearOnSubmit) {
+          if (!isValueControlled) setValue('');
+          ctx.setAttachments([]);
+        }
       }
       onKeyDown?.(event);
     },
@@ -530,6 +890,168 @@ const InlineEnd = React.forwardRef<HTMLDivElement, InlineSlotProps>((props, forw
 });
 InlineEnd.displayName = 'Chatbar.InlineEnd';
 
+/**
+ * Renders a horizontally scrollable list of attachments above the inline row.
+ * Hidden when empty unless `forceMount`. Override per-item with `renderAttachment`.
+ */
+interface AttachmentsRowProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> {
+  asChild?: boolean;
+  forceMount?: boolean;
+  /** If provided, custom-render a tile; otherwise default tile is used */
+  renderAttachment?: (attachment: ChatbarAttachment) => React.ReactNode;
+}
+
+const AttachmentsRow = React.forwardRef<HTMLDivElement, AttachmentsRowProps>(
+  (props, forwardedRef) => {
+    const { asChild, forceMount, renderAttachment, className, style, ...divProps } = props;
+    const ctx = useChatbarContext();
+    const hasItems = ctx.attachments.length > 0;
+    if (!hasItems && !forceMount) return null;
+    const Comp = asChild ? Slot : ('div' as any);
+    return (
+      <Comp
+        {...divProps}
+        ref={forwardedRef}
+        className={classNames('rt-ChatbarAttachmentsRow', className)}
+        style={style}
+        role="list"
+        aria-label={divProps['aria-label'] ?? 'Attachments'}
+      >
+        <ScrollArea className="rt-ChatbarScrollArea" scrollbars="horizontal" size="1">
+          <Flex align="center" gap="2" style={{ minWidth: 'fit-content' }}>
+            {ctx.attachments.map((att) => (
+              <Attachment key={att.id} attachment={att} asChild={!!renderAttachment}>
+                {renderAttachment?.(att)}
+              </Attachment>
+            ))}
+          </Flex>
+        </ScrollArea>
+      </Comp>
+    );
+  },
+);
+AttachmentsRow.displayName = 'Chatbar.AttachmentsRow';
+
+/** Default tile renderer for a single attachment. */
+interface AttachmentProps extends React.ComponentPropsWithoutRef<'div'> {
+  attachment: ChatbarAttachment;
+  asChild?: boolean;
+}
+
+const Attachment = React.forwardRef<HTMLDivElement, AttachmentProps>((props, forwardedRef) => {
+  const { attachment, asChild, className, style, children, ...divProps } = props;
+  const ctx = useChatbarContext();
+  const Comp = asChild ? Slot : ('div' as any);
+  const isImage = !!attachment.url && attachment.type.startsWith('image/');
+  return (
+    <Comp
+      {...divProps}
+      ref={forwardedRef}
+      className={classNames('rt-ChatbarAttachment', className)}
+      style={style}
+      role="listitem"
+      data-kind={isImage ? 'image' : 'file'}
+      title={attachment.name}
+    >
+      {children ?? (
+        <Card size={ctx.size} variant="soft">
+          <Flex align="center" gap="3" pr={!isImage ? '6' : undefined}>
+            <div className="rt-ChatbarAttachmentPreview" aria-hidden>
+              {isImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="rt-ChatbarAttachmentImage" src={attachment.url} alt="" />
+              ) : (
+                <FileTextIcon />
+              )}
+            </div>
+            {!isImage && (
+              <Flex direction="column" gap="0" style={{ minWidth: 0 }}>
+                <Text
+                  size={ctx.size}
+                  weight="medium"
+                  style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                >
+                  {attachment.name}
+                </Text>
+                <Text size="1" color="gray">
+                  {Math.ceil(attachment.size / 1024)} KB
+                </Text>
+              </Flex>
+            )}
+            <IconButton
+              className="rt-ChatbarAttachmentRemove"
+              aria-label={`Remove ${attachment.name}`}
+              size="1"
+              //   size={ctx.size}
+              variant="classic"
+              highContrast
+              color="gray"
+              onClick={() =>
+                ctx.setAttachments(ctx.attachments.filter((a) => a.id !== attachment.id))
+              }
+            >
+              <CloseIcon />
+            </IconButton>
+          </Flex>
+        </Card>
+      )}
+    </Comp>
+  );
+});
+Attachment.displayName = 'Chatbar.Attachment';
+
+interface AttachTriggerProps extends React.ComponentPropsWithoutRef<'button'> {
+  asChild?: boolean;
+  accept?: string | string[];
+  multiple?: boolean;
+}
+
+const AttachTrigger = React.forwardRef<HTMLButtonElement, AttachTriggerProps>(
+  (props, forwardedRef) => {
+    const { asChild, accept, multiple, className, style, ...buttonProps } = props;
+    const ctx = useChatbarContext();
+    const inputRef = React.useRef<HTMLInputElement | null>(null);
+    const Comp = asChild ? Slot : ('button' as any);
+    const actualAccept = (Array.isArray(accept) ? accept : (accept?.split(',') ?? [])).join(',');
+    return (
+      <>
+        <Comp
+          {...(buttonProps as any)}
+          ref={forwardedRef as any}
+          className={classNames('rt-ChatbarAttachTrigger', className)}
+          style={style}
+          type={buttonProps.type ?? 'button'}
+          aria-label={buttonProps['aria-label'] ?? 'Add attachments'}
+          onClick={(e: any) => {
+            // Ensure file input opens reliably by clicking it first
+            if (inputRef.current) {
+              inputRef.current.click();
+            }
+            // Then call user's onClick if provided
+            buttonProps.onClick?.(e);
+          }}
+        />
+        <input
+          ref={inputRef}
+          type="file"
+          accept={actualAccept}
+          multiple={multiple ?? ctx.multiple}
+          tabIndex={-1}
+          style={{ display: 'none' }}
+          onChange={(e) => {
+            const files = Array.from(e.currentTarget.files ?? []);
+            if (files.length > 0) {
+              ctx.appendFiles(files);
+            }
+            // Reset input value to allow selecting the same file again
+            e.currentTarget.value = '';
+          }}
+        />
+      </>
+    );
+  },
+);
+AttachTrigger.displayName = 'Chatbar.AttachTrigger';
 interface RowProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> {
   asChild?: boolean;
   children?: React.ReactNode;
@@ -608,8 +1130,11 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (ctx.disabled || ctx.readOnly) return;
-    ctx.onSend?.(ctx.value);
-    if (clearOnSend && !ctx.isValueControlled) ctx.setValue('');
+    ctx.onSubmit?.({ value: ctx.value, attachments: ctx.attachments });
+    if (clearOnSend) {
+      if (!ctx.isValueControlled) ctx.setValue('');
+      if (ctx.clearOnSubmit) ctx.setAttachments([]);
+    }
     buttonProps.onClick?.(event);
   };
 
@@ -636,7 +1161,19 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
 });
 Send.displayName = 'Chatbar.Send';
 
-export { Root, Textarea, InlineStart, InlineEnd, Row, RowStart, RowEnd, Send };
+export {
+  Root,
+  Textarea,
+  InlineStart,
+  InlineEnd,
+  AttachmentsRow,
+  Attachment,
+  AttachTrigger,
+  Row,
+  RowStart,
+  RowEnd,
+  Send,
+};
 export type {
   RootProps as ChatbarRootProps,
   TextareaProps as ChatbarTextareaProps,

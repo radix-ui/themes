@@ -5,6 +5,11 @@
   min-width: 0;
 }
 
+/* Defaults */
+.rt-ChatbarRoot {
+  --chatbar-attachment-thumb: var(--space-8);
+}
+
 /* Unstyled textarea (reset) */
 .rt-ChatbarInput {
   display: block;
@@ -27,7 +32,7 @@
 .rt-ChatbarCard :where(.rt-ChatbarGrid) {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-4);
   width: 100%;
 }
 
@@ -35,6 +40,13 @@
 .rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarGrid) {
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+/* In compact mode, keep attachments on a dedicated row above inline content */
+.rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarAttachmentsRow) {
+  flex-basis: 100%;
+  order: -1;
 }
 
 /* Textarea flex behavior */
@@ -55,10 +67,98 @@
   width: 100%;
 }
 
+/* Attachments row */
+.rt-ChatbarAttachmentsRow {
+  /* ScrollArea needs a defined width to enable scrolling */
+  width: 100%;
+}
+
+/* ScrollArea radius scaling */
+.rt-ChatbarScrollArea {
+  border-radius: var(--chatbar-attachments-radius);
+}
+
+/* Hide scrollbars completely */
+.rt-ChatbarScrollArea :where(.rt-ScrollAreaScrollbar) {
+  display: none;
+}
+
+/* Attachment tile now uses Card + Flex, no custom layout needed */
+
+.rt-ChatbarAttachmentPreview {
+  height: var(--chatbar-attachment-thumb);
+  width: var(--chatbar-attachment-thumb);
+  min-width: var(--chatbar-attachment-thumb);
+  flex-shrink: 0;
+  border-radius: var(--radius-1);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-a3);
+}
+
+.rt-ChatbarAttachmentImage { 
+  height: 100%; 
+  width: auto; 
+  object-fit: contain; 
+  max-width: none;
+}
+
+/* PaperclipIcon handles its own sizing via IconButton */
+
+.rt-ChatbarAttachment {
+  position: relative;
+}
+
+.rt-ChatbarAttachmentRemove {
+  position: absolute;
+  top: var(--chatbar-remove-offset);
+  right: var(--chatbar-remove-offset);
+}
+
+/* Text components handle styling, no custom classes needed */
+
 /* Container widths */
 .rt-ChatbarCard {
   width: 100%;
+  transition: all var(--motion-duration-small) var(--motion-spring-snappy);
 }
+
+/* Dropzone states */
+.rt-ChatbarRoot {
+  transition: outline var(--motion-duration-small) var(--motion-spring-snappy);
+}
+
+/* Drop overlay */
+.rt-ChatbarDropOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gray-a3);
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: rt-fade-in var(--motion-duration-small) var(--motion-spring-snappy);
+}
+
+.rt-ChatbarDropContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent-11);
+}
+
+.rt-ChatbarDropIcon {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
 
 /* Inline slot positioning */
 .rt-ChatbarInlineStart,
@@ -91,14 +191,23 @@
     &:where(.rt-r-size-1) {
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
+      --chatbar-attachment-thumb: var(--space-8);
+      --chatbar-remove-offset: var(--space-1);
+      --chatbar-attachments-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
     }
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
+      --chatbar-attachment-thumb: var(--space-9);
+      --chatbar-remove-offset: var(--space-2);
+      --chatbar-attachments-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
     }
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
+      --chatbar-attachment-thumb: var(--space-9);
+      --chatbar-remove-offset: var(--space-3);
+      --chatbar-attachments-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
     }
   }
 }

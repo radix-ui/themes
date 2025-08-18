@@ -1,5 +1,9 @@
 'use client';
 
+import React from 'react';
+import { useControls, Leva } from 'leva';
+import { useRef, useCallback, useState } from 'react';
+import { PanelLeft } from 'lucide-react';
 import {
   Theme,
   Box,
@@ -10,9 +14,6 @@ import {
   Sidebar,
   Shell,
 } from '@kushagradhawan/kookie-ui';
-import { useControls, Leva } from 'leva';
-import { useRef, useCallback, useState } from 'react';
-import { PanelLeft } from 'lucide-react';
 
 import AccordionPlayground from '../AccordionPlayground';
 import AlertDialogPlayground from '../AlertDialogPlayground';
@@ -183,6 +184,9 @@ const componentSections = [
       { id: 'user-card', name: 'User Card', component: UserCardPlayground },
     ],
   },
+  {
+    title: 'Test',
+  },
 ];
 
 export default function MainPlayground() {
@@ -268,6 +272,7 @@ function PlaygroundContent({
   const [selectedSectionTitle, setSelectedSectionTitle] = useState<string>(
     componentSections[0]?.title ?? 'Content',
   );
+
   return (
     <Shell.Root>
       <Shell.Header>
@@ -299,7 +304,7 @@ function PlaygroundContent({
           <Flex direction="column" gap="9">
             {componentSections.map((section) => (
               <Box key={section.title}>
-                {section.components.map((component) => (
+                {section.components?.map((component) => (
                   <Box key={component.id} id={component.id} pb="9">
                     <component.component />
                   </Box>
@@ -317,7 +322,7 @@ function RailMenu({
   sections,
   onSelect,
 }: {
-  sections: { title: string; components: { id: string; name: string }[] }[];
+  sections: { title: string; components?: { id: string; name: string }[] }[];
   onSelect: (title: string) => void;
 }) {
   const { panel } = Shell.useSidebar('start');
@@ -330,7 +335,12 @@ function RailMenu({
               <Sidebar.MenuButton
                 onClick={() => {
                   onSelect(section.title);
-                  panel.show();
+                  // Rail emits selection event - Shell coordinates panel visibility
+                  if (section.components && section.components.length > 0) {
+                    panel.show();
+                  } else {
+                    panel.hide();
+                  }
                 }}
               >
                 <span>{section.title}</span>
@@ -348,12 +358,12 @@ function PanelMenu({
   selectedTitle,
   onSelectComponent,
 }: {
-  sections: { title: string; components: { id: string; name: string }[] }[];
+  sections: { title: string; components?: { id: string; name: string }[] }[];
   selectedTitle: string;
   onSelectComponent: (id: string) => void;
 }) {
   const selected = sections.find((s) => s.title === selectedTitle);
-  if (!selected) return null;
+  if (!selected || !selected.components || selected.components.length === 0) return null;
   return (
     <Sidebar.Root variant="soft" menuVariant="soft" size="2">
       <Sidebar.Content aria-label="Playground navigation">

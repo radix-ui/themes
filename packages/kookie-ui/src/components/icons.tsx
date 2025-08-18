@@ -24,7 +24,7 @@ const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>(
         />
       </svg>
     );
-  }
+  },
 );
 
 ThickDividerHorizontalIcon.displayName = 'ThickDividerHorizontalIcon';
@@ -105,5 +105,100 @@ const ThickDotIcon = React.forwardRef<IconElement, IconProps>((props, forwardedR
 });
 ThickDotIcon.displayName = 'ThickDotIcon';
 
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon, ThickDotIcon };
+export {
+  ChevronDownIcon,
+  ThickCheckIcon,
+  ThickChevronRightIcon,
+  ThickDividerHorizontalIcon,
+  ThickDotIcon,
+};
 export type { IconProps };
+
+// Additional minimal icons
+const CloseIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg
+      {...props}
+      ref={forwardedRef}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  );
+});
+CloseIcon.displayName = 'CloseIcon';
+
+const PaperclipIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg
+      {...props}
+      ref={forwardedRef}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" />
+    </svg>
+  );
+});
+PaperclipIcon.displayName = 'PaperclipIcon';
+
+const FileIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+    </svg>
+  );
+});
+FileIcon.displayName = 'FileIcon';
+
+const FileTextIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="M10 9H8" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+    </svg>
+  );
+});
+FileTextIcon.displayName = 'FileTextIcon';
+
+export { CloseIcon, PaperclipIcon, FileIcon, FileTextIcon };

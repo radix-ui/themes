@@ -1,51 +1,268 @@
-# Workspace Shells and Layout Patterns
+import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge } from '@kushagradhawan/kookie-ui';
+import { ChevronDown, Dot, Check, ChevronRight, PanelLeft, Settings, Home, FileText, Users } from 'lucide-react';
+import { CodeBlock } from '../../components/CodeBlock';
 
-Kookie User Interface provides a systematic approach to application layouts through Shell and Sidebar components. The Shell manages layout structure while Sidebar handles presentation, creating a clean separation of concerns that scales from simple forms to complex editors.
+# API
 
-## Core Architecture
+Use the Shell component to create application layouts with sidebars that adapt to different screen sizes and user preferences. The Shell manages layout structure while Sidebar handles presentation, creating a clean separation of concerns that scales from simple forms to complex editors.
 
-### Shell Component
+## Import
 
-The Shell component controls layout dimensions, visibility, and accessibility attributes. It manages:
-- Column widths and transitions
-- Region visibility states  
-- Data attributes for styling
-- ARIA attributes and focus management
-- RTL support and reduced motion
+<CodeBlock buttonsPosition="center">
 
-Shell does not handle visual styling, content, or interaction logic—it purely manages structure.
+```tsx
+import { Shell } from '@kushagradhawan/kookie-ui';
+```
 
-### Sidebar Component
+</CodeBlock>
 
-Sidebar provides the presentation layer and adapts to Shell's layout state. It handles:
-- Visual appearance and styling
-- Content rendering and interaction
-- Icon and label layouts
-- Menu structures and navigation
+## Anatomy
 
-Sidebar receives layout state via data attributes set by Shell, ensuring consistent behavior across different layout modes.
+The Shell component consists of several parts that work together to create flexible layouts:
+
+<CodeBlock buttonsPosition="center">
+
+```tsx
+<Shell.Root>
+  <Shell.Header>
+    {/* Global header content */}
+  </Shell.Header>
+  
+  <Shell.Sidebar side="start">
+    <Shell.Sidebar.Rail>
+      {/* Navigation items */}
+    </Shell.Sidebar.Rail>
+    <Shell.Sidebar.Panel>
+      {/* Contextual content */}
+    </Shell.Sidebar.Panel>
+  </Shell.Sidebar>
+  
+  <Shell.Content>
+    {/* Main application content */}
+  </Shell.Content>
+  
+  <Shell.Footer>
+    {/* Global footer content */}
+  </Shell.Footer>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+## Props
+
+### Shell.Root
+
+<Box my="8">
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`minContentWidth`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>`'640px'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`rtl`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`headerHeight`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>`'64px'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`zHeader`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`cascadeSide`</Table.RowHeaderCell>
+        <Table.Cell>`'start' | 'end'`</Table.Cell>
+        <Table.Cell>`'start'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`activeTool`</Table.RowHeaderCell>
+        <Table.Cell>`string | null`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onToolChange`</Table.RowHeaderCell>
+        <Table.Cell>`(id: string | null) => void`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`activeContext`</Table.RowHeaderCell>
+        <Table.Cell>`string | null`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onContextChange`</Table.RowHeaderCell>
+        <Table.Cell>`(id: string | null) => void`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Sidebar
+
+<Box my="8">
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`side`</Table.RowHeaderCell>
+        <Table.Cell>`'start' | 'end'`</Table.Cell>
+        <Table.Cell>Required</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`overlay`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', boolean>>`</Table.Cell>
+        <Table.Cell>`{ initial: true, xs: true, sm: true, md: false, lg: false, xl: false }`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`overlaySide`</Table.RowHeaderCell>
+        <Table.Cell>`'start' | 'end' | 'top' | 'bottom'`</Table.Cell>
+        <Table.Cell>`side`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`value`</Table.RowHeaderCell>
+        <Table.Cell>`'open' | 'collapsed'`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultValue`</Table.RowHeaderCell>
+        <Table.Cell>`'open' | 'collapsed'`</Table.Cell>
+        <Table.Cell>`'open'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onValueChange`</Table.RowHeaderCell>
+        <Table.Cell>`(value: 'open' | 'collapsed') => void`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`view`</Table.RowHeaderCell>
+        <Table.Cell>`'panel' | 'rail' | 'collapsed'`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultView`</Table.RowHeaderCell>
+        <Table.Cell>`'panel' | 'rail' | 'collapsed'`</Table.Cell>
+        <Table.Cell>`'panel'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onViewChange`</Table.RowHeaderCell>
+        <Table.Cell>`(view: 'panel' | 'rail' | 'collapsed') => void`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`as`</Table.RowHeaderCell>
+        <Table.Cell>`'nav' | 'aside' | 'div'`</Table.Cell>
+        <Table.Cell>`'div'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`aria-label`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>`undefined`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
 
 ## Layout Patterns
 
-Kookie UI supports two fundamental layout patterns that determine how sidebars behave:
-
-### Single Markup Pattern
-
-One content area that morphs between states:
-- **Panel**: Full-width sidebar with complete navigation
-- **Rail**: Compact sidebar with icon + label stacking
-- **Collapsed**: Hidden sidebar with no visible content
-
-Content remounts as layout changes, and the trigger cycles through: panel → rail → collapsed → panel.
+Kookie User Interface supports two fundamental layout patterns that determine how sidebars behave:
 
 ### Split Layout Pattern
 
 Separate Rail and Panel slots with independent visibility:
-- **Rail**: Top-level navigation items (always visible when open)
-- **Panel**: Contextual submenu content (driven by rail selection)
-- **Trigger**: Only controls rail state (open/collapsed)
 
-Rail controls Panel visibility through application logic, and Panel visibility persists across rail collapses, maintaining user context.
+<CodeBlock
+  preview={
+    <Flex direction="column" gap="3" p="4" style={{ width: '100%', height: '200px' }}>
+      <Text size="2" weight="medium">Split Layout</Text>
+      <Flex gap="2" align="center">
+        <Box style={{ width: '64px', height: '32px', backgroundColor: 'var(--color-accent-3)', borderRadius: 'var(--radius-2)' }} />
+        <Text size="1" color="gray">Rail (64px)</Text>
+      </Flex>
+      <Flex gap="2" align="center">
+        <Box style={{ width: '288px', height: '32px', backgroundColor: 'var(--color-accent-5)', borderRadius: 'var(--radius-2)' }} />
+        <Text size="1" color="gray">Panel (288px)</Text>
+      </Flex>
+      <Text size="1" color="gray">• Rail controls Panel visibility</Text>
+      <Text size="1" color="gray">• Panel content persists across rail collapses</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Shell.Sidebar side="start" defaultValue="open">
+  <Shell.Sidebar.Rail>
+    <Flex direction="column" align="center" gap="1" px="2" py="2">
+      <Button size="2" variant="ghost">A</Button>
+      <Button size="2" variant="ghost">B</Button>
+      <Button size="2" variant="ghost">C</Button>
+    </Flex>
+  </Shell.Sidebar.Rail>
+  <Shell.Sidebar.Panel>
+    <Flex direction="column" gap="2" px="3" py="3">
+      <Text size="3" weight="medium">Panel Content</Text>
+      <Text size="2" color="gray">Contextual content based on rail selection</Text>
+    </Flex>
+  </Shell.Sidebar.Panel>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Single Markup Pattern
+
+One content area that morphs between states:
+
+<CodeBlock
+  preview={
+    <Flex direction="column" gap="3" p="4" style={{ width: '100%', height: '200px' }}>
+      <Text size="2" weight="medium">Single Markup</Text>
+      <Flex gap="2" align="center">
+        <Box style={{ width: '64px', height: '32px', backgroundColor: 'var(--color-accent-3)', borderRadius: 'var(--radius-2)' }} />
+        <Text size="1" color="gray">Rail (64px)</Text>
+      </Flex>
+      <Flex gap="2" align="center">
+        <Box style={{ width: '288px', height: '32px', backgroundColor: 'var(--color-accent-5)', borderRadius: 'var(--radius-2)' }} />
+        <Text size="1" color="gray">Panel (288px)</Text>
+      </Flex>
+      <Text size="1" color="gray">• Content remounts as layout changes</Text>
+      <Text size="1" color="gray">• Trigger cycles: panel → rail → collapsed</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Shell.Sidebar side="start" defaultView="rail">
+  <Flex direction="column" gap="2" px="2" py="2">
+    <Shell.Sidebar.Trigger aria-label="Toggle view" />
+    <Button size="2" variant="ghost">A</Button>
+    <Button size="2" variant="ghost">B</Button>
+    <Button size="2" variant="ghost">C</Button>
+  </Flex>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
 
 ## State Management
 
@@ -62,7 +279,7 @@ Panel visibility derives from rail state and application requests, ensuring pane
 
 The `Shell.useSidebar(side)` hook provides an ergonomic API that abstracts lower-level state management:
 
-```typescript
+```tsx
 const sidebar = Shell.useSidebar('start');
 
 // Split layout controls
@@ -135,4 +352,4 @@ Triggers never directly control panel visibility in split layouts—that's handl
 
 ## Conclusion
 
-The Shell and Sidebar architecture provides a robust foundation for application layouts. By separating layout control from presentation, Kookie UI enables teams to build consistent, accessible interfaces that scale with complexity. The automatic pattern detection, ergonomic APIs, and comprehensive accessibility support reduce implementation overhead while ensuring best practices are followed automatically.
+The Shell and Sidebar architecture provides a robust foundation for application layouts. By separating layout control from presentation, Kookie User Interface enables teams to build consistent, accessible interfaces that scale with complexity. The automatic pattern detection, ergonomic APIs, and comprehensive accessibility support reduce implementation overhead while ensuring best practices are followed automatically.
