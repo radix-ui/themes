@@ -24,6 +24,7 @@ type SendMode = 'always' | 'whenDirty' | 'never';
 type AttachmentStatus = 'idle' | 'uploading' | 'error' | 'done';
 /**
  * Attachment data model used by Chatbar.
+ * - `file` exposes the original File object for uploads and processing.
  * - `url` is an object URL used for image previews and is revoked on removal.
  */
 interface ChatbarAttachment {
@@ -31,6 +32,8 @@ interface ChatbarAttachment {
   name: string;
   size: number;
   type: string;
+  /** Original File object for uploads and processing */
+  file: File;
   url?: string;
   status?: AttachmentStatus;
   progress?: number;
@@ -320,7 +323,15 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
       const isImageType = (file.type || '').toLowerCase().startsWith('image/');
       const url = isImageType || looksLikeImageByExt ? URL.createObjectURL(file) : undefined;
       if (url) generatedUrlSetRef.current.add(url);
-      next.push({ id, name: file.name, size: file.size, type: file.type, url, status: 'idle' });
+      next.push({
+        id,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        file,
+        url,
+        status: 'idle',
+      });
     }
     return { accepted: next, rejected };
   };
@@ -793,7 +804,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
           return;
         }
         const trimmed = value.trim();
-        if (sendMode === 'whenDirty' && trimmed.length === 0) {
+        const hasContent = trimmed.length > 0 || ctx.attachments.length > 0;
+        if (sendMode === 'whenDirty' && !hasContent) {
           onKeyDown?.(event);
           return;
         }
@@ -1124,7 +1136,8 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
   const ctx = useChatbarContext();
 
   const trimmed = ctx.value.trim();
-  const visible = ctx.sendMode === 'always' || (ctx.sendMode === 'whenDirty' && trimmed.length > 0);
+  const hasContent = trimmed.length > 0 || ctx.attachments.length > 0;
+  const visible = ctx.sendMode === 'always' || (ctx.sendMode === 'whenDirty' && hasContent);
   if (ctx.sendMode === 'never') return null;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -1178,4 +1191,5 @@ export type {
   TextareaProps as ChatbarTextareaProps,
   RowProps as ChatbarRowProps,
   SendProps as ChatbarSendProps,
+  ChatbarAttachment,
 };
