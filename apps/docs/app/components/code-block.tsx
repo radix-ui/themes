@@ -114,7 +114,7 @@ const PreviewSection = ({
   // Render with no background (default card styling)
   if (background === 'none') {
     return (
-      <Card size="4" variant="soft">
+      <Card size="2" variant="surface">
         <Flex justify="center" align="center" py="4">
           {preview}
         </Flex>
@@ -135,7 +135,7 @@ const PreviewSection = ({
     };
 
     return (
-      <Card size="4" variant="soft">
+      <Card size="2" variant="surface">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
           {preview}
         </Flex>
@@ -155,7 +155,7 @@ const PreviewSection = ({
   };
 
   return (
-    <Card size="4" variant="soft">
+    <Card size="2" variant="surface">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
         {preview}
       </Flex>
@@ -243,55 +243,57 @@ const CodeSection = memo(function CodeSection({
 
   return (
     <Box position="relative">
-      {/* Action Buttons - positioned absolutely for overlay effect */}
-      <Flex
-        gap="1"
-        position="absolute"
-        top={buttonsPosition === 'top' ? '4' : '50%'}
-        right="4"
-        style={{
-          zIndex: 1,
-          ...(buttonsPosition === 'center' && { transform: 'translateY(-50%)' }),
-        }}
-      >
-        {/* Expand/Collapse button - only show if content is expandable */}
-        {shouldShowToggle && (
-          <ToggleIconButton
+      <Card size="2" variant="surface">
+        {/* Action Buttons - positioned absolutely for overlay effect */}
+        <Flex
+          gap="1"
+          position="absolute"
+          top={buttonsPosition === 'top' ? '4' : '50%'}
+          right="4"
+          style={{
+            zIndex: 1,
+            ...(buttonsPosition === 'center' && { transform: 'translateY(-50%)' }),
+          }}
+        >
+          {/* Expand/Collapse button - only show if content is expandable */}
+          {shouldShowToggle && (
+            <ToggleIconButton
+              size="2"
+              variant="classic"
+              color="gray"
+              highContrast
+              pressed={isExpanded}
+              onPressedChange={handleToggle}
+              tooltip={isExpanded ? 'Collapse' : 'Expand'}
+              aria-label={isExpanded ? 'Collapse code' : 'Expand code'}
+              className="code-toggle-button"
+            >
+              <ChevronsUpDown style={chevronStyle} className="code-chevron" />
+            </ToggleIconButton>
+          )}
+
+          {/* Copy button */}
+          <IconButton
             size="2"
             variant="classic"
             color="gray"
             highContrast
-            pressed={isExpanded}
-            onPressedChange={handleToggle}
-            tooltip={isExpanded ? 'Collapse' : 'Expand'}
-            aria-label={isExpanded ? 'Collapse code' : 'Expand code'}
-            className="code-toggle-button"
+            onClick={handleCopy}
+            tooltip={copied ? 'Copied!' : 'Copy'}
+            aria-label={copied ? 'Copied!' : 'Copy code'}
           >
-            <ChevronsUpDown style={chevronStyle} className="code-chevron" />
-          </ToggleIconButton>
-        )}
+            <Clipboard />
+          </IconButton>
+        </Flex>
 
-        {/* Copy button */}
-        <IconButton
-          size="2"
-          variant="classic"
-          color="gray"
-          highContrast
-          onClick={handleCopy}
-          tooltip={copied ? 'Copied!' : 'Copy'}
-          aria-label={copied ? 'Copied!' : 'Copy code'}
-        >
-          <Clipboard />
-        </IconButton>
-      </Flex>
+        {/* Code Content - with dynamic height based on expand state */}
+        <Box ref={contentRef} style={contentStyle} className="code-content">
+          {children}
+        </Box>
 
-      {/* Code Content - with dynamic height based on expand state */}
-      <Box ref={contentRef} style={contentStyle} className="code-content">
-        {children}
-      </Box>
-
-      {/* Scroll Shadow - only show when collapsed and content is expandable */}
-      {shouldShowToggle && !isExpanded && <Box className="code-scroll-shadow visible" />}
+        {/* Scroll Shadow - only show when collapsed and content is expandable */}
+        {shouldShowToggle && !isExpanded && <Box className="code-scroll-shadow visible" />}
+      </Card>
     </Box>
   );
 });
@@ -372,7 +374,7 @@ export const CodeBlock = memo(function CodeBlock({
 
   // If we have both preview and code, show them in tabs for better organization
   return (
-    <Box py="8">
+    <Box my="8">
       <Tabs.Root defaultValue="preview">
         <Tabs.List>
           <Tabs.Trigger value="preview">Preview</Tabs.Trigger>

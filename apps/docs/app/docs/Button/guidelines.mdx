@@ -1,10 +1,18 @@
-import { Button, Flex, Box, Text, Callout, IconButton, Theme } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Box, Text, Callout, IconButton, Theme, Section, Separator } from '@kushagradhawan/kookie-ui';
 import { TriangleAlertIcon, ChevronDown, Check, ChevronRight, Plus } from 'lucide-react';
-import { CodeBlock } from '../../components/CodeBlock';
+import { CodeBlock } from '../../components/code-block';
+
+<Section>
 
 # Guidelines
 
 Design buttons as promises that users can trust. When someone sees a button, they instantly form expectations about what will happen when they tap it. Your job as a designer is to honor those expectations and guide people naturally toward successful task completion.
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Hierarchy
 
@@ -38,17 +46,35 @@ Use button positioning to reinforce hierarchy. Primary actions typically appear 
 
 Group related actions together and separate unrelated ones. Proximity communicates relationship—buttons that appear together feel related, while separated buttons feel independent.
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Context
 
 Consider context when choosing visual treatments. The same visual treatment can feel appropriate or jarring depending on context. A bold red "Delete Account" button feels wrong in a settings page but right in a confirmation dialog. People bring expectations from their current task and mental state.
 
 Think about where someone is in their journey. Are they exploring options or ready to commit? Are they in a flow state or making a careful decision? The context determines which visual treatment will feel natural and supportive.
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Trust
 
 Build user confidence through consistent button treatments. When similar actions look similar across your interface, people develop confidence in your system. They can predict behavior based on appearance, which reduces cognitive load and increases task completion rates. 
 
 Avoid inconsistent button treatments that force people to pause and evaluate each interaction. This breaks flow states and increases abandonment. Every inconsistency is a small betrayal of user expectations.
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Variants
 
@@ -150,6 +176,12 @@ Use classic buttons for sophisticated shadow systems that create depth, making b
 
 Choose classic buttons for standalone focal points in spacious layouts, premium or tactile interface experiences, hero sections and marketing contexts, and applications where physical metaphors enhance usability.
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Material
 
 Choose material to define the fundamental substance from which your interface is constructed. Just as physical materials have distinct properties that affect how we interact with them, digital materials create different experiences and expectations. The material choice affects not just appearance, but the entire relationship between user and interface.
@@ -201,6 +233,12 @@ Solid materials create interfaces that feel like tools: precise, reliable, and f
 
 The material choice should support the user's goals and create the appropriate emotional relationship with your interface. Just as you wouldn't build a kitchen counter from tissue paper or a window from concrete, choose materials that match the functional and emotional requirements of your interface context.
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Mistakes
 
 Avoid these common button design problems that stem from treating buttons as decorative elements rather than functional communication tools. These mistakes break user expectations and create friction in interfaces that should feel effortless.
@@ -209,8 +247,16 @@ Avoid these common button design problems that stem from treating buttons as dec
 
 **Inconsistent visual treatments** across your interface force people to relearn your system at every interaction. When similar actions look different in different contexts, users lose confidence in their ability to predict behavior. This creates a cascade of problems: people slow down to evaluate each button, they second-guess their choices, and they develop distrust in your interface. Consistency isn't about rigid rules—it's about creating predictable patterns that reduce cognitive load and build user confidence.
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Implementation
 
 For technical implementation details, see [API](./api). For design tokens and specifications, see [Specs](./specs).
+
+</Section>
 
 

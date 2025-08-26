@@ -1,12 +1,4 @@
 {
   "printWidth": 100,
-  "singleQuote": true,
-  "overrides": [
-    {
-      "files": "*.css",
-      "options": {
-        "printWidth": 120
-      }
-    }
-  ]
+  "singleQuote": true
 }

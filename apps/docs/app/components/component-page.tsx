@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useCallback, useMemo, memo } from 'react';
+import React, { useCallback, useMemo, memo, Suspense } from 'react';
 import { TabNav, Box, Flex, Container } from '@kushagradhawan/kookie-ui';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { TableOfContents } from './TableOfContents';
+import { TableOfContents } from './table-of-contents';
 
 interface Tab {
   value: string;
@@ -119,19 +119,35 @@ const ComponentPage = memo(function ComponentPage({
             {renderContent()}
           </Box>
 
-          {/* Table of Contents */}
-          <Box
-            style={tocStyle}
-            position="sticky"
-            top="200px"
-            display={{ initial: 'none', lg: 'block' }}
-          >
-            <TableOfContents />
-          </Box>
+          {/* Table of Contents - only render if there are headings */}
+          <TableOfContents
+            key={activeTab} // Force re-render when tab changes
+            renderContainer={(tocContent) =>
+              tocContent ? (
+                <Box
+                  style={tocStyle}
+                  position="sticky"
+                  top="200px"
+                  display={{ initial: 'none', lg: 'block' }}
+                >
+                  {tocContent}
+                </Box>
+              ) : null
+            }
+          />
         </Flex>
       </Flex>
     </Container>
   );
 });
 
-export default ComponentPage;
+// Wrapper component with Suspense boundary for useSearchParams
+const ComponentPageWithSuspense = (props: ComponentPageProps) => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ComponentPage {...props} />
+    </Suspense>
+  );
+};
+
+export default ComponentPageWithSuspense;

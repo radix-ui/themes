@@ -1,33 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import {
-  ToggleIconButton,
-  Text,
-  Flex,
-  Box,
-  Heading,
-  Tabs,
-  Table,
-  Badge,
-} from '@kushagradhawan/kookie-ui';
-import {
-  Heart,
-  Star,
-  Bookmark,
-  ThumbsUp,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Eye,
-  EyeOff,
-  Sun,
-  Moon,
-  Mic,
-  MicOff,
-  Lock,
-} from 'lucide-react';
+import React from 'react';
+import { ToggleIconButton, Text, Flex, Box, Card } from '@kushagradhawan/kookie-ui';
+import { Plus } from 'lucide-react';
+import { PropertyControl } from '../components/property-control';
 
 const accentColors = [
   'gray',
@@ -61,828 +37,162 @@ const accentColors = [
 const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
 const sizes = ['1', '2', '3', '4'] as const;
 const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
+const materials = ['solid', 'translucent'] as const;
+const states = ['default', 'disabled', 'loading'] as const;
+const tooltipSides = ['top', 'right', 'bottom', 'left'] as const;
 
 export default function ToggleIconButtonPlayground() {
-  const [toggleStates, setToggleStates] = useState<Record<string, boolean>>({});
+  const [variant, setVariant] = React.useState<string>('solid');
+  const [color, setColor] = React.useState<string>('theme');
+  const [radius, setRadius] = React.useState<string>('theme');
+  const [size, setSize] = React.useState<string>('3');
+  const [highContrast, setHighContrast] = React.useState<boolean>(false);
+  const [material, setMaterial] = React.useState<string>('theme');
+  const [flush, setFlush] = React.useState<boolean>(false);
+  const [fullWidth, setFullWidth] = React.useState<boolean>(false);
+  const [state, setState] = React.useState<string>('default');
+  const [tooltip, setTooltip] = React.useState<string>('');
+  const [tooltipSide, setTooltipSide] = React.useState<string>('top');
+  const [pressed, setPressed] = React.useState<boolean>(false);
 
-  const handleToggle = (key: string, pressed: boolean) => {
-    setToggleStates((prev) => ({ ...prev, [key]: pressed }));
-  };
+  const isDisabled = state === 'disabled';
+  const isLoading = state === 'loading';
+
+  const items = [
+    {
+      id: 'variant',
+      label: 'Variant',
+      type: 'select' as const,
+      value: variant,
+      onChange: setVariant,
+      options: variants.map((v) => ({ label: v, value: v })),
+      placeholder: 'Select variant',
+    },
+    {
+      id: 'color',
+      label: 'Color',
+      type: 'select' as const,
+      value: color,
+      onChange: setColor,
+      options: [
+        { label: 'Theme', value: 'theme' },
+        ...accentColors.map((c) => ({ label: c, value: c })),
+      ],
+      placeholder: 'Theme',
+      appearance: 'swatch' as const,
+    },
+    {
+      id: 'radius',
+      label: 'Radius',
+      type: 'select' as const,
+      value: radius,
+      onChange: setRadius,
+      options: [
+        { label: 'Theme', value: 'theme' },
+        ...radiusOptions.map((r) => ({ label: r, value: r })),
+      ],
+      placeholder: 'Theme',
+    },
+    {
+      id: 'size',
+      label: 'Size',
+      type: 'select' as const,
+      value: size,
+      onChange: setSize,
+      options: sizes.map((s) => ({ label: s, value: s })),
+      placeholder: 'Select size',
+    },
+    {
+      id: 'high-contrast',
+      label: 'High Contrast',
+      type: 'switch' as const,
+      value: highContrast,
+      onChange: setHighContrast,
+    },
+    {
+      id: 'material',
+      label: 'Material',
+      type: 'select' as const,
+      value: material,
+      onChange: setMaterial,
+      options: [
+        { label: 'Theme', value: 'theme' },
+        ...materials.map((m) => ({ label: m, value: m })),
+      ],
+      placeholder: 'Theme',
+    },
+    {
+      id: 'flush',
+      label: 'Flush',
+      type: 'switch' as const,
+      value: flush,
+      onChange: setFlush,
+    },
+    {
+      id: 'full-width',
+      label: 'Full Width',
+      type: 'switch' as const,
+      value: fullWidth,
+      onChange: setFullWidth,
+    },
+    {
+      id: 'state',
+      label: 'State',
+      type: 'select' as const,
+      value: state,
+      onChange: setState,
+      options: states.map((s) => ({ label: s, value: s })),
+      placeholder: 'Select state',
+    },
+
+    {
+      id: 'tooltip-side',
+      label: 'Tooltip',
+      type: 'select' as const,
+      value: tooltipSide,
+      onChange: setTooltipSide,
+      options: [
+        { label: 'None', value: 'top' },
+        ...tooltipSides.slice(1).map((s) => ({ label: s, value: s })),
+      ],
+      placeholder: 'Select tooltip position',
+    },
+    {
+      id: 'pressed',
+      label: 'Pressed',
+      type: 'switch' as const,
+      value: pressed,
+      onChange: setPressed,
+    },
+  ];
 
   return (
-    <Flex direction="column" gap="6">
-      <Flex direction="column" gap="2">
-        <Badge size="2" variant="soft" color="green" style={{ alignSelf: 'flex-start' }}>
-          New
-        </Badge>
-        <Heading size="6" weight="bold">
-          Toggle Icon Button
-        </Heading>
-        <Text size="3" color="gray">
-          An icon-only button that toggles between selected and unselected states.
-        </Text>
-      </Flex>
+    <Flex direction={{ initial: 'column', md: 'row' }} gap="5" align="center">
+      <Card size="3" variant="classic" style={{ width: '100%', height: '400px' }}>
+        <Flex direction="column" align="center" justify="center" height="100%">
+          <ToggleIconButton
+            size={size as any}
+            variant={variant as any}
+            color={color === 'theme' ? ('' as any) : (color as any)}
+            radius={radius === 'theme' ? undefined : (radius as any)}
+            highContrast={highContrast || undefined}
+            material={material === 'theme' ? undefined : (material as any)}
+            flush={flush}
+            fullWidth={fullWidth}
+            disabled={isDisabled}
+            loading={isLoading}
+            tooltip={tooltipSide !== 'top' ? 'Toggle plus icon' : undefined}
+            tooltipSide={tooltipSide as any}
+            pressed={pressed}
+            onPressedChange={setPressed}
+            aria-label="Plus icon toggle"
+          >
+            <Plus />
+          </ToggleIconButton>
+        </Flex>
+      </Card>
 
-      <Tabs.Root defaultValue="theme-colors">
-        <Tabs.List size="2">
-          <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
-          <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
-          <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
-          <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
-          <Tabs.Trigger value="tooltips">Tooltips</Tabs.Trigger>
-          <Tabs.Trigger value="icon-types">Icon types</Tabs.Trigger>
-          <Tabs.Trigger value="states">States</Tabs.Trigger>
-        </Tabs.List>
-
-        {/* Theme Colors Tab */}
-        <Tabs.Content value="theme-colors">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Color
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Accent
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`accent-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`accent-${variant}`, pressed)}
-                        aria-label="Toggle favorite"
-                      >
-                        <Heart />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Gray
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        color="gray"
-                        pressed={toggleStates[`gray-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`gray-${variant}`, pressed)}
-                        aria-label="Toggle favorite"
-                      >
-                        <Heart />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* All Colors Tab */}
-        <Tabs.Content value="all-colors">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Color
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {accentColors.map((color) => (
-                  <React.Fragment key={color}>
-                    <Table.Row>
-                      <Table.RowHeaderCell>
-                        <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                          {color}
-                        </Text>
-                      </Table.RowHeaderCell>
-                      {variants.map((variant) => (
-                        <Table.Cell key={variant}>
-                          <ToggleIconButton
-                            size="2"
-                            variant={variant}
-                            color={color}
-                            pressed={toggleStates[`${color}-${variant}`]}
-                            onPressedChange={(pressed) =>
-                              handleToggle(`${color}-${variant}`, pressed)
-                            }
-                            aria-label="Toggle favorite"
-                          >
-                            <Heart />
-                          </ToggleIconButton>
-                        </Table.Cell>
-                      ))}
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.RowHeaderCell>
-                        <Text
-                          size="1"
-                          color="gray"
-                          style={{ textTransform: 'capitalize', opacity: 0.7 }}
-                        >
-                          {color} HC
-                        </Text>
-                      </Table.RowHeaderCell>
-                      {variants.map((variant) => (
-                        <Table.Cell key={variant}>
-                          <ToggleIconButton
-                            size="2"
-                            variant={variant}
-                            color={color}
-                            highContrast
-                            pressed={toggleStates[`${color}-${variant}-hc`]}
-                            onPressedChange={(pressed) =>
-                              handleToggle(`${color}-${variant}-hc`, pressed)
-                            }
-                            aria-label="Toggle favorite"
-                          >
-                            <Heart />
-                          </ToggleIconButton>
-                        </Table.Cell>
-                      ))}
-                    </Table.Row>
-                  </React.Fragment>
-                ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* All Sizes Tab */}
-        <Tabs.Content value="all-sizes">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Size
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {sizes.map((size) => (
-                  <Table.Row key={size}>
-                    <Table.RowHeaderCell>
-                      <Text size="1" color="gray">
-                        Size {size}
-                      </Text>
-                    </Table.RowHeaderCell>
-                    {variants.map((variant) => (
-                      <Table.Cell key={variant}>
-                        <ToggleIconButton
-                          size={size as any}
-                          variant={variant}
-                          pressed={toggleStates[`size-${size}-${variant}`]}
-                          onPressedChange={(pressed) =>
-                            handleToggle(`size-${size}-${variant}`, pressed)
-                          }
-                          aria-label="Toggle favorite"
-                        >
-                          <Heart />
-                        </ToggleIconButton>
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* All Radius Tab */}
-        <Tabs.Content value="all-radius">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Radius
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {radiusOptions.map((radius) => (
-                  <Table.Row key={radius}>
-                    <Table.RowHeaderCell>
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {radius === 'none' ? 'No radius' : radius}
-                      </Text>
-                    </Table.RowHeaderCell>
-                    {variants.map((variant) => (
-                      <Table.Cell key={variant}>
-                        <ToggleIconButton
-                          size="2"
-                          variant={variant}
-                          radius={radius as any}
-                          pressed={toggleStates[`radius-${radius}-${variant}`]}
-                          onPressedChange={(pressed) =>
-                            handleToggle(`radius-${radius}-${variant}`, pressed)
-                          }
-                          aria-label="Toggle favorite"
-                        >
-                          <Heart />
-                        </ToggleIconButton>
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* Tooltips Tab */}
-        <Tabs.Content value="tooltips">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Tooltip
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Simple
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        tooltip="Toggle favorite"
-                        aria-label="Toggle favorite"
-                      >
-                        <Heart />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Bottom
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        tooltip="Toggle bookmark"
-                        tooltipSide="bottom"
-                        aria-label="Toggle bookmark"
-                      >
-                        <Bookmark />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Left
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        tooltip="Toggle star"
-                        tooltipSide="left"
-                        aria-label="Toggle star"
-                      >
-                        <Star />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Right
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        tooltip="Toggle visibility"
-                        tooltipSide="right"
-                        aria-label="Toggle visibility"
-                      >
-                        <Eye />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Pressed
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        tooltip="Toggle like (pressed)"
-                        pressed={true}
-                        aria-label="Toggle like"
-                      >
-                        <ThumbsUp />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Disabled
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        tooltip="This toggle is disabled"
-                        disabled
-                        aria-label="Disabled toggle"
-                      >
-                        <Lock />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* Icon Types Tab */}
-        <Tabs.Content value="icon-types">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      Icon Type
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '80px', textAlign: 'left' }}
-                    >
-                      <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
-                        {variant}
-                      </Text>
-                    </Table.ColumnHeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Heart
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`heart-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`heart-${variant}`, pressed)}
-                        aria-label="Toggle favorite"
-                      >
-                        <Heart />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Star
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`star-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`star-${variant}`, pressed)}
-                        aria-label="Toggle star"
-                      >
-                        <Star />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Bookmark
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`bookmark-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`bookmark-${variant}`, pressed)}
-                        aria-label="Toggle bookmark"
-                      >
-                        <Bookmark />
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Play/Pause
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`play-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`play-${variant}`, pressed)}
-                        aria-label={toggleStates[`play-${variant}`] ? 'Pause' : 'Play'}
-                      >
-                        {toggleStates[`play-${variant}`] ? <Pause /> : <Play />}
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Volume
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`volume-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`volume-${variant}`, pressed)}
-                        aria-label={toggleStates[`volume-${variant}`] ? 'Unmute' : 'Mute'}
-                      >
-                        {toggleStates[`volume-${variant}`] ? <VolumeX /> : <Volume2 />}
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Visibility
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`visibility-${variant}`]}
-                        onPressedChange={(pressed) =>
-                          handleToggle(`visibility-${variant}`, pressed)
-                        }
-                        aria-label={toggleStates[`visibility-${variant}`] ? 'Hide' : 'Show'}
-                      >
-                        {toggleStates[`visibility-${variant}`] ? <EyeOff /> : <Eye />}
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Theme
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`theme-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`theme-${variant}`, pressed)}
-                        aria-label={toggleStates[`theme-${variant}`] ? 'Dark mode' : 'Light mode'}
-                      >
-                        {toggleStates[`theme-${variant}`] ? <Moon /> : <Sun />}
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Microphone
-                    </Text>
-                  </Table.RowHeaderCell>
-                  {variants.map((variant) => (
-                    <Table.Cell key={variant}>
-                      <ToggleIconButton
-                        size="2"
-                        variant={variant}
-                        pressed={toggleStates[`mic-${variant}`]}
-                        onPressedChange={(pressed) => handleToggle(`mic-${variant}`, pressed)}
-                        aria-label={
-                          toggleStates[`mic-${variant}`] ? 'Unmute microphone' : 'Mute microphone'
-                        }
-                      >
-                        {toggleStates[`mic-${variant}`] ? <MicOff /> : <Mic />}
-                      </ToggleIconButton>
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-
-        {/* States Tab */}
-        <Tabs.Content value="states">
-          <Box pt="4">
-            <Table.Root>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColumnHeaderCell style={{ width: '120px' }}>
-                    <Text size="1" color="gray">
-                      State
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '80px' }}>
-                    <Text size="1" color="gray">
-                      Solid
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '80px' }}>
-                    <Text size="1" color="gray">
-                      Soft
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '80px' }}>
-                    <Text size="1" color="gray">
-                      Outline
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                  <Table.ColumnHeaderCell style={{ width: '80px' }}>
-                    <Text size="1" color="gray">
-                      Ghost
-                    </Text>
-                  </Table.ColumnHeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Unpressed
-                    </Text>
-                  </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="solid"
-                      pressed={false}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="soft"
-                      pressed={false}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="outline"
-                      pressed={false}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="ghost"
-                      pressed={false}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Pressed
-                    </Text>
-                  </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="solid"
-                      pressed={true}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="soft"
-                      pressed={true}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="outline"
-                      pressed={true}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton
-                      size="2"
-                      variant="ghost"
-                      pressed={true}
-                      aria-label="Toggle like"
-                    >
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Disabled
-                    </Text>
-                  </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="solid" disabled aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="soft" disabled aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="outline" disabled aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="ghost" disabled aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.RowHeaderCell>
-                    <Text size="1" color="gray">
-                      Loading
-                    </Text>
-                  </Table.RowHeaderCell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="solid" loading aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="soft" loading aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="outline" loading aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ToggleIconButton size="2" variant="ghost" loading aria-label="Toggle like">
-                      <ThumbsUp />
-                    </ToggleIconButton>
-                  </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table.Root>
-          </Box>
-        </Tabs.Content>
-      </Tabs.Root>
+      <PropertyControl.Group width="256px" items={items} style={{ flexShrink: 0 }} />
     </Flex>
   );
 }

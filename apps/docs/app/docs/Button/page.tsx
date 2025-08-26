@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import ComponentPage from '../../components/ComponentPage';
+import ComponentPage from '../../components/component-page';
 import GuidelinesMDX from './guidelines.mdx';
 import OverviewMDX from './overview.mdx';
 import SpecsMDX from './specs.mdx';

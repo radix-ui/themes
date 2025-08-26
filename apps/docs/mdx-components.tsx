@@ -10,53 +10,49 @@ import {
   Strong,
   Em,
   Kbd,
-  Quote,
   Callout,
 } from '@kushagradhawan/kookie-ui';
-import { CodeBlock } from './app/components/CodeBlock';
-import { SpecsBlock } from './app/components/SpecsBlock';
-import { TableOfContents } from './app/components/TableOfContents';
+import { CodeBlock } from './app/components/code-block';
+import { SpecsBlock } from './app/components/specs-block';
+import { TableOfContents } from './app/components/table-of-contents';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
-      <Heading as="h1" size="9" mb="9" mt="9" weight="bold">
+      <Heading as="h1" size="9" mb="9" weight="medium">
         {children}
       </Heading>
     ),
     h2: ({ children }) => (
-      <Box mb="6" mt="9">
-        <Heading as="h2" size="8" mb="4" weight="bold">
-          {children}
-        </Heading>
-        <Separator size="4" mb="7" />
-      </Box>
+      <Heading as="h2" size="8" mb="8" weight="medium">
+        {children}
+      </Heading>
     ),
     h3: ({ children }) => (
-      <Heading as="h3" size="7" mb="6" mt="9" weight="bold">
+      <Heading as="h3" size="7" mt="9" mb="7" weight="medium">
         {children}
       </Heading>
     ),
     h4: ({ children }) => (
-      <Heading as="h4" size="4" mb="3" mt="7" weight="bold">
+      <Heading as="h4" size="4" mb="6" weight="medium">
         {children}
       </Heading>
     ),
     h5: ({ children }) => (
-      <Heading as="h5" size="3" mb="2" mt="6" weight="bold">
+      <Heading as="h5" size="3" mb="5" weight="medium">
         {children}
       </Heading>
     ),
     h6: ({ children }) => (
-      <Heading as="h6" size="4" mb="2" mt="5" weight="bold">
+      <Heading as="h6" size="4" mb="4" weight="medium">
         {children}
       </Heading>
     ),
 
     // Text elements using KookieUI defaults
     p: ({ children }) => (
-      <Text as="p" size="3" mb="4" style={{ lineHeight: '1.7' }}>
+      <Text as="p" size="3" my="3" style={{ lineHeight: '1.7' }}>
         {children}
       </Text>
     ),
@@ -133,14 +129,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     // Blockquotes and quotes
-    blockquote: ({ children }) => (
-      <Blockquote size="3" mb="3">
-        {children}
-      </Blockquote>
-    ),
+    blockquote: ({ children }) => <Blockquote size="3">{children}</Blockquote>,
 
     // Horizontal rule with separator
-    hr: () => <Separator size="4" my="5" />,
+    hr: () => <Separator size="4" />,
 
     // Typography using dedicated KookieUI components
     strong: ({ children }) => <Strong>{children}</Strong>,
@@ -148,15 +140,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     em: ({ children }) => <Em>{children}</Em>,
 
     // Tables using nested structure
-    table: ({ children }) => (
-      <Box mb="5" style={{ overflow: 'auto' }}>
-        {children}
-      </Box>
-    ),
+    table: ({ children }) => <Box style={{ overflow: 'auto' }}>{children}</Box>,
 
     // Custom callout for important information
     aside: ({ children }) => (
-      <Callout.Root mb="3">
+      <Callout.Root>
         <Callout.Text>{children}</Callout.Text>
       </Callout.Root>
     ),

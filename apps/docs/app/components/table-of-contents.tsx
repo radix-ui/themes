@@ -11,6 +11,7 @@ interface TocItem {
 
 interface TableOfContentsProps {
   className?: string;
+  renderContainer?: (tocContent: React.ReactNode) => React.ReactNode | null;
 }
 
 // Function to generate slug from text
@@ -22,7 +23,10 @@ const generateSlug = (text: string): string => {
     .trim();
 };
 
-export const TableOfContents = memo(function TableOfContents({ className }: TableOfContentsProps) {
+export const TableOfContents = memo(function TableOfContents({
+  className,
+  renderContainer,
+}: TableOfContentsProps) {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>('');
 
@@ -151,7 +155,7 @@ export const TableOfContents = memo(function TableOfContents({ className }: Tabl
   // Early return if no TOC items
   if (toc.length === 0) return null;
 
-  return (
+  const tocContent = (
     <Flex direction="column" gap="3" className={className}>
       <Text size="2" weight="medium" color="gray">
         On this page
@@ -171,4 +175,11 @@ export const TableOfContents = memo(function TableOfContents({ className }: Tabl
       </Flex>
     </Flex>
   );
+
+  // If renderContainer is provided, use it; otherwise return the content directly
+  if (renderContainer) {
+    return renderContainer(tocContent);
+  }
+
+  return tocContent;
 });

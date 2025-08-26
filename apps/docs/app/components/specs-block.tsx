@@ -165,7 +165,7 @@ const PreviewSection = ({
   // Render with no background (default card styling)
   if (background === 'none') {
     return (
-      <Card size="4" variant="soft">
+      <Card size="2" variant="surface">
         <Flex justify="center" align="center" py="4">
           {preview}
         </Flex>
@@ -186,7 +186,7 @@ const PreviewSection = ({
     };
 
     return (
-      <Card size="4" variant="soft">
+      <Card size="2" variant="surface">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
           {preview}
         </Flex>
@@ -206,7 +206,7 @@ const PreviewSection = ({
   };
 
   return (
-    <Card size="4" variant="soft">
+    <Card size="2" variant="surface">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
         {preview}
       </Flex>

@@ -1,11 +1,10 @@
-@import "@kushagradhawan/kookie-ui/styles.css";
-@import "tailwindcss/preflight.css";
+@import '@kushagradhawan/kookie-ui/styles.css';
+@import 'tailwindcss/preflight.css';
 
 /* Minimal global styles for the documentation site */
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
   margin: 0;
   font-family: var(--font-sans) !important;
   /* Safari font scaling fixes */
@@ -32,12 +31,10 @@ body {
 /* Code block styling with Nord theme support */
 pre {
   overflow-x: auto;
-  border-radius: var(--radius-6);
-  background-color: var(--gray-a2);
-  padding-left: var(--space-8);
-  padding-right: var(--space-8);
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
   position: relative;
   width: 100%; /* Ensure full width */
 }
@@ -121,8 +118,7 @@ figure[data-rehype-pretty-code-figure] code.rt-Code {
   border-radius: var(--radius-3) var(--radius-3) 0 0;
 }
 
-Line numbers support
-code[data-line-numbers] {
+Line numbers support code[data-line-numbers] {
   counter-reset: line;
 }
 
@@ -150,7 +146,12 @@ pre + figcaption {
 }
 
 /* Scroll offset for headings when using anchor links */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   scroll-margin-top: 120px;
 }
 
@@ -186,7 +187,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* CodeBlock component styles */
 .code-content {
-  border-radius: var(--radius-5);
   overflow: auto;
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* Hide scrollbars while keeping scroll functionality */
@@ -223,16 +223,11 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: 75px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    var(--color-background) 100%,
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent 0%, var(--color-background) 100%, transparent);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  border-radius: 0 0 var(--radius-5) var(--radius-5);
+  border-radius: 0 0 var(--radius-6) var(--radius-6);
 }
 
 .code-scroll-shadow.visible {
@@ -278,4 +273,3 @@ h1, h2, h3, h4, h5, h6 {
   width: 0 !important;
   height: 0 !important;
 }
-

@@ -55,7 +55,7 @@ export default function SelectPlayground() {
           Select
         </Heading>
         <Text size="2" color="gray">
-          Displays a list of options for the user to pick from—triggered by a button.
+          Displays a list of options for the user to pick from—triggered by a button. Now supports rich content for complex data like chats, users, and files.
         </Text>
       </Flex>
 
@@ -66,6 +66,7 @@ export default function SelectPlayground() {
           <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
           <Tabs.Trigger value="all-radius">All radius</Tabs.Trigger>
           <Tabs.Trigger value="content-variants">Content variants</Tabs.Trigger>
+          <Tabs.Trigger value="rich-content">Rich Content</Tabs.Trigger>
         </Tabs.List>
 
         {/* Theme Colors Tab */}
@@ -396,6 +397,258 @@ export default function SelectPlayground() {
                 ))}
               </Table.Body>
             </Table.Root>
+          </Box>
+        </Tabs.Content>
+
+        {/* Rich Content Tab */}
+        <Tabs.Content value="rich-content">
+          <Box pt="4">
+            <Flex direction="column" gap="4">
+              <Text size="2" color="gray">
+                Select now supports rich content! Perfect for chat selection, user lists, and complex data.
+              </Text>
+              
+              <Flex direction="column" gap="3">
+                <Text size="3" weight="medium">Chat Selection</Text>
+                <Select.Root size="3">
+                  <Select.Trigger placeholder="Select a chat" />
+                  <Select.Content>
+                    <Select.Item value="chat-1">
+                      <Flex align="center" gap="3">
+                        <Box
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--color-blue-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '14px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          JD
+                        </Box>
+                        <Flex direction="column" gap="1" style={{ flex: 1, minWidth: 0 }}>
+                          <Text weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            John Doe
+                          </Text>
+                          <Text size="1" color="gray" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            Hey, how's the project going?
+                          </Text>
+                        </Flex>
+                        <Text size="1" color="gray" style={{ whiteSpace: 'nowrap' }}>
+                          2h
+                        </Text>
+                      </Flex>
+                    </Select.Item>
+                    
+                    <Select.Item value="chat-2">
+                      <Flex align="center" gap="3">
+                        <Box
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--color-green-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '14px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          JS
+                        </Box>
+                        <Flex direction="column" gap="1" style={{ flex: 1, minWidth: 0 }}>
+                          <Text weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            Jane Smith
+                          </Text>
+                          <Text size="1" color="gray" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            Can you review the latest changes?
+                          </Text>
+                        </Flex>
+                        <Text size="1" color="gray" style={{ whiteSpace: 'nowrap' }}>
+                          1d
+                        </Text>
+                      </Flex>
+                    </Select.Item>
+                    
+                    <Select.Item value="chat-3">
+                      <Flex align="center" gap="3">
+                        <Box
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--color-purple-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '14px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          MJ
+                        </Box>
+                        <Flex direction="column" gap="1" style={{ flex: 1, minWidth: 0 }}>
+                          <Text weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            Mike Johnson
+                          </Text>
+                          <Text size="1" color="gray" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            Meeting scheduled for tomorrow at 10 AM
+                          </Text>
+                        </Flex>
+                        <Text size="1" color="gray" style={{ whiteSpace: 'nowrap' }}>
+                          3d
+                        </Text>
+                      </Flex>
+                    </Select.Item>
+                  </Select.Content>
+                </Select.Root>
+              </Flex>
+
+              <Flex direction="column" gap="3">
+                <Text size="3" weight="medium">User Selection with Status</Text>
+                <Select.Root size="2">
+                  <Select.Trigger placeholder="Select a user" />
+                  <Select.Content>
+                    <Select.Item value="user-1">
+                      <Flex align="center" gap="2">
+                        <Box
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--color-green-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '12px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          A
+                        </Box>
+                        <Text weight="medium">Alice Cooper</Text>
+                        <Badge size="1" variant="soft" color="green">Online</Badge>
+                      </Flex>
+                    </Select.Item>
+                    
+                    <Select.Item value="user-2">
+                      <Flex align="center" gap="2">
+                        <Box
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--color-blue-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '12px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          B
+                        </Box>
+                        <Text weight="medium">Bob Wilson</Text>
+                        <Badge size="1" variant="soft" color="gray">Away</Badge>
+                      </Flex>
+                    </Select.Item>
+                    
+                    <Select.Item value="user-3">
+                      <Flex align="center" gap="2">
+                        <Box
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--color-red-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '12px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          C
+                        </Box>
+                        <Text weight="medium">Carol Davis</Text>
+                        <Badge size="1" variant="soft" color="red">Busy</Badge>
+                      </Flex>
+                    </Select.Item>
+                  </Select.Content>
+                </Select.Root>
+              </Flex>
+
+              <Flex direction="column" gap="3">
+                <Text size="3" weight="medium">File Selection with Metadata</Text>
+                <Select.Root size="2">
+                  <Select.Trigger placeholder="Select a file" />
+                  <Select.Content>
+                    <Select.Item value="file-1">
+                      <Flex align="center" gap="2">
+                        <Box
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '4px',
+                            backgroundColor: 'var(--color-blue-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '12px'
+                          }}
+                        >
+                          📄
+                        </Box>
+                        <Flex direction="column" gap="0" style={{ flex: 1, minWidth: 0 }}>
+                          <Text weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            project-proposal.pdf
+                          </Text>
+                          <Text size="1" color="gray">2.4 MB • Updated 2 hours ago</Text>
+                        </Flex>
+                      </Flex>
+                    </Select.Item>
+                    
+                    <Select.Item value="file-2">
+                      <Flex align="center" gap="2">
+                        <Box
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '4px',
+                            backgroundColor: 'var(--color-green-9)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '12px'
+                          }}
+                        >
+                          📊
+                        </Box>
+                        <Flex direction="column" gap="0" style={{ flex: 1, minWidth: 0 }}>
+                          <Text weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            quarterly-report.xlsx
+                          </Text>
+                          <Text size="1" color="gray">1.8 MB • Updated 1 day ago</Text>
+                        </Flex>
+                      </Flex>
+                    </Select.Item>
+                  </Select.Content>
+                </Select.Root>
+              </Flex>
+            </Flex>
           </Box>
         </Tabs.Content>
       </Tabs.Root>

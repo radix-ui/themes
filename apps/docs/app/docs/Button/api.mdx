@@ -1,10 +1,18 @@
-import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge } from '@kushagradhawan/kookie-ui';
+import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge, Section, Separator } from '@kushagradhawan/kookie-ui';
 import { ChevronDown, Dot, Check, ChevronRight } from 'lucide-react';
-import { CodeBlock } from '../../components/CodeBlock';
+import { CodeBlock } from '../../components/code-block';
 
-# API
+<Section>
+  
+  # API
 
-Use the Button component to trigger actions throughout your application. The component provides six visual variants to match your interface context, four sizes for different interface densities, and built-in tooltips for enhanced user guidance. The component automatically handles icon sizing, supports responsive layouts, and provides accessibility compliance out of the box.
+  Use the Button component to trigger actions throughout your application. The component provides six visual variants to match your interface context, four sizes for different interface densities, and built-in tooltips for enhanced user guidance. **The component automatically handles icon sizing**, supports responsive layouts, and provides accessibility compliance out of the box.
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Import
 
@@ -13,12 +21,21 @@ Use the Button component to trigger actions throughout your application. The com
 ```tsx
 import { Button } from '@kushagradhawan/kookie-ui';
 ```
-
 </CodeBlock>
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Props
 
-<Box my="8">
+<Callout.Root variant="surface" size="3" color="amber" highContrast mb="9">
+  <Callout.Text>The `panelBackground` prop is deprecated and will be removed in a future version. Use the `material` prop instead for controlling visual rendering.</Callout.Text>
+</Callout.Root>
+
+<Box>
   <Table.Root size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
@@ -72,26 +89,6 @@ import { Button } from '@kushagradhawan/kookie-ui';
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`tooltip`</Table.RowHeaderCell>
-        <Table.Cell>`ReactNode`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`tooltipSide`</Table.RowHeaderCell>
-        <Table.Cell>`'top' | 'right' | 'bottom' | 'left'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`tooltipAlign`</Table.RowHeaderCell>
-        <Table.Cell>`'start' | 'center' | 'end'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`tooltipDelayDuration`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`tooltipDisableHoverableContent`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
         <Table.RowHeaderCell>`as`</Table.RowHeaderCell>
         <Table.Cell>`ElementType`</Table.Cell>
       </Table.Row>
@@ -103,13 +100,19 @@ import { Button } from '@kushagradhawan/kookie-ui';
   </Table.Root>
 </Box>
 
-<Callout.Root variant="soft" size="3" color="gray" mb="6">
-  <Callout.Text>The `panelBackground` prop is deprecated and will be removed in a future version. Use the `material` prop instead for controlling visual rendering.</Callout.Text>
+<Callout.Root variant="surface" size="3" color="gray" highContrast mt="9">
+  <Callout.Text>The Button component includes comprehensive tooltip props for enhanced user guidance. These props allow you to customize tooltip content, positioning, timing, and behavior.</Callout.Text>
 </Callout.Root>
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Variants
 
-Use the `variant` prop to select the visual style that best matches your interface context. Use `solid` for primary actions that users should notice first, `outline` for secondary actions that support the primary action, and `ghost` for utility functions that don't compete for attention. Reserve `classic` for premium experiences where you want to convey sophistication. For content-heavy interfaces, prefer `soft` and `surface` variants as they integrate more naturally with surrounding content.
+Use the `variant` prop to select the visual style that best matches your interface context. Use `solid` for primary actions, `outline` for secondary actions, and `ghost` for utility functions. Reserve `classic` for elevated experiences. For content-heavy interfaces, prefer `soft` and `surface` variants.
 
 <CodeBlock
   preview={
@@ -145,11 +148,15 @@ Use the `variant` prop to select the visual style that best matches your interfa
 
 </CodeBlock>
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Sizes
 
-Use the `size` prop to select the button size that matches your interface density. Use size `1` (24px) for toolbars and dense interfaces where space is limited, size `2` (32px) for standard interface contexts, size `3` (40px) for important actions and calls-to-action, and size `4` (48px) for hero sections where you want maximum visual impact. For mobile interfaces, prefer size `3` or `4` to ensure adequate touch targets.
-
-The `size` prop supports responsive objects to adapt button sizing across different breakpoints. Use the format `{ initial: '1', sm: '2', md: '3', lg: '4' }` for responsive sizing.
+Use the `size` prop to select the button size that matches your interface density. Use size `1` (24px) for dense interfaces, size `2` (32px) for standard contexts, size `3` (40px) for important actions, and size `4` (48px) for hero sections. For mobile, prefer size `3` or `4` for adequate touch targets. The `size` prop supports responsive objects: `{ initial: '1', sm: '2', md: '3', lg: '4' }`.
 
 <CodeBlock
   preview={
@@ -177,6 +184,12 @@ The `size` prop supports responsive objects to adapt button sizing across differ
 ```
 
 </CodeBlock>
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Colors
 
@@ -226,6 +239,12 @@ For elevated interfaces with translucent materials, always use `highContrast` to
 
 </CodeBlock>
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Material
 
 Use the `material` prop to control how buttons render their visual elements. Choose `solid` for opaque backgrounds and borders, or `translucent` for elevated effects that create depth and visual separation from the background.
@@ -237,7 +256,7 @@ For translucent effects to be visible, buttons must appear over images or dynami
 Buttons automatically inherit the theme's material setting. Wrap your interface in a `Theme` component to control material globally:
 
 <CodeBlock
-  background="https://images.unsplash.com/vector-1741379682511-1250c5feacd1?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1754973838312-c6bd180d22d5?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -267,7 +286,7 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 Override the theme's material setting for individual buttons when you need specific visual effects. Remember that translucent effects are only visible over backgrounds, and you should use `highContrast` with translucent materials to maintain readability.
 
 <CodeBlock
-  background="https://images.unsplash.com/vector-1741379682511-1250c5feacd1?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1754973838312-c6bd180d22d5?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -291,6 +310,12 @@ Override the theme's material setting for individual buttons when you need speci
 ```
 
 </CodeBlock>
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## States
 
@@ -372,6 +397,12 @@ Buttons automatically handle focus states for keyboard navigation. For complex U
 
 </CodeBlock>
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Layout
 
 ### Full Width
@@ -398,25 +429,35 @@ Set the `fullWidth` prop to `true` when you want the button to expand and fill i
 
 Set the `flush` prop to `true` with the `ghost` variant to remove visual padding for seamless text integration. This is useful when you want the button to appear as inline text while maintaining its interactive behavior.
 
-<CodeBlock
+<CodeBlock buttonsPosition="center"
   preview={
     <Flex direction="column" gap="3">
-      <Flex gap="2" align="center"><Button size="3" color="blue" variant="ghost">Learn</Button> about us.</Flex>
       <Flex gap="2" align="center"><Button size="3" color="blue" variant="ghost" flush>Learn</Button> about us.</Flex>
     </Flex>
   }
 >
 
 ```tsx
-<Flex gap="2" align="center"><Button size="3" color="blue" variant="ghost">Learn</Button> about us.</Flex>
 <Flex gap="2" align="center"><Button size="3" color="blue" variant="ghost" flush>Learn</Button> about us.</Flex>
 ```
 
 </CodeBlock>
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Margin
 
 Use margin props to control spacing around buttons. All margin props are responsive and support both design system tokens and CSS string values.
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Tooltips
 
@@ -441,6 +482,12 @@ Use the `tooltip` prop to provide additional context for button actions, especia
 ```
 
 </CodeBlock>
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Icons
 
@@ -479,6 +526,12 @@ For icon-only buttons, use `IconButton` instead:
 ```
 
 </CodeBlock>
+
+</Section>
+
+<Separator size="4" />
+
+<Section>
 
 ## Polymorphism
 
@@ -524,6 +577,12 @@ Use the `asChild` prop to merge button props with a child element using the Radi
 
 </CodeBlock>
 
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
 ## Responsive
 
 Use responsive objects with the `size` prop to adapt button sizing across different breakpoints. The component uses a mobile-first approach where each breakpoint applies styles at its minimum width and above.
@@ -548,7 +607,13 @@ Use responsive objects with the `size` prop to adapt button sizing across differ
 - `lg` - 1280px and above
 - `xl` - 1640px and above
 
-## Form Integration
+</Section>
+
+<Separator size="4" />
+
+<Section>
+
+## Form
 
 Use standard HTML form attributes to integrate buttons with forms. The component supports all form attributes for comprehensive form integration, including loading states for async operations and validation-based disabled states.
 
@@ -569,3 +634,5 @@ Use standard HTML form attributes to integrate buttons with forms. The component
 ```
 
 </CodeBlock>
+
+</Section>
