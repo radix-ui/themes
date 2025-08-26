@@ -6,7 +6,7 @@ import ButtonPlayground from './ButtonPlayground';
 import IconButtonPlayground from './IconButtonPlayground';
 import ToggleButtonPlayground from './ToggleButtonPlayground';
 import ToggleIconButtonPlayground from './ToggleIconButtonPlayground';
-import SelectPlayground from './SelectPlayground';
+import DialogPlayground from './DialogPlayground';
 
 export default function PlaygroundPage() {
   return (
@@ -41,7 +41,7 @@ export default function PlaygroundPage() {
             <ToggleIconButtonPlayground />
           </Flex>
 
-          <SelectPlayground />
+          <DialogPlayground />
         </Flex>
       </Container>
     </Section>
