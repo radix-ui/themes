@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+let bodyCleanupInstalled = false;
+
 /**
  * Hook to cleanup stuck pointer-events: none on document.body
  *
@@ -9,36 +11,71 @@ import * as React from 'react';
  */
 export function useBodyPointerEventsCleanup() {
   React.useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    let timeoutId: number | undefined;
+
+    const hasOpenModal = (): boolean => {
+      // Detect any open modal dialogs/alertdialogs
+      return Boolean(
+        document.querySelector(
+          '[role="dialog"][aria-modal="true"], [role="alertdialog"][aria-modal="true"]',
+        ),
+      );
+    };
+
     const cleanup = () => {
-      // Only intervene if body has pointer-events: none
-      if (document.body.style.pointerEvents === 'none') {
-        // Check if there are any actually open dialogs/overlays
-        const hasOpenDialogs = document.querySelector(
-          '[data-state="open"][role="dialog"], [data-state="open"][role="alertdialog"]',
-        );
-
-        if (!hasOpenDialogs) {
-          // Safe to restore pointer events
-          document.body.style.pointerEvents = '';
-        }
+      if (document.body.style.pointerEvents === 'none' && !hasOpenModal()) {
+        document.body.style.pointerEvents = '';
       }
     };
 
-    // Run cleanup after a small delay to allow for state transitions
-    const timeoutId = setTimeout(cleanup, 100);
-
-    // Also run cleanup on visibility change (tab switching)
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        setTimeout(cleanup, 100);
-      }
+    const scheduleCleanup = (delay = 50) => {
+      if (timeoutId) window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(cleanup, delay);
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    // Initial run to catch already-stuck state
+    scheduleCleanup(100);
 
+    // If already installed globally, don't re-register listeners/observers
+    if (bodyCleanupInstalled) {
+      return () => {
+        if (timeoutId) window.clearTimeout(timeoutId);
+      };
+    }
+
+    bodyCleanupInstalled = true;
+
+    const onPointer = () => scheduleCleanup(50);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') scheduleCleanup(50);
+    };
+    const onVisibility = () => {
+      if (!document.hidden) scheduleCleanup(50);
+    };
+    const onTransitionEnd = () => scheduleCleanup(0);
+    const onAnimationEnd = () => scheduleCleanup(0);
+
+    // Listen for common interactions that close overlays/menus
+    document.addEventListener('pointerup', onPointer, true);
+    document.addEventListener('click', onPointer, true);
+    document.addEventListener('keydown', onKey, true);
+    document.addEventListener('keyup', onKey, true);
+    document.addEventListener('visibilitychange', onVisibility);
+    document.addEventListener('transitionend', onTransitionEnd, true);
+    document.addEventListener('animationend', onAnimationEnd, true);
+
+    // Observe body style changes (where pointer-events is applied) and DOM mutations
+    const bodyObserver = new MutationObserver(() => scheduleCleanup(0));
+    bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+
+    const domObserver = new MutationObserver(() => scheduleCleanup(0));
+    domObserver.observe(document, { childList: true, subtree: true });
+
+    // Keep listeners/observers for the app lifetime to ensure cleanup even after overlays unmount
     return () => {
-      clearTimeout(timeoutId);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      if (timeoutId) window.clearTimeout(timeoutId);
     };
   }, []);
 }
