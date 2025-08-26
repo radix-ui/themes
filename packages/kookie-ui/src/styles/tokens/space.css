@@ -14,4 +14,7 @@
 
   /*  */
   --space-9: calc(64px * var(--scaling));
+  --space-10: calc(80px * var(--scaling));
+  --space-11: calc(96px * var(--scaling));
+  --space-12: calc(112px * var(--scaling));
 }

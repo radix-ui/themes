@@ -13,6 +13,9 @@
   
   /*  */
   --radius-9: calc(32px * var(--scaling) * var(--radius-factor));
+  --radius-10: calc(40px * var(--scaling) * var(--radius-factor));
+  --radius-11: calc(48px * var(--scaling) * var(--radius-factor));
+  --radius-12: calc(56px * var(--scaling) * var(--radius-factor));
 }
 
 

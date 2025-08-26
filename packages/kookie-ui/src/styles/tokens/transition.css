@@ -36,12 +36,12 @@
   --transition-spring-elastic: var(--motion-duration-medium) var(--motion-spring-elastic);
 
   /* Semantic motion tokens */
-  --motion-duration-micro: 75ms;   /* Micro-interactions (150–250ms) */
-  --motion-duration-small: 150ms;   /* Small UI changes (200–400ms) */
-  --motion-duration-medium: 250ms;  /* Medium/large changes (400–800ms) */
-  --motion-duration-large: 350ms;   /* Large movements (400–800ms) */
+  --motion-duration-micro: 75ms; /* Micro-interactions (150–250ms) */
+  --motion-duration-small: 150ms; /* Small UI changes (200–400ms) */
+  --motion-duration-medium: 250ms; /* Medium/large changes (400–800ms) */
+  --motion-duration-large: 350ms; /* Large movements (400–800ms) */
 
-  --motion-ease-standard: ease-in-out;     /* Most UI changes */
+  --motion-ease-standard: ease-in-out; /* Most UI changes */
   --motion-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); /* Material-like */
   --motion-ease-anticipate: cubic-bezier(0.36, 0, 0.66, -0.56);
   --motion-ease-follow: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -71,6 +71,7 @@
   --transition-button:
     background var(--motion-duration-small) var(--motion-ease-standard),
     box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    filter var(--motion-duration-small) var(--motion-ease-standard),
     backdrop-filter var(--motion-duration-small) var(--motion-ease-standard),
     transform var(--motion-duration-micro) var(--motion-spring-snappy),
     padding var(--motion-duration-micro) var(--motion-ease-standard);
@@ -120,19 +121,31 @@
     box-shadow var(--motion-duration-small) var(--motion-ease-standard),
     color var(--motion-duration-micro) var(--motion-ease-standard);
 
-  --transition-focus: outline var(--motion-duration-small) var(--motion-ease-standard), outline-offset var(--motion-duration-small) var(--motion-ease-standard);
+  --transition-focus:
+    outline var(--motion-duration-small) var(--motion-ease-standard),
+    outline-offset var(--motion-duration-small) var(--motion-ease-standard);
 
   /* Progress component transition */
   --transition-progress: transform var(--motion-duration-small) var(--motion-ease-standard);
 
   /* Accordion component transitions */
-  --transition-accordion-content: height var(--motion-duration-small) var(--motion-spring-snappy), opacity var(--motion-duration-small) var(--motion-spring-snappy), transform var(--motion-duration-small) var(--motion-spring-snappy);
-  --transition-accordion-trigger: background-color var(--motion-duration-small) var(--motion-spring-snappy), transform var(--motion-duration-micro) var(--motion-spring-snappy);
-  --transition-accordion-trigger-active: transform var(--motion-duration-micro) var(--motion-spring-bounce);
-  
+  --transition-accordion-content:
+    height var(--motion-duration-small) var(--motion-spring-snappy),
+    opacity var(--motion-duration-small) var(--motion-spring-snappy),
+    transform var(--motion-duration-small) var(--motion-spring-snappy);
+  --transition-accordion-trigger:
+    background-color var(--motion-duration-small) var(--motion-spring-snappy),
+    transform var(--motion-duration-micro) var(--motion-spring-snappy);
+  --transition-accordion-trigger-active: transform var(--motion-duration-micro)
+    var(--motion-spring-bounce);
+
   /* GPU-optimized spring transitions */
-  --transition-spring-gpu: transform var(--motion-duration-small) var(--motion-spring-snappy), opacity var(--motion-duration-small) var(--motion-spring-snappy);
-  --transition-spring-gpu-fast: transform var(--motion-duration-micro) var(--motion-spring-snappy), opacity var(--motion-duration-micro) var(--motion-spring-snappy);
+  --transition-spring-gpu:
+    transform var(--motion-duration-small) var(--motion-spring-snappy),
+    opacity var(--motion-duration-small) var(--motion-spring-snappy);
+  --transition-spring-gpu-fast:
+    transform var(--motion-duration-micro) var(--motion-spring-snappy),
+    opacity var(--motion-duration-micro) var(--motion-spring-snappy);
 }
 
 /* Respect user preference for reduced motion */

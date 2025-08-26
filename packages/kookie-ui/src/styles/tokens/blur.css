@@ -9,6 +9,9 @@
   --blur-7: calc(28px * var(--scaling) * var(--blur-factor));
   --blur-8: calc(36px * var(--scaling) * var(--blur-factor));
   --blur-9: calc(44px * var(--scaling) * var(--blur-factor));
+  --blur-10: calc(52px * var(--scaling) * var(--blur-factor));
+  --blur-11: calc(60px * var(--scaling) * var(--blur-factor));
+  --blur-12: calc(68px * var(--scaling) * var(--blur-factor));
 }
 
 [data-blur='none'] {

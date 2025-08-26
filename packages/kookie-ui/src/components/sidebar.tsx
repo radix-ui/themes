@@ -39,6 +39,22 @@ function useSidebarVisual() {
   return React.useContext(SidebarVisualContext);
 }
 
+// Context detection for Shell.Sidebar integration
+type ShellSidebarSectionContextValue = {
+  side: 'start' | 'end';
+  section: 'rail' | 'panel';
+};
+
+// Create a context that Shell.Sidebar can provide
+const ShellSidebarSectionContext = React.createContext<ShellSidebarSectionContextValue | null>(
+  null,
+);
+
+// This context comes from Shell.Sidebar when Sidebar is used within Shell
+function useShellSidebarSection(): ShellSidebarSectionContextValue | null {
+  return React.useContext(ShellSidebarSectionContext);
+}
+
 // Main Sidebar component
 type SidebarOwnProps = GetPropDefTypes<typeof sidebarPropDefs>;
 interface SidebarProps extends ComponentPropsWithout<'div', RemovedProps>, SidebarOwnProps {}
@@ -50,6 +66,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
     size = sidebarPropDefs.size.default,
     variant = sidebarPropDefs.variant.default,
     menuVariant = sidebarPropDefs.menuVariant.default,
+    layout = sidebarPropDefs.layout.default,
     // type = sidebarPropDefs.type.default,
     // side = sidebarPropDefs.side.default,
     // collapsible = sidebarPropDefs.collapsible.default,
@@ -61,6 +78,10 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
   const { className, children, ...rootProps } = extractProps(props, sidebarPropDefs);
   const { asChild: _, panelBackground: __, ...safeRootProps } = rootProps; // Remove asChild and panelBackground from DOM props
   const resolvedColor = color || themeContext.accentColor;
+
+  // Detect Shell.Sidebar context to auto-resolve layout
+  const shellSection = useShellSidebarSection();
+  const resolvedLayout = layout || shellSection?.section || 'panel'; // Default to 'panel' if no context
 
   // Update context with current props - we'll pass the resolved values
   const resolvedSize = typeof size === 'object' ? size.initial || '2' : size;
@@ -78,10 +99,12 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
             `rt-variant-${variant}`,
             `rt-r-size-${resolvedSize}`,
             `rt-menu-variant-${menuVariant}`,
+            resolvedLayout && `rt-layout-${resolvedLayout}`,
           )}
           data-accent-color={resolvedColor}
           data-high-contrast={highContrast || undefined}
           data-panel-background={panelBackground}
+          data-layout={resolvedLayout}
         >
           {children}
         </div>
@@ -592,4 +615,8 @@ export type {
   SidebarHeaderProps as HeaderProps,
   SidebarFooterProps as FooterProps,
   BadgeConfig,
+  ShellSidebarSectionContextValue,
 };
+
+// Export context for Shell.Sidebar integration
+export { ShellSidebarSectionContext };

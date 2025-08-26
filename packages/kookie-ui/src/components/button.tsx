@@ -5,6 +5,40 @@ import { BaseButton } from './_internal/base-button.js';
 import { Tooltip } from './tooltip.js';
 import type { BaseButtonProps } from './_internal/base-button.js';
 
+/**
+ * Styles that can be overridden for a particular interaction state
+ */
+interface ButtonOverrideStateStyles {
+  color?: string;
+  background?: string;
+  backgroundColor?: string;
+  boxShadow?: string;
+  filter?: string;
+  outline?: string;
+  outlineOffset?: string;
+  opacity?: string | number;
+}
+
+/**
+ * Full set of override styles keyed by interaction state
+ */
+interface ButtonOverrideStyles {
+  /** Default/idle state styles */
+  normal?: ButtonOverrideStateStyles;
+  /** Hover state styles */
+  hover?: ButtonOverrideStateStyles;
+  /** Active (mouse down) state styles */
+  active?: ButtonOverrideStateStyles;
+  /** Toggle pressed state styles (data-state="on") */
+  pressed?: ButtonOverrideStateStyles;
+  /** Open state styles (e.g., when used as a trigger) */
+  open?: ButtonOverrideStateStyles;
+  /** Disabled state styles */
+  disabled?: ButtonOverrideStateStyles;
+  /** Focus-visible outline styles */
+  focus?: Pick<ButtonOverrideStateStyles, 'outline' | 'outlineOffset'>;
+}
+
 type ButtonElement = React.ElementRef<typeof BaseButton>;
 
 /**
@@ -28,7 +62,14 @@ interface ButtonTooltipProps {
  * Core Button props excluding the 'as' prop for polymorphic behavior
  * Combines BaseButton props with tooltip functionality
  */
-type ButtonOwnProps = Omit<BaseButtonProps, 'as'> & ButtonTooltipProps;
+type ButtonOwnProps = Omit<BaseButtonProps, 'as'> &
+  ButtonTooltipProps & {
+    /**
+     * When using variant="override", provide token-based styles per state.
+     * We propagate these into CSS variables consumed by the override variant.
+     */
+    overrideStyles?: ButtonOverrideStyles;
+  };
 
 /**
  * Polymorphic Button props that support rendering as different HTML elements
@@ -79,6 +120,7 @@ const Button = React.forwardRef(
       tooltipAlign = 'center',
       tooltipDelayDuration,
       tooltipDisableHoverableContent,
+      overrideStyles,
       ...props
     }: ButtonProps,
     forwardedRef: React.ForwardedRef<ButtonElement>,
@@ -94,12 +136,47 @@ const Button = React.forwardRef(
     );
 
     // Create the base button element with tooltip accessibility props
+    // Map overrideStyles to CSS variables consumed by the override variant rules
+    const overrideVars = React.useMemo(() => {
+      if (!overrideStyles) return undefined;
+      const vars: Record<string, string | number> = {};
+      const setVar = (key: string, value: string | number | undefined) => {
+        if (value !== undefined) vars[key] = value;
+      };
+      const apply = (prefix: string, s?: ButtonOverrideStateStyles) => {
+        if (!s) return;
+        setVar(`--button-override-${prefix}color`, s.color);
+        setVar(`--button-override-${prefix}background`, s.background);
+        setVar(`--button-override-${prefix}background-color`, s.backgroundColor);
+        setVar(`--button-override-${prefix}box-shadow`, s.boxShadow);
+        setVar(`--button-override-${prefix}filter`, s.filter);
+        setVar(`--button-override-${prefix}outline`, s.outline);
+        setVar(`--button-override-${prefix}outline-offset`, s.outlineOffset);
+        setVar(`--button-override-${prefix}opacity`, s.opacity as any);
+      };
+
+      apply('', overrideStyles.normal);
+      apply('hover-', overrideStyles.hover);
+      apply('active-', overrideStyles.active);
+      apply('pressed-', overrideStyles.pressed);
+      apply('open-', overrideStyles.open);
+      apply('disabled-', overrideStyles.disabled);
+
+      if (overrideStyles.focus) {
+        setVar('--button-override-focus-outline', overrideStyles.focus.outline);
+        setVar('--button-override-focus-outline-offset', overrideStyles.focus.outlineOffset);
+      }
+
+      return vars as unknown as React.CSSProperties;
+    }, [overrideStyles]);
+
     const button = (
       <BaseButton
         {...props}
         {...tooltipAccessibilityProps}
         ref={forwardedRef}
         className={classNames('rt-Button', className)}
+        style={overrideVars ? { ...overrideVars, ...(props as any).style } : (props as any).style}
       />
     );
 
@@ -128,4 +205,4 @@ const Button = React.forwardRef(
 Button.displayName = 'Button';
 
 export { Button };
-export type { ButtonProps };
+export type { ButtonProps, ButtonOverrideStyles, ButtonOverrideStateStyles };

@@ -27,13 +27,13 @@
   /* Reset all inherited styles to ensure consistent base */
   all: unset;
   box-sizing: border-box;
-  
+
   /* Flexbox layout for content alignment */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  
+
   /* Interaction and accessibility */
   user-select: none;
   position: relative;
@@ -48,7 +48,7 @@
   text-align: center;
 
   /* RTL support for right-to-left languages */
-  :where([dir="rtl"]) & {
+  :where([dir='rtl']) & {
     flex-direction: row-reverse;
   }
 
@@ -72,7 +72,7 @@
     backdrop-filter: none;
     --backdrop-filter-components: none;
   }
-  
+
   &:where([data-panel-background='translucent'], [data-material='translucent']) {
     backdrop-filter: var(--backdrop-filter-components);
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
@@ -111,8 +111,6 @@
     position: relative;
     cursor: wait;
   }
-
-  /* Removed scale animation on press - keeping transition for other effects */
 
   /* 
    * Reduced motion support
@@ -153,29 +151,25 @@
      * Designed for toolbars and dense interfaces
      */
     &:where(.rt-r-size-1) {
-      --base-button-classic-active-padding-top: 1px;
       --base-button-height: var(--space-5);
       border-radius: max(var(--radius-1), var(--radius-full));
     }
-    
+
     /* 
      * Size 2: Standard (32px height)
      * Default size for most interface contexts
      */
     &:where(.rt-r-size-2) {
-      --base-button-classic-active-padding-top: 2px;
       --base-button-height: var(--space-6);
       border-radius: max(var(--radius-2), var(--radius-full));
     }
 
     &:where(.rt-r-size-3) {
-      --base-button-classic-active-padding-top: 2px;
       --base-button-height: var(--space-7);
       border-radius: max(var(--radius-3), var(--radius-full));
     }
-    
+
     &:where(.rt-r-size-4) {
-      --base-button-classic-active-padding-top: 2px;
       --base-button-height: var(--space-8);
       border-radius: max(var(--radius-4), var(--radius-full));
     }
@@ -192,7 +186,6 @@
 
 .rt-BaseButton:where(.rt-variant-classic) {
   position: relative;
-  top: var(--classic-elevation-offset);
   color: var(--accent-a11);
   background-color: var(--color-surface-solid);
   box-shadow: var(--shadow-2);
@@ -282,7 +275,10 @@
     /* Dark mode uses same styling as light mode for simplicity */
   }
 
-  &:where(:active:not([data-state='open'], [data-disabled]), [data-state='on']:not([data-disabled])) {
+  &:where(
+      :active:not([data-state='open'], [data-disabled]),
+      [data-state='on']:not([data-disabled])
+    ) {
     background-color: var(--gray-3);
     box-shadow: var(--shadow-1);
 
@@ -319,14 +315,128 @@
   }
 }
 
+/* override */
+
+.rt-BaseButton:where(.rt-variant-override) {
+  /* Base styles driven entirely by CSS variables, set via props */
+  color: var(--button-override-color, inherit);
+  background: var(--button-override-background, transparent);
+  background-color: var(--button-override-background-color, initial);
+  box-shadow: var(--button-override-box-shadow, none);
+  filter: var(--button-override-filter, none);
+  outline: var(--button-override-outline, none);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      color: var(--button-override-hover-color, var(--button-override-color, inherit));
+      background: var(
+        --button-override-hover-background,
+        var(--button-override-background, transparent)
+      );
+      background-color: var(
+        --button-override-hover-background-color,
+        var(--button-override-background-color, initial)
+      );
+      box-shadow: var(--button-override-hover-box-shadow, var(--button-override-box-shadow, none));
+      filter: var(--button-override-hover-filter, var(--button-override-filter, none));
+      outline: var(--button-override-hover-outline, var(--button-override-outline, none));
+    }
+  }
+
+  &:where([data-state='open']) {
+    color: var(--button-override-open-color, var(--button-override-color, inherit));
+    background: var(
+      --button-override-open-background,
+      var(--button-override-background, transparent)
+    );
+    background-color: var(
+      --button-override-open-background-color,
+      var(--button-override-background-color, initial)
+    );
+    box-shadow: var(--button-override-open-box-shadow, var(--button-override-box-shadow, none));
+    filter: var(--button-override-open-filter, var(--button-override-filter, none));
+    outline: var(--button-override-open-outline, var(--button-override-outline, none));
+  }
+
+  &:where(:active:not([data-state='open'])) {
+    color: var(--button-override-active-color, var(--button-override-color, inherit));
+    background: var(
+      --button-override-active-background,
+      var(--button-override-background, transparent)
+    );
+    background-color: var(
+      --button-override-active-background-color,
+      var(--button-override-background-color, initial)
+    );
+    box-shadow: var(--button-override-active-box-shadow, var(--button-override-box-shadow, none));
+    filter: var(--button-override-active-filter, var(--button-override-filter, none));
+    outline: var(--button-override-active-outline, var(--button-override-outline, none));
+  }
+
+  &:where(:focus-visible) {
+    outline: var(--button-override-focus-outline, var(--focus-ring, 2px solid var(--focus-8)));
+    outline-offset: var(--button-override-focus-outline-offset, 2px);
+  }
+
+  /* Toggle pressed */
+  &:where([data-state='on']) {
+    color: var(
+      --button-override-pressed-color,
+      var(--button-override-active-color, var(--button-override-color, inherit))
+    );
+    background: var(
+      --button-override-pressed-background,
+      var(--button-override-active-background, var(--button-override-background, transparent))
+    );
+    background-color: var(
+      --button-override-pressed-background-color,
+      var(
+        --button-override-active-background-color,
+        var(--button-override-background-color, initial)
+      )
+    );
+    box-shadow: var(
+      --button-override-pressed-box-shadow,
+      var(--button-override-active-box-shadow, var(--button-override-box-shadow, none))
+    );
+    filter: var(
+      --button-override-pressed-filter,
+      var(--button-override-active-filter, var(--button-override-filter, none))
+    );
+    outline: var(
+      --button-override-pressed-outline,
+      var(--button-override-active-outline, var(--button-override-outline, none))
+    );
+  }
+
+  &:where([data-disabled]) {
+    color: var(--button-override-disabled-color, var(--gray-a8));
+    background: var(--button-override-disabled-background, var(--gray-a3));
+    background-color: var(--button-override-disabled-background-color, var(--gray-a3));
+    box-shadow: var(--button-override-disabled-box-shadow, none);
+    filter: var(--button-override-disabled-filter, none);
+    outline: var(--button-override-disabled-outline, none);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
 /* solid */
 
 :where(.radix-themes) {
   --base-button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
+  --base-button-solid-active-filter: brightness(0.9) contrast(1.03);
+  --base-button-solid-open-filter: brightness(0.96) contrast(1.02);
+  --base-button-solid-high-contrast-active-filter: brightness(0.92);
+  --base-button-solid-high-contrast-open-filter: brightness(0.96);
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
   --base-button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.3) brightness(1.18);
+  --base-button-solid-active-filter: brightness(0.88) contrast(1.03);
+  --base-button-solid-open-filter: brightness(0.95) contrast(1.02);
+  --base-button-solid-high-contrast-active-filter: brightness(0.9);
+  --base-button-solid-high-contrast-open-filter: brightness(0.95);
 }
 
 .rt-BaseButton:where(.rt-variant-solid) {
@@ -351,7 +461,8 @@
   @media (hover: hover) {
     &:where(:hover) {
       background-color: var(--accent-10);
-      
+      box-shadow: var(--shadow-2);
+
       /* Theme-level translucent override for hover */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
@@ -369,7 +480,9 @@
   }
   &:where([data-state='open']) {
     background-color: var(--accent-10);
-    
+    filter: var(--base-button-solid-open-filter);
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for open */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
@@ -385,21 +498,8 @@
     }
   }
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-11);
-    
-    /* Theme-level translucent override for active */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a11), var(--accent-11) 10%);
-    }
-
-    /* Component-level overrides for active */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-11);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a11), var(--accent-11) 10%);
-    }
+    filter: var(--base-button-solid-active-filter);
+    box-shadow: var(--shadow-1);
   }
   /* Better -webkit-tap-highlight-color */
   @media (pointer: coarse) {
@@ -434,6 +534,7 @@
       &:where(:hover) {
         background-color: var(--accent-12);
         filter: var(--base-button-solid-high-contrast-hover-filter);
+        box-shadow: var(--shadow-2);
 
         /* Theme-level translucent override for high contrast hover */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
@@ -452,7 +553,8 @@
     }
     &:where([data-state='open']) {
       background-color: var(--accent-12);
-      filter: var(--base-button-solid-high-contrast-hover-filter);
+      filter: var(--base-button-solid-high-contrast-open-filter);
+      box-shadow: var(--shadow-1);
 
       /* Theme-level translucent override for high contrast open */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
@@ -469,22 +571,8 @@
       }
     }
     &:where(:active:not([data-state='open'])) {
-      background-color: var(--accent-11);
       filter: var(--base-button-solid-high-contrast-active-filter);
-
-      /* Theme-level translucent override for high contrast active */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a11), var(--accent-11) 10%);
-      }
-
-      /* Component-level overrides for high contrast active */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-11);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a11), var(--accent-11) 10%);
-      }
+      box-shadow: var(--shadow-1);
     }
   }
   &:where([data-disabled]) {
@@ -538,7 +626,8 @@
   @media (hover: hover) {
     &:where(:hover) {
       background-color: var(--accent-4);
-      
+      box-shadow: var(--shadow-2);
+
       /* Theme-level translucent override for hover */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
@@ -556,7 +645,8 @@
   }
   &:where([data-state='open']) {
     background-color: var(--accent-4);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for open */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
@@ -573,7 +663,8 @@
   }
   &:where(:active:not([data-state='open'])) {
     background-color: var(--accent-5);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for active */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
@@ -633,7 +724,7 @@
     &:where(:hover) {
       /* Base state: solid accent for solid panels */
       background-color: var(--accent-3);
-      
+
       /* Theme-level translucent override for hover */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
@@ -661,7 +752,8 @@
   &:where([data-state='open']) {
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-3);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for open */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
@@ -685,7 +777,8 @@
   &:where(:active:not([data-state='open'])) {
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-4);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for active */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
@@ -742,7 +835,7 @@
     &:where(:hover) {
       background-color: var(--accent-2);
       box-shadow: inset 0 0 0 1px var(--accent-7);
-      
+
       /* Theme-level translucent override for hover */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
@@ -763,8 +856,10 @@
   }
   &:where([data-state='open']) {
     background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 1px var(--accent-7);
-    
+    box-shadow:
+      inset 0 0 0 1px var(--accent-7),
+      var(--shadow-1);
+
     /* Theme-level translucent override for open */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
@@ -784,8 +879,10 @@
   }
   &:where(:active:not([data-state='open'])) {
     background-color: var(--accent-3);
-    box-shadow: inset 0 0 0 1px var(--accent-8);
-    
+    box-shadow:
+      inset 0 0 0 1px var(--accent-8),
+      var(--shadow-1);
+
     /* Theme-level translucent override for active */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
@@ -849,7 +946,7 @@
     &:where(:hover) {
       background-color: var(--accent-3);
       box-shadow: inset 0 0 0 1px var(--accent-7);
-      
+
       /* Theme-level translucent override for hover */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
@@ -870,8 +967,10 @@
   }
   &:where([data-state='open']) {
     background-color: var(--accent-3);
-    box-shadow: inset 0 0 0 1px var(--accent-8);
-    
+    box-shadow:
+      inset 0 0 0 1px var(--accent-8),
+      var(--shadow-1);
+
     /* Theme-level translucent override for open */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
@@ -891,8 +990,10 @@
   }
   &:where(:active:not([data-state='open'])) {
     background-color: var(--accent-4);
-    box-shadow: inset 0 0 0 1px var(--accent-8);
-    
+    box-shadow:
+      inset 0 0 0 1px var(--accent-8),
+      var(--shadow-1);
+
     /* Theme-level translucent override for active */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
@@ -940,7 +1041,7 @@
   &:where(.rt-variant-classic) {
     background-color: var(--gray-3);
     box-shadow: var(--shadow-1);
-    
+
     /* Theme-level translucent override for pressed */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -960,8 +1061,8 @@
   &:where(.rt-variant-solid) {
     background-color: var(--accent-10);
     opacity: 0.9;
-    transform: translateY(1px);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for pressed */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
@@ -979,14 +1080,14 @@
     &:where(.rt-high-contrast) {
       background-color: var(--accent-12);
       opacity: 0.85;
-      transform: translateY(1px);
     }
   }
 
   /* Soft variant pressed */
   &:where(.rt-variant-soft) {
     background-color: var(--accent-5);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for pressed */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
@@ -1005,7 +1106,8 @@
   /* Ghost variant pressed */
   &:where(.rt-variant-ghost) {
     background-color: var(--accent-4);
-    
+    box-shadow: var(--shadow-1);
+
     /* Theme-level translucent override for pressed */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: var(--accent-a4);
@@ -1024,8 +1126,10 @@
   /* Outline variant pressed */
   &:where(.rt-variant-outline) {
     background-color: var(--accent-3);
-    box-shadow: inset 0 0 0 1px var(--accent-8);
-    
+    box-shadow:
+      inset 0 0 0 1px var(--accent-8),
+      var(--shadow-1);
+
     /* Theme-level translucent override for pressed */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
@@ -1047,8 +1151,10 @@
   /* Surface variant pressed */
   &:where(.rt-variant-surface) {
     background-color: var(--accent-4);
-    box-shadow: inset 0 0 0 1px var(--accent-8);
-    
+    box-shadow:
+      inset 0 0 0 1px var(--accent-8),
+      var(--shadow-1);
+
     /* Theme-level translucent override for pressed */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);

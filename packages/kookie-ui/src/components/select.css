@@ -116,6 +116,15 @@
   &:where([data-disabled]) {
     cursor: default;
   }
+
+  /* Allow rich content to expand height */
+  &:where(.rt-SelectItemRich) {
+    height: auto;
+    min-height: var(--select-item-height);
+    align-items: flex-start;
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+  }
 }
 
 .rt-SelectItemIndicator {

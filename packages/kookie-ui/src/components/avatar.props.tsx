@@ -5,7 +5,7 @@ import { radiusPropDef } from '../props/radius.prop.js';
 
 import type { PropDef } from '../props/prop-def.js';
 
-const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'] as const;
 const variants = ['classic', 'solid', 'soft', 'surface', 'outline'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
 const materials = ['solid', 'translucent'] as const;

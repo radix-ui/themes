@@ -32,6 +32,15 @@
   .rt-r-gap-9 {
     gap: var(--space-9);
   }
+  .rt-r-gap-10 {
+    gap: var(--space-10);
+  }
+  .rt-r-gap-11 {
+    gap: var(--space-11);
+  }
+  .rt-r-gap-12 {
+    gap: var(--space-12);
+  }
   .rt-r-cg {
     /* Keep this selector here to maintain the source order */
   }
@@ -65,6 +74,15 @@
   .rt-r-cg-9 {
     column-gap: var(--space-9);
   }
+  .rt-r-cg-10 {
+    column-gap: var(--space-10);
+  }
+  .rt-r-cg-11 {
+    column-gap: var(--space-11);
+  }
+  .rt-r-cg-12 {
+    column-gap: var(--space-12);
+  }
   .rt-r-rg {
     /* Keep this selector here to maintain the source order */
   }
@@ -97,6 +115,15 @@
   }
   .rt-r-rg-9 {
     row-gap: var(--space-9);
+  }
+  .rt-r-rg-10 {
+    row-gap: var(--space-10);
+  }
+  .rt-r-rg-11 {
+    row-gap: var(--space-11);
+  }
+  .rt-r-rg-12 {
+    row-gap: var(--space-12);
   }
 }
 

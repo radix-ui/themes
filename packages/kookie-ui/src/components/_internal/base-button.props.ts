@@ -23,7 +23,7 @@ const sizes = ['1', '2', '3', '4'] as const;
  * - outline: Secondary actions that support primary actions
  * - ghost: Utility functions that don't compete for attention
  */
-const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
+const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost', 'override'] as const;
 
 /**
  * Available panel background options (deprecated)

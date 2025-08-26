@@ -253,11 +253,14 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
   // Attachments state
-  const isAttachmentsControlled = attachmentsProp != null;
+  // Treat `attachments` as controlled if the prop is provided, even if its value is `undefined`.
+  // This avoids switching between controlled and uncontrolled when a consumer sets
+  // `attachments={undefined}` to clear attachments. In that case we normalize to an empty array.
+  const isAttachmentsControlled = 'attachments' in props;
   const [attachmentsUncontrolled, setAttachmentsUncontrolled] =
     React.useState<ChatbarAttachment[]>(defaultAttachments);
   const attachments = isAttachmentsControlled
-    ? (attachmentsProp as ChatbarAttachment[])
+    ? ((attachmentsProp ?? []) as ChatbarAttachment[])
     : attachmentsUncontrolled;
 
   // Track generated object URLs for cleanup

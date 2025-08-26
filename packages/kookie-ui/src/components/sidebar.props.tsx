@@ -19,6 +19,7 @@ const menuVariants = ['solid', 'soft'] as const;
 const types = ['sidebar', 'floating'] as const;
 const sides = ['left', 'right'] as const;
 const collapsibleModes = ['offcanvas', 'icon', 'none'] as const;
+const layouts = ['rail', 'panel'] as const;
 
 const sidebarPropDefs = {
   ...asChildPropDef,
@@ -38,6 +39,7 @@ const sidebarPropDefs = {
     values: collapsibleModes,
     default: 'offcanvas',
   },
+  layout: { type: 'enum', className: 'rt-layout', values: layouts, default: undefined },
   panelBackground: { type: 'enum', values: ['solid', 'translucent'], default: undefined },
   ...colorPropDef,
   ...highContrastPropDef,
@@ -48,6 +50,7 @@ const sidebarPropDefs = {
   type: PropDef<(typeof types)[number]>;
   side: PropDef<(typeof sides)[number]>;
   collapsible: PropDef<(typeof collapsibleModes)[number]>;
+  layout: PropDef<(typeof layouts)[number]>;
   panelBackground: PropDef<'solid' | 'translucent'>;
 };
 

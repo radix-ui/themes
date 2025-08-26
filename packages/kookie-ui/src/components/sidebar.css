@@ -3,15 +3,20 @@
 @import './_internal/base-sidebar-menu.css';
 
 /*
-  Compact rail presentation
-  - Pattern B (split): scope to .rt-ShellSidebarRail
-  - Pattern A (single): scope to Shell region in rail state
+  Layout-specific presentation
+  - Rail layout: compact, icon-focused
+  - Panel layout: full-width with text labels
+  - Context-aware: works with Shell.Sidebar or standalone
 */
+
+/* Rail Layout Styling */
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarContent),
 .rt-ShellSidebarRail :where(.rt-SidebarContent),
 :where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarContent) {
   padding: var(--space-2);
 }
 
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuButton),
 .rt-ShellSidebarRail :where(.rt-SidebarMenuButton),
 :where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuButton) {
   justify-content: center;
@@ -21,6 +26,8 @@
   padding: var(--space-2) var(--space-1);
 }
 
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuBadge),
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuShortcut),
 .rt-ShellSidebarRail :where(.rt-SidebarMenuBadge),
 .rt-ShellSidebarRail :where(.rt-SidebarMenuShortcut),
 :where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuBadge),
@@ -28,6 +35,7 @@
   display: none;
 }
 
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarGroupLabel),
 .rt-ShellSidebarRail :where(.rt-SidebarGroupLabel),
 :where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarGroupLabel) {
   display: block;
@@ -39,17 +47,21 @@
 }
 
 /* Hide submenu chevrons and flatten sublists in rail */
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuSubTriggerIcon),
 .rt-ShellSidebarRail :where(.rt-SidebarMenuSubTriggerIcon),
 :where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuSubTriggerIcon) {
   display: none;
 }
 
+:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuSubList),
 .rt-ShellSidebarRail :where(.rt-SidebarMenuSubList),
 :where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuSubList) {
   padding-left: 0;
   border-left: none;
   margin-left: 0;
 }
+
+/* Panel Layout Styling (default) - inherits existing styles */
 
 /* Note: label styling omitted to avoid type-selector-specificity; use Text component for fine control */
 

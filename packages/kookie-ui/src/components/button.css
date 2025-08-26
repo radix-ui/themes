@@ -18,18 +18,6 @@
  * Button-specific styles that extend the base button
  * These styles handle icon opacity and specialized behaviors
  */
-.rt-Button {
-  &:where(:not(.rt-variant-ghost)) {
-    /* 
-     * Reduce icon opacity slightly for better visual hierarchy
-     * This creates a subtle distinction between icons and text
-     */
-    /* stylelint-disable-next-line selector-max-type */
-    & :where(svg) {
-      opacity: 0.9;
-    }
-  }
-}
 
 /***************************************************************************************************
  *                                                                                                 *
@@ -83,7 +71,7 @@
         padding-left: var(--space-2);
         padding-right: var(--space-2);
       }
-      
+
       /* 
        * Ghost variant padding for size 1
        * Reduced padding creates seamless text integration
@@ -94,7 +82,7 @@
         --button-ghost-padding-y: var(--space-1);
       }
     }
-    
+
     /* 
      * Size 2: Standard (32px height)
      * Default size for most interface contexts and general use
@@ -117,7 +105,7 @@
         padding-left: var(--space-3);
         padding-right: var(--space-3);
       }
-      
+
       /* Ghost variant padding for size 2 */
       &:where(.rt-variant-ghost) {
         gap: var(--component-gap-ghost-2);
@@ -125,7 +113,7 @@
         --button-ghost-padding-y: var(--space-1);
       }
     }
-    
+
     /* 
      * Size 3: Large (40px height)
      * Recommended for important actions and mobile touch targets
@@ -148,7 +136,7 @@
         padding-left: var(--space-4);
         padding-right: var(--space-4);
       }
-      
+
       /* Ghost variant padding for size 3 */
       &:where(.rt-variant-ghost) {
         gap: var(--component-gap-ghost-3);
@@ -156,7 +144,7 @@
         --button-ghost-padding-y: calc(var(--space-1) * 1.5);
       }
     }
-    
+
     /* 
      * Size 4: Extra Large (48px height)
      * Designed for hero sections and maximum visual impact
@@ -176,10 +164,14 @@
 
       /* Standard padding for non-ghost variants */
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-5);
-        padding-right: var(--space-5);
+        /**
+         * HACK: This padding calculation adds 4px to the space-4 token for better visual balance at size 4.
+         * This is a temporary workaround and should be replaced with a proper tokenized solution.
+         */
+        padding-left: calc(var(--space-4) + (4px * var(--scaling)));
+        padding-right: calc(var(--space-4) + (4px * var(--scaling)));
       }
-      
+
       /* Ghost variant padding for size 4 */
       &:where(.rt-variant-ghost) {
         gap: var(--component-gap-ghost-4);

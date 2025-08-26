@@ -8,6 +8,7 @@ import { Text } from './text.js';
 import { Theme } from './theme.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
+import { useBodyPointerEventsCleanup } from '../hooks/use-body-pointer-events-cleanup.js';
 
 import type { DialogContentOwnProps } from './dialog.props.js';
 import type {
@@ -92,6 +93,9 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
       },
       [forwardedRef],
     );
+
+    // Cleanup stuck pointer-events on body
+    useBodyPointerEventsCleanup();
 
     // Focus trap effect
     React.useEffect(() => {

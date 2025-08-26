@@ -38,6 +38,15 @@
   .rt-r-p-9 {
     padding: var(--space-9);
   }
+  .rt-r-p-10 {
+    padding: var(--space-10);
+  }
+  .rt-r-p-11 {
+    padding: var(--space-11);
+  }
+  .rt-r-p-12 {
+    padding: var(--space-12);
+  }
   .rt-r-p-inset {
     padding-top: var(--inset-padding-top);
     padding-right: var(--inset-padding-right);
@@ -124,6 +133,18 @@
   .rt-r-px-9 {
     padding-left: var(--space-9);
     padding-right: var(--space-9);
+  }
+  .rt-r-px-10 {
+    padding-left: var(--space-10);
+    padding-right: var(--space-10);
+  }
+  .rt-r-px-11 {
+    padding-left: var(--space-11);
+    padding-right: var(--space-11);
+  }
+  .rt-r-px-12 {
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
   }
   .rt-r-px-inset {
     padding-left: var(--inset-padding-left);
@@ -216,6 +237,18 @@
     padding-top: var(--space-9);
     padding-bottom: var(--space-9);
   }
+  .rt-r-py-10 {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+  .rt-r-py-11 {
+    padding-top: var(--space-11);
+    padding-bottom: var(--space-11);
+  }
+  .rt-r-py-12 {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
   .rt-r-py-inset {
     padding-top: var(--inset-padding-top);
     padding-bottom: var(--inset-padding-bottom);
@@ -297,6 +330,15 @@
   .rt-r-pt-9 {
     padding-top: var(--space-9);
   }
+  .rt-r-pt-10 {
+    padding-top: var(--space-10);
+  }
+  .rt-r-pt-11 {
+    padding-top: var(--space-11);
+  }
+  .rt-r-pt-12 {
+    padding-top: var(--space-12);
+  }
   .rt-r-pt-inset {
     padding-top: var(--inset-padding-top);
   }
@@ -370,6 +412,15 @@
   }
   .rt-r-pr-9 {
     padding-right: var(--space-9);
+  }
+  .rt-r-pr-10 {
+    padding-right: var(--space-10);
+  }
+  .rt-r-pr-11 {
+    padding-right: var(--space-11);
+  }
+  .rt-r-pr-12 {
+    padding-right: var(--space-12);
   }
   .rt-r-pr-inset {
     padding-right: var(--inset-padding-right);
@@ -445,6 +496,15 @@
   .rt-r-pb-9 {
     padding-bottom: var(--space-9);
   }
+  .rt-r-pb-10 {
+    padding-bottom: var(--space-10);
+  }
+  .rt-r-pb-11 {
+    padding-bottom: var(--space-11);
+  }
+  .rt-r-pb-12 {
+    padding-bottom: var(--space-12);
+  }
   .rt-r-pb-inset {
     padding-bottom: var(--inset-padding-bottom);
   }
@@ -518,6 +578,15 @@
   }
   .rt-r-pl-9 {
     padding-left: var(--space-9);
+  }
+  .rt-r-pl-10 {
+    padding-left: var(--space-10);
+  }
+  .rt-r-pl-11 {
+    padding-left: var(--space-11);
+  }
+  .rt-r-pl-12 {
+    padding-left: var(--space-12);
   }
   .rt-r-pl-inset {
     padding-left: var(--inset-padding-left);

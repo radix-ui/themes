@@ -189,12 +189,22 @@ interface SelectItemProps
   extends ComponentPropsWithout<typeof SelectPrimitive.Item, RemovedProps> {}
 const SelectItem = React.forwardRef<SelectItemElement, SelectItemProps>((props, forwardedRef) => {
   const { className, children, ...itemProps } = props;
+
+  // Detect if this is rich content (not just a string)
+  const isRichContent = typeof children !== 'string';
+
   return (
     <SelectPrimitive.Item
       {...itemProps}
       asChild={false}
       ref={forwardedRef}
-      className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-SelectItem', className)}
+      className={classNames(
+        'rt-reset',
+        'rt-BaseMenuItem',
+        'rt-SelectItem',
+        { 'rt-SelectItemRich': isRichContent },
+        className,
+      )}
     >
       <SelectPrimitive.ItemIndicator className="rt-SelectItemIndicator">
         <ThickCheckIcon className="rt-SelectItemIndicatorIcon" />

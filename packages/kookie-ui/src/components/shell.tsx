@@ -34,6 +34,9 @@ import { ChevronDownIcon } from './icons.js';
 import { inert } from '../helpers/inert.js';
 import * as Sheet from './sheet.js';
 import { VisuallyHidden } from './visually-hidden.js';
+import { ShellSidebarSectionContext } from './sidebar.js';
+
+import type { ShellSidebarSectionContextValue } from './sidebar.js';
 
 /** Logical document direction. Derived from document root unless `rtl` is passed. */
 type ShellDirection = 'ltr' | 'rtl';
@@ -508,7 +511,21 @@ const Rail = Object.assign(
       [shell, side],
     );
 
-    return <RailContext.Provider value={railContext}>{children}</RailContext.Provider>;
+    const sidebarSectionContext = React.useMemo<ShellSidebarSectionContextValue>(
+      () => ({
+        side,
+        section: 'rail',
+      }),
+      [side],
+    );
+
+    return (
+      <RailContext.Provider value={railContext}>
+        <ShellSidebarSectionContext.Provider value={sidebarSectionContext}>
+          {children}
+        </ShellSidebarSectionContext.Provider>
+      </RailContext.Provider>
+    );
   }),
   { displayName: 'Shell.Sidebar.Rail', __shellSlot: 'rail' as const },
 );
@@ -530,7 +547,21 @@ const Panel = Object.assign(
       [shell.activeToolBySide, shell.activeContextBySide, side],
     );
 
-    return <PanelContext.Provider value={panelContext}>{children}</PanelContext.Provider>;
+    const sidebarSectionContext = React.useMemo<ShellSidebarSectionContextValue>(
+      () => ({
+        side,
+        section: 'panel',
+      }),
+      [side],
+    );
+
+    return (
+      <PanelContext.Provider value={panelContext}>
+        <ShellSidebarSectionContext.Provider value={sidebarSectionContext}>
+          {children}
+        </ShellSidebarSectionContext.Provider>
+      </PanelContext.Provider>
+    );
   }),
   { displayName: 'Shell.Sidebar.Panel', __shellSlot: 'panel' as const },
 );
@@ -935,7 +966,7 @@ const Trigger = React.forwardRef<React.ElementRef<typeof IconButton>, GlobalTrig
       <IconButton
         {...props}
         ref={ref}
-        variant="soft"
+        variant="ghost"
         aria-controls={controlsId}
         aria-expanded={expanded}
         onClick={(e) => {
