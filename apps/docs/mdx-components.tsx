@@ -5,6 +5,7 @@ import {
   Code,
   Blockquote,
   Link,
+  Flex,
   Separator,
   Box,
   Strong,
@@ -20,32 +21,38 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
-      <Heading as="h1" size="9" mb="9" weight="medium">
-        {children}
-      </Heading>
+      <Flex direction="column" gap="8" mb="8" mt="2">
+        <Heading as="h1" size="9" weight="medium">
+          {children}
+        </Heading>
+        <Separator size="4" />
+      </Flex>
     ),
     h2: ({ children }) => (
-      <Heading as="h2" size="8" mb="8" weight="medium">
-        {children}
-      </Heading>
+      <Flex direction="column" gap="4" mb="7" mt="2">
+        <Heading as="h2" size="8" weight="medium">
+          {children}
+        </Heading>
+        <Separator size="4" />
+      </Flex>
     ),
     h3: ({ children }) => (
-      <Heading as="h3" size="7" mt="9" mb="7" weight="medium">
+      <Heading as="h3" size="7" mt="9" mb="5" weight="medium">
         {children}
       </Heading>
     ),
     h4: ({ children }) => (
-      <Heading as="h4" size="4" mb="6" weight="medium">
+      <Heading as="h4" size="4" mb="5" weight="medium">
         {children}
       </Heading>
     ),
     h5: ({ children }) => (
-      <Heading as="h5" size="3" mb="5" weight="medium">
+      <Heading as="h5" size="3" mb="4" weight="medium">
         {children}
       </Heading>
     ),
     h6: ({ children }) => (
-      <Heading as="h6" size="4" mb="4" weight="medium">
+      <Heading as="h6" size="4" mb="3" weight="medium">
         {children}
       </Heading>
     ),

@@ -161,6 +161,8 @@ interface ShellRootProps extends React.ComponentPropsWithoutRef<'div'> {
   onToolChange?: (id: string | null) => void;
   activeContext?: string | null;
   onContextChange?: (id: string | null) => void;
+  /** Custom cycling order for single-markup sidebars. Defaults to ['panel', 'rail', 'collapsed'] */
+  singleViewCycle?: SingleView[];
 }
 
 const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
@@ -175,6 +177,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
       onToolChange,
       activeContext: activeContextProp,
       onContextChange,
+      singleViewCycle = ['panel', 'rail', 'collapsed'],
       className,
       style,
       children,
@@ -237,13 +240,13 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(
     }, []);
     const cycleSingleView = React.useCallback(
       (side: ShellSide) => {
-        const order: SingleView[] = ['panel', 'rail', 'collapsed'];
+        const order = singleViewCycle;
         const current = singleViewBySide[side];
         const idx = order.indexOf(current);
         const next = order[(idx + 1) % order.length];
         setSingleViewBySide(side, next);
       },
-      [singleViewBySide, setSingleViewBySide],
+      [singleViewBySide, setSingleViewBySide, singleViewCycle],
     );
 
     // === Active tool coordination state ===
@@ -433,7 +436,6 @@ const Header = React.forwardRef<HTMLElement, ShellHeaderProps>(
         role="banner"
         className={classNames('rt-ShellHeader', className)}
         style={{
-          ['--shell-header-height' as any]: headerHeight,
           ['--shell-z-header' as any]: zHeader,
           ...style,
         }}

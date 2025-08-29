@@ -1,8 +1,10 @@
-import { Button, Flex, Box, Text, Callout, Section, Separator } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Box, Text, Callout, Section, Separator, Badge } from '@kushagradhawan/kookie-ui';
 import { TriangleAlertIcon } from 'lucide-react';
 import { CodeBlock } from '../../components/code-block';
 
-<Section>
+<Section size="2">
+
+<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
 # Accessibility
 
@@ -10,9 +12,9 @@ The Button component is built with comprehensive accessibility features that wor
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Contrast
 
@@ -22,7 +24,7 @@ The Button component uses a systematic color approach that ensures all button co
 
 **Solid buttons** provide the highest contrast among standard variants, using white text on colored backgrounds for maximum visibility. **All other variants** use carefully chosen text colors that maintain proper contrast against their respective backgrounds.
 
-<Callout.Root size="3" variant="surface" highContrast color="gray" my="8">
+<Callout.Root size="3" variant="soft" color="gray" my="8">
   <Callout.Text>Buttons with transparent backgrounds require evaluation against their specific surrounding content to determine true contrast compliance.</Callout.Text>
 </Callout.Root>
 
@@ -35,6 +37,12 @@ The `highContrast` prop automatically ensures maximum visibility for users with 
 **High-contrast buttons with transparent backgrounds** (Outline and Ghost) still require evaluation against the specific background color they are placed upon to determine their true contrast ratio and WCAG compliance.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="3" wrap="wrap">
       <Button size="3" color="gray" variant="solid">Button</Button>
@@ -46,9 +54,9 @@ The `highContrast` prop automatically ensures maximum visibility for users with 
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Keyboard Navigation
 
@@ -57,6 +65,12 @@ The Button component automatically supports full keyboard accessibility with sta
 The focus-visible implementation automatically shows focus rings only for keyboard navigation, not mouse clicks. This provides clear navigation cues without visual clutter.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="3" wrap="wrap">
       <Button size="3" variant="solid">Button</Button>
@@ -69,9 +83,9 @@ The focus-visible implementation automatically shows focus rings only for keyboa
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Screen Reader
 
@@ -80,6 +94,12 @@ The Button component automatically uses semantic `<button>` elements with proper
 **Loading states** automatically use `aria-busy="true"`, `aria-disabled="true"`, `aria-describedby`, and dynamic `aria-label` to announce processing status. The component intelligently extracts button text and creates comprehensive loading announcements while a visual spinner indicates progress.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Button size="3" variant="solid" loading>Processing Order...</Button>
   }
@@ -89,6 +109,12 @@ The Button component automatically uses semantic `<button>` elements with proper
 **Disabled states** automatically use proper `disabled` attributes and visual indicators. Screen readers automatically announce the unavailable state while visual styling prevents interaction confusion.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="3" wrap="wrap">
       <Button size="3" variant="solid" disabled>Disabled</Button>
@@ -100,9 +126,9 @@ The Button component automatically uses semantic `<button>` elements with proper
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Touch Targets
 
@@ -114,11 +140,17 @@ The Button component automatically accommodates users with varying motor abiliti
 - **Size 3 (40px):** Recommended for mobile interfaces and important actions
 - **Size 4 (48px):** Recommended for hero sections and maximum accessibility
 
-<Callout.Root size="3" variant="surface" highContrast color="gray" my="8">
+<Callout.Root size="3" variant="soft" color="gray" my="8">
   <Callout.Text>Mobile interfaces should avoid sizes 1 and 2. They do not meet the minimum touch target guidelines.</Callout.Text>
 </Callout.Root>
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="3" align="center" wrap="wrap">
       <Button variant="solid" size="1">Button</Button>
@@ -132,15 +164,19 @@ The Button component automatically accommodates users with varying motor abiliti
 
 </Section>
 
-<Separator size="4" />
-
-<Section>
+<Section size="2">
 
 ## Loading
 
 The loading state automatically provides comprehensive accessibility support beyond basic visual feedback.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Button size="3" loading>Processing...</Button>
   }
@@ -158,15 +194,21 @@ The loading state automatically provides comprehensive accessibility support bey
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Tooltip
 
 Built-in tooltips automatically maintain proper accessibility relationships without additional markup.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Button size="3" tooltip="This tooltip is fully accessible">
       Hover
@@ -183,9 +225,9 @@ Built-in tooltips automatically maintain proper accessibility relationships with
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Text Extraction
 
@@ -193,9 +235,9 @@ The Button component automatically extracts meaningful text for screen readers f
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Performance
 

@@ -227,7 +227,8 @@ h6 {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  border-radius: 0 0 var(--radius-6) var(--radius-6);
+  border-radius: 0 0 min(var(--radius-6), calc(var(--radius-2) + var(--space-2)))
+    min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
 }
 
 .code-scroll-shadow.visible {
@@ -272,4 +273,15 @@ h6 {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
+}
+
+/* Prevent sidebar layout shift during hydration */
+.rt-ShellSidebar[data-side='start'] {
+  /* Ensure start sidebar is immediately visible to prevent layout shift */
+  opacity: 1;
+}
+
+.rt-ShellSidebar[data-side='start'] .rt-SidebarRoot {
+  /* Override the default opacity: 0 from shell.css for start sidebar */
+  opacity: 1 !important;
 }

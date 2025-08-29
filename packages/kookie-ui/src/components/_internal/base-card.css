@@ -62,7 +62,7 @@
    */
   &::before {
     z-index: -1;
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
@@ -80,7 +80,18 @@
     }
 
     /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+    :where(
+        .rt-PopoverContent,
+        .rt-BaseDialogContent,
+        .rt-BaseMenuContent,
+        .rt-DropdownMenuContent,
+        .rt-ContextMenuContent,
+        .rt-AlertDialogContent,
+        .rt-HoverCardContent,
+        .rt-TooltipContent,
+        .rt-Card
+      )
+      & {
       backdrop-filter: none !important;
     }
   }
@@ -132,9 +143,8 @@
       --base-card-padding-left: var(--space-6);
       --base-card-border-radius: min(var(--radius-9), calc(var(--radius-5) + var(--space-5)));
     }
-    }
   }
-
+}
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
@@ -168,11 +178,11 @@
     background-color: var(--card-background-color);
     backdrop-filter: none !important;
   }
-  
+
   &::after {
     box-shadow: none;
   }
-  
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
@@ -183,7 +193,7 @@
       &:where(:hover) {
         background-color: var(--gray-2);
         box-shadow: inset 0 0 0 1px var(--gray-7);
-        
+
         /* Theme-level translucent override for hover */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
@@ -207,11 +217,11 @@
         }
       }
     }
-    
+
     &:where([data-state='open']) {
       background-color: var(--gray-2);
       box-shadow: inset 0 0 0 1px var(--gray-7);
-      
+
       /* Theme-level translucent override for open */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
@@ -234,11 +244,11 @@
         --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
       }
     }
-    
+
     &:where(:active:not([data-state='open'])) {
       background-color: var(--gray-3);
       box-shadow: inset 0 0 0 1px var(--gray-8);
-      
+
       /* Theme-level translucent override for active */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
         background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -285,7 +295,7 @@
   top: var(--classic-elevation-offset);
   --card-border-width: 1px;
   --card-background-color: var(--color-surface-solid);
-  
+
   transition: var(--transition-text-field);
   box-shadow: var(--shadow-2);
 
@@ -305,7 +315,7 @@
 
   &::before {
     background-color: var(--card-background-color);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
@@ -317,16 +327,20 @@
       --backdrop-filter-panel: none;
     }
 
-    :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+    :where(
+        .rt-BaseCard[data-panel-background='translucent'],
+        .rt-BaseCard[data-material='translucent']
+      )
+      & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
   }
-  
+
   &::after {
     box-shadow: none;
   }
-  
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: 2px;
@@ -337,10 +351,10 @@
       &:where(:hover) {
         transition-duration: 40ms;
         box-shadow: var(--shadow-2);
-        
+
         &::before {
           background-color: var(--gray-2);
-          
+
           /* Theme-level translucent override for hover */
           :where([data-panel-background='translucent'], [data-material='translucent']) & {
             background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
@@ -348,32 +362,37 @@
           }
 
           /* Component-level overrides for hover */
-          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
+          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid'])
+            & {
             background-color: var(--gray-2);
             backdrop-filter: none;
             --backdrop-filter-panel: none;
           }
 
-          :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+          :where(
+              .rt-BaseCard[data-panel-background='translucent'],
+              .rt-BaseCard[data-material='translucent']
+            )
+            & {
             background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
           }
         }
-        
+
         &::after {
           box-shadow: none;
         }
       }
     }
-    
+
     &:where([data-state='open']) {
       transition-duration: 40ms;
       box-shadow: var(--shadow-1);
-      
+
       &::before {
         background-color: var(--gray-3);
-        
+
         /* Theme-level translucent override for open */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -387,24 +406,28 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+        :where(
+            .rt-BaseCard[data-panel-background='translucent'],
+            .rt-BaseCard[data-material='translucent']
+          )
+          & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
         }
       }
-      
+
       &::after {
         box-shadow: none;
       }
     }
-    
+
     &:where(:active:not([data-state='open'])) {
       box-shadow: var(--shadow-1);
-      
+
       &::before {
         background-color: var(--gray-3);
-        
+
         /* Theme-level translucent override for active */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -418,13 +441,17 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+        :where(
+            .rt-BaseCard[data-panel-background='translucent'],
+            .rt-BaseCard[data-material='translucent']
+          )
+          & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
         }
       }
-      
+
       &::after {
         box-shadow: none;
       }
@@ -516,7 +543,18 @@
         }
 
         /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-        :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        :where(
+            .rt-PopoverContent,
+            .rt-BaseDialogContent,
+            .rt-BaseMenuContent,
+            .rt-DropdownMenuContent,
+            .rt-ContextMenuContent,
+            .rt-AlertDialogContent,
+            .rt-HoverCardContent,
+            .rt-TooltipContent,
+            .rt-Card
+          )
+          & {
           backdrop-filter: none !important;
         }
 
@@ -525,7 +563,7 @@
         }
       }
     }
-    
+
     &:where([data-state='open']) {
       /* Base state: solid accent for solid panels */
       background-color: var(--gray-3);
@@ -550,7 +588,18 @@
       }
 
       /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      :where(
+          .rt-PopoverContent,
+          .rt-BaseDialogContent,
+          .rt-BaseMenuContent,
+          .rt-DropdownMenuContent,
+          .rt-ContextMenuContent,
+          .rt-AlertDialogContent,
+          .rt-HoverCardContent,
+          .rt-TooltipContent,
+          .rt-Card
+        )
+        & {
         backdrop-filter: none !important;
       }
 
@@ -558,7 +607,7 @@
         background-color: var(--focus-a2);
       }
     }
-    
+
     &:where(:active:not([data-state='open'])) {
       /* Base state: solid accent for solid panels */
       background-color: var(--gray-4);
@@ -583,7 +632,18 @@
       }
 
       /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+      :where(
+          .rt-PopoverContent,
+          .rt-BaseDialogContent,
+          .rt-BaseMenuContent,
+          .rt-DropdownMenuContent,
+          .rt-ContextMenuContent,
+          .rt-AlertDialogContent,
+          .rt-HoverCardContent,
+          .rt-TooltipContent,
+          .rt-Card
+        )
+        & {
         backdrop-filter: none !important;
       }
 
@@ -612,27 +672,27 @@
 
 .rt-BaseCard:where(.rt-variant-soft) {
   --card-border-width: 0px;
-  
+
   /* Base state: solid colors for solid panels */
-  --card-background-color: var(--gray-3);
+  --card-background-color: var(--gray-2);
 
   /* Theme-level translucent override */
   :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    --card-background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+    --card-background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
   }
 
   /* Component-level overrides (higher specificity) */
   &:where([data-panel-background='solid'], [data-material='solid']) {
-    --card-background-color: var(--gray-3);
+    --card-background-color: var(--gray-2);
   }
 
   &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    --card-background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+    --card-background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
   }
 
   &::before {
     background-color: var(--card-background-color);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
@@ -644,30 +704,34 @@
       --backdrop-filter-panel: none;
     }
 
-    :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+    :where(
+        .rt-BaseCard[data-panel-background='translucent'],
+        .rt-BaseCard[data-material='translucent']
+      )
+      & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
   }
-  
+
   &::after {
     box-shadow: none;
     border: none;
     outline: none;
   }
-  
+
   &:where(:focus-visible) {
     outline: 2px solid var(--gray-8);
     outline-offset: -1px;
   }
-  
+
   &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
         &::before {
           /* Base state: solid colors for solid panels */
           background-color: var(--gray-3);
-          
+
           /* Theme-level translucent override for hover */
           :where([data-panel-background='translucent'], [data-material='translucent']) & {
             background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -675,31 +739,47 @@
           }
 
           /* Component-level overrides for hover */
-          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
+          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid'])
+            & {
             background-color: var(--gray-3);
             backdrop-filter: none;
             --backdrop-filter-panel: none;
           }
 
-          :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+          :where(
+              .rt-BaseCard[data-panel-background='translucent'],
+              .rt-BaseCard[data-material='translucent']
+            )
+            & {
             background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
           }
 
           /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-          :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+          :where(
+              .rt-PopoverContent,
+              .rt-BaseDialogContent,
+              .rt-BaseMenuContent,
+              .rt-DropdownMenuContent,
+              .rt-ContextMenuContent,
+              .rt-AlertDialogContent,
+              .rt-HoverCardContent,
+              .rt-TooltipContent,
+              .rt-Card
+            )
+            & {
             backdrop-filter: none !important;
           }
         }
       }
     }
-    
+
     &:where([data-state='open']) {
       &::before {
         /* Base state: solid colors for solid panels */
         background-color: var(--gray-3);
-        
+
         /* Theme-level translucent override for open */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -713,39 +793,58 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+        :where(
+            .rt-BaseCard[data-panel-background='translucent'],
+            .rt-BaseCard[data-material='translucent']
+          )
+          & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
         }
 
         /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-        :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
+        :where(
+            .rt-PopoverContent,
+            .rt-BaseDialogContent,
+            .rt-BaseMenuContent,
+            .rt-DropdownMenuContent,
+            .rt-ContextMenuContent,
+            .rt-AlertDialogContent,
+            .rt-HoverCardContent,
+            .rt-TooltipContent,
+            .rt-Card
+          )
+          & {
           backdrop-filter: none !important;
         }
       }
     }
-    
+
     &:where(:active:not([data-state='open'])) {
       &::before {
         /* Base state: solid colors for solid panels */
-        background-color: var(--gray-4);
-        
+        background-color: var(--gray-3);
+
         /* Theme-level translucent override for active */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
-          background-color: color-mix(in srgb, var(--gray-a4), var(--gray-4) 60%);
+          background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
         }
 
         /* Component-level overrides for active */
         :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
-          background-color: var(--gray-4);
+          background-color: var(--gray-3);
           backdrop-filter: none;
           --backdrop-filter-panel: none;
         }
 
-        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
-          background-color: color-mix(in srgb, var(--gray-a4), var(--gray-4) 60%);
+        :where(
+            .rt-BaseCard[data-panel-background='translucent'],
+            .rt-BaseCard[data-material='translucent']
+          )
+          & {
+          background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
         }
@@ -772,7 +871,7 @@
 
 .rt-BaseCard:where(.rt-variant-surface) {
   --card-border-width: 1px;
-  
+
   /* Base state: neutral gray background with lighter border (maintains card neutrality) */
   --card-background-color: var(--gray-1);
 
@@ -792,7 +891,7 @@
 
   &::before {
     background-color: var(--card-background-color);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
@@ -804,15 +903,19 @@
       --backdrop-filter-panel: none;
     }
 
-    :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+    :where(
+        .rt-BaseCard[data-panel-background='translucent'],
+        .rt-BaseCard[data-material='translucent']
+      )
+      & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
   }
-  
+
   &::after {
     box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-6);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-a6);
@@ -827,19 +930,19 @@
       box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-a6);
     }
   }
-  
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
-  
+
   &:where(:any-link, button, label) {
     @media (hover: hover) {
       &:where(:hover) {
         &::before {
           /* Base state: darker gray for hover */
           background-color: var(--gray-2);
-          
+
           /* Theme-level translucent override for hover */
           :where([data-panel-background='translucent'], [data-material='translucent']) & {
             background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
@@ -847,22 +950,27 @@
           }
 
           /* Component-level overrides for hover */
-          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
+          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid'])
+            & {
             background-color: var(--gray-2);
             backdrop-filter: none;
             --backdrop-filter-panel: none;
           }
 
-          :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+          :where(
+              .rt-BaseCard[data-panel-background='translucent'],
+              .rt-BaseCard[data-material='translucent']
+            )
+            & {
             background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
           }
         }
-        
+
         &::after {
           box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-7);
-          
+
           /* Theme-level translucent override */
           :where([data-panel-background='translucent'], [data-material='translucent']) & {
             box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-a7);
@@ -870,12 +978,12 @@
         }
       }
     }
-    
+
     &:where([data-state='open']) {
       &::before {
         /* Base state: darker gray for open */
         background-color: var(--gray-2);
-        
+
         /* Theme-level translucent override for open */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
@@ -889,28 +997,32 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+        :where(
+            .rt-BaseCard[data-panel-background='translucent'],
+            .rt-BaseCard[data-material='translucent']
+          )
+          & {
           background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
         }
       }
-      
+
       &::after {
         box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-7);
-        
+
         /* Theme-level translucent override */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-a7);
         }
       }
     }
-    
+
     &:where(:active:not([data-state='open'])) {
       &::before {
         /* Base state: even darker gray for active */
         background-color: var(--gray-3);
-        
+
         /* Theme-level translucent override for active */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
@@ -924,16 +1036,20 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
+        :where(
+            .rt-BaseCard[data-panel-background='translucent'],
+            .rt-BaseCard[data-material='translucent']
+          )
+          & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
         }
       }
-      
+
       &::after {
         box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-7);
-        
+
         /* Theme-level translucent override */
         :where([data-panel-background='translucent'], [data-material='translucent']) & {
           box-shadow: inset 0 0 0 var(--card-border-width) var(--gray-a7);

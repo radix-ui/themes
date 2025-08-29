@@ -1,7 +1,10 @@
-import { Button, Flex, Box, Callout, Table, Text, Theme, Section, Separator } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Box, Callout, Table, Text, Theme, Section, Separator, Badge } from '@kushagradhawan/kookie-ui';
+import { SpecsBlock } from '../../components/specs-block';
 import { TriangleAlertIcon, Info } from 'lucide-react';
 
-<Section>
+<Section size="2">
+
+<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
 # Specs
 
@@ -9,15 +12,21 @@ Designer reference for Button component layout, spacing, and variant specificati
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Layout
 
 The Button component uses systematic spacing and sizing that scales consistently across all variants. Height, padding, border radius, and typography follow the design system's spacing scale.
 
 <SpecsBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="solid" size="3">Button</Button>
@@ -36,7 +45,7 @@ The Button component uses systematic spacing and sizing that scales consistently
       size1: '8px',
       size2: '12px',
       size3: '16px',
-      size4: '24px'
+      size4: '20px'
     },
     {
       property: 'Border Radius',
@@ -47,15 +56,15 @@ The Button component uses systematic spacing and sizing that scales consistently
     },
     {
       property: 'Icon Size',
-      size1: '14.4px',
-      size2: '16px',
-      size3: '19.2px',
+      size1: '13.2px',
+      size2: '16.8px',
+      size3: '20.5px',  
       size4: '24px'
     },
     {
       property: 'Icon-Text Gap',
       size1: '4px',
-      size2: '6px',
+      size2: '4px',
       size3: '8px',
       size4: '8px'
     },
@@ -78,7 +87,7 @@ The Button component uses systematic spacing and sizing that scales consistently
       size1: 'space-2',
       size2: 'space-3',
       size3: 'space-4',
-      size4: 'space-5'
+      size4: 'space-4 + 4px'
     },
     'Border Radius': {
       size1: 'radius-1',
@@ -94,7 +103,7 @@ The Button component uses systematic spacing and sizing that scales consistently
     },
     'Icon-Text Gap': {
       size1: 'component-gap-1',
-      size2: 'component-gap-2',
+      size2: 'component-gap-1',
       size3: 'component-gap-3',
       size4: 'component-gap-4'
     },
@@ -110,6 +119,12 @@ The Button component uses systematic spacing and sizing that scales consistently
 Ghost buttons use reduced padding for seamless text integration. This variant maintains full accessibility while achieving visual integration with surrounding content.
 
 <SpecsBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="ghost" size="3">Ghost Button</Button>
@@ -118,37 +133,37 @@ Ghost buttons use reduced padding for seamless text integration. This variant ma
   specs={[
     {
       property: 'Horizontal Padding',
-      size1: '4px',
-      size2: '4px',
-      size3: '6px',
-      size4: '8px'
+      size1: '8px',
+      size2: '8px',
+      size3: '12px',
+      size4: '16px'
     },
     {
       property: 'Vertical Padding',
       size1: '4px',
       size2: '4px',
       size3: '6px',
-      size4: '6px'
+      size4: '8px'
     },
     {
       property: 'Icon-Text Gap',
       size1: '4px',
       size2: '6px',
-      size3: '6px',
-      size4: '6px'
+      size3: '8px',
+      size4: '8px'
     }
   ]}
   tooltips={{
     'Horizontal Padding': {
-      size1: 'space-1',
-      size2: 'space-1',
-      size3: 'space-2',
-      size4: 'space-2'
+      size1: 'space-2',
+      size2: 'space-2',
+      size3: 'space-3',
+      size4: 'space-4'
     },
     'Vertical Padding': {
       size1: 'space-1',
       size2: 'space-1',
-      size3: 'space-2',
+      size3: 'space-1 * 1.5',
       size4: 'space-2'
     },
     'Icon-Text Gap': {
@@ -162,13 +177,19 @@ Ghost buttons use reduced padding for seamless text integration. This variant ma
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Variants
 
 <SpecsBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="classic" size="3">Classic</Button>
@@ -182,86 +203,87 @@ Ghost buttons use reduced padding for seamless text integration. This variant ma
   specs={[
     {
       property: 'Classic',
-      Background: 'Light background',
-      Border: 'Shadow-based border',
-      Shadow: 'Standard shadow'
+      Background: 'Surface color',
+      Border: 'None',
+      Shadow: 'Drop shadow'
     },
     {
       property: 'Solid',
-      Background: 'Background color',
+      Background: 'Accent color',
       Border: 'None',
-      Shadow: 'None'
+      Shadow: 'Hover shadow'
     },
     {
       property: 'Soft',
-      Background: 'Tinted background',
+      Background: 'Accent tint',
       Border: 'None',
-      Shadow: 'None'
+      Shadow: 'Hover shadow'
     },
     {
       property: 'Outline',
       Background: 'Transparent',
-      Border: 'Border line',
-      Shadow: 'None'
+      Border: 'Inset shadow',
+      Shadow: 'Hover shadow'
     },
     {
       property: 'Surface',
-      Background: 'Light background',
-      Border: 'Border line',
-      Shadow: 'None'
+      Background: 'Accent tint',
+      Border: 'Inset shadow',
+      Shadow: 'Hover shadow'
     },
     {
       property: 'Ghost',
       Background: 'Transparent',
       Border: 'None',
-      Shadow: 'None'
+      Shadow: 'Hover shadow'
     }
   ]}
   tooltips={{
     'Classic': {
-      background: 'Uses color-surface-solid with elevation offset',
-      border: 'Complex shadow-based border system',
-      shadow: 'Inset + border + drop shadow layers'
+      background: 'var(--color-surface-solid) with hover states',
+      border: 'No border - uses box-shadow: var(--shadow-2)',
+      shadow: 'var(--shadow-2) by default, shadow-1 on active'
     },
     'Solid': {
-      background: 'Uses accent-9 background with accent-contrast text',
-      border: 'No border needed with full background',
-      shadow: 'No shadow with full background'
+      background: 'var(--accent-9) with accent-contrast text',
+      border: 'No border styling applied',
+      shadow: 'var(--shadow-2) on hover, shadow-1 on active'
     },
     'Soft': {
-      background: 'Uses accent-3 for subtle emphasis',
-      border: 'No border for clean appearance',
-      shadow: 'No shadow for flat appearance'
+      background: 'var(--accent-3) base, accent-4 on hover',
+      border: 'No border styling applied',
+      shadow: 'var(--shadow-2) on hover, shadow-1 on active'
     },
     'Outline': {
-      background: 'Transparent with inset border definition',
-      border: 'box-shadow: inset 0 0 0 1px var(--accent-6)',
-      shadow: 'No shadow with border definition'
+      background: 'Transparent base, accent-2 on hover',
+      border: 'inset 0 0 0 1px var(--accent-6)',
+      shadow: 'var(--shadow-1) on open/active states'
     },
     'Surface': {
-      background: 'Uses accent-2 background with inset border',
-      border: 'box-shadow: inset 0 0 0 1px var(--accent-6)',
-      shadow: 'No shadow with background definition'
+      background: 'var(--accent-2) base, accent-3 on hover',
+      border: 'inset 0 0 0 1px var(--accent-6)',
+      shadow: 'var(--shadow-1) on open/active states'
     },
     'Ghost': {
-      background: 'Transparent with accent-3 on hover',
-      border: 'No border for minimal appearance',
-      shadow: 'No shadow for minimal appearance'
+      background: 'Transparent base, accent-3 on hover',
+      border: 'No border styling applied',
+      shadow: 'var(--shadow-1) on open/active states'
     }
   }}
 />
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
 
-## Material Effects
+<Section size="2">
+
+## Material
 
 The Button component supports both solid and translucent materials. Translucent materials use backdrop blur effects for modern glass-morphism interfaces while maintaining accessibility compliance.
 
 <SpecsBlock
+
   preview={
     <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
       <Button highContrast size="4" color="gray" variant="classic" material="translucent">Classic</Button>
@@ -270,7 +292,7 @@ The Button component supports both solid and translucent materials. Translucent 
       <Button highContrast size="4" color="gray" variant="surface" material="translucent">Surface</Button>
     </Flex>
   }
-  background="https://images.unsplash.com/vector-1741103922268-b32c11b13733?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1693230772696-71029feb9b07?q=80&w=3435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: '300px',
     width: '100%'
@@ -301,15 +323,21 @@ The Button component supports both solid and translucent materials. Translucent 
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Size
 
 Button sizes follow a systematic progression that balances visual hierarchy with accessibility requirements. Each size maintains appropriate touch targets and visual weight for its intended use case.
 
 <SpecsBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="solid" size="1">Button</Button>
@@ -325,7 +353,7 @@ Button sizes follow a systematic progression that balances visual hierarchy with
     },
     {
       property: 'Horizontal Padding',
-      Value: '8px → 12px → 16px → 24px'
+      Value: '8px → 12px → 16px → 20px'
     },
     {
       property: 'Border Radius',
@@ -337,7 +365,7 @@ Button sizes follow a systematic progression that balances visual hierarchy with
     },
     {
       property: 'Icon Size',
-      Value: '14.4px → 16px → 19.2px → 24px'
+      Value: '13.2px → 16.8px → 20.5px → 24px'
     }
   ]}
   tooltips={{
@@ -345,7 +373,7 @@ Button sizes follow a systematic progression that balances visual hierarchy with
       value: 'space-5 → space-6 → space-7 → space-8'
     },
     'Horizontal Padding': {
-      value: 'space-2 → space-3 → space-4 → space-5'
+      value: 'space-2 → space-3 → space-4 → space-4 + 4px'
     },
     'Border Radius': {
       value: 'radius-1 → radius-2 → radius-3 → radius-4'

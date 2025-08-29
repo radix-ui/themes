@@ -89,53 +89,55 @@ const ComponentPage = memo(function ComponentPage({
   };
 
   return (
-    <Container size={{ initial: '1', sm: '2', md: '3', lg: '4' }} py="8">
-      <Flex direction="column" gap="6" px={{ initial: '4', sm: '6', md: '8' }}>
-        {/* Tab Navigation - only render if tabs exist */}
-        {hasValidTabs && (
-          <Box position="sticky" top="0" py="2" style={{ ...stickyHeaderStyle, minWidth: 0 }}>
-            <TabNav.Root>
-              {tabs.map((tab) => (
-                <TabNav.Link
-                  key={tab.value}
-                  active={activeTab === tab.value}
-                  onClick={() => handleTabClick(tab.value)}
-                >
-                  {tab.label}
-                </TabNav.Link>
-              ))}
-            </TabNav.Root>
-          </Box>
-        )}
-
-        {/* Content with ToC */}
+    <Container size={{ initial: '1', sm: '2', md: '4' }}>
+      <Flex
+        gap={{ initial: '6', md: '9' }}
+        align="start"
+        direction={{ initial: 'column', lg: 'row' }}
+      >
+        {/* Main content area with TabNav and content */}
         <Flex
-          gap={{ initial: '6', md: '9' }}
-          align="start"
-          direction={{ initial: 'column', lg: 'row' }}
+          direction="column"
+          gap="6"
+          px={{ initial: '4', sm: '6', md: '8' }}
+          flexGrow="1"
+          style={{ minWidth: 0 }}
         >
+          {/* Tab Navigation - only render if tabs exist */}
+          {hasValidTabs && (
+            <Box position="sticky" top="0" py="2" style={{ ...stickyHeaderStyle, minWidth: 0 }}>
+              <TabNav.Root>
+                {tabs.map((tab) => (
+                  <TabNav.Link
+                    key={tab.value}
+                    active={activeTab === tab.value}
+                    onClick={() => handleTabClick(tab.value)}
+                  >
+                    {tab.label}
+                  </TabNav.Link>
+                ))}
+              </TabNav.Root>
+            </Box>
+          )}
+
           {/* Documentation Content */}
-          <Box flexGrow="1" px="8" style={contentAreaStyle} data-content-area>
+          <Box px="8" style={contentAreaStyle} data-content-area>
             {renderContent()}
           </Box>
+        </Flex>
 
-          {/* Table of Contents - only render if there are headings */}
+        {/* Table of Contents - always reserves space */}
+        <Box
+          style={tocStyle}
+          position="sticky"
+          top="200px"
+          display={{ initial: 'none', lg: 'block' }}
+        >
           <TableOfContents
             key={activeTab} // Force re-render when tab changes
-            renderContainer={(tocContent) =>
-              tocContent ? (
-                <Box
-                  style={tocStyle}
-                  position="sticky"
-                  top="200px"
-                  display={{ initial: 'none', lg: 'block' }}
-                >
-                  {tocContent}
-                </Box>
-              ) : null
-            }
+            renderContainer={(tocContent) => tocContent || null}
           />
-        </Flex>
+        </Box>
       </Flex>
     </Container>
   );

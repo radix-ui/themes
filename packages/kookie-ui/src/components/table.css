@@ -131,4 +131,8 @@
 .rt-TableRoot:where(.rt-variant-ghost) {
   --scrollarea-scrollbar-horizontal-margin-left: 0;
   --scrollarea-scrollbar-horizontal-margin-right: 0;
+
+  & :where(.rt-TableBody) :where(.rt-TableRow:last-child) {
+    --table-row-box-shadow: none;
+  }
 }

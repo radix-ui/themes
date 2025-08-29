@@ -12,6 +12,7 @@ import {
   Table,
   IconButton,
   Badge,
+  DropdownMenu,
 } from '@kushagradhawan/kookie-ui';
 import { Info } from 'lucide-react';
 
@@ -145,6 +146,74 @@ export default function DialogPlayground() {
                   </Table.Cell>
                   <Table.Cell>
                     <Text size="2">Confirmation dialog for user actions</Text>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.RowHeaderCell>
+                    <Text size="1" color="gray">
+                      Dialog + DropdownMenu Test
+                    </Text>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Dialog.Root>
+                      <Dialog.Trigger>
+                        <Button variant="soft" color="orange">
+                          <Info />
+                          Test Nested Issue
+                        </Button>
+                      </Dialog.Trigger>
+                      <Dialog.Content>
+                        <Dialog.Title>Dialog with DropdownMenu</Dialog.Title>
+                        <Dialog.Description>
+                          This dialog contains a dropdown menu. Test the pointer-events cleanup by:
+                          <br />
+                          1. Open this dialog
+                          <br />
+                          2. Open the dropdown menu below
+                          <br />
+                          3. Click outside to close both
+                          <br />
+                          4. Check if the page is still clickable
+                        </Dialog.Description>
+                        
+                        <Flex direction="column" gap="4" mt="4">
+                          <DropdownMenu.Root>
+                            <DropdownMenu.Trigger>
+                              <Button variant="surface">
+                                Open Menu
+                                <DropdownMenu.TriggerIcon />
+                              </Button>
+                            </DropdownMenu.Trigger>
+                            <DropdownMenu.Content>
+                              <DropdownMenu.Item>Profile</DropdownMenu.Item>
+                              <DropdownMenu.Item>Settings</DropdownMenu.Item>
+                              <DropdownMenu.Separator />
+                              <DropdownMenu.Item color="red">Logout</DropdownMenu.Item>
+                            </DropdownMenu.Content>
+                          </DropdownMenu.Root>
+                          
+                          <Text size="1" color="gray">
+                            After closing both overlays, try clicking this text or other elements on the page.
+                            If pointer-events cleanup works, everything should be clickable.
+                          </Text>
+                        </Flex>
+
+                        <Flex gap="3" mt="4" justify="end">
+                          <Dialog.Close>
+                            <Button variant="soft" color="gray">
+                              Close Dialog
+                            </Button>
+                          </Dialog.Close>
+                        </Flex>
+                      </Dialog.Content>
+                    </Dialog.Root>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Text size="2">
+                      <Badge size="1" color="orange" variant="soft">Test Case</Badge>
+                      <br />
+                      Tests pointer-events cleanup when closing nested Dialog + DropdownMenu
+                    </Text>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>

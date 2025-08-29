@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-let bodyCleanupInstalled = false;
+let cleanupInstalled = false;
 
 /**
  * Hook to cleanup stuck pointer-events: none on document.body
@@ -12,70 +12,101 @@ let bodyCleanupInstalled = false;
 export function useBodyPointerEventsCleanup() {
   React.useEffect(() => {
     if (typeof document === 'undefined') return;
+    if (cleanupInstalled) return;
 
-    let timeoutId: number | undefined;
+    cleanupInstalled = true;
 
     const hasOpenModal = (): boolean => {
-      // Detect any open modal dialogs/alertdialogs
-      return Boolean(
+      // Check for open dialogs/alertdialogs
+      const hasDialogs = Boolean(
         document.querySelector(
           '[role="dialog"][aria-modal="true"], [role="alertdialog"][aria-modal="true"]',
         ),
       );
+
+      // Also check for any Radix overlays that are still mounted
+      const hasRadixOverlays = Boolean(
+        document.querySelector('[data-radix-popper-content-wrapper], [data-state="open"]'),
+      );
+
+      return hasDialogs || hasRadixOverlays;
     };
 
-    const cleanup = () => {
+    const forceCleanup = () => {
+      // Aggressive cleanup - remove pointer-events regardless
+      if (document.body.style.pointerEvents === 'none') {
+        console.log('[KookieUI] Force cleaning stuck pointer-events: none from body');
+        document.body.style.pointerEvents = '';
+
+        // Also remove any scroll-lock related attributes
+        document.body.removeAttribute('data-scroll-locked');
+        document.body.removeAttribute('data-remove-scroll');
+
+        // Remove any classes that might be causing issues
+        document.body.classList.remove('ReactModal__Body--open');
+      }
+    };
+
+    const safeCleanup = () => {
       if (document.body.style.pointerEvents === 'none' && !hasOpenModal()) {
+        console.log('[KookieUI] Safe cleaning stuck pointer-events: none from body');
         document.body.style.pointerEvents = '';
       }
     };
 
-    const scheduleCleanup = (delay = 50) => {
-      if (timeoutId) window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(cleanup, delay);
+    // Force cleanup on any click outside modal content
+    const onDocumentClick = (event: Event) => {
+      const target = event.target as Element;
+      if (
+        target &&
+        !target.closest(
+          '[role="dialog"], [role="alertdialog"], [data-radix-popper-content-wrapper]',
+        )
+      ) {
+        // Clicked outside any modal - force cleanup after a short delay
+        setTimeout(forceCleanup, 100);
+      }
     };
 
-    // Initial run to catch already-stuck state
-    scheduleCleanup(100);
-
-    // If already installed globally, don't re-register listeners/observers
-    if (bodyCleanupInstalled) {
-      return () => {
-        if (timeoutId) window.clearTimeout(timeoutId);
-      };
-    }
-
-    bodyCleanupInstalled = true;
-
-    const onPointer = () => scheduleCleanup(50);
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') scheduleCleanup(50);
+    // Force cleanup on ESC key
+    const onEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setTimeout(forceCleanup, 200);
+      }
     };
-    const onVisibility = () => {
-      if (!document.hidden) scheduleCleanup(50);
+
+    // Safe cleanup on other interactions
+    const onInteraction = () => {
+      setTimeout(safeCleanup, 50);
     };
-    const onTransitionEnd = () => scheduleCleanup(0);
-    const onAnimationEnd = () => scheduleCleanup(0);
 
-    // Listen for common interactions that close overlays/menus
-    document.addEventListener('pointerup', onPointer, true);
-    document.addEventListener('click', onPointer, true);
-    document.addEventListener('keydown', onKey, true);
-    document.addEventListener('keyup', onKey, true);
-    document.addEventListener('visibilitychange', onVisibility);
-    document.addEventListener('transitionend', onTransitionEnd, true);
-    document.addEventListener('animationend', onAnimationEnd, true);
+    // Install global listeners
+    document.addEventListener('click', onDocumentClick, true);
+    document.addEventListener('keydown', onEscapeKey, true);
+    document.addEventListener('pointerup', onInteraction, true);
+    document.addEventListener('transitionend', onInteraction, true);
+    document.addEventListener('animationend', onInteraction, true);
 
-    // Observe body style changes (where pointer-events is applied) and DOM mutations
-    const bodyObserver = new MutationObserver(() => scheduleCleanup(0));
-    bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    // Watch for DOM changes that might indicate overlay removal
+    const observer = new MutationObserver(() => {
+      setTimeout(safeCleanup, 0);
+    });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
 
-    const domObserver = new MutationObserver(() => scheduleCleanup(0));
-    domObserver.observe(document, { childList: true, subtree: true });
+    // Fallback periodic cleanup
+    const intervalId = setInterval(() => {
+      if (document.body.style.pointerEvents === 'none' && !hasOpenModal()) {
+        console.log('[KookieUI] Periodic cleanup of stuck pointer-events');
+        document.body.style.pointerEvents = '';
+      }
+    }, 1000);
 
-    // Keep listeners/observers for the app lifetime to ensure cleanup even after overlays unmount
+    // Initial cleanup
+    setTimeout(safeCleanup, 100);
+
+    // Cleanup function (keep listeners for app lifetime)
     return () => {
-      if (timeoutId) window.clearTimeout(timeoutId);
+      clearInterval(intervalId);
     };
   }, []);
 }

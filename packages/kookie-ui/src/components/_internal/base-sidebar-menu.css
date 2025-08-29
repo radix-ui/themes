@@ -99,26 +99,26 @@
   & :where(.rt-SidebarMenuSubTriggerIcon) {
     transition: transform var(--motion-duration-micro) var(--motion-ease-standard);
   }
-  
-  &:where([data-state="open"]) :where(.rt-SidebarMenuSubTriggerIcon) {
+
+  &:where([data-state='open']) :where(.rt-SidebarMenuSubTriggerIcon) {
     transform: rotate(90deg);
   }
 }
 
 .rt-SidebarMenuSubContent {
   overflow: hidden;
-  
+
   /* Allow focus outlines to show */
   &:where(:focus-within) {
     overflow: visible;
   }
-  
+
   /* Radix Accordion animation support */
-  &:where([data-state="open"]) {
+  &:where([data-state='open']) {
     animation: rt-sidebar-slide-down var(--motion-duration-small) var(--motion-ease-standard);
   }
-  
-  &:where([data-state="closed"]) {
+
+  &:where([data-state='closed']) {
     animation: rt-sidebar-slide-up var(--motion-duration-small) var(--motion-ease-standard);
   }
 }
@@ -195,7 +195,7 @@
   :where(.rt-SidebarContent.rt-r-size-1) & {
     padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
   }
-  
+
   :where(.rt-SidebarContent.rt-r-size-2) & {
     padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
   }
@@ -220,4 +220,4 @@
 .rt-SidebarContent :where(.rt-BaseMenuItem) {
   margin-top: calc(var(--space-1) / 2);
   margin-bottom: calc(var(--space-1) / 2);
-} 
+}

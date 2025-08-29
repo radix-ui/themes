@@ -159,7 +159,7 @@ export default function ButtonPlayground() {
 
   return (
     <Flex direction={{ initial: 'column', md: 'row' }} gap="5" align="center">
-      <Card size="3" variant="surface" style={{ width: '100%', height: '400px' }}>
+      <Card size="3" variant="soft" style={{ width: '100%', height: '400px' }}>
         <Flex direction="column" align="center" justify="center" height="100%">
           <Button
             size={size as any}

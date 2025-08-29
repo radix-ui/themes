@@ -1,12 +1,12 @@
 'use client';
 
 import ComponentPage from '../components/component-page';
-import IntroductionMDX from './introduction.mdx';
+import InstallationMDX from '../docs/installation.mdx';
 
-export default function DocsPage() {
+export default function InstallationPage() {
   return (
     <ComponentPage>
-      <IntroductionMDX />
+      <InstallationMDX />
     </ComponentPage>
   );
 }

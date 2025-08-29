@@ -1,0 +1,353 @@
+import { Card, Flex, Text, Heading, Section, Link, Code, Callout, Badge } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../components/code-block';
+
+<Section size="2">
+
+<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+
+# Installation
+
+Get Kookie User Interface running in your React application. The library works with any React framework and requires minimal setup—import the CSS, wrap your app with Theme, and start building.
+
+</Section>
+
+<Section size="2">
+
+## Install
+
+Add Kookie User Interface to your project:
+
+<CodeBlock >
+
+```bash
+npm install @kushagradhawan/kookie-ui
+# or
+pnpm add @kushagradhawan/kookie-ui
+# or
+yarn add @kushagradhawan/kookie-ui
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Next.js
+
+### App Router (Recommended)
+
+For Next.js 13+ with the App Router, import the CSS in your root layout:
+
+<CodeBlock>
+
+```tsx
+// app/layout.tsx
+import '@kushagradhawan/kookie-ui/styles.css';
+import { Theme } from '@kushagradhawan/kookie-ui';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <Theme accentColor="blue" grayColor="gray">
+          {children}
+        </Theme>
+      </body>
+    </html>
+  );
+}
+```
+
+</CodeBlock>
+
+### Pages Router
+
+For Next.js with the Pages Router, import the CSS in your `_app.tsx`:
+
+<CodeBlock>
+
+```tsx
+// pages/_app.tsx
+import '@kushagradhawan/kookie-ui/styles.css';
+import { Theme } from '@kushagradhawan/kookie-ui';
+import type { AppProps } from 'next/app';
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <Theme accentColor="blue" grayColor="gray">
+      <Component {...pageProps} />
+    </Theme>
+  );
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Vite + React
+
+For Vite projects, import the CSS in your main entry file:
+
+<CodeBlock>
+
+```tsx
+// main.tsx or index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@kushagradhawan/kookie-ui/styles.css';
+import { Theme } from '@kushagradhawan/kookie-ui';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Theme accentColor="blue" grayColor="gray">
+      <App />
+    </Theme>
+  </React.StrictMode>
+);
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Create React App
+
+For Create React App projects, import the CSS in your `index.tsx` or `App.tsx`:
+
+<CodeBlock>
+
+```tsx
+// src/index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@kushagradhawan/kookie-ui/styles.css';
+import { Theme } from '@kushagradhawan/kookie-ui';
+import App from './App';
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+
+root.render(
+  <React.StrictMode>
+    <Theme accentColor="blue" grayColor="gray">
+      <App />
+    </Theme>
+  </React.StrictMode>
+);
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Remix
+
+For Remix projects, import the CSS in your root component:
+
+<CodeBlock>
+
+```tsx
+// app/root.tsx
+import { Theme } from '@kushagradhawan/kookie-ui';
+import styles from '@kushagradhawan/kookie-ui/styles.css';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: styles },
+];
+
+export default function App() {
+  return (
+    <html>
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Theme accentColor="blue" grayColor="gray">
+          <Outlet />
+        </Theme>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Gatsby
+
+For Gatsby projects, create a `gatsby-browser.js` file:
+
+<CodeBlock>
+
+```js
+// gatsby-browser.js
+import '@kushagradhawan/kookie-ui/styles.css';
+```
+
+</CodeBlock>
+
+Then wrap your app in the Theme provider:
+
+<CodeBlock>
+
+```tsx
+// src/pages/_app.tsx or gatsby-browser.js
+import { Theme } from '@kushagradhawan/kookie-ui';
+
+export const wrapRootElement = ({ element }) => (
+  <Theme accentColor="blue" grayColor="gray">
+    {element}
+  </Theme>
+);
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Requirements
+
+Kookie User Interface works with React 16.8+ through React 19:
+
+<CodeBlock>
+
+```json
+{
+  "peerDependencies": {
+    "react": "16.8 || ^17.0 || ^18.0 || ^19.0",
+    "react-dom": "16.8 || ^17.0 || ^18.0 || ^19.0"
+  }
+}
+```
+
+</CodeBlock>
+
+TypeScript support is built-in. Node.js 16+ required for development.
+
+</Section>
+
+<Section size="2">
+
+## CSS
+
+Import the complete stylesheet:
+
+<CodeBlock buttonsPosition="center">
+
+```tsx
+import '@kushagradhawan/kookie-ui/styles.css';
+```
+
+</CodeBlock>
+
+For modular builds, import specific CSS files:
+
+<CodeBlock>
+
+```tsx
+import '@kushagradhawan/kookie-ui/tokens.css';     // Design tokens
+import '@kushagradhawan/kookie-ui/components.css'; // Component styles
+import '@kushagradhawan/kookie-ui/utilities.css';  // Utility classes
+import '@kushagradhawan/kookie-ui/layout.css';     // Layout utilities
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Usage
+
+Import components and start building:
+
+<CodeBlock>
+
+```tsx
+import { Button, Flex, Text, Card, Heading } from '@kushagradhawan/kookie-ui';
+
+export default function MyComponent() {
+  return (
+    <Card size="3" variant="soft">
+      <Flex direction="column" gap="3" p="4">
+        <Heading size="4">Welcome</Heading>
+        <Text size="3" color="gray">
+          Start building with Kookie User Interface components.
+        </Text>
+        <Button size="3" variant="solid">
+          Get Started
+        </Button>
+      </Flex>
+    </Card>
+  );
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Troubleshooting
+
+### CSS
+
+If styles aren't appearing, ensure the CSS import comes before any component imports:
+
+<CodeBlock>
+
+```tsx
+// Correct
+import '@kushagradhawan/kookie-ui/styles.css';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+// Incorrect  
+import { Button } from '@kushagradhawan/kookie-ui';
+import '@kushagradhawan/kookie-ui/styles.css';
+```
+
+</CodeBlock>
+
+### TypeScript
+
+Ensure you have the React types installed:
+
+<CodeBlock buttonsPosition="center">
+
+```bash
+npm install --save-dev @types/react @types/react-dom
+```
+
+</CodeBlock>
+
+### Build Issues
+
+If you encounter PostCSS or build issues, ensure your bundler supports:
+- CSS imports
+- CSS custom properties (CSS variables)
+- CSS nesting (or install a PostCSS plugin)
+
+</Section>

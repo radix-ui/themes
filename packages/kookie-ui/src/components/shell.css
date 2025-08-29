@@ -18,7 +18,9 @@
   --shell-overlay-width: auto;
 }
 @supports (height: 100dvh) {
-  .rt-ShellRoot { block-size: 100dvh; }
+  .rt-ShellRoot {
+    block-size: 100dvh;
+  }
 }
 
 /* Global Header (sticky) */
@@ -27,7 +29,8 @@
   top: 0;
   inset-inline: 0;
   z-index: var(--shell-z-header, 10);
-  block-size: var(--shell-header-height, 64px);
+  height: var(--shell-header-height, 64px);
+  min-height: var(--shell-header-height, 64px);
   display: flex;
   align-items: center;
   background-color: var(--color-panel);
@@ -85,8 +88,6 @@
   overflow: hidden;
 }
 
-
-
 /* Single-markup morph container */
 .rt-ShellSidebarSingle {
   /* Staggered animation: width first, then content fade */
@@ -106,7 +107,8 @@
   /* Exit animation: fade out content first, then collapse width */
   transition:
     opacity var(--motion-duration-small) var(--motion-ease-standard),
-    inline-size var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
+    inline-size var(--motion-duration-small) var(--motion-ease-standard)
+      var(--motion-duration-small);
 }
 
 /* When visible: show content after width settles */

@@ -1,44 +1,87 @@
-# Kookie UI
+# 🍪 KookieUI
 
-**A beautiful React component library built on top of Radix UI Themes.**
+KookieUI is a **design system** – more than a UI toolkit.
+It provides **foundations, components, and patterns** that make it easy to build consistent, accessible, and modern apps.
 
-Kookie UI is a fork of [Radix Themes](https://radix-ui.com/themes) that maintains full API compatibility while introducing enhanced styling, improved accessibility, and additional features for modern web applications.
+Built on top of [Radix](https://radix-ui.com), KookieUI inherits accessibility and composability out of the box, and adds:
 
-## Features
+- 🎨 **Foundations** – spacing, radii, colors, shadows, motion, tokens (coming soon)
+- 🧩 **Components** – accessible, themeable React primitives (coming soon)
+- 🔧 **Patterns** – best practices for common UX flows (coming soon)
+- 🔀 **Composed Components** – opinionated building blocks for speed (coming soon)
+- 📐 **Templates** – real-world starting points (coming soon)
 
-- 🎨 **Enhanced Design System** - Improved styling and visual hierarchy
-- ♿ **Accessibility First** - Built-in ARIA support and keyboard navigation
-- 🚀 **TypeScript Ready** - Full type safety and IntelliSense support
-- 📱 **Responsive** - Mobile-first design with flexible layouts
-- 🎯 **Developer Experience** - Intuitive API and comprehensive documentation
+---
 
-## Quick Start
+## 🚀 Getting Started
+
+### Installation
 
 ```bash
 npm install @kushagradhawan/kookie-ui
+# or
+yarn add @kushagradhawan/kookie-ui
+# or
+pnpm add @kushagradhawan/kookie-ui
 ```
 
+### Usage
+
 ```tsx
-import { Button, Card, Text } from '@kushagradhawan/kookie-ui';
+import { Button } from '@kushagradhawan/kookie-ui';
 
 export default function App() {
-  return (
-    <Card>
-      <Text>Hello from Kookie UI!</Text>
-      <Button>Get Started</Button>
-    </Card>
-  );
+  return <Button>Hello Kookie</Button>;
 }
 ```
 
-## Documentation
+---
 
-Visit our [documentation](https://your-docs-url.com) for comprehensive guides, API references, and examples.
+## 📦 What's Inside?
 
-## Credits
+KookieUI is structured around **five layers**:
 
-This project is built on the excellent foundation of [Radix UI](https://radix-ui.com/) and [Radix Themes](https://radix-ui.com/themes). Thank you to the Radix team for creating such a solid base for modern React applications.
+- **Foundations** → design tokens (spacing, radius, colors, motion)
+- **Components** → core primitives (`Button`, `Avatar`, `Card`, `Dialog`, …)
+- **Patterns** → recipes (loading states, adaptive command bar, forms, …)
+- **Composed Components** → higher-order widgets (`UserCard`, `PropertyControl`, …)
+- **Templates** → pre-built layouts (marketing, dashboards, auth flows)
 
-## License
+---
 
-MIT License - see [LICENSE](./LICENSE) for details.
+## 📖 Documentation
+
+👉 Full docs live at **[docs.kookieui.dev](https://docs.kookieui.dev)** (WIP).
+
+Each component includes:
+
+- API reference
+- Accessibility notes
+- Variants & themes
+- Usage examples
+
+---
+
+## 🛣 Roadmap
+
+KookieUI ships **continuously** – one or more components daily.
+
+### ✅ Already available
+
+- [x] Button
+- [x] IconButton
+- [x] ToggleButton
+- [x] Avatar
+- [x] Card
+
+### 🚧 Coming soon
+
+- Switch, TextField, Toasts, Tabs, Dialog, Table, Command Palette
+- Patterns for loading, notifications, search
+- Composed components and templates
+
+---
+
+## 📜 License
+
+MIT © [Kushagra Dhawan](https://kushagradhawan.com)

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Theme, ThemePanel } from '@kushagradhawan/kookie-ui';
 import './globals.css';
+import { AppShell } from './components/app-shell';
 
 export const metadata: Metadata = {
   title: 'Kookie User Interface',
@@ -16,8 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="blue" grayColor="slate" material="solid" radius="medium">
-          {children}
+        <Theme accentColor="blue" grayColor="gray" material="solid" radius="medium">
+          <AppShell>{children}</AppShell>
           <ThemePanel defaultOpen={false} />
         </Theme>
       </body>

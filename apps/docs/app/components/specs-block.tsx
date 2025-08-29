@@ -165,7 +165,7 @@ const PreviewSection = ({
   // Render with no background (default card styling)
   if (background === 'none') {
     return (
-      <Card size="2" variant="surface">
+      <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4">
           {preview}
         </Flex>
@@ -186,7 +186,7 @@ const PreviewSection = ({
     };
 
     return (
-      <Card size="2" variant="surface">
+      <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
           {preview}
         </Flex>
@@ -206,7 +206,7 @@ const PreviewSection = ({
   };
 
   return (
-    <Card size="2" variant="surface">
+    <Card size="2" variant="soft">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
         {preview}
       </Flex>
@@ -416,7 +416,7 @@ export const SpecsBlock = memo(function SpecsBlock({
   // Fallback rendering without tabs (for backward compatibility)
   if (!showTabs) {
     return (
-      <Box my="8">
+      <Box my="7">
         <Flex direction="column" gap="2">
           <PreviewSection
             preview={preview}
@@ -431,7 +431,7 @@ export const SpecsBlock = memo(function SpecsBlock({
 
   // Primary rendering with tabs for better organization
   return (
-    <Box py="8">
+    <Box my="7">
       <Tabs.Root defaultValue="preview">
         <Tabs.List>
           <Tabs.Trigger value="preview">Preview</Tabs.Trigger>

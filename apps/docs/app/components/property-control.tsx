@@ -134,7 +134,7 @@ function Group({
               {item.type === 'select' ? (
                 <DropdownMenu.Root>
                   <DropdownMenu.Trigger>
-                    <Button size="1" variant="surface" highContrast>
+                    <Button size="1" variant="soft" highContrast>
                       {item.appearance === 'swatch' && <Swatch value={item.value} />}
                       <span style={{ textTransform: 'capitalize' }}>
                         {item.options.find((o) => o.value === item.value)?.label ||

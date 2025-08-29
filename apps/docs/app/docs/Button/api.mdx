@@ -2,21 +2,15 @@ import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image,
 import { ChevronDown, Dot, Check, ChevronRight } from 'lucide-react';
 import { CodeBlock } from '../../components/code-block';
 
-<Section>
-  
-  # API
+<Section size="2">
 
-  Use the Button component to trigger actions throughout your application. The component provides six visual variants to match your interface context, four sizes for different interface densities, and built-in tooltips for enhanced user guidance. **The component automatically handles icon sizing**, supports responsive layouts, and provides accessibility compliance out of the box.
+<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
-</Section>
+# API
 
-<Separator size="4" />
+Use the Button component to trigger actions throughout your application. The component provides six visual variants to match your interface context, four sizes for different interface densities, and built-in tooltips for enhanced user guidance. **The component automatically handles icon sizing**, supports responsive layouts, and provides accessibility compliance out of the box.
 
-<Section>
-
-## Import
-
-<CodeBlock buttonsPosition="center">
+<CodeBlock buttonsPosition="center" >
 
 ```tsx
 import { Button } from '@kushagradhawan/kookie-ui';
@@ -25,13 +19,13 @@ import { Button } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Props
 
-<Callout.Root variant="surface" size="3" color="amber" highContrast mb="9">
+<Callout.Root variant="soft" size="3" color="gray" mb="7">
   <Callout.Text>The `panelBackground` prop is deprecated and will be removed in a future version. Use the `material` prop instead for controlling visual rendering.</Callout.Text>
 </Callout.Root>
 
@@ -100,21 +94,27 @@ import { Button } from '@kushagradhawan/kookie-ui';
   </Table.Root>
 </Box>
 
-<Callout.Root variant="surface" size="3" color="gray" highContrast mt="9">
+<Callout.Root variant="soft" size="3" color="gray" my="7">
   <Callout.Text>The Button component includes comprehensive tooltip props for enhanced user guidance. These props allow you to customize tooltip content, positioning, timing, and behavior.</Callout.Text>
 </Callout.Root>
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Variants
 
 Use the `variant` prop to select the visual style that best matches your interface context. Use `solid` for primary actions, `outline` for secondary actions, and `ghost` for utility functions. Reserve `classic` for elevated experiences. For content-heavy interfaces, prefer `soft` and `surface` variants.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex direction="column" gap="2">
       <Flex gap="2" wrap="wrap" align="center">
@@ -150,15 +150,21 @@ Use the `variant` prop to select the visual style that best matches your interfa
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Sizes
 
 Use the `size` prop to select the button size that matches your interface density. Use size `1` (24px) for dense interfaces, size `2` (32px) for standard contexts, size `3` (40px) for important actions, and size `4` (48px) for hero sections. For mobile, prefer size `3` or `4` for adequate touch targets. The `size` prop supports responsive objects: `{ initial: '1', sm: '2', md: '3', lg: '4' }`.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="solid" size="1">Button</Button>
@@ -187,32 +193,38 @@ Use the `size` prop to select the button size that matches your interface densit
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Colors
 
 Use the `color` prop with semantic colors to communicate the action's intent to users. Choose `green` for success actions like confirmations and approvals, `red` for destructive actions like deletions and cancellations, `amber` for warnings that require user attention, `blue` for informational actions like "Learn more" or "View details", and `gray` for neutral actions like "Cancel" or "Back".
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
-      <Button size="3" color="green" variant="surface">Green</Button>
-      <Button size="3" color="red" variant="surface">Red</Button>
-      <Button size="3" color="amber" variant="surface">Amber</Button>
-      <Button size="3" color="blue" variant="surface">Blue</Button>
-      <Button size="3" color="gray" variant="surface">Gray</Button>
+      <Button size="3" color="green" variant="soft">Green</Button>
+      <Button size="3" color="red" variant="soft">Red</Button>
+      <Button size="3" color="amber" variant="soft">Amber</Button>
+      <Button size="3" color="blue" variant="soft">Blue</Button>
+      <Button size="3" color="gray" variant="soft">Gray</Button>
     </Flex>
   }
 >
 
 ```tsx
-<Button size="3" color="green" variant="surface">Green</Button>
-<Button size="3" color="red" variant="surface">Red</Button>
-<Button size="3" color="amber" variant="surface">Amber</Button>
-<Button size="3" color="blue" variant="surface">Blue</Button>
-<Button size="3" color="gray" variant="surface">Gray</Button>
+<Button size="3" color="green" variant="soft">Green</Button>
+<Button size="3" color="red" variant="soft">Red</Button>
+<Button size="3" color="amber" variant="soft">Amber</Button>
+<Button size="3" color="blue" variant="soft">Blue</Button>
+<Button size="3" color="gray" variant="soft">Gray</Button>
 ```
 
 </CodeBlock>
@@ -224,6 +236,12 @@ Set the `highContrast` prop to `true` when you need to ensure maximum visibility
 For elevated interfaces with translucent materials, always use `highContrast` to maintain readability and ensure proper visual separation from the background.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button color="gray" size="3">Button</Button>
@@ -241,9 +259,9 @@ For elevated interfaces with translucent materials, always use `highContrast` to
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Material
 
@@ -256,7 +274,7 @@ For translucent effects to be visible, buttons must appear over images or dynami
 Buttons automatically inherit the theme's material setting. Wrap your interface in a `Theme` component to control material globally:
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1754973838312-c6bd180d22d5?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1693230772696-71029feb9b07?q=80&w=3435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -286,7 +304,7 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 Override the theme's material setting for individual buttons when you need specific visual effects. Remember that translucent effects are only visible over backgrounds, and you should use `highContrast` with translucent materials to maintain readability.
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1754973838312-c6bd180d22d5?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1693230772696-71029feb9b07?q=80&w=3435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -303,19 +321,19 @@ Override the theme's material setting for individual buttons when you need speci
 >
 
 ```tsx
-<Button highContrast size="4" color="gray" variant="classic" material="translucent">Button</Button>
-<Button size="4" color="gray" variant="solid" material="translucent">Button</Button>
-<Button highContrast size="4" color="gray" variant="soft" material="translucent">Button</Button>
-<Button highContrast size="4" color="gray" variant="surface" material="translucent">Button</Button>
+<Button material="translucent" size="4" color="gray" highContrast variant="classic">Button</Button>
+<Button material="translucent" size="4" color="gray" highContrast variant="solid">Button</Button>
+<Button material="translucent" size="4" color="gray" highContrast variant="soft">Button</Button>
+<Button material="translucent" size="4" color="gray" highContrast variant="surface">Button</Button>
 ```
 
 </CodeBlock>
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## States
 
@@ -326,6 +344,12 @@ Set the `loading` prop to `true` to show a spinner and disable interaction durin
 You don't need to manually set `disabled` when using `loading` - the component handles this automatically.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button size="3" color="gray" highContrast>Submit</Button>
@@ -348,6 +372,12 @@ Set the `disabled` prop to `true` to prevent interaction when an action is curre
 Always provide clear visual feedback about why a button is disabled, either through tooltips or surrounding text.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button size="3">Save</Button>
@@ -368,6 +398,12 @@ Always provide clear visual feedback about why a button is disabled, either thro
 Buttons automatically handle focus states for keyboard navigation. For complex UI patterns like dropdowns and toggles, use the `data-state` attribute to apply specific visual treatments.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex direction="column" gap="3" align="center">
       <Flex gap="2" align="center">
@@ -399,9 +435,9 @@ Buttons automatically handle focus states for keyboard navigation. For complex U
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Layout
 
@@ -410,16 +446,22 @@ Buttons automatically handle focus states for keyboard navigation. For complex U
 Set the `fullWidth` prop to `true` when you want the button to expand and fill its container. This is particularly useful for mobile layouts and form submissions where you want to maximize the touch target area and create a clear visual hierarchy.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex direction="column" gap="2" width="300px">
-      <Button size="3" color="blue" fullWidth>Complete</Button>
+      <Button size="3" fullWidth>Complete</Button>
     </Flex>
   }
 >
 
 ```tsx
 <Flex direction="column" gap="2" width="300px">
-  <Button size="3" color="blue" fullWidth>Complete</Button>
+  <Button size="3" fullWidth>Complete</Button>
 </Flex>
 ```
 
@@ -430,6 +472,12 @@ Set the `fullWidth` prop to `true` when you want the button to expand and fill i
 Set the `flush` prop to `true` with the `ghost` variant to remove visual padding for seamless text integration. This is useful when you want the button to appear as inline text while maintaining its interactive behavior.
 
 <CodeBlock buttonsPosition="center"
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex direction="column" gap="3">
       <Flex gap="2" align="center"><Button size="3" color="blue" variant="ghost" flush>Learn</Button> about us.</Flex>
@@ -445,9 +493,9 @@ Set the `flush` prop to `true` with the `ghost` variant to remove visual padding
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Margin
 
@@ -455,15 +503,21 @@ Use margin props to control spacing around buttons. All margin props are respons
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Tooltips
 
 Use the `tooltip` prop to provide additional context for button actions, especially for icon buttons or actions that might not be immediately clear to users. Tooltips appear on hover and focus, making them accessible to both mouse and keyboard users. For icon-only buttons, always provide a tooltip to explain the action.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button variant="soft" size="3" tooltip="Save your current progress">Button</Button>
@@ -485,15 +539,21 @@ Use the `tooltip` prop to provide additional context for button actions, especia
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Icons
 
 Place icons directly inside buttons without manual sizing. The component automatically sizes icons based on the button's size prop to maintain visual consistency across your interface. For icon-only buttons, use the `IconButton` component instead to ensure proper accessibility and touch targets.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button size="3"><Check />Save</Button>
@@ -512,6 +572,12 @@ Place icons directly inside buttons without manual sizing. The component automat
 For icon-only buttons, use `IconButton` instead:
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button size="3"><ChevronDown />Options</Button>
@@ -529,9 +595,9 @@ For icon-only buttons, use `IconButton` instead:
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Polymorphism
 
@@ -540,6 +606,12 @@ For icon-only buttons, use `IconButton` instead:
 Use the `as` prop to render buttons as different HTML elements while maintaining button styling. This is useful for navigation links, routing integration, or custom interactive elements that need button appearance.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button size="3" as="a" href="/home">Go Home</Button>
@@ -562,6 +634,12 @@ Use the `as` prop to render buttons as different HTML elements while maintaining
 Use the `asChild` prop to merge button props with a child element using the Radix Slot pattern. This is ideal for composition with routing libraries like Next.js Link or React Router, as it applies button styling without creating an additional wrapper element.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="4" align="center">
       <Button size="3" asChild><a href="/dashboard">Go to Dashboard</a></Button>
@@ -579,15 +657,21 @@ Use the `asChild` prop to merge button props with a child element using the Radi
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Responsive
 
 Use responsive objects with the `size` prop to adapt button sizing across different breakpoints. The component uses a mobile-first approach where each breakpoint applies styles at its minimum width and above.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
       <Button size={{ initial: '1', sm: '2', md: '3', lg: '4' }}>Button</Button>
   }
@@ -609,15 +693,21 @@ Use responsive objects with the `size` prop to adapt button sizing across differ
 
 </Section>
 
-<Separator size="4" />
 
-<Section>
+
+<Section size="2">
 
 ## Form
 
 Use standard HTML form attributes to integrate buttons with forms. The component supports all form attributes for comprehensive form integration, including loading states for async operations and validation-based disabled states.
 
 <CodeBlock
+background="dots"
+backgroundProps={{
+    dotSize: 20,
+    width: '100%',
+    color: 'var(--gray-7)',
+  }}
   preview={
     <Flex gap="2" align="center">
       <Button type="submit" size="3">Submit</Button>
