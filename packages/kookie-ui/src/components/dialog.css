@@ -1,13 +1,13 @@
 @import './_internal/base-dialog.css';
 
 /* Add blur effect to Dialog overlay */
-.rt-BaseDialogOverlay.rt-DialogOverlay::before {
+.rt-DialogOverlay::before {
   backdrop-filter: var(--backdrop-filter-components) !important;
 }
 
 /* Safari backdrop-filter fallback */
 @supports not (backdrop-filter: blur(1px)) {
-  .rt-BaseDialogOverlay.rt-DialogOverlay::before {
+  .rt-DialogOverlay::before {
     backdrop-filter: none !important;
   }
 }

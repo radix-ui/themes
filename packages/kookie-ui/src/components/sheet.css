@@ -55,14 +55,14 @@
 }
 
 /* Overlay adjustments: avoid double-fade jank from base dialog */
-.rt-BaseDialogOverlay.rt-SheetOverlay::before {
+.rt-SheetOverlay::before {
   opacity: 1 !important;
   backdrop-filter: var(--backdrop-filter-components) !important;
 }
 
 /* Safari backdrop-filter fallback */
 @supports not (backdrop-filter: blur(1px)) {
-  .rt-BaseDialogOverlay.rt-SheetOverlay::before {
+  .rt-SheetOverlay::before {
     backdrop-filter: none !important;
   }
 }
