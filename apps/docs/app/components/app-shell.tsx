@@ -1,8 +1,16 @@
 'use client';
 
 import React from 'react';
-import { Shell, Flex, Sidebar, Avatar, Link as KookieLink, Badge } from '@kushagradhawan/kookie-ui';
-import { usePathname } from 'next/navigation';
+import {
+  Shell,
+  Flex,
+  Sidebar,
+  Avatar,
+  Link as KookieLink,
+  Badge,
+  Text,
+} from '@kushagradhawan/kookie-ui';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
 
@@ -12,9 +20,9 @@ const navigationItems = [
     type: 'section' as const,
     title: 'Start',
     items: [
+      { href: '/docs', title: 'Introduction', badge: undefined },
       { href: '/', title: 'Overview', badge: undefined },
       { href: '/installation', title: 'Installation', badge: undefined },
-      { href: '/docs', title: 'Introduction', badge: undefined },
     ],
   },
   {
@@ -27,147 +35,6 @@ const navigationItems = [
         title: 'Accordion',
         badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
       },
-      {
-        href: '/docs/alert-dialog',
-        title: 'Alert Dialog',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/avatar',
-        title: 'Avatar',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/badge',
-        title: 'Badge',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/callout',
-        title: 'Callout',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/card',
-        title: 'Card',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/checkbox',
-        title: 'Checkbox',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/dialog',
-        title: 'Dialog',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/dropdown-menu',
-        title: 'Dropdown Menu',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/heading',
-        title: 'Heading',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/icon-button',
-        title: 'Icon Button',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/popover',
-        title: 'Popover',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/progress',
-        title: 'Progress',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/radio',
-        title: 'Radio',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/select',
-        title: 'Select',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/slider',
-        title: 'Slider',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/switch',
-        title: 'Switch',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/table',
-        title: 'Table',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/tabs',
-        title: 'Tabs',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/text',
-        title: 'Text',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/text-area',
-        title: 'Text Area',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/text-field',
-        title: 'Text Field',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/tooltip',
-        title: 'Tooltip',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-    ],
-  },
-  {
-    type: 'section' as const,
-    title: 'Layout',
-    items: [
-      {
-        href: '/docs/box',
-        title: 'Box',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/container',
-        title: 'Container',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/flex',
-        title: 'Flex',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/grid',
-        title: 'Grid',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
-      {
-        href: '/docs/section',
-        title: 'Section',
-        badge: { content: 'Soon', variant: 'soft' as const, color: 'gray' as const },
-      },
     ],
   },
 ];
@@ -176,14 +43,17 @@ const navigationItems = [
 function AppHeader() {
   return (
     <Flex align="center" justify="between" width="100%" px="4">
-      <Flex align="center" gap="2">
-        <Avatar color="gray" size="2" src="/logo-dark-large.png" fallback="KD" asChild>
-          <Link href="/" />
-        </Avatar>
-        <Badge size="2" variant="soft" color="orange">
-          Beta
-        </Badge>
-      </Flex>
+      <Link href="/" aria-label="Kushagra Dhawan - Homepage">
+        <Flex align="center" gap="2">
+          <Avatar color="gray" size="1" src="/logo-dark-large.png" fallback="KD" />
+          {/* <Badge size="1" variant="soft" color="orange" highContrast>
+            Beta
+          </Badge> */}
+          <Text size="4" weight="medium">
+            Kookie UI.
+          </Text>
+        </Flex>
+      </Link>
       <DarkModeToggle />
     </Flex>
   );
@@ -192,6 +62,7 @@ function AppHeader() {
 // Sidebar content component
 function AppSidebarContent() {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <Sidebar.Root size="2" variant="ghost" color="gray">
@@ -204,11 +75,11 @@ function AppSidebarContent() {
                 {section.items.map((item) => (
                   <Sidebar.MenuItem key={item.href}>
                     <Sidebar.MenuButton
-                      asChild
                       isActive={pathname === item.href}
                       badge={item.badge}
+                      onClick={() => router.push(item.href)}
                     >
-                      <Link href={item.href}>{item.title}</Link>
+                      {item.title}
                     </Sidebar.MenuButton>
                   </Sidebar.MenuItem>
                 ))}

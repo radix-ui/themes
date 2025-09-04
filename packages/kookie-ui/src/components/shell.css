@@ -137,3 +137,19 @@
 :where(.rt-SheetContent) :where(.rt-ShellSidebarPanel) {
   transition: none !important;
 }
+
+/* Overlay mode: ensure sidebar content has proper styling when rendered in Sheet */
+:where(.rt-SheetContent) :where(.rt-SidebarRoot) {
+  height: 100%;
+  width: 100%;
+}
+
+:where(.rt-SheetContent) :where(.rt-SidebarContainer) {
+  height: 100%;
+  width: 100%;
+}
+
+:where(.rt-SheetContent) :where(.rt-SidebarContent) {
+  height: 100%;
+  width: 100%;
+}

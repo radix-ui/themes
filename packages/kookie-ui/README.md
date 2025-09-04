@@ -102,7 +102,7 @@ npm install @kushagradhawan/kookie-ui@latest
 
 Since Kookie UI maintains API compatibility with Radix UI Themes, you can refer to the comprehensive [Radix UI Themes documentation](https://radix-ui.com/themes/docs) for component usage, props, and examples.
 
-For Kookie UI specific changes and enhancements, see our [GitHub repository](https://github.com/kushagradhawan/HelloKookie).
+For Kookie UI specific changes and enhancements, see our [GitHub repository](https://github.com/kushagradhawan/kookie-ui).
 
 ## License
 
@@ -112,9 +112,9 @@ This project is a fork of [Radix UI Themes](https://github.com/radix-ui/themes).
 
 ## Contributing
 
-Contributions are welcome! Please see our [contributing guidelines](https://github.com/kushagradhawan/HelloKookie/blob/main/CONTRIBUTING.md) for details.
+Contributions are welcome! Please see our [contributing guidelines](https://github.com/kushagradhawan/kookie-ui/blob/main/CONTRIBUTING.md) for details.
 
 ## Support
 
-- [GitHub Issues](https://github.com/kushagradhawan/HelloKookie/issues)
-- [Discussions](https://github.com/kushagradhawan/HelloKookie/discussions)
+- [GitHub Issues](https://github.com/kushagradhawan/kookie-ui/issues)
+- [Discussions](https://github.com/kushagradhawan/kookie-ui/discussions)

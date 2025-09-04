@@ -55,7 +55,17 @@
 }
 
 /* Overlay adjustments: avoid double-fade jank from base dialog */
-:where(.rt-SheetOverlay)::before { opacity: 1; }
+.rt-BaseDialogOverlay.rt-SheetOverlay::before {
+  opacity: 1 !important;
+  backdrop-filter: var(--backdrop-filter-components) !important;
+}
+
+/* Safari backdrop-filter fallback */
+@supports not (backdrop-filter: blur(1px)) {
+  .rt-BaseDialogOverlay.rt-SheetOverlay::before {
+    backdrop-filter: none !important;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   /* Override base dialog animations specifically for Sheet */
@@ -72,19 +82,37 @@
     animation-fill-mode: both;
   }
 
-  .rt-SheetContent:where([data-state='open'][data-side='start']) { animation-name: rt-sheet-open-from-start, rt-fade-in !important; }
-  .rt-SheetContent:where([data-state='closed'][data-side='start']) { animation-name: rt-sheet-close-to-start, rt-fade-out !important; }
+  .rt-SheetContent:where([data-state='open'][data-side='start']) {
+    animation-name: rt-sheet-open-from-start, rt-fade-in !important;
+  }
+  .rt-SheetContent:where([data-state='closed'][data-side='start']) {
+    animation-name: rt-sheet-close-to-start, rt-fade-out !important;
+  }
 
-  .rt-SheetContent:where([data-state='open'][data-side='end']) { animation-name: rt-sheet-open-from-end, rt-fade-in !important; }
-  .rt-SheetContent:where([data-state='closed'][data-side='end']) { animation-name: rt-sheet-close-to-end, rt-fade-out !important; }
+  .rt-SheetContent:where([data-state='open'][data-side='end']) {
+    animation-name: rt-sheet-open-from-end, rt-fade-in !important;
+  }
+  .rt-SheetContent:where([data-state='closed'][data-side='end']) {
+    animation-name: rt-sheet-close-to-end, rt-fade-out !important;
+  }
 
-  .rt-SheetContent:where([data-state='open'][data-side='top']) { animation-name: rt-sheet-open-from-top, rt-fade-in !important; }
-  .rt-SheetContent:where([data-state='closed'][data-side='top']) { animation-name: rt-sheet-close-to-top, rt-fade-out !important; }
+  .rt-SheetContent:where([data-state='open'][data-side='top']) {
+    animation-name: rt-sheet-open-from-top, rt-fade-in !important;
+  }
+  .rt-SheetContent:where([data-state='closed'][data-side='top']) {
+    animation-name: rt-sheet-close-to-top, rt-fade-out !important;
+  }
 
-  .rt-SheetContent:where([data-state='open'][data-side='bottom']) { animation-name: rt-sheet-open-from-bottom, rt-fade-in !important; }
-  .rt-SheetContent:where([data-state='closed'][data-side='bottom']) { animation-name: rt-sheet-close-to-bottom, rt-fade-out !important; }
+  .rt-SheetContent:where([data-state='open'][data-side='bottom']) {
+    animation-name: rt-sheet-open-from-bottom, rt-fade-in !important;
+  }
+  .rt-SheetContent:where([data-state='closed'][data-side='bottom']) {
+    animation-name: rt-sheet-close-to-bottom, rt-fade-out !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rt-SheetContent { animation: none !important; }
+  .rt-SheetContent {
+    animation: none !important;
+  }
 }

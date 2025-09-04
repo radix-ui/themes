@@ -3,7 +3,7 @@ import { CodeBlock } from '../components/code-block';
 
 <Section size="2">
 
-<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Badge size="2" variant="soft" color="orange" highContrast style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
 # Installation
 
@@ -162,6 +162,8 @@ For Remix projects, import the CSS in your root component:
 
 ```tsx
 // app/root.tsx
+import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import { LinksFunction } from '@remix-run/node';
 import { Theme } from '@kushagradhawan/kookie-ui';
 import styles from '@kushagradhawan/kookie-ui/styles.css';
 
@@ -236,8 +238,8 @@ Kookie User Interface works with React 16.8+ through React 19:
 ```json
 {
   "peerDependencies": {
-    "react": "16.8 || ^17.0 || ^18.0 || ^19.0",
-    "react-dom": "16.8 || ^17.0 || ^18.0 || ^19.0"
+    "react": "16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+    "react-dom": "16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
   }
 }
 ```

@@ -3,12 +3,12 @@
 /* Sidebar Provider - handles positioning */
 .rt-SidebarProvider {
   /* Positioning based on side */
-  &:where([data-side="left"]) {
+  &:where([data-side='left']) {
     /* Left side is default - no additional positioning needed */
     order: -1; /* Ensure it appears first in flex container */
   }
-  
-  &:where([data-side="right"]) {
+
+  &:where([data-side='right']) {
     /* Position on the right side */
     order: 999; /* Push to end in flex container */
   }
@@ -18,7 +18,7 @@
 .rt-SidebarRoot {
   --sidebar-width: 16rem; /* Fixed width */
   --sidebar-base-border-radius: 0; /* Default to no radius */
-  
+
   width: var(--sidebar-width);
   height: 100%;
   flex-shrink: 0;
@@ -34,13 +34,13 @@
   }
 
   /* Floating type - ONLY visual changes */
-  &:where([data-type="floating"]) {
+  &:where([data-type='floating']) {
     border-radius: var(--sidebar-base-border-radius);
     margin: var(--space-2);
     height: calc(100% - var(--space-4));
     overflow: visible; /* Ensure shadow is not clipped */
     position: relative; /* Ensure proper stacking context for floating sidebars */
-    
+
     /* Ensure Theme wrapper has proper border radius in floating mode */
     & :where(.radix-themes) {
       border-radius: inherit;
@@ -49,14 +49,14 @@
 }
 
 /* Set border radius for floating sidebars based on size - set on the root where it's used */
-.rt-SidebarRoot:where([data-type="floating"]) {
+.rt-SidebarRoot:where([data-type='floating']) {
   /* Default radius for floating sidebars */
   --sidebar-base-border-radius: var(--radius-5);
-  
+
   &:where(.rt-r-size-1) {
     --sidebar-base-border-radius: var(--radius-5);
   }
-  
+
   &:where(.rt-r-size-2) {
     --sidebar-base-border-radius: var(--radius-6);
   }
@@ -133,9 +133,9 @@
   margin: var(--space-2) 0;
 }
 
-/* Responsive behavior */
+/* Responsive behavior - only hide when not in Sheet overlay mode */
 @media (max-width: 768px) {
-  .rt-SidebarRoot {
+  .rt-SidebarRoot:not(:where(.rt-SheetContent .rt-SidebarRoot)) {
     display: none;
   }
-} 
+}

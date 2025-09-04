@@ -121,7 +121,7 @@ const ComponentPage = memo(function ComponentPage({
           )}
 
           {/* Documentation Content */}
-          <Box px="8" style={contentAreaStyle} data-content-area>
+          <Box px={{ initial: '4', sm: '6', md: '8' }} style={contentAreaStyle} data-content-area>
             {renderContent()}
           </Box>
         </Flex>

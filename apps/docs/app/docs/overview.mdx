@@ -1,14 +1,22 @@
-import { Section, Badge, Image, Flex, Text } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Image, Flex, Text, Callout } from '@kushagradhawan/kookie-ui';
 
 <Section size="2">
 
-<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
 # Overview
 
-Kookie User Interface is a design system built for teams who want to ship consistent, accessible interfaces without sacrificing speed or flexibility. Think of it as a foundation that handles the boring parts—spacing, colors, interaction patterns—so you can focus on what makes your product unique.
+Kookie UI didn’t begin as a product. It began as a set of changes I kept making while trying to ship features quickly at Womp.  
 
-Unlike component libraries that dump a box of pieces on your desk, Kookie User Interface starts with patterns. We define clear rules for how interfaces should behave, then provide components that make those rules effortless to follow. This approach comes from building Womp, a complex 3D design tool where interface consistency isn't optional—it's survival.
+Radix gave me a strong foundation — primitives that were accessible, solid defaults, and APIs I liked using. But as I worked with it every day, I ran into small gaps. A “surface” button didn’t behave the same way as a “surface” card. One component supported `panelBackground`, another didn’t. Sizes scaled differently depending on which component you picked. None of these were “flaws.” They just weren’t systematic enough for what we needed.  
+
+Kookie UI is me trying to make those rules systematic. Instead of patching each issue as it came up, I began codifying patterns so the same decisions didn’t have to be made over and over again.  
+
+The goal isn’t to replace Radix, or to claim I’ve built something better. The goal is to stand on Radix and extend it into a system that feels coherent across every layer of an application. That means fewer surprises, fewer inconsistencies, and more trust that the components you use will behave as expected.  
+
+<Callout.Root variant="soft" size="3" color="gray" mt="7">
+  <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
+</Callout.Root>
 
 </Section>
 
@@ -16,11 +24,11 @@ Unlike component libraries that dump a box of pieces on your desk, Kookie User I
 
 ## Additions
 
-Kookie User Interface ships with everything you need to build consistent interfaces: a complete foundation of spacing, color, and motion tokens, plus production-ready components that implement proven patterns.
+Kookie UI includes the same foundations you’d expect — spacing tokens, color tokens, motion tokens — but rebuilt systematically. On top of that, it ships with components that apply those rules consistently, so teams don’t have to remember them case by case.  
 
-The density system adapts interfaces from compact SaaS tools to touch-friendly mobile flows through four size scales. The shell architecture provides structural patterns for complex applications—sidebars, content areas, panels, and toolbars that work together predictably.
+The density system adapts from compact SaaS layouts to touch-friendly mobile flows with four predictable size scales. The shell architecture gives you structural patterns for sidebars, panels, and toolbars that actually work together, rather than being independent pieces you have to glue yourself.  
 
-Every component ships with complete documentation, API references, and implementation guidance. This isn't a playground or experiment—it's a system proven in production at Womp, where interface reliability directly impacts user success.
+Every component comes with documentation and API references, because this isn’t just an experiment. It’s already being tested in production at Womp, where inconsistency isn’t a cosmetic issue — it directly affects whether users can succeed or not.  
 
 </Section>
 
@@ -28,71 +36,63 @@ Every component ships with complete documentation, API references, and implement
 
 ## Radix Relationship
 
-Kookie User Interface is a comprehensive fork of [Radix Themes](https://radix-ui.com/themes), not just a wrapper around [Radix UI](https://radix-ui.com) primitives. We took the foundation and extensively rewrote the entire design system to create a more modern, systematic approach to interface design.
+Kookie UI is a fork of [Radix Themes](https://radix-ui.com/themes), not just a wrapper around [Radix UI](https://radix-ui.com) primitives. Radix gave me strong building blocks, but it didn’t try to be a full design system. That’s where I stepped in.  
 
-### Preserved
+### What Stayed
 
-**Component Architecture:** The solid component foundation and accessibility patterns from Radix UI primitives remain unchanged. Every component maintains the same robust accessibility, keyboard navigation, and screen reader support that makes Radix UI exceptional.
+I didn’t throw away what worked.  
 
-**API Patterns:** Familiar prop patterns and polymorphic rendering through `asChild` provide the same developer experience you expect from Radix components.
+- **Component foundation.** The accessibility and keyboard/screen reader support from Radix UI primitives remain intact.  
+- **API style.** Familiar prop patterns, polymorphic `asChild` rendering, and overall developer experience are unchanged.  
 
-### Enhanced
+### What Changed
 
-**Design Token System:** Completely rebuilt from Radix Themes' original 9-point scales to comprehensive 12-point progressions with modern values optimized for contemporary interfaces.
+What I did rebuild were the parts that didn’t feel systematic:  
 
-**Material System:** Replaced Radix Themes' limited `panelBackground` support with universal material support across every component. Any component—buttons, dialogs, panels—can use `material="translucent"` for consistent layering behavior.
+- **Design tokens.** Radix’s 9-point scales were useful, but scattered with exceptions. I rewrote them into 12-point progressions with predictable steps for spacing, radius, and shadows.  
+- **Material system.** Instead of `panelBackground` (limited to a few components), Kookie UI uses a universal material system. Every component understands translucency vs. solidity, with both theme-level defaults and per-component overrides.  
+- **Sizing.** Cards, buttons, dropdowns, selects, and avatars all follow the same scale now. A size-1 button actually looks right inside a size-1 card.  
+- **Icons.** Icon sizing is consistent across components. Segmented controls, selects, dropdowns, and buttons follow the same logic.  
+- **Accessibility details.** I added native tooltip support, stricter aria-label enforcement for icon buttons, and small but meaningful improvements throughout.  
+- **Motion.** Transition patterns are unified, so you don’t see one component glide while another snaps instantly.  
 
-**Color Foundation:** Built on Radix Colors but extensively rewritten with enhanced modern aesthetics while maintaining the 12-step progression and automatic dark mode variants.
-
-**Shadow System:** Expanded to 6 elevation tokens that handle all depth relationships, from inset shadows to maximum elevation for critical dialogs.
-
-<Flex justify="center" align="center" my="7">
-  <Image
-    src="https://images.unsplash.com/photo-1729194627786-d577f63f2788?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    alt="Radix Themes comparison"
-    width="100%"
-    maxWidth="100%"
-    fit="cover"
-  />
-</Flex>
+None of this means Radix did something wrong. Radix provided a toolkit. Kookie UI extends it into a design system.  
 
 </Section>
 
 <Section size="2">
 
-## Key Enhancements
+## Enhancements
 
-### Enhanced Token Scales
+### Beyond UI Components
 
-**Space System:** Expanded from Radix Themes' 9-point scale to a comprehensive 12-point progression with compact, standard, and large scales for different interface contexts.
+Kookie UI tries to go further than just buttons and inputs.  
 
-**Radius System:** Rebuilt to match the space progression with enhanced visual refinement and automatic component-appropriate radius selection.
+- **Layout patterns.** Shells, split views, column layouts, and sidebars that behave predictably together. These aren’t extra components — they’re structural patterns that help build real applications.  
+- **Modern components.** Toggle buttons, AI chat bars, and other elements that reflect how products are actually built today.  
+- **Typography.** Expanded scales and weights so type feels consistent across contexts, not improvised.  
 
-### Universal Material Support
+### Token Systems
 
-Unlike Radix Themes' table/card-only material support, every Kookie UI component supports the `material` prop:
+- **Space.** Extended to 12 steps for compact and large interfaces, instead of being stuck with one rhythm.  
+- **Radius.** Scales match spacing, which makes rounded corners feel deliberate instead of arbitrary.  
+- **Color.** Simplified tokens that still follow a 12-step progression, with automatic dark mode support.  
 
-- **Theme-level control:** Set global material behavior
-- **Component overrides:** Individual components can override theme settings
-- **Context-aware values:** Buttons, dialogs, and panels automatically use appropriate translucency levels
-- **Backward compatibility:** Graceful deprecation of `panelBackground`
+### Universal Material
 
-### Production Enhancements
+Every component supports a `material` prop:  
 
-**Developer Experience:** Comprehensive TypeScript support, extensive JSDoc documentation, and predictable API patterns that scale from simple components to complex application shells.
+- **Theme-level defaults.** Set the global look (translucent or solid).  
+- **Component overrides.** Change behavior per component when needed.  
+- **Context awareness.** Dialogs, panels, and buttons each have sensible defaults.  
+- **Elevation.** Material isn’t just visual — it communicates depth and layering.  
+- **Deprecation path.** `panelBackground` is replaced gradually, not abruptly.  
 
-**Layout Patterns:** Margin-agnostic components with systematic internal padding, responsive props, and touch-friendly scaling without separate mobile components.
+### Production Use
 
-**Motion Design:** Functional spring animations that respect user preferences and prioritize usability over decoration.
-
-<Flex justify="center" align="center" my="7">
-  <Image
-    src="https://images.unsplash.com/photo-1729194627786-d577f63f2788?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    alt="Enhanced features showcase"
-    width="100%"
-    maxWidth="100%"
-    fit="cover"
-  />
-</Flex>
+- **Developer experience.** TypeScript, JSDoc, and familiar APIs.  
+- **Accessibility.** Native tooltips, aria-label enforcement, consistent keyboard navigation.  
+- **Interactions.** Unified icon sizes, smooth transitions, predictable states.  
+- **Margin-agnostic.** Components don’t assume layout spacing. They just fit.  
 
 </Section>

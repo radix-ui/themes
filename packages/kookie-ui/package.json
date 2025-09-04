@@ -160,12 +160,12 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
   },
-  "homepage": "https://github.com/kushagradhawan/HelloKookie",
+  "homepage": "https://github.com/kushagradhawan/kookie-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kushagradhawan/HelloKookie.git"
+    "url": "git+https://github.com/kushagradhawan/kookie-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/kushagradhawan/HelloKookie/issues"
+    "url": "https://github.com/kushagradhawan/kookie-ui/issues"
   }
 }

@@ -25,24 +25,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <Heading as="h1" size="9" weight="medium">
           {children}
         </Heading>
-        <Separator size="4" />
       </Flex>
     ),
     h2: ({ children }) => (
       <Flex direction="column" gap="4" mb="7" mt="2">
-        <Heading as="h2" size="8" weight="medium">
+        <Heading as="h2" size="7" weight="medium">
           {children}
         </Heading>
-        <Separator size="4" />
       </Flex>
     ),
     h3: ({ children }) => (
-      <Heading as="h3" size="7" mt="9" mb="5" weight="medium">
+      <Heading as="h3" size="6" mt="9" mb="5" weight="medium">
         {children}
       </Heading>
     ),
     h4: ({ children }) => (
-      <Heading as="h4" size="4" mb="5" weight="medium">
+      <Heading as="h4" size="3" mb="5" weight="medium">
         {children}
       </Heading>
     ),
@@ -52,7 +50,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Heading>
     ),
     h6: ({ children }) => (
-      <Heading as="h6" size="4" mb="3" weight="medium">
+      <Heading as="h6" size="3" mb="3" weight="medium">
         {children}
       </Heading>
     ),

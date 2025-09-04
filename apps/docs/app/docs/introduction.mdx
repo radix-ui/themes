@@ -2,15 +2,15 @@ import { Section, Badge } from '@kushagradhawan/kookie-ui';
 
 <Section size="2">
 
-<Badge size="2" variant="soft" color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
 # Introduction
 
-Most component libraries give you a toolbox and expect you to figure out how the tools work together. We think that's backwards. Kookie User Interface starts with proven patterns—how actions should feel, how overlays should behave, how navigation should flow—then builds components that make those patterns automatic.
+Most component libraries hand you a box of parts and leave the real decisions up to you. That sounds flexible, but in practice it means every team ends up re-deciding the same things: how should overlays behave, what counts as a primary action, what’s the right way to handle motion, or which size an icon should actually be.  
 
-This isn't theory. It's how we build Womp, where interface complexity demands bulletproof foundations. When you're managing 3D scenes with dozens of panels, buttons, and controls, every inconsistency becomes user friction. The system has to work without thinking about it.
+Kookie UI starts earlier in the chain. It begins with patterns — the rules that govern interaction, hierarchy, density, and rhythm — and then provides components that follow those rules automatically. The components exist to make the patterns easy to apply, not to replace the thinking behind them.  
 
-The result feels more like Apple's Human Interface Guidelines than a typical React library. We make decisions so you don't have to. The components follow established patterns, handle accessibility automatically, and scale from dense tool interfaces to touch-friendly mobile flows through a single size system.
+This isn’t about flashy new UI. It’s about reducing friction. Interfaces feel better when spacing, colors, transitions, and accessibility work the same way everywhere. Kookie UI tries to codify those boring but essential details so teams don’t have to keep patching them one component at a time.  
 
 </Section>
 
@@ -18,11 +18,17 @@ The result feels more like Apple's Human Interface Guidelines than a typical Rea
 
 ## Roadmap
 
-Kookie User Interface evolves continuously based on real product needs. We ship components when they meet production standards, not arbitrary deadlines.
+Kookie UI isn’t shipped in one go. It grows gradually, based on what feels stable enough to use in real products. Components are released when they meet that standard, not on arbitrary timelines.  
 
-Next up: comprehensive input components (TextField, TextArea, Switch, Checkbox, Radio), navigation patterns (Tabs, Toolbar, Command Palette), and system experiences (Dialog, Drawer, Popover). Rich data components like virtualized Tables follow, along with composed components like UserCard and PropertyControl that solve common interface problems.
+What’s coming next:  
 
-Templates for marketing sites, dashboards, authentication flows, and AI interfaces will provide complete starting points for common application patterns.
+- Core input components: **TextField, TextArea, Switch, Checkbox, Radio**  
+- Navigation patterns: **Tabs, Toolbar, Command Palette**  
+- System experiences: **Dialog, Drawer, Popover**  
+- Data components: **Tables** (with virtualization support)  
+- Composed patterns: **UserCard, PropertyControl** and other small but recurring interface needs  
+
+Longer term, the plan is to ship **templates** for dashboards, marketing sites, authentication flows, and AI interfaces — not as frameworks, but as reliable starting points for common patterns.  
 
 </Section>
 
@@ -30,12 +36,10 @@ Templates for marketing sites, dashboards, authentication flows, and AI interfac
 
 ## Philosophy
 
-We make the boring parts explicit so you can focus on the interesting ones.
+Kookie UI is intentionally boring. It doesn’t try to reinvent interface design or compete with design trends. Instead, it codifies the non-negotiables: spacing systems, semantic colors, accessible defaults, predictable motion, and interaction rules that behave consistently.  
 
-Kookie User Interface is boring by design. It doesn't try to be flashy or reinvent interface patterns. Instead, it codifies the non-negotiables—consistent spacing, semantic colors, accessible interactions, predictable motion—freeing your team to focus on what makes your product unique.
+The idea is simple: once the basics are solid, teams can focus on the parts of the product that actually make it unique. Patterns handle the baseline, components enforce the patterns, and the rest of your product can grow without carrying that overhead.  
 
-When designers control the design tokens and developers consume the system, updates flow automatically from design decisions to production code. This isn't theory. It's how we ship Womp, where interface density and complexity demand a bulletproof foundation.
-
-The result is clarity, consistency, and speed. Your product's personality shines through the foundation, not despite it.
+The result isn’t magic or perfection. It’s a foundation you can trust just enough to spend your energy on higher-level problems.  
 
 </Section>

@@ -48,7 +48,7 @@ export function DarkModeToggle() {
 
   return (
     <IconButton
-      variant="ghost"
+      variant="classic"
       size="2"
       highContrast
       color="gray"
