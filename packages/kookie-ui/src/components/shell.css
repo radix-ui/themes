@@ -1,155 +1,575 @@
 /*
-  Shell Root
-  - Vertical app scaffold with sticky header and flexible body
-  - Avoid margins; rely on flex/grid gaps and padding tokens only
+  Shell Layout System
+  - Slot-based layout with 7 slots: Header, Rail, Panel, Sidebar, Content, Inspector, Bottom
+  - Responsive presentation: fixed vs overlay per breakpoint
+  - Animation principle: collapse -> fade content, then collapse container; expand -> expand container, then fade content
+  - Composition rules: Rail+Panel OR Sidebar (exclusive)
 */
+
+/* Root container - vertical layout */
 .rt-ShellRoot {
-  inline-size: 100%;
   display: flex;
   flex-direction: column;
-  block-size: 100vh;
-  /* Default sizing tokens for rail/panel widths */
-  --shell-sidebar-rail-width: var(--space-9, 64px);
-  --shell-sidebar-panel-width: 288px;
-  --shell-sidebar-combined-width: calc(
-    var(--shell-sidebar-rail-width) + var(--shell-sidebar-panel-width)
-  );
-  /* Overlay width hook - set by JS to one of the tokens above */
-  --shell-overlay-width: auto;
+  width: 100%;
+  overflow: hidden;
 }
+
+/* Default height when no height prop is provided */
+.rt-ShellRoot:not([style*='height']) {
+  height: 100vh;
+}
+
 @supports (height: 100dvh) {
-  .rt-ShellRoot {
-    block-size: 100dvh;
+  .rt-ShellRoot:not([style*='height']) {
+    height: 100dvh;
   }
 }
 
-/* Global Header (sticky) */
+/* Header - fixed at top */
 .rt-ShellHeader {
   position: sticky;
   top: 0;
-  inset-inline: 0;
-  z-index: var(--shell-z-header, 10);
+  z-index: 50;
   height: var(--shell-header-height, 64px);
   min-height: var(--shell-header-height, 64px);
+  background-color: var(--color-panel);
   display: flex;
   align-items: center;
-  background-color: var(--color-panel);
+  flex-shrink: 0;
 }
 
-/* Body: sidebars + content arranged inline with overflow confined */
+/* Body - main horizontal layout container */
 .rt-ShellBody {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  inline-size: 100%;
-  flex: 1 1 auto;
-  block-size: auto;
-  min-block-size: 0;
-  min-inline-size: 0;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
+  position: relative; /* enable absolute positioning for peek overlays */
 }
 
-/* Sidebar container (holds rail/panel or single-morph) */
-.rt-ShellSidebar {
+/* Left container - holds Rail, Panel, or Sidebar */
+.rt-ShellLeft {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  block-size: 100%;
-  min-block-size: 0;
+  flex-shrink: 0;
+  height: 100%;
 }
 
-/* Rail section (typically icon-sized navigation) */
-.rt-ShellSidebarRail {
+/* Rail - slim navigation strip */
+.rt-ShellRail {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
+  background-color: var(--color-surface);
+  overflow: hidden;
+
+  /* Animation setup */
+  transition: width var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+.rt-ShellRail[data-mode='expanded'] {
+  width: var(--rail-size, 64px);
+}
+
+.rt-ShellRail[data-mode='collapsed'] {
+  width: 0px;
+}
+
+/* Keep collapsed panes out of flow to avoid layout blips when exiting peek */
+.rt-ShellRail[data-mode='collapsed'] {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+}
+
+/* Peek overlay rules consolidated later to avoid duplication */
+
+.rt-ShellRailContent {
+  display: flex;
+  flex-direction: column;
+  width: var(--rail-size, 64px);
+  height: 100%;
+  padding: var(--space-2);
   gap: var(--space-2);
-  padding-block: var(--space-2);
-  block-size: 100%;
-  min-block-size: 0;
-  overflow: hidden;
-  /* Staggered animation: width first, then content fade */
+
+  /* Content animation: fade out first, then fade in after width settles */
   opacity: 0;
-  transition:
-    inline-size var(--motion-duration-small) var(--motion-ease-standard),
-    opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard)
+    var(--motion-duration-small);
 }
 
-/* Panel section (detail/inspector). Transitions its inline-size */
-.rt-ShellSidebarPanel {
-  display: block;
-  /* Staggered animation: width first, then content fade */
-  opacity: 0;
-  transition:
-    inline-size var(--motion-duration-small) var(--motion-ease-standard),
-    opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
-  block-size: 100%;
-  min-block-size: 0;
-  overflow: hidden;
-}
-
-/* Single-markup morph container */
-.rt-ShellSidebarSingle {
-  /* Staggered animation: width first, then content fade */
-  opacity: 0;
-  transition:
-    inline-size var(--motion-duration-small) var(--motion-ease-standard),
-    opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
-  block-size: 100%;
-  overflow: hidden;
-}
-
-/* Exit animation: fade out content first, then collapse width */
-:where(.rt-ShellSidebarRail):not([data-visible]),
-:where(.rt-ShellSidebarPanel):not([data-visible]),
-:where(.rt-ShellSidebarSingle):not([data-visible]) {
-  opacity: 0;
-  /* Exit animation: fade out content first, then collapse width */
-  transition:
-    opacity var(--motion-duration-small) var(--motion-ease-standard),
-    inline-size var(--motion-duration-small) var(--motion-ease-standard)
-      var(--motion-duration-small);
-}
-
-/* When visible: show content after width settles */
-[data-visible] {
+.rt-ShellRailContent[data-visible] {
   opacity: 1;
 }
 
+.rt-ShellRail[data-mode='collapsed'] .rt-ShellRailContent {
+  /* Exit animation: fade out content first */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Panel - sidebar content next to Rail */
+.rt-ShellPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-panel);
+  /* Allow handle to bleed across boundary */
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+
+  /* Animation setup */
+  transition: width var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+.rt-ShellPanel[data-visible] {
+  width: var(--panel-size, 288px);
+}
+
+.rt-ShellPanel:not([data-visible]) {
+  width: 0px;
+}
+
+/* Keep collapsed panel out of flow to avoid layout blips when exiting peek */
+.rt-ShellPanel:not([data-visible]) {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--peek-rail-width, var(--rail-size, 64px));
+}
+
+.rt-ShellPanelContent {
+  display: flex;
+  flex-direction: column;
+  width: var(--panel-size, 288px);
+  height: 100%;
+  overflow: hidden;
+
+  /* Content animation */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard)
+    var(--motion-duration-small);
+}
+
+.rt-ShellPanelContent[data-visible] {
+  opacity: 1;
+}
+
+.rt-ShellPanel:not([data-visible]) .rt-ShellPanelContent {
+  /* Exit animation: fade out content first */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Sidebar - alternative to Rail+Panel */
+.rt-ShellSidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-panel);
+  /* Allow handle to bleed across boundary */
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+
+  /* Animation setup */
+  transition: width var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+.rt-ShellSidebar[data-mode='expanded'] {
+  width: var(--sidebar-size, 288px);
+}
+
+.rt-ShellSidebar[data-mode='thin'] {
+  width: var(--sidebar-thin-size, 64px);
+}
+
+/* Ensure content matches thin width in thin mode */
+.rt-ShellSidebar[data-mode='thin'] .rt-ShellSidebarContent {
+  width: var(--sidebar-thin-size, 64px);
+}
+
+.rt-ShellSidebar[data-mode='collapsed'] {
+  width: 0px;
+}
+
+/* Keep collapsed sidebar out of flow to avoid layout blips when exiting peek */
+.rt-ShellSidebar[data-mode='collapsed'] {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+}
+
+.rt-ShellSidebarContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  /* Content animation */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard)
+    var(--motion-duration-small);
+}
+
+/* Hide resizer in thin mode */
+.rt-ShellSidebar[data-mode='thin'] .rt-ShellResizer {
+  display: none;
+}
+
+.rt-ShellSidebarContent[data-visible] {
+  opacity: 1;
+}
+
+.rt-ShellSidebar[data-mode='collapsed'] .rt-ShellSidebarContent {
+  /* Exit animation: fade out content first */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Content - main work area (always required) */
+.rt-ShellContent {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--color-surface);
+}
+
+/* Inspector - right-side panel */
+.rt-ShellInspector {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-panel);
+  /* Allow handle to bleed across boundary */
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+
+  /* Animation setup */
+  transition: width var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+.rt-ShellInspector[data-mode='expanded'] {
+  width: var(--inspector-size, 320px);
+}
+
+.rt-ShellInspector[data-mode='collapsed'] {
+  width: 0px;
+}
+
+.rt-ShellInspector[data-mode='collapsed'] {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+}
+
+.rt-ShellInspectorContent {
+  display: flex;
+  flex-direction: column;
+  width: var(--inspector-size, 320px);
+  height: 100%;
+  overflow: hidden;
+
+  /* Content animation */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard)
+    var(--motion-duration-small);
+}
+
+.rt-ShellInspectorContent[data-visible] {
+  opacity: 1;
+}
+
+.rt-ShellInspector[data-mode='collapsed'] .rt-ShellInspectorContent {
+  /* Exit animation: fade out content first */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Bottom - bottom panel */
+.rt-ShellBottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-panel);
+  /* Allow handle to bleed across boundary */
+  overflow: visible;
+  flex-shrink: 0;
+  position: relative;
+
+  /* Animation setup */
+  transition: height var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+.rt-ShellBottom[data-mode='expanded'] {
+  height: var(--bottom-size, 200px);
+}
+
+.rt-ShellBottom[data-mode='collapsed'] {
+  height: 0px;
+}
+
+.rt-ShellBottomContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: var(--bottom-size, 200px);
+  overflow: hidden;
+
+  /* Content animation */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard)
+    var(--motion-duration-small);
+}
+
+.rt-ShellBottomContent[data-visible] {
+  opacity: 1;
+}
+
+/* Disable transitions during active resize */
+.rt-ShellPanel[data-resizing],
+.rt-ShellSidebar[data-resizing],
+.rt-ShellInspector[data-resizing],
+.rt-ShellBottom[data-resizing] {
+  transition: none !important;
+}
+
+/* Hide resizer when panel isn't visible or is peeking */
+.rt-ShellPanel:not([data-visible]) .rt-ShellResizer,
+.rt-ShellPanel[data-peek] .rt-ShellResizer {
+  display: none;
+}
+
+/* Hide resizer for other panes when hidden or peeking */
+.rt-ShellInspector[data-mode='collapsed'] .rt-ShellResizer,
+.rt-ShellInspector[data-peek] .rt-ShellResizer,
+.rt-ShellBottom[data-mode='collapsed'] .rt-ShellResizer,
+.rt-ShellBottom[data-peek] .rt-ShellResizer,
+.rt-ShellSidebar[data-mode='collapsed'] .rt-ShellResizer,
+.rt-ShellSidebar[data-peek] .rt-ShellResizer {
+  display: none;
+}
+
+.rt-ShellBottom[data-mode='collapsed'] .rt-ShellBottomContent {
+  /* Exit animation: fade out content first */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Overlay mode handling */
+[data-presentation='overlay'] {
+  /* Overlay handled by JS/Sheet; no extra CSS needed */
+  contain: style;
+}
+
+/* Stacked mode handling: panes float above content without reflow */
+.rt-ShellLeft[data-presentation='stacked'] {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  z-index: 30; /* below overlay sheets, above content/fixed */
+  transform: translateX(-100%);
+  will-change: transform;
+  transition:
+    transform var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
+  box-shadow: 4px 0 12px -6px rgba(0, 0, 0, 0.2);
+}
+
+.rt-ShellLeft[data-presentation='stacked'][data-open] {
+  transform: translateX(0);
+}
+
+/* Ensure peek forces visibility in stacked mode */
+.rt-ShellLeft[data-presentation='stacked'][data-peek] {
+  transform: translateX(0);
+}
+
+/* Stacked Inspector: right side */
+.rt-ShellInspector[data-presentation='stacked'] {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  z-index: 32; /* above left and bottom stacked */
+  width: var(--inspector-size, 320px);
+  transform: translateX(100%);
+  transition:
+    transform var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
+  box-shadow: -4px 0 12px -6px rgba(0, 0, 0, 0.2);
+}
+
+.rt-ShellInspector[data-presentation='stacked'][data-open] {
+  transform: translateX(0);
+}
+
+.rt-ShellInspector[data-presentation='stacked'][data-peek] {
+  transform: translateX(0);
+}
+
+/* Stacked Bottom: bottom edge */
+.rt-ShellBottom[data-presentation='stacked'] {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 31; /* between left and inspector */
+  height: var(--bottom-size, 200px);
+  transform: translateY(100%);
+  transition:
+    transform var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
+  box-shadow: 0 -4px 12px -6px rgba(0, 0, 0, 0.2);
+}
+
+.rt-ShellBottom[data-presentation='stacked'][data-open] {
+  transform: translateY(0);
+}
+
+.rt-ShellBottom[data-presentation='stacked'][data-peek] {
+  transform: translateY(0);
+}
+
+/* Accessibility - reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .rt-ShellSidebarRail,
-  .rt-ShellSidebarPanel,
-  .rt-ShellSidebarSingle {
+  .rt-ShellRail,
+  .rt-ShellPanel,
+  .rt-ShellSidebar,
+  .rt-ShellInspector,
+  .rt-ShellBottom,
+  .rt-ShellRailContent,
+  .rt-ShellPanelContent,
+  .rt-ShellSidebarContent,
+  .rt-ShellInspectorContent,
+  .rt-ShellBottomContent {
     transition: none;
   }
 }
 
-/* Content: the only scrollable area; min width protects content from collapsing */
-.rt-ShellContent {
-  flex: 1 1 auto;
+/* Trigger styling intentionally omitted */
+
+/* Resizer handle (unstyled, full-edge overlay) */
+.rt-ShellResizer {
+  position: absolute;
+  z-index: 1;
+  background: transparent;
+  /* hit target size, adjustable per media */
+  --resizer-hit: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.rt-ShellResizer[data-orientation='vertical'][data-edge='end'] {
+  inset-block: 0;
+  inset-inline-end: 0;
+  inline-size: var(--resizer-hit);
   block-size: 100%;
-  min-block-size: 0;
-  min-inline-size: 0;
-  overflow: auto;
+  cursor: col-resize;
+  transform: translateX(50%);
 }
 
-/* Overlay mode: disable panel animation only (keep rail/sidebar transitions) */
-:where(.rt-SheetContent) :where(.rt-ShellSidebarPanel) {
-  transition: none !important;
+.rt-ShellResizer[data-orientation='vertical'][data-edge='start'] {
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--resizer-hit);
+  block-size: 100%;
+  cursor: col-resize;
+  transform: translateX(-50%);
 }
 
-/* Overlay mode: ensure sidebar content has proper styling when rendered in Sheet */
-:where(.rt-SheetContent) :where(.rt-SidebarRoot) {
-  height: 100%;
-  width: 100%;
+.rt-ShellResizer[data-orientation='horizontal'][data-edge='start'] {
+  inset-inline: 0;
+  inset-block-start: 0;
+  inline-size: 100%;
+  block-size: var(--resizer-hit);
+  cursor: row-resize;
+  transform: translateY(-50%);
 }
 
-:where(.rt-SheetContent) :where(.rt-SidebarContainer) {
-  height: 100%;
-  width: 100%;
+@media (pointer: coarse) {
+  .rt-ShellResizer {
+    --resizer-hit: var(--space-6);
+  }
 }
 
-:where(.rt-SheetContent) :where(.rt-SidebarContent) {
-  height: 100%;
-  width: 100%;
+/* --- Peek overlays (override after pane rules) --- */
+.rt-ShellRail[data-peek],
+.rt-ShellPanel[data-peek],
+.rt-ShellSidebar[data-peek],
+.rt-ShellInspector[data-peek],
+.rt-ShellBottom[data-peek] {
+  position: absolute;
+  z-index: 40;
+}
+
+/* Directional shadows for peeks */
+.rt-ShellRail[data-peek],
+.rt-ShellPanel[data-peek],
+.rt-ShellSidebar[data-peek] {
+  box-shadow: 4px 0 8px -4px rgba(0, 0, 0, 0.15);
+}
+
+.rt-ShellInspector[data-peek] {
+  box-shadow: -4px 0 8px -4px rgba(0, 0, 0, 0.15);
+}
+
+.rt-ShellBottom[data-peek] {
+  box-shadow: 0 -4px 8px -4px rgba(0, 0, 0, 0.15);
+}
+
+/* Force content visible during peek */
+.rt-ShellRail[data-peek] .rt-ShellRailContent,
+.rt-ShellPanel[data-peek] .rt-ShellPanelContent,
+.rt-ShellSidebar[data-peek] .rt-ShellSidebarContent,
+.rt-ShellInspector[data-peek] .rt-ShellInspectorContent,
+.rt-ShellBottom[data-peek] .rt-ShellBottomContent {
+  opacity: 1;
+}
+
+/* Rail peek: left edge */
+.rt-ShellRail[data-peek] {
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--rail-size, 64px);
+}
+
+/* Panel peek: offset by rail width; override hidden width */
+.rt-ShellPanel[data-peek] {
+  inset-block: 0;
+  inset-inline-start: var(--peek-rail-width, var(--rail-size, 64px));
+  width: var(--panel-size, 288px);
+}
+
+/* Sidebar peek: left edge; if collapsed, use fallback width */
+.rt-ShellSidebar[data-peek] {
+  inset-block: 0;
+  inset-inline-start: 0;
+  /* Always use peek width when peeking */
+  width: var(--peek-sidebar-width, var(--sidebar-size, 288px));
+}
+
+/* Inspector peek: right edge; ensure width even when collapsed */
+.rt-ShellInspector[data-peek] {
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: var(--inspector-size, 320px);
+}
+.rt-ShellInspector[data-peek][data-mode='collapsed'] {
+  width: var(--inspector-size, 320px);
+}
+
+/* Bottom peek: bottom edge; ensure height when collapsed */
+.rt-ShellBottom[data-peek] {
+  inset-inline: 0;
+  inset-block-end: 0;
+  height: var(--bottom-size, 200px);
+}
+.rt-ShellBottom[data-peek][data-mode='collapsed'] {
+  height: var(--bottom-size, 200px);
 }

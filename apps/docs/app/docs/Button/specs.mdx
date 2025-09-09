@@ -2,7 +2,7 @@ import { Button, Flex, Box, Callout, Table, Text, Theme, Section, Separator, Bad
 import { SpecsBlock } from '../../components/specs-block';
 import { TriangleAlertIcon, Info } from 'lucide-react';
 
-<Section size="2">
+<Section size="1">
 
 <Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
@@ -14,19 +14,14 @@ Designer reference for Button component layout, spacing, and variant specificati
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Layout
 
 The Button component uses systematic spacing and sizing that scales consistently across all variants. Height, padding, border radius, and typography follow the design system's spacing scale.
 
 <SpecsBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="solid" size="3">Button</Button>
@@ -119,12 +114,7 @@ backgroundProps={{
 Ghost buttons use reduced padding for seamless text integration. This variant maintains full accessibility while achieving visual integration with surrounding content.
 
 <SpecsBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="ghost" size="3">Ghost Button</Button>
@@ -179,17 +169,12 @@ backgroundProps={{
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Variants
 
 <SpecsBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="classic" size="3">Classic</Button>
@@ -276,7 +261,7 @@ backgroundProps={{
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Material
 
@@ -286,13 +271,13 @@ The Button component supports both solid and translucent materials. Translucent 
 
   preview={
     <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
-      <Button highContrast size="4" color="gray" variant="classic" material="translucent">Classic</Button>
-      <Button size="4" color="gray" variant="solid" material="translucent">Solid</Button>
-      <Button highContrast size="4" color="gray" variant="soft" material="translucent">Soft</Button>
-      <Button highContrast size="4" color="gray" variant="surface" material="translucent">Surface</Button>
+      <Button highContrast size="3" color="gray" variant="classic" material="translucent">Classic</Button>
+      <Button size="3" color="gray" variant="solid" material="translucent">Solid</Button>
+      <Button highContrast size="3" color="gray" variant="soft" material="translucent">Soft</Button>
+      <Button highContrast size="3" color="gray" variant="surface" material="translucent">Surface</Button>
     </Flex>
   }
-  background="https://images.unsplash.com/photo-1693230772696-71029feb9b07?q=80&w=3435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: '300px',
     width: '100%'
@@ -325,19 +310,14 @@ The Button component supports both solid and translucent materials. Translucent 
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Size
 
 Button sizes follow a systematic progression that balances visual hierarchy with accessibility requirements. Each size maintains appropriate touch targets and visual weight for its intended use case.
 
 <SpecsBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center" wrap="wrap">
       <Button variant="solid" size="1">Button</Button>

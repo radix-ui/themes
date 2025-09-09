@@ -1,12 +1,5 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import ComponentPage from '../components/component-page';
-import IntroductionMDX from './introduction.mdx';
-
-export default function DocsPage() {
-  return (
-    <ComponentPage>
-      <IntroductionMDX />
-    </ComponentPage>
-  );
+export default function RootPage() {
+  redirect('/docs/overview');
 }

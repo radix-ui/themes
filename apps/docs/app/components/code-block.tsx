@@ -1,7 +1,15 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Box, Card, Flex, ToggleIconButton, IconButton, Tabs } from '@kushagradhawan/kookie-ui';
+import {
+  Box,
+  Card,
+  Flex,
+  ToggleIconButton,
+  IconButton,
+  Tabs,
+  Theme,
+} from '@kushagradhawan/kookie-ui';
 import { ChevronsUpDown, Clipboard, Code, Eye } from 'lucide-react';
 
 /**
@@ -116,7 +124,7 @@ const PreviewSection = ({
     return (
       <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4">
-          {preview}
+          <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
       </Card>
     );
@@ -137,7 +145,7 @@ const PreviewSection = ({
     return (
       <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
-          {preview}
+          <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
       </Card>
     );
@@ -157,7 +165,7 @@ const PreviewSection = ({
   return (
     <Card size="2" variant="soft">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
-        {preview}
+        <Theme fontFamily="sans">{preview}</Theme>
       </Flex>
     </Card>
   );

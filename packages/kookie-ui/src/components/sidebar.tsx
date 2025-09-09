@@ -39,21 +39,7 @@ function useSidebarVisual() {
   return React.useContext(SidebarVisualContext);
 }
 
-// Context detection for Shell.Sidebar integration
-type ShellSidebarSectionContextValue = {
-  side: 'start' | 'end';
-  section: 'rail' | 'panel';
-};
-
-// Create a context that Shell.Sidebar can provide
-const ShellSidebarSectionContext = React.createContext<ShellSidebarSectionContextValue | null>(
-  null,
-);
-
-// This context comes from Shell.Sidebar when Sidebar is used within Shell
-function useShellSidebarSection(): ShellSidebarSectionContextValue | null {
-  return React.useContext(ShellSidebarSectionContext);
-}
+// Sidebar is now independent of Shell - no integration needed
 
 // Main Sidebar component
 type SidebarOwnProps = GetPropDefTypes<typeof sidebarPropDefs>;
@@ -79,9 +65,8 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
   const { asChild: _, panelBackground: __, ...safeRootProps } = rootProps; // Remove asChild and panelBackground from DOM props
   const resolvedColor = color || themeContext.accentColor;
 
-  // Detect Shell.Sidebar context to auto-resolve layout
-  const shellSection = useShellSidebarSection();
-  const resolvedLayout = layout || shellSection?.section || 'panel'; // Default to 'panel' if no context
+  // Resolve layout (default to 'panel')
+  const resolvedLayout = layout || 'panel';
 
   // Update context with current props - we'll pass the resolved values
   const resolvedSize = typeof size === 'object' ? size.initial || '2' : size;
@@ -615,8 +600,4 @@ export type {
   SidebarHeaderProps as HeaderProps,
   SidebarFooterProps as FooterProps,
   BadgeConfig,
-  ShellSidebarSectionContextValue,
 };
-
-// Export context for Shell.Sidebar integration
-export { ShellSidebarSectionContext };

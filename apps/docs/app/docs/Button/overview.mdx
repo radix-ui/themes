@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Play, Code, Users, BookOpen, Ruler, History } from 'lucide-react';
 import ButtonPlayground from '../../playground/ButtonPlayground';
 
-<Section size="2">
+<Section size="1">
 
 <Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
@@ -56,9 +56,9 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
         <Flex direction="column" gap="2" p="2">
           <Flex align="center" gap="2">
             <Icon size={16} />
-            <Heading size="3" weight="medium">{title}</Heading>
+            <Heading size="2" weight="medium">{title}</Heading>
           </Flex>
-          <Text size="3" color="gray">{description}</Text>
+          <Text size="2" color="gray">{description}</Text>
         </Flex>
       </Link>
     </Card>

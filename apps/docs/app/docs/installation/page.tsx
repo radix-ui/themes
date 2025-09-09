@@ -1,7 +1,7 @@
 'use client';
 
-import ComponentPage from '../components/component-page';
-import InstallationMDX from '../docs/installation.mdx';
+import ComponentPage from '../../components/component-page';
+import InstallationMDX from '../installation.mdx';
 
 export default function InstallationPage() {
   return (

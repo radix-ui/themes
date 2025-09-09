@@ -1,12 +1,14 @@
 @import '@kushagradhawan/kookie-ui/styles.css';
 @import 'tailwindcss/preflight.css';
 
+/* Remove font overrides - now handled by Theme fontFamily prop */
+
 /* Minimal global styles for the documentation site */
 html,
 body {
   max-width: 100vw;
   margin: 0;
-  font-family: var(--font-sans) !important;
+  font-family: var(--font-mono) !important;
   /* Safari font scaling fixes */
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -25,16 +27,45 @@ body {
 
 * {
   box-sizing: border-box;
-  /* outline: dashed 0.25px var(--gray-6); */
+  /* outline: solid 0.1px var(--gray-a6); */
+  /* box-sizing: border-box !important; */
 }
+
+/* Debug background colors for shell panels using alpha-3 colors */
+/* .rt-ShellHeader {
+  background-color: var(--red-3) !important;
+}
+.rt-ShellRail {
+  background-color: var(--blue-3) !important;
+}
+.rt-ShellPanel {
+  background-color: var(--green-3) !important;
+}
+.rt-ShellSidebar {
+  background-color: var(--purple-3) !important;
+}
+.rt-ShellContent {
+  background-color: var(--amber-3) !important;
+}
+.rt-ShellInspector {
+  background-color: var(--pink-3) !important;
+}
+.rt-ShellBottom {
+  background-color: var(--sky-3) !important;
+} */
+
+/* .rt-ShellResizer {
+  background: var(--gray-a5) !important;
+  height: 10px;
+} */
 
 /* Code block styling with Nord theme support */
 pre {
   overflow-x: auto;
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-4);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
   position: relative;
   width: 100%; /* Ensure full width */
 }
@@ -76,7 +107,7 @@ figure[data-rehype-pretty-code-figure] code.rt-Code {
   border-radius: 0 !important;
   color: inherit !important;
   font-family: var(--font-mono) !important;
-  font-size: calc(var(--font-size-3) * 0.95) !important; /* Change this to adjust size */
+  font-size: calc(var(--font-size-2)) !important; /* Change this to adjust size */
   line-height: 2 !important;
   border: none !important;
   box-shadow: none !important;
@@ -112,7 +143,7 @@ figure[data-rehype-pretty-code-figure] code.rt-Code {
   background-color: var(--gray-a4);
   color: var(--gray-12);
   padding: var(--space-2) var(--space-4);
-  font-size: var(--font-size-3);
+  font-size: var(--font-size-2);
   font-weight: 500;
   border-bottom: 1px solid var(--gray-a6);
   border-radius: var(--radius-3) var(--radius-3) 0 0;

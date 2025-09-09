@@ -1,0 +1,535 @@
+{
+  "$ref": "#/definitions/ButtonSchema",
+  "definitions": {
+    "ButtonSchema": {
+      "type": "object",
+      "properties": {
+        "as": {
+          "type": "string",
+          "description": "HTML element type to render as"
+        },
+        "asChild": {
+          "type": "boolean",
+          "description": "Merge props with child element instead of rendering wrapper"
+        },
+        "size": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                  ]
+                },
+                "sm": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                  ]
+                },
+                "md": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                  ]
+                },
+                "lg": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                  ]
+                },
+                "xl": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "default": "2",
+          "description": "Button size for responsive design and interface density"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "classic",
+            "solid",
+            "soft",
+            "surface",
+            "outline",
+            "ghost",
+            "override"
+          ],
+          "default": "solid",
+          "description": "Visual variant that determines the button's appearance and context"
+        },
+        "color": {
+          "type": "string",
+          "enum": [
+            "tomato",
+            "red",
+            "ruby",
+            "crimson",
+            "pink",
+            "plum",
+            "purple",
+            "violet",
+            "iris",
+            "indigo",
+            "blue",
+            "cyan",
+            "teal",
+            "jade",
+            "green",
+            "grass",
+            "brown",
+            "orange",
+            "sky",
+            "mint",
+            "lime",
+            "yellow",
+            "amber",
+            "gold",
+            "bronze",
+            "gray"
+          ],
+          "description": "Accent color for the button"
+        },
+        "highContrast": {
+          "type": "boolean",
+          "default": false,
+          "description": "High contrast mode for better accessibility"
+        },
+        "radius": {
+          "type": "string",
+          "enum": [
+            "none",
+            "small",
+            "medium",
+            "large",
+            "full"
+          ],
+          "description": "Border radius for the button"
+        },
+        "loading": {
+          "type": "boolean",
+          "default": false,
+          "description": "Loading state that shows a spinner and disables interaction"
+        },
+        "fullWidth": {
+          "type": "boolean",
+          "default": false,
+          "description": "Full width mode that expands the button to fill its container"
+        },
+        "material": {
+          "type": "string",
+          "enum": [
+            "solid",
+            "translucent"
+          ],
+          "description": "Material type for visual rendering and depth effects"
+        },
+        "panelBackground": {
+          "type": "string",
+          "enum": [
+            "solid",
+            "translucent"
+          ],
+          "description": "Panel background type (deprecated - use material instead)"
+        },
+        "flush": {
+          "type": "boolean",
+          "default": false,
+          "description": "Flush mode that removes visual padding for seamless text integration"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disabled state"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "description": "Type attribute for form buttons"
+        },
+        "className": {
+          "type": "string",
+          "description": "Additional CSS class name"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "description": "Inline styles"
+        },
+        "tabIndex": {
+          "type": "number",
+          "description": "Tab index for keyboard navigation"
+        },
+        "aria-label": {
+          "type": "string",
+          "description": "ARIA label for accessibility"
+        },
+        "aria-labelledby": {
+          "type": "string",
+          "description": "ARIA labelled by reference"
+        },
+        "aria-describedby": {
+          "type": "string",
+          "description": "ARIA described by reference"
+        },
+        "aria-expanded": {
+          "type": "boolean",
+          "description": "ARIA expanded state"
+        },
+        "aria-pressed": {
+          "type": "boolean",
+          "description": "ARIA pressed state"
+        },
+        "aria-current": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "page",
+                "step",
+                "location",
+                "date",
+                "time"
+              ]
+            }
+          ],
+          "description": "ARIA current state"
+        },
+        "aria-controls": {
+          "type": "string",
+          "description": "ARIA controls reference"
+        },
+        "aria-owns": {
+          "type": "string",
+          "description": "ARIA owns reference"
+        },
+        "data-*": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Data attributes"
+        },
+        "id": {
+          "type": "string",
+          "description": "ID attribute"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title attribute for tooltip"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role attribute"
+        },
+        "children": {
+          "description": "Children elements"
+        },
+        "tooltip": {
+          "type": "string",
+          "description": "Content to display in the tooltip on hover/focus"
+        },
+        "tooltipSide": {
+          "type": "string",
+          "enum": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "default": "top",
+          "description": "Side of the button where the tooltip should appear"
+        },
+        "tooltipAlign": {
+          "type": "string",
+          "enum": [
+            "start",
+            "center",
+            "end"
+          ],
+          "default": "center",
+          "description": "Alignment of the tooltip relative to the button"
+        },
+        "tooltipDelayDuration": {
+          "type": "number",
+          "description": "Delay before showing the tooltip (in milliseconds)"
+        },
+        "tooltipDisableHoverableContent": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to disable hoverable content behavior"
+        },
+        "overrideStyles": {
+          "type": "object",
+          "properties": {
+            "normal": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundColor": {
+                  "type": "string"
+                },
+                "boxShadow": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string"
+                },
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "hover": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundColor": {
+                  "type": "string"
+                },
+                "boxShadow": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string"
+                },
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "active": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundColor": {
+                  "type": "string"
+                },
+                "boxShadow": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string"
+                },
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "pressed": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundColor": {
+                  "type": "string"
+                },
+                "boxShadow": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string"
+                },
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "open": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundColor": {
+                  "type": "string"
+                },
+                "boxShadow": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string"
+                },
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "disabled": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundColor": {
+                  "type": "string"
+                },
+                "boxShadow": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string"
+                },
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "focus": {
+              "type": "object",
+              "properties": {
+                "outline": {
+                  "type": "string"
+                },
+                "outlineOffset": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false,
+          "description": "Override styles for different interaction states"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Button Component Props",
+  "description": "Props schema for the button component in Kookie UI",
+  "version": "1.0.0",
+  "generatedAt": "2025-09-09T08:56:04.193Z",
+  "source": "Zod schema"
+}

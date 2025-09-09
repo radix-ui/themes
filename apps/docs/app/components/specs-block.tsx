@@ -11,6 +11,7 @@ import {
   Code,
   Tooltip,
   Tabs,
+  Theme,
 } from '@kushagradhawan/kookie-ui';
 import { Info } from 'lucide-react';
 
@@ -167,7 +168,7 @@ const PreviewSection = ({
     return (
       <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4">
-          {preview}
+          <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
       </Card>
     );
@@ -188,7 +189,7 @@ const PreviewSection = ({
     return (
       <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
-          {preview}
+          <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
       </Card>
     );
@@ -208,7 +209,7 @@ const PreviewSection = ({
   return (
     <Card size="2" variant="soft">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
-        {preview}
+        <Theme fontFamily="sans">{preview}</Theme>
       </Flex>
     </Card>
   );
@@ -281,12 +282,12 @@ const SpecsSection = memo(function SpecsSection({
     >
       <Flex direction="column" gap="4">
         {/* Specifications Table */}
-        <Table.Root size="3" variant="ghost">
+        <Table.Root size="2" variant="ghost">
           <Table.Header>
             <Table.Row>
               {/* Property column header */}
               <Table.ColumnHeaderCell>
-                <Text size="3" weight="medium">
+                <Text size="2" weight="medium">
                   Property
                 </Text>
               </Table.ColumnHeaderCell>
@@ -295,7 +296,7 @@ const SpecsSection = memo(function SpecsSection({
               {detectedColumns.map((column) => (
                 <Table.ColumnHeaderCell key={column.key}>
                   <Flex direction="column" gap="1">
-                    <Text size="3" weight="medium">
+                    <Text size="2" weight="medium">
                       {column.label}
                     </Text>
                     {column.description && (
@@ -318,7 +319,7 @@ const SpecsSection = memo(function SpecsSection({
               >
                 {/* Property name cell */}
                 <Table.RowHeaderCell>
-                  <Text size="3" weight="medium">
+                  <Text size="2" weight="medium">
                     {row.property}
                   </Text>
                 </Table.RowHeaderCell>
@@ -332,7 +333,7 @@ const SpecsSection = memo(function SpecsSection({
                   return (
                     <Table.Cell key={column.key}>
                       <Tooltip content={tooltipValue}>
-                        <Text size="3" color="gray">
+                        <Text size="2" color="gray">
                           {displayValue}
                         </Text>
                       </Tooltip>

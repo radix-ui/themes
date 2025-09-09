@@ -42,6 +42,7 @@ import type { DialogContentOwnProps } from './dialog.props.js';
 import { Theme } from './theme.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
+import { useBodyPointerEventsCleanup } from '../hooks/use-body-pointer-events-cleanup.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
@@ -132,10 +133,10 @@ const Content = React.forwardRef<SheetContentElement, SheetContentProps>(
     );
 
     const materialValue = React.useMemo(() => {
-      if (resolvedMaterial !== undefined) {
+      if (resolvedPanelBackground !== undefined) {
         if (process.env.NODE_ENV !== 'production') {
           console.warn(
-            'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
+            'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use the `material` prop instead.',
           );
         }
       }
@@ -175,13 +176,65 @@ const Content = React.forwardRef<SheetContentElement, SheetContentProps>(
       }
     }
 
+    // Focus management and stuck pointer-events cleanup like Dialog
+    const contentRef = React.useRef<HTMLDivElement>(null);
+    const combinedRef = React.useMemo(
+      () => (node: HTMLDivElement | null) => {
+        contentRef.current = node;
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(node);
+        } else if (forwardedRef) {
+          (forwardedRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
+        }
+      },
+      [forwardedRef],
+    );
+
+    useBodyPointerEventsCleanup();
+
+    React.useEffect(() => {
+      if (typeof window === 'undefined') return;
+      const content = contentRef.current;
+      if (!content) return;
+
+      const focusableElements = content.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Tab') {
+          if (event.shiftKey) {
+            if (document.activeElement === firstElement) {
+              event.preventDefault();
+              lastElement.focus();
+            }
+          } else if (document.activeElement === lastElement) {
+            event.preventDefault();
+            firstElement.focus();
+          }
+        }
+      };
+
+      content.addEventListener('keydown', handleKeyDown);
+      firstElement.focus();
+
+      return () => {
+        content.removeEventListener('keydown', handleKeyDown);
+      };
+    }, []);
+
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
           <DialogPrimitive.Overlay className="rt-BaseDialogOverlay rt-DialogOverlay rt-SheetOverlay">
             <DialogPrimitive.Content
               {...contentProps}
-              ref={forwardedRef}
+              ref={combinedRef}
               className={classNames(
                 'rt-BaseDialogContent',
                 'rt-SheetContent',
@@ -191,6 +244,9 @@ const Content = React.forwardRef<SheetContentElement, SheetContentProps>(
               data-side={normalizedSide}
               data-material={materialValue}
               data-panel-background={materialValue}
+              tabIndex={-1}
+              role="dialog"
+              aria-modal="true"
             />
           </DialogPrimitive.Overlay>
         </Theme>
@@ -244,4 +300,7 @@ export type {
   SheetRootProps as RootProps,
   SheetTriggerProps as TriggerProps,
   SheetContentProps as ContentProps,
+  SheetTitleProps as TitleProps,
+  SheetDescriptionProps as DescriptionProps,
+  SheetCloseProps as CloseProps,
 };

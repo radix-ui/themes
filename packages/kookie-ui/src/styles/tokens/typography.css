@@ -43,8 +43,17 @@
 
   /* default values */
 
-  --default-font-family: var(--font-inter, 'Inter'), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
-    Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --default-font-family:
+    var(--font-inter, 'Inter'), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto,
+    'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+
+  /* Font family overrides based on theme data attribute */
+  --default-font-family-sans:
+    var(--font-inter, 'Inter'), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto,
+    'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+  --default-font-family-mono: var(--font-mono);
   --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
   --default-font-style: normal;
   --default-font-weight: var(--font-weight-regular);
@@ -75,8 +84,9 @@
 
   /* Code */
 
-  --code-font-family: var(--font-inter-mono, 'JetBrains Mono'), 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono',
-    monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --code-font-family:
+    var(--font-inter-mono, 'JetBrains Mono'), 'Menlo', 'Consolas (Custom)',
+    'Bitstream Vera Sans Mono', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
   --code-font-size-adjust: 0.95;
   --code-font-style: normal;
   --code-font-weight: inherit;
@@ -303,4 +313,17 @@
   ascent-override: 85%;
   descent-override: 22%;
   src: local('Consolas Bold Italic');
+}
+
+/* Font family data attribute support */
+[data-font-family='sans'] {
+  --default-font-family: var(--default-font-family-sans);
+  --heading-font-family: var(--default-font-family-sans);
+  --strong-font-family: var(--default-font-family-sans);
+}
+
+[data-font-family='mono'] {
+  --default-font-family: var(--default-font-family-mono);
+  --heading-font-family: var(--default-font-family-mono);
+  --strong-font-family: var(--default-font-family-mono);
 }

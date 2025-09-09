@@ -157,7 +157,7 @@ export const TableOfContents = memo(function TableOfContents({
 
   const tocContent = (
     <Flex direction="column" gap="3" className={className}>
-      <Text size="2" weight="medium" color="gray">
+      <Text size="1" weight="medium" color="gray">
         On this page
       </Text>
       <Flex direction="column" gap="2">
@@ -165,7 +165,7 @@ export const TableOfContents = memo(function TableOfContents({
           <Link
             key={item.id}
             color={activeId === item.id ? undefined : 'gray'}
-            size="2"
+            size="1"
             href={`#${item.id}`}
             style={getLinkStyle(item.level)}
           >

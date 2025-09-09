@@ -106,7 +106,7 @@ const ComponentPage = memo(function ComponentPage({
           {/* Tab Navigation - only render if tabs exist */}
           {hasValidTabs && (
             <Box position="sticky" top="0" py="2" style={{ ...stickyHeaderStyle, minWidth: 0 }}>
-              <TabNav.Root>
+              <TabNav.Root size="2">
                 {tabs.map((tab) => (
                   <TabNav.Link
                     key={tab.value}

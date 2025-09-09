@@ -2,19 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-/* Font Variables */
+/* Font Variables - Customize these to change fonts throughout your app */
 :root {
-  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-jetbrains-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-  
-  /* Primary font variables */
-  --font-general-sans: var(--font-inter);
-  --font-inter-mono: var(--font-jetbrains-mono);
-  
-  /* Tailwind-compatible aliases */
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
-  
+  /* Base font definitions - override these in your CSS to customize fonts */
+  --font-inter:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-jetbrains-mono:
+    'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+
+  /* Primary font variables - these map to theme fontFamily values */
+  --font-general-sans: var(--font-inter); /* Used when fontFamily="sans" */
+  --font-inter-mono: var(--font-jetbrains-mono); /* Used for code elements */
+
+  /* Tailwind-compatible aliases - override these to change theme fonts */
+  --font-sans: var(--font-inter); /* Theme fontFamily="sans" uses this */
+  --font-mono: var(--font-jetbrains-mono); /* Theme fontFamily="mono" uses this */
+
   /* Force proper font weight rendering */
   font-synthesis: none; /* Prevent browser from synthesizing weights */
 }
@@ -33,4 +37,3 @@
   font-display: block;
   src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
 }
-

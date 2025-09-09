@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Button, Text, Flex, Box, Heading, Card } from '@kushagradhawan/kookie-ui';
+import { Button } from '@kushagradhawan/kookie-ui';
 import { Plus } from 'lucide-react';
-import { PropertyControl } from '../components/property-control';
+import Playground from '../components/playground';
 
 const accentColors = [
   'gray',
@@ -157,30 +157,65 @@ export default function ButtonPlayground() {
     },
   ];
 
-  return (
-    <Flex direction={{ initial: 'column', md: 'row' }} gap="5" align="center">
-      <Card size="3" variant="soft" style={{ width: '100%', height: '400px' }}>
-        <Flex direction="column" align="center" justify="center" height="100%">
-          <Button
-            size={size as any}
-            variant={variant as any}
-            color={color === 'theme' ? ('' as any) : (color as any)}
-            radius={radius === 'theme' ? undefined : (radius as any)}
-            highContrast={highContrast || undefined}
-            material={material === 'theme' ? undefined : (material as any)}
-            flush={flush}
-            fullWidth={fullWidth}
-            disabled={isDisabled}
-            loading={isLoading}
-          >
-            {iconPosition === 'left' || iconPosition === 'both' ? <Plus /> : null}
-            Button
-            {iconPosition === 'right' || iconPosition === 'both' ? <Plus /> : null}
-          </Button>
-        </Flex>
-      </Card>
+  // Generate elegant code string with all props (except theme values)
+  const generateCode = () => {
+    const props = [`variant="${variant}"`, `size="${size}"`];
 
-      <PropertyControl.Group width="256px" items={items} style={{ flexShrink: 0 }} />
-    </Flex>
+    // Add non-theme props
+    if (color !== 'theme') props.push(`color="${color}"`);
+    if (radius !== 'theme') props.push(`radius="${radius}"`);
+    if (material !== 'theme') props.push(`material="${material}"`);
+
+    // Add boolean props
+    if (highContrast) props.push('highContrast');
+    if (flush) props.push('flush');
+    if (fullWidth) props.push('fullWidth');
+    if (isDisabled) props.push('disabled');
+    if (isLoading) props.push('loading');
+
+    // Generate button content with icons
+    const iconLeft = iconPosition === 'left' || iconPosition === 'both';
+    const iconRight = iconPosition === 'right' || iconPosition === 'both';
+
+    let content = 'Button';
+    if (iconLeft && iconRight) {
+      content = '<Plus />\n  Button\n  <Plus />';
+    } else if (iconLeft) {
+      content = '<Plus />\n  Button';
+    } else if (iconRight) {
+      content = 'Button\n  <Plus />';
+    }
+
+    // Format props nicely
+    const propsString = props.length > 0 ? `\n  ${props.join('\n  ')}` : '';
+
+    return `<Button${propsString}>
+  ${content}
+</Button>`;
+  };
+
+  return (
+    <Playground
+      component={
+        <Button
+          size={size as any}
+          variant={variant as any}
+          color={color === 'theme' ? ('' as any) : (color as any)}
+          radius={radius === 'theme' ? undefined : (radius as any)}
+          highContrast={highContrast || undefined}
+          material={material === 'theme' ? undefined : (material as any)}
+          flush={flush}
+          fullWidth={fullWidth}
+          disabled={isDisabled}
+          loading={isLoading}
+        >
+          {iconPosition === 'left' || iconPosition === 'both' ? <Plus /> : null}
+          Button
+          {iconPosition === 'right' || iconPosition === 'both' ? <Plus /> : null}
+        </Button>
+      }
+      code={generateCode()}
+      items={items}
+    />
   );
 }

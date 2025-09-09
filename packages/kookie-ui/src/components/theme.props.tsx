@@ -8,6 +8,7 @@ const appearances = ['inherit', 'light', 'dark'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
 const materials = ['solid', 'translucent'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
+const fontFamilies = ['sans', 'mono'] as const;
 
 const themePropDefs = {
   ...asChildPropDef,
@@ -71,6 +72,12 @@ const themePropDefs = {
    * https://www.radix-ui.com/themes/docs/theme/layout
    */
   scaling: { type: 'enum', values: scalings, default: '100%' },
+  /**
+   * Sets the font family for the theme.
+   *
+   * @default 'sans'
+   */
+  fontFamily: { type: 'enum', values: fontFamilies, default: 'sans' },
 } satisfies {
   hasBackground: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;
@@ -80,6 +87,7 @@ const themePropDefs = {
   panelBackground: PropDef<(typeof panelBackgrounds)[number]>;
   radius: PropDef<(typeof radii)[number]>;
   scaling: PropDef<(typeof scalings)[number]>;
+  fontFamily: PropDef<(typeof fontFamilies)[number]>;
 };
 
 type ThemeOwnProps = GetPropDefTypes<typeof themePropDefs & typeof asChildPropDef>;

@@ -19,6 +19,7 @@ type ThemeMaterial = (typeof themePropDefs.material.values)[number];
 type ThemePanelBackground = (typeof themePropDefs.panelBackground.values)[number];
 type ThemeRadius = (typeof themePropDefs.radius.values)[number];
 type ThemeScaling = (typeof themePropDefs.scaling.values)[number];
+type ThemeFontFamily = (typeof themePropDefs.fontFamily.values)[number];
 
 interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeAppearance) => void;
@@ -28,6 +29,7 @@ interface ThemeChangeHandlers {
   onPanelBackgroundChange: (panelBackground: ThemePanelBackground) => void;
   onRadiusChange: (radius: ThemeRadius) => void;
   onScalingChange: (scaling: ThemeScaling) => void;
+  onFontFamilyChange: (fontFamily: ThemeFontFamily) => void;
 }
 
 interface ThemeContextValue extends ThemeChangeHandlers {
@@ -39,6 +41,7 @@ interface ThemeContextValue extends ThemeChangeHandlers {
   panelBackground: ThemePanelBackground;
   radius: ThemeRadius;
   scaling: ThemeScaling;
+  fontFamily: ThemeFontFamily;
 }
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
@@ -77,6 +80,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
       panelBackground: panelBackgroundProp = themePropDefs.panelBackground.default,
       radius: radiusProp = themePropDefs.radius.default,
       scaling: scalingProp = themePropDefs.scaling.default,
+      fontFamily: fontFamilyProp = themePropDefs.fontFamily.default,
       hasBackground = themePropDefs.hasBackground.default,
       ...rootProps
     } = props;
@@ -115,6 +119,9 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
     const [scaling, setScaling] = React.useState(scalingProp);
     React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
+    const [fontFamily, setFontFamily] = React.useState(fontFamilyProp);
+    React.useEffect(() => setFontFamily(fontFamilyProp), [fontFamilyProp]);
+
     return (
       <ThemeImpl
         {...rootProps}
@@ -129,6 +136,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         panelBackground={panelBackground}
         radius={radius}
         scaling={scaling}
+        fontFamily={fontFamily}
         //
         onAppearanceChange={setAppearance}
         onAccentColorChange={setAccentColor}
@@ -137,6 +145,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeImplPublicProps>(
         onPanelBackgroundChange={setPanelBackground}
         onRadiusChange={setRadius}
         onScalingChange={setScaling}
+        onFontFamilyChange={setFontFamily}
       />
     );
   },
@@ -167,6 +176,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
       themePropDefs.panelBackground.default,
     radius = props.radius ?? context?.radius ?? themePropDefs.radius.default,
     scaling = props.scaling ?? context?.scaling ?? themePropDefs.scaling.default,
+    fontFamily = props.fontFamily ?? context?.fontFamily ?? themePropDefs.fontFamily.default,
     //
     onAppearanceChange = noop,
     onAccentColorChange = noop,
@@ -175,6 +185,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     onPanelBackgroundChange = noop,
     onRadiusChange = noop,
     onScalingChange = noop,
+    onFontFamilyChange = noop,
     //
     ...themeProps
   } = props;
@@ -195,6 +206,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           panelBackground,
           radius,
           scaling,
+          fontFamily,
           //
           onAppearanceChange,
           onAccentColorChange,
@@ -203,6 +215,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
+          onFontFamilyChange,
         }),
         [
           appearance,
@@ -213,6 +226,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           panelBackground,
           radius,
           scaling,
+          fontFamily,
           //
           onAppearanceChange,
           onAccentColorChange,
@@ -221,6 +235,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onPanelBackgroundChange,
           onRadiusChange,
           onScalingChange,
+          onFontFamilyChange,
         ],
       )}
     >
@@ -234,6 +249,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         data-panel-background={panelBackground}
         data-radius={radius}
         data-scaling={scaling}
+        data-font-family={fontFamily}
         ref={forwardedRef}
         {...themeProps}
         className={classNames(

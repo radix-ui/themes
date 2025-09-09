@@ -61,7 +61,19 @@
         "default": "./dist/esm/props/index.js"
       }
     },
+    "./schemas-json": "./schemas/index.json",
+    "./schemas-json/*": "./schemas/*.json",
     "./*": "./*"
+  },
+  "typesVersions": {
+    "*": {
+      "schemas-json": [
+        "schemas-json.d.ts"
+      ],
+      "schemas-json/*": [
+        "schemas-json.d.ts"
+      ]
+    }
   },
   "publishConfig": {
     "access": "public"
@@ -72,6 +84,8 @@
   "files": [
     "src/**",
     "dist/**",
+    "schemas/**",
+    "schemas-json.d.ts",
     "tokens/**",
     "layout/**",
     "*.css",
@@ -79,8 +93,10 @@
     "postcss-whitespace.cjs"
   ],
   "scripts": {
-    "build": "pnpm build:js && pnpm build:css",
+    "build": "pnpm clean:dist && pnpm build:js && pnpm build:schemas && pnpm build:css",
+    "clean:dist": "rm -rf dist && mkdir -p dist/cjs dist/esm",
     "build:js": "pnpm build:js:cjs && pnpm build:js:esm && pnpm build:js:cjs:types && pnpm build:js:esm:types",
+    "build:schemas": "node scripts/generate-json-schemas.cjs",
     "build:js:cjs": "node scripts/esbuild-cjs.js",
     "build:js:cjs:types": "tsc --outdir dist/cjs",
     "build:js:esm": "node scripts/esbuild-esm.js",
@@ -118,11 +134,15 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
+    "@zag-js/react": "^1.22.1",
+    "@zag-js/splitter": "^1.22.1",
     "classnames": "^2.3.2",
     "geist": "^1.4.2",
     "radix-ui": "^1.1.3",
     "react-dropzone": "^14.3.8",
-    "react-remove-scroll-bar": "^2.3.8"
+    "react-remove-scroll-bar": "^2.3.8",
+    "zod": "^3.24.1",
+    "zod-to-json-schema": "^3.24.6"
   },
   "peerDependencies": {
     "@types/react": "*",

@@ -2,7 +2,7 @@ import { Button, Flex, Box, Text, Callout, IconButton, Theme, Section, Separator
 import { TriangleAlertIcon, ChevronDown, Check, ChevronRight, Plus } from 'lucide-react';
 import { CodeBlock } from '../../components/code-block';
 
-<Section size="2">
+<Section size="1">
 
 <Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
@@ -14,7 +14,7 @@ Design buttons as promises that users can trust. When someone sees a button, the
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Hierarchy
 
@@ -25,12 +25,7 @@ Create effective button hierarchies by understanding human decision-making patte
 Guide people toward one primary action per interface section. Multiple competing primary actions create decision paralysis and reduce conversion rates. This principle is backed by extensive usability research: people perform better when interfaces provide clear guidance rather than unlimited choice.
 
 <CodeBlock 
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="solid">Complete</Button>
@@ -58,7 +53,7 @@ Group related actions together and separate unrelated ones. Proximity communicat
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Context
 
@@ -70,7 +65,7 @@ Think about where someone is in their journey. Are they exploring options or rea
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Trust
 
@@ -82,7 +77,7 @@ Avoid inconsistent button treatments that force people to pause and evaluate eac
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Variants
 
@@ -93,12 +88,7 @@ Use each variant to serve specific psychological and contextual needs. Think of 
 Use solid buttons for primary importance and to build user confidence in critical actions. The solid background creates maximum contrast against most interface backgrounds, naturally drawing attention and suggesting decisive action.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="solid">Button</Button>
@@ -115,12 +105,7 @@ Choose solid buttons for primary workflow completion (Submit Form, Save Changes,
 Use outline buttons to provide definite affordance while maintaining visual restraint. The border creates clear boundaries without competing for attention. This treatment strikes an ideal balance between presence and restraint.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="outline" color="crimson">Button</Button>
@@ -137,12 +122,7 @@ Choose outline buttons for secondary actions alongside primary buttons (Cancel, 
 Use ghost buttons for utility actions that should be discoverable but not prominent. They remain nearly invisible until interaction, perfect for utility actions that should be discoverable but not prominent. This treatment respects the principle that not every action needs visual weight.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="ghost">Button</Button>
@@ -159,12 +139,7 @@ Choose ghost buttons for utility functions (Sort, Filter, Settings, Edit), secon
 Use soft buttons to provide color presence without harsh boundaries, creating gentle visual treatment that integrates naturally with content while maintaining clear interactive affordance.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="soft">Button</Button>
@@ -181,12 +156,7 @@ Choose soft buttons for content-area actions (Reply to Comment, Quote Text, Expa
 Use surface buttons to combine background and border for consistent appearance across varying container backgrounds. This dual-layer approach ensures reliable visual recognition regardless of surrounding color context.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="surface">Button</Button>
@@ -203,12 +173,7 @@ Choose surface buttons for modular components used in multiple contexts (Card ac
 Use classic buttons for sophisticated shadow systems that create depth, making buttons feel like physical objects that respond to touch. This treatment creates buttons that feel more tangible and engaging than flat alternatives.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="classic">Button</Button>
@@ -224,7 +189,7 @@ Choose classic buttons for standalone focal points in spacious layouts, premium 
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Material
 
@@ -235,12 +200,7 @@ Choose material to define the fundamental substance from which your interface is
 Use solid material to create interfaces that feel grounded and reliable. Like concrete or metal, solid materials provide clear boundaries and predictable behavior. Users can trust that solid elements will behave consistently and provide stable interaction surfaces.
 
 <CodeBlock
-background="dots"
-backgroundProps={{
-    dotSize: 20,
-    width: '100%',
-    color: 'var(--gray-7)',
-  }}
+
   preview={
     <Flex gap="2" align="center">
       <Button size="3" variant="solid">Button</Button>
@@ -257,7 +217,7 @@ Choose solid material for primary interfaces, data-heavy applications, and conte
 Use translucent material to create interfaces that feel layered and responsive to their environment. Like glass or water, translucent materials reveal context while maintaining their own identity. They create depth by allowing background elements to influence the interface without losing focus.
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1693230772696-71029feb9b07?q=80&w=3435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -265,10 +225,10 @@ Use translucent material to create interfaces that feel layered and responsive t
   }}
   preview={
     <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
-      <Button highContrast size="4" color="gray" variant="classic" material="translucent">Button</Button>
-      <Button size="4" color="" variant="solid" material="translucent">Button</Button>
-      <Button highContrast size="4" color="gray" variant="soft" material="translucent">Button</Button>
-      <Button highContrast size="4" color="gray" variant="surface" material="translucent">Button</Button>
+      <Button highContrast size="3" color="gray" variant="classic" material="translucent">Button</Button>
+      <Button size="3" color="" variant="solid" material="translucent">Button</Button>
+      <Button highContrast size="3" color="gray" variant="soft" material="translucent">Button</Button>
+      <Button highContrast size="3" color="gray" variant="surface" material="translucent">Button</Button>
     </Flex>
   }
 />
@@ -287,7 +247,7 @@ The material choice should support the user's goals and create the appropriate e
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Mistakes
 
@@ -301,7 +261,7 @@ Avoid these common button design problems that stem from treating buttons as dec
 
 
 
-<Section size="2">
+<Section size="1">
 
 ## Implementation
 
