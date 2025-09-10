@@ -231,6 +231,28 @@
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
+/* Stacked Sidebar: left side, floating without reflow */
+.rt-ShellSidebar[data-presentation='stacked'] {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  z-index: 31; /* between left and inspector; above content */
+  transform: translateX(-100%);
+  will-change: transform;
+  transition:
+    transform var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
+  box-shadow: 4px 0 12px -6px rgba(0, 0, 0, 0.2);
+}
+
+.rt-ShellSidebar[data-presentation='stacked'][data-open] {
+  transform: translateX(0);
+}
+
+.rt-ShellSidebar[data-presentation='stacked'][data-peek] {
+  transform: translateX(0);
+}
+
 /* Content - main work area (always required) */
 .rt-ShellContent {
   flex: 1;

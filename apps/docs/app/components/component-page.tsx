@@ -89,7 +89,7 @@ const ComponentPage = memo(function ComponentPage({
   };
 
   return (
-    <Container size={{ initial: '1', sm: '2', md: '4' }}>
+    <Container py="9" size={{ initial: '1', sm: '2', md: '4' }}>
       <Flex
         gap={{ initial: '6', md: '9' }}
         align="start"

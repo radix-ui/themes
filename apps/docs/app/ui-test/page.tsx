@@ -21,17 +21,17 @@ export default function UITestPage() {
       <Shell.Header height={64}>
         <Flex align="center" width="100%" px="4" gap="2">
           <IconButton variant="ghost" size="2" asChild highContrast color="gray">
-            <Shell.Trigger target="rail" action="toggle" peekOnHover="collapsed">
+            <Shell.Trigger target="rail" action="toggle" peekOnHover={true}>
               <PanelLeft />
             </Shell.Trigger>
           </IconButton>
           <IconButton variant="ghost" size="2" asChild highContrast color="gray">
-            <Shell.Trigger target="panel" action="toggle" peekOnHover="collapsed">
+            <Shell.Trigger target="panel" action="toggle" peekOnHover={true}>
               <PanelLeft />
             </Shell.Trigger>
           </IconButton>
           <IconButton variant="ghost" size="2" asChild highContrast color="gray">
-            <Shell.Trigger target="inspector" action="toggle" peekOnHover="collapsed">
+            <Shell.Trigger target="inspector" action="toggle" peekOnHover={true}>
               <PanelLeft />
             </Shell.Trigger>
           </IconButton>
@@ -43,7 +43,7 @@ export default function UITestPage() {
 
       <Shell.Rail defaultMode="expanded" expandedSize={64} presentation="stacked">
         <Flex align="center" justify="center" height="100%">
-          <Shell.Trigger target="panel" action="toggle" peekOnHover="collapsed">
+          <Shell.Trigger target="panel" action="toggle" peekOnHover={true}>
             <IconButton variant="classic" color="gray" highContrast as="div">
               <PanelLeft />
             </IconButton>

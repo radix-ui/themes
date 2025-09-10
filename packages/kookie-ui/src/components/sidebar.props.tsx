@@ -16,7 +16,7 @@ export {
 const sizes = ['1', '2'] as const;
 const variants = ['soft', 'outline', 'surface', 'ghost'] as const;
 const menuVariants = ['solid', 'soft'] as const;
-const types = ['sidebar', 'floating'] as const;
+const types = ['sidebar'] as const;
 const sides = ['left', 'right'] as const;
 const collapsibleModes = ['offcanvas', 'icon', 'none'] as const;
 const layouts = ['rail', 'panel'] as const;

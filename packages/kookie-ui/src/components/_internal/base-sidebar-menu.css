@@ -1,4 +1,9 @@
-/* Base Sidebar Menu Styles */
+/*
+  Base Sidebar Menu Styles
+  - Extends Base Menu primitives for sidebar context
+  - Provides Sidebar menu structure: Menu, MenuItem, MenuButton, Sub* parts
+  - Relies on Base Menu tokens: --base-menu-*
+*/
 
 /* Sidebar Menu - based on rt-BaseMenuViewport */
 .rt-SidebarMenu {

@@ -21,7 +21,7 @@ export default function SidebarTestPage() {
       <Shell.Header height={64}>
         <Flex align="center" width="100%" px="4" gap="2">
           <IconButton variant="ghost" size="2" asChild highContrast color="gray">
-            <Shell.Trigger target="sidebar" action="toggle" peekOnHover="collapsed">
+            <Shell.Trigger target="sidebar" action="toggle" peekOnHover={true}>
               <PanelLeft />
             </Shell.Trigger>
           </IconButton>
@@ -40,7 +40,7 @@ export default function SidebarTestPage() {
         thinSize={64}
         defaultMode={{ initial: 'collapsed', xs: 'expanded', md: 'thin' }}
         toggleModes={['thin', 'expanded']}
-        presentation={{ initial: 'fixed', xs: 'fixed' }}
+        presentation={{ initial: 'fixed', xs: 'stacked' }}
         paneId="side"
         persistence={lsPane('ui-test:sidebar')}
       >

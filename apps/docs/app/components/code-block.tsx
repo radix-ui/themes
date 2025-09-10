@@ -267,7 +267,7 @@ const CodeSection = memo(function CodeSection({
           {shouldShowToggle && (
             <ToggleIconButton
               size="2"
-              variant="ghost"
+              variant="soft"
               color="gray"
               flush
               highContrast
@@ -285,7 +285,7 @@ const CodeSection = memo(function CodeSection({
           <IconButton
             size="2"
             flush
-            variant="ghost"
+            variant="soft"
             color="gray"
             highContrast
             onClick={handleCopy}

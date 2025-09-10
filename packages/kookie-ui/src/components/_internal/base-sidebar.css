@@ -1,4 +1,9 @@
-/* Base Sidebar Layout and Container Styles */
+/*
+  Base Sidebar Layout and Container Styles
+  - Slot containers: Root, Container, Header, Content, Footer, Separator
+  - No visual variants here; only structure and slot-level primitives
+  - Shared tokens defined/consumed: --sidebar-base-border-radius, etc.
+*/
 
 /* Sidebar Provider - handles positioning */
 .rt-SidebarProvider {
@@ -30,34 +35,6 @@
     flex-direction: column;
     flex: 1;
     height: 100%;
-  }
-
-  /* Floating type - ONLY visual changes */
-  &:where([data-type='floating']) {
-    border-radius: var(--sidebar-base-border-radius);
-    margin: var(--space-2);
-    height: calc(100% - var(--space-4));
-    overflow: visible; /* Ensure shadow is not clipped */
-    position: relative; /* Ensure proper stacking context for floating sidebars */
-
-    /* Ensure Theme wrapper has proper border radius in floating mode */
-    & :where(.radix-themes) {
-      border-radius: inherit;
-    }
-  }
-}
-
-/* Set border radius for floating sidebars based on size - set on the root where it's used */
-.rt-SidebarRoot:where([data-type='floating']) {
-  /* Default radius for floating sidebars */
-  --sidebar-base-border-radius: var(--radius-5);
-
-  &:where(.rt-r-size-1) {
-    --sidebar-base-border-radius: var(--radius-5);
-  }
-
-  &:where(.rt-r-size-2) {
-    --sidebar-base-border-radius: var(--radius-6);
   }
 }
 

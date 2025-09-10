@@ -1,3 +1,12 @@
+/*
+  Sidebar CSS (integration layer)
+  - Depends on Base Menu tokens/behavior
+  - Composes Sidebar container/layout + menu pieces
+  - Adds layout variants (rail/panel), sizes, and visual variants
+  - Non-breaking: organization and documentation only
+*/
+
+/* Imports: order matters → base tokens, container/layout, then menu parts */
 @import './_internal/base-menu.css';
 @import './_internal/base-sidebar.css';
 @import './_internal/base-sidebar-menu.css';
@@ -65,125 +74,70 @@
 
 /* Note: label styling omitted to avoid type-selector-specificity; use Text component for fine control */
 
-/* Container Variants */
-.rt-SidebarContainer:where(.rt-variant-outline) {
-  background-color: var(--color-panel);
-  backdrop-filter: var(--backdrop-filter-panel);
-
-  /* Component-level overrides (higher specificity) - remap --color-panel */
-  &:where([data-panel-background='solid']) {
-    --color-panel: var(--color-panel-solid);
-    backdrop-filter: none;
-    --backdrop-filter-panel: none;
-    --backdrop-filter-components: none;
-  }
-
-  &:where([data-panel-background='translucent']) {
-    --color-panel: var(--color-panel-translucent);
-    backdrop-filter: var(--backdrop-filter-panel);
-    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
-    --backdrop-filter-components: blur(var(--backdrop-blur-components));
-  }
-
-  /* Floating sidebars get full inset border */
-  :where(.rt-SidebarRoot[data-type='floating']) & {
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
-  }
-
-  /* Non-floating sidebars get border only on the content-facing side */
-  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='left']) & {
-    box-shadow: inset -1px 0 0 0 var(--gray-a6);
-  }
-
-  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='right']) & {
-    box-shadow: inset 1px 0 0 0 var(--gray-a6);
-  }
-}
-
-.rt-SidebarContainer:where(.rt-variant-ghost) {
-  background-color: transparent;
-  backdrop-filter: none;
-  border: none;
-}
-
-.rt-SidebarContainer:where(.rt-variant-soft) {
-  /* Base state: solid colors for solid panels */
-  background-color: var(--gray-2);
+/* Base variables and panel background support (mirrors Card pattern) */
+.rt-SidebarContainer {
+  --sidebar-border-width: 0px;
+  --sidebar-side-border-width: 0px;
+  --sidebar-background-color: transparent;
+  --sidebar-border-color: var(--gray-6);
+  transition: var(--transition-background-blur);
+  background-color: var(--sidebar-background-color);
 
   /* Theme-level translucent override */
   :where([data-panel-background='translucent']) & {
-    background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
+    --sidebar-border-color: var(--gray-a6);
     backdrop-filter: var(--backdrop-filter-panel);
   }
 
-  /* Component-level overrides (higher specificity) */
+  /* Component-level overrides */
   &:where([data-panel-background='solid']) {
-    background-color: var(--gray-2);
     backdrop-filter: none;
-    --backdrop-filter-components: none;
+    --backdrop-filter-panel: none;
   }
+}
 
-  &:where([data-panel-background='translucent']) {
-    background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
-    backdrop-filter: var(--backdrop-filter-panel);
-    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
-    --backdrop-filter-components: blur(var(--backdrop-blur-components));
+/* Centralized borders: apply a consistent inset border; avoid context coupling */
+.rt-SidebarContainer {
+  /* Vertical-only borders (left & right), no top/bottom */
+  box-shadow:
+    inset var(--sidebar-side-border-width) 0 0 0 var(--sidebar-border-color),
+    inset calc(var(--sidebar-side-border-width) * -1) 0 0 0 var(--sidebar-border-color);
+}
+
+/* Container Variants (variables only) */
+.rt-SidebarContainer:where(.rt-variant-outline) {
+  --sidebar-border-width: 1px;
+  --sidebar-side-border-width: 1px;
+  --sidebar-background-color: transparent;
+}
+
+.rt-SidebarContainer:where(.rt-variant-ghost) {
+  --sidebar-border-width: 0px;
+  --sidebar-side-border-width: 0px;
+  --sidebar-background-color: transparent;
+}
+
+.rt-SidebarContainer:where(.rt-variant-soft) {
+  --sidebar-border-width: 0px;
+  --sidebar-side-border-width: 0px;
+  /* Base state: solid colors for solid panels */
+  --sidebar-background-color: var(--gray-2);
+
+  /* Theme-level translucent override */
+  :where([data-panel-background='translucent']) & {
+    --sidebar-background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
   }
 }
 
 .rt-SidebarContainer:where(.rt-variant-surface) {
-  /* Base state: neutral gray background (maintains sidebar neutrality) */
-  background-color: var(--gray-1);
+  --sidebar-border-width: 1px;
+  --sidebar-side-border-width: 1px;
+  /* Base state: neutral gray background */
+  --sidebar-background-color: var(--gray-1);
 
   /* Theme-level translucent override */
   :where([data-panel-background='translucent']) & {
-    background-color: color-mix(in srgb, var(--gray-a1), var(--gray-1) 60%);
-    backdrop-filter: var(--backdrop-filter-panel);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid']) {
-    background-color: var(--gray-1);
-    backdrop-filter: none;
-    --backdrop-filter-panel: none;
-    --backdrop-filter-components: none;
-  }
-
-  &:where([data-panel-background='translucent']) {
-    background-color: color-mix(in srgb, var(--gray-a1), var(--gray-1) 60%);
-    backdrop-filter: var(--backdrop-filter-panel);
-    --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
-    --backdrop-filter-components: blur(var(--backdrop-blur-components));
-  }
-
-  /* Inset border like Card surface variant */
-  /* Floating sidebars get full inset border */
-  :where(.rt-SidebarRoot[data-type='floating']) & {
-    box-shadow: inset 0 0 0 1px var(--gray-6);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      box-shadow: inset 0 0 0 1px var(--gray-a6);
-    }
-  }
-
-  /* Non-floating sidebars get border only on the content-facing side */
-  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='left']) & {
-    box-shadow: inset -1px 0 0 0 var(--gray-6);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      box-shadow: inset -1px 0 0 0 var(--gray-a6);
-    }
-  }
-
-  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='right']) & {
-    box-shadow: inset 1px 0 0 0 var(--gray-6);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
-      box-shadow: inset 1px 0 0 0 var(--gray-a6);
-    }
+    --sidebar-background-color: color-mix(in srgb, var(--gray-a1), var(--gray-1) 60%);
   }
 }
 
@@ -193,8 +147,8 @@
   flex-direction: row;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--base-menu-content-padding);
-  min-height: var(--base-menu-item-height);
+  padding: var(--sidebar-base-padding);
+  min-height: var(--sidebar-item-height);
 
   /* Make MenuButtons expand to full width */
   & :where(.rt-SidebarMenuButton) {
@@ -207,8 +161,8 @@
   flex-direction: row;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--base-menu-content-padding);
-  min-height: var(--base-menu-item-height);
+  padding: var(--sidebar-base-padding);
+  min-height: var(--sidebar-item-height);
 
   /* Make MenuButtons expand to full width */
   & :where(.rt-SidebarMenuButton) {
@@ -359,9 +313,11 @@
   .rt-SidebarContainer {
     &:where(.rt-r-size-1) {
       --sidebar-base-padding: var(--space-3);
+      --sidebar-item-height: var(--space-5);
     }
     &:where(.rt-r-size-2) {
       --sidebar-base-padding: var(--space-4);
+      --sidebar-item-height: var(--space-6);
     }
   }
 

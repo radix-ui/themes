@@ -1577,6 +1577,7 @@ const Sidebar = React.forwardRef<
         data-mode={shell.sidebarMode}
         data-peek={shell.peekTarget === 'sidebar' || undefined}
         data-presentation={resolvedPresentation}
+        data-open={(isStacked && isContentVisible) || undefined}
         style={{
           ...style,
           ['--sidebar-size' as any]: `${expandedSize}px`,
@@ -2072,10 +2073,10 @@ interface TriggerProps extends React.ComponentPropsWithoutRef<'button'> {
   target: PaneTarget;
   action?: TriggerAction;
   /**
-   * If true, peeks the target on hover and clears on leave.
-   * If set to 'collapsed', only peeks when the target is currently collapsed (recommended).
+   * Whether to show peek preview on hover when the target pane is collapsed.
+   * Defaults to false.
    */
-  peekOnHover?: boolean | 'collapsed';
+  peekOnHover?: boolean;
 }
 
 const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
@@ -2132,12 +2133,9 @@ const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
     const handleMouseEnter = React.useCallback(
       (event: React.MouseEvent<HTMLButtonElement>) => {
         onMouseEnter?.(event);
-        if (!peekOnHover) return;
-        const shouldPeek = peekOnHover === 'collapsed' ? isCollapsed : true;
-        if (shouldPeek) {
-          // Use the actual target for peek behavior (not mapped to left)
-          shell.peekPane(target);
-        }
+        if (!peekOnHover || !isCollapsed) return;
+        // Use the actual target for peek behavior (not mapped to left)
+        shell.peekPane(target);
       },
       [onMouseEnter, peekOnHover, isCollapsed, shell, target],
     );
