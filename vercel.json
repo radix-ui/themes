@@ -1,5 +1,5 @@
 {
   "installCommand": "corepack enable && corepack prepare pnpm@10.15.1 --activate && pnpm install --frozen-lockfile",
   "buildCommand": "pnpm -w build:pkg && pnpm build",
-  "outputDirectory": "apps/docs/.next"
+  "outputDirectory": ".next"
 }
