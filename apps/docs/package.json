@@ -2,6 +2,7 @@
   "name": "docs",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.0.0",
   "scripts": {
     "prebuild": "pnpm -w build:pkg",
     "dev": "next dev --port 3001",
