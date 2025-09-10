@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm --filter @kushagradhawan/kookie-ui build && pnpm --filter docs build",
+  "outputDirectory": "apps/docs/.next",
+  "installCommand": "cd ../.. && pnpm install --no-frozen-lockfile",
+  "devCommand": "cd ../.. && pnpm --filter docs dev",
+  "framework": "nextjs"
+}

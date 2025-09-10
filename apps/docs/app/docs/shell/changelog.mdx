@@ -1,0 +1,235 @@
+import { Table, Text, Code, Box, Callout, Badge, Section, Heading } from '@kushagradhawan/kookie-ui';
+
+<Section size="1">
+
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+
+# Changelog
+
+Release history and updates for the Shell component. The Shell component is currently in beta and evolving based on real-world usage patterns and feedback.
+
+</Section>
+
+<Section size="1">
+
+## Version 0.1.41 (Latest)
+
+**Release Date**: Current
+
+### ✨ Features
+- Complete Shell component implementation with seven core slots
+- Responsive presentation modes: fixed, overlay, and stacked
+- Advanced resize system with keyboard navigation and accessibility
+- Composition rule enforcement (Rail+Panel vs Sidebar exclusivity)
+- Comprehensive breakpoint system with mobile-first approach
+- Size persistence API for maintaining user preferences
+- Peek functionality for temporary pane previews
+
+### 🎯 Components
+- `Shell.Root` - Layout container with height control
+- `Shell.Header` - Fixed header with customizable height
+- `Shell.Rail` - Narrow navigation strip (64px default)
+- `Shell.Panel` - Expandable sidebar panel (288px default)
+- `Shell.Sidebar` - Alternative unified navigation with thin/expanded modes
+- `Shell.Content` - Main content area (always required)
+- `Shell.Inspector` - Right-side contextual panel (320px default)
+- `Shell.Bottom` - Bottom panel for terminals/logs (240px default)
+- `Shell.Trigger` - Button triggers with peek-on-hover support
+
+### 🔧 Hooks & APIs
+- `useShell()` - Access shell context and control functions
+- `useResponsivePresentation()` - Resolve responsive presentation values
+- Comprehensive TypeScript types for all configurations
+- Size persistence adapter interface
+
+### ♿ Accessibility
+- ARIA slider implementation for resize handles
+- Keyboard navigation with arrow keys, Home/End
+- Semantic HTML structure with proper landmarks
+- Focus management for overlay/stacked presentations
+- Screen reader announcements for state changes
+
+### 📱 Responsive Design
+- Six breakpoints: initial, xs, sm, md, lg, xl
+- Responsive mode and presentation configurations
+- Mobile-first approach with overlay defaults
+- Automatic breakpoint detection and state resolution
+
+</Section>
+
+<Section size="1">
+
+## Beta Status
+
+<Callout.Root variant="soft" size="2" color="orange" my="7">
+  <Callout.Text>The Shell component is in beta. APIs may change based on usage feedback and evolving requirements.</Callout.Text>
+</Callout.Root>
+
+### Known Limitations
+
+**Current Constraints:**
+- Composition rules are enforced through console warnings only
+- Size persistence requires manual implementation
+- Animation performance not optimized for very large content
+- Limited customization of animation timing
+- No built-in gesture support for mobile
+
+**Planned Improvements:**
+- Enhanced animation performance optimization
+- Built-in size persistence implementations
+- More granular animation timing controls
+- Touch gesture support for mobile interactions
+- Additional layout patterns and presets
+
+### Feedback & Issues
+
+The Shell component is actively developed based on real-world usage patterns. Current feedback areas:
+
+**Layout Patterns:**
+- Effectiveness of Rail+Panel vs Sidebar composition
+- Responsive breakpoint timing and behavior
+- Animation smoothness across different devices
+
+**Developer Experience:**
+- API clarity and ease of implementation
+- TypeScript type accuracy and completeness
+- Documentation completeness and examples
+
+**Performance:**
+- Animation performance with large content areas
+- Memory usage with multiple shell instances
+- Resize operation smoothness
+
+</Section>
+
+<Section size="1">
+
+## Migration Guide
+
+### From Custom Layouts
+
+If migrating from custom layout implementations:
+
+**Before:**
+```tsx
+// Custom layout with manual state management
+const [sidebarOpen, setSidebarOpen] = useState(false);
+const [inspectorOpen, setInspectorOpen] = useState(false);
+
+<div className="app-layout">
+  <header>...</header>
+  <div className="body">
+    {sidebarOpen && <aside className="sidebar">...</aside>}
+    <main>...</main>
+    {inspectorOpen && <aside className="inspector">...</aside>}
+  </div>
+</div>
+```
+
+**After:**
+```tsx
+// Shell component with integrated state management
+<Shell.Root>
+  <Shell.Header>...</Shell.Header>
+  <Shell.Sidebar defaultMode={{ initial: 'collapsed', md: 'expanded' }}>
+    ...
+  </Shell.Sidebar>
+  <Shell.Content>...</Shell.Content>
+  <Shell.Inspector defaultMode="collapsed">...</Shell.Inspector>
+</Shell.Root>
+```
+
+### Breaking Changes
+
+**None yet** - First stable implementation
+
+Future breaking changes will be documented here with migration instructions and deprecation timelines.
+
+</Section>
+
+<Section size="1">
+
+## Roadmap
+
+### Short Term (Next Release)
+
+**Performance Improvements:**
+- Optimize animation performance for large content
+- Reduce layout thrashing during resize operations
+- Implement resize debouncing for better performance
+
+**Enhanced APIs:**
+- Built-in localStorage persistence adapter
+- Additional composition patterns
+- More granular animation controls
+
+**Developer Experience:**
+- Interactive playground in documentation
+- More comprehensive examples
+- Performance monitoring utilities
+
+### Medium Term
+
+**Advanced Features:**
+- Touch gesture support for mobile devices
+- Keyboard shortcut system integration
+- Advanced layout presets and templates
+- Custom animation timing APIs
+
+**Accessibility Enhancements:**
+- High contrast mode support
+- Reduced motion preference handling
+- Enhanced screen reader support
+- Better focus management
+
+### Long Term
+
+**Layout Engine Evolution:**
+- Additional layout patterns and slots
+- Nested shell support for complex applications
+- Advanced responsive behavior patterns
+- Performance optimizations for very large applications
+
+**Ecosystem Integration:**
+- Framework-specific optimizations
+- Design system integration patterns
+- Advanced theming capabilities
+- Plugin architecture for extensions
+
+</Section>
+
+<Section size="1">
+
+## Community & Contributions
+
+### Feedback Channels
+
+**Primary:** GitHub Issues for bug reports and feature requests  
+**Secondary:** Community discussions for usage patterns and best practices
+
+### Contributing Guidelines
+
+The Shell component benefits from real-world usage feedback:
+
+**Bug Reports:**
+- Include reproduction steps and environment details
+- Describe expected vs actual behavior
+- Note any performance impacts or accessibility issues
+
+**Feature Requests:**
+- Describe the use case and current workarounds
+- Consider responsive behavior and accessibility implications
+- Include examples from other design systems if relevant
+
+**Performance Reports:**
+- Include browser and device information
+- Describe the scale of content and complexity
+- Note specific operations that trigger performance issues
+
+### Version Support
+
+**Current Beta:** Active development and rapid iteration  
+**Future Stable:** Long-term support with backward compatibility guarantees  
+**Migration Support:** Comprehensive guides and automated tooling for major version changes
+
+</Section>

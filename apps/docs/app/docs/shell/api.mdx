@@ -1,0 +1,758 @@
+import { Table, Text, Code, Box, Callout, Flex, Card, Badge, Section, Separator, Heading } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../../components/code-block';
+
+<Section size="1">
+
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+
+# API
+
+The Shell component is a layout engine that provides structural patterns for building application interfaces. It manages layout state, composition rules, and responsive behavior across seven core slots. The component enforces composition rules (Rail ↔ Panel dependency, Sidebar exclusivity) and provides unstyled primitives for building complex layouts.
+
+<CodeBlock buttonsPosition="center">
+
+```tsx
+import { Shell } from '@kushagradhawan/kookie-ui';
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Basic Usage
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Header>
+    {/* Global navigation */}
+  </Shell.Header>
+  
+  <Shell.Rail>
+    {/* Navigation rail */}
+  </Shell.Rail>
+  
+  <Shell.Panel>
+    {/* Sidebar panel */}
+  </Shell.Panel>
+  
+  <Shell.Content>
+    {/* Main content area */}
+  </Shell.Content>
+  
+  <Shell.Inspector>
+    {/* Right inspector panel */}
+  </Shell.Inspector>
+  
+  <Shell.Bottom>
+    {/* Bottom panel */}
+  </Shell.Bottom>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Components
+
+### Shell.Root
+
+The root container that manages the overall shell layout and state.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`height`</Table.RowHeaderCell>
+        <Table.Cell>`'full' | 'auto' | string | number`</Table.Cell>
+        <Table.Cell>Controls the height of the shell container. Defaults to `'full'` (100vh/100dvh).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Shell components (Header, Rail, Panel, Sidebar, Content, Inspector, Bottom).</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Header
+
+Fixed header at the top of the shell.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`height`</Table.RowHeaderCell>
+        <Table.Cell>`string | number`</Table.Cell>
+        <Table.Cell>Custom height for the header. Defaults to 64px.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Header content (navigation, branding, actions).</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Rail
+
+Narrow navigation strip on the left side. Works in conjunction with Panel.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Default width in pixels. Defaults to 64.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
+        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
+        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
+        <Table.Cell>`ResponsivePresentation`</Table.Cell>
+        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.Cell>`PaneSizePersistence`</Table.Cell>
+        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Rail content (typically navigation icons).</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Panel
+
+Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
+        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
+        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Minimum width when resizing. Defaults to 200.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Maximum width when resizing. Defaults to 480.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the panel can be resized. Defaults to true.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the panel can be collapsed via resize handle. Defaults to false.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.Cell>`PaneSizePersistence`</Table.Cell>
+        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Panel content.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Sidebar
+
+Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
+        <Table.Cell>`SidebarMode | ResponsiveSidebarMode`</Table.Cell>
+        <Table.Cell>Initial mode: `'collapsed'`, `'thin'`, or `'expanded'`. Can be responsive.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
+        <Table.Cell>`ResponsivePresentation`</Table.Cell>
+        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Minimum width when resizing. Defaults to 200.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Maximum width when resizing. Defaults to 480.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`thinSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Width in thin mode. Defaults to 64.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the sidebar can be resized. Defaults to true.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the sidebar can be collapsed via resize handle. Defaults to false.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.Cell>`PaneSizePersistence`</Table.Cell>
+        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Sidebar content.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Content
+
+Main content area. Always required in shell layouts.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Main application content.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Inspector
+
+Right-side panel for inspectors, property panels, or contextual information.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Default width in pixels. Defaults to 320.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
+        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
+        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
+        <Table.Cell>`ResponsivePresentation`</Table.Cell>
+        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Minimum width when resizing. Defaults to 280.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Maximum width when resizing. Defaults to 480.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the inspector can be resized. Defaults to true.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the inspector can be collapsed via resize handle. Defaults to false.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.Cell>`PaneSizePersistence`</Table.Cell>
+        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Inspector content.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Bottom
+
+Bottom panel for terminals, logs, or contextual information.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Default height in pixels. Defaults to 240.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
+        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
+        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
+        <Table.Cell>`ResponsivePresentation`</Table.Cell>
+        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Minimum height when resizing. Defaults to 120.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Maximum height when resizing. Defaults to 480.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the bottom panel can be resized. Defaults to true.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the bottom panel can be collapsed via resize handle. Defaults to false.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.Cell>`PaneSizePersistence`</Table.Cell>
+        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Bottom panel content.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Trigger
+
+Button trigger for controlling shell panes.
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`target`</Table.RowHeaderCell>
+        <Table.Cell>`PaneTarget`</Table.Cell>
+        <Table.Cell>Which pane to control: `'left'`, `'rail'`, `'panel'`, `'sidebar'`, `'inspector'`, `'bottom'`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`action`</Table.RowHeaderCell>
+        <Table.Cell>`TriggerAction`</Table.Cell>
+        <Table.Cell>Action to perform: `'toggle'`, `'expand'`, `'collapse'`. Defaults to `'toggle'`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`peekOnHover`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether to show peek preview on hover. Defaults to false.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Trigger content (typically an icon or text).</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Section size="1">
+
+## Hooks
+
+### useShell
+
+Access the shell context and control pane states.
+
+<CodeBlock>
+
+```tsx
+const shell = useShell();
+
+// Pane states
+shell.leftMode; // 'expanded' | 'collapsed'
+shell.sidebarMode; // 'collapsed' | 'thin' | 'expanded'
+shell.inspectorMode; // 'expanded' | 'collapsed'
+shell.bottomMode; // 'expanded' | 'collapsed'
+
+// Actions
+shell.togglePane('sidebar');
+shell.expandPane('inspector');
+shell.collapsePane('bottom');
+
+// Peek functionality
+shell.peekPane('inspector');
+shell.clearPeek();
+
+// Composition detection
+shell.hasLeft; // boolean
+shell.hasSidebar; // boolean
+
+// Responsive state
+shell.currentBreakpoint; // 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+shell.currentBreakpointReady; // boolean
+```
+
+</CodeBlock>
+
+### useResponsivePresentation
+
+Resolve responsive presentation values.
+
+<CodeBlock>
+
+```tsx
+const presentation = useResponsivePresentation({
+  initial: 'overlay',
+  sm: 'fixed',
+  lg: 'stacked'
+});
+
+// Returns current resolved presentation value
+console.log(presentation); // 'overlay' | 'fixed' | 'stacked'
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Types
+
+### PaneMode
+
+<CodeBlock>
+
+```tsx
+type PaneMode = 'expanded' | 'collapsed';
+```
+
+</CodeBlock>
+
+### SidebarMode
+
+<CodeBlock>
+
+```tsx
+type SidebarMode = 'collapsed' | 'thin' | 'expanded';
+```
+
+</CodeBlock>
+
+### ResponsivePresentation
+
+<CodeBlock>
+
+```tsx
+type PresentationValue = 'fixed' | 'overlay' | 'stacked';
+
+type ResponsivePresentation =
+  | PresentationValue
+  | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', PresentationValue>>;
+```
+
+</CodeBlock>
+
+### ResponsiveMode
+
+<CodeBlock>
+
+```tsx
+type ResponsiveMode =
+  | PaneMode
+  | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', PaneMode>>;
+
+type ResponsiveSidebarMode =
+  | SidebarMode
+  | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', SidebarMode>>;
+```
+
+</CodeBlock>
+
+### PaneTarget
+
+<CodeBlock>
+
+```tsx
+type PaneTarget = 'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom';
+```
+
+</CodeBlock>
+
+### TriggerAction
+
+<CodeBlock>
+
+```tsx
+type TriggerAction = 'toggle' | 'expand' | 'collapse';
+```
+
+</CodeBlock>
+
+### PaneSizePersistence
+
+<CodeBlock>
+
+```tsx
+type PaneSizePersistence = {
+  load?: () => number | Promise<number | undefined> | undefined;
+  save?: (size: number) => void | Promise<void>;
+};
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Composition Rules
+
+<Callout.Root variant="soft" size="2" color="blue" my="7">
+  <Callout.Text>The Shell component enforces specific composition rules to maintain layout consistency and prevent conflicting arrangements.</Callout.Text>
+</Callout.Root>
+
+### Valid Combinations
+
+**Rail + Panel**: These components work together. When Rail collapses, Panel automatically collapses.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Rail>...</Shell.Rail>
+  <Shell.Panel>...</Shell.Panel>
+  <Shell.Content>...</Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+**Sidebar Only**: Sidebar cannot coexist with Rail or Panel.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar>...</Shell.Sidebar>
+  <Shell.Content>...</Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Invalid Combinations
+
+<Callout.Root variant="soft" size="2" color="red" my="7">
+  <Callout.Text>The following combinations will trigger console warnings and may cause layout conflicts.</Callout.Text>
+</Callout.Root>
+
+<CodeBlock>
+
+```tsx
+// ❌ Invalid: Sidebar with Rail/Panel
+<Shell.Root>
+  <Shell.Sidebar>...</Shell.Sidebar>
+  <Shell.Rail>...</Shell.Rail>
+  <Shell.Panel>...</Shell.Panel>
+  <Shell.Content>...</Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Responsive Behavior
+
+All shell panes support responsive configurations using breakpoint objects:
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar
+  defaultMode={{
+    initial: 'collapsed',
+    sm: 'thin',
+    lg: 'expanded'
+  }}
+  presentation={{
+    initial: 'overlay',
+    md: 'fixed'
+  }}
+>
+  {/* Sidebar content */}
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Breakpoints
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`initial`</Table.RowHeaderCell>
+        <Table.Cell>-</Table.Cell>
+        <Table.Cell>Base styles (mobile-first)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`xs`</Table.RowHeaderCell>
+        <Table.Cell>`520px`</Table.Cell>
+        <Table.Cell>Extra small screens</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sm`</Table.RowHeaderCell>
+        <Table.Cell>`768px`</Table.Cell>
+        <Table.Cell>Small screens (tablets)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`md`</Table.RowHeaderCell>
+        <Table.Cell>`1024px`</Table.Cell>
+        <Table.Cell>Medium screens (laptops)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`lg`</Table.RowHeaderCell>
+        <Table.Cell>`1280px`</Table.Cell>
+        <Table.Cell>Large screens (desktops)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`xl`</Table.RowHeaderCell>
+        <Table.Cell>`1640px`</Table.Cell>
+        <Table.Cell>Extra large screens</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>

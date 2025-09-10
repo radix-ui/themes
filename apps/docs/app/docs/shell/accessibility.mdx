@@ -1,0 +1,489 @@
+import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Flex, Shell, Button } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../../components/code-block';
+
+<Section size="1">
+
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+
+# Accessibility
+
+The Shell component provides comprehensive accessibility features including keyboard navigation, screen reader support, and semantic HTML structure. All interactive elements are properly labeled and the layout maintains logical tab order.
+
+</Section>
+
+<Section size="1">
+
+## Keyboard Navigation
+
+### Resize Handles
+
+All resizable panes include keyboard-accessible resize handles with comprehensive keyboard control:
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Key</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Action</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`Arrow Keys`</Table.RowHeaderCell>
+        <Table.Cell>Resize pane in 8px increments (direction depends on pane orientation)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shift + Arrow Keys`</Table.RowHeaderCell>
+        <Table.Cell>Resize pane in 32px increments (larger jumps)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Home`</Table.RowHeaderCell>
+        <Table.Cell>Resize to minimum size</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`End`</Table.RowHeaderCell>
+        <Table.Cell>Resize to maximum size</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Escape`</Table.RowHeaderCell>
+        <Table.Cell>Cancel active resize operation and return to start size</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Triggers
+
+Shell triggers support standard button accessibility patterns:
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" wrap="wrap">
+      <Shell.Trigger target="sidebar" aria-label="Toggle navigation sidebar">
+        <Button size="2" variant="ghost">☰</Button>
+      </Shell.Trigger>
+      <Shell.Trigger target="inspector" aria-label="Open property inspector">
+        <Button size="2" variant="ghost">⚙️</Button>
+      </Shell.Trigger>
+      <Shell.Trigger target="bottom" aria-label="Toggle bottom panel">
+        <Button size="2" variant="ghost">📋</Button>
+      </Shell.Trigger>
+    </Flex>
+  }
+>
+
+```tsx
+<Shell.Trigger target="sidebar" aria-label="Toggle navigation sidebar">
+  <Button size="2" variant="ghost">☰</Button>
+</Shell.Trigger>
+```
+
+</CodeBlock>
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Key</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Action</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`Enter`</Table.RowHeaderCell>
+        <Table.Cell>Activate trigger (toggle, expand, or collapse target pane)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Space`</Table.RowHeaderCell>
+        <Table.Cell>Activate trigger (toggle, expand, or collapse target pane)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Tab`</Table.RowHeaderCell>
+        <Table.Cell>Move focus to next focusable element</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shift + Tab`</Table.RowHeaderCell>
+        <Table.Cell>Move focus to previous focusable element</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Section size="1">
+
+## ARIA Implementation
+
+### Resize Handles
+
+Resize handles use the `slider` role with comprehensive ARIA attributes:
+
+<CodeBlock>
+
+```tsx
+<div
+  role="slider"
+  aria-orientation="vertical"
+  aria-valuemin={200}
+  aria-valuemax={480}
+  aria-valuenow={288}
+  tabIndex={0}
+>
+  {/* Resize handle content */}
+</div>
+```
+
+</CodeBlock>
+
+**ARIA Attributes:**
+- `role="slider"` - Identifies the element as a resizable control
+- `aria-orientation` - Indicates resize direction (`"vertical"` or `"horizontal"`)
+- `aria-valuemin` - Minimum size constraint
+- `aria-valuemax` - Maximum size constraint  
+- `aria-valuenow` - Current size value (updated during resize)
+- `tabIndex={0}` - Makes the handle keyboard focusable
+
+### Triggers
+
+Shell triggers include data attributes for programmatic identification:
+
+<CodeBlock>
+
+```tsx
+<button
+  data-shell-trigger="sidebar"
+  data-shell-action="toggle"
+  aria-label="Toggle sidebar"
+>
+  {/* Trigger content */}
+</button>
+```
+
+</CodeBlock>
+
+**Data Attributes:**
+- `data-shell-trigger` - Identifies which pane the trigger controls
+- `data-shell-action` - Specifies the action type (`"toggle"`, `"expand"`, `"collapse"`)
+
+</Section>
+
+<Section size="1">
+
+## Semantic Structure
+
+### HTML Semantics
+
+The Shell component uses semantic HTML elements for proper document structure:
+
+<CodeBlock>
+
+```tsx
+<div> {/* Shell.Root */}
+  <header> {/* Shell.Header */}
+    {/* Global navigation */}
+  </header>
+  
+  <div> {/* Shell body container */}
+    <nav> {/* Shell.Rail */}
+      {/* Primary navigation */}
+    </nav>
+    
+    <aside> {/* Shell.Panel */}
+      {/* Secondary navigation or tools */}
+    </aside>
+    
+    <aside> {/* Shell.Sidebar */}
+      {/* Alternative navigation */}
+    </aside>
+    
+    <main> {/* Shell.Content */}
+      {/* Main application content */}
+    </main>
+    
+    <aside> {/* Shell.Inspector */}
+      {/* Contextual information */}
+    </aside>
+  </div>
+  
+  <aside> {/* Shell.Bottom */}
+    {/* Secondary content like terminals */}
+  </aside>
+</div>
+```
+
+</CodeBlock>
+
+### Landmark Roles
+
+<Box>
+  <Table.Root size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Component</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Element</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Implicit Role</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Purpose</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Header`</Table.RowHeaderCell>
+        <Table.Cell>`<header>`</Table.Cell>
+        <Table.Cell>`banner`</Table.Cell>
+        <Table.Cell>Global site header and navigation</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Rail`</Table.RowHeaderCell>
+        <Table.Cell>`<nav>`</Table.Cell>
+        <Table.Cell>`navigation`</Table.Cell>
+        <Table.Cell>Primary navigation links</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Panel`</Table.RowHeaderCell>
+        <Table.Cell>`<aside>`</Table.Cell>
+        <Table.Cell>`complementary`</Table.Cell>
+        <Table.Cell>Secondary navigation or tools</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Sidebar`</Table.RowHeaderCell>
+        <Table.Cell>`<aside>`</Table.Cell>
+        <Table.Cell>`complementary`</Table.Cell>
+        <Table.Cell>Alternative navigation structure</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Content`</Table.RowHeaderCell>
+        <Table.Cell>`<main>`</Table.Cell>
+        <Table.Cell>`main`</Table.Cell>
+        <Table.Cell>Primary application content</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Inspector`</Table.RowHeaderCell>
+        <Table.Cell>`<aside>`</Table.Cell>
+        <Table.Cell>`complementary`</Table.Cell>
+        <Table.Cell>Contextual information and tools</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Bottom`</Table.RowHeaderCell>
+        <Table.Cell>`<aside>`</Table.Cell>
+        <Table.Cell>`complementary`</Table.Cell>
+        <Table.Cell>Secondary content (terminals, logs)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Section size="1">
+
+## Focus Management
+
+### Tab Order
+
+The Shell component maintains logical tab order across all interactive elements:
+
+1. **Header content** - Navigation and global actions
+2. **Left navigation** - Rail or Sidebar content
+3. **Panel content** - Secondary navigation (if present)
+4. **Main content** - Primary application interface
+5. **Inspector content** - Contextual tools (if expanded)
+6. **Bottom content** - Terminal or log interfaces (if expanded)
+7. **Resize handles** - Keyboard-accessible size controls
+
+### Focus Indicators
+
+All interactive elements include visible focus indicators that meet WCAG contrast requirements:
+
+<CodeBlock>
+
+```css
+/* Resize handles */
+.rt-ShellResizer:focus-visible {
+  outline: 2px solid var(--accent-9);
+  outline-offset: 2px;
+}
+
+/* Triggers inherit button focus styles */
+button:focus-visible {
+  outline: 2px solid var(--accent-9);
+  outline-offset: 2px;
+}
+```
+
+</CodeBlock>
+
+### Focus Trapping
+
+When panels are displayed as overlays (stacked presentation), focus is properly managed:
+
+- Focus moves into the overlay when opened
+- Tab navigation is contained within the overlay
+- Focus returns to the trigger when closed
+- Escape key closes overlay and restores focus
+
+</Section>
+
+<Section size="1">
+
+## Screen Reader Support
+
+### Live Regions
+
+Size changes and state transitions are announced to screen readers:
+
+<CodeBlock>
+
+```tsx
+// Resize announcements
+aria-valuenow={currentSize} // Updated during resize
+
+// State change announcements via data attributes
+data-mode="expanded" // Detected by screen readers
+data-visible="true"  // Indicates content visibility
+```
+
+</CodeBlock>
+
+### Descriptive Labels
+
+Provide meaningful labels for all interactive elements:
+
+<CodeBlock>
+
+```tsx
+<Shell.Trigger 
+  target="sidebar" 
+  aria-label="Toggle navigation sidebar"
+>
+  <MenuIcon />
+</Shell.Trigger>
+
+<Shell.Trigger 
+  target="inspector" 
+  aria-label="Open property inspector"
+>
+  <PanelRightIcon />
+</Shell.Trigger>
+```
+
+</CodeBlock>
+
+### Content Structure
+
+Use proper heading hierarchy within shell content:
+
+<CodeBlock>
+
+```tsx
+<Shell.Panel>
+  <h2>Navigation</h2>
+  <nav>
+    <h3>Primary</h3>
+    {/* Navigation links */}
+    
+    <h3>Secondary</h3>
+    {/* More navigation */}
+  </nav>
+</Shell.Panel>
+
+<Shell.Content>
+  <h1>Page Title</h1>
+  <main>
+    <h2>Section Title</h2>
+    {/* Main content */}
+  </main>
+</Shell.Content>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Best Practices
+
+### Labeling
+
+<Callout.Root variant="soft" size="2" color="blue" my="7">
+  <Callout.Text>Always provide descriptive labels for Shell triggers, especially when using icon-only buttons.</Callout.Text>
+</Callout.Root>
+
+<CodeBlock>
+
+```tsx
+// ✅ Good: Descriptive label
+<Shell.Trigger target="sidebar" aria-label="Toggle navigation sidebar">
+  <MenuIcon />
+</Shell.Trigger>
+
+// ❌ Avoid: No label for icon-only trigger
+<Shell.Trigger target="sidebar">
+  <MenuIcon />
+</Shell.Trigger>
+```
+
+</CodeBlock>
+
+### Content Organization
+
+Structure content with proper semantic hierarchy:
+
+<CodeBlock>
+
+```tsx
+// ✅ Good: Semantic structure
+<Shell.Rail>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/projects">Projects</a></li>
+    </ul>
+  </nav>
+</Shell.Rail>
+
+// ❌ Avoid: No semantic structure
+<Shell.Rail>
+  <div>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/projects">Projects</a>
+  </div>
+</Shell.Rail>
+```
+
+</CodeBlock>
+
+### Responsive Considerations
+
+Ensure accessibility is maintained across responsive breakpoints:
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar
+  defaultMode={{
+    initial: 'collapsed', // Mobile: collapsed by default
+    md: 'expanded'        // Desktop: expanded for easier access
+  }}
+  presentation={{
+    initial: 'overlay',   // Mobile: overlay to preserve content
+    lg: 'fixed'           // Desktop: fixed for persistent navigation
+  }}
+>
+  {/* Navigation content */}
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Testing
+
+Regularly test with assistive technologies:
+
+- **Screen readers** - Test with NVDA, JAWS, or VoiceOver
+- **Keyboard navigation** - Verify all functionality without mouse
+- **Voice control** - Test with Dragon NaturallySpeaking or Voice Control
+- **Color contrast** - Verify all interactive elements meet WCAG AA standards
+
+</Section>
