@@ -1,4 +1,4 @@
-import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Flex, Shell, Button } from '@kushagradhawan/kookie-ui';
+import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Separator } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
@@ -11,6 +11,8 @@ The Shell component provides comprehensive accessibility features including keyb
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Keyboard Navigation
@@ -20,7 +22,7 @@ The Shell component provides comprehensive accessibility features including keyb
 All resizable panes include keyboard-accessible resize handles with comprehensive keyboard control:
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Key</Table.ColumnHeaderCell>
@@ -56,21 +58,7 @@ All resizable panes include keyboard-accessible resize handles with comprehensiv
 
 Shell triggers support standard button accessibility patterns:
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
-      <Shell.Trigger target="sidebar" aria-label="Toggle navigation sidebar">
-        <Button size="2" variant="ghost">☰</Button>
-      </Shell.Trigger>
-      <Shell.Trigger target="inspector" aria-label="Open property inspector">
-        <Button size="2" variant="ghost">⚙️</Button>
-      </Shell.Trigger>
-      <Shell.Trigger target="bottom" aria-label="Toggle bottom panel">
-        <Button size="2" variant="ghost">📋</Button>
-      </Shell.Trigger>
-    </Flex>
-  }
->
+<CodeBlock>
 
 ```tsx
 <Shell.Trigger target="sidebar" aria-label="Toggle navigation sidebar">
@@ -81,7 +69,7 @@ Shell triggers support standard button accessibility patterns:
 </CodeBlock>
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Key</Table.ColumnHeaderCell>
@@ -110,6 +98,8 @@ Shell triggers support standard button accessibility patterns:
 </Box>
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -168,6 +158,8 @@ Shell triggers include data attributes for programmatic identification:
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Semantic Structure
@@ -217,7 +209,7 @@ The Shell component uses semantic HTML elements for proper document structure:
 ### Landmark Roles
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Component</Table.ColumnHeaderCell>
@@ -275,6 +267,8 @@ The Shell component uses semantic HTML elements for proper document structure:
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Focus Management
@@ -323,6 +317,8 @@ When panels are displayed as overlays (stacked presentation), focus is properly 
 - Escape key closes overlay and restores focus
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -399,6 +395,8 @@ Use proper heading hierarchy within shell content:
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -487,3 +485,5 @@ Regularly test with assistive technologies:
 - **Color contrast** - Verify all interactive elements meet WCAG AA standards
 
 </Section>
+
+<Separator size="4"/>

@@ -25,7 +25,15 @@ const navigationItems = [
     items: [
       { href: '/docs/introduction', title: 'Introduction', icon: BookOpen, badge: undefined },
       { href: '/docs/overview', title: 'Overview', icon: Home, badge: undefined },
-      { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
+    ],
+  },
+  {
+    type: 'section' as const,
+    title: 'Foundations',
+    icon: Palette,
+    items: [
+      { href: '/docs/colors', title: 'Colors', icon: BookOpen, badge: undefined },
+      { href: '/docs/shadows', title: 'Shadows', icon: BookOpen, badge: undefined },
     ],
   },
   {
@@ -35,7 +43,7 @@ const navigationItems = [
     items: [
       {
         href: '/docs/font-customization',
-        title: 'Font',
+        title: 'Font Customization',
         icon: Palette,
         badge: undefined,
       },
@@ -46,7 +54,9 @@ const navigationItems = [
     title: 'Components',
     icon: Component,
     items: [
+      { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
       { href: '/docs/button', title: 'Button', icon: Component, badge: undefined },
+      { href: '/docs/shell', title: 'Shell', icon: Component, badge: undefined },
       {
         href: '/docs/accordion',
         title: 'Accordion',
@@ -71,7 +81,7 @@ function AppHeader() {
               fill="var(--gray-a12)"
               viewBox="0 0 256 256"
             >
-              <path d="M240,108a28,28,0,1,1-28-28A28,28,0,0,1,240,108ZM72,108a28,28,0,1,0-28,28A28,28,0,0,0,72,108ZM92,88A28,28,0,1,0,64,60,28,28,0,0,0,92,88Zm72,0a28,28,0,1,0-28-28A28,28,0,0,0,164,88Zm23.12,60.86a35.3,35.3,0,0,1-16.87-21.14,44,44,0,0,0-84.5,0A35.25,35.25,0,0,1,69,148.82,40,40,0,0,0,88,224a39.48,39.48,0,0,0,15.52-3.13,64.09,64.09,0,0,1,48.87,0,40,40,0,0,0,34.73-72Z"></path>
+              <path d="M239.71,125l-16.42-88a16,16,0,0,0-19.61-12.58l-.31.09L150.85,40h-45.7L52.63,24.56l-.31-.09A16,16,0,0,0,32.71,37.05L16.29,125a15.77,15.77,0,0,0,9.12,17.52A16.26,16.26,0,0,0,32.12,144,15.48,15.48,0,0,0,40,141.84V184a40,40,0,0,0,40,40h96a40,40,0,0,0,40-40V141.85a15.5,15.5,0,0,0,7.87,2.16,16.31,16.31,0,0,0,6.72-1.47A15.77,15.77,0,0,0,239.71,125ZM176,208H136V195.31l13.66-13.65a8,8,0,0,0-11.32-11.32L128,180.69l-10.34-10.35a8,8,0,0,0-11.32,11.32L120,195.31V208H80a24,24,0,0,1-24-24V123.11L107.93,56h40.14L200,123.11V184A24,24,0,0,1,176,208Zm-72-68a12,12,0,1,1-12-12A12,12,0,0,1,104,140Zm72,0a12,12,0,1,1-12-12A12,12,0,0,1,176,140Z"></path>
             </svg>
           </Link>
         </Flex>
@@ -81,11 +91,11 @@ function AppHeader() {
         {/* <Badge size="1" variant="soft" color="orange" highContrast>
           Beta
         </Badge> */}
-        <IconButton asChild variant="ghost" color="gray" highContrast>
+        {/* <IconButton asChild variant="ghost" color="gray" highContrast>
           <Shell.Trigger target="sidebar" action="toggle">
             <PanelLeft />
           </Shell.Trigger>
-        </IconButton>
+        </IconButton> */}
       </Flex>
       <Flex align="center" gap="2">
         <DarkModeToggle />
@@ -100,7 +110,7 @@ function AppSidebarContent() {
   const router = useRouter();
 
   return (
-    <Sidebar.Root size="1" variant="ghost" color="gray">
+    <Sidebar.Root size="2" variant="ghost" color="gray">
       <Sidebar.Content>
         {navigationItems.map((section, sectionIndex) => (
           <Sidebar.Group key={sectionIndex}>
@@ -137,6 +147,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <Shell.Sidebar
         toggleModes={['thin', 'expanded']}
         thinSize={80}
+        expandedSize={240}
         defaultMode="expanded"
         onModeChange={(mode) => console.log('mode', mode)}
         presentation={{ initial: 'overlay', md: 'fixed' }}

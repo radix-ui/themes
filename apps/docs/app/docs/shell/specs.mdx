@@ -1,6 +1,4 @@
-import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Flex, Shell } from '@kushagradhawan/kookie-ui';
-import { SpecsBlock } from '../../components/specs-block';
-import { CodeBlock } from '../../components/code-block';
+import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Separator } from '@kushagradhawan/kookie-ui';
 
 <Section size="1">
 
@@ -8,9 +6,11 @@ import { CodeBlock } from '../../components/code-block';
 
 # Specs
 
-Technical specifications for the Shell component including design tokens, measurements, responsive breakpoints, and CSS custom properties. These specifications ensure consistent implementation across different applications and use cases.
+Designer reference for Shell component layout, spacing, and responsive specifications. These measurements ensure consistent spatial relationships and visual hierarchy across different screen sizes and application contexts.
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -21,7 +21,7 @@ Technical specifications for the Shell component including design tokens, measur
 The Shell component uses CSS custom properties for dynamic sizing:
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Property</Table.ColumnHeaderCell>
@@ -72,7 +72,7 @@ The Shell component uses CSS custom properties for dynamic sizing:
 ### Animation Variables
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Property</Table.ColumnHeaderCell>
@@ -102,170 +102,129 @@ The Shell component uses CSS custom properties for dynamic sizing:
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## Component Dimensions
+## Layout Measurements
 
-The Shell component uses systematic sizing that scales consistently across all slots. Default sizes, constraints, and dimensions follow the design system's spacing scale.
+The Shell component uses systematic spacing and sizing that scales consistently across all slots. These measurements create predictable spatial relationships that support user orientation and task completion.
 
-<SpecsBlock
-  preview={
-    <div style={{ height: '200px', border: '1px solid var(--gray-6)', borderRadius: '8px', overflow: 'hidden' }}>
-      <Shell.Root height="100%">
-        <Shell.Header style={{ background: 'var(--gray-2)', padding: '0 16px', display: 'flex', alignItems: 'center' }}>
-          <Text size="2">Header (64px)</Text>
-        </Shell.Header>
-        <Shell.Rail defaultSize={64} style={{ background: 'var(--gray-3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Text size="1">Rail</Text>
-        </Shell.Rail>
-        <Shell.Panel defaultSize={200} style={{ background: 'var(--gray-2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Text size="1">Panel</Text>
-        </Shell.Panel>
-        <Shell.Content style={{ background: 'var(--gray-1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Text size="2">Content</Text>
-        </Shell.Content>
-      </Shell.Root>
-    </div>
-  }
-  specs={[
-    {
-      property: 'Header Height',
-      size1: '48px',
-      size2: '56px',
-      size3: '64px',
-      size4: '72px'
-    },
-    {
-      property: 'Rail Width',
-      size1: '48px',
-      size2: '56px',
-      size3: '64px',
-      size4: '80px'
-    },
-    {
-      property: 'Panel Width',
-      size1: '200px',
-      size2: '240px',
-      size3: '288px',
-      size4: '320px'
-    },
-    {
-      property: 'Sidebar Width',
-      size1: '200px',
-      size2: '240px',
-      size3: '288px',
-      size4: '320px'
-    },
-    {
-      property: 'Sidebar Thin',
-      size1: '48px',
-      size2: '56px',
-      size3: '64px',
-      size4: '80px'
-    },
-    {
-      property: 'Inspector Width',
-      size1: '240px',
-      size2: '280px',
-      size3: '320px',
-      size4: '360px'
-    },
-    {
-      property: 'Bottom Height',
-      size1: '120px',
-      size2: '180px',
-      size3: '240px',
-      size4: '300px'
-    }
-  ]}
-  tooltips={{
-    'Header Height': {
-      size1: 'space-6',
-      size2: 'space-7',
-      size3: 'space-8',
-      size4: 'space-9'
-    },
-    'Rail Width': {
-      size1: 'space-6',
-      size2: 'space-7',
-      size3: 'space-8',
-      size4: 'space-10'
-    },
-    'Panel Width': {
-      size1: 'space-12',
-      size2: 'space-14',
-      size3: 'space-16',
-      size4: 'space-18'
-    },
-    'Sidebar Width': {
-      size1: 'space-12',
-      size2: 'space-14',
-      size3: 'space-16',
-      size4: 'space-18'
-    },
-    'Sidebar Thin': {
-      size1: 'space-6',
-      size2: 'space-7',
-      size3: 'space-8',
-      size4: 'space-10'
-    },
-    'Inspector Width': {
-      size1: 'space-13',
-      size2: 'space-15',
-      size3: 'space-17',
-      size4: 'space-19'
-    },
-    'Bottom Height': {
-      size1: 'space-7',
-      size2: 'space-10',
-      size3: 'space-12',
-      size4: 'space-15'
-    }
-  }}
-/>
-
-### Resize Handle Specifications
+<Callout.Root variant="soft" size="2" color="blue" my="7">
+  <Callout.Text>These measurements are based on human factors research and common interface patterns. They balance information density with usability across different screen sizes and user contexts.</Callout.Text>
+</Callout.Root>
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Component</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Default Size</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Min Size</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Max Size</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Dimension</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Header`</Table.RowHeaderCell>
+        <Table.Cell>`64px`</Table.Cell>
+        <Table.Cell>`48px`</Table.Cell>
+        <Table.Cell>`96px`</Table.Cell>
+        <Table.Cell>Height</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Rail`</Table.RowHeaderCell>
+        <Table.Cell>`64px`</Table.Cell>
+        <Table.Cell>`48px`</Table.Cell>
+        <Table.Cell>`80px`</Table.Cell>
+        <Table.Cell>Width</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Panel`</Table.RowHeaderCell>
+        <Table.Cell>`288px`</Table.Cell>
+        <Table.Cell>`200px`</Table.Cell>
+        <Table.Cell>`800px`</Table.Cell>
+        <Table.Cell>Width</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Sidebar`</Table.RowHeaderCell>
+        <Table.Cell>`288px`</Table.Cell>
+        <Table.Cell>`200px`</Table.Cell>
+        <Table.Cell>`400px`</Table.Cell>
+        <Table.Cell>Width</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Sidebar` (thin)</Table.RowHeaderCell>
+        <Table.Cell>`64px`</Table.Cell>
+        <Table.Cell>`48px`</Table.Cell>
+        <Table.Cell>`80px`</Table.Cell>
+        <Table.Cell>Width</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Inspector`</Table.RowHeaderCell>
+        <Table.Cell>`320px`</Table.Cell>
+        <Table.Cell>`200px`</Table.Cell>
+        <Table.Cell>`500px`</Table.Cell>
+        <Table.Cell>Width</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`Shell.Bottom`</Table.RowHeaderCell>
+        <Table.Cell>`200px`</Table.Cell>
+        <Table.Cell>`100px`</Table.Cell>
+        <Table.Cell>`400px`</Table.Cell>
+        <Table.Cell>Height</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Interaction Specifications
+
+Resize handles are designed for precise control while maintaining discoverability. These measurements balance visibility with interface cleanliness.
+
+<Box>
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Property</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Purpose</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Design Rationale</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>Hit area width</Table.RowHeaderCell>
         <Table.Cell>`6px`</Table.Cell>
-        <Table.Cell>Clickable/draggable area</Table.Cell>
+        <Table.Cell>Minimum touch target for precise control</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>Visual indicator width</Table.RowHeaderCell>
         <Table.Cell>`1px`</Table.Cell>
-        <Table.Cell>Visible border line</Table.Cell>
+        <Table.Cell>Subtle enough to not compete with content</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>Hover expansion</Table.RowHeaderCell>
         <Table.Cell>`8px`</Table.Cell>
-        <Table.Cell>Expanded hit area on hover</Table.Cell>
+        <Table.Cell>Generous target for mouse interaction</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>Keyboard step size</Table.RowHeaderCell>
         <Table.Cell>`8px`</Table.Cell>
-        <Table.Cell>Arrow key resize increment</Table.Cell>
+        <Table.Cell>Fine-grained control for precise adjustments</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>Keyboard large step</Table.RowHeaderCell>
         <Table.Cell>`32px`</Table.Cell>
-        <Table.Cell>Shift + arrow key increment</Table.Cell>
+        <Table.Cell>Quick navigation for larger adjustments</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
 </Box>
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -274,7 +233,7 @@ The Shell component uses systematic sizing that scales consistently across all s
 ### Breakpoint Definitions
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
@@ -327,7 +286,7 @@ The Shell component uses systematic sizing that scales consistently across all s
 ### Recommended Responsive Patterns
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Component</Table.ColumnHeaderCell>
@@ -379,6 +338,8 @@ The Shell component uses systematic sizing that scales consistently across all s
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Animation Specifications
@@ -388,7 +349,7 @@ The Shell component uses systematic sizing that scales consistently across all s
 The Shell component uses a coordinated animation system with specific timing for different types of transitions:
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Animation Type</Table.ColumnHeaderCell>
@@ -444,6 +405,8 @@ The Shell component uses a coordinated animation system with specific timing for
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Z-Index Layering
@@ -451,7 +414,7 @@ The Shell component uses a coordinated animation system with specific timing for
 ### Layer Hierarchy
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Layer</Table.ColumnHeaderCell>
@@ -491,6 +454,8 @@ The Shell component uses a coordinated animation system with specific timing for
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## CSS Classes
@@ -498,7 +463,7 @@ The Shell component uses a coordinated animation system with specific timing for
 ### Component Classes
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Class</Table.ColumnHeaderCell>
@@ -569,7 +534,7 @@ The Shell component uses a coordinated animation system with specific timing for
 ### State Data Attributes
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Attribute</Table.ColumnHeaderCell>
@@ -624,6 +589,8 @@ The Shell component uses a coordinated animation system with specific timing for
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Performance Characteristics
@@ -631,7 +598,7 @@ The Shell component uses a coordinated animation system with specific timing for
 ### Layout Calculations
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Operation</Table.ColumnHeaderCell>
@@ -685,3 +652,5 @@ The Shell component uses a coordinated animation system with specific timing for
 - Use `will-change: transform` for animated elements
 
 </Section>
+
+<Separator size="4"/>

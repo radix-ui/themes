@@ -21,25 +21,28 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
-      <Flex direction="column" gap="8" mb="6" mt="2">
+      <Flex direction="column" gap="8" mb="7" mt="3">
         <Heading as="h1" size="9" weight="medium">
           {children}
         </Heading>
-        <Separator size="4"></Separator>
+        {/* <Separator size="4"></Separator> */}
       </Flex>
     ),
     h2: ({ children }) => (
-      <Flex direction="column" gap="3" mb="4" mt="2">
+      <Flex direction="column" gap="3" mb="4" mt="8">
         <Heading as="h2" size="6" weight="medium">
           {children}
         </Heading>
-        <Separator size="4"></Separator>
+        {/* <Separator size="4"></Separator> */}
       </Flex>
     ),
     h3: ({ children }) => (
-      <Heading as="h3" size="4" mt="6" mb="3" weight="medium">
-        {children}
-      </Heading>
+      <Flex direction="column" gap="2" mt="8">
+        <Heading as="h3" size="4" weight="medium">
+          {children}
+        </Heading>
+        {/* <Separator size="4"></Separator> */}
+      </Flex>
     ),
     h4: ({ children }) => (
       <Heading as="h4" size="3" mb="3" weight="medium">
@@ -59,7 +62,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Text elements using KookieUI defaults
     p: ({ children }) => (
-      <Text as="p" size="2" my="4" color="gray" style={{ lineHeight: '1.7' }}>
+      <Text as="p" size="3" my="3" style={{ lineHeight: '1.7' }}>
         {children}
       </Text>
     ),
@@ -91,7 +94,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     li: ({ children }) => (
       <li>
-        <Text size="2" my="4" color="gray" style={{ lineHeight: '1.7' }}>
+        <Text size="3" my="2" style={{ lineHeight: '1.7' }}>
           {children}
         </Text>
       </li>
@@ -110,7 +113,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
       // Regular inline code - use KookieUI styling
       return (
-        <Code size="2" color="gray" variant="ghost" highContrast>
+        <Code size="2" color="gray" highContrast variant="soft">
           {children}
         </Code>
       );

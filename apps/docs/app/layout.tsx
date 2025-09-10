@@ -17,11 +17,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Theme
-          accentColor="blue"
+          accentColor="gray"
           grayColor="gray"
           material="solid"
           radius="medium"
-          fontFamily="mono"
+          fontFamily="sans"
         >
           {children}
           <ThemePanel defaultOpen={false} />

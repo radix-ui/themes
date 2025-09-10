@@ -254,7 +254,7 @@ const CodeSection = memo(function CodeSection({
       <Card size="2" variant="soft">
         {/* Action Buttons - positioned absolutely for overlay effect */}
         <Flex
-          gap="1"
+          gap="2"
           position="absolute"
           top={buttonsPosition === 'top' ? '3' : '50%'}
           right="3"
@@ -267,8 +267,9 @@ const CodeSection = memo(function CodeSection({
           {shouldShowToggle && (
             <ToggleIconButton
               size="2"
-              variant="classic"
+              variant="ghost"
               color="gray"
+              flush
               highContrast
               pressed={isExpanded}
               onPressedChange={handleToggle}
@@ -283,7 +284,8 @@ const CodeSection = memo(function CodeSection({
           {/* Copy button */}
           <IconButton
             size="2"
-            variant="classic"
+            flush
+            variant="ghost"
             color="gray"
             highContrast
             onClick={handleCopy}

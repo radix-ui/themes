@@ -33,30 +33,25 @@ body {
 
 /* Debug background colors for shell panels using alpha-3 colors */
 /* .rt-ShellHeader {
-  background-color: var(--red-3) !important;
+  background-color: var(--red-2) !important;
 }
 .rt-ShellRail {
-  background-color: var(--blue-3) !important;
+  background-color: var(--blue-2) !important;
 }
 .rt-ShellPanel {
-  background-color: var(--green-3) !important;
+  background-color: var(--green-2) !important;
 }
 .rt-ShellSidebar {
-  background-color: var(--purple-3) !important;
+  background-color: var(--purple-2) !important;
 }
 .rt-ShellContent {
-  background-color: var(--amber-3) !important;
+  background-color: var(--amber-2) !important;
 }
 .rt-ShellInspector {
-  background-color: var(--pink-3) !important;
+  background-color: var(--pink-2) !important;
 }
 .rt-ShellBottom {
-  background-color: var(--sky-3) !important;
-} */
-
-/* .rt-ShellResizer {
-  background: var(--gray-a5) !important;
-  height: 10px;
+  background-color: var(--sky-2) !important;
 } */
 
 /* Code block styling with Nord theme support */

@@ -1,0 +1,55 @@
+name: Deploy Docs
+
+on:
+  # Deploy on pushes to main when docs files change
+  push:
+    branches: [main]
+    paths:
+      - 'apps/docs/**'
+      - 'packages/kookie-ui/**' # Also deploy when UI package changes
+  # Deploy on release creation
+  release:
+    types: [published]
+  # Manual deployment trigger
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.0.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build kookie-ui package
+        run: |
+          cd packages/kookie-ui
+          pnpm build
+
+      - name: Build docs app
+        run: |
+          cd apps/docs
+          pnpm build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: apps/docs
+          vercel-args: '--prod'

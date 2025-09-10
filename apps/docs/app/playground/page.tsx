@@ -7,6 +7,7 @@ import IconButtonPlayground from './IconButtonPlayground';
 import ToggleButtonPlayground from './ToggleButtonPlayground';
 import ToggleIconButtonPlayground from './ToggleIconButtonPlayground';
 import DialogPlayground from './DialogPlayground';
+import DropdownMenuPlayground from './DropdownMenuPlayground';
 import ChatbarPlayground from './ChatbarPlayground';
 
 export default function PlaygroundPage() {
@@ -43,6 +44,8 @@ export default function PlaygroundPage() {
           </Flex>
 
           {/* <DialogPlayground /> */}
+
+          <DropdownMenuPlayground />
 
           <Flex direction="column" gap="4">
             <Heading weight="medium" size="4">

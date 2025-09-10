@@ -138,7 +138,7 @@ const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
             className,
           )}
         >
-          {children}
+          <div className="rt-BaseMenuViewport">{children}</div>
         </div>
       </ScrollArea>
     );
@@ -243,7 +243,7 @@ const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(
       {...props}
       ref={forwardedRef}
       role="menu"
-      className={classNames('rt-BaseMenuViewport', 'rt-SidebarMenu', className)}
+      className={classNames('rt-SidebarMenu', className)}
     />
   ),
 );

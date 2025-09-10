@@ -1,4 +1,4 @@
-import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Card, Flex, Shell } from '@kushagradhawan/kookie-ui';
+import { Table, Text, Code, Box, Callout, Badge, Section, Heading, Card, Flex, Separator } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
@@ -7,22 +7,32 @@ import { CodeBlock } from '../../components/code-block';
 
 # Guidelines
 
-The Shell component is designed around core layout principles that prioritize predictability, composition rules, and responsive behavior. These guidelines help you build interfaces that feel consistent and work reliably across different screen sizes and usage patterns.
+Design shell layouts as structural foundations that users can trust. When someone encounters a shell layout, they instantly form expectations about navigation, content organization, and interaction patterns. Your job as a designer is to honor those expectations and create interfaces that guide people naturally toward successful task completion.
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## Layout Philosophy
+## Spatial Hierarchy
 
-Design shell layouts as structural foundations that users can trust. When someone encounters a shell layout, they instantly form expectations about navigation, content organization, and interaction patterns. Your job as a designer is to honor those expectations and create interfaces that guide people naturally toward successful task completion.
+Create effective layout hierarchies by understanding how people scan and navigate interfaces. The shell's seven-slot system provides predictable spatial relationships that reduce cognitive load and guide users toward their goals.
+
+### Visual Weight Distribution
+
+Use the shell's slots to create clear visual hierarchy. Primary navigation should feel stable and accessible, while secondary content should be discoverable but not competing for attention. This follows the principle that not every piece of information needs equal visual weight.
+
+<Callout.Root variant="soft" size="2" color="blue" my="7">
+  <Callout.Text>People develop spatial memory of your interface. Consistent slot usage helps users build mental models of where to find things, reducing search time and increasing confidence.</Callout.Text>
+</Callout.Root>
 
 ### Slot-Based Architecture
 
 The Shell uses a seven-slot system that covers the most common application layout patterns:
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Slot</Table.ColumnHeaderCell>
@@ -90,42 +100,24 @@ The Shell uses a seven-slot system that covers the most common application layou
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## Composition Patterns
+## Layout Patterns
+
+Choose layout patterns based on your users' mental models and task complexity. Each pattern communicates different levels of information hierarchy and supports different types of user workflows.
 
 ### Rail + Panel Pattern
 
-Best for applications with hierarchical navigation where users need both quick section switching and detailed navigation.
+Use this pattern when users need both quick section switching and detailed navigation. The rail provides immediate orientation, while the panel offers context-sensitive details. This creates a two-level navigation hierarchy that matches how people think about complex information structures.
 
-<CodeBlock
-  preview={
-    <div style={{ height: '300px', border: '1px solid var(--gray-6)', borderRadius: '8px', overflow: 'hidden' }}>
-      <Shell.Root height="100%">
-        <Shell.Header style={{ background: 'var(--gray-2)', padding: '0 16px', display: 'flex', alignItems: 'center' }}>
-          <Text size="2" weight="medium">App Navigation</Text>
-        </Shell.Header>
-        <Shell.Rail defaultSize={64} style={{ background: 'var(--gray-3)' }}>
-          <div style={{ padding: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ width: '24px', height: '24px', background: 'var(--gray-6)', borderRadius: '4px' }}></div>
-            <div style={{ width: '24px', height: '24px', background: 'var(--gray-6)', borderRadius: '4px' }}></div>
-            <div style={{ width: '24px', height: '24px', background: 'var(--gray-6)', borderRadius: '4px' }}></div>
-          </div>
-        </Shell.Rail>
-        <Shell.Panel defaultSize={200} style={{ background: 'var(--gray-2)' }}>
-          <div style={{ padding: '16px' }}>
-            <Text size="2" weight="medium" mb="2">Navigation</Text>
-            <Text size="1" color="gray">Detailed navigation for current section</Text>
-          </div>
-        </Shell.Panel>
-        <Shell.Content style={{ background: 'var(--gray-1)', padding: '24px' }}>
-          <Text size="3" weight="medium" mb="2">Main Interface</Text>
-          <Text size="2" color="gray">Primary application content area</Text>
-        </Shell.Content>
-      </Shell.Root>
-    </div>
-  }
->
+**Psychological benefits:**
+- Reduces cognitive load by separating global and local navigation
+- Provides spatial consistency for muscle memory
+- Supports both exploration and focused work modes
+
+<CodeBlock>
 
 ```tsx
 <Shell.Root>
@@ -161,7 +153,12 @@ Best for applications with hierarchical navigation where users need both quick s
 
 ### Sidebar Pattern
 
-Best for applications with unified navigation where all navigation lives in a single expandable area.
+Use this pattern when you want unified navigation that can adapt to different screen sizes and user preferences. The sidebar creates a single source of truth for navigation, reducing decision fatigue and providing a consistent spatial reference.
+
+**Psychological benefits:**
+- Creates a single, predictable navigation location
+- Reduces cognitive overhead of multiple navigation areas
+- Supports progressive disclosure through expand/collapse states
 
 <CodeBlock>
 
@@ -194,7 +191,12 @@ Best for applications with unified navigation where all navigation lives in a si
 
 ### Content-Only Pattern
 
-Minimal pattern for focused applications.
+Use this pattern when the interface itself is the primary focus and navigation should be minimal or contextual. This creates a distraction-free environment that supports deep work and focused attention.
+
+**Psychological benefits:**
+- Eliminates visual noise and competing elements
+- Supports flow states and sustained attention
+- Reduces decision fatigue by limiting choices
 
 <CodeBlock>
 
@@ -219,6 +221,8 @@ Minimal pattern for focused applications.
 - Single-purpose applications
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -251,7 +255,7 @@ Design layouts that work on mobile first, then enhance for larger screens:
 ### Breakpoint Strategy
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
@@ -311,6 +315,8 @@ Design layouts that work on mobile first, then enhance for larger screens:
 - Provides clear visual hierarchy
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -405,6 +411,8 @@ Use bottom panels for secondary workflows that don't interrupt the main interfac
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Sizing Guidelines
@@ -414,7 +422,7 @@ Use bottom panels for secondary workflows that don't interrupt the main interfac
 Use consistent sizing that balances functionality with content space:
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Component</Table.ColumnHeaderCell>
@@ -507,6 +515,8 @@ const sizeStorage = {
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Animation Principles
@@ -533,6 +543,8 @@ This prevents content from appearing compressed or awkwardly positioned during t
 - Test animation performance on lower-end devices
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -624,6 +636,8 @@ This prevents content from appearing compressed or awkwardly positioned during t
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Troubleshooting
@@ -708,3 +722,5 @@ const persistence = {
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>

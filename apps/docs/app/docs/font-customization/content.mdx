@@ -3,24 +3,62 @@ import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
 
-# Fonts
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
 
-Customize fonts throughout your application using theme props and CSS variables. Switch between sans-serif and monospace fonts easily, or replace fonts entirely with your preferred choices.
+# Font Customization
 
-<CodeBlock buttonsPosition="center" >
-
-```tsx
-import { Theme } from '@kushagradhawan/kookie-ui';
-```
-</CodeBlock>
+Kookie UI makes font customization simple and flexible. Whether you're designing a brand-specific interface or need to match existing design systems, you can easily customize fonts without complex configuration.
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## Theme
+## Why It Matters
 
-Use the `fontFamily` prop to switch between sans-serif and monospace fonts:
+Typography is fundamental to interface design. The right font choice can:
+
+- **Establish brand identity** through consistent typography across your application
+- **Improve readability** by choosing fonts optimized for your content and audience
+- **Create visual hierarchy** using different font weights and styles
+- **Enhance accessibility** with fonts that work well across different devices and screen sizes
+
+Kookie UI's font system is designed to be flexible enough for any design requirement while maintaining consistency across all components.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Built-in Fonts
+
+Kookie UI comes with carefully selected default fonts that work well together:
+
+### Sans-serif Fonts
+- **Inter** - Clean, modern, and highly readable for UI text
+- **System fonts** - Native fonts that feel familiar to users on each platform
+
+### Monospace Fonts  
+- **JetBrains Mono** - Designed specifically for code and technical content
+- **System monospace** - Native monospace fonts for optimal performance
+
+These fonts are chosen for their excellent readability, wide character support, and professional appearance across different contexts.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Font Switching
+
+You can switch between font families instantly using simple theme props. This makes it easy to:
+
+- **Test different fonts** during the design process
+- **Create font variations** for different sections of your application
+- **A/B test typography** to see what works best for your users
 
 <CodeBlock>
 
@@ -39,11 +77,39 @@ Use the `fontFamily` prop to switch between sans-serif and monospace fonts:
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## Override CSS
+## Custom Fonts
 
-Override CSS variables to use your preferred fonts:
+Want to use your brand fonts? Kookie UI makes it straightforward to integrate any font family:
+
+### What You Can Customize
+- **Primary text fonts** for headings, body text, and UI elements
+- **Code fonts** for technical content and data display
+- **Font weights** and styles to match your design system
+- **Fallback fonts** to ensure text displays correctly across all devices
+
+### How Easy It Is
+Font customization requires minimal technical knowledge. You simply:
+1. Import your preferred fonts (Google Fonts, custom fonts, etc.)
+2. Update a few CSS variables
+3. Your entire application uses the new fonts automatically
+
+This means designers can specify any font they want without worrying about complex implementation details.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Implementation
+
+For developers implementing font changes, here are the technical details:
+
+### CSS Variable Override
 
 <CodeBlock>
 
@@ -59,11 +125,7 @@ Override CSS variables to use your preferred fonts:
 ```
 </CodeBlock>
 
-</Section>
-
-<Section size="1">
-
-## Font Replacement
+### Font Replacement
 
 <CodeBlock>
 
@@ -87,11 +149,13 @@ Override CSS variables to use your preferred fonts:
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## CSS Variables
+## Font Variables
 
-<Table.Root>
+<Table.Root mt="6" mb="9">
   <Table.Header>
     <Table.Row>
       <Table.ColumnHeaderCell>Variable</Table.ColumnHeaderCell>
@@ -125,9 +189,11 @@ Override CSS variables to use your preferred fonts:
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
-## Programmatic Configuration
+## Configuration
 
 For dynamic font switching, use the provided utilities:
 

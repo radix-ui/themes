@@ -1,0 +1,176 @@
+import { Section, Badge, Text, Link, Callout, Separator, Table, Code, Box, Flex } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../../components/code-block';
+import { SpecsBlock } from '../../components/specs-block';
+
+<Section size="1">
+
+<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+
+# Shadows
+
+Kookie UI uses a custom shadow system that's more deliberate than the inherited Radix shadows. While Radix Themes provided a good foundation, I've refined the shadow tokens to work better with the design system.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Elevation
+
+Shadows aren't just visual effects—they're tools for creating elevation and hierarchy. In interface design, elevation determines what feels important, what's interactive, and how users understand the spatial relationships between elements.
+
+The shadow system is built around elevation principles:
+
+- **Progressive elevation** - Each step adds meaningful depth without being overwhelming
+- **Consistent opacity** - All shadows use the same base opacity for visual consistency
+- **Purposeful blur** - Blur radius increases with elevation to create natural depth
+- **Subtle offsets** - Y-offsets are minimal to avoid harsh drop shadows
+
+Elevation creates visual hierarchy. Elements that are elevated feel more important and interactive. The right shadow level can make a button feel clickable, a card feel substantial, or a dialog feel like it's floating above everything else.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Shadow Scale
+
+Kookie UI uses a 6-step shadow scale designed for different use cases and elevation levels. Each step is carefully crafted to provide the right amount of depth and visual hierarchy.
+
+<SpecsBlock
+  preview={
+    <Flex gap="4" wrap="wrap" align="center" justify="center">
+      <Box 
+        width="80px" 
+        height="60px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '8px',
+          boxShadow: 'var(--shadow-1)'
+        }}
+      />
+      <Box 
+        width="80px" 
+        height="60px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '8px',
+          boxShadow: 'var(--shadow-2)'
+        }}
+      />
+      <Box 
+        width="80px" 
+        height="60px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '8px',
+          boxShadow: 'var(--shadow-3)'
+        }}
+      />
+      <Box 
+        width="80px" 
+        height="60px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '8px',
+          boxShadow: 'var(--shadow-4)'
+        }}
+      />
+      <Box 
+        width="80px" 
+        height="60px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '8px',
+          boxShadow: 'var(--shadow-5)'
+        }}
+      />
+      <Box 
+        width="80px" 
+        height="60px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '8px',
+          boxShadow: 'var(--shadow-6)'
+        }}
+      />
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Shadow 1',
+      value: 'inset 0 1px 2px 0 rgb(0 0 0 / 0.05)',
+      usage: 'Inset shadows, subtle depth'
+    },
+    {
+      property: 'Shadow 2',
+      value: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+      usage: 'Classic panels, cards'
+    },
+    {
+      property: 'Shadow 3',
+      value: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+      usage: 'Elevated cards, buttons'
+    },
+    {
+      property: 'Shadow 4',
+      value: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      usage: 'Small overlays, hover cards'
+    },
+    {
+      property: 'Shadow 5',
+      value: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+      usage: 'Popovers, dropdowns'
+    },
+    {
+      property: 'Shadow 6',
+      value: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+      usage: 'Large overlays, dialogs'
+    }
+  ]}
+/>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Usage
+
+Shadow tokens can be accessed using CSS variables. Use these tokens to style your custom components, ensuring they're consistent with the rest of the design system.
+
+<CodeBlock>
+
+```css
+/* Inset shadow for pressed states */
+.my-component {
+  box-shadow: var(--shadow-1);
+}
+
+/* Card with subtle elevation */
+.my-card {
+  box-shadow: var(--shadow-2);
+}
+
+/* Elevated button */
+.my-button {
+  box-shadow: var(--shadow-3);
+}
+
+/* Overlay panel */
+.my-overlay {
+  box-shadow: var(--shadow-5);
+}
+
+/* Modal dialog */
+.my-dialog {
+  box-shadow: var(--shadow-6);
+}
+```
+
+</CodeBlock>
+
+</Section>

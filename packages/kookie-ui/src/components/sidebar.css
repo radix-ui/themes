@@ -69,7 +69,7 @@
 .rt-SidebarContainer:where(.rt-variant-outline) {
   background-color: var(--color-panel);
   backdrop-filter: var(--backdrop-filter-panel);
-  
+
   /* Component-level overrides (higher specificity) - remap --color-panel */
   &:where([data-panel-background='solid']) {
     --color-panel: var(--color-panel-solid);
@@ -84,18 +84,18 @@
     --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
-  
+
   /* Floating sidebars get full inset border */
-  :where(.rt-SidebarRoot[data-type="floating"]) & {
+  :where(.rt-SidebarRoot[data-type='floating']) & {
     box-shadow: inset 0 0 0 1px var(--gray-a6);
   }
-  
+
   /* Non-floating sidebars get border only on the content-facing side */
-  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="left"]) & {
+  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='left']) & {
     box-shadow: inset -1px 0 0 0 var(--gray-a6);
   }
-  
-  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="right"]) & {
+
+  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='right']) & {
     box-shadow: inset 1px 0 0 0 var(--gray-a6);
   }
 }
@@ -134,7 +134,7 @@
 .rt-SidebarContainer:where(.rt-variant-surface) {
   /* Base state: neutral gray background (maintains sidebar neutrality) */
   background-color: var(--gray-1);
-  
+
   /* Theme-level translucent override */
   :where([data-panel-background='translucent']) & {
     background-color: color-mix(in srgb, var(--gray-a1), var(--gray-1) 60%);
@@ -155,31 +155,31 @@
     --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
-  
+
   /* Inset border like Card surface variant */
   /* Floating sidebars get full inset border */
-  :where(.rt-SidebarRoot[data-type="floating"]) & {
+  :where(.rt-SidebarRoot[data-type='floating']) & {
     box-shadow: inset 0 0 0 1px var(--gray-6);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       box-shadow: inset 0 0 0 1px var(--gray-a6);
     }
   }
-  
+
   /* Non-floating sidebars get border only on the content-facing side */
-  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="left"]) & {
+  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='left']) & {
     box-shadow: inset -1px 0 0 0 var(--gray-6);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       box-shadow: inset -1px 0 0 0 var(--gray-a6);
     }
   }
-  
-  :where(.rt-SidebarRoot[data-type="sidebar"][data-side="right"]) & {
+
+  :where(.rt-SidebarRoot[data-type='sidebar'][data-side='right']) & {
     box-shadow: inset 1px 0 0 0 var(--gray-6);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       box-shadow: inset 1px 0 0 0 var(--gray-a6);
@@ -195,7 +195,7 @@
   gap: var(--space-2);
   padding: var(--base-menu-content-padding);
   min-height: var(--base-menu-item-height);
-  
+
   /* Make MenuButtons expand to full width */
   & :where(.rt-SidebarMenuButton) {
     flex: 1;
@@ -209,7 +209,7 @@
   gap: var(--space-2);
   padding: var(--base-menu-content-padding);
   min-height: var(--base-menu-item-height);
-  
+
   /* Make MenuButtons expand to full width */
   & :where(.rt-SidebarMenuButton) {
     flex: 1;
@@ -217,33 +217,85 @@
 }
 
 /* Flex utilities for header/footer layouts */
-.rt-SidebarHeader:where(.rt-flex-row) { flex-direction: row; }
-.rt-SidebarHeader:where(.rt-flex-col) { flex-direction: column; }
-.rt-SidebarHeader:where(.rt-items-center) { align-items: center; }
-.rt-SidebarHeader:where(.rt-items-start) { align-items: flex-start; }
-.rt-SidebarHeader:where(.rt-items-end) { align-items: flex-end; }
-.rt-SidebarHeader:where(.rt-justify-between) { justify-content: space-between; }
-.rt-SidebarHeader:where(.rt-justify-center) { justify-content: center; }
-.rt-SidebarHeader:where(.rt-justify-start) { justify-content: flex-start; }
-.rt-SidebarHeader:where(.rt-justify-end) { justify-content: flex-end; }
-.rt-SidebarHeader:where(.rt-gap-1) { gap: var(--space-1); }
-.rt-SidebarHeader:where(.rt-gap-2) { gap: var(--space-2); }
-.rt-SidebarHeader:where(.rt-gap-3) { gap: var(--space-3); }
-.rt-SidebarHeader:where(.rt-gap-4) { gap: var(--space-4); }
+.rt-SidebarHeader:where(.rt-flex-row) {
+  flex-direction: row;
+}
+.rt-SidebarHeader:where(.rt-flex-col) {
+  flex-direction: column;
+}
+.rt-SidebarHeader:where(.rt-items-center) {
+  align-items: center;
+}
+.rt-SidebarHeader:where(.rt-items-start) {
+  align-items: flex-start;
+}
+.rt-SidebarHeader:where(.rt-items-end) {
+  align-items: flex-end;
+}
+.rt-SidebarHeader:where(.rt-justify-between) {
+  justify-content: space-between;
+}
+.rt-SidebarHeader:where(.rt-justify-center) {
+  justify-content: center;
+}
+.rt-SidebarHeader:where(.rt-justify-start) {
+  justify-content: flex-start;
+}
+.rt-SidebarHeader:where(.rt-justify-end) {
+  justify-content: flex-end;
+}
+.rt-SidebarHeader:where(.rt-gap-1) {
+  gap: var(--space-1);
+}
+.rt-SidebarHeader:where(.rt-gap-2) {
+  gap: var(--space-2);
+}
+.rt-SidebarHeader:where(.rt-gap-3) {
+  gap: var(--space-3);
+}
+.rt-SidebarHeader:where(.rt-gap-4) {
+  gap: var(--space-4);
+}
 
-.rt-SidebarFooter:where(.rt-flex-row) { flex-direction: row; }
-.rt-SidebarFooter:where(.rt-flex-col) { flex-direction: column; }
-.rt-SidebarFooter:where(.rt-items-center) { align-items: center; }
-.rt-SidebarFooter:where(.rt-items-start) { align-items: flex-start; }
-.rt-SidebarFooter:where(.rt-items-end) { align-items: flex-end; }
-.rt-SidebarFooter:where(.rt-justify-between) { justify-content: space-between; }
-.rt-SidebarFooter:where(.rt-justify-center) { justify-content: center; }
-.rt-SidebarFooter:where(.rt-justify-start) { justify-content: flex-start; }
-.rt-SidebarFooter:where(.rt-justify-end) { justify-content: flex-end; }
-.rt-SidebarFooter:where(.rt-gap-1) { gap: var(--space-1); }
-.rt-SidebarFooter:where(.rt-gap-2) { gap: var(--space-2); }
-.rt-SidebarFooter:where(.rt-gap-3) { gap: var(--space-3); }
-.rt-SidebarFooter:where(.rt-gap-4) { gap: var(--space-4); }
+.rt-SidebarFooter:where(.rt-flex-row) {
+  flex-direction: row;
+}
+.rt-SidebarFooter:where(.rt-flex-col) {
+  flex-direction: column;
+}
+.rt-SidebarFooter:where(.rt-items-center) {
+  align-items: center;
+}
+.rt-SidebarFooter:where(.rt-items-start) {
+  align-items: flex-start;
+}
+.rt-SidebarFooter:where(.rt-items-end) {
+  align-items: flex-end;
+}
+.rt-SidebarFooter:where(.rt-justify-between) {
+  justify-content: space-between;
+}
+.rt-SidebarFooter:where(.rt-justify-center) {
+  justify-content: center;
+}
+.rt-SidebarFooter:where(.rt-justify-start) {
+  justify-content: flex-start;
+}
+.rt-SidebarFooter:where(.rt-justify-end) {
+  justify-content: flex-end;
+}
+.rt-SidebarFooter:where(.rt-gap-1) {
+  gap: var(--space-1);
+}
+.rt-SidebarFooter:where(.rt-gap-2) {
+  gap: var(--space-2);
+}
+.rt-SidebarFooter:where(.rt-gap-3) {
+  gap: var(--space-3);
+}
+.rt-SidebarFooter:where(.rt-gap-4) {
+  gap: var(--space-4);
+}
 
 /* Header/Footer Menu Button Support */
 .rt-SidebarHeader :where(.rt-SidebarMenuButton),
@@ -266,21 +318,22 @@
   text-align: left;
   cursor: var(--cursor-menu-item);
   user-select: none;
-  
+
   /* Header/Footer-specific styling */
   justify-content: flex-start;
-  
+
   /* Transitions */
-  transition: background var(--motion-duration-small) var(--motion-ease-standard), 
-              box-shadow var(--motion-duration-small) var(--motion-ease-standard),
-              filter var(--motion-duration-small) var(--motion-ease-standard);
-  
+  transition:
+    background var(--motion-duration-small) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    filter var(--motion-duration-small) var(--motion-ease-standard);
+
   /* Focus state */
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: 2px;
   }
-  
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
@@ -397,15 +450,17 @@
   /* Sub-trigger transitions - match base menu */
   & :where(.rt-SidebarMenuSubTrigger) {
     transition: var(--transition-menu);
-    
+
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
       transition: none;
     }
-    
+
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
     :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+      transition:
+        background var(--duration-1) var(--ease-1),
+        color var(--duration-2) var(--ease-1);
     }
   }
 
@@ -413,7 +468,7 @@
   & :where(.rt-SidebarMenuSubTrigger[data-state='open']) {
     /* Base state: solid gray for solid panels */
     background-color: var(--gray-3);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       background-color: var(--gray-a3);
@@ -435,7 +490,9 @@
   & :where(.rt-SidebarMenuButton) {
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
     :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+      transition:
+        background var(--duration-1) var(--ease-1),
+        color var(--duration-2) var(--ease-1);
     }
   }
 
@@ -576,15 +633,17 @@
   /* Sub-trigger transitions - match base menu */
   & :where(.rt-SidebarMenuSubTrigger) {
     transition: var(--transition-menu);
-    
+
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
       transition: none;
     }
-    
+
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
     :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+      transition:
+        background var(--duration-1) var(--ease-1),
+        color var(--duration-2) var(--ease-1);
     }
   }
 
@@ -592,7 +651,7 @@
   & :where(.rt-SidebarMenuSubTrigger[data-state='open']) {
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-3);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       background-color: var(--accent-a3);
@@ -614,7 +673,9 @@
   & :where(.rt-SidebarMenuButton) {
     /* Remove backdrop-filter transitions in translucent mode to prevent flickering */
     :where([data-panel-background='translucent']) & {
-      transition: background var(--duration-1) var(--ease-1), color var(--duration-2) var(--ease-1);
+      transition:
+        background var(--duration-1) var(--ease-1),
+        color var(--duration-2) var(--ease-1);
     }
   }
 
@@ -622,7 +683,7 @@
   & :where(.rt-SidebarMenuButton[data-highlighted]) {
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-4);
-    
+
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {
       background-color: var(--accent-a4);

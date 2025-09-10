@@ -1,4 +1,4 @@
-import { Section, Badge } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Separator } from '@kushagradhawan/kookie-ui';
 
 <Section size="1">
 
@@ -6,40 +6,56 @@ import { Section, Badge } from '@kushagradhawan/kookie-ui';
 
 # Introduction
 
-Most component libraries hand you a box of parts and leave the real decisions up to you. That sounds flexible, but in practice it means every team ends up re-deciding the same things: how should overlays behave, what counts as a primary action, what’s the right way to handle motion, or which size an icon should actually be.  
+I kept running into the same problems while building interfaces. I couldn't find a complete design system that I trusted - not just for the visuals, but for the underlying patterns. The libraries I tried either weren't cohesive enough, lacked versatility for different use cases, or didn't scale well when I needed them to. Even the really good ones like Radix UI and Shadcn had their limitations - Radix wasn't consistent across components, and while Shadcn is amazing, it felt more like individual components than a unified system.  
 
-Kookie UI starts earlier in the chain. It begins with patterns — the rules that govern interaction, hierarchy, density, and rhythm — and then provides components that follow those rules automatically. The components exist to make the patterns easy to apply, not to replace the thinking behind them.  
+I started building Kookie UI to solve this for myself. Radix Themes came closest to what I wanted, so I thought "I can make it my own" and forked it. Kookie UI begins with patterns — the rules that govern interaction, hierarchy, density, and rhythm — and then provides components that follow those rules automatically. The components are meant to make the patterns easy to apply, not to replace the thinking behind them.  
 
-This isn’t about flashy new UI. It’s about reducing friction. Interfaces feel better when spacing, colors, transitions, and accessibility work the same way everywhere. Kookie UI tries to codify those boring but essential details so teams don’t have to keep patching them one component at a time.  
+I'm not making flashy new UI. I'm trying to reduce friction. Interfaces feel better when spacing, colors, transitions, and accessibility work the same way everywhere. Kookie UI tries to codify those boring but essential details so I don't have to keep patching them one component at a time.
 
 </Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Design and Engineering
+
+Kookie UI serves both designers and developers equally. I'm building comprehensive documentation for both audiences because I believe design and development should work together seamlessly:
+
+**For Designers**: Each component includes detailed guidelines that explain the psychological principles behind design decisions, common mistakes to avoid, and how to create effective hierarchies. Specs pages provide exact measurements, spacing rules, and design tokens for consistent implementation.
+
+**For Developers**: API documentation covers all props, methods, and technical implementation details. Playground examples show real code that you can copy and customize for your specific needs.
+
+This approach ensures that design decisions are preserved from concept to implementation, reducing the gap between design and development that leads to inconsistent user experiences.
+
+</Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
 ## Roadmap
 
-Kookie UI isn’t shipped in one go. It grows gradually, based on what feels stable enough to use in real products. Components are released when they meet that standard, not on arbitrary timelines.  
+I'm not shipping Kookie UI all at once. It grows gradually, based on what feels stable enough to use in real products. I release components when they meet that standard, not on arbitrary timelines.  
 
-What’s coming next:  
+I'm working on core input components, navigation patterns, system experiences, and data components. For the full roadmap and what's coming next, check out the [public roadmap](https://github.com/kushagradhawan/kookie-ui/projects) where you can see progress and upcoming features.
 
-- Core input components: **TextField, TextArea, Switch, Checkbox, Radio**  
-- Navigation patterns: **Tabs, Toolbar, Command Palette**  
-- System experiences: **Dialog, Drawer, Popover**  
-- Data components: **Tables** (with virtualization support)  
-- Composed patterns: **UserCard, PropertyControl** and other small but recurring interface needs  
-
-Longer term, the plan is to ship **templates** for dashboards, marketing sites, authentication flows, and AI interfaces — not as frameworks, but as reliable starting points for common patterns.  
+Longer term, I'm hoping to ship **templates** for dashboards, marketing sites, authentication flows, and AI interfaces — not as frameworks, but as reliable starting points for common patterns.  
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
 ## Philosophy
 
-Kookie UI is intentionally boring. It doesn’t try to reinvent interface design or compete with design trends. Instead, it codifies the non-negotiables: spacing systems, semantic colors, accessible defaults, predictable motion, and interaction rules that behave consistently.  
+Kookie UI is intentionally boring. I'm not trying to reinvent interface design or chase design trends. Instead, I'm trying to codify the non-negotiables: spacing systems, semantic colors, accessible defaults, predictable motion, and interaction rules that behave consistently.  
 
-The idea is simple: once the basics are solid, teams can focus on the parts of the product that actually make it unique. Patterns handle the baseline, components enforce the patterns, and the rest of your product can grow without carrying that overhead.  
+The idea is simple: once the basics are solid, you can focus on the parts of your product that actually make it unique. Patterns handle the baseline, components enforce the patterns, and the rest of your product can grow without carrying that overhead.  
 
-The result isn’t magic or perfection. It’s a foundation you can trust just enough to spend your energy on higher-level problems.  
+The result isn't magic or perfection. It's a foundation you can trust just enough to spend your energy on higher-level problems.  
 
 </Section>
+
+<Separator size="4"/>

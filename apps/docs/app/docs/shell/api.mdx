@@ -19,6 +19,8 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Basic Usage
@@ -57,6 +59,8 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Components
@@ -66,7 +70,7 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 The root container that manages the overall shell layout and state.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -94,7 +98,7 @@ The root container that manages the overall shell layout and state.
 Fixed header at the top of the shell.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -122,7 +126,7 @@ Fixed header at the top of the shell.
 Narrow navigation strip on the left side. Works in conjunction with Panel.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -132,7 +136,7 @@ Narrow navigation strip on the left side. Works in conjunction with Panel.
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 64.</Table.Cell>
       </Table.Row>
@@ -147,9 +151,14 @@ Narrow navigation strip on the left side. Works in conjunction with Panel.
         <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
-        <Table.Cell>`PaneSizePersistence`</Table.Cell>
-        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when rail expands.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when rail collapses.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
@@ -165,7 +174,7 @@ Narrow navigation strip on the left side. Works in conjunction with Panel.
 Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -175,7 +184,7 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
       </Table.Row>
@@ -192,12 +201,12 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum width when resizing. Defaults to 480.</Table.Cell>
+        <Table.Cell>Maximum width when resizing. Defaults to 800.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the panel can be resized. Defaults to true.</Table.Cell>
+        <Table.Cell>Whether the panel can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
@@ -205,7 +214,57 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
         <Table.Cell>Whether the panel can be collapsed via resize handle. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Custom content inside the resizer handle (kept unstyled).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when panel is resized.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize starts.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize ends.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when panel expands.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when panel collapses.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
+        <Table.Cell>`number[]`</Table.Cell>
+        <Table.Cell>Array of pixel values where the panel should snap to during resize.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Size threshold below which the panel should collapse when resizing.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
         <Table.Cell>`PaneSizePersistence`</Table.Cell>
         <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
       </Table.Row>
@@ -223,7 +282,7 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
 Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -233,7 +292,7 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
       </Table.Row>
@@ -255,7 +314,7 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum width when resizing. Defaults to 480.</Table.Cell>
+        <Table.Cell>Maximum width when resizing. Defaults to 400.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`thinSize`</Table.RowHeaderCell>
@@ -263,9 +322,14 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
         <Table.Cell>Width in thin mode. Defaults to 64.</Table.Cell>
       </Table.Row>
       <Table.Row>
+        <Table.RowHeaderCell>`toggleModes`</Table.RowHeaderCell>
+        <Table.Cell>`Array<'thin' | 'expanded'>`</Table.Cell>
+        <Table.Cell>Available modes in toggle sequence. Defaults to `['thin', 'expanded']`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the sidebar can be resized. Defaults to true.</Table.Cell>
+        <Table.Cell>Whether the sidebar can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
@@ -273,7 +337,57 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
         <Table.Cell>Whether the sidebar can be collapsed via resize handle. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Custom content inside the resizer handle (kept unstyled).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when sidebar is resized.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize starts.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize ends.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when sidebar expands.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when sidebar collapses.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
+        <Table.Cell>`number[]`</Table.Cell>
+        <Table.Cell>Array of pixel values where the sidebar should snap to during resize.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Size threshold below which the sidebar should collapse when resizing.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
         <Table.Cell>`PaneSizePersistence`</Table.Cell>
         <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
       </Table.Row>
@@ -291,7 +405,7 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
 Main content area. Always required in shell layouts.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -314,7 +428,7 @@ Main content area. Always required in shell layouts.
 Right-side panel for inspectors, property panels, or contextual information.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -324,7 +438,7 @@ Right-side panel for inspectors, property panels, or contextual information.
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 320.</Table.Cell>
       </Table.Row>
@@ -341,17 +455,17 @@ Right-side panel for inspectors, property panels, or contextual information.
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Minimum width when resizing. Defaults to 280.</Table.Cell>
+        <Table.Cell>Minimum width when resizing. Defaults to 200.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum width when resizing. Defaults to 480.</Table.Cell>
+        <Table.Cell>Maximum width when resizing. Defaults to 500.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the inspector can be resized. Defaults to true.</Table.Cell>
+        <Table.Cell>Whether the inspector can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
@@ -359,7 +473,57 @@ Right-side panel for inspectors, property panels, or contextual information.
         <Table.Cell>Whether the inspector can be collapsed via resize handle. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Custom content inside the resizer handle (kept unstyled).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when inspector is resized.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize starts.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize ends.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when inspector expands.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when inspector collapses.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
+        <Table.Cell>`number[]`</Table.Cell>
+        <Table.Cell>Array of pixel values where the inspector should snap to during resize.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Size threshold below which the inspector should collapse when resizing.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
         <Table.Cell>`PaneSizePersistence`</Table.Cell>
         <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
       </Table.Row>
@@ -377,7 +541,7 @@ Right-side panel for inspectors, property panels, or contextual information.
 Bottom panel for terminals, logs, or contextual information.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -387,9 +551,9 @@ Bottom panel for terminals, logs, or contextual information.
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default height in pixels. Defaults to 240.</Table.Cell>
+        <Table.Cell>Default height in pixels. Defaults to 200.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
@@ -404,17 +568,17 @@ Bottom panel for terminals, logs, or contextual information.
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Minimum height when resizing. Defaults to 120.</Table.Cell>
+        <Table.Cell>Minimum height when resizing. Defaults to 100.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum height when resizing. Defaults to 480.</Table.Cell>
+        <Table.Cell>Maximum height when resizing. Defaults to 400.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the bottom panel can be resized. Defaults to true.</Table.Cell>
+        <Table.Cell>Whether the bottom panel can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
@@ -422,7 +586,57 @@ Bottom panel for terminals, logs, or contextual information.
         <Table.Cell>Whether the bottom panel can be collapsed via resize handle. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`persist`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+        <Table.Cell>Custom content inside the resizer handle (kept unstyled).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when bottom panel is resized.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize starts.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell>Callback when resize ends.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when bottom panel expands.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
+        <Table.Cell>`() => void`</Table.Cell>
+        <Table.Cell>Callback when bottom panel collapses.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
+        <Table.Cell>`number[]`</Table.Cell>
+        <Table.Cell>Array of pixel values where the bottom panel should snap to during resize.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Size threshold below which the bottom panel should collapse when resizing.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
         <Table.Cell>`PaneSizePersistence`</Table.Cell>
         <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
       </Table.Row>
@@ -440,7 +654,7 @@ Bottom panel for terminals, logs, or contextual information.
 Button trigger for controlling shell panes.
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -461,8 +675,8 @@ Button trigger for controlling shell panes.
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`peekOnHover`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether to show peek preview on hover. Defaults to false.</Table.Cell>
+        <Table.Cell>`boolean | 'collapsed'`</Table.Cell>
+        <Table.Cell>Whether to show peek preview on hover. If `'collapsed'`, only peeks when target is collapsed. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
@@ -474,6 +688,8 @@ Button trigger for controlling shell panes.
 </Box>
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -534,6 +750,8 @@ console.log(presentation); // 'overlay' | 'fixed' | 'stacked'
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -624,6 +842,8 @@ type PaneSizePersistence = {
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Composition Rules
@@ -683,6 +903,8 @@ type PaneSizePersistence = {
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Responsive Behavior
@@ -712,7 +934,7 @@ All shell panes support responsive configurations using breakpoint objects:
 ### Breakpoints
 
 <Box>
-  <Table.Root size="2" variant="ghost">
+  <Table.Root mt="6" mb="9" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
@@ -756,3 +978,5 @@ All shell panes support responsive configurations using breakpoint objects:
 </Box>
 
 </Section>
+
+<Separator size="4"/>

@@ -5,7 +5,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--base-menu-content-padding);
+  padding-bottom: var(--base-menu-content-padding);
   box-sizing: border-box;
   list-style: none;
   margin: 0;
@@ -164,11 +164,6 @@
   font-size: var(--font-size-2);
 }
 
-/* Sidebar Group Components - identical to base menu */
-.rt-SidebarGroup {
-  /* No styling - purely semantic like BaseMenuGroup */
-}
-
 .rt-SidebarGroupLabel {
   /* Inherit all BaseMenuLabel styles */
   display: flex;
@@ -218,6 +213,6 @@
 
 /* Add balanced spacing for sidebar menu items while preserving base menu border radius */
 .rt-SidebarContent :where(.rt-BaseMenuItem) {
-  margin-top: calc(var(--space-1) / 2);
-  margin-bottom: calc(var(--space-1) / 2);
+  margin-top: calc(var(--space-1) / 4);
+  margin-bottom: calc(var(--space-1) / 4);
 }
