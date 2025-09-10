@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm build",
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "buildCommand": "corepack enable && corepack prepare pnpm@10.0.0 --activate && pnpm build",
+  "installCommand": "corepack enable && corepack prepare pnpm@10.0.0 --activate && pnpm install --no-frozen-lockfile",
   "outputDirectory": "apps/docs/.next",
   "functions": {
     "app/api/**/*.ts": {

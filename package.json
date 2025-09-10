@@ -2,6 +2,9 @@
   "name": "kookie-ui-workspace",
   "private": true,
   "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "build:pkg": "pnpm --filter @kushagradhawan/kookie-ui build",
