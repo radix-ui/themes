@@ -1,6 +1,7 @@
 {
-  "buildCommand": "pnpm -w build:pkg && pnpm build",
+  "buildCommand": "pnpm build",
   "installCommand": "pnpm install --no-frozen-lockfile",
+  "outputDirectory": "apps/docs/.next",
   "functions": {
     "app/api/**/*.ts": {
       "runtime": "nodejs20.x"
