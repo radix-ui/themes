@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "pnpm -w build:pkg",
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
