@@ -1563,7 +1563,7 @@ const Sidebar = React.forwardRef<
             <VisuallyHidden>
               <Sheet.Title>Sidebar</Sheet.Title>
             </VisuallyHidden>
-            {children}
+            {contentChildren}
           </Sheet.Content>
         </Sheet.Root>
       );
