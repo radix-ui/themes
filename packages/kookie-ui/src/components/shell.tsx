@@ -1085,7 +1085,7 @@ type SidebarComponent = React.ForwardRefExoticComponent<
     defaultMode?: ResponsiveSidebarMode;
     onModeChange?: (mode: SidebarMode) => void;
     thinSize?: number;
-    toggleModes?: Array<'thin' | 'expanded'>;
+    toggleModes?: 'both' | 'single';
   }) &
     React.RefAttributes<HTMLDivElement>
 > & { Handle: HandleComponent };
@@ -1294,7 +1294,7 @@ const Sidebar = React.forwardRef<
     defaultMode?: ResponsiveSidebarMode;
     onModeChange?: (mode: SidebarMode) => void;
     thinSize?: number;
-    toggleModes?: Array<'thin' | 'expanded'>;
+    toggleModes?: 'both' | 'single';
   }
 >(
   (
@@ -1427,50 +1427,6 @@ const Sidebar = React.forwardRef<
       };
     }, [resizable, persistenceAdapter, onResize, isOverlay]);
 
-    // Register custom toggle behavior based on toggleModes
-    const shellForToggle = useShell();
-    React.useEffect(() => {
-      if (!shellForToggle.setSidebarToggleComputer) return;
-      // Build cycle from provided modes (defaults to both)
-      const enabled = (
-        toggleModes && toggleModes.length > 0 ? toggleModes : (['thin', 'expanded'] as const)
-      ) as Array<'thin' | 'expanded'>;
-      const compute = (current: SidebarMode): SidebarMode => {
-        if (current === 'collapsed') return enabled[0] ?? 'expanded';
-        if (current === 'thin') {
-          // if thin not enabled, go to collapsed; else if expanded enabled go expanded; else collapsed
-          return enabled.includes('thin')
-            ? enabled.includes('expanded')
-              ? 'expanded'
-              : 'collapsed'
-            : 'collapsed';
-        }
-        // expanded
-        if (enabled.length === 2 && enabled.includes('thin') && enabled.includes('expanded')) {
-          return 'collapsed';
-        }
-        // if only expanded enabled, collapse next; if only thin enabled, go thin next
-        return enabled.includes('thin') && !enabled.includes('expanded') ? 'thin' : 'collapsed';
-      };
-      shellForToggle.setSidebarToggleComputer(compute);
-      return () => {
-        // reset to default sequence when unmounting this Sidebar
-        shellForToggle.setSidebarToggleComputer?.((cur) =>
-          cur === 'collapsed' ? 'thin' : cur === 'thin' ? 'expanded' : 'collapsed',
-        );
-      };
-    }, [shellForToggle, toggleModes]);
-
-    // Preserve last non-collapsed width for smooth overlay close animation
-    const lastOverlayWidthRef = React.useRef<number>(expandedSize);
-    const lastOverlayModeRef = React.useRef<SidebarMode>('expanded');
-    React.useEffect(() => {
-      if (shell.sidebarMode !== 'collapsed') {
-        lastOverlayModeRef.current = shell.sidebarMode as SidebarMode;
-        lastOverlayWidthRef.current = shell.sidebarMode === 'thin' ? thinSize : expandedSize;
-      }
-    }, [shell.sidebarMode, thinSize, expandedSize]);
-
     // Always-follow responsive defaultMode for uncontrolled Sidebar (on breakpoint change only)
     const resolveResponsiveMode = React.useCallback((): SidebarMode => {
       if (typeof defaultMode === 'string') return defaultMode as SidebarMode;
@@ -1489,6 +1445,51 @@ const Sidebar = React.forwardRef<
       }
       return 'collapsed';
     }, [defaultMode, shell.currentBreakpoint]);
+
+    // Register custom toggle behavior based on toggleModes (both|single)
+    const shellForToggle = useShell();
+    const resolveDefaultSidebarMode = React.useCallback((): SidebarMode => {
+      const resolved = resolveResponsiveMode();
+      return resolved === 'thin' || resolved === 'expanded' ? resolved : 'expanded';
+    }, [resolveResponsiveMode]);
+
+    React.useEffect(() => {
+      if (!shellForToggle.setSidebarToggleComputer) return;
+      const strategy: 'both' | 'single' = toggleModes ?? 'both';
+      const compute = (current: SidebarMode): SidebarMode => {
+        if (strategy === 'both') {
+          // collapsed -> thin -> expanded -> collapsed
+          if (current === 'collapsed') return 'thin';
+          if (current === 'thin') return 'expanded';
+          return 'collapsed';
+        }
+        // single: toggle between collapsed and resolved default mode
+        const target = resolveDefaultSidebarMode();
+        if (current === 'collapsed') return target;
+        if (current === target) return 'collapsed';
+        // if in the other non-collapsed state, jump to the target
+        return target;
+      };
+      shellForToggle.setSidebarToggleComputer(compute);
+      return () => {
+        // default fallback sequence when unmounting
+        shellForToggle.setSidebarToggleComputer?.((cur) =>
+          cur === 'collapsed' ? 'thin' : cur === 'thin' ? 'expanded' : 'collapsed',
+        );
+      };
+    }, [shellForToggle, toggleModes, resolveDefaultSidebarMode]);
+
+    // Preserve last non-collapsed width for smooth overlay close animation
+    const lastOverlayWidthRef = React.useRef<number>(expandedSize);
+    const lastOverlayModeRef = React.useRef<SidebarMode>('expanded');
+    React.useEffect(() => {
+      if (shell.sidebarMode !== 'collapsed') {
+        lastOverlayModeRef.current = shell.sidebarMode as SidebarMode;
+        lastOverlayWidthRef.current = shell.sidebarMode === 'thin' ? thinSize : expandedSize;
+      }
+    }, [shell.sidebarMode, thinSize, expandedSize]);
+
+    // (moved above)
 
     const lastSidebarBpRef = React.useRef<Breakpoint | null>(null);
     React.useEffect(() => {
@@ -1584,25 +1585,31 @@ const Sidebar = React.forwardRef<
           ['--sidebar-thin-size' as any]: `${thinSize}px`,
           ['--sidebar-min-size' as any]: `${minSize}px`,
           ['--sidebar-max-size' as any]: `${maxSize}px`,
-          // When peeking in fixed presentation, use the next toggle target's width (thin or expanded)
-          ...(shell.peekTarget === 'sidebar' && !isOverlay
+          // When peeking in fixed presentation and collapsed, preview next state's width
+          ...(shell.peekTarget === 'sidebar' && shell.sidebarMode === 'collapsed' && !isOverlay
             ? (() => {
-                const enabled = (
-                  toggleModes && toggleModes.length > 0
-                    ? toggleModes
-                    : (['thin', 'expanded'] as const)
-                ) as Array<'thin' | 'expanded'>;
+                const strategy: 'both' | 'single' = toggleModes ?? 'both';
                 const current = shell.sidebarMode as SidebarMode;
-                let next: SidebarMode = 'collapsed';
-                if (current === 'collapsed') {
-                  next = (enabled[0] ?? 'expanded') as SidebarMode;
-                } else if (current === 'thin') {
-                  next = enabled.includes('expanded') ? 'expanded' : 'collapsed';
+                let next: SidebarMode;
+                if (strategy === 'both') {
+                  next =
+                    current === 'collapsed'
+                      ? 'thin'
+                      : current === 'thin'
+                        ? 'expanded'
+                        : 'collapsed';
                 } else {
-                  next = enabled.includes('thin') ? 'thin' : 'collapsed';
+                  const target = resolveDefaultSidebarMode();
+                  next = current === 'collapsed' ? target : 'collapsed';
                 }
-                const peekWidth = next === 'thin' ? thinSize : expandedSize;
-                return { ['--peek-sidebar-width' as any]: `${peekWidth}px` } as React.CSSProperties;
+                if (next === 'thin') {
+                  return {
+                    ['--peek-sidebar-width' as any]: `${thinSize}px`,
+                  } as React.CSSProperties;
+                }
+                return {
+                  ['--peek-sidebar-width' as any]: `var(--sidebar-size, ${expandedSize}px)`,
+                } as React.CSSProperties;
               })()
             : {}),
         }}
@@ -1826,7 +1833,7 @@ const Inspector = React.forwardRef<HTMLDivElement, PaneProps>(
             <VisuallyHidden>
               <Sheet.Title>Inspector</Sheet.Title>
             </VisuallyHidden>
-            {children}
+            {contentChildren}
           </Sheet.Content>
         </Sheet.Root>
       );
@@ -1910,16 +1917,59 @@ const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
       (el: React.ReactElement) => !(React.isValidElement(el) && el.type === BottomHandle),
     );
 
-    // Honor defaultMode on mount when uncontrolled
+    // Resolve responsive defaultMode for uncontrolled Bottom (on mount and breakpoint change)
+    const resolveResponsiveMode = React.useCallback((): PaneMode => {
+      if (typeof defaultMode === 'string') return defaultMode as PaneMode;
+      const dm = defaultMode as Partial<Record<Breakpoint, PaneMode>> | undefined;
+      if (dm && dm[shell.currentBreakpoint as Breakpoint]) {
+        return dm[shell.currentBreakpoint as Breakpoint] as PaneMode;
+      }
+      const bpKeys = Object.keys(BREAKPOINTS) as Array<keyof typeof BREAKPOINTS>;
+      const order: Breakpoint[] = ([...bpKeys].reverse() as Breakpoint[]).concat(
+        'initial' as Breakpoint,
+      );
+      const startIdx = order.indexOf(shell.currentBreakpoint as Breakpoint);
+      for (let i = startIdx + 1; i < order.length; i++) {
+        const bp = order[i];
+        if (dm && dm[bp]) {
+          return dm[bp] as PaneMode;
+        }
+      }
+      return 'collapsed';
+    }, [defaultMode, shell.currentBreakpoint]);
+
+    // Honor defaultMode on mount when uncontrolled (including responsive objects)
     const didInitRef = React.useRef(false);
     React.useEffect(() => {
       if (didInitRef.current) return;
       didInitRef.current = true;
-      if (mode === undefined && shell.bottomMode !== (defaultMode as PaneMode)) {
-        shell.setBottomMode(defaultMode as PaneMode);
+      if (mode === undefined) {
+        const initial = resolveResponsiveMode();
+        if (shell.bottomMode !== initial) shell.setBottomMode(initial);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    // Apply responsive defaultMode on breakpoint change when uncontrolled
+    const lastBottomBpRef = React.useRef<Breakpoint | null>(null);
+    const lastResolvedBottomRef = React.useRef<PaneMode | null>(null);
+    React.useEffect(() => {
+      if (mode !== undefined) return; // controlled wins
+      if (!shell.currentBreakpointReady) return; // avoid SSR mismatch
+      if (lastBottomBpRef.current === shell.currentBreakpoint) return; // only on bp change
+      lastBottomBpRef.current = shell.currentBreakpoint as Breakpoint;
+      const next = resolveResponsiveMode();
+      if (lastResolvedBottomRef.current === next) return; // no-op transition
+      lastResolvedBottomRef.current = next;
+      if (next !== shell.bottomMode) shell.setBottomMode(next);
+    }, [
+      mode,
+      shell.currentBreakpoint,
+      shell.currentBreakpointReady,
+      resolveResponsiveMode,
+      shell.bottomMode,
+      shell.setBottomMode,
+    ]);
 
     // Sync controlled mode
     React.useEffect(() => {
@@ -2032,7 +2082,7 @@ const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
             <VisuallyHidden>
               <Sheet.Title>Bottom panel</Sheet.Title>
             </VisuallyHidden>
-            {children}
+            {contentChildren}
           </Sheet.Content>
         </Sheet.Root>
       );
@@ -2098,6 +2148,11 @@ const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
     const handleClick = React.useCallback(
       (event: React.MouseEvent<HTMLButtonElement>) => {
         onClick?.(event);
+
+        // Clear any active peek on this target before toggling to avoid sticky peek state
+        if ((shell as any).peekTarget === target) {
+          shell.clearPeek();
+        }
 
         switch (action) {
           case 'toggle':

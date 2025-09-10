@@ -58,9 +58,11 @@ export default function HeroSection() {
             </Flex>
 
             {/* Call-to-action buttons */}
-            <Button asChild variant="solid" size="3" highContrast>
-              <Link href="/docs/introduction">Get Started</Link>
-            </Button>
+            <Link href="/docs/introduction">
+              <Button variant="solid" size="3" highContrast>
+                Get Started
+              </Button>
+            </Link>
           </Flex>
         </Container>
 

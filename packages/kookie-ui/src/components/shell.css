@@ -335,6 +335,9 @@
 
 .rt-ShellBottom[data-mode='collapsed'] {
   height: 0px;
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
 }
 
 .rt-ShellBottomContent {
@@ -569,11 +572,10 @@
   width: var(--panel-size, 288px);
 }
 
-/* Sidebar peek: left edge; if collapsed, use fallback width */
+/* Sidebar peek: left edge; preview next width (thin or expanded) */
 .rt-ShellSidebar[data-peek] {
   inset-block: 0;
   inset-inline-start: 0;
-  /* Always use peek width when peeking */
   width: var(--peek-sidebar-width, var(--sidebar-size, 288px));
 }
 

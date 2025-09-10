@@ -97,7 +97,7 @@ export default function NestedShellTestPage() {
             thinSize={64}
             resizable
             presentation={{ initial: 'overlay', sm: 'fixed' }}
-            toggleModes={getToggleModes()}
+            toggleModes="both"
           >
             <Flex align="center" justify="center" height="100%" direction="column" gap="2">
               <IconButton variant="ghost" size="2" asChild highContrast color="gray">

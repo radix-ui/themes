@@ -57,7 +57,7 @@ const navigationItems = [
     items: [
       {
         href: '/docs/font-customization',
-        title: 'Font Customization',
+        title: 'Fonts',
         icon: Type,
         badge: undefined,
       },
@@ -128,7 +128,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <Shell.Root>
       <Shell.Sidebar
-        toggleModes={['thin', 'expanded']}
+        toggleModes="both"
         thinSize={80}
         expandedSize={280}
         resizable

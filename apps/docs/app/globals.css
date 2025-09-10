@@ -27,7 +27,7 @@ body {
 
 * {
   box-sizing: border-box;
-  /* outline: solid 0.1px var(--gray-a6); */
+  outline: solid 0.1px var(--gray-a6);
   /* box-sizing: border-box !important; */
 }
 

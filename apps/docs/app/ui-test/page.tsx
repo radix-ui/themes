@@ -31,6 +31,11 @@ export default function UITestPage() {
             </Shell.Trigger>
           </IconButton>
           <IconButton variant="ghost" size="2" asChild highContrast color="gray">
+            <Shell.Trigger target="bottom" action="toggle" peekOnHover={true}>
+              <PanelLeft />
+            </Shell.Trigger>
+          </IconButton>
+          <IconButton variant="ghost" size="2" asChild highContrast color="gray">
             <Shell.Trigger target="inspector" action="toggle" peekOnHover={true}>
               <PanelLeft />
             </Shell.Trigger>
@@ -41,7 +46,11 @@ export default function UITestPage() {
         </Flex>
       </Shell.Header>
 
-      <Shell.Rail defaultMode="expanded" expandedSize={64} presentation="stacked">
+      <Shell.Rail
+        defaultMode={{ initial: 'expanded', xs: 'collapsed', md: 'expanded' }}
+        expandedSize={64}
+        presentation={{ initial: 'stacked', xs: 'overlay', md: 'fixed' }}
+      >
         <Flex align="center" justify="center" height="100%">
           <Shell.Trigger target="panel" action="toggle" peekOnHover={true}>
             <IconButton variant="classic" color="gray" highContrast as="div">
@@ -79,6 +88,29 @@ export default function UITestPage() {
         </Flex>
       </Shell.Content>
 
+      <Shell.Bottom
+        resizable
+        minSize={60}
+        maxSize={300}
+        expandedSize={120}
+        snapPoints={[80, 120, 160, 200]}
+        snapTolerance={Infinity}
+        collapseThreshold={80}
+        defaultMode={{ initial: 'collapsed', sm: 'collapsed', md: 'expanded' }}
+        presentation={{ initial: 'overlay', xs: 'stacked', sm: 'fixed' }}
+        paneId="bottom-panel"
+        persistence={lsPane('ui-test:bottom-panel')}
+      >
+        <Flex align="center" justify="center" height="100%">
+          <Text>Bottom Panel</Text>
+        </Flex>
+        <Shell.Bottom.Handle>
+          <IconButton variant="soft" size="1" highContrast color="gray">
+            <GripVertical />
+          </IconButton>
+        </Shell.Bottom.Handle>
+      </Shell.Bottom>
+
       <Shell.Inspector
         resizable
         minSize={100}
@@ -87,8 +119,8 @@ export default function UITestPage() {
         snapPoints={[240, 280, 320, 480]}
         snapTolerance={Infinity}
         collapseThreshold={120}
-        defaultMode={{ initial: 'collapsed', xs: 'expanded', md: 'collapsed' }}
-        presentation="stacked"
+        defaultMode={{ initial: 'collapsed', xs: 'collapsed', md: 'collapsed' }}
+        presentation="fixed"
       >
         <Flex align="center" justify="center" height="100%">
           <Text>Inspector</Text>

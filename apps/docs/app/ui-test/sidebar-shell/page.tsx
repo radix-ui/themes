@@ -38,9 +38,9 @@ export default function SidebarTestPage() {
         maxSize={480}
         expandedSize={280}
         thinSize={64}
-        defaultMode={{ initial: 'collapsed', xs: 'expanded', md: 'thin' }}
-        toggleModes={['thin', 'expanded']}
-        presentation={{ initial: 'fixed', xs: 'stacked' }}
+        defaultMode={{ initial: 'expanded', xs: 'expanded', md: 'expanded' }}
+        toggleModes="both"
+        presentation={{ initial: 'overlay', xs: 'fixed' }}
         paneId="side"
         persistence={lsPane('ui-test:sidebar')}
       >
