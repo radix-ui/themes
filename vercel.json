@@ -1,0 +1,14 @@
+{
+  "buildCommand": "pnpm -w build:pkg && pnpm build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "functions": {
+    "app/api/**/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "build": {
+    "env": {
+      "NODEJS_VERSION": "20"
+    }
+  }
+}
