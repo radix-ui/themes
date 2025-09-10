@@ -157,6 +157,12 @@ const AlertDialogContent = React.forwardRef<AlertDialogContentElement, AlertDial
                   role="alertdialog"
                   aria-modal="true"
                   aria-describedby="alert-dialog-description"
+                  onCloseAutoFocus={(event) => {
+                    // Prevent default focus behavior
+                    event.preventDefault();
+                    // Restore pointer-events to body (Radix UI fix for issue #1241)
+                    document.body.style.pointerEvents = '';
+                  }}
                 />
                 {/* ARIA live region for screen reader announcements */}
                 <div
