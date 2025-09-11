@@ -1,18 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
-import {
-  Heading,
-  Text,
-  Code,
-  Blockquote,
-  Link,
-  Flex,
-  Separator,
-  Box,
-  Strong,
-  Em,
-  Kbd,
-  Callout,
-} from '@kushagradhawan/kookie-ui';
+import { Heading, Text, Code, Blockquote, Link, Flex, Separator, Box, Strong, Em, Kbd, Callout } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from './app/components/code-block';
 import { SpecsBlock } from './app/components/specs-block';
 import { TableOfContents } from './app/components/table-of-contents';
@@ -21,16 +8,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
-      <Flex direction="column" gap="8" mb="7" mt="3">
-        <Heading as="h1" size="9" weight="medium">
+      <Flex direction="column" gap="8" mb="6">
+        <Heading as="h1" size="9" weight="semibold">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
       </Flex>
     ),
     h2: ({ children }) => (
-      <Flex direction="column" gap="3" mb="4" mt="8">
-        <Heading as="h2" size="6" weight="medium">
+      <Flex direction="column" gap="3" mb="2" mt="4">
+        <Heading as="h2" size="6" weight="semibold">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
@@ -38,31 +25,31 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ children }) => (
       <Flex direction="column" gap="2" mt="8">
-        <Heading as="h3" size="4" weight="medium">
+        <Heading as="h3" size="4" weight="semibold">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
       </Flex>
     ),
     h4: ({ children }) => (
-      <Heading as="h4" size="3" mb="3" weight="medium">
+      <Heading as="h4" size="3" mb="3" weight="semibold">
         {children}
       </Heading>
     ),
     h5: ({ children }) => (
-      <Heading as="h5" size="2" mb="2" weight="medium">
+      <Heading as="h5" size="2" mb="2" weight="semibold">
         {children}
       </Heading>
     ),
     h6: ({ children }) => (
-      <Heading as="h6" size="2" mb="2" weight="medium">
+      <Heading as="h6" size="2" mb="2" weight="semibold">
         {children}
       </Heading>
     ),
 
     // Text elements using KookieUI defaults
     p: ({ children }) => (
-      <Text as="p" size="3" my="3" style={{ lineHeight: '1.7' }}>
+      <Text as="p" color="gray" size="3" my="3" style={{ lineHeight: '1.7' }}>
         {children}
       </Text>
     ),
@@ -94,7 +81,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     li: ({ children }) => (
       <li>
-        <Text size="3" my="2" style={{ lineHeight: '1.7' }}>
+        <Text size="3" my="2" color="gray" style={{ lineHeight: '1.7' }}>
           {children}
         </Text>
       </li>
@@ -147,7 +134,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => <Separator size="4" />,
 
     // Typography using dedicated KookieUI components
-    strong: ({ children }) => <Strong>{children}</Strong>,
+    strong: ({ children }) => (
+      <Text weight="medium" highContrast>
+        {children}
+      </Text>
+    ),
 
     em: ({ children }) => <Em>{children}</Em>,
 

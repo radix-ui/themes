@@ -298,7 +298,11 @@ function OverlapTestDialog() {
             <br />
             <Text size="1" color="gray">
               <strong>Note:</strong> This component now includes the Radix UI fix from{' '}
-              <a href="https://github.com/radix-ui/primitives/issues/1241" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/radix-ui/primitives/issues/1241"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 issue #1241
               </a>{' '}
               via onCloseAutoFocus handler.

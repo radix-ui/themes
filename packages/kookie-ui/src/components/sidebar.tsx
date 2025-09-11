@@ -3,7 +3,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot.js';
-import { Accordion } from 'radix-ui';
+import * as Accordion from '@radix-ui/react-accordion';
 
 import { sidebarPropDefs } from './sidebar.props.js';
 import { useThemeContext } from './theme.js';

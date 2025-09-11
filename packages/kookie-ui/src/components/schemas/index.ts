@@ -39,6 +39,52 @@ export type { ToggleButtonProps } from './toggle-button.schema.js';
 export { ToggleIconButtonSchema, parseToggleIconButtonProps } from './toggle-icon-button.schema.js';
 export type { ToggleIconButtonProps } from './toggle-icon-button.schema.js';
 
+// Shell schemas
+export {
+  ShellRootSchema,
+  ShellHeaderSchema,
+  ShellRailSchema,
+  ShellPanelSchema,
+  ShellSidebarSchema,
+  ShellContentSchema,
+  ShellInspectorSchema,
+  ShellBottomSchema,
+  ShellTriggerSchema,
+  ShellHandleSchema,
+  parseShellRootProps,
+  parseShellHeaderProps,
+  parseShellRailProps,
+  parseShellPanelProps,
+  parseShellSidebarProps,
+  parseShellContentProps,
+  parseShellInspectorProps,
+  parseShellBottomProps,
+  parseShellTriggerProps,
+  parseShellHandleProps,
+} from './shell.schema.js';
+export type {
+  ShellRootProps,
+  ShellHeaderProps,
+  ShellRailProps,
+  ShellPanelProps,
+  ShellSidebarProps,
+  ShellContentProps,
+  ShellInspectorProps,
+  ShellBottomProps,
+  ShellTriggerProps,
+  ShellHandleProps,
+  PaneMode,
+  SidebarMode,
+  PresentationValue,
+  Breakpoint,
+  PaneTarget,
+  TriggerAction,
+  ResponsiveMode,
+  ResponsiveSidebarMode,
+  ResponsivePresentation,
+  PaneSizePersistence,
+} from './shell.schema.js';
+
 /**
  * Generic parseProps helper for development-time validation
  *

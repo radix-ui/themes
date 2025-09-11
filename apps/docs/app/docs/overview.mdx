@@ -2,7 +2,9 @@ import { Section, Badge, Image, Flex, Text, Callout, Separator, Button, Theme } 
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/home.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Overview
 
@@ -13,10 +15,6 @@ Radix Themes gave me a strong foundation — primitives that were accessible, so
 Kookie UI is me trying to make those rules systematic. Instead of patching each issue as it came up, I began codifying patterns so the same decisions didn't have to be made over and over again.  
 
 The goal isn't to replace Radix, or to claim I've built something better. The goal is to stand on Radix and extend it into a system that feels coherent across every layer of an application. That means fewer surprises, fewer inconsistencies, and more trust that the components you use will behave as expected.  
-
-<Callout.Root variant="soft" size="3" color="gray" mt="7">
-  <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
-</Callout.Root>
 
 </Section>
 
@@ -49,6 +47,34 @@ Technical implementation is equally comprehensive:
 - **TypeScript support** with full type definitions and JSDoc comments
 
 This approach ensures design decisions are preserved from concept to implementation, reducing the gap between design and development that leads to inconsistent user experiences.  
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Roadmap
+
+I'm not shipping Kookie UI all at once. It grows gradually, based on what feels stable enough to use in real products. I release components when they meet that standard, not on arbitrary timelines.  
+
+I'm working on core input components, navigation patterns, system experiences, and data components. For the full roadmap and what's coming next, check out the [public roadmap](https://github.com/kushagradhawan/kookie-ui/projects) where you can see progress and upcoming features.
+
+Longer term, I'm hoping to ship **templates** for dashboards, marketing sites, authentication flows, and AI interfaces — not as frameworks, but as reliable starting points for common patterns.  
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Philosophy
+
+Kookie UI is intentionally boring. I'm not trying to reinvent interface design or chase design trends. Instead, I'm trying to codify the non-negotiables: spacing systems, semantic colors, accessible defaults, predictable motion, and interaction rules that behave consistently.  
+
+The idea is simple: once the basics are solid, you can focus on the parts of your product that actually make it unique. Patterns handle the baseline, components enforce the patterns, and the rest of your product can grow without carrying that overhead.  
+
+The result isn't magic or perfection. It's a foundation you can trust just enough to spend your energy on higher-level problems.  
 
 </Section>
 
@@ -104,25 +130,6 @@ I'm trying to go further than just individual components.
 - **Color.** Simplified tokens that still follow a 12-step progression, with automatic dark mode support.  
 
 ### Universal Material
-
-<CodeBlock
-  background="https://images.unsplash.com/photo-1679108321213-0fae9ef910e4?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  backgroundProps={{
-    height: "300px",
-    width: "100%",
-    radius: "3"
-  }}
-  preview={
-    <Theme material="translucent">
-      <Flex gap="2" align="center" wrap="wrap">
-        <Button size="3" variant="solid">Button</Button>
-        <Button size="3" color="gray" highContrast variant="soft">Button</Button>
-      </Flex>
-    </Theme>
-  }
->
-
-</CodeBlock>
 
 Every component supports a `material` prop:  
 

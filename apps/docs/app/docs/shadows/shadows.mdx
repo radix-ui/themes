@@ -1,10 +1,12 @@
-import { Section, Badge, Text, Link, Callout, Separator, Table, Code, Box, Flex } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Table, Code, Box, Flex, Image } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 import { SpecsBlock } from '../../components/specs-block';
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/shadow.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Shadows
 
@@ -98,6 +100,10 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
       />
     </Flex>
   }
+  columns={[
+    { key: 'value', label: 'Value' },
+    { key: 'usage', label: 'Usage' }
+  ]}
   specs={[
     {
       property: 'Shadow 1',

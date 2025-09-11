@@ -28,6 +28,16 @@ const {
   IconButtonSchema,
   ToggleButtonSchema,
   ToggleIconButtonSchema,
+  ShellRootSchema,
+  ShellHeaderSchema,
+  ShellRailSchema,
+  ShellPanelSchema,
+  ShellSidebarSchema,
+  ShellContentSchema,
+  ShellInspectorSchema,
+  ShellBottomSchema,
+  ShellTriggerSchema,
+  ShellHandleSchema,
 } = await import('../src/components/schemas/index.ts');
 
 // Create output directory
@@ -41,6 +51,16 @@ const schemas = {
   'icon-button': IconButtonSchema,
   'toggle-button': ToggleButtonSchema,
   'toggle-icon-button': ToggleIconButtonSchema,
+  'shell-root': ShellRootSchema,
+  'shell-header': ShellHeaderSchema,
+  'shell-rail': ShellRailSchema,
+  'shell-panel': ShellPanelSchema,
+  'shell-sidebar': ShellSidebarSchema,
+  'shell-content': ShellContentSchema,
+  'shell-inspector': ShellInspectorSchema,
+  'shell-bottom': ShellBottomSchema,
+  'shell-trigger': ShellTriggerSchema,
+  'shell-handle': ShellHandleSchema,
 };
 
 // Generate JSON schemas
@@ -78,8 +98,8 @@ for (const [name, schema] of Object.entries(schemas)) {
 // Generate combined schema index
 const combinedSchema = {
   $schema: 'https://json-schema.org/draft/2020-12/schema',
-  title: 'Kookie UI Button Components',
-  description: 'Complete JSON Schema collection for all button components in Kookie UI',
+  title: 'Kookie UI Components',
+  description: 'Complete JSON Schema collection for all components in Kookie UI',
   version: '1.0.0',
   generatedAt: new Date().toISOString(),
   source: 'Zod schemas',
@@ -112,16 +132,36 @@ export interface ButtonJsonSchema extends BaseButtonJsonSchema {}
 export interface IconButtonJsonSchema extends BaseButtonJsonSchema {}
 export interface ToggleButtonJsonSchema extends BaseButtonJsonSchema {}
 export interface ToggleIconButtonJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellRootJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellHeaderJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellRailJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellPanelJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellSidebarJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellContentJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellInspectorJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellBottomJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellTriggerJsonSchema extends BaseButtonJsonSchema {}
+export interface ShellHandleJsonSchema extends BaseButtonJsonSchema {}
 
-export interface KookieUIButtonSchemas {
+export interface KookieUIComponentSchemas {
   'base-button': BaseButtonJsonSchema;
   'button': ButtonJsonSchema;
   'icon-button': IconButtonJsonSchema;
   'toggle-button': ToggleButtonJsonSchema;
   'toggle-icon-button': ToggleIconButtonJsonSchema;
+  'shell-root': ShellRootJsonSchema;
+  'shell-header': ShellHeaderJsonSchema;
+  'shell-rail': ShellRailJsonSchema;
+  'shell-panel': ShellPanelJsonSchema;
+  'shell-sidebar': ShellSidebarJsonSchema;
+  'shell-content': ShellContentJsonSchema;
+  'shell-inspector': ShellInspectorJsonSchema;
+  'shell-bottom': ShellBottomJsonSchema;
+  'shell-trigger': ShellTriggerJsonSchema;
+  'shell-handle': ShellHandleJsonSchema;
 }
 
-export type ButtonComponentName = keyof KookieUIButtonSchemas;
+export type ComponentName = keyof KookieUIComponentSchemas;
 `;
 
 const tsPath = join(outputDir, 'schemas.d.ts');

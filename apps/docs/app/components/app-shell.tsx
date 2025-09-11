@@ -1,34 +1,11 @@
 'use client';
 
 import React from 'react';
-import {
-  Shell,
-  Sidebar,
-  Flex,
-  IconButton,
-  Badge,
-  Container,
-  Avatar,
-} from '@kushagradhawan/kookie-ui';
+import { Shell, Sidebar, Flex, IconButton, Badge, Container, Avatar } from '@kushagradhawan/kookie-ui';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
-import {
-  Home,
-  BookOpen,
-  Download,
-  Palette,
-  Component,
-  ChevronDown,
-  PanelLeft,
-  X,
-  Type,
-  Palette as ColorsIcon,
-  Box,
-  Square,
-  Layout,
-  GripVertical,
-} from 'lucide-react';
+import { Home, BookOpen, Download, Palette, Component, ChevronDown, PanelLeft, X, Type, Palette as ColorsIcon, Box, Square, Layout, GripVertical } from 'lucide-react';
 
 // Define the navigation structure
 const navigationItems = [
@@ -48,6 +25,7 @@ const navigationItems = [
     items: [
       { href: '/docs/colors', title: 'Colors', icon: ColorsIcon, badge: undefined },
       { href: '/docs/shadows', title: 'Shadows', icon: Box, badge: undefined },
+      { href: '/docs/material', title: 'Material', icon: Box, badge: undefined },
     ],
   },
   {
@@ -69,8 +47,36 @@ const navigationItems = [
     icon: Component,
     items: [
       { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
-      { href: '/docs/button', title: 'Button', icon: Square, badge: undefined },
-      { href: '/docs/shell', title: 'Shell', icon: Layout, badge: undefined },
+      {
+        href: '/docs/button',
+        title: 'Button',
+        icon: Square,
+        badge: undefined,
+        submenu: [
+          { href: '/docs/button', title: 'Overview', icon: BookOpen },
+          { href: '/docs/button/api', title: 'API', icon: GripVertical },
+          { href: '/docs/button/specs', title: 'Specs', icon: Box },
+          { href: '/docs/button/guidelines', title: 'Guidelines', icon: Palette },
+          { href: '/docs/button/accessibility', title: 'Accessibility', icon: ChevronDown },
+          { href: '/docs/button/changelog', title: 'Changelog', icon: Type },
+          { href: '/docs/button/playground', title: 'Playground', icon: Square },
+        ],
+      },
+      {
+        href: '/docs/shell',
+        title: 'Shell',
+        icon: Layout,
+        badge: undefined,
+        submenu: [
+          { href: '/docs/shell', title: 'Overview', icon: BookOpen },
+          { href: '/docs/shell/api', title: 'API', icon: GripVertical },
+          { href: '/docs/shell/specs', title: 'Specs', icon: Box },
+          { href: '/docs/shell/guidelines', title: 'Guidelines', icon: Palette },
+          { href: '/docs/shell/accessibility', title: 'Accessibility', icon: ChevronDown },
+          { href: '/docs/shell/changelog', title: 'Changelog', icon: Type },
+          { href: '/docs/shell/playground', title: 'Playground', icon: Square },
+        ],
+      },
       {
         href: '/docs/accordion',
         title: 'Accordion',
@@ -102,15 +108,45 @@ function AppSidebarContent() {
               <Sidebar.Menu>
                 {section.items.map((item) => {
                   const IconComponent = item.icon;
+
+                  // Check if this item has a submenu
+                  if (item.submenu) {
+                    // Check if any submenu item is active
+                    const isSubmenuActive = item.submenu.some((subItem) => pathname === subItem.href);
+
+                    return (
+                      <Sidebar.MenuItem key={item.href}>
+                        <Sidebar.MenuSub defaultOpen={isSubmenuActive}>
+                          <Sidebar.MenuSubTrigger>
+                            <IconComponent />
+                            {item.title}
+                          </Sidebar.MenuSubTrigger>
+                          <Sidebar.MenuSubContent>
+                            {item.submenu.map((subItem) => {
+                              const SubIconComponent = subItem.icon;
+                              return (
+                                <Sidebar.MenuButton asChild key={subItem.href} isActive={pathname === subItem.href}>
+                                  <Link href={subItem.href} prefetch>
+                                    <SubIconComponent />
+                                    {subItem.title}
+                                  </Link>
+                                </Sidebar.MenuButton>
+                              );
+                            })}
+                          </Sidebar.MenuSubContent>
+                        </Sidebar.MenuSub>
+                      </Sidebar.MenuItem>
+                    );
+                  }
+
+                  // Regular menu item without submenu
                   return (
                     <Sidebar.MenuItem key={item.href}>
-                      <Sidebar.MenuButton
-                        isActive={pathname === item.href}
-                        badge={item.badge}
-                        onClick={() => router.push(item.href)}
-                      >
-                        <IconComponent />
-                        {item.title}
+                      <Sidebar.MenuButton asChild isActive={pathname === item.href} badge={item.badge}>
+                        <Link href={item.href} prefetch>
+                          <IconComponent />
+                          {item.title}
+                        </Link>
                       </Sidebar.MenuButton>
                     </Sidebar.MenuItem>
                   );
@@ -127,12 +163,21 @@ function AppSidebarContent() {
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <Shell.Root>
+      {/* <Shell.Header>
+        <Flex position="absolute" top="3" left="3">
+          <IconButton variant="classic" size="2" asChild highContrast color="gray">
+            <Shell.Trigger target="sidebar" action="toggle" peekOnHover={false}>
+              <PanelLeft />
+            </Shell.Trigger>
+          </IconButton>
+        </Flex>
+      </Shell.Header> */}
       <Shell.Sidebar
-        toggleModes="both"
+        toggleModes="single"
         thinSize={80}
         expandedSize={280}
         resizable
-        defaultMode="expanded"
+        defaultMode={{ initial: 'collapsed', md: 'expanded' }}
         onModeChange={(mode) => console.log('mode', mode)}
         presentation={{ initial: 'overlay', md: 'fixed' }}
       >
@@ -144,16 +189,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <AppSidebarContent />
       </Shell.Sidebar>
 
-      <Shell.Content>
-        {/* <Flex position="relative" top="3" left="3">
-          <IconButton variant="ghost" size="2" asChild highContrast color="gray">
-            <Shell.Trigger target="sidebar" action="toggle" peekOnHover={false}>
-              <PanelLeft />
-            </Shell.Trigger>
-          </IconButton>
-        </Flex> */}
-        {children}
-      </Shell.Content>
+      <Shell.Content>{children}</Shell.Content>
     </Shell.Root>
   );
 }

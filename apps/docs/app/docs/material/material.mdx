@@ -1,0 +1,499 @@
+import { Section, Badge, Text, Link, Image, Callout, Separator, Code, Box, Flex, Card, Dialog, TextField, Button, Heading, Theme } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../../components/code-block';
+import { SpecsBlock } from '../../components/specs-block';
+
+<Section size="1">
+
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/material.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
+
+# Material
+
+Kookie UI's material system creates visual depth and hierarchy through translucent surfaces, backdrop blur effects, and carefully calibrated opacity values. This system enables components to feel elevated and interactive while maintaining visual consistency across your application.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Elevation
+
+Material design principles in Kookie UI focus on creating a sense of elevation and depth through translucent surfaces rather than heavy shadows. This approach creates a more modern, glass-like aesthetic that feels premium and sophisticated.
+
+The material system works through three key mechanisms:
+
+- **Translucent backgrounds** - Semi-transparent surfaces that allow content to show through
+- **Backdrop blur effects** - Gaussian blur applied to content behind translucent surfaces
+- **Layered opacity** - Different opacity levels for different elevation contexts
+
+This creates a natural hierarchy where elevated elements feel like they're floating above the background, while maintaining visual connection to the underlying content.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Material Types
+
+Kookie UI supports two material types that control how surfaces are rendered:
+
+<SpecsBlock
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  backgroundProps={{
+    height: "200px",
+    width: "100%",
+    radius: "3"
+  }}
+  preview={
+    <Theme material="translucent">
+      <Flex gap="2" align="center" wrap="wrap">   
+        <Button size="3" color="gray" highContrast material="solid" variant="soft">Solid</Button>
+        <Button size="3" color="gray" highContrast variant="soft">Translucent</Button>
+      </Flex>
+    </Theme>
+  }
+  specs={[
+    {
+      property: 'Solid',
+      value: 'Opaque backgrounds with no blur effects',
+      usage: 'High contrast interfaces, accessibility-focused designs'
+    },
+    {
+      property: 'Translucent',
+      value: 'Semi-transparent with backdrop blur',
+      usage: 'Modern glass-like effects, elevated surfaces'
+    }
+  ]}
+/>
+
+
+
+### Solid Material
+
+Solid material provides opaque backgrounds with no transparency or blur effects. This is ideal for:
+
+- High contrast interfaces where readability is paramount
+- Accessibility-focused designs that need maximum contrast
+- Print-friendly layouts
+- Performance-critical applications where backdrop blur might cause issues
+
+### Translucent Material
+
+Translucent material creates the signature glass-like effect with:
+
+- Semi-transparent backgrounds using `color-mix()` for modern browser support
+- Backdrop blur effects that create depth and visual separation
+- Layered opacity values that create natural hierarchy
+
+### Token Resolution
+
+The material system uses a two-tier token resolution system:
+
+**Theme Level:**
+When `Theme` is set to `material="translucent"`, backdrop filter tokens resolve to blur functions:
+- `--backdrop-filter-panel` → `blur(16px)`
+- `--backdrop-filter-components` → `blur(12px)` 
+- `--backdrop-filter-dialog` → `blur(20px)`
+
+**Component Level:**
+Components with `material` prop override theme settings using higher CSS specificity. This allows individual components to have different material behavior than the theme.
+
+**Priority Order:**
+1. Component `material` prop (highest)
+2. Theme `material` setting (fallback)
+3. Default solid behavior (no blur)
+
+This prevents performance issues by only activating blur when explicitly enabled.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Opacity
+
+The material system uses a carefully calibrated opacity scale that creates natural visual hierarchy:
+
+<SpecsBlock
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  backgroundProps={{
+    height: "200px",
+    width: "100%",
+    radius: "3"
+  }}
+  preview={
+    <Flex gap="2" wrap="wrap" align="center" justify="center">
+      {[5, 6, 7, 8, 9].map((opacity) => (
+        <Box 
+          key={opacity}
+          width="60px" 
+          height="40px" 
+          style={{ 
+            backgroundColor: `rgba(255, 255, 255, ${opacity * 0.1})`, 
+            borderRadius: '6px',
+            border: '1px solid var(--gray-6)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '10px',
+            fontWeight: '500',
+            color: 'var(--gray-11)'
+          }}
+        >
+          {opacity}
+        </Box>
+      ))}
+    </Flex>
+  }
+  specs={[
+    {
+      property: 'Surface Opacity',
+      value: 'var(--opacity-7) - 70%',
+      usage: 'General surface elements, cards, panels'
+    },
+    {
+      property: 'Panel Opacity',
+      value: 'var(--opacity-8) - 80%',
+      usage: 'Elevated panels, dropdowns, popovers'
+    },
+    {
+      property: 'Dialog Opacity',
+      value: 'var(--opacity-9) - 90%',
+      usage: 'Modal dialogs, overlays, critical surfaces'
+    }
+  ]}
+/>
+
+The opacity scale ensures that:
+
+- **Surface elements** (cards, panels) use 70% opacity for subtle elevation
+- **Panel elements** (dropdowns, popovers) use 80% opacity for more prominence
+- **Dialog elements** (modals, overlays) use 90% opacity for maximum focus
+
+This creates a natural visual hierarchy where more important elements have higher opacity and feel more "solid" and elevated.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Blur Scale
+
+Backdrop blur effects are applied at different intensities based on the elevation level:
+
+<SpecsBlock
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  backgroundProps={{
+    height: "200px",
+    width: "100%",
+    radius: "3"
+  }}
+  preview={
+    <Theme material="translucent">
+      <Flex gap="2" wrap="wrap" align="center" justify="center">
+        {[
+          { blur: 'var(--backdrop-filter-components)', label: 'Components' },
+          { blur: 'var(--backdrop-filter-panel)', label: 'Panels' },
+          { blur: 'var(--backdrop-filter-dialog)', label: 'Dialogs' }
+        ].map(({ blur, label }) => (
+          <Box 
+            key={label}
+            width="80px" 
+            height="50px" 
+            style={{ 
+              backgroundColor: 'rgba(255, 255, 255, 0.8)', 
+              backdropFilter: blur,
+              borderRadius: '6px',
+              border: '1px solid var(--gray-6)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '10px',
+              fontWeight: '500',
+              color: 'var(--gray-11)'
+            }}
+          >
+            {label}
+          </Box>
+        ))}
+      </Flex>
+    </Theme>
+  }
+  specs={[
+    {
+      property: 'Components Blur',
+      value: 'var(--blur-4) - 12px',
+      usage: 'Small components, buttons, badges'
+    },
+    {
+      property: 'Panel Blur',
+      value: 'var(--blur-5) - 16px',
+      usage: 'Cards, panels, dropdowns'
+    },
+    {
+      property: 'Dialog Blur',
+      value: 'var(--blur-6) - 20px',
+      usage: 'Modal dialogs, overlays'
+    }
+  ]}
+/>
+
+The blur scale creates depth through:
+
+- **Subtle blur** (12px) for small components that need gentle elevation
+- **Medium blur** (16px) for panels and cards that should feel elevated
+- **Strong blur** (20px) for dialogs and overlays that need maximum focus
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Theme Level
+
+Material can be configured at the theme level to apply consistently across your entire application:
+
+<CodeBlock>
+
+```tsx
+import { Theme } from '@kushagradhawan/kookie-ui';
+
+// Solid material theme
+<Theme material="solid">
+  <App />
+</Theme>
+
+// Translucent material theme (default)
+<Theme material="translucent">
+  <App />
+</Theme>
+```
+
+</CodeBlock>
+
+### Behavior
+
+When configured at the theme level, material affects:
+
+- **All panel-based components** (Cards, Tables, Dropdowns, etc.)
+- **All dialog components** (Modals, Alert Dialogs, etc.)
+- **All surface components** (Badges, Callouts, etc.)
+
+The theme-level material setting provides sensible defaults while allowing component-level overrides when needed.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Component Level
+
+Individual components can override the theme-level material setting:
+
+<CodeBlock>
+
+```tsx
+import { Card, Dialog, Badge } from '@kushagradhawan/kookie-ui';
+
+// Override theme material for specific components
+<Card material="solid">
+  <Text>This card uses solid material</Text>
+</Card>
+
+<Dialog.Root>
+  <Dialog.Trigger>
+    <Button>Open Dialog</Button>
+  </Dialog.Trigger>
+  <Dialog.Content material="translucent">
+    <Dialog.Title>Translucent Dialog</Dialog.Title>
+    <Dialog.Description>
+      This dialog uses translucent material
+    </Dialog.Description>
+    <Dialog.Close>
+      <Button variant="soft">Close</Button>
+    </Dialog.Close>
+  </Dialog.Content>
+</Dialog.Root>
+
+<Badge material="solid">
+  Solid Badge
+</Badge>
+```
+
+</CodeBlock>
+
+### Priority
+
+Component-level material settings take precedence over theme-level settings:
+
+1. **Component prop** - Highest priority
+2. **Theme setting** - Fallback when component prop is not set
+3. **Default value** - Fallback when neither is set
+
+This allows for flexible material usage while maintaining consistency.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Defaults
+
+Kookie UI provides sensible material defaults for different component types:
+
+### Dialog Components
+- **Default**: Translucent material
+- **Rationale**: Dialogs need maximum focus and should feel elevated above all other content
+
+### Panel Components  
+- **Default**: Translucent material
+- **Rationale**: Panels like cards and dropdowns should feel elevated but not as prominent as dialogs
+
+### Surface Components
+- **Default**: Translucent material
+- **Rationale**: Badges and callouts should integrate naturally while maintaining subtle elevation
+
+### Form Components
+- **Default**: Solid material
+- **Rationale**: Form elements need maximum contrast and accessibility for user input
+
+<Callout.Root variant="surface" highContrast color="blue"><Callout.Text>The material system is designed to work seamlessly with the shadow system. Translucent materials often pair with subtle shadows, while solid materials can work with stronger shadow effects for maximum contrast.</Callout.Text></Callout.Root>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Performance
+
+Translucent materials with backdrop blur can impact performance on some devices:
+
+### When to Use Solid Material
+- **Low-end devices** where performance is critical
+- **High contrast interfaces** where accessibility is paramount
+- **Print layouts** where transparency doesn't translate well
+- **Complex layouts** with many overlapping translucent elements
+
+### When to Use Translucent Material
+- **Modern devices** with good GPU performance
+- **Design-focused applications** where aesthetics are important
+- **Simple layouts** with minimal overlapping elements
+- **Mobile-first applications** where the glass effect enhances UX
+
+### Optimization
+
+Kookie UI includes several performance optimizations:
+
+- **Will-change cleanup** - Prevents layout thrashing during animations
+- **Backdrop filter containment** - Prevents unnecessary blur calculations
+- **Smart fallbacks** - Graceful degradation when backdrop blur isn't supported
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Browser Support
+
+The material system uses modern CSS features with graceful fallbacks:
+
+### Modern Browsers
+- **Backdrop filter** - Full glass-like effects
+- **Color-mix()** - Precise opacity calculations
+- **CSS custom properties** - Dynamic theming
+
+### Fallback Behavior
+- **No backdrop filter** - Solid backgrounds with opacity
+- **No color-mix()** - Traditional rgba() fallbacks
+- **Older browsers** - Solid material as default
+
+### Enhancement
+
+The system automatically detects browser capabilities and applies the best available material effects:
+
+<CodeBlock>
+
+```css
+/* Modern browsers get full effects */
+.modern-browser {
+  background-color: color-mix(in srgb, var(--gray-2) 80%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+/* Older browsers get solid fallbacks */
+.older-browser {
+  background-color: var(--gray-2);
+  backdrop-filter: none;
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Best Practices
+
+### Design
+
+1. **Consistent elevation** - Use the same material type for elements at the same hierarchy level
+2. **Progressive disclosure** - Higher elevation elements should use stronger material effects
+3. **Content readability** - Ensure sufficient contrast between text and translucent backgrounds
+4. **Performance balance** - Consider device capabilities when choosing material types
+
+### Development
+
+1. **Theme-first approach** - Set material at the theme level, override at component level when needed
+2. **Semantic usage** - Use material types that match the component's purpose and importance
+3. **Testing** - Test on various devices and browsers to ensure consistent experience
+4. **Accessibility** - Always provide solid alternatives for users who need high contrast
+
+### Patterns
+
+<CodeBlock>
+
+```tsx
+// Good: Consistent material usage
+<Card material="translucent">
+  <Heading size="3">Panel Content</Heading>
+  <Text>This panel uses translucent material consistently</Text>
+</Card>
+
+// Good: Appropriate material for context
+<Dialog.Root>
+  <Dialog.Trigger>
+    <Button>Open Dialog</Button>
+  </Dialog.Trigger>
+  <Dialog.Content material="translucent">
+    <Dialog.Title>Elevated Dialog</Dialog.Title>
+    <Dialog.Description>
+      Dialogs should feel elevated above other content
+    </Dialog.Description>
+    <Dialog.Close>
+      <Button variant="soft">Close</Button>
+    </Dialog.Close>
+  </Dialog.Content>
+</Dialog.Root>
+
+// Good: Form elements with solid material
+<TextField material="solid">
+  <Text>Form inputs need maximum contrast</Text>
+</TextField>
+```
+
+</CodeBlock>
+
+</Section>

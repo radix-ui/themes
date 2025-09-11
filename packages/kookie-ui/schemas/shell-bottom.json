@@ -1,0 +1,168 @@
+{
+  "$ref": "#/definitions/Shell-bottomSchema",
+  "definitions": {
+    "Shell-bottomSchema": {
+      "type": "object",
+      "properties": {
+        "presentation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "fixed",
+                "overlay",
+                "stacked"
+              ],
+              "description": "Presentation mode"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "xs": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "sm": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "md": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "lg": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "xl": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Presentation mode",
+          "default": "fixed"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "expanded",
+            "collapsed"
+          ],
+          "description": "Pane state mode"
+        },
+        "defaultMode": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Shell-bottomSchema/properties/mode"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "xs": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "sm": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "md": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "lg": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "xl": {
+                  "$ref": "#/definitions/Shell-bottomSchema/properties/mode",
+                  "description": "Pane state mode"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Responsive pane mode configuration"
+        },
+        "expandedSize": {
+          "type": "number",
+          "default": 200,
+          "description": "Default height in pixels"
+        },
+        "minSize": {
+          "type": "number",
+          "default": 100,
+          "description": "Minimum height when resizing"
+        },
+        "maxSize": {
+          "type": "number",
+          "default": 400,
+          "description": "Maximum height when resizing"
+        },
+        "resizable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the bottom panel can be resized"
+        },
+        "collapsible": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the bottom panel can be collapsed via resize handle"
+        },
+        "resizer": {},
+        "snapPoints": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "snapTolerance": {
+          "type": "number"
+        },
+        "collapseThreshold": {
+          "type": "number"
+        },
+        "paneId": {
+          "type": "string"
+        },
+        "persistence": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false,
+          "description": "Size persistence adapter"
+        },
+        "className": {
+          "type": "string"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "children": {}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shell-bottom Component Props",
+  "description": "Props schema for the shell-bottom component in Kookie UI",
+  "version": "1.0.0",
+  "generatedAt": "2025-09-10T19:04:45.609Z",
+  "source": "Zod schema"
+}

@@ -1,8 +1,10 @@
-import { Section, Separator, Badge } from '@kushagradhawan/kookie-ui';
+import { Section, Separator, Badge, Flex, Image } from '@kushagradhawan/kookie-ui';
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/clock.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Changelog
 
@@ -12,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -54,6 +58,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -78,4 +84,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TypeScript support with comprehensive type definitions
 - Design token integration for consistent spacing and sizing
 
-</Section> 
+</Section>
+
+<Separator size="4"/> 

@@ -4,7 +4,9 @@ import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/code.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # API
 
@@ -18,6 +20,8 @@ import { Button } from '@kushagradhawan/kookie-ui';
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -100,6 +104,8 @@ import { Button } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -145,6 +151,8 @@ Use the `variant` prop to select the visual style that best matches your interfa
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -182,6 +190,8 @@ Use the `size` prop to select the button size that matches your interface densit
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -239,6 +249,8 @@ For elevated interfaces with translucent materials, always use `highContrast` to
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -254,7 +266,7 @@ For translucent effects to be visible, buttons must appear over images or dynami
 Buttons automatically inherit the theme's material setting. Wrap your interface in a `Theme` component to control material globally:
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1679108321213-0fae9ef910e4?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -284,7 +296,7 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 Override the theme's material setting for individual buttons when you need specific visual effects. Remember that translucent effects are only visible over backgrounds, and you should use `highContrast` with translucent materials to maintain readability.
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1679108321213-0fae9ef910e4?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   backgroundProps={{
     height: "300px",
     width: "100%",
@@ -310,6 +322,8 @@ Override the theme's material setting for individual buttons when you need speci
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -400,6 +414,8 @@ Buttons automatically handle focus states for keyboard navigation. For complex U
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -448,6 +464,8 @@ Set the `flush` prop to `true` with the `ghost` variant to remove visual padding
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -457,6 +475,8 @@ Set the `flush` prop to `true` with the `ghost` variant to remove visual padding
 Use margin props to control spacing around buttons. All margin props are responsive and support both design system tokens and CSS string values.
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -488,6 +508,8 @@ Use the `tooltip` prop to provide additional context for button actions, especia
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -534,6 +556,8 @@ For icon-only buttons, use `IconButton` instead:
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -587,6 +611,8 @@ Use the `asChild` prop to merge button props with a child element using the Radi
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -618,6 +644,8 @@ Use responsive objects with the `size` prop to adapt button sizing across differ
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -646,3 +674,5 @@ Use standard HTML form attributes to integrate buttons with forms. The component
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>

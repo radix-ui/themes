@@ -23,7 +23,7 @@
   --color-overlay: var(--black-a8);
   --color-panel-solid: var(--gray-2);
   --color-panel-translucent: color-mix(in srgb, var(--gray-2) var(--panel-opacity-percentage), transparent);
-  --color-surface-solid: var(--gray-2)  ;
+  --color-surface-solid: var(--gray-2);
   --color-surface-translucent: color-mix(in srgb, var(--gray-2) var(--surface-opacity-percentage), transparent);
   --color-dialog-solid: var(--gray-2);
   --color-dialog-translucent: color-mix(in srgb, var(--gray-2) var(--dialog-opacity-percentage), transparent);

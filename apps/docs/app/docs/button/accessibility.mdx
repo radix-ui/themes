@@ -1,16 +1,20 @@
-import { Button, Flex, Box, Text, Callout, Section, Separator, Badge } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Box, Text, Callout, Section, Separator, Badge, Image } from '@kushagradhawan/kookie-ui';
 import { TriangleAlertIcon } from 'lucide-react';
 import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/people.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Accessibility
 
 The Button component is built with comprehensive accessibility features that work for everyone, regardless of ability or interaction method. It implements systematic color contrast, semantic markup, keyboard navigation, and assistive technology support out of the box.
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -49,6 +53,8 @@ The `highContrast` prop automatically ensures maximum visibility for users with 
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -72,6 +78,8 @@ The focus-visible implementation automatically shows focus rings only for keyboa
 </CodeBlock>
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -106,6 +114,8 @@ The Button component automatically uses semantic `<button>` elements with proper
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -139,6 +149,8 @@ The Button component automatically accommodates users with varying motor abiliti
 
 </Section>
 
+<Separator size="4"/>
+
 <Section size="1">
 
 ## Loading
@@ -163,6 +175,8 @@ The loading state automatically provides comprehensive accessibility support bey
 - Intelligent text extraction works with both string and React element children
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -190,6 +204,8 @@ Built-in tooltips automatically maintain proper accessibility relationships with
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -200,6 +216,8 @@ The Button component automatically extracts meaningful text for screen readers f
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -209,6 +227,8 @@ The Button component automatically extracts meaningful text for screen readers f
 The Button component includes performance optimizations that benefit accessibility. Automatic `will-change` property management prevents layout thrashing that can affect screen reader performance, while intelligent cleanup ensures optimal rendering.
 
 </Section>
+
+<Separator size="4"/>
 
 
 

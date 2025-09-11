@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback, useMemo, memo } from 'react';
+import React, { useEffect, useState, useCallback, useMemo, memo, useRef } from 'react';
 import { Box, Text, Link, Flex } from '@kushagradhawan/kookie-ui';
 
 interface TocItem {
@@ -29,116 +29,88 @@ export const TableOfContents = memo(function TableOfContents({
 }: TableOfContentsProps) {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>('');
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const rafIdRef = useRef<number | null>(null);
+  const timeoutIdRef = useRef<number | null>(null);
 
   // Memoize the heading extraction logic
   const extractHeadings = useCallback(() => {
-    // Find the main content area (the Box containing the documentation)
-    const contentArea = document.querySelector('[data-content-area]');
-    if (!contentArea) return null;
+    // Use requestAnimationFrame to defer DOM operations
+    rafIdRef.current = requestAnimationFrame(() => {
+      const contentArea = document.querySelector('[data-content-area]');
+      if (!contentArea) return;
 
-    // Extract headings from the content area only - only h2 and h3
-    const headingElements = Array.from(contentArea.querySelectorAll('h2'));
+      const headingElements = Array.from(contentArea.querySelectorAll('h2'));
 
-    const headings = headingElements
-      .map((heading) => {
-        const text = heading.textContent || '';
-        let id = heading.id;
+      const headings = headingElements
+        .map((heading) => {
+          const text = heading.textContent || '';
+          let id = heading.id;
 
-        // If no ID exists, generate one and add it to the element
-        if (!id && text) {
-          id = generateSlug(text);
-          heading.id = id;
-        }
-
-        return {
-          id,
-          text,
-          level: parseInt(heading.tagName.charAt(1)),
-        };
-      })
-      .filter((item) => item.id && item.text);
-
-    console.log('Found headings:', headings);
-    setToc(headings);
-
-    // Set up intersection observer for active heading
-    if (headings.length > 0) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveId(entry.target.id);
-            }
-          });
-        },
-        { rootMargin: '-20% 0% -35% 0%' },
-      );
-
-      headings.forEach(({ id }) => {
-        const element = document.getElementById(id);
-        if (element) observer.observe(element);
-      });
-
-      return observer;
-    }
-    return null;
-  }, []);
-
-  // Memoize the mutation observer callback
-  const handleMutation = useCallback((mutations: MutationRecord[]) => {
-    let shouldReextract = false;
-
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'childList') {
-        mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            const element = node as Element;
-            // Check if a heading was added or if any child contains headings
-            if (element.matches('h2, h3') || element.querySelector('h2, h3')) {
-              shouldReextract = true;
-            }
+          if (!id && text) {
+            id = generateSlug(text);
+            heading.id = id;
           }
+
+          return {
+            id,
+            text,
+            level: parseInt(heading.tagName.charAt(1)),
+          };
+        })
+        .filter((item) => item.id && item.text);
+
+      setToc(headings);
+
+      // Disconnect any previous observer before creating a new one
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+
+      if (headings.length > 0) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActiveId(entry.target.id);
+              }
+            });
+          },
+          { rootMargin: '-20% 0% -35% 0%' },
+        );
+
+        headings.forEach(({ id }) => {
+          const element = document.getElementById(id);
+          if (element) observer.observe(element);
         });
+
+        observerRef.current = observer;
       }
     });
-
-    return shouldReextract;
   }, []);
 
   useEffect(() => {
-    // Initial extraction
-    let intersectionObserver = extractHeadings();
-
-    // Set up MutationObserver to watch for new headings being added
-    const mutationObserver = new MutationObserver((mutations) => {
-      const shouldReextract = handleMutation(mutations);
-
-      if (shouldReextract) {
-        console.log('DOM changed, re-extracting headings...');
-        intersectionObserver?.disconnect();
-        intersectionObserver = extractHeadings();
-      }
-    });
-
-    // Observe the entire document for changes
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-
-    // Also try again after a delay as fallback
-    const timeoutId = setTimeout(() => {
-      console.log('Timeout fallback, re-extracting headings...');
-      intersectionObserver?.disconnect();
-      intersectionObserver = extractHeadings();
-    }, 1000);
+    // Initial extraction with a small delay to ensure DOM is ready
+    timeoutIdRef.current = window.setTimeout(() => {
+      extractHeadings();
+    }, 100);
 
     return () => {
-      intersectionObserver?.disconnect();
-      mutationObserver.disconnect();
-      clearTimeout(timeoutId);
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+        timeoutIdRef.current = null;
+      }
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
     };
-  }, [extractHeadings, handleMutation]);
+  }, [extractHeadings]);
 
   // Memoize the link styles
   const getLinkStyle = useCallback(

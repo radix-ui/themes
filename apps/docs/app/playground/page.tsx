@@ -43,7 +43,7 @@ export default function PlaygroundPage() {
             <ToggleIconButtonPlayground />
           </Flex>
 
-          {/* <DialogPlayground /> */}
+          <DialogPlayground />
 
           <DropdownMenuPlayground />
 

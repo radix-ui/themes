@@ -1,0 +1,76 @@
+{
+  "$ref": "#/definitions/Shell-triggerSchema",
+  "definitions": {
+    "Shell-triggerSchema": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "left",
+            "rail",
+            "panel",
+            "sidebar",
+            "inspector",
+            "bottom"
+          ],
+          "description": "Which pane to control"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "toggle",
+            "expand",
+            "collapse"
+          ],
+          "description": "Action to perform",
+          "default": "toggle"
+        },
+        "peekOnHover": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to show peek preview on hover when collapsed"
+        },
+        "className": {
+          "type": "string",
+          "description": "Additional CSS class name"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "description": "Inline styles"
+        },
+        "children": {
+          "description": "Trigger content"
+        },
+        "aria-label": {
+          "type": "string",
+          "description": "ARIA label for accessibility"
+        },
+        "aria-labelledby": {
+          "type": "string",
+          "description": "ARIA labelled by reference"
+        },
+        "aria-describedby": {
+          "type": "string",
+          "description": "ARIA described by reference"
+        }
+      },
+      "required": [
+        "target"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shell-trigger Component Props",
+  "description": "Props schema for the shell-trigger component in Kookie UI",
+  "version": "1.0.0",
+  "generatedAt": "2025-09-10T19:04:45.609Z",
+  "source": "Zod schema"
+}

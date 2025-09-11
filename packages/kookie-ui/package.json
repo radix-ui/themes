@@ -134,6 +134,7 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-accordion": "^1.2.12",
     "@zag-js/react": "^1.22.1",
     "@zag-js/splitter": "^1.22.1",
     "classnames": "^2.3.2",

@@ -1,16 +1,20 @@
-import { Button, Flex, Box, Text, Callout, IconButton, Theme, Section, Separator, Badge } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Box, Text, Callout, IconButton, Theme, Section, Separator, Badge, Image } from '@kushagradhawan/kookie-ui';
 import { TriangleAlertIcon, ChevronDown, Check, ChevronRight, Plus } from 'lucide-react';
 import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/guidelines.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Guidelines
 
 Design buttons as promises that users can trust. When someone sees a button, they instantly form expectations about what will happen when they tap it. Your job as a designer is to honor those expectations and guide people naturally toward successful task completion.
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -51,6 +55,8 @@ Group related actions together and separate unrelated ones. Proximity communicat
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -63,6 +69,8 @@ Think about where someone is in their journey. Are they exploring options or rea
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -74,6 +82,8 @@ Build user confidence through consistent button treatments. When similar actions
 Avoid inconsistent button treatments that force people to pause and evaluate each interaction. This breaks flow states and increases abandonment. Every inconsistency is a small betrayal of user expectations.
 
 </Section>
+
+<Separator size="4"/>
 
 
 
@@ -187,6 +197,8 @@ Choose classic buttons for standalone focal points in spacious layouts, premium 
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -245,6 +257,8 @@ The material choice should support the user's goals and create the appropriate e
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -259,6 +273,8 @@ Avoid these common button design problems that stem from treating buttons as dec
 
 </Section>
 
+<Separator size="4"/>
+
 
 
 <Section size="1">
@@ -268,5 +284,7 @@ Avoid these common button design problems that stem from treating buttons as dec
 For technical implementation details, see [API](./api). For design tokens and specifications, see [Specs](./specs).
 
 </Section>
+
+<Separator size="4"/>
 
 

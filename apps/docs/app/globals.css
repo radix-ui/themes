@@ -27,7 +27,7 @@ body {
 
 * {
   box-sizing: border-box;
-  outline: solid 0.1px var(--gray-a6);
+  /* outline: solid 0.1px var(--gray-a6); */
   /* box-sizing: border-box !important; */
 }
 
@@ -253,8 +253,7 @@ h6 {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  border-radius: 0 0 min(var(--radius-6), calc(var(--radius-2) + var(--space-2)))
-    min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
+  border-radius: 0 0 min(var(--radius-6), calc(var(--radius-2) + var(--space-2))) min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
 }
 
 .code-scroll-shadow.visible {
@@ -263,7 +262,7 @@ h6 {
 
 /* SpecsBlock component styles */
 .specs-content {
-  border-radius: var(--radius-6);
+  border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
   overflow: auto;
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* Hide scrollbars while keeping scroll functionality */

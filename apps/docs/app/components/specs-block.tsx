@@ -1,19 +1,7 @@
 'use client';
 
 import React, { memo } from 'react';
-import {
-  Box,
-  Card,
-  Flex,
-  Table,
-  Text,
-  IconButton,
-  Code,
-  Tooltip,
-  Tabs,
-  Theme,
-} from '@kushagradhawan/kookie-ui';
-import { Info } from 'lucide-react';
+import { Box, Card, Flex, Table, Text, IconButton, Code, Tooltip, Tabs, Theme } from '@kushagradhawan/kookie-ui';
 
 /**
  * Types for the specs data structure
@@ -154,14 +142,7 @@ const PreviewSection = ({
   };
 }) => {
   // Extract background properties with sensible defaults
-  const {
-    dotSize = 24,
-    color = 'var(--gray-10)',
-    backgroundColor = 'var(--gray-2)',
-    height = '300px',
-    width = '100%',
-    radius = '3',
-  } = backgroundProps;
+  const { dotSize = 24, color = 'var(--gray-10)', backgroundColor = 'var(--gray-2)', height = '300px', width = '100%', radius = '3' } = backgroundProps;
 
   // Render with no background (default card styling)
   if (background === 'none') {
@@ -277,7 +258,7 @@ const SpecsSection = memo(function SpecsSection({
       className="specs-content"
       style={{
         backgroundColor: 'var(--gray-a2)',
-        padding: 'var(--space-6) var(--space-8)',
+        padding: 'var(--space-2) var(--space-4)',
       }}
     >
       <Flex direction="column" gap="4">
@@ -297,7 +278,7 @@ const SpecsSection = memo(function SpecsSection({
                 <Table.ColumnHeaderCell key={column.key}>
                   <Flex direction="column" gap="1">
                     <Text size="2" weight="medium">
-                      {column.label}
+                      {column.label.charAt(0).toUpperCase() + column.label.slice(1)}
                     </Text>
                     {column.description && (
                       <Text size="1" color="gray">
@@ -313,10 +294,7 @@ const SpecsSection = memo(function SpecsSection({
           <Table.Body>
             {/* Render each specification row */}
             {specs.map((row, index) => (
-              <Table.Row
-                key={index}
-                style={index === specs.length - 1 ? { borderBottom: 'none' } : undefined}
-              >
+              <Table.Row key={index} style={index === specs.length - 1 ? { borderBottom: 'none' } : undefined}>
                 {/* Property name cell */}
                 <Table.RowHeaderCell>
                   <Text size="2" weight="medium">
@@ -333,9 +311,15 @@ const SpecsSection = memo(function SpecsSection({
                   return (
                     <Table.Cell key={column.key}>
                       <Tooltip content={tooltipValue}>
-                        <Text size="2" color="gray">
-                          {displayValue}
-                        </Text>
+                        {column.key === 'value' ? (
+                          <Code size="2" color="gray" variant="soft" highContrast>
+                            {displayValue}
+                          </Code>
+                        ) : (
+                          <Text size="2" color="gray">
+                            {displayValue}
+                          </Text>
+                        )}
                       </Tooltip>
                     </Table.Cell>
                   );
@@ -402,14 +386,7 @@ const SpecsSection = memo(function SpecsSection({
  * />
  * ```
  */
-export const SpecsBlock = memo(function SpecsBlock({
-  preview,
-  specs,
-  columns,
-  tooltips,
-  background = 'none',
-  backgroundProps = {},
-}: SpecsBlockProps) {
+export const SpecsBlock = memo(function SpecsBlock({ preview, specs, columns, tooltips, background = 'none', backgroundProps = {} }: SpecsBlockProps) {
   // Always show tabs for consistency with CodeBlock component
   // This provides a unified experience across documentation components
   const showTabs = true;
@@ -417,13 +394,9 @@ export const SpecsBlock = memo(function SpecsBlock({
   // Fallback rendering without tabs (for backward compatibility)
   if (!showTabs) {
     return (
-      <Box my="7">
+      <Box my="6">
         <Flex direction="column" gap="2">
-          <PreviewSection
-            preview={preview}
-            background={background}
-            backgroundProps={backgroundProps}
-          />
+          <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />
           <SpecsSection specs={specs} columns={columns} tooltips={tooltips} />
         </Flex>
       </Box>
@@ -432,7 +405,7 @@ export const SpecsBlock = memo(function SpecsBlock({
 
   // Primary rendering with tabs for better organization
   return (
-    <Box my="7">
+    <Box my="6">
       <Tabs.Root defaultValue="preview">
         <Tabs.List>
           <Tabs.Trigger value="preview">Preview</Tabs.Trigger>
@@ -442,11 +415,7 @@ export const SpecsBlock = memo(function SpecsBlock({
         <Box pt="6">
           {/* Preview tab content */}
           <Tabs.Content value="preview" asChild>
-            <PreviewSection
-              preview={preview}
-              background={background}
-              backgroundProps={backgroundProps}
-            />
+            <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />
           </Tabs.Content>
 
           {/* Specifications tab content */}

@@ -1,64 +1,77 @@
-import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator } from '@kushagradhawan/kookie-ui';
+import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
 import { Play, Code, Users, BookOpen, Ruler, History } from 'lucide-react';
 import ButtonPlayground from '../../playground/ButtonPlayground';
 
 <Section size="1">
 
-<Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/button.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Button
 
 Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next—design them to build user confidence and guide decision-making naturally.
 
 
-<Grid columns={{ initial: '1', sm: '2' }} gap="4" mt="9">
+<Grid columns={{ initial: '1', sm: '2' }} gap="2" mt="8">
   {[
     {
       href: '?tab=playground',
       title: 'Playground',
       description: 'Interactive component explorer with live examples and customization',
       icon: Play,
+      image: '/playground.png',
     },
     {
       href: '?tab=api',
       title: 'API',
       description: 'Props, integration patterns, and technical implementation',
       icon: Code,
+      image: '/code.png',
     },
     {
       href: '?tab=accessibility',
       title: 'Accessibility',
       description: 'Keyboard navigation, screen readers, and inclusive design patterns',
       icon: Users,
+      image: '/people.png',
     },
     {
       href: '?tab=guidelines',
       title: 'Guidelines',
       description: 'Psychology, hierarchy, and design principles for effective interfaces',
       icon: BookOpen,
+      image: '/guidelines.png',
     },
     {
       href: '?tab=specs',
       title: 'Specs',
       description: 'Design tokens, measurements, and system specifications',
       icon: Ruler,
+      image: '/scale.png',
     },
     {
       href: '?tab=changelog',
       title: 'Changelog',
       description: 'Release notes, updates, and version history',
       icon: History,
+      image: '/clock.png',
     }
-  ].map(({ href, title, description, icon: Icon }) => (
+  ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>
-        <Flex direction="column" gap="2" p="2">
-          <Flex align="center" gap="2">
-            <Icon size={16} />
-            <Heading size="2" weight="medium">{title}</Heading>
+        <Flex direction="row" align="center" gap="4">
+          <Flex align="center" justify="center" style={{ width: 96, height: 96, flex: '0 0 96px' }}>
+            <Image src={image} alt="" width={96} height={96} fit="cover" />
           </Flex>
-          <Text size="2" color="gray">{description}</Text>
+          <Flex direction="column" gap="2" p="2">
+            <Flex align="center" gap="2">
+              <Icon size={16} />
+              <Heading size="3" weight="medium">{title}</Heading>
+            </Flex>
+            <Text size="2" color="gray">{description}</Text>
+          </Flex>
         </Flex>
       </Link>
     </Card>

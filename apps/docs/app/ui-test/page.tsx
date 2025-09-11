@@ -49,7 +49,7 @@ export default function UITestPage() {
       <Shell.Rail
         defaultMode={{ initial: 'expanded', xs: 'collapsed', md: 'expanded' }}
         expandedSize={64}
-        presentation={{ initial: 'stacked', xs: 'overlay', md: 'fixed' }}
+        presentation={{ initial: 'stacked', xs: 'overlay', md: 'stacked' }}
       >
         <Flex align="center" justify="center" height="100%">
           <Shell.Trigger target="panel" action="toggle" peekOnHover={true}>
@@ -97,7 +97,7 @@ export default function UITestPage() {
         snapTolerance={Infinity}
         collapseThreshold={80}
         defaultMode={{ initial: 'collapsed', sm: 'collapsed', md: 'expanded' }}
-        presentation={{ initial: 'overlay', xs: 'stacked', sm: 'fixed' }}
+        presentation={{ initial: 'overlay', xs: 'stacked', sm: 'stacked' }}
         paneId="bottom-panel"
         persistence={lsPane('ui-test:bottom-panel')}
       >
@@ -120,7 +120,7 @@ export default function UITestPage() {
         snapTolerance={Infinity}
         collapseThreshold={120}
         defaultMode={{ initial: 'collapsed', xs: 'collapsed', md: 'collapsed' }}
-        presentation="fixed"
+        presentation="stacked"
       >
         <Flex align="center" justify="center" height="100%">
           <Text>Inspector</Text>

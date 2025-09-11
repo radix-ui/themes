@@ -31,5 +31,5 @@
 }
 
 [data-blur='extra'] {
-  --blur-factor: 2.0;
-} 
+  --blur-factor: 2;
+}

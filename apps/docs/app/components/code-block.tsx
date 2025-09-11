@@ -367,7 +367,7 @@ export const CodeBlock = memo(function CodeBlock({
   // If we don't have both preview and code, show them normally (no tabs)
   if (!showTabs) {
     return (
-      <Box my="7">
+      <Box my="6">
         <Flex direction="column" gap="2">
           {preview && (
             <PreviewSection
@@ -384,7 +384,7 @@ export const CodeBlock = memo(function CodeBlock({
 
   // If we have both preview and code, show them in tabs for better organization
   return (
-    <Box my="7">
+    <Box my="6">
       <Tabs.Root defaultValue="preview">
         <Tabs.List>
           <Tabs.Trigger value="preview">Preview</Tabs.Trigger>

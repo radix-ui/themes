@@ -1,0 +1,34 @@
+{
+  "$ref": "#/definitions/Shell-handleSchema",
+  "definitions": {
+    "Shell-handleSchema": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string",
+          "description": "Additional CSS class name"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "description": "Inline styles"
+        },
+        "children": {
+          "description": "Handle content"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shell-handle Component Props",
+  "description": "Props schema for the shell-handle component in Kookie UI",
+  "version": "1.0.0",
+  "generatedAt": "2025-09-10T19:04:45.609Z",
+  "source": "Zod schema"
+}

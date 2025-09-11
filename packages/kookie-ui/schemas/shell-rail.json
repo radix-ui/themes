@@ -1,0 +1,132 @@
+{
+  "$ref": "#/definitions/Shell-railSchema",
+  "definitions": {
+    "Shell-railSchema": {
+      "type": "object",
+      "properties": {
+        "presentation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "fixed",
+                "overlay",
+                "stacked"
+              ],
+              "description": "Presentation mode"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "xs": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "sm": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "md": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "lg": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "xl": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Responsive presentation configuration"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "expanded",
+            "collapsed"
+          ],
+          "description": "Pane state mode"
+        },
+        "defaultMode": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Shell-railSchema/properties/mode"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "xs": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "sm": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "md": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "lg": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/mode",
+                  "description": "Pane state mode"
+                },
+                "xl": {
+                  "$ref": "#/definitions/Shell-railSchema/properties/mode",
+                  "description": "Pane state mode"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Responsive pane mode configuration"
+        },
+        "expandedSize": {
+          "type": "number",
+          "default": 64,
+          "description": "Default width in pixels"
+        },
+        "collapsible": {
+          "type": "boolean"
+        },
+        "className": {
+          "type": "string",
+          "description": "Additional CSS class name"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "description": "Inline styles"
+        },
+        "children": {
+          "description": "Rail content"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shell-rail Component Props",
+  "description": "Props schema for the shell-rail component in Kookie UI",
+  "version": "1.0.0",
+  "generatedAt": "2025-09-10T19:04:45.608Z",
+  "source": "Zod schema"
+}

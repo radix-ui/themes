@@ -8,7 +8,8 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "optimize:icons": "node ./scripts/optimize-icons.cjs"
   },
   "dependencies": {
     "@kushagradhawan/kookie-ui": "workspace:*",
@@ -37,6 +38,7 @@
     "@types/react-dom": "^19",
     "autoprefixer": "10.4.19",
     "postcss": "8.4.33",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4.1.8",
     "typescript": "^5"
   }

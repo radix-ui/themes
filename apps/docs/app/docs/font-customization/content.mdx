@@ -1,9 +1,13 @@
-import { Table, Text, Code, Box, Callout, Flex, Theme, Badge, Section, Separator } from '@kushagradhawan/kookie-ui';
+import { Table, Text, Code, Box, Callout, Flex, Theme, Badge, Section, Separator, Image } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 
 <Section size="1">
 
 <Badge size="2" variant="soft" highContrast color="orange" style={{ alignSelf: 'flex-start' }}>Beta</Badge>
+
+<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
+  <Image src="/font.png" alt="" width={128} height={128} fit="cover" />
+</Flex>
 
 # Font Customization
 
@@ -15,7 +19,7 @@ Kookie UI makes font customization simple and flexible. Whether you're designing
 
 <Section size="1">
 
-## Why It Matters
+## Overview
 
 Typography is fundamental to interface design. The right font choice can:
 
@@ -32,7 +36,7 @@ Kookie UI's font system is designed to be flexible enough for any design require
 
 <Section size="1">
 
-## Built-in Fonts
+## Default Fonts
 
 Kookie UI comes with carefully selected default fonts that work well together:
 
@@ -52,7 +56,7 @@ These fonts are chosen for their excellent readability, wide character support, 
 
 <Section size="1">
 
-## Font Switching
+## Switching
 
 You can switch between font families instantly using simple theme props. This makes it easy to:
 
@@ -85,13 +89,13 @@ You can switch between font families instantly using simple theme props. This ma
 
 Want to use your brand fonts? Kookie UI makes it straightforward to integrate any font family:
 
-### What You Can Customize
+### Options
 - **Primary text fonts** for headings, body text, and UI elements
 - **Code fonts** for technical content and data display
 - **Font weights** and styles to match your design system
 - **Fallback fonts** to ensure text displays correctly across all devices
 
-### How Easy It Is
+### Process
 Font customization requires minimal technical knowledge. You simply:
 1. Import your preferred fonts (Google Fonts, custom fonts, etc.)
 2. Update a few CSS variables
@@ -109,7 +113,7 @@ This means designers can specify any font they want without worrying about compl
 
 For developers implementing font changes, here are the technical details:
 
-### CSS Variable Override
+### CSS Variables
 
 <CodeBlock>
 
@@ -125,7 +129,7 @@ For developers implementing font changes, here are the technical details:
 ```
 </CodeBlock>
 
-### Font Replacement
+### Replacement
 
 <CodeBlock>
 
@@ -153,7 +157,7 @@ For developers implementing font changes, here are the technical details:
 
 <Section size="1">
 
-## Font Variables
+## Variables
 
 <Table.Root mt="6" mb="9">
   <Table.Header>

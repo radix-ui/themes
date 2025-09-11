@@ -1,0 +1,182 @@
+{
+  "$ref": "#/definitions/Shell-sidebarSchema",
+  "definitions": {
+    "Shell-sidebarSchema": {
+      "type": "object",
+      "properties": {
+        "presentation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "fixed",
+                "overlay",
+                "stacked"
+              ],
+              "description": "Presentation mode"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "xs": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "sm": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "md": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "lg": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                },
+                "xl": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/presentation/anyOf/0",
+                  "description": "Presentation mode"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Responsive presentation configuration"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "collapsed",
+            "thin",
+            "expanded"
+          ],
+          "description": "Sidebar state mode"
+        },
+        "defaultMode": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Shell-sidebarSchema/properties/mode"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "initial": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/mode",
+                  "description": "Sidebar state mode"
+                },
+                "xs": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/mode",
+                  "description": "Sidebar state mode"
+                },
+                "sm": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/mode",
+                  "description": "Sidebar state mode"
+                },
+                "md": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/mode",
+                  "description": "Sidebar state mode"
+                },
+                "lg": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/mode",
+                  "description": "Sidebar state mode"
+                },
+                "xl": {
+                  "$ref": "#/definitions/Shell-sidebarSchema/properties/mode",
+                  "description": "Sidebar state mode"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Initial sidebar mode",
+          "default": "expanded"
+        },
+        "expandedSize": {
+          "type": "number",
+          "default": 288,
+          "description": "Default width in pixels"
+        },
+        "minSize": {
+          "type": "number",
+          "default": 200,
+          "description": "Minimum width when resizing"
+        },
+        "maxSize": {
+          "type": "number",
+          "default": 400,
+          "description": "Maximum width when resizing"
+        },
+        "resizable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the sidebar can be resized"
+        },
+        "collapsible": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the sidebar can be collapsed via resize handle"
+        },
+        "resizer": {},
+        "snapPoints": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "snapTolerance": {
+          "type": "number"
+        },
+        "collapseThreshold": {
+          "type": "number"
+        },
+        "paneId": {
+          "type": "string"
+        },
+        "persistence": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false,
+          "description": "Size persistence adapter"
+        },
+        "className": {
+          "type": "string"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "children": {},
+        "thinSize": {
+          "type": "number",
+          "default": 64,
+          "description": "Width in thin mode"
+        },
+        "toggleModes": {
+          "type": "string",
+          "enum": [
+            "both",
+            "single"
+          ],
+          "description": "Available modes in toggle sequence"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shell-sidebar Component Props",
+  "description": "Props schema for the shell-sidebar component in Kookie UI",
+  "version": "1.0.0",
+  "generatedAt": "2025-09-10T19:04:45.608Z",
+  "source": "Zod schema"
+}
