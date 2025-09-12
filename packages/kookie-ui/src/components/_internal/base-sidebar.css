@@ -79,6 +79,7 @@
   border-radius: 0 !important;
 
   /* Add gap between groups using flex */
+  /* stylelint-disable-next-line selector-max-specificity */
   & .rt-BaseMenuViewport {
     /* gap: var(--base-menu-content-padding); */
     gap: var(--space-5);

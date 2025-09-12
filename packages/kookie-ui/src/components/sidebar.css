@@ -75,6 +75,7 @@
   }
 
   /* Icon sizing */
+  /* stylelint-disable-next-line selector-max-type */
   :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) :where(svg) {
     width: var(--content-icon-size-3);
     height: var(--content-icon-size-3);
@@ -108,6 +109,7 @@
     min-width: 0;
   }
 
+  /* stylelint-disable-next-line selector-max-type */
   :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) :where(svg) {
     width: var(--content-icon-size-4);
     height: var(--content-icon-size-4);
@@ -141,6 +143,7 @@
     min-width: 0;
   }
 
+  /* stylelint-disable-next-line selector-max-type */
   :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) :where(svg) {
     width: var(--content-icon-size-5);
     height: var(--content-icon-size-5);
@@ -168,6 +171,7 @@
   min-width: 0;
 }
 
+/* stylelint-disable-next-line selector-max-type */
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton > * > svg) {
   flex-shrink: 0;
 }
@@ -185,6 +189,7 @@
 }
 
 /* Ensure icons remain visible at their token sizes in thin mode */
+/* stylelint-disable-next-line selector-max-type */
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton) :where(svg) {
   /* svg size is already controlled by tokens; this ensures layout stability */
   display: block;
