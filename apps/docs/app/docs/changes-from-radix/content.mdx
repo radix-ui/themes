@@ -1,0 +1,82 @@
+import { Section, Heading, Text, Separator, Card, Flex } from '@kushagradhawan/kookie-ui';
+import { CheckCircle, ArrowRight } from 'lucide-react';
+
+<Section size="1">
+
+# Changes from Radix
+
+Kookie UI is a fork of <a href="https://radix-ui.com/themes" target="_blank" rel="noopener noreferrer">Radix Themes</a>, not just a wrapper around <a href="https://radix-ui.com" target="_blank" rel="noopener noreferrer">Radix UI</a> primitives. Radix provided the building blocks, but I'm extending it into a full design system.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## What I Kept
+
+I didn't throw away what worked.
+
+- **Component foundation.** The accessibility and keyboard/screen reader support from Radix UI primitives remain intact.
+- **API style.** Familiar prop patterns, polymorphic `asChild` rendering, and overall developer experience are unchanged.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## What I'm Changing
+
+What I'm rebuilding are the parts that didn't feel systematic to me:
+
+- **Design tokens.** Radix's 9-point scales were useful, but scattered with exceptions. I'm rewriting them into 12-point progressions with predictable steps for spacing, radius, and shadows.
+- **Material system.** Instead of `panelBackground` (limited to a few components), Kookie UI uses a universal material system. Every component understands translucency vs. solidity, with both theme-level defaults and per-component overrides.
+- **Sizing.** Cards, buttons, dropdowns, selects, and avatars all follow the same scale now. A size-1 button actually looks right inside a size-1 card.
+- **Icons.** Icon sizing is consistent across components. Segmented controls, selects, dropdowns, and buttons follow the same logic.
+- **Accessibility details.** I'm adding native tooltip support, stricter aria-label enforcement for icon buttons, and small but meaningful improvements throughout.
+- **Motion.** Transition patterns are unified, so you don't see one component glide while another snaps instantly.
+
+None of this means Radix did something wrong. Radix provided a toolkit. Kookie UI tries to extend it into a design system.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## New Components
+
+I'm building new components that aren't part of Radix Themes, like Shell, Sidebar, Image, ToggleButton, ToggleIconButton, and Chatbar. These are currently in beta and I'm testing them slowly in production at Womp to make sure they're solid before releasing them more broadly.
+
+### Beyond UI Components
+
+I'm trying to go further than just individual components.
+
+- **Layout patterns.** Shells, split views, column layouts, and sidebars that behave predictably together. These aren't extra components — they're structural patterns that help build real applications.
+- **Typography.** Expanded scales and weights so type feels consistent across contexts, not improvised.
+
+### Token Systems
+
+- **Space.** Extended to 12 steps for compact and large interfaces, instead of being stuck with one rhythm.
+- **Radius.** Scales match spacing, which makes rounded corners feel deliberate instead of arbitrary.
+- **Color.** Simplified tokens that still follow a 12-step progression, with automatic dark mode support.
+
+### Universal Material
+
+Every component supports a `material` prop:
+
+- **Theme-level defaults.** Set the global look (translucent or solid).
+- **Component overrides.** Change behavior per component when needed.
+- **Context awareness.** Dialogs, panels, and buttons each have sensible defaults.
+- **Elevation.** Material isn't just visual — it communicates depth and layering.
+- **Deprecation path.** `panelBackground` is replaced gradually, not abruptly.
+
+### Production Use
+
+- **Developer experience.** TypeScript, JSDoc, and familiar APIs.
+- **Accessibility.** Native tooltips, aria-label enforcement, consistent keyboard navigation.
+- **Interactions.** Unified icon sizes, smooth transitions, predictable states.
+- **Margin-agnostic.** Components don't assume layout spacing. They just fit.
+
+</Section>

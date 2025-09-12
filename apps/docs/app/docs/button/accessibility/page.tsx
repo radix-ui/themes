@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ComponentPage from '../../../components/component-page';
-import AccessibilityMDX from '../accessibility.mdx';
+import AccessibilityMDX from './content.mdx';
 
 export default function ButtonAccessibilityPage() {
   return (

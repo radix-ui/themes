@@ -4,10 +4,6 @@ import { Play, Code, Users, BookOpen, Ruler, History } from 'lucide-react';
 
 <Section size="1">
 
-<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
-  <Image src="/shell.png" alt="" width={128} height={128} fit="cover" />
-</Flex>
-
 # Shell
 
 The Shell component is a complete layout engine that provides structural patterns for building application interfaces. It manages layout state, composition rules, and responsive behavior across seven core slots: Header, Rail, Panel, Sidebar, Content, Inspector, and Bottom.
@@ -15,54 +11,56 @@ The Shell component is a complete layout engine that provides structural pattern
 <Grid columns={{ initial: '1', sm: '2' }} gap="2" mt="8">
   {[
     {
-      href: '?tab=playground',
+      href: 'shell/playground',
       title: 'Playground',
       description: 'Interactive component explorer with live examples and customization',
       icon: Play,
-      image: '/playground.png',
+      image: '/shell.png',
     },
     {
-      href: '?tab=api',
+      href: 'shell/api',
       title: 'API',
       description: 'Props, integration patterns, and technical implementation',
       icon: Code,
-      image: '/code.png',
+      image: '/keyboard.png',
     },
     {
-      href: '?tab=accessibility',
+      href: 'shell/accessibility',
       title: 'Accessibility',
       description: 'Keyboard navigation, screen readers, and inclusive design patterns',
       icon: Users,
-      image: '/people.png',
+      image: '/accessibility.png',
     },
     {
-      href: '?tab=guidelines',
+      href: 'shell/guidelines',
       title: 'Guidelines',
       description: 'Psychology, hierarchy, and design principles for effective interfaces',
       icon: BookOpen,
       image: '/guidelines.png',
     },
     {
-      href: '?tab=specs',
+      href: 'shell/specs',
       title: 'Specs',
       description: 'Design tokens, measurements, and system specifications',
       icon: Ruler,
-      image: '/scale.png',
+      image: '/ruler.png',
     },
     {
-      href: '?tab=changelog',
+      href: 'shell/changelog',
       title: 'Changelog',
       description: 'Release notes, updates, and version history',
       icon: History,
-      image: '/clock.png',
+      image: '/changelog.png',
     }
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>
         <Flex direction="row" align="center" gap="4">
+        
           <Flex align="center" justify="center" style={{ width: 96, height: 96, flex: '0 0 96px' }}>
             <Image src={image} alt="" width={96} height={96} fit="cover" />
           </Flex>
+        
           <Flex direction="column" gap="2" p="2">
             <Flex align="center" gap="2">
               <Icon size={16} />
@@ -73,7 +71,9 @@ The Shell component is a complete layout engine that provides structural pattern
         </Flex>
       </Link>
     </Card>
-  ))}
+
+))}
+
 </Grid>
 
 </Section>

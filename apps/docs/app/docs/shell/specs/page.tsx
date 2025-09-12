@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ComponentPage from '../../../components/component-page';
-import SpecsMDX from '../specs.mdx';
+import SpecsMDX from './content.mdx';
 
 export default function ShellSpecsPage() {
   return (

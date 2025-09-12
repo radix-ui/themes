@@ -76,7 +76,7 @@ export default function App() {
 ## Documentation
 
 - **[Installation Guide](apps/docs/app/docs/installation.mdx)** - Get started with any React framework
-- **[Component Overview](apps/docs/app/docs/overview.mdx)** - Learn about the design system and patterns
+- **[Component Overview](apps/docs/app/docs/get-started.mdx)** - Learn about the design system and patterns
 - **[Playground](apps/docs/app/playground/page.tsx)** - Interactive component examples
 - **[API Reference](apps/docs/app/docs/Button/api.mdx)** - Complete component documentation
 

@@ -43,7 +43,14 @@ function useSidebarVisual() {
 
 // Main Sidebar component
 type SidebarOwnProps = GetPropDefTypes<typeof sidebarPropDefs>;
-interface SidebarProps extends ComponentPropsWithout<'div', RemovedProps>, SidebarOwnProps {}
+interface SidebarProps extends ComponentPropsWithout<'div', RemovedProps>, SidebarOwnProps {
+  /**
+   * Presentational mode independent of Shell.
+   * 'thin' renders a rail-style sidebar, 'expanded' renders a panel-style sidebar.
+   * If both `presentation` and `layout` are provided, `presentation` takes precedence.
+   */
+  presentation?: 'thin' | 'expanded';
+}
 
 const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwardedRef) => {
   const themeContext = useThemeContext();
@@ -53,6 +60,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
     variant = sidebarPropDefs.variant.default,
     menuVariant = sidebarPropDefs.menuVariant.default,
     layout = sidebarPropDefs.layout.default,
+    presentation,
     // type = sidebarPropDefs.type.default,
     // side = sidebarPropDefs.side.default,
     // collapsible = sidebarPropDefs.collapsible.default,
@@ -62,33 +70,24 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
   } = props;
 
   const { className, children, ...rootProps } = extractProps(props, sidebarPropDefs);
-  const { asChild: _, panelBackground: __, ...safeRootProps } = rootProps; // Remove asChild and panelBackground from DOM props
+  // Remove internal-only props from DOM
+  const { asChild: _, panelBackground: __, presentation: ___, ...safeRootProps } = rootProps;
   const resolvedColor = color || themeContext.accentColor;
 
-  // Resolve layout (default to 'panel')
-  const resolvedLayout = layout || 'panel';
+  // Resolve layout (default to 'panel'). `presentation` takes precedence over `layout`.
+  const resolvedLayout = presentation === 'thin' ? 'rail' : presentation === 'expanded' ? 'panel' : layout || 'panel';
 
   // Update context with current props - we'll pass the resolved values
   const resolvedSize = typeof size === 'object' ? size.initial || '2' : size;
   return (
-    <div
-      {...safeRootProps}
-      ref={forwardedRef}
-      data-accent-color={resolvedColor}
-      className={classNames('rt-SidebarRoot', className)}
-    >
+    <div {...safeRootProps} ref={forwardedRef} data-accent-color={resolvedColor} className={classNames('rt-SidebarRoot', className)}>
       <SidebarVisualContext.Provider value={{ size: resolvedSize, menuVariant }}>
         <div
-          className={classNames(
-            'rt-SidebarContainer',
-            `rt-variant-${variant}`,
-            `rt-r-size-${resolvedSize}`,
-            `rt-menu-variant-${menuVariant}`,
-            resolvedLayout && `rt-layout-${resolvedLayout}`,
-          )}
+          className={classNames('rt-SidebarContainer', `rt-variant-${variant}`, `rt-r-size-${resolvedSize}`, `rt-menu-variant-${menuVariant}`, resolvedLayout && `rt-layout-${resolvedLayout}`)}
           data-accent-color={resolvedColor}
           data-high-contrast={highContrast || undefined}
           data-panel-background={panelBackground}
+          data-presentation={presentation}
           data-layout={resolvedLayout}
         >
           {children}
@@ -107,17 +106,7 @@ interface SidebarContentProps extends React.ComponentPropsWithoutRef<'div'> {
 }
 
 const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
-  (
-    {
-      className,
-      children,
-      role = 'navigation',
-      'aria-label': ariaLabel = 'Main navigation',
-      id,
-      ...props
-    },
-    forwardedRef,
-  ) => {
+  ({ className, children, role = 'navigation', 'aria-label': ariaLabel = 'Main navigation', id, ...props }, forwardedRef) => {
     const visual = useSidebarVisual();
     const size = visual?.size ?? '2';
     const menuVariant = visual?.menuVariant ?? 'soft';
@@ -130,13 +119,7 @@ const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
           id={id}
           role={role}
           aria-label={ariaLabel}
-          className={classNames(
-            'rt-BaseMenuContent',
-            'rt-SidebarContent',
-            `rt-r-size-${size}`,
-            `rt-menu-variant-${menuVariant}`,
-            className,
-          )}
+          className={classNames('rt-BaseMenuContent', 'rt-SidebarContent', `rt-r-size-${size}`, `rt-menu-variant-${menuVariant}`, className)}
         >
           <div className="rt-BaseMenuViewport">{children}</div>
         </div>
@@ -155,29 +138,27 @@ interface SidebarHeaderProps extends React.ComponentPropsWithoutRef<'div'> {
   asContainer?: boolean;
 }
 
-const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps>(
-  ({ className, asContainer = true, ...props }, forwardedRef) => {
-    const visual = useSidebarVisual();
-    const size = visual?.size ?? '2';
-    const menuVariant = visual?.menuVariant ?? 'soft';
+const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps>(({ className, asContainer = true, ...props }, forwardedRef) => {
+  const visual = useSidebarVisual();
+  const size = visual?.size ?? '2';
+  const menuVariant = visual?.menuVariant ?? 'soft';
 
-    return (
-      <div
-        {...props}
-        ref={forwardedRef}
-        className={classNames(
-          'rt-SidebarHeader',
-          `rt-r-size-${size}`,
-          `rt-menu-variant-${menuVariant}`,
-          {
-            'rt-SidebarHeader--container': asContainer,
-          },
-          className,
-        )}
-      />
-    );
-  },
-);
+  return (
+    <div
+      {...props}
+      ref={forwardedRef}
+      className={classNames(
+        'rt-SidebarHeader',
+        `rt-r-size-${size}`,
+        `rt-menu-variant-${menuVariant}`,
+        {
+          'rt-SidebarHeader--container': asContainer,
+        },
+        className,
+      )}
+    />
+  );
+});
 SidebarHeader.displayName = 'Sidebar.Header';
 
 // Sidebar footer
@@ -189,29 +170,27 @@ interface SidebarFooterProps extends React.ComponentPropsWithoutRef<'div'> {
   asContainer?: boolean;
 }
 
-const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
-  ({ className, asContainer = true, ...props }, forwardedRef) => {
-    const visual = useSidebarVisual();
-    const size = visual?.size ?? '2';
-    const menuVariant = visual?.menuVariant ?? 'soft';
+const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(({ className, asContainer = true, ...props }, forwardedRef) => {
+  const visual = useSidebarVisual();
+  const size = visual?.size ?? '2';
+  const menuVariant = visual?.menuVariant ?? 'soft';
 
-    return (
-      <div
-        {...props}
-        ref={forwardedRef}
-        className={classNames(
-          'rt-SidebarFooter',
-          `rt-r-size-${size}`,
-          `rt-menu-variant-${menuVariant}`,
-          {
-            'rt-SidebarFooter--container': asContainer,
-          },
-          className,
-        )}
-      />
-    );
-  },
-);
+  return (
+    <div
+      {...props}
+      ref={forwardedRef}
+      className={classNames(
+        'rt-SidebarFooter',
+        `rt-r-size-${size}`,
+        `rt-menu-variant-${menuVariant}`,
+        {
+          'rt-SidebarFooter--container': asContainer,
+        },
+        className,
+      )}
+    />
+  );
+});
 SidebarFooter.displayName = 'Sidebar.Footer';
 
 // Sidebar trigger button
@@ -222,40 +201,24 @@ SidebarFooter.displayName = 'Sidebar.Footer';
 // Sidebar separator
 interface SidebarSeparatorProps extends ComponentPropsWithout<typeof Separator, RemovedProps> {}
 
-const SidebarSeparator = React.forwardRef<
-  React.ComponentRef<typeof Separator>,
-  SidebarSeparatorProps
->(({ className, ...props }, forwardedRef) => (
-  <Separator
-    {...props}
-    ref={forwardedRef}
-    className={classNames('rt-SidebarSeparator', className)}
-  />
+const SidebarSeparator = React.forwardRef<React.ComponentRef<typeof Separator>, SidebarSeparatorProps>(({ className, ...props }, forwardedRef) => (
+  <Separator {...props} ref={forwardedRef} className={classNames('rt-SidebarSeparator', className)} />
 ));
 SidebarSeparator.displayName = 'Sidebar.Separator';
 
 // Menu components - reusing dropdown menu structure
 interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'ul'> {}
 
-const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <ul
-      {...props}
-      ref={forwardedRef}
-      role="menu"
-      className={classNames('rt-SidebarMenu', className)}
-    />
-  ),
-);
+const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(({ className, ...props }, forwardedRef) => (
+  <ul {...props} ref={forwardedRef} role="menu" className={classNames('rt-SidebarMenu', className)} />
+));
 SidebarMenu.displayName = 'Sidebar.Menu';
 
 interface SidebarMenuItemProps extends React.ComponentPropsWithoutRef<'li'> {}
 
-const SidebarMenuItem = React.forwardRef<HTMLLIElement, SidebarMenuItemProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <li {...props} ref={forwardedRef} className={classNames('rt-SidebarMenuItem', className)} />
-  ),
-);
+const SidebarMenuItem = React.forwardRef<HTMLLIElement, SidebarMenuItemProps>(({ className, ...props }, forwardedRef) => (
+  <li {...props} ref={forwardedRef} className={classNames('rt-SidebarMenuItem', className)} />
+));
 SidebarMenuItem.displayName = 'Sidebar.MenuItem';
 
 interface SidebarMenuButtonProps extends React.ComponentPropsWithoutRef<'button'> {
@@ -266,21 +229,7 @@ interface SidebarMenuButtonProps extends React.ComponentPropsWithoutRef<'button'
 }
 
 const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonProps>(
-  (
-    {
-      asChild = false,
-      isActive = false,
-      shortcut,
-      badge,
-      className,
-      children,
-      onMouseEnter,
-      onMouseLeave,
-      onKeyDown,
-      ...props
-    },
-    forwardedRef,
-  ) => {
+  ({ asChild = false, isActive = false, shortcut, badge, className, children, onMouseEnter, onMouseLeave, onKeyDown, ...props }, forwardedRef) => {
     const [isHighlighted, setIsHighlighted] = React.useState(false);
     const visual = useSidebarVisual();
     const sidebarSize = visual?.size ?? '2';
@@ -299,18 +248,14 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
           case 'ArrowDown': {
             event.preventDefault();
             // Focus next menu item
-            const nextItem = (event.currentTarget as HTMLElement).nextElementSibling?.querySelector(
-              '[role="menuitem"]',
-            ) as HTMLElement;
+            const nextItem = (event.currentTarget as HTMLElement).nextElementSibling?.querySelector('[role="menuitem"]') as HTMLElement;
             if (nextItem) nextItem.focus();
             break;
           }
           case 'ArrowUp': {
             event.preventDefault();
             // Focus previous menu item
-            const prevItem = (
-              event.currentTarget as HTMLElement
-            ).previousElementSibling?.querySelector('[role="menuitem"]') as HTMLElement;
+            const prevItem = (event.currentTarget as HTMLElement).previousElementSibling?.querySelector('[role="menuitem"]') as HTMLElement;
             if (prevItem) prevItem.focus();
             break;
           }
@@ -319,6 +264,27 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
       },
       [onClick, onKeyDown],
     );
+
+    // Wrap bare text nodes so CSS can target labels (e.g., for truncation in thin mode)
+    const wrapTextNodes = (node: React.ReactNode): React.ReactNode => {
+      if (typeof node === 'string' || typeof node === 'number') {
+        return <span className="rt-SidebarMenuLabel">{node}</span>;
+      }
+      if (Array.isArray(node)) {
+        return node.map((child, index) => <React.Fragment key={index}>{wrapTextNodes(child)}</React.Fragment>);
+      }
+      if (React.isValidElement(node)) {
+        const el = node as React.ReactElement<any>;
+        const className: string = (el.props && (el.props as any).className) || '';
+        const isAlreadyLabel = typeof el.type === 'string' && className.split(' ').includes('rt-SidebarMenuLabel');
+        if (isAlreadyLabel) return el;
+        const newChildren = wrapTextNodes((el.props as any)?.children);
+        return React.cloneElement(el, { ...(el.props as any) }, newChildren);
+      }
+      return node;
+    };
+
+    const processedChildren = wrapTextNodes(children);
 
     return (
       <Comp
@@ -340,10 +306,10 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
         }}
       >
         {asChild ? (
-          children
+          processedChildren
         ) : (
           <>
-            {children}
+            {processedChildren}
             {/* Badge with soft variant default and size mapping to sidebar size */}
             {badge && (
               <div className="rt-SidebarMenuBadge">
@@ -352,13 +318,7 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
                     {badge}
                   </Badge>
                 ) : (
-                  <Badge
-                    size={badge.size || sidebarSize}
-                    variant={badge.variant || 'soft'}
-                    color={badge.color}
-                    highContrast={badge.highContrast}
-                    radius={badge.radius}
-                  >
+                  <Badge size={badge.size || sidebarSize} variant={badge.variant || 'soft'} color={badge.color} highContrast={badge.highContrast} radius={badge.radius}>
                     {badge.content}
                   </Badge>
                 )}
@@ -382,32 +342,23 @@ interface SidebarMenuSubProps extends React.ComponentPropsWithoutRef<'div'> {
   defaultOpen?: boolean;
 }
 
-const SidebarMenuSub = React.forwardRef<HTMLDivElement, SidebarMenuSubProps>(
-  ({ defaultOpen = false, children, ...props }, forwardedRef) => {
-    return (
-      <div {...props} ref={forwardedRef}>
-        <Accordion.Root type="single" collapsible defaultValue={defaultOpen ? 'item' : undefined}>
-          <Accordion.Item value="item">{children}</Accordion.Item>
-        </Accordion.Root>
-      </div>
-    );
-  },
-);
+const SidebarMenuSub = React.forwardRef<HTMLDivElement, SidebarMenuSubProps>(({ defaultOpen = false, children, ...props }, forwardedRef) => {
+  return (
+    <div {...props} ref={forwardedRef}>
+      <Accordion.Root type="single" collapsible defaultValue={defaultOpen ? 'item' : undefined}>
+        <Accordion.Item value="item">{children}</Accordion.Item>
+      </Accordion.Root>
+    </div>
+  );
+});
 SidebarMenuSub.displayName = 'Sidebar.MenuSub';
 
-interface SidebarMenuSubTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof Accordion.Trigger> {
+interface SidebarMenuSubTriggerProps extends React.ComponentPropsWithoutRef<typeof Accordion.Trigger> {
   asChild?: boolean;
 }
 
-const SidebarMenuSubTrigger = React.forwardRef<
-  React.ElementRef<typeof Accordion.Trigger>,
-  SidebarMenuSubTriggerProps
->(
-  (
-    { asChild = false, className, children, onMouseEnter, onMouseLeave, ...props },
-    forwardedRef,
-  ) => {
+const SidebarMenuSubTrigger = React.forwardRef<React.ElementRef<typeof Accordion.Trigger>, SidebarMenuSubTriggerProps>(
+  ({ asChild = false, className, children, onMouseEnter, onMouseLeave, ...props }, forwardedRef) => {
     const [isHighlighted, setIsHighlighted] = React.useState(false);
 
     return (
@@ -419,13 +370,7 @@ const SidebarMenuSubTrigger = React.forwardRef<
             asChild={asChild}
             role="menuitem"
             aria-haspopup="true"
-            className={classNames(
-              'rt-reset',
-              'rt-BaseMenuItem',
-              'rt-SidebarMenuButton',
-              'rt-SidebarMenuSubTrigger',
-              className,
-            )}
+            className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-SidebarMenuButton', 'rt-SidebarMenuSubTrigger', className)}
             data-highlighted={isHighlighted || undefined}
             onMouseEnter={(event) => {
               setIsHighlighted(true);
@@ -441,12 +386,7 @@ const SidebarMenuSubTrigger = React.forwardRef<
             ) : (
               <>
                 {children}
-                <ThickChevronRightIcon
-                  className={classNames(
-                    'rt-BaseMenuSubTriggerIcon',
-                    'rt-SidebarMenuSubTriggerIcon',
-                  )}
-                />
+                <ThickChevronRightIcon className={classNames('rt-BaseMenuSubTriggerIcon', 'rt-SidebarMenuSubTriggerIcon')} />
               </>
             )}
           </Accordion.Trigger>
@@ -457,19 +397,11 @@ const SidebarMenuSubTrigger = React.forwardRef<
 );
 SidebarMenuSubTrigger.displayName = 'Sidebar.MenuSubTrigger';
 
-interface SidebarMenuSubContentProps
-  extends React.ComponentPropsWithoutRef<typeof Accordion.Content> {}
+interface SidebarMenuSubContentProps extends React.ComponentPropsWithoutRef<typeof Accordion.Content> {}
 
-const SidebarMenuSubContent = React.forwardRef<
-  React.ElementRef<typeof Accordion.Content>,
-  SidebarMenuSubContentProps
->(({ className, children, ...props }, forwardedRef) => {
+const SidebarMenuSubContent = React.forwardRef<React.ElementRef<typeof Accordion.Content>, SidebarMenuSubContentProps>(({ className, children, ...props }, forwardedRef) => {
   return (
-    <Accordion.Content
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-SidebarMenuSubContent', className)}
-    >
+    <Accordion.Content {...props} ref={forwardedRef} className={classNames('rt-SidebarMenuSubContent', className)}>
       <div className="rt-SidebarMenuSubList">{children}</div>
     </Accordion.Content>
   );
@@ -479,48 +411,27 @@ SidebarMenuSubContent.displayName = 'Sidebar.MenuSubContent';
 // Group components
 interface SidebarGroupProps extends React.ComponentPropsWithoutRef<'div'> {}
 
-const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-BaseMenuGroup', 'rt-SidebarGroup', className)}
-    />
-  ),
-);
+const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(({ className, ...props }, forwardedRef) => (
+  <div {...props} ref={forwardedRef} className={classNames('rt-BaseMenuGroup', 'rt-SidebarGroup', className)} />
+));
 SidebarGroup.displayName = 'Sidebar.Group';
 
 interface SidebarGroupLabelProps extends React.ComponentPropsWithoutRef<'div'> {
   asChild?: boolean;
 }
 
-const SidebarGroupLabel = React.forwardRef<HTMLDivElement, SidebarGroupLabelProps>(
-  ({ asChild = false, className, ...props }, forwardedRef) => {
-    const Comp = asChild ? Slot : 'div';
+const SidebarGroupLabel = React.forwardRef<HTMLDivElement, SidebarGroupLabelProps>(({ asChild = false, className, ...props }, forwardedRef) => {
+  const Comp = asChild ? Slot : 'div';
 
-    return (
-      <Comp
-        {...props}
-        ref={forwardedRef}
-        role="group"
-        className={classNames('rt-BaseMenuLabel', 'rt-SidebarGroupLabel', className)}
-      />
-    );
-  },
-);
+  return <Comp {...props} ref={forwardedRef} role="group" className={classNames('rt-BaseMenuLabel', 'rt-SidebarGroupLabel', className)} />;
+});
 SidebarGroupLabel.displayName = 'Sidebar.GroupLabel';
 
 interface SidebarGroupContentProps extends React.ComponentPropsWithoutRef<'div'> {}
 
-const SidebarGroupContent = React.forwardRef<HTMLDivElement, SidebarGroupContentProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      ref={forwardedRef}
-      className={classNames('rt-SidebarGroupContent', className)}
-    />
-  ),
-);
+const SidebarGroupContent = React.forwardRef<HTMLDivElement, SidebarGroupContentProps>(({ className, ...props }, forwardedRef) => (
+  <div {...props} ref={forwardedRef} className={classNames('rt-SidebarGroupContent', className)} />
+));
 SidebarGroupContent.displayName = 'Sidebar.GroupContent';
 
 // Export all components following shadcn's pattern
@@ -594,10 +505,4 @@ export {
  * - Gap: rt-gap-1, rt-gap-2, rt-gap-3, rt-gap-4
  */
 
-export type {
-  SidebarProps as RootProps,
-  SidebarContentProps as ContentProps,
-  SidebarHeaderProps as HeaderProps,
-  SidebarFooterProps as FooterProps,
-  BadgeConfig,
-};
+export type { SidebarProps as RootProps, SidebarContentProps as ContentProps, SidebarHeaderProps as HeaderProps, SidebarFooterProps as FooterProps, BadgeConfig };

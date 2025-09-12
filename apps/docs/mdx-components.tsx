@@ -9,15 +9,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
       <Flex direction="column" gap="8" mb="6">
-        <Heading as="h1" size="9" weight="semibold">
+        <Heading as="h1" size="9" weight="medium">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
       </Flex>
     ),
     h2: ({ children }) => (
-      <Flex direction="column" gap="3" mb="2" mt="4">
-        <Heading as="h2" size="6" weight="semibold">
+      <Flex direction="column" gap="3" mb="4" mt="4">
+        <Heading as="h2" size="6" weight="medium">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
@@ -25,24 +25,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ children }) => (
       <Flex direction="column" gap="2" mt="8">
-        <Heading as="h3" size="4" weight="semibold">
+        <Heading as="h3" size="4" weight="medium">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
       </Flex>
     ),
     h4: ({ children }) => (
-      <Heading as="h4" size="3" mb="3" weight="semibold">
+      <Heading as="h4" size="3" mb="3" weight="medium">
         {children}
       </Heading>
     ),
     h5: ({ children }) => (
-      <Heading as="h5" size="2" mb="2" weight="semibold">
+      <Heading as="h5" size="2" mb="2" weight="medium">
         {children}
       </Heading>
     ),
     h6: ({ children }) => (
-      <Heading as="h6" size="2" mb="2" weight="semibold">
+      <Heading as="h6" size="2" mb="2" weight="medium">
         {children}
       </Heading>
     ),

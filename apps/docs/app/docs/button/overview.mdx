@@ -5,66 +5,63 @@ import ButtonPlayground from '../../playground/ButtonPlayground';
 
 <Section size="1">
 
-<Flex align="center" justify="center" style={{ width: 128, height: 128, flex: '0 0 128px' }}>
-  <Image src="/button.png" alt="" width={128} height={128} fit="cover" />
-</Flex>
-
 # Button
 
 Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next—design them to build user confidence and guide decision-making naturally.
 
-
 <Grid columns={{ initial: '1', sm: '2' }} gap="2" mt="8">
   {[
     {
-      href: '?tab=playground',
+      href: 'button/playground',
       title: 'Playground',
       description: 'Interactive component explorer with live examples and customization',
       icon: Play,
-      image: '/playground.png',
+      image: '/button.png',
     },
     {
-      href: '?tab=api',
+      href: 'button/api',
       title: 'API',
       description: 'Props, integration patterns, and technical implementation',
       icon: Code,
-      image: '/code.png',
+      image: '/keyboard.png',
     },
     {
-      href: '?tab=accessibility',
+      href: 'button/accessibility',
       title: 'Accessibility',
       description: 'Keyboard navigation, screen readers, and inclusive design patterns',
       icon: Users,
-      image: '/people.png',
+      image: '/accessibility.png',
     },
     {
-      href: '?tab=guidelines',
+      href: 'button/guidelines',
       title: 'Guidelines',
       description: 'Psychology, hierarchy, and design principles for effective interfaces',
       icon: BookOpen,
       image: '/guidelines.png',
     },
     {
-      href: '?tab=specs',
+      href: 'button/specs',
       title: 'Specs',
       description: 'Design tokens, measurements, and system specifications',
       icon: Ruler,
-      image: '/scale.png',
+      image: '/ruler.png',
     },
     {
-      href: '?tab=changelog',
+      href: 'button/changelog',
       title: 'Changelog',
       description: 'Release notes, updates, and version history',
       icon: History,
-      image: '/clock.png',
+      image: '/changelog.png',
     }
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>
         <Flex direction="row" align="center" gap="4">
+        {/*
           <Flex align="center" justify="center" style={{ width: 96, height: 96, flex: '0 0 96px' }}>
             <Image src={image} alt="" width={96} height={96} fit="cover" />
           </Flex>
+          */}
           <Flex direction="column" gap="2" p="2">
             <Flex align="center" gap="2">
               <Icon size={16} />
@@ -75,11 +72,9 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
         </Flex>
       </Link>
     </Card>
-  ))}
+
+))}
+
 </Grid>
 
-
 </Section>
-
-
-

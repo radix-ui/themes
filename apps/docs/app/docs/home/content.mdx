@@ -1,0 +1,67 @@
+import { Section, Badge, Separator, Card, Flex, Text, Heading, Grid, Image } from '@kushagradhawan/kookie-ui';
+import Link from 'next/link';
+import { Signpost, Palette, Settings, Grid3X3, BookOpen, Dog, GitBranch, Calendar } from 'lucide-react';
+
+<Section size="1">
+
+# Home
+
+Welcome to Kookie UI, a design system built for developers who want consistency without compromise. Kookie UI provides the patterns, components, and tools you need to build interfaces that feel cohesive and professional.
+
+</Section>
+
+<Grid columns={{ initial: '1', sm: '2' }} gap="2" mb="6">
+  {[
+    {
+      href: '/docs/get-started',
+      title: 'Get Started',
+      description: 'Get started with Kookie UI and understand the core concepts',
+      icon: Signpost,
+      image: '/signpost.png',
+    },
+    {
+      href: '/docs/whats-kookie',
+      title: "What's Kookie",
+      description: 'Learn about the philosophy, approach, and what makes Kookie UI different',
+      icon: Dog,
+      image: '/kookie.png',
+    },
+    {
+      href: '/docs/changes-from-radix',
+      title: 'Changes from Radix',
+      description: "See what I kept, what I changed, and the new components I'm building",
+      icon: GitBranch,
+      image: '/branch.png',
+    },
+    {
+      href: '/docs/roadmap',
+      title: 'Roadmap',
+      description: 'Current development status, upcoming features, and long-term vision',
+      icon: Calendar,
+      image: '/roadmap.png',
+    },
+  ].map(({ href, title, description, icon: Icon, image }) => (
+    <Card asChild key={href} size="2" variant="soft">
+      <Link href={href}>
+        <Flex direction="row" align="center" gap="4">
+          {/* 
+          <Flex align="center" justify="center" style={{ width: 96, height: 96, flex: '0 0 96px' }}>
+            <Image src={image} alt="" width={96} height={96} fit="cover" />
+          </Flex>
+          */}
+          <Flex direction="column" gap="2" p="2">
+            <Flex align="center" gap="2">
+              <Icon size={16} />
+              <Heading size="3" weight="medium">
+                {title}
+              </Heading>
+            </Flex>
+            <Text size="2" color="gray">
+              {description}
+            </Text>
+          </Flex>
+        </Flex>
+      </Link>
+    </Card>
+  ))}
+</Grid>

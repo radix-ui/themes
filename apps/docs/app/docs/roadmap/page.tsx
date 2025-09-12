@@ -1,12 +1,12 @@
 'use client';
 
 import ComponentPage from '../../components/component-page';
-import IntroductionMDX from '../introduction.mdx';
+import RoadmapMDX from './content.mdx';
 
-export default function IntroductionPage() {
+export default function RoadmapPage() {
   return (
     <ComponentPage>
-      <IntroductionMDX />
+      <RoadmapMDX />
     </ComponentPage>
   );
 }

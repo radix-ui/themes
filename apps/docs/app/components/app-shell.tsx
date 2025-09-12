@@ -5,17 +5,39 @@ import { Shell, Sidebar, Flex, IconButton, Badge, Container, Avatar } from '@kus
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
-import { Home, BookOpen, Download, Palette, Component, ChevronDown, PanelLeft, X, Type, Palette as ColorsIcon, Box, Square, Layout, GripVertical } from 'lucide-react';
+import {
+  Signpost,
+  BookOpen,
+  Download,
+  Palette,
+  Component,
+  ChevronDown,
+  PanelLeft,
+  Type,
+  Palette as ColorsIcon,
+  Box,
+  Square,
+  Layout,
+  GripVertical,
+  Calendar,
+  Dog,
+  GitBranch,
+  Settings,
+} from 'lucide-react';
 
 // Define the navigation structure
 const navigationItems = [
   {
     type: 'section' as const,
     title: 'Start',
-    icon: Home,
+    icon: Signpost,
     items: [
-      { href: '/docs/introduction', title: 'Introduction', icon: BookOpen, badge: undefined },
-      { href: '/docs/overview', title: 'Overview', icon: Home, badge: undefined },
+      { href: '/docs/home', title: 'Home', icon: BookOpen, badge: undefined },
+      { href: '/docs/get-started', title: 'Get Started', icon: Signpost, badge: undefined },
+      { href: '/docs/whats-kookie', title: "What's Kookie", icon: Dog, badge: undefined },
+      { href: '/docs/changes-from-radix', title: 'Changes from Radix', icon: GitBranch, badge: undefined },
+      { href: '/docs/roadmap', title: 'Roadmap', icon: Calendar, badge: undefined },
+      { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
     ],
   },
   {
@@ -25,13 +47,13 @@ const navigationItems = [
     items: [
       { href: '/docs/colors', title: 'Colors', icon: ColorsIcon, badge: undefined },
       { href: '/docs/shadows', title: 'Shadows', icon: Box, badge: undefined },
-      { href: '/docs/material', title: 'Material', icon: Box, badge: undefined },
+      { href: '/docs/material', title: 'Material', icon: Square, badge: undefined },
     ],
   },
   {
     type: 'section' as const,
     title: 'Customization',
-    icon: Palette,
+    icon: Settings,
     items: [
       {
         href: '/docs/font-customization',
@@ -46,7 +68,6 @@ const navigationItems = [
     title: 'Components',
     icon: Component,
     items: [
-      { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
       {
         href: '/docs/button',
         title: 'Button',
@@ -88,17 +109,18 @@ const navigationItems = [
 ];
 
 // Sidebar content component
-function AppSidebarContent() {
+function AppSidebarContent({ presentation }: { presentation: 'thin' | 'expanded' }) {
   const pathname = usePathname();
   const router = useRouter();
 
   return (
-    <Sidebar.Root size="2" variant="surface" color="gray">
-      <Sidebar.Header className="rt-justify-between">
-        <Link href="/" aria-label="Kushagra Dhawan - Homepage">
-          <Avatar src="/logo-dark-large.png" fallback="KD" size="2" radius="full" />
-        </Link>
-        <DarkModeToggle />
+    <Sidebar.Root size="2" variant="soft" color="gray" presentation={presentation}>
+      <Sidebar.Header>
+        <Flex justify="start" direction="row" width="100%">
+          <Link href="/" aria-label="Kushagra Dhawan - Homepage">
+            <Avatar src="/logo-dark-large.png" fallback="KD" size="2" radius="full" />
+          </Link>
+        </Flex>
       </Sidebar.Header>
       <Sidebar.Content>
         {navigationItems.map((section, sectionIndex) => (
@@ -108,12 +130,8 @@ function AppSidebarContent() {
               <Sidebar.Menu>
                 {section.items.map((item) => {
                   const IconComponent = item.icon;
-
-                  // Check if this item has a submenu
-                  if (item.submenu) {
-                    // Check if any submenu item is active
+                  if ('submenu' in item && item.submenu) {
                     const isSubmenuActive = item.submenu.some((subItem) => pathname === subItem.href);
-
                     return (
                       <Sidebar.MenuItem key={item.href}>
                         <Sidebar.MenuSub defaultOpen={isSubmenuActive}>
@@ -128,7 +146,7 @@ function AppSidebarContent() {
                                 <Sidebar.MenuButton asChild key={subItem.href} isActive={pathname === subItem.href}>
                                   <Link href={subItem.href} prefetch>
                                     <SubIconComponent />
-                                    {subItem.title}
+                                    <span className="rt-SidebarMenuLabel">{subItem.title}</span>
                                   </Link>
                                 </Sidebar.MenuButton>
                               );
@@ -145,7 +163,7 @@ function AppSidebarContent() {
                       <Sidebar.MenuButton asChild isActive={pathname === item.href} badge={item.badge}>
                         <Link href={item.href} prefetch>
                           <IconComponent />
-                          {item.title}
+                          <span className="rt-SidebarMenuLabel">{item.title}</span>
                         </Link>
                       </Sidebar.MenuButton>
                     </Sidebar.MenuItem>
@@ -161,24 +179,27 @@ function AppSidebarContent() {
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
+  const [sidebarPresentation, setSidebarPresentation] = React.useState<'thin' | 'expanded'>('expanded');
+
   return (
     <Shell.Root>
-      {/* <Shell.Header>
-        <Flex position="absolute" top="3" left="3">
+      <Shell.Header style={{ boxShadow: 'var(--shadow-2)' }}>
+        <Flex gap="2" px="4">
           <IconButton variant="classic" size="2" asChild highContrast color="gray">
             <Shell.Trigger target="sidebar" action="toggle" peekOnHover={false}>
               <PanelLeft />
             </Shell.Trigger>
           </IconButton>
+          <DarkModeToggle />
         </Flex>
-      </Shell.Header> */}
+      </Shell.Header>
       <Shell.Sidebar
         toggleModes="single"
         thinSize={80}
         expandedSize={280}
         resizable
         defaultMode={{ initial: 'collapsed', md: 'expanded' }}
-        onModeChange={(mode) => console.log('mode', mode)}
+        onModeChange={(mode) => setSidebarPresentation(mode === 'thin' ? 'thin' : 'expanded')}
         presentation={{ initial: 'overlay', md: 'fixed' }}
       >
         <Shell.Sidebar.Handle>
@@ -186,7 +207,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <GripVertical />
           </IconButton>
         </Shell.Sidebar.Handle>
-        <AppSidebarContent />
+        <AppSidebarContent presentation={sidebarPresentation} />
       </Shell.Sidebar>
 
       <Shell.Content>{children}</Shell.Content>

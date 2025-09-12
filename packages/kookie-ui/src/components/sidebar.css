@@ -19,55 +19,112 @@
 */
 
 /* Rail Layout Styling */
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarContent),
-.rt-ShellSidebarRail :where(.rt-SidebarContent),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarContent) {
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent) {
   padding: var(--space-2);
 }
 
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuButton),
-.rt-ShellSidebarRail :where(.rt-SidebarMenuButton),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuButton) {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent .rt-SidebarMenuButton) {
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
   gap: var(--space-1);
   padding: var(--space-2) var(--space-1);
+  text-align: center;
+  /* Use token size for compact labels in thin mode */
+  font-size: var(--font-size-0) !important;
+  /* Prevent long labels from causing horizontal scroll */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0; /* allow flex shrink for ellipsis */
 }
 
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuBadge),
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuShortcut),
-.rt-ShellSidebarRail :where(.rt-SidebarMenuBadge),
-.rt-ShellSidebarRail :where(.rt-SidebarMenuShortcut),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuBadge),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuShortcut) {
+/* Ellipsis on root child content when using asChild (e.g., Next.js Link) */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton > *) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  min-width: 0;
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton > * > svg) {
+  flex-shrink: 0;
+}
+
+/* Ensure submenu anchors also truncate */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubContent .rt-SidebarMenuButton > *) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Ensure icons remain visible at their token sizes in thin mode */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton) :where(svg) {
+  /* svg size is already controlled by tokens; this ensures layout stability */
+  display: block;
+}
+
+/* Truncate labels inside an explicit label span */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton .rt-SidebarMenuLabel) {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuBadge),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuShortcut) {
   display: none;
 }
 
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarGroupLabel),
-.rt-ShellSidebarRail :where(.rt-SidebarGroupLabel),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarGroupLabel) {
-  display: block;
-  text-align: center;
-  font-size: var(--font-size-0);
-  line-height: var(--line-height-0);
-  color: var(--gray-a9);
-  font-weight: var(--font-weight-medium);
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarGroupLabel) {
+  display: none !important;
 }
 
 /* Hide submenu chevrons and flatten sublists in rail */
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuSubTriggerIcon),
-.rt-ShellSidebarRail :where(.rt-SidebarMenuSubTriggerIcon),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuSubTriggerIcon) {
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubTriggerIcon) {
   display: none;
 }
 
-:where(.rt-SidebarContainer.rt-layout-rail .rt-SidebarMenuSubList),
-.rt-ShellSidebarRail :where(.rt-SidebarMenuSubList),
-:where(.rt-ShellSidebar[data-state='rail'] .rt-SidebarMenuSubList) {
-  padding-left: 0;
-  border-left: none;
-  margin-left: 0;
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubList),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-BaseMenuSubList) {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  border-left: 0 !important;
+}
+
+/* Also remove any decorative rule on the submenu list in thin mode */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubList::before),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-BaseMenuSubList::before) {
+  content: none !important;
+  display: none !important;
+}
+
+/* Ensure the Accordion content wrapper doesn't add indentation */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubContent) {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  border-left: 0 !important;
+}
+
+/* Ensure submenu buttons also truncate */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubContent .rt-SidebarMenuButton) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Panel Layout Styling (default) - inherits existing styles */
@@ -347,7 +404,7 @@
       line-height: var(--line-height-1);
       letter-spacing: var(--letter-spacing-1);
       border-radius: var(--radius-1);
-      font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-regular);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
@@ -373,7 +430,7 @@
       line-height: var(--line-height-2);
       letter-spacing: var(--letter-spacing-2);
       border-radius: var(--radius-2);
-      font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-regular);
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
@@ -482,6 +539,7 @@
   & :where(.rt-SidebarMenuButton[data-active]) {
     background-color: var(--accent-9);
     color: var(--accent-contrast);
+    font-weight: var(--font-weight-medium);
 
     /* Force all text elements to inherit active color */
     & :where(.rt-Text) {
@@ -547,6 +605,7 @@
     & :where(.rt-SidebarMenuButton[data-active]) {
       background-color: var(--accent-12);
       color: var(--accent-1);
+      font-weight: var(--font-weight-medium);
 
       & :where(.rt-Text) {
         color: inherit !important;
@@ -667,6 +726,7 @@
     /* Base state: solid accent for solid panels */
     background-color: var(--accent-3);
     color: var(--accent-12);
+    font-weight: var(--font-weight-medium);
 
     /* Theme-level translucent override */
     :where([data-panel-background='translucent']) & {

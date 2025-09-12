@@ -49,7 +49,7 @@ export default function HeroSection() {
             </Text>
 
             {/* Call-to-action buttons */}
-            <Link href="/docs/introduction">
+            <Link href="/docs/home">
               <Button variant="solid" size="3" highContrast>
                 Get Started
               </Button>
