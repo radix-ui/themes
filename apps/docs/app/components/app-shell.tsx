@@ -33,9 +33,9 @@ const navigationItems = [
     icon: Signpost,
     items: [
       { href: '/docs/home', title: 'Home', icon: BookOpen, badge: undefined },
-      { href: '/docs/get-started', title: 'Get Started', icon: Signpost, badge: undefined },
+      { href: '/docs/get-started', title: 'Start', icon: Signpost, badge: undefined },
       { href: '/docs/whats-kookie', title: "What's Kookie", icon: Dog, badge: undefined },
-      { href: '/docs/changes-from-radix', title: 'Changes from Radix', icon: GitBranch, badge: undefined },
+      { href: '/docs/changes-from-radix', title: 'Radix Changes', icon: GitBranch, badge: undefined },
       { href: '/docs/roadmap', title: 'Roadmap', icon: Calendar, badge: undefined },
       { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
     ],
@@ -114,14 +114,7 @@ function AppSidebarContent({ presentation }: { presentation: 'thin' | 'expanded'
   const router = useRouter();
 
   return (
-    <Sidebar.Root size="2" variant="soft" color="gray" presentation={presentation}>
-      <Sidebar.Header>
-        <Flex justify="start" direction="row" width="100%">
-          <Link href="/" aria-label="Kushagra Dhawan - Homepage">
-            <Avatar src="/logo-dark-large.png" fallback="KD" size="2" radius="full" />
-          </Link>
-        </Flex>
-      </Sidebar.Header>
+    <Sidebar.Root size="2" variant="soft" color="gray" menuVariant="soft" presentation={presentation}>
       <Sidebar.Content>
         {navigationItems.map((section, sectionIndex) => (
           <Sidebar.Group key={sectionIndex}>
@@ -184,23 +177,28 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <Shell.Root>
       <Shell.Header style={{ boxShadow: 'var(--shadow-2)' }}>
-        <Flex gap="2" px="4">
-          <IconButton variant="classic" size="2" asChild highContrast color="gray">
-            <Shell.Trigger target="sidebar" action="toggle" peekOnHover={false}>
-              <PanelLeft />
-            </Shell.Trigger>
-          </IconButton>
-          <DarkModeToggle />
+        <Flex gap="8" px="4">
+          <Link href="/" aria-label="Kushagra Dhawan - Homepage">
+            <Avatar src="/logo-dark-large.png" fallback="KD" size="2" radius="full" />
+          </Link>
+          <Flex gap="2">
+            <IconButton variant="classic" size="2" asChild highContrast color="gray">
+              <Shell.Trigger target="sidebar" action="toggle" peekOnHover={false}>
+                <PanelLeft />
+              </Shell.Trigger>
+            </IconButton>
+            <DarkModeToggle />
+          </Flex>
         </Flex>
       </Shell.Header>
       <Shell.Sidebar
-        toggleModes="single"
+        toggleModes="both"
         thinSize={80}
         expandedSize={280}
         resizable
-        defaultMode={{ initial: 'collapsed', md: 'expanded' }}
+        defaultMode={{ initial: 'thin', sm: 'thin' }}
         onModeChange={(mode) => setSidebarPresentation(mode === 'thin' ? 'thin' : 'expanded')}
-        presentation={{ initial: 'overlay', md: 'fixed' }}
+        presentation={{ initial: 'fixed', sm: 'fixed' }}
       >
         <Shell.Sidebar.Handle>
           <IconButton variant="classic" size="1" highContrast color="gray">

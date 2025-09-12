@@ -4,6 +4,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from './slot.js';
 import * as Accordion from '@radix-ui/react-accordion';
+import * as DropdownMenu from './dropdown-menu.js';
 
 import { sidebarPropDefs } from './sidebar.props.js';
 import { useThemeContext } from './theme.js';
@@ -33,6 +34,8 @@ type BadgeConfig = {
 type SidebarVisualContextValue = {
   size: '1' | '2';
   menuVariant: 'solid' | 'soft';
+  presentation?: 'thin' | 'expanded';
+  color?: string;
 };
 const SidebarVisualContext = React.createContext<SidebarVisualContextValue | null>(null);
 function useSidebarVisual() {
@@ -81,7 +84,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, forwarded
   const resolvedSize = typeof size === 'object' ? size.initial || '2' : size;
   return (
     <div {...safeRootProps} ref={forwardedRef} data-accent-color={resolvedColor} className={classNames('rt-SidebarRoot', className)}>
-      <SidebarVisualContext.Provider value={{ size: resolvedSize, menuVariant }}>
+      <SidebarVisualContext.Provider value={{ size: resolvedSize, menuVariant, presentation, color: resolvedColor }}>
         <div
           className={classNames('rt-SidebarContainer', `rt-variant-${variant}`, `rt-r-size-${resolvedSize}`, `rt-menu-variant-${menuVariant}`, resolvedLayout && `rt-layout-${resolvedLayout}`)}
           data-accent-color={resolvedColor}
@@ -286,6 +289,43 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
 
     const processedChildren = wrapTextNodes(children);
 
+    // When rendering asChild, Slot expects a single child element. We still want to
+    // append optional badge/shortcut inside that element so they render with Link.
+    const slottedChildren = React.useMemo(() => {
+      if (!asChild) return null;
+      try {
+        const onlyChild = React.Children.only(processedChildren as React.ReactElement<any>) as React.ReactElement<any>;
+        const originalInnerChildren = (onlyChild.props as any)?.children;
+        const enhancedInnerChildren = (
+          <>
+            {originalInnerChildren}
+            {badge && (
+              <div className="rt-SidebarMenuBadge">
+                {typeof badge === 'string' ? (
+                  <Badge size={sidebarSize} variant="soft">
+                    {badge}
+                  </Badge>
+                ) : (
+                  <Badge size={badge.size || sidebarSize} variant={badge.variant || 'soft'} color={badge.color} highContrast={badge.highContrast} radius={badge.radius}>
+                    {badge.content}
+                  </Badge>
+                )}
+              </div>
+            )}
+            {shortcut && (
+              <div className="rt-BaseMenuShortcut rt-SidebarMenuShortcut">
+                <Kbd size={sidebarSize}>{shortcut}</Kbd>
+              </div>
+            )}
+          </>
+        );
+        return React.cloneElement(onlyChild, { ...(onlyChild.props as any) }, enhancedInnerChildren);
+      } catch {
+        // Fallback: if multiple children were passed incorrectly, just return processedChildren
+        return processedChildren as React.ReactNode;
+      }
+    }, [asChild, processedChildren, badge, shortcut, sidebarSize]);
+
     return (
       <Comp
         {...props}
@@ -306,7 +346,7 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
         }}
       >
         {asChild ? (
-          processedChildren
+          slottedChildren
         ) : (
           <>
             {processedChildren}
@@ -337,17 +377,33 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
 );
 SidebarMenuButton.displayName = 'Sidebar.MenuButton';
 
-// Sub-menu components using Radix Accordion
+// Sub-menu components: Accordion in expanded, Dropdown in thin
+const SidebarSubMenuModeContext = React.createContext<'accordion' | 'dropdown'>('accordion');
 interface SidebarMenuSubProps extends React.ComponentPropsWithoutRef<'div'> {
   defaultOpen?: boolean;
 }
 
 const SidebarMenuSub = React.forwardRef<HTMLDivElement, SidebarMenuSubProps>(({ defaultOpen = false, children, ...props }, forwardedRef) => {
+  const visual = useSidebarVisual();
+  const mode: 'accordion' | 'dropdown' = visual?.presentation === 'thin' ? 'dropdown' : 'accordion';
+
+  if (mode === 'dropdown') {
+    return (
+      <div {...props} ref={forwardedRef}>
+        <DropdownMenu.Root>
+          <SidebarSubMenuModeContext.Provider value="dropdown">{children}</SidebarSubMenuModeContext.Provider>
+        </DropdownMenu.Root>
+      </div>
+    );
+  }
+
   return (
     <div {...props} ref={forwardedRef}>
-      <Accordion.Root type="single" collapsible defaultValue={defaultOpen ? 'item' : undefined}>
-        <Accordion.Item value="item">{children}</Accordion.Item>
-      </Accordion.Root>
+      <SidebarSubMenuModeContext.Provider value="accordion">
+        <Accordion.Root type="single" collapsible defaultValue={defaultOpen ? 'item' : undefined}>
+          <Accordion.Item value="item">{children}</Accordion.Item>
+        </Accordion.Root>
+      </SidebarSubMenuModeContext.Provider>
     </div>
   );
 });
@@ -360,6 +416,33 @@ interface SidebarMenuSubTriggerProps extends React.ComponentPropsWithoutRef<type
 const SidebarMenuSubTrigger = React.forwardRef<React.ElementRef<typeof Accordion.Trigger>, SidebarMenuSubTriggerProps>(
   ({ asChild = false, className, children, onMouseEnter, onMouseLeave, ...props }, forwardedRef) => {
     const [isHighlighted, setIsHighlighted] = React.useState(false);
+    const mode = React.useContext(SidebarSubMenuModeContext);
+
+    if (mode === 'dropdown') {
+      return (
+        <DropdownMenu.Trigger>
+          <button
+            {...(props as any)}
+            ref={forwardedRef as any}
+            type="button"
+            role="menuitem"
+            aria-haspopup="menu"
+            className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-SidebarMenuButton', 'rt-SidebarMenuSubTrigger', className)}
+            data-highlighted={isHighlighted || undefined}
+            onMouseEnter={(event) => {
+              setIsHighlighted(true);
+              onMouseEnter?.(event as any);
+            }}
+            onMouseLeave={(event) => {
+              setIsHighlighted(false);
+              onMouseLeave?.(event as any);
+            }}
+          >
+            {children}
+          </button>
+        </DropdownMenu.Trigger>
+      );
+    }
 
     return (
       <Accordion.Header asChild>
@@ -400,6 +483,52 @@ SidebarMenuSubTrigger.displayName = 'Sidebar.MenuSubTrigger';
 interface SidebarMenuSubContentProps extends React.ComponentPropsWithoutRef<typeof Accordion.Content> {}
 
 const SidebarMenuSubContent = React.forwardRef<React.ElementRef<typeof Accordion.Content>, SidebarMenuSubContentProps>(({ className, children, ...props }, forwardedRef) => {
+  const visual = useSidebarVisual();
+  const mode = React.useContext(SidebarSubMenuModeContext);
+
+  if (mode === 'dropdown') {
+    const unwrapMenuButton = (node: React.ReactNode): React.ReactNode => {
+      if (Array.isArray(node)) {
+        return node.map((n, i) => <React.Fragment key={i}>{unwrapMenuButton(n)}</React.Fragment>);
+      }
+      if (React.isValidElement(node)) {
+        const typeDisplay = (node.type as any)?.displayName;
+        if (typeDisplay === 'Sidebar.MenuButton') {
+          return (node.props as any)?.children;
+        }
+        const child = (node.props as any)?.children;
+        if (child !== undefined) {
+          return React.cloneElement(node as any, { ...(node.props as any), children: unwrapMenuButton(child) });
+        }
+      }
+      return node;
+    };
+
+    const normalized = React.Children.map(children as React.ReactNode, (child, index) => {
+      if (React.isValidElement(child) && (child.type as any)?.displayName === 'Sidebar.MenuItem') {
+        const itemChildren = (child.props as any)?.children;
+        const content = unwrapMenuButton(itemChildren);
+        return (
+          <DropdownMenu.Item key={index} asChild>
+            {content as any}
+          </DropdownMenu.Item>
+        );
+      }
+      // Fallback: wrap raw nodes too for consistent menu styling
+      return (
+        <DropdownMenu.Item key={index} asChild>
+          {unwrapMenuButton(child) as any}
+        </DropdownMenu.Item>
+      );
+    });
+
+    return (
+      <DropdownMenu.Content size={visual?.size} variant={visual?.menuVariant} className={classNames(className)}>
+        <DropdownMenu.Group>{normalized}</DropdownMenu.Group>
+      </DropdownMenu.Content>
+    );
+  }
+
   return (
     <Accordion.Content {...props} ref={forwardedRef} className={classNames('rt-SidebarMenuSubContent', className)}>
       <div className="rt-SidebarMenuSubList">{children}</div>

@@ -10,7 +10,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--base-menu-content-padding);
   box-sizing: border-box;
   list-style: none;
   margin: 0;

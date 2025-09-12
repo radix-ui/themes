@@ -86,6 +86,29 @@ export const Sidebar = React.forwardRef<
     const resolvedPresentation = useResponsivePresentation(presentation);
     const isOverlay = resolvedPresentation === 'overlay';
     const isStacked = resolvedPresentation === 'stacked';
+    // Use library-managed phase for thin ↔ expanded sequencing
+    const transitionPhase = (shell as any).sidebarPhase as 'idle' | 'hiding' | 'resizing' | 'showing' | undefined;
+    React.useLayoutEffect(() => {
+      if (isOverlay) return;
+      const containerEl = localRef.current;
+      if (!containerEl) return;
+      if (transitionPhase === 'hiding') {
+        // Freeze width while we fade out
+        try {
+          const rect = containerEl.getBoundingClientRect();
+          containerEl.style.width = `${Math.round(rect.width)}px`;
+        } catch {}
+      } else if (transitionPhase === 'resizing') {
+        // Release width so the CSS width transition happens
+        try {
+          containerEl.style.removeProperty('width');
+        } catch {}
+      } else if (transitionPhase === 'idle') {
+        try {
+          containerEl.style.removeProperty('width');
+        } catch {}
+      }
+    }, [transitionPhase, isOverlay]);
     const localRef = React.useRef<HTMLDivElement | null>(null);
     const setRef = React.useCallback(
       (node: HTMLDivElement | null) => {
@@ -334,7 +357,7 @@ export const Sidebar = React.forwardRef<
             : {}),
         }}
       >
-        <div className="rt-ShellSidebarContent" data-visible={isContentVisible || undefined}>
+        <div className="rt-ShellSidebarContent" data-visible={isContentVisible || undefined} data-phase={transitionPhase && transitionPhase !== 'idle' ? transitionPhase : undefined}>
           {contentChildren}
         </div>
         {handleEl}

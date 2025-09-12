@@ -78,6 +78,12 @@
   box-shadow: none !important;
   border-radius: 0 !important;
 
+  /* Add gap between groups using flex */
+  & .rt-BaseMenuViewport {
+    /* gap: var(--base-menu-content-padding); */
+    gap: var(--space-5);
+  }
+
   /* Ensure ScrollArea takes full height within SidebarContent */
   & :where(.rt-ScrollAreaRoot) {
     flex: 1;

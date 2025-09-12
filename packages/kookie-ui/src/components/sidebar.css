@@ -23,21 +23,128 @@
   padding: var(--space-2);
 }
 
-:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent .rt-SidebarMenuButton) {
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-BaseMenuViewport) {
+  padding: var(--space-2) !important;
+}
+
+/* Enforce vertical stack and compact typography for all buttons in thin mode */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent) :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
   justify-content: center !important;
   align-items: center !important;
   flex-direction: column !important;
-  gap: var(--space-1);
-  padding: var(--space-2) var(--space-1);
-  text-align: center;
-  /* Use token size for compact labels in thin mode */
+  gap: var(--space-1) !important;
+  text-align: center !important;
   font-size: var(--font-size-0) !important;
-  /* Prevent long labels from causing horizontal scroll */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  min-width: 0; /* allow flex shrink for ellipsis */
+  line-height: var(--line-height-0) !important;
+  padding-top: var(--space-2) !important;
+  padding-bottom: var(--space-2) !important;
+  padding-left: var(--space-1) !important;
+  padding-right: var(--space-1) !important;
+}
+
+/* Consolidated thin mode size blocks */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-1) {
+  /* Horizontal padding tokens to free space for text */
+  --base-menu-item-padding-left: var(--space-1) !important;
+  --base-menu-item-padding-right: var(--space-1) !important;
+  /* Unify vertical padding via tokens (used by BaseMenuItem) */
+  --base-menu-item-padding-y: var(--space-2) !important;
+
+  /* Override BaseMenu left padding resets */
+  &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+    --base-menu-item-padding-left: var(--space-1) !important;
+  }
+  &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+    --base-menu-item-padding-left: var(--space-1) !important;
+  }
+
+  /* Button and subtrigger layout */
+  :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-align: center;
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-0);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Icon sizing */
+  :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) :where(svg) {
+    width: var(--content-icon-size-3);
+    height: var(--content-icon-size-3);
+  }
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-2) {
+  --base-menu-item-padding-left: var(--space-1) !important;
+  --base-menu-item-padding-right: var(--space-1) !important;
+  --base-menu-item-padding-y: var(--space-2) !important;
+
+  &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+    --base-menu-item-padding-left: var(--space-1) !important;
+  }
+  &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+    --base-menu-item-padding-left: var(--space-1) !important;
+  }
+
+  :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-align: center;
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-0);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) :where(svg) {
+    width: var(--content-icon-size-4);
+    height: var(--content-icon-size-4);
+  }
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-3) {
+  --base-menu-item-padding-left: var(--space-1) !important;
+  --base-menu-item-padding-right: var(--space-1) !important;
+  --base-menu-item-padding-y: var(--space-2) !important;
+
+  &:where(:not(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem))) {
+    --base-menu-item-padding-left: var(--space-1) !important;
+  }
+  &:where(:has(.rt-BaseMenuCheckboxItem, .rt-BaseMenuRadioItem)) {
+    --base-menu-item-padding-left: var(--space-1) !important;
+  }
+
+  :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-align: center;
+    font-size: var(--font-size-0);
+    line-height: var(--line-height-0);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) :where(svg) {
+    width: var(--content-icon-size-5);
+    height: var(--content-icon-size-5);
+  }
 }
 
 /* Ellipsis on root child content when using asChild (e.g., Next.js Link) */
@@ -48,6 +155,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Ensure submenu trigger asChild containers also stack vertically */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubTrigger > *) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-width: 0;
 }
@@ -82,11 +198,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
+  color: var(--accent-11);
+  font-size: var(--font-size-0);
+  line-height: var(--line-height-0);
 }
 
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuBadge),
-:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuShortcut) {
-  display: none;
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuShortcut),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-Badge),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-Kbd) {
+  display: none !important;
 }
 
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarGroupLabel) {
@@ -94,8 +216,9 @@
 }
 
 /* Hide submenu chevrons and flatten sublists in rail */
-:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubTriggerIcon) {
-  display: none;
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubTriggerIcon),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-BaseMenuSubTriggerIcon) {
+  display: none !important;
 }
 
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubList),
@@ -103,6 +226,10 @@
   padding-left: 0 !important;
   margin-left: 0 !important;
   border-left: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* Also remove any decorative rule on the submenu list in thin mode */
@@ -117,7 +244,15 @@
   padding-left: 0 !important;
   margin-left: 0 !important;
   border-left: 0 !important;
+  border-top: 1px solid var(--gray-a6) !important;
+  border-bottom: 1px solid var(--gray-a6) !important;
+  margin-top: var(--space-2) !important;
+  margin-bottom: var(--space-2) !important;
+  /* background-color: var(--accent-3); */
 }
+
+/* Remove vertical connector in thin mode */
+/* (intentionally no ::before) */
 
 /* Ensure submenu buttons also truncate */
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuSubContent .rt-SidebarMenuButton) {

@@ -165,7 +165,7 @@
       --base-menu-content-padding: var(--space-2);
       --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
       --base-menu-item-padding-right: var(--space-2);
-      --base-menu-item-padding-y: calc(var(--space-1) * 0.75);
+      --base-menu-item-padding-y: var(--space-2);
       --base-menu-item-height: var(--space-5);
       border-radius: var(--radius-3);
 
@@ -209,7 +209,7 @@
       --base-menu-content-padding: var(--space-3);
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
-      --base-menu-item-padding-y: var(--space-1);
+      --base-menu-item-padding-y: var(--space-2);
       --base-menu-item-height: var(--space-6);
       border-radius: var(--radius-5);
 
@@ -253,7 +253,7 @@
       --base-menu-content-padding: var(--space-3);
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
-      --base-menu-item-padding-y: var(--space-1);
+      --base-menu-item-padding-y: var(--space-2);
       --base-menu-item-height: var(--space-6);
       border-radius: var(--radius-6);
 
@@ -311,8 +311,7 @@
 }
 
 /* Ensure gray text appears muted in non-highlighted state */
-.rt-BaseMenuItem
-  :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
+.rt-BaseMenuItem :where(.rt-Text[data-accent-color='gray'], [data-accent-color='gray']:not(.rt-Badge)) {
   color: var(--gray-a10);
 }
 .rt-BaseMenuItem:where([data-disabled], [data-highlighted]),

@@ -99,6 +99,8 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const [leftMode, setLeftMode] = React.useState<PaneMode>('collapsed');
   const [panelMode, setPanelMode] = React.useState<PaneMode>('collapsed');
   const [sidebarMode, setSidebarMode] = React.useState<SidebarMode>('expanded');
+  // Library-managed phase for sidebar presentation changes (thin ↔ expanded)
+  const [sidebarPhase, setSidebarPhase] = React.useState<'idle' | 'hiding' | 'resizing' | 'showing'>('idle');
   const [inspectorMode, setInspectorMode] = React.useState<PaneMode>('collapsed');
   const [bottomMode, setBottomMode] = React.useState<PaneMode>('collapsed');
 
@@ -169,9 +171,26 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
             setPanelMode((prev) => (prev === 'expanded' ? 'collapsed' : 'expanded'));
           }
           break;
-        case 'sidebar':
-          setSidebarMode((prev) => sidebarToggleComputerRef.current(prev as SidebarMode));
+        case 'sidebar': {
+          // Orchestrate thin ↔ expanded sequencing: fade out → change mode → fade in
+          const next = sidebarToggleComputerRef.current(sidebarMode as SidebarMode);
+          const isWidthOnlyChange = sidebarMode !== next && sidebarMode !== 'collapsed' && next !== 'collapsed';
+          if (!isWidthOnlyChange) {
+            setSidebarMode(next);
+            break;
+          }
+          const SMALL_MS = 150;
+          setSidebarPhase('hiding');
+          window.setTimeout(() => {
+            setSidebarPhase('resizing');
+            setSidebarMode(next);
+            window.setTimeout(() => {
+              setSidebarPhase('showing');
+              window.setTimeout(() => setSidebarPhase('idle'), SMALL_MS);
+            }, SMALL_MS);
+          }, SMALL_MS);
           break;
+        }
         case 'inspector':
           setInspectorMode((prev) => (prev === 'expanded' ? 'collapsed' : 'expanded'));
           break;
@@ -180,7 +199,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
           break;
       }
     },
-    [leftMode],
+    [leftMode, sidebarMode],
   );
 
   const expandPane = React.useCallback((target: PaneTarget) => {
@@ -238,6 +257,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
       setInspectorMode,
       bottomMode,
       setBottomMode,
+      sidebarPhase,
       hasLeft,
       setHasLeft,
       hasSidebar,
@@ -259,6 +279,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
       sidebarMode,
       inspectorMode,
       bottomMode,
+      sidebarPhase,
       hasLeft,
       hasSidebar,
       currentBreakpoint,

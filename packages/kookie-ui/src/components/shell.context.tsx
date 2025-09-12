@@ -20,6 +20,9 @@ export interface ShellContextValue {
   peekPane: (target: PaneTarget) => void;
   clearPeek: () => void;
 
+  // Sidebar presentation sequencing phase (library-managed)
+  sidebarPhase?: 'idle' | 'hiding' | 'resizing' | 'showing';
+
   // Composition detection
   hasLeft: boolean;
   setHasLeft: (has: boolean) => void;

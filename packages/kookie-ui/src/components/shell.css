@@ -74,6 +74,8 @@
 
 .rt-ShellRail[data-mode='collapsed'] {
   width: 0px;
+  /* Delay container collapse until content fade completes */
+  transition-delay: var(--motion-duration-small);
 }
 
 /* Keep collapsed panes out of flow to avoid layout blips when exiting peek */
@@ -128,6 +130,8 @@
 
 .rt-ShellPanel:not([data-visible]) {
   width: 0px;
+  /* Delay container collapse until content fade completes */
+  transition-delay: var(--motion-duration-small);
 }
 
 /* Keep collapsed panel out of flow to avoid layout blips when exiting peek */
@@ -188,6 +192,8 @@
 
 .rt-ShellSidebar[data-mode='collapsed'] {
   width: 0px;
+  /* Delay container collapse until content fade completes */
+  transition-delay: var(--motion-duration-small);
 }
 
 /* Keep collapsed sidebar out of flow to avoid layout blips when exiting peek */
@@ -216,6 +222,22 @@
 
 .rt-ShellSidebarContent[data-visible] {
   opacity: 1;
+}
+
+/* Sidebar presentation switch sequencing (thin ↔ expanded) */
+.rt-ShellSidebarContent[data-phase='hiding'] {
+  /* Immediately fade out */
+  opacity: 0;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
+}
+.rt-ShellSidebarContent[data-phase='resizing'] {
+  /* Keep hidden during width transition */
+  opacity: 0;
+}
+.rt-ShellSidebarContent[data-phase='showing'] {
+  /* Fade back in after width settles */
+  opacity: 1;
+  transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
 .rt-ShellSidebar[data-mode='collapsed'] .rt-ShellSidebarContent {
@@ -274,6 +296,8 @@
 
 .rt-ShellInspector[data-mode='collapsed'] {
   width: 0px;
+  /* Delay container collapse until content fade completes */
+  transition-delay: var(--motion-duration-small);
 }
 
 .rt-ShellInspector[data-mode='collapsed'] {
@@ -327,6 +351,8 @@
   position: absolute;
   inset-inline: 0;
   inset-block-end: 0;
+  /* Delay container collapse until content fade completes */
+  transition-delay: var(--motion-duration-small);
 }
 
 .rt-ShellBottomContent {
@@ -537,13 +563,14 @@
   box-shadow: 0 -4px 8px -4px rgba(0, 0, 0, 0.15);
 }
 
-/* Force content visible during peek */
+/* Peek: expand container first, then fade content in */
 .rt-ShellRail[data-peek] .rt-ShellRailContent,
 .rt-ShellPanel[data-peek] .rt-ShellPanelContent,
 .rt-ShellSidebar[data-peek] .rt-ShellSidebarContent,
 .rt-ShellInspector[data-peek] .rt-ShellInspectorContent,
 .rt-ShellBottom[data-peek] .rt-ShellBottomContent {
   opacity: 1;
+  transition-delay: var(--motion-duration-small);
 }
 
 /* Rail peek: left edge */
