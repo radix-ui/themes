@@ -17,12 +17,9 @@ export default tseslint.config(
       },
     },
     plugins: {
-      // @ts-expect-error
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
     },
-  },
-  {
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.flatConfigs.recommended.rules,
@@ -63,6 +60,8 @@ export default tseslint.config(
       'jsx-a11y/label-has-associated-control': 'off',
       'no-irregular-whitespace': 'off',
     },
+  },
+  {
     files: ['tests/**/*.{ts,tsx}'],
     languageOptions: {
       globals: {
