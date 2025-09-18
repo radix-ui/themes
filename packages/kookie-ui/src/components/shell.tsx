@@ -178,7 +178,11 @@ function paneReducer(state: PaneState, action: PaneAction): PaneState {
           return { ...state, inspectorMode: state.inspectorMode === 'expanded' ? 'collapsed' : 'expanded' };
         case 'bottom':
           return { ...state, bottomMode: state.bottomMode === 'expanded' ? 'collapsed' : 'expanded' };
+        default:
+          return state;
       }
+      // Fallback to satisfy no-fallthrough in some environments
+      return state;
     }
     case 'EXPAND_PANE': {
       switch (action.target) {
@@ -193,7 +197,11 @@ function paneReducer(state: PaneState, action: PaneAction): PaneState {
           return { ...state, inspectorMode: 'expanded' };
         case 'bottom':
           return { ...state, bottomMode: 'expanded' };
+        default:
+          return state;
       }
+      // Fallback to satisfy no-fallthrough in some environments
+      return state;
     }
     case 'COLLAPSE_PANE': {
       switch (action.target) {
@@ -208,7 +216,11 @@ function paneReducer(state: PaneState, action: PaneAction): PaneState {
           return { ...state, inspectorMode: 'collapsed' };
         case 'bottom':
           return { ...state, bottomMode: 'collapsed' };
+        default:
+          return state;
       }
+      // Fallback to satisfy no-fallthrough in some environments
+      return state;
     }
   }
   return state;
