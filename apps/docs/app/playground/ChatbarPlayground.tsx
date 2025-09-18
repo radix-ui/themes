@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Chatbar, Text, Flex, Box, Heading, Card, IconButton } from '@kushagradhawan/kookie-ui';
+import { Chatbar, Text, Flex, Button, Heading, Card, IconButton } from '@kushagradhawan/kookie-ui';
 import { Paperclip } from 'lucide-react';
 import { PropertyControl } from '../components/property-control';
 
@@ -14,6 +14,7 @@ export default function ChatbarPlayground() {
   const [variant, setVariant] = React.useState<string>('surface');
   const [size, setSize] = React.useState<string>('2');
   const [expandOn, setExpandOn] = React.useState<string>('both');
+  const [text, setText] = React.useState<string>('');
   const [minLines, setMinLines] = React.useState<number>(1);
   const [maxLines, setMaxLines] = React.useState<number>(6);
   const [sendMode, setSendMode] = React.useState<string>('whenDirty');
@@ -146,6 +147,7 @@ export default function ChatbarPlayground() {
             expandOn={expandOn as any}
             minLines={minLines}
             maxLines={maxLines}
+            accept={['image/*']}
             sendMode={sendMode as any}
             disabled={disabled}
             readOnly={readOnly}
@@ -153,8 +155,8 @@ export default function ChatbarPlayground() {
             multiple={multiple}
             paste={paste}
             clearOnSubmit={clearOnSubmit}
-            open={true}
-            value=""
+            value={text}
+            onValueChange={setText}
             onSubmit={({ value, attachments }) => {
               console.log('Submitted:', { value, attachments });
             }}
@@ -167,17 +169,17 @@ export default function ChatbarPlayground() {
             <Chatbar.Textarea placeholder="Type a message..." />
             <Chatbar.Row>
               <Chatbar.AttachTrigger asChild>
-                <IconButton variant="ghost">
+                <IconButton size={size as any} variant="soft">
                   <Paperclip />
                 </IconButton>
               </Chatbar.AttachTrigger>
-              <Chatbar.Send>Send</Chatbar.Send>
+              <Chatbar.Send variant="ghost"></Chatbar.Send>
             </Chatbar.Row>
           </Chatbar.Root>
         </Flex>
       </Card>
 
-      <PropertyControl.Group width="256px" items={items} style={{ flexShrink: 0 }} />
+      <PropertyControl.Group width="288px" items={items} style={{ flexShrink: 0 }} />
     </Flex>
   );
 }

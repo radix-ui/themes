@@ -20,9 +20,6 @@ export interface ShellContextValue {
   peekPane: (target: PaneTarget) => void;
   clearPeek: () => void;
 
-  // Sidebar presentation sequencing phase (library-managed)
-  sidebarPhase?: 'idle' | 'hiding' | 'resizing' | 'showing';
-
   // Composition detection
   hasLeft: boolean;
   setHasLeft: (has: boolean) => void;
@@ -56,4 +53,83 @@ export function useShell() {
 
 export function ShellProvider({ value, children }: { value: ShellContextValue; children: React.ReactNode }) {
   return <ShellContext.Provider value={value}>{children}</ShellContext.Provider>;
+}
+
+// Phase 7: Split contexts for render isolation
+
+// Pane mode slice contexts
+type ModeSetter<T> = (mode: T) => void;
+
+export const LeftModeContext = React.createContext<{ leftMode: PaneMode; setLeftMode: ModeSetter<PaneMode> } | null>(null as any);
+export function useLeftMode() {
+  const ctx = React.useContext(LeftModeContext);
+  if (!ctx) throw new Error('useLeftMode must be used within Shell.Root');
+  return ctx;
+}
+
+export const PanelModeContext = React.createContext<{ panelMode: PaneMode; setPanelMode: ModeSetter<PaneMode> } | null>(null as any);
+export function usePanelMode() {
+  const ctx = React.useContext(PanelModeContext);
+  if (!ctx) throw new Error('usePanelMode must be used within Shell.Root');
+  return ctx;
+}
+
+export const SidebarModeContext = React.createContext<{ sidebarMode: SidebarMode; setSidebarMode: ModeSetter<SidebarMode> } | null>(null as any);
+export function useSidebarMode() {
+  const ctx = React.useContext(SidebarModeContext);
+  if (!ctx) throw new Error('useSidebarMode must be used within Shell.Root');
+  return ctx;
+}
+
+export const InspectorModeContext = React.createContext<{ inspectorMode: PaneMode; setInspectorMode: ModeSetter<PaneMode> } | null>(null as any);
+export function useInspectorMode() {
+  const ctx = React.useContext(InspectorModeContext);
+  if (!ctx) throw new Error('useInspectorMode must be used within Shell.Root');
+  return ctx;
+}
+
+export const BottomModeContext = React.createContext<{ bottomMode: PaneMode; setBottomMode: ModeSetter<PaneMode> } | null>(null as any);
+export function useBottomMode() {
+  const ctx = React.useContext(BottomModeContext);
+  if (!ctx) throw new Error('useBottomMode must be used within Shell.Root');
+  return ctx;
+}
+
+// Presentation slice
+export const PresentationContext = React.createContext<{ currentBreakpoint: Breakpoint; currentBreakpointReady: boolean; leftResolvedPresentation?: PresentationValue } | null>(null as any);
+export function usePresentation() {
+  const ctx = React.useContext(PresentationContext);
+  if (!ctx) throw new Error('usePresentation must be used within Shell.Root');
+  return ctx;
+}
+
+// Peek slice
+export const PeekContext = React.createContext<{ peekTarget: PaneTarget | null; setPeekTarget: (t: PaneTarget | null) => void; peekPane: (t: PaneTarget) => void; clearPeek: () => void } | null>(
+  null as any,
+);
+export function usePeek() {
+  const ctx = React.useContext(PeekContext);
+  if (!ctx) throw new Error('usePeek must be used within Shell.Root');
+  return ctx;
+}
+
+// Actions slice (stable callbacks)
+export const ActionsContext = React.createContext<{
+  togglePane: (t: PaneTarget) => void;
+  expandPane: (t: PaneTarget) => void;
+  collapsePane: (t: PaneTarget) => void;
+  setSidebarToggleComputer?: (fn: (current: SidebarMode) => SidebarMode) => void;
+} | null>(null as any);
+export function useShellActions() {
+  const ctx = React.useContext(ActionsContext);
+  if (!ctx) throw new Error('useShellActions must be used within Shell.Root');
+  return ctx;
+}
+
+// Composition slice
+export const CompositionContext = React.createContext<{ hasLeft: boolean; setHasLeft: (v: boolean) => void; hasSidebar: boolean; setHasSidebar: (v: boolean) => void } | null>(null as any);
+export function useComposition() {
+  const ctx = React.useContext(CompositionContext);
+  if (!ctx) throw new Error('useComposition must be used within Shell.Root');
+  return ctx;
 }

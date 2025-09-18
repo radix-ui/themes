@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import * as Sheet from '../sheet.js';
 import { VisuallyHidden } from '../visually-hidden.js';
 import { useShell } from '../shell.context.js';
-import { useResponsivePresentation } from '../shell.hooks.js';
+import { useResponsivePresentation, useResponsiveValue } from '../shell.hooks.js';
 import { PaneResizeContext } from './shell-resize.js';
 import { BottomHandle, PaneHandle } from './shell-handles.js';
 import { BREAKPOINTS } from '../shell.types.js';
@@ -11,9 +11,7 @@ import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation 
 
 interface PaneProps extends React.ComponentPropsWithoutRef<'div'> {
   presentation?: ResponsivePresentation;
-  mode?: PaneMode;
-  defaultMode?: any;
-  onModeChange?: (mode: PaneMode) => void;
+  // legacy mode removed
   expandedSize?: number;
   minSize?: number;
   maxSize?: number;
@@ -32,16 +30,32 @@ interface PaneProps extends React.ComponentPropsWithoutRef<'div'> {
   persistence?: PaneSizePersistence;
 }
 
-type BottomComponent = React.ForwardRefExoticComponent<PaneProps & React.RefAttributes<HTMLDivElement>> & { Handle: typeof BottomHandle };
+type BottomOpenChangeMeta = { reason: 'init' | 'toggle' | 'responsive' };
+type BottomControlledProps = { open: boolean | Partial<Record<Breakpoint, boolean>>; onOpenChange?: (open: boolean, meta: BottomOpenChangeMeta) => void; defaultOpen?: never };
+type BottomUncontrolledProps = { defaultOpen?: boolean; onOpenChange?: (open: boolean, meta: BottomOpenChangeMeta) => void; open?: never };
+type BottomSizeControlledProps = { size: number | string; defaultSize?: never };
+type BottomSizeUncontrolledProps = { defaultSize?: number | string; size?: never };
+type BottomSizeChangeMeta = { reason: 'init' | 'resize' | 'controlled' };
+type BottomPublicProps = PaneProps &
+  (BottomControlledProps | BottomUncontrolledProps) &
+  (BottomSizeControlledProps | BottomSizeUncontrolledProps) & {
+    onSizeChange?: (size: number, meta: BottomSizeChangeMeta) => void;
+    sizeUpdate?: 'throttle' | 'debounce';
+    sizeUpdateMs?: number;
+  };
 
-export const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
+type BottomComponent = React.ForwardRefExoticComponent<BottomPublicProps & React.RefAttributes<HTMLDivElement>> & { Handle: typeof BottomHandle };
+
+export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
   (
     {
       className,
       presentation = 'fixed',
-      mode,
-      defaultMode = 'collapsed',
-      onModeChange,
+      // removed legacy props
+      // new API
+      defaultOpen,
+      open,
+      onOpenChange,
       expandedSize = 200,
       minSize = 100,
       maxSize = 400,
@@ -80,58 +94,107 @@ export const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
     const handleChildren = childArray.filter((el: React.ReactElement) => React.isValidElement(el) && el.type === BottomHandle);
     const contentChildren = childArray.filter((el: React.ReactElement) => !(React.isValidElement(el) && el.type === BottomHandle));
 
-    const resolveResponsiveMode = React.useCallback((): PaneMode => {
-      if (typeof defaultMode === 'string') return defaultMode as PaneMode;
-      const dm = defaultMode as Partial<Record<Breakpoint, PaneMode>> | undefined;
-      if (dm && dm[shell.currentBreakpoint as Breakpoint]) {
-        return dm[shell.currentBreakpoint as Breakpoint] as PaneMode;
+    // Throttled/debounced emitter for onSizeChange
+    const emitSizeChange = React.useMemo(() => {
+      const cb = (props as any).onSizeChange as undefined | ((s: number, meta: BottomSizeChangeMeta) => void);
+      const strategy = (props as any).sizeUpdate as undefined | 'throttle' | 'debounce';
+      const ms = (props as any).sizeUpdateMs ?? 50;
+      if (!cb) return () => {};
+      if (strategy === 'debounce') {
+        let t: any = null;
+        return (s: number, meta: BottomSizeChangeMeta) => {
+          if (t) clearTimeout(t);
+          t = setTimeout(() => {
+            cb(s, meta);
+          }, ms);
+        };
       }
-      const bpKeys = Object.keys(BREAKPOINTS) as Array<keyof typeof BREAKPOINTS>;
-      const order: Breakpoint[] = ([...bpKeys].reverse() as Breakpoint[]).concat('initial' as Breakpoint);
-      const startIdx = order.indexOf(shell.currentBreakpoint as Breakpoint);
-      for (let i = startIdx + 1; i < order.length; i++) {
-        const bp = order[i];
-        if (dm && dm[bp]) {
-          return dm[bp] as PaneMode;
-        }
+      if (strategy === 'throttle') {
+        let last = 0;
+        return (s: number, meta: BottomSizeChangeMeta) => {
+          const now = Date.now();
+          if (now - last >= ms) {
+            last = now;
+            cb(s, meta);
+          }
+        };
       }
-      return 'collapsed';
-    }, [defaultMode, shell.currentBreakpoint]);
+      return (s: number, meta: BottomSizeChangeMeta) => cb(s, meta);
+    }, [(props as any).onSizeChange, (props as any).sizeUpdate, (props as any).sizeUpdateMs]);
 
     const didInitRef = React.useRef(false);
+    const didInitFromDefaultOpenRef = React.useRef(false);
+    const resolvedDefaultOpen = useResponsiveValue(defaultOpen as any);
     React.useEffect(() => {
       if (didInitRef.current) return;
-      didInitRef.current = true;
-      if (mode === undefined) {
-        const initial = resolveResponsiveMode();
-        if (shell.bottomMode !== initial) shell.setBottomMode(initial);
-      }
-    }, []);
-
-    const lastBottomBpRef = React.useRef<Breakpoint | null>(null);
-    const lastResolvedBottomRef = React.useRef<PaneMode | null>(null);
-    React.useEffect(() => {
-      if (mode !== undefined) return;
       if (!shell.currentBreakpointReady) return;
-      if (lastBottomBpRef.current === shell.currentBreakpoint) return;
-      lastBottomBpRef.current = shell.currentBreakpoint as Breakpoint;
-      const next = resolveResponsiveMode();
-      if (lastResolvedBottomRef.current === next) return;
-      lastResolvedBottomRef.current = next;
-      if (next !== shell.bottomMode) shell.setBottomMode(next);
-    }, [mode, shell.currentBreakpoint, shell.currentBreakpointReady, resolveResponsiveMode, shell.bottomMode, shell.setBottomMode]);
+      didInitRef.current = true;
+      if (typeof open === 'undefined' && typeof defaultOpen !== 'undefined') {
+        const initial = Boolean(resolvedDefaultOpen);
+        shell.setBottomMode(initial ? 'expanded' : 'collapsed');
+        didInitFromDefaultOpenRef.current = true;
+      }
+    }, [shell.currentBreakpointReady, open, defaultOpen, resolvedDefaultOpen]);
+
+    // Dev guards
+    const wasControlledRef = React.useRef<boolean | null>(null);
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof open !== 'undefined' && typeof defaultOpen !== 'undefined') {
+        // eslint-disable-next-line no-console
+        console.error('Shell.Bottom: Do not pass both `open` and `defaultOpen`. Choose one.');
+      }
+      if (typeof (props as any).size !== 'undefined' && typeof (props as any).defaultSize !== 'undefined') {
+        // eslint-disable-next-line no-console
+        console.error('Shell.Bottom: Do not pass both `size` and `defaultSize`. Choose one.');
+      }
+    }
 
     React.useEffect(() => {
-      if (mode !== undefined && shell.bottomMode !== mode) {
-        shell.setBottomMode(mode);
+      const isControlled = typeof open !== 'undefined';
+      if (wasControlledRef.current === null) {
+        wasControlledRef.current = isControlled;
+        return;
       }
-    }, [mode, shell]);
+      if (wasControlledRef.current !== isControlled) {
+        // eslint-disable-next-line no-console
+        console.warn('Shell.Bottom: Switching between controlled and uncontrolled `open` is not supported.');
+        wasControlledRef.current = isControlled;
+      }
+    }, [open]);
 
+    // Controlled sync (responsive handled below)
     React.useEffect(() => {
-      if (mode === undefined) {
-        onModeChange?.(shell.bottomMode);
+      if (typeof open === 'undefined') return;
+      shell.setBottomMode(open ? 'expanded' : 'collapsed');
+    }, [open]);
+
+    const responsiveNotifiedRef = React.useRef(false);
+
+    // Controlled responsive open
+    const resolvedOpen = useResponsiveValue(open);
+    React.useEffect(() => {
+      if (typeof resolvedOpen === 'undefined') return;
+      const shouldExpand = Boolean(resolvedOpen);
+      shell.setBottomMode(shouldExpand ? 'expanded' : 'collapsed');
+    }, [resolvedOpen]);
+
+    const initNotifiedRef = React.useRef(false);
+    const lastBottomModeRef = React.useRef<PaneMode | null>(null);
+    React.useEffect(() => {
+      if (!initNotifiedRef.current && typeof open === 'undefined' && defaultOpen && shell.bottomMode === 'expanded') {
+        onOpenChange?.(true, { reason: 'init' });
+        initNotifiedRef.current = true;
       }
-    }, [shell.bottomMode, mode, onModeChange]);
+      if (typeof open === 'undefined') {
+        if (lastBottomModeRef.current !== null && lastBottomModeRef.current !== shell.bottomMode) {
+          if (!responsiveNotifiedRef.current) {
+            onOpenChange?.(shell.bottomMode === 'expanded', { reason: 'toggle' });
+          }
+          responsiveNotifiedRef.current = false;
+        }
+        lastBottomModeRef.current = shell.bottomMode;
+      }
+    }, [shell.bottomMode, open, defaultOpen, onOpenChange]);
 
     React.useEffect(() => {
       if (shell.bottomMode === 'expanded') {
@@ -194,6 +257,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
             onResizeStart,
             onResizeEnd: (size) => {
               onResizeEnd?.(size);
+              emitSizeChange(size, { reason: 'resize' });
               persistenceAdapter?.save?.(size);
             },
             target: 'bottom',
@@ -208,6 +272,69 @@ export const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
           {handleChildren.length > 0 ? handleChildren.map((el, i) => React.cloneElement(el, { key: el.key ?? i })) : <PaneHandle />}
         </PaneResizeContext.Provider>
       ) : null;
+
+    // Strip control/size props from DOM spread (moved above overlay return to keep hook order consistent)
+    const {
+      defaultOpen: _bottomDefaultOpenIgnored,
+      open: _bottomOpenIgnored,
+      onOpenChange: _bottomOnOpenChangeIgnored,
+      size: _bottomSizeIgnored,
+      defaultSize: _bottomDefaultSizeIgnored,
+      onSizeChange: _bottomOnSizeChangeIgnored,
+      sizeUpdate: _szu,
+      sizeUpdateMs: _szums,
+      ...bottomDomProps
+    } = props as any;
+
+    // Normalize CSS lengths to px (moved above overlay return to keep hook order consistent)
+    const normalizeToPx = React.useCallback((value: number | string | undefined): number | undefined => {
+      if (value == null) return undefined;
+      if (typeof value === 'number' && Number.isFinite(value)) return value;
+      const str = String(value).trim();
+      if (!str) return undefined;
+      if (str.endsWith('px')) return Number.parseFloat(str);
+      if (str.endsWith('rem')) {
+        const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize || '16') || 16;
+        return Number.parseFloat(str) * rem;
+      }
+      if (str.endsWith('%')) {
+        const pct = Number.parseFloat(str);
+        const base = document.documentElement.clientHeight || window.innerHeight || 0;
+        return (pct / 100) * base;
+      }
+      const n = Number.parseFloat(str);
+      return Number.isFinite(n) ? n : undefined;
+    }, []);
+
+    // Apply defaultSize on mount when uncontrolled (moved above overlay return)
+    React.useEffect(() => {
+      if (!localRef.current) return;
+      if (typeof (props as any).size === 'undefined' && typeof (props as any).defaultSize !== 'undefined') {
+        const px = normalizeToPx((props as any).defaultSize);
+        if (typeof px === 'number' && Number.isFinite(px)) {
+          const minPx = typeof minSize === 'number' ? minSize : undefined;
+          const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
+          const clamped = Math.min(maxPx ?? px, Math.max(minPx ?? px, px));
+          localRef.current.style.setProperty('--bottom-size', `${clamped}px`);
+          emitSizeChange(clamped, { reason: 'init' });
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Controlled size sync (moved above overlay return)
+    React.useEffect(() => {
+      if (!localRef.current) return;
+      if (typeof (props as any).size === 'undefined') return;
+      const px = normalizeToPx((props as any).size);
+      if (typeof px === 'number' && Number.isFinite(px)) {
+        const minPx = typeof minSize === 'number' ? minSize : undefined;
+        const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
+        const clamped = Math.min(maxPx ?? px, Math.max(minPx ?? px, px));
+        localRef.current.style.setProperty('--bottom-size', `${clamped}px`);
+        emitSizeChange(clamped, { reason: 'controlled' });
+      }
+    }, [(props as any).size, minSize, maxSize, normalizeToPx, emitSizeChange]);
 
     if (isOverlay) {
       const open = shell.bottomMode === 'expanded';
@@ -225,13 +352,13 @@ export const Bottom = React.forwardRef<HTMLDivElement, PaneProps>(
 
     return (
       <div
-        {...props}
+        {...bottomDomProps}
         ref={setRef}
         className={classNames('rt-ShellBottom', className)}
         data-mode={shell.bottomMode}
         data-peek={shell.peekTarget === 'bottom' || undefined}
-        data-presentation={resolvedPresentation}
-        data-open={(isStacked && isExpanded) || undefined}
+        data-presentation={shell.currentBreakpointReady ? resolvedPresentation : undefined}
+        data-open={(shell.currentBreakpointReady && isStacked && isExpanded) || undefined}
         style={{
           ...style,
           ['--bottom-size' as any]: `${expandedSize}px`,

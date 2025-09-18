@@ -4,8 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Kookie User Interface',
-  description:
-    'The Foundation for your Design System - A set of beautifully designed components that you can customize, extend, and build on.',
+  description: 'The Foundation for your Design System - A set of beautifully designed components that you can customize, extend, and build on.',
 };
 
 export default function RootLayout({
@@ -16,13 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme
-          accentColor="blue"
-          grayColor="gray"
-          material="solid"
-          radius="medium"
-          fontFamily="sans"
-        >
+        <Theme accentColor="blue" grayColor="gray" material="solid" radius="full" fontFamily="sans">
           {children}
           <ThemePanel defaultOpen={false} />
         </Theme>

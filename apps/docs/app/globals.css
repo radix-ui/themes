@@ -15,6 +15,8 @@ body {
   text-size-adjust: 100%;
   /* Prevent Safari from zooming on input focus */
   -webkit-tap-highlight-color: transparent;
+  /* Prevent page-level horizontal overflow; inner blocks should scroll instead */
+  overflow-x: clip;
 }
 
 /* Safari-specific viewport fixes */
@@ -27,12 +29,12 @@ body {
 
 * {
   box-sizing: border-box;
-  outline: solid 0.1px var(--gray-a6);
+  /* outline: solid 0.1px var(--gray-a6); */
   /* box-sizing: border-box !important; */
 }
 
 /* Debug background colors for shell panels using alpha-3 colors */
-.rt-ShellHeader {
+/* .rt-ShellHeader {
   background-color: var(--red-2) !important;
 }
 .rt-ShellRail {
@@ -52,7 +54,7 @@ body {
 }
 .rt-ShellBottom {
   background-color: var(--sky-2) !important;
-}
+} */
 
 /* Code block styling with Nord theme support */
 pre {
@@ -63,6 +65,19 @@ pre {
   padding-bottom: var(--space-2);
   position: relative;
   width: 100%; /* Ensure full width */
+  max-width: 100%;
+  min-width: 0;
+  contain: inline-size;
+}
+
+/* Ensure code block wrappers can shrink inside flex containers and don't
+   cause page-level horizontal overflow on small screens */
+.code-block-wrapper {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden; /* clip any outer spill; let inner pre scroll */
+  display: block;
 }
 
 /* Code elements inside pre (from rehype-pretty-code) */
@@ -213,7 +228,7 @@ h6 {
 
 /* CodeBlock component styles */
 .code-content {
-  overflow: auto;
+  overflow-x: auto;
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* Hide scrollbars while keeping scroll functionality */
   scrollbar-width: none; /* Firefox */
@@ -229,6 +244,43 @@ h6 {
   backface-visibility: hidden; /* Prevent flickering */
   -webkit-perspective: 1000px; /* Improve 3D rendering */
   perspective: 1000px; /* Improve 3D rendering */
+  /* Allow shrinking inside flex/grid and cap width to container */
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Prevent inner pre from exceeding container width to avoid layout overflow */
+.code-content pre {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: visible; /* delegate horizontal scrolling to .code-content */
+}
+
+/* If rehype-pretty-code wraps blocks in a figure, ensure it doesn't cause page overflow */
+figure[data-rehype-pretty-code-figure] {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+}
+
+/* Absolute cap to viewport to prevent any residual page-level overflow */
+.code-block-wrapper,
+.code-content,
+figure[data-rehype-pretty-code-figure] {
+  max-width: 100vw;
+}
+
+/* Constrain the main content area to never create page-level horizontal scroll */
+[data-content-area] {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 /* Disable vertical scrolling when code content is collapsed */

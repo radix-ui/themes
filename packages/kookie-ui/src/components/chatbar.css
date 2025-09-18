@@ -1,5 +1,5 @@
 /* Container */
-.rt-ChatbarField { 
+.rt-ChatbarField {
   position: relative;
   width: 100%;
   min-width: 0;
@@ -29,7 +29,7 @@
 }
 
 /* Main container - flex layout */
-.rt-ChatbarCard :where(.rt-ChatbarGrid) {
+.rt-ChatbarBox :where(.rt-ChatbarGrid) {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -37,14 +37,14 @@
 }
 
 /* Compact state - horizontal flex */
-.rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarGrid) {
+.rt-ChatbarRoot:where([data-state='closed']) :where(.rt-ChatbarGrid) {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
 }
 
 /* In compact mode, keep attachments on a dedicated row above inline content */
-.rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarAttachmentsRow) {
+.rt-ChatbarRoot:where([data-state='closed']) :where(.rt-ChatbarAttachmentsRow) {
   flex-basis: 100%;
   order: -1;
 }
@@ -61,8 +61,10 @@
 }
 
 /* Row visibility and layout */
-.rt-ChatbarRoot:where([data-state="closed"]) :where(.rt-ChatbarRow) { display: none; }
-.rt-ChatbarRoot:where([data-state="open"]) :where(.rt-ChatbarRow) { 
+.rt-ChatbarRoot:where([data-state='closed']) :where(.rt-ChatbarRow) {
+  display: none;
+}
+.rt-ChatbarRoot:where([data-state='open']) :where(.rt-ChatbarRow) {
   display: block;
   width: 100%;
 }
@@ -98,10 +100,10 @@
   background: var(--gray-a3);
 }
 
-.rt-ChatbarAttachmentImage { 
-  height: 100%; 
-  width: auto; 
-  object-fit: contain; 
+.rt-ChatbarAttachmentImage {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
   max-width: none;
 }
 
@@ -109,6 +111,13 @@
 
 .rt-ChatbarAttachment {
   position: relative;
+  background-color: var(--gray-1);
+  border-radius: var(--radius-1);
+}
+
+/* Maximum width for non-image attachments */
+.rt-ChatbarAttachment:where([data-kind='file']) {
+  max-width: 200px;
 }
 
 .rt-ChatbarAttachmentRemove {
@@ -117,12 +126,220 @@
   right: var(--chatbar-remove-offset);
 }
 
+/* Size-dependent radius for attachment container and preview */
+@breakpoints {
+  .rt-ChatbarRoot:where(.rt-r-size-1) :where(.rt-ChatbarAttachment, .rt-ChatbarAttachmentPreview) {
+    border-radius: var(--radius-1);
+    /* border-radius: var(--radius-1); */
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-2) :where(.rt-ChatbarAttachment, .rt-ChatbarAttachmentPreview) {
+    border-radius: var(--radius-2);
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-3) :where(.rt-ChatbarAttachment, .rt-ChatbarAttachmentPreview) {
+    border-radius: var(--radius-3);
+  }
+}
+
 /* Text components handle styling, no custom classes needed */
 
-/* Container widths */
-.rt-ChatbarCard {
+/* Chatbar visual shell mirrors TextAreaRoot */
+.rt-ChatbarBox {
+  box-sizing: border-box;
   width: 100%;
-  transition: all var(--motion-duration-small) var(--motion-spring-snappy);
+  transition: var(--transition-text-field);
+  /* Padding is applied per size below to match Card spacing */
+  isolation: isolate;
+}
+
+/* Theme-level translucent override for the visual shell */
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox {
+  backdrop-filter: var(--backdrop-filter-components);
+  --backdrop-filter-components: blur(var(--backdrop-blur-components));
+}
+.rt-ChatbarRoot:where([data-panel-background='solid'], [data-material='solid']) .rt-ChatbarBox {
+  backdrop-filter: none;
+  --backdrop-filter-components: none;
+}
+
+/* Sizes (padding and radius via tokens) */
+@breakpoints {
+  .rt-ChatbarRoot:where(.rt-r-size-1) .rt-ChatbarBox {
+    border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
+    padding: var(--space-2);
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-1) .rt-ChatbarInput {
+    --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
+    --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    letter-spacing: var(--letter-spacing-1);
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-2) .rt-ChatbarBox {
+    border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
+    padding: var(--space-3);
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-2) .rt-ChatbarInput {
+    --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
+    --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+    letter-spacing: var(--letter-spacing-2);
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-3) .rt-ChatbarBox {
+    border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
+    padding: var(--space-4);
+  }
+  .rt-ChatbarRoot:where(.rt-r-size-3) .rt-ChatbarInput {
+    --text-area-padding-y: calc(var(--space-3) - var(--text-area-border-width));
+    --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+    letter-spacing: var(--letter-spacing-3);
+  }
+}
+
+/* Only enforce min-height when expanded */
+@breakpoints {
+  .rt-ChatbarRoot:where([data-state='open'].rt-r-size-1) .rt-ChatbarBox {
+    min-height: var(--space-8);
+  }
+  .rt-ChatbarRoot:where([data-state='open'].rt-r-size-2) .rt-ChatbarBox {
+    min-height: var(--space-9);
+  }
+  .rt-ChatbarRoot:where([data-state='open'].rt-r-size-3) .rt-ChatbarBox {
+    min-height: 80px;
+  }
+}
+
+/* Variants copied from TextArea */
+/* outline */
+.rt-ChatbarBox:where(.rt-variant-outline) {
+  --text-area-selection-color: var(--focus-a5);
+  --text-area-focus-color: var(--focus-8);
+  --text-area-border-width: 1px;
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  transition: var(--transition-background-blur);
+}
+/* Translucent theme overrides */
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-outline) {
+  box-shadow: inset 0 0 0 1px var(--accent-a6);
+}
+@media (hover: hover) {
+  .rt-ChatbarBox:where(.rt-variant-outline):where(:hover:not(:focus-within)) {
+    background-color: var(--accent-2);
+    box-shadow: inset 0 0 0 1px var(--accent-7);
+  }
+  .rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-outline):where(:hover:not(:focus-within)) {
+    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+  }
+}
+.rt-ChatbarBox:where(.rt-variant-outline):where(:focus-within) {
+  box-shadow: inset 0 0 0 1px var(--accent-8);
+}
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-outline):where(:focus-within) {
+  box-shadow: inset 0 0 0 1px var(--accent-a8);
+}
+
+/* classic */
+.rt-ChatbarBox:where(.rt-variant-classic) {
+  --text-area-selection-color: var(--focus-a5);
+  --text-area-focus-color: var(--focus-8);
+  --text-area-border-width: 0px;
+  background-color: var(--color-surface-solid);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-text-field);
+}
+/* Translucent theme overrides */
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-classic) {
+  background-color: var(--color-surface-translucent);
+}
+@media (hover: hover) {
+  .rt-ChatbarBox:where(.rt-variant-classic):where(:hover:not(:focus-within)) {
+    background-color: var(--accent-2);
+    box-shadow: var(--shadow-3);
+  }
+}
+.rt-ChatbarBox:where(.rt-variant-classic):where(:focus-within) {
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 2px var(--focus-8);
+}
+
+/* soft */
+.rt-ChatbarBox:where(.rt-variant-soft) {
+  --text-area-selection-color: var(--accent-a5);
+  --text-area-focus-color: var(--accent-8);
+  --text-area-border-width: 0px;
+  background-color: var(--accent-3);
+  transition: var(--transition-background-blur);
+}
+/* Translucent theme overrides */
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-soft) {
+  background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+}
+@media (hover: hover) {
+  .rt-ChatbarBox:where(.rt-variant-soft):where(:hover:not(:focus-within)) {
+    background-color: var(--accent-4);
+  }
+  .rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-soft):where(:hover:not(:focus-within)) {
+    background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
+  }
+}
+
+/* ghost */
+.rt-ChatbarBox:where(.rt-variant-ghost) {
+  --text-area-selection-color: var(--accent-a5);
+  --text-area-focus-color: var(--accent-8);
+  --text-area-border-width: 0px;
+  background-color: transparent;
+}
+@media (hover: hover) {
+  .rt-ChatbarBox:where(.rt-variant-ghost):where(:hover:not(:focus-within)) {
+    background-color: var(--accent-3);
+  }
+  .rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-ghost):where(:hover:not(:focus-within)) {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+  }
+}
+.rt-ChatbarBox:where(.rt-variant-ghost):where(:focus-within) {
+  background-color: var(--accent-2);
+}
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-ghost):where(:focus-within) {
+  background-color: var(--accent-a2);
+}
+
+/* surface */
+.rt-ChatbarBox:where(.rt-variant-surface) {
+  --text-area-selection-color: var(--accent-a5);
+  --text-area-focus-color: var(--accent-8);
+  --text-area-border-width: 1px;
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px var(--accent-6);
+  transition: var(--transition-background-blur);
+}
+/* Translucent theme overrides */
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-surface) {
+  background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
+  box-shadow: inset 0 0 0 1px var(--accent-a6);
+}
+@media (hover: hover) {
+  .rt-ChatbarBox:where(.rt-variant-surface):where(:hover:not(:focus-within)) {
+    background-color: var(--accent-3);
+    box-shadow: inset 0 0 0 1px var(--accent-7);
+  }
+  .rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-surface):where(:hover:not(:focus-within)) {
+    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+  }
+}
+.rt-ChatbarBox:where(.rt-variant-surface):where(:focus-within) {
+  background-color: var(--accent-2);
+  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
+}
+.rt-ChatbarRoot:where([data-panel-background='translucent'], [data-material='translucent']) .rt-ChatbarBox:where(.rt-variant-surface):where(:focus-within) {
+  background-color: var(--accent-a2);
+  box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
 }
 
 /* Dropzone states */
@@ -159,7 +376,6 @@
   height: var(--space-6);
 }
 
-
 /* Inline slot positioning */
 .rt-ChatbarInlineStart,
 .rt-ChatbarInlineEnd {
@@ -192,23 +408,25 @@
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
       --chatbar-attachment-thumb: var(--space-8);
-      --chatbar-remove-offset: var(--space-1);
-      --chatbar-attachments-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
+      --chatbar-remove-offset: calc(var(--space-1) * 0.5);
+      /* --chatbar-attachments-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1))); */
+      --chatbar-attachments-radius: var(--radius-1);
     }
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
       --chatbar-attachment-thumb: var(--space-9);
-      --chatbar-remove-offset: var(--space-2);
-      --chatbar-attachments-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
+      --chatbar-remove-offset: var(--space-1);
+      /* --chatbar-attachments-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2))); */
+      --chatbar-attachments-radius: var(--radius-2);
     }
     &:where(.rt-r-size-3) {
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
       --chatbar-attachment-thumb: var(--space-9);
-      --chatbar-remove-offset: var(--space-3);
-      --chatbar-attachments-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
+      --chatbar-remove-offset: var(--space-2);
+      /* --chatbar-attachments-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3))); */
+      --chatbar-attachments-radius: var(--radius-3);
     }
   }
 }
-

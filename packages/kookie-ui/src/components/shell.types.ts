@@ -9,6 +9,8 @@ export type ResponsiveMode = PaneMode | Partial<Record<'initial' | 'xs' | 'sm' |
 
 export type ResponsiveSidebarMode = SidebarMode | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', SidebarMode>>;
 
+export type Responsive<T> = T | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', T>>;
+
 export type PaneSizePersistence = {
   load?: () => number | Promise<number | undefined> | undefined;
   save?: (size: number) => void | Promise<void>;

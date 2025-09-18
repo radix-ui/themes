@@ -84,8 +84,16 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
             handleEl.releasePointerCapture(pointerId);
           } catch {}
           window.removeEventListener('pointermove', handleMove as any);
+          document.removeEventListener('pointermove', handleMove as any);
+          window.removeEventListener('mousemove', handleMove as any);
+          document.removeEventListener('mousemove', handleMove as any);
+          handleEl.removeEventListener('pointermove', handleMove as any);
           window.removeEventListener('pointerup', handleUp as any);
+          document.removeEventListener('pointerup', handleUp as any);
+          window.removeEventListener('mouseup', handleUp as any);
+          document.removeEventListener('mouseup', handleUp as any);
           window.removeEventListener('pointercancel', handleUp as any);
+          document.removeEventListener('pointercancel', handleUp as any);
           window.removeEventListener('keydown', handleKey as any);
           handleEl.removeEventListener('lostpointercapture', handleUp as any);
           container.removeAttribute('data-resizing');
@@ -120,8 +128,17 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
           }
         };
         window.addEventListener('pointermove', handleMove as any);
+        document.addEventListener('pointermove', handleMove as any);
+        // Fallbacks for environments that don't fully support PointerEvent on window
+        window.addEventListener('mousemove', handleMove as any);
+        document.addEventListener('mousemove', handleMove as any);
+        handleEl.addEventListener('pointermove', handleMove as any);
         window.addEventListener('pointerup', handleUp as any);
+        document.addEventListener('pointerup', handleUp as any);
+        window.addEventListener('mouseup', handleUp as any);
+        document.addEventListener('mouseup', handleUp as any);
         window.addEventListener('pointercancel', handleUp as any);
+        document.addEventListener('pointercancel', handleUp as any);
         window.addEventListener('keydown', handleKey as any);
         handleEl.addEventListener('lostpointercapture', handleUp as any);
         activeCleanupRef.current = cleanup;
@@ -132,13 +149,20 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
       onKeyDown={(e) => {
         if (!containerRef.current) return;
         const container = containerRef.current;
-        const current = parseFloat(getComputedStyle(container).getPropertyValue(cssVarName) || `${defaultSize}`);
+        const rawCurrent = getComputedStyle(container).getPropertyValue(cssVarName);
+        const parsedCurrent = Number.parseFloat(rawCurrent.trim());
+        const current = Number.isFinite(parsedCurrent) ? parsedCurrent : defaultSize;
         const clamp = (v: number) => Math.min(Math.max(v, minSize), maxSize);
         const step = e.shiftKey ? 32 : 8;
         let delta = 0;
         if (orientation === 'vertical') {
-          if (e.key === 'ArrowRight') delta = step;
-          else if (e.key === 'ArrowLeft') delta = -step;
+          const docDir = typeof document !== 'undefined' ? document.dir : undefined;
+          const cssDir = getComputedStyle(container).direction;
+          const hasRtlAncestor = !!(container.closest && container.closest('[dir="rtl"]'));
+          const isRtl = docDir === 'rtl' || cssDir === 'rtl' || hasRtlAncestor;
+          if (e.key === 'ArrowRight')
+            delta = isRtl ? -step : step; // inline-end
+          else if (e.key === 'ArrowLeft') delta = isRtl ? step : -step; // inline-start
         } else {
           if (e.key === 'ArrowDown') delta = step;
           else if (e.key === 'ArrowUp') delta = -step;
@@ -166,7 +190,8 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
         if (delta !== 0) {
           e.preventDefault();
           onResizeStart?.(current);
-          const next = clamp(current + (edge === 'start' && orientation === 'vertical' ? -delta : delta));
+          const signedDelta = orientation === 'vertical' ? (edge === 'start' ? -delta : delta) : delta;
+          const next = clamp(current + signedDelta);
           container.style.setProperty(cssVarName, `${next}px`);
           (e.currentTarget as HTMLElement).setAttribute('aria-valuenow', String(next));
           onResize?.(next);

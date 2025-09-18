@@ -38,14 +38,19 @@ export default function SidebarTestPage() {
         maxSize={480}
         expandedSize={280}
         thinSize={64}
-        defaultMode={{ initial: 'expanded', xs: 'expanded', md: 'expanded' }}
-        toggleModes="single"
-        presentation={{ initial: 'overlay', xs: 'overlay' }}
+        state={{ initial: 'expanded', xs: 'expanded', md: 'expanded' }}
+        toggleModes="both"
+        presentation={{ initial: 'fixed', xs: 'overlay' }}
         paneId="side"
         persistence={lsPane('ui-test:sidebar')}
       >
         <Flex align="center" justify="center" height="100%">
           <Text>Sidebar</Text>
+          <IconButton variant="ghost" size="2" asChild highContrast color="gray">
+            <Shell.Trigger target="sidebar" action="toggle" peekOnHover={true}>
+              <PanelLeft />
+            </Shell.Trigger>
+          </IconButton>
         </Flex>
         <Shell.Sidebar.Handle>
           <IconButton variant="soft" size="1" highContrast color="gray">

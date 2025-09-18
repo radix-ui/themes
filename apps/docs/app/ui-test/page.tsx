@@ -46,11 +46,7 @@ export default function UITestPage() {
         </Flex>
       </Shell.Header>
 
-      <Shell.Rail
-        defaultMode={{ initial: 'expanded', xs: 'collapsed', md: 'expanded' }}
-        expandedSize={64}
-        presentation={{ initial: 'stacked', xs: 'overlay', md: 'stacked' }}
-      >
+      <Shell.Rail defaultOpen expandedSize={64} presentation={{ initial: 'stacked', xs: 'overlay', md: 'stacked' }}>
         <Flex align="center" justify="center" height="100%">
           <Shell.Trigger target="panel" action="toggle" peekOnHover={true}>
             <IconButton variant="classic" color="gray" highContrast as="div">
@@ -62,7 +58,7 @@ export default function UITestPage() {
 
       <Shell.Panel
         resizable
-        collapsible={false}
+        collapsible={true}
         minSize={100}
         maxSize={500}
         expandedSize={280}
@@ -96,7 +92,7 @@ export default function UITestPage() {
         snapPoints={[80, 120, 160, 200]}
         snapTolerance={Infinity}
         collapseThreshold={80}
-        defaultMode={{ initial: 'collapsed', sm: 'collapsed', md: 'expanded' }}
+        open={{ initial: false, sm: false, md: true }}
         presentation={{ initial: 'overlay', xs: 'stacked', sm: 'stacked' }}
         paneId="bottom-panel"
         persistence={lsPane('ui-test:bottom-panel')}
@@ -119,7 +115,7 @@ export default function UITestPage() {
         snapPoints={[240, 280, 320, 480]}
         snapTolerance={Infinity}
         collapseThreshold={120}
-        defaultMode={{ initial: 'collapsed', xs: 'collapsed', md: 'collapsed' }}
+        defaultOpen={{ initial: false, xs: false, md: true }} // collapsed at these breakpoints
         presentation="stacked"
       >
         <Flex align="center" justify="center" height="100%">

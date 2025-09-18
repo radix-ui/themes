@@ -7,14 +7,15 @@ import { Flex } from './flex.js';
 
 import { ScrollArea } from './scroll-area.js';
 import { Slot } from './slot.js';
+import { Box } from './box.js';
 import { Card } from './card.js';
 import { Text } from './text.js';
+import { Inset } from './inset.js';
 import { useDropzone } from 'react-dropzone';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
 // Avoid SSR warnings by using an isomorphic layout effect
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 type ExpandOn = 'none' | 'focus' | 'overflow' | 'both';
 type SendMode = 'always' | 'whenDirty' | 'never';
@@ -86,6 +87,9 @@ interface ChatbarContextValue {
   // Helpers
   appendFiles(files: File[]): void;
   appendFilesFromPaste(files: File[]): void;
+
+  // Guards
+  fileDialogOpenRef: React.MutableRefObject<boolean>;
 }
 
 const ChatbarContext = React.createContext<ChatbarContextValue | null>(null);
@@ -136,6 +140,13 @@ interface ChatbarRootBaseProps {
 
   size?: '1' | '2' | '3';
   variant?: 'surface' | 'outline' | 'classic' | 'ghost' | 'soft';
+  /** Accent color for the control (matches TextArea) */
+  color?: string;
+  /** Optional radius override (matches TextArea) */
+  radius?: string | number;
+  /** Panel/material translucency flags (matches TextArea) */
+  panelBackground?: 'solid' | 'translucent';
+  material?: 'solid' | 'translucent';
 
   width?: React.CSSProperties['width'];
   maxWidth?: React.CSSProperties['maxWidth'];
@@ -199,9 +210,7 @@ type RootElement = React.ElementRef<'div'>;
  * - `aria-expanded` on the root reflects the disclosure state of the input area.
  * - Dropzone provides proper ARIA attributes for drag and drop operations.
  */
-interface RootProps
-  extends ComponentPropsWithout<'div', RemovedProps | 'onSubmit'>,
-    ChatbarRootBaseProps {}
+interface RootProps extends ComponentPropsWithout<'div', RemovedProps | 'onSubmit'>, ChatbarRootBaseProps {}
 
 const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
   const {
@@ -223,6 +232,10 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     onSubmit,
     size = '2',
     variant,
+    color,
+    radius,
+    panelBackground,
+    material,
     width,
     maxWidth,
     asChild,
@@ -240,6 +253,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     dropzone = true,
     ...divProps
   } = props;
+  const effectiveMaterial = material || panelBackground;
 
   const isValueControlled = valueProp != null;
   const [valueUncontrolled, setValueUncontrolled] = React.useState<string>(defaultValue);
@@ -251,23 +265,20 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
 
   const rootRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const fileDialogOpenRef = React.useRef<boolean>(false);
 
   // Attachments state
   // Treat `attachments` as controlled if the prop is provided, even if its value is `undefined`.
   // This avoids switching between controlled and uncontrolled when a consumer sets
   // `attachments={undefined}` to clear attachments. In that case we normalize to an empty array.
   const isAttachmentsControlled = 'attachments' in props;
-  const [attachmentsUncontrolled, setAttachmentsUncontrolled] =
-    React.useState<ChatbarAttachment[]>(defaultAttachments);
-  const attachments = isAttachmentsControlled
-    ? ((attachmentsProp ?? []) as ChatbarAttachment[])
-    : attachmentsUncontrolled;
+  const [attachmentsUncontrolled, setAttachmentsUncontrolled] = React.useState<ChatbarAttachment[]>(defaultAttachments);
+  const attachments = isAttachmentsControlled ? ((attachmentsProp ?? []) as ChatbarAttachment[]) : attachmentsUncontrolled;
 
   // Track generated object URLs for cleanup
   const generatedUrlSetRef = React.useRef<Set<string>>(new Set());
 
-  const toArray = (val: string | string[] | undefined) =>
-    Array.isArray(val) ? val : typeof val === 'string' ? val.split(',').map((s) => s.trim()) : [];
+  const toArray = (val: string | string[] | undefined) => (Array.isArray(val) ? val : typeof val === 'string' ? val.split(',').map((s) => s.trim()) : []);
 
   const accepts = toArray(accept);
   const pasteAccepts = toArray(pasteAccept).length > 0 ? toArray(pasteAccept) : accepts;
@@ -282,8 +293,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
         // MIME pattern
         const [type, subtype] = pat.split('/');
         const [fmType, fmSubtype] = mime.split('/');
-        if (type === '*' || (type === fmType && (subtype === '*' || subtype === fmSubtype)))
-          return true;
+        if (type === '*' || (type === fmType && (subtype === '*' || subtype === fmSubtype))) return true;
       } else if (pat.startsWith('.')) {
         if (name.endsWith(pat)) return true;
       }
@@ -303,10 +313,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     const next: ChatbarAttachment[] = [];
     const rejected: { file: File; reason: 'type' | 'size' | 'count' }[] = [];
 
-    const remainingSlots =
-      typeof maxAttachments === 'number'
-        ? Math.max(maxAttachments - attachments.length, 0)
-        : Infinity;
+    const remainingSlots = typeof maxAttachments === 'number' ? Math.max(maxAttachments - attachments.length, 0) : Infinity;
 
     for (const file of files) {
       if (next.length >= remainingSlots) {
@@ -345,6 +352,9 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
       const merged = attachments.concat(accepted);
       if (!isAttachmentsControlled) setAttachmentsUncontrolled(merged);
       onAttachmentsChange?.(merged);
+      // Ensure chatbar expands when attachments are added
+      if (!isOpenControlled) setOpenUncontrolled(true);
+      onOpenChangeProp?.(true);
     }
     if (rejected.length > 0) onAttachmentReject?.(rejected);
   };
@@ -359,10 +369,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     const rejected: { file: File; reason: 'type' | 'size' | 'count' }[] = [];
 
     // Enforce maxAttachments and maxFileSize
-    const remainingSlots =
-      typeof maxAttachments === 'number'
-        ? Math.max(maxAttachments - attachments.length, 0)
-        : Infinity;
+    const remainingSlots = typeof maxAttachments === 'number' ? Math.max(maxAttachments - attachments.length, 0) : Infinity;
     for (const file of files) {
       if (acceptedFiles.length >= remainingSlots) {
         rejected.push({ file, reason: 'count' });
@@ -412,13 +419,16 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
       if (!rootEl) return;
       // If focus remains within root, ignore
       if (nextTarget && rootEl.contains(nextTarget)) return;
+      // If native file dialog is open, avoid collapsing on blur
+      if (fileDialogOpenRef.current) return;
       // Collapse when leaving the root if the value is empty
-      if ((value?.trim?.() ?? '').length === 0) {
+      // Only collapse when both message and attachments are empty
+      if ((value?.trim?.() ?? '').length === 0 && attachments.length === 0) {
         if (!isOpenControlled) setOpenUncontrolled(false);
         onOpenChangeProp?.(false);
       }
     },
-    [isOpenControlled, onOpenChangeProp, value],
+    [isOpenControlled, onOpenChangeProp, value, attachments],
   );
 
   // Dropzone functionality
@@ -429,12 +439,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
       }
       if (rejectedFiles.length > 0 && onAttachmentReject) {
         const rejections = rejectedFiles.map(({ file, errors }) => {
-          const reason =
-            errors[0]?.code === 'file-too-large'
-              ? 'size'
-              : errors[0]?.code === 'file-invalid-type'
-                ? 'type'
-                : 'count';
+          const reason = errors[0]?.code === 'file-too-large' ? 'size' : errors[0]?.code === 'file-invalid-type' ? 'type' : 'count';
           return { file, reason: reason as 'type' | 'size' | 'count' };
         });
         onAttachmentReject(rejections);
@@ -462,6 +467,27 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     noKeyboard: true,
     disabled: !dropzone || disabled,
   });
+
+  // Click-to-focus: focus textarea when clicking non-interactive areas inside the container
+  const isInteractiveTarget = React.useCallback((target: EventTarget | null) => {
+    if (!(target instanceof Element)) return false;
+    const el = target as Element;
+    if (el.closest('.rt-ChatbarDropOverlay')) return true;
+    return !!el.closest('button, [role="button"], a[href], input, textarea, select, [contenteditable], [tabindex]:not([tabindex="-1"])');
+  }, []);
+
+  const handleContainerPointerDown = React.useCallback(
+    (event: React.PointerEvent) => {
+      if (disabled) return;
+      if (isInteractiveTarget(event.target)) return;
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      event.preventDefault();
+      textareaRef.current?.focus({ preventScroll: true });
+    },
+    [disabled, isInteractiveTarget, textareaRef],
+  );
+
+  // Clicking the label-wrapped Card will naturally focus the nested textarea.
 
   return (
     <ChatbarContext.Provider
@@ -505,14 +531,14 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
         dropzone,
         appendFiles,
         appendFilesFromPaste,
+        fileDialogOpenRef,
       }}
     >
       <Comp
         {...divProps}
         ref={(node: HTMLDivElement) => {
           if (typeof forwardedRef === 'function') forwardedRef(node);
-          else if (forwardedRef)
-            (forwardedRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
+          else if (forwardedRef) (forwardedRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
           (rootRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
         className={classNames('rt-ChatbarRoot', `rt-r-size-${size}`, className)}
@@ -521,16 +547,22 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
         data-disabled={disabled ? '' : undefined}
         data-readonly={readOnly ? '' : undefined}
         data-drop-active={dropzone && isDragActive ? '' : undefined}
+        data-accent-color={color}
+        data-radius={radius as any}
+        data-panel-background={effectiveMaterial}
+        data-material={effectiveMaterial}
         aria-expanded={open}
         onBlurCapture={handleBlurCapture}
       >
         {dropzone && <input {...getInputProps()} />}
-        <div {...(dropzone ? getRootProps() : {})} style={{ width: '100%', height: '100%' }}>
-          <Card
-            className="rt-ChatbarCard"
-            size={Math.min(3, Number(size) + 1).toString() as '1' | '2' | '3'}
-            variant={variant as any}
+        <div {...(dropzone ? getRootProps() : {})} style={{ width: '100%', height: '100%' }} onPointerDown={handleContainerPointerDown}>
+          <Box
+            className={classNames('rt-ChatbarBox', `rt-variant-${variant ?? 'surface'}`)}
             style={{ position: 'relative' }}
+            data-accent-color={color}
+            data-radius={radius as any}
+            data-panel-background={effectiveMaterial}
+            data-material={effectiveMaterial}
           >
             <div className="rt-ChatbarGrid">{children}</div>
             {dropzone && isDragActive && (
@@ -542,7 +574,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
                 </div>
               </div>
             )}
-          </Card>
+          </Box>
         </div>
       </Comp>
     </ChatbarContext.Provider>
@@ -588,37 +620,9 @@ interface TextareaProps extends Omit<React.ComponentPropsWithoutRef<'textarea'>,
  *   on this component, as no implicit label is rendered.
  */
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, forwardedRef) => {
-  const {
-    className,
-    style,
-    asChild,
-    onFocus,
-    onInput,
-    onChange,
-    onPaste,
-    onKeyDown,
-    submitOnEnter = false,
-    rows,
-    ...textareaProps
-  } = props;
+  const { className, style, asChild, onFocus, onInput, onChange, onPaste, onKeyDown, submitOnEnter = false, rows, ...textareaProps } = props;
   const ctx = useChatbarContext();
-  const {
-    open,
-    minLines,
-    maxLines,
-    expandOn,
-    disabled,
-    readOnly,
-    setOpen,
-    setValue,
-    textareaRef,
-    value,
-    isValueControlled,
-    sendMode,
-    paste,
-    appendFilesFromPaste,
-    size,
-  } = ctx;
+  const { open, minLines, maxLines, expandOn, disabled, readOnly, setOpen, setValue, textareaRef, value, isValueControlled, sendMode, paste, appendFilesFromPaste, size } = ctx;
 
   // Cached metrics to avoid repeated getComputedStyle calls
   const lineHeightRef = React.useRef<number>(0);
@@ -679,6 +683,26 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
     updateHeight();
   }, [updateHeight, value, open]);
 
+  // Auto-open on external value changes when content overflows one line
+  useIsomorphicLayoutEffect(() => {
+    if (!(expandOn === 'overflow' || expandOn === 'both')) return;
+    if (open) return;
+    const el = textareaRef.current;
+    if (!el) return;
+    // Measure overflow against compact (1-line) height
+    el.style.height = 'auto';
+    if (compactHeightRef.current === 0) {
+      recomputeMetrics();
+    }
+    const shouldExpand = el.scrollHeight > compactHeightRef.current + 1;
+    if (shouldExpand) {
+      setOpen(true);
+      // Immediately size for open state
+      updateHeight(true);
+      requestAnimationFrame(() => updateHeight(true));
+    }
+  }, [value, expandOn, open, setOpen, textareaRef, recomputeMetrics, updateHeight]);
+
   // Recompute metrics on mount and when size changes may affect typography
   useIsomorphicLayoutEffect(() => {
     recomputeMetrics();
@@ -706,13 +730,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
   // Dev-only warning if no accessible name is provided
   React.useEffect(() => {
     if (process.env.NODE_ENV === 'production') return;
-    const hasLabel =
-      textareaProps['aria-label'] != null || textareaProps['aria-labelledby'] != null;
+    const hasLabel = textareaProps['aria-label'] != null || textareaProps['aria-labelledby'] != null;
     if (!hasLabel) {
       // eslint-disable-next-line no-console
-      console.warn(
-        '[Chatbar.Textarea] Provide aria-label or aria-labelledby to ensure the control has an accessible name.',
-      );
+      console.warn('[Chatbar.Textarea] Provide aria-label or aria-labelledby to ensure the control has an accessible name.');
     }
     // warn only on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -768,6 +789,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
           .map((i) => i.getAsFile())
           .filter((f): f is File => !!f);
         if (files.length > 0) {
+          // Prevent pasting the file name or any text representation when files are present
+          event.preventDefault();
           appendFilesFromPaste(files);
         }
       }
@@ -790,14 +813,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
         onKeyDown?.(event);
         return;
       }
-      if (
-        event.key === 'Enter' &&
-        !event.shiftKey &&
-        !event.altKey &&
-        !event.ctrlKey &&
-        !event.metaKey &&
-        !event.nativeEvent.isComposing
-      ) {
+      if (event.key === 'Enter' && !event.shiftKey && !event.altKey && !event.ctrlKey && !event.metaKey && !event.nativeEvent.isComposing) {
         if (disabled || readOnly) {
           onKeyDown?.(event);
           return;
@@ -821,17 +837,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
       }
       onKeyDown?.(event);
     },
-    [
-      submitOnEnter,
-      disabled,
-      readOnly,
-      sendMode,
-      value,
-      isValueControlled,
-      setValue,
-      ctx,
-      onKeyDown,
-    ],
+    [submitOnEnter, disabled, readOnly, sendMode, value, isValueControlled, setValue, ctx, onKeyDown],
   );
 
   const Comp = asChild ? Slot : ('textarea' as any);
@@ -841,8 +847,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
         {...textareaProps}
         ref={(node: HTMLTextAreaElement) => {
           if (typeof forwardedRef === 'function') forwardedRef(node);
-          else if (forwardedRef)
-            (forwardedRef as React.MutableRefObject<HTMLTextAreaElement | null>).current = node;
+          else if (forwardedRef) (forwardedRef as React.MutableRefObject<HTMLTextAreaElement | null>).current = node;
           (textareaRef as React.MutableRefObject<HTMLTextAreaElement | null>).current = node;
         }}
         className="rt-ChatbarInput"
@@ -875,12 +880,7 @@ const InlineStart = React.forwardRef<HTMLDivElement, InlineSlotProps>((props, fo
   if (ctx.open) return null;
   const Comp = asChild ? Slot : ('div' as any);
   return (
-    <Comp
-      {...divProps}
-      ref={forwardedRef}
-      className={classNames('rt-ChatbarInlineStart', className)}
-      style={style}
-    >
+    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarInlineStart', className)} style={style}>
       {children}
     </Comp>
   );
@@ -893,12 +893,7 @@ const InlineEnd = React.forwardRef<HTMLDivElement, InlineSlotProps>((props, forw
   if (ctx.open) return null;
   const Comp = asChild ? Slot : ('div' as any);
   return (
-    <Comp
-      {...divProps}
-      ref={forwardedRef}
-      className={classNames('rt-ChatbarInlineEnd', className)}
-      style={style}
-    >
+    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarInlineEnd', className)} style={style}>
       {children}
     </Comp>
   );
@@ -916,35 +911,26 @@ interface AttachmentsRowProps extends Omit<React.ComponentPropsWithoutRef<'div'>
   renderAttachment?: (attachment: ChatbarAttachment) => React.ReactNode;
 }
 
-const AttachmentsRow = React.forwardRef<HTMLDivElement, AttachmentsRowProps>(
-  (props, forwardedRef) => {
-    const { asChild, forceMount, renderAttachment, className, style, ...divProps } = props;
-    const ctx = useChatbarContext();
-    const hasItems = ctx.attachments.length > 0;
-    if (!hasItems && !forceMount) return null;
-    const Comp = asChild ? Slot : ('div' as any);
-    return (
-      <Comp
-        {...divProps}
-        ref={forwardedRef}
-        className={classNames('rt-ChatbarAttachmentsRow', className)}
-        style={style}
-        role="list"
-        aria-label={divProps['aria-label'] ?? 'Attachments'}
-      >
-        <ScrollArea className="rt-ChatbarScrollArea" scrollbars="horizontal" size="1">
-          <Flex align="center" gap="2" style={{ minWidth: 'fit-content' }}>
-            {ctx.attachments.map((att) => (
-              <Attachment key={att.id} attachment={att} asChild={!!renderAttachment}>
-                {renderAttachment?.(att)}
-              </Attachment>
-            ))}
-          </Flex>
-        </ScrollArea>
-      </Comp>
-    );
-  },
-);
+const AttachmentsRow = React.forwardRef<HTMLDivElement, AttachmentsRowProps>((props, forwardedRef) => {
+  const { asChild, forceMount, renderAttachment, className, style, ...divProps } = props;
+  const ctx = useChatbarContext();
+  const hasItems = ctx.attachments.length > 0;
+  if (!hasItems && !forceMount) return null;
+  const Comp = asChild ? Slot : ('div' as any);
+  return (
+    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarAttachmentsRow', className)} style={style} role="list" aria-label={divProps['aria-label'] ?? 'Attachments'}>
+      <ScrollArea className="rt-ChatbarScrollArea" scrollbars="horizontal" size="1">
+        <Flex align="center" gap="2" style={{ minWidth: 'fit-content' }}>
+          {ctx.attachments.map((att) => (
+            <Attachment key={att.id} attachment={att} asChild={!!renderAttachment}>
+              {renderAttachment?.(att)}
+            </Attachment>
+          ))}
+        </Flex>
+      </ScrollArea>
+    </Comp>
+  );
+});
 AttachmentsRow.displayName = 'Chatbar.AttachmentsRow';
 
 /** Default tile renderer for a single attachment. */
@@ -959,55 +945,37 @@ const Attachment = React.forwardRef<HTMLDivElement, AttachmentProps>((props, for
   const Comp = asChild ? Slot : ('div' as any);
   const isImage = !!attachment.url && attachment.type.startsWith('image/');
   return (
-    <Comp
-      {...divProps}
-      ref={forwardedRef}
-      className={classNames('rt-ChatbarAttachment', className)}
-      style={style}
-      role="listitem"
-      data-kind={isImage ? 'image' : 'file'}
-      title={attachment.name}
-    >
+    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarAttachment', className)} style={style} role="listitem" data-kind={isImage ? 'image' : 'file'} title={attachment.name}>
       {children ?? (
-        <Card size={ctx.size} variant="soft">
-          <Flex align="center" gap="3" pr={!isImage ? '6' : undefined}>
-            <div className="rt-ChatbarAttachmentPreview" aria-hidden>
-              {isImage ? (
-                <img className="rt-ChatbarAttachmentImage" src={attachment.url} alt="" />
-              ) : (
-                <FileTextIcon />
-              )}
-            </div>
-            {!isImage && (
-              <Flex direction="column" gap="0" style={{ minWidth: 0 }}>
-                <Text
-                  size={ctx.size}
-                  weight="medium"
-                  style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
-                >
-                  {attachment.name}
-                </Text>
-                <Text size="1" color="gray">
-                  {Math.ceil(attachment.size / 1024)} KB
-                </Text>
-              </Flex>
-            )}
-            <IconButton
-              className="rt-ChatbarAttachmentRemove"
-              aria-label={`Remove ${attachment.name}`}
-              size="1"
-              //   size={ctx.size}
-              variant="classic"
-              highContrast
-              color="gray"
-              onClick={() =>
-                ctx.setAttachments(ctx.attachments.filter((a) => a.id !== attachment.id))
-              }
-            >
-              <CloseIcon />
-            </IconButton>
-          </Flex>
-        </Card>
+        // <Card size={ctx.size} variant="surface">
+        <Flex align="center" gap="2" pr={!isImage ? '6' : undefined}>
+          <div className="rt-ChatbarAttachmentPreview" aria-hidden>
+            {isImage ? <img className="rt-ChatbarAttachmentImage" src={attachment.url} alt="" /> : <FileTextIcon />}
+          </div>
+          {!isImage && (
+            <Flex direction="column" gap="0" style={{ minWidth: 0 }}>
+              <Text size={ctx.size} weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {attachment.name}
+              </Text>
+              <Text size="1" color="gray">
+                {Math.ceil(attachment.size / 1024)} KB
+              </Text>
+            </Flex>
+          )}
+          <IconButton
+            className="rt-ChatbarAttachmentRemove"
+            aria-label={`Remove ${attachment.name}`}
+            size="1"
+            //   size={ctx.size}
+            variant="classic"
+            highContrast
+            color="gray"
+            onClick={() => ctx.setAttachments(ctx.attachments.filter((a) => a.id !== attachment.id))}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Flex>
+        // </Card>
       )}
     </Comp>
   );
@@ -1020,51 +988,72 @@ interface AttachTriggerProps extends React.ComponentPropsWithoutRef<'button'> {
   multiple?: boolean;
 }
 
-const AttachTrigger = React.forwardRef<HTMLButtonElement, AttachTriggerProps>(
-  (props, forwardedRef) => {
-    const { asChild, accept, multiple, className, style, ...buttonProps } = props;
-    const ctx = useChatbarContext();
-    const inputRef = React.useRef<HTMLInputElement | null>(null);
-    const Comp = asChild ? Slot : ('button' as any);
-    const actualAccept = (Array.isArray(accept) ? accept : (accept?.split(',') ?? [])).join(',');
-    return (
-      <>
-        <Comp
-          {...(buttonProps as any)}
-          ref={forwardedRef as any}
-          className={classNames('rt-ChatbarAttachTrigger', className)}
-          style={style}
-          type={buttonProps.type ?? 'button'}
-          aria-label={buttonProps['aria-label'] ?? 'Add attachments'}
-          onClick={(e: any) => {
-            // Ensure file input opens reliably by clicking it first
-            if (inputRef.current) {
-              inputRef.current.click();
-            }
-            // Then call user's onClick if provided
-            buttonProps.onClick?.(e);
-          }}
-        />
-        <input
-          ref={inputRef}
-          type="file"
-          accept={actualAccept}
-          multiple={multiple ?? ctx.multiple}
-          tabIndex={-1}
-          style={{ display: 'none' }}
-          onChange={(e) => {
-            const files = Array.from(e.currentTarget.files ?? []);
-            if (files.length > 0) {
-              ctx.appendFiles(files);
-            }
-            // Reset input value to allow selecting the same file again
-            e.currentTarget.value = '';
-          }}
-        />
-      </>
-    );
-  },
-);
+const AttachTrigger = React.forwardRef<HTMLButtonElement, AttachTriggerProps>((props, forwardedRef) => {
+  const { asChild, accept, multiple, className, style, ...buttonProps } = props;
+  const ctx = useChatbarContext();
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const Comp = asChild ? Slot : ('button' as any);
+  // Prefer Chatbar.Root's accept when a local accept is not provided
+  const mergedAccept = accept ?? ctx.accept;
+  const actualAccept = (Array.isArray(mergedAccept) ? mergedAccept : (mergedAccept?.split(',') ?? [])).join(',');
+  React.useEffect(() => {
+    const handleWindowFocus = () => {
+      // Reset guard when window regains focus after file dialog closes
+      ctx.fileDialogOpenRef.current = false;
+    };
+    window.addEventListener('focus', handleWindowFocus);
+    return () => window.removeEventListener('focus', handleWindowFocus);
+  }, [ctx.fileDialogOpenRef]);
+  return (
+    <>
+      <Comp
+        {...(buttonProps as any)}
+        ref={forwardedRef as any}
+        className={classNames('rt-ChatbarAttachTrigger', className)}
+        style={style}
+        type={buttonProps.type ?? 'button'}
+        aria-label={buttonProps['aria-label'] ?? 'Add attachments'}
+        onPointerDown={(e: any) => {
+          // Set guard before blur occurs (Safari fires blur before click)
+          ctx.fileDialogOpenRef.current = true;
+          buttonProps.onPointerDown?.(e);
+        }}
+        onMouseDown={(e: any) => {
+          // Fallback for environments without Pointer Events
+          ctx.fileDialogOpenRef.current = true;
+          buttonProps.onMouseDown?.(e);
+        }}
+        onClick={(e: any) => {
+          // Ensure file input opens reliably by clicking it first
+          ctx.fileDialogOpenRef.current = true;
+          if (inputRef.current) {
+            inputRef.current.click();
+          }
+          // Then call user's onClick if provided
+          buttonProps.onClick?.(e);
+        }}
+      />
+      <input
+        ref={inputRef}
+        type="file"
+        accept={actualAccept}
+        multiple={multiple ?? ctx.multiple}
+        tabIndex={-1}
+        style={{ display: 'none' }}
+        onChange={(e) => {
+          const files = Array.from(e.currentTarget.files ?? []);
+          if (files.length > 0) {
+            ctx.appendFiles(files);
+          }
+          // File dialog closed; allow normal blur handling
+          ctx.fileDialogOpenRef.current = false;
+          // Reset input value to allow selecting the same file again
+          e.currentTarget.value = '';
+        }}
+      />
+    </>
+  );
+});
 AttachTrigger.displayName = 'Chatbar.AttachTrigger';
 interface RowProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> {
   asChild?: boolean;
@@ -1077,12 +1066,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, forwardedRef) => 
   if (!ctx.open) return null;
   const Comp = asChild ? Slot : ('div' as any);
   return (
-    <Comp
-      {...divProps}
-      ref={forwardedRef}
-      className={classNames('rt-ChatbarRow', className)}
-      style={style}
-    >
+    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarRow', className)} style={style}>
       <Flex align="center" justify="between" width="100%">
         {children}
       </Flex>
@@ -1091,34 +1075,16 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, forwardedRef) => 
 });
 Row.displayName = 'Chatbar.Row';
 
-const RowStart = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  (props, forwardedRef) => {
-    const { className, style, ...divProps } = props;
-    return (
-      <div
-        {...divProps}
-        ref={forwardedRef}
-        className={classNames('rt-ChatbarRowStart', className)}
-        style={style}
-      />
-    );
-  },
-);
+const RowStart = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>((props, forwardedRef) => {
+  const { className, style, ...divProps } = props;
+  return <div {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarRowStart', className)} style={style} />;
+});
 RowStart.displayName = 'Chatbar.RowStart';
 
-const RowEnd = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  (props, forwardedRef) => {
-    const { className, style, ...divProps } = props;
-    return (
-      <div
-        {...divProps}
-        ref={forwardedRef}
-        className={classNames('rt-ChatbarRowEnd', className)}
-        style={style}
-      />
-    );
-  },
-);
+const RowEnd = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>((props, forwardedRef) => {
+  const { className, style, ...divProps } = props;
+  return <div {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarRowEnd', className)} style={style} />;
+});
 RowEnd.displayName = 'Chatbar.RowEnd';
 
 interface SendProps extends Omit<IconButtonProps, 'size'> {
@@ -1127,15 +1093,7 @@ interface SendProps extends Omit<IconButtonProps, 'size'> {
 }
 
 const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef) => {
-  const {
-    asChild,
-    clearOnSend = true,
-    disabled,
-    children,
-    className,
-    style,
-    ...buttonProps
-  } = props;
+  const { asChild, clearOnSend = true, disabled, children, className, style, ...buttonProps } = props;
   const ctx = useChatbarContext();
 
   const trimmed = ctx.value.trim();
@@ -1170,29 +1128,27 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
       onClick={handleClick}
       aria-label={buttonProps['aria-label'] ?? 'Send'}
     >
-      {children ?? 'Send'}
+      {children ?? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-arrow-right-icon lucide-arrow-right"
+        >
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      )}
     </IconButton>
   );
 });
 Send.displayName = 'Chatbar.Send';
 
-export {
-  Root,
-  Textarea,
-  InlineStart,
-  InlineEnd,
-  AttachmentsRow,
-  Attachment,
-  AttachTrigger,
-  Row,
-  RowStart,
-  RowEnd,
-  Send,
-};
-export type {
-  RootProps as ChatbarRootProps,
-  TextareaProps as ChatbarTextareaProps,
-  RowProps as ChatbarRowProps,
-  SendProps as ChatbarSendProps,
-  ChatbarAttachment,
-};
+export { Root, Textarea, InlineStart, InlineEnd, AttachmentsRow, Attachment, AttachTrigger, Row, RowStart, RowEnd, Send };
+export type { RootProps as ChatbarRootProps, TextareaProps as ChatbarTextareaProps, RowProps as ChatbarRowProps, SendProps as ChatbarSendProps, ChatbarAttachment };

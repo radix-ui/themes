@@ -63,5 +63,17 @@ export default tseslint.config(
       'jsx-a11y/label-has-associated-control': 'off',
       'no-irregular-whitespace': 'off',
     },
-  }
+    files: ['tests/**/*.{ts,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        // Vitest globals for tests
+        vi: true,
+        describe: true,
+        it: true,
+        expect: true,
+      },
+    },
+  },
 );

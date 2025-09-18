@@ -51,7 +51,7 @@
   box-sizing: border-box;
 
   :where(.rt-BaseMenuContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
-    padding-right: var(--space-3);
+    padding-inline-end: var(--space-3);
   }
 }
 
@@ -62,8 +62,8 @@
   min-height: var(--base-menu-item-height);
   padding-top: var(--base-menu-item-padding-y);
   padding-bottom: var(--base-menu-item-padding-y);
-  padding-left: var(--base-menu-item-padding-left);
-  padding-right: var(--base-menu-item-padding-right);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
   box-sizing: border-box;
   position: relative;
   outline: none;
@@ -95,19 +95,19 @@
 .rt-BaseMenuShortcut {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  padding-left: var(--space-4);
-  margin-right: calc(-2px * var(--scaling)); /* Pulls closer to edge */
+  margin-inline-start: auto;
+  padding-inline-start: var(--space-4);
+  margin-inline-end: calc(-2px * var(--scaling)); /* Pulls closer to edge */
 }
 
 .rt-BaseMenuSubTriggerIcon {
   color: var(--gray-12);
-  margin-right: calc(-2px * var(--scaling));
+  margin-inline-end: calc(-2px * var(--scaling));
 }
 
 .rt-BaseMenuItemIndicator {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   width: var(--base-menu-item-padding-left);
   display: inline-flex;
   align-items: center;
@@ -118,8 +118,8 @@
   height: 1px;
   margin-top: var(--space-2);
   margin-bottom: var(--space-2);
-  margin-left: var(--base-menu-item-padding-left);
-  margin-right: var(--base-menu-item-padding-right);
+  margin-inline-start: var(--base-menu-item-padding-left);
+  margin-inline-end: var(--base-menu-item-padding-right);
 }
 
 .rt-BaseMenuLabel {
@@ -128,8 +128,8 @@
   min-height: var(--base-menu-item-height);
   padding-top: var(--base-menu-item-padding-y);
   padding-bottom: var(--base-menu-item-padding-y);
-  padding-left: var(--base-menu-item-padding-left);
-  padding-right: var(--base-menu-item-padding-right);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
   box-sizing: border-box;
   color: var(--gray-a10);
   user-select: none;
@@ -165,7 +165,7 @@
       --base-menu-content-padding: var(--space-2);
       --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
       --base-menu-item-padding-right: var(--space-2);
-      --base-menu-item-padding-y: var(--space-2);
+      --base-menu-item-padding-y: var(--space-1);
       --base-menu-item-height: var(--space-5);
       border-radius: var(--radius-3);
 
@@ -188,7 +188,7 @@
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
-        padding-left: calc(var(--base-menu-item-padding-left) + var(--component-gap-2));
+        padding-inline-start: calc(var(--base-menu-item-padding-left) + var(--component-gap-2));
       }
 
       & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
@@ -209,7 +209,7 @@
       --base-menu-content-padding: var(--space-3);
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
-      --base-menu-item-padding-y: var(--space-2);
+      --base-menu-item-padding-y: var(--space-1);
       --base-menu-item-height: var(--space-6);
       border-radius: var(--radius-5);
 
@@ -254,7 +254,7 @@
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
       --base-menu-item-padding-y: var(--space-2);
-      --base-menu-item-height: var(--space-6);
+      --base-menu-item-height: var(--space-7);
       border-radius: var(--radius-6);
 
       & :where(.rt-BaseMenuItem) {

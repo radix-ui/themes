@@ -130,7 +130,11 @@
     "release": "node scripts/release.js",
     "release:patch": "node scripts/release.js patch",
     "release:minor": "node scripts/release.js minor",
-    "release:major": "node scripts/release.js major"
+    "release:major": "node scripts/release.js major",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:types": "pnpm build:js:esm:types && tsd --typings tests/types/typings.d.ts --files \"tests/types/**/*.test-d.ts\""
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -161,6 +165,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jsdom": "^21.1.7",
     "autoprefixer": "10.4.19",
     "esbuild": "0.20.0",
     "eslint": "^9.18.0",
@@ -168,6 +176,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
+    "jsdom": "^25.0.1",
     "postcss": "8.4.33",
     "postcss-cli": "11.0.0",
     "postcss-combine-duplicated-selectors": "10.0.3",
@@ -178,8 +187,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "stylelint": "16.6.1",
+    "tsd": "^0.33.0",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1"
+    "typescript-eslint": "^8.18.1",
+    "vitest": "^2.1.9"
   },
   "homepage": "https://github.com/kushagradhawan/kookie-ui",
   "repository": {

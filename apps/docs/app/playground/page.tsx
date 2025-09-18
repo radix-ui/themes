@@ -9,6 +9,7 @@ import ToggleIconButtonPlayground from './ToggleIconButtonPlayground';
 import DialogPlayground from './DialogPlayground';
 import DropdownMenuPlayground from './DropdownMenuPlayground';
 import ChatbarPlayground from './ChatbarPlayground';
+import TextAreaPlayground from './TextAreaPlayground';
 
 export default function PlaygroundPage() {
   return (
@@ -52,6 +53,13 @@ export default function PlaygroundPage() {
               Chatbar
             </Heading>
             <ChatbarPlayground />
+          </Flex>
+
+          <Flex direction="column" gap="4">
+            <Heading weight="medium" size="4">
+              Text Area
+            </Heading>
+            <TextAreaPlayground />
           </Flex>
         </Flex>
       </Container>

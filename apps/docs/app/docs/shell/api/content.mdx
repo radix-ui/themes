@@ -5,7 +5,7 @@ import { CodeBlock } from '../../../components/code-block';
 
 # API
 
-The Shell component is a layout engine that provides structural patterns for building application interfaces. It manages layout state, composition rules, and responsive behavior across seven core slots. The component enforces composition rules (Rail ↔ Panel dependency, Sidebar exclusivity) and provides unstyled primitives for building complex layouts.
+The Shell component is a comprehensive layout engine that provides structural patterns for building application interfaces. It manages layout state through a reducer-based system, enforces composition rules, and provides responsive behavior across seven core slots. The component uses context splitting for optimal performance and supports both controlled and uncontrolled patterns.
 
 <CodeBlock buttonsPosition="center">
 
@@ -14,6 +14,7 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 ```
 
 </CodeBlock>
+
 
 </Section>
 
@@ -121,7 +122,7 @@ Fixed header at the top of the shell.
 
 ### Shell.Rail
 
-Narrow navigation strip on the left side. Works in conjunction with Panel.
+Narrow navigation strip on the left side. Works in conjunction with Panel. Supports both controlled and uncontrolled patterns.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -134,19 +135,35 @@ Narrow navigation strip on the left side. Works in conjunction with Panel.
     </Table.Header>
     <Table.Body>
       <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Responsive<boolean>`</Table.Cell>
+        <Table.Cell>Controlled open state (can be responsive). Cannot be used with `defaultOpen`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Uncontrolled initial open state (initial-only). Cannot be used with `open`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean, meta: { reason: 'init' | 'toggle' | 'responsive' | 'panel' }) => void`</Table.Cell>
+        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 64.</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
-        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
-        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
-      </Table.Row>
+      
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
         <Table.Cell>`ResponsivePresentation`</Table.Cell>
         <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Whether the rail can be collapsed. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
@@ -169,7 +186,7 @@ Narrow navigation strip on the left side. Works in conjunction with Panel.
 
 ### Shell.Panel
 
-Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
+Sidebar panel that appears next to the Rail. Collapses when Rail collapses. Supports both controlled and uncontrolled patterns with size management.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -182,15 +199,51 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
     </Table.Header>
     <Table.Body>
       <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+        <Table.Cell>Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Responsive<boolean>`</Table.Cell>
+        <Table.Cell>Uncontrolled initial open state (resolved once at mount). Cannot be used with `open`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean, meta: { reason: 'toggle' | 'left' | 'init' }) => void`</Table.Cell>
+        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Controlled width. Cannot be used with `defaultSize`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Uncontrolled initial width. Cannot be used with `size`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
+        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
+        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
+        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
-        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
-        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
-      </Table.Row>
+      
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
@@ -209,7 +262,7 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the panel can be collapsed via resize handle. Defaults to false.</Table.Cell>
+        <Table.Cell>Whether the panel can be collapsed via resize handle. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
@@ -277,7 +330,7 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
 
 ### Shell.Sidebar
 
-Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
+Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel. Supports three states: `'collapsed'`, `'thin'`, and `'expanded'`.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -290,14 +343,49 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
+        <Table.RowHeaderCell>`state`</Table.RowHeaderCell>
+        <Table.Cell>`SidebarMode | Responsive<SidebarMode>`</Table.Cell>
+        <Table.Cell>Controlled state (can be responsive): `'collapsed'`, `'thin'`, or `'expanded'`. Cannot be used with `defaultState`.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
-        <Table.Cell>`SidebarMode | ResponsiveSidebarMode`</Table.Cell>
-        <Table.Cell>Initial mode: `'collapsed'`, `'thin'`, or `'expanded'`. Can be responsive.</Table.Cell>
+        <Table.RowHeaderCell>`defaultState`</Table.RowHeaderCell>
+        <Table.Cell>`SidebarMode | Responsive<SidebarMode>`</Table.Cell>
+        <Table.Cell>Uncontrolled initial state (resolved once at mount). Cannot be used with `state`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onStateChange`</Table.RowHeaderCell>
+        <Table.Cell>`(state: SidebarMode, meta: { reason: 'init' | 'toggle' | 'responsive' }) => void`</Table.Cell>
+        <Table.Cell>Callback when state changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Controlled width when expanded. Cannot be used with `defaultSize`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Uncontrolled initial width when expanded. Cannot be used with `size`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
+        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
+        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
+        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Default width in pixels when expanded. Defaults to 288.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
@@ -321,8 +409,8 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`toggleModes`</Table.RowHeaderCell>
-        <Table.Cell>`Array<'thin' | 'expanded'>`</Table.Cell>
-        <Table.Cell>Available modes in toggle sequence. Defaults to `['thin', 'expanded']`.</Table.Cell>
+        <Table.Cell>`'both' | 'single'`</Table.Cell>
+        <Table.Cell>Toggle behavior: `'both'` cycles through all states, `'single'` toggles between collapsed and default. Defaults to `'both'`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
@@ -332,7 +420,7 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the sidebar can be collapsed via resize handle. Defaults to false.</Table.Cell>
+        <Table.Cell>Whether the sidebar can be collapsed via resize handle. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
@@ -398,6 +486,8 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel.
   </Table.Root>
 </Box>
 
+<Callout.Root variant="soft" size="2" color="amber" my="7"><Callout.Text><strong>Legacy Props:</strong> The Sidebar component also supports legacy `mode`/`defaultMode`/`onModeChange` props for backward compatibility. These are deprecated in favor of the new `state`/`defaultState`/`onStateChange` API.</Callout.Text></Callout.Root>
+
 ### Shell.Content
 
 Main content area. Always required in shell layouts.
@@ -423,7 +513,7 @@ Main content area. Always required in shell layouts.
 
 ### Shell.Inspector
 
-Right-side panel for inspectors, property panels, or contextual information.
+Right-side panel for inspectors, property panels, or contextual information. Supports both controlled and uncontrolled patterns with size management.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -436,15 +526,51 @@ Right-side panel for inspectors, property panels, or contextual information.
     </Table.Header>
     <Table.Body>
       <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Responsive<boolean>`</Table.Cell>
+        <Table.Cell>Controlled open state (can be responsive). Cannot be used with `defaultOpen`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Responsive<boolean>`</Table.Cell>
+        <Table.Cell>Uncontrolled initial open state (resolved once at mount). Cannot be used with `open`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean, meta: { reason: 'init' | 'toggle' | 'responsive' }) => void`</Table.Cell>
+        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Controlled width. Cannot be used with `defaultSize`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Uncontrolled initial width. Cannot be used with `size`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
+        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
+        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
+        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>Default width in pixels. Defaults to 320.</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`defaultMode`</Table.RowHeaderCell>
-        <Table.Cell>`PaneMode | ResponsiveMode`</Table.Cell>
-        <Table.Cell>Initial collapse state. Can be responsive across breakpoints.</Table.Cell>
-      </Table.Row>
+      
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
         <Table.Cell>`ResponsivePresentation`</Table.Cell>
@@ -468,7 +594,7 @@ Right-side panel for inspectors, property panels, or contextual information.
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the inspector can be collapsed via resize handle. Defaults to false.</Table.Cell>
+        <Table.Cell>Whether the inspector can be collapsed via resize handle. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
@@ -536,7 +662,7 @@ Right-side panel for inspectors, property panels, or contextual information.
 
 ### Shell.Bottom
 
-Bottom panel for terminals, logs, or contextual information.
+Bottom panel for terminals, logs, or contextual information. Supports both controlled and uncontrolled patterns with size management.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -548,6 +674,46 @@ Bottom panel for terminals, logs, or contextual information.
       </Table.Row>
     </Table.Header>
     <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Responsive<boolean>`</Table.Cell>
+        <Table.Cell>Controlled open state (can be responsive). Cannot be used with `defaultOpen`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean | Responsive<boolean>`</Table.Cell>
+        <Table.Cell>Uncontrolled initial open state (resolved once at mount). Cannot be used with `open`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean, meta: { reason: 'init' | 'toggle' | 'responsive' }) => void`</Table.Cell>
+        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Controlled height. Cannot be used with `defaultSize`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
+        <Table.Cell>`number | string`</Table.Cell>
+        <Table.Cell>Uncontrolled initial height. Cannot be used with `size`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
+        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
+        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
+        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
+        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+      </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
@@ -581,7 +747,7 @@ Bottom panel for terminals, logs, or contextual information.
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the bottom panel can be collapsed via resize handle. Defaults to false.</Table.Cell>
+        <Table.Cell>Whether the bottom panel can be collapsed via resize handle. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
@@ -649,7 +815,7 @@ Bottom panel for terminals, logs, or contextual information.
 
 ### Shell.Trigger
 
-Button trigger for controlling shell panes.
+Button trigger for controlling shell panes. Provides consistent behavior across all pane types with optional peek functionality.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -664,22 +830,37 @@ Button trigger for controlling shell panes.
       <Table.Row>
         <Table.RowHeaderCell>`target`</Table.RowHeaderCell>
         <Table.Cell>`PaneTarget`</Table.Cell>
-        <Table.Cell>Which pane to control: `'left'`, `'rail'`, `'panel'`, `'sidebar'`, `'inspector'`, `'bottom'`.</Table.Cell>
+        <Table.Cell>Which pane to control: `'left'`, `'rail'`, `'panel'`, `'sidebar'`, `'inspector'`, or `'bottom'`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`action`</Table.RowHeaderCell>
-        <Table.Cell>`TriggerAction`</Table.Cell>
-        <Table.Cell>Action to perform: `'toggle'`, `'expand'`, `'collapse'`. Defaults to `'toggle'`.</Table.Cell>
+        <Table.Cell>`'toggle' | 'expand' | 'collapse'`</Table.Cell>
+        <Table.Cell>Action to perform. Defaults to `'toggle'`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`peekOnHover`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether to show peek preview on hover when the target pane is collapsed. Defaults to false.</Table.Cell>
+        <Table.Cell>Whether to show peek preview on hover when target is collapsed. Defaults to false.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onClick`</Table.RowHeaderCell>
+        <Table.Cell>`(event: React.MouseEvent<HTMLButtonElement>) => void`</Table.Cell>
+        <Table.Cell>Additional click handler (called before the shell action).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onMouseEnter`</Table.RowHeaderCell>
+        <Table.Cell>`(event: React.MouseEvent<HTMLButtonElement>) => void`</Table.Cell>
+        <Table.Cell>Additional mouse enter handler (called before peek logic).</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onMouseLeave`</Table.RowHeaderCell>
+        <Table.Cell>`(event: React.MouseEvent<HTMLButtonElement>) => void`</Table.Cell>
+        <Table.Cell>Additional mouse leave handler (called before peek clear).</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Trigger content (typically an icon or text).</Table.Cell>
+        <Table.Cell>Button content (typically an icon).</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -693,22 +874,18 @@ Button trigger for controlling shell panes.
 
 ## Hooks
 
+The Shell component uses context splitting for optimal performance. Instead of using `useShell()` for reactive state (which causes re-renders on any state change), use the specific slice hooks for better performance.
+
 ### useShell
 
-Access the shell context and control pane states.
+Access stable shell actions and utilities. **Note:** This hook should not be used for reactive state as it causes unnecessary re-renders.
 
 <CodeBlock>
 
 ```tsx
 const shell = useShell();
 
-// Pane states
-shell.leftMode; // 'expanded' | 'collapsed'
-shell.sidebarMode; // 'collapsed' | 'thin' | 'expanded'
-shell.inspectorMode; // 'expanded' | 'collapsed'
-shell.bottomMode; // 'expanded' | 'collapsed'
-
-// Actions
+// Actions (stable references)
 shell.togglePane('sidebar');
 shell.expandPane('inspector');
 shell.collapsePane('bottom');
@@ -716,14 +893,35 @@ shell.collapsePane('bottom');
 // Peek functionality
 shell.peekPane('inspector');
 shell.clearPeek();
+```
+
+</CodeBlock>
+
+### Slice Hooks (Recommended)
+
+Use these hooks for reactive state to avoid unnecessary re-renders:
+
+<CodeBlock>
+
+```tsx
+// Pane mode states
+const { leftMode, setLeftMode } = useLeftMode();
+const { panelMode, setPanelMode } = usePanelMode();
+const { sidebarMode, setSidebarMode } = useSidebarMode();
+const { inspectorMode, setInspectorMode } = useInspectorMode();
+const { bottomMode, setBottomMode } = useBottomMode();
+
+// Actions (same as useShell but from slice context)
+const { togglePane, expandPane, collapsePane } = useShellActions();
+
+// Peek state
+const { peekTarget, peekPane, clearPeek } = usePeek();
 
 // Composition detection
-shell.hasLeft; // boolean
-shell.hasSidebar; // boolean
+const { hasLeft, hasSidebar } = useComposition();
 
 // Responsive state
-shell.currentBreakpoint; // 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-shell.currentBreakpointReady; // boolean
+const { currentBreakpoint, currentBreakpointReady } = usePresentation();
 ```
 
 </CodeBlock>
@@ -743,6 +941,174 @@ const presentation = useResponsivePresentation({
 
 // Returns current resolved presentation value
 console.log(presentation); // 'overlay' | 'fixed' | 'stacked'
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## State Management
+
+The Shell component uses a reducer-based state management system for better performance and consistency. All pane state changes go through the reducer, which handles cascading rules (e.g., left collapse → panel collapse).
+
+### Reducer Actions
+
+<CodeBlock>
+
+```tsx
+// Internal reducer actions (not exposed to users)
+type PaneAction =
+  | { type: 'SET_LEFT_MODE'; mode: PaneMode }
+  | { type: 'SET_PANEL_MODE'; mode: PaneMode }
+  | { type: 'SET_SIDEBAR_MODE'; mode: SidebarMode }
+  | { type: 'SET_INSPECTOR_MODE'; mode: PaneMode }
+  | { type: 'SET_BOTTOM_MODE'; mode: PaneMode }
+  | { type: 'TOGGLE_PANE'; target: PaneTarget }
+  | { type: 'EXPAND_PANE'; target: PaneTarget }
+  | { type: 'COLLAPSE_PANE'; target: PaneTarget };
+```
+
+</CodeBlock>
+
+### Cascading Rules
+
+The reducer automatically handles these cascading behaviors:
+
+- **Left collapse → Panel collapse**: When the left container collapses, the panel automatically collapses
+- **Panel expand → Left expand**: When the panel expands, the left container automatically expands
+- **Sidebar exclusivity**: Sidebar cannot coexist with Rail or Panel (enforced with console warnings)
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Examples
+
+### Basic Layout with Rail + Panel
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Header height={64}>
+    <div>App Header</div>
+  </Shell.Header>
+  
+  <Shell.Rail expandedSize={64} defaultMode="expanded">
+    <div>Navigation Icons</div>
+  </Shell.Rail>
+  
+  <Shell.Panel 
+    expandedSize={288} 
+    defaultMode="expanded"
+    resizable
+    collapsible
+    snapPoints={[200, 300, 400]}
+  >
+    <div>Sidebar Content</div>
+  </Shell.Panel>
+  
+  <Shell.Content>
+    <div>Main Application Content</div>
+  </Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Sidebar-Only Layout
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Header height={64}>
+    <div>App Header</div>
+  </Shell.Header>
+  
+  <Shell.Sidebar 
+    defaultState="expanded"
+    presentation={{ initial: 'overlay', md: 'fixed' }}
+    toggleModes="both"
+    resizable
+    collapsible
+  >
+    <div>Sidebar Content</div>
+  </Shell.Sidebar>
+  
+  <Shell.Content>
+    <div>Main Application Content</div>
+  </Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Controlled Sidebar with Size Management
+
+<CodeBlock>
+
+```tsx
+function App() {
+  const [sidebarState, setSidebarState] = useState('expanded');
+  const [sidebarSize, setSidebarSize] = useState(300);
+  
+  return (
+    <Shell.Root>
+      <Shell.Sidebar 
+        state={sidebarState}
+        onStateChange={(state, meta) => {
+          console.log('State changed:', state, 'Reason:', meta.reason);
+          setSidebarState(state);
+        }}
+        size={sidebarSize}
+        onSizeChange={(size, meta) => {
+          console.log('Size changed:', size, 'Reason:', meta.reason);
+          setSidebarSize(size);
+        }}
+        sizeUpdate="throttle"
+        sizeUpdateMs={100}
+        resizable
+        collapsible
+      >
+        <div>Controlled Sidebar</div>
+      </Shell.Sidebar>
+      
+      <Shell.Content>
+        <div>Main Content</div>
+      </Shell.Content>
+    </Shell.Root>
+  );
+}
+```
+
+</CodeBlock>
+
+### Performance-Optimized Component
+
+<CodeBlock>
+
+```tsx
+function MySidebar() {
+  // Use slice hooks for better performance
+  const { sidebarMode, setSidebarMode } = useSidebarMode();
+  const { togglePane } = useShellActions();
+  
+  return (
+    <div>
+      <p>Current mode: {sidebarMode}</p>
+      <button onClick={() => togglePane('sidebar')}>
+        Toggle Sidebar
+      </button>
+    </div>
+  );
+}
 ```
 
 </CodeBlock>
@@ -789,18 +1155,18 @@ type ResponsivePresentation =
 
 </CodeBlock>
 
-### ResponsiveMode
+### Responsive helpers
 
 <CodeBlock>
 
 ```tsx
-type ResponsiveMode =
-  | PaneMode
-  | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', PaneMode>>;
+type Responsive<T> = T | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', T>>;
 
-type ResponsiveSidebarMode =
-  | SidebarMode
-  | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', SidebarMode>>;
+// Examples
+// Sidebar controlled responsive state
+state: Responsive<SidebarMode>;
+// Inspector controlled responsive open
+open: Responsive<boolean>;
 ```
 
 </CodeBlock>
@@ -838,6 +1204,88 @@ type PaneSizePersistence = {
 
 </CodeBlock>
 
+### Slice Hook Types
+
+<CodeBlock>
+
+```tsx
+// Import these hooks for optimal performance
+import {
+  useLeftMode,
+  usePanelMode,
+  useSidebarMode,
+  useInspectorMode,
+  useBottomMode,
+  useShellActions,
+  usePeek,
+  useComposition,
+  usePresentation,
+} from '@kushagradhawan/kookie-ui/shell.context';
+```
+
+</CodeBlock>
+
+### Complete Type Definitions
+
+<CodeBlock>
+
+```tsx
+// Core types
+type PaneMode = 'expanded' | 'collapsed';
+type SidebarMode = 'collapsed' | 'thin' | 'expanded';
+type PaneTarget = 'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom';
+type TriggerAction = 'toggle' | 'expand' | 'collapse';
+type Breakpoint = 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+// Responsive types
+type ResponsiveMode = PaneMode | Partial<Record<Breakpoint, PaneMode>>;
+type ResponsiveSidebarMode = SidebarMode | Partial<Record<Breakpoint, SidebarMode>>;
+type ResponsivePresentation = 'fixed' | 'overlay' | 'stacked' | Partial<Record<Breakpoint, 'fixed' | 'overlay' | 'stacked'>>;
+
+// Size management
+type PaneSizePersistence = {
+  load?: () => number | Promise<number | undefined> | undefined;
+  save?: (size: number) => void | Promise<void>;
+};
+
+// Change metadata types
+type SidebarStateChangeMeta = { reason: 'init' | 'toggle' | 'responsive' };
+type SidebarSizeChangeMeta = { reason: 'init' | 'resize' | 'controlled' };
+type PaneOpenChangeMeta = { reason: 'init' | 'toggle' | 'responsive' | 'left' | 'panel' };
+type PaneSizeChangeMeta = { reason: 'init' | 'resize' | 'controlled' };
+
+// Hook return types
+type UseLeftModeReturn = [PaneMode, (mode: PaneMode) => void];
+type UsePanelModeReturn = [PaneMode, (mode: PaneMode) => void];
+type UseSidebarModeReturn = [SidebarMode, (mode: SidebarMode) => void];
+type UseInspectorModeReturn = [PaneMode, (mode: PaneMode) => void];
+type UseBottomModeReturn = [PaneMode, (mode: PaneMode) => void];
+
+type UseShellActionsReturn = {
+  togglePane: (target: PaneTarget) => void;
+  expandPane: (target: PaneTarget) => void;
+  collapsePane: (target: PaneTarget) => void;
+};
+
+type UsePeekReturn = {
+  peekTarget: PaneTarget | null;
+  peekPane: (target: PaneTarget) => void;
+  clearPeek: () => void;
+};
+
+type UseCompositionReturn = {
+  hasLeft: boolean;
+  hasSidebar: boolean;
+};
+
+type UsePresentationReturn = {
+  currentBreakpoint: Breakpoint;
+  currentBreakpointReady: boolean;
+};
+```
+
+</CodeBlock>
+
 </Section>
 
 <Separator size="4"/>
@@ -846,9 +1294,7 @@ type PaneSizePersistence = {
 
 ## Composition Rules
 
-<Callout.Root variant="soft" size="2" color="blue" my="7">
-  <Callout.Text>The Shell component enforces specific composition rules to maintain layout consistency and prevent conflicting arrangements.</Callout.Text>
-</Callout.Root>
+<Callout.Root variant="soft" size="2" color="blue" my="7"><Callout.Text>The Shell component enforces specific composition rules to maintain layout consistency and prevent conflicting arrangements.</Callout.Text></Callout.Root>
 
 ### Valid Combinations
 
@@ -881,9 +1327,7 @@ type PaneSizePersistence = {
 
 ### Invalid Combinations
 
-<Callout.Root variant="soft" size="2" color="red" my="7">
-  <Callout.Text>The following combinations will trigger console warnings and may cause layout conflicts.</Callout.Text>
-</Callout.Root>
+<Callout.Root variant="soft" size="2" color="red" my="7"><Callout.Text>The following combinations will trigger console warnings and may cause layout conflicts.</Callout.Text></Callout.Root>
 
 <CodeBlock>
 
@@ -913,7 +1357,7 @@ All shell panes support responsive configurations using breakpoint objects:
 
 ```tsx
 <Shell.Sidebar
-  defaultMode={{
+  state={{
     initial: 'collapsed',
     sm: 'thin',
     lg: 'expanded'

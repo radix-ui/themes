@@ -28,17 +28,28 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as Sheet from './sheet.js';
-import { Inset } from './inset.js';
 import { VisuallyHidden } from './visually-hidden.js';
-import { useResponsivePresentation } from './shell.hooks.js';
+import { useResponsivePresentation, useResponsiveValue } from './shell.hooks.js';
 import { PaneResizeContext } from './_internal/shell-resize.js';
 import { PaneHandle, PanelHandle, SidebarHandle, InspectorHandle, BottomHandle } from './_internal/shell-handles.js';
 import { Sidebar } from './_internal/shell-sidebar.js';
 import { Bottom } from './_internal/shell-bottom.js';
 import { Inspector } from './_internal/shell-inspector.js';
-import type { PresentationValue, ResponsivePresentation, PaneMode, SidebarMode, ResponsiveMode, ResponsiveSidebarMode, PaneSizePersistence, Breakpoint, PaneTarget } from './shell.types.js';
+import type { PresentationValue, ResponsivePresentation, PaneMode, SidebarMode, PaneSizePersistence, Breakpoint, PaneTarget, Responsive } from './shell.types.js';
 import { BREAKPOINTS } from './shell.types.js';
-import { ShellProvider, useShell } from './shell.context.js';
+import {
+  ShellProvider,
+  useShell,
+  LeftModeContext,
+  PanelModeContext,
+  SidebarModeContext,
+  InspectorModeContext,
+  BottomModeContext,
+  PresentationContext,
+  PeekContext,
+  ActionsContext,
+  CompositionContext,
+} from './shell.context.js';
 
 // Shell context is provided via ShellProvider (see shell.context.tsx)
 
@@ -76,14 +87,131 @@ function useBreakpoint(): { bp: Breakpoint; ready: boolean } {
     };
 
     compute();
-    mqls.forEach(([, m]) => m.addEventListener('change', compute));
+    const cleanups: Array<() => void> = [];
+    mqls.forEach(([, m]) => {
+      const mm = m as MediaQueryList & {
+        addEventListener?: (type: 'change', listener: (e: MediaQueryListEvent) => void) => void;
+        removeEventListener?: (type: 'change', listener: (e: MediaQueryListEvent) => void) => void;
+        addListener?: (listener: (e: MediaQueryListEvent) => void) => void;
+        removeListener?: (listener: (e: MediaQueryListEvent) => void) => void;
+      };
+      if (typeof mm.addEventListener === 'function' && typeof mm.removeEventListener === 'function') {
+        mm.addEventListener('change', compute as any);
+        cleanups.push(() => mm.removeEventListener?.('change', compute as any));
+      } else if (typeof mm.addListener === 'function' && typeof mm.removeListener === 'function') {
+        mm.addListener(compute as any);
+        cleanups.push(() => mm.removeListener?.(compute as any));
+      }
+    });
 
     return () => {
-      mqls.forEach(([, m]) => m.removeEventListener('change', compute));
+      cleanups.forEach((fn) => {
+        try {
+          fn();
+        } catch {}
+      });
     };
   }, []);
 
   return { bp: currentBp, ready };
+}
+
+// Reducer-based pane state management to simplify cascading rules
+type PaneState = {
+  leftMode: PaneMode;
+  panelMode: PaneMode;
+  sidebarMode: SidebarMode;
+  inspectorMode: PaneMode;
+  bottomMode: PaneMode;
+};
+
+type PaneAction =
+  | { type: 'SET_LEFT_MODE'; mode: PaneMode }
+  | { type: 'SET_PANEL_MODE'; mode: PaneMode }
+  | { type: 'SET_SIDEBAR_MODE'; mode: SidebarMode }
+  | { type: 'SET_INSPECTOR_MODE'; mode: PaneMode }
+  | { type: 'SET_BOTTOM_MODE'; mode: PaneMode }
+  | { type: 'TOGGLE_PANE'; target: PaneTarget }
+  | { type: 'EXPAND_PANE'; target: PaneTarget }
+  | { type: 'COLLAPSE_PANE'; target: PaneTarget };
+
+function paneReducer(state: PaneState, action: PaneAction): PaneState {
+  switch (action.type) {
+    case 'SET_LEFT_MODE': {
+      // Collapsing left cascades to panel collapse
+      if (action.mode === 'collapsed') {
+        return { ...state, leftMode: 'collapsed', panelMode: 'collapsed' };
+      }
+      return { ...state, leftMode: action.mode };
+    }
+    case 'SET_PANEL_MODE': {
+      // Expanding panel ensures left is expanded
+      if (action.mode === 'expanded' && state.leftMode !== 'expanded') {
+        return { ...state, leftMode: 'expanded', panelMode: 'expanded' };
+      }
+      return { ...state, panelMode: action.mode };
+    }
+    case 'SET_SIDEBAR_MODE':
+      return { ...state, sidebarMode: action.mode };
+    case 'SET_INSPECTOR_MODE':
+      return { ...state, inspectorMode: action.mode };
+    case 'SET_BOTTOM_MODE':
+      return { ...state, bottomMode: action.mode };
+    case 'TOGGLE_PANE': {
+      switch (action.target) {
+        case 'left':
+        case 'rail':
+          return { ...state, leftMode: state.leftMode === 'expanded' ? 'collapsed' : 'expanded', panelMode: state.leftMode === 'expanded' ? 'collapsed' : state.panelMode };
+        case 'panel': {
+          if (state.leftMode === 'collapsed') {
+            return { ...state, leftMode: 'expanded', panelMode: 'expanded' };
+          }
+          return { ...state, panelMode: state.panelMode === 'expanded' ? 'collapsed' : 'expanded' };
+        }
+        case 'sidebar': {
+          // Sidebar toggle sequencing is handled externally via setSidebarToggleComputer
+          // This reducer only flips between expanded<->collapsed by default; thin is set by caller
+          const next: SidebarMode = state.sidebarMode === 'collapsed' ? 'expanded' : state.sidebarMode === 'expanded' ? 'collapsed' : 'expanded';
+          return { ...state, sidebarMode: next };
+        }
+        case 'inspector':
+          return { ...state, inspectorMode: state.inspectorMode === 'expanded' ? 'collapsed' : 'expanded' };
+        case 'bottom':
+          return { ...state, bottomMode: state.bottomMode === 'expanded' ? 'collapsed' : 'expanded' };
+      }
+    }
+    case 'EXPAND_PANE': {
+      switch (action.target) {
+        case 'left':
+        case 'rail':
+          return { ...state, leftMode: 'expanded' };
+        case 'panel':
+          return { ...state, leftMode: 'expanded', panelMode: 'expanded' };
+        case 'sidebar':
+          return { ...state, sidebarMode: 'expanded' };
+        case 'inspector':
+          return { ...state, inspectorMode: 'expanded' };
+        case 'bottom':
+          return { ...state, bottomMode: 'expanded' };
+      }
+    }
+    case 'COLLAPSE_PANE': {
+      switch (action.target) {
+        case 'left':
+        case 'rail':
+          return { ...state, leftMode: 'collapsed', panelMode: 'collapsed' };
+        case 'panel':
+          return { ...state, panelMode: 'collapsed' };
+        case 'sidebar':
+          return { ...state, sidebarMode: 'collapsed' };
+        case 'inspector':
+          return { ...state, inspectorMode: 'collapsed' };
+        case 'bottom':
+          return { ...state, bottomMode: 'collapsed' };
+      }
+    }
+  }
+  return state;
 }
 
 // Root Component
@@ -95,14 +223,24 @@ interface ShellRootProps extends React.ComponentPropsWithoutRef<'div'> {
 const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, children, height = 'full', ...props }, ref) => {
   const { bp: currentBreakpoint, ready: currentBreakpointReady } = useBreakpoint();
 
-  // Pane state management
-  const [leftMode, setLeftMode] = React.useState<PaneMode>('collapsed');
-  const [panelMode, setPanelMode] = React.useState<PaneMode>('collapsed');
-  const [sidebarMode, setSidebarMode] = React.useState<SidebarMode>('expanded');
-  // Library-managed phase for sidebar presentation changes (thin ↔ expanded)
-  const [sidebarPhase, setSidebarPhase] = React.useState<'idle' | 'hiding' | 'resizing' | 'showing'>('idle');
-  const [inspectorMode, setInspectorMode] = React.useState<PaneMode>('collapsed');
-  const [bottomMode, setBottomMode] = React.useState<PaneMode>('collapsed');
+  // Compute initial defaults from immediate children (one-time, uncontrolled defaults)
+  const initialChildren = React.Children.toArray(children) as React.ReactElement[];
+  const hasPanelDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Panel' && Boolean((el as any).props?.defaultOpen));
+  const hasRailDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Rail' && Boolean((el as any).props?.defaultOpen));
+
+  // Pane state management via reducer
+  const [paneState, dispatchPane] = React.useReducer(paneReducer, {
+    leftMode: hasPanelDefaultOpen || hasRailDefaultOpen ? 'expanded' : 'collapsed',
+    panelMode: hasPanelDefaultOpen ? 'expanded' : 'collapsed',
+    sidebarMode: 'expanded',
+    inspectorMode: 'collapsed',
+    bottomMode: 'collapsed',
+  });
+  const setLeftMode = React.useCallback((mode: PaneMode) => dispatchPane({ type: 'SET_LEFT_MODE', mode }), []);
+  const setPanelMode = React.useCallback((mode: PaneMode) => dispatchPane({ type: 'SET_PANEL_MODE', mode }), []);
+  const setSidebarMode = React.useCallback((mode: SidebarMode) => dispatchPane({ type: 'SET_SIDEBAR_MODE', mode }), []);
+  const setInspectorMode = React.useCallback((mode: PaneMode) => dispatchPane({ type: 'SET_INSPECTOR_MODE', mode }), []);
+  const setBottomMode = React.useCallback((mode: PaneMode) => dispatchPane({ type: 'SET_BOTTOM_MODE', mode }), []);
 
   // Removed: defaultMode responsiveness and manual change tracking
 
@@ -116,12 +254,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
     sidebarToggleComputerRef.current = fn;
   }, []);
 
-  // Left collapse cascades to Panel
-  React.useEffect(() => {
-    if (leftMode === 'collapsed') {
-      setPanelMode('collapsed');
-    }
-  }, [leftMode]);
+  // Reducer handles left→panel cascade; no effect needed
 
   // Composition validation
   React.useEffect(() => {
@@ -157,107 +290,38 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
 
   const togglePane = React.useCallback(
     (target: PaneTarget) => {
-      switch (target) {
-        case 'left':
-        case 'rail':
-          setLeftMode((prev) => (prev === 'expanded' ? 'collapsed' : 'expanded'));
-          break;
-        case 'panel':
-          // Panel toggle: expand left if collapsed, then toggle panel
-          if (leftMode === 'collapsed') {
-            setLeftMode('expanded');
-            setPanelMode('expanded');
-          } else {
-            setPanelMode((prev) => (prev === 'expanded' ? 'collapsed' : 'expanded'));
-          }
-          break;
-        case 'sidebar': {
-          // Orchestrate thin ↔ expanded sequencing: fade out → change mode → fade in
-          const next = sidebarToggleComputerRef.current(sidebarMode as SidebarMode);
-          const isWidthOnlyChange = sidebarMode !== next && sidebarMode !== 'collapsed' && next !== 'collapsed';
-          if (!isWidthOnlyChange) {
-            setSidebarMode(next);
-            break;
-          }
-          const SMALL_MS = 150;
-          setSidebarPhase('hiding');
-          window.setTimeout(() => {
-            setSidebarPhase('resizing');
-            setSidebarMode(next);
-            window.setTimeout(() => {
-              setSidebarPhase('showing');
-              window.setTimeout(() => setSidebarPhase('idle'), SMALL_MS);
-            }, SMALL_MS);
-          }, SMALL_MS);
-          break;
-        }
-        case 'inspector':
-          setInspectorMode((prev) => (prev === 'expanded' ? 'collapsed' : 'expanded'));
-          break;
-        case 'bottom':
-          setBottomMode((prev) => (prev === 'expanded' ? 'collapsed' : 'expanded'));
-          break;
+      if (target === 'sidebar') {
+        const next = sidebarToggleComputerRef.current(paneState.sidebarMode as SidebarMode);
+        setSidebarMode(next);
+        return;
       }
+      dispatchPane({ type: 'TOGGLE_PANE', target });
     },
-    [leftMode, sidebarMode],
+    [paneState.sidebarMode],
   );
 
   const expandPane = React.useCallback((target: PaneTarget) => {
-    switch (target) {
-      case 'left':
-      case 'rail':
-        setLeftMode('expanded');
-        break;
-      case 'panel':
-        setLeftMode('expanded');
-        setPanelMode('expanded');
-        break;
-      case 'sidebar':
-        setSidebarMode('expanded');
-        break;
-      case 'inspector':
-        setInspectorMode('expanded');
-        break;
-      case 'bottom':
-        setBottomMode('expanded');
-        break;
-    }
+    if (target === 'sidebar') return setSidebarMode('expanded');
+    dispatchPane({ type: 'EXPAND_PANE', target });
   }, []);
 
   const collapsePane = React.useCallback((target: PaneTarget) => {
-    switch (target) {
-      case 'left':
-      case 'rail':
-        setLeftMode('collapsed');
-        break;
-      case 'panel':
-        setPanelMode('collapsed');
-        break;
-      case 'sidebar':
-        setSidebarMode('collapsed');
-        break;
-      case 'inspector':
-        setInspectorMode('collapsed');
-        break;
-      case 'bottom':
-        setBottomMode('collapsed');
-        break;
-    }
+    if (target === 'sidebar') return setSidebarMode('collapsed');
+    dispatchPane({ type: 'COLLAPSE_PANE', target });
   }, []);
 
   const baseContextValue = React.useMemo(
     () => ({
-      leftMode,
+      leftMode: paneState.leftMode,
       setLeftMode,
-      panelMode,
+      panelMode: paneState.panelMode,
       setPanelMode,
-      sidebarMode,
+      sidebarMode: paneState.sidebarMode,
       setSidebarMode,
-      inspectorMode,
+      inspectorMode: paneState.inspectorMode,
       setInspectorMode,
-      bottomMode,
+      bottomMode: paneState.bottomMode,
       setBottomMode,
-      sidebarPhase,
       hasLeft,
       setHasLeft,
       hasSidebar,
@@ -274,12 +338,11 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
       onPanelDefaults,
     }),
     [
-      leftMode,
-      panelMode,
-      sidebarMode,
-      inspectorMode,
-      bottomMode,
-      sidebarPhase,
+      paneState.leftMode,
+      paneState.panelMode,
+      paneState.sidebarMode,
+      paneState.inspectorMode,
+      paneState.bottomMode,
       hasLeft,
       hasSidebar,
       currentBreakpoint,
@@ -320,6 +383,17 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const peekPane = React.useCallback((target: PaneTarget) => setPeekTarget(target), []);
   const clearPeek = React.useCallback(() => setPeekTarget(null), []);
 
+  // Memoized slice context values to avoid notifying unrelated consumers
+  const presentationCtxValue = React.useMemo(() => ({ currentBreakpoint, currentBreakpointReady, leftResolvedPresentation: devLeftPres }), [currentBreakpoint, currentBreakpointReady, devLeftPres]);
+  const leftModeCtxValue = React.useMemo(() => ({ leftMode: paneState.leftMode, setLeftMode }), [paneState.leftMode, setLeftMode]);
+  const panelModeCtxValue = React.useMemo(() => ({ panelMode: paneState.panelMode, setPanelMode }), [paneState.panelMode, setPanelMode]);
+  const sidebarModeCtxValue = React.useMemo(() => ({ sidebarMode: paneState.sidebarMode, setSidebarMode }), [paneState.sidebarMode, setSidebarMode]);
+  const inspectorModeCtxValue = React.useMemo(() => ({ inspectorMode: paneState.inspectorMode, setInspectorMode }), [paneState.inspectorMode, setInspectorMode]);
+  const bottomModeCtxValue = React.useMemo(() => ({ bottomMode: paneState.bottomMode, setBottomMode }), [paneState.bottomMode, setBottomMode]);
+  const compositionCtxValue = React.useMemo(() => ({ hasLeft, setHasLeft, hasSidebar, setHasSidebar }), [hasLeft, setHasLeft, hasSidebar, setHasSidebar]);
+  const peekCtxValue = React.useMemo(() => ({ peekTarget, setPeekTarget, peekPane, clearPeek }), [peekTarget, setPeekTarget, peekPane, clearPeek]);
+  const actionsCtxValue = React.useMemo(() => ({ togglePane, expandPane, collapsePane, setSidebarToggleComputer }), [togglePane, expandPane, collapsePane, setSidebarToggleComputer]);
+
   return (
     <div {...props} ref={ref} className={classNames('rt-ShellRoot', className)} style={{ ...heightStyle, ...props.style }}>
       <ShellProvider
@@ -331,44 +405,69 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
           clearPeek,
         }}
       >
-        {headerEls}
-        <div
-          className="rt-ShellBody"
-          data-peek-target={peekTarget ?? undefined}
-          style={
-            peekTarget === 'rail' || peekTarget === 'panel'
-              ? ({
-                  ['--peek-rail-width' as any]: `${railDefaultSizeRef.current}px`,
-                } as React.CSSProperties)
-              : undefined
-          }
-        >
-          {hasLeftChildren && !hasSidebarChildren
-            ? (() => {
-                const firstRail = railEls[0] as any;
-                const passthroughProps = firstRail
-                  ? {
-                      mode: firstRail.props?.mode,
-                      defaultMode: firstRail.props?.defaultMode,
-                      onModeChange: firstRail.props?.onModeChange,
-                      presentation: firstRail.props?.presentation,
-                      collapsible: firstRail.props?.collapsible,
-                      onExpand: firstRail.props?.onExpand,
-                      onCollapse: firstRail.props?.onCollapse,
-                    }
-                  : {};
-                return (
-                  <Left {...(passthroughProps as any)}>
-                    {railEls}
-                    {panelEls}
-                  </Left>
-                );
-              })()
-            : sidebarEls}
-          {contentEls}
-          {inspectorEls}
-        </div>
-        {bottomEls}
+        <PresentationContext.Provider value={presentationCtxValue}>
+          <LeftModeContext.Provider value={leftModeCtxValue}>
+            <PanelModeContext.Provider value={panelModeCtxValue}>
+              <SidebarModeContext.Provider value={sidebarModeCtxValue}>
+                <InspectorModeContext.Provider value={inspectorModeCtxValue}>
+                  <BottomModeContext.Provider value={bottomModeCtxValue}>
+                    <CompositionContext.Provider value={compositionCtxValue}>
+                      <PeekContext.Provider value={peekCtxValue}>
+                        <ActionsContext.Provider value={actionsCtxValue}>
+                          {headerEls}
+                          <div
+                            className="rt-ShellBody"
+                            data-peek-target={peekTarget ?? undefined}
+                            style={
+                              peekTarget === 'rail' || peekTarget === 'panel'
+                                ? ({
+                                    ['--peek-rail-width' as any]: `${railDefaultSizeRef.current}px`,
+                                  } as React.CSSProperties)
+                                : undefined
+                            }
+                          >
+                            {hasLeftChildren && !hasSidebarChildren
+                              ? (() => {
+                                  const firstRail = railEls[0] as any;
+                                  const passthroughProps = firstRail
+                                    ? {
+                                        // Notification passthrough used by Left; not spread to DOM in Left
+                                        onOpenChange: firstRail.props?.onOpenChange,
+                                        open: firstRail.props?.open,
+                                        defaultOpen: firstRail.props?.defaultOpen,
+                                        presentation: firstRail.props?.presentation,
+                                        collapsible: firstRail.props?.collapsible,
+                                        onExpand: firstRail.props?.onExpand,
+                                        onCollapse: firstRail.props?.onCollapse,
+                                      }
+                                    : { defaultOpen: hasPanelDefaultOpen ? true : undefined };
+                                  // Controlled sync in Root: mirror first Rail.open if provided
+                                  React.useEffect(() => {
+                                    if (typeof firstRail?.props?.open === 'undefined') return;
+                                    const shouldOpen = Boolean(firstRail?.props?.open);
+                                    setLeftMode(shouldOpen ? 'expanded' : 'collapsed');
+                                  }, [firstRail?.props?.open]);
+                                  return (
+                                    <Left {...(passthroughProps as any)}>
+                                      {railEls}
+                                      {panelEls}
+                                    </Left>
+                                  );
+                                })()
+                              : sidebarEls}
+                            {contentEls}
+                            {inspectorEls}
+                          </div>
+                          {bottomEls}
+                        </ActionsContext.Provider>
+                      </PeekContext.Provider>
+                    </CompositionContext.Provider>
+                  </BottomModeContext.Provider>
+                </InspectorModeContext.Provider>
+              </SidebarModeContext.Provider>
+            </PanelModeContext.Provider>
+          </LeftModeContext.Provider>
+        </PresentationContext.Provider>
       </ShellProvider>
     </div>
   );
@@ -396,9 +495,6 @@ Header.displayName = 'Shell.Header';
 // Pane Props Interface (shared by Panel, Sidebar, Inspector, Bottom)
 interface PaneProps extends React.ComponentPropsWithoutRef<'div'> {
   presentation?: ResponsivePresentation;
-  mode?: PaneMode;
-  defaultMode?: ResponsiveMode;
-  onModeChange?: (mode: PaneMode) => void;
   expandedSize?: number;
   minSize?: number;
   maxSize?: number;
@@ -421,29 +517,32 @@ interface PaneProps extends React.ComponentPropsWithoutRef<'div'> {
 // Left container (auto-created for Rail+Panel)
 interface LeftProps extends React.ComponentPropsWithoutRef<'div'> {
   presentation?: ResponsivePresentation;
-  mode?: PaneMode;
-  defaultMode?: ResponsiveMode;
-  onModeChange?: (mode: PaneMode) => void;
+  // New: passthrough from Rail
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean, meta: { reason: 'init' | 'toggle' | 'panel' | 'responsive' }) => void;
   collapsible?: boolean;
   onExpand?: () => void;
   onCollapse?: () => void;
 }
 
 // Rail (special case)
-interface RailProps extends React.ComponentPropsWithoutRef<'div'> {
+type LeftOpenChangeMeta = { reason: 'init' | 'toggle' | 'responsive' | 'panel' };
+
+type RailControlledProps = { open: boolean; onOpenChange?: (open: boolean, meta: LeftOpenChangeMeta) => void; defaultOpen?: never };
+type RailUncontrolledProps = { defaultOpen?: boolean; onOpenChange?: (open: boolean, meta: LeftOpenChangeMeta) => void; open?: never };
+
+type RailProps = React.ComponentPropsWithoutRef<'div'> & {
   presentation?: ResponsivePresentation;
-  mode?: PaneMode;
-  defaultMode?: ResponsiveMode;
-  onModeChange?: (mode: PaneMode) => void;
   expandedSize?: number;
   collapsible?: boolean;
   onExpand?: () => void;
   onCollapse?: () => void;
-}
+} & (RailControlledProps | RailUncontrolledProps);
 
 // Left container - behaves like Inspector but contains Rail+Panel
 const Left = React.forwardRef<HTMLDivElement, LeftProps>(
-  ({ className, presentation = { initial: 'overlay', sm: 'fixed' }, mode, defaultMode = 'collapsed', onModeChange, collapsible = true, onExpand, onCollapse, children, style, ...props }, ref) => {
+  ({ className, presentation = { initial: 'fixed', sm: 'fixed' }, collapsible = true, onExpand, onCollapse, children, style, ...props }, ref) => {
     const shell = useShell();
     const resolvedPresentation = useResponsivePresentation(presentation);
     const isOverlay = resolvedPresentation === 'overlay';
@@ -468,50 +567,48 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
       return () => shell.setHasLeft(false);
     }, [shell]);
 
-    // Always-follow responsive defaultMode for uncontrolled Left (Rail stack)
-    const resolveResponsiveMode = React.useCallback((): PaneMode => {
-      if (typeof defaultMode === 'string') return defaultMode as PaneMode;
-      const dm = defaultMode as Partial<Record<Breakpoint, PaneMode>> | undefined;
-      if (dm && dm[shell.currentBreakpoint as Breakpoint]) {
-        return dm[shell.currentBreakpoint as Breakpoint] as PaneMode;
-      }
-      const bpKeys = Object.keys(BREAKPOINTS) as Array<keyof typeof BREAKPOINTS>;
-      const order: Breakpoint[] = ([...bpKeys].reverse() as Breakpoint[]).concat('initial' as Breakpoint);
-      const startIdx = order.indexOf(shell.currentBreakpoint as Breakpoint);
-      for (let i = startIdx + 1; i < order.length; i++) {
-        const bp = order[i];
-        if (dm && dm[bp]) {
-          return dm[bp] as PaneMode;
-        }
-      }
-      return 'collapsed';
-    }, [defaultMode, shell.currentBreakpoint]);
-
     const lastBpRef = React.useRef<Breakpoint | null>(null);
+    const lastLeftModeRef = React.useRef<PaneMode | null>(null);
+    const initNotifiedRef = React.useRef(false);
+    const resolvedDefaultOpen = useResponsiveValue((props as any).defaultOpen as any);
+
+    // Initialize from responsive defaultOpen once when uncontrolled and breakpoint ready
+    const didInitFromDefaultOpenRef = React.useRef(false);
     React.useEffect(() => {
-      if (mode !== undefined) return; // controlled wins
-      if (!shell.currentBreakpointReady) return; // avoid SSR mismatch
-      if (lastBpRef.current === shell.currentBreakpoint) return; // only on bp change
-      lastBpRef.current = shell.currentBreakpoint as Breakpoint;
-      const next = resolveResponsiveMode();
-      if (next !== shell.leftMode) {
-        shell.setLeftMode(next);
+      if (didInitFromDefaultOpenRef.current) return;
+      if (!shell.currentBreakpointReady) return;
+      if (typeof (props as any).open !== 'undefined') return; // controlled
+      if (typeof (props as any).defaultOpen === 'undefined') return;
+      didInitFromDefaultOpenRef.current = true;
+      const initial = Boolean(resolvedDefaultOpen);
+      shell.setLeftMode(initial ? 'expanded' : 'collapsed');
+      (props as any).onOpenChange?.(initial, { reason: 'init' });
+    }, [shell.currentBreakpointReady, (props as any).open, (props as any).defaultOpen, resolvedDefaultOpen]);
+    React.useEffect(() => {
+      // Controlled Left via Rail.open
+      if (typeof (props as any).open !== 'undefined') {
+        const shouldOpen = Boolean((props as any).open);
+        shell.setLeftMode(shouldOpen ? 'expanded' : 'collapsed');
+        return;
       }
-    }, [mode, shell.currentBreakpoint, shell.currentBreakpointReady, resolveResponsiveMode, shell.leftMode, shell.setLeftMode]);
+      // defaultOpen is applied in Rail; Left no longer follows responsive defaults
+    }, [shell, (props as any).open]);
 
     // Sync controlled mode
-    React.useEffect(() => {
-      if (mode !== undefined && shell.leftMode !== mode) {
-        shell.setLeftMode(mode);
-      }
-    }, [mode, shell]);
+    // removed mode sync
 
-    // Emit mode changes
+    // Emit mode changes (uncontrolled toggles + init)
     React.useEffect(() => {
-      if (mode === undefined) {
-        onModeChange?.(shell.leftMode);
+      if (typeof (props as any).open !== 'undefined') return; // controlled, notifications only via parent changes
+      if (!initNotifiedRef.current && Boolean(resolvedDefaultOpen) && shell.leftMode === 'expanded') {
+        (props as any).onOpenChange?.(true, { reason: 'init' });
+        initNotifiedRef.current = true;
       }
-    }, [shell.leftMode, mode, onModeChange]);
+      if (lastLeftModeRef.current !== null && lastLeftModeRef.current !== shell.leftMode) {
+        (props as any).onOpenChange?.(shell.leftMode === 'expanded', { reason: 'toggle' });
+      }
+      lastLeftModeRef.current = shell.leftMode;
+    }, [shell.leftMode, resolvedDefaultOpen]);
 
     // Emit expand/collapse events
     React.useEffect(() => {
@@ -568,11 +665,13 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
       const hasRail = Boolean(railEl);
       const hasPanel = Boolean(panelEl);
       const includePanel = hasPanel && (shell.panelMode === 'expanded' || shell.peekTarget === 'panel');
-      const floatingWidthPx = (hasRail ? railSize : 0) + (includePanel ? panelSize : 0);
+
+      // Strip control props from DOM spread
+      const { open: _openIgnored, defaultOpen: _defaultOpenIgnored, onOpenChange: _onOpenChangeIgnored, ...stackDomProps } = props as any;
 
       return (
         <div
-          {...props}
+          {...stackDomProps}
           ref={setRef}
           className={classNames('rt-ShellLeft', className)}
           data-mode={shell.leftMode}
@@ -588,9 +687,21 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
       );
     }
 
+    // Strip control/legacy props from DOM spread
+    const {
+      open: _openIgnored,
+      defaultOpen: _defaultOpenIgnored,
+      onOpenChange: _onOpenChangeIgnored,
+      // legacy
+      mode: _legacyModeIgnored,
+      defaultMode: _legacyDefaultModeIgnored,
+      onModeChange: _legacyOnModeChangeIgnored,
+      ...domProps
+    } = props as any;
+
     return (
       <div
-        {...props}
+        {...domProps}
         ref={setRef}
         className={classNames('rt-ShellLeft', className)}
         data-mode={shell.leftMode}
@@ -607,48 +718,89 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
 );
 Left.displayName = 'Shell.Left';
 
-const Rail = React.forwardRef<HTMLDivElement, RailProps>(
-  ({ className, presentation, mode, defaultMode, onModeChange, expandedSize = 64, collapsible, onExpand, onCollapse, children, style, ...props }, ref) => {
-    const shell = useShell();
+const Rail = React.forwardRef<HTMLDivElement, RailProps>(({ className, presentation, expandedSize = 64, collapsible, onExpand, onCollapse, children, style, ...props }, ref) => {
+  const shell = useShell();
 
-    // Register expanded size with Left container
-    React.useEffect(() => {
-      (shell as any).onRailDefaults?.(expandedSize);
-    }, [shell, expandedSize]);
+  // Dev guards
+  const wasControlledRef = React.useRef<boolean | null>(null);
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof props.open !== 'undefined' && typeof props.defaultOpen !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.error('Shell.Rail: Do not pass both `open` and `defaultOpen`. Choose one.');
+    }
+  }
 
-    const isExpanded = shell.leftMode === 'expanded';
+  // Warn on controlled/uncontrolled mode switch
+  React.useEffect(() => {
+    const isControlled = typeof props.open !== 'undefined';
+    if (wasControlledRef.current === null) {
+      wasControlledRef.current = isControlled;
+      return;
+    }
+    if (wasControlledRef.current !== isControlled) {
+      // eslint-disable-next-line no-console
+      console.warn('Shell.Rail: Switching between controlled and uncontrolled `open` is not supported.');
+      wasControlledRef.current = isControlled;
+    }
+  }, [props.open]);
 
-    return (
-      <div
-        {...props}
-        ref={ref}
-        className={classNames('rt-ShellRail', className)}
-        data-mode={shell.leftMode}
-        data-peek={(shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'rail') || undefined}
-        style={{
-          ...style,
-          ['--rail-size' as any]: `${expandedSize}px`,
-        }}
-      >
-        <div className="rt-ShellRailContent" data-visible={isExpanded || (shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'rail') || undefined}>
-          {children}
-        </div>
+  // Register expanded size with Left container
+  React.useEffect(() => {
+    (shell as any).onRailDefaults?.(expandedSize);
+  }, [shell, expandedSize]);
+
+  const isExpanded = shell.leftMode === 'expanded';
+
+  // Strip unknown open/defaultOpen props from DOM by not spreading them
+  const { defaultOpen: _defaultOpenIgnored, open: _openIgnored, onOpenChange: _onOpenChangeIgnored, ...domProps } = props as any;
+
+  return (
+    <div
+      {...domProps}
+      ref={ref}
+      className={classNames('rt-ShellRail', className)}
+      data-mode={shell.leftMode}
+      data-peek={(shell.currentBreakpointReady && shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'rail') || undefined}
+      style={{
+        ...style,
+        ['--rail-size' as any]: `${expandedSize}px`,
+      }}
+    >
+      <div className="rt-ShellRailContent" data-visible={(shell.currentBreakpointReady && (isExpanded || (shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'rail'))) || undefined}>
+        {children}
       </div>
-    );
-  },
-);
+    </div>
+  );
+});
 Rail.displayName = 'Shell.Rail';
 
 // Panel
 type HandleComponent = React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
 
-type PanelComponent = React.ForwardRefExoticComponent<Omit<PaneProps, 'defaultMode'> & React.RefAttributes<HTMLDivElement>> & { Handle: HandleComponent };
+type PanelOpenChangeMeta = { reason: 'toggle' | 'left' | 'init' };
+type PanelControlledProps = { open: boolean; onOpenChange?: (open: boolean, meta: PanelOpenChangeMeta) => void; defaultOpen?: never };
+type PanelUncontrolledProps = { defaultOpen?: boolean; onOpenChange?: (open: boolean, meta: PanelOpenChangeMeta) => void; open?: never };
+
+type PanelSizeControlledProps = { size: number | string; defaultSize?: never };
+type PanelSizeUncontrolledProps = { defaultSize?: number | string; size?: never };
+
+type PanelSizeChangeMeta = { reason: 'init' | 'resize' | 'controlled' };
+type PanelPublicProps = Omit<PaneProps, 'presentation' | 'defaultMode'> &
+  (PanelControlledProps | PanelUncontrolledProps) &
+  (PanelSizeControlledProps | PanelSizeUncontrolledProps) & {
+    onSizeChange?: (size: number, meta: PanelSizeChangeMeta) => void;
+    sizeUpdate?: 'throttle' | 'debounce';
+    sizeUpdateMs?: number;
+  };
+type PanelComponent = React.ForwardRefExoticComponent<PanelPublicProps & React.RefAttributes<HTMLDivElement>> & {
+  Handle: HandleComponent;
+};
 
 type SidebarComponent = React.ForwardRefExoticComponent<
   (Omit<PaneProps, 'mode' | 'defaultMode' | 'onModeChange'> & {
-    mode?: SidebarMode;
-    defaultMode?: ResponsiveSidebarMode;
-    onModeChange?: (mode: SidebarMode) => void;
+    state?: Responsive<SidebarMode>;
+    defaultState?: SidebarMode;
+    onStateChange?: (mode: SidebarMode) => void;
     thinSize?: number;
     toggleModes?: 'both' | 'single';
   }) &
@@ -659,12 +811,15 @@ type InspectorComponent = React.ForwardRefExoticComponent<PaneProps & React.RefA
 
 type BottomComponent = React.ForwardRefExoticComponent<PaneProps & React.RefAttributes<HTMLDivElement>> & { Handle: HandleComponent };
 
-const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 'defaultMode'>>(
+const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>(
   (
     {
       className,
-      mode,
-      onModeChange,
+      defaultOpen,
+      open,
+      onOpenChange,
+      size,
+      defaultSize,
       expandedSize = 288,
       minSize,
       maxSize,
@@ -682,11 +837,102 @@ const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 
       persistence,
       children,
       style,
+      onSizeChange,
+      sizeUpdate,
+      sizeUpdateMs = 50,
       ...props
     },
     ref,
   ) => {
+    // Throttled/debounced emitter for onSizeChange
+    const emitSizeChange = React.useMemo(() => {
+      if (!onSizeChange) return () => {};
+      if (sizeUpdate === 'debounce') {
+        let t: any = null;
+        const fn = (s: number, meta: PanelSizeChangeMeta) => {
+          if (t) clearTimeout(t);
+          t = setTimeout(() => {
+            onSizeChange?.(s, meta);
+          }, sizeUpdateMs);
+        };
+        return fn;
+      }
+      if (sizeUpdate === 'throttle') {
+        let last = 0;
+        return (s: number, meta: PanelSizeChangeMeta) => {
+          const now = Date.now();
+          if (now - last >= sizeUpdateMs) {
+            last = now;
+            onSizeChange?.(s, meta);
+          }
+        };
+      }
+      return (s: number, meta: PanelSizeChangeMeta) => onSizeChange?.(s, meta);
+    }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
     const shell = useShell();
+    const prevPanelModeRef = React.useRef<PaneMode | null>(null);
+    const prevLeftModeRef = React.useRef<PaneMode | null>(null);
+    const initNotifiedRef = React.useRef(false);
+
+    // Dev-only runtime guard
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof open !== 'undefined' && typeof defaultOpen !== 'undefined') {
+        // eslint-disable-next-line no-console
+        console.error('Shell.Panel: Do not pass both `open` and `defaultOpen`. Choose one.');
+      }
+      if (typeof size !== 'undefined' && typeof defaultSize !== 'undefined') {
+        // eslint-disable-next-line no-console
+        console.error('Shell.Panel: Do not pass both `size` and `defaultSize`. Choose one.');
+      }
+    }
+
+    // Initialize uncontrolled open state from defaultOpen on first mount
+    React.useEffect(() => {
+      if (typeof open === 'undefined' && typeof defaultOpen === 'boolean') {
+        if (defaultOpen) {
+          // Ensure Left is expanded before expanding Panel
+          shell.setLeftMode('expanded');
+          shell.setPanelMode('expanded');
+        } else {
+          shell.setPanelMode('collapsed');
+        }
+      }
+      // run only on mount
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Controlled sync: mirror shell state when `open` is provided
+    React.useEffect(() => {
+      if (typeof open === 'undefined') return;
+      if (open) {
+        if (shell.leftMode !== 'expanded') shell.setLeftMode('expanded');
+        if (shell.panelMode !== 'expanded') shell.setPanelMode('expanded');
+      } else {
+        if (shell.panelMode !== 'collapsed') shell.setPanelMode('collapsed');
+      }
+    }, [open, shell.leftMode, shell.panelMode]);
+
+    // Dev-only warning if switching controlled/uncontrolled between renders
+    React.useEffect(() => {
+      const isControlled = typeof open !== 'undefined';
+      (Panel as any)._wasControlled = (Panel as any)._wasControlled ?? isControlled;
+      if ((Panel as any)._wasControlled !== isControlled) {
+        // eslint-disable-next-line no-console
+        console.warn('Shell.Panel: Switching between controlled and uncontrolled `open` is not supported.');
+        (Panel as any)._wasControlled = isControlled;
+      }
+    }, [open]);
+
+    // Notify init open
+    React.useEffect(() => {
+      if (initNotifiedRef.current) return;
+      if (typeof open === 'undefined' && defaultOpen && shell.panelMode === 'expanded') {
+        onOpenChange?.(true, { reason: 'init' });
+        initNotifiedRef.current = true;
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     React.useEffect(() => {
       (shell as any).onPanelDefaults?.(expandedSize);
     }, [shell, expandedSize]);
@@ -704,6 +950,27 @@ const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 
     const contentChildren = childArray.filter((el: React.ReactElement) => !(React.isValidElement(el) && el.type === PanelHandle));
 
     const isOverlay = shell.leftResolvedPresentation === 'overlay';
+
+    // Normalize CSS lengths to px
+    const normalizeToPx = React.useCallback((value: number | string | undefined): number | undefined => {
+      if (value == null) return undefined;
+      if (typeof value === 'number' && Number.isFinite(value)) return value;
+      const str = String(value).trim();
+      if (!str) return undefined;
+      if (str.endsWith('px')) return Number.parseFloat(str);
+      if (str.endsWith('rem')) {
+        const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize || '16') || 16;
+        return Number.parseFloat(str) * rem;
+      }
+      if (str.endsWith('%')) {
+        const pct = Number.parseFloat(str);
+        const base = document.documentElement.clientWidth || window.innerWidth || 0;
+        return (pct / 100) * base;
+      }
+      // Bare number-like string
+      const n = Number.parseFloat(str);
+      return Number.isFinite(n) ? n : undefined;
+    }, []);
 
     // Derive a default persistence adapter from paneId if none provided
     const persistenceAdapter = React.useMemo(() => {
@@ -747,6 +1014,37 @@ const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 
       }
     }, [isOverlay, expandedSize]);
 
+    // Apply defaultSize on mount when uncontrolled
+    React.useEffect(() => {
+      if (!localRef.current) return;
+      if (typeof size === 'undefined' && typeof defaultSize !== 'undefined') {
+        const px = normalizeToPx(defaultSize);
+        if (typeof px === 'number' && Number.isFinite(px)) {
+          // Clamp to min/max if provided
+          const minPx = typeof minSize === 'number' ? minSize : undefined;
+          const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
+          const clamped = Math.min(maxPx ?? px, Math.max(minPx ?? px, px));
+          localRef.current.style.setProperty('--panel-size', `${clamped}px`);
+          emitSizeChange(clamped, { reason: 'init' });
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Controlled size sync
+    React.useEffect(() => {
+      if (!localRef.current) return;
+      if (typeof size === 'undefined') return;
+      const px = normalizeToPx(size);
+      if (typeof px === 'number' && Number.isFinite(px)) {
+        const minPx = typeof minSize === 'number' ? minSize : undefined;
+        const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
+        const clamped = Math.min(maxPx ?? px, Math.max(minPx ?? px, px));
+        localRef.current.style.setProperty('--panel-size', `${clamped}px`);
+        emitSizeChange(clamped, { reason: 'controlled' });
+      }
+    }, [size, minSize, maxSize, normalizeToPx]);
+
     // Ensure Left container width is auto whenever Panel is expanded in fixed presentation
     React.useEffect(() => {
       if (!localRef.current) return;
@@ -759,6 +1057,22 @@ const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 
     }, [shell.leftResolvedPresentation, shell.leftMode, shell.panelMode]);
 
     const isExpanded = shell.leftMode === 'expanded' && shell.panelMode === 'expanded';
+
+    // Notify on internal toggles and left cascade
+    React.useEffect(() => {
+      const prevPanel = prevPanelModeRef.current;
+      const prevLeft = prevLeftModeRef.current;
+      if (prevPanel !== null && prevPanel !== shell.panelMode) {
+        const open = shell.panelMode === 'expanded';
+        let reason: PanelOpenChangeMeta['reason'] = 'toggle';
+        if (prevLeft !== shell.leftMode && shell.leftMode === 'collapsed' && !open) {
+          reason = 'left';
+        }
+        onOpenChange?.(open, { reason });
+      }
+      prevPanelModeRef.current = shell.panelMode;
+      prevLeftModeRef.current = shell.leftMode;
+    }, [shell.panelMode, shell.leftMode, onOpenChange]);
 
     // Provide resizer handle when fixed (not overlay)
     const handleEl =
@@ -789,6 +1103,7 @@ const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 
             },
             onResizeEnd: (size) => {
               onResizeEnd?.(size);
+              emitSizeChange(size, { reason: 'resize' });
               persistenceAdapter?.save?.(size);
             },
             target: 'panel',
@@ -804,14 +1119,24 @@ const Panel = React.forwardRef<HTMLDivElement, Omit<PaneProps, 'presentation' | 
         </PaneResizeContext.Provider>
       ) : null;
 
+    // Strip control props from DOM spread
+    const {
+      defaultOpen: _panelDefaultOpenIgnored,
+      open: _panelOpenIgnored,
+      onOpenChange: _panelOnOpenChangeIgnored,
+      size: _panelSizeIgnored,
+      defaultSize: _panelDefaultSizeIgnored,
+      ...panelDomProps
+    } = props as any;
+
     return (
       <div
-        {...props}
+        {...panelDomProps}
         ref={setRef}
         className={classNames('rt-ShellPanel', className)}
         data-mode={shell.panelMode}
-        data-visible={isExpanded || (shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'panel') || undefined}
-        data-peek={(shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'panel') || undefined}
+        data-visible={(shell.currentBreakpointReady && (isExpanded || (shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'panel'))) || undefined}
+        data-peek={(shell.currentBreakpointReady && shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'panel') || undefined}
         style={{
           ...style,
           ['--panel-size' as any]: `${expandedSize}px`,

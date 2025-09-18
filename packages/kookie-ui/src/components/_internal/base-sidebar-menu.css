@@ -16,7 +16,7 @@
   min-height: 0;
 
   :where(.rt-SidebarContent:has(.rt-ScrollAreaScrollbar[data-orientation='vertical'])) & {
-    padding-right: var(--space-3);
+    padding-inline-end: var(--space-3);
   }
 }
 
@@ -33,8 +33,8 @@
   min-height: var(--base-menu-item-height);
   padding-top: var(--base-menu-item-padding-y);
   padding-bottom: var(--base-menu-item-padding-y);
-  padding-left: var(--base-menu-item-padding-left);
-  padding-right: var(--base-menu-item-padding-right);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
   box-sizing: border-box;
   position: relative;
   outline: none;
@@ -42,11 +42,14 @@
   background: none;
   border: none;
   width: 100%;
-  text-align: left;
+  text-align: start;
   /* No default border radius - inherited from size-specific rules */
 
-  /* Transitions - inherit from base menu */
-  transition: var(--transition-menu);
+  /* Step 3: restrict to paint-only transitions to avoid Chrome compositing nudge */
+  transition:
+    background-color var(--motion-duration-micro) var(--motion-ease-standard),
+    color var(--motion-duration-small) var(--motion-ease-standard),
+    font-weight var(--motion-duration-small) var(--motion-ease-standard);
 
   /* Fix sticky text highlighting after selection in Firefox */
   user-select: none;
@@ -146,14 +149,14 @@
 }
 
 .rt-SidebarMenuSubList {
-  padding-left: var(--space-4);
-  border-left: 1px solid var(--gray-a5);
-  margin-left: var(--space-3);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 1px solid var(--gray-a5);
+  margin-inline-start: var(--space-3);
 }
 
 /* Sub-menu items have consistent heights based on size - match dropdown menu exactly */
 :where(.rt-SidebarContent.rt-r-size-1) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
-  padding-left: var(--space-3);
+  padding-inline-start: var(--space-3);
   padding-top: calc(var(--space-1) * 0.75);
   padding-bottom: calc(var(--space-1) * 0.75);
   min-height: var(--space-5); /* 20px */
@@ -161,10 +164,10 @@
 }
 
 :where(.rt-SidebarContent.rt-r-size-2) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
-  padding-left: var(--space-3);
+  padding-inline-start: var(--space-3);
   padding-top: var(--space-1);
   padding-bottom: var(--space-1);
-  min-height: var(--space-6); /* 24px */
+  min-height: var(--space-6); /* 32px */
   font-size: var(--font-size-2);
 }
 
@@ -175,8 +178,8 @@
   min-height: var(--base-menu-item-height);
   padding-top: var(--base-menu-item-padding-y);
   padding-bottom: var(--base-menu-item-padding-y);
-  padding-left: var(--base-menu-item-padding-left);
-  padding-right: var(--base-menu-item-padding-right);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
   box-sizing: border-box;
   color: var(--gray-a10);
   user-select: none;
@@ -192,27 +195,27 @@
 .rt-SidebarMenuButton:where(:has(.rt-SidebarMenuShortcut, .rt-SidebarMenuBadge)) {
   /* Use base menu padding tokens */
   :where(.rt-SidebarContent.rt-r-size-1) & {
-    padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
+    padding-inline-end: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
   }
 
   :where(.rt-SidebarContent.rt-r-size-2) & {
-    padding-right: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
+    padding-inline-end: var(--base-menu-item-padding-y); /* Matches top/bottom padding */
   }
 }
 
 .rt-SidebarMenuShortcut {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  padding-left: var(--space-4);
+  margin-inline-start: auto;
+  padding-inline-start: var(--space-4);
   color: var(--gray-a11);
 }
 
 .rt-SidebarMenuBadge {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  padding-left: var(--space-2);
+  margin-inline-start: auto;
+  padding-inline-start: var(--space-2);
 }
 
 /* Add balanced spacing for sidebar menu items while preserving base menu border radius */

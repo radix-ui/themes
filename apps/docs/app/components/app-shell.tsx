@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
 import {
-  Signpost,
+  Power,
   BookOpen,
   Download,
   Palette,
@@ -30,13 +30,13 @@ const navigationItems = [
   {
     type: 'section' as const,
     title: 'Start',
-    icon: Signpost,
+    icon: Power,
     items: [
       { href: '/docs/home', title: 'Home', icon: BookOpen, badge: undefined },
-      { href: '/docs/get-started', title: 'Start', icon: Signpost, badge: undefined },
-      { href: '/docs/whats-kookie', title: "What's Kookie", icon: Dog, badge: undefined },
-      { href: '/docs/changes-from-radix', title: 'Radix Changes', icon: GitBranch, badge: undefined },
-      { href: '/docs/roadmap', title: 'Roadmap', icon: Calendar, badge: undefined },
+      // { href: '/docs/get-started', title: 'Start', icon: Power, badge: undefined },
+      // { href: '/docs/whats-kookie', title: "What's Kookie", icon: Dog, badge: undefined },
+      // { href: '/docs/changes-from-radix', title: 'Radix Changes', icon: GitBranch, badge: undefined },
+      // { href: '/docs/roadmap', title: 'Roadmap', icon: Calendar, badge: undefined },
       { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
     ],
   },
@@ -78,8 +78,6 @@ const navigationItems = [
           { href: '/docs/button/api', title: 'API', icon: GripVertical },
           { href: '/docs/button/specs', title: 'Specs', icon: Box },
           { href: '/docs/button/guidelines', title: 'Guidelines', icon: Palette },
-          { href: '/docs/button/accessibility', title: 'Accessibility', icon: ChevronDown },
-          { href: '/docs/button/changelog', title: 'Changelog', icon: Type },
           { href: '/docs/button/playground', title: 'Playground', icon: Square },
         ],
       },
@@ -177,28 +175,26 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <Shell.Root>
       <Shell.Header style={{ boxShadow: 'var(--shadow-2)' }}>
-        <Flex gap="8" px="4">
+        <Flex gap="8" px="4" justify="between" width="100%">
           <Link href="/" aria-label="Kushagra Dhawan - Homepage">
             <Avatar src="/logo-dark-large.png" fallback="KD" size="2" radius="full" />
           </Link>
-          <Flex gap="2">
-            <IconButton variant="classic" size="2" asChild highContrast color="gray">
-              <Shell.Trigger target="sidebar" action="toggle" peekOnHover={false}>
+          {/* <IconButton variant="classic" size="2" asChild highContrast color="gray">
+              <Shell.Trigger target="sidebar" action="toggle" peekOnHover={true}>
                 <PanelLeft />
               </Shell.Trigger>
-            </IconButton>
-            <DarkModeToggle />
-          </Flex>
+            </IconButton> */}
+          <DarkModeToggle />
         </Flex>
       </Shell.Header>
       <Shell.Sidebar
-        toggleModes="both"
+        toggleModes="single"
         thinSize={80}
         expandedSize={280}
         resizable
-        defaultMode={{ initial: 'thin', sm: 'thin' }}
-        onModeChange={(mode) => setSidebarPresentation(mode === 'thin' ? 'thin' : 'expanded')}
-        presentation={{ initial: 'fixed', sm: 'fixed' }}
+        state={{ initial: 'collapsed', sm: 'expanded' }}
+        onStateChange={(state) => setSidebarPresentation(state === 'thin' ? 'thin' : 'expanded')}
+        presentation={{ initial: 'overlay', sm: 'fixed' }}
       >
         <Shell.Sidebar.Handle>
           <IconButton variant="classic" size="1" highContrast color="gray">

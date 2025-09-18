@@ -73,10 +73,7 @@ export default function IconButtonPlayground() {
       type: 'select' as const,
       value: color,
       onChange: setColor,
-      options: [
-        { label: 'Theme', value: 'theme' },
-        ...accentColors.map((c) => ({ label: c, value: c })),
-      ],
+      options: [{ label: 'Theme', value: 'theme' }, ...accentColors.map((c) => ({ label: c, value: c }))],
       placeholder: 'Theme',
       appearance: 'swatch' as const,
     },
@@ -86,10 +83,7 @@ export default function IconButtonPlayground() {
       type: 'select' as const,
       value: radius,
       onChange: setRadius,
-      options: [
-        { label: 'Theme', value: 'theme' },
-        ...radiusOptions.map((r) => ({ label: r, value: r })),
-      ],
+      options: [{ label: 'Theme', value: 'theme' }, ...radiusOptions.map((r) => ({ label: r, value: r }))],
       placeholder: 'Theme',
     },
     {
@@ -114,10 +108,7 @@ export default function IconButtonPlayground() {
       type: 'select' as const,
       value: material,
       onChange: setMaterial,
-      options: [
-        { label: 'Theme', value: 'theme' },
-        ...materials.map((m) => ({ label: m, value: m })),
-      ],
+      options: [{ label: 'Theme', value: 'theme' }, ...materials.map((m) => ({ label: m, value: m }))],
       placeholder: 'Theme',
     },
     {
@@ -150,10 +141,7 @@ export default function IconButtonPlayground() {
       type: 'select' as const,
       value: tooltipSide,
       onChange: setTooltipSide,
-      options: [
-        { label: 'None', value: 'top' },
-        ...tooltipSides.slice(1).map((s) => ({ label: s, value: s })),
-      ],
+      options: [{ label: 'None', value: 'top' }, ...tooltipSides.slice(1).map((s) => ({ label: s, value: s }))],
       placeholder: 'Select tooltip position',
     },
   ];
@@ -182,7 +170,7 @@ export default function IconButtonPlayground() {
         </Flex>
       </Card>
 
-      <PropertyControl.Group width="256px" items={items} style={{ flexShrink: 0 }} />
+      <PropertyControl.Group width="288px" items={items} style={{ flexShrink: 0 }} />
     </Flex>
   );
 }

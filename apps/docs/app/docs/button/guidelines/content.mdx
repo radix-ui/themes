@@ -275,6 +275,46 @@ Avoid these common button design problems that stem from treating buttons as dec
 
 <Section size="1">
 
+## Accessibility
+
+Design buttons that work for everyone, regardless of ability or interaction method. Accessibility isn't an afterthought—it's fundamental to good design that serves all users effectively.
+
+### Contrast and Visibility
+
+Choose button treatments that provide sufficient contrast for users with visual impairments. **Solid buttons** offer the highest contrast with white text on colored backgrounds, making them ideal for primary actions where maximum visibility is essential.
+
+**High contrast mode** automatically enhances color saturation and contrast ratios when users need maximum visibility. Use the `highContrast` prop for buttons that appear over complex backgrounds or when serving users with visual impairments.
+
+### Touch Targets
+
+Design buttons that accommodate users with varying motor abilities. **Size 3 (40px)** and **Size 4 (48px)** provide adequate touch targets for mobile interfaces and users with motor impairments. Avoid sizes 1 and 2 for mobile interfaces—they don't meet minimum touch target guidelines.
+
+Consider the context: important actions deserve larger touch targets, while utility functions can use smaller sizes in desktop contexts where precision is possible.
+
+### Clear Communication
+
+Design button text that communicates clearly to screen reader users. Avoid generic text like "Click here" or "More"—instead, use descriptive labels like "Save changes" or "View product details" that explain the action's outcome.
+
+When buttons contain only icons, always provide accessible labels through tooltips or `aria-label` attributes. Screen reader users need the same information that visual users get from iconography.
+
+### Focus and Navigation
+
+Design interfaces that support keyboard navigation naturally. Ensure that button sequences follow logical tab order, and that focus indicators are clearly visible. The Button component automatically provides 2px focus outlines that appear only during keyboard navigation.
+
+Consider the user's journey: can they complete their primary task using only the keyboard? Are important actions reachable without mouse interaction?
+
+### Loading States
+
+Design loading states that communicate progress clearly to all users. The Button component automatically announces loading status to screen readers, but ensure that loading text is descriptive ("Saving your changes..." rather than just "Loading...").
+
+Provide clear feedback about what's happening and how long it might take. Users with cognitive disabilities benefit from explicit communication about system state.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
 ## Implementation
 
 For technical implementation details, see [API](./api). For design tokens and specifications, see [Specs](./specs).

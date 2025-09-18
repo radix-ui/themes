@@ -38,8 +38,8 @@
   line-height: var(--line-height-0) !important;
   padding-top: var(--space-2) !important;
   padding-bottom: var(--space-2) !important;
-  padding-left: var(--space-1) !important;
-  padding-right: var(--space-1) !important;
+  padding-inline-start: var(--space-1) !important;
+  padding-inline-end: var(--space-1) !important;
 }
 
 /* Consolidated thin mode size blocks */

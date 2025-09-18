@@ -19,8 +19,6 @@ import { Button } from '@kushagradhawan/kookie-ui';
 
 <Separator size="4"/>
 
-
-
 <Section size="1">
 
 ## Props
@@ -672,3 +670,51 @@ Use standard HTML form attributes to integrate buttons with forms. The component
 </Section>
 
 <Separator size="4"/>
+
+<Section size="1">
+
+## Accessibility
+
+The Button component implements comprehensive accessibility features through automatic ARIA attributes, keyboard navigation, and semantic markup.
+
+### ARIA Attributes
+
+Loading states automatically apply:
+- `aria-busy="true"` - announces processing state
+- `aria-disabled="true"` - prevents interaction
+- `aria-describedby` - links to loading announcement
+- `aria-label` - dynamically includes "(loading)" status
+
+Disabled states use standard `disabled` attribute with proper ARIA support.
+
+### Keyboard Navigation
+
+- **Space key** activates buttons
+- **Tab navigation** moves between buttons in logical order
+- **Focus indicators** automatically show 2px outlines with appropriate colors
+- Focus rings only appear for keyboard navigation (not mouse clicks)
+
+### Screen Reader Support
+
+- Uses semantic `<button>` elements
+- Automatic text extraction from both string children and React elements
+- Falls back to "button" if no text can be extracted
+- Loading announcements include: "[Button text] is loading, please wait..."
+
+### Touch Targets
+
+All button sizes meet accessibility guidelines:
+- **Size 1 (24px):** Desktop interfaces only
+- **Size 2 (32px):** Standard desktop interfaces  
+- **Size 3 (40px):** Mobile and important actions
+- **Size 4 (48px):** Hero sections and maximum accessibility
+
+### Tooltip Integration
+
+Built-in tooltips automatically provide:
+- Proper ARIA labeling
+- Focus and hover triggers
+- Keyboard navigation support
+- Screen reader announcements
+
+</Section>

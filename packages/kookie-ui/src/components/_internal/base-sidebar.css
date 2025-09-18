@@ -78,6 +78,10 @@
   box-shadow: none !important;
   border-radius: 0 !important;
 
+  /* Step 2: stabilize text rasterization to avoid Chrome AA flicker */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
   /* Add gap between groups using flex */
   /* stylelint-disable-next-line selector-max-specificity */
   & .rt-BaseMenuViewport {
@@ -98,6 +102,15 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
+  }
+
+  /* Step 1: promote menu viewport to its own layer (Chrome jitter test) */
+  & :where(.rt-BaseMenuViewport) {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+    /* Step 4: isolate painting to prevent cross-layer nudges */
+    contain: paint;
   }
 }
 
