@@ -446,7 +446,12 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
   );
 
   // Dropzone functionality
-  const { getRootProps, getInputProps, isDragActive, open: openFileDialog } = useDropzone({
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    open: openFileDialog,
+  } = useDropzone({
     onDrop: (acceptedFiles, rejectedFiles) => {
       if (acceptedFiles.length > 0) {
         appendFiles(acceptedFiles);
