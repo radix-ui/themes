@@ -50,7 +50,7 @@ export default function NestedShellTestPage() {
         </Flex>
       </Shell.Rail>
 
-      <Shell.Panel resizable expandedSize={280} presentation="fixed">
+      <Shell.Panel resizable expandedSize={280}>
         <Flex align="center" justify="center" height="100%">
           <Text>Panel</Text>
         </Flex>
@@ -77,13 +77,7 @@ export default function NestedShellTestPage() {
                 <Text size="2" color="gray">
                   Toggle Mode:
                 </Text>
-                <SegmentedControl.Root
-                  value={toggleMode}
-                  size="1"
-                  onValueChange={(value: string) =>
-                    setToggleMode(value as 'both' | 'thin' | 'expanded')
-                  }
-                >
+                <SegmentedControl.Root value={toggleMode} size="1" onValueChange={(value: string) => setToggleMode(value as 'both' | 'thin' | 'expanded')}>
                   <SegmentedControl.Item value="both">Both</SegmentedControl.Item>
                   <SegmentedControl.Item value="thin">Thin Only</SegmentedControl.Item>
                   <SegmentedControl.Item value="expanded">Expanded Only</SegmentedControl.Item>
@@ -92,13 +86,7 @@ export default function NestedShellTestPage() {
             </Flex>
           </Shell.Header>
 
-          <Shell.Sidebar
-            expandedSize={200}
-            thinSize={64}
-            resizable
-            presentation={{ initial: 'overlay', sm: 'fixed' }}
-            toggleModes="both"
-          >
+          <Shell.Sidebar expandedSize={200} thinSize={64} resizable presentation={{ initial: 'overlay', sm: 'fixed' }} toggleModes="both">
             <Flex align="center" justify="center" height="100%" direction="column" gap="2">
               <IconButton variant="ghost" size="2" asChild highContrast color="gray">
                 <Shell.Trigger target="sidebar" action="toggle">
@@ -130,11 +118,7 @@ export default function NestedShellTestPage() {
             </Flex>
           </Shell.Content>
 
-          <Shell.Inspector
-            resizable
-            expandedSize={250}
-            presentation={{ initial: 'fixed', xs: 'fixed' }}
-          >
+          <Shell.Inspector resizable expandedSize={250} presentation={{ initial: 'fixed', xs: 'fixed' }}>
             <Flex align="center" justify="center" height="100%">
               <Text>Nested Inspector</Text>
             </Flex>
@@ -142,11 +126,7 @@ export default function NestedShellTestPage() {
         </Shell.Root>
       </Shell.Content>
 
-      <Shell.Inspector
-        resizable
-        expandedSize={320}
-        presentation={{ initial: 'fixed', md: 'fixed' }}
-      >
+      <Shell.Inspector resizable expandedSize={320} presentation={{ initial: 'fixed', md: 'fixed' }}>
         <Flex align="center" justify="center" height="100%">
           <Text>Inspector</Text>
         </Flex>

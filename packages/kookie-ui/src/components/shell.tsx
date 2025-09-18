@@ -370,6 +370,14 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const inspectorEls = childArray.filter((el) => isType(el, Inspector));
   const bottomEls = childArray.filter((el) => isType(el, Bottom));
 
+  // Controlled sync in Root: mirror first Rail.open if provided
+  const firstRailOpen = (railEls[0] as any)?.props?.open;
+  React.useEffect(() => {
+    if (typeof firstRailOpen === 'undefined') return;
+    const shouldOpen = Boolean(firstRailOpen);
+    setLeftMode(shouldOpen ? 'expanded' : 'collapsed');
+  }, [firstRailOpen]);
+
   const heightStyle = React.useMemo(() => {
     if (height === 'full') return { height: '100vh' };
     if (height === 'auto') return { height: 'auto' };
@@ -441,12 +449,6 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
                                         onCollapse: firstRail.props?.onCollapse,
                                       }
                                     : { defaultOpen: hasPanelDefaultOpen ? true : undefined };
-                                  // Controlled sync in Root: mirror first Rail.open if provided
-                                  React.useEffect(() => {
-                                    if (typeof firstRail?.props?.open === 'undefined') return;
-                                    const shouldOpen = Boolean(firstRail?.props?.open);
-                                    setLeftMode(shouldOpen ? 'expanded' : 'collapsed');
-                                  }, [firstRail?.props?.open]);
                                   return (
                                     <Left {...(passthroughProps as any)}>
                                       {railEls}
