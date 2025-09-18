@@ -165,34 +165,37 @@
 /* Sizes (padding and radius via tokens) */
 @breakpoints {
   .rt-ChatbarRoot:where(.rt-r-size-1) .rt-ChatbarBox {
-    border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
-    padding: var(--space-2);
+    /* Map Chatbar size 1 to Card size 2 */
+    border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
+    padding: var(--space-3);
   }
   .rt-ChatbarRoot:where(.rt-r-size-1) .rt-ChatbarInput {
-    --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
-    --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
+    --text-area-padding-y: calc(var(--space-3) - var(--text-area-border-width));
+    --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
     font-size: var(--font-size-1);
     line-height: var(--line-height-1);
     letter-spacing: var(--letter-spacing-1);
   }
   .rt-ChatbarRoot:where(.rt-r-size-2) .rt-ChatbarBox {
-    border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
-    padding: var(--space-3);
+    /* Map Chatbar size 2 to Card size 3 */
+    border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
+    padding: var(--space-4);
   }
   .rt-ChatbarRoot:where(.rt-r-size-2) .rt-ChatbarInput {
-    --text-area-padding-y: calc(var(--space-2) - var(--text-area-border-width));
-    --text-area-padding-x: calc(var(--space-2) - var(--text-area-border-width));
+    --text-area-padding-y: calc(var(--space-4) - var(--text-area-border-width));
+    --text-area-padding-x: calc(var(--space-4) - var(--text-area-border-width));
     font-size: var(--font-size-2);
     line-height: var(--line-height-2);
     letter-spacing: var(--letter-spacing-2);
   }
   .rt-ChatbarRoot:where(.rt-r-size-3) .rt-ChatbarBox {
-    border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
-    padding: var(--space-4);
+    /* Map Chatbar size 3 to Card size 4 */
+    border-radius: min(var(--radius-8), calc(var(--radius-4) + var(--space-4)));
+    padding: var(--space-5);
   }
   .rt-ChatbarRoot:where(.rt-r-size-3) .rt-ChatbarInput {
-    --text-area-padding-y: calc(var(--space-3) - var(--text-area-border-width));
-    --text-area-padding-x: calc(var(--space-3) - var(--text-area-border-width));
+    --text-area-padding-y: calc(var(--space-5) - var(--text-area-border-width));
+    --text-area-padding-x: calc(var(--space-5) - var(--text-area-border-width));
     font-size: var(--font-size-3);
     line-height: var(--line-height-3);
     letter-spacing: var(--letter-spacing-3);
