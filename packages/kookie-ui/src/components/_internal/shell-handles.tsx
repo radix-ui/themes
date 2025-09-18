@@ -19,7 +19,7 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
     snapTolerance,
     collapseThreshold,
     collapsible,
-    target,
+    target: _target,
     requestCollapse,
     requestToggle,
   } = usePaneResize();

@@ -16,7 +16,7 @@ export type PaneSizePersistence = {
   save?: (size: number) => void | Promise<void>;
 };
 
-export const BREAKPOINTS = {
+export const _BREAKPOINTS = {
   xs: '(min-width: 520px)',
   sm: '(min-width: 768px)',
   md: '(min-width: 1024px)',
@@ -24,6 +24,6 @@ export const BREAKPOINTS = {
   xl: '(min-width: 1640px)',
 } as const;
 
-export type Breakpoint = 'initial' | keyof typeof BREAKPOINTS;
+export type Breakpoint = 'initial' | keyof typeof _BREAKPOINTS;
 
 export type PaneTarget = 'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom';

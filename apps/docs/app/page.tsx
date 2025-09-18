@@ -15,26 +15,28 @@ export default function HeroSection() {
             <Image width="112px" alt="SDK" src="/foundation.png"></Image>
 
             <Flex direction="column" align="center" gap="4">
-              <Badge size="2" color="orange" highContrast>
-                Coming Soon
-              </Badge>
-
               <Heading size="9" weight="medium" align="center">
-                A UI SDK. More than components.
+                A system to build consistent and scalable user interfaces.
               </Heading>
             </Flex>
 
             <Text size="4" color="gray" align="center">
-              Built on Radix Themes. Kookie UI is a UI SDK that defines where components live, establishes contract patterns, and provides layout infrastructure that scales. From shell architectures
-              to navigation patterns.
+              Built on Radix Themes. Kookie UI provides UI components and focuses on defining where they live, establishing contract patterns, and delivering scalable layout infrastructure.
             </Text>
 
             {/* Call-to-action buttons */}
-            <Link href="/docs/home">
-              <Button variant="solid" size="3">
-                Get Started
-              </Button>
-            </Link>
+            <Flex gap="2">
+              <Link href="/docs/home">
+                <Button variant="surface" color="gray" highContrast size="3">
+                  Learn More
+                </Button>
+              </Link>
+              <Link href="/docs/home">
+                <Button variant="solid" size="3">
+                  Get Started
+                </Button>
+              </Link>
+            </Flex>
           </Flex>
         </Container>
 

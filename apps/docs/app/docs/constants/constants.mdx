@@ -1,0 +1,449 @@
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image } from '@kushagradhawan/kookie-ui';
+
+<Section size="1">
+
+# Constants
+
+Kookie UI's custom design constants provide consistent values for transitions, effects, and component behavior across your application.
+
+<Callout.Root variant="surface" size="2" highContrast color="orange" my="6"><Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text></Callout.Root>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Transitions
+
+Comprehensive transition system with spring-based easing and component-specific configurations:
+
+<CodeBlock>
+
+```css
+/* Duration tokens */
+var(--duration-1)  /* 50ms - Micro interactions */
+var(--duration-2)  /* 75ms - Fast transitions */
+var(--duration-3)  /* 100ms - Standard transitions */
+var(--duration-4)  /* 150ms - Slower transitions */
+var(--duration-5)  /* 200ms - Slow animations */
+
+/* Spring easing curves */
+var(--ease-spring-1)  /* cubic-bezier(0.25, 0.46, 0.45, 0.94) - Spring out back */
+var(--ease-spring-2)  /* cubic-bezier(0.68, -0.55, 0.265, 1.55) - Spring bounce */
+var(--ease-spring-3)  /* cubic-bezier(0.175, 0.885, 0.32, 1.275) - Spring elastic */
+
+/* Semantic motion tokens */
+var(--motion-duration-micro)     /* 75ms - Micro-interactions */
+var(--motion-duration-small)     /* 150ms - Small UI changes */
+var(--motion-duration-medium)    /* 250ms - Medium/large changes */
+var(--motion-duration-large)     /* 350ms - Large movements */
+
+/* Motion easing */
+var(--motion-ease-standard)      /* ease-in-out - Most UI changes */
+var(--motion-ease-smooth)        /* cubic-bezier(0.4, 0, 0.2, 1) - Material-like */
+var(--motion-ease-anticipate)    /* cubic-bezier(0.36, 0, 0.66, -0.56) */
+var(--motion-ease-follow)        /* cubic-bezier(0.34, 1.56, 0.64, 1) */
+
+/* Spring semantics */
+var(--motion-spring-snappy)      /* Spring out back */
+var(--motion-spring-bounce)      /* Spring bounce */
+var(--motion-spring-elastic)     /* Spring elastic */
+```
+
+</CodeBlock>
+
+### Component Transitions
+
+Pre-configured transitions for specific components:
+
+<CodeBlock>
+
+```css
+/* Button transitions */
+var(--transition-button)
+/* Includes: background, box-shadow, filter, backdrop-filter, transform, padding */
+
+/* Form field transitions */
+var(--transition-text-field)
+var(--transition-select)
+/* Includes: background, box-shadow */
+
+/* UI component transitions */
+var(--transition-card)
+var(--transition-badge)
+var(--transition-tabs)
+var(--transition-menu)
+var(--transition-checkbox)
+var(--transition-radio)
+
+/* Specialized transitions */
+var(--transition-accordion-content)
+var(--transition-accordion-trigger)
+var(--transition-segmented-control)
+var(--transition-progress)
+
+/* GPU-optimized spring transitions */
+var(--transition-spring-gpu)
+var(--transition-spring-gpu-fast)
+```
+
+</CodeBlock>
+
+### Stagger & Animation
+
+<CodeBlock>
+
+```css
+/* Stagger delays */
+var(--motion-stagger-1)  /* 15ms */
+var(--motion-stagger-2)  /* 30ms */
+var(--motion-stagger-3)  /* 45ms */
+
+/* Spring physics parameters */
+var(--spring-snappy-mass)           /* 1 */
+var(--spring-snappy-stiffness)      /* 280 */
+var(--spring-snappy-damping)        /* 24 */
+var(--spring-snappy-initial-velocity) /* 0 */
+
+var(--spring-smooth-mass)           /* 1 */
+var(--spring-smooth-stiffness)      /* 200 */
+var(--spring-smooth-damping)        /* 30 */
+var(--spring-smooth-initial-velocity) /* 0 */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Visual Effects
+
+Backdrop blur and opacity constants for layered interfaces:
+
+<CodeBlock>
+
+```css
+/* Backdrop blur constants */
+var(--backdrop-blur-components)  /* var(--blur-4) - Components */
+var(--backdrop-blur-panel)       /* var(--blur-5) - Panels */
+var(--backdrop-blur-dialog)      /* var(--blur-6) - Dialogs */
+
+/* Surface opacity constants */
+var(--surface-opacity-light)     /* var(--opacity-5) - Light surfaces */
+var(--surface-opacity-heavy)     /* var(--opacity-6) - Heavy surfaces */
+var(--surface-opacity-dark)      /* var(--opacity-7) - Dark surfaces */
+
+/* Panel and dialog opacity */
+var(--panel-opacity)             /* var(--opacity-8) - Panel backgrounds */
+var(--panel-opacity-percentage)  /* calc(var(--panel-opacity) * 100%) */
+var(--dialog-opacity)            /* var(--opacity-9) - Dialog backgrounds */
+var(--dialog-opacity-percentage) /* calc(var(--dialog-opacity) * 100%) */
+
+/* Surface opacity */
+var(--surface-opacity)           /* var(--opacity-7) - Surface backgrounds */
+var(--surface-opacity-percentage) /* calc(var(--surface-opacity) * 100%) */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## 3D Effects
+
+Classic variant styling with realistic depth and elevation:
+
+<CodeBlock>
+
+```css
+/* Classic elevation and positioning */
+var(--classic-elevation-offset)        /* -0.02em - Elevation offset */
+var(--classic-active-padding-offset-1) /* 0.5px - Active state padding */
+var(--classic-active-padding-offset-2) /* 1px - Active state padding */
+
+/* Shadow system */
+var(--classic-shadow-blur-small)       /* 0.15em - Small shadow blur */
+var(--classic-shadow-blur-medium)      /* 0.2em - Medium shadow blur */
+var(--classic-shadow-blur-large)       /* 0.4em - Large shadow blur */
+var(--classic-shadow-offset-y)         /* 0.04em - Shadow Y offset */
+
+/* Border system */
+var(--classic-border-width)            /* 0.03em - Standard border width */
+var(--classic-border-width-thick)      /* 0.05em - Thick border width */
+
+/* Typography adjustments */
+var(--classic-word-spacing)            /* -0.1em - Word spacing for 3D effect */
+
+/* Division factors */
+var(--classic-elevation-factor-subtle) /* 3 - Subtle elevation factor */
+var(--classic-shadow-factor-light)     /* 1.5 - Light shadow factor */
+var(--classic-border-multiplier-double) /* 2 - Double border multiplier */
+var(--classic-shadow-medium-factor-third) /* 3 - Medium shadow factor */
+
+/* Complex inset shadow */
+var(--classic-inset-shadow-dark)
+/* Multi-layered inset shadow for form components */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Component Sizing
+
+Icon and trigger sizing constants for consistent component proportions:
+
+<CodeBlock>
+
+```css
+/* Content icon sizes (buttons, menu items) */
+var(--content-icon-size-1)  /* calc(var(--space-5) * 0.55) */
+var(--content-icon-size-2)  /* calc(var(--space-6) * 0.525) */
+var(--content-icon-size-3)  /* calc(var(--space-7) * 0.5125) */
+var(--content-icon-size-4)  /* calc(var(--space-8) * 0.5) */
+
+/* Trigger icon sizes (dropdowns, selects) */
+var(--trigger-icon-size-default) /* 9px */
+var(--trigger-icon-size-1)       /* 10px */
+var(--trigger-icon-size-2)       /* 11px */
+var(--trigger-icon-size-3)       /* 11px */
+var(--trigger-icon-size-4)       /* 12px */
+
+/* Indicator icon sizes (checkboxes, radio, sub-triggers) */
+var(--indicator-icon-size-1)     /* calc(9px * var(--scaling)) */
+var(--indicator-icon-size-2)     /* calc(10px * var(--scaling)) */
+var(--indicator-icon-size-3)     /* calc(12px * var(--scaling)) */
+
+/* Select-specific indicator sizes */
+var(--select-indicator-icon-size-1) /* calc(8px * var(--scaling)) */
+var(--select-indicator-icon-size-2) /* calc(10px * var(--scaling)) */
+var(--select-indicator-icon-size-3) /* calc(10px * var(--scaling)) */
+
+/* Select component constants */
+var(--select-item-indicator-width-factor) /* 1.2 */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Spacing & Layout
+
+Component gap and sizing constants for consistent spacing:
+
+<CodeBlock>
+
+```css
+/* Component gap spacing */
+var(--component-gap-1)  /* var(--space-1) - Small gap */
+var(--component-gap-2)  /* var(--space-1) - Small gap */
+var(--component-gap-3)  /* var(--space-2) - Medium gap */
+var(--component-gap-4)  /* var(--space-2) - Medium gap */
+
+/* Ghost variant gaps */
+var(--component-gap-ghost-1)  /* var(--space-1) - Small ghost gap */
+var(--component-gap-ghost-2)  /* calc(var(--space-1) * 1.5) - Medium ghost gap */
+var(--component-gap-ghost-3)  /* var(--space-2) - Large ghost gap */
+var(--component-gap-ghost-4)  /* var(--space-2) - Large ghost gap */
+
+/* Size multipliers */
+var(--size-multiplier-small)  /* 0.75 */
+var(--size-multiplier-large)  /* 1.25 */
+
+/* Spacing multipliers */
+var(--spacing-multiplier-small)  /* 0.5 */
+var(--spacing-multiplier-medium) /* 0.75 */
+var(--spacing-multiplier-large)  /* 1.25 */
+
+/* Component padding relationships */
+var(--padding-ratio-horizontal)  /* 1.5 */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Progress & Slider
+
+Animation and sizing constants for progress and slider components:
+
+<CodeBlock>
+
+```css
+/* Progress animation timing */
+var(--progress-default-duration)        /* 5s */
+var(--progress-animation-delay-start)   /* 5s */
+var(--progress-animation-delay-shine)   /* 7.5s */
+var(--progress-animation-duration-fade) /* 2.5s */
+var(--progress-animation-duration-pulse) /* 5s */
+
+/* Progress visual effects */
+var(--progress-shine-width-multiplier)  /* 4 */
+var(--progress-gradient-stop-start)     /* 25% */
+var(--progress-gradient-stop-end)       /* 75% */
+
+/* Progress scale values */
+var(--progress-scale-initial)  /* 0.01 */
+var(--progress-scale-step-1)   /* 0.1 */
+var(--progress-scale-step-2)   /* 0.6 */
+var(--progress-scale-step-3)   /* 0.9 */
+var(--progress-scale-final)    /* 1 */
+
+/* Progress timing percentages */
+var(--progress-timing-step-1)  /* 20% */
+var(--progress-timing-step-2)  /* 30% */
+var(--progress-timing-step-3)  /* 40% */
+var(--progress-timing-step-4)  /* 50% */
+
+/* Slider component constants */
+var(--slider-thumb-hit-area-multiplier) /* 2 */
+var(--slider-thumb-inset-factor)        /* 0.25 */
+var(--slider-focus-ring-inner)          /* 3px */
+var(--slider-focus-ring-outer)          /* 5px */
+var(--slider-classic-inset-offset)      /* 1.5px */
+
+/* Shared Progress and Slider sizing */
+var(--progress-slider-height-1)  /* var(--space-1) */
+var(--progress-slider-height-2)  /* calc(var(--space-1) * 1.5) */
+var(--progress-slider-height-3)  /* var(--space-2) */
+var(--progress-slider-height-4)  /* calc(var(--space-2) * 1.25) */
+
+/* Shared Progress and Slider radius */
+var(--progress-slider-radius-1)  /* var(--radius-1) */
+var(--progress-slider-radius-2)  /* var(--radius-2) */
+var(--progress-slider-radius-3)  /* var(--radius-3) */
+var(--progress-slider-radius-4)  /* var(--radius-4) */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Focus & Accessibility
+
+Focus outline and state opacity constants:
+
+<CodeBlock>
+
+```css
+/* Focus outline system */
+var(--focus-outline-width)        /* 2px */
+var(--focus-outline-offset)       /* 2px */
+var(--focus-outline-offset-inset) /* -1px */
+
+/* State opacity constants */
+var(--opacity-disabled)           /* var(--opacity-5) - Disabled state */
+var(--opacity-soft-variant)       /* var(--opacity-8) - Soft variant */
+var(--opacity-high-contrast)      /* var(--opacity-8) - High contrast */
+
+/* Standard border width */
+var(--border-width-standard)      /* 1px */
+
+/* Separator constants */
+var(--separator-height-thin)      /* 1px */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Positioning & Layout
+
+Positioning and layout constants:
+
+<CodeBlock>
+
+```css
+/* Positioning constants */
+var(--position-center)         /* 50% */
+var(--position-full)           /* 100% */
+var(--position-negative-full)  /* -100% */
+var(--position-zero)           /* 0% */
+
+/* Sheet animation constants */
+var(--sheet-slide-distance)    /* 50% */
+
+/* Transition combinations */
+var(--transition-background-blur) /* background-color var(--duration-2) var(--ease-1) */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Usage
+
+These constants are automatically available in your CSS when using Kookie UI. They respond to theme scaling and provide consistent values across all components.
+
+### Custom Components
+
+Use these constants in your custom components for consistency:
+
+<CodeBlock>
+
+```css
+.my-component {
+  backdrop-filter: blur(var(--backdrop-blur-panel));
+  background: rgba(255, 255, 255, var(--panel-opacity));
+  transition: var(--transition-button);
+  border-radius: var(--radius-3);
+  padding: var(--space-4);
+  box-shadow: var(--classic-inset-shadow-dark);
+}
+```
+
+</CodeBlock>
+
+### Component-Specific Styling
+
+Leverage component-specific transitions and effects:
+
+<CodeBlock>
+
+```css
+.custom-button {
+  transition: var(--transition-button);
+  box-shadow: 
+    0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
+}
+
+.custom-card {
+  transition: var(--transition-card);
+  backdrop-filter: blur(var(--backdrop-blur-panel));
+}
+```
+
+</CodeBlock>
+
+</Section>

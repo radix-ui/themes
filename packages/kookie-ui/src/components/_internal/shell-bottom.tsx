@@ -6,7 +6,7 @@ import { useShell } from '../shell.context.js';
 import { useResponsivePresentation, useResponsiveValue } from '../shell.hooks.js';
 import { PaneResizeContext } from './shell-resize.js';
 import { BottomHandle, PaneHandle } from './shell-handles.js';
-import { BREAKPOINTS } from '../shell.types.js';
+import { _BREAKPOINTS } from '../shell.types.js';
 import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation } from '../shell.types.js';
 
 interface PaneProps extends React.ComponentPropsWithoutRef<'div'> {

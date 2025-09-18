@@ -1,4 +1,4 @@
-import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image } from '@kushagradhawan/kookie-ui';
+import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Callout } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
 import { Play, Code, Users, BookOpen, Ruler, History } from 'lucide-react';
 
@@ -8,7 +8,13 @@ import { Play, Code, Users, BookOpen, Ruler, History } from 'lucide-react';
 
 The Shell component is a complete layout engine that provides structural patterns for building application interfaces. It manages layout state, composition rules, and responsive behavior across seven core slots: Header, Rail, Panel, Sidebar, Content, Inspector, and Bottom.
 
-<Grid columns={{ initial: '1', sm: '2' }} gap="2" mt="8">
+</Section>
+
+<Separator size="4"/>
+
+<Section>
+
+<Grid columns={{ initial: '1', sm: '2' }} gap="2">
   {[
     {
       href: 'shell/playground',
@@ -20,16 +26,9 @@ The Shell component is a complete layout engine that provides structural pattern
     {
       href: 'shell/api',
       title: 'API',
-      description: 'Props, integration patterns, and technical implementation',
+      description: 'Props, accessibility, keyboard navigation, and technical implementation',
       icon: Code,
       image: '/keyboard.png',
-    },
-    {
-      href: 'shell/accessibility',
-      title: 'Accessibility',
-      description: 'Keyboard navigation, screen readers, and inclusive design patterns',
-      icon: Users,
-      image: '/accessibility.png',
     },
     {
       href: 'shell/guidelines',
@@ -44,23 +43,19 @@ The Shell component is a complete layout engine that provides structural pattern
       description: 'Design tokens, measurements, and system specifications',
       icon: Ruler,
       image: '/ruler.png',
-    },
-    {
-      href: 'shell/changelog',
-      title: 'Changelog',
-      description: 'Release notes, updates, and version history',
-      icon: History,
-      image: '/changelog.png',
     }
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>
         <Flex direction="row" align="center" gap="4">
-        
+
+
+          {/*
           <Flex align="center" justify="center" style={{ width: 96, height: 96, flex: '0 0 96px' }}>
             <Image src={image} alt="" width={96} height={96} fit="cover" />
           </Flex>
-        
+          */}
+          
           <Flex direction="column" gap="2" p="2">
             <Flex align="center" gap="2">
               <Icon size={16} />
@@ -77,3 +72,64 @@ The Shell component is a complete layout engine that provides structural pattern
 </Grid>
 
 </Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## [Unreleased]
+
+### Added
+- Complete Shell component implementation with seven core slots
+- Responsive presentation modes: fixed, overlay, and stacked
+- Advanced resize system with keyboard navigation and accessibility
+- Composition rule enforcement (Rail+Panel vs Sidebar exclusivity)
+- Comprehensive breakpoint system with mobile-first approach
+- Size persistence API for maintaining user preferences
+- Peek functionality for temporary pane previews
+- `useShell()` hook for accessing shell context and control functions
+- `useResponsivePresentation()` hook for resolving responsive presentation values
+- ARIA slider implementation for resize handles
+- Semantic HTML structure with proper landmarks
+- Focus management for overlay/stacked presentations
+- Screen reader announcements for state changes
+
+### Technical
+- Built on modern React patterns with context splitting for performance
+- Comprehensive TypeScript types for all configurations
+- Six breakpoints: initial, xs, sm, md, lg, xl
+- Mobile-first approach with overlay defaults
+- Automatic breakpoint detection and state resolution
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## [0.1.41] - 2024-01-15
+
+### Added
+- Initial beta release of Shell component
+- `Shell.Root` - Layout container with height control
+- `Shell.Header` - Fixed header with customizable height
+- `Shell.Rail` - Narrow navigation strip (64px default)
+- `Shell.Panel` - Expandable sidebar panel (288px default)
+- `Shell.Sidebar` - Alternative unified navigation with thin/expanded modes
+- `Shell.Content` - Main content area (always required)
+- `Shell.Inspector` - Right-side contextual panel (320px default)
+- `Shell.Bottom` - Bottom panel for terminals/logs (200px default)
+- `Shell.Trigger` - Button triggers with peek-on-hover support
+- Size persistence adapter interface
+- Keyboard navigation with arrow keys, Home/End
+- Responsive mode and presentation configurations
+
+### Technical
+- Context splitting for optimal performance
+- TypeScript support with comprehensive type definitions
+- Design token integration for consistent spacing and sizing
+- CSS custom properties for theming
+
+</Section>
+
+<Text size="1" color="gray">The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).</Text>

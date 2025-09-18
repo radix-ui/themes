@@ -6,8 +6,8 @@ import { useShell } from '../shell.context.js';
 import { useResponsivePresentation, useResponsiveValue } from '../shell.hooks.js';
 import { PaneResizeContext } from './shell-resize.js';
 import { SidebarHandle, PaneHandle } from './shell-handles.js';
-import type { Breakpoint, PaneMode, PaneSizePersistence, PresentationValue, ResponsivePresentation, ResponsiveSidebarMode, SidebarMode, Responsive } from '../shell.types.js';
-import { BREAKPOINTS } from '../shell.types.js';
+import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, SidebarMode, Responsive } from '../shell.types.js';
+import { _BREAKPOINTS } from '../shell.types.js';
 
 interface PaneProps extends React.ComponentPropsWithoutRef<'div'> {
   presentation?: ResponsivePresentation;

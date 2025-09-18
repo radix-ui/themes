@@ -22,7 +22,9 @@ import {
   Calendar,
   Dog,
   GitBranch,
+  Gamepad,
   Settings,
+  MessageSquare,
 } from 'lucide-react';
 
 // Define the navigation structure
@@ -45,7 +47,9 @@ const navigationItems = [
     title: 'Foundations',
     icon: Palette,
     items: [
+      { href: '/docs/theme', title: 'Theme', icon: Palette, badge: undefined },
       { href: '/docs/colors', title: 'Colors', icon: ColorsIcon, badge: undefined },
+      { href: '/docs/constants', title: 'Constants', icon: GripVertical, badge: undefined },
       { href: '/docs/shadows', title: 'Shadows', icon: Box, badge: undefined },
       { href: '/docs/material', title: 'Material', icon: Square, badge: undefined },
     ],
@@ -78,7 +82,7 @@ const navigationItems = [
           { href: '/docs/button/api', title: 'API', icon: GripVertical },
           { href: '/docs/button/specs', title: 'Specs', icon: Box },
           { href: '/docs/button/guidelines', title: 'Guidelines', icon: Palette },
-          { href: '/docs/button/playground', title: 'Playground', icon: Square },
+          { href: '/docs/button/playground', title: 'Playground', icon: Gamepad },
         ],
       },
       {
@@ -91,9 +95,20 @@ const navigationItems = [
           { href: '/docs/shell/api', title: 'API', icon: GripVertical },
           { href: '/docs/shell/specs', title: 'Specs', icon: Box },
           { href: '/docs/shell/guidelines', title: 'Guidelines', icon: Palette },
-          { href: '/docs/shell/accessibility', title: 'Accessibility', icon: ChevronDown },
-          { href: '/docs/shell/changelog', title: 'Changelog', icon: Type },
-          { href: '/docs/shell/playground', title: 'Playground', icon: Square },
+          { href: '/docs/shell/playground', title: 'Playground', icon: Gamepad },
+        ],
+      },
+      {
+        href: '/docs/chatbar',
+        title: 'Chatbar',
+        icon: MessageSquare,
+        badge: undefined,
+        submenu: [
+          { href: '/docs/chatbar', title: 'Overview', icon: BookOpen },
+          { href: '/docs/chatbar/api', title: 'API', icon: GripVertical },
+          { href: '/docs/chatbar/specs', title: 'Specs', icon: Box },
+          { href: '/docs/chatbar/guidelines', title: 'Guidelines', icon: Palette },
+          { href: '/docs/chatbar/playground', title: 'Playground', icon: Gamepad },
         ],
       },
       {

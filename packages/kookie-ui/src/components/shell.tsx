@@ -31,12 +31,12 @@ import * as Sheet from './sheet.js';
 import { VisuallyHidden } from './visually-hidden.js';
 import { useResponsivePresentation, useResponsiveValue } from './shell.hooks.js';
 import { PaneResizeContext } from './_internal/shell-resize.js';
-import { PaneHandle, PanelHandle, SidebarHandle, InspectorHandle, BottomHandle } from './_internal/shell-handles.js';
+import { PaneHandle, PanelHandle } from './_internal/shell-handles.js';
 import { Sidebar } from './_internal/shell-sidebar.js';
 import { Bottom } from './_internal/shell-bottom.js';
 import { Inspector } from './_internal/shell-inspector.js';
 import type { PresentationValue, ResponsivePresentation, PaneMode, SidebarMode, PaneSizePersistence, Breakpoint, PaneTarget, Responsive } from './shell.types.js';
-import { BREAKPOINTS } from './shell.types.js';
+import { _BREAKPOINTS } from './shell.types.js';
 import {
   ShellProvider,
   useShell,
@@ -75,7 +75,7 @@ function useBreakpoint(): { bp: Breakpoint; ready: boolean } {
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const queries: [key: keyof typeof BREAKPOINTS, query: string][] = Object.entries(BREAKPOINTS) as any;
+    const queries: [key: keyof typeof _BREAKPOINTS, query: string][] = Object.entries(_BREAKPOINTS) as any;
     const mqls = queries.map(([k, q]) => [k, window.matchMedia(q)] as const);
 
     const compute = () => {
@@ -556,7 +556,7 @@ type RailProps = React.ComponentPropsWithoutRef<'div'> & {
 
 // Left container - behaves like Inspector but contains Rail+Panel
 const Left = React.forwardRef<HTMLDivElement, LeftProps>(
-  ({ className, presentation = { initial: 'fixed', sm: 'fixed' }, collapsible = true, onExpand, onCollapse, children, style, ...props }, ref) => {
+  ({ className, presentation = { initial: 'fixed', sm: 'fixed' }, collapsible: _collapsible = true, onExpand, onCollapse, children, style, ...props }, ref) => {
     const shell = useShell();
     const resolvedPresentation = useResponsivePresentation(presentation);
     const isOverlay = resolvedPresentation === 'overlay';
@@ -581,7 +581,7 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
       return () => shell.setHasLeft(false);
     }, [shell]);
 
-    const lastBpRef = React.useRef<Breakpoint | null>(null);
+    const _lastBpRef = React.useRef<Breakpoint | null>(null);
     const lastLeftModeRef = React.useRef<PaneMode | null>(null);
     const initNotifiedRef = React.useRef(false);
     const resolvedDefaultOpen = useResponsiveValue((props as any).defaultOpen as any);
@@ -633,7 +633,7 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
       }
     }, [shell.leftMode, onExpand, onCollapse]);
 
-    const isExpanded = shell.leftMode === 'expanded';
+    const _isExpanded = shell.leftMode === 'expanded';
 
     // Left is not resizable; width derives from Rail/Panel.
 
@@ -674,11 +674,11 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
       const isType = (el: React.ReactElement, comp: any) => React.isValidElement(el) && el.type === comp;
       const railEl = childArray.find((el) => isType(el, Rail));
       const panelEl = childArray.find((el) => isType(el, Panel));
-      const railSize = typeof (railEl as any)?.props?.expandedSize === 'number' ? (railEl as any).props.expandedSize : 64;
-      const panelSize = typeof (panelEl as any)?.props?.expandedSize === 'number' ? (panelEl as any).props.expandedSize : 288;
-      const hasRail = Boolean(railEl);
-      const hasPanel = Boolean(panelEl);
-      const includePanel = hasPanel && (shell.panelMode === 'expanded' || shell.peekTarget === 'panel');
+      const _railSize = typeof (railEl as any)?.props?.expandedSize === 'number' ? (railEl as any).props.expandedSize : 64;
+      const _panelSize = typeof (panelEl as any)?.props?.expandedSize === 'number' ? (panelEl as any).props.expandedSize : 288;
+      const _hasRail = Boolean(railEl);
+      const _hasPanel = Boolean(panelEl);
+      const _includePanel = _hasPanel && (shell.panelMode === 'expanded' || shell.peekTarget === 'panel');
 
       // Strip control props from DOM spread
       const { open: _openIgnored, defaultOpen: _defaultOpenIgnored, onOpenChange: _onOpenChangeIgnored, ...stackDomProps } = props as any;
@@ -810,7 +810,7 @@ type PanelComponent = React.ForwardRefExoticComponent<PanelPublicProps & React.R
   Handle: HandleComponent;
 };
 
-type SidebarComponent = React.ForwardRefExoticComponent<
+type _SidebarComponent = React.ForwardRefExoticComponent<
   (Omit<PaneProps, 'mode' | 'defaultMode' | 'onModeChange'> & {
     state?: Responsive<SidebarMode>;
     defaultState?: SidebarMode;
@@ -821,9 +821,9 @@ type SidebarComponent = React.ForwardRefExoticComponent<
     React.RefAttributes<HTMLDivElement>
 > & { Handle: HandleComponent };
 
-type InspectorComponent = React.ForwardRefExoticComponent<PaneProps & React.RefAttributes<HTMLDivElement>> & { Handle: HandleComponent };
+type _InspectorComponent = React.ForwardRefExoticComponent<PaneProps & React.RefAttributes<HTMLDivElement>> & { Handle: HandleComponent };
 
-type BottomComponent = React.ForwardRefExoticComponent<PaneProps & React.RefAttributes<HTMLDivElement>> & { Handle: HandleComponent };
+type _BottomComponent = React.ForwardRefExoticComponent<PaneProps & React.RefAttributes<HTMLDivElement>> & { Handle: HandleComponent };
 
 const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>(
   (

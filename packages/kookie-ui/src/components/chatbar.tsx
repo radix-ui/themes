@@ -8,9 +8,7 @@ import { Flex } from './flex.js';
 import { ScrollArea } from './scroll-area.js';
 import { Slot } from './slot.js';
 import { Box } from './box.js';
-import { Card } from './card.js';
 import { Text } from './text.js';
-import { Inset } from './inset.js';
 import { useDropzone } from 'react-dropzone';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 
@@ -287,7 +285,10 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
   // `attachments={undefined}` to clear attachments. In that case we normalize to an empty array.
   const isAttachmentsControlled = 'attachments' in props;
   const [attachmentsUncontrolled, setAttachmentsUncontrolled] = React.useState<ChatbarAttachment[]>(defaultAttachments);
-  const attachments = isAttachmentsControlled ? ((attachmentsProp ?? []) as ChatbarAttachment[]) : attachmentsUncontrolled;
+  const attachments = React.useMemo(
+    () => (isAttachmentsControlled ? ((attachmentsProp ?? []) as ChatbarAttachment[]) : attachmentsUncontrolled),
+    [isAttachmentsControlled, attachmentsProp, attachmentsUncontrolled],
+  );
 
   // Track generated object URLs for cleanup
   const generatedUrlSetRef = React.useRef<Set<string>>(new Set());
@@ -416,11 +417,12 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
 
   // Revoke any remaining generated URLs on unmount
   React.useEffect(() => {
+    const urlSet = generatedUrlSetRef.current;
     return () => {
-      for (const url of Array.from(generatedUrlSetRef.current)) {
+      for (const url of Array.from(urlSet)) {
         URL.revokeObjectURL(url);
       }
-      generatedUrlSetRef.current.clear();
+      urlSet.clear();
     };
   }, []);
 

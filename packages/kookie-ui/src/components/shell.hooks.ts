@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Breakpoint, PresentationValue, ResponsivePresentation } from './shell.types.js';
-import { BREAKPOINTS } from './shell.types.js';
+import { _BREAKPOINTS } from './shell.types.js';
 import { useShell } from './shell.context.js';
 
 export function useResponsivePresentation(presentation: ResponsivePresentation): PresentationValue {
@@ -15,7 +15,7 @@ export function useResponsivePresentation(presentation: ResponsivePresentation):
       return presentation[currentBreakpoint]!;
     }
 
-    const bpKeys = Object.keys(BREAKPOINTS) as Array<keyof typeof BREAKPOINTS>;
+    const bpKeys = Object.keys(_BREAKPOINTS) as Array<keyof typeof _BREAKPOINTS>;
     const order: Breakpoint[] = ([...bpKeys].reverse() as Breakpoint[]).concat('initial' as Breakpoint);
     const startIdx = order.indexOf(currentBreakpoint as Breakpoint);
 
@@ -50,7 +50,7 @@ export function useResponsiveValue<T>(value: T | Partial<Record<Breakpoint, T>> 
       return map[currentBreakpoint as Breakpoint] as T;
     }
 
-    const bpKeys = Object.keys(BREAKPOINTS) as Array<keyof typeof BREAKPOINTS>;
+    const bpKeys = Object.keys(_BREAKPOINTS) as Array<keyof typeof _BREAKPOINTS>;
     const order: Breakpoint[] = ([...bpKeys].reverse() as Breakpoint[]).concat('initial' as Breakpoint);
     const startIdx = order.indexOf(currentBreakpoint as Breakpoint);
 

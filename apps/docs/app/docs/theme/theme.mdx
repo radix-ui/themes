@@ -1,0 +1,114 @@
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image } from '@kushagradhawan/kookie-ui';
+
+<Section size="1">
+
+# Theme
+
+Kookie UI is built on [Radix Themes](https://www.radix-ui.com/themes), providing a complete theming system that makes it easy to create consistent, accessible interfaces.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Usage
+
+The Theme component is the foundation of Kookie UI's styling system. It controls the visual appearance of all components through a set of configuration options:
+
+<CodeBlock>
+
+```jsx
+<Theme
+  accentColor="blue"
+  grayColor="slate"
+  appearance="light"
+  radius="medium"
+  scaling="100%"
+  material="translucent"
+>
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+### Properties
+
+- **accentColor** - Primary color for interactive elements (25+ options)
+- **grayColor** - Secondary color for text and backgrounds (6 tinted options)
+- **appearance** - Light, dark, or system preference
+- **radius** - Border radius consistency (none, small, medium, large, full)
+- **scaling** - Component size scaling (90% to 110%)
+- **material** - Panel transparency (solid or translucent)
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Enhancements
+
+While Kookie UI inherits Radix Themes' complete theming system, it includes several practical enhancements:
+
+### Material
+- **Clearer API** - Use `material` instead of `panelBackground` for more intuitive panel transparency control
+- **Backward Compatible** - Existing `panelBackground` usage works with helpful migration warnings
+- **Consistent Application** - All panels automatically respect your material setting
+
+### Effects
+- **Extended Blur Tokens** - 12-step blur scale for precise backdrop effects
+- **Granular Opacity** - 9-step opacity scale for fine-tuned transparency
+- **3D Button Effects** - Specialized tokens for realistic depth and elevation
+
+### Typography
+- **Pre-configured Fonts** - Inter and JetBrains Mono with proper fallbacks
+- **Consistent Rendering** - Prevents browser font weight synthesis issues
+- **Graceful Degradation** - Falls back to system fonts if custom fonts fail
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Tokens
+
+Access theme values directly through CSS custom properties:
+
+<CodeBlock>
+
+```css
+/* Color tokens */
+var(--accent-9)           /* Primary accent color */
+var(--gray-11)            /* High contrast text */
+var(--color-background)   /* Page background */
+var(--color-panel)        /* Panel background (auto-resolves) */
+
+/* Spacing and sizing */
+var(--space-4)            /* Standard spacing */
+var(--radius-3)           /* Component border radius */
+var(--font-size-3)        /* Text size */
+```
+
+</CodeBlock>
+
+These tokens automatically respond to your theme configuration, ensuring consistency across your entire application.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Resources
+
+For complete theming documentation, visit the [Radix Themes docs](https://www.radix-ui.com/themes):
+
+- [Theme overview](https://www.radix-ui.com/themes/docs/theme/overview) - Understanding theme anatomy
+- [Color system](https://www.radix-ui.com/themes/docs/theme/color) - Working with colors
+- [Dark mode](https://www.radix-ui.com/themes/docs/theme/dark-mode) - Implementing dark mode
+- [Typography](https://www.radix-ui.com/themes/docs/theme/typography) - Font customization
+
+</Section>

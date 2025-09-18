@@ -1,0 +1,653 @@
+import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge, Section, Separator, Heading, Grid } from '@kushagradhawan/kookie-ui';
+import { Ruler, Palette, Type, Spacing, Layers, Zap } from 'lucide-react';
+import { CodeBlock } from '../../../components/code-block';
+
+<Section size="1">
+
+# Specs
+
+Design tokens, measurements, and system specifications for the Chatbar component. These specifications ensure consistent implementation across different platforms and provide a foundation for customization and theming.
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Sizing
+
+### Size Variants
+
+The Chatbar component supports three size variants that affect the overall scale and spacing of all internal elements.
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Size</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Height (px)</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Padding (px)</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Font Size</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Use Case</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`1`</Table.RowHeaderCell>
+        <Table.Cell>`32`</Table.Cell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>`12px`</Table.Cell>
+        <Table.Cell>Compact interfaces, mobile</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`2`</Table.RowHeaderCell>
+        <Table.Cell>`40`</Table.Cell>
+        <Table.Cell>`12`</Table.Cell>
+        <Table.Cell>`14px`</Table.Cell>
+        <Table.Cell>Standard interfaces (default)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`3`</Table.RowHeaderCell>
+        <Table.Cell>`48`</Table.Cell>
+        <Table.Cell>`16`</Table.Cell>
+        <Table.Cell>`16px`</Table.Cell>
+        <Table.Cell>Large interfaces, accessibility</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Line Height Configuration
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Size</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Line Height</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Min Lines</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Max Lines</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Compact Height</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`1`</Table.RowHeaderCell>
+        <Table.Cell>`16px`</Table.Cell>
+        <Table.Cell>`1`</Table.Cell>
+        <Table.Cell>`4`</Table.Cell>
+        <Table.Cell>`24px`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`2`</Table.RowHeaderCell>
+        <Table.Cell>`20px`</Table.Cell>
+        <Table.Cell>`1`</Table.Cell>
+        <Table.Cell>`6`</Table.Cell>
+        <Table.Cell>`32px`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`3`</Table.RowHeaderCell>
+        <Table.Cell>`24px`</Table.Cell>
+        <Table.Cell>`1`</Table.Cell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>`40px`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Visual Variants
+
+### Container Variants
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Variant</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Background</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Border</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Shadow</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Use Case</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`surface`</Table.RowHeaderCell>
+        <Table.Cell>`var(--color-panel)`</Table.Cell>
+        <Table.Cell>`1px solid var(--color-border)`</Table.Cell>
+        <Table.Cell>`var(--shadow-1)`</Table.Cell>
+        <Table.Cell>Default, most common</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`outline`</Table.RowHeaderCell>
+        <Table.Cell>`transparent`</Table.Cell>
+        <Table.Cell>`2px solid var(--color-border)`</Table.Cell>
+        <Table.Cell>`none`</Table.Cell>
+        <Table.Cell>Minimal, border-focused</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`classic`</Table.RowHeaderCell>
+        <Table.Cell>`var(--color-panel)`</Table.Cell>
+        <Table.Cell>`1px solid var(--color-border)`</Table.Cell>
+        <Table.Cell>`var(--shadow-2)`</Table.Cell>
+        <Table.Cell>Elevated, prominent</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`ghost`</Table.RowHeaderCell>
+        <Table.Cell>`transparent`</Table.Cell>
+        <Table.Cell>`none`</Table.Cell>
+        <Table.Cell>`none`</Table.Cell>
+        <Table.Cell>Minimal, no visual container</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`soft`</Table.RowHeaderCell>
+        <Table.Cell>`var(--color-panel-soft)`</Table.Cell>
+        <Table.Cell>`none`</Table.Cell>
+        <Table.Cell>`none`</Table.Cell>
+        <Table.Cell>Subtle, background-only</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Material Variants
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Material</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Background</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Backdrop Filter</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Use Case</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`solid`</Table.RowHeaderCell>
+        <Table.Cell>`var(--color-panel)`</Table.Cell>
+        <Table.Cell>`none`</Table.Cell>
+        <Table.Cell>Standard solid backgrounds</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`translucent`</Table.RowHeaderCell>
+        <Table.Cell>`var(--color-panel-translucent)`</Table.Cell>
+        <Table.Cell>`blur(12px)`</Table.Cell>
+        <Table.Cell>Glass morphism effects</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Spacing & Layout
+
+### Internal Spacing
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Element</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Padding (px)</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Gap (px)</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Container</Table.RowHeaderCell>
+        <Table.Cell>`12`</Table.Cell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>Main chatbar container padding</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Textarea</Table.RowHeaderCell>
+        <Table.Cell>`0`</Table.Cell>
+        <Table.Cell>`0`</Table.Cell>
+        <Table.Cell>Textarea has no internal padding</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Attachments Row</Table.RowHeaderCell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>Spacing around attachments</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Row Layout</Table.RowHeaderCell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>Spacing in expanded row layout</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Border Radius
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Element</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Radius (px)</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>CSS Variable</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Container</Table.RowHeaderCell>
+        <Table.Cell>`8`</Table.Cell>
+        <Table.Cell>`var(--radius-2)`</Table.Cell>
+        <Table.Cell>Main chatbar container</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Attachment</Table.RowHeaderCell>
+        <Table.Cell>`6`</Table.Cell>
+        <Table.Cell>`var(--radius-1)`</Table.Cell>
+        <Table.Cell>Individual attachment tiles</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Button</Table.RowHeaderCell>
+        <Table.Cell>`6`</Table.Cell>
+        <Table.Cell>`var(--radius-1)`</Table.Cell>
+        <Table.Cell>Attach and send buttons</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Color System
+
+### Accent Colors
+
+The Chatbar supports all accent colors from the design system:
+
+<CodeBlock>
+
+```css
+/* Accent color variables */
+--accent-1: hsl(var(--accent-1));
+--accent-2: hsl(var(--accent-2));
+--accent-3: hsl(var(--accent-3));
+--accent-4: hsl(var(--accent-4));
+--accent-5: hsl(var(--accent-5));
+--accent-6: hsl(var(--accent-6));
+--accent-7: hsl(var(--accent-7));
+--accent-8: hsl(var(--accent-8));
+--accent-9: hsl(var(--accent-9));
+--accent-10: hsl(var(--accent-10));
+--accent-11: hsl(var(--accent-11));
+--accent-12: hsl(var(--accent-12));
+```
+
+</CodeBlock>
+
+### State Colors
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>State</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Color</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>CSS Variable</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Default</Table.RowHeaderCell>
+        <Table.Cell>`var(--gray-9)`</Table.Cell>
+        <Table.Cell>`--color-text`</Table.Cell>
+        <Table.Cell>Normal text color</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Placeholder</Table.RowHeaderCell>
+        <Table.Cell>`var(--gray-8)`</Table.Cell>
+        <Table.Cell>`--color-text-placeholder`</Table.Cell>
+        <Table.Cell>Placeholder text color</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Disabled</Table.RowHeaderCell>
+        <Table.Cell>`var(--gray-6)`</Table.Cell>
+        <Table.Cell>`--color-text-disabled`</Table.Cell>
+        <Table.Cell>Disabled state color</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Focus</Table.RowHeaderCell>
+        <Table.Cell>`var(--accent-9)`</Table.Cell>
+        <Table.Cell>`--color-focus`</Table.Cell>
+        <Table.Cell>Focus ring color</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Error</Table.RowHeaderCell>
+        <Table.Cell>`var(--red-9)`</Table.Cell>
+        <Table.Cell>`--color-error`</Table.Cell>
+        <Table.Cell>Error state color</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Typography
+
+### Font Specifications
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Element</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Font Family</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Font Weight</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Line Height</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Letter Spacing</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Textarea</Table.RowHeaderCell>
+        <Table.Cell>`var(--font-sans)`</Table.Cell>
+        <Table.Cell>`400`</Table.Cell>
+        <Table.Cell>`1.4`</Table.Cell>
+        <Table.Cell>`0`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Placeholder</Table.RowHeaderCell>
+        <Table.Cell>`var(--font-sans)`</Table.Cell>
+        <Table.Cell>`400`</Table.Cell>
+        <Table.Cell>`1.4`</Table.Cell>
+        <Table.Cell>`0`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Attachment Name</Table.RowHeaderCell>
+        <Table.Cell>`var(--font-sans)`</Table.Cell>
+        <Table.Cell>`500`</Table.Cell>
+        <Table.Cell>`1.2`</Table.Cell>
+        <Table.Cell>`0`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Attachment Size</Table.RowHeaderCell>
+        <Table.Cell>`var(--font-sans)`</Table.Cell>
+        <Table.Cell>`400`</Table.Cell>
+        <Table.Cell>`1.2`</Table.Cell>
+        <Table.Cell>`0`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Font Size Scale
+
+<CodeBlock>
+
+```css
+/* Font size scale */
+--font-size-1: 12px;  /* Size 1 */
+--font-size-2: 14px;  /* Size 2 (default) */
+--font-size-3: 16px;  /* Size 3 */
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Shadows & Elevation
+
+### Shadow Tokens
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Shadow</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>CSS Variable</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Use Case</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>1</Table.RowHeaderCell>
+        <Table.Cell>`0 1px 2px 0 rgb(0 0 0 / 0.05)`</Table.Cell>
+        <Table.Cell>`--shadow-1`</Table.Cell>
+        <Table.Cell>Surface variant</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>2</Table.RowHeaderCell>
+        <Table.Cell>`0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)`</Table.Cell>
+        <Table.Cell>`--shadow-2`</Table.Cell>
+        <Table.Cell>Classic variant</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Focus</Table.RowHeaderCell>
+        <Table.Cell>`0 0 0 2px var(--accent-9)`</Table.Cell>
+        <Table.Cell>`--shadow-focus`</Table.Cell>
+        <Table.Cell>Focus ring</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Animation & Transitions
+
+### Transition Tokens
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Property</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Duration</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Easing</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>CSS Variable</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Height</Table.RowHeaderCell>
+        <Table.Cell>`150ms`</Table.Cell>
+        <Table.Cell>`ease-out`</Table.Cell>
+        <Table.Cell>`--transition-height`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Opacity</Table.RowHeaderCell>
+        <Table.Cell>`100ms`</Table.Cell>
+        <Table.Cell>`ease-in-out`</Table.Cell>
+        <Table.Cell>`--transition-opacity`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Transform</Table.RowHeaderCell>
+        <Table.Cell>`200ms`</Table.Cell>
+        <Table.Cell>`ease-out`</Table.Cell>
+        <Table.Cell>`--transition-transform`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Color</Table.RowHeaderCell>
+        <Table.Cell>`100ms`</Table.Cell>
+        <Table.Cell>`ease-in-out`</Table.Cell>
+        <Table.Cell>`--transition-color`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Reduced Motion Support
+
+<CodeBlock>
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .rt-ChatbarRoot {
+    transition: none;
+  }
+  
+  .rt-ChatbarTextarea {
+    transition: none;
+  }
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Responsive Breakpoints
+
+### Breakpoint System
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Min Width</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Max Width</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Behavior</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`initial`</Table.RowHeaderCell>
+        <Table.Cell>`0px`</Table.Cell>
+        <Table.Cell>`479px`</Table.Cell>
+        <Table.Cell>Mobile-first, compact layout</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`xs`</Table.RowHeaderCell>
+        <Table.Cell>`480px`</Table.Cell>
+        <Table.Cell>`767px`</Table.Cell>
+        <Table.Cell>Small tablets, expanded layout</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sm`</Table.RowHeaderCell>
+        <Table.Cell>`768px`</Table.Cell>
+        <Table.Cell>`1023px`</Table.Cell>
+        <Table.Cell>Tablets, full layout</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`md`</Table.RowHeaderCell>
+        <Table.Cell>`1024px`</Table.Cell>
+        <Table.Cell>`1199px`</Table.Cell>
+        <Table.Cell>Small desktops, enhanced layout</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`lg`</Table.RowHeaderCell>
+        <Table.Cell>`1200px`</Table.Cell>
+        <Table.Cell>`1439px`</Table.Cell>
+        <Table.Cell>Desktops, full features</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`xl`</Table.RowHeaderCell>
+        <Table.Cell>`1440px`</Table.Cell>
+        <Table.Cell>`∞`</Table.Cell>
+        <Table.Cell>Large desktops, maximum layout</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Separator size="4"/>
+
+<Section size="1">
+
+## Accessibility Specifications
+
+### Focus Indicators
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Element</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Focus Ring</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Color</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Width</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Textarea</Table.RowHeaderCell>
+        <Table.Cell>`outline: 2px solid`</Table.Cell>
+        <Table.Cell>`var(--accent-9)`</Table.Cell>
+        <Table.Cell>`2px`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Buttons</Table.RowHeaderCell>
+        <Table.Cell>`outline: 2px solid`</Table.Cell>
+        <Table.Cell>`var(--accent-9)`</Table.Cell>
+        <Table.Cell>`2px`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Attachments</Table.RowHeaderCell>
+        <Table.Cell>`outline: 1px solid`</Table.Cell>
+        <Table.Cell>`var(--accent-9)`</Table.Cell>
+        <Table.Cell>`1px`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### High Contrast Mode
+
+<CodeBlock>
+
+```css
+@media (forced-colors: active) {
+  .rt-ChatbarRoot {
+    border-color: ButtonText;
+    background-color: ButtonFace;
+  }
+  
+  .rt-ChatbarTextarea {
+    color: ButtonText;
+    background-color: ButtonFace;
+  }
+}
+```
+
+</CodeBlock>
+
+</Section>

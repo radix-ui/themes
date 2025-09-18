@@ -23,12 +23,12 @@ import { Button } from '@kushagradhawan/kookie-ui';
 
 ## Props
 
-<Callout.Root variant="soft" size="2" color="gray" mb="7">
+<Callout.Root variant="surface" size="2" color="orange" my="6" highContrast>
   <Callout.Text>The `panelBackground` prop is deprecated and will be removed in a future version. Use the `material` prop instead for controlling visual rendering.</Callout.Text>
 </Callout.Root>
 
 <Box>
-  <Table.Root mt="6" mb="9" size="2" variant="ghost">
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
@@ -92,7 +92,7 @@ import { Button } from '@kushagradhawan/kookie-ui';
   </Table.Root>
 </Box>
 
-<Callout.Root variant="soft" size="2" color="gray" my="7">
+<Callout.Root variant="surface" size="2" mb="6" highContrast>
   <Callout.Text>The Button component includes comprehensive tooltip props for enhanced user guidance. These props allow you to customize tooltip content, positioning, timing, and behavior.</Callout.Text>
 </Callout.Root>
 
@@ -675,46 +675,32 @@ Use standard HTML form attributes to integrate buttons with forms. The component
 
 ## Accessibility
 
-The Button component implements comprehensive accessibility features through automatic ARIA attributes, keyboard navigation, and semantic markup.
+Kookie UI's Button extends Radix's accessibility foundation with enhanced loading states and built-in tooltip support.
 
-### ARIA Attributes
+### Enhanced Loading States
 
-Loading states automatically apply:
+Loading states automatically apply comprehensive ARIA attributes:
 - `aria-busy="true"` - announces processing state
 - `aria-disabled="true"` - prevents interaction
 - `aria-describedby` - links to loading announcement
 - `aria-label` - dynamically includes "(loading)" status
 
-Disabled states use standard `disabled` attribute with proper ARIA support.
+Loading announcements include: "[Button text] is loading, please wait..."
 
-### Keyboard Navigation
+### Built-in Tooltip Integration
 
-- **Space key** activates buttons
-- **Tab navigation** moves between buttons in logical order
-- **Focus indicators** automatically show 2px outlines with appropriate colors
-- Focus rings only appear for keyboard navigation (not mouse clicks)
+Tooltips automatically provide:
+- Proper ARIA labeling
+- Focus and hover triggers
+- Keyboard navigation support
+- Screen reader announcements
 
-### Screen Reader Support
-
-- Uses semantic `<button>` elements
-- Automatic text extraction from both string children and React elements
-- Falls back to "button" if no text can be extracted
-- Loading announcements include: "[Button text] is loading, please wait..."
-
-### Touch Targets
+### Touch Target Guidelines
 
 All button sizes meet accessibility guidelines:
 - **Size 1 (24px):** Desktop interfaces only
 - **Size 2 (32px):** Standard desktop interfaces  
 - **Size 3 (40px):** Mobile and important actions
 - **Size 4 (48px):** Hero sections and maximum accessibility
-
-### Tooltip Integration
-
-Built-in tooltips automatically provide:
-- Proper ARIA labeling
-- Focus and hover triggers
-- Keyboard navigation support
-- Screen reader announcements
 
 </Section>

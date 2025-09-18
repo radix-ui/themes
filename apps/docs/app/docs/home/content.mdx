@@ -1,6 +1,6 @@
 import { Section, Badge, Separator, Card, Flex, Text, Heading, Grid, Image } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
-import { Power, Palette, Settings, Grid3X3, BookOpen, Dog, GitBranch, Calendar } from 'lucide-react';
+import { Power, Palette, Settings, Grid3X3, BookOpen, Dog, GitBranch, Calendar, Download } from 'lucide-react';
 
 <Section size="1">
 
@@ -12,12 +12,19 @@ Welcome to Kookie UI, a UI SDK that goes beyond components to define layout patt
 
 <Grid columns={{ initial: '1', sm: '2' }} gap="2" mb="6">
   {[
+    // {
+    //   href: '/docs/get-started',
+    //   title: 'Start',
+    //   description: 'Get started with Kookie UI and understand the core concepts',
+    //   icon: Power,
+    //   image: '/signpost.png',
+    // },
     {
-      href: '/docs/get-started',
-      title: 'Start',
-      description: 'Get started with Kookie UI and understand the core concepts',
-      icon: Power,
-      image: '/signpost.png',
+      href: '/docs/installation',
+      title: 'Installation',
+      description: 'Get Kookie UI set up in your project with any React framework',
+      icon: Download,
+      image: '/install.png',
     },
     {
       href: '/docs/whats-kookie',
@@ -26,20 +33,20 @@ Welcome to Kookie UI, a UI SDK that goes beyond components to define layout patt
       icon: Dog,
       image: '/kookie.png',
     },
-    {
-      href: '/docs/changes-from-radix',
-      title: 'Changes from Radix',
-      description: "See what I kept, what I changed, and the new components I'm building",
-      icon: GitBranch,
-      image: '/branch.png',
-    },
-    {
-      href: '/docs/roadmap',
-      title: 'Roadmap',
-      description: 'Current development status, upcoming features, and long-term vision',
-      icon: Calendar,
-      image: '/roadmap.png',
-    },
+    // {
+    //   href: '/docs/changes-from-radix',
+    //   title: 'Changes from Radix',
+    //   description: "See what I kept, what I changed, and the new components I'm building",
+    //   icon: GitBranch,
+    //   image: '/branch.png',
+    // },
+    // {
+    //   href: '/docs/roadmap',
+    //   title: 'Roadmap',
+    //   description: 'Current development status, upcoming features, and long-term vision',
+    //   icon: Calendar,
+    //   image: '/roadmap.png',
+    // },
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>
