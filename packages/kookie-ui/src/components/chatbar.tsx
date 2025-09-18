@@ -177,9 +177,22 @@ interface ChatbarRootBaseProps {
    * @default true
    */
   dropzone?: boolean;
+
+  /**
+   * Optional API ref to control Chatbar imperatively without relying on DOM refs.
+   * Provides methods to focus the textarea and open the file picker.
+   */
+  apiRef?: React.Ref<ChatbarApi>;
 }
 
 type RootElement = React.ElementRef<'div'>;
+/** Imperative API for Chatbar.Root */
+export interface ChatbarApi {
+  /** Focus the textarea input */
+  focusTextarea: () => void;
+  /** Open the file picker dialog (respects accept/multiple) */
+  openFilePicker: () => void;
+}
 /**
  * Chatbar container and state provider.
  *
@@ -251,6 +264,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     clearOnSubmit = true,
     onAttachmentReject,
     dropzone = true,
+    apiRef,
     ...divProps
   } = props;
   const effectiveMaterial = material || panelBackground;
@@ -432,7 +446,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
   );
 
   // Dropzone functionality
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open: openFileDialog } = useDropzone({
     onDrop: (acceptedFiles, rejectedFiles) => {
       if (acceptedFiles.length > 0) {
         appendFiles(acceptedFiles);
@@ -467,6 +481,20 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     noKeyboard: true,
     disabled: !dropzone || disabled,
   });
+
+  // Expose imperative API via apiRef (non-breaking; forwardedRef still receives the DOM node)
+  React.useImperativeHandle(
+    apiRef,
+    () => ({
+      focusTextarea: () => textareaRef.current?.focus({ preventScroll: true }),
+      openFilePicker: () => {
+        // Guard against blur-collapse while native dialog is open
+        fileDialogOpenRef.current = true;
+        openFileDialog();
+      },
+    }),
+    [openFileDialog],
+  );
 
   // Click-to-focus: focus textarea when clicking non-interactive areas inside the container
   const isInteractiveTarget = React.useCallback((target: EventTarget | null) => {
