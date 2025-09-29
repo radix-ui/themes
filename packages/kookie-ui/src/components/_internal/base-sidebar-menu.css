@@ -220,6 +220,6 @@
 
 /* Add balanced spacing for sidebar menu items while preserving base menu border radius */
 .rt-SidebarContent :where(.rt-BaseMenuItem) {
-  margin-top: calc(var(--space-1) / 4);
-  margin-bottom: calc(var(--space-1) / 4);
+  margin-top: calc(var(--space-1) / 2);
+  margin-bottom: calc(var(--space-1) / 2);
 }
