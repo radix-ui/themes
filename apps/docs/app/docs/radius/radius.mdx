@@ -1,0 +1,268 @@
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../../components/code-block';
+import { SquareRoundCorner } from 'lucide-react';
+
+<Section size="1">
+
+<SquareRoundCorner />
+# Radius
+
+Border radius system with 5-step scale for consistent corner rounding. Kookie UI Radius is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better visual hierarchy. 
+
+For complete radius documentation and advanced usage, visit the [Radix Themes radius docs](https://www.radix-ui.com/themes/docs/theme/radius). Note that Kookie UI's radius values may be enhanced and might not match exactly what's shown in the Radix documentation.
+
+</Section>
+
+<Section size="1">
+
+## Usage
+
+Set `radius` prop to control border radius across all components. Use consistent radius values to create visual hierarchy and polish.
+
+<CodeBlock>
+
+```tsx
+import { Theme } from '@kushagradhawan/kookie-ui';
+```
+
+</CodeBlock>
+
+<CodeBlock>
+
+```tsx
+<Theme radius="medium">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Tokens
+
+Radius tokens with their CSS values and usage:
+
+<CodeBlock>
+
+```css
+/* Radius tokens (base values) */
+var(--radius-1)  /* 6px - Small elements */
+var(--radius-2)  /* 8px - Buttons, inputs */
+var(--radius-3)  /* 10px - Cards, panels */
+var(--radius-4)  /* 12px - Large cards */
+var(--radius-5)  /* 16px - Modals */
+var(--radius-6)  /* 20px - Large surfaces */
+var(--radius-7)  /* 24px - Extra large surfaces */
+var(--radius-8)  /* 28px - Hero sections */
+var(--radius-9)  /* 32px - Very large surfaces */
+var(--radius-10) /* 40px - Massive surfaces */
+var(--radius-11) /* 48px - Huge surfaces */
+var(--radius-12) /* 56px - Maximum surfaces */
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Radius Scale
+
+### None
+
+No border radius for sharp, geometric interfaces.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Box 
+        width="160px" 
+        height="160px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: '0px',
+          border: '1px solid var(--gray-6)'
+        }}
+      />
+    </Flex>
+  }
+>
+
+```tsx
+<Theme radius="none">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+### Small
+
+Subtle rounding with 0.75x radius factor.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Box 
+        width="160px" 
+        height="160px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: 'calc(var(--radius-3) * 0.75)',
+          border: '1px solid var(--gray-6)'
+        }}
+      />
+    </Flex>
+  }
+>
+
+```tsx
+<Theme radius="small">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+### Medium
+
+Standard rounding with 1x radius factor.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Box 
+        width="160px" 
+        height="160px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: 'var(--radius-3)',
+          border: '1px solid var(--gray-6)'
+        }}
+      />
+    </Flex>
+  }
+>
+
+```tsx
+<Theme radius="medium">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+### Large
+
+Prominent rounding with 1.5x radius factor.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Box 
+        width="160px" 
+        height="160px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: 'calc(var(--radius-3) * 1.5)',
+          border: '1px solid var(--gray-6)'
+        }}
+      />
+    </Flex>
+  }
+>
+
+```tsx
+<Theme radius="large">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+### Full
+
+Maximum rounding with 2x radius factor and pill-shaped elements.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
+      <Box 
+        width="160px" 
+        height="160px" 
+        style={{ 
+          backgroundColor: 'var(--color-panel-solid)', 
+          borderRadius: 'calc(var(--radius-3) * 2)',
+          border: '1px solid var(--gray-6)'
+        }}
+      />
+    </Flex>
+  }
+>
+
+```tsx
+<Theme radius="full">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Radius Factor System
+
+Theme component uses radius factors that multiply base radius values:
+
+<CodeBlock>
+
+```css
+/* Radius factor system */
+[data-radius='none']   { --radius-factor: 0; }     /* 0x multiplier */
+[data-radius='small']  { --radius-factor: 0.75; }  /* 0.75x multiplier */
+[data-radius='medium'] { --radius-factor: 1; }     /* 1x multiplier */
+[data-radius='large']  { --radius-factor: 1.5; }   /* 1.5x multiplier */
+[data-radius='full']   { --radius-factor: 2.0; }   /* 2x multiplier */
+```
+
+</CodeBlock>
+
+<CodeBlock>
+
+```tsx
+/* Theme radius usage */
+<Theme radius="none">    /* All radius values become 0px */
+<Theme radius="small">   /* All radius values × 0.75 */
+<Theme radius="medium">  /* All radius values × 1 (default) */
+<Theme radius="large">   /* All radius values × 1.5 */
+<Theme radius="full">    /* All radius values × 2 */
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Differences from Radix
+
+Kookie UI refines the Radix Themes radius system with more granular control and better visual hierarchy:
+
+**Refined Values:**
+Smaller increments (2px, 4px, 6px, 8px, 12px) for more precise control. Better proportions where each step provides meaningful visual difference and consistent scaling for more predictable progression across the scale.
+
+**Enhanced Usage:**
+Component-specific defaults where each component uses the most appropriate radius. Semantic naming with clear, descriptive radius names and better accessibility with radius values that work well with focus indicators.
+
+</Section>

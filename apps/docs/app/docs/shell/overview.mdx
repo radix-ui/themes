@@ -10,11 +10,7 @@ The Shell component is a complete layout engine that provides structural pattern
 
 </Section>
 
-<Separator size="4"/>
-
-<Section>
-
-<Grid columns={{ initial: '1', sm: '2' }} gap="2">
+<Grid columns={{ initial: '1', sm: '2' }} gap="2" my="6">
   {[
     {
       href: 'shell/playground',
@@ -29,20 +25,6 @@ The Shell component is a complete layout engine that provides structural pattern
       description: 'Props, accessibility, keyboard navigation, and technical implementation',
       icon: Code,
       image: '/keyboard.png',
-    },
-    {
-      href: 'shell/guidelines',
-      title: 'Guidelines',
-      description: 'Psychology, hierarchy, and design principles for effective interfaces',
-      icon: BookOpen,
-      image: '/guidelines.png',
-    },
-    {
-      href: 'shell/specs',
-      title: 'Specs',
-      description: 'Design tokens, measurements, and system specifications',
-      icon: Ruler,
-      image: '/ruler.png',
     }
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
@@ -70,10 +52,6 @@ The Shell component is a complete layout engine that provides structural pattern
 ))}
 
 </Grid>
-
-</Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -103,11 +81,9 @@ The Shell component is a complete layout engine that provides structural pattern
 
 </Section>
 
-<Separator size="4"/>
-
 <Section size="1">
 
-## [0.1.41] - 2024-01-15
+## [0.1.41] - 2025-09-15
 
 ### Added
 - Initial beta release of Shell component

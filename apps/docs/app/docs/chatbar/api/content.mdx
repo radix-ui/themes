@@ -1,4 +1,4 @@
-import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge, Section, Separator, Heading } from '@kushagradhawan/kookie-ui';
+import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge, Section, Heading, Chatbar } from '@kushagradhawan/kookie-ui';
 import { ChevronDown, Dot, Check, ChevronRight, MessageSquare, Paperclip, Send, X } from 'lucide-react';
 import { CodeBlock } from '../../../components/code-block';
 
@@ -8,6 +8,12 @@ import { CodeBlock } from '../../../components/code-block';
 
 The Chatbar component is a comprehensive multi-line text input designed for chat interfaces with built-in attachment support, auto-resizing behavior, and comprehensive file handling capabilities. It provides controlled and uncontrolled state management, drag-and-drop functionality, and accessibility compliance out of the box.
 
+</Section>
+
+<Section size="1">
+
+## Props
+
 <CodeBlock buttonsPosition="center">
 
 ```tsx
@@ -16,27 +22,338 @@ import { Chatbar } from '@kushagradhawan/kookie-ui';
 
 </CodeBlock>
 
-</Section>
-
-<Separator size="4"/>
-
-<Section size="1">
-
-## Basic Usage
-
 <CodeBlock>
 
 ```tsx
-<Chatbar.Root onSubmit={({ value, attachments }) => {
+<Chatbar.Root width="360px" open onOpenChange={() => {}} onSubmit={({ value, attachments }) => {
   console.log('Message:', value);
   console.log('Attachments:', attachments);
 }}>
+  <Chatbar.AttachmentsRow />
   <Chatbar.Textarea 
     placeholder="Type a message..."
     aria-label="Message input"
   />
-  <Chatbar.AttachTrigger />
-  <Chatbar.Send />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="1" variant="soft" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
+</Chatbar.Root>
+```
+
+</CodeBlock>
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`value`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultValue`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onValueChange`</Table.RowHeaderCell>
+        <Table.Cell>`(value: string) => void`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`expandOn`</Table.RowHeaderCell>
+        <Table.Cell>`'none' | 'focus' | 'overflow' | 'both'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`minLines`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxLines`</Table.RowHeaderCell>
+        <Table.Cell>`number`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`sendMode`</Table.RowHeaderCell>
+        <Table.Cell>`'always' | 'whenDirty' | 'never'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`disabled`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`readOnly`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onSubmit`</Table.RowHeaderCell>
+        <Table.Cell>`(payload: { value: string; attachments: ChatbarAttachment[] }) => void`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
+        <Table.Cell>`'1' | '2' | '3'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`variant`</Table.RowHeaderCell>
+        <Table.Cell>`'surface' | 'outline' | 'classic' | 'ghost' | 'soft'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`color`</Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
+        <Table.Cell>`string | number`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
+        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`width`</Table.RowHeaderCell>
+        <Table.Cell>`React.CSSProperties['width']`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxWidth`</Table.RowHeaderCell>
+        <Table.Cell>`React.CSSProperties['maxWidth']`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+<Flex justify="start" width="auto">
+  <Callout.Root
+    variant="soft"
+    size="2"
+    my="6"
+    highContrast
+    width="auto"
+    style={{ display: 'inline-flex', width: 'auto', maxWidth: '100%' }}
+  >
+    <Callout.Icon>
+      <Paperclip />
+    </Callout.Icon>
+    <Callout.Text>Chatbar supports drag-and-drop and paste for attachments. Configure acceptance, limits, and behavior via Attachment props.</Callout.Text>
+  </Callout.Root>
+  </Flex>
+
+</Section>
+
+
+<Section size="1">
+
+## Variants
+
+Use the `variant` prop to set Chatbar style. Prefer `classic` for elevated emphasis, `surface` for content-heavy UIs, `outline` for neutral framing, `soft` for gentle emphasis, and `ghost` for minimal chrome.
+
+### Classic
+
+<CodeBlock
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Chatbar.Root width="360px" open onOpenChange={() => {}} variant="classic" minLines={3} sendMode="always">
+        <Chatbar.AttachmentsRow />
+        <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+        <Chatbar.Row>
+          <Chatbar.AttachTrigger asChild>
+            <IconButton size="2" variant="classic" aria-label="Attach file">
+              <Paperclip />
+            </IconButton>
+          </Chatbar.AttachTrigger>
+          <Chatbar.Send variant="ghost" />
+        </Chatbar.Row>
+      </Chatbar.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Chatbar.Root width="360px" open onOpenChange={() => {}} variant="classic" minLines={3} sendMode="always">
+  <Chatbar.AttachmentsRow />
+  <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="2" variant="classic" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
+</Chatbar.Root>
+```
+
+</CodeBlock>
+
+### Soft
+
+<CodeBlock
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Chatbar.Root width="360px" open onOpenChange={() => {}} variant="soft" minLines={3} sendMode="always">
+        <Chatbar.AttachmentsRow />
+        <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+        <Chatbar.Row>
+          <Chatbar.AttachTrigger asChild>
+            <IconButton size="2" variant="classic" aria-label="Attach file">
+              <Paperclip />
+            </IconButton>
+          </Chatbar.AttachTrigger>
+          <Chatbar.Send variant="ghost" />
+        </Chatbar.Row>
+      </Chatbar.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Chatbar.Root width="360px" open onOpenChange={() => {}} variant="soft" minLines={3} sendMode="always">
+  <Chatbar.AttachmentsRow />
+  <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="2" variant="classic" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
+</Chatbar.Root>
+```
+
+</CodeBlock>
+
+### Outline
+
+<CodeBlock
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Chatbar.Root width="360px" open onOpenChange={() => {}} variant="outline" minLines={3} sendMode="always">
+        <Chatbar.AttachmentsRow />
+        <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+        <Chatbar.Row>
+          <Chatbar.AttachTrigger asChild>
+            <IconButton size="2" variant="classic" aria-label="Attach file">
+              <Paperclip />
+            </IconButton>
+          </Chatbar.AttachTrigger>
+          <Chatbar.Send variant="ghost" />
+        </Chatbar.Row>
+      </Chatbar.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Chatbar.Root width="360px" open onOpenChange={() => {}} variant="outline" minLines={3} sendMode="always">
+  <Chatbar.AttachmentsRow />
+  <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="2" variant="classic" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
+</Chatbar.Root>
+```
+
+</CodeBlock>
+
+### Surface
+
+<CodeBlock
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Chatbar.Root width="360px" open onOpenChange={() => {}} variant="surface" minLines={3} sendMode="always">
+        <Chatbar.AttachmentsRow />
+        <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+        <Chatbar.Row>
+          <Chatbar.AttachTrigger asChild>
+            <IconButton size="2" variant="classic" aria-label="Attach file">
+              <Paperclip />
+            </IconButton>
+          </Chatbar.AttachTrigger>
+          <Chatbar.Send variant="ghost" />
+        </Chatbar.Row>
+      </Chatbar.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Chatbar.Root width="360px" open onOpenChange={() => {}} variant="surface" minLines={3} sendMode="always">
+  <Chatbar.AttachmentsRow />
+  <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="2" variant="classic" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
+</Chatbar.Root>
+```
+
+</CodeBlock>
+
+### Ghost
+
+<CodeBlock
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Chatbar.Root width="360px" open onOpenChange={() => {}} variant="ghost" minLines={3} sendMode="always">
+        <Chatbar.AttachmentsRow />
+        <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+        <Chatbar.Row>
+          <Chatbar.AttachTrigger asChild>
+            <IconButton size="2" variant="classic" aria-label="Attach file">
+              <Paperclip />
+            </IconButton>
+          </Chatbar.AttachTrigger>
+          <Chatbar.Send variant="ghost" />
+        </Chatbar.Row>
+      </Chatbar.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Chatbar.Root width="360px" open onOpenChange={() => {}} variant="ghost" minLines={3} sendMode="always">
+  <Chatbar.AttachmentsRow />
+  <Chatbar.Textarea aria-label="Message input" placeholder="Type a message..." />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="2" variant="classic" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
 </Chatbar.Root>
 ```
 
@@ -44,156 +361,6 @@ import { Chatbar } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Separator size="4"/>
-
-<Section size="1">
-
-## Props
-
-<Box>
-  <Table.Root mt="6" mb="6" size="2" variant="ghost">
-    <Table.Header>
-      <Table.Row>
-        <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.RowHeaderCell>`value`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Controlled value of the text input</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`defaultValue`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>`''`</Table.Cell>
-        <Table.Cell>Default value for uncontrolled usage</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onValueChange`</Table.RowHeaderCell>
-        <Table.Cell>`(value: string) => void`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Callback when the value changes</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Controlled open state for expanded mode</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>`false`</Table.Cell>
-        <Table.Cell>Default open state for uncontrolled usage</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
-        <Table.Cell>`(open: boolean) => void`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Callback when the open state changes</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`expandOn`</Table.RowHeaderCell>
-        <Table.Cell>`'none' | 'focus' | 'overflow' | 'both'`</Table.Cell>
-        <Table.Cell>`'both'`</Table.Cell>
-        <Table.Cell>When to expand the chatbar from compact to full mode</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`minLines`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>`1`</Table.Cell>
-        <Table.Cell>Minimum number of lines in compact state</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`maxLines`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>`6`</Table.Cell>
-        <Table.Cell>Maximum number of lines before scrolling</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sendMode`</Table.RowHeaderCell>
-        <Table.Cell>`'always' | 'whenDirty' | 'never'`</Table.Cell>
-        <Table.Cell>`'whenDirty'`</Table.Cell>
-        <Table.Cell>When to show the send button</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`disabled`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Disables the entire chatbar</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`readOnly`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Makes the chatbar read-only</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onSubmit`</Table.RowHeaderCell>
-        <Table.Cell>`(payload: { value: string; attachments: ChatbarAttachment[] }) => void`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Callback when the form is submitted</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
-        <Table.Cell>`'1' | '2' | '3'`</Table.Cell>
-        <Table.Cell>`'2'`</Table.Cell>
-        <Table.Cell>Size of the chatbar and its components</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`variant`</Table.RowHeaderCell>
-        <Table.Cell>`'surface' | 'outline' | 'classic' | 'ghost' | 'soft'`</Table.Cell>
-        <Table.Cell>`'surface'`</Table.Cell>
-        <Table.Cell>Visual variant of the chatbar container</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`color`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Accent color for the control</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
-        <Table.Cell>`string | number`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Border radius override</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
-        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Panel/material translucency</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`width`</Table.RowHeaderCell>
-        <Table.Cell>`React.CSSProperties['width']`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Width of the chatbar container</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`maxWidth`</Table.RowHeaderCell>
-        <Table.Cell>`React.CSSProperties['maxWidth']`</Table.Cell>
-        <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Maximum width of the chatbar container</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>`false`</Table.Cell>
-        <Table.Cell>Render as a different element using Slot</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table.Root>
-</Box>
-
-</Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -206,7 +373,6 @@ import { Chatbar } from '@kushagradhawan/kookie-ui';
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
@@ -214,73 +380,61 @@ import { Chatbar } from '@kushagradhawan/kookie-ui';
         <Table.RowHeaderCell>`attachments`</Table.RowHeaderCell>
         <Table.Cell>`ChatbarAttachment[]`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Controlled attachments array</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultAttachments`</Table.RowHeaderCell>
         <Table.Cell>`ChatbarAttachment[]`</Table.Cell>
         <Table.Cell>`[]`</Table.Cell>
-        <Table.Cell>Default attachments for uncontrolled usage</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onAttachmentsChange`</Table.RowHeaderCell>
         <Table.Cell>`(attachments: ChatbarAttachment[]) => void`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Callback when attachments change</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`accept`</Table.RowHeaderCell>
         <Table.Cell>`string | string[]`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Accepted file types (MIME types or extensions)</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`multiple`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`true`</Table.Cell>
-        <Table.Cell>Allow multiple file selection</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxAttachments`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Maximum number of attachments allowed</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxFileSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Maximum file size in bytes</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`paste`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`true`</Table.Cell>
-        <Table.Cell>Enable paste-to-attach functionality</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`pasteAccept`</Table.RowHeaderCell>
         <Table.Cell>`string | string[]`</Table.Cell>
         <Table.Cell>`accept`</Table.Cell>
-        <Table.Cell>File types accepted from paste (defaults to accept)</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`clearOnSubmit`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`true`</Table.Cell>
-        <Table.Cell>Clear attachments after submission</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onAttachmentReject`</Table.RowHeaderCell>
         <Table.Cell>`(rejections: { file: File; reason: 'type' | 'size' | 'count' }[]) => void`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Callback when files are rejected</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`dropzone`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`true`</Table.Cell>
-        <Table.Cell>Enable drag-and-drop file uploads</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -288,7 +442,6 @@ import { Chatbar } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -305,7 +458,6 @@ The multi-line text input component with auto-resizing behavior.
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
@@ -313,19 +465,16 @@ The multi-line text input component with auto-resizing behavior.
         <Table.RowHeaderCell>`submitOnEnter`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`false`</Table.Cell>
-        <Table.Cell>Submit on Enter key press (Shift+Enter for newline)</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onPaste`</Table.RowHeaderCell>
         <Table.Cell>`React.ClipboardEventHandler<HTMLTextAreaElement>`</Table.Cell>
         <Table.Cell>`undefined`</Table.Cell>
-        <Table.Cell>Handler for paste events</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`false`</Table.Cell>
-        <Table.Cell>Render as a different element using Slot</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -342,7 +491,6 @@ Button component for opening the file picker dialog.
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
@@ -350,19 +498,16 @@ Button component for opening the file picker dialog.
         <Table.RowHeaderCell>`accept`</Table.RowHeaderCell>
         <Table.Cell>`string | string[]`</Table.Cell>
         <Table.Cell>`Root accept`</Table.Cell>
-        <Table.Cell>Override accepted file types for this trigger</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`multiple`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`Root multiple`</Table.Cell>
-        <Table.Cell>Override multiple file selection for this trigger</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`false`</Table.Cell>
-        <Table.Cell>Render as a different element using Slot</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -379,7 +524,6 @@ Send button with conditional visibility based on sendMode.
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
@@ -387,13 +531,11 @@ Send button with conditional visibility based on sendMode.
         <Table.RowHeaderCell>`clearOnSend`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`true`</Table.Cell>
-        <Table.Cell>Clear attachments after sending</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
         <Table.Cell>`false`</Table.Cell>
-        <Table.Cell>Render as a different element using Slot</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -401,7 +543,6 @@ Send button with conditional visibility based on sendMode.
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -447,7 +588,6 @@ interface ChatbarApi {
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -471,7 +611,7 @@ The Chatbar component provides comprehensive accessibility support:
 <CodeBlock>
 
 ```tsx
-<Chatbar.Root>
+<Chatbar.Root width="360px" open onOpenChange={() => {}}>
   <Chatbar.Textarea 
     placeholder="Type a message..."
     aria-label="Message input"
@@ -484,7 +624,6 @@ The Chatbar component provides comprehensive accessibility support:
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -495,7 +634,7 @@ The Chatbar component provides comprehensive accessibility support:
 <CodeBlock>
 
 ```tsx
-<Chatbar.Root onSubmit={({ value, attachments }) => {
+<Chatbar.Root width="360px" open onOpenChange={() => {}} onSubmit={({ value, attachments }) => {
   console.log('Message:', value);
   console.log('Attachments:', attachments);
 }}>
@@ -515,7 +654,7 @@ The Chatbar component provides comprehensive accessibility support:
 <CodeBlock>
 
 ```tsx
-<Chatbar.Root 
+<Chatbar.Root width="360px" open onOpenChange={() => {}} 
   accept="image/*,.pdf,.doc,.docx"
   maxFileSize={5 * 1024 * 1024} // 5MB
   maxAttachments={3}
@@ -545,7 +684,7 @@ The Chatbar component provides comprehensive accessibility support:
 const [value, setValue] = useState('');
 const [attachments, setAttachments] = useState<ChatbarAttachment[]>([]);
 
-<Chatbar.Root 
+<Chatbar.Root width="360px" open onOpenChange={() => {}} 
   value={value}
   onValueChange={setValue}
   attachments={attachments}
@@ -572,7 +711,7 @@ const [attachments, setAttachments] = useState<ChatbarAttachment[]>([]);
 <CodeBlock>
 
 ```tsx
-<Chatbar.Root onSubmit={({ value, attachments }) => {
+<Chatbar.Root width="360px" open onOpenChange={() => {}} onSubmit={({ value, attachments }) => {
   console.log('Message:', value);
   console.log('Attachments:', attachments);
 }}>
@@ -581,8 +720,14 @@ const [attachments, setAttachments] = useState<ChatbarAttachment[]>([]);
     placeholder="Type a message..."
     aria-label="Message input"
   />
-  <Chatbar.AttachTrigger />
-  <Chatbar.Send />
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="1" variant="soft" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
 </Chatbar.Root>
 ```
 
@@ -593,25 +738,22 @@ const [attachments, setAttachments] = useState<ChatbarAttachment[]>([]);
 <CodeBlock>
 
 ```tsx
-<Chatbar.Root onSubmit={({ value, attachments }) => {
+<Chatbar.Root width="360px" open onOpenChange={() => {}} onSubmit={({ value, attachments }) => {
   console.log('Message:', value);
   console.log('Attachments:', attachments);
 }}>
-  <Chatbar.InlineStart>
-    <IconButton size="1" variant="ghost">
-      <SmileIcon />
-    </IconButton>
-  </Chatbar.InlineStart>
-  
   <Chatbar.Textarea 
     placeholder="Type a message..."
     aria-label="Message input"
   />
-  
-  <Chatbar.InlineEnd>
-    <Chatbar.AttachTrigger />
-    <Chatbar.Send />
-  </Chatbar.InlineEnd>
+  <Chatbar.Row>
+    <Chatbar.AttachTrigger asChild>
+      <IconButton size="1" variant="soft" aria-label="Attach file">
+        <Paperclip />
+      </IconButton>
+    </Chatbar.AttachTrigger>
+    <Chatbar.Send variant="ghost" />
+  </Chatbar.Row>
 </Chatbar.Root>
 ```
 

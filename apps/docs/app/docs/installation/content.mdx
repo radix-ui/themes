@@ -1,18 +1,23 @@
 import { Card, Flex, Text, Heading, Section, Link, Code, Callout, Badge, Separator, Image } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
+import { CircleAlert, ArrowDownToLine } from 'lucide-react';
 
 <Section size="1">
 
-# Installation
+<ArrowDownToLine/>
 
+# Installation
 
 Get Kookie User Interface running in your React application. The library works with any React framework and requires minimal setup—import the CSS, wrap your app with Theme, and start building.
 
-<Callout.Root variant="surface" size="2" highContrast color="orange" my="6"><Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text></Callout.Root>
+<Callout.Root variant="soft" size="2" highContrast color="amber" mt="6">
+  <Callout.Icon>
+		<CircleAlert />
+	</Callout.Icon>
+  <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
+</Callout.Root>
 
 </Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -33,8 +38,6 @@ yarn add @kushagradhawan/kookie-ui
 </CodeBlock>
 
 </Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -95,8 +98,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
 </Section>
 
-<Separator size="4"/>
-
 <Section size="1">
 
 ## Vite + React
@@ -126,7 +127,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -161,7 +162,7 @@ root.render(
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -204,7 +205,7 @@ export default function App() {
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -240,7 +241,7 @@ export const wrapRootElement = ({ element }) => (
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -265,7 +266,7 @@ TypeScript support is built-in. Node.js 16+ required for development.
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -296,7 +297,7 @@ import '@kushagradhawan/kookie-ui/layout.css';     // Layout utilities
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -330,7 +331,7 @@ export default function MyComponent() {
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
@@ -365,12 +366,5 @@ npm install --save-dev @types/react @types/react-dom
 ```
 
 </CodeBlock>
-
-### Build Issues
-
-If you encounter PostCSS or build issues, ensure your bundler supports:
-- CSS imports
-- CSS custom properties (CSS variables)
-- CSS nesting (or install a PostCSS plugin)
 
 </Section>

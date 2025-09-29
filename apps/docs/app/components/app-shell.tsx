@@ -1,30 +1,31 @@
 'use client';
 
 import React from 'react';
-import { Shell, Sidebar, Flex, IconButton, Badge, Container, Avatar } from '@kushagradhawan/kookie-ui';
-import { usePathname, useRouter } from 'next/navigation';
+import { Shell, Sidebar, Flex, IconButton, Badge, Heading } from '@kushagradhawan/kookie-ui';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
 import {
   Power,
   BookOpen,
-  Download,
-  Palette,
+  Code,
+  ArrowDownToLine,
+  Hash,
   Component,
   ChevronDown,
-  PanelLeft,
+  Cog,
   Type,
-  Palette as ColorsIcon,
-  Box,
+  Palette,
   Square,
   Layout,
   GripVertical,
-  Calendar,
-  Dog,
-  GitBranch,
   Gamepad,
-  Settings,
+  PanelLeft,
   MessageSquare,
+  Github,
+  Layers,
+  SwatchBook,
+  SquareRoundCorner,
 } from 'lucide-react';
 
 // Define the navigation structure
@@ -34,12 +35,11 @@ const navigationItems = [
     title: 'Start',
     icon: Power,
     items: [
-      { href: '/docs/home', title: 'Home', icon: BookOpen, badge: undefined },
-      // { href: '/docs/get-started', title: 'Start', icon: Power, badge: undefined },
-      // { href: '/docs/whats-kookie', title: "What's Kookie", icon: Dog, badge: undefined },
+      // { href: '/docs/home', title: 'Home', icon: BookOpen, badge: undefined },
+      { href: '/docs/get-started', title: 'Start', icon: Power, badge: undefined },
+      // { href: '/docs/whats-kookie', title: "What's Kookie", icon: Component, badge: undefined },
       // { href: '/docs/changes-from-radix', title: 'Radix Changes', icon: GitBranch, badge: undefined },
-      // { href: '/docs/roadmap', title: 'Roadmap', icon: Calendar, badge: undefined },
-      { href: '/docs/installation', title: 'Installation', icon: Download, badge: undefined },
+      { href: '/docs/installation', title: 'Installation', icon: ArrowDownToLine, badge: undefined },
     ],
   },
   {
@@ -47,23 +47,20 @@ const navigationItems = [
     title: 'Foundations',
     icon: Palette,
     items: [
-      { href: '/docs/theme', title: 'Theme', icon: Palette, badge: undefined },
-      { href: '/docs/colors', title: 'Colors', icon: ColorsIcon, badge: undefined },
-      { href: '/docs/constants', title: 'Constants', icon: GripVertical, badge: undefined },
-      { href: '/docs/shadows', title: 'Shadows', icon: Box, badge: undefined },
-      { href: '/docs/material', title: 'Material', icon: Square, badge: undefined },
-    ],
-  },
-  {
-    type: 'section' as const,
-    title: 'Customization',
-    icon: Settings,
-    items: [
       {
-        href: '/docs/font-customization',
-        title: 'Fonts',
-        icon: Type,
+        href: '/docs/theme',
+        title: 'Theme',
+        icon: Cog,
         badge: undefined,
+        submenu: [
+          { href: '/docs/theme', title: 'Overview', icon: BookOpen },
+          { href: '/docs/colors', title: 'Colors', icon: Palette },
+          { href: '/docs/constants', title: 'Constants', icon: Hash },
+          { href: '/docs/shadows', title: 'Shadows', icon: Layers },
+          { href: '/docs/material', title: 'Material', icon: SwatchBook },
+          { href: '/docs/radius', title: 'Radius', icon: SquareRoundCorner },
+          { href: '/docs/typography', title: 'Typography', icon: Type },
+        ],
       },
     ],
   },
@@ -79,9 +76,9 @@ const navigationItems = [
         badge: undefined,
         submenu: [
           { href: '/docs/button', title: 'Overview', icon: BookOpen },
-          { href: '/docs/button/api', title: 'API', icon: GripVertical },
-          { href: '/docs/button/specs', title: 'Specs', icon: Box },
-          { href: '/docs/button/guidelines', title: 'Guidelines', icon: Palette },
+          { href: '/docs/button/api', title: 'API', icon: Code },
+          // { href: '/docs/button/specs', title: 'Specs', icon: Box },
+          // { href: '/docs/button/guidelines', title: 'Guidelines', icon: Palette },
           { href: '/docs/button/playground', title: 'Playground', icon: Gamepad },
         ],
       },
@@ -93,8 +90,8 @@ const navigationItems = [
         submenu: [
           { href: '/docs/shell', title: 'Overview', icon: BookOpen },
           { href: '/docs/shell/api', title: 'API', icon: GripVertical },
-          { href: '/docs/shell/specs', title: 'Specs', icon: Box },
-          { href: '/docs/shell/guidelines', title: 'Guidelines', icon: Palette },
+          // { href: '/docs/shell/specs', title: 'Specs', icon: Box },
+          // { href: '/docs/shell/guidelines', title: 'Guidelines', icon: Palette },
           { href: '/docs/shell/playground', title: 'Playground', icon: Gamepad },
         ],
       },
@@ -106,8 +103,8 @@ const navigationItems = [
         submenu: [
           { href: '/docs/chatbar', title: 'Overview', icon: BookOpen },
           { href: '/docs/chatbar/api', title: 'API', icon: GripVertical },
-          { href: '/docs/chatbar/specs', title: 'Specs', icon: Box },
-          { href: '/docs/chatbar/guidelines', title: 'Guidelines', icon: Palette },
+          // { href: '/docs/chatbar/specs', title: 'Specs', icon: Box },
+          // { href: '/docs/chatbar/guidelines', title: 'Guidelines', icon: Palette },
           { href: '/docs/chatbar/playground', title: 'Playground', icon: Gamepad },
         ],
       },
@@ -124,10 +121,35 @@ const navigationItems = [
 // Sidebar content component
 function AppSidebarContent({ presentation }: { presentation: 'thin' | 'expanded' }) {
   const pathname = usePathname();
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <Sidebar.Root size="2" variant="soft" color="gray" menuVariant="soft" presentation={presentation}>
+      <Sidebar.Header>
+        <Flex justify="between" align="center" width="100%">
+          <Link href="/" aria-label="Kushagra Dhawan - Homepage">
+            <Flex align="center" gap="1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--accent-9)" viewBox="0 0 256 256" aria-label="Kushagra Dhawan Logo">
+                <path d="M82.34,69.66a8,8,0,0,1,0-11.32l40-40a8,8,0,0,1,11.32,0l40,40a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32,0Zm51.32,76.68a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0,0-11.32Zm104-24-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,237.66,122.34Zm-128,0-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,109.66,122.34Z"></path>
+              </svg>
+              <Heading weight="semibold" size="6">
+                UI
+              </Heading>
+              <Badge highContrast color="amber">
+                Preview
+              </Badge>
+            </Flex>
+          </Link>
+          <Flex gap="1">
+            <IconButton asChild variant="solid" highContrast>
+              <Link href="https://github.com/KushagraDhawan1997/kookie-ui" target="_blank">
+                <Github />
+              </Link>
+            </IconButton>
+            <DarkModeToggle />
+          </Flex>
+        </Flex>
+      </Sidebar.Header>
       <Sidebar.Content>
         {navigationItems.map((section, sectionIndex) => (
           <Sidebar.Group key={sectionIndex}>
@@ -189,25 +211,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <Shell.Root>
-      <Shell.Header style={{ boxShadow: 'var(--shadow-2)' }}>
-        <Flex gap="8" px="4" justify="between" width="100%">
-          <Link href="/" aria-label="Kushagra Dhawan - Homepage">
-            <Avatar src="/logo-dark-large.png" fallback="KD" size="2" radius="full" />
-          </Link>
-          {/* <IconButton variant="classic" size="2" asChild highContrast color="gray">
-              <Shell.Trigger target="sidebar" action="toggle" peekOnHover={true}>
-                <PanelLeft />
-              </Shell.Trigger>
-            </IconButton> */}
-          <DarkModeToggle />
-        </Flex>
-      </Shell.Header>
       <Shell.Sidebar
         toggleModes="single"
         thinSize={80}
-        expandedSize={280}
+        expandedSize={256}
         resizable
-        state={{ initial: 'collapsed', sm: 'expanded' }}
+        defaultState={{ initial: 'collapsed', sm: 'expanded' }}
         onStateChange={(state) => setSidebarPresentation(state === 'thin' ? 'thin' : 'expanded')}
         presentation={{ initial: 'overlay', sm: 'fixed' }}
       >
@@ -219,7 +228,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <AppSidebarContent presentation={sidebarPresentation} />
       </Shell.Sidebar>
 
-      <Shell.Content>{children}</Shell.Content>
+      <Shell.Content>
+        <Flex display={{ initial: 'flex', sm: 'none' }} position="fixed" top="4" left="4" align="center" justify="center" width="auto" height="auto" style={{ zIndex: 999 }}>
+          <IconButton variant="classic" size="3" highContrast color="gray" asChild>
+            <Shell.Trigger target="sidebar">
+              <PanelLeft />
+            </Shell.Trigger>
+          </IconButton>
+        </Flex>
+        {children}
+      </Shell.Content>
     </Shell.Root>
   );
 }

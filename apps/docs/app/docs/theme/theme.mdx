@@ -1,81 +1,321 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box } from '@kushagradhawan/kookie-ui';
+import { Cog } from 'lucide-react';
 
 <Section size="1">
+
+<Cog />
 
 # Theme
 
-Kookie UI is built on [Radix Themes](https://www.radix-ui.com/themes), providing a complete theming system that makes it easy to create consistent, accessible interfaces.
+Control your app's visual appearance with six configuration options. Kookie UI Theme is a fork of [Radix Themes](https://www.radix-ui.com/themes), offering the same foundation with custom enhancements for theming and accessibility.
 
 </Section>
 
-<Separator size="4"/>
+<Section size="1">
+
+## Props
+
+<CodeBlock buttonsPosition="center">
+
+```tsx
+import { Theme } from '@kushagradhawan/kookie-ui';
+```
+
+</CodeBlock>
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '20%' }} />
+      <col style={{ width: '45%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`accentColor`</Table.RowHeaderCell>
+        <Table.Cell>`AccentColor`</Table.Cell>
+        <Table.Cell>Primary accent used for interactive components.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`grayColor`</Table.RowHeaderCell>
+        <Table.Cell>`GrayColor`</Table.Cell>
+        <Table.Cell>Neutral gray scale for backgrounds and text.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`appearance`</Table.RowHeaderCell>
+        <Table.Cell>`'light' | 'dark' | 'inherit'`</Table.Cell>
+        <Table.Cell>Color scheme; inherit follows system preference.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
+        <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
+        <Table.Cell>Global corner radius scale.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`scaling`</Table.RowHeaderCell>
+        <Table.Cell>`'90%' | '95%' | '100%' | '105%' | '110%'`</Table.Cell>
+        <Table.Cell>Global size scale for UI density.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
+        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
+        <Table.Cell>Background rendering: opaque or translucent.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`fontFamily`</Table.RowHeaderCell>
+        <Table.Cell>`'sans' | 'mono'`</Table.Cell>
+        <Table.Cell>Global font family.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
 
 <Section size="1">
 
-## Usage
+## Appearance
 
-The Theme component is the foundation of Kookie UI's styling system. It controls the visual appearance of all components through a set of configuration options:
+Set `appearance` to control light, dark, or system preference mode.
 
 <CodeBlock>
 
-```jsx
-<Theme
-  accentColor="blue"
-  grayColor="slate"
-  appearance="light"
-  radius="medium"
-  scaling="100%"
-  material="translucent"
->
+```tsx
+// Light mode
+<Theme appearance="light">
+  <YourApp />
+</Theme>
+
+// Dark mode
+<Theme appearance="dark">
+  <YourApp />
+</Theme>
+
+// System preference (default)
+<Theme appearance="inherit">
   <YourApp />
 </Theme>
 ```
 
 </CodeBlock>
 
-### Properties
+</Section>
 
-- **accentColor** - Primary color for interactive elements (25+ options)
-- **grayColor** - Secondary color for text and backgrounds (6 tinted options)
-- **appearance** - Light, dark, or system preference
-- **radius** - Border radius consistency (none, small, medium, large, full)
-- **scaling** - Component size scaling (90% to 110%)
-- **material** - Panel transparency (solid or translucent)
+
+
+<Section size="1">
+
+## Accent Color
+
+Use `accentColor` to set the primary color for interactive elements.
+
+<CodeBlock>
+
+```tsx
+// Blue accent (default)
+<Theme accentColor="blue">
+  <YourApp />
+</Theme>
+
+// Crimson accent
+<Theme accentColor="crimson">
+  <YourApp />
+</Theme>
+
+// Other available colors: gray, gold, bronze, brown, yellow, amber, orange, tomato, red, ruby, pink, plum, purple, violet, iris, indigo, cyan, teal, jade, green, grass, lime, mint, sky
+```
+
+</CodeBlock>
 
 </Section>
 
-<Separator size="4"/>
+
+
+<Section size="1">
+
+## Material
+
+Set `material` to control panel transparency for depth and visual separation.
+
+<CodeBlock>
+
+```tsx
+// Solid backgrounds (default)
+<Theme material="solid">
+  <YourApp />
+</Theme>
+
+// Translucent backgrounds for depth effects
+<Theme material="translucent">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Gray Color
+
+Use `grayColor` to set the neutral gray scale for backgrounds and text.
+
+<CodeBlock>
+
+```tsx
+// Gray scale (default)
+<Theme grayColor="gray">
+  <YourApp />
+</Theme>
+
+// Other available grays: mauve, slate, sage, olive, sand, tomato, red, ruby, pink, plum, purple, violet, iris, indigo, blue, cyan, teal, jade, green, grass, lime, mint, amber, orange, yellow, bronze, gold, brown
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Radius
+
+Set `radius` to control the global corner radius scale for all components.
+
+<CodeBlock>
+
+```tsx
+// No radius
+<Theme radius="none">
+  <YourApp />
+</Theme>
+
+// Small radius
+<Theme radius="small">
+  <YourApp />
+</Theme>
+
+// Medium radius (default)
+<Theme radius="medium">
+  <YourApp />
+</Theme>
+
+// Large radius
+<Theme radius="large">
+  <YourApp />
+</Theme>
+
+// Full radius (pill-shaped)
+<Theme radius="full">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Scaling
+
+Set `scaling` to control the global size scale for UI density.
+
+<CodeBlock>
+
+```tsx
+// Compact UI (90% scale)
+<Theme scaling="90%">
+  <YourApp />
+</Theme>
+
+// Slightly compact (95% scale)
+<Theme scaling="95%">
+  <YourApp />
+</Theme>
+
+// Normal scale (100% - default)
+<Theme scaling="100%">
+  <YourApp />
+</Theme>
+
+// Slightly larger (105% scale)
+<Theme scaling="105%">
+  <YourApp />
+</Theme>
+
+// Large scale (110% scale)
+<Theme scaling="110%">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Font Family
+
+Set `fontFamily` to control the typography system for your app.
+
+<CodeBlock>
+
+```tsx
+// Sans-serif fonts (default)
+<Theme fontFamily="sans">
+  <YourApp />
+</Theme>
+
+// Monospace fonts
+<Theme fontFamily="mono">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+
 
 <Section size="1">
 
 ## Enhancements
 
-While Kookie UI inherits Radix Themes' complete theming system, it includes several practical enhancements:
+Kookie UI extends Radix Themes with practical improvements:
 
 ### Material
-- **Clearer API** - Use `material` instead of `panelBackground` for more intuitive panel transparency control
-- **Backward Compatible** - Existing `panelBackground` usage works with helpful migration warnings
-- **Consistent Application** - All panels automatically respect your material setting
+
+Use `material` instead of `panelBackground` for intuitive panel transparency control. Existing `panelBackground` usage works with migration warnings. All panels automatically respect your material setting.
 
 ### Effects
-- **Extended Blur Tokens** - 12-step blur scale for precise backdrop effects
-- **Granular Opacity** - 9-step opacity scale for fine-tuned transparency
-- **3D Button Effects** - Specialized tokens for realistic depth and elevation
+
+Extended blur tokens provide 12-step blur scale for precise backdrop effects. Granular opacity offers 9-step opacity scale for fine-tuned transparency. Specialized 3D button effects create realistic depth and elevation.
 
 ### Typography
-- **Pre-configured Fonts** - Inter and JetBrains Mono with proper fallbacks
-- **Consistent Rendering** - Prevents browser font weight synthesis issues
-- **Graceful Degradation** - Falls back to system fonts if custom fonts fail
+
+Pre-configured Inter and JetBrains Mono fonts with proper fallbacks prevent browser font weight synthesis issues. Graceful degradation falls back to system fonts if custom fonts fail.
 
 </Section>
 
-<Separator size="4"/>
+
 
 <Section size="1">
 
 ## Tokens
 
-Access theme values directly through CSS custom properties:
+Use CSS custom properties to access theme values in your styles:
 
 <CodeBlock>
 
@@ -83,32 +323,20 @@ Access theme values directly through CSS custom properties:
 /* Color tokens */
 var(--accent-9)           /* Primary accent color */
 var(--gray-11)            /* High contrast text */
-var(--color-background)   /* Page background */
-var(--color-panel)        /* Panel background (auto-resolves) */
-
-/* Spacing and sizing */
-var(--space-4)            /* Standard spacing */
-var(--radius-3)           /* Component border radius */
-var(--font-size-3)        /* Text size */
 ```
 
 </CodeBlock>
 
-These tokens automatically respond to your theme configuration, ensuring consistency across your entire application.
+<CodeBlock>
 
-</Section>
+```css
+/* Layout tokens */
+var(--space-4)            /* Standard spacing */
+var(--radius-3)           /* Component border radius */
+```
 
-<Separator size="4"/>
+</CodeBlock>
 
-<Section size="1">
-
-## Resources
-
-For complete theming documentation, visit the [Radix Themes docs](https://www.radix-ui.com/themes):
-
-- [Theme overview](https://www.radix-ui.com/themes/docs/theme/overview) - Understanding theme anatomy
-- [Color system](https://www.radix-ui.com/themes/docs/theme/color) - Working with colors
-- [Dark mode](https://www.radix-ui.com/themes/docs/theme/dark-mode) - Implementing dark mode
-- [Typography](https://www.radix-ui.com/themes/docs/theme/typography) - Font customization
+Tokens automatically respond to your theme configuration for consistent styling.
 
 </Section>

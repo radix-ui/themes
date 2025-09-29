@@ -11,11 +11,7 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
 
 </Section>
 
-<Separator size="4"/>
-
-<Section>
-
-<Grid columns={{ initial: '1', sm: '2' }} gap="2">
+<Grid columns={{ initial: '1', sm: '2' }} gap="2" my="6">
   {[
     {
       href: 'button/playground',
@@ -31,32 +27,10 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
       icon: Code,
       image: '/keyboard.png',
     },
-    {
-      href: 'button/guidelines',
-      title: 'Guidelines',
-      description: 'Psychology, hierarchy, and design principles for effective interfaces',
-      icon: BookOpen,
-      image: '/guidelines.png',
-    },
-    {
-      href: 'button/specs',
-      title: 'Specs',
-      description: 'Design tokens, measurements, and system specifications',
-      icon: Ruler,
-      image: '/ruler.png',
-    }
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>
         <Flex direction="row" align="center" gap="4">
-
-
-          {/*
-          <Flex align="center" justify="center" style={{ width: 96, height: 96, flex: '0 0 96px' }}>
-            <Image src={image} alt="" width={96} height={96} fit="cover" />
-          </Flex>
-          */}
-          
           <Flex direction="column" gap="2" p="2">
             <Flex align="center" gap="2">
               <Icon size={16} />
@@ -72,9 +46,6 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
 
 </Grid>
 
-</Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -115,7 +86,6 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 

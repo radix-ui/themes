@@ -10,11 +10,7 @@ The Chatbar component is a multi-line text input designed for chat interfaces wi
 
 </Section>
 
-<Separator size="4"/>
-
-<Section>
-
-<Grid columns={{ initial: '1', sm: '2' }} gap="2">
+<Grid columns={{ initial: '1', sm: '2' }} gap="2" my="6">
   {[
     {
       href: 'chatbar/playground',
@@ -29,20 +25,6 @@ The Chatbar component is a multi-line text input designed for chat interfaces wi
       description: 'Props, accessibility, keyboard navigation, and technical implementation',
       icon: Code,
       image: '/keyboard.png',
-    },
-    {
-      href: 'chatbar/guidelines',
-      title: 'Guidelines',
-      description: 'Psychology, hierarchy, and design principles for effective interfaces',
-      icon: BookOpen,
-      image: '/guidelines.png',
-    },
-    {
-      href: 'chatbar/specs',
-      title: 'Specs',
-      description: 'Design tokens, measurements, and system specifications',
-      icon: Ruler,
-      image: '/ruler.png',
     }
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
@@ -70,10 +52,6 @@ The Chatbar component is a multi-line text input designed for chat interfaces wi
 ))}
 
 </Grid>
-
-</Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -103,8 +81,6 @@ The Chatbar component is a multi-line text input designed for chat interfaces wi
 - Integration with react-dropzone for drag-and-drop functionality
 
 </Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 

@@ -5,19 +5,7 @@
   - Shared tokens defined/consumed: --sidebar-base-border-radius, etc.
 */
 
-/* Sidebar Provider - handles positioning */
-.rt-SidebarProvider {
-  /* Positioning based on side */
-  &:where([data-side='left']) {
-    /* Left side is default - no additional positioning needed */
-    order: -1; /* Ensure it appears first in flex container */
-  }
-
-  &:where([data-side='right']) {
-    /* Position on the right side */
-    order: 999; /* Push to end in flex container */
-  }
-}
+/* Removed Sidebar Provider (unused) */
 
 /* Sidebar Root Container */
 .rt-SidebarRoot {
@@ -129,9 +117,4 @@
   margin: var(--space-2) 0;
 }
 
-/* Responsive behavior - only hide when not in Sheet overlay mode */
-@media (max-width: 768px) {
-  .rt-SidebarRoot:not(:where(.rt-SheetContent .rt-SidebarRoot)) {
-    display: none;
-  }
-}
+/* Removed mobile hide rule; Shell handles overlay vs inline */

@@ -64,8 +64,9 @@
     z-index: -1;
 
     /* Theme-level translucent override */
-    :where([data-panel-background='translucent']) & {
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
 
     /* Component-level overrides (higher specificity) */
@@ -77,22 +78,6 @@
     :where(.rt-BaseCard[data-panel-background='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
-    }
-
-    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    :where(
-        .rt-PopoverContent,
-        .rt-BaseDialogContent,
-        .rt-BaseMenuContent,
-        .rt-DropdownMenuContent,
-        .rt-ContextMenuContent,
-        .rt-AlertDialogContent,
-        .rt-HoverCardContent,
-        .rt-TooltipContent,
-        .rt-Card
-      )
-      & {
-      backdrop-filter: none !important;
     }
   }
   & {
@@ -319,6 +304,7 @@
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
 
     /* Component-level overrides (higher specificity) */
@@ -327,11 +313,7 @@
       --backdrop-filter-panel: none;
     }
 
-    :where(
-        .rt-BaseCard[data-panel-background='translucent'],
-        .rt-BaseCard[data-material='translucent']
-      )
-      & {
+    :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
@@ -362,18 +344,13 @@
           }
 
           /* Component-level overrides for hover */
-          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid'])
-            & {
+          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
             background-color: var(--gray-2);
             backdrop-filter: none;
             --backdrop-filter-panel: none;
           }
 
-          :where(
-              .rt-BaseCard[data-panel-background='translucent'],
-              .rt-BaseCard[data-material='translucent']
-            )
-            & {
+          :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
             background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -406,11 +383,7 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(
-            .rt-BaseCard[data-panel-background='translucent'],
-            .rt-BaseCard[data-material='translucent']
-          )
-          & {
+        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -441,11 +414,7 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(
-            .rt-BaseCard[data-panel-background='translucent'],
-            .rt-BaseCard[data-material='translucent']
-          )
-          & {
+        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -696,6 +665,7 @@
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
 
     /* Component-level overrides (higher specificity) */
@@ -704,11 +674,7 @@
       --backdrop-filter-panel: none;
     }
 
-    :where(
-        .rt-BaseCard[data-panel-background='translucent'],
-        .rt-BaseCard[data-material='translucent']
-      )
-      & {
+    :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
@@ -739,18 +705,13 @@
           }
 
           /* Component-level overrides for hover */
-          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid'])
-            & {
+          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
             background-color: var(--gray-3);
             backdrop-filter: none;
             --backdrop-filter-panel: none;
           }
 
-          :where(
-              .rt-BaseCard[data-panel-background='translucent'],
-              .rt-BaseCard[data-material='translucent']
-            )
-            & {
+          :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
             background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -793,11 +754,7 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(
-            .rt-BaseCard[data-panel-background='translucent'],
-            .rt-BaseCard[data-material='translucent']
-          )
-          & {
+        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -839,11 +796,7 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(
-            .rt-BaseCard[data-panel-background='translucent'],
-            .rt-BaseCard[data-material='translucent']
-          )
-          & {
+        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -895,6 +848,7 @@
     /* Theme-level translucent override */
     :where([data-panel-background='translucent'], [data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
+      --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
 
     /* Component-level overrides (higher specificity) */
@@ -903,11 +857,7 @@
       --backdrop-filter-panel: none;
     }
 
-    :where(
-        .rt-BaseCard[data-panel-background='translucent'],
-        .rt-BaseCard[data-material='translucent']
-      )
-      & {
+    :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
       backdrop-filter: var(--backdrop-filter-panel);
       --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     }
@@ -950,18 +900,13 @@
           }
 
           /* Component-level overrides for hover */
-          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid'])
-            & {
+          :where(.rt-BaseCard[data-panel-background='solid'], .rt-BaseCard[data-material='solid']) & {
             background-color: var(--gray-2);
             backdrop-filter: none;
             --backdrop-filter-panel: none;
           }
 
-          :where(
-              .rt-BaseCard[data-panel-background='translucent'],
-              .rt-BaseCard[data-material='translucent']
-            )
-            & {
+          :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
             background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
             backdrop-filter: var(--backdrop-filter-panel);
             --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -997,11 +942,7 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(
-            .rt-BaseCard[data-panel-background='translucent'],
-            .rt-BaseCard[data-material='translucent']
-          )
-          & {
+        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
@@ -1036,11 +977,7 @@
           --backdrop-filter-panel: none;
         }
 
-        :where(
-            .rt-BaseCard[data-panel-background='translucent'],
-            .rt-BaseCard[data-material='translucent']
-          )
-          & {
+        :where(.rt-BaseCard[data-panel-background='translucent'], .rt-BaseCard[data-material='translucent']) & {
           background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
           backdrop-filter: var(--backdrop-filter-panel);
           --backdrop-filter-panel: blur(var(--backdrop-blur-panel));

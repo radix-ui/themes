@@ -6,6 +6,7 @@
   text-align: left;
   color: var(--accent-a11);
   transition: var(--transition-card);
+  border-radius: var(--callout-border-radius);
 
   /* Theme-level translucent override */
   :where([data-panel-background='translucent'], [data-material='translucent']) & {
@@ -21,7 +22,7 @@
     backdrop-filter: none;
     --backdrop-filter-components: none;
   }
-  
+
   &:where([data-panel-background='translucent'], [data-material='translucent']) {
     backdrop-filter: var(--backdrop-filter-components);
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
@@ -79,7 +80,7 @@
       row-gap: var(--space-2);
       column-gap: var(--space-2);
       padding: var(--space-3);
-      border-radius: var(--radius-1);
+      --callout-border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
       --callout-icon-height: var(--line-height-1);
       --callout-icon-size: var(--content-icon-size-1);
     }
@@ -87,7 +88,7 @@
       row-gap: var(--space-2);
       column-gap: var(--space-3);
       padding: var(--space-4);
-      border-radius: var(--radius-2);
+      --callout-border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
       --callout-icon-height: var(--line-height-2);
       --callout-icon-size: var(--content-icon-size-2);
     }
@@ -95,9 +96,25 @@
       row-gap: var(--space-3);
       column-gap: var(--space-4);
       padding: var(--space-5);
-      border-radius: var(--radius-3);
+      --callout-border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
       --callout-icon-height: var(--line-height-3);
       --callout-icon-size: var(--content-icon-size-3);
+    }
+    &:where(.rt-r-size-4) {
+      row-gap: var(--space-3);
+      column-gap: var(--space-5);
+      padding: var(--space-6);
+      --callout-border-radius: min(var(--radius-8), calc(var(--radius-4) + var(--space-4)));
+      --callout-icon-height: var(--line-height-4);
+      --callout-icon-size: var(--content-icon-size-4);
+    }
+    &:where(.rt-r-size-5) {
+      row-gap: var(--space-4);
+      column-gap: var(--space-6);
+      padding: var(--space-7);
+      --callout-border-radius: min(var(--radius-9), calc(var(--radius-5) + var(--space-5)));
+      --callout-icon-height: var(--line-height-5);
+      --callout-icon-size: var(--content-icon-size-5);
     }
   }
 }

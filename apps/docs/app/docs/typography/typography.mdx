@@ -1,0 +1,440 @@
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Heading, Table } from '@kushagradhawan/kookie-ui';
+import { CodeBlock } from '../../components/code-block';
+import { Type } from 'lucide-react';
+
+<Section size="1">
+
+<Type />
+# Typography
+
+Typography system with 10-step scale (0-9), font weights, and formatting components. Kookie UI Typography is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better readability. 
+
+For complete typography documentation and advanced customization, visit the [Radix Themes typography docs](https://www.radix-ui.com/themes/docs/theme/typography). Note that Kookie UI's typography values may be enhanced and might not match exactly what's shown in the Radix documentation.
+
+</Section>
+
+
+
+<Section size="1">
+
+## Usage
+
+Use Text and Heading components to render titles and body copy. These components share `size` and `weight` props for consistent typography.
+
+<CodeBlock>
+
+```tsx
+import { Text, Heading } from '@kushagradhawan/kookie-ui';
+```
+
+</CodeBlock>
+
+<CodeBlock>
+
+```tsx
+<Heading size="4">Page Title</Heading>
+<Text size="3">Body text content</Text>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Type Scale
+
+10-step size scale (0-9) with corresponding font size, line height, and letter spacing values.
+
+<CodeBlock>
+
+```css
+/* Type scale tokens */
+var(--font-size-0)  /* 10px - Extra small text */
+var(--font-size-1)  /* 12px - Small text */
+var(--font-size-2)  /* 14px - Body text */
+var(--font-size-3)  /* 16px - Standard text */
+var(--font-size-4)  /* 18px - Large text */
+var(--font-size-5)  /* 20px - Heading text */
+var(--font-size-6)  /* 24px - Large heading */
+var(--font-size-7)  /* 28px - Display text */
+var(--font-size-8)  /* 35px - Hero text */
+var(--font-size-9)  /* 60px - Massive text */
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Size Scale
+
+### Size 0
+
+Extra small text for fine print and micro labels.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Text size="0" align="center">Extra small text for fine print</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Text size="0">Extra small text for fine print</Text>
+```
+
+</CodeBlock>
+
+### Size 1
+
+Small text for captions and labels.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Text size="1" align="center">Small text for captions</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Text size="1">Small text for captions</Text>
+```
+
+</CodeBlock>
+
+### Size 2
+
+Body text for secondary content.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Text size="2" align="center">Body text for secondary content</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Text size="2">Body text for secondary content</Text>
+```
+
+</CodeBlock>
+
+### Size 3
+
+Standard text for main content.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Text size="3" align="center">Standard text for main content</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Text size="3">Standard text for main content</Text>
+```
+
+</CodeBlock>
+
+### Size 4
+
+Large text for important content.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Text size="4" align="center">Large text for important content</Text>
+    </Flex>
+  }
+>
+
+```tsx
+<Text size="4">Large text for important content</Text>
+```
+
+</CodeBlock>
+
+### Size 5
+
+Heading text for section titles.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Heading size="5" align="center">Heading text for section titles</Heading>
+    </Flex>
+  }
+>
+
+```tsx
+<Heading size="5">Heading text for section titles</Heading>
+```
+
+</CodeBlock>
+
+### Size 6
+
+Large heading for page titles.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Heading size="6" align="center">Large heading for page titles</Heading>
+    </Flex>
+  }
+>
+
+```tsx
+<Heading size="6">Large heading for page titles</Heading>
+```
+
+</CodeBlock>
+
+### Size 7
+
+Display text for hero sections.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Heading size="7" align="center">Display text for hero sections</Heading>
+    </Flex>
+  }
+>
+
+```tsx
+<Heading size="7">Display text for hero sections</Heading>
+```
+
+</CodeBlock>
+
+### Size 8
+
+Hero text for main headlines.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Heading size="8" align="center">Hero text for main headlines</Heading>
+    </Flex>
+  }
+>
+
+```tsx
+<Heading size="8">Hero text for main headlines</Heading>
+```
+
+</CodeBlock>
+
+### Size 9
+
+Massive text for impact headlines.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center" justify="center">
+      <Heading size="9" align="center">Massive text for impact headlines</Heading>
+    </Flex>
+  }
+>
+
+```tsx
+<Heading size="9">Massive text for impact headlines</Heading>
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Font Weight
+
+Use `weight` prop to control text emphasis and hierarchy.
+
+<CodeBlock>
+
+```tsx
+<Text weight="light">Light text</Text>
+<Text weight="regular">Regular text</Text>
+<Text weight="medium">Medium text</Text>
+<Text weight="bold">Bold text</Text>
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Formatting Components
+
+Compose formatting components to add emphasis and structure.
+
+<CodeBlock>
+
+```tsx
+<Text>
+  The <Em>most</Em> important thing to remember is,{" "}
+  <Strong>stay positive</Strong>.
+</Text>
+```
+
+</CodeBlock>
+
+<CodeBlock>
+
+```tsx
+<Text>
+  Use <Code>inline code</Code> for technical terms.
+</Text>
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Font Family
+
+Default font stack for optimal readability and performance.
+
+<CodeBlock>
+
+```css
+/* Font family tokens */
+var(--default-font-family)  /* System font stack */
+var(--code-font-family)     /* Monospace font stack */
+var(--heading-font-family)  /* Heading font stack */
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Font Customization
+
+Kookie UI makes font customization simple and flexible. Switch between font families instantly using theme props or customize with your own fonts.
+
+<CodeBlock>
+
+```tsx
+/* Sans-serif fonts (default) */
+<Theme fontFamily="sans">
+  <Text>This uses Inter font</Text>
+</Theme>
+
+/* Monospace fonts */
+<Theme fontFamily="mono">
+  <Text>This uses JetBrains Mono font</Text>
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Custom Fonts
+
+Use your brand fonts by updating CSS variables. Import your preferred fonts and override Kookie UI font variables.
+
+<CodeBlock>
+
+```css
+/* Import your preferred fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Override Kookie UI font variables */
+:root {
+  --font-inter: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: var(--font-inter);
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="1">
+
+## Font Variables
+
+Font customization variables and their usage:
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Default</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`--font-sans`</Table.RowHeaderCell>
+        <Table.Cell>Theme `fontFamily="sans"`</Table.Cell>
+        <Table.Cell>Inter font stack</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`--font-mono`</Table.RowHeaderCell>
+        <Table.Cell>Theme `fontFamily="mono"`</Table.Cell>
+        <Table.Cell>JetBrains Mono font stack</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`--font-inter`</Table.RowHeaderCell>
+        <Table.Cell>Base sans-serif font</Table.Cell>
+        <Table.Cell>Inter with system fallbacks</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`--font-jetbrains-mono`</Table.RowHeaderCell>
+        <Table.Cell>Base monospace font</Table.Cell>
+        <Table.Cell>JetBrains Mono with fallbacks</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+
+
+<Section size="1">
+
+## Differences from Radix
+
+Kookie UI refines the Radix Themes typography system with improved readability and better visual hierarchy:
+
+**New Size 0:**
+Extra small text (10px) for fine print and micro labels. Better granularity for more precise control over text hierarchy and enhanced accessibility for compact interfaces.
+
+**Enhanced Readability:**
+Optimized line heights for better spacing and improved reading experience. Refined letter spacing for tighter text flow and improved font weights for more distinct differences.
+
+**Better Hierarchy:**
+Clearer size progression where each step provides meaningful visual difference. Consistent spacing for better vertical rhythm across components and enhanced contrast for improved accessibility.
+
+</Section>

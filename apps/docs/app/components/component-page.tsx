@@ -28,9 +28,9 @@ const ComponentPage = memo(function ComponentPage({ children }: ComponentPagePro
   return (
     <Flex gap={{ initial: '6', md: '9' }} align="start" direction={{ initial: 'column', lg: 'row' }}>
       {/* Main content area */}
-      <Flex direction="column" gap="6" p={{ initial: '4', sm: '6', md: '8' }} flexGrow="1" style={{ minWidth: 0 }}>
+      <Flex direction="column" gap="6" p={{ initial: '4', sm: '6' }} flexGrow="1" style={{ minWidth: 0 }}>
         {/* Documentation Content */}
-        <Container size="3" style={contentAreaStyle} data-content-area>
+        <Container size="2" style={contentAreaStyle} data-content-area>
           {children}
         </Container>
       </Flex>

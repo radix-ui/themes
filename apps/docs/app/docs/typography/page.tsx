@@ -2,9 +2,9 @@
 
 import React from 'react';
 import ComponentPage from '../../components/component-page';
-import ContentMDX from './content.mdx';
+import ContentMDX from './typography.mdx';
 
-export default function FontCustomizationPage() {
+export default function TypographyPage() {
   return (
     <ComponentPage>
       <ContentMDX />

@@ -1,45 +1,86 @@
 import { Section, Badge, Text, Link, Callout, Separator, Table, Code, Box, Flex, Image } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 import { SpecsBlock } from '../../components/specs-block';
+import { Layers } from 'lucide-react';
 
 <Section size="1">
 
+<Layers />
 # Shadows
 
-Kookie UI uses a custom shadow system that's more deliberate than the inherited Radix shadows. While Radix Themes provided a good foundation, I've refined the shadow tokens to work better with the design system.
+Custom shadow system with 6-step scale for elevation and hierarchy. Kookie UI Shadows are extracted from [Radix Themes](https://www.radix-ui.com/themes) with enhanced values for better depth perception. 
+
+For complete shadow documentation and advanced usage, visit the [Radix Themes shadows docs](https://www.radix-ui.com/themes/docs/theme/shadows). Note that Kookie UI's shadow values may be enhanced and might not match exactly what's shown in the Radix documentation.
 
 </Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
-## Elevation
+## Usage
 
-Shadows aren't just visual effects—they're tools for creating elevation and hierarchy. In interface design, elevation determines what feels important, what's interactive, and how users understand the spatial relationships between elements.
+Use shadow tokens to create elevation and hierarchy. Each shadow level provides meaningful depth for different interface elements.
 
-The shadow system is built around elevation principles:
+<CodeBlock>
 
-- **Progressive elevation** - Each step adds meaningful depth without being overwhelming
-- **Consistent opacity** - All shadows use the same base opacity for visual consistency
-- **Purposeful blur** - Blur radius increases with elevation to create natural depth
-- **Subtle offsets** - Y-offsets are minimal to avoid harsh drop shadows
+```css
+/* Card with subtle elevation */
+.my-card {
+  box-shadow: var(--shadow-2);
+}
+```
 
-Elevation creates visual hierarchy. Elements that are elevated feel more important and interactive. The right shadow level can make a button feel clickable, a card feel substantial, or a dialog feel like it's floating above everything else.
+</CodeBlock>
+
+<CodeBlock>
+
+```css
+/* Elevated button */
+.my-button {
+  box-shadow: var(--shadow-3);
+}
+```
+
+</CodeBlock>
 
 </Section>
 
-<Separator size="4"/>
+
+
+<Section size="1">
+
+## Tokens
+
+Shadow tokens with their CSS values and usage:
+
+<CodeBlock>
+
+```css
+/* Shadow tokens (see tokens/shadow.css for full values) */
+var(--shadow-1)  /* subtle ring + inset; pressed states */
+var(--shadow-2)  /* light elevation; classic cards */
+var(--shadow-3)  /* medium elevation; raised cards, buttons */
+var(--shadow-4)  /* small overlays, hover cards */
+var(--shadow-5)  /* popovers, dropdowns */
+var(--shadow-6)  /* large overlays, dialogs */
+```
+
+</CodeBlock>
+
+</Section>
+
+
 
 <Section size="1">
 
 ## Shadow Scale
 
-Kookie UI uses a 6-step shadow scale designed for different use cases and elevation levels. Each step is carefully crafted to provide the right amount of depth and visual hierarchy.
+### Shadow 1
 
-<SpecsBlock
+Inset shadow for subtle depth and pressed states.
+
+<CodeBlock
   preview={
-    <Flex gap="4" wrap="wrap" align="center" justify="center">
+    <Flex gap="2" align="center">
       <Box 
         width="80px" 
         height="60px" 
@@ -49,6 +90,23 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
           boxShadow: 'var(--shadow-1)'
         }}
       />
+    </Flex>
+  }
+>
+
+```css
+box-shadow: var(--shadow-1);
+```
+
+</CodeBlock>
+
+### Shadow 2
+
+Classic panel and card shadows for subtle elevation.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
       <Box 
         width="80px" 
         height="60px" 
@@ -58,6 +116,23 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
           boxShadow: 'var(--shadow-2)'
         }}
       />
+    </Flex>
+  }
+>
+
+```css
+box-shadow: var(--shadow-2);
+```
+
+</CodeBlock>
+
+### Shadow 3
+
+Elevated cards and buttons with more prominent depth.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
       <Box 
         width="80px" 
         height="60px" 
@@ -67,6 +142,23 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
           boxShadow: 'var(--shadow-3)'
         }}
       />
+    </Flex>
+  }
+>
+
+```css
+box-shadow: var(--shadow-3);
+```
+
+</CodeBlock>
+
+### Shadow 4
+
+Small overlays and hover cards with medium elevation.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
       <Box 
         width="80px" 
         height="60px" 
@@ -76,6 +168,23 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
           boxShadow: 'var(--shadow-4)'
         }}
       />
+    </Flex>
+  }
+>
+
+```css
+box-shadow: var(--shadow-4);
+```
+
+</CodeBlock>
+
+### Shadow 5
+
+Popovers and dropdowns with strong elevation.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
       <Box 
         width="80px" 
         height="60px" 
@@ -85,6 +194,23 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
           boxShadow: 'var(--shadow-5)'
         }}
       />
+    </Flex>
+  }
+>
+
+```css
+box-shadow: var(--shadow-5);
+```
+
+</CodeBlock>
+
+### Shadow 6
+
+Large overlays and dialogs with maximum elevation.
+
+<CodeBlock
+  preview={
+    <Flex gap="2" align="center">
       <Box 
         width="80px" 
         height="60px" 
@@ -96,81 +222,10 @@ Kookie UI uses a 6-step shadow scale designed for different use cases and elevat
       />
     </Flex>
   }
-  columns={[
-    { key: 'value', label: 'Value' },
-    { key: 'usage', label: 'Usage' }
-  ]}
-  specs={[
-    {
-      property: 'Shadow 1',
-      value: 'inset 0 1px 2px 0 rgb(0 0 0 / 0.05)',
-      usage: 'Inset shadows, subtle depth'
-    },
-    {
-      property: 'Shadow 2',
-      value: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-      usage: 'Classic panels, cards'
-    },
-    {
-      property: 'Shadow 3',
-      value: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-      usage: 'Elevated cards, buttons'
-    },
-    {
-      property: 'Shadow 4',
-      value: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-      usage: 'Small overlays, hover cards'
-    },
-    {
-      property: 'Shadow 5',
-      value: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-      usage: 'Popovers, dropdowns'
-    },
-    {
-      property: 'Shadow 6',
-      value: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-      usage: 'Large overlays, dialogs'
-    }
-  ]}
-/>
-
-</Section>
-
-<Separator size="4"/>
-
-<Section size="1">
-
-## Usage
-
-Shadow tokens can be accessed using CSS variables. Use these tokens to style your custom components, ensuring they're consistent with the rest of the design system.
-
-<CodeBlock>
+>
 
 ```css
-/* Inset shadow for pressed states */
-.my-component {
-  box-shadow: var(--shadow-1);
-}
-
-/* Card with subtle elevation */
-.my-card {
-  box-shadow: var(--shadow-2);
-}
-
-/* Elevated button */
-.my-button {
-  box-shadow: var(--shadow-3);
-}
-
-/* Overlay panel */
-.my-overlay {
-  box-shadow: var(--shadow-5);
-}
-
-/* Modal dialog */
-.my-dialog {
-  box-shadow: var(--shadow-6);
-}
+box-shadow: var(--shadow-6);
 ```
 
 </CodeBlock>

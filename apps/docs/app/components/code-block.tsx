@@ -1,15 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
-import {
-  Box,
-  Card,
-  Flex,
-  ToggleIconButton,
-  IconButton,
-  Tabs,
-  Theme,
-} from '@kushagradhawan/kookie-ui';
+import { Box, Card, Flex, ToggleIconButton, IconButton, Tabs, Theme } from '@kushagradhawan/kookie-ui';
 import { ChevronsUpDown, Clipboard, Code, Eye } from 'lucide-react';
 
 /**
@@ -110,14 +102,7 @@ const PreviewSection = ({
   };
 }) => {
   // Extract background properties with sensible defaults
-  const {
-    dotSize = 24,
-    color = 'var(--gray-10)',
-    backgroundColor = 'var(--gray-2)',
-    height = '300px',
-    width = '100%',
-    radius = '3',
-  } = backgroundProps;
+  const { dotSize = 24, color = 'var(--gray-10)', backgroundColor = 'var(--gray-2)', height = '300px', width = '100%', radius = '3' } = backgroundProps;
 
   // Render with no background (default card styling)
   if (background === 'none') {
@@ -192,13 +177,7 @@ const PreviewSection = ({
  * </CodeSection>
  * ```
  */
-const CodeSection = memo(function CodeSection({
-  children,
-  buttonsPosition,
-}: {
-  children: React.ReactNode;
-  buttonsPosition: 'top' | 'center';
-}) {
+const CodeSection = memo(function CodeSection({ children, buttonsPosition }: { children: React.ReactNode; buttonsPosition: 'top' | 'center' }) {
   // State management for expand/collapse functionality
   const [isExpanded, setIsExpanded] = useState(false);
   const [contentHeight, setContentHeight] = useState(COLLAPSED_HEIGHT);
@@ -254,7 +233,7 @@ const CodeSection = memo(function CodeSection({
       <Card size="2" variant="soft">
         {/* Action Buttons - positioned absolutely for overlay effect */}
         <Flex
-          gap="2"
+          gap="1"
           position="absolute"
           top={buttonsPosition === 'top' ? '3' : '50%'}
           right="3"
@@ -267,7 +246,7 @@ const CodeSection = memo(function CodeSection({
           {shouldShowToggle && (
             <ToggleIconButton
               size="2"
-              variant="soft"
+              variant="classic"
               color="gray"
               flush
               highContrast
@@ -282,16 +261,7 @@ const CodeSection = memo(function CodeSection({
           )}
 
           {/* Copy button */}
-          <IconButton
-            size="2"
-            flush
-            variant="soft"
-            color="gray"
-            highContrast
-            onClick={handleCopy}
-            tooltip={copied ? 'Copied!' : 'Copy'}
-            aria-label={copied ? 'Copied!' : 'Copy code'}
-          >
+          <IconButton size="2" flush variant="classic" color="gray" highContrast onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
             <Clipboard />
           </IconButton>
         </Flex>
@@ -349,13 +319,7 @@ const CodeSection = memo(function CodeSection({
  * </CodeBlock>
  * ```
  */
-export const CodeBlock = memo(function CodeBlock({
-  preview,
-  children,
-  buttonsPosition = 'top',
-  background = 'none',
-  backgroundProps = {},
-}: CodeBlockProps) {
+export const CodeBlock = memo(function CodeBlock({ preview, children, buttonsPosition = 'top', background = 'none', backgroundProps = {} }: CodeBlockProps) {
   // Check if we have code content to show
   const hasCode = children && React.Children.count(children) > 0;
 
@@ -369,13 +333,7 @@ export const CodeBlock = memo(function CodeBlock({
     return (
       <Box my="6">
         <Flex direction="column" gap="2">
-          {preview && (
-            <PreviewSection
-              preview={preview}
-              background={background}
-              backgroundProps={backgroundProps}
-            />
-          )}
+          {preview && <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />}
           {hasCode && <CodeSection children={children} buttonsPosition={buttonsPosition} />}
         </Flex>
       </Box>
@@ -393,11 +351,7 @@ export const CodeBlock = memo(function CodeBlock({
 
         <Box pt="6">
           <Tabs.Content value="preview" asChild>
-            <PreviewSection
-              preview={preview}
-              background={background}
-              backgroundProps={backgroundProps}
-            />
+            <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />
           </Tabs.Content>
 
           <Tabs.Content value="code" asChild>

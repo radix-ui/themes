@@ -45,7 +45,7 @@
   }
 }
 .rt-TableColumnHeaderCell {
-  font-weight: bold;
+  font-weight: 600;
 }
 .rt-TableRowHeaderCell {
   font-weight: normal;
@@ -60,7 +60,7 @@
 @breakpoints {
   .rt-TableRoot {
     &:where(.rt-r-size-1) {
-      --table-border-radius: var(--radius-3);
+      --table-border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
       --table-cell-padding: var(--space-2);
       --table-cell-min-height: calc(36px * var(--scaling));
 
@@ -70,7 +70,7 @@
       }
     }
     &:where(.rt-r-size-2) {
-      --table-border-radius: var(--radius-4);
+      --table-border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
       --table-cell-padding: var(--space-3);
       --table-cell-min-height: calc(44px * var(--scaling));
 
@@ -80,13 +80,33 @@
       }
     }
     &:where(.rt-r-size-3) {
-      --table-border-radius: var(--radius-4);
-      --table-cell-padding: var(--space-3) var(--space-4);
+      --table-border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
+      --table-cell-padding: var(--space-4);
       --table-cell-min-height: var(--space-8);
 
       & :where(.rt-TableRootTable) {
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
+      }
+    }
+    &:where(.rt-r-size-4) {
+      --table-border-radius: min(var(--radius-8), calc(var(--radius-4) + var(--space-4)));
+      --table-cell-padding: var(--space-5);
+      --table-cell-min-height: var(--space-9);
+
+      & :where(.rt-TableRootTable) {
+        font-size: var(--font-size-3);
+        line-height: var(--line-height-3);
+      }
+    }
+    &:where(.rt-r-size-5) {
+      --table-border-radius: min(var(--radius-9), calc(var(--radius-5) + var(--space-5)));
+      --table-cell-padding: var(--space-6);
+      --table-cell-min-height: var(--space-10);
+
+      & :where(.rt-TableRootTable) {
+        font-size: var(--font-size-4);
+        line-height: var(--line-height-4);
       }
     }
   }

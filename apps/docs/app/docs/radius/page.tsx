@@ -1,12 +1,13 @@
 'use client';
 
+import React from 'react';
 import ComponentPage from '../../components/component-page';
-import RoadmapMDX from './content.mdx';
+import ContentMDX from './radius.mdx';
 
-export default function RoadmapPage() {
+export default function RadiusPage() {
   return (
     <ComponentPage>
-      <RoadmapMDX />
+      <ContentMDX />
     </ComponentPage>
   );
 }

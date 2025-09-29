@@ -1,11 +1,17 @@
-import { Table, Text, Code, Box, Callout, Flex, Card, Badge, Section, Separator, Heading, Image } from '@kushagradhawan/kookie-ui';
+import { Table, Text, Code, Box, Callout, Flex, Card, Badge, Section, Heading, Image } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../../components/code-block';
 
 <Section size="1">
 
 # API
 
-The Shell component is a comprehensive layout engine that provides structural patterns for building application interfaces. It manages layout state through a reducer-based system, enforces composition rules, and provides responsive behavior across seven core slots. The component uses context splitting for optimal performance and supports both controlled and uncontrolled patterns.
+The Shell component provides a comprehensive layout system for building application interfaces with collapsible panels, responsive behavior, and flexible composition patterns.
+
+</Section>
+
+<Section size="1">
+
+## Props
 
 <CodeBlock buttonsPosition="center">
 
@@ -14,15 +20,6 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 ```
 
 </CodeBlock>
-
-
-</Section>
-
-<Separator size="4"/>
-
-<Section size="1">
-
-## Basic Usage
 
 <CodeBlock>
 
@@ -58,7 +55,6 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -66,7 +62,7 @@ import { Shell } from '@kushagradhawan/kookie-ui';
 
 ### Shell.Root
 
-The root container that manages the overall shell layout and state.
+The root container that manages the overall shell layout.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -74,19 +70,19 @@ The root container that manages the overall shell layout and state.
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`height`</Table.RowHeaderCell>
         <Table.Cell>`'full' | 'auto' | string | number`</Table.Cell>
-        <Table.Cell>Controls the height of the shell container. Defaults to `'full'` (100vh).</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controls the height of the shell container. Defaults to `'full'` (100vh).</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Shell components (Header, Rail, Panel, Sidebar, Content, Inspector, Bottom).</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Shell components (Header, Rail, Panel, Sidebar, Content, Inspector, Bottom).</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -102,19 +98,19 @@ Fixed header at the top of the shell.
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`height`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Custom height for the header. Defaults to 64px.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Custom height for the header. Defaults to 64px.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Header content (navigation, branding, actions).</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Header content (navigation, branding, actions).</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -122,7 +118,7 @@ Fixed header at the top of the shell.
 
 ### Shell.Rail
 
-Narrow navigation strip on the left side. Works in conjunction with Panel. Supports both controlled and uncontrolled patterns.
+Narrow navigation strip on the left side. Works in conjunction with Panel.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -130,54 +126,39 @@ Narrow navigation strip on the left side. Works in conjunction with Panel. Suppo
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Uncontrolled initial open state (initial-only). Cannot be used with `open`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial open state. Cannot be used with `open`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
-        <Table.Cell>`(open: boolean, meta: { reason: 'init' | 'toggle' }) => void`</Table.Cell>
-        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when open state changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default width in pixels. Defaults to 64.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Default width in pixels. Defaults to 64.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
-        <Table.Cell>`ResponsivePresentation`</Table.Cell>
-        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the rail can be collapsed. Defaults to true.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when rail expands.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when rail collapses.</Table.Cell>
+        <Table.Cell>`'fixed' | 'overlay' | 'stacked'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Display mode. Can be responsive.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Rail content (typically navigation icons).</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Rail content (typically navigation icons).</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -185,7 +166,7 @@ Narrow navigation strip on the left side. Works in conjunction with Panel. Suppo
 
 ### Shell.Panel
 
-Sidebar panel that appears next to the Rail. Collapses when Rail collapses. Supports both controlled and uncontrolled patterns with size management.
+Sidebar panel that appears next to the Rail. Collapses when Rail collapses.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -193,135 +174,69 @@ Sidebar panel that appears next to the Rail. Collapses when Rail collapses. Supp
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Uncontrolled initial open state (resolved once at mount). Cannot be used with `open`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial open state. Cannot be used with `open`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
-        <Table.Cell>`(open: boolean, meta: { reason: 'toggle' | 'left' | 'init' }) => void`</Table.Cell>
-        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when open state changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Controlled width. Cannot be used with `defaultSize`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled width. Cannot be used with `defaultSize`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Uncontrolled initial width. Cannot be used with `size`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial width. Cannot be used with `size`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
-        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
-        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
-        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when size changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default width in pixels. Defaults to 288.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Default width in pixels. Defaults to 288.</Table.Cell>
       </Table.Row>
-      
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Minimum width when resizing. Defaults to 100.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Minimum width when resizing. Defaults to 100.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum width when resizing. Defaults to 800.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Maximum width when resizing. Defaults to 800.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the panel can be resized. Defaults to false.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the panel can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the panel can be collapsed via resize handle. Defaults to true.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
-        <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Custom content inside the resizer handle (kept unstyled). Use `Panel.Handle` child component instead.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when panel is resized.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize starts.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize ends.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when panel expands.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when panel collapses.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
-        <Table.Cell>`number[]`</Table.Cell>
-        <Table.Cell>Array of pixel values where the panel should snap to during resize.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Size threshold below which the panel should collapse when resizing.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
-        <Table.Cell>`PaneSizePersistence`</Table.Cell>
-        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the panel can be collapsed. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Panel content.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Panel content.</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -337,154 +252,83 @@ Alternative to Rail+Panel combination. Cannot coexist with Rail or Panel. Suppor
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`state`</Table.RowHeaderCell>
-        <Table.Cell>`SidebarMode | Responsive<SidebarMode>`</Table.Cell>
-        <Table.Cell>Controlled state (can be responsive): `'collapsed'`, `'thin'`, or `'expanded'`. Cannot be used with `defaultState`.</Table.Cell>
+        <Table.Cell>`'collapsed' | 'thin' | 'expanded'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled state. Cannot be used with `defaultState`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultState`</Table.RowHeaderCell>
-        <Table.Cell>`SidebarMode | Responsive<SidebarMode>`</Table.Cell>
-        <Table.Cell>Uncontrolled initial state (resolved once at mount). Cannot be used with `state`.</Table.Cell>
+        <Table.Cell>`'collapsed' | 'thin' | 'expanded'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial state. Cannot be used with `state`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onStateChange`</Table.RowHeaderCell>
-        <Table.Cell>`(state: SidebarMode, meta: { reason: 'init' | 'toggle' }) => void`</Table.Cell>
-        <Table.Cell>Callback when state changes with reason metadata.</Table.Cell>
+        <Table.Cell>`(state: 'collapsed' | 'thin' | 'expanded') => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when state changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Controlled width when expanded. Cannot be used with `defaultSize`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled width when expanded. Cannot be used with `defaultSize`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Uncontrolled initial width when expanded. Cannot be used with `size`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial width when expanded. Cannot be used with `size`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
-        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
-        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
-        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when size changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default width in pixels when expanded. Defaults to 288.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Default width in pixels when expanded. Defaults to 288.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
-        <Table.Cell>`ResponsivePresentation`</Table.Cell>
-        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+        <Table.Cell>`'fixed' | 'overlay' | 'stacked'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Display mode. Can be responsive.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Minimum width when resizing. Defaults to 200.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Minimum width when resizing. Defaults to 200.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum width when resizing. Defaults to 400.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Maximum width when resizing. Defaults to 400.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`thinSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Width in thin mode. Defaults to 64.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`toggleModes`</Table.RowHeaderCell>
-        <Table.Cell>`'both' | 'single'`</Table.Cell>
-        <Table.Cell>Toggle behavior: `'both'` cycles through all states, `'single'` toggles between collapsed and default. Defaults to `'both'`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Width in thin mode. Defaults to 64.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the sidebar can be resized. Defaults to false.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the sidebar can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the sidebar can be collapsed via resize handle. Defaults to true.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
-        <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Custom content inside the resizer handle (kept unstyled). Use `Sidebar.Handle` child component instead.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when sidebar is resized.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize starts.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize ends.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when sidebar expands.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when sidebar collapses.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
-        <Table.Cell>`number[]`</Table.Cell>
-        <Table.Cell>Array of pixel values where the sidebar should snap to during resize.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Size threshold below which the sidebar should collapse when resizing.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
-        <Table.Cell>`PaneSizePersistence`</Table.Cell>
-        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the sidebar can be collapsed. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Sidebar content.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Sidebar content.</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
 </Box>
-
 
 ### Shell.Content
 
@@ -496,14 +340,14 @@ Main content area. Always required in shell layouts.
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Main application content.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Main application content.</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -511,7 +355,7 @@ Main content area. Always required in shell layouts.
 
 ### Shell.Inspector
 
-Right-side panel for inspectors, property panels, or contextual information. Supports both controlled and uncontrolled patterns with size management.
+Right-side panel for inspectors, property panels, or contextual information.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -519,140 +363,74 @@ Right-side panel for inspectors, property panels, or contextual information. Sup
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Uncontrolled initial open state (resolved once at mount). Cannot be used with `open`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial open state. Cannot be used with `open`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
-        <Table.Cell>`(open: boolean, meta: { reason: 'init' | 'toggle' }) => void`</Table.Cell>
-        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when open state changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Controlled width. Cannot be used with `defaultSize`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled width. Cannot be used with `defaultSize`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Uncontrolled initial width. Cannot be used with `size`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial width. Cannot be used with `size`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
-        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
-        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
-        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when size changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default width in pixels. Defaults to 320.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Default width in pixels. Defaults to 320.</Table.Cell>
       </Table.Row>
-      
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
-        <Table.Cell>`ResponsivePresentation`</Table.Cell>
-        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+        <Table.Cell>`'fixed' | 'overlay' | 'stacked'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Display mode. Can be responsive.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Minimum width when resizing. Defaults to 200.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Minimum width when resizing. Defaults to 200.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum width when resizing. Defaults to 500.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Maximum width when resizing. Defaults to 500.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the inspector can be resized. Defaults to false.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the inspector can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the inspector can be collapsed via resize handle. Defaults to true.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
-        <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Custom content inside the resizer handle (kept unstyled). Use `Inspector.Handle` child component instead.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when inspector is resized.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize starts.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize ends.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when inspector expands.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when inspector collapses.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
-        <Table.Cell>`number[]`</Table.Cell>
-        <Table.Cell>Array of pixel values where the inspector should snap to during resize.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Size threshold below which the inspector should collapse when resizing.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
-        <Table.Cell>`PaneSizePersistence`</Table.Cell>
-        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the inspector can be collapsed. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Inspector content.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Inspector content.</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -660,7 +438,7 @@ Right-side panel for inspectors, property panels, or contextual information. Sup
 
 ### Shell.Bottom
 
-Bottom panel for terminals, logs, or contextual information. Supports both controlled and uncontrolled patterns with size management.
+Bottom panel for terminals, logs, or contextual information.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -668,139 +446,74 @@ Bottom panel for terminals, logs, or contextual information. Supports both contr
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled open state. Cannot be used with `defaultOpen`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Uncontrolled initial open state (resolved once at mount). Cannot be used with `open`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial open state. Cannot be used with `open`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
-        <Table.Cell>`(open: boolean, meta: { reason: 'init' | 'toggle' }) => void`</Table.Cell>
-        <Table.Cell>Callback when open state changes with reason metadata.</Table.Cell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when open state changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Controlled height. Cannot be used with `defaultSize`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Controlled height. Cannot be used with `defaultSize`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`defaultSize`</Table.RowHeaderCell>
         <Table.Cell>`number | string`</Table.Cell>
-        <Table.Cell>Uncontrolled initial height. Cannot be used with `size`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Uncontrolled initial height. Cannot be used with `size`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`onSizeChange`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void`</Table.Cell>
-        <Table.Cell>Callback when size changes with reason metadata.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdate`</Table.RowHeaderCell>
-        <Table.Cell>`'throttle' | 'debounce'`</Table.Cell>
-        <Table.Cell>Strategy for `onSizeChange` calls during resize. Defaults to immediate.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`sizeUpdateMs`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Delay in milliseconds for throttled/debounced size updates. Defaults to 50.</Table.Cell>
+        <Table.Cell>`(size: number) => void`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Callback when size changes.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Default height in pixels. Defaults to 200.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Default height in pixels. Defaults to 200.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
-        <Table.Cell>`ResponsivePresentation`</Table.Cell>
-        <Table.Cell>Display mode: `'fixed'`, `'overlay'`, or `'stacked'`. Can be responsive.</Table.Cell>
+        <Table.Cell>`'fixed' | 'overlay' | 'stacked'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Display mode. Can be responsive.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Minimum height when resizing. Defaults to 100.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Minimum height when resizing. Defaults to 100.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
         <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Maximum height when resizing. Defaults to 400.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Maximum height when resizing. Defaults to 400.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the bottom panel can be resized. Defaults to false.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the bottom panel can be resized. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether the bottom panel can be collapsed via resize handle. Defaults to true.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`resizer`</Table.RowHeaderCell>
-        <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Custom content inside the resizer handle (kept unstyled). Use `Bottom.Handle` child component instead.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResize`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when bottom panel is resized.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeStart`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize starts.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onResizeEnd`</Table.RowHeaderCell>
-        <Table.Cell>`(size: number) => void`</Table.Cell>
-        <Table.Cell>Callback when resize ends.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onExpand`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when bottom panel expands.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onCollapse`</Table.RowHeaderCell>
-        <Table.Cell>`() => void`</Table.Cell>
-        <Table.Cell>Callback when bottom panel collapses.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapPoints`</Table.RowHeaderCell>
-        <Table.Cell>`number[]`</Table.Cell>
-        <Table.Cell>Array of pixel values where the bottom panel should snap to during resize.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`snapTolerance`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Distance in pixels within which to snap to a snap point. Defaults to 8.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`collapseThreshold`</Table.RowHeaderCell>
-        <Table.Cell>`number`</Table.Cell>
-        <Table.Cell>Size threshold below which the bottom panel should collapse when resizing.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`paneId`</Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-        <Table.Cell>Unique identifier for automatic size persistence.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`persistence`</Table.RowHeaderCell>
-        <Table.Cell>`PaneSizePersistence`</Table.Cell>
-        <Table.Cell>Size persistence adapter with `load` and `save` functions.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether the bottom panel can be collapsed. Defaults to true.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Bottom panel content.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Bottom panel content.</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -808,7 +521,7 @@ Bottom panel for terminals, logs, or contextual information. Supports both contr
 
 ### Shell.Trigger
 
-Button trigger for controlling shell panes. Provides consistent behavior across all pane types with optional peek functionality.
+Button trigger for controlling shell panes.
 
 <Box>
   <Table.Root mt="6" mb="9" size="2" variant="ghost">
@@ -816,44 +529,29 @@ Button trigger for controlling shell panes. Provides consistent behavior across 
       <Table.Row>
         <Table.ColumnHeaderCell>Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`target`</Table.RowHeaderCell>
-        <Table.Cell>`PaneTarget`</Table.Cell>
-        <Table.Cell>Which pane to control: `'left'`, `'rail'`, `'panel'`, `'sidebar'`, `'inspector'`, or `'bottom'`.</Table.Cell>
+        <Table.Cell>`'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom'`</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Which pane to control.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`action`</Table.RowHeaderCell>
         <Table.Cell>`'toggle' | 'expand' | 'collapse'`</Table.Cell>
-        <Table.Cell>Action to perform. Defaults to `'toggle'`.</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Action to perform. Defaults to `'toggle'`.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`peekOnHover`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Whether to show peek preview on hover when target is collapsed. Defaults to false.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onClick`</Table.RowHeaderCell>
-        <Table.Cell>`(event: React.MouseEvent<HTMLButtonElement>) => void`</Table.Cell>
-        <Table.Cell>Additional click handler (called before the shell action).</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onMouseEnter`</Table.RowHeaderCell>
-        <Table.Cell>`(event: React.MouseEvent<HTMLButtonElement>) => void`</Table.Cell>
-        <Table.Cell>Additional mouse enter handler (called before peek logic).</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`onMouseLeave`</Table.RowHeaderCell>
-        <Table.Cell>`(event: React.MouseEvent<HTMLButtonElement>) => void`</Table.Cell>
-        <Table.Cell>Additional mouse leave handler (called before peek clear).</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Whether to show peek preview on hover when target is collapsed. Defaults to false.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
         <Table.Cell>`React.ReactNode`</Table.Cell>
-        <Table.Cell>Button content (typically an icon).</Table.Cell>
+        <Table.Cell className="rt-r-display-none sm:rt-r-display-table-cell">Button content (typically an icon).</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -861,160 +559,6 @@ Button trigger for controlling shell panes. Provides consistent behavior across 
 
 </Section>
 
-<Separator size="4"/>
-
-<Section size="1">
-
-## Hooks
-
-The Shell component uses context splitting for optimal performance. Instead of using `useShell()` for reactive state (which causes re-renders on any state change), use the specific slice hooks for better performance.
-
-### useShell
-
-Access stable shell actions and utilities. **Note:** This hook should not be used for reactive state as it causes unnecessary re-renders.
-
-<CodeBlock>
-
-```tsx
-const shell = useShell();
-
-// Actions (stable references)
-shell.togglePane('sidebar');
-shell.expandPane('inspector');
-shell.collapsePane('bottom');
-
-// Peek functionality
-shell.peekPane('inspector');
-shell.clearPeek();
-```
-
-</CodeBlock>
-
-### Slice Hooks (Recommended)
-
-Use these hooks for reactive state to avoid unnecessary re-renders:
-
-<CodeBlock>
-
-```tsx
-// Import slice hooks
-import { 
-  useLeftMode, 
-  usePanelMode, 
-  useSidebarMode, 
-  useInspectorMode, 
-  useBottomMode,
-  useShellActions,
-  usePeek,
-  useComposition,
-  usePresentation
-} from '@kushagradhawan/kookie-ui/components/shell.context';
-
-// Pane mode states
-const { leftMode, setLeftMode } = useLeftMode();
-const { panelMode, setPanelMode } = usePanelMode();
-const { sidebarMode, setSidebarMode } = useSidebarMode();
-const { inspectorMode, setInspectorMode } = useInspectorMode();
-const { bottomMode, setBottomMode } = useBottomMode();
-
-// Actions (same as useShell but from slice context)
-const { togglePane, expandPane, collapsePane } = useShellActions();
-
-// Peek state
-const { peekTarget, peekPane, clearPeek } = usePeek();
-
-// Composition detection
-const { hasLeft, hasSidebar } = useComposition();
-
-// Responsive state
-const { currentBreakpoint, currentBreakpointReady } = usePresentation();
-```
-
-</CodeBlock>
-
-### useResponsivePresentation
-
-Resolve responsive presentation values.
-
-<CodeBlock>
-
-```tsx
-const presentation = useResponsivePresentation({
-  initial: 'overlay',
-  sm: 'fixed',
-  lg: 'stacked'
-});
-
-// Returns current resolved presentation value
-console.log(presentation); // 'overlay' | 'fixed' | 'stacked'
-```
-
-</CodeBlock>
-
-### useResponsiveValue
-
-Resolve responsive values against the current breakpoint.
-
-<CodeBlock>
-
-```tsx
-const value = useResponsiveValue({
-  initial: 'collapsed',
-  md: 'expanded'
-});
-
-// Returns current resolved value
-console.log(value); // 'collapsed' | 'expanded'
-```
-
-</CodeBlock>
-
-</Section>
-
-<Separator size="4"/>
-
-<Section size="1">
-
-</Section>
-
-<Separator size="4"/>
-
-<Section size="1">
-
-## State Management
-
-The Shell component uses a reducer-based state management system for better performance and consistency. All pane state changes go through the reducer, which handles cascading rules (e.g., left collapse → panel collapse).
-
-### Reducer Actions
-
-<CodeBlock>
-
-```tsx
-// Internal reducer actions (not exposed to users)
-type PaneAction =
-  | { type: 'SET_LEFT_MODE'; mode: PaneMode }
-  | { type: 'SET_PANEL_MODE'; mode: PaneMode }
-  | { type: 'SET_SIDEBAR_MODE'; mode: SidebarMode }
-  | { type: 'SET_INSPECTOR_MODE'; mode: PaneMode }
-  | { type: 'SET_BOTTOM_MODE'; mode: PaneMode }
-  | { type: 'TOGGLE_PANE'; target: PaneTarget }
-  | { type: 'EXPAND_PANE'; target: PaneTarget }
-  | { type: 'COLLAPSE_PANE'; target: PaneTarget };
-```
-
-</CodeBlock>
-
-### Cascading Rules
-
-The reducer automatically handles these cascading behaviors:
-
-- **Left collapse → Panel collapse**: When the left container collapses, the panel automatically collapses
-- **Panel expand → Left expand**: When the panel expands, the left container automatically expands
-- **Sidebar exclusivity**: Sidebar cannot coexist with Rail or Panel (enforced with console warnings)
-
-</Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -1039,7 +583,6 @@ The reducer automatically handles these cascading behaviors:
     defaultOpen={true}
     resizable
     collapsible
-    snapPoints={[200, 300, 400]}
   >
     <div>Sidebar Content</div>
   </Shell.Panel>
@@ -1065,7 +608,6 @@ The reducer automatically handles these cascading behaviors:
   <Shell.Sidebar 
     defaultState="expanded"
     presentation={{ initial: 'overlay', md: 'fixed' }}
-    toggleModes="both"
     resizable
     collapsible
   >
@@ -1080,7 +622,7 @@ The reducer automatically handles these cascading behaviors:
 
 </CodeBlock>
 
-### Controlled Sidebar with Size Management
+### Controlled Sidebar
 
 <CodeBlock>
 
@@ -1093,17 +635,9 @@ function App() {
     <Shell.Root>
       <Shell.Sidebar 
         state={sidebarState}
-        onStateChange={(state, meta) => {
-          console.log('State changed:', state, 'Reason:', meta.reason);
-          setSidebarState(state);
-        }}
+        onStateChange={setSidebarState}
         size={sidebarSize}
-        onSizeChange={(size, meta) => {
-          console.log('Size changed:', size, 'Reason:', meta.reason);
-          setSidebarSize(size);
-        }}
-        sizeUpdate="throttle"
-        sizeUpdateMs={100}
+        onSizeChange={setSidebarSize}
         resizable
         collapsible
       >
@@ -1120,211 +654,14 @@ function App() {
 
 </CodeBlock>
 
-### Performance-Optimized Component
-
-<CodeBlock>
-
-```tsx
-function MySidebar() {
-  // Use slice hooks for better performance
-  const { sidebarMode, setSidebarMode } = useSidebarMode();
-  const { togglePane } = useShellActions();
-  
-  return (
-    <div>
-      <p>Current mode: {sidebarMode}</p>
-      <button onClick={() => togglePane('sidebar')}>
-        Toggle Sidebar
-      </button>
-    </div>
-  );
-}
-```
-
-</CodeBlock>
-
 </Section>
 
-<Separator size="4"/>
-
-<Section size="1">
-
-## Types
-
-### PaneMode
-
-<CodeBlock>
-
-```tsx
-type PaneMode = 'expanded' | 'collapsed';
-```
-
-</CodeBlock>
-
-### SidebarMode
-
-<CodeBlock>
-
-```tsx
-type SidebarMode = 'collapsed' | 'thin' | 'expanded';
-```
-
-</CodeBlock>
-
-### ResponsivePresentation
-
-<CodeBlock>
-
-```tsx
-type PresentationValue = 'fixed' | 'overlay' | 'stacked';
-
-type ResponsivePresentation =
-  | PresentationValue
-  | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', PresentationValue>>;
-```
-
-</CodeBlock>
-
-### Responsive helpers
-
-<CodeBlock>
-
-```tsx
-type Responsive<T> = T | Partial<Record<'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl', T>>;
-
-// Examples
-// Sidebar controlled responsive state
-state: Responsive<SidebarMode>;
-// Inspector controlled responsive open
-open: Responsive<boolean>;
-```
-
-</CodeBlock>
-
-### PaneTarget
-
-<CodeBlock>
-
-```tsx
-type PaneTarget = 'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom';
-```
-
-</CodeBlock>
-
-### TriggerAction
-
-<CodeBlock>
-
-```tsx
-type TriggerAction = 'toggle' | 'expand' | 'collapse';
-```
-
-</CodeBlock>
-
-### PaneSizePersistence
-
-<CodeBlock>
-
-```tsx
-type PaneSizePersistence = {
-  load?: () => number | Promise<number | undefined> | undefined;
-  save?: (size: number) => void | Promise<void>;
-};
-```
-
-</CodeBlock>
-
-### Slice Hook Types
-
-<CodeBlock>
-
-```tsx
-// Import these hooks for optimal performance
-import {
-  useLeftMode,
-  usePanelMode,
-  useSidebarMode,
-  useInspectorMode,
-  useBottomMode,
-  useShellActions,
-  usePeek,
-  useComposition,
-  usePresentation,
-} from '@kushagradhawan/kookie-ui/components/shell.context';
-```
-
-</CodeBlock>
-
-### Complete Type Definitions
-
-<CodeBlock>
-
-```tsx
-// Core types
-type PaneMode = 'expanded' | 'collapsed';
-type SidebarMode = 'collapsed' | 'thin' | 'expanded';
-type PaneTarget = 'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom';
-type TriggerAction = 'toggle' | 'expand' | 'collapse';
-type Breakpoint = 'initial' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-// Responsive types
-type ResponsiveMode = PaneMode | Partial<Record<Breakpoint, PaneMode>>;
-type ResponsiveSidebarMode = SidebarMode | Partial<Record<Breakpoint, SidebarMode>>;
-type ResponsivePresentation = 'fixed' | 'overlay' | 'stacked' | Partial<Record<Breakpoint, 'fixed' | 'overlay' | 'stacked'>>;
-
-// Size management
-type PaneSizePersistence = {
-  load?: () => number | Promise<number | undefined> | undefined;
-  save?: (size: number) => void | Promise<void>;
-};
-
-// Change metadata types
-type SidebarStateChangeMeta = { reason: 'init' | 'toggle' };
-type SidebarSizeChangeMeta = { reason: 'init' | 'resize' | 'controlled' };
-type PaneOpenChangeMeta = { reason: 'init' | 'toggle' | 'left' };
-type PaneSizeChangeMeta = { reason: 'init' | 'resize' | 'controlled' };
-
-// Hook return types
-type UseLeftModeReturn = { leftMode: PaneMode; setLeftMode: (mode: PaneMode) => void };
-type UsePanelModeReturn = { panelMode: PaneMode; setPanelMode: (mode: PaneMode) => void };
-type UseSidebarModeReturn = { sidebarMode: SidebarMode; setSidebarMode: (mode: SidebarMode) => void };
-type UseInspectorModeReturn = { inspectorMode: PaneMode; setInspectorMode: (mode: PaneMode) => void };
-type UseBottomModeReturn = { bottomMode: PaneMode; setBottomMode: (mode: PaneMode) => void };
-
-type UseShellActionsReturn = {
-  togglePane: (target: PaneTarget) => void;
-  expandPane: (target: PaneTarget) => void;
-  collapsePane: (target: PaneTarget) => void;
-};
-
-type UsePeekReturn = {
-  peekTarget: PaneTarget | null;
-  peekPane: (target: PaneTarget) => void;
-  clearPeek: () => void;
-};
-
-type UseCompositionReturn = {
-  hasLeft: boolean;
-  hasSidebar: boolean;
-};
-
-type UsePresentationReturn = {
-  currentBreakpoint: Breakpoint;
-  currentBreakpointReady: boolean;
-};
-```
-
-</CodeBlock>
-
-</Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
 ## Composition Rules
 
-<Callout.Root variant="surface" size="2" color="orange" my="6" highContrast><Callout.Text>The Shell component enforces specific composition rules to maintain layout consistency and prevent conflicting arrangements.</Callout.Text></Callout.Root>
+<Callout.Root variant="soft" size="2" color="orange" my="6" highContrast><Callout.Text>The Shell component enforces specific composition rules to maintain layout consistency and prevent conflicting arrangements.</Callout.Text></Callout.Root>
 
 ### Valid Combinations
 
@@ -1357,7 +694,7 @@ type UsePresentationReturn = {
 
 ### Invalid Combinations
 
-<Callout.Root variant="surface" size="2" color="red" highContrast my="6"><Callout.Text>The following combinations will trigger console warnings and may cause layout conflicts.</Callout.Text></Callout.Root>
+<Callout.Root variant="soft" size="2" color="red" highContrast my="6"><Callout.Text>The following combinations will trigger console warnings and may cause layout conflicts.</Callout.Text></Callout.Root>
 
 <CodeBlock>
 
@@ -1375,7 +712,6 @@ type UsePresentationReturn = {
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -1411,7 +747,7 @@ All shell panes support responsive configurations using breakpoint objects:
       <Table.Row>
         <Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className="rt-r-display-none sm:rt-r-display-table-cell">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
@@ -1451,7 +787,6 @@ All shell panes support responsive configurations using breakpoint objects:
 
 </Section>
 
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -1464,12 +799,12 @@ The Shell component provides comprehensive accessibility support through semanti
 The Shell uses proper landmark elements and ARIA roles:
 - `Shell.Root` - Main application container
 - `Shell.Header` - Header element for global navigation
-- `Shell.Rail` - Navigation container (no specific ARIA role)
-- `Shell.Panel` - Sidebar container (no specific ARIA role)
-- `Shell.Sidebar` - Alternative navigation container (no specific ARIA role)
+- `Shell.Rail` - Navigation container
+- `Shell.Panel` - Sidebar container
+- `Shell.Sidebar` - Alternative navigation container
 - `Shell.Content` - Main landmark for primary content
-- `Shell.Inspector` - Right panel container (no specific ARIA role)
-- `Shell.Bottom` - Bottom panel container (no specific ARIA role)
+- `Shell.Inspector` - Right panel container
+- `Shell.Bottom` - Bottom panel container
 
 ### Keyboard Navigation
 

@@ -1,16 +1,17 @@
 import { Section, Image, Flex, Text, Separator, Grid, Card, Heading } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
-import { Download, Grid3X3, Palette, Settings } from 'lucide-react';
+import { Download, Grid3X3, Palette, Settings, GitBranch, Dog, Power } from 'lucide-react';
 
 <Section size="1">
 
-# Get Started
+<Power />
+# Start
 
-Ready to start building with Kookie UI? Here are the next steps to get you up and running.
+To get started, install the library and import the stylesheet. Wrap your app with `Theme` to set `accentColor`, `grayColor`, and optional `material`. Compose layouts using Shell/Sidebar patterns and build UIs with components at matching sizes. Refer to Foundations for tokens to guide your scale choices. See Installation for framework‑specific steps.
 
 </Section>
 
-<Grid columns={{ initial: '1', sm: '2' }} gap="2" mb="6">
+<Grid columns={{ initial: '1', sm: '2' }} gap="2" my="6">
   {[
     {
       href: '/docs/installation',
@@ -27,19 +28,13 @@ Ready to start building with Kookie UI? Here are the next steps to get you up an
       image: '/box.png',
     },
     {
-      href: '/docs/colors',
+      href: '/docs/theme',
       title: 'Foundations',
       description: 'Design tokens, colors, typography, and spacing systems',
       icon: Palette,
       image: '/foundation.png',
     },
-    {
-      href: '/docs/font-customization',
-      title: 'Customization',
-      description: 'Theming, customization options, and design system configuration',
-      icon: Settings,
-      image: '/settings.png',
-    },
+    
   ].map(({ href, title, description, icon: Icon, image }) => (
     <Card asChild key={href} size="2" variant="soft">
       <Link href={href}>

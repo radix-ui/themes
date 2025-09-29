@@ -117,7 +117,7 @@ figure[data-rehype-pretty-code-figure] code.rt-Code {
   border-radius: 0 !important;
   color: inherit !important;
   font-family: var(--font-mono) !important;
-  font-size: calc(var(--font-size-2)) !important; /* Change this to adjust size */
+  font-size: calc(var(--font-size-2) * 0.95) !important; /* Change this to adjust size */
   line-height: 2 !important;
   border: none !important;
   box-shadow: none !important;
@@ -281,6 +281,32 @@ figure[data-rehype-pretty-code-figure] {
   min-width: 0;
   max-width: 100%;
   overflow-x: clip;
+}
+
+/* Fix Table component responsiveness in flex containers */
+.rt-TableRoot {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Ensure tables never force page-wide overflow and content wraps */
+.rt-TableRootTable {
+  table-layout: fixed; /* distribute column widths and allow wrapping */
+  width: 100%;
+  max-width: 100%;
+}
+
+.rt-TableRootTable th,
+.rt-TableRootTable td {
+  white-space: normal; /* allow wrapping */
+  word-break: break-word; /* break long tokens */
+  overflow-wrap: anywhere; /* modern wrap for long strings */
+}
+
+/* Inline code inside table cells should wrap as well */
+.rt-TableRootTable code {
+  white-space: pre-wrap; /* preserve spacing but allow wraps */
+  word-break: break-word;
 }
 
 /* Disable vertical scrolling when code content is collapsed */

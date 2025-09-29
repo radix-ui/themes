@@ -38,7 +38,7 @@ export function DarkModeToggle() {
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <IconButton variant="ghost" size="2" aria-label="Loading theme toggle">
+      <IconButton variant="classic" size="2" aria-label="Loading theme toggle">
         <div style={{ width: 16, height: 16 }} />
       </IconButton>
     );
@@ -47,15 +47,8 @@ export function DarkModeToggle() {
   const isDark = appearance === 'dark';
 
   return (
-    <IconButton
-      variant="classic"
-      size="2"
-      highContrast
-      color="gray"
-      onClick={toggleTheme}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-    >
-      {isDark ? <Sun size={16} /> : <Moon size={16} />}
+    <IconButton variant="classic" size="2" highContrast color="gray" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
+      {isDark ? <Sun /> : <Moon />}
     </IconButton>
   );
 }

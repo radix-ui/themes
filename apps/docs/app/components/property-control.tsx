@@ -2,17 +2,7 @@
 
 import * as React from 'react';
 import * as Label from '@radix-ui/react-label';
-import {
-  Card,
-  Flex,
-  Grid,
-  Text,
-  DropdownMenu,
-  Switch,
-  Box,
-  Button,
-  Theme,
-} from '@kushagradhawan/kookie-ui';
+import { Card, Flex, Grid, Text, DropdownMenu, Switch, Box, Button, Theme } from '@kushagradhawan/kookie-ui';
 
 interface RootProps {
   width?: string | number;
@@ -23,11 +13,7 @@ interface RootProps {
 function Root({ width, style, children }: RootProps) {
   return (
     <Theme accentColor="gray">
-      <Card
-        size="2"
-        variant="ghost"
-        style={{ width: width || 'fit-content', height: 'fit-content', ...style }}
-      >
+      <Card size="2" variant="ghost" style={{ width: width || 'fit-content', height: 'fit-content', ...style }}>
         <Flex direction="column" gap="4">
           {children}
         </Flex>
@@ -42,12 +28,7 @@ interface FieldProps {
 
 function Field({ children }: FieldProps) {
   return (
-    <Grid
-      columns={{ initial: '1', sm: '2' }}
-      align="center"
-      gap="8"
-      style={{ minHeight: 'var(--space-5)' }}
-    >
+    <Grid columns={{ initial: '1', sm: '2' }} align="center" gap="8" style={{ minHeight: 'var(--space-5)' }}>
       {children}
     </Grid>
   );
@@ -115,18 +96,10 @@ function Swatch({ value }: { value: string }) {
   );
 }
 
-function Group({
-  width,
-  items,
-  style,
-}: {
-  width?: string | number;
-  items: Item[];
-  style?: React.CSSProperties;
-}) {
+function Group({ width, items, style }: { width?: string | number; items: Item[]; style?: React.CSSProperties }) {
   return (
     <Root width={width} style={style}>
-      <Flex direction="column" gap="2">
+      <Flex direction="column" gap="1">
         {items.map((item) => (
           <Field key={item.id}>
             <PropertyLabel htmlFor={item.id}>{item.label}</PropertyLabel>
@@ -136,11 +109,7 @@ function Group({
                   <DropdownMenu.Trigger>
                     <Button size="1" variant="soft" highContrast>
                       {item.appearance === 'swatch' && <Swatch value={item.value} />}
-                      <span style={{ textTransform: 'capitalize' }}>
-                        {item.options.find((o) => o.value === item.value)?.label ||
-                          item.placeholder ||
-                          'Select'}
-                      </span>
+                      <span style={{ textTransform: 'capitalize' }}>{item.options.find((o) => o.value === item.value)?.label || item.placeholder || 'Select'}</span>
                     </Button>
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Content variant="soft" highContrast>
@@ -165,13 +134,7 @@ function Group({
                   </DropdownMenu.Content>
                 </DropdownMenu.Root>
               ) : (
-                <Switch
-                  size="1"
-                  highContrast
-                  id={item.id}
-                  checked={item.value}
-                  onCheckedChange={item.onChange}
-                />
+                <Switch size="1" highContrast id={item.id} checked={item.value} onCheckedChange={item.onChange} />
               )}
             </Control>
           </Field>
@@ -181,12 +144,7 @@ function Group({
   );
 }
 
-export type {
-  Item as PropertyControlItem,
-  SelectItem as PropertyControlSelectItem,
-  SwitchItem as PropertyControlSwitchItem,
-  SelectOption as PropertyControlSelectOption,
-};
+export type { Item as PropertyControlItem, SelectItem as PropertyControlSelectItem, SwitchItem as PropertyControlSwitchItem, SelectOption as PropertyControlSelectOption };
 
 export const PropertyControl = {
   Root,
