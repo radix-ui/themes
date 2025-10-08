@@ -333,6 +333,7 @@
 }
 
 /* Ensure serif font takes precedence over .radix-themes */
+/* stylelint-disable-next-line selector-max-specificity */
 .radix-themes[data-font-family='serif'] {
   font-family: var(--font-serif) !important;
 }
