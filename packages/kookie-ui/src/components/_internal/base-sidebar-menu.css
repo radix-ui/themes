@@ -233,6 +233,7 @@
 }
 
 /* Add same balanced spacing for submenu items */
+/* stylelint-disable-next-line selector-max-specificity */
 .rt-SidebarContent :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
   margin-top: 1px;
   margin-bottom: 1px;

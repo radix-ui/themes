@@ -593,16 +593,18 @@
         flex-shrink: 0;
       }
     }
-    .rt-SidebarContent:where(.rt-r-size-3) {
-      & :where(.rt-SidebarMenuButton) {
-        /* stylelint-disable-next-line selector-max-type */
-        & :where(svg) {
-          width: var(--content-icon-size-3);
-          height: var(--content-icon-size-3);
-          flex-shrink: 0;
-        }
+  /* stylelint-disable-next-line selector-max-specificity */
+  .rt-SidebarContent:where(.rt-r-size-3) {
+    /* stylelint-disable-next-line selector-max-specificity */
+    & :where(.rt-SidebarMenuButton) {
+      /* stylelint-disable-next-line selector-max-type, selector-max-specificity */
+      & :where(svg) {
+        width: var(--content-icon-size-3);
+        height: var(--content-icon-size-3);
+        flex-shrink: 0;
       }
     }
+  }
 
     /* Sub-trigger icon sizing - matches base menu exactly */
     & :where(.rt-BaseMenuSubTriggerIcon) {
