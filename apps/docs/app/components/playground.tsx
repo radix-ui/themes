@@ -56,8 +56,8 @@ export default function Playground({ component, code, items }: PlaygroundProps) 
   return (
     <Flex direction={{ initial: 'column', md: 'row' }} gap="5" align="center">
       {/* Left side - Preview area */}
-      <Box position="relative" style={{ width: '100%', height: '600px' }}>
-        <Card size="2" variant="soft" style={{ width: '100%', height: '100%' }}>
+      <Box position="relative" style={{ width: '100%', height: '480px' }}>
+        <Card size="2" variant="classic" style={{ width: '100%', height: '100%' }}>
           {/* Copy button - positioned like CodeBlock */}
           <Flex gap="1" position="absolute" top="3" right="3" style={{ zIndex: 1 }}>
             <IconButton size="2" variant="classic" color="gray" highContrast onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>

@@ -8,7 +8,7 @@ const appearances = ['inherit', 'light', 'dark'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
 const materials = ['solid', 'translucent'] as const;
 const scalings = ['90%', '95%', '100%', '105%', '110%'] as const;
-const fontFamilies = ['sans', 'mono'] as const;
+const fontFamilies = ['sans', 'mono', 'serif'] as const;
 
 const themePropDefs = {
   ...asChildPropDef,

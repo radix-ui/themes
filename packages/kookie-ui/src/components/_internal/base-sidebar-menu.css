@@ -159,7 +159,7 @@
   padding-inline-start: var(--space-3);
   padding-top: calc(var(--space-1) * 0.75);
   padding-bottom: calc(var(--space-1) * 0.75);
-  min-height: var(--space-5); /* 20px */
+  min-height: var(--space-6); /* bumped from space-5 */
   font-size: var(--font-size-1);
 }
 
@@ -167,8 +167,16 @@
   padding-inline-start: var(--space-3);
   padding-top: var(--space-1);
   padding-bottom: var(--space-1);
-  min-height: var(--space-6); /* 32px */
+  min-height: var(--space-7); /* bumped from space-6 */
   font-size: var(--font-size-2);
+}
+
+:where(.rt-SidebarContent.rt-r-size-3) :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
+  padding-inline-start: var(--space-3);
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  min-height: var(--space-8);
+  font-size: var(--font-size-3);
 }
 
 .rt-SidebarGroupLabel {
@@ -220,6 +228,12 @@
 
 /* Add balanced spacing for sidebar menu items while preserving base menu border radius */
 .rt-SidebarContent :where(.rt-BaseMenuItem) {
-  margin-top: calc(var(--space-1) / 2);
-  margin-bottom: calc(var(--space-1) / 2);
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+/* Add same balanced spacing for submenu items */
+.rt-SidebarContent :where(.rt-SidebarMenuSubList) .rt-SidebarMenuButton {
+  margin-top: 1px;
+  margin-bottom: 1px;
 }

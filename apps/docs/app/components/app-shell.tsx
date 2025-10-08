@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Shell, Sidebar, Flex, IconButton, Badge, Heading } from '@kushagradhawan/kookie-ui';
+import { Shell, Sidebar, Flex, IconButton, Badge, Heading, Card } from '@kushagradhawan/kookie-ui';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
@@ -47,21 +47,13 @@ const navigationItems = [
     title: 'Foundations',
     icon: Palette,
     items: [
-      {
-        href: '/docs/theme',
-        title: 'Theme',
-        icon: Cog,
-        badge: undefined,
-        submenu: [
-          { href: '/docs/theme', title: 'Overview', icon: BookOpen },
-          { href: '/docs/colors', title: 'Colors', icon: Palette },
-          { href: '/docs/constants', title: 'Constants', icon: Hash },
-          { href: '/docs/shadows', title: 'Shadows', icon: Layers },
-          { href: '/docs/material', title: 'Material', icon: SwatchBook },
-          { href: '/docs/radius', title: 'Radius', icon: SquareRoundCorner },
-          { href: '/docs/typography', title: 'Typography', icon: Type },
-        ],
-      },
+      { href: '/docs/theme', title: 'Theme', icon: Cog, badge: undefined },
+      { href: '/docs/colors', title: 'Colors', icon: Palette, badge: undefined },
+      { href: '/docs/constants', title: 'Constants', icon: Hash, badge: undefined },
+      { href: '/docs/shadows', title: 'Shadows', icon: Layers, badge: undefined },
+      { href: '/docs/material', title: 'Material', icon: SwatchBook, badge: undefined },
+      { href: '/docs/radius', title: 'Radius', icon: SquareRoundCorner, badge: undefined },
+      { href: '/docs/typography', title: 'Typography', icon: Type, badge: undefined },
     ],
   },
   {
@@ -74,13 +66,6 @@ const navigationItems = [
         title: 'Button',
         icon: Square,
         badge: undefined,
-        submenu: [
-          { href: '/docs/button', title: 'Overview', icon: BookOpen },
-          { href: '/docs/button/api', title: 'API', icon: Code },
-          // { href: '/docs/button/specs', title: 'Specs', icon: Box },
-          // { href: '/docs/button/guidelines', title: 'Guidelines', icon: Palette },
-          { href: '/docs/button/playground', title: 'Playground', icon: Gamepad },
-        ],
       },
       {
         href: '/docs/shell',
@@ -124,31 +109,33 @@ function AppSidebarContent({ presentation }: { presentation: 'thin' | 'expanded'
   // const router = useRouter();
 
   return (
-    <Sidebar.Root size="2" variant="soft" color="gray" menuVariant="soft" presentation={presentation}>
+    <Sidebar.Root size="2" variant="ghost" color="gray" menuVariant="soft" presentation={presentation}>
       <Sidebar.Header>
-        <Flex justify="between" align="center" width="100%">
-          <Link href="/" aria-label="Kushagra Dhawan - Homepage">
-            <Flex align="center" gap="1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--accent-9)" viewBox="0 0 256 256" aria-label="Kushagra Dhawan Logo">
-                <path d="M82.34,69.66a8,8,0,0,1,0-11.32l40-40a8,8,0,0,1,11.32,0l40,40a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32,0Zm51.32,76.68a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0,0-11.32Zm104-24-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,237.66,122.34Zm-128,0-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,109.66,122.34Z"></path>
-              </svg>
-              <Heading weight="semibold" size="6">
-                UI
-              </Heading>
-              <Badge highContrast color="amber">
-                Preview
-              </Badge>
+        <Card size="2" variant="soft" style={{ width: '100%' }}>
+          <Flex justify="between" align="center" width="100%">
+            <Link href="/" aria-label="Kushagra Dhawan - Homepage">
+              <Flex align="center" gap="1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--accent-10)" viewBox="0 0 256 256" aria-label="Kushagra Dhawan Logo">
+                  <path d="M82.34,69.66a8,8,0,0,1,0-11.32l40-40a8,8,0,0,1,11.32,0l40,40a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32,0Zm51.32,76.68a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0,0-11.32Zm104-24-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,237.66,122.34Zm-128,0-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,109.66,122.34Z"></path>
+                </svg>
+                <Heading weight="semibold" size="6">
+                  UI
+                </Heading>
+                <Badge highContrast color="orange">
+                  Beta
+                </Badge>
+              </Flex>
+            </Link>
+            <Flex gap="1">
+              <IconButton asChild variant="classic" highContrast>
+                <Link href="https://github.com/KushagraDhawan1997/kookie-ui" target="_blank">
+                  <Github />
+                </Link>
+              </IconButton>
+              <DarkModeToggle />
             </Flex>
-          </Link>
-          <Flex gap="1">
-            <IconButton asChild variant="solid" highContrast>
-              <Link href="https://github.com/KushagraDhawan1997/kookie-ui" target="_blank">
-                <Github />
-              </Link>
-            </IconButton>
-            <DarkModeToggle />
           </Flex>
-        </Flex>
+        </Card>
       </Sidebar.Header>
       <Sidebar.Content>
         {navigationItems.map((section, sectionIndex) => (
@@ -220,11 +207,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         onStateChange={(state) => setSidebarPresentation(state === 'thin' ? 'thin' : 'expanded')}
         presentation={{ initial: 'overlay', sm: 'fixed' }}
       >
-        <Shell.Sidebar.Handle>
+        {/* <Shell.Sidebar.Handle>
           <IconButton variant="classic" size="1" highContrast color="gray">
             <GripVertical />
           </IconButton>
-        </Shell.Sidebar.Handle>
+        </Shell.Sidebar.Handle> */}
         <AppSidebarContent presentation={sidebarPresentation} />
       </Shell.Sidebar>
 

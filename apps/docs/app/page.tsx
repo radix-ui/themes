@@ -2,7 +2,7 @@
 
 import { Button, Flex, Text, Heading, Container, Badge, Card, Shell, Section, IconButton, Grid, Link as KUILink } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
-import { GripVertical, ArrowDownToLine } from 'lucide-react';
+import { GripVertical, ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -11,15 +11,15 @@ export default function HeroSection() {
         <Container size="2" style={{ position: 'relative', zIndex: 1 }}>
           {/* Title and subtitle section */}
           <Flex direction="column" gap="8" p="6" align="start">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="var(--gray-9)" viewBox="0 0 256 256" aria-label="Kushagra Dhawan Logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="var(--gray-10)" viewBox="0 0 256 256" aria-label="Kushagra Dhawan Logo">
               <path d="M82.34,69.66a8,8,0,0,1,0-11.32l40-40a8,8,0,0,1,11.32,0l40,40a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32,0Zm51.32,76.68a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0,0-11.32Zm104-24-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,237.66,122.34Zm-128,0-40-40a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,0,11.32l40,40a8,8,0,0,0,11.32,0l40-40A8,8,0,0,0,109.66,122.34Z"></path>
             </svg>
 
             <Flex direction="column" gap="4">
               <Flex direction="row" align="center" gap="1">
                 <Badge highContrast>Coming Soon</Badge>
-                <Badge highContrast color="amber">
-                  Preview
+                <Badge highContrast color="orange">
+                  Beta
                 </Badge>
               </Flex>
               <Flex direction="column" align="center" gap="4">
@@ -44,9 +44,9 @@ export default function HeroSection() {
             {/* Call-to-action buttons */}
             <Flex gap="2">
               <Link href="/docs/installation">
-                <Button highContrast color="gray" variant="solid" size="3">
-                  <ArrowDownToLine />
+                <Button highContrast color="gray" variant="solid" size="2">
                   Installation
+                  <ArrowRight />
                 </Button>
               </Link>
               {/* <Link href="/docs/home">

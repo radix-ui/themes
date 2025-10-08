@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="indigo" grayColor="gray" material="solid" radius="full" fontFamily="sans">
+        <Theme accentColor="blue" grayColor="gray" material="solid" radius="medium" fontFamily="sans">
           <AppShell>{children}</AppShell>
           <ThemePanel defaultOpen={false} />
         </Theme>

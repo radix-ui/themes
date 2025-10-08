@@ -1,23 +1,19 @@
-/* Inter and JetBrains Mono from Google Fonts */
+/* Inter, JetBrains Mono, and Playfair Display from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* Font Variables - Customize these to change fonts throughout your app */
 :root {
-  /* Base font definitions - override these in your CSS to customize fonts */
-  --font-inter:
-    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    sans-serif;
-  --font-jetbrains-mono:
-    'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  /* Base font definitions - these are the actual font stacks */
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --font-playfair-display: 'Playfair Display', 'Times New Roman', 'Times', 'Georgia', 'Cambria', serif;
 
-  /* Primary font variables - these map to theme fontFamily values */
-  --font-general-sans: var(--font-inter); /* Used when fontFamily="sans" */
-  --font-inter-mono: var(--font-jetbrains-mono); /* Used for code elements */
-
-  /* Tailwind-compatible aliases - override these to change theme fonts */
-  --font-sans: var(--font-inter); /* Theme fontFamily="sans" uses this */
-  --font-mono: var(--font-jetbrains-mono); /* Theme fontFamily="mono" uses this */
+  /* Theme font family overrides - change these to customize fonts globally */
+  --font-sans: var(--font-inter); /* Override this for custom sans-serif */
+  --font-mono: var(--font-jetbrains-mono); /* Override this for custom monospace */
+  --font-serif: var(--font-playfair-display); /* Override this for custom serif */
 
   /* Force proper font weight rendering */
   font-synthesis: none; /* Prevent browser from synthesizing weights */
@@ -26,7 +22,7 @@
 /* Radix Themes font weight enforcement */
 .radix-themes {
   font-synthesis: none;
-  font-family: var(--font-inter);
+  font-family: var(--default-font-family);
 }
 
 /* System font fallback for critical loading scenarios */

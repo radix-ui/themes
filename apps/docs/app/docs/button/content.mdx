@@ -1,12 +1,17 @@
-import { Table, Text, Code, Box, Callout, Flex, Button, IconButton, Card, Image, Theme, Badge, Section, Separator } from '@kushagradhawan/kookie-ui';
-import { ChevronDown, Dot, Check, ChevronRight, Accessibility } from 'lucide-react';
-import { CodeBlock } from '../../../components/code-block';
+import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme } from '@kushagradhawan/kookie-ui';
+import { Play, Code as CodeIcon, Users, BookOpen, Ruler, History, Gamepad, ChevronDown, Dot, Check, ChevronRight, Accessibility } from 'lucide-react';
+import { CodeBlock } from '../../components/code-block';
+import ButtonPlayground from '../../playground/ButtonPlayground';
 
 <Section size="1">
 
-# API
+# Button
 
-Use Button to trigger actions. It offers six variants, four sizes, built-in tooltips, auto icon sizing, responsive layouts, and full accessibility.
+Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next—design them to build user confidence and guide decision-making naturally.
+
+<Box mt="8">
+  <ButtonPlayground />
+</Box>
 
 </Section>
 
@@ -24,101 +29,73 @@ import { Button } from '@kushagradhawan/kookie-ui';
 <Box>
   <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
     <colgroup>
-      <col style={{ width: '25%' }} />
-      <col style={{ width: '40%' }} />
+      <col style={{ width: '35%' }} />
       <col />
     </colgroup>
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`variant`</Table.RowHeaderCell>
         <Table.Cell>`'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'`</Table.Cell>
-        <Table.Cell>Visual style of the button.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
         <Table.Cell>`'1' | '2' | '3' | '4'`</Table.Cell>
-        <Table.Cell>Control size and density.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`color`</Table.RowHeaderCell>
         <Table.Cell>`AccentColor`</Table.Cell>
-        <Table.Cell>Semantic color from the theme.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`highContrast`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Increase contrast for readability.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`fullWidth`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Expand to fill the container width.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`flush`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Remove horizontal padding for inline text.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
         <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
-        <Table.Cell>Corner radius.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
         <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-        <Table.Cell>Opaque or translucent rendering material.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`panelBackground`</Table.RowHeaderCell>
         <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-        <Table.Cell>Background treatment within panel contexts.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`loading`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Show a spinner and mark as busy.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`disabled`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Disable interaction.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`as`</Table.RowHeaderCell>
         <Table.Cell>`ElementType`</Table.Cell>
-        <Table.Cell>Render as a different element.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
-        <Table.Cell>Merge props into child via Slot.</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
 </Box>
 
-<Flex justify="start" width="auto">
-  <Callout.Root
-    variant="soft"
-    size="2"
-    highContrast
-    width="auto"
-    style={{ display: 'inline-flex', width: 'auto', maxWidth: '100%' }}
-  >
-  <Callout.Icon>
-		<Accessibility />
-	</Callout.Icon>
-    <Callout.Text>Button supports customizable tooltip props for content, position, timing, and behavior.</Callout.Text>
-  </Callout.Root>
-</Flex>
+Button supports customizable tooltip props for content, position, timing, and behavior.
 
 </Section>
 
@@ -126,7 +103,7 @@ import { Button } from '@kushagradhawan/kookie-ui';
 
 ## Variants
 
-Use the `variant` prop to set button style. While the following are suggested conventions—`solid` for primary, `outline` for secondary, `ghost` for utility, `classic` for elevated, and `soft`/`surface` for content-heavy UIs—variants are purely visual and should be chosen by designers or users to fit the context. There is an inherent visual "hierarchy" between variants, but this hierarchy is relative and flexible based on your design needs.
+Use the `variant` prop to set button style. Suggested conventions: `solid` for primary, `outline` for secondary, `ghost` for utility, `classic` for elevated, and `soft`/`surface` for content-heavy UIs. Variants are visual only—choose what fits your context. Visual hierarchy is flexible.
 
 ### Classic
 
@@ -359,9 +336,9 @@ Use the `color` prop with semantic colors to communicate the action's intent to 
 
 ## Material
 
-Use the `material` prop to control how buttons render their visual elements. Choose `solid` for opaque backgrounds and borders, or `translucent` for elevated effects that create depth and visual separation from the background.
+Use the `material` prop to set button appearance. Choose `solid` for opaque backgrounds, or `translucent` for depth and separation over images or dynamic backgrounds.
 
-For translucent effects to be visible, buttons must appear over images or dynamic backgrounds. Avoid using `outline` and `ghost` variants in translucent contexts, as they may not provide sufficient contrast and visibility.
+Avoid `outline` and `ghost` variants with translucent material, as they may lack contrast.
 
 ### Theme
 
@@ -393,7 +370,7 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 
 ### Custom
 
-Override the theme's material setting for individual buttons when you need specific visual effects. Remember that translucent effects are only visible over backgrounds, and you should use `highContrast` with translucent materials to maintain readability.
+Override the theme's material for a button when you need a specific effect. Translucent effects only show over backgrounds—use `highContrast` for readability.
 
 <CodeBlock
   background="https://images.unsplash.com/photo-1677504210210-b9259daf154f?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -446,9 +423,9 @@ Set `loading` to `true` to show a spinner and disable the button. No need to set
 
 ### Disabled
 
-Set the `disabled` prop to `true` to prevent interaction when an action is currently unavailable. Common use cases include form validation states, when required fields are empty, or when an action requires user authentication.
+Set the `disabled` prop to `true` to prevent interaction when an action is unavailable, such as during form validation or when authentication is required.
 
-Always provide clear visual feedback about why a button is disabled, either through tooltips or surrounding text.
+Always give clear visual feedback for disabled buttons, like tooltips or nearby text.
 
 <CodeBlock
 
@@ -467,7 +444,7 @@ Always provide clear visual feedback about why a button is disabled, either thro
 
 ### Interactive
 
-Buttons automatically handle focus states for keyboard navigation. For complex UI patterns like dropdowns and toggles, use the `data-state` attribute to apply specific visual treatments.
+Buttons handle focus for keyboard navigation. For complex patterns, use `data-state` for custom visuals.
 
 <CodeBlock
 
@@ -488,17 +465,13 @@ Buttons automatically handle focus states for keyboard navigation. For complex U
 
 </Section>
 
-
-
-
-
 <Section size="1">
 
 ## Layout
 
 ### Full Width
 
-Set the `fullWidth` prop to `true` when you want the button to expand and fill its container. This is particularly useful for mobile layouts and form submissions where you want to maximize the touch target area and create a clear visual hierarchy.
+Set the `fullWidth` prop to `true` to make the button fill its container. This is useful for mobile layouts and form submissions.
 
 <CodeBlock
 
@@ -519,7 +492,7 @@ Set the `fullWidth` prop to `true` when you want the button to expand and fill i
 
 ### Flush
 
-Set the `flush` prop to `true` with the `ghost` variant to remove visual padding for seamless text integration. This is useful when you want the button to appear as inline text while maintaining its interactive behavior.
+Use the `flush` prop with the `ghost` variant to remove padding, making the button blend with text while staying interactive.
 
 <CodeBlock buttonsPosition="center"
 
@@ -538,27 +511,19 @@ Set the `flush` prop to `true` with the `ghost` variant to remove visual padding
 
 </Section>
 
-
-
-
-
 <Section size="1">
 
 ## Margin
 
-Use margin props to control spacing around buttons. All margin props are responsive and support both design system tokens and CSS string values.
+Use margin props for spacing around buttons. All margin props are responsive and accept design tokens or CSS values.
 
 </Section>
-
-
-
-
 
 <Section size="1">
 
 ## Tooltips
 
-Use the `tooltip` prop to provide additional context for button actions, especially for icon buttons or actions that might not be immediately clear to users. Tooltips appear on hover and focus, making them accessible to both mouse and keyboard users. For icon-only buttons, always provide a tooltip to explain the action.
+Use the `tooltip` prop to add context to button actions, especially for icon buttons or unclear actions. Tooltips appear on hover and focus for accessibility. Always provide a tooltip for icon-only buttons.
 
 <CodeBlock
 
@@ -578,14 +543,11 @@ Use the `tooltip` prop to provide additional context for button actions, especia
 </Section>
 
 
-
-
-
 <Section size="1">
 
 ## Icons
 
-Place icons directly inside buttons without manual sizing. The component automatically sizes icons based on the button's size prop to maintain visual consistency across your interface. For icon-only buttons, use the `IconButton` component instead to ensure proper accessibility and touch targets.
+Place icons directly inside buttons; they’ll be sized automatically based on the button’s size. For icon-only buttons, use the `IconButton` component for proper accessibility and touch targets.
 
 <CodeBlock
 
@@ -602,7 +564,6 @@ Place icons directly inside buttons without manual sizing. The component automat
 
 </CodeBlock>
 
-For icon-only buttons, use `IconButton` instead:
 
 <CodeBlock
 
@@ -694,10 +655,6 @@ Use responsive objects with the `size` prop to adapt button sizing across differ
 
 </Section>
 
-
-
-
-
 <Section size="1">
 
 ## Form
@@ -740,3 +697,44 @@ Loading states automatically apply comprehensive ARIA attributes:
 Loading announcements include: "[Button text] is loading, please wait..."
 
 </Section>
+
+<Section size="1">
+
+## Changelog
+
+### Added
+- Enhanced loading state accessibility with `aria-busy`, `aria-disabled`, and `aria-describedby` attributes
+- Built-in tooltip support through `tooltip`, `tooltipSide`, `tooltipAlign` props
+- New `material` prop for solid/translucent theme contexts
+- `flush` prop for seamless text integration with ghost variants
+- Full margin prop system with responsive support
+- Enhanced form integration with complete HTML form attribute support
+- **RTL (Right-to-Left) layout support** for international applications
+- **Windows High Contrast mode support** via `forced-colors` media query
+- **Enhanced reduced motion support** for users with vestibular disorders
+- **Improved loading state announcements** with contextual button text
+- **Tooltip accessibility integration** with proper `aria-describedby` associations
+
+### Changed
+- Improved 3D shadow system for classic variant with better depth perception
+- Enhanced active state feedback with subtle padding adjustments
+- Better contrast relationships in both light and dark themes
+- Comprehensive transition token system with duration and easing tokens
+- Automatic reduced motion support via `prefers-reduced-motion`
+
+### Deprecated
+- `panelBackground` prop in favor of `material` prop
+
+### Fixed
+- Better color saturation and brightness in high contrast mode
+- Enhanced focus indicators for improved accessibility
+- Consistent contrast ratios across all variants and states
+- Full TypeScript support for polymorphic `as` prop with better type inference
+- **Loading state accessibility** with proper button text context in announcements
+- **Focus management** with enhanced forced-colors support for Windows High Contrast
+- **Spinner animations** now respect `prefers-reduced-motion` user preference
+- **Tooltip associations** properly linked to buttons via unique IDs
+
+</Section>
+
+<Text size="1" color="gray">The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).</Text>

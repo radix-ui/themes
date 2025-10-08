@@ -10,14 +10,16 @@ import { CircleAlert, ArrowDownToLine } from 'lucide-react';
 
 Get Kookie User Interface running in your React application. The library works with any React framework and requires minimal setup—import the CSS, wrap your app with Theme, and start building.
 
-<Callout.Root variant="soft" size="2" highContrast color="amber" mt="6">
+<Callout.Root variant="soft" size="2" color="gray" highContrast mt="6">
   <Callout.Icon>
 		<CircleAlert />
 	</Callout.Icon>
-  <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
+  <Callout.Text>Kookie UI is in beta. APIs may change—check the changelog before upgrading.</Callout.Text>
 </Callout.Root>
 
 </Section>
+
+<Separator size="4"/>
 
 <Section size="1">
 
@@ -211,7 +213,7 @@ export default function App() {
 
 ## Gatsby
 
-For Gatsby projects, create a `gatsby-browser.js` file:
+For Gatsby projects, create a `gatsby-browser.js` file, then wrap your app in the Theme provider:
 
 <CodeBlock>
 
@@ -221,8 +223,6 @@ import '@kushagradhawan/kookie-ui/styles.css';
 ```
 
 </CodeBlock>
-
-Then wrap your app in the Theme provider:
 
 <CodeBlock>
 

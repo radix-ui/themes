@@ -347,6 +347,11 @@ Kookie UI makes font customization simple and flexible. Switch between font fami
 <Theme fontFamily="mono">
   <Text>This uses JetBrains Mono font</Text>
 </Theme>
+
+/* Serif fonts */
+<Theme fontFamily="serif">
+  <Text>This uses Playfair Display font</Text>
+</Theme>
 ```
 
 </CodeBlock>
@@ -359,7 +364,7 @@ Kookie UI makes font customization simple and flexible. Switch between font fami
 
 ## Custom Fonts
 
-Use your brand fonts by updating CSS variables. Import your preferred fonts and override Kookie UI font variables.
+Kookie UI uses a simple two-tier font system. Override the theme variables (`--font-sans`, `--font-mono`, `--font-serif`) to customize fonts globally.
 
 <CodeBlock>
 
@@ -367,10 +372,11 @@ Use your brand fonts by updating CSS variables. Import your preferred fonts and 
 /* Import your preferred fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Override Kookie UI font variables */
+/* Override Kookie UI theme font variables */
 :root {
-  --font-inter: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: var(--font-inter);
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Fira Code', 'Consolas', monospace;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
 }
 ```
 
@@ -382,7 +388,11 @@ Use your brand fonts by updating CSS variables. Import your preferred fonts and 
 
 ## Font Variables
 
-Font customization variables and their usage:
+Kookie UI uses a two-tier font variable system for maximum flexibility:
+
+### Theme Override Variables (Primary)
+
+These are the main variables you should override to customize fonts:
 
 <Box>
   <Table.Root mt="6" mb="6" size="2" variant="ghost">
@@ -390,29 +400,53 @@ Font customization variables and their usage:
       <Table.Row>
         <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Default</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Default Value</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`--font-sans`</Table.RowHeaderCell>
-        <Table.Cell>Theme `fontFamily="sans"`</Table.Cell>
-        <Table.Cell>Inter font stack</Table.Cell>
+        <Table.Cell>Sans-serif font for `fontFamily="sans"`</Table.Cell>
+        <Table.Cell>`var(--font-inter)`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`--font-mono`</Table.RowHeaderCell>
-        <Table.Cell>Theme `fontFamily="mono"`</Table.Cell>
-        <Table.Cell>JetBrains Mono font stack</Table.Cell>
+        <Table.Cell>Monospace font for `fontFamily="mono"`</Table.Cell>
+        <Table.Cell>`var(--font-jetbrains-mono)`</Table.Cell>
       </Table.Row>
       <Table.Row>
+        <Table.RowHeaderCell>`--font-serif`</Table.RowHeaderCell>
+        <Table.Cell>Serif font for `fontFamily="serif"`</Table.Cell>
+        <Table.Cell>`var(--font-playfair-display)`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Base Font Stacks (Advanced)
+
+These are the actual font stacks. Override these only if you want to change Kookie's base fonts:
+
+<Box>
+  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Font Stack</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
         <Table.RowHeaderCell>`--font-inter`</Table.RowHeaderCell>
-        <Table.Cell>Base sans-serif font</Table.Cell>
-        <Table.Cell>Inter with system fallbacks</Table.Cell>
+        <Table.Cell>`'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`--font-jetbrains-mono`</Table.RowHeaderCell>
-        <Table.Cell>Base monospace font</Table.Cell>
-        <Table.Cell>JetBrains Mono with fallbacks</Table.Cell>
+        <Table.Cell>`'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', monospace`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`--font-playfair-display`</Table.RowHeaderCell>
+        <Table.Cell>`'Playfair Display', 'Times New Roman', 'Times', 'Georgia', serif`</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>

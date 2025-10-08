@@ -510,11 +510,15 @@
   .rt-SidebarContainer {
     &:where(.rt-r-size-1) {
       --sidebar-base-padding: var(--space-3);
-      --sidebar-item-height: var(--space-5);
+      --sidebar-item-height: var(--space-6);
     }
     &:where(.rt-r-size-2) {
       --sidebar-base-padding: var(--space-4);
-      --sidebar-item-height: var(--space-6);
+      --sidebar-item-height: var(--space-7);
+    }
+    &:where(.rt-r-size-3) {
+      --sidebar-base-padding: var(--space-4);
+      --sidebar-item-height: var(--space-8);
     }
   }
 
@@ -525,6 +529,7 @@
       --sidebar-item-padding-left: var(--base-menu-item-padding-left);
       --sidebar-item-padding-right: var(--base-menu-item-padding-right);
       --sidebar-item-padding-y: var(--base-menu-item-padding-y);
+      --base-menu-item-height: var(--space-6);
       --sidebar-item-height: var(--base-menu-item-height);
     }
     &:where(.rt-r-size-2) {
@@ -532,6 +537,15 @@
       --sidebar-item-padding-left: var(--base-menu-item-padding-left);
       --sidebar-item-padding-right: var(--base-menu-item-padding-right);
       --sidebar-item-padding-y: var(--base-menu-item-padding-y);
+      --base-menu-item-height: var(--space-7);
+      --sidebar-item-height: var(--base-menu-item-height);
+    }
+    &:where(.rt-r-size-3) {
+      --sidebar-content-padding: var(--base-menu-content-padding);
+      --sidebar-item-padding-left: var(--base-menu-item-padding-left);
+      --sidebar-item-padding-right: var(--base-menu-item-padding-right);
+      --sidebar-item-padding-y: var(--base-menu-item-padding-y);
+      --base-menu-item-height: var(--space-8);
       --sidebar-item-height: var(--base-menu-item-height);
     }
   }
@@ -548,8 +562,8 @@
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--content-icon-size-1);
-        height: var(--content-icon-size-1);
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
         flex-shrink: 0;
       }
     }
@@ -574,9 +588,19 @@
 
       /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
-        width: var(--content-icon-size-2);
-        height: var(--content-icon-size-2);
+        width: var(--content-icon-size-3);
+        height: var(--content-icon-size-3);
         flex-shrink: 0;
+      }
+    }
+    .rt-SidebarContent:where(.rt-r-size-3) {
+      & :where(.rt-SidebarMenuButton) {
+        /* stylelint-disable-next-line selector-max-type */
+        & :where(svg) {
+          width: var(--content-icon-size-3);
+          height: var(--content-icon-size-3);
+          flex-shrink: 0;
+        }
       }
     }
 

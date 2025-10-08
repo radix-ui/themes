@@ -9,7 +9,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
       <Flex direction="column" gap="8" mb="6" mt="2">
-        <Heading as="h1" size="8" weight="medium">
+        <Heading as="h1" size="8" weight="semibold">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
@@ -100,7 +100,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
       // Regular inline code - use KookieUI styling
       return (
-        <Code size="2" color="indigo" highContrast variant="soft">
+        <Code size="2" color="gray" variant="soft" highContrast>
           {children}
         </Code>
       );
@@ -135,7 +135,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Typography using dedicated KookieUI components
     strong: ({ children }) => (
-      <Text weight="medium" highContrast>
+      <Text weight="semibold" highContrast>
         {children}
       </Text>
     ),
