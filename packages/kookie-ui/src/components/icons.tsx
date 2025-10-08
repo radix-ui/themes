@@ -5,41 +5,23 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-p
 type IconElement = React.ElementRef<'svg'>;
 interface IconProps extends ComponentPropsWithout<'svg', RemovedProps | 'children'> {}
 
-const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>(
-  (props, forwardedRef) => {
-    return (
-      <svg
-        width="9"
-        height="9"
-        viewBox="0 0 9 9"
-        fill="currentcolor"
-        xmlns="http://www.w3.org/2000/svg"
-        {...props}
-        ref={forwardedRef}
-      >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M0.75 4.5C0.75 4.08579 1.08579 3.75 1.5 3.75H7.5C7.91421 3.75 8.25 4.08579 8.25 4.5C8.25 4.91421 7.91421 5.25 7.5 5.25H1.5C1.08579 5.25 0.75 4.91421 0.75 4.5Z"
-        />
-      </svg>
-    );
-  },
-);
+const ThickDividerHorizontalIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.75 4.5C0.75 4.08579 1.08579 3.75 1.5 3.75H7.5C7.91421 3.75 8.25 4.08579 8.25 4.5C8.25 4.91421 7.91421 5.25 7.5 5.25H1.5C1.08579 5.25 0.75 4.91421 0.75 4.5Z"
+      />
+    </svg>
+  );
+});
 
 ThickDividerHorizontalIcon.displayName = 'ThickDividerHorizontalIcon';
 
 const ThickCheckIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentcolor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-      ref={forwardedRef}
-    >
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -52,15 +34,7 @@ ThickCheckIcon.displayName = 'ThickCheckIcon';
 
 const ChevronDownIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentcolor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-      ref={forwardedRef}
-    >
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
       <path d="M0.135232 3.15803C0.324102 2.95657 0.640521 2.94637 0.841971 3.13523L4.5 6.56464L8.158 3.13523C8.3595 2.94637 8.6759 2.95657 8.8648 3.15803C9.0536 3.35949 9.0434 3.67591 8.842 3.86477L4.84197 7.6148C4.64964 7.7951 4.35036 7.7951 4.15803 7.6148L0.158031 3.86477C-0.0434285 3.67591 -0.0536285 3.35949 0.135232 3.15803Z" />
     </svg>
   );
@@ -69,15 +43,7 @@ ChevronDownIcon.displayName = 'ChevronDownIcon';
 
 const ThickChevronRightIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentcolor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-      ref={forwardedRef}
-    >
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -90,28 +56,14 @@ ThickChevronRightIcon.displayName = 'ThickChevronRightIcon';
 
 const ThickDotIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentcolor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-      ref={forwardedRef}
-    >
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
       <circle cx="4.5" cy="4.5" r="2" />
     </svg>
   );
 });
 ThickDotIcon.displayName = 'ThickDotIcon';
 
-export {
-  ChevronDownIcon,
-  ThickCheckIcon,
-  ThickChevronRightIcon,
-  ThickDividerHorizontalIcon,
-  ThickDotIcon,
-};
+export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon, ThickDotIcon };
 export type { IconProps };
 
 // Additional minimal icons
@@ -158,19 +110,9 @@ const PaperclipIcon = React.forwardRef<IconElement, IconProps>((props, forwarded
 });
 PaperclipIcon.displayName = 'PaperclipIcon';
 
-const FileIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+const FileIcon = React.forwardRef<IconElement, IconProps>((_props, _forwardedRef) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
       <path d="M14 2v4a2 2 0 0 0 2 2h4" />
     </svg>
@@ -180,17 +122,7 @@ FileIcon.displayName = 'FileIcon';
 
 const FileTextIcon = React.forwardRef<IconElement, IconProps>((_props, _forwardedRef) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
       <path d="M14 2v4a2 2 0 0 0 2 2h4" />
       <path d="M10 9H8" />

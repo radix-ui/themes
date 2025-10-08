@@ -767,7 +767,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
     if (process.env.NODE_ENV === 'production') return;
     const hasLabel = textareaProps['aria-label'] != null || textareaProps['aria-labelledby'] != null;
     if (!hasLabel) {
-      // eslint-disable-next-line no-console
       console.warn('[Chatbar.Textarea] Provide aria-label or aria-labelledby to ensure the control has an accessible name.');
     }
     // warn only on mount

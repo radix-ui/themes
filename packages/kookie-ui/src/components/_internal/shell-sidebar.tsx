@@ -101,10 +101,13 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
     const contentChildren = childArray.filter((el: React.ReactElement) => !(React.isValidElement(el) && el.type === SidebarHandle));
 
     // Throttled/debounced emitter for onSizeChange
+    const onSizeChange = (props as any).onSizeChange;
+    const sizeUpdate = (props as any).sizeUpdate;
+    const sizeUpdateMs = (props as any).sizeUpdateMs;
     const emitSizeChange = React.useMemo(() => {
-      const cb = (props as any).onSizeChange as undefined | ((s: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void);
-      const strategy = (props as any).sizeUpdate as undefined | 'throttle' | 'debounce';
-      const ms = (props as any).sizeUpdateMs ?? 50;
+      const cb = onSizeChange as undefined | ((s: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void);
+      const strategy = sizeUpdate as undefined | 'throttle' | 'debounce';
+      const ms = sizeUpdateMs ?? 50;
       if (!cb) return () => {};
       if (strategy === 'debounce') {
         let t: any = null;
@@ -126,7 +129,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
         };
       }
       return (s: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => cb(s, meta);
-    }, [(props as any).onSizeChange, (props as any).sizeUpdate, (props as any).sizeUpdateMs]);
+    }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
 
     // Register with shell
     const sidebarId = React.useId();
@@ -141,11 +144,9 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
     const wasControlledRef = React.useRef<boolean | null>(null);
     if (process.env.NODE_ENV !== 'production') {
       if (typeof state !== 'undefined' && typeof defaultState !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Sidebar: Do not pass both `state` and `defaultState`. Choose one.');
       }
       if (typeof (props as any).size !== 'undefined' && typeof (props as any).defaultSize !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Sidebar: Do not pass both `size` and `defaultSize`. Choose one.');
       }
     }
@@ -158,7 +159,6 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
         return;
       }
       if (wasControlledRef.current !== isControlled) {
-        // eslint-disable-next-line no-console
         console.warn('Shell.Sidebar: Switching between controlled and uncontrolled `state` is not supported.');
         wasControlledRef.current = isControlled;
       }
@@ -194,7 +194,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
     React.useEffect(() => {
       if (resolvedState === undefined) return;
       if (shell.sidebarMode !== resolvedState) shell.setSidebarMode(resolvedState);
-    }, [resolvedState, shell.sidebarMode]);
+    }, [shell, resolvedState]);
 
     // Emit mode changes
     const lastNotifyModeRef = React.useRef<SidebarMode | null>(null);
@@ -370,11 +370,11 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
     }, []);
 
     // Controlled size sync
+    const controlledSize = (props as any).size;
     React.useEffect(() => {
       if (!localRef.current) return;
-      const { size } = props as any;
-      if (typeof size === 'undefined') return;
-      const px = normalizeToPx(size);
+      if (typeof controlledSize === 'undefined') return;
+      const px = normalizeToPx(controlledSize);
       if (typeof px === 'number' && Number.isFinite(px)) {
         const minPx = typeof minSize === 'number' ? minSize : undefined;
         const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -382,7 +382,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>(
         localRef.current.style.setProperty('--sidebar-size', `${clamped}px`);
         emitSizeChange(clamped, { reason: 'controlled' });
       }
-    }, [(props as any).size, minSize, maxSize, normalizeToPx, emitSizeChange]);
+    }, [controlledSize, minSize, maxSize, normalizeToPx, emitSizeChange]);
 
     if (isOverlay) {
       const open = shell.sidebarMode !== 'collapsed';

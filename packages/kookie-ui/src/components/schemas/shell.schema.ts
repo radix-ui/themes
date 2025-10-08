@@ -23,15 +23,9 @@ import { z } from 'zod';
 // Common types
 const PaneModeSchema = z.enum(['expanded', 'collapsed']).describe('Pane state mode');
 const SidebarModeSchema = z.enum(['collapsed', 'thin', 'expanded']).describe('Sidebar state mode');
-const PresentationValueSchema = z
-  .enum(['fixed', 'overlay', 'stacked'])
-  .describe('Presentation mode');
-const BreakpointSchema = z
-  .enum(['initial', 'xs', 'sm', 'md', 'lg', 'xl'])
-  .describe('Responsive breakpoint');
-const PaneTargetSchema = z
-  .enum(['left', 'rail', 'panel', 'sidebar', 'inspector', 'bottom'])
-  .describe('Pane target');
+const PresentationValueSchema = z.enum(['fixed', 'overlay', 'stacked']).describe('Presentation mode');
+const _BreakpointSchema = z.enum(['initial', 'xs', 'sm', 'md', 'lg', 'xl']).describe('Responsive breakpoint');
+const PaneTargetSchema = z.enum(['left', 'rail', 'panel', 'sidebar', 'inspector', 'bottom']).describe('Pane target');
 const TriggerActionSchema = z.enum(['toggle', 'expand', 'collapse']).describe('Trigger action');
 
 // Responsive schemas
@@ -184,10 +178,7 @@ export const ShellPanelSchema = PanePropsSchema.extend({
   minSize: z.number().default(200).describe('Minimum width when resizing'),
   maxSize: z.number().default(800).describe('Maximum width when resizing'),
   resizable: z.boolean().default(false).describe('Whether the panel can be resized'),
-  collapsible: z
-    .boolean()
-    .default(true)
-    .describe('Whether the panel can be collapsed via resize handle'),
+  collapsible: z.boolean().default(true).describe('Whether the panel can be collapsed via resize handle'),
 }).strict();
 
 /**
@@ -202,10 +193,7 @@ export const ShellSidebarSchema = PanePropsSchema.extend({
   thinSize: z.number().default(64).describe('Width in thin mode'),
   toggleModes: z.enum(['both', 'single']).optional().describe('Available modes in toggle sequence'),
   resizable: z.boolean().default(false).describe('Whether the sidebar can be resized'),
-  collapsible: z
-    .boolean()
-    .default(true)
-    .describe('Whether the sidebar can be collapsed via resize handle'),
+  collapsible: z.boolean().default(true).describe('Whether the sidebar can be collapsed via resize handle'),
 }).strict();
 
 /**
@@ -226,17 +214,12 @@ export const ShellContentSchema = z
  * Shell.Inspector component schema
  */
 export const ShellInspectorSchema = PanePropsSchema.extend({
-  presentation: ResponsivePresentationSchema.default({ initial: 'overlay', lg: 'fixed' }).describe(
-    'Presentation mode',
-  ),
+  presentation: ResponsivePresentationSchema.default({ initial: 'overlay', lg: 'fixed' }).describe('Presentation mode'),
   expandedSize: z.number().default(320).describe('Default width in pixels'),
   minSize: z.number().default(200).describe('Minimum width when resizing'),
   maxSize: z.number().default(500).describe('Maximum width when resizing'),
   resizable: z.boolean().default(false).describe('Whether the inspector can be resized'),
-  collapsible: z
-    .boolean()
-    .default(true)
-    .describe('Whether the inspector can be collapsed via resize handle'),
+  collapsible: z.boolean().default(true).describe('Whether the inspector can be collapsed via resize handle'),
 }).strict();
 
 /**
@@ -248,10 +231,7 @@ export const ShellBottomSchema = PanePropsSchema.extend({
   minSize: z.number().default(100).describe('Minimum height when resizing'),
   maxSize: z.number().default(400).describe('Maximum height when resizing'),
   resizable: z.boolean().default(false).describe('Whether the bottom panel can be resized'),
-  collapsible: z
-    .boolean()
-    .default(true)
-    .describe('Whether the bottom panel can be collapsed via resize handle'),
+  collapsible: z.boolean().default(true).describe('Whether the bottom panel can be collapsed via resize handle'),
 }).strict();
 
 /**
@@ -261,10 +241,7 @@ export const ShellTriggerSchema = z
   .object({
     target: PaneTargetSchema.describe('Which pane to control'),
     action: TriggerActionSchema.default('toggle').describe('Action to perform'),
-    peekOnHover: z
-      .boolean()
-      .default(false)
-      .describe('Whether to show peek preview on hover when collapsed'),
+    peekOnHover: z.boolean().default(false).describe('Whether to show peek preview on hover when collapsed'),
     className: z.string().optional().describe('Additional CSS class name'),
     style: z
       .record(z.string(), z.union([z.string(), z.number()]))
@@ -310,7 +287,7 @@ export type ShellHandleProps = z.infer<typeof ShellHandleSchema>;
 export type PaneMode = z.infer<typeof PaneModeSchema>;
 export type SidebarMode = z.infer<typeof SidebarModeSchema>;
 export type PresentationValue = z.infer<typeof PresentationValueSchema>;
-export type Breakpoint = z.infer<typeof BreakpointSchema>;
+export type Breakpoint = z.infer<typeof _BreakpointSchema>;
 export type PaneTarget = z.infer<typeof PaneTargetSchema>;
 export type TriggerAction = z.infer<typeof TriggerActionSchema>;
 export type ResponsiveMode = z.infer<typeof ResponsiveModeSchema>;

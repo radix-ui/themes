@@ -92,10 +92,13 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
     const contentChildren = childArray.filter((el: React.ReactElement) => !(React.isValidElement(el) && el.type === InspectorHandle));
 
     // Throttled/debounced emitter for onSizeChange
+    const onSizeChange = (props as any).onSizeChange;
+    const sizeUpdate = (props as any).sizeUpdate;
+    const sizeUpdateMs = (props as any).sizeUpdateMs;
     const emitSizeChange = React.useMemo(() => {
-      const cb = (props as any).onSizeChange as undefined | ((s: number, meta: InspectorSizeChangeMeta) => void);
-      const strategy = (props as any).sizeUpdate as undefined | 'throttle' | 'debounce';
-      const ms = (props as any).sizeUpdateMs ?? 50;
+      const cb = onSizeChange as undefined | ((s: number, meta: InspectorSizeChangeMeta) => void);
+      const strategy = sizeUpdate as undefined | 'throttle' | 'debounce';
+      const ms = sizeUpdateMs ?? 50;
       if (!cb) return () => {};
       if (strategy === 'debounce') {
         let t: any = null;
@@ -117,13 +120,12 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
         };
       }
       return (s: number, meta: InspectorSizeChangeMeta) => cb(s, meta);
-    }, [(props as any).onSizeChange, (props as any).sizeUpdate, (props as any).sizeUpdateMs]);
+    }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
 
     // Dev guards
     const wasControlledRef = React.useRef<boolean | null>(null);
     if (process.env.NODE_ENV !== 'production') {
       if (typeof open !== 'undefined' && typeof defaultOpen !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Inspector: Do not pass both `open` and `defaultOpen`. Choose one.');
       }
     }
@@ -136,7 +138,6 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
         return;
       }
       if (wasControlledRef.current !== isControlled) {
-        // eslint-disable-next-line no-console
         console.warn('Shell.Inspector: Switching between controlled and uncontrolled `open` is not supported.');
         wasControlledRef.current = isControlled;
       }
@@ -154,7 +155,7 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
       shell.setInspectorMode(initialOpen ? 'expanded' : 'collapsed');
       if (initialOpen) onOpenChange?.(true, { reason: 'init' });
       didInitFromDefaultOpenRef.current = true;
-    }, [shell.currentBreakpointReady, resolvedDefaultOpen, defaultOpen, open, onOpenChange]);
+    }, [shell, resolvedDefaultOpen, defaultOpen, open, onOpenChange]);
 
     // Controlled responsive open
     const resolvedOpen = useResponsiveValue(open);
@@ -163,7 +164,7 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
       const shouldExpand = Boolean(resolvedOpen);
       if (shouldExpand && shell.inspectorMode !== 'expanded') shell.setInspectorMode('expanded');
       if (!shouldExpand && shell.inspectorMode !== 'collapsed') shell.setInspectorMode('collapsed');
-    }, [resolvedOpen, shell.inspectorMode]);
+    }, [shell, resolvedOpen]);
 
     // Removed boolean-only mount init; handled in responsive init effect above
 
@@ -305,10 +306,11 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
     }, []);
 
     // Controlled size sync
+    const controlledSize = (props as any).size;
     React.useEffect(() => {
       if (!localRef.current) return;
-      if (typeof (props as any).size === 'undefined') return;
-      const px = normalizeToPx((props as any).size);
+      if (typeof controlledSize === 'undefined') return;
+      const px = normalizeToPx(controlledSize);
       if (typeof px === 'number' && Number.isFinite(px)) {
         const minPx = typeof minSize === 'number' ? minSize : undefined;
         const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -316,7 +318,7 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
         localRef.current.style.setProperty('--inspector-size', `${clamped}px`);
         emitSizeChange(clamped, { reason: 'controlled' });
       }
-    }, [(props as any).size, minSize, maxSize, normalizeToPx, emitSizeChange]);
+    }, [controlledSize, minSize, maxSize, normalizeToPx, emitSizeChange]);
 
     if (isOverlay) {
       const open = shell.inspectorMode === 'expanded';

@@ -95,10 +95,13 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
     const contentChildren = childArray.filter((el: React.ReactElement) => !(React.isValidElement(el) && el.type === BottomHandle));
 
     // Throttled/debounced emitter for onSizeChange
+    const onSizeChange = (props as any).onSizeChange;
+    const sizeUpdate = (props as any).sizeUpdate;
+    const sizeUpdateMs = (props as any).sizeUpdateMs;
     const emitSizeChange = React.useMemo(() => {
-      const cb = (props as any).onSizeChange as undefined | ((s: number, meta: BottomSizeChangeMeta) => void);
-      const strategy = (props as any).sizeUpdate as undefined | 'throttle' | 'debounce';
-      const ms = (props as any).sizeUpdateMs ?? 50;
+      const cb = onSizeChange as undefined | ((s: number, meta: BottomSizeChangeMeta) => void);
+      const strategy = sizeUpdate as undefined | 'throttle' | 'debounce';
+      const ms = sizeUpdateMs ?? 50;
       if (!cb) return () => {};
       if (strategy === 'debounce') {
         let t: any = null;
@@ -120,7 +123,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
         };
       }
       return (s: number, meta: BottomSizeChangeMeta) => cb(s, meta);
-    }, [(props as any).onSizeChange, (props as any).sizeUpdate, (props as any).sizeUpdateMs]);
+    }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
 
     const didInitRef = React.useRef(false);
     const didInitFromDefaultOpenRef = React.useRef(false);
@@ -134,17 +137,15 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
         shell.setBottomMode(initial ? 'expanded' : 'collapsed');
         didInitFromDefaultOpenRef.current = true;
       }
-    }, [shell.currentBreakpointReady, open, defaultOpen, resolvedDefaultOpen]);
+    }, [shell, open, defaultOpen, resolvedDefaultOpen]);
 
     // Dev guards
     const wasControlledRef = React.useRef<boolean | null>(null);
     if (process.env.NODE_ENV !== 'production') {
       if (typeof open !== 'undefined' && typeof defaultOpen !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Bottom: Do not pass both `open` and `defaultOpen`. Choose one.');
       }
       if (typeof (props as any).size !== 'undefined' && typeof (props as any).defaultSize !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Bottom: Do not pass both `size` and `defaultSize`. Choose one.');
       }
     }
@@ -156,7 +157,6 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
         return;
       }
       if (wasControlledRef.current !== isControlled) {
-        // eslint-disable-next-line no-console
         console.warn('Shell.Bottom: Switching between controlled and uncontrolled `open` is not supported.');
         wasControlledRef.current = isControlled;
       }
@@ -166,7 +166,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
     React.useEffect(() => {
       if (typeof open === 'undefined') return;
       shell.setBottomMode(open ? 'expanded' : 'collapsed');
-    }, [open]);
+    }, [shell, open]);
 
     const responsiveNotifiedRef = React.useRef(false);
 
@@ -176,7 +176,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
       if (typeof resolvedOpen === 'undefined') return;
       const shouldExpand = Boolean(resolvedOpen);
       shell.setBottomMode(shouldExpand ? 'expanded' : 'collapsed');
-    }, [resolvedOpen]);
+    }, [shell, resolvedOpen]);
 
     const initNotifiedRef = React.useRef(false);
     const lastBottomModeRef = React.useRef<PaneMode | null>(null);
@@ -323,10 +323,11 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
     }, []);
 
     // Controlled size sync (moved above overlay return)
+    const controlledSize = (props as any).size;
     React.useEffect(() => {
       if (!localRef.current) return;
-      if (typeof (props as any).size === 'undefined') return;
-      const px = normalizeToPx((props as any).size);
+      if (typeof controlledSize === 'undefined') return;
+      const px = normalizeToPx(controlledSize);
       if (typeof px === 'number' && Number.isFinite(px)) {
         const minPx = typeof minSize === 'number' ? minSize : undefined;
         const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -334,7 +335,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>(
         localRef.current.style.setProperty('--bottom-size', `${clamped}px`);
         emitSizeChange(clamped, { reason: 'controlled' });
       }
-    }, [(props as any).size, minSize, maxSize, normalizeToPx, emitSizeChange]);
+    }, [controlledSize, minSize, maxSize, normalizeToPx, emitSizeChange]);
 
     if (isOverlay) {
       const open = shell.bottomMode === 'expanded';

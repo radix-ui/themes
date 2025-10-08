@@ -309,18 +309,24 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
       }
       dispatchPane({ type: 'TOGGLE_PANE', target });
     },
-    [paneState.sidebarMode],
+    [paneState.sidebarMode, setSidebarMode],
   );
 
-  const expandPane = React.useCallback((target: PaneTarget) => {
-    if (target === 'sidebar') return setSidebarMode('expanded');
-    dispatchPane({ type: 'EXPAND_PANE', target });
-  }, []);
+  const expandPane = React.useCallback(
+    (target: PaneTarget) => {
+      if (target === 'sidebar') return setSidebarMode('expanded');
+      dispatchPane({ type: 'EXPAND_PANE', target });
+    },
+    [setSidebarMode],
+  );
 
-  const collapsePane = React.useCallback((target: PaneTarget) => {
-    if (target === 'sidebar') return setSidebarMode('collapsed');
-    dispatchPane({ type: 'COLLAPSE_PANE', target });
-  }, []);
+  const collapsePane = React.useCallback(
+    (target: PaneTarget) => {
+      if (target === 'sidebar') return setSidebarMode('collapsed');
+      dispatchPane({ type: 'COLLAPSE_PANE', target });
+    },
+    [setSidebarMode],
+  );
 
   const baseContextValue = React.useMemo(
     () => ({
@@ -351,10 +357,15 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
     }),
     [
       paneState.leftMode,
+      setLeftMode,
       paneState.panelMode,
+      setPanelMode,
       paneState.sidebarMode,
+      setSidebarMode,
       paneState.inspectorMode,
+      setInspectorMode,
       paneState.bottomMode,
+      setBottomMode,
       hasLeft,
       hasSidebar,
       currentBreakpoint,
@@ -388,7 +399,7 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
     if (typeof firstRailOpen === 'undefined') return;
     const shouldOpen = Boolean(firstRailOpen);
     setLeftMode(shouldOpen ? 'expanded' : 'collapsed');
-  }, [firstRailOpen]);
+  }, [firstRailOpen, setLeftMode]);
 
   const heightStyle = React.useMemo(() => {
     if (height === 'full') return { height: '100vh' };
@@ -588,25 +599,27 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
 
     // Initialize from responsive defaultOpen once when uncontrolled and breakpoint ready
     const didInitFromDefaultOpenRef = React.useRef(false);
+    const propsOpen = (props as any).open;
+    const propsDefaultOpen = (props as any).defaultOpen;
     React.useEffect(() => {
       if (didInitFromDefaultOpenRef.current) return;
       if (!shell.currentBreakpointReady) return;
-      if (typeof (props as any).open !== 'undefined') return; // controlled
-      if (typeof (props as any).defaultOpen === 'undefined') return;
+      if (typeof propsOpen !== 'undefined') return; // controlled
+      if (typeof propsDefaultOpen === 'undefined') return;
       didInitFromDefaultOpenRef.current = true;
       const initial = Boolean(resolvedDefaultOpen);
       shell.setLeftMode(initial ? 'expanded' : 'collapsed');
       (props as any).onOpenChange?.(initial, { reason: 'init' });
-    }, [shell.currentBreakpointReady, (props as any).open, (props as any).defaultOpen, resolvedDefaultOpen]);
+    }, [shell, propsOpen, propsDefaultOpen, resolvedDefaultOpen, props]);
     React.useEffect(() => {
       // Controlled Left via Rail.open
-      if (typeof (props as any).open !== 'undefined') {
-        const shouldOpen = Boolean((props as any).open);
+      if (typeof propsOpen !== 'undefined') {
+        const shouldOpen = Boolean(propsOpen);
         shell.setLeftMode(shouldOpen ? 'expanded' : 'collapsed');
         return;
       }
       // defaultOpen is applied in Rail; Left no longer follows responsive defaults
-    }, [shell, (props as any).open]);
+    }, [shell, propsOpen]);
 
     // Sync controlled mode
     // removed mode sync
@@ -622,7 +635,7 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>(
         (props as any).onOpenChange?.(shell.leftMode === 'expanded', { reason: 'toggle' });
       }
       lastLeftModeRef.current = shell.leftMode;
-    }, [shell.leftMode, resolvedDefaultOpen]);
+    }, [shell, resolvedDefaultOpen, props]);
 
     // Emit expand/collapse events
     React.useEffect(() => {
@@ -739,7 +752,6 @@ const Rail = React.forwardRef<HTMLDivElement, RailProps>(({ className, presentat
   const wasControlledRef = React.useRef<boolean | null>(null);
   if (process.env.NODE_ENV !== 'production') {
     if (typeof props.open !== 'undefined' && typeof props.defaultOpen !== 'undefined') {
-      // eslint-disable-next-line no-console
       console.error('Shell.Rail: Do not pass both `open` and `defaultOpen`. Choose one.');
     }
   }
@@ -752,7 +764,6 @@ const Rail = React.forwardRef<HTMLDivElement, RailProps>(({ className, presentat
       return;
     }
     if (wasControlledRef.current !== isControlled) {
-      // eslint-disable-next-line no-console
       console.warn('Shell.Rail: Switching between controlled and uncontrolled `open` is not supported.');
       wasControlledRef.current = isControlled;
     }
@@ -891,11 +902,9 @@ const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>(
     // Dev-only runtime guard
     if (process.env.NODE_ENV !== 'production') {
       if (typeof open !== 'undefined' && typeof defaultOpen !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Panel: Do not pass both `open` and `defaultOpen`. Choose one.');
       }
       if (typeof size !== 'undefined' && typeof defaultSize !== 'undefined') {
-        // eslint-disable-next-line no-console
         console.error('Shell.Panel: Do not pass both `size` and `defaultSize`. Choose one.');
       }
     }
@@ -924,14 +933,13 @@ const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>(
       } else {
         if (shell.panelMode !== 'collapsed') shell.setPanelMode('collapsed');
       }
-    }, [open, shell.leftMode, shell.panelMode]);
+    }, [shell, open]);
 
     // Dev-only warning if switching controlled/uncontrolled between renders
     React.useEffect(() => {
       const isControlled = typeof open !== 'undefined';
       (Panel as any)._wasControlled = (Panel as any)._wasControlled ?? isControlled;
       if ((Panel as any)._wasControlled !== isControlled) {
-        // eslint-disable-next-line no-console
         console.warn('Shell.Panel: Switching between controlled and uncontrolled `open` is not supported.');
         (Panel as any)._wasControlled = isControlled;
       }
@@ -1057,7 +1065,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>(
         localRef.current.style.setProperty('--panel-size', `${clamped}px`);
         emitSizeChange(clamped, { reason: 'controlled' });
       }
-    }, [size, minSize, maxSize, normalizeToPx]);
+    }, [size, minSize, maxSize, normalizeToPx, emitSizeChange]);
 
     // Ensure Left container width is auto whenever Panel is expanded in fixed presentation
     React.useEffect(() => {
