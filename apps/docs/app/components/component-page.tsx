@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, memo } from 'react';
-import { Box, Flex, Container } from '@kushagradhawan/kookie-ui';
+import { Box, Flex, Container, Card } from '@kushagradhawan/kookie-ui';
 import { TableOfContents } from './table-of-contents';
 
 interface ComponentPageProps {
@@ -12,8 +12,8 @@ const ComponentPage = memo(function ComponentPage({ children }: ComponentPagePro
   // Memoize the sticky header styles
   const tocStyle: React.CSSProperties = useMemo(
     () => ({
-      width: '200px',
-      minWidth: '200px',
+      width: '160px',
+      minWidth: '160px',
     }),
     [],
   );
@@ -26,19 +26,19 @@ const ComponentPage = memo(function ComponentPage({ children }: ComponentPagePro
   );
 
   return (
-    <Flex gap={{ initial: '6', md: '9' }} align="start" direction={{ initial: 'column', lg: 'row' }}>
+    <Flex gap={{ initial: '6', md: '6' }} align="start" direction={{ initial: 'column', lg: 'row' }}>
       {/* Main content area */}
-      <Flex direction="column" gap="6" p={{ initial: '4', sm: '6' }} flexGrow="1" style={{ minWidth: 0 }}>
+      <Flex direction="column" gap="6" p={{ initial: '2', sm: '4' }} flexGrow="1" style={{ minWidth: 0 }}>
         {/* Documentation Content */}
         <Container size="2" style={contentAreaStyle} data-content-area>
-          {children}
+          <Box p="4">{children}</Box>
         </Container>
       </Flex>
 
       {/* Table of Contents - always reserves space */}
-      <Box style={tocStyle} position="sticky" top="200px" display={{ initial: 'none', lg: 'block' }}>
+      {/* <Box style={tocStyle} position="sticky" top="200px" display={{ initial: 'none', lg: 'block' }}>
         <TableOfContents renderContainer={(tocContent) => tocContent || null} />
-      </Box>
+      </Box> */}
     </Flex>
   );
 });

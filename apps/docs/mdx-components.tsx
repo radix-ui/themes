@@ -49,7 +49,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Text elements using KookieUI defaults
     p: ({ children }) => (
-      <Text as="p" color="gray" size="3" my="3">
+      <Text as="p" size="3" my="3">
         {children}
       </Text>
     ),

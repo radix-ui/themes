@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Box, Card, Flex, ToggleIconButton, IconButton, Tabs, Theme, Inset, Separator } from '@kushagradhawan/kookie-ui';
+import { Box, Card, Flex, ToggleIconButton, IconButton, Tabs, Theme, Inset, Separator, Code as CodeComp } from '@kushagradhawan/kookie-ui';
 import { ChevronsUpDown, Clipboard, Code, Eye } from 'lucide-react';
 import * as simpleIcons from 'simple-icons';
 
@@ -108,7 +108,7 @@ const PreviewSection = ({
   // Render with no background (default card styling)
   if (background === 'none') {
     return (
-      <Card size="2" variant="classic">
+      <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4">
           <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
@@ -129,7 +129,7 @@ const PreviewSection = ({
     };
 
     return (
-      <Card size="2" variant="classic">
+      <Card size="2" variant="soft">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
           <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
@@ -149,7 +149,7 @@ const PreviewSection = ({
   };
 
   return (
-    <Card size="2" variant="classic">
+    <Card size="2" variant="soft">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
         <Theme fontFamily="sans">{preview}</Theme>
       </Flex>
@@ -362,7 +362,7 @@ const CodeSection = memo(function CodeSection({ children, buttonsPosition }: { c
 
   return (
     <Box position="relative">
-      <Card size="2" variant="classic">
+      <Card size="2" variant="soft">
         <Flex direction="column" gap="3">
           {/* Action Buttons - positioned absolutely for overlay effect */}
           <Flex
@@ -378,13 +378,16 @@ const CodeSection = memo(function CodeSection({ children, buttonsPosition }: { c
           >
             {/* Language badge - only when detectable */}
             {language && (
-              <Box style={{ borderRadius: '4px', overflow: 'hidden' }}>
+              <Flex align="center" gap="2" style={{ borderRadius: '4px', overflow: 'hidden' }}>
                 {languageIcon && (
                   <svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="var(--gray-12)" style={{ flexShrink: 0 }}>
                     <path d={languageIcon.path} />
                   </svg>
                 )}
-              </Box>
+                <CodeComp size="2" color="gray" highContrast>
+                  {language?.toLowerCase()}
+                </CodeComp>
+              </Flex>
             )}
             <Flex align="center" gap="2">
               {/* Expand/Collapse button - only show if content is expandable */}

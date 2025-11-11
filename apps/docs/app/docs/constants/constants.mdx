@@ -9,7 +9,7 @@ import { Hash } from 'lucide-react';
 
 Kookie UI's custom design constants provide consistent values for transitions, effects, and component behavior across your application. These constants are unique to Kookie UI and are not part of the Radix Themes system.
 
-<Callout.Root variant="soft" size="2" highContrast color="amber" mt="6">
+<Callout.Root variant="soft" size="2" highContrast color="gray" mt="6">
   <Callout.Icon>
 		<TriangleAlert />
 	</Callout.Icon>
@@ -427,27 +427,6 @@ Use these constants in your custom components for consistency:
   border-radius: var(--radius-3);
   padding: var(--space-4);
   box-shadow: var(--classic-inset-shadow-dark);
-}
-```
-
-</CodeBlock>
-
-### Component-Specific Styling
-
-Leverage component-specific transitions and effects:
-
-<CodeBlock>
-
-```css
-.custom-button {
-  transition: var(--transition-button);
-  box-shadow: 
-    0 var(--classic-shadow-offset-y) var(--classic-shadow-blur-small) var(--gray-a7);
-}
-
-.custom-card {
-  transition: var(--transition-card);
-  backdrop-filter: blur(var(--backdrop-blur-panel));
 }
 ```
 

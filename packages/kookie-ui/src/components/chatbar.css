@@ -219,7 +219,7 @@
 /* outline */
 .rt-ChatbarBox:where(.rt-variant-outline) {
   --text-area-selection-color: var(--focus-a5);
-  --text-area-focus-color: var(--focus-8);
+  --text-area-focus-color: var(--focus-9);
   --text-area-border-width: 1px;
   box-shadow: inset 0 0 0 1px var(--accent-6);
   transition: var(--transition-background-blur);
@@ -248,7 +248,7 @@
 /* classic */
 .rt-ChatbarBox:where(.rt-variant-classic) {
   --text-area-selection-color: var(--focus-a5);
-  --text-area-focus-color: var(--focus-8);
+  --text-area-focus-color: var(--focus-9);
   --text-area-border-width: 0px;
   background-color: var(--color-surface-solid);
   box-shadow: var(--shadow-2);
@@ -267,7 +267,7 @@
 .rt-ChatbarBox:where(.rt-variant-classic):where(:focus-within) {
   box-shadow:
     var(--shadow-2),
-    0 0 0 2px var(--focus-8);
+    0 0 0 2px var(--focus-9);
 }
 
 /* soft */

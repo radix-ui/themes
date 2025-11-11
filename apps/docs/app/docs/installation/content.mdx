@@ -8,7 +8,7 @@ import { CircleAlert, ArrowDownToLine } from 'lucide-react';
 
 # Installation
 
-Get Kookie User Interface running in your React application. The library works with any React framework and requires minimal setup—import the CSS, wrap your app with Theme, and start building.
+Kookie UI is an open-source React component library, forked from Radix Themes and designed for scalable, consistent UIs with a fresh look. Installation is simple: import the CSS, wrap your app with the Theme provider, and start building.
 
 <Callout.Root variant="soft" size="2" color="gray" highContrast mt="6">
   <Callout.Icon>
@@ -18,8 +18,6 @@ Get Kookie User Interface running in your React application. The library works w
 </Callout.Root>
 
 </Section>
-
-<Separator size="4"/>
 
 <Section size="1">
 
@@ -247,7 +245,7 @@ export const wrapRootElement = ({ element }) => (
 
 ## Requirements
 
-Kookie User Interface works with React 16.8+ through React 19:
+Kookie User Interface works with React 16.8+ through React 19. TypeScript support is built-in. Node.js 16+ required for development.
 
 <CodeBlock>
 
@@ -261,8 +259,6 @@ Kookie User Interface works with React 16.8+ through React 19:
 ```
 
 </CodeBlock>
-
-TypeScript support is built-in. Node.js 16+ required for development.
 
 </Section>
 
@@ -282,22 +278,7 @@ import '@kushagradhawan/kookie-ui/styles.css';
 
 </CodeBlock>
 
-For modular builds, import specific CSS files:
-
-<CodeBlock>
-
-```tsx
-import '@kushagradhawan/kookie-ui/tokens.css';     // Design tokens
-import '@kushagradhawan/kookie-ui/components.css'; // Component styles
-import '@kushagradhawan/kookie-ui/utilities.css';  // Utility classes
-import '@kushagradhawan/kookie-ui/layout.css';     // Layout utilities
-```
-
-</CodeBlock>
-
 </Section>
-
-
 
 <Section size="1">
 
