@@ -36,9 +36,9 @@ const ComponentPage = memo(function ComponentPage({ children }: ComponentPagePro
       </Flex>
 
       {/* Table of Contents - always reserves space */}
-      {/* <Box style={tocStyle} position="sticky" top="200px" display={{ initial: 'none', lg: 'block' }}>
+      <Box style={tocStyle} position="sticky" top="200px" display={{ initial: 'none', lg: 'block' }}>
         <TableOfContents renderContainer={(tocContent) => tocContent || null} />
-      </Box> */}
+      </Box>
     </Flex>
   );
 });

@@ -1,11 +1,10 @@
 import { Section, Badge, Text, Link, Image, Callout, Separator, Code, Box, Flex, Card, Dialog, TextField, Button, Heading, Theme } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 import { SpecsBlock } from '../../components/specs-block';
-import { SwatchBook, CircleAlert } from 'lucide-react';
+import {  CircleAlert } from 'lucide-react';
 
 <Section size="1">
 
-<SwatchBook />
 # Material
 
 Material system creates visual depth through translucent surfaces and backdrop blur effects. Control panel transparency with `material` prop for modern glass-like aesthetics.
@@ -136,7 +135,7 @@ Use solid material for low-end devices and high contrast interfaces. Use translu
   <Callout.Icon>
 		<CircleAlert />
 	</Callout.Icon>
-  <Callout.Text>It is not recommended to use entire theme's material as translucent unless you're sure devices are high-end. Translucent material has performance impact and should be used with care.</Callout.Text>
+  <Callout.Text>Use translucent theme only on high-end devices, as it may impact performance.</Callout.Text>
 </Callout.Root>
 
 For best performance, set the theme to solid and override specific components to translucent as needed. Use translucent material selectively for maximum visual impact and only where backgrounds make it effective.

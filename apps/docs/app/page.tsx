@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Flex, Text, Heading, Container, Badge, Card, Shell, Section, IconButton, Grid, Link as KUILink } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Text, Heading, Container, Badge, Card, Shell, Section, IconButton, Grid, Link as KUILink, Avatar } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
 import { GripVertical, ArrowRight } from 'lucide-react';
 
@@ -12,11 +12,12 @@ export default function HeroSection() {
           {/* Title and subtitle section */}
           <Flex direction="column" gap="8" p="6" align="start">
             <Flex direction="column" gap="6">
-              <Flex direction="row" align="center" gap="1">
+              {/* <Flex direction="row" align="center" gap="1">
                 <Badge highContrast>Coming Soon</Badge>
-              </Flex>
+              </Flex> */}
+              <Avatar fallback="K" size="2" src="/kookie-ui-logo.png"></Avatar>
               <Flex direction="column" align="center" gap="4">
-                <Heading size="8" weight="medium">
+                <Heading size="8" weight="semibold">
                   A system to build consistent and scalable user interfaces.
                 </Heading>
               </Flex>

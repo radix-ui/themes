@@ -38,7 +38,7 @@ const navigationItems = [
   { href: '/docs/installation', title: 'Installation', icon: ArrowDownToLine, badge: undefined },
   { href: '/docs/theme', title: 'Theme', icon: Cog, badge: undefined },
   { href: '/docs/colors', title: 'Colors', icon: Palette, badge: undefined },
-  { href: '/docs/constants', title: 'Constants', icon: Hash, badge: undefined },
+  { href: '/docs/constants', title: 'Constants', icon: Hash, badge: { content: 'WIP', highContrast: true, size: '1' as const } },
   { href: '/docs/shadows', title: 'Shadows', icon: Layers, badge: undefined },
   { href: '/docs/material', title: 'Material', icon: SwatchBook, badge: undefined },
   { href: '/docs/radius', title: 'Radius', icon: SquareRoundCorner, badge: undefined },
@@ -93,9 +93,9 @@ function AppSidebarContent({ presentation }: { presentation: 'thin' | 'expanded'
       <Sidebar.Header>
         <Flex justify="between" align="center" width="100%">
           <Link href="/" aria-label="Kushagra Dhawan - Homepage">
-            <Flex align="center" gap="2">
+            <Flex align="center" gap="2" px="1">
               <Avatar fallback="K" size="2" src="/kookie-ui-logo.png"></Avatar>
-              <Badge highContrast color="orange">
+              <Badge highContrast color="gray" size="1">
                 Beta
               </Badge>
             </Flex>

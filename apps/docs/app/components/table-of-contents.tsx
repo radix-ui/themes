@@ -23,10 +23,7 @@ const generateSlug = (text: string): string => {
     .trim();
 };
 
-export const TableOfContents = memo(function TableOfContents({
-  className,
-  renderContainer,
-}: TableOfContentsProps) {
+export const TableOfContents = memo(function TableOfContents({ className, renderContainer }: TableOfContentsProps) {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -136,7 +133,9 @@ export const TableOfContents = memo(function TableOfContents({
         {toc.map((item) => (
           <Link
             key={item.id}
-            color={activeId === item.id ? undefined : 'gray'}
+            color="gray"
+            // color={activeId === item.id ? undefined : 'gray'}
+            highContrast={activeId === item.id ? true : false}
             size="1"
             href={`#${item.id}`}
             style={getLinkStyle(item.level)}
