@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Shell, Sidebar, Flex, IconButton, Badge, Heading, Box, Card, Avatar } from '@kushagradhawan/kookie-ui';
+import { Shell, Sidebar, Flex, IconButton, Badge, Heading, Box, Card, Avatar, Text } from '@kushagradhawan/kookie-ui';
 import ComponentShowcase from './component-showcase';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -182,7 +182,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       <Shell.Content>
         <Flex display={{ initial: 'flex', sm: 'none' }} position="fixed" top="4" left="4" align="center" justify="center" width="auto" height="auto" style={{ zIndex: 999 }}>
-          <IconButton variant="classic" size="3" highContrast color="gray" asChild>
+          <IconButton variant="ghost" size="3" highContrast color="gray" asChild>
             <Shell.Trigger target="sidebar">
               <PanelLeft />
             </Shell.Trigger>

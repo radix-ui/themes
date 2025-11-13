@@ -2,13 +2,13 @@ import { Card, Flex, Text, Heading, Section, Link, Code, Callout, Badge, Separat
 import { CodeBlock } from '../../components/code-block';
 import { CircleAlert } from 'lucide-react';
 
-<Section size="1">
+<Section size="2">
 
 # Installation
 
 Kookie UI is an open-source React component library, forked from Radix Themes and designed for scalable, consistent UIs with a fresh look. Installation is simple: import the CSS, wrap your app with the Theme provider, and start building.
 
-<Callout.Root variant="soft" size="2" color="gray" highContrast mt="6">
+<Callout.Root variant="soft" size="2" color="gray" mt="6" highContrast>
   <Callout.Icon>
 		<CircleAlert />
 	</Callout.Icon>
@@ -17,7 +17,7 @@ Kookie UI is an open-source React component library, forked from Radix Themes an
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Install
 
@@ -37,7 +37,7 @@ yarn add @kushagradhawan/kookie-ui
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Next.js
 
@@ -45,10 +45,9 @@ yarn add @kushagradhawan/kookie-ui
 
 For Next.js 13+ with the App Router, import the CSS in your root layout:
 
-<CodeBlock>
+<CodeBlock file="app/layout.tsx">
 
 ```tsx
-// app/layout.tsx
 import '@kushagradhawan/kookie-ui/styles.css';
 import { Theme } from '@kushagradhawan/kookie-ui';
 
@@ -75,10 +74,9 @@ export default function RootLayout({
 
 For Next.js with the Pages Router, import the CSS in your `_app.tsx`:
 
-<CodeBlock>
+<CodeBlock file="pages/_app.tsx">
 
 ```tsx
-// pages/_app.tsx
 import '@kushagradhawan/kookie-ui/styles.css';
 import { Theme } from '@kushagradhawan/kookie-ui';
 import type { AppProps } from 'next/app';
@@ -96,16 +94,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Vite + React
 
 For Vite projects, import the CSS in your main entry file:
 
-<CodeBlock>
+<CodeBlock file="main.tsx or index.tsx">
 
 ```tsx
-// main.tsx or index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@kushagradhawan/kookie-ui/styles.css';
@@ -127,16 +124,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Create React App
 
 For Create React App projects, import the CSS in your `index.tsx` or `App.tsx`:
 
-<CodeBlock>
+<CodeBlock file="src/index.tsx">
 
 ```tsx
-// src/index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@kushagradhawan/kookie-ui/styles.css';
@@ -162,16 +158,15 @@ root.render(
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Remix
 
 For Remix projects, import the CSS in your root component:
 
-<CodeBlock>
+<CodeBlock file="app/root.tsx">
 
 ```tsx
-// app/root.tsx
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
 import { LinksFunction } from '@remix-run/node';
 import { Theme } from '@kushagradhawan/kookie-ui';
@@ -205,25 +200,23 @@ export default function App() {
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Gatsby
 
 For Gatsby projects, create a `gatsby-browser.js` file, then wrap your app in the Theme provider:
 
-<CodeBlock>
+<CodeBlock file="gatsby-browser.js">
 
 ```js
-// gatsby-browser.js
 import '@kushagradhawan/kookie-ui/styles.css';
 ```
 
 </CodeBlock>
 
-<CodeBlock>
+<CodeBlock file="src/pages/_app.tsx or gatsby-browser.js">
 
 ```tsx
-// src/pages/_app.tsx or gatsby-browser.js
 import { Theme } from '@kushagradhawan/kookie-ui';
 
 export const wrapRootElement = ({ element }) => (
@@ -239,7 +232,7 @@ export const wrapRootElement = ({ element }) => (
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Requirements
 
@@ -262,7 +255,7 @@ Kookie User Interface works with React 16.8+ through React 19. TypeScript suppor
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## CSS
 
@@ -278,7 +271,7 @@ import '@kushagradhawan/kookie-ui/styles.css';
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Usage
 
@@ -312,7 +305,7 @@ export default function MyComponent() {
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Troubleshooting
 

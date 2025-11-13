@@ -4,7 +4,7 @@ import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box
 
 # Theme
 
-Control your app's visual appearance with six configuration options. Kookie UI Theme is a fork of [Radix Themes](https://www.radix-ui.com/themes), offering the same foundation with custom enhancements for theming and accessibility.
+Control your app's visual appearance with seven configuration options. Kookie UI Theme is a fork of [Radix Themes](https://www.radix-ui.com/themes), offering the same foundation with custom enhancements for theming and accessibility.
 
 </Section>
 
@@ -36,6 +36,11 @@ import { Theme } from '@kushagradhawan/kookie-ui';
     </Table.Header>
     <Table.Body>
       <Table.Row>
+        <Table.RowHeaderCell>`appearance`</Table.RowHeaderCell>
+        <Table.Cell>`'light' | 'dark' | 'inherit'`</Table.Cell>
+        <Table.Cell>Color scheme; inherit follows system preference.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
         <Table.RowHeaderCell>`accentColor`</Table.RowHeaderCell>
         <Table.Cell>`AccentColor`</Table.Cell>
         <Table.Cell>Primary accent used for interactive components.</Table.Cell>
@@ -46,9 +51,9 @@ import { Theme } from '@kushagradhawan/kookie-ui';
         <Table.Cell>Neutral gray scale for backgrounds and text.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`appearance`</Table.RowHeaderCell>
-        <Table.Cell>`'light' | 'dark' | 'inherit'`</Table.Cell>
-        <Table.Cell>Color scheme; inherit follows system preference.</Table.Cell>
+        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
+        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
+        <Table.Cell>Background rendering: opaque or translucent.</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
@@ -61,13 +66,8 @@ import { Theme } from '@kushagradhawan/kookie-ui';
         <Table.Cell>Global size scale for UI density.</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
-        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-        <Table.Cell>Background rendering: opaque or translucent.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
         <Table.RowHeaderCell>`fontFamily`</Table.RowHeaderCell>
-        <Table.Cell>`'sans' | 'mono'`</Table.Cell>
+        <Table.Cell>`'sans' | 'mono' | 'serif'`</Table.Cell>
         <Table.Cell>Global font family.</Table.Cell>
       </Table.Row>
     </Table.Body>
@@ -89,12 +89,24 @@ Set `appearance` to control light, dark, or system preference mode.
 <Theme appearance="light">
   <YourApp />
 </Theme>
+```
 
+</CodeBlock>
+
+<CodeBlock>
+
+```tsx
 // Dark mode
 <Theme appearance="dark">
   <YourApp />
 </Theme>
+```
 
+</CodeBlock>
+
+<CodeBlock>
+
+```tsx
 // System preference (default)
 <Theme appearance="inherit">
   <YourApp />
@@ -105,35 +117,45 @@ Set `appearance` to control light, dark, or system preference mode.
 
 </Section>
 
-
-
 <Section size="1">
 
 ## Accent Color
 
 Use `accentColor` to set the primary color for interactive elements.
 
+Available colors: `gray`, `gold`, `bronze`, `brown`, `yellow`, `amber`, `orange`, `tomato`, `red`, `ruby`, `crimson`, `pink`, `plum`, `purple`, `violet`, `iris`, `indigo`, `blue`, `cyan`, `teal`, `jade`, `green`, `grass`, `lime`, `mint`, `sky`.
+
 <CodeBlock>
 
 ```tsx
-// Blue accent (default)
 <Theme accentColor="blue">
   <YourApp />
 </Theme>
-
-// Crimson accent
-<Theme accentColor="crimson">
-  <YourApp />
-</Theme>
-
-// Other available colors: gray, gold, bronze, brown, yellow, amber, orange, tomato, red, ruby, pink, plum, purple, violet, iris, indigo, cyan, teal, jade, green, grass, lime, mint, sky
 ```
 
 </CodeBlock>
 
 </Section>
 
+<Section size="1">
 
+## Gray Color
+
+Use `grayColor` to set the neutral gray scale for backgrounds and text.
+
+Available grays: `auto`, `gray`, `mauve`, `slate`, `sage`, `olive`, `sand`.
+
+<CodeBlock>
+
+```tsx
+<Theme grayColor="slate">
+  <YourApp />
+</Theme>
+```
+
+</CodeBlock>
+
+</Section>
 
 <Section size="1">
 
@@ -144,38 +166,21 @@ Set `material` to control panel transparency for depth and visual separation.
 <CodeBlock>
 
 ```tsx
-// Solid backgrounds (default)
+// Solid backgrounds
 <Theme material="solid">
-  <YourApp />
-</Theme>
-
-// Translucent backgrounds for depth effects
-<Theme material="translucent">
   <YourApp />
 </Theme>
 ```
 
 </CodeBlock>
 
-</Section>
-
-
-
-<Section size="1">
-
-## Gray Color
-
-Use `grayColor` to set the neutral gray scale for backgrounds and text.
-
 <CodeBlock>
 
 ```tsx
-// Gray scale (default)
-<Theme grayColor="gray">
+// Translucent backgrounds (default)
+<Theme material="translucent">
   <YourApp />
 </Theme>
-
-// Other available grays: mauve, slate, sage, olive, sand, tomato, red, ruby, pink, plum, purple, violet, iris, indigo, blue, cyan, teal, jade, green, grass, lime, mint, amber, orange, yellow, bronze, gold, brown
 ```
 
 </CodeBlock>
@@ -188,31 +193,12 @@ Use `grayColor` to set the neutral gray scale for backgrounds and text.
 
 Set `radius` to control the global corner radius scale for all components.
 
+Available values: `none`, `small`, `medium` (default), `large`, `full`.
+
 <CodeBlock>
 
 ```tsx
-// No radius
-<Theme radius="none">
-  <YourApp />
-</Theme>
-
-// Small radius
-<Theme radius="small">
-  <YourApp />
-</Theme>
-
-// Medium radius (default)
 <Theme radius="medium">
-  <YourApp />
-</Theme>
-
-// Large radius
-<Theme radius="large">
-  <YourApp />
-</Theme>
-
-// Full radius (pill-shaped)
-<Theme radius="full">
   <YourApp />
 </Theme>
 ```
@@ -227,31 +213,12 @@ Set `radius` to control the global corner radius scale for all components.
 
 Set `scaling` to control the global size scale for UI density.
 
+Available values: `90%`, `95%`, `100%` (default), `105%`, `110%`.
+
 <CodeBlock>
 
 ```tsx
-// Compact UI (90% scale)
-<Theme scaling="90%">
-  <YourApp />
-</Theme>
-
-// Slightly compact (95% scale)
-<Theme scaling="95%">
-  <YourApp />
-</Theme>
-
-// Normal scale (100% - default)
 <Theme scaling="100%">
-  <YourApp />
-</Theme>
-
-// Slightly larger (105% scale)
-<Theme scaling="105%">
-  <YourApp />
-</Theme>
-
-// Large scale (110% scale)
-<Theme scaling="110%">
   <YourApp />
 </Theme>
 ```
@@ -266,16 +233,12 @@ Set `scaling` to control the global size scale for UI density.
 
 Set `fontFamily` to control the typography system for your app.
 
+Available values: `sans` (default), `mono`, `serif`.
+
 <CodeBlock>
 
 ```tsx
-// Sans-serif fonts (default)
 <Theme fontFamily="sans">
-  <YourApp />
-</Theme>
-
-// Monospace fonts
-<Theme fontFamily="mono">
   <YourApp />
 </Theme>
 ```
@@ -283,8 +246,6 @@ Set `fontFamily` to control the typography system for your app.
 </CodeBlock>
 
 </Section>
-
-
 
 <Section size="1">
 

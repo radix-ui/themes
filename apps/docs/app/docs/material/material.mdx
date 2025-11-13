@@ -50,7 +50,7 @@ Solid material provides opaque backgrounds with no transparency or blur effects.
     <Theme material="solid">
       <Flex gap="2" align="center">
         <Card size="2" variant="surface">
-          <Box width="200px" height="200px" />
+          <Box width="150px" height="150px" />
         </Card>
       </Flex>
     </Theme>
@@ -84,7 +84,7 @@ Translucent material creates glass-like effects with semi-transparent background
     <Theme material="translucent">
       <Flex gap="2" align="center">
         <Card size="2" variant="surface">
-          <Box width="200px" height="200px" />
+          <Box width="150px" height="150px" />
         </Card>
       </Flex>
     </Theme>
@@ -131,28 +131,19 @@ Individual components can override theme material settings using their `material
 
 Use solid material for low-end devices and high contrast interfaces. Use translucent material for modern devices and design-focused applications.
 
-<Callout.Root variant="soft" size="2" highContrast color="red" my="6">
+For best performance, set the theme to solid and override specific components to translucent as needed. Use translucent material selectively for maximum visual impact and only where backgrounds make it effective.
+
+<Callout.Root variant="soft" size="2" highContrast color="red" mt="6">
   <Callout.Icon>
 		<CircleAlert />
 	</Callout.Icon>
   <Callout.Text>Use translucent theme only on high-end devices, as it may impact performance.</Callout.Text>
 </Callout.Root>
 
-For best performance, set the theme to solid and override specific components to translucent as needed. Use translucent material selectively for maximum visual impact and only where backgrounds make it effective.
 
 <CodeBlock>
 
 ```tsx
-// Performance-critical (low-end devices, high contrast)
-<Theme material="solid">
-  <YourApp />
-</Theme>
-
-// Design-focused (modern devices, visual effects)
-<Theme material="translucent">
-  <YourApp />
-</Theme>
-
 // Mixed approach - theme solid, specific components translucent
 <Theme material="solid">
   <Card material="translucent">Glass effect card</Card>

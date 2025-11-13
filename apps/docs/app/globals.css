@@ -321,6 +321,8 @@ figure[data-rehype-pretty-code-figure] {
 .rt-TableRootTable code {
   white-space: pre-wrap; /* preserve spacing but allow wraps */
   word-break: break-word;
+  font-size: calc(var(--font-size-2) * 0.96); /* scale down monospace to match optical size */
+  line-height: calc(var(--line-height-2) * 0.98);
 }
 
 /* Disable vertical scrolling when code content is collapsed */
@@ -350,6 +352,10 @@ figure[data-rehype-pretty-code-figure] {
 
 .code-scroll-shadow.visible {
   opacity: 1;
+}
+
+.docs-code-block:last-child {
+  margin-bottom: 0 !important;
 }
 
 /* SpecsBlock component styles */
