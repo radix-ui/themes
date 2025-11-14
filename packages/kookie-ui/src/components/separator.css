@@ -3,6 +3,10 @@
   background-color: var(--accent-a5);
 }
 
+.rt-Separator:where(.rt-light) {
+  background-color: var(--accent-a3);
+}
+
 /***************************************************************************************************
  *                                                                                                 *
  * ORIENTATION                                                                                     *

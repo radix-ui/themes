@@ -1,23 +1,13 @@
-import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme } from '@kushagradhawan/kookie-ui';
+import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme, Tooltip } from '@kushagradhawan/kookie-ui';
 import { Play, Code as CodeIcon, Users, BookOpen, Ruler, History, Gamepad, ChevronDown, Dot, Check, ChevronRight, Accessibility } from 'lucide-react';
 import { CodeBlock } from '../../components/code-block';
 import ButtonPlayground from '../../playground/ButtonPlayground';
 
-<Section size="1">
+<Section size="2">
 
 # Button
 
-Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next—design them to build user confidence and guide decision-making naturally.
-
-<Box mt="8">
-  <ButtonPlayground />
-</Box>
-
-</Section>
-
-<Section size="1">
-
-## Props
+Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next. Design them to build user confidence and guide decision-making naturally.
 
 <CodeBlock buttonsPosition="center">
 
@@ -25,6 +15,16 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
 import { Button } from '@kushagradhawan/kookie-ui';
 ```
 </CodeBlock>
+
+<Box mt="8">
+  <ButtonPlayground />
+</Box>
+
+</Section>
+
+<Section size="2">
+
+## Props
 
 <Box>
   <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
@@ -40,55 +40,107 @@ import { Button } from '@kushagradhawan/kookie-ui';
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`variant`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Button style variant: classic for elevated, solid for primary, outline for secondary, ghost for utility, soft/surface for content-heavy UIs">
+            <span style={{ display: 'inline-block' }}>`variant`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`size`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Button density: 1 (24px) for toolbars, 2 (32px) standard, 3 (40px) for important actions, 4 (48px) for hero sections. Supports responsive objects">
+            <span style={{ display: 'inline-block' }}>`size`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`'1' | '2' | '3' | '4'`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`color`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Semantic color to communicate action intent. Use highContrast for maximum visibility on complex backgrounds">
+            <span style={{ display: 'inline-block' }}>`color`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`AccentColor`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`highContrast`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Maximum visibility mode, especially useful on complex or translucent backgrounds">
+            <span style={{ display: 'inline-block' }}>`highContrast`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`fullWidth`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Makes button fill its container width. Useful for mobile layouts and form submissions">
+            <span style={{ display: 'inline-block' }}>`fullWidth`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`flush`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Removes padding for seamless text integration. Use with ghost variant to blend with text while staying interactive">
+            <span style={{ display: 'inline-block' }}>`flush`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped">
+            <span style={{ display: 'inline-block' }}>`radius`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds">
+            <span style={{ display: 'inline-block' }}>`material`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`panelBackground`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Deprecated: Use material prop instead. Controls panel background appearance">
+            <span style={{ display: 'inline-block' }}>`panelBackground`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`loading`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Shows spinner and disables button automatically. No need to set disabled manually">
+            <span style={{ display: 'inline-block' }}>`loading`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`disabled`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Prevents interaction when action is unavailable, such as during form validation or when authentication is required">
+            <span style={{ display: 'inline-block' }}>`disabled`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`as`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Renders button as different HTML element while maintaining button styling. Useful for navigation links or routing integration">
+            <span style={{ display: 'inline-block' }}>`as`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`ElementType`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`asChild`</Table.RowHeaderCell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Merges button props with child element using Radix Slot pattern. Ideal for composition with routing libraries like Next.js Link">
+            <span style={{ display: 'inline-block' }}>`asChild`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
     </Table.Body>
@@ -99,7 +151,7 @@ Button supports customizable tooltip props for content, position, timing, and be
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Variants
 
@@ -221,7 +273,7 @@ Minimal style for utility actions and inline text integration.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Sizes
 
@@ -305,7 +357,7 @@ For hero sections and maximum impact.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Colors
 
@@ -332,7 +384,7 @@ Use the `color` prop with semantic colors to communicate the action's intent to 
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Material
 
@@ -398,7 +450,7 @@ Override the theme's material for a button when you need a specific effect. Tran
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## States
 
@@ -465,7 +517,7 @@ Buttons handle focus for keyboard navigation. For complex patterns, use `data-st
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Layout
 
@@ -511,7 +563,7 @@ Use the `flush` prop with the `ghost` variant to remove padding, making the butt
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Margin
 
@@ -519,7 +571,7 @@ Use margin props for spacing around buttons. All margin props are responsive and
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Tooltips
 
@@ -543,7 +595,7 @@ Use the `tooltip` prop to add context to button actions, especially for icon but
 </Section>
 
 
-<Section size="1">
+<Section size="2">
 
 ## Icons
 
@@ -586,7 +638,7 @@ Place icons directly inside buttons; they’ll be sized automatically based on t
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Polymorphism
 
@@ -634,7 +686,7 @@ Use the `asChild` prop to merge button props with a child element using the Radi
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Responsive
 
@@ -655,7 +707,7 @@ Use responsive objects with the `size` prop to adapt button sizing across differ
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Form
 
@@ -680,7 +732,7 @@ Use standard HTML form attributes to integrate buttons with forms. The component
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Accessibility
 
@@ -698,7 +750,7 @@ Loading announcements include: "[Button text] is loading, please wait..."
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Changelog
 

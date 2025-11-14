@@ -1,16 +1,10 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box, Tooltip, Card } from '@kushagradhawan/kookie-ui';
 
-<Section size="1">
+<Section size="2">
 
 # Theme
 
 Control your app's visual appearance with seven configuration options. Kookie UI Theme is a fork of [Radix Themes](https://www.radix-ui.com/themes), offering the same foundation with custom enhancements for theming and accessibility.
-
-</Section>
-
-<Section size="1">
-
-## Props
 
 <CodeBlock buttonsPosition="center">
 
@@ -20,63 +14,86 @@ import { Theme } from '@kushagradhawan/kookie-ui';
 
 </CodeBlock>
 
-<Box>
-  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
-    <colgroup>
-      <col style={{ width: '20%' }} />
-      <col style={{ width: '45%' }} />
-      <col />
-    </colgroup>
-    <Table.Header>
-      <Table.Row>
-        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.RowHeaderCell>`appearance`</Table.RowHeaderCell>
-        <Table.Cell>`'light' | 'dark' | 'inherit'`</Table.Cell>
-        <Table.Cell>Color scheme; inherit follows system preference.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`accentColor`</Table.RowHeaderCell>
-        <Table.Cell>`AccentColor`</Table.Cell>
-        <Table.Cell>Primary accent used for interactive components.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`grayColor`</Table.RowHeaderCell>
-        <Table.Cell>`GrayColor`</Table.Cell>
-        <Table.Cell>Neutral gray scale for backgrounds and text.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`material`</Table.RowHeaderCell>
-        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-        <Table.Cell>Background rendering: opaque or translucent.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`radius`</Table.RowHeaderCell>
-        <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
-        <Table.Cell>Global corner radius scale.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`scaling`</Table.RowHeaderCell>
-        <Table.Cell>`'90%' | '95%' | '100%' | '105%' | '110%'`</Table.Cell>
-        <Table.Cell>Global size scale for UI density.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`fontFamily`</Table.RowHeaderCell>
-        <Table.Cell>`'sans' | 'mono' | 'serif'`</Table.Cell>
-        <Table.Cell>Global font family.</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table.Root>
-</Box>
+</Section>
+
+<Section size="2">
+
+## Props
+
+<Table.Root  size="2" variant="ghost" layout="fixed">
+  <colgroup>
+    <col style={{ width: '30%' }} />
+    <col />
+  </colgroup>
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Color scheme; inherit follows system preference.">
+          <span style={{ display: 'inline-block' }}>`appearance`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`'light' | 'dark' | 'inherit'`</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Primary accent used for interactive components.">
+          <span style={{ display: 'inline-block' }}>`accentColor`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`AccentColor`</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Neutral gray scale for backgrounds and text.">
+          <span style={{ display: 'inline-block' }}>`grayColor`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`GrayColor`</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Background rendering: opaque or translucent.">
+          <span style={{ display: 'inline-block' }}>`material`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Global corner radius scale.">
+          <span style={{ display: 'inline-block' }}>`radius`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Global size scale for UI density.">
+          <span style={{ display: 'inline-block' }}>`scaling`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`'90%' | '95%' | '100%' | '105%' | '110%'`</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        <Tooltip content="Global font family.">
+          <span style={{ display: 'inline-block' }}>`fontFamily`</span>
+        </Tooltip>
+      </Table.RowHeaderCell>
+      <Table.Cell>`'sans' | 'mono' | 'serif'`</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Appearance
 
@@ -117,7 +134,7 @@ Set `appearance` to control light, dark, or system preference mode.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Accent Color
 
@@ -137,7 +154,7 @@ Available colors: `gray`, `gold`, `bronze`, `brown`, `yellow`, `amber`, `orange`
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Gray Color
 
@@ -157,7 +174,7 @@ Available grays: `auto`, `gray`, `mauve`, `slate`, `sage`, `olive`, `sand`.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Material
 
@@ -187,7 +204,7 @@ Set `material` to control panel transparency for depth and visual separation.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Radius
 
@@ -207,7 +224,7 @@ Available values: `none`, `small`, `medium` (default), `large`, `full`.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Scaling
 
@@ -227,7 +244,7 @@ Available values: `90%`, `95%`, `100%` (default), `105%`, `110%`.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Font Family
 
@@ -247,29 +264,23 @@ Available values: `sans` (default), `mono`, `serif`.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Enhancements
 
 Kookie UI extends Radix Themes with practical improvements:
 
-### Material
+- **Material**: Use `material` instead of `panelBackground` for intuitive panel transparency control. Existing `panelBackground` usage works with migration warnings. All panels automatically respect your material setting.
 
-Use `material` instead of `panelBackground` for intuitive panel transparency control. Existing `panelBackground` usage works with migration warnings. All panels automatically respect your material setting.
+- **Effects**: Extended blur tokens provide 12-step blur scale for precise backdrop effects. Granular opacity offers 9-step opacity scale for fine-tuned transparency. Specialized 3D button effects create realistic depth and elevation.
 
-### Effects
-
-Extended blur tokens provide 12-step blur scale for precise backdrop effects. Granular opacity offers 9-step opacity scale for fine-tuned transparency. Specialized 3D button effects create realistic depth and elevation.
-
-### Typography
-
-Pre-configured Inter and JetBrains Mono fonts with proper fallbacks prevent browser font weight synthesis issues. Graceful degradation falls back to system fonts if custom fonts fail.
+- **Typography**: Pre-configured Inter and JetBrains Mono fonts with proper fallbacks prevent browser font weight synthesis issues. Graceful degradation falls back to system fonts if custom fonts fail.
 
 </Section>
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Tokens
 

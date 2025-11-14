@@ -1,7 +1,7 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Heading, Table } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Heading, Table, Tooltip } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 
-<Section size="1">
+<Section size="2">
 
 # Typography
 
@@ -11,7 +11,7 @@ For complete typography documentation and advanced customization, visit the [Rad
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Usage
 
@@ -36,7 +36,7 @@ import { Text, Heading } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Type Scale
 
@@ -64,7 +64,7 @@ var(--font-size-9)  /* 60px - Massive text */
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Size Scale
 
@@ -252,7 +252,7 @@ Massive text for impact headlines.
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Font Weight
 
@@ -273,7 +273,7 @@ Use `weight` prop to control text emphasis and hierarchy.
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Formatting Components
 
@@ -304,7 +304,7 @@ Compose formatting components to add emphasis and structure.
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Font Family
 
@@ -325,7 +325,7 @@ var(--heading-font-family)  /* Heading font stack */
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Font Customization
 
@@ -354,7 +354,7 @@ Kookie UI makes font customization simple and flexible. Switch between font fami
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Custom Fonts
 
@@ -378,51 +378,67 @@ Kookie UI uses a simple two-tier font system. Override the theme variables (`--f
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
-## Font Variables
+## Theme Override Variables
 
-Kookie UI uses a two-tier font variable system for maximum flexibility:
-
-### Theme Override Variables (Primary)
-
-These are the main variables you should override to customize fonts:
+These are the main variables you should override to customize fonts globally. Kookie UI uses a two-tier font variable system for maximum flexibility.
 
 <Box>
-  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+  <Table.Root mt="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '30%' }} />
+      <col />
+    </colgroup>
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell weight="medium">Default Value</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.RowHeaderCell>`--font-sans`</Table.RowHeaderCell>
-        <Table.Cell>Sans-serif font for `fontFamily="sans"`</Table.Cell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Sans-serif font for fontFamily='sans'">
+            <span style={{ display: 'inline-block' }}>`--font-sans`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`var(--font-inter)`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`--font-mono`</Table.RowHeaderCell>
-        <Table.Cell>Monospace font for `fontFamily="mono"`</Table.Cell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Monospace font for fontFamily='mono'">
+            <span style={{ display: 'inline-block' }}>`--font-mono`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`var(--font-jetbrains-mono)`</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.RowHeaderCell>`--font-serif`</Table.RowHeaderCell>
-        <Table.Cell>Serif font for `fontFamily="serif"`</Table.Cell>
+        <Table.RowHeaderCell>
+          <Tooltip content="Serif font for fontFamily='serif'">
+            <span style={{ display: 'inline-block' }}>`--font-serif`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
         <Table.Cell>`var(--font-playfair-display)`</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
 </Box>
 
-### Base Font Stacks (Advanced)
+</Section>
 
-These are the actual font stacks. Override these only if you want to change Kookie's base fonts:
+<Section size="2">
+
+## Base Font Stacks
+
+These are the actual font stacks used by the theme override variables. Override these only if you want to change Kookie's base fonts.
 
 <Box>
-  <Table.Root mt="6" mb="6" size="2" variant="ghost">
+  <Table.Root mt="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '30%' }} />
+      <col />
+    </colgroup>
     <Table.Header>
       <Table.Row>
         <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
@@ -432,15 +448,15 @@ These are the actual font stacks. Override these only if you want to change Kook
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>`--font-inter`</Table.RowHeaderCell>
-        <Table.Cell>`'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`</Table.Cell>
+        <Table.Cell>`'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`--font-jetbrains-mono`</Table.RowHeaderCell>
-        <Table.Cell>`'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', monospace`</Table.Cell>
+        <Table.Cell>`'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>`--font-playfair-display`</Table.RowHeaderCell>
-        <Table.Cell>`'Playfair Display', 'Times New Roman', 'Times', 'Georgia', serif`</Table.Cell>
+        <Table.Cell>`'Playfair Display', 'Times New Roman', 'Times', 'Georgia', 'Cambria', serif`</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table.Root>
@@ -448,19 +464,16 @@ These are the actual font stacks. Override these only if you want to change Kook
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Enhancements
 
 Kookie UI refines the Radix Themes typography system with improved readability and better visual hierarchy:
 
-### New Size 0
-Extra small text (10px) for fine print and micro labels. Better granularity for more precise control over text hierarchy and enhanced accessibility for compact interfaces.
+- **New Size 0**: Extra small text (10px) for fine print and micro labels. Better granularity for more precise control over text hierarchy and enhanced accessibility for compact interfaces.
 
-### Enhanced Readability
-Optimized line heights for better spacing and improved reading experience. Refined letter spacing for tighter text flow and improved font weights for more distinct differences.
+- **Enhanced Readability**: Optimized line heights for better spacing and improved reading experience. Refined letter spacing for tighter text flow and improved font weights for more distinct differences.
 
-### Better Hierarchy
-Clearer size progression where each step provides meaningful visual difference. Consistent spacing for better vertical rhythm across components and enhanced contrast for improved accessibility.
+- **Better Hierarchy**: Clearer size progression where each step provides meaningful visual difference. Consistent spacing for better vertical rhythm across components and enhanced contrast for improved accessibility.
 
 </Section>

@@ -1,7 +1,7 @@
 import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 
-<Section size="1">
+<Section size="2">
 
 # Radius
 
@@ -11,7 +11,7 @@ For complete radius documentation and advanced usage, visit the [Radix Themes ra
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Usage
 
@@ -37,7 +37,7 @@ import { Theme } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Tokens
 
@@ -47,18 +47,20 @@ Radius tokens with their CSS values and usage:
 
 ```css
 /* Radius tokens (base values) */
-var(--radius-1)  /* 6px - Small elements */
-var(--radius-2)  /* 8px - Buttons, inputs */
-var(--radius-3)  /* 10px - Cards, panels */
-var(--radius-4)  /* 12px - Large cards */
-var(--radius-5)  /* 16px - Modals */
-var(--radius-6)  /* 20px - Large surfaces */
-var(--radius-7)  /* 24px - Extra large surfaces */
-var(--radius-8)  /* 28px - Hero sections */
-var(--radius-9)  /* 32px - Very large surfaces */
-var(--radius-10) /* 40px - Massive surfaces */
-var(--radius-11) /* 48px - Huge surfaces */
-var(--radius-12) /* 56px - Maximum surfaces */
+var(--radius-1)  /* 6px */
+var(--radius-2)  /* 8px */
+var(--radius-3)  /* 10px */
+var(--radius-4)  /* 12px */
+
+var(--radius-5)  /* 16px */
+var(--radius-6)  /* 20px */
+var(--radius-7)  /* 24px */
+var(--radius-8)  /* 28px */
+
+var(--radius-9)  /* 32px */
+var(--radius-10) /* 40px */
+var(--radius-11) /* 48px */
+var(--radius-12) /* 56px */
 ```
 
 </CodeBlock>
@@ -67,7 +69,7 @@ var(--radius-12) /* 56px - Maximum surfaces */
 
 
 
-<Section size="1">
+<Section size="2">
 
 ## Radius Scale
 
@@ -79,8 +81,8 @@ No border radius for sharp, geometric interfaces.
   preview={
     <Flex gap="2" align="center">
       <Box 
-        width="160px" 
-        height="160px" 
+        width="100px" 
+        height="100px" 
         style={{ 
           backgroundColor: 'var(--color-panel-solid)', 
           borderRadius: '0px',
@@ -107,8 +109,8 @@ Subtle rounding with 0.75x radius factor.
   preview={
     <Flex gap="2" align="center">
       <Box 
-        width="160px" 
-        height="160px" 
+        width="100px" 
+        height="100px" 
         style={{ 
           backgroundColor: 'var(--color-panel-solid)', 
           borderRadius: 'calc(var(--radius-3) * 0.75)',
@@ -135,8 +137,8 @@ Standard rounding with 1x radius factor.
   preview={
     <Flex gap="2" align="center">
       <Box 
-        width="160px" 
-        height="160px" 
+        width="100px" 
+        height="100px" 
         style={{ 
           backgroundColor: 'var(--color-panel-solid)', 
           borderRadius: 'var(--radius-3)',
@@ -163,8 +165,8 @@ Prominent rounding with 1.5x radius factor.
   preview={
     <Flex gap="2" align="center">
       <Box 
-        width="160px" 
-        height="160px" 
+        width="100px" 
+        height="100px" 
         style={{ 
           backgroundColor: 'var(--color-panel-solid)', 
           borderRadius: 'calc(var(--radius-3) * 1.5)',
@@ -191,8 +193,8 @@ Maximum rounding with 2x radius factor and pill-shaped elements.
   preview={
     <Flex gap="2" align="center">
       <Box 
-        width="160px" 
-        height="160px" 
+        width="100px" 
+        height="100px" 
         style={{ 
           backgroundColor: 'var(--color-panel-solid)', 
           borderRadius: 'calc(var(--radius-3) * 2)',
@@ -213,9 +215,7 @@ Maximum rounding with 2x radius factor and pill-shaped elements.
 
 </Section>
 
-
-
-<Section size="1">
+<Section size="2">
 
 ## Radius Factor System
 
@@ -237,28 +237,26 @@ Theme component uses radius factors that multiply base radius values:
 <CodeBlock>
 
 ```tsx
-/* Theme radius usage */
-<Theme radius="none">    /* All radius values become 0px */
-<Theme radius="small">   /* All radius values × 0.75 */
-<Theme radius="medium">  /* All radius values × 1 (default) */
-<Theme radius="large">   /* All radius values × 1.5 */
-<Theme radius="full">    /* All radius values × 2 */
+// Theme radius usage
+<Theme radius="none" />    // All radius values become 0px
+<Theme radius="small" />   // All radius values × 0.75
+<Theme radius="medium" />  // All radius values × 1 (default)
+<Theme radius="large" />   // All radius values × 1.5
+<Theme radius="full" />    // All radius values × 2
 ```
 
 </CodeBlock>
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Enhancements
 
 Kookie UI refines the Radix Themes radius system with more granular control and better visual hierarchy:
 
-### Refined Values
-Smaller increments (2px, 4px, 6px, 8px, 12px) for more precise control. Better proportions where each step provides meaningful visual difference and consistent scaling for more predictable progression across the scale.
+- **Refined Values**: Smaller increments (2px, 4px, 6px, 8px, 12px) for more precise control. Better proportions where each step provides meaningful visual difference and consistent scaling for more predictable progression across the scale.
 
-### Enhanced Usage
-Component-specific defaults where each component uses the most appropriate radius. Semantic naming with clear, descriptive radius names and better accessibility with radius values that work well with focus indicators.
+- **Enhanced Usage**: Component-specific defaults where each component uses the most appropriate radius. Semantic naming with clear, descriptive radius names and better accessibility with radius values that work well with focus indicators.
 
 </Section>

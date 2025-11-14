@@ -71,10 +71,7 @@ export default function ButtonPlayground() {
       type: 'select' as const,
       value: color,
       onChange: setColor,
-      options: [
-        { label: 'Theme', value: 'theme' },
-        ...accentColors.map((c) => ({ label: c, value: c })),
-      ],
+      options: [{ label: 'Theme', value: 'theme' }, ...accentColors.map((c) => ({ label: c, value: c }))],
       placeholder: 'Theme',
       appearance: 'swatch' as const,
     },
@@ -84,10 +81,7 @@ export default function ButtonPlayground() {
       type: 'select' as const,
       value: radius,
       onChange: setRadius,
-      options: [
-        { label: 'Theme', value: 'theme' },
-        ...radiusOptions.map((r) => ({ label: r, value: r })),
-      ],
+      options: [{ label: 'Theme', value: 'theme' }, ...radiusOptions.map((r) => ({ label: r, value: r }))],
       placeholder: 'Theme',
     },
     {
@@ -112,10 +106,7 @@ export default function ButtonPlayground() {
       type: 'select' as const,
       value: material,
       onChange: setMaterial,
-      options: [
-        { label: 'Theme', value: 'theme' },
-        ...materials.map((m) => ({ label: m, value: m })),
-      ],
+      options: [{ label: 'Theme', value: 'theme' }, ...materials.map((m) => ({ label: m, value: m }))],
       placeholder: 'Theme',
     },
     {

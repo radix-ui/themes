@@ -17,7 +17,7 @@ export default function HeroSection() {
               </Flex> */}
               <Avatar fallback="K" size="2" src="/kookie-ui-logo.png"></Avatar>
               <Flex direction="column" align="center" gap="4">
-                <Heading size="8" weight="semibold">
+                <Heading size="8" weight="medium">
                   A system to build consistent and scalable user interfaces.
                 </Heading>
               </Flex>

@@ -17,7 +17,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h2: ({ children }) => (
       <Flex direction="column" gap="3" mb="6">
-        <Heading as="h2" size="6" weight="medium">
+        <Heading as="h2" size="5" weight="medium">
           {children}
         </Heading>
         <Separator size="4"></Separator>

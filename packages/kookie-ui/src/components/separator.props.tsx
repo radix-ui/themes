@@ -16,11 +16,13 @@ const separatorPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '1', responsive: true },
   color: { ...colorPropDef.color, default: 'gray' },
   decorative: { type: 'boolean', default: true },
+  light: { type: 'boolean', className: 'rt-light', default: false },
 } satisfies {
   orientation: PropDef<(typeof orientationValues)[number]>;
   size: PropDef<(typeof sizes)[number]>;
   color: typeof colorPropDef.color;
   decorative: PropDef<boolean>;
+  light: PropDef<boolean>;
 };
 
 export { separatorPropDefs };

@@ -3,7 +3,7 @@ import { CodeBlock } from '../../components/code-block';
 import { SpecsBlock } from '../../components/specs-block';
 import {  CircleAlert } from 'lucide-react';
 
-<Section size="1">
+<Section size="2">
 
 # Material
 
@@ -13,7 +13,7 @@ Material system creates visual depth through translucent surfaces and backdrop b
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Usage
 
@@ -39,7 +39,7 @@ import { Theme } from '@kushagradhawan/kookie-ui';
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Solid
 
@@ -50,7 +50,7 @@ Solid material provides opaque backgrounds with no transparency or blur effects.
     <Theme material="solid">
       <Flex gap="2" align="center">
         <Card size="2" variant="surface">
-          <Box width="150px" height="150px" />
+          <Box width="100px" height="100px" />
         </Card>
       </Flex>
     </Theme>
@@ -67,7 +67,7 @@ Solid material provides opaque backgrounds with no transparency or blur effects.
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Translucent
 
@@ -84,7 +84,7 @@ Translucent material creates glass-like effects with semi-transparent background
     <Theme material="translucent">
       <Flex gap="2" align="center">
         <Card size="2" variant="surface">
-          <Box width="150px" height="150px" />
+          <Box width="100px" height="100px" />
         </Card>
       </Flex>
     </Theme>
@@ -101,7 +101,7 @@ Translucent material creates glass-like effects with semi-transparent background
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Component Overrides
 
@@ -125,7 +125,7 @@ Individual components can override theme material settings using their `material
 
 </Section>
 
-<Section size="1">
+<Section size="2">
 
 ## Performance
 
@@ -133,7 +133,7 @@ Use solid material for low-end devices and high contrast interfaces. Use translu
 
 For best performance, set the theme to solid and override specific components to translucent as needed. Use translucent material selectively for maximum visual impact and only where backgrounds make it effective.
 
-<Callout.Root variant="soft" size="2" highContrast color="red" mt="6">
+<Callout.Root variant="soft" size="2" highContrast color="gray" mt="6">
   <Callout.Icon>
 		<CircleAlert />
 	</Callout.Icon>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Box, Card, Flex, ToggleIconButton, IconButton, Tabs, Theme, Inset, Separator, Code as CodeComp } from '@kushagradhawan/kookie-ui';
+import { Box, Card, Flex, ToggleButton, IconButton, Theme, Inset, Separator, Code as CodeComp, Button } from '@kushagradhawan/kookie-ui';
 import { ChevronsUpDown, Copy, Code, Eye } from 'lucide-react';
 import * as simpleIcons from 'simple-icons';
 
@@ -369,7 +369,7 @@ const CodeSection = memo(function CodeSection({ children, buttonsPosition, file 
   return (
     <Box position="relative">
       <Card size="2" variant="soft">
-        <Flex direction="column" gap="2">
+        <Flex direction="column" gap="3">
           {/* Action Buttons - positioned absolutely for overlay effect */}
           <Flex gap="2" justify="between" align="center">
             {/* Language badge - only when detectable */}
@@ -394,12 +394,12 @@ const CodeSection = memo(function CodeSection({ children, buttonsPosition, file 
                 </Flex>
               </Flex>
             )}
-            <Flex align="center" gap="0">
+            <Flex align="center" gap="2">
               {/* Expand/Collapse button - only show if content is expandable */}
               {shouldShowToggle && (
-                <ToggleIconButton
-                  size="2"
-                  variant="ghost"
+                <ToggleButton
+                  size="1"
+                  variant="soft"
                   color="gray"
                   highContrast
                   pressed={isExpanded}
@@ -409,18 +409,19 @@ const CodeSection = memo(function CodeSection({ children, buttonsPosition, file 
                   className="code-toggle-button"
                 >
                   <ChevronsUpDown style={chevronStyle} className="code-chevron" />
-                </ToggleIconButton>
+                  Expand
+                </ToggleButton>
               )}
 
               {/* Copy button */}
-              <IconButton size="2" variant="ghost" color="gray" highContrast onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
-                <Copy />
-              </IconButton>
+              <Button size="1" variant="soft" color="gray" highContrast onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
+                <Copy /> Copy
+              </Button>
             </Flex>
           </Flex>
 
           <Inset clip="padding-box" side="x">
-            <Separator size="4" />
+            <Separator size="4" light />
           </Inset>
 
           {/* Code Content - with dynamic height based on expand state */}
@@ -481,42 +482,13 @@ export const CodeBlock = memo(function CodeBlock({ preview, children, buttonsPos
   // Check if we have code content to show
   const hasCode = children && React.Children.count(children) > 0;
 
-  // Determine which tabs to show based on available content
-  const showPreview = !!preview;
-  const showCode = hasCode;
-  const showTabs = showPreview && showCode;
-
-  // If we don't have both preview and code, show them normally (no tabs)
-  if (!showTabs) {
-    return (
-      <Box className="docs-code-block" mt="6" mb="8">
-        <Flex direction="column" gap="2">
-          {preview && <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />}
-          {hasCode && <CodeSection children={children} buttonsPosition={buttonsPosition} file={file} />}
-        </Flex>
-      </Box>
-    );
-  }
-
-  // If we have both preview and code, show them in tabs for better organization
+  // Always show preview and code vertically stacked when both exist
   return (
     <Box className="docs-code-block" mt="6" mb="8">
-      <Tabs.Root defaultValue="preview">
-        <Tabs.List size="2">
-          <Tabs.Trigger value="preview">Preview</Tabs.Trigger>
-          <Tabs.Trigger value="code">Code</Tabs.Trigger>
-        </Tabs.List>
-
-        <Box pt="6">
-          <Tabs.Content value="preview" asChild>
-            <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />
-          </Tabs.Content>
-
-          <Tabs.Content value="code" asChild>
-            <CodeSection children={children} buttonsPosition={buttonsPosition} file={file} />
-          </Tabs.Content>
-        </Box>
-      </Tabs.Root>
+      <Flex direction="column" gap="2">
+        {preview && <PreviewSection preview={preview} background={background} backgroundProps={backgroundProps} />}
+        {hasCode && <CodeSection children={children} buttonsPosition={buttonsPosition} file={file} />}
+      </Flex>
     </Box>
   );
 });
