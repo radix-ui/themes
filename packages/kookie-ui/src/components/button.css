@@ -36,8 +36,62 @@
  * This creates a more subtle, text-like appearance
  */
 .rt-Button {
+  --button-padding-inline-base: var(--space-3);
+  --button-padding-icon-trim: max(calc(var(--button-padding-inline-base) * 0.35), var(--space-1));
+
   &:where(.rt-variant-ghost) {
     padding: var(--button-ghost-padding-y) var(--button-ghost-padding-x);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * ICON-AWARE PADDING                                                                              *
+ *                                                                                                 *
+ * Adjust inline padding when leading or trailing icons are present to maintain visual balance.    *
+ *                                                                                                 *
+ ***************************************************************************************************/
+@supports selector(:has(*)) {
+  .rt-Button {
+    --button-padding-inline-trimmed: max(0px, calc(var(--button-padding-inline-base, var(--space-3)) - var(--button-padding-icon-trim, var(--space-1))));
+  }
+
+  .rt-Button:where(
+      :has(
+        > :first-child:is(
+            svg,
+            i,
+            .rt-Icon,
+            [data-slot='icon'],
+            [data-slot='icon-start'],
+            [data-icon],
+            [data-kui-icon],
+            [role='img'],
+            span:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-start'], [data-icon], [data-kui-icon], [role='img'])),
+            figure:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-start'], [data-icon], [data-kui-icon], [role='img']))
+          )
+      )
+    ) {
+    padding-inline-start: var(--button-padding-inline-trimmed);
+  }
+
+  .rt-Button:where(
+      :has(
+        > :last-child:is(
+            svg,
+            i,
+            .rt-Icon,
+            [data-slot='icon'],
+            [data-slot='icon-end'],
+            [data-icon],
+            [data-kui-icon],
+            [role='img'],
+            span:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-end'], [data-icon], [data-kui-icon], [role='img'])),
+            figure:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-end'], [data-icon], [data-kui-icon], [role='img']))
+          )
+      )
+    ) {
+    padding-inline-end: var(--button-padding-inline-trimmed);
   }
 }
 
@@ -48,6 +102,7 @@
      * Designed for toolbars, dense interfaces, and space-constrained contexts
      */
     &:where(.rt-r-size-1) {
+      --button-padding-inline-base: var(--space-2);
       gap: var(--component-gap-1);
       font-size: var(--font-size-1);
       line-height: var(--line-height-1);
@@ -68,8 +123,8 @@
        * Provides adequate touch targets while maintaining compact appearance
        */
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-2);
-        padding-right: var(--space-2);
+        padding-inline-start: var(--button-padding-inline-base);
+        padding-inline-end: var(--button-padding-inline-base);
       }
 
       /* 
@@ -80,6 +135,7 @@
         gap: var(--component-gap-ghost-1);
         --button-ghost-padding-x: var(--space-2);
         --button-ghost-padding-y: var(--space-1);
+        --button-padding-inline-base: var(--button-ghost-padding-x);
       }
     }
 
@@ -88,6 +144,7 @@
      * Default size for most interface contexts and general use
      */
     &:where(.rt-r-size-2) {
+      --button-padding-inline-base: var(--space-3);
       gap: var(--component-gap-2);
       font-size: var(--font-size-2);
       line-height: var(--line-height-2);
@@ -102,8 +159,8 @@
 
       /* Standard padding for non-ghost variants */
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-3);
-        padding-right: var(--space-3);
+        padding-inline-start: var(--button-padding-inline-base);
+        padding-inline-end: var(--button-padding-inline-base);
       }
 
       /* Ghost variant padding for size 2 */
@@ -111,6 +168,7 @@
         gap: var(--component-gap-ghost-2);
         --button-ghost-padding-x: var(--space-2);
         --button-ghost-padding-y: var(--space-1);
+        --button-padding-inline-base: var(--button-ghost-padding-x);
       }
     }
 
@@ -119,6 +177,7 @@
      * Recommended for important actions and mobile touch targets
      */
     &:where(.rt-r-size-3) {
+      --button-padding-inline-base: var(--space-4);
       gap: var(--component-gap-3);
       font-size: var(--font-size-3);
       line-height: var(--line-height-3);
@@ -133,8 +192,8 @@
 
       /* Standard padding for non-ghost variants */
       &:where(:not(.rt-variant-ghost)) {
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
+        padding-inline-start: var(--button-padding-inline-base);
+        padding-inline-end: var(--button-padding-inline-base);
       }
 
       /* Ghost variant padding for size 3 */
@@ -142,6 +201,7 @@
         gap: var(--component-gap-ghost-3);
         --button-ghost-padding-x: var(--space-3);
         --button-ghost-padding-y: calc(var(--space-1) * 1.5);
+        --button-padding-inline-base: var(--button-ghost-padding-x);
       }
     }
 
@@ -150,6 +210,7 @@
      * Designed for hero sections and maximum visual impact
      */
     &:where(.rt-r-size-4) {
+      --button-padding-inline-base: calc(var(--space-4) + (4px * var(--scaling)));
       gap: var(--component-gap-4);
       font-size: var(--font-size-4);
       line-height: var(--line-height-4);
@@ -168,8 +229,8 @@
          * HACK: This padding calculation adds 4px to the space-4 token for better visual balance at size 4.
          * This is a temporary workaround and should be replaced with a proper tokenized solution.
          */
-        padding-left: calc(var(--space-4) + (4px * var(--scaling)));
-        padding-right: calc(var(--space-4) + (4px * var(--scaling)));
+        padding-inline-start: var(--button-padding-inline-base);
+        padding-inline-end: var(--button-padding-inline-base);
       }
 
       /* Ghost variant padding for size 4 */
@@ -177,6 +238,7 @@
         gap: var(--component-gap-ghost-4);
         --button-ghost-padding-x: var(--space-4);
         --button-ghost-padding-y: var(--space-2);
+        --button-padding-inline-base: var(--button-ghost-padding-x);
       }
     }
   }

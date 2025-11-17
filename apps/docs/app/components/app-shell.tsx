@@ -40,7 +40,7 @@ const navigationItems = [
   { href: '/docs/colors', title: 'Colors', icon: Palette, badge: undefined },
   { href: '/docs/constants', title: 'Constants', icon: Hash, badge: { content: 'Alpha', highContrast: true, size: '1' as const } },
   { href: '/docs/shadows', title: 'Shadows', icon: Layers, badge: undefined },
-  { href: '/docs/material', title: 'Material', icon: SwatchBook, badge: undefined },
+  { href: '/docs/material', title: 'Material', icon: SwatchBook, badge: { content: 'Alpha', highContrast: true, size: '1' as const } },
   { href: '/docs/radius', title: 'Radius', icon: SquareRoundCorner, badge: undefined },
   { href: '/docs/typography', title: 'Typography', icon: Type, badge: undefined },
   {

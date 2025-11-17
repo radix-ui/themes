@@ -1,6 +1,7 @@
-import { Section, Badge, Text, Link, Callout, Separator, Table, Code, Box, Flex, Image } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Table, Code, Box, Flex, Image, Button } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
 import { SpecsBlock } from '../../components/specs-block';
+import { ArrowUpRightIcon } from 'lucide-react';
 
 <Section size="2">
 
@@ -8,7 +9,11 @@ import { SpecsBlock } from '../../components/specs-block';
 
 Custom shadow system with 6-step scale for elevation and hierarchy. Kookie UI Shadows are extracted from [Radix Themes](https://www.radix-ui.com/themes) with enhanced values for better depth perception. 
 
-For complete shadow documentation and advanced usage, visit the [Radix Themes shadows docs](https://www.radix-ui.com/themes/docs/theme/shadows). Note that Kookie UI's shadow values may be enhanced and might not match exactly what's shown in the Radix documentation.
+For complete shadow documentation and advanced usage, visit the [Radix Themes Shadows documentation](https://www.radix-ui.com/themes/docs/theme/shadows). Note that Kookie UI's shadow values may be enhanced and might not match exactly what's shown in the Radix documentation.
+
+<Flex direction="row" gap="2" mt="6" justify="left" align="start">
+  <Button size="1" variant="soft" color="gray" highContrast as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/shadow.css" target="_blank" rel="noopener noreferrer">View source <ArrowUpRightIcon /></Button>
+</Flex>
 
 </Section>
 

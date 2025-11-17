@@ -7,7 +7,7 @@ import { CodeBlock } from '../../components/code-block';
 
 Border radius system with 5-step scale for consistent corner rounding. Kookie UI Radius is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better visual hierarchy. 
 
-For complete radius documentation and advanced usage, visit the [Radix Themes radius docs](https://www.radix-ui.com/themes/docs/theme/radius). Note that Kookie UI's radius values may be enhanced and might not match exactly what's shown in the Radix documentation.
+For complete radius documentation and advanced usage, visit the [Radix Themes Radius documentation](https://www.radix-ui.com/themes/docs/theme/radius). Note that Kookie UI's radius values may be enhanced and might not match exactly what's shown in the Radix documentation.
 
 </Section>
 
@@ -16,14 +16,6 @@ For complete radius documentation and advanced usage, visit the [Radix Themes ra
 ## Usage
 
 Set `radius` prop to control border radius across all components. Use consistent radius values to create visual hierarchy and polish.
-
-<CodeBlock>
-
-```tsx
-import { Theme } from '@kushagradhawan/kookie-ui';
-```
-
-</CodeBlock>
 
 <CodeBlock>
 
@@ -237,12 +229,12 @@ Theme component uses radius factors that multiply base radius values:
 <CodeBlock>
 
 ```tsx
-// Theme radius usage
-<Theme radius="none" />    // All radius values become 0px
-<Theme radius="small" />   // All radius values × 0.75
-<Theme radius="medium" />  // All radius values × 1 (default)
-<Theme radius="large" />   // All radius values × 1.5
-<Theme radius="full" />    // All radius values × 2
+/* Theme radius usage */
+<Theme radius="none" />    /* All radius values become 0px */
+<Theme radius="small" />   /* All radius values × 0.75 */
+<Theme radius="medium" />  /* All radius values × 1 (default) */
+<Theme radius="large" />   /* All radius values × 1.5 */
+<Theme radius="full" />    /* All radius values × 2 */
 ```
 
 </CodeBlock>

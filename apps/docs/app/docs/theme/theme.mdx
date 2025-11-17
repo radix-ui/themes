@@ -1,10 +1,23 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box, Tooltip, Card } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box, Tooltip, Card, Button } from '@kushagradhawan/kookie-ui';
+import { ArrowUpRightIcon } from 'lucide-react';
 
 <Section size="2">
 
 # Theme
 
 Control your app's visual appearance with seven configuration options. Kookie UI Theme is a fork of [Radix Themes](https://www.radix-ui.com/themes), offering the same foundation with custom enhancements for theming and accessibility.
+
+This is an enhanced version of the Theme component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Theme's documentation](https://www.radix-ui.com/themes/docs/theme/overview). 
+
+<Flex direction="row" gap="2" mt="6" justify="left" align="start">
+  <Button size="1" variant="soft" color="gray" highContrast as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/theme.tsx" target="_blank" rel="noopener noreferrer">View source <ArrowUpRightIcon /></Button>
+</Flex>
+
+</Section>
+
+<Section size="2">
+
+## Usage
 
 <CodeBlock buttonsPosition="center">
 
@@ -20,7 +33,7 @@ import { Theme } from '@kushagradhawan/kookie-ui';
 
 ## Props
 
-<Table.Root  size="2" variant="ghost" layout="fixed">
+<Table.Root size="2" variant="ghost" layout="fixed">
   <colgroup>
     <col style={{ width: '30%' }} />
     <col />

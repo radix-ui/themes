@@ -7,7 +7,7 @@ import { CodeBlock } from '../../components/code-block';
 
 Typography system with 10-step scale (0-9), font weights, and formatting components. Kookie UI Typography is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better readability. 
 
-For complete typography documentation and advanced customization, visit the [Radix Themes typography docs](https://www.radix-ui.com/themes/docs/theme/typography). Note that Kookie UI's typography values may be enhanced and might not match exactly what's shown in the Radix documentation.
+For complete typography documentation and advanced customization, visit the [Radix Themes Typography documentation](https://www.radix-ui.com/themes/docs/theme/typography). Note that Kookie UI's typography values may be enhanced and might not match exactly what's shown in the Radix documentation.
 
 </Section>
 
@@ -310,13 +310,18 @@ Compose formatting components to add emphasis and structure.
 
 Default font stack for optimal readability and performance.
 
+Kookie preserves the **Radix typography tokens**. Components read from these tokens, and their shape matches the structure described in the Radix Themes documentation.
+
 <CodeBlock>
 
 ```css
-/* Font family tokens */
-var(--default-font-family)  /* System font stack */
-var(--code-font-family)     /* Monospace font stack */
-var(--heading-font-family)  /* Heading font stack */
+/* Radix typography tokens (used by components) */
+var(--default-font-family)  /* Base text font stack */
+var(--code-font-family)     /* Monospace font stack for <Code> */
+var(--heading-font-family)  /* Heading font stack for <Heading> */
+var(--strong-font-family)   /* Font stack for <Strong> */
+var(--em-font-family)       /* Font stack for <Em> */
+var(--quote-font-family)    /* Font stack for <Quote> */
 ```
 
 </CodeBlock>
@@ -358,17 +363,56 @@ Kookie UI makes font customization simple and flexible. Switch between font fami
 
 ## Custom Fonts
 
-Kookie UI uses a simple two-tier font system. Override the theme variables (`--font-sans`, `--font-mono`, `--font-serif`) to customize fonts globally.
+Kookie UI uses **two layers of font variables**. Designers can stay at the Kookie layer, while developers who already know Radix can work directly with the Radix tokens. You can override either layer; the most common entry point is the Kookie design tokens.
+
+<Box>
+  <Table.Root my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '28%' }} />
+      <col style={{ width: '36%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Layer</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Tokens</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Use when…</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Radix typography</Table.RowHeaderCell>
+        <Table.Cell>
+          `--default-font-family`, `--heading-font-family`, `--code-font-family`, <br />
+          `--strong-font-family`, `--em-font-family`, `--quote-font-family`
+        </Table.Cell>
+        <Table.Cell>You want to follow the Radix Themes docs exactly or fine‑tune individual roles.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Kookie design tokens</Table.RowHeaderCell>
+        <Table.Cell>`--font-sans`, `--font-mono`, `--font-serif`</Table.Cell>
+        <Table.Cell>You want a single place to swap the main sans/mono/serif families for the whole theme.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
 
 <CodeBlock>
 
 ```css
-/* Import your preferred fonts */
+/* Import your preferred fonts (example) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Override Kookie UI theme font variables */
+/* Option 1 – Radix-compatible overrides (fine‑grained) */
+.radix-themes {
+  --default-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --heading-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --code-font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+/* Option 2 – Kookie design tokens (recommended entry point) */
 :root {
-  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: 'Fira Code', 'Consolas', monospace;
   --font-serif: 'Georgia', 'Times New Roman', serif;
 }
@@ -382,7 +426,7 @@ Kookie UI uses a simple two-tier font system. Override the theme variables (`--f
 
 ## Theme Override Variables
 
-These are the main variables you should override to customize fonts globally. Kookie UI uses a two-tier font variable system for maximum flexibility.
+These are the main **Kookie design tokens** you override to customize fonts globally. They are wired into the Radix typography tokens shown above, so changing them updates the fonts used by components.
 
 <Box>
   <Table.Root mt="6" size="2" variant="ghost" layout="fixed">

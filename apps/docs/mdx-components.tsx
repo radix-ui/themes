@@ -24,7 +24,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Flex>
     ),
     h3: ({ children }) => (
-      <Flex direction="column" gap="2" mb="2">
+      <Flex direction="column" gap="2" mb="2" mt="6">
         <Heading as="h3" size="4" weight="medium">
           {children}
         </Heading>

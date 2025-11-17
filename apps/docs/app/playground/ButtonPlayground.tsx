@@ -47,8 +47,6 @@ export default function ButtonPlayground() {
   const [size, setSize] = React.useState<string>('3');
   const [highContrast, setHighContrast] = React.useState<boolean>(false);
   const [material, setMaterial] = React.useState<string>('theme');
-  const [flush, setFlush] = React.useState<boolean>(false);
-  const [fullWidth, setFullWidth] = React.useState<boolean>(false);
   const [state, setState] = React.useState<string>('default');
   const [iconPosition, setIconPosition] = React.useState<string>('none');
 
@@ -110,20 +108,6 @@ export default function ButtonPlayground() {
       placeholder: 'Theme',
     },
     {
-      id: 'flush',
-      label: 'Flush',
-      type: 'switch' as const,
-      value: flush,
-      onChange: setFlush,
-    },
-    {
-      id: 'full-width',
-      label: 'Full Width',
-      type: 'switch' as const,
-      value: fullWidth,
-      onChange: setFullWidth,
-    },
-    {
       id: 'state',
       label: 'State',
       type: 'select' as const,
@@ -159,8 +143,6 @@ export default function ButtonPlayground() {
 
     // Add boolean props
     if (highContrast) props.push('highContrast');
-    if (flush) props.push('flush');
-    if (fullWidth) props.push('fullWidth');
     if (isDisabled) props.push('disabled');
     if (isLoading) props.push('loading');
 
@@ -195,8 +177,6 @@ export default function ButtonPlayground() {
           radius={radius === 'theme' ? undefined : (radius as any)}
           highContrast={highContrast || undefined}
           material={material === 'theme' ? undefined : (material as any)}
-          flush={flush}
-          fullWidth={fullWidth}
           disabled={isDisabled}
           loading={isLoading}
         >
