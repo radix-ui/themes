@@ -44,57 +44,6 @@
   }
 }
 
-/***************************************************************************************************
- *                                                                                                 *
- * ICON-AWARE PADDING                                                                              *
- *                                                                                                 *
- * Adjust inline padding when leading or trailing icons are present to maintain visual balance.    *
- *                                                                                                 *
- ***************************************************************************************************/
-@supports selector(:has(*)) {
-  .rt-Button {
-    --button-padding-inline-trimmed: max(0px, calc(var(--button-padding-inline-base, var(--space-3)) - var(--button-padding-icon-trim, var(--space-1))));
-  }
-
-  .rt-Button:where(
-      :has(
-        > :first-child:is(
-            svg,
-            i,
-            .rt-Icon,
-            [data-slot='icon'],
-            [data-slot='icon-start'],
-            [data-icon],
-            [data-kui-icon],
-            [role='img'],
-            span:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-start'], [data-icon], [data-kui-icon], [role='img'])),
-            figure:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-start'], [data-icon], [data-kui-icon], [role='img']))
-          )
-      )
-    ) {
-    padding-inline-start: var(--button-padding-inline-trimmed);
-  }
-
-  .rt-Button:where(
-      :has(
-        > :last-child:is(
-            svg,
-            i,
-            .rt-Icon,
-            [data-slot='icon'],
-            [data-slot='icon-end'],
-            [data-icon],
-            [data-kui-icon],
-            [role='img'],
-            span:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-end'], [data-icon], [data-kui-icon], [role='img'])),
-            figure:has(:is(svg, i, .rt-Icon, [data-slot='icon'], [data-slot='icon-end'], [data-icon], [data-kui-icon], [role='img']))
-          )
-      )
-    ) {
-    padding-inline-end: var(--button-padding-inline-trimmed);
-  }
-}
-
 @breakpoints {
   .rt-Button {
     /* 
