@@ -18,6 +18,7 @@ export * as ContextMenu from './context-menu.js';
 export * as DataList from './data-list.js';
 export * as Dialog from './dialog.js';
 export * as DropdownMenu from './dropdown-menu.js';
+export * as Combobox from './combobox.js';
 export { Em, type EmProps } from './em.js';
 export { Flex, type FlexProps } from './flex.js';
 export { Grid, type GridProps } from './grid.js';

@@ -1,0 +1,175 @@
+import { Section, Box, Flex, Button, Table, Text, Tooltip } from '@kushagradhawan/kookie-ui';
+import { ArrowUpRightIcon } from 'lucide-react';
+import ComboBoxPlayground from '../../playground/ComboBoxPlayground';
+import { CodeBlock } from '../../components/code-block';
+
+<Section size="2">
+
+# ComboBox
+
+Use ComboBox when you need searchable dropdown behavior without sacrificing the structured feel of our menu triggers. It composes the Popover surface with a Command list so the input owns its focus while the results keep the familiar roving highlight pattern (exactly what the Radix team recommends for accessible comboboxes).
+
+<Flex direction="row" gap="2" mt="6" justify="left" align="start">
+  <Button
+    size="1"
+    variant="soft"
+    color="gray"
+    highContrast
+    as="a"
+    href="https://github.com/kushagradhawan/kookie-ui/blob/main/packages/kookie-ui/src/components/combobox.tsx"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    View source <ArrowUpRightIcon />
+  </Button>
+</Flex>
+
+</Section>
+
+<Section size="2">
+
+## Why this pattern
+
+- Trigger, caret, and menu styling reuse the Select tokens so ComboBox feels interchangeable with other dropdowns in dense layouts.
+- Search input lives inside the surface and keeps focus until users intentionally move with arrow keys—no tug-of-war between typeahead and the list.
+- Built on cmdk's filtering and the Radix Popover surface, so you inherit keyboard support, collision handling, and portal behavior automatically.
+- Designers can lean on the same spatial rules as Select: align triggers with the inputs they accompany and let the Popover handle elevation.
+
+</Section>
+
+<Section size="2">
+
+## Playground
+
+<Box>
+  <ComboBoxPlayground />
+</Box>
+
+</Section>
+
+<Section size="2">
+
+## Usage
+
+<CodeBlock buttonsPosition="center">
+
+```tsx
+import { Combobox } from '@kushagradhawan/kookie-ui';
+
+function ProductPicker() {
+  const [value, setValue] = React.useState<string | null>('react');
+
+  return (
+    <Combobox.Root size="2" value={value} onValueChange={setValue}>
+      <Combobox.Trigger variant="surface">
+        <Combobox.Value placeholder="Select framework" />
+      </Combobox.Trigger>
+      <Combobox.Content>
+        <Combobox.Input placeholder="Search frameworks..." />
+        <Combobox.List>
+          <Combobox.Item value="react">React</Combobox.Item>
+          <Combobox.Item value="next">Next.js</Combobox.Item>
+          <Combobox.Item value="svelte">SvelteKit</Combobox.Item>
+          <Combobox.Empty>No matches</Combobox.Empty>
+        </Combobox.List>
+      </Combobox.Content>
+    </Combobox.Root>
+  );
+}
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Props
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Description</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Density presets shared with Select. Size 2 is default for forms, size 1 for toolbars, size 3 for hero modules.">
+            <span>`size`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'1' | '2' | '3'` — Sets trigger height and menu padding.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Trigger skin that mirrors Button + Select variants so you can align ComboBox with surrounding inputs.">
+            <span>`variant`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'classic' | 'surface' | 'soft' | 'outline' | 'ghost'`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Managed selection value. Use together with onValueChange for controlled ComboBox states.">
+            <span>`value` / `defaultValue`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`string | null` — Selected item id.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Controls the search field inside the Popover for predictive filtering or async loading states.">
+            <span>`searchValue` / `defaultSearchValue`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`string` — Mirrors cmdk’s search state.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Toggle built-in filtering or provide your own ranking logic via cmdk's filter signature.">
+            <span>`shouldFilter` / `filter`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean` / `(value, search, keywords) => number`.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Keep roving focus cycling or stop at list boundaries based on your interaction model.">
+            <span>`loop`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean` — defaults to `true` for effortless keyboarding.</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Locks the entire control, including trigger and input, for states like pending approval.">
+            <span>`disabled`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean`.</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Section size="2">
+
+## Designer guidance
+
+- Pair ComboBox with adjacent TextFields to create searchable attribute pickers—use the same width so alignment feels intentional.
+- Use `surface` or `classic` variants when the control represents a primary form field; reserve `ghost` for command palettes inside toolbars.
+- Keep datasets concise (≤7 options) when inside space-constrained layouts; switch to a dedicated panel if you need multi-column lists.
+- For creation flows, add explanatory copy inside the Empty state rather than inline tooltips—people expect the input focus to stay put.
+- Reference Radix’s [combobox accessibility notes](https://github.com/radix-ui/primitives/discussions/787) when pairing ComboBox with custom keyboard shortcuts.
+
+</Section>
+

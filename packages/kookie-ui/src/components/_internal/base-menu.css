@@ -188,7 +188,7 @@
         font-size: var(--font-size-1);
         line-height: var(--line-height-1);
         letter-spacing: var(--letter-spacing-1);
-        padding-inline-start: calc(var(--base-menu-item-padding-left) + var(--component-gap-2));
+        padding-inline-start: calc(var(--base-menu-item-padding-left));
       }
 
       & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
@@ -232,7 +232,7 @@
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
-        padding-left: calc(var(--base-menu-item-padding-left) + var(--component-gap-3));
+        padding-left: calc(var(--base-menu-item-padding-left));
       }
 
       & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {
@@ -276,7 +276,7 @@
         font-size: var(--font-size-2);
         line-height: var(--line-height-2);
         letter-spacing: var(--letter-spacing-2);
-        padding-left: calc(var(--base-menu-item-padding-left) + var(--component-gap-4));
+        padding-left: calc(var(--base-menu-item-padding-left));
       }
 
       & :where(.rt-BaseMenuItemIndicatorIcon, .rt-BaseMenuSubTriggerIcon) {

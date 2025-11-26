@@ -1,0 +1,129 @@
+@import './_internal/base-menu.css';
+@import './text-field.css';
+
+/* Reset Popover.Content padding - base-menu handles padding via BaseMenuViewport */
+.rt-PopoverContent.rt-ComboboxContent {
+  padding: 0 !important;
+}
+
+.rt-BaseMenuContent:where(.rt-r-size-1) :where(.rt-ComboboxItem) {
+  --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
+}
+
+.rt-BaseMenuContent:where(.rt-r-size-1) :where(.rt-ComboboxLabel) {
+  --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
+}
+
+.rt-BaseMenuContent:where(.rt-r-size-2) :where(.rt-ComboboxItem),
+.rt-BaseMenuContent:where(.rt-r-size-3) :where(.rt-ComboboxItem) {
+  --base-menu-item-padding-left: var(--space-5);
+}
+
+.rt-BaseMenuContent:where(.rt-r-size-2) :where(.rt-ComboboxLabel),
+.rt-BaseMenuContent:where(.rt-r-size-3) :where(.rt-ComboboxLabel) {
+  --base-menu-item-padding-left: var(--space-5);
+}
+
+/* Ensure Popover height is clamped to available space */
+.rt-ComboboxContent {
+  max-height: var(--radix-popover-content-available-height);
+}
+
+/* Override disabled styles when data-disabled is false or empty (cmdk may set it incorrectly) */
+.rt-BaseMenuContent .rt-BaseMenuItem.rt-ComboboxItem:where([data-disabled='false']),
+.rt-BaseMenuContent .rt-BaseMenuItem.rt-ComboboxItem:where([data-disabled='']) {
+  color: inherit !important;
+  cursor: var(--cursor-menu-item) !important;
+}
+
+/* Command container uses flex layout with gap */
+.rt-ComboboxCommand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Sticky search input with consistent padding */
+.rt-ComboboxSearch {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: var(--base-menu-content-padding);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--gray-a3);
+  background-color: var(--color-panel);
+}
+
+:where([data-panel-background='translucent']) .rt-ComboboxSearch {
+  background-color: var(--color-panel-translucent);
+  backdrop-filter: var(--backdrop-filter-panel);
+}
+
+.rt-ComboboxSearch .rt-ComboboxInputRoot {
+  width: 100%;
+}
+
+/* Map cmdk's selected state to base-menu highlighted state */
+.rt-BaseMenuContent:where(.rt-variant-solid) {
+  & :where(.rt-BaseMenuItem.rt-ComboboxItem[data-selected='true']),
+  & :where(.rt-BaseMenuItem.rt-ComboboxItem[aria-selected='true']) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    & :where([data-accent-color='gray']:not(.rt-Badge)) {
+      color: inherit !important;
+    }
+  }
+}
+
+.rt-BaseMenuContent:where(.rt-variant-soft) {
+  & :where(.rt-BaseMenuItem.rt-ComboboxItem[data-selected='true']),
+  & :where(.rt-BaseMenuItem.rt-ComboboxItem[aria-selected='true']) {
+    background-color: var(--accent-4);
+
+    :where([data-panel-background='translucent'], [data-material='translucent']) & {
+      background-color: var(--accent-a4);
+    }
+
+    &:where([data-panel-background='solid'], [data-material='solid']) {
+      background-color: var(--accent-4);
+    }
+
+    &:where([data-panel-background='translucent'], [data-material='translucent']) {
+      background-color: var(--accent-a4);
+    }
+  }
+}
+
+.rt-BaseMenuContent:where(.rt-high-contrast) {
+  & :where(.rt-BaseMenuItem.rt-ComboboxItem[data-selected='true']),
+  & :where(.rt-BaseMenuItem.rt-ComboboxItem[aria-selected='true']) {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+
+    & :where(.rt-Text) {
+      color: inherit !important;
+    }
+
+    & :where([data-accent-color='gray']:not(.rt-Badge)) {
+      color: inherit !important;
+    }
+
+    &:where([data-accent-color]) {
+      background-color: var(--accent-9);
+      color: var(--accent-contrast);
+
+      & :where(.rt-Text) {
+        color: inherit !important;
+      }
+
+      & :where([data-accent-color='gray']:not(.rt-Badge)) {
+        color: inherit !important;
+      }
+    }
+  }
+}
