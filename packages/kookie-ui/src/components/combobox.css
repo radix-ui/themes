@@ -2,8 +2,9 @@
 @import './text-field.css';
 
 /* Reset Popover.Content padding - base-menu handles padding via BaseMenuViewport */
-.rt-PopoverContent.rt-ComboboxContent {
+.rt-ComboboxContent {
   padding: 0 !important;
+  max-height: var(--radix-popover-content-available-height);
 }
 
 .rt-BaseMenuContent:where(.rt-r-size-1) :where(.rt-ComboboxItem) {
@@ -24,14 +25,9 @@
   --base-menu-item-padding-left: var(--space-5);
 }
 
-/* Ensure Popover height is clamped to available space */
-.rt-ComboboxContent {
-  max-height: var(--radix-popover-content-available-height);
-}
-
 /* Override disabled styles when data-disabled is false or empty (cmdk may set it incorrectly) */
-.rt-BaseMenuContent .rt-BaseMenuItem.rt-ComboboxItem:where([data-disabled='false']),
-.rt-BaseMenuContent .rt-BaseMenuItem.rt-ComboboxItem:where([data-disabled='']) {
+.rt-BaseMenuContent :where(.rt-BaseMenuItem.rt-ComboboxItem[data-disabled='false']),
+.rt-BaseMenuContent :where(.rt-BaseMenuItem.rt-ComboboxItem[data-disabled='']) {
   color: inherit !important;
   cursor: var(--cursor-menu-item) !important;
 }
@@ -59,7 +55,7 @@
   backdrop-filter: var(--backdrop-filter-panel);
 }
 
-.rt-ComboboxSearch .rt-ComboboxInputRoot {
+.rt-ComboboxSearch :where(.rt-ComboboxInputRoot) {
   width: 100%;
 }
 
