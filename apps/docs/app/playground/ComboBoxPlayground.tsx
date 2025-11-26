@@ -236,7 +236,7 @@ ${listMarkup}
     },
     {
       id: 'highContrast',
-      label: 'Trigger High Contrast',
+      label: 'High Contrast',
       type: 'switch' as const,
       value: highContrast,
       onChange: setHighContrast,
