@@ -50,7 +50,42 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
 
 <Section size="2">
 
-## Props
+## Anatomy
+
+Combobox is a compound component with the following parts:
+
+<CodeBlock>
+
+```tsx
+<Combobox.Root>
+  <Combobox.Trigger>
+    <Combobox.Value />
+  </Combobox.Trigger>
+  <Combobox.Content>
+    <Combobox.Input />
+    <Combobox.List>
+      <Combobox.Group>
+        <Combobox.Label />
+        <Combobox.Item />
+      </Combobox.Group>
+      <Combobox.Separator />
+      <Combobox.Empty />
+    </Combobox.List>
+  </Combobox.Content>
+</Combobox.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## API Reference
+
+### Root
+
+Container component that manages state and context. All other Combobox components must be children of Root.
 
 <Box>
   <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
@@ -67,15 +102,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Trigger style variant: classic for elevated, surface for standard forms, soft for subtle, outline for bordered, ghost for minimal">
-            <span style={{ display: 'inline-block' }}>`variant`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'classic' | 'surface' | 'soft' | 'outline' | 'ghost'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Combobox density: 1 (32px) for toolbars, 2 (40px) standard forms, 3 (48px) for prominent selections. Affects trigger height and menu padding. Supports responsive objects">
+          <Tooltip content="Combobox density: 1 (32px) for toolbars, 2 (40px) standard forms, 3 (48px) for prominent selections. Supports responsive objects">
             <span style={{ display: 'inline-block' }}>`size`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -83,15 +110,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Semantic color to communicate selection intent. Use with highContrast for maximum visibility">
-            <span style={{ display: 'inline-block' }}>`color`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`AccentColor`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Maximum visibility mode for both trigger and items, especially useful on complex or translucent backgrounds">
+          <Tooltip content="Maximum visibility mode for trigger and items">
             <span style={{ display: 'inline-block' }}>`highContrast`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -99,7 +118,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Controlled selection value. Use with onValueChange for controlled state">
+          <Tooltip content="Controlled selection value">
             <span style={{ display: 'inline-block' }}>`value`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -123,6 +142,30 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
+          <Tooltip content="Controlled search input value">
+            <span style={{ display: 'inline-block' }}>`searchValue`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Initial search value">
+            <span style={{ display: 'inline-block' }}>`defaultSearchValue`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Callback fired when search changes">
+            <span style={{ display: 'inline-block' }}>`onSearchValueChange`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`(value: string) => void`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
           <Tooltip content="Text shown when no option is selected">
             <span style={{ display: 'inline-block' }}>`placeholder`</span>
           </Tooltip>
@@ -131,7 +174,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Placeholder text for search input field">
+          <Tooltip content="Placeholder for search input">
             <span style={{ display: 'inline-block' }}>`searchPlaceholder`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -139,7 +182,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Enable built-in fuzzy search filtering. Set to false for custom filtering or async data">
+          <Tooltip content="Enable built-in fuzzy search">
             <span style={{ display: 'inline-block' }}>`shouldFilter`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -147,15 +190,15 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Custom filter function for advanced search logic">
+          <Tooltip content="Custom filter function">
             <span style={{ display: 'inline-block' }}>`filter`</span>
           </Tooltip>
         </Table.RowHeaderCell>
-        <Table.Cell>`(value: string, search: string, keywords?: string[]) => number`</Table.Cell>
+        <Table.Cell>`(value, search, keywords) => number`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Allow keyboard navigation to cycle from last to first item. Defaults to true">
+          <Tooltip content="Allow keyboard navigation to cycle">
             <span style={{ display: 'inline-block' }}>`loop`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -163,7 +206,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Prevents interaction when action is unavailable">
+          <Tooltip content="Prevents all interaction">
             <span style={{ display: 'inline-block' }}>`disabled`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -171,23 +214,68 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Shows loading spinner in trigger. Use during async data fetching">
-            <span style={{ display: 'inline-block' }}>`loading`</span>
+          <Tooltip content="Controlled open state">
+            <span style={{ display: 'inline-block' }}>`open`</span>
           </Tooltip>
         </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Visual error state for form validation feedback">
-            <span style={{ display: 'inline-block' }}>`error`</span>
+          <Tooltip content="Initial open state">
+            <span style={{ display: 'inline-block' }}>`defaultOpen`</span>
           </Tooltip>
         </Table.RowHeaderCell>
         <Table.Cell>`boolean`</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped">
+          <Tooltip content="Callback fired when dropdown opens/closes">
+            <span style={{ display: 'inline-block' }}>`onOpenChange`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Trigger
+
+Button that opens the dropdown. Supports all trigger variants, colors, and states.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Trigger button style">
+            <span style={{ display: 'inline-block' }}>`variant`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'classic' | 'surface' | 'soft' | 'outline' | 'ghost'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Semantic color">
+            <span style={{ display: 'inline-block' }}>`color`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`AccentColor`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Corner radius">
             <span style={{ display: 'inline-block' }}>`radius`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -195,29 +283,177 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds">
+          <Tooltip content="Background appearance">
             <span style={{ display: 'inline-block' }}>`material`</span>
           </Tooltip>
         </Table.RowHeaderCell>
         <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
       </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Shows loading spinner">
+            <span style={{ display: 'inline-block' }}>`loading`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Visual error state">
+            <span style={{ display: 'inline-block' }}>`error`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Read-only state">
+            <span style={{ display: 'inline-block' }}>`readOnly`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Trigger width">
+            <span style={{ display: 'inline-block' }}>`width`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
     </Table.Body>
   </Table.Root>
 </Box>
 
-Combobox supports customizable margin props for spacing.
+Trigger supports margin props for spacing.
+
+### Content
+
+Dropdown surface containing the search input and list. Inherits size from Root.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Content surface style">
+            <span style={{ display: 'inline-block' }}>`variant`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'solid' | 'soft'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Override size from Root">
+            <span style={{ display: 'inline-block' }}>`size`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'1' | '2' | '3'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Semantic color">
+            <span style={{ display: 'inline-block' }}>`color`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`AccentColor`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="High contrast mode">
+            <span style={{ display: 'inline-block' }}>`highContrast`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Input
+
+Search field inside the Content. Automatically gets focus when dropdown opens.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Input field style">
+            <span style={{ display: 'inline-block' }}>`variant`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'classic' | 'surface' | 'soft' | 'outline' | 'ghost'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Placeholder text">
+            <span style={{ display: 'inline-block' }}>`placeholder`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`string`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Icon or element before input">
+            <span style={{ display: 'inline-block' }}>`startAdornment`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`ReactNode`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Icon or element after input">
+            <span style={{ display: 'inline-block' }}>`endAdornment`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`ReactNode`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Other Components
+
+- **`Combobox.Value`** - Displays selected value or placeholder
+- **`Combobox.List`** - Container for items
+- **`Combobox.Item`** - Selectable option
+- **`Combobox.Group`** - Groups related items
+- **`Combobox.Label`** - Group label
+- **`Combobox.Separator`** - Visual separator
+- **`Combobox.Empty`** - Shown when no results match
 
 </Section>
 
 <Section size="2">
 
-## Variants
+## Trigger Variants
 
-Use the `variant` prop to set the trigger style. Choose variants that match your surrounding form controls for visual consistency.
+Use the `variant` prop on Trigger to set button style. Choose variants that match your surrounding form controls.
 
 ### Classic
 
-Elevated style with subtle shadow for maximum visual impact and primary selections.
+Elevated style with subtle shadow for maximum visual impact.
 
 <CodeBlock
   buttonsPosition="center"
@@ -259,7 +495,7 @@ Elevated style with subtle shadow for maximum visual impact and primary selectio
 
 ### Surface
 
-Elevated surface style for standard form fields and card-based layouts.
+Elevated surface style for standard form fields.
 
 <CodeBlock
   buttonsPosition="center"
@@ -291,7 +527,6 @@ Elevated surface style for standard form fields and card-based layouts.
     <Combobox.Input placeholder="Search..." />
     <Combobox.List>
       <Combobox.Item value="1">Option 1</Combobox.Item>
-      <Combobox.Item value="2">Option 2</Combobox.Item>
     </Combobox.List>
   </Combobox.Content>
 </Combobox.Root>
@@ -301,7 +536,7 @@ Elevated surface style for standard form fields and card-based layouts.
 
 ### Soft
 
-Subtle background for secondary selections and content-heavy interfaces.
+Subtle background for secondary selections.
 
 <CodeBlock
   buttonsPosition="center"
@@ -333,7 +568,6 @@ Subtle background for secondary selections and content-heavy interfaces.
     <Combobox.Input placeholder="Search..." />
     <Combobox.List>
       <Combobox.Item value="1">Option 1</Combobox.Item>
-      <Combobox.Item value="2">Option 2</Combobox.Item>
     </Combobox.List>
   </Combobox.Content>
 </Combobox.Root>
@@ -343,7 +577,7 @@ Subtle background for secondary selections and content-heavy interfaces.
 
 ### Outline
 
-Bordered style for clear field boundaries in forms.
+Bordered style for clear field boundaries.
 
 <CodeBlock
   buttonsPosition="center"
@@ -375,7 +609,6 @@ Bordered style for clear field boundaries in forms.
     <Combobox.Input placeholder="Search..." />
     <Combobox.List>
       <Combobox.Item value="1">Option 1</Combobox.Item>
-      <Combobox.Item value="2">Option 2</Combobox.Item>
     </Combobox.List>
   </Combobox.Content>
 </Combobox.Root>
@@ -385,7 +618,7 @@ Bordered style for clear field boundaries in forms.
 
 ### Ghost
 
-Minimal style for utility controls and command palettes.
+Minimal style for utility controls.
 
 <CodeBlock
   buttonsPosition="center"
@@ -417,7 +650,141 @@ Minimal style for utility controls and command palettes.
     <Combobox.Input placeholder="Search..." />
     <Combobox.List>
       <Combobox.Item value="1">Option 1</Combobox.Item>
-      <Combobox.Item value="2">Option 2</Combobox.Item>
+    </Combobox.List>
+  </Combobox.Content>
+</Combobox.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Content Variants
+
+Use the `variant` prop on Content to set the dropdown surface style.
+
+### Solid
+
+Default opaque background for standard dropdowns.
+
+<CodeBlock
+  buttonsPosition="center"
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Solid content" />
+        </Combobox.Trigger>
+        <Combobox.Content variant="solid">
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Combobox.Root size="2">
+  <Combobox.Trigger variant="surface">
+    <Combobox.Value placeholder="Solid content" />
+  </Combobox.Trigger>
+  <Combobox.Content variant="solid">
+    <Combobox.Input placeholder="Search..." />
+    <Combobox.List>
+      <Combobox.Item value="1">Option 1</Combobox.Item>
+    </Combobox.List>
+  </Combobox.Content>
+</Combobox.Root>
+```
+
+</CodeBlock>
+
+### Soft
+
+Subtle background for content-heavy interfaces.
+
+<CodeBlock
+  buttonsPosition="center"
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Soft content" />
+        </Combobox.Trigger>
+        <Combobox.Content variant="soft">
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Combobox.Root size="2">
+  <Combobox.Trigger variant="surface">
+    <Combobox.Value placeholder="Soft content" />
+  </Combobox.Trigger>
+  <Combobox.Content variant="soft">
+    <Combobox.Input placeholder="Search..." />
+    <Combobox.List>
+      <Combobox.Item value="1">Option 1</Combobox.Item>
+    </Combobox.List>
+  </Combobox.Content>
+</Combobox.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Input Variants
+
+Use the `variant` prop on Input to style the search field. Defaults to `surface` for solid Content and `soft` for soft Content.
+
+<CodeBlock
+  buttonsPosition="center"
+  preview={
+    <Flex gap="2" wrap="wrap" align="center">
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Custom input" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input variant="soft" placeholder="Search with soft variant..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
+    </Flex>
+  }
+>
+
+```tsx
+<Combobox.Root size="2">
+  <Combobox.Trigger variant="surface">
+    <Combobox.Value placeholder="Custom input" />
+  </Combobox.Trigger>
+  <Combobox.Content>
+    <Combobox.Input variant="soft" placeholder="Search..." />
+    <Combobox.List>
+      <Combobox.Item value="1">Option 1</Combobox.Item>
     </Combobox.List>
   </Combobox.Content>
 </Combobox.Root>
@@ -431,11 +798,7 @@ Minimal style for utility controls and command palettes.
 
 ## Sizes
 
-Set `size` for combobox density: `1` (32px), `2` (40px), `3` (48px). Use `2` for standard forms, `3` for mobile touch targets. Supports responsive objects.
-
-### Size 1
-
-For toolbars and dense interfaces.
+Set `size` on Root to control density. Affects trigger height and content padding. Supports responsive objects.
 
 <CodeBlock
   buttonsPosition="center"
@@ -443,7 +806,7 @@ For toolbars and dense interfaces.
     <Flex gap="2" align="center" wrap="wrap">
       <Combobox.Root size="1">
         <Combobox.Trigger variant="surface">
-          <Combobox.Value placeholder="Select" />
+          <Combobox.Value placeholder="Size 1" />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -453,37 +816,9 @@ For toolbars and dense interfaces.
           </Combobox.List>
         </Combobox.Content>
       </Combobox.Root>
-    </Flex>
-  }
->
-
-```tsx
-<Combobox.Root size="1">
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
-```
-
-</CodeBlock>
-
-### Size 2
-
-For standard form contexts.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
       <Combobox.Root size="2">
         <Combobox.Trigger variant="surface">
-          <Combobox.Value placeholder="Select" />
+          <Combobox.Value placeholder="Size 2" />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -493,37 +828,9 @@ For standard form contexts.
           </Combobox.List>
         </Combobox.Content>
       </Combobox.Root>
-    </Flex>
-  }
->
-
-```tsx
-<Combobox.Root size="2">
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
-```
-
-</CodeBlock>
-
-### Size 3
-
-For prominent selections and mobile touch targets.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
       <Combobox.Root size="3">
         <Combobox.Trigger variant="surface">
-          <Combobox.Value placeholder="Select" />
+          <Combobox.Value placeholder="Size 3" />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -538,17 +845,9 @@ For prominent selections and mobile touch targets.
 >
 
 ```tsx
-<Combobox.Root size="3">
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
+<Combobox.Root size="1">  {/* 32px - toolbars */}
+<Combobox.Root size="2">  {/* 40px - standard */}
+<Combobox.Root size="3">  {/* 48px - prominent */}
 ```
 
 </CodeBlock>
@@ -559,7 +858,7 @@ For prominent selections and mobile touch targets.
 
 ## Colors
 
-Use the `color` prop with semantic colors to communicate selection intent. Use `highContrast` on Root for maximum visibility on both trigger and items, especially useful on complex or translucent backgrounds.
+Use the `color` prop on Root or Trigger for semantic colors. Use `highContrast` on Root for maximum visibility.
 
 <CodeBlock
   preview={
@@ -579,7 +878,7 @@ Use the `color` prop with semantic colors to communicate selection intent. Use `
       </Combobox.Root>
       <Combobox.Root size="2" color="crimson" highContrast>
         <Combobox.Trigger variant="soft">
-          <Combobox.Value placeholder="Select priority" />
+          <Combobox.Value placeholder="High contrast" />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -596,31 +895,11 @@ Use the `color` prop with semantic colors to communicate selection intent. Use `
 
 ```tsx
 <Combobox.Root size="2" color="crimson">
-  <Combobox.Trigger variant="soft">
-    <Combobox.Value placeholder="Select priority" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="high">High Priority</Combobox.Item>
-      <Combobox.Item value="medium">Medium Priority</Combobox.Item>
-      <Combobox.Item value="low">Low Priority</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
+  {/* Trigger and items get crimson color */}
 </Combobox.Root>
 
 <Combobox.Root size="2" color="crimson" highContrast>
-  <Combobox.Trigger variant="soft">
-    <Combobox.Value placeholder="Select priority" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="high">High Priority</Combobox.Item>
-      <Combobox.Item value="medium">Medium Priority</Combobox.Item>
-      <Combobox.Item value="low">Low Priority</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
+  {/* Maximum visibility mode */}
 </Combobox.Root>
 ```
 
@@ -634,14 +913,14 @@ Use the `color` prop with semantic colors to communicate selection intent. Use `
 
 ### Loading
 
-Set `loading` to `true` on Trigger to show a spinner during async operations. The trigger remains interactive.
+Set `loading` on Trigger to show a spinner during async operations.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
       <Combobox.Root size="2">
         <Combobox.Trigger variant="surface" loading>
-          <Combobox.Value placeholder="Loading options..." />
+          <Combobox.Value placeholder="Loading..." />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -655,31 +934,23 @@ Set `loading` to `true` on Trigger to show a spinner during async operations. Th
 >
 
 ```tsx
-<Combobox.Root size="2">
-  <Combobox.Trigger variant="surface" loading>
-    <Combobox.Value placeholder="Loading options..." />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
+<Combobox.Trigger variant="surface" loading>
+  <Combobox.Value placeholder="Loading..." />
+</Combobox.Trigger>
 ```
 
 </CodeBlock>
 
 ### Disabled
 
-Set the `disabled` prop on Root to prevent interaction when selection is unavailable.
+Set `disabled` on Root to prevent all interaction.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
       <Combobox.Root size="2" disabled>
         <Combobox.Trigger variant="surface">
-          <Combobox.Value placeholder="Select option" />
+          <Combobox.Value placeholder="Disabled" />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -694,15 +965,7 @@ Set the `disabled` prop on Root to prevent interaction when selection is unavail
 
 ```tsx
 <Combobox.Root size="2" disabled>
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select option" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
+  {/* Entire combobox is disabled */}
 </Combobox.Root>
 ```
 
@@ -710,14 +973,14 @@ Set the `disabled` prop on Root to prevent interaction when selection is unavail
 
 ### Error
 
-Use the `error` prop on Trigger to indicate validation failures or invalid selections.
+Use `error` on Trigger to indicate validation failures.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
       <Combobox.Root size="2">
         <Combobox.Trigger variant="surface" error>
-          <Combobox.Value placeholder="Select option" />
+          <Combobox.Value placeholder="Invalid selection" />
         </Combobox.Trigger>
         <Combobox.Content>
           <Combobox.Input placeholder="Search..." />
@@ -731,17 +994,9 @@ Use the `error` prop on Trigger to indicate validation failures or invalid selec
 >
 
 ```tsx
-<Combobox.Root size="2">
-  <Combobox.Trigger variant="surface" error>
-    <Combobox.Value placeholder="Select option" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
+<Combobox.Trigger variant="surface" error>
+  <Combobox.Value placeholder="Invalid" />
+</Combobox.Trigger>
 ```
 
 </CodeBlock>
@@ -752,7 +1007,7 @@ Use the `error` prop on Trigger to indicate validation failures or invalid selec
 
 ## Groups and Labels
 
-Organize options into logical groups with labels for better scannability in large lists.
+Organize options with groups and labels for better scannability.
 
 <CodeBlock>
 
@@ -762,13 +1017,12 @@ Organize options into logical groups with labels for better scannability in larg
     <Combobox.Value placeholder="Select framework" />
   </Combobox.Trigger>
   <Combobox.Content>
-    <Combobox.Input placeholder="Search frameworks..." />
+    <Combobox.Input placeholder="Search..." />
     <Combobox.List>
       <Combobox.Group>
         <Combobox.Label>React Ecosystem</Combobox.Label>
         <Combobox.Item value="react">React</Combobox.Item>
         <Combobox.Item value="next">Next.js</Combobox.Item>
-        <Combobox.Item value="remix">Remix</Combobox.Item>
       </Combobox.Group>
       <Combobox.Separator />
       <Combobox.Group>
@@ -776,7 +1030,6 @@ Organize options into logical groups with labels for better scannability in larg
         <Combobox.Item value="vue">Vue</Combobox.Item>
         <Combobox.Item value="nuxt">Nuxt</Combobox.Item>
       </Combobox.Group>
-      <Combobox.Empty>No matches</Combobox.Empty>
     </Combobox.List>
   </Combobox.Content>
 </Combobox.Root>
@@ -790,11 +1043,11 @@ Organize options into logical groups with labels for better scannability in larg
 
 ## Custom Filtering
 
-Control search behavior with `shouldFilter` and custom `filter` functions for advanced use cases.
+Control search with `shouldFilter` and `filter` props on Root.
 
-### Disable Built-in Filtering
+### Disable Filtering
 
-For async data fetching or server-side search, disable built-in filtering.
+For async/server-side search:
 
 <CodeBlock>
 
@@ -804,7 +1057,6 @@ function AsyncCombobox() {
   const [options, setOptions] = React.useState([]);
 
   React.useEffect(() => {
-    // Fetch options based on searchValue
     fetchOptions(searchValue).then(setOptions);
   }, [searchValue]);
 
@@ -815,20 +1067,7 @@ function AsyncCombobox() {
       searchValue={searchValue}
       onSearchValueChange={setSearchValue}
     >
-      <Combobox.Trigger variant="surface">
-        <Combobox.Value placeholder="Search..." />
-      </Combobox.Trigger>
-      <Combobox.Content>
-        <Combobox.Input placeholder="Type to search..." />
-        <Combobox.List>
-          {options.map(opt => (
-            <Combobox.Item key={opt.id} value={opt.id}>
-              {opt.label}
-            </Combobox.Item>
-          ))}
-          <Combobox.Empty>No results</Combobox.Empty>
-        </Combobox.List>
-      </Combobox.Content>
+      {/* ... */}
     </Combobox.Root>
   );
 }
@@ -836,9 +1075,9 @@ function AsyncCombobox() {
 
 </CodeBlock>
 
-### Custom Filter Function
+### Custom Filter
 
-Provide a custom filter function for specialized ranking logic.
+Provide custom ranking logic:
 
 <CodeBlock>
 
@@ -849,21 +1088,12 @@ const customFilter = (value: string, search: string, keywords?: string[]) => {
   
   if (valueLower.startsWith(searchLower)) return 1;
   if (valueLower.includes(searchLower)) return 0.5;
-  if (keywords?.some(k => k.toLowerCase().includes(searchLower))) return 0.25;
   
   return 0;
 };
 
 <Combobox.Root size="2" filter={customFilter}>
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
+  {/* ... */}
 </Combobox.Root>
 ```
 
@@ -875,29 +1105,21 @@ const customFilter = (value: string, search: string, keywords?: string[]) => {
 
 ## Empty State
 
-Use `Combobox.Empty` to provide helpful feedback when no options match the search.
+Use `Combobox.Empty` for helpful feedback when no results match.
 
 <CodeBlock>
 
 ```tsx
-<Combobox.Root size="2">
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select framework" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search frameworks..." />
-    <Combobox.List>
-      <Combobox.Item value="react">React</Combobox.Item>
-      <Combobox.Item value="vue">Vue</Combobox.Item>
-      <Combobox.Empty>
-        <Flex direction="column" gap="1" py="3" align="center">
-          <Text size="2" weight="medium">No frameworks found</Text>
-          <Text size="1" color="gray">Try a different search term</Text>
-        </Flex>
-      </Combobox.Empty>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
+<Combobox.List>
+  <Combobox.Item value="react">React</Combobox.Item>
+  <Combobox.Item value="vue">Vue</Combobox.Item>
+  <Combobox.Empty>
+    <Flex direction="column" gap="1" py="3" align="center">
+      <Text size="2" weight="medium">No options found</Text>
+      <Text size="1" color="gray">Try a different search</Text>
+    </Flex>
+  </Combobox.Empty>
+</Combobox.List>
 ```
 
 </CodeBlock>
@@ -908,47 +1130,13 @@ Use `Combobox.Empty` to provide helpful feedback when no options match the searc
 
 ## Responsive
 
-Use responsive objects with the `size` prop to adapt combobox sizing across different breakpoints. The component uses a mobile-first approach.
+Use responsive objects with `size` on Root.
 
 <CodeBlock>
 
 ```tsx
 <Combobox.Root size={{ initial: '1', sm: '2', md: '3' }}>
-  <Combobox.Trigger variant="surface">
-    <Combobox.Value placeholder="Select" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
-</Combobox.Root>
-```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
-## Margin
-
-Use margin props for spacing around combobox. All margin props are responsive and accept design tokens or CSS values.
-
-<CodeBlock>
-
-```tsx
-<Combobox.Root size="2">
-  <Combobox.Trigger variant="surface" mx="2">
-    <Combobox.Value placeholder="Select" />
-  </Combobox.Trigger>
-  <Combobox.Content>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.List>
-      <Combobox.Item value="1">Option 1</Combobox.Item>
-    </Combobox.List>
-  </Combobox.Content>
+  {/* Adapts to breakpoints */}
 </Combobox.Root>
 ```
 
@@ -960,32 +1148,23 @@ Use margin props for spacing around combobox. All margin props are responsive an
 
 ## Accessibility
 
-Combobox is built on cmdk and Radix Popover, providing comprehensive keyboard support and ARIA attributes.
+Built on cmdk and Radix Popover with comprehensive keyboard support.
 
 ### Keyboard Navigation
 
 - **Space/Enter** - Open dropdown
 - **Type** - Filter options
-- **Arrow Up/Down** - Navigate options
-- **Enter** - Select focused option
-- **Escape** - Close dropdown
+- **Arrow Up/Down** - Navigate
+- **Enter** - Select
+- **Escape** - Close
 - **Tab** - Close and move focus
 
-### ARIA Attributes
+### ARIA
 
-The component automatically manages:
-- `aria-expanded` - Indicates dropdown state
-- `aria-haspopup="listbox"` - Announces dropdown behavior
-- `aria-disabled` - Indicates disabled state
-- `role="combobox"` - Proper semantic role
-- `aria-controls` - Links trigger to dropdown
-
-### Screen Reader Support
-
-- Input receives focus when dropdown opens
-- Options are announced during keyboard navigation
-- Selection state is communicated clearly
-- Empty state is announced appropriately
+- `aria-expanded` - Dropdown state
+- `aria-haspopup="listbox"` - Announces behavior
+- `aria-disabled` - Disabled state
+- `role="combobox"` - Semantic role
 
 </Section>
 
@@ -995,40 +1174,30 @@ The component automatically manages:
 
 ### When to Use
 
-- **Filterable Lists** - When users need to search through 7+ options
-- **Command Palettes** - For quick access to commands and actions
-- **Autocomplete** - When suggesting options based on user input
-- **Large Datasets** - When scrolling through all options isn't practical
+- Filterable lists (7+ options)
+- Command palettes
+- Autocomplete
+- Large datasets
 
 ### When Not to Use
 
-- **Few Options** - Use Select for 7 or fewer static options
-- **Radio Groups** - When all options should be visible simultaneously
-- **Multi-Select** - Use a different component for multiple selections
+- Few options (use Select)
+- All options visible (use Radio Group)
+- Multi-select (use different component)
 
 ### Best Practices
 
 **Do:**
-- Match the variant to surrounding form controls for consistency
-- Use groups and labels for lists with 10+ items
-- Provide helpful empty state messages
-- Keep option labels concise and scannable
-- Use size 2 or 3 for mobile touch targets
+- Match trigger variant to surrounding inputs
+- Use groups for 10+ items
+- Provide helpful empty states
+- Use size 2-3 for mobile
 
 **Don't:**
-- Mix multiple combobox variants in the same form
-- Use tiny size 1 on mobile devices
-- Create groups with only 1-2 items
-- Show spinners longer than necessary
-- Use ghost variant in forms requiring clear boundaries
-
-### Layout Guidelines
-
-- **Alignment** - Align combobox width with adjacent inputs
-- **Spacing** - Use consistent spacing between form fields
-- **Width** - Size appropriately for expected content length
-- **Labels** - Always pair with descriptive labels above or beside
-- **Help Text** - Place validation or help text below the trigger
+- Mix variants in same form
+- Use size 1 on mobile
+- Create 1-2 item groups
+- Use ghost in forms needing boundaries
 
 </Section>
 
@@ -1037,41 +1206,22 @@ The component automatically manages:
 ## Changelog
 
 - **Added**
-  - Initial Combobox component with search and filter functionality
-  - Support for all trigger variants: classic, surface, soft, outline, ghost
-  - Three size options (1, 2, 3) matching form control density
-  - Built-in fuzzy search with cmdk filtering engine
-  - Custom filter function support for advanced ranking
-  - Groups, labels, and separators for organized lists
-  - Loading state with spinner for async operations
-  - Error state for validation feedback
-  - Disabled state for unavailable selections
-  - Empty state support with custom content
-  - Responsive size prop support
-  - Material prop for translucent effects
-  - Color and highContrast support on Root
-  - Margin prop system
-  - Full keyboard navigation (arrows, enter, escape, tab)
-  - Roving focus with configurable loop behavior
-  - **RTL (Right-to-Left) layout support**
-  - **Windows High Contrast mode support**
-  - **Enhanced reduced motion support**
-
-- **Features**
-  - Controlled and uncontrolled state management
-  - Separate control for value and search state
-  - Portal rendering with collision detection
-  - Automatic width matching to trigger
-  - Checkmark indicator for selected items
-  - Smooth open/close animations
-  - ScrollArea integration for long lists
-
-- **Accessibility**
-  - Comprehensive ARIA attributes
-  - Screen reader announcements
-  - Keyboard navigation support
-  - Focus management between input and list
-  - High contrast mode support
+  - Initial Combobox with search and filter
+  - Trigger variants: classic, surface, soft, outline, ghost
+  - Content variants: solid, soft
+  - Three sizes (1, 2, 3)
+  - Built-in fuzzy search (cmdk)
+  - Custom filter support
+  - Groups, labels, separators
+  - Loading, error, disabled states
+  - Empty state support
+  - Responsive sizing
+  - Material prop
+  - Color and highContrast on Root
+  - Margin props
+  - Full keyboard navigation
+  - RTL support
+  - High contrast mode
   - Reduced motion support
 
 </Section>

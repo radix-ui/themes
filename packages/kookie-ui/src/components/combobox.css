@@ -1,3 +1,4 @@
+/* Combobox styles extend BaseMenu primitives and TextField tokens for search input parity. */
 @import './_internal/base-menu.css';
 @import './text-field.css';
 
@@ -5,6 +6,19 @@
 .rt-ComboboxContent {
   padding: 0 !important;
   max-height: var(--radix-popover-content-available-height);
+  display: flex;
+  flex-direction: column;
+}
+
+.rt-ComboboxCommand {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.rt-ComboboxViewport {
+  padding-top: 0 !important;
 }
 
 .rt-BaseMenuContent:where(.rt-r-size-1) :where(.rt-ComboboxItem) {
@@ -32,21 +46,12 @@
   cursor: var(--cursor-menu-item) !important;
 }
 
-/* Command container uses flex layout with gap */
-.rt-ComboboxCommand {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
 /* Sticky search input with consistent padding */
 .rt-ComboboxSearch {
   position: sticky;
   top: 0;
   z-index: 1;
   padding: var(--base-menu-content-padding);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--gray-a3);
   background-color: var(--color-panel);
 }
 
@@ -57,6 +62,11 @@
 
 .rt-ComboboxSearch :where(.rt-ComboboxInputRoot) {
   width: 100%;
+}
+
+.rt-ScrollAreaRoot:where(.rt-ComboboxScrollArea) {
+  flex: 1;
+  min-height: 0;
 }
 
 /* Map cmdk's selected state to base-menu highlighted state */

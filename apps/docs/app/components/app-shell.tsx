@@ -49,6 +49,12 @@ const navigationItems = [
     icon: Square,
     badge: undefined,
   },
+  {
+    href: '/docs/combobox',
+    title: 'Combobox',
+    icon: Code,
+    badge: { content: 'Alpha', highContrast: true, size: '1' as const },
+  },
   // {
   //   href: '/docs/shell',
   //   title: 'Shell',

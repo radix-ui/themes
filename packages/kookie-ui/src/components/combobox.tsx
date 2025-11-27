@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * Combobox is a compound component built on top of Popover and cmdk's Command list.
+ * It mirrors the Select API while adding search-first behaviors including filtering,
+ * async-friendly state management, and design token support for trigger, content,
+ * and input variants.
+ */
+
 import * as React from 'react';
 import classNames from 'classnames';
 import { useControllableState } from 'radix-ui/internal';
@@ -24,6 +31,9 @@ type TextFieldVariant = (typeof textFieldRootPropDefs.variant.values)[number];
 type ComboboxValue = string | null;
 type CommandFilter = (value: string, search: string, keywords?: string[]) => number;
 
+/**
+ * Additional props supported by Combobox.Root beyond the Radix Popover surface.
+ */
 type ComboboxRootOwnProps = GetPropDefTypes<typeof comboboxRootPropDefs> & {
   value?: ComboboxValue;
   defaultValue?: ComboboxValue;
@@ -42,6 +52,9 @@ type ComboboxRootOwnProps = GetPropDefTypes<typeof comboboxRootPropDefs> & {
   disabled?: boolean;
 };
 
+/**
+ * Internal context shared by all sub-components to avoid prop drilling.
+ */
 interface ComboboxContextValue extends ComboboxRootOwnProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -55,6 +68,10 @@ interface ComboboxContextValue extends ComboboxRootOwnProps {
 }
 
 const ComboboxContext = React.createContext<ComboboxContextValue | null>(null);
+
+/**
+ * Utility hook that ensures consumers are wrapped in Combobox.Root.
+ */
 const useComboboxContext = (caller: string) => {
   const ctx = React.useContext(ComboboxContext);
   if (!ctx) {
@@ -63,6 +80,10 @@ const useComboboxContext = (caller: string) => {
   return ctx;
 };
 
+/**
+ * Context for values that are only available inside Content (e.g., variant, color)
+ * so that Input/Item can style themselves consistently.
+ */
 const ComboboxContentContext = React.createContext<{ variant: 'solid' | 'soft'; size?: string; color?: string; material?: string; highContrast?: boolean } | null>(null);
 const useComboboxContentContext = () => {
   const ctx = React.useContext(ComboboxContentContext);
@@ -71,6 +92,10 @@ const useComboboxContentContext = () => {
 
 type PopoverRootProps = React.ComponentPropsWithoutRef<typeof Popover.Root>;
 interface ComboboxRootProps extends PopoverRootProps, ComboboxRootOwnProps {}
+/**
+ * Root component that wires up Popover behavior, controllable state,
+ * and shared context for trigger/content/input sub-components.
+ */
 const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
   const {
     children,
@@ -101,7 +126,7 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
   });
 
   const [value, setValue] = useControllableState<ComboboxValue>({
-    prop: valueProp ?? null,
+    prop: valueProp,
     defaultProp: defaultValue,
     onChange: onValueChange,
   });
@@ -183,6 +208,10 @@ type ComboboxTriggerElement = HTMLButtonElement;
 type ComboboxTriggerOwnProps = GetPropDefTypes<typeof comboboxTriggerPropDefs>;
 type NativeTriggerProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'color'>;
 interface ComboboxTriggerProps extends NativeTriggerProps, MarginProps, ComboboxTriggerOwnProps {}
+/**
+ * Trigger behaves like a styled button that opens the Popover,
+ * syncing size/highContrast from Root while exposing select-like states.
+ */
 const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTriggerProps>((props, forwardedRef) => {
   const context = useComboboxContext('Combobox.Trigger');
   const { children, className, placeholder, disabled, readOnly, error, loading, color, radius, ...triggerProps } = extractProps(
@@ -222,6 +251,9 @@ const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTrigger
     </>
   );
 
+  const { type: buttonType, ...restTriggerProps } = triggerProps;
+  const resolvedButtonType = buttonType ?? 'button';
+
   const triggerChild = (
     <button
       data-accent-color={color}
@@ -232,8 +264,10 @@ const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTrigger
       data-loading={loading}
       data-disabled={isDisabled || undefined}
       data-read-only={readOnly || undefined}
-      {...triggerProps}
+      {...restTriggerProps}
       {...ariaProps}
+      type={resolvedButtonType}
+      disabled={isDisabled}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-SelectTrigger', 'rt-ComboboxTrigger', className)}
     >
@@ -249,6 +283,10 @@ type ComboboxValueElement = HTMLSpanElement;
 interface ComboboxValueProps extends React.ComponentPropsWithoutRef<'span'> {
   placeholder?: string;
 }
+/**
+ * Value mirrors Select.Value by showing the selected item's label
+ * or falling back to placeholder text supplied by the consumer or context.
+ */
 const ComboboxValue = React.forwardRef<ComboboxValueElement, ComboboxValueProps>(({ placeholder, children, className, ...valueProps }, forwardedRef) => {
   const context = useComboboxContext('Combobox.Value');
   const displayValue = context.selectedLabel ?? context.value ?? undefined;
@@ -266,6 +304,10 @@ type ComboboxContentOwnProps = GetPropDefTypes<typeof comboboxContentPropDefs> &
   container?: React.ComponentPropsWithoutRef<typeof Popover.Content>['container'];
 };
 interface ComboboxContentProps extends Omit<ComponentPropsWithout<typeof Popover.Content, RemovedProps>, 'size'>, ComboboxContentOwnProps {}
+/**
+ * Content renders the dropdown surface, syncing tokens from the current Theme
+ * and instantiating cmdk's Command list for roving focus + filtering.
+ */
 const ComboboxContent = React.forwardRef<ComboboxContentElement, ComboboxContentProps>((props, forwardedRef) => {
   const context = useComboboxContext('Combobox.Content');
   const themeContext = useThemeContext();
@@ -306,22 +348,18 @@ const ComboboxContent = React.forwardRef<ComboboxContentElement, ComboboxContent
       className={classNames('rt-PopperContent', 'rt-BaseMenuContent', 'rt-ComboboxContent', sanitizedClassName)}
     >
       <Theme asChild>
-        <ScrollArea type="auto">
-          <div className={classNames('rt-BaseMenuViewport', 'rt-ComboboxViewport')}>
-            <ComboboxContentContext.Provider value={{ variant: variantProp, size: String(sizeProp), color: resolvedColor, material: effectiveMaterial, highContrast: highContrastProp }}>
-              <CommandPrimitive
-                loop={context.loop}
-                value={context.searchValue}
-                onValueChange={context.setSearchValue}
-                shouldFilter={context.shouldFilter}
-                filter={context.filter}
-                className="rt-ComboboxCommand"
-              >
-                {children}
-              </CommandPrimitive>
-            </ComboboxContentContext.Provider>
-          </div>
-        </ScrollArea>
+        <ComboboxContentContext.Provider value={{ variant: variantProp, size: String(sizeProp), color: resolvedColor, material: effectiveMaterial, highContrast: highContrastProp }}>
+          <CommandPrimitive
+            loop={context.loop}
+            value={context.searchValue}
+            onValueChange={context.setSearchValue}
+            shouldFilter={context.shouldFilter}
+            filter={context.filter}
+            className="rt-ComboboxCommand"
+          >
+            {children}
+          </CommandPrimitive>
+        </ComboboxContentContext.Provider>
       </Theme>
     </Popover.Content>
   );
@@ -334,6 +372,10 @@ interface ComboboxInputProps extends React.ComponentPropsWithoutRef<typeof Comma
   endAdornment?: React.ReactNode;
   variant?: TextFieldVariant;
 }
+/**
+ * Input composes TextField tokens with cmdk's Command.Input to provide
+ * automatic focus management and optional adornments.
+ */
 const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInputProps>(({ className, startAdornment, endAdornment, placeholder, variant: inputVariant, ...inputProps }, forwardedRef) => {
   const context = useComboboxContext('Combobox.Input');
   const contentContext = useComboboxContentContext();
@@ -344,7 +386,7 @@ const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInputProps>
   // Map combobox variant to textfield variant: solid -> surface, soft -> soft unless overridden
   const textFieldVariant = inputVariant ?? (contentVariant === 'solid' ? 'surface' : 'soft');
 
-  return (
+  const inputField = (
     <div
       className={classNames('rt-TextFieldRoot', 'rt-ComboboxInputRoot', `rt-r-size-${context.size}`, `rt-variant-${textFieldVariant}`)}
       data-accent-color={color}
@@ -360,18 +402,34 @@ const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInputProps>
       ) : null}
     </div>
   );
+
+  if (contentContext) {
+    return <div className="rt-ComboboxSearch">{inputField}</div>;
+  }
+
+  return inputField;
 });
 ComboboxInput.displayName = 'Combobox.Input';
 
 type ComboboxListElement = React.ElementRef<typeof CommandPrimitive.List>;
 interface ComboboxListProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> {}
+/**
+ * List wraps cmdk's Command.List to inherit base menu styles and provides ScrollArea for the items.
+ */
 const ComboboxList = React.forwardRef<ComboboxListElement, ComboboxListProps>(({ className, ...listProps }, forwardedRef) => (
-  <CommandPrimitive.List {...listProps} ref={forwardedRef} className={classNames('rt-ComboboxList', className)} />
+  <ScrollArea type="auto" className="rt-ComboboxScrollArea" scrollbars="vertical" size="1">
+    <div className={classNames('rt-BaseMenuViewport', 'rt-ComboboxViewport')}>
+      <CommandPrimitive.List {...listProps} ref={forwardedRef} className={classNames('rt-ComboboxList', className)} />
+    </div>
+  </ScrollArea>
 ));
 ComboboxList.displayName = 'Combobox.List';
 
 type ComboboxEmptyElement = React.ElementRef<typeof CommandPrimitive.Empty>;
 interface ComboboxEmptyProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty> {}
+/**
+ * Empty renders when no options match the search query.
+ */
 const ComboboxEmpty = React.forwardRef<ComboboxEmptyElement, ComboboxEmptyProps>(({ className, ...emptyProps }, forwardedRef) => (
   <CommandPrimitive.Empty {...emptyProps} ref={forwardedRef} className={classNames('rt-ComboboxEmpty', className)} />
 ));
@@ -379,6 +437,9 @@ ComboboxEmpty.displayName = 'Combobox.Empty';
 
 type ComboboxGroupElement = React.ElementRef<typeof CommandPrimitive.Group>;
 interface ComboboxGroupProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> {}
+/**
+ * Group and Label mirror menu semantics for subheadings inside the list.
+ */
 const ComboboxGroup = React.forwardRef<ComboboxGroupElement, ComboboxGroupProps>(({ className, ...groupProps }, forwardedRef) => (
   <CommandPrimitive.Group {...groupProps} ref={forwardedRef} className={classNames('rt-BaseMenuGroup', 'rt-ComboboxGroup', className)} />
 ));
@@ -393,6 +454,9 @@ ComboboxLabel.displayName = 'Combobox.Label';
 
 type ComboboxSeparatorElement = React.ElementRef<typeof CommandPrimitive.Separator>;
 interface ComboboxSeparatorProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator> {}
+/**
+ * Separator visually divides logical sections of the option list.
+ */
 const ComboboxSeparator = React.forwardRef<ComboboxSeparatorElement, ComboboxSeparatorProps>(({ className, ...separatorProps }, forwardedRef) => (
   <CommandPrimitive.Separator {...separatorProps} ref={forwardedRef} className={classNames('rt-BaseMenuSeparator', 'rt-ComboboxSeparator', className)} />
 ));
@@ -402,6 +466,10 @@ type ComboboxItemElement = React.ElementRef<typeof CommandPrimitive.Item>;
 interface ComboboxItemProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> {
   label?: string;
 }
+/**
+ * Item wires cmdk's selection handling with Kookie UI tokens and
+ * ensures labels are registered for displaying the current value.
+ */
 const ComboboxItem = React.forwardRef<ComboboxItemElement, ComboboxItemProps>(({ className, children, label, value, disabled, onSelect, ...itemProps }, forwardedRef) => {
   const context = useComboboxContext('Combobox.Item');
   const contentContext = useComboboxContentContext();

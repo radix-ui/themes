@@ -7,6 +7,9 @@ import type { PropDef } from '../props/prop-def.js';
 
 const sizes = ['1', '2', '3'] as const;
 
+/**
+ * Shared responsive sizing + high contrast support inherited by Combobox.Root.
+ */
 const comboboxRootPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   ...highContrastPropDef,
@@ -17,6 +20,9 @@ const comboboxRootPropDefs = {
 
 const triggerVariants = ['classic', 'surface', 'soft', 'outline', 'ghost'] as const;
 
+/**
+ * Token-aware props specific to Combobox.Trigger.
+ */
 const comboboxTriggerPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: triggerVariants, default: 'surface' },
   panelBackground: {
@@ -47,6 +53,9 @@ const comboboxTriggerPropDefs = {
 
 const contentVariants = ['solid', 'soft'] as const;
 
+/**
+ * Styling props for the dropdown surface rendered by Combobox.Content.
+ */
 const comboboxContentPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: contentVariants, default: 'solid' },
