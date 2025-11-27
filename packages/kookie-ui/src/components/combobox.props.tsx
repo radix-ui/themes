@@ -9,8 +9,10 @@ const sizes = ['1', '2', '3'] as const;
 
 const comboboxRootPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
+  ...highContrastPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
+  highContrast: PropDef<boolean>;
 };
 
 const triggerVariants = ['classic', 'surface', 'soft', 'outline', 'ghost'] as const;
@@ -23,7 +25,6 @@ const comboboxTriggerPropDefs = {
     values: ['solid', 'translucent'],
   },
   material: { type: 'enum', values: ['solid', 'translucent'] },
-  ...highContrastPropDef,
   error: { type: 'boolean' },
   loading: { type: 'boolean' },
   disabled: { type: 'boolean' },
@@ -36,7 +37,6 @@ const comboboxTriggerPropDefs = {
   variant: PropDef<(typeof triggerVariants)[number]>;
   panelBackground: PropDef<'solid' | 'translucent'>;
   material: PropDef<'solid' | 'translucent'>;
-  highContrast: PropDef<boolean>;
   error: PropDef<boolean>;
   loading: PropDef<boolean>;
   disabled: PropDef<boolean>;

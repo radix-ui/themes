@@ -63,7 +63,7 @@ const useComboboxContext = (caller: string) => {
   return ctx;
 };
 
-const ComboboxContentContext = React.createContext<{ variant: 'solid' | 'soft'; size?: string; color?: string; material?: string } | null>(null);
+const ComboboxContentContext = React.createContext<{ variant: 'solid' | 'soft'; size?: string; color?: string; material?: string; highContrast?: boolean } | null>(null);
 const useComboboxContentContext = () => {
   const ctx = React.useContext(ComboboxContentContext);
   return ctx; // Optional - Input might not always be in Content
@@ -75,6 +75,7 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
   const {
     children,
     size = comboboxRootPropDefs.size.default,
+    highContrast = comboboxRootPropDefs.highContrast.default,
     value: valueProp,
     defaultValue = null,
     onValueChange,
@@ -130,6 +131,7 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
   const contextValue = React.useMemo<ComboboxContextValue>(
     () => ({
       size,
+      highContrast,
       placeholder,
       searchPlaceholder,
       filter,
@@ -146,7 +148,25 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
       registerItemLabel,
       handleSelect,
     }),
-    [size, placeholder, searchPlaceholder, filter, shouldFilter, loop, disabled, open, setOpen, value, setValue, searchValue, setSearchValue, selectedLabel, registerItemLabel, handleSelect],
+    [
+      size,
+      highContrast,
+      placeholder,
+      searchPlaceholder,
+      filter,
+      shouldFilter,
+      loop,
+      disabled,
+      open,
+      setOpen,
+      value,
+      setValue,
+      searchValue,
+      setSearchValue,
+      selectedLabel,
+      registerItemLabel,
+      handleSelect,
+    ],
   );
 
   return (
@@ -165,12 +185,15 @@ type NativeTriggerProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'color'
 interface ComboboxTriggerProps extends NativeTriggerProps, MarginProps, ComboboxTriggerOwnProps {}
 const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTriggerProps>((props, forwardedRef) => {
   const context = useComboboxContext('Combobox.Trigger');
-  const { children, className, placeholder, disabled, readOnly, ...triggerProps } = extractProps(
-    { size: context.size, ...props },
-    { size: comboboxRootPropDefs.size },
+  const { children, className, placeholder, disabled, readOnly, error, loading, color, radius, ...triggerProps } = extractProps(
+    { size: context.size, highContrast: context.highContrast, ...props },
+    { size: comboboxRootPropDefs.size, highContrast: comboboxRootPropDefs.highContrast },
     comboboxTriggerPropDefs,
     marginPropDefs,
   );
+
+  // Extract material and panelBackground separately since they need to be passed as data attributes
+  const { material, panelBackground } = props;
 
   const isDisabled = disabled ?? context.disabled;
   const ariaProps = React.useMemo(
@@ -187,12 +210,26 @@ const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTrigger
       <span className="rt-SelectTriggerInner">
         <ComboboxValue placeholder={placeholder ?? context.placeholder} />
       </span>
-      <ChevronDownIcon className="rt-SelectIcon" />
+      {loading ? (
+        <div className="rt-SelectIcon rt-SelectLoadingIcon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeDasharray="6 34" strokeDashoffset="0" className="rt-SelectLoadingSpinner" />
+          </svg>
+        </div>
+      ) : (
+        <ChevronDownIcon className="rt-SelectIcon" />
+      )}
     </>
   );
 
   const triggerChild = (
     <button
+      data-accent-color={color}
+      data-radius={radius}
+      data-panel-background={panelBackground}
+      data-material={material}
+      data-error={error}
+      data-loading={loading}
       data-disabled={isDisabled || undefined}
       data-read-only={readOnly || undefined}
       {...triggerProps}
@@ -236,7 +273,7 @@ const ComboboxContent = React.forwardRef<ComboboxContentElement, ComboboxContent
 
   const sizeProp = props.size ?? context.size ?? comboboxContentPropDefs.size.default;
   const variantProp = props.variant ?? comboboxContentPropDefs.variant.default;
-  const highContrastProp = props.highContrast ?? comboboxContentPropDefs.highContrast.default;
+  const highContrastProp = props.highContrast ?? context.highContrast ?? comboboxContentPropDefs.highContrast.default;
 
   const { className, children, color, forceMount, container, ...contentProps } = extractProps(
     { ...props, size: sizeProp, variant: variantProp, highContrast: highContrastProp },
@@ -271,7 +308,7 @@ const ComboboxContent = React.forwardRef<ComboboxContentElement, ComboboxContent
       <Theme asChild>
         <ScrollArea type="auto">
           <div className={classNames('rt-BaseMenuViewport', 'rt-ComboboxViewport')}>
-            <ComboboxContentContext.Provider value={{ variant: variantProp, size: String(sizeProp), color: resolvedColor, material: effectiveMaterial }}>
+            <ComboboxContentContext.Provider value={{ variant: variantProp, size: String(sizeProp), color: resolvedColor, material: effectiveMaterial, highContrast: highContrastProp }}>
               <CommandPrimitive
                 loop={context.loop}
                 value={context.searchValue}

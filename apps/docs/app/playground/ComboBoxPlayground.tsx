@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Combobox } from '@kushagradhawan/kookie-ui';
+import { Combobox, Flex } from '@kushagradhawan/kookie-ui';
+import { MapPin, Landmark, Mountain, Palmtree, Building2, Coffee, Cherry, Soup, Pizza, Beer, Flag, Trees, Pyramid, TreePalm, Ship, TentTree } from 'lucide-react';
 import Playground from '../components/playground';
 
 const variants = ['classic', 'surface', 'soft', 'outline', 'ghost'] as const;
@@ -15,36 +16,36 @@ const countriesByContinent = [
   {
     continent: 'Europe',
     countries: [
-      { value: 'france', label: 'France' },
-      { value: 'germany', label: 'Germany' },
-      { value: 'italy', label: 'Italy' },
-      { value: 'spain', label: 'Spain' },
-      { value: 'uk', label: 'United Kingdom' },
+      { value: 'france', label: 'France', icon: Coffee },
+      { value: 'germany', label: 'Germany', icon: Beer },
+      { value: 'italy', label: 'Italy', icon: Pizza },
+      { value: 'spain', label: 'Spain', icon: Palmtree },
+      { value: 'uk', label: 'United Kingdom', icon: Landmark },
     ],
   },
   {
     continent: 'North America',
     countries: [
-      { value: 'usa', label: 'United States' },
-      { value: 'canada', label: 'Canada' },
-      { value: 'mexico', label: 'Mexico' },
+      { value: 'usa', label: 'United States', icon: Flag },
+      { value: 'canada', label: 'Canada', icon: Trees },
+      { value: 'mexico', label: 'Mexico', icon: Pyramid },
     ],
   },
   {
     continent: 'Asia',
     countries: [
-      { value: 'japan', label: 'Japan' },
-      { value: 'china', label: 'China' },
-      { value: 'india', label: 'India' },
-      { value: 'south-korea', label: 'South Korea' },
+      { value: 'japan', label: 'Japan', icon: Cherry },
+      { value: 'china', label: 'China', icon: Building2 },
+      { value: 'india', label: 'India', icon: Soup },
+      { value: 'south-korea', label: 'South Korea', icon: Mountain },
     ],
   },
   {
     continent: 'South America',
     countries: [
-      { value: 'brazil', label: 'Brazil' },
-      { value: 'argentina', label: 'Argentina' },
-      { value: 'chile', label: 'Chile' },
+      { value: 'brazil', label: 'Brazil', icon: TreePalm },
+      { value: 'argentina', label: 'Argentina', icon: Ship },
+      { value: 'chile', label: 'Chile', icon: TentTree },
     ],
   },
 ];
@@ -63,55 +64,73 @@ export default function ComboBoxPlayground() {
   const resolvedContentWidth = triggerWidth === 'fit-content' ? '240px' : triggerWidth;
 
   const generateCode = () => {
-    const triggerProps = [`size="${size}"`, `variant="${variant}"`];
+    const rootProps = [`size="${size}"`];
+    if (highContrast) rootProps.push('highContrast');
+    if (disabled) rootProps.push('disabled');
+
+    const triggerProps = [`variant="${variant}"`];
     if (color !== 'theme') triggerProps.push(`color="${color}"`);
-    if (highContrast) triggerProps.push('highContrast');
     if (triggerWidth !== 'fit-content') triggerProps.push(`width="${triggerWidth}"`);
-    if (disabled) triggerProps.push('disabled');
 
     const listMarkup = countriesByContinent
       .map(
         (group) => `        <Combobox.Group>
           <Combobox.Label>${group.continent}</Combobox.Label>
-${group.countries.map((country) => `          <Combobox.Item value="${country.value}">${country.label}</Combobox.Item>`).join('\n')}
+${group.countries
+  .map(
+    (country) => `          <Combobox.Item value="${country.value}">
+            <Flex gap="2" align="center">
+              <${country.icon.name} size={16} />
+              ${country.label}
+            </Flex>
+          </Combobox.Item>`,
+  )
+  .join('\n')}
         </Combobox.Group>`,
       )
       .join('\n');
 
-    return `const countriesByContinent = [
+    // Get all unique icons
+    const allIcons = countriesByContinent.flatMap((g) => g.countries.map((c) => c.icon.name));
+    const uniqueIcons = [...new Set(allIcons)];
+
+    return `import { Combobox, Flex } from '@kushagradhawan/kookie-ui';
+import { ${uniqueIcons.join(', ')} } from 'lucide-react';
+
+const countriesByContinent = [
   {
     continent: 'Europe',
     countries: [
-      { value: 'france', label: 'France' },
-      { value: 'germany', label: 'Germany' },
-      { value: 'italy', label: 'Italy' },
-      { value: 'spain', label: 'Spain' },
-      { value: 'uk', label: 'United Kingdom' },
+      { value: 'france', label: 'France', icon: Coffee },
+      { value: 'germany', label: 'Germany', icon: Beer },
+      { value: 'italy', label: 'Italy', icon: Pizza },
+      { value: 'spain', label: 'Spain', icon: Palmtree },
+      { value: 'uk', label: 'United Kingdom', icon: Landmark },
     ],
   },
   {
     continent: 'North America',
     countries: [
-      { value: 'usa', label: 'United States' },
-      { value: 'canada', label: 'Canada' },
-      { value: 'mexico', label: 'Mexico' },
+      { value: 'usa', label: 'United States', icon: Flag },
+      { value: 'canada', label: 'Canada', icon: Trees },
+      { value: 'mexico', label: 'Mexico', icon: Pyramid },
     ],
   },
   {
     continent: 'Asia',
     countries: [
-      { value: 'japan', label: 'Japan' },
-      { value: 'china', label: 'China' },
-      { value: 'india', label: 'India' },
-      { value: 'south-korea', label: 'South Korea' },
+      { value: 'japan', label: 'Japan', icon: Cherry },
+      { value: 'china', label: 'China', icon: Building2 },
+      { value: 'india', label: 'India', icon: Soup },
+      { value: 'south-korea', label: 'South Korea', icon: Mountain },
     ],
   },
   {
     continent: 'South America',
     countries: [
-      { value: 'brazil', label: 'Brazil' },
-      { value: 'argentina', label: 'Argentina' },
-      { value: 'chile', label: 'Chile' },
+      { value: 'brazil', label: 'Brazil', icon: TreePalm },
+      { value: 'argentina', label: 'Argentina', icon: Ship },
+      { value: 'chile', label: 'Chile', icon: TentTree },
     ],
   },
 ];
@@ -119,7 +138,7 @@ ${group.countries.map((country) => `          <Combobox.Item value="${country.va
 const [value, setValue] = React.useState<string | null>(${value ? `'${value}'` : 'null'});
 
 return (
-  <Combobox.Root size="${size}" value={value} onValueChange={setValue} loop={${loop}}${disabled ? ' disabled' : ''}>
+  <Combobox.Root ${rootProps.join(' ')} value={value} onValueChange={setValue} loop={${loop}}>
     <Combobox.Trigger ${triggerProps.join(' ')}>
       <Combobox.Value placeholder="Select a country" />
     </Combobox.Trigger>
@@ -131,18 +150,18 @@ ${listMarkup}
       </Combobox.List>
     </Combobox.Content>
   </Combobox.Root>
-);`;
+);
+
+// Note: Each Combobox.Item contains an icon rendered with:
+// <Flex gap="2" align="center">
+//   <IconComponent size={16} />
+//   Country Name
+// </Flex>`;
   };
 
   const component = (
-    <Combobox.Root size={size} value={value} onValueChange={setValue} loop={loop} disabled={disabled}>
-      <Combobox.Trigger
-        variant={variant}
-        color={color === 'theme' ? undefined : (color as any)}
-        disabled={disabled}
-        highContrast={highContrast}
-        width={triggerWidth === 'fit-content' ? undefined : triggerWidth}
-      >
+    <Combobox.Root size={size} value={value} onValueChange={setValue} loop={loop} disabled={disabled} highContrast={highContrast}>
+      <Combobox.Trigger variant={variant} color={color === 'theme' ? undefined : (color as any)} width={triggerWidth === 'fit-content' ? undefined : triggerWidth}>
         <Combobox.Value placeholder="Select a country" />
       </Combobox.Trigger>
       <Combobox.Content width={resolvedContentWidth} variant={contentVariant}>
@@ -151,11 +170,17 @@ ${listMarkup}
           {countriesByContinent.map((group) => (
             <Combobox.Group key={group.continent}>
               <Combobox.Label>{group.continent}</Combobox.Label>
-              {group.countries.map((country) => (
-                <Combobox.Item key={country.value} value={country.value}>
-                  {country.label}
-                </Combobox.Item>
-              ))}
+              {group.countries.map((country) => {
+                const Icon = country.icon;
+                return (
+                  <Combobox.Item key={country.value} value={country.value}>
+                    <Flex gap="2" align="center">
+                      <Icon size={16} />
+                      {country.label}
+                    </Flex>
+                  </Combobox.Item>
+                );
+              })}
             </Combobox.Group>
           ))}
           <Combobox.Empty>No matches found</Combobox.Empty>

@@ -1,4 +1,4 @@
-import { Section, Box, Flex, Button, Table, Text, Tooltip, Code, Callout } from '@kushagradhawan/kookie-ui';
+import { Section, Box, Flex, Button, Table, Text, Tooltip, Code, Callout, Combobox } from '@kushagradhawan/kookie-ui';
 import { ArrowUpRightIcon, Search, Check } from 'lucide-react';
 import ComboBoxPlayground from '../../playground/ComboBoxPlayground';
 import { CodeBlock } from '../../components/code-block';
@@ -67,14 +67,6 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
     <Table.Body>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Combobox density: 1 (32px) for toolbars, 2 (40px) standard forms, 3 (48px) for prominent selections. Affects trigger height and menu padding">
-            <span style={{ display: 'inline-block' }}>`size`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'1' | '2' | '3'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
           <Tooltip content="Trigger style variant: classic for elevated, surface for standard forms, soft for subtle, outline for bordered, ghost for minimal">
             <span style={{ display: 'inline-block' }}>`variant`</span>
           </Tooltip>
@@ -83,7 +75,15 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Semantic color to communicate selection intent. Works with highContrast for maximum visibility">
+          <Tooltip content="Combobox density: 1 (32px) for toolbars, 2 (40px) standard forms, 3 (48px) for prominent selections. Affects trigger height and menu padding. Supports responsive objects">
+            <span style={{ display: 'inline-block' }}>`size`</span>
+          </Tooltip>
+        </Table.RowHeaderCell>
+        <Table.Cell>`'1' | '2' | '3'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>
+          <Tooltip content="Semantic color to communicate selection intent. Use with highContrast for maximum visibility">
             <span style={{ display: 'inline-block' }}>`color`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -91,7 +91,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Maximum visibility mode, especially useful on complex or translucent backgrounds">
+          <Tooltip content="Maximum visibility mode for both trigger and items, especially useful on complex or translucent backgrounds">
             <span style={{ display: 'inline-block' }}>`highContrast`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -123,30 +123,6 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Controlled search input value. Use with onSearchValueChange for controlled search">
-            <span style={{ display: 'inline-block' }}>`searchValue`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Initial search value for uncontrolled usage">
-            <span style={{ display: 'inline-block' }}>`defaultSearchValue`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`string`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Callback fired when search input changes">
-            <span style={{ display: 'inline-block' }}>`onSearchValueChange`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`(value: string) => void`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
           <Tooltip content="Text shown when no option is selected">
             <span style={{ display: 'inline-block' }}>`placeholder`</span>
           </Tooltip>
@@ -171,7 +147,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Custom filter function for advanced search logic. Signature: (value, search, keywords) => number">
+          <Tooltip content="Custom filter function for advanced search logic">
             <span style={{ display: 'inline-block' }}>`filter`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -187,7 +163,7 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
       </Table.Row>
       <Table.Row>
         <Table.RowHeaderCell>
-          <Tooltip content="Prevents interaction when action is unavailable, such as during form validation or when authentication is required">
+          <Tooltip content="Prevents interaction when action is unavailable">
             <span style={{ display: 'inline-block' }}>`disabled`</span>
           </Tooltip>
         </Table.RowHeaderCell>
@@ -225,78 +201,11 @@ import { Combobox } from '@kushagradhawan/kookie-ui';
         </Table.RowHeaderCell>
         <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Controlled open state. Use with onOpenChange for controlled dropdown visibility">
-            <span style={{ display: 'inline-block' }}>`open`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Initial open state for uncontrolled usage">
-            <span style={{ display: 'inline-block' }}>`defaultOpen`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Callback fired when dropdown opens or closes">
-            <span style={{ display: 'inline-block' }}>`onOpenChange`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`(open: boolean) => void`</Table.Cell>
-      </Table.Row>
     </Table.Body>
   </Table.Root>
 </Box>
 
 Combobox supports customizable margin props for spacing.
-
-</Section>
-
-<Section size="2">
-
-## Basic Example
-
-A complete example showing controlled state management with search functionality.
-
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Text size="2" color="gray">Framework:</Text>
-    </Flex>
-  }
->
-
-```tsx
-function FrameworkPicker() {
-  const [value, setValue] = React.useState<string | null>('react');
-
-  return (
-    <Combobox.Root size="2" value={value} onValueChange={setValue}>
-      <Combobox.Trigger variant="surface">
-        <Combobox.Value placeholder="Select framework" />
-      </Combobox.Trigger>
-      <Combobox.Content>
-        <Combobox.Input placeholder="Search frameworks..." />
-        <Combobox.List>
-          <Combobox.Item value="react">React</Combobox.Item>
-          <Combobox.Item value="next">Next.js</Combobox.Item>
-          <Combobox.Item value="svelte">SvelteKit</Combobox.Item>
-          <Combobox.Item value="vue">Vue</Combobox.Item>
-          <Combobox.Item value="nuxt">Nuxt</Combobox.Item>
-          <Combobox.Empty>No matches found</Combobox.Empty>
-        </Combobox.List>
-      </Combobox.Content>
-    </Combobox.Root>
-  );
-}
-```
-
-</CodeBlock>
 
 </Section>
 
@@ -314,7 +223,19 @@ Elevated style with subtle shadow for maximum visual impact and primary selectio
   buttonsPosition="center"
   preview={
     <Flex gap="2" wrap="wrap" align="center">
-      <Text size="2" color="gray">Select:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="classic">
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -344,7 +265,19 @@ Elevated surface style for standard form fields and card-based layouts.
   buttonsPosition="center"
   preview={
     <Flex gap="2" wrap="wrap" align="center">
-      <Text size="2" color="gray">Select:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -374,7 +307,19 @@ Subtle background for secondary selections and content-heavy interfaces.
   buttonsPosition="center"
   preview={
     <Flex gap="2" wrap="wrap" align="center">
-      <Text size="2" color="gray">Select:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="soft">
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -404,7 +349,19 @@ Bordered style for clear field boundaries in forms.
   buttonsPosition="center"
   preview={
     <Flex gap="2" wrap="wrap" align="center">
-      <Text size="2" color="gray">Select:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="outline">
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -434,7 +391,19 @@ Minimal style for utility controls and command palettes.
   buttonsPosition="center"
   preview={
     <Flex gap="2" wrap="wrap" align="center">
-      <Text size="2" color="gray">Select:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="ghost">
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+            <Combobox.Item value="3">Option 3</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -472,7 +441,18 @@ For toolbars and dense interfaces.
   buttonsPosition="center"
   preview={
     <Flex gap="2" align="center" wrap="wrap">
-      <Text size="2" color="gray">Size 1:</Text>
+      <Combobox.Root size="1">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Select" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -501,7 +481,18 @@ For standard form contexts.
   buttonsPosition="center"
   preview={
     <Flex gap="2" align="center" wrap="wrap">
-      <Text size="2" color="gray">Size 2:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Select" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -530,7 +521,18 @@ For prominent selections and mobile touch targets.
   buttonsPosition="center"
   preview={
     <Flex gap="2" align="center" wrap="wrap">
-      <Text size="2" color="gray">Size 3:</Text>
+      <Combobox.Root size="3">
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Select" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+            <Combobox.Item value="2">Option 2</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -557,12 +559,37 @@ For prominent selections and mobile touch targets.
 
 ## Colors
 
-Use the `color` prop with semantic colors to communicate selection intent. Use `highContrast` for maximum visibility, especially on complex or translucent backgrounds.
+Use the `color` prop with semantic colors to communicate selection intent. Use `highContrast` on Root for maximum visibility on both trigger and items, especially useful on complex or translucent backgrounds.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
-      <Text size="2" color="gray">Status:</Text>
+      <Combobox.Root size="2" color="crimson">
+        <Combobox.Trigger variant="soft">
+          <Combobox.Value placeholder="Select priority" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="high">High Priority</Combobox.Item>
+            <Combobox.Item value="medium">Medium Priority</Combobox.Item>
+            <Combobox.Item value="low">Low Priority</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
+      <Combobox.Root size="2" color="crimson" highContrast>
+        <Combobox.Trigger variant="soft">
+          <Combobox.Value placeholder="Select priority" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="high">High Priority</Combobox.Item>
+            <Combobox.Item value="medium">Medium Priority</Combobox.Item>
+            <Combobox.Item value="low">Low Priority</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -582,8 +609,8 @@ Use the `color` prop with semantic colors to communicate selection intent. Use `
   </Combobox.Content>
 </Combobox.Root>
 
-<Combobox.Root size="2" color="crimson">
-  <Combobox.Trigger variant="soft" highContrast>
+<Combobox.Root size="2" color="crimson" highContrast>
+  <Combobox.Trigger variant="soft">
     <Combobox.Value placeholder="Select priority" />
   </Combobox.Trigger>
   <Combobox.Content>
@@ -607,12 +634,22 @@ Use the `color` prop with semantic colors to communicate selection intent. Use `
 
 ### Loading
 
-Set `loading` to `true` to show a spinner during async operations. The trigger remains interactive.
+Set `loading` to `true` on Trigger to show a spinner during async operations. The trigger remains interactive.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
-      <Text size="2" color="gray">Loading:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface" loading>
+          <Combobox.Value placeholder="Loading options..." />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -635,12 +672,22 @@ Set `loading` to `true` to show a spinner during async operations. The trigger r
 
 ### Disabled
 
-Set the `disabled` prop to `true` to prevent interaction when selection is unavailable.
+Set the `disabled` prop on Root to prevent interaction when selection is unavailable.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
-      <Text size="2" color="gray">Disabled:</Text>
+      <Combobox.Root size="2" disabled>
+        <Combobox.Trigger variant="surface">
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -663,12 +710,22 @@ Set the `disabled` prop to `true` to prevent interaction when selection is unava
 
 ### Error
 
-Use the `error` prop to indicate validation failures or invalid selections.
+Use the `error` prop on Trigger to indicate validation failures or invalid selections.
 
 <CodeBlock
   preview={
     <Flex gap="2" align="center">
-      <Text size="2" color="gray">Error:</Text>
+      <Combobox.Root size="2">
+        <Combobox.Trigger variant="surface" error>
+          <Combobox.Value placeholder="Select option" />
+        </Combobox.Trigger>
+        <Combobox.Content>
+          <Combobox.Input placeholder="Search..." />
+          <Combobox.List>
+            <Combobox.Item value="1">Option 1</Combobox.Item>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Root>
     </Flex>
   }
 >
@@ -697,13 +754,7 @@ Use the `error` prop to indicate validation failures or invalid selections.
 
 Organize options into logical groups with labels for better scannability in large lists.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Text size="2" color="gray">Framework:</Text>
-    </Flex>
-  }
->
+<CodeBlock>
 
 ```tsx
 <Combobox.Root size="2">
@@ -745,13 +796,7 @@ Control search behavior with `shouldFilter` and custom `filter` functions for ad
 
 For async data fetching or server-side search, disable built-in filtering.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Text size="2" color="gray">Async search:</Text>
-    </Flex>
-  }
->
+<CodeBlock>
 
 ```tsx
 function AsyncCombobox() {
@@ -795,17 +840,10 @@ function AsyncCombobox() {
 
 Provide a custom filter function for specialized ranking logic.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Text size="2" color="gray">Custom filter:</Text>
-    </Flex>
-  }
->
+<CodeBlock>
 
 ```tsx
 const customFilter = (value: string, search: string, keywords?: string[]) => {
-  // Custom ranking logic
   const searchLower = search.toLowerCase();
   const valueLower = value.toLowerCase();
   
@@ -839,13 +877,7 @@ const customFilter = (value: string, search: string, keywords?: string[]) => {
 
 Use `Combobox.Empty` to provide helpful feedback when no options match the search.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Text size="2" color="gray">Try searching:</Text>
-    </Flex>
-  }
->
+<CodeBlock>
 
 ```tsx
 <Combobox.Root size="2">
@@ -878,17 +910,37 @@ Use `Combobox.Empty` to provide helpful feedback when no options match the searc
 
 Use responsive objects with the `size` prop to adapt combobox sizing across different breakpoints. The component uses a mobile-first approach.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Text size="2" color="gray">Responsive:</Text>
-    </Flex>
-  }
->
+<CodeBlock>
 
 ```tsx
 <Combobox.Root size={{ initial: '1', sm: '2', md: '3' }}>
   <Combobox.Trigger variant="surface">
+    <Combobox.Value placeholder="Select" />
+  </Combobox.Trigger>
+  <Combobox.Content>
+    <Combobox.Input placeholder="Search..." />
+    <Combobox.List>
+      <Combobox.Item value="1">Option 1</Combobox.Item>
+    </Combobox.List>
+  </Combobox.Content>
+</Combobox.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Margin
+
+Use margin props for spacing around combobox. All margin props are responsive and accept design tokens or CSS values.
+
+<CodeBlock>
+
+```tsx
+<Combobox.Root size="2">
+  <Combobox.Trigger variant="surface" mx="2">
     <Combobox.Value placeholder="Select" />
   </Combobox.Trigger>
   <Combobox.Content>
@@ -982,28 +1034,6 @@ The component automatically manages:
 
 <Section size="2">
 
-## Architecture
-
-### Pattern Design
-
-Combobox combines Radix Popover for positioning and cmdk for command/search functionality:
-
-- **Trigger** - Reuses Select styling for consistency
-- **Search Input** - Lives inside dropdown, maintains focus
-- **Command List** - Provides roving focus and keyboard navigation
-- **Filtering** - Built-in fuzzy search with custom override support
-
-### Why This Approach
-
-- **Focus Management** - Input stays focused while arrow keys navigate
-- **Visual Consistency** - Shares tokens with Select for unified feel
-- **Accessibility** - Inherits battle-tested patterns from Radix and cmdk
-- **Flexibility** - Supports both client-side and async search patterns
-
-</Section>
-
-<Section size="2">
-
 ## Changelog
 
 - **Added**
@@ -1019,7 +1049,7 @@ Combobox combines Radix Popover for positioning and cmdk for command/search func
   - Empty state support with custom content
   - Responsive size prop support
   - Material prop for translucent effects
-  - Color and highContrast support
+  - Color and highContrast support on Root
   - Margin prop system
   - Full keyboard navigation (arrows, enter, escape, tab)
   - Roving focus with configurable loop behavior
@@ -1045,4 +1075,3 @@ Combobox combines Radix Popover for positioning and cmdk for command/search func
   - Reduced motion support
 
 </Section>
-
