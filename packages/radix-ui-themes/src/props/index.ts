@@ -1,5 +1,17 @@
 // Prop definition
-export * from './prop-def.js';
+export {
+  /** @deprecated breakpoints will be updated from an array to a set in the next major version */
+  breakpointsArray as breakpoints,
+} from './prop-def.js';
+export type {
+  PropDef,
+  GetPropDefTypes,
+  ResponsivePropDef,
+  //
+  Breakpoint,
+  Responsive,
+  Union,
+} from './prop-def.js';
 
 // Individual props
 export * from './as-child.prop.js';

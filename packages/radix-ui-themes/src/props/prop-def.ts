@@ -4,8 +4,9 @@ import type React from 'react';
 // Union<string, 'foo' | 'bar'> => string | Omit<string, 'foo' | 'bar'>
 type Union<S = string, T extends string | number = string> = T | Omit<S, T>;
 
-const breakpoints = ['initial', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
-type Breakpoint = (typeof breakpoints)[number];
+const breakpointsArray = ['initial', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
+const breakpoints = new Set(breakpointsArray);
+type Breakpoint = typeof breakpoints extends Set<infer B> ? B : never;
 type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
 type BooleanPropDef = {
@@ -80,7 +81,7 @@ type GetPropDefTypes<P> = {
   [K in keyof P]?: GetPropDefType<P[K]>;
 };
 
-export { breakpoints };
+export { breakpointsArray, breakpoints };
 export type {
   PropDef,
   GetPropDefTypes,

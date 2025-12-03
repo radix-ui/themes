@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.3.0
+
+- Deprecate `breakpoints` array. In the next major version, it will be replaced with a `Set` for easier lookups and comparisons.
+
 ## 3.2.1
 
 - Added support for `display: contents` to `Box` component

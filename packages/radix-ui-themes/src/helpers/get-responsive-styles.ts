@@ -53,7 +53,7 @@ function getResponsiveClassNames({
 
     for (const bp in object) {
       // Make sure we are not iterating over keys that aren't breakpoints
-      if (!hasOwnProperty(object, bp) || !breakpoints.includes(bp)) {
+      if (!hasOwnProperty(object, bp) || !breakpoints.has(bp)) {
         continue;
       }
 
@@ -82,7 +82,7 @@ function getResponsiveClassNames({
 function getBaseClassName(
   className: string,
   value: string,
-  parseValue: (value: string) => string | undefined
+  parseValue: (value: string) => string | undefined,
 ): string {
   const delimiter = className ? '-' : '';
   const matchedValue = parseValue(value);
@@ -121,7 +121,7 @@ function getResponsiveCustomProperties({
 
     for (const bp in object) {
       // Make sure we are not iterating over keys that aren't breakpoints
-      if (!hasOwnProperty(object, bp) || !breakpoints.includes(bp)) {
+      if (!hasOwnProperty(object, bp) || !breakpoints.has(bp)) {
         continue;
       }
 
