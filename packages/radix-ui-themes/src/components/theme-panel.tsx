@@ -53,6 +53,8 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     const {
       appearance,
       onAppearanceChange,
+      highContrast,
+      onHighContrastChange,
       accentColor,
       onAccentColorChange,
       grayColor,
@@ -95,6 +97,7 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
     async function handleCopyThemeConfig() {
       const theme = {
         appearance: appearance === themePropDefs.appearance.default ? undefined : appearance,
+        highContrast: highContrast === themePropDefs.highContrast.default ? undefined : highContrast,
         accentColor: accentColor === themePropDefs.accentColor.default ? undefined : accentColor,
         grayColor: grayColor === themePropDefs.grayColor.default ? undefined : grayColor,
         panelBackground:
@@ -103,9 +106,13 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
         scaling: scaling === themePropDefs.scaling.default ? undefined : scaling,
       } satisfies GetPropDefTypes<typeof themePropDefs>;
 
-      const props = Object.keys(theme)
-        .filter((key) => theme[key as keyof typeof theme] !== undefined)
-        .map((key) => `${key}="${theme[key as keyof typeof theme]}"`)
+      const props = Object.entries(theme)
+        .filter(([key]) => theme[key as keyof typeof theme] !== undefined)
+        .map(([key, value]) => {
+          if (typeof value === 'boolean' && value) return key
+
+          return `${key}="${theme[key as keyof typeof theme]}"`;
+        })
         .join(' ');
 
       const textToCopy = props ? `<Theme ${props}>` : '<Theme>';
@@ -367,6 +374,65 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
                             fillRule="evenodd"
                             clipRule="evenodd"
                           ></path>
+                        </svg>
+                      )}
+                      <Text size="1" weight="medium">
+                        {upperFirst(value)}
+                      </Text>
+                    </Flex>
+                  </label>
+                ))}
+              </Grid>
+
+              <Text id="highContrast-title" as="p" size="2" weight="medium" mt="5">
+                High contrast
+              </Text>
+
+              <Grid columns="2" gap="2" mt="3" role="group" aria-labelledby="highContrast-title">
+                {(['true', 'false'] as const).map((value) => (
+                  <label key={value} className="rt-ThemePanelRadioCard">
+                    <input
+                      className="rt-ThemePanelRadioCardInput"
+                      type="radio"
+                      name="highContrast"
+                      value={value}
+                      checked={highContrast?.toString() === value}
+                      onChange={(event) =>
+                        onHighContrastChange(event.target.value === 'true')
+                      }
+                    />
+                    <Flex align="center" justify="center" height="32px" gap="2">
+                      {value === 'true' ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-contrast-icon lucide-contrast"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 18a6 6 0 0 0 0-12v12z" fill="currentColor" />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-contrast-icon lucide-contrast"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 18a6 6 0 0 0 0-12v12z" />
                         </svg>
                       )}
                       <Text size="1" weight="medium">

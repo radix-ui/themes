@@ -1,5 +1,6 @@
 import { asChildPropDef } from '../props/as-child.prop.js';
 import { accentColors, grayColors } from '../props/color.prop.js';
+import { highContrastPropDef } from '../props/high-contrast.prop.js';
 import { radii } from '../props/radius.prop.js';
 
 import type { GetPropDefTypes, PropDef } from '../props/prop-def.js';
@@ -18,7 +19,7 @@ const themePropDefs = {
    */
   hasBackground: { type: 'boolean', default: true },
   /**
-   * Sets the color scheme of the theme, typcially referred to as light and dark mode.
+   * Sets the color scheme of the theme, typically referred to as light and dark mode.
    *
    * @link
    * https://www.radix-ui.com/themes/docs/theme/dark-mode
@@ -60,6 +61,13 @@ const themePropDefs = {
    * https://www.radix-ui.com/themes/docs/theme/layout
    */
   scaling: { type: 'enum', values: scalings, default: '100%' },
+  /**
+   * Sets a high contrast colors of the theme for accessibility.
+   *
+   * @link
+   * https://www.radix-ui.com/themes/docs/theme/high-contrast
+   */
+  ...highContrastPropDef,
 } satisfies {
   hasBackground: PropDef<boolean>;
   appearance: PropDef<(typeof appearances)[number]>;
