@@ -189,9 +189,9 @@
     letter-spacing: var(--letter-spacing-2);
   }
   .rt-ChatbarRoot:where(.rt-r-size-3) .rt-ChatbarBox {
-    /* Map Chatbar size 3 to Card size 4 */
-    border-radius: min(var(--radius-8), calc(var(--radius-4) + var(--space-4)));
-    padding: var(--space-5);
+    /* Custom Chatbar size 3, different to Card size 4 */
+    border-radius: min(var(--radius-7), calc(var(--radius-3) + var(--space-3)));
+    padding: var(--space-4);
   }
   .rt-ChatbarRoot:where(.rt-r-size-3) .rt-ChatbarInput {
     --text-area-padding-y: calc(var(--space-5) - var(--text-area-border-width));
