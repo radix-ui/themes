@@ -558,7 +558,7 @@
       --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
       --base-menu-item-padding-right: var(--space-2);
       --base-menu-item-padding-y: var(--space-1);
-      --base-menu-item-height: var(--space-5);
+      --base-menu-item-height: var(--space-6);
       --sidebar-item-height: var(--base-menu-item-height);
     }
 
@@ -567,7 +567,7 @@
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
       --base-menu-item-padding-y: var(--space-1);
-      --base-menu-item-height: var(--space-6);
+      --base-menu-item-height: var(--space-7);
       --sidebar-item-height: var(--base-menu-item-height);
     }
 
@@ -576,13 +576,15 @@
       --base-menu-item-padding-left: var(--space-3);
       --base-menu-item-padding-right: var(--space-3);
       --base-menu-item-padding-y: var(--space-2);
-      --base-menu-item-height: var(--space-7);
+      --base-menu-item-height: var(--space-8);
       --sidebar-item-height: var(--base-menu-item-height);
     }
   }
 
   /* Size-specific menu button styling - inherit from base menu */
-  .rt-SidebarContent:where(.rt-r-size-1) {
+  .rt-SidebarContent:where(.rt-r-size-1),
+  .rt-SidebarHeader:where(.rt-r-size-1),
+  .rt-SidebarFooter:where(.rt-r-size-1) {
     & :where(.rt-SidebarMenuButton) {
       gap: var(--component-gap-2);
       font-size: var(--font-size-1);
@@ -608,7 +610,9 @@
     }
   }
 
-  .rt-SidebarContent:where(.rt-r-size-2) {
+  .rt-SidebarContent:where(.rt-r-size-2),
+  .rt-SidebarHeader:where(.rt-r-size-2),
+  .rt-SidebarFooter:where(.rt-r-size-2) {
     & :where(.rt-SidebarMenuButton) {
       gap: var(--component-gap-3);
       font-size: var(--font-size-2);
@@ -638,6 +642,32 @@
     }
 
     /* Sub-trigger icon sizing - matches base menu exactly */
+    & :where(.rt-BaseMenuSubTriggerIcon) {
+      width: var(--indicator-icon-size-2);
+      height: var(--indicator-icon-size-2);
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+  }
+
+  .rt-SidebarContent:where(.rt-r-size-3),
+  .rt-SidebarHeader:where(.rt-r-size-3),
+  .rt-SidebarFooter:where(.rt-r-size-3) {
+    & :where(.rt-SidebarMenuButton) {
+      gap: var(--component-gap-3);
+      font-size: var(--font-size-3);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      border-radius: var(--radius-2);
+      font-weight: var(--font-weight-regular);
+
+      & :where(svg) {
+        width: var(--content-icon-size-3);
+        height: var(--content-icon-size-3);
+        flex-shrink: 0;
+      }
+    }
+
     & :where(.rt-BaseMenuSubTriggerIcon) {
       width: var(--indicator-icon-size-2);
       height: var(--indicator-icon-size-2);
