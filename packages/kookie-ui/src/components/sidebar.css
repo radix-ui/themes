@@ -550,6 +550,37 @@
     }
   }
 
+  /* Header/Footer sizing - mirror base menu tokens so buttons render correctly */
+  .rt-SidebarHeader,
+  .rt-SidebarFooter {
+    &:where(.rt-r-size-1) {
+      --base-menu-content-padding: var(--space-2);
+      --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
+      --base-menu-item-padding-right: var(--space-2);
+      --base-menu-item-padding-y: var(--space-1);
+      --base-menu-item-height: var(--space-5);
+      --sidebar-item-height: var(--base-menu-item-height);
+    }
+
+    &:where(.rt-r-size-2) {
+      --base-menu-content-padding: var(--space-3);
+      --base-menu-item-padding-left: var(--space-3);
+      --base-menu-item-padding-right: var(--space-3);
+      --base-menu-item-padding-y: var(--space-1);
+      --base-menu-item-height: var(--space-6);
+      --sidebar-item-height: var(--base-menu-item-height);
+    }
+
+    &:where(.rt-r-size-3) {
+      --base-menu-content-padding: var(--space-3);
+      --base-menu-item-padding-left: var(--space-3);
+      --base-menu-item-padding-right: var(--space-3);
+      --base-menu-item-padding-y: var(--space-2);
+      --base-menu-item-height: var(--space-7);
+      --sidebar-item-height: var(--base-menu-item-height);
+    }
+  }
+
   /* Size-specific menu button styling - inherit from base menu */
   .rt-SidebarContent:where(.rt-r-size-1) {
     & :where(.rt-SidebarMenuButton) {
