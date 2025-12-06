@@ -1121,10 +1121,10 @@ const RowEnd = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'
 });
 RowEnd.displayName = 'Chatbar.RowEnd';
 
-interface SendProps extends IconButtonProps {
+type SendProps = IconButtonProps & {
   asChild?: boolean;
   clearOnSend?: boolean;
-}
+};
 
 const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef) => {
   const { asChild, clearOnSend = true, disabled, children, className, style, size: sizeProp, variant: variantProp, ...buttonProps } = props;
@@ -1160,7 +1160,7 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
       }}
       asChild={asChild}
       onClick={handleClick}
-      aria-label={buttonProps['aria-label'] ?? 'Send'}
+      aria-label={(buttonProps as any)['aria-label'] ?? 'Send'}
     >
       {children ?? (
         <svg
