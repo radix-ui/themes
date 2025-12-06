@@ -1121,13 +1121,13 @@ const RowEnd = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'
 });
 RowEnd.displayName = 'Chatbar.RowEnd';
 
-interface SendProps extends Omit<IconButtonProps, 'size'> {
+interface SendProps extends IconButtonProps {
   asChild?: boolean;
   clearOnSend?: boolean;
 }
 
 const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef) => {
-  const { asChild, clearOnSend = true, disabled, children, className, style, ...buttonProps } = props;
+  const { asChild, clearOnSend = true, disabled, children, className, style, size: sizeProp, variant: variantProp, ...buttonProps } = props;
   const ctx = useChatbarContext();
 
   const trimmed = ctx.value.trim();
@@ -1149,8 +1149,8 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
     <IconButton
       {...(buttonProps as any)}
       ref={forwardedRef as any}
-      size={ctx.size}
-      variant={ctx.open ? 'solid' : 'ghost'}
+      size={sizeProp ?? ctx.size}
+      variant={variantProp ?? (ctx.open ? 'solid' : 'ghost')}
       disabled={disabled || ctx.disabled || ctx.readOnly}
       className={classNames('rt-ChatbarSend', className)}
       style={{
