@@ -4,6 +4,7 @@ import {
   Avatar,
   Badge,
   Box,
+  Button,
   Card,
   Code,
   Container,
@@ -17,6 +18,8 @@ import {
   TabNav,
   Text,
   Theme,
+  IconButton,
+  Heading,
 } from '@radix-ui/themes';
 import { NextThemeProvider } from '../next-theme-provider';
 import NextLink from 'next/link';
@@ -133,6 +136,33 @@ export default function Test() {
                     <Container asChild>
                       <section>Container as child</section>
                     </Container>
+
+                    <Flex direction="column" gap="2">
+                      <Flex gap="2">
+                        <Button asChild>
+                          <button>Button as child</button>
+                        </Button>
+                        <Button asChild>
+                          <a href="#">Button as child (link)</a>
+                        </Button>
+                      </Flex>
+                      <Flex gap="2">
+                        <Button asChild disabled>
+                          <button>Button as child</button>
+                        </Button>
+                        <Button asChild disabled>
+                          <a href="#">Button as child (link)</a>
+                        </Button>
+                      </Flex>
+                      <Flex gap="2">
+                        <Button asChild loading>
+                          <button>Button as child</button>
+                        </Button>
+                        <Button asChild loading>
+                          <a href="#">Button as child (link)</a>
+                        </Button>
+                      </Flex>
+                    </Flex>
                   </Flex>
                 </Section>
               </Container>
