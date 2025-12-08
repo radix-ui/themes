@@ -64,3 +64,68 @@ export function useResponsiveValue<T>(value: T | Partial<Record<Breakpoint, T>> 
     return undefined;
   }, [value, currentBreakpoint]);
 }
+
+type ResponsiveStateValue<T> = T | Partial<Record<Breakpoint, T>>;
+
+interface UseResponsiveInitialStateOptions<T> {
+  controlledValue?: ResponsiveStateValue<T>;
+  defaultValue?: ResponsiveStateValue<T>;
+  currentValue: T;
+  setValue: (value: T) => void;
+  breakpointReady: boolean;
+  onInit?: (value: T) => void;
+  onResponsiveChange?: (value: T) => void;
+  controlledIsResponsive?: boolean;
+}
+
+interface UseResponsiveInitialStateResult<T> {
+  resolvedControlled?: T;
+  resolvedDefault?: T;
+}
+
+export function useResponsiveInitialState<T>({
+  controlledValue,
+  defaultValue,
+  currentValue,
+  setValue,
+  breakpointReady,
+  onInit,
+  onResponsiveChange,
+  controlledIsResponsive = false,
+}: UseResponsiveInitialStateOptions<T>): UseResponsiveInitialStateResult<T> {
+  const resolvedControlled = useResponsiveValue(controlledValue);
+  const resolvedDefault = useResponsiveValue(defaultValue);
+
+  const lastControlledRef = React.useRef<T | undefined>(undefined);
+  React.useEffect(() => {
+    if (resolvedControlled === undefined) return;
+    lastControlledRef.current = resolvedControlled;
+    if (currentValue === resolvedControlled) {
+      if (controlledIsResponsive) {
+        onResponsiveChange?.(resolvedControlled);
+      }
+      return;
+    }
+    setValue(resolvedControlled);
+    if (controlledIsResponsive) {
+      onResponsiveChange?.(resolvedControlled);
+    }
+  }, [resolvedControlled, currentValue, setValue, onResponsiveChange, controlledIsResponsive]);
+
+  const didInitRef = React.useRef(false);
+  React.useEffect(() => {
+    if (didInitRef.current) return;
+    if (!breakpointReady) return;
+    if (typeof controlledValue !== 'undefined') return;
+    if (resolvedDefault === undefined) return;
+    didInitRef.current = true;
+    if (currentValue !== resolvedDefault) {
+      setValue(resolvedDefault);
+    }
+    onInit?.(resolvedDefault);
+  }, [breakpointReady, controlledValue, resolvedDefault, currentValue, setValue, onInit]);
+
+  return { resolvedControlled, resolvedDefault };
+}
+// Explicit re-exports to satisfy module resolution in downstream consumers
+export { useResponsivePresentation, useResponsiveValue, useResponsiveInitialState };
