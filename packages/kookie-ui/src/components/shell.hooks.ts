@@ -3,7 +3,7 @@ import type { Breakpoint, PresentationValue, ResponsivePresentation } from './sh
 import { _BREAKPOINTS } from './shell.types.js';
 import { useShell } from './shell.context.js';
 
-export function useResponsivePresentation(presentation: ResponsivePresentation): PresentationValue {
+function useResponsivePresentation(presentation: ResponsivePresentation): PresentationValue {
   const { currentBreakpoint } = useShell();
 
   return React.useMemo(() => {
@@ -35,7 +35,7 @@ export function useResponsivePresentation(presentation: ResponsivePresentation):
  * If no value is defined for the current breakpoint, search smaller breakpoints down to 'initial'.
  * Returns undefined when passed a responsive map with no matching key across the chain.
  */
-export function useResponsiveValue<T>(value: T | Partial<Record<Breakpoint, T>> | undefined): T | undefined {
+function useResponsiveValue<T>(value: T | Partial<Record<Breakpoint, T>> | undefined): T | undefined {
   const { currentBreakpoint } = useShell();
 
   return React.useMemo(() => {
@@ -83,7 +83,7 @@ interface UseResponsiveInitialStateResult<T> {
   resolvedDefault?: T;
 }
 
-export function useResponsiveInitialState<T>({
+function useResponsiveInitialState<T>({
   controlledValue,
   defaultValue,
   currentValue,
@@ -127,5 +127,5 @@ export function useResponsiveInitialState<T>({
 
   return { resolvedControlled, resolvedDefault };
 }
-// Explicit re-exports to satisfy module resolution in downstream consumers
+
 export { useResponsivePresentation, useResponsiveValue, useResponsiveInitialState };
