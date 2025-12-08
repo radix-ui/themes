@@ -7,14 +7,12 @@ export function omitPaneProps<T extends object, K extends KeyList<T>>(source: T,
   const result: Partial<T> = {};
   (Object.keys(source) as Array<keyof T>).forEach((key) => {
     if (!omitSet.has(key)) {
-      // @ts-expect-error indexed access on object
       result[key] = (source as any)[key];
     }
   });
   return result as Omit<T, K[number]>;
 }
 
-const PANE_BASE_INTERNAL_PROPS = [
 const PANE_BASE_INTERNAL_PROPS = [
   'presentation',
   'expandedSize',
