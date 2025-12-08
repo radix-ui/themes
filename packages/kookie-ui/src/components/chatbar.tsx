@@ -1121,13 +1121,28 @@ const RowEnd = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'
 });
 RowEnd.displayName = 'Chatbar.RowEnd';
 
-type SendProps = IconButtonProps & {
+type SendProps = Omit<IconButtonProps, 'aria-label' | 'aria-labelledby'> & {
+  /** Optional override for accessible name. Defaults to "Send". */
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
   asChild?: boolean;
   clearOnSend?: boolean;
 };
 
 const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef) => {
-  const { asChild, clearOnSend = true, disabled, children, className, style, size: sizeProp, variant: variantProp, ...buttonProps } = props;
+  const {
+    asChild,
+    clearOnSend = true,
+    disabled,
+    children,
+    className,
+    style,
+    size: sizeProp,
+    variant: variantProp,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    ...buttonProps
+  } = props;
   const ctx = useChatbarContext();
 
   const trimmed = ctx.value.trim();
@@ -1160,7 +1175,8 @@ const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef
       }}
       asChild={asChild}
       onClick={handleClick}
-      aria-label={(buttonProps as any)['aria-label'] ?? 'Send'}
+      aria-label={ariaLabel ?? (ariaLabelledby ? undefined : 'Send')}
+      aria-labelledby={ariaLabelledby}
     >
       {children ?? (
         <svg
