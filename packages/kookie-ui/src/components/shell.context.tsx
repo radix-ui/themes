@@ -45,6 +45,7 @@ export interface ShellContextValue {
 
 const ShellContext = React.createContext<ShellContextValue | null>(null);
 
+/** @internal Shell root context. Prefer slice hooks (useSidebarMode, useShellActions, etc.). */
 export function useShell() {
   const ctx = React.useContext(ShellContext);
   if (!ctx) throw new Error('Shell components must be used within <Shell.Root>');

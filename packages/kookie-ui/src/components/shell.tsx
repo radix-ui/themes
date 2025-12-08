@@ -151,6 +151,11 @@ function isShellComponent(element: React.ReactElement, component: any): boolean 
   return Boolean(type?.[SHELL_SLOT] && targetSlot && type[SHELL_SLOT] === targetSlot);
 }
 
+// Tag imported slot components so isType remains stable after minification
+assignShellSlot(Sidebar as any, 'Shell.Sidebar');
+assignShellSlot(Inspector as any, 'Shell.Inspector');
+assignShellSlot(Bottom as any, 'Shell.Bottom');
+
 function paneReducer(state: PaneState, action: PaneAction): PaneState {
   switch (action.type) {
     case 'SET_LEFT_MODE': {
@@ -256,7 +261,9 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const hasPanelDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Panel' && Boolean((el as any).props?.defaultOpen));
   const hasRailDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Rail' && Boolean((el as any).props?.defaultOpen));
   const hasInspectorDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && Boolean((el as any).props?.defaultOpen));
-  const hasInspectorOpenControlled = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && typeof (el as any).props?.open !== 'undefined' && Boolean((el as any).props?.open));
+  const hasInspectorOpenControlled = initialChildren.some(
+    (el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && typeof (el as any).props?.open !== 'undefined' && Boolean((el as any).props?.open),
+  );
 
   // Pane state management via reducer
   const [paneState, dispatchPane] = React.useReducer(paneReducer, {
@@ -571,16 +578,7 @@ type RailProps = React.ComponentPropsWithoutRef<'div'> & {
 const LEFT_DOM_OMIT_PROPS = ['open', 'defaultOpen', 'onOpenChange', 'mode', 'defaultMode', 'onModeChange'] as const;
 
 const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => {
-  const {
-    className,
-    presentation = { initial: 'fixed', sm: 'fixed' },
-    collapsible: _collapsible = true,
-    onExpand,
-    onCollapse,
-    children,
-    style,
-    ...restProps
-  } = initialProps;
+  const { className, presentation = { initial: 'fixed', sm: 'fixed' }, collapsible: _collapsible = true, onExpand, onCollapse, children, style, ...restProps } = initialProps;
   const propsOpen = restProps.open;
   const propsDefaultOpen = restProps.defaultOpen;
   const propsOnOpenChange = restProps.onOpenChange;
@@ -625,91 +623,72 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => 
     onInit: (initial) => propsOnOpenChange?.(initial === 'expanded', { reason: 'init' }),
   });
 
-    // Emit mode changes (uncontrolled toggles + init)
-    React.useEffect(() => {
-      if (typeof propsOpen !== 'undefined') return; // controlled, notifications only via parent changes
-      if (lastLeftModeRef.current !== null && lastLeftModeRef.current !== shell.leftMode) {
-        propsOnOpenChange?.(shell.leftMode === 'expanded', { reason: 'toggle' });
-      }
-      lastLeftModeRef.current = shell.leftMode;
+  // Emit mode changes (uncontrolled toggles + init)
+  React.useEffect(() => {
+    if (typeof propsOpen !== 'undefined') return; // controlled, notifications only via parent changes
+    if (lastLeftModeRef.current !== null && lastLeftModeRef.current !== shell.leftMode) {
+      propsOnOpenChange?.(shell.leftMode === 'expanded', { reason: 'toggle' });
+    }
+    lastLeftModeRef.current = shell.leftMode;
   }, [shell, propsOnOpenChange, propsOpen]);
 
-    // Emit expand/collapse events
-    React.useEffect(() => {
-      if (shell.leftMode === 'expanded') {
-        onExpand?.();
-      } else {
-        onCollapse?.();
-      }
-    }, [shell.leftMode, onExpand, onCollapse]);
-
-    const _isExpanded = shell.leftMode === 'expanded';
-
-    // Left is not resizable; width derives from Rail/Panel.
-
-    if (isOverlay) {
-      const open = shell.leftMode === 'expanded';
-      // Compute overlay width from child Rail/Panel expanded sizes
-      const childArray = React.Children.toArray(children) as React.ReactElement[];
-      const isType = (el: React.ReactElement, comp: any) => React.isValidElement(el) && el.type === comp;
-      const railEl = childArray.find((el) => isType(el, Rail));
-      const panelEl = childArray.find((el) => isType(el, Panel));
-      const railSize = typeof (railEl as any)?.props?.expandedSize === 'number' ? (railEl as any).props.expandedSize : 64;
-      const panelSize = typeof (panelEl as any)?.props?.expandedSize === 'number' ? (panelEl as any).props.expandedSize : 288;
-      const hasRail = Boolean(railEl);
-      const hasPanel = Boolean(panelEl);
-      const overlayPx = (hasRail ? railSize : 0) + (shell.panelMode === 'expanded' && hasPanel ? panelSize : 0);
-      return (
-        <Sheet.Root open={open} onOpenChange={(o) => shell.setLeftMode(o ? 'expanded' : 'collapsed')}>
-          <Sheet.Content
-            side="start"
-            style={{ padding: 0 }}
-            width={{
-              initial: `${overlayPx}px`,
-            }}
-          >
-            <VisuallyHidden>
-              <Sheet.Title>Navigation</Sheet.Title>
-            </VisuallyHidden>
-            <div className="rt-ShellLeft">{children}</div>
-          </Sheet.Content>
-        </Sheet.Root>
-      );
+  // Emit expand/collapse events
+  React.useEffect(() => {
+    if (shell.leftMode === 'expanded') {
+      onExpand?.();
+    } else {
+      onCollapse?.();
     }
+  }, [shell.leftMode, onExpand, onCollapse]);
 
-    if (isStacked) {
-      const open = shell.leftMode === 'expanded';
-      // Compute floating width from child Rail/Panel expanded sizes (like overlay)
-      const childArray = React.Children.toArray(children) as React.ReactElement[];
-      const isType = (el: React.ReactElement, comp: any) => React.isValidElement(el) && el.type === comp;
-      const railEl = childArray.find((el) => isType(el, Rail));
-      const panelEl = childArray.find((el) => isType(el, Panel));
-      const _railSize = typeof (railEl as any)?.props?.expandedSize === 'number' ? (railEl as any).props.expandedSize : 64;
-      const _panelSize = typeof (panelEl as any)?.props?.expandedSize === 'number' ? (panelEl as any).props.expandedSize : 288;
-      const _hasRail = Boolean(railEl);
-      const _hasPanel = Boolean(panelEl);
-      const _includePanel = _hasPanel && (shell.panelMode === 'expanded' || shell.peekTarget === 'panel');
+  const _isExpanded = shell.leftMode === 'expanded';
 
-      // Strip control props from DOM spread
-      return (
-        <div
-          {...domProps}
-          ref={setRef}
-          className={classNames('rt-ShellLeft', className)}
-          data-mode={shell.leftMode}
-          data-peek={shell.peekTarget === 'left' || shell.peekTarget === 'rail' || shell.peekTarget === 'panel' || undefined}
-          data-presentation={resolvedPresentation}
-          style={{
-            ...style,
+  // Left is not resizable; width derives from Rail/Panel.
+
+  if (isOverlay) {
+    const open = shell.leftMode === 'expanded';
+    // Compute overlay width from child Rail/Panel expanded sizes
+    const childArray = React.Children.toArray(children) as React.ReactElement[];
+    const isType = (el: React.ReactElement, comp: any) => React.isValidElement(el) && el.type === comp;
+    const railEl = childArray.find((el) => isType(el, Rail));
+    const panelEl = childArray.find((el) => isType(el, Panel));
+    const railSize = typeof (railEl as any)?.props?.expandedSize === 'number' ? (railEl as any).props.expandedSize : 64;
+    const panelSize = typeof (panelEl as any)?.props?.expandedSize === 'number' ? (panelEl as any).props.expandedSize : 288;
+    const hasRail = Boolean(railEl);
+    const hasPanel = Boolean(panelEl);
+    const overlayPx = (hasRail ? railSize : 0) + (shell.panelMode === 'expanded' && hasPanel ? panelSize : 0);
+    return (
+      <Sheet.Root open={open} onOpenChange={(o) => shell.setLeftMode(o ? 'expanded' : 'collapsed')}>
+        <Sheet.Content
+          side="start"
+          style={{ padding: 0 }}
+          width={{
+            initial: `${overlayPx}px`,
           }}
-          data-open={open || undefined}
         >
-          {children}
-        </div>
-      );
-    }
+          <VisuallyHidden>
+            <Sheet.Title>Navigation</Sheet.Title>
+          </VisuallyHidden>
+          <div className="rt-ShellLeft">{children}</div>
+        </Sheet.Content>
+      </Sheet.Root>
+    );
+  }
 
-    // Strip control/legacy props from DOM spread
+  if (isStacked) {
+    const open = shell.leftMode === 'expanded';
+    // Compute floating width from child Rail/Panel expanded sizes (like overlay)
+    const childArray = React.Children.toArray(children) as React.ReactElement[];
+    const isType = (el: React.ReactElement, comp: any) => React.isValidElement(el) && el.type === comp;
+    const railEl = childArray.find((el) => isType(el, Rail));
+    const panelEl = childArray.find((el) => isType(el, Panel));
+    const _railSize = typeof (railEl as any)?.props?.expandedSize === 'number' ? (railEl as any).props.expandedSize : 64;
+    const _panelSize = typeof (panelEl as any)?.props?.expandedSize === 'number' ? (panelEl as any).props.expandedSize : 288;
+    const _hasRail = Boolean(railEl);
+    const _hasPanel = Boolean(panelEl);
+    const _includePanel = _hasPanel && (shell.panelMode === 'expanded' || shell.peekTarget === 'panel');
+
+    // Strip control props from DOM spread
     return (
       <div
         {...domProps}
@@ -721,13 +700,32 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => 
         style={{
           ...style,
         }}
+        data-open={open || undefined}
       >
         {children}
       </div>
     );
-  },
+  }
+
+  // Strip control/legacy props from DOM spread
+  return (
+    <div
+      {...domProps}
+      ref={setRef}
+      className={classNames('rt-ShellLeft', className)}
+      data-mode={shell.leftMode}
+      data-peek={shell.peekTarget === 'left' || shell.peekTarget === 'rail' || shell.peekTarget === 'panel' || undefined}
+      data-presentation={resolvedPresentation}
+      style={{
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  );
 });
 Left.displayName = 'Shell.Left';
+assignShellSlot(Left as any, 'Shell.Left');
 
 const Rail = React.forwardRef<HTMLDivElement, RailProps>((initialProps, ref) => {
   const { className, presentation, expandedSize = 64, collapsible, onExpand, onCollapse, children, style, open, defaultOpen, onOpenChange, ...domProps } = initialProps;
@@ -781,6 +779,7 @@ const Rail = React.forwardRef<HTMLDivElement, RailProps>((initialProps, ref) => 
   );
 });
 Rail.displayName = 'Shell.Rail';
+assignShellSlot(Rail as any, 'Shell.Rail');
 
 // Panel
 type HandleComponent = React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
@@ -833,36 +832,37 @@ const PANEL_DOM_PROP_KEYS = [
   'style',
 ] as const satisfies readonly (keyof PanelPublicProps)[];
 
-const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>((initialProps, ref) => {
-  const {
-    className,
-    defaultOpen,
-    open,
-    onOpenChange,
-    size,
-    defaultSize,
-    expandedSize = 288,
-    minSize,
-    maxSize,
-    resizable,
-    collapsible = true,
-    onExpand,
-    onCollapse,
-    onResize,
-    onResizeStart,
-    onResizeEnd,
-    snapPoints,
-    snapTolerance,
-    collapseThreshold,
-    paneId,
-    persistence,
-    children,
-    style,
-    onSizeChange,
-    sizeUpdate,
-    sizeUpdateMs = 50,
-  } = initialProps;
-  const panelDomProps = extractPaneDomProps(initialProps, PANEL_DOM_PROP_KEYS);
+const Panel = assignShellSlot(
+  React.forwardRef<HTMLDivElement, PanelPublicProps>((initialProps, ref) => {
+    const {
+      className,
+      defaultOpen,
+      open,
+      onOpenChange,
+      size,
+      defaultSize,
+      expandedSize = 288,
+      minSize,
+      maxSize,
+      resizable,
+      collapsible = true,
+      onExpand,
+      onCollapse,
+      onResize,
+      onResizeStart,
+      onResizeEnd,
+      snapPoints,
+      snapTolerance,
+      collapseThreshold,
+      paneId,
+      persistence,
+      children,
+      style,
+      onSizeChange,
+      sizeUpdate,
+      sizeUpdateMs = 50,
+    } = initialProps;
+    const panelDomProps = extractPaneDomProps(initialProps, PANEL_DOM_PROP_KEYS);
     // Throttled/debounced emitter for onSizeChange
     const emitSizeChange = React.useMemo(() => {
       if (!onSizeChange) return () => {};
@@ -1154,7 +1154,9 @@ const Panel = React.forwardRef<HTMLDivElement, PanelPublicProps>((initialProps, 
         {handleEl}
       </div>
     );
-});
+  }),
+  'Shell.Panel',
+) as PanelComponent;
 Panel.displayName = 'Shell.Panel';
 Panel.Handle = PanelHandle;
 
@@ -1165,6 +1167,7 @@ interface ShellContentProps extends React.ComponentPropsWithoutRef<'main'> {}
 
 const Content = React.forwardRef<HTMLElement, ShellContentProps>(({ className, ...props }, ref) => <main {...props} ref={ref} className={classNames('rt-ShellContent', className)} />);
 Content.displayName = 'Shell.Content';
+assignShellSlot(Content as any, 'Shell.Content');
 
 // Inspector moved to ./_internal/shell-inspector
 
