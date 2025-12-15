@@ -3,7 +3,7 @@
 @import 'tailwindcss/preflight.css';
 
 :root {
-  /* --font-sans: 'geist'; */
+  --font-sans: 'system-ui';
   /* --font-mono: 'geist mono'; */
 }
 
@@ -407,4 +407,30 @@ figure[data-rehype-pretty-code-figure] {
 .rt-ShellSidebar[data-side='start'] .rt-SidebarRoot {
   /* Override the default opacity: 0 from shell.css for start sidebar */
   opacity: 1 !important;
+}
+
+/* CodeBlock: Hide action buttons by default, show on hover */
+.docs-code-block .code-action-buttons {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.docs-code-block:hover .code-action-buttons,
+.docs-code-block .code-action-buttons:focus-within {
+  opacity: 1;
+}
+
+/* Playground: Hide copy button by default, show on hover */
+.playground-container {
+  position: relative;
+}
+
+.playground-copy-button {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.playground-container:hover .playground-copy-button,
+.playground-container .playground-copy-button:focus-within {
+  opacity: 1;
 }

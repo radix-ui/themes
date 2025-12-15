@@ -16,6 +16,10 @@
   --color-surface-translucent: rgba(255, 255, 255, var(--surface-opacity));
   --color-dialog-solid: white;
   --color-dialog-translucent: rgba(255, 255, 255, var(--dialog-opacity));
+
+  /* Material system defaults (solid) - controls color-mix blending for component backgrounds */
+  --material-blend: 100%;
+  --material-alpha: 0;
 }
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
@@ -130,13 +134,16 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 .radix-themes {
-  &:where([data-panel-background='solid']) {
+  &:where([data-panel-background='solid'], [data-material='solid']) {
     --color-panel: var(--color-panel-solid);
     --color-surface: var(--color-surface-solid);
     --color-dialog: var(--color-dialog-solid);
     --backdrop-filter-panel: none;
     --backdrop-filter-components: none;
     --backdrop-filter-dialog: none;
+    /* Material system for component backgrounds */
+    --material-blend: 100%;
+    --material-alpha: 0;
   }
   &:where([data-panel-background='translucent'], [data-material='translucent']) {
     --color-panel: var(--color-panel-translucent);
@@ -145,6 +152,9 @@
     --backdrop-filter-panel: blur(var(--backdrop-blur-panel));
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
     --backdrop-filter-dialog: blur(var(--backdrop-blur-dialog));
+    /* Material system for component backgrounds */
+    --material-blend: 60%;
+    --material-alpha: 1;
   }
 }
 

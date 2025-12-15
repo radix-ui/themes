@@ -9,7 +9,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Headings with strong visual hierarchy
     h1: ({ children }) => (
       <Flex direction="column" gap="4" my="6">
-        <Heading as="h1" size="8" weight="semibold">
+        <Heading as="h1" size="9" weight="medium">
           {children}
         </Heading>
         {/* <Separator size="4"></Separator> */}
@@ -49,7 +49,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Text elements using KookieUI defaults
     p: ({ children }) => (
-      <Text as="p" size="3" mb="4" color="gray">
+      <Text as="p" size="3" mb="4">
         {children}
       </Text>
     ),
@@ -81,7 +81,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     li: ({ children }) => (
       <li>
-        <Text size="3" mb="4" color="gray">
+        <Text size="3" mb="4">
           {children}
         </Text>
       </li>
@@ -135,7 +135,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Typography using dedicated KookieUI components
     strong: ({ children }) => (
-      <Text weight="semibold" highContrast>
+      <Text weight="medium" highContrast>
         {children}
       </Text>
     ),

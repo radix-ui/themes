@@ -83,9 +83,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   // This helps developers migrate to the new material prop
   React.useEffect(() => {
     if (props.panelBackground !== undefined) {
-      console.warn(
-        'Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.',
-      );
+      console.warn('Warning: The `panelBackground` prop is deprecated and will be removed in a future version. Use `material` prop instead.');
     }
   }, [props.panelBackground]);
 
@@ -95,6 +93,10 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   // Will-change cleanup for backdrop-filter performance optimization
   // This prevents layout thrashing when using translucent materials
   const buttonRef = React.useRef<HTMLElement>(null);
+
+  // Use a ref to track current material value to avoid stale closures in setTimeout
+  const materialRef = React.useRef(effectiveMaterial);
+  materialRef.current = effectiveMaterial;
 
   React.useEffect(() => {
     const button = buttonRef.current;
@@ -106,14 +108,17 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       // Add will-change when material is translucent to optimize rendering
       button.style.setProperty('will-change', 'backdrop-filter');
 
+      // Track timeout for cleanup
+      let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
       // Clean up will-change after transition completes to prevent memory leaks
       const cleanup = () => {
-        const transitionDuration =
-          getComputedStyle(button).getPropertyValue('--duration-2') || '75ms';
+        const transitionDuration = getComputedStyle(button).getPropertyValue('--duration-2') || '75ms';
         const duration = parseInt(transitionDuration) || 75;
 
-        setTimeout(() => {
-          if (button && effectiveMaterial !== 'translucent') {
+        timeoutId = setTimeout(() => {
+          // Use ref to get current value, not stale closure value
+          if (button && materialRef.current !== 'translucent') {
             button.style.setProperty('will-change', 'auto');
           }
         }, duration);
@@ -124,6 +129,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       observer.observe(button, { attributes: true, attributeFilter: ['data-material'] });
 
       return () => {
+        if (timeoutId) clearTimeout(timeoutId);
         observer.disconnect();
         button.style.setProperty('will-change', 'auto');
       };
@@ -138,8 +144,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
 
   // Only pass disabled for elements that support it
   // This prevents invalid HTML attributes on unsupported elements
-  const shouldPassDisabled =
-    asChild || !as || ['button', 'input', 'textarea', 'select'].includes(as);
+  const shouldPassDisabled = asChild || !as || ['button', 'input', 'textarea', 'select'].includes(as);
 
   // Determine if we are rendering a real <button> element so we can set a safe
   // default type. Native <button> defaults to type="submit" which can cause
@@ -221,10 +226,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
           {/* Centered spinner overlay during loading state */}
           <Flex asChild align="center" justify="center" position="absolute" inset="0">
             <span>
-              <Spinner
-                size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)}
-                aria-hidden="true"
-              />
+              <Spinner size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)} aria-hidden="true" />
             </span>
           </Flex>
         </>

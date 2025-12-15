@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { BaseButton } from './_internal/base-button.js';
 import { Tooltip } from './tooltip.js';
+import { useTooltipWrapper } from '../hooks/use-tooltip-wrapper.js';
 import type { BaseButtonProps } from './_internal/base-button.js';
 
 type IconButtonElement = React.ElementRef<typeof BaseButton>;
@@ -57,9 +58,7 @@ type IconButtonProps<C extends React.ElementType = 'button'> = IconButtonOwnProp
  * IconButton component type that supports polymorphic rendering
  * @template C - The element type to render as
  */
-type IconButtonComponent = <C extends React.ElementType = 'button'>(
-  props: IconButtonProps<C> & { ref?: React.ForwardedRef<IconButtonElement> },
-) => React.ReactElement | null;
+type IconButtonComponent = <C extends React.ElementType = 'button'>(props: IconButtonProps<C> & { ref?: React.ForwardedRef<IconButtonElement> }) => React.ReactElement | null;
 
 /**
  * IconButton component for compact, accessible icon-only interactions
@@ -103,68 +102,45 @@ type IconButtonComponent = <C extends React.ElementType = 'button'>(
  */
 const IconButton = React.forwardRef(
   (
-    {
-      className,
-      tooltip,
-      tooltipSide = 'top',
-      tooltipAlign = 'center',
-      tooltipDelayDuration,
-      tooltipDisableHoverableContent,
-      ...props
-    }: IconButtonProps,
+    { className, tooltip, tooltipSide = 'top', tooltipAlign = 'center', tooltipDelayDuration, tooltipDisableHoverableContent, ...props }: IconButtonProps,
     forwardedRef: React.ForwardedRef<IconButtonElement>,
   ) => {
-    // Generate unique ID for tooltip accessibility
-    const tooltipId = React.useId();
+    // Use shared tooltip wrapper hook for accessibility props
+    const { tooltipId, hasTooltip, accessibilityProps: tooltipAccessibilityProps } = useTooltipWrapper(tooltip);
+
     // Runtime accessibility validation to ensure WCAG compliance
     // This helps catch accessibility issues during development
     const hasAriaLabel = 'aria-label' in props && props['aria-label'];
     const hasAriaLabelledBy = 'aria-labelledby' in props && props['aria-labelledby'];
     const hasChildren = 'children' in props && props.children;
 
-    // Throw descriptive error if no accessible name is provided
+    // Validate accessible name - throw in development, log error in production
     if (!hasAriaLabel && !hasAriaLabelledBy && !hasChildren) {
-      throw new Error(
+      const errorMessage =
         'IconButton: Icon buttons must have an accessible name. Please provide either:' +
-          '\n- aria-label prop with descriptive text' +
-          '\n- aria-labelledby prop referencing a label element' +
-          '\n- or visible text children',
-      );
+        '\n- aria-label prop with descriptive text' +
+        '\n- aria-labelledby prop referencing a label element' +
+        '\n- or visible text children';
+
+      if (process.env.NODE_ENV === 'development') {
+        throw new Error(errorMessage);
+      } else {
+        console.error(errorMessage);
+      }
     }
 
-    // Prepare accessibility props for tooltip integration
-    const hasTooltip = Boolean(tooltip);
-    const tooltipAccessibilityProps = React.useMemo(
-      () => (hasTooltip ? { 'aria-describedby': tooltipId } : {}),
-      [hasTooltip, tooltipId],
-    );
-
     // Create the base icon button element with accessibility props
-    const iconButton = (
-      <BaseButton
-        {...props}
-        {...tooltipAccessibilityProps}
-        ref={forwardedRef}
-        className={classNames('rt-IconButton', className)}
-      />
-    );
+    const iconButton = <BaseButton {...props} {...tooltipAccessibilityProps} ref={forwardedRef} className={classNames('rt-IconButton', className)} />;
 
     // If no tooltip is provided, return the icon button as-is for better performance
-    if (!tooltip) {
+    if (!hasTooltip) {
       return iconButton;
     }
 
     // Wrap with Tooltip when tooltip content is provided
     // This creates a compound component that handles both button and tooltip functionality
     return (
-      <Tooltip
-        content={tooltip}
-        side={tooltipSide}
-        align={tooltipAlign}
-        delayDuration={tooltipDelayDuration}
-        disableHoverableContent={tooltipDisableHoverableContent}
-        id={tooltipId}
-      >
+      <Tooltip content={tooltip} side={tooltipSide} align={tooltipAlign} delayDuration={tooltipDelayDuration} disableHoverableContent={tooltipDisableHoverableContent} id={tooltipId}>
         {iconButton}
       </Tooltip>
     );

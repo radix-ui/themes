@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Toggle } from 'radix-ui';
 import { IconButton } from './icon-button.js';
 import { BaseButton } from './_internal/base-button.js';
-import { useLiveAnnouncer } from '../hooks/use-live-announcer.js';
+import { useToggleState } from '../hooks/use-toggle-state.js';
 import type { IconButtonProps } from './icon-button.js';
 
 type ToggleIconButtonElement = React.ElementRef<typeof BaseButton>;
@@ -104,32 +104,34 @@ type ToggleIconButtonPropsWithAccessibility = ToggleIconButtonProps & Accessibil
  * <span id="notifications-label">Toggle notifications</span>
  * ```
  */
-const ToggleIconButton = React.forwardRef<
-  ToggleIconButtonElement,
-  ToggleIconButtonPropsWithAccessibility
->(({ pressed, onPressedChange, defaultPressed, ...iconButtonProps }, forwardedRef) => {
-  // Get the live announcer for accessibility announcements
-  const announce = useLiveAnnouncer();
+const ToggleIconButton = React.forwardRef<ToggleIconButtonElement, ToggleIconButtonPropsWithAccessibility>(({ pressed, onPressedChange, defaultPressed, ...iconButtonProps }, forwardedRef) => {
+  // Extract specific props for stable dependency array
+  const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, children } = iconButtonProps;
+
+  // Cache the label lookup from aria-labelledby to avoid repeated DOM queries
+  const cachedLabelRef = React.useRef<string | null>(null);
+
+  // Clear cached label when ariaLabelledBy changes
+  React.useEffect(() => {
+    cachedLabelRef.current = null;
+  }, [ariaLabelledBy]);
 
   /**
-   * Extract accessible name from various sources for announcements
-   * This ensures screen readers announce meaningful state changes
+   * Extract accessible name from various sources for announcements.
+   * This ensures screen readers announce meaningful state changes.
    * Priority: aria-label > aria-labelledby > children > fallback
    */
   const getAccessibleName = React.useCallback(() => {
-    const {
-      'aria-label': ariaLabel,
-      'aria-labelledby': ariaLabelledBy,
-      children,
-    } = iconButtonProps;
-
     // First priority: direct aria-label
     if (ariaLabel) return ariaLabel;
 
-    // Second priority: referenced label element
+    // Second priority: referenced label element (cached)
     if (ariaLabelledBy) {
-      const labelElement = document.getElementById(ariaLabelledBy);
-      return labelElement?.textContent || 'Toggle icon button';
+      if (cachedLabelRef.current === null) {
+        const labelElement = document.getElementById(ariaLabelledBy);
+        cachedLabelRef.current = labelElement?.textContent || 'Toggle icon button';
+      }
+      return cachedLabelRef.current;
     }
 
     // Third priority: visible text children
@@ -140,45 +142,21 @@ const ToggleIconButton = React.forwardRef<
 
     // Fallback for edge cases
     return 'Toggle icon button';
-  }, [iconButtonProps]);
+  }, [ariaLabel, ariaLabelledBy, children]);
 
-  /**
-   * Memoized handler for state changes with accessibility announcements
-   * This ensures screen readers announce the new state immediately
-   */
-  const handlePressedChange = React.useCallback(
-    (newPressed: boolean) => {
-      const accessibleName = getAccessibleName();
-      // Announce the state change for screen readers
-      announce(`${accessibleName} ${newPressed ? 'pressed' : 'unpressed'}`);
-      // Call the user's change handler
-      onPressedChange?.(newPressed);
-    },
-    [announce, onPressedChange, getAccessibleName],
-  );
-
-  // Development-only warning for controlled/uncontrolled pattern
-  // This helps developers avoid common state management mistakes
-  React.useEffect(() => {
-    if (process.env.NODE_ENV === 'development' && pressed !== undefined && onPressedChange === undefined) {
-      console.warn(
-        'ToggleIconButton: You provided a `pressed` prop without an `onPressedChange` handler. ' +
-          'This will result in a read-only toggle button. If you want the button to be interactive, ' +
-          'you should provide an `onPressedChange` handler.',
-      );
-    }
-  }, [pressed, onPressedChange]);
+  // Use shared toggle state hook for accessibility announcements and warnings
+  const { handlePressedChange } = useToggleState({
+    pressed,
+    onPressedChange,
+    getAccessibleName,
+    componentName: 'ToggleIconButton',
+  });
 
   // Render the toggle icon button using Radix UI's Toggle primitive
   // This provides proper ARIA attributes and keyboard navigation
   // The IconButton component handles accessibility validation internally
   return (
-    <Toggle.Root
-      pressed={pressed}
-      onPressedChange={handlePressedChange}
-      defaultPressed={defaultPressed}
-      asChild
-    >
+    <Toggle.Root pressed={pressed} onPressedChange={handlePressedChange} defaultPressed={defaultPressed} asChild>
       <IconButton {...iconButtonProps} ref={forwardedRef} />
     </Toggle.Root>
   );

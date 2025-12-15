@@ -12,6 +12,8 @@
     "optimize:icons": "node ./scripts/optimize-icons.cjs"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^2.0.0",
+    "@hugeicons/react": "^1.1.1",
     "@kushagradhawan/kookie-ui": "workspace:*",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",

@@ -1,5 +1,7 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Heading, Table, Tooltip } from '@kushagradhawan/kookie-ui';
+import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Heading, Table, Tooltip, Button } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
 
 <Section size="2">
 
@@ -8,6 +10,10 @@ import { CodeBlock } from '../../components/code-block';
 Typography system with 10-step scale (0-9), font weights, and formatting components. Kookie UI Typography is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better readability. 
 
 For complete typography documentation and advanced customization, visit the [Radix Themes Typography documentation](https://www.radix-ui.com/themes/docs/theme/typography). Note that Kookie UI's typography values may be enhanced and might not match exactly what's shown in the Radix documentation.
+
+<Flex direction="row" gap="2" mt="6" justify="end" align="start">
+  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
+</Flex>
 
 </Section>
 

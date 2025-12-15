@@ -1,5 +1,6 @@
 import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme, Tooltip } from '@kushagradhawan/kookie-ui';
-import { Play, ArrowUpRightIcon, Users, BookOpen, Ruler, History, Gamepad, ChevronDown, Dot, Check, ChevronRight, Accessibility } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowUpRight01Icon, Tick01Icon, ArrowDown01Icon } from '@hugeicons/core-free-icons';
 import { CodeBlock } from '../../components/code-block';
 import ButtonPlayground from '../../playground/ButtonPlayground';
 
@@ -11,8 +12,8 @@ Use buttons to trigger actions throughout your interface. Buttons are promises o
 
 This is an enhanced version of the Button component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Button documentation](https://www.radix-ui.com/themes/docs/components/button). 
 
-<Flex direction="row" gap="2" mt="6" justify="left" align="start">
-  <Button size="1" variant="soft" color="gray" highContrast as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/button.tsx" target="_blank" rel="noopener noreferrer">View source <ArrowUpRightIcon /></Button>
+<Flex direction="row" gap="2" mt="6" justify="end" align="start">
+  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/button.tsx" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
 </Flex>
 
 </Section>
@@ -413,7 +414,7 @@ Use the `material` prop to set button appearance. Choose `solid` for opaque back
 Buttons automatically inherit the theme's material setting. Wrap your interface in a `Theme` component to control material globally:
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1717518213296-d7e77df36c8b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://xlsxjlbxvnhdubuzkjoz.supabase.co/storage/v1/object/public/generated-images/img_ab26cc85-8970-4552-b3cd-c051914cc681_context.jpg"
   backgroundProps={{
     height: "200px",
     width: "100%",
@@ -441,21 +442,25 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 Override the theme's material for a button when you need a specific effect. Translucent effects only show over backgrounds—use `highContrast` for readability.
 
 <CodeBlock
-  background="https://images.unsplash.com/photo-1510004303181-6f0c8cbb88ff?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  background="https://xlsxjlbxvnhdubuzkjoz.supabase.co/storage/v1/object/public/generated-images/img_ab26cc85-8970-4552-b3cd-c051914cc681_context.jpg"
   backgroundProps={{
     height: "200px",
     width: "100%",
     radius: "2"
   }}
   preview={
-    <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
-      <Button size="3" color="gray" highContrast variant="soft" material="translucent">Button</Button>
-    </Flex>
+    <Theme material="translucent">
+      <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
+        <Button size="3" color="gray" highContrast variant="soft" material="translucent">Button</Button>
+      </Flex>
+    </Theme>
   }
 >
 
 ```tsx
-<Button size="3" color="gray" highContrast variant="soft" material="translucent">Button</Button>
+<Theme material="solid">
+  <Button material="translucent" size="3" color="gray" highContrast variant="soft">Button</Button>
+</Theme>
 ```
 
 </CodeBlock>
@@ -632,13 +637,13 @@ Place icons directly inside buttons; they’ll be sized automatically based on t
 
   preview={
     <Flex gap="2" align="center">
-      <Button size="3"><Check />Save</Button>
+      <Button size="3"><HugeiconsIcon icon={Tick01Icon} />Save</Button>
     </Flex>
   }
 >
 
 ```tsx
-<Button size="3"><Check />Save</Button>
+<Button size="3"><HugeiconsIcon icon={Tick01Icon} />Save</Button>
 ```
 
 </CodeBlock>
@@ -649,13 +654,13 @@ For icon-only buttons, use the `IconButton` component for proper accessibility a
 
   preview={
     <Flex gap="2" align="center">
-      <IconButton size="3" variant="soft" aria-label="More options"><ChevronDown /></IconButton>
+      <IconButton size="3" variant="soft" aria-label="More options"><HugeiconsIcon icon={ArrowDown01Icon} /></IconButton>
     </Flex>
   }
 >
 
 ```tsx
-<IconButton size="3" variant="soft" aria-label="More options"><ChevronDown /></IconButton>
+<IconButton size="3" variant="soft" aria-label="More options"><HugeiconsIcon icon={ArrowDown01Icon} /></IconButton>
 ```
 
 </CodeBlock>

@@ -1130,19 +1130,7 @@ type SendProps = Omit<IconButtonProps, 'aria-label' | 'aria-labelledby'> & {
 };
 
 const Send = React.forwardRef<HTMLButtonElement, SendProps>((props, forwardedRef) => {
-  const {
-    asChild,
-    clearOnSend = true,
-    disabled,
-    children,
-    className,
-    style,
-    size: sizeProp,
-    variant: variantProp,
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-    ...buttonProps
-  } = props;
+  const { asChild, clearOnSend = true, disabled, children, className, style, size: sizeProp, variant: variantProp, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby, ...buttonProps } = props;
   const ctx = useChatbarContext();
 
   const trimmed = ctx.value.trim();

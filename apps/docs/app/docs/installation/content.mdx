@@ -1,6 +1,7 @@
 import { Card, Flex, Text, Heading, Section, Link, Code, Callout, Badge, Separator, Image } from '@kushagradhawan/kookie-ui';
 import { CodeBlock } from '../../components/code-block';
-import { CircleAlert } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { AlertSquareIcon } from '@hugeicons/core-free-icons';
 
 <Section size="2">
 
@@ -10,7 +11,7 @@ Kookie UI is an open-source React component library, forked from Radix Themes an
 
 <Callout.Root variant="soft" size="2" color="gray" mt="6" highContrast>
   <Callout.Icon>
-		<CircleAlert />
+		<HugeiconsIcon icon={AlertSquareIcon} />
 	</Callout.Icon>
   <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
 </Callout.Root>

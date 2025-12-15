@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Box, Card, Flex, ToggleButton, IconButton, Theme, Inset, Separator, Code as CodeComp, Button } from '@kushagradhawan/kookie-ui';
-import { ChevronsUpDown, Copy, Code, Eye } from 'lucide-react';
+import { Box, Card, Flex, ToggleIconButton, Theme, Inset, Separator, Code as CodeComp, Button } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon, Copy01Icon } from '@hugeicons/core-free-icons';
 import * as simpleIcons from 'simple-icons';
 
 /**
@@ -114,7 +115,7 @@ const PreviewSection = ({
   // Render with no background (default card styling)
   if (background === 'none') {
     return (
-      <Card size="2" variant="soft">
+      <Card size="1" variant="soft">
         <Flex justify="center" align="center" py="4">
           <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
@@ -135,7 +136,7 @@ const PreviewSection = ({
     };
 
     return (
-      <Card size="2" variant="soft">
+      <Card size="1" variant="soft">
         <Flex justify="center" align="center" py="4" style={dotsStyle}>
           <Theme fontFamily="sans">{preview}</Theme>
         </Flex>
@@ -155,7 +156,7 @@ const PreviewSection = ({
   };
 
   return (
-    <Card size="2" variant="soft">
+    <Card size="1" variant="soft">
       <Flex justify="center" align="center" py="4" style={imageStyle}>
         <Theme fontFamily="sans">{preview}</Theme>
       </Flex>
@@ -368,61 +369,56 @@ const CodeSection = memo(function CodeSection({ children, buttonsPosition, file 
 
   return (
     <Box position="relative">
-      <Card size="2" variant="soft">
+      <Card size="1" variant="soft">
         <Flex direction="column" gap="3">
           {/* Action Buttons - positioned absolutely for overlay effect */}
-          <Flex gap="2" justify="between" align="center">
+          <Flex gap="2" justify="between" align="start">
             {/* Language badge - only when detectable */}
             {(language || file) && (
               <Flex align="center" gap="2">
-                {languageIcon && (
+                {/* {languageIcon && (
                   <svg role="img" viewBox="0 0 24 24" width="16" height="16" fill="var(--gray-11)" style={{ flexShrink: 0 }}>
                     <path d={languageIcon.path} />
                   </svg>
-                )}
+                )} */}
                 <Flex align="center" gap="2">
                   {language && (
-                    <CodeComp size="2" color="gray" highContrast>
+                    <CodeComp size="1" color="gray" highContrast>
                       {language?.toLowerCase()}
                     </CodeComp>
                   )}
                   {file && (
-                    <CodeComp size="2" color="gray" highContrast>
+                    <CodeComp size="1" color="gray" highContrast>
                       {file}
                     </CodeComp>
                   )}
                 </Flex>
               </Flex>
             )}
-            <Flex align="center" gap="2">
+            <Flex align="center" gap="2" className="code-action-buttons">
               {/* Expand/Collapse button - only show if content is expandable */}
               {shouldShowToggle && (
-                <ToggleButton
-                  size="1"
-                  variant="soft"
+                <ToggleIconButton
+                  size="2"
+                  variant="ghost"
                   color="gray"
-                  highContrast
                   pressed={isExpanded}
                   onPressedChange={handleToggle}
                   tooltip={isExpanded ? 'Collapse' : 'Expand'}
                   aria-label={isExpanded ? 'Collapse code' : 'Expand code'}
                   className="code-toggle-button"
                 >
-                  <ChevronsUpDown style={chevronStyle} className="code-chevron" />
-                  Expand
-                </ToggleButton>
+                  <HugeiconsIcon icon={ArrowDown01Icon} style={chevronStyle} className="code-chevron" />
+                  {/* {isExpanded ? 'Collapse' : 'Expand'} */}
+                </ToggleIconButton>
               )}
 
               {/* Copy button */}
-              <Button size="1" variant="soft" color="gray" highContrast onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
-                <Copy /> Copy
+              <Button size="2" variant="ghost" color="gray" onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
+                <HugeiconsIcon icon={Copy01Icon} /> Copy
               </Button>
             </Flex>
           </Flex>
-
-          <Inset clip="padding-box" side="x">
-            <Separator size="4" light />
-          </Inset>
 
           {/* Code Content - with dynamic height based on expand state */}
           <Box ref={contentRef} style={contentStyle} className="code-content">

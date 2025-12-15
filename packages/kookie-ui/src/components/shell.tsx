@@ -450,17 +450,21 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const peekCtxValue = React.useMemo(() => ({ peekTarget, setPeekTarget, peekPane, clearPeek }), [peekTarget, setPeekTarget, peekPane, clearPeek]);
   const actionsCtxValue = React.useMemo(() => ({ togglePane, expandPane, collapsePane, setSidebarToggleComputer }), [togglePane, expandPane, collapsePane, setSidebarToggleComputer]);
 
+  // Memoized full context value for ShellProvider to prevent unnecessary effect re-runs
+  const shellContextValue = React.useMemo(
+    () => ({
+      ...baseContextValue,
+      peekTarget,
+      setPeekTarget,
+      peekPane,
+      clearPeek,
+    }),
+    [baseContextValue, peekTarget, setPeekTarget, peekPane, clearPeek],
+  );
+
   return (
     <div {...props} ref={ref} className={classNames('rt-ShellRoot', className)} style={{ ...heightStyle, ...props.style }}>
-      <ShellProvider
-        value={{
-          ...baseContextValue,
-          peekTarget,
-          setPeekTarget,
-          peekPane,
-          clearPeek,
-        }}
-      >
+      <ShellProvider value={shellContextValue}>
         <PresentationContext.Provider value={presentationCtxValue}>
           <LeftModeContext.Provider value={leftModeCtxValue}>
             <PanelModeContext.Provider value={panelModeCtxValue}>

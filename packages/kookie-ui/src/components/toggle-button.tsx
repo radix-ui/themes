@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Toggle } from 'radix-ui';
 import { Button } from './button.js';
-import { useLiveAnnouncer } from '../hooks/use-live-announcer.js';
+import { useToggleState } from '../hooks/use-toggle-state.js';
 
 /**
  * ToggleButton props that extend Button with toggle-specific functionality
@@ -63,66 +63,37 @@ type ToggleButtonElement = React.ElementRef<typeof Button>;
  * </ToggleButton>
  * ```
  */
-const ToggleButton = React.forwardRef<ToggleButtonElement, ToggleButtonProps>(
-  ({ pressed, onPressedChange, defaultPressed, children, ...buttonProps }, forwardedRef) => {
-    // Get the live announcer for accessibility announcements
-    const announce = useLiveAnnouncer();
+const ToggleButton = React.forwardRef<ToggleButtonElement, ToggleButtonProps>(({ pressed, onPressedChange, defaultPressed, children, ...buttonProps }, forwardedRef) => {
+  /**
+   * Extract accessible name from button content for announcements.
+   * This ensures screen readers announce meaningful state changes.
+   */
+  const getAccessibleName = React.useCallback(() => {
+    if (typeof children === 'string') return children;
+    if (React.isValidElement(children) && typeof (children.props as any)?.children === 'string') {
+      return (children.props as any).children;
+    }
+    return 'Toggle button';
+  }, [children]);
 
-    /**
-     * Extract accessible name from button content for announcements
-     * This ensures screen readers announce meaningful state changes
-     */
-    const getAccessibleName = React.useCallback(() => {
-      if (typeof children === 'string') return children;
-      if (React.isValidElement(children) && typeof (children.props as any)?.children === 'string') {
-        return (children.props as any).children;
-      }
-      return 'Toggle button';
-    }, [children]);
+  // Use shared toggle state hook for accessibility announcements and warnings
+  const { handlePressedChange } = useToggleState({
+    pressed,
+    onPressedChange,
+    getAccessibleName,
+    componentName: 'ToggleButton',
+  });
 
-    /**
-     * Memoized handler for state changes with accessibility announcements
-     * This ensures screen readers announce the new state immediately
-     */
-    const handlePressedChange = React.useCallback(
-      (newPressed: boolean) => {
-        const accessibleName = getAccessibleName();
-        // Announce the state change for screen readers
-        announce(`${accessibleName} ${newPressed ? 'pressed' : 'unpressed'}`);
-        // Call the user's change handler
-        onPressedChange?.(newPressed);
-      },
-      [announce, onPressedChange, getAccessibleName],
-    );
-
-    // Development-only warning for controlled/uncontrolled pattern
-    // This helps developers avoid common state management mistakes
-    React.useEffect(() => {
-      if (process.env.NODE_ENV === 'development' && pressed !== undefined && onPressedChange === undefined) {
-        console.warn(
-          'ToggleButton: You provided a `pressed` prop without an `onPressedChange` handler. ' +
-            'This will result in a read-only toggle button. If you want the button to be interactive, ' +
-            'you should provide an `onPressedChange` handler.',
-        );
-      }
-    }, [pressed, onPressedChange]);
-
-    // Render the toggle button using Radix UI's Toggle primitive
-    // This provides proper ARIA attributes and keyboard navigation
-    return (
-      <Toggle.Root
-        pressed={pressed}
-        onPressedChange={handlePressedChange}
-        defaultPressed={defaultPressed}
-        asChild
-      >
-        <Button {...buttonProps} ref={forwardedRef}>
-          {children}
-        </Button>
-      </Toggle.Root>
-    );
-  },
-);
+  // Render the toggle button using Radix UI's Toggle primitive
+  // This provides proper ARIA attributes and keyboard navigation
+  return (
+    <Toggle.Root pressed={pressed} onPressedChange={handlePressedChange} defaultPressed={defaultPressed} asChild>
+      <Button {...buttonProps} ref={forwardedRef}>
+        {children}
+      </Button>
+    </Toggle.Root>
+  );
+});
 ToggleButton.displayName = 'ToggleButton';
 
 export { ToggleButton };

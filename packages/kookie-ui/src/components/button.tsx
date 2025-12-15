@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { BaseButton } from './_internal/base-button.js';
 import { Tooltip } from './tooltip.js';
+import { useTooltipWrapper } from '../hooks/use-tooltip-wrapper.js';
 import type { BaseButtonProps } from './_internal/base-button.js';
 
 /**
@@ -84,9 +85,7 @@ type ButtonProps<C extends React.ElementType = 'button'> = ButtonOwnProps & {
  * Button component type that supports polymorphic rendering
  * @template C - The element type to render as
  */
-type ButtonComponent = <C extends React.ElementType = 'button'>(
-  props: ButtonProps<C> & { ref?: React.ForwardedRef<ButtonElement> },
-) => React.ReactElement | null;
+type ButtonComponent = <C extends React.ElementType = 'button'>(props: ButtonProps<C> & { ref?: React.ForwardedRef<ButtonElement> }) => React.ReactElement | null;
 
 /**
  * Button component for triggering actions throughout your interface
@@ -113,27 +112,11 @@ type ButtonComponent = <C extends React.ElementType = 'button'>(
  */
 const Button = React.forwardRef(
   (
-    {
-      className,
-      tooltip,
-      tooltipSide = 'top',
-      tooltipAlign = 'center',
-      tooltipDelayDuration,
-      tooltipDisableHoverableContent,
-      overrideStyles,
-      ...props
-    }: ButtonProps,
+    { className, style, tooltip, tooltipSide = 'top', tooltipAlign = 'center', tooltipDelayDuration, tooltipDisableHoverableContent, overrideStyles, ...props }: ButtonProps,
     forwardedRef: React.ForwardedRef<ButtonElement>,
   ) => {
-    // Generate unique ID for tooltip accessibility
-    const tooltipId = React.useId();
-    const hasTooltip = Boolean(tooltip);
-
-    // Prepare accessibility props for tooltip integration
-    const tooltipAccessibilityProps = React.useMemo(
-      () => (hasTooltip ? { 'aria-describedby': tooltipId } : {}),
-      [hasTooltip, tooltipId],
-    );
+    // Use shared tooltip wrapper hook for accessibility props
+    const { tooltipId, hasTooltip, accessibilityProps: tooltipAccessibilityProps } = useTooltipWrapper(tooltip);
 
     // Create the base button element with tooltip accessibility props
     // Map overrideStyles to CSS variables consumed by the override variant rules
@@ -152,7 +135,7 @@ const Button = React.forwardRef(
         setVar(`--button-override-${prefix}filter`, s.filter);
         setVar(`--button-override-${prefix}outline`, s.outline);
         setVar(`--button-override-${prefix}outline-offset`, s.outlineOffset);
-        setVar(`--button-override-${prefix}opacity`, s.opacity as any);
+        setVar(`--button-override-${prefix}opacity`, s.opacity);
       };
 
       apply('', overrideStyles.normal);
@@ -167,35 +150,23 @@ const Button = React.forwardRef(
         setVar('--button-override-focus-outline-offset', overrideStyles.focus.outlineOffset);
       }
 
-      return vars as unknown as React.CSSProperties;
+      return vars as React.CSSProperties;
     }, [overrideStyles]);
 
-    const button = (
-      <BaseButton
-        {...props}
-        {...tooltipAccessibilityProps}
-        ref={forwardedRef}
-        className={classNames('rt-Button', className)}
-        style={overrideVars ? { ...overrideVars, ...(props as any).style } : (props as any).style}
-      />
-    );
+    // Combine override styles with user-provided styles
+    const combinedStyle = React.useMemo(() => (overrideVars ? { ...overrideVars, ...style } : style), [overrideVars, style]);
+
+    const button = <BaseButton {...props} {...tooltipAccessibilityProps} ref={forwardedRef} className={classNames('rt-Button', className)} style={combinedStyle} />;
 
     // If no tooltip is provided, return the button as-is for better performance
-    if (!tooltip) {
+    if (!hasTooltip) {
       return button;
     }
 
     // Wrap with Tooltip when tooltip content is provided
     // This creates a compound component that handles both button and tooltip functionality
     return (
-      <Tooltip
-        content={tooltip}
-        side={tooltipSide}
-        align={tooltipAlign}
-        delayDuration={tooltipDelayDuration}
-        disableHoverableContent={tooltipDisableHoverableContent}
-        id={tooltipId}
-      >
+      <Tooltip content={tooltip} side={tooltipSide} align={tooltipAlign} delayDuration={tooltipDelayDuration} disableHoverableContent={tooltipDisableHoverableContent} id={tooltipId}>
         {button}
       </Tooltip>
     );

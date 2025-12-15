@@ -24,6 +24,22 @@
  * These styles establish the core button behavior and appearance
  */
 .rt-BaseButton {
+  /*
+   * Component-level material override
+   * When button has explicit material prop, override the inherited theme values.
+   * The base --material-blend and --material-alpha are defined in tokens/color.css
+   * and cascade from the Theme component.
+   */
+  &:where([data-material='solid'], [data-panel-background='solid']) {
+    --material-blend: 100%;
+    --material-alpha: 0;
+  }
+
+  &:where([data-material='translucent'], [data-panel-background='translucent']) {
+    --material-blend: 60%;
+    --material-alpha: 1;
+  }
+
   /* Reset all inherited styles to ensure consistent base */
   all: unset;
   box-sizing: border-box;
@@ -185,45 +201,19 @@
 /* classic */
 
 .rt-BaseButton:where(.rt-variant-classic) {
+  /*
+   * Classic variant uses the --color-surface token which automatically
+   * switches between solid and translucent based on theme material setting.
+   * Interactive states use the material system for gray backgrounds.
+   */
   position: relative;
   color: var(--accent-a11);
-  background-color: var(--color-surface-solid);
+  background-color: var(--color-surface);
   box-shadow: var(--shadow-2);
   transition: var(--transition-text-field);
 
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: var(--color-surface-translucent);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--color-surface-solid);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: var(--color-surface-translucent);
-  }
-
-  /* Dark mode uses same styling as light mode for simplicity */
-
   &:where(.rt-high-contrast) {
     color: var(--gray-12);
-    background-color: var(--color-surface-solid);
-
-    /* Theme-level translucent override for high contrast */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: var(--color-surface-translucent);
-    }
-
-    /* Component-level overrides for high contrast */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--color-surface-solid);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: var(--color-surface-translucent);
-    }
   }
 
   &:where(:focus-visible) {
@@ -233,68 +223,19 @@
 
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--gray-2);
+      background-color: color-mix(in srgb, var(--gray-a2) calc(var(--material-alpha) * 100%), var(--gray-2) var(--material-blend));
       box-shadow: var(--shadow-2);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--gray-2);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--gray-a2), var(--gray-2) 60%);
-      }
-
-      /* Dark mode uses same styling as light mode for simplicity */
     }
   }
 
   &:where([data-state='open']) {
-    background-color: var(--gray-3);
+    background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for open */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
-    }
-
-    /* Component-level overrides for open */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--gray-3);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
-    }
-
-    /* Dark mode uses same styling as light mode for simplicity */
   }
 
-  &:where(
-      :active:not([data-state='open'], [data-disabled]),
-      [data-state='on']:not([data-disabled])
-    ) {
-    background-color: var(--gray-3);
+  &:where(:active:not([data-state='open'], [data-disabled]), [data-state='on']:not([data-disabled])) {
+    background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for active */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
-    }
-
-    /* Component-level overrides for active */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--gray-3);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
-    }
   }
 
   @media (pointer: coarse) {
@@ -329,14 +270,8 @@
   @media (hover: hover) {
     &:where(:hover) {
       color: var(--button-override-hover-color, var(--button-override-color, inherit));
-      background: var(
-        --button-override-hover-background,
-        var(--button-override-background, transparent)
-      );
-      background-color: var(
-        --button-override-hover-background-color,
-        var(--button-override-background-color, initial)
-      );
+      background: var(--button-override-hover-background, var(--button-override-background, transparent));
+      background-color: var(--button-override-hover-background-color, var(--button-override-background-color, initial));
       box-shadow: var(--button-override-hover-box-shadow, var(--button-override-box-shadow, none));
       filter: var(--button-override-hover-filter, var(--button-override-filter, none));
       outline: var(--button-override-hover-outline, var(--button-override-outline, none));
@@ -345,14 +280,8 @@
 
   &:where([data-state='open']) {
     color: var(--button-override-open-color, var(--button-override-color, inherit));
-    background: var(
-      --button-override-open-background,
-      var(--button-override-background, transparent)
-    );
-    background-color: var(
-      --button-override-open-background-color,
-      var(--button-override-background-color, initial)
-    );
+    background: var(--button-override-open-background, var(--button-override-background, transparent));
+    background-color: var(--button-override-open-background-color, var(--button-override-background-color, initial));
     box-shadow: var(--button-override-open-box-shadow, var(--button-override-box-shadow, none));
     filter: var(--button-override-open-filter, var(--button-override-filter, none));
     outline: var(--button-override-open-outline, var(--button-override-outline, none));
@@ -360,14 +289,8 @@
 
   &:where(:active:not([data-state='open'])) {
     color: var(--button-override-active-color, var(--button-override-color, inherit));
-    background: var(
-      --button-override-active-background,
-      var(--button-override-background, transparent)
-    );
-    background-color: var(
-      --button-override-active-background-color,
-      var(--button-override-background-color, initial)
-    );
+    background: var(--button-override-active-background, var(--button-override-background, transparent));
+    background-color: var(--button-override-active-background-color, var(--button-override-background-color, initial));
     box-shadow: var(--button-override-active-box-shadow, var(--button-override-box-shadow, none));
     filter: var(--button-override-active-filter, var(--button-override-filter, none));
     outline: var(--button-override-active-outline, var(--button-override-outline, none));
@@ -380,33 +303,12 @@
 
   /* Toggle pressed */
   &:where([data-state='on']) {
-    color: var(
-      --button-override-pressed-color,
-      var(--button-override-active-color, var(--button-override-color, inherit))
-    );
-    background: var(
-      --button-override-pressed-background,
-      var(--button-override-active-background, var(--button-override-background, transparent))
-    );
-    background-color: var(
-      --button-override-pressed-background-color,
-      var(
-        --button-override-active-background-color,
-        var(--button-override-background-color, initial)
-      )
-    );
-    box-shadow: var(
-      --button-override-pressed-box-shadow,
-      var(--button-override-active-box-shadow, var(--button-override-box-shadow, none))
-    );
-    filter: var(
-      --button-override-pressed-filter,
-      var(--button-override-active-filter, var(--button-override-filter, none))
-    );
-    outline: var(
-      --button-override-pressed-outline,
-      var(--button-override-active-outline, var(--button-override-outline, none))
-    );
+    color: var(--button-override-pressed-color, var(--button-override-active-color, var(--button-override-color, inherit)));
+    background: var(--button-override-pressed-background, var(--button-override-active-background, var(--button-override-background, transparent)));
+    background-color: var(--button-override-pressed-background-color, var(--button-override-active-background-color, var(--button-override-background-color, initial)));
+    box-shadow: var(--button-override-pressed-box-shadow, var(--button-override-active-box-shadow, var(--button-override-box-shadow, none)));
+    filter: var(--button-override-pressed-filter, var(--button-override-active-filter, var(--button-override-filter, none)));
+    outline: var(--button-override-pressed-outline, var(--button-override-active-outline, var(--button-override-outline, none)));
   }
 
   &:where([data-disabled]) {
@@ -440,141 +342,69 @@
 }
 
 .rt-BaseButton:where(.rt-variant-solid) {
-  /* Base state: solid color for solid panels */
-  background-color: var(--accent-9);
+  /*
+   * Solid variant uses a 10% blend for translucent (more opaque than other variants).
+   * We use a local --solid-blend variable to handle this difference.
+   */
+  --solid-blend: calc(100% - (var(--material-alpha) * 90%)); /* 100% for solid, 10% for translucent */
+
+  background-color: color-mix(in srgb, var(--accent-a9) calc(var(--material-alpha) * 100%), var(--accent-9) var(--solid-blend));
   color: var(--accent-contrast);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: color-mix(in srgb, var(--accent-a9), var(--accent-9) 10%);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--accent-9);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: color-mix(in srgb, var(--accent-a9), var(--accent-9) 10%);
-  }
 
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-10);
+      background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
       box-shadow: var(--shadow-2);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-10);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
-      }
     }
   }
+
   &:where([data-state='open']) {
-    background-color: var(--accent-10);
+    background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
     filter: var(--base-button-solid-open-filter);
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for open */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
-    }
-
-    /* Component-level overrides for open */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-10);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
-    }
   }
+
   &:where(:active:not([data-state='open'])) {
     filter: var(--base-button-solid-active-filter);
     box-shadow: var(--shadow-1);
   }
-  /* Better -webkit-tap-highlight-color */
+
   @media (pointer: coarse) {
     &:where(:active:not([data-state='open'])) {
       outline: var(--classic-shadow-blur-large) solid var(--accent-a4);
       outline-offset: 0;
     }
   }
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: 2px;
   }
+
   &:where(.rt-high-contrast) {
-    background-color: var(--accent-12);
+    background-color: color-mix(in srgb, var(--accent-a12) calc(var(--material-alpha) * 100%), var(--accent-12) var(--solid-blend));
     color: var(--gray-1);
-
-    /* Theme-level translucent override for high contrast */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
-    }
-
-    /* Component-level overrides for high contrast */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-12);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
-    }
 
     @media (hover: hover) {
       &:where(:hover) {
-        background-color: var(--accent-12);
+        background-color: color-mix(in srgb, var(--accent-a12) calc(var(--material-alpha) * 100%), var(--accent-12) var(--solid-blend));
         filter: var(--base-button-solid-high-contrast-hover-filter);
         box-shadow: var(--shadow-2);
-
-        /* Theme-level translucent override for high contrast hover */
-        :where([data-panel-background='translucent'], [data-material='translucent']) & {
-          background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
-        }
-
-        /* Component-level overrides for high contrast hover */
-        &:where([data-panel-background='solid'], [data-material='solid']) {
-          background-color: var(--accent-12);
-        }
-
-        &:where([data-panel-background='translucent'], [data-material='translucent']) {
-          background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
-        }
       }
     }
+
     &:where([data-state='open']) {
-      background-color: var(--accent-12);
+      background-color: color-mix(in srgb, var(--accent-a12) calc(var(--material-alpha) * 100%), var(--accent-12) var(--solid-blend));
       filter: var(--base-button-solid-high-contrast-open-filter);
       box-shadow: var(--shadow-1);
-
-      /* Theme-level translucent override for high contrast open */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
-      }
-
-      /* Component-level overrides for high contrast open */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-12);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a12), var(--accent-12) 10%);
-      }
     }
+
     &:where(:active:not([data-state='open'])) {
       filter: var(--base-button-solid-high-contrast-active-filter);
       box-shadow: var(--shadow-1);
     }
   }
+
   &:where([data-disabled]) {
     color: var(--gray-a8);
     background-color: var(--gray-a3);
@@ -602,83 +432,35 @@
 }
 
 .rt-BaseButton:where(.rt-variant-soft) {
-  /* Base state: solid color for solid panels */
-  background-color: var(--accent-3);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--accent-3);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-  }
+  /*
+   * Soft variant uses the material system for background colors.
+   * color-mix blends alpha and solid colors based on --material-blend.
+   * This automatically handles both solid and translucent modes.
+   */
+  background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
 
   &:where(:focus-visible) {
     outline: 2px solid var(--accent-8);
     outline-offset: -1px;
   }
+
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-4);
+      background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
       box-shadow: var(--shadow-2);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-4);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      }
     }
   }
+
   &:where([data-state='open']) {
-    background-color: var(--accent-4);
+    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for open */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-    }
-
-    /* Component-level overrides for open */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-4);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-    }
   }
+
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-5);
+    background-color: color-mix(in srgb, var(--accent-a5) calc(var(--material-alpha) * 100%), var(--accent-5) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for active */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
-    }
-
-    /* Component-level overrides for active */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-5);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
-    }
   }
+
   &:where([data-disabled]) {
     color: var(--gray-a8);
     background-color: var(--gray-a3);
@@ -688,19 +470,19 @@
 }
 
 .rt-BaseButton:where(.rt-variant-ghost) {
+  /*
+   * Ghost variant is transparent by default and only shows background on interaction.
+   * Uses the material system for hover/active/open states.
+   */
   &:where([data-flush='true']) {
-    /* We reset the defined margin variables to avoid inheriting them from a higher component */
-    /* If a margin IS defined on the component itself, the utility class will win and reset it */
     --margin-top: 0px;
     --margin-right: 0px;
     --margin-bottom: 0px;
     --margin-left: 0px;
 
-    /* Calculate padding values for different button sizes */
     --button-padding-x: calc(var(--base-button-height) * var(--padding-ratio-horizontal) / 4);
     --button-padding-y: calc(var(--base-button-height) / 8);
 
-    /* Define the overrides to incorporate the negative margins */
     --margin-top-override: calc(var(--margin-top) - var(--button-padding-y));
     --margin-right-override: calc(var(--margin-right) - var(--button-padding-x));
     --margin-bottom-override: calc(var(--margin-bottom) - var(--button-padding-y));
@@ -711,7 +493,6 @@
     margin-bottom: var(--margin-bottom-override);
     margin-left: var(--margin-left-override);
 
-    /* Reset the overrides on direct children */
     :where(&) > * {
       --margin-top-override: initial;
       --margin-right-override: initial;
@@ -722,82 +503,25 @@
 
   @media (hover: hover) {
     &:where(:hover) {
-      /* Base state: solid accent for solid panels */
-      background-color: var(--accent-3);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-3);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      }
-
-      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-        backdrop-filter: none !important;
-      } */
+      background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
     }
   }
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
+
   &:where([data-state='open']) {
-    /* Base state: solid accent for solid panels */
-    background-color: var(--accent-3);
+    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for open */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      backdrop-filter: var(--backdrop-filter-components);
-    }
-
-    /* Component-level overrides for open */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-3);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-    }
-
-    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-      backdrop-filter: none !important;
-    } */
   }
+
   &:where(:active:not([data-state='open'])) {
-    /* Base state: solid accent for solid panels */
-    background-color: var(--accent-4);
+    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for active */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-    }
-
-    /* Component-level overrides for active */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-4);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-    }
-
-    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-      backdrop-filter: none !important;
-    } */
   }
+
   &:where([data-disabled]) {
     color: var(--gray-a8);
     background-color: transparent;
@@ -809,104 +533,48 @@
 /* outline */
 
 .rt-BaseButton:where(.rt-variant-outline) {
-  /* Base state: solid colors for solid panels */
-  box-shadow: inset 0 0 0 1px var(--accent-6);
+  /*
+   * Outline variant uses the material system for backgrounds and borders.
+   * Border colors use alpha variants in translucent mode.
+   */
+  --outline-border-6: color-mix(in srgb, var(--accent-a6) calc(var(--material-alpha) * 100%), var(--accent-6) var(--material-blend));
+  --outline-border-7: color-mix(in srgb, var(--accent-a7) calc(var(--material-alpha) * 100%), var(--accent-7) var(--material-blend));
+  --outline-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
+
+  box-shadow: inset 0 0 0 1px var(--outline-border-6);
   color: var(--accent-11);
   transition: var(--transition-background-blur);
 
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-    color: var(--accent-a11);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    box-shadow: inset 0 0 0 1px var(--accent-6);
-    color: var(--accent-11);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-    color: var(--accent-a11);
-  }
-
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 1px var(--accent-7);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-        box-shadow: inset 0 0 0 1px var(--accent-a7);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-2);
-        box-shadow: inset 0 0 0 1px var(--accent-7);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-        box-shadow: inset 0 0 0 1px var(--accent-a7);
-      }
+      background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
+      box-shadow: inset 0 0 0 1px var(--outline-border-7);
     }
   }
+
   &:where([data-state='open']) {
-    background-color: var(--accent-2);
+    background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
     box-shadow:
-      inset 0 0 0 1px var(--accent-7),
+      inset 0 0 0 1px var(--outline-border-7),
       var(--shadow-1);
-
-    /* Theme-level translucent override for open */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a7);
-    }
-
-    /* Component-level overrides for open */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 1px var(--accent-7);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a7);
-    }
   }
+
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-3);
+    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
     box-shadow:
-      inset 0 0 0 1px var(--accent-8),
+      inset 0 0 0 1px var(--outline-border-8),
       var(--shadow-1);
-
-    /* Theme-level translucent override for active */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
-
-    /* Component-level overrides for active */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-3);
-      box-shadow: inset 0 0 0 1px var(--accent-8);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
   }
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
+
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
+
   &:where([data-disabled]) {
     color: var(--gray-a8);
     box-shadow: inset 0 0 0 1px var(--gray-a7);
@@ -919,105 +587,48 @@
 /* surface */
 
 .rt-BaseButton:where(.rt-variant-surface) {
-  /* Base state: solid accent for solid panels */
-  background-color: var(--accent-2);
-  box-shadow: inset 0 0 0 1px var(--accent-6);
+  /*
+   * Surface variant uses the material system for backgrounds and borders.
+   * Has a visible background in default state unlike outline.
+   */
+  --surface-border-6: color-mix(in srgb, var(--accent-a6) calc(var(--material-alpha) * 100%), var(--accent-6) var(--material-blend));
+  --surface-border-7: color-mix(in srgb, var(--accent-a7) calc(var(--material-alpha) * 100%), var(--accent-7) var(--material-blend));
+  --surface-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
+
+  background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
+  box-shadow: inset 0 0 0 1px var(--surface-border-6);
   color: var(--accent-a11);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-    backdrop-filter: var(--backdrop-filter-components);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 1px var(--accent-6);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-  }
 
   @media (hover: hover) {
     &:where(:hover) {
-      background-color: var(--accent-3);
-      box-shadow: inset 0 0 0 1px var(--accent-7);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-        box-shadow: inset 0 0 0 1px var(--accent-a7);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-3);
-        box-shadow: inset 0 0 0 1px var(--accent-7);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-        box-shadow: inset 0 0 0 1px var(--accent-a7);
-      }
+      background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
+      box-shadow: inset 0 0 0 1px var(--surface-border-7);
     }
   }
+
   &:where([data-state='open']) {
-    background-color: var(--accent-3);
+    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
     box-shadow:
-      inset 0 0 0 1px var(--accent-8),
+      inset 0 0 0 1px var(--surface-border-8),
       var(--shadow-1);
-
-    /* Theme-level translucent override for open */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
-
-    /* Component-level overrides for open */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-3);
-      box-shadow: inset 0 0 0 1px var(--accent-8);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
   }
+
   &:where(:active:not([data-state='open'])) {
-    background-color: var(--accent-4);
+    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
     box-shadow:
-      inset 0 0 0 1px var(--accent-8),
+      inset 0 0 0 1px var(--surface-border-8),
       var(--shadow-1);
-
-    /* Theme-level translucent override for active */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
-
-    /* Component-level overrides for active */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-4);
-      box-shadow: inset 0 0 0 1px var(--accent-8);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
   }
+
   &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
+
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
+
   &:where([data-disabled]) {
     color: var(--gray-a8);
     box-shadow: inset 0 0 0 1px var(--gray-a6);
@@ -1033,49 +644,20 @@
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* Toggle button pressed states for all variants */
+/* Toggle button pressed states for all variants - using material system */
 .rt-BaseButton:where([data-state='on']) {
-  /* No scale transform for toggle buttons - removed for better UX */
-
   /* Classic variant pressed */
   &:where(.rt-variant-classic) {
-    background-color: var(--gray-3);
+    background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for pressed */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
-    }
-
-    /* Component-level overrides for pressed */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--gray-3);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
-    }
   }
 
-  /* Solid variant pressed */
+  /* Solid variant pressed - uses solid-blend from variant definition */
   &:where(.rt-variant-solid) {
-    background-color: var(--accent-10);
+    --solid-blend: calc(100% - (var(--material-alpha) * 90%));
+    background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
     opacity: 0.9;
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for pressed */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
-    }
-
-    /* Component-level overrides for pressed */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-10);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a10), var(--accent-10) 10%);
-    }
 
     &:where(.rt-high-contrast) {
       background-color: var(--accent-12);
@@ -1085,92 +667,32 @@
 
   /* Soft variant pressed */
   &:where(.rt-variant-soft) {
-    background-color: var(--accent-5);
+    background-color: color-mix(in srgb, var(--accent-a5) calc(var(--material-alpha) * 100%), var(--accent-5) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for pressed */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
-    }
-
-    /* Component-level overrides for pressed */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-5);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a5), var(--accent-5) 60%);
-    }
   }
 
   /* Ghost variant pressed */
   &:where(.rt-variant-ghost) {
-    background-color: var(--accent-4);
+    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
     box-shadow: var(--shadow-1);
-
-    /* Theme-level translucent override for pressed */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: var(--accent-a4);
-    }
-
-    /* Component-level overrides for pressed */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-4);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: var(--accent-a4);
-    }
   }
 
   /* Outline variant pressed */
   &:where(.rt-variant-outline) {
-    background-color: var(--accent-3);
+    --outline-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
+    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
     box-shadow:
-      inset 0 0 0 1px var(--accent-8),
+      inset 0 0 0 1px var(--outline-border-8),
       var(--shadow-1);
-
-    /* Theme-level translucent override for pressed */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
-
-    /* Component-level overrides for pressed */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-3);
-      box-shadow: inset 0 0 0 1px var(--accent-8);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
   }
 
   /* Surface variant pressed */
   &:where(.rt-variant-surface) {
-    background-color: var(--accent-4);
+    --surface-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
+    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
     box-shadow:
-      inset 0 0 0 1px var(--accent-8),
+      inset 0 0 0 1px var(--surface-border-8),
       var(--shadow-1);
-
-    /* Theme-level translucent override for pressed */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
-
-    /* Component-level overrides for pressed */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-4);
-      box-shadow: inset 0 0 0 1px var(--accent-8);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      box-shadow: inset 0 0 0 1px var(--accent-a8);
-    }
   }
 }
 

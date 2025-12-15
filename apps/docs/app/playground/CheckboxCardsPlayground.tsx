@@ -1,16 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  CheckboxCards,
-  Text,
-  Flex,
-  Box,
-  Heading,
-  Tabs,
-  Table,
-  Badge,
-} from '@kushagradhawan/kookie-ui';
+import { CheckboxCards, Text, Flex, Box, Heading, Tabs, Table, Badge } from '@kushagradhawan/kookie-ui';
 import { Star, Heart, Bookmark, Home, Settings, User, Mail, Phone, Globe } from 'lucide-react';
 
 const accentColors = [
@@ -119,12 +110,7 @@ export default function CheckboxCardsPlayground() {
                       </Text>
                     </Table.RowHeaderCell>
                     <Table.Cell>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['email', 'push']}
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['email', 'push']} columns="2">
                         {featureOptions.slice(0, 2).map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex direction="column" align="start" gap="1">
@@ -140,13 +126,7 @@ export default function CheckboxCardsPlayground() {
                       </CheckboxCards.Root>
                     </Table.Cell>
                     <Table.Cell>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        color="gray"
-                        defaultValue={['email', 'push']}
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} color="gray" defaultValue={['email', 'push']} columns="2">
                         {featureOptions.slice(0, 2).map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex direction="column" align="start" gap="1">
@@ -180,10 +160,7 @@ export default function CheckboxCardsPlayground() {
                     </Text>
                   </Table.ColumnHeaderCell>
                   {accentColors.slice(0, 8).map((color) => (
-                    <Table.ColumnHeaderCell
-                      key={color}
-                      style={{ width: '200px', textAlign: 'left' }}
-                    >
+                    <Table.ColumnHeaderCell key={color} style={{ width: '200px', textAlign: 'left' }}>
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {color}
                       </Text>
@@ -201,13 +178,7 @@ export default function CheckboxCardsPlayground() {
                     </Table.RowHeaderCell>
                     {accentColors.slice(0, 8).map((color) => (
                       <Table.Cell key={color}>
-                        <CheckboxCards.Root
-                          size="2"
-                          variant={variant}
-                          color={color}
-                          defaultValue={['twitter', 'github']}
-                          columns="2"
-                        >
+                        <CheckboxCards.Root size="2" variant={variant} color={color} defaultValue={['twitter', 'github']} columns="2">
                           {socialOptions.slice(0, 2).map((option) => (
                             <CheckboxCards.Item key={option.value} value={option.value}>
                               <Flex align="center" gap="2">
@@ -238,10 +209,7 @@ export default function CheckboxCardsPlayground() {
                     </Text>
                   </Table.ColumnHeaderCell>
                   {sizes.map((size) => (
-                    <Table.ColumnHeaderCell
-                      key={size}
-                      style={{ width: '280px', textAlign: 'left' }}
-                    >
+                    <Table.ColumnHeaderCell key={size} style={{ width: '280px', textAlign: 'left' }}>
                       <Text size="1" color="gray">
                         Size {size}
                       </Text>
@@ -259,12 +227,7 @@ export default function CheckboxCardsPlayground() {
                     </Table.RowHeaderCell>
                     {sizes.map((size) => (
                       <Table.Cell key={size}>
-                        <CheckboxCards.Root
-                          size={size as any}
-                          variant={variant}
-                          defaultValue={['notifications', 'analytics']}
-                          columns="2"
-                        >
+                        <CheckboxCards.Root size={size as any} variant={variant} defaultValue={['notifications', 'analytics']} columns="2">
                           <CheckboxCards.Item value="notifications">
                             <Flex direction="column" align="start" gap="1">
                               <Text size="2" weight="medium">
@@ -307,10 +270,7 @@ export default function CheckboxCardsPlayground() {
                     </Text>
                   </Table.ColumnHeaderCell>
                   {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '350px', textAlign: 'left' }}
-                    >
+                    <Table.ColumnHeaderCell key={variant} style={{ width: '350px', textAlign: 'left' }}>
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
                       </Text>
@@ -327,12 +287,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['email']}
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['email']} columns="2">
                         {featureOptions.slice(0, 2).map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Text size="2" weight="medium">
@@ -352,13 +307,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        panelBackground="solid"
-                        defaultValue={['twitter']}
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} panelBackground="solid" defaultValue={['twitter']} columns="2">
                         {socialOptions.slice(0, 2).map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex align="center" gap="2">
@@ -379,12 +328,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="3"
-                        variant={variant}
-                        defaultValue={['email', 'push']}
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="3" variant={variant} defaultValue={['email', 'push']} columns="2">
                         {featureOptions.slice(0, 2).map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex direction="column" align="start" gap="1">
@@ -409,13 +353,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['email']}
-                        disabled
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['email']} disabled columns="2">
                         {featureOptions.slice(0, 2).map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Text size="2" weight="medium">
@@ -444,10 +382,7 @@ export default function CheckboxCardsPlayground() {
                     </Text>
                   </Table.ColumnHeaderCell>
                   {variants.map((variant) => (
-                    <Table.ColumnHeaderCell
-                      key={variant}
-                      style={{ width: '350px', textAlign: 'left' }}
-                    >
+                    <Table.ColumnHeaderCell key={variant} style={{ width: '350px', textAlign: 'left' }}>
                       <Text size="1" color="gray" style={{ textTransform: 'capitalize' }}>
                         {variant}
                       </Text>
@@ -464,12 +399,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['email', 'sms']}
-                        columns="1"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['email', 'sms']} columns="1">
                         {featureOptions.map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex justify="between" align="center" width="100%">
@@ -496,12 +426,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['twitter']}
-                        columns="2"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['twitter']} columns="2">
                         {socialOptions.map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex align="center" gap="2">
@@ -522,12 +447,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['email']}
-                        columns="3"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['email']} columns="3">
                         {contactOptions.map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex align="center" gap="2">
@@ -548,12 +468,7 @@ export default function CheckboxCardsPlayground() {
                   </Table.RowHeaderCell>
                   {variants.map((variant) => (
                     <Table.Cell key={variant}>
-                      <CheckboxCards.Root
-                        size="2"
-                        variant={variant}
-                        defaultValue={['email', 'sms', 'push']}
-                        columns="3"
-                      >
+                      <CheckboxCards.Root size="2" variant={variant} defaultValue={['email', 'sms', 'push']} columns="3">
                         {featureOptions.map((option) => (
                           <CheckboxCards.Item key={option.value} value={option.value}>
                             <Flex direction="column" align="start" gap="1">

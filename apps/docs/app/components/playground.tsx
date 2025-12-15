@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Flex, Card, Theme, Button, Box } from '@kushagradhawan/kookie-ui';
 import { Copy } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Copy01Icon } from '@hugeicons/core-free-icons';
 import { PropertyControl } from './property-control';
 
 interface PlaygroundProps {
@@ -56,12 +58,12 @@ export default function Playground({ component, code, items }: PlaygroundProps) 
   return (
     <Flex direction={{ initial: 'column', md: 'row' }} gap="2" align="center">
       {/* Left side - Preview area */}
-      <Box position="relative" style={{ width: '100%', height: '320px' }}>
-        <Card size="2" variant="soft" style={{ width: '100%', height: '100%' }}>
+      <Box position="relative" className="playground-container" style={{ width: '100%', height: '320px' }}>
+        <Card size="1" variant="soft" style={{ width: '100%', height: '100%' }}>
           {/* Copy button - positioned like CodeBlock */}
-          <Flex gap="1" position="absolute" top="3" right="3" style={{ zIndex: 1 }}>
-            <Button size="1" variant="soft" color="gray" highContrast onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
-              <Copy /> Copy
+          <Flex gap="1" position="absolute" top="2" right="2" style={{ zIndex: 1 }} className="playground-copy-button">
+            <Button size="2" variant="ghost" color="gray" onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
+              <HugeiconsIcon icon={Copy01Icon} /> Copy
             </Button>
           </Flex>
 

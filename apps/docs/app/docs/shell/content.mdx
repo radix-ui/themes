@@ -1,0 +1,799 @@
+import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowUpRight01Icon, MenuLeft01Icon } from '@hugeicons/core-free-icons';
+import { CodeBlock } from '../../components/code-block';
+
+<Section size="2">
+
+# Shell
+
+The Shell component is a complete layout engine for building application interfaces. It manages layout state, composition rules, and responsive behavior across seven core slots: Header, Rail, Panel, Sidebar, Content, Inspector, and Bottom.
+
+<Flex direction="row" gap="2" mt="6" justify="left" align="start">
+  <Button size="1" variant="soft" color="gray" highContrast as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/shell.tsx" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
+</Flex>
+
+</Section>
+
+<Section size="2">
+
+## Usage
+
+<CodeBlock buttonsPosition="center">
+
+```tsx
+import { Shell } from '@kushagradhawan/kookie-ui';
+```
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Anatomy
+
+The Shell provides slots for building application layouts. Content is always required; other slots are optional.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Header>{/* Global navigation */}</Shell.Header>
+  <Shell.Sidebar>{/* Navigation sidebar */}</Shell.Sidebar>
+  <Shell.Content>{/* Main content area */}</Shell.Content>
+  <Shell.Inspector>{/* Right panel */}</Shell.Inspector>
+  <Shell.Bottom>{/* Bottom panel */}</Shell.Bottom>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Components
+
+### Shell.Root
+
+The root container that manages the overall shell layout and provides context to child components.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`height`</Table.RowHeaderCell>
+        <Table.Cell>`'full' | 'auto' | string | number`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Header
+
+Fixed header at the top of the shell for global navigation and branding.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`height`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 64)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Sidebar
+
+Unified navigation sidebar with three states: collapsed, thin, and expanded. Cannot coexist with Rail or Panel.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`state`</Table.RowHeaderCell>
+        <Table.Cell>`'collapsed' | 'thin' | 'expanded'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultState`</Table.RowHeaderCell>
+        <Table.Cell>`'collapsed' | 'thin' | 'expanded'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onStateChange`</Table.RowHeaderCell>
+        <Table.Cell>`(state: SidebarMode) => void`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
+        <Table.Cell>`'fixed' | 'overlay' | 'stacked'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 288)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`thinSize`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 64)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`toggleModes`</Table.RowHeaderCell>
+        <Table.Cell>`'both' | 'single'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean` (default: false)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`collapsible`</Table.RowHeaderCell>
+        <Table.Cell>`boolean` (default: true)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`minSize`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 200)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`maxSize`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 400)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Content
+
+Main content area. Always required in shell layouts.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`children`</Table.RowHeaderCell>
+        <Table.Cell>`React.ReactNode`</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Inspector
+
+Right-side panel for inspectors, property panels, or contextual information.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`onOpenChange`</Table.RowHeaderCell>
+        <Table.Cell>`(open: boolean) => void`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`presentation`</Table.RowHeaderCell>
+        <Table.Cell>`'fixed' | 'overlay' | 'stacked'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 320)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean` (default: false)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Bottom
+
+Bottom panel for terminals, logs, or contextual information.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`open`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`defaultOpen`</Table.RowHeaderCell>
+        <Table.Cell>`boolean`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`expandedSize`</Table.RowHeaderCell>
+        <Table.Cell>`number` (default: 200)</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`resizable`</Table.RowHeaderCell>
+        <Table.Cell>`boolean` (default: false)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+### Shell.Trigger
+
+Button trigger for controlling shell panes. Renders as an unstyled button—wrap with IconButton for styling.
+
+<Box>
+  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+    <colgroup>
+      <col style={{ width: '35%' }} />
+      <col />
+    </colgroup>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>`target`</Table.RowHeaderCell>
+        <Table.Cell>`'sidebar' | 'inspector' | 'bottom' | 'rail' | 'panel'`</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`action`</Table.RowHeaderCell>
+        <Table.Cell>`'toggle' | 'expand' | 'collapse'` (default: 'toggle')</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>`peekOnHover`</Table.RowHeaderCell>
+        <Table.Cell>`boolean` (default: false)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Box>
+
+</Section>
+
+<Section size="2">
+
+## Examples
+
+### Basic Sidebar Layout
+
+The most common layout pattern with a collapsible sidebar.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar defaultState="expanded" presentation={{ initial: 'overlay', md: 'fixed' }}>
+    <nav>Navigation content</nav>
+  </Shell.Sidebar>
+  <Shell.Content>
+    <main>Main application content</main>
+  </Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### With Header
+
+Add a fixed header for global navigation.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Header height={56}>
+    <Flex align="center" justify="between" px="4" height="100%">
+      <span>Logo</span>
+      <nav>Header actions</nav>
+    </Flex>
+  </Shell.Header>
+  <Shell.Sidebar defaultState="expanded">
+    <nav>Sidebar</nav>
+  </Shell.Sidebar>
+  <Shell.Content>
+    <main>Content</main>
+  </Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### With Inspector
+
+Add a right-side panel for properties or details.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar defaultState="expanded">
+    <nav>Navigation</nav>
+  </Shell.Sidebar>
+  <Shell.Content>
+    <main>Content</main>
+  </Shell.Content>
+  <Shell.Inspector defaultOpen expandedSize={320}>
+    <aside>Inspector panel</aside>
+  </Shell.Inspector>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### With Bottom Panel
+
+Add a bottom panel for terminals or logs.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar defaultState="expanded">
+    <nav>Navigation</nav>
+  </Shell.Sidebar>
+  <Shell.Content>
+    <main>Content</main>
+  </Shell.Content>
+  <Shell.Bottom defaultOpen expandedSize={200}>
+    <div>Terminal output</div>
+  </Shell.Bottom>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Controlled Sidebar
+
+Control the sidebar state programmatically.
+
+<CodeBlock>
+
+```tsx
+function App() {
+  const [sidebarState, setSidebarState] = useState<'collapsed' | 'thin' | 'expanded'>('expanded');
+
+  return (
+    <Shell.Root>
+      <Shell.Sidebar state={sidebarState} onStateChange={setSidebarState} toggleModes="single">
+        <nav>Navigation</nav>
+      </Shell.Sidebar>
+      <Shell.Content>
+        <Button onClick={() => setSidebarState('collapsed')}>Collapse</Button>
+        <Button onClick={() => setSidebarState('expanded')}>Expand</Button>
+      </Shell.Content>
+    </Shell.Root>
+  );
+}
+```
+
+</CodeBlock>
+
+### Resizable Sidebar
+
+Enable drag-to-resize functionality.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar defaultState="expanded" resizable minSize={200} maxSize={500} expandedSize={300}>
+    <nav>Resizable sidebar</nav>
+  </Shell.Sidebar>
+  <Shell.Content>
+    <main>Content</main>
+  </Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Toggle Trigger
+
+Use Shell.Trigger to create toggle buttons for panes.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar defaultState="expanded">
+    <nav>Navigation</nav>
+  </Shell.Sidebar>
+  <Shell.Content>
+    <IconButton asChild variant="ghost">
+      <Shell.Trigger target="sidebar"><HugeiconsIcon icon={MenuLeft01Icon} /></Shell.Trigger>
+    </IconButton>
+    <main>Content</main>
+  </Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Presentation Modes
+
+The `presentation` prop controls how panes interact with the layout. Supports responsive values.
+
+### Fixed
+
+Pane takes space in the layout flow. Content adjusts around it.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar presentation="fixed" defaultState="expanded">
+  <nav>Fixed sidebar</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Overlay
+
+Pane floats above content as a modal sheet. Common for mobile layouts.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar presentation="overlay" defaultState="collapsed">
+  <nav>Overlay sidebar</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Stacked
+
+Pane positions above content without displacing it. For floating panels.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar presentation="stacked" defaultState="expanded">
+  <nav>Stacked sidebar</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Responsive Presentation
+
+Change presentation based on viewport size.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar presentation={{ initial: 'overlay', md: 'fixed' }} defaultState={{ initial: 'collapsed', md: 'expanded' }}>
+  <nav>Responsive sidebar</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Sidebar States
+
+The sidebar supports three states: `collapsed`, `thin`, and `expanded`.
+
+### Collapsed
+
+Sidebar is hidden. Use trigger buttons to expand.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar defaultState="collapsed">
+  <nav>Will start hidden</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Thin
+
+Sidebar shows at `thinSize` width (default 64px). Useful for icon-only navigation.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar defaultState="thin" thinSize={72}>
+  <nav>Icon navigation</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Expanded
+
+Sidebar shows at full `expandedSize` width (default 288px).
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar defaultState="expanded" expandedSize={320}>
+  <nav>Full navigation</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Toggle Modes
+
+Control the toggle sequence with `toggleModes`.
+
+<CodeBlock>
+
+```tsx
+{/* Cycles: collapsed → thin → expanded → collapsed */}
+<Shell.Sidebar toggleModes="both" defaultState="collapsed">
+  <nav>Three-state toggle</nav>
+</Shell.Sidebar>
+
+{/* Toggles: collapsed ↔ expanded (or thin if defaultState="thin") */}
+<Shell.Sidebar toggleModes="single" defaultState="expanded">
+  <nav>Two-state toggle</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Responsive
+
+Use responsive objects for breakpoint-specific behavior. Shell uses a mobile-first approach.
+
+<CodeBlock>
+
+```tsx
+<Shell.Sidebar
+  presentation={{ initial: 'overlay', sm: 'fixed' }}
+  defaultState={{ initial: 'collapsed', sm: 'expanded' }}
+>
+  <nav>Responsive sidebar</nav>
+</Shell.Sidebar>
+```
+
+</CodeBlock>
+
+### Breakpoints
+
+<Box><Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
+<colgroup><col style={{ width: '20%' }} /><col style={{ width: '20%' }} /><col style={{ width: '60%' }} /></colgroup>
+<Table.Header><Table.Row>
+<Table.ColumnHeaderCell>Breakpoint</Table.ColumnHeaderCell>
+<Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
+<Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+</Table.Row></Table.Header>
+<Table.Body>
+<Table.Row><Table.Cell><Code>initial</Code></Table.Cell><Table.Cell>-</Table.Cell><Table.Cell>Base styles (mobile-first)</Table.Cell></Table.Row>
+<Table.Row><Table.Cell><Code>xs</Code></Table.Cell><Table.Cell>520px</Table.Cell><Table.Cell>Extra small screens</Table.Cell></Table.Row>
+<Table.Row><Table.Cell><Code>sm</Code></Table.Cell><Table.Cell>768px</Table.Cell><Table.Cell>Small screens (tablets)</Table.Cell></Table.Row>
+<Table.Row><Table.Cell><Code>md</Code></Table.Cell><Table.Cell>1024px</Table.Cell><Table.Cell>Medium screens (laptops)</Table.Cell></Table.Row>
+<Table.Row><Table.Cell><Code>lg</Code></Table.Cell><Table.Cell>1280px</Table.Cell><Table.Cell>Large screens (desktops)</Table.Cell></Table.Row>
+<Table.Row><Table.Cell><Code>xl</Code></Table.Cell><Table.Cell>1640px</Table.Cell><Table.Cell>Extra large screens</Table.Cell></Table.Row>
+</Table.Body>
+</Table.Root></Box>
+
+</Section>
+
+<Section size="2">
+
+## Composition Rules
+
+<Callout.Root variant="soft" size="2" color="orange" my="4" highContrast><Callout.Text>Shell enforces composition rules to prevent conflicting layouts.</Callout.Text></Callout.Root>
+
+### Valid: Sidebar Only
+
+Sidebar is a unified component that handles both icon strip and expanded navigation.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar>...</Shell.Sidebar>
+  <Shell.Content>...</Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Valid: Rail + Panel
+
+Rail provides an icon strip; Panel provides the expanded navigation. Panel collapses when Rail collapses.
+
+<CodeBlock>
+
+```tsx
+<Shell.Root>
+  <Shell.Rail>...</Shell.Rail>
+  <Shell.Panel>...</Shell.Panel>
+  <Shell.Content>...</Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+### Invalid: Mixed
+
+<Callout.Root variant="soft" size="2" color="red" my="4" highContrast><Callout.Text>Sidebar cannot coexist with Rail or Panel. This triggers a console warning.</Callout.Text></Callout.Root>
+
+<CodeBlock>
+
+```tsx
+{/* ❌ Invalid */}
+<Shell.Root>
+  <Shell.Sidebar>...</Shell.Sidebar>
+  <Shell.Rail>...</Shell.Rail>
+  <Shell.Content>...</Shell.Content>
+</Shell.Root>
+```
+
+</CodeBlock>
+
+</Section>
+
+<Section size="2">
+
+## Hooks
+
+### useShell
+
+Access shell context for programmatic control.
+
+<CodeBlock>
+
+```tsx
+import { useShell } from '@kushagradhawan/kookie-ui';
+
+function MyComponent() {
+  const shell = useShell();
+
+  return (
+    <Button onClick={() => shell.togglePane('sidebar')}>Toggle Sidebar</Button>
+  );
+}
+```
+
+</CodeBlock>
+
+Available methods:
+- `togglePane(target)` — Toggle a pane's state
+- `expandPane(target)` — Expand a pane
+- `collapsePane(target)` — Collapse a pane
+- `sidebarMode` — Current sidebar state
+- `inspectorMode` — Current inspector state
+- `bottomMode` — Current bottom panel state
+
+</Section>
+
+<Section size="2">
+
+## Accessibility
+
+Shell provides comprehensive accessibility through semantic HTML and ARIA attributes.
+
+### Semantic Structure
+
+- `Shell.Header` renders as `<header>`
+- `Shell.Content` renders as `<main>`
+- Proper landmark structure for screen readers
+
+### Keyboard Navigation
+
+- Tab navigation through all interactive elements
+- Escape key closes overlay presentations
+- Arrow keys for resize handle adjustment
+- Enter/Space for trigger activation
+
+### Screen Reader Support
+
+- State announcements for panel open/close
+- Resize operations announce current dimensions
+- ARIA attributes: `aria-expanded`, `aria-hidden`, `aria-label`
+
+### High Contrast
+
+- Enhanced focus indicators
+- Windows High Contrast mode compatibility
+- Proper contrast ratios for resize handles
+
+</Section>
+
+<Section size="2">
+
+## Changelog
+
+- **Added**
+  - Complete Shell component with seven core slots
+  - Responsive presentation modes: fixed, overlay, stacked
+  - Advanced resize system with keyboard navigation
+  - Composition rule enforcement
+  - Breakpoint system with mobile-first approach
+  - Size persistence API
+  - Peek functionality for temporary previews
+  - `useShell()` hook for context access
+  - ARIA slider implementation for resize handles
+  - Focus management for overlay presentations
+
+- **Technical**
+  - Context splitting for performance
+  - TypeScript types for all configurations
+  - Six breakpoints: initial, xs, sm, md, lg, xl
+  - Mobile-first approach with overlay defaults
+
+</Section>
+

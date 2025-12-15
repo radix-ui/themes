@@ -35,7 +35,6 @@ const ComponentPage = memo(function ComponentPage({ children }: ComponentPagePro
         <Container size="2" style={contentAreaStyle} data-content-area>
           <Box p="4" width="100%">
             {children}
-            {/* <Separator size="4"></Separator> */}
             <Flex align="center" justify="center" width="100%" pt="8">
               <Text size="2" color="gray" align="center">
                 © {currentYear}{' '}
