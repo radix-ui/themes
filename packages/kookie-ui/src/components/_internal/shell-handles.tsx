@@ -19,7 +19,7 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
     snapTolerance,
     collapseThreshold,
     collapsible,
-    target: _target,
+    target,
     requestCollapse,
     requestToggle,
   } = usePaneResize();
@@ -37,6 +37,10 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
 
   const ariaOrientation = orientation;
 
+  // Generate accessible label from target
+  const targetLabel = target.charAt(0).toUpperCase() + target.slice(1);
+  const ariaLabel = `Resize ${targetLabel} pane`;
+
   return (
     <div
       {...props}
@@ -45,6 +49,7 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
       data-orientation={orientation}
       data-edge={edge}
       role="slider"
+      aria-label={ariaLabel}
       aria-orientation={ariaOrientation}
       aria-valuemin={minSize}
       aria-valuemax={maxSize}

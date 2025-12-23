@@ -9,6 +9,7 @@ import { extractPaneDomProps } from './shell-prop-helpers.js';
 import { SidebarHandle, PaneHandle } from './shell-handles.js';
 import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, SidebarMode, Responsive, PaneBaseProps } from '../shell.types.js';
 import { _BREAKPOINTS } from '../shell.types.js';
+import { normalizeToPx } from '../../helpers/normalize-to-px.js';
 
 type SidebarPaneProps = PaneBaseProps & {
   mode?: PaneMode;
@@ -100,6 +101,17 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
   const handleChildren = childArray.filter((el: React.ReactElement) => React.isValidElement(el) && el.type === SidebarHandle);
   const contentChildren = childArray.filter((el: React.ReactElement) => !(React.isValidElement(el) && el.type === SidebarHandle));
 
+  // Ref for debounce cleanup
+  const debounceTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Cleanup debounce timeout on unmount or when dependencies change
+  React.useEffect(() => {
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+        debounceTimeoutRef.current = null;
+      }
+    };
+  }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
   // Throttled/debounced emitter for onSizeChange
   const emitSizeChange = React.useMemo(() => {
     const cb = onSizeChange as undefined | ((s: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void);
@@ -107,11 +119,11 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
     const ms = sizeUpdateMs ?? 50;
     if (!cb) return () => {};
     if (strategy === 'debounce') {
-      let t: any = null;
       return (s: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => {
-        if (t) clearTimeout(t);
-        t = setTimeout(() => {
+        if (debounceTimeoutRef.current) clearTimeout(debounceTimeoutRef.current);
+        debounceTimeoutRef.current = setTimeout(() => {
           cb(s, meta);
+          debounceTimeoutRef.current = null;
         }, ms);
       };
     }
@@ -191,6 +203,14 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
   // Track previous mode to only fire callbacks on actual user-initiated state transitions.
   // We wait for breakpointReady to ensure the initial state sync from useResponsiveInitialState
   // is complete before enabling callbacks. This avoids spurious callbacks during initialization.
+  // Use callback refs to avoid re-running effect when inline callbacks change.
+  const onExpandRef = React.useRef(onExpand);
+  const onCollapseRef = React.useRef(onCollapse);
+  React.useLayoutEffect(() => {
+    onExpandRef.current = onExpand;
+    onCollapseRef.current = onCollapse;
+  });
+
   const prevSidebarModeRef = React.useRef<SidebarMode | null>(null);
   const hasInitializedRef = React.useRef(false);
   React.useEffect(() => {
@@ -215,15 +235,15 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
     if (prevMode !== null && prevMode !== currentMode) {
       // onExpand: when becoming visible (collapsed → thin/expanded)
       if (prevMode === 'collapsed' && currentMode !== 'collapsed') {
-        onExpand?.();
+        onExpandRef.current?.();
       }
       // onCollapse: when becoming hidden (any → collapsed)
       else if (currentMode === 'collapsed') {
-        onCollapse?.();
+        onCollapseRef.current?.();
       }
       prevSidebarModeRef.current = currentMode;
     }
-  }, [shell.sidebarMode, shell.currentBreakpointReady, onExpand, onCollapse]);
+  }, [shell.sidebarMode, shell.currentBreakpointReady]);
 
   // Option A: thin is width-only; content remains visible whenever not collapsed
   const isContentVisible = shell.sidebarMode !== 'collapsed';
@@ -348,31 +368,14 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
       </PaneResizeContext.Provider>
     ) : null;
 
-  // Normalize CSS lengths to px
-  const normalizeToPx = React.useCallback((value: number | string | undefined): number | undefined => {
-    if (value == null) return undefined;
-    if (typeof value === 'number' && Number.isFinite(value)) return value;
-    const str = String(value).trim();
-    if (!str) return undefined;
-    if (str.endsWith('px')) return Number.parseFloat(str);
-    if (str.endsWith('rem')) {
-      const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize || '16') || 16;
-      return Number.parseFloat(str) * rem;
-    }
-    if (str.endsWith('%')) {
-      const pct = Number.parseFloat(str);
-      const base = document.documentElement.clientWidth || window.innerWidth || 0;
-      return (pct / 100) * base;
-    }
-    const n = Number.parseFloat(str);
-    return Number.isFinite(n) ? n : undefined;
-  }, []);
+  // Normalize CSS lengths to px helper
+  const normalizeSizeToPx = React.useCallback((value: number | string | undefined) => normalizeToPx(value, 'horizontal'), []);
 
   // Apply defaultSize on mount when uncontrolled
   React.useEffect(() => {
     if (!localRef.current) return;
     if (typeof size === 'undefined' && typeof defaultSize !== 'undefined') {
-      const px = normalizeToPx(defaultSize);
+      const px = normalizeSizeToPx(defaultSize);
       if (typeof px === 'number' && Number.isFinite(px)) {
         const minPx = typeof minSize === 'number' ? minSize : undefined;
         const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -389,7 +392,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
   React.useEffect(() => {
     if (!localRef.current) return;
     if (typeof controlledSize === 'undefined') return;
-    const px = normalizeToPx(controlledSize);
+    const px = normalizeSizeToPx(controlledSize);
     if (typeof px === 'number' && Number.isFinite(px)) {
       const minPx = typeof minSize === 'number' ? minSize : undefined;
       const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -397,7 +400,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
       localRef.current.style.setProperty('--sidebar-size', `${clamped}px`);
       emitSizeChange(clamped, { reason: 'controlled' });
     }
-  }, [controlledSize, minSize, maxSize, normalizeToPx, emitSizeChange]);
+  }, [controlledSize, minSize, maxSize, normalizeSizeToPx, emitSizeChange]);
 
   if (isOverlay) {
     const open = shell.sidebarMode !== 'collapsed';

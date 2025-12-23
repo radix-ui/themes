@@ -9,6 +9,7 @@ import { BottomHandle, PaneHandle } from './shell-handles.js';
 import { _BREAKPOINTS } from '../shell.types.js';
 import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, PaneBaseProps } from '../shell.types.js';
 import { extractPaneDomProps, mapResponsiveBooleanToPaneMode } from './shell-prop-helpers.js';
+import { normalizeToPx } from '../../helpers/normalize-to-px.js';
 
 type BottomOpenChangeMeta = { reason: 'init' | 'toggle' | 'responsive' };
 type BottomControlledProps = { open: boolean | Partial<Record<Breakpoint, boolean>>; onOpenChange?: (open: boolean, meta: BottomOpenChangeMeta) => void; defaultOpen?: never };
@@ -107,17 +108,29 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
     },
   });
 
+  // Ref for debounce cleanup
+  const debounceTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Cleanup debounce timeout on unmount or when dependencies change
+  React.useEffect(() => {
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+        debounceTimeoutRef.current = null;
+      }
+    };
+  }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
+  // Throttled/debounced emitter for onSizeChange
   const emitSizeChange = React.useMemo(() => {
     const cb = onSizeChange as undefined | ((s: number, meta: BottomSizeChangeMeta) => void);
     const strategy = sizeUpdate as undefined | 'throttle' | 'debounce';
     const ms = sizeUpdateMs ?? 50;
     if (!cb) return () => {};
     if (strategy === 'debounce') {
-      let t: any = null;
       return (s: number, meta: BottomSizeChangeMeta) => {
-        if (t) clearTimeout(t);
-        t = setTimeout(() => {
+        if (debounceTimeoutRef.current) clearTimeout(debounceTimeoutRef.current);
+        debounceTimeoutRef.current = setTimeout(() => {
           cb(s, meta);
+          debounceTimeoutRef.current = null;
         }, ms);
       };
     }
@@ -175,6 +188,14 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
   // Track previous mode to only fire callbacks on actual user-initiated state transitions.
   // We wait for breakpointReady to ensure the initial state sync from useResponsiveInitialState
   // is complete before enabling callbacks. This avoids spurious callbacks during initialization.
+  // Use callback refs to avoid re-running effect when inline callbacks change.
+  const onExpandRef = React.useRef(onExpand);
+  const onCollapseRef = React.useRef(onCollapse);
+  React.useLayoutEffect(() => {
+    onExpandRef.current = onExpand;
+    onCollapseRef.current = onCollapse;
+  });
+
   const prevBottomModeRef = React.useRef<PaneMode | null>(null);
   const hasInitializedRef = React.useRef(false);
   React.useEffect(() => {
@@ -198,13 +219,13 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
     // Only fire on actual state transitions
     if (prevMode !== null && prevMode !== currentMode) {
       if (currentMode === 'expanded') {
-        onExpand?.();
+        onExpandRef.current?.();
       } else if (currentMode === 'collapsed') {
-        onCollapse?.();
+        onCollapseRef.current?.();
       }
       prevBottomModeRef.current = currentMode;
     }
-  }, [shell.bottomMode, shell.currentBreakpointReady, onExpand, onCollapse]);
+  }, [shell.bottomMode, shell.currentBreakpointReady]);
 
   const isExpanded = shell.bottomMode === 'expanded';
 
@@ -297,31 +318,14 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
     ) : null;
 
   // Strip control/size props from DOM spread (moved above overlay return to keep hook order consistent)
-  // Normalize CSS lengths to px (moved above overlay return to keep hook order consistent)
-  const normalizeToPx = React.useCallback((value: number | string | undefined): number | undefined => {
-    if (value == null) return undefined;
-    if (typeof value === 'number' && Number.isFinite(value)) return value;
-    const str = String(value).trim();
-    if (!str) return undefined;
-    if (str.endsWith('px')) return Number.parseFloat(str);
-    if (str.endsWith('rem')) {
-      const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize || '16') || 16;
-      return Number.parseFloat(str) * rem;
-    }
-    if (str.endsWith('%')) {
-      const pct = Number.parseFloat(str);
-      const base = document.documentElement.clientHeight || window.innerHeight || 0;
-      return (pct / 100) * base;
-    }
-    const n = Number.parseFloat(str);
-    return Number.isFinite(n) ? n : undefined;
-  }, []);
+  // Normalize CSS lengths to px helper
+  const normalizeSizeToPx = React.useCallback((value: number | string | undefined) => normalizeToPx(value, 'vertical'), []);
 
   // Apply defaultSize on mount when uncontrolled (moved above overlay return)
   React.useEffect(() => {
     if (!localRef.current) return;
     if (typeof size === 'undefined' && typeof defaultSize !== 'undefined') {
-      const px = normalizeToPx(defaultSize);
+      const px = normalizeSizeToPx(defaultSize);
       if (typeof px === 'number' && Number.isFinite(px)) {
         const minPx = typeof minSize === 'number' ? minSize : undefined;
         const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -338,7 +342,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
   React.useEffect(() => {
     if (!localRef.current) return;
     if (typeof controlledSize === 'undefined') return;
-    const px = normalizeToPx(controlledSize);
+    const px = normalizeSizeToPx(controlledSize);
     if (typeof px === 'number' && Number.isFinite(px)) {
       const minPx = typeof minSize === 'number' ? minSize : undefined;
       const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -346,7 +350,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
       localRef.current.style.setProperty('--bottom-size', `${clamped}px`);
       emitSizeChange(clamped, { reason: 'controlled' });
     }
-  }, [controlledSize, minSize, maxSize, normalizeToPx, emitSizeChange]);
+  }, [controlledSize, minSize, maxSize, normalizeSizeToPx, emitSizeChange]);
 
   if (isOverlay) {
     const open = shell.bottomMode === 'expanded';

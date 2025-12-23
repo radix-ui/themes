@@ -38,6 +38,7 @@ import { Bottom } from './_internal/shell-bottom.js';
 import { Inspector } from './_internal/shell-inspector.js';
 import type { PresentationValue, ResponsivePresentation, PaneMode, SidebarMode, PaneSizePersistence, Breakpoint, PaneTarget, Responsive, PaneBaseProps } from './shell.types.js';
 import { _BREAKPOINTS } from './shell.types.js';
+import { normalizeToPx } from '../helpers/normalize-to-px.js';
 import {
   ShellProvider,
   useShell,
@@ -911,15 +912,26 @@ const Panel = assignShellSlot(
       sizeUpdateMs = 50,
     } = initialProps;
     const panelDomProps = extractPaneDomProps(initialProps, PANEL_DOM_PROP_KEYS);
+    // Ref for debounce cleanup
+    const debounceTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+    // Cleanup debounce timeout on unmount or when dependencies change
+    React.useEffect(() => {
+      return () => {
+        if (debounceTimeoutRef.current) {
+          clearTimeout(debounceTimeoutRef.current);
+          debounceTimeoutRef.current = null;
+        }
+      };
+    }, [onSizeChange, sizeUpdate, sizeUpdateMs]);
     // Throttled/debounced emitter for onSizeChange
     const emitSizeChange = React.useMemo(() => {
       if (!onSizeChange) return () => {};
       if (sizeUpdate === 'debounce') {
-        let t: any = null;
         const fn = (s: number, meta: PanelSizeChangeMeta) => {
-          if (t) clearTimeout(t);
-          t = setTimeout(() => {
+          if (debounceTimeoutRef.current) clearTimeout(debounceTimeoutRef.current);
+          debounceTimeoutRef.current = setTimeout(() => {
             onSizeChange?.(s, meta);
+            debounceTimeoutRef.current = null;
           }, sizeUpdateMs);
         };
         return fn;
@@ -978,12 +990,16 @@ const Panel = assignShellSlot(
     }, [shell, open]);
 
     // Dev-only warning if switching controlled/uncontrolled between renders
+    const wasControlledRef = React.useRef<boolean | null>(null);
     React.useEffect(() => {
       const isControlled = typeof open !== 'undefined';
-      (Panel as any)._wasControlled = (Panel as any)._wasControlled ?? isControlled;
-      if ((Panel as any)._wasControlled !== isControlled) {
+      if (wasControlledRef.current === null) {
+        wasControlledRef.current = isControlled;
+        return;
+      }
+      if (wasControlledRef.current !== isControlled) {
         console.warn('Shell.Panel: Switching between controlled and uncontrolled `open` is not supported.');
-        (Panel as any)._wasControlled = isControlled;
+        wasControlledRef.current = isControlled;
       }
     }, [open]);
 
@@ -1015,26 +1031,8 @@ const Panel = assignShellSlot(
 
     const isOverlay = shell.leftResolvedPresentation === 'overlay';
 
-    // Normalize CSS lengths to px
-    const normalizeToPx = React.useCallback((value: number | string | undefined): number | undefined => {
-      if (value == null) return undefined;
-      if (typeof value === 'number' && Number.isFinite(value)) return value;
-      const str = String(value).trim();
-      if (!str) return undefined;
-      if (str.endsWith('px')) return Number.parseFloat(str);
-      if (str.endsWith('rem')) {
-        const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize || '16') || 16;
-        return Number.parseFloat(str) * rem;
-      }
-      if (str.endsWith('%')) {
-        const pct = Number.parseFloat(str);
-        const base = document.documentElement.clientWidth || window.innerWidth || 0;
-        return (pct / 100) * base;
-      }
-      // Bare number-like string
-      const n = Number.parseFloat(str);
-      return Number.isFinite(n) ? n : undefined;
-    }, []);
+    // Normalize CSS lengths to px helper
+    const normalizeSizeToPx = React.useCallback((value: number | string | undefined) => normalizeToPx(value, 'horizontal'), []);
 
     // Derive a default persistence adapter from paneId if none provided
     const persistenceAdapter = React.useMemo(() => {
@@ -1082,7 +1080,7 @@ const Panel = assignShellSlot(
     React.useEffect(() => {
       if (!localRef.current) return;
       if (typeof size === 'undefined' && typeof defaultSize !== 'undefined') {
-        const px = normalizeToPx(defaultSize);
+        const px = normalizeSizeToPx(defaultSize);
         if (typeof px === 'number' && Number.isFinite(px)) {
           // Clamp to min/max if provided
           const minPx = typeof minSize === 'number' ? minSize : undefined;
@@ -1099,7 +1097,7 @@ const Panel = assignShellSlot(
     React.useEffect(() => {
       if (!localRef.current) return;
       if (typeof size === 'undefined') return;
-      const px = normalizeToPx(size);
+      const px = normalizeSizeToPx(size);
       if (typeof px === 'number' && Number.isFinite(px)) {
         const minPx = typeof minSize === 'number' ? minSize : undefined;
         const maxPx = typeof maxSize === 'number' ? maxSize : undefined;
@@ -1107,7 +1105,7 @@ const Panel = assignShellSlot(
         localRef.current.style.setProperty('--panel-size', `${clamped}px`);
         emitSizeChange(clamped, { reason: 'controlled' });
       }
-    }, [size, minSize, maxSize, normalizeToPx, emitSizeChange]);
+    }, [size, minSize, maxSize, normalizeSizeToPx, emitSizeChange]);
 
     // Ensure Left container width is auto whenever Panel is expanded in fixed presentation
     React.useEffect(() => {
@@ -1302,7 +1300,16 @@ const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(({ target, act
   );
 
   return (
-    <button {...props} ref={ref} onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} data-shell-trigger={target} data-shell-action={action}>
+    <button
+      {...props}
+      ref={ref}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      data-shell-trigger={target}
+      data-shell-action={action}
+      aria-expanded={!isCollapsed}
+    >
       {children}
     </button>
   );
