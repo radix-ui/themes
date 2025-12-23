@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Flex, Text, Heading, Container, Section, Link as KUILink, Image, Avatar } from '@kushagradhawan/kookie-ui';
+import { Button, Flex, Text, Heading, Container, Section, Link as KUILink, Image, Avatar, Callout } from '@kushagradhawan/kookie-ui';
 import Link from 'next/link';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
@@ -16,9 +16,6 @@ export default function HeroSection() {
               <Flex direction="column" gap="6">
                 <Flex direction="column" align="center" gap="6">
                   <Avatar fallback="K" size="2" color="gray" src="/kookie-logo.png"></Avatar>
-                  <Text size="2" color="gray">
-                    Kookie UI
-                  </Text>
                   <Heading size="9" weight="medium" align="center">
                     A system to build consistent and scalable user interfaces.
                   </Heading>
@@ -41,10 +38,20 @@ export default function HeroSection() {
               {/* Call-to-action buttons */}
               <Button highContrast color="gray" variant="solid" size="2" asChild>
                 <Link href="/docs/installation">
-                  Enter the Kingdom
+                  Get Started with Kookie
                   <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={1.5} />
                 </Link>
               </Button>
+
+              <Flex justify="center">
+                <Link href="https://www.kushagradhawan.com/articles/kookie-chatbar-update" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <Callout.Root highContrast variant="outline" color="gray" size="2" style={{ cursor: 'pointer' }}>
+                    <Callout.Text align="center">
+                      New component: <span style={{ textDecoration: 'underline' }}>Chatbar</span>. Read about the latest update.
+                    </Callout.Text>
+                  </Callout.Root>
+                </Link>
+              </Flex>
             </Flex>
           </Container>
         </Flex>
@@ -54,11 +61,14 @@ export default function HeroSection() {
       <Section size="2">
         <Container size="4">
           <Image
-            src="https://xlsxjlbxvnhdubuzkjoz.supabase.co/storage/v1/object/public/generated-images/img_ab26cc85-8970-4552-b3cd-c051914cc681_context.jpg"
+            src="/kookie-ui-hero.png"
             alt="Hero"
             width="100%"
-            height="360px"
+            height="600px"
             radius="none"
+            style={{
+              backgroundPosition: 'top',
+            }}
           />
         </Container>
       </Section>

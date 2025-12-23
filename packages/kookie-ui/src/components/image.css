@@ -63,7 +63,7 @@
   .rt-Image {
     border: 1px solid CanvasText;
   }
-  
+
   /* Enhanced focus visibility in forced colors mode */
   .rt-Image:where(:focus-visible) {
     outline: 2px solid Highlight;
@@ -78,7 +78,9 @@
  */
 .rt-Image:where(:any-link, button, label) {
   cursor: pointer;
-  transition: var(--transition-card), filter var(--motion-duration-small) var(--motion-ease-standard); /* Smooth transitions for interactive states */
+  transition:
+    var(--transition-card),
+    filter var(--motion-duration-small) var(--motion-ease-standard); /* Smooth transitions for interactive states */
 
   /* 
    * Hover effects with progressive enhancement
@@ -87,7 +89,7 @@
   @media (hover: hover) {
     &:where(:hover) {
       box-shadow: var(--shadow-3); /* Subtle elevation on hover */
-      filter: brightness(1.05) contrast(1.02); /* Slight brightness/contrast boost */
+      filter: brightness(1.08) contrast(1.02); /* Slight brightness/contrast boost */
     }
   }
 
@@ -116,13 +118,15 @@
  */
 :where(:any-link, button, label) {
   cursor: pointer;
-  transition: var(--transition-card), filter var(--motion-duration-small) var(--motion-ease-standard); /* Smooth transitions for interactive states */
+  transition:
+    var(--transition-card),
+    filter var(--motion-duration-small) var(--motion-ease-standard); /* Smooth transitions for interactive states */
 
   /* Hover effects for wrapper elements */
   @media (hover: hover) {
     &:where(:hover) {
       /* box-shadow: var(--shadow-3); */
-      filter: brightness(1.05) contrast(1.02);
+      filter: brightness(1.08) contrast(1.02);
     }
   }
 
@@ -140,8 +144,6 @@
   outline: 2px solid var(--focus-8);
   outline-offset: -2px;
 }
-
-
 
 /* 
  * Object-fit variants for responsive image scaling
@@ -217,7 +219,7 @@
   color: var(--gray-11); /* Subtle but readable color */
   margin-top: var(--space-2); /* Consistent spacing from image */
   text-align: center; /* Centered alignment for visual balance */
-  
+
   /* 
    * Text wrapping and hyphenation for better layout
    * Prevents caption text from breaking the layout
