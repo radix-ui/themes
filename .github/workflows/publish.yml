@@ -12,6 +12,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,8 +74,6 @@ jobs:
         run: |
           cd packages/kookie-ui
           npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit version bump
         if: github.event_name != 'release' && steps.check_version.outputs.exists == 'false'
