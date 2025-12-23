@@ -292,14 +292,9 @@
   width: var(--inspector-size, 320px);
 }
 
-/* Keep collapsed inspector out of flow to avoid layout issues */
+/* Collapsed inspector: stay in flow during transition, then hide */
 .rt-ShellInspector[data-mode='collapsed'] {
   width: 0px;
-  position: absolute;
-  inset-block: 0;
-  inset-inline-end: 0;
-  flex-shrink: 0;
-  flex-basis: 0;
   /* Delay container collapse until content fade completes */
   transition-delay: var(--motion-duration-small);
 }
