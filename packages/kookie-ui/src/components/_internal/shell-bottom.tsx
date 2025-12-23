@@ -172,13 +172,39 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
     }
   }, [shell.bottomMode, open, defaultOpen, onOpenChange]);
 
+  // Track previous mode to only fire callbacks on actual user-initiated state transitions.
+  // We wait for breakpointReady to ensure the initial state sync from useResponsiveInitialState
+  // is complete before enabling callbacks. This avoids spurious callbacks during initialization.
+  const prevBottomModeRef = React.useRef<PaneMode | null>(null);
+  const hasInitializedRef = React.useRef(false);
   React.useEffect(() => {
-    if (shell.bottomMode === 'expanded') {
-      onExpand?.();
-    } else {
-      onCollapse?.();
+    const currentMode = shell.bottomMode;
+
+    // Wait for breakpoint to be ready before enabling callbacks
+    if (!shell.currentBreakpointReady) {
+      prevBottomModeRef.current = currentMode;
+      return;
     }
-  }, [shell.bottomMode, onExpand, onCollapse]);
+
+    // Skip the first run after breakpoint is ready - this captures the post-sync state
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      prevBottomModeRef.current = currentMode;
+      return;
+    }
+
+    const prevMode = prevBottomModeRef.current;
+
+    // Only fire on actual state transitions
+    if (prevMode !== null && prevMode !== currentMode) {
+      if (currentMode === 'expanded') {
+        onExpand?.();
+      } else if (currentMode === 'collapsed') {
+        onCollapse?.();
+      }
+      prevBottomModeRef.current = currentMode;
+    }
+  }, [shell.bottomMode, shell.currentBreakpointReady, onExpand, onCollapse]);
 
   const isExpanded = shell.bottomMode === 'expanded';
 

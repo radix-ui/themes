@@ -188,14 +188,42 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
     }
   }, [shell.sidebarMode, state, onStateChange]);
 
-  // Emit expand/collapse events
+  // Track previous mode to only fire callbacks on actual user-initiated state transitions.
+  // We wait for breakpointReady to ensure the initial state sync from useResponsiveInitialState
+  // is complete before enabling callbacks. This avoids spurious callbacks during initialization.
+  const prevSidebarModeRef = React.useRef<SidebarMode | null>(null);
+  const hasInitializedRef = React.useRef(false);
   React.useEffect(() => {
-    if (shell.sidebarMode === 'expanded') {
-      onExpand?.();
-    } else {
-      onCollapse?.();
+    const currentMode = shell.sidebarMode as SidebarMode;
+
+    // Wait for breakpoint to be ready before enabling callbacks
+    if (!shell.currentBreakpointReady) {
+      prevSidebarModeRef.current = currentMode;
+      return;
     }
-  }, [shell.sidebarMode, onExpand, onCollapse]);
+
+    // Skip the first run after breakpoint is ready - this captures the post-sync state
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      prevSidebarModeRef.current = currentMode;
+      return;
+    }
+
+    const prevMode = prevSidebarModeRef.current;
+
+    // Only fire on actual state transitions
+    if (prevMode !== null && prevMode !== currentMode) {
+      // onExpand: when becoming visible (collapsed → thin/expanded)
+      if (prevMode === 'collapsed' && currentMode !== 'collapsed') {
+        onExpand?.();
+      }
+      // onCollapse: when becoming hidden (any → collapsed)
+      else if (currentMode === 'collapsed') {
+        onCollapse?.();
+      }
+      prevSidebarModeRef.current = currentMode;
+    }
+  }, [shell.sidebarMode, shell.currentBreakpointReady, onExpand, onCollapse]);
 
   // Option A: thin is width-only; content remains visible whenever not collapsed
   const isContentVisible = shell.sidebarMode !== 'collapsed';

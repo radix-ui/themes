@@ -265,13 +265,57 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
     (el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && typeof (el as any).props?.open !== 'undefined' && Boolean((el as any).props?.open),
   );
 
+  // Detect Sidebar initial state from props
+  const getSidebarInitialState = (): SidebarMode => {
+    const sidebarEl = initialChildren.find((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Sidebar');
+    if (!sidebarEl) return 'expanded';
+    const props = (sidebarEl as any).props;
+    // Check controlled state first
+    if (typeof props?.state !== 'undefined') {
+      if (typeof props.state === 'string') return props.state as SidebarMode;
+      // Responsive object - use 'initial' breakpoint or first defined value
+      if (typeof props.state === 'object') {
+        return (props.state.initial ?? Object.values(props.state)[0] ?? 'expanded') as SidebarMode;
+      }
+    }
+    // Check defaultState
+    if (typeof props?.defaultState !== 'undefined') {
+      if (typeof props.defaultState === 'string') return props.defaultState as SidebarMode;
+      if (typeof props.defaultState === 'object') {
+        return (props.defaultState.initial ?? Object.values(props.defaultState)[0] ?? 'expanded') as SidebarMode;
+      }
+    }
+    return 'expanded';
+  };
+
+  // Detect Bottom initial state from props
+  const getBottomInitialState = (): PaneMode => {
+    const bottomEl = initialChildren.find((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Bottom');
+    if (!bottomEl) return 'collapsed';
+    const props = (bottomEl as any).props;
+    // Check controlled open first
+    if (typeof props?.open !== 'undefined') {
+      if (typeof props.open === 'boolean') return props.open ? 'expanded' : 'collapsed';
+      // Responsive object - use 'initial' breakpoint or first defined value
+      if (typeof props.open === 'object') {
+        const val = props.open.initial ?? Object.values(props.open)[0];
+        return val ? 'expanded' : 'collapsed';
+      }
+    }
+    // Check defaultOpen
+    if (typeof props?.defaultOpen !== 'undefined') {
+      return props.defaultOpen ? 'expanded' : 'collapsed';
+    }
+    return 'collapsed';
+  };
+
   // Pane state management via reducer
   const [paneState, dispatchPane] = React.useReducer(paneReducer, {
     leftMode: hasPanelDefaultOpen || hasRailDefaultOpen ? 'expanded' : 'collapsed',
     panelMode: hasPanelDefaultOpen ? 'expanded' : 'collapsed',
-    sidebarMode: 'expanded',
+    sidebarMode: getSidebarInitialState(),
     inspectorMode: hasInspectorDefaultOpen || hasInspectorOpenControlled ? 'expanded' : 'collapsed',
-    bottomMode: 'collapsed',
+    bottomMode: getBottomInitialState(),
   });
   const setLeftMode = React.useCallback((mode: PaneMode) => dispatchPane({ type: 'SET_LEFT_MODE', mode }), []);
   const setPanelMode = React.useCallback((mode: PaneMode) => dispatchPane({ type: 'SET_PANEL_MODE', mode }), []);

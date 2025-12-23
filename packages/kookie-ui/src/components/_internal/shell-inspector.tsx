@@ -173,13 +173,39 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
     }
   }, [shell.inspectorMode, open, defaultOpen, onOpenChange]);
 
+  // Track previous mode to only fire callbacks on actual user-initiated state transitions.
+  // We wait for breakpointReady to ensure the initial state sync from useResponsiveInitialState
+  // is complete before enabling callbacks. This avoids spurious callbacks during initialization.
+  const prevInspectorModeRef = React.useRef<PaneMode | null>(null);
+  const hasInitializedRef = React.useRef(false);
   React.useEffect(() => {
-    if (shell.inspectorMode === 'expanded') {
-      onExpand?.();
-    } else {
-      onCollapse?.();
+    const currentMode = shell.inspectorMode;
+
+    // Wait for breakpoint to be ready before enabling callbacks
+    if (!shell.currentBreakpointReady) {
+      prevInspectorModeRef.current = currentMode;
+      return;
     }
-  }, [shell.inspectorMode, onExpand, onCollapse]);
+
+    // Skip the first run after breakpoint is ready - this captures the post-sync state
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      prevInspectorModeRef.current = currentMode;
+      return;
+    }
+
+    const prevMode = prevInspectorModeRef.current;
+
+    // Only fire on actual state transitions
+    if (prevMode !== null && prevMode !== currentMode) {
+      if (currentMode === 'expanded') {
+        onExpand?.();
+      } else if (currentMode === 'collapsed') {
+        onCollapse?.();
+      }
+      prevInspectorModeRef.current = currentMode;
+    }
+  }, [shell.inspectorMode, shell.currentBreakpointReady, onExpand, onCollapse]);
 
   const isExpanded = shell.inspectorMode === 'expanded';
 
