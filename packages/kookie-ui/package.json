@@ -193,12 +193,12 @@
     "typescript-eslint": "^8.18.1",
     "vitest": "^2.1.9"
   },
-  "homepage": "https://github.com/kushagradhawan/kookie-ui",
+  "homepage": "https://github.com/KushagraDhawan1997/kookie-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kushagradhawan/kookie-ui.git"
+    "url": "git+https://github.com/KushagraDhawan1997/kookie-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/kushagradhawan/kookie-ui/issues"
+    "url": "https://github.com/KushagraDhawan1997/kookie-ui/issues"
   }
 }
