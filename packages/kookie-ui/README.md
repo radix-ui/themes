@@ -317,3 +317,5 @@ MIT © [Kushagra Dhawan](https://github.com/kushagradhawan)
 - [Documentation](https://github.com/kushagradhawan/kookie-ui)
 - [GitHub Repository](https://github.com/kushagradhawan/kookie-ui)
 - [Issue Tracker](https://github.com/kushagradhawan/kookie-ui/issues)
+
+---
