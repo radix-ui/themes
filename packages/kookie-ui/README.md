@@ -306,6 +306,8 @@ Kookie UI uses a comprehensive theming system with:
 
 ⚠️ **Beta** - Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. Check changelogs carefully before upgrading.
 
+> Note: This package uses npm Trusted Publishing with OIDC for secure CI/CD deployments.
+
 ## License
 
 MIT © [Kushagra Dhawan](https://github.com/kushagradhawan)
