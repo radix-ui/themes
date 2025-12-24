@@ -15,7 +15,7 @@
  * Using visibility + position to keep items in DOM for label registration while
  * making them invisible and non-interactive.
  */
-.rt-ComboboxContent[data-state='closed'] {
+.rt-ComboboxContent:where([data-state='closed']) {
   visibility: hidden;
   position: absolute;
   pointer-events: none;
@@ -96,41 +96,41 @@
  */
 
 /* Solid variant - highlighted item */
-.rt-BaseMenuContent.rt-variant-solid .rt-ComboboxItem[data-selected='true'] {
+.rt-BaseMenuContent:where(.rt-variant-solid) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
 
 /* Force color on all descendants (text, icons, wrappers) */
-.rt-BaseMenuContent.rt-variant-solid .rt-ComboboxItem[data-selected='true'] * {
+.rt-BaseMenuContent:where(.rt-variant-solid) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-contrast) !important;
 }
 
 /* Soft variant - highlighted item */
-.rt-BaseMenuContent.rt-variant-soft .rt-ComboboxItem[data-selected='true'] {
+.rt-BaseMenuContent:where(.rt-variant-soft) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-4);
 }
 
-:where([data-panel-background='translucent'], [data-material='translucent']) .rt-BaseMenuContent.rt-variant-soft .rt-ComboboxItem[data-selected='true'] {
+:where([data-panel-background='translucent'], [data-material='translucent']) .rt-BaseMenuContent:where(.rt-variant-soft) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-a4);
 }
 
 /* High contrast - highlighted item */
-.rt-BaseMenuContent.rt-high-contrast .rt-ComboboxItem[data-selected='true'] {
+.rt-BaseMenuContent:where(.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-12);
   color: var(--accent-1);
 }
 
-.rt-BaseMenuContent.rt-high-contrast .rt-ComboboxItem[data-selected='true'] * {
+.rt-BaseMenuContent:where(.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-1) !important;
 }
 
 /* High contrast with accent color */
-.rt-BaseMenuContent.rt-high-contrast[data-accent-color] .rt-ComboboxItem[data-selected='true'] {
+.rt-BaseMenuContent:where(.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
 
-.rt-BaseMenuContent.rt-high-contrast[data-accent-color] .rt-ComboboxItem[data-selected='true'] * {
+.rt-BaseMenuContent:where(.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-contrast) !important;
 }

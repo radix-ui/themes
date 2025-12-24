@@ -860,24 +860,24 @@
  ***************************************************************************************************/
 
 /* Scrub-enabled slot hover state */
-.rt-TextFieldSlot[data-scrub] {
+.rt-TextFieldSlot:where([data-scrub]) {
   cursor: ew-resize !important;
   user-select: none;
   position: relative;
 }
 
 /* Ensure children also show ew-resize cursor */
-.rt-TextFieldSlot[data-scrub] * {
+.rt-TextFieldSlot:where([data-scrub]) * {
   cursor: ew-resize !important;
 }
 
 /* Active scrubbing state - hide real cursor */
-.rt-TextFieldSlot[data-scrubbing] {
+.rt-TextFieldSlot:where([data-scrubbing]) {
   cursor: none;
 }
 
 /* Hide cursor on entire document body during scrubbing via pointer capture */
-.rt-TextFieldSlot[data-scrubbing] * {
+.rt-TextFieldSlot:where([data-scrubbing]) * {
   cursor: none;
 }
 
@@ -924,7 +924,7 @@
 }
 
 /* Visual feedback during scrubbing - subtle highlight on the slot */
-.rt-TextFieldSlot[data-scrubbing] {
+.rt-TextFieldSlot:where([data-scrubbing]) {
   background-color: var(--accent-a3);
   border-radius: calc(var(--text-field-border-radius, var(--radius-2)) - 2px);
 }
