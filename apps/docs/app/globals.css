@@ -37,29 +37,6 @@ body {
   /* box-sizing: border-box !important; */
 }
 
-/* Debug background colors for shell panels using alpha-3 colors */
-/* .rt-ShellHeader {
-  background-color: var(--red-2) !important;
-}
-.rt-ShellRail {
-  background-color: var(--blue-2) !important;
-}
-.rt-ShellPanel {
-  background-color: var(--green-2) !important;
-}
-.rt-ShellSidebar {
-  background-color: var(--purple-2) !important;
-}
-.rt-ShellContent {
-  background-color: var(--amber-2) !important;
-}
-.rt-ShellInspector {
-  background-color: var(--pink-2) !important;
-}
-.rt-ShellBottom {
-  background-color: var(--sky-2) !important;
-} */
-
 /* Rehype-pretty-code feature styles (line highlighting, etc.) */
 [data-highlighted-line] {
   background-color: var(--accent-a3);

@@ -279,6 +279,6 @@
   "title": "Base-button Component Props",
   "description": "Props schema for the base-button component in Kookie UI",
   "version": "1.0.0",
-  "generatedAt": "2025-12-18T08:45:05.037Z",
+  "generatedAt": "2025-12-24T08:18:17.035Z",
   "source": "Zod schema"
 }

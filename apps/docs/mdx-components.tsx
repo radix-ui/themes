@@ -1,8 +1,30 @@
 import type { MDXComponents } from 'mdx/types';
+import React from 'react';
 import { Heading, Text, Code, Blockquote, Link, Flex, Separator, Box, Strong, Em, Kbd, Callout } from '@kushagradhawan/kookie-ui';
-import { CodeBlock } from './app/components/code-block';
+import { CodeBlock, useCodeBlockContext } from '@kushagradhawan/kookie-blocks';
 import { SpecsBlock } from './app/components/specs-block';
 import { TableOfContents } from './app/components/table-of-contents';
+
+// Component that can use hooks to check if already inside CodeBlock
+const PreWrapper = ({ children, className, ...props }: React.ComponentProps<'pre'>) => {
+  const isInsideCodeBlock = useCodeBlockContext();
+  if (isInsideCodeBlock) {
+    // Already inside CodeBlock, just render the pre
+    return (
+      <pre className={className} {...props}>
+        {children}
+      </pre>
+    );
+  }
+  // Not inside CodeBlock, wrap it
+  return (
+    <CodeBlock>
+      <pre className={className} {...props}>
+        {children}
+      </pre>
+    </CodeBlock>
+  );
+};
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -106,16 +128,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
 
-    // Code blocks - let rehype-pretty-code handle multi-line code
-    pre: ({ children, className, ...props }) => {
-      return (
-        <Box className="code-block-wrapper">
-          <pre className={className} {...props}>
-            {children}
-          </pre>
-        </Box>
-      );
-    },
+    // Code blocks - auto-wrap in CodeBlock for consistent UI
+    // Only wrap if not already inside a CodeBlock (to avoid double wrapping)
+    pre: (props) => <PreWrapper {...props} />,
 
     // Enhanced typography components
     kbd: ({ children }) => <Kbd size="2">{children}</Kbd>,

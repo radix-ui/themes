@@ -1,7 +1,7 @@
 import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme, Tooltip } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpRight01Icon, Tick01Icon, ArrowDown01Icon } from '@hugeicons/core-free-icons';
-import { CodeBlock } from '../../components/code-block';
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
 import ButtonPlayground from '../../playground/ButtonPlayground';
 
 <Section size="2">
@@ -10,10 +10,18 @@ import ButtonPlayground from '../../playground/ButtonPlayground';
 
 Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next. Design them to build user confidence and guide decision-making naturally.
 
-This is an enhanced version of the Button component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Button documentation](https://www.radix-ui.com/themes/docs/components/button). 
+This is an enhanced version of the Button component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Button documentation](https://www.radix-ui.com/themes/docs/components/button).
 
 <Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/button.tsx" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
+  <Button
+    size="2"
+    variant="ghost"
+    color="gray"
+    as="a"
+    href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/button.tsx"
+    target="_blank"
+    rel="noopener noreferrer"
+  >View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
 </Flex>
 
 </Section>
@@ -32,12 +40,9 @@ This is an enhanced version of the Button component from [Radix Themes](https://
 
 ## Usage
 
-<CodeBlock buttonsPosition="center">
-
 ```tsx
 import { Button } from '@kushagradhawan/kookie-ui';
 ```
-</CodeBlock>
 
 </Section>
 
@@ -174,7 +179,7 @@ Button supports customizable tooltip props for content, position, timing, and be
 
 ## Variants
 
-Use the `variant` prop to set button style. 
+Use the `variant` prop to set button style.
 
 ### Classic
 
@@ -190,7 +195,9 @@ Elevated style with subtle shadow for maximum visual impact and primary actions.
 >
 
 ```tsx
-<Button size="3" variant="classic">Button</Button>
+<Button size="3" variant="classic">
+  Button
+</Button>
 ```
 
 </CodeBlock>
@@ -209,7 +216,9 @@ Filled background for primary actions and important CTAs.
 >
 
 ```tsx
-<Button size="3" variant="solid">Button</Button>
+<Button size="3" variant="solid">
+  Button
+</Button>
 ```
 
 </CodeBlock>
@@ -228,7 +237,9 @@ Subtle background for secondary actions and content-heavy interfaces.
 >
 
 ```tsx
-<Button size="3" variant="soft">Button</Button>
+<Button size="3" variant="soft">
+  Button
+</Button>
 ```
 
 </CodeBlock>
@@ -247,7 +258,9 @@ Bordered style for secondary actions and form controls.
 >
 
 ```tsx
-<Button size="3" variant="outline">Button</Button>
+<Button size="3" variant="outline">
+  Button
+</Button>
 ```
 
 </CodeBlock>
@@ -266,7 +279,9 @@ Elevated surface for content-heavy UIs and card-based layouts.
 >
 
 ```tsx
-<Button size="3" variant="surface">Button</Button>
+<Button size="3" variant="surface">
+  Button
+</Button>
 ```
 
 </CodeBlock>
@@ -285,7 +300,9 @@ Minimal style for utility actions and inline text integration.
 >
 
 ```tsx
-<Button size="3" variant="ghost">Button</Button>
+<Button size="3" variant="ghost">
+  Button
+</Button>
 ```
 
 </CodeBlock>
@@ -384,12 +401,18 @@ Use the `color` prop with semantic colors to communicate the action's intent to 
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button size="3" color="crimson" variant="solid">Button</Button>
-      <Button size="3" color="crimson" variant="solid" highContrast>Button</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button size="3" color="crimson" variant="solid">
+    Button
+  </Button>
+  <Button size="3" color="crimson" variant="solid" highContrast>
+    Button
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
@@ -400,8 +423,6 @@ Use the `color` prop with semantic colors to communicate the action's intent to 
 </CodeBlock>
 
 </Section>
-
-
 
 <Section size="2">
 
@@ -431,7 +452,9 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 
 ```tsx
 <Theme material="translucent">
-  <Button size="3" color="gray" highContrast variant="soft">Button</Button>
+  <Button size="3" color="gray" highContrast variant="soft">
+    Button
+  </Button>
 </Theme>
 ```
 
@@ -459,7 +482,9 @@ Override the theme's material for a button when you need a specific effect. Tran
 
 ```tsx
 <Theme material="solid">
-  <Button material="translucent" size="3" color="gray" highContrast variant="soft">Button</Button>
+  <Button material="translucent" size="3" color="gray" highContrast variant="soft">
+    Button
+  </Button>
 </Theme>
 ```
 
@@ -477,15 +502,21 @@ Set `loading` to `true` to show a spinner and disable the button. No need to set
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button size="3" color="gray" highContrast loading>Submitting...</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button size="3" color="gray" highContrast loading>
+    Submitting...
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button size="3" color="gray" highContrast loading>Submitting...</Button>
+<Button size="3" color="gray" highContrast loading>
+  Submitting...
+</Button>
 ```
 
 </CodeBlock>
@@ -496,15 +527,21 @@ Set the `disabled` prop to `true` to prevent interaction when an action is unava
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button size="3" disabled tooltip="Please fill all required fields">Save</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button size="3" disabled tooltip="Please fill all required fields">
+    Save
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button size="3" disabled tooltip="Please fill all required fields">Save</Button>
+<Button size="3" disabled tooltip="Please fill all required fields">
+  Save
+</Button>
 ```
 
 </CodeBlock>
@@ -515,12 +552,18 @@ Buttons handle focus for keyboard navigation. For complex patterns, use `data-st
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button size="3" variant="classic" data-state="open">Open</Button>
-      <Button size="3" variant="classic" data-state="on">On</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button size="3" variant="classic" data-state="open">
+    Open
+  </Button>
+  <Button size="3" variant="classic" data-state="on">
+    On
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
@@ -542,16 +585,22 @@ Set the `fullWidth` prop to `true` to make the button fill its container. This i
 
 <CodeBlock
 
-  preview={
-    <Flex direction="column" gap="2" width="300px">
-      <Button size="3" variant="soft" color="gray" highContrast fullWidth>Complete</Button>
-    </Flex>
-  }
+preview={
+
+<Flex direction="column" gap="2" width="300px">
+  <Button size="3" variant="soft" color="gray" highContrast fullWidth>
+    Complete
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
 <Flex direction="column" gap="2" width="300px">
-  <Button size="3" variant="soft" color="gray" highContrast fullWidth>Complete</Button>
+  <Button size="3" variant="soft" color="gray" highContrast fullWidth>
+    Complete
+  </Button>
 </Flex>
 ```
 
@@ -563,15 +612,27 @@ Use the `flush` prop with the `ghost` variant to remove padding, making the butt
 
 <CodeBlock buttonsPosition="center"
 
-  preview={
-    <Flex direction="column" gap="3">
-      <Flex gap="2" align="center"><Button size="3" variant="ghost" flush>Learn</Button> about us.</Flex>
-    </Flex>
-  }
+preview={
+
+<Flex direction="column" gap="3">
+  <Flex gap="2" align="center">
+    <Button size="3" variant="ghost" flush>
+      Learn
+    </Button>{' '}
+    about us.
+  </Flex>
+</Flex>
+}
+
 >
 
 ```tsx
-<Flex gap="2" align="center"><Button size="3" variant="ghost" flush>Learn</Button> about us.</Flex>
+<Flex gap="2" align="center">
+  <Button size="3" variant="ghost" flush>
+    Learn
+  </Button>{' '}
+  about us.
+</Flex>
 ```
 
 </CodeBlock>
@@ -611,39 +672,52 @@ Use the `tooltip` prop to add context to button actions, especially for icon but
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button variant="soft" size="3" tooltip="Save your current progress">Button</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button variant="soft" size="3" tooltip="Save your current progress">
+    Button
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button variant="soft" size="3" tooltip="Save your current progress">Button</Button>
+<Button variant="soft" size="3" tooltip="Save your current progress">
+  Button
+</Button>
 ```
 
 </CodeBlock>
 
 </Section>
 
-
 <Section size="2">
 
 ## Icons
 
-Place icons directly inside buttons; they’ll be sized automatically based on the button’s size. 
+Place icons directly inside buttons; they’ll be sized automatically based on the button’s size.
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button size="3"><HugeiconsIcon icon={Tick01Icon} />Save</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button size="3">
+    <HugeiconsIcon icon={Tick01Icon} />
+    Save
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button size="3"><HugeiconsIcon icon={Tick01Icon} />Save</Button>
+<Button size="3">
+  <HugeiconsIcon icon={Tick01Icon} />
+  Save
+</Button>
 ```
 
 </CodeBlock>
@@ -652,24 +726,26 @@ For icon-only buttons, use the `IconButton` component for proper accessibility a
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <IconButton size="3" variant="soft" aria-label="More options"><HugeiconsIcon icon={ArrowDown01Icon} /></IconButton>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <IconButton size="3" variant="soft" aria-label="More options">
+    <HugeiconsIcon icon={ArrowDown01Icon} />
+  </IconButton>
+</Flex>
+}
+
 >
 
 ```tsx
-<IconButton size="3" variant="soft" aria-label="More options"><HugeiconsIcon icon={ArrowDown01Icon} /></IconButton>
+<IconButton size="3" variant="soft" aria-label="More options">
+  <HugeiconsIcon icon={ArrowDown01Icon} />
+</IconButton>
 ```
 
 </CodeBlock>
 
 </Section>
-
-
-
-
 
 <Section size="2">
 
@@ -681,15 +757,21 @@ Use the `as` prop to render buttons as different HTML elements while maintaining
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
-      <Button size="3" as="a" href="/home">Go Home</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center" wrap="wrap">
+  <Button size="3" as="a" href="/home">
+    Go Home
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button size="3" as="a" href="/home">Go Home</Button>
+<Button size="3" as="a" href="/home">
+  Go Home
+</Button>
 ```
 
 </CodeBlock>
@@ -700,24 +782,26 @@ Use the `asChild` prop to merge button props with a child element using the Radi
 
 <CodeBlock
 
-  preview={
-    <Flex gap="4" align="center">
-      <Button size="3" asChild><a href="/dashboard">Go to Dashboard</a></Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="4" align="center">
+  <Button size="3" asChild>
+    <a href="/dashboard">Go to Dashboard</a>
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button size="3" asChild><a href="/dashboard">Go to Dashboard</a></Button>
+<Button size="3" asChild>
+  <a href="/dashboard">Go to Dashboard</a>
+</Button>
 ```
 
 </CodeBlock>
 
 </Section>
-
-
-
-
 
 <Section size="2">
 
@@ -727,9 +811,10 @@ Use responsive objects with the `size` prop to adapt button sizing across differ
 
 <CodeBlock
 
-  preview={
-      <Button size={{ initial: '1', sm: '2', md: '3' }}>Button</Button>
-  }
+preview={
+
+<Button size={{ initial: '1', sm: '2', md: '3' }}>Button</Button>}
+
 >
 
 ```tsx
@@ -748,22 +833,26 @@ Use standard HTML form attributes to integrate buttons with forms. The component
 
 <CodeBlock
 
-  preview={
-    <Flex gap="2" align="center">
-      <Button type="submit" size="3">Submit</Button>
-    </Flex>
-  }
+preview={
+
+<Flex gap="2" align="center">
+  <Button type="submit" size="3">
+    Submit
+  </Button>
+</Flex>
+}
+
 >
 
 ```tsx
-<Button type="submit" size="3">Submit</Button>
+<Button type="submit" size="3">
+  Submit
+</Button>
 ```
 
 </CodeBlock>
 
 </Section>
-
-
 
 <Section size="2">
 
@@ -774,6 +863,7 @@ Kookie UI's Button extends Radix's accessibility foundation with enhanced loadin
 ### Enhanced Loading States
 
 Loading states automatically apply comprehensive ARIA attributes:
+
 - `aria-busy="true"` - announces processing state
 - `aria-disabled="true"` - prevents interaction
 - `aria-describedby` - links to loading announcement
@@ -788,6 +878,7 @@ Loading announcements include: "[Button text] is loading, please wait..."
 ## Changelog
 
 - **Added**
+
   - Enhanced loading state accessibility with `aria-busy`, `aria-disabled`, and `aria-describedby` attributes
   - Built-in tooltip support through `tooltip`, `tooltipSide`, `tooltipAlign` props
   - New `material` prop for solid/translucent theme contexts
@@ -801,6 +892,7 @@ Loading announcements include: "[Button text] is loading, please wait..."
   - **Tooltip accessibility integration** with proper `aria-describedby` associations
 
 - **Changed**
+
   - Improved 3D shadow system for classic variant with better depth perception
   - Enhanced active state feedback with subtle padding adjustments
   - Better contrast relationships in both light and dark themes
@@ -808,6 +900,7 @@ Loading announcements include: "[Button text] is loading, please wait..."
   - Automatic reduced motion support via `prefers-reduced-motion`
 
 - **Deprecated**
+
   - `panelBackground` prop in favor of `material` prop
 
 - **Fixed**
