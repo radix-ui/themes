@@ -50,6 +50,15 @@ const countriesByContinent = [
   },
 ];
 
+// Flatten countries for quick lookup (used by displayValue function)
+const allCountries = countriesByContinent.flatMap((g) => g.countries);
+
+/**
+ * Display value resolver function - recommended for performance.
+ * This avoids needing forceMount on Content since we can resolve labels from data.
+ */
+const getCountryLabel = (value: string | null) => allCountries.find((c) => c.value === value)?.label;
+
 export default function ComboBoxPlayground() {
   const [size, setSize] = React.useState<(typeof sizes)[number]>('2');
   const [variant, setVariant] = React.useState<(typeof variants)[number]>('surface');
@@ -135,10 +144,21 @@ const countriesByContinent = [
   },
 ];
 
+// Flatten for quick lookup - displayValue function resolves labels from data
+const allCountries = countriesByContinent.flatMap((g) => g.countries);
+const getCountryLabel = (value: string | null) => 
+  allCountries.find((c) => c.value === value)?.label;
+
 const [value, setValue] = React.useState<string | null>(${value ? `'${value}'` : 'null'});
 
 return (
-  <Combobox.Root ${rootProps.join(' ')} value={value} onValueChange={setValue} loop={${loop}}>
+  <Combobox.Root 
+    ${rootProps.join(' ')} 
+    value={value} 
+    onValueChange={setValue} 
+    loop={${loop}}
+    displayValue={getCountryLabel}
+  >
     <Combobox.Trigger ${triggerProps.join(' ')}>
       <Combobox.Value placeholder="Select a country" />
     </Combobox.Trigger>
@@ -152,15 +172,21 @@ ${listMarkup}
   </Combobox.Root>
 );
 
-// Note: Each Combobox.Item contains an icon rendered with:
-// <Flex gap="2" align="center">
-//   <IconComponent size={16} />
-//   Country Name
-// </Flex>`;
+// Performance tip: Using displayValue with a lookup function is more performant
+// than forceMount, as items only mount when the dropdown opens.
+// The displayValue function receives the current value and returns the label.`;
   };
 
   const component = (
-    <Combobox.Root size={size} value={value} onValueChange={setValue} loop={loop} disabled={disabled} highContrast={highContrast}>
+    <Combobox.Root
+      size={size}
+      value={value}
+      onValueChange={setValue}
+      loop={loop}
+      disabled={disabled}
+      highContrast={highContrast}
+      displayValue={getCountryLabel}
+    >
       <Combobox.Trigger variant={variant} color={color === 'theme' ? undefined : (color as any)} width={triggerWidth === 'fit-content' ? undefined : triggerWidth}>
         <Combobox.Value placeholder="Select a country" />
       </Combobox.Trigger>

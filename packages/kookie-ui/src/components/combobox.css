@@ -10,6 +10,17 @@
   flex-direction: column;
 }
 
+/* 
+ * Hide content when closed (forceMount keeps items mounted for label registration).
+ * Using visibility + position to keep items in DOM for label registration while
+ * making them invisible and non-interactive.
+ */
+.rt-ComboboxContent[data-state='closed'] {
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
 .rt-ComboboxCommand {
   display: flex;
   flex-direction: column;
@@ -39,11 +50,17 @@
   --base-menu-item-padding-left: var(--space-5);
 }
 
-/* Override disabled styles when data-disabled is false or empty (cmdk may set it incorrectly) */
+/* 
+ * Override disabled styles when data-disabled is false or empty (cmdk may set it incorrectly).
+ * This CSS-only approach replaces the per-item MutationObserver workaround for better performance.
+ * We reset all visual properties that base-menu applies to [data-disabled] items.
+ */
 .rt-BaseMenuContent :where(.rt-BaseMenuItem.rt-ComboboxItem[data-disabled='false']),
 .rt-BaseMenuContent :where(.rt-BaseMenuItem.rt-ComboboxItem[data-disabled='']) {
   color: inherit !important;
   cursor: var(--cursor-menu-item) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 /* Sticky search input with consistent padding */
@@ -69,67 +86,51 @@
   min-height: 0;
 }
 
-/* Map cmdk's selected state to base-menu highlighted state */
-.rt-BaseMenuContent:where(.rt-variant-solid) {
-  & :where(.rt-BaseMenuItem.rt-ComboboxItem[data-selected='true']),
-  & :where(.rt-BaseMenuItem.rt-ComboboxItem[aria-selected='true']) {
-    background-color: var(--accent-9);
-    color: var(--accent-contrast);
+/*
+ * Map cmdk's data-selected state to highlighted styling.
+ * Mirrors base-menu's [data-highlighted] styling but for cmdk's [data-selected].
+ * 
+ * IMPORTANT: background-color applies only to the item itself.
+ * color is explicitly set on ALL descendants (* selector) because user content
+ * (Flex, icons, text) may have intermediate wrappers that break CSS inheritance.
+ */
 
-    & :where(.rt-Text) {
-      color: inherit !important;
-    }
-
-    & :where([data-accent-color='gray']:not(.rt-Badge)) {
-      color: inherit !important;
-    }
-  }
+/* Solid variant - highlighted item */
+.rt-BaseMenuContent.rt-variant-solid .rt-ComboboxItem[data-selected='true'] {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
 }
 
-.rt-BaseMenuContent:where(.rt-variant-soft) {
-  & :where(.rt-BaseMenuItem.rt-ComboboxItem[data-selected='true']),
-  & :where(.rt-BaseMenuItem.rt-ComboboxItem[aria-selected='true']) {
-    background-color: var(--accent-4);
-
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: var(--accent-a4);
-    }
-
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-4);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: var(--accent-a4);
-    }
-  }
+/* Force color on all descendants (text, icons, wrappers) */
+.rt-BaseMenuContent.rt-variant-solid .rt-ComboboxItem[data-selected='true'] * {
+  color: var(--accent-contrast) !important;
 }
 
-.rt-BaseMenuContent:where(.rt-high-contrast) {
-  & :where(.rt-BaseMenuItem.rt-ComboboxItem[data-selected='true']),
-  & :where(.rt-BaseMenuItem.rt-ComboboxItem[aria-selected='true']) {
-    background-color: var(--accent-12);
-    color: var(--accent-1);
+/* Soft variant - highlighted item */
+.rt-BaseMenuContent.rt-variant-soft .rt-ComboboxItem[data-selected='true'] {
+  background-color: var(--accent-4);
+}
 
-    & :where(.rt-Text) {
-      color: inherit !important;
-    }
+:where([data-panel-background='translucent'], [data-material='translucent']) .rt-BaseMenuContent.rt-variant-soft .rt-ComboboxItem[data-selected='true'] {
+  background-color: var(--accent-a4);
+}
 
-    & :where([data-accent-color='gray']:not(.rt-Badge)) {
-      color: inherit !important;
-    }
+/* High contrast - highlighted item */
+.rt-BaseMenuContent.rt-high-contrast .rt-ComboboxItem[data-selected='true'] {
+  background-color: var(--accent-12);
+  color: var(--accent-1);
+}
 
-    &:where([data-accent-color]) {
-      background-color: var(--accent-9);
-      color: var(--accent-contrast);
+.rt-BaseMenuContent.rt-high-contrast .rt-ComboboxItem[data-selected='true'] * {
+  color: var(--accent-1) !important;
+}
 
-      & :where(.rt-Text) {
-        color: inherit !important;
-      }
+/* High contrast with accent color */
+.rt-BaseMenuContent.rt-high-contrast[data-accent-color] .rt-ComboboxItem[data-selected='true'] {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
 
-      & :where([data-accent-color='gray']:not(.rt-Badge)) {
-        color: inherit !important;
-      }
-    }
-  }
+.rt-BaseMenuContent.rt-high-contrast[data-accent-color] .rt-ComboboxItem[data-selected='true'] * {
+  color: var(--accent-contrast) !important;
 }

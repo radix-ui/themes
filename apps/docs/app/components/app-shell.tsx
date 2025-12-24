@@ -20,6 +20,7 @@ import {
   Github01Icon,
   Menu01Icon,
   LayoutIcon,
+  TextIcon,
 } from '@hugeicons/core-free-icons';
 
 // Define the navigation structure with groups

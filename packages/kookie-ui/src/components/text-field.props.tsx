@@ -55,4 +55,32 @@ const textFieldSlotPropDefs = {
   pr: typeof paddingPropDefs.pr;
 };
 
+/** Scrubbing props for TextField.Slot - handled separately from PropDef system */
+interface TextFieldSlotScrubProps {
+  /** Enable scrubbing behavior on this slot */
+  scrub?: boolean;
+  /** Current value (required for min/max clamping to work correctly) */
+  scrubValue?: number;
+  /** Base value change per movement unit (default: 1) */
+  scrubStep?: number;
+  /** Pixels of movement per step - higher = less sensitive (default: 1) */
+  scrubSensitivity?: number;
+  /** Minimum allowed value */
+  scrubMin?: number;
+  /** Maximum allowed value */
+  scrubMax?: number;
+  /** Step multiplier when Shift is held (default: 10) */
+  scrubShiftMultiplier?: number;
+  /** Step multiplier when Alt/Option is held (default: 0.1) */
+  scrubAltMultiplier?: number;
+  /**
+   * Callback fired during scrubbing with the value delta
+   * @param delta - The change in value
+   * @param isChanging - true while dragging, false when released
+   */
+  onScrub?: (delta: number, isChanging: boolean) => void;
+}
+
+export type { TextFieldSlotScrubProps };
+
 export { textFieldRootPropDefs, textFieldSlotPropDefs };
