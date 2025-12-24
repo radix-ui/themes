@@ -27,16 +27,16 @@ const PreWrapper = ({ children, className, ...props }: React.ComponentProps<'pre
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   const baseComponents = createMarkdownComponents({
     inlineCodeHighContrast: true,
+    // Don't wrap code blocks in CodeBlock - PreWrapper will do it
+    codeBlockCollapsible: false,
   });
 
-  // Remove code/pre from base since we use rehype-pretty-code
-  const { code: _, pre: __, ...restBaseComponents } = baseComponents;
-
   return {
-    ...restBaseComponents,
+    ...baseComponents,
 
-    // Override code handling for rehype-pretty-code integration
-    code: ({ children, className, ...props }) => {
+    // Override code: inline only, blocks handled by PreWrapper
+    code: ({ children, className, inline, ...props }: any) => {
+      // For rehype-pretty-code syntax highlighting, just pass through
       if (className?.includes('language-')) {
         return (
           <code className={className} {...props}>
@@ -44,6 +44,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           </code>
         );
       }
+
+      // Only inline code here
       return (
         <Code size="3" color="gray" variant="soft" highContrast>
           {children}
@@ -51,7 +53,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
 
-    // Override pre to use CodeBlock wrapper
+    // Override pre: let PreWrapper handle CodeBlock wrapping
     pre: (props) => <PreWrapper {...props} />,
 
     // Custom components specific to kookie-ui docs
