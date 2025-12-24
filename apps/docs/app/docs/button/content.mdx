@@ -1,181 +1,26 @@
-import { Card, Flex, Text, Heading, Grid, Badge, Box, Section, Separator, Image, Button, Table, Code, Callout, IconButton, Theme, Tooltip } from '@kushagradhawan/kookie-ui';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowUpRight01Icon, Tick01Icon, ArrowDown01Icon } from '@hugeicons/core-free-icons';
-import { CodeBlock } from '@kushagradhawan/kookie-blocks';
-import ButtonPlayground from '../../playground/ButtonPlayground';
-
-<Section size="2">
-
 # Button
 
 Use buttons to trigger actions throughout your interface. Buttons are promises of what happens next. Design them to build user confidence and guide decision-making naturally.
 
 This is an enhanced version of the Button component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Button documentation](https://www.radix-ui.com/themes/docs/components/button).
 
-<Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button
-    size="2"
-    variant="ghost"
-    color="gray"
-    as="a"
-    href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/button.tsx"
-    target="_blank"
-    rel="noopener noreferrer"
-  >View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
-</Flex>
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/button.tsx)
 
-</Section>
+## Installation
 
-<Section size="2">
-
-## Playground
-
-<Box>
-  <ButtonPlayground />
-</Box>
-
-</Section>
-
-<Section size="2">
+```bash
+npm install @kushagradhawan/kookie-ui
+```
 
 ## Usage
 
 ```tsx
 import { Button } from '@kushagradhawan/kookie-ui';
+
+export function MyComponent() {
+  return <Button>Click me</Button>;
+}
 ```
-
-</Section>
-
-<Section size="2">
-
-## Props
-
-<Box>
-  <Table.Root mt="6" my="6" size="2" variant="ghost" layout="fixed">
-    <colgroup>
-      <col style={{ width: '35%' }} />
-      <col />
-    </colgroup>
-    <Table.Header>
-      <Table.Row>
-        <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Button style variant: classic for elevated, solid for primary, outline for secondary, ghost for utility, soft/surface for content-heavy UIs">
-            <span style={{ display: 'inline-block' }}>`variant`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Button density: 1 (24px) for toolbars, 2 (32px) standard, 3 (40px) for important actions, 4 (48px) for hero sections. Supports responsive objects">
-            <span style={{ display: 'inline-block' }}>`size`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'1' | '2' | '3' | '4'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Semantic color to communicate action intent. Use highContrast for maximum visibility on complex backgrounds">
-            <span style={{ display: 'inline-block' }}>`color`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`AccentColor`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Maximum visibility mode, especially useful on complex or translucent backgrounds">
-            <span style={{ display: 'inline-block' }}>`highContrast`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Makes button fill its container width. Useful for mobile layouts and form submissions">
-            <span style={{ display: 'inline-block' }}>`fullWidth`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Removes padding for seamless text integration. Use with ghost variant to blend with text while staying interactive">
-            <span style={{ display: 'inline-block' }}>`flush`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped">
-            <span style={{ display: 'inline-block' }}>`radius`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds">
-            <span style={{ display: 'inline-block' }}>`material`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Deprecated: Use material prop instead. Controls panel background appearance">
-            <span style={{ display: 'inline-block' }}>`panelBackground`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Shows spinner and disables button automatically. No need to set disabled manually">
-            <span style={{ display: 'inline-block' }}>`loading`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Prevents interaction when action is unavailable, such as during form validation or when authentication is required">
-            <span style={{ display: 'inline-block' }}>`disabled`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Renders button as different HTML element while maintaining button styling. Useful for navigation links or routing integration">
-            <span style={{ display: 'inline-block' }}>`as`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`ElementType`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Merges button props with child element using Radix Slot pattern. Ideal for composition with routing libraries like Next.js Link">
-            <span style={{ display: 'inline-block' }}>`asChild`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`boolean`</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table.Root>
-</Box>
-
-Button supports customizable tooltip props for content, position, timing, and behavior.
-
-</Section>
-
-<Section size="2">
 
 ## Variants
 
@@ -185,35 +30,15 @@ Use the `variant` prop to set button style.
 
 Elevated style with subtle shadow for maximum visual impact and primary actions.
 
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" wrap="wrap" align="center">
-      <Button size="3" variant="classic">Button</Button>
-    </Flex>
-  }
->
-
 ```tsx
 <Button size="3" variant="classic">
   Button
 </Button>
 ```
 
-</CodeBlock>
-
 ### Solid
 
 Filled background for primary actions and important CTAs.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" wrap="wrap" align="center">
-      <Button size="3" variant="solid">Button</Button>
-    </Flex>
-  }
->
 
 ```tsx
 <Button size="3" variant="solid">
@@ -221,20 +46,9 @@ Filled background for primary actions and important CTAs.
 </Button>
 ```
 
-</CodeBlock>
-
 ### Soft
 
 Subtle background for secondary actions and content-heavy interfaces.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" wrap="wrap" align="center">
-      <Button size="3" variant="soft">Button</Button>
-    </Flex>
-  }
->
 
 ```tsx
 <Button size="3" variant="soft">
@@ -242,20 +56,9 @@ Subtle background for secondary actions and content-heavy interfaces.
 </Button>
 ```
 
-</CodeBlock>
-
 ### Outline
 
 Bordered style for secondary actions and form controls.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" wrap="wrap" align="center">
-      <Button size="3" variant="outline">Button</Button>
-    </Flex>
-  }
->
 
 ```tsx
 <Button size="3" variant="outline">
@@ -263,20 +66,9 @@ Bordered style for secondary actions and form controls.
 </Button>
 ```
 
-</CodeBlock>
-
 ### Surface
 
 Elevated surface for content-heavy UIs and card-based layouts.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" wrap="wrap" align="center">
-      <Button size="3" variant="surface">Button</Button>
-    </Flex>
-  }
->
 
 ```tsx
 <Button size="3" variant="surface">
@@ -284,20 +76,9 @@ Elevated surface for content-heavy UIs and card-based layouts.
 </Button>
 ```
 
-</CodeBlock>
-
 ### Ghost
 
 Minimal style for utility actions and inline text integration.
-
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" wrap="wrap" align="center">
-      <Button size="3" variant="ghost">Button</Button>
-    </Flex>
-  }
->
 
 ```tsx
 <Button size="3" variant="ghost">
@@ -305,126 +86,54 @@ Minimal style for utility actions and inline text integration.
 </Button>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Sizes
 
-Set `size` for button density: `1` (24px), `2` (32px), `3` (40px), `4` (48px). Use `3` or `4` for mobile. Supports responsive: `{ initial: '1', sm: '2', md: '3', lg: '4' }`.
+Set `size` for button density: `1` (24px), `2` (32px), `3` (40px), `4` (48px). Use `3` or `4` for mobile touch targets. Supports responsive objects like `{ initial: '1', sm: '2', md: '3', lg: '4' }`.
 
 ### Size 1
 
 For toolbars and dense interfaces.
 
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
-      <Button variant="solid" size="1">Button</Button>
-    </Flex>
-  }
->
-
 ```tsx
 <Button size="1">Button</Button>
 ```
-
-</CodeBlock>
 
 ### Size 2
 
 For standard interface contexts.
 
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
-      <Button variant="solid" size="2">Button</Button>
-    </Flex>
-  }
->
-
 ```tsx
 <Button size="2">Button</Button>
 ```
-
-</CodeBlock>
 
 ### Size 3
 
 For important actions and mobile touch targets.
 
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
-      <Button variant="solid" size="3">Button</Button>
-    </Flex>
-  }
->
-
 ```tsx
 <Button size="3">Button</Button>
 ```
-
-</CodeBlock>
 
 ### Size 4
 
 For hero sections and maximum impact.
 
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center" wrap="wrap">
-      <Button variant="solid" size="4">Button</Button>
-    </Flex>
-  }
->
-
 ```tsx
 <Button size="4">Button</Button>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Colors
 
 Use the `color` prop with semantic colors to communicate the action's intent to users. Use `highContrast` for maximum visibility, especially on complex or translucent backgrounds.
 
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button size="3" color="crimson" variant="solid">
-    Button
-  </Button>
-  <Button size="3" color="crimson" variant="solid" highContrast>
-    Button
-  </Button>
-</Flex>
-}
-
->
-
 ```tsx
-<Button size="3" color="crimson" variant="solid">Button</Button>
-<Button size="3" color="crimson" variant="solid" highContrast>Button</Button>
+<Button size="3" color="crimson" variant="solid">
+  Button
+</Button>
+<Button size="3" color="crimson" variant="solid" highContrast>
+  Button
+</Button>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Material
 
@@ -434,22 +143,6 @@ Use the `material` prop to set button appearance. Choose `solid` for opaque back
 
 Buttons automatically inherit the theme's material setting. Wrap your interface in a `Theme` component to control material globally:
 
-<CodeBlock
-  background="https://xlsxjlbxvnhdubuzkjoz.supabase.co/storage/v1/object/public/generated-images/img_ab26cc85-8970-4552-b3cd-c051914cc681_context.jpg"
-  backgroundProps={{
-    height: "200px",
-    width: "100%",
-    radius: "2"
-  }}
-  preview={
-    <Theme material="translucent">
-      <Flex gap="2" align="center" wrap="wrap">
-        <Button size="3" color="gray" highContrast variant="soft">Button</Button>
-      </Flex>
-    </Theme>
-  }
->
-
 ```tsx
 <Theme material="translucent">
   <Button size="3" color="gray" highContrast variant="soft">
@@ -458,27 +151,9 @@ Buttons automatically inherit the theme's material setting. Wrap your interface 
 </Theme>
 ```
 
-</CodeBlock>
-
 ### Custom
 
 Override the theme's material for a button when you need a specific effect. Translucent effects only show over backgrounds—use `highContrast` for readability.
-
-<CodeBlock
-  background="https://xlsxjlbxvnhdubuzkjoz.supabase.co/storage/v1/object/public/generated-images/img_ab26cc85-8970-4552-b3cd-c051914cc681_context.jpg"
-  backgroundProps={{
-    height: "200px",
-    width: "100%",
-    radius: "2"
-  }}
-  preview={
-    <Theme material="translucent">
-      <Flex gap="2" align="center" justify="center" wrap="wrap" width="100%">
-        <Button size="3" color="gray" highContrast variant="soft" material="translucent">Button</Button>
-      </Flex>
-    </Theme>
-  }
->
 
 ```tsx
 <Theme material="solid">
@@ -488,30 +163,11 @@ Override the theme's material for a button when you need a specific effect. Tran
 </Theme>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## States
 
 ### Loading
 
 Set `loading` to `true` to show a spinner and disable the button. No need to set `disabled` manually.
-
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button size="3" color="gray" highContrast loading>
-    Submitting...
-  </Button>
-</Flex>
-}
-
->
 
 ```tsx
 <Button size="3" color="gray" highContrast loading>
@@ -519,24 +175,9 @@ preview={
 </Button>
 ```
 
-</CodeBlock>
-
 ### Disabled
 
 Set the `disabled` prop to `true` to prevent interaction when an action is unavailable, such as during form validation or when authentication is required.
-
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button size="3" disabled tooltip="Please fill all required fields">
-    Save
-  </Button>
-</Flex>
-}
-
->
 
 ```tsx
 <Button size="3" disabled tooltip="Please fill all required fields">
@@ -544,38 +185,18 @@ preview={
 </Button>
 ```
 
-</CodeBlock>
-
 ### Interactive
 
 Buttons handle focus for keyboard navigation. For complex patterns, use `data-state` for custom visuals.
 
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button size="3" variant="classic" data-state="open">
-    Open
-  </Button>
-  <Button size="3" variant="classic" data-state="on">
-    On
-  </Button>
-</Flex>
-}
-
->
-
 ```tsx
-<Button size="3" variant="classic" data-state="open">Open</Button>
-<Button size="3" variant="classic" data-state="on">On</Button>
+<Button size="3" variant="classic" data-state="open">
+  Open
+</Button>
+<Button size="3" variant="classic" data-state="on">
+  On
+</Button>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Layout
 
@@ -583,19 +204,6 @@ preview={
 
 Set the `fullWidth` prop to `true` to make the button fill its container. This is useful for mobile layouts and form submissions.
 
-<CodeBlock
-
-preview={
-
-<Flex direction="column" gap="2" width="300px">
-  <Button size="3" variant="soft" color="gray" highContrast fullWidth>
-    Complete
-  </Button>
-</Flex>
-}
-
->
-
 ```tsx
 <Flex direction="column" gap="2" width="300px">
   <Button size="3" variant="soft" color="gray" highContrast fullWidth>
@@ -604,27 +212,9 @@ preview={
 </Flex>
 ```
 
-</CodeBlock>
-
 ### Flush
 
 Use the `flush` prop with the `ghost` variant to remove padding, making the button blend with text while staying interactive.
-
-<CodeBlock buttonsPosition="center"
-
-preview={
-
-<Flex direction="column" gap="3">
-  <Flex gap="2" align="center">
-    <Button size="3" variant="ghost" flush>
-      Learn
-    </Button>{' '}
-    about us.
-  </Flex>
-</Flex>
-}
-
->
 
 ```tsx
 <Flex gap="2" align="center">
@@ -635,53 +225,22 @@ preview={
 </Flex>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Margin
 
 Use margin props for spacing around buttons. All margin props are responsive and accept design tokens or CSS values.
 
-<CodeBlock
-  buttonsPosition="center"
-  preview={
-    <Flex gap="2" align="center">
-      <Button size="3" variant="soft" mx="2">Button</Button>
-      <Button size="3" variant="soft" mx="2">Button</Button>
-    </Flex>
-  }
->
-
 ```tsx
-<Button size="3" variant="soft" mx="2">Button</Button>
-<Button size="3" variant="soft" mx="2">Button</Button>
+<Button size="3" variant="soft" mx="2">
+  Button
+</Button>
+<Button size="3" variant="soft" mx="2">
+  Button
+</Button>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Tooltips
 
 Use the `tooltip` prop to add context to button actions, especially for icon buttons or unclear actions. Tooltips appear on hover and focus for accessibility. Always provide a tooltip for icon-only buttons.
-
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button variant="soft" size="3" tooltip="Save your current progress">
-    Button
-  </Button>
-</Flex>
-}
-
->
 
 ```tsx
 <Button variant="soft" size="3" tooltip="Save your current progress">
@@ -689,65 +248,28 @@ preview={
 </Button>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Icons
 
-Place icons directly inside buttons; they’ll be sized automatically based on the button’s size.
-
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button size="3">
-    <HugeiconsIcon icon={Tick01Icon} />
-    Save
-  </Button>
-</Flex>
-}
-
->
+Place icons directly inside buttons; they'll be sized automatically based on the button's size.
 
 ```tsx
+import { Check } from 'lucide-react';
+
 <Button size="3">
-  <HugeiconsIcon icon={Tick01Icon} />
+  <Check />
   Save
 </Button>
 ```
 
-</CodeBlock>
-
 For icon-only buttons, use the `IconButton` component for proper accessibility and touch targets.
 
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <IconButton size="3" variant="soft" aria-label="More options">
-    <HugeiconsIcon icon={ArrowDown01Icon} />
-  </IconButton>
-</Flex>
-}
-
->
-
 ```tsx
+import { ChevronDown } from 'lucide-react';
+
 <IconButton size="3" variant="soft" aria-label="More options">
-  <HugeiconsIcon icon={ArrowDown01Icon} />
+  <ChevronDown />
 </IconButton>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Polymorphism
 
@@ -755,43 +277,15 @@ preview={
 
 Use the `as` prop to render buttons as different HTML elements while maintaining button styling. This is useful for navigation links, routing integration, or custom interactive elements that need button appearance.
 
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center" wrap="wrap">
-  <Button size="3" as="a" href="/home">
-    Go Home
-  </Button>
-</Flex>
-}
-
->
-
 ```tsx
 <Button size="3" as="a" href="/home">
   Go Home
 </Button>
 ```
 
-</CodeBlock>
-
 ### AsChild
 
 Use the `asChild` prop to merge button props with a child element using the Radix Slot pattern. This is ideal for composition with routing libraries like Next.js Link or React Router, as it applies button styling without creating an additional wrapper element.
-
-<CodeBlock
-
-preview={
-
-<Flex gap="4" align="center">
-  <Button size="3" asChild>
-    <a href="/dashboard">Go to Dashboard</a>
-  </Button>
-</Flex>
-}
-
->
 
 ```tsx
 <Button size="3" asChild>
@@ -799,50 +293,17 @@ preview={
 </Button>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Responsive
 
 Use responsive objects with the `size` prop to adapt button sizing across different breakpoints. The component uses a mobile-first approach where each breakpoint applies styles at its minimum width and above.
-
-<CodeBlock
-
-preview={
-
-<Button size={{ initial: '1', sm: '2', md: '3' }}>Button</Button>}
-
->
 
 ```tsx
 <Button size={{ initial: '1', sm: '2', md: '3' }}>Button</Button>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Form
 
 Use standard HTML form attributes to integrate buttons with forms. The component supports all form attributes for comprehensive form integration, including loading states for async operations and validation-based disabled states.
-
-<CodeBlock
-
-preview={
-
-<Flex gap="2" align="center">
-  <Button type="submit" size="3">
-    Submit
-  </Button>
-</Flex>
-}
-
->
 
 ```tsx
 <Button type="submit" size="3">
@@ -850,11 +311,28 @@ preview={
 </Button>
 ```
 
-</CodeBlock>
+## Props
 
-</Section>
+| Prop           | Type                                                                  | Description                                                                                     |
+| -------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `variant`      | `'classic' \| 'solid' \| 'soft' \| 'surface' \| 'outline' \| 'ghost'` | Button style variant: classic for elevated, solid for primary, outline for secondary, ghost for utility, soft/surface for content-heavy UIs |
+| `size`         | `'1' \| '2' \| '3' \| '4'`                                            | Button density: 1 (24px) for toolbars, 2 (32px) standard, 3 (40px) for important actions, 4 (48px) for hero sections. Supports responsive objects |
+| `color`        | `AccentColor`                                                         | Semantic color to communicate action intent. Use highContrast for maximum visibility on complex backgrounds |
+| `highContrast` | `boolean`                                                             | Maximum visibility mode, especially useful on complex or translucent backgrounds                |
+| `fullWidth`    | `boolean`                                                             | Makes button fill its container width. Useful for mobile layouts and form submissions          |
+| `flush`        | `boolean`                                                             | Removes padding for seamless text integration. Use with ghost variant to blend with text while staying interactive |
+| `radius`       | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'`                  | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped |
+| `material`     | `'solid' \| 'translucent'`                                            | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
+| `panelBackground` | `'solid' \| 'translucent'`                                         | Deprecated: Use material prop instead. Controls panel background appearance                     |
+| `loading`      | `boolean`                                                             | Shows spinner and disables button automatically. No need to set disabled manually               |
+| `disabled`     | `boolean`                                                             | Prevents interaction when action is unavailable, such as during form validation or when authentication is required |
+| `as`           | `ElementType`                                                         | Renders button as different HTML element while maintaining button styling. Useful for navigation links or routing integration |
+| `asChild`      | `boolean`                                                             | Merges button props with child element using Radix Slot pattern. Ideal for composition with routing libraries like Next.js Link |
+| `tooltip`      | `string \| ReactNode`                                                 | Content for tooltip. Appears on hover and focus for accessibility                               |
+| `tooltipSide`  | `'top' \| 'right' \| 'bottom' \| 'left'`                              | Position of tooltip relative to button                                                          |
+| `tooltipAlign` | `'start' \| 'center' \| 'end'`                                        | Alignment of tooltip                                                                            |
 
-<Section size="2">
+Button also supports customizable tooltip props for content, position, timing, and behavior. Additionally, all margin props (`m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`) are supported with responsive values.
 
 ## Accessibility
 
@@ -871,46 +349,54 @@ Loading states automatically apply comprehensive ARIA attributes:
 
 Loading announcements include: "[Button text] is loading, please wait..."
 
-</Section>
+### Keyboard Navigation
 
-<Section size="2">
+- Full keyboard support with Enter and Space keys
+- Visible focus indicators for all variants
+- Enhanced focus management for Windows High Contrast mode
+
+### Screen Readers
+
+- Semantic button elements with proper roles
+- Loading state announcements
+- Tooltip associations via `aria-describedby`
+- Disabled state announcements
 
 ## Changelog
 
-- **Added**
+### Added
 
-  - Enhanced loading state accessibility with `aria-busy`, `aria-disabled`, and `aria-describedby` attributes
-  - Built-in tooltip support through `tooltip`, `tooltipSide`, `tooltipAlign` props
-  - New `material` prop for solid/translucent theme contexts
-  - `flush` prop for seamless text integration with ghost variants
-  - Full margin prop system with responsive support
-  - Enhanced form integration with complete HTML form attribute support
-  - **RTL (Right-to-Left) layout support** for international applications
-  - **Windows High Contrast mode support** via `forced-colors` media query
-  - **Enhanced reduced motion support** for users with vestibular disorders
-  - **Improved loading state announcements** with contextual button text
-  - **Tooltip accessibility integration** with proper `aria-describedby` associations
+- Enhanced loading state accessibility with `aria-busy`, `aria-disabled`, and `aria-describedby` attributes
+- Built-in tooltip support through `tooltip`, `tooltipSide`, `tooltipAlign` props
+- New `material` prop for solid/translucent theme contexts
+- `flush` prop for seamless text integration with ghost variants
+- Full margin prop system with responsive support
+- Enhanced form integration with complete HTML form attribute support
+- **RTL (Right-to-Left) layout support** for international applications
+- **Windows High Contrast mode support** via `forced-colors` media query
+- **Enhanced reduced motion support** for users with vestibular disorders
+- **Improved loading state announcements** with contextual button text
+- **Tooltip accessibility integration** with proper `aria-describedby` associations
 
-- **Changed**
+### Changed
 
-  - Improved 3D shadow system for classic variant with better depth perception
-  - Enhanced active state feedback with subtle padding adjustments
-  - Better contrast relationships in both light and dark themes
-  - Comprehensive transition token system with duration and easing tokens
-  - Automatic reduced motion support via `prefers-reduced-motion`
+- Improved 3D shadow system for classic variant with better depth perception
+- Enhanced active state feedback with subtle padding adjustments
+- Better contrast relationships in both light and dark themes
+- Comprehensive transition token system with duration and easing tokens
+- Automatic reduced motion support via `prefers-reduced-motion`
 
-- **Deprecated**
+### Deprecated
 
-  - `panelBackground` prop in favor of `material` prop
+- `panelBackground` prop in favor of `material` prop
 
-- **Fixed**
-  - Better color saturation and brightness in high contrast mode
-  - Enhanced focus indicators for improved accessibility
-  - Consistent contrast ratios across all variants and states
-  - Full TypeScript support for polymorphic `as` prop with better type inference
-  - **Loading state accessibility** with proper button text context in announcements
-  - **Focus management** with enhanced forced-colors support for Windows High Contrast
-  - **Spinner animations** now respect `prefers-reduced-motion` user preference
-  - **Tooltip associations** properly linked to buttons via unique IDs
+### Fixed
 
-</Section>
+- Better color saturation and brightness in high contrast mode
+- Enhanced focus indicators for improved accessibility
+- Consistent contrast ratios across all variants and states
+- Full TypeScript support for polymorphic `as` prop with better type inference
+- **Loading state accessibility** with proper button text context in announcements
+- **Focus management** with enhanced forced-colors support for Windows High Contrast
+- **Spinner animations** now respect `prefers-reduced-motion` user preference
+- **Tooltip associations** properly linked to buttons via unique IDs
