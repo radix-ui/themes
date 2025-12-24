@@ -22,6 +22,27 @@ export function MyComponent() {
 }
 ```
 
+## Props
+
+| Prop           | Type                                                                  | Description                                                                                     |
+| -------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `variant`      | `'classic' \| 'solid' \| 'soft' \| 'surface' \| 'outline' \| 'ghost'` | Button style variant: classic for elevated, solid for primary, outline for secondary, ghost for utility, soft/surface for content-heavy UIs |
+| `size`         | `'1' \| '2' \| '3' \| '4'`                                            | Button density: 1 (24px) for toolbars, 2 (32px) standard, 3 (40px) for important actions, 4 (48px) for hero sections. Supports responsive objects |
+| `color`        | `AccentColor`                                                         | Semantic color to communicate action intent. Use highContrast for maximum visibility on complex backgrounds |
+| `highContrast` | `boolean`                                                             | Maximum visibility mode, especially useful on complex or translucent backgrounds                |
+| `fullWidth`    | `boolean`                                                             | Makes button fill its container width. Useful for mobile layouts and form submissions          |
+| `flush`        | `boolean`                                                             | Removes padding for seamless text integration. Use with ghost variant to blend with text while staying interactive |
+| `radius`       | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'`                  | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped |
+| `material`     | `'solid' \| 'translucent'`                                            | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
+| `panelBackground` | `'solid' \| 'translucent'`                                         | Deprecated: Use material prop instead. Controls panel background appearance                     |
+| `loading`      | `boolean`                                                             | Shows spinner and disables button automatically. No need to set disabled manually               |
+| `disabled`     | `boolean`                                                             | Prevents interaction when action is unavailable, such as during form validation or when authentication is required |
+| `as`           | `ElementType`                                                         | Renders button as different HTML element while maintaining button styling. Useful for navigation links or routing integration |
+| `asChild`      | `boolean`                                                             | Merges button props with child element using Radix Slot pattern. Ideal for composition with routing libraries like Next.js Link |
+| `tooltip`      | `string \| ReactNode`                                                 | Content for tooltip. Appears on hover and focus for accessibility                               |
+| `tooltipSide`  | `'top' \| 'right' \| 'bottom' \| 'left'`                              | Position of tooltip relative to button                                                          |
+| `tooltipAlign` | `'start' \| 'center' \| 'end'`                                        | Alignment of tooltip                                                                            |
+
 ## Variants
 
 Use the `variant` prop to set button style.
@@ -310,27 +331,6 @@ Use standard HTML form attributes to integrate buttons with forms. The component
   Submit
 </Button>
 ```
-
-## Props
-
-| Prop           | Type                                                                  | Description                                                                                     |
-| -------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `variant`      | `'classic' \| 'solid' \| 'soft' \| 'surface' \| 'outline' \| 'ghost'` | Button style variant: classic for elevated, solid for primary, outline for secondary, ghost for utility, soft/surface for content-heavy UIs |
-| `size`         | `'1' \| '2' \| '3' \| '4'`                                            | Button density: 1 (24px) for toolbars, 2 (32px) standard, 3 (40px) for important actions, 4 (48px) for hero sections. Supports responsive objects |
-| `color`        | `AccentColor`                                                         | Semantic color to communicate action intent. Use highContrast for maximum visibility on complex backgrounds |
-| `highContrast` | `boolean`                                                             | Maximum visibility mode, especially useful on complex or translucent backgrounds                |
-| `fullWidth`    | `boolean`                                                             | Makes button fill its container width. Useful for mobile layouts and form submissions          |
-| `flush`        | `boolean`                                                             | Removes padding for seamless text integration. Use with ghost variant to blend with text while staying interactive |
-| `radius`       | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'`                  | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped |
-| `material`     | `'solid' \| 'translucent'`                                            | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
-| `panelBackground` | `'solid' \| 'translucent'`                                         | Deprecated: Use material prop instead. Controls panel background appearance                     |
-| `loading`      | `boolean`                                                             | Shows spinner and disables button automatically. No need to set disabled manually               |
-| `disabled`     | `boolean`                                                             | Prevents interaction when action is unavailable, such as during form validation or when authentication is required |
-| `as`           | `ElementType`                                                         | Renders button as different HTML element while maintaining button styling. Useful for navigation links or routing integration |
-| `asChild`      | `boolean`                                                             | Merges button props with child element using Radix Slot pattern. Ideal for composition with routing libraries like Next.js Link |
-| `tooltip`      | `string \| ReactNode`                                                 | Content for tooltip. Appears on hover and focus for accessibility                               |
-| `tooltipSide`  | `'top' \| 'right' \| 'bottom' \| 'left'`                              | Position of tooltip relative to button                                                          |
-| `tooltipAlign` | `'start' \| 'center' \| 'end'`                                        | Alignment of tooltip                                                                            |
 
 Button also supports customizable tooltip props for content, position, timing, and behavior. Additionally, all margin props (`m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`) are supported with responsive values.
 

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { render, RenderOptions } from '@testing-library/react';
+import { Theme } from '../src/components/theme';
 
 type ProvidersProps = { children: React.ReactNode };
 
 function Providers({ children }: ProvidersProps) {
-  // Add any library-wide providers if needed later
-  return <>{children}</>;
+  // Wrap all tests in Theme to provide context for components that need it
+  return <Theme>{children}</Theme>;
 }
 
 export function renderWithProviders(ui: React.ReactElement, options?: RenderOptions) {

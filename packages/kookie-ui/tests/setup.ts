@@ -7,6 +7,32 @@ afterEach(() => {
   cleanup();
 });
 
+// jsdom: add scrollIntoView polyfill used by cmdk
+if (typeof window !== 'undefined' && typeof Element !== 'undefined') {
+  Element.prototype.scrollIntoView = Element.prototype.scrollIntoView || function () {};
+}
+
+// jsdom: add ResizeObserver polyfill used by ScrollArea and Popper
+if (typeof window !== 'undefined' && !window.ResizeObserver) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).ResizeObserver = class ResizeObserver {
+    private callback: ResizeObserverCallback;
+
+    constructor(callback: ResizeObserverCallback) {
+      this.callback = callback;
+    }
+
+    observe(_target: Element) {
+      // Immediately call with empty entries for initial render
+      this.callback([], this);
+    }
+
+    unobserve(_target: Element) {}
+
+    disconnect() {}
+  };
+}
+
 // jsdom: add matchMedia polyfill used by Shell's breakpoint logic
 if (typeof window !== 'undefined' && !window.matchMedia) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
