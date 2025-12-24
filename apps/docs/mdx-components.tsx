@@ -29,8 +29,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     inlineCodeHighContrast: true,
   });
 
+  // Remove code/pre from base since we use rehype-pretty-code
+  const { code: _, pre: __, ...restBaseComponents } = baseComponents;
+
   return {
-    ...baseComponents,
+    ...restBaseComponents,
 
     // Override code handling for rehype-pretty-code integration
     code: ({ children, className, ...props }) => {
