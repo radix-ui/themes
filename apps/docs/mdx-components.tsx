@@ -29,6 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     inlineCodeHighContrast: true,
     // Don't wrap code blocks in CodeBlock - PreWrapper will do it
     codeBlockCollapsible: false,
+    spacing: 'spacious', // Use "spacious" for docs (default), or "compact" for tighter spacing
   });
 
   return {
