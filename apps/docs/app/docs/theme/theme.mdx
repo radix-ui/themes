@@ -1,323 +1,231 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Table, Box, Tooltip, Card, Button } from '@kushagradhawan/kookie-ui';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
-
-<Section size="2">
-
 # Theme
 
 Control your app's visual appearance with seven configuration options. Kookie UI Theme is a fork of [Radix Themes](https://www.radix-ui.com/themes), offering the same foundation with custom enhancements for theming and accessibility.
 
-This is an enhanced version of the Theme component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Theme's documentation](https://www.radix-ui.com/themes/docs/theme/overview). 
+This is an enhanced version of the Theme component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes Theme documentation](https://www.radix-ui.com/themes/docs/theme/overview).
 
-<Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/theme.tsx" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
-</Flex>
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/theme.tsx)
 
-</Section>
+## Installation
 
-<Section size="2">
+```bash
+npm install @kushagradhawan/kookie-ui
+```
 
 ## Usage
 
-<CodeBlock buttonsPosition="center">
+Wrap your application with the `Theme` component at the root level:
 
 ```tsx
 import { Theme } from '@kushagradhawan/kookie-ui';
+
+export default function App() {
+  return (
+    <Theme accentColor="blue" grayColor="gray">
+      {/* Your app */}
+    </Theme>
+  );
+}
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Props
 
-<Table.Root size="2" variant="ghost" layout="fixed">
-  <colgroup>
-    <col style={{ width: '30%' }} />
-    <col />
-  </colgroup>
-  <Table.Header>
-    <Table.Row>
-      <Table.ColumnHeaderCell weight="medium">Prop</Table.ColumnHeaderCell>
-      <Table.ColumnHeaderCell weight="medium">Type</Table.ColumnHeaderCell>
-    </Table.Row>
-  </Table.Header>
-  <Table.Body>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Color scheme; inherit follows system preference.">
-          <span style={{ display: 'inline-block' }}>`appearance`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`'light' | 'dark' | 'inherit'`</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Primary accent used for interactive components.">
-          <span style={{ display: 'inline-block' }}>`accentColor`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`AccentColor`</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Neutral gray scale for backgrounds and text.">
-          <span style={{ display: 'inline-block' }}>`grayColor`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`GrayColor`</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Background rendering: opaque or translucent.">
-          <span style={{ display: 'inline-block' }}>`material`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`'solid' | 'translucent'`</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Global corner radius scale.">
-          <span style={{ display: 'inline-block' }}>`radius`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`'none' | 'small' | 'medium' | 'large' | 'full'`</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Global size scale for UI density.">
-          <span style={{ display: 'inline-block' }}>`scaling`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`'90%' | '95%' | '100%' | '105%' | '110%'`</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.RowHeaderCell>
-        <Tooltip content="Global font family.">
-          <span style={{ display: 'inline-block' }}>`fontFamily`</span>
-        </Tooltip>
-      </Table.RowHeaderCell>
-      <Table.Cell>`'sans' | 'mono' | 'serif'`</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table.Root>
-
-</Section>
-
-<Section size="2">
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `appearance` | `'light' \| 'dark' \| 'inherit'` | Color scheme; inherit follows system preference. Default: `'inherit'` |
+| `accentColor` | `AccentColor` | Primary accent used for interactive components. Default: `'blue'` |
+| `grayColor` | `GrayColor` | Neutral gray scale for backgrounds and text. Default: `'slate'` |
+| `material` | `'solid' \| 'translucent'` | Background rendering: opaque or translucent. Default: `'translucent'` |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | Global corner radius scale. Default: `'medium'` |
+| `scaling` | `'90%' \| '95%' \| '100%' \| '105%' \| '110%'` | Global size scale for UI density. Default: `'100%'` |
+| `fontFamily` | `'sans' \| 'mono' \| 'serif'` | Global font family. Default: `'sans'` |
+| `panelBackground` | `'solid' \| 'translucent'` | Deprecated: Use `material` prop instead. Controls panel background appearance |
+| `hasBackground` | `boolean` | Whether to apply background color to the Theme element. Default: `true` for root Theme |
+| `asChild` | `boolean` | Merges Theme props with child element using Radix Slot pattern |
 
 ## Appearance
 
 Set `appearance` to control light, dark, or system preference mode.
 
-<CodeBlock>
+### Light
+
+Force light mode regardless of system preference.
 
 ```tsx
-// Light mode
-<Theme appearance="light">
-  <YourApp />
-</Theme>
+<Theme appearance="light"><YourApp /></Theme>
 ```
 
-</CodeBlock>
+### Dark
 
-<CodeBlock>
+Force dark mode regardless of system preference.
 
 ```tsx
-// Dark mode
-<Theme appearance="dark">
-  <YourApp />
-</Theme>
+<Theme appearance="dark"><YourApp /></Theme>
 ```
 
-</CodeBlock>
+### Inherit
 
-<CodeBlock>
+Follow system preference (default). Automatically switches between light and dark based on user's OS settings.
 
 ```tsx
-// System preference (default)
-<Theme appearance="inherit">
-  <YourApp />
-</Theme>
+<Theme appearance="inherit"><YourApp /></Theme>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Accent Color
 
-Use `accentColor` to set the primary color for interactive elements.
+Use `accentColor` to set the primary color for interactive elements like buttons, links, and focus indicators.
 
 Available colors: `gray`, `gold`, `bronze`, `brown`, `yellow`, `amber`, `orange`, `tomato`, `red`, `ruby`, `crimson`, `pink`, `plum`, `purple`, `violet`, `iris`, `indigo`, `blue`, `cyan`, `teal`, `jade`, `green`, `grass`, `lime`, `mint`, `sky`.
 
-<CodeBlock>
-
 ```tsx
-<Theme accentColor="blue">
-  <YourApp />
-</Theme>
+<Theme accentColor="blue"><YourApp /></Theme>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
+```tsx
+<Theme accentColor="crimson"><YourApp /></Theme>
+```
 
 ## Gray Color
 
-Use `grayColor` to set the neutral gray scale for backgrounds and text.
+Use `grayColor` to set the neutral gray scale for backgrounds and text. The gray color affects the overall tone and contrast of your interface.
 
 Available grays: `auto`, `gray`, `mauve`, `slate`, `sage`, `olive`, `sand`.
 
-<CodeBlock>
+When set to `auto`, the gray color automatically matches your accent color for a cohesive look.
 
 ```tsx
-<Theme grayColor="slate">
-  <YourApp />
-</Theme>
+<Theme grayColor="slate"><YourApp /></Theme>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
+```tsx
+<Theme grayColor="auto" accentColor="blue"><YourApp /></Theme>
+```
 
 ## Material
 
-Set `material` to control panel transparency for depth and visual separation.
+Set `material` to control panel transparency for depth and visual separation. Use `solid` for opaque backgrounds or `translucent` for depth over images or dynamic backgrounds.
 
-<CodeBlock>
+### Solid
 
-```tsx
-// Solid backgrounds
-<Theme material="solid">
-  <YourApp />
-</Theme>
-```
-
-</CodeBlock>
-
-<CodeBlock>
+Opaque backgrounds for maximum contrast and clarity.
 
 ```tsx
-// Translucent backgrounds (default)
-<Theme material="translucent">
-  <YourApp />
-</Theme>
+<Theme material="solid"><YourApp /></Theme>
 ```
 
-</CodeBlock>
+### Translucent
 
-</Section>
+Translucent backgrounds with blur effects for depth and separation (default).
 
-<Section size="2">
+```tsx
+<Theme material="translucent"><YourApp /></Theme>
+```
 
 ## Radius
 
-Set `radius` to control the global corner radius scale for all components.
+Set `radius` to control the global corner radius scale for all components. This affects buttons, cards, inputs, and other rounded elements.
 
 Available values: `none`, `small`, `medium` (default), `large`, `full`.
 
-<CodeBlock>
-
 ```tsx
-<Theme radius="medium">
-  <YourApp />
-</Theme>
+<Theme radius="medium"><YourApp /></Theme>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
+```tsx
+<Theme radius="large"><YourApp /></Theme>
+```
 
 ## Scaling
 
-Set `scaling` to control the global size scale for UI density.
+Set `scaling` to control the global size scale for UI density. Use smaller values for compact interfaces or larger values for improved readability and touch targets.
 
 Available values: `90%`, `95%`, `100%` (default), `105%`, `110%`.
 
-<CodeBlock>
-
 ```tsx
-<Theme scaling="100%">
-  <YourApp />
-</Theme>
+<Theme scaling="100%"><YourApp /></Theme>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
+```tsx
+<Theme scaling="110%"><YourApp /></Theme>
+```
 
 ## Font Family
 
-Set `fontFamily` to control the typography system for your app.
+Set `fontFamily` to control the typography system for your app. Each option uses carefully selected font stacks with proper fallbacks.
 
 Available values: `sans` (default), `mono`, `serif`.
 
-<CodeBlock>
-
 ```tsx
-<Theme fontFamily="sans">
-  <YourApp />
-</Theme>
+<Theme fontFamily="sans"><YourApp /></Theme>
 ```
 
-</CodeBlock>
+```tsx
+<Theme fontFamily="mono"><YourApp /></Theme>
+```
 
-</Section>
+## Nested Themes
 
-<Section size="2">
+You can nest `Theme` components to override specific settings in parts of your application:
 
-## Enhancements
-
-Kookie UI extends Radix Themes with practical improvements:
-
-- **Material**: Use `material` instead of `panelBackground` for intuitive panel transparency control. Existing `panelBackground` usage works with migration warnings. All panels automatically respect your material setting.
-
-- **Effects**: Extended blur tokens provide 12-step blur scale for precise backdrop effects. Granular opacity offers 9-step opacity scale for fine-tuned transparency. Specialized 3D button effects create realistic depth and elevation.
-
-- **Typography**: Pre-configured Inter and JetBrains Mono fonts with proper fallbacks prevent browser font weight synthesis issues. Graceful degradation falls back to system fonts if custom fonts fail.
-
-</Section>
-
-
-
-<Section size="2">
+```tsx
+<Theme accentColor="blue" grayColor="slate">
+  <MainContent />
+  <Theme accentColor="crimson" radius="large">
+    <SpecialSection />
+  </Theme>
+</Theme>
+```
 
 ## Tokens
 
 Use CSS custom properties to access theme values in your styles:
 
-<CodeBlock>
-
 ```css
 /* Color tokens */
 var(--accent-9)           /* Primary accent color */
 var(--gray-11)            /* High contrast text */
+var(--gray-1)              /* Subtle background */
 ```
-
-</CodeBlock>
-
-<CodeBlock>
 
 ```css
 /* Layout tokens */
-var(--space-4)            /* Standard spacing */
-var(--radius-3)           /* Component border radius */
+var(--space-4)             /* Standard spacing */
+var(--radius-3)            /* Component border radius */
+var(--font-size-3)         /* Base font size */
 ```
 
-</CodeBlock>
+```css
+/* Material tokens */
+var(--blur-6)              /* Blur effect for translucent backgrounds */
+var(--opacity-6)            /* Opacity level */
+```
 
-</Section>
+## Enhancements
+
+Kookie UI extends Radix Themes with practical improvements:
+
+### Material Prop
+
+Use `material` instead of `panelBackground` for intuitive panel transparency control. Existing `panelBackground` usage works with migration warnings. All panels automatically respect your material setting.
+
+### Effects
+
+Extended blur tokens provide 12-step blur scale for precise backdrop effects. Granular opacity offers 9-step opacity scale for fine-tuned transparency. Specialized 3D button effects create realistic depth and elevation.
+
+### Typography
+
+Pre-configured Inter and JetBrains Mono fonts with proper fallbacks prevent browser font weight synthesis issues. Graceful degradation falls back to system fonts if custom fonts fail.
+
+## Changelog
+
+### Added
+
+- `material` prop as replacement for `panelBackground`
+- Extended blur token system (12 steps)
+- Granular opacity scale (9 steps)
+- Enhanced 3D button effects
+- Improved font fallback system
+
+### Deprecated
+
+- `panelBackground` prop in favor of `material` prop

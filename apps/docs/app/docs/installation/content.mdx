@@ -1,9 +1,6 @@
-import { Card, Flex, Text, Heading, Section, Link, Code, Callout, Badge, Separator, Image } from '@kushagradhawan/kookie-ui';
-import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+import { Callout } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { AlertSquareIcon } from '@hugeicons/core-free-icons';
-
-<Section size="2">
 
 # Installation
 
@@ -11,42 +8,65 @@ Kookie UI is an open-source React component library, forked from Radix Themes an
 
 <Callout.Root variant="soft" size="2" color="gray" mt="6" highContrast>
   <Callout.Icon>
-		<HugeiconsIcon icon={AlertSquareIcon} />
-	</Callout.Icon>
+    <HugeiconsIcon icon={AlertSquareIcon} />
+  </Callout.Icon>
   <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
 </Callout.Root>
 
-</Section>
-
-<Section size="2">
-
 ## Install
 
-Add Kookie User Interface to your project:
-
-<CodeBlock >
+Add Kookie UI to your project using your preferred package manager:
 
 ```bash
 npm install @kushagradhawan/kookie-ui
-# or
+```
+
+```bash
 pnpm add @kushagradhawan/kookie-ui
-# or
+```
+
+```bash
 yarn add @kushagradhawan/kookie-ui
 ```
 
-</CodeBlock>
+## Requirements
 
-</Section>
+Kookie UI works with React 16.8+ through React 19. TypeScript support is built-in. Node.js 16+ is required for development.
 
-<Section size="2">
+```json
+{
+  "peerDependencies": {
+    "react": "16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+    "react-dom": "16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
+  }
+}
+```
 
-## Next.js
+## CSS
 
-### App Router (Recommended)
+Import the complete stylesheet in your application entry point. The CSS import must come before any component imports.
 
-For Next.js 13+ with the App Router, import the CSS in your root layout:
+```tsx
+import '@kushagradhawan/kookie-ui/styles.css';
+```
 
-<CodeBlock file="app/layout.tsx">
+## Theme Provider
+
+Wrap your application with the `Theme` component to enable theming and design tokens. The Theme provider should be placed at the root of your application.
+
+```tsx
+import { Theme } from '@kushagradhawan/kookie-ui';
+
+<Theme accentColor="blue" grayColor="gray">
+  {/* Your app */}
+</Theme>
+```
+
+## Framework Setup
+
+### Next.js App Router
+
+For Next.js 13+ with the App Router, import the CSS in your root layout and wrap your app with the Theme provider:
 
 ```tsx
 import '@kushagradhawan/kookie-ui/styles.css';
@@ -60,22 +80,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="blue" grayColor="gray">
-          {children}
-        </Theme>
+        <Theme accentColor="blue" grayColor="gray">{children}</Theme>
       </body>
     </html>
   );
 }
 ```
 
-</CodeBlock>
-
-### Pages Router
+### Next.js Pages Router
 
 For Next.js with the Pages Router, import the CSS in your `_app.tsx`:
-
-<CodeBlock file="pages/_app.tsx">
 
 ```tsx
 import '@kushagradhawan/kookie-ui/styles.css';
@@ -91,17 +105,9 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
-## Vite + React
+### Vite + React
 
 For Vite projects, import the CSS in your main entry file:
-
-<CodeBlock file="main.tsx or index.tsx">
 
 ```tsx
 import React from 'react';
@@ -112,26 +118,14 @@ import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Theme accentColor="blue" grayColor="gray">
-      <App />
-    </Theme>
+    <Theme accentColor="blue" grayColor="gray"><App /></Theme>
   </React.StrictMode>
 );
 ```
 
-</CodeBlock>
+### Create React App
 
-</Section>
-
-
-
-<Section size="2">
-
-## Create React App
-
-For Create React App projects, import the CSS in your `index.tsx` or `App.tsx`:
-
-<CodeBlock file="src/index.tsx">
+For Create React App projects, import the CSS in your `index.tsx`:
 
 ```tsx
 import React from 'react';
@@ -146,26 +140,14 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Theme accentColor="blue" grayColor="gray">
-      <App />
-    </Theme>
+    <Theme accentColor="blue" grayColor="gray"><App /></Theme>
   </React.StrictMode>
 );
 ```
 
-</CodeBlock>
+### Remix
 
-</Section>
-
-
-
-<Section size="2">
-
-## Remix
-
-For Remix projects, import the CSS in your root component:
-
-<CodeBlock file="app/root.tsx">
+For Remix projects, import the CSS using the `links` export in your root component:
 
 ```tsx
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
@@ -185,9 +167,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Theme accentColor="blue" grayColor="gray">
-          <Outlet />
-        </Theme>
+        <Theme accentColor="blue" grayColor="gray"><Outlet /></Theme>
         <Scripts />
       </body>
     </html>
@@ -195,90 +175,27 @@ export default function App() {
 }
 ```
 
-</CodeBlock>
+### Gatsby
 
-</Section>
-
-
-
-<Section size="2">
-
-## Gatsby
-
-For Gatsby projects, create a `gatsby-browser.js` file, then wrap your app in the Theme provider:
-
-<CodeBlock file="gatsby-browser.js">
+For Gatsby projects, import the CSS in `gatsby-browser.js`, then wrap your app in the Theme provider:
 
 ```js
+// gatsby-browser.js
 import '@kushagradhawan/kookie-ui/styles.css';
 ```
 
-</CodeBlock>
-
-<CodeBlock file="src/pages/_app.tsx or gatsby-browser.js">
-
 ```tsx
+// gatsby-browser.js or src/pages/_app.tsx
 import { Theme } from '@kushagradhawan/kookie-ui';
 
 export const wrapRootElement = ({ element }) => (
-  <Theme accentColor="blue" grayColor="gray">
-    {element}
-  </Theme>
+  <Theme accentColor="blue" grayColor="gray">{element}</Theme>
 );
 ```
-
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
-## Requirements
-
-Kookie User Interface works with React 16.8+ through React 19. TypeScript support is built-in. Node.js 16+ required for development.
-
-<CodeBlock>
-
-```json
-{
-  "peerDependencies": {
-    "react": "16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
-    "react-dom": "16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
-  }
-}
-```
-
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
-## CSS
-
-Import the complete stylesheet:
-
-<CodeBlock buttonsPosition="center">
-
-```tsx
-import '@kushagradhawan/kookie-ui/styles.css';
-```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Usage
 
 Import components and start building:
-
-<CodeBlock>
 
 ```tsx
 import { Button, Flex, Text, Card, Heading } from '@kushagradhawan/kookie-ui';
@@ -288,56 +205,38 @@ export default function MyComponent() {
     <Card size="3" variant="soft">
       <Flex direction="column" gap="3" p="4">
         <Heading size="4">Welcome</Heading>
-        <Text size="3" color="gray">
-          Start building with Kookie User Interface components.
-        </Text>
-        <Button size="3" variant="solid">
-          Get Started
-        </Button>
+        <Text size="3" color="gray">Start building with Kookie UI components.</Text>
+        <Button size="3" variant="solid">Get Started</Button>
       </Flex>
     </Card>
   );
 }
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Troubleshooting
 
-### CSS
+### CSS Not Loading
 
 If styles aren't appearing, ensure the CSS import comes before any component imports:
 
-<CodeBlock>
-
 ```tsx
-// Correct
+// ✅ Correct
 import '@kushagradhawan/kookie-ui/styles.css';
 import { Button } from '@kushagradhawan/kookie-ui';
 
-// Incorrect  
+// ❌ Incorrect
 import { Button } from '@kushagradhawan/kookie-ui';
 import '@kushagradhawan/kookie-ui/styles.css';
 ```
 
-</CodeBlock>
-
-### TypeScript
+### TypeScript Errors
 
 Ensure you have the React types installed:
-
-<CodeBlock buttonsPosition="center">
 
 ```bash
 npm install --save-dev @types/react @types/react-dom
 ```
 
-</CodeBlock>
+### Theme Provider
 
-</Section>
+Make sure the `Theme` component wraps your entire application at the root level. Check that you're using the correct import path and that the component is rendered before any Kookie UI components.

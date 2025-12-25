@@ -1,47 +1,30 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Button } from '@kushagradhawan/kookie-ui';
-import { CodeBlock } from '@kushagradhawan/kookie-blocks';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
-
-<Section size="2">
-
 # Radius
 
-Border radius system with 5-step scale for consistent corner rounding. Kookie UI Radius is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better visual hierarchy. 
+Border radius system with 5-step scale for consistent corner rounding. The radius infrastructure (5-step scale, factor system) is from [Radix Themes](https://www.radix-ui.com/themes), but **Kookie UI uses custom radius values** that differ from Radix Themes.
 
-For complete radius documentation and advanced usage, visit the [Radix Themes Radius documentation](https://www.radix-ui.com/themes/docs/theme/radius). Note that Kookie UI's radius values may be enhanced and might not match exactly what's shown in the Radix documentation.
+For complete radius documentation and advanced usage, visit the [Radix Themes Radius documentation](https://www.radix-ui.com/themes/docs/theme/radius). Note that Kookie UI's radius values are customized and may not match Radix Themes exactly.
 
-<Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
-</Flex>
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css)
 
-</Section>
+## Installation
 
-<Section size="2">
+```bash
+npm install @kushagradhawan/kookie-ui
+```
 
 ## Usage
 
-Set `radius` prop to control border radius across all components. Use consistent radius values to create visual hierarchy and polish.
-
-<CodeBlock>
+Set `radius` prop on the Theme component to control border radius across all components. Use consistent radius values to create visual hierarchy and polish.
 
 ```tsx
-<Theme radius="medium">
-  <YourApp />
-</Theme>
+import { Theme } from '@kushagradhawan/kookie-ui';
+
+<Theme radius="medium"><YourApp /></Theme>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Tokens
 
-Radius tokens with their CSS values and usage:
-
-<CodeBlock>
+Radius tokens with their base CSS values:
 
 ```css
 /* Radius tokens (base values) */
@@ -61,165 +44,51 @@ var(--radius-11) /* 48px */
 var(--radius-12) /* 56px */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Radius Scale
 
 ### None
 
 No border radius for sharp, geometric interfaces.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Box 
-        width="100px" 
-        height="100px" 
-        style={{ 
-          backgroundColor: 'var(--color-panel-solid)', 
-          borderRadius: '0px',
-          border: '1px solid var(--gray-6)'
-        }}
-      />
-    </Flex>
-  }
->
-
 ```tsx
-<Theme radius="none">
-  <YourApp />
-</Theme>
+<Theme radius="none"><YourApp /></Theme>
 ```
-
-</CodeBlock>
 
 ### Small
 
 Subtle rounding with 0.75x radius factor.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Box 
-        width="100px" 
-        height="100px" 
-        style={{ 
-          backgroundColor: 'var(--color-panel-solid)', 
-          borderRadius: 'calc(var(--radius-3) * 0.75)',
-          border: '1px solid var(--gray-6)'
-        }}
-      />
-    </Flex>
-  }
->
-
 ```tsx
-<Theme radius="small">
-  <YourApp />
-</Theme>
+<Theme radius="small"><YourApp /></Theme>
 ```
-
-</CodeBlock>
 
 ### Medium
 
-Standard rounding with 1x radius factor.
-
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Box 
-        width="100px" 
-        height="100px" 
-        style={{ 
-          backgroundColor: 'var(--color-panel-solid)', 
-          borderRadius: 'var(--radius-3)',
-          border: '1px solid var(--gray-6)'
-        }}
-      />
-    </Flex>
-  }
->
+Standard rounding with 1x radius factor (default).
 
 ```tsx
-<Theme radius="medium">
-  <YourApp />
-</Theme>
+<Theme radius="medium"><YourApp /></Theme>
 ```
-
-</CodeBlock>
 
 ### Large
 
 Prominent rounding with 1.5x radius factor.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Box 
-        width="100px" 
-        height="100px" 
-        style={{ 
-          backgroundColor: 'var(--color-panel-solid)', 
-          borderRadius: 'calc(var(--radius-3) * 1.5)',
-          border: '1px solid var(--gray-6)'
-        }}
-      />
-    </Flex>
-  }
->
-
 ```tsx
-<Theme radius="large">
-  <YourApp />
-</Theme>
+<Theme radius="large"><YourApp /></Theme>
 ```
-
-</CodeBlock>
 
 ### Full
 
 Maximum rounding with 2x radius factor and pill-shaped elements.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center">
-      <Box 
-        width="100px" 
-        height="100px" 
-        style={{ 
-          backgroundColor: 'var(--color-panel-solid)', 
-          borderRadius: 'calc(var(--radius-3) * 2)',
-          border: '1px solid var(--gray-6)'
-        }}
-      />
-    </Flex>
-  }
->
-
 ```tsx
-<Theme radius="full">
-  <YourApp />
-</Theme>
+<Theme radius="full"><YourApp /></Theme>
 ```
-
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
 
 ## Radius Factor System
 
 Theme component uses radius factors that multiply base radius values:
-
-<CodeBlock>
 
 ```css
 /* Radius factor system */
@@ -230,31 +99,25 @@ Theme component uses radius factors that multiply base radius values:
 [data-radius='full']   { --radius-factor: 2.0; }   /* 2x multiplier */
 ```
 
-</CodeBlock>
-
-<CodeBlock>
-
 ```tsx
-/* Theme radius usage */
-<Theme radius="none" />    /* All radius values become 0px */
-<Theme radius="small" />   /* All radius values × 0.75 */
-<Theme radius="medium" />  /* All radius values × 1 (default) */
-<Theme radius="large" />   /* All radius values × 1.5 */
-<Theme radius="full" />    /* All radius values × 2 */
+<Theme radius="none" />    {/* All radius values become 0px */}
+<Theme radius="small" />   {/* All radius values × 0.75 */}
+<Theme radius="medium" />  {/* All radius values × 1 (default) */}
+<Theme radius="large" />   {/* All radius values × 1.5 */}
+<Theme radius="full" />    {/* All radius values × 2 */}
 ```
 
-</CodeBlock>
+## Component Overrides
 
-</Section>
+Individual components can override theme radius settings using their `radius` prop:
 
-<Section size="2">
+```tsx
+<Theme radius="medium">
+  <Button radius="large">Large radius button</Button>
+  <Card radius="small">Small radius card</Card>
+</Theme>
+```
 
-## Enhancements
+## Credits
 
-Kookie UI refines the Radix Themes radius system with more granular control and better visual hierarchy:
-
-- **Refined Values**: Smaller increments (2px, 4px, 6px, 8px, 12px) for more precise control. Better proportions where each step provides meaningful visual difference and consistent scaling for more predictable progression across the scale.
-
-- **Enhanced Usage**: Component-specific defaults where each component uses the most appropriate radius. Semantic naming with clear, descriptive radius names and better accessibility with radius values that work well with focus indicators.
-
-</Section>
+The radius infrastructure (5-step scale system and factor-based multiplier approach) is from [Radix Themes](https://www.radix-ui.com/themes) by [WorkOS](https://workos.com/). However, Kookie UI uses custom radius values that have been modified from the original Radix Themes values. The radius system structure and approach credit goes to Radix Themes, while the specific radius values are custom to Kookie UI.

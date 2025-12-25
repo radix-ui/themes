@@ -1,58 +1,80 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Button } from '@kushagradhawan/kookie-ui';
-import { CodeBlock } from '@kushagradhawan/kookie-blocks';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
-
-<Section size="2">
-
 # Colors
 
-Accessible color system with 12-step scales, automatic dark mode, and P3 gamut support. Kookie UI Colors are extracted from [Radix Colors](https://www.radix-ui.com/colors) with enhanced values and improved accessibility. 
+Accessible color system with 12-step scales, automatic dark mode, and P3 gamut support. **All credit for the color system goes to [Radix Colors](https://www.radix-ui.com/colors).** Kookie UI uses Radix Colors with minimal to no modifications. 
 
-For complete color palette and usage guidelines, visit the [Radix Colors](https://www.radix-ui.com/colors) documentation. Note that Kookie UI's color values may be enhanced and might not match exactly what's shown in the Radix documentation.
+The colors, scales, and design decisions are entirely from the Radix Colors project. For complete color palette, usage guidelines, and design rationale, visit the [Radix Colors documentation](https://www.radix-ui.com/colors). 
 
-<Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/tokens/colors" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
-</Flex>
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/tokens/colors)
 
-</Section>
+## Installation
 
-<Section size="2">
+```bash
+npm install @kushagradhawan/kookie-ui
+```
 
 ## Usage
 
-Colors are controlled through the Theme component's `accentColor` and `grayColor` props. All components automatically inherit these theme colors, but individual components can override with their own `color` prop. `grayColor` also accepts `'auto'`, which matches a neutral gray to the chosen accent.
-
-<CodeBlock>
+Colors are controlled through the Theme component's `accentColor` and `grayColor` props. All components automatically inherit these theme colors, but individual components can override with their own `color` prop.
 
 ```tsx
-<Theme accentColor="blue" grayColor="slate">
-  <YourApp />
-</Theme>
+import { Theme } from '@kushagradhawan/kookie-ui';
+
+<Theme accentColor="blue" grayColor="slate"><YourApp /></Theme>
 ```
 
-</CodeBlock>
-
-<CodeBlock>
+The `grayColor` prop also accepts `'auto'`, which automatically matches a neutral gray to the chosen accent color for a cohesive look.
 
 ```tsx
-<Theme accentColor="crimson" grayColor="auto">  /* auto picks a matching gray for crimson */
-  <YourApp />
-</Theme>
+<Theme accentColor="crimson" grayColor="auto"><YourApp /></Theme>
 ```
 
-</CodeBlock>
+## Accent Colors
 
-</Section>
+Set `accentColor` to choose from 25+ colors for primary interactive elements like buttons, links, and focus indicators.
 
+Available accent colors: `gray`, `gold`, `bronze`, `brown`, `yellow`, `amber`, `orange`, `tomato`, `red`, `ruby`, `crimson`, `pink`, `plum`, `purple`, `violet`, `iris`, `indigo`, `blue`, `cyan`, `teal`, `jade`, `green`, `grass`, `lime`, `mint`, `sky`.
 
-<Section size="2">
+```tsx
+<Theme accentColor="blue"><YourApp /></Theme>
+```
+
+```tsx
+<Theme accentColor="crimson"><YourApp /></Theme>
+```
+
+```tsx
+<Theme accentColor="green"><YourApp /></Theme>
+```
+
+## Gray Colors
+
+Set `grayColor` to select from 6 tinted gray options for text and backgrounds. Each gray has a subtle tint that pairs well with different accent colors.
+
+Available gray colors: `auto`, `gray`, `mauve`, `slate`, `sage`, `olive`, `sand`.
+
+- `auto` - Automatically matches a neutral gray to your accent color
+- `gray` - Pure neutral gray
+- `mauve` - Slightly purple-tinted gray
+- `slate` - Slightly blue-tinted gray (default)
+- `sage` - Slightly green-tinted gray
+- `olive` - Slightly yellow-tinted gray
+- `sand` - Slightly warm-tinted gray
+
+```tsx
+<Theme grayColor="slate"><YourApp /></Theme>
+```
+
+```tsx
+<Theme grayColor="mauve"><YourApp /></Theme>
+```
+
+```tsx
+<Theme grayColor="auto" accentColor="crimson"><YourApp /></Theme>
+```
 
 ## Component Overrides
 
-Individual components can override theme colors using their `color` prop.
-
-<CodeBlock>
+Individual components can override theme colors using their `color` prop. This is useful for creating visual hierarchy or emphasizing specific actions.
 
 ```tsx
 <Theme accentColor="blue">
@@ -60,76 +82,56 @@ Individual components can override theme colors using their `color` prop.
 </Theme>
 ```
 
-</CodeBlock>
-
-<CodeBlock>
-
 ```tsx
 <Theme accentColor="green">
   <Button color="blue">Different Color</Button>
 </Theme>
 ```
 
-</CodeBlock>
+## Color Scales
 
-</Section>
+Each color uses a 12-step scale from lightest to darkest, designed by Radix Colors. Steps 1-3 are for subtle backgrounds, steps 4-6 for borders and dividers, steps 7-9 for interactive states, and steps 10-12 for high-contrast text and important elements.
 
+Access color steps using CSS custom properties:
 
+```css
+/* Accent color steps */
+var(--accent-1)  /* Lightest background */
+var(--accent-6)  /* Mid-tone border */
+var(--accent-9)  /* Primary interactive color */
+var(--accent-12) /* Darkest, high contrast */
 
-<Section size="2">
-
-## Accent Colors
-
-Set `accentColor` to choose from 25+ colors for primary interactive elements.
-
-<CodeBlock>
-
-```tsx
-<Theme accentColor="blue">
-  <YourApp />
-</Theme>
+/* Gray color steps */
+var(--gray-1)    /* Lightest background */
+var(--gray-6)    /* Mid-tone border */
+var(--gray-9)    /* Standard text */
+var(--gray-12)   /* High contrast text */
 ```
 
-</CodeBlock>
+## Dark Mode
 
-<CodeBlock>
-
-```tsx
-<Theme accentColor="crimson">
-  <YourApp />
-</Theme>
-```
-
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
-## Gray Colors
-
-Set `grayColor` to select from 6 tinted gray options for text and backgrounds.
-
-<CodeBlock>
+All colors automatically adapt to dark mode when using the Theme component's `appearance` prop. Colors are carefully tuned to maintain proper contrast ratios in both light and dark themes.
 
 ```tsx
-<Theme grayColor="slate">
-  <YourApp />
-</Theme>
+<Theme appearance="dark" accentColor="blue"><YourApp /></Theme>
 ```
-
-</CodeBlock>
-
-<CodeBlock>
 
 ```tsx
-<Theme grayColor="mauve">
-  <YourApp />
-</Theme>
+<Theme appearance="inherit" accentColor="crimson"><YourApp /></Theme>
 ```
 
-</CodeBlock>
+## P3 Gamut Support
 
-</Section>
+Radix Colors support the P3 color gamut for displays that can show a wider range of colors. Colors automatically use P3 values when available, falling back to sRGB for compatibility.
+
+## Accessibility
+
+All color combinations meet WCAG AA contrast requirements, as designed by Radix Colors. Use `highContrast` prop on components for maximum visibility, especially on complex or translucent backgrounds.
+
+```tsx
+<Button color="crimson" highContrast>High Contrast</Button>
+```
+
+## Credits
+
+The entire color system is from [Radix Colors](https://www.radix-ui.com/colors) by [WorkOS](https://workos.com/). Kookie UI makes no significant changes to the color values, scales, or design decisions. All credit and design work belongs to the Radix Colors project.

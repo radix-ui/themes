@@ -1,54 +1,31 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Box, Heading, Table, Tooltip, Button } from '@kushagradhawan/kookie-ui';
-import { CodeBlock } from '@kushagradhawan/kookie-blocks';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
-
-<Section size="2">
-
 # Typography
 
-Typography system with 10-step scale (0-9), font weights, and formatting components. Kookie UI Typography is extracted from [Radix Themes](https://www.radix-ui.com/themes) with refined values for better readability. 
+Typography system with 10-step scale (0-9), font weights, and formatting components. The typography infrastructure (scale system, token structure) is from [Radix Themes](https://www.radix-ui.com/themes), but **Kookie UI uses custom typography values** that differ from Radix Themes.
 
-For complete typography documentation and advanced customization, visit the [Radix Themes Typography documentation](https://www.radix-ui.com/themes/docs/theme/typography). Note that Kookie UI's typography values may be enhanced and might not match exactly what's shown in the Radix documentation.
+For complete typography documentation and advanced customization, visit the [Radix Themes Typography documentation](https://www.radix-ui.com/themes/docs/theme/typography). Note that Kookie UI's typography values are customized and may not match Radix Themes exactly.
 
-<Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
-</Flex>
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css)
 
-</Section>
+## Installation
 
-<Section size="2">
+```bash
+npm install @kushagradhawan/kookie-ui
+```
 
 ## Usage
 
 Use Text and Heading components to render titles and body copy. These components share `size` and `weight` props for consistent typography.
 
-<CodeBlock>
-
 ```tsx
 import { Text, Heading } from '@kushagradhawan/kookie-ui';
-```
 
-</CodeBlock>
-
-<CodeBlock>
-
-```tsx
 <Heading size="4">Page Title</Heading>
 <Text size="3">Body text content</Text>
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Type Scale
 
-10-step size scale (0-9) with corresponding font size, line height, and letter spacing values.
-
-<CodeBlock>
+10-step size scale (0-9) with corresponding font size, line height, and letter spacing values:
 
 ```css
 /* Type scale tokens */
@@ -64,207 +41,91 @@ var(--font-size-8)  /* 35px - Hero text */
 var(--font-size-9)  /* 60px - Massive text */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Size Scale
 
 ### Size 0
 
 Extra small text for fine print and micro labels.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Text size="0" align="center">Extra small text for fine print</Text>
-    </Flex>
-  }
->
-
 ```tsx
 <Text size="0">Extra small text for fine print</Text>
 ```
-
-</CodeBlock>
 
 ### Size 1
 
 Small text for captions and labels.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Text size="1" align="center">Small text for captions</Text>
-    </Flex>
-  }
->
-
 ```tsx
 <Text size="1">Small text for captions</Text>
 ```
-
-</CodeBlock>
 
 ### Size 2
 
 Body text for secondary content.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Text size="2" align="center">Body text for secondary content</Text>
-    </Flex>
-  }
->
-
 ```tsx
 <Text size="2">Body text for secondary content</Text>
 ```
-
-</CodeBlock>
 
 ### Size 3
 
 Standard text for main content.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Text size="3" align="center">Standard text for main content</Text>
-    </Flex>
-  }
->
-
 ```tsx
 <Text size="3">Standard text for main content</Text>
 ```
-
-</CodeBlock>
 
 ### Size 4
 
 Large text for important content.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Text size="4" align="center">Large text for important content</Text>
-    </Flex>
-  }
->
-
 ```tsx
 <Text size="4">Large text for important content</Text>
 ```
-
-</CodeBlock>
 
 ### Size 5
 
 Heading text for section titles.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Heading size="5" align="center">Heading text for section titles</Heading>
-    </Flex>
-  }
->
-
 ```tsx
 <Heading size="5">Heading text for section titles</Heading>
 ```
-
-</CodeBlock>
 
 ### Size 6
 
 Large heading for page titles.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Heading size="6" align="center">Large heading for page titles</Heading>
-    </Flex>
-  }
->
-
 ```tsx
 <Heading size="6">Large heading for page titles</Heading>
 ```
-
-</CodeBlock>
 
 ### Size 7
 
 Display text for hero sections.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Heading size="7" align="center">Display text for hero sections</Heading>
-    </Flex>
-  }
->
-
 ```tsx
 <Heading size="7">Display text for hero sections</Heading>
 ```
-
-</CodeBlock>
 
 ### Size 8
 
 Hero text for main headlines.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Heading size="8" align="center">Hero text for main headlines</Heading>
-    </Flex>
-  }
->
-
 ```tsx
 <Heading size="8">Hero text for main headlines</Heading>
 ```
-
-</CodeBlock>
 
 ### Size 9
 
 Massive text for impact headlines.
 
-<CodeBlock
-  preview={
-    <Flex gap="2" align="center" justify="center">
-      <Heading size="9" align="center">Massive text for impact headlines</Heading>
-    </Flex>
-  }
->
-
 ```tsx
 <Heading size="9">Massive text for impact headlines</Heading>
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Font Weight
 
-Use `weight` prop to control text emphasis and hierarchy.
-
-<CodeBlock>
+Use `weight` prop to control text emphasis and hierarchy:
 
 ```tsx
 <Text weight="light">Light text</Text>
@@ -273,30 +134,18 @@ Use `weight` prop to control text emphasis and hierarchy.
 <Text weight="bold">Bold text</Text>
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
+Available weights: `thin`, `extralight`, `light`, `regular`, `medium`, `semibold`, `bold`, `extrabold`.
 
 ## Formatting Components
 
-Compose formatting components to add emphasis and structure.
-
-<CodeBlock>
+Compose formatting components to add emphasis and structure:
 
 ```tsx
 <Text>
-  The <Em>most</Em> important thing to remember is,{" "}
+  The <Em>most</Em> important thing to remember is,{' '}
   <Strong>stay positive</Strong>.
 </Text>
 ```
-
-</CodeBlock>
-
-<CodeBlock>
 
 ```tsx
 <Text>
@@ -304,21 +153,9 @@ Compose formatting components to add emphasis and structure.
 </Text>
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Font Family
 
-Default font stack for optimal readability and performance.
-
-Kookie preserves the **Radix typography tokens**. Components read from these tokens, and their shape matches the structure described in the Radix Themes documentation.
-
-<CodeBlock>
+Kookie UI preserves the Radix typography tokens. Components read from these tokens, and their shape matches the structure described in the Radix Themes documentation.
 
 ```css
 /* Radix typography tokens (used by components) */
@@ -330,80 +167,31 @@ var(--em-font-family)       /* Font stack for <Em> */
 var(--quote-font-family)    /* Font stack for <Quote> */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Font Customization
 
 Kookie UI makes font customization simple and flexible. Switch between font families instantly using theme props or customize with your own fonts.
 
-<CodeBlock>
+### Theme Font Family
 
 ```tsx
 /* Sans-serif fonts (default) */
-<Theme fontFamily="sans">
-  <Text>This uses Inter font</Text>
-</Theme>
+<Theme fontFamily="sans"><Text>This uses Inter font</Text></Theme>
 
 /* Monospace fonts */
-<Theme fontFamily="mono">
-  <Text>This uses JetBrains Mono font</Text>
-</Theme>
+<Theme fontFamily="mono"><Text>This uses JetBrains Mono font</Text></Theme>
 
 /* Serif fonts */
-<Theme fontFamily="serif">
-  <Text>This uses Playfair Display font</Text>
-</Theme>
+<Theme fontFamily="serif"><Text>This uses Playfair Display font</Text></Theme>
 ```
 
-</CodeBlock>
+### Custom Fonts
 
-</Section>
+Kookie UI uses two layers of font variables. Designers can stay at the Kookie layer, while developers who already know Radix can work directly with the Radix tokens. You can override either layer; the most common entry point is the Kookie design tokens.
 
-<Section size="2">
-
-## Custom Fonts
-
-Kookie UI uses **two layers of font variables**. Designers can stay at the Kookie layer, while developers who already know Radix can work directly with the Radix tokens. You can override either layer; the most common entry point is the Kookie design tokens.
-
-<Box>
-  <Table.Root my="6" size="2" variant="ghost" layout="fixed">
-    <colgroup>
-      <col style={{ width: '28%' }} />
-      <col style={{ width: '36%' }} />
-      <col />
-    </colgroup>
-    <Table.Header>
-      <Table.Row>
-        <Table.ColumnHeaderCell weight="medium">Layer</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Tokens</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Use when…</Table.ColumnHeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.RowHeaderCell>Radix typography</Table.RowHeaderCell>
-        <Table.Cell>
-          `--default-font-family`, `--heading-font-family`, `--code-font-family`, <br />
-          `--strong-font-family`, `--em-font-family`, `--quote-font-family`
-        </Table.Cell>
-        <Table.Cell>You want to follow the Radix Themes docs exactly or fine‑tune individual roles.</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>Kookie design tokens</Table.RowHeaderCell>
-        <Table.Cell>`--font-sans`, `--font-mono`, `--font-serif`</Table.Cell>
-        <Table.Cell>You want a single place to swap the main sans/mono/serif families for the whole theme.</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table.Root>
-</Box>
-
-<CodeBlock>
+| Layer | Tokens | Use when… |
+| ----- | ------ | --------- |
+| Radix typography | `--default-font-family`, `--heading-font-family`, `--code-font-family`, `--strong-font-family`, `--em-font-family`, `--quote-font-family` | You want to follow the Radix Themes docs exactly or fine‑tune individual roles. |
+| Kookie design tokens | `--font-sans`, `--font-mono`, `--font-serif` | You want a single place to swap the main sans/mono/serif families for the whole theme. |
 
 ```css
 /* Import your preferred fonts (example) */
@@ -424,106 +212,26 @@ Kookie UI uses **two layers of font variables**. Designers can stay at the Kooki
 }
 ```
 
-</CodeBlock>
-
-</Section>
-
-<Section size="2">
-
 ## Theme Override Variables
 
-These are the main **Kookie design tokens** you override to customize fonts globally. They are wired into the Radix typography tokens shown above, so changing them updates the fonts used by components.
+These are the main Kookie design tokens you override to customize fonts globally. They are wired into the Radix typography tokens shown above, so changing them updates the fonts used by components.
 
-<Box>
-  <Table.Root mt="6" size="2" variant="ghost" layout="fixed">
-    <colgroup>
-      <col style={{ width: '30%' }} />
-      <col />
-    </colgroup>
-    <Table.Header>
-      <Table.Row>
-        <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Default Value</Table.ColumnHeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Sans-serif font for fontFamily='sans'">
-            <span style={{ display: 'inline-block' }}>`--font-sans`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`var(--font-inter)`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Monospace font for fontFamily='mono'">
-            <span style={{ display: 'inline-block' }}>`--font-mono`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`var(--font-jetbrains-mono)`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>
-          <Tooltip content="Serif font for fontFamily='serif'">
-            <span style={{ display: 'inline-block' }}>`--font-serif`</span>
-          </Tooltip>
-        </Table.RowHeaderCell>
-        <Table.Cell>`var(--font-playfair-display)`</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table.Root>
-</Box>
-
-</Section>
-
-<Section size="2">
+| Variable | Default Value |
+| -------- | ------------- |
+| `--font-sans` | `var(--font-inter)` |
+| `--font-mono` | `var(--font-jetbrains-mono)` |
+| `--font-serif` | `var(--font-playfair-display)` |
 
 ## Base Font Stacks
 
 These are the actual font stacks used by the theme override variables. Override these only if you want to change Kookie's base fonts.
 
-<Box>
-  <Table.Root mt="6" size="2" variant="ghost" layout="fixed">
-    <colgroup>
-      <col style={{ width: '30%' }} />
-      <col />
-    </colgroup>
-    <Table.Header>
-      <Table.Row>
-        <Table.ColumnHeaderCell weight="medium">Variable</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell weight="medium">Font Stack</Table.ColumnHeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.RowHeaderCell>`--font-inter`</Table.RowHeaderCell>
-        <Table.Cell>`'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`--font-jetbrains-mono`</Table.RowHeaderCell>
-        <Table.Cell>`'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace`</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.RowHeaderCell>`--font-playfair-display`</Table.RowHeaderCell>
-        <Table.Cell>`'Playfair Display', 'Times New Roman', 'Times', 'Georgia', 'Cambria', serif`</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table.Root>
-</Box>
+| Variable | Font Stack |
+| -------- | ---------- |
+| `--font-inter` | `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif` |
+| `--font-jetbrains-mono` | `'JetBrains Mono', 'Fira Code', 'Consolas', 'Liberation Mono', 'Courier New', monospace` |
+| `--font-playfair-display` | `'Playfair Display', 'Times New Roman', 'Times', 'Georgia', 'Cambria', serif` |
 
-</Section>
+## Credits
 
-<Section size="2">
-
-## Enhancements
-
-Kookie UI refines the Radix Themes typography system with improved readability and better visual hierarchy:
-
-- **New Size 0**: Extra small text (10px) for fine print and micro labels. Better granularity for more precise control over text hierarchy and enhanced accessibility for compact interfaces.
-
-- **Enhanced Readability**: Optimized line heights for better spacing and improved reading experience. Refined letter spacing for tighter text flow and improved font weights for more distinct differences.
-
-- **Better Hierarchy**: Clearer size progression where each step provides meaningful visual difference. Consistent spacing for better vertical rhythm across components and enhanced contrast for improved accessibility.
-
-</Section>
+The typography infrastructure (10-step scale system and token structure) is from [Radix Themes](https://www.radix-ui.com/themes) by [WorkOS](https://workos.com/). However, Kookie UI uses custom typography values that have been modified from the original Radix Themes values. The typography system structure and approach credit goes to Radix Themes, while the specific typography values are custom to Kookie UI.

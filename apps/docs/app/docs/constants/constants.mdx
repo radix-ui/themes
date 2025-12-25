@@ -1,72 +1,87 @@
-import { Section, Badge, Text, Link, Callout, Separator, Flex, Image, Button } from '@kushagradhawan/kookie-ui';
+import { Callout } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { AlertSquareIcon, ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
-
-<Section size="2">
+import { AlertSquareIcon } from '@hugeicons/core-free-icons';
 
 # Constants
 
 Kookie UI's custom design constants provide consistent values for transitions, effects, and component behavior across your application. These constants are unique to Kookie UI and are not part of the Radix Themes system.
 
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css)
+
 <Callout.Root variant="soft" size="2" highContrast color="gray" mt="6">
   <Callout.Icon>
-		<HugeiconsIcon icon={AlertSquareIcon} />
-	</Callout.Icon>
+    <HugeiconsIcon icon={AlertSquareIcon} />
+  </Callout.Icon>
   <Callout.Text>Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. I recommend checking changelogs carefully before upgrading.</Callout.Text>
 </Callout.Root>
 
-<Flex direction="row" gap="2" mt="6" justify="end" align="start">
-  <Button size="2" variant="ghost" color="gray" as="a" href="https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/styles/tokens/base.css" target="_blank" rel="noopener noreferrer">View source <HugeiconsIcon icon={ArrowUpRight01Icon} /></Button>
-</Flex>
+## Installation
 
-</Section>
+```bash
+npm install @kushagradhawan/kookie-ui
+```
 
-<Section size="2">
+## Usage
+
+These constants are automatically available in your CSS when using Kookie UI. They respond to theme scaling and provide consistent values across all components. Use these constants in your custom components for consistency:
+
+```css
+.my-component {
+  backdrop-filter: blur(var(--backdrop-blur-panel));
+  background: rgba(255, 255, 255, var(--panel-opacity));
+  transition: var(--transition-button);
+  border-radius: var(--radius-3);
+  padding: var(--space-4);
+  box-shadow: var(--classic-inset-shadow-dark);
+}
+```
 
 ## Transitions
 
 Comprehensive transition system with spring-based easing and component-specific configurations:
 
-<CodeBlock>
+### Duration Tokens
 
 ```css
-/* Duration tokens */
 var(--duration-1)  /* 50ms - Micro interactions */
 var(--duration-2)  /* 75ms - Fast transitions */
 var(--duration-3)  /* 100ms - Standard transitions */
 var(--duration-4)  /* 150ms - Slower transitions */
 var(--duration-5)  /* 200ms - Slow animations */
+```
 
-/* Spring easing curves */
+### Spring Easing Curves
+
+```css
 var(--ease-spring-1)  /* cubic-bezier(0.25, 0.46, 0.45, 0.94) - Spring out back */
 var(--ease-spring-2)  /* cubic-bezier(0.68, -0.55, 0.265, 1.55) - Spring bounce */
 var(--ease-spring-3)  /* cubic-bezier(0.175, 0.885, 0.32, 1.275) - Spring elastic */
-
-/* Semantic motion tokens */
-var(--motion-duration-micro)     /* 75ms - Micro-interactions */
-var(--motion-duration-small)     /* 150ms - Small UI changes */
-var(--motion-duration-medium)    /* 250ms - Medium/large changes */
-var(--motion-duration-large)     /* 350ms - Large movements */
-
-/* Motion easing */
-var(--motion-ease-standard)      /* ease-in-out - Most UI changes */
-var(--motion-ease-smooth)        /* cubic-bezier(0.4, 0, 0.2, 1) - Material-like */
-var(--motion-ease-anticipate)    /* cubic-bezier(0.36, 0, 0.66, -0.56) */
-var(--motion-ease-follow)        /* cubic-bezier(0.34, 1.56, 0.64, 1) */
-
-/* Spring semantics */
-var(--motion-spring-snappy)      /* Spring out back */
-var(--motion-spring-bounce)      /* Spring bounce */
-var(--motion-spring-elastic)     /* Spring elastic */
 ```
 
-</CodeBlock>
+### Semantic Motion Tokens
+
+```css
+/* Motion duration */
+var(--motion-duration-micro)     /* 75ms - Micro-interactions */
+var(--motion-duration-small)      /* 150ms - Small UI changes */
+var(--motion-duration-medium)     /* 250ms - Medium/large changes */
+var(--motion-duration-large)      /* 350ms - Large movements */
+
+/* Motion easing */
+var(--motion-ease-standard)       /* ease-in-out - Most UI changes */
+var(--motion-ease-smooth)         /* cubic-bezier(0.4, 0, 0.2, 1) - Material-like */
+var(--motion-ease-anticipate)    /* cubic-bezier(0.36, 0, 0.66, -0.56) */
+var(--motion-ease-follow)         /* cubic-bezier(0.34, 1.56, 0.64, 1) */
+
+/* Spring semantics */
+var(--motion-spring-snappy)       /* Spring out back */
+var(--motion-spring-bounce)       /* Spring bounce */
+var(--motion-spring-elastic)      /* Spring elastic */
+```
 
 ### Component Transitions
 
 Pre-configured transitions for specific components:
-
-<CodeBlock>
 
 ```css
 /* Button transitions */
@@ -97,11 +112,7 @@ var(--transition-spring-gpu)
 var(--transition-spring-gpu-fast)
 ```
 
-</CodeBlock>
-
 ### Stagger & Animation
-
-<CodeBlock>
 
 ```css
 /* Stagger delays */
@@ -121,19 +132,9 @@ var(--spring-smooth-damping)        /* 30 */
 var(--spring-smooth-initial-velocity) /* 0 */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Visual Effects
 
 Backdrop blur and opacity constants for layered interfaces:
-
-<CodeBlock>
 
 ```css
 /* Backdrop blur constants */
@@ -157,19 +158,9 @@ var(--surface-opacity)           /* var(--opacity-7) - Surface backgrounds */
 var(--surface-opacity-percentage) /* calc(var(--surface-opacity) * 100%) */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## 3D Effects
 
 Classic variant styling with realistic depth and elevation:
-
-<CodeBlock>
 
 ```css
 /* Classic elevation and positioning */
@@ -191,7 +182,7 @@ var(--classic-border-width-thick)      /* 0.05em - Thick border width */
 var(--classic-word-spacing)            /* -0.1em - Word spacing for 3D effect */
 
 /* Division factors */
-var(--classic-elevation-factor-subtle) /* 3 - Subtle elevation factor */
+var(--classic-elevation-factor-subtle)  /* 3 - Subtle elevation factor */
 var(--classic-shadow-factor-light)     /* 1.5 - Light shadow factor */
 var(--classic-border-multiplier-double) /* 2 - Double border multiplier */
 var(--classic-shadow-medium-factor-third) /* 3 - Medium shadow factor */
@@ -201,19 +192,9 @@ var(--classic-inset-shadow-dark)
 /* Multi-layered inset shadow for form components */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Component Sizing
 
 Icon and trigger sizing constants for consistent component proportions:
-
-<CodeBlock>
 
 ```css
 /* Content icon sizes (buttons, menu items) */
@@ -243,19 +224,9 @@ var(--select-indicator-icon-size-3) /* calc(10px * var(--scaling)) */
 var(--select-item-indicator-width-factor) /* 1.2 */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Spacing & Layout
 
 Component gap and sizing constants for consistent spacing:
-
-<CodeBlock>
 
 ```css
 /* Component gap spacing */
@@ -283,19 +254,9 @@ var(--spacing-multiplier-large)  /* 1.25 */
 var(--padding-ratio-horizontal)  /* 1.5 */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Progress & Slider
 
 Animation and sizing constants for progress and slider components:
-
-<CodeBlock>
 
 ```css
 /* Progress animation timing */
@@ -343,19 +304,9 @@ var(--progress-slider-radius-3)  /* var(--radius-3) */
 var(--progress-slider-radius-4)  /* var(--radius-4) */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Focus & Accessibility
 
 Focus outline and state opacity constants:
-
-<CodeBlock>
 
 ```css
 /* Focus outline system */
@@ -375,19 +326,9 @@ var(--border-width-standard)      /* 1px */
 var(--separator-height-thin)      /* 1px */
 ```
 
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
 ## Positioning & Layout
 
 Positioning and layout constants:
-
-<CodeBlock>
 
 ```css
 /* Positioning constants */
@@ -402,32 +343,3 @@ var(--sheet-slide-distance)    /* 50% */
 /* Transition combinations */
 var(--transition-background-blur) /* background-color var(--duration-2) var(--ease-1) */
 ```
-
-</CodeBlock>
-
-</Section>
-
-
-
-<Section size="2">
-
-## Usage
-
-These constants are automatically available in your CSS when using Kookie UI. They respond to theme scaling and provide consistent values across all components. Use these constants in your custom components for consistency:
-
-<CodeBlock>
-
-```css
-.my-component {
-  backdrop-filter: blur(var(--backdrop-blur-panel));
-  background: rgba(255, 255, 255, var(--panel-opacity));
-  transition: var(--transition-button);
-  border-radius: var(--radius-3);
-  padding: var(--space-4);
-  box-shadow: var(--classic-inset-shadow-dark);
-}
-```
-
-</CodeBlock>
-
-</Section>

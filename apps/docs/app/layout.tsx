@@ -63,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="blue" grayColor="sand" material="solid" radius="medium" fontFamily="sans">
+        <Theme accentColor="blue" grayColor="auto" material="solid" radius="medium" fontFamily="sans">
           <AppShell>{children}</AppShell>
           <ThemePanel defaultOpen={false} />
         </Theme>
