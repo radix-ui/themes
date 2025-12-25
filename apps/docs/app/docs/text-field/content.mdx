@@ -1,0 +1,685 @@
+# TextField
+
+TextField is a text input component for collecting user input. Use it for forms, search, filtering, and inline editing. The component supports advanced features like error validation, slot-based composition for icons and labels, and scrubbing behavior for interactive numeric value adjustment.
+
+This is an enhanced version of the TextField component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes TextField documentation](https://www.radix-ui.com/themes/docs/components/text-field).
+
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/text-field.tsx)
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { TextField } from '@kushagradhawan/kookie-ui';
+
+export function MyComponent() {
+  return <TextField.Root placeholder="Enter text" />;
+}
+```
+
+## Anatomy
+
+TextField is a compound component with the following parts:
+
+```tsx
+<TextField.Root>
+  <TextField.Slot>{/* Left-side content (icons, labels, interactive scrubbers) */}</TextField.Slot>
+  <TextField.Slot side="right">{/* Right-side content (units, icons, actions) */}</TextField.Slot>
+</TextField.Root>
+```
+
+## Root Props
+
+The Root component is the input element that accepts user text input.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `size` | `'1' \| '2' \| '3'` | Input density: 1 (24px) for compact interfaces, 2 (32px) standard, 3 (40px) for mobile-friendly touch targets. Supports responsive objects |
+| `variant` | `'classic' \| 'surface' \| 'soft' \| 'ghost' \| 'outline'` | Input style variant: classic for elevated, surface for standard forms, soft for subtle integration, outline for defined boundaries, ghost for minimal inline editing |
+| `color` | `AccentColor` | Semantic color for focus state and validation feedback. Use for visual categorization or status communication |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped |
+| `material` | `'solid' \| 'translucent'` | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
+| `panelBackground` | `'solid' \| 'translucent'` | Deprecated: Use material prop instead. Controls panel background appearance |
+| `error` | `boolean` | Marks field as invalid. Use with errorMessage for accessibility |
+| `errorMessage` | `string` | Error message displayed below input. Automatically connected via ARIA attributes for screen readers |
+| `isInvalid` | `boolean` | Alternative to error prop for marking field as invalid |
+| `required` | `boolean` | Marks field as required for forms |
+| `type` | `'text' \| 'email' \| 'password' \| 'search' \| 'tel' \| 'url' \| 'number' \| 'date' \| 'time' \| 'datetime-local' \| 'month' \| 'week' \| 'hidden'` | HTML input type for different input modes and validation |
+| `placeholder` | `string` | Placeholder text shown when input is empty |
+| `disabled` | `boolean` | Prevents interaction when input is unavailable |
+| `readOnly` | `boolean` | Makes input non-editable while keeping it focusable and copyable |
+| `defaultValue` | `string \| number` | Initial uncontrolled value |
+| `value` | `string \| number` | Controlled value |
+| `onChange` | `(event: ChangeEvent) => void` | Callback fired when input value changes |
+| `aria-describedby` | `string` | ID of element describing the input |
+| `aria-labelledby` | `string` | ID of element labeling the input |
+
+## Slot Props
+
+Slots allow you to place content before or after the input. Use them for icons, labels, units, or interactive scrubbers.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `side` | `'left' \| 'right'` | Position of slot relative to input. Default: `'left'` |
+| `color` | `AccentColor` | Color for slot content |
+| `gap` | `Spacing` | Gap between slot items when multiple children present |
+| `px` | `Spacing` | Horizontal padding inside slot |
+| `pl` | `Spacing` | Left padding inside slot |
+| `pr` | `Spacing` | Right padding inside slot |
+| `scrub` | `boolean` | Enable interactive scrubbing for numeric value adjustment |
+| `scrubValue` | `number` | Current value (required for min/max clamping) |
+| `scrubStep` | `number` | Base value change per movement unit. Default: `1` |
+| `scrubSensitivity` | `number` | Pixels of movement per step - higher = less sensitive. Default: `1` |
+| `scrubMin` | `number` | Minimum allowed value |
+| `scrubMax` | `number` | Maximum allowed value |
+| `scrubShiftMultiplier` | `number` | Step multiplier when Shift is held. Default: `10` |
+| `scrubAltMultiplier` | `number` | Step multiplier when Alt/Option is held. Default: `0.1` |
+| `onScrub` | `(delta: number, isChanging: boolean) => void` | Callback fired during scrubbing with value delta. isChanging is true while dragging, false when released |
+
+## Variants
+
+Use the `variant` prop to set input style.
+
+### Classic
+
+Elevated style with subtle shadow for maximum visual prominence and important inputs.
+
+```tsx
+<TextField.Root variant="classic" placeholder="Enter text" />
+```
+
+### Surface
+
+Standard surface style for form inputs and general text entry.
+
+```tsx
+<TextField.Root variant="surface" placeholder="Enter text" />
+```
+
+### Soft
+
+Subtle background for secondary inputs and content-heavy interfaces.
+
+```tsx
+<TextField.Root variant="soft" placeholder="Enter text" />
+```
+
+### Outline
+
+Bordered style for defined boundaries and structured forms.
+
+```tsx
+<TextField.Root variant="outline" placeholder="Enter text" />
+```
+
+### Ghost
+
+Minimal style for inline editing and seamless integration with text content.
+
+```tsx
+<TextField.Root variant="ghost" placeholder="Enter text" />
+```
+
+## Sizes
+
+Set `size` for input density: `1` (24px), `2` (32px), `3` (40px). Use `3` for mobile touch targets. Supports responsive objects like `{ initial: '1', sm: '2', md: '3' }`.
+
+### Size 1
+
+For compact interfaces and dense data entry.
+
+```tsx
+<TextField.Root size="1" placeholder="Enter text" />
+```
+
+### Size 2
+
+For standard form contexts and general interfaces.
+
+```tsx
+<TextField.Root size="2" placeholder="Enter text" />
+```
+
+### Size 3
+
+For important inputs and mobile-friendly touch targets.
+
+```tsx
+<TextField.Root size="3" placeholder="Enter text" />
+```
+
+## Colors
+
+Use the `color` prop with semantic colors to communicate input purpose or status. The color affects the focus state and can be used for visual categorization.
+
+```tsx
+<TextField.Root size="2" color="blue" placeholder="Username" />
+<TextField.Root size="2" color="green" placeholder="Success" />
+<TextField.Root size="2" color="red" placeholder="Error" />
+```
+
+## Material
+
+Use the `material` prop to set input appearance. Choose `solid` for opaque backgrounds, or `translucent` for depth and separation over images or dynamic backgrounds.
+
+### Theme
+
+Inputs automatically inherit the theme's material setting.
+
+```tsx
+<Theme material="translucent">
+  <TextField.Root placeholder="Enter text" />
+</Theme>
+```
+
+### Custom
+
+Override the theme's material for specific effects.
+
+```tsx
+<Theme material="solid">
+  <TextField.Root material="translucent" placeholder="Enter text" />
+</Theme>
+```
+
+## States
+
+### Error
+
+Use `error` and `errorMessage` props to show validation errors. Error messages are automatically connected to the input via ARIA attributes.
+
+```tsx
+<TextField.Root
+  error
+  errorMessage="Username is required"
+  placeholder="Username"
+/>
+```
+
+### Disabled
+
+Set `disabled` to prevent interaction when input is unavailable.
+
+```tsx
+<TextField.Root disabled placeholder="Disabled input" />
+```
+
+### Read Only
+
+Use `readOnly` to make input non-editable while keeping it focusable and copyable.
+
+```tsx
+<TextField.Root readOnly value="Read-only value" />
+```
+
+## Slots
+
+### Icon Slots
+
+Place icons before or after the input for visual context and actions.
+
+```tsx
+import { Search, Filter } from 'lucide-react';
+
+<TextField.Root placeholder="Search">
+  <TextField.Slot>
+    <Search size={16} />
+  </TextField.Slot>
+  <TextField.Slot side="right">
+    <Filter size={16} />
+  </TextField.Slot>
+</TextField.Root>
+```
+
+### Label Slots
+
+Use slots for inline labels or units, especially in design tools and property panels.
+
+```tsx
+import { Text } from '@kushagradhawan/kookie-ui';
+
+<TextField.Root type="number" value="100">
+  <TextField.Slot>
+    <Text size="2" weight="medium">Width</Text>
+  </TextField.Slot>
+  <TextField.Slot side="right">
+    <Text size="1" color="gray">px</Text>
+  </TextField.Slot>
+</TextField.Root>
+```
+
+### Scrubbing Slots
+
+Enable interactive value adjustment by dragging on slot content. Perfect for numeric inputs in design tools, property panels, and parameter controls.
+
+```tsx
+import { Text } from '@kushagradhawan/kookie-ui';
+
+function NumericInput() {
+  const [value, setValue] = React.useState(100);
+
+  return (
+    <TextField.Root
+      type="number"
+      value={value}
+      onChange={(e) => setValue(Number(e.target.value) || 0)}
+    >
+      <TextField.Slot
+        scrub
+        scrubValue={value}
+        scrubMin={0}
+        scrubMax={1000}
+        scrubStep={1}
+        scrubSensitivity={2}
+        onScrub={(delta) => setValue((prev) => prev + delta)}
+      >
+        <Text size="2" weight="medium">Width</Text>
+      </TextField.Slot>
+      <TextField.Slot side="right">
+        <Text size="1" color="gray">px</Text>
+      </TextField.Slot>
+    </TextField.Root>
+  );
+}
+```
+
+## Scrubbing
+
+Scrubbing allows users to adjust numeric values by dragging horizontally on a slot. This is a powerful interaction pattern for design tools, property panels, and any interface requiring quick numeric adjustments.
+
+### Basic Scrubbing
+
+Enable scrubbing on a slot with the `scrub` prop and handle value changes with `onScrub`.
+
+```tsx
+import { Text } from '@kushagradhawan/kookie-ui';
+
+function ScrubbableInput() {
+  const [value, setValue] = React.useState(100);
+
+  return (
+    <TextField.Root type="number" value={value}>
+      <TextField.Slot
+        scrub
+        scrubValue={value}
+        onScrub={(delta) => setValue((prev) => prev + delta)}
+      >
+        <Text size="2" weight="medium">Opacity</Text>
+      </TextField.Slot>
+      <TextField.Slot side="right">
+        <Text size="1" color="gray">%</Text>
+      </TextField.Slot>
+    </TextField.Root>
+  );
+}
+```
+
+### Min/Max Constraints
+
+Set boundaries on scrubbing values with `scrubMin` and `scrubMax`. The component clamps the delta internally, so just add it directly to your state.
+
+```tsx
+// ✅ Correct - delta is already clamped
+<TextField.Slot
+  scrub
+  scrubValue={value}
+  scrubMin={0}
+  scrubMax={100}
+  onScrub={(delta) => setValue((prev) => prev + delta)}
+>
+  <Text size="2" weight="medium">Volume</Text>
+</TextField.Slot>
+
+// ❌ Wrong - manual clamping causes stuck values
+<TextField.Slot
+  onScrub={(delta) => setValue((prev) => Math.max(0, Math.min(100, prev + delta)))}
+>
+```
+
+### Custom Sensitivity
+
+Control how sensitive scrubbing is with `scrubSensitivity`. Higher values require more mouse movement per step.
+
+```tsx
+<TextField.Slot
+  scrub
+  scrubValue={value}
+  scrubStep={1}
+  scrubSensitivity={5}
+  onScrub={(delta) => setValue((prev) => prev + delta)}
+>
+  <Text size="2" weight="medium">Fine Control</Text>
+</TextField.Slot>
+```
+
+### Modifier Keys
+
+Use modifier keys for different adjustment speeds:
+- **Shift**: Multiply step by 10 (default, customizable with `scrubShiftMultiplier`)
+- **Alt/Option**: Multiply step by 0.1 for fine adjustments (default, customizable with `scrubAltMultiplier`)
+
+```tsx
+<TextField.Slot
+  scrub
+  scrubValue={value}
+  scrubStep={1}
+  scrubShiftMultiplier={10}
+  scrubAltMultiplier={0.1}
+  onScrub={(delta) => setValue((prev) => prev + delta)}
+>
+  <Text size="2" weight="medium">Adjustable</Text>
+</TextField.Slot>
+```
+
+### Scrubbing Behavior
+
+During scrubbing:
+1. **Pointer Lock**: The cursor is hidden and movement is infinite (won't hit screen edges)
+2. **Virtual Cursor**: A custom cursor appears and wraps around viewport edges
+3. **Delta Updates**: `onScrub` receives the change amount (delta), not the absolute value
+4. **State Tracking**: `isChanging` parameter is `true` while dragging, `false` when released
+
+```tsx
+<TextField.Slot
+  scrub
+  scrubValue={value}
+  scrubMin={0}
+  scrubMax={100}
+  onScrub={(delta, isChanging) => {
+    setValue((prev) => prev + delta);
+    
+    if (!isChanging) {
+      // User released mouse - save to history, database, etc.
+      console.log('Scrubbing complete');
+    }
+  }}
+>
+  <Text size="2" weight="medium">Width</Text>
+</TextField.Slot>
+```
+
+## Examples
+
+### Search Input
+
+Combine icons and placeholder for clear search interfaces.
+
+```tsx
+import { Search } from 'lucide-react';
+
+<TextField.Root size="2" placeholder="Search documents">
+  <TextField.Slot>
+    <Search size={16} />
+  </TextField.Slot>
+</TextField.Root>
+```
+
+### Email Input
+
+Use appropriate input type for better mobile keyboard and validation.
+
+```tsx
+import { Mail } from 'lucide-react';
+
+<TextField.Root size="2" type="email" placeholder="Email address">
+  <TextField.Slot>
+    <Mail size={16} />
+  </TextField.Slot>
+</TextField.Root>
+```
+
+### Password Input
+
+Combine password type with toggle visibility action.
+
+```tsx
+import { Lock, Eye, EyeOff } from 'lucide-react';
+
+function PasswordInput() {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  return (
+    <TextField.Root
+      size="2"
+      type={showPassword ? 'text' : 'password'}
+      placeholder="Password"
+    >
+      <TextField.Slot>
+        <Lock size={16} />
+      </TextField.Slot>
+      <TextField.Slot side="right">
+        <button onClick={() => setShowPassword(!showPassword)}>
+          {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+        </button>
+      </TextField.Slot>
+    </TextField.Root>
+  );
+}
+```
+
+### Numeric Input with Units
+
+Display units and enable scrubbing for quick adjustments.
+
+```tsx
+import { Text } from '@kushagradhawan/kookie-ui';
+
+function DimensionInput() {
+  const [width, setWidth] = React.useState(1920);
+
+  return (
+    <TextField.Root
+      size="2"
+      type="number"
+      value={width}
+      onChange={(e) => setWidth(Number(e.target.value) || 0)}
+    >
+      <TextField.Slot
+        scrub
+        scrubValue={width}
+        scrubMin={1}
+        scrubMax={7680}
+        onScrub={(delta) => setWidth((prev) => prev + delta)}
+      >
+        <Text size="2" weight="medium">Width</Text>
+      </TextField.Slot>
+      <TextField.Slot side="right">
+        <Text size="1" color="gray">px</Text>
+      </TextField.Slot>
+    </TextField.Root>
+  );
+}
+```
+
+### Form with Validation
+
+Show validation errors with error messages.
+
+```tsx
+import { Text } from '@kushagradhawan/kookie-ui';
+
+function SignupForm() {
+  const [email, setEmail] = React.useState('');
+  const [error, setError] = React.useState('');
+
+  const handleBlur = () => {
+    if (!email.includes('@')) {
+      setError('Please enter a valid email address');
+    } else {
+      setError('');
+    }
+  };
+
+  return (
+    <TextField.Root
+      size="2"
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      onBlur={handleBlur}
+      error={!!error}
+      errorMessage={error}
+      placeholder="Email address"
+    />
+  );
+}
+```
+
+### Property Panel
+
+Design tool-style property inputs with labels and scrubbing.
+
+```tsx
+import { Text } from '@kushagradhawan/kookie-ui';
+
+function PropertyPanel() {
+  const [x, setX] = React.useState(0);
+  const [y, setY] = React.useState(0);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <TextField.Root
+        size="1"
+        type="number"
+        value={x}
+        onChange={(e) => setX(Number(e.target.value) || 0)}
+      >
+        <TextField.Slot
+          scrub
+          scrubValue={x}
+          scrubMin={-1000}
+          scrubMax={1000}
+          onScrub={(delta) => setX((prev) => prev + delta)}
+        >
+          <Text size="1" weight="bold" style={{ width: '10px' }}>X</Text>
+        </TextField.Slot>
+      </TextField.Root>
+
+      <TextField.Root
+        size="1"
+        type="number"
+        value={y}
+        onChange={(e) => setY(Number(e.target.value) || 0)}
+      >
+        <TextField.Slot
+          scrub
+          scrubValue={y}
+          scrubMin={-1000}
+          scrubMax={1000}
+          onScrub={(delta) => setY((prev) => prev + delta)}
+        >
+          <Text size="1" weight="bold" style={{ width: '10px' }}>Y</Text>
+        </TextField.Slot>
+      </TextField.Root>
+    </div>
+  );
+}
+```
+
+## Responsive
+
+Use responsive objects with the `size` prop to adapt input sizing across different breakpoints. The component uses a mobile-first approach.
+
+```tsx
+<TextField.Root
+  size={{ initial: '1', sm: '2', md: '3' }}
+  placeholder="Responsive input"
+/>
+```
+
+### Breakpoints
+
+| Breakpoint | Value  | Description                |
+| ---------- | ------ | -------------------------- |
+| `initial`  | -      | Base styles (mobile-first) |
+| `xs`       | 520px  | Extra small screens        |
+| `sm`       | 768px  | Small screens (tablets)    |
+| `md`       | 1024px | Medium screens (laptops)   |
+| `lg`       | 1280px | Large screens (desktops)   |
+| `xl`       | 1640px | Extra large screens        |
+
+## Accessibility
+
+TextField provides comprehensive accessibility through ARIA attributes and semantic HTML.
+
+### Keyboard Navigation
+
+- **Tab** - Move focus to/from input
+- **Enter** - Submit form (if inside form)
+- **Escape** - Clear focus (browser default)
+- **Arrow Keys** - Navigate cursor within text
+- **Shift + Arrow Keys** - Select text
+
+### ARIA Attributes
+
+- `aria-invalid="true"` - Automatically set when error or isInvalid is true
+- `aria-describedby` - Links to error message for screen reader announcements
+- `aria-labelledby` - Links to external label element
+- `role="alert"` - Error messages are announced immediately
+- `aria-live="polite"` - Error message updates are announced
+
+### Screen Readers
+
+- Error messages are automatically associated with the input
+- Required fields can be marked with `required` prop
+- Placeholder text provides hints without replacing labels
+- Input types provide semantic meaning (email, tel, url, etc.)
+
+### Scrubbing Accessibility
+
+- Scrubbing only activates on pointer down, preserving keyboard access
+- Interactive elements (buttons, links) inside slots are not affected
+- Pointer lock provides infinite movement without hitting screen edges
+- Visual cursor feedback during scrubbing operation
+
+### Best Practices
+
+- Always provide a label (use `aria-labelledby` if label is external)
+- Use `errorMessage` instead of just `error` for clear feedback
+- Provide placeholder as hints, not as replacement for labels
+- Use appropriate input types for better mobile keyboards
+- Mark required fields with `required` prop
+- Ensure sufficient color contrast for all states
+
+## Changelog
+
+### Added
+
+- **Scrubbing behavior** for TextField.Slot with pointer lock and virtual cursor
+- **Error validation system** with `error`, `errorMessage`, and `isInvalid` props
+- **Automatic ARIA attributes** for error messages and validation states
+- **Material prop** for solid/translucent theme contexts
+- **Slot composition system** for prefix/suffix content
+- **Scrubbable numeric inputs** with min/max constraints, sensitivity control, and modifier keys
+- **Multiple slot support** for complex input layouts
+- **Responsive size support** with breakpoint objects
+- **Pointer lock** for infinite scrubbing without hitting screen edges
+- **Virtual cursor** with viewport wrap-around during scrubbing
+- **Delta-based onScrub callback** with isChanging state tracking
+
+### Changed
+
+- Enhanced focus states with better contrast
+- Improved error state styling with clearer visual feedback
+- Better slot positioning and alignment for icons and labels
+- Scrubbing uses movementX for smooth sub-pixel precision
+
+### Deprecated
+
+- `panelBackground` prop in favor of `material` prop
+
+### Fixed
+
+- Slot pointer events correctly handle interactive elements
+- Error messages properly linked via ARIA for screen readers
+- Focus management when clicking slots vs input
+- Cursor positioning when clicking left vs right slots
+- Min/max clamping in scrubbing with proper value tracking
+- Modifier key detection (Shift, Alt) during scrubbing
+- Virtual cursor visibility and positioning during pointer lock
+

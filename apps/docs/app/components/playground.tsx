@@ -56,7 +56,7 @@ export default function Playground({ component, code, items }: PlaygroundProps) 
   };
 
   return (
-    <Flex direction={{ initial: 'column', md: 'row' }} gap="2" align="center">
+    <Flex direction={{ initial: 'column', md: 'column' }} gap="2" align="center">
       {/* Left side - Preview area */}
       <Box position="relative" className="playground-container" style={{ width: '100%', height: '320px' }}>
         <Card size="1" variant="soft" style={{ width: '100%', height: '100%' }}>

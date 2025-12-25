@@ -56,6 +56,12 @@ export const navigationGroups: NavigationGroup[] = [
         icon: LayoutIcon,
         badge: { content: 'Alpha', highContrast: true, size: '1' },
       },
+      {
+        href: '/docs/text-field',
+        title: 'TextField',
+        icon: Grid02Icon,
+        badge: { content: 'Alpha', highContrast: true, size: '1' },
+      },
     ],
   },
 ];

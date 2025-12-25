@@ -6,65 +6,8 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { DarkModeToggle } from './dark-mode';
 import { HugeiconsIcon } from '@hugeicons/react';
-import {
-  Download01Icon,
-  LayoutBottomIcon,
-  CodeIcon,
-  Settings01Icon,
-  ColorsIcon,
-  Grid02Icon,
-  Layers01Icon,
-  SwatchIcon,
-  JoinRoundIcon,
-  TextSquareIcon,
-  Github01Icon,
-  Menu01Icon,
-  LayoutIcon,
-  TextIcon,
-} from '@hugeicons/core-free-icons';
-
-// Define the navigation structure with groups
-const navigationGroups = [
-  {
-    label: 'Get Started',
-    items: [{ href: '/docs/installation', title: 'Installation', icon: Download01Icon, badge: undefined }],
-  },
-  {
-    label: 'Theme',
-    items: [
-      { href: '/docs/theme', title: 'Theme', icon: Settings01Icon, badge: undefined },
-      { href: '/docs/colors', title: 'Colors', icon: ColorsIcon, badge: undefined },
-      { href: '/docs/constants', title: 'Constants', icon: Grid02Icon, badge: { content: 'Alpha', highContrast: true, size: '1' as const } },
-      { href: '/docs/shadows', title: 'Shadows', icon: Layers01Icon, badge: undefined },
-      { href: '/docs/material', title: 'Material', icon: SwatchIcon, badge: { content: 'Alpha', highContrast: true, size: '1' as const } },
-      { href: '/docs/radius', title: 'Radius', icon: JoinRoundIcon, badge: undefined },
-      { href: '/docs/typography', title: 'Typography', icon: TextSquareIcon, badge: undefined },
-    ],
-  },
-  {
-    label: 'Components',
-    items: [
-      {
-        href: '/docs/button',
-        title: 'Button',
-        icon: LayoutBottomIcon,
-        badge: { content: 'Alpha', highContrast: true, size: '1' as const },
-      },
-      {
-        href: '/docs/combobox',
-        title: 'Combobox',
-        icon: CodeIcon,
-        badge: { content: 'Alpha', highContrast: true, size: '1' as const },
-      },
-      {
-        href: '/docs/shell',
-        title: 'Shell',
-        icon: LayoutIcon,
-        badge: { content: 'Alpha', highContrast: true, size: '1' as const },
-      },
-    ],
-  },
-];
+import { Github01Icon, Menu01Icon } from '@hugeicons/core-free-icons';
+import { navigationGroups } from './navigation-config';
 
 // Sidebar content component
 function AppSidebarContent({ presentation }: { presentation: 'thin' | 'expanded' }) {

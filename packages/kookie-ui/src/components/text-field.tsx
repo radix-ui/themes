@@ -339,10 +339,13 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
     }, [isScrubbing]);
 
     // Render virtual cursor via portal to body so it's not clipped
+    // Using a data URI of ew-resize cursor for a native look
     const virtualCursor = isScrubbing
       ? ReactDOM.createPortal(
-          <div
+          <img
             className="rt-TextFieldSlotScrubCursor"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='black' stroke='white' stroke-width='1' d='M0 12 L5 7 L5 10 L19 10 L19 7 L24 12 L19 17 L19 14 L5 14 L5 17 Z'/%3E%3C/svg%3E"
+            alt=""
             style={{
               position: 'fixed',
               left: cursorPosition.x,
@@ -350,6 +353,8 @@ const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>
               transform: 'translate(-50%, -50%)',
               pointerEvents: 'none',
               zIndex: 99999,
+              width: 24,
+              height: 24,
             }}
             aria-hidden="true"
           />,

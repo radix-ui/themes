@@ -884,43 +884,8 @@
 /* Virtual cursor indicator - viewport-wide floating cursor */
 .rt-TextFieldSlotScrubCursor {
   /* Position is set inline via JS */
-  width: 20px;
-  height: 20px;
-  background-color: var(--accent-9);
-  border-radius: 50%;
   pointer-events: none;
-  
-  /* Subtle glow effect */
-  box-shadow: 
-    0 0 0 2px var(--color-background),
-    0 0 8px var(--accent-a8),
-    0 0 16px var(--accent-a6);
-}
-
-/* Left/right arrows to indicate scrub direction */
-.rt-TextFieldSlotScrubCursor::before,
-.rt-TextFieldSlotScrubCursor::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  transform: translateY(-50%);
-}
-
-/* Left arrow */
-.rt-TextFieldSlotScrubCursor::before {
-  left: -10px;
-  border-width: 5px 6px 5px 0;
-  border-color: transparent var(--accent-9) transparent transparent;
-}
-
-/* Right arrow */
-.rt-TextFieldSlotScrubCursor::after {
-  right: -10px;
-  border-width: 5px 0 5px 6px;
-  border-color: transparent transparent transparent var(--accent-9);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 /* Visual feedback during scrubbing - subtle highlight on the slot */
@@ -929,9 +894,9 @@
   border-radius: calc(var(--text-field-border-radius, var(--radius-2)) - 2px);
 }
 
-/* Reduced motion support - hide glow animations */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .rt-TextFieldSlotScrubCursor {
-    box-shadow: 0 0 0 2px var(--color-background);
+    filter: none;
   }
 }
