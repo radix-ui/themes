@@ -14,7 +14,7 @@
   min-width: max-content;
 
   /* When any item is icon-only, switch to auto-sizing grid columns */
-  &:has([data-icon-only]) {
+  &:where(:has([data-icon-only])) {
     grid-auto-columns: auto;
   }
 
@@ -398,14 +398,14 @@
  * Icon-only items get fixed square dimensions matching the height.
  * This section is placed after size definitions for proper specificity.
  */
-.rt-SegmentedControlItem[data-icon-only] {
+.rt-SegmentedControlItem:where([data-icon-only]) {
   /* Fixed square width */
   width: var(--segmented-control-height);
   min-width: var(--segmented-control-height);
   max-width: var(--segmented-control-height);
 
   /* Remove padding and center icon */
-  & .rt-SegmentedControlItemLabel {
+  & :where(.rt-SegmentedControlItemLabel) {
     padding-left: 0;
     padding-right: 0;
   }
