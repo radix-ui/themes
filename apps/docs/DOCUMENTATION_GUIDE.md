@@ -442,7 +442,40 @@ Component provides comprehensive accessibility through [methods].
 - Be specific about implementations
 - Mention special considerations (high contrast, reduced motion, etc.)
 
-### 15. Changelog
+### 15. Enhancements (For Enhanced Components Only)
+
+```markdown
+## Enhancements
+
+Kookie UI extends Radix Themes ComponentName with practical improvements:
+
+### Enhancement Name
+
+Description of what this enhancement adds, why it's useful, and how it works. Focus on practical benefits.
+
+### Another Enhancement
+
+Another enhancement description with use cases and benefits.
+```
+
+**Guidelines:**
+
+- **Required for all enhanced Radix Themes components** (Button, TextField, SegmentedControl, Theme, etc.)
+- Place after Accessibility section, before Changelog
+- List only Kookie UI-specific additions, not features from Radix Themes
+- Use descriptive subsection names for each enhancement
+- Focus on practical benefits and use cases, not just technical details
+- Keep descriptions concise but informative
+- Order enhancements by importance/usage frequency
+
+**Examples of enhancements to document:**
+- New props (e.g., `iconOnly`, `tooltip`, `scrub`)
+- Enhanced behaviors (e.g., automatic icon sizing, scrubbing)
+- Improved accessibility features
+- Material system integration
+- Advanced customization options
+
+### 16. Changelog
 
 ```markdown
 ## Changelog
@@ -531,6 +564,7 @@ For components like `Shell`, `Combobox`, etc.:
 2. Document props by sub-component
 3. Include examples showing composition
 4. Explain composition rules if applicable
+5. Add Enhancements section if component extends Radix Themes
 
 ### Simple Components
 
@@ -540,6 +574,7 @@ For components like `Button`:
 2. Document all props in one table
 3. Focus on variants, sizes, and states
 4. Include layout and polymorphism sections
+5. Add Enhancements section if component extends Radix Themes
 
 ### Design Tokens
 
@@ -562,6 +597,7 @@ Before publishing documentation, ensure:
 - [ ] States section complete
 - [ ] Examples are realistic and useful
 - [ ] Accessibility features documented
+- [ ] Enhancements section included (for enhanced Radix Themes components)
 - [ ] Changelog is up to date
 - [ ] All code examples are valid TSX
 - [ ] JSX examples follow single-line rule for simple text content

@@ -2,7 +2,7 @@
 
 A compact control for switching between mutually exclusive options. Use segmented controls when you need users to choose one option from a small set of related views or filters, typically 2-5 choices.
 
-Built on [Radix UI Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group).
+This is an enhanced version of the SegmentedControl component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes SegmentedControl documentation](https://www.radix-ui.com/themes/docs/components/segmented-control).
 
 [View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/segmented-control.tsx)
 
@@ -360,6 +360,26 @@ SegmentedControl provides comprehensive accessibility through keyboard navigatio
 - Provide clear aria-labels for icon-only items
 - Consider mobile touch targets (use size 3 or larger on mobile)
 - Ensure sufficient contrast between active and inactive states
+
+## Enhancements
+
+Kookie UI extends Radix Themes SegmentedControl with practical improvements:
+
+### Icon-Only Mode
+
+New `iconOnly` prop creates fixed square segments perfect for compact icon-based controls. Automatically removes horizontal padding for perfect icon centering and maintains square aspect ratio matching control height.
+
+### Automatic Icon Sizing
+
+Icons automatically scale based on control size using consistent `--content-icon-size-N` tokens. Ensures visual harmony with Button and IconButton components across your interface.
+
+### Enhanced Animations
+
+Smooth spring-based indicator transitions with optimized motion curves. Separator lines automatically hide adjacent to selected items for cleaner visual hierarchy.
+
+### Material System Support
+
+Full integration with Kookie UI's material system for solid and translucent appearances. Inherits theme material setting or overrides locally for specific effects.
 
 ## Changelog
 

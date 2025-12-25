@@ -646,6 +646,26 @@ TextField provides comprehensive accessibility through ARIA attributes and seman
 - Mark required fields with `required` prop
 - Ensure sufficient color contrast for all states
 
+## Enhancements
+
+Kookie UI extends Radix Themes TextField with practical improvements:
+
+### Scrubbing Behavior
+
+Interactive numeric value adjustment through `TextField.Slot` with `scrub` prop. Drag labels horizontally to modify values with customizable step, sensitivity, and modifier keys. Perfect for property panels and design tools.
+
+### Enhanced Error States
+
+Rich error handling with `error` and `errorMessage` props. Error messages automatically associate with input via `aria-describedby` for screen reader accessibility. Visual error indicators appear in both light and dark themes.
+
+### Slot Composition
+
+Flexible slot system supports icons, labels, and interactive controls on either side of the input. Slots can be scrubbed, clicked, or used for decorative content. Automatic icon sizing based on TextField size.
+
+### Advanced Validation
+
+Built-in support for required fields, pattern validation, and min/max constraints. Form integration with native HTML validation attributes and proper error messaging.
+
 ## Changelog
 
 ### Added

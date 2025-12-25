@@ -378,6 +378,26 @@ Loading announcements include: "[Button text] is loading, please wait..."
 - Tooltip associations via `aria-describedby`
 - Disabled state announcements
 
+## Enhancements
+
+Kookie UI extends Radix Themes Button with practical improvements:
+
+### Built-in Tooltip Support
+
+Native `tooltip` prop eliminates need for wrapper components. Tooltips automatically provide accessibility through `aria-describedby` associations and support positioning via `tooltipSide` and `tooltipAlign` props.
+
+### Override Styles
+
+Advanced `overrideStyles` prop enables per-state style customization using design tokens. Define styles for normal, hover, active, pressed, open, disabled, and focus states without writing CSS.
+
+### Enhanced Loading State
+
+Loading state automatically disables interaction and displays spinner. Screen readers announce loading context with proper `aria-busy` and `aria-disabled` attributes.
+
+### Flush Mode
+
+`flush` prop removes padding for seamless text integration, especially with ghost variant. Creates inline button behavior while maintaining interactive touch targets.
+
 ## Changelog
 
 ### Added
