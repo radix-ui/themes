@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Flex, Card, Theme, Button, Box } from '@kushagradhawan/kookie-ui';
 import { Copy } from 'lucide-react';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -40,9 +41,14 @@ interface PlaygroundProps {
         onChange: (checked: boolean) => void;
       }
   >;
+
+  /**
+   * Show background image/pattern to demonstrate material prop effects
+   */
+  showBackground?: boolean;
 }
 
-export default function Playground({ component, code, items }: PlaygroundProps) {
+export default function Playground({ component, code, items, showBackground = false }: PlaygroundProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -56,19 +62,30 @@ export default function Playground({ component, code, items }: PlaygroundProps) 
   };
 
   return (
-    <Flex direction={{ initial: 'column', md: 'column' }} gap="2" align="center">
+    <Flex direction={{ initial: 'column', md: 'row' }} gap="2" my="3" align="center">
       {/* Left side - Preview area */}
-      <Box position="relative" className="playground-container" style={{ width: '100%', height: '320px' }}>
-        <Card size="1" variant="soft" style={{ width: '100%', height: '100%' }}>
+      <Box position="relative" className="playground-container" style={{ width: '100%', height: '480px' }}>
+        <Card size="1" variant="soft" style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+          {/* Background Image */}
+          {showBackground && (
+            <Image
+              src="/kookie-ui-hero.png"
+              alt="Background"
+              fill
+              style={{ objectFit: 'cover', zIndex: 0 }}
+              priority
+            />
+          )}
+
           {/* Copy button - positioned like CodeBlock */}
-          <Flex gap="1" position="absolute" top="2" right="2" style={{ zIndex: 1 }} className="playground-copy-button">
+          <Flex gap="1" position="absolute" top="2" right="2" style={{ zIndex: 2 }} className="playground-copy-button">
             <Button size="2" variant="ghost" color="gray" onClick={handleCopy} tooltip={copied ? 'Copied!' : 'Copy'} aria-label={copied ? 'Copied!' : 'Copy code'}>
               <HugeiconsIcon icon={Copy01Icon} /> Copy
             </Button>
           </Flex>
 
           {/* Preview area */}
-          <Flex direction="column" align="center" justify="center" height="100%" p="4">
+          <Flex direction="column" align="center" justify="center" height="100%" p="4" style={{ position: 'relative', zIndex: 1 }}>
             <Theme fontFamily="sans">{component}</Theme>
           </Flex>
         </Card>

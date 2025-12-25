@@ -12,13 +12,11 @@ interface RootProps {
 
 function Root({ width, style, children }: RootProps) {
   return (
-    <Theme accentColor="gray">
-      <Card size="2" variant="ghost" style={{ width: width || 'fit-content', height: 'fit-content', ...style }}>
-        <Flex direction="column" gap="4">
-          {children}
-        </Flex>
-      </Card>
-    </Theme>
+    <Card size="2" variant="ghost" style={{ width: width || 'fit-content', height: 'fit-content', ...style }}>
+      <Flex direction="column" gap="4">
+        {children}
+      </Flex>
+    </Card>
   );
 }
 
@@ -38,7 +36,7 @@ interface LabelProps extends React.ComponentPropsWithoutRef<typeof Label.Root> {
 function PropertyLabel({ children, ...props }: LabelProps) {
   return (
     <Label.Root {...props}>
-      <Text size="1" color="gray">
+      <Text size="1" highContrast color="gray">
         {children}
       </Text>
     </Label.Root>

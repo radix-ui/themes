@@ -1,0 +1,379 @@
+# Segmented Control
+
+A compact control for switching between mutually exclusive options. Use segmented controls when you need users to choose one option from a small set of related views or filters, typically 2-5 choices.
+
+Built on [Radix UI Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group).
+
+[View source →](https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/segmented-control.tsx)
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { SegmentedControl } from '@kushagradhawan/kookie-ui';
+
+export function MyComponent() {
+  return (
+    <SegmentedControl.Root defaultValue="grid">
+      <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+      <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+      <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+    </SegmentedControl.Root>
+  );
+}
+```
+
+## Anatomy
+
+Segmented Control is a compound component with the following parts:
+
+```tsx
+<SegmentedControl.Root value="option1" onValueChange={setValue}>
+  <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
+  <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+## Root Props
+
+The Root component manages the selected value and provides context to child items.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `value` | `string` | Controlled value. The currently selected item's value |
+| `defaultValue` | `string` | Uncontrolled default value for initial selection |
+| `onValueChange` | `(value: string) => void` | Callback when selection changes. Receives the new selected value |
+| `size` | `'1' \| '2' \| '3' \| '4'` | Control density: 1 (24px) for compact interfaces, 2 (32px) standard, 3 (40px) for touch targets, 4 (48px) for maximum prominence. Supports responsive objects |
+| `variant` | `'soft'` | Visual style. Currently only soft variant is available |
+| `disabled` | `boolean` | Disables all items when true. Use for unavailable functionality or during loading states |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | Corner radius scale. Controls the roundness of the entire control |
+| `material` | `'solid' \| 'translucent'` | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
+| `panelBackground` | `'solid' \| 'translucent'` | Deprecated: Use material prop instead |
+
+## Item Props
+
+Each item represents one option in the segmented control.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `value` | `string` | Required. Unique identifier for this option. Used to determine selection state |
+| `iconOnly` | `boolean` | When true, applies fixed square width matching the height. Use for icon-only segments without text labels |
+| `aria-label` | `string` | Required when using iconOnly. Provides accessible name for screen readers |
+
+## Sizes
+
+Set `size` for control density: `1` (24px), `2` (32px), `3` (40px), `4` (48px). Size affects both height and padding. Supports responsive objects for adaptive sizing across breakpoints.
+
+### Size 1
+
+Compact for toolbars and dense interfaces where space is limited.
+
+```tsx
+<SegmentedControl.Root size="1" defaultValue="day">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Size 2
+
+Standard size for most interface contexts and general use.
+
+```tsx
+<SegmentedControl.Root size="2" defaultValue="day">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Size 3
+
+Large for important controls and mobile-friendly touch targets.
+
+```tsx
+<SegmentedControl.Root size="3" defaultValue="day">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Size 4
+
+Extra large for hero sections and maximum visual impact.
+
+```tsx
+<SegmentedControl.Root size="4" defaultValue="day">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+## Material
+
+Use the `material` prop to set control appearance. Choose `solid` for opaque backgrounds, or `translucent` for depth and separation over images or dynamic backgrounds.
+
+### Theme
+
+Controls automatically inherit the theme's material setting.
+
+```tsx
+<Theme material="translucent">
+  <SegmentedControl.Root defaultValue="grid">
+    <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+    <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Theme>
+```
+
+### Custom
+
+Override the theme's material for specific effects.
+
+```tsx
+<Theme material="solid">
+  <SegmentedControl.Root material="translucent" defaultValue="grid">
+    <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+    <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Theme>
+```
+
+## Icon-Only
+
+Use the `iconOnly` prop on items to create compact, icon-based controls. Icon-only items use fixed square dimensions and remove horizontal padding for perfect centering.
+
+```tsx
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Menu01Icon, Grid02Icon, LayoutIcon } from '@hugeicons/core-free-icons';
+
+<SegmentedControl.Root defaultValue="grid">
+  <SegmentedControl.Item value="list" iconOnly aria-label="List view">
+    <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="grid" iconOnly aria-label="Grid view">
+    <HugeiconsIcon icon={Grid02Icon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="board" iconOnly aria-label="Board view">
+    <HugeiconsIcon icon={LayoutIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+**Important**: Always provide `aria-label` when using `iconOnly` to ensure screen reader accessibility.
+
+## States
+
+### Active
+
+The selected item displays with a sliding background indicator and increased font weight. The indicator animates smoothly between selections with spring physics for natural motion.
+
+```tsx
+<SegmentedControl.Root value="grid">
+  <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+  <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+  <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Hover
+
+Unselected items show subtle background color on hover, providing clear feedback that they're interactive.
+
+### Disabled
+
+When the Root component is disabled, all items become non-interactive with reduced opacity.
+
+```tsx
+<SegmentedControl.Root disabled defaultValue="grid">
+  <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+  <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+  <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+## Examples
+
+### Controlled State
+
+Manage selection state externally for coordinated UI updates.
+
+```tsx
+import { useState } from 'react';
+
+export function ControlledExample() {
+  const [view, setView] = useState('grid');
+  
+  return (
+    <>
+      <SegmentedControl.Root value={view} onValueChange={setView}>
+        <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+        <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+        <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+      </SegmentedControl.Root>
+      <p>Current view: {view}</p>
+    </>
+  );
+}
+```
+
+### Text Alignment
+
+Use segmented controls for formatting options in text editors.
+
+```tsx
+import { HugeiconsIcon } from '@hugeicons/react';
+import { TextAlignLeftIcon, TextAlignCenterIcon, TextAlignRightIcon, TextAlignJustifyIcon } from '@hugeicons/core-free-icons';
+
+<SegmentedControl.Root defaultValue="left">
+  <SegmentedControl.Item value="left" iconOnly aria-label="Align left">
+    <HugeiconsIcon icon={TextAlignLeftIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="center" iconOnly aria-label="Align center">
+    <HugeiconsIcon icon={TextAlignCenterIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="right" iconOnly aria-label="Align right">
+    <HugeiconsIcon icon={TextAlignRightIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="justify" iconOnly aria-label="Justify">
+    <HugeiconsIcon icon={TextAlignJustifyIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Time Range Selector
+
+Perfect for date range filters and time period selection.
+
+```tsx
+<SegmentedControl.Root defaultValue="week">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+  <SegmentedControl.Item value="year">Year</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Mixed Content
+
+Combine icons with text for clearer options while maintaining compact design.
+
+```tsx
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Menu01Icon, Grid02Icon } from '@hugeicons/core-free-icons';
+
+<SegmentedControl.Root defaultValue="grid" size="3">
+  <SegmentedControl.Item value="list">
+    <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.75} />
+    List
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="grid">
+    <HugeiconsIcon icon={Grid02Icon} strokeWidth={1.75} />
+    Grid
+  </SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+## Responsive
+
+Use responsive objects with the `size` prop to adapt sizing across different breakpoints. The component uses a mobile-first approach.
+
+```tsx
+<SegmentedControl.Root size={{ initial: '2', md: '3' }} defaultValue="grid">
+  <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+  <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+  <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Breakpoints
+
+| Breakpoint | Value  | Description                |
+| ---------- | ------ | -------------------------- |
+| `initial`  | -      | Base styles (mobile-first) |
+| `xs`       | 520px  | Extra small screens        |
+| `sm`       | 768px  | Small screens (tablets)    |
+| `md`       | 1024px | Medium screens (laptops)   |
+| `lg`       | 1280px | Large screens (desktops)   |
+| `xl`       | 1640px | Extra large screens        |
+
+## Accessibility
+
+SegmentedControl provides comprehensive accessibility through keyboard navigation, ARIA attributes, and screen reader support.
+
+### Keyboard Navigation
+
+- **Tab** - Focuses the control (or moves to next item if already focused)
+- **Arrow Keys** - Navigates between options and updates selection
+- **Space / Enter** - Selects the focused option
+- **Home** - Selects first option
+- **End** - Selects last option
+
+### ARIA Attributes
+
+- `role="radiogroup"` - Indicates mutually exclusive selection
+- `aria-label` - Required for icon-only items to provide accessible names
+- `aria-checked` - Indicates which option is currently selected
+- `aria-disabled` - Indicates disabled state
+
+### Screen Readers
+
+- Announces current selection and total number of options
+- Provides clear context when navigating between options
+- Indicates disabled state when control is not interactive
+- Icon-only items announce their aria-label text
+
+### High Contrast
+
+- Enhanced borders in Windows High Contrast mode
+- Maintains clear visual distinction between selected and unselected states
+- Focus indicators remain visible in all contrast modes
+
+## Best Practices
+
+### When to Use
+
+- **View switching**: Toggle between different views of the same data (list, grid, board)
+- **Filtering**: Switch between related filter categories (all, active, completed)
+- **Time periods**: Select date ranges (day, week, month, year)
+- **Format options**: Text alignment, display modes, chart types
+
+### When Not to Use
+
+- **Many options**: More than 5-6 options becomes unwieldy. Consider a Select or Radio Group instead
+- **Independent options**: Use Checkboxes when multiple selections are needed
+- **Navigation**: Use Tabs for page-level navigation with distinct content areas
+- **Actions**: Use Buttons for triggering actions rather than changing state
+
+### Guidelines
+
+- Keep option labels short and scannable (1-2 words ideal)
+- Use consistent widths unless using icon-only mode
+- Provide clear aria-labels for icon-only items
+- Consider mobile touch targets (use size 3 or larger on mobile)
+- Ensure sufficient contrast between active and inactive states
+
+## Changelog
+
+### Added
+
+- `iconOnly` prop for fixed-width icon-only segments
+- Automatic icon sizing based on control size
+- Responsive size support with breakpoint objects
+- Material system support for solid and translucent appearances
+- Smooth spring-based animations for indicator transitions
+
+### Changed
+
+- Uses `--content-icon-size-N` tokens for consistent icon sizing across components
+- Icon-only items remove horizontal padding for perfect centering
+- Separator lines automatically hide adjacent to selected items
+

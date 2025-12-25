@@ -70,6 +70,8 @@ SegmentedControlRoot.displayName = 'SegmentedControl.Root';
 
 interface SegmentedControlItemOwnProps {
   value: string;
+  /** When true, applies fixed square width for icon-only segments */
+  iconOnly?: boolean;
 }
 
 interface SegmentedControlItemProps
@@ -80,10 +82,11 @@ interface SegmentedControlItemProps
     SegmentedControlItemOwnProps {}
 
 const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedControlItemProps>(
-  ({ children, className, ...props }, forwardedRef) => (
+  ({ children, className, iconOnly, ...props }, forwardedRef) => (
     <ToggleGroupPrimitive.Item
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-SegmentedControlItem', className)}
+      data-icon-only={iconOnly || undefined}
       {...props}
       disabled={false}
       asChild={false}

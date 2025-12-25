@@ -187,6 +187,7 @@ export default function ButtonPlayground() {
       }
       code={generateCode()}
       items={items}
+      showBackground={material === 'translucent'}
     />
   );
 }

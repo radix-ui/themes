@@ -51,6 +51,12 @@ export const navigationGroups: NavigationGroup[] = [
         badge: { content: 'Alpha', highContrast: true, size: '1' },
       },
       {
+        href: '/docs/segmented-control',
+        title: 'Segmented Control',
+        icon: LayoutBottomIcon,
+        badge: { content: 'Alpha', highContrast: true, size: '1' },
+      },
+      {
         href: '/docs/shell',
         title: 'Shell',
         icon: LayoutIcon,
@@ -58,7 +64,7 @@ export const navigationGroups: NavigationGroup[] = [
       },
       {
         href: '/docs/text-field',
-        title: 'TextField',
+        title: 'Text Field',
         icon: Grid02Icon,
         badge: { content: 'Alpha', highContrast: true, size: '1' },
       },

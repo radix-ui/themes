@@ -13,6 +13,11 @@
   position: relative;
   min-width: max-content;
 
+  /* When any item is icon-only, switch to auto-sizing grid columns */
+  &:has([data-icon-only]) {
+    grid-auto-columns: auto;
+  }
+
   font-family: var(--default-font-family);
   font-style: normal;
   text-align: center;
@@ -72,6 +77,7 @@
     outline: var(--focus-outline-width) solid var(--focus-8);
     outline-offset: var(--focus-outline-offset-inset);
   }
+
 }
 
 .rt-SegmentedControlItemLabel {
@@ -276,7 +282,8 @@
   .rt-SegmentedControlRoot {
     &:where(.rt-r-size-1) {
       --segmented-control-border-radius: max(var(--radius-1), var(--radius-full));
-      height: var(--space-5);
+      --segmented-control-height: var(--space-5);
+      height: var(--segmented-control-height);
 
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-1);
@@ -295,7 +302,8 @@
     }
     &:where(.rt-r-size-2) {
       --segmented-control-border-radius: max(var(--radius-2), var(--radius-full));
-      height: var(--space-6);
+      --segmented-control-height: var(--space-6);
+      height: var(--segmented-control-height);
 
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-2);
@@ -314,7 +322,8 @@
     }
     &:where(.rt-r-size-3) {
       --segmented-control-border-radius: max(var(--radius-3), var(--radius-full));
-      height: var(--space-7);
+      --segmented-control-height: var(--space-7);
+      height: var(--segmented-control-height);
 
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-3);
@@ -333,7 +342,8 @@
     }
     &:where(.rt-r-size-4) {
       --segmented-control-border-radius: max(var(--radius-4), var(--radius-full));
-      height: var(--space-8);
+      --segmented-control-height: var(--space-8);
+      height: var(--segmented-control-height);
 
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-4);
@@ -375,5 +385,28 @@
 
   &:where([data-panel-background='translucent'], [data-material='translucent']) {
     background-color: color-mix(in srgb, var(--gray-a3), var(--gray-3) 60%);
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Icon-Only Mode           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+/* 
+ * Icon-only items get fixed square dimensions matching the height.
+ * This section is placed after size definitions for proper specificity.
+ */
+.rt-SegmentedControlItem[data-icon-only] {
+  /* Fixed square width */
+  width: var(--segmented-control-height);
+  min-width: var(--segmented-control-height);
+  max-width: var(--segmented-control-height);
+
+  /* Remove padding and center icon */
+  & .rt-SegmentedControlItemLabel {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
