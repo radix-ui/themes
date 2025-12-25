@@ -303,6 +303,72 @@ export default function SegmentedControlTest() {
             </Text>
           </Box>
         </Flex>
+
+        <Separator size="4" />
+
+        {/* Test 6: Full Width Icon-Only */}
+        <Flex direction="column" gap="5">
+          <Box>
+            <Heading size="6" weight="medium" mb="2">6. Full Width Icon-Only</Heading>
+            <Text size="2" color="gray">
+              Icon-only items grow to fill available space while keeping icons centered
+            </Text>
+          </Box>
+          
+          <Flex direction="column" gap="4">
+            <Box>
+              <Text size="2" weight="medium" mb="2">Narrow container (default)</Text>
+              <SegmentedControl.Root defaultValue="list" size="2">
+                <SegmentedControl.Item value="list" iconOnly aria-label="List view">
+                  <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.75} />
+                </SegmentedControl.Item>
+                <SegmentedControl.Item value="grid" iconOnly aria-label="Grid view">
+                  <HugeiconsIcon icon={Grid02Icon} strokeWidth={1.75} />
+                </SegmentedControl.Item>
+                <SegmentedControl.Item value="board" iconOnly aria-label="Board view">
+                  <HugeiconsIcon icon={LayoutIcon} strokeWidth={1.75} />
+                </SegmentedControl.Item>
+              </SegmentedControl.Root>
+            </Box>
+
+            <Box>
+              <Text size="2" weight="medium" mb="2">Full width container</Text>
+              <Box style={{ width: '100%' }}>
+                <SegmentedControl.Root defaultValue="list" size="2" style={{ width: '100%' }}>
+                  <SegmentedControl.Item value="list" iconOnly aria-label="List view">
+                    <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.75} />
+                  </SegmentedControl.Item>
+                  <SegmentedControl.Item value="grid" iconOnly aria-label="Grid view">
+                    <HugeiconsIcon icon={Grid02Icon} strokeWidth={1.75} />
+                  </SegmentedControl.Item>
+                  <SegmentedControl.Item value="board" iconOnly aria-label="Board view">
+                    <HugeiconsIcon icon={LayoutIcon} strokeWidth={1.75} />
+                  </SegmentedControl.Item>
+                </SegmentedControl.Root>
+              </Box>
+            </Box>
+
+            <Box>
+              <Text size="2" weight="medium" mb="2">Wide container with 2 items</Text>
+              <Box style={{ width: '400px', maxWidth: '100%' }}>
+                <SegmentedControl.Root defaultValue="light" size="3" style={{ width: '100%' }}>
+                  <SegmentedControl.Item value="light" iconOnly aria-label="Light mode">
+                    <HugeiconsIcon icon={Search01Icon} strokeWidth={1.75} />
+                  </SegmentedControl.Item>
+                  <SegmentedControl.Item value="dark" iconOnly aria-label="Dark mode">
+                    <HugeiconsIcon icon={Copy01Icon} strokeWidth={1.75} />
+                  </SegmentedControl.Item>
+                </SegmentedControl.Root>
+              </Box>
+            </Box>
+          </Flex>
+
+          <Box p="4" style={{ background: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }}>
+            <Text size="2" color="gray">
+              Items maintain minimum square dimensions but grow equally to fill container. Icons stay perfectly centered using <Code variant="soft">minmax(height, 1fr)</Code> grid columns.
+            </Text>
+          </Box>
+        </Flex>
       </Flex>
     </Container>
   );

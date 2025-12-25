@@ -13,9 +13,9 @@
   position: relative;
   min-width: max-content;
 
-  /* When any item is icon-only, switch to auto-sizing grid columns */
+  /* When any item is icon-only, use minmax to ensure square minimum but allow growth */
   &:where(:has([data-icon-only])) {
-    grid-auto-columns: auto;
+    grid-auto-columns: minmax(var(--segmented-control-height), 1fr);
   }
 
   font-family: var(--default-font-family);
@@ -395,14 +395,13 @@
 /* * * * * * * * * * * * * * * * * * * */
 
 /* 
- * Icon-only items get fixed square dimensions matching the height.
+ * Icon-only items get minimum square dimensions matching the height,
+ * but can grow to fill available space while keeping icons centered.
  * This section is placed after size definitions for proper specificity.
  */
 .rt-SegmentedControlItem:where([data-icon-only]) {
-  /* Fixed square width */
-  width: var(--segmented-control-height);
+  /* Minimum square width, but can grow to fill container */
   min-width: var(--segmented-control-height);
-  max-width: var(--segmented-control-height);
 
   /* Remove padding and center icon */
   & :where(.rt-SegmentedControlItemLabel) {
