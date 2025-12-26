@@ -59,11 +59,32 @@
   background-color: var(--gray-3);
 }
 
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*        Vertical Orientation         */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-SegmentedControlRoot.rt-r-orientation-vertical {
+  grid-auto-flow: row;
+  grid-auto-columns: unset;
+  grid-auto-rows: 1fr;
+  min-width: unset;
+  min-height: max-content;
+}
+
+/* Square items for icon-only in vertical */
+.rt-SegmentedControlRoot.rt-r-orientation-vertical:has([data-icon-only]) {
+  grid-auto-columns: unset;
+  grid-auto-rows: minmax(var(--segmented-control-height), 1fr);
+}
+
 .rt-SegmentedControlItem {
   display: flex;
   align-items: stretch;
   user-select: none;
 
+  /* Horizontal orientation (default) */
   &:where(:first-child) {
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
@@ -72,12 +93,30 @@
     border-top-right-radius: inherit;
     border-bottom-right-radius: inherit;
   }
+
   &:where(:focus-visible) {
     border-radius: inherit;
     outline: var(--focus-outline-width) solid var(--focus-8);
     outline-offset: var(--focus-outline-offset-inset);
   }
+}
 
+/* Vertical orientation - item layout */
+.rt-r-orientation-vertical .rt-SegmentedControlItem {
+  flex-direction: column;
+}
+
+/* Vertical orientation - item border radius */
+.rt-r-orientation-vertical .rt-SegmentedControlItem:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-left-radius: 0;
+}
+
+.rt-r-orientation-vertical .rt-SegmentedControlItem:nth-last-child(2) {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-top-right-radius: 0;
 }
 
 .rt-SegmentedControlItemLabel {
@@ -138,6 +177,7 @@
    */
   z-index: -1;
 
+  /* Horizontal orientation (default) */
   margin-top: calc(var(--space-1) * 0.75); /* 3px - slightly smaller than space-1 */
   margin-bottom: calc(var(--space-1) * 0.75); /* 3px */
   margin-left: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
@@ -158,6 +198,16 @@
   :where(.rt-SegmentedControlRoot:has(:focus-visible)) & {
     transition-duration: 0ms;
   }
+}
+
+/* Vertical orientation - separator */
+.rt-r-orientation-vertical .rt-SegmentedControlItemSeparator {
+  margin-left: calc(var(--space-1) * 0.75); /* 3px */
+  margin-right: calc(var(--space-1) * 0.75); /* 3px */
+  margin-top: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
+  margin-bottom: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
+  width: auto;
+  height: var(--border-width-standard); /* 1px */
 }
 
 :where(.radix-themes) {
@@ -196,6 +246,7 @@
     }
   }
 
+  /* Horizontal orientation (default) - width based on number of items */
   &:where(:nth-child(2)) {
     width: calc(100% / 1);
   }
@@ -227,6 +278,7 @@
     width: calc(100% / 10);
   }
 
+  /* Horizontal transforms (default) */
   :where(.rt-SegmentedControlItem[data-state='on']:nth-child(1)) ~ & {
     transform: translateX(0%);
   }
@@ -259,6 +311,75 @@
   }
 }
 
+/* Vertical orientation - indicator height based on number of items */
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator {
+  width: 100%;
+  height: unset;
+}
+
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(2) {
+  height: calc(100% / 1);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(3) {
+  height: calc(100% / 2);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(4) {
+  height: calc(100% / 3);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(5) {
+  height: calc(100% / 4);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(6) {
+  height: calc(100% / 5);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(7) {
+  height: calc(100% / 6);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(8) {
+  height: calc(100% / 7);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(9) {
+  height: calc(100% / 8);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(10) {
+  height: calc(100% / 9);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(11) {
+  height: calc(100% / 10);
+}
+
+/* Vertical transforms */
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(1) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(0%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(2) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(100%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(3) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(200%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(4) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(300%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(5) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(400%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(6) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(500%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(7) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(600%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(8) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(700%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(9) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(800%);
+}
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(10) ~ .rt-SegmentedControlIndicator {
+  transform: translateY(900%);
+}
+
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
 /*                Sizes                */
@@ -285,6 +406,17 @@
       --segmented-control-height: var(--space-5);
       height: var(--segmented-control-height);
 
+      /* Vertical: height auto, width determined by content or icon-only */
+      &:where(.rt-r-orientation-vertical) {
+        height: auto;
+        width: auto;
+
+        /* Icon-only gets fixed square width */
+        &:where(:has([data-icon-only])) {
+          width: var(--segmented-control-height);
+        }
+      }
+
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-1);
         letter-spacing: var(--letter-spacing-1);
@@ -304,6 +436,17 @@
       --segmented-control-border-radius: max(var(--radius-2), var(--radius-full));
       --segmented-control-height: var(--space-6);
       height: var(--segmented-control-height);
+
+      /* Vertical: height auto, width determined by content or icon-only */
+      &:where(.rt-r-orientation-vertical) {
+        height: auto;
+        width: auto;
+
+        /* Icon-only gets fixed square width */
+        &:where(:has([data-icon-only])) {
+          width: var(--segmented-control-height);
+        }
+      }
 
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-2);
@@ -325,6 +468,17 @@
       --segmented-control-height: var(--space-7);
       height: var(--segmented-control-height);
 
+      /* Vertical: height auto, width determined by content or icon-only */
+      &:where(.rt-r-orientation-vertical) {
+        height: auto;
+        width: auto;
+
+        /* Icon-only gets fixed square width */
+        &:where(:has([data-icon-only])) {
+          width: var(--segmented-control-height);
+        }
+      }
+
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-3);
         letter-spacing: var(--letter-spacing-3);
@@ -344,6 +498,17 @@
       --segmented-control-border-radius: max(var(--radius-4), var(--radius-full));
       --segmented-control-height: var(--space-8);
       height: var(--segmented-control-height);
+
+      /* Vertical: height auto, width determined by content or icon-only */
+      &:where(.rt-r-orientation-vertical) {
+        height: auto;
+        width: auto;
+
+        /* Icon-only gets fixed square width */
+        &:where(:has([data-icon-only])) {
+          width: var(--segmented-control-height);
+        }
+      }
 
       & :where(.rt-SegmentedControlItemLabel) {
         font-size: var(--font-size-4);
@@ -400,7 +565,7 @@
  * This section is placed after size definitions for proper specificity.
  */
 .rt-SegmentedControlItem:where([data-icon-only]) {
-  /* Minimum square width, but can grow to fill container */
+  /* Horizontal: Minimum square width, but can grow to fill container */
   min-width: var(--segmented-control-height);
 
   /* Remove padding and center icon */
@@ -409,3 +574,48 @@
     padding-right: 0;
   }
 }
+
+/* Vertical icon-only - minimum square height */
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-icon-only] {
+  min-width: unset;
+  min-height: var(--segmented-control-height);
+}
+
+/* Vertical icon-only - remove top/bottom padding */
+.rt-r-orientation-vertical .rt-SegmentedControlItem[data-icon-only] .rt-SegmentedControlItemLabel {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Vertical icon-only root width (explicit since nested :has() in @breakpoints may not work) */
+.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-1:has([data-icon-only]) {
+  width: var(--space-5);
+}
+.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-2:has([data-icon-only]) {
+  width: var(--space-6);
+}
+.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-3:has([data-icon-only]) {
+  width: var(--space-7);
+}
+.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-4:has([data-icon-only]) {
+  width: var(--space-8);
+}
+
+/* Vertical text items need vertical padding */
+.rt-r-orientation-vertical.rt-r-size-1 .rt-SegmentedControlItemLabel {
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+}
+.rt-r-orientation-vertical.rt-r-size-2 .rt-SegmentedControlItemLabel {
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+.rt-r-orientation-vertical.rt-r-size-3 .rt-SegmentedControlItemLabel {
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+.rt-r-orientation-vertical.rt-r-size-4 .rt-SegmentedControlItemLabel {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+

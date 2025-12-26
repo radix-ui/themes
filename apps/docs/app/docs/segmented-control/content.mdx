@@ -51,6 +51,7 @@ The Root component manages the selected value and provides context to child item
 | `size` | `'1' \| '2' \| '3' \| '4'` | Control density: 1 (24px) for compact interfaces, 2 (32px) standard, 3 (40px) for touch targets, 4 (48px) for maximum prominence. Supports responsive objects |
 | `variant` | `'soft'` | Visual style. Currently only soft variant is available |
 | `disabled` | `boolean` | Disables all items when true. Use for unavailable functionality or during loading states |
+| `orientation` | `'horizontal' \| 'vertical'` | Layout direction. Horizontal (default) for most cases, vertical for icon-only sidebars and compact interfaces. Supports responsive objects |
 | `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | Corner radius scale. Controls the roundness of the entire control |
 | `material` | `'solid' \| 'translucent'` | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
 | `panelBackground` | `'solid' \| 'translucent'` | Deprecated: Use material prop instead |
@@ -146,6 +147,57 @@ Override the theme's material for specific effects.
   </SegmentedControl.Root>
 </Theme>
 ```
+
+## Orientation
+
+Use the `orientation` prop to switch between horizontal (default) and vertical layout. Vertical orientation works best with icon-only segments for compact toolbars, sidebars, and tool palettes.
+
+### Horizontal (Default)
+
+Standard horizontal layout for most use cases.
+
+```tsx
+<SegmentedControl.Root defaultValue="grid">
+  <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+  <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+  <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Vertical Icon-Only (Recommended)
+
+Vertical orientation is ideal for icon-only segments in sidebars and compact interfaces.
+
+```tsx
+import { HugeiconsIcon } from '@hugeicons/react';
+import { CodeIcon, LayoutIcon, Layers01Icon } from '@hugeicons/core-free-icons';
+
+<SegmentedControl.Root orientation="vertical" defaultValue="code">
+  <SegmentedControl.Item value="code" iconOnly aria-label="Code view">
+    <HugeiconsIcon icon={CodeIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="layout" iconOnly aria-label="Layout view">
+    <HugeiconsIcon icon={LayoutIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="layers" iconOnly aria-label="Layers view">
+    <HugeiconsIcon icon={Layers01Icon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Vertical with Text
+
+Text labels in vertical orientation are supported but less ideal. Use only with very short labels (1-2 words).
+
+```tsx
+<SegmentedControl.Root orientation="vertical" defaultValue="day">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+**Best Practice**: For longer text labels, prefer horizontal orientation or consider using a different component like Radio Group or Tabs.
 
 ## Icon-Only
 
@@ -284,13 +336,39 @@ import { Menu01Icon, Grid02Icon } from '@hugeicons/core-free-icons';
 
 ## Responsive
 
-Use responsive objects with the `size` prop to adapt sizing across different breakpoints. The component uses a mobile-first approach.
+Use responsive objects with `size` and `orientation` props to adapt across different breakpoints. The component uses a mobile-first approach.
+
+### Responsive Size
 
 ```tsx
 <SegmentedControl.Root size={{ initial: '2', md: '3' }} defaultValue="grid">
   <SegmentedControl.Item value="list">List</SegmentedControl.Item>
   <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
   <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+</SegmentedControl.Root>
+```
+
+### Responsive Orientation
+
+Switch between vertical on mobile and horizontal on larger screens.
+
+```tsx
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Menu01Icon, Grid02Icon, LayoutIcon } from '@hugeicons/core-free-icons';
+
+<SegmentedControl.Root 
+  orientation={{ initial: 'vertical', md: 'horizontal' }}
+  defaultValue="grid"
+>
+  <SegmentedControl.Item value="list" iconOnly aria-label="List view">
+    <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="grid" iconOnly aria-label="Grid view">
+    <HugeiconsIcon icon={Grid02Icon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
+  <SegmentedControl.Item value="board" iconOnly aria-label="Board view">
+    <HugeiconsIcon icon={LayoutIcon} strokeWidth={1.75} />
+  </SegmentedControl.Item>
 </SegmentedControl.Root>
 ```
 
@@ -345,6 +423,7 @@ SegmentedControl provides comprehensive accessibility through keyboard navigatio
 - **Filtering**: Switch between related filter categories (all, active, completed)
 - **Time periods**: Select date ranges (day, week, month, year)
 - **Format options**: Text alignment, display modes, chart types
+- **Sidebar tools**: Vertical icon-only controls for compact navigation and tool palettes
 
 ### When Not to Use
 
@@ -352,6 +431,7 @@ SegmentedControl provides comprehensive accessibility through keyboard navigatio
 - **Independent options**: Use Checkboxes when multiple selections are needed
 - **Navigation**: Use Tabs for page-level navigation with distinct content areas
 - **Actions**: Use Buttons for triggering actions rather than changing state
+- **Long text labels vertically**: Vertical orientation with long text is hard to read
 
 ### Guidelines
 
@@ -360,6 +440,8 @@ SegmentedControl provides comprehensive accessibility through keyboard navigatio
 - Provide clear aria-labels for icon-only items
 - Consider mobile touch targets (use size 3 or larger on mobile)
 - Ensure sufficient contrast between active and inactive states
+- **Prefer icon-only for vertical orientation** - text labels work but are less ideal
+- Use vertical orientation for sidebars, tool palettes, and compact interfaces
 
 ## Enhancements
 
@@ -369,13 +451,17 @@ Kookie UI extends Radix Themes SegmentedControl with practical improvements:
 
 New `iconOnly` prop creates fixed square segments perfect for compact icon-based controls. Automatically removes horizontal padding for perfect icon centering and maintains square aspect ratio matching control height.
 
+### Vertical Orientation
+
+New `orientation` prop supports both horizontal and vertical layouts. Vertical orientation is optimized for icon-only segments in sidebars, tool palettes, and compact navigation rails. Text labels are supported but work best with very short content.
+
 ### Automatic Icon Sizing
 
 Icons automatically scale based on control size using consistent `--content-icon-size-N` tokens. Ensures visual harmony with Button and IconButton components across your interface.
 
 ### Enhanced Animations
 
-Smooth spring-based indicator transitions with optimized motion curves. Separator lines automatically hide adjacent to selected items for cleaner visual hierarchy.
+Smooth spring-based indicator transitions with optimized motion curves work seamlessly in both horizontal and vertical orientations. Separator lines automatically hide adjacent to selected items for cleaner visual hierarchy.
 
 ### Material System Support
 
@@ -386,14 +472,16 @@ Full integration with Kookie UI's material system for solid and translucent appe
 ### Added
 
 - `iconOnly` prop for fixed-width icon-only segments
+- `orientation` prop for horizontal and vertical layouts
 - Automatic icon sizing based on control size
-- Responsive size support with breakpoint objects
+- Responsive size and orientation support with breakpoint objects
 - Material system support for solid and translucent appearances
-- Smooth spring-based animations for indicator transitions
+- Smooth spring-based animations for indicator transitions in both orientations
 
 ### Changed
 
 - Uses `--content-icon-size-N` tokens for consistent icon sizing across components
-- Icon-only items remove horizontal padding for perfect centering
+- Icon-only items remove padding for perfect centering in both orientations
 - Separator lines automatically hide adjacent to selected items
+- Indicator animations work seamlessly in vertical orientation with translateY transforms
 
