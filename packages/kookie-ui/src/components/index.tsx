@@ -36,6 +36,7 @@ export { Image, type ImageProps } from './image.js';
 export { Inset, type InsetProps } from './inset.js';
 export { Kbd, type KbdProps } from './kbd.js';
 export { Link, type LinkProps } from './link.js';
+export * as Navbar from './navbar.js';
 export * as Popover from './popover.js';
 export { Portal, type PortalProps } from './portal.js';
 export { Progress, type ProgressProps } from './progress.js';
