@@ -43,7 +43,7 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(react@19.1.0)
       '@kushagradhawan/kookie-blocks':
-        specifier: 0.1.18
+        specifier: ^0.1.18
         version: 0.1.18(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@kushagradhawan/kookie-ui':
         specifier: workspace:*
