@@ -43,14 +43,33 @@ interface ThemeContextValue extends ThemeChangeHandlers {
   scaling: ThemeScaling;
   fontFamily: ThemeFontFamily;
 }
+// Default theme values used when components render outside a Theme provider
+const defaultThemeContext: ThemeContextValue = {
+  appearance: themePropDefs.appearance.default,
+  accentColor: themePropDefs.accentColor.default,
+  grayColor: themePropDefs.grayColor.default,
+  resolvedGrayColor: themePropDefs.grayColor.default,
+  material: themePropDefs.material.default,
+  panelBackground: themePropDefs.panelBackground.default,
+  radius: themePropDefs.radius.default,
+  scaling: themePropDefs.scaling.default,
+  fontFamily: themePropDefs.fontFamily.default,
+  onAppearanceChange: noop,
+  onAccentColorChange: noop,
+  onGrayColorChange: noop,
+  onMaterialChange: noop,
+  onPanelBackgroundChange: noop,
+  onRadiusChange: noop,
+  onScalingChange: noop,
+  onFontFamilyChange: noop,
+};
+
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
 function useThemeContext() {
   const context = React.useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('`useThemeContext` must be used within a `Theme`');
-  }
-  return context;
+  // Return default context if used outside Theme provider (e.g., during SSR)
+  return context ?? defaultThemeContext;
 }
 
 interface ThemeProps extends ThemeImplPublicProps {}
