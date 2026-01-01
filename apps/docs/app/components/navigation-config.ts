@@ -1,4 +1,4 @@
-import { Download01Icon, LayoutBottomIcon, CodeIcon, Settings01Icon, ColorsIcon, Grid02Icon, Layers01Icon, SwatchIcon, JoinRoundIcon, TextSquareIcon, LayoutIcon } from '@hugeicons/core-free-icons';
+import { Download01Icon, LayoutBottomIcon, CodeIcon, Settings01Icon, ColorsIcon, Grid02Icon, Layers01Icon, SwatchIcon, JoinRoundIcon, TextSquareIcon, LayoutIcon, Menu01Icon } from '@hugeicons/core-free-icons';
 
 export interface NavigationBadge {
   content: string;
@@ -48,6 +48,12 @@ export const navigationGroups: NavigationGroup[] = [
         href: '/docs/combobox',
         title: 'Combobox',
         icon: CodeIcon,
+        badge: { content: 'Alpha', highContrast: true, size: '1' },
+      },
+      {
+        href: '/docs/navbar',
+        title: 'Navbar',
+        icon: Menu01Icon,
         badge: { content: 'Alpha', highContrast: true, size: '1' },
       },
       {

@@ -29,11 +29,11 @@
   position: static;
 }
 
-/* Container - horizontal flex layout */
+/* Container - grid layout for true centering */
 .rt-NavbarContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: var(--navbar-height, 64px);
   padding-left: var(--space-4);
@@ -45,8 +45,9 @@
 .rt-NavbarLogo {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: flex-start;
   gap: var(--space-2);
+  min-width: 0;
 }
 
 /* Navigation slot */
@@ -54,7 +55,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
   gap: var(--space-4);
 }
 
@@ -63,8 +63,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-shrink: 0;
   gap: var(--space-4);
+  min-width: 0;
 }
 
 /* Responsive adjustments */

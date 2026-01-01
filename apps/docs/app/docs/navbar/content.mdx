@@ -1,0 +1,351 @@
+---
+title: Navbar
+description: A horizontal navigation bar component with semantic slots for organizing logos, navigation links, and action buttons.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/navbar.tsx
+---
+
+Build consistent navigation experiences with semantic slots for logo, navigation, and actions. The Navbar component provides a flexible foundation for headers that work across all screen sizes.
+
+## Playground
+
+import NavbarPlayground from '../../playground/NavbarPlayground';
+
+<NavbarPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Navbar, Button, Text } from '@kushagradhawan/kookie-ui';
+
+export function MyNavbar() {
+  return (
+    <Navbar.Root>
+      <Navbar.Logo>
+        <Text weight="bold">Brand</Text>
+      </Navbar.Logo>
+      <Navbar.Navigation>
+        <Button variant="ghost">Home</Button>
+        <Button variant="ghost">About</Button>
+        <Button variant="ghost">Contact</Button>
+      </Navbar.Navigation>
+      <Navbar.Actions>
+        <Button variant="soft">Sign In</Button>
+      </Navbar.Actions>
+    </Navbar.Root>
+  );
+}
+```
+
+## Anatomy
+
+The Navbar is a compound component with four parts:
+
+```tsx
+<Navbar.Root>
+  <Navbar.Logo />
+  <Navbar.Navigation />
+  <Navbar.Actions />
+</Navbar.Root>
+```
+
+| Part | Description |
+| ---- | ----------- |
+| `Navbar.Root` | The root container. Renders as `<header>` with positioning and height controls. |
+| `Navbar.Logo` | Left-aligned slot for brand identity. Never shrinks. |
+| `Navbar.Navigation` | Center slot for navigation links. Expands to fill available space. |
+| `Navbar.Actions` | Right-aligned slot for CTAs and user controls. Never shrinks. |
+
+## Props
+
+### Root
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `position` | `'static' \| 'fixed' \| 'sticky'` | `'fixed'` | Positioning behavior of the navbar |
+| `height` | `'56' \| '64' \| '72'` | `'64'` | Height of the navbar in pixels |
+
+### Logo, Navigation, Actions
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `asChild` | `boolean` | `false` | Merge props with child element using Radix Slot pattern |
+
+## Position
+
+Use the `position` prop to control how the navbar behaves when scrolling.
+
+### Fixed
+
+Fixed navbars stay at the top of the viewport. Content scrolls beneath them. Add padding to your page content to prevent overlap.
+
+```tsx
+<Navbar.Root position="fixed">
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+### Sticky
+
+Sticky navbars scroll with content until they reach the top, then stick in place.
+
+```tsx
+<Navbar.Root position="sticky">
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+### Static
+
+Static navbars flow with the document and scroll out of view.
+
+```tsx
+<Navbar.Root position="static">
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+## Height
+
+Use the `height` prop to set navbar density. Choose based on content importance and available space.
+
+### 56px
+
+Compact height for dense interfaces or mobile layouts.
+
+```tsx
+<Navbar.Root height="56">
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+### 64px
+
+Standard height for most applications. Balances visibility with content space.
+
+```tsx
+<Navbar.Root height="64">
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+### 72px
+
+Tall height for prominent headers or when the navbar contains larger elements.
+
+```tsx
+<Navbar.Root height="72">
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+## Slots
+
+### Logo
+
+The Logo slot is designed for brand identity elements. It never shrinks and stays left-aligned.
+
+```tsx
+<Navbar.Root>
+  <Navbar.Logo>
+    <img src="/logo.svg" alt="Company Logo" height={32} />
+  </Navbar.Logo>
+</Navbar.Root>
+```
+
+### Navigation
+
+The Navigation slot expands to fill available space and centers its content. Use it for primary navigation links.
+
+```tsx
+<Navbar.Root>
+  <Navbar.Navigation>
+    <Button variant="ghost">Products</Button>
+    <Button variant="ghost">Solutions</Button>
+    <Button variant="ghost">Pricing</Button>
+    <Button variant="ghost">Docs</Button>
+  </Navbar.Navigation>
+</Navbar.Root>
+```
+
+### Actions
+
+The Actions slot is right-aligned and never shrinks. Use it for CTAs, user menus, and utility controls.
+
+```tsx
+<Navbar.Root>
+  <Navbar.Actions>
+    <Button variant="ghost">Log In</Button>
+    <Button variant="solid">Sign Up</Button>
+  </Navbar.Actions>
+</Navbar.Root>
+```
+
+## Polymorphism
+
+### AsChild
+
+Use the `asChild` prop on any slot to merge its props with a child element. This is useful for custom wrappers or routing integration.
+
+```tsx
+<Navbar.Root>
+  <Navbar.Logo asChild>
+    <a href="/">
+      <Text weight="bold">Brand</Text>
+    </a>
+  </Navbar.Logo>
+  <Navbar.Navigation asChild>
+    <div className="custom-nav">
+      <a href="/products">Products</a>
+      <a href="/about">About</a>
+    </div>
+  </Navbar.Navigation>
+</Navbar.Root>
+```
+
+## Examples
+
+### With Icons
+
+```tsx
+import { Home, Settings, User, Bell } from 'lucide-react';
+
+<Navbar.Root>
+  <Navbar.Logo>
+    <Text weight="bold">Brand</Text>
+  </Navbar.Logo>
+  <Navbar.Navigation>
+    <Button variant="ghost"><Home /> Home</Button>
+    <Button variant="ghost"><Settings /> Settings</Button>
+  </Navbar.Navigation>
+  <Navbar.Actions>
+    <IconButton variant="ghost" aria-label="Notifications"><Bell /></IconButton>
+    <IconButton variant="ghost" aria-label="Profile"><User /></IconButton>
+  </Navbar.Actions>
+</Navbar.Root>
+```
+
+### With Next.js Link
+
+```tsx
+import Link from 'next/link';
+
+<Navbar.Root>
+  <Navbar.Logo asChild>
+    <Link href="/">
+      <Text weight="bold">Brand</Text>
+    </Link>
+  </Navbar.Logo>
+  <Navbar.Navigation>
+    <Button variant="ghost" asChild>
+      <Link href="/products">Products</Link>
+    </Button>
+    <Button variant="ghost" asChild>
+      <Link href="/about">About</Link>
+    </Button>
+  </Navbar.Navigation>
+</Navbar.Root>
+```
+
+### With User Menu
+
+```tsx
+<Navbar.Root>
+  <Navbar.Logo>
+    <Text weight="bold">Dashboard</Text>
+  </Navbar.Logo>
+  <Navbar.Navigation>
+    <Button variant="ghost">Overview</Button>
+    <Button variant="ghost">Analytics</Button>
+    <Button variant="ghost">Reports</Button>
+  </Navbar.Navigation>
+  <Navbar.Actions>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>
+        <Button variant="ghost">
+          <Avatar size="1" fallback="JD" />
+          John Doe
+        </Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>Profile</DropdownMenu.Item>
+        <DropdownMenu.Item>Settings</DropdownMenu.Item>
+        <DropdownMenu.Separator />
+        <DropdownMenu.Item color="red">Sign Out</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  </Navbar.Actions>
+</Navbar.Root>
+```
+
+## Layout
+
+### With Shell
+
+Combine Navbar with Shell for complete page layouts. Use Shell's `navbarHeight` prop to account for fixed navbar spacing.
+
+```tsx
+<Shell.Root navbarHeight="64">
+  <Navbar.Root position="fixed" height="64">
+    <Navbar.Logo>
+      <Text weight="bold">App</Text>
+    </Navbar.Logo>
+    <Navbar.Actions>
+      <Button variant="soft">Sign In</Button>
+    </Navbar.Actions>
+  </Navbar.Root>
+  <Shell.Content>
+    {/* Page content */}
+  </Shell.Content>
+</Shell.Root>
+```
+
+## Accessibility
+
+The Navbar component follows WAI-ARIA best practices for navigation landmarks.
+
+### Semantic Structure
+
+- `Navbar.Root` renders as a semantic `<header>` element
+- `Navbar.Navigation` renders as a `<nav>` element with `role="navigation"`
+- Proper heading hierarchy should be maintained within logo content
+
+### Keyboard Navigation
+
+- All interactive elements within the navbar are keyboard accessible
+- Focus order follows visual order: logo, navigation, actions
+- Use Button or Link components for interactive elements to ensure proper focus handling
+
+### Screen Readers
+
+- The `<header>` landmark helps screen reader users identify the navigation area
+- The `<nav>` element within Navigation slot provides additional context
+- Ensure all interactive elements have appropriate labels
+
+## Changelog
+
+### Added
+
+- Initial release with compound component architecture
+- Semantic slots for Logo, Navigation, and Actions
+- Position variants: fixed, sticky, static
+- Height options: 56px, 64px, 72px
+- `asChild` prop for all slots using Radix Slot pattern
+- Responsive gap adjustments for mobile layouts
