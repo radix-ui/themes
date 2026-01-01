@@ -1,12 +1,23 @@
-'use client';
+import React from 'react';
+import { getCachedDocMetadata } from '@/lib/docs-metadata';
+import InstallationPageClient from './page-client';
+import type { Metadata } from 'next';
 
-import ComponentPage from '../../components/component-page';
-import InstallationMDX from './content.mdx';
+export async function generateMetadata(): Promise<Metadata> {
+  const metadata = getCachedDocMetadata('/docs/installation');
+
+  if (!metadata) {
+    return {};
+  }
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+  };
+}
 
 export default function InstallationPage() {
-  return (
-    <ComponentPage>
-      <InstallationMDX />
-    </ComponentPage>
-  );
+  const metadata = getCachedDocMetadata('/docs/installation');
+
+  return <InstallationPageClient metadata={metadata || undefined} />;
 }

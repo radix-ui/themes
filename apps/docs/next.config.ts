@@ -1,5 +1,6 @@
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
+import remarkFrontmatter from 'remark-frontmatter'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 
@@ -20,7 +21,10 @@ const rehypePrettyCodeOptions = {
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [
+      remarkGfm,
+      remarkFrontmatter,
+    ],
     rehypePlugins: [
       rehypeSlug, // Add this - generates IDs for headings
       [rehypePrettyCode, rehypePrettyCodeOptions]

@@ -122,17 +122,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </Flex>
         {children}
       </Shell.Content>
-
-      {/* <Shell.Inspector resizable maxSize={800} expandedSize={600} defaultOpen={{ initial: false, sm: true }}>
-        <Shell.Inspector.Handle>
-          <IconButton variant="classic" size="2" highContrast color="gray">
-            <GripVertical />
-          </IconButton>
-        </Shell.Inspector.Handle>
-        <Flex direction="column" height="100%" width="100%" p="4" style={{ borderLeft: 'solid 1px var(--gray-a6)' }}>
-          <ComponentShowcase />
-        </Flex>
-      </Shell.Inspector> */}
     </Shell.Root>
   );
 }

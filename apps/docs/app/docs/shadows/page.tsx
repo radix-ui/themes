@@ -1,13 +1,23 @@
-'use client';
-
 import React from 'react';
-import ComponentPage from '../../components/component-page';
-import ContentMDX from './shadows.mdx';
+import { getCachedDocMetadata } from '@/lib/docs-metadata';
+import ShadowsPageClient from './page-client';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const metadata = getCachedDocMetadata('/docs/shadows');
+
+  if (!metadata) {
+    return {};
+  }
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+  };
+}
 
 export default function ShadowsPage() {
-  return (
-    <ComponentPage>
-      <ContentMDX />
-    </ComponentPage>
-  );
+  const metadata = getCachedDocMetadata('/docs/shadows');
+
+  return <ShadowsPageClient metadata={metadata || undefined} />;
 }

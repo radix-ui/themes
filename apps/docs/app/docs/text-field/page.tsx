@@ -1,14 +1,23 @@
-'use client';
-
 import React from 'react';
-import ComponentPage from '../../components/component-page';
-import ContentMDX from './content.mdx';
+import { getCachedDocMetadata } from '@/lib/docs-metadata';
+import TextFieldPageClient from './page-client';
+import type { Metadata } from 'next';
 
-export default function TextFieldPage() {
-  return (
-    <ComponentPage>
-      <ContentMDX />
-    </ComponentPage>
-  );
+export async function generateMetadata(): Promise<Metadata> {
+  const metadata = getCachedDocMetadata('/docs/text-field');
+
+  if (!metadata) {
+    return {};
+  }
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+  };
 }
 
+export default function TextFieldPage() {
+  const metadata = getCachedDocMetadata('/docs/text-field');
+
+  return <TextFieldPageClient metadata={metadata || undefined} />;
+}

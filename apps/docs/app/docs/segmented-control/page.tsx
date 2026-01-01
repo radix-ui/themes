@@ -1,14 +1,23 @@
-'use client';
-
 import React from 'react';
-import ComponentPage from '../../components/component-page';
-import ContentMDX from './content.mdx';
+import { getCachedDocMetadata } from '@/lib/docs-metadata';
+import SegmentedControlPageClient from './page-client';
+import type { Metadata } from 'next';
 
-export default function SegmentedControlPage() {
-  return (
-    <ComponentPage>
-      <ContentMDX />
-    </ComponentPage>
-  );
+export async function generateMetadata(): Promise<Metadata> {
+  const metadata = getCachedDocMetadata('/docs/segmented-control');
+
+  if (!metadata) {
+    return {};
+  }
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+  };
 }
 
+export default function SegmentedControlPage() {
+  const metadata = getCachedDocMetadata('/docs/segmented-control');
+
+  return <SegmentedControlPageClient metadata={metadata || undefined} />;
+}
