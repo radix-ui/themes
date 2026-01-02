@@ -88,6 +88,12 @@
       --tab-inner-padding-x: var(--space-1);
       --tab-inner-padding-y: calc(var(--space-1) * var(--spacing-multiplier-small));
       --tab-inner-border-radius: var(--radius-1);
+
+      /* Icon sizing for size 1 */
+      & :where(svg) {
+        width: var(--content-icon-size-1);
+        height: var(--content-icon-size-1);
+      }
     }
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
@@ -98,6 +104,12 @@
       --tab-inner-padding-x: var(--space-2);
       --tab-inner-padding-y: var(--space-1);
       --tab-inner-border-radius: var(--radius-2);
+
+      /* Icon sizing for size 2 */
+      & :where(svg) {
+        width: var(--content-icon-size-2);
+        height: var(--content-icon-size-2);
+      }
     }
   }
 }
