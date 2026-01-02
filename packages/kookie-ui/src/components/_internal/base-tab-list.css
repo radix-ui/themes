@@ -90,6 +90,7 @@
       --tab-inner-border-radius: var(--radius-1);
 
       /* Icon sizing for size 1 */
+      /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
         width: var(--content-icon-size-1);
         height: var(--content-icon-size-1);
@@ -106,6 +107,7 @@
       --tab-inner-border-radius: var(--radius-2);
 
       /* Icon sizing for size 2 */
+      /* stylelint-disable-next-line selector-max-type */
       & :where(svg) {
         width: var(--content-icon-size-2);
         height: var(--content-icon-size-2);
