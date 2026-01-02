@@ -95,6 +95,10 @@
         width: var(--content-icon-size-1);
         height: var(--content-icon-size-1);
       }
+
+      & :where(.rt-BaseTabListTriggerInner, .rt-BaseTabListTriggerInnerHidden) {
+        gap: var(--component-gap-1);
+      }
     }
     &:where(.rt-r-size-2) {
       font-size: var(--font-size-2);
@@ -111,6 +115,10 @@
       & :where(svg) {
         width: var(--content-icon-size-2);
         height: var(--content-icon-size-2);
+      }
+
+      & :where(.rt-BaseTabListTriggerInner, .rt-BaseTabListTriggerInnerHidden) {
+        gap: var(--component-gap-2);
       }
     }
   }
