@@ -32,7 +32,7 @@ export default function HeroSection() {
           <Hero.Actions>
             <Button highContrast color="gray" variant="solid" size="2" asChild>
               <Link href="/docs/installation">
-                Get Started with Kookie
+                Get Started with UI
                 <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={1.5} />
               </Link>
             </Button>
