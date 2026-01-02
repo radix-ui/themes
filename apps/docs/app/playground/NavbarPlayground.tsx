@@ -3,7 +3,7 @@
 import React from 'react';
 import { Navbar, Button, Text, Flex } from '@kushagradhawan/kookie-ui';
 import { Home, Settings, User, Menu } from 'lucide-react';
-import Playground from '../components/playground';
+import Playground from '@/components/playground';
 
 const positions = ['fixed', 'sticky', 'static'] as const;
 const heights = ['56', '64', '72'] as const;

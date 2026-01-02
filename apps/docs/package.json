@@ -14,7 +14,7 @@
   "dependencies": {
     "@hugeicons/core-free-icons": "^2.0.0",
     "@hugeicons/react": "^1.1.1",
-    "@kushagradhawan/kookie-blocks": "^0.1.18",
+    "@kushagradhawan/kookie-blocks": "^0.1.19",
     "@kushagradhawan/kookie-ui": "workspace:*",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",

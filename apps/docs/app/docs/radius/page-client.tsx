@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import ComponentPage from '../../components/component-page';
+import { TableOfContents } from "@kushagradhawan/kookie-blocks";
+import { SiteDocsPage } from "@/components/site-docs-page";
 import ContentMDX from './radius.mdx';
-import type { DocMetadata } from '@/lib/frontmatter';
+import type { DocMetadata } from "@/lib/frontmatter";
 
 interface RadiusPageClientProps {
   metadata?: DocMetadata;
@@ -11,8 +12,13 @@ interface RadiusPageClientProps {
 
 export default function RadiusPageClient({ metadata }: RadiusPageClientProps) {
   return (
-    <ComponentPage metadata={metadata}>
+    <SiteDocsPage
+      meta={metadata}
+      tableOfContents={
+        <TableOfContents renderContainer={(content) => content || null} />
+      }
+    >
       <ContentMDX />
-    </ComponentPage>
+    </SiteDocsPage>
   );
 }

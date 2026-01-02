@@ -2,8 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import React from 'react';
 import { Code } from '@kushagradhawan/kookie-ui';
 import { CodeBlock, useCodeBlockContext, createMarkdownComponents } from '@kushagradhawan/kookie-blocks';
-import { SpecsBlock } from './app/components/specs-block';
-import { TableOfContents } from './app/components/table-of-contents';
+import { SpecsBlock } from './components/specs-block';
 
 // Component that can use hooks to check if already inside CodeBlock
 const PreWrapper = ({ children, className, ...props }: React.ComponentProps<'pre'>) => {
@@ -57,10 +56,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Override pre: let PreWrapper handle CodeBlock wrapping
     pre: (props) => <PreWrapper {...props} />,
 
-    // Custom components specific to kookie-ui docs
+    // Custom components
     CodeBlock,
     SpecsBlock,
-    TableOfContents,
+    // TableOfContents comes from baseComponents
 
     ...components,
   };

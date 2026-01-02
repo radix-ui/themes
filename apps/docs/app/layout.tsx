@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Theme, ThemePanel } from '@kushagradhawan/kookie-ui';
-import { AppShell } from './components/app-shell';
+import { Providers } from '../components/providers';
+import { DocsLayout } from '../components/docs-layout';
 import './globals.css';
 import Script from 'next/script';
 
@@ -63,10 +63,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="blue" grayColor="auto" material="solid" radius="medium" fontFamily="sans">
-          <AppShell>{children}</AppShell>
-          <ThemePanel defaultOpen={false} />
-        </Theme>
+        <Providers>
+          <DocsLayout>{children}</DocsLayout>
+        </Providers>
         <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             '@context': 'https://schema.org',

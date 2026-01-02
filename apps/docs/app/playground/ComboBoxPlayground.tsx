@@ -3,7 +3,7 @@
 import React from 'react';
 import { Combobox, Flex } from '@kushagradhawan/kookie-ui';
 import { MapPin, Landmark, Mountain, Palmtree, Building2, Coffee, Cherry, Soup, Pizza, Beer, Flag, Trees, Pyramid, TreePalm, Ship, TentTree } from 'lucide-react';
-import Playground from '../components/playground';
+import Playground from '@/components/playground';
 
 const variants = ['classic', 'surface', 'soft', 'outline', 'ghost'] as const;
 const contentVariants = ['solid', 'soft'] as const;

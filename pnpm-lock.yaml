@@ -43,8 +43,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(react@19.1.0)
       '@kushagradhawan/kookie-blocks':
-        specifier: ^0.1.18
-        version: 0.1.18(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^0.1.19
+        version: 0.1.19(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@kushagradhawan/kookie-ui':
         specifier: workspace:*
         version: link:../../packages/kookie-ui
@@ -1019,6 +1019,18 @@ packages:
 
   '@kushagradhawan/kookie-blocks@0.1.18':
     resolution: {integrity: sha512-cdTzCFZuZoLLZQWvXMewQq4l8rmNjgrcuNbSPQ4EYWFbwT6eY/Ho/HOR2VR5gw40+gArzSPSqPKQPHX4ry6EAw==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@kushagradhawan/kookie-ui': '>=0.1.0'
+      marked: '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      marked:
+        optional: true
+
+  '@kushagradhawan/kookie-blocks@0.1.19':
+    resolution: {integrity: sha512-ZeC5uS1D2B2WPBGQv6hkqMV89n0C3/0zhZ/QdleXjK+zEBFedHA/Q642wffD1QLFaPXL7Hvn1DaG49LqlmwnhA==}
     engines: {node: '>=16'}
     peerDependencies:
       '@kushagradhawan/kookie-ui': '>=0.1.0'
@@ -5735,8 +5747,8 @@ packages:
     peerDependencies:
       zod: ^3.24.1
 
-  zod-to-json-schema@3.25.0:
-    resolution: {integrity: sha512-HvWtU2UG41LALjajJrML6uQejQhNJx+JBO9IflpSja4R03iNWfKXrj6W2h7ljuLyc1nKS+9yDyL/9tD1U/yBnQ==}
+  zod-to-json-schema@3.25.1:
+    resolution: {integrity: sha512-pM/SU9d3YAggzi6MtR4h7ruuQlqKtad8e9S0fmxcMi+ueAK5Korys/aWcV9LIIHTVbj01NdzxcnXSN+O74ZIVA==}
     peerDependencies:
       zod: ^3.25 || ^4
 
@@ -6295,10 +6307,10 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@kushagradhawan/kookie-blocks@0.1.18(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kushagradhawan/kookie-blocks@0.1.19(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@hugeicons/core-free-icons': 2.0.0
-      '@hugeicons/react': 1.1.4(react@19.1.0)
+      '@hugeicons/react': 1.1.1(react@19.1.0)
       '@kushagradhawan/kookie-ui': link:packages/kookie-ui
       harden-react-markdown: 1.1.7(react-markdown@9.1.0(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)
       react: 19.1.0
@@ -6326,7 +6338,7 @@ snapshots:
       react-dropzone: 14.3.8(react@19.1.0)
       react-remove-scroll-bar: 2.3.8(@types/react@19.1.6)(react@19.1.0)
       zod: 3.25.76
-      zod-to-json-schema: 3.25.0(zod@3.25.76)
+      zod-to-json-schema: 3.25.1(zod@3.25.76)
     optionalDependencies:
       '@types/react': 19.1.6
       '@types/react-dom': 19.1.5(@types/react@19.1.6)
@@ -12210,7 +12222,7 @@ snapshots:
     dependencies:
       zod: 3.25.76
 
-  zod-to-json-schema@3.25.0(zod@3.25.76):
+  zod-to-json-schema@3.25.1(zod@3.25.76):
     dependencies:
       zod: 3.25.76
 

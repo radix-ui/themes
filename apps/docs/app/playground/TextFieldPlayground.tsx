@@ -4,7 +4,7 @@ import React from 'react';
 import { TextField, Text } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Search01Icon } from '@hugeicons/core-free-icons';
-import Playground from '../components/playground';
+import Playground from '@/components/playground';
 
 const accentColors = [
   'gray',

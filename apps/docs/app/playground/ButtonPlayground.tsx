@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@kushagradhawan/kookie-ui';
 import { Plus } from 'lucide-react';
-import Playground from '../components/playground';
+import Playground from '@/components/playground';
 
 const accentColors = [
   'gray',

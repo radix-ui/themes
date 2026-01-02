@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import ComponentPage from '../../components/component-page';
+import { TableOfContents } from "@kushagradhawan/kookie-blocks";
+import { SiteDocsPage } from "@/components/site-docs-page";
 import ContentMDX from './shadows.mdx';
-import type { DocMetadata } from '@/lib/frontmatter';
+import type { DocMetadata } from "@/lib/frontmatter";
 
 interface ShadowsPageClientProps {
   metadata?: DocMetadata;
@@ -11,8 +12,13 @@ interface ShadowsPageClientProps {
 
 export default function ShadowsPageClient({ metadata }: ShadowsPageClientProps) {
   return (
-    <ComponentPage metadata={metadata}>
+    <SiteDocsPage
+      meta={metadata}
+      tableOfContents={
+        <TableOfContents renderContainer={(content) => content || null} />
+      }
+    >
       <ContentMDX />
-    </ComponentPage>
+    </SiteDocsPage>
   );
 }
