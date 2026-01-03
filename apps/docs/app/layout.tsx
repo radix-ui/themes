@@ -3,6 +3,7 @@ import { Providers } from '../components/providers';
 import { DocsLayout } from '../components/docs-layout';
 import './globals.css';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kookie-ui.vercel.app'),
@@ -76,6 +77,7 @@ export default function RootLayout({
             sameAs: ['https://github.com/KushagraDhawan1997/kookie-ui'],
           })}
         </Script>
+        <Analytics />
       </body>
     </html>
   );
