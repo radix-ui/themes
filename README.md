@@ -33,17 +33,18 @@ Kookie UI includes the same foundations you'd expect — spacing tokens, color t
 - **Unified motion** with transition patterns that work consistently across components
 - **Enhanced accessibility** with native tooltip support and stricter aria-label enforcement
 
-## Roadmap
+## Components
 
-Kookie UI isn't shipped in one go. It grows gradually, based on what feels stable enough to use in real products. Components are released when they meet that standard, not on arbitrary timelines.
+Documented components:
 
-**What's coming next:**
+- **Button** — Primary action component with variants and sizes
+- **TextField** — Text input with built-in validation states
+- **Combobox** — Searchable dropdown selection
+- **SegmentedControl** — Mutually exclusive option selector
+- **Navbar** — Application navigation bar
+- **Shell** — Application layout structure
 
-- Core input components: **TextField, TextArea, Switch, Checkbox, Radio**
-- Navigation patterns: **Tabs, Toolbar, Command Palette**
-- System experiences: **Dialog, Drawer, Popover**
-- Data components: **Tables** (with virtualization support)
-- Composed patterns: **UserCard, PropertyControl** and other small but recurring interface needs
+Plus theming documentation for colors, typography, radius, shadows, and material system.
 
 For higher-level patterns like documentation sites, marketing pages, and composed interfaces, see [Kookie Blocks](https://kookieblocks.com).
 
@@ -75,10 +76,7 @@ export default function App() {
 
 ## Documentation
 
-- **[Installation Guide](apps/docs/app/docs/installation.mdx)** - Get started with any React framework
-- **[Component Overview](apps/docs/app/docs/get-started.mdx)** - Learn about the design system and patterns
-- **[Playground](apps/docs/app/playground/page.tsx)** - Interactive component examples
-- **[API Reference](apps/docs/app/docs/Button/api.mdx)** - Complete component documentation
+Visit [hellokookie.com](https://hellokookie.com) for full documentation, including installation guides, component APIs, and theming.
 
 ## Requirements
 
