@@ -310,12 +310,12 @@ Kookie UI uses a comprehensive theming system with:
 
 ## License
 
-MIT © [Kushagra Dhawan](https://github.com/kushagradhawan)
+MIT © [Kushagra Dhawan](https://github.com/KushagraDhawan1997)
 
 ## Links
 
-- [Documentation](https://github.com/kushagradhawan/kookie-ui)
-- [GitHub Repository](https://github.com/kushagradhawan/kookie-ui)
-- [Issue Tracker](https://github.com/kushagradhawan/kookie-ui/issues)
+- [Documentation](https://hellokookie.com)
+- [GitHub Repository](https://github.com/KushagraDhawan1997/kookie-ui)
+- [Issue Tracker](https://github.com/KushagraDhawan1997/kookie-ui/issues)
 
 ---

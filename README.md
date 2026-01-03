@@ -115,7 +115,7 @@ pnpm docs
 
 ## License
 
-MIT © [Kushagra Dhawan](https://github.com/kushagradhawan)
+MIT © [Kushagra Dhawan](https://github.com/KushagraDhawan1997)
 
 ## Status
 
