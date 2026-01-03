@@ -99,6 +99,7 @@ type ImageProps = CommonImageProps & (ImageImgProps | ImageComponentProps);
 const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) => {
   const {
     as: Component = 'img',
+    asChild: _asChild, // Extract to prevent passing to DOM element
     className,
     style,
     loading = 'lazy',
