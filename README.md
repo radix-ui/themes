@@ -1,6 +1,6 @@
 # Kookie UI
 
-> A modern React component library with beautiful design tokens, flexible theming, and comprehensive documentation.
+> A fork of [Radix Themes](https://radix-ui.com/themes) that extends it into a full design system with patterns, layout architecture, and enhanced accessibility.
 
 [![Alpha](https://img.shields.io/badge/alpha-blue)](https://github.com/KushagraDhawan1997/kookie-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,11 +8,22 @@
 
 ## Introduction
 
-Most component libraries hand you a box of parts and leave the real decisions up to you. That sounds flexible, but in practice it means every team ends up re-deciding the same things: how should overlays behave, what counts as a primary action, what's the right way to handle motion, or which size an icon should actually be.
+Kookie UI builds on Radix Themes to codify patterns and rules that make interfaces feel consistent. While Radix provides excellent components, teams still end up re-deciding how overlays should behave, what counts as a primary action, or which size an icon should actually be.
 
-Kookie UI starts earlier in the chain. It begins with patterns — the rules that govern interaction, hierarchy, density, and rhythm — and then provides components that follow those rules automatically. The components exist to make the patterns easy to apply, not to replace the thinking behind them.
+Kookie UI starts earlier in the chain. It begins with patterns — the rules that govern interaction, hierarchy, density, and rhythm — and then provides components that follow those rules automatically.
 
-This isn't about flashy new UI. It's about reducing friction. Interfaces feel better when spacing, colors, transitions, and accessibility work the same way everywhere. Kookie UI tries to codify those boring but essential details so teams don't have to keep patching them one component at a time.
+## What's Different from Radix Themes
+
+Kookie UI extends Radix Themes with:
+
+- **Universal material system** — Theme-level `material` prop for translucent/solid surfaces with backdrop blur, replacing the limited `panelBackground`
+- **Shell architecture** — Complete layout engine with 7 slots (Header, Rail, Panel, Sidebar, Content, Inspector, Bottom), responsive presentation modes, and resize handles
+- **Navbar component** — Semantic slots for logo, navigation, and actions with fixed/sticky/static positioning
+- **Built-in tooltip support** — Native `tooltip` prop on Button and IconButton eliminates wrapper components
+- **Enhanced accessibility** — RTL layout support, Windows High Contrast mode, improved reduced motion handling
+- **Extended token systems** — 12-step blur scale, 9-step opacity scale, enhanced 3D button effects
+
+All Radix Themes components and APIs remain fully compatible.
 
 ## Philosophy
 
