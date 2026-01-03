@@ -11,6 +11,7 @@ interface SiteDocsPageProps {
   maxWidth?: string | number;
   padding?: '3' | '4' | '5' | '6' | '7' | '8' | '9';
   headerActions?: ReactNode;
+  headerTabs?: ReactNode;
   header?: ReactNode;
 }
 
