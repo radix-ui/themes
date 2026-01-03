@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@kushagradhawan/kookie-ui)](https://www.npmjs.com/package/@kushagradhawan/kookie-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Beta](https://img.shields.io/badge/status-beta-orange)](https://github.com/kushagradhawan/kookie-ui)
+[![Alpha](https://img.shields.io/badge/alpha-blue)](https://github.com/KushagraDhawan1997/kookie-ui)
 
 ## Installation
 
@@ -304,7 +304,7 @@ Kookie UI uses a comprehensive theming system with:
 
 ## Status
 
-⚠️ **Beta** - Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. Check changelogs carefully before upgrading.
+⚠️ **Alpha** - Kookie UI is in alpha. Components and APIs are still evolving, and breaking changes may happen. Check changelogs carefully before upgrading.
 
 > Note: This package uses npm Trusted Publishing with OIDC for secure CI/CD deployments.
 

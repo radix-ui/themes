@@ -2,7 +2,7 @@
 
 > A modern React component library with beautiful design tokens, flexible theming, and comprehensive documentation.
 
-[![Beta](https://img.shields.io/badge/status-beta-orange)](https://github.com/kushagradhawan/kookie-ui)
+[![Alpha](https://img.shields.io/badge/alpha-blue)](https://github.com/KushagraDhawan1997/kookie-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://img.shields.io/npm/v/@kushagradhawan/kookie-ui)](https://www.npmjs.com/package/@kushagradhawan/kookie-ui)
 
@@ -45,7 +45,7 @@ Kookie UI isn't shipped in one go. It grows gradually, based on what feels stabl
 - Data components: **Tables** (with virtualization support)
 - Composed patterns: **UserCard, PropertyControl** and other small but recurring interface needs
 
-Longer term, the plan is to ship **templates** for dashboards, marketing sites, authentication flows, and AI interfaces — not as frameworks, but as reliable starting points for common patterns.
+For higher-level patterns like documentation sites, marketing pages, and composed interfaces, see [Kookie Blocks](https://kookieblocks.com).
 
 ## Quick Start
 
@@ -110,4 +110,4 @@ MIT © [Kushagra Dhawan](https://github.com/kushagradhawan)
 
 ## Status
 
-⚠️ **Beta** - Kookie UI is in beta. Components and APIs are still evolving, and breaking changes may happen. Check changelogs carefully before upgrading.
+⚠️ **Alpha** - Kookie UI is in alpha. Components and APIs are still evolving, and breaking changes may happen. Check changelogs carefully before upgrading.
