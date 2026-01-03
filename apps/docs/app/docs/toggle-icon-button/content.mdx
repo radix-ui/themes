@@ -1,0 +1,424 @@
+---
+title: Toggle Icon Button
+description: Use toggle icon buttons for compact, accessible icon-only toggles. Toggle icon buttons combine IconButton accessibility with toggle state management.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/toggle-icon-button.tsx
+---
+
+Use toggle icon buttons for compact, accessible icon-only toggles. Toggle icon buttons combine IconButton accessibility with toggle state management.
+
+This component extends the [IconButton](/docs/icon-button) component with toggle functionality using [Radix UI's Toggle primitive](https://www.radix-ui.com/primitives/docs/components/toggle).
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { ToggleIconButton } from '@kushagradhawan/kookie-ui';
+import { Star } from 'lucide-react';
+
+export function MyComponent() {
+  return (
+    <ToggleIconButton aria-label="Toggle star">
+      <Star />
+    </ToggleIconButton>
+  );
+}
+```
+
+## Props
+
+ToggleIconButton extends all [IconButton props](/docs/icon-button#props) with these additional toggle-specific props:
+
+| Prop              | Type                          | Description                                                |
+| ----------------- | ----------------------------- | ---------------------------------------------------------- |
+| `pressed`         | `boolean`                     | Controlled pressed state                                   |
+| `onPressedChange` | `(pressed: boolean) => void`  | Callback when pressed state changes                        |
+| `defaultPressed`  | `boolean`                     | Default pressed state for uncontrolled usage               |
+
+## Accessibility Requirements
+
+Like IconButton, toggle icon buttons must have an accessible name. Provide accessibility through one of these methods:
+
+### aria-label
+
+Direct descriptive text that explains the button's action.
+
+```tsx
+import { Bell } from 'lucide-react';
+
+<ToggleIconButton aria-label="Toggle notifications">
+  <Bell />
+</ToggleIconButton>
+```
+
+### aria-labelledby
+
+Reference to a label element for more complex descriptions.
+
+```tsx
+import { Bell } from 'lucide-react';
+
+<ToggleIconButton aria-labelledby="notifications-label">
+  <Bell />
+</ToggleIconButton>
+<span id="notifications-label">Toggle notifications</span>
+```
+
+## Controlled vs Uncontrolled
+
+### Uncontrolled
+
+Use `defaultPressed` to set an initial state without managing it yourself.
+
+```tsx
+import { Star } from 'lucide-react';
+
+<ToggleIconButton defaultPressed={false} aria-label="Star">
+  <Star />
+</ToggleIconButton>
+```
+
+### Controlled
+
+Use `pressed` and `onPressedChange` for full control over the toggle state.
+
+```tsx
+import React from 'react';
+import { ToggleIconButton } from '@kushagradhawan/kookie-ui';
+import { Star } from 'lucide-react';
+
+export function ControlledExample() {
+  const [starred, setStarred] = React.useState(false);
+
+  return (
+    <ToggleIconButton
+      pressed={starred}
+      onPressedChange={setStarred}
+      aria-label={starred ? 'Unstar' : 'Star'}
+    >
+      <Star />
+    </ToggleIconButton>
+  );
+}
+```
+
+## Variants
+
+ToggleIconButton inherits all IconButton variants. The active state is visually indicated through the `data-state="on"` attribute.
+
+### Solid
+
+Primary toggle actions with strong visual feedback.
+
+```tsx
+import React from 'react';
+import { Heart } from 'lucide-react';
+
+const [liked, setLiked] = React.useState(false);
+
+<ToggleIconButton
+  variant="solid"
+  size="3"
+  color="crimson"
+  pressed={liked}
+  onPressedChange={setLiked}
+  aria-label={liked ? 'Unlike' : 'Like'}
+>
+  <Heart />
+</ToggleIconButton>
+```
+
+### Soft
+
+Subtle toggle for content-heavy interfaces.
+
+```tsx
+import React from 'react';
+import { Bookmark } from 'lucide-react';
+
+const [bookmarked, setBookmarked] = React.useState(false);
+
+<ToggleIconButton
+  variant="soft"
+  size="3"
+  pressed={bookmarked}
+  onPressedChange={setBookmarked}
+  aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark'}
+>
+  <Bookmark />
+</ToggleIconButton>
+```
+
+### Outline
+
+Bordered toggle for secondary actions.
+
+```tsx
+import React from 'react';
+import { Pin } from 'lucide-react';
+
+const [pinned, setPinned] = React.useState(false);
+
+<ToggleIconButton
+  variant="outline"
+  size="3"
+  pressed={pinned}
+  onPressedChange={setPinned}
+  aria-label={pinned ? 'Unpin' : 'Pin'}
+>
+  <Pin />
+</ToggleIconButton>
+```
+
+### Ghost
+
+Minimal toggle for utility actions.
+
+```tsx
+import React from 'react';
+import { Eye, EyeOff } from 'lucide-react';
+
+const [visible, setVisible] = React.useState(true);
+
+<ToggleIconButton
+  variant="ghost"
+  size="3"
+  pressed={visible}
+  onPressedChange={setVisible}
+  aria-label={visible ? 'Hide' : 'Show'}
+>
+  {visible ? <Eye /> : <EyeOff />}
+</ToggleIconButton>
+```
+
+## Sizes
+
+ToggleIconButton supports the same size scale as IconButton.
+
+```tsx
+import React from 'react';
+import { Star } from 'lucide-react';
+
+const [s1, setS1] = React.useState(false);
+const [s2, setS2] = React.useState(false);
+const [s3, setS3] = React.useState(false);
+
+<ToggleIconButton size="1" pressed={s1} onPressedChange={setS1} aria-label="Star">
+  <Star />
+</ToggleIconButton>
+<ToggleIconButton size="2" pressed={s2} onPressedChange={setS2} aria-label="Star">
+  <Star />
+</ToggleIconButton>
+<ToggleIconButton size="3" pressed={s3} onPressedChange={setS3} aria-label="Star">
+  <Star />
+</ToggleIconButton>
+```
+
+## With Tooltips
+
+Use the `tooltip` prop to add context to toggle actions.
+
+```tsx
+import React from 'react';
+import { Bell, BellOff } from 'lucide-react';
+
+const [muted, setMuted] = React.useState(false);
+
+<ToggleIconButton
+  size="3"
+  variant="soft"
+  pressed={muted}
+  onPressedChange={setMuted}
+  aria-label={muted ? 'Unmute' : 'Mute'}
+  tooltip={muted ? 'Click to unmute' : 'Click to mute'}
+>
+  {muted ? <BellOff /> : <Bell />}
+</ToggleIconButton>
+```
+
+## Practical Examples
+
+### Like Button
+
+```tsx
+import React from 'react';
+import { Heart } from 'lucide-react';
+
+export function LikeButton() {
+  const [liked, setLiked] = React.useState(false);
+
+  return (
+    <ToggleIconButton
+      variant="ghost"
+      size="2"
+      color="crimson"
+      pressed={liked}
+      onPressedChange={setLiked}
+      aria-label={liked ? 'Unlike' : 'Like'}
+      tooltip={liked ? 'Unlike' : 'Like'}
+    >
+      <Heart />
+    </ToggleIconButton>
+  );
+}
+```
+
+### Favorite Button
+
+```tsx
+import React from 'react';
+import { Star } from 'lucide-react';
+
+export function FavoriteButton() {
+  const [favorited, setFavorited] = React.useState(false);
+
+  return (
+    <ToggleIconButton
+      variant="soft"
+      size="3"
+      color="amber"
+      pressed={favorited}
+      onPressedChange={setFavorited}
+      aria-label={favorited ? 'Remove from favorites' : 'Add to favorites'}
+      tooltip={favorited ? 'Remove from favorites' : 'Add to favorites'}
+    >
+      <Star />
+    </ToggleIconButton>
+  );
+}
+```
+
+### Mute Button
+
+```tsx
+import React from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
+
+export function MuteButton() {
+  const [muted, setMuted] = React.useState(false);
+
+  return (
+    <ToggleIconButton
+      variant="ghost"
+      size="3"
+      pressed={muted}
+      onPressedChange={setMuted}
+      aria-label={muted ? 'Unmute' : 'Mute'}
+    >
+      {muted ? <VolumeX /> : <Volume2 />}
+    </ToggleIconButton>
+  );
+}
+```
+
+### Pin Button
+
+```tsx
+import React from 'react';
+import { Pin } from 'lucide-react';
+
+export function PinButton() {
+  const [pinned, setPinned] = React.useState(false);
+
+  return (
+    <ToggleIconButton
+      variant="outline"
+      size="2"
+      pressed={pinned}
+      onPressedChange={setPinned}
+      aria-label={pinned ? 'Unpin' : 'Pin'}
+      tooltip={pinned ? 'Unpin' : 'Pin to top'}
+    >
+      <Pin />
+    </ToggleIconButton>
+  );
+}
+```
+
+### Bold Text Toggle
+
+```tsx
+import React from 'react';
+import { Bold } from 'lucide-react';
+
+export function BoldToggle() {
+  const [isBold, setIsBold] = React.useState(false);
+
+  return (
+    <ToggleIconButton
+      variant="ghost"
+      size="1"
+      pressed={isBold}
+      onPressedChange={setIsBold}
+      aria-label={isBold ? 'Remove bold' : 'Make bold'}
+    >
+      <Bold />
+    </ToggleIconButton>
+  );
+}
+```
+
+## Accessibility
+
+ToggleIconButton combines IconButton accessibility with toggle state management.
+
+### Enforced Accessible Name
+
+Like IconButton, ToggleIconButton throws an error in development if no accessible name is provided.
+
+### ARIA Attributes
+
+- `aria-pressed` is automatically set based on the toggle state
+- Screen readers announce both the button's purpose and pressed state
+
+### Live Announcements
+
+State changes are announced to screen readers through live regions, informing users when toggles are activated or deactivated.
+
+### Keyboard Navigation
+
+- Full keyboard support with Enter and Space keys
+- Focus indicators for all variants
+- Proper focus management
+
+## Enhancements
+
+### IconButton Features
+
+All IconButton features are available, including:
+- Built-in tooltip support
+- Runtime accessibility validation
+- Enhanced loading states
+
+### Toggle Features
+
+All toggle features are available, including:
+- Controlled and uncontrolled state management
+- Live state announcements
+- State validation warnings
+
+### Combined Accessibility
+
+ToggleIconButton provides the most comprehensive accessibility of all button components:
+- Enforced accessible name
+- Toggle state announcements
+- Tooltip integration
+- Screen reader support
+
+## Changelog
+
+### Added
+
+- Combined IconButton accessibility with toggle functionality
+- Live accessibility announcements for state changes
+- Controlled and uncontrolled state management
+- Full IconButton prop compatibility including tooltips
+
+### Changed
+
+- Seamless integration with IconButton component
+- Proper ARIA attributes for toggle functionality

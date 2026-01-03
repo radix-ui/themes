@@ -1,0 +1,391 @@
+---
+title: Icon Button
+description: Use icon buttons for compact, accessible icon-only interactions. Icon buttons are essential for space-efficient interfaces while maintaining accessibility compliance.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/icon-button.tsx
+---
+
+Use icon buttons for compact, accessible icon-only interactions. Icon buttons are essential for space-efficient interfaces while maintaining accessibility compliance.
+
+This is an enhanced version of the IconButton component from [Radix Themes](https://www.radix-ui.com/themes). For the original API reference, see the [Radix Themes IconButton documentation](https://www.radix-ui.com/themes/docs/components/icon-button).
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { IconButton } from '@kushagradhawan/kookie-ui';
+import { Settings } from 'lucide-react';
+
+export function MyComponent() {
+  return (
+    <IconButton aria-label="Settings">
+      <Settings />
+    </IconButton>
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                                                                  | Description                                                                                     |
+| -------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `variant`      | `'classic' \| 'solid' \| 'soft' \| 'surface' \| 'outline' \| 'ghost'` | Button style variant: classic for elevated, solid for primary, outline for secondary, ghost for utility, soft/surface for content-heavy UIs |
+| `size`         | `'1' \| '2' \| '3' \| '4'`                                            | Button density: 1 (24px) for toolbars, 2 (32px) standard, 3 (40px) for important actions, 4 (48px) for hero sections. Supports responsive objects |
+| `color`        | `AccentColor`                                                         | Semantic color to communicate action intent. Use highContrast for maximum visibility on complex backgrounds |
+| `highContrast` | `boolean`                                                             | Maximum visibility mode, especially useful on complex or translucent backgrounds                |
+| `radius`       | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'`                  | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for circular |
+| `material`     | `'solid' \| 'translucent'`                                            | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
+| `loading`      | `boolean`                                                             | Shows spinner and disables button automatically. No need to set disabled manually               |
+| `disabled`     | `boolean`                                                             | Prevents interaction when action is unavailable                                                 |
+| `aria-label`   | `string`                                                              | Required accessibility label describing the button's action                                     |
+| `tooltip`      | `string \| ReactNode`                                                 | Content for tooltip. Appears on hover and focus for accessibility                               |
+| `tooltipSide`  | `'top' \| 'right' \| 'bottom' \| 'left'`                              | Position of tooltip relative to button                                                          |
+| `tooltipAlign` | `'start' \| 'center' \| 'end'`                                        | Alignment of tooltip                                                                            |
+
+## Accessibility Requirements
+
+Icon buttons must have an accessible name to meet WCAG guidelines. Provide accessibility through one of these methods:
+
+### aria-label
+
+Direct descriptive text that explains the button's action.
+
+```tsx
+import { Settings } from 'lucide-react';
+
+<IconButton aria-label="Open settings">
+  <Settings />
+</IconButton>
+```
+
+### aria-labelledby
+
+Reference to a label element for more complex descriptions.
+
+```tsx
+import { Settings } from 'lucide-react';
+
+<IconButton aria-labelledby="settings-label">
+  <Settings />
+</IconButton>
+<span id="settings-label">Open settings panel</span>
+```
+
+### Visible Text Children
+
+Fallback when visible text is included alongside the icon.
+
+```tsx
+import { Settings } from 'lucide-react';
+
+<IconButton>
+  <Settings />
+  Settings
+</IconButton>
+```
+
+## Variants
+
+Use the `variant` prop to set button style.
+
+### Classic
+
+Elevated style with subtle shadow for maximum visual impact.
+
+```tsx
+import { Star } from 'lucide-react';
+
+<IconButton size="3" variant="classic" aria-label="Favorite">
+  <Star />
+</IconButton>
+```
+
+### Solid
+
+Filled background for primary actions.
+
+```tsx
+import { Plus } from 'lucide-react';
+
+<IconButton size="3" variant="solid" aria-label="Add item">
+  <Plus />
+</IconButton>
+```
+
+### Soft
+
+Subtle background for secondary actions.
+
+```tsx
+import { Edit } from 'lucide-react';
+
+<IconButton size="3" variant="soft" aria-label="Edit">
+  <Edit />
+</IconButton>
+```
+
+### Outline
+
+Bordered style for secondary actions.
+
+```tsx
+import { Copy } from 'lucide-react';
+
+<IconButton size="3" variant="outline" aria-label="Copy">
+  <Copy />
+</IconButton>
+```
+
+### Surface
+
+Elevated surface for content-heavy UIs.
+
+```tsx
+import { Share } from 'lucide-react';
+
+<IconButton size="3" variant="surface" aria-label="Share">
+  <Share />
+</IconButton>
+```
+
+### Ghost
+
+Minimal style for utility actions.
+
+```tsx
+import { X } from 'lucide-react';
+
+<IconButton size="3" variant="ghost" aria-label="Close">
+  <X />
+</IconButton>
+```
+
+## Sizes
+
+Set `size` for button density. Icon buttons maintain square aspect ratios for consistent visual alignment.
+
+### Size 1
+
+Compact for toolbars and dense interfaces.
+
+```tsx
+import { ChevronDown } from 'lucide-react';
+
+<IconButton size="1" aria-label="Expand">
+  <ChevronDown />
+</IconButton>
+```
+
+### Size 2
+
+Standard for most interface contexts.
+
+```tsx
+import { ChevronDown } from 'lucide-react';
+
+<IconButton size="2" aria-label="Expand">
+  <ChevronDown />
+</IconButton>
+```
+
+### Size 3
+
+Large for important actions and mobile touch targets.
+
+```tsx
+import { ChevronDown } from 'lucide-react';
+
+<IconButton size="3" aria-label="Expand">
+  <ChevronDown />
+</IconButton>
+```
+
+### Size 4
+
+Extra large for hero sections and maximum impact.
+
+```tsx
+import { ChevronDown } from 'lucide-react';
+
+<IconButton size="4" aria-label="Expand">
+  <ChevronDown />
+</IconButton>
+```
+
+## Colors
+
+Use the `color` prop with semantic colors to communicate action intent.
+
+```tsx
+import { Heart, Trash, Check } from 'lucide-react';
+
+<IconButton size="3" color="crimson" variant="solid" aria-label="Like">
+  <Heart />
+</IconButton>
+<IconButton size="3" color="red" variant="soft" aria-label="Delete">
+  <Trash />
+</IconButton>
+<IconButton size="3" color="green" variant="solid" aria-label="Confirm">
+  <Check />
+</IconButton>
+```
+
+## Tooltips
+
+Use the `tooltip` prop to add context to icon button actions. Always provide a tooltip for icon-only buttons to help users understand the action.
+
+```tsx
+import { Save } from 'lucide-react';
+
+<IconButton
+  variant="soft"
+  size="3"
+  aria-label="Save"
+  tooltip="Save your progress"
+>
+  <Save />
+</IconButton>
+```
+
+### Tooltip Position
+
+Control tooltip placement with `tooltipSide` and `tooltipAlign` props.
+
+```tsx
+import { Info } from 'lucide-react';
+
+<IconButton
+  aria-label="More information"
+  tooltip="Click for details"
+  tooltipSide="right"
+  tooltipAlign="start"
+>
+  <Info />
+</IconButton>
+```
+
+## States
+
+### Loading
+
+Set `loading` to show a spinner and disable the button.
+
+```tsx
+import { Upload } from 'lucide-react';
+
+<IconButton size="3" aria-label="Upload" loading>
+  <Upload />
+</IconButton>
+```
+
+### Disabled
+
+Set `disabled` to prevent interaction.
+
+```tsx
+import { Send } from 'lucide-react';
+
+<IconButton size="3" aria-label="Send" disabled>
+  <Send />
+</IconButton>
+```
+
+## Polymorphism
+
+### As
+
+Use the `as` prop to render as different HTML elements while maintaining icon button styling.
+
+```tsx
+import { ExternalLink } from 'lucide-react';
+
+<IconButton size="3" as="a" href="/home" aria-label="Go home">
+  <ExternalLink />
+</IconButton>
+```
+
+### AsChild
+
+Use the `asChild` prop to merge props with a child element using the Radix Slot pattern.
+
+```tsx
+import { ArrowRight } from 'lucide-react';
+
+<IconButton size="3" asChild aria-label="Go to dashboard">
+  <a href="/dashboard">
+    <ArrowRight />
+  </a>
+</IconButton>
+```
+
+## Responsive
+
+Use responsive objects with the `size` prop to adapt sizing across breakpoints.
+
+```tsx
+import { Menu } from 'lucide-react';
+
+<IconButton size={{ initial: '2', sm: '3', md: '4' }} aria-label="Menu">
+  <Menu />
+</IconButton>
+```
+
+## Accessibility
+
+Kookie UI's IconButton enforces accessibility requirements with runtime validation.
+
+### Enforced Accessible Name
+
+IconButton throws an error in development if no accessible name is provided. This ensures WCAG compliance and catches accessibility issues early.
+
+### Keyboard Navigation
+
+- Full keyboard support with Enter and Space keys
+- Visible focus indicators for all variants
+- Enhanced focus management for Windows High Contrast mode
+
+### Screen Readers
+
+- Semantic button elements with proper roles
+- Loading state announcements
+- Tooltip associations via `aria-describedby`
+- Disabled state announcements
+
+## Enhancements
+
+Kookie UI extends Radix Themes IconButton with practical improvements:
+
+### Built-in Tooltip Support
+
+Native `tooltip` prop eliminates need for wrapper components. Tooltips automatically provide accessibility through `aria-describedby` associations.
+
+### Runtime Accessibility Validation
+
+Enforced accessibility requirements with helpful error messages in development. Ensures all icon buttons have proper accessible names.
+
+### Enhanced Loading State
+
+Loading state automatically disables interaction and displays spinner with proper accessibility announcements.
+
+## Changelog
+
+### Added
+
+- Built-in tooltip support through `tooltip`, `tooltipSide`, `tooltipAlign` props
+- Runtime accessibility validation for missing accessible names
+- New `material` prop for solid/translucent theme contexts
+- Enhanced form integration with complete HTML form attribute support
+
+### Changed
+
+- Improved 3D shadow system for classic variant
+- Better contrast relationships in both light and dark themes
+
+### Fixed
+
+- Better color saturation and brightness in high contrast mode
+- Enhanced focus indicators for improved accessibility

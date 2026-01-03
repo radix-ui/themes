@@ -15,12 +15,6 @@ import type { PropDef } from '../props/prop-def.js';
 const objectFitValues = ['cover', 'contain', 'fill', 'scale-down', 'none'] as const;
 
 /**
- * Available visual variants for the Image component
- * Currently only 'surface' variant is available, providing subtle elevation
- */
-const variants = ['surface'] as const;
-
-/**
  * Image component prop definitions that define the component's API
  * 
  * These props control the visual appearance, behavior, and accessibility
@@ -96,23 +90,6 @@ const imagePropDefs = {
     responsive: true,
   },
   /**
-   * Visual variant that determines the image's appearance style
-   * 
-   * Currently supports 'surface' variant which provides subtle elevation
-   * and integrates well with card-based layouts and content sections.
-   * 
-   * @example
-   * ```tsx
-   * <Image src="/photo.jpg" variant="surface" alt="Elevated image" />
-   * ```
-   */
-  variant: {
-    type: 'enum',
-    className: 'rt-variant',
-    values: variants,
-    default: 'surface',
-  },
-  /**
    * ARIA label announced by screen readers during image loading
    * 
    * Provides accessibility feedback for users with visual impairments.
@@ -177,7 +154,6 @@ const imagePropDefs = {
   },
 } satisfies {
   fit: PropDef<(typeof objectFitValues)[number]>;
-  variant: PropDef<(typeof variants)[number]>;
   loadingAriaLabel: PropDef<string>;
   errorAriaLabel: PropDef<string>;
   radius: PropDef<'none' | 'small' | 'medium' | 'large' | 'full'>;

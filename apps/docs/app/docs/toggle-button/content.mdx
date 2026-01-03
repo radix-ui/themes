@@ -1,0 +1,340 @@
+---
+title: Toggle Button
+description: Use toggle buttons for actions that can be pressed or unpressed. Toggle buttons provide proper accessibility announcements and state management for binary states.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/toggle-button.tsx
+---
+
+Use toggle buttons for actions that can be pressed or unpressed. Toggle buttons provide proper accessibility announcements and state management for binary states.
+
+This component extends the [Button](/docs/button) component with toggle functionality using [Radix UI's Toggle primitive](https://www.radix-ui.com/primitives/docs/components/toggle).
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { ToggleButton } from '@kushagradhawan/kookie-ui';
+
+export function MyComponent() {
+  return <ToggleButton>Toggle Me</ToggleButton>;
+}
+```
+
+## Props
+
+ToggleButton extends all [Button props](/docs/button#props) with these additional toggle-specific props:
+
+| Prop              | Type                          | Description                                                |
+| ----------------- | ----------------------------- | ---------------------------------------------------------- |
+| `pressed`         | `boolean`                     | Controlled pressed state                                   |
+| `onPressedChange` | `(pressed: boolean) => void`  | Callback when pressed state changes                        |
+| `defaultPressed`  | `boolean`                     | Default pressed state for uncontrolled usage               |
+
+## Controlled vs Uncontrolled
+
+### Uncontrolled
+
+Use `defaultPressed` to set an initial state without managing it yourself.
+
+```tsx
+<ToggleButton defaultPressed={false}>
+  Toggle Me
+</ToggleButton>
+```
+
+### Controlled
+
+Use `pressed` and `onPressedChange` for full control over the toggle state.
+
+```tsx
+import React from 'react';
+import { ToggleButton } from '@kushagradhawan/kookie-ui';
+
+export function ControlledExample() {
+  const [pressed, setPressed] = React.useState(false);
+
+  return (
+    <ToggleButton pressed={pressed} onPressedChange={setPressed}>
+      {pressed ? 'On' : 'Off'}
+    </ToggleButton>
+  );
+}
+```
+
+## Variants
+
+ToggleButton inherits all Button variants. The active state is visually indicated through the `data-state="on"` attribute.
+
+### Solid
+
+Primary toggle actions.
+
+```tsx
+import React from 'react';
+
+const [isActive, setIsActive] = React.useState(false);
+
+<ToggleButton
+  variant="solid"
+  size="3"
+  pressed={isActive}
+  onPressedChange={setIsActive}
+>
+  {isActive ? 'Active' : 'Inactive'}
+</ToggleButton>
+```
+
+### Soft
+
+Subtle toggle for content-heavy interfaces.
+
+```tsx
+import React from 'react';
+
+const [isEnabled, setIsEnabled] = React.useState(false);
+
+<ToggleButton
+  variant="soft"
+  size="3"
+  pressed={isEnabled}
+  onPressedChange={setIsEnabled}
+>
+  {isEnabled ? 'Enabled' : 'Disabled'}
+</ToggleButton>
+```
+
+### Outline
+
+Bordered toggle for secondary actions.
+
+```tsx
+import React from 'react';
+
+const [isSelected, setIsSelected] = React.useState(false);
+
+<ToggleButton
+  variant="outline"
+  size="3"
+  pressed={isSelected}
+  onPressedChange={setIsSelected}
+>
+  {isSelected ? 'Selected' : 'Unselected'}
+</ToggleButton>
+```
+
+### Ghost
+
+Minimal toggle for utility actions.
+
+```tsx
+import React from 'react';
+
+const [isOn, setIsOn] = React.useState(false);
+
+<ToggleButton
+  variant="ghost"
+  size="3"
+  pressed={isOn}
+  onPressedChange={setIsOn}
+>
+  {isOn ? 'On' : 'Off'}
+</ToggleButton>
+```
+
+## Colors
+
+Use semantic colors to communicate the toggle's purpose.
+
+```tsx
+import React from 'react';
+
+const [isFavorite, setIsFavorite] = React.useState(false);
+const [isFollowing, setIsFollowing] = React.useState(false);
+
+<ToggleButton
+  color="crimson"
+  variant="soft"
+  size="3"
+  pressed={isFavorite}
+  onPressedChange={setIsFavorite}
+>
+  {isFavorite ? 'Favorited' : 'Favorite'}
+</ToggleButton>
+
+<ToggleButton
+  color="blue"
+  variant="solid"
+  size="3"
+  pressed={isFollowing}
+  onPressedChange={setIsFollowing}
+>
+  {isFollowing ? 'Following' : 'Follow'}
+</ToggleButton>
+```
+
+## Sizes
+
+ToggleButton supports the same size scale as Button.
+
+```tsx
+import React from 'react';
+
+const [small, setSmall] = React.useState(false);
+const [medium, setMedium] = React.useState(false);
+const [large, setLarge] = React.useState(false);
+
+<ToggleButton size="1" pressed={small} onPressedChange={setSmall}>
+  Small
+</ToggleButton>
+<ToggleButton size="2" pressed={medium} onPressedChange={setMedium}>
+  Medium
+</ToggleButton>
+<ToggleButton size="3" pressed={large} onPressedChange={setLarge}>
+  Large
+</ToggleButton>
+```
+
+## With Icons
+
+Combine icons with text for clearer toggle actions.
+
+```tsx
+import React from 'react';
+import { Star, Heart, Bell } from 'lucide-react';
+
+const [starred, setStarred] = React.useState(false);
+
+<ToggleButton
+  size="3"
+  variant="soft"
+  pressed={starred}
+  onPressedChange={setStarred}
+>
+  <Star />
+  {starred ? 'Starred' : 'Star'}
+</ToggleButton>
+```
+
+## Practical Examples
+
+### Bookmark Button
+
+```tsx
+import React from 'react';
+import { Bookmark } from 'lucide-react';
+
+export function BookmarkButton() {
+  const [isBookmarked, setIsBookmarked] = React.useState(false);
+
+  return (
+    <ToggleButton
+      variant="soft"
+      size="2"
+      color="amber"
+      pressed={isBookmarked}
+      onPressedChange={setIsBookmarked}
+    >
+      <Bookmark />
+      {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+    </ToggleButton>
+  );
+}
+```
+
+### Follow Button
+
+```tsx
+import React from 'react';
+import { UserPlus, UserCheck } from 'lucide-react';
+
+export function FollowButton() {
+  const [isFollowing, setIsFollowing] = React.useState(false);
+
+  return (
+    <ToggleButton
+      variant={isFollowing ? 'soft' : 'solid'}
+      size="2"
+      color="blue"
+      pressed={isFollowing}
+      onPressedChange={setIsFollowing}
+    >
+      {isFollowing ? <UserCheck /> : <UserPlus />}
+      {isFollowing ? 'Following' : 'Follow'}
+    </ToggleButton>
+  );
+}
+```
+
+### Mute Button
+
+```tsx
+import React from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
+
+export function MuteButton() {
+  const [isMuted, setIsMuted] = React.useState(false);
+
+  return (
+    <ToggleButton
+      variant="ghost"
+      size="3"
+      pressed={isMuted}
+      onPressedChange={setIsMuted}
+    >
+      {isMuted ? <VolumeX /> : <Volume2 />}
+      {isMuted ? 'Unmute' : 'Mute'}
+    </ToggleButton>
+  );
+}
+```
+
+## Accessibility
+
+ToggleButton provides comprehensive accessibility support.
+
+### ARIA Attributes
+
+- `aria-pressed` is automatically set based on the toggle state
+- Screen readers announce the button's pressed state
+
+### Live Announcements
+
+State changes are announced to screen readers through live regions, ensuring users are informed of toggle actions.
+
+### Keyboard Navigation
+
+- Full keyboard support with Enter and Space keys
+- Focus indicators for all variants
+- Proper focus management
+
+## Enhancements
+
+### Live State Announcements
+
+ToggleButton announces state changes to screen readers, helping users understand when a toggle has been activated or deactivated.
+
+### State Validation
+
+Development warnings are provided when toggle state may not be functioning correctly, helping catch issues early.
+
+### Button Integration
+
+Full access to all Button props including variants, sizes, colors, and loading states.
+
+## Changelog
+
+### Added
+
+- Live accessibility announcements for state changes
+- Controlled and uncontrolled state management
+- State validation warnings in development
+- Full Button prop compatibility
+
+### Changed
+
+- Seamless integration with Button component
+- Proper ARIA attributes for toggle functionality
