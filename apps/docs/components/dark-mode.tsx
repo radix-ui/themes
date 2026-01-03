@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { IconButton, useThemeContext } from '@kushagradhawan/kookie-ui';
-import { Moon, Sun } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Moon02Icon, Sun03Icon } from '@hugeicons/core-free-icons';
 
 export function DarkModeToggle() {
   const { appearance, onAppearanceChange } = useThemeContext();
@@ -48,7 +49,7 @@ export function DarkModeToggle() {
 
   return (
     <IconButton variant="ghost" size="2" highContrast color="gray" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? <HugeiconsIcon icon={Sun03Icon} strokeWidth={1.75} /> : <HugeiconsIcon icon={Moon02Icon} strokeWidth={1.75} />}
     </IconButton>
   );
 }

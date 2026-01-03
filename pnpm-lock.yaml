@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@kushagradhawan/kookie-blocks':
-        specifier: ^0.1.24
-        version: 0.1.24(@kushagradhawan/kookie-ui@0.1.94(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^0.1.27
+        version: 0.1.27(@kushagradhawan/kookie-ui@0.1.95(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@types/node':
         specifier: ^20.16.10
@@ -43,8 +43,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4(react@19.1.0)
       '@kushagradhawan/kookie-blocks':
-        specifier: ^0.1.25
-        version: 0.1.25(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^0.1.27
+        version: 0.1.27(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@kushagradhawan/kookie-ui':
         specifier: workspace:*
         version: link:../../packages/kookie-ui
@@ -737,9 +737,6 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@hugeicons/core-free-icons@2.0.0':
-    resolution: {integrity: sha512-OSfv5k0iB0yG61dcfK7jcf00AIK8EXyQOgtcNJzSBFvm88n9VOelkxihZHJnNwDUFpO/jZI3vZSVp6i1dmRvJQ==}
-
   '@hugeicons/core-free-icons@3.1.1':
     resolution: {integrity: sha512-UpS2lUQFi5sKyJSWwM6rO+BnPLvVz1gsyCpPHeZyVuZqi89YH8ksliza4cwaODqKOZyeXmG8juo1ty4QtQofkg==}
 
@@ -1018,8 +1015,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@kushagradhawan/kookie-blocks@0.1.24':
-    resolution: {integrity: sha512-QMoWVQmq3lvxqFvQL5IF7aQnpwy9nxKIHJMy31VHuYhqKWajQw7Rt8qaRUbi8c/1/leoo6hDn0i9gjuZJHpy/A==}
+  '@kushagradhawan/kookie-blocks@0.1.27':
+    resolution: {integrity: sha512-z49aDwFx5TMg57lyMr6bMPTBxuVEQWgQTeg2cIKf18vC9yAl6EPMg72/RU3tHWFejYYbFlK9/kMe7bwO/s+efw==}
     engines: {node: '>=16'}
     peerDependencies:
       '@kushagradhawan/kookie-ui': '>=0.1.0'
@@ -1030,20 +1027,8 @@ packages:
       marked:
         optional: true
 
-  '@kushagradhawan/kookie-blocks@0.1.25':
-    resolution: {integrity: sha512-FLUu808mV6RaaTD6sgcoASti3eCrIp7K48jFzgcuscPtz0F1J4SfQAz5sgM7J22irgGKxM5qquMofsZhKa7ZsQ==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@kushagradhawan/kookie-ui': '>=0.1.0'
-      marked: '*'
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      marked:
-        optional: true
-
-  '@kushagradhawan/kookie-ui@0.1.94':
-    resolution: {integrity: sha512-go3q+HWOksR4rBMQ40EBPPmSZASTmfy1Tuhf07ZIhjr7C1Nsxdhv0tR4H/ucy7tDyi99ivukqZ5WMUO8TwTgrw==}
+  '@kushagradhawan/kookie-ui@0.1.95':
+    resolution: {integrity: sha512-Jj5FkZVAwhcPBMHUW3qt7dqHJphgYa2LadkiBaa09vC5zwuqTyc1CvABmKOMK3PHfqXoW5gHMX+Elm6l/XuJ1g==}
     engines: {node: '>=16'}
     peerDependencies:
       '@types/react': '*'
@@ -2828,20 +2813,20 @@ packages:
   '@zag-js/anatomy@1.22.1':
     resolution: {integrity: sha512-I5OvOuJBt6hEqbpqVkWCOEoDfGMnKuLx+S0h7Un5SyAwnif3F1dSqDYujU28bCy8FtKs36vsq/izxufXyiXSEg==}
 
-  '@zag-js/anatomy@1.31.1':
-    resolution: {integrity: sha512-BhIhf3Q0tRA0Jugd7AJfUBzeAb/iATBsw7KyYThMGcPWmrWssL7KWr5AB6RufzGKU7+DCb1QEhlqd4NSOJaYxQ==}
+  '@zag-js/anatomy@1.32.0':
+    resolution: {integrity: sha512-99u8VBSt5wkP9ZluIV6lR06Pvyt0AQaTGnvhZkvSmbz5U5+1XwCU0Db7Q+dcQRpM7d0p1ViWFxNVHDuuwY25Fw==}
 
   '@zag-js/core@1.22.1':
     resolution: {integrity: sha512-4BNrwO9Tadq2Z0d2xSSQs4O/o3OarEHzXM2FQqx46vrwSE57qUghnZex429ZQ51fuk8AL5Lowt26a9JxE9sVPg==}
 
-  '@zag-js/core@1.31.1':
-    resolution: {integrity: sha512-RaMJeqtjxG6k7iFD3WQnlyFJVT3yfQN+pJygAHH37GsMtiNzQQJOoesjb0LV9T27jwMXeNUzrh3MSDr1/0yVcQ==}
+  '@zag-js/core@1.32.0':
+    resolution: {integrity: sha512-aibBwyqw3saAzYBf2YHfuyOGt9kdNc4+ile3D1jbUsXiccLvGuFPP3+Ox7fULcILIiQhR0X6M+sTF17IyEMrYA==}
 
   '@zag-js/dom-query@1.22.1':
     resolution: {integrity: sha512-mtvGj2z3rkl40mkjd+QwoOHvxqpiOkY4mtVjzNzgzcbVtUN63Mz7giW8OZB+KLy37hwFX0B8JfiQncU8IOHNpw==}
 
-  '@zag-js/dom-query@1.31.1':
-    resolution: {integrity: sha512-2tCZLwSfoXm62gwl0neiAN6u5VnzUhy5wHtKbX+klqGFatnca3Bm++H9+4PHMrwUWRbPg3H5N151lKFEOQhBfQ==}
+  '@zag-js/dom-query@1.32.0':
+    resolution: {integrity: sha512-12XCCV1bchIFC7wjtYim5sEqUrAddzt0eysMTbBrCuK5r6TmLecwLtxUNKIRQ8adkCn0jqecUiuNyXojaArP3g==}
 
   '@zag-js/react@1.22.1':
     resolution: {integrity: sha512-TcIKkNo9EFel+d92nb7104voKJNDiMkqq9nn7Ozq/TE8A62JPf5zk8y8zqoxTbGDTTk+tDjW7Sm1IKb4r6rX4w==}
@@ -2849,8 +2834,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@zag-js/react@1.31.1':
-    resolution: {integrity: sha512-a7uYH+tcw1UYbcovyVBzlh6X8KztK/b1+s8sMs4Srhd24M+hZMetV94Z0bM1Km5aNAnoS4gkH3gtJjH0OphquQ==}
+  '@zag-js/react@1.32.0':
+    resolution: {integrity: sha512-oUhe6rezRnDEFIE9mlRS4UDx4iaiG9uD737TimHI2HWxdu7XNQV9+pNSyXneVLbiMsFs8w7uZN15otJbrW5LLA==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -2858,26 +2843,26 @@ packages:
   '@zag-js/splitter@1.22.1':
     resolution: {integrity: sha512-ZMuFlVvqO2WYD7AECEB51iiFpN7A30Q28NfkIVR98xugwUX1OJq1IizKRSbLgC/LmseHPp3OvotxjZX6FqkK4Q==}
 
-  '@zag-js/splitter@1.31.1':
-    resolution: {integrity: sha512-7SGBT2/xKsOzeSQEg+Otn1XV3RHrAz3jTySjBRKoEmdxubhfREqbKotbGVG65aTve11fQnmJ3Oyt3GJOeraxLA==}
+  '@zag-js/splitter@1.32.0':
+    resolution: {integrity: sha512-DP4sRqkN+JWw38fWEk3MjdcstsXdST2lJ6hYRixHQ0kYQoC0WXv9VUBlwxP2FCEJkjVojGCHjlrvyXe8/igRHA==}
 
   '@zag-js/store@1.22.1':
     resolution: {integrity: sha512-KrMWi/Fa4cqOjx2zDSMIu6vztFYik+V3K6VPWRVONM4FkboLpTqAEayzwgTTNqMK9iYYZIYjhiPhAVLW9iLuBg==}
 
-  '@zag-js/store@1.31.1':
-    resolution: {integrity: sha512-d5ZTRciTuXOGQ3nML15kQLaTiR1wJPxT1Fu1nN659X6Rl8DPtubYaRCZ3RCk9Kyiyg2z5HxeVqDswaDvGbM9Rg==}
+  '@zag-js/store@1.32.0':
+    resolution: {integrity: sha512-m9jvTKJB/lTC2I8NpDf+yo2XVN+ogxjiVbGsooAFTpyUAiXZY50nVc9cFcswnwFMo/GzXMk81oalyz9u65jqRQ==}
 
   '@zag-js/types@1.22.1':
     resolution: {integrity: sha512-lvpDSMR96e7H7TdwOiVpMzj6css5Ydix1nBi7BlmjME6v5OPR0KZwVDGD6h5UtTeVjPq8dPaqM8TJWw+QwbQSw==}
 
-  '@zag-js/types@1.31.1':
-    resolution: {integrity: sha512-mKw5DoeBjFykfUHv3ifCRjcogFTqp0aCCsmqQMfnf+J/mg2aXpAx76AXT1PYXAVVhxdP6qGXNd0mOQZDVrIlSQ==}
+  '@zag-js/types@1.32.0':
+    resolution: {integrity: sha512-9UV5mFnTgJRyFCCH9g/TIqtxxfw6FUphpe7E0AHK9+WSq3PRvflMeaRT/O6HgdWo0Rc+JN9vVwkFYyGD81uAbw==}
 
   '@zag-js/utils@1.22.1':
     resolution: {integrity: sha512-VXY4gjHaTENHW+wjnKKENZ2jcaW0vnG2a5lYEMuZR4dpNCKH217yFr/bCNrI44y2s1W3LWhWmpEjfZluP6udYg==}
 
-  '@zag-js/utils@1.31.1':
-    resolution: {integrity: sha512-KLm0pmOtf4ydALbaVLboL7W98TDVxwVVLvSuvtRgV53XTjlsVopTRA5/Xmzq2NhWujDZAXv7bRV603NDgDcjSw==}
+  '@zag-js/utils@1.32.0':
+    resolution: {integrity: sha512-IRe1yFbMXBp8Q1Xp916Lq9P91s65K5KRNFZIv2EdQHRynLaT+QrPp5hmzkWoXJn8oOYd6PZeNb7K6v7vk8+k1g==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -6113,8 +6098,6 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@hugeicons/core-free-icons@2.0.0': {}
-
   '@hugeicons/core-free-icons@3.1.1': {}
 
   '@hugeicons/react@1.1.4(react@19.1.0)':
@@ -6317,11 +6300,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@kushagradhawan/kookie-blocks@0.1.24(@kushagradhawan/kookie-ui@0.1.94(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kushagradhawan/kookie-blocks@0.1.27(@kushagradhawan/kookie-ui@0.1.95(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@hugeicons/core-free-icons': 2.0.0
+      '@hugeicons/core-free-icons': 3.1.1
       '@hugeicons/react': 1.1.4(react@19.1.0)
-      '@kushagradhawan/kookie-ui': 0.1.94(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@kushagradhawan/kookie-ui': 0.1.95(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       harden-react-markdown: 1.1.7(react-markdown@9.1.0(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
@@ -6333,9 +6316,9 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@kushagradhawan/kookie-blocks@0.1.25(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kushagradhawan/kookie-blocks@0.1.27(@kushagradhawan/kookie-ui@packages+kookie-ui)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@hugeicons/core-free-icons': 2.0.0
+      '@hugeicons/core-free-icons': 3.1.1
       '@hugeicons/react': 1.1.4(react@19.1.0)
       '@kushagradhawan/kookie-ui': link:packages/kookie-ui
       harden-react-markdown: 1.1.7(react-markdown@9.1.0(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)
@@ -6349,12 +6332,12 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@kushagradhawan/kookie-ui@0.1.94(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kushagradhawan/kookie-ui@0.1.95(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@zag-js/react': 1.31.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@zag-js/splitter': 1.31.1
+      '@zag-js/react': 1.32.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@zag-js/splitter': 1.32.0
       classnames: 2.5.1
       cmdk: 1.1.1(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       geist: 1.5.1(next@15.3.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -8357,25 +8340,25 @@ snapshots:
 
   '@zag-js/anatomy@1.22.1': {}
 
-  '@zag-js/anatomy@1.31.1': {}
+  '@zag-js/anatomy@1.32.0': {}
 
   '@zag-js/core@1.22.1':
     dependencies:
       '@zag-js/dom-query': 1.22.1
       '@zag-js/utils': 1.22.1
 
-  '@zag-js/core@1.31.1':
+  '@zag-js/core@1.32.0':
     dependencies:
-      '@zag-js/dom-query': 1.31.1
-      '@zag-js/utils': 1.31.1
+      '@zag-js/dom-query': 1.32.0
+      '@zag-js/utils': 1.32.0
 
   '@zag-js/dom-query@1.22.1':
     dependencies:
       '@zag-js/types': 1.22.1
 
-  '@zag-js/dom-query@1.31.1':
+  '@zag-js/dom-query@1.32.0':
     dependencies:
-      '@zag-js/types': 1.31.1
+      '@zag-js/types': 1.32.0
 
   '@zag-js/react@1.22.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -8386,12 +8369,12 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@zag-js/react@1.31.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@zag-js/react@1.32.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@zag-js/core': 1.31.1
-      '@zag-js/store': 1.31.1
-      '@zag-js/types': 1.31.1
-      '@zag-js/utils': 1.31.1
+      '@zag-js/core': 1.32.0
+      '@zag-js/store': 1.32.0
+      '@zag-js/types': 1.32.0
+      '@zag-js/utils': 1.32.0
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
@@ -8403,19 +8386,19 @@ snapshots:
       '@zag-js/types': 1.22.1
       '@zag-js/utils': 1.22.1
 
-  '@zag-js/splitter@1.31.1':
+  '@zag-js/splitter@1.32.0':
     dependencies:
-      '@zag-js/anatomy': 1.31.1
-      '@zag-js/core': 1.31.1
-      '@zag-js/dom-query': 1.31.1
-      '@zag-js/types': 1.31.1
-      '@zag-js/utils': 1.31.1
+      '@zag-js/anatomy': 1.32.0
+      '@zag-js/core': 1.32.0
+      '@zag-js/dom-query': 1.32.0
+      '@zag-js/types': 1.32.0
+      '@zag-js/utils': 1.32.0
 
   '@zag-js/store@1.22.1':
     dependencies:
       proxy-compare: 3.0.1
 
-  '@zag-js/store@1.31.1':
+  '@zag-js/store@1.32.0':
     dependencies:
       proxy-compare: 3.0.1
 
@@ -8423,13 +8406,13 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
-  '@zag-js/types@1.31.1':
+  '@zag-js/types@1.32.0':
     dependencies:
       csstype: 3.2.3
 
   '@zag-js/utils@1.22.1': {}
 
-  '@zag-js/utils@1.31.1': {}
+  '@zag-js/utils@1.32.0': {}
 
   acorn-jsx@5.3.2(acorn@8.14.1):
     dependencies:

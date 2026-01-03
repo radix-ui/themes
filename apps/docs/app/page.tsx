@@ -12,7 +12,7 @@ export default function HeroSection() {
       <Container size="2">
         <Hero.Root gap="8" p="6">
           <Hero.Meta>
-            <Avatar fallback="K" size="2" color="gray" src="/kookie-logo.png" />
+            <Avatar fallback="K" size="2" color="gray" src="/kookie-ui-logo.png" />
           </Hero.Meta>
 
           <Hero.Title>A system to build consistent and scalable user interfaces.</Hero.Title>

@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import remarkFrontmatter from 'remark-frontmatter'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
+import packageJson from '../../packages/kookie-ui/package.json' with { type: 'json' }
 
 /** @type {import('rehype-pretty-code').Options} */
 const rehypePrettyCodeOptions = {
@@ -38,7 +39,10 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Transpile the local kookie-ui package
   transpilePackages: ['@kushagradhawan/kookie-ui'],
-  // Optionally, add any other Next.js config below
+  // Expose kookie-ui version to the client
+  env: {
+    KOOKIE_UI_VERSION: packageJson.version,
+  },
 }
 
 export default withMDX(nextConfig)
