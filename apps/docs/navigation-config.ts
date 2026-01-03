@@ -1,7 +1,6 @@
 import type { DocsNavigationConfig } from '@kushagradhawan/kookie-blocks';
 import {
   Download01Icon,
-  LayoutBottomIcon,
   Settings01Icon,
   ColorsIcon,
   Grid02Icon,
@@ -14,6 +13,7 @@ import {
   LayoutTopIcon,
   DropdownFieldTypeIcon,
   Image01Icon,
+  Asterisk02Icon,
 } from '@hugeicons/core-free-icons';
 
 export const docsNavigation: DocsNavigationConfig = {
@@ -40,7 +40,7 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: '/docs/button',
           title: 'Button',
-          icon: LayoutBottomIcon,
+          icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
@@ -52,7 +52,7 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: '/docs/icon-button',
           title: 'Icon Button',
-          icon: LayoutBottomIcon,
+          icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
@@ -70,7 +70,7 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: '/docs/segmented-control',
           title: 'Segmented Control',
-          icon: LayoutBottomIcon,
+          icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
@@ -88,13 +88,13 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: '/docs/toggle-button',
           title: 'Toggle Button',
-          icon: LayoutBottomIcon,
+          icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
           href: '/docs/toggle-icon-button',
           title: 'Toggle Icon Button',
-          icon: LayoutBottomIcon,
+          icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
       ],
