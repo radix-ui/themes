@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewBlock, CodeBlock } from '@kushagradhawan/kookie-blocks';
-import { Flex, Heading, Button, Avatar, Text, Separator, IconButton, DropdownMenu, Navbar } from '@kushagradhawan/kookie-ui';
+import { PreviewBlock, CodeBlock, SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Flex, Button, Avatar, Text, Separator, IconButton, DropdownMenu, Navbar } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Home01Icon, Settings01Icon, Notification01Icon, UserIcon, Menu01Icon } from '@hugeicons/core-free-icons';
 
@@ -11,14 +11,12 @@ export function NavbarExamples() {
     <Flex direction="column" gap="9">
       {/* Example 1: Basic Navbar */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Basic Navbar
-          </Heading>
-          <Text size="2" color="gray">
-            Simple navbar with logo and navigation links
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Basic</SectionHeader.Title>
+            <SectionHeader.Description>Simple navbar with logo and navigation links</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
@@ -58,14 +56,12 @@ export function NavbarExamples() {
 
       {/* Example 2: Marketing Navbar */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Marketing Navbar
-          </Heading>
-          <Text size="2" color="gray">
-            Full marketing navbar with all slots populated
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Marketing</SectionHeader.Title>
+            <SectionHeader.Description>Full marketing navbar with all slots populated</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
@@ -121,14 +117,12 @@ export function NavbarExamples() {
 
       {/* Example 3: Slot Architecture */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Slot Architecture
-          </Heading>
-          <Text size="2" color="gray">
-            Visualize the three semantic slots: Logo (left), Navigation (center, expands), Actions (right)
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Slot Architecture</SectionHeader.Title>
+            <SectionHeader.Description>Visualize the three semantic slots: Logo (left), Navigation (center, expands), Actions (right)</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
@@ -217,14 +211,12 @@ export function NavbarExamples() {
 
       {/* Example 4: With Icons */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            With Icons
-          </Heading>
-          <Text size="2" color="gray">
-            Add icons to navigation items for visual clarity
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>With Icons</SectionHeader.Title>
+            <SectionHeader.Description>Add icons to navigation items for visual clarity</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
@@ -287,14 +279,12 @@ import { Home01Icon, Settings01Icon, Notification01Icon, UserIcon } from '@hugei
 
       {/* Example 5: Dashboard with User Menu */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Dashboard Navbar
-          </Heading>
-          <Text size="2" color="gray">
-            Dashboard navbar with dropdown user menu
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Dashboard</SectionHeader.Title>
+            <SectionHeader.Description>Dashboard navbar with dropdown user menu</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
@@ -364,14 +354,12 @@ import { Home01Icon, Settings01Icon, Notification01Icon, UserIcon } from '@hugei
 
       {/* Example 6: Minimal */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Minimal Navbar
-          </Heading>
-          <Text size="2" color="gray">
-            When you only need branding without navigation
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Minimal</SectionHeader.Title>
+            <SectionHeader.Description>When you only need branding without navigation</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
@@ -403,14 +391,12 @@ import { Home01Icon, Settings01Icon, Notification01Icon, UserIcon } from '@hugei
 
       {/* Example 7: Size Variations */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Size Variations
-          </Heading>
-          <Text size="2" color="gray">
-            Compare the three size options: 1 (compact), 2 (default), 3 (spacious)
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Size Variations</SectionHeader.Title>
+            <SectionHeader.Description>Compare the three size options: 1 (compact), 2 (default), 3 (spacious)</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="24rem">
           <Flex direction="column" gap="4" width="100%">
             <Navbar.Root position="static" size="1">
@@ -485,14 +471,12 @@ import { Home01Icon, Settings01Icon, Notification01Icon, UserIcon } from '@hugei
 
       {/* Example 8: Logo Only (Centered) */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Logo Only
-          </Heading>
-          <Text size="2" color="gray">
-            Navbar with just the logo for simple landing pages
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Logo Only</SectionHeader.Title>
+            <SectionHeader.Description>Navbar with just the logo for simple landing pages</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="10rem">
           <Navbar.Root position="static">
             <Navbar.Logo>
