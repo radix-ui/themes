@@ -35,49 +35,36 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   width: 100%;
-  height: var(--navbar-height, 64px);
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
   gap: var(--space-4);
 }
 
-/* Logo slot */
-.rt-NavbarLogo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--space-2);
-  min-width: 0;
+/* Size variants - padding based */
+.rt-NavbarRoot[data-size='1'] .rt-NavbarContainer {
+  padding: var(--space-2) var(--space-3);
 }
 
-/* Navigation slot */
-.rt-NavbarNavigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
+.rt-NavbarRoot[data-size='2'] .rt-NavbarContainer {
+  padding: var(--space-3) var(--space-4);
 }
 
-/* Actions slot */
+.rt-NavbarRoot[data-size='3'] .rt-NavbarContainer {
+  padding: var(--space-4) var(--space-5);
+}
+
+/* Slot overflow handling */
+.rt-NavbarLogo,
 .rt-NavbarActions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-4);
   min-width: 0;
+}
+
+/* Ensure Actions always stays in the right column */
+.rt-NavbarActions {
+  grid-column: 3;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .rt-NavbarContainer {
-    gap: var(--space-3);
-  }
-
-  .rt-NavbarNavigation {
-    gap: var(--space-3);
-  }
-
-  .rt-NavbarActions {
     gap: var(--space-3);
   }
 }

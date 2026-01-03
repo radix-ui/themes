@@ -1,9 +1,7 @@
-import { asChildPropDef } from '../props/as-child.prop.js';
-
 import type { PropDef } from '../props/prop-def.js';
 
 const positions = ['static', 'fixed', 'sticky'] as const;
-const heights = ['56', '64', '72'] as const;
+const sizes = ['1', '2', '3'] as const;
 
 const navbarRootPropDefs = {
   position: {
@@ -11,20 +9,14 @@ const navbarRootPropDefs = {
     values: positions,
     default: 'fixed',
   },
-  height: {
+  size: {
     type: 'enum',
-    values: heights,
-    default: '64',
+    values: sizes,
+    default: '2',
   },
 } satisfies {
   position: PropDef<(typeof positions)[number]>;
-  height: PropDef<(typeof heights)[number]>;
+  size: PropDef<(typeof sizes)[number]>;
 };
 
-const navbarSlotPropDefs = {
-  ...asChildPropDef,
-} satisfies {
-  asChild: PropDef<boolean>;
-};
-
-export { navbarRootPropDefs, navbarSlotPropDefs };
+export { navbarRootPropDefs };

@@ -2,9 +2,12 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
+import { Flex } from './flex.js';
 import { Slot } from './slot.js';
 
-import { navbarRootPropDefs, navbarSlotPropDefs } from './navbar.props.js';
+import type { FlexProps } from './flex.js';
+
+import { navbarRootPropDefs } from './navbar.props.js';
 import { extractProps } from '../helpers/extract-props.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
@@ -39,7 +42,7 @@ const NavbarRoot = React.forwardRef<NavbarRootElement, NavbarRootProps>(
     );
 
     const position = props.position ?? 'fixed';
-    const height = props.height ?? '64';
+    const size = props.size ?? '2';
 
     return (
       <header
@@ -47,10 +50,7 @@ const NavbarRoot = React.forwardRef<NavbarRootElement, NavbarRootProps>(
         ref={forwardedRef}
         className={classNames('rt-NavbarRoot', className)}
         data-position={position}
-        style={{
-          ...rootProps.style,
-          ['--navbar-height' as any]: `${height}px`,
-        }}
+        data-size={size}
       >
         <div className="rt-NavbarContainer">{children}</div>
       </header>
@@ -59,70 +59,98 @@ const NavbarRoot = React.forwardRef<NavbarRootElement, NavbarRootProps>(
 );
 NavbarRoot.displayName = 'Navbar.Root';
 
-// Logo Slot
-type NavbarLogoElement = React.ElementRef<'div'>;
-type NavbarLogoOwnProps = GetPropDefTypes<typeof navbarSlotPropDefs>;
-interface NavbarLogoProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    NavbarLogoOwnProps {}
+// Logo Slot - extends FlexProps
+type NavbarLogoProps = FlexProps & {
+  asChild?: boolean;
+};
 
-const NavbarLogo = React.forwardRef<NavbarLogoElement, NavbarLogoProps>(
-  ({ asChild, className, ...props }, forwardedRef) => {
-    const Comp = asChild ? Slot : 'div';
+const NavbarLogo = React.forwardRef<HTMLDivElement, NavbarLogoProps>(
+  ({ asChild, gap = '2', align = 'center', justify = 'start', className, ...props }, ref) => {
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          className={classNames('rt-NavbarLogo', className)}
+          {...props}
+        />
+      );
+    }
 
     return (
-      <Comp
-        {...props}
-        ref={forwardedRef}
+      <Flex
+        ref={ref}
+        gap={gap}
+        align={align}
+        justify={justify}
         className={classNames('rt-NavbarLogo', className)}
+        {...props}
       />
     );
-  },
+  }
 );
 NavbarLogo.displayName = 'Navbar.Logo';
 
-// Navigation Slot
-type NavbarNavigationElement = React.ElementRef<'nav'>;
-type NavbarNavigationOwnProps = GetPropDefTypes<typeof navbarSlotPropDefs>;
-interface NavbarNavigationProps
-  extends ComponentPropsWithout<'nav', RemovedProps>,
-    NavbarNavigationOwnProps {}
+// Navigation Slot - extends FlexProps
+type NavbarNavigationProps = FlexProps & {
+  asChild?: boolean;
+};
 
-const NavbarNavigation = React.forwardRef<NavbarNavigationElement, NavbarNavigationProps>(
-  ({ asChild, className, ...props }, forwardedRef) => {
-    const Comp = asChild ? Slot : 'nav';
+const NavbarNavigation = React.forwardRef<HTMLDivElement, NavbarNavigationProps>(
+  ({ asChild, gap = '4', align = 'center', justify = 'center', className, ...props }, ref) => {
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          className={classNames('rt-NavbarNavigation', className)}
+          role="navigation"
+          {...props}
+        />
+      );
+    }
 
     return (
-      <Comp
-        {...props}
-        ref={forwardedRef}
+      <Flex
+        ref={ref}
+        gap={gap}
+        align={align}
+        justify={justify}
         className={classNames('rt-NavbarNavigation', className)}
-        role={asChild ? undefined : 'navigation'}
+        role="navigation"
+        {...props}
       />
     );
-  },
+  }
 );
 NavbarNavigation.displayName = 'Navbar.Navigation';
 
-// Actions Slot
-type NavbarActionsElement = React.ElementRef<'div'>;
-type NavbarActionsOwnProps = GetPropDefTypes<typeof navbarSlotPropDefs>;
-interface NavbarActionsProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    NavbarActionsOwnProps {}
+// Actions Slot - extends FlexProps
+type NavbarActionsProps = FlexProps & {
+  asChild?: boolean;
+};
 
-const NavbarActions = React.forwardRef<NavbarActionsElement, NavbarActionsProps>(
-  ({ asChild, className, ...props }, forwardedRef) => {
-    const Comp = asChild ? Slot : 'div';
+const NavbarActions = React.forwardRef<HTMLDivElement, NavbarActionsProps>(
+  ({ asChild, gap = '4', align = 'center', justify = 'end', className, ...props }, ref) => {
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          className={classNames('rt-NavbarActions', className)}
+          {...props}
+        />
+      );
+    }
 
     return (
-      <Comp
-        {...props}
-        ref={forwardedRef}
+      <Flex
+        ref={ref}
+        gap={gap}
+        align={align}
+        justify={justify}
         className={classNames('rt-NavbarActions', className)}
+        {...props}
       />
     );
-  },
+  }
 );
 NavbarActions.displayName = 'Navbar.Actions';
 
