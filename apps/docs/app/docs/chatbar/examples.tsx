@@ -4,7 +4,7 @@ import * as React from 'react';
 import { PreviewBlock, CodeBlock, SectionHeader } from '@kushagradhawan/kookie-blocks';
 import { Flex, Chatbar, IconButton, Separator, Text, Card, Heading, Avatar, Skeleton } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Attachment01Icon, SmilePlusIcon, Mic01Icon, SparklesIcon } from '@hugeicons/core-free-icons';
+import { Attachment01Icon, SmileIcon, Mic01Icon, SparklesIcon } from '@hugeicons/core-free-icons';
 
 export function ChatbarExamples() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -126,7 +126,7 @@ export function ChatbarExamples() {
                   </IconButton>
                 </Chatbar.AttachTrigger>
                 <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Add emoji" tooltip="Add emoji">
-                  <HugeiconsIcon icon={SmilePlusIcon} strokeWidth={1.75} />
+                  <HugeiconsIcon icon={SmileIcon} strokeWidth={1.75} />
                 </IconButton>
                 <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Voice message" tooltip="Voice message">
                   <HugeiconsIcon icon={Mic01Icon} strokeWidth={1.75} />
@@ -179,7 +179,7 @@ export function ChatbarExamples() {
         aria-label="Add emoji"
         tooltip="Add emoji"
       >
-        <HugeiconsIcon icon={SmilePlusIcon} strokeWidth={1.75} />
+        <HugeiconsIcon icon={SmileIcon} strokeWidth={1.75} />
       </IconButton>
     </Chatbar.RowStart>
     <Chatbar.RowEnd>
